@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
 import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";
+import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
 
 const LungMechanicsTopic = () => {
   return (
