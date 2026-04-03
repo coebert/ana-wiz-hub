@@ -53,6 +53,12 @@
     --physiology-light: 340 50% 95%;
     --pharmacology: 170 50% 40%;
     --pharmacology-light: 170 40% 94%;
+    --clinical: 25 80% 50%;
+    --clinical-light: 25 70% 95%;
+    --icu: 260 50% 50%;
+    --icu-light: 260 40% 95%;
+    --perioperative: 45 70% 45%;
+    --perioperative-light: 45 60% 95%;
 
     --gradient-hero: linear-gradient(135deg, hsl(210 70% 35%), hsl(200 60% 45%), hsl(170 50% 40%));
     --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 15% 96%));
