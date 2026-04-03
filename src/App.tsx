@@ -21,6 +21,7 @@ import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic";
 import VaporizersTopic from "./pages/topics/VaporizersTopic";
 import ElectricalSafetyTopic from "./pages/topics/ElectricalSafetyTopic";
 import PulseOximetryTopic from "./pages/topics/PulseOximetryTopic";
+import ABGAnalyserTopic from "./pages/topics/ABGAnalyserTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
@@ -95,6 +96,7 @@ const App = () => (
           <Route path="/physics/vaporizers" element={<VaporizersTopic />} />
           <Route path="/physics/electrical-safety" element={<ElectricalSafetyTopic />} />
           <Route path="/physics/pulse-oximetry" element={<PulseOximetryTopic />} />
+          <Route path="/physics/abg-analyser" element={<ABGAnalyserTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
