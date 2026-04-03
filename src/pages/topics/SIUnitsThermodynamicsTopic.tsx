@@ -139,6 +139,7 @@ const SIUnitsThermodynamicsTopic = () => {
               recommend active warming for all procedures &gt;30 minutes with a target core temperature ≥36°C.
             </p>
           </div>
+        </div>
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Gas Law Derivations</h2>
