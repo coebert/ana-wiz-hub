@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
+import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 
 const CardiacOutputMonitoringTopic = () => {
