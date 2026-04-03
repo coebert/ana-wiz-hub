@@ -45,11 +45,22 @@ const App = () => (
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
+          <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />
+          <Route path="/physics/flow-measurement" element={<FlowMeasurementTopic />} />
+          <Route path="/physics/vaporizers" element={<VaporizersTopic />} />
+          <Route path="/physics/electrical-safety" element={<ElectricalSafetyTopic />} />
+          <Route path="/physics/pulse-oximetry" element={<PulseOximetryTopic />} />
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
-          <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
-          <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
+          <Route path="/physiology/lung-mechanics" element={<LungMechanicsTopic />} />
+          <Route path="/physiology/renal-physiology" element={<RenalPhysiologyTopic />} />
           <Route path="/physiology/neuromuscular" element={<NeuromuscularTopic />} />
+          <Route path="/physiology/autonomic-nervous" element={<AutonomicNervousTopic />} />
+          <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
+          <Route path="/pharmacology/iv-anaesthetics" element={<IVAnaestheticsTopic />} />
+          <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
+          <Route path="/pharmacology/opioids" element={<OpioidsTopic />} />
+          <Route path="/pharmacology/muscle-relaxants" element={<MuscleRelaxantsTopic />} />
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
