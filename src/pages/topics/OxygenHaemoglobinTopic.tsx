@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { OxygenDissociationCurve } from "@/components/diagrams/OxygenDissociationCurve";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 
 const OxygenHaemoglobinTopic = () => {
   return (
