@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { brachialPlexusQuestions } from "@/data/quizzes";
+import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 
 const BrachialPlexusTopic = () => {
   return (
     <SectionLayout title="Brachial Plexus" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <BrachialPlexusDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Organisation: Roots → Trunks → Divisions → Cords → Branches</h2>
