@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { MACDiagram } from "@/components/diagrams/MACDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const VolatileAgentsTopic = () => {
   return (
