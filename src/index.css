@@ -161,6 +161,14 @@
     background-color: hsl(var(--perioperative-light));
   }
 
+  .section-card-anatomy {
+    @apply border-l-4 transition-all duration-200;
+    border-left-color: hsl(var(--anatomy));
+  }
+  .section-card-anatomy:hover {
+    background-color: hsl(var(--anatomy-light));
+  }
+
   .key-point {
     @apply flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border;
   }

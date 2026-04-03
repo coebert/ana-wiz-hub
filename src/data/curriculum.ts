@@ -1,5 +1,5 @@
 export type ExamTag = "primary" | "final" | "fficm";
-export type Section = "physics" | "physiology" | "pharmacology" | "clinical" | "intensive-care" | "perioperative";
+export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative";
 
 export interface Topic {
   id: string;
@@ -35,6 +35,17 @@ export const pharmacologyTopics: Topic[] = [
   { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examTags: ["primary", "final"], available: true },
+];
+
+export const anatomyTopics: Topic[] = [
+  { id: "airway-anatomy", title: "Airway & Laryngeal Anatomy", description: "Nasal cavity, pharynx, larynx, trachea, bronchial tree, innervation", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "cardiac-anatomy", title: "Cardiac & Great Vessel Anatomy", description: "Heart chambers, coronary arteries, conducting system, great vessels", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "spinal-anatomy", title: "Vertebral Column & Spinal Cord", description: "Vertebral anatomy, meninges, epidural space, CSF, spinal tracts", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "brachial-plexus", title: "Brachial Plexus", description: "Roots, trunks, divisions, cords, branches — relevant to upper limb blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "thoracic-anatomy", title: "Thoracic Anatomy", description: "Lungs, pleura, mediastinum, intercostal space, thoracic wall", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "abdominal-anatomy", title: "Abdominal & Pelvic Anatomy", description: "Abdominal wall layers, inguinal canal, peritoneum, major organs", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "head-neck-anatomy", title: "Head & Neck Anatomy", description: "Cranial nerves, neck triangles, blood supply, skull base foramina", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "neuroanatomy", title: "Neuroanatomy", description: "Brain anatomy, cranial fossae, circle of Willis, CSF circulation, autonomic pathways", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const clinicalTopics: Topic[] = [
@@ -76,6 +87,7 @@ export const allTopics: Topic[] = [
   ...physicsTopics,
   ...physiologyTopics,
   ...pharmacologyTopics,
+  ...anatomyTopics,
   ...clinicalTopics,
   ...intensiveCareTopics,
   ...perioperativeTopics,
@@ -85,6 +97,7 @@ export const topicsBySection: Record<Section, Topic[]> = {
   physics: physicsTopics,
   physiology: physiologyTopics,
   pharmacology: pharmacologyTopics,
+  anatomy: anatomyTopics,
   clinical: clinicalTopics,
   "intensive-care": intensiveCareTopics,
   perioperative: perioperativeTopics,
@@ -94,6 +107,7 @@ export const sectionMeta: Record<Section, { label: string; path: string }> = {
   physics: { label: "Physics", path: "/physics" },
   physiology: { label: "Physiology", path: "/physiology" },
   pharmacology: { label: "Pharmacology", path: "/pharmacology" },
+  anatomy: { label: "Anatomy", path: "/anatomy" },
   clinical: { label: "Clinical Anaesthesia", path: "/clinical" },
   "intensive-care": { label: "Intensive Care", path: "/intensive-care" },
   perioperative: { label: "Perioperative Medicine", path: "/perioperative" },
