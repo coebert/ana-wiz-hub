@@ -11,7 +11,7 @@ const TraumaEmergencyTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Trauma is a leading cause of death in young adults. Anaesthetists play a key role in airway management, resuscitation, and perioperative care. The ATLS <C>ABCDE approach, damage control resuscitation, and massive transfusion protocols are fundamental.
+            Trauma is a leading cause of death in young adults. Anaesthetists play a key role in airway management, resuscitation, and perioperative care. The ATLS &lt;C&gt;ABCDE approach, damage control resuscitation, and massive transfusion protocols are fundamental.
           </p>
         </div>
 
