@@ -25,6 +25,7 @@ import ABGAnalyserTopic from "./pages/topics/ABGAnalyserTopic";
 import TemperatureMeasurementTopic from "./pages/topics/TemperatureMeasurementTopic";
 import HumidityGasSamplingTopic from "./pages/topics/HumidityGasSamplingTopic";
 import LaserFibreopticsTopic from "./pages/topics/LaserFibreopticsTopic";
+import UltrasoundPhysicsTopic from "./pages/topics/UltrasoundPhysicsTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
@@ -103,6 +104,7 @@ const App = () => (
           <Route path="/physics/temperature-measurement" element={<TemperatureMeasurementTopic />} />
           <Route path="/physics/humidity-gas-sampling" element={<HumidityGasSamplingTopic />} />
           <Route path="/physics/lasers-fibreoptics" element={<LaserFibreopticsTopic />} />
+          <Route path="/physics/ultrasound-physics" element={<UltrasoundPhysicsTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
