@@ -10,6 +10,7 @@ import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
 import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
+import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -156,6 +157,19 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <WestZonesDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Closing Volume & Closing Capacity</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The single-breath nitrogen washout test measures closing volume — the lung volume at which dependent airways begin to close.
+            When closing capacity exceeds FRC, airway closure occurs during tidal breathing, causing V/Q mismatch and hypoxaemia.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <ClosingVolumeDiagram />
           </div>
         </section>
       </div>
