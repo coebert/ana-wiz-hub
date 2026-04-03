@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { gasLawsQuiz } from "@/data/quizzes";
 
 const GasLawsTopic = () => {
   return (
