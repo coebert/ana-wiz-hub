@@ -300,6 +300,11 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
+          <VasoactiveStructures />
+        </div>
+
+        <div className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Diagram</h2>
           <VasoactiveReceptorDiagram />
         </div>
