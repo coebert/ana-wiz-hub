@@ -8,6 +8,7 @@ import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagr
 import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
 import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
+import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
 
 const LungMechanicsTopic = () => {
   return (
