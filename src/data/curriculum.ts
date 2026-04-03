@@ -9,11 +9,11 @@ export interface Topic {
 
 export const physicsTopics: Topic[] = [
   { id: "gas-laws", title: "Gas Laws", description: "Boyle's, Charles', Dalton's, Henry's laws and their clinical applications", section: "physics", examLevel: "primary", available: true },
-  { id: "pressure-measurement", title: "Pressure Measurement", description: "Transducers, manometers, and invasive monitoring principles", section: "physics", examLevel: "primary", available: false },
-  { id: "flow-measurement", title: "Flow & Flowmeters", description: "Laminar vs turbulent flow, Hagen-Poiseuille equation, rotameters", section: "physics", examLevel: "primary", available: false },
-  { id: "vaporizers", title: "Vaporizers", description: "Physics of vaporization, SVP, plenum and draw-over vaporizers", section: "physics", examLevel: "primary", available: false },
-  { id: "electrical-safety", title: "Electrical Safety", description: "Microshock, macroshock, diathermy, defibrillation", section: "physics", examLevel: "primary", available: false },
-  { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examLevel: "primary", available: false },
+  { id: "pressure-measurement", title: "Pressure Measurement", description: "Transducers, manometers, and invasive monitoring principles", section: "physics", examLevel: "primary", available: true },
+  { id: "flow-measurement", title: "Flow & Flowmeters", description: "Laminar vs turbulent flow, Hagen-Poiseuille equation, rotameters", section: "physics", examLevel: "primary", available: true },
+  { id: "vaporizers", title: "Vaporizers", description: "Physics of vaporization, SVP, plenum and draw-over vaporizers", section: "physics", examLevel: "primary", available: true },
+  { id: "electrical-safety", title: "Electrical Safety", description: "Microshock, macroshock, diathermy, defibrillation", section: "physics", examLevel: "primary", available: true },
+  { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examLevel: "primary", available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
