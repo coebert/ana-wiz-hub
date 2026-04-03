@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
+import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
