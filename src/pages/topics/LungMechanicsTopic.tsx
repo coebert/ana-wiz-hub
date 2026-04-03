@@ -12,6 +12,7 @@ import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEqu
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
+import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -184,6 +185,19 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <VentilatorWaveformsDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Auto-PEEP & Air Trapping</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Auto-PEEP (intrinsic PEEP) occurs when expiratory time is insufficient for complete lung emptying.
+            Air trapping increases end-expiratory lung volume, raises intrathoracic pressure, and increases the work of triggering.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <AutoPEEPDiagram />
           </div>
         </section>
       </div>
