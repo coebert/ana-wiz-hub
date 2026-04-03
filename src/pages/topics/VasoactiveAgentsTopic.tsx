@@ -298,6 +298,11 @@ const VasoactiveAgentsTopic = () => {
           </ul>
         </section>
 
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Diagram</h2>
+          <VasoactiveReceptorDiagram />
+        </div>
+
         <KeyLearningPoints
           points={[
             "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁",
