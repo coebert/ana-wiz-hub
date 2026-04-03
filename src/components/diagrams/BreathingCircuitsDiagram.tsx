@@ -391,106 +391,184 @@ const MaplesonTab = () => {
 };
 
 /* ═══════════════════════════════════════ CIRCLE SYSTEM ═══════════════════════════════════════ */
-const CircleTab = () => (
-  <div className="space-y-4">
-    <h3 className="text-lg font-semibold text-foreground">Circle Breathing System</h3>
-    <div className="bg-secondary/30 rounded-xl p-3 border border-border">
-      <svg viewBox="0 0 520 480" className="w-full h-auto">
-        <defs>
-          <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
-          <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
-          <linearGradient id="inspGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#10B981" stopOpacity="0.15" /><stop offset="100%" stopColor="#10B981" stopOpacity="0.03" /></linearGradient>
-          <linearGradient id="expGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="hsl(var(--destructive))" stopOpacity="0.15" /><stop offset="100%" stopColor="hsl(var(--destructive))" stopOpacity="0.03" /></linearGradient>
-        </defs>
+const circleFlowInfo: Record<Phase, string> = {
+  insp: "Fresh gas from FGF inlet mixes with CO₂-free recycled gas in the inspiratory limb. Gas passes through the inspiratory unidirectional valve → along the inspiratory limb → through the Y-piece → to the patient. The expiratory valve is held closed by the pressure difference. The reservoir bag deflates as gas is drawn toward the patient.",
+  exp: "Expired gas exits the patient → passes through the Y-piece → enters the expiratory limb → through the expiratory unidirectional valve → past the APL valve (excess gas vents here) → into the CO₂ absorber where CO₂ is removed. The cleaned gas then re-enters the inspiratory limb. The reservoir bag refills.",
+};
 
-        <text x="260" y="20" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">Circle System — 7 Essential Components</text>
+const CircleTab = () => {
+  const [circlePhase, setCirclePhase] = useState<Phase>("insp");
 
-        {/* ── Main circular path (oval) ── */}
-        {/* Inspiratory limb (left side - green) */}
-        <path d="M 175 65 Q 60 65 60 200 Q 60 360 175 370" fill="none" stroke="#10B981" strokeWidth="4" opacity="0.3" />
-        {/* Expiratory limb (right side - red) */}
-        <path d="M 345 65 Q 460 65 460 200 Q 460 360 345 370" fill="none" stroke="hsl(var(--destructive))" strokeWidth="4" opacity="0.3" />
+  const inspCol = "#10B981";
+  const expCol = "hsl(var(--destructive))";
 
-        {/* Flow direction arrows */}
-        <line x1="68" y1="140" x2="68" y2="180" stroke="#10B981" strokeWidth="1.5" markerEnd="url(#cInsp)" />
-        <text x="48" y="165" fontSize="6" fill="#10B981" fontWeight="bold" transform="rotate(-90,48,165)">INSP</text>
+  // SVG paths for animated dots following the circle
+  const inspPath = "M 260 320 L 175 370 Q 60 360 60 200 Q 60 65 175 65 L 215 52 L 260 38";
+  const expPath = "M 260 38 L 305 52 L 345 65 Q 460 65 460 200 Q 460 360 345 370 L 260 370 L 260 340";
+  const aplExhaustPath = "M 430 270 L 430 235";
 
-        <line x1="452" y1="180" x2="452" y2="140" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#cExp)" />
-        <text x="472" y="165" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold" transform="rotate(90,472,165)">EXP</text>
+  return (
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold text-foreground">Circle Breathing System</h3>
+      <p className="text-sm text-muted-foreground">
+        Toggle between <span className="text-[#10B981] font-semibold">inspiration</span> and <span className="text-destructive font-semibold">expiration</span> to see animated gas flow around the circle.
+      </p>
 
-        {/* ── Y-piece at top ── */}
-        <rect x="215" y="38" width="90" height="28" rx="6" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--foreground))" strokeWidth="2" />
-        <text x="260" y="56" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Y-piece</text>
-        {/* Lines from Y to insp/exp limbs */}
-        <line x1="215" y1="52" x2="175" y2="65" stroke="#10B981" strokeWidth="2" opacity="0.5" />
-        <line x1="305" y1="52" x2="345" y2="65" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.5" />
-        {/* Patient */}
-        <PatientEnd cx={260} cy={20} />
-        <line x1="260" y1="30" x2="260" y2="38" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+      {/* Phase toggle */}
+      <div className="flex gap-2 items-center">
+        <button
+          onClick={() => setCirclePhase("insp")}
+          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${circlePhase === "insp" ? "bg-emerald-600 text-white" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
+        >
+          Inspiration
+        </button>
+        <button
+          onClick={() => setCirclePhase("exp")}
+          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${circlePhase === "exp" ? "bg-destructive text-destructive-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
+        >
+          Expiration
+        </button>
+      </div>
 
-        {/* ── 1. Inspiratory unidirectional valve ── */}
-        <UniValve cx={100} cy={110} colour="#10B981" label="Insp. valve" />
+      <div className="bg-secondary/30 rounded-xl p-3 border border-border">
+        <svg viewBox="0 0 520 480" className="w-full h-auto">
+          <defs>
+            <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
+            <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
+          </defs>
 
-        {/* ── 2. Expiratory unidirectional valve ── */}
-        <UniValve cx={420} cy={110} colour="hsl(var(--destructive))" label="Exp. valve" />
+          <text x="260" y="20" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">Circle System — 7 Essential Components</text>
 
-        {/* ── 3. CO₂ absorber (bottom centre) ── */}
-        <rect x="170" y="340" width="180" height="70" rx="12" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
-        {/* Granules */}
-        {Array.from({ length: 35 }).map((_, i) => {
-          const gx = 185 + (i % 7) * 23;
-          const gy = 358 + Math.floor(i / 7) * 14;
-          const exhausted = i === 28 || i === 29;
-          return (
-            <circle key={i} cx={gx} cy={gy} r="5"
-              fill={exhausted ? "#A855F7" : "hsl(var(--primary)/0.15)"}
-              fillOpacity={exhausted ? 0.5 : 0.4}
-              stroke={exhausted ? "#A855F7" : "hsl(var(--primary)/0.4)"}
-              strokeWidth="0.7" />
-          );
-        })}
-        <text x="260" y="406" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
-        <text x="260" y="418" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Exothermic — produces heat + H₂O</text>
-        {/* Connection from bottom of circle to absorber */}
-        <line x1="175" y1="370" x2="175" y2="350" stroke="#10B981" strokeWidth="2" opacity="0.4" />
-        <line x1="345" y1="370" x2="345" y2="350" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.4" />
+          {/* ── Main circular path (oval) ── */}
+          {/* Inspiratory limb (left side) */}
+          <path d="M 175 65 Q 60 65 60 200 Q 60 360 175 370" fill="none" stroke={inspCol} strokeWidth={circlePhase === "insp" ? 5 : 3} opacity={circlePhase === "insp" ? 0.45 : 0.2} className="transition-all duration-500" />
+          {/* Expiratory limb (right side) */}
+          <path d="M 345 65 Q 460 65 460 200 Q 460 360 345 370" fill="none" stroke={expCol} strokeWidth={circlePhase === "exp" ? 5 : 3} opacity={circlePhase === "exp" ? 0.45 : 0.2} className="transition-all duration-500" />
 
-        {/* ── 4. FGF inlet ── */}
-        <FGFInlet cx={260} cy={320} label="Fresh gas inlet" />
+          {/* Flow direction labels */}
+          <text x="48" y="165" fontSize="7" fill={inspCol} fontWeight="bold" transform="rotate(-90,48,165)" opacity={circlePhase === "insp" ? 1 : 0.3}>INSP ↓</text>
+          <text x="472" y="165" fontSize="7" fill={expCol} fontWeight="bold" transform="rotate(90,472,165)" opacity={circlePhase === "exp" ? 1 : 0.3}>EXP ↑</text>
 
-        {/* ── 5. APL valve (on expiratory side) ── */}
-        <APLValve cx={430} cy={270} />
-        <line x1="430" y1="248" x2="430" y2="235" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#cExp)" />
-        <text x="450" y="232" fontSize="5" fill="hsl(var(--destructive))">Exhaust</text>
+          {/* ── Animated flow dots ── */}
+          {circlePhase === "insp" && (
+            <FlowDots path={inspPath} colour={inspCol} id="circInsp" />
+          )}
+          {circlePhase === "exp" && (
+            <>
+              <FlowDots path={expPath} colour={expCol} id="circExp" />
+              <FlowDots path={aplExhaustPath} colour={expCol} id="circAplEx" />
+            </>
+          )}
 
-        {/* ── 6. Reservoir bag ── */}
-        <ReservoirBag cx={90} cy={290} r={20} />
+          {/* ── Y-piece at top ── */}
+          <rect x="215" y="38" width="90" height="28" rx="6" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--foreground))" strokeWidth="2" />
+          <text x="260" y="56" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Y-piece</text>
+          <line x1="215" y1="52" x2="175" y2="65" stroke={inspCol} strokeWidth="2" opacity="0.5" />
+          <line x1="305" y1="52" x2="345" y2="65" stroke={expCol} strokeWidth="2" opacity="0.5" />
+          {/* Patient */}
+          <PatientEnd cx={260} cy={20} />
+          <line x1="260" y1="30" x2="260" y2="38" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
 
-        {/* ── Component labels (numbered) ── */}
-        <g fontSize="7" fill="hsl(var(--muted-foreground))">
-          <text x="260" y="440" textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
-          <text x="260" y="454" textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
-        </g>
+          {/* ── Inspiratory unidirectional valve ── */}
+          <g opacity={circlePhase === "insp" ? 1 : 0.5} className="transition-opacity duration-300">
+            <UniValve cx={100} cy={110} colour={inspCol} label="Insp. valve" />
+            {circlePhase === "insp" && (
+              <text x="100" y="142" textAnchor="middle" fontSize="5" fill={inspCol}>OPEN</text>
+            )}
+            {circlePhase === "exp" && (
+              <text x="100" y="142" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
+            )}
+          </g>
 
-        {/* ── Low-flow box ── */}
-        <rect x="115" y="460" width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
-        <text x="260" y="473" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
-      </svg>
+          {/* ── Expiratory unidirectional valve ── */}
+          <g opacity={circlePhase === "exp" ? 1 : 0.5} className="transition-opacity duration-300">
+            <UniValve cx={420} cy={110} colour={expCol} label="Exp. valve" />
+            {circlePhase === "exp" && (
+              <text x="420" y="142" textAnchor="middle" fontSize="5" fill={expCol}>OPEN</text>
+            )}
+            {circlePhase === "insp" && (
+              <text x="420" y="142" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
+            )}
+          </g>
+
+          {/* ── CO₂ absorber (bottom centre) ── */}
+          <rect x="170" y="340" width="180" height="70" rx="12" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
+          {Array.from({ length: 35 }).map((_, i) => {
+            const gx = 185 + (i % 7) * 23;
+            const gy = 358 + Math.floor(i / 7) * 14;
+            const exhausted = i === 28 || i === 29;
+            return (
+              <circle key={i} cx={gx} cy={gy} r="5"
+                fill={exhausted ? "#A855F7" : "hsl(var(--primary)/0.15)"}
+                fillOpacity={exhausted ? 0.5 : 0.4}
+                stroke={exhausted ? "#A855F7" : "hsl(var(--primary)/0.4)"}
+                strokeWidth="0.7" />
+            );
+          })}
+          <text x="260" y="406" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
+          <text x="260" y="418" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Exothermic — produces heat + H₂O</text>
+          <line x1="175" y1="370" x2="175" y2="350" stroke={inspCol} strokeWidth="2" opacity="0.4" />
+          <line x1="345" y1="370" x2="345" y2="350" stroke={expCol} strokeWidth="2" opacity="0.4" />
+
+          {/* ── FGF inlet ── */}
+          <FGFInlet cx={260} cy={320} label="Fresh gas inlet" />
+
+          {/* ── APL valve (on expiratory side) ── */}
+          <g opacity={circlePhase === "exp" ? 1 : 0.5} className="transition-opacity duration-300">
+            <APLValve cx={430} cy={270} />
+            {circlePhase === "exp" && (
+              <>
+                <line x1="430" y1="248" x2="430" y2="235" stroke={expCol} strokeWidth="1.5" markerEnd="url(#cExp)" />
+                <text x="455" y="240" fontSize="5" fill={expCol} fontWeight="bold">Excess gas</text>
+              </>
+            )}
+          </g>
+
+          {/* ── Reservoir bag ── */}
+          <g opacity={circlePhase === "insp" ? 0.6 : 1} className="transition-opacity duration-300">
+            <ReservoirBag cx={90} cy={290} r={circlePhase === "exp" ? 22 : 16} />
+            <text x="90" y={circlePhase === "exp" ? 322 : 316} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">
+              {circlePhase === "insp" ? "Deflating" : "Refilling"}
+            </text>
+          </g>
+
+          {/* ── Component labels ── */}
+          <g fontSize="7" fill="hsl(var(--muted-foreground))">
+            <text x="260" y="440" textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
+            <text x="260" y="454" textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
+          </g>
+
+          {/* ── Low-flow box ── */}
+          <rect x="115" y="460" width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
+          <text x="260" y="473" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
+        </svg>
+      </div>
+
+      {/* Flow description panel */}
+      <div className="animate-fade-in bg-card border border-border rounded-lg p-4 space-y-2">
+        <div className="flex items-center gap-2">
+          <span className={`inline-block w-3 h-3 rounded-full ${circlePhase === "insp" ? "bg-emerald-500" : "bg-destructive"}`} />
+          <h4 className="font-semibold text-sm text-foreground">
+            {circlePhase === "insp" ? "Inspiration" : "Expiration"}
+          </h4>
+        </div>
+        <p className="text-sm text-muted-foreground">{circleFlowInfo[circlePhase]}</p>
+      </div>
+
+      <div className="bg-card border border-border rounded-lg p-4 space-y-2">
+        <h4 className="font-semibold text-sm text-foreground">Circle System Key Facts</h4>
+        <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
+          <li><strong>7 components</strong>: FGF inlet, inspiratory & expiratory unidirectional valves, Y-piece, APL valve, reservoir bag, CO₂ absorber</li>
+          <li><strong>Unidirectional valves</strong>: mica or plastic discs; ensure one-way flow. Malfunction (sticking) → rebreathing → ↑ETCO₂</li>
+          <li>Allows <strong>low-flow</strong> (0.5–1 L/min), <strong>minimal-flow</strong> (&lt;0.5 L/min), and <strong>closed-circuit</strong> anaesthesia</li>
+          <li><strong>Advantages</strong>: conserves volatile agents & O₂, warms & humidifies inspired gas, reduces pollution & cost</li>
+          <li><strong>Disadvantages</strong>: higher circuit resistance (valves + absorber), bulky, requires vigilance (inspired O₂, agent concentration)</li>
+          <li><strong>Monitoring in low-flow</strong>: inspired O₂ (risk of hypoxic mixture), inspired agent concentration, ETCO₂ (absorber exhaustion)</li>
+        </ul>
+      </div>
     </div>
-
-    <div className="bg-card border border-border rounded-lg p-4 space-y-2">
-      <h4 className="font-semibold text-sm text-foreground">Circle System Key Facts</h4>
-      <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
-        <li><strong>7 components</strong>: FGF inlet, inspiratory & expiratory unidirectional valves, Y-piece, APL valve, reservoir bag, CO₂ absorber</li>
-        <li><strong>Unidirectional valves</strong>: mica or plastic discs; ensure one-way flow. Malfunction (sticking) → rebreathing → ↑ETCO₂</li>
-        <li>Allows <strong>low-flow</strong> (0.5–1 L/min), <strong>minimal-flow</strong> (&lt;0.5 L/min), and <strong>closed-circuit</strong> anaesthesia</li>
-        <li><strong>Advantages</strong>: conserves volatile agents & O₂, warms & humidifies inspired gas, reduces pollution & cost</li>
-        <li><strong>Disadvantages</strong>: higher circuit resistance (valves + absorber), bulky, requires vigilance (inspired O₂, agent concentration)</li>
-        <li><strong>Monitoring in low-flow</strong>: inspired O₂ (risk of hypoxic mixture), inspired agent concentration, ETCO₂ (absorber exhaustion)</li>
-      </ul>
-    </div>
-  </div>
-);
+  );
+};
 
 /* ═══════════════════════════════════════ SODA LIME TAB ═══════════════════════════════════════ */
 const SodaLimeTab = () => (
