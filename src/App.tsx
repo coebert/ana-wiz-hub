@@ -14,6 +14,7 @@ import PharmacologySection from "./pages/PharmacologySection";
 import ClinicalSection from "./pages/ClinicalSection";
 import IntensiveCareSection from "./pages/IntensiveCareSection";
 import PerioperativeSection from "./pages/PerioperativeSection";
+import AnatomySection from "./pages/AnatomySection";
 import GasLawsTopic from "./pages/topics/GasLawsTopic";
 import PressureMeasurementTopic from "./pages/topics/PressureMeasurementTopic";
 import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic";
@@ -58,6 +59,14 @@ import AntimicrobialsIcuTopic from "./pages/topics/AntimicrobialsIcuTopic";
 import PreoperativeAssessmentTopic from "./pages/topics/PreoperativeAssessmentTopic";
 import EnhancedRecoveryTopic from "./pages/topics/EnhancedRecoveryTopic";
 import PerioperativeFluidsTopic from "./pages/topics/PerioperativeFluidsTopic";
+import AirwayAnatomyTopic from "./pages/topics/AirwayAnatomyTopic";
+import CardiacAnatomyTopic from "./pages/topics/CardiacAnatomyTopic";
+import SpinalAnatomyTopic from "./pages/topics/SpinalAnatomyTopic";
+import BrachialPlexusTopic from "./pages/topics/BrachialPlexusTopic";
+import ThoracicAnatomyTopic from "./pages/topics/ThoracicAnatomyTopic";
+import AbdominalAnatomyTopic from "./pages/topics/AbdominalAnatomyTopic";
+import HeadNeckAnatomyTopic from "./pages/topics/HeadNeckAnatomyTopic";
+import NeuroanatomyTopic from "./pages/topics/NeuroanatomyTopic";
 
 const queryClient = new QueryClient();
 
