@@ -83,7 +83,7 @@ const MechanicalVentilationTopic = () => {
       ]} />
 
       <QuizSection questions={mechanicalVentilationQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="mechanical-ventilation" topicTitle="Mechanical Ventilation" />
     </SectionLayout>
   );
 };

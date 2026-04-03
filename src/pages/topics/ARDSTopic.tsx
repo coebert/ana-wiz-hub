@@ -64,7 +64,7 @@ const ARDSTopic = () => {
       ]} />
 
       <QuizSection questions={ardsQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="ards" topicTitle="ARDS &amp; Lung Injury" />
     </SectionLayout>
   );
 };

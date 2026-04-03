@@ -68,7 +68,7 @@ const CirculatoryFailureTopic = () => {
       ]} />
 
       <QuizSection questions={circulatoryFailureQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="circulatory-failure" topicTitle="Circulatory Failure &amp; Shock" />
     </SectionLayout>
   );
 };

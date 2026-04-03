@@ -103,7 +103,7 @@ const SepsisTopic = () => {
       ]} />
 
       <QuizSection questions={sepsisQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="sepsis" topicTitle="Sepsis &amp; Septic Shock" />
     </SectionLayout>
   );
 };

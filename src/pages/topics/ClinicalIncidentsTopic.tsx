@@ -81,7 +81,7 @@ const ClinicalIncidentsTopic = () => {
       ]} />
 
       <QuizSection questions={clinicalIncidentsQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="clinical-incidents" topicTitle="Critical Incidents" />
     </SectionLayout>
   );
 };

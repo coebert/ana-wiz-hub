@@ -86,7 +86,7 @@ const AcidBaseTopic = () => {
       ]} />
 
       <QuizSection questions={acidBaseQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="acid-base" topicTitle="Acid-Base Disorders" />
     </SectionLayout>
   );
 };

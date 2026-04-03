@@ -84,7 +84,7 @@ const AirwayManagementTopic = () => {
       ]} />
 
       <QuizSection questions={airwayManagementQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="airway-management" topicTitle="Airway Management" />
     </SectionLayout>
   );
 };

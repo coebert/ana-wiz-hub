@@ -71,7 +71,7 @@ const TraumaEmergencyTopic = () => {
       ]} />
 
       <QuizSection questions={traumaEmergencyQuestions} />
-      <TopicCompletionToggle />
+      <TopicCompletionToggle topicId="trauma-emergency" topicTitle="Trauma &amp; Emergency Anaesthesia" />
     </SectionLayout>
   );
 };
