@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { circulatoryFailureQuestions } from "@/data/quizzes";
+import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
 
 const CirculatoryFailureTopic = () => {
   return (
@@ -58,6 +59,8 @@ const CirculatoryFailureTopic = () => {
           </p>
         </div>
       </section>
+
+      <FluidResponsivenessDiagram />
 
       <KeyLearningPoints points={[
         "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive",
