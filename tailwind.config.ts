@@ -75,6 +75,10 @@ export default {
           DEFAULT: "hsl(var(--perioperative))",
           light: "hsl(var(--perioperative-light))",
         },
+        anatomy: {
+          DEFAULT: "hsl(var(--anatomy))",
+          light: "hsl(var(--anatomy-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

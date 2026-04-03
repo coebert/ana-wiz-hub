@@ -14,6 +14,7 @@ import PharmacologySection from "./pages/PharmacologySection";
 import ClinicalSection from "./pages/ClinicalSection";
 import IntensiveCareSection from "./pages/IntensiveCareSection";
 import PerioperativeSection from "./pages/PerioperativeSection";
+import AnatomySection from "./pages/AnatomySection";
 import GasLawsTopic from "./pages/topics/GasLawsTopic";
 import PressureMeasurementTopic from "./pages/topics/PressureMeasurementTopic";
 import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic";
@@ -58,6 +59,14 @@ import AntimicrobialsIcuTopic from "./pages/topics/AntimicrobialsIcuTopic";
 import PreoperativeAssessmentTopic from "./pages/topics/PreoperativeAssessmentTopic";
 import EnhancedRecoveryTopic from "./pages/topics/EnhancedRecoveryTopic";
 import PerioperativeFluidsTopic from "./pages/topics/PerioperativeFluidsTopic";
+import AirwayAnatomyTopic from "./pages/topics/AirwayAnatomyTopic";
+import CardiacAnatomyTopic from "./pages/topics/CardiacAnatomyTopic";
+import SpinalAnatomyTopic from "./pages/topics/SpinalAnatomyTopic";
+import BrachialPlexusTopic from "./pages/topics/BrachialPlexusTopic";
+import ThoracicAnatomyTopic from "./pages/topics/ThoracicAnatomyTopic";
+import AbdominalAnatomyTopic from "./pages/topics/AbdominalAnatomyTopic";
+import HeadNeckAnatomyTopic from "./pages/topics/HeadNeckAnatomyTopic";
+import NeuroanatomyTopic from "./pages/topics/NeuroanatomyTopic";
 
 const queryClient = new QueryClient();
 
@@ -78,6 +87,7 @@ const App = () => (
           <Route path="/clinical" element={<ClinicalSection />} />
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
+          <Route path="/anatomy" element={<AnatomySection />} />
           {/* Physics */}
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
           <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />
@@ -128,6 +138,15 @@ const App = () => (
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
           <Route path="/perioperative/perioperative-fluids" element={<PerioperativeFluidsTopic />} />
+          {/* Anatomy */}
+          <Route path="/anatomy/airway-anatomy" element={<AirwayAnatomyTopic />} />
+          <Route path="/anatomy/cardiac-anatomy" element={<CardiacAnatomyTopic />} />
+          <Route path="/anatomy/spinal-anatomy" element={<SpinalAnatomyTopic />} />
+          <Route path="/anatomy/brachial-plexus" element={<BrachialPlexusTopic />} />
+          <Route path="/anatomy/thoracic-anatomy" element={<ThoracicAnatomyTopic />} />
+          <Route path="/anatomy/abdominal-anatomy" element={<AbdominalAnatomyTopic />} />
+          <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
+          <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

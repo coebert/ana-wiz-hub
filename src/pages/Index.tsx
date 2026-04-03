@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Atom, Heart, FlaskConical, BookOpen, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { Atom, Heart, FlaskConical, BookOpen, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
@@ -40,6 +40,15 @@ const sections: {
     cardClass: "section-card-pharmacology",
     iconColor: "text-pharmacology",
     sectionKey: "pharmacology",
+  },
+  {
+    title: "Anatomy",
+    description: "Airway, cardiac, spinal, brachial plexus, thoracic, abdominal, head & neck, and neuroanatomy",
+    icon: Bone,
+    path: "/anatomy",
+    cardClass: "section-card-anatomy",
+    iconColor: "text-anatomy",
+    sectionKey: "anatomy",
   },
   {
     title: "Clinical Anaesthesia",
