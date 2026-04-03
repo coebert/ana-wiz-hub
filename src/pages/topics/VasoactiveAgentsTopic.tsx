@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
+import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 
 const VasoactiveAgentsTopic = () => {
   return (
@@ -296,6 +297,11 @@ const VasoactiveAgentsTopic = () => {
             <li>Longer acting than phenylephrine (15–20 min). Causes reflex bradycardia</li>
           </ul>
         </section>
+
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Diagram</h2>
+          <VasoactiveReceptorDiagram />
+        </div>
 
         <KeyLearningPoints
           points={[
