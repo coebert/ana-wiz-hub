@@ -159,6 +159,16 @@ const CardiacCycleTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Cardiac Action Potential & Antiarrhythmics</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The cardiac action potential differs fundamentally between contractile myocytes (fast response) and pacemaker cells (slow response). Understanding each phase and its ion channels is essential for the pharmacology of antiarrhythmic drugs.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <CardiacActionPotentialDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Anaesthetic Relevance</h2>
           <p className="text-foreground/90 leading-relaxed">
             Understanding the cardiac cycle is essential for interpreting invasive arterial and central venous pressure
