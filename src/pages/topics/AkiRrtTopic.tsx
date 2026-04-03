@@ -92,6 +92,8 @@ const AkiRrtTopic = () => {
         </div>
       </section>
 
+      <RRTModalitiesDiagram />
+
       <KeyLearningPoints points={[
         "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output",
         "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺",
