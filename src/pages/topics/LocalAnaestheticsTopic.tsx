@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
+import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
 
 const LocalAnaestheticsTopic = () => {
   return (
