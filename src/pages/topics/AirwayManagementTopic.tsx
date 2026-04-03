@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
 import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
 import DASAlgorithmDiagram from "@/components/diagrams/DASAlgorithmDiagram";
+import AirwayAssessmentDiagram from "@/components/diagrams/AirwayAssessmentDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const AirwayManagementTopic = () => {
@@ -12,6 +13,16 @@ const AirwayManagementTopic = () => {
     <SectionLayout title="Airway Management" subtitle="FRCA Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <DASAlgorithmDiagram />
       <section className="space-y-6 mb-10">
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Systematic assessment of the airway is essential before every anaesthetic. Explore Mallampati scoring, predictors of difficulty, and anterior neck anatomy for emergency front-of-neck access.
+          </p>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <AirwayAssessmentDiagram />
+          </div>
+        </div>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
