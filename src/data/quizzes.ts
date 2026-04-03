@@ -289,3 +289,119 @@ export const volatileAgentsQuiz: QuizQuestion[] = [
     explanation: "Duration of anaesthesia does not affect MAC. Factors that DO affect MAC include: age (decreases after 40), temperature (hypothermia decreases MAC), concurrent drugs (opioids, benzodiazepines decrease MAC), pregnancy (decreases MAC by ~30%), and chronic alcohol use (increases MAC).",
   },
 ];
+
+export const neuromuscularQuiz: QuizQuestion[] = [
+  {
+    question: "The adult nicotinic acetylcholine receptor at the neuromuscular junction has the subunit composition:",
+    options: [
+      "α₂βδγ",
+      "α₂βδε",
+      "α₂β₂δ",
+      "αβγδε",
+    ],
+    correctIndex: 1,
+    explanation: "The mature adult nAChR has the subunit composition α₂βδε. The fetal/extrajunctional receptor contains a γ subunit instead of ε (α₂βδγ), which has longer open time and lower conductance. This distinction is clinically important — upregulation of fetal-type receptors in denervation or burns causes suxamethonium hyperkalaemia.",
+  },
+  {
+    question: "How many molecules of acetylcholine must bind to open a single nicotinic receptor channel?",
+    options: [
+      "One",
+      "Two",
+      "Three",
+      "Four",
+    ],
+    correctIndex: 1,
+    explanation: "Two ACh molecules must bind simultaneously, one to each α subunit, to open the channel. This cooperative binding creates a steep dose-response relationship and explains why non-depolarising agents (which compete at the α subunits) are effective — blocking even one site prevents channel opening.",
+  },
+  {
+    question: "Train-of-four fade during non-depolarising neuromuscular block is explained by blockade of:",
+    options: [
+      "Post-junctional nAChR only",
+      "Pre-junctional nAChR (α₃β₂)",
+      "Muscarinic receptors at the NMJ",
+      "Voltage-gated calcium channels",
+    ],
+    correctIndex: 1,
+    explanation: "Fade during train-of-four stimulation is caused by blockade of pre-junctional nicotinic receptors (α₃β₂), which normally provide positive feedback to mobilise ACh vesicles during sustained nerve stimulation. Without this positive feedback, each successive stimulus releases less ACh, producing the characteristic decrement.",
+  },
+  {
+    question: "Approximately what percentage of post-junctional receptors must be blocked before single twitch depression becomes apparent?",
+    options: [
+      "50%",
+      "60%",
+      "75-80%",
+      "95%",
+    ],
+    correctIndex: 2,
+    explanation: "The NMJ has a large safety margin. Approximately 75% of receptors must be occupied before train-of-four fade appears, and 75-80% before single twitch depression is detectable. Complete clinical paralysis requires >90% receptor occupancy. This safety margin explains why partial curarisation may go undetected clinically.",
+  },
+  {
+    question: "A patient with extensive burns 3 weeks ago is at risk of hyperkalaemia with suxamethonium because of:",
+    options: [
+      "Increased plasma cholinesterase activity",
+      "Upregulation of extrajunctional (fetal-type) nAChRs",
+      "Decreased number of post-junctional receptors",
+      "Increased acetylcholinesterase activity",
+    ],
+    correctIndex: 1,
+    explanation: "Burns, denervation, prolonged immobilisation, and critical illness cause proliferation of extrajunctional (fetal-type, α₂βδγ) receptors across the entire muscle membrane. These receptors have a longer channel open time. When depolarised by suxamethonium, the massive number of channels opening simultaneously causes life-threatening potassium efflux. The risk begins around 24-48 hours post-injury and may persist for months.",
+  },
+];
+
+export const localAnaestheticsQuiz: QuizQuestion[] = [
+  {
+    question: "Which physicochemical property of a local anaesthetic most determines its speed of onset?",
+    options: [
+      "Lipid solubility",
+      "Protein binding",
+      "pKa",
+      "Molecular weight",
+    ],
+    correctIndex: 2,
+    explanation: "pKa determines the proportion of unionised (membrane-permeable) drug at physiological pH. An agent with a lower pKa has more unionised drug at pH 7.4, so it crosses nerve membranes faster and has a quicker onset. Lidocaine (pKa 7.9) has faster onset than bupivacaine (pKa 8.1) because more is unionised at pH 7.4.",
+  },
+  {
+    question: "A local anaesthetic injection is ineffective in an area of cellulitis. The most likely explanation is:",
+    options: [
+      "Increased blood flow washing away the LA",
+      "Reduced tissue pH increasing the ionised fraction",
+      "Bacterial enzymes degrading the LA",
+      "Swollen tissue compressing nerve fibres",
+    ],
+    correctIndex: 1,
+    explanation: "Infected tissue is acidic (pH ~6.5). Since LAs are weak bases, lower pH shifts the Henderson-Hasselbalch equilibrium toward the ionised form (BH⁺). Less unionised drug is available to cross the nerve membrane, so the block is ineffective. This is sometimes called 'ion trapping'.",
+  },
+  {
+    question: "Which local anaesthetic is most associated with cardiotoxicity and why?",
+    options: [
+      "Lidocaine — due to rapid onset",
+      "Prilocaine — due to methaemoglobinaemia",
+      "Bupivacaine — due to slow dissociation from cardiac Na⁺ channels",
+      "Ropivacaine — due to high protein binding",
+    ],
+    correctIndex: 2,
+    explanation: "Bupivacaine has the highest cardiotoxicity of commonly used LAs. It binds to cardiac Na⁺ channels with high affinity and dissociates very slowly ('fast-in, slow-out'), especially during diastole. This prolonged binding causes refractory arrhythmias and cardiovascular collapse that is resistant to conventional resuscitation. Ropivacaine (the S-enantiomer) was developed as a less cardiotoxic alternative.",
+  },
+  {
+    question: "The initial treatment for suspected local anaesthetic systemic toxicity (LAST) with cardiovascular compromise is:",
+    options: [
+      "Adrenaline 1 mg IV",
+      "Intralipid 20% — 1.5 mL/kg bolus",
+      "Sodium bicarbonate 50 mmol IV",
+      "Amiodarone 300 mg IV",
+    ],
+    correctIndex: 1,
+    explanation: "Intralipid 20% (lipid emulsion) is the specific treatment for LAST. The initial bolus is 1.5 mL/kg IV over 1 minute, followed by an infusion of 15 mL/kg/h. The lipid acts as a 'lipid sink', sequestering lipid-soluble LA from cardiac tissue. Standard ALS drugs (adrenaline in small doses) should be used alongside, but lipid rescue is the key intervention.",
+  },
+  {
+    question: "An amide local anaesthetic can be identified from an ester by:",
+    options: [
+      "Amides always have a longer duration of action",
+      "Amides contain two 'i's in their generic name",
+      "Amides are always more potent",
+      "Amides have a lower pKa",
+    ],
+    correctIndex: 1,
+    explanation: "A useful mnemonic: amide LAs contain two 'i's in their generic name (lidocaine, prilocaine, bupivacaine, ropivacaine, levobupivacaine), while esters have only one 'i' or none (cocaine, procaine, tetracaine). Amides are metabolised by hepatic CYP450 enzymes, while esters are hydrolysed by plasma cholinesterases.",
+  },
+];
