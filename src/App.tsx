@@ -47,6 +47,7 @@ import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic";
 import OpioidsTopic from "./pages/topics/OpioidsTopic";
 import MuscleRelaxantsTopic from "./pages/topics/MuscleRelaxantsTopic";
 import LocalAnaestheticsTopic from "./pages/topics/LocalAnaestheticsTopic";
+import VasoactiveAgentsTopic from "./pages/topics/VasoactiveAgentsTopic";
 import AirwayManagementTopic from "./pages/topics/AirwayManagementTopic";
 import RegionalAnaesthesiaTopic from "./pages/topics/RegionalAnaesthesiaTopic";
 import ObstetricAnaesthesiaTopic from "./pages/topics/ObstetricAnaesthesiaTopic";
@@ -137,6 +138,7 @@ const App = () => (
           <Route path="/pharmacology/opioids" element={<OpioidsTopic />} />
           <Route path="/pharmacology/muscle-relaxants" element={<MuscleRelaxantsTopic />} />
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
+          <Route path="/pharmacology/vasoactive-agents" element={<VasoactiveAgentsTopic />} />
           {/* Clinical Anaesthesia */}
           <Route path="/clinical/airway-management" element={<AirwayManagementTopic />} />
           <Route path="/clinical/regional-anaesthesia" element={<RegionalAnaesthesiaTopic />} />
