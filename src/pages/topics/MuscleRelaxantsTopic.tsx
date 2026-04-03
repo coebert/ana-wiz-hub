@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
+import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 
 const MuscleRelaxantsTopic = () => {
   return (
