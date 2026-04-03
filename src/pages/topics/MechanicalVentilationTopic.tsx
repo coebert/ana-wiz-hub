@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
+import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 
 const MechanicalVentilationTopic = () => {
@@ -73,6 +74,8 @@ const MechanicalVentilationTopic = () => {
           </p>
         </div>
       </section>
+
+      <VentilatorWaveformsGuideDiagram />
 
       <KeyLearningPoints points={[
         "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",
