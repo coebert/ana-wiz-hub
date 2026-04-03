@@ -140,7 +140,8 @@ const NeuromuscularTopic = () => {
         </section>
       </div>
 
-      <KeyLearningPoints points={[
+      <NeuromuscularMonitoringDiagram />
+
         "The NMJ sequence: AP → Ca²⁺ influx → vesicle fusion → ACh release → nAChR binding → EPP → muscle AP → contraction.",
         "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.",
         "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.",
