@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
+import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -24,6 +25,7 @@ const NeuroanaesthesiaTopic = () => {
         </div>
 
         <CBFAutoregulationDiagram />
+        <ICPVolumeCurveDiagram />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Effects on CBF & CMRO₂</h2>
