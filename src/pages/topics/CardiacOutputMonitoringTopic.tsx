@@ -73,8 +73,9 @@ const CardiacOutputMonitoringTopic = () => {
 
       <PiCCODiagram />
       <PACDiagram />
+      <EchoDiagram />
 
-        <KeyLearningPoints points={[
+
         "PiCCO provides continuous CO + EVLWI (lung water) — useful in ARDS fluid management",
         "Oesophageal Doppler FTc <330 ms suggests hypovolaemia — used for GDT",
         "Uncalibrated systems (FloTrac) are convenient but less accurate in vasoplegia",
