@@ -12,6 +12,7 @@ import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEqu
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
+import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 
 const LungMechanicsTopic = () => {
   return (
