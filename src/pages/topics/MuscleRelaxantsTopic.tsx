@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
+import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 
 const MuscleRelaxantsTopic = () => {
   return (
@@ -139,7 +140,13 @@ const MuscleRelaxantsTopic = () => {
         "Sugammadex: encapsulates rocuronium/vecuronium. Can reverse profound block. 16 mg/kg for emergency reversal.",
         "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care."
       ]} />
-      <QuizSection questions={muscleRelaxantsQuiz} />
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+          <MuscleRelaxantStructures />
+        </div>
+
+        <QuizSection questions={muscleRelaxantsQuiz} />
       <TopicCompletionToggle topicId="muscle-relaxants" topicTitle="Neuromuscular Blocking Agents" />
     </SectionLayout>
   );

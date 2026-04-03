@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
+import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
 
 const LocalAnaestheticsTopic = () => {
   return (
@@ -218,6 +219,12 @@ const LocalAnaestheticsTopic = () => {
         "LAST presents as CNS excitation then cardiovascular collapse. Treat with Intralipid 20% (1.5 mL/kg bolus then 15 mL/kg/h infusion).",
         "Bupivacaine is most cardiotoxic due to slow dissociation from cardiac Na⁺ channels; ropivacaine is the safer S-enantiomer alternative."
       ]} />
+
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+          <LocalAnaestheticStructures />
+        </div>
 
       <QuizSection questions={localAnaestheticsQuiz} />
       <TopicCompletionToggle topicId="local-anaesthetics" topicTitle="Local Anaesthetic Agents" />
