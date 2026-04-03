@@ -32,6 +32,7 @@ import AnaestheticMachineTopic from "./pages/topics/AnaestheticMachineTopic";
 import DefibrillationPacingTopic from "./pages/topics/DefibrillationPacingTopic";
 import ClinicalMeasurementTopic from "./pages/topics/ClinicalMeasurementTopic";
 import SIUnitsThermodynamicsTopic from "./pages/topics/SIUnitsThermodynamicsTopic";
+import OpticsLightTopic from "./pages/topics/OpticsLightTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
@@ -117,6 +118,7 @@ const App = () => (
           <Route path="/physics/defibrillation-pacing" element={<DefibrillationPacingTopic />} />
           <Route path="/physics/clinical-measurement" element={<ClinicalMeasurementTopic />} />
           <Route path="/physics/si-units-thermodynamics" element={<SIUnitsThermodynamicsTopic />} />
+          <Route path="/physics/optics-light" element={<OpticsLightTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
