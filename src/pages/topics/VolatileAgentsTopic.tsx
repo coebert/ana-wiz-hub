@@ -215,6 +215,12 @@ const VolatileAgentsTopic = () => {
         "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.",
         "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors."
       ]} />
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+          <VolatileAgentStructures />
+        </div>
+
       <QuizSection questions={volatileAgentsQuiz} />
       <TopicCompletionToggle topicId="volatile-agents" topicTitle="Volatile Anaesthetic Agents" />
     </SectionLayout>

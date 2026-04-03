@@ -149,7 +149,13 @@ const IVAnaestheticsTopic = () => {
         "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.",
         "TCI models: Marsh (weight-based) and Schnider (age, weight, height, LBM) for propofol delivery."
       ]} />
-      <QuizSection questions={ivAnaestheticsQuiz} />
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+          <IVAnaestheticStructures />
+        </div>
+
+        <QuizSection questions={ivAnaestheticsQuiz} />
       <TopicCompletionToggle topicId="iv-anaesthetics" topicTitle="Intravenous Anaesthetic Agents" />
     </SectionLayout>
   );

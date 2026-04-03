@@ -146,7 +146,13 @@ const OpioidsTopic = () => {
         "Alfentanil: pKa 6.5 → 90% un-ionised → fastest onset despite lower lipid solubility than fentanyl.",
         "Naloxone: competitive antagonist, duration 30-60 min. Risk of re-narcotisation. Titrate carefully to avoid acute reversal."
       ]} />
-      <QuizSection questions={opioidsQuiz} />
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+          <OpioidStructures />
+        </div>
+
+        <QuizSection questions={opioidsQuiz} />
       <TopicCompletionToggle topicId="opioids" topicTitle="Opioid Pharmacology" />
     </SectionLayout>
   );
