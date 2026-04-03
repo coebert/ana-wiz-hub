@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
+import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
 
 const PulseOximetryTopic = () => {
   return (
