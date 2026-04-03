@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
+import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 
 const IVAnaestheticsTopic = () => {
   return (
