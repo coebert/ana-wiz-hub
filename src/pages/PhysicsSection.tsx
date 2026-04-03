@@ -1,13 +1,15 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
 import { physicsTopics } from "@/data/curriculum";
-import { Badge } from "@/components/ui/badge";
-import { ProgressRing } from "@/components/ProgressRing";
 import { useProgress } from "@/contexts/ProgressContext";
+import { useExamFilter } from "@/contexts/ExamFilterContext";
+import { ProgressRing } from "@/components/ProgressRing";
 
 const PhysicsSection = () => {
   const { getSectionProgress } = useProgress();
+  const { matchesFilter } = useExamFilter();
   const progress = getSectionProgress("physics");
+  const visibleTopics = physicsTopics.filter((t) => matchesFilter(t.examTags));
 
   return (
     <SectionLayout
@@ -21,25 +23,20 @@ const PhysicsSection = () => {
         <ProgressRing completed={progress.completed} total={progress.total} size={48} />
         <div>
           <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
-          <p className="text-xs text-muted-foreground">Available physics topics</p>
+          <p className="text-xs text-muted-foreground">Physics topics</p>
         </div>
       </div>
       <div className="space-y-3">
-        {physicsTopics.map((topic) => (
-          <div key={topic.id} className="relative">
-            {!topic.available && (
-              <div className="absolute inset-0 bg-background/50 rounded-lg z-10 flex items-center justify-center">
-                <Badge variant="secondary" className="text-xs">Coming soon</Badge>
-              </div>
-            )}
-            <TopicCard
-              title={topic.title}
-              description={topic.description}
-              path={topic.available ? `/physics/${topic.id}` : "#"}
-              section="physics"
-              topicId={topic.available ? topic.id : undefined}
-            />
-          </div>
+        {visibleTopics.map((topic) => (
+          <TopicCard
+            key={topic.id}
+            title={topic.title}
+            description={topic.description}
+            path={`/physics/${topic.id}`}
+            section="physics"
+            topicId={topic.id}
+            examTags={topic.examTags}
+          />
         ))}
       </div>
     </SectionLayout>
