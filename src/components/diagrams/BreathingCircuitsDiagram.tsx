@@ -78,159 +78,317 @@ const UniValve = ({ cx, cy, colour, label }: { cx: number; cy: number; colour: s
   </g>
 );
 
-/* ═══════════════════════════════════════ MAPLESON TAB ═══════════════════════════════════════ */
-const MaplesonTab = () => (
-  <div className="space-y-4">
-    <h3 className="text-lg font-semibold text-foreground">Mapleson Classification (A–F)</h3>
-    <p className="text-sm text-muted-foreground">
-      Semi-open breathing circuits classified by the relative positions of FGF inlet, reservoir bag, APL valve, and corrugated tubing. Efficiency depends on the mode of ventilation.
-    </p>
-    <div className="bg-secondary/30 rounded-xl p-3 border border-border">
-      <svg viewBox="0 0 520 620" className="w-full h-auto">
-        <defs>
-          <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
-          <marker id="bcExpFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
-          <linearGradient id="tubeFill" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.05" /><stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.15" /></linearGradient>
-        </defs>
-
-        {/* ──── Mapleson A (Magill) ──── */}
-        <g transform="translate(0,0)">
-          <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">A — Magill</text>
-          <text x="260" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Most efficient for spontaneous ventilation (FGF ≈ MV)</text>
-
-          <FGFInlet cx={55} cy={55} />
-          <ReservoirBag cx={110} cy={55} r={14} />
-          <CorrugatedTube x1={135} y1={55} x2={370} y2={55} />
-          {/* Gas flow arrow along tubing */}
-          <line x1="160" y1="42" x2="340" y2="42" stroke="#10B981" strokeWidth="1" strokeDasharray="4,3" markerEnd="url(#bcFlow)" />
-          <text x="250" y="39" textAnchor="middle" fontSize="6" fill="#10B981">Inspiratory flow →</text>
-          <APLValve cx={390} cy={55} />
-          {/* Expiratory outflow arrow */}
-          <line x1="390" y1="30" x2="390" y2="15" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#bcExpFlow)" />
-          <text x="415" y="18" fontSize="5" fill="hsl(var(--destructive))">Exhaust</text>
-          <PatientEnd cx={445} cy={55} />
-          {/* Connection line APL→Patient */}
-          <line x1="403" y1="55" x2="435" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
-        </g>
-
-        {/* ──── Mapleson B ──── */}
-        <g transform="translate(0,95)">
-          <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">B</text>
-          <text x="50" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">FGF & APL near patient; bag at machine end</text>
-
-          <ReservoirBag cx={60} cy={55} r={14} />
-          <CorrugatedTube x1={85} y1={55} x2={340} y2={55} />
-          <FGFInlet cx={365} cy={55} />
-          <APLValve cx={405} cy={55} />
-          <line x1="405" y1="30" x2="405" y2="15" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#bcExpFlow)" />
-          <PatientEnd cx={455} cy={55} />
-          <line x1="418" y1="55" x2="445" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
-        </g>
-
-        {/* ──── Mapleson C (Waters) ──── */}
-        <g transform="translate(0,190)">
-          <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">C — Waters</text>
-          <text x="130" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Short tubing; FGF & APL between bag and patient</text>
-
-          <ReservoirBag cx={60} cy={55} r={14} />
-          <FGFInlet cx={110} cy={55} />
-          <APLValve cx={155} cy={55} />
-          <line x1="155" y1="30" x2="155" y2="15" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#bcExpFlow)" />
-          <CorrugatedTube x1={170} y1={55} x2={420} y2={55} />
-          <PatientEnd cx={450} cy={55} />
-        </g>
-
-        {/* ──── Mapleson D (Bain) ──── */}
-        <g transform="translate(0,285)">
-          <rect x="10" y="5" width="500" height="95" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">D — Bain (coaxial)</text>
-          <text x="195" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Most efficient for controlled ventilation</text>
-
-          <APLValve cx={60} cy={55} />
-          <line x1="60" y1="30" x2="60" y2="15" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#bcExpFlow)" />
-          <ReservoirBag cx={110} cy={55} r={14} />
-
-          {/* Outer corrugated tube (expiratory) */}
-          <CorrugatedTube x1={135} y1={55} x2={420} y2={55} width={14} />
-          {/* Inner tube (FGF - dashed green) */}
-          <line x1="135" y1="55" x2="420" y2="55" stroke="#10B981" strokeWidth="2" strokeDasharray="6,3" />
-          <text x="280" y="48" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">← Inner FGF tube (coaxial) →</text>
-          <text x="280" y="68" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">Outer tube carries expired gas back</text>
-
-          <PatientEnd cx={450} cy={55} />
-
-          {/* Pethick test note */}
-          <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.8" />
-          <text x="265" y="89" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">⚠ Pethick test: occlude inner tube + flush O₂ → should not pressurise circuit</text>
-        </g>
-
-        {/* ──── Mapleson E (Ayre's T-piece) ──── */}
-        <g transform="translate(0,395)">
-          <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">E — Ayre's T-piece</text>
-          <text x="195" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">No valves, no bag → minimal resistance → neonates</text>
-
-          {/* Open expiratory limb */}
-          <CorrugatedTube x1={50} y1={55} x2={300} y2={55} />
-          <text x="175" y="72" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Open expiratory limb (to atmosphere)</text>
-          <line x1="50" y1="55" x2="35" y2="55" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-          <text x="22" y="58" fontSize="7" fill="hsl(var(--muted-foreground))">→ atm</text>
-
-          {/* T-junction */}
-          <rect x="300" y="40" width="25" height="30" rx="4" fill="hsl(var(--foreground)/0.08)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-          <text x="312" y="58" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
-
-          <FGFInlet cx={312} cy={30} />
-
-          <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
-          <PatientEnd cx={450} cy={55} />
-        </g>
-
-        {/* ──── Mapleson F (Jackson-Rees) ──── */}
-        <g transform="translate(0,490)">
-          <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
-          <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">F — Jackson-Rees</text>
-          <text x="215" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">T-piece + open-tail bag → allows IPPV in paediatrics</text>
-
-          {/* Expiratory limb with open-tail bag */}
-          <CorrugatedTube x1={120} y1={55} x2={300} y2={55} />
-          <ReservoirBag cx={70} cy={55} r={14} />
-          {/* Open tail */}
-          <line x1="58" y1="42" x2="45" y2="30" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-          <text x="30" y="28" fontSize="5" fill="hsl(var(--muted-foreground))">Open tail</text>
-
-          {/* T-junction */}
-          <rect x="300" y="40" width="25" height="30" rx="4" fill="hsl(var(--foreground)/0.08)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-          <text x="312" y="58" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
-
-          <FGFInlet cx={312} cy={30} />
-
-          <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
-          <PatientEnd cx={450} cy={55} />
-        </g>
-
-        {/* ──── Efficiency summary ──── */}
-        <rect x="30" y="580" width="460" height="34" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.4)" strokeWidth="1.5" />
-        <text x="260" y="594" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Spontaneous: A {">"} D,F,E {">"} C {">"} B</text>
-        <text x="260" y="608" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Controlled: D,F,E {">"} B {">"} C {">"} A</text>
-      </svg>
-    </div>
-
-    <div className="bg-card border border-border rounded-lg p-4 space-y-2">
-      <h4 className="font-semibold text-sm text-foreground">Key Points</h4>
-      <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
-        <li><strong>Mapleson A (Magill)</strong>: APL near patient vents alveolar gas first during expiration → most efficient for spontaneous ventilation; FGF ≈ MV (~70 mL/kg/min)</li>
-        <li><strong>Mapleson D (Bain)</strong>: coaxial — inner tube delivers FGF to patient end; most efficient for controlled ventilation; FGF 70–100 mL/kg/min</li>
-        <li><strong>Mapleson E (Ayre's T-piece)</strong>: no valves, no bag → minimal dead space & resistance → ideal for neonates/infants (&lt;20 kg)</li>
-        <li><strong>Mapleson F (Jackson-Rees)</strong>: T-piece + open-tail reservoir bag → enables IPPV while maintaining low resistance</li>
-        <li><strong>Lack of Fink valve</strong>: all Mapleson circuits are semi-open; they prevent rebreathing via high FGF, not CO₂ absorption</li>
-      </ul>
-    </div>
-  </div>
+/* ───────── Animated flow dots ───────── */
+const FlowDots = ({ path, colour, reverse = false, id }: { path: string; colour: string; reverse?: boolean; id: string }) => (
+  <g>
+    <path id={id} d={path} fill="none" stroke="none" />
+    {[0, 0.2, 0.4, 0.6, 0.8].map((offset, i) => (
+      <circle key={i} r="3.5" fill={colour} opacity="0.85">
+        <animateMotion dur="2s" repeatCount="indefinite" keyPoints={reverse ? `${1 - offset};${Math.max(0, 0 - offset)}` : `${offset};${Math.min(1, 1 + offset)}`} keyTimes="0;1" calcMode="linear">
+          <mpath href={`#${id}`} />
+        </animateMotion>
+      </circle>
+    ))}
+  </g>
 );
+
+/* ───────── Flow arrow with animation ───────── */
+const AnimFlowArrow = ({ x1, y1, x2, y2, colour }: { x1: number; y1: number; x2: number; y2: number; colour: string }) => {
+  const id = `af${x1}${y1}${x2}${y2}`;
+  const d = `M ${x1} ${y1} L ${x2} ${y2}`;
+  return (
+    <g>
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth="1.8" opacity="0.4" strokeDasharray="6,4" />
+      <FlowDots path={d} colour={colour} id={id} />
+    </g>
+  );
+};
+
+type Phase = "insp" | "exp";
+
+/* ───────── Per-circuit flow descriptions ───────── */
+const flowInfo: Record<string, Record<Phase, string>> = {
+  A: {
+    insp: "FGF fills bag → fresh gas travels along tubing to patient. APL valve closed (negative intrathoracic pressure).",
+    exp: "Dead space gas (low CO₂) pushed back into tubing. Then alveolar gas (high CO₂) exits via APL valve near patient. Efficient — only dead space gas rebreathed.",
+  },
+  B: {
+    insp: "FGF + dead space gas in tubing drawn toward patient. Bag refills with mixture of fresh and expired gas.",
+    exp: "Alveolar gas mixes with FGF near patient end. Some vents via APL. Much re-enters tubing → less efficient.",
+  },
+  C: {
+    insp: "Short tubing — fresh gas from FGF enters directly toward patient. Bag empties.",
+    exp: "Expired gas mixes readily with FGF. Short tubing means poor separation of dead space and alveolar gas.",
+  },
+  D: {
+    insp: "FGF delivered via inner tube directly to patient end. Fresh gas preferentially reaches patient.",
+    exp: "Expired gas travels back via outer tube toward bag/APL. FGF continues to push expired gas away. Efficient for controlled ventilation.",
+  },
+  E: {
+    insp: "FGF enters at T-junction → flows to patient. Expiratory limb acts as reservoir for fresh gas.",
+    exp: "Expired gas exits via open expiratory limb. High FGF (2.5–3× MV) flushes CO₂ out.",
+  },
+  F: {
+    insp: "FGF enters at T-junction → flows to patient. Open-tail bag can be squeezed for IPPV.",
+    exp: "Expired gas enters bag via expiratory limb. Excess vents through open tail. Bag allows manual ventilation.",
+  },
+};
+
+/* ═══════════════════════════════════════ MAPLESON TAB ═══════════════════════════════════════ */
+const MaplesonTab = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+  const [phase, setPhase] = useState<Phase>("insp");
+
+  const inspCol = "#10B981";
+  const expCol = "hsl(var(--destructive))";
+  const activeCol = phase === "insp" ? inspCol : expCol;
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-lg font-semibold text-foreground">Mapleson Classification (A–F)</h3>
+      <p className="text-sm text-muted-foreground">
+        Tap any circuit to see animated gas flow during <span className="text-[#10B981] font-semibold">inspiration</span> or <span className="text-destructive font-semibold">expiration</span>. Use the toggle below to switch phases.
+      </p>
+
+      {/* Phase toggle */}
+      <div className="flex gap-2 items-center">
+        <button
+          onClick={() => setPhase("insp")}
+          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${phase === "insp" ? "bg-emerald-600 text-white" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
+        >
+          Inspiration
+        </button>
+        <button
+          onClick={() => setPhase("exp")}
+          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${phase === "exp" ? "bg-destructive text-destructive-foreground" : "bg-secondary text-muted-foreground hover:bg-secondary/80"}`}
+        >
+          Expiration
+        </button>
+      </div>
+
+      <div className="bg-secondary/30 rounded-xl p-3 border border-border">
+        <svg viewBox="0 0 520 620" className="w-full h-auto">
+          <defs>
+            <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
+            <marker id="bcExpFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
+          </defs>
+
+          {/* ──── Mapleson A (Magill) ──── */}
+          <g
+            onClick={() => setSelected(selected === "A" ? null : "A")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "A" ? 1 : 0.35}
+          >
+            <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke={selected === "A" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "A" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">A — Magill</text>
+            <text x="260" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Most efficient for spontaneous ventilation (FGF ≈ MV)</text>
+
+            <FGFInlet cx={55} cy={55} />
+            <ReservoirBag cx={110} cy={55} r={14} />
+            <CorrugatedTube x1={135} y1={55} x2={370} y2={55} />
+            <APLValve cx={390} cy={55} />
+            <PatientEnd cx={445} cy={55} />
+            <line x1="403" y1="55" x2="435" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
+
+            {/* Animated flow when selected */}
+            {selected === "A" && phase === "insp" && (
+              <AnimFlowArrow x1={130} y1={45} x2={430} y2={45} colour={inspCol} />
+            )}
+            {selected === "A" && phase === "exp" && (
+              <>
+                <AnimFlowArrow x1={430} y1={65} x2={150} y2={65} colour={expCol} />
+                {/* APL exhaust */}
+                <AnimFlowArrow x1={390} y1={35} x2={390} y2={10} colour={expCol} />
+              </>
+            )}
+          </g>
+
+          {/* ──── Mapleson B ──── */}
+          <g
+            onClick={() => setSelected(selected === "B" ? null : "B")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "B" ? 1 : 0.35}
+            transform="translate(0,95)"
+          >
+            <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke={selected === "B" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "B" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">B</text>
+            <text x="50" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">FGF & APL near patient; bag at machine end</text>
+
+            <ReservoirBag cx={60} cy={55} r={14} />
+            <CorrugatedTube x1={85} y1={55} x2={340} y2={55} />
+            <FGFInlet cx={365} cy={55} />
+            <APLValve cx={405} cy={55} />
+            <PatientEnd cx={455} cy={55} />
+            <line x1="418" y1="55" x2="445" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
+
+            {selected === "B" && phase === "insp" && (
+              <AnimFlowArrow x1={80} y1={45} x2={440} y2={45} colour={inspCol} />
+            )}
+            {selected === "B" && phase === "exp" && (
+              <>
+                <AnimFlowArrow x1={440} y1={65} x2={80} y2={65} colour={expCol} />
+                <AnimFlowArrow x1={405} y1={35} x2={405} y2={10} colour={expCol} />
+              </>
+            )}
+          </g>
+
+          {/* ──── Mapleson C (Waters) ──── */}
+          <g
+            onClick={() => setSelected(selected === "C" ? null : "C")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "C" ? 1 : 0.35}
+            transform="translate(0,190)"
+          >
+            <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke={selected === "C" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "C" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">C — Waters</text>
+            <text x="130" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Short tubing; FGF & APL between bag and patient</text>
+
+            <ReservoirBag cx={60} cy={55} r={14} />
+            <FGFInlet cx={110} cy={55} />
+            <APLValve cx={155} cy={55} />
+            <CorrugatedTube x1={170} y1={55} x2={420} y2={55} />
+            <PatientEnd cx={450} cy={55} />
+
+            {selected === "C" && phase === "insp" && (
+              <AnimFlowArrow x1={110} y1={45} x2={440} y2={45} colour={inspCol} />
+            )}
+            {selected === "C" && phase === "exp" && (
+              <>
+                <AnimFlowArrow x1={440} y1={65} x2={80} y2={65} colour={expCol} />
+                <AnimFlowArrow x1={155} y1={35} x2={155} y2={10} colour={expCol} />
+              </>
+            )}
+          </g>
+
+          {/* ──── Mapleson D (Bain) ──── */}
+          <g
+            onClick={() => setSelected(selected === "D" ? null : "D")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "D" ? 1 : 0.35}
+            transform="translate(0,285)"
+          >
+            <rect x="10" y="5" width="500" height="95" rx="10" fill="hsl(var(--card))" stroke={selected === "D" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "D" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">D — Bain (coaxial)</text>
+            <text x="195" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">Most efficient for controlled ventilation</text>
+
+            <APLValve cx={60} cy={55} />
+            <ReservoirBag cx={110} cy={55} r={14} />
+            <CorrugatedTube x1={135} y1={55} x2={420} y2={55} width={14} />
+            <line x1="135" y1="55" x2="420" y2="55" stroke="#10B981" strokeWidth="2" strokeDasharray="6,3" />
+            <text x="280" y="48" textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">← Inner FGF tube (coaxial) →</text>
+            <text x="280" y="68" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">Outer tube carries expired gas back</text>
+            <PatientEnd cx={450} cy={55} />
+
+            <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.8" />
+            <text x="265" y="89" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">⚠ Pethick test: occlude inner tube + flush O₂ → should not pressurise circuit</text>
+
+            {selected === "D" && phase === "insp" && (
+              <AnimFlowArrow x1={135} y1={50} x2={435} y2={50} colour={inspCol} />
+            )}
+            {selected === "D" && phase === "exp" && (
+              <>
+                <AnimFlowArrow x1={435} y1={62} x2={135} y2={62} colour={expCol} />
+                <AnimFlowArrow x1={60} y1={35} x2={60} y2={10} colour={expCol} />
+              </>
+            )}
+          </g>
+
+          {/* ──── Mapleson E (Ayre's T-piece) ──── */}
+          <g
+            onClick={() => setSelected(selected === "E" ? null : "E")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "E" ? 1 : 0.35}
+            transform="translate(0,395)"
+          >
+            <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke={selected === "E" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "E" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">E — Ayre's T-piece</text>
+            <text x="195" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">No valves, no bag → minimal resistance → neonates</text>
+
+            <CorrugatedTube x1={50} y1={55} x2={300} y2={55} />
+            <text x="175" y="72" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Open expiratory limb (to atmosphere)</text>
+            <line x1="50" y1="55" x2="35" y2="55" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+            <text x="22" y="58" fontSize="7" fill="hsl(var(--muted-foreground))">→ atm</text>
+
+            <rect x="300" y="40" width="25" height="30" rx="4" fill="hsl(var(--foreground)/0.08)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+            <text x="312" y="58" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
+            <FGFInlet cx={312} cy={30} />
+            <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
+            <PatientEnd cx={450} cy={55} />
+
+            {selected === "E" && phase === "insp" && (
+              <AnimFlowArrow x1={312} y1={45} x2={440} y2={45} colour={inspCol} />
+            )}
+            {selected === "E" && phase === "exp" && (
+              <AnimFlowArrow x1={440} y1={65} x2={50} y2={65} colour={expCol} />
+            )}
+          </g>
+
+          {/* ──── Mapleson F (Jackson-Rees) ──── */}
+          <g
+            onClick={() => setSelected(selected === "F" ? null : "F")}
+            className="cursor-pointer"
+            opacity={!selected || selected === "F" ? 1 : 0.35}
+            transform="translate(0,490)"
+          >
+            <rect x="10" y="5" width="500" height="82" rx="10" fill="hsl(var(--card))" stroke={selected === "F" ? activeCol : "hsl(var(--border))"} strokeWidth={selected === "F" ? 2.5 : 1} className="transition-all duration-300" />
+            <text x="25" y="22" fontSize="11" fill="hsl(var(--primary))" fontWeight="bold">F — Jackson-Rees</text>
+            <text x="215" y="22" fontSize="8" fill="hsl(var(--muted-foreground))">T-piece + open-tail bag → allows IPPV in paediatrics</text>
+
+            <CorrugatedTube x1={120} y1={55} x2={300} y2={55} />
+            <ReservoirBag cx={70} cy={55} r={14} />
+            <line x1="58" y1="42" x2="45" y2="30" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+            <text x="30" y="28" fontSize="5" fill="hsl(var(--muted-foreground))">Open tail</text>
+
+            <rect x="300" y="40" width="25" height="30" rx="4" fill="hsl(var(--foreground)/0.08)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+            <text x="312" y="58" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground))" fontWeight="bold">T</text>
+            <FGFInlet cx={312} cy={30} />
+            <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
+            <PatientEnd cx={450} cy={55} />
+
+            {selected === "F" && phase === "insp" && (
+              <AnimFlowArrow x1={312} y1={45} x2={440} y2={45} colour={inspCol} />
+            )}
+            {selected === "F" && phase === "exp" && (
+              <>
+                <AnimFlowArrow x1={440} y1={65} x2={120} y2={65} colour={expCol} />
+                <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} />
+              </>
+            )}
+          </g>
+
+          {/* ──── Efficiency summary ──── */}
+          <rect x="30" y="580" width="460" height="34" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.4)" strokeWidth="1.5" />
+          <text x="260" y="594" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Spontaneous: A {">"} D,F,E {">"} C {">"} B</text>
+          <text x="260" y="608" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Controlled: D,F,E {">"} B {">"} C {">"} A</text>
+        </svg>
+      </div>
+
+      {/* Flow description panel */}
+      {selected && (
+        <div className="animate-fade-in bg-card border border-border rounded-lg p-4 space-y-2">
+          <div className="flex items-center gap-2">
+            <span className={`inline-block w-3 h-3 rounded-full ${phase === "insp" ? "bg-emerald-500" : "bg-destructive"}`} />
+            <h4 className="font-semibold text-sm text-foreground">
+              Mapleson {selected} — {phase === "insp" ? "Inspiration" : "Expiration"}
+            </h4>
+          </div>
+          <p className="text-sm text-muted-foreground">{flowInfo[selected][phase]}</p>
+        </div>
+      )}
+
+      <div className="bg-card border border-border rounded-lg p-4 space-y-2">
+        <h4 className="font-semibold text-sm text-foreground">Key Points</h4>
+        <ul className="text-sm text-muted-foreground space-y-1 list-disc pl-4">
+          <li><strong>Mapleson A (Magill)</strong>: APL near patient vents alveolar gas first during expiration → most efficient for spontaneous ventilation; FGF ≈ MV (~70 mL/kg/min)</li>
+          <li><strong>Mapleson D (Bain)</strong>: coaxial — inner tube delivers FGF to patient end; most efficient for controlled ventilation; FGF 70–100 mL/kg/min</li>
+          <li><strong>Mapleson E (Ayre's T-piece)</strong>: no valves, no bag → minimal dead space & resistance → ideal for neonates/infants (&lt;20 kg)</li>
+          <li><strong>Mapleson F (Jackson-Rees)</strong>: T-piece + open-tail reservoir bag → enables IPPV while maintaining low resistance</li>
+          <li><strong>All Mapleson circuits</strong> are semi-open — they prevent rebreathing via high FGF, not CO₂ absorption</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 /* ═══════════════════════════════════════ CIRCLE SYSTEM ═══════════════════════════════════════ */
 const CircleTab = () => (
