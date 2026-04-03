@@ -9,6 +9,7 @@ import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
 import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
 import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
+import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -142,6 +143,19 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <AlveolarGasEquationDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">West's Lung Zones</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            West's zones describe how the relationship between alveolar (PA), arterial (Pa), and venous (Pv) pressures
+            determines regional blood flow distribution. Gravity creates a hydrostatic pressure gradient from apex to base.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <WestZonesDiagram />
           </div>
         </section>
       </div>
