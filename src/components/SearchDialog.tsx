@@ -1,30 +1,37 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, X, Atom, Heart, FlaskConical } from "lucide-react";
-import { physicsTopics, physiologyTopics, pharmacologyTopics, Topic } from "@/data/curriculum";
+import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { allTopics, Topic, Section, sectionMeta } from "@/data/curriculum";
+import { useExamFilter } from "@/contexts/ExamFilterContext";
 
-const allTopics: (Topic & { path: string })[] = [
-  ...physicsTopics.map((t) => ({ ...t, path: `/physics/${t.id}` })),
-  ...physiologyTopics.map((t) => ({ ...t, path: `/physiology/${t.id}` })),
-  ...pharmacologyTopics.map((t) => ({ ...t, path: `/pharmacology/${t.id}` })),
-];
+const topicsWithPaths: (Topic & { path: string })[] = allTopics.map((t) => ({
+  ...t,
+  path: `${sectionMeta[t.section].path}/${t.id}`,
+}));
 
-const sectionIcons = {
+const sectionIcons: Record<Section, typeof Atom> = {
   physics: Atom,
   physiology: Heart,
   pharmacology: FlaskConical,
+  clinical: Stethoscope,
+  "intensive-care": Activity,
+  perioperative: ClipboardList,
 };
 
-const sectionColors = {
+const sectionColors: Record<Section, string> = {
   physics: "text-physics",
   physiology: "text-physiology",
   pharmacology: "text-pharmacology",
+  clinical: "text-clinical",
+  "intensive-care": "text-icu",
+  perioperative: "text-perioperative",
 };
 
 export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { matchesFilter } = useExamFilter();
 
   useEffect(() => {
     if (open) {
@@ -33,7 +40,6 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
     }
   }, [open]);
 
-  // Close on Escape
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -42,8 +48,10 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
     return () => window.removeEventListener("keydown", handler);
   }, [open, onClose]);
 
+  const filtered = topicsWithPaths.filter((t) => matchesFilter(t.examTags));
+
   const results = query.trim().length > 0
-    ? allTopics.filter((t) => {
+    ? filtered.filter((t) => {
         const q = query.toLowerCase();
         return (
           t.title.toLowerCase().includes(q) ||
@@ -51,9 +59,9 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
           t.section.toLowerCase().includes(q)
         );
       })
-    : allTopics.filter((t) => t.available); // show available topics when no query
+    : filtered.filter((t) => t.available);
 
-  const handleSelect = (topic: typeof allTopics[0]) => {
+  const handleSelect = (topic: typeof topicsWithPaths[0]) => {
     if (topic.available) {
       navigate(topic.path);
       onClose();
@@ -64,13 +72,9 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
 
   return (
     <div className="fixed inset-0 z-[100]">
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-foreground/20 backdrop-blur-sm" onClick={onClose} />
-
-      {/* Dialog */}
       <div className="relative mx-auto mt-[15vh] w-[90%] max-w-lg">
         <div className="rounded-xl bg-card border border-border shadow-2xl overflow-hidden">
-          {/* Search input */}
           <div className="flex items-center gap-3 px-4 border-b border-border">
             <Search className="h-4 w-4 text-muted-foreground shrink-0" />
             <input
@@ -87,12 +91,10 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
               </button>
             )}
           </div>
-
-          {/* Results */}
           <div className="max-h-[50vh] overflow-y-auto py-2">
             {results.length === 0 ? (
               <p className="px-4 py-8 text-center text-sm text-muted-foreground">
-                No topics found for "{query}"
+                No topics found{query ? ` for "${query}"` : ""}
               </p>
             ) : (
               results.map((topic) => {
@@ -121,8 +123,6 @@ export const SearchDialog = ({ open, onClose }: { open: boolean; onClose: () => 
               })
             )}
           </div>
-
-          {/* Footer hint */}
           <div className="px-4 py-2 border-t border-border text-xs text-muted-foreground">
             <kbd className="px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-mono text-[10px]">Esc</kbd> to close
           </div>
