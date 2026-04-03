@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutputMonitorDiagram";
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
+import EchoDiagram from "@/components/diagrams/EchoDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 
 const CardiacOutputMonitoringTopic = () => {
@@ -72,9 +73,10 @@ const CardiacOutputMonitoringTopic = () => {
 
       <PiCCODiagram />
       <PACDiagram />
+      <EchoDiagram />
 
-        <KeyLearningPoints points={[
-        "PiCCO provides continuous CO + EVLWI (lung water) — useful in ARDS fluid management",
+      <KeyLearningPoints points={[
+        "PAC is the gold standard but PAC-Man trial showed no mortality benefit from routine use",
         "Oesophageal Doppler FTc <330 ms suggests hypovolaemia — used for GDT",
         "Uncalibrated systems (FloTrac) are convenient but less accurate in vasoplegia",
         "Echocardiography identifies the cause of shock — not just the haemodynamic profile",
