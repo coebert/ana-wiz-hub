@@ -31,5 +31,5 @@ export const pharmacologyTopics: Topic[] = [
   { id: "volatile-agents", title: "Volatile Anaesthetic Agents", description: "MAC, Meyer-Overton, blood-gas partition coefficient, uptake and distribution", section: "pharmacology", examLevel: "primary", available: true },
   { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examLevel: "primary", available: false },
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examLevel: "primary", available: false },
-  { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examLevel: "primary", available: false },
+  { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examLevel: "primary", available: true },
 ];
