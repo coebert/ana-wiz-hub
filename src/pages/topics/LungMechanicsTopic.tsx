@@ -27,6 +27,16 @@ const LungMechanicsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Lung Volumes & Capacities</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The four primary lung volumes (IRV, TV, ERV, RV) combine to form four capacities (IC, FRC, VC, TLC). Only RV, FRC, and TLC cannot be measured by spirometry alone.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <LungVolumesDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Compliance Curves</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Explore the pressure-volume relationship of the lung, chest wall, and total respiratory system.
