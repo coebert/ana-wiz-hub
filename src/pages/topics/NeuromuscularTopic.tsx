@@ -142,7 +142,7 @@ const NeuromuscularTopic = () => {
 
       <NeuromuscularMonitoringDiagram />
 
-        "The NMJ sequence: AP → Ca²⁺ influx → vesicle fusion → ACh release → nAChR binding → EPP → muscle AP → contraction.",
+        <KeyLearningPoints points={[
         "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.",
         "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.",
         "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.",
