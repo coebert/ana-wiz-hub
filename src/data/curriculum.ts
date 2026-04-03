@@ -28,6 +28,7 @@ export const physicsTopics: Topic[] = [
   { id: "defibrillation-pacing", title: "Defibrillation & Pacing", description: "Monophasic vs biphasic waveforms, transthoracic impedance, pacemaker modes, and EMI", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
+  { id: "optics-light", title: "Optics & Light", description: "Reflection, refraction, fibreoptics, Beer-Lambert law, and spectrophotometry", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
