@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { gasLawsQuiz } from "@/data/quizzes";
 
 const GasLawsTopic = () => {
   return (
@@ -121,6 +123,7 @@ const GasLawsTopic = () => {
         "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.",
         "Understanding gas behaviour is critical for safe use of medical gas systems, ventilation, and altitude/diving physiology."
       ]} />
+      <QuizSection questions={gasLawsQuiz} />
       <TopicCompletionToggle topicId="gas-laws" topicTitle="Gas Laws" />
     </SectionLayout>
   );

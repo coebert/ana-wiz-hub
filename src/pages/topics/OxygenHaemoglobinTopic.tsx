@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { OxygenDissociationCurve } from "@/components/diagrams/OxygenDissociationCurve";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 
 const OxygenHaemoglobinTopic = () => {
   return (
@@ -110,6 +112,7 @@ const OxygenHaemoglobinTopic = () => {
         "The flat upper portion provides a safety margin; the steep middle section means SpO₂ drops rapidly once PaO₂ falls below ~60 mmHg.",
         "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat part of the curve."
       ]} />
+      <QuizSection questions={oxygenHaemoglobinQuiz} />
       <TopicCompletionToggle topicId="oxygen-haemoglobin" topicTitle="Oxygen-Haemoglobin Dissociation" />
     </SectionLayout>
   );
