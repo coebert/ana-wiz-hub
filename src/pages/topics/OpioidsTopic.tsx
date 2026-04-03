@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { opioidsQuiz } from "@/data/quizzes";
+import OpioidStructures from "@/components/diagrams/OpioidStructures";
 
 const OpioidsTopic = () => {
   return (
