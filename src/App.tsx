@@ -12,6 +12,8 @@ import PharmacologySection from "./pages/PharmacologySection.tsx";
 import GasLawsTopic from "./pages/topics/GasLawsTopic.tsx";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic.tsx";
 import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic.tsx";
+import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic.tsx";
+import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +31,9 @@ const App = () => (
           <Route path="/pharmacology" element={<PharmacologySection />} />
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
+          <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
           <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
+          <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

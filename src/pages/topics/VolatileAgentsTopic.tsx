@@ -1,0 +1,218 @@
+import { SectionLayout } from "@/components/SectionLayout";
+import { MACDiagram } from "@/components/diagrams/MACDiagram";
+import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+
+const VolatileAgentsTopic = () => {
+  return (
+    <SectionLayout
+      title="Volatile Anaesthetic Agents"
+      subtitle="FRCA Primary — Pharmacology"
+      backPath="/pharmacology"
+      backLabel="Pharmacology"
+      accentColor="text-pharmacology"
+    >
+      <div className="prose prose-slate max-w-none">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Volatile anaesthetic agents are halogenated hydrocarbons administered via inhalation to produce general
+            anaesthesia. The agents in current clinical use — sevoflurane, desflurane, and isoflurane — differ in their
+            physicochemical properties, which determine their clinical characteristics including speed of onset, recovery,
+            and potency.
+          </p>
+          <p className="text-sm text-muted-foreground italic mt-2">
+            Reference: Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care, 5th edition. Cambridge University Press, 2021; BJA Education.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Minimum Alveolar Concentration (MAC)</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            MAC is defined as the minimum alveolar concentration of an inhaled anaesthetic at 1 atmosphere that prevents
+            movement in response to a standard surgical stimulus in 50% of subjects. It is the ED₅₀ for immobility and
+            provides a measure of anaesthetic potency — a <strong>lower MAC = more potent agent</strong>.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <MACDiagram />
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">MAC Multiples in Practice</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• <strong>MAC-awake (0.3-0.5 MAC)</strong>: concentration at which 50% of patients open eyes to command</li>
+              <li>• <strong>MAC-BAR (1.5-1.7 MAC)</strong>: blocks adrenergic response to surgical incision</li>
+              <li>• <strong>MAC-intubation (~1.3 MAC)</strong>: prevents coughing/movement during laryngoscopy</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Factors Affecting MAC</h2>
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
+              <h3 className="font-semibold text-primary text-sm mb-2">↓ Decrease MAC</h3>
+              <ul className="text-sm text-foreground/80 space-y-1">
+                <li>• Increasing age (↓ 6% per decade after 40)</li>
+                <li>• Hypothermia</li>
+                <li>• Opioids, benzodiazepines, α₂-agonists</li>
+                <li>• Acute alcohol intoxication</li>
+                <li>• Pregnancy</li>
+                <li>• Hyponatraemia, hypotension, anaemia</li>
+                <li>• Concurrent N₂O or other volatiles (additive)</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4">
+              <h3 className="font-semibold text-destructive text-sm mb-2">↑ Increase MAC</h3>
+              <ul className="text-sm text-foreground/80 space-y-1">
+                <li>• Young age (MAC peaks at ~6 months)</li>
+                <li>• Hyperthermia</li>
+                <li>• Chronic alcohol use / CNS stimulants</li>
+                <li>• Red hair (MC1R mutation)</li>
+                <li>• Hypernatraemia</li>
+              </ul>
+            </div>
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm text-muted-foreground">
+              <strong>Note:</strong> MAC is NOT affected by gender, duration of anaesthesia, PaCO₂ (within normal range),
+              or PaO₂ above 20 kPa.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Blood:Gas Partition Coefficient</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The blood:gas partition coefficient (BGPC) determines the speed of onset and offset. It represents how
+            soluble the agent is in blood relative to the alveolar gas phase. A <strong>low BGPC = fast onset</strong>
+            because less agent is dissolved in blood, so alveolar (and therefore brain) partial pressure rises rapidly.
+          </p>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-muted/50">
+                  <th className="text-left p-3 font-semibold text-foreground">Agent</th>
+                  <th className="text-center p-3 font-semibold text-foreground">BGPC</th>
+                  <th className="text-center p-3 font-semibold text-foreground">MAC (%)</th>
+                  <th className="text-center p-3 font-semibold text-foreground">Oil:Gas</th>
+                  <th className="text-center p-3 font-semibold text-foreground">Speed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground">N₂O</td>
+                  <td className="p-3 text-center text-muted-foreground">0.47</td>
+                  <td className="p-3 text-center text-muted-foreground">105</td>
+                  <td className="p-3 text-center text-muted-foreground">1.4</td>
+                  <td className="p-3 text-center text-accent font-medium">Fastest</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground">Desflurane</td>
+                  <td className="p-3 text-center text-muted-foreground">0.42</td>
+                  <td className="p-3 text-center text-muted-foreground">6.0</td>
+                  <td className="p-3 text-center text-muted-foreground">18.7</td>
+                  <td className="p-3 text-center text-accent font-medium">Very fast</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground">Sevoflurane</td>
+                  <td className="p-3 text-center text-muted-foreground">0.65</td>
+                  <td className="p-3 text-center text-muted-foreground">2.0</td>
+                  <td className="p-3 text-center text-muted-foreground">47</td>
+                  <td className="p-3 text-center text-foreground">Fast</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground">Isoflurane</td>
+                  <td className="p-3 text-center text-muted-foreground">1.46</td>
+                  <td className="p-3 text-center text-muted-foreground">1.15</td>
+                  <td className="p-3 text-center text-muted-foreground">91</td>
+                  <td className="p-3 text-center text-muted-foreground">Moderate</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground">Halothane</td>
+                  <td className="p-3 text-center text-muted-foreground">2.54</td>
+                  <td className="p-3 text-center text-muted-foreground">0.75</td>
+                  <td className="p-3 text-center text-muted-foreground">224</td>
+                  <td className="p-3 text-center text-muted-foreground">Slow</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">The Meyer-Overton Hypothesis</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The Meyer-Overton hypothesis (1899-1901) states that anaesthetic potency correlates with lipid solubility.
+            The oil:gas partition coefficient is inversely proportional to MAC — i.e., the more lipid-soluble an agent,
+            the more potent it is. This elegant relationship holds remarkably well across diverse agents but does not
+            explain all aspects of anaesthetic action (e.g., non-immobilisers, stereoisomers with different potencies).
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Modern understanding suggests volatile agents act at multiple molecular targets, including GABA<sub>A</sub>
+            receptors, glycine receptors, two-pore-domain potassium channels (TREK, TASK), and NMDA receptors. The
+            relative contribution of each target varies between agents.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Uptake & Distribution</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The rate of rise of alveolar concentration (F<sub>A</sub>) towards inspired concentration (F<sub>I</sub>)
+            determines speed of induction. Switch to the "FA/FI Uptake" view in the diagram above to compare agents.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Factors increasing the rate of rise of F<sub>A</sub>/F<sub>I</sub>:
+          </p>
+          <ul className="mt-2 space-y-1 text-foreground/80">
+            <li>• <strong>Low blood:gas solubility</strong> (less taken up by blood)</li>
+            <li>• <strong>High inspired concentration</strong> (concentration effect)</li>
+            <li>• <strong>High minute ventilation</strong> (delivers more agent to alveoli)</li>
+            <li>• <strong>Low cardiac output</strong> (less blood to carry agent away)</li>
+            <li>• <strong>Second gas effect</strong> (N₂O uptake concentrates companion agent)</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Clinical Comparison</h2>
+          <div className="space-y-4 mt-4">
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Sevoflurane</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                Non-pungent, suitable for inhalational induction. Low BGPC allows rapid onset. Metabolised ~5% (produces
+                inorganic fluoride and Compound A via soda lime). Minimal cardiovascular depression. Agent of choice for
+                paediatric inhalational induction.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Desflurane</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                Lowest BGPC of potent agents — fastest recovery. Pungent and irritant to airways, so not suitable for
+                inhalational induction. Requires a heated pressurised vaporizer (TEC 6) due to high SVP (near
+                atmospheric at room temperature). Sympathetic stimulation with rapid increases in concentration.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Isoflurane</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                Higher BGPC means slower onset/offset. Potent coronary vasodilator — theoretical risk of coronary steal.
+                Minimal metabolism (~0.2%). Good muscle relaxation. Commonly used in veterinary anaesthesia and ICU
+                sedation via AnaConDa device.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <KeyLearningPoints points={[
+        "MAC is the ED₅₀ for immobility; lower MAC = more potent. MAC values are additive between agents.",
+        "Blood:gas partition coefficient determines speed of onset — low BGPC (desflurane 0.42) = fast onset; high BGPC (halothane 2.54) = slow onset.",
+        "Meyer-Overton: anaesthetic potency correlates with lipid solubility (oil:gas partition coefficient). MAC × oil:gas ≈ constant.",
+        "FA/FI rise is faster with: low BGPC, high FI, high minute ventilation, low cardiac output, second gas effect.",
+        "MAC decreases with: age >40, hypothermia, opioids, pregnancy, acute alcohol. MAC increases with: youth, hyperthermia, chronic alcohol, CNS stimulants.",
+        "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.",
+        "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors."
+      ]} />
+    </SectionLayout>
+  );
+};
+
+export default VolatileAgentsTopic;
