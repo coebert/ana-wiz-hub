@@ -29,6 +29,7 @@ export const physicsTopics: Topic[] = [
   { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
   { id: "optics-light", title: "Optics & Light", description: "Reflection, refraction, fibreoptics, Beer-Lambert law, and spectrophotometry", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "electricity-magnetism", title: "Electricity & Magnetism", description: "Ohm's law, capacitance, inductance, transformers, and the Wheatstone bridge", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
