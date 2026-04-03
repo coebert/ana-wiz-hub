@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
+import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 
 const HeadNeckAnatomyTopic = () => {
   return (
     <SectionLayout title="Head & Neck Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <NeckTrianglesDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cranial Nerves — Anaesthetic Relevance</h2>
