@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { sepsisQuestions } from "@/data/quizzes";
+import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 
 const SepsisTopic = () => {
   return (
