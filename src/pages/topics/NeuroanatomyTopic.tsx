@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanatomyQuestions } from "@/data/quizzes";
+import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 
 const NeuroanatomyTopic = () => {
   return (
     <SectionLayout title="Neuroanatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <CircleOfWillisDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Blood Supply — Circle of Willis</h2>

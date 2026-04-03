@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { airwayAnatomyQuestions } from "@/data/quizzes";
+import LaryngealCrossSectionDiagram from "@/components/diagrams/LaryngealCrossSectionDiagram";
 
 const AirwayAnatomyTopic = () => {
   return (
     <SectionLayout title="Airway & Laryngeal Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <LaryngealCrossSectionDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nasal Cavity & Pharynx</h2>
