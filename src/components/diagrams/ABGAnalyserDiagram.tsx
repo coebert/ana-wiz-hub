@@ -321,6 +321,75 @@ const GalvanicFuelCellDiagram = () => {
   );
 };
 
+const NernstEquationDiagram = () => (
+  <div className="space-y-4">
+    <h3 className="text-lg font-serif font-bold text-foreground">The Nernst Equation</h3>
+    <p className="text-sm text-muted-foreground">Relates electrode potential to ion concentration — the fundamental equation behind all potentiometric measurements in the ABG analyser.</p>
+    <svg viewBox="0 0 600 520" className="w-full max-w-2xl mx-auto">
+      {/* Main equation */}
+      <rect x="60" y="10" width="480" height="65" rx="12" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2" />
+      <text x="300" y="38" textAnchor="middle" className="fill-primary text-[18px] font-bold">E = E₀ + (RT / nF) × ln[H⁺]</text>
+      <text x="300" y="60" textAnchor="middle" className="fill-muted-foreground text-[10px]">General form: E = E₀ − (RT / nF) × ln(Q)  where Q = [products]/[reactants]</text>
+
+      {/* Variable breakdown */}
+      <text x="300" y="100" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Variable Definitions</text>
+      {[
+        { symbol: "E", meaning: "Measured electrode potential (mV)", value: "Varies with [H⁺]" },
+        { symbol: "E₀", meaning: "Standard electrode potential", value: "Reference constant" },
+        { symbol: "R", meaning: "Universal gas constant", value: "8.314 J·mol⁻¹·K⁻¹" },
+        { symbol: "T", meaning: "Absolute temperature", value: "310 K (37°C)" },
+        { symbol: "n", meaning: "Number of electrons transferred", value: "1 (for H⁺)" },
+        { symbol: "F", meaning: "Faraday constant", value: "96,485 C·mol⁻¹" },
+      ].map((v, i) => (
+        <g key={v.symbol}>
+          <rect x="60" y={110 + i * 28} width="480" height="26" rx="4" fill={i % 2 === 0 ? "hsl(var(--secondary)/0.2)" : "transparent"} />
+          <text x="105" y={127 + i * 28} textAnchor="middle" className="fill-primary text-[12px] font-bold">{v.symbol}</text>
+          <text x="270" y={127 + i * 28} textAnchor="middle" className="fill-foreground text-[10px]">{v.meaning}</text>
+          <text x="480" y={127 + i * 28} textAnchor="middle" className="fill-muted-foreground text-[9px]">{v.value}</text>
+        </g>
+      ))}
+
+      {/* Nernst slope derivation */}
+      <rect x="60" y="290" width="480" height="90" rx="10" fill="hsl(var(--accent)/0.08)" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+      <text x="300" y="312" textAnchor="middle" className="fill-foreground text-[12px] font-bold">The Nernst Slope at 37°C</text>
+      <text x="300" y="335" textAnchor="middle" className="fill-accent text-[14px] font-bold">RT/nF = (8.314 × 310) / (1 × 96,485) = 0.02669 V ≈ 26.7 mV</text>
+      <text x="300" y="355" textAnchor="middle" className="fill-muted-foreground text-[10px]">Converting to log₁₀: multiply by 2.303 → 2.303 × 26.7 = 61.5 mV per pH unit</text>
+      <text x="300" y="372" textAnchor="middle" className="fill-foreground text-[11px] font-bold">∴ Each 1 pH unit change → 61.5 mV change at 37°C</text>
+
+      {/* Clinical application */}
+      <text x="300" y="405" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Clinical Significance</text>
+      {[
+        "The pH glass electrode generates 61.5 mV per pH unit — this is the theoretical 'Nernst slope'",
+        "During calibration, measured slope should be 95–105% of 61.5 mV — outside this range → replace electrode",
+        "Temperature dependence: slope ∝ T (Kelvin) — if analyser not at 37°C, slope changes → inaccurate pH",
+        "Applies to ALL potentiometric electrodes (pH and Severinghaus PCO₂) — NOT to amperometric (Clark PO₂)",
+        "The Nernst equation also governs membrane potentials, equilibrium potentials (Eₖ, Eₙₐ), and ECG voltage generation",
+      ].map((t, i) => (
+        <text key={i} x="75" y={425 + i * 18} className="fill-muted-foreground text-[9.5px]">• {t}</text>
+      ))}
+    </svg>
+
+    <div className="grid sm:grid-cols-2 gap-3">
+      <div className="p-3 rounded-lg border border-border">
+        <p className="font-semibold text-foreground text-sm">Nernst in Physiology</p>
+        <p className="text-muted-foreground text-xs mt-1">
+          The Nernst equation calculates the <strong>equilibrium potential</strong> for individual ions across cell membranes:
+          E = (RT/zF) × ln([ion]outside/[ion]inside). For K⁺ at 37°C: Eₖ ≈ −90 mV. For Na⁺: Eₙₐ ≈ +60 mV.
+          The Goldman equation extends this to multiple ions simultaneously.
+        </p>
+      </div>
+      <div className="p-3 rounded-lg border border-border">
+        <p className="font-semibold text-foreground text-sm">Calibration Implication</p>
+        <p className="text-muted-foreground text-xs mt-1">
+          Two-point calibration uses buffers at pH 6.840 and pH 7.384. The voltage difference should be
+          (7.384 − 6.840) × 61.5 = <strong>33.5 mV</strong>. If measured slope deviates &gt;5% from theoretical,
+          the electrode is failing and must be replaced.
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const ABGAnalyserDiagram = () => (
   <div className="space-y-8 mb-10">
     <div className="p-4 rounded-lg border border-border bg-card">
@@ -331,13 +400,15 @@ const ABGAnalyserDiagram = () => (
     </div>
 
     <Tabs defaultValue="ph" className="w-full">
-      <TabsList className="grid w-full grid-cols-4">
+      <TabsList className="grid w-full grid-cols-5">
         <TabsTrigger value="ph" className="text-xs">pH Electrode</TabsTrigger>
+        <TabsTrigger value="nernst" className="text-xs">Nernst Eq.</TabsTrigger>
         <TabsTrigger value="clark" className="text-xs">Clark (PO₂)</TabsTrigger>
         <TabsTrigger value="co2" className="text-xs">PCO₂</TabsTrigger>
         <TabsTrigger value="galvanic" className="text-xs">Fuel Cell</TabsTrigger>
       </TabsList>
       <TabsContent value="ph"><PHElectrodeDiagram /></TabsContent>
+      <TabsContent value="nernst"><NernstEquationDiagram /></TabsContent>
       <TabsContent value="clark"><ClarkElectrodeDiagram /></TabsContent>
       <TabsContent value="co2"><SeveringhausCO2Diagram /></TabsContent>
       <TabsContent value="galvanic"><GalvanicFuelCellDiagram /></TabsContent>
