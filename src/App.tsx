@@ -21,6 +21,7 @@ import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic";
 import VaporizersTopic from "./pages/topics/VaporizersTopic";
 import ElectricalSafetyTopic from "./pages/topics/ElectricalSafetyTopic";
 import PulseOximetryTopic from "./pages/topics/PulseOximetryTopic";
+import ABGAnalyserTopic from "./pages/topics/ABGAnalyserTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
