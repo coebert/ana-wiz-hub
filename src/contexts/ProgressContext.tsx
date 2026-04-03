@@ -1,25 +1,17 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
-import { physicsTopics, physiologyTopics, pharmacologyTopics, Topic } from "@/data/curriculum";
+import { allTopics, topicsBySection, Topic, Section } from "@/data/curriculum";
 
 interface ProgressContextType {
   completedTopics: Set<string>;
   toggleTopic: (topicId: string) => void;
   isCompleted: (topicId: string) => boolean;
-  getSectionProgress: (section: "physics" | "physiology" | "pharmacology") => { completed: number; total: number };
+  getSectionProgress: (section: Section) => { completed: number; total: number };
   getOverallProgress: () => { completed: number; total: number };
 }
 
 const ProgressContext = createContext<ProgressContextType | null>(null);
 
 const STORAGE_KEY = "anaesthesia-core-progress";
-
-const allTopics: Topic[] = [...physicsTopics, ...physiologyTopics, ...pharmacologyTopics];
-
-const topicsBySection = {
-  physics: physicsTopics.filter((t) => t.available),
-  physiology: physiologyTopics.filter((t) => t.available),
-  pharmacology: pharmacologyTopics.filter((t) => t.available),
-};
 
 export const ProgressProvider = ({ children }: { children: ReactNode }) => {
   const [completedTopics, setCompletedTopics] = useState<Set<string>>(() => {
@@ -38,11 +30,8 @@ export const ProgressProvider = ({ children }: { children: ReactNode }) => {
   const toggleTopic = useCallback((topicId: string) => {
     setCompletedTopics((prev) => {
       const next = new Set(prev);
-      if (next.has(topicId)) {
-        next.delete(topicId);
-      } else {
-        next.add(topicId);
-      }
+      if (next.has(topicId)) next.delete(topicId);
+      else next.add(topicId);
       return next;
     });
   }, []);
@@ -50,8 +39,8 @@ export const ProgressProvider = ({ children }: { children: ReactNode }) => {
   const isCompleted = useCallback((topicId: string) => completedTopics.has(topicId), [completedTopics]);
 
   const getSectionProgress = useCallback(
-    (section: "physics" | "physiology" | "pharmacology") => {
-      const available = topicsBySection[section];
+    (section: Section) => {
+      const available = (topicsBySection[section] || []).filter((t) => t.available);
       const completed = available.filter((t) => completedTopics.has(t.id)).length;
       return { completed, total: available.length };
     },
