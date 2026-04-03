@@ -15,6 +15,7 @@ import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWave
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
 import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
+import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 
 const LungMechanicsTopic = () => {
   return (
