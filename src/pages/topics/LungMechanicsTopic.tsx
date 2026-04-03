@@ -17,6 +17,7 @@ import { TranspulmonaryPressureDiagram } from "@/components/diagrams/Transpulmon
 import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
 import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
+import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
 
 const LungMechanicsTopic = () => {
   return (
