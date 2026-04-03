@@ -46,6 +46,8 @@ const NeuroanatomyTopic = () => {
           </div>
         </div>
 
+        <SkullBaseDiagram />
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
           <div className="overflow-x-auto">
