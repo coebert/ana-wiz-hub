@@ -27,6 +27,7 @@ export const physicsTopics: Topic[] = [
   { id: "anaesthetic-machine", title: "The Anaesthetic Machine", description: "Pipeline supply, cylinder storage, pressure regulators, flowmeters, and safety features", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "defibrillation-pacing", title: "Defibrillation & Pacing", description: "Monophasic vs biphasic waveforms, transthoracic impedance, pacemaker modes, and EMI", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
