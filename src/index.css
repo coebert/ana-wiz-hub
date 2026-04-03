@@ -129,6 +129,30 @@
     background-color: hsl(var(--pharmacology-light));
   }
 
+  .section-card-clinical {
+    @apply border-l-4 transition-all duration-200;
+    border-left-color: hsl(var(--clinical));
+  }
+  .section-card-clinical:hover {
+    background-color: hsl(var(--clinical-light));
+  }
+
+  .section-card-intensive-care {
+    @apply border-l-4 transition-all duration-200;
+    border-left-color: hsl(var(--icu));
+  }
+  .section-card-intensive-care:hover {
+    background-color: hsl(var(--icu-light));
+  }
+
+  .section-card-perioperative {
+    @apply border-l-4 transition-all duration-200;
+    border-left-color: hsl(var(--perioperative));
+  }
+  .section-card-perioperative:hover {
+    background-color: hsl(var(--perioperative-light));
+  }
+
   .key-point {
     @apply flex items-start gap-3 p-4 rounded-lg bg-secondary/50 border border-border;
   }
