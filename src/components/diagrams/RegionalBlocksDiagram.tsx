@@ -497,6 +497,145 @@ const blocks: BlockData[] = [
       </svg>
     ),
   },
+  {
+    id: "rectus-sheath",
+    name: "Rectus Sheath",
+    probe: "Linear (high-frequency, 6–13 MHz)",
+    orientation: "Transverse, paramedian (over rectus abdominis)",
+    landmark: "Umbilicus level, lateral border of rectus abdominis",
+    depth: "1–2 cm",
+    needle: "In-plane, lateral to medial",
+    target: "Posterior rectus sheath — between rectus abdominis and posterior sheath",
+    structures: ["Rectus abdominis muscle", "Anterior rectus sheath", "Posterior rectus sheath", "Linea semilunaris (lateral border)", "Peritoneum (deep to posterior sheath)", "T9-T11 intercostal nerves (within posterior sheath)"],
+    sonoAnatomy: "Rectus abdominis appears as a hypoechoic rectangular muscle enclosed by the hyperechoic anterior and posterior rectus sheaths. Below the arcuate line (below umbilicus), the posterior sheath is absent — only transversalis fascia and peritoneum remain. LA is deposited between the muscle and posterior sheath.",
+    laVolume: "10–15 ml per side (0.25–0.375% ropivacaine). Bilateral for midline incisions",
+    tips: ["Inject between rectus muscle and posterior sheath — watch for hydrodissection", "Below arcuate line, posterior sheath absent — greater risk of peritoneal puncture", "Excellent for midline laparotomy and umbilical hernia repair", "Bilateral blocks needed for midline surgery"],
+    pitfalls: ["Peritoneal puncture and bowel injury — especially below arcuate line", "Only covers midline (T9-T11) — not lateral abdominal wall", "Haematoma within rectus sheath (inferior epigastric artery)", "Short duration compared to TAP — consider catheter"],
+    svgContent: (
+      <svg viewBox="0 0 300 200" className="w-full h-auto">
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Rectus Sheath Block — Transverse View</text>
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        {/* Skin */}
+        <rect x="30" y="30" width="240" height="10" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.15)" strokeWidth="0.5" />
+        {/* Anterior rectus sheath */}
+        <rect x="80" y="43" width="140" height="5" fill="hsl(var(--foreground)/0.25)" stroke="hsl(var(--foreground)/0.5)" strokeWidth="1.5" />
+        <text x="280" y="49" fontSize="5" fill="hsl(var(--muted-foreground))">ARS</text>
+        {/* Lateral muscles (EO/IO/TA forming sheath) */}
+        <rect x="30" y="43" width="45" height="65" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--accent-foreground)/0.2)" strokeWidth="0.5" />
+        <text x="52" y="75" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.4)">Lateral</text>
+        <text x="52" y="83" textAnchor="middle" fontSize="5" fill="hsl(var(--foreground)/0.4)">muscles</text>
+        <rect x="225" y="43" width="45" height="65" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--accent-foreground)/0.2)" strokeWidth="0.5" />
+        {/* Rectus abdominis */}
+        <rect x="80" y="50" width="140" height="40" fill="hsl(var(--accent)/0.3)" stroke="hsl(var(--accent-foreground)/0.4)" strokeWidth="1" />
+        <text x="150" y="73" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground)/0.7)">Rectus Abdominis</text>
+        {/* Linea alba */}
+        <line x1="150" y1="43" x2="150" y2="113" stroke="hsl(var(--foreground)/0.4)" strokeWidth="2" />
+        <text x="150" y="120" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.5)">Linea Alba</text>
+        {/* Posterior rectus sheath */}
+        <rect x="80" y="92" width="140" height="5" fill="hsl(var(--foreground)/0.2)" stroke="hsl(var(--foreground)/0.5)" strokeWidth="1.5" />
+        <text x="280" y="98" fontSize="5" fill="hsl(var(--muted-foreground))">PRS</text>
+        {/* Target plane — LA spread */}
+        <ellipse cx="120" cy="92" rx="30" ry="4" fill="hsl(var(--chart-4)/0.3)" stroke="hsl(var(--chart-4))" strokeWidth="1" />
+        <text x="120" y="94" textAnchor="middle" fontSize="5" fill="hsl(var(--chart-4))">LA</text>
+        {/* Nerves */}
+        <circle cx="100" cy="92" r="3" fill="hsl(var(--chart-4)/0.6)" stroke="hsl(var(--chart-4))" strokeWidth="1" />
+        <circle cx="140" cy="92" r="3" fill="hsl(var(--chart-4)/0.6)" stroke="hsl(var(--chart-4))" strokeWidth="1" />
+        {/* Peritoneum */}
+        <path d="M30,113 Q150,118 270,113" fill="none" stroke="hsl(var(--chart-2))" strokeWidth="1.5" />
+        <text x="280" y="117" fontSize="5" fill="hsl(var(--chart-2))">Peritoneum</text>
+        {/* Peritoneal cavity */}
+        <rect x="30" y="120" width="240" height="30" fill="hsl(var(--destructive)/0.05)" />
+        <text x="150" y="138" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground)/0.4)">Peritoneal Cavity</text>
+        {/* Linea semilunaris labels */}
+        <text x="78" y="42" textAnchor="middle" fontSize="5" fill="hsl(var(--primary))">LS</text>
+        <text x="222" y="42" textAnchor="middle" fontSize="5" fill="hsl(var(--primary))">LS</text>
+        {/* Needle */}
+        <line x1="250" y1="35" x2="130" y2="90" stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="4,3" />
+        <polygon points="132,88 128,94 135,92" fill="hsl(var(--foreground))" />
+        <text x="248" y="32" fontSize="7" fill="hsl(var(--foreground))">Needle</text>
+        {/* Depth */}
+        <text x="15" y="50" fontSize="6" fill="hsl(var(--muted-foreground))">0.5</text>
+        <text x="15" y="75" fontSize="6" fill="hsl(var(--muted-foreground))">1 cm</text>
+        <text x="15" y="100" fontSize="6" fill="hsl(var(--muted-foreground))">1.5</text>
+        {/* Legend */}
+        <rect x="30" y="155" width="240" height="40" fill="hsl(var(--card))" rx="4" stroke="hsl(var(--border))" strokeWidth="0.5" />
+        <text x="150" y="168" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">ARS = Anterior Rectus Sheath | PRS = Posterior Rectus Sheath</text>
+        <text x="150" y="180" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">LS = Linea Semilunaris</text>
+        <text x="150" y="190" textAnchor="middle" fontSize="6" fill="hsl(var(--primary))">Inject between muscle and posterior sheath</text>
+      </svg>
+    ),
+  },
+  {
+    id: "ql",
+    name: "Quadratus Lumborum",
+    probe: "Curvilinear (low-frequency, 2–5 MHz) or linear",
+    orientation: "Transverse, posterior axillary line at L2–L4 level",
+    landmark: "Posterior axillary line, iliac crest, 12th rib, 'shamrock sign'",
+    depth: "3–6 cm (body habitus dependent)",
+    needle: "In-plane, posterior to anterior (QL1/QL2) or anterior approach (QL3/transmuscular)",
+    target: "Variable — anterior, lateral, or posterior to quadratus lumborum muscle",
+    structures: ["Quadratus lumborum (QL) muscle", "Transverse process of L-spine (forms the 'stem' of shamrock)", "Psoas major (anterior to TP)", "Erector spinae (posterior to TP)", "Transversalis fascia / thoracolumbar fascia", "Kidney (deep, anterior — beware)"],
+    sonoAnatomy: "The 'Shamrock sign' is the key landmark: the transverse process is the stem, with three leaves — QL (posterior), psoas major (anterior), and erector spinae (posterolateral). The QL is a flat, quadrilateral muscle between the 12th rib and iliac crest. Three approaches target different fascial planes around the QL.",
+    laVolume: "20–30 ml per side (0.25–0.375% ropivacaine)",
+    tips: ["Identify the 'shamrock sign' — TP as stem, three muscles as leaves", "QL1 (lateral): inject at lateral border of QL", "QL2 (posterior): inject between QL and erector spinae", "QL3/Transmuscular (anterior): inject between QL and psoas — most paravertebral-like spread", "Provides both somatic and visceral analgesia (paravertebral spread)"],
+    pitfalls: ["Renal injury (kidney lies anterior to QL)", "LA systemic toxicity with bilateral blocks", "Variable and unpredictable spread between approaches", "Deep block — poor needle visibility in obese patients", "Lumbar plexus injury with transmuscular approach (rare)"],
+    svgContent: (
+      <svg viewBox="0 0 300 220" className="w-full h-auto">
+        <rect x="0" y="0" width="300" height="220" fill="hsl(var(--muted))" rx="8" />
+        <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Quadratus Lumborum — Transverse View ('Shamrock Sign')</text>
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        {/* Skin/subcut */}
+        <rect x="30" y="30" width="240" height="10" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.15)" strokeWidth="0.5" />
+        {/* Erector spinae — posterior */}
+        <path d="M30,45 L120,45 L120,95 L30,95 Z" fill="hsl(var(--accent)/0.25)" stroke="hsl(var(--accent-foreground)/0.4)" strokeWidth="1" />
+        <text x="75" y="73" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground)/0.6)">Erector Spinae</text>
+        {/* Transverse process — 'stem' */}
+        <rect x="125" y="70" width="12" height="30" fill="hsl(var(--foreground)/0.35)" stroke="hsl(var(--foreground)/0.6)" strokeWidth="1.5" rx="2" />
+        <text x="131" y="60" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.7)" fontWeight="bold">TP</text>
+        {/* QL — posterior leaf */}
+        <path d="M140,45 L230,45 L230,90 L140,90 Z" fill="hsl(var(--chart-4)/0.15)" stroke="hsl(var(--chart-4)/0.5)" strokeWidth="1.5" />
+        <text x="185" y="70" textAnchor="middle" fontSize="8" fill="hsl(var(--chart-4))" fontWeight="bold">Quadratus</text>
+        <text x="185" y="82" textAnchor="middle" fontSize="8" fill="hsl(var(--chart-4))" fontWeight="bold">Lumborum</text>
+        {/* Psoas — anterior leaf */}
+        <path d="M140,105 L230,105 L230,160 L140,160 Z" fill="hsl(var(--chart-2)/0.15)" stroke="hsl(var(--chart-2)/0.5)" strokeWidth="1" />
+        <text x="185" y="135" textAnchor="middle" fontSize="8" fill="hsl(var(--chart-2))">Psoas Major</text>
+        {/* Thoracolumbar fascia between QL and ES */}
+        <line x1="120" y1="45" x2="120" y2="95" stroke="hsl(var(--primary)/0.5)" strokeWidth="1.5" strokeDasharray="3,2" />
+        {/* QL3 target — between QL and psoas */}
+        <rect x="140" y="92" width="90" height="10" fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="3,2" />
+        <text x="280" y="100" fontSize="5" fill="hsl(var(--primary))" fontWeight="bold">QL3</text>
+        {/* QL1 target — lateral border */}
+        <rect x="232" y="55" width="8" height="35" fill="hsl(var(--chart-3)/0.2)" stroke="hsl(var(--chart-3))" strokeWidth="1" strokeDasharray="3,2" />
+        <text x="255" y="73" fontSize="5" fill="hsl(var(--chart-3))" fontWeight="bold">QL1</text>
+        {/* QL2 target — posterior (between ES and QL) */}
+        <rect x="122" y="50" width="15" height="40" fill="hsl(var(--chart-5)/0.15)" stroke="hsl(var(--chart-5))" strokeWidth="1" strokeDasharray="3,2" />
+        <text x="110" y="55" fontSize="5" fill="hsl(var(--chart-5))" fontWeight="bold">QL2</text>
+        {/* Kidney — anterior danger */}
+        <ellipse cx="200" cy="170" rx="25" ry="12" fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive)/0.4)" strokeWidth="1" strokeDasharray="3,2" />
+        <text x="200" y="173" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive)/0.6)">Kidney</text>
+        {/* Needle — transmuscular (QL3) approach */}
+        <line x1="260" y1="35" x2="175" y2="97" stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="4,3" />
+        <polygon points="177,95 173,101 180,99" fill="hsl(var(--foreground))" />
+        <text x="252" y="32" fontSize="7" fill="hsl(var(--foreground))">Needle</text>
+        {/* Shamrock label */}
+        <text x="131" y="115" textAnchor="middle" fontSize="6" fill="hsl(var(--primary))" fontWeight="bold">☘ Shamrock</text>
+        {/* Depth */}
+        <text x="15" y="50" fontSize="6" fill="hsl(var(--muted-foreground))">1 cm</text>
+        <text x="15" y="85" fontSize="6" fill="hsl(var(--muted-foreground))">3 cm</text>
+        <text x="15" y="120" fontSize="6" fill="hsl(var(--muted-foreground))">5 cm</text>
+        {/* Legend */}
+        <rect x="20" y="187" width="260" height="28" fill="hsl(var(--card))" rx="4" stroke="hsl(var(--border))" strokeWidth="0.5" />
+        <rect x="30" y="195" width="6" height="6" fill="hsl(var(--chart-3)/0.2)" stroke="hsl(var(--chart-3))" strokeWidth="0.5" />
+        <text x="40" y="201" fontSize="5" fill="hsl(var(--muted-foreground))">QL1 (lateral)</text>
+        <rect x="100" y="195" width="6" height="6" fill="hsl(var(--chart-5)/0.15)" stroke="hsl(var(--chart-5))" strokeWidth="0.5" />
+        <text x="110" y="201" fontSize="5" fill="hsl(var(--muted-foreground))">QL2 (posterior)</text>
+        <rect x="185" y="195" width="6" height="6" fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="0.5" />
+        <text x="195" y="201" fontSize="5" fill="hsl(var(--muted-foreground))">QL3 (transmuscular)</text>
+        <text x="150" y="212" textAnchor="middle" fontSize="5" fill="hsl(var(--primary))">QL3 gives most paravertebral-like spread</text>
+      </svg>
+    ),
+  },
 ];
 
 const RegionalBlocksDiagram = () => {
