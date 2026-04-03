@@ -6,6 +6,7 @@ import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
 import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";
 import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
+import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -23,6 +24,16 @@ const LungMechanicsTopic = () => {
             Lung mechanics describes the forces that move air into and out of the lungs. Understanding compliance, resistance,
             time constants, surfactant, and the work of breathing is fundamental to ventilator management and respiratory physiology.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Lung Volumes & Capacities</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The four primary lung volumes (IRV, TV, ERV, RV) combine to form four capacities (IC, FRC, VC, TLC). Only RV, FRC, and TLC cannot be measured by spirometry alone.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <LungVolumesDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
