@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { sepsisQuestions } from "@/data/quizzes";
+import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 
 const SepsisTopic = () => {
   return (
@@ -93,6 +94,8 @@ const SepsisTopic = () => {
           </p>
         </div>
       </section>
+
+      <SepsisManagementDiagram />
 
       <KeyLearningPoints points={[
         "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",
