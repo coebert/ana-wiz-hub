@@ -26,7 +26,7 @@ const IcuSedationDeliriumTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+4</td><td>Combative</td><td>Violent, immediate danger to staff</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+1 to +3</td><td>Agitated</td><td>Anxious, aggressive, pulling at lines</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">0</td><td>Alert & calm</td><td>Spontaneously attentive</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−1 to −2</td><td>Light sedation</td><td>Drowsy, eye opening to voice (>10s)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−1 to −2</td><td>Light sedation</td><td>Drowsy, eye opening to voice ({'>'} 10s)</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−3 to −4</td><td>Moderate/Deep</td><td>Movement or eye opening to voice/physical stimulation</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">−5</td><td>Unarousable</td><td>No response to voice or physical stimulation</td></tr>
               </tbody>
