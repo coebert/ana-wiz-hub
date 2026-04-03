@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Atom, Heart, FlaskConical, BookOpen, GraduationCap, ArrowRight } from "lucide-react";
+import { useProgress } from "@/contexts/ProgressContext";
+import { ProgressRing } from "@/components/ProgressRing";
 
 const sections = [
   {
@@ -9,7 +11,7 @@ const sections = [
     path: "/physics",
     cardClass: "section-card-physics",
     iconColor: "text-physics",
-    topics: 12,
+    sectionKey: "physics" as const,
   },
   {
     title: "Physiology",
@@ -18,7 +20,7 @@ const sections = [
     path: "/physiology",
     cardClass: "section-card-physiology",
     iconColor: "text-physiology",
-    topics: 15,
+    sectionKey: "physiology" as const,
   },
   {
     title: "Pharmacology",
@@ -27,11 +29,14 @@ const sections = [
     path: "/pharmacology",
     cardClass: "section-card-pharmacology",
     iconColor: "text-pharmacology",
-    topics: 14,
+    sectionKey: "pharmacology" as const,
   },
 ];
 
 const Index = () => {
+  const { getSectionProgress, getOverallProgress } = useProgress();
+  const overall = getOverallProgress();
+
   return (
     <div>
       {/* Hero */}
@@ -56,6 +61,22 @@ const Index = () => {
             <GraduationCap className="h-4 w-4" />
             <span>Aligned with FRCA Primary & Final exam syllabi</span>
           </div>
+
+          {/* Overall progress bar */}
+          {overall.total > 0 && (
+            <div className="mt-8 max-w-xs mx-auto">
+              <div className="flex items-center justify-between text-xs text-primary-foreground/70 mb-1.5">
+                <span>Overall progress</span>
+                <span>{overall.completed}/{overall.total} topics</span>
+              </div>
+              <div className="h-2 rounded-full bg-primary-foreground/20 overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-primary-foreground/80 transition-all duration-500"
+                  style={{ width: `${(overall.completed / overall.total) * 100}%` }}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -69,25 +90,33 @@ const Index = () => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {sections.map((section) => (
-            <Link
-              key={section.path}
-              to={section.path}
-              className={`${section.cardClass} group rounded-xl bg-card p-6 border border-border hover:shadow-lg transition-all duration-300`}
-            >
-              <section.icon className={`h-10 w-10 ${section.iconColor} mb-4`} />
-              <h3 className="text-xl font-serif font-bold text-foreground mb-2">
-                {section.title}
-              </h3>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                {section.description}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">{section.topics} topics</span>
-                <ArrowRight className={`h-4 w-4 ${section.iconColor} group-hover:translate-x-1 transition-transform`} />
-              </div>
-            </Link>
-          ))}
+          {sections.map((section) => {
+            const progress = getSectionProgress(section.sectionKey);
+            return (
+              <Link
+                key={section.path}
+                to={section.path}
+                className={`${section.cardClass} group rounded-xl bg-card p-6 border border-border hover:shadow-lg transition-all duration-300`}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <section.icon className={`h-10 w-10 ${section.iconColor}`} />
+                  <ProgressRing completed={progress.completed} total={progress.total} size={36} strokeWidth={2.5} />
+                </div>
+                <h3 className="text-xl font-serif font-bold text-foreground mb-2">
+                  {section.title}
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {section.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground">
+                    {progress.completed}/{progress.total} completed
+                  </span>
+                  <ArrowRight className={`h-4 w-4 ${section.iconColor} group-hover:translate-x-1 transition-transform`} />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
