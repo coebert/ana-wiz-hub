@@ -8,7 +8,7 @@ interface Foramen {
   id: string;
   name: string;
   fossa: Fossa;
-  contents: string[];
+  contents?: string[];
   clinicalNote?: string;
   // SVG position (percentage-based for responsiveness)
   cx: number;
