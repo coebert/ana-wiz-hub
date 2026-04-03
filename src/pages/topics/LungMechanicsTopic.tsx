@@ -8,6 +8,7 @@ import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagr
 import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
 import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
+import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -129,6 +130,18 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <DeadSpaceDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Alveolar Gas Equation & Oxygen Cascade</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The alveolar gas equation calculates PAO₂ from FiO₂, atmospheric pressure, and PaCO₂. It underpins the A-a gradient and assessment of gas exchange efficiency.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <AlveolarGasEquationDiagram />
           </div>
         </section>
       </div>
