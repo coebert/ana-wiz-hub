@@ -106,6 +106,7 @@ const App = () => (
           <Route path="/physics/humidity-gas-sampling" element={<HumidityGasSamplingTopic />} />
           <Route path="/physics/lasers-fibreoptics" element={<LaserFibreopticsTopic />} />
           <Route path="/physics/ultrasound-physics" element={<UltrasoundPhysicsTopic />} />
+          <Route path="/physics/mri-physics" element={<MRIPhysicsTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
