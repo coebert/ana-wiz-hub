@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
+import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 
 const NeuroanaesthesiaTopic = () => {
   return (
