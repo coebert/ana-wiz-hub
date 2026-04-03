@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const CardiacCycleTopic = () => {
   return (
