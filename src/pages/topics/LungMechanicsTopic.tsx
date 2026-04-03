@@ -13,6 +13,7 @@ import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
+import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
 
 const LungMechanicsTopic = () => {
   return (
