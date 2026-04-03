@@ -12,6 +12,8 @@ import PharmacologySection from "./pages/PharmacologySection.tsx";
 import GasLawsTopic from "./pages/topics/GasLawsTopic.tsx";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic.tsx";
 import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic.tsx";
+import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic.tsx";
+import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic.tsx";
 
 const queryClient = new QueryClient();
 
