@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
+import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";
 
 const LungMechanicsTopic = () => {
   return (
