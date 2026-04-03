@@ -15,6 +15,8 @@ import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic.tsx";
 import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic.tsx";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic.tsx";
 import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic.tsx";
+import NeuromuscularTopic from "./pages/topics/NeuromuscularTopic.tsx";
+import LocalAnaestheticsTopic from "./pages/topics/LocalAnaestheticsTopic.tsx";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +38,8 @@ const App = () => (
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
           <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
           <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
+          <Route path="/physiology/neuromuscular" element={<NeuromuscularTopic />} />
+          <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -21,7 +21,7 @@ export const physiologyTopics: Topic[] = [
   { id: "cardiac-cycle", title: "The Cardiac Cycle", description: "Pressure-volume loops, Wiggers diagram, cardiac output", section: "physiology", examLevel: "primary", available: true },
   { id: "lung-mechanics", title: "Lung Mechanics", description: "Compliance, resistance, surfactant, work of breathing", section: "physiology", examLevel: "primary", available: false },
   { id: "renal-physiology", title: "Renal Physiology", description: "GFR, tubular function, acid-base balance, electrolyte handling", section: "physiology", examLevel: "primary", available: false },
-  { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examLevel: "primary", available: false },
+  { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examLevel: "primary", available: true },
   { id: "autonomic-nervous", title: "Autonomic Nervous System", description: "Sympathetic and parasympathetic pathways, receptors, reflexes", section: "physiology", examLevel: "primary", available: false },
 ];
 
@@ -31,5 +31,5 @@ export const pharmacologyTopics: Topic[] = [
   { id: "volatile-agents", title: "Volatile Anaesthetic Agents", description: "MAC, Meyer-Overton, blood-gas partition coefficient, uptake and distribution", section: "pharmacology", examLevel: "primary", available: true },
   { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examLevel: "primary", available: false },
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examLevel: "primary", available: false },
-  { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examLevel: "primary", available: false },
+  { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examLevel: "primary", available: true },
 ];
