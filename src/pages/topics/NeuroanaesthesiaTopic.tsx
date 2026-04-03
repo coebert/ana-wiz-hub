@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
+import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 
 const NeuroanaesthesiaTopic = () => {
   return (
