@@ -53,6 +53,17 @@ const CardiacCycleTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Frank-Starling Curve</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The Frank-Starling mechanism describes how stroke volume increases with preload (LVEDV) up to a plateau.
+            Compare normal function with sympathetic stimulation and heart failure states.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <FrankStarlingDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Phases of the Cardiac Cycle</h2>
 
           <div className="space-y-6 mt-4">
