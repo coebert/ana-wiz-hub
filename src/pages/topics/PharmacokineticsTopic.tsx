@@ -105,6 +105,7 @@ const PharmacokineticsTopic = () => {
         "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).",
         "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT."
       ]} />
+      <QuizSection questions={pharmacokineticsQuiz} />
       <TopicCompletionToggle topicId="pharmacokinetics" topicTitle="Pharmacokinetic Principles" />
     </SectionLayout>
   );
