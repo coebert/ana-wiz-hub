@@ -24,6 +24,7 @@ export const physicsTopics: Topic[] = [
   { id: "ultrasound-physics", title: "Ultrasound Physics", description: "Piezoelectric effect, frequency vs resolution, Doppler effect, artefacts", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "mri-physics", title: "MRI Physics", description: "Nuclear spin, precession, T1/T2 relaxation, MRI safety for anaesthetists", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "breathing-circuits", title: "Breathing Circuits & Scavenging", description: "Mapleson classification, circle system, soda lime, scavenging systems", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "anaesthetic-machine", title: "The Anaesthetic Machine", description: "Pipeline supply, cylinder storage, pressure regulators, flowmeters, and safety features", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
