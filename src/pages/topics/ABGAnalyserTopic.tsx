@@ -108,6 +108,28 @@ const ABGAnalyserTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Nernst Equation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The <strong>Nernst equation</strong> (E = E₀ + RT/nF × ln[H⁺]) is the fundamental relationship governing all
+            potentiometric electrodes. At 37°C (310 K), it predicts a voltage change of <strong>61.5 mV per pH unit</strong> —
+            the "Nernst slope". This is derived from 2.303 × RT/nF = 2.303 × (8.314 × 310)/(1 × 96,485) = 61.5 mV.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            During electrode calibration with two standard buffers (pH 6.840 and 7.384), the measured voltage difference should
+            be approximately 33.5 mV. If the measured slope falls outside <strong>95–105%</strong> of the theoretical Nernst slope,
+            the electrode is degraded and must be replaced. The temperature dependence of the Nernst slope (proportional to T in
+            Kelvin) explains why the analyser must be thermostatted at precisely 37°C.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Beyond the ABG analyser, the Nernst equation has broad physiological significance. It calculates the <strong>equilibrium
+            potential</strong> for ions across cell membranes: Eₖ ≈ −90 mV, Eₙₐ ≈ +60 mV. The <strong>Goldman-Hodgkin-Katz
+            equation</strong> extends this to multiple ions, determining the resting membrane potential. The Nernst equation also
+            applies to the Severinghaus PCO₂ electrode (potentiometric) but <em>not</em> to the Clark PO₂ electrode (amperometric —
+            measures current, not voltage).
+          </p>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Temperature Correction</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             ABG analysers measure at 37°C. For hypothermic or hyperthermic patients, results can be corrected to actual body temperature:
