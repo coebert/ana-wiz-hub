@@ -10,6 +10,7 @@ import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
 import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
+import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 
 const LungMechanicsTopic = () => {
   return (
