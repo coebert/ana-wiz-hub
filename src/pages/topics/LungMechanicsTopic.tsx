@@ -13,6 +13,7 @@ import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
+import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -198,6 +199,20 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <AutoPEEPDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Transpulmonary Pressure & Oesophageal Manometry</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Transpulmonary pressure (PTP = Paw − Ppl) represents the true distending pressure of the lung.
+            Oesophageal manometry estimates pleural pressure, enabling PEEP optimisation particularly in obesity and ARDS
+            where chest wall elastance is elevated.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <TranspulmonaryPressureDiagram />
           </div>
         </section>
       </div>
