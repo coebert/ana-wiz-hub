@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
+import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -81,6 +82,16 @@ const LungMechanicsTopic = () => {
             The <strong>time constant (τ = R × C)</strong> determines the speed of inflation/deflation. 3τ = 95% equilibration.
             Lung units with different time constants cause V/Q mismatch.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Flow-Volume Loops</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Flow-volume loops are essential for distinguishing obstructive from restrictive patterns and identifying upper airway obstruction.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <FlowVolumeLoopDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
