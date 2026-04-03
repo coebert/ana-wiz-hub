@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
 import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
+import DASAlgorithmDiagram from "@/components/diagrams/DASAlgorithmDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const AirwayManagementTopic = () => {
