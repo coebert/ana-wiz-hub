@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { Search, X, Atom, Heart, FlaskConical, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
 import { allTopics, Topic, Section, sectionMeta } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 
@@ -13,6 +13,7 @@ const sectionIcons: Record<Section, typeof Atom> = {
   physics: Atom,
   physiology: Heart,
   pharmacology: FlaskConical,
+  anatomy: Bone,
   clinical: Stethoscope,
   "intensive-care": Activity,
   perioperative: ClipboardList,
@@ -22,6 +23,7 @@ const sectionColors: Record<Section, string> = {
   physics: "text-physics",
   physiology: "text-physiology",
   pharmacology: "text-pharmacology",
+  anatomy: "text-anatomy",
   clinical: "text-clinical",
   "intensive-care": "text-icu",
   perioperative: "text-perioperative",
