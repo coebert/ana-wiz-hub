@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
+import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -36,6 +37,17 @@ const CardiacCycleTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <WiggersDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Pressure-Volume Loop</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The PV loop shows the four phases of the cardiac cycle on a pressure-volume plane. Adjust preload,
+            afterload, and contractility to see how they shift the loop and affect stroke volume and ejection fraction.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <PVLoopDiagram />
           </div>
         </section>
 
