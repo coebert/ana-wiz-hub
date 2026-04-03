@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
 import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
+import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -155,6 +156,16 @@ const CardiacCycleTopic = () => {
             valves at the end of systole. Physiological splitting of S2 occurs during inspiration when increased venous
             return delays pulmonary valve closure.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Cardiac Action Potential & Antiarrhythmics</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The cardiac action potential differs fundamentally between contractile myocytes (fast response) and pacemaker cells (slow response). Understanding each phase and its ion channels is essential for the pharmacology of antiarrhythmic drugs.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <CardiacActionPotentialDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
