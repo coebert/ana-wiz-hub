@@ -70,8 +70,8 @@ const TraumaEmergencyTopic = () => {
         "TEG/ROTEM enables goal-directed transfusion and reduces blood product use",
       ]} />
 
-      <QuizSection questions={traumaEmergencyQuestions} topicId="trauma-emergency" />
-      <TopicCompletionToggle topicId="trauma-emergency" />
+      <QuizSection questions={traumaEmergencyQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

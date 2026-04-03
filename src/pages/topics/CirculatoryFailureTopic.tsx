@@ -67,8 +67,8 @@ const CirculatoryFailureTopic = () => {
         "Lactate clearance (>20% in 2h) is a useful target for resuscitation adequacy",
       ]} />
 
-      <QuizSection questions={circulatoryFailureQuestions} topicId="circulatory-failure" />
-      <TopicCompletionToggle topicId="circulatory-failure" />
+      <QuizSection questions={circulatoryFailureQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

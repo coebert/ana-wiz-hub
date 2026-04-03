@@ -85,8 +85,8 @@ const AcidBaseTopic = () => {
         "Type A lactate = tissue hypoxia; Type B = metabolic (metformin, liver failure, PRIS)",
       ]} />
 
-      <QuizSection questions={acidBaseQuestions} topicId="acid-base" />
-      <TopicCompletionToggle topicId="acid-base" />
+      <QuizSection questions={acidBaseQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

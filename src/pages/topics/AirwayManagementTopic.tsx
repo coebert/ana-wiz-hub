@@ -83,8 +83,8 @@ const AirwayManagementTopic = () => {
         "Videolaryngoscopy should be available as first-line or early rescue",
       ]} />
 
-      <QuizSection questions={airwayManagementQuestions} topicId="airway-management" />
-      <TopicCompletionToggle topicId="airway-management" />
+      <QuizSection questions={airwayManagementQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

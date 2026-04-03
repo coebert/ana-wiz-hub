@@ -102,8 +102,8 @@ const SepsisTopic = () => {
         "Source control is critical — drain, debride, or remove infected sources early",
       ]} />
 
-      <QuizSection questions={sepsisQuestions} topicId="sepsis" />
-      <TopicCompletionToggle topicId="sepsis" />
+      <QuizSection questions={sepsisQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

@@ -63,8 +63,8 @@ const ARDSTopic = () => {
         "Conservative fluid strategy improves oxygenation and ventilator-free days (FACTT)",
       ]} />
 
-      <QuizSection questions={ardsQuestions} topicId="ards" />
-      <TopicCompletionToggle topicId="ards" />
+      <QuizSection questions={ardsQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

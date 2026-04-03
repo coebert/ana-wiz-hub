@@ -80,8 +80,8 @@ const ClinicalIncidentsTopic = () => {
         "NMBAs are the commonest cause of perioperative anaphylaxis (~60%)",
       ]} />
 
-      <QuizSection questions={clinicalIncidentsQuestions} topicId="clinical-incidents" />
-      <TopicCompletionToggle topicId="clinical-incidents" />
+      <QuizSection questions={clinicalIncidentsQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };

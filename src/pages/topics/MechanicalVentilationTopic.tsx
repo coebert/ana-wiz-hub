@@ -82,8 +82,8 @@ const MechanicalVentilationTopic = () => {
         "Driving pressure (Pplat - PEEP) is the strongest predictor of ARDS mortality",
       ]} />
 
-      <QuizSection questions={mechanicalVentilationQuestions} topicId="mechanical-ventilation" />
-      <TopicCompletionToggle topicId="mechanical-ventilation" />
+      <QuizSection questions={mechanicalVentilationQuestions} />
+      <TopicCompletionToggle />
     </SectionLayout>
   );
 };
