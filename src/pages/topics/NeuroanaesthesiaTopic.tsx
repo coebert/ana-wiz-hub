@@ -23,6 +23,8 @@ const NeuroanaesthesiaTopic = () => {
           </div>
         </div>
 
+        <CBFAutoregulationDiagram />
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Effects on CBF & CMRO₂</h2>
           <div className="overflow-x-auto">
