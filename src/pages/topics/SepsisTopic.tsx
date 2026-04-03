@@ -95,6 +95,8 @@ const SepsisTopic = () => {
         </div>
       </section>
 
+      <SepsisManagementDiagram />
+
       <KeyLearningPoints points={[
         "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",
         "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors",
