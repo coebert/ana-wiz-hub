@@ -60,6 +60,8 @@ const CirculatoryFailureTopic = () => {
         </div>
       </section>
 
+      <FluidResponsivenessDiagram />
+
       <KeyLearningPoints points={[
         "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive",
         "Dynamic indices (PPV, SVV, PLR) are superior to static measures (CVP) for fluid responsiveness",
