@@ -29,6 +29,7 @@ import UltrasoundPhysicsTopic from "./pages/topics/UltrasoundPhysicsTopic";
 import MRIPhysicsTopic from "./pages/topics/MRIPhysicsTopic";
 import BreathingCircuitsTopic from "./pages/topics/BreathingCircuitsTopic";
 import AnaestheticMachineTopic from "./pages/topics/AnaestheticMachineTopic";
+import DefibrillationPacingTopic from "./pages/topics/DefibrillationPacingTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
