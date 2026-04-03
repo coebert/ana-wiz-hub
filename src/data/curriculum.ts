@@ -18,6 +18,7 @@ export const physicsTopics: Topic[] = [
   { id: "electrical-safety", title: "Electrical Safety", description: "Microshock, macroshock, diathermy, defibrillation", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "abg-analyser", title: "ABG Analyser & Gas Measurement", description: "pH electrode, Clark electrode, Severinghaus electrode, galvanic fuel cell", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "temperature-measurement", title: "Temperature Measurement", description: "Thermocouples, thermistors, resistance thermometers, infrared tympanic thermometry", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
