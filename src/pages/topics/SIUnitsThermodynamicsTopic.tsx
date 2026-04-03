@@ -62,6 +62,85 @@ const SIUnitsThermodynamicsTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Temperature Scales</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              Three temperature scales are encountered in medicine and physics. The <strong>Celsius scale</strong> defines
+              0°C as the freezing point and 100°C as the boiling point of water at 1 atmosphere.
+              The <strong>Fahrenheit scale</strong> sets water's freezing point at 32°F and boiling at 212°F — still used
+              in some clinical settings internationally. Conversions: <strong>°F = (°C × 9/5) + 32</strong> and
+              <strong> °C = (°F − 32) × 5/9</strong>. Normal body temperature (37°C = 98.6°F).
+            </p>
+            <p>
+              The <strong>Kelvin scale</strong> is the SI unit of temperature and is an <strong>absolute scale</strong> — its
+              zero point (0 K = −273.15°C) represents the theoretical minimum where molecular motion ceases, defined by the
+              third law of thermodynamics. Crucially, the Kelvin scale has <strong>no negative values</strong>, which is why
+              it must be used in all gas law calculations. Using Celsius in PV = nRT would give nonsensical results because
+              a "doubling" of temperature from 10°C to 20°C is not a doubling of absolute temperature (283 K to 293 K is only
+              a 3.5% increase).
+            </p>
+            <p>
+              <strong>Why Kelvin matters for gas laws:</strong> Charles' law states V ∝ T (at constant P). If you plot volume
+              against temperature in °C and extrapolate to zero volume, the line crosses the x-axis at −273.15°C — this is
+              absolute zero. All gas law relationships (Boyle's, Charles', Gay-Lussac's, combined) require temperature in
+              Kelvin because they describe proportional relationships that only hold on an absolute scale. For example,
+              spirometry readings taken at room temperature (20°C = 293 K) corrected to body temperature (37°C = 310 K)
+              increase by 310/293 = 5.8%.
+            </p>
+            <div className="bg-muted/30 rounded-lg p-4 mt-2">
+              <h3 className="text-sm font-semibold text-foreground mb-2">Quick Conversion Reference</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Celsius → Kelvin:</strong> K = °C + 273.15 (e.g., 37°C = 310.15 K)</li>
+                <li><strong>Celsius → Fahrenheit:</strong> °F = (°C × 1.8) + 32 (e.g., 37°C = 98.6°F)</li>
+                <li><strong>Fahrenheit → Celsius:</strong> °C = (°F − 32) / 1.8 (e.g., 104°F = 40°C)</li>
+                <li><strong>Key landmarks:</strong> 0°C = 273 K = 32°F | 37°C = 310 K = 98.6°F | 100°C = 373 K = 212°F</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Clinical Thermometry Principles</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              Accurate temperature measurement relies on the <strong>zeroth law of thermodynamics</strong>: the measuring
+              device must reach thermal equilibrium with the tissue being measured. Different sites reflect different
+              aspects of body temperature, and the choice of site and device affects accuracy and response time.
+            </p>
+            <p>
+              <strong>Core temperature</strong> is best reflected by the <strong>pulmonary artery catheter</strong> (gold
+              standard), <strong>distal oesophageal probe</strong> (lower third, near the heart — not upper oesophagus which
+              is cooled by tracheal gases), and <strong>nasopharyngeal probe</strong> (reflects brain temperature, placed along
+              the floor of the nose to the posterior pharynx). <strong>Tympanic membrane</strong> thermometry uses infrared
+              detection of the tympanic membrane (shared blood supply with hypothalamus via the internal carotid artery) and
+              provides a rapid, non-invasive estimate of core temperature.
+            </p>
+            <p>
+              <strong>Peripheral sites</strong> (axillary, skin) are typically 0.5–1°C lower than core and are influenced by
+              ambient conditions and peripheral perfusion. The <strong>core-peripheral temperature gradient</strong> (normally
+              0–2°C) widens in shock and vasoconstriction and narrows with vasodilation — it can be used as a surrogate marker
+              of perfusion. Rectal temperature lags behind rapid core changes and should not be used during malignant
+              hyperthermia monitoring.
+            </p>
+            <div className="bg-muted/30 rounded-lg p-4 mt-2">
+              <h3 className="text-sm font-semibold text-foreground mb-2">Thermometry Devices — Physical Principles</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Thermocouple:</strong> Seebeck effect — voltage generated at junction of two dissimilar metals (e.g., copper–constantan) proportional to temperature. Fast response, small gauge, used in PA catheters</li>
+                <li><strong>Thermistor:</strong> Semiconductor whose resistance decreases exponentially with temperature (negative temperature coefficient). Highly sensitive, used in oesophageal/rectal probes</li>
+                <li><strong>Resistance thermometer (RTD):</strong> Metal (platinum) whose resistance increases linearly with temperature. Very accurate, used as laboratory standard — slower response than thermistors</li>
+                <li><strong>Infrared tympanic:</strong> Detects infrared radiation (Wien's displacement law — peak wavelength ∝ 1/T). Non-contact, fast (&lt;2 s), but accuracy affected by cerumen, otitis, and probe positioning</li>
+                <li><strong>Liquid crystal:</strong> Cholesteric crystals change colour with temperature. Forehead strips — convenient but inaccurate (±1–2°C), suitable only for screening</li>
+              </ul>
+            </div>
+            <p>
+              <strong>Perioperative temperature management:</strong> Hypothermia (&lt;36°C) affects drug metabolism (prolonged
+              neuromuscular blockade, reduced MAC), coagulation (impaired platelet function, reduced enzyme activity),
+              increases wound infection rates, and triggers shivering (increasing O₂ consumption by 200–400%). NICE guidelines
+              recommend active warming for all procedures &gt;30 minutes with a target core temperature ≥36°C.
+            </p>
+          </div>
+
+        <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Gas Law Derivations</h2>
           <div className="text-muted-foreground leading-relaxed space-y-3">
             <p>
