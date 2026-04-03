@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
+import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
 
 const AbdominalAnatomyTopic = () => {
   return (
     <SectionLayout title="Abdominal & Pelvic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <AbdominalWallDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anterior Abdominal Wall Layers</h2>
