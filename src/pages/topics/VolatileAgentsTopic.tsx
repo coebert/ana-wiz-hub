@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { volatileAgentsQuiz } from "@/data/quizzes";
+import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
 
 const VolatileAgentsTopic = () => {
   return (
