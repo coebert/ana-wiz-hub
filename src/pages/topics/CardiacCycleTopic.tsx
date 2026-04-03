@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
+import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -48,6 +49,17 @@ const CardiacCycleTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <PVLoopDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Frank-Starling Curve</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The Frank-Starling mechanism describes how stroke volume increases with preload (LVEDV) up to a plateau.
+            Compare normal function with sympathetic stimulation and heart failure states.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <FrankStarlingDiagram />
           </div>
         </section>
 
