@@ -80,6 +80,8 @@ const AcidBaseTopic = () => {
         </div>
       </section>
 
+      <AcidBaseInterpretationDiagram />
+
       <KeyLearningPoints points={[
         "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio",
         "HAGMA: MUDPILES. Normal AG acidosis: renal tubular acidosis, diarrhoea, saline excess",
