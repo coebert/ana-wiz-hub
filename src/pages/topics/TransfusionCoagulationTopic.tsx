@@ -3,10 +3,12 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
+import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 
 const TransfusionCoagulationTopic = () => {
   return (
     <SectionLayout title="Transfusion & Coagulation" subtitle="FRCA / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <CoagulationCascadeDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Products</h2>
