@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
+import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 
 const VasoactiveAgentsTopic = () => {
   return (
