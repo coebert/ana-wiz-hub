@@ -1,0 +1,110 @@
+import { SectionLayout } from "@/components/SectionLayout";
+import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { lungMechanicsQuiz } from "@/data/quizzes";
+import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
+
+const LungMechanicsTopic = () => {
+  return (
+    <SectionLayout
+      title="Lung Mechanics"
+      subtitle="FRCA Primary — Physiology"
+      backPath="/physiology"
+      backLabel="Physiology"
+      accentColor="text-physiology"
+    >
+      <div className="prose prose-slate max-w-none">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Lung mechanics describes the forces that move air into and out of the lungs. Understanding compliance, resistance,
+            time constants, surfactant, and the work of breathing is fundamental to ventilator management and respiratory physiology.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Compliance Curves</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Explore the pressure-volume relationship of the lung, chest wall, and total respiratory system.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <ComplianceDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Compliance</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Compliance = ΔV / ΔP</strong> (ml/cmH₂O). It measures the distensibility of the lung or chest wall.
+            Normal lung compliance ≈ 200 ml/cmH₂O. Chest wall compliance ≈ 200 ml/cmH₂O. Total respiratory system compliance
+            ≈ 100 ml/cmH₂O (reciprocals add: 1/Ctotal = 1/Clung + 1/Cchest wall).
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Static compliance</strong> is measured at zero flow (plateau pressure). <strong>Dynamic compliance</strong>
+            includes airway resistance effects (measured using peak pressure). Dynamic &lt; static because peak pressure &gt;
+            plateau pressure.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Conditions Affecting Compliance</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              <strong>Decreased lung compliance</strong>: pulmonary fibrosis, ARDS, pulmonary oedema, atelectasis, pneumonia.
+              <strong> Decreased chest wall compliance</strong>: obesity, kyphoscoliosis, circumferential burns, abdominal
+              distension. <strong>Increased compliance</strong>: emphysema (loss of elastic recoil).
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Surfactant</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Pulmonary surfactant is produced by <strong>Type II pneumocytes</strong> from 24 weeks gestation. The major
+            component is <strong>dipalmitoylphosphatidylcholine (DPPC)</strong>. It reduces alveolar surface tension,
+            preventing collapse according to Laplace's law: <strong>P = 2T/r</strong>.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Without surfactant, small alveoli (high P = 2T/r) would empty into large alveoli. Surfactant is more concentrated
+            in smaller alveoli (greater surface tension reduction), equalising pressures and promoting alveolar stability.
+            It also reduces transudation of fluid into alveoli and improves compliance.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Airway Resistance</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Resistance = ΔP / Flow</strong> (cmH₂O/L/s). Normal airway resistance ≈ 1–2 cmH₂O/L/s. The major site
+            of resistance is medium-sized bronchi (generations 4–8) — not the smallest airways, which have enormous total
+            cross-sectional area in parallel.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Resistance increases with: bronchospasm, secretions, mucosal oedema, small ETT, high flow rates (turbulence).
+            The <strong>time constant (τ = R × C)</strong> determines the speed of inflation/deflation. 3τ = 95% equilibration.
+            Lung units with different time constants cause V/Q mismatch.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Work of Breathing</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Work = Pressure × Volume (area on the PV loop). Normal WOB ≈ 0.3–0.6 J/L. Elastic work (overcoming compliance)
+            dominates at normal breathing. Resistive work dominates during tachypnoea or in obstructive disease. Total WOB
+            normally consumes 2–3% of total body oxygen consumption but can rise to &gt;30% in respiratory failure.
+          </p>
+        </section>
+      </div>
+
+      <KeyLearningPoints points={[
+        "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.",
+        "Static compliance uses plateau pressure; dynamic compliance uses peak pressure. Dynamic < static.",
+        "Surfactant (DPPC from Type II pneumocytes) reduces surface tension and stabilises alveoli via Laplace's law (P = 2T/r).",
+        "Major site of airway resistance: medium bronchi (generations 4-8), not small airways.",
+        "Time constant τ = R × C. 3τ required for 95% equilibration. Heterogeneous τ causes V/Q mismatch.",
+        "Normal WOB = 0.3-0.6 J/L, consuming 2-3% of VO₂. Can exceed 30% in respiratory failure."
+      ]} />
+      <QuizSection questions={lungMechanicsQuiz} />
+      <TopicCompletionToggle topicId="lung-mechanics" topicTitle="Lung Mechanics" />
+    </SectionLayout>
+  );
+};
+
+export default LungMechanicsTopic;

@@ -11,11 +11,22 @@ import PhysicsSection from "./pages/PhysicsSection.tsx";
 import PhysiologySection from "./pages/PhysiologySection.tsx";
 import PharmacologySection from "./pages/PharmacologySection.tsx";
 import GasLawsTopic from "./pages/topics/GasLawsTopic.tsx";
+import PressureMeasurementTopic from "./pages/topics/PressureMeasurementTopic.tsx";
+import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic.tsx";
+import VaporizersTopic from "./pages/topics/VaporizersTopic.tsx";
+import ElectricalSafetyTopic from "./pages/topics/ElectricalSafetyTopic.tsx";
+import PulseOximetryTopic from "./pages/topics/PulseOximetryTopic.tsx";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic.tsx";
-import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic.tsx";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic.tsx";
-import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic.tsx";
+import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic.tsx";
+import RenalPhysiologyTopic from "./pages/topics/RenalPhysiologyTopic.tsx";
 import NeuromuscularTopic from "./pages/topics/NeuromuscularTopic.tsx";
+import AutonomicNervousTopic from "./pages/topics/AutonomicNervousTopic.tsx";
+import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic.tsx";
+import IVAnaestheticsTopic from "./pages/topics/IVAnaestheticsTopic.tsx";
+import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic.tsx";
+import OpioidsTopic from "./pages/topics/OpioidsTopic.tsx";
+import MuscleRelaxantsTopic from "./pages/topics/MuscleRelaxantsTopic.tsx";
 import LocalAnaestheticsTopic from "./pages/topics/LocalAnaestheticsTopic.tsx";
 
 const queryClient = new QueryClient();
@@ -34,11 +45,22 @@ const App = () => (
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
+          <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />
+          <Route path="/physics/flow-measurement" element={<FlowMeasurementTopic />} />
+          <Route path="/physics/vaporizers" element={<VaporizersTopic />} />
+          <Route path="/physics/electrical-safety" element={<ElectricalSafetyTopic />} />
+          <Route path="/physics/pulse-oximetry" element={<PulseOximetryTopic />} />
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
-          <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
-          <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
+          <Route path="/physiology/lung-mechanics" element={<LungMechanicsTopic />} />
+          <Route path="/physiology/renal-physiology" element={<RenalPhysiologyTopic />} />
           <Route path="/physiology/neuromuscular" element={<NeuromuscularTopic />} />
+          <Route path="/physiology/autonomic-nervous" element={<AutonomicNervousTopic />} />
+          <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
+          <Route path="/pharmacology/iv-anaesthetics" element={<IVAnaestheticsTopic />} />
+          <Route path="/pharmacology/volatile-agents" element={<VolatileAgentsTopic />} />
+          <Route path="/pharmacology/opioids" element={<OpioidsTopic />} />
+          <Route path="/pharmacology/muscle-relaxants" element={<MuscleRelaxantsTopic />} />
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
