@@ -30,6 +30,7 @@ export const physicsTopics: Topic[] = [
   { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
   { id: "optics-light", title: "Optics & Light", description: "Reflection, refraction, fibreoptics, Beer-Lambert law, and spectrophotometry", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "electricity-magnetism", title: "Electricity & Magnetism", description: "Ohm's law, capacitance, inductance, transformers, and the Wheatstone bridge", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "statistics-ebm", title: "Statistics & Evidence-Based Medicine", description: "Study design, p-values, odds ratios, NNT, sensitivity/specificity, and common statistical tests", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [

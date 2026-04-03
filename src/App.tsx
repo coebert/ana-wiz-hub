@@ -34,6 +34,7 @@ import ClinicalMeasurementTopic from "./pages/topics/ClinicalMeasurementTopic";
 import SIUnitsThermodynamicsTopic from "./pages/topics/SIUnitsThermodynamicsTopic";
 import OpticsLightTopic from "./pages/topics/OpticsLightTopic";
 import ElectricityMagnetismTopic from "./pages/topics/ElectricityMagnetismTopic";
+import StatisticsEBMTopic from "./pages/topics/StatisticsEBMTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
@@ -121,6 +122,7 @@ const App = () => (
           <Route path="/physics/si-units-thermodynamics" element={<SIUnitsThermodynamicsTopic />} />
           <Route path="/physics/optics-light" element={<OpticsLightTopic />} />
           <Route path="/physics/electricity-magnetism" element={<ElectricityMagnetismTopic />} />
+          <Route path="/physics/statistics-ebm" element={<StatisticsEBMTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
