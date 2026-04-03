@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const PharmacokineticsTopic = () => {
   return (
