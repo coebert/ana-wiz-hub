@@ -33,6 +33,7 @@ import DefibrillationPacingTopic from "./pages/topics/DefibrillationPacingTopic"
 import ClinicalMeasurementTopic from "./pages/topics/ClinicalMeasurementTopic";
 import SIUnitsThermodynamicsTopic from "./pages/topics/SIUnitsThermodynamicsTopic";
 import OpticsLightTopic from "./pages/topics/OpticsLightTopic";
+import ElectricityMagnetismTopic from "./pages/topics/ElectricityMagnetismTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
