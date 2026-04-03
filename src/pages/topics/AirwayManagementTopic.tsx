@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
+import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const AirwayManagementTopic = () => {
@@ -13,6 +15,26 @@ const AirwayManagementTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Airway management is the cornerstone of anaesthetic practice and critical care. The Difficult Airway Society (DAS) guidelines provide structured algorithms for unanticipated difficult intubation. Understanding equipment, techniques, and rescue pathways is essential for safe practice.
           </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Devices Comparison</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Compare endotracheal tubes, supraglottic airways, and videolaryngoscope types with cross-sectional diagrams.
+          </p>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <AirwayDevicesDiagram />
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Breathing Circuits</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Explore the different breathing systems with animated gas flow. Understand the efficiency of each for spontaneous vs controlled ventilation.
+          </p>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <BreathingCircuitDiagram />
+          </div>
         </div>
 
         <div>
@@ -39,27 +61,6 @@ const AirwayManagementTopic = () => {
         </div>
 
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Supraglottic Airway Devices</h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-lg border border-border">
-              <h3 className="font-semibold text-foreground mb-2">1st Generation</h3>
-              <p className="text-sm text-muted-foreground">Classic LMA — single lumen, no gastric drain port. Higher aspiration risk. Adequate for spontaneous ventilation.</p>
-            </div>
-            <div className="p-4 rounded-lg border border-border">
-              <h3 className="font-semibold text-foreground mb-2">2nd Generation</h3>
-              <p className="text-sm text-muted-foreground">i-gel, ProSeal — integrated gastric drain channel, higher seal pressures (25-35 cmH₂O). Safer for PPV and rescue airway.</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Videolaryngoscopy</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Videolaryngoscopy improves glottic view (Cormack-Lehane grade) and first-pass success rates. NAP4 recommends availability in all anaesthetic locations. Types include channelled (Airtraq, King Vision) and non-channelled (McGrath, C-MAC) — channelled devices guide the tube but have a steeper learning curve.
-          </p>
-        </div>
-
-        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Front-of-Neck Access (FONA)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The scalpel-bougie-tube technique is the DAS-recommended surgical airway for can't intubate, can't oxygenate (CICO):
@@ -77,10 +78,10 @@ const AirwayManagementTopic = () => {
 
       <KeyLearningPoints points={[
         "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA",
-        "Maximum 3+1 intubation attempts before moving to Plan B",
-        "2nd-generation SADs have gastric drain ports and higher seal pressures",
+        "2nd-gen SADs have gastric drain ports and seal pressures 25-35 cmH₂O",
+        "Mapleson A most efficient for spontaneous, D (Bain) for controlled ventilation",
+        "Circle system allows low-flow anaesthesia (FGF = metabolic O₂ consumption)",
         "CICO requires early declaration and immediate scalpel cricothyroidotomy",
-        "Videolaryngoscopy should be available as first-line or early rescue",
       ]} />
 
       <QuizSection questions={airwayManagementQuestions} />
