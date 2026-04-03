@@ -119,7 +119,7 @@ const NeuromuscularTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground">The Safety Margin</h2>
           <p className="text-foreground/90 leading-relaxed">
             The NMJ has a large safety margin: approximately 70-80% of receptors must be blocked before clinical
-            weakness becomes apparent, and >90% must be blocked for complete paralysis. This is exploited in
+            weakness becomes apparent, and {'>'}90% must be blocked for complete paralysis. This is exploited in
             neuromuscular monitoring — train-of-four fade appears when ~75% of receptors are occupied, and single
             twitch depression requires ~80% blockade.
           </p>
