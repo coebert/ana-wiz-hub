@@ -63,6 +63,18 @@ export default {
           DEFAULT: "hsl(var(--pharmacology))",
           light: "hsl(var(--pharmacology-light))",
         },
+        clinical: {
+          DEFAULT: "hsl(var(--clinical))",
+          light: "hsl(var(--clinical-light))",
+        },
+        icu: {
+          DEFAULT: "hsl(var(--icu))",
+          light: "hsl(var(--icu-light))",
+        },
+        perioperative: {
+          DEFAULT: "hsl(var(--perioperative))",
+          light: "hsl(var(--perioperative-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
