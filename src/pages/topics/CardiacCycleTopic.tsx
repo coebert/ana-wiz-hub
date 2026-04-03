@@ -2,6 +2,8 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { QuizSection } from "@/components/QuizSection";
+import { cardiacCycleQuiz } from "@/data/quizzes";
 
 const CardiacCycleTopic = () => {
   return (
