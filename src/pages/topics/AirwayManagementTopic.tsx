@@ -4,11 +4,13 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { AirwayDevicesDiagram } from "@/components/diagrams/AirwayDevicesDiagram";
 import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitDiagram";
+import DASAlgorithmDiagram from "@/components/diagrams/DASAlgorithmDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const AirwayManagementTopic = () => {
   return (
     <SectionLayout title="Airway Management" subtitle="FRCA Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+      <DASAlgorithmDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
