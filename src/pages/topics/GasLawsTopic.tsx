@@ -121,6 +121,7 @@ const GasLawsTopic = () => {
         "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.",
         "Understanding gas behaviour is critical for safe use of medical gas systems, ventilation, and altitude/diving physiology."
       ]} />
+      <TopicCompletionToggle topicId="gas-laws" topicTitle="Gas Laws" />
     </SectionLayout>
   );
 };

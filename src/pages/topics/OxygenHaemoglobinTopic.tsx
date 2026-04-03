@@ -110,6 +110,7 @@ const OxygenHaemoglobinTopic = () => {
         "The flat upper portion provides a safety margin; the steep middle section means SpO₂ drops rapidly once PaO₂ falls below ~60 mmHg.",
         "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat part of the curve."
       ]} />
+      <TopicCompletionToggle topicId="oxygen-haemoglobin" topicTitle="Oxygen-Haemoglobin Dissociation" />
     </SectionLayout>
   );
 };
