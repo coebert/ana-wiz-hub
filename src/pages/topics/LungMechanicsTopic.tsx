@@ -15,6 +15,7 @@ import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWave
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
 import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
+import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -227,6 +228,19 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <VILIDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">PV Recruitment Curve & Hysteresis</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The static pressure-volume curve reveals lower and upper inflection points that guide PEEP and plateau pressure targets.
+            Hysteresis between inflation and deflation limbs demonstrates that recruited alveoli remain open at lower pressures than required to initially open them.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <PVRecruitmentDiagram />
           </div>
         </section>
       </div>
