@@ -97,11 +97,14 @@ const LungMechanicsTopic = () => {
 
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Work of Breathing</h2>
-          <p className="text-foreground/90 leading-relaxed">
+          <p className="text-foreground/90 leading-relaxed mb-4">
             Work = Pressure × Volume (area on the PV loop). Normal WOB ≈ 0.3–0.6 J/L. Elastic work (overcoming compliance)
             dominates at normal breathing. Resistive work dominates during tachypnoea or in obstructive disease. Total WOB
             normally consumes 2–3% of total body oxygen consumption but can rise to &gt;30% in respiratory failure.
           </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <PVLoopWOBDiagram />
+          </div>
         </section>
       </div>
 
