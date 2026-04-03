@@ -73,7 +73,7 @@ const CardiacOutputMonitoringTopic = () => {
       <PiCCODiagram />
       <PACDiagram />
 
-        "PAC is the gold standard but PAC-Man trial showed no mortality benefit from routine use",
+        <KeyLearningPoints points={[
         "PiCCO provides continuous CO + EVLWI (lung water) — useful in ARDS fluid management",
         "Oesophageal Doppler FTc <330 ms suggests hypovolaemia — used for GDT",
         "Uncalibrated systems (FloTrac) are convenient but less accurate in vasoplegia",
