@@ -154,7 +154,14 @@ const PiCCODiagram = () => {
                   <span className="text-muted-foreground">Normal range: </span>
                   <span className="font-bold text-foreground">{p.normal}</span>
                 </div>
-                <p className="text-muted-foreground">{p.interpretation}</p>
+                <div className="p-2 rounded bg-background border border-border">
+                  <span className="font-semibold text-foreground">How it's measured: </span>
+                  <span className="text-muted-foreground">{p.measurement}</span>
+                </div>
+                <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                  <span className="font-semibold text-foreground">Interpretation: </span>
+                  <span className="text-muted-foreground">{p.interpretation}</span>
+                </div>
               </div>
             );
           })()}
