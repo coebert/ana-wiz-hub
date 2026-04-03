@@ -87,6 +87,7 @@ const App = () => (
           <Route path="/clinical" element={<ClinicalSection />} />
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
+          <Route path="/anatomy" element={<AnatomySection />} />
           {/* Physics */}
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
           <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />

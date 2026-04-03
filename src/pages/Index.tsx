@@ -42,6 +42,15 @@ const sections: {
     sectionKey: "pharmacology",
   },
   {
+    title: "Anatomy",
+    description: "Airway, cardiac, spinal, brachial plexus, thoracic, abdominal, head & neck, and neuroanatomy",
+    icon: Bone,
+    path: "/anatomy",
+    cardClass: "section-card-anatomy",
+    iconColor: "text-anatomy",
+    sectionKey: "anatomy",
+  },
+  {
     title: "Clinical Anaesthesia",
     description: "Airway, regional, obstetric, paediatric, neuro, cardiothoracic, and pain",
     icon: Stethoscope,
