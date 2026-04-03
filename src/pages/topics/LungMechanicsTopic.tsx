@@ -14,6 +14,7 @@ import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import { AutoPEEPDiagram } from "@/components/diagrams/AutoPEEPDiagram";
 import { TranspulmonaryPressureDiagram } from "@/components/diagrams/TranspulmonaryPressureDiagram";
+import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -213,6 +214,19 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <TranspulmonaryPressureDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">VILI: Stress, Strain & Mechanical Power</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Ventilator-induced lung injury results from excessive stress (transpulmonary pressure) and strain (tidal deformation relative to FRC).
+            Mechanical power unifies VT, driving pressure, RR, flow, and PEEP into a single energy-based metric for VILI risk assessment.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <VILIDiagram />
           </div>
         </section>
       </div>
