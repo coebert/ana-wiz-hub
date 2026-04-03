@@ -23,6 +23,7 @@ import ElectricalSafetyTopic from "./pages/topics/ElectricalSafetyTopic";
 import PulseOximetryTopic from "./pages/topics/PulseOximetryTopic";
 import ABGAnalyserTopic from "./pages/topics/ABGAnalyserTopic";
 import TemperatureMeasurementTopic from "./pages/topics/TemperatureMeasurementTopic";
+import HumidityGasSamplingTopic from "./pages/topics/HumidityGasSamplingTopic";
 import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
 import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
 import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
@@ -99,6 +100,7 @@ const App = () => (
           <Route path="/physics/pulse-oximetry" element={<PulseOximetryTopic />} />
           <Route path="/physics/abg-analyser" element={<ABGAnalyserTopic />} />
           <Route path="/physics/temperature-measurement" element={<TemperatureMeasurementTopic />} />
+          <Route path="/physics/humidity-gas-sampling" element={<HumidityGasSamplingTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
