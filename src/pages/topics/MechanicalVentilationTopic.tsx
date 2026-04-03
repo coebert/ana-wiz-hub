@@ -75,6 +75,8 @@ const MechanicalVentilationTopic = () => {
         </div>
       </section>
 
+      <VentilatorWaveformsGuideDiagram />
+
       <KeyLearningPoints points={[
         "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",
         "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
