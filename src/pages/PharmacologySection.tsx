@@ -2,8 +2,13 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
 import { pharmacologyTopics } from "@/data/curriculum";
 import { Badge } from "@/components/ui/badge";
+import { ProgressRing } from "@/components/ProgressRing";
+import { useProgress } from "@/contexts/ProgressContext";
 
 const PharmacologySection = () => {
+  const { getSectionProgress } = useProgress();
+  const progress = getSectionProgress("pharmacology");
+
   return (
     <SectionLayout
       title="Pharmacology"
@@ -12,6 +17,13 @@ const PharmacologySection = () => {
       backLabel="Home"
       accentColor="text-pharmacology"
     >
+      <div className="flex items-center gap-3 mb-6 p-4 rounded-lg bg-card border border-border">
+        <ProgressRing completed={progress.completed} total={progress.total} size={48} />
+        <div>
+          <p className="text-sm font-medium text-foreground">{progress.completed} of {progress.total} topics completed</p>
+          <p className="text-xs text-muted-foreground">Available pharmacology topics</p>
+        </div>
+      </div>
       <div className="space-y-3">
         {pharmacologyTopics.map((topic) => (
           <div key={topic.id} className="relative">
@@ -25,6 +37,7 @@ const PharmacologySection = () => {
               description={topic.description}
               path={topic.available ? `/pharmacology/${topic.id}` : "#"}
               section="pharmacology"
+              topicId={topic.available ? topic.id : undefined}
             />
           </div>
         ))}

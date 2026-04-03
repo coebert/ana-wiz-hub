@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const CardiacCycleTopic = () => {
   return (
@@ -150,6 +151,7 @@ const CardiacCycleTopic = () => {
         "LA pressure trace: a wave (atrial contraction), c wave (AV bulge), v wave (atrial filling), x and y descents.",
         "Giant a waves suggest tricuspid stenosis or cannon waves in complete heart block; giant v waves suggest mitral/tricuspid regurgitation."
       ]} />
+      <TopicCompletionToggle topicId="cardiac-cycle" topicTitle="The Cardiac Cycle" />
     </SectionLayout>
   );
 };

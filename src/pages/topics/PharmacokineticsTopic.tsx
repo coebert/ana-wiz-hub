@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const PharmacokineticsTopic = () => {
   return (
@@ -102,6 +103,7 @@ const PharmacokineticsTopic = () => {
         "Half-life (t½ = 0.693 × Vd / Cl) determines time to steady state (~4-5 half-lives).",
         "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT."
       ]} />
+      <TopicCompletionToggle topicId="pharmacokinetics" topicTitle="Pharmacokinetic Principles" />
     </SectionLayout>
   );
 };
