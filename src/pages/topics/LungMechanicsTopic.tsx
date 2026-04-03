@@ -17,6 +17,7 @@ import { TranspulmonaryPressureDiagram } from "@/components/diagrams/Transpulmon
 import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
 import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
+import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
 
 const LungMechanicsTopic = () => {
   return (
@@ -256,6 +257,20 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <ControlOfBreathingDiagram />
+          </div>
+        </section>
+      </div>
+
+      <div className="prose prose-slate max-w-none mb-10">
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Diffusion & Gas Transfer</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Gas transfer across the alveolar-capillary membrane is governed by Fick's law of diffusion.
+            DLCO (transfer factor) measures the lung's ability to transfer gas and is determined by membrane conductance and
+            red cell uptake capacity.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <DiffusionCapacityDiagram />
           </div>
         </section>
       </div>
