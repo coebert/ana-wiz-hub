@@ -114,6 +114,7 @@ const App = () => (
           <Route path="/physics/breathing-circuits" element={<BreathingCircuitsTopic />} />
           <Route path="/physics/anaesthetic-machine" element={<AnaestheticMachineTopic />} />
           <Route path="/physics/defibrillation-pacing" element={<DefibrillationPacingTopic />} />
+          <Route path="/physics/clinical-measurement" element={<ClinicalMeasurementTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
