@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
+import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
