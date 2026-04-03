@@ -18,7 +18,7 @@ export const physicsTopics: Topic[] = [
 
 export const physiologyTopics: Topic[] = [
   { id: "oxygen-haemoglobin", title: "Oxygen-Haemoglobin Dissociation", description: "The ODC, Bohr effect, factors shifting the curve, oxygen delivery", section: "physiology", examLevel: "primary", available: true },
-  { id: "cardiac-cycle", title: "The Cardiac Cycle", description: "Pressure-volume loops, Wiggers diagram, cardiac output", section: "physiology", examLevel: "primary", available: false },
+  { id: "cardiac-cycle", title: "The Cardiac Cycle", description: "Pressure-volume loops, Wiggers diagram, cardiac output", section: "physiology", examLevel: "primary", available: true },
   { id: "lung-mechanics", title: "Lung Mechanics", description: "Compliance, resistance, surfactant, work of breathing", section: "physiology", examLevel: "primary", available: false },
   { id: "renal-physiology", title: "Renal Physiology", description: "GFR, tubular function, acid-base balance, electrolyte handling", section: "physiology", examLevel: "primary", available: false },
   { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examLevel: "primary", available: false },
