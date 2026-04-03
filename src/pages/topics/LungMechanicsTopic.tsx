@@ -85,6 +85,16 @@ const LungMechanicsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Flow-Volume Loops</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Flow-volume loops are essential for distinguishing obstructive from restrictive patterns and identifying upper airway obstruction.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <FlowVolumeLoopDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Work of Breathing</h2>
           <p className="text-foreground/90 leading-relaxed">
             Work = Pressure × Volume (area on the PV loop). Normal WOB ≈ 0.3–0.6 J/L. Elastic work (overcoming compliance)
