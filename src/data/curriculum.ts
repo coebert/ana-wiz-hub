@@ -25,6 +25,7 @@ export const physicsTopics: Topic[] = [
   { id: "mri-physics", title: "MRI Physics", description: "Nuclear spin, precession, T1/T2 relaxation, MRI safety for anaesthetists", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "breathing-circuits", title: "Breathing Circuits & Scavenging", description: "Mapleson classification, circle system, soda lime, scavenging systems", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "anaesthetic-machine", title: "The Anaesthetic Machine", description: "Pipeline supply, cylinder storage, pressure regulators, flowmeters, and safety features", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "defibrillation-pacing", title: "Defibrillation & Pacing", description: "Monophasic vs biphasic waveforms, transthoracic impedance, pacemaker modes, and EMI", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [

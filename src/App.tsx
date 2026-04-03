@@ -112,6 +112,7 @@ const App = () => (
           <Route path="/physics/mri-physics" element={<MRIPhysicsTopic />} />
           <Route path="/physics/breathing-circuits" element={<BreathingCircuitsTopic />} />
           <Route path="/physics/anaesthetic-machine" element={<AnaestheticMachineTopic />} />
+          <Route path="/physics/defibrillation-pacing" element={<DefibrillationPacingTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
