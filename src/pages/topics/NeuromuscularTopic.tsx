@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
+import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -139,8 +140,9 @@ const NeuromuscularTopic = () => {
         </section>
       </div>
 
-      <KeyLearningPoints points={[
-        "The NMJ sequence: AP → Ca²⁺ influx → vesicle fusion → ACh release → nAChR binding → EPP → muscle AP → contraction.",
+      <NeuromuscularMonitoringDiagram />
+
+        <KeyLearningPoints points={[
         "Adult nAChR subunit composition is α₂βδε; fetal/extrajunctional receptors contain γ instead of ε.",
         "Two ACh molecules must bind (one per α subunit) to open the nAChR channel.",
         "AChE rapidly hydrolyses ACh to choline + acetate; choline is recycled via active reuptake.",
