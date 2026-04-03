@@ -6,6 +6,7 @@ import { lungMechanicsQuiz } from "@/data/quizzes";
 import { ComplianceDiagram } from "@/components/diagrams/ComplianceDiagram";
 import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagram";
 import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
+import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 
 const LungMechanicsTopic = () => {
   return (
