@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanatomyQuestions } from "@/data/quizzes";
 import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
+import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 
 const NeuroanatomyTopic = () => {
   return (
@@ -44,6 +45,8 @@ const NeuroanatomyTopic = () => {
             ))}
           </div>
         </div>
+
+        <SkullBaseDiagram />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
