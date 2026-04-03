@@ -3,11 +3,13 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
+import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 
 const CardiacAnatomyTopic = () => {
   return (
     <SectionLayout title="Cardiac & Great Vessel Anatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
       <section className="space-y-6 mb-10">
+        <CardiacAnatomyDiagram />
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Chambers & Valves</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
