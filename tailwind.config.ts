@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Playfair Display', 'serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -46,6 +50,18 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        physics: {
+          DEFAULT: "hsl(var(--physics))",
+          light: "hsl(var(--physics-light))",
+        },
+        physiology: {
+          DEFAULT: "hsl(var(--physiology))",
+          light: "hsl(var(--physiology-light))",
+        },
+        pharmacology: {
+          DEFAULT: "hsl(var(--pharmacology))",
+          light: "hsl(var(--pharmacology-light))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
