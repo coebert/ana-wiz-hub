@@ -20,6 +20,7 @@ export const physicsTopics: Topic[] = [
   { id: "abg-analyser", title: "ABG Analyser & Gas Measurement", description: "pH electrode, Clark electrode, Severinghaus electrode, galvanic fuel cell", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "temperature-measurement", title: "Temperature Measurement", description: "Thermocouples, thermistors, resistance thermometers, infrared tympanic thermometry", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "humidity-gas-sampling", title: "Humidity & Gas Analysis", description: "Pneumotachographs, mass spectrometry, Raman scattering, humidification physics", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "lasers-fibreoptics", title: "Lasers & Fibreoptics", description: "LASER principles, fibreoptic light transmission, total internal reflection, clinical applications", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
