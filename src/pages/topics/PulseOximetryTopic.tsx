@@ -89,14 +89,8 @@ const PulseOximetryTopic = () => {
             descent (inspiration begins). The <strong>α angle</strong> (II–III junction) and <strong>β angle</strong>
             (III–IV junction) reflect V/Q mismatch when abnormal.
           </p>
-          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
-            <p className="text-sm font-medium text-foreground">Clinical Patterns</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              <strong>Sudden EtCO₂ = 0</strong>: oesophageal intubation, disconnection, cardiac arrest. <strong>Rising
-              baseline</strong>: rebreathing (exhausted soda lime). <strong>Steep phase III</strong>: bronchospasm, COPD.
-              <strong> Exponential fall to zero</strong>: cardiac arrest. <strong>Curare cleft</strong>: diaphragmatic
-              movement during partial neuromuscular recovery.
-            </p>
+          <div className="bg-card rounded-xl border border-border p-4 mt-4">
+            <CapnographyDiagram />
           </div>
         </section>
       </div>
