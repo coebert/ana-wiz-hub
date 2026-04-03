@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
 const GasLawsTopic = () => {
   return (
