@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
+import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
 import { akiRrtQuestions } from "@/data/quizzes";
 
 const AkiRrtTopic = () => {
@@ -90,6 +91,8 @@ const AkiRrtTopic = () => {
           </div>
         </div>
       </section>
+
+      <RRTModalitiesDiagram />
 
       <KeyLearningPoints points={[
         "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output",
