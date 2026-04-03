@@ -59,6 +59,8 @@
     --icu-light: 260 40% 95%;
     --perioperative: 45 70% 45%;
     --perioperative-light: 45 60% 95%;
+    --anatomy: 190 60% 42%;
+    --anatomy-light: 190 50% 95%;
 
     --gradient-hero: linear-gradient(135deg, hsl(210 70% 35%), hsl(200 60% 45%), hsl(170 50% 40%));
     --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 15% 96%));
