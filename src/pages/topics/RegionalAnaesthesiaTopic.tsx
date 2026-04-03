@@ -41,7 +41,7 @@ const RegionalAnaesthesiaTopic = () => {
               </thead>
               <tbody className="text-muted-foreground">
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Onset</td><td>Rapid (5–10 min)</td><td>Slow (15–30 min)</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Block density</td><td>Dense motor + sensory</td><td>Differential (sensory > motor)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Block density</td><td>Dense motor + sensory</td><td>Differential (sensory {'>'} motor)</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">LA dose</td><td>Small (2–3 ml)</td><td>Large (10–20 ml)</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Duration</td><td>Fixed (single-shot)</td><td>Titrable (catheter)</td></tr>
                 <tr><td className="py-2 font-medium text-foreground">Hypotension</td><td>Rapid, profound</td><td>Gradual, manageable</td></tr>
