@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
+import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 
 const AcidBaseTopic = () => {
   return (
@@ -78,6 +79,8 @@ const AcidBaseTopic = () => {
           </div>
         </div>
       </section>
+
+      <AcidBaseInterpretationDiagram />
 
       <KeyLearningPoints points={[
         "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio",
