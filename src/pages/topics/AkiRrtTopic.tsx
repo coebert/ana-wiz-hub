@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
+import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
 import { akiRrtQuestions } from "@/data/quizzes";
 
 const AkiRrtTopic = () => {
