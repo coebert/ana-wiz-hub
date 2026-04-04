@@ -126,7 +126,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
       <div className="bg-secondary/30 rounded-xl p-3 border border-border space-y-2">
         <Slider label="Membrane Thickness (T)" value={thickness} min={0.2} max={3.0} step={0.1} unit="μm" onChange={setThickness} />
         <Slider label="Surface Area (A)" value={area} min={10} max={100} step={1} unit="m²" onChange={setArea} />
-        <Slider label="Pressure Gradient (ΔP)" value={gradient} min={5} max={100} step={1} unit="mmHg" onChange={setGradient} />
+        <Slider label="Pressure Gradient (ΔP)" value={gradient} min={0.7} max={13.3} step={0.1} unit="kPa" onChange={setGradient} />
         <div>
           <div className="flex justify-between text-xs mb-0.5">
             <span className="text-muted-foreground">Gas Solubility</span>
