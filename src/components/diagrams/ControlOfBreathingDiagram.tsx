@@ -388,13 +388,14 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
 function Slider({ label, value, min, max, unit, onChange }: {
   label: string; value: number; min: number; max: number; unit: string; onChange: (v: number) => void;
 }) {
+  const step = max - min < 20 ? 0.1 : 1;
   return (
     <div>
       <div className="flex justify-between text-xs mb-0.5">
         <span className="text-muted-foreground">{label}</span>
-        <span className="font-mono font-semibold text-foreground">{value} {unit}</span>
+        <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
       </div>
-      <input type="range" min={min} max={max} value={value}
+      <input type="range" min={min} max={max} step={step} value={value}
         onChange={e => onChange(Number(e.target.value))}
         className="w-full h-2 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
     </div>
