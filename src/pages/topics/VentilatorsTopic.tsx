@@ -160,6 +160,7 @@ const modernVentilators = [
     name: "GE Aisys CS²",
     setting: "Anaesthesia (Operating Theatre)",
     type: "Piston-Driven, Electronically Controlled",
+    image: aisysImg,
     features: [
       "Piston ventilator — accurate VT independent of FGF",
       "Advanced modes including PCV-VG (Pressure-Controlled Volume-Guaranteed)",
