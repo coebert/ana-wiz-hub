@@ -35,56 +35,112 @@ const PHASES: Phase[] = [
     description: "Slow passive filling as LA-LV pressure gradient equilibrates. Shortened at higher heart rates — diastole is disproportionately reduced. S4 if atrial contraction into stiff ventricle." },
 ];
 
-// Pressure generators (mmHg)
+// Pressure generators (mmHg) — improved physiological accuracy
 const aorticPressure = (f: number): number => {
   const t = f / TOTAL_FRAMES;
-  if (t < 0.13) return 80 + t * 100;
-  if (t < 0.23) return 80 + 13 + Math.sin((t - 0.13) / 0.1 * Math.PI) * 40;
-  if (t < 0.43) return 120 - (t - 0.23) * 80;
-  if (t < 0.47) return 104 - (t - 0.43) * 200 + 8;
-  if (t < 0.5) return 95 + Math.sin((t - 0.47) / 0.03 * Math.PI) * 5;
-  return 80 + (1 - t) * 20;
+  if (t < 0.13) return 80; // diastole before aortic valve opens
+  if (t < 0.23) {
+    // Rapid ejection — pressure rises to ~120
+    const frac = (t - 0.13) / 0.1;
+    return 80 + 40 * Math.sin(frac * Math.PI * 0.5);
+  }
+  if (t < 0.43) {
+    // Reduced ejection — gradual fall then dicrotic notch
+    const frac = (t - 0.23) / 0.2;
+    if (frac < 0.85) {
+      return 120 - frac * 25; // gradual decline
+    }
+    // Dicrotic notch — brief dip then small rebound
+    const notchFrac = (frac - 0.85) / 0.15;
+    if (notchFrac < 0.5) {
+      return 99 - Math.sin(notchFrac * Math.PI) * 12; // dip to ~87
+    }
+    return 92 + Math.sin((notchFrac - 0.5) * Math.PI) * 5; // rebound to ~97
+  }
+  if (t < 0.5) {
+    // Post-notch rebound settling
+    return 95 - (t - 0.43) / 0.07 * 5;
+  }
+  // Diastolic runoff — exponential decay toward 80
+  return 80 + 10 * Math.exp(-(t - 0.5) / 0.15);
 };
 
 const lvPressure = (f: number): number => {
   const t = f / TOTAL_FRAMES;
-  if (t < 0.05) return 8 + t * 40;
-  if (t < 0.13) return 10 + ((t - 0.05) / 0.08) * 70;
-  if (t < 0.23) return 80 + Math.sin((t - 0.13) / 0.1 * Math.PI) * 45;
-  if (t < 0.43) return 125 - ((t - 0.23) / 0.2) * 115;
-  if (t < 0.6) return 10 * Math.max(0, 1 - (t - 0.43) / 0.17);
-  return 2 + (t - 0.6) * 15;
+  if (t < 0.04) return 8 + t * 50; // atrial kick raises LVEDP to ~10
+  if (t < 0.13) {
+    // Isovolumetric contraction — rapid rise from 10 to 80
+    const frac = (t - 0.04) / 0.09;
+    return 10 + 70 * Math.pow(frac, 0.7);
+  }
+  if (t < 0.23) {
+    // Rapid ejection — rise to peak ~125
+    const frac = (t - 0.13) / 0.1;
+    return 80 + 45 * Math.sin(frac * Math.PI * 0.5);
+  }
+  if (t < 0.43) {
+    // Reduced ejection — falls from 125 to ~100, then rapid drop at valve closure
+    const frac = (t - 0.23) / 0.2;
+    return 125 - 25 * frac - 20 * Math.pow(frac, 3);
+  }
+  if (t < 0.6) {
+    // Isovolumetric relaxation — rapid exponential pressure drop
+    const frac = (t - 0.43) / 0.17;
+    return 80 * Math.exp(-frac * 4);
+  }
+  // Diastole — low pressure filling
+  return 2 + (t - 0.6) * 18;
 };
 
 const laPressure = (f: number): number => {
   const t = f / TOTAL_FRAMES;
-  const aWave = t < 0.1 ? Math.sin(t / 0.1 * Math.PI) * 6 : 0;
-  const cWave = t > 0.12 && t < 0.2 ? Math.sin((t - 0.12) / 0.08 * Math.PI) * 3 : 0;
-  const vWave = t > 0.3 && t < 0.6 ? Math.sin((t - 0.3) / 0.3 * Math.PI) * 8 : 0;
-  return 6 + aWave + cWave + vWave;
+  // a wave: atrial contraction (0–0.1)
+  const aWave = t < 0.1 ? Math.sin(t / 0.1 * Math.PI) * 7 : 0;
+  // x descent: atrial relaxation + AV ring descent (0.1–0.35)
+  const xDescent = (t > 0.1 && t < 0.35) ? -Math.sin((t - 0.1) / 0.25 * Math.PI) * 4 : 0;
+  // c wave: AV valve bulge during isovolumetric contraction (0.13–0.18)
+  const cWave = (t > 0.12 && t < 0.2) ? Math.sin((t - 0.12) / 0.08 * Math.PI) * 3.5 : 0;
+  // v wave: passive atrial filling behind closed MV (0.3–0.6)
+  const vWave = (t > 0.3 && t < 0.6) ? Math.sin((t - 0.3) / 0.3 * Math.PI) * 10 : 0;
+  // y descent: rapid atrial emptying when MV opens (0.6–0.75)
+  const yDescent = (t > 0.6 && t < 0.75) ? -Math.sin((t - 0.6) / 0.15 * Math.PI * 0.5) * 6 : 0;
+  return 7 + aWave + xDescent + cWave + vWave + yDescent;
 };
 
-// Ventricular volume (ml)
+// Ventricular volume (ml) — smoother transitions
 const lvVolume = (f: number): number => {
   const t = f / TOTAL_FRAMES;
-  if (t < 0.13) return 105 + Math.sin(t / 0.13 * Math.PI * 0.5) * 15; // atrial kick → EDV ~120
-  if (t < 0.23) return 120; // isovolumetric contraction
-  if (t < 0.43) return 120 - ((t - 0.23) / 0.2) * 65; // ejection → ~55 (rapid then reduced)
-  if (t < 0.6) return 50; // isovolumetric relaxation ~ESV
-  if (t < 0.87) return 50 + ((t - 0.6) / 0.27) * 55; // filling
+  if (t < 0.04) return 105 + Math.sin(t / 0.04 * Math.PI * 0.5) * 15; // atrial kick → EDV ~120
+  if (t < 0.13) return 120; // isovolumetric contraction
+  if (t < 0.23) return 120 - ((t - 0.13) / 0.1) * 45; // rapid ejection (2/3 SV)
+  if (t < 0.43) return 75 - ((t - 0.23) / 0.2) * 25; // reduced ejection → ESV ~50
+  if (t < 0.6) return 50; // isovolumetric relaxation
+  if (t < 0.7) return 50 + ((t - 0.6) / 0.1) * 40; // rapid filling (70-80%)
+  if (t < 0.87) return 90 + ((t - 0.7) / 0.17) * 15; // diastasis (slow filling)
   return 105;
 };
 
 const ecgWaveform = (f: number): number => {
   const t = f / TOTAL_FRAMES;
-  if (t < 0.08) return 0.5 + Math.sin(t / 0.08 * Math.PI) * 0.08;
+  // P wave — smooth dome (atrial depolarisation)
+  if (t < 0.08) return 0.5 + Math.sin(t / 0.08 * Math.PI) * 0.06;
+  // PR segment
   if (t < 0.12) return 0.5;
-  if (t < 0.13) return 0.5 - (t - 0.12) / 0.01 * 0.1;
-  if (t < 0.15) return 0.4 + ((t - 0.13) / 0.02) * 0.5;
-  if (t < 0.17) return 0.9 - ((t - 0.15) / 0.02) * 0.55;
-  if (t < 0.19) return 0.35 + ((t - 0.17) / 0.02) * 0.15;
-  if (t < 0.28) return 0.5;
-  if (t < 0.4) return 0.5 + Math.sin((t - 0.28) / 0.12 * Math.PI) * 0.1;
+  // Q wave
+  if (t < 0.13) return 0.5 - (t - 0.12) / 0.01 * 0.08;
+  // R wave — sharp peak
+  if (t < 0.145) return 0.42 + ((t - 0.13) / 0.015) * 0.52;
+  // S wave
+  if (t < 0.16) return 0.94 - ((t - 0.145) / 0.015) * 0.55;
+  // ST return
+  if (t < 0.18) return 0.39 + ((t - 0.16) / 0.02) * 0.11;
+  // ST segment
+  if (t < 0.25) return 0.5;
+  // T wave — broader, asymmetric
+  if (t < 0.38) {
+    const tFrac = (t - 0.25) / 0.13;
+    return 0.5 + Math.sin(tFrac * Math.PI) * 0.08 * (1 - tFrac * 0.3);
+  }
   return 0.5;
 };
 
