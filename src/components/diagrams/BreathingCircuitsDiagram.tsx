@@ -316,15 +316,14 @@ const MaplesonTab = () => {
             <PatientEnd cx={445} cy={55} />
             <line x1="403" y1="55" x2="435" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
 
-            {/* Animated flow when selected */}
-            {selected === "A" && phase === "insp" && (
+            {/* Flow arrows — always visible based on phase */}
+            {phase === "insp" && (
               <AnimFlowArrow x1={130} y1={45} x2={430} y2={45} colour={inspCol} />
             )}
-            {selected === "A" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={430} y1={65} x2={150} y2={65} colour={expCol} />
-                {/* APL exhaust */}
-                <AnimFlowArrow x1={390} y1={35} x2={390} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={390} y1={35} x2={390} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
