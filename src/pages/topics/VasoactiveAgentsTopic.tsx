@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
+import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
 
 const VasoactiveAgentsTopic = () => {
   return (
@@ -432,6 +433,11 @@ const VasoactiveAgentsTopic = () => {
         <div className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
           <VasoactiveStructures />
+        </div>
+
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Inotrope Signalling Pathways</h2>
+          <InotropeSignallingDiagram />
         </div>
 
         <div className="mb-10">
