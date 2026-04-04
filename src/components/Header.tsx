@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
@@ -43,7 +44,7 @@ export const Header = () => {
       <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <BookOpen className="h-5 w-5 text-primary" />
+            <img src={brainLogo} alt="AnaesthesiaCore" className="h-6 w-6" />
             <span className="text-base font-semibold text-foreground hidden lg:inline">
               AnaesthesiaCore
             </span>

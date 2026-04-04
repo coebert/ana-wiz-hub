@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Atom, Heart, FlaskConical, BookOpen, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
+import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
+import brainLogo from "/brain-logo.png";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
@@ -100,7 +101,7 @@ const Index = () => {
         <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
           <div className="flex justify-center mb-5">
             <div className="rounded-2xl bg-primary-foreground/20 p-4">
-              <BookOpen className="h-10 w-10 text-primary-foreground" />
+              <img src={brainLogo} alt="AnaesthesiaCore" className="h-10 w-10 invert brightness-200" />
             </div>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-4">
