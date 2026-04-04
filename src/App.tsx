@@ -40,6 +40,7 @@ const SIUnitsThermodynamicsTopic = lazy(() => import("./pages/topics/SIUnitsTher
 const OpticsLightTopic = lazy(() => import("./pages/topics/OpticsLightTopic"));
 const ElectricityMagnetismTopic = lazy(() => import("./pages/topics/ElectricityMagnetismTopic"));
 const StatisticsEBMTopic = lazy(() => import("./pages/topics/StatisticsEBMTopic"));
+const VentilatorsTopic = lazy(() => import("./pages/topics/VentilatorsTopic"));
 const OxygenHaemoglobinTopic = lazy(() => import("./pages/topics/OxygenHaemoglobinTopic"));
 const CardiacCycleTopic = lazy(() => import("./pages/topics/CardiacCycleTopic"));
 const LungMechanicsTopic = lazy(() => import("./pages/topics/LungMechanicsTopic"));
