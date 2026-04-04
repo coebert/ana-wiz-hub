@@ -330,6 +330,21 @@ const VentilatorsTopic = () => {
             ))}
           </div>
         </div>
+
+        {/* Ritchie Whistle */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Ritchie Whistle (Oxygen Failure Warning)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The Ritchie whistle is a purely pneumatic alarm device found on anaesthetic machines that warns of oxygen supply failure. It uses the <strong>Venturi (Bernoulli) principle</strong> — oxygen flowing through a constriction creates a low-pressure zone that draws ambient air across a reed or diaphragm, producing an audible whistle.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Critically, the whistle sounds <strong>continuously during normal operation</strong> (though typically at an inaudible ultrasonic frequency or diverted past the reed). When oxygen supply fails, flow stops, the Venturi effect ceases, and the whistle either changes pitch dramatically or activates a spring-loaded mechanism that produces a loud audible alarm lasting at least 7 seconds (as required by BS EN ISO 80601-2-13).
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            This is a <strong>fail-safe</strong> design — it requires no electricity or batteries and cannot be silenced as long as the oxygen pressure remains below the threshold. The alarm is powered entirely by the residual gas pressure in the system.
+          </p>
+          <RitchieWhistleDiagram />
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -338,6 +353,7 @@ const VentilatorsTopic = () => {
         "Ascending bellows are safer than descending: they collapse on disconnect, providing a visual alarm",
         "Fresh gas decoupling in modern ventilators ensures delivered VT is independent of FGF",
         "The Penlon Nuffield 200 is a gas-powered bag-in-bottle ventilator widely used in paediatric anaesthesia",
+        "The Ritchie whistle uses the Venturi/Bernoulli principle — a fail-safe pneumatic O₂ failure alarm requiring no electricity",
         "Modern ICU ventilators (Hamilton G5, Servo-U) offer closed-loop modes like ASV and NAVA",
       ]} />
 
