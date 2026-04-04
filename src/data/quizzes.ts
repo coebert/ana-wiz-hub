@@ -101,7 +101,7 @@ export const oxygenHaemoglobinQuiz: QuizQuestion[] = [
       "Because pulse oximeters cannot detect carboxyhaemoglobin",
     ],
     correctIndex: 1,
-    explanation: "The flat upper portion of the ODC means that PaO₂ can fall from 13 kPa to approximately 8 kPa (100 to 60 mmHg) with only a small change in SaO₂ (from ~98% to ~90%). Once PaO₂ falls below 8 kPa, the steep portion causes rapid desaturation. This is why pre-oxygenation provides a crucial safety margin.",
+    explanation: "The flat upper portion of the ODC means that PaO₂ can fall from 13 kPa to approximately 8 kPa with only a small change in SaO₂ (from ~98% to ~90%). Once PaO₂ falls below 8 kPa, the steep portion causes rapid desaturation. This is why pre-oxygenation provides a crucial safety margin.",
   },
   {
     question: "Carbon monoxide poisoning causes the ODC to:",
