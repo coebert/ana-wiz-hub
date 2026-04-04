@@ -77,13 +77,13 @@ const SpinalCordCrossSectionDiagram = () => {
 
               return (
                 <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                  {key === "cord" ? (
-                    // Spinal cord with rounded shape
+              {key === "cord" ? (
+                    // Spinal cord with rounded shape and detailed grey/white matter
                     <g>
                       <rect
-                        x={xOffset + 20}
+                        x={xOffset + 15}
                         y={y}
-                        width={layerWidth - 40}
+                        width={layerWidth - 30}
                         height={l.h}
                         rx={l.h / 2}
                         fill={l.color}
@@ -92,23 +92,50 @@ const SpinalCordCrossSectionDiagram = () => {
                         strokeWidth={isActive ? 2 : 0}
                         className="transition-all duration-200"
                       />
-                      {/* Grey matter butterfly/H shape */}
-                      <g opacity={isActive ? 0.55 : 0.2}>
+                      {/* White matter tract labels */}
+                      <g opacity={isActive ? 0.5 : 0.15} fontSize="3.5" fill="hsl(var(--muted-foreground))">
+                        {/* Dorsal columns */}
+                        <text x={xOffset + layerWidth / 2} y={y + 6} textAnchor="middle">Dorsal columns</text>
+                        <text x={xOffset + layerWidth / 2} y={y + 10} textAnchor="middle" fontSize="3">(proprioception, vibration)</text>
+                        {/* Lateral corticospinal */}
+                        <text x={xOffset + layerWidth / 2 - 42} y={y + l.h / 2 + 1} textAnchor="middle" fontSize="3">Lat CST</text>
+                        <text x={xOffset + layerWidth / 2 + 42} y={y + l.h / 2 + 1} textAnchor="middle" fontSize="3">Lat CST</text>
+                        {/* Spinothalamic */}
+                        <text x={xOffset + layerWidth / 2 - 42} y={y + l.h / 2 + 8} textAnchor="middle" fontSize="3">STT</text>
+                        <text x={xOffset + layerWidth / 2 + 42} y={y + l.h / 2 + 8} textAnchor="middle" fontSize="3">STT</text>
+                        {/* Anterior area */}
+                        <text x={xOffset + layerWidth / 2} y={y + l.h - 4} textAnchor="middle" fontSize="3">Ant CST</text>
+                      </g>
+                      {/* Grey matter butterfly/H shape — more detailed */}
+                      <g opacity={isActive ? 0.6 : 0.22}>
                         {/* Central canal */}
-                        <circle cx={xOffset + layerWidth / 2} cy={y + l.h / 2} r="1.5" fill="hsl(200, 40%, 60%)" />
-                        {/* Anterior horns (wider) */}
-                        <path d={`M${xOffset + layerWidth / 2 - 3},${y + l.h / 2} C${xOffset + layerWidth / 2 - 15},${y + l.h / 2 + 2} ${xOffset + layerWidth / 2 - 25},${y + l.h / 2 + 8} ${xOffset + layerWidth / 2 - 30},${y + l.h / 2 + 10}`}
-                          stroke="hsl(0, 0%, 55%)" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-                        <path d={`M${xOffset + layerWidth / 2 + 3},${y + l.h / 2} C${xOffset + layerWidth / 2 + 15},${y + l.h / 2 + 2} ${xOffset + layerWidth / 2 + 25},${y + l.h / 2 + 8} ${xOffset + layerWidth / 2 + 30},${y + l.h / 2 + 10}`}
-                          stroke="hsl(0, 0%, 55%)" strokeWidth="3.5" fill="none" strokeLinecap="round" />
-                        {/* Posterior horns (thinner, more pointed) */}
-                        <path d={`M${xOffset + layerWidth / 2 - 3},${y + l.h / 2} C${xOffset + layerWidth / 2 - 12},${y + l.h / 2 - 3} ${xOffset + layerWidth / 2 - 20},${y + l.h / 2 - 10} ${xOffset + layerWidth / 2 - 22},${y + l.h / 2 - 13}`}
-                          stroke="hsl(0, 0%, 55%)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-                        <path d={`M${xOffset + layerWidth / 2 + 3},${y + l.h / 2} C${xOffset + layerWidth / 2 + 12},${y + l.h / 2 - 3} ${xOffset + layerWidth / 2 + 20},${y + l.h / 2 - 10} ${xOffset + layerWidth / 2 + 22},${y + l.h / 2 - 13}`}
-                          stroke="hsl(0, 0%, 55%)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                        <circle cx={xOffset + layerWidth / 2} cy={y + l.h / 2} r="2" fill="hsl(200, 40%, 60%)" />
+                        {/* Grey commissure */}
+                        <line x1={xOffset + layerWidth / 2 - 5} y1={y + l.h / 2} x2={xOffset + layerWidth / 2 + 5} y2={y + l.h / 2} stroke="hsl(0, 0%, 55%)" strokeWidth="2" />
+                        {/* Anterior horns (wider, motor — α/γ motor neurons) */}
+                        <path d={`M${xOffset + layerWidth / 2 - 4},${y + l.h / 2 + 1} Q${xOffset + layerWidth / 2 - 15},${y + l.h / 2 + 3} ${xOffset + layerWidth / 2 - 28},${y + l.h / 2 + 10}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="4" fill="none" strokeLinecap="round" />
+                        <path d={`M${xOffset + layerWidth / 2 + 4},${y + l.h / 2 + 1} Q${xOffset + layerWidth / 2 + 15},${y + l.h / 2 + 3} ${xOffset + layerWidth / 2 + 28},${y + l.h / 2 + 10}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="4" fill="none" strokeLinecap="round" />
+                        {/* Posterior horns (thinner, sensory — substantia gelatinosa) */}
+                        <path d={`M${xOffset + layerWidth / 2 - 4},${y + l.h / 2 - 1} Q${xOffset + layerWidth / 2 - 12},${y + l.h / 2 - 4} ${xOffset + layerWidth / 2 - 20},${y + l.h / 2 - 13}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                        <path d={`M${xOffset + layerWidth / 2 + 4},${y + l.h / 2 - 1} Q${xOffset + layerWidth / 2 + 12},${y + l.h / 2 - 4} ${xOffset + layerWidth / 2 + 20},${y + l.h / 2 - 13}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                        {/* Lateral horns (intermediolateral cell column — sympathetic T1-L2) */}
+                        <path d={`M${xOffset + layerWidth / 2 - 6},${y + l.h / 2} L${xOffset + layerWidth / 2 - 18},${y + l.h / 2 - 3}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="2" fill="none" strokeLinecap="round" />
+                        <path d={`M${xOffset + layerWidth / 2 + 6},${y + l.h / 2} L${xOffset + layerWidth / 2 + 18},${y + l.h / 2 - 3}`}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="2" fill="none" strokeLinecap="round" />
                         {/* Labels */}
-                        <text x={xOffset + layerWidth / 2 - 35} y={y + l.h / 2 + 14} fontSize="4" fill="hsl(0, 0%, 50%)" textAnchor="middle">ant. horn</text>
-                        <text x={xOffset + layerWidth / 2 - 25} y={y + l.h / 2 - 15} fontSize="4" fill="hsl(0, 0%, 50%)" textAnchor="middle">post. horn</text>
+                        <text x={xOffset + layerWidth / 2 - 34} y={y + l.h / 2 + 15} fontSize="3.5" fill="hsl(0, 0%, 45%)" textAnchor="middle">Ant horn (motor)</text>
+                        <text x={xOffset + layerWidth / 2 + 34} y={y + l.h / 2 - 15} fontSize="3.5" fill="hsl(0, 0%, 45%)" textAnchor="middle">Post horn (sensory)</text>
+                        <text x={xOffset + layerWidth / 2 - 24} y={y + l.h / 2 - 7} fontSize="3" fill="hsl(0, 0%, 50%)" textAnchor="middle">IML</text>
+                      </g>
+                      {/* Anterior spinal artery */}
+                      <g opacity={isActive ? 0.5 : 0.15}>
+                        <circle cx={xOffset + layerWidth / 2} cy={y + l.h + 2} r="1.5" fill="hsl(0, 60%, 55%)" />
+                        <text x={xOffset + layerWidth / 2 + 5} y={y + l.h + 4} fontSize="3.5" fill="hsl(0, 60%, 55%)">ASA</text>
                       </g>
                     </g>
                   ) : (

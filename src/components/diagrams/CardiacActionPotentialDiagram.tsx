@@ -70,36 +70,46 @@ const vaughanWilliams: Drug[] = [
 ];
 
 const ContractileAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: number | null; onSelectPhase: (p: number) => void }) => {
-  // SVG contractile action potential waveform
-  const w = 400, h = 250;
+  const w = 440, h = 260;
+  // Improved waveform with more realistic proportions:
+  // Phase 0: rapid upstroke (~1-2ms) — very steep
+  // Phase 1: brief notch (~10ms) 
+  // Phase 2: long plateau (~200ms) — largest portion
+  // Phase 3: repolarisation (~100ms) — gradual curve
+  // Phase 4: resting potential
+
   const phaseRegions = [
-    { id: 0, path: "M 60,200 L 65,30", x1: 55, x2: 70 },
-    { id: 1, path: "M 65,30 Q 75,50 80,60", x1: 70, x2: 85 },
-    { id: 2, path: "M 80,60 Q 160,55 240,65", x1: 85, x2: 245 },
-    { id: 3, path: "M 240,65 Q 280,120 320,200", x1: 245, x2: 325 },
-    { id: 4, path: "M 320,200 L 380,200", x1: 325, x2: 385 },
+    { id: 0, x1: 55, x2: 72 },    // rapid depolarisation
+    { id: 1, x1: 72, x2: 90 },    // early repolarisation  
+    { id: 2, x1: 90, x2: 260 },   // plateau (longest phase)
+    { id: 3, x1: 260, x2: 340 },  // repolarisation
+    { id: 4, x1: 340, x2: 420 },  // resting
   ];
 
-  const fullPath = "M 20,200 L 60,200 L 65,30 Q 75,50 80,60 Q 160,55 240,65 Q 280,120 320,200 L 380,200";
+  // More anatomically accurate action potential shape
+  const fullPath = "M 20,210 L 55,210 L 60,35 Q 68,28 72,35 Q 76,55 82,65 Q 86,70 90,68 Q 140,60 200,62 Q 240,64 260,72 Q 290,130 320,190 Q 330,205 340,210 L 420,210";
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md mx-auto">
       <text x={10} y={15} fontSize="11" fill="currentColor" className="font-semibold">Contractile Cell (Ventricular Myocyte)</text>
       {/* Y axis labels */}
-      <text x={5} y={35} fontSize="9" fill="currentColor" opacity={0.6}>+20</text>
+      <text x={5} y={40} fontSize="9" fill="currentColor" opacity={0.6}>+20</text>
       <text x={5} y={100} fontSize="9" fill="currentColor" opacity={0.6}>0</text>
-      <text x={5} y={205} fontSize="9" fill="currentColor" opacity={0.6}>−90</text>
-      <line x1={25} y1={25} x2={25} y2={220} stroke="currentColor" opacity={0.2} />
-      <line x1={25} y1={220} x2={390} y2={220} stroke="currentColor" opacity={0.2} />
+      <text x={5} y={215} fontSize="9" fill="currentColor" opacity={0.6}>−90</text>
+      {/* Axes */}
+      <line x1={25} y1={25} x2={25} y2={225} stroke="currentColor" opacity={0.2} />
+      <line x1={25} y1={225} x2={430} y2={225} stroke="currentColor" opacity={0.2} />
       {/* Threshold line */}
-      <line x1={25} y1={162} x2={390} y2={162} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
-      <text x={392} y={165} fontSize="8" fill="currentColor" opacity={0.4}>−70 mV</text>
+      <line x1={25} y1={172} x2={430} y2={172} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
+      <text x={432} y={175} fontSize="7" fill="currentColor" opacity={0.4}>−70 mV</text>
+      {/* 0 mV reference */}
+      <line x1={25} y1={100} x2={430} y2={100} stroke="currentColor" opacity={0.06} strokeDasharray="2,6" />
 
       {/* Phase highlight regions */}
       {phaseRegions.map(r => (
         <rect
           key={r.id}
-          x={r.x1} y={20} width={r.x2 - r.x1} height={210}
+          x={r.x1} y={20} width={r.x2 - r.x1} height={215}
           fill={selectedPhase === r.id ? phases[r.id].color : "transparent"}
           opacity={selectedPhase === r.id ? 0.15 : 0}
           rx={4}
@@ -108,46 +118,69 @@ const ContractileAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: num
         />
       ))}
 
-      {/* AP waveform */}
-      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} />
+      {/* AP waveform — thicker with gradient feel */}
+      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
+      
+      {/* Phase duration indicators */}
+      <g opacity={0.4} fontSize="6" fill="currentColor">
+        <text x={63} y={248}>~2ms</text>
+        <text x={150} y={248}>~200ms</text>
+        <text x={285} y={248}>~100ms</text>
+      </g>
+      <line x1={55} y1={240} x2={72} y2={240} stroke="currentColor" opacity={0.2} strokeWidth={1} />
+      <line x1={90} y1={240} x2={260} y2={240} stroke="currentColor" opacity={0.2} strokeWidth={1} />
+      <line x1={260} y1={240} x2={340} y2={240} stroke="currentColor" opacity={0.2} strokeWidth={1} />
 
       {/* Phase labels */}
-      <text x={58} y={120} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(0)}>0</text>
-      <text x={72} y={50} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(1)}>1</text>
-      <text x={155} y={50} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(2)}>2</text>
-      <text x={290} y={120} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(3)}>3</text>
-      <text x={345} y={195} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(4)}>4</text>
+      <text x={60} y={130} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(0)}>0</text>
+      <text x={78} y={55} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(1)}>1</text>
+      <text x={170} y={52} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(2)}>2</text>
+      <text x={305} y={140} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(3)}>3</text>
+      <text x={375} y={205} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(4)}>4</text>
+
+      {/* Ion current annotations */}
+      <g fontSize="7" opacity={0.45} fill="currentColor">
+        <text x={50} y={145}>Na⁺↑↑</text>
+        <text x={80} y={80}>K⁺(Ito)</text>
+        <text x={155} y={80}>Ca²⁺↑ = K⁺↓</text>
+        <text x={280} y={155}>K⁺(IKr,IKs)</text>
+        <text x={365} y={200}>IK1</text>
+      </g>
 
       {/* ERP/RRP markers */}
-      <line x1={60} y1={235} x2={280} y2={235} stroke="hsl(0,70%,55%)" strokeWidth={2} />
-      <text x={130} y={248} fontSize="8" fill="hsl(0,70%,55%)" textAnchor="middle">ERP</text>
-      <line x1={280} y1={235} x2={320} y2={235} stroke="hsl(45,70%,55%)" strokeWidth={2} />
-      <text x={300} y={248} fontSize="8" fill="hsl(45,70%,55%)" textAnchor="middle">RRP</text>
+      <line x1={55} y1={234} x2={300} y2={234} stroke="hsl(0,70%,55%)" strokeWidth={2} />
+      <text x={160} y={232} fontSize="8" fill="hsl(0,70%,55%)" textAnchor="middle">ERP (~250 ms)</text>
+      <line x1={300} y1={234} x2={340} y2={234} stroke="hsl(45,70%,55%)" strokeWidth={2} />
+      <text x={320} y={232} fontSize="7" fill="hsl(45,70%,55%)" textAnchor="middle">RRP</text>
     </svg>
   );
 };
 
 const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: number | null; onSelectPhase: (p: number) => void }) => {
-  const w = 400, h = 250;
-  const fullPath = "M 20,170 Q 80,170 120,100 Q 140,50 150,40 Q 165,50 180,80 Q 220,170 260,170 Q 320,170 360,100";
+  const w = 440, h = 260;
+  // More realistic pacemaker AP — slower upstroke, no plateau, spontaneous Phase 4
+  const fullPath = "M 20,175 Q 55,175 80,170 Q 110,160 130,140 Q 145,115 155,80 Q 160,60 162,45 Q 168,55 178,80 Q 195,130 220,170 Q 240,178 260,175 Q 290,172 320,162 Q 340,148 355,125 Q 368,95 375,60";
 
   const phaseRegions = [
-    { id: 4, x1: 15, x2: 125, label: "4", lx: 70, ly: 160 },
-    { id: 0, x1: 125, x2: 165, label: "0", lx: 138, ly: 65 },
-    { id: 3, x1: 165, x2: 265, label: "3", lx: 210, ly: 110 },
+    { id: 4, x1: 15, x2: 140, label: "4", lx: 80, ly: 165 },
+    { id: 0, x1: 140, x2: 175, label: "0", lx: 155, ly: 55 },
+    { id: 3, x1: 175, x2: 265, label: "3", lx: 215, ly: 140 },
   ];
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md mx-auto">
       <text x={10} y={15} fontSize="11" fill="currentColor" className="font-semibold">Pacemaker Cell (SA Node)</text>
-      <text x={5} y={45} fontSize="9" fill="currentColor" opacity={0.6}>+10</text>
-      <text x={5} y={105} fontSize="9" fill="currentColor" opacity={0.6}>−40</text>
-      <text x={5} y={175} fontSize="9" fill="currentColor" opacity={0.6}>−60</text>
+      <text x={5} y={50} fontSize="9" fill="currentColor" opacity={0.6}>+10</text>
+      <text x={5} y={110} fontSize="9" fill="currentColor" opacity={0.6}>−40</text>
+      <text x={5} y={180} fontSize="9" fill="currentColor" opacity={0.6}>−60</text>
       <line x1={25} y1={25} x2={25} y2={200} stroke="currentColor" opacity={0.2} />
-      <line x1={25} y1={200} x2={390} y2={200} stroke="currentColor" opacity={0.2} />
-      {/* Threshold */}
-      <line x1={25} y1={100} x2={390} y2={100} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
-      <text x={392} y={103} fontSize="8" fill="currentColor" opacity={0.4}>−40 mV</text>
+      <line x1={25} y1={200} x2={430} y2={200} stroke="currentColor" opacity={0.2} />
+      {/* Threshold at -40mV */}
+      <line x1={25} y1={110} x2={430} y2={110} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
+      <text x={432} y={113} fontSize="7" fill="currentColor" opacity={0.4}>−40 mV</text>
+      {/* MDP line */}
+      <line x1={25} y1={175} x2={430} y2={175} stroke="currentColor" opacity={0.06} strokeDasharray="2,6" />
+      <text x={432} y={178} fontSize="6" fill="currentColor" opacity={0.3}>MDP</text>
 
       {phaseRegions.map(r => (
         <rect
@@ -161,16 +194,25 @@ const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: numbe
         />
       ))}
 
-      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} />
+      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
 
       {phaseRegions.map(r => (
-        <text key={r.id} x={r.lx} y={r.ly} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(r.id)}>{r.label}</text>
+        <text key={r.id} x={r.lx} y={r.ly} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(r.id)}>{r.label}</text>
       ))}
 
-      {/* If current annotation */}
-      <text x={60} y={190} fontSize="8" fill="currentColor" opacity={0.5}>If + ICa-T</text>
-      <text x={130} y={30} fontSize="8" fill="currentColor" opacity={0.5}>ICa-L</text>
-      <text x={195} y={90} fontSize="8" fill="currentColor" opacity={0.5}>IKr</text>
+      {/* Ion current annotations — more detailed */}
+      <g fontSize="7" opacity={0.5} fill="currentColor">
+        <text x={35} y={190}>If (funny current)</text>
+        <text x={90} y={155}>ICa-T</text>
+        <text x={145} y={35}>ICa-L</text>
+        <text x={200} y={110}>IKr</text>
+      </g>
+
+      {/* Slope annotation for Phase 4 */}
+      <g opacity={0.3}>
+        <line x1={40} y1={176} x2={130} y2={145} stroke="currentColor" strokeWidth={0.8} strokeDasharray="3,3" />
+        <text x={65} y={155} fontSize="6" fill="currentColor">slope = rate</text>
+      </g>
     </svg>
   );
 };
