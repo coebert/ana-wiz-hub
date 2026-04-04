@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Atom, Heart, FlaskConical, BookOpen, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
+import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
+import brainLogo from "/brain-logo.png";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
