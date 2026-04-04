@@ -104,7 +104,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
         <rect x={185 + Math.max(thickness * 60, 8) + 5} y="10" width={400 - 185 - Math.max(thickness * 60, 8) - 25} height="140" rx="10"
           fill="hsl(0, 70%, 55%)" opacity={0.06} stroke="hsl(0, 70%, 55%)" strokeWidth="1" />
         <text x={300 + thickness * 10} y="30" textAnchor="middle" className="text-[10px] fill-foreground font-semibold">Capillary</text>
-        <text x={300 + thickness * 10} y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PvO₂ = 40 mmHg</text>
+        <text x={300 + thickness * 10} y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PvO₂ = 5.3 kPa</text>
 
         {/* RBCs */}
         {[60, 85, 110].map((y, i) => (
