@@ -139,6 +139,7 @@ const App = () => (
           <Route path="/physics/electricity-magnetism" element={<ElectricityMagnetismTopic />} />
           <Route path="/physics/statistics-ebm" element={<StatisticsEBMTopic />} />
           <Route path="/physics/ventilators" element={<VentilatorsTopic />} />
+          <Route path="/physics/math-concepts" element={<MathConceptsTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />

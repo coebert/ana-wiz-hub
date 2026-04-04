@@ -32,6 +32,7 @@ export const physicsTopics: Topic[] = [
   { id: "electricity-magnetism", title: "Electricity & Magnetism", description: "Ohm's law, capacitance, inductance, transformers, and the Wheatstone bridge", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "statistics-ebm", title: "Statistics & Evidence-Based Medicine", description: "Study design, p-values, odds ratios, NNT, sensitivity/specificity, and common statistical tests", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "ventilators", title: "Ventilators", description: "Ventilator classification, mechanisms, historic and modern models including Manley, Penlon, and Oxylog", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "math-concepts", title: "Mathematical Concepts", description: "Graph shapes, exponentials, logarithms, sigmoid curves and their physiological and pharmacokinetic applications", section: "physics", examTags: ["primary", "final"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
