@@ -226,6 +226,15 @@ const VentilatorsTopic = () => {
           <BagInBottleDiagram />
         </div>
 
+        {/* Interactive Manley MVD Diagram */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Minute Volume Divider (Manley) Mechanism</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Manley uses two alternating concertina bellows. While one delivers gas to the patient under the weight on top, the other fills with fresh gas flow. The changeover valve switches when the delivering bellows empties.
+          </p>
+          <ManleyMVDDiagram />
+        </div>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fresh Gas Flow & Delivered Tidal Volume</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
