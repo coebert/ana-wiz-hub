@@ -157,26 +157,30 @@ const ContractileAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: num
 };
 
 const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: number | null; onSelectPhase: (p: number) => void }) => {
-  const w = 400, h = 250;
-  const fullPath = "M 20,170 Q 80,170 120,100 Q 140,50 150,40 Q 165,50 180,80 Q 220,170 260,170 Q 320,170 360,100";
+  const w = 440, h = 260;
+  // More realistic pacemaker AP — slower upstroke, no plateau, spontaneous Phase 4
+  const fullPath = "M 20,175 Q 55,175 80,170 Q 110,160 130,140 Q 145,115 155,80 Q 160,60 162,45 Q 168,55 178,80 Q 195,130 220,170 Q 240,178 260,175 Q 290,172 320,162 Q 340,148 355,125 Q 368,95 375,60";
 
   const phaseRegions = [
-    { id: 4, x1: 15, x2: 125, label: "4", lx: 70, ly: 160 },
-    { id: 0, x1: 125, x2: 165, label: "0", lx: 138, ly: 65 },
-    { id: 3, x1: 165, x2: 265, label: "3", lx: 210, ly: 110 },
+    { id: 4, x1: 15, x2: 140, label: "4", lx: 80, ly: 165 },
+    { id: 0, x1: 140, x2: 175, label: "0", lx: 155, ly: 55 },
+    { id: 3, x1: 175, x2: 265, label: "3", lx: 215, ly: 140 },
   ];
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-md mx-auto">
       <text x={10} y={15} fontSize="11" fill="currentColor" className="font-semibold">Pacemaker Cell (SA Node)</text>
-      <text x={5} y={45} fontSize="9" fill="currentColor" opacity={0.6}>+10</text>
-      <text x={5} y={105} fontSize="9" fill="currentColor" opacity={0.6}>−40</text>
-      <text x={5} y={175} fontSize="9" fill="currentColor" opacity={0.6}>−60</text>
+      <text x={5} y={50} fontSize="9" fill="currentColor" opacity={0.6}>+10</text>
+      <text x={5} y={110} fontSize="9" fill="currentColor" opacity={0.6}>−40</text>
+      <text x={5} y={180} fontSize="9" fill="currentColor" opacity={0.6}>−60</text>
       <line x1={25} y1={25} x2={25} y2={200} stroke="currentColor" opacity={0.2} />
-      <line x1={25} y1={200} x2={390} y2={200} stroke="currentColor" opacity={0.2} />
-      {/* Threshold */}
-      <line x1={25} y1={100} x2={390} y2={100} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
-      <text x={392} y={103} fontSize="8" fill="currentColor" opacity={0.4}>−40 mV</text>
+      <line x1={25} y1={200} x2={430} y2={200} stroke="currentColor" opacity={0.2} />
+      {/* Threshold at -40mV */}
+      <line x1={25} y1={110} x2={430} y2={110} stroke="currentColor" opacity={0.1} strokeDasharray="4,4" />
+      <text x={432} y={113} fontSize="7" fill="currentColor" opacity={0.4}>−40 mV</text>
+      {/* MDP line */}
+      <line x1={25} y1={175} x2={430} y2={175} stroke="currentColor" opacity={0.06} strokeDasharray="2,6" />
+      <text x={432} y={178} fontSize="6" fill="currentColor" opacity={0.3}>MDP</text>
 
       {phaseRegions.map(r => (
         <rect
@@ -190,16 +194,25 @@ const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: numbe
         />
       ))}
 
-      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} />
+      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
 
       {phaseRegions.map(r => (
-        <text key={r.id} x={r.lx} y={r.ly} fontSize="10" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(r.id)}>{r.label}</text>
+        <text key={r.id} x={r.lx} y={r.ly} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(r.id)}>{r.label}</text>
       ))}
 
-      {/* If current annotation */}
-      <text x={60} y={190} fontSize="8" fill="currentColor" opacity={0.5}>If + ICa-T</text>
-      <text x={130} y={30} fontSize="8" fill="currentColor" opacity={0.5}>ICa-L</text>
-      <text x={195} y={90} fontSize="8" fill="currentColor" opacity={0.5}>IKr</text>
+      {/* Ion current annotations — more detailed */}
+      <g fontSize="7" opacity={0.5} fill="currentColor">
+        <text x={35} y={190}>If (funny current)</text>
+        <text x={90} y={155}>ICa-T</text>
+        <text x={145} y={35}>ICa-L</text>
+        <text x={200} y={110}>IKr</text>
+      </g>
+
+      {/* Slope annotation for Phase 4 */}
+      <g opacity={0.3}>
+        <line x1={40} y1={176} x2={130} y2={145} stroke="currentColor" strokeWidth={0.8} strokeDasharray="3,3" />
+        <text x={65} y={155} fontSize="6" fill="currentColor">slope = rate</text>
+      </g>
     </svg>
   );
 };
