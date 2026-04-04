@@ -57,6 +57,7 @@ const LocalAnaestheticsTopic = lazy(() => import("./pages/topics/LocalAnaestheti
 const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgentsTopic"));
 const AntimicrobialsPharmTopic = lazy(() => import("./pages/topics/AntimicrobialsPharmTopic"));
 const AntiarrhythmicsTopic = lazy(() => import("./pages/topics/AntiarrhythmicsTopic"));
+const AnticoagulantsTopic = lazy(() => import("./pages/topics/AnticoagulantsTopic"));
 const AirwayManagementTopic = lazy(() => import("./pages/topics/AirwayManagementTopic"));
 const RegionalAnaesthesiaTopic = lazy(() => import("./pages/topics/RegionalAnaesthesiaTopic"));
 const ObstetricAnaesthesiaTopic = lazy(() => import("./pages/topics/ObstetricAnaesthesiaTopic"));
