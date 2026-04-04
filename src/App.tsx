@@ -56,6 +56,7 @@ const MuscleRelaxantsTopic = lazy(() => import("./pages/topics/MuscleRelaxantsTo
 const LocalAnaestheticsTopic = lazy(() => import("./pages/topics/LocalAnaestheticsTopic"));
 const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgentsTopic"));
 const AntimicrobialsPharmTopic = lazy(() => import("./pages/topics/AntimicrobialsPharmTopic"));
+const AntiarrhythmicsTopic = lazy(() => import("./pages/topics/AntiarrhythmicsTopic"));
 const AirwayManagementTopic = lazy(() => import("./pages/topics/AirwayManagementTopic"));
 const RegionalAnaesthesiaTopic = lazy(() => import("./pages/topics/RegionalAnaesthesiaTopic"));
 const ObstetricAnaesthesiaTopic = lazy(() => import("./pages/topics/ObstetricAnaesthesiaTopic"));
@@ -157,6 +158,7 @@ const App = () => (
           <Route path="/pharmacology/local-anaesthetics" element={<LocalAnaestheticsTopic />} />
           <Route path="/pharmacology/vasoactive-agents" element={<VasoactiveAgentsTopic />} />
           <Route path="/pharmacology/antimicrobials-pharm" element={<AntimicrobialsPharmTopic />} />
+          <Route path="/pharmacology/antiarrhythmics" element={<AntiarrhythmicsTopic />} />
           {/* Clinical Anaesthesia */}
           <Route path="/clinical/airway-management" element={<AirwayManagementTopic />} />
           <Route path="/clinical/regional-anaesthesia" element={<RegionalAnaesthesiaTopic />} />
