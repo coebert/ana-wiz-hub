@@ -68,7 +68,7 @@ export const oxygenHaemoglobinQuiz: QuizQuestion[] = [
      "13.3 kPa",
     ],
     correctIndex: 0,
-    explanation: "The P₅₀ is the PaO₂ at which haemoglobin is 50% saturated. For normal adult haemoglobin (HbA), this is approximately 3.5 kPa (26.7 mmHg). Changes in P₅₀ indicate shifts in the ODC — an increased P₅₀ represents a right shift.",
+    explanation: "The P₅₀ is the PaO₂ at which haemoglobin is 50% saturated. For normal adult haemoglobin (HbA), this is approximately 3.5 kPa. Changes in P₅₀ indicate shifts in the ODC — an increased P₅₀ represents a right shift.",
   },
   {
     question: "A patient presents with metabolic acidosis, fever, and raised 2,3-DPG. What effect does this combination have on the oxygen-haemoglobin dissociation curve?",
