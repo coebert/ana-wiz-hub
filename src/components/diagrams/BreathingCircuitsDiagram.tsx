@@ -291,8 +291,15 @@ const MaplesonTab = () => {
             <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
             <marker id="bcExpFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
           </defs>
+          {/* ── Legend ── */}
+          <g transform="translate(320, 0)">
+            <rect x="0" y="0" width="190" height="18" rx="4" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" />
+            <circle cx="12" cy="9" r="4" fill={inspCol} opacity="0.8" />
+            <text x="20" y="13" fontSize="7" fill={inspCol} fontWeight="bold">Inspiration</text>
+            <circle cx="102" cy="9" r="4" fill={expCol} opacity="0.8" />
+            <text x="110" y="13" fontSize="7" fill={expCol} fontWeight="bold">Expiration</text>
+          </g>
 
-          {/* ──── Mapleson A (Magill) ──── */}
           <g
             onClick={() => setSelected(selected === "A" ? null : "A")}
             className="cursor-pointer"
