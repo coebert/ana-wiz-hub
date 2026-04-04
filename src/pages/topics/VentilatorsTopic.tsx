@@ -147,6 +147,7 @@ const modernVentilators = [
     name: "Penlon Prima SP",
     setting: "Anaesthesia (Operating Theatre)",
     type: "Pneumatic with Electronic Control",
+    image: primaImg,
     features: [
       "Integrated into Penlon anaesthetic machines",
       "Bellows-in-bottle ascending bellows design",
