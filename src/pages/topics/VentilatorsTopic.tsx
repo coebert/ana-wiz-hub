@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
+import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
@@ -223,6 +224,15 @@ const VentilatorsTopic = () => {
             Interactive diagram showing how an ascending bellows bag-in-bottle ventilator works during inspiration and expiration. Toggle between phases or let it auto-cycle.
           </p>
           <BagInBottleDiagram />
+        </div>
+
+        {/* Interactive Manley MVD Diagram */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Minute Volume Divider (Manley) Mechanism</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Manley uses two alternating concertina bellows. While one delivers gas to the patient under the weight on top, the other fills with fresh gas flow. The changeover valve switches when the delivering bellows empties.
+          </p>
+          <ManleyMVDDiagram />
         </div>
 
         <div>
