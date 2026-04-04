@@ -556,7 +556,7 @@ const CircleTab = () => {
       </div>
 
       <div className="bg-secondary/30 rounded-xl p-3 border border-border">
-        <svg viewBox="0 0 520 500" className="w-full h-auto">
+        <svg viewBox="0 0 520 530" className="w-full h-auto">
           <defs>
             <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
             <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
@@ -597,12 +597,16 @@ const CircleTab = () => {
 
           {/* ── Animated flow dots ── */}
           {circlePhase === "insp" && (
-            <FlowDots path="M 260 340 L 185 370 L 85 330 L 85 120 L 200 65 L 260 50" colour={inspCol} id="circInsp" />
+            <FlowDots path="M 185 370 L 85 330 L 85 120 L 200 65 L 260 50" colour={inspCol} id="circInsp" />
           )}
           {circlePhase === "exp" && (
             <>
-              <FlowDots path="M 260 50 L 320 65 L 435 120 L 435 330 L 335 370 L 260 370 L 260 350" colour={expCol} id="circExp" />
-              <FlowDots path="M 450 275 L 470 250" colour={expCol} id="circAplEx" />
+              {/* Expired gas: patient → exp limb → exp valve → down to absorber */}
+              <FlowDots path="M 260 50 L 320 65 L 435 120 L 435 330 L 335 370" colour={expCol} id="circExp" />
+              {/* Recirculated gas: absorber → back up insp limb (cleaned) */}
+              <FlowDots path="M 260 390 L 185 370 L 85 330 L 85 250" colour="#8B5CF6" id="circRecirc" />
+              {/* Excess gas: APL → scavenging */}
+              <FlowDots path="M 460 260 L 460 240 L 490 220 L 490 195" colour={expCol} id="circScav" />
             </>
           )}
 
@@ -654,37 +658,65 @@ const CircleTab = () => {
           <text x="260" y="422" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
           <text x="260" y="434" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Exothermic — produces heat + H₂O</text>
 
-          {/* ── FGF inlet (below absorber) ── */}
-          <FGFInlet cx={260} cy={340} label="Fresh gas inlet" />
+          {/* Recirculation arrow from absorber back to insp limb */}
+          {circlePhase === "exp" && (
+            <g>
+              <path d="M 210 390 Q 160 390 150 370 Q 140 350 85 330" fill="none" stroke="#8B5CF6" strokeWidth="2" opacity="0.5" strokeDasharray="4,3" />
+              <text x="130" y="395" fontSize="6" fill="#8B5CF6" fontWeight="bold">Recirculated</text>
+              <text x="130" y="403" fontSize="5" fill="#8B5CF6">(CO₂ removed)</text>
+            </g>
+          )}
 
-          {/* ── APL valve (on expiratory side) — realistic ── */}
+          {/* ── FGF inlet — on inspiratory side, clearly separate ── */}
+          <FGFInlet cx={85} cy={340} label="Fresh gas in" />
+
+          {/* ── APL valve (on expiratory side) — with scavenging pipe ── */}
           <g opacity={circlePhase === "exp" ? 1 : 0.5} className="transition-opacity duration-300">
             <APLValve cx={460} cy={275} />
+            {/* Scavenging pipe leading away */}
+            <line x1="460" y1="246" x2="460" y2="230" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.5" />
+            <line x1="460" y1="230" x2="490" y2="215" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.5" />
+            <line x1="490" y1="215" x2="490" y2="190" stroke="hsl(var(--destructive))" strokeWidth="2" opacity="0.5" />
+            {/* Scavenging collection bag/unit */}
+            <rect x="475" y="175" width="30" height="18" rx="4"
+              fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+            <text x="490" y="187" textAnchor="middle" fontSize="5.5" fill="hsl(var(--destructive))" fontWeight="bold">AGSS</text>
             {circlePhase === "exp" && (
               <>
-                <text x="485" y="258" fontSize="5" fill={expCol} fontWeight="bold">Excess</text>
-                <text x="485" y="266" fontSize="5" fill={expCol} fontWeight="bold">gas out</text>
+                <text x="490" y="172" textAnchor="middle" fontSize="5" fill={expCol} fontWeight="bold">Excess gas</text>
+                <text x="490" y="164" textAnchor="middle" fontSize="5" fill={expCol}>→ Scavenging</text>
               </>
             )}
           </g>
 
           {/* ── Reservoir bag — realistic pear shape ── */}
           <g opacity={circlePhase === "insp" ? 0.6 : 1} className="transition-opacity duration-300">
-            <ReservoirBag cx={60} cy={290} r={circlePhase === "exp" ? 22 : 16} />
-            <text x="60" y={circlePhase === "exp" ? 322 : 316} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">
+            <ReservoirBag cx={60} cy={260} r={circlePhase === "exp" ? 22 : 16} />
+            <text x="60" y={circlePhase === "exp" ? 292 : 286} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">
               {circlePhase === "insp" ? "Deflating" : "Refilling"}
             </text>
           </g>
 
+          {/* ── Expiration flow summary ── */}
+          {circlePhase === "exp" && (
+            <g>
+              <rect x="140" y="440" width="240" height="30" rx="6" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="1" />
+              <text x="260" y="453" textAnchor="middle" fontSize="6.5" fill="hsl(var(--foreground))" fontWeight="bold">Expired gas splits two ways:</text>
+              <text x="260" y="464" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">
+                ① Excess → APL → AGSS scavenging  ② Rest → CO₂ absorber → recirculated
+              </text>
+            </g>
+          )}
+
           {/* ── Component labels ── */}
           <g fontSize="7" fill="hsl(var(--muted-foreground))">
-            <text x="260" y="455" textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
-            <text x="260" y="469" textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
+            <text x="260" y={circlePhase === "exp" ? 485 : 455} textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
+            <text x="260" y={circlePhase === "exp" ? 499 : 469} textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
           </g>
 
           {/* ── Low-flow box ── */}
-          <rect x="115" y="478" width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
-          <text x="260" y="491" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
+          <rect x="115" y={circlePhase === "exp" ? 505 : 478} width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
+          <text x="260" y={circlePhase === "exp" ? 518 : 491} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
         </svg>
       </div>
 
