@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
 import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
+import RitchieWhistleDiagram from "@/components/diagrams/RitchieWhistleDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
