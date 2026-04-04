@@ -108,6 +108,7 @@ const modernVentilators = [
     name: "Dräger Evita Infinity V500",
     setting: "Intensive Care",
     type: "Electronically Controlled",
+    image: evitaImg,
     features: [
       "Full ICU ventilator with comprehensive modes including APRV, MMV",
       "SmartCare/PS — automated weaning protocol",
