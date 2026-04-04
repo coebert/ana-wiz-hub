@@ -9,7 +9,7 @@ import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 const VasoactiveAgentsTopic = () => {
   return (
     <SectionLayout
-      title="Vasoactive Agents"
+      title="Vasoactive & Inotropic Agents"
       subtitle="FRCA Primary & Final — Pharmacology"
       backPath="/pharmacology"
       backLabel="Pharmacology"
@@ -19,10 +19,60 @@ const VasoactiveAgentsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Vasoactive agents are drugs that alter vascular tone and/or cardiac function. They are essential in the management
+            Vasoactive and inotropic agents are drugs that alter vascular tone and/or cardiac function. They are essential in the management
             of haemodynamic instability during anaesthesia and critical care. Understanding their receptor pharmacology,
             mechanisms, and clinical applications is fundamental to FRCA and FFICM examinations.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Inotrope Classification by Mechanism</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Inotropes increase myocardial contractility through different intracellular pathways. They can be classified by their mechanism of action:
+          </p>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Agents</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Pathway</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (receptor-mediated)</td>
+                  <td className="px-4 py-2">Adrenaline, dobutamine, dopamine, isoprenaline</td>
+                  <td className="px-4 py-2">β₁ agonism → Gs → adenylyl cyclase → ↑ cAMP → PKA → ↑ Ca²⁺ entry</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (enzyme inhibition)</td>
+                  <td className="px-4 py-2">Milrinone, enoximone</td>
+                  <td className="px-4 py-2">PDE III inhibition → ↓ cAMP breakdown → ↑ cAMP → PKA</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Calcium sensitisation</td>
+                  <td className="px-4 py-2">Levosimendan</td>
+                  <td className="px-4 py-2">Stabilises Ca²⁺–troponin C complex → ↑ contractile force without ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Na⁺/K⁺-ATPase inhibition</td>
+                  <td className="px-4 py-2">Digoxin</td>
+                  <td className="px-4 py-2">↑ intracellular Na⁺ → Na⁺/Ca²⁺ exchanger reversal → ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Direct Ca²⁺ supplementation</td>
+                  <td className="px-4 py-2">Calcium chloride / gluconate</td>
+                  <td className="px-4 py-2">↑ extracellular [Ca²⁺] → ↑ Ca²⁺ available for excitation-contraction coupling</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-medium">↑ cAMP (glucagon receptor)</td>
+                  <td className="px-4 py-2">Glucagon</td>
+                  <td className="px-4 py-2">Glucagon receptor → Gs → ↑ cAMP (bypasses β-receptor)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section className="mb-10">
@@ -299,6 +349,86 @@ const VasoactiveAgentsTopic = () => {
           </ul>
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Isoprenaline (Isoproterenol)</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Synthetic catecholamine. <strong>Non-selective β agonist</strong> (β₁ = β₂) with no α activity.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Dose:</strong> 0.5–10 µg/min IV infusion</li>
+            <li><strong>Effects:</strong> ↑ HR (potent chronotrope), ↑ contractility, bronchodilation, vasodilation (β₂ → ↓ SVR, ↓ diastolic BP)</li>
+            <li><strong>Uses:</strong> symptomatic bradycardia (bridge to pacing), torsades de pointes, β-blocker overdose, heart transplant (denervated heart)</li>
+            <li>Increases myocardial O₂ demand while reducing diastolic perfusion pressure → risk of ischaemia</li>
+            <li>No longer first-line for bradycardia (atropine/pacing preferred)</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Digoxin</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Cardiac glycoside from <em>Digitalis</em> species. <strong>Inhibits Na⁺/K⁺-ATPase</strong> → ↑ intracellular Na⁺ → reversal of Na⁺/Ca²⁺ exchanger → ↑ intracellular Ca²⁺ → positive inotropy.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Cardiac effects:</strong> ↑ contractility (weak inotrope), ↓ AV conduction (vagotonic), ↓ HR</li>
+            <li><strong>Loading dose:</strong> 500 µg IV over 2 hours, then 250 µg 6-hourly × 2. Maintenance: 62.5–250 µg/day</li>
+            <li><strong>Primary use:</strong> rate control in atrial fibrillation (especially with heart failure). Not for cardioversion</li>
+            <li><strong>Narrow therapeutic index:</strong> therapeutic level 1.0–2.0 ng/mL. Toxicity enhanced by hypokalaemia, hypercalcaemia, hypomagnesaemia, hypothyroidism, renal impairment</li>
+            <li><strong>Toxicity features:</strong> any arrhythmia (classically bidirectional VT, accelerated junctional rhythm), nausea, visual disturbance (xanthopsia — yellow vision)</li>
+            <li><strong>Treatment of toxicity:</strong> Digoxin-specific antibody fragments (DigiFab). Correct K⁺/Mg²⁺. Avoid cardioversion (risk of refractory VF)</li>
+            <li>70% renal excretion. T½ = 36–48 hours. Large Vd (8 L/kg) — not removed by dialysis</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Glucagon</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Pancreatic peptide hormone that acts on glucagon receptors in the heart to activate adenylyl cyclase via Gs proteins, <strong>independently of the β-receptor</strong>.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Dose:</strong> 50–150 µg/kg IV bolus (typically 5–10 mg), then infusion 1–5 mg/hr</li>
+            <li><strong>Primary indication:</strong> β-blocker overdose (bypasses blocked β-receptor to increase cAMP)</li>
+            <li>Also useful in calcium channel blocker toxicity</li>
+            <li><strong>Effects:</strong> ↑ HR, ↑ contractility, ↑ AV conduction. Also ↑ blood glucose, relaxes smooth muscle</li>
+            <li><strong>Side effects:</strong> nausea, vomiting (common), hyperglycaemia, hypokalaemia</li>
+            <li>Short duration (15–20 min) — infusion usually required</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Calcium</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Ionised calcium is essential for excitation-contraction coupling in cardiac and smooth muscle. Supplementation increases contractility by increasing extracellular Ca²⁺ available for entry via L-type channels.
+          </p>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Preparation</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Ca²⁺ content</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Calcium chloride 10%</td>
+                  <td className="px-4 py-2">6.8 mmol Ca²⁺ per 10 mL</td>
+                  <td className="px-4 py-2">3× more ionised Ca²⁺ than gluconate. Irritant — requires central access ideally. Preferred in cardiac arrest</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-medium">Calcium gluconate 10%</td>
+                  <td className="px-4 py-2">2.2 mmol Ca²⁺ per 10 mL</td>
+                  <td className="px-4 py-2">Safer peripherally. Requires hepatic metabolism to release ionised Ca²⁺. Preferred for hyperkalaemia</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Indications:</strong> hyperkalaemia (cardiac membrane stabilisation), hypocalcaemia, calcium channel blocker toxicity, massive transfusion (citrate chelation), cardiac arrest (PEA with suspected hypocalcaemia)</li>
+            <li><strong>Dose:</strong> 10 mL of 10% CaCl₂ IV over 10 min (cardiac arrest: rapid bolus)</li>
+            <li>Antagonises the cardiac effects of hyperkalaemia and hypermagnesaemia</li>
+          </ul>
+        </section>
+
         <div className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
           <VasoactiveStructures />
@@ -311,20 +441,21 @@ const VasoactiveAgentsTopic = () => {
 
         <KeyLearningPoints
           points={[
+            "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)",
             "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁",
             "Noradrenaline is first-line vasopressor in septic shock (α₁ predominant with some β₁)",
-            "Phenylephrine is a pure α₁ agonist — preferred vasopressor for obstetric spinal hypotension",
             "Dobutamine is an inodilator (β₁ > β₂ > α₁) — first-line inotrope in cardiogenic shock",
-            "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients",
-            "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
-            "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator",
-            "SNP releases cyanide — toxicity causes lactic acidosis; treat with hydroxocobalamin",
+            "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients and ↓ PVR",
+            "Digoxin inhibits Na⁺/K⁺-ATPase — toxicity enhanced by ↓K⁺, ↓Mg²⁺, ↑Ca²⁺; treat with DigiFab",
+            "Glucagon bypasses the β-receptor via glucagon receptor → Gs → ↑ cAMP — key in β-blocker OD",
+            "CaCl₂ has 3× more ionised Ca²⁺ than Ca gluconate — preferred in cardiac arrest",
             "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand",
-            "Ephedrine is an indirect sympathomimetic — tachyphylaxis occurs with repeated doses",
+            "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
+            "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
           ]}
         />
 
-        <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive Agents" />
+        <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive & Inotropic Agents" />
 
         <QuizSection questions={vasoactiveAgentsQuiz} />
       </div>

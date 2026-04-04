@@ -51,7 +51,7 @@ export const pharmacologyTopics: Topic[] = [
   { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examTags: ["primary", "final"], available: true },
-  { id: "vasoactive-agents", title: "Vasoactive Agents", description: "Catecholamines, vasopressors, inodilators, vasodilators and their receptor pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "vasoactive-agents", title: "Vasoactive & Inotropic Agents", description: "Catecholamines, vasopressors, inotropes, inodilators, vasodilators, digoxin, calcium, and receptor pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
