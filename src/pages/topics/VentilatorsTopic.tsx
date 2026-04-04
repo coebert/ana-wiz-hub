@@ -49,6 +49,7 @@ const historicVentilators = [
     name: "Manley MP3",
     era: "1960s–1990s",
     type: "Minute Volume Divider",
+    image: manleyImg,
     mechanism: "Purely pneumatic, gas-powered. The driving gas flow (= minute volume) is divided into breaths. Two concertina bellows alternate: one fills while the other delivers. A weight on the bellows determines inspiratory pressure.",
     features: [
       "No electricity required",
