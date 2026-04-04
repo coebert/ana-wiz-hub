@@ -445,6 +445,58 @@ const VasoactiveAgentsTopic = () => {
           <VasoactiveReceptorDiagram />
         </div>
 
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Haemodynamic Effects Comparison</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The table below summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Agent</th>
+                  <th className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">HR</th>
+                  <th className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">MAP</th>
+                  <th className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">SVR</th>
+                  <th className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">CO</th>
+                  <th className="px-3 py-2 text-center text-foreground font-semibold border-b border-border">MVO₂</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                {[
+                  { agent: "Adrenaline (low)", hr: "↑", map: "↑", svr: "↓/↔", co: "↑↑", mvo2: "↑↑" },
+                  { agent: "Adrenaline (high)", hr: "↑↑", map: "↑↑", svr: "↑↑", co: "↑↑", mvo2: "↑↑↑" },
+                  { agent: "Noradrenaline", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↑", mvo2: "↑" },
+                  { agent: "Dobutamine", hr: "↑", map: "↔/↑", svr: "↓", co: "↑↑", mvo2: "↑↑" },
+                  { agent: "Dopamine (low)", hr: "↔", map: "↔", svr: "↔", co: "↔/↑", mvo2: "↔" },
+                  { agent: "Dopamine (high)", hr: "↑↑", map: "↑↑", svr: "↑↑", co: "↑", mvo2: "↑↑" },
+                  { agent: "Isoprenaline", hr: "↑↑↑", map: "↓", svr: "↓↓", co: "↑↑", mvo2: "↑↑↑" },
+                  { agent: "Milrinone", hr: "↔/↑", map: "↓", svr: "↓↓", co: "↑↑", mvo2: "↔/↑" },
+                  { agent: "Levosimendan", hr: "↔/↑", map: "↓", svr: "↓", co: "↑↑", mvo2: "↔" },
+                  { agent: "Digoxin", hr: "↓", map: "↔", svr: "↔", co: "↑", mvo2: "↔/↓" },
+                  { agent: "Vasopressin", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↓", mvo2: "↔" },
+                  { agent: "Phenylephrine", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑↑", co: "↓", mvo2: "↑" },
+                  { agent: "Metaraminol", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑", co: "↔", mvo2: "↑" },
+                  { agent: "Calcium", hr: "↔", map: "↑", svr: "↔/↑", co: "↑", mvo2: "↑" },
+                  { agent: "Glucagon", hr: "↑", map: "↑", svr: "↔", co: "↑", mvo2: "↑" },
+                ].map((row) => (
+                  <tr key={row.agent} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
+                    <td className="px-3 py-2 font-medium">{row.agent}</td>
+                    <td className="px-3 py-2 text-center">{row.hr}</td>
+                    <td className="px-3 py-2 text-center">{row.map}</td>
+                    <td className="px-3 py-2 text-center">{row.svr}</td>
+                    <td className="px-3 py-2 text-center">{row.co}</td>
+                    <td className="px-3 py-2 text-center">{row.mvo2}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">
+            ↑↑↑ = marked increase, ↑↑ = moderate increase, ↑ = mild increase, ↔ = no significant change, ↓ = decrease. Effects are dose-dependent and vary with clinical context.
+          </p>
+        </div>
+
         <KeyLearningPoints
           points={[
             "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)",
