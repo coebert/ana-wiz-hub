@@ -40,12 +40,12 @@ const AcidBaseInterpretationDiagram = () => {
   ];
 
   const compensationRules = [
-    { disorder: "Metabolic acidosis", rule: "Expected PaCO₂ = (1.5 × HCO₃⁻) + 8 ± 2 (Winter's formula)", onset: "Hours (hyperventilation)", limit: "PaCO₂ cannot fall below ~1.3 kPa (10 mmHg)" },
-    { disorder: "Metabolic alkalosis", rule: "Expected PaCO₂ = (0.7 × HCO₃⁻) + 21 ± 2", onset: "Hours (hypoventilation)", limit: "PaCO₂ rarely >7.3 kPa (55 mmHg) — hypoxia limits compensation" },
-    { disorder: "Acute respiratory acidosis", rule: "HCO₃⁻ ↑ 1 mEq/L per 10 mmHg ↑PaCO₂", onset: "Minutes (buffering)", limit: "HCO₃⁻ rarely >30 mEq/L acutely" },
-    { disorder: "Chronic respiratory acidosis", rule: "HCO₃⁻ ↑ 3.5 mEq/L per 10 mmHg ↑PaCO₂", onset: "3–5 days (renal)", limit: "HCO₃⁻ can reach 38–45 mEq/L" },
-    { disorder: "Acute respiratory alkalosis", rule: "HCO₃⁻ ↓ 2 mEq/L per 10 mmHg ↓PaCO₂", onset: "Minutes", limit: "HCO₃⁻ rarely <18 mEq/L acutely" },
-    { disorder: "Chronic respiratory alkalosis", rule: "HCO₃⁻ ↓ 5 mEq/L per 10 mmHg ↓PaCO₂", onset: "3–5 days (renal)", limit: "HCO₃⁻ can reach 12–15 mEq/L" },
+    { disorder: "Metabolic acidosis", rule: "Expected PaCO₂ = (1.5 × HCO₃⁻) + 8 ± 2 (Winter's formula)", onset: "Hours (hyperventilation)", limit: "PaCO₂ cannot fall below ~1.3 kPa" },
+    { disorder: "Metabolic alkalosis", rule: "Expected PaCO₂ = (0.7 × HCO₃⁻) + 21 ± 2", onset: "Hours (hypoventilation)", limit: "PaCO₂ rarely >7.3 kPa — hypoxia limits compensation" },
+    { disorder: "Acute respiratory acidosis", rule: "HCO₃⁻ ↑ 1 mEq/L per 1.3 kPa ↑PaCO₂", onset: "Minutes (buffering)", limit: "HCO₃⁻ rarely >30 mEq/L acutely" },
+    { disorder: "Chronic respiratory acidosis", rule: "HCO₃⁻ ↑ 3.5 mEq/L per 1.3 kPa ↑PaCO₂", onset: "3–5 days (renal)", limit: "HCO₃⁻ can reach 38–45 mEq/L" },
+    { disorder: "Acute respiratory alkalosis", rule: "HCO₃⁻ ↓ 2 mEq/L per 1.3 kPa ↓PaCO₂", onset: "Minutes", limit: "HCO₃⁻ rarely <18 mEq/L acutely" },
+    { disorder: "Chronic respiratory alkalosis", rule: "HCO₃⁻ ↓ 5 mEq/L per 1.3 kPa ↓PaCO₂", onset: "3–5 days (renal)", limit: "HCO₃⁻ can reach 12–15 mEq/L" },
   ];
 
   const commonPatterns = [

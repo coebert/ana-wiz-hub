@@ -199,7 +199,7 @@ function DLCOView() {
           1/DLCO = 1/DM + 1/(θ·Vc)
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          Normal: 25–30 ml/min/mmHg | KCO = DLCO/VA (corrects for lung volume)
+          Normal: 25–30 ml/min/mmHg (3.3–4.0 mmol/min/kPa) | KCO = DLCO/VA
         </p>
       </div>
 
