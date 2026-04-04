@@ -138,7 +138,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <line x1={toX(26.7)} y1={toY(50)} x2={toX(26.7)} y2={toY(0)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
           <line x1={toX(0)} y1={toY(50)} x2={toX(26.7)} y2={toY(50)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
           <circle cx={toX(26.7)} cy={toY(50)} r="4" fill="hsl(170 50% 40%)" />
-          <text x={toX(26.7) + 8} y={toY(50) - 6} fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">P₅₀ = 26.7 mmHg</text>
+          <text x={toX(26.7) + 8} y={toY(50) - 6} fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">P₅₀ = 3.5 kPa</text>
 
           {/* Clinical reference points */}
           {clinicalPoints.slice(1).map(pt => (
