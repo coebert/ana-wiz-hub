@@ -543,7 +543,7 @@ export const clinicalIncidentsQuestions: QuizQuestion[] = [
 ];
 
 export const ardsQuestions: QuizQuestion[] = [
-  { question: "The Berlin definition classifies severe ARDS as PaO₂/FiO₂:", options: ["<300 mmHg", "<200 mmHg", "<100 mmHg", "<50 mmHg"], correctIndex: 2, explanation: "Berlin definition: mild 200-300, moderate 100-200, severe <100 mmHg, all with PEEP ≥5 cmH₂O." },
+  { question: "The Berlin definition classifies severe ARDS as PaO₂/FiO₂:", options: ["<40 kPa", "<26.7 kPa", "<13.3 kPa", "<6.7 kPa"], correctIndex: 2, explanation: "Berlin definition: mild 26.7–40, moderate 13.3–26.7, severe <13.3 kPa, all with PEEP ≥5 cmH₂O." },
   { question: "The PROSEVA trial demonstrated mortality benefit from prone positioning when applied for:", options: ["≥4 hours/day", "≥8 hours/day", "≥12 hours/day", "≥16 hours/day"], correctIndex: 3, explanation: "PROSEVA (2013): prone positioning ≥16 hours/day in moderate-severe ARDS (P/F <150) reduced 28-day mortality from 32.8% to 16.0%." },
   { question: "VV-ECMO should be considered in ARDS when PaO₂/FiO₂ is:", options: ["<200 despite optimisation", "<150 despite optimisation", "<100 despite optimisation", "<80 despite optimisation"], correctIndex: 3, explanation: "EOLIA trial criteria for VV-ECMO referral include PaO₂/FiO₂ <80 despite optimal ventilation, or pH <7.25 with PaCO₂ ≥60." },
   { question: "The FACTT trial demonstrated that conservative fluid strategy in ARDS:", options: ["Increased mortality", "Improved oxygenation and ventilator-free days", "Had no effect", "Increased renal failure"], correctIndex: 1, explanation: "FACTT showed conservative fluid strategy improved oxygenation, increased ventilator-free days, and reduced ICU length of stay without increasing organ failure." },
