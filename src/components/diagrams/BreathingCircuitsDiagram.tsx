@@ -194,14 +194,31 @@ const FlowDots = ({ path, colour, reverse = false, id }: { path: string; colour:
   </g>
 );
 
-/* ───────── Flow arrow with animation ───────── */
-const AnimFlowArrow = ({ x1, y1, x2, y2, colour }: { x1: number; y1: number; x2: number; y2: number; colour: string }) => {
-  const id = `af${x1}${y1}${x2}${y2}`;
+/* ───────── Flow arrow with animation + arrowhead ───────── */
+const AnimFlowArrow = ({ x1, y1, x2, y2, colour, label }: { x1: number; y1: number; x2: number; y2: number; colour: string; label?: string }) => {
+  const id = `af${Math.round(x1)}${Math.round(y1)}${Math.round(x2)}${Math.round(y2)}`;
   const d = `M ${x1} ${y1} L ${x2} ${y2}`;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const ux = dx / len;
+  const uy = dy / len;
+  // Arrowhead at end
+  const ax = x2 - ux * 6;
+  const ay = y2 - uy * 6;
+  const px = -uy * 4;
+  const py = ux * 4;
+  // Label midpoint
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+
   return (
     <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth="1.8" opacity="0.4" strokeDasharray="6,4" />
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth="2" opacity="0.35" strokeDasharray="6,4" />
+      {/* Arrowhead */}
+      <polygon points={`${x2},${y2} ${ax + px},${ay + py} ${ax - px},${ay - py}`} fill={colour} opacity="0.7" />
       <FlowDots path={d} colour={colour} id={id} />
+      {label && <text x={mx} y={my - 5} textAnchor="middle" fontSize="5.5" fill={colour} fontWeight="bold">{label}</text>}
     </g>
   );
 };
