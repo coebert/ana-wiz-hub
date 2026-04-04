@@ -9,7 +9,7 @@ import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 const VasoactiveAgentsTopic = () => {
   return (
     <SectionLayout
-      title="Vasoactive Agents"
+      title="Vasoactive & Inotropic Agents"
       subtitle="FRCA Primary & Final — Pharmacology"
       backPath="/pharmacology"
       backLabel="Pharmacology"
@@ -19,10 +19,60 @@ const VasoactiveAgentsTopic = () => {
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Vasoactive agents are drugs that alter vascular tone and/or cardiac function. They are essential in the management
+            Vasoactive and inotropic agents are drugs that alter vascular tone and/or cardiac function. They are essential in the management
             of haemodynamic instability during anaesthesia and critical care. Understanding their receptor pharmacology,
             mechanisms, and clinical applications is fundamental to FRCA and FFICM examinations.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Inotrope Classification by Mechanism</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Inotropes increase myocardial contractility through different intracellular pathways. They can be classified by their mechanism of action:
+          </p>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Agents</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Pathway</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (receptor-mediated)</td>
+                  <td className="px-4 py-2">Adrenaline, dobutamine, dopamine, isoprenaline</td>
+                  <td className="px-4 py-2">β₁ agonism → Gs → adenylyl cyclase → ↑ cAMP → PKA → ↑ Ca²⁺ entry</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (enzyme inhibition)</td>
+                  <td className="px-4 py-2">Milrinone, enoximone</td>
+                  <td className="px-4 py-2">PDE III inhibition → ↓ cAMP breakdown → ↑ cAMP → PKA</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Calcium sensitisation</td>
+                  <td className="px-4 py-2">Levosimendan</td>
+                  <td className="px-4 py-2">Stabilises Ca²⁺–troponin C complex → ↑ contractile force without ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Na⁺/K⁺-ATPase inhibition</td>
+                  <td className="px-4 py-2">Digoxin</td>
+                  <td className="px-4 py-2">↑ intracellular Na⁺ → Na⁺/Ca²⁺ exchanger reversal → ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Direct Ca²⁺ supplementation</td>
+                  <td className="px-4 py-2">Calcium chloride / gluconate</td>
+                  <td className="px-4 py-2">↑ extracellular [Ca²⁺] → ↑ Ca²⁺ available for excitation-contraction coupling</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-medium">↑ cAMP (glucagon receptor)</td>
+                  <td className="px-4 py-2">Glucagon</td>
+                  <td className="px-4 py-2">Glucagon receptor → Gs → ↑ cAMP (bypasses β-receptor)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section className="mb-10">
