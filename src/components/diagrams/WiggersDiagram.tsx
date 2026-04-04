@@ -293,9 +293,11 @@ export const WiggersDiagram = () => {
         <path d={paths.la} fill="none" stroke="hsl(340 55% 55%)" strokeWidth="1.5" strokeDasharray="4 2" />
 
         {/* LA wave labels */}
-        <text x={aWaveX} y={pressTop + pressH - 12} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">a</text>
-        <text x={cWaveX} y={pressTop + pressH - 18} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">c</text>
-        <text x={vWaveX} y={pressTop + pressH - 40} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">v</text>
+        <text x={aWaveX} y={pressTop + pressH - 8} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">a</text>
+        <text x={cWaveX} y={pressTop + pressH - 15} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">c</text>
+        <text x={vWaveX} y={pressTop + pressH - 35} fontSize="7" fill="hsl(340 55% 55%)" textAnchor="middle" fontWeight="600">v</text>
+        <text x={xDescentX} y={pressTop + pressH - 5} fontSize="6" fill="hsl(340 55% 55%)" textAnchor="middle" fontStyle="italic">x</text>
+        <text x={yDescentX} y={pressTop + pressH - 5} fontSize="6" fill="hsl(340 55% 55%)" textAnchor="middle" fontStyle="italic">y</text>
 
         {/* Dicrotic notch label */}
         <text x={timeToX(135)} y={pressTop + 85} fontSize="6" fill="hsl(0 65% 50%)" textAnchor="start" fontStyle="italic">DN</text>
