@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-type Tab = "shock" | "equipment" | "diathermy" | "earthing";
+type Tab = "shock" | "equipment" | "diathermy" | "earthing" | "defibrillation";
 
 const tabs: { key: Tab; label: string }[] = [
   { key: "shock", label: "Shock Thresholds" },
   { key: "equipment", label: "Equipment Classes" },
   { key: "diathermy", label: "Diathermy" },
   { key: "earthing", label: "Earthing & Protection" },
+  { key: "defibrillation", label: "Defibrillation" },
 ];
 
 const ShockThresholdsDiagram = () => (
