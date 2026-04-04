@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
+import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
