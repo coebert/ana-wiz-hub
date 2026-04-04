@@ -62,10 +62,10 @@ export const oxygenHaemoglobinQuiz: QuizQuestion[] = [
   {
     question: "The P₅₀ of adult haemoglobin is approximately:",
     options: [
-      "3.5 kPa (26.7 mmHg)",
-      "5.3 kPa (40 mmHg)",
-      "8.0 kPa (60 mmHg)",
-      "13.3 kPa (100 mmHg)",
+     "3.5 kPa",
+     "5.3 kPa",
+     "8.0 kPa",
+     "13.3 kPa",
     ],
     correctIndex: 0,
     explanation: "The P₅₀ is the PaO₂ at which haemoglobin is 50% saturated. For normal adult haemoglobin (HbA), this is approximately 3.5 kPa (26.7 mmHg). Changes in P₅₀ indicate shifts in the ODC — an increased P₅₀ represents a right shift.",
