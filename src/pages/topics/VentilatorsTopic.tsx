@@ -5,6 +5,16 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
+import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
+import nuffieldImg from "@/assets/ventilators/penlon-nuffield-200.jpg";
+import birdImg from "@/assets/ventilators/bird-mark-7.jpg";
+import oxylogImg from "@/assets/ventilators/drager-oxylog-3000.jpg";
+import evitaImg from "@/assets/ventilators/drager-evita-v500.jpg";
+import hamiltonImg from "@/assets/ventilators/hamilton-g5.jpg";
+import servoImg from "@/assets/ventilators/maquet-servo-u.jpg";
+import primaImg from "@/assets/ventilators/penlon-prima-sp.jpg";
+import aisysImg from "@/assets/ventilators/ge-aisys-cs2.jpg";
+
 const ventilatorTypes = [
   {
     category: "Classification by Power Source",
