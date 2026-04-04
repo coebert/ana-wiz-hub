@@ -128,7 +128,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
               <text x={toX(v)} y={svgH - padB + 12} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">{v}</text>
             </g>
           ))}
-          <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+          <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (kPa)</text>
           <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
             transform={`rotate(-90, 12, ${padT + plotH / 2})`}>SaO₂ (%)</text>
 
@@ -138,7 +138,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
           <line x1={toX(26.7)} y1={toY(50)} x2={toX(26.7)} y2={toY(0)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
           <line x1={toX(0)} y1={toY(50)} x2={toX(26.7)} y2={toY(50)} stroke="hsl(170 50% 40%)" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.5" />
           <circle cx={toX(26.7)} cy={toY(50)} r="4" fill="hsl(170 50% 40%)" />
-          <text x={toX(26.7) + 8} y={toY(50) - 6} fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">P₅₀ = 26.7 mmHg</text>
+          <text x={toX(26.7) + 8} y={toY(50) - 6} fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">P₅₀ = 3.5 kPa</text>
 
           {/* Clinical reference points */}
           {clinicalPoints.slice(1).map(pt => (
@@ -181,7 +181,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
             <text x={toX(v)} y={svgH - padB + 12} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">{v}</text>
           </g>
         ))}
-        <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+        <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (kPa)</text>
         <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
           transform={`rotate(-90, 12, ${padT + plotH / 2})`}>SaO₂ (%)</text>
 
@@ -303,7 +303,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         <div className="rounded-lg border border-border p-2">
           <p className="text-xs text-muted-foreground">P₅₀</p>
           <p className={`text-sm font-semibold ${isShifted ? (shiftDirection === "right" ? "text-red-500" : "text-blue-500") : "text-foreground"}`}>
-            {p50.toFixed(1)} mmHg
+            {(p50 / 7.5).toFixed(1)} kPa
           </p>
         </div>
         <div className="rounded-lg border border-border p-2">

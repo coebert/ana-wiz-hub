@@ -62,13 +62,13 @@ export const oxygenHaemoglobinQuiz: QuizQuestion[] = [
   {
     question: "The P₅₀ of adult haemoglobin is approximately:",
     options: [
-      "3.5 kPa (26.7 mmHg)",
-      "5.3 kPa (40 mmHg)",
-      "8.0 kPa (60 mmHg)",
-      "13.3 kPa (100 mmHg)",
+     "3.5 kPa",
+     "5.3 kPa",
+     "8.0 kPa",
+     "13.3 kPa",
     ],
     correctIndex: 0,
-    explanation: "The P₅₀ is the PaO₂ at which haemoglobin is 50% saturated. For normal adult haemoglobin (HbA), this is approximately 3.5 kPa (26.7 mmHg). Changes in P₅₀ indicate shifts in the ODC — an increased P₅₀ represents a right shift.",
+    explanation: "The P₅₀ is the PaO₂ at which haemoglobin is 50% saturated. For normal adult haemoglobin (HbA), this is approximately 3.5 kPa. Changes in P₅₀ indicate shifts in the ODC — an increased P₅₀ represents a right shift.",
   },
   {
     question: "A patient presents with metabolic acidosis, fever, and raised 2,3-DPG. What effect does this combination have on the oxygen-haemoglobin dissociation curve?",
@@ -101,7 +101,7 @@ export const oxygenHaemoglobinQuiz: QuizQuestion[] = [
       "Because pulse oximeters cannot detect carboxyhaemoglobin",
     ],
     correctIndex: 1,
-    explanation: "The flat upper portion of the ODC means that PaO₂ can fall from 13 kPa to approximately 8 kPa (100 to 60 mmHg) with only a small change in SaO₂ (from ~98% to ~90%). Once PaO₂ falls below 8 kPa, the steep portion causes rapid desaturation. This is why pre-oxygenation provides a crucial safety margin.",
+    explanation: "The flat upper portion of the ODC means that PaO₂ can fall from 13 kPa to approximately 8 kPa with only a small change in SaO₂ (from ~98% to ~90%). Once PaO₂ falls below 8 kPa, the steep portion causes rapid desaturation. This is why pre-oxygenation provides a crucial safety margin.",
   },
   {
     question: "Carbon monoxide poisoning causes the ODC to:",
@@ -543,7 +543,7 @@ export const clinicalIncidentsQuestions: QuizQuestion[] = [
 ];
 
 export const ardsQuestions: QuizQuestion[] = [
-  { question: "The Berlin definition classifies severe ARDS as PaO₂/FiO₂:", options: ["<300 mmHg", "<200 mmHg", "<100 mmHg", "<50 mmHg"], correctIndex: 2, explanation: "Berlin definition: mild 200-300, moderate 100-200, severe <100 mmHg, all with PEEP ≥5 cmH₂O." },
+  { question: "The Berlin definition classifies severe ARDS as PaO₂/FiO₂:", options: ["<40 kPa", "<26.7 kPa", "<13.3 kPa", "<6.7 kPa"], correctIndex: 2, explanation: "Berlin definition: mild 26.7–40, moderate 13.3–26.7, severe <13.3 kPa, all with PEEP ≥5 cmH₂O." },
   { question: "The PROSEVA trial demonstrated mortality benefit from prone positioning when applied for:", options: ["≥4 hours/day", "≥8 hours/day", "≥12 hours/day", "≥16 hours/day"], correctIndex: 3, explanation: "PROSEVA (2013): prone positioning ≥16 hours/day in moderate-severe ARDS (P/F <150) reduced 28-day mortality from 32.8% to 16.0%." },
   { question: "VV-ECMO should be considered in ARDS when PaO₂/FiO₂ is:", options: ["<200 despite optimisation", "<150 despite optimisation", "<100 despite optimisation", "<80 despite optimisation"], correctIndex: 3, explanation: "EOLIA trial criteria for VV-ECMO referral include PaO₂/FiO₂ <80 despite optimal ventilation, or pH <7.25 with PaCO₂ ≥60." },
   { question: "The FACTT trial demonstrated that conservative fluid strategy in ARDS:", options: ["Increased mortality", "Improved oxygenation and ventilator-free days", "Had no effect", "Increased renal failure"], correctIndex: 1, explanation: "FACTT showed conservative fluid strategy improved oxygenation, increased ventilator-free days, and reduced ICU length of stay without increasing organ failure." },
@@ -637,7 +637,7 @@ export const neurointensiveCareQuestions: QuizQuestion[] = [
   { question: "The BTF-recommended ICP threshold for TBI management is:", options: ["<15 mmHg", "<20 mmHg", "<22 mmHg", "<25 mmHg"], correctIndex: 2, explanation: "Brain Trauma Foundation 4th edition (2016) recommends treating ICP >22 mmHg. Previous threshold was 20 mmHg." },
   { question: "The Eurotherm trial showed that therapeutic hypothermia in TBI:", options: ["Improved outcomes", "Was harmful", "Had no effect", "Only helped children"], correctIndex: 1, explanation: "Eurotherm3235 (2015): therapeutic hypothermia (32-35°C) as a primary intervention for ICP control in TBI was harmful — increased mortality and worse functional outcomes." },
   { question: "SAH vasospasm peaks at:", options: ["Day 1-2", "Day 3-5", "Day 7", "Day 14"], correctIndex: 2, explanation: "Vasospasm occurs days 3-14, peaking around day 7. Nimodipine 60 mg 4-hourly for 21 days is the only proven pharmacological intervention (reduces poor outcome, not angiographic vasospasm)." },
-  { question: "The apnoea test for brainstem death requires PaCO₂ to rise above:", options: ["5.0 kPa", "6.0 kPa", "6.65 kPa", "8.0 kPa"], correctIndex: 2, explanation: "PaCO₂ must rise above 6.65 kPa (50 mmHg) with no respiratory effort observed. Pre-oxygenate, then disconnect ventilator with O₂ insufflation via catheter in trachea." },
+  { question: "The apnoea test for brainstem death requires PaCO₂ to rise above:", options: ["5.0 kPa", "6.0 kPa", "6.65 kPa", "8.0 kPa"], correctIndex: 2, explanation: "PaCO₂ must rise above 6.65 kPa with no respiratory effort observed. Pre-oxygenate, then disconnect ventilator with O₂ insufflation via catheter in trachea." },
   { question: "First-line treatment for status epilepticus is:", options: ["IV phenytoin", "IV lorazepam", "IV levetiracetam", "IV thiopentone"], correctIndex: 1, explanation: "IV lorazepam 0.1 mg/kg (max 4 mg) is first-line, repeated once if needed. Buccal midazolam or rectal diazepam if no IV access." },
 ];
 
@@ -943,7 +943,7 @@ export const abgAnalyserQuestions: QuizQuestion[] = [
   { question: "The galvanic fuel cell used for FiO₂ monitoring differs from the Clark electrode in that it:", options: ["Uses a platinum cathode instead of gold", "Requires an external polarizing voltage of −0.6V", "Is self-generating and requires no external power supply", "Measures dissolved O₂ in blood rather than gas"], correctIndex: 2, explanation: "The galvanic fuel cell is self-generating — the lead anode oxidation and gold cathode O₂ reduction create an EMF proportional to PO₂ without any external power. The lead anode is consumed over time, giving the cell a finite lifespan (~6-12 months). It measures O₂ in gas, not blood." },
   { question: "Which of the following is a source of error specific to the Clark electrode?", options: ["Protein coating of the pH-sensitive glass", "Consumption of O₂ by the electrode itself", "CO₂ interference with the measurement", "Nitrous oxide cross-sensitivity"], correctIndex: 1, explanation: "The Clark electrode consumes O₂ during measurement (O₂ + 2H₂O + 4e⁻ → 4OH⁻). The polypropylene membrane limits the rate of O₂ diffusion to the cathode, ensuring current is proportional to PO₂. However, this O₂ consumption means stagnant samples may give falsely low readings." },
   { question: "The α-stat approach to ABG interpretation in hypothermia involves:", options: ["Correcting results to the patient's actual body temperature", "Reporting results at 37°C regardless of patient temperature", "Adding CO₂ to maintain pH 7.4 at the patient's temperature", "Using a different calibration buffer for hypothermic samples"], correctIndex: 1, explanation: "α-stat reports ABG values measured at 37°C without correction. This preserves the ionisation state of imidazole (α) groups on histidine residues, maintaining intracellular electroneutrality. It is preferred for most adult cardiac surgery. pH-stat corrects to actual temperature and may improve CBF in deep hypothermia (paediatric cardiac surgery)." },
-  { question: "Air bubbles in an ABG sample will cause:", options: ["↑PO₂ and ↑PCO₂", "↓PO₂ and ↑PCO₂", "↑PO₂ and ↓PCO₂", "No significant change"], correctIndex: 2, explanation: "Air has a PO₂ of ~150 mmHg (higher than venous blood) and PCO₂ of ~0.3 mmHg (much lower than blood ~40 mmHg). Equilibration with air bubbles raises PO₂ and lowers PCO₂. This is one of the most common pre-analytical errors." },
+  { question: "Air bubbles in an ABG sample will cause:", options: ["↑PO₂ and ↑PCO₂", "↓PO₂ and ↑PCO₂", "↑PO₂ and ↓PCO₂", "No significant change"], correctIndex: 2, explanation: "Air has a PO₂ of ~20 kPa (higher than venous blood) and PCO₂ of ~0.04 kPa (much lower than blood ~5.3 kPa). Equilibration with air bubbles raises PO₂ and lowers PCO₂. This is one of the most common pre-analytical errors." },
   { question: "In a galvanic fuel cell, the anode material is:", options: ["Platinum", "Gold", "Silver/silver chloride", "Lead"], correctIndex: 3, explanation: "The galvanic fuel cell uses a lead (Pb) anode which is oxidised: 2Pb + 4OH⁻ → 2Pb(OH)₂ + 4e⁻. The lead is consumed during use, which is why the cell has a finite lifespan of approximately 6-12 months and must be replaced periodically." },
   { question: "The ABG analyser directly measures which of the following?", options: ["pH, PO₂, HCO₃⁻", "pH, PCO₂, base excess", "pH, PO₂, PCO₂", "PO₂, PCO₂, SaO₂"], correctIndex: 2, explanation: "The three directly measured parameters are pH (glass electrode), PO₂ (Clark electrode), and PCO₂ (Severinghaus electrode). HCO₃⁻ and base excess are calculated from pH and PCO₂ using the Henderson-Hasselbalch equation. SaO₂ is either calculated or measured by co-oximetry." },
 ];

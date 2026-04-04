@@ -4,13 +4,13 @@ const DiffusionCapacityDiagram = () => {
   const [view, setView] = useState<"fick" | "dlco" | "factors">("fick");
   const [thickness, setThickness] = useState(0.5); // μm
   const [area, setArea] = useState(70); // m²
-  const [gradient, setGradient] = useState(60); // mmHg
+  const [gradient, setGradient] = useState(8); // kPa (was 60 mmHg)
   const [solubility, setSolubility] = useState(1.0); // relative
 
   // Fick's law: Vgas = A × D × (P1-P2) / T
   // D = solubility / √MW
-  const diffusionRate = (area * solubility * gradient) / (thickness * 10); // arbitrary units scaled for display
-  const normalRate = (70 * 1.0 * 60) / (0.5 * 10);
+  const diffusionRate = (area * solubility * gradient) / (thickness * 10);
+  const normalRate = (70 * 1.0 * 8) / (0.5 * 10);
 
   return (
     <div className="space-y-4">
@@ -75,7 +75,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
         <rect x="20" y="10" width="160" height="140" rx="10"
           fill="hsl(210, 70%, 55%)" opacity={0.06} stroke="hsl(210, 70%, 55%)" strokeWidth="1" />
         <text x="100" y="30" textAnchor="middle" className="text-[10px] fill-foreground font-semibold">Alveolus</text>
-        <text x="100" y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PAO₂ = {(60 + gradient).toFixed(0)} mmHg</text>
+        <text x="100" y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PAO₂ = {(8 + gradient).toFixed(1)} kPa</text>
 
         {/* O2 molecules */}
         {[55, 75, 95].map((y, i) => (
@@ -104,7 +104,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
         <rect x={185 + Math.max(thickness * 60, 8) + 5} y="10" width={400 - 185 - Math.max(thickness * 60, 8) - 25} height="140" rx="10"
           fill="hsl(0, 70%, 55%)" opacity={0.06} stroke="hsl(0, 70%, 55%)" strokeWidth="1" />
         <text x={300 + thickness * 10} y="30" textAnchor="middle" className="text-[10px] fill-foreground font-semibold">Capillary</text>
-        <text x={300 + thickness * 10} y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PvO₂ = 40 mmHg</text>
+        <text x={300 + thickness * 10} y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PvO₂ = 5.3 kPa</text>
 
         {/* RBCs */}
         {[60, 85, 110].map((y, i) => (
@@ -126,7 +126,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
       <div className="bg-secondary/30 rounded-xl p-3 border border-border space-y-2">
         <Slider label="Membrane Thickness (T)" value={thickness} min={0.2} max={3.0} step={0.1} unit="μm" onChange={setThickness} />
         <Slider label="Surface Area (A)" value={area} min={10} max={100} step={1} unit="m²" onChange={setArea} />
-        <Slider label="Pressure Gradient (ΔP)" value={gradient} min={5} max={100} step={1} unit="mmHg" onChange={setGradient} />
+        <Slider label="Pressure Gradient (ΔP)" value={gradient} min={0.7} max={13.3} step={0.1} unit="kPa" onChange={setGradient} />
         <div>
           <div className="flex justify-between text-xs mb-0.5">
             <span className="text-muted-foreground">Gas Solubility</span>
@@ -199,7 +199,7 @@ function DLCOView() {
           1/DLCO = 1/DM + 1/(θ·Vc)
         </p>
         <p className="text-xs text-muted-foreground mt-2">
-          Normal: 25–30 ml/min/mmHg | KCO = DLCO/VA (corrects for lung volume)
+          Normal: 25–30 ml/min/mmHg (3.3–4.0 mmol/min/kPa) | KCO = DLCO/VA
         </p>
       </div>
 

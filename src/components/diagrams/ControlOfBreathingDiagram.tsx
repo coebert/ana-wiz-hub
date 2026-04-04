@@ -4,8 +4,8 @@ type View = "overview" | "co2" | "o2" | "ph";
 
 const ControlOfBreathingDiagram = () => {
   const [view, setView] = useState<View>("overview");
-  const [paCO2, setPaCO2] = useState(40);
-  const [paO2, setPaO2] = useState(100);
+  const [paCO2, setPaCO2] = useState(5.3); // kPa
+  const [paO2, setPaO2] = useState(13.3); // kPa
   const [pH, setPH] = useState(7.40);
 
   return (
@@ -150,30 +150,28 @@ function OverviewDiagram() {
 function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: (v: number) => void; paO2: number }) {
   const W = 380, H = 200, PL = 50, PR = 10, PT = 10, PB = 25;
   const plotW = W - PL - PR; const plotH = H - PT - PB;
-  const pMax = 80, veMax = 50;
-  const toX = (p: number) => PL + ((p - 20) / (pMax - 20)) * plotW;
+  const pMin = 2.7, pMax = 10.7, veMax = 50;
+  const toX = (p: number) => PL + ((p - pMin) / (pMax - pMin)) * plotW;
   const toY = (v: number) => PT + plotH - (v / veMax) * plotH;
 
-  // VE = slope * (PaCO2 - apnoeic threshold)
-  const normalSlope = 2.0;
-  const hypoxicSlope = 3.5; // enhanced by hypoxia
-  const threshold = 36; // apnoeic threshold
+  const normalSlope = 15; // L/min/kPa (was ~2 L/min/mmHg × 7.5)
+  const hypoxicSlope = 26; // enhanced by hypoxia
+  const threshold = 4.8; // kPa apnoeic threshold (was 36 mmHg)
 
   const calcVE = (co2: number, slope: number) => Math.max(slope * (co2 - threshold), 0);
-  const currentVE = calcVE(paCO2, paO2 < 60 ? hypoxicSlope : normalSlope);
+  const currentVE = calcVE(paCO2, paO2 < 8 ? hypoxicSlope : normalSlope);
 
   return (
     <div className="space-y-4">
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
         <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
-        {/* Axes */}
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaCO₂ (mmHg)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaCO₂ (kPa)</text>
         <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
         {/* Ticks */}
-        {[20, 30, 40, 50, 60, 70, 80].map(p => (
+        {[3, 4, 5, 6, 7, 8, 9, 10].map(p => (
           <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40, 50].map(v => (
@@ -181,21 +179,21 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
         ))}
 
         {/* Normal curve */}
-        <path d={Array.from({ length: 61 }, (_, i) => {
-          const co2 = 20 + i;
+        <path d={Array.from({ length: 80 }, (_, i) => {
+          const co2 = pMin + (i / 79) * (pMax - pMin);
           return `${i === 0 ? "M" : "L"} ${toX(co2).toFixed(1)},${toY(Math.min(calcVE(co2, normalSlope), veMax)).toFixed(1)}`;
         }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
 
-        {/* Hypoxic curve (left-shifted, steeper) */}
-        <path d={Array.from({ length: 61 }, (_, i) => {
-          const co2 = 20 + i;
+        {/* Hypoxic curve */}
+        <path d={Array.from({ length: 80 }, (_, i) => {
+          const co2 = pMin + (i / 79) * (pMax - pMin);
           return `${i === 0 ? "M" : "L"} ${toX(co2).toFixed(1)},${toY(Math.min(calcVE(co2, hypoxicSlope), veMax)).toFixed(1)}`;
         }).join(" ")} fill="none" stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="6,3" />
 
-        {/* Anaesthesia/opioid curve (right-shifted, flatter) */}
-        <path d={Array.from({ length: 61 }, (_, i) => {
-          const co2 = 20 + i;
-          const ve = Math.max(1.0 * (co2 - 44), 0);
+        {/* Anaesthesia/opioid curve */}
+        <path d={Array.from({ length: 80 }, (_, i) => {
+          const co2 = pMin + (i / 79) * (pMax - pMin);
+          const ve = Math.max(7.5 * (co2 - 5.9), 0);
           return `${i === 0 ? "M" : "L"} ${toX(co2).toFixed(1)},${toY(Math.min(ve, veMax)).toFixed(1)}`;
         }).join(" ")} fill="none" stroke="hsl(142, 60%, 45%)" strokeWidth="2" strokeDasharray="3,4" />
 
@@ -218,21 +216,21 @@ function CO2ResponseCurve({ paCO2, setPaCO2, paO2 }: { paCO2: number; setPaCO2: 
         <text x={PL + 28} y={PT + 31} className="text-[7px] fill-muted-foreground">+ Opioids/Anaesthesia</text>
       </svg>
 
-      <Slider label="PaCO₂" value={paCO2} min={20} max={80} unit="mmHg" onChange={setPaCO2} />
+      <Slider label="PaCO₂" value={paCO2} min={2.7} max={10.7} unit="kPa" onChange={setPaCO2} />
 
       <div className="grid grid-cols-2 gap-2">
         <Metric label="Minute Ventilation" value={`${currentVE.toFixed(1)}`} unit="L/min" />
-        <Metric label="Response Slope" value={`${(paO2 < 60 ? hypoxicSlope : normalSlope).toFixed(1)}`} unit="L/min/mmHg" />
+        <Metric label="Response Slope" value={`${(paO2 < 8 ? hypoxicSlope : normalSlope).toFixed(0)}`} unit="L/min/kPa" />
       </div>
 
       <div className="bg-secondary/30 rounded-lg p-3 border border-border">
         <p className="text-xs font-medium text-foreground">CO₂ Response Key Points</p>
         <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
           <li>CO₂ is the primary driver of ventilation via central chemoreceptors (80%)</li>
-          <li>Linear response: ~2 L/min increase in VE per 1 mmHg rise in PaCO₂</li>
+          <li>Linear response: ~15 L/min increase in VE per 1 kPa rise in PaCO₂</li>
           <li>Hypoxia left-shifts and steepens the curve (synergistic effect)</li>
           <li>Opioids, anaesthetics, sleep: right-shift and flatten (↓ sensitivity)</li>
-          <li>Apnoeic threshold ~36 mmHg — below this, apnoea occurs (important post-hyperventilation)</li>
+          <li>Apnoeic threshold ~4.8 kPa — below this, apnoea occurs (important post-hyperventilation)</li>
         </ul>
       </div>
     </div>
@@ -244,13 +242,14 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
   const W = 380, H = 200, PL = 50, PR = 10, PT = 10, PB = 25;
   const plotW = W - PL - PR; const plotH = H - PT - PB;
   const veMax = 40;
-  const toX = (p: number) => PL + ((p - 20) / (120 - 20)) * plotW;
+  const pMin = 2.7, pMaxO2 = 16;
+  const toX = (p: number) => PL + ((p - pMin) / (pMaxO2 - pMin)) * plotW;
   const toY = (v: number) => PT + plotH - (v / veMax) * plotH;
 
   const calcVE = (o2: number, co2: number) => {
-    const base = 5 + (co2 - 36) * 1.5;
-    if (o2 > 100) return Math.max(base, 0);
-    const hypoxicDrive = o2 < 60 ? 30 * Math.exp(-(o2 - 30) / 15) : 2 * Math.exp(-(o2 - 60) / 30);
+    const base = 5 + (co2 - 4.8) * 11;
+    if (o2 > 13.3) return Math.max(base, 0);
+    const hypoxicDrive = o2 < 8 ? 30 * Math.exp(-(o2 - 4) / 2) : 2 * Math.exp(-(o2 - 8) / 4);
     return Math.max(base + hypoxicDrive, 0);
   };
 
@@ -262,10 +261,10 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
         <rect x={PL} y={PT} width={plotW} height={plotH} fill="hsl(var(--muted))" opacity={0.06} />
         <line x1={PL} y1={PT + plotH} x2={PL + plotW} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--border))" strokeWidth="1.5" />
-        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaO₂ (mmHg)</text>
+        <text x={W / 2} y={H - 2} textAnchor="middle" className="text-[9px] fill-muted-foreground">PaO₂ (kPa)</text>
         <text x="8" y={PT + plotH / 2} textAnchor="middle" className="text-[9px] fill-muted-foreground" transform={`rotate(-90,8,${PT + plotH / 2})`}>Minute Ventilation (L/min)</text>
 
-        {[20, 40, 60, 80, 100, 120].map(p => (
+        {[3, 5, 8, 10, 13, 16].map(p => (
           <text key={p} x={toX(p)} y={PT + plotH + 12} textAnchor="middle" className="text-[7px] fill-muted-foreground">{p}</text>
         ))}
         {[0, 10, 20, 30, 40].map(v => (
@@ -273,21 +272,21 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
         ))}
 
         {/* Normal CO2 curve */}
-        <path d={Array.from({ length: 101 }, (_, i) => {
-          const o2 = 20 + i;
-          return `${i === 0 ? "M" : "L"} ${toX(o2).toFixed(1)},${toY(Math.min(calcVE(o2, 40), veMax)).toFixed(1)}`;
+        <path d={Array.from({ length: 100 }, (_, i) => {
+          const o2 = pMin + (i / 99) * (pMaxO2 - pMin);
+          return `${i === 0 ? "M" : "L"} ${toX(o2).toFixed(1)},${toY(Math.min(calcVE(o2, 5.3), veMax)).toFixed(1)}`;
         }).join(" ")} fill="none" stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
 
         {/* High CO2 */}
-        <path d={Array.from({ length: 101 }, (_, i) => {
-          const o2 = 20 + i;
-          return `${i === 0 ? "M" : "L"} ${toX(o2).toFixed(1)},${toY(Math.min(calcVE(o2, 50), veMax)).toFixed(1)}`;
+        <path d={Array.from({ length: 100 }, (_, i) => {
+          const o2 = pMin + (i / 99) * (pMaxO2 - pMin);
+          return `${i === 0 ? "M" : "L"} ${toX(o2).toFixed(1)},${toY(Math.min(calcVE(o2, 6.7), veMax)).toFixed(1)}`;
         }).join(" ")} fill="none" stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="6,3" />
 
         {/* Danger zone */}
-        <rect x={PL} y={PT} width={toX(60) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.04} />
-        <line x1={toX(60)} y1={PT} x2={toX(60)} y2={PT + plotH} stroke="hsl(0, 70%, 55%)" strokeWidth="1" strokeDasharray="4,3" />
-        <text x={toX(60) + 3} y={PT + 10} className="text-[7px] fill-destructive">PaO₂ 60</text>
+        <rect x={PL} y={PT} width={toX(8) - PL} height={plotH} fill="hsl(0, 70%, 55%)" opacity={0.04} />
+        <line x1={toX(8)} y1={PT} x2={toX(8)} y2={PT + plotH} stroke="hsl(0, 70%, 55%)" strokeWidth="1" strokeDasharray="4,3" />
+        <text x={toX(8) + 3} y={PT + 10} className="text-[7px] fill-destructive">PaO₂ 8 kPa</text>
 
         {/* Current point */}
         <circle cx={toX(paO2)} cy={toY(Math.min(currentVE, veMax))} r="5"
@@ -295,24 +294,24 @@ function O2ResponseCurve({ paO2, setPaO2, paCO2 }: { paO2: number; setPaO2: (v: 
 
         {/* Legend */}
         <line x1={W - 120} y1={PT + 8} x2={W - 100} y2={PT + 8} stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
-        <text x={W - 97} y={PT + 11} className="text-[7px] fill-muted-foreground">PaCO₂ 40</text>
+        <text x={W - 97} y={PT + 11} className="text-[7px] fill-muted-foreground">PaCO₂ 5.3</text>
         <line x1={W - 120} y1={PT + 18} x2={W - 100} y2={PT + 18} stroke="hsl(0, 70%, 55%)" strokeWidth="2" strokeDasharray="4,2" />
-        <text x={W - 97} y={PT + 21} className="text-[7px] fill-muted-foreground">PaCO₂ 50</text>
+        <text x={W - 97} y={PT + 21} className="text-[7px] fill-muted-foreground">PaCO₂ 6.7</text>
       </svg>
 
-      <Slider label="PaO₂" value={paO2} min={20} max={120} unit="mmHg" onChange={setPaO2} />
+      <Slider label="PaO₂" value={paO2} min={2.7} max={16} unit="kPa" onChange={setPaO2} />
 
-      <div className={`rounded-lg p-3 border ${paO2 < 60 ? "bg-destructive/5 border-destructive/30" : "bg-green-500/5 border-green-500/30"}`}>
-        <p className={`text-xs font-semibold ${paO2 < 60 ? "text-destructive" : "text-green-600"}`}>
-          {paO2 < 60 ? `PaO₂ ${paO2} mmHg — hypoxic drive active. Steep part of curve (like ODC).` :
-           `PaO₂ ${paO2} mmHg — minimal hypoxic drive. O₂ response is flat above 60 mmHg.`}
+      <div className={`rounded-lg p-3 border ${paO2 < 8 ? "bg-destructive/5 border-destructive/30" : "bg-green-500/5 border-green-500/30"}`}>
+        <p className={`text-xs font-semibold ${paO2 < 8 ? "text-destructive" : "text-green-600"}`}>
+          {paO2 < 8 ? `PaO₂ ${paO2.toFixed(1)} kPa — hypoxic drive active. Steep part of curve (like ODC).` :
+           `PaO₂ ${paO2.toFixed(1)} kPa — minimal hypoxic drive. O₂ response is flat above 8 kPa.`}
         </p>
       </div>
 
       <div className="bg-secondary/30 rounded-lg p-3 border border-border">
         <p className="text-xs font-medium text-foreground">O₂ Response Key Points</p>
         <ul className="text-xs text-muted-foreground mt-1 space-y-1 list-disc list-inside">
-          <li>Hyperbolic response — minimal until PaO₂ &lt;60 mmHg (steep below this)</li>
+          <li>Hyperbolic response — minimal until PaO₂ &lt;8 kPa (steep below this)</li>
           <li>Mediated entirely by peripheral chemoreceptors (carotid bodies)</li>
           <li>Hypercapnia shifts curve upward — synergistic with CO₂ response</li>
           <li>O₂ provides 10–20% of resting drive. Primary drive only in chronic CO₂ retention</li>
@@ -389,13 +388,14 @@ function PHResponseCurve({ pH, setPH }: { pH: number; setPH: (v: number) => void
 function Slider({ label, value, min, max, unit, onChange }: {
   label: string; value: number; min: number; max: number; unit: string; onChange: (v: number) => void;
 }) {
+  const step = max - min < 20 ? 0.1 : 1;
   return (
     <div>
       <div className="flex justify-between text-xs mb-0.5">
         <span className="text-muted-foreground">{label}</span>
-        <span className="font-mono font-semibold text-foreground">{value} {unit}</span>
+        <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
       </div>
-      <input type="range" min={min} max={max} value={value}
+      <input type="range" min={min} max={max} step={step} value={value}
         onChange={e => onChange(Number(e.target.value))}
         className="w-full h-2 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
     </div>

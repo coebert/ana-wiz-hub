@@ -249,7 +249,7 @@ const ClosingVolumeDiagram = () => {
           <li>Factors increasing CV: age, smoking, obesity, LVF, abdominal surgery</li>
           <li>Factors decreasing FRC: supine position, anaesthesia, obesity, pregnancy</li>
           <li>PEEP/CPAP can increase FRC above CC, preventing airway closure</li>
-          <li>Explains age-related decline in PaO₂ (~0.3 mmHg/year decline from age 20)</li>
+          <li>Explains age-related decline in PaO₂ (~0.04 kPa/year decline from age 20)</li>
         </ul>
       </div>
     </div>
