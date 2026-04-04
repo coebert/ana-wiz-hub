@@ -4,7 +4,7 @@ const DiffusionCapacityDiagram = () => {
   const [view, setView] = useState<"fick" | "dlco" | "factors">("fick");
   const [thickness, setThickness] = useState(0.5); // μm
   const [area, setArea] = useState(70); // m²
-  const [gradient, setGradient] = useState(60); // mmHg
+  const [gradient, setGradient] = useState(8); // kPa (was 60 mmHg)
   const [solubility, setSolubility] = useState(1.0); // relative
 
   // Fick's law: Vgas = A × D × (P1-P2) / T
