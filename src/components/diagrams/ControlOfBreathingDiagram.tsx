@@ -4,8 +4,8 @@ type View = "overview" | "co2" | "o2" | "ph";
 
 const ControlOfBreathingDiagram = () => {
   const [view, setView] = useState<View>("overview");
-  const [paCO2, setPaCO2] = useState(40);
-  const [paO2, setPaO2] = useState(100);
+  const [paCO2, setPaCO2] = useState(5.3); // kPa
+  const [paO2, setPaO2] = useState(13.3); // kPa
   const [pH, setPH] = useState(7.40);
 
   return (
