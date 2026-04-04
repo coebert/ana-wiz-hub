@@ -60,20 +60,10 @@ export const ProgressProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const fallbackProgress: ProgressContextType = {
-  completedTopics: new Set(),
-  toggleTopic: () => {},
-  isCompleted: () => false,
-  getSectionProgress: () => ({ completed: 0, total: 0 }),
-  getOverallProgress: () => ({ completed: 0, total: 0 }),
-};
-
 export const useProgress = (): ProgressContextType => {
   const ctx = useContext(ProgressContext);
   if (!ctx) {
-    // During HMR or edge cases, return a safe fallback instead of crashing
-    console.warn("useProgress called outside ProgressProvider — using fallback");
-    return fallbackProgress;
+    throw new Error("useProgress must be used within ProgressProvider");
   }
   return ctx;
 };
