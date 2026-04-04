@@ -209,10 +209,12 @@ export const WiggersDiagram = () => {
   const cursorX = timeToX(frame);
   const hs = heartSounds(frame);
 
-  // LA wave labels
-  const aWaveX = timeToX(12);
+  // LA wave labels — positioned at actual wave peaks
+  const aWaveX = timeToX(15);
   const cWaveX = timeToX(48);
   const vWaveX = timeToX(135);
+  const xDescentX = timeToX(75);
+  const yDescentX = timeToX(195);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-3">
