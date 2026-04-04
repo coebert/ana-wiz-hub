@@ -86,6 +86,40 @@ const ThoracicAnatomyTopic = () => {
             Principal muscle of respiration. Dome-shaped. Motor supply: phrenic nerve (C3,4,5 — "C3,4,5 keeps the diaphragm alive"). Right crus: larger, encircles oesophagus. Three major openings: aortic hiatus (T12 — aorta, thoracic duct, azygos vein), oesophageal hiatus (T10 — oesophagus, vagal trunks), vena caval foramen (T8 — IVC, right phrenic nerve).
           </p>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paravertebral Space</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The paravertebral space is a wedge-shaped potential space lateral to the vertebral column. It is bounded medially by the vertebral body/intervertebral disc/foramen, posteriorly by the transverse process and superior costotransverse ligament, and anterolaterally by the parietal pleura. It contains the spinal nerve (before it divides into dorsal and ventral rami), the sympathetic chain, fat, and areolar tissue.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Paravertebral Block Technique</p>
+              <p className="text-sm text-muted-foreground mt-1">Landmark: 2.5 cm lateral to spinous process. Contact transverse process at 2–4 cm depth, walk off inferiorly and advance 1–1.5 cm through the superior costotransverse ligament (loss of resistance). Single injection spreads 3–5 dermatomes. Dose: 0.3–0.5 mL/kg bupivacaine 0.25–0.5%.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Advantages Over Epidural</p>
+              <p className="text-sm text-muted-foreground mt-1">Unilateral somatic + sympathetic block → less hypotension. No urinary retention. No motor block of contralateral limb. Excellent for breast surgery, thoracotomy, rib fractures, and renal surgery. Complications: pneumothorax (~0.5%), epidural spread (~10%).</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The First Rib</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The first rib is the broadest, shortest, and most curved rib. It is flattened with superior and inferior surfaces (unlike other ribs which have inner and outer surfaces). The scalene tubercle on its inner border is a critical landmark dividing structures that cross the rib: the subclavian vein passes anterior and the subclavian artery with brachial plexus trunks pass posterior to it.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Key Muscular Attachments</p>
+              <p className="text-sm text-muted-foreground mt-1">Scalenus anterior inserts on scalene tubercle. Scalenus medius inserts posteriorly. Subclavius muscle on inferior surface. The interscalene groove (between anterior and middle scalene) contains the brachial plexus roots and subclavian artery.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Clinical Significance</p>
+              <p className="text-sm text-muted-foreground mt-1">Supraclavicular brachial plexus block targets trunks at the first rib. Subclavian vein cannulation crosses the first rib. Cervical rib (C7 variant) → thoracic outlet syndrome. Pleural dome rises 2.5 cm above medial clavicle — pneumothorax risk.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -93,7 +127,9 @@ const ThoracicAnatomyTopic = () => {
         "Cervical pleura extends above clavicle — risk during subclavian vein cannulation",
         "Diaphragm: phrenic nerve C3,4,5. Openings at T8 (IVC), T10 (oesophagus), T12 (aorta)",
         "Right upper lobe bronchus is eparterial — reason left DLT preferred for one-lung ventilation",
-        "Sternal angle (T4) divides superior from inferior mediastinum — landmark for many structures",
+        "Paravertebral space: unilateral somatic + sympathetic block; bounded by TP, SCTL, parietal pleura",
+        "First rib: scalene tubercle divides subclavian vein (anterior) from artery + brachial plexus (posterior)",
+        "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb",
       ]} />
 
       <QuizSection questions={thoracicAnatomyQuestions} />
