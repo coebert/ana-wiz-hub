@@ -177,6 +177,7 @@ const Index = () => {
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>Content sourced from BJA Education, Miller's Anesthesia, Oh's Intensive Care Manual, and established literature.</p>
           <p className="mt-1">Designed for FRCA & FFICM exam preparation. Not a substitute for clinical judgement.</p>
+          <p className="mt-3 text-muted-foreground/60">App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM</p>
         </div>
       </footer>
     </div>
