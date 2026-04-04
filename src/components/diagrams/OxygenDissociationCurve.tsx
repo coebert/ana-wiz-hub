@@ -303,7 +303,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         <div className="rounded-lg border border-border p-2">
           <p className="text-xs text-muted-foreground">P₅₀</p>
           <p className={`text-sm font-semibold ${isShifted ? (shiftDirection === "right" ? "text-red-500" : "text-blue-500") : "text-foreground"}`}>
-            {p50.toFixed(1)} mmHg
+            {(p50 / 7.5).toFixed(1)} kPa
           </p>
         </div>
         <div className="rounded-lg border border-border p-2">
