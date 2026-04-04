@@ -41,27 +41,12 @@ const AntiarrhythmicsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Cardiac Action Potential — Recap</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            Antiarrhythmics target specific phases of the action potential:
+          <h2 className="text-2xl font-serif font-bold text-foreground">Drug Classes & the Action Potential</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Each Vaughan-Williams class targets a specific phase of the cardiac action potential. Click a class below to see exactly where it acts and why.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
-            <div className="rounded-lg p-3 border border-border bg-card">
-              <p className="font-semibold text-foreground">Phase 0 — Rapid Depolarisation</p>
-              <p className="text-muted-foreground">Fast Na⁺ influx (His–Purkinje, atrial/ventricular myocytes). Target of <strong>Class I</strong> drugs.</p>
-            </div>
-            <div className="rounded-lg p-3 border border-border bg-card">
-              <p className="font-semibold text-foreground">Phase 2 — Plateau</p>
-              <p className="text-muted-foreground">L-type Ca²⁺ influx balances K⁺ efflux. Target of <strong>Class IV</strong> drugs.</p>
-            </div>
-            <div className="rounded-lg p-3 border border-border bg-card">
-              <p className="font-semibold text-foreground">Phase 3 — Repolarisation</p>
-              <p className="text-muted-foreground">K⁺ efflux restores resting potential. Blocked by <strong>Class III</strong> drugs → prolonged APD & ERP.</p>
-            </div>
-            <div className="rounded-lg p-3 border border-border bg-card">
-              <p className="font-semibold text-foreground">Phase 4 — Resting / Pacemaker</p>
-              <p className="text-muted-foreground">If (funny current) in SA node drives automaticity. <strong>Class II</strong> drugs ↓ cAMP → ↓ slope of phase 4.</p>
-            </div>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <VaughanWilliamsAPDiagram />
           </div>
         </section>
 
