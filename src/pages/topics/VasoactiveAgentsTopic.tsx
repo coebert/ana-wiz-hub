@@ -436,6 +436,11 @@ const VasoactiveAgentsTopic = () => {
         </div>
 
         <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Inotrope Signalling Pathways</h2>
+          <InotropeSignallingDiagram />
+        </div>
+
+        <div className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Diagram</h2>
           <VasoactiveReceptorDiagram />
         </div>
