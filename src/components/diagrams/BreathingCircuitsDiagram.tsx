@@ -374,13 +374,13 @@ const MaplesonTab = () => {
             <CorrugatedTube x1={170} y1={55} x2={420} y2={55} />
             <PatientEnd cx={450} cy={55} />
 
-            {selected === "C" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={110} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "C" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={440} y1={65} x2={80} y2={65} colour={expCol} />
-                <AnimFlowArrow x1={155} y1={35} x2={155} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={155} y1={35} x2={155} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
