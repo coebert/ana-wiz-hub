@@ -470,13 +470,15 @@ const MaplesonTab = () => {
             <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
             <PatientEnd cx={450} cy={55} />
 
-            {selected === "F" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={312} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "F" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={440} y1={65} x2={120} y2={65} colour={expCol} />
-                <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} />
+                <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} label="exhaust" />
+              </>
+            )}
               </>
             )}
           </g>
