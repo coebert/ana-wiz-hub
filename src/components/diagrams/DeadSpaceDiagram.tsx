@@ -194,8 +194,8 @@ const types = [
 
 /* ─── Bohr Equation ─── */
 function BohrView() {
-  const [paCO2, setPaCO2] = useState(40);
-  const [peCO2, setPeCO2] = useState(28);
+  const [paCO2, setPaCO2] = useState(5.3); // kPa
+  const [peCO2, setPeCO2] = useState(3.7); // kPa
   const ratio = ((paCO2 - peCO2) / paCO2);
 
   return (
