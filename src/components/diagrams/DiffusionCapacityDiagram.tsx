@@ -75,7 +75,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
         <rect x="20" y="10" width="160" height="140" rx="10"
           fill="hsl(210, 70%, 55%)" opacity={0.06} stroke="hsl(210, 70%, 55%)" strokeWidth="1" />
         <text x="100" y="30" textAnchor="middle" className="text-[10px] fill-foreground font-semibold">Alveolus</text>
-        <text x="100" y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PAO₂ = {(60 + gradient).toFixed(0)} mmHg</text>
+        <text x="100" y="45" textAnchor="middle" className="text-[8px] fill-muted-foreground">PAO₂ = {(8 + gradient).toFixed(1)} kPa</text>
 
         {/* O2 molecules */}
         {[55, 75, 95].map((y, i) => (
