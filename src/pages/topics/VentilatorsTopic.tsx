@@ -78,6 +78,7 @@ const historicVentilators = [
     name: "Bird Mark 7",
     era: "1950s–1980s",
     type: "Pressure-Cycled",
+    image: birdImg,
     mechanism: "Entirely pneumatic, pressure-cycled ventilator. Inspiration ends when a preset pressure is reached. No electricity. Originally designed as an IPPB device. Simple, robust, but tidal volume varies with patient compliance.",
     features: [
       "Pressure-cycled — inspiration ends at set pressure",
