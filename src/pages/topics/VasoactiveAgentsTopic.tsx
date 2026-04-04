@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
+import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
 
 const VasoactiveAgentsTopic = () => {
   return (
