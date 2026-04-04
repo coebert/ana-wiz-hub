@@ -134,6 +134,7 @@ const modernVentilators = [
     name: "Maquet Servo-U",
     setting: "Intensive Care",
     type: "Electronically Controlled",
+    image: servoImg,
     features: [
       "NAVA (Neurally Adjusted Ventilatory Assist) — uses diaphragmatic electrical activity",
       "Edi catheter integration for monitoring diaphragm function",
