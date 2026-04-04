@@ -63,6 +63,7 @@ const historicVentilators = [
     name: "Penlon Nuffield 200",
     era: "1980s–present",
     type: "Bag-in-Bottle / Time-Cycled",
+    image: nuffieldImg,
     mechanism: "Gas-powered ventilator using a Newton non-rebreathing valve. Driving gas from a separate source inflates the bellows in the bottle. When driving gas is turned off, the bellows refill passively. Used with Mapleson D/E circuits in paediatric practice.",
     features: [
       "Extremely simple and reliable",
