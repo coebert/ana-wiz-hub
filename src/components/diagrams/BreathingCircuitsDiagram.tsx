@@ -556,7 +556,7 @@ const CircleTab = () => {
       </div>
 
       <div className="bg-secondary/30 rounded-xl p-3 border border-border">
-        <svg viewBox="0 0 520 500" className="w-full h-auto">
+        <svg viewBox="0 0 520 530" className="w-full h-auto">
           <defs>
             <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
             <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
