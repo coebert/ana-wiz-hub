@@ -216,10 +216,10 @@ function BohrView() {
         <div>
           <div className="flex justify-between text-xs mb-1">
             <span className="text-muted-foreground">PaCO₂ (arterial)</span>
-            <span className="font-mono font-semibold text-foreground">{paCO2} mmHg</span>
+            <span className="font-mono font-semibold text-foreground">{paCO2.toFixed(1)} kPa</span>
           </div>
           <input
-            type="range" min={25} max={60} value={paCO2}
+            type="range" min={3.3} max={8.0} step={0.1} value={paCO2}
             onChange={e => setPaCO2(Number(e.target.value))}
             className="w-full h-2 rounded-full appearance-none bg-secondary cursor-pointer accent-primary"
           />
@@ -227,10 +227,10 @@ function BohrView() {
         <div>
           <div className="flex justify-between text-xs mb-1">
             <span className="text-muted-foreground">P<sub>E</sub>CO₂ (mixed expired)</span>
-            <span className="font-mono font-semibold text-foreground">{peCO2} mmHg</span>
+            <span className="font-mono font-semibold text-foreground">{peCO2.toFixed(1)} kPa</span>
           </div>
           <input
-            type="range" min={5} max={45} value={peCO2}
+            type="range" min={0.7} max={6.0} step={0.1} value={peCO2}
             onChange={e => setPeCO2(Number(e.target.value))}
             className="w-full h-2 rounded-full appearance-none bg-secondary cursor-pointer accent-primary"
           />
