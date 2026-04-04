@@ -9,8 +9,8 @@ const DiffusionCapacityDiagram = () => {
 
   // Fick's law: Vgas = A × D × (P1-P2) / T
   // D = solubility / √MW
-  const diffusionRate = (area * solubility * gradient) / (thickness * 10); // arbitrary units scaled for display
-  const normalRate = (70 * 1.0 * 60) / (0.5 * 10);
+  const diffusionRate = (area * solubility * gradient) / (thickness * 10);
+  const normalRate = (70 * 1.0 * 8) / (0.5 * 10);
 
   return (
     <div className="space-y-4">
