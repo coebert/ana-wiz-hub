@@ -259,6 +259,89 @@ const EarthingProtectionDiagram = () => (
   </div>
 );
 
+const DefibrillationDiagram = () => (
+  <div className="space-y-4">
+    <h4 className="font-semibold text-foreground">Defibrillation Waveforms</h4>
+    <div className="bg-secondary/30 rounded-xl p-5 border border-border">
+      <svg viewBox="0 0 600 480" className="w-full h-auto">
+        <text x="300" y="25" textAnchor="middle" className="fill-foreground text-[14px] font-bold">Monophasic vs Biphasic Defibrillation</text>
+
+        {/* Monophasic waveform */}
+        <rect x="20" y="45" width="270" height="180" rx="10" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+        <text x="155" y="68" textAnchor="middle" className="fill-primary text-[12px] font-bold">MONOPHASIC</text>
+
+        {/* Axes */}
+        <line x1="50" y1="90" x2="50" y2="200" stroke="hsl(var(--foreground)/0.4)" strokeWidth="1" />
+        <line x1="50" y1="170" x2="270" y2="170" stroke="hsl(var(--foreground)/0.4)" strokeWidth="1" />
+        <text x="38" y="145" textAnchor="middle" className="fill-muted-foreground text-[8px]" transform="rotate(-90,38,145)">Current</text>
+        <text x="160" y="185" textAnchor="middle" className="fill-muted-foreground text-[8px]">Time</text>
+
+        {/* Monophasic damped sinusoidal waveform */}
+        <path d="M50,170 Q70,95 90,100 Q120,105 140,130 Q160,155 180,165 Q200,170 220,170" 
+          fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <text x="155" y="210" textAnchor="middle" className="fill-muted-foreground text-[9px]">Single direction of current flow</text>
+        <text x="155" y="222" textAnchor="middle" className="fill-primary text-[9px] font-medium">Energy: 360 J</text>
+
+        {/* Biphasic waveform */}
+        <rect x="310" y="45" width="270" height="180" rx="10" fill="hsl(var(--accent)/0.06)" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+        <text x="445" y="68" textAnchor="middle" className="fill-accent text-[12px] font-bold">BIPHASIC</text>
+
+        {/* Axes */}
+        <line x1="340" y1="90" x2="340" y2="200" stroke="hsl(var(--foreground)/0.4)" strokeWidth="1" />
+        <line x1="340" y1="145" x2="560" y2="145" stroke="hsl(var(--foreground)/0.4)" strokeWidth="1" />
+        <text x="328" y="145" textAnchor="middle" className="fill-muted-foreground text-[8px]" transform="rotate(-90,328,145)">Current</text>
+        <text x="450" y="210" textAnchor="middle" className="fill-muted-foreground text-[8px]">Time</text>
+
+        {/* Biphasic truncated exponential waveform */}
+        <path d="M340,145 L340,100 L370,100 Q390,100 400,108 L420,120 L420,145" 
+          fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+        <path d="M420,145 L420,175 L450,175 Q470,175 480,170 L500,162 L500,145" 
+          fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        
+        <text x="380" y="95" textAnchor="middle" className="fill-accent text-[8px] font-medium">Phase 1 (+)</text>
+        <text x="460" y="192" textAnchor="middle" className="fill-primary text-[8px] font-medium">Phase 2 (−)</text>
+        <text x="445" y="220" textAnchor="middle" className="fill-accent text-[9px] font-medium">Energy: 120–200 J</text>
+
+        {/* Comparison table */}
+        <text x="300" y="250" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Comparison</text>
+
+        {/* Table header */}
+        <rect x="30" y="260" width="170" height="22" rx="3" fill="hsl(var(--muted))" />
+        <rect x="200" y="260" width="190" height="22" rx="3" fill="hsl(var(--primary)/0.1)" />
+        <rect x="390" y="260" width="190" height="22" rx="3" fill="hsl(var(--accent)/0.1)" />
+        <text x="115" y="275" textAnchor="middle" className="fill-foreground text-[10px] font-bold">Feature</text>
+        <text x="295" y="275" textAnchor="middle" className="fill-primary text-[10px] font-bold">Monophasic</text>
+        <text x="485" y="275" textAnchor="middle" className="fill-accent text-[10px] font-bold">Biphasic</text>
+
+        {[
+          { feature: "Energy for VF", mono: "360 J", bi: "120–200 J" },
+          { feature: "Current direction", mono: "Unidirectional", bi: "Reverses polarity" },
+          { feature: "Myocardial damage", mono: "Higher", bi: "Lower" },
+          { feature: "First-shock efficacy", mono: "~60–80%", bi: "~90–95%" },
+          { feature: "Impedance compensation", mono: "None/limited", bi: "Auto-adjusts" },
+          { feature: "Post-shock dysfunction", mono: "More ST changes", bi: "Less damage" },
+        ].map((row, i) => (
+          <g key={i}>
+            <rect x="30" y={286 + i * 22} width="170" height="22" fill={i % 2 === 0 ? "hsl(var(--muted)/0.3)" : "transparent"} />
+            <rect x="200" y={286 + i * 22} width="190" height="22" fill={i % 2 === 0 ? "hsl(var(--muted)/0.3)" : "transparent"} />
+            <rect x="390" y={286 + i * 22} width="190" height="22" fill={i % 2 === 0 ? "hsl(var(--muted)/0.3)" : "transparent"} />
+            <text x="40" y={301 + i * 22} className="fill-foreground text-[9.5px] font-medium">{row.feature}</text>
+            <text x="295" y={301 + i * 22} textAnchor="middle" className="fill-muted-foreground text-[9.5px]">{row.mono}</text>
+            <text x="485" y={301 + i * 22} textAnchor="middle" className="fill-muted-foreground text-[9.5px]">{row.bi}</text>
+          </g>
+        ))}
+
+        {/* Key physics */}
+        <rect x="30" y="425" width="540" height="45" rx="8" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary))" strokeWidth="1" />
+        <text x="300" y="443" textAnchor="middle" className="fill-foreground text-[10px] font-bold">Key Physics</text>
+        <text x="300" y="458" textAnchor="middle" className="fill-muted-foreground text-[9.5px]">
+          Peak current ~30–40 A. Transthoracic impedance ~70–80 Ω. Energy (J) = Power (W) × Time (s). Capacitor stores charge: E = ½CV².
+        </text>
+      </svg>
+    </div>
+  </div>
+);
+
 const ElectricalSafetyDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("shock");
 
@@ -283,6 +366,7 @@ const ElectricalSafetyDiagram = () => {
       {activeTab === "equipment" && <EquipmentClassesDiagram />}
       {activeTab === "diathermy" && <DiathermyDiagram />}
       {activeTab === "earthing" && <EarthingProtectionDiagram />}
+      {activeTab === "defibrillation" && <DefibrillationDiagram />}
     </div>
   );
 };
