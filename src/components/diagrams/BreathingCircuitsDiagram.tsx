@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-/* ───────── Corrugated tubing helper ───────── */
+/* ───────── Corrugated tubing helper (hollow double-walled) ───────── */
 const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", width = 12 }: { x1: number; y1: number; x2: number; y2: number; colour?: string; width?: number }) => {
   const dx = x2 - x1;
   const dy = y2 - y1;
@@ -9,40 +9,128 @@ const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", wid
   const segments = Math.max(4, Math.round(len / 8));
   const nx = -dy / len;
   const ny = dx / len;
-  const amp = width / 2;
+  const halfW = width / 2;
 
-  let d = `M ${x1} ${y1}`;
-  for (let i = 1; i <= segments; i++) {
-    const t = i / segments;
-    const mx = x1 + dx * (t - 0.5 / segments);
-    const my = y1 + dy * (t - 0.5 / segments);
-    const sign = i % 2 === 0 ? 1 : -1;
-    const cx = mx + nx * amp * sign;
-    const cy = my + ny * amp * sign;
-    const ex = x1 + dx * t;
-    const ey = y1 + dy * t;
-    d += ` Q ${cx} ${cy} ${ex} ${ey}`;
+  // Build outer and inner corrugated edges
+  const buildEdge = (offset: number, amp: number) => {
+    let d = `M ${x1 + nx * offset} ${y1 + ny * offset}`;
+    for (let i = 1; i <= segments; i++) {
+      const t = i / segments;
+      const mt = t - 0.5 / segments;
+      const mx = x1 + dx * mt + nx * offset;
+      const my = y1 + dy * mt + ny * offset;
+      const sign = i % 2 === 0 ? 1 : -1;
+      const cx = mx + nx * amp * sign;
+      const cy = my + ny * amp * sign;
+      const ex = x1 + dx * t + nx * offset;
+      const ey = y1 + dy * t + ny * offset;
+      d += ` Q ${cx} ${cy} ${ex} ${ey}`;
+    }
+    return d;
+  };
+
+  const outerTop = buildEdge(halfW, 2.5);
+  const outerBot = buildEdge(-halfW, 2.5);
+
+  // Fill area between the two edges
+  const fillPath = outerTop + ` L ${x2 - nx * halfW} ${y2 - ny * halfW}` +
+    buildEdge(-halfW, 2.5).replace('M', ' L').split('').reverse().join('') ; // we'll just use a rect fill
+
+  // Corrugation ribs (cross-lines)
+  const ribs: { rx1: number; ry1: number; rx2: number; ry2: number }[] = [];
+  const ribCount = Math.max(3, Math.round(len / 12));
+  for (let i = 0; i <= ribCount; i++) {
+    const t = i / ribCount;
+    const px = x1 + dx * t;
+    const py = y1 + dy * t;
+    ribs.push({
+      rx1: px + nx * halfW,
+      ry1: py + ny * halfW,
+      rx2: px - nx * halfW,
+      ry2: py - ny * halfW,
+    });
   }
-  return <path d={d} fill="none" stroke={colour} strokeWidth="2" opacity="0.55" />;
+
+  return (
+    <g>
+      {/* Filled interior */}
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth={width} opacity="0.06" strokeLinecap="round" />
+      {/* Outer walls */}
+      <path d={outerTop} fill="none" stroke={colour} strokeWidth="1.5" opacity="0.5" />
+      <path d={outerBot} fill="none" stroke={colour} strokeWidth="1.5" opacity="0.5" />
+      {/* Corrugation ribs */}
+      {ribs.map((r, i) => (
+        <line key={i} x1={r.rx1} y1={r.ry1} x2={r.rx2} y2={r.ry2} stroke={colour} strokeWidth="0.6" opacity="0.3" />
+      ))}
+      {/* End caps */}
+      <line x1={x1 + nx * halfW} y1={y1 + ny * halfW} x2={x1 - nx * halfW} y2={y1 - ny * halfW} stroke={colour} strokeWidth="1.5" opacity="0.5" />
+      <line x1={x2 + nx * halfW} y1={y2 + ny * halfW} x2={x2 - nx * halfW} y2={y2 - ny * halfW} stroke={colour} strokeWidth="1.5" opacity="0.5" />
+    </g>
+  );
 };
 
-/* ───────── Reservoir bag shape ───────── */
-const ReservoirBag = ({ cx, cy, r = 18, colour = "hsl(var(--primary))" }: { cx: number; cy: number; r?: number; colour?: string }) => (
-  <g>
-    <ellipse cx={cx} cy={cy + r * 0.15} rx={r * 0.85} ry={r} fill={`${colour}`} fillOpacity="0.12" stroke={colour} strokeWidth="1.5" />
-    {/* neck */}
-    <rect x={cx - r * 0.22} y={cy - r - 2} width={r * 0.44} height={6} rx={2} fill={`${colour}`} fillOpacity="0.2" stroke={colour} strokeWidth="1" />
-    <text x={cx} y={cy + 4} textAnchor="middle" fontSize="7" fill={colour} fontWeight="bold">Bag</text>
-  </g>
-);
+/* ───────── Reservoir bag shape (realistic pear/teardrop) ───────── */
+const ReservoirBag = ({ cx, cy, r = 18, colour = "hsl(var(--primary))" }: { cx: number; cy: number; r?: number; colour?: string }) => {
+  const neckW = r * 0.25;
+  const neckH = r * 0.35;
+  const bodyW = r * 0.9;
+  const bodyH = r * 1.15;
+  const top = cy - neckH - bodyH * 0.3;
+  const bottom = cy + bodyH * 0.7;
 
-/* ───────── APL valve ───────── */
+  return (
+    <g>
+      {/* Bag body — pear shape */}
+      <path
+        d={`M ${cx - neckW} ${top}
+            Q ${cx - neckW} ${top + neckH} ${cx - bodyW * 0.5} ${cy - bodyH * 0.1}
+            Q ${cx - bodyW} ${cy + bodyH * 0.2} ${cx - bodyW * 0.7} ${bottom - r * 0.15}
+            Q ${cx - bodyW * 0.3} ${bottom + r * 0.1} ${cx} ${bottom}
+            Q ${cx + bodyW * 0.3} ${bottom + r * 0.1} ${cx + bodyW * 0.7} ${bottom - r * 0.15}
+            Q ${cx + bodyW} ${cy + bodyH * 0.2} ${cx + bodyW * 0.5} ${cy - bodyH * 0.1}
+            Q ${cx + neckW} ${top + neckH} ${cx + neckW} ${top} Z`}
+        fill={colour} fillOpacity="0.1" stroke={colour} strokeWidth="1.5"
+      />
+      {/* Neck connector */}
+      <rect x={cx - neckW - 1} y={top - 3} width={(neckW + 1) * 2} height={5} rx={2}
+        fill={colour} fillOpacity="0.25" stroke={colour} strokeWidth="1" />
+      {/* Highlight/sheen */}
+      <ellipse cx={cx - bodyW * 0.25} cy={cy + bodyH * 0.1} rx={bodyW * 0.15} ry={bodyH * 0.3}
+        fill="white" fillOpacity="0.12" />
+      <text x={cx} y={cy + 4} textAnchor="middle" fontSize="7" fill={colour} fontWeight="bold">Bag</text>
+    </g>
+  );
+};
+
+/* ───────── APL valve (realistic with dial) ───────── */
 const APLValve = ({ cx, cy }: { cx: number; cy: number }) => (
   <g>
-    <rect x={cx - 12} y={cy - 14} width={24} height={28} rx={5} fill="hsl(var(--destructive)/0.12)" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
-    {/* Spring symbol */}
-    <path d={`M ${cx - 5} ${cy - 8} L ${cx + 5} ${cy - 5} L ${cx - 5} ${cy - 2} L ${cx + 5} ${cy + 1} L ${cx - 5} ${cy + 4} L ${cx + 5} ${cy + 7}`} fill="none" stroke="hsl(var(--destructive))" strokeWidth="1" />
-    <text x={cx} y={cy + 18} textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold">APL</text>
+    {/* Valve body — cylinder */}
+    <rect x={cx - 13} y={cy - 14} width={26} height={28} rx={4}
+      fill="hsl(var(--destructive)/0.08)" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+    {/* Adjustable dial/cap on top */}
+    <ellipse cx={cx} cy={cy - 14} rx={10} ry={4}
+      fill="hsl(var(--destructive)/0.2)" stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+    <ellipse cx={cx} cy={cy - 17} rx={7} ry={3}
+      fill="hsl(var(--destructive)/0.35)" stroke="hsl(var(--destructive))" strokeWidth="1" />
+    {/* Knurled grip lines on dial */}
+    {[-4, -1.5, 1, 3.5].map((dx, i) => (
+      <line key={i} x1={cx + dx} y1={cy - 20} x2={cx + dx} y2={cy - 15}
+        stroke="hsl(var(--destructive))" strokeWidth="0.6" opacity="0.5" />
+    ))}
+    {/* Exhaust arrow */}
+    <line x1={cx} y1={cy - 20} x2={cx} y2={cy - 27} stroke="hsl(var(--destructive))" strokeWidth="1.2" />
+    <polygon points={`${cx - 3},${cy - 25} ${cx + 3},${cy - 25} ${cx},${cy - 29}`}
+      fill="hsl(var(--destructive))" opacity="0.6" />
+    {/* Internal disc/spring hint */}
+    <line x1={cx - 7} y1={cy - 2} x2={cx + 7} y2={cy - 2}
+      stroke="hsl(var(--destructive))" strokeWidth="1.2" opacity="0.5" />
+    <line x1={cx - 5} y1={cy + 3} x2={cx + 5} y2={cy + 3}
+      stroke="hsl(var(--destructive))" strokeWidth="0.8" opacity="0.3" />
+    {/* Outlet port at bottom */}
+    <rect x={cx - 5} y={cy + 10} width={10} height={4} rx={1.5}
+      fill="hsl(var(--destructive)/0.15)" stroke="hsl(var(--destructive))" strokeWidth="0.8" />
+    <text x={cx} y={cy + 24} textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold">APL</text>
   </g>
 );
 
@@ -56,14 +144,28 @@ const PatientEnd = ({ cx, cy }: { cx: number; cy: number }) => (
   </g>
 );
 
-/* ───────── FGF inlet ───────── */
+/* ───────── FGF inlet (realistic pipe with flowmeter) ───────── */
 const FGFInlet = ({ cx, cy, label }: { cx: number; cy: number; label?: string }) => (
   <g>
-    <rect x={cx - 10} y={cy - 8} width={20} height={16} rx={4} fill="#10B981" fillOpacity="0.18" stroke="#10B981" strokeWidth="1.5" />
-    <line x1={cx} y1={cy - 8} x2={cx} y2={cy - 16} stroke="#10B981" strokeWidth="2" />
-    <polygon points={`${cx - 4},${cy - 16} ${cx + 4},${cy - 16} ${cx},${cy - 10}`} fill="#10B981" />
-    <text x={cx} y={cy + 2} textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">FGF</text>
-    {label && <text x={cx} y={cy + 14} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">{label}</text>}
+    {/* Supply pipe */}
+    <rect x={cx - 3} y={cy - 22} width={6} height={14} rx={2}
+      fill="#10B981" fillOpacity="0.2" stroke="#10B981" strokeWidth="1.2" />
+    {/* Connector/flowmeter body */}
+    <rect x={cx - 12} y={cy - 10} width={24} height={18} rx={5}
+      fill="#10B981" fillOpacity="0.12" stroke="#10B981" strokeWidth="1.5" />
+    {/* Flow indicator (bobbin) */}
+    <rect x={cx - 2} y={cy - 18} width={4} height={6} rx={1.5}
+      fill="#10B981" fillOpacity="0.6" stroke="#10B981" strokeWidth="0.8" />
+    {/* Flow arrow into circuit */}
+    <polygon points={`${cx - 4},${cy - 22} ${cx + 4},${cy - 22} ${cx},${cy - 14}`}
+      fill="#10B981" opacity="0.7" />
+    {/* O₂/gas dots */}
+    {[{dx: -5, dy: -4}, {dx: 4, dy: -2}, {dx: -2, dy: 2}].map((d, i) => (
+      <circle key={i} cx={cx + d.dx} cy={cy + d.dy} r={1.5}
+        fill="#10B981" opacity="0.35" />
+    ))}
+    <text x={cx} y={cy + 3} textAnchor="middle" fontSize="6" fill="#10B981" fontWeight="bold">FGF</text>
+    {label && <text x={cx} y={cy + 16} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">{label}</text>}
   </g>
 );
 
