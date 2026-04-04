@@ -121,6 +121,7 @@ const modernVentilators = [
     name: "Hamilton G5 / C6",
     setting: "Intensive Care",
     type: "Turbine-Driven, Electronically Controlled",
+    image: hamiltonImg,
     features: [
       "INTELLiVENT-ASV — closed-loop ventilation adjusting VT, rate, PEEP, and FiO₂",
       "Adaptive Support Ventilation (ASV) — automatically selects optimal VT/rate combination",
