@@ -194,14 +194,31 @@ const FlowDots = ({ path, colour, reverse = false, id }: { path: string; colour:
   </g>
 );
 
-/* ───────── Flow arrow with animation ───────── */
-const AnimFlowArrow = ({ x1, y1, x2, y2, colour }: { x1: number; y1: number; x2: number; y2: number; colour: string }) => {
-  const id = `af${x1}${y1}${x2}${y2}`;
+/* ───────── Flow arrow with animation + arrowhead ───────── */
+const AnimFlowArrow = ({ x1, y1, x2, y2, colour, label }: { x1: number; y1: number; x2: number; y2: number; colour: string; label?: string }) => {
+  const id = `af${Math.round(x1)}${Math.round(y1)}${Math.round(x2)}${Math.round(y2)}`;
   const d = `M ${x1} ${y1} L ${x2} ${y2}`;
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const ux = dx / len;
+  const uy = dy / len;
+  // Arrowhead at end
+  const ax = x2 - ux * 6;
+  const ay = y2 - uy * 6;
+  const px = -uy * 4;
+  const py = ux * 4;
+  // Label midpoint
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+
   return (
     <g>
-      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth="1.8" opacity="0.4" strokeDasharray="6,4" />
+      <line x1={x1} y1={y1} x2={x2} y2={y2} stroke={colour} strokeWidth="2" opacity="0.35" strokeDasharray="6,4" />
+      {/* Arrowhead */}
+      <polygon points={`${x2},${y2} ${ax + px},${ay + py} ${ax - px},${ay - py}`} fill={colour} opacity="0.7" />
       <FlowDots path={d} colour={colour} id={id} />
+      {label && <text x={mx} y={my - 5} textAnchor="middle" fontSize="5.5" fill={colour} fontWeight="bold">{label}</text>}
     </g>
   );
 };
@@ -274,8 +291,15 @@ const MaplesonTab = () => {
             <marker id="bcFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
             <marker id="bcExpFlow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
           </defs>
+          {/* ── Legend ── */}
+          <g transform="translate(320, 0)">
+            <rect x="0" y="0" width="190" height="18" rx="4" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" />
+            <circle cx="12" cy="9" r="4" fill={inspCol} opacity="0.8" />
+            <text x="20" y="13" fontSize="7" fill={inspCol} fontWeight="bold">Inspiration</text>
+            <circle cx="102" cy="9" r="4" fill={expCol} opacity="0.8" />
+            <text x="110" y="13" fontSize="7" fill={expCol} fontWeight="bold">Expiration</text>
+          </g>
 
-          {/* ──── Mapleson A (Magill) ──── */}
           <g
             onClick={() => setSelected(selected === "A" ? null : "A")}
             className="cursor-pointer"
@@ -292,15 +316,14 @@ const MaplesonTab = () => {
             <PatientEnd cx={445} cy={55} />
             <line x1="403" y1="55" x2="435" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
 
-            {/* Animated flow when selected */}
-            {selected === "A" && phase === "insp" && (
+            {/* Flow arrows — always visible based on phase */}
+            {phase === "insp" && (
               <AnimFlowArrow x1={130} y1={45} x2={430} y2={45} colour={inspCol} />
             )}
-            {selected === "A" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={430} y1={65} x2={150} y2={65} colour={expCol} />
-                {/* APL exhaust */}
-                <AnimFlowArrow x1={390} y1={35} x2={390} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={390} y1={35} x2={390} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
@@ -323,13 +346,13 @@ const MaplesonTab = () => {
             <PatientEnd cx={455} cy={55} />
             <line x1="418" y1="55" x2="445" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
 
-            {selected === "B" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={80} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "B" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={440} y1={65} x2={80} y2={65} colour={expCol} />
-                <AnimFlowArrow x1={405} y1={35} x2={405} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={405} y1={35} x2={405} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
@@ -351,13 +374,13 @@ const MaplesonTab = () => {
             <CorrugatedTube x1={170} y1={55} x2={420} y2={55} />
             <PatientEnd cx={450} cy={55} />
 
-            {selected === "C" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={110} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "C" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={440} y1={65} x2={80} y2={65} colour={expCol} />
-                <AnimFlowArrow x1={155} y1={35} x2={155} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={155} y1={35} x2={155} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
@@ -384,13 +407,13 @@ const MaplesonTab = () => {
             <rect x="120" y="78" width="290" height="16" rx="4" fill="hsl(var(--destructive)/0.06)" stroke="hsl(var(--destructive)/0.3)" strokeWidth="0.8" />
             <text x="265" y="89" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">⚠ Pethick test: occlude inner tube + flush O₂ → should not pressurise circuit</text>
 
-            {selected === "D" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={135} y1={50} x2={435} y2={50} colour={inspCol} />
             )}
-            {selected === "D" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={435} y1={62} x2={135} y2={62} colour={expCol} />
-                <AnimFlowArrow x1={60} y1={35} x2={60} y2={10} colour={expCol} />
+                <AnimFlowArrow x1={60} y1={35} x2={60} y2={10} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
@@ -417,10 +440,10 @@ const MaplesonTab = () => {
             <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
             <PatientEnd cx={450} cy={55} />
 
-            {selected === "E" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={312} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "E" && phase === "exp" && (
+            {phase === "exp" && (
               <AnimFlowArrow x1={440} y1={65} x2={50} y2={65} colour={expCol} />
             )}
           </g>
@@ -447,13 +470,13 @@ const MaplesonTab = () => {
             <line x1="325" y1="55" x2="430" y2="55" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
             <PatientEnd cx={450} cy={55} />
 
-            {selected === "F" && phase === "insp" && (
+            {phase === "insp" && (
               <AnimFlowArrow x1={312} y1={45} x2={440} y2={45} colour={inspCol} />
             )}
-            {selected === "F" && phase === "exp" && (
+            {phase === "exp" && (
               <>
                 <AnimFlowArrow x1={440} y1={65} x2={120} y2={65} colour={expCol} />
-                <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} />
+                <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} label="exhaust" />
               </>
             )}
           </g>
