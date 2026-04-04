@@ -95,6 +95,7 @@ const modernVentilators = [
     name: "Dräger Oxylog 3000+",
     setting: "Pre-hospital / Transport",
     type: "Turbine + Pneumatic",
+    image: oxylogImg,
     features: [
       "Portable, battery-operated with optional gas supply",
       "Modes: VCV, PCV, PSV, SIMV, CPAP, BiLevel",
