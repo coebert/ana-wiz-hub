@@ -128,7 +128,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
               <text x={toX(v)} y={svgH - padB + 12} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">{v}</text>
             </g>
           ))}
-          <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (mmHg)</text>
+          <text x={svgW / 2} y={svgH - 5} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600">PaO₂ (kPa)</text>
           <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600"
             transform={`rotate(-90, 12, ${padT + plotH / 2})`}>SaO₂ (%)</text>
 
