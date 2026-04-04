@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
 const ventilatorTypes = [
