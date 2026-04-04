@@ -533,7 +533,7 @@ const CircleTab = () => {
       </div>
 
       <div className="bg-secondary/30 rounded-xl p-3 border border-border">
-        <svg viewBox="0 0 520 480" className="w-full h-auto">
+        <svg viewBox="0 0 520 500" className="w-full h-auto">
           <defs>
             <marker id="cInsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#10B981" /></marker>
             <marker id="cExp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="hsl(var(--destructive))" /></marker>
@@ -541,63 +541,84 @@ const CircleTab = () => {
 
           <text x="260" y="20" textAnchor="middle" fontSize="12" fill="hsl(var(--foreground))" fontWeight="bold">Circle System — 7 Essential Components</text>
 
-          {/* ── Main circular path (oval) ── */}
-          {/* Inspiratory limb (left side) */}
-          <path d="M 175 65 Q 60 65 60 200 Q 60 360 175 370" fill="none" stroke={inspCol} strokeWidth={circlePhase === "insp" ? 5 : 3} opacity={circlePhase === "insp" ? 0.45 : 0.2} className="transition-all duration-500" />
-          {/* Expiratory limb (right side) */}
-          <path d="M 345 65 Q 460 65 460 200 Q 460 360 345 370" fill="none" stroke={expCol} strokeWidth={circlePhase === "exp" ? 5 : 3} opacity={circlePhase === "exp" ? 0.45 : 0.2} className="transition-all duration-500" />
+          {/* ── Inspiratory limb (left side) — hollow corrugated tubing ── */}
+          {/* Vertical section */}
+          <CorrugatedTube x1={85} y1={120} x2={85} y2={330} colour={inspCol} width={14} />
+          {/* Top curve to Y-piece */}
+          <CorrugatedTube x1={85} y1={120} x2={200} y2={65} colour={inspCol} width={14} />
+          {/* Bottom curve to absorber */}
+          <CorrugatedTube x1={85} y1={330} x2={185} y2={370} colour={inspCol} width={14} />
+
+          {/* Inspiratory limb highlight */}
+          <path d="M 200 65 L 85 120 L 85 330 L 185 370" fill="none"
+            stroke={inspCol} strokeWidth={circlePhase === "insp" ? 2 : 0.5}
+            opacity={circlePhase === "insp" ? 0.6 : 0.15}
+            strokeDasharray={circlePhase === "insp" ? "none" : "4,4"}
+            className="transition-all duration-500" />
+
+          {/* ── Expiratory limb (right side) — hollow corrugated tubing ── */}
+          <CorrugatedTube x1={435} y1={120} x2={435} y2={330} colour={expCol} width={14} />
+          <CorrugatedTube x1={435} y1={120} x2={320} y2={65} colour={expCol} width={14} />
+          <CorrugatedTube x1={435} y1={330} x2={335} y2={370} colour={expCol} width={14} />
+
+          {/* Expiratory limb highlight */}
+          <path d="M 320 65 L 435 120 L 435 330 L 335 370" fill="none"
+            stroke={expCol} strokeWidth={circlePhase === "exp" ? 2 : 0.5}
+            opacity={circlePhase === "exp" ? 0.6 : 0.15}
+            strokeDasharray={circlePhase === "exp" ? "none" : "4,4"}
+            className="transition-all duration-500" />
 
           {/* Flow direction labels */}
-          <text x="48" y="165" fontSize="7" fill={inspCol} fontWeight="bold" transform="rotate(-90,48,165)" opacity={circlePhase === "insp" ? 1 : 0.3}>INSP ↓</text>
-          <text x="472" y="165" fontSize="7" fill={expCol} fontWeight="bold" transform="rotate(90,472,165)" opacity={circlePhase === "exp" ? 1 : 0.3}>EXP ↑</text>
+          <text x="65" y="220" fontSize="7" fill={inspCol} fontWeight="bold" transform="rotate(-90,65,220)" opacity={circlePhase === "insp" ? 1 : 0.3}>INSP ↓</text>
+          <text x="455" y="220" fontSize="7" fill={expCol} fontWeight="bold" transform="rotate(90,455,220)" opacity={circlePhase === "exp" ? 1 : 0.3}>EXP ↑</text>
 
           {/* ── Animated flow dots ── */}
           {circlePhase === "insp" && (
-            <FlowDots path={inspPath} colour={inspCol} id="circInsp" />
+            <FlowDots path="M 260 340 L 185 370 L 85 330 L 85 120 L 200 65 L 260 50" colour={inspCol} id="circInsp" />
           )}
           {circlePhase === "exp" && (
             <>
-              <FlowDots path={expPath} colour={expCol} id="circExp" />
-              <FlowDots path={aplExhaustPath} colour={expCol} id="circAplEx" />
+              <FlowDots path="M 260 50 L 320 65 L 435 120 L 435 330 L 335 370 L 260 370 L 260 350" colour={expCol} id="circExp" />
+              <FlowDots path="M 450 275 L 470 250" colour={expCol} id="circAplEx" />
             </>
           )}
 
           {/* ── Y-piece at top ── */}
-          <rect x="215" y="38" width="90" height="28" rx="6" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--foreground))" strokeWidth="2" />
-          <text x="260" y="56" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Y-piece</text>
-          <line x1="215" y1="52" x2="175" y2="65" stroke={inspCol} strokeWidth="2" opacity="0.5" />
-          <line x1="305" y1="52" x2="345" y2="65" stroke={expCol} strokeWidth="2" opacity="0.5" />
+          <path d="M 200 65 L 220 50 L 300 50 L 320 65"
+            fill="hsl(var(--accent)/0.12)" stroke="hsl(var(--foreground))" strokeWidth="2" />
+          <rect x="220" y="42" width="80" height="20" rx="5" fill="hsl(var(--accent)/0.15)" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+          <text x="260" y="56" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">Y-piece</text>
           {/* Patient */}
-          <PatientEnd cx={260} cy={20} />
-          <line x1="260" y1="30" x2="260" y2="38" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+          <PatientEnd cx={260} cy={24} />
+          <line x1="260" y1="34" x2="260" y2="42" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
 
           {/* ── Inspiratory unidirectional valve ── */}
           <g opacity={circlePhase === "insp" ? 1 : 0.5} className="transition-opacity duration-300">
-            <UniValve cx={100} cy={110} colour={inspCol} label="Insp. valve" />
+            <UniValve cx={100} cy={155} colour={inspCol} label="Insp. valve" />
             {circlePhase === "insp" && (
-              <text x="100" y="142" textAnchor="middle" fontSize="5" fill={inspCol}>OPEN</text>
+              <text x="100" y="187" textAnchor="middle" fontSize="5" fill={inspCol}>OPEN</text>
             )}
             {circlePhase === "exp" && (
-              <text x="100" y="142" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
+              <text x="100" y="187" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
             )}
           </g>
 
           {/* ── Expiratory unidirectional valve ── */}
           <g opacity={circlePhase === "exp" ? 1 : 0.5} className="transition-opacity duration-300">
-            <UniValve cx={420} cy={110} colour={expCol} label="Exp. valve" />
+            <UniValve cx={420} cy={155} colour={expCol} label="Exp. valve" />
             {circlePhase === "exp" && (
-              <text x="420" y="142" textAnchor="middle" fontSize="5" fill={expCol}>OPEN</text>
+              <text x="420" y="187" textAnchor="middle" fontSize="5" fill={expCol}>OPEN</text>
             )}
             {circlePhase === "insp" && (
-              <text x="420" y="142" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
+              <text x="420" y="187" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">CLOSED</text>
             )}
           </g>
 
           {/* ── CO₂ absorber (bottom centre) ── */}
-          <rect x="170" y="340" width="180" height="70" rx="12" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
+          <rect x="170" y="355" width="180" height="70" rx="12" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
           {Array.from({ length: 35 }).map((_, i) => {
             const gx = 185 + (i % 7) * 23;
-            const gy = 358 + Math.floor(i / 7) * 14;
+            const gy = 373 + Math.floor(i / 7) * 14;
             const exhausted = i === 28 || i === 29;
             return (
               <circle key={i} cx={gx} cy={gy} r="5"
@@ -607,42 +628,40 @@ const CircleTab = () => {
                 strokeWidth="0.7" />
             );
           })}
-          <text x="260" y="406" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
-          <text x="260" y="418" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Exothermic — produces heat + H₂O</text>
-          <line x1="175" y1="370" x2="175" y2="350" stroke={inspCol} strokeWidth="2" opacity="0.4" />
-          <line x1="345" y1="370" x2="345" y2="350" stroke={expCol} strokeWidth="2" opacity="0.4" />
+          <text x="260" y="422" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">CO₂ Absorber (Soda Lime)</text>
+          <text x="260" y="434" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Exothermic — produces heat + H₂O</text>
 
-          {/* ── FGF inlet ── */}
-          <FGFInlet cx={260} cy={320} label="Fresh gas inlet" />
+          {/* ── FGF inlet (below absorber) ── */}
+          <FGFInlet cx={260} cy={340} label="Fresh gas inlet" />
 
-          {/* ── APL valve (on expiratory side) ── */}
+          {/* ── APL valve (on expiratory side) — realistic ── */}
           <g opacity={circlePhase === "exp" ? 1 : 0.5} className="transition-opacity duration-300">
-            <APLValve cx={430} cy={270} />
+            <APLValve cx={460} cy={275} />
             {circlePhase === "exp" && (
               <>
-                <line x1="430" y1="248" x2="430" y2="235" stroke={expCol} strokeWidth="1.5" markerEnd="url(#cExp)" />
-                <text x="455" y="240" fontSize="5" fill={expCol} fontWeight="bold">Excess gas</text>
+                <text x="485" y="258" fontSize="5" fill={expCol} fontWeight="bold">Excess</text>
+                <text x="485" y="266" fontSize="5" fill={expCol} fontWeight="bold">gas out</text>
               </>
             )}
           </g>
 
-          {/* ── Reservoir bag ── */}
+          {/* ── Reservoir bag — realistic pear shape ── */}
           <g opacity={circlePhase === "insp" ? 0.6 : 1} className="transition-opacity duration-300">
-            <ReservoirBag cx={90} cy={290} r={circlePhase === "exp" ? 22 : 16} />
-            <text x="90" y={circlePhase === "exp" ? 322 : 316} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">
+            <ReservoirBag cx={60} cy={290} r={circlePhase === "exp" ? 22 : 16} />
+            <text x="60" y={circlePhase === "exp" ? 322 : 316} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">
               {circlePhase === "insp" ? "Deflating" : "Refilling"}
             </text>
           </g>
 
           {/* ── Component labels ── */}
           <g fontSize="7" fill="hsl(var(--muted-foreground))">
-            <text x="260" y="440" textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
-            <text x="260" y="454" textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
+            <text x="260" y="455" textAnchor="middle" fontWeight="bold" fill="hsl(var(--foreground))" fontSize="8">7 Components:</text>
+            <text x="260" y="469" textAnchor="middle">① FGF inlet  ② Insp. valve  ③ Exp. valve  ④ Y-piece  ⑤ APL valve  ⑥ Bag  ⑦ CO₂ absorber</text>
           </g>
 
           {/* ── Low-flow box ── */}
-          <rect x="115" y="460" width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
-          <text x="260" y="473" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
+          <rect x="115" y="478" width="290" height="18" rx="5" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
+          <text x="260" y="491" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Low-flow: 0.5–1 L/min • Closed: FGF = uptake only (~200 mL/min)</text>
         </svg>
       </div>
 
