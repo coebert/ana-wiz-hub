@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
+import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 
 const ElectricalSafetyTopic = () => {
   return (
