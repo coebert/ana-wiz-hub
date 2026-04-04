@@ -479,8 +479,6 @@ const MaplesonTab = () => {
                 <AnimFlowArrow x1={58} y1={45} x2={45} y2={32} colour={expCol} label="exhaust" />
               </>
             )}
-              </>
-            )}
           </g>
 
           {/* ──── Efficiency summary ──── */}
