@@ -54,6 +54,7 @@ export const pharmacologyTopics: Topic[] = [
   { id: "vasoactive-agents", title: "Vasoactive & Inotropic Agents", description: "Catecholamines, vasopressors, inotropes, inodilators, vasodilators, digoxin, calcium, and receptor pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antiarrhythmics", title: "Antiarrhythmic Drugs", description: "Vaughan-Williams classification, Na⁺/K⁺/Ca²⁺ channel blockers, β-blockers, amiodarone, adenosine, and pro-arrhythmic risk", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "anticoagulants", title: "Anticoagulant Pharmacology", description: "Heparins (UFH/LMWH), warfarin, DOACs, HIT, reversal agents, and perioperative/neuraxial management", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const anatomyTopics: Topic[] = [
