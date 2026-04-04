@@ -52,6 +52,7 @@ export const pharmacologyTopics: Topic[] = [
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "vasoactive-agents", title: "Vasoactive Agents", description: "Catecholamines, vasopressors, inodilators, vasodilators and their receptor pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const anatomyTopics: Topic[] = [
