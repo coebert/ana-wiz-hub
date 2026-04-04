@@ -5,6 +5,16 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
 import { ventilatorsQuiz } from "@/data/quizzes";
 
+import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
+import nuffieldImg from "@/assets/ventilators/penlon-nuffield-200.jpg";
+import birdImg from "@/assets/ventilators/bird-mark-7.jpg";
+import oxylogImg from "@/assets/ventilators/drager-oxylog-3000.jpg";
+import evitaImg from "@/assets/ventilators/drager-evita-v500.jpg";
+import hamiltonImg from "@/assets/ventilators/hamilton-g5.jpg";
+import servoImg from "@/assets/ventilators/maquet-servo-u.jpg";
+import primaImg from "@/assets/ventilators/penlon-prima-sp.jpg";
+import aisysImg from "@/assets/ventilators/ge-aisys-cs2.jpg";
+
 const ventilatorTypes = [
   {
     category: "Classification by Power Source",
@@ -39,6 +49,7 @@ const historicVentilators = [
     name: "Manley MP3",
     era: "1960s–1990s",
     type: "Minute Volume Divider",
+    image: manleyImg,
     mechanism: "Purely pneumatic, gas-powered. The driving gas flow (= minute volume) is divided into breaths. Two concertina bellows alternate: one fills while the other delivers. A weight on the bellows determines inspiratory pressure.",
     features: [
       "No electricity required",
@@ -52,6 +63,7 @@ const historicVentilators = [
     name: "Penlon Nuffield 200",
     era: "1980s–present",
     type: "Bag-in-Bottle / Time-Cycled",
+    image: nuffieldImg,
     mechanism: "Gas-powered ventilator using a Newton non-rebreathing valve. Driving gas from a separate source inflates the bellows in the bottle. When driving gas is turned off, the bellows refill passively. Used with Mapleson D/E circuits in paediatric practice.",
     features: [
       "Extremely simple and reliable",
@@ -66,6 +78,7 @@ const historicVentilators = [
     name: "Bird Mark 7",
     era: "1950s–1980s",
     type: "Pressure-Cycled",
+    image: birdImg,
     mechanism: "Entirely pneumatic, pressure-cycled ventilator. Inspiration ends when a preset pressure is reached. No electricity. Originally designed as an IPPB device. Simple, robust, but tidal volume varies with patient compliance.",
     features: [
       "Pressure-cycled — inspiration ends at set pressure",
@@ -82,6 +95,7 @@ const modernVentilators = [
     name: "Dräger Oxylog 3000+",
     setting: "Pre-hospital / Transport",
     type: "Turbine + Pneumatic",
+    image: oxylogImg,
     features: [
       "Portable, battery-operated with optional gas supply",
       "Modes: VCV, PCV, PSV, SIMV, CPAP, BiLevel",
@@ -94,6 +108,7 @@ const modernVentilators = [
     name: "Dräger Evita Infinity V500",
     setting: "Intensive Care",
     type: "Electronically Controlled",
+    image: evitaImg,
     features: [
       "Full ICU ventilator with comprehensive modes including APRV, MMV",
       "SmartCare/PS — automated weaning protocol",
@@ -106,6 +121,7 @@ const modernVentilators = [
     name: "Hamilton G5 / C6",
     setting: "Intensive Care",
     type: "Turbine-Driven, Electronically Controlled",
+    image: hamiltonImg,
     features: [
       "INTELLiVENT-ASV — closed-loop ventilation adjusting VT, rate, PEEP, and FiO₂",
       "Adaptive Support Ventilation (ASV) — automatically selects optimal VT/rate combination",
@@ -118,6 +134,7 @@ const modernVentilators = [
     name: "Maquet Servo-U",
     setting: "Intensive Care",
     type: "Electronically Controlled",
+    image: servoImg,
     features: [
       "NAVA (Neurally Adjusted Ventilatory Assist) — uses diaphragmatic electrical activity",
       "Edi catheter integration for monitoring diaphragm function",
@@ -130,6 +147,7 @@ const modernVentilators = [
     name: "Penlon Prima SP",
     setting: "Anaesthesia (Operating Theatre)",
     type: "Pneumatic with Electronic Control",
+    image: primaImg,
     features: [
       "Integrated into Penlon anaesthetic machines",
       "Bellows-in-bottle ascending bellows design",
@@ -142,6 +160,7 @@ const modernVentilators = [
     name: "GE Aisys CS²",
     setting: "Anaesthesia (Operating Theatre)",
     type: "Piston-Driven, Electronically Controlled",
+    image: aisysImg,
     features: [
       "Piston ventilator — accurate VT independent of FGF",
       "Advanced modes including PCV-VG (Pressure-Controlled Volume-Guaranteed)",
@@ -225,20 +244,25 @@ const VentilatorsTopic = () => {
           <div className="space-y-4">
             {historicVentilators.map((v) => (
               <div key={v.name} className="p-5 rounded-xl border border-border bg-card">
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <h3 className="font-bold text-foreground">{v.name}</h3>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.era}</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <img src={v.image} alt={v.name} loading="lazy" width={512} height={512} className="w-full sm:w-36 h-36 object-contain rounded-lg bg-white flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h3 className="font-bold text-foreground">{v.name}</h3>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.era}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-3">{v.mechanism}</p>
+                    <ul className="space-y-1">
+                      {v.features.map((f, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">{v.mechanism}</p>
-                <ul className="space-y-1">
-                  {v.features.map((f, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
@@ -253,19 +277,24 @@ const VentilatorsTopic = () => {
           <div className="space-y-4">
             {modernVentilators.map((v) => (
               <div key={v.name} className="p-5 rounded-xl border border-border bg-card">
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <h3 className="font-bold text-foreground">{v.name}</h3>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.setting}</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <img src={v.image} alt={v.name} loading="lazy" width={512} height={512} className="w-full sm:w-36 h-36 object-contain rounded-lg bg-white flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h3 className="font-bold text-foreground">{v.name}</h3>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.setting}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                    </div>
+                    <ul className="space-y-1">
+                      {v.features.map((f, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <ul className="space-y-1">
-                  {v.features.map((f, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
