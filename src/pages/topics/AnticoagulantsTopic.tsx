@@ -3,7 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
-import { CoagulationCascadeDiagram } from "@/components/diagrams/CoagulationCascadeDiagram";
+import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 
 const heparinComparison = [
   { property: "Source", ufh: "Porcine intestinal mucosa", lmwh: "Depolymerised UFH" },
