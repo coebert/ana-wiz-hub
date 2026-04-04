@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
