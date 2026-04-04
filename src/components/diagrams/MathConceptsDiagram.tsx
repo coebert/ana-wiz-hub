@@ -10,8 +10,8 @@ interface GraphData {
   points: { x: number; y: number }[];
 }
 
-const W = 260;
-const H = 180;
+const W = 320;
+const H = 220;
 const PAD = 32;
 const plotW = W - PAD * 2;
 const plotH = H - PAD * 2;
@@ -181,116 +181,244 @@ const toSVG = (points: { x: number; y: number }[]) => {
     .join(" ");
 };
 
-const GraphCard = ({ g, selected, onSelect }: { g: GraphData; selected: boolean; onSelect: () => void }) => (
+type Mode = "single" | "compare";
+
+const GraphChip = ({
+  g,
+  active,
+  onClick,
+  compareColor,
+}: {
+  g: GraphData;
+  active: boolean;
+  onClick: () => void;
+  compareColor?: string;
+}) => (
   <button
-    onClick={onSelect}
-    className={`p-3 rounded-lg border text-left transition-all w-full ${
-      selected
-        ? "border-primary bg-primary/10 ring-1 ring-primary/30"
+    onClick={onClick}
+    className={`p-2.5 rounded-lg border text-left transition-all w-full ${
+      active
+        ? "ring-1 ring-primary/40"
         : "border-border bg-card hover:border-primary/40"
     }`}
+    style={active ? { borderColor: compareColor || g.color, backgroundColor: `${compareColor || g.color}15` } : undefined}
   >
-    <div className="flex items-center gap-2 mb-1">
-      <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: g.color }} />
-      <p className="font-semibold text-foreground text-sm">{g.title}</p>
+    <div className="flex items-center gap-2 mb-0.5">
+      <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: compareColor || g.color }} />
+      <p className="font-semibold text-foreground text-xs leading-tight">{g.title}</p>
     </div>
-    <p className="text-xs text-muted-foreground font-mono">{g.equation}</p>
+    <p className="text-[10px] text-muted-foreground font-mono">{g.equation}</p>
   </button>
 );
 
+const SharedAxes = ({ curves }: { curves: GraphData[] }) => (
+  <svg viewBox={`0 0 ${W} ${H}`} className="w-full max-w-[320px] mx-auto bg-background rounded-lg border border-border">
+    {/* Grid */}
+    {[0.25, 0.5, 0.75].map((f) => (
+      <g key={f}>
+        <line x1={PAD} y1={PAD + (1 - f) * plotH} x2={PAD + plotW} y2={PAD + (1 - f) * plotH}
+          stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="3,3" />
+        <line x1={PAD + f * plotW} y1={PAD} x2={PAD + f * plotW} y2={PAD + plotH}
+          stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="3,3" />
+      </g>
+    ))}
+    {/* Axes */}
+    <line x1={PAD} y1={PAD} x2={PAD} y2={PAD + plotH} stroke="hsl(var(--foreground))" strokeWidth={1.5} />
+    <line x1={PAD} y1={PAD + plotH} x2={PAD + plotW} y2={PAD + plotH} stroke="hsl(var(--foreground))" strokeWidth={1.5} />
+    <text x={PAD + plotW / 2} y={H - 4} textAnchor="middle" fontSize={11} fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif">x</text>
+    <text x={8} y={PAD + plotH / 2} textAnchor="middle" fontSize={11} fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif" transform={`rotate(-90 8 ${PAD + plotH / 2})`}>y</text>
+    <polygon points={`${PAD - 4},${PAD + 4} ${PAD},${PAD - 4} ${PAD + 4},${PAD + 4}`} fill="hsl(var(--foreground))" />
+    <polygon points={`${PAD + plotW - 4},${PAD + plotH - 4} ${PAD + plotW + 4},${PAD + plotH} ${PAD + plotW - 4},${PAD + plotH + 4}`} fill="hsl(var(--foreground))" />
+    {/* Curves */}
+    {curves.map((g) => (
+      <polyline key={g.id} points={toSVG(g.points)} fill="none" stroke={g.color}
+        strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+    ))}
+    {/* Equation labels */}
+    {curves.map((g, i) => (
+      <text key={g.id} x={PAD + plotW - 4} y={PAD + 14 + i * 16} textAnchor="end"
+        fontSize={11} fontFamily="monospace" fill={g.color} fontWeight="bold">
+        {g.equation}
+      </text>
+    ))}
+  </svg>
+);
+
 const MathConceptsDiagram = () => {
+  const [mode, setMode] = useState<Mode>("single");
   const [selectedId, setSelectedId] = useState<string>("linear");
+  const [compareIds, setCompareIds] = useState<[string, string]>(["linear", "quadratic"]);
+
   const selected = graphs.find((g) => g.id === selectedId) || graphs[0];
+  const compareGraphs = compareIds.map((id) => graphs.find((g) => g.id === id)!).filter(Boolean);
+
+  const toggleCompare = (id: string) => {
+    setCompareIds((prev) => {
+      if (prev[0] === id) return prev; // keep at least first
+      if (prev[1] === id) return [prev[0], prev[0]]; // deselect second → duplicate (handled below)
+      // Replace the second selection
+      return [prev[0], id];
+    });
+  };
+
+  const setFirstCompare = (id: string) => {
+    setCompareIds((prev) => (prev[1] === id ? [id, prev[0]] : [id, prev[1]]));
+  };
 
   return (
-    <div className="space-y-6">
-      {/* Grid of selectable graph types */}
-      <div className="grid grid-cols-3 sm:grid-cols-3 gap-2">
-        {graphs.map((g) => (
-          <GraphCard key={g.id} g={g} selected={g.id === selectedId} onSelect={() => setSelectedId(g.id)} />
-        ))}
+    <div className="space-y-5">
+      {/* Mode toggle */}
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => setMode("single")}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            mode === "single"
+              ? "bg-primary/15 text-primary ring-1 ring-primary/30"
+              : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+          }`}
+        >
+          Single View
+        </button>
+        <button
+          onClick={() => setMode("compare")}
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            mode === "compare"
+              ? "bg-primary/15 text-primary ring-1 ring-primary/30"
+              : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+          }`}
+        >
+          Compare Two
+        </button>
       </div>
 
-      {/* Selected graph detail */}
-      <div className="rounded-xl border border-border bg-card p-5 space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-          {/* SVG Graph */}
-          <div className="flex-shrink-0 mx-auto sm:mx-0">
-            <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="bg-background rounded-lg border border-border">
-              {/* Grid lines */}
-              {[0.25, 0.5, 0.75].map((f) => (
-                <g key={f}>
-                  <line
-                    x1={PAD}
-                    y1={PAD + (1 - f) * plotH}
-                    x2={PAD + plotW}
-                    y2={PAD + (1 - f) * plotH}
-                    stroke="hsl(var(--border))"
-                    strokeWidth={0.5}
-                    strokeDasharray="3,3"
-                  />
-                  <line
-                    x1={PAD + f * plotW}
-                    y1={PAD}
-                    x2={PAD + f * plotW}
-                    y2={PAD + plotH}
-                    stroke="hsl(var(--border))"
-                    strokeWidth={0.5}
-                    strokeDasharray="3,3"
-                  />
-                </g>
-              ))}
-              {/* Axes */}
-              <line x1={PAD} y1={PAD} x2={PAD} y2={PAD + plotH} stroke="hsl(var(--foreground))" strokeWidth={1.5} />
-              <line x1={PAD} y1={PAD + plotH} x2={PAD + plotW} y2={PAD + plotH} stroke="hsl(var(--foreground))" strokeWidth={1.5} />
-              {/* Axis labels */}
-              <text x={PAD + plotW / 2} y={H - 4} textAnchor="middle" fontSize={11} fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif">x</text>
-              <text x={8} y={PAD + plotH / 2} textAnchor="middle" fontSize={11} fill="hsl(var(--muted-foreground))" fontFamily="Inter, sans-serif" transform={`rotate(-90 8 ${PAD + plotH / 2})`}>y</text>
-              {/* Arrowheads */}
-              <polygon points={`${PAD - 4},${PAD + 4} ${PAD},${PAD - 4} ${PAD + 4},${PAD + 4}`} fill="hsl(var(--foreground))" />
-              <polygon points={`${PAD + plotW - 4},${PAD + plotH - 4} ${PAD + plotW + 4},${PAD + plotH} ${PAD + plotW - 4},${PAD + plotH + 4}`} fill="hsl(var(--foreground))" />
-              {/* Curve */}
-              <polyline
-                points={toSVG(selected.points)}
-                fill="none"
-                stroke={selected.color}
-                strokeWidth={2.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              {/* Equation label */}
-              <text x={PAD + plotW - 4} y={PAD + 14} textAnchor="end" fontSize={12} fontFamily="monospace" fill={selected.color} fontWeight="bold">
-                {selected.equation}
-              </text>
-            </svg>
-          </div>
-
-          {/* Description */}
-          <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold text-foreground mb-1">{selected.title}</h3>
-            <p className="text-xs font-mono text-primary mb-2">{selected.equation}</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
-          </div>
-        </div>
-
-        {/* Clinical Examples */}
-        <div>
-          <h4 className="text-sm font-semibold text-foreground mb-2">Clinical & Physiological Examples</h4>
-          <div className="space-y-2">
-            {selected.examples.map((ex, i) => (
-              <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-secondary/30 border border-border">
-                <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: selected.color }} />
-                <div>
-                  <p className="text-sm font-medium text-foreground">{ex.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{ex.detail}</p>
-                </div>
-              </div>
+      {mode === "single" ? (
+        <>
+          {/* Grid of selectable graph types */}
+          <div className="grid grid-cols-3 gap-2">
+            {graphs.map((g) => (
+              <GraphChip key={g.id} g={g} active={g.id === selectedId} onClick={() => setSelectedId(g.id)} />
             ))}
           </div>
-        </div>
-      </div>
+
+          {/* Selected graph detail */}
+          <div className="rounded-xl border border-border bg-card p-5 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+              <div className="flex-shrink-0 mx-auto sm:mx-0">
+                <SharedAxes curves={[selected]} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-bold text-foreground mb-1">{selected.title}</h3>
+                <p className="text-xs font-mono text-primary mb-2">{selected.equation}</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{selected.description}</p>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-2">Clinical & Physiological Examples</h4>
+              <div className="space-y-2">
+                {selected.examples.map((ex, i) => (
+                  <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-secondary/30 border border-border">
+                    <div className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: selected.color }} />
+                    <div>
+                      <p className="text-sm font-medium text-foreground">{ex.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{ex.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {/* Compare mode */}
+          <p className="text-sm text-muted-foreground">Select two graph types to overlay on the same axes.</p>
+
+          <div className="grid grid-cols-2 gap-4">
+            {/* Graph A selector */}
+            <div>
+              <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[0]?.color }} />
+                Graph A
+              </p>
+              <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
+                {graphs.map((g) => (
+                  <GraphChip key={g.id} g={g} active={compareIds[0] === g.id}
+                    onClick={() => setFirstCompare(g.id)} compareColor={compareIds[0] === g.id ? g.color : undefined} />
+                ))}
+              </div>
+            </div>
+            {/* Graph B selector */}
+            <div>
+              <p className="text-xs font-semibold text-foreground mb-2 flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: compareGraphs[1]?.color }} />
+                Graph B
+              </p>
+              <div className="grid grid-cols-1 gap-1.5 max-h-[280px] overflow-y-auto pr-1">
+                {graphs.map((g) => (
+                  <GraphChip key={g.id} g={g} active={compareIds[1] === g.id}
+                    onClick={() => toggleCompare(g.id)} compareColor={compareIds[1] === g.id ? g.color : undefined} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Overlay chart */}
+          <div className="rounded-xl border border-border bg-card p-5 space-y-4">
+            <div className="mx-auto">
+              <SharedAxes curves={compareGraphs} />
+            </div>
+
+            {/* Side-by-side details */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {compareGraphs.map((g) => (
+                <div key={g.id} className="p-4 rounded-lg border border-border" style={{ borderColor: `${g.color}40` }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: g.color }} />
+                    <h4 className="font-bold text-foreground text-sm">{g.title}</h4>
+                  </div>
+                  <p className="text-xs font-mono mb-2" style={{ color: g.color }}>{g.equation}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{g.description}</p>
+                  <div className="space-y-1.5">
+                    {g.examples.slice(0, 2).map((ex, i) => (
+                      <div key={i} className="flex items-start gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: g.color }} />
+                        <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">{ex.name}</span> — {ex.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Comparison insight */}
+            {compareIds[0] !== compareIds[1] && (
+              <div className="p-3 rounded-lg bg-primary/5 border border-primary/20">
+                <p className="text-xs font-semibold text-primary mb-1">Comparison Insight</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {getComparisonInsight(compareIds[0], compareIds[1])}
+                </p>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };
+
+function getComparisonInsight(a: string, b: string): string {
+  const pair = [a, b].sort().join("+");
+  const insights: Record<string, string> = {
+    "exp-decay+neg-exp-rise": "These are complementary curves — exponential decay and negative exponential rise are mirror images. If y₁ = e⁻ᵏˣ then y₂ = 1 − e⁻ᵏˣ. At any point x, y₁ + y₂ = 1. Drug washout follows decay while wash-in follows the rising curve.",
+    "linear+quadratic": "At low values of x the curves are similar, but the quadratic diverges rapidly at higher values. This is why doubling flow rate in turbulent conditions causes a fourfold increase in pressure drop, while laminar flow increases linearly.",
+    "linear+sqrt": "The square root curve rises faster initially but flattens, while the linear continues at the same rate. They intersect at x = 1. This difference explains why rotameter behaviour changes between low flows (viscosity-dependent, linear) and high flows (density-dependent, √).",
+    "quadratic+sqrt": "These are inverse functions — y = x² and y = √x are reflections about y = x. The quadratic accelerates while the square root decelerates. Together they illustrate how energy (∝v²) and diffusion rate (∝1/√MW) respond to their variables.",
+    "exp-decay+biexp": "Bi-exponential decay starts steeper (distribution phase) then converges with mono-exponential decay. On a semi-log plot, mono-exponential gives one straight line while bi-exponential gives two. This is the basis of two-compartment pharmacokinetic modelling.",
+    "hyperbolic+sigmoid": "The hyperbola has no inflection point and approaches zero asymptotically, while the sigmoid has a steep central transition. Myoglobin (Hill n=1) follows a hyperbola; haemoglobin (Hill n=2.7) follows a sigmoid — cooperativity creates the S-shape.",
+    "log+sigmoid": "Both curves flatten at high x, but the logarithmic rises from zero while the sigmoid transitions between two plateaus. Plotting dose-response on a log scale converts the sigmoid into a more linear central portion, making EC₅₀ comparison easier.",
+  };
+  return insights[pair] || `Compare how ${graphs.find(g => g.id === a)?.title} (${graphs.find(g => g.id === a)?.equation}) and ${graphs.find(g => g.id === b)?.title} (${graphs.find(g => g.id === b)?.equation}) differ in shape. Notice where they intersect, which rises faster initially, and which dominates at higher values of x.`;
+}
 
 export default MathConceptsDiagram;
