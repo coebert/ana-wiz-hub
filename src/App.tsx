@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProgressProvider } from "@/contexts/ProgressContext";
@@ -8,82 +9,92 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import PhysicsSection from "./pages/PhysicsSection";
-import PhysiologySection from "./pages/PhysiologySection";
-import PharmacologySection from "./pages/PharmacologySection";
-import ClinicalSection from "./pages/ClinicalSection";
-import IntensiveCareSection from "./pages/IntensiveCareSection";
-import PerioperativeSection from "./pages/PerioperativeSection";
-import AnatomySection from "./pages/AnatomySection";
-import GasLawsTopic from "./pages/topics/GasLawsTopic";
-import PressureMeasurementTopic from "./pages/topics/PressureMeasurementTopic";
-import FlowMeasurementTopic from "./pages/topics/FlowMeasurementTopic";
-import VaporizersTopic from "./pages/topics/VaporizersTopic";
-import ElectricalSafetyTopic from "./pages/topics/ElectricalSafetyTopic";
-import PulseOximetryTopic from "./pages/topics/PulseOximetryTopic";
-import ABGAnalyserTopic from "./pages/topics/ABGAnalyserTopic";
-import TemperatureMeasurementTopic from "./pages/topics/TemperatureMeasurementTopic";
-import HumidityGasSamplingTopic from "./pages/topics/HumidityGasSamplingTopic";
-import LaserFibreopticsTopic from "./pages/topics/LaserFibreopticsTopic";
-import UltrasoundPhysicsTopic from "./pages/topics/UltrasoundPhysicsTopic";
-import MRIPhysicsTopic from "./pages/topics/MRIPhysicsTopic";
-import BreathingCircuitsTopic from "./pages/topics/BreathingCircuitsTopic";
-import AnaestheticMachineTopic from "./pages/topics/AnaestheticMachineTopic";
-import DefibrillationPacingTopic from "./pages/topics/DefibrillationPacingTopic";
-import ClinicalMeasurementTopic from "./pages/topics/ClinicalMeasurementTopic";
-import SIUnitsThermodynamicsTopic from "./pages/topics/SIUnitsThermodynamicsTopic";
-import OpticsLightTopic from "./pages/topics/OpticsLightTopic";
-import ElectricityMagnetismTopic from "./pages/topics/ElectricityMagnetismTopic";
-import StatisticsEBMTopic from "./pages/topics/StatisticsEBMTopic";
-import OxygenHaemoglobinTopic from "./pages/topics/OxygenHaemoglobinTopic";
-import CardiacCycleTopic from "./pages/topics/CardiacCycleTopic";
-import LungMechanicsTopic from "./pages/topics/LungMechanicsTopic";
-import RenalPhysiologyTopic from "./pages/topics/RenalPhysiologyTopic";
-import NeuromuscularTopic from "./pages/topics/NeuromuscularTopic";
-import AutonomicNervousTopic from "./pages/topics/AutonomicNervousTopic";
-import PharmacokineticsTopic from "./pages/topics/PharmacokineticsTopic";
-import IVAnaestheticsTopic from "./pages/topics/IVAnaestheticsTopic";
-import VolatileAgentsTopic from "./pages/topics/VolatileAgentsTopic";
-import OpioidsTopic from "./pages/topics/OpioidsTopic";
-import MuscleRelaxantsTopic from "./pages/topics/MuscleRelaxantsTopic";
-import LocalAnaestheticsTopic from "./pages/topics/LocalAnaestheticsTopic";
-import VasoactiveAgentsTopic from "./pages/topics/VasoactiveAgentsTopic";
-import AirwayManagementTopic from "./pages/topics/AirwayManagementTopic";
-import RegionalAnaesthesiaTopic from "./pages/topics/RegionalAnaesthesiaTopic";
-import ObstetricAnaesthesiaTopic from "./pages/topics/ObstetricAnaesthesiaTopic";
-import PaediatricAnaesthesiaTopic from "./pages/topics/PaediatricAnaesthesiaTopic";
-import NeuroanaesthesiaTopic from "./pages/topics/NeuroanaesthesiaTopic";
-import CardiothoracicTopic from "./pages/topics/CardiothoracicTopic";
-import TraumaEmergencyTopic from "./pages/topics/TraumaEmergencyTopic";
-import ClinicalIncidentsTopic from "./pages/topics/ClinicalIncidentsTopic";
-import PainMedicineTopic from "./pages/topics/PainMedicineTopic";
-import SepsisTopic from "./pages/topics/SepsisTopic";
-import MechanicalVentilationTopic from "./pages/topics/MechanicalVentilationTopic";
-import CirculatoryFailureTopic from "./pages/topics/CirculatoryFailureTopic";
-import AkiRrtTopic from "./pages/topics/AkiRrtTopic";
-import AcuteLiverFailureTopic from "./pages/topics/AcuteLiverFailureTopic";
-import NeurointensiveCareTopic from "./pages/topics/NeurointensiveCareTopic";
-import CardiacOutputMonitoringTopic from "./pages/topics/CardiacOutputMonitoringTopic";
-import AcidBaseTopic from "./pages/topics/AcidBaseTopic";
-import ARDSTopic from "./pages/topics/ARDSTopic";
-import IcuNutritionTopic from "./pages/topics/IcuNutritionTopic";
-import TransfusionCoagulationTopic from "./pages/topics/TransfusionCoagulationTopic";
-import IcuSedationDeliriumTopic from "./pages/topics/IcuSedationDeliriumTopic";
-import OrganDonationTopic from "./pages/topics/OrganDonationTopic";
-import AntimicrobialsIcuTopic from "./pages/topics/AntimicrobialsIcuTopic";
-import PreoperativeAssessmentTopic from "./pages/topics/PreoperativeAssessmentTopic";
-import EnhancedRecoveryTopic from "./pages/topics/EnhancedRecoveryTopic";
-import PerioperativeFluidsTopic from "./pages/topics/PerioperativeFluidsTopic";
-import AirwayAnatomyTopic from "./pages/topics/AirwayAnatomyTopic";
-import CardiacAnatomyTopic from "./pages/topics/CardiacAnatomyTopic";
-import SpinalAnatomyTopic from "./pages/topics/SpinalAnatomyTopic";
-import BrachialPlexusTopic from "./pages/topics/BrachialPlexusTopic";
-import ThoracicAnatomyTopic from "./pages/topics/ThoracicAnatomyTopic";
-import AbdominalAnatomyTopic from "./pages/topics/AbdominalAnatomyTopic";
-import HeadNeckAnatomyTopic from "./pages/topics/HeadNeckAnatomyTopic";
-import NeuroanatomyTopic from "./pages/topics/NeuroanatomyTopic";
+
+// Lazy load section pages
+const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
+const PhysiologySection = lazy(() => import("./pages/PhysiologySection"));
+const PharmacologySection = lazy(() => import("./pages/PharmacologySection"));
+const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
+const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
+const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
+const AnatomySection = lazy(() => import("./pages/AnatomySection"));
+
+// Lazy load topic pages
+const GasLawsTopic = lazy(() => import("./pages/topics/GasLawsTopic"));
+const PressureMeasurementTopic = lazy(() => import("./pages/topics/PressureMeasurementTopic"));
+const FlowMeasurementTopic = lazy(() => import("./pages/topics/FlowMeasurementTopic"));
+const VaporizersTopic = lazy(() => import("./pages/topics/VaporizersTopic"));
+const ElectricalSafetyTopic = lazy(() => import("./pages/topics/ElectricalSafetyTopic"));
+const PulseOximetryTopic = lazy(() => import("./pages/topics/PulseOximetryTopic"));
+const ABGAnalyserTopic = lazy(() => import("./pages/topics/ABGAnalyserTopic"));
+const TemperatureMeasurementTopic = lazy(() => import("./pages/topics/TemperatureMeasurementTopic"));
+const HumidityGasSamplingTopic = lazy(() => import("./pages/topics/HumidityGasSamplingTopic"));
+const LaserFibreopticsTopic = lazy(() => import("./pages/topics/LaserFibreopticsTopic"));
+const UltrasoundPhysicsTopic = lazy(() => import("./pages/topics/UltrasoundPhysicsTopic"));
+const MRIPhysicsTopic = lazy(() => import("./pages/topics/MRIPhysicsTopic"));
+const BreathingCircuitsTopic = lazy(() => import("./pages/topics/BreathingCircuitsTopic"));
+const AnaestheticMachineTopic = lazy(() => import("./pages/topics/AnaestheticMachineTopic"));
+const DefibrillationPacingTopic = lazy(() => import("./pages/topics/DefibrillationPacingTopic"));
+const ClinicalMeasurementTopic = lazy(() => import("./pages/topics/ClinicalMeasurementTopic"));
+const SIUnitsThermodynamicsTopic = lazy(() => import("./pages/topics/SIUnitsThermodynamicsTopic"));
+const OpticsLightTopic = lazy(() => import("./pages/topics/OpticsLightTopic"));
+const ElectricityMagnetismTopic = lazy(() => import("./pages/topics/ElectricityMagnetismTopic"));
+const StatisticsEBMTopic = lazy(() => import("./pages/topics/StatisticsEBMTopic"));
+const OxygenHaemoglobinTopic = lazy(() => import("./pages/topics/OxygenHaemoglobinTopic"));
+const CardiacCycleTopic = lazy(() => import("./pages/topics/CardiacCycleTopic"));
+const LungMechanicsTopic = lazy(() => import("./pages/topics/LungMechanicsTopic"));
+const RenalPhysiologyTopic = lazy(() => import("./pages/topics/RenalPhysiologyTopic"));
+const NeuromuscularTopic = lazy(() => import("./pages/topics/NeuromuscularTopic"));
+const AutonomicNervousTopic = lazy(() => import("./pages/topics/AutonomicNervousTopic"));
+const PharmacokineticsTopic = lazy(() => import("./pages/topics/PharmacokineticsTopic"));
+const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopic"));
+const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));
+const OpioidsTopic = lazy(() => import("./pages/topics/OpioidsTopic"));
+const MuscleRelaxantsTopic = lazy(() => import("./pages/topics/MuscleRelaxantsTopic"));
+const LocalAnaestheticsTopic = lazy(() => import("./pages/topics/LocalAnaestheticsTopic"));
+const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgentsTopic"));
+const AirwayManagementTopic = lazy(() => import("./pages/topics/AirwayManagementTopic"));
+const RegionalAnaesthesiaTopic = lazy(() => import("./pages/topics/RegionalAnaesthesiaTopic"));
+const ObstetricAnaesthesiaTopic = lazy(() => import("./pages/topics/ObstetricAnaesthesiaTopic"));
+const PaediatricAnaesthesiaTopic = lazy(() => import("./pages/topics/PaediatricAnaesthesiaTopic"));
+const NeuroanaesthesiaTopic = lazy(() => import("./pages/topics/NeuroanaesthesiaTopic"));
+const CardiothoracicTopic = lazy(() => import("./pages/topics/CardiothoracicTopic"));
+const TraumaEmergencyTopic = lazy(() => import("./pages/topics/TraumaEmergencyTopic"));
+const ClinicalIncidentsTopic = lazy(() => import("./pages/topics/ClinicalIncidentsTopic"));
+const PainMedicineTopic = lazy(() => import("./pages/topics/PainMedicineTopic"));
+const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
+const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
+const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
+const AkiRrtTopic = lazy(() => import("./pages/topics/AkiRrtTopic"));
+const AcuteLiverFailureTopic = lazy(() => import("./pages/topics/AcuteLiverFailureTopic"));
+const NeurointensiveCareTopic = lazy(() => import("./pages/topics/NeurointensiveCareTopic"));
+const CardiacOutputMonitoringTopic = lazy(() => import("./pages/topics/CardiacOutputMonitoringTopic"));
+const AcidBaseTopic = lazy(() => import("./pages/topics/AcidBaseTopic"));
+const ARDSTopic = lazy(() => import("./pages/topics/ARDSTopic"));
+const IcuNutritionTopic = lazy(() => import("./pages/topics/IcuNutritionTopic"));
+const TransfusionCoagulationTopic = lazy(() => import("./pages/topics/TransfusionCoagulationTopic"));
+const IcuSedationDeliriumTopic = lazy(() => import("./pages/topics/IcuSedationDeliriumTopic"));
+const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"));
+const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
+const PreoperativeAssessmentTopic = lazy(() => import("./pages/topics/PreoperativeAssessmentTopic"));
+const EnhancedRecoveryTopic = lazy(() => import("./pages/topics/EnhancedRecoveryTopic"));
+const PerioperativeFluidsTopic = lazy(() => import("./pages/topics/PerioperativeFluidsTopic"));
+const AirwayAnatomyTopic = lazy(() => import("./pages/topics/AirwayAnatomyTopic"));
+const CardiacAnatomyTopic = lazy(() => import("./pages/topics/CardiacAnatomyTopic"));
+const SpinalAnatomyTopic = lazy(() => import("./pages/topics/SpinalAnatomyTopic"));
+const BrachialPlexusTopic = lazy(() => import("./pages/topics/BrachialPlexusTopic"));
+const ThoracicAnatomyTopic = lazy(() => import("./pages/topics/ThoracicAnatomyTopic"));
+const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomyTopic"));
+const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
+const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
 
 const queryClient = new QueryClient();
+
+const Loading = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="animate-pulse text-muted-foreground">Loading...</div>
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -94,6 +105,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Header />
+        <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/physics" element={<PhysicsSection />} />
@@ -179,6 +191,7 @@ const App = () => (
           <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </Suspense>
       </BrowserRouter>
     </TooltipProvider>
     </ExamFilterProvider>
