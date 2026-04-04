@@ -244,20 +244,25 @@ const VentilatorsTopic = () => {
           <div className="space-y-4">
             {historicVentilators.map((v) => (
               <div key={v.name} className="p-5 rounded-xl border border-border bg-card">
-                <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <h3 className="font-bold text-foreground">{v.name}</h3>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.era}</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <img src={v.image} alt={v.name} loading="lazy" width={512} height={512} className="w-full sm:w-36 h-36 object-contain rounded-lg bg-white flex-shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h3 className="font-bold text-foreground">{v.name}</h3>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary">{v.era}</span>
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{v.type}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-3">{v.mechanism}</p>
+                    <ul className="space-y-1">
+                      {v.features.map((f, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                          <span className="text-primary mt-1">•</span>
+                          <span>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-3">{v.mechanism}</p>
-                <ul className="space-y-1">
-                  {v.features.map((f, i) => (
-                    <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
