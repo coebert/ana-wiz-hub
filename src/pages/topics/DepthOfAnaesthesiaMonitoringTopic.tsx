@@ -1,5 +1,6 @@
 import { useState } from "react";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
+import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
