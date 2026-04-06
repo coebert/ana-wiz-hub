@@ -43,6 +43,8 @@ export const physiologyTopics: Topic[] = [
   { id: "renal-physiology", title: "Renal Physiology", description: "GFR, tubular function, acid-base balance, electrolyte handling", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examTags: ["primary", "final"], available: true },
   { id: "autonomic-nervous", title: "Autonomic Nervous System", description: "Sympathetic and parasympathetic pathways, receptors, reflexes", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "maternal-physiology", title: "Maternal Physiology", description: "Cardiovascular, respiratory, haematological and pharmacological changes in pregnancy", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "foetal-circulation", title: "Foetal Circulation", description: "Foetal shunts, HbF, transitional circulation, persistent pulmonary hypertension", section: "physiology", examTags: ["primary", "final"], available: true },
 ];
 
 export const pharmacologyTopics: Topic[] = [
