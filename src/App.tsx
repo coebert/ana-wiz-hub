@@ -51,6 +51,8 @@ const NeuromuscularTopic = lazy(() => import("./pages/topics/NeuromuscularTopic"
 const AutonomicNervousTopic = lazy(() => import("./pages/topics/AutonomicNervousTopic"));
 const MaternalPhysiologyTopic = lazy(() => import("./pages/topics/MaternalPhysiologyTopic"));
 const FoetalCirculationTopic = lazy(() => import("./pages/topics/FoetalCirculationTopic"));
+const HepaticPhysiologyTopic = lazy(() => import("./pages/topics/HepaticPhysiologyTopic"));
+const StarlingForcesTopic = lazy(() => import("./pages/topics/StarlingForcesTopic"));
 const PharmacokineticsTopic = lazy(() => import("./pages/topics/PharmacokineticsTopic"));
 const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopic"));
 const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));
@@ -159,6 +161,8 @@ const App = () => (
           <Route path="/physiology/autonomic-nervous" element={<AutonomicNervousTopic />} />
           <Route path="/physiology/maternal-physiology" element={<MaternalPhysiologyTopic />} />
           <Route path="/physiology/foetal-circulation" element={<FoetalCirculationTopic />} />
+          <Route path="/physiology/hepatic-physiology" element={<HepaticPhysiologyTopic />} />
+          <Route path="/physiology/starling-forces" element={<StarlingForcesTopic />} />
           {/* Pharmacology */}
           <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
           <Route path="/pharmacology/iv-anaesthetics" element={<IVAnaestheticsTopic />} />

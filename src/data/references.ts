@@ -166,6 +166,16 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Power & Kam Ch.18", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 18: Foetal and Neonatal Physiology." },
     { label: "Ganong Ch.33", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 33: Foetal and Neonatal Circulation." },
   ],
+  "hepatic-physiology": [
+    { label: "BJA Educ 2014", citation: "Lautt WW. Hepatic circulation: physiology and pathophysiology. In: Comprehensive Physiology. Wiley; 2011.", url: "https://doi.org/10.1002/cphy.cp060141" },
+    { label: "Power & Kam Ch.10", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 10: Hepatic Physiology." },
+    { label: "Peck & Hill Ch.13", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 13: Hepatic Drug Metabolism." },
+  ],
+  "starling-forces": [
+    { label: "Levick & Michel 2010", citation: "Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. Cardiovasc Res. 2010;87(2):198-210.", url: "https://doi.org/10.1093/cvr/cvq062" },
+    { label: "Woodcock & Woodcock 2012", citation: "Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. Br J Anaesth. 2012;108(3):384-394.", url: "https://doi.org/10.1093/bja/aer515" },
+    { label: "Power & Kam Ch.6", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 6: Capillary Physiology and Fluid Exchange." },
+  ],
   "cardiac-output-monitoring": [
     { label: "BJA Educ 2014", citation: "Marik PE. Noninvasive cardiac output monitors: a state-of-the-art review. J Cardiothorac Vasc Anesth. 2013;27(1):121-134.", url: "https://doi.org/10.1053/j.jvca.2012.03.022" },
     { label: "BJA Educ 2018", citation: "Saugel B, Vincent JL. Cardiac output monitoring. BJA Education. 2018;18(12):370-376.", url: "https://doi.org/10.1016/j.bjae.2018.09.004" },
