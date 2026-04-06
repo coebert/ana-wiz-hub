@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
@@ -104,6 +105,9 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
             </div>
           </div>
         </div>
+
+        {/* Interactive EEG Trace Diagram */}
+        <EEGTraceDiagram />
 
         {/* EEG Fundamentals */}
         <div>
