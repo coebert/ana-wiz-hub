@@ -139,6 +139,16 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Bowman WC. Neuromuscular block. BJA Education. 2006;6(1):2-6.", url: "https://doi.org/10.1093/bjaceaccp/mki067" },
     { label: "Power & Kam Ch.15", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 15: The Neuromuscular Junction." },
   ],
+  "maternal-physiology": [
+    { label: "BJA Educ 2015", citation: "Soma-Pillay P, Nelson-Piercy C, Tolppanen H, Mebazaa A. Physiological changes in pregnancy. Cardiovasc J Afr. 2016;27(2):89-94.", url: "https://doi.org/10.5830/CVJA-2016-021" },
+    { label: "Power & Kam Ch.17", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 17: Maternal Physiology." },
+    { label: "Obstetric Anaesthetists' Association", citation: "OAA/AAGBI. Guidelines for Obstetric Anaesthetic Services 2013. OAA/AAGBI; 2013.", url: "https://www.oaa-anaes.ac.uk/guidelines" },
+  ],
+  "foetal-circulation": [
+    { label: "BJA Educ 2015", citation: "Morton SU, Bhatt D. Neonatal physiology and the transitional circulation. BJA Education. 2016;16(4):106-112.", url: "https://doi.org/10.1093/bjaed/mkv047" },
+    { label: "Power & Kam Ch.18", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 18: Foetal and Neonatal Physiology." },
+    { label: "Ganong Ch.33", citation: "Barrett KE et al. Ganong's Review of Medical Physiology. 26th ed. Chapter 33: Foetal and Neonatal Circulation." },
+  ],
   "cardiac-output-monitoring": [
     { label: "BJA Educ 2014", citation: "Marik PE. Noninvasive cardiac output monitors: a state-of-the-art review. J Cardiothorac Vasc Anesth. 2013;27(1):121-134.", url: "https://doi.org/10.1053/j.jvca.2012.03.022" },
     { label: "BJA Educ 2018", citation: "Saugel B, Vincent JL. Cardiac output monitoring. BJA Education. 2018;18(12):370-376.", url: "https://doi.org/10.1016/j.bjae.2018.09.004" },
