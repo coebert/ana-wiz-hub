@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TCISimulatorDiagram from "@/components/diagrams/TCISimulatorDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
