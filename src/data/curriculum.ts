@@ -95,6 +95,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm"], available: true },
+  { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm"], available: true },
 ];
 
 export const perioperativeTopics: Topic[] = [

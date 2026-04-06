@@ -81,6 +81,7 @@ const TransfusionCoagulationTopic = lazy(() => import("./pages/topics/Transfusio
 const IcuSedationDeliriumTopic = lazy(() => import("./pages/topics/IcuSedationDeliriumTopic"));
 const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"));
 const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
+const PaediatricIcuTopic = lazy(() => import("./pages/topics/PaediatricIcuTopic"));
 const PreoperativeAssessmentTopic = lazy(() => import("./pages/topics/PreoperativeAssessmentTopic"));
 const EnhancedRecoveryTopic = lazy(() => import("./pages/topics/EnhancedRecoveryTopic"));
 const PerioperativeFluidsTopic = lazy(() => import("./pages/topics/PerioperativeFluidsTopic"));
