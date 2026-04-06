@@ -1,73 +1,38 @@
 
-## Curriculum Expansion Plan
+## Curriculum Gap Analysis
 
-### 1. Structural Changes
-- Add an **exam selector** filter (FRCA Primary / FRCA Final / FFICM) in the header — unified curriculum but filterable
-- Update the `Topic` type to support multiple exam tags: `examTags: ("primary" | "final" | "fficm")[]`
-- Add new top-level **sections** alongside Physics/Physiology/Pharmacology:
-  - **Clinical Anaesthesia** (FRCA Final topics)
-  - **Intensive Care** (FFICM + overlapping Final topics)
-  - **Perioperative Medicine** (shared Final/FFICM)
+After cross-referencing the RCoA Primary/Final blueprints and FFICM curriculum map against the app's current 59 topics, I've identified **16 high-priority gaps** grouped by section:
 
-### 2. FRCA Final Topics (~20 new topics)
-Based on the RCoA Intermediate Curriculum:
+### PHYSIOLOGY (5 missing)
+1. **Cardiac Electrophysiology & Vascular Physiology** — action potentials, conduction system, BP control, baroreceptors, Frank-Starling (Primary + Final)
+2. **Respiratory Physiology — Ventilation/Perfusion** — V/Q matching, West's zones, dead space, shunt, control of ventilation (Primary + Final + FFICM)
+3. **Gastrointestinal Physiology** — gastric secretions, nausea/vomiting, gut motility, digestion (Primary)
+4. **Endocrine Physiology** — thyroid, adrenal, insulin, calcium homeostasis, stress response (Primary + Final)
+5. **Haematology & Immunity Physiology** — coagulation cascade, blood groups, innate/adaptive immunity, inflammation (Primary + Final)
 
-**Clinical Anaesthesia:**
-- Airway Management (difficult airway algorithms, DAS guidelines)
-- Regional & Neuraxial Anaesthesia (spinal, epidural, nerve blocks)
-- Obstetric Anaesthesia (CS, epidural labour, high-risk obstetrics)
-- Paediatric Anaesthesia (neonatal physiology, common procedures)
-- Neuroanaesthesia (ICP management, posterior fossa, neuromonitoring)
-- Cardiothoracic Anaesthesia (CPB, one-lung ventilation, TOE)
-- Vascular Anaesthesia (aortic surgery, carotid, EVAR)
-- Ophthalmic Anaesthesia (blocks, oculocardiac reflex)
-- ENT & Maxillofacial (shared airway, laser safety)
-- Day Surgery & Sedation
-- Perioperative Medicine (preop assessment, enhanced recovery, CPET)
-- Clinical Incidents (anaphylaxis, MH, LA toxicity, awareness)
-- Trauma & Emergency Anaesthesia (RSI, damage control, massive transfusion)
-- Orthopaedic & Spinal Anaesthesia (cement, tourniquets, fat embolism)
-- Pain Medicine (acute pain, chronic pain, neuropathic, interventions)
+### PHARMACOLOGY (4 missing)
+6. **Pharmacodynamics & Drug Receptors** — dose-response curves, agonists/antagonists, receptor types, second messengers (Primary)
+7. **Analgesics: NSAIDs & Paracetamol** — COX inhibition, paracetamol metabolism/toxicity, perioperative use (Primary + Final)
+8. **Antiemetics** — 5-HT3 antagonists, D2 antagonists, NK1 antagonists, dexamethasone, PONV management (Primary + Final)
+9. **Corticosteroids & Endocrine Pharmacology** — steroid equivalence, perioperative steroids, insulin, thyroid drugs (Primary + Final + FFICM)
 
-### 3. FFICM / ICM Topics (~15 new topics)
-Based on the FICM curriculum domains:
+### ANATOMY (1 missing)
+10. **Lower Limb & Lumbar/Sacral Plexus** — femoral, sciatic, obturator nerves, ankle block, fascia iliaca (Primary + Final)
 
-**Intensive Care:**
-- Sepsis & Septic Shock (Surviving Sepsis, bundles, vasopressors)
-- Mechanical Ventilation (modes, ARDS protocols, weaning)
-- Circulatory Failure & Shock (cardiogenic, distributive, obstructive)
-- Acute Kidney Injury & RRT (KDIGO, CRRT, IHD)
-- Acute Liver Failure (paracetamol, King's criteria, transplant)
-- Neurointensive Care (TBI, SAH, status epilepticus, brain death)
-- Cardiac Output Monitoring (PA catheter, PiCCO, oesophageal Doppler)
-- Blood Gases & Acid-Base (Stewart approach, SID, anion gap)
-- Nutrition in Critical Care (enteral/parenteral, refeeding syndrome)
-- ARDS & Lung Injury (Berlin definition, prone positioning, ECMO)
-- Antimicrobials in ICU (empiric therapy, resistance, stewardship)
-- Transfusion & Coagulation (massive transfusion, DIC, TEG/ROTEM)
-- Organ Donation (brainstem death testing, DCD, donor management)
-- ICU Delirium & Sedation (CAM-ICU, RASS, dexmedetomidine)
-- Transport of the Critically Ill
+### CLINICAL (4 missing)
+11. **Orthopaedic Anaesthesia** — tourniquet, cement reaction, fat embolism, hip fracture (Final)
+12. **Ophthalmic Anaesthesia** — sub-Tenon's, peribulbar, oculocardiac reflex (Final)
+13. **Day Surgery Anaesthesia** — patient selection, discharge criteria, PONV prevention (Final)
+14. **Transfer Medicine** — packaging, monitoring, equipment, retrieval (Final + FFICM)
 
-### 4. Shared/Cross-Tagged Topics
-Several existing Primary topics get additional tags:
-- Pharmacokinetics → Primary + Final + FFICM
-- Renal Physiology → Primary + FFICM
-- Autonomic Nervous System → Primary + Final
-- Cardiac Cycle → Primary + Final + FFICM
+### INTENSIVE CARE (2 missing)
+15. **ECMO & Mechanical Circulatory Support** — VV-ECMO, VA-ECMO, IABP, indications, complications (FFICM)
+16. **Toxicology & Poisoning** — paracetamol, TCA, organophosphate, specific antidotes, enhanced elimination (FFICM)
 
-### 5. Implementation Approach
-- **Phase 1**: Restructure data model, add sections and exam filter UI
-- **Phase 2**: Build first batch of ~10 clinical topics with diagrams (highest-yield exam topics)
-- **Phase 3**: Build remaining ~25 topics
-- Each topic includes: structured content, interactive diagram where appropriate, 5 FRCA/FFICM-style MCQs
-
-### Diagrams planned for new topics:
-- Difficult Airway Algorithm flowchart
-- Dermatome map for regional anaesthesia
-- Surviving Sepsis bundles timeline
-- Ventilator waveforms (pressure/flow/volume)
-- Stewart acid-base diagram
-- ARDS Berlin criteria visual
-- Cardiac output monitoring comparison
-- Pain pathway diagram
+### Implementation Plan
+I'll create all 16 topic pages with:
+- Full educational content
+- 5 quiz questions each
+- 3+ peer-reviewed references
+- Curriculum entries with exam tags
+- Routes in App.tsx
