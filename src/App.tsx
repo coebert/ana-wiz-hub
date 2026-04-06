@@ -42,6 +42,7 @@ const ElectricityMagnetismTopic = lazy(() => import("./pages/topics/ElectricityM
 const StatisticsEBMTopic = lazy(() => import("./pages/topics/StatisticsEBMTopic"));
 const VentilatorsTopic = lazy(() => import("./pages/topics/VentilatorsTopic"));
 const MathConceptsTopic = lazy(() => import("./pages/topics/MathConceptsTopic"));
+const DepthOfAnaesthesiaMonitoringTopic = lazy(() => import("./pages/topics/DepthOfAnaesthesiaMonitoringTopic"));
 const OxygenHaemoglobinTopic = lazy(() => import("./pages/topics/OxygenHaemoglobinTopic"));
 const CardiacCycleTopic = lazy(() => import("./pages/topics/CardiacCycleTopic"));
 const LungMechanicsTopic = lazy(() => import("./pages/topics/LungMechanicsTopic"));
@@ -145,6 +146,7 @@ const App = () => (
           <Route path="/physics/statistics-ebm" element={<StatisticsEBMTopic />} />
           <Route path="/physics/ventilators" element={<VentilatorsTopic />} />
           <Route path="/physics/math-concepts" element={<MathConceptsTopic />} />
+          <Route path="/physics/depth-of-anaesthesia" element={<DepthOfAnaesthesiaMonitoringTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
