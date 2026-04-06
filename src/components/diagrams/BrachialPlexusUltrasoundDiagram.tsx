@@ -341,11 +341,20 @@ const BrachialPlexusUltrasoundDiagram = () => {
             {levels[l].label}
           </button>
         ))}
+        <button
+          onClick={() => setShowNeedle(!showNeedle)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+            showNeedle
+              ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40"
+              : "border-border text-muted-foreground hover:text-foreground"
+          }`}>
+          🎯 {showNeedle ? "Hide" : "Show"} Needle
+        </button>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={selected}>
+      <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
         <div className="flex-shrink-0 mx-auto">
-          <SonoView level={selected} size={220} />
+          <SonoView level={selected} size={220} showNeedle={showNeedle} />
         </div>
 
         <div className="flex-1 min-w-0 space-y-3">
