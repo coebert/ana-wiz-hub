@@ -48,6 +48,10 @@ export const physiologyTopics: Topic[] = [
   { id: "hepatic-physiology", title: "Hepatic Physiology", description: "Hepatic blood supply, acinar zones, drug metabolism, synthetic function, LFTs", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "starling-forces", title: "Starling Forces & Fluid Exchange", description: "Revised Starling equation, glycocalyx, transcapillary filtration, oedema formation", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "gi-physiology", title: "Gastrointestinal Physiology", description: "Gastric acid secretion, nausea & vomiting pathways, gut motility, and anaesthetic implications", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "cardiac-electrophysiology", title: "Cardiac Electrophysiology", description: "Cardiac action potentials, ion channels, pacemaker cells, conduction system, anti-arrhythmic mechanisms", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "ventilation-perfusion", title: "Ventilation-Perfusion Matching", description: "V/Q ratio, West's zones, HPV, shunt equation, alveolar gas equation, A-a gradient", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "endocrine-physiology", title: "Endocrine Physiology", description: "HPA axis, stress response, thyroid, insulin, adrenal, and perioperative endocrine management", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "haematology-immunity", title: "Haematology & Immunity", description: "Coagulation cascade, blood groups, transfusion, innate/adaptive immunity, hypersensitivity", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const pharmacologyTopics: Topic[] = [
@@ -61,6 +65,10 @@ export const pharmacologyTopics: Topic[] = [
   { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antiarrhythmics", title: "Antiarrhythmic Drugs", description: "Vaughan-Williams classification, Na⁺/K⁺/Ca²⁺ channel blockers, β-blockers, amiodarone, adenosine, and pro-arrhythmic risk", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "anticoagulants", title: "Anticoagulant Pharmacology", description: "Heparins (UFH/LMWH), warfarin, DOACs, HIT, reversal agents, and perioperative/neuraxial management", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "pharmacodynamics", title: "Pharmacodynamics & Drug Receptors", description: "Dose-response, agonists/antagonists, receptor types, signal transduction, drug interactions", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  { id: "nsaids-paracetamol", title: "NSAIDs & Paracetamol", description: "COX inhibition, aspirin, coxibs, paracetamol mechanism and toxicity, ceiling effects", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  { id: "antiemetics", title: "Antiemetics", description: "PONV risk factors, receptor targets, ondansetron, dexamethasone, multimodal prophylaxis", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  { id: "corticosteroids", title: "Corticosteroids & Endocrine Pharmacology", description: "Steroid potency, HPA suppression, perioperative steroid cover, mineralocorticoid effects", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const anatomyTopics: Topic[] = [
@@ -72,6 +80,7 @@ export const anatomyTopics: Topic[] = [
   { id: "abdominal-anatomy", title: "Abdominal & Pelvic Anatomy", description: "Abdominal wall layers, inguinal canal, peritoneum, major organs", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "head-neck-anatomy", title: "Head & Neck Anatomy", description: "Cranial nerves, neck triangles, blood supply, skull base foramina", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "neuroanatomy", title: "Neuroanatomy", description: "Brain anatomy, cranial fossae, circle of Willis, CSF circulation, autonomic pathways", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "lower-limb-anatomy", title: "Lower Limb & Lumbosacral Plexus", description: "Lumbar and sacral plexus, femoral/sciatic nerves, dermatomes, lower limb blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
 ];
 
 export const clinicalTopics: Topic[] = [
@@ -85,6 +94,10 @@ export const clinicalTopics: Topic[] = [
   { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "pain-medicine", title: "Pain Medicine", description: "Acute and chronic pain, neuropathic pain, multimodal analgesia, interventions", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "tiva", title: "Total Intravenous Anaesthesia (TIVA)", description: "TCI pharmacokinetic models, Marsh vs Schnider vs Eleveld, Cp vs Ce targeting, practical TIVA setup", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "orthopaedic-anaesthesia", title: "Orthopaedic Anaesthesia", description: "Tourniquets, cement reactions, fat embolism, regional techniques, enhanced recovery", section: "clinical", examTags: ["final"], available: true },
+  { id: "ophthalmic-anaesthesia", title: "Ophthalmic Anaesthesia", description: "Ocular physiology, IOP, peribulbar/sub-Tenon's blocks, oculocardiac reflex", section: "clinical", examTags: ["final"], available: true },
+  { id: "day-surgery", title: "Day Surgery", description: "Patient selection, anaesthetic techniques, PONV prevention, discharge criteria", section: "clinical", examTags: ["final"], available: true },
+  { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
@@ -104,6 +117,8 @@ export const intensiveCareTopics: Topic[] = [
   { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm"], available: true },
+  { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
 ];
 
 export const perioperativeTopics: Topic[] = [
