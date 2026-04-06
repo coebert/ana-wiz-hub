@@ -3,10 +3,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
+import { AuthProvider } from "@/hooks/useAuth";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
+import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -101,6 +103,8 @@ const ThoracicAnatomyTopic = lazy(() => import("./pages/topics/ThoracicAnatomyTo
 const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomyTopic"));
 const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
 const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const queryClient = new QueryClient();
 
@@ -114,11 +118,13 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ProgressProvider>
     <ExamFilterProvider>
+    <AuthProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <Header />
+        <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -217,11 +223,16 @@ const App = () => (
           <Route path="/anatomy/abdominal-anatomy" element={<AbdominalAnatomyTopic />} />
           <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
           <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
+          {/* Admin */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
+        </VisitTrackerWrapper>
       </BrowserRouter>
     </TooltipProvider>
+    </AuthProvider>
     </ExamFilterProvider>
     </ProgressProvider>
   </QueryClientProvider>
