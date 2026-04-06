@@ -65,7 +65,7 @@ const GasLawsTopic = () => {
             <p className="text-sm font-medium text-foreground">Clinical Application</p>
             <p className="text-sm text-muted-foreground mt-1">
               Spirometry measurements taken at room temperature (ATPS) must be corrected to body conditions (BTPS) using
-              Charles' law, as gas expands approximately 10% when warmed from 20°C to 37°C.
+              Charles' law, as gas expands approximately 6% when warmed from 20°C to 37°C (310/293 = 1.058).
             </p>
           </div>
         </section>

@@ -58,7 +58,7 @@ const MuscleRelaxantsTopic = () => {
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Benzylisoquinoliniums</strong> (atracurium, cisatracurium, mivacurium): Hofmann degradation (atracurium,
-            cisatracurium — organ-independent), ester hydrolysis (mivacurium — plasma cholinesterase). Atracurium: histamine
+            cisatracurium — organ-independent), ester hydrolysis (mivacurium — plasma cholinesterase). Cisatracurium: ~4-5× potency of atracurium (ED₉₅ 0.05 vs 0.25 mg/kg), no histamine release, purely Hofmann elimination. Atracurium: histamine
             release at high doses. Cisatracurium: 3× potency, no histamine release, purely Hofmann elimination.
           </p>
         </section>

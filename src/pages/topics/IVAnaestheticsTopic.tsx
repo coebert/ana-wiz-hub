@@ -93,7 +93,7 @@ const IVAnaestheticsTopic = () => {
           </p>
           <p className="text-foreground/90 leading-relaxed mt-3">
             <strong>Mechanism</strong>: GABA_A receptor (selective for β₂/β₃ subunit). <strong>Problems</strong>: adrenocortical
-            suppression (inhibits 11β-hydroxylase — even a single dose suppresses cortisol for 24 hours). Pain on injection.
+            suppression (inhibits 11β-hydroxylase — even a single dose suppresses cortisol for up to 24 hours). Pain on injection.
             Myoclonus (not seizure activity). High incidence of PONV. Not recommended for infusion due to adrenal suppression.
           </p>
         </section>

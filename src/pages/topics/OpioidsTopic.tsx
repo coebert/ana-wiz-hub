@@ -122,7 +122,7 @@ const OpioidsTopic = () => {
                   ["Morphine", "1", "15-20 min", "M6G active metabolite, histamine release"],
                   ["Fentanyl", "100", "1-2 min", "Chest wall rigidity, ↑ CSHT with infusion"],
                   ["Alfentanil", "10-20", "<1 min", "Low pKa 6.5 → 90% un-ionised, rapid onset"],
-                  ["Remifentanil", "200", "1 min", "Ester metabolism, constant CSHT ~4 min"],
+                  ["Remifentanil", "100-200", "1 min", "Ester metabolism, constant CSHT ~4 min"],
                   ["Sufentanil", "500-1000", "1-2 min", "Highest µ affinity, cardiac surgery"],
                 ].map(([agent, potency, onset, feature]) => (
                   <tr key={agent} className="border-b border-border/50">
