@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 type Fossa = "anterior" | "middle" | "posterior";
@@ -8,48 +7,112 @@ interface Foramen {
   id: string;
   name: string;
   fossa: Fossa;
-  contents?: string[];
+  contents: string[];
   clinicalNote?: string;
-  // SVG position (percentage-based for responsiveness)
   cx: number;
   cy: number;
-  // label anchor
+  rx?: number;
+  ry?: number;
   labelX: number;
   labelY: number;
-  labelAnchor?: "start" | "end" | "middle";
+  labelAnchor: "start" | "end" | "middle";
 }
 
 const foramina: Foramen[] = [
-  // Anterior fossa
-  { id: "cribriform", name: "Cribriform Plate", fossa: "anterior", cx: 50, cy: 14, labelX: 50, labelY: 8, labelAnchor: "middle", contents: ["CN I (Olfactory nerve fibres)"], clinicalNote: "Risk of CSF rhinorrhoea with base-of-skull fracture; contraindication to nasotracheal intubation/NG tube" },
-  { id: "ant-ethmoidal", name: "Anterior Ethmoidal Foramen", fossa: "anterior", cx: 42, cy: 18, labelX: 22, labelY: 16, labelAnchor: "end", contents: ["Anterior ethmoidal artery & nerve (branch of V1)"] },
-  { id: "post-ethmoidal", name: "Posterior Ethmoidal Foramen", fossa: "anterior", cx: 58, cy: 18, labelX: 78, labelY: 16, labelAnchor: "start", contents: ["Posterior ethmoidal artery & nerve"] },
+  // ─── Anterior fossa ───
+  { id: "cribriform", name: "Cribriform Plate", fossa: "anterior",
+    cx: 200, cy: 78, rx: 18, ry: 8,
+    labelX: 200, labelY: 42, labelAnchor: "middle",
+    contents: ["CN I — Olfactory nerve fibres (multiple filaments)"],
+    clinicalNote: "Base-of-skull fracture → CSF rhinorrhoea, anosmia. Contraindication to nasotracheal intubation and NG tube insertion." },
+  { id: "ant-ethmoidal", name: "Anterior Ethmoidal Foramen", fossa: "anterior",
+    cx: 178, cy: 88, rx: 3, ry: 2,
+    labelX: 78, labelY: 72, labelAnchor: "end",
+    contents: ["Anterior ethmoidal artery & nerve (V1 branch)"],
+    clinicalNote: "Artery source of epistaxis; landmark for frontal sinus surgery." },
+  { id: "post-ethmoidal", name: "Posterior Ethmoidal Foramen", fossa: "anterior",
+    cx: 222, cy: 88, rx: 3, ry: 2,
+    labelX: 322, labelY: 72, labelAnchor: "start",
+    contents: ["Posterior ethmoidal artery & nerve"] },
 
-  // Middle fossa
-  { id: "optic-canal", name: "Optic Canal", fossa: "middle", cx: 44, cy: 26, labelX: 20, labelY: 25, labelAnchor: "end", contents: ["CN II (Optic nerve)", "Ophthalmic artery"], clinicalNote: "Pituitary surgery risk to optic chiasm" },
-  { id: "optic-canal-r", name: "Optic Canal (R)", fossa: "middle", cx: 56, cy: 26, labelX: 56, labelY: 26 },
-  { id: "sup-orbital-fissure", name: "Superior Orbital Fissure", fossa: "middle", cx: 40, cy: 30, labelX: 14, labelY: 31, labelAnchor: "end", contents: ["CN III (Oculomotor)", "CN IV (Trochlear)", "CN V1 (Ophthalmic — lacrimal, frontal, nasociliary)", "CN VI (Abducens)", "Superior ophthalmic vein"], clinicalNote: "Cavernous sinus thrombosis may affect all structures" },
-  { id: "f-rotundum", name: "Foramen Rotundum", fossa: "middle", cx: 38, cy: 37, labelX: 14, labelY: 38, labelAnchor: "end", contents: ["CN V2 (Maxillary nerve)"], clinicalNote: "Maxillary nerve block for mid-face surgery" },
-  { id: "f-ovale", name: "Foramen Ovale", fossa: "middle", cx: 37, cy: 43, labelX: 14, labelY: 44, labelAnchor: "end", contents: ["CN V3 (Mandibular nerve)", "Accessory meningeal artery", "Lesser petrosal nerve"], clinicalNote: "Mandibular nerve block; trigeminal ganglion ablation route" },
-  { id: "f-spinosum", name: "Foramen Spinosum", fossa: "middle", cx: 40, cy: 48, labelX: 16, labelY: 50, labelAnchor: "end", contents: ["Middle meningeal artery", "Meningeal branch of V3"], clinicalNote: "Rupture → extradural haematoma (temporal region)" },
-  { id: "f-lacerum", name: "Foramen Lacerum", fossa: "middle", cx: 42, cy: 52, labelX: 18, labelY: 56, labelAnchor: "end", contents: ["Internal carotid artery (passes over, not through)", "Greater petrosal nerve"], clinicalNote: "Fibrocartilage-filled in life; ICA passes over superior surface" },
-  { id: "carotid-canal", name: "Carotid Canal", fossa: "middle", cx: 44, cy: 56, labelX: 20, labelY: 60, labelAnchor: "end", contents: ["Internal carotid artery", "Sympathetic plexus"] },
+  // ─── Middle fossa ───
+  { id: "optic-canal-l", name: "Optic Canal", fossa: "middle",
+    cx: 178, cy: 120, rx: 5, ry: 4,
+    labelX: 68, labelY: 115, labelAnchor: "end",
+    contents: ["CN II — Optic nerve", "Ophthalmic artery (branch of ICA)"],
+    clinicalNote: "Pituitary tumour → bitemporal hemianopia (optic chiasm compression). Optic canal unroofing in optic nerve decompression." },
+  { id: "optic-canal-r", name: "Optic Canal (R)", fossa: "middle",
+    cx: 222, cy: 120, rx: 5, ry: 4,
+    labelX: 222, labelY: 120, labelAnchor: "middle",
+    contents: ["CN II — Optic nerve", "Ophthalmic artery"] },
+  { id: "sof-l", name: "Superior Orbital Fissure", fossa: "middle",
+    cx: 168, cy: 132, rx: 12, ry: 4,
+    labelX: 58, labelY: 135, labelAnchor: "end",
+    contents: ["CN III — Oculomotor", "CN IV — Trochlear", "CN V1 — Ophthalmic (lacrimal, frontal, nasociliary)", "CN VI — Abducens", "Superior ophthalmic vein"],
+    clinicalNote: "Cavernous sinus thrombosis → all structures affected. Superior orbital fissure syndrome: proptosis + ophthalmoplegia + V1 sensory loss." },
+  { id: "f-rotundum", name: "Foramen Rotundum", fossa: "middle",
+    cx: 162, cy: 160, rx: 4, ry: 4,
+    labelX: 52, labelY: 160, labelAnchor: "end",
+    contents: ["CN V2 — Maxillary nerve"],
+    clinicalNote: "Maxillary nerve block for mid-face surgery. V2 enters pterygopalatine fossa after exiting." },
+  { id: "f-ovale", name: "Foramen Ovale", fossa: "middle",
+    cx: 155, cy: 185, rx: 6, ry: 4,
+    labelX: 45, labelY: 188, labelAnchor: "end",
+    contents: ["CN V3 — Mandibular nerve", "Accessory meningeal artery", "Lesser petrosal nerve"],
+    clinicalNote: "Route for percutaneous trigeminal ganglion procedures (balloon compression, RF thermocoagulation). Mandibular nerve block." },
+  { id: "f-spinosum", name: "Foramen Spinosum", fossa: "middle",
+    cx: 158, cy: 200, rx: 3, ry: 3,
+    labelX: 48, labelY: 208, labelAnchor: "end",
+    contents: ["Middle meningeal artery (branch of maxillary artery)", "Meningeal branch of V3"],
+    clinicalNote: "MMA rupture → extradural (epidural) haematoma — 'lucid interval' then rapid deterioration. Temporal region most common." },
+  { id: "f-lacerum", name: "Foramen Lacerum", fossa: "middle",
+    cx: 168, cy: 220, rx: 7, ry: 5,
+    labelX: 52, labelY: 232, labelAnchor: "end",
+    contents: ["ICA passes OVER (not through) the superior surface", "Greater petrosal nerve → nerve of pterygoid canal", "Filled with fibrocartilage in life"],
+    clinicalNote: "Common exam misconception: ICA does NOT pass through foramen lacerum — it passes over it from the carotid canal to the cavernous sinus." },
+  { id: "carotid-canal", name: "Carotid Canal", fossa: "middle",
+    cx: 168, cy: 240, rx: 5, ry: 4,
+    labelX: 55, labelY: 255, labelAnchor: "end",
+    contents: ["Internal carotid artery", "Sympathetic carotid plexus"],
+    clinicalNote: "ICA enters petrous temporal bone → carotid canal → over foramen lacerum → cavernous sinus → emerges medial to anterior clinoid." },
 
-  // Posterior fossa
-  { id: "iac", name: "Internal Acoustic Meatus", fossa: "posterior", cx: 60, cy: 52, labelX: 82, labelY: 50, labelAnchor: "start", contents: ["CN VII (Facial nerve)", "CN VIII (Vestibulocochlear nerve)", "Labyrinthine artery"], clinicalNote: "Acoustic neuroma site; facial nerve monitoring during surgery" },
-  { id: "jugular-f", name: "Jugular Foramen", fossa: "posterior", cx: 62, cy: 60, labelX: 84, labelY: 58, labelAnchor: "start", contents: ["CN IX (Glossopharyngeal)", "CN X (Vagus)", "CN XI (Accessory — cranial root)", "Internal jugular vein", "Inferior petrosal sinus"], clinicalNote: "Glossopharyngeal nerve block for awake intubation; vagus → laryngeal nerves" },
-  { id: "hypoglossal-canal", name: "Hypoglossal Canal", fossa: "posterior", cx: 58, cy: 66, labelX: 84, labelY: 66, labelAnchor: "start", contents: ["CN XII (Hypoglossal nerve)"], clinicalNote: "Risk during carotid endarterectomy; tongue deviates to lesion side" },
-  { id: "f-magnum", name: "Foramen Magnum", fossa: "posterior", cx: 50, cy: 74, labelX: 50, labelY: 84, labelAnchor: "middle", contents: ["Medulla oblongata / Spinal cord", "Vertebral arteries", "CN XI (Spinal root of accessory nerve)", "Anterior & posterior spinal arteries", "Meninges"], clinicalNote: "Tonsillar herniation (coning) through foramen magnum is fatal" },
-  { id: "stylomastoid", name: "Stylomastoid Foramen", fossa: "posterior", cx: 65, cy: 68, labelX: 86, labelY: 73, labelAnchor: "start", contents: ["CN VII (Facial nerve — exits skull)", "Stylomastoid artery"], clinicalNote: "Facial nerve vulnerable during parotid/mastoid surgery" },
+  // ─── Posterior fossa ───
+  { id: "iam", name: "Internal Acoustic Meatus", fossa: "posterior",
+    cx: 245, cy: 225, rx: 6, ry: 4,
+    labelX: 340, labelY: 215, labelAnchor: "start",
+    contents: ["CN VII — Facial nerve", "CN VIII — Vestibulocochlear nerve", "Labyrinthine artery (branch of AICA)"],
+    clinicalNote: "Vestibular schwannoma (acoustic neuroma) — CPA angle mass → CN VII/VIII compression. Intraoperative facial nerve monitoring essential." },
+  { id: "jugular-f", name: "Jugular Foramen", fossa: "posterior",
+    cx: 243, cy: 260, rx: 8, ry: 5,
+    labelX: 345, labelY: 258, labelAnchor: "start",
+    contents: ["CN IX — Glossopharyngeal", "CN X — Vagus", "CN XI — Accessory (cranial root)", "Internal jugular vein (sigmoid sinus continuation)", "Inferior petrosal sinus"],
+    clinicalNote: "Glossopharyngeal nerve block for awake intubation (posterior tonsillar pillar). Vagus → recurrent laryngeal nerve. Jugular foramen syndrome (Vernet): CN IX, X, XI palsy." },
+  { id: "hypoglossal", name: "Hypoglossal Canal", fossa: "posterior",
+    cx: 230, cy: 282, rx: 5, ry: 3,
+    labelX: 338, labelY: 286, labelAnchor: "start",
+    contents: ["CN XII — Hypoglossal nerve"],
+    clinicalNote: "At risk during carotid endarterectomy. LMN lesion: tongue deviates TOWARDS lesion side (ipsilateral). Bilateral lesion: difficulty speaking, swallowing." },
+  { id: "f-magnum", name: "Foramen Magnum", fossa: "posterior",
+    cx: 200, cy: 318, rx: 28, ry: 20,
+    labelX: 200, labelY: 365, labelAnchor: "middle",
+    contents: ["Medulla oblongata / Spinal cord junction", "Vertebral arteries (enter, unite → basilar artery)", "CN XI — Spinal accessory nerve (ascending root)", "Anterior & posterior spinal arteries", "Meninges (dura, arachnoid, pia)", "Tectorial membrane"],
+    clinicalNote: "Tonsillar herniation (coning) through foramen magnum compresses medulla → fatal (Cushing response: hypertension, bradycardia, irregular respiration). Arnold-Chiari malformation." },
+  { id: "stylomastoid", name: "Stylomastoid Foramen", fossa: "posterior",
+    cx: 255, cy: 278, rx: 3, ry: 3,
+    labelX: 345, labelY: 310, labelAnchor: "start",
+    contents: ["CN VII — Facial nerve (exits skull here)", "Stylomastoid artery"],
+    clinicalNote: "Facial nerve most vulnerable during parotid surgery and mastoidectomy. Nerve stimulator used to identify. Bell's palsy: idiopathic inflammation in facial canal." },
+  { id: "condylar", name: "Condylar Canal", fossa: "posterior",
+    cx: 245, cy: 330, rx: 3, ry: 3,
+    labelX: 340, labelY: 338, labelAnchor: "start",
+    contents: ["Condylar emissary vein"],
+    clinicalNote: "Connects sigmoid sinus to suboccipital venous plexus. Route for infection spread." },
 ];
 
-// Filter out the duplicate optic canal marker (used only for SVG dot)
-const uniqueForamina = foramina.filter(f => f.contents);
-
-const fossaColors: Record<Fossa, { bg: string; border: string; fill: string; text: string }> = {
-  anterior: { bg: "bg-blue-500/10", border: "border-blue-500/30", fill: "hsl(210,80%,60%)", text: "text-blue-400" },
-  middle: { bg: "bg-amber-500/10", border: "border-amber-500/30", fill: "hsl(40,80%,55%)", text: "text-amber-400" },
-  posterior: { bg: "bg-emerald-500/10", border: "border-emerald-500/30", fill: "hsl(155,60%,50%)", text: "text-emerald-400" },
+const fossaColors: Record<Fossa, { fill: string; text: string; bg: string; border: string }> = {
+  anterior: { fill: "hsl(210 70% 55%)", text: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/30" },
+  middle: { fill: "hsl(40 75% 52%)", text: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/30" },
+  posterior: { fill: "hsl(155 55% 48%)", text: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/30" },
 };
 
 const fossaLabels: Record<Fossa, string> = {
@@ -58,218 +121,311 @@ const fossaLabels: Record<Fossa, string> = {
   posterior: "Posterior Cranial Fossa",
 };
 
+const displayForamina = foramina.filter(f => f.id !== "optic-canal-r");
+
 const SkullBaseDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [filterFossa, setFilterFossa] = useState<Fossa | "all">("all");
 
-  const selectedForamen = uniqueForamina.find(f => f.id === selected);
-  const visibleForamina = filterFossa === "all" ? foramina : foramina.filter(f => f.fossa === filterFossa);
+  const selectedForamen = foramina.find(f => f.id === selected);
+  const isVisible = (f: Fossa) => filterFossa === "all" || filterFossa === f;
 
   return (
-    <Card className="mb-8 border-border bg-card">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg font-serif text-foreground flex items-center gap-2">
-          Base of Skull — Foramina & Contents
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Tap any foramen to view structures passing through it. Filter by cranial fossa.
-        </p>
-      </CardHeader>
-      <CardContent>
-        {/* Fossa filter */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          <Badge
-            variant={filterFossa === "all" ? "default" : "outline"}
-            className="cursor-pointer text-xs"
-            onClick={() => setFilterFossa("all")}
-          >
-            All Fossae
+    <div className="mb-8">
+      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Base of Skull — Internal Surface</h3>
+      <p className="text-sm text-muted-foreground mb-3">Tap any foramen to view its contents and clinical relevance. Filter by cranial fossa.</p>
+
+      {/* Fossa filter */}
+      <div className="flex flex-wrap gap-1.5 mb-4">
+        <Badge variant={filterFossa === "all" ? "default" : "outline"} className="cursor-pointer text-xs"
+          onClick={() => { setFilterFossa("all"); setSelected(null); }}>All Fossae</Badge>
+        {(["anterior", "middle", "posterior"] as Fossa[]).map(f => (
+          <Badge key={f} variant={filterFossa === f ? "default" : "outline"}
+            className={`cursor-pointer text-xs ${filterFossa === f ? "" : fossaColors[f].text}`}
+            onClick={() => { setFilterFossa(f); setSelected(null); }}
+            style={filterFossa === f ? { backgroundColor: fossaColors[f].fill } : {}}>
+            {fossaLabels[f]}
           </Badge>
-          {(["anterior", "middle", "posterior"] as Fossa[]).map(f => (
-            <Badge
-              key={f}
-              variant={filterFossa === f ? "default" : "outline"}
-              className={`cursor-pointer text-xs ${filterFossa === f ? "" : fossaColors[f].text}`}
-              onClick={() => setFilterFossa(f)}
-            >
-              {fossaLabels[f]}
-            </Badge>
+        ))}
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-4">
+        {/* SVG */}
+        <svg viewBox="0 0 400 400" className="w-full max-w-md mx-auto flex-shrink-0">
+          <defs>
+            <radialGradient id="skull-bone-bg" cx="50%" cy="45%" r="50%">
+              <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.03" />
+            </radialGradient>
+            {/* Bone texture pattern */}
+            <pattern id="bone-texture" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="0.3" fill="hsl(var(--muted-foreground))" opacity="0.08" />
+            </pattern>
+          </defs>
+
+          {/* ═══ OUTER SKULL CONTOUR ═══ */}
+          {/* More realistic cranial vault shape — viewed from above (internal surface) */}
+          <path d={`M200,18 
+            C260,18 310,35 330,70 
+            C348,105 350,150 345,185 
+            C340,225 330,260 315,290 
+            C295,340 255,370 200,375 
+            C145,370 105,340 85,290 
+            C70,260 60,225 55,185 
+            C50,150 52,105 70,70 
+            C90,35 140,18 200,18 Z`}
+            fill="url(#skull-bone-bg)" stroke="hsl(var(--border))" strokeWidth="1.2" />
+          <path d={`M200,18 
+            C260,18 310,35 330,70 
+            C348,105 350,150 345,185 
+            C340,225 330,260 315,290 
+            C295,340 255,370 200,375 
+            C145,370 105,340 85,290 
+            C70,260 60,225 55,185 
+            C50,150 52,105 70,70 
+            C90,35 140,18 200,18 Z`}
+            fill="url(#bone-texture)" />
+
+          {/* ═══ BONE SUTURE LINES ═══ */}
+          {/* Coronal suture (anterior) */}
+          <path d="M85,95 Q120,88 145,92 Q170,96 200,95 Q230,96 255,92 Q280,88 315,95"
+            fill="none" stroke="hsl(var(--border))" strokeWidth="0.6" strokeDasharray="2 1.5" opacity="0.4" />
+
+          {/* ═══ ANTERIOR CRANIAL FOSSA ═══ */}
+          <path d={`M90,95 Q130,55 200,50 Q270,55 310,95 
+            Q275,108 250,112 Q225,118 200,118 Q175,118 150,112 Q125,108 90,95 Z`}
+            fill={fossaColors.anterior.fill} fillOpacity={isVisible("anterior") ? 0.07 : 0.01}
+            stroke={fossaColors.anterior.fill} strokeWidth="0.6" strokeDasharray="3 2"
+            opacity={isVisible("anterior") ? 0.8 : 0.15} />
+
+          {/* Orbital plates of frontal bone (paired depressions) */}
+          <ellipse cx="165" cy="80" rx="30" ry="15" fill="none" stroke={fossaColors.anterior.fill}
+            strokeWidth="0.4" opacity={isVisible("anterior") ? 0.3 : 0.05} />
+          <ellipse cx="235" cy="80" rx="30" ry="15" fill="none" stroke={fossaColors.anterior.fill}
+            strokeWidth="0.4" opacity={isVisible("anterior") ? 0.3 : 0.05} />
+
+          {/* Crista galli */}
+          <path d="M200,60 L196,72 L204,72 Z" fill={fossaColors.anterior.fill} fillOpacity={isVisible("anterior") ? 0.15 : 0.03}
+            stroke={fossaColors.anterior.fill} strokeWidth="0.5" opacity={isVisible("anterior") ? 0.6 : 0.1} />
+          <text x="200" y="57" textAnchor="middle" fontSize="5" fill={fossaColors.anterior.fill}
+            opacity={isVisible("anterior") ? 0.5 : 0.1}>Crista galli</text>
+
+          {/* Cribriform plate area */}
+          <rect x="185" y="72" width="30" height="14" rx="3" fill="none" stroke={fossaColors.anterior.fill}
+            strokeWidth="0.5" strokeDasharray="1 1" opacity={isVisible("anterior") ? 0.4 : 0.08} />
+          {/* Olfactory grooves */}
+          {[0, 1, 2, 3, 4, 5, 6].map(i => (
+            <circle key={`olf-${i}`} cx={188 + i * 4} cy={79} r="0.8" fill={fossaColors.anterior.fill}
+              fillOpacity={isVisible("anterior") ? 0.2 : 0.03} />
           ))}
-        </div>
 
-        {/* SVG Diagram */}
-        <div className="relative w-full max-w-lg mx-auto">
-          <svg viewBox="0 0 100 95" className="w-full" style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
-            {/* Skull outline — superior view of internal skull base */}
-            <defs>
-              <radialGradient id="skull-bg" cx="50%" cy="45%" r="50%">
-                <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.05" />
-              </radialGradient>
-            </defs>
+          <text x="200" y="40" textAnchor="middle" fontSize="7" fill={fossaColors.anterior.fill}
+            fontWeight="600" opacity={isVisible("anterior") ? 0.5 : 0.1}>ANTERIOR FOSSA</text>
 
-            {/* Outer skull shape */}
-            <ellipse cx="50" cy="47" rx="46" ry="46" fill="url(#skull-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+          {/* ═══ LESSER WING OF SPHENOID (anterior-middle boundary) ═══ */}
+          <path d="M90,95 Q130,110 155,112 Q175,115 200,118 Q225,115 245,112 Q270,110 310,95"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+          <text x="120" y="107" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.3">Lesser wing</text>
 
-            {/* Fossa regions */}
-            {/* Anterior fossa */}
-            <path
-              d="M 15 28 Q 50 5 85 28 Q 75 35 50 33 Q 25 35 15 28 Z"
-              fill={filterFossa === "anterior" || filterFossa === "all" ? "hsl(210,80%,60%)" : "transparent"}
-              fillOpacity={0.08}
-              stroke="hsl(210,80%,60%)"
-              strokeWidth="0.3"
-              strokeDasharray="1.5 1"
-              opacity={filterFossa === "all" || filterFossa === "anterior" ? 1 : 0.2}
-            />
-            <text x="50" y="22" textAnchor="middle" fontSize="2.2" fill="hsl(210,80%,60%)" opacity="0.6" fontWeight="600">ANTERIOR FOSSA</text>
+          {/* ═══ MIDDLE CRANIAL FOSSA ═══ */}
+          {/* Left middle fossa floor */}
+          <path d={`M90,95 Q125,108 155,112 Q170,125 165,155 
+            Q160,190 158,210 Q156,230 168,245 
+            Q180,248 200,248 Q200,118 200,118 
+            Q175,118 155,112 Z`}
+            fill={fossaColors.middle.fill} fillOpacity={isVisible("middle") ? 0.05 : 0.01}
+            stroke={fossaColors.middle.fill} strokeWidth="0.4" strokeDasharray="3 2"
+            opacity={isVisible("middle") ? 0.6 : 0.12} />
+          {/* Right middle fossa floor */}
+          <path d={`M310,95 Q275,108 245,112 Q230,125 235,155 
+            Q240,190 242,210 Q244,230 232,245 
+            Q220,248 200,248 Q200,118 200,118 
+            Q225,118 245,112 Z`}
+            fill={fossaColors.middle.fill} fillOpacity={isVisible("middle") ? 0.05 : 0.01}
+            stroke={fossaColors.middle.fill} strokeWidth="0.4" strokeDasharray="3 2"
+            opacity={isVisible("middle") ? 0.6 : 0.12} />
 
-            {/* Middle fossa */}
-            <path
-              d="M 15 28 Q 25 35 50 33 Q 75 35 85 28 Q 88 45 80 58 Q 60 48 50 48 Q 40 48 20 58 Q 12 45 15 28 Z"
-              fill={filterFossa === "middle" || filterFossa === "all" ? "hsl(40,80%,55%)" : "transparent"}
-              fillOpacity={0.06}
-              stroke="hsl(40,80%,55%)"
-              strokeWidth="0.3"
-              strokeDasharray="1.5 1"
-              opacity={filterFossa === "all" || filterFossa === "middle" ? 1 : 0.2}
-            />
-            <text x="28" y="42" textAnchor="middle" fontSize="2" fill="hsl(40,80%,55%)" opacity="0.5" fontWeight="600">MIDDLE</text>
-            <text x="72" y="42" textAnchor="middle" fontSize="2" fill="hsl(40,80%,55%)" opacity="0.5" fontWeight="600">MIDDLE</text>
+          {/* Greater wing of sphenoid texture */}
+          <text x="130" y="170" fontSize="5" fill={fossaColors.middle.fill} opacity={isVisible("middle") ? 0.3 : 0.06}>Greater wing</text>
+          <text x="260" y="170" fontSize="5" fill={fossaColors.middle.fill} opacity={isVisible("middle") ? 0.3 : 0.06}>Greater wing</text>
 
-            {/* Posterior fossa */}
-            <path
-              d="M 20 58 Q 40 48 50 48 Q 60 48 80 58 Q 85 75 75 88 Q 50 95 25 88 Q 15 75 20 58 Z"
-              fill={filterFossa === "posterior" || filterFossa === "all" ? "hsl(155,60%,50%)" : "transparent"}
-              fillOpacity={0.06}
-              stroke="hsl(155,60%,50%)"
-              strokeWidth="0.3"
-              strokeDasharray="1.5 1"
-              opacity={filterFossa === "all" || filterFossa === "posterior" ? 1 : 0.2}
-            />
-            <text x="50" y="90" textAnchor="middle" fontSize="2.2" fill="hsl(155,60%,50%)" opacity="0.5" fontWeight="600">POSTERIOR FOSSA</text>
+          {/* Sella turcica (pituitary fossa) — detailed */}
+          <ellipse cx="200" cy="170" rx="16" ry="10" fill="hsl(var(--card))" stroke="hsl(var(--foreground))"
+            strokeWidth="0.7" opacity="0.3" />
+          <path d="M184,165 Q190,158 200,156 Q210,158 216,165" fill="none" stroke="hsl(var(--foreground))"
+            strokeWidth="0.5" opacity="0.25" />
+          <text x="200" y="173" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5">Sella turcica</text>
+          <text x="200" y="179" textAnchor="middle" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.35">(pituitary fossa)</text>
 
-            {/* Petrous ridges */}
-            <line x1="20" y1="58" x2="50" y2="48" stroke="hsl(var(--border))" strokeWidth="0.4" />
-            <line x1="80" y1="58" x2="50" y2="48" stroke="hsl(var(--border))" strokeWidth="0.4" />
+          {/* Anterior clinoid processes */}
+          <circle cx="178" cy="155" r="3" fill="hsl(var(--muted-foreground))" fillOpacity="0.08"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.3" />
+          <circle cx="222" cy="155" r="3" fill="hsl(var(--muted-foreground))" fillOpacity="0.08"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.3" />
+          <text x="172" y="150" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.3" textAnchor="end">Ant clinoid</text>
 
-            {/* Sella turcica */}
-            <ellipse cx="50" cy="40" rx="5" ry="3" fill="none" stroke="hsl(var(--border))" strokeWidth="0.3" strokeDasharray="1 0.5" />
-            <text x="50" y="41" textAnchor="middle" fontSize="1.6" fill="hsl(var(--muted-foreground))" opacity="0.5">Sella</text>
+          {/* Posterior clinoid processes */}
+          <circle cx="190" cy="182" r="2.5" fill="hsl(var(--muted-foreground))" fillOpacity="0.06"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.25" />
+          <circle cx="210" cy="182" r="2.5" fill="hsl(var(--muted-foreground))" fillOpacity="0.06"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.25" />
 
-            {/* Clivus */}
-            <line x1="47" y1="43" x2="47" y2="55" stroke="hsl(var(--border))" strokeWidth="0.25" opacity="0.4" />
-            <line x1="53" y1="43" x2="53" y2="55" stroke="hsl(var(--border))" strokeWidth="0.25" opacity="0.4" />
+          {/* Dorsum sellae */}
+          <path d="M188,185 Q200,192 212,185" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.2" />
+          <text x="200" y="198" textAnchor="middle" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.3">Dorsum sellae</text>
 
-            {/* Foramen magnum outline */}
-            <ellipse cx="50" cy="74" rx="8" ry="6" fill="none" stroke="hsl(155,60%,50%)" strokeWidth="0.4" opacity="0.5" />
+          {/* Clivus */}
+          <path d="M192,195 Q200,250 200,248" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.6" opacity="0.15" />
+          <path d="M208,195 Q200,250 200,248" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.6" opacity="0.15" />
+          <text x="200" y="215" textAnchor="middle" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.25">Clivus</text>
 
-            {/* Foramen dots and labels */}
-            {visibleForamina.map(f => {
-              const isSelected = selected === f.id;
-              const color = fossaColors[f.fossa].fill;
-              // Skip the duplicate optic canal R for label rendering
-              const showLabel = f.id !== "optic-canal-r";
+          <text x="130" y="145" textAnchor="middle" fontSize="6" fill={fossaColors.middle.fill}
+            fontWeight="600" opacity={isVisible("middle") ? 0.4 : 0.08}>MIDDLE</text>
+          <text x="270" y="145" textAnchor="middle" fontSize="6" fill={fossaColors.middle.fill}
+            fontWeight="600" opacity={isVisible("middle") ? 0.4 : 0.08}>MIDDLE</text>
 
+          {/* ═══ PETROUS RIDGES (middle-posterior boundary) ═══ */}
+          <path d="M168,245 Q185,235 200,248 Q215,235 232,245"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.25" />
+          {/* Extended petrous temporal bone */}
+          <path d="M90,200 Q120,220 155,235 Q165,242 168,245"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+          <path d="M310,200 Q280,220 245,235 Q235,242 232,245"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+          <text x="128" y="232" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.3" transform="rotate(-25,128,232)">Petrous ridge</text>
+
+          {/* ═══ POSTERIOR CRANIAL FOSSA ═══ */}
+          <path d={`M168,245 Q185,235 200,248 Q215,235 232,245 
+            Q250,255 270,270 Q300,300 295,335 Q260,370 200,375 
+            Q140,370 105,335 Q100,300 130,270 Q150,255 168,245 Z`}
+            fill={fossaColors.posterior.fill} fillOpacity={isVisible("posterior") ? 0.05 : 0.01}
+            stroke={fossaColors.posterior.fill} strokeWidth="0.5" strokeDasharray="3 2"
+            opacity={isVisible("posterior") ? 0.6 : 0.12} />
+
+          {/* Internal occipital protuberance */}
+          <circle cx="200" cy="355" r="3" fill="hsl(var(--muted-foreground))" fillOpacity="0.06"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.3" />
+          <text x="200" y="365" textAnchor="middle" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.25">Int occipital protuberance</text>
+
+          {/* Internal occipital crest */}
+          <line x1="200" y1="340" x2="200" y2="355" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.2" />
+
+          {/* Grooves for transverse sinuses */}
+          <path d="M105,335 Q150,345 200,340 Q250,345 295,335"
+            fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.12" />
+          <text x="145" y="348" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.2">Transverse sinus groove</text>
+
+          {/* Grooves for sigmoid sinuses */}
+          <path d="M105,335 Q95,310 100,285" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.1" />
+          <path d="M295,335 Q305,310 300,285" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.1" />
+
+          {/* Foramen magnum — detailed ellipse */}
+          <ellipse cx="200" cy="318" rx="28" ry="20" fill="hsl(var(--card))" fillOpacity="0.5"
+            stroke={fossaColors.posterior.fill} strokeWidth="1" opacity={isVisible("posterior") ? 0.6 : 0.12} />
+
+          {/* Occipital condyles flanking foramen magnum */}
+          <ellipse cx="168" cy="325" rx="10" ry="5" fill="hsl(var(--muted-foreground))" fillOpacity="0.04"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.2" transform="rotate(-15,168,325)" />
+          <ellipse cx="232" cy="325" rx="10" ry="5" fill="hsl(var(--muted-foreground))" fillOpacity="0.04"
+            stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" opacity="0.2" transform="rotate(15,232,325)" />
+          <text x="160" y="338" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.25" textAnchor="middle">Condyle</text>
+          <text x="240" y="338" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.25" textAnchor="middle">Condyle</text>
+
+          <text x="200" y="378" textAnchor="middle" fontSize="7" fill={fossaColors.posterior.fill}
+            fontWeight="600" opacity={isVisible("posterior") ? 0.5 : 0.1}>POSTERIOR FOSSA</text>
+
+          {/* Orientation */}
+          <text x="200" y="14" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))" fontWeight="600" opacity="0.4">ANTERIOR</text>
+          <text x="200" y="396" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))" fontWeight="600" opacity="0.4">POSTERIOR</text>
+          <text x="40" y="200" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3" transform="rotate(-90,40,200)">LEFT</text>
+          <text x="360" y="200" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3" transform="rotate(90,360,200)">RIGHT</text>
+
+          {/* ═══ FORAMEN MARKERS ═══ */}
+          {foramina.map(f => {
+            if (!isVisible(f.fossa)) return null;
+            if (f.id === "optic-canal-r") {
+              // Just draw the dot for the right optic canal
               return (
-                <g key={f.id} onClick={() => f.contents && setSelected(isSelected ? null : f.id)} className={f.contents ? "cursor-pointer" : ""}>
-                  {/* Dot */}
-                  <circle
-                    cx={f.cx}
-                    cy={f.cy}
-                    r={isSelected ? 1.8 : 1.2}
-                    fill={isSelected ? color : "transparent"}
-                    stroke={color}
-                    strokeWidth={isSelected ? 0.5 : 0.35}
-                  />
-                  {isSelected && (
-                    <circle cx={f.cx} cy={f.cy} r="3" fill={color} fillOpacity="0.15" />
-                  )}
-                  {/* Label line + text */}
-                  {showLabel && f.labelAnchor && (
-                    <>
-                      <line
-                        x1={f.cx}
-                        y1={f.cy}
-                        x2={f.labelX}
-                        y2={f.labelY}
-                        stroke={color}
-                        strokeWidth="0.15"
-                        opacity={isSelected ? 0.8 : 0.4}
-                      />
-                      <text
-                        x={f.labelX}
-                        y={f.labelY}
-                        textAnchor={f.labelAnchor}
-                        fontSize={isSelected ? "2" : "1.7"}
-                        fill={isSelected ? color : "hsl(var(--muted-foreground))"}
-                        fontWeight={isSelected ? 700 : 400}
-                        opacity={isSelected ? 1 : 0.7}
-                      >
-                        {f.name}
-                      </text>
-                    </>
-                  )}
-                </g>
+                <ellipse key={f.id} cx={f.cx} cy={f.cy} rx={f.rx || 4} ry={f.ry || 3}
+                  fill={selected === "optic-canal-l" ? fossaColors[f.fossa].fill : "hsl(var(--card))"}
+                  fillOpacity={selected === "optic-canal-l" ? 0.4 : 0.3}
+                  stroke={fossaColors[f.fossa].fill} strokeWidth={selected === "optic-canal-l" ? 1.5 : 0.6}
+                  className="cursor-pointer" onClick={() => setSelected(selected === "optic-canal-l" ? null : "optic-canal-l")} />
               );
-            })}
-          </svg>
-        </div>
+            }
+            const isSel = selected === f.id;
+            const color = fossaColors[f.fossa].fill;
+            return (
+              <g key={f.id} className="cursor-pointer" onClick={() => setSelected(isSel ? null : f.id)}>
+                {/* Foramen shape */}
+                <ellipse cx={f.cx} cy={f.cy} rx={f.rx || 4} ry={f.ry || 3}
+                  fill={isSel ? color : "hsl(var(--card))"} fillOpacity={isSel ? 0.4 : 0.3}
+                  stroke={color} strokeWidth={isSel ? 1.8 : 0.6} />
+                {isSel && (
+                  <ellipse cx={f.cx} cy={f.cy} rx={(f.rx || 4) + 5} ry={(f.ry || 3) + 4}
+                    fill={color} fillOpacity="0.08" stroke={color} strokeWidth="0.5" strokeDasharray="2 2" />
+                )}
+                {/* Leader line */}
+                <line x1={f.cx} y1={f.cy} x2={f.labelX} y2={f.labelY}
+                  stroke={color} strokeWidth="0.3" opacity={isSel ? 0.7 : 0.3} />
+                {/* Label */}
+                <text x={f.labelX} y={f.labelY} textAnchor={f.labelAnchor}
+                  fontSize={isSel ? "6.5" : "5.5"} fill={isSel ? color : "hsl(var(--muted-foreground))"}
+                  fontWeight={isSel ? 700 : 400} opacity={isSel ? 1 : 0.65}>
+                  {f.name}
+                </text>
+              </g>
+            );
+          })}
+        </svg>
 
-        {/* Selected foramen detail */}
-        {selectedForamen && (
-          <div className={`mt-4 p-4 rounded-lg border ${fossaColors[selectedForamen.fossa].border} ${fossaColors[selectedForamen.fossa].bg}`}>
-            <div className="flex items-center gap-2 mb-2">
-              <h3 className="font-semibold text-foreground text-sm">{selectedForamen.name}</h3>
-              <Badge variant="outline" className={`text-xs ${fossaColors[selectedForamen.fossa].text}`}>
-                {fossaLabels[selectedForamen.fossa]}
-              </Badge>
-            </div>
-            <div className="space-y-1 mb-2">
-              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Structures passing through:</p>
+        {/* Detail panel */}
+        <div className="flex-1 min-w-0">
+          {selectedForamen ? (
+            <div className={`p-4 rounded-lg border animate-fade-in ${fossaColors[selectedForamen.fossa].border} ${fossaColors[selectedForamen.fossa].bg}`}>
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
+                <h4 className="font-semibold text-foreground text-sm">{selectedForamen.name}</h4>
+                <Badge variant="outline" className={`text-xs ${fossaColors[selectedForamen.fossa].text}`}>
+                  {fossaLabels[selectedForamen.fossa]}
+                </Badge>
+              </div>
+              <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Structures:</p>
               {selectedForamen.contents.map((c, i) => (
                 <p key={i} className="text-sm text-foreground flex items-start gap-1.5">
-                  <span className="text-muted-foreground mt-0.5">•</span>
-                  {c}
+                  <span className="text-muted-foreground mt-0.5">•</span>{c}
                 </p>
               ))}
+              {selectedForamen.clinicalNote && (
+                <div className="mt-3 pt-2 border-t border-border/50">
+                  <p className="text-xs font-medium text-amber-400 mb-1">⚠ Clinical Relevance</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{selectedForamen.clinicalNote}</p>
+                </div>
+              )}
             </div>
-            {selectedForamen.clinicalNote && (
-              <div className="mt-3 pt-2 border-t border-border/50">
-                <p className="text-xs font-medium text-amber-400 mb-1">⚠ Clinical Relevance</p>
-                <p className="text-sm text-muted-foreground">{selectedForamen.clinicalNote}</p>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Quick reference table */}
-        {!selectedForamen && (
-          <div className="mt-4 overflow-x-auto">
-            <table className="w-full text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-1.5 text-foreground font-semibold">Foramen</th>
-                  <th className="text-left py-1.5 text-foreground font-semibold">Key Contents</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                {uniqueForamina.map(f => (
-                  <tr
-                    key={f.id}
-                    className="border-b border-border/50 cursor-pointer hover:bg-muted/30 transition-colors"
-                    onClick={() => setSelected(f.id)}
-                  >
-                    <td className={`py-1.5 font-medium ${fossaColors[f.fossa].text}`}>{f.name}</td>
-                    <td className="py-1.5">{f.contents.join("; ")}</td>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-1.5 text-foreground font-semibold">Foramen</th>
+                    <th className="text-left py-1.5 text-foreground font-semibold">Key Contents</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  {displayForamina.map(f => (
+                    <tr key={f.id} className="border-b border-border/50 cursor-pointer hover:bg-muted/30 transition-colors"
+                      onClick={() => setSelected(f.id)}>
+                      <td className={`py-1.5 font-medium ${fossaColors[f.fossa].text}`}>{f.name}</td>
+                      <td className="py-1.5">{f.contents.slice(0, 2).join("; ")}{f.contents.length > 2 ? " …" : ""}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 };
 
