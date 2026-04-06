@@ -187,6 +187,7 @@ const App = () => (
           <Route path="/intensive-care/icu-sedation-delirium" element={<IcuSedationDeliriumTopic />} />
           <Route path="/intensive-care/organ-donation" element={<OrganDonationTopic />} />
           <Route path="/intensive-care/antimicrobials-icu" element={<AntimicrobialsIcuTopic />} />
+          <Route path="/intensive-care/paediatric-icu" element={<PaediatricIcuTopic />} />
           {/* Perioperative */}
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
