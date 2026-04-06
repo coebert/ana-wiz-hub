@@ -186,6 +186,10 @@ const App = () => (
           <Route path="/physiology/hepatic-physiology" element={<HepaticPhysiologyTopic />} />
           <Route path="/physiology/starling-forces" element={<StarlingForcesTopic />} />
           <Route path="/physiology/gi-physiology" element={<GastrointestinalPhysiologyTopic />} />
+          <Route path="/physiology/cardiac-electrophysiology" element={<CardiacElectrophysiologyTopic />} />
+          <Route path="/physiology/ventilation-perfusion" element={<VentilationPerfusionTopic />} />
+          <Route path="/physiology/endocrine-physiology" element={<EndocrinePhysiologyTopic />} />
+          <Route path="/physiology/haematology-immunity" element={<HaematologyImmunityTopic />} />
           {/* Pharmacology */}
           <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
           <Route path="/pharmacology/iv-anaesthetics" element={<IVAnaestheticsTopic />} />
@@ -197,6 +201,10 @@ const App = () => (
           <Route path="/pharmacology/antimicrobials-pharm" element={<AntimicrobialsPharmTopic />} />
           <Route path="/pharmacology/antiarrhythmics" element={<AntiarrhythmicsTopic />} />
           <Route path="/pharmacology/anticoagulants" element={<AnticoagulantsTopic />} />
+          <Route path="/pharmacology/pharmacodynamics" element={<PharmacodynamicsTopic />} />
+          <Route path="/pharmacology/nsaids-paracetamol" element={<NSAIDsParacetamolTopic />} />
+          <Route path="/pharmacology/antiemetics" element={<AntiemeticsTopic />} />
+          <Route path="/pharmacology/corticosteroids" element={<CorticosteroidsTopic />} />
           {/* Clinical Anaesthesia */}
           <Route path="/clinical/airway-management" element={<AirwayManagementTopic />} />
           <Route path="/clinical/regional-anaesthesia" element={<RegionalAnaesthesiaTopic />} />
@@ -208,6 +216,10 @@ const App = () => (
           <Route path="/clinical/clinical-incidents" element={<ClinicalIncidentsTopic />} />
           <Route path="/clinical/pain-medicine" element={<PainMedicineTopic />} />
           <Route path="/clinical/tiva" element={<TIVATopic />} />
+          <Route path="/clinical/orthopaedic-anaesthesia" element={<OrthopaedicAnaesthesiaTopic />} />
+          <Route path="/clinical/ophthalmic-anaesthesia" element={<OphthalmicAnaesthesiaTopic />} />
+          <Route path="/clinical/day-surgery" element={<DaySurgeryTopic />} />
+          <Route path="/clinical/transfer-medicine" element={<TransferMedicineTopic />} />
           {/* Intensive Care */}
           <Route path="/intensive-care/sepsis" element={<SepsisTopic />} />
           <Route path="/intensive-care/mechanical-ventilation" element={<MechanicalVentilationTopic />} />
@@ -225,6 +237,8 @@ const App = () => (
           <Route path="/intensive-care/antimicrobials-icu" element={<AntimicrobialsIcuTopic />} />
           <Route path="/intensive-care/paediatric-icu" element={<PaediatricIcuTopic />} />
           <Route path="/intensive-care/haematology-icu" element={<HaematologyIcuTopic />} />
+          <Route path="/intensive-care/ecmo" element={<ECMOTopic />} />
+          <Route path="/intensive-care/toxicology" element={<ToxicologyTopic />} />
           {/* Perioperative */}
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
@@ -238,6 +252,7 @@ const App = () => (
           <Route path="/anatomy/abdominal-anatomy" element={<AbdominalAnatomyTopic />} />
           <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
           <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
+          <Route path="/anatomy/lower-limb-anatomy" element={<LowerLimbAnatomyTopic />} />
           {/* Admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />
