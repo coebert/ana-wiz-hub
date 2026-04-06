@@ -37,14 +37,30 @@ const levels: Record<BlockLevel, { label: string; subtitle: string; description:
   },
 };
 
+// Needle trajectory data for each level
+const needleData: Record<BlockLevel, { entry: [number, number]; target: [number, number]; label: string; spread: [number, number] }> = {
+  interscalene: { entry: [0.92, 0.18], target: [0.5, 0.48], label: "Between C5–C7", spread: [0.5, 0.48] },
+  supraclavicular: { entry: [0.92, 0.3], target: [0.58, 0.65], label: "Corner pocket", spread: [0.58, 0.67] },
+  infraclavicular: { entry: [0.5, 0.02], target: [0.5, 0.65], label: "Posterior cord (6 o'clock)", spread: [0.5, 0.65] },
+  axillary: { entry: [0.05, 0.25], target: [0.52, 0.5], label: "Perivascular", spread: [0.5, 0.5] },
+};
+
 // SVG sonographic appearance for each level
-const SonoView = ({ level, size = 200 }: { level: BlockLevel; size?: number }) => {
+const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel; size?: number; showNeedle?: boolean }) => {
   const s = size;
   const cx = s / 2;
   const cy = s / 2;
+  const nd = needleData[level];
 
   return (
     <svg viewBox={`0 0 ${s} ${s}`} width={s} height={s} className="rounded-lg" style={{ background: "hsl(220, 10%, 8%)" }}>
+      <defs>
+        <style>{`
+          @keyframes needleDraw { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+          @keyframes spreadPulse { 0%, 100% { r: ${s * 0.04}; opacity: 0.15; } 50% { r: ${s * 0.08}; opacity: 0.05; } }
+          @keyframes tipGlow { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.4; } }
+        `}</style>
+      </defs>
       {/* Scan lines for US texture */}
       {Array.from({ length: 20 }).map((_, i) => (
         <line key={i} x1={i * (s / 20)} y1="0" x2={i * (s / 20)} y2={s}
