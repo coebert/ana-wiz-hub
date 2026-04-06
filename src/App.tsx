@@ -118,11 +118,13 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ProgressProvider>
     <ExamFilterProvider>
+    <AuthProvider>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <Header />
+        <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -221,11 +223,16 @@ const App = () => (
           <Route path="/anatomy/abdominal-anatomy" element={<AbdominalAnatomyTopic />} />
           <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
           <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
+          {/* Admin */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </Suspense>
+        </VisitTrackerWrapper>
       </BrowserRouter>
     </TooltipProvider>
+    </AuthProvider>
     </ExamFilterProvider>
     </ProgressProvider>
   </QueryClientProvider>
