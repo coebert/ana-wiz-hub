@@ -114,8 +114,8 @@ const PaediatricIcuTopic = () => {
               ))}
             </div>
           </div>
-          <div className="mt-4 p-4 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
-            <p className="text-sm font-semibold text-yellow-400">⚠ FEAST Trial (2011)</p>
+          <div className="mt-4 p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+            <p className="text-sm font-semibold text-destructive">⚠ FEAST Trial (2011)</p>
             <p className="text-sm text-muted-foreground mt-1">
               In resource-limited settings (sub-Saharan Africa), fluid boluses increased 48-hour mortality in febrile children with impaired perfusion. This does NOT apply to UK PICU practice but is frequently examined. UK guidelines still recommend judicious fluid boluses with reassessment.
             </p>
@@ -301,8 +301,8 @@ const PaediatricIcuTopic = () => {
               </tbody>
             </table>
           </div>
-          <div className="mt-3 p-4 rounded-lg border border-yellow-500/30 bg-yellow-500/5">
-            <p className="text-sm font-semibold text-yellow-400">⚠ Key Difference from Adults</p>
+          <div className="mt-3 p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+            <p className="text-sm font-semibold text-destructive">⚠ Key Difference from Adults</p>
             <p className="text-sm text-muted-foreground mt-1">
               Paediatric cardiac arrest is most commonly caused by <strong>respiratory failure or shock</strong> (not primary cardiac arrhythmia). Initial management should focus on oxygenation and ventilation — 5 rescue breaths before starting compressions.
             </p>
