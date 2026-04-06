@@ -24,19 +24,24 @@ export const ReferencesList = ({ topicId }: ReferencesListProps) => {
         <ol className="space-y-2 list-decimal list-inside pl-5">
           {refs.map((ref, i) => (
             <li key={i} className="text-xs text-muted-foreground leading-relaxed">
-              <span className="font-medium text-foreground">{ref.label}</span>
-              {" — "}
-              {ref.citation}
-              {ref.url && (
+              {ref.url ? (
                 <a
                   href={ref.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-0.5 ml-1 text-primary hover:underline"
+                  className="group/ref hover:underline"
                 >
-                  <ExternalLink className="h-3 w-3" />
-                  <span>Link</span>
+                  <span className="font-medium text-primary">{ref.label}</span>
+                  {" — "}
+                  <span className="text-muted-foreground group-hover/ref:text-primary/80">{ref.citation}</span>
+                  <ExternalLink className="inline h-3 w-3 ml-1 text-primary/60" />
                 </a>
+              ) : (
+                <>
+                  <span className="font-medium text-foreground">{ref.label}</span>
+                  {" — "}
+                  {ref.citation}
+                </>
               )}
             </li>
           ))}
