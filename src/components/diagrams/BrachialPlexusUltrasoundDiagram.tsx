@@ -322,6 +322,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
 
 const BrachialPlexusUltrasoundDiagram = () => {
   const [selected, setSelected] = useState<BlockLevel>("interscalene");
+  const [showNeedle, setShowNeedle] = useState(false);
   const info = levels[selected];
 
   return (
