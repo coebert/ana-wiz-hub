@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { brachialPlexusQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const BrachialPlexusTopic = () => {
   return (
@@ -88,6 +89,8 @@ const BrachialPlexusTopic = () => {
       ]} />
 
       <QuizSection questions={brachialPlexusQuestions} />
+      <ReferencesList topicId="brachial-plexus" />
+
       <TopicCompletionToggle topicId="brachial-plexus" topicTitle="Brachial Plexus" />
     </SectionLayout>
   );

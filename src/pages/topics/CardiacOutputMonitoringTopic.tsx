@@ -7,6 +7,7 @@ import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
 import EchoDiagram from "@/components/diagrams/EchoDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const CardiacOutputMonitoringTopic = () => {
   return (
@@ -83,6 +84,8 @@ const CardiacOutputMonitoringTopic = () => {
       ]} />
 
       <QuizSection questions={cardiacOutputMonitoringQuestions} />
+      <ReferencesList topicId="cardiac-output-monitoring" />
+
       <TopicCompletionToggle topicId="cardiac-output-monitoring" topicTitle="Cardiac Output Monitoring" />
     </SectionLayout>
   );

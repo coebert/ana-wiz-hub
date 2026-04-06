@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { statisticsEBMQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const StatisticsEBMTopic = () => {
   return (
@@ -249,6 +250,8 @@ const StatisticsEBMTopic = () => {
         </div>
 
         <QuizSection questions={statisticsEBMQuiz} />
+      <ReferencesList topicId="statistics-ebm" />
+
         <TopicCompletionToggle topicId="statistics-ebm" topicTitle="Statistics & Evidence-Based Medicine" />
       </div>
     </SectionLayout>

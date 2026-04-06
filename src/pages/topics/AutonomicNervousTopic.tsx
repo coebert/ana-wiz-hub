@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AutonomicNervousTopic = () => {
   return (
@@ -99,6 +100,8 @@ const AutonomicNervousTopic = () => {
         "Baroreceptor reflex: carotid sinus (IX) + aortic arch (X) → NTS → sympathetic/parasympathetic balance."
       ]} />
       <QuizSection questions={autonomicNervousQuiz} />
+      <ReferencesList topicId="autonomic-nervous" />
+
       <TopicCompletionToggle topicId="autonomic-nervous" topicTitle="Autonomic Nervous System" />
     </SectionLayout>
   );

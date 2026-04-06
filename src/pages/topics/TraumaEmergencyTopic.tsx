@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { traumaEmergencyQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const TraumaEmergencyTopic = () => {
   return (
@@ -71,6 +72,8 @@ const TraumaEmergencyTopic = () => {
       ]} />
 
       <QuizSection questions={traumaEmergencyQuestions} />
+      <ReferencesList topicId="trauma-emergency" />
+
       <TopicCompletionToggle topicId="trauma-emergency" topicTitle="Trauma &amp; Emergency Anaesthesia" />
     </SectionLayout>
   );

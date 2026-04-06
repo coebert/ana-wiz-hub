@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const HeadNeckAnatomyTopic = () => {
   return (
@@ -81,6 +82,8 @@ const HeadNeckAnatomyTopic = () => {
       ]} />
 
       <QuizSection questions={headNeckAnatomyQuestions} />
+      <ReferencesList topicId="head-neck-anatomy" />
+
       <TopicCompletionToggle topicId="head-neck-anatomy" topicTitle="Head & Neck Anatomy" />
     </SectionLayout>
   );

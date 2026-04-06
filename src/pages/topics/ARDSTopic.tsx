@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ARDSTopic = () => {
   return (
@@ -447,6 +448,8 @@ const ARDSTopic = () => {
       ]} />
 
       <QuizSection questions={ardsQuestions} />
+      <ReferencesList topicId="ards" />
+
       <TopicCompletionToggle topicId="ards" topicTitle="ARDS &amp; Lung Injury" />
     </SectionLayout>
   );

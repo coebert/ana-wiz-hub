@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const DefibrillationPacingTopic = () => {
   return (
@@ -133,6 +134,8 @@ const DefibrillationPacingTopic = () => {
         </div>
 
         <QuizSection questions={defibrillationPacingQuiz} />
+
+      <ReferencesList topicId="defibrillation-pacing" />
 
         <TopicCompletionToggle topicId="defibrillation-pacing" topicTitle="Defibrillation & Pacing" />
       </div>

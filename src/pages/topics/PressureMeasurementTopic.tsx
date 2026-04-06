@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PressureMeasurementTopic = () => {
   return (
@@ -111,6 +112,8 @@ const PressureMeasurementTopic = () => {
         "NIBP oscillometric method: maximum oscillation amplitude = MAP; systolic and diastolic are derived algorithmically."
       ]} />
       <QuizSection questions={pressureMeasurementQuiz} />
+      <ReferencesList topicId="pressure-measurement" />
+
       <TopicCompletionToggle topicId="pressure-measurement" topicTitle="Pressure Measurement" />
     </SectionLayout>
   );

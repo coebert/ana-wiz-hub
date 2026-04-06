@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PreoperativeAssessmentTopic = () => {
   return (
@@ -93,6 +94,8 @@ const PreoperativeAssessmentTopic = () => {
       ]} />
 
       <QuizSection questions={preoperativeAssessmentQuestions} />
+      <ReferencesList topicId="preoperative-assessment" />
+
       <TopicCompletionToggle topicId="preoperative-assessment" topicTitle="Preoperative Assessment" />
     </SectionLayout>
   );

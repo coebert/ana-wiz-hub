@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { antimicrobialsQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -227,6 +228,8 @@ const AntimicrobialsTopic = () => {
       ]} />
 
       <QuizSection questions={antimicrobialsQuiz} />
+      <ReferencesList topicId="antimicrobials-pharm" />
+
       <TopicCompletionToggle topicId="antimicrobials-pharm" topicTitle="Antimicrobials" />
     </SectionLayout>
   );

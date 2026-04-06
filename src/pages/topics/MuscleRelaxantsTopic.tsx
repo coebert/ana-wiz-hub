@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const MuscleRelaxantsTopic = () => {
   return (
@@ -147,6 +148,8 @@ const MuscleRelaxantsTopic = () => {
         </div>
 
         <QuizSection questions={muscleRelaxantsQuiz} />
+      <ReferencesList topicId="muscle-relaxants" />
+
       <TopicCompletionToggle topicId="muscle-relaxants" topicTitle="Neuromuscular Blocking Agents" />
     </SectionLayout>
   );

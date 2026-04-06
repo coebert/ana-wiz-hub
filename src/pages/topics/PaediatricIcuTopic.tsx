@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PaediatricIcuTopic = () => {
   return (
@@ -320,6 +321,8 @@ const PaediatricIcuTopic = () => {
           "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice"
         ]} />
       </section>
+
+      <ReferencesList topicId="paediatric-icu" />
 
       <TopicCompletionToggle topicId="paediatric-icu" topicTitle="Paediatric Intensive Care" />
     </SectionLayout>

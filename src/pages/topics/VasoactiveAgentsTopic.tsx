@@ -6,6 +6,7 @@ import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const VasoactiveAgentsTopic = () => {
   return (
@@ -512,6 +513,8 @@ const VasoactiveAgentsTopic = () => {
             "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
           ]}
         />
+
+      <ReferencesList topicId="vasoactive-agents" />
 
         <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive & Inotropic Agents" />
 

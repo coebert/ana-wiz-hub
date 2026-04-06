@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const TransfusionCoagulationTopic = () => {
   return (
@@ -94,6 +95,8 @@ const TransfusionCoagulationTopic = () => {
       ]} />
 
       <QuizSection questions={transfusionCoagulationQuestions} />
+      <ReferencesList topicId="transfusion-coagulation" />
+
       <TopicCompletionToggle topicId="transfusion-coagulation" topicTitle="Transfusion & Coagulation" />
     </SectionLayout>
   );

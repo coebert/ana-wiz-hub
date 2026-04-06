@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { opioidsQuiz } from "@/data/quizzes";
 import OpioidStructures from "@/components/diagrams/OpioidStructures";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const OpioidsTopic = () => {
   return (
@@ -153,6 +154,8 @@ const OpioidsTopic = () => {
         </div>
 
         <QuizSection questions={opioidsQuiz} />
+      <ReferencesList topicId="opioids" />
+
       <TopicCompletionToggle topicId="opioids" topicTitle="Opioid Pharmacology" />
     </SectionLayout>
   );

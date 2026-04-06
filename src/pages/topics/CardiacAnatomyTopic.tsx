@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const CardiacAnatomyTopic = () => {
   return (
@@ -89,6 +90,8 @@ const CardiacAnatomyTopic = () => {
       ]} />
 
       <QuizSection questions={cardiacAnatomyQuestions} />
+      <ReferencesList topicId="cardiac-anatomy" />
+
       <TopicCompletionToggle topicId="cardiac-anatomy" topicTitle="Cardiac & Great Vessel Anatomy" />
     </SectionLayout>
   );

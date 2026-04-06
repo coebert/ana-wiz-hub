@@ -6,6 +6,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { tivaQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 type PKModel = "marsh" | "schnider" | "minto" | "eleveld" | "kataria" | "paedfusor";
 
@@ -327,6 +328,8 @@ const TIVATopic = () => {
       ]} />
 
       <QuizSection questions={tivaQuestions} />
+      <ReferencesList topicId="tiva" />
+
       <TopicCompletionToggle topicId="tiva" topicTitle="Total Intravenous Anaesthesia (TIVA)" />
     </SectionLayout>
   );

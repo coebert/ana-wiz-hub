@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const VolatileAgentsTopic = () => {
   return (
@@ -222,6 +223,8 @@ const VolatileAgentsTopic = () => {
         </div>
 
       <QuizSection questions={volatileAgentsQuiz} />
+      <ReferencesList topicId="volatile-agents" />
+
       <TopicCompletionToggle topicId="volatile-agents" topicTitle="Volatile Anaesthetic Agents" />
     </SectionLayout>
   );

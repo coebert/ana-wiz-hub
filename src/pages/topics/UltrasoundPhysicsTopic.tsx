@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const UltrasoundPhysicsTopic = () => {
   return (
@@ -130,6 +131,8 @@ const UltrasoundPhysicsTopic = () => {
         </div>
 
         <QuizSection questions={ultrasoundPhysicsQuiz} />
+
+      <ReferencesList topicId="ultrasound-physics" />
 
         <TopicCompletionToggle topicId="ultrasound-physics" topicTitle="Ultrasound Physics" />
       </div>

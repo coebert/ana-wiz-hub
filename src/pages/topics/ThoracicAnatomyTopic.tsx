@@ -6,6 +6,7 @@ import { thoracicAnatomyQuestions } from "@/data/quizzes";
 import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ThoracicAnatomyTopic = () => {
   return (
@@ -133,6 +134,8 @@ const ThoracicAnatomyTopic = () => {
       ]} />
 
       <QuizSection questions={thoracicAnatomyQuestions} />
+      <ReferencesList topicId="thoracic-anatomy" />
+
       <TopicCompletionToggle topicId="thoracic-anatomy" topicTitle="Thoracic Anatomy" />
     </SectionLayout>
   );

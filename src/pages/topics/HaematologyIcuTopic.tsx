@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const HaematologyIcuTopic = () => {
   return (
@@ -294,6 +295,8 @@ const HaematologyIcuTopic = () => {
           "Falling ferritin is the best bedside marker of treatment response in HLH"
         ]} />
       </section>
+
+      <ReferencesList topicId="haematology-icu" />
 
       <TopicCompletionToggle topicId="haematology-icu" topicTitle="Haematological & Immunological Disorders" />
     </SectionLayout>

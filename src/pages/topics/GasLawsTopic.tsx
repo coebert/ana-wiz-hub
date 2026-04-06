@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { gasLawsQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const GasLawsTopic = () => {
   return (
@@ -124,6 +125,8 @@ const GasLawsTopic = () => {
         "Understanding gas behaviour is critical for safe use of medical gas systems, ventilation, and altitude/diving physiology."
       ]} />
       <QuizSection questions={gasLawsQuiz} />
+      <ReferencesList topicId="gas-laws" />
+
       <TopicCompletionToggle topicId="gas-laws" topicTitle="Gas Laws" />
     </SectionLayout>
   );

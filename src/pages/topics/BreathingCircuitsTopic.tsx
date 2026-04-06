@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { breathingCircuitsQuiz } from "@/data/quizzes";
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const BreathingCircuitsTopic = () => {
   return (
@@ -121,6 +122,8 @@ const BreathingCircuitsTopic = () => {
         </div>
 
         <QuizSection questions={breathingCircuitsQuiz} />
+
+      <ReferencesList topicId="breathing-circuits" />
 
         <TopicCompletionToggle topicId="breathing-circuits" topicTitle="Breathing Circuits & Scavenging" />
       </div>

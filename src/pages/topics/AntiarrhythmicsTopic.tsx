@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -184,6 +185,8 @@ const AntiarrhythmicsTopic = () => {
             "Magnesium is first-line for torsades de pointes — stabilises membrane and suppresses early afterdepolarisations",
           ]}
         />
+
+      <ReferencesList topicId="antiarrhythmics" />
 
         <TopicCompletionToggle topicId="antiarrhythmics" topicTitle="Antiarrhythmic Drugs" />
 
