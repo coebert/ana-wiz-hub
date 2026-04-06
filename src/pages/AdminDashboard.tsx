@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { allTopics } from "@/data/curriculum";
 import { Button } from "@/components/ui/button";
-import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw } from "lucide-react";
+import { LogOut, Users, CalendarDays, TrendingUp, RefreshCw, BookOpen, BarChart3 } from "lucide-react";
+
+interface TopicStat {
+  id: string;
+  title: string;
+  section: string;
+  views: number;
+  uniqueVisitors: number;
+}
 
 interface Analytics {
   totalUniqueUsers: number;
@@ -11,13 +20,36 @@ interface Analytics {
   totalVisits: number;
   todayVisits: number;
   last7Days: { date: string; count: number }[];
+  topTopics: TopicStat[];
+  sectionBreakdown: { section: string; views: number }[];
 }
+
+const sectionLabels: Record<string, string> = {
+  physics: "Physics",
+  physiology: "Physiology",
+  pharmacology: "Pharmacology",
+  anatomy: "Anatomy",
+  clinical: "Clinical",
+  "intensive-care": "Intensive Care",
+  perioperative: "Perioperative",
+};
+
+const sectionColors: Record<string, string> = {
+  physics: "bg-blue-500",
+  physiology: "bg-rose-500",
+  pharmacology: "bg-emerald-500",
+  anatomy: "bg-amber-500",
+  clinical: "bg-violet-500",
+  "intensive-care": "bg-cyan-500",
+  perioperative: "bg-pink-500",
+};
 
 const AdminDashboard = () => {
   const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const navigate = useNavigate();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<"overview" | "topics">("overview");
 
   useEffect(() => {
     if (!authLoading && (!user || !isAdmin)) {
@@ -29,28 +61,23 @@ const AdminDashboard = () => {
     setLoading(true);
     const now = new Date();
     const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
-    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-    // Total unique visitors
-    const { data: allVisits } = await supabase.from("app_visits").select("visitor_id, visited_at");
+    const { data: allVisits } = await supabase.from("app_visits").select("visitor_id, visited_at, page_path");
     const uniqueVisitors = new Set(allVisits?.map(v => v.visitor_id) || []);
 
-    // Today's unique visitors
     const { data: todayData } = await supabase
       .from("app_visits")
       .select("visitor_id")
       .gte("visited_at", todayStart);
     const todayUnique = new Set(todayData?.map(v => v.visitor_id) || []);
 
-    // Last 7 days breakdown
+    // Last 7 days
     const last7Days: { date: string; count: number }[] = [];
     for (let i = 6; i >= 0; i--) {
       const d = new Date(now.getTime() - i * 24 * 60 * 60 * 1000);
       const dayStart = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
       const dayEnd = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
-      const dayVisits = allVisits?.filter(
-        v => v.visited_at >= dayStart && v.visited_at < dayEnd
-      ) || [];
+      const dayVisits = allVisits?.filter(v => v.visited_at >= dayStart && v.visited_at < dayEnd) || [];
       const dayUnique = new Set(dayVisits.map(v => v.visitor_id));
       last7Days.push({
         date: d.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" }),
@@ -58,12 +85,56 @@ const AdminDashboard = () => {
       });
     }
 
+    // Topic-level analytics
+    const topicVisitMap = new Map<string, { views: number; visitors: Set<string> }>();
+    const sectionViewMap = new Map<string, number>();
+
+    allVisits?.forEach(v => {
+      if (!v.page_path) return;
+      // Match topic paths like /physiology/cardiac-cycle
+      const segments = v.page_path.split("/").filter(Boolean);
+      if (segments.length === 2) {
+        const [section, topicId] = segments;
+        const topic = allTopics.find(t => t.id === topicId && t.section === section);
+        if (topic) {
+          if (!topicVisitMap.has(topicId)) {
+            topicVisitMap.set(topicId, { views: 0, visitors: new Set() });
+          }
+          const entry = topicVisitMap.get(topicId)!;
+          entry.views++;
+          entry.visitors.add(v.visitor_id);
+
+          sectionViewMap.set(section, (sectionViewMap.get(section) || 0) + 1);
+        }
+      }
+    });
+
+    const topTopics: TopicStat[] = allTopics
+      .map(t => {
+        const data = topicVisitMap.get(t.id);
+        return {
+          id: t.id,
+          title: t.title,
+          section: t.section,
+          views: data?.views || 0,
+          uniqueVisitors: data?.visitors.size || 0,
+        };
+      })
+      .sort((a, b) => b.views - a.views);
+
+    const sectionBreakdown = Object.entries(sectionLabels).map(([key, label]) => ({
+      section: label,
+      views: sectionViewMap.get(key) || 0,
+    })).sort((a, b) => b.views - a.views);
+
     setAnalytics({
       totalUniqueUsers: uniqueVisitors.size,
       dailyUsers: todayUnique.size,
       totalVisits: allVisits?.length || 0,
       todayVisits: todayData?.length || 0,
       last7Days,
+      topTopics,
+      sectionBreakdown,
     });
     setLoading(false);
   };
@@ -79,6 +150,8 @@ const AdminDashboard = () => {
       </div>
     );
   }
+
+  const maxTopicViews = analytics ? Math.max(...analytics.topTopics.map(t => t.views), 1) : 1;
 
   return (
     <div className="min-h-screen bg-background pt-20 px-4 pb-10">
@@ -99,7 +172,28 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {analytics && (
+        {/* Tab switcher */}
+        <div className="flex gap-1 p-1 rounded-lg bg-secondary/50 w-fit">
+          {[
+            { key: "overview" as const, label: "Overview", icon: BarChart3 },
+            { key: "topics" as const, label: "Topic Analytics", icon: BookOpen },
+          ].map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                activeTab === tab.key
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <tab.icon className="w-4 h-4" />
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {analytics && activeTab === "overview" && (
           <>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
@@ -137,6 +231,90 @@ const AdminDashboard = () => {
                 })}
               </div>
             </div>
+
+            {/* Section breakdown */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-3">Views by Section</h2>
+              <div className="space-y-2">
+                {analytics.sectionBreakdown.map(s => {
+                  const max = Math.max(...analytics.sectionBreakdown.map(x => x.views), 1);
+                  const pct = (s.views / max) * 100;
+                  const colorKey = Object.entries(sectionLabels).find(([, v]) => v === s.section)?.[0] || "physics";
+                  return (
+                    <div key={s.section} className="flex items-center gap-3">
+                      <span className="text-xs text-muted-foreground w-28 shrink-0">{s.section}</span>
+                      <div className="flex-1 h-5 rounded bg-secondary/50 overflow-hidden">
+                        <div
+                          className={`h-full rounded ${sectionColors[colorKey] || "bg-primary"} transition-all duration-300`}
+                          style={{ width: `${Math.max(pct, 2)}%` }}
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-foreground w-10 text-right">{s.views}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
+
+        {analytics && activeTab === "topics" && (
+          <>
+            {/* Top 20 most visited topics */}
+            <div className="p-4 rounded-xl border border-border bg-card">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Most Visited Topics</h2>
+              <p className="text-xs text-muted-foreground mb-4">Ranked by total page views across all users</p>
+              <div className="space-y-2">
+                {analytics.topTopics.slice(0, 20).map((t, i) => (
+                  <div key={t.id} className="flex items-center gap-3">
+                    <span className="text-xs text-muted-foreground w-5 text-right shrink-0">{i + 1}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-foreground truncate">{t.title}</span>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full shrink-0 ${sectionColors[t.section] || "bg-primary"} text-white`}>
+                          {sectionLabels[t.section] || t.section}
+                        </span>
+                      </div>
+                      <div className="mt-1 h-2 rounded bg-secondary/50 overflow-hidden">
+                        <div
+                          className="h-full rounded bg-primary/60 transition-all duration-300"
+                          style={{ width: `${Math.max((t.views / maxTopicViews) * 100, 1)}%` }}
+                        />
+                      </div>
+                    </div>
+                    <div className="text-right shrink-0 w-20">
+                      <p className="text-sm font-bold text-foreground">{t.views}</p>
+                      <p className="text-[10px] text-muted-foreground">{t.uniqueVisitors} user{t.uniqueVisitors !== 1 ? "s" : ""}</p>
+                    </div>
+                  </div>
+                ))}
+                {analytics.topTopics.every(t => t.views === 0) && (
+                  <p className="text-sm text-muted-foreground text-center py-4">No topic visits recorded yet. Data will appear as users browse topics.</p>
+                )}
+              </div>
+            </div>
+
+            {/* Topics with zero views */}
+            {analytics.topTopics.filter(t => t.views === 0).length > 0 && (
+              <div className="p-4 rounded-xl border border-border bg-card">
+                <h2 className="text-sm font-semibold text-foreground mb-1">Unvisited Topics</h2>
+                <p className="text-xs text-muted-foreground mb-3">
+                  {analytics.topTopics.filter(t => t.views === 0).length} topics with no views yet
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {analytics.topTopics
+                    .filter(t => t.views === 0)
+                    .map(t => (
+                      <span
+                        key={t.id}
+                        className="text-xs px-2 py-1 rounded-full border border-border text-muted-foreground"
+                      >
+                        {t.title}
+                      </span>
+                    ))}
+                </div>
+              </div>
+            )}
           </>
         )}
       </div>
