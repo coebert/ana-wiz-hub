@@ -281,11 +281,11 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-medium text-foreground">CODA (2019)</td>
-                  <td className="py-2">EEG-guided anaesthesia (targeting BIS >45) in elderly patients (>60 yr) did not significantly reduce postoperative delirium vs usual care. Challenged the hypothesis that depth monitoring prevents delirium.</td>
+                  <td className="py-2">EEG-guided anaesthesia (targeting BIS &gt;45) in elderly patients (&gt;60 yr) did not significantly reduce postoperative delirium vs usual care. Challenged the hypothesis that depth monitoring prevents delirium.</td>
                 </tr>
                 <tr>
                   <td className="py-2 font-medium text-foreground">ENGAGES (2019)</td>
-                  <td className="py-2">BIS-guided care vs usual care in elderly: no reduction in postoperative delirium. However, cumulative time at low BIS (<40) was independently associated with delirium.</td>
+                  <td className="py-2">BIS-guided care vs usual care in elderly: no reduction in postoperative delirium. However, cumulative time at low BIS (&lt;40) was independently associated with delirium.</td>
                 </tr>
               </tbody>
             </table>
