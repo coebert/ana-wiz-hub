@@ -110,6 +110,9 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
         {/* Interactive EEG Trace Diagram */}
         <EEGTraceDiagram />
 
+        {/* DSA Spectrogram Diagram */}
+        <DSASpectrogramDiagram />
+
         {/* EEG Fundamentals */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">EEG Fundamentals for Anaesthetists</h2>
