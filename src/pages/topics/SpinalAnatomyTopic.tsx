@@ -4,12 +4,14 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
+import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 
 const SpinalAnatomyTopic = () => {
   return (
     <SectionLayout title="Vertebral Column & Spinal Cord" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
       <SpinalCordCrossSectionDiagram />
+      <SpinalCordAxialDiagram />
       <DermatomeMyotomeDiagram />
       <section className="space-y-6 mb-10">
         <div>
