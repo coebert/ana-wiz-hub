@@ -164,6 +164,7 @@ const App = () => (
           <Route path="/physiology/foetal-circulation" element={<FoetalCirculationTopic />} />
           <Route path="/physiology/hepatic-physiology" element={<HepaticPhysiologyTopic />} />
           <Route path="/physiology/starling-forces" element={<StarlingForcesTopic />} />
+          <Route path="/physiology/gi-physiology" element={<GastrointestinalPhysiologyTopic />} />
           {/* Pharmacology */}
           <Route path="/pharmacology/pharmacokinetics" element={<PharmacokineticsTopic />} />
           <Route path="/pharmacology/iv-anaesthetics" element={<IVAnaestheticsTopic />} />
