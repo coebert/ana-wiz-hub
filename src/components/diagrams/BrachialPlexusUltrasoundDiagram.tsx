@@ -37,14 +37,30 @@ const levels: Record<BlockLevel, { label: string; subtitle: string; description:
   },
 };
 
+// Needle trajectory data for each level
+const needleData: Record<BlockLevel, { entry: [number, number]; target: [number, number]; label: string; spread: [number, number] }> = {
+  interscalene: { entry: [0.92, 0.18], target: [0.5, 0.48], label: "Between C5–C7", spread: [0.5, 0.48] },
+  supraclavicular: { entry: [0.92, 0.3], target: [0.58, 0.65], label: "Corner pocket", spread: [0.58, 0.67] },
+  infraclavicular: { entry: [0.5, 0.02], target: [0.5, 0.65], label: "Posterior cord (6 o'clock)", spread: [0.5, 0.65] },
+  axillary: { entry: [0.05, 0.25], target: [0.52, 0.5], label: "Perivascular", spread: [0.5, 0.5] },
+};
+
 // SVG sonographic appearance for each level
-const SonoView = ({ level, size = 200 }: { level: BlockLevel; size?: number }) => {
+const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel; size?: number; showNeedle?: boolean }) => {
   const s = size;
   const cx = s / 2;
   const cy = s / 2;
+  const nd = needleData[level];
 
   return (
     <svg viewBox={`0 0 ${s} ${s}`} width={s} height={s} className="rounded-lg" style={{ background: "hsl(220, 10%, 8%)" }}>
+      <defs>
+        <style>{`
+          @keyframes needleDraw { from { stroke-dashoffset: 300; } to { stroke-dashoffset: 0; } }
+          @keyframes spreadPulse { 0%, 100% { r: ${s * 0.04}; opacity: 0.15; } 50% { r: ${s * 0.08}; opacity: 0.05; } }
+          @keyframes tipGlow { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.4; } }
+        `}</style>
+      </defs>
       {/* Scan lines for US texture */}
       {Array.from({ length: 20 }).map((_, i) => (
         <line key={i} x1={i * (s / 20)} y1="0" x2={i * (s / 20)} y2={s}
@@ -232,12 +248,81 @@ const SonoView = ({ level, size = 200 }: { level: BlockLevel; size?: number }) =
           <text x={cx} y={s * 0.94} textAnchor="middle" fontSize="7" fill="hsl(180,50%,65%)" fontWeight="bold">"Axillary Cross-Section"</text>
         </>
       )}
+
+      {/* Needle trajectory overlay */}
+      {showNeedle && (
+        <g>
+          {/* LA spread at target */}
+          <circle
+            cx={s * nd.spread[0]} cy={s * nd.spread[1]}
+            r={s * 0.04}
+            fill="hsl(140, 70%, 50%)" opacity="0.12"
+            style={{ animation: "spreadPulse 2s ease-in-out infinite" }}
+          />
+          <circle
+            cx={s * nd.spread[0]} cy={s * nd.spread[1]}
+            r={s * 0.06}
+            fill="none" stroke="hsl(140, 70%, 50%)" strokeWidth="0.5" opacity="0.15"
+            style={{ animation: "spreadPulse 2s ease-in-out infinite 0.3s" }}
+          />
+
+          {/* Needle shaft */}
+          <line
+            x1={s * nd.entry[0]} y1={s * nd.entry[1]}
+            x2={s * nd.target[0]} y2={s * nd.target[1]}
+            stroke="hsl(0, 0%, 85%)" strokeWidth="1.8"
+            strokeDasharray="300"
+            style={{ animation: "needleDraw 1s ease-out forwards" }}
+          />
+          {/* Needle highlight (echogenic) */}
+          <line
+            x1={s * nd.entry[0]} y1={s * nd.entry[1]}
+            x2={s * nd.target[0]} y2={s * nd.target[1]}
+            stroke="hsl(0, 0%, 100%)" strokeWidth="0.6" opacity="0.4"
+            strokeDasharray="2 3"
+            style={{ animation: "needleDraw 1s ease-out forwards" }}
+          />
+
+          {/* Needle tip */}
+          <circle
+            cx={s * nd.target[0]} cy={s * nd.target[1]}
+            r={2.5}
+            fill="hsl(50, 90%, 60%)"
+            style={{ animation: "tipGlow 1.5s ease-in-out infinite" }}
+          />
+
+          {/* Target label */}
+          <rect
+            x={s * nd.target[0] - 35} y={s * nd.target[1] + 6}
+            width="70" height="12" rx="2"
+            fill="hsl(0,0%,0%)" fillOpacity="0.7"
+          />
+          <text
+            x={s * nd.target[0]} y={s * nd.target[1] + 14.5}
+            textAnchor="middle" fontSize="5"
+            fill="hsl(50, 90%, 65%)" fontWeight="bold"
+          >
+            {nd.label}
+          </text>
+
+          {/* Entry direction label */}
+          <text
+            x={s * nd.entry[0] + (nd.entry[0] > 0.5 ? -4 : 4)}
+            y={s * nd.entry[1] - 4}
+            textAnchor={nd.entry[0] > 0.5 ? "end" : "start"}
+            fontSize="4.5" fill="hsl(0,0%,70%)" opacity="0.7"
+          >
+            In-plane
+          </text>
+        </g>
+      )}
     </svg>
   );
 };
 
 const BrachialPlexusUltrasoundDiagram = () => {
   const [selected, setSelected] = useState<BlockLevel>("interscalene");
+  const [showNeedle, setShowNeedle] = useState(false);
   const info = levels[selected];
 
   return (
@@ -256,11 +341,20 @@ const BrachialPlexusUltrasoundDiagram = () => {
             {levels[l].label}
           </button>
         ))}
+        <button
+          onClick={() => setShowNeedle(!showNeedle)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+            showNeedle
+              ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40"
+              : "border-border text-muted-foreground hover:text-foreground"
+          }`}>
+          🎯 {showNeedle ? "Hide" : "Show"} Needle
+        </button>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={selected}>
+      <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
         <div className="flex-shrink-0 mx-auto">
-          <SonoView level={selected} size={220} />
+          <SonoView level={selected} size={220} showNeedle={showNeedle} />
         </div>
 
         <div className="flex-1 min-w-0 space-y-3">
