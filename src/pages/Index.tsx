@@ -99,14 +99,12 @@ const Index = () => {
           style={{ background: "var(--gradient-hero)" }}
         />
         <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
-          <div className="flex justify-center mb-5">
-            <div className="rounded-2xl bg-primary-foreground/20 p-4">
-              <img src={brainLogo} alt="AnaesthesiaCore" className="h-10 w-10 invert brightness-200" />
-            </div>
+          <div className="relative flex flex-col items-center justify-center mb-4">
+            <img src={brainLogo} alt="" className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none" />
+            <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
+              AnaesthesiaCore
+            </h1>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground mb-4">
-            AnaesthesiaCore
-          </h1>
           <p className="text-lg md:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-6">
             Master the science and clinical practice of anaesthesia and intensive care. Mapped to the FRCA and FFICM curricula.
           </p>
