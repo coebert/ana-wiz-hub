@@ -97,6 +97,177 @@ const RegionalAnaesthesiaTopic = () => {
             ))}
           </div>
         </div>
+        {/* Block Height Assessment */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Block Height Assessment Guide</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Systematic assessment of sensory block height is essential after neuraxial blockade to confirm adequacy for surgery, detect excessive spread, and monitor regression. Cold spray (ethyl chloride) is the standard bedside tool — it tests <strong>loss of cold sensation</strong>, which corresponds to <strong>C-fibre and Aδ-fibre blockade</strong> (small myelinated/unmyelinated fibres blocked earliest by local anaesthetics).
+          </p>
+
+          <div className="rounded-xl border border-border bg-card p-5 mb-4">
+            <h3 className="font-semibold text-foreground mb-3">How to Test with Cold Spray</h3>
+            <div className="space-y-3">
+              {[
+                { step: "1", action: "Establish a reference", detail: "Spray ethyl chloride on the patient's forearm or forehead — an unblocked area. Ask \"Does this feel cold?\" This calibrates their perception." },
+                { step: "2", action: "Test systematically", detail: "Start from a blocked dermatome (e.g. abdomen) and move cranially until the patient reports cold sensation returning. Then test bilaterally to confirm symmetry." },
+                { step: "3", action: "Document the level", detail: "Record the highest dermatome with loss of cold sensation bilaterally. Use anatomical landmarks (see table below)." },
+                { step: "4", action: "Interpret differential block", detail: "Sympathetic block extends ~2 dermatomes above sensory level. Motor block is ~2 dermatomes below sensory level. Cold/pinprick (Aδ) > touch (Aβ) > motor (Aα)." },
+              ].map((s) => (
+                <div key={s.step} className="flex gap-3">
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary">{s.step}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{s.action}</p>
+                    <p className="text-sm text-muted-foreground">{s.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="overflow-x-auto mb-4">
+            <h3 className="font-semibold text-foreground mb-3">Dermatome Landmarks for Block Height</h3>
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Level</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Landmark</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Target Surgery</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">T4</td><td className="py-2">Nipple line</td><td className="py-2">Caesarean section (minimum level)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">T6</td><td className="py-2">Xiphisternum</td><td className="py-2">Upper abdominal surgery</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">T8</td><td className="py-2">Lower costal margin</td><td className="py-2">Appendicectomy, cholecystectomy</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">T10</td><td className="py-2">Umbilicus</td><td className="py-2">Hernia repair, lower abdominal</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">T12</td><td className="py-2">Pubic symphysis / inguinal ligament</td><td className="py-2">Hip surgery</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">L1</td><td className="py-2">Inguinal crease</td><td className="py-2">Femoral surgery</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">S1–S5</td><td className="py-2">Perineum / saddle area</td><td className="py-2">Perineal / urological procedures</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 mb-4">
+            <p className="text-sm font-semibold text-destructive">⚠ High Block Warning Signs</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Block above T4: cardioaccelerator fibres (T1–T4) blocked → bradycardia, hypotension. Above C3–C5: phrenic nerve → dyspnoea, inability to cough. C1–C2: total spinal → apnoea, unconsciousness, cardiovascular collapse — requires immediate intubation and vasopressor support.
+            </p>
+          </div>
+        </div>
+
+        {/* Bromage Scale */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bromage Scale — Motor Block Assessment</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The modified Bromage scale grades motor blockade of the lower limbs. It is the standard tool for assessing motor block density and monitoring regression after neuraxial anaesthesia.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Grade</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Motor Function</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Clinical Test</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Block Degree</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">0</td>
+                  <td className="py-2">Full flexion of hip, knee, and ankle</td>
+                  <td className="py-2">Can perform straight leg raise</td>
+                  <td className="py-2">No block</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">1</td>
+                  <td className="py-2">Unable to raise extended leg; can flex knee</td>
+                  <td className="py-2">Cannot straight leg raise, can bend knee</td>
+                  <td className="py-2">Partial (33%)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">2</td>
+                  <td className="py-2">Unable to flex knee; can dorsiflex ankle</td>
+                  <td className="py-2">Cannot bend knee, can wiggle toes/flex foot</td>
+                  <td className="py-2">Almost complete (66%)</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">3</td>
+                  <td className="py-2">No movement of lower limb</td>
+                  <td className="py-2">Cannot move legs or feet at all</td>
+                  <td className="py-2">Complete (100%)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Regression Times */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Expected Block Regression Times</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Block regression follows a predictable pattern: sympathetic function returns first, then sensory, then motor. Regression rate depends on the local anaesthetic used, dose, and adjuncts. The <strong>two-segment regression time</strong> (time for sensory level to drop by 2 dermatomes) is a key pharmacokinetic parameter.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Agent (Intrathecal)</th>
+                  <th className="text-left py-2 text-foreground font-semibold">2-Segment Regression</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Complete Motor Recovery</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Discharge Readiness</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Heavy bupivacaine 0.5% (2.5–3 ml)</td>
+                  <td className="py-2">60–90 min</td>
+                  <td className="py-2">3–4 hours</td>
+                  <td className="py-2">4–6 hours</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Prilocaine 2% (hyperbaric)</td>
+                  <td className="py-2">40–60 min</td>
+                  <td className="py-2">2–3 hours</td>
+                  <td className="py-2">3–4 hours</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Lidocaine 5% (historic)</td>
+                  <td className="py-2">30–45 min</td>
+                  <td className="py-2">1.5–2 hours</td>
+                  <td className="py-2">2–3 hours</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Chloroprocaine 1% (preservative-free)</td>
+                  <td className="py-2">20–30 min</td>
+                  <td className="py-2">60–90 min</td>
+                  <td className="py-2">90–120 min</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">+ Intrathecal fentanyl 15–25 µg</td>
+                  <td className="py-2">Adds 15–30 min to regression</td>
+                  <td className="py-2">Minimal effect on motor</td>
+                  <td className="py-2">Improves block quality</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Epidural Regression</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Continuous epidural infusion: block maintained as long as infusion running. After stopping: sensory regression 1–2 dermatomes/hour. Motor recovery 2–4 hours after cessation. Mobilisation criteria: Bromage 0, proprioception intact, haemodynamically stable.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Discharge Criteria (Day Case Spinal)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Bromage score 0 (full motor recovery). Intact proprioception. Voided urine (if applicable). Stable observations. No PDPH symptoms. Able to weight-bear independently.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -105,6 +276,10 @@ const RegionalAnaesthesiaTopic = () => {
         "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases",
         "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail",
         "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical",
+        "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns",
+        "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)",
+        "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge",
+        "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours",
       ]} />
 
       <QuizSection questions={regionalAnaesthesiaQuestions} />
