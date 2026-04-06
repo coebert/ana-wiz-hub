@@ -79,6 +79,7 @@ export const clinicalTopics: Topic[] = [
   { id: "trauma-emergency", title: "Trauma & Emergency Anaesthesia", description: "RSI, damage control resuscitation, massive transfusion, ATLS", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "pain-medicine", title: "Pain Medicine", description: "Acute and chronic pain, neuropathic pain, multimodal analgesia, interventions", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "tiva", title: "Total Intravenous Anaesthesia (TIVA)", description: "TCI pharmacokinetic models, Marsh vs Schnider vs Eleveld, Cp vs Ce targeting, practical TIVA setup", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
