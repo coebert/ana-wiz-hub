@@ -52,7 +52,9 @@ const HepaticPhysiologyTopic = () => {
                 <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{z.desc}</p>
               </div>
             ))}
-          </div>
+        </div>
+
+        <HepaticAcinusDiagram />
         </div>
 
         <div>
