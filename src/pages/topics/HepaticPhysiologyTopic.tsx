@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
 
 const HepaticPhysiologyTopic = () => {
   return (
