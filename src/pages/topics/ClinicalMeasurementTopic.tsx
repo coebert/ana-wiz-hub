@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ClinicalMeasurementTopic = () => {
   return (
@@ -142,6 +143,8 @@ const ClinicalMeasurementTopic = () => {
         </div>
 
         <QuizSection questions={clinicalMeasurementQuiz} />
+
+      <ReferencesList topicId="clinical-measurement" />
 
         <TopicCompletionToggle topicId="clinical-measurement" topicTitle="Clinical Measurement" />
       </div>

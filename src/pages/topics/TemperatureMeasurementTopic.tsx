@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const TemperatureMeasurementTopic = () => {
   return (
@@ -141,6 +142,8 @@ const TemperatureMeasurementTopic = () => {
         </div>
 
         <QuizSection questions={temperatureMeasurementQuiz} />
+
+      <ReferencesList topicId="temperature-measurement" />
 
         <TopicCompletionToggle topicId="temperature-measurement" topicTitle="Temperature Measurement" />
       </div>

@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ElectricalSafetyTopic = () => {
   return (
@@ -116,6 +117,8 @@ const ElectricalSafetyTopic = () => {
         "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic."
       ]} />
       <QuizSection questions={electricalSafetyQuiz} />
+      <ReferencesList topicId="electrical-safety" />
+
       <TopicCompletionToggle topicId="electrical-safety" topicTitle="Electrical Safety" />
     </SectionLayout>
   );

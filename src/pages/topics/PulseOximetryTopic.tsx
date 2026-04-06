@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PulseOximetryTopic = () => {
   return (
@@ -104,6 +105,8 @@ const PulseOximetryTopic = () => {
         "Sudden loss of EtCO₂ trace demands immediate assessment: check tube position, circuit integrity, and cardiac output."
       ]} />
       <QuizSection questions={pulseOximetryQuiz} />
+      <ReferencesList topicId="pulse-oximetry" />
+
       <TopicCompletionToggle topicId="pulse-oximetry" topicTitle="Pulse Oximetry & Capnography" />
     </SectionLayout>
   );

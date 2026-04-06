@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { organDonationQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const OrganDonationTopic = () => {
   return (
@@ -70,6 +71,8 @@ const OrganDonationTopic = () => {
       ]} />
 
       <QuizSection questions={organDonationQuestions} />
+      <ReferencesList topicId="organ-donation" />
+
       <TopicCompletionToggle topicId="organ-donation" topicTitle="Organ Donation" />
     </SectionLayout>
   );

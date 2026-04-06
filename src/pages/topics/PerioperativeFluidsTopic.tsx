@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PerioperativeFluidsTopic = () => {
   return (
@@ -93,6 +94,8 @@ const PerioperativeFluidsTopic = () => {
       ]} />
 
       <QuizSection questions={perioperativeFluidsQuestions} />
+      <ReferencesList topicId="perioperative-fluids" />
+
       <TopicCompletionToggle topicId="perioperative-fluids" topicTitle="Perioperative Fluid Therapy" />
     </SectionLayout>
   );

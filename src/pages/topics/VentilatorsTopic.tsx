@@ -16,6 +16,7 @@ import hamiltonImg from "@/assets/ventilators/hamilton-g5.jpg";
 import servoImg from "@/assets/ventilators/maquet-servo-u.jpg";
 import primaImg from "@/assets/ventilators/penlon-prima-sp.jpg";
 import aisysImg from "@/assets/ventilators/ge-aisys-cs2.jpg";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ventilatorTypes = [
   {
@@ -358,6 +359,8 @@ const VentilatorsTopic = () => {
       ]} />
 
       <QuizSection questions={ventilatorsQuiz} />
+      <ReferencesList topicId="ventilators" />
+
       <TopicCompletionToggle topicId="ventilators" topicTitle="Ventilators" />
     </SectionLayout>
   );

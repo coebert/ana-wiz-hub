@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { circulatoryFailureQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const CirculatoryFailureTopic = () => {
   return (
@@ -71,6 +72,8 @@ const CirculatoryFailureTopic = () => {
       ]} />
 
       <QuizSection questions={circulatoryFailureQuestions} />
+      <ReferencesList topicId="circulatory-failure" />
+
       <TopicCompletionToggle topicId="circulatory-failure" topicTitle="Circulatory Failure &amp; Shock" />
     </SectionLayout>
   );

@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const MechanicalVentilationTopic = () => {
   return (
@@ -86,6 +87,8 @@ const MechanicalVentilationTopic = () => {
       ]} />
 
       <QuizSection questions={mechanicalVentilationQuestions} />
+      <ReferencesList topicId="mechanical-ventilation" />
+
       <TopicCompletionToggle topicId="mechanical-ventilation" topicTitle="Mechanical Ventilation" />
     </SectionLayout>
   );

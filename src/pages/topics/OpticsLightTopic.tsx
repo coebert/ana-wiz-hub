@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { opticsLightQuiz } from "@/data/quizzes";
 import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const OpticsLightTopic = () => {
   return (
@@ -136,6 +137,8 @@ const OpticsLightTopic = () => {
         </div>
 
         <QuizSection questions={opticsLightQuiz} />
+
+      <ReferencesList topicId="optics-light" />
 
         <TopicCompletionToggle topicId="optics-light" topicTitle="Optics & Light" />
       </div>

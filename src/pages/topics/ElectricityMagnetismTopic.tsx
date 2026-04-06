@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { electricityMagnetismQuiz } from "@/data/quizzes";
 import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ElectricityMagnetismTopic = () => {
   return (
@@ -125,6 +126,8 @@ const ElectricityMagnetismTopic = () => {
         </div>
 
         <QuizSection questions={electricityMagnetismQuiz} />
+
+      <ReferencesList topicId="electricity-magnetism" />
 
         <TopicCompletionToggle topicId="electricity-magnetism" topicTitle="Electricity & Magnetism" />
       </div>

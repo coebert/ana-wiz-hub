@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
   return (
@@ -94,6 +95,8 @@ const RenalPhysiologyTopic = () => {
         "Renal endocrine: renin (RAAS), erythropoietin (hypoxia response), 1,25(OH)₂D₃ (calcium homeostasis)."
       ]} />
       <QuizSection questions={renalPhysiologyQuiz} />
+      <ReferencesList topicId="renal-physiology" />
+
       <TopicCompletionToggle topicId="renal-physiology" topicTitle="Renal Physiology" />
     </SectionLayout>
   );

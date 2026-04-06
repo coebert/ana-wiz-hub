@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { anaestheticMachineQuiz } from "@/data/quizzes";
 import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AnaestheticMachineTopic = () => {
   return (
@@ -144,6 +145,8 @@ const AnaestheticMachineTopic = () => {
         </div>
 
         <QuizSection questions={anaestheticMachineQuiz} />
+
+      <ReferencesList topicId="anaesthetic-machine" />
 
         <TopicCompletionToggle topicId="anaesthetic-machine" topicTitle="The Anaesthetic Machine" />
       </div>

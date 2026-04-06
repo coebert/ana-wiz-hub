@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -93,6 +94,8 @@ const NeuroanaesthesiaTopic = () => {
       ]} />
 
       <QuizSection questions={neuroanaesthesiaQuestions} />
+      <ReferencesList topicId="neuroanaesthesia" />
+
       <TopicCompletionToggle topicId="neuroanaesthesia" topicTitle="Neuroanaesthesia" />
     </SectionLayout>
   );

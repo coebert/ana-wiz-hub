@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
 import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const SIUnitsThermodynamicsTopic = () => {
   return (
@@ -213,6 +214,8 @@ const SIUnitsThermodynamicsTopic = () => {
         </div>
 
         <QuizSection questions={siUnitsThermodynamicsQuiz} />
+
+      <ReferencesList topicId="si-units-thermodynamics" />
 
         <TopicCompletionToggle topicId="si-units-thermodynamics" topicTitle="SI Units & Thermodynamics" />
       </div>

@@ -6,6 +6,7 @@ import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
 import DermatomeDiagram from "@/components/diagrams/DermatomeDiagram";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const RegionalAnaesthesiaTopic = () => {
   return (
@@ -283,6 +284,8 @@ const RegionalAnaesthesiaTopic = () => {
       ]} />
 
       <QuizSection questions={regionalAnaesthesiaQuestions} />
+      <ReferencesList topicId="regional-anaesthesia" />
+
       <TopicCompletionToggle topicId="regional-anaesthesia" topicTitle="Regional & Neuraxial Anaesthesia" />
     </SectionLayout>
   );

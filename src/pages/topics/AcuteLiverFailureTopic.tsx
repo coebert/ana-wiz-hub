@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AcuteLiverFailureTopic = () => {
   return (
@@ -71,6 +72,8 @@ const AcuteLiverFailureTopic = () => {
       ]} />
 
       <QuizSection questions={acuteLiverFailureQuestions} />
+      <ReferencesList topicId="acute-liver-failure" />
+
       <TopicCompletionToggle topicId="acute-liver-failure" topicTitle="Acute Liver Failure" />
     </SectionLayout>
   );

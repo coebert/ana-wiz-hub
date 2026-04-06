@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const ObstetricAnaesthesiaTopic = () => {
   return (
@@ -88,6 +89,8 @@ const ObstetricAnaesthesiaTopic = () => {
       ]} />
 
       <QuizSection questions={obstetricAnaesthesiaQuestions} />
+      <ReferencesList topicId="obstetric-anaesthesia" />
+
       <TopicCompletionToggle topicId="obstetric-anaesthesia" topicTitle="Obstetric Anaesthesia" />
     </SectionLayout>
   );

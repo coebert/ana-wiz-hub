@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neuroanatomyQuestions } from "@/data/quizzes";
 import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const NeuroanatomyTopic = () => {
   return (
@@ -92,6 +93,8 @@ const NeuroanatomyTopic = () => {
       ]} />
 
       <QuizSection questions={neuroanatomyQuestions} />
+      <ReferencesList topicId="neuroanatomy" />
+
       <TopicCompletionToggle topicId="neuroanatomy" topicTitle="Neuroanatomy" />
     </SectionLayout>
   );

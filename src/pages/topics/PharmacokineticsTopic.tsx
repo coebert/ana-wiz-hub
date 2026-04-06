@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const PharmacokineticsTopic = () => {
   return (
@@ -106,6 +107,8 @@ const PharmacokineticsTopic = () => {
         "Context-sensitive half-time is more clinically relevant for infusions than terminal half-life. Remifentanil has a uniquely short and constant CSHT."
       ]} />
       <QuizSection questions={pharmacokineticsQuiz} />
+      <ReferencesList topicId="pharmacokinetics" />
+
       <TopicCompletionToggle topicId="pharmacokinetics" topicTitle="Pharmacokinetic Principles" />
     </SectionLayout>
   );

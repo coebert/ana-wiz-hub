@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { antimicrobialsIcuQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AntimicrobialsIcuTopic = () => {
   return (
@@ -78,6 +79,8 @@ const AntimicrobialsIcuTopic = () => {
       ]} />
 
       <QuizSection questions={antimicrobialsIcuQuestions} />
+      <ReferencesList topicId="antimicrobials-icu" />
+
       <TopicCompletionToggle topicId="antimicrobials-icu" topicTitle="Antimicrobials in ICU" />
     </SectionLayout>
   );

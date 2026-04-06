@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const NeurointensiveCareTopic = () => {
   return (
@@ -237,6 +238,8 @@ const NeurointensiveCareTopic = () => {
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
+      <ReferencesList topicId="neurointensive-care" />
+
       <TopicCompletionToggle topicId="neurointensive-care" topicTitle="Neurointensive Care" />
     </SectionLayout>
   );

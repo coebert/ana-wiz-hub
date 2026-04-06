@@ -6,6 +6,7 @@ import { cardiothoracicQuestions } from "@/data/quizzes";
 import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
 import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const CardiothoracicTopic = () => {
   return (
@@ -197,6 +198,8 @@ const CardiothoracicTopic = () => {
       ]} />
 
       <QuizSection questions={cardiothoracicQuestions} />
+      <ReferencesList topicId="cardiothoracic" />
+
       <TopicCompletionToggle topicId="cardiothoracic" topicTitle="Cardiothoracic Anaesthesia" />
     </SectionLayout>
   );

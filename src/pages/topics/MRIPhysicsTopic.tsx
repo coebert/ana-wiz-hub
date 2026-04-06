@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const MRIPhysicsTopic = () => {
   return (
@@ -109,6 +110,8 @@ const MRIPhysicsTopic = () => {
         </div>
 
         <QuizSection questions={mriPhysicsQuiz} />
+
+      <ReferencesList topicId="mri-physics" />
 
         <TopicCompletionToggle topicId="mri-physics" topicTitle="MRI Physics" />
       </div>

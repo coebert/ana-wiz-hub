@@ -7,6 +7,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { cardiacCycleQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const CardiacCycleTopic = () => {
   return (
@@ -189,6 +190,8 @@ const CardiacCycleTopic = () => {
         "Giant a waves suggest tricuspid stenosis or cannon waves in complete heart block; giant v waves suggest mitral/tricuspid regurgitation."
       ]} />
       <QuizSection questions={cardiacCycleQuiz} />
+      <ReferencesList topicId="cardiac-cycle" />
+
       <TopicCompletionToggle topicId="cardiac-cycle" topicTitle="The Cardiac Cycle" />
     </SectionLayout>
   );

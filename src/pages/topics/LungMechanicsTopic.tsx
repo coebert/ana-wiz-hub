@@ -18,6 +18,7 @@ import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
 import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
 import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const LungMechanicsTopic = () => {
   return (
@@ -284,6 +285,8 @@ const LungMechanicsTopic = () => {
         "Normal WOB = 0.3-0.6 J/L, consuming 2-3% of VO₂. Can exceed 30% in respiratory failure."
       ]} />
       <QuizSection questions={lungMechanicsQuiz} />
+      <ReferencesList topicId="lung-mechanics" />
+
       <TopicCompletionToggle topicId="lung-mechanics" topicTitle="Lung Mechanics" />
     </SectionLayout>
   );

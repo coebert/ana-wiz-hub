@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const IcuSedationDeliriumTopic = () => {
   return (
@@ -96,6 +97,8 @@ const IcuSedationDeliriumTopic = () => {
       ]} />
 
       <QuizSection questions={icuSedationDeliriumQuestions} />
+      <ReferencesList topicId="icu-sedation-delirium" />
+
       <TopicCompletionToggle topicId="icu-sedation-delirium" topicTitle="ICU Sedation & Delirium" />
     </SectionLayout>
   );

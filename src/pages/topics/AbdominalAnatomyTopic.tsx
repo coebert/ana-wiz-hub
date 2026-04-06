@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AbdominalAnatomyTopic = () => {
   return (
@@ -86,6 +87,8 @@ const AbdominalAnatomyTopic = () => {
       ]} />
 
       <QuizSection questions={abdominalAnatomyQuestions} />
+      <ReferencesList topicId="abdominal-anatomy" />
+
       <TopicCompletionToggle topicId="abdominal-anatomy" topicTitle="Abdominal & Pelvic Anatomy" />
     </SectionLayout>
   );

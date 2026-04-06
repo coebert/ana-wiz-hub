@@ -6,6 +6,7 @@ import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const SpinalAnatomyTopic = () => {
   return (
@@ -93,6 +94,8 @@ const SpinalAnatomyTopic = () => {
       ]} />
 
       <QuizSection questions={spinalAnatomyQuestions} />
+      <ReferencesList topicId="spinal-anatomy" />
+
       <TopicCompletionToggle topicId="spinal-anatomy" topicTitle="Vertebral Column & Spinal Cord" />
     </SectionLayout>
   );

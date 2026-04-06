@@ -10,6 +10,7 @@ import CormackLehaneDiagram from "@/components/diagrams/CormackLehaneDiagram";
 import MallampatiDiagram from "@/components/diagrams/MallampatiDiagram";
 import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalculator";
 import { airwayManagementQuestions } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const AirwayManagementTopic = () => {
   return (
@@ -104,6 +105,8 @@ const AirwayManagementTopic = () => {
       ]} />
 
       <QuizSection questions={airwayManagementQuestions} />
+      <ReferencesList topicId="airway-management" />
+
       <TopicCompletionToggle topicId="airway-management" topicTitle="Airway Management" />
     </SectionLayout>
   );

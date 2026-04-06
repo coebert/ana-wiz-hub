@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const FlowMeasurementTopic = () => {
   return (
@@ -113,6 +114,8 @@ const FlowMeasurementTopic = () => {
         "Venturi effect entrains gas through a constriction — used in fixed FiO₂ masks and jet ventilation."
       ]} />
       <QuizSection questions={flowMeasurementQuiz} />
+      <ReferencesList topicId="flow-measurement" />
+
       <TopicCompletionToggle topicId="flow-measurement" topicTitle="Flow & Flowmeters" />
     </SectionLayout>
   );

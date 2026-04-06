@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
+import { ReferencesList } from "@/components/ReferencesList";
 
 const OxygenHaemoglobinTopic = () => {
   return (
@@ -113,6 +114,8 @@ const OxygenHaemoglobinTopic = () => {
         "SpO₂ is a late indicator of falling PaO₂ — pre-oxygenation provides a reservoir on the flat part of the curve."
       ]} />
       <QuizSection questions={oxygenHaemoglobinQuiz} />
+      <ReferencesList topicId="oxygen-haemoglobin" />
+
       <TopicCompletionToggle topicId="oxygen-haemoglobin" topicTitle="Oxygen-Haemoglobin Dissociation" />
     </SectionLayout>
   );
