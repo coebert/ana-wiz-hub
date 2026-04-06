@@ -55,7 +55,6 @@ const elements: PlexusElement[] = [
   { id: "ulnar", label: "Ulnar", level: "branches", x: 370, y: 375, color: "hsl(210, 55%, 50%)", detail: "C8,T1 (medial cord — no lateral cord contribution). Motor: most intrinsic hand muscles (all interossei, medial 2 lumbricals, hypothenar muscles, adductor pollicis, FPB deep head), FCU, medial half of FDP. Sensory: medial 1½ digits (both palmar and dorsal). Most commonly injured nerve at elbow (cubital tunnel). Claw hand deformity ('hand of benediction' vs ulnar paradox).", connections: [] },
 ];
 
-/* Small branches that appear as annotations */
 const annotationBranches = [
   { fromId: "sup", label: "Suprascapular n.", target: { x: 30, y: 125 }, detail: "C5,6 — shoulder abduction/lateral rotation" },
   { fromId: "c5", label: "Dorsal scapular n.", target: { x: 45, y: 45 }, detail: "C5 — rhomboids" },
@@ -65,30 +64,77 @@ const annotationBranches = [
   { fromId: "medial", label: "Med. pectoral n.", target: { x: 380, y: 270 }, detail: "Both pectorals" },
 ];
 
-/* Dermatome hand map */
+interface BlockSite {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  level: LevelKey;
+  color: string;
+  coverage: string;
+  usLandmarks: string;
+  needleDirection: string;
+  volume: string;
+  risks: string;
+  indication: string;
+}
+
+const blockSites: BlockSite[] = [
+  {
+    id: "interscalene", label: "Interscalene", x: 155, y: 35,
+    level: "roots", color: "hsl(0, 60%, 55%)",
+    coverage: "Shoulder + lateral upper arm (C5–C7). Spares ulnar nerve (C8–T1) — poor for hand/forearm surgery.",
+    usLandmarks: "Linear probe on lateral neck at C6. Roots as hypoechoic circles ('traffic lights') between anterior and middle scalene muscles.",
+    needleDirection: "In-plane, lateral to medial (or posterior to anterior). Deposit LA around C5–C6 roots.",
+    volume: "15–20 ml",
+    risks: "Phrenic nerve palsy (100%) — avoid bilateral/respiratory disease. Horner's syndrome, recurrent laryngeal nerve palsy, vertebral artery injection. Epidural/intrathecal spread if too medial.",
+    indication: "Shoulder arthroscopy/arthroplasty, proximal humerus fracture, clavicle surgery",
+  },
+  {
+    id: "supraclavicular", label: "Supraclavicular", x: 210, y: 145,
+    level: "trunks", color: "hsl(45, 60%, 50%)",
+    coverage: "Entire upper limb below shoulder ('spinal of the arm'). Most complete single-injection block. May miss suprascapular nerve (shoulder) and intercostobrachial (medial arm).",
+    usLandmarks: "Linear probe in supraclavicular fossa, coronal oblique. Trunks/divisions as 'bunch of grapes' lateral and superior to subclavian artery. First rib deep (hyperechoic line).",
+    needleDirection: "In-plane, lateral to medial. Target 'corner pocket' between artery and first rib. Avoid pleura.",
+    volume: "20–25 ml",
+    risks: "Pneumothorax (<1% with US). Phrenic palsy (50–67%). Subclavian artery puncture.",
+    indication: "Elbow, forearm, wrist, and hand surgery. Excellent for day-case upper limb surgery.",
+  },
+  {
+    id: "infraclavicular", label: "Infraclavicular", x: 220, y: 270,
+    level: "cords", color: "hsl(270, 45%, 50%)",
+    coverage: "Below mid-humerus — elbow, forearm, wrist, hand. Better ulnar coverage than supraclavicular. Ideal catheter site (pectoralis muscle splints catheter).",
+    usLandmarks: "Linear/curvilinear probe inferior to clavicle, parasagittal. Axillary artery deep to pectoralis major and minor. Cords named by relationship to artery (lateral/posterior/medial).",
+    needleDirection: "In-plane, cephalad to caudad (sagittal) or lateral to medial. Target posterior cord (6 o'clock to artery) — U-shaped spread around artery covers all three cords.",
+    volume: "20–30 ml",
+    risks: "Pneumothorax (very rare with US). Vascular puncture. Deeper block — more difficult in obese patients.",
+    indication: "Forearm and hand surgery, especially when catheter needed. Avoids phrenic nerve palsy.",
+  },
+  {
+    id: "axillary", label: "Axillary", x: 220, y: 395,
+    level: "branches", color: "hsl(200, 50%, 50%)",
+    coverage: "Below elbow — forearm, wrist, hand. Must separately block musculocutaneous nerve (in coracobrachialis). Does NOT cover shoulder or upper arm.",
+    usLandmarks: "Linear probe in axilla, arm abducted 90°. Axillary artery surrounded by median (superficial), ulnar (superficial-medial), radial (posterior), with musculocutaneous in coracobrachialis (lateral).",
+    needleDirection: "In-plane, multiple perivascular injections targeting each nerve individually (preferred) or single peri-arterial injection. Musculocutaneous blocked within coracobrachialis.",
+    volume: "5–8 ml per nerve (total 20–30 ml)",
+    risks: "Safest approach — no pneumothorax, no neuraxial spread. Vascular puncture (compress). Haematoma.",
+    indication: "Hand and forearm surgery. Best safety profile. Day case. Anticoagulated patients (compressible site).",
+  },
+];
+
 const HandDermatomeMap = () => (
   <svg viewBox="0 0 140 150" className="w-28 sm:w-32 mx-auto">
-    {/* Palm outline */}
-    <path d="M 70 145 Q 30 140 20 110 Q 15 90 20 70 L 10 30 L 20 15 L 30 30 L 30 55
-             L 35 20 L 45 5 L 55 20 L 50 55
-             L 55 15 L 65 2 L 75 15 L 70 55
-             L 80 18 L 90 5 L 95 22 L 85 55
-             L 100 35 L 110 30 L 105 50 L 90 65
-             Q 95 90 120 100 Q 125 105 120 110 Q 100 140 70 145 Z"
+    <path d="M 70 145 Q 30 140 20 110 Q 15 90 20 70 L 10 30 L 20 15 L 30 30 L 30 55 L 35 20 L 45 5 L 55 20 L 50 55 L 55 15 L 65 2 L 75 15 L 70 55 L 80 18 L 90 5 L 95 22 L 85 55 L 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 Q 125 105 120 110 Q 100 140 70 145 Z"
       fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6" />
-    {/* C6 — thumb + lateral hand */}
     <path d="M 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 L 120 110 Q 105 120 90 125 L 85 100 L 85 55 L 100 35 Z"
       fill="hsl(150, 50%, 42%)" fillOpacity="0.25" stroke="hsl(150, 50%, 42%)" strokeWidth="0.8" />
     <text x="105" y="80" fontSize="8" fill="hsl(150, 50%, 42%)" fontWeight="bold">C6</text>
-    {/* C7 — middle finger */}
     <path d="M 55 15 L 65 2 L 75 15 L 70 55 L 50 55 L 55 15 Z"
       fill="hsl(45, 65%, 48%)" fillOpacity="0.25" stroke="hsl(45, 65%, 48%)" strokeWidth="0.8" />
     <text x="60" y="38" fontSize="7" fill="hsl(45, 65%, 48%)" fontWeight="bold">C7</text>
-    {/* C8 — ring + little finger + medial hand */}
     <path d="M 10 30 L 20 15 L 30 30 L 30 55 L 20 70 Q 15 90 20 110 Q 30 140 50 143 L 50 55 L 35 20 L 45 5 L 50 10 L 50 55"
       fill="hsl(210, 55%, 50%)" fillOpacity="0.2" stroke="hsl(210, 55%, 50%)" strokeWidth="0.8" />
     <text x="22" y="80" fontSize="8" fill="hsl(210, 55%, 50%)" fontWeight="bold">C8</text>
-    {/* T1 — medial forearm */}
     <path d="M 20 110 Q 30 140 50 143 L 70 145 L 70 130 L 40 125 L 25 112 Z"
       fill="hsl(270, 45%, 50%)" fillOpacity="0.2" stroke="hsl(270, 45%, 50%)" strokeWidth="0.8" />
     <text x="45" y="140" fontSize="7" fill="hsl(270, 45%, 50%)" fontWeight="bold">T1</text>
@@ -101,8 +147,11 @@ const BrachialPlexusDiagram = () => {
   const [highlightLevel, setHighlightLevel] = useState<LevelKey | null>(null);
   const [showDermatomes, setShowDermatomes] = useState(false);
   const [showAnnotations, setShowAnnotations] = useState(true);
+  const [showBlockSites, setShowBlockSites] = useState(false);
+  const [selectedBlock, setSelectedBlock] = useState<string | null>(null);
 
   const activeEl = elements.find(e => e.id === selected);
+  const activeBlock = blockSites.find(b => b.id === selectedBlock);
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6 space-y-4">
@@ -111,7 +160,13 @@ const BrachialPlexusDiagram = () => {
           <h3 className="text-lg font-serif font-bold text-foreground">Interactive Brachial Plexus</h3>
           <p className="text-xs text-muted-foreground">Tap any element for details. Tap level labels for block approaches.</p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
+          <button
+            onClick={() => setShowBlockSites(!showBlockSites)}
+            className={`px-2 py-1 rounded text-xs font-medium transition-all ${showBlockSites ? "bg-primary/20 text-primary border border-primary/40" : "bg-secondary text-muted-foreground border border-border"}`}
+          >
+            🎯 Block Sites
+          </button>
           <button
             onClick={() => setShowAnnotations(!showAnnotations)}
             className={`px-2 py-1 rounded text-xs font-medium transition-all ${showAnnotations ? "bg-primary/20 text-primary border border-primary/40" : "bg-secondary text-muted-foreground border border-border"}`}
@@ -129,27 +184,30 @@ const BrachialPlexusDiagram = () => {
 
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex-1">
-          <svg viewBox="-10 0 440 430" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
-            {/* Anatomical background structures */}
+          <svg viewBox="-10 0 440 440" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
             <defs>
               <linearGradient id="scaleneGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.06" />
                 <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.02" />
               </linearGradient>
-              <linearGradient id="arteryGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 60%, 50%)" stopOpacity="0.15" />
-                <stop offset="100%" stopColor="hsl(0, 60%, 50%)" stopOpacity="0.05" />
-              </linearGradient>
+              {/* Needle glow */}
+              <filter id="needleGlow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+              <marker id="needleTip" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                <path d="M0,0 L6,3 L0,6 Z" fill="hsl(140, 60%, 45%)" />
+              </marker>
             </defs>
 
-            {/* Anterior scalene muscle */}
+            {/* Anterior scalene */}
             <path d="M 60,15 Q 50,50 45,90 Q 40,130 38,170 Q 36,195 40,210"
               fill="url(#scaleneGrad)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
             <path d="M 75,15 Q 65,50 60,90 Q 55,130 53,170 Q 51,195 55,210"
               fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
             <text x="30" y="105" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.4" transform="rotate(-80, 30, 105)">Anterior scalene</text>
 
-            {/* Middle scalene muscle */}
+            {/* Middle scalene */}
             <path d="M 350,15 Q 355,50 358,90 Q 360,130 362,170 Q 364,195 360,210"
               fill="url(#scaleneGrad)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
             <text x="375" y="105" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.4" transform="rotate(80, 375, 105)">Middle scalene</text>
@@ -159,19 +217,17 @@ const BrachialPlexusDiagram = () => {
               stroke="hsl(var(--muted-foreground))" strokeWidth="1.8" opacity="0.12" />
             <text x="400" y="172" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">1st rib</text>
 
-            {/* Clavicle — bone shape */}
+            {/* Clavicle */}
             <path d="M 5,195 Q 60,185 140,183 Q 220,182 300,185 Q 370,188 420,195"
               fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="3" opacity="0.15" strokeLinecap="round" />
             <path d="M 5,200 Q 60,190 140,188 Q 220,187 300,190 Q 370,193 420,200"
               fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.1" />
             <text x="210" y="180" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">— CLAVICLE —</text>
 
-            {/* Subclavian → Axillary artery */}
-            <path d="M 210,165 Q 210,200 208,240 Q 205,280 202,320 Q 200,360 198,400"
+            {/* Axillary artery */}
+            <path d="M 210,165 Q 210,200 208,240 Q 205,280 202,320 Q 200,360 198,410"
               fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3" opacity="0.12" strokeDasharray="4 3" />
             <text x="188" y="270" fontSize="5" fill="hsl(0, 55%, 50%)" opacity="0.3" transform="rotate(-88, 188, 270)">Axillary artery</text>
-
-            {/* Subclavian artery label */}
             <text x="215" y="162" fontSize="4.5" fill="hsl(0, 55%, 50%)" opacity="0.3">Subclavian a.</text>
 
             {/* Level zone backgrounds */}
@@ -184,9 +240,7 @@ const BrachialPlexusDiagram = () => {
             {(Object.entries(levelInfo) as [LevelKey, typeof levelInfo.roots][]).map(([key, info]) => (
               <g key={key}>
                 <text
-                  x="-5"
-                  y={info.y + 5}
-                  fontSize="6"
+                  x="-5" y={info.y + 5} fontSize="6"
                   fill={highlightLevel === key ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
                   fontWeight={highlightLevel === key ? "bold" : "normal"}
                   className="cursor-pointer select-none"
@@ -198,14 +252,13 @@ const BrachialPlexusDiagram = () => {
               </g>
             ))}
 
-            {/* Connection lines — bezier curves color-coded */}
+            {/* Connection lines */}
             {elements.map(el =>
               el.connections.map(targetId => {
                 const target = elements.find(e => e.id === targetId);
                 if (!target) return null;
                 const isHighlighted = selected === el.id || selected === targetId;
                 const midY = (el.y + target.y) / 2;
-                // Nerve fiber bundles — draw as slightly thicker with subtle color
                 return (
                   <path
                     key={`${el.id}-${targetId}`}
@@ -220,7 +273,7 @@ const BrachialPlexusDiagram = () => {
               })
             )}
 
-            {/* Annotation branches (small named nerves) */}
+            {/* Annotation branches */}
             {showAnnotations && annotationBranches.map((ann, i) => {
               const source = elements.find(e => e.id === ann.fromId);
               if (!source) return null;
@@ -249,13 +302,9 @@ const BrachialPlexusDiagram = () => {
               const w = el.level === "branches" ? 62 : el.level === "divisions" ? 32 : el.level === "cords" ? 68 : 46;
               const h = 22;
               return (
-                <g key={el.id} className="cursor-pointer" onClick={() => setSelected(el.id)}>
+                <g key={el.id} className="cursor-pointer" onClick={() => { setSelected(el.id); setSelectedBlock(null); }}>
                   <rect
-                    x={el.x - w / 2}
-                    y={el.y - 9}
-                    width={w}
-                    height={h}
-                    rx={6}
+                    x={el.x - w / 2} y={el.y - 9} width={w} height={h} rx={6}
                     fill={el.color}
                     fillOpacity={isActive ? 0.3 : isLevelHighlighted ? 0.15 : 0.07}
                     stroke={el.color}
@@ -265,22 +314,12 @@ const BrachialPlexusDiagram = () => {
                   />
                   {isActive && (
                     <rect
-                      x={el.x - w / 2 - 2}
-                      y={el.y - 11}
-                      width={w + 4}
-                      height={h + 4}
-                      rx={8}
-                      fill="none"
-                      stroke={el.color}
-                      strokeWidth="1"
-                      opacity="0.3"
-                      className="animate-pulse"
+                      x={el.x - w / 2 - 2} y={el.y - 11} width={w + 4} height={h + 4} rx={8}
+                      fill="none" stroke={el.color} strokeWidth="1" opacity="0.3" className="animate-pulse"
                     />
                   )}
                   <text
-                    x={el.x}
-                    y={el.y + 5}
-                    textAnchor="middle"
+                    x={el.x} y={el.y + 5} textAnchor="middle"
                     fontSize={el.level === "divisions" ? "6" : el.level === "branches" ? "6.5" : "7.5"}
                     fill={el.color}
                     fontWeight={isActive ? "bold" : "600"}
@@ -292,7 +331,7 @@ const BrachialPlexusDiagram = () => {
               );
             })}
 
-            {/* Block approach zones — dashed rectangles when level highlighted */}
+            {/* Block approach zones */}
             {highlightLevel === "roots" && (
               <rect x="65" y="40" width="290" height="45" rx="8" fill="none"
                 stroke="hsl(0, 60%, 55%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
@@ -309,34 +348,131 @@ const BrachialPlexusDiagram = () => {
               <rect x="15" y="355" width="395" height="45" rx="8" fill="none"
                 stroke="hsl(210, 50%, 50%)" strokeWidth="1.5" strokeDasharray="6 3" opacity="0.4" />
             )}
+
+            {/* ===== BLOCK INJECTION SITES ===== */}
+            {showBlockSites && blockSites.map((bs) => {
+              const isBlockActive = selectedBlock === bs.id;
+              return (
+                <g key={bs.id} className="cursor-pointer" onClick={() => { setSelectedBlock(isBlockActive ? null : bs.id); setSelected(""); }}>
+                  {/* Pulsing target ring */}
+                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 18 : 14}
+                    fill="none" stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                    opacity={isBlockActive ? 0.6 : 0.3}
+                    strokeDasharray="4 2"
+                    className={isBlockActive ? "animate-pulse" : ""}
+                  />
+                  {/* Inner target */}
+                  <circle cx={bs.x} cy={bs.y} r={isBlockActive ? 6 : 4}
+                    fill="hsl(140, 60%, 45%)" fillOpacity={isBlockActive ? 0.7 : 0.4}
+                    stroke="hsl(140, 60%, 45%)" strokeWidth={isBlockActive ? 2 : 1}
+                  />
+                  {/* Crosshair lines */}
+                  <line x1={bs.x - 10} y1={bs.y} x2={bs.x - 5} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x + 5} y1={bs.y} x2={bs.x + 10} y2={bs.y} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x} y1={bs.y - 10} x2={bs.x} y2={bs.y - 5} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+                  <line x1={bs.x} y1={bs.y + 5} x2={bs.x} y2={bs.y + 10} stroke="hsl(140, 60%, 45%)" strokeWidth="1" opacity={isBlockActive ? 0.8 : 0.4} />
+
+                  {/* Needle line */}
+                  {isBlockActive && (
+                    <g className="animate-fade-in">
+                      <line x1={bs.x + 55} y1={bs.y - 20} x2={bs.x + 8} y2={bs.y - 2}
+                        stroke="hsl(140, 60%, 45%)" strokeWidth="1.5" markerEnd="url(#needleTip)" opacity="0.6" />
+                      <text x={bs.x + 58} y={bs.y - 22} fontSize="5" fill="hsl(140, 60%, 45%)" opacity="0.7">needle</text>
+                    </g>
+                  )}
+
+                  {/* Label */}
+                  <text x={bs.x} y={bs.y - (isBlockActive ? 22 : 17)} textAnchor="middle"
+                    fontSize="6" fill="hsl(140, 60%, 45%)" fontWeight="bold" opacity={isBlockActive ? 1 : 0.7}>
+                    🎯 {bs.label}
+                  </text>
+                </g>
+              );
+            })}
           </svg>
         </div>
 
-        {/* Dermatome hand map */}
-        {showDermatomes && (
-          <div className="flex flex-col items-center gap-2 animate-fade-in">
-            <p className="text-xs font-semibold text-muted-foreground">Cutaneous Dermatomes</p>
-            <HandDermatomeMap />
-            <div className="text-[10px] text-muted-foreground space-y-0.5 text-center">
-              <p><span className="font-bold" style={{ color: "hsl(150, 50%, 42%)" }}>C6</span> — thumb + lateral hand</p>
-              <p><span className="font-bold" style={{ color: "hsl(45, 65%, 48%)" }}>C7</span> — middle finger</p>
-              <p><span className="font-bold" style={{ color: "hsl(210, 55%, 50%)" }}>C8</span> — ring + little finger</p>
-              <p><span className="font-bold" style={{ color: "hsl(270, 45%, 50%)" }}>T1</span> — medial forearm</p>
+        {/* Side panels */}
+        <div className="flex flex-col gap-3">
+          {showDermatomes && (
+            <div className="animate-fade-in">
+              <p className="text-xs font-semibold text-muted-foreground mb-1">Cutaneous Dermatomes</p>
+              <HandDermatomeMap />
+              <div className="text-[10px] text-muted-foreground space-y-0.5 text-center mt-1">
+                <p><span className="font-bold" style={{ color: "hsl(150, 50%, 42%)" }}>C6</span> — thumb + lateral</p>
+                <p><span className="font-bold" style={{ color: "hsl(45, 65%, 48%)" }}>C7</span> — middle finger</p>
+                <p><span className="font-bold" style={{ color: "hsl(210, 55%, 50%)" }}>C8</span> — ring + little</p>
+                <p><span className="font-bold" style={{ color: "hsl(270, 45%, 50%)" }}>T1</span> — medial forearm</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+
+          {/* Block site quick selector */}
+          {showBlockSites && (
+            <div className="animate-fade-in">
+              <p className="text-xs font-semibold text-muted-foreground mb-1.5">Injection Sites</p>
+              <div className="space-y-1">
+                {blockSites.map(bs => (
+                  <button key={bs.id}
+                    onClick={() => { setSelectedBlock(selectedBlock === bs.id ? null : bs.id); setSelected(""); }}
+                    className={`w-full text-left px-2 py-1.5 rounded text-xs transition-all ${selectedBlock === bs.id ? "bg-primary/15 border border-primary/40 text-foreground font-medium" : "bg-secondary/50 border border-border text-muted-foreground hover:text-foreground"}`}>
+                    🎯 {bs.label}
+                    <span className="text-[10px] ml-1 opacity-60">({levelInfo[bs.level].label.split(' ')[0]})</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Block approach highlight */}
-      {highlightLevel && (
+      {highlightLevel && !selectedBlock && (
         <div className="p-3 rounded-lg bg-secondary/50 border border-border animate-fade-in">
           <p className="text-xs font-semibold text-foreground">🎯 Block approach — {levelInfo[highlightLevel].label}:</p>
           <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{levelInfo[highlightLevel].blockApproach}</p>
         </div>
       )}
 
-      {/* Detail card */}
-      {activeEl && (
+      {/* Block site detail card */}
+      {activeBlock && (
+        <div className="p-4 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in" key={selectedBlock}>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-sm">🎯</span>
+            <p className="font-bold text-sm text-foreground">{activeBlock.label} Block</p>
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wide ml-auto">{levelInfo[activeBlock.level].label}</span>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <p className="font-semibold text-foreground mb-0.5">Coverage</p>
+              <p className="text-muted-foreground">{activeBlock.coverage}</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-0.5">US Landmarks</p>
+              <p className="text-muted-foreground">{activeBlock.usLandmarks}</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-0.5">Needle Direction</p>
+              <p className="text-muted-foreground">{activeBlock.needleDirection}</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-0.5">Volume</p>
+              <p className="text-muted-foreground">{activeBlock.volume}</p>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-0.5">Indication</p>
+              <p className="text-muted-foreground">{activeBlock.indication}</p>
+            </div>
+            <div>
+              <p className="font-semibold text-destructive mb-0.5">Risks</p>
+              <p className="text-muted-foreground">{activeBlock.risks}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Plexus element detail card */}
+      {activeEl && !activeBlock && (
         <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
           <div className="flex items-center gap-2 mb-1">
             <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: activeEl.color }} />
