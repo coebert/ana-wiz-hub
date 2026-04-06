@@ -294,7 +294,9 @@ const ARDSTopic = () => {
         "VV-ECMO: respiratory support only — ↑ blood flow = ↑ oxygenation, ↑ sweep = ↑ CO₂ removal",
         "VA-ECMO: cardiac + respiratory — risk of Harlequin syndrome (monitor R radial SpO₂) and LV distension",
         "UFH is first-line anticoagulation: target APTT 50–70s or anti-Xa 0.3–0.5 IU/mL; bivalirudin for HIT",
-        "AVWS occurs in nearly all ECMO patients — high shear cleaves vWF multimers → mucosal bleeding",
+        "COVID-19: Dexamethasone 6 mg/d × 10d is standard of care (RECOVERY). Add tocilizumab within 24h of organ support if CRP >75",
+        "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)",
+        "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation",
         "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment",
         "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)",
       ]} />
