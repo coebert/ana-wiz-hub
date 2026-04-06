@@ -56,6 +56,10 @@ const FoetalCirculationTopic = lazy(() => import("./pages/topics/FoetalCirculati
 const HepaticPhysiologyTopic = lazy(() => import("./pages/topics/HepaticPhysiologyTopic"));
 const StarlingForcesTopic = lazy(() => import("./pages/topics/StarlingForcesTopic"));
 const GastrointestinalPhysiologyTopic = lazy(() => import("./pages/topics/GastrointestinalPhysiologyTopic"));
+const CardiacElectrophysiologyTopic = lazy(() => import("./pages/topics/CardiacElectrophysiologyTopic"));
+const VentilationPerfusionTopic = lazy(() => import("./pages/topics/VentilationPerfusionTopic"));
+const EndocrinePhysiologyTopic = lazy(() => import("./pages/topics/EndocrinePhysiologyTopic"));
+const HaematologyImmunityTopic = lazy(() => import("./pages/topics/HaematologyImmunityTopic"));
 const PharmacokineticsTopic = lazy(() => import("./pages/topics/PharmacokineticsTopic"));
 const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopic"));
 const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));
@@ -66,6 +70,10 @@ const VasoactiveAgentsTopic = lazy(() => import("./pages/topics/VasoactiveAgents
 const AntimicrobialsPharmTopic = lazy(() => import("./pages/topics/AntimicrobialsPharmTopic"));
 const AntiarrhythmicsTopic = lazy(() => import("./pages/topics/AntiarrhythmicsTopic"));
 const AnticoagulantsTopic = lazy(() => import("./pages/topics/AnticoagulantsTopic"));
+const PharmacodynamicsTopic = lazy(() => import("./pages/topics/PharmacodynamicsTopic"));
+const NSAIDsParacetamolTopic = lazy(() => import("./pages/topics/NSAIDsParacetamolTopic"));
+const AntiemeticsTopic = lazy(() => import("./pages/topics/AntiemeticsTopic"));
+const CorticosteroidsTopic = lazy(() => import("./pages/topics/CorticosteroidsTopic"));
 const AirwayManagementTopic = lazy(() => import("./pages/topics/AirwayManagementTopic"));
 const RegionalAnaesthesiaTopic = lazy(() => import("./pages/topics/RegionalAnaesthesiaTopic"));
 const ObstetricAnaesthesiaTopic = lazy(() => import("./pages/topics/ObstetricAnaesthesiaTopic"));
@@ -76,6 +84,10 @@ const TraumaEmergencyTopic = lazy(() => import("./pages/topics/TraumaEmergencyTo
 const ClinicalIncidentsTopic = lazy(() => import("./pages/topics/ClinicalIncidentsTopic"));
 const PainMedicineTopic = lazy(() => import("./pages/topics/PainMedicineTopic"));
 const TIVATopic = lazy(() => import("./pages/topics/TIVATopic"));
+const OrthopaedicAnaesthesiaTopic = lazy(() => import("./pages/topics/OrthopaedicAnaesthesiaTopic"));
+const OphthalmicAnaesthesiaTopic = lazy(() => import("./pages/topics/OphthalmicAnaesthesiaTopic"));
+const DaySurgeryTopic = lazy(() => import("./pages/topics/DaySurgeryTopic"));
+const TransferMedicineTopic = lazy(() => import("./pages/topics/TransferMedicineTopic"));
 const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
 const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
@@ -92,6 +104,8 @@ const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"
 const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
 const PaediatricIcuTopic = lazy(() => import("./pages/topics/PaediatricIcuTopic"));
 const HaematologyIcuTopic = lazy(() => import("./pages/topics/HaematologyIcuTopic"));
+const ECMOTopic = lazy(() => import("./pages/topics/ECMOTopic"));
+const ToxicologyTopic = lazy(() => import("./pages/topics/ToxicologyTopic"));
 const PreoperativeAssessmentTopic = lazy(() => import("./pages/topics/PreoperativeAssessmentTopic"));
 const EnhancedRecoveryTopic = lazy(() => import("./pages/topics/EnhancedRecoveryTopic"));
 const PerioperativeFluidsTopic = lazy(() => import("./pages/topics/PerioperativeFluidsTopic"));
@@ -103,6 +117,7 @@ const ThoracicAnatomyTopic = lazy(() => import("./pages/topics/ThoracicAnatomyTo
 const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomyTopic"));
 const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
 const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
+const LowerLimbAnatomyTopic = lazy(() => import("./pages/topics/LowerLimbAnatomyTopic"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
