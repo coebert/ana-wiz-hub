@@ -248,6 +248,74 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
           <text x={cx} y={s * 0.94} textAnchor="middle" fontSize="7" fill="hsl(180,50%,65%)" fontWeight="bold">"Axillary Cross-Section"</text>
         </>
       )}
+
+      {/* Needle trajectory overlay */}
+      {showNeedle && (
+        <g>
+          {/* LA spread at target */}
+          <circle
+            cx={s * nd.spread[0]} cy={s * nd.spread[1]}
+            r={s * 0.04}
+            fill="hsl(140, 70%, 50%)" opacity="0.12"
+            style={{ animation: "spreadPulse 2s ease-in-out infinite" }}
+          />
+          <circle
+            cx={s * nd.spread[0]} cy={s * nd.spread[1]}
+            r={s * 0.06}
+            fill="none" stroke="hsl(140, 70%, 50%)" strokeWidth="0.5" opacity="0.15"
+            style={{ animation: "spreadPulse 2s ease-in-out infinite 0.3s" }}
+          />
+
+          {/* Needle shaft */}
+          <line
+            x1={s * nd.entry[0]} y1={s * nd.entry[1]}
+            x2={s * nd.target[0]} y2={s * nd.target[1]}
+            stroke="hsl(0, 0%, 85%)" strokeWidth="1.8"
+            strokeDasharray="300"
+            style={{ animation: "needleDraw 1s ease-out forwards" }}
+          />
+          {/* Needle highlight (echogenic) */}
+          <line
+            x1={s * nd.entry[0]} y1={s * nd.entry[1]}
+            x2={s * nd.target[0]} y2={s * nd.target[1]}
+            stroke="hsl(0, 0%, 100%)" strokeWidth="0.6" opacity="0.4"
+            strokeDasharray="2 3"
+            style={{ animation: "needleDraw 1s ease-out forwards" }}
+          />
+
+          {/* Needle tip */}
+          <circle
+            cx={s * nd.target[0]} cy={s * nd.target[1]}
+            r={2.5}
+            fill="hsl(50, 90%, 60%)"
+            style={{ animation: "tipGlow 1.5s ease-in-out infinite" }}
+          />
+
+          {/* Target label */}
+          <rect
+            x={s * nd.target[0] - 35} y={s * nd.target[1] + 6}
+            width="70" height="12" rx="2"
+            fill="hsl(0,0%,0%)" fillOpacity="0.7"
+          />
+          <text
+            x={s * nd.target[0]} y={s * nd.target[1] + 14.5}
+            textAnchor="middle" fontSize="5"
+            fill="hsl(50, 90%, 65%)" fontWeight="bold"
+          >
+            {nd.label}
+          </text>
+
+          {/* Entry direction label */}
+          <text
+            x={s * nd.entry[0] + (nd.entry[0] > 0.5 ? -4 : 4)}
+            y={s * nd.entry[1] - 4}
+            textAnchor={nd.entry[0] > 0.5 ? "end" : "start"}
+            fontSize="4.5" fill="hsl(0,0%,70%)" opacity="0.7"
+          >
+            In-plane
+          </text>
+        </g>
+      )}
     </svg>
   );
 };
