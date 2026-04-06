@@ -53,6 +53,7 @@ const MaternalPhysiologyTopic = lazy(() => import("./pages/topics/MaternalPhysio
 const FoetalCirculationTopic = lazy(() => import("./pages/topics/FoetalCirculationTopic"));
 const HepaticPhysiologyTopic = lazy(() => import("./pages/topics/HepaticPhysiologyTopic"));
 const StarlingForcesTopic = lazy(() => import("./pages/topics/StarlingForcesTopic"));
+const GastrointestinalPhysiologyTopic = lazy(() => import("./pages/topics/GastrointestinalPhysiologyTopic"));
 const PharmacokineticsTopic = lazy(() => import("./pages/topics/PharmacokineticsTopic"));
 const IVAnaestheticsTopic = lazy(() => import("./pages/topics/IVAnaestheticsTopic"));
 const VolatileAgentsTopic = lazy(() => import("./pages/topics/VolatileAgentsTopic"));

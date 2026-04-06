@@ -47,6 +47,7 @@ export const physiologyTopics: Topic[] = [
   { id: "foetal-circulation", title: "Foetal Circulation", description: "Foetal shunts, HbF, transitional circulation, persistent pulmonary hypertension", section: "physiology", examTags: ["primary", "final"], available: true },
   { id: "hepatic-physiology", title: "Hepatic Physiology", description: "Hepatic blood supply, acinar zones, drug metabolism, synthetic function, LFTs", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "starling-forces", title: "Starling Forces & Fluid Exchange", description: "Revised Starling equation, glycocalyx, transcapillary filtration, oedema formation", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "gi-physiology", title: "Gastrointestinal Physiology", description: "Gastric acid secretion, nausea & vomiting pathways, gut motility, and anaesthetic implications", section: "physiology", examTags: ["primary", "final"], available: true },
 ];
 
 export const pharmacologyTopics: Topic[] = [

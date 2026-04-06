@@ -428,4 +428,9 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2019", citation: "Tibby SM, Durward A. Paediatric intensive care. BJA Education. 2010;10(5):152-157.", url: "https://doi.org/10.1093/bjaceaccp/mkq029" },
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Paediatric Advanced Life Support Guidelines. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/paediatric-advanced-life-support-guidelines" },
   ],
+  "gi-physiology": [
+    { label: "Peck & Hill Ch.11", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 11: Gastrointestinal Tract." },
+    { label: "BJA Educ 2018", citation: "Smith I, Kranke P, Murat I, et al. Perioperative fasting in adults and children: guidelines from the European Society of Anaesthesiology. BJA Education. 2011;11(6):357-361.", url: "https://doi.org/10.1093/bjaceaccp/mkr049" },
+    { label: "Gan et al. 2020", citation: "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448.", url: "https://doi.org/10.1213/ANE.0000000000004833" },
+  ],
 };
