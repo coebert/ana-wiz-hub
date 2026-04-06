@@ -433,4 +433,79 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Smith I, Kranke P, Murat I, et al. Perioperative fasting in adults and children: guidelines from the European Society of Anaesthesiology. BJA Education. 2011;11(6):357-361.", url: "https://doi.org/10.1093/bjaceaccp/mkr049" },
     { label: "Gan et al. 2020", citation: "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448.", url: "https://doi.org/10.1213/ANE.0000000000004833" },
   ],
+  "cardiac-electrophysiology": [
+    { label: "Peck & Hill Ch.4", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 4: Cardiac Electrophysiology." },
+    { label: "BJA Educ 2015", citation: "Pinnell J, Turner S, Howell S. Cardiac muscle physiology. BJA Education. 2007;7(3):85-88.", url: "https://doi.org/10.1093/bjaceaccp/mkm013" },
+    { label: "Ganong Ch.29", citation: "Barrett KE, et al. Ganong's Review of Medical Physiology. 26th ed. McGraw-Hill; 2019. Chapter 29: The Heart as a Pump." },
+  ],
+  "ventilation-perfusion": [
+    { label: "West Ch.5", citation: "West JB, Luks AM. West's Respiratory Physiology: The Essentials. 11th ed. Wolters Kluwer; 2021. Chapter 5: Ventilation-Perfusion Relationships." },
+    { label: "Nunn Ch.8", citation: "Lumb AB. Nunn's Applied Respiratory Physiology. 9th ed. Elsevier; 2021. Chapter 8: Distribution of Perfusion." },
+    { label: "BJA Educ 2018", citation: "Petersson J, Glenny RW. Gas exchange and ventilation-perfusion relationships in the lung. Eur Respir J. 2014;44(4):1023-1041.", url: "https://doi.org/10.1183/09031936.00037014" },
+  ],
+  "endocrine-physiology": [
+    { label: "Power & Kam Ch.12", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. CRC Press; 2015. Chapter 12: Endocrine System." },
+    { label: "BJA Educ 2015", citation: "Smith M, Hirsch NP. Pituitary disease and anaesthesia. BJA Education. 2000;(4):116-119.", url: "https://doi.org/10.1093/bjaceaccp/10.4.116" },
+    { label: "Nicholson & Hall 2011", citation: "Nicholson G, Hall GM. Effects of anaesthesia on the endocrine metabolic responses to surgery. Current Anaesthesia & Critical Care. 1998;9(3):145-148." },
+  ],
+  "haematology-immunity": [
+    { label: "Allman & Wilson Ch.18", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 18: Blood Products & Transfusion." },
+    { label: "BJA Educ 2017", citation: "Thomas D, Wee M, Clyburn P, et al. Blood transfusion and the anaesthetist. Anaesthesia. 2010;65(11):1153-1161.", url: "https://doi.org/10.1111/j.1365-2044.2010.06550.x" },
+    { label: "AAGBI Anaphylaxis 2021", citation: "Association of Anaesthetists. Suspected anaphylaxis during anaesthesia. Anaesthesia. 2021;76(2):235-248.", url: "https://doi.org/10.1111/anae.15180" },
+  ],
+  "pharmacodynamics": [
+    { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 2: Pharmacodynamics." },
+    { label: "BJA Educ 2016", citation: "Pleuvry BJ. Receptors, agonists and antagonists. BJA Education. 2004;4(6):171-174.", url: "https://doi.org/10.1093/bjaceaccp/mkh046" },
+    { label: "Rang & Dale Ch.2", citation: "Rang HP, et al. Rang & Dale's Pharmacology. 9th ed. Elsevier; 2019. Chapter 2: How Drugs Act." },
+  ],
+  "nsaids-paracetamol": [
+    { label: "Peck & Hill Ch.15", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 15: Non-opioid Analgesics." },
+    { label: "BJA Educ 2018", citation: "Cashman JN. The mechanisms of action of NSAIDs in analgesia. Drugs. 1996;52(Suppl 5):13-23." },
+    { label: "NICE Paracetamol OD", citation: "NICE. CKS: Paracetamol overdose management. 2022.", url: "https://cks.nice.org.uk/topics/poisoning-or-overdose/" },
+  ],
+  "antiemetics": [
+    { label: "Gan et al. 2020", citation: "Gan TJ, Belani KG, Bergese S, et al. Fourth Consensus Guidelines for the Management of Postoperative Nausea and Vomiting. Anesth Analg. 2020;131(2):411-448.", url: "https://doi.org/10.1213/ANE.0000000000004833" },
+    { label: "Peck & Hill Ch.16", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 16: Antiemetics." },
+    { label: "BJA Educ 2013", citation: "Pierre S, Whelan R. Nausea and vomiting after surgery. BJA Education. 2013;13(1):28-32.", url: "https://doi.org/10.1093/bjaceaccp/mks046" },
+  ],
+  "corticosteroids": [
+    { label: "Peck & Hill Ch.17", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 17: Steroids." },
+    { label: "BJA Educ 2012", citation: "Nicholson G, Burrin JM, Hall GM. Peri-operative steroid supplementation. Anaesthesia. 1998;53(11):1091-1104.", url: "https://doi.org/10.1046/j.1365-2044.1998.00578.x" },
+    { label: "AAGBI Steroid Cover", citation: "Association of Anaesthetists. Peri-operative management of the surgical patient on glucocorticoids. Anaesthesia. 2020.", url: "https://doi.org/10.1111/anae.14963" },
+  ],
+  "lower-limb-anatomy": [
+    { label: "Ellis Ch.7", citation: "Ellis H, Mahadevan V. Clinical Anatomy. 14th ed. Wiley-Blackwell; 2018. Chapter 7: The Lower Limb." },
+    { label: "NYSORA Lower Limb", citation: "Hadzic A. Hadzic's Textbook of Regional Anesthesia. 2nd ed. McGraw-Hill; 2017. Lower Extremity Blocks.", url: "https://www.nysora.com/techniques/lower-extremity/" },
+    { label: "BJA Educ 2016", citation: "Elkassabany NM, et al. Lower extremity peripheral nerve blocks. BJA Education. 2015;15(5):258-264.", url: "https://doi.org/10.1093/bjaceaccp/mku055" },
+  ],
+  "orthopaedic-anaesthesia": [
+    { label: "Allman & Wilson Ch.27", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 27: Orthopaedic Surgery." },
+    { label: "BJA Educ 2014", citation: "Patel V, et al. Anaesthesia for hip fracture. BJA Education. 2014;14(4):166-172.", url: "https://doi.org/10.1093/bjaceaccp/mkt040" },
+    { label: "AAGBI Tourniquet", citation: "Association of Anaesthetists. Tourniquet practice. Anaesthesia. 2021.", url: "https://doi.org/10.1111/anae.15345" },
+  ],
+  "ophthalmic-anaesthesia": [
+    { label: "Allman & Wilson Ch.29", citation: "Allman K, Wilson I, O'Donnell A. Oxford Handbook of Anaesthesia. 4th ed. OUP; 2016. Chapter 29: Ophthalmic Surgery." },
+    { label: "BJA Educ 2018", citation: "Kumar CM, Eid H, Dodds C. Sub-Tenon's anaesthesia: complications and their prevention. Eye. 2011;25(6):694-703.", url: "https://doi.org/10.1038/eye.2011.69" },
+    { label: "RCOphth/RCoA 2012", citation: "Royal College of Ophthalmologists/RCoA. Local Anaesthesia for Ophthalmic Surgery. Joint Guidelines. 2012." },
+  ],
+  "day-surgery": [
+    { label: "BADS Guidelines", citation: "British Association of Day Surgery. BADS Directory of Procedures. 6th ed. 2019.", url: "https://daysurgeryuk.net/en/home/" },
+    { label: "BJA Educ 2016", citation: "Verma R, Alladi R, Jackson I, et al. Day case and short stay surgery: 2. Anaesthesia. 2011;66(5):417-434.", url: "https://doi.org/10.1111/j.1365-2044.2011.06651.x" },
+    { label: "AAGBI Day Surgery 2019", citation: "Association of Anaesthetists. Day case and short stay surgery. Anaesthesia. 2019;74(6):778-792.", url: "https://doi.org/10.1111/anae.14639" },
+  ],
+  "transfer-medicine": [
+    { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
+    { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidelines for the Transport of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/Society/Policy_and_Guidelines" },
+    { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
+  ],
+  "ecmo": [
+    { label: "ELSO Guidelines 2017", citation: "Extracorporeal Life Support Organization. ELSO Guidelines for Adult Respiratory Failure. Version 1.4. 2017.", url: "https://www.elso.org/ecmo-resources/elso-ecmo-guidelines.aspx" },
+    { label: "BJA Educ 2018", citation: "Squiers JJ, et al. ECMO for adults with severe respiratory failure. Best Pract Res Clin Anaesthesiol. 2017;31(2):163-175.", url: "https://doi.org/10.1016/j.bpa.2017.07.002" },
+    { label: "FICM ECMO 2021", citation: "Faculty of Intensive Care Medicine. ECMO for COVID-19 and Beyond: Standards and Guidelines. 2021.", url: "https://www.ficm.ac.uk" },
+  ],
+  "toxicology": [
+    { label: "NPIS Toxbase", citation: "National Poisons Information Service. TOXBASE Clinical Toxicology Database.", url: "https://www.toxbase.org" },
+    { label: "BJA Educ 2016", citation: "Bradberry SM, et al. Management of the acutely poisoned patient. BJA Education. 2016;16(7):218-225.", url: "https://doi.org/10.1093/bjaed/mkv054" },
+    { label: "AAGBI Lipid Rescue", citation: "Association of Anaesthetists. Management of Severe Local Anaesthetic Toxicity. 2010 (updated 2023).", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
+  ],
 };
