@@ -184,12 +184,12 @@ export const topicReferences: Record<string, Reference[]> = {
   "transfusion-coagulation": [
     { label: "BJA Educ 2015", citation: "Klein AA, Arnold P. Blood transfusion and clinical medicine. BJA Education. 2016;16(11):381-386.", url: "https://doi.org/10.1093/bjaed/mkw020" },
     { label: "NICE NG24", citation: "NICE. Blood transfusion (NG24). 2015.", url: "https://www.nice.org.uk/guidance/ng24" },
-    { label: "BSH 2017", citation: "British Society for Haematology. Guidelines on the use of platelet transfusions. Br J Haematol. 2017;176(3):365-394." },
+    { label: "BSH 2017", citation: "British Society for Haematology. Guidelines on the use of platelet transfusions. Br J Haematol. 2017;176(3):365-394.", url: "https://doi.org/10.1111/bjh.14423" },
   ],
 
   // ──────── PHARMACOLOGY ────────
   "pharmacokinetics": [
-    { label: "BJA Educ 2017", citation: "Calvey TN, Williams NE. Pharmacokinetics. In: Principles and Practice of Pharmacology for Anaesthetists. 5th ed. Blackwell; 2008." },
+    { label: "BJA Educ 2017", citation: "Calvey TN, Williams NE. Pharmacokinetics. In: Principles and Practice of Pharmacology for Anaesthetists. 5th ed. Blackwell; 2008.", url: "https://doi.org/10.1002/9781405194853" },
     { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 2: Pharmacokinetics." },
     { label: "Stanski & Shafer", citation: "Shafer SL, Stanski DR. Defining depth of anesthesia. Handb Exp Pharmacol. 2008;182:409-423.", url: "https://doi.org/10.1007/978-3-540-74806-9_19" },
   ],
@@ -211,7 +211,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "muscle-relaxants": [
     { label: "BJA Educ 2015", citation: "Appiah-Ankam J, Hunter JM. Pharmacology of neuromuscular blocking drugs. BJA Education. 2004;4(1):2-7.", url: "https://doi.org/10.1093/bjaceaccp/mkh002" },
     { label: "Peck & Hill Ch.7", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 7: Neuromuscular Blocking Drugs." },
-    { label: "Fourth National Audit Project", citation: "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21." },
+    { label: "Fourth National Audit Project", citation: "Harper NJN et al. Sugammadex and rocuronium. Anaesthesia. 2009;64 Suppl 1:16-21.", url: "https://doi.org/10.1111/j.1365-2044.2008.05866.x" },
   ],
   "local-anaesthetics": [
     { label: "BJA Educ 2015", citation: "Taylor A, McLeod G. Basic pharmacology of local anaesthetics. BJA Education. 2020;20(2):34-41.", url: "https://doi.org/10.1016/j.bjae.2019.10.002" },
@@ -226,7 +226,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "antiarrhythmics": [
     { label: "BJA Educ 2015", citation: "Sampson KJ, Bhatt D. Antiarrhythmic drugs. BJA Education. 2015;15(5):268-274.", url: "https://doi.org/10.1093/bjaceaccp/mku058" },
     { label: "Peck & Hill Ch.12", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 12: Antiarrhythmic Drugs." },
-    { label: "Vaughan Williams", citation: "Vaughan Williams EM. Classification of antiarrhythmic drugs. Pharmacol Ther B. 1975;1(1):115-138." },
+    { label: "Vaughan Williams", citation: "Vaughan Williams EM. Classification of antiarrhythmic drugs. Pharmacol Ther B. 1975;1(1):115-138.", url: "https://doi.org/10.1016/0306-039X(75)90019-7" },
   ],
   "anticoagulants": [
     { label: "BJA Educ 2015", citation: "Keeling D et al. Peri-operative management of anticoagulation. BJA Education. 2016;16(9):307-312.", url: "https://doi.org/10.1093/bjaed/mkw003" },
@@ -241,7 +241,7 @@ export const topicReferences: Record<string, Reference[]> = {
   "tiva": [
     { label: "BJA Educ 2016", citation: "Absalom AR, Mani V, De Smet T, Struys MMRF. Pharmacokinetic models for propofol — defining and illuminating the devil in the detail. BJA Education. 2009;103(1):26-37.", url: "https://doi.org/10.1093/bja/aep143" },
     { label: "Schnider 1998", citation: "Schnider TW et al. The influence of method of administration and covariates on the pharmacokinetics of propofol in adult volunteers. Anesthesiology. 1998;88(5):1170-1182.", url: "https://doi.org/10.1097/00000542-199805000-00006" },
-    { label: "Marsh 1991", citation: "Marsh B, White M, Morton N, Kenny GNC. Pharmacokinetic model driven infusion of propofol in children. Br J Anaesth. 1991;67(1):41-48." },
+    { label: "Marsh 1991", citation: "Marsh B, White M, Morton N, Kenny GNC. Pharmacokinetic model driven infusion of propofol in children. Br J Anaesth. 1991;67(1):41-48.", url: "https://doi.org/10.1093/bja/67.1.41" },
     { label: "AAGBI TIVA", citation: "Association of Anaesthetists. Recommendations for standards of monitoring during anaesthesia and recovery — TIVA guidance. 2020.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/TIVA" },
   ],
 
@@ -305,8 +305,8 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "paediatric-anaesthesia": [
     { label: "BJA Educ 2019", citation: "Engelhardt T. Paediatric anaesthesia. BJA Education. 2019;19(2):47-53.", url: "https://doi.org/10.1016/j.bjae.2018.11.004" },
-    { label: "Sury et al.", citation: "Sury M, Bullock I, Rabar S, DeMott K. Sedation for diagnostic and therapeutic procedures in children and young people (NICE CG112). Br J Anaesth. 2010;104(6):1-2." },
-    { label: "APAGBI 2020", citation: "Association of Paediatric Anaesthetists. Good Practice in Paediatric Anaesthesia. APA; 2020." },
+    { label: "Sury et al.", citation: "Sury M, Bullock I, Rabar S, DeMott K. Sedation for diagnostic and therapeutic procedures in children and young people (NICE CG112). Br J Anaesth. 2010;104(6):1-2.", url: "https://www.nice.org.uk/guidance/cg112" },
+    { label: "APAGBI 2020", citation: "Association of Paediatric Anaesthetists. Good Practice in Paediatric Anaesthesia. APA; 2020.", url: "https://www.apagbi.org.uk/publications" },
   ],
   "neuroanaesthesia": [
     { label: "BJA Educ 2018", citation: "Dinsmore J. Anaesthesia for elective neurosurgery. BJA Education. 2007;7(3):89-94.", url: "https://doi.org/10.1093/bjaceaccp/mkm016" },
@@ -325,8 +325,8 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "preoperative-assessment": [
     { label: "NICE NG45", citation: "NICE. Routine preoperative tests for elective surgery (NG45). 2016.", url: "https://www.nice.org.uk/guidance/ng45" },
-    { label: "AAGBI 2010", citation: "Association of Anaesthetists. Pre-operative Assessment and Patient Preparation. AAGBI; 2010." },
-    { label: "BJA Educ 2019", citation: "Checketts MR, Alladi R, Ferguson K. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Anaesthesia. 2016;71(1):85-93." },
+    { label: "AAGBI 2010", citation: "Association of Anaesthetists. Pre-operative Assessment and Patient Preparation. AAGBI; 2010.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Pre-operative-assessment-and-patient-preparation" },
+    { label: "BJA Educ 2019", citation: "Checketts MR, Alladi R, Ferguson K. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Anaesthesia. 2016;71(1):85-93.", url: "https://doi.org/10.1111/anae.13316" },
   ],
   "enhanced-recovery": [
     { label: "BJA Educ 2019", citation: "Ljungqvist O, Scott M, Fearon KC. Enhanced recovery after surgery: a review. JAMA Surg. 2017;152(3):292-298.", url: "https://doi.org/10.1001/jamasurg.2016.4952" },
@@ -351,7 +351,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI 2011", citation: "Association of Anaesthetists. Management of a patient with malignant hyperthermia. AAGBI; 2011.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Malignant-hyperthermia-crisis" },
   ],
   "trauma-emergency": [
-    { label: "ATLS 10th ed", citation: "American College of Surgeons. Advanced Trauma Life Support (ATLS). 10th ed. 2018." },
+    { label: "ATLS 10th ed", citation: "American College of Surgeons. Advanced Trauma Life Support (ATLS). 10th ed. 2018.", url: "https://www.facs.org/quality-programs/trauma/education/advanced-trauma-life-support/" },
     { label: "CRASH-2", citation: "CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients. Lancet. 2010;376:23-32.", url: "https://doi.org/10.1016/S0140-6736(10)60835-5" },
     { label: "BJA Educ 2016", citation: "Woolley T, Thompson P. Trauma resuscitation — damage control. BJA Education. 2013;13(3):110-114.", url: "https://doi.org/10.1093/bjaceaccp/mks072" },
   ],
@@ -395,7 +395,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "acute-liver-failure": [
     { label: "BJA Educ 2017", citation: "Bernal W, Wendon J. Acute liver failure. N Engl J Med. 2013;369:2525-2534.", url: "https://doi.org/10.1056/NEJMra1208937" },
-    { label: "King's Criteria", citation: "O'Grady JG et al. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology. 1989;97(2):439-445." },
+    { label: "King's Criteria", citation: "O'Grady JG et al. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology. 1989;97(2):439-445.", url: "https://doi.org/10.1016/0016-5085(89)90081-4" },
     { label: "BJA Educ 2019", citation: "Stravitz RT, Lee WM. Acute liver failure. Lancet. 2019;394(10201):869-881.", url: "https://doi.org/10.1016/S0140-6736(19)31894-X" },
   ],
   "icu-nutrition": [
@@ -415,7 +415,7 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "haematology-icu": [
     { label: "TRICC 1999", citation: "Hébert PC et al. A multicenter, randomized, controlled clinical trial of transfusion requirements in critical care (TRICC). N Engl J Med. 1999;340:409-417.", url: "https://doi.org/10.1056/NEJM199902113400601" },
-    { label: "BJA Educ 2018", citation: "Retter A et al. Guidelines on the management of anaemia and red cell transfusion in adult critically ill patients. Br J Haematol. 2013;160(4):445-464." },
+    { label: "BJA Educ 2018", citation: "Retter A et al. Guidelines on the management of anaemia and red cell transfusion in adult critically ill patients. Br J Haematol. 2013;160(4):445-464.", url: "https://doi.org/10.1111/bjh.12143" },
     { label: "BJA Educ 2016", citation: "Hunt BJ. Bleeding and coagulopathies in critical care. N Engl J Med. 2014;370:847-859.", url: "https://doi.org/10.1056/NEJMra1208626" },
   ],
   "organ-donation": [
@@ -424,7 +424,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Manara AR, Thomas I, Harding R. A revised framework for organ donation after circulatory death. BJA Education. 2019;19(12):397-402.", url: "https://doi.org/10.1016/j.bjae.2019.08.004" },
   ],
   "paediatric-icu": [
-    { label: "RCPCH 2019", citation: "Royal College of Paediatrics and Child Health. Standards for the care of critically ill or injured children. RCPCH; 2019." },
+    { label: "RCPCH 2019", citation: "Royal College of Paediatrics and Child Health. Standards for the care of critically ill or injured children. RCPCH; 2019.", url: "https://www.rcpch.ac.uk/resources/standards-care-critically-ill-or-injured-children" },
     { label: "BJA Educ 2019", citation: "Tibby SM, Durward A. Paediatric intensive care. BJA Education. 2010;10(5):152-157.", url: "https://doi.org/10.1093/bjaceaccp/mkq029" },
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Paediatric Advanced Life Support Guidelines. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/paediatric-advanced-life-support-guidelines" },
   ],
