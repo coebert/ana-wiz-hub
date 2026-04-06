@@ -313,10 +313,7 @@ const DSASpectrogramDiagram = () => {
             <text x={plotX + 124} y={svgH - 13} fontSize="4.5" fill="hsl(0,0%,60%)" opacity="0.5">High</text>
             <text x={plotX + 60} y={svgH - 8} textAnchor="middle" fontSize="4.5" fill="hsl(0,0%,55%)" opacity="0.4">Power (µV²/Hz)</text>
 
-            {/* Key features annotations */}
-            {/* Alpha bridge arrow during maintenance */}
-            <path d="M200,{plotY + plotH - 10 * cellH - 8} L340,{plotY + plotH - 10 * cellH - 8}"
-              fill="none" stroke="hsl(120, 55%, 55%)" strokeWidth="0.8" opacity="0" />
+            {/* Key features: alpha bridge visible in maintenance phase */}
           </svg>
         </div>
 
