@@ -231,6 +231,9 @@ const NeurointensiveCareTopic = () => {
         "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention",
         "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
         "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
+        "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
+        "Autonomic dysreflexia (above T6): noxious stimulus → hypertensive crisis — sit up, find & remove cause",
+        "NASCIS methylprednisolone NOT recommended for acute SCI (NICE/AANS) — frequently examined",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
