@@ -285,6 +285,149 @@ const ARDSTopic = () => {
             </table>
           </div>
         </div>
+
+        {/* COVID-19 Severe Respiratory Failure */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">COVID-19 — Severe Respiratory Failure</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            COVID-19 pneumonitis can cause ARDS but may present with atypical features. The evidence base evolved rapidly during the pandemic and continues to be refined. Key principles align with standard ARDS management but with specific pharmacological adjuncts.
+          </p>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Phenotypes of COVID-19 Respiratory Failure</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                <strong>Type L (early / "silent hypoxia"):</strong> Low elastance (high compliance), low V/Q ratio, low lung weight, low recruitability. Patients may tolerate hypoxia well initially. Responds to supplemental O₂, CPAP/HFNO, prone positioning (awake). <strong>Type H (later / classic ARDS):</strong> High elastance (low compliance), high right-to-left shunt, high lung weight, high recruitability. Requires intubation, lung-protective ventilation, higher PEEP. Some patients transition from L → H phenotype.
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Pharmacological Management — Current Evidence</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Therapy</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Evidence</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Recommendation</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Dexamethasone</td>
+                  <td className="py-2">RECOVERY trial: 6 mg/day × 10 days reduced 28-day mortality in ventilated patients (29.3% → 23.3%, NNT 8) and those on O₂ (26.2% → 23.3%). No benefit if no O₂ requirement.</td>
+                  <td className="py-2 font-medium text-primary">Standard of care for all hospitalised patients requiring O₂</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Tocilizumab (IL-6 inhibitor)</td>
+                  <td className="py-2">REMAP-CAP & RECOVERY: Reduced mortality and organ support duration when given within 24h of ICU admission alongside corticosteroids. CRP &gt;75 mg/L used as eligibility marker.</td>
+                  <td className="py-2 font-medium text-primary">Recommended within 24h of organ support + CRP &gt;75</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Baricitinib (JAK inhibitor)</td>
+                  <td className="py-2">COV-BARRIER & RECOVERY: Reduced 28-day mortality (HR 0.87). Alternative to tocilizumab if IL-6 inhibitors unavailable. Can be combined with corticosteroids.</td>
+                  <td className="py-2 font-medium text-primary">Alternative to tocilizumab, especially if IL-6 inhibitor unavailable</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Anticoagulation</td>
+                  <td className="py-2">REMAP-CAP/ATTACC/ACTIV-4a: Therapeutic-dose LMWH improved organ support-free days in moderate illness (ward patients). <strong>No benefit in critically ill / ICU patients</strong> — standard prophylactic dose recommended in ICU.</td>
+                  <td className="py-2">Therapeutic in moderate (non-ICU); prophylactic in ICU</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Antivirals (Nirmatrelvir/Ritonavir, Remdesivir)</td>
+                  <td className="py-2">Nirmatrelvir/ritonavir (Paxlovid): reduces hospitalisation in high-risk outpatients (EPIC-HR). Remdesivir: modest benefit if given early (&lt;7 days symptoms), ACTT-1 showed faster recovery. No mortality benefit in ventilated patients.</td>
+                  <td className="py-2">Early treatment in high-risk patients; limited role once ventilated</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Convalescent plasma / HCQ / Lopinavir-ritonavir</td>
+                  <td className="py-2">RECOVERY, REMAP-CAP, SOLIDARITY: No benefit demonstrated. Hydroxychloroquine showed possible harm.</td>
+                  <td className="py-2 text-destructive font-medium">Not recommended — no benefit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mb-2">Respiratory Support Escalation</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "1. Supplemental O₂", detail: "Target SpO₂ 92–96%. Nasal cannulae → Venturi mask → non-rebreathe mask." },
+              { step: "2. HFNO / CPAP", detail: "RECOVERY-RS: CPAP reduced intubation + death vs conventional O₂ (OR 0.72). HFNO non-inferior. Awake prone positioning recommended concurrently (meta-analyses show reduced intubation)." },
+              { step: "3. Intubation & Ventilation", detail: "Standard ARDS lung-protective ventilation. VT 6 ml/kg IBW, Pplat ≤30. Video laryngoscopy first-line (aerosol-generating procedure). Full PPE (FFP3/N95, gown, visor)." },
+              { step: "4. Prone Positioning", detail: "Same PROSEVA principles ≥16h/day. COVID patients often show excellent oxygenation response. Awake self-proning in non-intubated patients also beneficial." },
+              { step: "5. ECMO", detail: "VV-ECMO for refractory hypoxia. ELSO COVID registry: survival ~48% (lower than pre-COVID ~60%). Refer early. Later waves showed worse outcomes — patient selection critical." },
+            ].map((s) => (
+              <div key={s.step} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{s.step}</p>
+                <p className="text-xs text-muted-foreground mt-1">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mb-2">COVID-Specific ICU Considerations</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {[
+              { title: "Thromboprophylaxis", detail: "Markedly elevated VTE risk. Standard prophylactic LMWH in ICU. Low threshold for CTPA if PE suspected." },
+              { title: "Secondary Infections", detail: "Bacterial co-infection ~5% at presentation but VAP common (~40%). COVID-associated pulmonary aspergillosis (CAPA) — screen BAL galactomannan if refractory fever on steroids." },
+              { title: "Cytokine Storm", detail: "Hyperinflammatory phenotype: ↑ferritin, CRP, IL-6, D-dimer. Treat with dexamethasone + tocilizumab/baricitinib. HLH screen if refractory." },
+              { title: "Prolonged Weaning", detail: "ICU-acquired weakness very common (immobility, steroids, NMB). Tracheostomy often required. Early rehab. Post-ICU follow-up for long COVID / PICS." },
+              { title: "Cardiac Complications", detail: "Myocarditis, AF, ACS, RV failure from pulmonary hypertension. Troponin and echo monitoring. PE vs in-situ pulmonary thrombosis." },
+              { title: "Renal & Multi-organ", detail: "AKI in 20–30% of ventilated patients. Multifactorial: direct viral, haemodynamic, nephrotoxins. RRT if standard indications." },
+            ].map((c) => (
+              <div key={c.title} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{c.title}</p>
+                <p className="text-xs text-muted-foreground mt-1">{c.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Key COVID Trials */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key COVID-19 Critical Care Trials</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Trial</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Intervention</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Key Finding</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">RECOVERY (2020–)</td>
+                  <td className="py-2">Dexamethasone</td>
+                  <td className="py-2">6 mg/d × 10d: ↓ mortality in ventilated (NNT 8) and O₂-dependent. Largest COVID RCT (12,000+ patients).</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">REMAP-CAP (2021)</td>
+                  <td className="py-2">Tocilizumab / Sarilumab</td>
+                  <td className="py-2">IL-6 inhibitors within 24h of organ support: ↓ mortality + ↓ organ support duration. aOR for hospital survival 1.64.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">COV-BARRIER (2021)</td>
+                  <td className="py-2">Baricitinib</td>
+                  <td className="py-2">JAK inhibitor: ↓ 28-day mortality (HR 0.57 in ventilated subgroup). WHO strong recommendation.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">RECOVERY-RS (2022)</td>
+                  <td className="py-2">CPAP vs HFNO vs O₂</td>
+                  <td className="py-2">CPAP ↓ intubation + death vs standard O₂. HFNO non-inferior to CPAP.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">REMAP-CAP / ATTACC / ACTIV-4a</td>
+                  <td className="py-2">Therapeutic anticoagulation</td>
+                  <td className="py-2">Benefit in moderate (non-critically ill). No benefit (possible harm) in critically ill.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">SOLIDARITY (WHO)</td>
+                  <td className="py-2">Remdesivir, HCQ, Lopinavir, IFN</td>
+                  <td className="py-2">None showed mortality benefit. Remdesivir: modest ↓ recovery time (ACTT-1) but no benefit once ventilated.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -294,7 +437,9 @@ const ARDSTopic = () => {
         "VV-ECMO: respiratory support only — ↑ blood flow = ↑ oxygenation, ↑ sweep = ↑ CO₂ removal",
         "VA-ECMO: cardiac + respiratory — risk of Harlequin syndrome (monitor R radial SpO₂) and LV distension",
         "UFH is first-line anticoagulation: target APTT 50–70s or anti-Xa 0.3–0.5 IU/mL; bivalirudin for HIT",
-        "AVWS occurs in nearly all ECMO patients — high shear cleaves vWF multimers → mucosal bleeding",
+        "COVID-19: Dexamethasone 6 mg/d × 10d is standard of care (RECOVERY). Add tocilizumab within 24h of organ support if CRP >75",
+        "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)",
+        "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation",
         "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment",
         "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)",
       ]} />
