@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TCISimulatorDiagram from "@/components/diagrams/TCISimulatorDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
@@ -184,6 +185,9 @@ const TIVATopic = () => {
       </section>
 
       {/* Interactive Model Comparison */}
+      {/* TCI Simulator */}
+      <TCISimulatorDiagram />
+
       <div className="border border-border rounded-lg p-4 mb-10">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">TCI Model Explorer</h3>
         <p className="text-xs text-muted-foreground mb-4">Select a pharmacokinetic model to explore its characteristics, covariates, and clinical considerations</p>
