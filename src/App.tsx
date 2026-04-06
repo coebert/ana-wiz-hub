@@ -103,6 +103,8 @@ const ThoracicAnatomyTopic = lazy(() => import("./pages/topics/ThoracicAnatomyTo
 const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomyTopic"));
 const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
 const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
 const queryClient = new QueryClient();
 
