@@ -77,6 +77,113 @@ const CardiothoracicTopic = () => {
             </div>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">On-Pump vs Off-Pump Cardiac Surgery (OPCAB)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Coronary artery bypass grafting (CABG) can be performed with cardiopulmonary bypass (on-pump) or on the beating heart (off-pump / OPCAB). Each approach has distinct anaesthetic challenges.
+          </p>
+
+          {/* Comparison table */}
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold w-1/4">Feature</th>
+                  <th className="text-left py-2 text-primary font-semibold">On-Pump (CPB)</th>
+                  <th className="text-left py-2 font-semibold" style={{ color: "hsl(140, 50%, 48%)" }}>Off-Pump (OPCAB)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                {[
+                  { feature: "Heart", onPump: "Arrested (cardioplegia) — motionless, bloodless field", offPump: "Beating throughout — stabiliser devices used on target coronary territory" },
+                  { feature: "Lungs", onPump: "Ventilation stopped during CPB", offPump: "Ventilation continues — may need adjustments during posterior grafts" },
+                  { feature: "Anticoagulation", onPump: "Full heparinisation (ACT >480s)", offPump: "Lower-dose heparin (ACT 250–350s); some centres use full dose" },
+                  { feature: "Myocardial protection", onPump: "Cold blood/crystalloid cardioplegia ± topical cooling", offPump: "No cardioplegia — ischaemia managed by shunts, brief coronary occlusion" },
+                  { feature: "Haemodynamic management", onPump: "Pump controls flow & pressure; MAP target 50–70 mmHg on bypass", offPump: "Must maintain native CO; position changes (Trendelenburg, right tilt) to expose coronary targets → haemodynamic instability" },
+                  { feature: "SIRS / Inflammation", onPump: "Significant — blood–circuit contact activates complement, cytokines", offPump: "Reduced — no circuit contact; less coagulopathy and transfusion" },
+                  { feature: "Coagulopathy", onPump: "Platelet dysfunction, factor consumption, fibrinolysis; protamine reversal", offPump: "Less platelet dysfunction; lower transfusion requirements" },
+                  { feature: "Neurological injury", onPump: "Aortic cannulation/cross-clamp → risk of embolism, stroke (1–3%)", offPump: "Reduced aortic manipulation → potentially less stroke (partial clamp or 'no-touch' aortic technique)" },
+                  { feature: "Renal effects", onPump: "Non-pulsatile flow + haemodilution may impair renal perfusion", offPump: "Pulsatile native flow maintained; may reduce AKI in high-risk patients" },
+                  { feature: "Graft completeness", onPump: "Full revascularisation easier on still heart", offPump: "Posterior/lateral targets technically challenging → incomplete revascularisation risk" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-border/50">
+                    <td className="py-2 font-medium text-foreground">{row.feature}</td>
+                    <td className="py-2">{row.onPump}</td>
+                    <td className="py-2">{row.offPump}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* On-pump process */}
+          <div className="mb-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">On-Pump Process (Step by Step)</h3>
+            <div className="space-y-1.5">
+              {[
+                "Heparin 300–400 units/kg IV → confirm ACT >480 seconds",
+                "Aortic cannulation (ascending aorta) and venous cannulation (RA ± bicaval)",
+                "Initiate CPB — pump takes over circulation; ventilation stopped",
+                "Apply aortic cross-clamp → heart isolated from systemic circulation",
+                "Deliver cardioplegia (cold blood/crystalloid) → myocardial arrest and protection",
+                "Cool to target temperature (32°C moderate / 18–20°C deep hypothermic circulatory arrest)",
+                "Perform surgical repair/grafting on still, bloodless field",
+                "Rewarm to 37°C — de-air heart chambers (TOE guided)",
+                "Remove aortic cross-clamp → heart reperfuses → defibrillate if needed",
+                "Wean from CPB — optimise preload, HR/rhythm, contractility, afterload",
+                "Decannulate → protamine reversal of heparin (1 mg per 100 units) → haemostasis",
+              ].map((step, i) => (
+                <div key={i} className="flex items-start gap-3 p-2 rounded border border-border">
+                  <span className="text-xs font-bold text-primary w-5 text-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                  <span className="text-sm text-muted-foreground">{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* OPCAB challenges */}
+          <div className="mb-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">OPCAB — Anaesthetic Challenges</h3>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Haemodynamic Instability</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Heart displacement to access posterior vessels (LAD easy, RCA moderate, circumflex/OM difficult) causes ↓ ventricular filling, ↓ CO, hypotension. Managed with Trendelenburg, right lateral tilt, volume loading, and vasopressor/inotrope support. Stabiliser compression may reduce CO by 10–30%.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Ischaemia During Grafting</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Temporary coronary occlusion (snare) during distal anastomosis causes regional ischaemia. Use intracoronary shunts when possible. Monitor ST segments continuously (5-lead ECG, V5 most sensitive). Have GTN, inotropes, and CPB on standby (conversion rate 2–15%).
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Arrhythmias</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Cardiac manipulation → VT/VF, bradycardia, heart block. External pacing must be available. Surgeon may temporarily lift heart away if arrhythmia occurs. Brief periods of haemodynamic compromise are expected and tolerated.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Conversion to On-Pump</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Must always be prepared for emergency conversion (2–15% of OPCAB cases). Reasons: intractable ischaemia, haemodynamic collapse, malignant arrhythmia, poor target vessel quality. Heparin and cannulation equipment must be immediately available.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Key trials */}
+          <div className="p-4 rounded-lg border border-amber-500/20 bg-amber-500/5">
+            <p className="text-sm font-semibold text-amber-400 mb-2">Key Evidence — Exam Relevant</p>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p><strong className="text-foreground">ROOBY (2012):</strong> Off-pump had worse composite outcome at 1 year (death, MI, revascularisation) and lower graft patency vs on-pump in VA population.</p>
+              <p><strong className="text-foreground">CORONARY (2012):</strong> No significant difference in 30-day death, MI, stroke, or renal failure between on- and off-pump at 5 years. Off-pump had higher repeat revascularisation rate.</p>
+              <p><strong className="text-foreground">GOPCABE (2013):</strong> In elderly patients (&gt;75yr), no benefit of off-pump for 30-day or 12-month outcomes.</p>
+              <p><strong className="text-foreground">Current consensus:</strong> On-pump remains the standard for most patients. OPCAB may benefit select high-risk patients (heavily calcified aorta, CKD, previous stroke). Surgeon expertise is a major determinant of outcomes.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
