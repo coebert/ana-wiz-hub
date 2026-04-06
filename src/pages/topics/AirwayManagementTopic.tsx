@@ -7,6 +7,7 @@ import { BreathingCircuitDiagram } from "@/components/diagrams/BreathingCircuitD
 import DASAlgorithmDiagram from "@/components/diagrams/DASAlgorithmDiagram";
 import AirwayAssessmentDiagram from "@/components/diagrams/AirwayAssessmentDiagram";
 import CormackLehaneDiagram from "@/components/diagrams/CormackLehaneDiagram";
+import MallampatiDiagram from "@/components/diagrams/MallampatiDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const AirwayManagementTopic = () => {
@@ -14,6 +15,7 @@ const AirwayManagementTopic = () => {
     <SectionLayout title="Airway Management" subtitle="FRCA Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <DASAlgorithmDiagram />
       <CormackLehaneDiagram />
+      <MallampatiDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
