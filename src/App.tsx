@@ -3,10 +3,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
+import { AuthProvider } from "@/hooks/useAuth";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
+import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
