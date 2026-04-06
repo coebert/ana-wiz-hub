@@ -256,7 +256,7 @@ const NeckTrianglesDiagram = () => {
                 {selected === "occipital" && (
                   <g className="animate-fade-in">
                     <path d="M158,72 C168,82 178,95 188,110 C198,125 205,140 210,155" stroke="hsl(170, 45%, 45%)" strokeWidth="1.5" fill="none" strokeDasharray="3 2" opacity="0.7" />
-                    <text x="195, 88" fontSize="4" fill="hsl(170, 45%, 45%)" x="198" y="92">CN XI path</text>
+                    <text x="198" y="92" fontSize="4" fill="hsl(170, 45%, 45%)">CN XI path</text>
                     {/* Erb's point */}
                     <circle cx="158" cy="100" r="3" fill="none" stroke="hsl(170, 45%, 45%)" strokeWidth="1.5" opacity="0.7" />
                     <text x="134" y="104" fontSize="4" fill="hsl(170, 45%, 45%)">Erb's pt</text>
