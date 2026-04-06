@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
+import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 
 const ARDSTopic = () => {
   return (
@@ -58,6 +59,7 @@ const ARDSTopic = () => {
 
       {/* ECMO Section */}
       <ECMOCircuitDiagram />
+      <ECMOTroubleshootingDiagram />
 
       <section className="space-y-6 mb-10">
         {/* ECMO Indications & Referral */}
