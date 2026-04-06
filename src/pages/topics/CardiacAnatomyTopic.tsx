@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
+import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 
 const CardiacAnatomyTopic = () => {
   return (
@@ -76,6 +77,8 @@ const CardiacAnatomyTopic = () => {
           </div>
         </div>
       </section>
+
+      <CoronaryTerritoryMapDiagram />
 
       <KeyLearningPoints points={[
         "SA node at SVC-RA junction; AV node in triangle of Koch — both supplied primarily by RCA",
