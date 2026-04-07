@@ -118,6 +118,7 @@ const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomy
 const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
 const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
 const LowerLimbAnatomyTopic = lazy(() => import("./pages/topics/LowerLimbAnatomyTopic"));
+const EquipmentMonitoringTopic = lazy(() => import("./pages/topics/EquipmentMonitoringTopic"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
@@ -174,6 +175,7 @@ const App = () => (
           <Route path="/physics/ventilators" element={<VentilatorsTopic />} />
           <Route path="/physics/math-concepts" element={<MathConceptsTopic />} />
           <Route path="/physics/depth-of-anaesthesia" element={<DepthOfAnaesthesiaMonitoringTopic />} />
+          <Route path="/physics/equipment-monitoring" element={<EquipmentMonitoringTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
           <Route path="/physiology/cardiac-cycle" element={<CardiacCycleTopic />} />
