@@ -184,11 +184,23 @@ const BrachialPlexusDiagram = () => {
 
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex-1">
-          <svg viewBox="-10 0 440 440" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
+          <svg viewBox="-10 -5 440 450" className="w-full max-w-2xl mx-auto" style={{ height: "auto" }}>
             <defs>
               <linearGradient id="scaleneGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.06" />
-                <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.02" />
+                <stop offset="0%" stopColor="hsl(0, 25%, 55%)" stopOpacity="0.12" />
+                <stop offset="100%" stopColor="hsl(0, 20%, 45%)" stopOpacity="0.04" />
+              </linearGradient>
+              <linearGradient id="scalenemidGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(0, 20%, 50%)" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="hsl(0, 15%, 40%)" stopOpacity="0.03" />
+              </linearGradient>
+              <linearGradient id="boneGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(40, 30%, 75%)" stopOpacity="0.2" />
+                <stop offset="100%" stopColor="hsl(40, 25%, 60%)" stopOpacity="0.1" />
+              </linearGradient>
+              <linearGradient id="pectoralisGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(0, 30%, 50%)" stopOpacity="0.06" />
+                <stop offset="100%" stopColor="hsl(0, 25%, 42%)" stopOpacity="0.02" />
               </linearGradient>
               {/* Needle glow */}
               <filter id="needleGlow">
@@ -198,37 +210,89 @@ const BrachialPlexusDiagram = () => {
               <marker id="needleTip" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
                 <path d="M0,0 L6,3 L0,6 Z" fill="hsl(140, 60%, 45%)" />
               </marker>
+              {/* Muscle fibre pattern */}
+              <pattern id="muscleFibre" patternUnits="userSpaceOnUse" width="4" height="8" patternTransform="rotate(15)">
+                <line x1="2" y1="0" x2="2" y2="8" stroke="hsl(0, 30%, 50%)" strokeWidth="0.5" opacity="0.12" />
+              </pattern>
             </defs>
 
-            {/* Anterior scalene */}
-            <path d="M 60,15 Q 50,50 45,90 Q 40,130 38,170 Q 36,195 40,210"
-              fill="url(#scaleneGrad)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
-            <path d="M 75,15 Q 65,50 60,90 Q 55,130 53,170 Q 51,195 55,210"
-              fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
-            <text x="30" y="105" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.4" transform="rotate(-80, 30, 105)">Anterior scalene</text>
+            {/* ===== VERTEBRAL BODIES (C4–T2 hint) ===== */}
+            <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.8">
+              {[0, 28, 56, 84, 112, 140].map((dy, i) => (
+                <rect key={i} x="410" y={-2 + dy} width="22" height="22" rx="3" />
+              ))}
+              <g fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.5">
+                <text x="421" y="12" textAnchor="middle">C4</text>
+                <text x="421" y="40" textAnchor="middle">C5</text>
+                <text x="421" y="68" textAnchor="middle">C6</text>
+                <text x="421" y="96" textAnchor="middle">C7</text>
+                <text x="421" y="124" textAnchor="middle">C8</text>
+                <text x="421" y="152" textAnchor="middle">T1</text>
+              </g>
+            </g>
 
-            {/* Middle scalene */}
-            <path d="M 350,15 Q 355,50 358,90 Q 360,130 362,170 Q 364,195 360,210"
-              fill="url(#scaleneGrad)" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
-            <text x="375" y="105" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.4" transform="rotate(80, 375, 105)">Middle scalene</text>
+            {/* ===== ANTERIOR SCALENE — triangular anatomical shape ===== */}
+            <path d="M 65,0 C 62,15 58,40 55,70 C 52,100 50,130 48,160 C 47,175 48,185 52,195 L 75,195 C 72,180 70,160 68,130 C 66,100 68,65 72,30 C 74,15 75,5 75,0 Z"
+              fill="url(#scaleneGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.6" opacity="0.5" />
+            <rect x="48" y="0" width="27" height="195" fill="url(#muscleFibre)" opacity="0.3" />
+            <text x="38" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(-85, 38, 100)" fontStyle="italic">Anterior scalene</text>
 
-            {/* First rib */}
-            <path d="M 30,175 Q 100,165 210,160 Q 320,165 390,175" fill="none"
-              stroke="hsl(var(--muted-foreground))" strokeWidth="1.8" opacity="0.12" />
-            <text x="400" y="172" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">1st rib</text>
+            {/* ===== MIDDLE SCALENE — wider, more posterior ===== */}
+            <path d="M 345,0 C 348,15 352,40 355,70 C 358,100 360,130 362,160 C 363,175 362,185 358,195 L 335,195 C 338,180 340,160 342,130 C 344,100 342,65 338,30 C 336,15 335,5 335,0 Z"
+              fill="url(#scalenemidGrad)" stroke="hsl(0, 15%, 48%)" strokeWidth="0.6" opacity="0.5" />
+            <rect x="335" y="0" width="28" height="195" fill="url(#muscleFibre)" opacity="0.25" />
+            <text x="372" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(85, 372, 100)" fontStyle="italic">Middle scalene</text>
 
-            {/* Clavicle */}
-            <path d="M 5,195 Q 60,185 140,183 Q 220,182 300,185 Q 370,188 420,195"
-              fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="3" opacity="0.15" strokeLinecap="round" />
-            <path d="M 5,200 Q 60,190 140,188 Q 220,187 300,190 Q 370,193 420,200"
-              fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.1" />
-            <text x="210" y="180" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">— CLAVICLE —</text>
+            {/* ===== INTERSCALENE GROOVE (between scalenes) ===== */}
+            <path d="M 75,20 Q 210,15 335,20 L 335,195 Q 210,188 75,195 Z"
+              fill="hsl(var(--muted-foreground))" fillOpacity="0.015" stroke="none" />
+            <text x="210" y="25" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">interscalene groove</text>
 
-            {/* Axillary artery */}
-            <path d="M 210,165 Q 210,200 208,240 Q 205,280 202,320 Q 200,360 198,410"
-              fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3" opacity="0.12" strokeDasharray="4 3" />
-            <text x="188" y="270" fontSize="5" fill="hsl(0, 55%, 50%)" opacity="0.3" transform="rotate(-88, 188, 270)">Axillary artery</text>
-            <text x="215" y="162" fontSize="4.5" fill="hsl(0, 55%, 50%)" opacity="0.3">Subclavian a.</text>
+            {/* ===== FIRST RIB — curved anatomical shape ===== */}
+            <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
+              fill="none" stroke="hsl(40, 30%, 55%)" strokeWidth="5" opacity="0.12" strokeLinecap="round" />
+            <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
+              fill="none" stroke="hsl(40, 25%, 50%)" strokeWidth="1.2" opacity="0.18" />
+            {/* Scalene tubercle on first rib */}
+            <circle cx="100" cy="158" r="3" fill="hsl(40, 30%, 60%)" opacity="0.12" />
+            <text x="100" y="172" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.25" fontStyle="italic">scalene tubercle</text>
+            <text x="400" y="168" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">1st rib</text>
+
+            {/* ===== CLAVICLE — realistic S-shape ===== */}
+            <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
+              fill="none" stroke="hsl(40, 25%, 60%)" strokeWidth="7" opacity="0.13" strokeLinecap="round" />
+            <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
+              fill="none" stroke="hsl(40, 20%, 50%)" strokeWidth="1.5" opacity="0.2" />
+            {/* Sternal end */}
+            <ellipse cx="5" cy="193" rx="6" ry="4" fill="hsl(40, 25%, 60%)" opacity="0.1" />
+            <text x="210" y="178" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">— CLAVICLE —</text>
+
+            {/* ===== PECTORALIS MAJOR/MINOR — below clavicle ===== */}
+            <path d="M 30,200 Q 100,196 210,195 Q 320,196 390,200 L 380,310 Q 300,295 210,290 Q 120,295 40,310 Z"
+              fill="url(#pectoralisGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.3" />
+            <text x="70" y="245" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">Pec major</text>
+            {/* Pectoralis minor */}
+            <path d="M 80,225 Q 150,218 220,215 Q 250,218 270,225 L 265,270 Q 200,262 160,262 Q 120,265 85,270 Z"
+              fill="hsl(0, 25%, 48%)" fillOpacity="0.04" stroke="hsl(0, 20%, 48%)" strokeWidth="0.4" opacity="0.3" strokeDasharray="3 2" />
+            <text x="180" y="250" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.18" fontStyle="italic">Pec minor</text>
+
+            {/* ===== SUBCLAVIAN → AXILLARY ARTERY — red, pulsating ===== */}
+            <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
+              fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3.5" opacity="0.12" strokeLinecap="round" />
+            {/* Arterial wall shimmer */}
+            <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
+              fill="none" stroke="hsl(0, 60%, 60%)" strokeWidth="0.8" opacity="0.15" strokeDasharray="1 3" />
+            {/* Companion vein (slightly lateral) */}
+            <path d="M 215,165 Q 215,185 214,210 Q 213,240 212,270 Q 210,310 208,350 Q 206,385 205,415"
+              fill="none" stroke="hsl(220, 45%, 50%)" strokeWidth="2" opacity="0.06" strokeLinecap="round" />
+            <text x="188" y="270" fontSize="5" fill="hsl(0, 55%, 50%)" opacity="0.35" transform="rotate(-88, 188, 270)" fontStyle="italic">Axillary artery</text>
+            <text x="215" y="155" fontSize="4.5" fill="hsl(0, 55%, 50%)" opacity="0.3">Subclavian a.</text>
+            {/* Parts of axillary artery */}
+            <g opacity="0.15" fontSize="3.5" fill="hsl(0, 50%, 50%)">
+              <text x="220" y="195">1st part</text>
+              <text x="220" y="245">2nd part</text>
+              <text x="220" y="330">3rd part</text>
+            </g>
 
             {/* Level zone backgrounds */}
             <rect x="-5" y="45" width="430" height="35" rx="4" fill="hsl(0, 60%, 55%)" fillOpacity="0.03" />
