@@ -95,6 +95,46 @@ const EquipmentMonitoringTopic = () => {
               COSHH limits: N₂O &lt;100 ppm, halogenated agents &lt;50 ppm (8-hr TWA).
             </p>
           </div>
+
+          {/* Mapleson Comparison Table */}
+          <div className="mt-6">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Mapleson Circuit Efficiency Comparison</h3>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="text-left p-3 font-semibold text-foreground border-b border-border">Circuit</th>
+                    <th className="text-left p-3 font-semibold text-foreground border-b border-border">Also Known As</th>
+                    <th className="text-center p-3 font-semibold text-foreground border-b border-border">Spontaneous</th>
+                    <th className="text-center p-3 font-semibold text-foreground border-b border-border">Controlled</th>
+                    <th className="text-left p-3 font-semibold text-foreground border-b border-border">Key Feature</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { circuit: "A", aka: "Magill", spont: "★★★", ctrl: "★", note: "APL valve near patient — vents alveolar gas first" },
+                    { circuit: "B", aka: "—", spont: "★★", ctrl: "★★", note: "Rarely used clinically" },
+                    { circuit: "C", aka: "Waters", spont: "★★", ctrl: "★★", note: "No tubing — bag connected directly" },
+                    { circuit: "D", aka: "Bain (coaxial)", spont: "★★", ctrl: "★★★", note: "FGF at patient end via inner tube" },
+                    { circuit: "E", aka: "Ayre's T-piece", spont: "★★", ctrl: "★★", note: "No valves/bag — minimal resistance (neonates)" },
+                    { circuit: "F", aka: "Jackson-Rees", spont: "★★", ctrl: "★★", note: "T-piece + open-tail bag for IPPV" },
+                  ].map((row) => (
+                    <tr key={row.circuit} className="border-b border-border last:border-0 hover:bg-accent/30 transition-colors">
+                      <td className="p-3 font-medium text-foreground">Mapleson {row.circuit}</td>
+                      <td className="p-3 text-muted-foreground">{row.aka}</td>
+                      <td className="p-3 text-center">{row.spont}</td>
+                      <td className="p-3 text-center">{row.ctrl}</td>
+                      <td className="p-3 text-muted-foreground">{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              ★★★ = most efficient (lowest FGF required) · ★★ = moderate · ★ = least efficient.
+              FGF requirements: Mapleson A spontaneous ≈ 1× MV; Mapleson D controlled ≈ 1–2× MV; inefficient combinations require 2–3× MV.
+            </p>
+          </div>
           <div className="bg-card rounded-xl border border-border p-4 mt-4">
             <BreathingCircuitsDiagram />
           </div>
