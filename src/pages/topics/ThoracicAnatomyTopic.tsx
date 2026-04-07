@@ -84,9 +84,12 @@ const ThoracicAnatomyTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diaphragm</h2>
-          <p className="text-muted-foreground leading-relaxed">
+          <p className="text-muted-foreground leading-relaxed mb-4">
             Principal muscle of respiration. Dome-shaped. Motor supply: phrenic nerve (C3,4,5 — "C3,4,5 keeps the diaphragm alive"). Right crus: larger, encircles oesophagus. Three major openings: aortic hiatus (T12 — aorta, thoracic duct, azygos vein), oesophageal hiatus (T10 — oesophagus, vagal trunks), vena caval foramen (T8 — IVC, right phrenic nerve).
           </p>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <DiaphragmDiagram />
+          </div>
         </div>
 
         <div>
