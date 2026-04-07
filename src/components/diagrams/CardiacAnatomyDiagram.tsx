@@ -235,35 +235,61 @@ function Valve({
   );
 }
 
-function Leaflet({ pos, rot, color, size }: {
-  pos: [number, number, number]; rot: [number, number, number]; color: string; size: [number, number];
+function Leaflet({ pos, rot, color, size, clip }: {
+  pos: [number, number, number]; rot: [number, number, number]; color: string; size: [number, number]; clip?: THREE.Plane[];
 }) {
   return (
     <mesh position={pos} rotation={rot}>
       <planeGeometry args={size} />
-      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.65} roughness={0.5} />
+      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.65} roughness={0.5}
+        clippingPlanes={clip} clipShadows />
     </mesh>
   );
 }
 
-function Chorda({ from, to, color }: { from: [number, number, number]; to: [number, number, number]; color: string }) {
+/** Semilunar cusp — pocket-shaped geometry for aortic/pulmonary valves */
+function SemilunarCusp({ position, rotation, color, radius = 0.06, clip }: {
+  position: [number, number, number]; rotation: [number, number, number]; color: string; radius?: number; clip?: THREE.Plane[];
+}) {
   const geo = useMemo(() => {
-    const mid: [number, number, number] = [
-      (from[0] + to[0]) / 2 + (Math.random() - 0.5) * 0.02,
-      (from[1] + to[1]) / 2 - 0.04,
-      (from[2] + to[2]) / 2 + (Math.random() - 0.5) * 0.02,
-    ];
-    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(...from), new THREE.Vector3(...mid), new THREE.Vector3(...to)]);
-    return new THREE.TubeGeometry(curve, 8, 0.004, 4, false);
-  }, [from, to]);
-  return <mesh geometry={geo}><meshStandardMaterial color={color} roughness={0.6} /></mesh>;
+    const shape = new THREE.Shape();
+    // Half-moon pocket shape
+    shape.moveTo(-radius, 0);
+    shape.quadraticCurveTo(-radius * 0.8, radius * 1.2, 0, radius * 1.3);
+    shape.quadraticCurveTo(radius * 0.8, radius * 1.2, radius, 0);
+    shape.quadraticCurveTo(radius * 0.6, radius * 0.3, 0, radius * 0.4);
+    shape.quadraticCurveTo(-radius * 0.6, radius * 0.3, -radius, 0);
+    return new THREE.ShapeGeometry(shape, 12);
+  }, [radius]);
+
+  return (
+    <mesh geometry={geo} position={position} rotation={rotation}>
+      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.6}
+        roughness={0.45} clearcoat={0.2} clippingPlanes={clip} clipShadows />
+    </mesh>
+  );
 }
 
-function PapillaryMuscle({ pos, color }: { pos: [number, number, number]; color: string }) {
+function Chorda({ from, to, color, clip }: { from: [number, number, number]; to: [number, number, number]; color: string; clip?: THREE.Plane[] }) {
+  const geo = useMemo(() => {
+    const mid: [number, number, number] = [
+      (from[0] + to[0]) / 2 + (Math.random() - 0.5) * 0.015,
+      (from[1] + to[1]) / 2 - 0.03,
+      (from[2] + to[2]) / 2 + (Math.random() - 0.5) * 0.015,
+    ];
+    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(...from), new THREE.Vector3(...mid), new THREE.Vector3(...to)]);
+    return new THREE.TubeGeometry(curve, 10, 0.003, 4, false);
+  }, [from, to]);
+  return <mesh geometry={geo}><meshStandardMaterial color={color} roughness={0.6} clippingPlanes={clip} clipShadows /></mesh>;
+}
+
+function PapillaryMuscle({ pos, color, height = 0.14, radius = 0.04, clip }: {
+  pos: [number, number, number]; color: string; height?: number; radius?: number; clip?: THREE.Plane[];
+}) {
   return (
     <mesh position={pos}>
-      <coneGeometry args={[0.045, 0.14, 8]} />
-      <meshStandardMaterial color={color} roughness={0.7} />
+      <coneGeometry args={[radius, height, 10]} />
+      <meshStandardMaterial color={color} roughness={0.7} clippingPlanes={clip} clipShadows />
     </mesh>
   );
 }
