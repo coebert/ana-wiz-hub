@@ -271,32 +271,92 @@ const CircleOfWillisDiagram = () => {
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
           <svg viewBox="20 35 320 305" width="320" height="300" className="border border-border rounded">
-            {/* Brain outline - inferior view with more detail */}
-            <g opacity="0.12" stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none">
-              {/* Frontal lobes */}
-              <path d="M180,42 C130,42 70,68 55,118 C45,153 50,178 65,193" />
-              <path d="M180,42 C230,42 290,68 305,118 C315,153 310,178 295,193" />
-              {/* Temporal lobes */}
-              <path d="M65,193 C55,208 50,238 60,263 C70,283 90,298 120,308" />
-              <path d="M295,193 C305,208 310,238 300,263 C290,283 270,298 240,308" />
-              {/* Occipital */}
-              <path d="M120,308 C150,318 210,318 240,308" />
-              {/* Interhemispheric fissure */}
-              <line x1="180" y1="42" x2="180" y2="88" strokeDasharray="3 3" />
-              {/* Sylvian fissures */}
-              <path d="M140,150 C120,145 100,145 80,148" strokeDasharray="2 2" />
-              <path d="M220,150 C240,145 260,145 280,148" strokeDasharray="2 2" />
-              {/* Brainstem outline */}
-              <ellipse cx="180" cy="245" rx="22" ry="45" />
-              {/* Cerebellum lobes */}
-              <path d="M110,260 C100,270 90,285 88,300 C86,312 95,320 110,322 C130,324 150,318 165,310" strokeDasharray="3 2" />
-              <path d="M250,260 C260,270 270,285 272,300 C274,312 265,320 250,322 C230,324 210,318 195,310" strokeDasharray="3 2" />
-              {/* Optic chiasm */}
-              <path d="M158,140 L180,148 L202,140" strokeWidth="1.8" />
-              <text x="180" y="138" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))">Optic chiasm</text>
-              {/* Tentorium */}
-              <path d="M70,200 C100,192 140,188 180,188 C220,188 260,192 290,200" strokeDasharray="5 3" opacity="0.6" />
+            {/* Brain outline — inferior (basal) view with anatomical detail */}
+            <g opacity="0.14" stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none">
+              {/* Frontal lobes — wider anteriorly with gyral folding */}
+              <path d="M180,42 C155,42 125,48 100,62 C78,76 62,95 55,118 C48,142 50,165 58,182 C62,190 65,193 65,193" />
+              <path d="M180,42 C205,42 235,48 260,62 C282,76 298,95 305,118 C312,142 310,165 302,182 C298,190 295,193 295,193" />
+              {/* Frontal pole detail — olfactory sulcus */}
+              <path d="M160,50 C165,55 170,62 172,72" strokeDasharray="2 2" opacity="0.6" />
+              <path d="M200,50 C195,55 190,62 188,72" strokeDasharray="2 2" opacity="0.6" />
+              {/* Longitudinal fissure */}
+              <line x1="180" y1="42" x2="180" y2="92" strokeDasharray="3 3" />
+              {/* Orbital surfaces (frontal lobe gyri) */}
+              <path d="M120,70 C130,75 140,78 150,78" strokeWidth="0.6" opacity="0.4" />
+              <path d="M240,70 C230,75 220,78 210,78" strokeWidth="0.6" opacity="0.4" />
+
+              {/* Temporal lobes — curved inferiorly with uncus */}
+              <path d="M65,193 C58,205 52,222 50,240 C48,258 52,275 62,288 C72,300 88,308 110,314 C125,318 140,320 155,318" />
+              <path d="M295,193 C302,205 308,222 310,240 C312,258 308,275 298,288 C288,300 272,308 250,314 C235,318 220,320 205,318" />
+              {/* Temporal uncus (medial temporal lobe — tentorial notch) */}
+              <path d="M125,175 C118,182 112,188 110,195" strokeWidth="1.2" opacity="0.5" />
+              <path d="M235,175 C242,182 248,188 250,195" strokeWidth="1.2" opacity="0.5" />
+              <text x="100" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
+              <text x="256" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
+
+              {/* Sylvian fissures — more anatomically correct lateral sulcus */}
+              <path d="M145,148 C130,143 112,140 95,140 C82,142 72,146 65,152" strokeDasharray="2 2" strokeWidth="0.8" />
+              <path d="M215,148 C230,143 248,140 265,140 C278,142 288,146 295,152" strokeDasharray="2 2" strokeWidth="0.8" />
+
+              {/* Occipital lobes */}
+              <path d="M155,318 C165,322 175,324 180,324 C185,324 195,322 205,318" />
+              <path d="M110,314 C120,320 140,326 160,328 C175,329 185,329 200,328 C220,326 240,320 250,314" strokeDasharray="3 2" opacity="0.5" />
+
+              {/* ===== BRAINSTEM — anatomically detailed ===== */}
+              {/* Midbrain (cerebral peduncles) */}
+              <ellipse cx="180" cy="210" rx="18" ry="10" strokeWidth="1.2" />
+              <text x="180" y="213" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">midbrain</text>
+              {/* Pons — wider, rectangular with basilar sulcus */}
+              <path d="M160,220 L160,255 Q165,260 180,262 Q195,260 200,255 L200,220 Q195,218 180,217 Q165,218 160,220 Z" strokeWidth="1.2" />
+              <line x1="180" y1="220" x2="180" y2="258" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.4" />
+              <text x="180" y="242" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">pons</text>
+              {/* Medulla oblongata — tapered */}
+              <path d="M165,258 L168,285 Q175,292 180,293 Q185,292 192,285 L195,258" strokeWidth="1" />
+              {/* Pyramids */}
+              <line x1="177" y1="262" x2="177" y2="288" strokeWidth="0.5" opacity="0.4" />
+              <line x1="183" y1="262" x2="183" y2="288" strokeWidth="0.5" opacity="0.4" />
+              <text x="180" y="278" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">medulla</text>
+
+              {/* Cerebellum — more detailed inferior view */}
+              <path d="M115,250 C105,258 95,272 90,288 C86,302 88,314 98,320 C108,326 122,326 138,322 C152,318 162,312 168,305" strokeWidth="1.2" />
+              <path d="M245,250 C255,258 265,272 270,288 C274,302 272,314 262,320 C252,326 238,326 222,322 C208,318 198,312 192,305" strokeWidth="1.2" />
+              {/* Cerebellar folia (surface folds) */}
+              <path d="M100,275 C110,278 125,280 135,278" strokeWidth="0.5" opacity="0.4" />
+              <path d="M95,290 C108,294 125,296 140,294" strokeWidth="0.5" opacity="0.4" />
+              <path d="M260,275 C250,278 235,280 225,278" strokeWidth="0.5" opacity="0.4" />
+              <path d="M265,290 C252,294 235,296 220,294" strokeWidth="0.5" opacity="0.4" />
+              {/* Vermis */}
+              <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.6" opacity="0.5" />
+              <text x="180" y="318" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">vermis</text>
+
+              {/* Optic chiasm — more anatomical */}
+              <path d="M152,138 L168,148 L180,150 L192,148 L208,138" strokeWidth="2" opacity="0.7" />
+              <path d="M168,148 L180,142 L192,148" strokeWidth="1.5" opacity="0.5" />
+              <text x="180" y="136" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))">Optic chiasm</text>
+              {/* Optic nerves */}
+              <path d="M152,138 C140,128 128,118 115,112" strokeWidth="1.5" opacity="0.5" />
+              <path d="M208,138 C220,128 232,118 245,112" strokeWidth="1.5" opacity="0.5" />
+              {/* Optic tracts */}
+              <path d="M168,148 C158,158 145,168 135,175" strokeWidth="1.2" opacity="0.4" strokeDasharray="2 2" />
+              <path d="M192,148 C202,158 215,168 225,175" strokeWidth="1.2" opacity="0.4" strokeDasharray="2 2" />
+
+              {/* Tentorium cerebelli — dural fold */}
+              <path d="M65,200 C95,192 135,188 180,188 C225,188 265,192 295,200" strokeDasharray="5 3" opacity="0.5" strokeWidth="1.2" />
               <text x="310" y="195" fontSize="4" fill="hsl(var(--muted-foreground))">Tentorium</text>
+
+              {/* Sella turcica / pituitary fossa hint */}
+              <path d="M170,155 Q175,162 180,164 Q185,162 190,155" strokeWidth="0.8" opacity="0.4" />
+              <text x="180" y="170" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">sella</text>
+
+              {/* Cranial nerve exit points */}
+              <g opacity="0.3" fill="hsl(var(--muted-foreground))">
+                <circle cx="168" cy="218" r="1.2" />
+                <text x="155" y="220" fontSize="3">CN III</text>
+                <circle cx="192" cy="218" r="1.2" />
+                <circle cx="155" cy="238" r="1.2" />
+                <text x="142" y="240" fontSize="3">CN V</text>
+                <circle cx="205" cy="238" r="1.2" />
+              </g>
             </g>
 
             {/* Vessel paths */}
