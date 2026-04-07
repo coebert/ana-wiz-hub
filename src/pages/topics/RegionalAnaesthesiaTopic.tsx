@@ -6,6 +6,7 @@ import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
 import DermatomeDiagram from "@/components/diagrams/DermatomeDiagram";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
+import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RegionalAnaesthesiaTopic = () => {
@@ -14,6 +15,7 @@ const RegionalAnaesthesiaTopic = () => {
       <DermatomeMapDiagram />
       <DermatomeDiagram />
       <RegionalBlocksDiagram />
+      <NeuraxialNeedlesDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Anaesthesia</h2>
