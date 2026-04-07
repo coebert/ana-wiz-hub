@@ -11,9 +11,6 @@ import { ReferencesList } from "@/components/ReferencesList";
 const SpinalAnatomyTopic = () => {
   return (
     <SectionLayout title="Vertebral Column & Spinal Cord" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <SpinalCordCrossSectionDiagram />
-      <SpinalCordAxialDiagram />
-      <DermatomeMyotomeDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vertebral Column</h2>
@@ -43,7 +40,10 @@ const SpinalAnatomyTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Midline approach (superficial → deep):
           </p>
-          <div className="space-y-1.5">
+
+          <SpinalCordAxialDiagram />
+
+          <div className="space-y-1.5 mt-4">
             {[
               "Skin",
               "Subcutaneous fat",
@@ -65,7 +65,10 @@ const SpinalAnatomyTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          <SpinalCordCrossSectionDiagram />
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Cord Termination</p>
               <p className="text-sm text-muted-foreground mt-1">Conus medullaris ends at L1/2 in adults (L3 in neonates). Filum terminale extends to S2. Cauda equina (nerve roots) below conus. Spinal anaesthesia at L3/4 or below is safe in adults.</p>
@@ -75,6 +78,11 @@ const SpinalAnatomyTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">1 anterior spinal artery (supplies anterior 2/3) + 2 posterior spinal arteries (posterior 1/3). Artery of Adamkiewicz: major radicular artery (T9–T12, usually left) — damage → anterior spinal artery syndrome.</p>
             </div>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatomes & Myotomes</h2>
+          <DermatomeMyotomeDiagram />
         </div>
 
         <div>

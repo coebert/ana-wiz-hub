@@ -9,7 +9,6 @@ import { ReferencesList } from "@/components/ReferencesList";
 const HeadNeckAnatomyTopic = () => {
   return (
     <SectionLayout title="Head & Neck Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <NeckTrianglesDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cranial Nerves — Anaesthetic Relevance</h2>
@@ -36,7 +35,11 @@ const HeadNeckAnatomyTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Triangles of the Neck</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The neck is divided by the sternocleidomastoid into anterior and posterior triangles — key landmarks for vascular access, nerve blocks, and surgical approaches.
+          </p>
+          <NeckTrianglesDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Anterior Triangle</p>
               <p className="text-sm text-muted-foreground mt-1">Borders: midline, SCM, mandible. Contains: carotid sheath (CCA/ICA, IJV, vagus), thyroid gland, larynx, trachea, submandibular gland. Subdivided into: carotid, muscular, submandibular, submental triangles.</p>
