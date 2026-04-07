@@ -11,16 +11,16 @@ import { ReferencesList } from "@/components/ReferencesList";
 const ThoracicAnatomyTopic = () => {
   return (
     <SectionLayout title="Thoracic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <IntercostalAnatomyDiagram />
-      <ParavertebralSpaceDiagram />
-      <FirstRibDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Wall & Intercostal Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The thoracic cage comprises 12 pairs of ribs, sternum, and thoracic vertebrae. The intercostal space is key for chest drain insertion, intercostal nerve blocks, and thoracic procedures.
           </p>
-          <div className="space-y-1.5">
+
+          <IntercostalAnatomyDiagram />
+
+          <div className="space-y-1.5 mt-4">
             <p className="text-sm text-foreground font-semibold">Layers of the intercostal space (superficial → deep):</p>
             {[
               "Skin → superficial fascia → external intercostal muscle (fibres run downward and forward)",
@@ -91,9 +91,15 @@ const ThoracicAnatomyTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paravertebral Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            The paravertebral space is a wedge-shaped potential space lateral to the vertebral column. It is bounded medially by the vertebral body/intervertebral disc/foramen, posteriorly by the transverse process and superior costotransverse ligament, and anterolaterally by the parietal pleura. It contains the spinal nerve (before it divides into dorsal and ventral rami), the sympathetic chain, fat, and areolar tissue.
+            The paravertebral space is a wedge-shaped potential space lateral to the vertebral column.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          <ParavertebralSpaceDiagram />
+
+          <p className="text-muted-foreground leading-relaxed mt-3">
+            It is bounded medially by the vertebral body/intervertebral disc/foramen, posteriorly by the transverse process and superior costotransverse ligament, and anterolaterally by the parietal pleura. It contains the spinal nerve (before it divides into dorsal and ventral rami), the sympathetic chain, fat, and areolar tissue.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Paravertebral Block Technique</p>
               <p className="text-sm text-muted-foreground mt-1">Landmark: 2.5 cm lateral to spinous process. Contact transverse process at 2–4 cm depth, walk off inferiorly and advance 1–1.5 cm through the superior costotransverse ligament (loss of resistance). Single injection spreads 3–5 dermatomes. Dose: 0.3–0.5 mL/kg bupivacaine 0.25–0.5%.</p>
@@ -108,9 +114,15 @@ const ThoracicAnatomyTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The First Rib</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            The first rib is the broadest, shortest, and most curved rib. It is flattened with superior and inferior surfaces (unlike other ribs which have inner and outer surfaces). The scalene tubercle on its inner border is a critical landmark dividing structures that cross the rib: the subclavian vein passes anterior and the subclavian artery with brachial plexus trunks pass posterior to it.
+            The first rib is the broadest, shortest, and most curved rib. It is flattened with superior and inferior surfaces.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          <FirstRibDiagram />
+
+          <p className="text-muted-foreground leading-relaxed mt-3">
+            The scalene tubercle on its inner border is a critical landmark dividing structures that cross the rib: the subclavian vein passes anterior and the subclavian artery with brachial plexus trunks pass posterior to it.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Key Muscular Attachments</p>
               <p className="text-sm text-muted-foreground mt-1">Scalenus anterior inserts on scalene tubercle. Scalenus medius inserts posteriorly. Subclavius muscle on inferior surface. The interscalene groove (between anterior and middle scalene) contains the brachial plexus roots and subclavian artery.</p>

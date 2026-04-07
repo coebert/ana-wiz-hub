@@ -9,14 +9,16 @@ import { ReferencesList } from "@/components/ReferencesList";
 const AbdominalAnatomyTopic = () => {
   return (
     <SectionLayout title="Abdominal & Pelvic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <AbdominalWallDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anterior Abdominal Wall Layers</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Understanding the abdominal wall layers is essential for TAP blocks, rectus sheath blocks, and laparoscopic port placement.
           </p>
-          <div className="space-y-1.5">
+
+          <AbdominalWallDiagram />
+
+          <div className="space-y-1.5 mt-4">
             {[
               "Skin → Camper's fascia (fatty) → Scarpa's fascia (membranous)",
               "External oblique (fibres run downward and medially — 'hands in pockets')",

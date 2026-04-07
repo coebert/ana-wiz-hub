@@ -9,7 +9,6 @@ import { ReferencesList } from "@/components/ReferencesList";
 const AirwayAnatomyTopic = () => {
   return (
     <SectionLayout title="Airway & Laryngeal Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <LaryngealCrossSectionDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nasal Cavity & Pharynx</h2>
@@ -33,7 +32,10 @@ const AirwayAnatomyTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             The larynx extends from C3–C6. It comprises a cartilaginous skeleton, intrinsic and extrinsic muscles, and mucosal lining.
           </p>
-          <div className="overflow-x-auto">
+
+          <LaryngealCrossSectionDiagram />
+
+          <div className="overflow-x-auto mt-4">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-border">

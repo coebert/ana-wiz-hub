@@ -11,13 +11,15 @@ const CardiacAnatomyTopic = () => {
   return (
     <SectionLayout title="Cardiac & Great Vessel Anatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
       <section className="space-y-6 mb-10">
-        <CardiacAnatomyDiagram />
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Chambers & Valves</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The heart lies in the middle mediastinum, enclosed in pericardium. Two-thirds lies to the left of the midline. The cardiac skeleton (fibrous rings) provides electrical insulation between atria and ventricles.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          <CardiacAnatomyDiagram />
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Right Heart</p>
               <p className="text-sm text-muted-foreground mt-1">RA: receives SVC, IVC, coronary sinus. SA node (RA/SVC junction). AV node (triangle of Koch — tendon of Todaro, coronary sinus os, tricuspid annulus). RV: trabeculated, infundibulum leads to pulmonary valve.</p>
@@ -44,6 +46,10 @@ const CardiacAnatomyTopic = () => {
                 <span className="text-sm text-muted-foreground">{a.detail}</span>
               </div>
             ))}
+          </div>
+
+          <div className="mt-4">
+            <CoronaryTerritoryMapDiagram />
           </div>
         </div>
 
@@ -78,8 +84,6 @@ const CardiacAnatomyTopic = () => {
           </div>
         </div>
       </section>
-
-      <CoronaryTerritoryMapDiagram />
 
       <KeyLearningPoints points={[
         "SA node at SVC-RA junction; AV node in triangle of Koch — both supplied primarily by RCA",

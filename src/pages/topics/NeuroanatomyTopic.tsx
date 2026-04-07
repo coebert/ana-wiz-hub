@@ -10,14 +10,16 @@ import { ReferencesList } from "@/components/ReferencesList";
 const NeuroanatomyTopic = () => {
   return (
     <SectionLayout title="Neuroanatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <CircleOfWillisDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Blood Supply — Circle of Willis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The brain receives 15% of cardiac output (~750 ml/min). Autoregulation maintains CBF between MAP 50–150 mmHg. The circle of Willis provides collateral circulation between anterior (ICA) and posterior (vertebrobasilar) circulations.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+
+          <CircleOfWillisDiagram />
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Anterior Circulation (ICA)</p>
               <p className="text-sm text-muted-foreground mt-1">ICA → ACA + MCA. ACA supplies medial surfaces of frontal/parietal lobes. MCA supplies lateral surface (motor/sensory strip) — most commonly affected in stroke. Anterior communicating artery connects ACAs (commonest site of aneurysm).</p>
@@ -47,11 +49,12 @@ const NeuroanatomyTopic = () => {
           </div>
         </div>
 
-        <SkullBaseDiagram />
-
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
-          <div className="overflow-x-auto">
+
+          <SkullBaseDiagram />
+
+          <div className="overflow-x-auto mt-4">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-border">

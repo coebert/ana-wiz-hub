@@ -10,8 +10,6 @@ import { ReferencesList } from "@/components/ReferencesList";
 const BrachialPlexusTopic = () => {
   return (
     <SectionLayout title="Brachial Plexus" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <BrachialPlexusDiagram />
-      <BrachialPlexusUltrasoundDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Organisation: Roots → Trunks → Divisions → Cords → Branches</h2>
@@ -34,6 +32,8 @@ const BrachialPlexusTopic = () => {
           </div>
         </div>
 
+        <BrachialPlexusDiagram />
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Block Approaches & Anatomy</h2>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -55,6 +55,8 @@ const BrachialPlexusTopic = () => {
             </div>
           </div>
         </div>
+
+        <BrachialPlexusUltrasoundDiagram />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Terminal Nerves</h2>
