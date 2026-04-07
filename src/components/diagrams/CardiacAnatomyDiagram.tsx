@@ -235,35 +235,61 @@ function Valve({
   );
 }
 
-function Leaflet({ pos, rot, color, size }: {
-  pos: [number, number, number]; rot: [number, number, number]; color: string; size: [number, number];
+function Leaflet({ pos, rot, color, size, clip }: {
+  pos: [number, number, number]; rot: [number, number, number]; color: string; size: [number, number]; clip?: THREE.Plane[];
 }) {
   return (
     <mesh position={pos} rotation={rot}>
       <planeGeometry args={size} />
-      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.65} roughness={0.5} />
+      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.65} roughness={0.5}
+        clippingPlanes={clip} clipShadows />
     </mesh>
   );
 }
 
-function Chorda({ from, to, color }: { from: [number, number, number]; to: [number, number, number]; color: string }) {
+/** Semilunar cusp — pocket-shaped geometry for aortic/pulmonary valves */
+function SemilunarCusp({ position, rotation, color, radius = 0.06, clip }: {
+  position: [number, number, number]; rotation: [number, number, number]; color: string; radius?: number; clip?: THREE.Plane[];
+}) {
   const geo = useMemo(() => {
-    const mid: [number, number, number] = [
-      (from[0] + to[0]) / 2 + (Math.random() - 0.5) * 0.02,
-      (from[1] + to[1]) / 2 - 0.04,
-      (from[2] + to[2]) / 2 + (Math.random() - 0.5) * 0.02,
-    ];
-    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(...from), new THREE.Vector3(...mid), new THREE.Vector3(...to)]);
-    return new THREE.TubeGeometry(curve, 8, 0.004, 4, false);
-  }, [from, to]);
-  return <mesh geometry={geo}><meshStandardMaterial color={color} roughness={0.6} /></mesh>;
+    const shape = new THREE.Shape();
+    // Half-moon pocket shape
+    shape.moveTo(-radius, 0);
+    shape.quadraticCurveTo(-radius * 0.8, radius * 1.2, 0, radius * 1.3);
+    shape.quadraticCurveTo(radius * 0.8, radius * 1.2, radius, 0);
+    shape.quadraticCurveTo(radius * 0.6, radius * 0.3, 0, radius * 0.4);
+    shape.quadraticCurveTo(-radius * 0.6, radius * 0.3, -radius, 0);
+    return new THREE.ShapeGeometry(shape, 12);
+  }, [radius]);
+
+  return (
+    <mesh geometry={geo} position={position} rotation={rotation}>
+      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.6}
+        roughness={0.45} clearcoat={0.2} clippingPlanes={clip} clipShadows />
+    </mesh>
+  );
 }
 
-function PapillaryMuscle({ pos, color }: { pos: [number, number, number]; color: string }) {
+function Chorda({ from, to, color, clip }: { from: [number, number, number]; to: [number, number, number]; color: string; clip?: THREE.Plane[] }) {
+  const geo = useMemo(() => {
+    const mid: [number, number, number] = [
+      (from[0] + to[0]) / 2 + (Math.random() - 0.5) * 0.015,
+      (from[1] + to[1]) / 2 - 0.03,
+      (from[2] + to[2]) / 2 + (Math.random() - 0.5) * 0.015,
+    ];
+    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(...from), new THREE.Vector3(...mid), new THREE.Vector3(...to)]);
+    return new THREE.TubeGeometry(curve, 10, 0.003, 4, false);
+  }, [from, to]);
+  return <mesh geometry={geo}><meshStandardMaterial color={color} roughness={0.6} clippingPlanes={clip} clipShadows /></mesh>;
+}
+
+function PapillaryMuscle({ pos, color, height = 0.14, radius = 0.04, clip }: {
+  pos: [number, number, number]; color: string; height?: number; radius?: number; clip?: THREE.Plane[];
+}) {
   return (
     <mesh position={pos}>
-      <coneGeometry args={[0.045, 0.14, 8]} />
-      <meshStandardMaterial color={color} roughness={0.7} />
+      <coneGeometry args={[radius, height, 10]} />
+      <meshStandardMaterial color={color} roughness={0.7} clippingPlanes={clip} clipShadows />
     </mesh>
   );
 }
@@ -509,25 +535,73 @@ function HeartModel({ selected, onSelect, cutaway }: {
           <Vessel points={[[0.12, -0.4, 0.12], [0.3, -0.35, 0.2], [0.45, -0.3, 0.15]]}
             color="#5A3535" radius={0.018} />
 
-          {/* Mitral leaflets + chordae + papillary muscles */}
-          <Leaflet pos={[-0.18, 0.42, -0.02]} rot={[0.6, 0.2, 0.15]} color={structures.mitral.color} size={[0.12, 0.15]} />
-          <Leaflet pos={[-0.28, 0.42, -0.02]} rot={[0.6, -0.2, -0.15]} color={structures.mitral.color} size={[0.1, 0.13]} />
-          <PapillaryMuscle pos={[-0.4, -0.4, 0.05]} color="#5A2525" />
-          <PapillaryMuscle pos={[-0.2, -0.4, -0.12]} color="#5A2525" />
-          <Chorda from={[-0.18, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
-          <Chorda from={[-0.22, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
-          <Chorda from={[-0.28, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
-          <Chorda from={[-0.24, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
+          {/* ══════════ MITRAL VALVE — 2 leaflets, 2 papillary muscles ══════════ */}
+          {/* Anterior leaflet (larger, semicircular) */}
+          <Leaflet pos={[-0.16, 0.44, -0.01]} rot={[0.7, 0.15, 0.1]} color={structures.mitral.color} size={[0.14, 0.13]} clip={clip} />
+          {/* Posterior leaflet (3 scallops: P1, P2, P3 — smaller, crescentic) */}
+          <Leaflet pos={[-0.30, 0.44, 0.03]} rot={[0.6, -0.25, -0.12]} color={structures.mitral.color} size={[0.06, 0.10]} clip={clip} />
+          <Leaflet pos={[-0.25, 0.44, -0.05]} rot={[0.65, -0.15, -0.08]} color={structures.mitral.color} size={[0.065, 0.10]} clip={clip} />
+          <Leaflet pos={[-0.22, 0.44, -0.10]} rot={[0.6, -0.05, -0.05]} color={structures.mitral.color} size={[0.055, 0.09]} clip={clip} />
 
-          {/* Tricuspid leaflets */}
-          <Leaflet pos={[0.15, 0.44, 0.06]} rot={[0.5, 0.15, -0.1]} color={structures.tricuspid.color} size={[0.09, 0.11]} />
-          <Leaflet pos={[0.22, 0.44, 0.06]} rot={[0.5, -0.1, 0.1]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
-          <Leaflet pos={[0.18, 0.44, 0.12]} rot={[0.6, 0, 0]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
+          {/* Anterolateral papillary muscle (supplies chordae to BOTH leaflets) */}
+          <PapillaryMuscle pos={[-0.42, -0.38, 0.06]} color="#5A2525" height={0.16} radius={0.045} clip={clip} />
+          {/* Posteromedial papillary muscle (single blood supply — vulnerable) */}
+          <PapillaryMuscle pos={[-0.18, -0.38, -0.14]} color="#5A2525" height={0.15} radius={0.042} clip={clip} />
 
-          {/* Aortic valve cusps */}
-          <Leaflet pos={[-0.15, 0.9, 0.13]} rot={[0.2, 0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
-          <Leaflet pos={[-0.09, 0.9, 0.13]} rot={[0.2, -0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
-          <Leaflet pos={[-0.12, 0.9, 0.18]} rot={[0.3, 0, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
+          {/* Chordae tendineae — AL papillary to anterior leaflet (3 primary chordae) */}
+          <Chorda from={[-0.16, 0.37, -0.01]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.19, 0.37, 0.01]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.14, 0.37, -0.03]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          {/* AL papillary to posterior leaflet scallops */}
+          <Chorda from={[-0.30, 0.38, 0.03]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.27, 0.38, -0.02]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+
+          {/* PM papillary to anterior leaflet */}
+          <Chorda from={[-0.18, 0.37, -0.03]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.15, 0.37, -0.05]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          {/* PM papillary to posterior leaflet scallops */}
+          <Chorda from={[-0.25, 0.38, -0.05]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.22, 0.38, -0.10]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.24, 0.38, -0.08]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+
+          {/* ══════════ TRICUSPID VALVE — 3 leaflets, 3 papillary muscles ══════════ */}
+          {/* Anterior leaflet (largest) */}
+          <Leaflet pos={[0.14, 0.45, 0.12]} rot={[0.5, 0.2, -0.1]} color={structures.tricuspid.color} size={[0.10, 0.11]} clip={clip} />
+          {/* Posterior leaflet */}
+          <Leaflet pos={[0.24, 0.45, 0.04]} rot={[0.55, -0.15, 0.08]} color={structures.tricuspid.color} size={[0.08, 0.10]} clip={clip} />
+          {/* Septal leaflet (smallest, attached to septum) */}
+          <Leaflet pos={[0.12, 0.45, 0.01]} rot={[0.6, 0, 0.12]} color={structures.tricuspid.color} size={[0.07, 0.09]} clip={clip} />
+
+          {/* Anterior papillary (from moderator band — largest) */}
+          <PapillaryMuscle pos={[0.32, -0.25, 0.18]} color="#2A3050" height={0.12} radius={0.035} clip={clip} />
+          {/* Posterior papillary (smaller) */}
+          <PapillaryMuscle pos={[0.28, -0.20, -0.02]} color="#2A3050" height={0.10} radius={0.028} clip={clip} />
+          {/* Septal papillary (smallest, or may be absent — from IVS) */}
+          <PapillaryMuscle pos={[0.08, -0.10, 0.04]} color="#3A2828" height={0.06} radius={0.02} clip={clip} />
+
+          {/* Chordae — anterior papillary to anterior + posterior leaflets */}
+          <Chorda from={[0.14, 0.39, 0.12]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.17, 0.39, 0.10]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.24, 0.39, 0.04]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          {/* Posterior papillary to posterior + septal leaflets */}
+          <Chorda from={[0.22, 0.39, 0.06]} to={[0.28, -0.14, -0.02]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.12, 0.39, 0.01]} to={[0.28, -0.14, -0.02]} color="#9988AA" clip={clip} />
+          {/* Septal papillary to septal + anterior leaflets */}
+          <Chorda from={[0.12, 0.39, 0.02]} to={[0.08, -0.07, 0.04]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.14, 0.39, 0.08]} to={[0.08, -0.07, 0.04]} color="#9988AA" clip={clip} />
+
+          {/* ══════════ AORTIC VALVE — 3 semilunar cusps, NO chordae ══════════ */}
+          {/* Right coronary cusp */}
+          <SemilunarCusp position={[-0.10, 0.88, 0.18]} rotation={[-0.4, 0.8, 0.2]} color={structures.aortic.color} radius={0.055} clip={clip} />
+          {/* Left coronary cusp */}
+          <SemilunarCusp position={[-0.16, 0.88, 0.12]} rotation={[-0.3, -0.6, -0.2]} color={structures.aortic.color} radius={0.055} clip={clip} />
+          {/* Non-coronary cusp */}
+          <SemilunarCusp position={[-0.12, 0.88, 0.08]} rotation={[-0.5, 3.14, 0]} color={structures.aortic.color} radius={0.055} clip={clip} />
+
+          {/* ══════════ PULMONARY VALVE — 3 semilunar cusps, NO chordae ══════════ */}
+          <SemilunarCusp position={[0.10, 0.84, 0.35]} rotation={[-0.6, 0.7, 0.15]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
+          <SemilunarCusp position={[0.15, 0.84, 0.30]} rotation={[-0.5, -0.5, -0.15]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
+          <SemilunarCusp position={[0.12, 0.84, 0.26]} rotation={[-0.7, 3.14, 0]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
 
           {/* Fibrous skeleton ring */}
           <mesh position={[0, 0.5, 0.05]} rotation={[Math.PI / 2 + 0.15, 0, 0.1]}>
