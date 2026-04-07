@@ -2,14 +2,14 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
-import { equipmentMonitoringQuiz } from "@/data/quizzes";
+import { anaestheticMachineQuiz, breathingCircuitsQuiz, vaporizersQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
-import { AnaestheticMachineDiagram } from "@/components/diagrams/AnaestheticMachineDiagram";
+import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineDiagram";
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
-import { NeuraxialNeedlesDiagram } from "@/components/diagrams/NeuraxialNeedlesDiagram";
+import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 
 const subtopicLinks = [
   { path: "/physics/anaesthetic-machine", title: "The Anaesthetic Machine", desc: "Pipeline supply, regulators, flowmeters, safety features" },
@@ -201,7 +201,7 @@ const EquipmentMonitoringTopic = () => {
           "Scavenging safety valves limit pressure to ±0.5 cmH₂O; COSHH: N₂O <100 ppm, volatiles <50 ppm (8-hr TWA).",
         ]} />
 
-        <QuizSection questions={equipmentMonitoringQuiz} />
+        <QuizSection questions={[...anaestheticMachineQuiz, ...breathingCircuitsQuiz, ...vaporizersQuiz]} />
         <ReferencesList topicId="equipment-monitoring" />
         <TopicCompletionToggle topicId="equipment-monitoring" topicTitle="Equipment & Monitoring" />
       </div>
