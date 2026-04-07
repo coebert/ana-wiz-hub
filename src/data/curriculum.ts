@@ -34,6 +34,7 @@ export const physicsTopics: Topic[] = [
   { id: "ventilators", title: "Ventilators", description: "Ventilator classification, mechanisms, historic and modern models including Manley, Penlon, and Oxylog", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "math-concepts", title: "Mathematical Concepts", description: "Graph shapes, exponentials, logarithms, sigmoid curves and their physiological and pharmacokinetic applications", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "depth-of-anaesthesia", title: "Depth of Anaesthesia Monitoring", description: "BIS, Entropy, Narcotrend — processed EEG, suppression ratio, SEF, and clinical evidence", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "equipment-monitoring", title: "Equipment & Monitoring", description: "Consolidated overview of anaesthetic machine, breathing circuits, vaporizers, and needles", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
