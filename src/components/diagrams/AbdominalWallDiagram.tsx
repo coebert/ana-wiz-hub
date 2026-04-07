@@ -25,24 +25,26 @@ const layers: Record<LayerKey, Layer> = {
 const layerOrder: LayerKey[] = ["skin", "camper", "scarpa", "ext-oblique", "int-oblique", "tap-plane", "transversus", "transversalis", "extraperitoneal", "peritoneum"];
 
 const layerGeom: Record<LayerKey, { y: number; h: number }> = {
-  skin: { y: 8, h: 16 },
-  camper: { y: 26, h: 14 },
-  scarpa: { y: 42, h: 10 },
-  "ext-oblique": { y: 56, h: 28 },
-  "int-oblique": { y: 86, h: 28 },
-  "tap-plane": { y: 115, h: 10 },
-  transversus: { y: 127, h: 26 },
-  transversalis: { y: 155, h: 12 },
-  extraperitoneal: { y: 169, h: 10 },
-  peritoneum: { y: 181, h: 16 },
+  skin: { y: 12, h: 18 },
+  camper: { y: 32, h: 16 },
+  scarpa: { y: 50, h: 10 },
+  "ext-oblique": { y: 64, h: 34 },
+  "int-oblique": { y: 100, h: 34 },
+  "tap-plane": { y: 135, h: 12 },
+  transversus: { y: 149, h: 30 },
+  transversalis: { y: 181, h: 12 },
+  extraperitoneal: { y: 195, h: 12 },
+  peritoneum: { y: 209, h: 16 },
 };
 
 const AbdominalWallDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("tap-plane");
   const info = layers[selected];
 
-  const layerW = 170;
-  const xOff = 10;
+  const layerW = 190;
+  const xOff = 14;
+  const svgW = 310;
+  const svgH = 240;
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
@@ -51,21 +53,75 @@ const AbdominalWallDiagram = () => {
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 280 205" width="280" height="205" className="border border-border rounded">
-            {/* US probe */}
-            <rect x={xOff + 45} y={0} width="70" height="7" rx="3.5" fill="hsl(var(--muted-foreground))" opacity="0.25" />
-            <text x={xOff + 80} y={5.5} fontSize="4.5" textAnchor="middle" fill="hsl(var(--foreground))" opacity="0.6">US Probe</text>
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH} className="border border-border rounded">
+            <defs>
+              {/* Skin texture */}
+              <pattern id="skinTex" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="3" cy="3" r="0.4" fill="hsl(25, 40%, 50%)" opacity="0.25" />
+              </pattern>
+              {/* Fat globule pattern */}
+              <pattern id="fatTex" patternUnits="userSpaceOnUse" width="10" height="8">
+                <ellipse cx="5" cy="4" rx="3.2" ry="2.4" fill="hsl(40, 55%, 72%)" opacity="0.3" stroke="hsl(35, 40%, 60%)" strokeWidth="0.3" />
+              </pattern>
+              {/* Fascia striation */}
+              <pattern id="fasciaTex" patternUnits="userSpaceOnUse" width="16" height="3">
+                <line x1="0" y1="1.5" x2="16" y2="1.5" stroke="hsl(40, 35%, 50%)" strokeWidth="0.4" opacity="0.35" />
+              </pattern>
+              {/* Muscle fibre diagonal down-medial (EO) */}
+              <pattern id="eoFibre" patternUnits="userSpaceOnUse" width="8" height="12" patternTransform="rotate(-30)">
+                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.6" opacity="0.25" />
+                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.4" opacity="0.15" />
+              </pattern>
+              {/* Muscle fibre diagonal up-medial (IO) */}
+              <pattern id="ioFibre" patternUnits="userSpaceOnUse" width="8" height="12" patternTransform="rotate(30)">
+                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.6" opacity="0.25" />
+                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.4" opacity="0.15" />
+              </pattern>
+              {/* Transverse muscle fibres (TA) */}
+              <pattern id="taFibre" patternUnits="userSpaceOnUse" width="12" height="5">
+                <line x1="0" y1="2.5" x2="12" y2="2.5" stroke="hsl(160, 40%, 42%)" strokeWidth="0.5" opacity="0.25" />
+              </pattern>
+              {/* Peritoneal sheen */}
+              <linearGradient id="peritonealGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(280, 45%, 52%)" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="hsl(280, 35%, 42%)" stopOpacity="0.15" />
+              </linearGradient>
+              {/* Blood vessel glow */}
+              <filter id="vesselGlow">
+                <feGaussianBlur stdDeviation="1" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            {/* US probe with realistic shape */}
+            <rect x={xOff + 50} y={0} width="80" height="9" rx="4.5" fill="hsl(var(--muted-foreground))" opacity="0.25" />
+            <rect x={xOff + 55} y={7} width="70" height="3" rx="1" fill="hsl(var(--muted-foreground))" opacity="0.15" />
+            <text x={xOff + 90} y={7} fontSize="5" textAnchor="middle" fill="hsl(var(--foreground))" opacity="0.55" fontWeight="600">US Probe</text>
 
             {/* US beam cone */}
-            <path d={`M${xOff + 55},7 L${xOff + 40},${layerGeom["tap-plane"].y + 5} M${xOff + 105},7 L${xOff + 120},${layerGeom["tap-plane"].y + 5}`}
-              stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.2" fill="none" />
+            <path d={`M${xOff + 60},10 L${xOff + 42},${layerGeom["tap-plane"].y + 6} M${xOff + 120},10 L${xOff + 138},${layerGeom["tap-plane"].y + 6}`}
+              stroke="hsl(45, 80%, 60%)" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.15" fill="none" />
+            {/* Beam fill */}
+            <path d={`M${xOff + 60},10 L${xOff + 42},${layerGeom["tap-plane"].y + 6} L${xOff + 138},${layerGeom["tap-plane"].y + 6} L${xOff + 120},10 Z`}
+              fill="hsl(45, 80%, 60%)" opacity="0.03" />
 
-            {/* Needle trajectory */}
-            <path d={`M${xOff + layerW + 10},15 C${xOff + layerW},40 ${xOff + layerW - 20},80 ${xOff + layerW / 2 + 15},${layerGeom["tap-plane"].y + 5}`}
-              stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.4" fill="none" />
-            <text x={xOff + layerW + 12} y="14" fontSize="5.5" fill="hsl(var(--muted-foreground))">Needle</text>
-            {/* Needle tip marker */}
-            <circle cx={xOff + layerW / 2 + 15} cy={layerGeom["tap-plane"].y + 5} r="2" fill="hsl(45, 90%, 50%)" opacity="0.6" />
+            {/* Needle trajectory with realistic bevel */}
+            <path d={`M${xOff + layerW + 15},18 C${xOff + layerW + 5},50 ${xOff + layerW - 15},90 ${xOff + layerW / 2 + 20},${layerGeom["tap-plane"].y + 6}`}
+              stroke="hsl(var(--muted-foreground))" strokeWidth="1.8" strokeDasharray="5 2" opacity="0.35" fill="none" />
+            {/* Needle shaft sheen */}
+            <path d={`M${xOff + layerW + 15},18 C${xOff + layerW + 5},50 ${xOff + layerW - 15},90 ${xOff + layerW / 2 + 20},${layerGeom["tap-plane"].y + 6}`}
+              stroke="hsl(0, 0%, 80%)" strokeWidth="0.5" opacity="0.2" fill="none" />
+            <text x={xOff + layerW + 18} y="17" fontSize="5.5" fill="hsl(var(--muted-foreground))" fontWeight="600">Block needle</text>
+            {/* Needle tip with bevel */}
+            <circle cx={xOff + layerW / 2 + 20} cy={layerGeom["tap-plane"].y + 6} r="2.5" fill="hsl(45, 90%, 50%)" opacity="0.7" />
+            <circle cx={xOff + layerW / 2 + 20} cy={layerGeom["tap-plane"].y + 6} r="5" fill="hsl(45, 90%, 50%)" opacity="0.12" />
+
+            {/* LA spread in TAP plane */}
+            {selected === "tap-plane" && (
+              <ellipse cx={xOff + layerW / 2 + 20} cy={layerGeom["tap-plane"].y + 6} rx="35" ry="4" fill="hsl(180, 60%, 55%)" opacity="0.12">
+                <animate attributeName="rx" values="25;40;25" dur="3s" repeatCount="indefinite" />
+              </ellipse>
+            )}
 
             {layerOrder.map((key) => {
               const l = layers[key];
@@ -75,60 +131,152 @@ const AbdominalWallDiagram = () => {
 
               return (
                 <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                  {/* Base layer */}
                   <rect
                     x={xOff}
                     y={g.y}
                     width={layerW}
                     height={g.h}
-                    rx={2}
+                    rx={key === "skin" ? 3 : 1}
                     fill={l.color}
-                    fillOpacity={isActive ? 0.55 : isTAP ? 0.4 : 0.15}
+                    fillOpacity={isActive ? 0.55 : isTAP ? 0.45 : 0.18}
                     stroke={isActive ? l.color : isTAP ? l.color : "transparent"}
                     strokeWidth={isActive ? 2.5 : isTAP ? 1.5 : 0}
                     strokeDasharray={isTAP && !isActive ? "4 2" : ""}
                     className="transition-all duration-200"
                   />
 
-                  {/* Muscle fibre patterns */}
-                  {key === "ext-oblique" && (
-                    <g opacity={isActive ? 0.4 : 0.15}>
-                      {[0, 1, 2, 3, 4, 5, 6].map(i => (
-                        <line key={i} x1={xOff + 12 + i * 22} y1={g.y + 4} x2={xOff + 24 + i * 22} y2={g.y + g.h - 4}
-                          stroke={l.color} strokeWidth="0.7" />
-                      ))}
-                    </g>
-                  )}
-                  {key === "int-oblique" && (
-                    <g opacity={isActive ? 0.4 : 0.15}>
-                      {[0, 1, 2, 3, 4, 5, 6].map(i => (
-                        <line key={i} x1={xOff + 24 + i * 22} y1={g.y + 4} x2={xOff + 12 + i * 22} y2={g.y + g.h - 4}
-                          stroke={l.color} strokeWidth="0.7" />
-                      ))}
-                    </g>
-                  )}
-                  {key === "transversus" && (
-                    <g opacity={isActive ? 0.4 : 0.15}>
-                      {[0, 1, 2, 3, 4, 5].map(i => (
-                        <line key={i} x1={xOff + 8} y1={g.y + 5 + i * 4} x2={xOff + layerW - 8} y2={g.y + 5 + i * 4}
-                          stroke={l.color} strokeWidth="0.5" />
-                      ))}
+                  {/* Skin: stippled texture + hair follicles */}
+                  {key === "skin" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={3} fill="url(#skinTex)" />
+                      {/* Hair follicle hints */}
+                      <g opacity={isActive ? 0.35 : 0.12}>
+                        {[30, 65, 100, 135, 165].map((hx, i) => (
+                          <g key={i}>
+                            <line x1={xOff + hx} y1={g.y + 2} x2={xOff + hx - 1} y2={g.y + g.h - 2} stroke="hsl(25, 35%, 45%)" strokeWidth="0.6" />
+                            <ellipse cx={xOff + hx} cy={g.y + g.h - 1} rx="1.5" ry="1" fill="hsl(25, 40%, 50%)" opacity="0.3" />
+                          </g>
+                        ))}
+                      </g>
                     </g>
                   )}
 
-                  {/* Nerve symbols in TAP plane */}
+                  {/* Camper's: fat globule texture */}
+                  {key === "camper" && (
+                    <g opacity={isActive ? 0.6 : 0.2}>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
+                      {/* Superficial vessels */}
+                      <path d={`M${xOff + 40},${g.y + 4} C${xOff + 55},${g.y + 8} ${xOff + 70},${g.y + 10} ${xOff + 90},${g.y + 7}`}
+                        stroke="hsl(0, 50%, 55%)" strokeWidth="0.8" fill="none" opacity="0.4" />
+                      <path d={`M${xOff + 120},${g.y + 6} C${xOff + 140},${g.y + 10} ${xOff + 155},${g.y + 12} ${xOff + 170},${g.y + 9}`}
+                        stroke="hsl(220, 45%, 55%)" strokeWidth="0.7" fill="none" opacity="0.3" />
+                    </g>
+                  )}
+
+                  {/* Scarpa's: dense fibrous membrane */}
+                  {key === "scarpa" && (
+                    <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.8 : 0.3} />
+                  )}
+
+                  {/* External oblique: diagonal fibres down-medial */}
+                  {key === "ext-oblique" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#eoFibre)" opacity={isActive ? 1 : 0.5} />
+                      {/* Connective tissue septa */}
+                      <g opacity={isActive ? 0.2 : 0.06}>
+                        {[0, 1, 2].map(i => (
+                          <line key={i} x1={xOff + 5} y1={g.y + 8 + i * 10} x2={xOff + layerW - 5} y2={g.y + 8 + i * 10}
+                            stroke="hsl(0, 0%, 70%)" strokeWidth="0.3" strokeDasharray="2 4" />
+                        ))}
+                      </g>
+                      {/* Fibre direction arrow */}
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <path d={`M${xOff + 30},${g.y + 6} L${xOff + 80},${g.y + g.h - 6}`} stroke="hsl(0, 60%, 60%)" strokeWidth="1" fill="none" markerEnd="none" />
+                        <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(0, 55%, 55%)" transform={`rotate(-30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↘</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* Internal oblique: diagonal fibres up-medial */}
+                  {key === "int-oblique" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#ioFibre)" opacity={isActive ? 1 : 0.5} />
+                      {/* Nerve running between IO and TA */}
+                      <g opacity={isActive ? 0.45 : 0.12}>
+                        <path d={`M${xOff + 10},${g.y + g.h - 3} C${xOff + 50},${g.y + g.h - 5} ${xOff + 100},${g.y + g.h - 2} ${xOff + 150},${g.y + g.h - 4}`}
+                          stroke="hsl(50, 70%, 55%)" strokeWidth="1.2" fill="none" />
+                        <text x={xOff + 80} y={g.y + g.h - 7} fontSize="3.5" fill="hsl(50, 70%, 55%)" textAnchor="middle">Ilioinguinal n. (L1)</text>
+                      </g>
+                      {/* Fibre direction */}
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <text x={xOff + 55} y={g.y + g.h / 2 - 2} fontSize="4" fill="hsl(210, 55%, 52%)" transform={`rotate(30, ${xOff + 55}, ${g.y + g.h / 2 - 2})`}>fibres ↗</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* TAP plane: nerve cross-sections + fascial shimmer */}
                   {isTAP && (
-                    <g opacity={isActive ? 0.9 : 0.5}>
-                      {[25, 50, 75, 100, 125, 150].map((nx, i) => (
-                        <g key={i}>
-                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="2.5" fill={l.color} opacity="0.6" />
-                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="1" fill="hsl(var(--foreground))" opacity="0.4" />
+                    <g>
+                      {/* Nerve cross-sections - realistic circles with myelin */}
+                      {[18, 40, 62, 84, 106, 128, 150, 172].map((nx, i) => (
+                        <g key={i} opacity={isActive ? 0.9 : 0.45}>
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="3.5" fill="hsl(45, 80%, 85%)" stroke="hsl(45, 70%, 45%)" strokeWidth="0.8" />
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="1.8" fill="hsl(45, 90%, 50%)" opacity="0.6" />
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
                         </g>
                       ))}
-                      <text x={xOff + layerW / 2} y={g.y + g.h / 2 + 1} fontSize="4" textAnchor="middle" fill="hsl(var(--foreground))" fontWeight="bold">T6–L1 nerves</text>
+                      <text x={xOff + layerW / 2} y={g.y - 2} fontSize="4.5" textAnchor="middle" fill="hsl(45, 90%, 50%)" fontWeight="bold" opacity={isActive ? 1 : 0.6}>T6–L1 intercostal nerves</text>
                     </g>
                   )}
 
-                  {/* Label */}
+                  {/* Transversus: horizontal fibres */}
+                  {key === "transversus" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#taFibre)" opacity={isActive ? 1 : 0.5} />
+                      <g opacity={isActive ? 0.35 : 0.1}>
+                        <text x={xOff + layerW / 2} y={g.y + g.h / 2 + 1} fontSize="4" fill="hsl(160, 50%, 48%)" textAnchor="middle">fibres →</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* Transversalis: thin fascial line */}
+                  {key === "transversalis" && (
+                    <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fasciaTex)" opacity={isActive ? 0.7 : 0.25} />
+                  )}
+
+                  {/* Extraperitoneal fat with vessels */}
+                  {key === "extraperitoneal" && (
+                    <g opacity={isActive ? 0.6 : 0.2}>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
+                      {/* Inferior epigastric artery */}
+                      <path d={`M${xOff + 45},${g.y + 2} C${xOff + 55},${g.y + 6} ${xOff + 65},${g.y + 8} ${xOff + 80},${g.y + 5}`}
+                        stroke="hsl(0, 60%, 50%)" strokeWidth="1" fill="none" opacity="0.5" />
+                      <text x={xOff + 85} y={g.y + 7} fontSize="3" fill="hsl(0, 60%, 50%)" opacity="0.5">IEA</text>
+                      {/* Companion vein */}
+                      <path d={`M${xOff + 47},${g.y + 4} C${xOff + 57},${g.y + 8} ${xOff + 67},${g.y + 10} ${xOff + 82},${g.y + 7}`}
+                        stroke="hsl(220, 50%, 50%)" strokeWidth="0.6" fill="none" opacity="0.4" />
+                    </g>
+                  )}
+
+                  {/* Peritoneum: glistening membrane effect */}
+                  {key === "peritoneum" && (
+                    <g>
+                      <rect x={xOff} y={g.y} width={layerW} height={g.h} rx={1} fill="url(#peritonealGrad)" />
+                      {/* Mesothelial cell layer suggestion */}
+                      <g opacity={isActive ? 0.25 : 0.08}>
+                        {Array.from({ length: 20 }).map((_, i) => (
+                          <circle key={i} cx={xOff + 8 + i * 9} cy={g.y + 3} r="0.8" fill="hsl(280, 40%, 55%)" />
+                        ))}
+                      </g>
+                      {/* Peritoneal cavity label */}
+                      <g opacity={isActive ? 0.4 : 0.15}>
+                        <text x={xOff + layerW / 2} y={g.y + g.h + 8} fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" fontStyle="italic">← Peritoneal cavity →</text>
+                      </g>
+                    </g>
+                  )}
+
+                  {/* Layer label */}
                   <text
                     x={xOff + layerW + 8}
                     y={g.y + g.h / 2 + 3}
@@ -143,10 +291,22 @@ const AbdominalWallDiagram = () => {
               );
             })}
 
-            {/* Depth annotations */}
-            <g opacity="0.25" fontSize="4.5" fill="hsl(var(--muted-foreground))">
-              <text x={xOff - 8} y={layerGeom.skin.y + 10} textAnchor="end">←</text>
-              <text x={xOff - 8} y={layerGeom.peritoneum.y + 10} textAnchor="end">←</text>
+            {/* Depth scale bar */}
+            <g opacity="0.3">
+              <line x1={xOff - 6} y1={layerGeom.skin.y} x2={xOff - 6} y2={layerGeom.peritoneum.y + layerGeom.peritoneum.h}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+              <line x1={xOff - 9} y1={layerGeom.skin.y} x2={xOff - 3} y2={layerGeom.skin.y}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+              <line x1={xOff - 9} y1={layerGeom.peritoneum.y + layerGeom.peritoneum.h} x2={xOff - 3} y2={layerGeom.peritoneum.y + layerGeom.peritoneum.h}
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+              <text x={xOff - 6} y={layerGeom.skin.y + (layerGeom.peritoneum.y + layerGeom.peritoneum.h - layerGeom.skin.y) / 2} fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" transform={`rotate(-90, ${xOff - 6}, ${layerGeom.skin.y + (layerGeom.peritoneum.y + layerGeom.peritoneum.h - layerGeom.skin.y) / 2})`}>Deep →</text>
+            </g>
+
+            {/* Rectus abdominis cross-section hint on right side */}
+            <g opacity="0.2">
+              <rect x={xOff + layerW - 25} y={layerGeom["ext-oblique"].y + 2} width="20" height={layerGeom.transversus.y + layerGeom.transversus.h - layerGeom["ext-oblique"].y - 4} rx="3"
+                fill="hsl(0, 40%, 50%)" stroke="hsl(0, 30%, 45%)" strokeWidth="0.5" />
+              <text x={xOff + layerW - 15} y={layerGeom["int-oblique"].y + 15} fontSize="3.5" textAnchor="middle" fill="hsl(var(--foreground))">Rectus</text>
             </g>
           </svg>
         </div>
