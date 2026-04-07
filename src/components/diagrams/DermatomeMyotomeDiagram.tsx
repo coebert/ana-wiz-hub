@@ -85,44 +85,99 @@ const DermatomeMyotomeDiagram = () => {
                 <svg viewBox="0 0 200 425" width="220" className="max-w-full">
                   <defs>
                     <linearGradient id="body-fill" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.08" />
-                      <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.02" />
+                      <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.1" />
+                      <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.03" />
+                    </linearGradient>
+                    <linearGradient id="body-skin" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.06" />
+                      <stop offset="50%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.02" />
+                      <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.06" />
                     </linearGradient>
                   </defs>
 
-                  {/* Body outline */}
-                  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.7" fill="url(#body-fill)" opacity="0.4">
-                    <ellipse cx="100" cy="30" rx="18" ry="22" />
-                    <path d="M88,50 C86,56 82,62 78,68" />
-                    <path d="M112,50 C114,56 118,62 122,68" />
-                    <path d="M78,68 C68,72 58,80 52,90 C46,100 42,112 38,125" />
-                    <path d="M122,68 C132,72 142,80 148,90 C154,100 158,112 162,125" />
-                    <path d="M78,68 C76,80 72,95 70,110 C68,130 66,150 66,170 C66,190 68,210 70,228" />
-                    <path d="M122,68 C124,80 128,95 130,110 C132,130 134,150 134,170 C134,190 132,210 130,228" />
-                    <path d="M38,125 C34,140 28,158 24,175 C20,192 16,208 14,222" />
-                    <path d="M52,125 C50,138 48,155 46,170 C44,188 42,204 42,218" />
-                    <path d="M162,125 C166,140 172,158 176,175 C180,192 184,208 186,222" />
-                    <path d="M148,125 C150,138 152,155 154,170 C156,188 158,204 158,218" />
-                    <path d="M70,228 C72,234 78,240 86,244" />
-                    <path d="M130,228 C128,234 122,240 114,244" />
-                    <path d="M86,244 C84,264 80,290 78,310 C76,330 74,352 72,372 C70,392 68,406 66,414" />
-                    <path d="M96,244 C94,264 92,290 90,310 C90,330 88,352 88,372 C88,392 86,406 84,414" />
-                    <path d="M114,244 C116,264 120,290 122,310 C124,330 126,352 128,372 C130,392 132,406 134,414" />
-                    <path d="M104,244 C106,264 108,290 110,310 C110,330 112,352 112,372 C112,392 114,406 116,414" />
-                    <path d="M66,414 C64,418 66,420 76,420 C84,420 84,418 84,414" />
-                    <path d="M134,414 C136,418 134,420 124,420 C116,420 116,418 116,414" />
+                  {/* Body outline — improved anatomical proportions */}
+                  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="url(#body-fill)" opacity="0.45">
+                    {/* Head with jaw/chin */}
+                    <path d="M100,8 C115,8 126,16 126,30 C126,40 120,48 112,50 L112,52 C108,56 100,58 92,56 L88,52 L88,50 C80,48 74,40 74,30 C74,16 85,8 100,8 Z" />
+                    {/* Neck */}
+                    <path d="M88,52 C86,58 84,64 82,68" fill="none" />
+                    <path d="M112,52 C114,58 116,64 118,68" fill="none" />
+                    {/* Shoulders — more natural slope */}
+                    <path d="M82,68 C72,70 62,76 54,84 C48,92 44,102 40,114 C38,122 36,128 36,132" fill="none" />
+                    <path d="M118,68 C128,70 138,76 146,84 C152,92 156,102 160,114 C162,122 164,128 164,132" fill="none" />
+                    {/* Torso — with waist definition */}
+                    <path d="M82,68 C80,78 76,90 74,104 C72,118 70,134 68,150 C66,168 66,186 68,204 C70,218 72,228 74,232" fill="none" />
+                    <path d="M118,68 C120,78 124,90 126,104 C128,118 130,134 132,150 C134,168 134,186 132,204 C130,218 128,228 126,232" fill="none" />
+                    {/* Arms — upper */}
+                    <path d="M36,132 C34,144 30,158 26,172 C22,186 18,200 16,212 C14,220 14,224 14,226" fill="none" />
+                    <path d="M52,118 C50,132 48,148 46,162 C44,178 42,194 42,208 C42,216 42,222 44,226" fill="none" />
+                    <path d="M164,132 C166,144 170,158 174,172 C178,186 182,200 184,212 C186,220 186,224 186,226" fill="none" />
+                    <path d="M148,118 C150,132 152,148 154,162 C156,178 158,194 158,208 C158,216 158,222 156,226" fill="none" />
+                    {/* Hands */}
+                    <path d="M14,226 C12,230 14,232 22,232 C30,232 36,230 40,228 C42,228 44,228 44,226" fill="none" />
+                    <path d="M186,226 C188,230 186,232 178,232 C170,232 164,230 160,228 C158,228 156,228 156,226" fill="none" />
+                    {/* Pelvis */}
+                    <path d="M74,232 C78,238 84,242 90,244" fill="none" />
+                    <path d="M126,232 C122,238 116,242 110,244" fill="none" />
+                    {/* Legs — with calf/ankle definition */}
+                    <path d="M90,244 C88,258 84,276 82,294 C80,312 78,330 76,348 C74,366 72,382 70,396 C68,406 66,414 66,418" fill="none" />
+                    <path d="M98,244 C96,258 94,276 92,294 C92,312 90,330 90,348 C88,366 88,382 86,396 C86,406 84,414 84,418" fill="none" />
+                    <path d="M110,244 C112,258 116,276 118,294 C120,312 122,330 124,348 C126,366 128,382 130,396 C132,406 134,414 134,418" fill="none" />
+                    <path d="M102,244 C104,258 106,276 108,294 C108,312 110,330 110,348 C112,366 112,382 114,396 C114,406 116,414 116,418" fill="none" />
+                    {/* Feet */}
+                    <path d="M66,418 C64,420 66,422 74,422 C82,422 84,420 84,418" fill="none" />
+                    <path d="M134,418 C136,420 134,422 126,422 C118,422 116,420 116,418" fill="none" />
+                  </g>
+
+                  {/* Anatomical surface detail */}
+                  <g stroke="hsl(var(--muted-foreground))" fill="none" opacity="0.12" strokeWidth="0.5">
+                    {/* Clavicles */}
+                    <path d="M82,72 C78,74 72,76 66,78" />
+                    <path d="M118,72 C122,74 128,76 134,78" />
+                    {/* Pectoralis outline */}
+                    <path d="M82,80 C84,88 90,96 96,98 C98,98 100,98 100,96" />
+                    <path d="M118,80 C116,88 110,96 104,98 C102,98 100,98 100,96" />
+                    {/* Abdominal midline */}
+                    <line x1="100" y1="100" x2="100" y2="232" strokeDasharray="2 4" opacity="0.6" />
+                    {/* Rectus segments */}
+                    <path d="M92,118 L108,118" opacity="0.4" />
+                    <path d="M92,140 L108,140" opacity="0.4" />
+                    <path d="M92,164 L108,164" opacity="0.4" />
+                    {/* Iliac crests */}
+                    <path d="M72,224 C76,222 82,222 88,224" opacity="0.5" />
+                    <path d="M128,224 C124,222 118,222 112,224" opacity="0.5" />
+                    {/* Patellae */}
+                    <ellipse cx="86" cy="324" rx="5" ry="6" opacity="0.3" />
+                    <ellipse cx="114" cy="324" rx="5" ry="6" opacity="0.3" />
+                    {/* Deltoid bulk */}
+                    <path d="M64,80 C58,88 54,98 52,108" opacity="0.3" />
+                    <path d="M136,80 C142,88 146,98 148,108" opacity="0.3" />
                   </g>
 
                   {/* Midline */}
-                  <line x1="100" y1="52" x2="100" y2="244" stroke="hsl(var(--muted-foreground))" strokeWidth="0.25" strokeDasharray="2 4" opacity="0.2" />
+                  <line x1="100" y1="56" x2="100" y2="244" stroke="hsl(var(--muted-foreground))" strokeWidth="0.25" strokeDasharray="2 4" opacity="0.15" />
 
-                  {/* Landmark annotations */}
-                  <g opacity="0.3" fontSize="4" fill="hsl(var(--muted-foreground))">
-                    <circle cx="88" cy="126" r="1" />
-                    <circle cx="112" cy="126" r="1" />
-                    <text x="136" y="128" fontSize="3.5">T4 nipple</text>
-                    <circle cx="100" cy="196" r="1.5" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" />
-                    <text x="136" y="198" fontSize="3.5">T10 umbilicus</text>
+                  {/* Landmark annotations — more detailed */}
+                  <g opacity="0.35" fontSize="4" fill="hsl(var(--muted-foreground))">
+                    {/* Nipples T4 */}
+                    <circle cx="90" cy="126" r="1.2" />
+                    <circle cx="110" cy="126" r="1.2" />
+                    <line x1="114" y1="126" x2="136" y2="126" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                    <text x="138" y="128" fontSize="3.5" fontWeight="600">T4 nipple</text>
+                    {/* Xiphisternum T6 */}
+                    <circle cx="100" cy="148" r="0.8" />
+                    <line x1="104" y1="148" x2="136" y2="148" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                    <text x="138" y="150" fontSize="3.5">T6 xiphoid</text>
+                    {/* Umbilicus T10 */}
+                    <circle cx="100" cy="196" r="1.8" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+                    <line x1="104" y1="196" x2="136" y2="196" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                    <text x="138" y="198" fontSize="3.5" fontWeight="600">T10 umbilicus</text>
+                    {/* Inguinal L1 */}
+                    <line x1="110" y1="234" x2="136" y2="234" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                    <text x="138" y="236" fontSize="3.5">L1 groin</text>
+                    {/* Knee L3 */}
+                    <line x1="118" y1="320" x2="136" y2="320" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                    <text x="138" y="322" fontSize="3.5">L3 knee</text>
                   </g>
 
                   {/* Dermatome regions */}
