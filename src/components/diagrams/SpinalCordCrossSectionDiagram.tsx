@@ -378,19 +378,47 @@ const SpinalCordCrossSectionDiagram = () => {
                         </g>
                       )}
 
-                      {/* Dura mater: dense fibrous */}
+                      {/* Dura mater: dense fibrous with layered appearance */}
                       {key === "dura" && (
-                        <rect x={xOffset} y={y} width={layerWidth} height={l.h} fill="url(#sc-duraTex)" opacity={isActive ? 0.8 : 0.3} />
+                        <g>
+                          <rect x={xOffset} y={y} width={layerWidth} height={l.h} fill="url(#sc-duraTex)" opacity={isActive ? 0.8 : 0.3} />
+                          {/* Multiple dense collagen layers */}
+                          <g opacity={isActive ? 0.3 : 0.08}>
+                            {[0, 1, 2].map(i => (
+                              <line key={i} x1={xOffset + 2} y1={y + 3 + i * 3} x2={xOffset + layerWidth - 2} y2={y + 3 + i * 3}
+                                stroke="hsl(270, 35%, 48%)" strokeWidth="0.6" />
+                            ))}
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(270, 40%, 55%)" fontStyle="italic" opacity="0.5">Dural sac ends S2</text>
+                          )}
+                        </g>
                       )}
 
-                      {/* Arachnoid: delicate web */}
+                      {/* Arachnoid: delicate trabeculated web */}
                       {key === "arachnoid" && (
-                        <g opacity={isActive ? 0.3 : 0.1}>
-                          {Array.from({ length: 10 }).map((_, i) => (
-                            <path key={i}
-                              d={`M${xOffset + 5 + i * 20},${y + 1} Q${xOffset + 15 + i * 20},${y + l.h / 2} ${xOffset + 5 + i * 20},${y + l.h - 1}`}
-                              stroke="hsl(290, 30%, 58%)" strokeWidth="0.3" fill="none" />
-                          ))}
+                        <g>
+                          {/* Fine trabecular network */}
+                          <g opacity={isActive ? 0.35 : 0.1}>
+                            {Array.from({ length: 14 }).map((_, i) => (
+                              <g key={i}>
+                                <path
+                                  d={`M${xOffset + 5 + i * 14},${y + 1} Q${xOffset + 12 + i * 14},${y + l.h / 2 + (i % 3 - 1)} ${xOffset + 5 + i * 14},${y + l.h - 1}`}
+                                  stroke="hsl(290, 30%, 58%)" strokeWidth="0.3" fill="none" />
+                                {/* Cross-links between trabeculae */}
+                                {i > 0 && (
+                                  <path
+                                    d={`M${xOffset + 5 + (i - 1) * 14},${y + l.h / 2} L${xOffset + 5 + i * 14},${y + l.h / 2 + (i % 2 ? 1 : -1)}`}
+                                    stroke="hsl(290, 28%, 55%)" strokeWidth="0.2" fill="none" opacity="0.5" />
+                                )}
+                              </g>
+                            ))}
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(290, 35%, 60%)" fontStyle="italic" opacity="0.5">Subdural space (potential) above</text>
+                          )}
                         </g>
                       )}
 
@@ -406,29 +434,59 @@ const SpinalCordCrossSectionDiagram = () => {
                                 stroke="hsl(195, 55%, 60%)" strokeWidth="0.4" fill="none" />
                             ))}
                           </g>
-                          {/* Cauda equina filaments */}
-                          <g opacity={isActive ? 0.25 : 0.06}>
-                            {[0, 1, 2, 3, 4].map(i => (
-                              <line key={i} x1={xOffset + 60 + i * 18} y1={y + 3} x2={xOffset + 55 + i * 18} y2={y + l.h - 3}
-                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.5" />
+                          {/* Cauda equina filaments — more realistic */}
+                          <g opacity={isActive ? 0.3 : 0.06}>
+                            {[0, 1, 2, 3, 4, 5, 6].map(i => (
+                              <path key={i}
+                                d={`M${xOffset + 40 + i * 18},${y + 2} C${xOffset + 38 + i * 18},${y + l.h / 3} ${xOffset + 36 + i * 17},${y + 2 * l.h / 3} ${xOffset + 34 + i * 17},${y + l.h - 2}`}
+                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.6" fill="none" />
                             ))}
                             <text x={xOffset + layerWidth / 2} y={y + l.h - 2} fontSize="3" textAnchor="middle" fill="hsl(50, 50%, 55%)" fontStyle="italic">cauda equina</text>
+                          </g>
+                          {/* Arachnoid trabeculae spanning the space */}
+                          <g opacity={isActive ? 0.12 : 0.03}>
+                            {[0, 1, 2, 3, 4, 5].map(i => (
+                              <line key={i} x1={xOffset + 15 + i * 32} y1={y + 1} x2={xOffset + 20 + i * 32} y2={y + l.h - 1}
+                                stroke="hsl(290, 25%, 55%)" strokeWidth="0.3" />
+                            ))}
                           </g>
                         </g>
                       )}
 
-                      {/* Pia: vascular membrane */}
+                      {/* Pia: highly vascular, intimate with cord */}
                       {key === "pia" && (
-                        <g opacity={isActive ? 0.4 : 0.12}>
-                          {/* Pial vessels */}
-                          <path d={`M${xOffset + 10},${y + l.h / 2} C${xOffset + 30},${y + 2} ${xOffset + 60},${y + l.h - 2} ${xOffset + 90},${y + l.h / 2}`}
-                            stroke="hsl(0, 45%, 52%)" strokeWidth="0.5" fill="none" />
-                          <path d={`M${xOffset + 100},${y + l.h / 2} C${xOffset + 120},${y + 2} ${xOffset + 145},${y + l.h - 2} ${xOffset + 170},${y + l.h / 2}`}
-                            stroke="hsl(0, 45%, 52%)" strokeWidth="0.5" fill="none" />
-                          {/* Dentate ligaments */}
-                          <line x1={xOffset + 5} y1={y + l.h / 2} x2={xOffset - 5} y2={y + l.h / 2 - 4} stroke="hsl(320, 35%, 52%)" strokeWidth="0.8" />
-                          <line x1={xOffset + layerWidth - 5} y1={y + l.h / 2} x2={xOffset + layerWidth + 5} y2={y + l.h / 2 - 4} stroke="hsl(320, 35%, 52%)" strokeWidth="0.8" />
-                          <text x={xOffset - 10} y={y + l.h / 2 - 6} fontSize="3" fill="hsl(320, 35%, 52%)" textAnchor="end">dentate lig.</text>
+                        <g>
+                          {/* Pia vessels — branching pattern */}
+                          <g opacity={isActive ? 0.45 : 0.12}>
+                            <path d={`M${xOffset + 8},${y + l.h / 2} C${xOffset + 20},${y + 1} ${xOffset + 40},${y + l.h - 1} ${xOffset + 60},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.6" fill="none" />
+                            <path d={`M${xOffset + 60},${y + l.h / 2} C${xOffset + 75},${y + 2} ${xOffset + 95},${y + l.h - 1} ${xOffset + 110},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
+                            <path d={`M${xOffset + 110},${y + l.h / 2} C${xOffset + 130},${y + 1} ${xOffset + 150},${y + l.h - 1} ${xOffset + 170},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
+                            {/* Vasocorona (circumferential vessels) */}
+                            <path d={`M${xOffset + 30},${y + 2} C${xOffset + 35},${y + l.h / 2} ${xOffset + 28},${y + l.h - 1} ${xOffset + 32},${y + l.h}`}
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                            <path d={`M${xOffset + 140},${y + 2} C${xOffset + 145},${y + l.h / 2} ${xOffset + 138},${y + l.h - 1} ${xOffset + 142},${y + l.h}`}
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                          </g>
+                          {/* Dentate ligaments — extending laterally */}
+                          <g opacity={isActive ? 0.55 : 0.15}>
+                            <path d={`M${xOffset + 3},${y + l.h / 2} L${xOffset - 8},${y + l.h / 2 - 5}`}
+                              stroke="hsl(320, 40%, 55%)" strokeWidth="1" />
+                            <path d={`M${xOffset + layerWidth - 3},${y + l.h / 2} L${xOffset + layerWidth + 8},${y + l.h / 2 - 5}`}
+                              stroke="hsl(320, 40%, 55%)" strokeWidth="1" />
+                            {/* Triangular tooth shape */}
+                            <polygon points={`${xOffset - 8},${y + l.h / 2 - 5} ${xOffset - 6},${y + l.h / 2 - 8} ${xOffset - 10},${y + l.h / 2 - 8}`}
+                              fill="hsl(320, 40%, 55%)" opacity="0.4" />
+                            <polygon points={`${xOffset + layerWidth + 8},${y + l.h / 2 - 5} ${xOffset + layerWidth + 6},${y + l.h / 2 - 8} ${xOffset + layerWidth + 10},${y + l.h / 2 - 8}`}
+                              fill="hsl(320, 40%, 55%)" opacity="0.4" />
+                            <text x={xOffset - 14} y={y + l.h / 2 - 9} fontSize="3" fill="hsl(320, 40%, 55%)" textAnchor="end">Dentate lig.</text>
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(320, 40%, 55%)" fontStyle="italic" opacity="0.5">Filum terminale extends from conus → S2</text>
+                          )}
                         </g>
                       )}
                     </g>
