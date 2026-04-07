@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 
-// ── data ──────────────────────────────────────────────────────────────────────
+// ── Structure data ────────────────────────────────────────────────────────────
 
 type StructureKey =
   | "lca" | "lad" | "lcx" | "rca" | "pda"
@@ -19,548 +19,593 @@ interface Structure {
 }
 
 const structures: Record<StructureKey, Structure> = {
-  lca: { label: "Left Main Coronary (LMCA)", color: "hsl(0, 65%, 52%)", category: "coronary",
-    detail: "Arises from left aortic sinus (of Valsalva). Short trunk (0.5–2 cm) before bifurcating into LAD and LCx. Passes between pulmonary trunk and left atrial appendage.",
-    clinicalNote: "Left main stenosis is a surgical emergency — supplies ~75% of LV. 'Widow-maker' if occluded. CABG rather than PCI for significant left main disease." },
-  lad: { label: "Left Anterior Descending (LAD)", color: "hsl(350, 60%, 50%)", category: "coronary",
-    detail: "Runs in anterior interventricular groove toward apex. Gives septal perforators (supply anterior 2/3 of interventricular septum) and diagonal branches (anterior LV wall).",
-    clinicalNote: "Most commonly occluded in MI. Territory: anterior LV wall, apex, anterior septum. ECG: V1–V4 ST elevation. LIMA-to-LAD is the gold standard CABG graft." },
-  lcx: { label: "Left Circumflex (LCx)", color: "hsl(20, 65%, 50%)", category: "coronary",
-    detail: "Runs in left AV groove posteriorly. Gives obtuse marginal branches to lateral LV wall. In 15% of population, gives the PDA ('left-dominant' circulation).",
-    clinicalNote: "Territory: lateral and posterior LV wall. ECG: I, aVL, V5–V6 changes. Circumflex occlusion may be 'ECG-silent' — posterior changes often missed." },
-  rca: { label: "Right Coronary Artery (RCA)", color: "hsl(10, 60%, 52%)", category: "coronary",
-    detail: "Arises from right aortic sinus. Runs in right AV groove. Supplies RA, RV, SA node (in 60%), AV node (in 85% — right-dominant). Gives acute marginal branches.",
-    clinicalNote: "In 85% ('right-dominant'), RCA gives posterior descending artery (PDA). RCA occlusion → inferior MI (II, III, aVF) + RV infarction. May cause bradycardia (SA/AV node supply)." },
-  pda: { label: "Posterior Descending (PDA)", color: "hsl(280, 45%, 50%)", category: "coronary",
-    detail: "Runs in posterior interventricular groove. Supplies posterior 1/3 of interventricular septum and inferior LV wall. Arises from RCA in 85% (right-dominant), LCx in 15%.",
-    clinicalNote: "Dominance defined by which artery gives PDA. Right-dominant (85%): PDA from RCA. Left-dominant (15%): PDA from LCx. Co-dominant: both contribute." },
-  "sa-node": { label: "Sinoatrial (SA) Node", color: "hsl(45, 75%, 48%)", category: "conduction",
-    detail: "Located at junction of SVC and right atrium (crista terminalis). Primary pacemaker: intrinsic rate 60–100 bpm. Supplied by SA nodal artery (from RCA in 60%, LCx in 40%).",
-    clinicalNote: "Sick sinus syndrome if damaged. SA nodal artery at risk during SVC cannulation and Fontan surgery. Automaticity influenced by autonomic tone." },
-  "av-node": { label: "Atrioventricular (AV) Node", color: "hsl(55, 70%, 46%)", category: "conduction",
-    detail: "Located in triangle of Koch (bounded by tendon of Todaro, coronary sinus ostium, tricuspid annulus). Intrinsic rate 40–60 bpm. Delays conduction 0.1s (PR interval).",
-    clinicalNote: "AV node supplied by RCA in 85%. AV block in inferior MI (RCA territory). Only structure allowing atrial-to-ventricular conduction (cardiac skeleton insulates)." },
-  "bundle-his": { label: "Bundle of His", color: "hsl(65, 65%, 44%)", category: "conduction",
-    detail: "Penetrates the central fibrous body (cardiac skeleton) to reach the ventricular septum. Only electrical connection between atria and ventricles. Short segment (~20 mm).",
-    clinicalNote: "Damage during aortic/mitral valve surgery → complete heart block. His bundle pacing is emerging as physiological pacing alternative." },
-  "left-bundle": { label: "Left Bundle Branch", color: "hsl(80, 55%, 44%)", category: "conduction",
-    detail: "Fans out as a broad sheet on left septal surface. Divides into anterior and posterior fascicles. Anterior fascicle: thin, single blood supply (LAD) — vulnerable. Posterior fascicle: thick, dual supply.",
-    clinicalNote: "LBBB: QRS >120ms, broad negative V1, broad positive V6. New LBBB with chest pain = STEMI equivalent. Left anterior hemiblock is most common conduction defect." },
-  "right-bundle": { label: "Right Bundle Branch", color: "hsl(100, 50%, 44%)", category: "conduction",
-    detail: "Thin, discrete cord running along right side of interventricular septum to the moderator band, then to RV free wall. Single blood supply — relatively vulnerable.",
-    clinicalNote: "RBBB: rsR' pattern in V1, wide S in V6. Common after right heart catheterisation or RV surgery. RBBB alone usually benign; with left fascicular block = bifascicular." },
-  purkinje: { label: "Purkinje Fibres", color: "hsl(120, 45%, 42%)", category: "conduction",
-    detail: "Terminal network of fast-conducting fibres spreading across ventricular endocardium. Conduction velocity 2–4 m/s (fastest in heart). Ensures synchronous ventricular contraction.",
-    clinicalNote: "Intrinsic rate 20–40 bpm (escape rhythm). Wide QRS escape rhythm = infra-nodal (His-Purkinje). Purkinje fibres can be arrhythmogenic trigger in VF." },
-  mitral: { label: "Mitral Valve", color: "hsl(200, 55%, 50%)", category: "valve",
-    detail: "Bicuspid valve between LA and LV. Anterior leaflet larger (covers more orifice area), posterior leaflet longer (greater annular attachment). Supported by anterolateral and posteromedial papillary muscles via chordae tendineae.",
-    clinicalNote: "Auscultation: apex (5th ICS, mid-clavicular). Mitral regurgitation: posterior leaflet prolapse most common. LCx artery runs in proximity — at risk during mitral surgery." },
-  aortic: { label: "Aortic Valve", color: "hsl(170, 50%, 45%)", category: "valve",
-    detail: "Trileaflet semilunar valve (right, left, non-coronary cusps). Coronary arteries arise from right and left sinuses of Valsalva above the cusps. No chordae — supported by annulus.",
-    clinicalNote: "Auscultation: right 2nd ICS. Aortic stenosis: most common valve lesion requiring surgery. TAVI via femoral/transapical approach. Calcification progresses with age." },
-  tricuspid: { label: "Tricuspid Valve", color: "hsl(260, 45%, 52%)", category: "valve",
-    detail: "Three leaflets (anterior, posterior, septal) between RA and RV. Largest valve by annular area. Septal leaflet attached to ventricular septum — offset from mitral (more apical).",
-    clinicalNote: "Auscultation: left lower sternal edge. Functional TR common in RV dilatation. AV node lies near septal leaflet — risk during tricuspid surgery. Offset helps identify ventricles on echo." },
-  pulmonary: { label: "Pulmonary Valve", color: "hsl(310, 40%, 50%)", category: "valve",
-    detail: "Trileaflet semilunar valve at RV outflow tract (infundibulum) — pulmonary trunk junction. Most anterior valve. No coronary arteries arise from pulmonary sinuses.",
-    clinicalNote: "Auscultation: left 2nd ICS. Pulmonary stenosis: congenital (tetralogy of Fallot). PA catheter passes through this valve. Ross procedure: pulmonary autograft replaces diseased aortic valve." },
+  lca: { label: "Left Main Coronary (LMCA)", color: "#d94040", category: "coronary",
+    detail: "Arises from left aortic sinus (of Valsalva). Short trunk (0.5–2 cm) before bifurcating into LAD and LCx.",
+    clinicalNote: "Left main stenosis is a surgical emergency — supplies ~75% of LV. 'Widow-maker' if occluded." },
+  lad: { label: "Left Anterior Descending (LAD)", color: "#cc3344", category: "coronary",
+    detail: "Runs in anterior interventricular groove toward apex. Gives septal perforators and diagonal branches.",
+    clinicalNote: "Most commonly occluded in MI. Territory: anterior LV wall, apex, anterior septum. ECG: V1–V4 ST elevation." },
+  lcx: { label: "Left Circumflex (LCx)", color: "#cc6633", category: "coronary",
+    detail: "Runs in left AV groove posteriorly. Gives obtuse marginal branches. Dominant in 15%.",
+    clinicalNote: "Territory: lateral and posterior LV wall. ECG: I, aVL, V5–V6 changes. May be 'ECG-silent'." },
+  rca: { label: "Right Coronary Artery (RCA)", color: "#d05030", category: "coronary",
+    detail: "Arises from right aortic sinus. Runs in right AV groove. Supplies RA, RV, SA node (60%), AV node (85%).",
+    clinicalNote: "In 85% gives PDA. Occlusion → inferior MI (II, III, aVF) + RV infarction. May cause bradycardia." },
+  pda: { label: "Posterior Descending (PDA)", color: "#9944aa", category: "coronary",
+    detail: "Runs in posterior interventricular groove. Supplies posterior septum and inferior LV. From RCA in 85%.",
+    clinicalNote: "Dominance defined by which artery gives PDA. Right-dominant 85%, left 15%." },
+  "sa-node": { label: "Sinoatrial (SA) Node", color: "#d4a017", category: "conduction",
+    detail: "Junction of SVC and RA (crista terminalis). Primary pacemaker 60–100 bpm. SA nodal artery from RCA 60%.",
+    clinicalNote: "Sick sinus syndrome if damaged. At risk during SVC cannulation. Influenced by autonomic tone." },
+  "av-node": { label: "Atrioventricular (AV) Node", color: "#c4a820", category: "conduction",
+    detail: "Triangle of Koch (tendon of Todaro, coronary sinus os, tricuspid annulus). Rate 40–60 bpm. 0.1s delay.",
+    clinicalNote: "Supplied by RCA in 85%. AV block in inferior MI. Only normal atrial-to-ventricular pathway." },
+  "bundle-his": { label: "Bundle of His", color: "#a0a020", category: "conduction",
+    detail: "Penetrates central fibrous body to ventricular septum. Only electrical atrial–ventricular connection.",
+    clinicalNote: "Damage during valve surgery → complete heart block. His bundle pacing emerging alternative." },
+  "left-bundle": { label: "Left Bundle Branch", color: "#80a030", category: "conduction",
+    detail: "Broad sheet on left septal surface. Anterior fascicle (thin, LAD supply) and posterior fascicle (thick, dual supply).",
+    clinicalNote: "LBBB: QRS >120ms. New LBBB + chest pain = STEMI equivalent. Left anterior hemiblock most common." },
+  "right-bundle": { label: "Right Bundle Branch", color: "#60a040", category: "conduction",
+    detail: "Thin cord along right septum to moderator band then RV free wall. Single blood supply — vulnerable.",
+    clinicalNote: "RBBB: rsR' in V1, wide S in V6. Common after RV surgery. Alone usually benign." },
+  purkinje: { label: "Purkinje Fibres", color: "#40a050", category: "conduction",
+    detail: "Fast-conducting terminal network (2–4 m/s) across ventricular endocardium. Synchronous contraction.",
+    clinicalNote: "Escape rate 20–40 bpm. Wide QRS = infra-nodal. Can trigger VF." },
+  mitral: { label: "Mitral Valve", color: "#4488cc", category: "valve",
+    detail: "Bicuspid between LA and LV. Anterior leaflet larger, posterior longer. Supported by papillary muscles via chordae.",
+    clinicalNote: "Apex auscultation. MR: posterior prolapse most common. LCx at risk during surgery." },
+  aortic: { label: "Aortic Valve", color: "#33aa88", category: "valve",
+    detail: "Trileaflet semilunar (R, L, non-coronary cusps). Coronary arteries arise from sinuses of Valsalva.",
+    clinicalNote: "Right 2nd ICS. Most common valve lesion needing surgery. TAVI via femoral approach." },
+  tricuspid: { label: "Tricuspid Valve", color: "#7755bb", category: "valve",
+    detail: "Three leaflets (anterior, posterior, septal) between RA and RV. Largest valve. Offset from mitral.",
+    clinicalNote: "Left lower sternal edge. Functional TR in RV dilatation. AV node near septal leaflet." },
+  pulmonary: { label: "Pulmonary Valve", color: "#aa44aa", category: "valve",
+    detail: "Trileaflet semilunar at RVOT–PA junction. Most anterior valve. No coronary arteries arise here.",
+    clinicalNote: "Left 2nd ICS. PS: congenital (ToF). PA catheter passes through. Ross procedure: autograft." },
 };
 
 const categories = [
-  { key: "coronary" as const, label: "Coronary Arteries", keys: ["lca", "lad", "lcx", "rca", "pda"] as StructureKey[] },
-  { key: "conduction" as const, label: "Conducting System", keys: ["sa-node", "av-node", "bundle-his", "left-bundle", "right-bundle", "purkinje"] as StructureKey[] },
+  { key: "coronary" as const, label: "Coronary", keys: ["lca", "lad", "lcx", "rca", "pda"] as StructureKey[] },
+  { key: "conduction" as const, label: "Conduction", keys: ["sa-node", "av-node", "bundle-his", "left-bundle", "right-bundle", "purkinje"] as StructureKey[] },
   { key: "valve" as const, label: "Valves", keys: ["mitral", "aortic", "tricuspid", "pulmonary"] as StructureKey[] },
 ];
 
-// ── Heart shape ───────────────────────────────────────────────────────────────
+// ── Geometry helpers ──────────────────────────────────────────────────────────
 
-function createHeartShape() {
-  const shape = new THREE.Shape();
-  shape.moveTo(0, -1.7);
-  shape.bezierCurveTo(-0.2, -1.8, -0.8, -1.6, -1.1, -1.0);
-  shape.bezierCurveTo(-1.4, -0.4, -1.3, 0.3, -1.1, 0.8);
-  shape.bezierCurveTo(-0.9, 1.2, -0.5, 1.5, 0, 1.6);
-  shape.bezierCurveTo(0.5, 1.5, 0.9, 1.2, 1.1, 0.8);
-  shape.bezierCurveTo(1.3, 0.3, 1.3, -0.4, 1.0, -1.0);
-  shape.bezierCurveTo(0.7, -1.6, 0.2, -1.8, 0, -1.7);
-  return shape;
-}
+/** Create anatomical heart shape using lathe geometry with asymmetric profile */
+function createAnatomicalHeartGeo() {
+  // Anatomical heart profile: wider at base (atria), tapers to apex
+  // Viewed from the side, the heart is roughly conical with a rounded top
+  const points: THREE.Vector2[] = [];
+  const segments = 64;
 
-// ── Clipping plane manager ────────────────────────────────────────────────────
+  for (let i = 0; i <= segments; i++) {
+    const t = i / segments; // 0 = apex (bottom), 1 = base (top)
 
-function ClipPlaneUpdater({ clipPlane, cutaway }: { clipPlane: THREE.Plane; cutaway: boolean }) {
-  const { gl } = useThree();
-  gl.localClippingEnabled = cutaway;
-
-  useFrame(() => {
-    if (cutaway) {
-      // Clip plane along Z axis — slices front half away to show interior
-      clipPlane.set(new THREE.Vector3(0, 0, -1), 0.05);
+    // Radius varies: narrow at apex, widens, then narrows slightly at base
+    let r: number;
+    if (t < 0.15) {
+      // Apex — pointed
+      r = 0.08 + t * 2.5;
+    } else if (t < 0.5) {
+      // Lower ventricles — widening
+      r = 0.45 + Math.sin((t - 0.15) / 0.35 * Math.PI * 0.5) * 0.55;
+    } else if (t < 0.7) {
+      // AV groove — slight indentation
+      const groove = Math.sin((t - 0.5) / 0.2 * Math.PI) * 0.08;
+      r = 1.0 - groove;
+    } else {
+      // Atria — rounded top
+      r = 0.92 - (t - 0.7) / 0.3 * 0.5;
+      r = Math.max(0.1, r);
     }
-  });
 
-  return null;
+    const y = -1.5 + t * 3.0; // -1.5 (apex) to 1.5 (base)
+    points.push(new THREE.Vector2(r, y));
+  }
+
+  const geo = new THREE.LatheGeometry(points, 48);
+  geo.computeVertexNormals();
+  return geo;
 }
 
-// ── Reusable components ───────────────────────────────────────────────────────
+/** Create a more organic shape by deforming vertices */
+function deformHeartGeo(geo: THREE.BufferGeometry) {
+  const pos = geo.attributes.position;
+  const v = new THREE.Vector3();
 
-function ArteryTube({
-  points, color, radius = 0.03, active, onClick, clipPlanes,
+  for (let i = 0; i < pos.count; i++) {
+    v.set(pos.getX(i), pos.getY(i), pos.getZ(i));
+
+    // Make LV side (negative x in anatomical position) slightly larger
+    const lateralBias = v.x < 0 ? 1.08 : 0.95;
+    v.x *= lateralBias;
+
+    // Flatten slightly front-to-back
+    v.z *= 0.82;
+
+    // Add subtle bulges for RV anterior surface
+    if (v.x > 0.2 && v.y < 0.5 && v.y > -1.0) {
+      const bulge = Math.sin((v.y + 1.0) / 1.5 * Math.PI) * 0.12;
+      v.z += bulge * Math.max(0, 1 - Math.abs(v.x - 0.5) * 2);
+    }
+
+    // Tilt heart ~30° leftward and anteriorly (anatomical position)
+    const tiltAngle = 0.15;
+    const y2 = v.y * Math.cos(tiltAngle) - v.z * Math.sin(tiltAngle);
+    const z2 = v.y * Math.sin(tiltAngle) + v.z * Math.cos(tiltAngle);
+    v.y = y2;
+    v.z = z2;
+
+    pos.setXYZ(i, v.x, v.y, v.z);
+  }
+
+  geo.computeVertexNormals();
+  return geo;
+}
+
+// ── Reusable 3D components ────────────────────────────────────────────────────
+
+function Vessel({
+  points, color, radius = 0.06, active = false, onClick, clip,
 }: {
   points: [number, number, number][];
   color: string;
   radius?: number;
-  active: boolean;
-  onClick: () => void;
-  clipPlanes?: THREE.Plane[];
+  active?: boolean;
+  onClick?: () => void;
+  clip?: THREE.Plane[];
 }) {
   const geo = useMemo(() => {
     const curve = new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p)));
-    return new THREE.TubeGeometry(curve, 32, active ? radius * 1.6 : radius, 8, false);
+    return new THREE.TubeGeometry(curve, 40, active ? radius * 1.4 : radius, 12, false);
   }, [points, radius, active]);
 
   return (
-    <mesh geometry={geo} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
-      <meshStandardMaterial
-        color={color} emissive={color} emissiveIntensity={active ? 0.6 : 0.15}
-        roughness={0.4} clippingPlanes={clipPlanes} clipShadows
+    <mesh
+      geometry={geo}
+      onClick={onClick ? (e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); } : undefined}
+    >
+      <meshPhysicalMaterial
+        color={color}
+        emissive={color}
+        emissiveIntensity={active ? 0.5 : 0.08}
+        roughness={0.55}
+        clearcoat={0.3}
+        clearcoatRoughness={0.4}
+        clippingPlanes={clip}
+        clipShadows
       />
     </mesh>
   );
 }
 
-function NodeSphere({
-  position, color, active, onClick, size = 0.07, clipPlanes,
+function Node({
+  position, color, active, onClick, size = 0.06, clip,
 }: {
   position: [number, number, number];
   color: string;
   active: boolean;
   onClick: () => void;
   size?: number;
-  clipPlanes?: THREE.Plane[];
+  clip?: THREE.Plane[];
 }) {
+  const s = active ? size * 1.5 : size;
   return (
     <mesh position={position} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
-      <sphereGeometry args={[active ? size * 1.5 : size, 16, 16]} />
-      <meshStandardMaterial
-        color={color} emissive={color} emissiveIntensity={active ? 0.8 : 0.2}
-        roughness={0.3} clippingPlanes={clipPlanes} clipShadows
+      <sphereGeometry args={[s, 16, 16]} />
+      <meshPhysicalMaterial
+        color={color} emissive={color}
+        emissiveIntensity={active ? 0.7 : 0.15}
+        roughness={0.3} clearcoat={0.5}
+        clippingPlanes={clip} clipShadows
       />
     </mesh>
   );
 }
 
-function ValveRing({
-  position, rotation, color, active, onClick, clipPlanes,
+function Valve({
+  position, rotation, color, active, onClick, clip,
+  innerR = 0.1, outerR = 0.025,
 }: {
   position: [number, number, number];
   rotation?: [number, number, number];
   color: string;
   active: boolean;
   onClick: () => void;
-  clipPlanes?: THREE.Plane[];
+  clip?: THREE.Plane[];
+  innerR?: number;
+  outerR?: number;
 }) {
+  const r = active ? innerR * 1.15 : innerR;
   return (
-    <mesh position={position} rotation={rotation} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
-      <torusGeometry args={[active ? 0.14 : 0.12, 0.025, 12, 24]} />
-      <meshStandardMaterial
-        color={color} emissive={color} emissiveIntensity={active ? 0.7 : 0.15}
-        roughness={0.3} transparent opacity={active ? 1 : 0.6}
-        clippingPlanes={clipPlanes} clipShadows
+    <mesh position={position} rotation={rotation}
+      onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
+      <torusGeometry args={[r, outerR, 10, 24]} />
+      <meshPhysicalMaterial
+        color={color} emissive={color}
+        emissiveIntensity={active ? 0.6 : 0.1}
+        roughness={0.3} clearcoat={0.4}
+        transparent opacity={active ? 1 : 0.65}
+        clippingPlanes={clip} clipShadows
       />
     </mesh>
   );
 }
 
-// ── Valve leaflet (visible only in cutaway) ───────────────────────────────────
-
-function ValveLeaflet({
-  position, rotation, color, scaleXY = [0.1, 0.12],
-}: {
-  position: [number, number, number];
-  rotation: [number, number, number];
-  color: string;
-  scaleXY?: [number, number];
+function Leaflet({ pos, rot, color, size }: {
+  pos: [number, number, number]; rot: [number, number, number]; color: string; size: [number, number];
 }) {
   return (
-    <mesh position={position} rotation={rotation}>
-      <planeGeometry args={[scaleXY[0], scaleXY[1]]} />
-      <meshStandardMaterial
-        color={color} side={THREE.DoubleSide}
-        transparent opacity={0.7} roughness={0.5}
-      />
+    <mesh position={pos} rotation={rot}>
+      <planeGeometry args={size} />
+      <meshPhysicalMaterial color={color} side={THREE.DoubleSide} transparent opacity={0.65} roughness={0.5} />
     </mesh>
   );
 }
-
-// ── Chordae tendineae (thin lines from valve to papillary muscle) ─────────────
 
 function Chorda({ from, to, color }: { from: [number, number, number]; to: [number, number, number]; color: string }) {
   const geo = useMemo(() => {
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(...from),
-      new THREE.Vector3((from[0] + to[0]) / 2, (from[1] + to[1]) / 2 - 0.05, (from[2] + to[2]) / 2),
-      new THREE.Vector3(...to),
-    ]);
+    const mid: [number, number, number] = [
+      (from[0] + to[0]) / 2 + (Math.random() - 0.5) * 0.02,
+      (from[1] + to[1]) / 2 - 0.04,
+      (from[2] + to[2]) / 2 + (Math.random() - 0.5) * 0.02,
+    ];
+    const curve = new THREE.CatmullRomCurve3([new THREE.Vector3(...from), new THREE.Vector3(...mid), new THREE.Vector3(...to)]);
     return new THREE.TubeGeometry(curve, 8, 0.004, 4, false);
   }, [from, to]);
-
-  return (
-    <mesh geometry={geo}>
-      <meshStandardMaterial color={color} roughness={0.6} />
-    </mesh>
-  );
+  return <mesh geometry={geo}><meshStandardMaterial color={color} roughness={0.6} /></mesh>;
 }
 
-// ── Papillary muscle ──────────────────────────────────────────────────────────
-
-function PapillaryMuscle({ position, color }: { position: [number, number, number]; color: string }) {
+function PapillaryMuscle({ pos, color }: { pos: [number, number, number]; color: string }) {
   return (
-    <mesh position={position}>
-      <cylinderGeometry args={[0.03, 0.05, 0.12, 8]} />
+    <mesh position={pos}>
+      <coneGeometry args={[0.045, 0.14, 8]} />
       <meshStandardMaterial color={color} roughness={0.7} />
     </mesh>
   );
 }
 
-// ── Trabeculae carneae (ridges on ventricular wall) ───────────────────────────
+// ── Clipping plane controller ─────────────────────────────────────────────────
 
-function Trabeculae({ center, count, spread, color }: { center: [number, number, number]; count: number; spread: number; color: string }) {
-  const geos = useMemo(() => {
-    const items: { pos: [number, number, number]; rot: [number, number, number] }[] = [];
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2;
-      items.push({
-        pos: [
-          center[0] + Math.cos(angle) * spread,
-          center[1] + (Math.random() - 0.5) * 0.3,
-          center[2] + Math.sin(angle) * spread,
-        ],
-        rot: [Math.random() * 0.5, angle, Math.random() * 0.3],
-      });
-    }
-    return items;
-  }, [center, count, spread]);
-
-  return (
-    <>
-      {geos.map((g, i) => (
-        <mesh key={i} position={g.pos} rotation={g.rot}>
-          <cylinderGeometry args={[0.008, 0.012, 0.15, 4]} />
-          <meshStandardMaterial color={color} roughness={0.8} transparent opacity={0.5} />
-        </mesh>
-      ))}
-    </>
-  );
+function ClipController({ plane, active }: { plane: THREE.Plane; active: boolean }) {
+  const { gl } = useThree();
+  gl.localClippingEnabled = active;
+  return null;
 }
 
-// ── Cross-section wall ring (visible cut surface) ─────────────────────────────
+// ── Main heart model ──────────────────────────────────────────────────────────
 
-function CutSurface({ position, innerR, outerR, color }: {
-  position: [number, number, number]; innerR: number; outerR: number; color: string;
-}) {
-  return (
-    <mesh position={position} rotation={[Math.PI / 2, 0, 0]}>
-      <ringGeometry args={[innerR, outerR, 32]} />
-      <meshStandardMaterial color={color} side={THREE.DoubleSide} roughness={0.6} />
-    </mesh>
-  );
-}
-
-// ── Heart 3D Model ────────────────────────────────────────────────────────────
-
-function HeartModel({
-  selected, onSelect, cutaway,
-}: {
-  selected: StructureKey;
-  onSelect: (k: StructureKey) => void;
-  cutaway: boolean;
+function HeartModel({ selected, onSelect, cutaway }: {
+  selected: StructureKey; onSelect: (k: StructureKey) => void; cutaway: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
-  const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.05), []);
-  const clipPlanes = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
+  const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
+  const clip = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
 
-  useFrame((_, delta) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += delta * 0.08;
-    }
+  useFrame((_, dt) => {
+    if (groupRef.current) groupRef.current.rotation.y += dt * 0.06;
   });
 
-  const heartGeo = useMemo(() => {
-    const shape = createHeartShape();
-    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
-      depth: 1.2,
-      bevelEnabled: true,
-      bevelThickness: 0.35,
-      bevelSize: 0.3,
-      bevelSegments: 12,
-      curveSegments: 24,
-    };
-    const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
-    geo.center();
-    geo.computeVertexNormals();
-    return geo;
-  }, []);
+  const heartGeo = useMemo(() => deformHeartGeo(createAnatomicalHeartGeo()), []);
 
-  const click = (k: StructureKey) => () => onSelect(k);
-  const isActive = (k: StructureKey) => selected === k;
+  const pick = useCallback((k: StructureKey) => () => onSelect(k), [onSelect]);
+  const on = useCallback((k: StructureKey) => selected === k, [selected]);
+
+  // Colors
+  const myoColor = "#8B3A3A";
+  const endoColor = "#6B2020";
+  const raColor = "#2B3A6B";
+  const laColor = "#6B2A3A";
+  const rvColor = "#1E2E5A";
+  const lvColor = "#5A1A25";
+  const septumColor = "#7A3030";
+  const fatColor = "#D4A060";
 
   return (
-    <group ref={groupRef} position={[0, 0.2, 0]}>
-      <ClipPlaneUpdater clipPlane={clipPlane} cutaway={cutaway} />
+    <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
+      <ClipController plane={clipPlane} active={cutaway} />
 
-      {/* Myocardium — outer wall */}
+      {/* ── Epicardium (outer surface) ── */}
       <mesh geometry={heartGeo}>
-        <meshStandardMaterial
-          color="hsl(0, 32%, 38%)" roughness={0.65} metalness={0.05}
-          transparent opacity={cutaway ? 0.5 : 0.35}
-          side={THREE.DoubleSide} depthWrite={false}
-          clippingPlanes={clipPlanes} clipShadows
+        <meshPhysicalMaterial
+          color={myoColor} roughness={0.7} metalness={0.02}
+          transparent opacity={cutaway ? 0.45 : 0.55}
+          side={THREE.DoubleSide} depthWrite={!cutaway}
+          clippingPlanes={clip} clipShadows
+          clearcoat={0.15} clearcoatRoughness={0.6}
         />
       </mesh>
 
-      {/* Inner wall */}
-      <mesh geometry={heartGeo} scale={[0.88, 0.88, 0.88]}>
-        <meshStandardMaterial
-          color="hsl(0, 40%, 28%)" roughness={0.8}
-          transparent opacity={cutaway ? 0.4 : 0.2} side={THREE.DoubleSide}
-          clippingPlanes={clipPlanes} clipShadows
+      {/* ── Endocardium (inner surface) ── */}
+      <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
+        <meshPhysicalMaterial
+          color={endoColor} roughness={0.8}
+          transparent opacity={cutaway ? 0.5 : 0.15}
+          side={THREE.DoubleSide}
+          clippingPlanes={clip} clipShadows
         />
       </mesh>
+
+      {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
+      <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
+      <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
 
       {/* ── Chambers ── */}
-      {/* Right atrium */}
-      <mesh position={[0.45, 0.55, 0]}>
-        <sphereGeometry args={[0.38, 16, 16]} />
-        <meshStandardMaterial
-          color="hsl(220, 50%, 30%)" transparent opacity={cutaway ? 0.4 : 0.22}
-          roughness={0.7} side={cutaway ? THREE.DoubleSide : THREE.FrontSide}
-          clippingPlanes={clipPlanes} clipShadows
-        />
+      {/* Right atrium — posterior-right, thin-walled */}
+      <mesh position={[0.42, 0.75, -0.08]}>
+        <sphereGeometry args={[0.38, 20, 20]} />
+        <meshPhysicalMaterial color={raColor} transparent opacity={cutaway ? 0.4 : 0.18} roughness={0.7}
+          side={cutaway ? THREE.DoubleSide : THREE.FrontSide} clippingPlanes={clip} clipShadows />
       </mesh>
-      {/* Left atrium */}
-      <mesh position={[-0.45, 0.55, 0]}>
-        <sphereGeometry args={[0.35, 16, 16]} />
-        <meshStandardMaterial
-          color="hsl(0, 50%, 35%)" transparent opacity={cutaway ? 0.4 : 0.22}
-          roughness={0.7} side={cutaway ? THREE.DoubleSide : THREE.FrontSide}
-          clippingPlanes={clipPlanes} clipShadows
-        />
-      </mesh>
-      {/* Right ventricle */}
-      <mesh position={[0.35, -0.3, 0.15]}>
-        <sphereGeometry args={[0.42, 16, 16]} />
-        <meshStandardMaterial
-          color="hsl(225, 48%, 28%)" transparent opacity={cutaway ? 0.4 : 0.22}
-          roughness={0.7} side={cutaway ? THREE.DoubleSide : THREE.FrontSide}
-          clippingPlanes={clipPlanes} clipShadows
-        />
-      </mesh>
-      {/* Left ventricle */}
-      <mesh position={[-0.35, -0.35, -0.05]}>
-        <sphereGeometry args={[0.48, 16, 16]} />
-        <meshStandardMaterial
-          color="hsl(0, 55%, 30%)" transparent opacity={cutaway ? 0.4 : 0.22}
-          roughness={0.7} side={cutaway ? THREE.DoubleSide : THREE.FrontSide}
-          clippingPlanes={clipPlanes} clipShadows
-        />
+      {/* Right atrial appendage */}
+      <mesh position={[0.55, 0.95, 0.25]} rotation={[0, 0.5, 0.3]}>
+        <coneGeometry args={[0.12, 0.25, 8]} />
+        <meshPhysicalMaterial color={raColor} transparent opacity={cutaway ? 0.35 : 0.15} roughness={0.7}
+          clippingPlanes={clip} clipShadows />
       </mesh>
 
-      {/* Interventricular septum */}
-      <mesh position={[0, -0.25, 0.05]}>
-        <boxGeometry args={[0.06, 0.9, 0.7]} />
-        <meshStandardMaterial
-          color="hsl(0, 28%, 35%)" transparent opacity={cutaway ? 0.55 : 0.3}
-          roughness={0.7} side={THREE.DoubleSide}
-        />
+      {/* Left atrium — posterior-left, smooth-walled */}
+      <mesh position={[-0.42, 0.75, -0.15]}>
+        <sphereGeometry args={[0.35, 20, 20]} />
+        <meshPhysicalMaterial color={laColor} transparent opacity={cutaway ? 0.4 : 0.18} roughness={0.7}
+          side={cutaway ? THREE.DoubleSide : THREE.FrontSide} clippingPlanes={clip} clipShadows />
+      </mesh>
+      {/* Left atrial appendage */}
+      <mesh position={[-0.58, 0.92, 0.2]} rotation={[0, -0.5, -0.3]}>
+        <coneGeometry args={[0.1, 0.2, 8]} />
+        <meshPhysicalMaterial color={laColor} transparent opacity={cutaway ? 0.35 : 0.15} roughness={0.7}
+          clippingPlanes={clip} clipShadows />
+      </mesh>
+
+      {/* Right ventricle — anterior, thin-walled, crescent-shaped */}
+      <mesh position={[0.3, -0.15, 0.2]} scale={[1, 1.3, 0.8]}>
+        <sphereGeometry args={[0.4, 20, 20]} />
+        <meshPhysicalMaterial color={rvColor} transparent opacity={cutaway ? 0.4 : 0.18} roughness={0.7}
+          side={cutaway ? THREE.DoubleSide : THREE.FrontSide} clippingPlanes={clip} clipShadows />
+      </mesh>
+
+      {/* Left ventricle — posterior-left, thick-walled, conical */}
+      <mesh position={[-0.3, -0.3, -0.05]} scale={[1, 1.4, 0.9]}>
+        <sphereGeometry args={[0.48, 20, 20]} />
+        <meshPhysicalMaterial color={lvColor} transparent opacity={cutaway ? 0.4 : 0.18} roughness={0.7}
+          side={cutaway ? THREE.DoubleSide : THREE.FrontSide} clippingPlanes={clip} clipShadows />
+      </mesh>
+
+      {/* ── Septa ── */}
+      {/* Interventricular septum — curved, concave toward RV */}
+      <mesh position={[0, -0.15, 0.05]} rotation={[0.1, 0, 0.15]}>
+        <boxGeometry args={[0.055, 1.1, 0.65]} />
+        <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.55 : 0.25} roughness={0.7}
+          side={THREE.DoubleSide} />
       </mesh>
 
       {/* Interatrial septum */}
-      <mesh position={[0, 0.55, 0]}>
-        <boxGeometry args={[0.04, 0.5, 0.45]} />
-        <meshStandardMaterial
-          color="hsl(0, 25%, 38%)" transparent opacity={cutaway ? 0.5 : 0.2}
-          roughness={0.7} side={THREE.DoubleSide}
-        />
+      <mesh position={[0, 0.75, -0.1]} rotation={[0.15, 0, 0.1]}>
+        <boxGeometry args={[0.035, 0.5, 0.4]} />
+        <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
+          side={THREE.DoubleSide} />
       </mesh>
 
-      {/* ── Cutaway-only interior details ── */}
+      {/* ── Great Vessels ── */}
+      {/* Ascending aorta → arch → descending */}
+      <Vessel
+        points={[[-0.12, 0.95, 0.15], [-0.1, 1.3, 0.12], [0, 1.55, 0], [0.3, 1.5, -0.15], [0.5, 1.3, -0.25], [0.55, 1.0, -0.3]]}
+        color="#B83030" radius={0.11} clip={clip}
+      />
+      {/* Arch branches — brachiocephalic, L CCA, L subclavian */}
+      <Vessel points={[[0.12, 1.5, -0.05], [0.15, 1.75, -0.08], [0.18, 1.95, -0.05]]} color="#C04040" radius={0.04} clip={clip} />
+      <Vessel points={[[0.05, 1.55, -0.02], [0.02, 1.8, -0.02], [0, 1.95, 0]]} color="#C04040" radius={0.035} clip={clip} />
+      <Vessel points={[[-0.05, 1.52, -0.05], [-0.1, 1.78, -0.08], [-0.15, 1.95, -0.05]]} color="#C04040" radius={0.03} clip={clip} />
+
+      {/* Pulmonary trunk → bifurcation */}
+      <Vessel
+        points={[[0.12, 0.88, 0.35], [0.08, 1.15, 0.42], [-0.05, 1.3, 0.35], [-0.2, 1.25, 0.2]]}
+        color="#2A4A8A" radius={0.09} clip={clip}
+      />
+      <Vessel points={[[-0.2, 1.25, 0.2], [-0.4, 1.2, 0.1]]} color="#2A4A8A" radius={0.055} clip={clip} />
+      <Vessel points={[[-0.05, 1.3, 0.35], [0.15, 1.35, 0.25]]} color="#2A4A8A" radius={0.055} clip={clip} />
+
+      {/* SVC */}
+      <Vessel points={[[0.5, 1.0, -0.1], [0.52, 1.3, -0.1], [0.48, 1.65, -0.05]]} color="#3A4A7A" radius={0.07} clip={clip} />
+      {/* IVC */}
+      <Vessel points={[[0.45, 0.3, -0.25], [0.5, 0.0, -0.3], [0.48, -0.35, -0.25]]} color="#3A4A7A" radius={0.07} clip={clip} />
+
+      {/* Pulmonary veins (4, entering LA posteriorly) */}
+      <Vessel points={[[-0.7, 0.9, -0.35], [-0.55, 0.82, -0.22]]} color="#8A3040" radius={0.04} clip={clip} />
+      <Vessel points={[[-0.7, 0.65, -0.35], [-0.55, 0.68, -0.22]]} color="#8A3040" radius={0.04} clip={clip} />
+      <Vessel points={[[-0.35, 0.95, -0.45], [-0.38, 0.82, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
+      <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
+
+      {/* ── Coronary Arteries ── */}
+      {/* LMCA — short trunk from left aortic sinus */}
+      <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
+        color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
+      {/* LAD — anterior interventricular groove */}
+      <Vessel
+        points={[[-0.4, 0.55, 0.5], [-0.2, 0.35, 0.6], [-0.05, 0.1, 0.62], [0, -0.25, 0.55], [0.02, -0.7, 0.38], [0.03, -1.1, 0.15]]}
+        color={structures.lad.color} radius={0.028} active={on("lad")} onClick={pick("lad")} clip={clip} />
+      {/* LCx — left AV groove, wrapping posteriorly */}
+      <Vessel
+        points={[[-0.4, 0.55, 0.5], [-0.6, 0.52, 0.35], [-0.72, 0.48, 0.1], [-0.7, 0.4, -0.2], [-0.55, 0.3, -0.4]]}
+        color={structures.lcx.color} radius={0.025} active={on("lcx")} onClick={pick("lcx")} clip={clip} />
+      {/* RCA — right AV groove, wrapping to posterior */}
+      <Vessel
+        points={[[0.15, 0.92, 0.28], [0.45, 0.78, 0.4], [0.65, 0.58, 0.3], [0.7, 0.35, 0.05], [0.62, 0.15, -0.25], [0.45, -0.05, -0.42]]}
+        color={structures.rca.color} radius={0.028} active={on("rca")} onClick={pick("rca")} clip={clip} />
+      {/* PDA — posterior interventricular groove */}
+      <Vessel
+        points={[[0.45, -0.05, -0.42], [0.25, -0.3, -0.42], [0.08, -0.6, -0.35], [0.03, -0.95, -0.18]]}
+        color={structures.pda.color} radius={0.022} active={on("pda")} onClick={pick("pda")} clip={clip} />
+
+      {/* ── Valves ── */}
+      <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
+        color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
+      <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
+        color={structures.tricuspid.color} active={on("tricuspid")} onClick={pick("tricuspid")} clip={clip} innerR={0.13} />
+      <Valve position={[-0.12, 0.92, 0.15]} rotation={[0.15, 0, 0]}
+        color={structures.aortic.color} active={on("aortic")} onClick={pick("aortic")} clip={clip} innerR={0.08} />
+      <Valve position={[0.12, 0.85, 0.32]} rotation={[0.35, 0.15, 0]}
+        color={structures.pulmonary.color} active={on("pulmonary")} onClick={pick("pulmonary")} clip={clip} innerR={0.08} />
+
+      {/* ── Conduction System ── */}
+      <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
+      <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
+      <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
+        color={structures["bundle-his"].color} radius={0.018} active={on("bundle-his")} onClick={pick("bundle-his")} clip={clip} />
+      <Vessel points={[[0.04, 0.22, 0], [-0.04, 0.05, -0.02], [-0.08, -0.2, -0.02], [-0.08, -0.6, 0]]}
+        color={structures["left-bundle"].color} radius={0.015} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
+      <Vessel points={[[0.04, 0.22, 0], [0.1, 0.05, 0.02], [0.14, -0.2, 0.04], [0.14, -0.6, 0.03]]}
+        color={structures["right-bundle"].color} radius={0.015} active={on("right-bundle")} onClick={pick("right-bundle")} clip={clip} />
+      <Node position={[-0.08, -0.62, 0]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
+      <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
+      {(on("purkinje") || on("left-bundle") || on("right-bundle")) && (
+        <>
+          {([[-0.2, -0.7, 0.12], [-0.25, -0.5, 0.08], [-0.12, -0.78, -0.08],
+            [0.22, -0.7, 0.12], [0.28, -0.5, 0.1], [0.16, -0.78, -0.08]] as [number, number, number][]).map((p, i) => (
+            <Node key={i} position={p} color={structures.purkinje.color} active onClick={pick("purkinje")} size={0.025} clip={clip} />
+          ))}
+        </>
+      )}
+
+      {/* ── Cutaway interior details ── */}
       {cutaway && (
         <group>
-          {/* Fossa ovalis (thin spot on interatrial septum) */}
-          <mesh position={[0, 0.55, 0.05]}>
-            <circleGeometry args={[0.08, 16]} />
-            <meshStandardMaterial
-              color="hsl(0, 20%, 45%)" transparent opacity={0.4}
-              side={THREE.DoubleSide} roughness={0.5}
-            />
+          {/* Fossa ovalis */}
+          <mesh position={[0, 0.75, -0.05]} rotation={[0.15, 0, 0.1]}>
+            <circleGeometry args={[0.07, 16]} />
+            <meshStandardMaterial color="#8A4545" transparent opacity={0.35} side={THREE.DoubleSide} />
           </mesh>
 
-          {/* ── LV wall thickness indicator ── */}
-          <CutSurface position={[-0.35, -0.35, 0.05]} innerR={0.36} outerR={0.48} color="hsl(0, 35%, 32%)" />
+          {/* Trabeculae carneae — LV */}
+          {Array.from({ length: 10 }, (_, i) => {
+            const angle = (i / 10) * Math.PI * 2;
+            return (
+              <mesh key={`lv-trab-${i}`}
+                position={[-0.3 + Math.cos(angle) * 0.22, -0.3 + (Math.random() - 0.5) * 0.6, -0.05 + Math.sin(angle) * 0.18]}
+                rotation={[Math.random() * 0.5, angle, Math.random() * 0.3]}>
+                <cylinderGeometry args={[0.006, 0.01, 0.12 + Math.random() * 0.08, 4]} />
+                <meshStandardMaterial color="#6B2828" roughness={0.8} transparent opacity={0.55} />
+              </mesh>
+            );
+          })}
 
-          {/* ── RV wall (thinner) ── */}
-          <CutSurface position={[0.35, -0.3, 0.05]} innerR={0.35} outerR={0.42} color="hsl(0, 28%, 35%)" />
+          {/* Trabeculae — RV */}
+          {Array.from({ length: 7 }, (_, i) => {
+            const angle = (i / 7) * Math.PI * 2;
+            return (
+              <mesh key={`rv-trab-${i}`}
+                position={[0.3 + Math.cos(angle) * 0.18, -0.15 + (Math.random() - 0.5) * 0.5, 0.2 + Math.sin(angle) * 0.14]}
+                rotation={[Math.random() * 0.4, angle, Math.random() * 0.3]}>
+                <cylinderGeometry args={[0.005, 0.008, 0.1, 4]} />
+                <meshStandardMaterial color="#1A2848" roughness={0.8} transparent opacity={0.5} />
+              </mesh>
+            );
+          })}
 
-          {/* ── Trabeculae carneae ── */}
-          <Trabeculae center={[-0.35, -0.45, -0.05]} count={8} spread={0.25} color="hsl(0, 30%, 38%)" />
-          <Trabeculae center={[0.35, -0.4, 0.1]} count={6} spread={0.22} color="hsl(220, 25%, 35%)" />
+          {/* Moderator band (RV) */}
+          <Vessel points={[[0.12, -0.4, 0.12], [0.3, -0.35, 0.2], [0.45, -0.3, 0.15]]}
+            color="#5A3535" radius={0.018} />
 
-          {/* ── Moderator band (RV) ── */}
-          <ArteryTube
-            points={[[0.15, -0.55, 0.05], [0.35, -0.5, 0.15], [0.5, -0.45, 0.1]]}
-            color="hsl(0, 22%, 42%)" radius={0.02} active={false} onClick={() => {}}
-          />
-          <Html position={[0.35, -0.55, 0.15]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/60 select-none whitespace-nowrap">moderator band</span>
-          </Html>
+          {/* Mitral leaflets + chordae + papillary muscles */}
+          <Leaflet pos={[-0.18, 0.42, -0.02]} rot={[0.6, 0.2, 0.15]} color={structures.mitral.color} size={[0.12, 0.15]} />
+          <Leaflet pos={[-0.28, 0.42, -0.02]} rot={[0.6, -0.2, -0.15]} color={structures.mitral.color} size={[0.1, 0.13]} />
+          <PapillaryMuscle pos={[-0.4, -0.4, 0.05]} color="#5A2525" />
+          <PapillaryMuscle pos={[-0.2, -0.4, -0.12]} color="#5A2525" />
+          <Chorda from={[-0.18, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
+          <Chorda from={[-0.22, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
+          <Chorda from={[-0.28, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
+          <Chorda from={[-0.24, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
 
-          {/* ── Mitral valve leaflets + chordae + papillary muscles ── */}
-          <ValveLeaflet position={[-0.2, 0.22, 0.02]} rotation={[0.5, 0.3, 0.2]} color={structures.mitral.color} scaleXY={[0.12, 0.15]} />
-          <ValveLeaflet position={[-0.3, 0.22, 0.02]} rotation={[0.5, -0.3, -0.2]} color={structures.mitral.color} scaleXY={[0.1, 0.13]} />
-          {/* Anterolateral papillary muscle */}
-          <PapillaryMuscle position={[-0.45, -0.55, 0.05]} color="hsl(0, 30%, 35%)" />
-          {/* Posteromedial papillary muscle */}
-          <PapillaryMuscle position={[-0.25, -0.55, -0.1]} color="hsl(0, 30%, 35%)" />
-          {/* Chordae tendineae */}
-          <Chorda from={[-0.2, 0.17, 0.02]} to={[-0.45, -0.49, 0.05]} color="hsl(0, 20%, 55%)" />
-          <Chorda from={[-0.25, 0.17, 0.02]} to={[-0.45, -0.49, 0.05]} color="hsl(0, 20%, 55%)" />
-          <Chorda from={[-0.3, 0.17, 0.02]} to={[-0.25, -0.49, -0.1]} color="hsl(0, 20%, 55%)" />
-          <Chorda from={[-0.22, 0.17, 0.02]} to={[-0.25, -0.49, -0.1]} color="hsl(0, 20%, 55%)" />
+          {/* Tricuspid leaflets */}
+          <Leaflet pos={[0.15, 0.44, 0.06]} rot={[0.5, 0.15, -0.1]} color={structures.tricuspid.color} size={[0.09, 0.11]} />
+          <Leaflet pos={[0.22, 0.44, 0.06]} rot={[0.5, -0.1, 0.1]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
+          <Leaflet pos={[0.18, 0.44, 0.12]} rot={[0.6, 0, 0]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
 
-          {/* Labels for papillary muscles */}
-          <Html position={[-0.45, -0.65, 0.05]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/60 select-none whitespace-nowrap">AL papillary</span>
-          </Html>
-          <Html position={[-0.25, -0.65, -0.1]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/60 select-none whitespace-nowrap">PM papillary</span>
-          </Html>
+          {/* Aortic valve cusps */}
+          <Leaflet pos={[-0.15, 0.9, 0.13]} rot={[0.2, 0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
+          <Leaflet pos={[-0.09, 0.9, 0.13]} rot={[0.2, -0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
+          <Leaflet pos={[-0.12, 0.9, 0.18]} rot={[0.3, 0, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
 
-          {/* ── Tricuspid valve leaflets ── */}
-          <ValveLeaflet position={[0.17, 0.25, 0.07]} rotation={[0.5, 0.2, 0.1]} color={structures.tricuspid.color} scaleXY={[0.09, 0.11]} />
-          <ValveLeaflet position={[0.23, 0.25, 0.07]} rotation={[0.5, -0.1, -0.15]} color={structures.tricuspid.color} scaleXY={[0.08, 0.1]} />
-          <ValveLeaflet position={[0.2, 0.25, 0.12]} rotation={[0.6, 0, 0]} color={structures.tricuspid.color} scaleXY={[0.08, 0.1]} />
-
-          {/* ── Aortic valve cusps ── */}
-          <ValveLeaflet position={[-0.18, 0.68, 0.03]} rotation={[0.2, 0.4, 0]} color={structures.aortic.color} scaleXY={[0.07, 0.08]} />
-          <ValveLeaflet position={[-0.12, 0.68, 0.03]} rotation={[0.2, -0.4, 0]} color={structures.aortic.color} scaleXY={[0.07, 0.08]} />
-          <ValveLeaflet position={[-0.15, 0.68, 0.07]} rotation={[0.3, 0, 0]} color={structures.aortic.color} scaleXY={[0.07, 0.08]} />
-
-          {/* ── AV groove / fibrous skeleton ── */}
-          <mesh position={[0, 0.26, 0.05]} rotation={[Math.PI / 2, 0, 0]}>
-            <ringGeometry args={[0.55, 0.58, 32]} />
-            <meshStandardMaterial color="hsl(40, 20%, 50%)" transparent opacity={0.25} side={THREE.DoubleSide} roughness={0.6} />
+          {/* Fibrous skeleton ring */}
+          <mesh position={[0, 0.5, 0.05]} rotation={[Math.PI / 2 + 0.15, 0, 0.1]}>
+            <ringGeometry args={[0.45, 0.48, 32]} />
+            <meshStandardMaterial color={fatColor} transparent opacity={0.2} side={THREE.DoubleSide} />
           </mesh>
-          <Html position={[0.6, 0.26, 0.2]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">fibrous skeleton</span>
-          </Html>
 
-          {/* ── Crista terminalis (RA) ── */}
-          <ArteryTube
-            points={[[0.55, 0.8, 0.02], [0.58, 0.55, 0.02], [0.55, 0.3, 0.02]]}
-            color="hsl(0, 25%, 42%)" radius={0.015} active={false} onClick={() => {}}
-          />
-          <Html position={[0.65, 0.55, 0.05]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">crista terminalis</span>
-          </Html>
+          {/* Crista terminalis */}
+          <Vessel points={[[0.52, 0.98, 0], [0.55, 0.75, 0], [0.52, 0.5, 0]]} color="#5A3030" radius={0.012} />
 
-          {/* ── Pectinate muscles (RA) ── */}
-          {[0.7, 0.6, 0.5, 0.4].map((y, i) => (
-            <mesh key={i} position={[0.5, y, 0.02]} rotation={[0, 0, Math.PI / 6]}>
-              <cylinderGeometry args={[0.006, 0.008, 0.12, 4]} />
-              <meshStandardMaterial color="hsl(220, 25%, 38%)" roughness={0.8} transparent opacity={0.4} />
+          {/* Pectinate muscles (RA) */}
+          {[0.9, 0.78, 0.66, 0.55].map((y, i) => (
+            <mesh key={`pect-${i}`} position={[0.48, y, 0.02]} rotation={[0, 0, 0.3]}>
+              <cylinderGeometry args={[0.005, 0.007, 0.1, 4]} />
+              <meshStandardMaterial color="#2A3A5A" roughness={0.8} transparent opacity={0.4} />
             </mesh>
           ))}
+
+          {/* Interior labels */}
+          <Html position={[0, 0.75, 0.1]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">fossa ovalis</span>
+          </Html>
+          <Html position={[0, -0.15, 0.35]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">IVS</span>
+          </Html>
+          <Html position={[-0.35, 0.05, 0.25]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">LV wall 12–15mm</span>
+          </Html>
+          <Html position={[0.4, 0.05, 0.35]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RV wall 3–5mm</span>
+          </Html>
+          <Html position={[0.3, -0.38, 0.2]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">moderator band</span>
+          </Html>
+          <Html position={[-0.4, -0.45, 0.1]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">AL papillary</span>
+          </Html>
+          <Html position={[-0.2, -0.45, -0.15]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">PM papillary</span>
+          </Html>
+          <Html position={[0.58, 0.75, 0.05]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">crista terminalis</span>
+          </Html>
         </group>
       )}
 
-      {/* ── Great Vessels ── */}
-      <ArteryTube
-        points={[[-0.15, 0.7, 0], [-0.15, 1.1, 0], [0, 1.35, 0], [0.35, 1.3, -0.1], [0.5, 1.1, -0.2]]}
-        color="hsl(0, 50%, 45%)" radius={0.1} active={false} onClick={() => {}} clipPlanes={clipPlanes} />
-      <ArteryTube
-        points={[[0.15, 0.65, 0.25], [0.1, 1.0, 0.35], [-0.1, 1.15, 0.3], [-0.35, 1.05, 0.2]]}
-        color="hsl(225, 45%, 38%)" radius={0.08} active={false} onClick={() => {}} clipPlanes={clipPlanes} />
-      <ArteryTube
-        points={[[0.5, 1.1, -0.05], [0.55, 1.4, -0.05], [0.5, 1.7, 0]]}
-        color="hsl(220, 40%, 40%)" radius={0.07} active={false} onClick={() => {}} clipPlanes={clipPlanes} />
-      <ArteryTube
-        points={[[0.5, -0.5, -0.2], [0.55, -0.8, -0.2], [0.5, -1.1, -0.15]]}
-        color="hsl(220, 40%, 40%)" radius={0.07} active={false} onClick={() => {}} clipPlanes={clipPlanes} />
-
-      {/* ── Coronary arteries ── */}
-      <ArteryTube points={[[-0.15, 0.65, 0.45], [-0.3, 0.5, 0.55], [-0.45, 0.35, 0.55]]}
-        color={structures.lca.color} radius={0.035} active={isActive("lca")} onClick={click("lca")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[-0.45, 0.35, 0.55], [-0.2, 0.15, 0.65], [-0.05, -0.1, 0.65], [0, -0.5, 0.55], [0, -0.85, 0.35]]}
-        color={structures.lad.color} radius={0.03} active={isActive("lad")} onClick={click("lad")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[-0.45, 0.35, 0.55], [-0.65, 0.3, 0.35], [-0.75, 0.15, 0], [-0.7, 0, -0.3], [-0.55, -0.15, -0.45]]}
-        color={structures.lcx.color} radius={0.028} active={isActive("lcx")} onClick={click("lcx")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[0.2, 0.68, 0.4], [0.5, 0.55, 0.45], [0.7, 0.35, 0.3], [0.75, 0.1, 0], [0.65, -0.1, -0.35], [0.45, -0.3, -0.5]]}
-        color={structures.rca.color} radius={0.03} active={isActive("rca")} onClick={click("rca")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[0.45, -0.3, -0.5], [0.25, -0.5, -0.45], [0.05, -0.7, -0.35], [0, -0.85, -0.15]]}
-        color={structures.pda.color} radius={0.025} active={isActive("pda")} onClick={click("pda")} clipPlanes={clipPlanes} />
-
-      {/* ── Valves ── */}
-      <ValveRing position={[-0.25, 0.25, 0.05]} rotation={[0.3, 0, 0]} color={structures.mitral.color} active={isActive("mitral")} onClick={click("mitral")} clipPlanes={clipPlanes} />
-      <ValveRing position={[0.2, 0.28, 0.1]} rotation={[0.3, 0, 0]} color={structures.tricuspid.color} active={isActive("tricuspid")} onClick={click("tricuspid")} clipPlanes={clipPlanes} />
-      <ValveRing position={[-0.15, 0.7, 0.05]} rotation={[0.1, 0, 0]} color={structures.aortic.color} active={isActive("aortic")} onClick={click("aortic")} clipPlanes={clipPlanes} />
-      <ValveRing position={[0.15, 0.65, 0.25]} rotation={[0.4, 0.2, 0]} color={structures.pulmonary.color} active={isActive("pulmonary")} onClick={click("pulmonary")} clipPlanes={clipPlanes} />
-
-      {/* ── Conduction system ── */}
-      <NodeSphere position={[0.5, 0.85, 0.05]} color={structures["sa-node"].color} active={isActive("sa-node")} onClick={click("sa-node")} size={0.08} clipPlanes={clipPlanes} />
-      <NodeSphere position={[0.28, 0.22, -0.05]} color={structures["av-node"].color} active={isActive("av-node")} onClick={click("av-node")} size={0.07} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[0.28, 0.22, -0.05], [0.15, 0.1, -0.02], [0.05, 0, 0]]}
-        color={structures["bundle-his"].color} radius={0.02} active={isActive("bundle-his")} onClick={click("bundle-his")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[0.05, 0, 0], [-0.05, -0.15, -0.02], [-0.1, -0.4, -0.02], [-0.1, -0.7, 0]]}
-        color={structures["left-bundle"].color} radius={0.018} active={isActive("left-bundle")} onClick={click("left-bundle")} clipPlanes={clipPlanes} />
-      <ArteryTube points={[[0.05, 0, 0], [0.1, -0.15, 0.02], [0.15, -0.4, 0.05], [0.15, -0.7, 0.03]]}
-        color={structures["right-bundle"].color} radius={0.018} active={isActive("right-bundle")} onClick={click("right-bundle")} clipPlanes={clipPlanes} />
-      <NodeSphere position={[-0.1, -0.72, 0]} color={structures.purkinje.color} active={isActive("purkinje")} onClick={click("purkinje")} size={0.05} clipPlanes={clipPlanes} />
-      <NodeSphere position={[0.15, -0.72, 0.03]} color={structures.purkinje.color} active={isActive("purkinje")} onClick={click("purkinje")} size={0.05} clipPlanes={clipPlanes} />
-      {(isActive("purkinje") || isActive("left-bundle") || isActive("right-bundle")) && (
-        <>
-          {[[-0.25, -0.75, 0.15], [-0.3, -0.6, 0.1], [-0.15, -0.82, -0.1], [0.25, -0.75, 0.15], [0.3, -0.6, 0.12], [0.18, -0.82, -0.1]].map((p, i) => (
-            <NodeSphere key={i} position={p as [number, number, number]} color={structures.purkinje.color} active={true} onClick={click("purkinje")} size={0.03} clipPlanes={clipPlanes} />
-          ))}
-        </>
-      )}
-
-      {/* ── Labels ── */}
-      <Html position={[0.55, 0.55, 0.2]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">RA</span>
+      {/* ── Chamber labels ── */}
+      <Html position={[0.5, 0.75, 0.2]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">RA</span>
       </Html>
-      <Html position={[-0.5, 0.55, 0.2]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">LA</span>
+      <Html position={[-0.5, 0.75, 0.15]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">LA</span>
       </Html>
-      <Html position={[0.4, -0.3, 0.4]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">RV</span>
+      <Html position={[0.35, -0.15, 0.4]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">RV</span>
       </Html>
-      <Html position={[-0.45, -0.35, 0.3]} center style={{ pointerEvents: "none" }}>
-        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">LV</span>
+      <Html position={[-0.4, -0.3, 0.25]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[10px] text-muted-foreground/35 font-bold italic select-none">LV</span>
       </Html>
 
-      {/* Extra cutaway labels */}
-      {cutaway && (
-        <>
-          <Html position={[0, 0.55, 0.15]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">fossa ovalis</span>
-          </Html>
-          <Html position={[0, -0.25, 0.4]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">IVS</span>
-          </Html>
-          <Html position={[-0.35, -0.1, 0.3]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">LV wall 12–15 mm</span>
-          </Html>
-          <Html position={[0.45, -0.1, 0.3]} center style={{ pointerEvents: "none" }}>
-            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RV wall 3–5 mm</span>
-          </Html>
-        </>
-      )}
+      {/* Vessel labels */}
+      <Html position={[0, 1.6, 0]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[8px] text-muted-foreground/40 font-semibold select-none">Aorta</span>
+      </Html>
+      <Html position={[-0.05, 1.32, 0.4]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[8px] text-muted-foreground/40 font-semibold select-none">PA</span>
+      </Html>
+      <Html position={[0.55, 1.5, -0.05]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[7px] text-muted-foreground/30 select-none">SVC</span>
+      </Html>
+      <Html position={[0.52, -0.2, -0.25]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[7px] text-muted-foreground/30 select-none">IVC</span>
+      </Html>
     </group>
   );
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
+// ── Main export ───────────────────────────────────────────────────────────────
 
 const CardiacAnatomyDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("lad");
@@ -583,21 +628,23 @@ const CardiacAnatomyDiagram = () => {
         </button>
       </div>
       <p className="text-xs text-muted-foreground mb-3">
-        Drag to rotate · Scroll to zoom · Tap any structure for detail
-        {cutaway && <span className="ml-1 text-primary font-medium">· Cross-section view active</span>}
+        Drag to rotate · Scroll to zoom · Tap structures for detail
+        {cutaway && <span className="ml-1 text-primary font-medium">· Cross-section active</span>}
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 w-full sm:w-[360px] h-[400px] rounded border border-border overflow-hidden bg-gradient-to-b from-background to-secondary/20">
-          <Canvas camera={{ position: [0, 0, 3.5], fov: 40 }} dpr={[1, 2]}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[3, 5, 4]} intensity={0.8} />
-            <directionalLight position={[-3, -2, -3]} intensity={0.3} color="hsl(220, 60%, 70%)" />
-            <pointLight position={[0, 0, 3]} intensity={0.4} color="hsl(0, 40%, 70%)" />
+        <div className="flex-shrink-0 w-full sm:w-[380px] h-[420px] rounded-lg border border-border overflow-hidden"
+          style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(220 10% 14%))" }}>
+          <Canvas camera={{ position: [0, 0.3, 3.2], fov: 38 }} dpr={[1, 2]}>
+            <ambientLight intensity={0.4} />
+            <directionalLight position={[4, 6, 5]} intensity={0.9} color="#fff5ee" />
+            <directionalLight position={[-3, -2, -4]} intensity={0.25} color="#aabbdd" />
+            <pointLight position={[0, 0, 3]} intensity={0.3} color="#ffccbb" />
+            <pointLight position={[0, 2, -1]} intensity={0.2} color="#bbccff" />
             <Suspense fallback={null}>
               <HeartModel selected={selected} onSelect={setSelected} cutaway={cutaway} />
             </Suspense>
-            <OrbitControls enablePan={false} minDistance={2} maxDistance={6} autoRotate={false} />
+            <OrbitControls enablePan={false} minDistance={1.8} maxDistance={5.5} />
           </Canvas>
         </div>
 
@@ -606,10 +653,10 @@ const CardiacAnatomyDiagram = () => {
             {categories.map(cat => (
               <div key={cat.key} className="flex flex-wrap gap-1">
                 {cat.keys.map(k => (
-                  <button
-                    key={k}
-                    onClick={() => setSelected(k)}
-                    className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${selected === k ? 'border-current font-bold' : 'border-border text-muted-foreground hover:text-foreground'}`}
+                  <button key={k} onClick={() => setSelected(k)}
+                    className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
+                      selected === k ? 'border-current font-bold' : 'border-border text-muted-foreground hover:text-foreground'
+                    }`}
                     style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
                   >
                     {structures[k].label.split('(')[0].replace('Left ', 'L ').replace('Right ', 'R ').trim()}
@@ -621,7 +668,9 @@ const CardiacAnatomyDiagram = () => {
 
           <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
             <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">{info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve"}</span>
+            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+              {info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve"}
+            </span>
             <p className="text-sm text-muted-foreground mt-1">{info.detail}</p>
             <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground">
               <strong>Clinical:</strong> {info.clinicalNote}
