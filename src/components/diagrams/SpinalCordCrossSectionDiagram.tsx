@@ -121,102 +121,179 @@ const SpinalCordCrossSectionDiagram = () => {
 
               return (
                 <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                  {key === "cord" ? (
+                  {key === "cord" ? (() => {
+                    // Centre of cord
+                    const cx = xOffset + layerWidth / 2;
+                    const cy = y + l.h / 2;
+                    // Radii
+                    const rX = 65; // horizontal radius of cord ellipse
+                    const rY = l.h / 2 - 1;
+
+                    return (
                     <g>
-                      {/* White matter outer */}
-                      <rect
-                        x={xOffset + 20}
-                        y={y}
-                        width={layerWidth - 40}
-                        height={l.h}
-                        rx={l.h / 2}
-                        fill={l.color}
-                        fillOpacity={isActive ? 0.45 : 0.15}
-                        stroke={isActive ? l.color : "hsl(var(--border))"}
-                        strokeWidth={isActive ? 2 : 0.5}
+                      {/* ── White matter: overall cord ellipse ── */}
+                      <ellipse
+                        cx={cx} cy={cy} rx={rX} ry={rY}
+                        fill="hsl(0, 0%, 82%)"
+                        fillOpacity={isActive ? 0.35 : 0.12}
+                        stroke={isActive ? "hsl(0, 0%, 65%)" : "hsl(var(--border))"}
+                        strokeWidth={isActive ? 1.5 : 0.5}
                         className="transition-all duration-200"
                       />
-                      {/* White matter myelin texture */}
-                      <g opacity={isActive ? 0.15 : 0.05}>
-                        {Array.from({ length: 8 }).map((_, i) => (
-                          <circle key={i} cx={xOffset + 35 + i * 18} cy={y + l.h / 2 + (i % 2 ? 4 : -4)} r="2.5" fill="none" stroke="hsl(0, 0%, 60%)" strokeWidth="0.5" />
-                        ))}
+
+                      {/* ── White matter tract regions (filled wedges) ── */}
+                      <g opacity={isActive ? 0.22 : 0.06}>
+                        {/* Dorsal columns (fasciculus gracilis + cuneatus) */}
+                        <path d={`M${cx - 12},${cy - 2} L${cx - 16},${cy - rY + 1} A${rX},${rY} 0 0,1 ${cx + 16},${cy - rY + 1} L${cx + 12},${cy - 2} Z`}
+                          fill="hsl(210, 50%, 60%)" />
+                        {/* Dorsal column midline septum */}
+                        <line x1={cx} y1={cy - 2} x2={cx} y2={cy - rY + 2}
+                          stroke="hsl(0, 0%, 55%)" strokeWidth="0.5" opacity="0.5" />
+
+                        {/* Lateral corticospinal tracts */}
+                        <path d={`M${cx - 18},${cy - 6} C${cx - 35},${cy - 12} ${cx - rX + 8},${cy - 8} ${cx - rX + 5},${cy} C${cx - rX + 8},${cy + 5} ${cx - 30},${cy + 6} ${cx - 20},${cy + 3} Z`}
+                          fill="hsl(0, 45%, 58%)" />
+                        <path d={`M${cx + 18},${cy - 6} C${cx + 35},${cy - 12} ${cx + rX - 8},${cy - 8} ${cx + rX - 5},${cy} C${cx + rX - 8},${cy + 5} ${cx + 30},${cy + 6} ${cx + 20},${cy + 3} Z`}
+                          fill="hsl(0, 45%, 58%)" />
+
+                        {/* Spinothalamic tracts (anterolateral) */}
+                        <path d={`M${cx - 22},${cy + 4} C${cx - 40},${cy + 8} ${cx - rX + 5},${cy + 4} ${cx - rX + 8},${cy + rY - 6} C${cx - 35},${cy + rY - 2} ${cx - 20},${cy + 10} ${cx - 16},${cy + 5} Z`}
+                          fill="hsl(45, 55%, 55%)" />
+                        <path d={`M${cx + 22},${cy + 4} C${cx + 40},${cy + 8} ${cx + rX - 5},${cy + 4} ${cx + rX - 8},${cy + rY - 6} C${cx + 35},${cy + rY - 2} ${cx + 20},${cy + 10} ${cx + 16},${cy + 5} Z`}
+                          fill="hsl(45, 55%, 55%)" />
+
+                        {/* Anterior corticospinal tract */}
+                        <path d={`M${cx - 8},${cy + 3} L${cx - 10},${cy + rY - 3} A${rX},${rY} 0 0,0 ${cx + 10},${cy + rY - 3} L${cx + 8},${cy + 3} Z`}
+                          fill="hsl(140, 40%, 55%)" />
                       </g>
 
                       {/* White matter tract labels */}
-                      <g opacity={isActive ? 0.5 : 0.12} fontSize="3.5" fill="hsl(var(--muted-foreground))">
-                        <text x={xOffset + layerWidth / 2} y={y + 7} textAnchor="middle">Dorsal columns</text>
-                        <text x={xOffset + layerWidth / 2} y={y + 11} textAnchor="middle" fontSize="3">(proprioception, vibration)</text>
-                        <text x={xOffset + layerWidth / 2 - 48} y={y + l.h / 2 + 1} textAnchor="middle" fontSize="3">Lat CST</text>
-                        <text x={xOffset + layerWidth / 2 + 48} y={y + l.h / 2 + 1} textAnchor="middle" fontSize="3">Lat CST</text>
-                        <text x={xOffset + layerWidth / 2 - 48} y={y + l.h / 2 + 8} textAnchor="middle" fontSize="3">STT</text>
-                        <text x={xOffset + layerWidth / 2 + 48} y={y + l.h / 2 + 8} textAnchor="middle" fontSize="3">STT</text>
-                        <text x={xOffset + layerWidth / 2} y={y + l.h - 4} textAnchor="middle" fontSize="3">Ant CST</text>
+                      <g opacity={isActive ? 0.55 : 0.1} fontSize="3.5" fill="hsl(var(--muted-foreground))">
+                        <text x={cx} y={cy - rY + 6} textAnchor="middle" fontWeight="500">Dorsal columns</text>
+                        <text x={cx} y={cy - rY + 10} textAnchor="middle" fontSize="2.8" opacity="0.7">Gracilis | Cuneatus</text>
+                        <text x={cx - rX + 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
+                        <text x={cx - rX + 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
+                        <text x={cx + rX - 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
+                        <text x={cx + rX - 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
+                        <text x={cx - rX + 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
+                        <text x={cx + rX - 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
+                        <text x={cx} y={cy + rY - 4} textAnchor="middle" fontSize="2.8">Ant CST</text>
                       </g>
 
-                      {/* Grey matter butterfly — more organic shape */}
-                      <g opacity={isActive ? 0.55 : 0.2}>
+                      {/* ── Grey matter butterfly (filled shape) ── */}
+                      <g opacity={isActive ? 0.65 : 0.25}>
+                        {/* COMPLETE BUTTERFLY as single filled path */}
+                        <path d={`
+                          M${cx},${cy - 2}
+                          C${cx - 3},${cy - 3} ${cx - 8},${cy - 6} ${cx - 12},${cy - 10}
+                          C${cx - 14},${cy - 13} ${cx - 15},${cy - 15} ${cx - 14},${cy - 16}
+                          C${cx - 12},${cy - 17} ${cx - 10},${cy - 16} ${cx - 9},${cy - 14}
+                          C${cx - 7},${cy - 10} ${cx - 4},${cy - 6} ${cx - 3},${cy - 4}
+                          L${cx - 3},${cy - 2}
+                          L${cx - 5},${cy - 1}
+                          C${cx - 8},${cy} ${cx - 12},${cy - 2} ${cx - 16},${cy - 3}
+                          C${cx - 18},${cy - 3} ${cx - 18},${cy - 1} ${cx - 16},${cy}
+                          L${cx - 5},${cy + 1}
+                          C${cx - 5},${cy + 2} ${cx - 8},${cy + 3} ${cx - 14},${cy + 5}
+                          C${cx - 20},${cy + 7} ${cx - 26},${cy + 10} ${cx - 28},${cy + 12}
+                          C${cx - 30},${cy + 14} ${cx - 28},${cy + 15} ${cx - 25},${cy + 14}
+                          C${cx - 20},${cy + 12} ${cx - 14},${cy + 8} ${cx - 8},${cy + 5}
+                          C${cx - 5},${cy + 3} ${cx - 3},${cy + 2} ${cx},${cy + 2}
+                          C${cx + 3},${cy + 2} ${cx + 5},${cy + 3} ${cx + 8},${cy + 5}
+                          C${cx + 14},${cy + 8} ${cx + 20},${cy + 12} ${cx + 25},${cy + 14}
+                          C${cx + 28},${cy + 15} ${cx + 30},${cy + 14} ${cx + 28},${cy + 12}
+                          C${cx + 26},${cy + 10} ${cx + 20},${cy + 7} ${cx + 14},${cy + 5}
+                          C${cx + 8},${cy + 3} ${cx + 5},${cy + 2} ${cx + 5},${cy + 1}
+                          L${cx + 16},${cy}
+                          C${cx + 18},${cy - 1} ${cx + 18},${cy - 3} ${cx + 16},${cy - 3}
+                          C${cx + 12},${cy - 2} ${cx + 8},${cy} ${cx + 5},${cy - 1}
+                          L${cx + 3},${cy - 2}
+                          L${cx + 3},${cy - 4}
+                          C${cx + 4},${cy - 6} ${cx + 7},${cy - 10} ${cx + 9},${cy - 14}
+                          C${cx + 10},${cy - 16} ${cx + 12},${cy - 17} ${cx + 14},${cy - 16}
+                          C${cx + 15},${cy - 15} ${cx + 14},${cy - 13} ${cx + 12},${cy - 10}
+                          C${cx + 8},${cy - 6} ${cx + 3},${cy - 3} ${cx},${cy - 2}
+                          Z
+                        `}
+                          fill="hsl(0, 0%, 52%)" fillOpacity="0.7"
+                          stroke="hsl(0, 0%, 40%)" strokeWidth="0.6"
+                        />
+
                         {/* Central canal */}
-                        <circle cx={xOffset + layerWidth / 2} cy={y + l.h / 2} r="2.2" fill="hsl(200, 40%, 60%)" stroke="hsl(200, 30%, 50%)" strokeWidth="0.4" />
-                        {/* Grey commissure */}
-                        <line x1={xOffset + layerWidth / 2 - 6} y1={y + l.h / 2} x2={xOffset + layerWidth / 2 + 6} y2={y + l.h / 2} stroke="hsl(0, 0%, 52%)" strokeWidth="2.5" />
-                        {/* Anterior horns — wider, with cell body suggestion */}
-                        <path d={`M${xOffset + layerWidth / 2 - 5},${y + l.h / 2 + 1} Q${xOffset + layerWidth / 2 - 18},${y + l.h / 2 + 4} ${xOffset + layerWidth / 2 - 32},${y + l.h / 2 + 12}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="5" fill="none" strokeLinecap="round" />
-                        <path d={`M${xOffset + layerWidth / 2 + 5},${y + l.h / 2 + 1} Q${xOffset + layerWidth / 2 + 18},${y + l.h / 2 + 4} ${xOffset + layerWidth / 2 + 32},${y + l.h / 2 + 12}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="5" fill="none" strokeLinecap="round" />
-                        {/* Motor neuron cell bodies */}
-                        {[-28, -22, 22, 28].map((dx, i) => (
-                          <circle key={i} cx={xOffset + layerWidth / 2 + dx} cy={y + l.h / 2 + 9 + (i % 2) * 3} r="1.2" fill="hsl(0, 0%, 42%)" opacity="0.5" />
+                        <circle cx={cx} cy={cy} r="1.8" fill="hsl(200, 50%, 65%)" stroke="hsl(200, 40%, 50%)" strokeWidth="0.4" />
+
+                        {/* Substantia gelatinosa caps (Rexed lamina II) on posterior horns */}
+                        <ellipse cx={cx - 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
+                        <ellipse cx={cx + 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
+
+                        {/* Motor neuron cell bodies in anterior horns */}
+                        {[
+                          [cx - 22, cy + 11], [cx - 25, cy + 13], [cx - 20, cy + 13],
+                          [cx + 22, cy + 11], [cx + 25, cy + 13], [cx + 20, cy + 13],
+                        ].map(([px, py], i) => (
+                          <circle key={i} cx={px} cy={py} r="1.3" fill="hsl(0, 0%, 38%)" opacity="0.5" />
                         ))}
-                        {/* Posterior horns — thinner, sensory */}
-                        <path d={`M${xOffset + layerWidth / 2 - 5},${y + l.h / 2 - 1} Q${xOffset + layerWidth / 2 - 14},${y + l.h / 2 - 5} ${xOffset + layerWidth / 2 - 24},${y + l.h / 2 - 14}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
-                        <path d={`M${xOffset + layerWidth / 2 + 5},${y + l.h / 2 - 1} Q${xOffset + layerWidth / 2 + 14},${y + l.h / 2 - 5} ${xOffset + layerWidth / 2 + 24},${y + l.h / 2 - 14}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="3" fill="none" strokeLinecap="round" />
-                        {/* Substantia gelatinosa cap */}
-                        {[-24, 24].map((dx, i) => (
-                          <ellipse key={i} cx={xOffset + layerWidth / 2 + dx} cy={y + l.h / 2 - 15} rx="3" ry="2" fill="hsl(45, 40%, 55%)" opacity="0.35" />
-                        ))}
-                        {/* Lateral horns (IML) */}
-                        <path d={`M${xOffset + layerWidth / 2 - 7},${y + l.h / 2} L${xOffset + layerWidth / 2 - 20},${y + l.h / 2 - 4}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-                        <path d={`M${xOffset + layerWidth / 2 + 7},${y + l.h / 2} L${xOffset + layerWidth / 2 + 20},${y + l.h / 2 - 4}`}
-                          stroke="hsl(0, 0%, 48%)" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-                        {/* Labels */}
-                        <text x={xOffset + layerWidth / 2 - 38} y={y + l.h / 2 + 17} fontSize="3.5" fill="hsl(0, 0%, 42%)" textAnchor="middle">Ant horn</text>
-                        <text x={xOffset + layerWidth / 2 - 38} y={y + l.h / 2 + 21} fontSize="3" fill="hsl(0, 0%, 48%)" textAnchor="middle">(motor)</text>
-                        <text x={xOffset + layerWidth / 2 + 38} y={y + l.h / 2 - 17} fontSize="3.5" fill="hsl(0, 0%, 42%)" textAnchor="middle">Post horn</text>
-                        <text x={xOffset + layerWidth / 2 + 38} y={y + l.h / 2 - 13} fontSize="3" fill="hsl(0, 0%, 48%)" textAnchor="middle">(sensory)</text>
-                        <text x={xOffset + layerWidth / 2 - 26} y={y + l.h / 2 - 7} fontSize="3" fill="hsl(0, 0%, 48%)" textAnchor="middle">IML</text>
                       </g>
 
-                      {/* Blood supply */}
-                      <g opacity={isActive ? 0.55 : 0.15}>
-                        {/* Anterior spinal artery */}
-                        <circle cx={xOffset + layerWidth / 2} cy={y + l.h + 3} r="2" fill="hsl(0, 60%, 55%)" stroke="hsl(0, 50%, 45%)" strokeWidth="0.5" />
-                        <text x={xOffset + layerWidth / 2 + 6} y={y + l.h + 5} fontSize="4" fill="hsl(0, 60%, 55%)" fontWeight="bold">ASA</text>
+                      {/* Grey matter labels */}
+                      <g opacity={isActive ? 0.5 : 0.08} fontSize="3.5" fill="hsl(0, 0%, 42%)">
+                        <text x={cx - 38} y={cy + 16} textAnchor="middle" fontWeight="500">Ant horn</text>
+                        <text x={cx - 38} y={cy + 20} textAnchor="middle" fontSize="2.8">(motor — LMN)</text>
+                        <text x={cx + 38} y={cy - 18} textAnchor="middle" fontWeight="500">Post horn</text>
+                        <text x={cx + 38} y={cy - 14} textAnchor="middle" fontSize="2.8">(sensory)</text>
+                        <text x={cx - 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
+                        <text x={cx + 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
+                        <text x={cx - 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
+                        <text x={cx + 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
+                      </g>
+
+                      {/* Anterior median fissure */}
+                      <line x1={cx} y1={cy + rY} x2={cx} y2={cy + 5}
+                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.8" opacity={isActive ? 0.4 : 0.1} />
+                      {isActive && <text x={cx + 3} y={cy + rY - 1} fontSize="2.8" fill="hsl(0, 0%, 50%)" opacity="0.5">Ant. median fissure</text>}
+
+                      {/* Posterior median sulcus */}
+                      <line x1={cx} y1={cy - rY} x2={cx} y2={cy - 5}
+                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity={isActive ? 0.3 : 0.08} />
+
+                      {/* ── Blood supply ── */}
+                      <g opacity={isActive ? 0.6 : 0.15}>
+                        {/* Anterior spinal artery — in anterior median fissure */}
+                        <circle cx={cx} cy={cy + rY + 3} r="2.2" fill="hsl(0, 60%, 55%)" stroke="hsl(0, 50%, 42%)" strokeWidth="0.5" />
+                        <text x={cx + 5} y={cy + rY + 5} fontSize="4" fill="hsl(0, 60%, 55%)" fontWeight="bold">ASA</text>
+                        {/* ASA territory shading */}
+                        {isActive && <path d={`M${cx - rX},${cy} A${rX},${rY} 0 0,0 ${cx + rX},${cy} L${cx + rX - 5},${cy + 2} C${cx + 30},${cy + rY - 8} ${cx - 30},${cy + rY - 8} ${cx - rX + 5},${cy + 2} Z`}
+                          fill="hsl(0, 60%, 55%)" fillOpacity="0.04" stroke="hsl(0, 60%, 55%)" strokeWidth="0.3" strokeDasharray="3 2" />}
                         {/* Posterior spinal arteries */}
-                        <circle cx={xOffset + layerWidth / 2 - 40} cy={y - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
-                        <circle cx={xOffset + layerWidth / 2 + 40} cy={y - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
-                        <text x={xOffset + layerWidth / 2 - 50} y={y} fontSize="3.5" fill="hsl(0, 50%, 50%)" textAnchor="end">PSA</text>
-                        <text x={xOffset + layerWidth / 2 + 50} y={y} fontSize="3.5" fill="hsl(0, 50%, 50%)">PSA</text>
+                        <circle cx={cx - 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
+                        <circle cx={cx + 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
+                        <text x={cx - 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)" textAnchor="end">PSA</text>
+                        <text x={cx + 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)">PSA</text>
                       </g>
 
-                      {/* Ventral and dorsal roots */}
-                      <g opacity={isActive ? 0.4 : 0.1}>
-                        {/* Dorsal root + DRG */}
-                        <path d={`M${xOffset + layerWidth / 2 - 24},${y + l.h / 2 - 14} C${xOffset + layerWidth / 2 - 40},${y + l.h / 2 - 18} ${xOffset + layerWidth / 2 - 55},${y + l.h / 2 - 14} ${xOffset + layerWidth / 2 - 60},${y + l.h / 2 - 8}`}
+                      {/* ── Ventral and dorsal roots ── */}
+                      <g opacity={isActive ? 0.45 : 0.1}>
+                        {/* Dorsal root + DRG (left side) */}
+                        <path d={`M${cx - 14},${cy - 15} C${cx - 30},${cy - 20} ${cx - 55},${cy - 18} ${cx - 65},${cy - 10}`}
                           stroke="hsl(45, 55%, 50%)" strokeWidth="1.2" fill="none" />
-                        {/* DRG */}
-                        <ellipse cx={xOffset + layerWidth / 2 - 60} cy={y + l.h / 2 - 8} rx="4" ry="2.5" fill="hsl(45, 55%, 50%)" opacity="0.4" stroke="hsl(45, 45%, 42%)" strokeWidth="0.5" />
-                        <text x={xOffset + layerWidth / 2 - 68} y={y + l.h / 2 - 5} fontSize="3" fill="hsl(45, 55%, 50%)">DRG</text>
-                        {/* Ventral root */}
-                        <path d={`M${xOffset + layerWidth / 2 - 32},${y + l.h / 2 + 12} C${xOffset + layerWidth / 2 - 45},${y + l.h / 2 + 14} ${xOffset + layerWidth / 2 - 55},${y + l.h / 2 + 8} ${xOffset + layerWidth / 2 - 60},${y + l.h / 2 + 2}`}
+                        <ellipse cx={cx - 67} cy={cy - 8} rx="4.5" ry="2.8" fill="hsl(45, 55%, 50%)" opacity="0.35" stroke="hsl(45, 45%, 42%)" strokeWidth="0.5" />
+                        <text x={cx - 76} y={cy - 6} fontSize="3.5" fill="hsl(45, 55%, 50%)" textAnchor="end">DRG</text>
+                        {/* Dorsal root label */}
+                        {isActive && <text x={cx - 40} y={cy - 20} fontSize="3" fill="hsl(45, 55%, 50%)" opacity="0.6">Dorsal root</text>}
+
+                        {/* Ventral root (left side) */}
+                        <path d={`M${cx - 28},${cy + 12} C${cx - 42},${cy + 16} ${cx - 58},${cy + 12} ${cx - 65},${cy + 2}`}
                           stroke="hsl(150, 45%, 48%)" strokeWidth="1" fill="none" />
+                        {isActive && <text x={cx - 50} y={cy + 19} fontSize="3" fill="hsl(150, 45%, 48%)" opacity="0.6">Ventral root</text>}
+
+                        {/* Mixed spinal nerve */}
+                        <path d={`M${cx - 67},${cy - 5} L${cx - 75},${cy - 2}`}
+                          stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" fill="none" opacity="0.3" />
+                        {isActive && <text x={cx - 80} y={cy} fontSize="3" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.5">Spinal n.</text>}
                       </g>
                     </g>
-                  ) : (
+                    );
+                  })() : (
                     <g>
                       {/* Base rect */}
                       <rect
@@ -301,19 +378,47 @@ const SpinalCordCrossSectionDiagram = () => {
                         </g>
                       )}
 
-                      {/* Dura mater: dense fibrous */}
+                      {/* Dura mater: dense fibrous with layered appearance */}
                       {key === "dura" && (
-                        <rect x={xOffset} y={y} width={layerWidth} height={l.h} fill="url(#sc-duraTex)" opacity={isActive ? 0.8 : 0.3} />
+                        <g>
+                          <rect x={xOffset} y={y} width={layerWidth} height={l.h} fill="url(#sc-duraTex)" opacity={isActive ? 0.8 : 0.3} />
+                          {/* Multiple dense collagen layers */}
+                          <g opacity={isActive ? 0.3 : 0.08}>
+                            {[0, 1, 2].map(i => (
+                              <line key={i} x1={xOffset + 2} y1={y + 3 + i * 3} x2={xOffset + layerWidth - 2} y2={y + 3 + i * 3}
+                                stroke="hsl(270, 35%, 48%)" strokeWidth="0.6" />
+                            ))}
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(270, 40%, 55%)" fontStyle="italic" opacity="0.5">Dural sac ends S2</text>
+                          )}
+                        </g>
                       )}
 
-                      {/* Arachnoid: delicate web */}
+                      {/* Arachnoid: delicate trabeculated web */}
                       {key === "arachnoid" && (
-                        <g opacity={isActive ? 0.3 : 0.1}>
-                          {Array.from({ length: 10 }).map((_, i) => (
-                            <path key={i}
-                              d={`M${xOffset + 5 + i * 20},${y + 1} Q${xOffset + 15 + i * 20},${y + l.h / 2} ${xOffset + 5 + i * 20},${y + l.h - 1}`}
-                              stroke="hsl(290, 30%, 58%)" strokeWidth="0.3" fill="none" />
-                          ))}
+                        <g>
+                          {/* Fine trabecular network */}
+                          <g opacity={isActive ? 0.35 : 0.1}>
+                            {Array.from({ length: 14 }).map((_, i) => (
+                              <g key={i}>
+                                <path
+                                  d={`M${xOffset + 5 + i * 14},${y + 1} Q${xOffset + 12 + i * 14},${y + l.h / 2 + (i % 3 - 1)} ${xOffset + 5 + i * 14},${y + l.h - 1}`}
+                                  stroke="hsl(290, 30%, 58%)" strokeWidth="0.3" fill="none" />
+                                {/* Cross-links between trabeculae */}
+                                {i > 0 && (
+                                  <path
+                                    d={`M${xOffset + 5 + (i - 1) * 14},${y + l.h / 2} L${xOffset + 5 + i * 14},${y + l.h / 2 + (i % 2 ? 1 : -1)}`}
+                                    stroke="hsl(290, 28%, 55%)" strokeWidth="0.2" fill="none" opacity="0.5" />
+                                )}
+                              </g>
+                            ))}
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(290, 35%, 60%)" fontStyle="italic" opacity="0.5">Subdural space (potential) above</text>
+                          )}
                         </g>
                       )}
 
@@ -329,29 +434,59 @@ const SpinalCordCrossSectionDiagram = () => {
                                 stroke="hsl(195, 55%, 60%)" strokeWidth="0.4" fill="none" />
                             ))}
                           </g>
-                          {/* Cauda equina filaments */}
-                          <g opacity={isActive ? 0.25 : 0.06}>
-                            {[0, 1, 2, 3, 4].map(i => (
-                              <line key={i} x1={xOffset + 60 + i * 18} y1={y + 3} x2={xOffset + 55 + i * 18} y2={y + l.h - 3}
-                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.5" />
+                          {/* Cauda equina filaments — more realistic */}
+                          <g opacity={isActive ? 0.3 : 0.06}>
+                            {[0, 1, 2, 3, 4, 5, 6].map(i => (
+                              <path key={i}
+                                d={`M${xOffset + 40 + i * 18},${y + 2} C${xOffset + 38 + i * 18},${y + l.h / 3} ${xOffset + 36 + i * 17},${y + 2 * l.h / 3} ${xOffset + 34 + i * 17},${y + l.h - 2}`}
+                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.6" fill="none" />
                             ))}
                             <text x={xOffset + layerWidth / 2} y={y + l.h - 2} fontSize="3" textAnchor="middle" fill="hsl(50, 50%, 55%)" fontStyle="italic">cauda equina</text>
+                          </g>
+                          {/* Arachnoid trabeculae spanning the space */}
+                          <g opacity={isActive ? 0.12 : 0.03}>
+                            {[0, 1, 2, 3, 4, 5].map(i => (
+                              <line key={i} x1={xOffset + 15 + i * 32} y1={y + 1} x2={xOffset + 20 + i * 32} y2={y + l.h - 1}
+                                stroke="hsl(290, 25%, 55%)" strokeWidth="0.3" />
+                            ))}
                           </g>
                         </g>
                       )}
 
-                      {/* Pia: vascular membrane */}
+                      {/* Pia: highly vascular, intimate with cord */}
                       {key === "pia" && (
-                        <g opacity={isActive ? 0.4 : 0.12}>
-                          {/* Pial vessels */}
-                          <path d={`M${xOffset + 10},${y + l.h / 2} C${xOffset + 30},${y + 2} ${xOffset + 60},${y + l.h - 2} ${xOffset + 90},${y + l.h / 2}`}
-                            stroke="hsl(0, 45%, 52%)" strokeWidth="0.5" fill="none" />
-                          <path d={`M${xOffset + 100},${y + l.h / 2} C${xOffset + 120},${y + 2} ${xOffset + 145},${y + l.h - 2} ${xOffset + 170},${y + l.h / 2}`}
-                            stroke="hsl(0, 45%, 52%)" strokeWidth="0.5" fill="none" />
-                          {/* Dentate ligaments */}
-                          <line x1={xOffset + 5} y1={y + l.h / 2} x2={xOffset - 5} y2={y + l.h / 2 - 4} stroke="hsl(320, 35%, 52%)" strokeWidth="0.8" />
-                          <line x1={xOffset + layerWidth - 5} y1={y + l.h / 2} x2={xOffset + layerWidth + 5} y2={y + l.h / 2 - 4} stroke="hsl(320, 35%, 52%)" strokeWidth="0.8" />
-                          <text x={xOffset - 10} y={y + l.h / 2 - 6} fontSize="3" fill="hsl(320, 35%, 52%)" textAnchor="end">dentate lig.</text>
+                        <g>
+                          {/* Pia vessels — branching pattern */}
+                          <g opacity={isActive ? 0.45 : 0.12}>
+                            <path d={`M${xOffset + 8},${y + l.h / 2} C${xOffset + 20},${y + 1} ${xOffset + 40},${y + l.h - 1} ${xOffset + 60},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.6" fill="none" />
+                            <path d={`M${xOffset + 60},${y + l.h / 2} C${xOffset + 75},${y + 2} ${xOffset + 95},${y + l.h - 1} ${xOffset + 110},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
+                            <path d={`M${xOffset + 110},${y + l.h / 2} C${xOffset + 130},${y + 1} ${xOffset + 150},${y + l.h - 1} ${xOffset + 170},${y + l.h / 2}`}
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
+                            {/* Vasocorona (circumferential vessels) */}
+                            <path d={`M${xOffset + 30},${y + 2} C${xOffset + 35},${y + l.h / 2} ${xOffset + 28},${y + l.h - 1} ${xOffset + 32},${y + l.h}`}
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                            <path d={`M${xOffset + 140},${y + 2} C${xOffset + 145},${y + l.h / 2} ${xOffset + 138},${y + l.h - 1} ${xOffset + 142},${y + l.h}`}
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                          </g>
+                          {/* Dentate ligaments — extending laterally */}
+                          <g opacity={isActive ? 0.55 : 0.15}>
+                            <path d={`M${xOffset + 3},${y + l.h / 2} L${xOffset - 8},${y + l.h / 2 - 5}`}
+                              stroke="hsl(320, 40%, 55%)" strokeWidth="1" />
+                            <path d={`M${xOffset + layerWidth - 3},${y + l.h / 2} L${xOffset + layerWidth + 8},${y + l.h / 2 - 5}`}
+                              stroke="hsl(320, 40%, 55%)" strokeWidth="1" />
+                            {/* Triangular tooth shape */}
+                            <polygon points={`${xOffset - 8},${y + l.h / 2 - 5} ${xOffset - 6},${y + l.h / 2 - 8} ${xOffset - 10},${y + l.h / 2 - 8}`}
+                              fill="hsl(320, 40%, 55%)" opacity="0.4" />
+                            <polygon points={`${xOffset + layerWidth + 8},${y + l.h / 2 - 5} ${xOffset + layerWidth + 6},${y + l.h / 2 - 8} ${xOffset + layerWidth + 10},${y + l.h / 2 - 8}`}
+                              fill="hsl(320, 40%, 55%)" opacity="0.4" />
+                            <text x={xOffset - 14} y={y + l.h / 2 - 9} fontSize="3" fill="hsl(320, 40%, 55%)" textAnchor="end">Dentate lig.</text>
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill="hsl(320, 40%, 55%)" fontStyle="italic" opacity="0.5">Filum terminale extends from conus → S2</text>
+                          )}
                         </g>
                       )}
                     </g>
