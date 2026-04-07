@@ -301,7 +301,7 @@ const NeedleTipSVG = ({ needleKey, isActive }: { needleKey: NeedleKey; isActive:
           {/* Non-coring illustration */}
           <path d="M80,266 L92,256" fill="none" stroke="hsl(0,0%,50%)" strokeWidth="1.5" />
           {/* Septum illustration */}
-          <rect x="55" y="240" width="50" height="6" rx="1" fill="hsl(var(--muted-foreground))" opacity="0.08" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="3 2" opacity="0.2" />
+          <rect x="55" y="240" width="50" height="6" rx="1" fill="hsl(var(--muted-foreground))" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="3 2" opacity="0.12" />
           <text x="130" y="244" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5">Port septum</text>
           <text x="80" y="278" textAnchor="middle" fontSize="6.5" fill={n.color} fontWeight="600">Deflected non-coring tip</text>
           <g opacity="0.5">
