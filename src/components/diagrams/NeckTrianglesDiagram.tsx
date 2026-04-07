@@ -87,104 +87,89 @@ const fascialLayers = [
   { name: "Carotid sheath", desc: "Contains CCA/ICA, IJV, CN X (vagus). Formed by contributions from all three layers. Ansa cervicalis embedded in anterior wall." },
 ];
 
-/* ─── Key anatomical points (lateral view, right side) ─── */
-// Skull / jaw
-const VERTEX = "105,18";
-const OCCIPUT = "62,42";
-const MASTOID = "68,72";        // mastoid process
-const EAR = "64,58";
-const MANDIBLE_ANGLE = "88,82"; // angle of mandible
-const MANDIBLE_BODY = "100,90"; // body
-const CHIN = "108,86";          // mentum / chin point
-const GONION = "88,82";
+/* ════════════════════════════════════════════════════════════
+   ANATOMICAL LANDMARK COORDINATES — right lateral view
+   All coordinates in SVG viewBox units (0-280 x, 0-260 y)
+   ════════════════════════════════════════════════════════════ */
 
-// Key neck points
-const HYOID = "108,108";        // hyoid bone level
-const SCM_ORIGIN = MASTOID;     // mastoid
-const SCM_INSERT_ST = "130,220";// sternal head SCM
-const SCM_INSERT_CL = "140,218";// clavicular head SCM
-const MIDLINE_HYOID = "108,108";
-const MIDLINE_STERNAL = "108,220";
-const TRAPEZIUS_OCCIPUT = "62,50";
-const TRAPEZIUS_SHOULDER = "210,218";
-const CLAVICLE_MED = "120,222";
-const CLAVICLE_LAT = "210,222";
-
-// Digastric reference points
-const DIGASTRIC_ANT = "108,98"; // ant. belly → near hyoid/chin
-const DIGASTRIC_POST = "80,78"; // post. belly → near mastoid
-
-// Omohyoid crossing SCM
-const OMOHYOID_SCM = "124,172";
-const OMOHYOID_LAT = "175,168";
-
-// Triangle paths (SVG polygon-style)
-// Anterior triangle: midline – mandible – SCM
-const PATH_ANTERIOR = `M${CHIN} L${MANDIBLE_ANGLE} L${MASTOID} L${SCM_INSERT_ST} L${MIDLINE_STERNAL} L${MIDLINE_HYOID} L${HYOID} Z`;
-// Posterior triangle: SCM – trapezius – clavicle
-const PATH_POSTERIOR = `M${MASTOID} L${TRAPEZIUS_OCCIPUT} L${TRAPEZIUS_SHOULDER} L${CLAVICLE_LAT} L${SCM_INSERT_CL} L${SCM_INSERT_ST} Z`;
-
-// Subdivisions of anterior
-const PATH_CAROTID = `M${MANDIBLE_ANGLE} L${DIGASTRIC_POST} L${OMOHYOID_SCM} L${SCM_INSERT_ST} Q118,145 ${OMOHYOID_SCM} L${MANDIBLE_ANGLE} Z`;
-// Simplified: carotid = post digastric – omohyoid – SCM
-const PATH_CAROTID_2 = `M${GONION} L68,72 L124,172 L130,220 Q125,142 ${GONION} Z`;
-// Actually let me build proper paths
-
-// Better approach: define points as numbers
 const pts = {
-  chin: [108, 86],
-  mandAngle: [88, 82],
-  mastoid: [68, 72],
-  hyoid: [108, 108],
-  midSternal: [108, 222],
-  scmSternal: [130, 222],
-  scmClavic: [138, 220],
-  trapOcciput: [62, 50],
-  trapShoulder: [210, 220],
-  clavMed: [120, 222],
-  clavLat: [210, 222],
-  digastricAnt: [108, 98],   // near chin/hyoid
-  digastricPost: [78, 78],   // near mastoid
-  omohyoidSCM: [122, 170],   // where omohyoid crosses SCM
-  omohyoidLat: [172, 166],   // lateral end of omohyoid
-} as const;
+  // Skull / mandible
+  chin: [118, 82] as const,           // mental protuberance
+  mandBody: [106, 78] as const,       // body of mandible mid-point
+  mandAngle: [82, 76] as const,       // angle (gonion)
+  mandRamus: [78, 60] as const,       // ramus — posterior ascending border
+  mastoid: [72, 62] as const,         // mastoid process tip
 
-function p(...coords: (readonly [number, number])[]): string {
-  return coords.map(c => c.join(",")).join(" L");
-}
+  // Neck landmarks
+  hyoid: [118, 106] as const,         // greater horn of hyoid
+  midSternal: [118, 230] as const,    // midline at sternum level
+
+  // SCM — band shape (anterior + posterior edges)
+  scmMastoid: [72, 62] as const,      // origin
+  scmSternalHead: [134, 232] as const, // sternal head insertion
+  scmClavHead: [148, 228] as const,    // clavicular head insertion
+  // SCM posterior edge control points
+  scmPostMid: [100, 145] as const,
+
+  // Digastric
+  digastricPost: [76, 72] as const,    // post belly near mastoid
+  digastricIntermed: [108, 96] as const, // intermediate tendon (hyoid level)
+  digastricAnt: [118, 90] as const,    // ant belly at chin
+
+  // Omohyoid
+  omohyoidMid: [118, 164] as const,    // sup belly near midline
+  omohyoidSCM: [128, 172] as const,    // crosses SCM
+  omohyoidLat: [184, 170] as const,    // inf belly lateral end
+
+  // Trapezius
+  trapOcciput: [60, 40] as const,      // superior nuchal line
+  trapShoulder: [224, 224] as const,   // acromion
+
+  // Clavicle
+  clavMed: [128, 232] as const,
+  clavLat: [224, 230] as const,
+};
 
 const NeckTrianglesDiagram = () => {
   const [selected, setSelected] = useState<TriangleKey>("anterior");
   const [showSubdivisions, setShowSubdivisions] = useState(true);
   const info = triangles[selected];
 
-  // Build triangle SVG paths
+  // ── SCM centreline path (curved) for triangle boundaries ──
+  // SCM anterior edge from mastoid → sternal head
+  const scmAntEdge = `M72,62 C82,90 100,135 114,172 C122,195 128,215 134,232`;
+  // SCM posterior edge from mastoid → clavicular head
+  const scmPostEdge = `M72,62 C88,95 108,148 124,180 C136,205 142,220 148,228`;
+
+  // ── Triangle paths with curved SCM borders ──
   const paths: Record<TriangleKey, string> = {
-    anterior: `M${p(pts.chin, pts.mandAngle, pts.mastoid, pts.scmSternal, pts.midSternal, pts.hyoid)} Z`,
-    posterior: `M${p(pts.mastoid, pts.trapOcciput, pts.trapShoulder, pts.clavLat, pts.scmClavic, pts.scmSternal)} Z`,
-    // Carotid: post. digastric (sup), omohyoid sup belly (inf), SCM (post)
-    carotid: `M${p(pts.mandAngle, pts.digastricPost, pts.mastoid, pts.omohyoidSCM)} Z`,
-    // Muscular: midline, SCM, omohyoid sup belly
-    muscular: `M${p(pts.hyoid, pts.omohyoidSCM, pts.scmSternal, pts.midSternal)} Z`,
-    // Submandibular: mandible, ant digastric, post digastric
-    submandibular: `M${p(pts.chin, pts.mandAngle, pts.digastricPost, pts.digastricAnt)} Z`,
-    // Submental: hyoid, ant belly of digastric (bilateral - shown as small triangle at midline)
-    submental: `M${p(pts.chin, pts.digastricAnt, pts.hyoid)} Z`,
-    // Occipital: SCM, trapezius, omohyoid inf belly
-    occipital: `M${p(pts.mastoid, pts.trapOcciput, pts.trapShoulder, pts.omohyoidLat, pts.omohyoidSCM)} Z`,
-    // Supraclavicular: SCM, omohyoid, clavicle
-    supraclavicular: `M${p(pts.omohyoidSCM, pts.omohyoidLat, pts.clavLat, pts.scmClavic, pts.scmSternal)} Z`,
+    // Anterior: chin → mandible body → angle → along SCM ant edge → sternal notch → midline up
+    anterior: `M118,82 L106,78 L82,76 C82,90 100,135 114,172 C122,195 128,215 134,232 L118,230 L118,106 Z`,
+    // Posterior: mastoid → trapezius occiput → shoulder → clavicle → SCM clavicular head → along SCM post edge back
+    posterior: `M72,62 L60,40 C100,80 150,140 190,185 L224,224 L224,230 L148,228 C136,205 108,148 88,95 Z`,
+    // Carotid: mandible angle → digastric post → along SCM to omohyoid crossing → omohyoid sup belly back
+    carotid: `M82,76 C80,74 76,72 76,72 C82,90 96,120 108,148 L128,172 C122,164 118,156 108,148 C100,130 90,108 82,76 Z`,
+    // Muscular: hyoid → midline down → sternal → SCM ant edge up → omohyoid back to hyoid
+    muscular: `M118,106 L118,230 L134,232 C128,215 122,195 114,172 L128,172 C122,164 120,150 118,106 Z`,
+    // Submandibular: mandible (chin→angle) → digastric post → intermed tendon → digastric ant → chin
+    submandibular: `M118,82 L106,78 L82,76 C80,74 76,72 76,72 C82,78 95,88 108,96 L118,90 Z`,
+    // Submental: chin → digastric ant → hyoid
+    submental: `M118,82 L118,90 L108,96 L118,106 Z`,
+    // Occipital: mastoid → trapezius → omohyoid lat → omohyoid SCM → along SCM post edge
+    occipital: `M72,62 L60,40 C100,80 150,140 190,185 L224,224 L184,170 L128,172 C108,148 88,95 72,62 Z`,
+    // Supraclavicular: omohyoid SCM → omohyoid lat → clavicle → SCM clavicular head
+    supraclavicular: `M128,172 L184,170 L224,224 L224,230 L148,228 C136,205 130,190 128,172 Z`,
   };
 
   const labelPositions: Record<TriangleKey, { x: number; y: number; fontSize: number; label: string }> = {
-    anterior: { x: 104, y: 160, fontSize: 6, label: "Anterior" },
-    posterior: { x: 148, y: 170, fontSize: 6, label: "Posterior" },
-    carotid: { x: 88, y: 128, fontSize: 5.5, label: "Carotid" },
-    muscular: { x: 110, y: 195, fontSize: 5, label: "Muscular" },
-    submandibular: { x: 88, y: 90, fontSize: 4.5, label: "Submand." },
-    submental: { x: 105, y: 97, fontSize: 4, label: "SubMent." },
-    occipital: { x: 130, y: 130, fontSize: 5, label: "Occipital" },
-    supraclavicular: { x: 148, y: 200, fontSize: 4.5, label: "Supraclav." },
+    anterior: { x: 115, y: 160, fontSize: 6, label: "Anterior" },
+    posterior: { x: 155, y: 165, fontSize: 6, label: "Posterior" },
+    carotid: { x: 96, y: 128, fontSize: 5.5, label: "Carotid" },
+    muscular: { x: 120, y: 200, fontSize: 5, label: "Muscular" },
+    submandibular: { x: 96, y: 86, fontSize: 4.5, label: "Submand." },
+    submental: { x: 116, y: 96, fontSize: 4, label: "SubMent." },
+    occipital: { x: 140, y: 128, fontSize: 5, label: "Occipital" },
+    supraclavicular: { x: 164, y: 208, fontSize: 4.5, label: "Supraclav." },
   };
 
   const displayTriangles = showSubdivisions
@@ -214,210 +199,278 @@ const NeckTrianglesDiagram = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
-              <svg viewBox="20 5 230 240" width="300" height="280" className="border border-border rounded bg-card">
-                {/* ─── Head silhouette (right lateral) ─── */}
-                <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none" opacity="0.25">
-                  {/* Skull vault */}
-                  <path d="M105,18 C85,15 68,22 58,36 C52,46 54,56 58,64" />
-                  {/* Occiput to mastoid */}
-                  <path d="M58,64 C60,68 64,72 68,72" />
+              <svg viewBox="15 0 240 255" width="310" height="290" className="border border-border rounded bg-card">
+                <defs>
+                  {/* Bone texture for mandible */}
+                  <linearGradient id="nt-boneGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.12" />
+                    <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.06" />
+                  </linearGradient>
+                  {/* SCM muscle gradient */}
+                  <linearGradient id="nt-scmGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.1" />
+                    <stop offset="50%" stopColor="hsl(var(--foreground))" stopOpacity="0.16" />
+                    <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.08" />
+                  </linearGradient>
+                </defs>
+
+                {/* ════════ HEAD SILHOUETTE ════════ */}
+                <g stroke="hsl(var(--foreground))" fill="none" opacity="0.2">
+                  {/* Cranium vault */}
+                  <path d="M108,10 C88,8 68,16 58,30 C50,44 52,56 58,62" strokeWidth="1.5" />
+                  {/* Occiput → mastoid */}
+                  <path d="M58,62 C62,66 68,70 72,62" strokeWidth="1.2" />
                   {/* Ear */}
-                  <path d="M64,52 C58,54 56,60 58,66 C60,70 64,72 66,70" />
-                  {/* Top of head to forehead to nose to chin */}
-                  <path d="M105,18 C118,16 128,20 132,28 C136,36 134,46 130,52 C128,56 126,60 125,64 C124,68 126,74 124,78 C120,82 114,86 108,86" />
-                  {/* Mandible: chin → angle */}
-                  <path d="M108,86 C102,86 94,84 88,82" strokeWidth="2" opacity="0.35" />
+                  <path d="M64,44 C56,48 54,56 58,62 C60,65 64,66 67,63" strokeWidth="1" opacity="0.6" />
+                  {/* Forehead → nose → upper lip */}
+                  <path d="M108,10 C120,8 132,14 138,24 C142,34 138,44 134,50 C132,54 130,58 130,62 C130,66 132,70 130,74 C128,78 124,80 118,82"
+                    strokeWidth="1.5" />
                 </g>
 
-                {/* ─── Bony landmarks ─── */}
-                <g fill="hsl(var(--foreground))" opacity="0.2">
-                  {/* Mastoid process */}
-                  <circle cx="68" cy="72" r="3" />
-                  {/* Hyoid */}
-                  <ellipse cx="108" cy="108" rx="6" ry="2.5" />
+                {/* ════════ MANDIBLE — detailed bony shape ════════ */}
+                <g>
+                  {/* Mandible body + ramus as filled shape */}
+                  <path d={`
+                    M118,82
+                    C114,80 108,78 106,78
+                    L94,76 L82,76
+                    C80,72 78,66 78,60
+                    C78,54 80,50 82,48
+                    L82,48
+                    C80,50 78,55 78,60
+                    C78,66 80,72 82,76
+                    L82,76
+                  `}
+                    stroke="hsl(var(--foreground))" strokeWidth="2.2" fill="url(#nt-boneGrad)" opacity="0.4"
+                  />
+                  {/* Mandible body — thick lower border */}
+                  <path d="M118,82 C114,81 108,79 106,78 L94,77 L82,76"
+                    stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.35" />
+                  {/* Ramus ascending */}
+                  <path d="M82,76 C80,70 78,64 78,58 C78,52 80,48 82,46"
+                    stroke="hsl(var(--foreground))" strokeWidth="1.8" fill="none" opacity="0.25" />
+                  {/* Condyle and coronoid process hints */}
+                  <path d="M82,46 C84,42 86,40 88,40" stroke="hsl(var(--foreground))" strokeWidth="1" fill="none" opacity="0.15" />
+                  {/* Mental foramen */}
+                  <circle cx="102" cy="78" r="1.5" fill="hsl(var(--foreground))" opacity="0.12" />
+                  {/* Angle marker */}
+                  <circle cx="82" cy="76" r="2" fill="hsl(var(--foreground))" opacity="0.15" />
                 </g>
 
-                {/* ─── SCM muscle (thick band from mastoid to sternum/clavicle) ─── */}
-                <path
-                  d={`M${p(pts.mastoid)} C85,100 100,140 115,175 C120,190 125,205 ${p(pts.scmSternal)}`}
-                  stroke="hsl(var(--foreground))" strokeWidth="3" fill="none" opacity="0.2"
+                {/* ════════ SCM MUSCLE — realistic band shape ════════ */}
+                <path d={`
+                  M68,60 C70,58 74,58 76,60
+                  C84,82 98,118 112,155
+                  C120,174 126,196 132,218
+                  C134,224 136,228 140,232
+                  L150,228 L148,228
+                  C144,224 140,218 136,210
+                  C128,188 116,160 104,136
+                  C92,108 82,82 74,64
+                  C72,62 70,61 68,60
+                  Z
+                `}
+                  fill="url(#nt-scmGrad)" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.5"
                 />
-                {/* SCM clavicular head */}
-                <path
-                  d={`M120,200 C125,208 130,214 ${p(pts.scmClavic)}`}
-                  stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.15"
-                />
+                {/* SCM sternal head (narrower, tendinous) */}
+                <path d="M132,218 C133,222 134,228 134,232 L140,232 C140,228 139,224 138,218"
+                  fill="hsl(var(--foreground))" fillOpacity="0.08" stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.35" />
+                {/* SCM clavicular head (broader, muscular) */}
+                <path d="M138,218 C140,222 142,226 148,228 L154,226 C150,222 146,218 142,214"
+                  fill="hsl(var(--foreground))" fillOpacity="0.06" stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.25" />
+                {/* SCM internal fibre direction lines */}
+                <g stroke="hsl(var(--foreground))" strokeWidth="0.3" fill="none" opacity="0.08">
+                  <path d="M72,64 C86,100 102,140 120,185" />
+                  <path d="M74,66 C88,104 106,148 124,192" />
+                  <path d="M70,62 C84,96 100,134 116,178" />
+                </g>
 
-                {/* ─── Trapezius (posterior border) ─── */}
-                <path
-                  d={`M${p(pts.trapOcciput)} C80,80 120,130 160,170 C180,190 195,205 ${p(pts.trapShoulder)}`}
-                  stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.15" strokeDasharray="6 3"
-                />
+                {/* ════════ TRAPEZIUS — anterior border ════════ */}
+                <path d={`M60,40 C95,75 140,130 180,178 C200,202 215,218 224,224`}
+                  stroke="hsl(var(--foreground))" strokeWidth="1.8" fill="none" opacity="0.15"
+                  strokeDasharray="8 4" />
+                {/* Trapezius muscle mass suggestion */}
+                <path d={`M60,40 C95,75 140,130 180,178 C200,202 215,218 224,224
+                  L230,220 C220,212 205,195 185,172 C145,125 100,72 65,38 Z`}
+                  fill="hsl(var(--foreground))" fillOpacity="0.03" />
 
-                {/* ─── Clavicle ─── */}
-                <path
-                  d={`M${p(pts.clavMed)} C140,218 170,216 ${p(pts.clavLat)}`}
-                  stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.3"
-                />
+                {/* ════════ CLAVICLE — S-shaped bone ════════ */}
+                <path d={`M128,232 C138,228 158,224 178,226 C198,228 215,230 224,230`}
+                  stroke="hsl(var(--foreground))" strokeWidth="3" fill="none" opacity="0.25"
+                  strokeLinecap="round" />
+                {/* Clavicle upper and lower contour for 3D effect */}
+                <path d={`M128,230 C138,226 158,222 178,224 C198,226 215,228 224,228`}
+                  stroke="hsl(var(--foreground))" strokeWidth="0.5" fill="none" opacity="0.1" />
 
-                {/* ─── Midline (anterior border) ─── */}
-                <line x1="108" y1="86" x2="108" y2="222" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.15" strokeDasharray="4 3" />
+                {/* ════════ HYOID BONE ════════ */}
+                <ellipse cx="118" cy="106" rx="8" ry="3" fill="hsl(var(--foreground))" fillOpacity="0.08"
+                  stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
 
-                {/* ─── Digastric muscle (ant + post bellies) ─── */}
+                {/* ════════ MIDLINE ════════ */}
+                <line x1="118" y1="82" x2="118" y2="232" stroke="hsl(var(--foreground))"
+                  strokeWidth="0.6" opacity="0.1" strokeDasharray="5 4" />
+
+                {/* ════════ DIGASTRIC MUSCLE (subdivision boundary) ════════ */}
                 {showSubdivisions && (
-                  <g stroke="hsl(var(--foreground))" strokeWidth="1" fill="none" opacity="0.18" strokeDasharray="3 2">
-                    {/* Post belly: mastoid → intermediate tendon near hyoid */}
-                    <path d={`M${p(pts.digastricPost)} C85,85 95,90 ${p(pts.digastricAnt)}`} />
+                  <g>
+                    {/* Post belly: mastoid → intermediate tendon */}
+                    <path d="M76,72 C82,78 90,86 98,92 C104,95 108,96 108,96"
+                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
+                    {/* Intermediate tendon (at hyoid) */}
+                    <circle cx="108" cy="96" r="2" fill="hsl(var(--foreground))" fillOpacity="0.15"
+                      stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.25" />
                     {/* Ant belly: intermediate tendon → chin */}
-                    <path d={`M${p(pts.digastricAnt)} C106,94 108,90 ${p(pts.chin)}`} />
+                    <path d="M108,96 C112,92 115,88 118,84"
+                      stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.18" />
+                    {/* Label */}
+                    <text x="84" y="92" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35"
+                      transform="rotate(-20,84,92)">Post. digastric</text>
+                    <text x="114" y="92" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.3"
+                      transform="rotate(-55,114,92)">Ant.</text>
                   </g>
                 )}
 
-                {/* ─── Omohyoid (divides posterior triangle) ─── */}
+                {/* ════════ OMOHYOID (subdivision boundary) ════════ */}
                 {showSubdivisions && (
-                  <path d={`M108,155 C112,160 118,168 ${p(pts.omohyoidSCM)} C135,168 150,167 ${p(pts.omohyoidLat)}`}
-                    stroke="hsl(var(--foreground))" strokeWidth="1" fill="none" opacity="0.2" strokeDasharray="4 2" />
+                  <g>
+                    {/* Sup belly: hyoid region → crosses SCM */}
+                    <path d="M118,164 C120,166 124,170 128,172"
+                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.2" />
+                    {/* Intermediate tendon at SCM */}
+                    <circle cx="128" cy="172" r="1.8" fill="hsl(var(--foreground))" fillOpacity="0.12"
+                      stroke="hsl(var(--foreground))" strokeWidth="0.5" opacity="0.2" />
+                    {/* Inf belly: SCM → lateral */}
+                    <path d="M128,172 C145,170 165,169 184,170"
+                      stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
+                    {/* Label */}
+                    <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">Omohyoid</text>
+                  </g>
                 )}
 
-                {/* ─── Triangle fill regions ─── */}
+                {/* ════════ TRIANGLE FILL REGIONS ════════ */}
                 {displayTriangles.map((key) => {
                   const isActive = selected === key;
                   const t = triangles[key];
-                  // Parent triangles rendered as faint outlines when subdivisions shown
                   if (showSubdivisions && (key === "anterior" || key === "posterior")) {
                     return (
                       <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                        <path
-                          d={paths[key]}
-                          fill={t.color}
-                          fillOpacity={isActive ? 0.12 : 0.02}
+                        <path d={paths[key]} fill={t.color}
+                          fillOpacity={isActive ? 0.1 : 0.01}
                           stroke={isActive ? t.color : "transparent"}
                           strokeWidth={isActive ? 1.5 : 0}
-                          strokeDasharray="5 3"
-                          className="transition-all duration-200"
-                        />
+                          strokeDasharray="6 3"
+                          className="transition-all duration-200" />
                       </g>
                     );
                   }
                   return (
                     <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                      <path
-                        d={paths[key]}
-                        fill={t.color}
-                        fillOpacity={isActive ? 0.4 : 0.1}
+                      <path d={paths[key]} fill={t.color}
+                        fillOpacity={isActive ? 0.35 : 0.08}
                         stroke={t.color}
-                        strokeWidth={isActive ? 2.5 : 1}
-                        className="transition-all duration-200"
-                      />
+                        strokeWidth={isActive ? 2 : 0.8}
+                        className="transition-all duration-200" />
                     </g>
                   );
                 })}
 
-                {/* ─── Triangle labels ─── */}
+                {/* ════════ TRIANGLE LABELS ════════ */}
                 <g className="select-none pointer-events-none">
                   {displayTriangles.map(key => {
                     const pos = labelPositions[key];
                     const isActive = selected === key;
-                    // Hide parent labels when subdivisions are shown and it's not selected
                     if (showSubdivisions && (key === "anterior" || key === "posterior") && !isActive) return null;
                     return (
-                      <text
-                        key={key}
-                        x={pos.x} y={pos.y}
+                      <text key={key} x={pos.x} y={pos.y}
                         fontSize={pos.fontSize}
                         fill={isActive ? triangles[key].color : "hsl(var(--muted-foreground))"}
                         fontWeight={isActive ? "bold" : "normal"}
                         textAnchor="middle"
-                        opacity={isActive ? 1 : 0.6}
-                      >
+                        opacity={isActive ? 1 : 0.55}>
                         {pos.label}
                       </text>
                     );
                   })}
                 </g>
 
-                {/* ─── Anatomical landmark labels ─── */}
-                <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" className="select-none pointer-events-none">
-                  <text x="72" y="70" fontSize="4.5">Mastoid</text>
-                  <text x="100" y="115" fontSize="4.5">Hyoid</text>
-                  <text x="128" y="216" fontSize="5" transform="rotate(-4,128,216)">Clavicle</text>
-                  <text x="100" y="234" fontSize="4.5">Midline</text>
-                  {/* SCM label along muscle */}
-                  <text x="105" y="152" fontSize="5.5" transform="rotate(68,105,152)" fontWeight="500">SCM</text>
+                {/* ════════ ANATOMICAL LANDMARK LABELS ════════ */}
+                <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
+                  <text x="62" y="58" fontSize="4.5">Mastoid</text>
+                  <text x="76" y="74" fontSize="4" opacity="0.5">Angle</text>
+                  <text x="108" y="114" fontSize="4.5">Hyoid</text>
+                  <text x="140" y="244" fontSize="5">Clavicle</text>
+                  <text x="112" y="244" fontSize="4.5">Midline</text>
+                  <text x="94" y="70" fontSize="5">Mandible</text>
+                  {/* SCM label along muscle body */}
+                  <text x="108" y="150" fontSize="6" transform="rotate(64,108,150)" fontWeight="600" opacity="0.3">SCM</text>
                   {/* Trapezius */}
-                  <text x="160" y="158" fontSize="5" transform="rotate(38,160,158)">Trapezius</text>
-                  {/* Mandible */}
-                  <text x="92" y="80" fontSize="4.5">Mandible</text>
-                  {showSubdivisions && <>
-                    <text x="116" y="168" fontSize="3.8" opacity="0.35">Omohyoid</text>
-                    <text x="82" y="92" fontSize="3.5" opacity="0.35">Digastric</text>
-                  </>}
+                  <text x="172" y="158" fontSize="5" transform="rotate(35,172,158)" opacity="0.3">Trapezius</text>
                 </g>
 
-                {/* ─── Context-sensitive anatomical overlays ─── */}
+                {/* ════════ CONTEXT-SENSITIVE OVERLAYS ════════ */}
                 {selected === "carotid" && (
                   <g className="animate-fade-in">
-                    {/* Carotid bifurcation marker */}
-                    <circle cx="95" cy="112" r="4" fill="none" stroke="hsl(0, 55%, 52%)" strokeWidth="1.5" opacity="0.7" />
-                    <circle cx="95" cy="112" r="1.5" fill="hsl(0, 55%, 52%)" opacity="0.7" />
-                    <text x="78" y="122" fontSize="4.5" fill="hsl(0, 55%, 52%)" fontWeight="500">Carotid bifurc.</text>
-                    <text x="78" y="127" fontSize="3.5" fill="hsl(0, 55%, 52%)" opacity="0.7">(C3/4 level)</text>
+                    <circle cx="100" cy="115" r="4.5" fill="none" stroke="hsl(0, 55%, 52%)" strokeWidth="1.5" opacity="0.65" />
+                    <circle cx="100" cy="115" r="1.5" fill="hsl(0, 55%, 52%)" opacity="0.6" />
+                    <text x="82" y="125" fontSize="4.5" fill="hsl(0, 55%, 52%)" fontWeight="500">Carotid bifurc.</text>
+                    <text x="82" y="130" fontSize="3.5" fill="hsl(0, 55%, 52%)" opacity="0.6">(C3/4 level)</text>
                     {/* ICA + ECA */}
-                    <path d="M95,112 L90,96 L86,85" stroke="hsl(0, 65%, 55%)" strokeWidth="1.2" fill="none" opacity="0.5" />
-                    <path d="M95,112 L100,98 L98,88" stroke="hsl(0, 45%, 45%)" strokeWidth="1" fill="none" opacity="0.4" />
-                    <text x="80" y="84" fontSize="3.5" fill="hsl(0, 65%, 55%)">ICA</text>
-                    <text x="99" y="86" fontSize="3.5" fill="hsl(0, 45%, 45%)">ECA</text>
+                    <path d="M100,115 L94,98 L90,85" stroke="hsl(0, 65%, 55%)" strokeWidth="1.2" fill="none" opacity="0.45" />
+                    <path d="M100,115 L106,100 L104,88" stroke="hsl(0, 45%, 45%)" strokeWidth="1" fill="none" opacity="0.35" />
+                    <text x="82" y="84" fontSize="3.5" fill="hsl(0, 65%, 55%)">ICA</text>
+                    <text x="106" y="86" fontSize="3.5" fill="hsl(0, 45%, 45%)">ECA</text>
                     {/* CN XII */}
-                    <path d="M88,100 C95,96 102,95 108,97" stroke="hsl(40, 60%, 50%)" strokeWidth="1" fill="none" strokeDasharray="2 1.5" opacity="0.5" />
-                    <text x="110" y="96" fontSize="3.5" fill="hsl(40, 60%, 50%)">CN XII</text>
+                    <path d="M90,102 C98,98 106,97 114,99" stroke="hsl(40, 60%, 50%)" strokeWidth="1" fill="none" strokeDasharray="2 1.5" opacity="0.45" />
+                    <text x="116" y="98" fontSize="3.5" fill="hsl(40, 60%, 50%)">CN XII</text>
                   </g>
                 )}
                 {(selected === "posterior" || selected === "occipital") && (
                   <g className="animate-fade-in">
-                    {/* CN XI path across posterior triangle */}
-                    <path d="M82,88 C100,100 130,120 160,140 C180,152 195,164 205,178"
-                      stroke="hsl(140, 50%, 48%)" strokeWidth="1.5" fill="none" strokeDasharray="4 2" opacity="0.65" />
-                    <text x="135" y="115" fontSize="4.5" fill="hsl(140, 50%, 48%)" fontWeight="500">CN XI (superficial!)</text>
+                    {/* CN XI path */}
+                    <path d="M84,86 C105,100 138,122 168,144 C190,158 208,172 218,184"
+                      stroke="hsl(140, 50%, 48%)" strokeWidth="1.5" fill="none" strokeDasharray="4 2" opacity="0.6" />
+                    <text x="145" y="118" fontSize="4.5" fill="hsl(140, 50%, 48%)" fontWeight="500">CN XI (superficial!)</text>
                     {/* Erb's point */}
-                    <circle cx="90" cy="118" r="3.5" fill="none" stroke="hsl(50, 70%, 55%)" strokeWidth="1.5" opacity="0.7" />
-                    <text x="74" y="116" fontSize="3.5" fill="hsl(50, 70%, 55%)" fontWeight="500">Erb's pt</text>
-                    {/* Brachial plexus trunks */}
-                    <path d="M100,175 C120,180 140,182 165,184" stroke="hsl(30, 60%, 52%)" strokeWidth="2" fill="none" opacity="0.45" />
-                    <text x="135" y="192" fontSize="4" fill="hsl(30, 60%, 52%)">Brachial plexus</text>
+                    <circle cx="94" cy="115" r="3.5" fill="none" stroke="hsl(50, 70%, 55%)" strokeWidth="1.5" opacity="0.65" />
+                    <text x="78" y="112" fontSize="3.5" fill="hsl(50, 70%, 55%)" fontWeight="500">Erb's pt</text>
+                    {/* Brachial plexus */}
+                    <path d="M110,182 C130,186 155,188 180,190" stroke="hsl(30, 60%, 52%)" strokeWidth="2" fill="none" opacity="0.4" />
+                    <text x="148" y="198" fontSize="4" fill="hsl(30, 60%, 52%)">Brachial plexus</text>
                     {/* Phrenic nerve */}
-                    <path d="M98,130 C100,150 105,170 110,195" stroke="hsl(60, 50%, 50%)" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.4" />
-                    <text x="82" y="152" fontSize="3.5" fill="hsl(60, 50%, 50%)">Phrenic n.</text>
+                    <path d="M105,130 C108,155 112,180 116,205" stroke="hsl(60, 50%, 50%)" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.35" />
+                    <text x="88" y="158" fontSize="3.5" fill="hsl(60, 50%, 50%)">Phrenic n.</text>
                   </g>
                 )}
                 {selected === "supraclavicular" && (
                   <g className="animate-fade-in">
-                    <path d="M135,205 C145,200 155,198 170,200" stroke="hsl(320, 40%, 48%)" strokeWidth="2" fill="none" opacity="0.6" />
-                    <text x="148" y="196" fontSize="4" fill="hsl(320, 40%, 48%)">Subclavian a.</text>
-                    {/* Lung apex */}
-                    <path d="M150,222 C158,214 168,212 178,216" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.35" />
-                    <text x="180" y="214" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.55">Lung apex</text>
+                    <path d="M145,210 C158,205 172,203 188,206" stroke="hsl(320, 40%, 48%)" strokeWidth="2" fill="none" opacity="0.55" />
+                    <text x="160" y="200" fontSize="4" fill="hsl(320, 40%, 48%)">Subclavian a.</text>
+                    <path d="M164,230 C172,222 182,218 194,222" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.3" />
+                    <text x="196" y="220" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.45">Lung apex</text>
                   </g>
                 )}
                 {selected === "muscular" && (
                   <g className="animate-fade-in">
-                    {/* RLN in tracheo-oesophageal groove */}
-                    <path d="M109,160 C110,175 110,190 110,208" stroke="hsl(50, 65%, 48%)" strokeWidth="1" fill="none" strokeDasharray="2 2" opacity="0.5" />
-                    <text x="92" y="206" fontSize="4" fill="hsl(50, 65%, 48%)">RLN</text>
-                    {/* Thyroid gland */}
-                    <ellipse cx="114" cy="175" rx="10" ry="14" fill="none" stroke="hsl(270, 45%, 52%)" strokeWidth="0.8" opacity="0.35" strokeDasharray="3 1.5" />
-                    <text x="126" y="178" fontSize="3.5" fill="hsl(270, 45%, 52%)" opacity="0.6">Thyroid</text>
+                    <path d="M119,164 C120,180 120,198 120,218" stroke="hsl(50, 65%, 48%)" strokeWidth="1" fill="none" strokeDasharray="2 2" opacity="0.45" />
+                    <text x="104" y="214" fontSize="4" fill="hsl(50, 65%, 48%)">RLN</text>
+                    <ellipse cx="124" cy="182" rx="12" ry="16" fill="none" stroke="hsl(270, 45%, 52%)" strokeWidth="0.8" opacity="0.3" strokeDasharray="3 1.5" />
+                    <text x="138" y="184" fontSize="3.5" fill="hsl(270, 45%, 52%)" opacity="0.5">Thyroid</text>
                   </g>
                 )}
                 {selected === "submandibular" && (
                   <g className="animate-fade-in">
-                    {/* Submandibular gland */}
-                    <ellipse cx="93" cy="88" rx="8" ry="5" fill="none" stroke="hsl(30, 60%, 52%)" strokeWidth="1" opacity="0.5" strokeDasharray="3 1.5" />
-                    <text x="80" y="98" fontSize="3.5" fill="hsl(30, 60%, 52%)">SM gland</text>
-                    {/* Facial artery */}
-                    <path d="M85,86 C82,82 80,78 82,74" stroke="hsl(0, 50%, 55%)" strokeWidth="1" fill="none" opacity="0.4" />
-                    <text x="68" y="74" fontSize="3.5" fill="hsl(0, 50%, 55%)">Facial a.</text>
+                    <ellipse cx="98" cy="86" rx="9" ry="5" fill="none" stroke="hsl(30, 60%, 52%)" strokeWidth="1" opacity="0.45" strokeDasharray="3 1.5" />
+                    <text x="84" y="96" fontSize="3.5" fill="hsl(30, 60%, 52%)">SM gland</text>
+                    <path d="M92,82 C88,78 86,74 88,70" stroke="hsl(0, 50%, 55%)" strokeWidth="1" fill="none" opacity="0.35" />
+                    <text x="74" y="68" fontSize="3.5" fill="hsl(0, 50%, 55%)">Facial a.</text>
                   </g>
                 )}
+
+                {/* ════════ MASTOID PROCESS (prominent) ════════ */}
+                <g>
+                  <ellipse cx="72" cy="62" rx="4" ry="5" fill="hsl(var(--foreground))" fillOpacity="0.06"
+                    stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" />
+                </g>
               </svg>
             </div>
 
@@ -439,14 +492,13 @@ const NeckTrianglesDiagram = () => {
                 </p>
               </div>
 
-              {/* Triangle selector chips */}
               <div className="flex flex-wrap gap-1">
                 {triangleOrder.map(key => (
                   <button
                     key={key}
                     onClick={() => setSelected(key)}
                     className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
-                      selected === key ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
+                      selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
                     }`}
                     style={selected === key ? { borderColor: triangles[key].color, backgroundColor: triangles[key].color + "18" } : {}}
                   >
