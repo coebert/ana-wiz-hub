@@ -535,25 +535,73 @@ function HeartModel({ selected, onSelect, cutaway }: {
           <Vessel points={[[0.12, -0.4, 0.12], [0.3, -0.35, 0.2], [0.45, -0.3, 0.15]]}
             color="#5A3535" radius={0.018} />
 
-          {/* Mitral leaflets + chordae + papillary muscles */}
-          <Leaflet pos={[-0.18, 0.42, -0.02]} rot={[0.6, 0.2, 0.15]} color={structures.mitral.color} size={[0.12, 0.15]} />
-          <Leaflet pos={[-0.28, 0.42, -0.02]} rot={[0.6, -0.2, -0.15]} color={structures.mitral.color} size={[0.1, 0.13]} />
-          <PapillaryMuscle pos={[-0.4, -0.4, 0.05]} color="#5A2525" />
-          <PapillaryMuscle pos={[-0.2, -0.4, -0.12]} color="#5A2525" />
-          <Chorda from={[-0.18, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
-          <Chorda from={[-0.22, 0.36, -0.02]} to={[-0.4, -0.33, 0.05]} color="#B08080" />
-          <Chorda from={[-0.28, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
-          <Chorda from={[-0.24, 0.36, -0.02]} to={[-0.2, -0.33, -0.12]} color="#B08080" />
+          {/* ══════════ MITRAL VALVE — 2 leaflets, 2 papillary muscles ══════════ */}
+          {/* Anterior leaflet (larger, semicircular) */}
+          <Leaflet pos={[-0.16, 0.44, -0.01]} rot={[0.7, 0.15, 0.1]} color={structures.mitral.color} size={[0.14, 0.13]} clip={clip} />
+          {/* Posterior leaflet (3 scallops: P1, P2, P3 — smaller, crescentic) */}
+          <Leaflet pos={[-0.30, 0.44, 0.03]} rot={[0.6, -0.25, -0.12]} color={structures.mitral.color} size={[0.06, 0.10]} clip={clip} />
+          <Leaflet pos={[-0.25, 0.44, -0.05]} rot={[0.65, -0.15, -0.08]} color={structures.mitral.color} size={[0.065, 0.10]} clip={clip} />
+          <Leaflet pos={[-0.22, 0.44, -0.10]} rot={[0.6, -0.05, -0.05]} color={structures.mitral.color} size={[0.055, 0.09]} clip={clip} />
 
-          {/* Tricuspid leaflets */}
-          <Leaflet pos={[0.15, 0.44, 0.06]} rot={[0.5, 0.15, -0.1]} color={structures.tricuspid.color} size={[0.09, 0.11]} />
-          <Leaflet pos={[0.22, 0.44, 0.06]} rot={[0.5, -0.1, 0.1]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
-          <Leaflet pos={[0.18, 0.44, 0.12]} rot={[0.6, 0, 0]} color={structures.tricuspid.color} size={[0.08, 0.1]} />
+          {/* Anterolateral papillary muscle (supplies chordae to BOTH leaflets) */}
+          <PapillaryMuscle pos={[-0.42, -0.38, 0.06]} color="#5A2525" height={0.16} radius={0.045} clip={clip} />
+          {/* Posteromedial papillary muscle (single blood supply — vulnerable) */}
+          <PapillaryMuscle pos={[-0.18, -0.38, -0.14]} color="#5A2525" height={0.15} radius={0.042} clip={clip} />
 
-          {/* Aortic valve cusps */}
-          <Leaflet pos={[-0.15, 0.9, 0.13]} rot={[0.2, 0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
-          <Leaflet pos={[-0.09, 0.9, 0.13]} rot={[0.2, -0.3, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
-          <Leaflet pos={[-0.12, 0.9, 0.18]} rot={[0.3, 0, 0]} color={structures.aortic.color} size={[0.06, 0.07]} />
+          {/* Chordae tendineae — AL papillary to anterior leaflet (3 primary chordae) */}
+          <Chorda from={[-0.16, 0.37, -0.01]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.19, 0.37, 0.01]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.14, 0.37, -0.03]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          {/* AL papillary to posterior leaflet scallops */}
+          <Chorda from={[-0.30, 0.38, 0.03]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.27, 0.38, -0.02]} to={[-0.42, -0.30, 0.06]} color="#B08080" clip={clip} />
+
+          {/* PM papillary to anterior leaflet */}
+          <Chorda from={[-0.18, 0.37, -0.03]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.15, 0.37, -0.05]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          {/* PM papillary to posterior leaflet scallops */}
+          <Chorda from={[-0.25, 0.38, -0.05]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.22, 0.38, -0.10]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+          <Chorda from={[-0.24, 0.38, -0.08]} to={[-0.18, -0.30, -0.14]} color="#B08080" clip={clip} />
+
+          {/* ══════════ TRICUSPID VALVE — 3 leaflets, 3 papillary muscles ══════════ */}
+          {/* Anterior leaflet (largest) */}
+          <Leaflet pos={[0.14, 0.45, 0.12]} rot={[0.5, 0.2, -0.1]} color={structures.tricuspid.color} size={[0.10, 0.11]} clip={clip} />
+          {/* Posterior leaflet */}
+          <Leaflet pos={[0.24, 0.45, 0.04]} rot={[0.55, -0.15, 0.08]} color={structures.tricuspid.color} size={[0.08, 0.10]} clip={clip} />
+          {/* Septal leaflet (smallest, attached to septum) */}
+          <Leaflet pos={[0.12, 0.45, 0.01]} rot={[0.6, 0, 0.12]} color={structures.tricuspid.color} size={[0.07, 0.09]} clip={clip} />
+
+          {/* Anterior papillary (from moderator band — largest) */}
+          <PapillaryMuscle pos={[0.32, -0.25, 0.18]} color="#2A3050" height={0.12} radius={0.035} clip={clip} />
+          {/* Posterior papillary (smaller) */}
+          <PapillaryMuscle pos={[0.28, -0.20, -0.02]} color="#2A3050" height={0.10} radius={0.028} clip={clip} />
+          {/* Septal papillary (smallest, or may be absent — from IVS) */}
+          <PapillaryMuscle pos={[0.08, -0.10, 0.04]} color="#3A2828" height={0.06} radius={0.02} clip={clip} />
+
+          {/* Chordae — anterior papillary to anterior + posterior leaflets */}
+          <Chorda from={[0.14, 0.39, 0.12]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.17, 0.39, 0.10]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.24, 0.39, 0.04]} to={[0.32, -0.19, 0.18]} color="#9988AA" clip={clip} />
+          {/* Posterior papillary to posterior + septal leaflets */}
+          <Chorda from={[0.22, 0.39, 0.06]} to={[0.28, -0.14, -0.02]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.12, 0.39, 0.01]} to={[0.28, -0.14, -0.02]} color="#9988AA" clip={clip} />
+          {/* Septal papillary to septal + anterior leaflets */}
+          <Chorda from={[0.12, 0.39, 0.02]} to={[0.08, -0.07, 0.04]} color="#9988AA" clip={clip} />
+          <Chorda from={[0.14, 0.39, 0.08]} to={[0.08, -0.07, 0.04]} color="#9988AA" clip={clip} />
+
+          {/* ══════════ AORTIC VALVE — 3 semilunar cusps, NO chordae ══════════ */}
+          {/* Right coronary cusp */}
+          <SemilunarCusp position={[-0.10, 0.88, 0.18]} rotation={[-0.4, 0.8, 0.2]} color={structures.aortic.color} radius={0.055} clip={clip} />
+          {/* Left coronary cusp */}
+          <SemilunarCusp position={[-0.16, 0.88, 0.12]} rotation={[-0.3, -0.6, -0.2]} color={structures.aortic.color} radius={0.055} clip={clip} />
+          {/* Non-coronary cusp */}
+          <SemilunarCusp position={[-0.12, 0.88, 0.08]} rotation={[-0.5, 3.14, 0]} color={structures.aortic.color} radius={0.055} clip={clip} />
+
+          {/* ══════════ PULMONARY VALVE — 3 semilunar cusps, NO chordae ══════════ */}
+          <SemilunarCusp position={[0.10, 0.84, 0.35]} rotation={[-0.6, 0.7, 0.15]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
+          <SemilunarCusp position={[0.15, 0.84, 0.30]} rotation={[-0.5, -0.5, -0.15]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
+          <SemilunarCusp position={[0.12, 0.84, 0.26]} rotation={[-0.7, 3.14, 0]} color={structures.pulmonary.color} radius={0.05} clip={clip} />
 
           {/* Fibrous skeleton ring */}
           <mesh position={[0, 0.5, 0.05]} rotation={[Math.PI / 2 + 0.15, 0, 0.1]}>
