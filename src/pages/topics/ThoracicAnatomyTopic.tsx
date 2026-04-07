@@ -6,6 +6,7 @@ import { thoracicAnatomyQuestions } from "@/data/quizzes";
 import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
+import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const ThoracicAnatomyTopic = () => {
