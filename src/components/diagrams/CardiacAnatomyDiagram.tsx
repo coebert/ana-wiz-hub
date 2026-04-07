@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useMemo, Suspense } from "react";
+import { Canvas, useFrame, ThreeEvent } from "@react-three/fiber";
+import { OrbitControls, Html } from "@react-three/drei";
+import * as THREE from "three";
 
 type StructureKey =
   | "lca" | "lad" | "lcx" | "rca" | "pda"
@@ -67,466 +70,295 @@ const categories = [
   { key: "valve" as const, label: "Valves", keys: ["mitral", "aortic", "tricuspid", "pulmonary"] as StructureKey[] },
 ];
 
+function createHeartShape() {
+  const shape = new THREE.Shape();
+  // Anatomical heart cross-section (asymmetric, LV bigger)
+  shape.moveTo(0, -1.7);
+  shape.bezierCurveTo(-0.2, -1.8, -0.8, -1.6, -1.1, -1.0);
+  shape.bezierCurveTo(-1.4, -0.4, -1.3, 0.3, -1.1, 0.8);
+  shape.bezierCurveTo(-0.9, 1.2, -0.5, 1.5, 0, 1.6);
+  shape.bezierCurveTo(0.5, 1.5, 0.9, 1.2, 1.1, 0.8);
+  shape.bezierCurveTo(1.3, 0.3, 1.3, -0.4, 1.0, -1.0);
+  shape.bezierCurveTo(0.7, -1.6, 0.2, -1.8, 0, -1.7);
+  return shape;
+}
+
+/** Tube from a catmull-rom curve */
+function ArteryTube({
+  points,
+  color,
+  radius = 0.03,
+  active,
+  onClick,
+}: {
+  points: [number, number, number][];
+  color: string;
+  radius?: number;
+  active: boolean;
+  onClick: () => void;
+}) {
+  const geo = useMemo(() => {
+    const curve = new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p)));
+    return new THREE.TubeGeometry(curve, 32, active ? radius * 1.6 : radius, 8, false);
+  }, [points, radius, active]);
+
+  return (
+    <mesh geometry={geo} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={active ? 0.6 : 0.15} roughness={0.4} />
+    </mesh>
+  );
+}
+
+function NodeSphere({
+  position,
+  color,
+  active,
+  onClick,
+  size = 0.07,
+}: {
+  position: [number, number, number];
+  color: string;
+  active: boolean;
+  onClick: () => void;
+  size?: number;
+}) {
+  return (
+    <mesh position={position} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
+      <sphereGeometry args={[active ? size * 1.5 : size, 16, 16]} />
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={active ? 0.8 : 0.2} roughness={0.3} />
+    </mesh>
+  );
+}
+
+function ValveRing({
+  position,
+  rotation,
+  color,
+  active,
+  onClick,
+}: {
+  position: [number, number, number];
+  rotation?: [number, number, number];
+  color: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <mesh position={position} rotation={rotation} onClick={(e: ThreeEvent<MouseEvent>) => { e.stopPropagation(); onClick(); }}>
+      <torusGeometry args={[active ? 0.14 : 0.12, 0.025, 12, 24]} />
+      <meshStandardMaterial color={color} emissive={color} emissiveIntensity={active ? 0.7 : 0.15} roughness={0.3} transparent opacity={active ? 1 : 0.6} />
+    </mesh>
+  );
+}
+
+function HeartModel({
+  selected,
+  onSelect,
+}: {
+  selected: StructureKey;
+  onSelect: (k: StructureKey) => void;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  // Gentle idle rotation
+  useFrame((_, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.08;
+    }
+  });
+
+  const heartGeo = useMemo(() => {
+    const shape = createHeartShape();
+    // Lathe-like extrusion to get 3D shape
+    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
+      depth: 1.2,
+      bevelEnabled: true,
+      bevelThickness: 0.35,
+      bevelSize: 0.3,
+      bevelSegments: 12,
+      curveSegments: 24,
+    };
+    const geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    geo.center();
+    geo.computeVertexNormals();
+    return geo;
+  }, []);
+
+  const click = (k: StructureKey) => () => onSelect(k);
+  const isActive = (k: StructureKey) => selected === k;
+
+  return (
+    <group ref={groupRef} position={[0, 0.2, 0]}>
+      {/* Myocardium — outer wall */}
+      <mesh geometry={heartGeo}>
+        <meshStandardMaterial
+          color="hsl(0, 32%, 38%)"
+          roughness={0.65}
+          metalness={0.05}
+          transparent
+          opacity={0.35}
+          side={THREE.DoubleSide}
+          depthWrite={false}
+        />
+      </mesh>
+
+      {/* Inner wall hint */}
+      <mesh geometry={heartGeo} scale={[0.88, 0.88, 0.88]}>
+        <meshStandardMaterial color="hsl(0, 40%, 28%)" roughness={0.8} transparent opacity={0.2} side={THREE.BackSide} />
+      </mesh>
+
+      {/* ── Chambers (as translucent inner shapes) ── */}
+      {/* Right atrium */}
+      <mesh position={[0.45, 0.55, 0]}>
+        <sphereGeometry args={[0.38, 16, 16]} />
+        <meshStandardMaterial color="hsl(220, 50%, 30%)" transparent opacity={0.22} roughness={0.7} />
+      </mesh>
+      {/* Left atrium */}
+      <mesh position={[-0.45, 0.55, 0]}>
+        <sphereGeometry args={[0.35, 16, 16]} />
+        <meshStandardMaterial color="hsl(0, 50%, 35%)" transparent opacity={0.22} roughness={0.7} />
+      </mesh>
+      {/* Right ventricle */}
+      <mesh position={[0.35, -0.3, 0.15]}>
+        <sphereGeometry args={[0.42, 16, 16]} />
+        <meshStandardMaterial color="hsl(225, 48%, 28%)" transparent opacity={0.22} roughness={0.7} />
+      </mesh>
+      {/* Left ventricle (larger, thicker wall) */}
+      <mesh position={[-0.35, -0.35, -0.05]}>
+        <sphereGeometry args={[0.48, 16, 16]} />
+        <meshStandardMaterial color="hsl(0, 55%, 30%)" transparent opacity={0.22} roughness={0.7} />
+      </mesh>
+
+      {/* Interventricular septum */}
+      <mesh position={[0, -0.25, 0.05]} rotation={[0, 0, 0]}>
+        <boxGeometry args={[0.06, 0.9, 0.7]} />
+        <meshStandardMaterial color="hsl(0, 28%, 35%)" transparent opacity={0.3} roughness={0.7} />
+      </mesh>
+
+      {/* ── Great Vessels ── */}
+      {/* Aorta */}
+      <ArteryTube
+        points={[[-0.15, 0.7, 0], [-0.15, 1.1, 0], [0, 1.35, 0], [0.35, 1.3, -0.1], [0.5, 1.1, -0.2]]}
+        color="hsl(0, 50%, 45%)" radius={0.1} active={false} onClick={() => {}} />
+      {/* Pulmonary trunk */}
+      <ArteryTube
+        points={[[0.15, 0.65, 0.25], [0.1, 1.0, 0.35], [-0.1, 1.15, 0.3], [-0.35, 1.05, 0.2]]}
+        color="hsl(225, 45%, 38%)" radius={0.08} active={false} onClick={() => {}} />
+      {/* SVC */}
+      <ArteryTube
+        points={[[0.5, 1.1, -0.05], [0.55, 1.4, -0.05], [0.5, 1.7, 0]]}
+        color="hsl(220, 40%, 40%)" radius={0.07} active={false} onClick={() => {}} />
+      {/* IVC */}
+      <ArteryTube
+        points={[[0.5, -0.5, -0.2], [0.55, -0.8, -0.2], [0.5, -1.1, -0.15]]}
+        color="hsl(220, 40%, 40%)" radius={0.07} active={false} onClick={() => {}} />
+
+      {/* ── Coronary arteries ── */}
+      {/* LMCA */}
+      <ArteryTube
+        points={[[-0.15, 0.65, 0.45], [-0.3, 0.5, 0.55], [-0.45, 0.35, 0.55]]}
+        color={structures.lca.color} radius={0.035} active={isActive("lca")} onClick={click("lca")} />
+      {/* LAD — runs down anterior interventricular groove */}
+      <ArteryTube
+        points={[[-0.45, 0.35, 0.55], [-0.2, 0.15, 0.65], [-0.05, -0.1, 0.65], [0, -0.5, 0.55], [0, -0.85, 0.35]]}
+        color={structures.lad.color} radius={0.03} active={isActive("lad")} onClick={click("lad")} />
+      {/* LCx — runs in left AV groove posteriorly */}
+      <ArteryTube
+        points={[[-0.45, 0.35, 0.55], [-0.65, 0.3, 0.35], [-0.75, 0.15, 0], [-0.7, 0, -0.3], [-0.55, -0.15, -0.45]]}
+        color={structures.lcx.color} radius={0.028} active={isActive("lcx")} onClick={click("lcx")} />
+      {/* RCA — runs in right AV groove */}
+      <ArteryTube
+        points={[[0.2, 0.68, 0.4], [0.5, 0.55, 0.45], [0.7, 0.35, 0.3], [0.75, 0.1, 0], [0.65, -0.1, -0.35], [0.45, -0.3, -0.5]]}
+        color={structures.rca.color} radius={0.03} active={isActive("rca")} onClick={click("rca")} />
+      {/* PDA — posterior descending */}
+      <ArteryTube
+        points={[[0.45, -0.3, -0.5], [0.25, -0.5, -0.45], [0.05, -0.7, -0.35], [0, -0.85, -0.15]]}
+        color={structures.pda.color} radius={0.025} active={isActive("pda")} onClick={click("pda")} />
+
+      {/* ── Valves ── */}
+      <ValveRing position={[-0.25, 0.25, 0.05]} rotation={[0.3, 0, 0]} color={structures.mitral.color} active={isActive("mitral")} onClick={click("mitral")} />
+      <ValveRing position={[0.2, 0.28, 0.1]} rotation={[0.3, 0, 0]} color={structures.tricuspid.color} active={isActive("tricuspid")} onClick={click("tricuspid")} />
+      <ValveRing position={[-0.15, 0.7, 0.05]} rotation={[0.1, 0, 0]} color={structures.aortic.color} active={isActive("aortic")} onClick={click("aortic")} />
+      <ValveRing position={[0.15, 0.65, 0.25]} rotation={[0.4, 0.2, 0]} color={structures.pulmonary.color} active={isActive("pulmonary")} onClick={click("pulmonary")} />
+
+      {/* ── Conduction system ── */}
+      <NodeSphere position={[0.5, 0.85, 0.05]} color={structures["sa-node"].color} active={isActive("sa-node")} onClick={click("sa-node")} size={0.08} />
+      <NodeSphere position={[0.28, 0.22, -0.05]} color={structures["av-node"].color} active={isActive("av-node")} onClick={click("av-node")} size={0.07} />
+
+      {/* Bundle of His */}
+      <ArteryTube
+        points={[[0.28, 0.22, -0.05], [0.15, 0.1, -0.02], [0.05, 0, 0]]}
+        color={structures["bundle-his"].color} radius={0.02} active={isActive("bundle-his")} onClick={click("bundle-his")} />
+
+      {/* Left bundle branch */}
+      <ArteryTube
+        points={[[0.05, 0, 0], [-0.05, -0.15, -0.02], [-0.1, -0.4, -0.02], [-0.1, -0.7, 0]]}
+        color={structures["left-bundle"].color} radius={0.018} active={isActive("left-bundle")} onClick={click("left-bundle")} />
+
+      {/* Right bundle branch */}
+      <ArteryTube
+        points={[[0.05, 0, 0], [0.1, -0.15, 0.02], [0.15, -0.4, 0.05], [0.15, -0.7, 0.03]]}
+        color={structures["right-bundle"].color} radius={0.018} active={isActive("right-bundle")} onClick={click("right-bundle")} />
+
+      {/* Purkinje fibres — spreading network */}
+      <NodeSphere position={[-0.1, -0.72, 0]} color={structures.purkinje.color} active={isActive("purkinje")} onClick={click("purkinje")} size={0.05} />
+      <NodeSphere position={[0.15, -0.72, 0.03]} color={structures.purkinje.color} active={isActive("purkinje")} onClick={click("purkinje")} size={0.05} />
+      {(isActive("purkinje") || isActive("left-bundle") || isActive("right-bundle")) && (
+        <>
+          {[[-0.25, -0.75, 0.15], [-0.3, -0.6, 0.1], [-0.15, -0.82, -0.1], [0.25, -0.75, 0.15], [0.3, -0.6, 0.12], [0.18, -0.82, -0.1]].map((p, i) => (
+            <NodeSphere key={i} position={p as [number, number, number]} color={structures.purkinje.color} active={true} onClick={click("purkinje")} size={0.03} />
+          ))}
+        </>
+      )}
+
+      {/* ── Labels (HTML overlays) ── */}
+      <Html position={[0.55, 0.55, 0.2]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">RA</span>
+      </Html>
+      <Html position={[-0.5, 0.55, 0.2]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">LA</span>
+      </Html>
+      <Html position={[0.4, -0.3, 0.4]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">RV</span>
+      </Html>
+      <Html position={[-0.45, -0.35, 0.3]} center style={{ pointerEvents: "none" }}>
+        <span className="text-[9px] text-muted-foreground/40 font-bold italic select-none">LV</span>
+      </Html>
+    </group>
+  );
+}
+
 const CardiacAnatomyDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("lad");
   const info = structures[selected];
-  const click = (key: StructureKey) => () => setSelected(key);
-  const isActive = (key: StructureKey) => selected === key;
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive Cardiac Anatomy</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any structure to see its anatomy and clinical significance</p>
+      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive 3D Cardiac Anatomy</h3>
+      <p className="text-xs text-muted-foreground mb-3">Drag to rotate · Scroll to zoom · Tap any structure for detail</p>
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 400 440" width="360" height="400" className="border border-border rounded bg-gradient-to-b from-background to-secondary/20">
-            <defs>
-              {/* Gradient for myocardium */}
-              <linearGradient id="myocardium" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 35%, 45%)" />
-                <stop offset="100%" stopColor="hsl(0, 30%, 35%)" />
-              </linearGradient>
-              <linearGradient id="myocardiumLV" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 38%, 42%)" />
-                <stop offset="100%" stopColor="hsl(0, 32%, 32%)" />
-              </linearGradient>
-              <linearGradient id="bloodRA" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(220, 50%, 30%)" />
-                <stop offset="100%" stopColor="hsl(230, 45%, 25%)" />
-              </linearGradient>
-              <linearGradient id="bloodLA" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 55%, 38%)" />
-                <stop offset="100%" stopColor="hsl(0, 50%, 32%)" />
-              </linearGradient>
-              <linearGradient id="bloodRV" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(225, 48%, 28%)" />
-                <stop offset="100%" stopColor="hsl(230, 42%, 22%)" />
-              </linearGradient>
-              <linearGradient id="bloodLV" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(0, 60%, 35%)" />
-                <stop offset="100%" stopColor="hsl(0, 52%, 28%)" />
-              </linearGradient>
-              <linearGradient id="aortaGrad" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stopColor="hsl(0, 50%, 42%)" />
-                <stop offset="100%" stopColor="hsl(0, 55%, 48%)" />
-              </linearGradient>
-              <linearGradient id="paGrad" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stopColor="hsl(225, 45%, 35%)" />
-                <stop offset="100%" stopColor="hsl(220, 50%, 42%)" />
-              </linearGradient>
-              <linearGradient id="veinGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(220, 40%, 40%)" />
-                <stop offset="100%" stopColor="hsl(225, 35%, 35%)" />
-              </linearGradient>
-              {/* Epicardial fat */}
-              <filter id="softGlow">
-                <feGaussianBlur stdDeviation="1.5" result="blur" />
-                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
-
-            {/* ===== PERICARDIUM (outer layer) ===== */}
-            <path d="M200,22 C240,20 280,30 310,55 C340,80 358,115 365,155 C372,195 370,240 360,280 C350,320 330,355 300,378 C270,400 240,410 210,412 C195,413 185,412 178,408 C165,400 148,382 132,360 C112,332 96,298 86,260 C76,222 72,182 78,145 C84,108 98,75 120,52 C142,30 168,22 200,22Z"
-              fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="6 3" opacity="0.2" />
-
-            {/* ===== GREAT VESSELS ===== */}
-            {/* SVC */}
-            <path d="M302,10 C305,20 308,35 310,50 C312,65 312,78 310,88"
-              fill="none" stroke="url(#veinGrad)" strokeWidth="16" strokeLinecap="round" opacity="0.7" />
-            <path d="M302,10 C305,20 308,35 310,50 C312,65 312,78 310,88"
-              fill="none" stroke="hsl(220, 40%, 50%)" strokeWidth="1" opacity="0.4" />
-            <text x="326" y="35" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="bold">SVC</text>
-
-            {/* IVC */}
-            <path d="M320,340 C325,350 328,360 330,372"
-              fill="none" stroke="url(#veinGrad)" strokeWidth="16" strokeLinecap="round" opacity="0.7" />
-            <text x="342" y="365" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="bold">IVC</text>
-
-            {/* Pulmonary veins (left, entering LA) */}
-            <path d="M60,100 C72,108 86,115 100,120" fill="none" stroke="hsl(0, 40%, 45%)" strokeWidth="6" opacity="0.4" strokeLinecap="round" />
-            <path d="M58,135 C72,138 86,140 100,140" fill="none" stroke="hsl(0, 40%, 45%)" strokeWidth="6" opacity="0.4" strokeLinecap="round" />
-            <text x="48" y="100" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="end">PVs</text>
-
-            {/* Aorta — ascending, arch, descending */}
-            <path d="M195,72 C192,50 194,30 206,15 C218,2 240,0 258,6 C276,12 286,28 282,48 C278,68 268,82 260,92"
-              fill="none" stroke="url(#aortaGrad)" strokeWidth="18" strokeLinecap="round" opacity="0.8" />
-            {/* Aorta lumen */}
-            <path d="M195,72 C192,50 194,30 206,15 C218,2 240,0 258,6 C276,12 286,28 282,48 C278,68 268,82 260,92"
-              fill="none" stroke="hsl(0, 60%, 55%)" strokeWidth="1" opacity="0.3" />
-            {/* Arch branches */}
-            <path d="M232,4 L228,-12" fill="none" stroke="hsl(0, 45%, 48%)" strokeWidth="5" strokeLinecap="round" opacity="0.5" />
-            <path d="M248,2 L250,-14" fill="none" stroke="hsl(0, 45%, 48%)" strokeWidth="4.5" strokeLinecap="round" opacity="0.5" />
-            <path d="M262,8 L268,-6" fill="none" stroke="hsl(0, 45%, 48%)" strokeWidth="4" strokeLinecap="round" opacity="0.5" />
-            <text x="220" y="-14" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" textAnchor="middle">BCT</text>
-            <text x="250" y="-16" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" textAnchor="middle">LCC</text>
-            <text x="274" y="-8" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" textAnchor="middle">LSA</text>
-            <text x="242" y="22" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.45" fontWeight="bold" textAnchor="middle">Aorta</text>
-
-            {/* Pulmonary trunk */}
-            <path d="M155,75 C148,55 138,38 125,28 C112,18 96,16 82,22 C68,28 60,42 62,58"
-              fill="none" stroke="url(#paGrad)" strokeWidth="16" strokeLinecap="round" opacity="0.8" />
-            {/* PA bifurcation */}
-            <path d="M82,22 C72,15 58,14 48,20" fill="none" stroke="hsl(220, 45%, 38%)" strokeWidth="8" strokeLinecap="round" opacity="0.5" />
-            <path d="M82,22 C82,10 88,2 98,0" fill="none" stroke="hsl(220, 45%, 38%)" strokeWidth="8" strokeLinecap="round" opacity="0.5" />
-            <text x="36" y="18" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">RPA</text>
-            <text x="96" y="-2" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4">LPA</text>
-            <text x="108" y="48" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" fontWeight="bold">PA</text>
-
-            {/* ===== HEART WALL — OUTER (epicardium) ===== */}
-            <path d="M200,55 C245,52 290,68 320,100 C350,132 358,172 355,215 C352,258 338,298 315,330 C292,362 262,382 230,392 C210,398 195,400 185,395 C168,385 148,365 130,340 C108,308 92,270 84,230 C76,190 74,152 82,118 C90,84 108,62 140,55 C162,50 182,52 200,55Z"
-              fill="url(#myocardium)" stroke="hsl(0, 28%, 30%)" strokeWidth="2" opacity="0.85" />
-
-            {/* Epicardial fat streaks */}
-            <path d="M320,100 C312,108 308,120 310,130" fill="none" stroke="hsl(40, 50%, 55%)" strokeWidth="3" opacity="0.15" strokeLinecap="round" />
-            <path d="M84,230 C90,240 98,245 105,242" fill="none" stroke="hsl(40, 50%, 55%)" strokeWidth="3" opacity="0.15" strokeLinecap="round" />
-
-            {/* ===== CHAMBERS (cut-away view) ===== */}
-            {/* Right Atrium */}
-            <path d="M260,90 C290,95 310,110 318,135 C326,160 322,180 310,190 C298,200 280,200 268,195 L260,90Z"
-              fill="url(#bloodRA)" opacity="0.7" />
-            {/* RA pectinate muscles */}
-            <g opacity="0.15" stroke="hsl(220, 30%, 45%)" strokeWidth="1.5">
-              <path d="M270,110 C280,115 290,118 298,118" />
-              <path d="M268,125 C278,130 290,132 300,130" />
-              <path d="M266,140 C276,145 288,147 298,145" />
-              <path d="M265,155 C275,160 286,162 296,158" />
-            </g>
-            {/* Crista terminalis */}
-            <path d="M268,92 C265,120 264,150 265,180 C265,190 266,195 268,195"
-              fill="none" stroke="hsl(0, 25%, 38%)" strokeWidth="2" opacity="0.35" />
-
-            {/* Left Atrium */}
-            <path d="M118,90 C100,100 88,118 86,140 C84,162 92,180 106,190 C118,198 134,200 148,195 L118,90Z"
-              fill="url(#bloodLA)" opacity="0.7" />
-
-            {/* Interatrial septum */}
-            <path d="M200,82 C198,105 196,130 195,155 C194,170 194,185 195,195"
-              fill="none" stroke="hsl(0, 25%, 35%)" strokeWidth="4" opacity="0.5" />
-            {/* Fossa ovalis */}
-            <ellipse cx="198" cy="140" rx="8" ry="14" fill="none" stroke="hsl(0, 20%, 42%)" strokeWidth="1.2" opacity="0.3" strokeDasharray="2 1.5" />
-            <text x="198" y="142" fontSize="4" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.25">FO</text>
-
-            {/* Right Ventricle */}
-            <path d="M268,210 C290,218 315,240 330,270 C345,300 340,335 320,358 C305,375 280,385 255,388 C240,390 228,388 220,384 L210,210 Z"
-              fill="url(#bloodRV)" opacity="0.7" />
-            {/* RV trabeculae carneae */}
-            <g opacity="0.12" stroke="hsl(220, 25%, 40%)" strokeWidth="1.8">
-              <path d="M270,250 C280,265 285,280 282,295" />
-              <path d="M285,240 C295,258 300,278 298,300" />
-              <path d="M260,270 C268,285 272,305 270,325" />
-              <path d="M300,260 C310,278 315,300 310,325" />
-            </g>
-            {/* Moderator band */}
-            <path d="M240,340 C260,335 280,338 300,345" fill="none" stroke="hsl(0, 22%, 40%)" strokeWidth="2.5" opacity="0.3" />
-            <text x="270" y="350" fontSize="4" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.25">moderator band</text>
-
-            {/* Interventricular septum (thick) */}
-            <path d="M210,210 C208,240 205,275 202,310 C200,338 198,365 200,385"
-              fill="none" stroke="url(#myocardiumLV)" strokeWidth="14" opacity="0.6" strokeLinecap="round" />
-            <path d="M210,210 C208,240 205,275 202,310 C200,338 198,365 200,385"
-              fill="none" stroke="hsl(0, 22%, 28%)" strokeWidth="1" opacity="0.3" />
-
-            {/* Left Ventricle */}
-            <path d="M148,210 C128,218 108,240 96,268 C84,296 82,330 92,355 C102,378 122,392 148,398 C168,402 185,400 200,392 L210,210 Z"
-              fill="url(#bloodLV)" opacity="0.7" />
-            {/* LV thick wall indicator */}
-            <path d="M96,268 C84,296 82,330 92,355 C102,378 122,392 148,398"
-              fill="none" stroke="url(#myocardiumLV)" strokeWidth="18" opacity="0.4" strokeLinecap="round" />
-            {/* LV trabeculae */}
-            <g opacity="0.12" stroke="hsl(0, 28%, 38%)" strokeWidth="1.8">
-              <path d="M148,250 C138,268 132,288 130,310" />
-              <path d="M138,260 C128,278 122,300 120,322" />
-              <path d="M158,270 C148,290 142,312 140,335" />
-            </g>
-
-            {/* ===== AV GROOVE (fibrous skeleton) ===== */}
-            <path d="M106,195 C130,205 160,210 195,210 C230,210 260,205 268,195"
-              fill="none" stroke="hsl(40, 20%, 50%)" strokeWidth="3" opacity="0.2" />
-
-            {/* ===== VALVES ===== */}
-            {/* Mitral valve with leaflets */}
-            <g className="cursor-pointer" onClick={click("mitral")}>
-              <ellipse cx="160" cy="208" rx="20" ry="7"
-                fill={structures.mitral.color} fillOpacity={isActive("mitral") ? 0.55 : 0.2}
-                stroke={structures.mitral.color} strokeWidth={isActive("mitral") ? 2.5 : 1.2} />
-              {/* Leaflet lines */}
-              <path d="M145,208 C150,222 155,230 160,232 C165,230 170,222 175,208"
-                fill="none" stroke={structures.mitral.color} strokeWidth={isActive("mitral") ? 1.5 : 0.8} opacity={isActive("mitral") ? 0.7 : 0.3} />
-              {/* Chordae tendineae */}
-              <g opacity={isActive("mitral") ? 0.5 : 0.15} stroke={structures.mitral.color} strokeWidth="0.7">
-                <path d="M148,225 C145,250 140,280 135,310" />
-                <path d="M155,230 C150,255 146,285 142,315" />
-                <path d="M165,230 C168,255 170,285 170,315" />
-                <path d="M172,225 C175,250 178,280 178,310" />
-              </g>
-              {/* Papillary muscles */}
-              <ellipse cx="138" cy="318" rx="6" ry="10" fill="hsl(0, 30%, 38%)" opacity={isActive("mitral") ? 0.5 : 0.2} />
-              <ellipse cx="174" cy="318" rx="6" ry="10" fill="hsl(0, 30%, 38%)" opacity={isActive("mitral") ? 0.5 : 0.2} />
-              {isActive("mitral") && (
-                <g className="animate-fade-in">
-                  <text x="122" y="322" fontSize="4" fill={structures.mitral.color} opacity="0.7" textAnchor="end">AL pap.</text>
-                  <text x="192" y="322" fontSize="4" fill={structures.mitral.color} opacity="0.7">PM pap.</text>
-                  <text x="160" y="240" fontSize="4" fill={structures.mitral.color} opacity="0.6" textAnchor="middle">chordae</text>
-                </g>
-              )}
-            </g>
-            <text x="130" y="205" fontSize="6" fill={isActive("mitral") ? structures.mitral.color : "hsl(var(--muted-foreground))"} opacity={isActive("mitral") ? 1 : 0.5} fontWeight={isActive("mitral") ? "bold" : "normal"} textAnchor="end" className="cursor-pointer select-none" onClick={click("mitral")}>Mitral</text>
-
-            {/* Tricuspid valve with leaflets */}
-            <g className="cursor-pointer" onClick={click("tricuspid")}>
-              <ellipse cx="245" cy="212" rx="20" ry="7"
-                fill={structures.tricuspid.color} fillOpacity={isActive("tricuspid") ? 0.55 : 0.2}
-                stroke={structures.tricuspid.color} strokeWidth={isActive("tricuspid") ? 2.5 : 1.2} />
-              {/* Leaflet lines */}
-              <path d="M230,212 C235,226 240,234 245,236 C250,234 255,226 260,212"
-                fill="none" stroke={structures.tricuspid.color} strokeWidth={isActive("tricuspid") ? 1.5 : 0.8} opacity={isActive("tricuspid") ? 0.7 : 0.3} />
-              {/* Chordae */}
-              <g opacity={isActive("tricuspid") ? 0.4 : 0.12} stroke={structures.tricuspid.color} strokeWidth="0.7">
-                <path d="M235,232 C240,260 242,290 240,315" />
-                <path d="M255,232 C258,260 260,290 262,315" />
-              </g>
-              {/* RV papillary muscles */}
-              <ellipse cx="240" cy="320" rx="5" ry="8" fill="hsl(0, 25%, 35%)" opacity={isActive("tricuspid") ? 0.45 : 0.15} />
-              <ellipse cx="262" cy="320" rx="5" ry="8" fill="hsl(0, 25%, 35%)" opacity={isActive("tricuspid") ? 0.45 : 0.15} />
-            </g>
-            <text x="278" y="218" fontSize="6" fill={isActive("tricuspid") ? structures.tricuspid.color : "hsl(var(--muted-foreground))"} opacity={isActive("tricuspid") ? 1 : 0.5} fontWeight={isActive("tricuspid") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("tricuspid")}>Tricuspid</text>
-
-            {/* Aortic valve with cusps */}
-            <g className="cursor-pointer" onClick={click("aortic")}>
-              <ellipse cx="195" cy="75" rx="14" ry="7"
-                fill={structures.aortic.color} fillOpacity={isActive("aortic") ? 0.6 : 0.2}
-                stroke={structures.aortic.color} strokeWidth={isActive("aortic") ? 2.5 : 1.2} />
-              {/* Three cusps */}
-              {isActive("aortic") && (
-                <g opacity="0.6" className="animate-fade-in">
-                  <path d="M184,72 C188,78 192,80 195,78" fill="none" stroke={structures.aortic.color} strokeWidth="1" />
-                  <path d="M195,78 C198,80 202,78 206,72" fill="none" stroke={structures.aortic.color} strokeWidth="1" />
-                  <path d="M188,68 C192,64 198,64 202,68" fill="none" stroke={structures.aortic.color} strokeWidth="1" />
-                  <text x="186" y="86" fontSize="4" fill={structures.aortic.color}>R</text>
-                  <text x="194" y="86" fontSize="4" fill={structures.aortic.color}>L</text>
-                  <text x="202" y="86" fontSize="4" fill={structures.aortic.color}>NC</text>
-                </g>
-              )}
-              {/* Sinuses of Valsalva */}
-              {isActive("aortic") && (
-                <g className="animate-fade-in">
-                  <text x="195" y="65" fontSize="4" fill={structures.aortic.color} opacity="0.5" textAnchor="middle">sinuses of Valsalva</text>
-                </g>
-              )}
-            </g>
-            <text x="218" y="72" fontSize="6" fill={isActive("aortic") ? structures.aortic.color : "hsl(var(--muted-foreground))"} opacity={isActive("aortic") ? 1 : 0.5} fontWeight={isActive("aortic") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("aortic")}>Aortic</text>
-
-            {/* Pulmonary valve */}
-            <g className="cursor-pointer" onClick={click("pulmonary")}>
-              <ellipse cx="155" cy="78" rx="12" ry="6"
-                fill={structures.pulmonary.color} fillOpacity={isActive("pulmonary") ? 0.6 : 0.2}
-                stroke={structures.pulmonary.color} strokeWidth={isActive("pulmonary") ? 2.5 : 1.2} />
-              {isActive("pulmonary") && (
-                <g opacity="0.5" className="animate-fade-in">
-                  <path d="M146,76 C150,80 155,82 155,80" fill="none" stroke={structures.pulmonary.color} strokeWidth="1" />
-                  <path d="M155,80 C155,82 160,80 164,76" fill="none" stroke={structures.pulmonary.color} strokeWidth="1" />
-                </g>
-              )}
-            </g>
-            <text x="135" y="72" fontSize="6" fill={isActive("pulmonary") ? structures.pulmonary.color : "hsl(var(--muted-foreground))"} opacity={isActive("pulmonary") ? 1 : 0.5} fontWeight={isActive("pulmonary") ? "bold" : "normal"} textAnchor="end" className="cursor-pointer select-none" onClick={click("pulmonary")}>Pulm.</text>
-
-            {/* RVOT (infundibulum) */}
-            <path d="M210,195 C200,170 185,140 170,110 C162,96 158,86 155,78"
-              fill="none" stroke="hsl(0, 20%, 35%)" strokeWidth="2" opacity="0.15" strokeDasharray="3 2" />
-            <text x="178" y="135" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.2" transform="rotate(-55 178 135)">RVOT</text>
-
-            {/* ===== CORONARY ARTERIES ===== */}
-            {/* Left Main */}
-            <path d="M188,68 C178,78 168,88 158,96"
-              stroke={structures.lca.color} strokeWidth={isActive("lca") ? 4.5 : 2.8} fill="none"
-              opacity={isActive("lca") ? 1 : 0.45} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("lca")} />
-            <path d="M188,68 C178,78 168,88 158,96" stroke="transparent" strokeWidth="16" fill="none"
-              className="cursor-pointer" onClick={click("lca")} />
-
-            {/* LAD */}
-            <path d="M158,96 C155,115 152,138 150,162 C148,188 148,218 150,250 C152,282 156,312 162,340 C166,358 172,375 180,390"
-              stroke={structures.lad.color} strokeWidth={isActive("lad") ? 4.5 : 2.8} fill="none"
-              opacity={isActive("lad") ? 1 : 0.45} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("lad")} />
-            {/* LAD septal perforators */}
-            {isActive("lad") && (
-              <g opacity="0.5" className="animate-fade-in">
-                {[165, 200, 235, 270, 305].map((y, i) => (
-                  <line key={i} x1={150 + (y - 165) * 0.05} y1={y} x2={175} y2={y + 10} stroke={structures.lad.color} strokeWidth="1.2" strokeDasharray="2 2" />
-                ))}
-                <text x="180" y="235" fontSize="5" fill={structures.lad.color}>septals</text>
-              </g>
-            )}
-            {/* LAD diagonal */}
-            {isActive("lad") && (
-              <g opacity="0.5" className="animate-fade-in">
-                <path d="M152,180 C140,195 128,212 118,230" stroke={structures.lad.color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
-                <text x="112" y="235" fontSize="5" fill={structures.lad.color} textAnchor="end">D1</text>
-                <path d="M152,230 C140,245 130,260 122,278" stroke={structures.lad.color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
-                <text x="116" y="282" fontSize="5" fill={structures.lad.color} textAnchor="end">D2</text>
-              </g>
-            )}
-            <path d="M158,96 C155,115 152,138 150,162 C148,188 148,218 150,250 C152,282 156,312 162,340 C166,358 172,375 180,390"
-              stroke="transparent" strokeWidth="16" fill="none" className="cursor-pointer" onClick={click("lad")} />
-
-            {/* LCx */}
-            <path d="M158,96 C145,105 132,118 122,134 C112,150 105,168 100,188 C95,208 94,228 98,248"
-              stroke={structures.lcx.color} strokeWidth={isActive("lcx") ? 4.5 : 2.8} fill="none"
-              opacity={isActive("lcx") ? 1 : 0.45} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("lcx")} />
-            {/* OM branches */}
-            {isActive("lcx") && (
-              <g opacity="0.5" className="animate-fade-in">
-                <path d="M112,150 C102,168 95,188 92,208" stroke={structures.lcx.color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
-                <text x="84" y="205" fontSize="5" fill={structures.lcx.color}>OM1</text>
-                <path d="M100,200 C92,218 88,238 86,255" stroke={structures.lcx.color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
-                <text x="78" y="258" fontSize="5" fill={structures.lcx.color}>OM2</text>
-              </g>
-            )}
-            <path d="M158,96 C145,105 132,118 122,134 C112,150 105,168 100,188 C95,208 94,228 98,248"
-              stroke="transparent" strokeWidth="16" fill="none" className="cursor-pointer" onClick={click("lcx")} />
-
-            {/* RCA */}
-            <path d="M210,65 C225,72 242,85 255,102 C268,120 278,142 285,168 C292,194 292,222 285,248 C278,272 268,292 255,308"
-              stroke={structures.rca.color} strokeWidth={isActive("rca") ? 4.5 : 2.8} fill="none"
-              opacity={isActive("rca") ? 1 : 0.45} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("rca")} />
-            {/* Acute marginal */}
-            {isActive("rca") && (
-              <g opacity="0.5" className="animate-fade-in">
-                <path d="M288,185 C298,205 305,228 308,250" stroke={structures.rca.color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
-                <text x="312" y="235" fontSize="5" fill={structures.rca.color}>AM</text>
-              </g>
-            )}
-            <path d="M210,65 C225,72 242,85 255,102 C268,120 278,142 285,168 C292,194 292,222 285,248 C278,272 268,292 255,308"
-              stroke="transparent" strokeWidth="16" fill="none" className="cursor-pointer" onClick={click("rca")} />
-
-            {/* PDA */}
-            <path d="M255,308 C242,325 228,340 215,355 C205,365 198,378 195,390"
-              stroke={structures.pda.color} strokeWidth={isActive("pda") ? 4.5 : 2.8} fill="none"
-              opacity={isActive("pda") ? 1 : 0.45} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("pda")} />
-            <path d="M255,308 C242,325 228,340 215,355 C205,365 198,378 195,390"
-              stroke="transparent" strokeWidth="16" fill="none" className="cursor-pointer" onClick={click("pda")} />
-
-            {/* Coronary labels */}
-            <text x="165" y="92" fontSize="6.5" fill={isActive("lca") ? structures.lca.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("lca") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("lca")} textAnchor="end">LMCA</text>
-            <text x="135" y="230" fontSize="6.5" fill={isActive("lad") ? structures.lad.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("lad") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("lad")} textAnchor="end">LAD</text>
-            <text x="82" y="155" fontSize="6.5" fill={isActive("lcx") ? structures.lcx.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("lcx") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("lcx")} textAnchor="end">LCx</text>
-            <text x="300" y="148" fontSize="6.5" fill={isActive("rca") ? structures.rca.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("rca") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("rca")}>RCA</text>
-            <text x="262" y="340" fontSize="6.5" fill={isActive("pda") ? structures.pda.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("pda") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("pda")}>PDA</text>
-
-            {/* ===== CONDUCTING SYSTEM ===== */}
-            {/* SA node */}
-            <circle cx="308" cy="82" r={isActive("sa-node") ? 7 : 5} fill={structures["sa-node"].color}
-              fillOpacity={isActive("sa-node") ? 0.75 : 0.35} stroke={structures["sa-node"].color}
-              strokeWidth={isActive("sa-node") ? 2.5 : 1.2}
-              className="cursor-pointer transition-all duration-200" onClick={click("sa-node")} filter={isActive("sa-node") ? "url(#softGlow)" : undefined} />
-            <text x="320" y="78" fontSize="6.5" fill={isActive("sa-node") ? structures["sa-node"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("sa-node") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("sa-node")}>SA node</text>
-
-            {/* Internodal pathways */}
-            <path d="M308,88 C305,110 300,138 295,160 C290,175 285,188 280,195"
-              stroke={structures["sa-node"].color} strokeWidth="1.2" strokeDasharray="3 2.5" fill="none"
-              opacity={isActive("sa-node") || isActive("av-node") ? 0.55 : 0.15} />
-            {isActive("sa-node") && (
-              <text x="310" y="140" fontSize="4" fill={structures["sa-node"].color} opacity="0.5">internodal</text>
-            )}
-
-            {/* AV node */}
-            <circle cx="275" cy="198" r={isActive("av-node") ? 7 : 5} fill={structures["av-node"].color}
-              fillOpacity={isActive("av-node") ? 0.75 : 0.35} stroke={structures["av-node"].color}
-              strokeWidth={isActive("av-node") ? 2.5 : 1.2}
-              className="cursor-pointer transition-all duration-200" onClick={click("av-node")} filter={isActive("av-node") ? "url(#softGlow)" : undefined} />
-            <text x="290" y="200" fontSize="6.5" fill={isActive("av-node") ? structures["av-node"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("av-node") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("av-node")}>AV node</text>
-            {isActive("av-node") && (
-              <g className="animate-fade-in">
-                <text x="285" y="210" fontSize="4" fill={structures["av-node"].color} opacity="0.5">△ of Koch</text>
-              </g>
-            )}
-
-            {/* Bundle of His */}
-            <path d="M275,204 C265,212 255,222 240,232"
-              stroke={structures["bundle-his"].color} strokeWidth={isActive("bundle-his") ? 3.5 : 2} fill="none"
-              opacity={isActive("bundle-his") ? 0.85 : 0.3} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("bundle-his")} />
-            <path d="M275,204 C265,212 255,222 240,232" stroke="transparent" strokeWidth="14" fill="none"
-              className="cursor-pointer" onClick={click("bundle-his")} />
-            <text x="260" y="228" fontSize="5.5" fill={isActive("bundle-his") ? structures["bundle-his"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("bundle-his")}>His</text>
-
-            {/* Left bundle branch */}
-            <path d="M240,232 C228,245 215,265 205,288 C195,312 188,338 185,365"
-              stroke={structures["left-bundle"].color} strokeWidth={isActive("left-bundle") ? 3.5 : 2} fill="none"
-              opacity={isActive("left-bundle") ? 0.85 : 0.3} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("left-bundle")} />
-            {/* Fascicles */}
-            {isActive("left-bundle") && (
-              <g opacity="0.45" className="animate-fade-in">
-                <path d="M218,260 C205,272 188,282 172,288" stroke={structures["left-bundle"].color} strokeWidth="1.2" strokeDasharray="2.5 2" fill="none" />
-                <text x="164" y="288" fontSize="4.5" fill={structures["left-bundle"].color} textAnchor="end">ant. fascicle</text>
-                <path d="M205,300 C192,318 182,335 175,352" stroke={structures["left-bundle"].color} strokeWidth="1.2" strokeDasharray="2.5 2" fill="none" />
-                <text x="168" y="355" fontSize="4.5" fill={structures["left-bundle"].color} textAnchor="end">post. fascicle</text>
-              </g>
-            )}
-            <path d="M240,232 C228,245 215,265 205,288 C195,312 188,338 185,365" stroke="transparent" strokeWidth="14" fill="none"
-              className="cursor-pointer" onClick={click("left-bundle")} />
-            <text x="180" y="340" fontSize="5.5" fill={isActive("left-bundle") ? structures["left-bundle"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("left-bundle")} textAnchor="end">LBB</text>
-
-            {/* Right bundle branch */}
-            <path d="M240,232 C248,248 256,268 262,292 C268,316 270,342 270,365"
-              stroke={structures["right-bundle"].color} strokeWidth={isActive("right-bundle") ? 3.5 : 2} fill="none"
-              opacity={isActive("right-bundle") ? 0.85 : 0.3} strokeLinecap="round"
-              className="cursor-pointer transition-all duration-200" onClick={click("right-bundle")} />
-            <path d="M240,232 C248,248 256,268 262,292 C268,316 270,342 270,365" stroke="transparent" strokeWidth="14" fill="none"
-              className="cursor-pointer" onClick={click("right-bundle")} />
-            <text x="278" y="340" fontSize="5.5" fill={isActive("right-bundle") ? structures["right-bundle"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("right-bundle")}>RBB</text>
-
-            {/* Purkinje fibres */}
-            {(isActive("purkinje") || isActive("left-bundle") || isActive("right-bundle")) && (
-              <g opacity="0.45" className="animate-fade-in">
-                {/* Left Purkinje network */}
-                <path d="M185,365 C168,370 148,372 128,368" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M185,365 C180,375 175,385 168,392" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M185,365 C188,375 192,384 194,390" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M185,365 C172,368 158,376 148,382" stroke={structures.purkinje.color} strokeWidth="1" fill="none" />
-                {/* Right Purkinje network */}
-                <path d="M270,365 C282,370 296,372 308,368" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M270,365 C275,375 280,385 284,392" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M270,365 C265,375 260,384 256,390" stroke={structures.purkinje.color} strokeWidth="1.2" fill="none" />
-                <path d="M270,365 C284,368 298,376 310,382" stroke={structures.purkinje.color} strokeWidth="1" fill="none" />
-              </g>
-            )}
-            <circle cx="185" cy="368" r={isActive("purkinje") ? 6 : 4} fill={structures.purkinje.color}
-              fillOpacity={isActive("purkinje") ? 0.55 : 0.18} stroke={structures.purkinje.color}
-              strokeWidth={isActive("purkinje") ? 1.8 : 0.6}
-              className="cursor-pointer transition-all duration-200" onClick={click("purkinje")} />
-            <circle cx="270" cy="368" r={isActive("purkinje") ? 6 : 4} fill={structures.purkinje.color}
-              fillOpacity={isActive("purkinje") ? 0.55 : 0.18} stroke={structures.purkinje.color}
-              strokeWidth={isActive("purkinje") ? 1.8 : 0.6}
-              className="cursor-pointer transition-all duration-200" onClick={click("purkinje")} />
-            <text x="228" y="385" fontSize="6" textAnchor="middle" fill={isActive("purkinje") ? structures.purkinje.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("purkinje")}>Purkinje</text>
-
-            {/* Chamber labels */}
-            <g fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.22" fontWeight="bold" fontStyle="italic">
-              <text x="285" y="148" textAnchor="middle">RA</text>
-              <text x="128" y="148" textAnchor="middle">LA</text>
-              <text x="270" y="290" textAnchor="middle">RV</text>
-              <text x="155" y="290" textAnchor="middle">LV</text>
-            </g>
-
-            {/* LV wall thickness annotation */}
-            <g opacity="0.2">
-              <line x1="78" y1="300" x2="96" y2="300" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" markerEnd="url(#arrowhead)" />
-              <text x="72" y="298" fontSize="4" fill="hsl(var(--muted-foreground))" textAnchor="end">LV wall</text>
-              <text x="72" y="304" fontSize="4" fill="hsl(var(--muted-foreground))" textAnchor="end">12–15 mm</text>
-            </g>
-          </svg>
+        {/* 3D Canvas */}
+        <div className="flex-shrink-0 w-full sm:w-[360px] h-[400px] rounded border border-border overflow-hidden bg-gradient-to-b from-background to-secondary/20">
+          <Canvas camera={{ position: [0, 0, 3.5], fov: 40 }} dpr={[1, 2]}>
+            <ambientLight intensity={0.5} />
+            <directionalLight position={[3, 5, 4]} intensity={0.8} />
+            <directionalLight position={[-3, -2, -3]} intensity={0.3} color="hsl(220, 60%, 70%)" />
+            <pointLight position={[0, 0, 3]} intensity={0.4} color="hsl(0, 40%, 70%)" />
+            <Suspense fallback={null}>
+              <HeartModel selected={selected} onSelect={setSelected} />
+            </Suspense>
+            <OrbitControls
+              enablePan={false}
+              minDistance={2}
+              maxDistance={6}
+              autoRotate={false}
+            />
+          </Canvas>
         </div>
 
         {/* Info panel */}
         <div className="flex-1 min-w-0">
-          {/* Category selector */}
           <div className="flex flex-wrap gap-1 mb-3">
             {categories.map(cat => (
               <div key={cat.key} className="flex flex-wrap gap-1">
