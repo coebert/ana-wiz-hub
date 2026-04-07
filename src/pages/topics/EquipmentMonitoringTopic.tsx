@@ -106,24 +106,28 @@ const EquipmentMonitoringTopic = () => {
                     <th className="text-left p-3 font-semibold text-foreground border-b border-border">Circuit</th>
                     <th className="text-left p-3 font-semibold text-foreground border-b border-border">Also Known As</th>
                     <th className="text-center p-3 font-semibold text-foreground border-b border-border">Spontaneous</th>
+                    <th className="text-center p-3 font-semibold text-foreground border-b border-border whitespace-nowrap">FGF (SV)</th>
                     <th className="text-center p-3 font-semibold text-foreground border-b border-border">Controlled</th>
+                    <th className="text-center p-3 font-semibold text-foreground border-b border-border whitespace-nowrap">FGF (IPPV)</th>
                     <th className="text-left p-3 font-semibold text-foreground border-b border-border">Key Feature</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { circuit: "A", aka: "Magill", spont: "★★★", ctrl: "★", note: "APL valve near patient — vents alveolar gas first" },
-                    { circuit: "B", aka: "—", spont: "★★", ctrl: "★★", note: "Rarely used clinically" },
-                    { circuit: "C", aka: "Waters", spont: "★★", ctrl: "★★", note: "No tubing — bag connected directly" },
-                    { circuit: "D", aka: "Bain (coaxial)", spont: "★★", ctrl: "★★★", note: "FGF at patient end via inner tube" },
-                    { circuit: "E", aka: "Ayre's T-piece", spont: "★★", ctrl: "★★", note: "No valves/bag — minimal resistance (neonates)" },
-                    { circuit: "F", aka: "Jackson-Rees", spont: "★★", ctrl: "★★", note: "T-piece + open-tail bag for IPPV" },
+                    { circuit: "A", aka: "Magill", spont: "★★★", spontFGF: "1× MV", ctrl: "★", ctrlFGF: "≥3× MV", note: "APL valve near patient — vents alveolar gas first" },
+                    { circuit: "B", aka: "—", spont: "★", spontFGF: "2–3× MV", ctrl: "★★", ctrlFGF: "2–3× MV", note: "Rarely used clinically" },
+                    { circuit: "C", aka: "Waters", spont: "★", spontFGF: "2–3× MV", ctrl: "★★", ctrlFGF: "2–3× MV", note: "No tubing — bag connected directly" },
+                    { circuit: "D", aka: "Bain (coaxial)", spont: "★★", spontFGF: "2–3× MV", ctrl: "★★★", ctrlFGF: "70 mL/kg/min", note: "FGF at patient end via inner tube" },
+                    { circuit: "E", aka: "Ayre's T-piece", spont: "★★", spontFGF: "2–3× MV", ctrl: "★★", ctrlFGF: "2–3× MV", note: "No valves/bag — minimal resistance (neonates)" },
+                    { circuit: "F", aka: "Jackson-Rees", spont: "★★", spontFGF: "2–3× MV", ctrl: "★★", ctrlFGF: "2–3× MV", note: "T-piece + open-tail bag for IPPV" },
                   ].map((row) => (
                     <tr key={row.circuit} className="border-b border-border last:border-0 hover:bg-accent/30 transition-colors">
                       <td className="p-3 font-medium text-foreground">Mapleson {row.circuit}</td>
                       <td className="p-3 text-muted-foreground">{row.aka}</td>
                       <td className="p-3 text-center">{row.spont}</td>
+                      <td className="p-3 text-center font-mono text-xs text-foreground">{row.spontFGF}</td>
                       <td className="p-3 text-center">{row.ctrl}</td>
+                      <td className="p-3 text-center font-mono text-xs text-foreground">{row.ctrlFGF}</td>
                       <td className="p-3 text-muted-foreground">{row.note}</td>
                     </tr>
                   ))}
@@ -131,8 +135,8 @@ const EquipmentMonitoringTopic = () => {
               </table>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              ★★★ = most efficient (lowest FGF required) · ★★ = moderate · ★ = least efficient.
-              FGF requirements: Mapleson A spontaneous ≈ 1× MV; Mapleson D controlled ≈ 1–2× MV; inefficient combinations require 2–3× MV.
+              ★★★ = most efficient (lowest FGF) · ★ = least efficient. MV = minute ventilation (~70–100 mL/kg/min).
+              Mapleson A SV: FGF ≈ alveolar ventilation (~1× MV). Mapleson D IPPV: classically quoted as 70 mL/kg/min (~1× MV).
             </p>
           </div>
           <div className="bg-card rounded-xl border border-border p-4 mt-4">
