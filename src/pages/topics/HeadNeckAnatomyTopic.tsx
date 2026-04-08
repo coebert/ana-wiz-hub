@@ -6,6 +6,7 @@ import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
 import NeckCrossSectionDiagram from "@/components/diagrams/NeckCrossSectionDiagram";
+import LaryngealNervesDiagram from "@/components/diagrams/LaryngealNervesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const HeadNeckAnatomyTopic = () => {
@@ -84,6 +85,14 @@ const HeadNeckAnatomyTopic = () => {
             Understanding the fascial planes and spatial relationships at C6 (cricoid level) is essential for central venous access, stellate ganglion block, and understanding the spread of deep neck infections.
           </p>
           <NeckCrossSectionDiagram />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Laryngeal Nerve Supply</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
+          </p>
+          <LaryngealNervesDiagram />
         </div>
       </section>
 
