@@ -1,0 +1,384 @@
+import { useState } from "react";
+
+type Structure = {
+  id: string;
+  label: string;
+  desc: string;
+  color: string;
+  paths: string[];
+};
+
+const structures: Structure[] = [
+  {
+    id: "skin",
+    label: "Skin & Platysma",
+    desc: "Superficial layer. Platysma — thin sheet muscle in superficial fascia, supplied by facial nerve (VII). Covers anterior and lateral neck.",
+    color: "#e8c9a0",
+    paths: [],
+  },
+  {
+    id: "scf",
+    label: "Superficial Cervical Fascia",
+    desc: "Loose areolar tissue deep to platysma. Contains cutaneous nerves, superficial veins (EJV, anterior jugular), and lymph nodes.",
+    color: "#f5deb3",
+    paths: [],
+  },
+  {
+    id: "investing",
+    label: "Investing (Superficial) Layer of DCF",
+    desc: "Encircles entire neck. Splits to enclose SCM and trapezius. Attaches to mandible, mastoid, hyoid, spine of scapula, clavicle. Forms roof of posterior triangle.",
+    color: "#a8d5ba",
+    paths: [],
+  },
+  {
+    id: "pretracheal",
+    label: "Pretracheal (Middle) Layer",
+    desc: "Muscular layer: encloses infrahyoid strap muscles. Visceral layer: encloses thyroid, trachea, oesophagus, recurrent laryngeal nerve. Blends with pericardium inferiorly — spread of neck infections to mediastinum.",
+    color: "#93c5fd",
+    paths: [],
+  },
+  {
+    id: "prevertebral",
+    label: "Prevertebral (Deep) Layer",
+    desc: "Covers prevertebral muscles (longus colli/capitis) and vertebral column. Forms floor of posterior triangle. Alar fascia anteriorly creates 'danger space' — connects to posterior mediastinum.",
+    color: "#c4b5fd",
+    paths: [],
+  },
+  {
+    id: "carotid",
+    label: "Carotid Sheath",
+    desc: "Condensation of all three DCF layers. Contains: CCA (medial), IJV (lateral), vagus nerve (posterior, between vessels). Also contains deep cervical lymph nodes and ansa cervicalis root. IJV sits lateral and slightly anterior to CCA at C6.",
+    color: "#fca5a5",
+    paths: [],
+  },
+  {
+    id: "trachea",
+    label: "Trachea & Oesophagus",
+    desc: "Trachea anterior, oesophagus posterior (slightly left). C6 = cricoid cartilage level. Recurrent laryngeal nerve in tracheo-oesophageal groove. Isthmus of thyroid overlies tracheal rings 2–4.",
+    color: "#fcd34d",
+    paths: [],
+  },
+  {
+    id: "thyroid",
+    label: "Thyroid Gland",
+    desc: "Lateral lobes flank trachea, connected by isthmus. Enclosed by pretracheal fascia. Blood supply: superior (ECA) and inferior (thyrocervical trunk) thyroid arteries. Intimate relation to RLN.",
+    color: "#f9a8d4",
+    paths: [],
+  },
+  {
+    id: "vertebral",
+    label: "Vertebral Body & Muscles",
+    desc: "C6 vertebral body with carotid tubercle (Chassaignac's) — landmark for stellate ganglion block, vertebral artery entry into transverse foramen. Longus colli muscles anterolateral to body.",
+    color: "#d4d4d8",
+    paths: [],
+  },
+  {
+    id: "scm",
+    label: "Sternocleidomastoid",
+    desc: "Key landmark muscle. Enclosed by investing layer. Divides neck into anterior and posterior triangles. Motor: accessory nerve (XI). Sensory: C2,3. Surface marking for IJV access.",
+    color: "#f87171",
+    paths: [],
+  },
+];
+
+const NeckCrossSectionDiagram = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  const info = selected ? structures.find((s) => s.id === selected) : null;
+
+  const highlight = (id: string) => selected === id;
+  const opacity = (id: string) => (selected && selected !== id ? 0.3 : 1);
+
+  return (
+    <div className="my-6">
+      <h3 className="text-lg font-semibold text-foreground mb-2">
+        Cross-Section of Neck at C6 Level
+      </h3>
+      <p className="text-sm text-muted-foreground mb-4">
+        Tap a structure to explore its contents and clinical relevance.
+      </p>
+      <div className="flex flex-col lg:flex-row gap-4">
+        <svg viewBox="0 0 500 500" className="w-full max-w-[500px] mx-auto" style={{ background: "hsl(var(--card))" }}>
+          <defs>
+            <radialGradient id="ncx-skinGrad" cx="50%" cy="50%">
+              <stop offset="0%" stopColor="#f5deb3" />
+              <stop offset="100%" stopColor="#e8c9a0" />
+            </radialGradient>
+            <radialGradient id="ncx-bodyGrad" cx="50%" cy="50%">
+              <stop offset="0%" stopColor="#e8e8e8" />
+              <stop offset="100%" stopColor="#c4c4c4" />
+            </radialGradient>
+          </defs>
+
+          {/* Skin outline — outer ellipse */}
+          <ellipse
+            cx="250" cy="250" rx="220" ry="200"
+            fill="url(#ncx-skinGrad)"
+            stroke={highlight("skin") ? "#f59e0b" : "#a0886a"}
+            strokeWidth={highlight("skin") ? 3 : 1.5}
+            opacity={opacity("skin")}
+            onClick={() => setSelected(selected === "skin" ? null : "skin")}
+            className="cursor-pointer"
+          />
+
+          {/* Investing layer */}
+          <ellipse
+            cx="250" cy="250" rx="195" ry="175"
+            fill="none"
+            stroke={highlight("investing") ? "#16a34a" : "#6aaa80"}
+            strokeWidth={highlight("investing") ? 4 : 2}
+            strokeDasharray={highlight("investing") ? "none" : "8 4"}
+            opacity={opacity("investing")}
+            onClick={() => setSelected(selected === "investing" ? null : "investing")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "investing" ? (
+            <text x="250" y="82" textAnchor="middle" fontSize="9" fill="#16a34a" fontWeight="600">Investing Layer</text>
+          ) : null}
+
+          {/* Pretracheal layer — inner ellipse around viscera */}
+          <ellipse
+            cx="250" cy="230" rx="95" ry="70"
+            fill={highlight("pretracheal") ? "#93c5fd33" : "none"}
+            stroke={highlight("pretracheal") ? "#3b82f6" : "#60a5fa"}
+            strokeWidth={highlight("pretracheal") ? 3 : 1.5}
+            strokeDasharray="6 3"
+            opacity={opacity("pretracheal")}
+            onClick={() => setSelected(selected === "pretracheal" ? null : "pretracheal")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "pretracheal" ? (
+            <text x="250" y="155" textAnchor="middle" fontSize="8" fill="#3b82f6" fontWeight="600">Pretracheal Layer</text>
+          ) : null}
+
+          {/* Prevertebral layer */}
+          <path
+            d="M155,320 Q155,280 175,260 Q200,235 250,230 Q300,235 325,260 Q345,280 345,320 L345,350 Q300,360 250,360 Q200,360 155,350 Z"
+            fill={highlight("prevertebral") ? "#c4b5fd33" : "none"}
+            stroke={highlight("prevertebral") ? "#7c3aed" : "#a78bfa"}
+            strokeWidth={highlight("prevertebral") ? 3 : 1.5}
+            strokeDasharray="6 3"
+            opacity={opacity("prevertebral")}
+            onClick={() => setSelected(selected === "prevertebral" ? null : "prevertebral")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "prevertebral" ? (
+            <text x="250" y="375" textAnchor="middle" fontSize="8" fill="#7c3aed" fontWeight="600">Prevertebral Layer</text>
+          ) : null}
+
+          {/* Vertebral body */}
+          <rect
+            x="215" y="300" width="70" height="55" rx="8"
+            fill={highlight("vertebral") ? "#a1a1aa" : "url(#ncx-bodyGrad)"}
+            stroke={highlight("vertebral") ? "#f59e0b" : "#888"}
+            strokeWidth={highlight("vertebral") ? 3 : 1.5}
+            opacity={opacity("vertebral")}
+            onClick={() => setSelected(selected === "vertebral" ? null : "vertebral")}
+            className="cursor-pointer"
+          />
+          <text x="250" y="332" textAnchor="middle" fontSize="11" fill="#333" fontWeight="700" opacity={opacity("vertebral")}>C6</text>
+          {/* Transverse processes / carotid tubercle */}
+          <rect x="175" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
+          <rect x="285" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
+          {!selected || selected === "vertebral" ? (
+            <>
+              <text x="165" y="308" textAnchor="middle" fontSize="7" fill="#666">Carotid</text>
+              <text x="165" y="316" textAnchor="middle" fontSize="7" fill="#666">tubercle</text>
+            </>
+          ) : null}
+          {/* Spinous process */}
+          <path d="M245,355 L250,390 L255,355" fill="#c4c4c4" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
+          {/* Spinal cord */}
+          <ellipse cx="250" cy="300" rx="12" ry="10" fill="#fef9c3" stroke="#a16207" strokeWidth="1" opacity={opacity("vertebral")} />
+          <text x="250" y="295" textAnchor="middle" fontSize="6" fill="#92400e" opacity={opacity("vertebral")}>Cord</text>
+
+          {/* Longus colli muscles */}
+          <ellipse cx="220" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
+          <ellipse cx="280" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
+          {!selected || selected === "vertebral" ? (
+            <text x="250" y="280" textAnchor="middle" fontSize="7" fill="#9b2c2c">Longus colli</text>
+          ) : null}
+
+          {/* Trachea */}
+          <circle
+            cx="250" cy="220" r="22"
+            fill={highlight("trachea") ? "#fef08a" : "#fef9c3"}
+            stroke={highlight("trachea") ? "#f59e0b" : "#ca8a04"}
+            strokeWidth={highlight("trachea") ? 3 : 1.5}
+            opacity={opacity("trachea")}
+            onClick={() => setSelected(selected === "trachea" ? null : "trachea")}
+            className="cursor-pointer"
+          />
+          <text x="250" y="223" textAnchor="middle" fontSize="9" fill="#92400e" fontWeight="600" opacity={opacity("trachea")}>Trachea</text>
+
+          {/* Oesophagus — posterior to trachea, slightly left */}
+          <ellipse
+            cx="245" cy="255" rx="14" ry="10"
+            fill={highlight("trachea") ? "#fde68a" : "#fef3c7"}
+            stroke={highlight("trachea") ? "#f59e0b" : "#b45309"}
+            strokeWidth={highlight("trachea") ? 2 : 1}
+            opacity={opacity("trachea")}
+            onClick={() => setSelected(selected === "trachea" ? null : "trachea")}
+            className="cursor-pointer"
+          />
+          <text x="245" y="258" textAnchor="middle" fontSize="7" fill="#92400e" opacity={opacity("trachea")}>Oesoph</text>
+
+          {/* RLN dots in T-O groove */}
+          <circle cx="228" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
+          <circle cx="268" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
+          {!selected || selected === "trachea" ? (
+            <text x="228" y="235" textAnchor="middle" fontSize="6" fill="#166534">RLN</text>
+          ) : null}
+
+          {/* Thyroid lobes */}
+          <ellipse
+            cx="210" cy="215" rx="22" ry="28"
+            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
+            strokeWidth={highlight("thyroid") ? 3 : 1.5}
+            opacity={opacity("thyroid")}
+            onClick={() => setSelected(selected === "thyroid" ? null : "thyroid")}
+            className="cursor-pointer"
+          />
+          <ellipse
+            cx="290" cy="215" rx="22" ry="28"
+            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
+            strokeWidth={highlight("thyroid") ? 3 : 1.5}
+            opacity={opacity("thyroid")}
+            onClick={() => setSelected(selected === "thyroid" ? null : "thyroid")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "thyroid" ? (
+            <>
+              <text x="210" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
+              <text x="290" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
+            </>
+          ) : null}
+
+          {/* Isthmus */}
+          <rect x="232" y="193" width="36" height="8" rx="3" fill="#fce7f3" stroke="#db2777" strokeWidth="1" opacity={opacity("thyroid")} />
+
+          {/* LEFT Carotid sheath */}
+          <ellipse
+            cx="155" cy="230" rx="30" ry="35"
+            fill={highlight("carotid") ? "#fca5a533" : "none"}
+            stroke={highlight("carotid") ? "#ef4444" : "#f87171"}
+            strokeWidth={highlight("carotid") ? 3 : 2}
+            strokeDasharray={highlight("carotid") ? "none" : "5 3"}
+            opacity={opacity("carotid")}
+            onClick={() => setSelected(selected === "carotid" ? null : "carotid")}
+            className="cursor-pointer"
+          />
+          {/* CCA */}
+          <circle cx="162" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="162" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
+          {/* IJV */}
+          <ellipse cx="145" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="145" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
+          {/* Vagus */}
+          <circle cx="155" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
+          {!selected || selected === "carotid" ? (
+            <text x="155" y="260" textAnchor="middle" fontSize="6" fill="#92400e">X (vagus)</text>
+          ) : null}
+
+          {/* RIGHT Carotid sheath */}
+          <ellipse
+            cx="345" cy="230" rx="30" ry="35"
+            fill={highlight("carotid") ? "#fca5a533" : "none"}
+            stroke={highlight("carotid") ? "#ef4444" : "#f87171"}
+            strokeWidth={highlight("carotid") ? 3 : 2}
+            strokeDasharray={highlight("carotid") ? "none" : "5 3"}
+            opacity={opacity("carotid")}
+            onClick={() => setSelected(selected === "carotid" ? null : "carotid")}
+            className="cursor-pointer"
+          />
+          <circle cx="338" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="338" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
+          <ellipse cx="355" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="355" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
+          <circle cx="345" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
+
+          {/* SCM muscles */}
+          <ellipse
+            cx="130" cy="195" rx="28" ry="14"
+            transform="rotate(-30 130 195)"
+            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
+            strokeWidth={highlight("scm") ? 3 : 1.5}
+            opacity={opacity("scm")}
+            onClick={() => setSelected(selected === "scm" ? null : "scm")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "scm" ? (
+            <text x="115" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(-30 115 180)">SCM</text>
+          ) : null}
+          <ellipse
+            cx="370" cy="195" rx="28" ry="14"
+            transform="rotate(30 370 195)"
+            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
+            strokeWidth={highlight("scm") ? 3 : 1.5}
+            opacity={opacity("scm")}
+            onClick={() => setSelected(selected === "scm" ? null : "scm")}
+            className="cursor-pointer"
+          />
+          {!selected || selected === "scm" ? (
+            <text x="385" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
+          ) : null}
+
+          {/* Trapezius (posterior) */}
+          <ellipse cx="145" cy="340" rx="30" ry="12" transform="rotate(40 145 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
+          <ellipse cx="355" cy="340" rx="30" ry="12" transform="rotate(-40 355 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
+          <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+          <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+
+          {/* Vertebral artery in transverse foramen */}
+          <circle cx="195" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
+          <circle cx="305" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
+          {!selected || selected === "vertebral" ? (
+            <text x="195" y="340" textAnchor="middle" fontSize="6" fill="#991b1b">VA</text>
+          ) : null}
+
+          {/* Anterior label */}
+          <text x="250" y="120" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">Anterior</text>
+          <text x="250" y="410" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">Posterior</text>
+
+          {/* Strap muscles */}
+          <ellipse cx="230" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
+          <ellipse cx="270" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
+          {!selected || selected === "pretracheal" ? (
+            <text x="250" y="172" textAnchor="middle" fontSize="7" fill="#059669">Strap mm.</text>
+          ) : null}
+        </svg>
+
+        {/* Legend / selection panel */}
+        <div className="flex flex-col gap-1.5 min-w-[180px]">
+          {structures.map((s) => (
+            <button
+              key={s.id}
+              onClick={() => setSelected(selected === s.id ? null : s.id)}
+              className={`text-left text-xs px-2.5 py-1.5 rounded border transition-all ${
+                selected === s.id
+                  ? "border-primary bg-primary/10 font-semibold text-foreground"
+                  : "border-border text-muted-foreground hover:border-primary/50"
+              }`}
+            >
+              <span className="inline-block w-2.5 h-2.5 rounded-full mr-1.5 align-middle" style={{ background: s.color }} />
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {info && (
+        <div className="mt-4 p-4 rounded-lg border border-primary/30 bg-primary/5">
+          <p className="font-semibold text-foreground text-sm">{info.label}</p>
+          <p className="text-sm text-muted-foreground mt-1">{info.desc}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default NeckCrossSectionDiagram;
