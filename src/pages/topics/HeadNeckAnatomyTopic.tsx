@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
+import NeckCrossSectionDiagram from "@/components/diagrams/NeckCrossSectionDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const HeadNeckAnatomyTopic = () => {
