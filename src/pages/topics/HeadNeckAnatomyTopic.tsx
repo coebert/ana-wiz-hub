@@ -77,6 +77,14 @@ const HeadNeckAnatomyTopic = () => {
           </p>
           <CervicalPlexusDiagram />
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cross-Section at C6 Level</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Understanding the fascial planes and spatial relationships at C6 (cricoid level) is essential for central venous access, stellate ganglion block, and understanding the spread of deep neck infections.
+          </p>
+          <NeckCrossSectionDiagram />
+        </div>
       </section>
 
       <KeyLearningPoints points={[
