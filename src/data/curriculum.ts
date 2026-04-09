@@ -104,6 +104,9 @@ export const clinicalTopics: Topic[] = [
   { id: "ent-anaesthesia", title: "ENT & Maxillofacial Anaesthesia", description: "Shared airway, tonsillectomy, laser surgery, nasal/ear surgery, tracheostomy, Le Fort fractures", section: "clinical", examTags: ["final"], available: true },
   { id: "burns-plastics", title: "Burns & Plastic Surgery", description: "Burn pathophysiology, Parkland formula, airway burns, suxamethonium risk, free flap surgery", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "emergency-surgery", title: "Anaesthesia for Emergency Surgery", description: "Emergency laparotomy, appendicectomy, ruptured ectopic, NCEPOD classification, NELA standards", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "urological-anaesthesia", title: "Urological Anaesthesia", description: "TURP syndrome, lithotomy positioning, radical cystectomy, nephrectomy, ESWL", section: "clinical", examTags: ["final"], available: true },
+  { id: "gynaecological-anaesthesia", title: "Gynaecological Anaesthesia", description: "Laparoscopic/robotic surgery, hysteroscopy fluid absorption, major oncology, Trendelenburg effects", section: "clinical", examTags: ["final"], available: true },
+  { id: "hepatobiliary-transplant", title: "Hepatobiliary & Transplant Anaesthesia", description: "Liver resection, low CVP technique, liver transplant phases, cirrhotic patient, post-reperfusion syndrome", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
