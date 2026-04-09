@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
+import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const AutonomicNervousTopic = () => {
@@ -32,6 +33,18 @@ const AutonomicNervousTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-6">
             <ANSDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">ANS Pathway Architecture</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Compare the sympathetic and parasympathetic pathways side-by-side. Note the differences in preganglionic
+            and postganglionic neurone length, neurotransmitters, and receptor types at each synapse. Explore the
+            adrenal medulla (modified sympathetic ganglion) and enteric nervous system views.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <ANSPathwayDiagram />
           </div>
         </section>
 
