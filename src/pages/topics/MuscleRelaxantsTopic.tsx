@@ -148,6 +148,17 @@ const MuscleRelaxantsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">NMBA Onset & Duration Timeline</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Compare the onset and clinical duration of all neuromuscular blocking agents side-by-side.
+            Press Play to animate a time cursor across the timeline. Vertical markers show when intubation conditions are achieved.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <NMBATimelineDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">TOF Patterns: Depolarising vs Non-Depolarising</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Compare the animated train-of-four response across different block types. Note the key distinguishing
