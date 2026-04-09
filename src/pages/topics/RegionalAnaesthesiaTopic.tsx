@@ -3,7 +3,6 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
-import DermatomeDiagram from "@/components/diagrams/DermatomeDiagram";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
@@ -13,7 +12,6 @@ const RegionalAnaesthesiaTopic = () => {
   return (
     <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <DermatomeMapDiagram />
-      <DermatomeDiagram />
       <RegionalBlocksDiagram />
       <NeuraxialNeedlesDiagram />
       <section className="space-y-6 mb-10">
