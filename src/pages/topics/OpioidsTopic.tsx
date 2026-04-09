@@ -137,6 +137,65 @@ const OpioidsTopic = () => {
             </table>
           </div>
         </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Equianalgesic Dose Conversion</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Equianalgesic doses are approximate equivalents used when converting between opioids or routes. All values
+            are referenced to <strong>10 mg IV morphine</strong>. These are guidelines — individual variation, incomplete
+            cross-tolerance, and clinical context must always be considered.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-muted/50">
+                  <th className="text-left p-3 font-semibold text-foreground">Opioid</th>
+                  <th className="text-center p-3 font-semibold text-foreground">Route</th>
+                  <th className="text-center p-3 font-semibold text-foreground">Equianalgesic Dose</th>
+                  <th className="text-center p-3 font-semibold text-foreground">Ratio to IV Morphine</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["Morphine", "IV / SC", "10 mg", "1 : 1", false],
+                  ["Morphine", "IM", "10 mg", "1 : 1", false],
+                  ["Morphine", "Oral", "30 mg", "3 : 1", true],
+                  ["Diamorphine", "IV / SC", "5 mg", "1 : 2 (2× potency)", false],
+                  ["Diamorphine", "IM", "6.7 mg", "~1 : 1.5", true],
+                  ["Oxycodone", "IV", "6.7 mg", "1 : 1.5 (1.5× potency)", false],
+                  ["Oxycodone", "Oral", "15–20 mg", "~1.5–2 : 1", true],
+                  ["Fentanyl", "IV", "100 µg", "100× potency", false],
+                  ["Fentanyl", "Transdermal (patch)", "12 µg/hr patch ≈ 30 mg oral morphine/24hr", "—", true],
+                  ["Buprenorphine", "Transdermal (patch)", "5 µg/hr patch ≈ 12 mg oral morphine/24hr", "—", false],
+                  ["Buprenorphine", "Sublingual", "200–400 µg", "~60–100× potency", true],
+                  ["Codeine", "Oral", "100 mg", "~1/10 potency", false],
+                  ["Tramadol", "Oral", "100 mg", "~1/10 potency", false],
+                ].map(([agent, route, dose, ratio, shaded], i) => (
+                  <tr key={i} className={`border-t border-border ${shaded ? "bg-muted/20" : ""}`}>
+                    <td className="p-3 text-foreground font-medium">{agent as string}</td>
+                    <td className="p-3 text-center text-muted-foreground">{route as string}</td>
+                    <td className="p-3 text-center text-muted-foreground">{dose as string}</td>
+                    <td className="p-3 text-center text-muted-foreground">{ratio as string}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Key Conversion Points</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• <strong>Oral : IV morphine = 3 : 1</strong> (oral bioavailability ~30%)</li>
+              <li>• <strong>Diamorphine is ~2× IV morphine</strong> (prodrug rapidly deacetylated to 6-MAM then morphine; greater lipid solubility → faster BBB penetration)</li>
+              <li>• <strong>Oral oxycodone</strong> has ~75% bioavailability → oral : IV ratio ~1.5–2 : 1 (much better than morphine)</li>
+              <li>• <strong>Fentanyl patches</strong>: 25 µg/hr ≈ 60–90 mg oral morphine/24hr. Reservoir takes 12–24 hr to reach steady state; depot persists after removal</li>
+              <li>• <strong>Buprenorphine</strong>: partial µ agonist with ceiling effect for respiratory depression; high receptor affinity may impair efficacy of other opioids</li>
+              <li>• When converting between opioids, reduce the calculated equianalgesic dose by <strong>25–50%</strong> to account for incomplete cross-tolerance</li>
+            </ul>
+          </div>
+          <p className="text-sm text-muted-foreground italic mt-3">
+            Reference: Faculty of Pain Medicine, Opioid Dose Equivalence, 2021; BNF; Peck & Hill, Pharmacology for Anaesthesia and Intensive Care, 5th ed.
+          </p>
+        </section>
       </div>
 
       <KeyLearningPoints points={[
