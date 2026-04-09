@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
 import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
+import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
