@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
+import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -52,6 +53,9 @@ const BariatricAnaesthesiaTopic = () => {
             <li><strong>Functional capacity</strong>: often limited — Duke Activity Status Index may be more useful than exercise tolerance history</li>
             <li><strong>VTE risk</strong>: high — consider enhanced thromboprophylaxis (weight-adjusted LMWH)</li>
           </ul>
+          <div className="mt-4">
+            <StopBangCalculator />
+          </div>
         </div>
 
         <div>
