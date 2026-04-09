@@ -7,6 +7,7 @@ import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
 import NeckCrossSectionDiagram from "@/components/diagrams/NeckCrossSectionDiagram";
 import LaryngealNervesDiagram from "@/components/diagrams/LaryngealNervesDiagram";
+import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const HeadNeckAnatomyTopic = () => {
@@ -93,6 +94,14 @@ const HeadNeckAnatomyTopic = () => {
             The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
           </p>
           <LaryngealNervesDiagram />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base Foramina</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The internal surface of the skull base is divided into anterior, middle, and posterior cranial fossae. Each foramen transmits specific cranial nerves and vessels — knowledge of these is essential for understanding cranial nerve palsies, skull base fractures, and neurosurgical approaches.
+          </p>
+          <SkullBaseDiagram />
         </div>
       </section>
 
