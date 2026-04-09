@@ -88,6 +88,8 @@ const OrthopaedicAnaesthesiaTopic = lazy(() => import("./pages/topics/Orthopaedi
 const OphthalmicAnaesthesiaTopic = lazy(() => import("./pages/topics/OphthalmicAnaesthesiaTopic"));
 const DaySurgeryTopic = lazy(() => import("./pages/topics/DaySurgeryTopic"));
 const TransferMedicineTopic = lazy(() => import("./pages/topics/TransferMedicineTopic"));
+const BariatricAnaesthesiaTopic = lazy(() => import("./pages/topics/BariatricAnaesthesiaTopic"));
+const VascularAnaesthesiaTopic = lazy(() => import("./pages/topics/VascularAnaesthesiaTopic"));
 const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
 const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
