@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 
 const PreoperativeAssessmentTopic = () => {
   return (
@@ -40,6 +41,9 @@ const PreoperativeAssessmentTopic = () => {
               <p className="font-semibold text-foreground text-sm">Risk Thresholds</p>
               <p className="text-sm text-muted-foreground mt-1">AT {'<'} 11 ml/kg/min = high risk. VO₂ peak {'<'} 15 ml/kg/min = high risk. Used for major abdominal, thoracic, and vascular surgery decision-making. Guides HDU/ICU bed planning.</p>
             </div>
+          </div>
+          <div className="mt-4">
+            <CPETNinePanelDiagram />
           </div>
         </div>
 
