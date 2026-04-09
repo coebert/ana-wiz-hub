@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
+import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
@@ -50,7 +51,19 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Function</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Cell Transport</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Explore the individual tubular cell types, their apical and basolateral transporters, and the animated flow
+            of molecules through pumps, channels, cotransporters, and exchangers. Each cell diagram shows the driving
+            force (Na⁺/K⁺-ATPase) and key drug targets.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <TubularCellDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Function Summary</h2>
           <p className="text-foreground/90 leading-relaxed">
             <strong>PCT</strong>: reabsorbs 65–70% of filtered Na⁺, water, glucose, amino acids, HCO₃⁻. Na⁺/K⁺-ATPase on
             basolateral membrane drives all transport. Glucose is reabsorbed by SGLT2 (Tm ≈ 375 mg/min).
