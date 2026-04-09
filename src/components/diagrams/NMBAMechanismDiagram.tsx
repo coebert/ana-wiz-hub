@@ -354,6 +354,19 @@ export const NMBAMechanismDiagram = () => {
           </g>
         )}
 
+        {/* Sugammadex mechanism */}
+        {sugammadexActive && (
+          <g opacity="0.6">
+            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(270 50% 55%/0.05)" stroke="hsl(270 50% 55%)" strokeWidth="0.6" />
+            <text x={250} y={393} textAnchor="middle" fontSize="6.5" fill="hsl(270 50% 55%)" fontWeight="600">
+              γ-cyclodextrin encapsulates rocuronium → concentration gradient pulls Roc from NMJ
+            </text>
+            <text x={250} y={404} textAnchor="middle" fontSize="5.5" fill="hsl(270 40% 50%)">
+              2mg/kg (TOF≥2) • 4mg/kg (PTC≥1) • 16mg/kg (immediate/rescue) • No muscarinic effects • Renal excretion
+            </text>
+          </g>
+        )}
+
         {/* Normal transmission */}
         {scenario === "normal" && (
           <g opacity="0.5">
