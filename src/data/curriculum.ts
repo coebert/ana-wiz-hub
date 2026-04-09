@@ -99,6 +99,8 @@ export const clinicalTopics: Topic[] = [
   { id: "ophthalmic-anaesthesia", title: "Ophthalmic Anaesthesia", description: "Ocular physiology, IOP, peribulbar/sub-Tenon's blocks, oculocardiac reflex", section: "clinical", examTags: ["final"], available: true },
   { id: "day-surgery", title: "Day Surgery", description: "Patient selection, anaesthetic techniques, PONV prevention, discharge criteria", section: "clinical", examTags: ["final"], available: true },
   { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "bariatric-anaesthesia", title: "Bariatric Anaesthesia", description: "Obesity physiology, drug dosing, airway management, OSA/OHS, bariatric surgery", section: "clinical", examTags: ["final"], available: true },
+  { id: "vascular-anaesthesia", title: "Vascular Anaesthesia", description: "AAA repair, aortic cross-clamping, carotid endarterectomy, peripheral vascular surgery", section: "clinical", examTags: ["final"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
