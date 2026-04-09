@@ -59,6 +59,144 @@ const ToxicologyTopic = () => {
             <li><strong>Treatment</strong>: activated charcoal (if &lt;1h), urinary alkalinisation (NaHCO₃ to pH 7.5-8.5), haemodialysis (level &gt;700mg/L, renal failure, pulmonary oedema, seizures)</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Removal of Toxins</h2>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+            Extracorporeal techniques (haemodialysis, haemofiltration, haemoperfusion) can remove toxins that meet specific pharmacokinetic criteria.
+            The <strong>EXTRIP</strong> (Extracorporeal Treatments in Poisoning) workgroup provides evidence-based recommendations.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Characteristics Favouring Extracorporeal Removal</h3>
+          <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-4">
+            <li><strong>Low molecular weight</strong> (&lt;500 Da for HD; up to ~20,000 Da for haemofiltration)</li>
+            <li><strong>Low volume of distribution</strong> (Vd &lt;1 L/kg — toxin remains in plasma)</li>
+            <li><strong>Low protein binding</strong> (free drug crosses membrane)</li>
+            <li><strong>High water solubility</strong></li>
+            <li><strong>Single-compartment kinetics</strong> (minimal redistribution/rebound)</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxins Amenable to Extracorporeal Removal</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border">
+                <th className="text-left py-2 text-foreground font-semibold">Toxin</th>
+                <th className="text-left py-2 text-foreground font-semibold">Preferred Modality</th>
+                <th className="text-left py-2 text-foreground font-semibold">MW / Vd / PB</th>
+                <th className="text-left py-2 text-foreground font-semibold">Indications for Extracorporeal Rx</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Methanol</td>
+                  <td>Haemodialysis (HD)</td>
+                  <td>32 Da / 0.6 L/kg / 0%</td>
+                  <td>pH &lt;7.15, visual symptoms, renal failure, level &gt;500 mg/L, deterioration despite fomepizole</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Ethylene glycol</td>
+                  <td>HD</td>
+                  <td>62 Da / 0.8 L/kg / 0%</td>
+                  <td>pH &lt;7.1, renal failure, level &gt;500 mg/L, deterioration despite fomepizole</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Salicylates</td>
+                  <td>HD</td>
+                  <td>138 Da / 0.2 L/kg / 90% (↓ in OD)</td>
+                  <td>Level &gt;700 mg/L, pH &lt;7.2, cerebral/pulmonary oedema, renal failure, clinical deterioration</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Lithium</td>
+                  <td>HD (or prolonged CVVHDF)</td>
+                  <td>7 Da / 0.7 L/kg / 0%</td>
+                  <td>Level &gt;4 mmol/L, level &gt;2.5 + renal impairment, seizures, reduced consciousness. Rebound common — prolonged or repeat HD</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Metformin</td>
+                  <td>HD (or CVVHDF)</td>
+                  <td>129 Da / 1-5 L/kg / 0%</td>
+                  <td>Severe lactic acidosis (pH &lt;7.1, lactate &gt;20), haemodynamic instability. Large Vd limits clearance but HD corrects acidosis</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Valproate</td>
+                  <td>HD (or CVVHDF)</td>
+                  <td>144 Da / 0.1-0.5 L/kg / 80-95% (saturable)</td>
+                  <td>Level &gt;850 mg/L, cerebral oedema, haemodynamic instability. Protein binding saturates in OD → more free drug → more dialysable</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Theophylline</td>
+                  <td>HD (or haemoperfusion)</td>
+                  <td>180 Da / 0.5 L/kg / 40%</td>
+                  <td>Level &gt;100 mg/L (acute) or &gt;60 mg/L (chronic), seizures, arrhythmias, haemodynamic instability</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Carbamazepine</td>
+                  <td>Haemoperfusion or HD</td>
+                  <td>236 Da / 1.4 L/kg / 75%</td>
+                  <td>Refractory seizures, life-threatening toxicity. Less efficient than above agents (higher Vd & PB)</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Dabigatran</td>
+                  <td>HD</td>
+                  <td>628 Da / 0.7 L/kg / 35%</td>
+                  <td>Life-threatening bleeding when idarucizumab unavailable. Moderate clearance by HD</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Methotrexate</td>
+                  <td>HD / high-flux CVVHDF</td>
+                  <td>454 Da / 0.4-0.8 L/kg / 50%</td>
+                  <td>High-dose MTX with renal failure and delayed clearance. Glucarpidase preferred if available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxins NOT Effectively Removed</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+            The following are <strong>poorly dialysable</strong> due to high Vd, high protein binding, or large molecular weight:
+          </p>
+          <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+            <li><strong>Digoxin</strong> (Vd 5-7 L/kg, 25% PB) — use Fab fragments instead</li>
+            <li><strong>Tricyclic antidepressants</strong> (Vd 10-50 L/kg, &gt;90% PB) — tissue-bound</li>
+            <li><strong>Benzodiazepines</strong> (Vd 1-3 L/kg, &gt;85% PB) — use flumazenil if indicated</li>
+            <li><strong>Calcium channel blockers</strong> (Vd 2-8 L/kg, &gt;90% PB) — high-dose insulin therapy</li>
+            <li><strong>Beta-blockers</strong> (most, except atenolol which is dialysable) — glucagon, insulin</li>
+            <li><strong>Paracetamol</strong> (Vd 0.9 L/kg, &lt;25% PB) — technically dialysable but NAC is effective; HD only if massive OD with metabolic acidosis and NAC failure</li>
+            <li><strong>Iron</strong> — not dialysable; use desferrioxamine</li>
+            <li><strong>Phenytoin</strong> (Vd 0.6 L/kg but &gt;90% PB) — highly protein-bound</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">HD vs Haemofiltration vs Haemoperfusion</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border">
+                <th className="text-left py-2 text-foreground font-semibold">Modality</th>
+                <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                <th className="text-left py-2 text-foreground font-semibold">Best For</th>
+                <th className="text-left py-2 text-foreground font-semibold">Limitations</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">Intermittent HD</td>
+                  <td>Diffusion across semipermeable membrane (concentration gradient)</td>
+                  <td>Small, water-soluble, low Vd toxins (methanol, ethylene glycol, lithium, salicylates)</td>
+                  <td>Rebound after session if large Vd. Haemodynamic instability</td>
+                </tr>
+                <tr className="border-b border-border/50">
+                  <td className="py-2 font-medium text-foreground">CVVH / CVVHDF</td>
+                  <td>Convection (haemofiltration) ± diffusion. Continuous</td>
+                  <td>Haemodynamically unstable patients. Lithium (rebound prevention). Larger molecules up to ~20kDa</td>
+                  <td>Lower clearance per unit time vs intermittent HD. Prolonged treatment needed</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Haemoperfusion</td>
+                  <td>Adsorption onto activated charcoal or resin cartridge</td>
+                  <td>Protein-bound or lipophilic toxins (theophylline, carbamazepine). Now rarely used</td>
+                  <td>Cartridge saturation, thrombocytopenia, hypocalcaemia. Largely replaced by high-flux HD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
