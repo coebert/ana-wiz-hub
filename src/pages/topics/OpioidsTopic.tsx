@@ -98,6 +98,98 @@ const OpioidsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
+            in opioid efficacy — but they have different mechanisms and require different management strategies.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
+              <h3 className="font-semibold text-primary text-sm mb-2">Tolerance</h3>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                A rightward shift of the dose–response curve — <strong>higher doses are needed for the same effect</strong>.
+                Increasing the opioid dose restores analgesia.
+              </p>
+              <ul className="text-sm text-foreground/80 mt-2 space-y-1">
+                <li>• <strong>Pharmacodynamic</strong>: receptor desensitisation, internalisation, and uncoupling of G-protein signalling (β-arrestin pathway)</li>
+                <li>• <strong>Pharmacokinetic</strong>: enzyme induction (minor role clinically)</li>
+                <li>• Differential tolerance — develops rapidly to euphoria, sedation, and respiratory depression; slowly to miosis and constipation</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4">
+              <h3 className="font-semibold text-destructive text-sm mb-2">Opioid-Induced Hyperalgesia (OIH)</h3>
+              <p className="text-sm text-foreground/80 leading-relaxed">
+                A paradoxical <strong>increase in pain sensitivity</strong> caused by opioid exposure. Pain is diffuse,
+                qualitatively different, and extends beyond the original site. Increasing the dose <strong>worsens</strong> pain.
+              </p>
+              <ul className="text-sm text-foreground/80 mt-2 space-y-1">
+                <li>• Most associated with remifentanil (rapid onset/offset, high doses)</li>
+                <li>• Also reported with morphine and fentanyl infusions</li>
+                <li>• Clinically: allodynia, hyperalgesia in non-surgical dermatomes, increasing opioid requirements despite adequate dosing</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6">Mechanisms of OIH</h3>
+          <div className="overflow-x-auto mt-3">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-muted/50">
+                  <th className="text-left p-3 font-semibold text-foreground">Mechanism</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">NMDA receptor activation</td>
+                  <td className="p-3 text-muted-foreground">Central sensitisation via glutamate / NMDA pathway in dorsal horn. µ-receptor activation paradoxically enhances NMDA function through PKC-mediated removal of Mg²⁺ block</td>
+                </tr>
+                <tr className="border-t border-border bg-muted/20">
+                  <td className="p-3 text-foreground font-medium">Descending facilitation</td>
+                  <td className="p-3 text-muted-foreground">Upregulation of pronociceptive pathways from the rostral ventromedial medulla (RVM) — on-cells become dominant over off-cells</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Spinal dynorphin ↑</td>
+                  <td className="p-3 text-muted-foreground">Increased spinal dynorphin release promotes excitatory neurotransmitter release from primary afferents via κ receptor and non-opioid mechanisms</td>
+                </tr>
+                <tr className="border-t border-border bg-muted/20">
+                  <td className="p-3 text-foreground font-medium">Neuroinflammation</td>
+                  <td className="p-3 text-muted-foreground">Activation of spinal microglia and astrocytes via TLR4 signalling → release of TNF-α, IL-1β, and BDNF, amplifying nociceptive signalling</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Genetic factors</td>
+                  <td className="p-3 text-muted-foreground">Polymorphisms in OPRM1 (µ receptor), COMT, and β-arrestin-2 genes influence susceptibility</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6">Prevention & Management of OIH</h3>
+          <ul className="text-foreground/80 mt-2 space-y-1">
+            <li>• <strong>NMDA antagonists</strong>: ketamine (0.1–0.25 mg/kg bolus, 0.1–0.2 mg/kg/hr infusion) — strongest evidence</li>
+            <li>• <strong>Opioid dose reduction or rotation</strong> — switch to a structurally different opioid</li>
+            <li>• <strong>Multimodal analgesia</strong>: paracetamol, NSAIDs, regional anaesthesia to minimise opioid exposure</li>
+            <li>• <strong>α₂-agonists</strong>: clonidine, dexmedetomidine — reduce central sensitisation</li>
+            <li>• <strong>Gabapentinoids</strong>: pregabalin/gabapentin — modulate calcium channel α₂δ subunit</li>
+            <li>• <strong>Magnesium</strong>: physiological NMDA antagonist (Mg²⁺ block)</li>
+            <li>• COX-2 inhibitors (parecoxib) may attenuate remifentanil-induced OIH</li>
+          </ul>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Tolerance vs OIH — Clinical Differentiation</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• <strong>Tolerance</strong>: pain in original distribution, responds to dose escalation</li>
+              <li>• <strong>OIH</strong>: diffuse / new pain distribution, worsens with dose escalation, improves with dose reduction</li>
+              <li>• In practice, both may coexist — a trial of dose reduction with NMDA antagonist cover can help distinguish</li>
+            </ul>
+          </div>
+          <p className="text-sm text-muted-foreground italic mt-3">
+            References: Colvin LA et al. Br J Anaesth 2019; Lee M et al. Pain Med 2011; Fletcher D & Martinez V. BJA 2014.
+          </p>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Naloxone</h2>
           <p className="text-foreground/90 leading-relaxed">
             Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min IV. Duration 30–60 min (shorter than
