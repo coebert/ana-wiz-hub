@@ -81,6 +81,17 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Countercurrent Multiplier</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Step through the countercurrent multiplication process to understand how the loop of Henle generates
+            the corticomedullary osmotic gradient (300→1200 mOsm/kg). Press Play or use the step buttons.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <CountercurrentMultiplierDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
