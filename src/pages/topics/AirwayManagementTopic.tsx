@@ -9,6 +9,7 @@ import AirwayAssessmentDiagram from "@/components/diagrams/AirwayAssessmentDiagr
 import CormackLehaneDiagram from "@/components/diagrams/CormackLehaneDiagram";
 import MallampatiDiagram from "@/components/diagrams/MallampatiDiagram";
 import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalculator";
+import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 
@@ -78,6 +79,14 @@ const AirwayManagementTopic = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Innervation for Awake Intubation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Successful awake fibreoptic intubation requires systematic topicalisation of the airway. Each zone is innervated by a different cranial nerve and requires a specific block or spray technique.
+          </p>
+          <AirwayInnervationDiagram />
         </div>
 
         <div>
