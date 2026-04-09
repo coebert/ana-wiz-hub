@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -73,6 +74,9 @@ const BariatricAnaesthesiaTopic = () => {
             <li><strong>Anastomotic leak</strong>: most serious early complication. Tachycardia may be only sign. CT with oral contrast for diagnosis</li>
             <li><strong>Rhabdomyolysis</strong>: prolonged surgery in morbidly obese. Monitor CK, ensure adequate hydration</li>
           </ul>
+          <div className="mt-4">
+            <BariatricProceduresDiagram />
+          </div>
         </div>
 
         <div>
