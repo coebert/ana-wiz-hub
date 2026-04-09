@@ -53,6 +53,9 @@ const BariatricAnaesthesiaTopic = () => {
             <li><strong>Functional capacity</strong>: often limited — Duke Activity Status Index may be more useful than exercise tolerance history</li>
             <li><strong>VTE risk</strong>: high — consider enhanced thromboprophylaxis (weight-adjusted LMWH)</li>
           </ul>
+          <div className="mt-4">
+            <StopBangCalculator />
+          </div>
         </div>
 
         <div>
