@@ -92,6 +92,7 @@ const BariatricAnaesthesiaTopic = lazy(() => import("./pages/topics/BariatricAna
 const VascularAnaesthesiaTopic = lazy(() => import("./pages/topics/VascularAnaesthesiaTopic"));
 const ENTAnaesthesiaTopic = lazy(() => import("./pages/topics/ENTAnaesthesiaTopic"));
 const BurnsPlasticsTopic = lazy(() => import("./pages/topics/BurnsPlasticsTopic"));
+const EmergencySurgeryTopic = lazy(() => import("./pages/topics/EmergencySurgeryTopic"));
 const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
 const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
@@ -230,6 +231,7 @@ const App = () => (
           <Route path="/clinical/vascular-anaesthesia" element={<VascularAnaesthesiaTopic />} />
           <Route path="/clinical/ent-anaesthesia" element={<ENTAnaesthesiaTopic />} />
           <Route path="/clinical/burns-plastics" element={<BurnsPlasticsTopic />} />
+          <Route path="/clinical/emergency-surgery" element={<EmergencySurgeryTopic />} />
           {/* Intensive Care */}
           <Route path="/intensive-care/sepsis" element={<SepsisTopic />} />
           <Route path="/intensive-care/mechanical-ventilation" element={<MechanicalVentilationTopic />} />
