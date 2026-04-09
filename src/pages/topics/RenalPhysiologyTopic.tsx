@@ -6,6 +6,7 @@ import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
 import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
 import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
+import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
