@@ -144,17 +144,108 @@ const VolatileAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">The Meyer-Overton Hypothesis</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Mechanisms of Action</h2>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">The Meyer-Overton Hypothesis</h3>
           <p className="text-foreground/90 leading-relaxed">
             The Meyer-Overton hypothesis (1899-1901) states that anaesthetic potency correlates with lipid solubility.
             The oil:gas partition coefficient is inversely proportional to MAC — i.e., the more lipid-soluble an agent,
-            the more potent it is. This elegant relationship holds remarkably well across diverse agents but does not
-            explain all aspects of anaesthetic action (e.g., non-immobilisers, stereoisomers with different potencies).
+            the more potent it is. This elegant relationship holds remarkably well across diverse agents (MAC × oil:gas ≈ constant ≈ 1.82–2.05 atm).
           </p>
-          <p className="text-foreground/90 leading-relaxed mt-3">
-            Modern understanding suggests volatile agents act at multiple molecular targets, including GABA<sub>A</sub>
-            receptors, glycine receptors, two-pore-domain potassium channels (TREK, TASK), and NMDA receptors. The
-            relative contribution of each target varies between agents.
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Limitations of Meyer-Overton</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• <strong>Non-immobilisers</strong>: Some highly lipid-soluble compounds (e.g., perfluoroalkanes) do not produce anaesthesia despite predicted potency</li>
+              <li>• <strong>Stereoisomers</strong>: Enantiomers of isoflurane have different potencies despite identical lipid solubility, implying a specific protein target</li>
+              <li>• <strong>Cut-off effect</strong>: Beyond a certain chain length in homologous series, potency plateaus or disappears</li>
+              <li>• <strong>Temperature anomaly</strong>: Does not fully account for temperature-dependent changes in potency</li>
+            </ul>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6">The Lipid Theory</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            The original lipid theory proposed that volatile agents dissolve in the lipid bilayer of neuronal membranes,
+            expanding and disordering the membrane sufficiently to alter the function of embedded ion channels. While
+            largely superseded, this theory explained the correlation with lipid solubility. Critical volume hypothesis
+            (Mullins, 1954) suggested anaesthesia occurs when the membrane expands beyond a critical volume (~0.4%).
+            Pressure reversal — where high hydrostatic pressure reverses anaesthesia — was initially cited as support,
+            though modern evidence attributes this to direct pressure effects on proteins.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6">The Protein Theory (Modern Consensus)</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Current evidence strongly supports that volatile agents act predominantly by binding directly to specific
+            protein targets — particularly ligand-gated ion channels and other membrane proteins. Key molecular targets include:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
+            <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
+              <h4 className="font-semibold text-primary text-sm mb-2">Enhanced (Inhibitory) Targets</h4>
+              <ul className="text-sm text-foreground/80 space-y-2">
+                <li>• <strong>GABA<sub>A</sub> receptors</strong>: Potentiate inhibitory chloride currents; major contributor to hypnosis and amnesia. Binding sites in TM2/TM3 domains identified by mutagenesis</li>
+                <li>• <strong>Glycine receptors</strong>: Enhanced inhibitory neurotransmission in spinal cord; contributes to immobility (MAC effect)</li>
+                <li>• <strong>Two-pore K⁺ channels (TREK-1, TASK)</strong>: Activation hyperpolarises neurones, reducing excitability. TREK-1 knockout mice require higher MAC</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-4">
+              <h4 className="font-semibold text-destructive text-sm mb-2">Inhibited (Excitatory) Targets</h4>
+              <ul className="text-sm text-foreground/80 space-y-2">
+                <li>• <strong>NMDA receptors</strong>: Inhibited by volatile agents (particularly N₂O and xenon), reducing excitatory glutamatergic transmission</li>
+                <li>• <strong>Nicotinic ACh receptors (nAChR)</strong>: Inhibited at clinical concentrations; may contribute to analgesia and amnesia</li>
+                <li>• <strong>HCN channels</strong>: Inhibited by halogenated agents, altering thalamocortical rhythms important for consciousness</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6">Separating the Components of Anaesthesia</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Different components of the anaesthetic state are mediated at different anatomical sites:
+          </p>
+          <div className="overflow-x-auto mt-3">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-muted/50">
+                  <th className="text-left p-3 font-semibold text-foreground">Component</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Primary Site</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Key Targets</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Immobility (MAC)</td>
+                  <td className="p-3 text-muted-foreground">Spinal cord (ventral horn)</td>
+                  <td className="p-3 text-muted-foreground">Glycine receptors, GABA<sub>A</sub>, Na⁺ channels</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Hypnosis / unconsciousness</td>
+                  <td className="p-3 text-muted-foreground">Cerebral cortex, thalamus</td>
+                  <td className="p-3 text-muted-foreground">GABA<sub>A</sub>, HCN, TREK-1</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Amnesia</td>
+                  <td className="p-3 text-muted-foreground">Hippocampus, amygdala</td>
+                  <td className="p-3 text-muted-foreground">GABA<sub>A</sub>, nAChR</td>
+                </tr>
+                <tr className="border-t border-border">
+                  <td className="p-3 text-foreground font-medium">Autonomic blunting (MAC-BAR)</td>
+                  <td className="p-3 text-muted-foreground">Brainstem, hypothalamus</td>
+                  <td className="p-3 text-muted-foreground">Multiple receptor types</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Agent-Specific Differences</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• <strong>N₂O & Xenon</strong>: Primarily NMDA antagonists with minimal GABA<sub>A</sub> activity — explains analgesic properties and lack of cardiovascular depression</li>
+              <li>• <strong>Halogenated ethers</strong> (sevo, des, iso): Predominantly GABA<sub>A</sub> potentiation + glycine receptor enhancement</li>
+              <li>• <strong>Halothane</strong>: Additional significant action at voltage-gated calcium channels — contributes to greater myocardial depression</li>
+            </ul>
+          </div>
+          <p className="text-sm text-muted-foreground italic mt-3">
+            References: Hemmings et al. Trends Pharmacol Sci 2005; Franks NP. Br J Pharmacol 2006; Peck & Hill, Pharmacology for Anaesthesia and Intensive Care, 5th ed.
           </p>
         </section>
 
