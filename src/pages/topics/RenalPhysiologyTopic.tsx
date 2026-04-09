@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
 import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
+import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
@@ -77,6 +78,17 @@ const RenalPhysiologyTopic = () => {
             principal cells (ENaC — aldosterone-sensitive Na⁺ channels); intercalated cells (H⁺-ATPase, H⁺/K⁺-ATPase for
             acid-base). ADH acts on V2 receptors → aquaporin-2 insertion → water reabsorption.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Countercurrent Multiplier</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Step through the countercurrent multiplication process to understand how the loop of Henle generates
+            the corticomedullary osmotic gradient (300→1200 mOsm/kg). Press Play or use the step buttons.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <CountercurrentMultiplierDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
