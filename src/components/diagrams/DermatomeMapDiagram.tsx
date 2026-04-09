@@ -15,6 +15,8 @@ interface DermatomeLevel {
   posteriorPaths: string[];
 }
 
+// Anatomically accurate dermatome territories based on standard clinical dermatome maps
+// Viewbox: 0 0 240 520 — proportional human figure
 const dermatomes: DermatomeLevel[] = [
   {
     id: "c2", level: "C2", region: "cervical",
@@ -23,11 +25,13 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Posterior craniotomy positioning",
     color: "hsl(0,60%,55%)",
     anteriorPaths: [
-      "M88,14 C84,10 80,10 78,14 C76,18 80,22 86,24 C90,26 92,22 92,18 C92,16 90,14 88,14 Z",
-      "M112,14 C116,10 120,10 122,14 C124,18 120,22 114,24 C110,26 108,22 108,18 C108,16 110,14 112,14 Z",
+      // Scalp — anterior crescent above ears
+      "M107,18 C104,14 100,13 96,13 C88,13 82,16 80,20 C78,24 80,28 85,30 C90,28 95,24 100,22 C105,20 108,20 107,18 Z",
+      "M133,18 C136,14 140,13 144,13 C152,13 158,16 160,20 C162,24 160,28 155,30 C150,28 145,24 140,22 C135,20 132,20 133,18 Z",
     ],
     posteriorPaths: [
-      "M82,12 C86,8 94,6 100,6 C106,6 114,8 118,12 C120,16 118,22 114,26 C108,30 92,30 86,26 C82,22 80,16 82,12 Z",
+      // Posterior scalp — large territory
+      "M95,10 C100,6 110,4 120,4 C130,4 140,6 145,10 C148,14 148,20 146,26 C142,32 134,36 126,38 C120,40 114,38 108,36 C100,32 94,26 92,20 C91,16 92,12 95,10 Z",
     ],
   },
   {
@@ -37,12 +41,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Thyroid, carotid endarterectomy (partial)",
     color: "hsl(10,60%,55%)",
     anteriorPaths: [
-      "M80,36 C76,34 72,38 74,44 C76,48 82,50 86,46 C88,42 86,38 80,36 Z",
-      "M120,36 C124,34 128,38 126,44 C124,48 118,50 114,46 C112,42 114,38 120,36 Z",
+      // Anterolateral neck — left
+      "M88,42 C84,46 78,52 76,58 C74,62 78,64 82,62 C86,60 90,54 92,48 C93,44 91,42 88,42 Z",
+      // Right
+      "M152,42 C156,46 162,52 164,58 C166,62 162,64 158,62 C154,60 150,54 148,48 C147,44 149,42 152,42 Z",
     ],
     posteriorPaths: [
-      "M84,34 C80,36 76,42 76,48 C76,52 80,54 86,52 C90,50 92,44 92,40 C92,36 88,34 84,34 Z",
-      "M116,34 C120,36 124,42 124,48 C124,52 120,54 114,52 C110,50 108,44 108,40 C108,36 112,34 116,34 Z",
+      "M100,38 C96,42 90,48 88,54 C86,58 90,60 96,58 C100,56 104,50 106,44 C107,40 104,38 100,38 Z",
+      "M140,38 C144,42 150,48 152,54 C154,58 150,60 144,58 C140,56 136,50 134,44 C133,40 136,38 140,38 Z",
     ],
   },
   {
@@ -52,12 +58,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Shoulder arthroscopy (cutaneous)",
     color: "hsl(20,60%,55%)",
     anteriorPaths: [
-      "M72,56 C64,60 56,66 50,76 C48,80 54,82 60,78 C68,72 74,64 76,60 Z",
-      "M128,56 C136,60 144,66 150,76 C152,80 146,82 140,78 C132,72 126,64 124,60 Z",
+      // Cape over shoulder — left
+      "M76,64 C68,68 58,76 50,86 C46,92 50,94 56,90 C64,84 72,74 78,68 C80,66 78,64 76,64 Z",
+      // Right
+      "M164,64 C172,68 182,76 190,86 C194,92 190,94 184,90 C176,84 168,74 162,68 C160,66 162,64 164,64 Z",
     ],
     posteriorPaths: [
-      "M76,54 C68,58 58,66 52,76 C50,80 56,82 62,78 C70,72 76,62 78,58 Z",
-      "M124,54 C132,58 142,66 148,76 C150,80 144,82 138,78 C130,72 124,62 122,58 Z",
+      "M94,58 C86,62 74,72 64,82 C58,90 62,94 68,90 C76,84 86,72 94,64 C96,62 96,60 94,58 Z",
+      "M146,58 C154,62 166,72 176,82 C182,90 178,94 172,90 C164,84 154,72 146,64 C144,62 144,60 146,58 Z",
     ],
   },
   {
@@ -67,12 +75,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Shoulder surgery, proximal humerus",
     color: "hsl(28,65%,55%)",
     anteriorPaths: [
-      "M48,82 C42,92 38,104 36,116 C34,124 38,126 44,120 C50,112 54,100 56,90 C58,84 54,80 48,82 Z",
-      "M152,82 C158,92 162,104 164,116 C166,124 162,126 156,120 C150,112 146,100 144,90 C142,84 146,80 152,82 Z",
+      // Deltoid region — lateral upper arm — left
+      "M48,94 C42,106 38,120 36,136 C34,146 38,148 44,142 C50,134 54,120 56,108 C58,100 54,94 48,94 Z",
+      // Right
+      "M192,94 C198,106 202,120 204,136 C206,146 202,148 196,142 C190,134 186,120 184,108 C182,100 186,94 192,94 Z",
     ],
     posteriorPaths: [
-      "M50,82 C44,92 40,106 38,118 C36,126 42,128 48,122 C54,114 58,100 58,90 C58,84 54,80 50,82 Z",
-      "M150,82 C156,92 160,106 162,118 C164,126 158,128 152,122 C146,114 142,100 142,90 C142,84 146,80 150,82 Z",
+      "M64,92 C56,104 50,118 46,134 C44,144 48,148 54,142 C62,134 66,120 68,108 C70,100 68,94 64,92 Z",
+      "M176,92 C184,104 190,118 194,134 C196,144 192,148 186,142 C178,134 174,120 172,108 C170,100 172,94 176,92 Z",
     ],
   },
   {
@@ -82,12 +92,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Elbow, lateral forearm surgery",
     color: "hsl(36,65%,52%)",
     anteriorPaths: [
-      "M34,126 C30,140 26,156 22,172 C20,182 18,192 16,202 C14,208 18,210 22,204 C26,194 30,178 34,162 C38,146 40,134 38,126 Z",
-      "M166,126 C170,140 174,156 178,172 C180,182 182,192 184,202 C186,208 182,210 178,204 C174,194 170,178 166,162 C162,146 160,134 162,126 Z",
+      // Lateral forearm to thumb — left
+      "M34,148 C30,164 26,182 22,200 C20,212 18,224 16,236 C14,244 16,248 20,244 C24,238 28,220 32,202 C36,184 38,166 38,152 C38,148 36,146 34,148 Z",
+      // Right
+      "M206,148 C210,164 214,182 218,200 C220,212 222,224 224,236 C226,244 224,248 220,244 C216,238 212,220 208,202 C204,184 202,166 202,152 C202,148 204,146 206,148 Z",
     ],
     posteriorPaths: [
-      "M36,128 C32,142 28,158 24,174 C22,184 20,194 18,204 C16,210 20,212 24,206 C28,196 32,180 36,164 C40,148 42,136 40,128 Z",
-      "M164,128 C168,142 172,158 176,174 C178,184 180,194 182,204 C184,210 180,212 176,206 C172,196 168,180 164,164 C160,148 158,136 160,128 Z",
+      "M46,148 C42,164 38,182 34,200 C32,214 30,228 28,240 C26,248 28,250 32,246 C36,238 40,222 44,204 C48,186 50,168 50,154 C50,148 48,146 46,148 Z",
+      "M194,148 C198,164 202,182 206,200 C208,214 210,228 212,240 C214,248 212,250 208,246 C204,238 200,222 196,204 C192,186 190,168 190,154 C190,148 192,146 194,148 Z",
     ],
   },
   {
@@ -97,12 +109,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Hand surgery (middle finger)",
     color: "hsl(46,60%,50%)",
     anteriorPaths: [
-      "M16,202 C14,210 12,218 12,224 C12,228 16,228 18,222 C20,216 20,208 18,204 Z",
-      "M184,202 C186,210 188,218 188,224 C188,228 184,228 182,222 C180,216 180,208 182,204 Z",
+      // Middle finger territory — left
+      "M16,240 C14,248 12,256 12,262 C12,268 16,270 20,264 C22,258 22,250 20,244 Z",
+      // Right
+      "M224,240 C226,248 228,256 228,262 C228,268 224,270 220,264 C218,258 218,250 220,244 Z",
     ],
     posteriorPaths: [
-      "M18,204 C16,212 14,220 14,226 C14,230 18,230 20,224 C22,218 22,210 20,206 Z",
-      "M182,204 C184,212 186,220 186,226 C186,230 182,230 180,224 C178,218 178,210 180,206 Z",
+      "M28,244 C26,252 24,260 24,266 C24,272 28,274 32,268 C34,262 34,254 32,248 Z",
+      "M212,244 C214,252 216,260 216,266 C216,272 212,274 208,268 C206,262 206,254 208,248 Z",
     ],
   },
   {
@@ -112,12 +126,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Ulnar nerve territory surgery",
     color: "hsl(56,55%,48%)",
     anteriorPaths: [
-      "M44,120 C48,134 50,150 50,166 C50,182 48,198 46,210 C44,216 40,218 38,212 C36,204 38,186 40,168 C42,150 42,134 42,122 Z",
-      "M156,120 C152,134 150,150 150,166 C150,182 152,198 154,210 C156,216 160,218 162,212 C164,204 162,186 160,168 C158,150 158,134 158,122 Z",
+      // Medial forearm — left
+      "M56,142 C58,158 58,176 56,194 C54,212 50,230 46,244 C44,250 40,252 38,248 C36,242 40,224 42,206 C44,188 46,168 48,152 C48,146 52,142 56,142 Z",
+      // Right
+      "M184,142 C182,158 182,176 184,194 C186,212 190,230 194,244 C196,250 200,252 202,248 C204,242 200,224 198,206 C196,188 194,168 192,152 C192,146 188,142 184,142 Z",
     ],
     posteriorPaths: [
-      "M48,122 C52,136 54,152 54,168 C54,184 52,200 50,212 C48,218 44,220 42,214 C40,206 42,188 44,170 C46,152 46,136 46,124 Z",
-      "M152,122 C148,136 146,152 146,168 C146,184 148,200 150,212 C152,218 156,220 158,214 C160,206 158,188 156,170 C154,152 154,136 154,124 Z",
+      "M60,144 C62,160 62,178 60,196 C58,214 54,232 50,246 C48,252 44,254 42,250 C40,244 44,226 46,208 C48,190 50,170 52,154 C52,148 56,144 60,144 Z",
+      "M180,144 C178,160 178,178 180,196 C182,214 186,232 190,246 C192,252 196,254 198,250 C200,244 196,226 194,208 C192,190 190,170 188,154 C188,148 184,144 180,144 Z",
     ],
   },
   {
@@ -127,12 +143,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Intercostobrachial (tourniquet pain)",
     color: "hsl(68,50%,45%)",
     anteriorPaths: [
-      "M56,90 C58,98 60,108 60,118 C60,124 56,124 52,120 C50,114 50,104 52,94 Z",
-      "M144,90 C142,98 140,108 140,118 C140,124 144,124 148,120 C150,114 150,104 148,94 Z",
+      // Medial arm — left
+      "M60,104 C62,114 64,126 64,136 C64,142 60,144 56,140 C54,134 54,122 56,112 C56,106 58,102 60,104 Z",
+      // Right
+      "M180,104 C178,114 176,126 176,136 C176,142 180,144 184,140 C186,134 186,122 184,112 C184,106 182,102 180,104 Z",
     ],
     posteriorPaths: [
-      "M58,90 C60,100 62,110 62,120 C62,126 58,126 54,122 C52,116 52,106 54,96 Z",
-      "M142,90 C140,100 138,110 138,120 C138,126 142,126 146,122 C148,116 148,106 146,96 Z",
+      "M66,106 C68,116 70,128 70,138 C70,144 66,146 62,142 C60,136 60,124 62,114 C62,108 64,104 66,106 Z",
+      "M174,106 C172,116 170,128 170,138 C170,144 174,146 178,142 C180,136 180,124 178,114 C178,108 176,104 174,106 Z",
     ],
   },
   {
@@ -142,10 +160,11 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Mastectomy, cardiac surgery (sternotomy)",
     color: "hsl(110,48%,42%)",
     anteriorPaths: [
-      "M76,100 C74,108 72,116 72,126 C72,132 80,134 92,134 C100,134 108,134 120,134 C130,132 132,126 132,116 C132,108 130,100 128,96 Z",
+      // T4 band across chest at nipple line
+      "M82,116 C80,124 78,132 78,142 C78,148 86,150 98,150 C110,150 120,150 130,150 C140,150 154,148 162,142 C162,132 160,124 158,116 C150,110 140,108 130,108 C120,108 110,108 100,108 C92,108 86,110 82,116 Z",
     ],
     posteriorPaths: [
-      "M78,100 C76,108 74,118 74,128 C74,134 82,136 92,136 C100,136 108,136 120,136 C130,134 132,128 132,118 C132,108 130,100 128,96 Z",
+      "M88,118 C86,126 84,134 84,144 C84,150 92,152 104,152 C116,152 128,152 140,152 C148,152 156,150 156,144 C156,134 154,126 152,118 C146,112 138,110 128,110 C118,110 108,110 100,110 C94,110 90,112 88,118 Z",
     ],
   },
   {
@@ -155,10 +174,10 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Upper abdominal surgery (cholecystectomy)",
     color: "hsl(140,45%,42%)",
     anteriorPaths: [
-      "M72,134 C70,142 68,150 68,160 C68,164 78,166 92,166 C100,166 110,166 122,166 C132,164 134,160 134,150 C134,142 132,134 130,132 Z",
+      "M78,150 C76,160 74,170 74,180 C74,186 84,188 100,188 C116,188 128,188 140,188 C152,186 166,180 166,170 C166,160 164,150 162,148 Z",
     ],
     posteriorPaths: [
-      "M74,136 C72,144 70,152 70,162 C70,166 80,168 92,168 C100,168 110,168 122,168 C132,166 134,162 134,152 C134,144 132,136 130,134 Z",
+      "M84,152 C82,162 80,172 80,182 C80,188 90,190 108,190 C122,190 134,190 146,190 C156,188 160,182 160,172 C160,162 158,152 156,150 Z",
     ],
   },
   {
@@ -168,10 +187,10 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Appendicectomy, open cholecystectomy",
     color: "hsl(160,45%,42%)",
     anteriorPaths: [
-      "M68,166 C66,174 66,182 66,188 C66,192 76,194 92,194 C100,194 110,194 124,194 C134,192 136,188 136,182 C136,174 134,166 132,164 Z",
+      "M74,188 C72,198 70,208 70,216 C70,222 80,224 100,224 C120,224 134,224 148,222 C160,220 170,214 170,206 C170,198 168,188 166,186 Z",
     ],
     posteriorPaths: [
-      "M70,168 C68,176 68,184 68,190 C68,194 78,196 92,196 C100,196 110,196 124,196 C134,194 136,190 136,184 C136,176 134,168 132,166 Z",
+      "M80,190 C78,200 76,210 76,218 C76,224 86,226 106,226 C124,226 138,226 150,224 C160,222 164,216 164,208 C164,200 162,190 160,188 Z",
     ],
   },
   {
@@ -181,10 +200,10 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Periumbilical, appendicectomy, hernia repair",
     color: "hsl(185,48%,42%)",
     anteriorPaths: [
-      "M66,194 C64,202 64,210 64,216 C64,220 76,222 92,222 C100,222 112,222 126,222 C136,220 138,216 138,210 C138,202 136,194 134,192 Z",
+      "M70,224 C68,234 66,244 66,252 C66,258 78,260 100,260 C122,260 138,260 152,258 C164,256 174,248 174,240 C174,232 172,224 170,222 Z",
     ],
     posteriorPaths: [
-      "M68,196 C66,204 66,212 66,218 C66,222 78,224 92,224 C100,224 112,224 126,224 C136,222 138,218 138,212 C138,204 136,196 134,194 Z",
+      "M76,226 C74,236 72,246 72,254 C72,260 84,262 106,262 C126,262 142,262 154,260 C164,258 168,252 168,244 C168,236 166,226 164,224 Z",
     ],
   },
   {
@@ -194,10 +213,10 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Inguinal hernia (partial), suprapubic",
     color: "hsl(198,48%,42%)",
     anteriorPaths: [
-      "M64,222 C62,230 62,236 64,240 C68,244 78,246 92,246 C100,246 112,246 126,246 C134,244 138,240 140,236 C142,230 140,224 138,222 Z",
+      "M66,260 C64,268 62,276 64,282 C68,286 80,288 100,288 C120,288 136,288 150,286 C158,284 176,276 178,268 C180,260 178,256 176,254 Z",
     ],
     posteriorPaths: [
-      "M66,224 C64,232 64,238 66,242 C70,246 80,248 92,248 C100,248 112,248 126,248 C134,246 138,242 140,238 C142,232 140,226 138,224 Z",
+      "M72,262 C70,270 68,278 70,284 C74,288 86,290 106,290 C126,290 142,290 154,288 C162,286 170,278 172,270 C174,262 172,258 170,256 Z",
     ],
   },
   {
@@ -207,12 +226,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Inguinal hernia repair, orchidopexy",
     color: "hsl(215,55%,52%)",
     anteriorPaths: [
-      "M68,246 C66,254 66,260 68,264 C72,268 78,268 84,264 C88,260 88,254 86,248 Z",
-      "M132,246 C134,254 134,260 132,264 C128,268 122,268 116,264 C112,260 112,254 114,248 Z",
+      // Inguinal band — left thigh
+      "M74,288 C72,296 70,304 72,310 C76,314 82,316 90,312 C94,308 96,300 94,294 C92,290 86,288 78,288 Z",
+      // Right
+      "M166,288 C168,296 170,304 168,310 C164,314 158,316 150,312 C146,308 144,300 146,294 C148,290 154,288 162,288 Z",
     ],
     posteriorPaths: [
-      "M70,248 C68,256 68,262 70,266 C74,270 80,270 86,266 C90,262 90,256 88,250 Z",
-      "M130,248 C132,256 132,262 130,266 C126,270 120,270 114,266 C110,262 110,256 112,250 Z",
+      "M80,290 C78,298 76,306 78,312 C82,316 88,318 96,314 C100,310 102,302 100,296 C98,292 92,290 86,290 Z",
+      "M160,290 C162,298 164,306 162,312 C158,316 152,318 144,314 C140,310 138,302 140,296 C142,292 148,290 154,290 Z",
     ],
   },
   {
@@ -222,12 +243,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Hip surgery (anterior approach)",
     color: "hsl(225,52%,52%)",
     anteriorPaths: [
-      "M80,268 C78,280 76,292 76,302 C76,308 80,308 84,304 C88,298 90,286 90,276 C90,270 86,268 80,268 Z",
-      "M120,268 C122,280 124,292 124,302 C124,308 120,308 116,304 C112,298 110,286 110,276 C110,270 114,268 120,268 Z",
+      // Anterior upper thigh — left
+      "M86,316 C84,328 82,340 80,352 C78,360 82,362 88,358 C92,354 94,342 94,330 C94,322 92,316 88,314 Z",
+      // Right
+      "M154,316 C156,328 158,340 160,352 C162,360 158,362 152,358 C148,354 146,342 146,330 C146,322 148,316 152,314 Z",
     ],
     posteriorPaths: [
-      "M82,270 C80,282 78,294 78,304 C78,310 82,310 86,306 C90,300 92,288 92,278 C92,272 88,270 82,270 Z",
-      "M118,270 C120,282 122,294 122,304 C122,310 118,310 114,306 C110,300 108,288 108,278 C108,272 112,270 118,270 Z",
+      "M92,318 C90,330 88,342 86,354 C84,362 88,364 94,360 C98,356 100,344 100,332 C100,324 98,318 94,316 Z",
+      "M148,318 C150,330 152,342 154,354 C156,362 152,364 146,360 C142,356 140,344 140,332 C140,324 142,318 146,316 Z",
     ],
   },
   {
@@ -237,12 +260,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Knee replacement, ACL repair",
     color: "hsl(240,50%,55%)",
     anteriorPaths: [
-      "M76,308 C74,320 72,332 72,342 C72,350 78,352 84,348 C88,344 90,332 90,322 C90,314 86,310 80,308 Z",
-      "M124,308 C126,320 128,332 128,342 C128,350 122,352 116,348 C112,344 110,332 110,322 C110,314 114,310 120,308 Z",
+      // Anterior knee and distal thigh — left
+      "M80,362 C78,374 76,386 76,396 C76,406 80,410 88,406 C92,402 94,392 94,382 C94,372 92,364 88,360 Z",
+      // Right
+      "M160,362 C162,374 164,386 164,396 C164,406 160,410 152,406 C148,402 146,392 146,382 C146,372 148,364 152,360 Z",
     ],
     posteriorPaths: [
-      "M78,310 C76,322 74,334 74,344 C74,352 80,354 86,350 C90,346 92,334 92,324 C92,316 88,312 82,310 Z",
-      "M122,310 C124,322 126,334 126,344 C126,352 120,354 114,350 C110,346 108,334 108,324 C108,316 112,312 118,310 Z",
+      "M86,364 C84,376 82,388 82,398 C82,408 86,412 94,408 C98,404 100,394 100,384 C100,374 98,366 94,362 Z",
+      "M154,364 C156,376 158,388 158,398 C158,408 154,412 146,408 C142,404 140,394 140,384 C140,374 142,366 146,362 Z",
     ],
   },
   {
@@ -252,12 +277,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Medial leg, saphenous vein stripping",
     color: "hsl(252,48%,55%)",
     anteriorPaths: [
-      "M72,352 C70,364 70,376 70,386 C70,394 76,396 82,392 C86,388 86,376 86,366 C86,358 82,354 78,352 Z",
-      "M128,352 C130,364 130,376 130,386 C130,394 124,396 118,392 C114,388 114,376 114,366 C114,358 118,354 122,352 Z",
+      // Medial shin — left
+      "M76,410 C74,422 72,434 72,446 C72,456 76,460 84,456 C88,452 90,442 90,432 C90,422 88,414 84,410 Z",
+      // Right
+      "M164,410 C166,422 168,434 168,446 C168,456 164,460 156,456 C152,452 150,442 150,432 C150,422 152,414 156,410 Z",
     ],
     posteriorPaths: [
-      "M74,354 C72,366 72,378 72,388 C72,396 78,398 84,394 C88,390 88,378 88,368 C88,360 84,356 80,354 Z",
-      "M126,354 C128,366 128,378 128,388 C128,396 122,398 116,394 C112,390 112,378 112,368 C112,360 116,356 120,354 Z",
+      "M82,412 C80,424 78,436 78,448 C78,458 82,462 90,458 C94,454 96,444 96,434 C96,424 94,416 90,412 Z",
+      "M158,412 C160,424 162,436 162,448 C162,458 158,462 150,458 C146,454 144,444 144,434 C144,424 146,416 150,412 Z",
     ],
   },
   {
@@ -267,12 +294,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Foot surgery, ankle arthroscopy",
     color: "hsl(268,48%,55%)",
     anteriorPaths: [
-      "M70,396 C68,404 66,410 66,416 C66,422 72,424 78,420 C82,416 82,408 80,400 Z",
-      "M130,396 C132,404 134,410 134,416 C134,422 128,424 122,420 C118,416 118,408 120,400 Z",
+      // Dorsum of foot and lateral shin — left
+      "M72,460 C70,468 68,476 68,484 C68,490 74,492 82,488 C86,484 86,476 84,468 C84,464 80,460 76,460 Z",
+      // Right
+      "M168,460 C170,468 172,476 172,484 C172,490 166,492 158,488 C154,484 154,476 156,468 C156,464 160,460 164,460 Z",
     ],
     posteriorPaths: [
-      "M72,398 C70,406 68,412 68,418 C68,424 74,426 80,422 C84,418 84,410 82,402 Z",
-      "M128,398 C130,406 132,412 132,418 C132,424 126,426 120,422 C116,418 116,410 118,402 Z",
+      "M78,462 C76,470 74,478 74,486 C74,492 80,494 88,490 C92,486 92,478 90,470 C90,466 86,462 82,462 Z",
+      "M162,462 C164,470 166,478 166,486 C166,492 160,494 152,490 C148,486 148,478 150,470 C150,466 154,462 158,462 Z",
     ],
   },
   {
@@ -282,12 +311,14 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Lateral ankle, Achilles tendon, sole",
     color: "hsl(290,45%,52%)",
     anteriorPaths: [
-      "M66,422 C64,428 64,432 68,434 C72,436 78,434 80,430 C82,426 80,422 76,420 Z",
-      "M134,422 C136,428 136,432 132,434 C128,436 122,434 120,430 C118,426 120,422 124,420 Z",
+      // Lateral foot and sole — left
+      "M68,490 C66,496 66,500 70,502 C76,504 84,502 86,498 C88,494 86,490 82,488 Z",
+      // Right
+      "M172,490 C174,496 174,500 170,502 C164,504 156,502 154,498 C152,494 154,490 158,488 Z",
     ],
     posteriorPaths: [
-      "M68,424 C66,430 66,434 70,436 C74,438 80,436 82,432 C84,428 82,424 78,422 Z",
-      "M132,424 C134,430 134,434 130,436 C126,438 120,436 118,432 C116,428 118,424 122,422 Z",
+      "M74,494 C72,498 72,502 76,504 C82,506 90,504 92,500 C94,496 92,492 88,490 Z",
+      "M166,494 C168,498 168,502 164,504 C158,506 150,504 148,500 C146,496 148,492 152,490 Z",
     ],
   },
   {
@@ -297,10 +328,11 @@ const dermatomes: DermatomeLevel[] = [
     surgicalCoverage: "Perineal surgery, haemorrhoidectomy, obstetric",
     color: "hsl(320,42%,50%)",
     anteriorPaths: [
-      "M88,244 C86,250 86,256 90,258 C94,260 100,260 106,260 C110,260 114,258 116,254 C118,250 116,246 114,244 Z",
+      // Perineal/saddle area
+      "M100,282 C96,288 94,294 98,298 C102,302 108,304 114,302 C120,300 124,296 126,290 C128,286 126,282 122,280 C116,278 108,278 102,280 Z",
     ],
     posteriorPaths: [
-      "M88,246 C86,254 86,260 90,264 C94,268 100,270 106,268 C110,266 114,260 116,254 C118,248 116,246 114,244 Z",
+      "M106,284 C102,290 100,296 104,302 C108,306 114,308 120,306 C126,304 130,298 132,292 C134,288 132,284 128,282 C122,280 114,280 108,282 Z",
     ],
   },
 ];
@@ -319,7 +351,6 @@ const regionLabels: Record<string, string> = {
   sacral: "Sacral",
 };
 
-// Common surgical procedures → required dermatome levels
 const surgicalLevels = [
   { procedure: "Caesarean section", level: "T4", color: "hsl(110,48%,42%)" },
   { procedure: "Appendicectomy", level: "T8–T10", color: "hsl(160,45%,42%)" },
@@ -331,60 +362,81 @@ const surgicalLevels = [
   { procedure: "Perineal surgery", level: "S2–S4 (saddle)", color: "hsl(320,42%,50%)" },
 ];
 
+// Anatomically proportional body outline — 240x520 viewbox
 const BodyOutline = ({ view }: { view: "anterior" | "posterior" }) => (
-  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.7" fill="none" opacity="0.35">
-    {/* Head */}
-    <ellipse cx="100" cy="28" rx="18" ry="22" />
+  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" opacity="0.4">
+    {/* Head — oval with slight jaw */}
+    <path d="M104,8 C96,8 88,14 86,24 C84,34 86,42 92,48 C96,52 102,54 108,56 C112,58 118,58 124,56 C130,54 136,52 140,48 C146,42 148,34 146,24 C144,14 136,8 128,8 C120,6 112,6 104,8 Z" />
     {/* Neck */}
-    <path d="M88,48 C86,54 82,60 78,66" />
-    <path d="M112,48 C114,54 118,60 122,66" />
-    {/* Shoulders */}
-    <path d="M78,66 C68,70 58,78 52,88 C46,98 42,110 38,124" />
-    <path d="M122,66 C132,70 142,78 148,88 C154,98 158,110 162,124" />
-    {/* Torso */}
-    <path d="M78,66 C76,78 72,94 70,110 C68,130 66,150 66,170 C66,190 64,210 64,230 C64,240 68,248 76,254" />
-    <path d="M122,66 C124,78 128,94 130,110 C132,130 134,150 134,170 C134,190 136,210 136,230 C136,240 132,248 124,254" />
-    {/* Arms - left */}
-    <path d="M38,124 C34,140 28,158 24,174 C20,192 16,208 14,222" />
-    <path d="M52,124 C50,138 48,155 46,170 C44,188 42,204 40,218" />
-    {/* Arms - right */}
-    <path d="M162,124 C166,140 172,158 176,174 C180,192 184,208 186,222" />
-    <path d="M148,124 C150,138 152,155 154,170 C156,188 158,204 160,218" />
-    {/* Hands */}
-    <path d="M14,222 C12,228 10,234 14,236 C16,234 18,228 20,222" />
-    <path d="M40,218 C42,224 42,230 40,232 C38,230 36,224 36,218" />
-    <path d="M186,222 C188,228 190,234 186,236 C184,234 182,228 180,222" />
-    <path d="M160,218 C158,224 158,230 160,232 C162,230 164,224 164,218" />
-    {/* Pelvis */}
-    <path d="M76,254 C80,260 84,264 90,266" />
-    <path d="M124,254 C120,260 116,264 110,266" />
-    {/* Legs - left */}
-    <path d="M82,266 C80,286 78,306 76,326 C74,346 72,366 70,386 C68,406 66,422 64,436" />
-    <path d="M94,266 C92,286 90,306 88,326 C88,346 86,366 86,386 C86,406 84,422 84,436" />
-    {/* Legs - right */}
-    <path d="M118,266 C120,286 122,306 124,326 C126,346 128,366 130,386 C132,406 134,422 136,436" />
-    <path d="M106,266 C108,286 110,306 112,326 C112,346 114,366 114,386 C114,406 116,422 116,436" />
-    {/* Feet */}
-    <path d="M64,436 C62,440 64,442 74,442 C82,442 84,440 84,436" />
-    <path d="M136,436 C138,440 136,442 126,442 C118,442 116,440 116,436" />
-    {/* View-specific markers */}
+    <path d="M108,56 C106,60 102,66 98,70 C94,74 90,78 86,82" />
+    <path d="M124,56 C126,60 130,66 134,70 C138,74 142,78 146,82" />
+    {/* Shoulders — natural slope */}
+    <path d="M86,82 C76,86 64,92 54,100 C46,108 40,118 36,130 C32,142 30,154 28,166" />
+    <path d="M146,82 C156,86 168,92 178,100 C186,108 192,118 196,130 C200,142 202,154 204,166" />
+    {/* Torso — left side with natural waist */}
+    <path d="M86,82 C84,92 80,106 78,120 C76,136 74,154 72,172 C70,190 68,208 66,226 C64,244 64,260 66,274 C68,282 72,288 78,294 C82,298 86,302 90,306" />
+    {/* Torso — right side */}
+    <path d="M146,82 C148,92 152,106 154,120 C156,136 158,154 160,172 C162,190 164,208 166,226 C168,244 168,260 166,274 C164,282 160,288 154,294 C150,298 146,302 142,306" />
+    {/* Left arm — upper */}
+    <path d="M36,130 C32,146 28,164 24,182 C20,200 18,218 16,234 C14,244 14,252 16,258" />
+    {/* Left arm — inner */}
+    <path d="M60,104 C58,118 56,134 54,150 C52,168 50,186 48,204 C46,220 44,236 42,248" />
+    {/* Right arm — upper */}
+    <path d="M196,130 C200,146 204,164 208,182 C212,200 214,218 216,234 C218,244 218,252 216,258" />
+    {/* Right arm — inner */}
+    <path d="M172,104 C174,118 176,134 178,150 C180,168 182,186 184,204 C186,220 188,236 190,248" />
+    {/* Left hand */}
+    <path d="M16,258 C14,264 12,270 14,274 C16,276 20,274 22,268 C24,262 24,256 22,250" />
+    <path d="M42,248 C44,254 44,260 42,264 C40,262 38,256 38,250" />
+    {/* Right hand */}
+    <path d="M216,258 C218,264 220,270 218,274 C216,276 212,274 210,268 C208,262 208,256 210,250" />
+    <path d="M190,248 C188,254 188,260 190,264 C192,262 194,256 194,250" />
+    {/* Pelvis — iliac crests */}
+    <path d="M90,306 C92,310 94,314 96,316" />
+    <path d="M142,306 C140,310 138,314 136,316" />
+    {/* Left leg — outer */}
+    <path d="M90,316 C88,336 84,358 82,378 C80,398 78,418 76,438 C74,456 72,472 70,486 C68,496 68,504 72,508" />
+    {/* Left leg — inner */}
+    <path d="M104,316 C102,336 100,358 98,378 C96,398 94,418 92,438 C92,456 90,472 88,486 C86,496 86,504 90,508" />
+    {/* Right leg — outer */}
+    <path d="M142,316 C144,336 148,358 150,378 C152,398 154,418 156,438 C158,456 160,472 162,486 C164,496 164,504 160,508" />
+    {/* Right leg — inner */}
+    <path d="M128,316 C130,336 132,358 134,378 C136,398 138,418 140,438 C140,456 142,472 144,486 C146,496 146,504 142,508" />
+    {/* Left foot */}
+    <path d="M72,508 C70,510 68,512 72,514 C78,516 86,514 90,510 C90,508 88,506 86,506" />
+    {/* Right foot */}
+    <path d="M160,508 C162,510 164,512 160,514 C154,516 146,514 142,510 C142,508 144,506 146,506" />
+
+    {/* View-specific details */}
     {view === "anterior" && (
       <>
-        <circle cx="88" cy="126" r="1.2" />
-        <circle cx="112" cy="126" r="1.2" />
-        <circle cx="100" cy="204" r="1.5" fill="none" strokeWidth="0.4" />
+        {/* Clavicles */}
+        <path d="M98,82 C88,84 80,86 74,90" opacity="0.3" />
+        <path d="M134,82 C144,84 152,86 158,90" opacity="0.3" />
+        {/* Nipples */}
+        <circle cx="92" cy="140" r="1.5" opacity="0.35" />
+        <circle cx="140" cy="140" r="1.5" opacity="0.35" />
+        {/* Umbilicus */}
+        <circle cx="116" cy="238" r="2" strokeWidth="0.5" opacity="0.35" />
+        {/* Anterior midline */}
+        <line x1="116" y1="82" x2="116" y2="306" strokeWidth="0.3" strokeDasharray="2 4" opacity="0.15" />
+        {/* Patellae */}
+        <ellipse cx="82" cy="400" rx="5" ry="6" opacity="0.2" strokeWidth="0.4" />
+        <ellipse cx="150" cy="400" rx="5" ry="6" opacity="0.2" strokeWidth="0.4" />
       </>
     )}
     {view === "posterior" && (
       <>
-        {/* Spine line */}
-        <line x1="100" y1="50" x2="100" y2="248" strokeWidth="0.5" strokeDasharray="1 2" />
+        {/* Spine */}
+        <line x1="120" y1="58" x2="120" y2="290" strokeWidth="0.5" strokeDasharray="1.5 3" opacity="0.25" />
         {/* Scapulae */}
-        <path d="M80,90 C76,100 76,120 80,130 C84,134 90,130 90,120 C90,110 88,96 84,90 Z" opacity="0.3" />
-        <path d="M120,90 C124,100 124,120 120,130 C116,134 110,130 110,120 C110,110 112,96 116,90 Z" opacity="0.3" />
-        {/* Iliac crests hint */}
-        <path d="M72,230 C78,236 86,238 92,238" opacity="0.3" />
-        <path d="M128,230 C122,236 114,238 108,238" opacity="0.3" />
+        <path d="M96,110 C92,120 90,136 94,148 C98,152 104,148 106,140 C108,130 106,118 102,110 Z" opacity="0.2" strokeWidth="0.4" />
+        <path d="M144,110 C148,120 150,136 146,148 C142,152 136,148 134,140 C132,130 134,118 138,110 Z" opacity="0.2" strokeWidth="0.4" />
+        {/* Iliac crests */}
+        <path d="M86,268 C92,276 100,280 110,282" opacity="0.25" strokeWidth="0.5" />
+        <path d="M154,268 C148,276 140,280 130,282" opacity="0.25" strokeWidth="0.5" />
+        {/* Gluteal fold */}
+        <path d="M92,308 C100,314 108,316 116,316 C124,316 132,314 140,308" opacity="0.2" strokeWidth="0.4" />
       </>
     )}
   </g>
@@ -401,18 +453,8 @@ const DermatomeMapDiagram = () => {
     : dermatomes;
 
   const renderBodySVG = (view: "anterior" | "posterior") => (
-    <svg viewBox="0 0 200 450" width="200" className="max-w-full">
-      <defs>
-        <linearGradient id={`body-bg-${view}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.06" />
-          <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.01" />
-        </linearGradient>
-      </defs>
-
+    <svg viewBox="0 0 240 520" width="220" className="max-w-full">
       <BodyOutline view={view} />
-
-      {/* Midline reference */}
-      <line x1="100" y1="50" x2="100" y2="260" stroke="hsl(var(--muted-foreground))" strokeWidth="0.2" strokeDasharray="2 4" opacity="0.15" />
 
       {/* Dermatome regions */}
       {filteredDermatomes.map(d => {
@@ -425,9 +467,10 @@ const DermatomeMapDiagram = () => {
                 key={i}
                 d={path}
                 fill={d.color}
-                fillOpacity={isActive ? 0.6 : 0.18}
-                stroke={isActive ? d.color : "transparent"}
-                strokeWidth={isActive ? 1.5 : 0}
+                fillOpacity={isActive ? 0.55 : 0.16}
+                stroke={isActive ? d.color : d.color}
+                strokeWidth={isActive ? 1.5 : 0.3}
+                strokeOpacity={isActive ? 1 : 0.3}
                 className="cursor-pointer transition-all duration-200"
                 onClick={() => setSelected(selected === d.id ? null : d.id)}
               />
@@ -437,23 +480,23 @@ const DermatomeMapDiagram = () => {
       })}
 
       {/* Landmark annotations */}
-      <g opacity="0.35" fontSize="3.5" fill="hsl(var(--muted-foreground))">
+      <g opacity="0.4" fontSize="4" fill="hsl(var(--muted-foreground))" fontWeight="500">
         {view === "anterior" ? (
           <>
-            <text x="128" y="128">← T4 nipple</text>
-            <text x="112" y="206">← T10 umbilicus</text>
+            <text x="150" y="142">← T4 nipple</text>
+            <text x="134" y="240">← T10 umbilicus</text>
           </>
         ) : (
           <>
-            <text x="128" y="106">← T3 spine of scapula</text>
-            <text x="128" y="138">← T7 inf. angle scapula</text>
-            <text x="128" y="238">← iliac crest (L4)</text>
+            <text x="158" y="128">← T3 spine of scapula</text>
+            <text x="158" y="152">← T7 inf. angle scapula</text>
+            <text x="158" y="278">← iliac crest (L4)</text>
           </>
         )}
       </g>
 
       {/* View label */}
-      <text x="100" y="448" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600">
+      <text x="120" y="516" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.45" fontWeight="600" letterSpacing="1.5">
         {view === "anterior" ? "ANTERIOR" : "POSTERIOR"}
       </text>
     </svg>
@@ -463,7 +506,7 @@ const DermatomeMapDiagram = () => {
     <Card className="mb-8 border-border bg-card">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg font-serif text-foreground">
-          Interactive Dermatome Map — Neuraxial Block Assessment
+          Interactive Dermatome Map
         </CardTitle>
         <p className="text-sm text-muted-foreground">
           Tap a dermatome region on either view to see its landmark, block target, and surgical coverage. Use filters to isolate regions.
@@ -498,7 +541,7 @@ const DermatomeMapDiagram = () => {
               ))}
             </div>
 
-            {/* View toggle */}
+            {/* View toggle — mobile */}
             <div className="flex gap-2 mb-3 sm:hidden">
               <button
                 onClick={() => setBodyView("anterior")}
@@ -517,7 +560,6 @@ const DermatomeMapDiagram = () => {
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               {/* Body diagrams */}
               <div className="flex gap-2 flex-shrink-0 mx-auto">
-                {/* Mobile: single view; Desktop: both */}
                 <div className="hidden sm:block">{renderBodySVG("anterior")}</div>
                 <div className="hidden sm:block">{renderBodySVG("posterior")}</div>
                 <div className="sm:hidden">{renderBodySVG(bodyView)}</div>
@@ -555,17 +597,14 @@ const DermatomeMapDiagram = () => {
                         {regionLabels[activeLevel.region]}
                       </Badge>
                     </div>
-
                     <div>
                       <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Clinical Landmark</p>
                       <p className="text-sm text-muted-foreground">{activeLevel.landmark}</p>
                     </div>
-
                     <div>
                       <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Block Target</p>
                       <p className="text-sm text-muted-foreground">{activeLevel.blockTarget}</p>
                     </div>
-
                     <div className="pt-2 border-t border-border/50">
                       <p className="text-xs font-semibold text-amber-400 mb-0.5">Surgical Coverage</p>
                       <p className="text-sm text-muted-foreground">{activeLevel.surgicalCoverage}</p>
@@ -616,9 +655,9 @@ const DermatomeMapDiagram = () => {
             <div className="mt-4 p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
               <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
               <p className="text-xs text-muted-foreground">
-                <strong>Caesarean section requires T4</strong> (nipple line) to cover peritoneal traction pain. 
-                Test block height with cold spray or ethyl chloride — check bilaterally. 
-                Motor block (Bromage scale) does not correlate with sensory level. 
+                <strong>Caesarean section requires T4</strong> (nipple line) to cover peritoneal traction pain.
+                Test block height with cold spray or ethyl chloride — check bilaterally.
+                Motor block (Bromage scale) does not correlate with sensory level.
                 Always test before surgical incision.
               </p>
             </div>
