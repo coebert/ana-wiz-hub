@@ -101,6 +101,7 @@ export const clinicalTopics: Topic[] = [
   { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "bariatric-anaesthesia", title: "Bariatric Anaesthesia", description: "Obesity physiology, drug dosing, airway management, OSA/OHS, bariatric surgery", section: "clinical", examTags: ["final"], available: true },
   { id: "vascular-anaesthesia", title: "Vascular Anaesthesia", description: "AAA repair, aortic cross-clamping, carotid endarterectomy, peripheral vascular surgery", section: "clinical", examTags: ["final"], available: true },
+  { id: "ent-anaesthesia", title: "ENT & Maxillofacial Anaesthesia", description: "Shared airway, tonsillectomy, laser surgery, nasal/ear surgery, tracheostomy, Le Fort fractures", section: "clinical", examTags: ["final"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
