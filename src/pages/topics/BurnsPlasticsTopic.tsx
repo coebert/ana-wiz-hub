@@ -13,12 +13,8 @@ const keyPoints = [
   "Major burns produce a biphasic haemodynamic response: initial hypovolaemic shock (capillary leak, third-spacing) followed by a hypermetabolic/hyperdynamic phase with ↑CO, ↑O₂ consumption, and ↑catabolism",
 ];
 
-const references = [
-  { text: "ATLS: Advanced Trauma Life Support — Chapter on Thermal Injuries, 10th Edition, ACS (2018)" },
-  { text: "Bittner EA et al. Acute and perioperative care of the burn-injured patient. Anesthesiology 2015; 122(2): 448–64" },
-  { text: "NICE Clinical Guideline: Burns and Scalds (NG12), 2020 update" },
-  { text: "British Burns Association: Emergency Management of Severe Burns (EMSB) Course Manual" },
-];
+
+const BurnsPlasticsTopic = () => {
 
 const BurnsPlasticsTopic = () => {
   return (
