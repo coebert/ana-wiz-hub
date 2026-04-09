@@ -33,13 +33,143 @@ const BariatricAnaesthesiaTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug Dosing in Obesity</h2>
-          <div className="bg-card border border-border rounded-lg p-4">
+          <div className="bg-card border border-border rounded-lg p-4 mb-4">
+            <p className="text-sm font-semibold text-foreground mb-2">Weight Scalars</p>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Total body weight (TBW)</strong>: actual weight</li>
               <li><strong>Ideal body weight (IBW)</strong>: M = 50 + 2.3 × (height in inches − 60); F = 45.5 + 2.3 × (height in inches − 60)</li>
-              <li><strong>Lean body weight (LBW)</strong>: use for propofol (induction & maintenance), remifentanil, rocuronium, vecuronium</li>
-              <li><strong>Adjusted body weight (ABW)</strong>: IBW + 0.4 × (TBW − IBW). Use for sugammadex, aminoglycosides</li>
-              <li><strong>Total body weight (TBW)</strong>: use for succinylcholine (↑ plasma cholinesterase)</li>
-              <li><strong>Volatile agents</strong>: ↓ MAC with obesity (dose to effect). Desflurane/sevoflurane preferred (lower solubility → faster recovery)</li>
+              <li><strong>Lean body weight (LBW)</strong>: James formula — M: 1.1 × TBW − 128 × (TBW/height)²; F: 1.07 × TBW − 148 × (TBW/height)²</li>
+              <li><strong>Adjusted body weight (ABW)</strong>: IBW + 0.4 × (TBW − IBW)</li>
+            </ul>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-border rounded-lg overflow-hidden">
+              <thead>
+                <tr className="bg-muted/50">
+                  <th className="text-left p-2.5 font-semibold text-foreground border-b border-border">Drug</th>
+                  <th className="text-left p-2.5 font-semibold text-foreground border-b border-border">Dose on</th>
+                  <th className="text-left p-2.5 font-semibold text-foreground border-b border-border">Rationale</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Induction Agents</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Propofol (induction)</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Moderately lipophilic; Vd ↑ but not proportional to TBW. 1.5–2.5 mg/kg LBW</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Propofol (TIVA maintenance)</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Use LBW in TCI (Marsh) or ABW (Schnider). Clearance scales with lean mass</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Thiopentone</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Highly lipophilic but redistribution-dependent offset; overdose → prolonged sedation</td>
+                </tr>
+
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Opioids</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Remifentanil</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW / IBW</td>
+                  <td className="p-2.5">Clearance correlates with lean mass. TBW dosing → apnoea, bradycardia</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Fentanyl (bolus)</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW / ABW</td>
+                  <td className="p-2.5">Lipophilic → large Vd but clearance unchanged. Titrate to effect</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Morphine</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Hydrophilic; Vd does not increase proportionally with fat. Dose to IBW, titrate carefully</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Alfentanil</td>
+                  <td className="p-2.5 font-medium text-foreground">LBW</td>
+                  <td className="p-2.5">Moderately lipophilic; smaller Vd than fentanyl. Clearance correlates with lean mass</td>
+                </tr>
+
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Neuromuscular Blocking Agents</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Succinylcholine</td>
+                  <td className="p-2.5 font-medium text-foreground">TBW</td>
+                  <td className="p-2.5">↑ plasma cholinesterase activity and ↑ extracellular volume in obesity. 1–1.5 mg/kg TBW</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Rocuronium</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Hydrophilic — Vd does not increase with fat mass. TBW dosing → prolonged block. 0.6–1.2 mg/kg IBW</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Atracurium / Cisatracurium</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Hydrophilic with organ-independent elimination (Hofmann). Dose to IBW</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Vecuronium</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Hydrophilic. Dose to IBW to avoid prolonged duration</td>
+                </tr>
+
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Reversal Agents</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Sugammadex</td>
+                  <td className="p-2.5 font-medium text-foreground">ABW</td>
+                  <td className="p-2.5">Must match dose to amount of rocuronium in body. ABW provides reliable reversal. Some advocate TBW for complete reversal if rocuronium dosed on TBW</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Neostigmine</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Dose to IBW (max 70 µg/kg). Ceiling effect — higher doses ↑ muscarinic side effects</td>
+                </tr>
+
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Volatiles & Other Agents</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Volatile agents</td>
+                  <td className="p-2.5 font-medium text-foreground">Titrate to effect</td>
+                  <td className="p-2.5">Desflurane/sevoflurane preferred (low blood:gas solubility → faster wash-out). Obesity may ↑ uptake into fat but recovery still faster with low-solubility agents</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Ketamine</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW</td>
+                  <td className="p-2.5">Lipophilic but dose to IBW for analgesic doses (0.15–0.3 mg/kg). Useful opioid-sparing adjunct</td>
+                </tr>
+
+                <tr className="border-b border-border"><td colSpan={3} className="p-2 font-semibold text-foreground bg-muted/30">Antibiotics & Anticoagulants</td></tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Gentamicin / Aminoglycosides</td>
+                  <td className="p-2.5 font-medium text-foreground">ABW</td>
+                  <td className="p-2.5">Distribute into extracellular water which ↑ with obesity but not proportionally. ABW + levels</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">Cephalosporins (e.g. cefazolin)</td>
+                  <td className="p-2.5 font-medium text-foreground">TBW-based</td>
+                  <td className="p-2.5">2 g if &lt;120 kg, 3 g if ≥120 kg (surgical prophylaxis). Redose at 4 h</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2.5">LMWH (enoxaparin)</td>
+                  <td className="p-2.5 font-medium text-foreground">TBW (with cap)</td>
+                  <td className="p-2.5">Prophylaxis: 40 mg BD if BMI &gt;40 or TBW &gt;120 kg. Treatment: 1 mg/kg BD, consider anti-Xa monitoring</td>
+                </tr>
+                <tr>
+                  <td className="p-2.5">Paracetamol</td>
+                  <td className="p-2.5 font-medium text-foreground">IBW / 1 g fixed</td>
+                  <td className="p-2.5">Standard 1 g dose appropriate. Do NOT scale to TBW — hepatotoxicity risk</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-3 p-3 rounded-lg border border-border bg-secondary/20">
+            <p className="text-xs font-semibold text-foreground mb-1">Key Principles</p>
+            <ul className="text-xs text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+              <li><strong>Hydrophilic drugs</strong> (NMBAs, morphine): dose to IBW — they distribute in lean tissue/ECF, not fat</li>
+              <li><strong>Lipophilic drugs</strong> (propofol, fentanyl, benzodiazepines): Vd ↑ but not linearly with fat — use LBW and titrate</li>
+              <li><strong>Always titrate to effect</strong> — no single scalar is perfect. Use neuromuscular monitoring, BIS, and clinical endpoints</li>
+              <li><strong>TCI models</strong>: Schnider model uses LBW; Marsh model — enter LBW as "weight" for obese patients. Eleveld model handles obesity better</li>
             </ul>
           </div>
         </div>
