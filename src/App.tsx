@@ -222,6 +222,8 @@ const App = () => (
           <Route path="/clinical/ophthalmic-anaesthesia" element={<OphthalmicAnaesthesiaTopic />} />
           <Route path="/clinical/day-surgery" element={<DaySurgeryTopic />} />
           <Route path="/clinical/transfer-medicine" element={<TransferMedicineTopic />} />
+          <Route path="/clinical/bariatric-anaesthesia" element={<BariatricAnaesthesiaTopic />} />
+          <Route path="/clinical/vascular-anaesthesia" element={<VascularAnaesthesiaTopic />} />
           {/* Intensive Care */}
           <Route path="/intensive-care/sepsis" element={<SepsisTopic />} />
           <Route path="/intensive-care/mechanical-ventilation" element={<MechanicalVentilationTopic />} />
