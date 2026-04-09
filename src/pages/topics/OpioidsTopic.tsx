@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -36,6 +37,9 @@ const OpioidsTopic = () => {
             <strong>Signal transduction</strong>: activation → Gi protein → ↓cAMP, opens K⁺ channels (hyperpolarisation),
             closes voltage-gated Ca²⁺ channels → inhibits neurotransmitter release and neuronal firing.
           </p>
+          <div className="bg-card rounded-xl border border-border p-6 mt-4">
+            <OpioidReceptorDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
