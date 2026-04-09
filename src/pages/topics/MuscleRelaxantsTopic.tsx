@@ -6,6 +6,7 @@ import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
+import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const MuscleRelaxantsTopic = () => {
@@ -144,6 +145,17 @@ const MuscleRelaxantsTopic = () => {
             stimulation (DBS)</strong>: fade easier to detect manually than TOF. Quantitative monitoring (acceleromyography,
             kinemyography) is recommended over qualitative assessment.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">NMBA Onset & Duration Timeline</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Compare the onset and clinical duration of all neuromuscular blocking agents side-by-side.
+            Press Play to animate a time cursor across the timeline. Vertical markers show when intubation conditions are achieved.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <NMBATimelineDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
