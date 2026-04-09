@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
