@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
+import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const MuscleRelaxantsTopic = () => {
@@ -143,6 +144,17 @@ const MuscleRelaxantsTopic = () => {
             stimulation (DBS)</strong>: fade easier to detect manually than TOF. Quantitative monitoring (acceleromyography,
             kinemyography) is recommended over qualitative assessment.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">TOF Patterns: Depolarising vs Non-Depolarising</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Compare the animated train-of-four response across different block types. Note the key distinguishing
+            feature: fade is present in non-depolarising block but absent in Phase I depolarising block.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <TOFPatternDiagram />
+          </div>
         </section>
       </div>
 
