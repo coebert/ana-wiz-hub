@@ -40,6 +40,7 @@ const OpioidsTopic = () => {
           <div className="bg-card rounded-xl border border-border p-6 mt-4">
             <OpioidReceptorDiagram />
           </div>
+        </section>
 
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Morphine</h2>
