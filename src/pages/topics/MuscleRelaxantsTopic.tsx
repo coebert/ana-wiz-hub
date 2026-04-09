@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
+import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const MuscleRelaxantsTopic = () => {
@@ -23,6 +24,18 @@ const MuscleRelaxantsTopic = () => {
             Understanding the distinction between depolarising and non-depolarising agents, their pharmacology, monitoring, and
             reversal is fundamental to safe anaesthetic practice.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">NMJ Mechanism & Drug Action</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Explore how different neuromuscular blocking agents interact with the nicotinic acetylcholine receptor
+            at the motor end plate. Switch between scenarios to see normal transmission, non-depolarising block,
+            depolarising block (suxamethonium), and neostigmine reversal.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <NMBAMechanismDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
