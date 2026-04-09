@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-type Scenario = "normal" | "ndmr" | "sux" | "neostigmine";
+type Scenario = "normal" | "ndmr" | "sux" | "neostigmine" | "sugammadex";
 
 interface ScenarioInfo {
   id: Scenario;
@@ -31,6 +31,11 @@ const scenarios: ScenarioInfo[] = [
     description: "Neostigmine is a reversible anticholinesterase — it inhibits AChE at the NMJ. This prevents ACh hydrolysis → ACh accumulates in the cleft → increased [ACh] competitively displaces NDMR from the α subunits → channel reopens → transmission restored.",
     detail: "Must co-administer glycopyrrolate (or atropine) to block muscarinic effects of excess ACh elsewhere (bradycardia, salivation, bronchospasm, ↑gut motility). Ceiling effect: once AChE is fully inhibited, more neostigmine provides no additional benefit. Cannot reverse deep block (TOF count <2). Dose: 50 μg/kg (max 5mg).",
   },
+  {
+    id: "sugammadex", label: "Sugammadex Reversal", color: "hsl(270 55% 55%)",
+    description: "Sugammadex is a modified γ-cyclodextrin — a ring of 8 sugar molecules forming a truncated cone with a lipophilic cavity. It encapsulates rocuronium (and to a lesser extent vecuronium) in a tight 1:1 inclusion complex in the plasma. This creates a concentration gradient that draws rocuronium away from the NMJ back into the plasma, where it is immediately trapped. The nAChR α subunits are freed → normal ACh binding resumes → transmission restored.",
+    detail: "Dosing: 2 mg/kg (moderate block, TOF ≥2), 4 mg/kg (deep block, PTC ≥1), 16 mg/kg (immediate reversal — rescue from CICV). Unlike neostigmine: no muscarinic side effects, no ceiling effect, can reverse profound block. Binds OCP steroids → advise additional contraception for 7 days. Does NOT reverse benzylisoquinoliniums or suxamethonium. Sugammadex–rocuronium complex is renally excreted unchanged.",
+  },
 ];
 
 export const NMBAMechanismDiagram = () => {
@@ -53,15 +58,20 @@ export const NMBAMechanismDiagram = () => {
   const alphaOffsets = [-5, 5];
 
   // Animation helpers
-  const achVisible = scenario === "normal" || scenario === "neostigmine";
+  const sugammadexActive = scenario === "sugammadex";
+  const achVisible = scenario === "normal" || scenario === "neostigmine" || (sugammadexActive && progress > 0.5);
   const achCount = scenario === "neostigmine" ? 12 : 6;
-  const ndmrBound = scenario === "ndmr";
+  const ndmrBound = scenario === "ndmr" || (sugammadexActive && progress < 0.3);
   const suxBound = scenario === "sux";
   const neostigmineActive = scenario === "neostigmine";
   const channelOpen = (scenario === "normal" || scenario === "neostigmine") && progress > 0.3 && progress < 0.75;
+  const sugChannelOpen = sugammadexActive && progress > 0.55 && progress < 0.85;
   const suxChannelOpen = scenario === "sux" && progress < 0.35;
   const fasciculations = scenario === "sux" && progress < 0.35;
   const desensitised = scenario === "sux" && progress >= 0.35;
+  // Sugammadex: rocuronium molecules being pulled off receptors
+  const sugEncapsulating = sugammadexActive && progress > 0.15 && progress < 0.55;
+  const sugComplete = sugammadexActive && progress >= 0.55;
 
   return (
     <div className="space-y-4">
@@ -163,15 +173,16 @@ export const NMBAMechanismDiagram = () => {
 
         {/* nAChR receptors with α subunits */}
         {receptors.map((x, i) => {
-          const open = (channelOpen && i < Math.ceil(progress * 5)) || (suxChannelOpen && i < Math.ceil(progress * 8));
+          const open = (channelOpen && i < Math.ceil(progress * 5)) || (suxChannelOpen && i < Math.ceil(progress * 8)) || (sugChannelOpen && i < Math.ceil((progress - 0.55) * 16));
           const blocked = ndmrBound;
           const desens = desensitised;
 
-          const fillColor = open ? "hsl(170 55% 65%)"
+          const fillColor = open || sugChannelOpen ? "hsl(170 55% 65%)"
             : blocked ? "hsl(0 55% 85%)"
             : desens ? "hsl(30 30% 80%)"
+            : sugComplete ? "hsl(340 30% 88%)"
             : "hsl(340 30% 88%)";
-          const strokeColor = open ? "hsl(170 55% 35%)"
+          const strokeColor = open || sugChannelOpen ? "hsl(170 55% 35%)"
             : blocked ? "hsl(0 55% 50%)"
             : desens ? "hsl(30 30% 50%)"
             : "hsl(340 30% 55%)";
@@ -198,11 +209,11 @@ export const NMBAMechanismDiagram = () => {
               {/* Channel pore */}
               <line x1={x} y1={200} x2={x} y2={222}
                 stroke={strokeColor}
-                strokeWidth={open || suxChannelOpen ? 3 : 1}
-                opacity={open || suxChannelOpen ? 0.9 : 0.4} />
+                strokeWidth={open || suxChannelOpen || sugChannelOpen ? 3 : 1}
+                opacity={open || suxChannelOpen || sugChannelOpen ? 0.9 : 0.4} />
 
               {/* Na⁺ flow indicator */}
-              {(open || (suxChannelOpen && i < 4)) && (
+              {(open || (suxChannelOpen && i < 4) || sugChannelOpen) && (
                 <text x={x} y={232} textAnchor="middle" fontSize="6" fill="hsl(170 55% 35%)" fontWeight="600">Na⁺↓</text>
               )}
 
@@ -242,16 +253,65 @@ export const NMBAMechanismDiagram = () => {
         <text x={435} y={210} fontSize="7.5" fill="hsl(var(--muted-foreground))">nAChR</text>
         <text x={435} y={220} fontSize="6" fill="hsl(var(--muted-foreground))">(α₂βδε)</text>
 
+        {/* ===== SUGAMMADEX ENCAPSULATION ===== */}
+        {sugammadexActive && receptors.map((x, i) => {
+          // Rocuronium leaves receptor and floats up into cleft where sugammadex ring captures it
+          const encapProgress = Math.max(0, Math.min(1, (progress - 0.15 - i * 0.06) / 0.25));
+          const rocY = 192 - encapProgress * 40; // floats up from receptor
+          const showRing = encapProgress > 0.5;
+          const captured = encapProgress >= 1;
+          // After capture, complex drifts upward
+          const driftY = captured ? rocY - Math.min((progress - 0.4) * 60, 30) : rocY;
+          if (encapProgress <= 0) return null;
+          return (
+            <g key={`sug-${i}`} opacity={Math.min(encapProgress * 2, 1)}>
+              {/* Rocuronium molecule leaving receptor */}
+              <rect x={x - 5} y={driftY} width={10} height={6} rx={1.5}
+                fill="hsl(0 60% 50%)" fillOpacity={captured ? 0.7 : 0.5} stroke="hsl(0 60% 50%)" strokeWidth="0.6" />
+              <text x={x} y={driftY + 4.5} textAnchor="middle" fontSize="3.5" fill="hsl(0 60% 50%)" fontWeight="700">Roc</text>
+              {/* Sugammadex cyclodextrin ring */}
+              {showRing && (
+                <g>
+                  <circle cx={x} cy={driftY + 3} r={10}
+                    fill="hsl(270 55% 55%/0.15)" stroke="hsl(270 55% 55%)" strokeWidth={captured ? 1.5 : 1}
+                    strokeDasharray={captured ? "0" : "3 2"}>
+                    {!captured && <animate attributeName="r" values="10;12;10" dur="1s" repeatCount="indefinite" />}
+                  </circle>
+                  {/* Cone shape hint — inner ring */}
+                  {captured && (
+                    <circle cx={x} cy={driftY + 3} r={6}
+                      fill="none" stroke="hsl(270 55% 55%)" strokeWidth="0.5" opacity="0.4" />
+                  )}
+                  <text x={x} y={driftY - 10} textAnchor="middle" fontSize="4" fill="hsl(270 55% 55%)" fontWeight="600">
+                    {captured ? "Sug–Roc" : "Sug"}
+                  </text>
+                </g>
+              )}
+            </g>
+          );
+        })}
+
+        {/* Concentration gradient arrow */}
+        {sugammadexActive && progress > 0.2 && progress < 0.6 && (
+          <g opacity={0.5}>
+            <text x={440} y={155} fontSize="5.5" fill="hsl(270 55% 55%)" fontWeight="600">Concentration</text>
+            <text x={440} y={164} fontSize="5.5" fill="hsl(270 55% 55%)" fontWeight="600">gradient</text>
+            <line x1={460} y1={200} x2={460} y2={170} stroke="hsl(270 55% 55%)" strokeWidth="1" markerEnd="url(#nmbaArr)" />
+          </g>
+        )}
+
         {/* ===== MUSCLE FIBRE ===== */}
         <rect x={80} y={330} width={340} height={40} rx={8}
-          fill={fasciculations ? `hsl(30 60% ${88 + Math.sin(frame * 0.5) * 5}%)` : channelOpen || (neostigmineActive && progress > 0.4) ? "hsl(170 40% 88%)" : "hsl(210 10% 94%)"}
+          fill={fasciculations ? `hsl(30 60% ${88 + Math.sin(frame * 0.5) * 5}%)` : (channelOpen || sugChannelOpen || (neostigmineActive && progress > 0.4)) ? "hsl(170 40% 88%)" : "hsl(210 10% 94%)"}
           stroke="hsl(210 10% 70%)" strokeWidth="1" />
         <text x={250} y={355} textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="500">
           {fasciculations ? "⚡ Fasciculations → Contraction" :
            desensitised ? "No Contraction (Desensitised)" :
            channelOpen ? "✓ Contraction" :
+           sugChannelOpen ? "✓ Contraction Restored" :
            ndmrBound ? "✗ No Contraction (Blocked)" :
            neostigmineActive && progress > 0.4 ? "✓ Contraction Restored" :
+           sugComplete ? "✓ Contraction Restored" :
            "Muscle Fibre (Resting)"}
         </text>
 
@@ -290,6 +350,19 @@ export const NMBAMechanismDiagram = () => {
             </text>
             <text x={250} y={404} textAnchor="middle" fontSize="5.5" fill="hsl(150 40% 40%)">
               Must co-administer glycopyrrolate (antimuscarinic) • Ceiling effect at full AChE inhibition • Max dose 5mg
+            </text>
+          </g>
+        )}
+
+        {/* Sugammadex mechanism */}
+        {sugammadexActive && (
+          <g opacity="0.6">
+            <rect x={80} y={380} width={340} height={30} rx={4} fill="hsl(270 50% 55%/0.05)" stroke="hsl(270 50% 55%)" strokeWidth="0.6" />
+            <text x={250} y={393} textAnchor="middle" fontSize="6.5" fill="hsl(270 50% 55%)" fontWeight="600">
+              γ-cyclodextrin encapsulates rocuronium → concentration gradient pulls Roc from NMJ
+            </text>
+            <text x={250} y={404} textAnchor="middle" fontSize="5.5" fill="hsl(270 40% 50%)">
+              2mg/kg (TOF≥2) • 4mg/kg (PTC≥1) • 16mg/kg (immediate/rescue) • No muscarinic effects • Renal excretion
             </text>
           </g>
         )}
