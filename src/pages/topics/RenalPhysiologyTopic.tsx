@@ -7,6 +7,7 @@ import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
 import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
 import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
 import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
+import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
@@ -50,6 +51,17 @@ const RenalPhysiologyTopic = () => {
             macula densa) over MAP 80–180 mmHg. Below MAP 80, GFR falls linearly. Autoregulation is impaired by NSAIDs
             (block afferent arteriolar prostaglandin-mediated vasodilation) and ACE inhibitors (block efferent constriction).
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Juxtaglomerular Apparatus & TGF</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The juxtaglomerular apparatus (JGA) is the anatomical basis of tubuloglomerular feedback (TGF) and renin
+            release. Explore its components and the signalling cascades that stabilise single-nephron GFR.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <JGADiagram />
+          </div>
         </section>
 
         <section className="mb-10">
