@@ -8,6 +8,7 @@ import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
 import { CountercurrentMultiplierDiagram } from "@/components/diagrams/CountercurrentMultiplierDiagram";
 import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
+import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
