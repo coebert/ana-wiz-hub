@@ -102,6 +102,115 @@ const OpioidsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Partial Agonists & Mixed Agonist-Antagonists</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            These agents have complex receptor profiles that distinguish them from pure µ agonists. Understanding their
+            pharmacology is essential as they have important implications for perioperative management, addiction medicine,
+            and acute pain in opioid-dependent patients.
+          </p>
+
+          <div className="space-y-4 mt-4">
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Buprenorphine</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                <strong>Partial µ agonist</strong> and <strong>κ antagonist</strong> (also ORL-1/NOP agonist). Thebaine derivative.
+                High µ-receptor affinity (K<sub>d</sub> ~0.2 nM) with slow dissociation — very difficult to displace with naloxone.
+              </p>
+              <div className="grid md:grid-cols-2 gap-3 mt-3">
+                <div className="rounded-lg bg-primary/5 border border-primary/20 p-3">
+                  <p className="text-xs font-semibold text-primary mb-1">Key Pharmacology</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• Oral bioavailability ~5% (sublingual ~30–55%)</li>
+                    <li>• Long duration: 6–8 hr (sublingual); transdermal patches 7 days</li>
+                    <li>• Metabolised by CYP3A4 → norbuprenorphine (active, full agonist)</li>
+                    <li>• Hepatic glucuronidation; excreted mainly faecal (70%)</li>
+                    <li>• Safe in renal failure (no active renal metabolites)</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                  <p className="text-xs font-semibold text-foreground mb-1">Clinical Significance</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• <strong>Ceiling effect for respiratory depression</strong> (not for analgesia at clinical doses)</li>
+                    <li>• High affinity blocks other opioids — complicates acute pain management</li>
+                    <li>• Precipitates withdrawal in opioid-dependent patients if given acutely</li>
+                    <li>• Transdermal (5–70 µg/hr) for chronic pain; sublingual for addiction (with/without naloxone)</li>
+                    <li>• Naloxone may require high doses (10–30 mg) or infusion to reverse</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Nalbuphine</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                <strong>κ agonist / µ antagonist</strong>. Structurally related to oxymorphone and naloxone.
+                Equipotent to morphine (10 mg IV ≈ 10 mg morphine IV).
+              </p>
+              <div className="grid md:grid-cols-2 gap-3 mt-3">
+                <div className="rounded-lg bg-primary/5 border border-primary/20 p-3">
+                  <p className="text-xs font-semibold text-primary mb-1">Key Pharmacology</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• IV/IM/SC administration. Onset 2–3 min IV</li>
+                    <li>• Duration 3–6 hours. t½ ~5 hours</li>
+                    <li>• Hepatic metabolism (glucuronidation)</li>
+                    <li>• Not a controlled drug (no significant abuse potential)</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                  <p className="text-xs font-semibold text-foreground mb-1">Clinical Significance</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• <strong>Ceiling effect for respiratory depression</strong> (~30 mg dose)</li>
+                    <li>• Useful to partially reverse µ-mediated respiratory depression while maintaining κ-mediated analgesia</li>
+                    <li>• Reduces opioid-induced pruritus (µ antagonism)</li>
+                    <li>• May precipitate withdrawal in opioid-dependent patients</li>
+                    <li>• Analgesic ceiling at ~30 mg (limited maximal efficacy)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Pentazocine</h3>
+              <p className="text-sm text-foreground/80 mt-1 leading-relaxed">
+                <strong>κ agonist / weak µ partial agonist</strong> (and possible µ antagonist at high doses).
+                Benzomorphan derivative. First clinically used mixed agonist-antagonist.
+              </p>
+              <div className="grid md:grid-cols-2 gap-3 mt-3">
+                <div className="rounded-lg bg-primary/5 border border-primary/20 p-3">
+                  <p className="text-xs font-semibold text-primary mb-1">Key Pharmacology</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• Oral bioavailability ~20% (high first-pass metabolism)</li>
+                    <li>• Potency: ~30–60 mg oral ≈ 10 mg morphine</li>
+                    <li>• Duration 3–4 hours. Hepatic metabolism (CYP-mediated oxidation)</li>
+                    <li>• Available oral, IM, IV</li>
+                  </ul>
+                </div>
+                <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                  <p className="text-xs font-semibold text-foreground mb-1">Clinical Significance</p>
+                  <ul className="text-xs text-foreground/80 space-y-1">
+                    <li>• <strong>Dysphoria and psychotomimetic effects</strong> (κ-mediated) — limits clinical use</li>
+                    <li>• Cardiovascular stimulation: ↑ HR, ↑ SVR, ↑ pulmonary artery pressure</li>
+                    <li>• Avoid in ischaemic heart disease (↑ myocardial work)</li>
+                    <li>• Precipitates withdrawal in opioid-dependent patients</li>
+                    <li>• Analgesic ceiling effect; rarely used in modern practice</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Perioperative Considerations</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1">
+              <li>• All three agents can <strong>precipitate withdrawal</strong> in patients dependent on pure µ agonists</li>
+              <li>• Buprenorphine's high receptor affinity means standard-dose naloxone is ineffective — use doxapram or consider respiratory support</li>
+              <li>• Patients on buprenorphine maintenance: continuing low-dose buprenorphine perioperatively (with supplemental multimodal analgesia) is now preferred over discontinuation</li>
+              <li>• Ceiling effects on respiratory depression make these agents theoretically safer in overdose than pure agonists</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
           <p className="text-foreground/90 leading-relaxed">
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
