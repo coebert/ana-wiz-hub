@@ -54,6 +54,17 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Juxtaglomerular Apparatus & TGF</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The juxtaglomerular apparatus (JGA) is the anatomical basis of tubuloglomerular feedback (TGF) and renin
+            release. Explore its components and the signalling cascades that stabilise single-nephron GFR.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <JGADiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration Barrier</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Explore the three-layer filtration barrier in cross-section. Animated particles show how small solutes
