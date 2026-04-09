@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
 import { NephronDiagram } from "@/components/diagrams/NephronDiagram";
+import { TubularCellDiagram } from "@/components/diagrams/TubularCellDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const RenalPhysiologyTopic = () => {
