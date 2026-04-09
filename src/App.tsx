@@ -93,6 +93,9 @@ const VascularAnaesthesiaTopic = lazy(() => import("./pages/topics/VascularAnaes
 const ENTAnaesthesiaTopic = lazy(() => import("./pages/topics/ENTAnaesthesiaTopic"));
 const BurnsPlasticsTopic = lazy(() => import("./pages/topics/BurnsPlasticsTopic"));
 const EmergencySurgeryTopic = lazy(() => import("./pages/topics/EmergencySurgeryTopic"));
+const UrologicalAnaesthesiaTopic = lazy(() => import("./pages/topics/UrologicalAnaesthesiaTopic"));
+const GynaecologicalAnaesthesiaTopic = lazy(() => import("./pages/topics/GynaecologicalAnaesthesiaTopic"));
+const HepatobiliaryTransplantTopic = lazy(() => import("./pages/topics/HepatobiliaryTransplantTopic"));
 const SepsisTopic = lazy(() => import("./pages/topics/SepsisTopic"));
 const MechanicalVentilationTopic = lazy(() => import("./pages/topics/MechanicalVentilationTopic"));
 const CirculatoryFailureTopic = lazy(() => import("./pages/topics/CirculatoryFailureTopic"));
@@ -232,6 +235,9 @@ const App = () => (
           <Route path="/clinical/ent-anaesthesia" element={<ENTAnaesthesiaTopic />} />
           <Route path="/clinical/burns-plastics" element={<BurnsPlasticsTopic />} />
           <Route path="/clinical/emergency-surgery" element={<EmergencySurgeryTopic />} />
+          <Route path="/clinical/urological-anaesthesia" element={<UrologicalAnaesthesiaTopic />} />
+          <Route path="/clinical/gynaecological-anaesthesia" element={<GynaecologicalAnaesthesiaTopic />} />
+          <Route path="/clinical/hepatobiliary-transplant" element={<HepatobiliaryTransplantTopic />} />
           {/* Intensive Care */}
           <Route path="/intensive-care/sepsis" element={<SepsisTopic />} />
           <Route path="/intensive-care/mechanical-ventilation" element={<MechanicalVentilationTopic />} />
