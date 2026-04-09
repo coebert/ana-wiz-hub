@@ -6,6 +6,7 @@ import { muscleRelaxantsQuiz } from "@/data/quizzes";
 import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStructures";
 import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
+import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 
 const MuscleRelaxantsTopic = () => {
