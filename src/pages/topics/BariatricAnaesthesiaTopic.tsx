@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
+import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
