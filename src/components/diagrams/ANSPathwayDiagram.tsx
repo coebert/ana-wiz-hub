@@ -62,7 +62,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== SYMPATHETIC (LEFT) ==================== */}
         {(view === "overview" || view === "sympathetic" || view === "adrenal") && (
-          <g opacity={view === "parasympathetic" || view === "enteric" ? 0.2 : 1}>
+          <g opacity={view === "overview" ? 1 : view === "sympathetic" ? 1 : view === "adrenal" ? 1 : 0.2}>
             {/* Title */}
             <text x={120} y={22} textAnchor="middle" fontSize="10" fill="hsl(0 55% 50%)" fontWeight="700">SYMPATHETIC</text>
             <text x={120} y={34} textAnchor="middle" fontSize="7" fill="hsl(0 40% 50%)">Thoracolumbar T1–L2</text>
@@ -127,7 +127,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== PARASYMPATHETIC (RIGHT) ==================== */}
         {(view === "overview" || view === "parasympathetic") && (
-          <g opacity={view === "sympathetic" || view === "adrenal" || view === "enteric" ? 0.2 : 1}>
+          <g opacity={1}>
             <text x={440} y={22} textAnchor="middle" fontSize="10" fill="hsl(210 60% 50%)" fontWeight="700">PARASYMPATHETIC</text>
             <text x={440} y={34} textAnchor="middle" fontSize="7" fill="hsl(210 45% 50%)">Craniosacral (III,VII,IX,X + S2-4)</text>
 
