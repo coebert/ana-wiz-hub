@@ -134,6 +134,17 @@ const RenalPhysiologyTopic = () => {
             </strong>: 1α-hydroxylation occurs in PCT cells → increases Ca²⁺ absorption from gut.
           </p>
         </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">RAAS Cascade</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The renin-angiotensin-aldosterone system is the principal hormonal regulator of blood pressure and
+            fluid balance. Explore each component of the cascade and the four major drug intervention points.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <RAASCascadeDiagram />
+          </div>
+        </section>
       </div>
 
       <KeyLearningPoints points={[
