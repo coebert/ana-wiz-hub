@@ -508,4 +508,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2016", citation: "Bradberry SM, et al. Management of the acutely poisoned patient. BJA Education. 2016;16(7):218-225.", url: "https://doi.org/10.1093/bjaed/mkv054" },
     { label: "AAGBI Lipid Rescue", citation: "Association of Anaesthetists. Management of Severe Local Anaesthetic Toxicity. 2010 (updated 2023).", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Management-of-severe-local-anaesthetic-toxicity" },
   ],
+  "burns-plastics": [
+    { label: "Bittner 2015", citation: "Bittner EA et al. Acute and perioperative care of the burn-injured patient. Anesthesiology. 2015;122(2):448-464.", url: "https://doi.org/10.1097/ALN.0000000000000559" },
+    { label: "NICE NG12", citation: "National Institute for Health and Care Excellence. Burns and scalds (NG12). 2020.", url: "https://www.nice.org.uk/guidance/ng12" },
+    { label: "BBA EMSB", citation: "British Burns Association. Emergency Management of Severe Burns (EMSB) Course Manual. 2018." },
+    { label: "BJA Educ 2019", citation: "McMillan K, et al. Anaesthesia for burns surgery. BJA Education. 2019;19(10):328-336.", url: "https://doi.org/10.1016/j.bjae.2019.05.006" },
+  ],
 };
