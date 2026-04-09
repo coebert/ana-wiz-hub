@@ -15,8 +15,6 @@ const keyPoints = [
 
 
 const BurnsPlasticsTopic = () => {
-
-const BurnsPlasticsTopic = () => {
   return (
     <SectionLayout
       title="Burns & Plastic Surgery Anaesthesia"
