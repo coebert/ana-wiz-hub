@@ -53,6 +53,17 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration Barrier</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Explore the three-layer filtration barrier in cross-section. Animated particles show how small solutes
+            pass freely while albumin and larger proteins are retained by size and charge selectivity.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <GlomerularBarrierDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Cell Transport</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Explore the individual tubular cell types, their apical and basolateral transporters, and the animated flow
