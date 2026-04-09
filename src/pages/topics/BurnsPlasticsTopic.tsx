@@ -204,7 +204,7 @@ const BurnsPlasticsTopic = () => {
 
         <QuizSection questions={burnsPlasticsQuestions} />
 
-        <ReferencesList references={references} />
+        <ReferencesList topicId="burns-plastics" />
 
         <TopicCompletionToggle topicId="burns-plastics" topicTitle="Burns & Plastic Surgery Anaesthesia" />
       </div>
