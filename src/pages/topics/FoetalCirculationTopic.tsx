@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
 
 const FoetalCirculationTopic = () => {
   return (
