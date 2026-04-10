@@ -63,10 +63,114 @@ const VentilationPerfusionTopic = () => {
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>True shunt</strong> (V/Q = 0): blood passes through non-ventilated lung (atelectasis, consolidation, ARDS). Does NOT respond to supplemental O₂</li>
             <li><strong>Physiological shunt</strong>: bronchial circulation (~1-2% CO) + Thebesian veins → normal ~2-5% shunt</li>
-            <li><strong>Shunt equation</strong>: Qs/Qt = (CcO₂ − CaO₂) / (CcO₂ − CvO₂). CcO₂ = end-capillary O₂ content (from PAO₂)</li>
-            <li><strong>Iso-shunt lines</strong>: at &gt;30% shunt, increasing FiO₂ has minimal effect on PaO₂</li>
             <li><strong>HPV</strong> (hypoxic pulmonary vasoconstriction): low alveolar PO₂ → local pulmonary artery constriction → diverts blood to better-ventilated regions. Inhibited by volatile agents, vasodilators, sepsis</li>
           </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shunt Equation — Derivation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The shunt equation quantifies the fraction of cardiac output that bypasses gas exchange (Qs/Qt). It is derived from the principle of <strong>conservation of mass</strong> — specifically, the total oxygen carried in arterial blood must equal the sum of oxygen from the shunted and non-shunted fractions.
+          </p>
+
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 1 — Define the two blood streams</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Total cardiac output (<strong>Qt</strong>) is divided into two components:
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside">
+                <li><strong>Qs</strong> = shunted blood (bypasses ventilated alveoli, carries mixed-venous O₂ content)</li>
+                <li><strong>Qc</strong> = non-shunted blood (passes through ventilated alveoli, equilibrates to end-capillary O₂ content)</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">Therefore: <strong>Qt = Qs + Qc</strong>, and so <strong>Qc = Qt − Qs</strong></p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 2 — Apply the Fick principle (conservation of oxygen mass)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The total O₂ delivered to the arterial system must equal the O₂ contributed by each stream:
+              </p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                Qt × CaO₂ = (Qs × CvO₂) + (Qc × CcO₂)
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                Where: <strong>CaO₂</strong> = arterial O₂ content, <strong>CvO₂</strong> = mixed venous O₂ content, <strong>CcO₂</strong> = pulmonary end-capillary O₂ content
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 3 — Substitute Qc = Qt − Qs</p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                Qt × CaO₂ = (Qs × CvO₂) + (Qt − Qs) × CcO₂
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 4 — Expand and rearrange</p>
+              <div className="space-y-2 mt-2 text-sm text-muted-foreground">
+                <p>Expand the right side:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  Qt·CaO₂ = Qs·CvO₂ + Qt·CcO₂ − Qs·CcO₂
+                </div>
+                <p>Move Qt terms to the left:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  Qt·CaO₂ − Qt·CcO₂ = Qs·CvO₂ − Qs·CcO₂
+                </div>
+                <p>Factor out Qt on the left and Qs on the right:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  Qt(CaO₂ − CcO₂) = Qs(CvO₂ − CcO₂)
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 5 — Solve for Qs/Qt</p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                Qs/Qt = (CaO₂ − CcO₂) / (CvO₂ − CcO₂)
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                By convention, we multiply top and bottom by −1 to express as:
+              </p>
+              <div className="mt-2 p-4 bg-primary/10 rounded-lg border border-primary/30 font-mono text-base text-foreground text-center font-bold">
+                Qs/Qt = (CcO₂ − CaO₂) / (CcO₂ − CvO₂)
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 6 — Calculating CcO₂ (end-capillary O₂ content)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                CcO₂ cannot be measured directly. It is <strong>calculated</strong> by assuming that end-capillary blood equilibrates fully with alveolar gas:
+              </p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                CcO₂ = (Hb × 1.34 × ScO₂) + (0.023 × PAO₂)
+              </div>
+              <ul className="mt-2 space-y-1 text-xs text-muted-foreground list-disc list-inside">
+                <li><strong>PAO₂</strong> is derived from the alveolar gas equation</li>
+                <li><strong>ScO₂</strong> is assumed to be 1.0 (100%) when PAO₂ is high (FiO₂ &gt; 0.21)</li>
+                <li><strong>1.34</strong> = Hüfner's constant (mL O₂ per gram Hb when fully saturated)</li>
+                <li><strong>0.023</strong> = solubility coefficient of O₂ in plasma (mL/dL/kPa)</li>
+              </ul>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground">Normal Qs/Qt</p>
+                <p className="font-semibold text-foreground text-sm">~2–5% (anatomical shunt from bronchial and Thebesian veins)</p>
+              </div>
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground">Clinical significance</p>
+                <p className="font-semibold text-foreground text-sm">&gt;15% = significant; &gt;30% = refractory hypoxaemia (FiO₂ has minimal effect)</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Iso-shunt Lines</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Iso-shunt diagrams plot PaO₂ against FiO₂ for various fixed shunt fractions. Key clinical insight: at <strong>&gt;30% shunt</strong>, increasing FiO₂ has minimal effect on PaO₂ — this defines refractory hypoxaemia. At these levels, treatment must focus on recruiting shunted lung (PEEP, prone positioning) rather than increasing FiO₂.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div>
