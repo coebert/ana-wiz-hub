@@ -530,4 +530,33 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Lancet Frailty 2013", citation: "Clegg A et al. Frailty in elderly people. Lancet. 2013;381:752-762.", url: "https://doi.org/10.1016/S0140-6736(12)62167-9" },
     { label: "Lancet Delirium 2014", citation: "Inouye SK et al. Delirium in elderly people. Lancet. 2014;383:911-922.", url: "https://doi.org/10.1016/S0140-6736(13)60688-1" },
   ],
+  // ──────── CO-EXISTING DISEASE ────────
+  "cardiovascular-disease": [
+    { label: "BJA Educ 2017", citation: "Duceppe G et al. Canadian Cardiovascular Society Guidelines on perioperative cardiac risk assessment and management. Can J Cardiol. 2017;33:17-32.", url: "https://doi.org/10.1016/j.cjca.2016.09.008" },
+    { label: "ESC/ESA 2022", citation: "Halvorsen S et al. 2022 ESC Guidelines on cardiovascular assessment and management of patients undergoing non-cardiac surgery. Eur Heart J. 2022;43:3826-3924.", url: "https://doi.org/10.1093/eurheartj/ehac270" },
+    { label: "NICE CG181", citation: "National Institute for Health and Care Excellence. Cardiovascular disease: risk assessment and reduction (CG181). 2023 (updated).", url: "https://www.nice.org.uk/guidance/cg181" },
+    { label: "BJA Educ 2015 Valvular", citation: "Brown J, Morgan-Hughes NJ. Aortic stenosis and non-cardiac surgery. BJA Education. 2005;5(1):1-4.", url: "https://doi.org/10.1093/bjaceaccp/mki001" },
+    { label: "AHA/ACC 2014", citation: "Fleisher LA et al. 2014 ACC/AHA Guideline on perioperative cardiovascular evaluation and management. J Am Coll Cardiol. 2014;64:e77-e137.", url: "https://doi.org/10.1016/j.jacc.2014.07.944" },
+  ],
+  "respiratory-disease": [
+    { label: "BJA Educ 2017 Asthma", citation: "Woods BD, Sladen RN. Perioperative considerations for the patient with asthma and bronchospasm. Br J Anaesth. 2009;103(s1):i57-i65.", url: "https://doi.org/10.1093/bja/aep271" },
+    { label: "BTS/SIGN 2019", citation: "British Thoracic Society/SIGN. British guideline on the management of asthma (SIGN 158). 2019.", url: "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/" },
+    { label: "NICE NG115", citation: "National Institute for Health and Care Excellence. Chronic obstructive pulmonary disease in over 16s: diagnosis and management (NG115). 2019.", url: "https://www.nice.org.uk/guidance/ng115" },
+    { label: "STOP-BANG", citation: "Chung F et al. STOP-Bang questionnaire: a practical approach to screening for obstructive sleep apnea. Chest. 2016;149:631-638.", url: "https://doi.org/10.1378/chest.15-0903" },
+    { label: "Lumb Ch.27", citation: "Lumb AB. Nunn's Applied Respiratory Physiology. 9th ed. Elsevier; 2021. Chapter 27: Anaesthesia and Respiratory Disease." },
+  ],
+  "endocrine-disease": [
+    { label: "BJA Educ 2015 DM", citation: "Barker P et al. Peri-operative management of the surgical patient with diabetes. BJA Education. 2015;15(1):41-46.", url: "https://doi.org/10.1093/bjaceaccp/mku002" },
+    { label: "JBDS-IP 2021", citation: "Joint British Diabetes Societies for Inpatient Care. Management of adults with diabetes undergoing surgery and elective procedures. 2021.", url: "https://www.diabetes.org.uk/guide-to-diabetes/managing-your-diabetes/hospital/jbds" },
+    { label: "BJA Educ 2014 Thyroid", citation: "Farling PA. Thyroid disease. BJA Education. 2000;14(5):143-148.", url: "https://doi.org/10.1093/bjaceaccp/54.5.143" },
+    { label: "BJA Educ 2017 Phaeochromocytoma", citation: "Connor D, Boumphrey S. Perioperative care of phaeochromocytoma. BJA Education. 2016;16(5):153-158.", url: "https://doi.org/10.1093/bjaed/mkv051" },
+    { label: "Addison's Guidelines", citation: "Woodcock T et al. Guidelines for the management of glucocorticoids during the peri-operative period. Anaesthesia. 2020;75:654-663.", url: "https://doi.org/10.1111/anae.14963" },
+  ],
+  "neurological-disease": [
+    { label: "BJA Educ 2018 MG", citation: "Blichfeldt-Lauridsen L, Hansen BD. Anesthesia and myasthenia gravis. Acta Anaesthesiol Scand. 2012;56:17-22.", url: "https://doi.org/10.1111/j.1399-6576.2011.02558.x" },
+    { label: "BJA Educ 2014 PD", citation: "Nicholson G et al. Parkinson's disease and anaesthesia. BJA Education. 2002;2(4):115-119.", url: "https://doi.org/10.1093/bjaceaccp/2.4.115" },
+    { label: "BJA Educ 2015 Epilepsy", citation: "Perks A et al. Anaesthesia and epilepsy. Br J Anaesth. 2012;108(4):562-571.", url: "https://doi.org/10.1093/bja/aes027" },
+    { label: "AAGBI Neuromuscular", citation: "Association of Anaesthetists. Anaesthesia and neuromuscular disorders. Anaesthesia. 2023;78:364-376." },
+    { label: "Autonomic Dysreflexia", citation: "Krassioukov A et al. A systematic review of the management of autonomic dysreflexia after spinal cord injury. Arch Phys Med Rehabil. 2009;90:682-695.", url: "https://doi.org/10.1016/j.apmr.2008.10.017" },
+  ],
 };
