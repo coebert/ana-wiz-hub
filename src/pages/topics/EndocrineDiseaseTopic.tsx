@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
 import { SeeAlso } from "@/components/SeeAlso";
+import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
 
 const keyPoints = [
   "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal",
@@ -25,6 +26,7 @@ const EndocrineDiseaseTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <PerioperativeDiabetesDiagram />
 
         {/* Diabetes Mellitus */}
         <section>

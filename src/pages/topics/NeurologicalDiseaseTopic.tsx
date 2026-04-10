@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import { SeeAlso } from "@/components/SeeAlso";
+import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
 
 const keyPoints = [
   "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring",
@@ -25,6 +26,7 @@ const NeurologicalDiseaseTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <MGNMBASensitivityDiagram />
 
         {/* Myasthenia Gravis */}
         <section>
