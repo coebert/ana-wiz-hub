@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { clinicalIncidentsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
 
 const ClinicalIncidentsTopic = () => {
   return (
