@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
+import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
 
 const keyPoints = [
   "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
@@ -24,6 +25,7 @@ const ElderlyAnaesthesiaTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <FrailtyAssessmentDiagram />
 
         {/* Physiological Changes */}
         <section>

@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
+import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
 
 const keyPoints = [
   "Interventional radiology suites are remote locations — ensure full anaesthetic equipment, monitoring, and assistance are available before starting (AAGBI guidelines for anaesthesia in remote locations)",
@@ -24,6 +25,7 @@ const InterventionalRadiologyTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <ContrastReactionDiagram />
 
         {/* Remote Location Anaesthesia */}
         <section>

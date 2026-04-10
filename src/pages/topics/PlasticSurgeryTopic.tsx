@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { plasticSurgeryQuestions } from "@/data/quizzes";
+import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
 
 const keyPoints = [
   "Free flap surgery demands meticulous haemodynamic management — maintain normotension, normovolaemia, and normothermia to optimise flap perfusion and avoid vasospasm",
@@ -24,6 +25,7 @@ const PlasticSurgeryTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <FreeFlaPerfusionDiagram />
 
         {/* Free Flap Principles */}
         <section>
