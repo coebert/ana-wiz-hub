@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
 
 const FoetalCirculationTopic = () => {
   return (
@@ -56,6 +57,8 @@ const FoetalCirculationTopic = () => {
             </ol>
           </div>
         </div>
+
+        <FoetalCirculationDiagram />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Oxygen Delivery</h2>
