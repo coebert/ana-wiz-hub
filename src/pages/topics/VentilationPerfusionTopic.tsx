@@ -5,6 +5,9 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
 
 const VentilationPerfusionTopic = () => {
   return (
@@ -58,8 +61,12 @@ const VentilationPerfusionTopic = () => {
           </ul>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bohr Equation — Derivation</h2>
+        <Collapsible>
+          <CollapsibleTrigger className="flex items-center justify-between w-full group">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Bohr Equation — Derivation</h2>
+            <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-3">
           <p className="text-muted-foreground leading-relaxed mb-4">
             The Bohr equation calculates the ratio of dead space to tidal volume (VD/VT). Like the shunt equation, it is derived from <strong>conservation of mass</strong> — here applied to CO₂ rather than O₂.
           </p>
@@ -163,7 +170,8 @@ const VentilationPerfusionTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+          </CollapsibleContent>
+        </Collapsible>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shunt</h2>
@@ -174,8 +182,12 @@ const VentilationPerfusionTopic = () => {
           </ul>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shunt Equation — Derivation</h2>
+        <Collapsible>
+          <CollapsibleTrigger className="flex items-center justify-between w-full group">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Shunt Equation — Derivation</h2>
+            <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />
+          </CollapsibleTrigger>
+          <CollapsibleContent className="mt-3">
           <p className="text-muted-foreground leading-relaxed mb-4">
             The shunt equation quantifies the fraction of cardiac output that bypasses gas exchange (Qs/Qt). It is derived from the principle of <strong>conservation of mass</strong> — specifically, the total oxygen carried in arterial blood must equal the sum of oxygen from the shunted and non-shunted fractions.
           </p>
@@ -278,7 +290,8 @@ const VentilationPerfusionTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+          </CollapsibleContent>
+        </Collapsible>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Control of Ventilation</h2>
