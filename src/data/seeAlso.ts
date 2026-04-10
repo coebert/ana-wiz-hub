@@ -98,10 +98,10 @@ export const seeAlsoMap: Record<string, string[]> = {
   "plastic-surgery": ["burns-plastics", "regional-anaesthesia", "pain-medicine"],
   "interventional-radiology": ["electrical-safety", "clinical-measurement", "preoperative-assessment"],
   "elderly-anaesthesia": ["preoperative-assessment", "neurological-disease", "orthopaedic-anaesthesia", "cardiovascular-disease"],
-  "cardiovascular-disease": ["cardiac-cycle", "cardiac-electrophysiology", "antiarrhythmics", "preoperative-assessment", "defibrillation-pacing"],
-  "respiratory-disease": ["lung-mechanics", "ventilation-perfusion", "mechanical-ventilation", "bariatric-anaesthesia"],
-  "endocrine-disease": ["endocrine-physiology", "corticosteroids", "preoperative-assessment"],
-  "neurological-disease": ["neuromuscular", "muscle-relaxants", "neuroanaesthesia", "neurointensive-care"],
+  "cardiovascular-disease": ["cardiac-cycle", "cardiac-electrophysiology", "cardiac-anatomy", "antiarrhythmics", "vasoactive-agents", "preoperative-assessment", "defibrillation-pacing", "cardiothoracic", "vascular-anaesthesia", "starling-forces", "circulatory-failure"],
+  "respiratory-disease": ["lung-mechanics", "ventilation-perfusion", "mechanical-ventilation", "bariatric-anaesthesia", "oxygen-haemoglobin", "ards", "airway-management", "preoperative-assessment", "volatile-agents"],
+  "endocrine-disease": ["endocrine-physiology", "corticosteroids", "preoperative-assessment", "renal-physiology", "autonomic-nervous", "pharmacokinetics", "perioperative-fluids", "iv-anaesthetics"],
+  "neurological-disease": ["neuromuscular", "muscle-relaxants", "neuroanaesthesia", "neurointensive-care", "autonomic-nervous", "regional-anaesthesia", "depth-of-anaesthesia", "airway-management", "opioids"],
 
   // ── Intensive Care ──
   "sepsis": ["vasoactive-agents", "antimicrobials-icu", "circulatory-failure", "acid-base"],
