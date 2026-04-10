@@ -6,6 +6,7 @@ import { clinicalIncidentsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
+import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
 
 const ClinicalIncidentsTopic = () => {
   return (
@@ -27,6 +28,7 @@ const ClinicalIncidentsTopic = () => {
               <li>Take mast cell tryptase at 1h, 6h, and &gt;24h (baseline)</li>
             </ol>
           </div>
+          <AnaphylaxisPathophysiologyDiagram />
         </div>
 
         <div>
