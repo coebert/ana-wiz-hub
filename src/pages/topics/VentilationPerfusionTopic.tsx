@@ -53,9 +53,116 @@ const VentilationPerfusionTopic = () => {
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>Anatomical</strong>: conducting airways (~150 mL). Measured by Fowler's method (N₂ washout)</li>
             <li><strong>Alveolar</strong>: ventilated but unperfused alveoli (V/Q = ∞). Normally ~negligible</li>
-            <li><strong>Physiological</strong> = anatomical + alveolar. Measured by Bohr equation: VD/VT = (PaCO₂ − PĒCO₂) / PaCO₂. Normal ~0.3 (30%)</li>
+            <li><strong>Physiological</strong> = anatomical + alveolar dead space</li>
             <li>Increased by: ↓ CO, PE, excessive PEEP, anaesthesia (↓ FRC), ageing</li>
           </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bohr Equation — Derivation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The Bohr equation calculates the ratio of dead space to tidal volume (VD/VT). Like the shunt equation, it is derived from <strong>conservation of mass</strong> — here applied to CO₂ rather than O₂.
+          </p>
+
+          <div className="space-y-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 1 — Define the two compartments of each breath</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Each tidal volume (<strong>VT</strong>) is divided into two fractions:
+              </p>
+              <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside">
+                <li><strong>VD</strong> = dead space volume (gas that does not participate in gas exchange → contains inspired/negligible CO₂)</li>
+                <li><strong>VA</strong> = alveolar volume (gas that reaches perfused alveoli → equilibrates with pulmonary capillary blood)</li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-2">Therefore: <strong>VT = VD + VA</strong>, and so <strong>VA = VT − VD</strong></p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 2 — Apply conservation of CO₂ mass</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The total CO₂ in expired gas must equal the sum of CO₂ from the dead space and alveolar compartments:
+              </p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                VT × FĒCO₂ = (VD × FICO₂) + (VA × FACO₂)
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">
+                Where: <strong>FĒCO₂</strong> = mixed expired CO₂ fraction, <strong>FICO₂</strong> = inspired CO₂ fraction, <strong>FACO₂</strong> = alveolar CO₂ fraction
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 3 — Simplify: inspired CO₂ ≈ 0</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Atmospheric CO₂ is negligible (FICO₂ ≈ 0), so the dead space term drops out:
+              </p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                VT × FĒCO₂ = (VT − VD) × FACO₂
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 4 — Expand and rearrange</p>
+              <div className="space-y-2 mt-2 text-sm text-muted-foreground">
+                <p>Expand the right side:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  VT·FĒCO₂ = VT·FACO₂ − VD·FACO₂
+                </div>
+                <p>Rearrange to isolate VD:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  VD·FACO₂ = VT·FACO₂ − VT·FĒCO₂
+                </div>
+                <p>Factor out VT on the right:</p>
+                <div className="p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                  VD·FACO₂ = VT(FACO₂ − FĒCO₂)
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 5 — Solve for VD/VT</p>
+              <div className="mt-2 p-3 bg-secondary/30 rounded font-mono text-sm text-foreground text-center">
+                VD/VT = (FACO₂ − FĒCO₂) / FACO₂
+              </div>
+              <p className="text-sm text-muted-foreground mt-2">
+                Since fractional concentrations are proportional to partial pressures (F = P/PB), we can substitute partial pressures:
+              </p>
+              <div className="mt-2 p-4 bg-primary/10 rounded-lg border border-primary/30 font-mono text-base text-foreground text-center font-bold">
+                VD/VT = (PACO₂ − PĒCO₂) / PACO₂
+              </div>
+              <p className="text-xs text-muted-foreground mt-2">This is the <strong>original Bohr equation</strong> using alveolar PCO₂.</p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Step 6 — The Enghoff Modification</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                In clinical practice, <strong>PACO₂ is replaced by PaCO₂</strong> (arterial PCO₂), since alveolar CO₂ cannot be easily measured:
+              </p>
+              <div className="mt-2 p-4 bg-primary/10 rounded-lg border border-primary/30 font-mono text-base text-foreground text-center font-bold">
+                VD/VT = (PaCO₂ − PĒCO₂) / PaCO₂
+              </div>
+              <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                This assumes PaCO₂ ≈ PACO₂, which is valid in healthy lungs because CO₂ diffuses rapidly across the alveolar membrane (20× more soluble than O₂). In disease with significant V/Q mismatch, PaCO₂ may exceed true PACO₂, causing the Enghoff modification to <strong>overestimate</strong> dead space (it includes a "shunt component").
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground">Normal VD/VT</p>
+                <p className="font-semibold text-foreground text-sm">~0.3 (30%) — increases with age, anaesthesia, and positive pressure ventilation</p>
+              </div>
+              <div className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="text-xs text-muted-foreground">PĒCO₂ measurement</p>
+                <p className="font-semibold text-foreground text-sm">Requires collection of all expired gas (Douglas bag or metabolic cart) to obtain true mixed expired CO₂</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-2">Fowler's Method (Anatomical Dead Space)</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Distinct from the Bohr equation, Fowler's method measures <strong>anatomical dead space only</strong> using a single-breath nitrogen washout. After a breath of 100% O₂, the expired N₂ concentration is plotted against volume. The anatomical dead space is the volume at which the expired N₂ concentration reaches the midpoint of the transition between pure dead space gas and alveolar gas (equal areas either side of the vertical line). Normal value ~150 mL (~2 mL/kg).
+              </p>
+            </div>
+          </div>
         </div>
 
         <div>
