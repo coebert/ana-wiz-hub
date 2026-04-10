@@ -514,4 +514,20 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BBA EMSB", citation: "British Burns Association. Emergency Management of Severe Burns (EMSB) Course Manual. 2018." },
     { label: "BJA Educ 2019", citation: "McMillan K, et al. Anaesthesia for burns surgery. BJA Education. 2019;19(10):328-336.", url: "https://doi.org/10.1016/j.bjae.2019.05.006" },
   ],
+  "plastic-surgery": [
+    { label: "BJA Educ 2021", citation: "Quinlan JF. Anaesthesia for free flap surgery. BJA Education. 2021;21(11):426-432.", url: "https://doi.org/10.1093/bjaed/mkab029" },
+    { label: "BAPRAS 2020", citation: "British Association of Plastic, Reconstructive and Aesthetic Surgeons. Guidelines on Free Flap Monitoring. 2020." },
+    { label: "Curr Opin Anaesthesiol 2019", citation: "Rosenberg JJ. Microvascular free flaps — perioperative management. Curr Opin Anaesthesiol. 2019;32:47-53." },
+  ],
+  "interventional-radiology": [
+    { label: "AAGBI Remote Sites 2023", citation: "Association of Anaesthetists. Anaesthesia Services in Remote Sites. 2023.", url: "https://anaesthetists.org" },
+    { label: "ESUR 2011", citation: "Stacul F et al. Contrast induced nephropathy: updated ESUR Contrast Media Safety Committee guidelines. Eur Radiol. 2011;21:2527-2541.", url: "https://doi.org/10.1007/s00330-011-2225-0" },
+    { label: "ACR Sedation 2017", citation: "Patel IJ et al. ACR guidance document on sedation/analgesia. J Am Coll Radiol. 2017;14:1272-1283." },
+  ],
+  "elderly-anaesthesia": [
+    { label: "NICE NG111", citation: "National Institute for Health and Care Excellence. Hip fracture: management (NG111). 2023 (updated).", url: "https://www.nice.org.uk/guidance/ng111" },
+    { label: "AAGBI Elderly 2014", citation: "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia. 2014;69(s1):81-98." },
+    { label: "Lancet Frailty 2013", citation: "Clegg A et al. Frailty in elderly people. Lancet. 2013;381:752-762.", url: "https://doi.org/10.1016/S0140-6736(12)62167-9" },
+    { label: "Lancet Delirium 2014", citation: "Inouye SK et al. Delirium in elderly people. Lancet. 2014;383:911-922.", url: "https://doi.org/10.1016/S0140-6736(13)60688-1" },
+  ],
 };

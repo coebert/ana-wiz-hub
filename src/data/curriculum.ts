@@ -107,6 +107,9 @@ export const clinicalTopics: Topic[] = [
   { id: "urological-anaesthesia", title: "Urological Anaesthesia", description: "TURP syndrome, lithotomy positioning, radical cystectomy, nephrectomy, ESWL", section: "clinical", examTags: ["final"], available: true },
   { id: "gynaecological-anaesthesia", title: "Gynaecological Anaesthesia", description: "Laparoscopic/robotic surgery, hysteroscopy fluid absorption, major oncology, Trendelenburg effects", section: "clinical", examTags: ["final"], available: true },
   { id: "hepatobiliary-transplant", title: "Hepatobiliary & Transplant Anaesthesia", description: "Liver resection, low CVP technique, liver transplant phases, cirrhotic patient, post-reperfusion syndrome", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "plastic-surgery", title: "Plastic Surgery & Microsurgery", description: "Free flap perfusion, microsurgical principles, prolonged surgery, digital replantation, DIEP flap", section: "clinical", examTags: ["final"], available: true },
+  { id: "interventional-radiology", title: "Anaesthesia for Interventional Radiology", description: "Remote location anaesthesia, contrast reactions, radiation safety, TIPSS, embolisation, EVAR", section: "clinical", examTags: ["final"], available: true },
+  { id: "elderly-anaesthesia", title: "Anaesthesia for the Elderly", description: "Frailty, age-related physiology, postoperative delirium, hip fracture, pharmacological changes", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
