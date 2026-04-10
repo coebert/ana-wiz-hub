@@ -110,6 +110,10 @@ export const clinicalTopics: Topic[] = [
   { id: "plastic-surgery", title: "Plastic Surgery & Microsurgery", description: "Free flap perfusion, microsurgical principles, prolonged surgery, digital replantation, DIEP flap", section: "clinical", examTags: ["final"], available: true },
   { id: "interventional-radiology", title: "Anaesthesia for Interventional Radiology", description: "Remote location anaesthesia, contrast reactions, radiation safety, TIPSS, embolisation, EVAR", section: "clinical", examTags: ["final"], available: true },
   { id: "elderly-anaesthesia", title: "Anaesthesia for the Elderly", description: "Frailty, age-related physiology, postoperative delirium, hip fracture, pharmacological changes", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "cardiovascular-disease", title: "Cardiovascular Co-Existing Disease", description: "IHD, valvular disease, heart failure, arrhythmias, pacemakers/ICDs, pulmonary hypertension, ACHD", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "respiratory-disease", title: "Respiratory Co-Existing Disease", description: "Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, respiratory infections", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "endocrine-disease", title: "Endocrine Co-Existing Disease", description: "Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, carcinoid syndrome", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "neurological-disease", title: "Neurological Co-Existing Disease", description: "Myasthenia gravis, epilepsy, MS, Parkinson's, MND, muscular dystrophies, spinal cord injury", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
