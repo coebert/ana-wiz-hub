@@ -163,12 +163,7 @@ const ElderlyAnaesthesiaTopic = () => {
 
         <QuizSection questions={elderlyAnaesthesiaQuestions} />
 
-        <ReferencesList references={[
-          { text: "NICE NG111: Hip fracture: management. National Institute for Health and Care Excellence, 2023 (updated)" },
-          { text: "Griffiths R et al. AAGBI Guidelines: Peri-operative care of the elderly. Anaesthesia 2014; 69(s1): 81–98" },
-          { text: "Clegg A et al. Frailty in elderly people. Lancet 2013; 381: 752–762" },
-          { text: "Inouye SK et al. Delirium in elderly people. Lancet 2014; 383: 911–922" },
-        ]} />
+        <ReferencesList topicId="elderly-anaesthesia" />
 
         <TopicCompletionToggle topicId="elderly-anaesthesia" topicTitle="Anaesthesia for the Elderly Patient" />
       </div>

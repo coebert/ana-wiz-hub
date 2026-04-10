@@ -143,11 +143,7 @@ const InterventionalRadiologyTopic = () => {
 
         <QuizSection questions={interventionalRadiologyQuestions} />
 
-        <ReferencesList references={[
-          { text: "AAGBI Guidelines: Anaesthesia Services in Remote Sites. Association of Anaesthetists, 2023" },
-          { text: "Stacul F et al. Contrast induced nephropathy: updated ESUR Contrast Media Safety Committee guidelines. Eur Radiol 2011; 21: 2527–2541" },
-          { text: "Patel IJ et al. ACR guidance document on sedation/analgesia. J Am Coll Radiol 2017; 14: 1272–1283" },
-        ]} />
+        <ReferencesList topicId="interventional-radiology" />
 
         <TopicCompletionToggle topicId="interventional-radiology" topicTitle="Anaesthesia for Interventional Radiology" />
       </div>

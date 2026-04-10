@@ -120,11 +120,7 @@ const PlasticSurgeryTopic = () => {
 
         <QuizSection questions={plasticSurgeryQuestions} />
 
-        <ReferencesList references={[
-          { text: "Quinlan JF. Anaesthesia for free flap surgery. BJA Education 2021; 21(11): 426–432" },
-          { text: "Rosenberg JJ, Fornage BD. Microvascular free flaps — perioperative management. Curr Opin Anaesthesiol 2019; 32: 47–53" },
-          { text: "BAPRAS Guidelines on Free Flap Monitoring. British Association of Plastic, Reconstructive and Aesthetic Surgeons, 2020" },
-        ]} />
+        <ReferencesList topicId="plastic-surgery" />
 
         <TopicCompletionToggle topicId="plastic-surgery" topicTitle="Plastic Surgery & Microsurgery Anaesthesia" />
       </div>
