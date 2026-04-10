@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const EmergencySurgeryTopic = () => {
   return (
@@ -168,7 +169,8 @@ const EmergencySurgeryTopic = () => {
       <QuizSection questions={emergencySurgeryQuestions} />
       <ReferencesList topicId="emergency-surgery" />
 
-      <TopicCompletionToggle topicId="emergency-surgery" topicTitle="Anaesthesia for Emergency Surgery" />
+      <SeeAlso topicId="emergency-surgery" />
+        <TopicCompletionToggle topicId="emergency-surgery" topicTitle="Anaesthesia for Emergency Surgery" />
     </SectionLayout>
   );
 };

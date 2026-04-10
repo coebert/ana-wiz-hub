@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { gasLawsQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const GasLawsTopic = () => {
   return (
@@ -127,7 +128,8 @@ const GasLawsTopic = () => {
       <QuizSection questions={gasLawsQuiz} />
       <ReferencesList topicId="gas-laws" />
 
-      <TopicCompletionToggle topicId="gas-laws" topicTitle="Gas Laws" />
+      <SeeAlso topicId="gas-laws" />
+        <TopicCompletionToggle topicId="gas-laws" topicTitle="Gas Laws" />
     </SectionLayout>
   );
 };

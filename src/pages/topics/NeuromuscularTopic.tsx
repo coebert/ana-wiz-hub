@@ -6,6 +6,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { neuromuscularQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const NeuromuscularTopic = () => {
   return (
@@ -155,7 +156,8 @@ const NeuromuscularTopic = () => {
       <QuizSection questions={neuromuscularQuiz} />
       <ReferencesList topicId="neuromuscular" />
 
-      <TopicCompletionToggle topicId="neuromuscular" topicTitle="Neuromuscular Transmission" />
+      <SeeAlso topicId="neuromuscular" />
+        <TopicCompletionToggle topicId="neuromuscular" topicTitle="Neuromuscular Transmission" />
     </SectionLayout>
   );
 };

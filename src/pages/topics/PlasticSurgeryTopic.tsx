@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { plasticSurgeryQuestions } from "@/data/quizzes";
 import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Free flap surgery demands meticulous haemodynamic management — maintain normotension, normovolaemia, and normothermia to optimise flap perfusion and avoid vasospasm",
@@ -124,6 +125,7 @@ const PlasticSurgeryTopic = () => {
 
         <ReferencesList topicId="plastic-surgery" />
 
+        <SeeAlso topicId="plastic-surgery" />
         <TopicCompletionToggle topicId="plastic-surgery" topicTitle="Plastic Surgery & Microsurgery Anaesthesia" />
       </div>
     </SectionLayout>

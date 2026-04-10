@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { antimicrobialsIcuQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AntimicrobialsIcuTopic = () => {
   return (
@@ -81,7 +82,8 @@ const AntimicrobialsIcuTopic = () => {
       <QuizSection questions={antimicrobialsIcuQuestions} />
       <ReferencesList topicId="antimicrobials-icu" />
 
-      <TopicCompletionToggle topicId="antimicrobials-icu" topicTitle="Antimicrobials in ICU" />
+      <SeeAlso topicId="antimicrobials-icu" />
+        <TopicCompletionToggle topicId="antimicrobials-icu" topicTitle="Antimicrobials in ICU" />
     </SectionLayout>
   );
 };

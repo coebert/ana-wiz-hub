@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively",
@@ -183,6 +184,7 @@ const CardiovascularDiseaseTopic = () => {
 
         <QuizSection questions={cardiovascularDiseaseQuestions} />
         <ReferencesList topicId="cardiovascular-disease" />
+        <SeeAlso topicId="cardiovascular-disease" />
         <TopicCompletionToggle topicId="cardiovascular-disease" topicTitle="Cardiovascular Co-Existing Disease" />
       </div>
     </SectionLayout>

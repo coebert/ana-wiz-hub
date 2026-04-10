@@ -6,6 +6,7 @@ import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
 import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
 import { akiRrtQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AkiRrtTopic = () => {
   return (
@@ -106,7 +107,8 @@ const AkiRrtTopic = () => {
       <QuizSection questions={akiRrtQuestions} />
       <ReferencesList topicId="aki-rrt" />
 
-      <TopicCompletionToggle topicId="aki-rrt" topicTitle="Acute Kidney Injury & RRT" />
+      <SeeAlso topicId="aki-rrt" />
+        <TopicCompletionToggle topicId="aki-rrt" topicTitle="Acute Kidney Injury & RRT" />
     </SectionLayout>
   );
 };

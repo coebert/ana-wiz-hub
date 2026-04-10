@@ -8,6 +8,7 @@ import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const MuscleRelaxantsTopic = () => {
   return (
@@ -187,7 +188,8 @@ const MuscleRelaxantsTopic = () => {
         <QuizSection questions={muscleRelaxantsQuiz} />
       <ReferencesList topicId="muscle-relaxants" />
 
-      <TopicCompletionToggle topicId="muscle-relaxants" topicTitle="Neuromuscular Blocking Agents" />
+      <SeeAlso topicId="muscle-relaxants" />
+        <TopicCompletionToggle topicId="muscle-relaxants" topicTitle="Neuromuscular Blocking Agents" />
     </SectionLayout>
   );
 };

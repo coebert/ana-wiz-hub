@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PreoperativeAssessmentTopic = () => {
   return (
@@ -100,7 +101,8 @@ const PreoperativeAssessmentTopic = () => {
       <QuizSection questions={preoperativeAssessmentQuestions} />
       <ReferencesList topicId="preoperative-assessment" />
 
-      <TopicCompletionToggle topicId="preoperative-assessment" topicTitle="Preoperative Assessment" />
+      <SeeAlso topicId="preoperative-assessment" />
+        <TopicCompletionToggle topicId="preoperative-assessment" topicTitle="Preoperative Assessment" />
     </SectionLayout>
   );
 };

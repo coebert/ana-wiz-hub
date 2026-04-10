@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
@@ -167,6 +168,7 @@ const ElderlyAnaesthesiaTopic = () => {
 
         <ReferencesList topicId="elderly-anaesthesia" />
 
+        <SeeAlso topicId="elderly-anaesthesia" />
         <TopicCompletionToggle topicId="elderly-anaesthesia" topicTitle="Anaesthesia for the Elderly Patient" />
       </div>
     </SectionLayout>

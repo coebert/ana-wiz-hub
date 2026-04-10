@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HepatobiliaryTransplantTopic = () => {
   return (
@@ -114,7 +115,8 @@ const HepatobiliaryTransplantTopic = () => {
 
       <QuizSection questions={hepatobiliaryTransplantQuestions} />
       <ReferencesList topicId="hepatobiliary-transplant" />
-      <TopicCompletionToggle topicId="hepatobiliary-transplant" topicTitle="Hepatobiliary & Transplant Anaesthesia" />
+      <SeeAlso topicId="hepatobiliary-transplant" />
+        <TopicCompletionToggle topicId="hepatobiliary-transplant" topicTitle="Hepatobiliary & Transplant Anaesthesia" />
     </SectionLayout>
   );
 };

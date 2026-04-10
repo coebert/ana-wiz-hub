@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const MaternalPhysiologyTopic = () => {
   return (
@@ -116,7 +117,8 @@ const MaternalPhysiologyTopic = () => {
       <QuizSection questions={maternalPhysiologyQuestions} />
       <ReferencesList topicId="maternal-physiology" />
 
-      <TopicCompletionToggle topicId="maternal-physiology" topicTitle="Maternal Physiology" />
+      <SeeAlso topicId="maternal-physiology" />
+        <TopicCompletionToggle topicId="maternal-physiology" topicTitle="Maternal Physiology" />
     </SectionLayout>
   );
 };

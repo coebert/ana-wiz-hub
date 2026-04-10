@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const IcuNutritionTopic = () => {
   return (
@@ -109,7 +110,8 @@ const IcuNutritionTopic = () => {
       <QuizSection questions={icuNutritionQuestions} />
       <ReferencesList topicId="icu-nutrition" />
 
-      <TopicCompletionToggle topicId="icu-nutrition" topicTitle="Nutrition in Critical Care" />
+      <SeeAlso topicId="icu-nutrition" />
+        <TopicCompletionToggle topicId="icu-nutrition" topicTitle="Nutrition in Critical Care" />
     </SectionLayout>
   );
 };

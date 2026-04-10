@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const FoetalCirculationTopic = () => {
   return (
@@ -128,7 +129,8 @@ const FoetalCirculationTopic = () => {
       <QuizSection questions={foetalCirculationQuestions} />
       <ReferencesList topicId="foetal-circulation" />
 
-      <TopicCompletionToggle topicId="foetal-circulation" topicTitle="Foetal Circulation" />
+      <SeeAlso topicId="foetal-circulation" />
+        <TopicCompletionToggle topicId="foetal-circulation" topicTitle="Foetal Circulation" />
     </SectionLayout>
   );
 };

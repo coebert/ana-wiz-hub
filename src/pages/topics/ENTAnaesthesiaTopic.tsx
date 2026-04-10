@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -100,7 +101,8 @@ const ENTAnaesthesiaTopic = () => {
       ]} />
       <QuizSection questions={entAnaesthesiaQuestions} />
       <ReferencesList topicId="ent-anaesthesia" />
-      <TopicCompletionToggle topicId="ent-anaesthesia" topicTitle="ENT & Maxillofacial Anaesthesia" />
+      <SeeAlso topicId="ent-anaesthesia" />
+        <TopicCompletionToggle topicId="ent-anaesthesia" topicTitle="ENT & Maxillofacial Anaesthesia" />
     </SectionLayout>
   );
 };

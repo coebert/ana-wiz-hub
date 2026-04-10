@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal",
@@ -158,6 +159,7 @@ const EndocrineDiseaseTopic = () => {
 
         <QuizSection questions={endocrineDiseaseQuestions} />
         <ReferencesList topicId="endocrine-disease" />
+        <SeeAlso topicId="endocrine-disease" />
         <TopicCompletionToggle topicId="endocrine-disease" topicTitle="Endocrine Co-Existing Disease" />
       </div>
     </SectionLayout>

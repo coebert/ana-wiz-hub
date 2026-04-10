@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const heparinComparison = [
   { property: "Source", ufh: "Porcine intestinal mucosa", lmwh: "Depolymerised UFH" },
@@ -339,7 +340,8 @@ const AnticoagulantsTopic = () => {
       <QuizSection questions={anticoagulantsQuiz} />
       <ReferencesList topicId="anticoagulants" />
 
-      <TopicCompletionToggle topicId="anticoagulants" topicTitle="Anticoagulant Pharmacology" />
+      <SeeAlso topicId="anticoagulants" />
+        <TopicCompletionToggle topicId="anticoagulants" topicTitle="Anticoagulant Pharmacology" />
     </SectionLayout>
   );
 };

@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const FlowMeasurementTopic = () => {
   return (
@@ -116,7 +117,8 @@ const FlowMeasurementTopic = () => {
       <QuizSection questions={flowMeasurementQuiz} />
       <ReferencesList topicId="flow-measurement" />
 
-      <TopicCompletionToggle topicId="flow-measurement" topicTitle="Flow & Flowmeters" />
+      <SeeAlso topicId="flow-measurement" />
+        <TopicCompletionToggle topicId="flow-measurement" topicTitle="Flow & Flowmeters" />
     </SectionLayout>
   );
 };

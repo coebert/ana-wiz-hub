@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { vaporizersQuiz } from "@/data/quizzes";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const VaporizersTopic = () => {
   return (
@@ -109,7 +110,8 @@ const VaporizersTopic = () => {
       <QuizSection questions={vaporizersQuiz} />
       <ReferencesList topicId="vaporizers" />
 
-      <TopicCompletionToggle topicId="vaporizers" topicTitle="Vaporizers" />
+      <SeeAlso topicId="vaporizers" />
+        <TopicCompletionToggle topicId="vaporizers" topicTitle="Vaporizers" />
     </SectionLayout>
   );
 };

@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import MathConceptsDiagram from "@/components/diagrams/MathConceptsDiagram";
 import { mathConceptsQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const MathConceptsTopic = () => {
   return (
@@ -105,7 +106,8 @@ const MathConceptsTopic = () => {
       <QuizSection questions={mathConceptsQuiz} />
       <ReferencesList topicId="math-concepts" />
 
-      <TopicCompletionToggle topicId="math-concepts" topicTitle="Mathematical Concepts" />
+      <SeeAlso topicId="math-concepts" />
+        <TopicCompletionToggle topicId="math-concepts" topicTitle="Mathematical Concepts" />
     </SectionLayout>
   );
 };

@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const VascularAnaesthesiaTopic = () => {
   return (
@@ -83,7 +84,8 @@ const VascularAnaesthesiaTopic = () => {
       ]} />
       <QuizSection questions={vascularAnaesthesiaQuestions} />
       <ReferencesList topicId="vascular-anaesthesia" />
-      <TopicCompletionToggle topicId="vascular-anaesthesia" topicTitle="Vascular Anaesthesia" />
+      <SeeAlso topicId="vascular-anaesthesia" />
+        <TopicCompletionToggle topicId="vascular-anaesthesia" topicTitle="Vascular Anaesthesia" />
     </SectionLayout>
   );
 };

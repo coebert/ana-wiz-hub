@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -66,7 +67,8 @@ const HaematologyImmunityTopic = () => {
       ]} />
       <QuizSection questions={haematologyImmunityQuestions} />
       <ReferencesList topicId="haematology-immunity" />
-      <TopicCompletionToggle topicId="haematology-immunity" topicTitle="Haematology &amp; Immunity" />
+      <SeeAlso topicId="haematology-immunity" />
+        <TopicCompletionToggle topicId="haematology-immunity" topicTitle="Haematology &amp; Immunity" />
     </SectionLayout>
   );
 };

@@ -10,6 +10,7 @@ import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineD
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const subtopicLinks = [
   { path: "/physics/anaesthetic-machine", title: "The Anaesthetic Machine", desc: "Pipeline supply, regulators, flowmeters, safety features" },
@@ -247,6 +248,7 @@ const EquipmentMonitoringTopic = () => {
 
         <QuizSection questions={[...anaestheticMachineQuiz, ...breathingCircuitsQuiz, ...vaporizersQuiz]} />
         <ReferencesList topicId="equipment-monitoring" />
+        <SeeAlso topicId="equipment-monitoring" />
         <TopicCompletionToggle topicId="equipment-monitoring" topicTitle="Equipment & Monitoring" />
       </div>
     </SectionLayout>

@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ABGAnalyserTopic = () => {
   return (
@@ -178,7 +179,8 @@ const ABGAnalyserTopic = () => {
       <QuizSection questions={abgAnalyserQuestions} />
       <ReferencesList topicId="abg-analyser" />
 
-      <TopicCompletionToggle topicId="abg-analyser" topicTitle="ABG Analyser & Gas Measurement" />
+      <SeeAlso topicId="abg-analyser" />
+        <TopicCompletionToggle topicId="abg-analyser" topicTitle="ABG Analyser & Gas Measurement" />
     </SectionLayout>
   );
 };

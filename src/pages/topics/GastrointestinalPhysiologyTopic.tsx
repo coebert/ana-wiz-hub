@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const GastrointestinalPhysiologyTopic = () => {
   return (
@@ -77,7 +78,8 @@ const GastrointestinalPhysiologyTopic = () => {
       ]} />
       <QuizSection questions={giPhysiologyQuestions} />
       <ReferencesList topicId="gi-physiology" />
-      <TopicCompletionToggle topicId="gi-physiology" topicTitle="Gastrointestinal Physiology" />
+      <SeeAlso topicId="gi-physiology" />
+        <TopicCompletionToggle topicId="gi-physiology" topicTitle="Gastrointestinal Physiology" />
     </SectionLayout>
   );
 };

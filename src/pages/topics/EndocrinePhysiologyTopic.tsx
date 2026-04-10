@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const EndocrinePhysiologyTopic = () => {
   return (
@@ -82,7 +83,8 @@ const EndocrinePhysiologyTopic = () => {
       ]} />
       <QuizSection questions={endocrinePhysiologyQuestions} />
       <ReferencesList topicId="endocrine-physiology" />
-      <TopicCompletionToggle topicId="endocrine-physiology" topicTitle="Endocrine Physiology" />
+      <SeeAlso topicId="endocrine-physiology" />
+        <TopicCompletionToggle topicId="endocrine-physiology" topicTitle="Endocrine Physiology" />
     </SectionLayout>
   );
 };

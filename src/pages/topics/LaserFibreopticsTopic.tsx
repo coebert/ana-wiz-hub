@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { laserFibreopticsQuiz } from "@/data/quizzes";
 import LaserFibreopticsDiagram from "@/components/diagrams/LaserFibreopticsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const LaserFibreopticsTopic = () => {
   return (
@@ -110,6 +111,7 @@ const LaserFibreopticsTopic = () => {
 
       <ReferencesList topicId="lasers-fibreoptics" />
 
+        <SeeAlso topicId="lasers-fibreoptics" />
         <TopicCompletionToggle topicId="lasers-fibreoptics" topicTitle="Lasers & Fibreoptics" />
       </div>
     </SectionLayout>

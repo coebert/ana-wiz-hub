@@ -7,6 +7,7 @@ import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const RegionalAnaesthesiaTopic = () => {
   return (
@@ -286,7 +287,8 @@ const RegionalAnaesthesiaTopic = () => {
       <QuizSection questions={regionalAnaesthesiaQuestions} />
       <ReferencesList topicId="regional-anaesthesia" />
 
-      <TopicCompletionToggle topicId="regional-anaesthesia" topicTitle="Regional & Neuraxial Anaesthesia" />
+      <SeeAlso topicId="regional-anaesthesia" />
+        <TopicCompletionToggle topicId="regional-anaesthesia" topicTitle="Regional & Neuraxial Anaesthesia" />
     </SectionLayout>
   );
 };

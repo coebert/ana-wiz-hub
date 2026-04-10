@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { toxicologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ToxicologyTopic = () => {
   return (
@@ -209,7 +210,8 @@ const ToxicologyTopic = () => {
       ]} />
       <QuizSection questions={toxicologyQuestions} />
       <ReferencesList topicId="toxicology" />
-      <TopicCompletionToggle topicId="toxicology" topicTitle="Toxicology &amp; Poisoning" />
+      <SeeAlso topicId="toxicology" />
+        <TopicCompletionToggle topicId="toxicology" topicTitle="Toxicology &amp; Poisoning" />
     </SectionLayout>
   );
 };

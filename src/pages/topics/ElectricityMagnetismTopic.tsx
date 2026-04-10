@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { electricityMagnetismQuiz } from "@/data/quizzes";
 import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ElectricityMagnetismTopic = () => {
   return (
@@ -129,6 +130,7 @@ const ElectricityMagnetismTopic = () => {
 
       <ReferencesList topicId="electricity-magnetism" />
 
+        <SeeAlso topicId="electricity-magnetism" />
         <TopicCompletionToggle topicId="electricity-magnetism" topicTitle="Electricity & Magnetism" />
       </div>
     </SectionLayout>

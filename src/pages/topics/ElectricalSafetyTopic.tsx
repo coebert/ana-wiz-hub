@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ElectricalSafetyTopic = () => {
   return (
@@ -119,7 +120,8 @@ const ElectricalSafetyTopic = () => {
       <QuizSection questions={electricalSafetyQuiz} />
       <ReferencesList topicId="electrical-safety" />
 
-      <TopicCompletionToggle topicId="electrical-safety" topicTitle="Electrical Safety" />
+      <SeeAlso topicId="electrical-safety" />
+        <TopicCompletionToggle topicId="electrical-safety" topicTitle="Electrical Safety" />
     </SectionLayout>
   );
 };

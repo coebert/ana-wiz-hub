@@ -7,6 +7,7 @@ import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorD
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const VasoactiveAgentsTopic = () => {
   return (
@@ -516,6 +517,7 @@ const VasoactiveAgentsTopic = () => {
 
       <ReferencesList topicId="vasoactive-agents" />
 
+        <SeeAlso topicId="vasoactive-agents" />
         <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive & Inotropic Agents" />
 
         <QuizSection questions={vasoactiveAgentsQuiz} />

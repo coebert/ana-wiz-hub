@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const TransferMedicineTopic = () => {
   return (
@@ -67,7 +68,8 @@ const TransferMedicineTopic = () => {
       ]} />
       <QuizSection questions={transferMedicineQuestions} />
       <ReferencesList topicId="transfer-medicine" />
-      <TopicCompletionToggle topicId="transfer-medicine" topicTitle="Transfer Medicine" />
+      <SeeAlso topicId="transfer-medicine" />
+        <TopicCompletionToggle topicId="transfer-medicine" topicTitle="Transfer Medicine" />
     </SectionLayout>
   );
 };

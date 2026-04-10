@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ClinicalMeasurementTopic = () => {
   return (
@@ -146,6 +147,7 @@ const ClinicalMeasurementTopic = () => {
 
       <ReferencesList topicId="clinical-measurement" />
 
+        <SeeAlso topicId="clinical-measurement" />
         <TopicCompletionToggle topicId="clinical-measurement" topicTitle="Clinical Measurement" />
       </div>
     </SectionLayout>

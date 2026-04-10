@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PressureMeasurementTopic = () => {
   return (
@@ -114,7 +115,8 @@ const PressureMeasurementTopic = () => {
       <QuizSection questions={pressureMeasurementQuiz} />
       <ReferencesList topicId="pressure-measurement" />
 
-      <TopicCompletionToggle topicId="pressure-measurement" topicTitle="Pressure Measurement" />
+      <SeeAlso topicId="pressure-measurement" />
+        <TopicCompletionToggle topicId="pressure-measurement" topicTitle="Pressure Measurement" />
     </SectionLayout>
   );
 };

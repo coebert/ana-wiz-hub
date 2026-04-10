@@ -8,6 +8,7 @@ import PACDiagram from "@/components/diagrams/PACDiagram";
 import EchoDiagram from "@/components/diagrams/EchoDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const CardiacOutputMonitoringTopic = () => {
   return (
@@ -86,7 +87,8 @@ const CardiacOutputMonitoringTopic = () => {
       <QuizSection questions={cardiacOutputMonitoringQuestions} />
       <ReferencesList topicId="cardiac-output-monitoring" />
 
-      <TopicCompletionToggle topicId="cardiac-output-monitoring" topicTitle="Cardiac Output Monitoring" />
+      <SeeAlso topicId="cardiac-output-monitoring" />
+        <TopicCompletionToggle topicId="cardiac-output-monitoring" topicTitle="Cardiac Output Monitoring" />
     </SectionLayout>
   );
 };

@@ -6,6 +6,7 @@ import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -233,7 +234,8 @@ const BariatricAnaesthesiaTopic = () => {
       ]} />
       <QuizSection questions={bariatricAnaesthesiaQuestions} />
       <ReferencesList topicId="bariatric-anaesthesia" />
-      <TopicCompletionToggle topicId="bariatric-anaesthesia" topicTitle="Bariatric Anaesthesia" />
+      <SeeAlso topicId="bariatric-anaesthesia" />
+        <TopicCompletionToggle topicId="bariatric-anaesthesia" topicTitle="Bariatric Anaesthesia" />
     </SectionLayout>
   );
 };

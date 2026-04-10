@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { defibrillationPacingQuiz } from "@/data/quizzes";
 import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const DefibrillationPacingTopic = () => {
   return (
@@ -137,6 +138,7 @@ const DefibrillationPacingTopic = () => {
 
       <ReferencesList topicId="defibrillation-pacing" />
 
+        <SeeAlso topicId="defibrillation-pacing" />
         <TopicCompletionToggle topicId="defibrillation-pacing" topicTitle="Defibrillation & Pacing" />
       </div>
     </SectionLayout>

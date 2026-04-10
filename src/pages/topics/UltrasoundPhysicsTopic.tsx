@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
 import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const UltrasoundPhysicsTopic = () => {
   return (
@@ -134,6 +135,7 @@ const UltrasoundPhysicsTopic = () => {
 
       <ReferencesList topicId="ultrasound-physics" />
 
+        <SeeAlso topicId="ultrasound-physics" />
         <TopicCompletionToggle topicId="ultrasound-physics" topicTitle="Ultrasound Physics" />
       </div>
     </SectionLayout>

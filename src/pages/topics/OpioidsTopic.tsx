@@ -7,6 +7,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { opioidsQuiz } from "@/data/quizzes";
 import OpioidStructures from "@/components/diagrams/OpioidStructures";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const OpioidsTopic = () => {
   return (
@@ -429,7 +430,8 @@ const OpioidsTopic = () => {
         <QuizSection questions={opioidsQuiz} />
       <ReferencesList topicId="opioids" />
 
-      <TopicCompletionToggle topicId="opioids" topicTitle="Opioid Pharmacology" />
+      <SeeAlso topicId="opioids" />
+        <TopicCompletionToggle topicId="opioids" topicTitle="Opioid Pharmacology" />
     </SectionLayout>
   );
 };
