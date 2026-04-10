@@ -58,6 +58,8 @@ const FoetalCirculationTopic = () => {
           </div>
         </div>
 
+        <FoetalCirculationDiagram />
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Oxygen Delivery</h2>
           <div className="grid sm:grid-cols-2 gap-3">
