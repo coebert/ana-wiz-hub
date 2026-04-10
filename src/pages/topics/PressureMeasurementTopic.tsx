@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 
 const PressureMeasurementTopic = () => {
   return (
@@ -113,6 +114,7 @@ const PressureMeasurementTopic = () => {
               <li><strong>Clinical use</strong>: perioperative haemodynamic monitoring, autonomic function testing, research</li>
             </ul>
           </div>
+          <FinapresDiagram />
         </section>
       </div>
 
