@@ -28,6 +28,7 @@ const ClinicalIncidentsTopic = () => {
               <li>Take mast cell tryptase at 1h, 6h, and &gt;24h (baseline)</li>
             </ol>
           </div>
+          <AnaphylaxisPathophysiologyDiagram />
         </div>
 
         <div>
