@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HumidityGasSamplingTopic = () => {
   return (
@@ -123,6 +124,7 @@ const HumidityGasSamplingTopic = () => {
 
       <ReferencesList topicId="humidity-gas-sampling" />
 
+        <SeeAlso topicId="humidity-gas-sampling" />
         <TopicCompletionToggle topicId="humidity-gas-sampling" topicTitle="Humidity & Gas Analysis" />
       </div>
     </SectionLayout>

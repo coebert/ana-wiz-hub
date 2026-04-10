@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const VentilationPerfusionTopic = () => {
   return (
@@ -96,7 +97,8 @@ const VentilationPerfusionTopic = () => {
       ]} />
       <QuizSection questions={ventilationPerfusionQuestions} />
       <ReferencesList topicId="ventilation-perfusion" />
-      <TopicCompletionToggle topicId="ventilation-perfusion" topicTitle="Ventilation-Perfusion &amp; Gas Exchange" />
+      <SeeAlso topicId="ventilation-perfusion" />
+        <TopicCompletionToggle topicId="ventilation-perfusion" topicTitle="Ventilation-Perfusion &amp; Gas Exchange" />
     </SectionLayout>
   );
 };

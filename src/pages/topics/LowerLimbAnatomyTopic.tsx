@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const LowerLimbAnatomyTopic = () => {
   return (
@@ -77,7 +78,8 @@ const LowerLimbAnatomyTopic = () => {
       ]} />
       <QuizSection questions={lowerLimbAnatomyQuestions} />
       <ReferencesList topicId="lower-limb-anatomy" />
-      <TopicCompletionToggle topicId="lower-limb-anatomy" topicTitle="Lower Limb &amp; Lumbosacral Plexus" />
+      <SeeAlso topicId="lower-limb-anatomy" />
+        <TopicCompletionToggle topicId="lower-limb-anatomy" topicTitle="Lower Limb &amp; Lumbosacral Plexus" />
     </SectionLayout>
   );
 };

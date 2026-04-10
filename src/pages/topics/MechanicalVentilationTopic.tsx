@@ -6,6 +6,7 @@ import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWave
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const MechanicalVentilationTopic = () => {
   return (
@@ -89,7 +90,8 @@ const MechanicalVentilationTopic = () => {
       <QuizSection questions={mechanicalVentilationQuestions} />
       <ReferencesList topicId="mechanical-ventilation" />
 
-      <TopicCompletionToggle topicId="mechanical-ventilation" topicTitle="Mechanical Ventilation" />
+      <SeeAlso topicId="mechanical-ventilation" />
+        <TopicCompletionToggle topicId="mechanical-ventilation" topicTitle="Mechanical Ventilation" />
     </SectionLayout>
   );
 };

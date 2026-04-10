@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PharmacokineticsTopic = () => {
   return (
@@ -109,7 +110,8 @@ const PharmacokineticsTopic = () => {
       <QuizSection questions={pharmacokineticsQuiz} />
       <ReferencesList topicId="pharmacokinetics" />
 
-      <TopicCompletionToggle topicId="pharmacokinetics" topicTitle="Pharmacokinetic Principles" />
+      <SeeAlso topicId="pharmacokinetics" />
+        <TopicCompletionToggle topicId="pharmacokinetics" topicTitle="Pharmacokinetic Principles" />
     </SectionLayout>
   );
 };

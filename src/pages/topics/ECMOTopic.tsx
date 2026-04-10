@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ecmoQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ECMOTopic = () => {
   return (
@@ -74,7 +75,8 @@ const ECMOTopic = () => {
       ]} />
       <QuizSection questions={ecmoQuestions} />
       <ReferencesList topicId="ecmo" />
-      <TopicCompletionToggle topicId="ecmo" topicTitle="ECMO &amp; Mechanical Circulatory Support" />
+      <SeeAlso topicId="ecmo" />
+        <TopicCompletionToggle topicId="ecmo" topicTitle="ECMO &amp; Mechanical Circulatory Support" />
     </SectionLayout>
   );
 };

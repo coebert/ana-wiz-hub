@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const CardiacElectrophysiologyTopic = () => {
   return (
@@ -90,7 +91,8 @@ const CardiacElectrophysiologyTopic = () => {
       ]} />
       <QuizSection questions={cardiacElectrophysiologyQuestions} />
       <ReferencesList topicId="cardiac-electrophysiology" />
-      <TopicCompletionToggle topicId="cardiac-electrophysiology" topicTitle="Cardiac Electrophysiology &amp; Vascular Physiology" />
+      <SeeAlso topicId="cardiac-electrophysiology" />
+        <TopicCompletionToggle topicId="cardiac-electrophysiology" topicTitle="Cardiac Electrophysiology &amp; Vascular Physiology" />
     </SectionLayout>
   );
 };

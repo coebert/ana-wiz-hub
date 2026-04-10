@@ -6,6 +6,7 @@ import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AcidBaseTopic = () => {
   return (
@@ -94,7 +95,8 @@ const AcidBaseTopic = () => {
       <QuizSection questions={acidBaseQuestions} />
       <ReferencesList topicId="acid-base" />
 
-      <TopicCompletionToggle topicId="acid-base" topicTitle="Acid-Base Disorders" />
+      <SeeAlso topicId="acid-base" />
+        <TopicCompletionToggle topicId="acid-base" topicTitle="Acid-Base Disorders" />
     </SectionLayout>
   );
 };

@@ -6,6 +6,7 @@ import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PulseOximetryTopic = () => {
   return (
@@ -107,7 +108,8 @@ const PulseOximetryTopic = () => {
       <QuizSection questions={pulseOximetryQuiz} />
       <ReferencesList topicId="pulse-oximetry" />
 
-      <TopicCompletionToggle topicId="pulse-oximetry" topicTitle="Pulse Oximetry & Capnography" />
+      <SeeAlso topicId="pulse-oximetry" />
+        <TopicCompletionToggle topicId="pulse-oximetry" topicTitle="Pulse Oximetry & Capnography" />
     </SectionLayout>
   );
 };

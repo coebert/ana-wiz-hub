@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Asthma: avoid histamine-releasing drugs (atracurium, morphine, thiopentone); desflurane and dry gases may trigger bronchospasm — use sevoflurane which has bronchodilator properties",
@@ -143,6 +144,7 @@ const RespiratoryDiseaseTopic = () => {
 
         <QuizSection questions={respiratoryDiseaseQuestions} />
         <ReferencesList topicId="respiratory-disease" />
+        <SeeAlso topicId="respiratory-disease" />
         <TopicCompletionToggle topicId="respiratory-disease" topicTitle="Respiratory Co-Existing Disease" />
       </div>
     </SectionLayout>

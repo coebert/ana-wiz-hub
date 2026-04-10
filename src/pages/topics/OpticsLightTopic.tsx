@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { opticsLightQuiz } from "@/data/quizzes";
 import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const OpticsLightTopic = () => {
   return (
@@ -140,6 +141,7 @@ const OpticsLightTopic = () => {
 
       <ReferencesList topicId="optics-light" />
 
+        <SeeAlso topicId="optics-light" />
         <TopicCompletionToggle topicId="optics-light" topicTitle="Optics & Light" />
       </div>
     </SectionLayout>

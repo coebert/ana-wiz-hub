@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { statisticsEBMQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const StatisticsEBMTopic = () => {
   return (
@@ -252,6 +253,7 @@ const StatisticsEBMTopic = () => {
         <QuizSection questions={statisticsEBMQuiz} />
       <ReferencesList topicId="statistics-ebm" />
 
+        <SeeAlso topicId="statistics-ebm" />
         <TopicCompletionToggle topicId="statistics-ebm" topicTitle="Statistics & Evidence-Based Medicine" />
       </div>
     </SectionLayout>

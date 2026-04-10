@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -55,7 +56,8 @@ const OrthopaedicAnaesthesiaTopic = () => {
       ]} />
       <QuizSection questions={orthopaedicAnaesthesiaQuestions} />
       <ReferencesList topicId="orthopaedic-anaesthesia" />
-      <TopicCompletionToggle topicId="orthopaedic-anaesthesia" topicTitle="Orthopaedic Anaesthesia" />
+      <SeeAlso topicId="orthopaedic-anaesthesia" />
+        <TopicCompletionToggle topicId="orthopaedic-anaesthesia" topicTitle="Orthopaedic Anaesthesia" />
     </SectionLayout>
   );
 };

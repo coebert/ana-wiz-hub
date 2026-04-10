@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { corticosteroidsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const CorticosteroidsTopic = () => {
   return (
@@ -84,7 +85,8 @@ const CorticosteroidsTopic = () => {
       ]} />
       <QuizSection questions={corticosteroidsQuestions} />
       <ReferencesList topicId="corticosteroids" />
-      <TopicCompletionToggle topicId="corticosteroids" topicTitle="Corticosteroids &amp; Endocrine Pharmacology" />
+      <SeeAlso topicId="corticosteroids" />
+        <TopicCompletionToggle topicId="corticosteroids" topicTitle="Corticosteroids &amp; Endocrine Pharmacology" />
     </SectionLayout>
   );
 };

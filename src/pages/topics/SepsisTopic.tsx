@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const SepsisTopic = () => {
   return (
@@ -109,7 +110,8 @@ const SepsisTopic = () => {
       <QuizSection questions={sepsisQuestions} />
       <ReferencesList topicId="sepsis" />
 
-      <TopicCompletionToggle topicId="sepsis" topicTitle="Sepsis &amp; Septic Shock" />
+      <SeeAlso topicId="sepsis" />
+        <TopicCompletionToggle topicId="sepsis" topicTitle="Sepsis &amp; Septic Shock" />
     </SectionLayout>
   );
 };

@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AbdominalAnatomyTopic = () => {
   return (
@@ -91,7 +92,8 @@ const AbdominalAnatomyTopic = () => {
       <QuizSection questions={abdominalAnatomyQuestions} />
       <ReferencesList topicId="abdominal-anatomy" />
 
-      <TopicCompletionToggle topicId="abdominal-anatomy" topicTitle="Abdominal & Pelvic Anatomy" />
+      <SeeAlso topicId="abdominal-anatomy" />
+        <TopicCompletionToggle topicId="abdominal-anatomy" topicTitle="Abdominal & Pelvic Anatomy" />
     </SectionLayout>
   );
 };

@@ -6,6 +6,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const VolatileAgentsTopic = () => {
   return (
@@ -316,7 +317,8 @@ const VolatileAgentsTopic = () => {
       <QuizSection questions={volatileAgentsQuiz} />
       <ReferencesList topicId="volatile-agents" />
 
-      <TopicCompletionToggle topicId="volatile-agents" topicTitle="Volatile Anaesthetic Agents" />
+      <SeeAlso topicId="volatile-agents" />
+        <TopicCompletionToggle topicId="volatile-agents" topicTitle="Volatile Anaesthetic Agents" />
     </SectionLayout>
   );
 };

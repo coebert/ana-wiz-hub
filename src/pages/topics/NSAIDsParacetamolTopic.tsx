@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { nsaidsParacetamolQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const NSAIDsParacetamolTopic = () => {
   return (
@@ -63,7 +64,8 @@ const NSAIDsParacetamolTopic = () => {
       ]} />
       <QuizSection questions={nsaidsParacetamolQuestions} />
       <ReferencesList topicId="nsaids-paracetamol" />
-      <TopicCompletionToggle topicId="nsaids-paracetamol" topicTitle="NSAIDs &amp; Paracetamol" />
+      <SeeAlso topicId="nsaids-paracetamol" />
+        <TopicCompletionToggle topicId="nsaids-paracetamol" topicTitle="NSAIDs &amp; Paracetamol" />
     </SectionLayout>
   );
 };

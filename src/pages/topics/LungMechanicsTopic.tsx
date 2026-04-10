@@ -19,6 +19,7 @@ import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
 import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const LungMechanicsTopic = () => {
   return (
@@ -287,7 +288,8 @@ const LungMechanicsTopic = () => {
       <QuizSection questions={lungMechanicsQuiz} />
       <ReferencesList topicId="lung-mechanics" />
 
-      <TopicCompletionToggle topicId="lung-mechanics" topicTitle="Lung Mechanics" />
+      <SeeAlso topicId="lung-mechanics" />
+        <TopicCompletionToggle topicId="lung-mechanics" topicTitle="Lung Mechanics" />
     </SectionLayout>
   );
 };

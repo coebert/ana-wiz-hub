@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const TemperatureMeasurementTopic = () => {
   return (
@@ -145,6 +146,7 @@ const TemperatureMeasurementTopic = () => {
 
       <ReferencesList topicId="temperature-measurement" />
 
+        <SeeAlso topicId="temperature-measurement" />
         <TopicCompletionToggle topicId="temperature-measurement" topicTitle="Temperature Measurement" />
       </div>
     </SectionLayout>

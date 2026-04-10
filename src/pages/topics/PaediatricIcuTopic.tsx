@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PaediatricIcuTopic = () => {
   return (
@@ -324,7 +325,8 @@ const PaediatricIcuTopic = () => {
 
       <ReferencesList topicId="paediatric-icu" />
 
-      <TopicCompletionToggle topicId="paediatric-icu" topicTitle="Paediatric Intensive Care" />
+      <SeeAlso topicId="paediatric-icu" />
+        <TopicCompletionToggle topicId="paediatric-icu" topicTitle="Paediatric Intensive Care" />
     </SectionLayout>
   );
 };

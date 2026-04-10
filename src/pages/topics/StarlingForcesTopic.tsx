@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { starlingForcesQuestions } from "@/data/quizzes";
 import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const StarlingForcesTopic = () => {
   return (
@@ -132,7 +133,8 @@ const StarlingForcesTopic = () => {
       <QuizSection questions={starlingForcesQuestions} />
       <ReferencesList topicId="starling-forces" />
 
-      <TopicCompletionToggle topicId="starling-forces" topicTitle="Starling Forces &amp; Fluid Exchange" />
+      <SeeAlso topicId="starling-forces" />
+        <TopicCompletionToggle topicId="starling-forces" topicTitle="Starling Forces &amp; Fluid Exchange" />
     </SectionLayout>
   );
 };

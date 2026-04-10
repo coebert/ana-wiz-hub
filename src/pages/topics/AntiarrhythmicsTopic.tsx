@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -188,6 +189,7 @@ const AntiarrhythmicsTopic = () => {
 
       <ReferencesList topicId="antiarrhythmics" />
 
+        <SeeAlso topicId="antiarrhythmics" />
         <TopicCompletionToggle topicId="antiarrhythmics" topicTitle="Antiarrhythmic Drugs" />
 
         <QuizSection questions={antiarrhythmicsQuiz} />

@@ -6,6 +6,7 @@ import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
 import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AutonomicNervousTopic = () => {
   return (
@@ -115,7 +116,8 @@ const AutonomicNervousTopic = () => {
       <QuizSection questions={autonomicNervousQuiz} />
       <ReferencesList topicId="autonomic-nervous" />
 
-      <TopicCompletionToggle topicId="autonomic-nervous" topicTitle="Autonomic Nervous System" />
+      <SeeAlso topicId="autonomic-nervous" />
+        <TopicCompletionToggle topicId="autonomic-nervous" topicTitle="Autonomic Nervous System" />
     </SectionLayout>
   );
 };

@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { antiemeticsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AntiemeticsTopic = () => {
   return (
@@ -60,7 +61,8 @@ const AntiemeticsTopic = () => {
       ]} />
       <QuizSection questions={antiemeticsQuestions} />
       <ReferencesList topicId="antiemetics" />
-      <TopicCompletionToggle topicId="antiemetics" topicTitle="Antiemetics &amp; PONV" />
+      <SeeAlso topicId="antiemetics" />
+        <TopicCompletionToggle topicId="antiemetics" topicTitle="Antiemetics &amp; PONV" />
     </SectionLayout>
   );
 };

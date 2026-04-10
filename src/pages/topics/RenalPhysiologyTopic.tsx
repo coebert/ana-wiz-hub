@@ -10,6 +10,7 @@ import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrie
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const RenalPhysiologyTopic = () => {
   return (
@@ -158,7 +159,8 @@ const RenalPhysiologyTopic = () => {
       <QuizSection questions={renalPhysiologyQuiz} />
       <ReferencesList topicId="renal-physiology" />
 
-      <TopicCompletionToggle topicId="renal-physiology" topicTitle="Renal Physiology" />
+      <SeeAlso topicId="renal-physiology" />
+        <TopicCompletionToggle topicId="renal-physiology" topicTitle="Renal Physiology" />
     </SectionLayout>
   );
 };

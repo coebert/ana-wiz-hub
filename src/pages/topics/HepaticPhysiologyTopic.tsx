@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HepaticPhysiologyTopic = () => {
   return (
@@ -148,7 +149,8 @@ const HepaticPhysiologyTopic = () => {
       <QuizSection questions={hepaticPhysiologyQuestions} />
       <ReferencesList topicId="hepatic-physiology" />
 
-      <TopicCompletionToggle topicId="hepatic-physiology" topicTitle="Hepatic Physiology" />
+      <SeeAlso topicId="hepatic-physiology" />
+        <TopicCompletionToggle topicId="hepatic-physiology" topicTitle="Hepatic Physiology" />
     </SectionLayout>
   );
 };

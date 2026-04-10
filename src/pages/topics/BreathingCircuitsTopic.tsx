@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { breathingCircuitsQuiz } from "@/data/quizzes";
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const BreathingCircuitsTopic = () => {
   return (
@@ -125,6 +126,7 @@ const BreathingCircuitsTopic = () => {
 
       <ReferencesList topicId="breathing-circuits" />
 
+        <SeeAlso topicId="breathing-circuits" />
         <TopicCompletionToggle topicId="breathing-circuits" topicTitle="Breathing Circuits & Scavenging" />
       </div>
     </SectionLayout>

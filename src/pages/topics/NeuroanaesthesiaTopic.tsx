@@ -6,6 +6,7 @@ import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -96,7 +97,8 @@ const NeuroanaesthesiaTopic = () => {
       <QuizSection questions={neuroanaesthesiaQuestions} />
       <ReferencesList topicId="neuroanaesthesia" />
 
-      <TopicCompletionToggle topicId="neuroanaesthesia" topicTitle="Neuroanaesthesia" />
+      <SeeAlso topicId="neuroanaesthesia" />
+        <TopicCompletionToggle topicId="neuroanaesthesia" topicTitle="Neuroanaesthesia" />
     </SectionLayout>
   );
 };

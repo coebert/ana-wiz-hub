@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — use the Parkland formula: 4 ml × kg × %TBSA of crystalloid in 24 h, half in the first 8 h from time of burn",
@@ -200,6 +201,7 @@ const BurnsPlasticsTopic = () => {
 
         <ReferencesList topicId="burns-plastics" />
 
+        <SeeAlso topicId="burns-plastics" />
         <TopicCompletionToggle topicId="burns-plastics" topicTitle="Burns & Plastic Surgery Anaesthesia" />
       </div>
     </SectionLayout>

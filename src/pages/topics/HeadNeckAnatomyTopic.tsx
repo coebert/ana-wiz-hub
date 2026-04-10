@@ -10,6 +10,7 @@ import LaryngealNervesDiagram from "@/components/diagrams/LaryngealNervesDiagram
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HeadNeckAnatomyTopic = () => {
   return (
@@ -125,7 +126,8 @@ const HeadNeckAnatomyTopic = () => {
       <QuizSection questions={headNeckAnatomyQuestions} />
       <ReferencesList topicId="head-neck-anatomy" />
 
-      <TopicCompletionToggle topicId="head-neck-anatomy" topicTitle="Head & Neck Anatomy" />
+      <SeeAlso topicId="head-neck-anatomy" />
+        <TopicCompletionToggle topicId="head-neck-anatomy" topicTitle="Head & Neck Anatomy" />
     </SectionLayout>
   );
 };

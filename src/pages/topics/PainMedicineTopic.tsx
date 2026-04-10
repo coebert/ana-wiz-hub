@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { painMedicineQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const PainMedicineTopic = () => {
   return (
@@ -87,7 +88,8 @@ const PainMedicineTopic = () => {
       <QuizSection questions={painMedicineQuestions} />
       <ReferencesList topicId="pain-medicine" />
 
-      <TopicCompletionToggle topicId="pain-medicine" topicTitle="Pain Medicine" />
+      <SeeAlso topicId="pain-medicine" />
+        <TopicCompletionToggle topicId="pain-medicine" topicTitle="Pain Medicine" />
     </SectionLayout>
   );
 };

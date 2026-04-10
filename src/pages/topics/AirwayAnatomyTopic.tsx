@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { airwayAnatomyQuestions } from "@/data/quizzes";
 import LaryngealCrossSectionDiagram from "@/components/diagrams/LaryngealCrossSectionDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AirwayAnatomyTopic = () => {
   return (
@@ -108,7 +109,8 @@ const AirwayAnatomyTopic = () => {
       <QuizSection questions={airwayAnatomyQuestions} />
       <ReferencesList topicId="airway-anatomy" />
 
-      <TopicCompletionToggle topicId="airway-anatomy" topicTitle="Airway & Laryngeal Anatomy" />
+      <SeeAlso topicId="airway-anatomy" />
+        <TopicCompletionToggle topicId="airway-anatomy" topicTitle="Airway & Laryngeal Anatomy" />
     </SectionLayout>
   );
 };

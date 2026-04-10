@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { oxygenHaemoglobinQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const OxygenHaemoglobinTopic = () => {
   return (
@@ -116,7 +117,8 @@ const OxygenHaemoglobinTopic = () => {
       <QuizSection questions={oxygenHaemoglobinQuiz} />
       <ReferencesList topicId="oxygen-haemoglobin" />
 
-      <TopicCompletionToggle topicId="oxygen-haemoglobin" topicTitle="Oxygen-Haemoglobin Dissociation" />
+      <SeeAlso topicId="oxygen-haemoglobin" />
+        <TopicCompletionToggle topicId="oxygen-haemoglobin" topicTitle="Oxygen-Haemoglobin Dissociation" />
     </SectionLayout>
   );
 };

@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const IVAnaestheticsTopic = () => {
   return (
@@ -159,7 +160,8 @@ const IVAnaestheticsTopic = () => {
         <QuizSection questions={ivAnaestheticsQuiz} />
       <ReferencesList topicId="iv-anaesthetics" />
 
-      <TopicCompletionToggle topicId="iv-anaesthetics" topicTitle="Intravenous Anaesthetic Agents" />
+      <SeeAlso topicId="iv-anaesthetics" />
+        <TopicCompletionToggle topicId="iv-anaesthetics" topicTitle="Intravenous Anaesthetic Agents" />
     </SectionLayout>
   );
 };

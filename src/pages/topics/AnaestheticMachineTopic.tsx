@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { anaestheticMachineQuiz } from "@/data/quizzes";
 import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AnaestheticMachineTopic = () => {
   return (
@@ -148,6 +149,7 @@ const AnaestheticMachineTopic = () => {
 
       <ReferencesList topicId="anaesthetic-machine" />
 
+        <SeeAlso topicId="anaesthetic-machine" />
         <TopicCompletionToggle topicId="anaesthetic-machine" topicTitle="The Anaesthetic Machine" />
       </div>
     </SectionLayout>

@@ -6,6 +6,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
 import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const LocalAnaestheticsTopic = () => {
   return (
@@ -230,7 +231,8 @@ const LocalAnaestheticsTopic = () => {
       <QuizSection questions={localAnaestheticsQuiz} />
       <ReferencesList topicId="local-anaesthetics" />
 
-      <TopicCompletionToggle topicId="local-anaesthetics" topicTitle="Local Anaesthetic Agents" />
+      <SeeAlso topicId="local-anaesthetics" />
+        <TopicCompletionToggle topicId="local-anaesthetics" topicTitle="Local Anaesthetic Agents" />
     </SectionLayout>
   );
 };

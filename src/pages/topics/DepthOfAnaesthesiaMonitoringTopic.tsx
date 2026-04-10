@@ -8,6 +8,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 type Monitor = "bis" | "entropy" | "narcotrend";
 
@@ -339,7 +340,8 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
       <QuizSection questions={depthOfAnaesthesiaQuestions} />
       <ReferencesList topicId="depth-of-anaesthesia" />
 
-      <TopicCompletionToggle topicId="depth-of-anaesthesia" topicTitle="Depth of Anaesthesia Monitoring" />
+      <SeeAlso topicId="depth-of-anaesthesia" />
+        <TopicCompletionToggle topicId="depth-of-anaesthesia" topicTitle="Depth of Anaesthesia Monitoring" />
     </SectionLayout>
   );
 };

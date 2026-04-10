@@ -8,6 +8,7 @@ import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceD
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const ThoracicAnatomyTopic = () => {
   return (
@@ -152,7 +153,8 @@ const ThoracicAnatomyTopic = () => {
       <QuizSection questions={thoracicAnatomyQuestions} />
       <ReferencesList topicId="thoracic-anatomy" />
 
-      <TopicCompletionToggle topicId="thoracic-anatomy" topicTitle="Thoracic Anatomy" />
+      <SeeAlso topicId="thoracic-anatomy" />
+        <TopicCompletionToggle topicId="thoracic-anatomy" topicTitle="Thoracic Anatomy" />
     </SectionLayout>
   );
 };

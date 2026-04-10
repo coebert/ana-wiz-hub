@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const MRIPhysicsTopic = () => {
   return (
@@ -113,6 +114,7 @@ const MRIPhysicsTopic = () => {
 
       <ReferencesList topicId="mri-physics" />
 
+        <SeeAlso topicId="mri-physics" />
         <TopicCompletionToggle topicId="mri-physics" topicTitle="MRI Physics" />
       </div>
     </SectionLayout>

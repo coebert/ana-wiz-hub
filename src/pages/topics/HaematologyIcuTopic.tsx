@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const HaematologyIcuTopic = () => {
   return (
@@ -298,7 +299,8 @@ const HaematologyIcuTopic = () => {
 
       <ReferencesList topicId="haematology-icu" />
 
-      <TopicCompletionToggle topicId="haematology-icu" topicTitle="Haematological & Immunological Disorders" />
+      <SeeAlso topicId="haematology-icu" />
+        <TopicCompletionToggle topicId="haematology-icu" topicTitle="Haematological & Immunological Disorders" />
     </SectionLayout>
   );
 };

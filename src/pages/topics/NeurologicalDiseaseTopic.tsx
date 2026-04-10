@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring",
@@ -171,6 +172,7 @@ const NeurologicalDiseaseTopic = () => {
 
         <QuizSection questions={neurologicalDiseaseQuestions} />
         <ReferencesList topicId="neurological-disease" />
+        <SeeAlso topicId="neurological-disease" />
         <TopicCompletionToggle topicId="neurological-disease" topicTitle="Neurological Co-Existing Disease" />
       </div>
     </SectionLayout>

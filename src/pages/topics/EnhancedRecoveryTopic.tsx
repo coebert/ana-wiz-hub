@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const EnhancedRecoveryTopic = () => {
   return (
@@ -90,7 +91,8 @@ const EnhancedRecoveryTopic = () => {
       <QuizSection questions={enhancedRecoveryQuestions} />
       <ReferencesList topicId="enhanced-recovery" />
 
-      <TopicCompletionToggle topicId="enhanced-recovery" topicTitle="Enhanced Recovery (ERAS)" />
+      <SeeAlso topicId="enhanced-recovery" />
+        <TopicCompletionToggle topicId="enhanced-recovery" topicTitle="Enhanced Recovery (ERAS)" />
     </SectionLayout>
   );
 };

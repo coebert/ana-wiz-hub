@@ -12,6 +12,7 @@ import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalc
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const AirwayManagementTopic = () => {
   return (
@@ -116,7 +117,8 @@ const AirwayManagementTopic = () => {
       <QuizSection questions={airwayManagementQuestions} />
       <ReferencesList topicId="airway-management" />
 
-      <TopicCompletionToggle topicId="airway-management" topicTitle="Airway Management" />
+      <SeeAlso topicId="airway-management" />
+        <TopicCompletionToggle topicId="airway-management" topicTitle="Airway Management" />
     </SectionLayout>
   );
 };

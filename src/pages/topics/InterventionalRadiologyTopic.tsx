@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
 import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
+import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Interventional radiology suites are remote locations — ensure full anaesthetic equipment, monitoring, and assistance are available before starting (AAGBI guidelines for anaesthesia in remote locations)",
@@ -147,6 +148,7 @@ const InterventionalRadiologyTopic = () => {
 
         <ReferencesList topicId="interventional-radiology" />
 
+        <SeeAlso topicId="interventional-radiology" />
         <TopicCompletionToggle topicId="interventional-radiology" topicTitle="Anaesthesia for Interventional Radiology" />
       </div>
     </SectionLayout>
