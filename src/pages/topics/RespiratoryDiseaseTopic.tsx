@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
 import { SeeAlso } from "@/components/SeeAlso";
+import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
 
 const keyPoints = [
   "Asthma: avoid histamine-releasing drugs (atracurium, morphine, thiopentone); desflurane and dry gases may trigger bronchospasm — use sevoflurane which has bronchodilator properties",
@@ -25,6 +26,7 @@ const RespiratoryDiseaseTopic = () => {
     >
       <div className="space-y-8">
         <KeyLearningPoints points={keyPoints} />
+        <RespiratoryDrugSafetyDiagram />
 
         {/* Asthma */}
         <section>

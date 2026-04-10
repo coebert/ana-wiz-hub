@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import { SeeAlso } from "@/components/SeeAlso";
+import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
 
 const keyPoints = [
   "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively",
@@ -56,6 +57,7 @@ const CardiovascularDiseaseTopic = () => {
         {/* Valvular Heart Disease */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Valvular Heart Disease</h2>
+          <ValvularHaemodynamicsDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Aortic Stenosis</h3>
