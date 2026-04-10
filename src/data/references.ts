@@ -515,3 +515,6 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2019", citation: "McMillan K, et al. Anaesthesia for burns surgery. BJA Education. 2019;19(10):328-336.", url: "https://doi.org/10.1016/j.bjae.2019.05.006" },
   ],
 };
+
+// Additional references added below are merged into the main object above via spread
+// Actually we need to add them inside the object. Let me check the structure.
