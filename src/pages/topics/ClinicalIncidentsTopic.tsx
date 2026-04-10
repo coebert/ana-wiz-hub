@@ -48,6 +48,7 @@ const ClinicalIncidentsTopic = () => {
             <p className="font-semibold text-foreground text-sm">Treatment: Dantrolene 2.5 mg/kg IV</p>
             <p className="text-sm text-muted-foreground mt-1">Repeat every 5-10 min up to 10 mg/kg. Discontinue triggers, hyperventilate with 100% O₂, active cooling, treat hyperkalaemia.</p>
           </div>
+          <MHPathophysiologyDiagram />
         </div>
 
         <div>
