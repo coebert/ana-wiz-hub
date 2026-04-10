@@ -7,7 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+
 
 const VentilationPerfusionTopic = () => {
   return (
