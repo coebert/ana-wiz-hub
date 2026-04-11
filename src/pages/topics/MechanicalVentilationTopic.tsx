@@ -924,6 +924,109 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Serial ultrasound:</span> Repeat Tdi and TFdi measurements every 48–72 hours to track trajectory. A decreasing Tdi trend should prompt reduction in ventilatory support if clinically safe.</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Acquired Weakness (ICUAW)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            ICU-acquired weakness affects <span className="font-semibold text-foreground">25–50%</span> of patients ventilated for ≥7 days. It encompasses critical illness polyneuropathy (CIP), critical illness myopathy (CIM), and the overlap syndrome (CIPNM). ICUAW is independently associated with prolonged ventilation, weaning failure, increased ICU/hospital mortality, and long-term functional disability.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Critical Illness Polyneuropathy (CIP)</h3>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li><span className="font-semibold text-foreground">Pathology:</span> Primary axonal degeneration of motor and sensory peripheral nerves. Microvascular injury from sepsis-driven cytokine-mediated endoneural oedema and ischaemia.</li>
+              <li><span className="font-semibold text-foreground">Presentation:</span> Symmetrical, flaccid limb weakness (distal &gt; proximal). Reduced or absent deep tendon reflexes. Sensory loss may be present but difficult to assess in sedated patients.</li>
+              <li><span className="font-semibold text-foreground">NCS/EMG:</span> Reduced compound muscle action potential (CMAP) amplitudes with preserved conduction velocities (axonal pattern). Sensory nerve action potentials (SNAPs) also reduced. Fibrillation potentials on needle EMG.</li>
+              <li><span className="font-semibold text-foreground">Recovery:</span> Slow and often incomplete — axonal regeneration occurs at ~1 mm/day. Severe cases may have persistent weakness at 1–2 years.</li>
+            </ul>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Critical Illness Myopathy (CIM)</h3>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li><span className="font-semibold text-foreground">Pathology:</span> Selective loss of thick myosin filaments, type II fibre atrophy, and muscle membrane inexcitability (channelopathy). Corticosteroids and NMBAs are major contributors.</li>
+              <li><span className="font-semibold text-foreground">Presentation:</span> Symmetrical proximal &gt; distal weakness. Facial muscles often spared. Reflexes may be preserved (unlike CIP). Diaphragm involvement contributes to weaning failure.</li>
+              <li><span className="font-semibold text-foreground">NCS/EMG:</span> Low CMAP amplitudes but normal SNAPs (distinguishes from CIP). Short-duration, low-amplitude motor unit potentials. Reduced muscle membrane excitability on direct muscle stimulation (dmCMAP).</li>
+              <li><span className="font-semibold text-foreground">CK:</span> May be elevated early but often normal — poor sensitivity. Not reliable for diagnosis.</li>
+              <li><span className="font-semibold text-foreground">Recovery:</span> Generally better than CIP — muscle regeneration faster than axonal regrowth. Most patients improve within weeks to months.</li>
+            </ul>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">CIP vs CIM — Key Differences</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="p-3 text-left font-semibold text-foreground border-b border-border">Feature</th>
+                  <th className="p-3 text-left font-semibold text-foreground border-b border-border">CIP</th>
+                  <th className="p-3 text-left font-semibold text-foreground border-b border-border">CIM</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">Pathology</td><td className="p-3">Axonal neuropathy</td><td className="p-3">Myosin loss / myopathy</td></tr>
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">Distribution</td><td className="p-3">Distal &gt; proximal</td><td className="p-3">Proximal &gt; distal</td></tr>
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">Reflexes</td><td className="p-3">Reduced/absent</td><td className="p-3">May be preserved</td></tr>
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">Sensory involvement</td><td className="p-3">Yes</td><td className="p-3">No</td></tr>
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">SNAPs</td><td className="p-3">Reduced</td><td className="p-3">Normal</td></tr>
+                <tr className="border-b border-border"><td className="p-3 font-semibold text-foreground">Key risk factor</td><td className="p-3">Sepsis / SIRS</td><td className="p-3">Steroids + NMBAs</td></tr>
+                <tr><td className="p-3 font-semibold text-foreground">Recovery</td><td className="p-3">Slow (months–years)</td><td className="p-3">Faster (weeks–months)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Risk Factors for ICUAW</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { factor: "Sepsis & multi-organ failure", detail: "Strongest independent risk factor. Cytokine-mediated nerve and muscle injury. Risk proportional to SOFA score and duration of organ failure." },
+              { factor: "Prolonged mechanical ventilation", detail: "Ventilation >7 days dramatically increases risk. Both disuse (VIDD) and systemic inflammation contribute." },
+              { factor: "Hyperglycaemia", detail: "Blood glucose >10 mmol/L is independently associated. Van den Berghe (2001) showed intensive insulin therapy reduced CIP/CIM incidence — though tight control no longer recommended (NICE-SUGAR)." },
+              { factor: "Corticosteroids", detail: "Dose- and duration-dependent risk. Particularly harmful in combination with NMBAs — synergistic myotoxicity." },
+              { factor: "Neuromuscular blocking agents", detail: "Prolonged use (>48h) increases risk. Aminosteroid NMBAs (vecuronium, pancuronium) may carry higher risk than benzylisoquinoliniums." },
+              { factor: "Immobilisation", detail: "Bed rest causes 1–3% muscle mass loss per day. Combined with systemic inflammation, leads to rapid deconditioning." },
+            ].map((item) => (
+              <div key={item.factor} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.factor}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">MRC Sum Score Assessment</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The <span className="font-semibold text-foreground">Medical Research Council (MRC) sum score</span> is the bedside standard for diagnosing ICUAW. It requires a cooperative, awake patient (GCS ≥14, CAM-ICU negative).
+          </p>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li><span className="font-semibold text-foreground">Method:</span> Test 6 bilateral muscle groups (shoulder abduction, elbow flexion, wrist extension, hip flexion, knee extension, ankle dorsiflexion) — 12 assessments total</li>
+              <li><span className="font-semibold text-foreground">Scoring:</span> Each muscle graded 0 (no contraction) to 5 (normal power) — maximum total score = 60</li>
+              <li><span className="font-semibold text-foreground">ICUAW diagnosis:</span> MRC sum score <span className="font-semibold text-foreground">&lt;48/60</span> (on two separate assessments ≥24h apart)</li>
+              <li><span className="font-semibold text-foreground">Severe weakness:</span> MRC sum score &lt;36/60</li>
+              <li><span className="font-semibold text-foreground">Limitations:</span> Requires patient cooperation — cannot assess sedated/delirious patients. Ceiling effect in mild weakness. Inter-rater variability exists.</li>
+            </ul>
+          </div>
+          <p className="text-sm text-muted-foreground mb-4">
+            <span className="font-semibold text-foreground">Supplementary investigations:</span> NCS/EMG (gold standard for differentiating CIP vs CIM), direct muscle stimulation, muscle biopsy (rarely needed), and ultrasound assessment of muscle mass (rectus femoris cross-sectional area, diaphragm thickness).
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Prevention & Rehabilitation Strategies</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { strategy: "Early mobilisation", detail: "Active and passive exercise within 48–72h of ICU admission. Schweickert et al. (2009): early physical therapy improved functional independence at discharge (59% vs 35%) and reduced delirium duration." },
+              { strategy: "Sedation minimisation", detail: "Daily sedation interruptions (Kress, 2000) and light sedation targets (RASS 0 to -1) enable earlier mobilisation and reduce immobility-related atrophy." },
+              { strategy: "Glycaemic control", detail: "Avoid hyperglycaemia (target <10 mmol/L). Hyperglycaemia independently worsens nerve and muscle injury. Avoid hypoglycaemia — target 6–10 mmol/L (NICE-SUGAR)." },
+              { strategy: "Minimise corticosteroids & NMBAs", detail: "Use lowest effective doses for shortest duration. Avoid concurrent steroids + NMBAs where possible. If NMBAs needed, prefer cisatracurium and limit to 48h." },
+              { strategy: "Neuromuscular electrical stimulation (NMES)", detail: "Electrical stimulation of peripheral muscles (quadriceps) to maintain mass in sedated patients unable to participate in active exercise. Evidence growing but not yet standard." },
+              { strategy: "Nutritional optimisation", detail: "Adequate protein delivery (1.2–2.0 g/kg/day), early enteral nutrition, and correction of micronutrient deficiencies (vitamin D, selenium, zinc). Avoid overfeeding." },
+              { strategy: "ICU rehabilitation programmes", detail: "Multidisciplinary team: physiotherapy, occupational therapy, speech therapy. Structured exercise progression: passive → active-assisted → active → sitting → standing → walking." },
+              { strategy: "Post-ICU follow-up", detail: "ICU follow-up clinics for ongoing rehabilitation. Many patients have persistent weakness, fatigue, and reduced quality of life at 1–2 years (post-intensive care syndrome — PICS)." },
+            ].map((item) => (
+              <div key={item.strategy} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.strategy}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -949,6 +1052,9 @@ const MechanicalVentilationTopic = () => {
         "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure",
         "Diaphragm-protective ventilation: maintain TFdi 15–30% during assisted ventilation (Goligher)",
         "P0.1 target 1–4 cmH₂O — reflects respiratory drive; guides ventilator titration",
+        "ICUAW affects 25–50% of patients ventilated >7 days; MRC sum score <48/60 confirms diagnosis",
+        "CIP = axonal neuropathy (reduced SNAPs, slow recovery); CIM = myopathy (normal SNAPs, faster recovery)",
+        "Early mobilisation within 48–72h improves functional independence (59% vs 35%, Schweickert)",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
