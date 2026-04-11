@@ -529,6 +529,13 @@ const SpinalCordAxialDiagram = () => {
             <text x={cx + cordRx + 5} y={cy - 5} textAnchor="start" fill={TRACTS["lat-cst"].color} opacity={isTractDimmed("lat-cst") ? 0.1 : 0.6}>Lat CST</text>
             <text x={cx - cordRx - 5} y={cy + 45} textAnchor="end" fill={TRACTS.stt.color} opacity={isTractDimmed("stt") ? 0.1 : 0.6}>STT</text>
             <text x={cx + cordRx + 5} y={cy + 45} textAnchor="start" fill={TRACTS.stt.color} opacity={isTractDimmed("stt") ? 0.1 : 0.6}>STT</text>
+            {/* New tract labels */}
+            <text x={cx - cordRx - 5} y={cy + 10} textAnchor="end" fontSize="5" fill={TRACTS["post-spinocerebellar"].color} opacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}>PSCT</text>
+            <text x={cx + cordRx + 5} y={cy + 10} textAnchor="start" fontSize="5" fill={TRACTS["post-spinocerebellar"].color} opacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}>PSCT</text>
+            <text x={cx - cordRx - 5} y={cy + 58} textAnchor="end" fontSize="5" fill={TRACTS["ant-spinocerebellar"].color} opacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.35}>ASCT</text>
+            <text x={cx + cordRx + 5} y={cy + 58} textAnchor="start" fontSize="5" fill={TRACTS["ant-spinocerebellar"].color} opacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.35}>ASCT</text>
+            <text x={cx - cordRx - 5} y={cy + 20} textAnchor="end" fontSize="4.5" fill={TRACTS.rubrospinal.color} opacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}>RubST</text>
+            <text x={cx - 20} y={cy + cordRy + 15} textAnchor="end" fontSize="4.5" fill={TRACTS.reticulospinal.color} opacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}>RetST</text>
           </g>
         </svg>
 
