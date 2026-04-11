@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 
 const NeurointensiveCareTopic = () => {
   return (
@@ -225,6 +226,13 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </div>
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
+          </p>
+          <ICPMonitoringDevicesDiagram />
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -236,6 +244,9 @@ const NeurointensiveCareTopic = () => {
         "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
         "Autonomic dysreflexia (above T6): noxious stimulus → hypertensive crisis — sit up, find & remove cause",
         "NASCIS methylprednisolone NOT recommended for acute SCI (NICE/AANS) — frequently examined",
+        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
+        "Intraparenchymal monitors cannot be re-zeroed after insertion → baseline drift risk",
+        "ONSD >5.0 mm on trans-ocular ultrasound suggests ICP >20 mmHg (sensitivity ~90%)",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
