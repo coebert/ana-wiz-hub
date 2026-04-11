@@ -310,7 +310,35 @@ const LaryngealCrossSectionDiagram = () => {
                   </>
                 )}
 
-                {/* Vestibular folds */}
+                {/* Quadrangular membrane — from epiglottis to arytenoid, between vestibular folds and aryepiglottic folds */}
+                <path
+                  d="M108,72 C106,82 105,92 105,100 L105,108 L115,118 L115,100 C115,90 116,80 118,72 Z"
+                  fill={structures["quadrangular-membrane"].color}
+                  fillOpacity={isActive("quadrangular-membrane") ? 0.35 : 0.04}
+                  stroke={structures["quadrangular-membrane"].color}
+                  strokeWidth={isActive("quadrangular-membrane") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("quadrangular-membrane")}
+                />
+                <path
+                  d="M152,72 C154,82 155,92 155,100 L155,108 L145,118 L145,100 C145,90 144,80 142,72 Z"
+                  fill={structures["quadrangular-membrane"].color}
+                  fillOpacity={isActive("quadrangular-membrane") ? 0.35 : 0.04}
+                  stroke={structures["quadrangular-membrane"].color}
+                  strokeWidth={isActive("quadrangular-membrane") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("quadrangular-membrane")}
+                />
+                {isActive("quadrangular-membrane") && (
+                  <>
+                    <text x="80" y="92" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">Quadrangular</text>
+                    <text x="80" y="98" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">membrane</text>
+                  </>
+                )}
+
+                {/* Vestibular folds (inferior free edge of quadrangular membrane) */}
                 <path
                   d="M105,108 C112,104 118,103 125,104 C128,104 132,103 135,104 C142,103 148,104 155,108"
                   fill="none"
@@ -320,11 +348,16 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("vestibular-folds")}
                 />
-                <text x="210" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>
+                <text x="220" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>
 
-                {/* Ventricle of Morgagni */}
-                <path d="M108,110 C115,114 125,115 130,115 C135,115 145,114 152,110" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3" />
-                <text x="130" y="114" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">ventricle</text>
+                {/* Ventricle of Morgagni (laryngeal sinus) */}
+                <path d="M108,110 C112,116 120,118 130,118 C140,118 148,116 152,110"
+                  fill="hsl(200, 30%, 92%)" fillOpacity="0.1"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
+                <text x="130" y="115" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">ventricle (Morgagni)</text>
+                {/* Saccule extending superiorly from anterior ventricle */}
+                <path d="M118,110 C116,106 115,100 116,94" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1.5" opacity="0.2" />
+                <text x="108" y="100" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.25">saccule</text>
 
                 {/* True vocal cords */}
                 <path
