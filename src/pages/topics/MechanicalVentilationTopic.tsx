@@ -730,6 +730,102 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Aerosol generation:</span> HFNO is an aerosol-generating procedure (AGP). Requires appropriate PPE and isolation in infectious cases (e.g., COVID-19, influenza, TB).</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation (NIV)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            NIV delivers positive pressure ventilation via a mask interface without endotracheal intubation. It reduces work of breathing, improves gas exchange, and avoids intubation-related complications. NIV encompasses two distinct modalities: continuous positive airway pressure (CPAP) and bilevel positive airway pressure (BiPAP/NIV-PS).
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">CPAP vs BiPAP</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Feature</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">CPAP</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">BiPAP (NIV-PS)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Mechanism</td><td className="p-3 border-b border-border">Single constant positive pressure throughout the respiratory cycle</td><td className="p-3 border-b border-border">Two pressure levels: IPAP (inspiratory) and EPAP (expiratory). Pressure support = IPAP − EPAP.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Ventilatory support</td><td className="p-3 border-b border-border">Does NOT augment tidal volume — not true ventilation. Splints airways and recruits alveoli only.</td><td className="p-3 border-b border-border">Augments tidal volume during inspiration. Provides true ventilatory support — offloads respiratory muscles and assists CO₂ clearance.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Effect on CO₂</td><td className="p-3 border-b border-border">Minimal direct effect on PaCO₂ (may improve indirectly by reducing WOB)</td><td className="p-3 border-b border-border">Directly reduces PaCO₂ by augmenting alveolar ventilation</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Typical settings</td><td className="p-3 border-b border-border">5–15 cmH₂O</td><td className="p-3 border-b border-border">IPAP 12–20, EPAP 4–8 cmH₂O (PS 8–12 cmH₂O)</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Primary indication</td><td className="p-3 border-b border-border">Acute cardiogenic pulmonary oedema, obstructive sleep apnoea</td><td className="p-3 border-b border-border">Acute hypercapnic respiratory failure (COPD, obesity hypoventilation, neuromuscular disease)</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Complexity</td><td className="p-3 border-b border-border">Simple — can be delivered by any flow generator or ventilator</td><td className="p-3 border-b border-border">Requires dedicated NIV ventilator with trigger/cycle sensing</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Key Clinical Evidence</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              { trial: "Brochard et al. (1995)", detail: "Landmark RCT, 85 patients with acute COPD exacerbation and respiratory acidosis (pH <7.35). NIV (BiPAP) vs standard medical therapy. NIV reduced intubation rate (26% vs 74%), in-hospital mortality (9% vs 29%), and hospital LOS. Established NIV as first-line therapy for acute hypercapnic COPD exacerbations. NNT for avoiding intubation = 2." },
+              { trial: "Plant et al. (2000)", detail: "UK multicentre RCT, 236 patients with COPD exacerbation (pH 7.25–7.35). NIV delivered on general respiratory wards (not ICU). NIV reduced treatment failure (15% vs 27%) and in-hospital mortality (10% vs 20%). Showed NIV is effective and safe outside ICU for mild-moderate acidosis. Patients with pH <7.25 had higher failure rates on wards — these patients need ICU-level NIV." },
+              { trial: "3CPO Trial (Gray et al., 2008)", detail: "Multicentre RCT, 1069 patients with acute cardiogenic pulmonary oedema. Three arms: standard O₂ vs CPAP vs NIV (BiPAP). Both CPAP and BiPAP improved dyspnoea, heart rate, acidosis, and hypercapnia faster than standard O₂. However, no difference in 7-day or 30-day mortality between groups. No increase in MI rate with NIV (contrary to earlier concerns from the NIPPV study). CPAP is preferred over BiPAP for ACPO — simpler, equally effective, and avoids theoretical risk of reduced coronary perfusion pressure." },
+              { trial: "Masip et al. (2000)", detail: "RCT in acute cardiogenic pulmonary oedema. CPAP vs standard O₂. CPAP reduced intubation (5% vs 33%) and improved oxygenation more rapidly. Supports early CPAP as first-line in ACPO." },
+              { trial: "RECOVERY-RS (Perkins et al., 2022)", detail: "COVID-19 respiratory failure: CPAP reduced the composite of intubation or death vs standard O₂ (36% vs 44%). HFNO did not show significant benefit over standard O₂ in this population. Supports CPAP as the preferred non-invasive support modality in viral pneumonitis." },
+              { trial: "Keenan et al. meta-analysis (2011)", detail: "NIV for acute hypoxaemic (non-COPD, non-cardiogenic) respiratory failure. No consistent reduction in intubation or mortality. NIV is less well-established in de novo hypoxaemic respiratory failure — use with caution and close monitoring. Risk of large tidal volumes causing P-SILI." },
+            ].map((item) => (
+              <div key={item.trial} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.trial}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Indications</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { indication: "COPD exacerbation", detail: "Strongest evidence. First-line for pH 7.25–7.35 with PaCO₂ >6 kPa despite controlled O₂ and bronchodilators. NNT ~3 to avoid intubation. Use BiPAP." },
+              { indication: "Acute cardiogenic pulmonary oedema", detail: "CPAP 5–15 cmH₂O. Rapid symptom relief. Does not reduce mortality (3CPO) but reduces intubation and speeds recovery. Use alongside GTN, diuretics." },
+              { indication: "Immunocompromised patients", detail: "NIV reduces intubation and mortality in immunocompromised patients with respiratory failure (Hilbert et al., 2001). Intubation carries very high mortality in this group." },
+              { indication: "Chest wall deformity / neuromuscular disease", detail: "Nocturnal NIV for chronic hypoventilation. In acute exacerbations, BiPAP augments ventilation when respiratory muscles are fatigued." },
+              { indication: "Post-extubation (prophylactic)", detail: "In high-risk patients (COPD, obesity, hypercapnia), prophylactic NIV immediately post-extubation reduces re-intubation (Ferrer et al., Nava et al.)." },
+              { indication: "Palliative care", detail: "Symptom relief for dyspnoea in patients with ceiling of care decisions. Improves comfort. Consider patient preference and tolerance." },
+            ].map((item) => (
+              <div key={item.indication} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.indication}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Contraindications</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { type: "Absolute", items: "Facial trauma/burns/surgery preventing mask fit, fixed upper airway obstruction, vomiting with risk of aspiration, undrained pneumothorax, unresponsive patient unable to protect airway, cardiac or respiratory arrest." },
+              { type: "Relative", items: "Copious secretions (unable to clear), severe agitation or confusion (poor compliance), haemodynamic instability requiring vasopressors, pH <7.15 (high failure rate — consider direct intubation), recent upper GI surgery, bowel obstruction (risk of gastric distension)." },
+            ].map((item) => (
+              <div key={item.type} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.type}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.items}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Practical Considerations</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li><span className="font-semibold text-foreground">Interface:</span> Full face mask most common in acute setting (reduces mouth leak). Alternatives: nasal mask, total face mask, helmet CPAP. Ensure correct fit — air leaks reduce efficacy and cause eye irritation.</li>
+            <li><span className="font-semibold text-foreground">Starting settings (BiPAP):</span> IPAP 12–15, EPAP 4–5 cmH₂O. Titrate IPAP up by 2–5 cmH₂O every 10–15 minutes to target Vt 6–8 ml/kg, RR &lt;25, improving pH/PaCO₂. Maximum IPAP usually 25–30 cmH₂O.</li>
+            <li><span className="font-semibold text-foreground">Starting settings (CPAP):</span> 5 cmH₂O, increase by 2–3 cmH₂O to maximum 10–15 cmH₂O. Titrate to SpO₂ and work of breathing.</li>
+            <li><span className="font-semibold text-foreground">Monitoring:</span> ABG at 1–2 hours to assess response. If pH not improving or worsening, escalate to intubation. Continuous SpO₂, RR, and clinical assessment.</li>
+            <li><span className="font-semibold text-foreground">Escalation criteria:</span> Worsening pH despite escalating IPAP, persistent RR &gt;35, reduced consciousness, inability to clear secretions, haemodynamic deterioration, patient distress or non-compliance.</li>
+            <li><span className="font-semibold text-foreground">Weaning NIV:</span> As underlying condition improves, reduce hours of NIV use (e.g., 2h on / 2h off), then nocturnal only. Wean IPAP before discontinuing. Ensure adequate oxygenation off NIV before stopping.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">NIV Failure — Predictors</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li>pH &lt;7.25 at presentation (success rate ~50% on ward; needs ICU-level care)</li>
+            <li>pH not improving after 1–2 hours of NIV</li>
+            <li>APACHE II score &gt;29</li>
+            <li>GCS &lt;11 at initiation</li>
+            <li>Pneumonia as cause of COPD exacerbation (higher failure rate than infective exacerbation alone)</li>
+            <li>Excessive secretions or poor cough</li>
+            <li>Poor mask tolerance or frequent removal</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -742,14 +838,15 @@ const MechanicalVentilationTopic = () => {
         "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance",
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
-        "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
-        "TracMan: early vs late tracheostomy — no mortality difference; 45% never needed one",
-        "Cuff leak <110 mL predicts stridor — prompt steroids, not necessarily delay extubation",
-        "Post-extubation stridor: nebulised adrenaline → dexamethasone → heliox → re-intubate with smaller ETT",
-        "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min + precise FiO₂ + optimal humidification",
-        "FLORALI: HFNO reduced intubation and 90-day mortality in severe subgroup (P/F ≤200)",
-        "ROX index (SpO₂/FiO₂ ÷ RR): ≥4.88 predicts HFNO success; <3.85 predicts failure — check at 2, 6, 12h",
-        "HFNO is NOT a substitute for NIV in hypercapnic (type 2) respiratory failure",
+        "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30",
+        "TracMan: early vs late tracheostomy — no mortality difference",
+        "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation",
+        "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success",
+        "FLORALI: HFNO reduced intubation and mortality in severe hypoxaemia (P/F ≤200)",
+        "CPAP = single constant pressure (recruits, no ventilatory support); BiPAP = IPAP + EPAP (augments Vt, clears CO₂)",
+        "Brochard: NIV in COPD reduced intubation 74% → 26% and mortality 29% → 9%",
+        "3CPO: CPAP and BiPAP equally improve symptoms in ACPO but no mortality benefit over standard O₂",
+        "NIV first-line for COPD exacerbation with pH 7.25–7.35; check ABG at 1–2h — if no improvement, escalate",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
