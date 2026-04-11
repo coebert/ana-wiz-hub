@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
 
 const AcuteLiverFailureTopic = () => {
   return (
@@ -87,6 +88,8 @@ const AcuteLiverFailureTopic = () => {
               </div>
             ))}
           </div>
+
+          <CLIFCACLFDiagram />
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Precipitants</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
