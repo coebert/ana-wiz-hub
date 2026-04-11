@@ -387,10 +387,13 @@ const HaematologyIcuTopic = () => {
           "PLASMIC score ≥6: start plasma exchange empirically before ADAMTS13 result returns",
           "TTP treatment triad: plasma exchange + steroids + caplacizumab; rituximab for refractory/relapsing disease",
           "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC",
+          "Typical HUS: Shiga toxin (E. coli O157:H7) — supportive care only, antibiotics are CONTRAINDICATED",
+          "Atypical HUS: complement dysregulation — eculizumab (anti-C5) is first-line; lifelong treatment often required",
+          "Eculizumab mandates meningococcal vaccination (ACWY + B) — risk of fulminant N. meningitidis",
+          "ADAMTS13 >10% with TMA + predominant renal involvement = HUS rather than TTP",
           "HLH: pathological immune activation with cytokine storm — ferritin >10,000 has ~90% sensitivity",
           "HScore >169 gives >93% probability of HLH in adults — use to guide empirical treatment",
           "HLH management: treat the trigger + dexamethasone/etoposide (HLH-2004); anakinra increasingly used in adult MAS/HLH",
-          "Falling ferritin is the best bedside marker of treatment response in HLH"
         ]} />
       </section>
 
