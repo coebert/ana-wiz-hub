@@ -370,7 +370,40 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("vocal-cords")}
                 />
                 <text x="130" y="112" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">glottis</text>
-                <text x="210" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>
+                <text x="220" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>
+
+                {/* Reinke's space — superficial lamina propria of true cords */}
+                <path
+                  d="M108,119 C115,115.5 122,114.5 130,114.5 C138,114.5 145,115.5 152,119"
+                  fill="none"
+                  stroke={structures["reinke-space"].color}
+                  strokeWidth={isActive("reinke-space") ? 2 : 0.8}
+                  strokeDasharray={isActive("reinke-space") ? "2 1" : "1.5 1.5"}
+                  opacity={isActive("reinke-space") ? 0.8 : 0.15}
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("reinke-space")}
+                />
+                {isActive("reinke-space") && (
+                  <text x="130" y="124" fontSize="3.5" textAnchor="middle" fill={structures["reinke-space"].color} className="select-none">Reinke's space</text>
+                )}
+
+                {/* Conus elasticus — fibroelastic membrane from cricoid to vocal ligament */}
+                <path
+                  d="M105,120 C100,135 95,150 92,165 L168,165 C165,150 160,135 155,120"
+                  fill={structures["conus-elasticus"].color}
+                  fillOpacity={isActive("conus-elasticus") ? 0.25 : 0.04}
+                  stroke={structures["conus-elasticus"].color}
+                  strokeWidth={isActive("conus-elasticus") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("conus-elasticus")}
+                />
+                {isActive("conus-elasticus") && (
+                  <>
+                    <text x="78" y="142" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">Conus</text>
+                    <text x="78" y="148" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">elasticus</text>
+                  </>
+                )}
 
                 {/* Arytenoid cartilages */}
                 <path d="M108,125 L115,118 L122,128 Z"
@@ -383,7 +416,37 @@ const LaryngealCrossSectionDiagram = () => {
                   stroke={structures.arytenoid.color} strokeWidth={sw("arytenoid")}
                   className="cursor-pointer transition-all duration-200" onClick={click("arytenoid")}
                 />
-                <text x="210" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>
+                <text x="220" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>
+
+                {/* Corniculate cartilages — on apex of arytenoids */}
+                <circle cx="115" cy="116" r="2.5"
+                  fill={structures.corniculate.color} fillOpacity={isActive("corniculate") ? 0.6 : 0.15}
+                  stroke={structures.corniculate.color} strokeWidth={isActive("corniculate") ? 1.5 : 0.5}
+                  className="cursor-pointer transition-all duration-200" onClick={click("corniculate")}
+                />
+                <circle cx="145" cy="116" r="2.5"
+                  fill={structures.corniculate.color} fillOpacity={isActive("corniculate") ? 0.6 : 0.15}
+                  stroke={structures.corniculate.color} strokeWidth={isActive("corniculate") ? 1.5 : 0.5}
+                  className="cursor-pointer transition-all duration-200" onClick={click("corniculate")}
+                />
+                {isActive("corniculate") && (
+                  <text x="130" y="132" fontSize="3.5" textAnchor="middle" fill={structures.corniculate.color} className="select-none">Corniculate (Santorini)</text>
+                )}
+
+                {/* Cuneiform cartilages — within aryepiglottic folds */}
+                <ellipse cx="110" cy="98" rx="2" ry="3.5"
+                  fill={structures.cuneiform.color} fillOpacity={isActive("cuneiform") ? 0.6 : 0.12}
+                  stroke={structures.cuneiform.color} strokeWidth={isActive("cuneiform") ? 1.2 : 0.4}
+                  className="cursor-pointer transition-all duration-200" onClick={click("cuneiform")}
+                />
+                <ellipse cx="150" cy="98" rx="2" ry="3.5"
+                  fill={structures.cuneiform.color} fillOpacity={isActive("cuneiform") ? 0.6 : 0.12}
+                  stroke={structures.cuneiform.color} strokeWidth={isActive("cuneiform") ? 1.2 : 0.4}
+                  className="cursor-pointer transition-all duration-200" onClick={click("cuneiform")}
+                />
+                {isActive("cuneiform") && (
+                  <text x="130" y="95" fontSize="3.5" textAnchor="middle" fill={structures.cuneiform.color} className="select-none">Cuneiform (Wrisberg)</text>
+                )}
 
                 {/* Cricothyroid joint */}
                 <circle cx="72" cy="158" r="4"
