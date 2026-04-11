@@ -86,13 +86,29 @@ const SpinalCordCrossSectionDiagram = () => {
               </filter>
             </defs>
 
-            {/* Spinous process outlines — more realistic bone shape */}
-            <g opacity="0.2" fill="hsl(var(--muted-foreground))" fillOpacity="0.04" stroke="hsl(var(--muted-foreground))" strokeWidth="1">
+            {/* Spinous process outlines — detailed bone anatomy */}
+            <g opacity="0.25" fill="hsl(var(--muted-foreground))" fillOpacity="0.04" stroke="hsl(var(--muted-foreground))" strokeWidth="1">
+              {/* Left spinous process & lamina */}
               <path d={`M${xOffset - 8},${yPositions.supraspinous - 2} L${xOffset - 28},${yPositions.interspinous + 5} Q${xOffset - 30},${yPositions.flavum - 2} ${xOffset - 18},${yPositions.flavum + 2} L${xOffset - 5},${yPositions.flavum}`} />
+              {/* Right spinous process & lamina */}
               <path d={`M${xOffset + layerWidth + 8},${yPositions.supraspinous - 2} L${xOffset + layerWidth + 28},${yPositions.interspinous + 5} Q${xOffset + layerWidth + 30},${yPositions.flavum - 2} ${xOffset + layerWidth + 18},${yPositions.flavum + 2} L${xOffset + layerWidth + 5},${yPositions.flavum}`} />
-              {/* Lamina hint */}
+              {/* Lamina extending to epidural/dura level */}
               <path d={`M${xOffset - 18},${yPositions.flavum + 2} C${xOffset - 22},${yPositions.epidural + 5} ${xOffset - 20},${yPositions.epidural + 12} ${xOffset - 12},${yPositions.dura}`} strokeDasharray="3 2" />
               <path d={`M${xOffset + layerWidth + 18},${yPositions.flavum + 2} C${xOffset + layerWidth + 22},${yPositions.epidural + 5} ${xOffset + layerWidth + 20},${yPositions.epidural + 12} ${xOffset + layerWidth + 12},${yPositions.dura}`} strokeDasharray="3 2" />
+              {/* Pedicles — lateral to canal */}
+              <ellipse cx={xOffset - 15} cy={yPositions.epidural + layers.epidural.h / 2} rx="5" ry="8" strokeDasharray="2 2" opacity="0.4" />
+              <ellipse cx={xOffset + layerWidth + 15} cy={yPositions.epidural + layers.epidural.h / 2} rx="5" ry="8" strokeDasharray="2 2" opacity="0.4" />
+              {/* Transverse processes hint */}
+              <line x1={xOffset - 20} y1={yPositions.epidural + layers.epidural.h / 2} x2={xOffset - 35} y2={yPositions.epidural + layers.epidural.h / 2 - 3} strokeDasharray="3 2" opacity="0.2" />
+              <line x1={xOffset + layerWidth + 20} y1={yPositions.epidural + layers.epidural.h / 2} x2={xOffset + layerWidth + 35} y2={yPositions.epidural + layers.epidural.h / 2 - 3} strokeDasharray="3 2" opacity="0.2" />
+            </g>
+
+            {/* Bony anatomy labels */}
+            <g opacity="0.2" fontSize="3.5" fill="hsl(var(--muted-foreground))">
+              <text x={xOffset - 32} y={yPositions.interspinous + 8} fontSize="3" textAnchor="end">Spinous process</text>
+              <text x={xOffset - 18} y={yPositions.epidural + layers.epidural.h / 2 + 3} fontSize="2.8" textAnchor="middle">Pedicle</text>
+              <text x={xOffset + layerWidth + 18} y={yPositions.epidural + layers.epidural.h / 2 + 3} fontSize="2.8" textAnchor="middle">Pedicle</text>
+              <text x={xOffset - 20} y={yPositions.flavum + 6} fontSize="2.8" textAnchor="end">Lamina</text>
             </g>
 
             {/* Epidural needle trajectory — Tuohy */}
@@ -105,6 +121,12 @@ const SpinalCordCrossSectionDiagram = () => {
               <circle cx={xOffset + 25} cy={yPositions.epidural + layers.epidural.h / 2} r="2.5" fill="hsl(140, 45%, 50%)" opacity="0.8" />
               <circle cx={xOffset + 25} cy={yPositions.epidural + layers.epidural.h / 2} r="5" fill="hsl(140, 45%, 50%)" opacity="0.12" />
               <text x={xOffset - 26} y={8} fontSize="5.5" fill="hsl(var(--muted-foreground))" fontWeight="600">Tuohy</text>
+              {/* Epidural catheter threading through Tuohy */}
+              <path
+                d={`M${xOffset + 25},${yPositions.epidural + layers.epidural.h / 2} C${xOffset + 35},${yPositions.epidural + layers.epidural.h / 2 - 3} ${xOffset + 50},${yPositions.epidural + layers.epidural.h / 2 + 2} ${xOffset + 70},${yPositions.epidural + layers.epidural.h / 2 - 1}`}
+                stroke="hsl(140, 45%, 50%)" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.4"
+              />
+              <text x={xOffset + 72} y={yPositions.epidural + layers.epidural.h / 2 - 3} fontSize="3" fill="hsl(140, 45%, 50%)" opacity="0.5">catheter (3–5 cm in space)</text>
             </g>
 
             {/* Spinal needle trajectory */}
@@ -114,6 +136,16 @@ const SpinalCordCrossSectionDiagram = () => {
                 stroke="hsl(195, 60%, 55%)" strokeWidth="1.2" strokeDasharray="3 3" fill="none"
               />
               <circle cx={xOffset + 32} cy={yPositions.subarachnoid + layers.subarachnoid.h / 2} r="2" fill="hsl(195, 60%, 55%)" opacity="0.7" />
+            </g>
+
+            {/* CSE (Combined Spinal-Epidural) — needle-through-needle annotation */}
+            <g opacity="0.25">
+              <path
+                d={`M${xOffset + 25},${yPositions.epidural + layers.epidural.h / 2} L${xOffset + 28},${yPositions.subarachnoid + 4}`}
+                stroke="hsl(280, 45%, 55%)" strokeWidth="0.8" fill="none" strokeDasharray="2 2"
+              />
+              <circle cx={xOffset + 28} cy={yPositions.subarachnoid + 4} r="1.5" fill="hsl(280, 45%, 55%)" opacity="0.6" />
+              <text x={xOffset + 32} y={yPositions.subarachnoid + 3} fontSize="3" fill="hsl(280, 45%, 55%)" opacity="0.6">CSE: spinal needle through Tuohy</text>
             </g>
 
             {layerOrder.map((key) => {
