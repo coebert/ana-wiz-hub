@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
 
 const AcuteLiverFailureTopic = () => {
   return (
