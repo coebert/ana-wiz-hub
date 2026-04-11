@@ -109,6 +109,7 @@ const MechanicalVentilationTopic = () => {
           </p>
           <APRVExpiratoryFlowDiagram />
 
+          <h3 className="text-lg font-semibold text-foreground mb-2">Weaning from APRV</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is weaned by a "drop and stretch" method, progressively transitioning toward CPAP:
           </p>
