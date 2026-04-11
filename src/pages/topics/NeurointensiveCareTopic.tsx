@@ -339,6 +339,111 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain-Barré Syndrome (GBS) — ICU Management</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            GBS is an acute immune-mediated polyradiculoneuropathy causing ascending flaccid paralysis. ~25% require ICU admission for respiratory failure or autonomic instability. Mortality ~5%, but significant long-term morbidity. Two-thirds have preceding infection (Campylobacter jejuni, CMV, EBV, Zika).
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Subtypes</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { type: "AIDP", detail: "Acute inflammatory demyelinating polyradiculoneuropathy. Commonest form in Europe/US (~90%). Demyelination of motor and sensory nerves. Relatively good prognosis." },
+              { type: "AMAN", detail: "Acute motor axonal neuropathy. More common in Asia, post-Campylobacter. Pure motor, axonal damage. Associated with anti-GM1/GD1a antibodies. Slower recovery if severe." },
+              { type: "AMSAN", detail: "Acute motor and sensory axonal neuropathy. Severe axonal variant affecting both motor and sensory nerves. Poorer prognosis, prolonged recovery." },
+              { type: "Miller Fisher", detail: "Triad: ophthalmoplegia, ataxia, areflexia. Anti-GQ1b antibodies (>90%). Rarely needs ICU. Can overlap with GBS (Fisher-GBS overlap)." },
+            ].map((s) => (
+              <div key={s.type} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{s.type}</p>
+                <p className="text-sm text-muted-foreground mt-1">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Indications for ICU Admission</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { indication: "Respiratory", detail: "FVC <20 mL/kg or falling rapidly (the '20/30/40 rule': FVC <20, MIP <−30 cmH₂O, MEP <40 cmH₂O → intubate). Single breath count <20. Bulbar weakness with aspiration risk." },
+              { indication: "Autonomic", detail: "Labile BP (hyper/hypotension), tachycardia/bradycardia, arrhythmias, urinary retention, ileus. Autonomic dysfunction present in ~70% of ventilated patients." },
+              { indication: "Rapid Progression", detail: "Inability to walk within 1 week of onset. Rapid deterioration of power — may need elective intubation before crisis." },
+            ].map((i) => (
+              <div key={i.indication} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{i.indication}</span>
+                <span className="text-sm text-muted-foreground">{i.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">System-Based ICU Management</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { system: "Respiratory", management: "Serial FVC (4–6 hourly) — do NOT rely on SpO₂ (desaturation is a late sign). Intubate electively if FVC declining rapidly, bulbar dysfunction, or fatigue. Suxamethonium is SAFE in GBS (unlike MND/denervation — no upregulation of AChR). Tracheostomy if ventilation expected >2 weeks (common). SIMV/PS weaning." },
+              { system: "Autonomic", management: "Continuous ECG monitoring — risk of asystole, VT. Short-acting agents for BP control (esmolol, GTN). Avoid long-acting antihypertensives (rapid swings). Atropine at bedside for bradycardia. Temporary pacing rarely needed. Constipation/ileus — prokinetics, avoid opioids." },
+              { system: "Pain", management: "Neuropathic pain is very common (~65%) and often severe. Gabapentin or pregabalin first-line. Carbamazepine, amitriptyline. Opioids may be needed acutely but worsen ileus and mask respiratory decline." },
+              { system: "VTE", management: "High risk (immobility + inflammation). LMWH prophylaxis unless contraindicated. Mechanical prophylaxis (IPC). Significant cause of mortality in GBS." },
+              { system: "Nutrition", management: "Early enteral nutrition. NG/NJ tube if bulbar dysfunction. Assess swallowing formally before oral intake. Caloric needs may be lower (reduced muscle activity) but catabolism is high." },
+              { system: "Rehabilitation", management: "Early physiotherapy — passive movements to prevent contractures. Psychological support — patients often fully aware while paralysed (locked-in-like experience). Fatigue is a major long-term issue even after recovery." },
+            ].map((s) => (
+              <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{s.system}</span>
+                <span className="text-sm text-muted-foreground">{s.management}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Immunotherapy</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#3b82f6" }}>
+              <p className="font-bold text-foreground text-sm mb-1">IVIg (first-line in most centres)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>0.4 g/kg/day × 5 days (total 2 g/kg)</li>
+                <li>Start within 2 weeks of symptom onset</li>
+                <li>Equal efficacy to PLEX</li>
+                <li>Easier to administer, fewer haemodynamic effects</li>
+                <li>Monitor for renal impairment, thrombosis, aseptic meningitis</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#a855f7" }}>
+              <p className="font-bold text-foreground text-sm mb-1">Plasma Exchange (PLEX)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>5 exchanges over 1–2 weeks</li>
+                <li>Effective if started within 4 weeks</li>
+                <li>Requires large-bore vascular access</li>
+                <li>Haemodynamic instability may limit use in autonomic GBS</li>
+                <li>Do NOT combine IVIg + PLEX (PLEX removes IVIg)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30 mb-4">
+            <p className="text-sm font-semibold text-foreground mb-1">⚠️ Corticosteroids Are NOT Effective in GBS</p>
+            <p className="text-sm text-muted-foreground">
+              Unlike CIDP and autoimmune encephalitis, corticosteroids do not improve outcomes in GBS and may worsen them. This is a commonly examined point. IV methylprednisolone alone or combined with IVIg shows no benefit (Cochrane review).
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prognostic Factors</h3>
+          <div className="space-y-2">
+            {[
+              { factor: "Erasmus GBS Outcome Score (EGOS)", detail: "Predicts ability to walk at 6 months. Uses age, preceding diarrhoea (worse — suggests axonal/Campylobacter), and GBS disability score at 2 weeks. Higher score = poorer prognosis." },
+              { factor: "Poor Prognostic Features", detail: "Age >60, rapid onset (<7 days to ventilation), preceding Campylobacter, axonal subtype (AMAN/AMSAN), need for ventilation, absent CMAPs on NCS." },
+              { factor: "Recovery", detail: "~80% walk independently at 6 months. ~20% have significant residual disability. Mortality ~5% (usually autonomic, PE, nosocomial infection). Fatigue persists in >60% at 1 year." },
+            ].map((f) => (
+              <div key={f.factor} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{f.factor}</span>
+                <span className="text-sm text-muted-foreground">{f.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              GBS is a favourite FFICM/FRCA exam topic. Key points: the 20/30/40 rule for intubation (FVC/MIP/MEP), suxamethonium is SAFE (contrast with MND/burns/denervation), steroids do NOT work (unlike CIDP), IVIg and PLEX are equivalent but should NOT be combined, and autonomic instability can cause sudden cardiac death — continuous monitoring essential.
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -348,11 +453,11 @@ const NeurointensiveCareTopic = () => {
         "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
         "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
         "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
-        "Autonomic dysreflexia (above T6): noxious stimulus → hypertensive crisis — sit up, find & remove cause",
         "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
-        "ONSD >5.0 mm on trans-ocular ultrasound suggests ICP >20 mmHg (sensitivity ~90%)",
-        "Anti-NMDAR encephalitis: psychiatric → seizures → dyskinesias → autonomic → coma. Start immunotherapy empirically — do not wait for antibody results",
-        "Avoid antipsychotics in anti-NMDAR encephalitis — risk of NMS and worsened dyskinesias",
+        "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
+        "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
+        "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
+        "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
