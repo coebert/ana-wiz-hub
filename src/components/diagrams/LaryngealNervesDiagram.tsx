@@ -11,50 +11,56 @@ const branches: Branch[] = [
   {
     id: "vagus",
     label: "Vagus Nerve (X)",
-    desc: "Exits jugular foramen. Descends in carotid sheath between ICA/CCA and IJV. Gives off SLN high in neck, then RLN in thorax (left) or neck (right). Also gives cardiac branches.",
+    desc: "Exits jugular foramen. Descends in carotid sheath (between ICA/CCA and IJV, posterior). Gives off SLN high in neck (from inferior vagal ganglion at C2), then RLN in thorax (left) or neck (right). Also gives cardiac branches and pharyngeal branch.",
     color: "#facc15",
   },
   {
     id: "sln",
     label: "Superior Laryngeal Nerve",
-    desc: "Branches from vagus at C2 level near inferior ganglion. Divides into: Internal branch (sensory above vocal cords — pierces thyrohyoid membrane) and External branch (motor to cricothyroid — runs with superior thyroid artery, at risk in thyroid surgery).",
+    desc: "Branches from vagus at C2 level near inferior ganglion. Divides into: Internal branch (sensory above vocal cords — pierces thyrohyoid membrane with superior laryngeal artery) and External branch (motor to cricothyroid — runs with superior thyroid artery, at risk in thyroid surgery).",
     color: "#4ade80",
   },
   {
     id: "iln",
     label: "Internal Laryngeal Nerve",
-    desc: "Sensory + autonomic to laryngeal mucosa above vocal cords (supraglottis, epiglottis, piriform fossa). Pierces thyrohyoid membrane with superior laryngeal artery. Block target for awake intubation.",
+    desc: "Pure sensory + autonomic to laryngeal mucosa above vocal cords (supraglottis, epiglottis, vallecula, piriform fossa, aryepiglottic folds). Pierces thyrohyoid membrane 2–4mm below greater horn of hyoid with superior laryngeal artery. Lies submucosally in piriform fossa floor. Block target for awake intubation.",
     color: "#34d399",
   },
   {
     id: "eln",
     label: "External Laryngeal Nerve",
-    desc: "Motor to cricothyroid muscle (tensor of vocal cords). Runs on inferior constrictor deep to superior thyroid artery. 'Nerve of Amelita Galli-Curci' — damage causes voice fatigue, loss of high pitch. At risk in superior pole thyroid ligation.",
+    desc: "Motor to cricothyroid muscle (tensor of vocal cords, increases pitch). Runs on inferior constrictor deep to superior thyroid artery. Cernea classification: Type 1 (>1cm above pole), Type 2a (<1cm above), Type 2b (below pole — highest risk). 'Nerve of Amelita Galli-Curci' — damage causes voice fatigue.",
     color: "#22d3ee",
   },
   {
     id: "rln-left",
     label: "Left RLN",
-    desc: "Loops under aortic arch (posterior to ligamentum arteriosum) then ascends in tracheo-oesophageal groove. Longer course = more vulnerable. At risk in aortic arch surgery, mediastinal tumours, and left thyroid surgery. Enters larynx posterior to cricothyroid joint.",
+    desc: "Loops under aortic arch (posterior to ligamentum arteriosum) then ascends in tracheo-oesophageal groove. Longer course (12cm) = more vulnerable. Passes deep to Berry's ligament near Zuckerkandl's tubercle before entering larynx posterior to cricothyroid joint. At risk in thyroid, parathyroid, oesophageal, and aortic arch surgery.",
     color: "#f87171",
   },
   {
     id: "rln-right",
     label: "Right RLN",
-    desc: "Loops under right subclavian artery then ascends obliquely to tracheo-oesophageal groove. Shorter, more oblique course. Non-recurrent laryngeal nerve variant (0.5–1%) — runs directly from vagus to larynx, associated with aberrant right subclavian (arteria lusoria).",
+    desc: "Loops under right subclavian artery then ascends obliquely to tracheo-oesophageal groove. Shorter course (5–6cm), more oblique. Non-recurrent laryngeal nerve variant (0.5–1%) — runs directly from vagus to larynx, associated with aberrant right subclavian artery (arteria lusoria). Passes deep to Berry's ligament.",
     color: "#fb923c",
   },
   {
     id: "rln-motor",
     label: "RLN Motor Supply",
-    desc: "Motor to ALL intrinsic laryngeal muscles EXCEPT cricothyroid. Includes: posterior cricoarytenoid (only abductor — opens cords), lateral cricoarytenoid, thyroarytenoid, interarytenoid, oblique arytenoid. Also sensory below vocal cords.",
+    desc: "Motor to ALL intrinsic laryngeal muscles EXCEPT cricothyroid. Includes: posterior cricoarytenoid (ONLY abductor — opens cords), lateral cricoarytenoid (adducts), thyroarytenoid/vocalis (relaxes cords), interarytenoid (closes posterior glottis), oblique arytenoid (narrows inlet). Also sensory to mucosa below vocal cords (subglottis, upper trachea).",
     color: "#c084fc",
   },
   {
     id: "thyroid",
     label: "Thyroid & Landmarks",
-    desc: "Thyroid lobes lateral to trachea. Superior thyroid artery (ECA) runs with external laryngeal nerve. Inferior thyroid artery (thyrocervical trunk) crosses posterior to RLN — variable relationship (nerve may be anterior, posterior, or between branches). Berry's ligament tethers thyroid to trachea — RLN passes deep to it.",
+    desc: "Thyroid lobes lateral to trachea. Superior thyroid artery (ECA branch) accompanies external SLN. Inferior thyroid artery (thyrocervical trunk) crosses posterior to RLN — variable relationship (nerve anterior 25%, posterior 50%, between branches 25%). Berry's ligament (posterior suspensory) tethers thyroid to trachea — RLN passes deep to it. Zuckerkandl's tubercle (posterior thyroid lobe extension) is a key landmark for identifying the RLN.",
     color: "#f472b6",
+  },
+  {
+    id: "carotid-sheath",
+    label: "Carotid Sheath",
+    desc: "Fascial compartment containing: CCA/ICA (medial), IJV (lateral), vagus nerve (posteriorly, between vessels). Also contains deep cervical lymph nodes and ansa cervicalis. Extends from skull base to aortic arch. IJV and CCA relationship may vary — ultrasound-guided IJV cannulation avoids carotid puncture.",
+    color: "#60a5fa",
   },
 ];
 
@@ -82,6 +88,39 @@ const LaryngealNervesDiagram = () => {
             </linearGradient>
           </defs>
 
+          {/* === CAROTID SHEATH (left) === */}
+          <ellipse cx="148" cy="100" rx="14" ry="12"
+            fill={hi("carotid-sheath") ? "#60a5fa" : "transparent"}
+            fillOpacity={0.1}
+            stroke={hi("carotid-sheath") ? "#60a5fa" : "#60a5fa"}
+            strokeWidth={hi("carotid-sheath") ? 2 : 0.8}
+            strokeDasharray={hi("carotid-sheath") ? "" : "3 2"}
+            opacity={op("carotid-sheath")}
+            onClick={() => setSelected(selected === "carotid-sheath" ? null : "carotid-sheath")}
+            className="cursor-pointer"
+          />
+          {/* CCA */}
+          <circle cx="143" cy="98" r="5" fill="#ef4444" fillOpacity="0.3" stroke="#ef4444" strokeWidth="0.8" opacity={op("carotid-sheath")} />
+          <text x="143" y="100" textAnchor="middle" fontSize="4" fill="#991b1b" opacity={op("carotid-sheath")}>CCA</text>
+          {/* IJV */}
+          <ellipse cx="155" cy="98" rx="6" ry="5" fill="#3b82f6" fillOpacity="0.2" stroke="#3b82f6" strokeWidth="0.8" opacity={op("carotid-sheath")} />
+          <text x="155" y="100" textAnchor="middle" fontSize="4" fill="#1d4ed8" opacity={op("carotid-sheath")}>IJV</text>
+          {hi("carotid-sheath") && (
+            <text x="115" y="88" fontSize="7" fill="#60a5fa" fontWeight="600">Carotid sheath</text>
+          )}
+
+          {/* === CAROTID SHEATH (right) === */}
+          <ellipse cx="315" cy="100" rx="14" ry="12"
+            fill={hi("carotid-sheath") ? "#60a5fa" : "transparent"}
+            fillOpacity={0.1}
+            stroke={hi("carotid-sheath") ? "#60a5fa" : "#60a5fa"}
+            strokeWidth={hi("carotid-sheath") ? 2 : 0.8}
+            strokeDasharray={hi("carotid-sheath") ? "" : "3 2"}
+            opacity={op("carotid-sheath")}
+            onClick={() => setSelected(selected === "carotid-sheath" ? null : "carotid-sheath")}
+            className="cursor-pointer"
+          />
+
           {/* === TRACHEA === */}
           <rect x="200" y="160" width="60" height="380" rx="28" fill="#fef9c3" stroke="#ca8a04" strokeWidth="1.5" opacity={0.5} />
           {[0,1,2,3,4,5,6,7,8].map(i => (
@@ -92,6 +131,9 @@ const LaryngealNervesDiagram = () => {
           {/* === OESOPHAGUS === */}
           <ellipse cx="230" cy="560" rx="18" ry="10" fill="#fef3c7" stroke="#b45309" strokeWidth="1" opacity={0.4} />
           <text x="230" y="563" textAnchor="middle" fontSize="7" fill="#92400e">Oesoph</text>
+
+          {/* T-O groove label */}
+          <text x="198" y="278" fontSize="6" fill="#6b7280" opacity={0.35} transform="rotate(-90 198 278)">T-O groove</text>
 
           {/* === AORTIC ARCH === */}
           <path
@@ -130,13 +172,48 @@ const LaryngealNervesDiagram = () => {
           <text x="175" y="243" textAnchor="middle" fontSize="8" fill="#9d174d" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
           <text x="285" y="243" textAnchor="middle" fontSize="8" fill="#9d174d" fontWeight="600" opacity={op("thyroid")}>Thyroid</text>
 
+          {/* Zuckerkandl's tubercle — posterior extension of thyroid lobe, key RLN landmark */}
+          <ellipse cx="195" cy="230" rx="6" ry="10"
+            fill={hi("thyroid") ? "#f9a8d4" : "#fce7f3"}
+            stroke={hi("thyroid") ? "#be185d" : "#db2777"}
+            strokeWidth={hi("thyroid") ? 2 : 0.8}
+            opacity={op("thyroid")}
+          />
+          <ellipse cx="265" cy="230" rx="6" ry="10"
+            fill={hi("thyroid") ? "#f9a8d4" : "#fce7f3"}
+            stroke={hi("thyroid") ? "#be185d" : "#db2777"}
+            strokeWidth={hi("thyroid") ? 2 : 0.8}
+            opacity={op("thyroid")}
+          />
+          {hi("thyroid") && (
+            <>
+              <text x="195" y="250" textAnchor="middle" fontSize="5" fill="#be185d">Zuckerkandl's</text>
+              <text x="195" y="257" textAnchor="middle" fontSize="5" fill="#be185d">tubercle</text>
+            </>
+          )}
+
+          {/* Berry's ligament — posterior suspensory, RLN passes deep */}
+          <line x1="195" y1="218" x2="202" y2="210" stroke={hi("thyroid") ? "#be185d" : "#db2777"} strokeWidth={hi("thyroid") ? 2 : 0.8} strokeDasharray="2 1" opacity={op("thyroid")} />
+          <line x1="265" y1="218" x2="258" y2="210" stroke={hi("thyroid") ? "#be185d" : "#db2777"} strokeWidth={hi("thyroid") ? 2 : 0.8} strokeDasharray="2 1" opacity={op("thyroid")} />
+          {hi("thyroid") && (
+            <text x="230" y="208" textAnchor="middle" fontSize="5" fill="#be185d">Berry's lig.</text>
+          )}
+
           {/* Superior thyroid artery */}
           <path d="M140,170 Q155,190 170,200" fill="none" stroke="#ef4444" strokeWidth="2" opacity={op("eln")} />
           <text x="125" y="168" fontSize="7" fill="#991b1b" opacity={op("eln")}>Sup. thyroid A.</text>
 
-          {/* Inferior thyroid artery */}
+          {/* Inferior thyroid artery — variable relationship to RLN */}
           <path d="M120,320 Q150,300 175,280" fill="none" stroke="#ef4444" strokeWidth="2" opacity={op("thyroid")} />
           <text x="95" y="328" fontSize="7" fill="#991b1b" opacity={op("thyroid")}>Inf. thyroid A.</text>
+          {hi("thyroid") && (
+            <>
+              <text x="120" y="340" fontSize="5" fill="#6b7280">ITA-RLN relationship:</text>
+              <text x="120" y="348" fontSize="5" fill="#6b7280">Nerve posterior 50%</text>
+              <text x="120" y="356" fontSize="5" fill="#6b7280">Nerve anterior 25%</text>
+              <text x="120" y="364" fontSize="5" fill="#6b7280">Between branches 25%</text>
+            </>
+          )}
 
           {/* === LARYNX === */}
           <rect x="195" y="100" width="70" height="60" rx="10" fill="#e0f2fe" stroke="#0284c7" strokeWidth="1.5" opacity={0.5} />
@@ -151,47 +228,50 @@ const LaryngealNervesDiagram = () => {
           <rect x="210" y="155" width="40" height="10" rx="3" fill="#bae6fd" stroke="#0284c7" strokeWidth="1" opacity={op("eln")} />
           <text x="275" y="163" fontSize="6" fill="#0369a1" opacity={op("eln")}>Cricothyroid m.</text>
 
+          {/* Entry point label — RLN enters posterior to CT joint */}
+          <text x="195" y="172" fontSize="5" fill="#6b7280" opacity="0.5">← RLN entry (post. to CT joint)</text>
+
           {/* === VAGUS NERVES === */}
           {/* Left vagus */}
           <path
-            d="M155,60 L155,140"
+            d="M150,60 L150,140"
             fill="none" stroke={hi("vagus") ? "#eab308" : "#facc15"} strokeWidth={hi("vagus") ? 4 : 3}
             opacity={op("vagus")}
             onClick={() => setSelected(selected === "vagus" ? null : "vagus")}
             className="cursor-pointer"
           />
-          <text x="145" y="55" textAnchor="middle" fontSize="9" fill="#a16207" fontWeight="700" opacity={op("vagus")}>L. Vagus (X)</text>
+          <text x="140" y="55" textAnchor="middle" fontSize="9" fill="#a16207" fontWeight="700" opacity={op("vagus")}>L. Vagus (X)</text>
 
           {/* Right vagus */}
           <path
-            d="M330,60 L330,140"
+            d="M320,60 L320,140"
             fill="none" stroke={hi("vagus") ? "#eab308" : "#facc15"} strokeWidth={hi("vagus") ? 4 : 3}
             opacity={op("vagus")}
             onClick={() => setSelected(selected === "vagus" ? null : "vagus")}
             className="cursor-pointer"
           />
-          <text x="340" y="55" textAnchor="middle" fontSize="9" fill="#a16207" fontWeight="700" opacity={op("vagus")}>R. Vagus (X)</text>
+          <text x="330" y="55" textAnchor="middle" fontSize="9" fill="#a16207" fontWeight="700" opacity={op("vagus")}>R. Vagus (X)</text>
 
           {/* Left vagus continues to thorax */}
           <path
-            d="M155,140 L155,400 Q155,420 200,440"
+            d="M150,140 L150,400 Q155,420 200,440"
             fill="none" stroke="#facc15" strokeWidth="2.5" opacity={op("vagus")} strokeDasharray="6 3"
           />
           {/* Right vagus continues */}
           <path
-            d="M330,140 L330,460"
+            d="M320,140 L320,460"
             fill="none" stroke="#facc15" strokeWidth="2.5" opacity={op("vagus")} strokeDasharray="6 3"
           />
 
           {/* === SLN === */}
           <path
-            d="M155,100 Q165,95 185,100"
+            d="M150,100 Q165,95 185,100"
             fill="none" stroke={hi("sln") ? "#16a34a" : "#4ade80"} strokeWidth={hi("sln") ? 4 : 2.5}
             opacity={op("sln")}
             onClick={() => setSelected(selected === "sln" ? null : "sln")}
             className="cursor-pointer"
           />
-          <text x="175" y="92" textAnchor="middle" fontSize="8" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
+          <text x="170" y="92" textAnchor="middle" fontSize="8" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
 
           {/* Internal laryngeal nerve — pierces thyrohyoid membrane */}
           <path
@@ -217,15 +297,24 @@ const LaryngealNervesDiagram = () => {
           <text x="178" y="150" fontSize="7" fill="#155e75" opacity={op("eln")}>ELN</text>
           <text x="168" y="158" fontSize="6" fill="#155e75" fontStyle="italic" opacity={op("eln")}>(motor to cricothyroid)</text>
 
+          {/* Cernea classification for ELN */}
+          {hi("eln") && (
+            <>
+              <text x="140" y="175" fontSize="5" fill="#155e75">Cernea: Type 1 (&gt;1cm above pole)</text>
+              <text x="140" y="183" fontSize="5" fill="#155e75">Type 2a (&lt;1cm above)</text>
+              <text x="140" y="191" fontSize="5" fill="#155e75" fontWeight="600">Type 2b (below pole — highest risk)</text>
+            </>
+          )}
+
           {/* Right SLN */}
           <path
-            d="M330,100 Q310,95 280,100"
+            d="M320,100 Q305,95 280,100"
             fill="none" stroke={hi("sln") ? "#16a34a" : "#4ade80"} strokeWidth={hi("sln") ? 4 : 2.5}
             opacity={op("sln")}
             onClick={() => setSelected(selected === "sln" ? null : "sln")}
             className="cursor-pointer"
           />
-          <text x="300" y="92" textAnchor="middle" fontSize="8" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
+          <text x="295" y="92" textAnchor="middle" fontSize="8" fill="#166534" fontWeight="600" opacity={op("sln")}>SLN</text>
           {/* Right ILN */}
           <path d="M280,100 Q272,105 268,112" fill="none" stroke="#34d399" strokeWidth="2" opacity={op("iln")} />
           <circle cx="268" cy="112" r="3" fill="#34d399" stroke="#059669" strokeWidth="1" opacity={op("iln")} />
@@ -241,32 +330,45 @@ const LaryngealNervesDiagram = () => {
             onClick={() => setSelected(selected === "rln-left" ? null : "rln-left")}
             className="cursor-pointer"
           />
-          <text x="195" y="350" fontSize="8" fill="#991b1b" fontWeight="600" opacity={op("rln-left")} transform="rotate(-90 195 350)">L. RLN</text>
+          <text x="190" y="350" fontSize="8" fill="#991b1b" fontWeight="600" opacity={op("rln-left")} transform="rotate(-90 190 350)">L. RLN</text>
           {/* Arrow showing it loops under arch */}
           <circle cx="200" cy="440" r="4" fill="#f87171" stroke="#dc2626" strokeWidth="1.5" opacity={op("rln-left")} />
+          {hi("rln-left") && (
+            <text x="180" y="420" fontSize="5" fill="#991b1b">Loops under arch (12cm course)</text>
+          )}
 
           {/* === RIGHT RLN === */}
           <path
-            d="M330,460 Q340,475 350,465 Q355,450 348,430 Q340,390 335,340 Q330,290 320,250 Q315,220 310,190 Q308,175 270,165"
+            d="M320,460 Q335,475 345,465 Q350,450 343,430 Q335,390 330,340 Q325,290 315,250 Q310,220 305,190 Q303,175 270,165"
             fill="none" stroke={hi("rln-right") ? "#ea580c" : "#fb923c"} strokeWidth={hi("rln-right") ? 4 : 2.5}
             opacity={op("rln-right")}
             onClick={() => setSelected(selected === "rln-right" ? null : "rln-right")}
             className="cursor-pointer"
           />
-          <text x="345" y="340" fontSize="8" fill="#9a3412" fontWeight="600" opacity={op("rln-right")} transform="rotate(90 345 340)">R. RLN</text>
-          <circle cx="330" cy="460" r="4" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" opacity={op("rln-right")} />
+          <text x="340" y="340" fontSize="8" fill="#9a3412" fontWeight="600" opacity={op("rln-right")} transform="rotate(90 340 340)">R. RLN</text>
+          <circle cx="320" cy="460" r="4" fill="#fb923c" stroke="#ea580c" strokeWidth="1.5" opacity={op("rln-right")} />
+          {hi("rln-right") && (
+            <text x="350" y="420" fontSize="5" fill="#9a3412">Shorter course (5–6cm)</text>
+          )}
+
+          {/* Non-recurrent RLN variant (right side only, 0.5–1%) */}
+          {hi("rln-right") && (
+            <>
+              <path d="M320,120 Q310,140 295,155 Q280,162 270,165"
+                fill="none" stroke="#fb923c" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.5" />
+              <text x="330" y="135" fontSize="5" fill="#9a3412" opacity="0.7">Non-recurrent variant</text>
+              <text x="330" y="143" fontSize="5" fill="#9a3412" opacity="0.7">(0.5–1%, with arteria lusoria)</text>
+            </>
+          )}
 
           {/* RLN motor endpoint arrows into larynx */}
-          <path d="M205,165 L210,155" fill="none" stroke="#f87171" strokeWidth="2" markerEnd="" opacity={op("rln-left")} />
+          <path d="M205,165 L210,155" fill="none" stroke="#f87171" strokeWidth="2" opacity={op("rln-left")} />
           <path d="M270,165 L265,155" fill="none" stroke="#fb923c" strokeWidth="2" opacity={op("rln-right")} />
 
           {/* RLN motor label */}
           {(selected === "rln-motor" || !selected) && (
             <text x="230" y="175" textAnchor="middle" fontSize="6" fill="#7c3aed">Motor: all intrinsic mm. except cricothyroid</text>
           )}
-
-          {/* T-O groove labels */}
-          <text x="205" y="278" fontSize="6" fill="#6b7280" opacity={op("rln-left")} transform="rotate(-90 205 278)">T-O groove</text>
 
           {/* Sensory territory annotations */}
           {(selected === "iln" || selected === "rln-motor") && (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold";
+type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold" | "conus-elasticus" | "quadrangular-membrane" | "pre-epiglottic" | "corniculate" | "cuneiform" | "reinke-space";
 
 interface LaryngealStructure {
   label: string;
@@ -107,13 +107,49 @@ const structures: Record<StructureKey, LaryngealStructure> = {
     detail: "Mucosal fold running from lateral epiglottis to arytenoid apex. Contains aryepiglottic muscle (sphincter of laryngeal inlet) and cuneiform/corniculate cartilages (visible as small bumps). Forms the boundary of the laryngeal inlet.",
     clinicalNote: "Prominent aryepiglottic folds in laryngomalacia (floppy, collapse inward on inspiration → inspiratory stridor in neonates). Define the lateral boundary of the supraglottis during laryngoscopy.",
   },
+  "conus-elasticus": {
+    label: "Conus Elasticus",
+    color: "hsl(15, 60%, 55%)",
+    detail: "Fibroelastic membrane from upper border of cricoid arch to vocal ligament (its free superior edge). Forms the subglottic lateral wall. Continuous with CTM anteriorly. The vocal ligament is the thickened superior free edge.",
+    clinicalNote: "Defines the subglottic space. Subglottic stenosis (post-intubation) occurs here. In children <8yr, this region (not the glottis) is the narrowest point of the airway. Cuffed ETT exerts pressure on this structure.",
+  },
+  "quadrangular-membrane": {
+    label: "Quadrangular Membrane",
+    color: "hsl(200, 50%, 58%)",
+    detail: "Fibroelastic membrane extending from lateral epiglottis to arytenoid. Superior free edge forms aryepiglottic fold (with aryepiglottic muscle). Inferior free edge forms vestibular ligament (false cord). Separates vestibule from piriform fossa.",
+    clinicalNote: "Understanding quadrangular membrane anatomy clarifies the layers of the supraglottis — relevant to supraglottic airway device placement and spread of supraglottic tumours.",
+  },
+  "pre-epiglottic": {
+    label: "Pre-epiglottic Space",
+    color: "hsl(45, 60%, 55%)",
+    detail: "Fat-filled space anterior to epiglottis, bounded by thyrohyoid membrane/hyoid superiorly, thyroid cartilage anteriorly, and epiglottis posteriorly. Contains fat and loose areolar tissue. Continuous with paraglottic spaces laterally.",
+    clinicalNote: "Key space in laryngeal cancer staging — invasion indicates advanced disease (T3+). Macintosh blade tip engages hyoepiglottic ligament which attaches through this space. CT/MRI assessment important pre-operatively.",
+  },
+  corniculate: {
+    label: "Corniculate Cartilages",
+    color: "hsl(270, 40%, 55%)",
+    detail: "Small paired elastic cartilages (of Santorini) sitting on apex of each arytenoid. Visible as small tubercles (corniculate tubercles) on posterior laryngoscopic view within aryepiglottic folds.",
+    clinicalNote: "Visible landmarks during laryngoscopy — the paired 'bumps' seen posteriorly at the laryngeal inlet. Help distinguish posterior commissure anatomy.",
+  },
+  cuneiform: {
+    label: "Cuneiform Cartilages",
+    color: "hsl(310, 40%, 55%)",
+    detail: "Small paired elastic cartilages (of Wrisberg) embedded within the aryepiglottic folds, anterior to corniculate cartilages. Visible as cuneiform tubercles on laryngoscopy. Not all individuals have them.",
+    clinicalNote: "Visible as elongated whitish elevations (cuneiform tubercles) in the aryepiglottic folds during laryngoscopy. Stiffen the aryepiglottic folds.",
+  },
+  "reinke-space": {
+    label: "Reinke's Space",
+    color: "hsl(350, 50%, 55%)",
+    detail: "Potential space (superficial lamina propria) between vocal cord epithelium and vocal ligament. Contains loose gelatinous tissue. Mucosal wave propagation depends on this layer. Extends the full length of the membranous vocal cord.",
+    clinicalNote: "Reinke's oedema: fluid accumulation → polypoid degeneration, breathy/husky voice (associated with smoking). Vocal cord haematoma (post-intubation) occurs in this layer. Microflap surgery targets this space.",
+  },
 };
 
 const structureOrder: StructureKey[] = [
-  "epiglottis", "aryepiglottic-fold", "hyoid", "thyrohyoid", "thyroid",
-  "vestibular-folds", "piriform-fossa", "vocal-cords", "cricothyroid-joint",
-  "cricothyroid-membrane", "arytenoid", "cricoid", "trachea",
-  "sln-internal", "sln-external", "rln",
+  "epiglottis", "aryepiglottic-fold", "hyoid", "thyrohyoid", "pre-epiglottic", "thyroid",
+  "quadrangular-membrane", "vestibular-folds", "piriform-fossa", "vocal-cords", "reinke-space",
+  "conus-elasticus", "cricothyroid-joint", "cricothyroid-membrane", "arytenoid", "corniculate", "cuneiform",
+  "cricoid", "trachea", "sln-internal", "sln-external", "rln",
 ];
 
 const intrinsicMuscles = [
@@ -149,10 +185,16 @@ const LaryngealCrossSectionDiagram = () => {
         <TabsContent value="sagittal">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
-              <svg viewBox="0 0 260 310" width="260" height="310" className="border border-border rounded">
+              <svg viewBox="0 0 280 340" width="280" height="340" className="border border-border rounded">
                 {/* Background: pharyngeal/airway lumen */}
-                <path d="M110,20 C110,30 108,45 106,60 C104,78 103,95 105,110 C107,125 109,140 110,155 C110,168 108,180 105,195 C103,208 102,220 103,235 C104,250 105,265 105,280 L155,280 C155,265 156,250 157,235 C158,220 157,208 155,195 C152,180 150,168 150,155 C151,140 153,125 155,110 C157,95 156,78 154,60 C152,45 150,30 150,20 Z"
+                <path d="M120,20 C120,30 118,45 116,60 C114,78 113,95 115,110 C117,125 119,140 120,155 C120,168 118,180 115,195 C113,208 112,220 113,235 C114,250 115,265 115,280 L165,280 C165,265 166,250 167,235 C168,220 167,208 165,195 C162,180 160,168 160,155 C161,140 163,125 165,110 C167,95 166,78 164,60 C162,45 160,30 160,20 Z"
                   fill="hsl(200, 30%, 92%)" opacity="0.15" stroke="none" />
+
+                {/* Posterior pharyngeal wall / vertebral bodies */}
+                <rect x="165" y="30" width="12" height="270" rx="4" fill="hsl(30, 20%, 75%)" opacity="0.12" />
+                {[50, 90, 130, 170, 210, 250].map((y, i) => (
+                  <line key={`vert-${i}`} x1="166" y1={y} x2="176" y2={y} stroke="hsl(30, 20%, 60%)" strokeWidth="0.5" opacity="0.2" />
+                ))}
 
                 {/* Aryepiglottic fold */}
                 <path
@@ -175,6 +217,21 @@ const LaryngealCrossSectionDiagram = () => {
                 />
                 {isActive("aryepiglottic-fold") && (
                   <text x="8" y="96" fontSize="5" fill={structures["aryepiglottic-fold"].color} className="select-none">Aryep. fold</text>
+                )}
+
+                {/* Pre-epiglottic space — fat-filled space anterior to epiglottis */}
+                <path
+                  d="M100,55 C102,48 108,42 118,40 C122,38 126,38 130,40 L130,82 C125,83 115,80 108,74 C102,68 100,62 100,55 Z"
+                  fill={structures["pre-epiglottic"].color}
+                  fillOpacity={isActive("pre-epiglottic") ? 0.4 : 0.06}
+                  stroke={structures["pre-epiglottic"].color}
+                  strokeWidth={isActive("pre-epiglottic") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("pre-epiglottic")}
+                />
+                {isActive("pre-epiglottic") && (
+                  <text x="104" y="62" fontSize="4" fill={structures["pre-epiglottic"].color} className="select-none">Pre-epiglottic</text>
                 )}
 
                 {/* Epiglottis - leaf shape */}
@@ -253,7 +310,35 @@ const LaryngealCrossSectionDiagram = () => {
                   </>
                 )}
 
-                {/* Vestibular folds */}
+                {/* Quadrangular membrane — from epiglottis to arytenoid, between vestibular folds and aryepiglottic folds */}
+                <path
+                  d="M108,72 C106,82 105,92 105,100 L105,108 L115,118 L115,100 C115,90 116,80 118,72 Z"
+                  fill={structures["quadrangular-membrane"].color}
+                  fillOpacity={isActive("quadrangular-membrane") ? 0.35 : 0.04}
+                  stroke={structures["quadrangular-membrane"].color}
+                  strokeWidth={isActive("quadrangular-membrane") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("quadrangular-membrane")}
+                />
+                <path
+                  d="M152,72 C154,82 155,92 155,100 L155,108 L145,118 L145,100 C145,90 144,80 142,72 Z"
+                  fill={structures["quadrangular-membrane"].color}
+                  fillOpacity={isActive("quadrangular-membrane") ? 0.35 : 0.04}
+                  stroke={structures["quadrangular-membrane"].color}
+                  strokeWidth={isActive("quadrangular-membrane") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("quadrangular-membrane")}
+                />
+                {isActive("quadrangular-membrane") && (
+                  <>
+                    <text x="80" y="92" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">Quadrangular</text>
+                    <text x="80" y="98" fontSize="4" fill={structures["quadrangular-membrane"].color} textAnchor="end" className="select-none">membrane</text>
+                  </>
+                )}
+
+                {/* Vestibular folds (inferior free edge of quadrangular membrane) */}
                 <path
                   d="M105,108 C112,104 118,103 125,104 C128,104 132,103 135,104 C142,103 148,104 155,108"
                   fill="none"
@@ -263,11 +348,16 @@ const LaryngealCrossSectionDiagram = () => {
                   className="cursor-pointer transition-all duration-200"
                   onClick={click("vestibular-folds")}
                 />
-                <text x="210" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>
+                <text x="220" y="110" fontSize="5.5" fill={isActive("vestibular-folds") ? structures["vestibular-folds"].color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("vestibular-folds")}>False cords</text>
 
-                {/* Ventricle of Morgagni */}
-                <path d="M108,110 C115,114 125,115 130,115 C135,115 145,114 152,110" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3" />
-                <text x="130" y="114" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">ventricle</text>
+                {/* Ventricle of Morgagni (laryngeal sinus) */}
+                <path d="M108,110 C112,116 120,118 130,118 C140,118 148,116 152,110"
+                  fill="hsl(200, 30%, 92%)" fillOpacity="0.1"
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.35" />
+                <text x="130" y="115" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">ventricle (Morgagni)</text>
+                {/* Saccule extending superiorly from anterior ventricle */}
+                <path d="M118,110 C116,106 115,100 116,94" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1.5" opacity="0.2" />
+                <text x="108" y="100" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.25">saccule</text>
 
                 {/* True vocal cords */}
                 <path
@@ -280,7 +370,40 @@ const LaryngealCrossSectionDiagram = () => {
                   onClick={click("vocal-cords")}
                 />
                 <text x="130" y="112" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">glottis</text>
-                <text x="210" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>
+                <text x="220" y="122" fontSize="6" fill={isActive("vocal-cords") ? structures["vocal-cords"].color : "hsl(var(--muted-foreground))"} fontWeight={isActive("vocal-cords") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("vocal-cords")}>True vocal cords</text>
+
+                {/* Reinke's space — superficial lamina propria of true cords */}
+                <path
+                  d="M108,119 C115,115.5 122,114.5 130,114.5 C138,114.5 145,115.5 152,119"
+                  fill="none"
+                  stroke={structures["reinke-space"].color}
+                  strokeWidth={isActive("reinke-space") ? 2 : 0.8}
+                  strokeDasharray={isActive("reinke-space") ? "2 1" : "1.5 1.5"}
+                  opacity={isActive("reinke-space") ? 0.8 : 0.15}
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("reinke-space")}
+                />
+                {isActive("reinke-space") && (
+                  <text x="130" y="124" fontSize="3.5" textAnchor="middle" fill={structures["reinke-space"].color} className="select-none">Reinke's space</text>
+                )}
+
+                {/* Conus elasticus — fibroelastic membrane from cricoid to vocal ligament */}
+                <path
+                  d="M105,120 C100,135 95,150 92,165 L168,165 C165,150 160,135 155,120"
+                  fill={structures["conus-elasticus"].color}
+                  fillOpacity={isActive("conus-elasticus") ? 0.25 : 0.04}
+                  stroke={structures["conus-elasticus"].color}
+                  strokeWidth={isActive("conus-elasticus") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("conus-elasticus")}
+                />
+                {isActive("conus-elasticus") && (
+                  <>
+                    <text x="78" y="142" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">Conus</text>
+                    <text x="78" y="148" fontSize="4" fill={structures["conus-elasticus"].color} textAnchor="end" className="select-none">elasticus</text>
+                  </>
+                )}
 
                 {/* Arytenoid cartilages */}
                 <path d="M108,125 L115,118 L122,128 Z"
@@ -293,7 +416,37 @@ const LaryngealCrossSectionDiagram = () => {
                   stroke={structures.arytenoid.color} strokeWidth={sw("arytenoid")}
                   className="cursor-pointer transition-all duration-200" onClick={click("arytenoid")}
                 />
-                <text x="210" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>
+                <text x="220" y="132" fontSize="5.5" fill={isActive("arytenoid") ? structures.arytenoid.color : "hsl(var(--muted-foreground))"} className="cursor-pointer select-none" onClick={click("arytenoid")}>Arytenoids</text>
+
+                {/* Corniculate cartilages — on apex of arytenoids */}
+                <circle cx="115" cy="116" r="2.5"
+                  fill={structures.corniculate.color} fillOpacity={isActive("corniculate") ? 0.6 : 0.15}
+                  stroke={structures.corniculate.color} strokeWidth={isActive("corniculate") ? 1.5 : 0.5}
+                  className="cursor-pointer transition-all duration-200" onClick={click("corniculate")}
+                />
+                <circle cx="145" cy="116" r="2.5"
+                  fill={structures.corniculate.color} fillOpacity={isActive("corniculate") ? 0.6 : 0.15}
+                  stroke={structures.corniculate.color} strokeWidth={isActive("corniculate") ? 1.5 : 0.5}
+                  className="cursor-pointer transition-all duration-200" onClick={click("corniculate")}
+                />
+                {isActive("corniculate") && (
+                  <text x="130" y="132" fontSize="3.5" textAnchor="middle" fill={structures.corniculate.color} className="select-none">Corniculate (Santorini)</text>
+                )}
+
+                {/* Cuneiform cartilages — within aryepiglottic folds */}
+                <ellipse cx="110" cy="98" rx="2" ry="3.5"
+                  fill={structures.cuneiform.color} fillOpacity={isActive("cuneiform") ? 0.6 : 0.12}
+                  stroke={structures.cuneiform.color} strokeWidth={isActive("cuneiform") ? 1.2 : 0.4}
+                  className="cursor-pointer transition-all duration-200" onClick={click("cuneiform")}
+                />
+                <ellipse cx="150" cy="98" rx="2" ry="3.5"
+                  fill={structures.cuneiform.color} fillOpacity={isActive("cuneiform") ? 0.6 : 0.12}
+                  stroke={structures.cuneiform.color} strokeWidth={isActive("cuneiform") ? 1.2 : 0.4}
+                  className="cursor-pointer transition-all duration-200" onClick={click("cuneiform")}
+                />
+                {isActive("cuneiform") && (
+                  <text x="130" y="95" fontSize="3.5" textAnchor="middle" fill={structures.cuneiform.color} className="select-none">Cuneiform (Wrisberg)</text>
+                )}
 
                 {/* Cricothyroid joint */}
                 <circle cx="72" cy="158" r="4"
@@ -366,7 +519,16 @@ const LaryngealCrossSectionDiagram = () => {
                 })}
                 <text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>
 
-                {/* Nerves */}
+                {/* Nerves & vessels */}
+                {/* Superior laryngeal artery — accompanies internal SLN through thyrohyoid membrane */}
+                <path d="M40,42 C52,44 62,49 74,56 C80,60 84,64 87,68"
+                  stroke="#cc3333" strokeWidth={isActive("sln-internal") ? 1.5 : 0.8}
+                  fill="none" opacity={isActive("sln-internal") ? 0.6 : 0.15}
+                />
+                {isActive("sln-internal") && (
+                  <text x="50" y="40" fontSize="3.5" fill="#cc3333" opacity="0.6">Sup. laryngeal A.</text>
+                )}
+
                 {/* Internal SLN */}
                 <path d="M38,48 C50,50 60,55 72,62 C78,66 82,70 85,73"
                   stroke={structures["sln-internal"].color}
@@ -488,6 +650,21 @@ const LaryngealCrossSectionDiagram = () => {
                 <text x="88" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
                 <text x="130" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
 
+                {/* Corniculate cartilages — on arytenoid apex, visible as tubercles */}
+                <circle cx="105" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
+                <circle cx="135" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
+                <text x="120" y="140" fontSize="3.5" textAnchor="middle" fill="hsl(270, 40%, 55%)" opacity="0.6">Corniculate tubercles</text>
+
+                {/* Cuneiform cartilages — within aryepiglottic folds */}
+                <ellipse cx="88" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(-15 88 138)" />
+                <ellipse cx="152" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(15 152 138)" />
+                <text x="76" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
+                <text x="158" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
+
+                {/* Muscular process labels */}
+                <text x="92" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>
+                <text x="148" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>
+
                 {/* Vocal process labels */}
                 <text x="105" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>
                 <text x="135" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>
@@ -499,7 +676,10 @@ const LaryngealCrossSectionDiagram = () => {
 
                 {/* Glottic opening */}
                 <path d="M120,85 L105,148 L135,148 Z" fill="hsl(200, 30%, 92%)" fillOpacity="0.2" stroke="none" />
-                <text x="120" y="130" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>
+                <text x="120" y="125" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>
+                {/* Anterior membranous / posterior cartilaginous distinction */}
+                <line x1="105" y1="148" x2="135" y2="148" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 1" opacity="0.3" />
+                <text x="120" y="155" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">← membranous | cartilaginous →</text>
 
                 {/* False cords (wider apart) */}
                 <line x1="98" y1="155" x2="115" y2="95" stroke="hsl(300, 35%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2" />
@@ -510,6 +690,10 @@ const LaryngealCrossSectionDiagram = () => {
                 <ellipse cx="168" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.8" />
                 <text x="72" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
                 <text x="168" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
+
+                {/* Internal SLN in floor of piriform fossa */}
+                <path d="M68,142 C70,146 72,148 75,149" stroke="hsl(120, 50%, 45%)" strokeWidth="1" fill="none" strokeDasharray="2 1" opacity="0.4" />
+                <text x="60" y="155" fontSize="3" fill="hsl(120, 50%, 45%)" opacity="0.4">ILN</text>
 
                 {/* Aryepiglottic folds */}
                 <path d="M95,160 C88,145 82,130 80,115 C78,100 80,90 85,85" stroke="hsl(155, 45%, 48%)" strokeWidth="1.5" fill="none" opacity="0.4" />
@@ -522,19 +706,23 @@ const LaryngealCrossSectionDiagram = () => {
 
                 {/* Posterior interarytenoid */}
                 <line x1="115" y1="160" x2="125" y2="160" stroke="hsl(var(--muted-foreground))" strokeWidth="2" opacity="0.3" />
-                <text x="120" y="180" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>
+                <text x="120" y="178" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>
+
+                {/* Posterior commissure label */}
+                <text x="120" y="186" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3">Posterior commissure</text>
               </svg>
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="p-4 rounded-lg border border-border space-y-2">
                 <p className="text-sm font-semibold text-foreground">Axial View — Laryngoscopic Perspective</p>
-                <p className="text-xs text-muted-foreground">This view shows the anatomy as seen looking down from above — similar to the direct laryngoscopy view. Anterior is at the top (where the epiglottis and anterior commissure are).</p>
+                <p className="text-xs text-muted-foreground">This view shows the anatomy as seen looking down from above — similar to the direct laryngoscopy view. Anterior is at the top.</p>
                 <div className="space-y-1 text-xs text-muted-foreground">
-                  <p>• <strong className="text-foreground">Rima glottidis:</strong> Triangular opening between true cords — narrowest point of adult airway</p>
-                  <p>• <strong className="text-foreground">Piriform fossae:</strong> Lateral recesses — secretion pooling, SLN block site</p>
+                  <p>• <strong className="text-foreground">Rima glottidis:</strong> Triangular opening between true cords — narrowest point of adult airway (anterior membranous portion, posterior cartilaginous)</p>
+                  <p>• <strong className="text-foreground">Piriform fossae:</strong> Lateral recesses — internal SLN lies submucosally in floor; spray-as-you-go LA site</p>
+                  <p>• <strong className="text-foreground">Corniculate tubercles:</strong> Paired nodules on arytenoid apices — posterior landmarks during laryngoscopy</p>
+                  <p>• <strong className="text-foreground">Cuneiform tubercles:</strong> Whitish elevations in aryepiglottic folds — stiffen folds</p>
                   <p>• <strong className="text-foreground">Aryepiglottic folds:</strong> Boundary of laryngeal inlet — collapse in laryngomalacia</p>
-                  <p>• <strong className="text-foreground">Vocal processes:</strong> Anterior arytenoid projections where vocal ligaments attach</p>
                 </div>
               </div>
             </div>
