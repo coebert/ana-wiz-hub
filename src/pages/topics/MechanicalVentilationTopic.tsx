@@ -648,6 +648,88 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Do not delay re-intubation:</span> If NIV/HFNO used as rescue for post-extubation respiratory failure, re-intubation should not be delayed. The Esteban trial (2004) showed increased mortality with NIV for post-extubation respiratory failure compared with standard therapy — likely due to delayed re-intubation.</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High-Flow Nasal Oxygen (HFNO)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            HFNO delivers heated, humidified oxygen at flow rates of 30–70 L/min via wide-bore nasal cannulae. It has transformed the management of acute hypoxaemic respiratory failure and is increasingly used across pre-oxygenation, post-extubation support, and as an alternative to NIV.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Physiological Mechanisms</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Precise FiO₂ delivery", detail: "High flow rates match or exceed peak inspiratory flow (30–60 L/min in tachypnoeic patients), eliminating room air entrainment. Delivers true set FiO₂ (0.21–1.0) unlike standard nasal cannulae." },
+              { label: "Nasopharyngeal dead space washout", detail: "Continuous high-flow gas washes out CO₂-rich gas from the anatomical dead space (~150 mL). Each breath draws from fresh gas rather than rebreathed gas. Effectively increases alveolar ventilation without increasing tidal volume." },
+              { label: "CPAP effect", detail: "Generates flow-dependent positive airway pressure: ~1 cmH₂O per 10 L/min with mouth closed (up to ~5–7 cmH₂O at 60 L/min). Reduces atelectasis, improves FRC, and recruits collapsed alveoli. Pressure is lost with mouth open." },
+              { label: "Optimal humidification", detail: "Gas heated to 37°C and humidified to 100% relative humidity (44 mg H₂O/L). Preserves mucociliary function, reduces airway inflammation, improves secretion clearance, and reduces metabolic cost of gas conditioning." },
+              { label: "Reduced work of breathing", detail: "High flow rate reduces inspiratory resistance and provides a small degree of inspiratory flow assistance. Combined with dead space washout and PEEP effect, reduces respiratory drive and diaphragmatic effort." },
+              { label: "Improved patient comfort", detail: "Better tolerated than NIV masks. Allows eating, drinking, speaking, and oral care. Improves compliance with continuous therapy." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Clinical Evidence</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              { trial: "FLORALI Trial (Frat et al., 2015)", detail: "Landmark multicentre RCT, 310 patients with acute hypoxaemic respiratory failure (P/F ≤300, non-hypercapnic). Three arms: HFNO vs standard O₂ vs NIV. Primary outcome (intubation rate at day 28): HFNO 38% vs standard O₂ 47% vs NIV 50% — not statistically significant overall. However, in the pre-specified severe subgroup (P/F ≤200), HFNO significantly reduced intubation (35% vs 53% vs 58%, p=0.009) and 90-day mortality (12% vs 23% vs 28%, p=0.02). NIV may have been harmful due to high tidal volumes and P-SILI." },
+              { trial: "OPERA Trial (Futier et al., 2016)", detail: "RCT in post-operative abdominal surgery patients. Prophylactic HFNO vs standard O₂. HFNO did not reduce the primary composite of hypoxaemia, but reduced re-intubation rate and was better tolerated. Supports HFNO as post-operative prophylaxis in high-risk surgical patients." },
+              { trial: "HOT-ER Trial (2022)", detail: "Prehospital and ED use of HFNO vs standard O₂ in acute respiratory failure. HFNO reduced intubation rates within 72 hours. Supports early initiation of HFNO in the emergency setting." },
+              { trial: "FLORALI-2 (Hernández et al., 2019)", detail: "Post-extubation: HFNO non-inferior to NIV for preventing re-intubation in high-risk patients. HFNO better tolerated with fewer skin complications. Supports HFNO as first-line post-extubation support." },
+              { trial: "COVID-19 evidence (RECOVERY-RS, 2022)", detail: "CPAP reduced intubation vs standard O₂ in COVID-19 respiratory failure. HFNO did not significantly reduce intubation vs standard O₂ in this population, though the trial was stopped early. Suggests CPAP may be preferred over HFNO for COVID-associated pneumonitis specifically." },
+              { trial: "Pre-oxygenation (PREOXYFLOW, OPTINIV)", detail: "HFNO during RSI provides apnoeic oxygenation — continuous O₂ delivery during the apnoeic period extends safe apnoea time. PREOXYFLOW showed no benefit in uncomplicated intubations, but OPTINIV (HFNO + NIV) improved pre-oxygenation in obese and hypoxaemic patients." },
+            ].map((item) => (
+              <div key={item.trial} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.trial}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Practical Settings</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Indication</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Flow rate</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">FiO₂</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Type 1 respiratory failure</td><td className="p-3 border-b border-border">40–60 L/min</td><td className="p-3 border-b border-border">Titrate to SpO₂ 92–96%</td><td className="p-3 border-b border-border">Start at 40 L/min and increase for comfort. Higher flows = more dead space washout and PEEP.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Post-extubation</td><td className="p-3 border-b border-border">40–50 L/min</td><td className="p-3 border-b border-border">0.3–0.5</td><td className="p-3 border-b border-border">Start immediately post-extubation. Continue for ≥24 hours. Wean flow before FiO₂.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Pre-oxygenation / apnoeic oxygenation</td><td className="p-3 border-b border-border">60–70 L/min</td><td className="p-3 border-b border-border">1.0</td><td className="p-3 border-b border-border">Apply during pre-oxygenation, leave running during apnoea for RSI. Extends safe apnoea time.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Procedural sedation / bronchoscopy</td><td className="p-3 border-b border-border">50–70 L/min</td><td className="p-3 border-b border-border">0.5–1.0</td><td className="p-3 border-b border-border">Maintains oxygenation during conscious sedation. Use jaw thrust nasal prong positioning.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Palliative / comfort care</td><td className="p-3 border-b border-border">20–30 L/min</td><td className="p-3 border-b border-border">As needed</td><td className="p-3 border-b border-border">Lower flows for comfort. Reduces dyspnoea even without improving SpO₂.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Monitoring & Escalation Triggers</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            HFNO can delay intubation if deterioration is not recognised. Monitor closely and escalate early:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li><span className="font-semibold text-foreground">ROX index:</span> (SpO₂/FiO₂) ÷ respiratory rate. At 2, 6, and 12 hours: ROX ≥4.88 predicts HFNO success; ROX &lt;3.85 predicts failure and need for intubation. Validated in pneumonia-related hypoxaemia.</li>
+            <li><span className="font-semibold text-foreground">Respiratory rate &gt;30:</span> Persistent tachypnoea despite HFNO suggests high respiratory drive and risk of P-SILI from large tidal volumes.</li>
+            <li><span className="font-semibold text-foreground">Thoracoabdominal asynchrony:</span> Paradoxical breathing pattern indicates diaphragmatic fatigue and impending failure.</li>
+            <li><span className="font-semibold text-foreground">Accessory muscle use:</span> Worsening suprasternal or intercostal recession despite escalating flow/FiO₂.</li>
+            <li><span className="font-semibold text-foreground">FiO₂ ≥0.7 with no improvement:</span> Consider intubation rather than prolonged high FiO₂ HFNO. Oxygen toxicity and delayed intubation both worsen outcomes.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Contraindications & Limitations</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">Type 2 respiratory failure:</span> HFNO provides modest CO₂ clearance via dead space washout but is not a substitute for NIV in acute hypercapnic failure (COPD exacerbation). NIV remains first-line for pH &lt;7.35 with PaCO₂ &gt;6 kPa.</li>
+            <li><span className="font-semibold text-foreground">Base of skull fracture:</span> Relative contraindication — risk of pneumocephalus with high nasal flow (theoretical, case reports only).</li>
+            <li><span className="font-semibold text-foreground">Nasal obstruction:</span> Severe nasal polyps, septal deviation, or recent nasal surgery may prevent cannula placement.</li>
+            <li><span className="font-semibold text-foreground">Aerosol generation:</span> HFNO is an aerosol-generating procedure (AGP). Requires appropriate PPE and isolation in infectious cases (e.g., COVID-19, influenza, TB).</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -661,12 +743,13 @@ const MechanicalVentilationTopic = () => {
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
         "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
-        "VAE: CDC tiered framework — VAC → IVAC → Possible VAP; uses objective FiO₂/PEEP criteria",
         "TracMan: early vs late tracheostomy — no mortality difference; 45% never needed one",
-        "Cuff leak <110 mL predicts stridor (high NPV ~95%, low PPV ~30%) — prompt steroids, not necessarily delay",
-        "Prophylactic steroids: methylprednisolone 20 mg q4h × 4 doses starting 12–24h pre-extubation if high risk",
-        "Post-extubation stridor: nebulised adrenaline → IV dexamethasone → heliox → NIV/HFNO → re-intubate with smaller ETT",
-        "Do not delay re-intubation with rescue NIV — Esteban trial showed increased mortality",
+        "Cuff leak <110 mL predicts stridor — prompt steroids, not necessarily delay extubation",
+        "Post-extubation stridor: nebulised adrenaline → dexamethasone → heliox → re-intubate with smaller ETT",
+        "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min + precise FiO₂ + optimal humidification",
+        "FLORALI: HFNO reduced intubation and 90-day mortality in severe subgroup (P/F ≤200)",
+        "ROX index (SpO₂/FiO₂ ÷ RR): ≥4.88 predicts HFNO success; <3.85 predicts failure — check at 2, 6, 12h",
+        "HFNO is NOT a substitute for NIV in hypercapnic (type 2) respiratory failure",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
