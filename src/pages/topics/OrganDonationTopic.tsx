@@ -228,19 +228,8 @@ const OrganDonationTopic = () => {
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Normothermic Regional Perfusion (NRP)</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            An increasingly used technique to improve DCD organ quality. After death is confirmed, femoral arterial and venous cannulae are connected to an ECMO circuit to restore warm oxygenated perfusion to abdominal organs (abdominal NRP) or thoracoabdominal organs (thoracoabdominal NRP). The aortic arch vessels are clamped to prevent cerebral reperfusion.
+            See dedicated NRP section below for full technical and ethical detail.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            {[
-              { label: "Benefits", detail: "Allows functional assessment of organs in situ. Reduces DGF (delayed graft function). Improves liver and kidney graft outcomes. Enables heart retrieval from DCD donors (thoracoabdominal NRP)." },
-              { label: "Controversies", detail: "Ethical debate: does restoring circulation (even with arch clamping) conflict with the diagnosis of death by circulatory criteria? Some argue it challenges the 'permanence' standard. UK legal opinion supports current practice." },
-            ].map((n) => (
-              <div key={n.label} className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">{n.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{n.detail}</p>
-              </div>
-            ))}
-          </div>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Warm Ischaemia Time</h3>
           <div className="grid sm:grid-cols-3 gap-3 mb-4">
@@ -283,6 +272,94 @@ const OrganDonationTopic = () => {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Normothermic Regional Perfusion (NRP)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            NRP is an increasingly adopted technique that restores warm, oxygenated blood flow to donor organs <em>in situ</em> after DCD death has been confirmed. By reconnecting a modified ECMO circuit to the donor's vasculature, NRP reverses ischaemic injury, allows functional organ assessment, and dramatically improves graft outcomes — including enabling heart transplantation from DCD donors for the first time.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Types of NRP</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { type: "Abdominal NRP (aNRP)", detail: "Perfuses abdominal organs only (kidneys, liver, pancreas). Femoral arterial and venous cannulation. Aortic arch vessels are clamped (or an aortic balloon occluder is placed) to prevent cerebral reperfusion. Thoracic aorta is cross-clamped. Most widely used form in UK. Simpler circuit, fewer ethical concerns than TA-NRP." },
+              { type: "Thoracoabdominal NRP (TA-NRP)", detail: "Perfuses both thoracic and abdominal organs, including the heart. Requires sternotomy for direct cardiac cannulation or peripheral VA-ECMO with arch vessel clamping. Enables functional assessment of the heart under near-physiological conditions. Used in selected UK centres for DCD heart transplantation." },
+              { type: "Ex-situ machine perfusion", detail: "Alternative to NRP: organs are retrieved cold and then perfused on a machine outside the body (e.g. OrganOx metra for liver, Transmedics OCS for heart/lung). Can be combined with NRP. Less ethical controversy but no in-situ functional assessment." },
+            ].map((t) => (
+              <div key={t.type} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{t.type}</p>
+                <p className="text-sm text-muted-foreground">{t.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Technical Procedure — Abdominal NRP</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "1. Pre-mortem preparation", detail: "Femoral arterial and venous cannulae may be placed ante-mortem (before treatment withdrawal) under local anaesthesia, or rapidly post-mortem. Heparin 300 units/kg IV given before withdrawal." },
+              { step: "2. Death confirmed", detail: "5-minute hands-off period after circulatory arrest. Death certified. Legal time of death recorded." },
+              { step: "3. Arch vessel exclusion", detail: "Immediate sternotomy or balloon occlusion catheter placed in descending thoracic aorta to prevent cerebral reperfusion. Supra-aortic vessels ligated or clamped. This is the critical step that addresses the ethical concern of restoring brain circulation." },
+              { step: "4. Initiate NRP circuit", detail: "Connect femoral cannulae to VA-ECMO circuit. Begin normothermic perfusion (37°C) with oxygenated blood. Target flow 2–2.5 L/min. Perfuse for 60–120 minutes to allow organ recovery and functional assessment." },
+              { step: "5. Organ assessment", detail: "During NRP: measure hepatic transaminases (AST/ALT trend), bile production, lactate clearance (liver viability). Urine output, creatinine clearance (kidney viability). Cardiac function assessed by TOE if TA-NRP." },
+              { step: "6. Organ retrieval", detail: "Once viability confirmed, proceed to standard organ retrieval. Organs are flushed with cold preservation solution. NRP circuit discontinued. Organs transported to recipient centres." },
+            ].map((s) => (
+              <div key={s.step} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.step}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Evidence & Outcomes</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { organ: "Liver", outcome: "NRP reduces DCD liver discard rates from ~25% to <10%. Significantly lower rates of ischaemic cholangiopathy (the main cause of DCD liver graft failure). 1-year graft survival approaches DBD levels." },
+              { organ: "Kidney", outcome: "NRP reduces delayed graft function (DGF) from ~50% to ~20%. Lower rates of primary non-function. Allows extended criteria DCD kidneys to be used safely." },
+              { organ: "Heart", outcome: "TA-NRP enables DCD heart transplantation — previously impossible. UK centres (Papworth, Harefield) have performed successful DCD heart transplants via TA-NRP with outcomes comparable to DBD hearts at 1 year." },
+              { organ: "Pancreas", outcome: "NRP allows functional assessment of pancreatic viability. Reduced rates of graft thrombosis. Enables DCD pancreas transplants in centres using NRP." },
+            ].map((o) => (
+              <div key={o.organ} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{o.organ}</p>
+                <p className="text-sm text-muted-foreground mt-1">{o.outcome}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Ethical Framework — Restoring Circulation After Circulatory Death</h3>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            NRP raises fundamental ethical and philosophical questions about the definition and diagnosis of death. The core tension is: if death was diagnosed by the irreversible cessation of circulation, does restoring circulation (even regionally) challenge the validity of that diagnosis?
+          </p>
+
+          <div className="space-y-2 mb-4">
+            {[
+              { issue: "The permanence vs irreversibility debate", detail: "UK law uses 'irreversible' cessation of circulatory function. The 5-minute standoff demonstrates 'permanence' (circulation will not restart spontaneously) but not strict 'irreversibility' (it could theoretically be restored by CPR/ECMO). NRP exploits this distinction — circulation is restored after permanence is established, but some argue this undermines the irreversibility criterion." },
+              { issue: "Cerebral exclusion as safeguard", detail: "The requirement to clamp/ligate arch vessels before initiating NRP ensures no cerebral reperfusion occurs. This means consciousness cannot be restored. Proponents argue that death of the brain (the seat of consciousness) is already established, and NRP simply maintains perfusion to non-sentient organs. The patient remains dead throughout NRP." },
+              { issue: "Dead donor rule", detail: "The foundational ethical principle: organ retrieval must not cause or hasten the donor's death. NRP complies because death has already been confirmed before NRP begins. However, critics argue that the act of restoring circulation creates a philosophical inconsistency — the body is simultaneously 'dead' and 'perfused'." },
+              { issue: "Academy of Medical Royal Colleges position", detail: "The UK's AoMRC (2021) endorsed NRP as ethically acceptable, provided: (1) death is properly confirmed using standard criteria, (2) arch vessels are excluded before NRP begins, (3) there is no possibility of cerebral reperfusion, (4) the family has been informed and consents. This position is supported by the UK Department of Health." },
+              { issue: "International perspectives", detail: "NRP is widely used in Spain (pioneered the technique), France, and increasingly the UK. Some countries (e.g. Australia, parts of USA) have ethical reservations. The International Society for Heart and Lung Transplantation supports TA-NRP for DCD heart transplantation but acknowledges ethical debate." },
+              { issue: "Alternative: ex-situ machine perfusion", detail: "Some ethicists prefer ex-situ machine perfusion (retrieving organs cold, then perfusing outside the body) as it avoids restoring circulation in the donor entirely. However, this approach cannot provide in-situ functional assessment and may produce inferior outcomes for some organs (especially liver)." },
+            ].map((e) => (
+              <div key={e.issue} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{e.issue}</p>
+                <p className="text-sm text-muted-foreground">{e.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 mb-4">
+            <p className="text-sm font-semibold text-destructive">⚠ Key Legal Point</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              In the UK, death diagnosed by circulatory criteria remains legally valid even if circulation is subsequently restored to the body (excluding the brain) for NRP. The legal time of death is the end of the 5-minute standoff period — NRP does not 'reverse' death. This position was confirmed by legal opinion obtained by NHSBT and endorsed by the AoMRC.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              NRP is a hot topic in FRCA Final and FFICM. Know: (1) the distinction between abdominal NRP and thoracoabdominal NRP, (2) the requirement for arch vessel exclusion before initiating NRP, (3) the permanence vs irreversibility debate, (4) why cerebral exclusion is the ethical safeguard, (5) the dead donor rule and how NRP complies with it. Be prepared to discuss this in a structured oral or essay format.
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -290,12 +367,12 @@ const OrganDonationTopic = () => {
         "Maastricht classification: 5 categories — only Category III (awaiting cardiac arrest after WLST) is routinely used in UK",
         "5-minute mandatory standoff after circulatory arrest before death can be confirmed",
         "Functional warm ischaemia time starts when SBP < 50 mmHg — target < 30 min for kidneys, < 20 min for liver",
-        "Standdown time: if death does not occur within 2–3 hours of WLST, donation does not proceed",
-        "Normothermic regional perfusion (NRP) improves DCD graft outcomes and enables DCD heart retrieval",
-        "Heparin 300 units/kg is given ante-mortem to prevent microvascular thrombosis",
-        "DBD: BSD prerequisites include temp ≥34°C, no residual sedation, known aetiology",
-        "Apnoea test: PaCO₂ must rise to >6.65 kPa AND increase by >0.5 kPa — no respiratory effort",
-        "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff",
+        "Abdominal NRP: femoral cannulation + ECMO circuit with arch vessel exclusion — no cerebral reperfusion",
+        "TA-NRP enables DCD heart transplantation — outcomes approaching DBD levels at 1 year",
+        "NRP reduces DCD liver discard and ischaemic cholangiopathy; reduces kidney DGF from ~50% to ~20%",
+        "Ethical framework: permanence vs irreversibility, dead donor rule, cerebral exclusion as safeguard",
+        "AoMRC (2021) endorses NRP as ethically acceptable provided arch vessels are excluded before perfusion",
+        "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff — NRP does not reverse death",
       ]} />
 
       <QuizSection questions={organDonationQuestions} />
