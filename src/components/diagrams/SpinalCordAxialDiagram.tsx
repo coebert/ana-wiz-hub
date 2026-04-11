@@ -57,6 +57,18 @@ const TRACTS: Record<TractKey, TractInfo> = {
   "ventral-root": { label: "Ventral Root", category: "nerve", color: "hsl(150 50% 50%)",
     detail: "Motor efferents from anterior horn (α, γ motor neurons) and sympathetic preganglionic fibres (T1–L2) or parasympathetic (S2–S4). Bell-Magendie law: dorsal = sensory, ventral = motor. Ventral roots join dorsal roots to form mixed spinal nerve in intervertebral foramen.",
     modality: "Motor and autonomic efferents" },
+  "post-spinocerebellar": { label: "Posterior Spinocerebellar Tract", category: "white", color: "hsl(170 50% 45%)",
+    detail: "Originates from Clarke's column (nucleus dorsalis, C8–L2). Carries ipsilateral proprioceptive information from lower limbs to cerebellum via inferior cerebellar peduncle. Does NOT decussate. Relays information about muscle length, tension, and joint position for unconscious coordination.",
+    modality: "Unconscious proprioception (lower limbs — ipsilateral)" },
+  "ant-spinocerebellar": { label: "Anterior Spinocerebellar Tract", category: "white", color: "hsl(160 45% 50%)",
+    detail: "Originates from spinal border cells (L1–L5). Crosses midline in cord, ascends in anterolateral funiculus, enters cerebellum via superior cerebellar peduncle where it crosses AGAIN — net result: ipsilateral information. Carries information about whole-limb movement patterns (Golgi tendon organs).",
+    modality: "Unconscious proprioception (lower limbs — double-cross)" },
+  rubrospinal: { label: "Rubrospinal Tract", category: "white", color: "hsl(15 55% 50%)",
+    detail: "From red nucleus (midbrain), decussates immediately (ventral tegmental decussation), descends in lateral funiculus adjacent to lateral CST. Facilitates flexor motor neurons. Relatively minor in humans compared to other mammals — largely superseded by corticospinal tract. Best developed in cervical cord.",
+    modality: "Flexor motor facilitation (rudimentary in humans)" },
+  reticulospinal: { label: "Reticulospinal Tracts", category: "white", color: "hsl(50 50% 48%)",
+    detail: "Pontine (medial) reticulospinal: ipsilateral, in anterior funiculus — facilitates extensors (antigravity muscles), inhibits flexors. Medullary (lateral) reticulospinal: bilateral, in anterior funiculus — inhibits extensors, facilitates flexors. Important for postural control, muscle tone, and locomotion. Target of volatile anaesthetic agents affecting muscle tone.",
+    modality: "Posture, muscle tone, locomotion (bilateral)" },
 };
 
 const SYNDROMES: Record<SyndromeKey, SyndromeInfo> = {
