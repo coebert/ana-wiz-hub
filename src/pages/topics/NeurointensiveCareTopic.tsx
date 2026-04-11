@@ -233,6 +233,112 @@ const NeurointensiveCareTopic = () => {
           </p>
           <ICPMonitoringDevicesDiagram />
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autoimmune Encephalitis — ICU Management</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Classification & Antibody Types</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { type: "Anti-NMDAR", detail: "Commonest AIE. Young women > men. Associated with ovarian teratoma (50% in women). Psychiatric features → seizures → movement disorder → autonomic instability → reduced consciousness. Often requires ICU for prolonged period." },
+              { type: "Anti-LGI1", detail: "Limbic encephalitis. Older males. Faciobrachial dystonic seizures (pathognomonic). Hyponatraemia common (SIADH). Less likely to need ICU than NMDAR." },
+              { type: "Anti-CASPR2", detail: "Morvan syndrome: limbic encephalitis + peripheral nerve hyperexcitability (neuromyotonia). Autonomic dysfunction, insomnia. May coexist with thymoma." },
+              { type: "Anti-GABA-B / AMPAR", detail: "Limbic encephalitis with prominent seizures. Often paraneoplastic (lung, breast). Poorer prognosis if underlying malignancy not treated." },
+            ].map((a) => (
+              <div key={a.type} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{a.type}</p>
+                <p className="text-sm text-muted-foreground mt-1">{a.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Diagnosis</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { test: "Antibodies", detail: "Send paired CSF + serum for neuronal surface antibody panel. CSF is more sensitive for anti-NMDAR. Serum may be falsely positive (low titre) for LGI1/CASPR2." },
+              { test: "CSF", detail: "Often lymphocytic pleocytosis, elevated protein, normal glucose. Oligoclonal bands may be present. Can be normal early — does not exclude AIE." },
+              { test: "MRI Brain", detail: "May show T2/FLAIR hyperintensity in medial temporal lobes (limbic encephalitis pattern). Often normal in anti-NMDAR encephalitis." },
+              { test: "EEG", detail: "Diffuse slowing, epileptiform activity. Extreme delta brush pattern characteristic (but not pathognomonic) of anti-NMDAR encephalitis." },
+              { test: "Tumour Screen", detail: "CT/MRI/USS pelvis (ovarian teratoma — NMDAR). CT chest/abdo (thymoma — CASPR2; lung/breast — GABA-B/AMPAR). Consider PET-CT if initial imaging negative." },
+            ].map((t) => (
+              <div key={t.test} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[90px]">{t.test}</span>
+                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">ICU Management</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { system: "Seizures", management: "Often refractory. Standard AED escalation (levetiracetam, lacosamide, phenytoin). May require continuous infusions (midazolam/propofol). Immunotherapy is the definitive seizure treatment — AEDs alone are insufficient." },
+              { system: "Airway", management: "Intubation frequently required: reduced consciousness (GCS), refractory status epilepticus, orofacial dyskinesias (NMDAR — cannot protect airway), autonomic instability. Tracheostomy often needed — prolonged course." },
+              { system: "Autonomic", management: "Anti-NMDAR: marked autonomic instability — tachycardia/bradycardia, hyper/hypotension, hyperthermia, central hypoventilation. May require pacing for profound bradycardia. Avoid triggering cardiac arrest during procedures." },
+              { system: "Movement Disorder", management: "Severe dyskinesias in anti-NMDAR. May cause rhabdomyolysis — monitor CK, aggressive hydration. Benzodiazepines, tetrabenazine may partially help. Physical restraint risks injury — padded environment." },
+              { system: "Psychiatric", management: "Psychosis, agitation, catatonia common in anti-NMDAR. Avoid antipsychotics if possible (worsen dyskinesias, NMS risk). Low-dose benzodiazepines preferred for agitation. Dexmedetomidine useful in ICU." },
+              { system: "Sodium", management: "Anti-LGI1: hyponatraemia (SIADH) — may be severe. Fluid restriction, consider tolvaptan cautiously. Monitor closely during immunotherapy as sodium may correct rapidly." },
+            ].map((s) => (
+              <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[110px]">{s.system}</span>
+                <span className="text-sm text-muted-foreground">{s.management}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Immunotherapy</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#3b82f6" }}>
+              <p className="font-bold text-foreground text-sm mb-1">First-line</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>IV methylprednisolone 1 g/day × 3–5 days</li>
+                <li>IV immunoglobulin (IVIg) 0.4 g/kg/day × 5 days</li>
+                <li>Plasma exchange (PLEX) — 5–7 sessions</li>
+                <li>Often combine steroids + IVIg or steroids + PLEX</li>
+                <li>Start empirically — do not wait for antibody results</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#a855f7" }}>
+              <p className="font-bold text-foreground text-sm mb-1">Second-line (if no response by 2–4 weeks)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Rituximab 375 mg/m² weekly × 4 doses</li>
+                <li>Cyclophosphamide 750 mg/m² monthly</li>
+                <li>Second-line agents improve outcomes in anti-NMDAR if started early</li>
+                <li>Tocilizumab and bortezomib used in refractory cases</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20 mb-3">
+            <p className="text-sm font-semibold text-foreground mb-1">Tumour Removal</p>
+            <p className="text-sm text-muted-foreground">
+              If teratoma identified → surgical removal is therapeutic and should be performed as soon as safe. Patients often improve rapidly post-resection. Continue to screen periodically if initial imaging negative — tumours may be small or delayed in presentation.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prognosis</h3>
+          <div className="space-y-2">
+            {[
+              { ab: "Anti-NMDAR", prognosis: "~80% achieve good outcome (mRS 0–2) with immunotherapy ± tumour removal, but recovery is slow (months). ~12% relapse rate. ICU stay may be prolonged (weeks–months). First-line failure should prompt early second-line escalation." },
+              { ab: "Anti-LGI1", prognosis: "Good response to immunotherapy. Seizures often refractory to AEDs but respond well to steroids/IVIg. Cognitive impairment may persist. Hyponatraemia resolves with treatment." },
+              { ab: "Paraneoplastic (GABA-B/AMPAR)", prognosis: "Prognosis depends on underlying malignancy. Poorer if tumour not identified or not resectable. May respond partially to immunotherapy." },
+            ].map((p) => (
+              <div key={p.ab} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{p.ab}</span>
+                <span className="text-sm text-muted-foreground">{p.prognosis}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              Anti-NMDAR encephalitis is the most commonly examined AIE. Know the clinical progression (psychiatric → seizures → movement disorder → autonomic → coma), the association with ovarian teratoma, the principle of starting immunotherapy empirically before antibody results return, and the need for early second-line escalation if no response. Remember that antipsychotics should be avoided (NMS risk, worsened dyskinesias).
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -243,10 +349,10 @@ const NeurointensiveCareTopic = () => {
         "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
         "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
         "Autonomic dysreflexia (above T6): noxious stimulus → hypertensive crisis — sit up, find & remove cause",
-        "NASCIS methylprednisolone NOT recommended for acute SCI (NICE/AANS) — frequently examined",
         "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
-        "Intraparenchymal monitors cannot be re-zeroed after insertion → baseline drift risk",
         "ONSD >5.0 mm on trans-ocular ultrasound suggests ICP >20 mmHg (sensitivity ~90%)",
+        "Anti-NMDAR encephalitis: psychiatric → seizures → dyskinesias → autonomic → coma. Start immunotherapy empirically — do not wait for antibody results",
+        "Avoid antipsychotics in anti-NMDAR encephalitis — risk of NMS and worsened dyskinesias",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
