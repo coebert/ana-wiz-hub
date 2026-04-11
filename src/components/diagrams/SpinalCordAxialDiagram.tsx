@@ -365,6 +365,59 @@ const SpinalCordAxialDiagram = () => {
             </>
           )}
 
+          {/* Clarke's column (nucleus dorsalis) — at base of posterior horn, thoracic only */}
+          {level.hasLateralHorn && (
+            <>
+              <ellipse cx={cx - 16} cy={cy - 18} rx={5} ry={4}
+                fill="hsl(170 50% 45%)" fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.5 : 0.08}
+                stroke="hsl(170 50% 45%)" strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.2 : 0.4}
+                opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.6} />
+              <ellipse cx={cx + 16} cy={cy - 18} rx={5} ry={4}
+                fill="hsl(170 50% 45%)" fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.5 : 0.08}
+                stroke="hsl(170 50% 45%)" strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.2 : 0.4}
+                opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.6} />
+              <text x={cx} y={cy - 25} fontSize="4.5" fill="hsl(170 50% 45%)" textAnchor="middle" opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.4}>Clarke's column</text>
+            </>
+          )}
+
+          {/* Rexed laminae labels (when posterior horn selected) */}
+          {isTractHighlighted("post-horn") && (
+            <g fontSize="4" fill={TRACTS["post-horn"].color} opacity="0.5">
+              <text x={cx - 30} y={cy - 68} textAnchor="middle">I</text>
+              <text x={cx - 29} y={cy - 62} textAnchor="middle" fontWeight="600">II (SG)</text>
+              <text x={cx - 28} y={cy - 55} textAnchor="middle">III-IV</text>
+              <text x={cx - 25} y={cy - 45} textAnchor="middle">V</text>
+              <text x={cx - 18} y={cy - 30} textAnchor="middle">VI</text>
+            </g>
+          )}
+
+          {/* Rexed laminae labels (when anterior horn selected) */}
+          {isTractHighlighted("ant-horn") && (
+            <g fontSize="4" fill={TRACTS["ant-horn"].color} opacity="0.5">
+              <text x={cx - 12} y={cy + 15} textAnchor="middle">VII</text>
+              <text x={cx} y={cy + 6} textAnchor="middle">VIII</text>
+              <text x={cx - 42} y={cy + 55} textAnchor="middle" fontWeight="600">IX (α-MN)</text>
+              <text x={cx} y={cy + 12} textAnchor="middle">X</text>
+            </g>
+          )}
+
+          {/* Anterior white commissure — crossing fibres (STT decussation) */}
+          <g opacity={isTractHighlighted("stt") ? 0.5 : 0.08}>
+            <path d={`M${cx - 8},${cy + 5} Q${cx},${cy + 10} ${cx + 8},${cy + 5}`}
+              stroke={TRACTS.stt.color} strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" />
+            <path d={`M${cx + 8},${cy + 5} Q${cx},${cy + 12} ${cx - 8},${cy + 5}`}
+              stroke={TRACTS.stt.color} strokeWidth="0.6" fill="none" strokeDasharray="1.5 1.5" />
+          </g>
+
+          {/* Vasocorona (pial arterial plexus around cord surface) */}
+          <g opacity={isTractHighlighted("asa") || isTractHighlighted("psa") ? 0.35 : 0.06}>
+            <ellipse cx={cx} cy={cy} rx={cordRx + 5} ry={cordRy + 5}
+              fill="none" stroke="hsl(0 50% 50%)" strokeWidth="0.6" strokeDasharray="3 4" />
+            {isTractHighlighted("asa") && (
+              <text x={cx + cordRx + 12} y={cy} fontSize="5" fill="hsl(0 50% 50%)" opacity="0.5">Vasocorona</text>
+            )}
+          </g>
+
           {/* ═══ BLOOD SUPPLY ═══ */}
           {/* ASA — anterior midline */}
           <circle cx={cx} cy={cy + cordRy + 10} r={5}
