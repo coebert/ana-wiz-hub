@@ -107,8 +107,8 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-4">
             T<sub>low</sub> is the most important and nuanced setting in APRV. It must be short enough to prevent complete alveolar emptying (maintaining intrinsic PEEP of ~5–10 cmH₂O) but long enough to allow adequate CO₂ elimination. The target is termination of expiratory flow at <span className="font-semibold text-foreground">50–75% of peak expiratory flow rate</span>. If the expiratory flow reaches zero, alveoli have fully deflated and derecruitment occurs — the T<sub>low</sub> is too long.
           </p>
+          <APRVExpiratoryFlowDiagram />
 
-          <h3 className="text-lg font-semibold text-foreground mb-2">Weaning from APRV</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is weaned by a "drop and stretch" method, progressively transitioning toward CPAP:
           </p>
