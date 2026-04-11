@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
 import VentilatorWaveformsGuideDiagram from "@/components/diagrams/VentilatorWaveformsGuideDiagram";
+import APRVWaveformDiagram from "@/components/diagrams/APRVWaveformDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
