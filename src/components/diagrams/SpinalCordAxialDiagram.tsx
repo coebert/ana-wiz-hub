@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type TractKey = "dorsal-col" | "lat-cst" | "ant-cst" | "stt" | "post-horn" | "ant-horn" | "lat-horn" | "central" | "asa" | "psa" | "dorsal-root" | "ventral-root";
+type TractKey = "dorsal-col" | "lat-cst" | "ant-cst" | "stt" | "post-horn" | "ant-horn" | "lat-horn" | "central" | "asa" | "psa" | "dorsal-root" | "ventral-root" | "post-spinocerebellar" | "ant-spinocerebellar" | "rubrospinal" | "reticulospinal";
 type SyndromeKey = "anterior" | "central" | "brown-sequard" | "posterior" | "complete";
 type CordLevel = "cervical" | "thoracic" | "lumbar" | "sacral";
 
