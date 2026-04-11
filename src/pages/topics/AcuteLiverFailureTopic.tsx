@@ -89,6 +89,8 @@ const AcuteLiverFailureTopic = () => {
             ))}
           </div>
 
+          <CLIFCACLFDiagram />
+
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Precipitants</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
