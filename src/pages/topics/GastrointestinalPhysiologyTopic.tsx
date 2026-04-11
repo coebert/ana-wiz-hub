@@ -48,6 +48,7 @@ const GastrointestinalPhysiologyTopic = () => {
               </div>
             ))}
           </div>
+          <VomitingControlDiagram />
         </div>
 
         <div>
