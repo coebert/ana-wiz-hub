@@ -7,7 +7,8 @@ import * as THREE from "three";
 
 type StructureKey =
   | "lca" | "lad" | "lcx" | "rca" | "pda"
-  | "sa-node" | "av-node" | "bundle-his" | "left-bundle" | "right-bundle" | "purkinje"
+  | "diagonal" | "om" | "am" | "septal-perf" | "coronary-sinus"
+  | "sa-node" | "av-node" | "bundle-his" | "left-bundle" | "left-anterior-fascicle" | "left-posterior-fascicle" | "right-bundle" | "purkinje"
   | "mitral" | "aortic" | "tricuspid" | "pulmonary";
 
 interface Structure {
@@ -25,15 +26,30 @@ const structures: Record<StructureKey, Structure> = {
   lad: { label: "Left Anterior Descending (LAD)", color: "#cc3344", category: "coronary",
     detail: "Runs in anterior interventricular groove toward apex. Gives septal perforators and diagonal branches.",
     clinicalNote: "Most commonly occluded in MI. Territory: anterior LV wall, apex, anterior septum. ECG: V1–V4 ST elevation." },
+  diagonal: { label: "Diagonal Branches (D1, D2)", color: "#dd5566", category: "coronary",
+    detail: "1–3 branches from LAD coursing over anterolateral LV surface. D1 largest, arises early from LAD.",
+    clinicalNote: "Diagonal occlusion → anterolateral STEMI. May be grafted separately (LIMA to LAD, SVG to diagonal)." },
+  "septal-perf": { label: "Septal Perforators", color: "#bb4455", category: "coronary",
+    detail: "Multiple small branches from LAD penetrating perpendicular into interventricular septum. Supply anterior 2/3 of IVS.",
+    clinicalNote: "First septal perforator landmark for LAD identification. Targeted in alcohol septal ablation for HOCM." },
   lcx: { label: "Left Circumflex (LCx)", color: "#cc6633", category: "coronary",
     detail: "Runs in left AV groove posteriorly. Gives obtuse marginal branches. Dominant in 15%.",
     clinicalNote: "Territory: lateral and posterior LV wall. ECG: I, aVL, V5–V6 changes. May be 'ECG-silent'." },
+  om: { label: "Obtuse Marginal (OM1, OM2)", color: "#dd7744", category: "coronary",
+    detail: "1–3 branches from LCx coursing over lateral LV wall. Named for the obtuse margin of the heart.",
+    clinicalNote: "OM territory overlaps with diagonal. Commonly grafted with SVG in CABG." },
   rca: { label: "Right Coronary Artery (RCA)", color: "#d05030", category: "coronary",
     detail: "Arises from right aortic sinus. Runs in right AV groove. Supplies RA, RV, SA node (60%), AV node (85%).",
     clinicalNote: "In 85% gives PDA. Occlusion → inferior MI (II, III, aVF) + RV infarction. May cause bradycardia." },
+  am: { label: "Acute Marginal Branch", color: "#e06040", category: "coronary",
+    detail: "Branch of RCA coursing over anterior RV surface at the acute (right) margin of the heart.",
+    clinicalNote: "Supplies RV free wall. Occlusion contributes to RV infarction in proximal RCA lesions." },
   pda: { label: "Posterior Descending (PDA)", color: "#9944aa", category: "coronary",
     detail: "Runs in posterior interventricular groove. Supplies posterior septum and inferior LV. From RCA in 85%.",
     clinicalNote: "Dominance defined by which artery gives PDA. Right-dominant 85%, left 15%." },
+  "coronary-sinus": { label: "Coronary Sinus", color: "#4455aa", category: "coronary",
+    detail: "Main venous drainage of heart. Runs in posterior AV groove. Receives great, middle, and small cardiac veins. Drains into RA.",
+    clinicalNote: "Landmark for triangle of Koch (AV node). CS catheterisation for CRT lead placement. Os guarded by Thebesian valve." },
   "sa-node": { label: "Sinoatrial (SA) Node", color: "#d4a017", category: "conduction",
     detail: "Junction of SVC and RA (crista terminalis). Primary pacemaker 60–100 bpm. SA nodal artery from RCA 60%.",
     clinicalNote: "Sick sinus syndrome if damaged. At risk during SVC cannulation. Influenced by autonomic tone." },
@@ -44,8 +60,14 @@ const structures: Record<StructureKey, Structure> = {
     detail: "Penetrates central fibrous body to ventricular septum. Only electrical atrial–ventricular connection.",
     clinicalNote: "Damage during valve surgery → complete heart block. His bundle pacing emerging alternative." },
   "left-bundle": { label: "Left Bundle Branch", color: "#80a030", category: "conduction",
-    detail: "Broad sheet on left septal surface. Anterior fascicle (thin, LAD supply) and posterior fascicle (thick, dual supply).",
-    clinicalNote: "LBBB: QRS >120ms. New LBBB + chest pain = STEMI equivalent. Left anterior hemiblock most common." },
+    detail: "Broad sheet on left septal surface. Divides into anterior and posterior fascicles.",
+    clinicalNote: "LBBB: QRS >120ms. New LBBB + chest pain = STEMI equivalent." },
+  "left-anterior-fascicle": { label: "Left Anterior Fascicle", color: "#70b040", category: "conduction",
+    detail: "Thin fascicle to anterolateral papillary muscle. Single blood supply from LAD (septal perforators).",
+    clinicalNote: "Most vulnerable fascicle. Left anterior hemiblock: LAD (−30° to −90°). Most common conduction defect." },
+  "left-posterior-fascicle": { label: "Left Posterior Fascicle", color: "#90a050", category: "conduction",
+    detail: "Thick fascicle to posteromedial papillary muscle. Dual blood supply (LAD + RCA) — rarely blocked alone.",
+    clinicalNote: "Left posterior hemiblock: RAD (+90° to +180°). If isolated, suggests severe disease (dual supply)." },
   "right-bundle": { label: "Right Bundle Branch", color: "#60a040", category: "conduction",
     detail: "Thin cord along right septum to moderator band then RV free wall. Single blood supply — vulnerable.",
     clinicalNote: "RBBB: rsR' in V1, wide S in V6. Common after RV surgery. Alone usually benign." },
@@ -67,8 +89,8 @@ const structures: Record<StructureKey, Structure> = {
 };
 
 const categories = [
-  { key: "coronary" as const, label: "Coronary", keys: ["lca", "lad", "lcx", "rca", "pda"] as StructureKey[] },
-  { key: "conduction" as const, label: "Conduction", keys: ["sa-node", "av-node", "bundle-his", "left-bundle", "right-bundle", "purkinje"] as StructureKey[] },
+  { key: "coronary" as const, label: "Coronary", keys: ["lca", "lad", "diagonal", "septal-perf", "lcx", "om", "rca", "am", "pda", "coronary-sinus"] as StructureKey[] },
+  { key: "conduction" as const, label: "Conduction", keys: ["sa-node", "av-node", "bundle-his", "left-bundle", "left-anterior-fascicle", "left-posterior-fascicle", "right-bundle", "purkinje"] as StructureKey[] },
   { key: "valve" as const, label: "Valves", keys: ["mitral", "aortic", "tricuspid", "pulmonary"] as StructureKey[] },
 ];
 
@@ -453,18 +475,49 @@ function HeartModel({ selected, onSelect, cutaway }: {
       <Vessel
         points={[[-0.4, 0.55, 0.5], [-0.2, 0.35, 0.6], [-0.05, 0.1, 0.62], [0, -0.25, 0.55], [0.02, -0.7, 0.38], [0.03, -1.1, 0.15]]}
         color={structures.lad.color} radius={0.028} active={on("lad")} onClick={pick("lad")} clip={clip} />
+
+      {/* Diagonal branches (D1, D2) from LAD */}
+      <Vessel points={[[-0.15, 0.3, 0.6], [-0.3, 0.15, 0.58], [-0.48, 0.0, 0.48]]}
+        color={structures.diagonal.color} radius={0.018} active={on("diagonal")} onClick={pick("diagonal")} clip={clip} />
+      <Vessel points={[[-0.02, 0.05, 0.62], [-0.18, -0.1, 0.58], [-0.38, -0.25, 0.45]]}
+        color={structures.diagonal.color} radius={0.015} active={on("diagonal")} onClick={pick("diagonal")} clip={clip} />
+
+      {/* Septal perforators from LAD — small perpendicular branches into septum */}
+      {[0.3, 0.1, -0.1, -0.35, -0.55].map((y, i) => (
+        <Vessel key={`sept-${i}`}
+          points={[[-0.08 + i * 0.015, y, 0.58 - Math.abs(y) * 0.2], [0.0, y - 0.02, 0.35 - Math.abs(y) * 0.15]]}
+          color={structures["septal-perf"].color} radius={0.008} active={on("septal-perf")} onClick={pick("septal-perf")} clip={clip} />
+      ))}
+
       {/* LCx — left AV groove, wrapping posteriorly */}
       <Vessel
         points={[[-0.4, 0.55, 0.5], [-0.6, 0.52, 0.35], [-0.72, 0.48, 0.1], [-0.7, 0.4, -0.2], [-0.55, 0.3, -0.4]]}
         color={structures.lcx.color} radius={0.025} active={on("lcx")} onClick={pick("lcx")} clip={clip} />
+
+      {/* Obtuse marginal branches (OM1, OM2) from LCx */}
+      <Vessel points={[[-0.62, 0.52, 0.3], [-0.7, 0.3, 0.25], [-0.72, 0.05, 0.18]]}
+        color={structures.om.color} radius={0.018} active={on("om")} onClick={pick("om")} clip={clip} />
+      <Vessel points={[[-0.7, 0.45, 0.05], [-0.72, 0.2, -0.05], [-0.65, -0.05, -0.12]]}
+        color={structures.om.color} radius={0.015} active={on("om")} onClick={pick("om")} clip={clip} />
+
       {/* RCA — right AV groove, wrapping to posterior */}
       <Vessel
         points={[[0.15, 0.92, 0.28], [0.45, 0.78, 0.4], [0.65, 0.58, 0.3], [0.7, 0.35, 0.05], [0.62, 0.15, -0.25], [0.45, -0.05, -0.42]]}
         color={structures.rca.color} radius={0.028} active={on("rca")} onClick={pick("rca")} clip={clip} />
+
+      {/* Acute marginal branch from RCA */}
+      <Vessel points={[[0.65, 0.55, 0.28], [0.62, 0.3, 0.35], [0.55, 0.05, 0.3], [0.45, -0.2, 0.22]]}
+        color={structures.am.color} radius={0.018} active={on("am")} onClick={pick("am")} clip={clip} />
+
       {/* PDA — posterior interventricular groove */}
       <Vessel
         points={[[0.45, -0.05, -0.42], [0.25, -0.3, -0.42], [0.08, -0.6, -0.35], [0.03, -0.95, -0.18]]}
         color={structures.pda.color} radius={0.022} active={on("pda")} onClick={pick("pda")} clip={clip} />
+
+      {/* Coronary sinus — posterior AV groove, draining into RA */}
+      <Vessel
+        points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
+        color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
 
       {/* ── Valves ── */}
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
@@ -481,16 +534,31 @@ function HeartModel({ selected, onSelect, cutaway }: {
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
         color={structures["bundle-his"].color} radius={0.018} active={on("bundle-his")} onClick={pick("bundle-his")} clip={clip} />
-      <Vessel points={[[0.04, 0.22, 0], [-0.04, 0.05, -0.02], [-0.08, -0.2, -0.02], [-0.08, -0.6, 0]]}
-        color={structures["left-bundle"].color} radius={0.015} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
+
+      {/* Left bundle branch — broad sheet, then splits */}
+      <Vessel points={[[0.04, 0.22, 0], [-0.02, 0.12, -0.02], [-0.06, 0.0, -0.02]]}
+        color={structures["left-bundle"].color} radius={0.016} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
+
+      {/* Left anterior fascicle — thin, to anterolateral papillary muscle */}
+      <Vessel points={[[-0.06, 0.0, -0.02], [-0.12, -0.15, 0.02], [-0.22, -0.3, 0.05], [-0.38, -0.42, 0.06]]}
+        color={structures["left-anterior-fascicle"].color} radius={0.012} active={on("left-anterior-fascicle")} onClick={pick("left-anterior-fascicle")} clip={clip} />
+
+      {/* Left posterior fascicle — thick, to posteromedial papillary muscle */}
+      <Vessel points={[[-0.06, 0.0, -0.02], [-0.08, -0.18, -0.06], [-0.12, -0.35, -0.1], [-0.18, -0.45, -0.14]]}
+        color={structures["left-posterior-fascicle"].color} radius={0.014} active={on("left-posterior-fascicle")} onClick={pick("left-posterior-fascicle")} clip={clip} />
+
+      {/* Right bundle branch */}
       <Vessel points={[[0.04, 0.22, 0], [0.1, 0.05, 0.02], [0.14, -0.2, 0.04], [0.14, -0.6, 0.03]]}
         color={structures["right-bundle"].color} radius={0.015} active={on("right-bundle")} onClick={pick("right-bundle")} clip={clip} />
-      <Node position={[-0.08, -0.62, 0]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
-      <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
-      {(on("purkinje") || on("left-bundle") || on("right-bundle")) && (
+
+      {/* Purkinje terminal nodes */}
+      <Node position={[-0.38, -0.44, 0.06]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      <Node position={[-0.18, -0.47, -0.14]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      {(on("purkinje") || on("left-bundle") || on("right-bundle") || on("left-anterior-fascicle") || on("left-posterior-fascicle")) && (
         <>
-          {([[-0.2, -0.7, 0.12], [-0.25, -0.5, 0.08], [-0.12, -0.78, -0.08],
-            [0.22, -0.7, 0.12], [0.28, -0.5, 0.1], [0.16, -0.78, -0.08]] as [number, number, number][]).map((p, i) => (
+          {([[-0.2, -0.7, 0.12], [-0.25, -0.5, 0.08], [-0.12, -0.78, -0.08], [-0.35, -0.6, 0.1],
+            [0.22, -0.7, 0.12], [0.28, -0.5, 0.1], [0.16, -0.78, -0.08], [0.35, -0.55, 0.08]] as [number, number, number][]).map((p, i) => (
             <Node key={i} position={p} color={structures.purkinje.color} active onClick={pick("purkinje")} size={0.025} clip={clip} />
           ))}
         </>
@@ -609,6 +677,45 @@ function HeartModel({ selected, onSelect, cutaway }: {
             <meshStandardMaterial color={fatColor} transparent opacity={0.2} side={THREE.DoubleSide} />
           </mesh>
 
+          {/* ══════════ SINUSES OF VALSALVA — dilations above aortic cusps ══════════ */}
+          {[
+            { pos: [-0.08, 0.95, 0.2] as [number, number, number], label: "R coronary sinus" },
+            { pos: [-0.18, 0.95, 0.14] as [number, number, number], label: "L coronary sinus" },
+            { pos: [-0.12, 0.95, 0.06] as [number, number, number], label: "Non-coronary sinus" },
+          ].map((s, i) => (
+            <mesh key={`valsalva-${i}`} position={s.pos}>
+              <sphereGeometry args={[0.04, 12, 12]} />
+              <meshPhysicalMaterial color="#55aa88" transparent opacity={0.3} roughness={0.5} />
+            </mesh>
+          ))}
+
+          {/* ══════════ LIGAMENTUM ARTERIOSUM — between aortic arch and PA ══════════ */}
+          <Vessel points={[[0.02, 1.4, 0.12], [-0.05, 1.32, 0.28]]}
+            color="#8A6040" radius={0.015} />
+
+          {/* ══════════ RVOT / INFUNDIBULUM — smooth-walled outflow tract ══════════ */}
+          <mesh position={[0.14, 0.65, 0.28]} rotation={[0.3, 0.15, -0.1]} scale={[0.7, 1.2, 0.7]}>
+            <cylinderGeometry args={[0.1, 0.14, 0.3, 12, 1, true]} />
+            <meshPhysicalMaterial color="#2A3A6A" transparent opacity={0.2} roughness={0.6}
+              side={THREE.DoubleSide} clippingPlanes={clip} clipShadows />
+          </mesh>
+
+          {/* ══════════ EUSTACHIAN VALVE (IVC valve) — ridge at IVC-RA junction ══════════ */}
+          <Leaflet pos={[0.46, 0.35, -0.18]} rot={[0.8, 0.3, 0.2]} color="#6A4040" size={[0.08, 0.05]} clip={clip} />
+
+          {/* ══════════ THEBESIAN VALVE — guards coronary sinus os ══════════ */}
+          <Leaflet pos={[0.35, 0.55, -0.22]} rot={[0.6, 0.2, 0.1]} color="#5A3535" size={[0.04, 0.03]} clip={clip} />
+
+          {/* ══════════ TENDON OF TODARO — fibrous strand in Koch's triangle ══════════ */}
+          <Vessel points={[[0.35, 0.55, -0.2], [0.28, 0.52, -0.15], [0.22, 0.48, -0.12]]}
+            color="#C0A080" radius={0.006} />
+
+          {/* ══════════ MEMBRANOUS SEPTUM — thin upper part of IVS ══════════ */}
+          <mesh position={[0.02, 0.35, -0.02]} rotation={[0.1, 0, 0.12]}>
+            <circleGeometry args={[0.06, 12]} />
+            <meshStandardMaterial color="#AA6060" transparent opacity={0.3} side={THREE.DoubleSide} />
+          </mesh>
+
           {/* Crista terminalis */}
           <Vessel points={[[0.52, 0.98, 0], [0.55, 0.75, 0], [0.52, 0.5, 0]]} color="#5A3030" radius={0.012} />
 
@@ -644,6 +751,21 @@ function HeartModel({ selected, onSelect, cutaway }: {
           </Html>
           <Html position={[0.58, 0.75, 0.05]} center style={{ pointerEvents: "none" }}>
             <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">crista terminalis</span>
+          </Html>
+          <Html position={[0.02, 1.42, 0.2]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">lig. arteriosum</span>
+          </Html>
+          <Html position={[0.16, 0.72, 0.3]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RVOT</span>
+          </Html>
+          <Html position={[0.5, 0.35, -0.2]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Eustachian v.</span>
+          </Html>
+          <Html position={[0.02, 0.38, 0.05]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">membranous IVS</span>
+          </Html>
+          <Html position={[0.3, 0.55, -0.25]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Thebesian v.</span>
           </Html>
         </group>
       )}
