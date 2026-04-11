@@ -125,6 +125,57 @@ const AcuteLiverFailureTopic = () => {
             ))}
           </div>
 
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Hepatorenal Syndrome (HRS)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Hepatorenal syndrome is functional renal failure in advanced liver disease caused by splanchnic arterial vasodilation → reduced effective circulating volume → renal vasoconstriction. Kidneys are structurally normal (may function post-transplant). Revised ICA 2015 criteria classify HRS into two types:
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#ef4444" }}>
+              <p className="font-bold text-foreground text-sm mb-1">HRS-AKI (formerly Type 1)</p>
+              <p className="text-xs text-muted-foreground mb-2">Rapidly progressive — doubling of creatinine to {'>'} 2.5 mg/dL (221 µmol/L) in {'<'} 2 weeks</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Often precipitated by SBP or GI bleeding</li>
+                <li>Median survival untreated: ~2 weeks</li>
+                <li>Now diagnosed using AKI criteria: ↑ creatinine ≥0.3 mg/dL within 48 h or ≥50% from baseline within 7 days</li>
+                <li>Must exclude other causes (nephrotoxins, shock, obstruction, parenchymal disease)</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#f59e0b" }}>
+              <p className="font-bold text-foreground text-sm mb-1">HRS-NAKI (formerly Type 2)</p>
+              <p className="text-xs text-muted-foreground mb-2">Slowly progressive or stable renal impairment — eGFR {'<'} 60 mL/min for {'>'} 3 months</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Typically associated with refractory ascites</li>
+                <li>Better prognosis than HRS-AKI — median survival months</li>
+                <li>Now termed HRS-CKD (chronic) or HRS-AKD (acute kidney disease, 3–90 days)</li>
+                <li>Management focuses on volume status, avoiding nephrotoxins, TIPS if appropriate</li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="text-sm font-semibold text-foreground mb-2">Management Algorithm (HRS-AKI)</p>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "Step 1", action: "Stop diuretics, nephrotoxins, and vasodilators. Exclude other causes of AKI (urinalysis, USS, urine sodium <20 mEq/L in HRS)." },
+              { step: "Step 2", action: "Volume expansion with 20% albumin (1 g/kg, max 100 g) over 48 hours. If no response → HRS-AKI diagnosis confirmed." },
+              { step: "Step 3", action: "Terlipressin + albumin (20–40 g/day). Terlipressin: 2 mg IV bolus q4–6h or 2–4 mg/24h infusion (infusion may have fewer side effects). Target: creatinine ↓ to <133 µmol/L." },
+              { step: "Step 4", action: "If terlipressin unavailable or contraindicated: noradrenaline infusion (target ↑ MAP by 10 mmHg) + albumin. Midodrine + octreotide is inferior but used where vasopressors not feasible." },
+              { step: "Step 5", action: "Non-responders (no ↓ creatinine by day 4): consider CRRT as bridge to transplant. TIPS in selected patients without advanced liver failure. Liver transplantation is the definitive treatment." },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap">{s.step}</span>
+                <span className="text-sm text-muted-foreground">{s.action}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-3 rounded-lg bg-secondary/50 border border-primary/20 mb-4">
+            <p className="text-sm font-semibold text-foreground mb-1">⚠️ Terlipressin Safety</p>
+            <p className="text-sm text-muted-foreground">
+              Contraindicated in ischaemic heart disease, PVD, mesenteric ischaemia. Monitor for cardiovascular ischaemia, arrhythmias, peripheral/splanchnic ischaemia, hyponatraemia, and fluid overload. The CONFIRM trial (2021) showed terlipressin improved HRS reversal but increased serious adverse events (respiratory failure) — careful patient selection essential.
+            </p>
+          </div>
+
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Prognosis: Alcoholic Liver Disease in ICU</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Acute decompensation of alcoholic liver disease (ALD) admitted to critical care carries high mortality, but outcomes vary significantly with the degree of organ failure and trajectory:
