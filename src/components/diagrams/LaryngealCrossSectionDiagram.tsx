@@ -219,6 +219,21 @@ const LaryngealCrossSectionDiagram = () => {
                   <text x="8" y="96" fontSize="5" fill={structures["aryepiglottic-fold"].color} className="select-none">Aryep. fold</text>
                 )}
 
+                {/* Pre-epiglottic space — fat-filled space anterior to epiglottis */}
+                <path
+                  d="M100,55 C102,48 108,42 118,40 C122,38 126,38 130,40 L130,82 C125,83 115,80 108,74 C102,68 100,62 100,55 Z"
+                  fill={structures["pre-epiglottic"].color}
+                  fillOpacity={isActive("pre-epiglottic") ? 0.4 : 0.06}
+                  stroke={structures["pre-epiglottic"].color}
+                  strokeWidth={isActive("pre-epiglottic") ? 1.5 : 0}
+                  strokeDasharray="3 2"
+                  className="cursor-pointer transition-all duration-200"
+                  onClick={click("pre-epiglottic")}
+                />
+                {isActive("pre-epiglottic") && (
+                  <text x="104" y="62" fontSize="4" fill={structures["pre-epiglottic"].color} className="select-none">Pre-epiglottic</text>
+                )}
+
                 {/* Epiglottis - leaf shape */}
                 <path
                   d="M125,15 C120,20 115,30 112,42 C110,52 112,62 118,68 C122,72 128,74 132,74 C136,74 138,72 142,68 C148,62 150,52 148,42 C145,30 140,20 135,15 C132,12 128,12 125,15 Z"
