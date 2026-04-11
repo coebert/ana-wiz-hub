@@ -65,7 +65,7 @@ const AkiRrtTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation for CRRT</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Regional Citrate (preferred)</p>
               <p className="text-sm text-muted-foreground mt-1">Citrate chelates calcium in the circuit → anticoagulation. Calcium infused post-filter to restore systemic levels. Avoids systemic bleeding risk. Monitor ionised Ca²⁺ and citrate:Ca²⁺ ratio.</p>
@@ -73,6 +73,10 @@ const AkiRrtTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Systemic Heparin</p>
               <p className="text-sm text-muted-foreground mt-1">Unfractionated heparin pre-filter. Target APTT 1.5-2× normal. Higher bleeding risk. Contraindicated in HIT — use argatroban instead.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Epoprostenol (Flolan)</p>
+              <p className="text-sm text-muted-foreground mt-1">Prostacyclin (PGI₂) infused pre-filter — inhibits platelet aggregation and provides regional circuit anticoagulation. Short half-life (~6 min) so effect largely confined to the circuit. Useful when citrate is contraindicated (severe liver failure, citrate accumulation) or in HIT. Main side-effect is systemic hypotension at higher doses. Typical dose 2-5 ng/kg/min. Can be combined with low-dose heparin for synergistic effect.</p>
             </div>
           </div>
         </div>
