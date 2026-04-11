@@ -244,6 +244,9 @@ const NeurointensiveCareTopic = () => {
         "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
         "Autonomic dysreflexia (above T6): noxious stimulus → hypertensive crisis — sit up, find & remove cause",
         "NASCIS methylprednisolone NOT recommended for acute SCI (NICE/AANS) — frequently examined",
+        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
+        "Intraparenchymal monitors cannot be re-zeroed after insertion → baseline drift risk",
+        "ONSD >5.0 mm on trans-ocular ultrasound suggests ICP >20 mmHg (sensitivity ~90%)",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
