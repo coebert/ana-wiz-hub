@@ -230,6 +230,158 @@ const TransfusionCoagulationTopic = () => {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Disseminated Intravascular Coagulation (DIC)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            DIC is a systemic process of simultaneous widespread activation of coagulation and fibrinolysis, leading to microvascular thrombosis and consumptive coagulopathy. It is always secondary to an underlying condition and is not a diagnosis in itself.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Common Causes</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { cause: "Sepsis", detail: "Commonest cause in ICU. Endotoxin and inflammatory cytokines activate tissue factor pathway. Gram-negative > gram-positive." },
+              { cause: "Trauma / Major Surgery", detail: "Tissue factor release from damaged tissue. Compounded by shock, hypothermia, acidosis (lethal triad)." },
+              { cause: "Obstetric", detail: "Amniotic fluid embolism, placental abruption, pre-eclampsia/HELLP, retained products of conception." },
+              { cause: "Malignancy", detail: "Acute promyelocytic leukaemia (APML — very high risk). Solid tumours (mucin-secreting adenocarcinomas). Tumour lysis syndrome." },
+            ].map((c) => (
+              <div key={c.cause} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{c.cause}</p>
+                <p className="text-sm text-muted-foreground mt-1">{c.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Pathophysiology</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { phase: "Activation", detail: "Tissue factor exposure → massive thrombin generation → widespread fibrin deposition in microvasculature → end-organ ischaemia (renal, hepatic, pulmonary, cerebral)." },
+              { phase: "Consumption", detail: "Clotting factors and platelets consumed faster than produced → coagulopathy and thrombocytopenia → bleeding from wounds, lines, mucosal surfaces." },
+              { phase: "Fibrinolysis", detail: "Secondary plasmin activation breaks down fibrin clots → elevated D-dimers and FDPs. FDPs themselves are anticoagulant → worsen bleeding. Fibrinolytic shutdown may occur in trauma DIC." },
+              { phase: "Anticoagulant Depletion", detail: "Antithrombin III, protein C, and protein S consumed. Loss of natural anticoagulant pathways perpetuates thrombosis." },
+            ].map((p) => (
+              <div key={p.phase} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{p.phase}</span>
+                <span className="text-sm text-muted-foreground">{p.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">ISTH DIC Scoring System</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The International Society on Thrombosis and Haemostasis (ISTH) overt DIC score is the most widely used diagnostic tool. Score ≥5 = overt DIC. Repeat daily to monitor trajectory.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Parameter</th>
+                  <th className="text-left py-2 text-foreground font-semibold">0 points</th>
+                  <th className="text-left py-2 text-foreground font-semibold">1 point</th>
+                  <th className="text-left py-2 text-foreground font-semibold">2 points</th>
+                  <th className="text-left py-2 text-foreground font-semibold">3 points</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Platelet count</td>
+                  <td>{'>'} 100 × 10⁹/L</td>
+                  <td>50–100 × 10⁹/L</td>
+                  <td>{'<'} 50 × 10⁹/L</td>
+                  <td>—</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">D-dimer / FDPs</td>
+                  <td>No increase</td>
+                  <td>—</td>
+                  <td>Moderate increase</td>
+                  <td>Strong increase</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">PT prolongation</td>
+                  <td>{'<'} 3 s</td>
+                  <td>3–6 s</td>
+                  <td>{'>'} 6 s</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Fibrinogen</td>
+                  <td>{'>'} 1.0 g/L</td>
+                  <td>{'<'} 1.0 g/L</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#ef4444" }}>
+              <p className="font-bold text-foreground text-sm mb-1">Overt DIC (Score ≥5)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Clinical bleeding + microvascular thrombosis</li>
+                <li>Requires active management</li>
+                <li>Repeat score daily — trajectory matters</li>
+                <li>Mortality correlates with score</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border" style={{ borderLeftWidth: 4, borderLeftColor: "#f59e0b" }}>
+              <p className="font-bold text-foreground text-sm mb-1">Non-Overt DIC (Score {'<'} 5)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Subclinical — haemostatic system compensating</li>
+                <li>May progress to overt DIC</li>
+                <li>Repeat scoring in 24–48 h</li>
+                <li>Treat underlying cause aggressively</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Additional Investigations</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { test: "Blood Film", detail: "Microangiopathic haemolytic anaemia (MAHA): schistocytes from shearing through fibrin strands. Also seen in TTP/HUS — must distinguish." },
+              { test: "Antithrombin III", detail: "Low in DIC (consumed). May guide AT replacement therapy. Not part of ISTH score." },
+              { test: "ROTEM/TEG", detail: "Consumptive pattern: prolonged CT, low MCF, increased lysis (ML >15%). More informative than PT/APTT for guiding targeted replacement." },
+              { test: "Factor VIII vs V", detail: "Factor VIII preserved in DIC (acute phase reactant) but low in liver failure. Factor V low in both. Helps distinguish DIC from hepatic coagulopathy." },
+            ].map((t) => (
+              <div key={t.test} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{t.test}</span>
+                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Management</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { principle: "Treat the Cause", management: "The single most important intervention. DIC will not resolve without treating the underlying condition (antibiotics for sepsis, delivery in obstetric causes, ATRA in APML)." },
+              { principle: "Supportive Replacement", management: "Transfuse to clinical targets, not lab values. Platelets: target >50 × 10⁹/L if bleeding, >20 if not. FFP 15 mL/kg if PT ratio >1.5 and bleeding. Cryoprecipitate/fibrinogen concentrate: target fibrinogen >1.5 g/L." },
+              { principle: "Tranexamic Acid", management: "Consider ONLY if hyperfibrinolysis is dominant (ROTEM ML >15%). Contraindicated if thrombosis predominates — may worsen microvascular thrombosis." },
+              { principle: "Anticoagulation", management: "Low-dose heparin may be considered if thrombosis is dominant (purpura fulminans, acral ischaemia) and bleeding is controlled. Full anticoagulation is rarely appropriate." },
+              { principle: "AT Replacement", management: "AT concentrate if AT <50% and not responding. KyberSept trial — no overall mortality benefit in sepsis-DIC, but subgroup signal without heparin. Not routine." },
+              { principle: "Activated Protein C", management: "Drotrecogin alfa — withdrawn (2011) after PROWESS-SHOCK showed no benefit. Historical/exam interest only." },
+            ].map((m) => (
+              <div key={m.principle} className="flex gap-3 p-3 rounded border border-border">
+                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[130px]">{m.principle}</span>
+                <span className="text-sm text-muted-foreground">{m.management}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30 mb-3">
+            <p className="text-sm font-semibold text-foreground mb-1">⚠️ DIC vs TTP/HUS</p>
+            <p className="text-sm text-muted-foreground">
+              Both cause MAHA + thrombocytopenia but management differs critically. In TTP: ADAMTS13 {'<'} 10%, coagulation screen typically NORMAL (PT/APTT/fibrinogen). Treatment: plasma exchange — do NOT transfuse platelets (can worsen). In DIC: coagulation screen is abnormal (↑PT, ↓fibrinogen, ↑D-dimer). Always check ADAMTS13 if MAHA + thrombocytopenia without clear DIC trigger.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              Know the ISTH scoring system and its 4 components. Treating the underlying cause is the most important intervention. TXA is contraindicated in DIC with predominant thrombosis. Factor VIII is preserved in DIC (acute phase reactant) but low in liver failure — this distinguishes the two. Drotrecogin alfa was withdrawn after PROWESS-SHOCK — a favourite exam question.
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -239,8 +391,9 @@ const TransfusionCoagulationTopic = () => {
         "TXA within 3 hours of trauma injury reduces mortality (CRASH-2)",
         "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early",
         "Lethal triad: hypothermia + acidosis + coagulopathy — damage control resuscitation breaks the cycle",
-        "PROPPR: 1:1:1 ratio achieves haemostasis faster than 1:1:2 in trauma",
-        "Citrate metabolism causes late metabolic alkalosis after massive transfusion",
+        "DIC: ISTH score ≥5 = overt DIC. Treat the underlying cause — the most important intervention",
+        "DIC vs TTP: coagulation screen normal in TTP, abnormal in DIC. Never give platelets in TTP",
+        "TXA contraindicated in DIC with predominant thrombosis — only if hyperfibrinolysis dominant",
       ]} />
 
       <QuizSection questions={transfusionCoagulationQuestions} />
