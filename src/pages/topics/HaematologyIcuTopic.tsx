@@ -561,18 +561,157 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        {/* Anticoagulation in Special ICU Populations */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation in Special ICU Populations</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Anticoagulation in ICU is complicated by organ dysfunction, extracorporeal circuits, coagulopathy, and bleeding risk. Three common scenarios require specific approaches: renal replacement therapy (RRT), extracorporeal membrane oxygenation (ECMO), and acute liver failure.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Anticoagulation for Renal Replacement Therapy (RRT)</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            All extracorporeal circuits activate coagulation via contact with artificial surfaces. Without anticoagulation, filter life is shortened by clotting. The choice of anticoagulant depends on bleeding risk, metabolic status, and local expertise.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Strategy</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Advantages</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Disadvantages</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Regional citrate (first-line)</td>
+                  <td>Citrate chelates ionised Ca²⁺ in the circuit → prevents coagulation. Calcium re-infused post-filter to restore systemic iCa²⁺</td>
+                  <td>No systemic anticoagulation → low bleeding risk. Longer filter life vs heparin. KDIGO recommended first-line for CRRT</td>
+                  <td>Risk of citrate accumulation (liver failure, shock) → metabolic alkalosis, ↓iCa²⁺, ↑total:ionised Ca²⁺ ratio {'>'} 2.5. Requires protocol and frequent iCa²⁺ monitoring</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Systemic UFH</td>
+                  <td>AT-III mediated inhibition of thrombin and Xa</td>
+                  <td>Familiar, cheap, reversible with protamine. Short half-life. Widely available</td>
+                  <td>Systemic bleeding risk. HIT risk (~1–5%). Requires APTT monitoring. Unpredictable pharmacokinetics in critical illness (AT-III depletion)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">No anticoagulation</td>
+                  <td>Saline flushes (100–250 mL/h pre-filter) to maintain circuit patency</td>
+                  <td>No bleeding risk. Suitable for coagulopathic patients (DIC, liver failure, post-surgery)</td>
+                  <td>Shorter filter life. Frequent circuit changes. Higher costs. Interrupts RRT delivery</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Regional heparin-protamine</td>
+                  <td>Heparin pre-filter, protamine post-filter to neutralise</td>
+                  <td>Regional anticoagulation without systemic effect (in theory)</td>
+                  <td>Protamine rebound risk. Complex to manage. HIT risk remains. Largely replaced by citrate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 mb-6">
+            <p className="text-sm font-semibold text-destructive">⚠ Citrate Accumulation</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Suspect citrate toxicity if: rising total calcium with falling ionised calcium (total:ionised Ca²⁺ ratio {'>'} 2.5), metabolic acidosis (citrate is metabolised to bicarbonate — accumulation prevents this), worsening haemodynamics. Risk factors: liver failure, shock (impaired citrate metabolism). Management: reduce citrate infusion rate, increase calcium replacement, consider switching to no anticoagulation or heparin.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Anticoagulation for ECMO</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            ECMO circuits have a large artificial surface area and generate high shear stress, creating a strongly prothrombotic environment. Systemic anticoagulation is required but must be balanced against the significant bleeding risk inherent to ECMO patients (acquired von Willebrand syndrome, thrombocytopenia, consumptive coagulopathy).
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { agent: "Unfractionated heparin (standard)", detail: "Most widely used. Bolus 50–100 units/kg at cannulation, then infusion 10–20 units/kg/hr. Monitor: APTT (target 1.5–2× baseline), anti-Xa (target 0.3–0.7 IU/mL), ACT (180–220 seconds). Anti-Xa is the most reliable — APTT is affected by lupus anticoagulant, factor deficiencies, and high fibrinogen." },
+              { agent: "Bivalirudin (HIT or heparin resistance)", detail: "Direct thrombin inhibitor. 0.05–0.5 mg/kg/hr infusion (no bolus for ECMO). Monitor: APTT or ACT. Enzymatic metabolism — not organ-dependent. Very short half-life (25 min). First-line for ECMO in HIT. Stagnant blood in circuit can clot (no AT-III dependent activity)." },
+              { agent: "Argatroban (HIT alternative)", detail: "Direct thrombin inhibitor. Hepatic metabolism — dose reduce in liver dysfunction. Longer half-life than bivalirudin. Prolongs INR. Used in some centres for ECMO in HIT, though bivalirudin more commonly preferred." },
+              { agent: "Acquired von Willebrand syndrome", detail: "High shear stress in ECMO circuits cleaves large vWF multimers → acquired vWD type 2A. Contributes to mucosal bleeding (epistaxis, GI haemorrhage). Diagnose: ↓vWF:RCo/vWF:Ag ratio. May need DDAVP or vWF-containing concentrates if severe bleeding." },
+            ].map((a) => (
+              <div key={a.agent} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{a.agent}</p>
+                <p className="text-sm text-muted-foreground">{a.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-3 mb-6">
+            {[
+              { label: "APTT target", value: "1.5–2× baseline" },
+              { label: "Anti-Xa target", value: "0.3–0.7 IU/mL" },
+              { label: "ACT target", value: "180–220 seconds" },
+            ].map((m) => (
+              <div key={m.label} className="p-3 rounded-lg bg-secondary/30 border border-border text-center">
+                <p className="text-xs text-muted-foreground">{m.label}</p>
+                <p className="font-semibold text-foreground text-sm mt-1">{m.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Anticoagulation in Acute Liver Failure</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            Liver failure creates a complex haemostatic state often described as "rebalanced haemostasis" — conventional coagulation tests (PT/INR) are misleading because they reflect only procoagulant factor depletion, not the parallel loss of anticoagulant factors (protein C, protein S, antithrombin).
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { principle: "Rebalanced haemostasis", detail: "Both procoagulant and anticoagulant factors are reduced in proportion. The INR does NOT reflect bleeding risk. Patients with liver failure may be prothrombotic (portal vein thrombosis occurs in 10–25% of cirrhotics). Thromboelastography (TEG/ROTEM) provides a more accurate functional assessment of haemostasis." },
+              { principle: "VTE prophylaxis", detail: "Liver failure patients are NOT auto-anticoagulated despite elevated INR. Pharmacological thromboprophylaxis (LMWH or UFH) should be given unless actively bleeding or platelets <50 × 10⁹/L. The elevated INR should not be used as a reason to withhold prophylaxis." },
+              { principle: "Anticoagulation for RRT in liver failure", detail: "Regional citrate is relatively contraindicated (impaired citrate metabolism → accumulation). Options: no anticoagulation (with saline flushes) in coagulopathic patients, or low-dose UFH if not coagulopathic. Monitor total:ionised Ca²⁺ ratio if citrate used cautiously." },
+              { principle: "Therapeutic anticoagulation", detail: "If indicated (e.g. portal vein thrombosis, Budd-Chiari), use UFH (titratable, reversible) or LMWH with anti-Xa monitoring. APTT is unreliable in liver failure (baseline prolongation). DOACs are hepatically metabolised — generally avoided in severe liver disease (Child-Pugh C)." },
+              { principle: "Procedure-related haemostasis", detail: "Do NOT correct INR prophylactically with FFP — causes volume overload, transiently corrects INR, and obscures prognostic value of INR in ALF (King's College criteria). Use TEG/ROTEM to guide targeted component therapy. Fibrinogen replacement (cryoprecipitate or fibrinogen concentrate) if fibrinogen <1.5 g/L." },
+            ].map((p) => (
+              <div key={p.principle} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{p.principle}</p>
+                <p className="text-sm text-muted-foreground">{p.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-xl border border-border bg-card p-5 mb-4">
+            <h3 className="font-semibold text-foreground mb-3">Summary: Anticoagulation by Clinical Scenario</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Scenario</th>
+                    <th className="text-left py-2 text-foreground font-semibold">First-line</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Alternative</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Monitor</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CRRT (standard)</td><td>Regional citrate</td><td>UFH or no anticoagulation</td><td>iCa²⁺ (citrate); APTT (heparin)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CRRT + liver failure</td><td>No anticoagulation (saline flushes)</td><td>Low-dose UFH; cautious citrate with monitoring</td><td>Total:ionised Ca²⁺ ratio</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CRRT + HIT</td><td>Argatroban (dose reduce if liver impairment)</td><td>Regional citrate; fondaparinux</td><td>APTT</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VA/VV-ECMO</td><td>UFH infusion</td><td>Bivalirudin</td><td>Anti-Xa (preferred); APTT; ACT</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ECMO + HIT</td><td>Bivalirudin</td><td>Argatroban</td><td>APTT or ACT</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Liver failure (VTE prophylaxis)</td><td>LMWH or UFH (despite raised INR)</td><td>Mechanical prophylaxis if bleeding</td><td>Anti-Xa for LMWH</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              Regional citrate for CRRT is the most examined anticoagulation topic: know the mechanism (Ca²⁺ chelation), monitoring (ionised calcium, total:ionised ratio), and contraindication (liver failure → citrate accumulation). For ECMO, anti-Xa is the most reliable monitoring tool. In liver failure, remember: elevated INR ≠ auto-anticoagulation — the concept of rebalanced haemostasis is heavily tested.
+            </p>
+          </div>
+        </div>
+
         <KeyLearningPoints points={[
-          "TTP: ADAMTS13 <10% → uncleaved vWF multimers → microvascular thrombosis; DO NOT transfuse platelets",
-          "PLASMIC score ≥6: start plasma exchange empirically before ADAMTS13 result returns",
+          "TTP: ADAMTS13 <10% → microvascular thrombosis; DO NOT transfuse platelets; PLASMIC ≥6 → start plasma exchange",
           "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC",
-          "Typical HUS: Shiga toxin (E. coli O157:H7) — supportive care, antibiotics CONTRAINDICATED",
-          "Atypical HUS: complement dysregulation — eculizumab (anti-C5) first-line; meningococcal vaccination mandatory",
-          "HIT: immune-mediated prothrombotic thrombocytopenia — 4Ts score guides pre-test probability",
-          "HIT: stop ALL heparin (including flushes), start argatroban (UK first-line), screen for thrombosis",
-          "LMWH cross-reacts with HIT antibodies (~90%) — must NOT be substituted for UFH",
-          "Warfarin contraindicated in acute HIT — risk of venous limb gangrene from protein C depletion",
-          "HLH: ferritin >10,000 has ~90% sensitivity; HScore >169 gives >93% probability in adults",
-          "HLH management: treat trigger + dexamethasone/etoposide; anakinra for adult MAS/HLH",
+          "HIT: prothrombotic thrombocytopenia — 4Ts score, stop ALL heparin, argatroban first-line (UK)",
+          "Warfarin contraindicated in acute HIT — protein C depletion → venous limb gangrene",
+          "Regional citrate is first-line for CRRT anticoagulation (KDIGO) — contraindicated in liver failure (accumulation risk)",
+          "Citrate toxicity: rising total Ca²⁺ with falling ionised Ca²⁺ (ratio >2.5), metabolic acidosis",
+          "ECMO anticoagulation: UFH standard, anti-Xa most reliable monitor (target 0.3–0.7 IU/mL)",
+          "ECMO + HIT: bivalirudin first-line (enzymatic metabolism, very short half-life)",
+          "Liver failure: elevated INR ≠ auto-anticoagulation — rebalanced haemostasis; still needs VTE prophylaxis",
+          "TEG/ROTEM is superior to PT/INR for assessing haemostasis in liver failure — do NOT correct INR with FFP prophylactically",
+          "HLH: ferritin >10,000 ~90% sensitivity; treat trigger + dexamethasone/etoposide; anakinra for MAS/HLH",
         ]} />
       </section>
 
