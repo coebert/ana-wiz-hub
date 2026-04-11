@@ -228,19 +228,8 @@ const OrganDonationTopic = () => {
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Normothermic Regional Perfusion (NRP)</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            An increasingly used technique to improve DCD organ quality. After death is confirmed, femoral arterial and venous cannulae are connected to an ECMO circuit to restore warm oxygenated perfusion to abdominal organs (abdominal NRP) or thoracoabdominal organs (thoracoabdominal NRP). The aortic arch vessels are clamped to prevent cerebral reperfusion.
+            See dedicated NRP section below for full technical and ethical detail.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            {[
-              { label: "Benefits", detail: "Allows functional assessment of organs in situ. Reduces DGF (delayed graft function). Improves liver and kidney graft outcomes. Enables heart retrieval from DCD donors (thoracoabdominal NRP)." },
-              { label: "Controversies", detail: "Ethical debate: does restoring circulation (even with arch clamping) conflict with the diagnosis of death by circulatory criteria? Some argue it challenges the 'permanence' standard. UK legal opinion supports current practice." },
-            ].map((n) => (
-              <div key={n.label} className="p-3 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">{n.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{n.detail}</p>
-              </div>
-            ))}
-          </div>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Warm Ischaemia Time</h3>
           <div className="grid sm:grid-cols-3 gap-3 mb-4">
