@@ -173,18 +173,129 @@ const OrganDonationTopic = () => {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Donation after Circulatory Death (DCD) — In Detail</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            DCD now accounts for the majority (~60%) of deceased organ donations in the UK. Unlike DBD, death is diagnosed by the irreversible cessation of cardiorespiratory function rather than brainstem testing. The key challenge is minimising warm ischaemia time between circulatory arrest and organ perfusion.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Maastricht Classification</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            The modified Maastricht classification categorises DCD donors by the circumstances of death. Category III (controlled) is by far the most common in the UK.
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { category: "Category I — Dead on arrival", detail: "Found dead, no resuscitation attempted. Uncontrolled. Rarely used in UK. Requires pre-established rapid retrieval programme (e.g. normothermic regional perfusion).", controlled: false },
+              { category: "Category II — Unsuccessful resuscitation", detail: "Cardiac arrest with CPR attempted but unsuccessful. Uncontrolled. Used in some European centres (Spain, France). Not currently practised in UK. Requires rapid response and pre-consent frameworks.", controlled: false },
+              { category: "Category III — Awaiting cardiac arrest", detail: "Planned withdrawal of life-sustaining treatment (WLST) in a patient where further treatment is futile. Controlled. Most common DCD category in UK (~95% of DCD). Allows planned retrieval team presence and optimisation.", controlled: true },
+              { category: "Category IV — Cardiac arrest after BSD", detail: "Patient diagnosed BSD but sustains cardiac arrest before organ retrieval can occur. Uncontrolled. Organs retrieved as DCD rather than DBD. Uncommon.", controlled: false },
+              { category: "Category V — Cardiac arrest in hospital", detail: "Unexpected cardiac arrest in hospitalised patient. Some countries include this. Not used in UK classification. Similar to Category II.", controlled: false },
+            ].map((c) => (
+              <div key={c.category} className="p-3 rounded border border-border">
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <p className="font-bold text-primary text-sm">{c.category}</p>
+                  <span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${c.controlled ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400'}`}>
+                    {c.controlled ? 'Controlled' : 'Uncontrolled'}
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground">{c.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Withdrawal-to-Retrieval Pathway (Category III)</h3>
+          <p className="text-muted-foreground text-sm mb-3">
+            The pathway from treatment withdrawal to organ retrieval is time-critical. Warm ischaemia time (WIT) directly affects graft outcomes. The functional WIT begins when SBP {'<'} 50 mmHg.
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "1. Decision to withdraw treatment", detail: "Made independently of any donation decision. Based on futility and best interests. Must be clearly documented. SN-OD (Specialist Nurse for Organ Donation) approached only after WLST decision is made." },
+              { step: "2. Consent and planning", detail: "Family approached for donation consent (deemed consent applies). Retrieval team contacted and mobilised. Ante-mortem investigations: blood group, virology, tissue typing, CT chest/abdomen. Discuss location of withdrawal (ICU vs theatre)." },
+              { step: "3. Ante-mortem interventions", detail: "Heparin (300 units/kg IV) — given before withdrawal to prevent microvascular thrombosis. Controversial but widely practised. Phentolamine sometimes used. Femoral vessel cannulation for NRP may be performed ante-mortem in some centres." },
+              { step: "4. Treatment withdrawal", detail: "Extubation or reduction to T-piece/CPAP. Withdrawal of vasoactive drugs. Adequate symptom control: opioids, benzodiazepines as needed for comfort (not to hasten death). Usually performed in ICU or anaesthetic room adjacent to theatre." },
+              { step: "5. Observation period", detail: "Monitor for circulatory arrest. If death does not occur within a defined standdown time (typically 2–3 hours, some centres up to 4 hours), donation does not proceed — warm ischaemia would be too prolonged for viable organs." },
+              { step: "6. Circulatory arrest and 5-minute standoff", detail: "After the last cardiac output ceases (asystole or PEA with no pulsatile flow), a mandatory 5-minute hands-off observation period begins. No interventions during this time. This confirms the irreversibility of circulatory arrest." },
+              { step: "7. Confirmation of death", detail: "After 5 minutes: confirm absent heart sounds, absent breath sounds, fixed dilated pupils. Death is certified by a doctor independent of the retrieval team. The legal time of death is the end of the 5-minute observation period." },
+              { step: "8. Rapid organ retrieval", detail: "Immediate transfer to theatre (if not already there). Super-rapid retrieval technique: midline laparotomy, aortic cannulation, cold perfusion (University of Wisconsin or HTK solution). Target: cold perfusion within 10–20 minutes of death. Thoracic organs retrieved first (most ischaemia-sensitive)." },
+            ].map((s) => (
+              <div key={s.step} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.step}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Normothermic Regional Perfusion (NRP)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            An increasingly used technique to improve DCD organ quality. After death is confirmed, femoral arterial and venous cannulae are connected to an ECMO circuit to restore warm oxygenated perfusion to abdominal organs (abdominal NRP) or thoracoabdominal organs (thoracoabdominal NRP). The aortic arch vessels are clamped to prevent cerebral reperfusion.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Benefits", detail: "Allows functional assessment of organs in situ. Reduces DGF (delayed graft function). Improves liver and kidney graft outcomes. Enables heart retrieval from DCD donors (thoracoabdominal NRP)." },
+              { label: "Controversies", detail: "Ethical debate: does restoring circulation (even with arch clamping) conflict with the diagnosis of death by circulatory criteria? Some argue it challenges the 'permanence' standard. UK legal opinion supports current practice." },
+            ].map((n) => (
+              <div key={n.label} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{n.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{n.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Warm Ischaemia Time</h3>
+          <div className="grid sm:grid-cols-3 gap-3 mb-4">
+            {[
+              { label: "Functional WIT start", value: "SBP < 50 mmHg" },
+              { label: "Functional WIT end", value: "Cold perfusion starts" },
+              { label: "Target total WIT", value: "< 30 min (kidneys), < 20 min (liver)" },
+            ].map((w) => (
+              <div key={w.label} className="p-3 rounded-lg bg-secondary/30 border border-border text-center">
+                <p className="text-xs text-muted-foreground">{w.label}</p>
+                <p className="font-semibold text-foreground text-sm mt-1">{w.value}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">DCD vs DBD — Key Differences</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-foreground font-semibold">DBD</th>
+                  <th className="text-left py-2 text-foreground font-semibold">DCD</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Death diagnosis</td><td>Brainstem death tests</td><td>Circulatory arrest + 5 min standoff</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Warm ischaemia</td><td>Minimal (organs perfused until retrieval)</td><td>Significant — time-critical</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Organs retrieved</td><td>All solid organs including heart</td><td>Kidneys, liver, lungs, pancreas. Heart via NRP in some centres</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Graft outcomes</td><td>Generally superior (less ischaemic injury)</td><td>Higher rates of DGF and PNF, but improving with NRP</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">UK proportion</td><td>~40% of deceased donors</td><td>~60% of deceased donors</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              DCD Category III is the most examined scenario. Know the withdrawal-to-retrieval pathway, the 5-minute standoff period, the concept of functional warm ischaemia time (from SBP {'<'} 50 mmHg), and the standdown time (2–3 hours). NRP is increasingly examined — understand the ethical debate around restoring circulation after death by circulatory criteria.
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
-        "DCD now accounts for the majority of deceased organ donations in the UK",
-        "DBD: 5-minute hands-off period after circulatory arrest before death is confirmed",
-        "Diabetes insipidus occurs in ~65% of DBD donors — treat with DDAVP + hypotonic fluids",
-        "England, Scotland, Wales use deemed (opt-out) consent since 2020",
-        "BSD prerequisites: known aetiology, core temp ≥34°C, no residual sedation/paralysis, no severe metabolic derangement",
+        "DCD now accounts for ~60% of deceased organ donations in the UK — Category III (controlled) is most common",
+        "Maastricht classification: 5 categories — only Category III (awaiting cardiac arrest after WLST) is routinely used in UK",
+        "5-minute mandatory standoff after circulatory arrest before death can be confirmed",
+        "Functional warm ischaemia time starts when SBP < 50 mmHg — target < 30 min for kidneys, < 20 min for liver",
+        "Standdown time: if death does not occur within 2–3 hours of WLST, donation does not proceed",
+        "Normothermic regional perfusion (NRP) improves DCD graft outcomes and enables DCD heart retrieval",
+        "Heparin 300 units/kg is given ante-mortem to prevent microvascular thrombosis",
+        "DBD: BSD prerequisites include temp ≥34°C, no residual sedation, known aetiology",
         "Apnoea test: PaCO₂ must rise to >6.65 kPa AND increase by >0.5 kPa — no respiratory effort",
-        "Legal time of death = completion of first set of BSD tests, not the second",
-        "Spinal reflexes (limb withdrawal, Lazarus sign) can persist after BSD — do NOT invalidate the diagnosis",
-        "If confounders cannot be excluded, use ancillary testing (CTA, 4-vessel angiography, TCD)",
+        "Legal time of death: BSD = completion of first set of tests; DCD = end of 5-minute standoff",
       ]} />
 
       <QuizSection questions={organDonationQuestions} />
