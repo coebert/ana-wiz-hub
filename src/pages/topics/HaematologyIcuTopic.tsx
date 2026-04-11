@@ -141,6 +141,103 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        {/* HUS */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemolytic Uraemic Syndrome (HUS)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            HUS is a thrombotic microangiopathy characterised by the triad of MAHA, thrombocytopenia, and acute kidney injury. Unlike TTP, the predominant target organ is the kidney. Two major forms exist with fundamentally different pathophysiology and management.
+          </p>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Typical HUS (STEC-HUS / Diarrhoea-associated)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Caused by Shiga toxin-producing <em>E. coli</em> (STEC), most commonly O157:H7. Toxin binds to Gb3 receptors on glomerular endothelium → endothelial damage → platelet activation → microvascular thrombosis. Accounts for ~90% of HUS in children. Typically follows bloody diarrhoea by 5–10 days. <strong>Antibiotics are contraindicated</strong> — may increase Shiga toxin release and worsen HUS.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">Atypical HUS (aHUS / Complement-mediated)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Caused by uncontrolled activation of the alternative complement pathway due to genetic mutations (Factor H, Factor I, MCP, C3, Factor B) or acquired autoantibodies (anti-Factor H). Chronic relapsing course. Affects all ages. No preceding diarrhoea. Carries higher mortality and ESRD risk than typical HUS. <strong>Plasma exchange alone is insufficient</strong> — requires complement blockade.
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Clinical Features & Diagnosis</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { feature: "Diagnostic triad", detail: "MAHA (schistocytes, ↑LDH, ↓haptoglobin, DAT negative) + thrombocytopenia + AKI. Coagulation screen (PT/APTT) is normal — distinguishes from DIC." },
+              { feature: "Renal involvement", detail: "Oliguria/anuria, haematuria, proteinuria. Often severe AKI requiring RRT. Cortical necrosis may occur in severe cases. Renal biopsy shows thrombotic microangiopathy." },
+              { feature: "Extra-renal manifestations", detail: "CNS involvement in ~20% of aHUS (seizures, encephalopathy, stroke). Cardiac: cardiomyopathy, myocardial infarction. GI: pancreatitis, hepatitis. Multi-organ involvement suggests aHUS rather than typical." },
+              { feature: "Key investigations", detail: "Blood film (schistocytes), LDH, haptoglobin, DAT (negative), ADAMTS13 activity (>10% excludes TTP), complement levels (C3 often low in aHUS), stool culture and PCR for STEC, genetic complement panel." },
+            ].map((f) => (
+              <div key={f.feature} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{f.feature}</p>
+                <p className="text-sm text-muted-foreground">{f.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Typical HUS vs Atypical HUS</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Typical (STEC-HUS)</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Atypical (aHUS)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cause</td><td>Shiga toxin (E. coli O157:H7)</td><td>Complement dysregulation (genetic/acquired)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Age</td><td>Children (peak 6 months – 5 years)</td><td>Any age</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Prodrome</td><td>Bloody diarrhoea (5–10 days before)</td><td>No diarrhoeal prodrome (or non-bloody)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Complement C3</td><td>Usually normal</td><td>Often low</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Recurrence</td><td>Rare ({'<'}3%)</td><td>Frequent (up to 50%)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ESRD risk</td><td>~5%</td><td>~50% without treatment</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Key treatment</td><td>Supportive (RRT, fluids, NO antibiotics)</td><td>Eculizumab (complement blockade)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="rounded-xl border border-border bg-card p-5 mb-4">
+            <h3 className="font-semibold text-foreground mb-3">Management of HUS</h3>
+            <div className="space-y-3">
+              {[
+                { step: "1", action: "Supportive care (both forms)", detail: "IV fluids (early volume expansion improves renal outcomes). RRT for severe AKI (often required). Avoid platelet transfusion unless life-threatening bleeding. Red cell transfusion as needed. Strict fluid balance and electrolyte monitoring." },
+                { step: "2", action: "Typical HUS — avoid antibiotics", detail: "Antibiotics are contraindicated in STEC-HUS — may increase Shiga toxin release from dying bacteria. Anti-motility agents also avoided. Most children recover with supportive care alone (mortality <5%). Monitor for CNS and cardiac complications." },
+                { step: "3", action: "Atypical HUS — Eculizumab", detail: "Anti-C5 monoclonal antibody that blocks terminal complement activation. First-line for aHUS. Dramatic improvement in outcomes: reduces ESRD from ~50% to <10%. Must vaccinate against N. meningitidis (ideally ≥2 weeks before, or give prophylactic antibiotics). Lifelong treatment often required — relapse on cessation." },
+                { step: "4", action: "Ravulizumab", detail: "Long-acting anti-C5 antibody (8-weekly dosing vs 2-weekly for eculizumab). Non-inferior efficacy with improved convenience and compliance. Increasingly used as first-line for aHUS." },
+                { step: "5", action: "Plasma exchange", detail: "May be used as a bridge while awaiting ADAMTS13 results (to exclude TTP). In aHUS, plasma exchange alone is insufficient — complement blockade is required. May be beneficial for anti-Factor H antibody-mediated aHUS." },
+              ].map((s) => (
+                <div key={s.step} className="flex gap-3">
+                  <div className="shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary">{s.step}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{s.action}</p>
+                    <p className="text-sm text-muted-foreground">{s.detail}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 mb-4">
+            <p className="text-sm font-semibold text-destructive">⚠ Meningococcal Risk with Eculizumab</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Eculizumab blocks C5 → cannot form membrane attack complex (MAC) → dramatically increased risk of <em>Neisseria meningitidis</em> infection. All patients must receive meningococcal vaccination (ACWY + B). If treatment cannot wait ≥2 weeks for vaccine response, give prophylactic ciprofloxacin or penicillin V until vaccinated.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              The key diagnostic step in any TMA is ADAMTS13 activity: {'<'}10% = TTP (plasma exchange), {'>'}10% = consider HUS. For HUS, distinguish typical (diarrhoeal prodrome, supportive care, NO antibiotics) from atypical (complement-mediated, eculizumab). Remember: normal coagulation screen distinguishes TTP/HUS from DIC. Platelet transfusion is contraindicated in both TTP and HUS.
+            </p>
+          </div>
+        </div>
+
         {/* HLH */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
