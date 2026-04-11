@@ -468,6 +468,86 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Transfusion restriction:</span> Liberal transfusion associated with pulmonary complications (TRICC, TRISS trials)</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy in the ICU</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Tracheostomy is performed in ~10–15% of mechanically ventilated ICU patients. Potential benefits include reduced dead space, improved secretion management, lower sedation requirements, facilitated weaning, and improved patient comfort and communication. However, optimal timing remains debated.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Timing — Early vs Late</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              { label: "TracMan Trial (2013)", detail: "UK multicentre RCT, 909 patients. Early tracheostomy (within 4 days) vs late (after day 10 if still indicated). No difference in 30-day mortality (30.8% vs 31.5%) or 2-year mortality. No difference in ICU or hospital LOS. 45% of the late group never required tracheostomy. Conclusion: a 'wait and see' approach is safe — many patients are extubated before day 10." },
+              { label: "Meta-analyses", detail: "Pooled data from multiple RCTs (including TracMan, Terragni, Zheng) show early tracheostomy may reduce ventilator days and ICU LOS but no consistent mortality benefit. Definitions of 'early' (day 2–10) and 'late' (day 10–28) vary widely across studies." },
+              { label: "Current consensus", detail: "No universally agreed timing. Consider tracheostomy when: (1) anticipated prolonged ventilation >10–14 days, (2) failed weaning/extubation, (3) need for ongoing airway protection (neurological injury), (4) facilitate rehabilitation and communication. Avoid in patients likely to be extubated within 7–10 days." },
+            ].map((item) => (
+              <div key={item.label} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Percutaneous vs Surgical Tracheostomy</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Feature</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Percutaneous Dilatational (PDT)</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Surgical (Open)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Location</td><td className="p-3 border-b border-border">Bedside in ICU</td><td className="p-3 border-b border-border">Theatre or bedside</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Technique</td><td className="p-3 border-b border-border">Seldinger technique with serial dilatation (Ciaglia) or single-stage dilator (Ciaglia Blue Rhino). Bronchoscopy or ultrasound guided.</td><td className="p-3 border-b border-border">Direct visualisation, tracheal window or flap (Björk flap). Formal dissection of pretracheal structures.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Wound infection</td><td className="p-3 border-b border-border">Lower (tight stoma, smaller incision)</td><td className="p-3 border-b border-border">Higher</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Bleeding</td><td className="p-3 border-b border-border">Less perioperative bleeding</td><td className="p-3 border-b border-border">Better haemostasis under direct vision</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Tracheal stenosis</td><td className="p-3 border-b border-border">Similar long-term rates</td><td className="p-3 border-b border-border">Similar long-term rates</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Tube change difficulty</td><td className="p-3 border-b border-border">Higher risk — immature tract, no stay sutures</td><td className="p-3 border-b border-border">Stay sutures and mature stoma facilitate safe changes</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Contraindications to PDT</td><td className="p-3 border-b border-border" colSpan={2}>Paediatric patients, emergency airway, uncorrectable coagulopathy, difficult anatomy (obesity with impalpable landmarks, prior neck surgery/radiation, large thyroid goitre), subglottic stenosis, high ventilatory requirements (FiO₂ &gt;0.8, PEEP &gt;15)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Procedural Considerations for PDT</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Pre-procedure assessment", detail: "Neck anatomy (palpate landmarks, consider USS), coagulation status (platelets >50, INR <1.5), current ventilatory requirements, ability to maintain oxygenation during procedure." },
+              { label: "Positioning", detail: "Supine, neck extended (shoulder roll). Identify cricoid, tracheal rings, thyroid isthmus, and anterior neck vessels by palpation ± ultrasound." },
+              { label: "Bronchoscopy guidance", detail: "Real-time visualisation confirms midline needle insertion between tracheal rings 1–2 or 2–3. Prevents posterior wall injury. Increasingly supplemented or replaced by ultrasound." },
+              { label: "Ultrasound role", detail: "Pre-procedure: maps vessels, identifies thyroid isthmus, confirms tracheal midline, measures skin-to-trachea depth. Real-time: guides needle entry. Reduces vascular complications." },
+              { label: "ETT management", detail: "Withdraw ETT to sit just below vocal cords under bronchoscopic view. Avoid accidental extubation. Some units use LMA as an alternative conduit during the procedure." },
+              { label: "Post-procedure", detail: "Confirm position with bronchoscopy and capnography. First tube change not before day 5–7 (tract maturation). Emergency equipment at bedside: tracheal dilators, spare tracheostomy tube, ETT." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Complications</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { timing: "Immediate (<24h)", items: "Haemorrhage (1–5%), pneumothorax, posterior tracheal wall injury, false passage, subcutaneous emphysema, loss of airway, hypoxia during procedure, cardiac arrest (rare)." },
+              { timing: "Early (1–7 days)", items: "Tube displacement/dislodgement (most dangerous before tract matures), tube obstruction (secretions, blood clot), wound infection, surgical emphysema." },
+              { timing: "Late (>7 days)", items: "Tracheal stenosis (1–2% — most common long-term complication), tracheo-innominate artery fistula (catastrophic haemorrhage, <1%), tracheo-oesophageal fistula, granulation tissue, cosmetic scarring, persistent stoma." },
+              { timing: "Decannulation emergencies", items: "Accidental decannulation before tract maturation is a life-threatening emergency. Algorithm: call for help, attempt oral intubation first if <7 days post-insertion, do not blindly re-insert through an immature tract." },
+            ].map((item) => (
+              <div key={item.timing} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.timing}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.items}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">NTSP Emergency Tracheostomy Algorithm</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            The National Tracheostomy Safety Project (NTSP) provides standardised emergency algorithms for tracheostomy and laryngectomy patients. Key principles: <span className="font-semibold text-foreground">call for help early</span>, assess patency (pass suction catheter), remove inner cannula, deflate cuff, if still obstructed remove the tracheostomy tube entirely, cover stoma and manage as standard airway (oral intubation from above). A laryngectomy patient has <span className="font-semibold text-foreground">no upper airway connection</span> — ventilate via the stoma only. Bedhead signs indicating tracheostomy vs laryngectomy must be displayed.
+          </p>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -481,10 +561,11 @@ const MechanicalVentilationTopic = () => {
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
         "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
-        "VAP diagnosis: new CXR infiltrate + ≥2 clinical criteria + quantitative cultures (BAL ≥10⁴ CFU/mL)",
-        "Treat VAP for 7 days; de-escalate at 48–72h; use PCT to guide stopping",
-        "VAE: CDC tiered framework — VAC (FiO₂/PEEP deterioration) → IVAC (+ infection signs) → Possible VAP (+ micro)",
-        "VAC is defined by ↑FiO₂ ≥0.20 or ↑PEEP ≥3 sustained for ≥2 days after ≥2 days of stability",
+        "VAE: CDC tiered framework — VAC → IVAC → Possible VAP; uses objective FiO₂/PEEP criteria",
+        "TracMan: early tracheostomy (day 4) vs late (day 10) — no mortality difference; 45% of late group never needed one",
+        "PDT: bedside, Seldinger technique, fewer wound infections; first tube change not before day 5–7",
+        "NTSP algorithm: blocked tracheostomy → suction → remove inner cannula → deflate cuff → remove tube → oral intubation",
+        "Laryngectomy patients have NO upper airway — ventilate via stoma ONLY",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
