@@ -82,8 +82,8 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is a time-cycled, pressure-limited mode that maintains a prolonged high airway pressure (P<sub>high</sub>) to recruit and hold open alveoli, with brief intermittent releases to a low pressure (P<sub>low</sub>) to allow CO₂ clearance. Crucially, the patient can breathe spontaneously throughout the entire cycle, which preserves diaphragmatic tone, improves V/Q matching, and reduces sedation requirements.
           </p>
+          <APRVWaveformDiagram />
 
-          <h3 className="text-lg font-semibold text-foreground mb-2">Ventilator Settings</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
               { label: "P high", value: "20–35 cmH₂O", detail: "Set to previous plateau pressure. Provides mean airway pressure and recruits alveoli." },
