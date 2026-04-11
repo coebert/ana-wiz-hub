@@ -519,7 +519,16 @@ const LaryngealCrossSectionDiagram = () => {
                 })}
                 <text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>
 
-                {/* Nerves */}
+                {/* Nerves & vessels */}
+                {/* Superior laryngeal artery — accompanies internal SLN through thyrohyoid membrane */}
+                <path d="M40,42 C52,44 62,49 74,56 C80,60 84,64 87,68"
+                  stroke="#cc3333" strokeWidth={isActive("sln-internal") ? 1.5 : 0.8}
+                  fill="none" opacity={isActive("sln-internal") ? 0.6 : 0.15}
+                />
+                {isActive("sln-internal") && (
+                  <text x="50" y="40" fontSize="3.5" fill="#cc3333" opacity="0.6">Sup. laryngeal A.</text>
+                )}
+
                 {/* Internal SLN */}
                 <path d="M38,48 C50,50 60,55 72,62 C78,66 82,70 85,73"
                   stroke={structures["sln-internal"].color}
