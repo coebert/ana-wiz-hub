@@ -88,6 +88,55 @@ const PreoperativeAssessmentTopic = () => {
             ))}
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">GLP-1 Receptor Agonists & Anaesthesia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            GLP-1 receptor agonists (semaglutide, liraglutide, tirzepatide) are increasingly prevalent due to widespread use for type 2 diabetes and obesity. They significantly delay gastric emptying, raising aspiration risk even in fasted patients.
+          </p>
+
+          <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-5 space-y-3 mb-4">
+            <p className="font-semibold text-foreground text-sm">ASA 2023 Consensus Guidance</p>
+            <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
+              <li><strong>Weekly formulations</strong> (semaglutide): hold for 7 days before elective surgery</li>
+              <li><strong>Daily formulations</strong> (liraglutide): hold on day of surgery</li>
+              <li>If GLP-1 RA not held, or GI symptoms present → treat as <strong>full stomach</strong></li>
+              <li>Consider point-of-care gastric ultrasound to assess residual gastric volume</li>
+            </ul>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm mb-1">Mechanism of Delayed Emptying</p>
+              <p className="text-sm text-muted-foreground">GLP-1 activates vagal afferents and brainstem circuits, reducing antral motility and pyloric relaxation. Gastric emptying half-time may increase 2–3 fold. Effect persists beyond pharmacological half-life.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm mb-1">Gastric Ultrasound (POCUS)</p>
+              <p className="text-sm text-muted-foreground">Right lateral decubitus, curvilinear probe at epigastrium. Antral CSA &gt;340 mm² (or calculated volume &gt;1.5 ml/kg) suggests significant residual volume. Perlas grading: Grade 0 (empty), 1 (liquid), 2 (solid).</p>
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm mb-1">If Full Stomach Suspected</p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Rapid sequence induction (RSI)</li>
+                <li>Consider awake fibreoptic intubation if airway concerns</li>
+                <li>Postpone elective case if safe to do so</li>
+                <li>Prokinetics (metoclopramide) may have limited efficacy</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm mb-1">Other Perioperative Considerations</p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1">
+                <li>Increased PONV risk (consider multimodal prophylaxis)</li>
+                <li>Hypoglycaemia risk if combined with insulin/SUs — monitor closely</li>
+                <li>Tirzepatide: dual GIP/GLP-1 agonist — same precautions apply</li>
+                <li>Restart when tolerating oral intake postoperatively</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -95,7 +144,8 @@ const PreoperativeAssessmentTopic = () => {
         "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)",
         "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve",
         "Previous difficult intubation is the strongest predictor of future difficulty — always check records",
-        "SORT tool validated in UK — uses ASA, urgency, severity, speciality to predict 30-day mortality",
+        "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)",
+        "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI",
       ]} />
 
       <QuizSection questions={preoperativeAssessmentQuestions} />
