@@ -84,6 +84,7 @@ const MechanicalVentilationTopic = () => {
           </p>
           <APRVWaveformDiagram />
 
+          <h3 className="text-lg font-semibold text-foreground mb-2">Ventilator Settings</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
               { label: "P high", value: "20–35 cmH₂O", detail: "Set to previous plateau pressure. Provides mean airway pressure and recruits alveoli." },
