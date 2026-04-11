@@ -6,6 +6,7 @@ import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutput
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
 import EchoDiagram from "@/components/diagrams/EchoDiagram";
+import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -73,6 +74,7 @@ const CardiacOutputMonitoringTopic = () => {
         </div>
       </section>
 
+      <OesophagealDopplerDiagram />
       <PiCCODiagram />
       <PACDiagram />
       <EchoDiagram />
