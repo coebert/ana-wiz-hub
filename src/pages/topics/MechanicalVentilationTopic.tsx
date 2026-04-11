@@ -213,10 +213,76 @@ const MechanicalVentilationTopic = () => {
             ))}
           </div>
 
+          <h3 className="text-lg font-semibold text-foreground mb-2">Neuromuscular Blockade in ARDS</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Neuromuscular blocking agents (NMBAs) eliminate spontaneous respiratory effort, preventing ventilator dyssynchrony, reducing oxygen consumption, and allowing precise control of transpulmonary pressures. They may reduce VILI by preventing injurious spontaneous efforts (patient self-inflicted lung injury, P-SILI). However, prolonged use risks ICU-acquired weakness.
+          </p>
+          <div className="space-y-3 mb-4">
+            {[
+              { label: "ACURASYS Trial (2010)", detail: "French multicentre RCT. 340 patients with early severe ARDS (P/F <150). Cisatracurium infusion for 48 hours vs placebo. Adjusted 90-day mortality reduced (31.6% vs 40.7%, p=0.08 — significant after adjustment for baseline P/F and Pplat). More ventilator-free days and fewer pneumothoraces. No increase in ICU-acquired weakness. Landmark trial that established early NMB as a potential strategy." },
+              { label: "ROSE Trial (2019)", detail: "PETAL Network multicentre RCT. 1006 patients with moderate-severe ARDS (P/F <150). Cisatracurium 48h + deep sedation vs usual care with light sedation. No difference in 90-day mortality (42.5% vs 42.8%). Higher rate of cardiovascular adverse events in NMB group. Key difference from ACURASYS: control group used light sedation (modern practice) rather than deep sedation, and higher PEEP strategy was used in both arms." },
+              { label: "Reconciling the trials", detail: "ACURASYS control group received deep sedation ± NMB (>20% received open-label NMB). The benefit may have been from avoiding deep sedation without paralysis (where dyssynchronous efforts against high PEEP cause P-SILI) rather than from NMB per se. ROSE suggests that light sedation with permissive spontaneous breathing is non-inferior to routine paralysis." },
+            ].map((e) => (
+              <div key={e.label} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{e.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{e.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Indications for NMB in ARDS</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Refractory dyssynchrony", detail: "Persistent double-triggering, breath-stacking, or reverse triggering despite optimised sedation and ventilator settings." },
+              { label: "Severe hypoxaemia", detail: "P/F <100–120 despite lung-protective ventilation and high PEEP. Facilitates prone positioning." },
+              { label: "High plateau pressures", detail: "Pplat >30 cmH₂O driven by vigorous spontaneous efforts increasing transpulmonary pressure." },
+              { label: "Prone positioning", detail: "NMB facilitates safe prone turns and prevents dyssynchrony during prone ventilation. Often used for initial 24–48 hours of proning." },
+              { label: "Open abdomen / raised IAP", detail: "Reduces abdominal wall muscle tone, lowering intra-abdominal pressure and improving diaphragmatic excursion." },
+              { label: "Therapeutic hypothermia", detail: "Prevents shivering which increases O₂ consumption and CO₂ production." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Cisatracurium vs Rocuronium in ICU</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Property</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Cisatracurium</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Rocuronium</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Metabolism</td><td className="p-3 border-b border-border">Hofmann elimination (organ-independent, pH & temperature dependent)</td><td className="p-3 border-b border-border">Hepatic metabolism, renal excretion</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Renal/hepatic failure</td><td className="p-3 border-b border-border">No dose adjustment needed</td><td className="p-3 border-b border-border">Prolonged duration — accumulates in organ dysfunction</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Reversal</td><td className="p-3 border-b border-border">No specific reversal agent</td><td className="p-3 border-b border-border">Sugammadex provides rapid, reliable reversal</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Histamine release</td><td className="p-3 border-b border-border">None (R-isomer of atracurium)</td><td className="p-3 border-b border-border">Minimal</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Laudanosine</td><td className="p-3 border-b border-border">5× less than atracurium — clinically insignificant</td><td className="p-3 border-b border-border">Not applicable</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Trial evidence in ARDS</td><td className="p-3 border-b border-border">Both ACURASYS and ROSE used cisatracurium</td><td className="p-3 border-b border-border">No large ARDS-specific RCTs</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">ICU preference</td><td className="p-3 border-b border-border">Historically preferred — predictable offset</td><td className="p-3 border-b border-border">Increasingly used — sugammadex allows "on-off" control for daily sedation holds</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Monitoring</td><td className="p-3 border-b border-border" colSpan={2}>Train-of-four (TOF) targeting 1–2/4 twitches for both agents. Deep block (post-tetanic count) rarely needed in ICU.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Practical Considerations</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li><span className="font-semibold text-foreground">Duration:</span> Limit to 48 hours where possible (both trials used 48h). Reassess daily.</li>
+            <li><span className="font-semibold text-foreground">Sedation depth:</span> Ensure adequate sedation and analgesia before and during NMB — paralysed awareness is a serious harm. BIS monitoring (target 40–60) is recommended.</li>
+            <li><span className="font-semibold text-foreground">Eye care:</span> Incomplete eyelid closure — regular eye care and taping to prevent exposure keratopathy.</li>
+            <li><span className="font-semibold text-foreground">VTE prophylaxis:</span> Immobility increases thrombotic risk — ensure pharmacological and mechanical prophylaxis.</li>
+            <li><span className="font-semibold text-foreground">ICU-acquired weakness:</span> Risk increases with duration, concurrent corticosteroids, and aminoglycosides. Minimise duration and use lowest effective dose.</li>
+          </ul>
+
           <h3 className="text-lg font-semibold text-foreground mb-2">Stepwise Rescue Strategy in Refractory ARDS</h3>
           <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
             <li>Optimise lung-protective ventilation (Vt 6 ml/kg, Pplat ≤30, high PEEP strategy)</li>
-            <li>Neuromuscular blockade (cisatracurium for 48 hours — ACURASYS trial)</li>
+            <li><span className="font-semibold text-foreground">Neuromuscular blockade</span> — consider for refractory dyssynchrony, severe hypoxaemia, or to facilitate proning (limit 48h)</li>
             <li><span className="font-semibold text-foreground">Prone positioning ≥16 hours/day</span> — strongest evidence, do not skip</li>
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
             <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
@@ -237,6 +303,8 @@ const MechanicalVentilationTopic = () => {
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% in severe ARDS (NNT 6)",
         "OSCAR + OSCILLATE: HFOV shows no benefit (and possible harm) in adult ARDS",
         "Inhaled vasodilators (iNO, epoprostenol) improve oxygenation but have no mortality benefit",
+        "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
+        "Cisatracurium: organ-independent Hofmann elimination; rocuronium: sugammadex-reversible",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
