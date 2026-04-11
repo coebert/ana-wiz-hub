@@ -523,6 +523,51 @@ const SpinalCordCrossSectionDiagram = () => {
                           )}
                         </g>
                       )}
+
+                      {/* PLL: dense fibrous band on anterior canal wall */}
+                      {key === "pll" && (
+                        <g>
+                          <g opacity={isActive ? 0.4 : 0.1}>
+                            {Array.from({ length: 32 }).map((_, i) => (
+                              <line key={i} x1={xOffset + 3 + i * 6} y1={y + 1} x2={xOffset + 3 + i * 6} y2={y + l.h - 1}
+                                stroke={l.color} strokeWidth="0.5" opacity="0.5" />
+                            ))}
+                          </g>
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 4} fontSize="3" textAnchor="middle"
+                              fill={l.color} fontStyle="italic" opacity="0.5">Narrow at lumbar level — posterolateral disc prolapse</text>
+                          )}
+                        </g>
+                      )}
+
+                      {/* Vertebral body: cancellous bone */}
+                      {key === "vertebral-body" && (
+                        <g>
+                          {/* Cancellous bone pattern */}
+                          <g opacity={isActive ? 0.3 : 0.08}>
+                            {Array.from({ length: 20 }).map((_, i) => (
+                              <circle key={i} cx={xOffset + 8 + (i * 10) % layerWidth} cy={y + 3 + (i * 7) % (l.h - 4)}
+                                r={1.2 + (i % 3) * 0.5} fill={l.color} opacity="0.3" />
+                            ))}
+                          </g>
+                          {/* Cortical shell */}
+                          <rect x={xOffset} y={y} width={layerWidth} height={l.h} rx="2"
+                            fill="none" stroke={l.color} strokeWidth={isActive ? 1.5 : 0.5} opacity={isActive ? 0.5 : 0.15} />
+                          {/* ALL on anterior surface */}
+                          <line x1={xOffset} y1={y + l.h} x2={xOffset + layerWidth} y2={y + l.h}
+                            stroke="hsl(20, 45%, 50%)" strokeWidth={isActive ? 1.5 : 0.5} opacity={isActive ? 0.5 : 0.15} />
+                          {isActive && (
+                            <text x={xOffset + layerWidth / 2} y={y + l.h + 5} fontSize="3" textAnchor="middle"
+                              fill="hsl(20, 45%, 50%)" fontStyle="italic" opacity="0.5">← ALL (anterior longitudinal ligament) — limits extension</text>
+                          )}
+                          {/* Basivertebral vein */}
+                          <g opacity={isActive ? 0.35 : 0.05}>
+                            <path d={`M${xOffset + layerWidth / 2},${y + l.h - 2} L${xOffset + layerWidth / 2},${y - 2}`}
+                              stroke="hsl(220, 50%, 55%)" strokeWidth="0.8" fill="none" />
+                            <text x={xOffset + layerWidth / 2 + 4} y={y + l.h / 2} fontSize="2.5" fill="hsl(220, 50%, 55%)">Basivertebral v.</text>
+                          </g>
+                        </g>
+                      )}
                     </g>
                   )}
 
