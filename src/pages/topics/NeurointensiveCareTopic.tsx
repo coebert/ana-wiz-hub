@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 
 const NeurointensiveCareTopic = () => {
   return (
@@ -224,6 +225,13 @@ const NeurointensiveCareTopic = () => {
               <strong>NASCIS II/III trials</strong> suggested benefit of high-dose methylprednisolone within 8 hours. However, these trials had significant methodological flaws. Current guidelines (NICE, AANS/CNS) <strong>do NOT recommend</strong> routine methylprednisolone for acute SCI due to lack of evidence for benefit and increased complications (infections, GI bleeding, hyperglycaemia). This is frequently examined.
             </p>
           </div>
+        </div>
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
+          </p>
+          <ICPMonitoringDevicesDiagram />
         </div>
       </section>
 
