@@ -677,6 +677,45 @@ function HeartModel({ selected, onSelect, cutaway }: {
             <meshStandardMaterial color={fatColor} transparent opacity={0.2} side={THREE.DoubleSide} />
           </mesh>
 
+          {/* ══════════ SINUSES OF VALSALVA — dilations above aortic cusps ══════════ */}
+          {[
+            { pos: [-0.08, 0.95, 0.2] as [number, number, number], label: "R coronary sinus" },
+            { pos: [-0.18, 0.95, 0.14] as [number, number, number], label: "L coronary sinus" },
+            { pos: [-0.12, 0.95, 0.06] as [number, number, number], label: "Non-coronary sinus" },
+          ].map((s, i) => (
+            <mesh key={`valsalva-${i}`} position={s.pos}>
+              <sphereGeometry args={[0.04, 12, 12]} />
+              <meshPhysicalMaterial color="#55aa88" transparent opacity={0.3} roughness={0.5} />
+            </mesh>
+          ))}
+
+          {/* ══════════ LIGAMENTUM ARTERIOSUM — between aortic arch and PA ══════════ */}
+          <Vessel points={[[0.02, 1.4, 0.12], [-0.05, 1.32, 0.28]]}
+            color="#8A6040" radius={0.015} />
+
+          {/* ══════════ RVOT / INFUNDIBULUM — smooth-walled outflow tract ══════════ */}
+          <mesh position={[0.14, 0.65, 0.28]} rotation={[0.3, 0.15, -0.1]} scale={[0.7, 1.2, 0.7]}>
+            <cylinderGeometry args={[0.1, 0.14, 0.3, 12, 1, true]} />
+            <meshPhysicalMaterial color="#2A3A6A" transparent opacity={0.2} roughness={0.6}
+              side={THREE.DoubleSide} clippingPlanes={clip} clipShadows />
+          </mesh>
+
+          {/* ══════════ EUSTACHIAN VALVE (IVC valve) — ridge at IVC-RA junction ══════════ */}
+          <Leaflet pos={[0.46, 0.35, -0.18]} rot={[0.8, 0.3, 0.2]} color="#6A4040" size={[0.08, 0.05]} clip={clip} />
+
+          {/* ══════════ THEBESIAN VALVE — guards coronary sinus os ══════════ */}
+          <Leaflet pos={[0.35, 0.55, -0.22]} rot={[0.6, 0.2, 0.1]} color="#5A3535" size={[0.04, 0.03]} clip={clip} />
+
+          {/* ══════════ TENDON OF TODARO — fibrous strand in Koch's triangle ══════════ */}
+          <Vessel points={[[0.35, 0.55, -0.2], [0.28, 0.52, -0.15], [0.22, 0.48, -0.12]]}
+            color="#C0A080" radius={0.006} />
+
+          {/* ══════════ MEMBRANOUS SEPTUM — thin upper part of IVS ══════════ */}
+          <mesh position={[0.02, 0.35, -0.02]} rotation={[0.1, 0, 0.12]}>
+            <circleGeometry args={[0.06, 12]} />
+            <meshStandardMaterial color="#AA6060" transparent opacity={0.3} side={THREE.DoubleSide} />
+          </mesh>
+
           {/* Crista terminalis */}
           <Vessel points={[[0.52, 0.98, 0], [0.55, 0.75, 0], [0.52, 0.5, 0]]} color="#5A3030" radius={0.012} />
 
@@ -712,6 +751,21 @@ function HeartModel({ selected, onSelect, cutaway }: {
           </Html>
           <Html position={[0.58, 0.75, 0.05]} center style={{ pointerEvents: "none" }}>
             <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">crista terminalis</span>
+          </Html>
+          <Html position={[0.02, 1.42, 0.2]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">lig. arteriosum</span>
+          </Html>
+          <Html position={[0.16, 0.72, 0.3]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">RVOT</span>
+          </Html>
+          <Html position={[0.5, 0.35, -0.2]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Eustachian v.</span>
+          </Html>
+          <Html position={[0.02, 0.38, 0.05]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">membranous IVS</span>
+          </Html>
+          <Html position={[0.3, 0.55, -0.25]} center style={{ pointerEvents: "none" }}>
+            <span className="text-[7px] text-muted-foreground/50 select-none whitespace-nowrap">Thebesian v.</span>
           </Html>
         </group>
       )}
