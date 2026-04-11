@@ -154,6 +154,108 @@ const AcidBaseTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Worked Example — Stewart Analysis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A 68-year-old septic patient post-laparotomy, 4L 0.9% NaCl given intraoperatively. The following ABG and biochemistry are obtained:
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg bg-secondary/30 border border-border">
+              <p className="font-semibold text-foreground text-sm mb-2">Arterial Blood Gas</p>
+              <div className="text-sm text-muted-foreground space-y-1 font-mono">
+                <p>pH: <strong className="text-foreground">7.28</strong></p>
+                <p>PaCO₂: <strong className="text-foreground">4.5 kPa</strong> (33.8 mmHg)</p>
+                <p>PaO₂: <strong className="text-foreground">12.1 kPa</strong></p>
+                <p>HCO₃⁻: <strong className="text-foreground">16 mEq/L</strong></p>
+                <p>BE: <strong className="text-foreground">−9 mEq/L</strong></p>
+                <p>Lactate: <strong className="text-foreground">3.5 mEq/L</strong></p>
+              </div>
+            </div>
+            <div className="p-4 rounded-lg bg-secondary/30 border border-border">
+              <p className="font-semibold text-foreground text-sm mb-2">Biochemistry</p>
+              <div className="text-sm text-muted-foreground space-y-1 font-mono">
+                <p>Na⁺: <strong className="text-foreground">140 mEq/L</strong></p>
+                <p>K⁺: <strong className="text-foreground">4.5 mEq/L</strong></p>
+                <p>Cl⁻: <strong className="text-foreground">115 mEq/L</strong></p>
+                <p>Ca²⁺: <strong className="text-foreground">1.1 mEq/L</strong></p>
+                <p>Mg²⁺: <strong className="text-foreground">0.9 mEq/L</strong></p>
+                <p>Albumin: <strong className="text-foreground">18 g/L</strong> (low)</p>
+                <p>Phosphate: <strong className="text-foreground">1.2 mmol/L</strong></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Step 1 — Calculate Apparent SID (SIDa)</p>
+              <p className="text-sm text-muted-foreground mt-1 font-mono">
+                SIDa = (Na⁺ + K⁺ + Ca²⁺ + Mg²⁺) − (Cl⁻ + Lactate⁻)
+              </p>
+              <p className="text-sm text-muted-foreground font-mono">
+                SIDa = (140 + 4.5 + 1.1 + 0.9) − (115 + 3.5) = 146.5 − 118.5 = <strong className="text-foreground">28 mEq/L</strong>
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Normal SIDa ≈ 38–42 mEq/L. This SIDa is significantly low → <strong>strong ion acidosis</strong>. The high Cl⁻ (115) from 0.9% NaCl and elevated lactate both reduce SID.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Step 2 — Calculate Effective SID (SIDe)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                SIDe represents the charge contributed by CO₂ and weak acids:
+              </p>
+              <p className="text-sm text-muted-foreground font-mono mt-1">
+                SIDe = [HCO₃⁻] + [albumin charge] + [phosphate charge]
+              </p>
+              <p className="text-sm text-muted-foreground font-mono">
+                Albumin charge ≈ albumin(g/L) × (0.123 × pH − 0.631) = 18 × (0.123 × 7.28 − 0.631) = 18 × 0.265 = <strong className="text-foreground">4.8 mEq/L</strong>
+              </p>
+              <p className="text-sm text-muted-foreground font-mono">
+                Phosphate charge ≈ PO₄(mmol/L) × (0.309 × pH − 0.469) = 1.2 × (0.309 × 7.28 − 0.469) = 1.2 × 1.80 = <strong className="text-foreground">2.2 mEq/L</strong>
+              </p>
+              <p className="text-sm text-muted-foreground font-mono">
+                SIDe = 16 + 4.8 + 2.2 = <strong className="text-foreground">23 mEq/L</strong>
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Note: with normal albumin (40 g/L), the albumin charge would be ~10.6 mEq/L → SIDe would be ~28.8. The low albumin reduces SIDe, providing an <strong>alkalinising</strong> effect that partially offsets the acidosis.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Step 3 — Calculate Strong Ion Gap (SIG)</p>
+              <p className="text-sm text-muted-foreground mt-1 font-mono">
+                SIG = SIDa − SIDe = 28 − 23 = <strong className="text-foreground">5 mEq/L</strong>
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Normal SIG: 0–2 mEq/L. A raised SIG of 5 indicates <strong>unmeasured strong anions</strong> beyond lactate — likely sepsis-related (ketoacids, sulphates, or other organic anions).
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Step 4 — Assess Weak Acids (Atot)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Albumin 18 g/L (markedly low). This <strong>reduces Atot</strong>, producing a metabolic alkalosis that partially masks the severity of the underlying acidosis. Without hypoalbuminaemia, the pH would be even lower.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-lg border-2 border-primary/20 bg-primary/5">
+              <p className="font-semibold text-foreground text-sm">Step 5 — Final Interpretation</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                This patient has a <strong>triple metabolic disorder</strong>:
+              </p>
+              <ol className="list-decimal list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong className="text-foreground">Hyperchloraemic acidosis</strong> (↓SID from high Cl⁻ after 0.9% NaCl) — the dominant cause</li>
+                <li><strong className="text-foreground">Unmeasured anion acidosis</strong> (↑SIG = 5) — sepsis-related organic anions + lactic acidosis</li>
+                <li><strong className="text-foreground">Hypoalbuminaemic alkalosis</strong> (↓Atot) — partially masking the true severity of acidosis</li>
+              </ol>
+              <p className="text-sm text-muted-foreground mt-2">
+                A traditional Henderson-Hasselbalch analysis would show: AG = 140 − (115 + 16) = 9 (normal!) — missing the unmeasured anion acidosis entirely. Albumin-corrected AG = 9 + 0.25 × (40 − 18) = 14.5 (raised) — but does not quantify the chloride or albumin contributions. The Stewart approach separates all three disorders quantitatively.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Comparing Approaches to Acid-Base Analysis</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Three frameworks exist for interpreting acid-base disorders. They use the same blood gas data but differ in which variables they consider primary (independent) versus secondary (dependent). All reach the same clinical conclusions in most cases — the differences are conceptual.
