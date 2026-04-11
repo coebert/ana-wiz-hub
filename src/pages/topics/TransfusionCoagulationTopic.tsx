@@ -37,6 +37,58 @@ const TransfusionCoagulationTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cryoprecipitate vs Fibrinogen Concentrate</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Both are used to replace fibrinogen in major haemorrhage, but they differ in preparation, safety profile, and evidence base.
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Cryoprecipitate</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Fibrinogen Concentrate</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Source</td><td>Pooled donor plasma (typically 5 donors per pool)</td><td>Purified from pooled human plasma, industrially manufactured</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Contents</td><td>Fibrinogen, FVIII, vWF, FXIII, fibronectin</td><td>Purified fibrinogen only</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fibrinogen per dose</td><td>~3–4 g per 2 pools (10 units)</td><td>1 g per vial (typical dose 2–4 g)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Storage</td><td>Frozen (−25°C). 30 min thaw required.</td><td>Room temperature. Lyophilised powder — reconstitute in ~10 min.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ABO matching</td><td>ABO-compatible required</td><td>Not required</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Viral safety</td><td>Donor-screened but NOT virally inactivated. Pooled donor exposure.</td><td>Pasteurised + nanofiltration. Very low transmission risk.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Volume</td><td>~200 mL per 2 pools</td><td>50 mL per 1 g vial (lower volume)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Standardisation</td><td>Variable fibrinogen content between units</td><td>Precise, standardised dosing</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cost</td><td>Lower per dose (NHS)</td><td>Higher per dose (~£500–700 per 2 g)</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Availability (UK)</td><td>Widely available — standard NHS blood product</td><td>Licensed in UK but not universally stocked. Increasing use.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Key Evidence</h3>
+          <div className="space-y-2 mb-3">
+            {[
+              { trial: "CRYOSTAT-2 (2023)", detail: "Multicentre UK RCT. Early cryoprecipitate (within 90 min) vs standard care in major trauma haemorrhage. Higher fibrinogen levels achieved but NO significant difference in 28-day mortality (primary outcome) or transfusion requirements. Supports targeting fibrinogen but questions the mortality benefit of early empiric supplementation." },
+              { trial: "FIB-PPH (2023)", detail: "Early fibrinogen concentrate (2 g) vs placebo in PPH. No reduction in RBC transfusion or progression to severe PPH. Suggests empiric fibrinogen replacement without confirmed hypofibrinogenaemia is not beneficial." },
+              { trial: "FIBRES (2019)", detail: "Canadian RCT in cardiac surgery. Fibrinogen concentrate vs cryoprecipitate for bleeding post-CPB with fibrinogen <2 g/L. Non-inferior — no difference in RBC transfusion within 24 h. Fibrinogen concentrate was faster to administer." },
+              { trial: "RETIC (2017)", detail: "Small Austrian RCT in trauma. Fibrinogen concentrate + PCC vs FFP-based strategy. Fibrinogen group had less total blood product use. Limited by small sample size." },
+            ].map((e) => (
+              <div key={e.trial} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{e.trial}</p>
+                <p className="text-sm text-muted-foreground mt-1">{e.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              Know the practical advantages of fibrinogen concentrate (room temperature storage, rapid preparation, no ABO matching, viral inactivation, precise dosing) vs cryoprecipitate (cheaper, contains additional factors — FVIII, vWF, FXIII). Current evidence (CRYOSTAT-2, FIB-PPH) does not support empiric fibrinogen replacement before confirming hypofibrinogenaemia. FIBRES showed non-inferiority in cardiac surgery. Target fibrinogen {'>'} 1.5–2.0 g/L in active major haemorrhage — guided by ROTEM FIBTEM or Clauss assay.
+            </p>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transfusion Reactions</h2>
           <div className="space-y-2">
             {[
