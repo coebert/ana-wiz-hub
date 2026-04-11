@@ -224,7 +224,67 @@ const SpinalCordAxialDiagram = () => {
             className="cursor-pointer transition-all duration-200"
             onClick={() => { setSelectedTract(selectedTract === "ant-cst" ? null : "ant-cst"); setSelectedSyndrome(null); }} />
 
-          {/* ═══ GREY MATTER (butterfly/H shape) ═══ */}
+          {/* Posterior Spinocerebellar Tract — posterolateral, between lat CST and cord surface */}
+          <path d={`M${cx - 50},${cy - cordRy + 18} Q${cx - cordRx + 8},${cy - 15} ${cx - cordRx + 12},${cy + 5}
+                    Q${cx - cordRx + 14},${cy + 15} ${cx - 52},${cy + 18}
+                    Q${cx - 48},${cy} ${cx - 50},${cy - cordRy + 18} Z`}
+            fill={TRACTS["post-spinocerebellar"].color} fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.45 : isTractDimmed("post-spinocerebellar") ? 0.04 : 0.08}
+            stroke={TRACTS["post-spinocerebellar"].color} strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "post-spinocerebellar" ? null : "post-spinocerebellar"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 50},${cy - cordRy + 18} Q${cx + cordRx - 8},${cy - 15} ${cx + cordRx - 12},${cy + 5}
+                    Q${cx + cordRx - 14},${cy + 15} ${cx + 52},${cy + 18}
+                    Q${cx + 48},${cy} ${cx + 50},${cy - cordRy + 18} Z`}
+            fill={TRACTS["post-spinocerebellar"].color} fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.45 : isTractDimmed("post-spinocerebellar") ? 0.04 : 0.08}
+            stroke={TRACTS["post-spinocerebellar"].color} strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "post-spinocerebellar" ? null : "post-spinocerebellar"); setSelectedSyndrome(null); }} />
+
+          {/* Anterior Spinocerebellar Tract — anterolateral, superficial to STT */}
+          <path d={`M${cx - 58},${cy + 22} Q${cx - cordRx + 12},${cy + 40} ${cx - cordRx + 18},${cy + cordRy - 25}
+                    Q${cx - 48},${cy + cordRy - 15} ${cx - 42},${cy + 38}
+                    Q${cx - 48},${cy + 30} ${cx - 58},${cy + 22} Z`}
+            fill={TRACTS["ant-spinocerebellar"].color} fillOpacity={isTractHighlighted("ant-spinocerebellar") ? 0.4 : isTractDimmed("ant-spinocerebellar") ? 0.04 : 0.06}
+            stroke={TRACTS["ant-spinocerebellar"].color} strokeWidth={isTractHighlighted("ant-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "ant-spinocerebellar" ? null : "ant-spinocerebellar"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 58},${cy + 22} Q${cx + cordRx - 12},${cy + 40} ${cx + cordRx - 18},${cy + cordRy - 25}
+                    Q${cx + 48},${cy + cordRy - 15} ${cx + 42},${cy + 38}
+                    Q${cx + 48},${cy + 30} ${cx + 58},${cy + 22} Z`}
+            fill={TRACTS["ant-spinocerebellar"].color} fillOpacity={isTractHighlighted("ant-spinocerebellar") ? 0.4 : isTractDimmed("ant-spinocerebellar") ? 0.04 : 0.06}
+            stroke={TRACTS["ant-spinocerebellar"].color} strokeWidth={isTractHighlighted("ant-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "ant-spinocerebellar" ? null : "ant-spinocerebellar"); setSelectedSyndrome(null); }} />
+
+          {/* Rubrospinal Tract — small, adjacent to lateral CST */}
+          <path d={`M${cx - 48},${cy - 8} Q${cx - 55},${cy} ${cx - 50},${cy + 10}
+                    Q${cx - 46},${cy + 5} ${cx - 45},${cy - 3} Z`}
+            fill={TRACTS.rubrospinal.color} fillOpacity={isTractHighlighted("rubrospinal") ? 0.45 : isTractDimmed("rubrospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.rubrospinal.color} strokeWidth={isTractHighlighted("rubrospinal") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "rubrospinal" ? null : "rubrospinal"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 48},${cy - 8} Q${cx + 55},${cy} ${cx + 50},${cy + 10}
+                    Q${cx + 46},${cy + 5} ${cx + 45},${cy - 3} Z`}
+            fill={TRACTS.rubrospinal.color} fillOpacity={isTractHighlighted("rubrospinal") ? 0.45 : isTractDimmed("rubrospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.rubrospinal.color} strokeWidth={isTractHighlighted("rubrospinal") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "rubrospinal" ? null : "rubrospinal"); setSelectedSyndrome(null); }} />
+
+          {/* Reticulospinal Tracts — anterior funiculus, near midline */}
+          <path d={`M${cx - 18},${cy + 25} Q${cx - 28},${cy + 45} ${cx - 22},${cy + cordRy - 15}
+                    Q${cx - 16},${cy + cordRy - 8} ${cx - 16},${cy + 55}
+                    Q${cx - 14},${cy + 35} ${cx - 18},${cy + 25} Z`}
+            fill={TRACTS.reticulospinal.color} fillOpacity={isTractHighlighted("reticulospinal") ? 0.4 : isTractDimmed("reticulospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.reticulospinal.color} strokeWidth={isTractHighlighted("reticulospinal") ? 1.2 : 0.3} strokeOpacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "reticulospinal" ? null : "reticulospinal"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 18},${cy + 25} Q${cx + 28},${cy + 45} ${cx + 22},${cy + cordRy - 15}
+                    Q${cx + 16},${cy + cordRy - 8} ${cx + 16},${cy + 55}
+                    Q${cx + 14},${cy + 35} ${cx + 18},${cy + 25} Z`}
+            fill={TRACTS.reticulospinal.color} fillOpacity={isTractHighlighted("reticulospinal") ? 0.4 : isTractDimmed("reticulospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.reticulospinal.color} strokeWidth={isTractHighlighted("reticulospinal") ? 1.2 : 0.3} strokeOpacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "reticulospinal" ? null : "reticulospinal"); setSelectedSyndrome(null); }} />
           {/* Grey commissure (connecting bar) */}
           <rect x={cx - 10} y={cy - 4} width={20} height={8} rx="2"
             fill={TRACTS["post-horn"].color} fillOpacity={0.3}
