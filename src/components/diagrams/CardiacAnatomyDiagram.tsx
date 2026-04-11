@@ -475,18 +475,49 @@ function HeartModel({ selected, onSelect, cutaway }: {
       <Vessel
         points={[[-0.4, 0.55, 0.5], [-0.2, 0.35, 0.6], [-0.05, 0.1, 0.62], [0, -0.25, 0.55], [0.02, -0.7, 0.38], [0.03, -1.1, 0.15]]}
         color={structures.lad.color} radius={0.028} active={on("lad")} onClick={pick("lad")} clip={clip} />
+
+      {/* Diagonal branches (D1, D2) from LAD */}
+      <Vessel points={[[-0.15, 0.3, 0.6], [-0.3, 0.15, 0.58], [-0.48, 0.0, 0.48]]}
+        color={structures.diagonal.color} radius={0.018} active={on("diagonal")} onClick={pick("diagonal")} clip={clip} />
+      <Vessel points={[[-0.02, 0.05, 0.62], [-0.18, -0.1, 0.58], [-0.38, -0.25, 0.45]]}
+        color={structures.diagonal.color} radius={0.015} active={on("diagonal")} onClick={pick("diagonal")} clip={clip} />
+
+      {/* Septal perforators from LAD — small perpendicular branches into septum */}
+      {[0.3, 0.1, -0.1, -0.35, -0.55].map((y, i) => (
+        <Vessel key={`sept-${i}`}
+          points={[[-0.08 + i * 0.015, y, 0.58 - Math.abs(y) * 0.2], [0.0, y - 0.02, 0.35 - Math.abs(y) * 0.15]]}
+          color={structures["septal-perf"].color} radius={0.008} active={on("septal-perf")} onClick={pick("septal-perf")} clip={clip} />
+      ))}
+
       {/* LCx — left AV groove, wrapping posteriorly */}
       <Vessel
         points={[[-0.4, 0.55, 0.5], [-0.6, 0.52, 0.35], [-0.72, 0.48, 0.1], [-0.7, 0.4, -0.2], [-0.55, 0.3, -0.4]]}
         color={structures.lcx.color} radius={0.025} active={on("lcx")} onClick={pick("lcx")} clip={clip} />
+
+      {/* Obtuse marginal branches (OM1, OM2) from LCx */}
+      <Vessel points={[[-0.62, 0.52, 0.3], [-0.7, 0.3, 0.25], [-0.72, 0.05, 0.18]]}
+        color={structures.om.color} radius={0.018} active={on("om")} onClick={pick("om")} clip={clip} />
+      <Vessel points={[[-0.7, 0.45, 0.05], [-0.72, 0.2, -0.05], [-0.65, -0.05, -0.12]]}
+        color={structures.om.color} radius={0.015} active={on("om")} onClick={pick("om")} clip={clip} />
+
       {/* RCA — right AV groove, wrapping to posterior */}
       <Vessel
         points={[[0.15, 0.92, 0.28], [0.45, 0.78, 0.4], [0.65, 0.58, 0.3], [0.7, 0.35, 0.05], [0.62, 0.15, -0.25], [0.45, -0.05, -0.42]]}
         color={structures.rca.color} radius={0.028} active={on("rca")} onClick={pick("rca")} clip={clip} />
+
+      {/* Acute marginal branch from RCA */}
+      <Vessel points={[[0.65, 0.55, 0.28], [0.62, 0.3, 0.35], [0.55, 0.05, 0.3], [0.45, -0.2, 0.22]]}
+        color={structures.am.color} radius={0.018} active={on("am")} onClick={pick("am")} clip={clip} />
+
       {/* PDA — posterior interventricular groove */}
       <Vessel
         points={[[0.45, -0.05, -0.42], [0.25, -0.3, -0.42], [0.08, -0.6, -0.35], [0.03, -0.95, -0.18]]}
         color={structures.pda.color} radius={0.022} active={on("pda")} onClick={pick("pda")} clip={clip} />
+
+      {/* Coronary sinus — posterior AV groove, draining into RA */}
+      <Vessel
+        points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
+        color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
 
       {/* ── Valves ── */}
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
@@ -503,16 +534,31 @@ function HeartModel({ selected, onSelect, cutaway }: {
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
         color={structures["bundle-his"].color} radius={0.018} active={on("bundle-his")} onClick={pick("bundle-his")} clip={clip} />
-      <Vessel points={[[0.04, 0.22, 0], [-0.04, 0.05, -0.02], [-0.08, -0.2, -0.02], [-0.08, -0.6, 0]]}
-        color={structures["left-bundle"].color} radius={0.015} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
+
+      {/* Left bundle branch — broad sheet, then splits */}
+      <Vessel points={[[0.04, 0.22, 0], [-0.02, 0.12, -0.02], [-0.06, 0.0, -0.02]]}
+        color={structures["left-bundle"].color} radius={0.016} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
+
+      {/* Left anterior fascicle — thin, to anterolateral papillary muscle */}
+      <Vessel points={[[-0.06, 0.0, -0.02], [-0.12, -0.15, 0.02], [-0.22, -0.3, 0.05], [-0.38, -0.42, 0.06]]}
+        color={structures["left-anterior-fascicle"].color} radius={0.012} active={on("left-anterior-fascicle")} onClick={pick("left-anterior-fascicle")} clip={clip} />
+
+      {/* Left posterior fascicle — thick, to posteromedial papillary muscle */}
+      <Vessel points={[[-0.06, 0.0, -0.02], [-0.08, -0.18, -0.06], [-0.12, -0.35, -0.1], [-0.18, -0.45, -0.14]]}
+        color={structures["left-posterior-fascicle"].color} radius={0.014} active={on("left-posterior-fascicle")} onClick={pick("left-posterior-fascicle")} clip={clip} />
+
+      {/* Right bundle branch */}
       <Vessel points={[[0.04, 0.22, 0], [0.1, 0.05, 0.02], [0.14, -0.2, 0.04], [0.14, -0.6, 0.03]]}
         color={structures["right-bundle"].color} radius={0.015} active={on("right-bundle")} onClick={pick("right-bundle")} clip={clip} />
-      <Node position={[-0.08, -0.62, 0]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
-      <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.04} clip={clip} />
-      {(on("purkinje") || on("left-bundle") || on("right-bundle")) && (
+
+      {/* Purkinje terminal nodes */}
+      <Node position={[-0.38, -0.44, 0.06]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      <Node position={[-0.18, -0.47, -0.14]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
+      {(on("purkinje") || on("left-bundle") || on("right-bundle") || on("left-anterior-fascicle") || on("left-posterior-fascicle")) && (
         <>
-          {([[-0.2, -0.7, 0.12], [-0.25, -0.5, 0.08], [-0.12, -0.78, -0.08],
-            [0.22, -0.7, 0.12], [0.28, -0.5, 0.1], [0.16, -0.78, -0.08]] as [number, number, number][]).map((p, i) => (
+          {([[-0.2, -0.7, 0.12], [-0.25, -0.5, 0.08], [-0.12, -0.78, -0.08], [-0.35, -0.6, 0.1],
+            [0.22, -0.7, 0.12], [0.28, -0.5, 0.1], [0.16, -0.78, -0.08], [0.35, -0.55, 0.08]] as [number, number, number][]).map((p, i) => (
             <Node key={i} position={p} color={structures.purkinje.color} active onClick={pick("purkinje")} size={0.025} clip={clip} />
           ))}
         </>
