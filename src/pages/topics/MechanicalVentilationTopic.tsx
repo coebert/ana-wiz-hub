@@ -548,6 +548,106 @@ const MechanicalVentilationTopic = () => {
             The National Tracheostomy Safety Project (NTSP) provides standardised emergency algorithms for tracheostomy and laryngectomy patients. Key principles: <span className="font-semibold text-foreground">call for help early</span>, assess patency (pass suction catheter), remove inner cannula, deflate cuff, if still obstructed remove the tracheostomy tube entirely, cover stoma and manage as standard airway (oral intubation from above). A laryngectomy patient has <span className="font-semibold text-foreground">no upper airway connection</span> — ventilate via the stoma only. Bedhead signs indicating tracheostomy vs laryngectomy must be displayed.
           </p>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extubation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Extubation failure (re-intubation within 48–72 hours) occurs in 10–20% of ICU patients and is independently associated with increased mortality, prolonged ICU stay, and higher rates of tracheostomy. Identifying high-risk patients and planning a structured extubation strategy is essential.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Readiness for Extubation</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Resolving pathology", detail: "The indication for intubation is improving or resolved." },
+              { label: "Oxygenation", detail: "FiO₂ ≤0.4, PEEP ≤8 cmH₂O, SpO₂ ≥92%." },
+              { label: "Haemodynamics", detail: "Stable without high-dose vasopressors (noradrenaline ≤0.1 μg/kg/min)." },
+              { label: "Neurological", detail: "GCS ≥8 (≥8T), intact cough and gag reflexes, able to protect airway." },
+              { label: "Respiratory drive", detail: "Adequate spontaneous breathing on minimal support. RSBI (f/VT) <105." },
+              { label: "Secretion burden", detail: "Manageable secretions, suctioning ≤2-hourly, no copious thick secretions." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">High-Risk Extubation Criteria</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The DAS extubation guidelines (2012) classify extubation risk based on airway and general factors. An "at-risk" extubation requires a plan for failure:
+          </p>
+          <div className="space-y-3 mb-4">
+            {[
+              { category: "Airway risk factors", items: "Known or predicted difficult airway, previous difficult intubation, airway oedema (prolonged intubation, prone positioning, fluid overload, anaphylaxis), restricted mouth opening, cervical spine immobility, head & neck surgery, upper airway pathology." },
+              { category: "General risk factors", items: "Obesity (BMI >30), obstructive sleep apnoea, high aspiration risk (full stomach, impaired laryngeal reflexes), respiratory failure requiring high FiO₂/PEEP, cardiovascular instability, neurological impairment (weak cough, bulbar dysfunction)." },
+              { category: "Failed SBT or previous extubation failure", items: "Prior failed extubation during this admission, marginal SBT pass, high respiratory rate or accessory muscle use during trial, inability to clear secretions." },
+            ].map((item) => (
+              <div key={item.category} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.category}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.items}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Cuff Leak Test</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The cuff leak test assesses for laryngeal or subglottic oedema that may cause post-extubation stridor. It is most useful in patients at high risk of laryngeal oedema (prolonged intubation &gt;36–48 hours, traumatic intubation, female sex, large ETT relative to airway).
+          </p>
+          <div className="space-y-3 mb-4">
+            {[
+              { label: "Qualitative test", detail: "Deflate the ETT cuff and occlude the tube. If the patient can breathe around the tube (audible leak), significant oedema is unlikely. Simple but subjective." },
+              { label: "Quantitative test", detail: "On volume-controlled ventilation, measure the difference between inspired and expired tidal volumes with the cuff deflated. Cuff leak volume = Vt(inspired) − Vt(expired). Average over 6 breaths, take the lowest 3. A leak <110 mL (or <12–24% of Vt) suggests significant oedema and predicts post-extubation stridor." },
+              { label: "Test characteristics", detail: "Sensitivity ~75%, specificity ~70–85% for post-extubation stridor. Positive predictive value is low (~30%) — many patients with a low cuff leak extubate successfully. Negative predictive value is high (~95%). A positive test should prompt consideration of prophylactic steroids, not necessarily delay extubation." },
+              { label: "Limitations", detail: "May be unreliable with large ETTs (less space for leak), in patients with copious secretions (false-positive), or on pressure-controlled ventilation. Not validated in all populations." },
+            ].map((item) => (
+              <div key={item.label} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Prophylactic Steroids</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Corticosteroids reduce airway oedema by inhibiting inflammatory mediator release and capillary permeability. Evidence supports their use in high-risk patients:
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Trial / Regimen</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Findings</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Cheng et al. meta-analysis (2006)</td><td className="p-3 border-b border-border">Multiple doses of steroids before extubation reduced post-extubation stridor (RR 0.26) and re-intubation rates. Single dose was ineffective.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">François et al. (2007)</td><td className="p-3 border-b border-border">Methylprednisolone 20 mg IV every 4 hours for 12 hours before planned extubation. Reduced post-extubation laryngeal oedema (3% vs 22%) and re-intubation (4% vs 8%) in patients with a failed cuff leak test.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Recommended regimen</td><td className="p-3 border-b border-border">Methylprednisolone 20–40 mg IV every 4–6 hours, starting 12–24 hours before planned extubation (≥4 doses). Alternatively, dexamethasone 5 mg IV every 6 hours for 4 doses. Start once extubation decision is made — single doses at time of extubation are insufficient.</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Who to treat</td><td className="p-3 border-b border-border">High-risk patients: failed cuff leak test, intubated &gt;48–72 hours, traumatic/repeated intubation, female, history of post-extubation stridor. Not recommended routinely for all patients.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Post-Extubation Stridor Management</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Post-extubation stridor occurs in 2–15% of extubations and indicates upper airway narrowing. A stepwise approach:
+          </p>
+          <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li><span className="font-semibold text-foreground">Assess severity:</span> Inspiratory stridor at rest = significant obstruction. Assess work of breathing, SpO₂, voice quality, and ability to clear secretions.</li>
+            <li><span className="font-semibold text-foreground">Nebulised adrenaline:</span> 1 mg (1 mL of 1:1000) in 4 mL saline, nebulised. Causes mucosal vasoconstriction and reduces oedema. Onset 1–5 minutes, duration 1–2 hours. Can repeat. Monitor for rebound oedema.</li>
+            <li><span className="font-semibold text-foreground">IV dexamethasone:</span> 8 mg stat if not already given prophylactically. Takes 4–6 hours for maximal effect.</li>
+            <li><span className="font-semibold text-foreground">Heliox:</span> Helium–oxygen mixture (70:30 or 80:20). Lower density reduces turbulent flow through narrowed airway, decreasing work of breathing. Bridge therapy only — does not treat the underlying oedema. Limited by maximum FiO₂ of 0.2–0.3.</li>
+            <li><span className="font-semibold text-foreground">NIV/HFNO:</span> CPAP or HFNO may splint the upper airway and reduce work of breathing while steroids take effect. Use cautiously — may delay re-intubation if deteriorating.</li>
+            <li><span className="font-semibold text-foreground">Re-intubation:</span> If worsening stridor, respiratory distress, or desaturation despite above measures. Use a <span className="font-semibold text-foreground">smaller ETT</span> (e.g., 6.0–6.5 mm) as the airway will be oedematous. Have difficult airway equipment available. Senior anaesthetic involvement.</li>
+          </ol>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Post-Extubation Respiratory Support</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">High-flow nasal oxygen (HFNO):</span> Reduces re-intubation in low-risk surgical patients (OPERA trial) and non-inferior to NIV in high-risk patients (FLORALI-2). Provides PEEP effect (2–5 cmH₂O), humidification, and dead space washout.</li>
+            <li><span className="font-semibold text-foreground">NIV:</span> Prophylactic NIV after extubation reduces re-intubation in high-risk patients (obesity, COPD, heart failure, hypercapnia). Should be applied immediately post-extubation, not as rescue after failure.</li>
+            <li><span className="font-semibold text-foreground">Do not delay re-intubation:</span> If NIV/HFNO used as rescue for post-extubation respiratory failure, re-intubation should not be delayed. The Esteban trial (2004) showed increased mortality with NIV for post-extubation respiratory failure compared with standard therapy — likely due to delayed re-intubation.</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -562,10 +662,11 @@ const MechanicalVentilationTopic = () => {
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
         "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
         "VAE: CDC tiered framework — VAC → IVAC → Possible VAP; uses objective FiO₂/PEEP criteria",
-        "TracMan: early tracheostomy (day 4) vs late (day 10) — no mortality difference; 45% of late group never needed one",
-        "PDT: bedside, Seldinger technique, fewer wound infections; first tube change not before day 5–7",
-        "NTSP algorithm: blocked tracheostomy → suction → remove inner cannula → deflate cuff → remove tube → oral intubation",
-        "Laryngectomy patients have NO upper airway — ventilate via stoma ONLY",
+        "TracMan: early vs late tracheostomy — no mortality difference; 45% never needed one",
+        "Cuff leak <110 mL predicts stridor (high NPV ~95%, low PPV ~30%) — prompt steroids, not necessarily delay",
+        "Prophylactic steroids: methylprednisolone 20 mg q4h × 4 doses starting 12–24h pre-extubation if high risk",
+        "Post-extubation stridor: nebulised adrenaline → IV dexamethasone → heliox → NIV/HFNO → re-intubate with smaller ETT",
+        "Do not delay re-intubation with rescue NIV — Esteban trial showed increased mortality",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
