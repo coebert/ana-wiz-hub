@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold";
+type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold" | "conus-elasticus" | "quadrangular-membrane" | "pre-epiglottic" | "corniculate" | "cuneiform" | "reinke-space";
 
 interface LaryngealStructure {
   label: string;
