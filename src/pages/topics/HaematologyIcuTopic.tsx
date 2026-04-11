@@ -382,18 +382,197 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        {/* HIT */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heparin-Induced Thrombocytopenia (HIT)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            HIT is a prothrombotic immune-mediated adverse drug reaction caused by antibodies against complexes of platelet factor 4 (PF4) and heparin. Despite causing thrombocytopenia, the dominant clinical risk is <strong>thrombosis</strong> (not bleeding) — HIT is a paradoxical prothrombotic thrombocytopenia.
+          </p>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">HIT Type I (Non-immune)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Mild, transient platelet fall within first 2 days of heparin exposure. Due to direct platelet activation by heparin. Platelets rarely {'<'}100 × 10⁹/L. Self-limiting, clinically insignificant. No antibody involvement. Heparin can be continued.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="font-semibold text-foreground text-sm">HIT Type II (Immune-mediated) — The Clinically Important Form</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                IgG antibodies form against PF4-heparin complexes → Fc receptor-mediated platelet activation → massive thrombin generation → thrombosis + consumptive thrombocytopenia. Onset typically day 5–10 of heparin exposure (or earlier if prior heparin exposure within 100 days). Incidence: ~1–5% with UFH, ~0.1% with LMWH. Risk: surgical {'>'} medical; UFH {'>'} LMWH {'>'} fondaparinux.
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-border bg-card p-5 mb-4">
+            <h3 className="font-semibold text-foreground mb-3">4Ts Score — Pre-Test Probability of HIT</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Category</th>
+                    <th className="text-left py-2 text-foreground font-semibold">2 Points</th>
+                    <th className="text-left py-2 text-foreground font-semibold">1 Point</th>
+                    <th className="text-left py-2 text-foreground font-semibold">0 Points</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Thrombocytopenia</td>
+                    <td className="py-2">Fall {'>'} 50% AND nadir ≥20</td>
+                    <td className="py-2">Fall 30–50% OR nadir 10–19</td>
+                    <td className="py-2">Fall {'<'} 30% OR nadir {'<'}10</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Timing of fall</td>
+                    <td className="py-2">Day 5–10 OR ≤1 day if heparin within 30 days</td>
+                    <td className="py-2">Consistent with day 5–10 but unclear; or {'>'} day 10</td>
+                    <td className="py-2">{'<'} day 4 with no recent exposure</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Thrombosis or other sequelae</td>
+                    <td className="py-2">Confirmed new thrombosis, skin necrosis, or acute systemic reaction</td>
+                    <td className="py-2">Progressive or recurrent thrombosis; erythematous skin lesions; suspected thrombosis not confirmed</td>
+                    <td className="py-2">None</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 font-medium text-foreground">oTher cause of thrombocytopenia</td>
+                    <td className="py-2">No other cause evident</td>
+                    <td className="py-2">Possible other cause</td>
+                    <td className="py-2">Definite other cause present</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="mt-3 grid sm:grid-cols-3 gap-2">
+              {[
+                { score: "0–3", risk: "Low", prob: "<5% probability", action: "HIT unlikely — consider other causes" },
+                { score: "4–5", risk: "Intermediate", prob: "~14% probability", action: "Send immunoassay; consider stopping heparin" },
+                { score: "6–8", risk: "High", prob: "~64% probability", action: "Stop ALL heparin; start alternative anticoagulant immediately" },
+              ].map((r) => (
+                <div key={r.score} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{r.score}: {r.risk} risk</p>
+                  <p className="text-xs text-muted-foreground mt-1">{r.prob}. {r.action}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Diagnostic Pathway</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { step: "1. Clinical suspicion + 4Ts score", detail: "Calculate 4Ts score. If intermediate or high (≥4), stop all heparin (including flushes, coated lines, LMWH) and send laboratory testing. Do NOT wait for results before stopping heparin." },
+              { step: "2. Immunoassay (ELISA)", detail: "Detects anti-PF4/heparin IgG antibodies. High sensitivity (~97%) but moderate specificity (~74%). High negative predictive value — a negative ELISA effectively excludes HIT. Optical density (OD) >1.0 strongly suggestive." },
+              { step: "3. Functional assay (gold standard)", detail: "Serotonin release assay (SRA) or heparin-induced platelet activation (HIPA) test. Detects platelet-activating antibodies. Specificity >95%. Not widely available — send to reference lab. Results may take days." },
+              { step: "4. Interpretation", detail: "4Ts low + ELISA negative = HIT excluded. 4Ts intermediate/high + ELISA positive + functional assay positive = HIT confirmed. High clinical suspicion + positive ELISA = treat as HIT pending functional assay." },
+            ].map((s) => (
+              <div key={s.step} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.step}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Management</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              { step: "1", action: "Stop ALL heparin immediately", detail: "Including UFH infusions, LMWH prophylaxis, heparin flushes, heparin-coated catheters. LMWH must NOT be substituted — ~90% cross-reactivity with HIT antibodies" },
+              { step: "2", action: "Start alternative anticoagulant", detail: "Therapeutic-dose anticoagulation is required even without overt thrombosis — ~50% of patients will develop thrombosis if left untreated" },
+              { step: "3", action: "Screen for thrombosis", detail: "Bilateral lower limb duplex USS (50% have subclinical DVT). CT pulmonary angiography if clinical suspicion. Consider arterial thrombosis (limb ischaemia, stroke, MI)" },
+              { step: "4", action: "Avoid warfarin until platelets recover", detail: "Warfarin is contraindicated in acute HIT — depletes protein C faster than procoagulant factors → risk of venous limb gangrene and skin necrosis. Start warfarin only when platelets >150 × 10⁹/L with overlap of alternative anticoagulant ≥5 days" },
+              { step: "5", action: "Avoid platelet transfusion", detail: "Theoretical risk of worsening thrombosis (providing substrate). Only transfuse for life-threatening haemorrhage or essential procedures" },
+            ].map((s) => (
+              <div key={s.step} className="flex gap-3">
+                <div className="shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-xs font-bold text-primary">{s.step}</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{s.action}</p>
+                  <p className="text-sm text-muted-foreground">{s.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Alternative Anticoagulants for HIT</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Drug</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Class</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Route</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Monitoring</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Key Points</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Argatroban</td>
+                  <td>Direct thrombin inhibitor</td>
+                  <td>IV infusion</td>
+                  <td>APTT (target 1.5–3× baseline)</td>
+                  <td>Hepatic metabolism — dose reduce in liver disease. Short half-life (45 min). First-line in UK ICU. Prolongs INR — complicates warfarin transition</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Bivalirudin</td>
+                  <td>Direct thrombin inhibitor</td>
+                  <td>IV infusion</td>
+                  <td>APTT or ACT</td>
+                  <td>Enzymatic metabolism (not hepatic/renal). Very short half-life (25 min). Used for HIT in cardiac surgery/PCI. Dose-adjusted in renal impairment</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Fondaparinux</td>
+                  <td>Indirect Xa inhibitor (synthetic pentasaccharide)</td>
+                  <td>SC</td>
+                  <td>Anti-Xa levels (rarely needed)</td>
+                  <td>No cross-reactivity with HIT antibodies. Used off-label for HIT. Renal clearance — avoid in severe AKI. Long half-life (17h). Cannot be reversed</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Danaparoid</td>
+                  <td>Heparinoid (Xa {'>'} IIa inhibitor)</td>
+                  <td>IV/SC</td>
+                  <td>Anti-Xa levels</td>
+                  <td>~10% cross-reactivity with HIT antibodies (test before use). Long half-life. Limited availability. Previously first-line but now largely replaced by argatroban</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">DOACs</td>
+                  <td>Direct Xa inhibitors (rivaroxaban, apixaban)</td>
+                  <td>PO</td>
+                  <td>None routinely</td>
+                  <td>Emerging evidence for stable HIT (post-acute phase). Not for acute HIT with active thrombosis in ICU. Convenient for outpatient transition</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5 mb-4">
+            <p className="text-sm font-semibold text-destructive">⚠ HIT in Cardiac Surgery</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Patients with HIT requiring cardiopulmonary bypass present a critical challenge — CPB requires systemic anticoagulation. Options: (1) <strong>Bivalirudin</strong> (most evidence for CPB in HIT), (2) delay surgery until HIT antibodies negative (typically 3 months) then use heparin briefly, (3) argatroban (less evidence for CPB). Consult haematology urgently.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              HIT is a favourite FRCA/FFICM exam topic. Know the 4Ts score cold (especially timing: day 5–10 or ≤1 day with recent exposure). Remember: HIT is a prothrombotic condition — the risk is clotting, not bleeding. LMWH cannot substitute for UFH (cross-reactivity). Warfarin is contraindicated acutely (protein C depletion → limb gangrene). Argatroban is first-line in UK ICU.
+            </p>
+          </div>
+        </div>
+
         <KeyLearningPoints points={[
           "TTP: ADAMTS13 <10% → uncleaved vWF multimers → microvascular thrombosis; DO NOT transfuse platelets",
           "PLASMIC score ≥6: start plasma exchange empirically before ADAMTS13 result returns",
-          "TTP treatment triad: plasma exchange + steroids + caplacizumab; rituximab for refractory/relapsing disease",
           "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC",
-          "Typical HUS: Shiga toxin (E. coli O157:H7) — supportive care only, antibiotics are CONTRAINDICATED",
-          "Atypical HUS: complement dysregulation — eculizumab (anti-C5) is first-line; lifelong treatment often required",
-          "Eculizumab mandates meningococcal vaccination (ACWY + B) — risk of fulminant N. meningitidis",
-          "ADAMTS13 >10% with TMA + predominant renal involvement = HUS rather than TTP",
-          "HLH: pathological immune activation with cytokine storm — ferritin >10,000 has ~90% sensitivity",
-          "HScore >169 gives >93% probability of HLH in adults — use to guide empirical treatment",
-          "HLH management: treat the trigger + dexamethasone/etoposide (HLH-2004); anakinra increasingly used in adult MAS/HLH",
+          "Typical HUS: Shiga toxin (E. coli O157:H7) — supportive care, antibiotics CONTRAINDICATED",
+          "Atypical HUS: complement dysregulation — eculizumab (anti-C5) first-line; meningococcal vaccination mandatory",
+          "HIT: immune-mediated prothrombotic thrombocytopenia — 4Ts score guides pre-test probability",
+          "HIT: stop ALL heparin (including flushes), start argatroban (UK first-line), screen for thrombosis",
+          "LMWH cross-reacts with HIT antibodies (~90%) — must NOT be substituted for UFH",
+          "Warfarin contraindicated in acute HIT — risk of venous limb gangrene from protein C depletion",
+          "HLH: ferritin >10,000 has ~90% sensitivity; HScore >169 gives >93% probability in adults",
+          "HLH management: treat trigger + dexamethasone/etoposide; anakinra for adult MAS/HLH",
         ]} />
       </section>
 
