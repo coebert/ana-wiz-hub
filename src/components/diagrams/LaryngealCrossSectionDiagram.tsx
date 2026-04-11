@@ -650,6 +650,21 @@ const LaryngealCrossSectionDiagram = () => {
                 <text x="88" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
                 <text x="130" y="170" fontSize="4.5" fill="hsl(280, 45%, 52%)">Arytenoid</text>
 
+                {/* Corniculate cartilages — on arytenoid apex, visible as tubercles */}
+                <circle cx="105" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
+                <circle cx="135" cy="144" r="3" fill="hsl(270, 40%, 55%)" fillOpacity="0.4" stroke="hsl(270, 40%, 55%)" strokeWidth="0.8" />
+                <text x="120" y="140" fontSize="3.5" textAnchor="middle" fill="hsl(270, 40%, 55%)" opacity="0.6">Corniculate tubercles</text>
+
+                {/* Cuneiform cartilages — within aryepiglottic folds */}
+                <ellipse cx="88" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(-15 88 138)" />
+                <ellipse cx="152" cy="138" rx="3" ry="5" fill="hsl(310, 40%, 55%)" fillOpacity="0.3" stroke="hsl(310, 40%, 55%)" strokeWidth="0.6" transform="rotate(15 152 138)" />
+                <text x="76" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
+                <text x="158" y="130" fontSize="3.5" fill="hsl(310, 40%, 55%)" opacity="0.6">Cuneiform</text>
+
+                {/* Muscular process labels */}
+                <text x="92" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>
+                <text x="148" y="165" fontSize="3" fill="hsl(var(--muted-foreground))" opacity="0.4">MP</text>
+
                 {/* Vocal process labels */}
                 <text x="105" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>
                 <text x="135" y="142" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">VP</text>
@@ -661,7 +676,10 @@ const LaryngealCrossSectionDiagram = () => {
 
                 {/* Glottic opening */}
                 <path d="M120,85 L105,148 L135,148 Z" fill="hsl(200, 30%, 92%)" fillOpacity="0.2" stroke="none" />
-                <text x="120" y="130" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>
+                <text x="120" y="125" fontSize="5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">Rima glottidis</text>
+                {/* Anterior membranous / posterior cartilaginous distinction */}
+                <line x1="105" y1="148" x2="135" y2="148" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 1" opacity="0.3" />
+                <text x="120" y="155" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35">← membranous | cartilaginous →</text>
 
                 {/* False cords (wider apart) */}
                 <line x1="98" y1="155" x2="115" y2="95" stroke="hsl(300, 35%, 50%)" strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2" />
@@ -672,6 +690,10 @@ const LaryngealCrossSectionDiagram = () => {
                 <ellipse cx="168" cy="130" rx="10" ry="20" fill="hsl(190, 45%, 50%)" fillOpacity="0.15" stroke="hsl(190, 45%, 50%)" strokeWidth="0.8" />
                 <text x="72" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
                 <text x="168" y="158" fontSize="4" textAnchor="middle" fill="hsl(190, 45%, 50%)">Piriform</text>
+
+                {/* Internal SLN in floor of piriform fossa */}
+                <path d="M68,142 C70,146 72,148 75,149" stroke="hsl(120, 50%, 45%)" strokeWidth="1" fill="none" strokeDasharray="2 1" opacity="0.4" />
+                <text x="60" y="155" fontSize="3" fill="hsl(120, 50%, 45%)" opacity="0.4">ILN</text>
 
                 {/* Aryepiglottic folds */}
                 <path d="M95,160 C88,145 82,130 80,115 C78,100 80,90 85,85" stroke="hsl(155, 45%, 48%)" strokeWidth="1.5" fill="none" opacity="0.4" />
@@ -684,19 +706,23 @@ const LaryngealCrossSectionDiagram = () => {
 
                 {/* Posterior interarytenoid */}
                 <line x1="115" y1="160" x2="125" y2="160" stroke="hsl(var(--muted-foreground))" strokeWidth="2" opacity="0.3" />
-                <text x="120" y="180" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>
+                <text x="120" y="178" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">Interarytenoid</text>
+
+                {/* Posterior commissure label */}
+                <text x="120" y="186" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.3">Posterior commissure</text>
               </svg>
             </div>
 
             <div className="flex-1 min-w-0">
               <div className="p-4 rounded-lg border border-border space-y-2">
                 <p className="text-sm font-semibold text-foreground">Axial View — Laryngoscopic Perspective</p>
-                <p className="text-xs text-muted-foreground">This view shows the anatomy as seen looking down from above — similar to the direct laryngoscopy view. Anterior is at the top (where the epiglottis and anterior commissure are).</p>
+                <p className="text-xs text-muted-foreground">This view shows the anatomy as seen looking down from above — similar to the direct laryngoscopy view. Anterior is at the top.</p>
                 <div className="space-y-1 text-xs text-muted-foreground">
-                  <p>• <strong className="text-foreground">Rima glottidis:</strong> Triangular opening between true cords — narrowest point of adult airway</p>
-                  <p>• <strong className="text-foreground">Piriform fossae:</strong> Lateral recesses — secretion pooling, SLN block site</p>
+                  <p>• <strong className="text-foreground">Rima glottidis:</strong> Triangular opening between true cords — narrowest point of adult airway (anterior membranous portion, posterior cartilaginous)</p>
+                  <p>• <strong className="text-foreground">Piriform fossae:</strong> Lateral recesses — internal SLN lies submucosally in floor; spray-as-you-go LA site</p>
+                  <p>• <strong className="text-foreground">Corniculate tubercles:</strong> Paired nodules on arytenoid apices — posterior landmarks during laryngoscopy</p>
+                  <p>• <strong className="text-foreground">Cuneiform tubercles:</strong> Whitish elevations in aryepiglottic folds — stiffen folds</p>
                   <p>• <strong className="text-foreground">Aryepiglottic folds:</strong> Boundary of laryngeal inlet — collapse in laryngomalacia</p>
-                  <p>• <strong className="text-foreground">Vocal processes:</strong> Anterior arytenoid projections where vocal ligaments attach</p>
                 </div>
               </div>
             </div>
