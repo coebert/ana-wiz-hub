@@ -107,13 +107,49 @@ const structures: Record<StructureKey, LaryngealStructure> = {
     detail: "Mucosal fold running from lateral epiglottis to arytenoid apex. Contains aryepiglottic muscle (sphincter of laryngeal inlet) and cuneiform/corniculate cartilages (visible as small bumps). Forms the boundary of the laryngeal inlet.",
     clinicalNote: "Prominent aryepiglottic folds in laryngomalacia (floppy, collapse inward on inspiration → inspiratory stridor in neonates). Define the lateral boundary of the supraglottis during laryngoscopy.",
   },
+  "conus-elasticus": {
+    label: "Conus Elasticus",
+    color: "hsl(15, 60%, 55%)",
+    detail: "Fibroelastic membrane from upper border of cricoid arch to vocal ligament (its free superior edge). Forms the subglottic lateral wall. Continuous with CTM anteriorly. The vocal ligament is the thickened superior free edge.",
+    clinicalNote: "Defines the subglottic space. Subglottic stenosis (post-intubation) occurs here. In children <8yr, this region (not the glottis) is the narrowest point of the airway. Cuffed ETT exerts pressure on this structure.",
+  },
+  "quadrangular-membrane": {
+    label: "Quadrangular Membrane",
+    color: "hsl(200, 50%, 58%)",
+    detail: "Fibroelastic membrane extending from lateral epiglottis to arytenoid. Superior free edge forms aryepiglottic fold (with aryepiglottic muscle). Inferior free edge forms vestibular ligament (false cord). Separates vestibule from piriform fossa.",
+    clinicalNote: "Understanding quadrangular membrane anatomy clarifies the layers of the supraglottis — relevant to supraglottic airway device placement and spread of supraglottic tumours.",
+  },
+  "pre-epiglottic": {
+    label: "Pre-epiglottic Space",
+    color: "hsl(45, 60%, 55%)",
+    detail: "Fat-filled space anterior to epiglottis, bounded by thyrohyoid membrane/hyoid superiorly, thyroid cartilage anteriorly, and epiglottis posteriorly. Contains fat and loose areolar tissue. Continuous with paraglottic spaces laterally.",
+    clinicalNote: "Key space in laryngeal cancer staging — invasion indicates advanced disease (T3+). Macintosh blade tip engages hyoepiglottic ligament which attaches through this space. CT/MRI assessment important pre-operatively.",
+  },
+  corniculate: {
+    label: "Corniculate Cartilages",
+    color: "hsl(270, 40%, 55%)",
+    detail: "Small paired elastic cartilages (of Santorini) sitting on apex of each arytenoid. Visible as small tubercles (corniculate tubercles) on posterior laryngoscopic view within aryepiglottic folds.",
+    clinicalNote: "Visible landmarks during laryngoscopy — the paired 'bumps' seen posteriorly at the laryngeal inlet. Help distinguish posterior commissure anatomy.",
+  },
+  cuneiform: {
+    label: "Cuneiform Cartilages",
+    color: "hsl(310, 40%, 55%)",
+    detail: "Small paired elastic cartilages (of Wrisberg) embedded within the aryepiglottic folds, anterior to corniculate cartilages. Visible as cuneiform tubercles on laryngoscopy. Not all individuals have them.",
+    clinicalNote: "Visible as elongated whitish elevations (cuneiform tubercles) in the aryepiglottic folds during laryngoscopy. Stiffen the aryepiglottic folds.",
+  },
+  "reinke-space": {
+    label: "Reinke's Space",
+    color: "hsl(350, 50%, 55%)",
+    detail: "Potential space (superficial lamina propria) between vocal cord epithelium and vocal ligament. Contains loose gelatinous tissue. Mucosal wave propagation depends on this layer. Extends the full length of the membranous vocal cord.",
+    clinicalNote: "Reinke's oedema: fluid accumulation → polypoid degeneration, breathy/husky voice (associated with smoking). Vocal cord haematoma (post-intubation) occurs in this layer. Microflap surgery targets this space.",
+  },
 };
 
 const structureOrder: StructureKey[] = [
-  "epiglottis", "aryepiglottic-fold", "hyoid", "thyrohyoid", "thyroid",
-  "vestibular-folds", "piriform-fossa", "vocal-cords", "cricothyroid-joint",
-  "cricothyroid-membrane", "arytenoid", "cricoid", "trachea",
-  "sln-internal", "sln-external", "rln",
+  "epiglottis", "aryepiglottic-fold", "hyoid", "thyrohyoid", "pre-epiglottic", "thyroid",
+  "quadrangular-membrane", "vestibular-folds", "piriform-fossa", "vocal-cords", "reinke-space",
+  "conus-elasticus", "cricothyroid-joint", "cricothyroid-membrane", "arytenoid", "corniculate", "cuneiform",
+  "cricoid", "trachea", "sln-internal", "sln-external", "rln",
 ];
 
 const intrinsicMuscles = [
