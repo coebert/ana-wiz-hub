@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
 
 const GastrointestinalPhysiologyTopic = () => {
   return (
