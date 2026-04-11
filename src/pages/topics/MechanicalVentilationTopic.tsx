@@ -288,6 +288,100 @@ const MechanicalVentilationTopic = () => {
             <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
           </ol>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Pneumonia (VAP)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            VAP is a nosocomial pneumonia developing ≥48 hours after endotracheal intubation. It affects 5–40% of mechanically ventilated patients, increases ICU mortality by 5–13%, and prolongs mechanical ventilation by 7–9 days. Pathogenesis involves aspiration of oropharyngeal secretions past the ETT cuff, biofilm formation on the endotracheal tube, and impaired mucociliary clearance.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Diagnosis</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Diagnosis remains challenging — no single test is definitive. A clinical approach combining signs, radiology, and microbiology is recommended:
+          </p>
+          <div className="space-y-3 mb-4">
+            {[
+              { label: "Clinical criteria", detail: "New or progressive infiltrate on CXR plus ≥2 of: temperature >38°C or <36°C, WCC >12 or <4 ×10⁹/L, purulent tracheal secretions, worsening oxygenation (↑FiO₂ or PEEP requirements)." },
+              { label: "Clinical Pulmonary Infection Score (CPIS)", detail: "Composite score (temperature, WCC, secretions, oxygenation, CXR, tracheal aspirate culture). Score >6 suggests VAP. Sensitivity ~65%, specificity ~64%. Useful for research but not reliable alone for clinical decision-making." },
+              { label: "Microbiological sampling", detail: "Quantitative cultures: bronchoalveolar lavage (BAL) ≥10⁴ CFU/mL, protected specimen brush (PSB) ≥10³ CFU/mL, or endotracheal aspirate (ETA) ≥10⁶ CFU/mL. ETA is simpler and non-inferior to bronchoscopic sampling in RCTs." },
+              { label: "Biomarkers", detail: "Procalcitonin (PCT) may help guide antibiotic duration (stop if PCT <0.5 or ↓80% from peak) but is not reliable for diagnosis. CRP is non-specific. No biomarker alone can diagnose or exclude VAP." },
+              { label: "Common organisms", detail: "Early-onset (<5 days): S. aureus (MSSA), H. influenzae, S. pneumoniae, Enterobacterales. Late-onset (≥5 days): Pseudomonas aeruginosa, MRSA, Acinetobacter, ESBL-producing Enterobacterales, Stenotrophomonas." },
+            ].map((item) => (
+              <div key={item.label} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">VAP Prevention Bundle</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Prevention bundles reduce VAP incidence by 50–70%. The ICS/FICM and NHS England recommend a ventilator care bundle:
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { measure: "Head-of-bed elevation", detail: "30–45° semi-recumbent position. Reduces gastro-oesophageal reflux and aspiration. Strongest evidence base." },
+              { measure: "Daily sedation holds", detail: "Daily interruption of sedation with spontaneous breathing trial. Reduces ventilator days and VAP incidence (Kress et al., 2000)." },
+              { measure: "Subglottic secretion drainage", detail: "ETTs with subglottic suction ports reduce VAP by ~45% (NNT ~10). Recommended for patients expected to be ventilated >48–72 hours." },
+              { measure: "Oral hygiene", detail: "Regular oral care with chlorhexidine 0.12–2% (4-hourly). Reduces oropharyngeal colonisation. Some recent meta-analyses question mortality benefit — still widely recommended." },
+              { measure: "ETT cuff pressure", detail: "Maintain cuff pressure 20–30 cmH₂O. Below 20: micro-aspiration risk. Above 30: tracheal mucosal ischaemia. Continuous cuff pressure monitoring may be superior to intermittent checks." },
+              { measure: "DVT and peptic ulcer prophylaxis", detail: "Part of the care bundle. Stress ulcer prophylaxis with PPI or H₂RA (SUP-ICU trial suggests PPIs may be omitted in low-risk patients)." },
+              { measure: "Avoid unnecessary intubation", detail: "Use NIV/HFNO where appropriate. Early tracheostomy (TracMan: no benefit at day 30, but may reduce sedation). Minimise duration of intubation." },
+              { measure: "Circuit management", detail: "Do not change ventilator circuits routinely (only if visibly soiled). Closed suction systems. Avoid unnecessary disconnections." },
+            ].map((item) => (
+              <div key={item.measure} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.measure}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Empirical Antibiotic Therapy</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Start empirical antibiotics promptly after obtaining respiratory cultures. Choice depends on onset timing, local resistance patterns, and risk factors for MDR organisms:
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Scenario</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">First-line</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">If MDR risk / critically ill</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr>
+                  <td className="p-3 border-b border-border font-medium text-foreground">Early-onset (&lt;5 days), no MDR risk</td>
+                  <td className="p-3 border-b border-border">Co-amoxiclav or ceftriaxone</td>
+                  <td className="p-3 border-b border-border">Not usually needed</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border-b border-border font-medium text-foreground">Late-onset (≥5 days) or MDR risk factors</td>
+                  <td className="p-3 border-b border-border">Piperacillin-tazobactam or meropenem</td>
+                  <td className="p-3 border-b border-border">Add anti-pseudomonal cover if not already included</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border-b border-border font-medium text-foreground">MRSA risk</td>
+                  <td className="p-3 border-b border-border">Add vancomycin or linezolid</td>
+                  <td className="p-3 border-b border-border">Linezolid may have better lung penetration</td>
+                </tr>
+                <tr>
+                  <td className="p-3 border-b border-border font-medium text-foreground">Pseudomonas suspected</td>
+                  <td className="p-3 border-b border-border">Dual anti-pseudomonal therapy initially</td>
+                  <td className="p-3 border-b border-border">e.g., pip-taz + gentamicin or ciprofloxacin. De-escalate to monotherapy once sensitivities available</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Antibiotic Duration & De-escalation</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">Duration:</span> 7 days is recommended for most VAP (non-fermenting GNB like Pseudomonas may need 10–14 days). Shorter courses reduce MDR emergence without increasing recurrence.</li>
+            <li><span className="font-semibold text-foreground">De-escalation:</span> Narrow spectrum based on culture sensitivities at 48–72 hours. Switch to oral if absorbing and improving.</li>
+            <li><span className="font-semibold text-foreground">PCT-guided stopping:</span> Consider stopping antibiotics if PCT &lt;0.5 μg/L or has fallen &gt;80% from peak. Reduces antibiotic exposure without increasing mortality (PRORATA, SAPS trials).</li>
+            <li><span className="font-semibold text-foreground">Negative cultures:</span> If cultures negative at 48–72h and clinical improvement, strongly consider stopping antibiotics — the diagnosis may not be VAP.</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -299,12 +393,12 @@ const MechanicalVentilationTopic = () => {
         "RSBI (f/VT) <105 breaths/min/L predicts successful extubation",
         "Driving pressure (Pplat - PEEP) is the strongest predictor of ARDS mortality",
         "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance",
-        "T low is set so expiratory flow terminates at 50–75% of PEFR — prevents derecruitment",
-        "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% in severe ARDS (NNT 6)",
-        "OSCAR + OSCILLATE: HFOV shows no benefit (and possible harm) in adult ARDS",
-        "Inhaled vasodilators (iNO, epoprostenol) improve oxygenation but have no mortality benefit",
+        "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
         "Cisatracurium: organ-independent Hofmann elimination; rocuronium: sugammadex-reversible",
+        "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
+        "VAP diagnosis: new CXR infiltrate + ≥2 clinical criteria + quantitative cultures (BAL ≥10⁴ CFU/mL)",
+        "Treat VAP for 7 days; de-escalate at 48–72h based on cultures; use PCT to guide stopping",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
