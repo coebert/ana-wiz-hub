@@ -826,6 +826,104 @@ const MechanicalVentilationTopic = () => {
             <li>Poor mask tolerance or frequent removal</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Induced Diaphragmatic Dysfunction (VIDD)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Mechanical ventilation itself injures the diaphragm. Diaphragmatic atrophy begins within <span className="font-semibold text-foreground">18–69 hours</span> of controlled ventilation (Levine et al., 2008) and is a major contributor to weaning failure, prolonged ICU stay, and increased mortality.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Pathophysiology</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground mb-4">
+            <li><span className="font-semibold text-foreground">Disuse atrophy:</span> Complete diaphragmatic unloading during controlled ventilation activates proteolytic pathways (ubiquitin-proteasome, calpain, caspase-3), causing rapid type I and II fibre atrophy — up to 50% cross-sectional area loss within 5 days.</li>
+            <li><span className="font-semibold text-foreground">Oxidative stress:</span> Mitochondrial reactive oxygen species (ROS) production increases within hours of CMV, driving protein oxidation and lipid peroxidation in diaphragm myofibres.</li>
+            <li><span className="font-semibold text-foreground">Structural remodelling:</span> Sarcomere disruption, myofilament protein degradation (myosin heavy chain loss), and impaired excitation-contraction coupling reduce force-generating capacity.</li>
+            <li><span className="font-semibold text-foreground">Mitochondrial dysfunction:</span> Decreased mitochondrial biogenesis and increased autophagy lead to reduced ATP production and further contractile impairment.</li>
+            <li><span className="font-semibold text-foreground">Concurrent ICU insults:</span> Sepsis, corticosteroids, NMBAs, systemic inflammation, and malnutrition compound diaphragmatic injury beyond mechanical ventilation alone (ICU-acquired diaphragm weakness).</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Risk Factors</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { factor: "Controlled mechanical ventilation", detail: "CMV is the strongest risk factor. Duration-dependent — even 12–18 hours causes measurable atrophy. Assist modes partially protective." },
+              { factor: "Duration of ventilation", detail: "Progressive fibre atrophy: ~6% loss per day of CMV. Exponential decline in transdiaphragmatic pressure over first week." },
+              { factor: "Neuromuscular blocking agents", detail: "NMBAs abolish all diaphragmatic activity, compounding disuse atrophy. Minimise duration (ACURASYS: 48h only)." },
+              { factor: "Corticosteroids", detail: "Dexamethasone and methylprednisolone promote myopathy via upregulation of muscle RING finger 1 (MuRF-1) and atrogin-1." },
+              { factor: "Sepsis & systemic inflammation", detail: "TNF-α, IL-6, and endotoxin directly impair diaphragmatic contractility independent of ventilation." },
+              { factor: "Malnutrition & muscle wasting", detail: "Negative protein balance, caloric deficit, and immobility accelerate global and diaphragmatic sarcopenia." },
+              { factor: "Over-assistance", detail: "Excessive pressure support suppresses respiratory drive and diaphragmatic effort — patient 'adapts down'." },
+              { factor: "Age & comorbidity", detail: "Older patients and those with pre-existing COPD, heart failure, or sarcopenia are more susceptible." },
+            ].map((item) => (
+              <div key={item.factor} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.factor}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Ultrasound Assessment of the Diaphragm</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Point-of-care ultrasound is the gold standard bedside tool for assessing diaphragm structure and function. Two key measurements are used:
+          </p>
+
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Diaphragm Thickness (Tdi) — Zone of Apposition</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">Probe:</span> High-frequency linear (10–15 MHz) at the zone of apposition (8th–10th intercostal space, anterior axillary line)</li>
+                <li><span className="font-semibold text-foreground">Normal Tdi:</span> 1.5–5.0 mm at end-expiration (FRC)</li>
+                <li><span className="font-semibold text-foreground">Atrophy:</span> Tdi &lt;2.0 mm at end-expiration suggests significant atrophy and predicts weaning failure</li>
+                <li><span className="font-semibold text-foreground">Rate of atrophy:</span> &gt;10% decrease in Tdi over 72 hours is associated with prolonged ventilation (Zambon et al., 2017)</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Diaphragm Thickening Fraction (TFdi)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">Formula:</span> TFdi = (Tdi<sub>insp</sub> − Tdi<sub>exp</sub>) / Tdi<sub>exp</sub> × 100%</li>
+                <li><span className="font-semibold text-foreground">Normal:</span> TFdi &gt;30–36% during spontaneous breathing</li>
+                <li><span className="font-semibold text-foreground">Weaning predictor:</span> TFdi &gt;30% predicts successful extubation (DiNino et al., 2014). TFdi &lt;20% associated with weaning failure.</li>
+                <li><span className="font-semibold text-foreground">Optimal effort:</span> TFdi 15–30% during assisted ventilation suggests appropriate level of diaphragmatic loading — both under- and over-assistance are harmful (Goligher et al., 2018)</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Diaphragm Excursion</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">Probe:</span> Low-frequency curvilinear (3–5 MHz) subcostal, using M-mode to measure dome excursion</li>
+                <li><span className="font-semibold text-foreground">Normal excursion:</span> ≥10 mm during tidal breathing, ≥40 mm during deep breathing</li>
+                <li><span className="font-semibold text-foreground">Dysfunction:</span> Excursion &lt;10 mm or paradoxical movement (cephalad during inspiration) indicates paralysis or severe weakness</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Prevention & Management Strategies</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { strategy: "Maintain diaphragmatic effort", detail: "Use assist modes (PSV, PAV, NAVA) rather than CMV whenever possible. Aim for TFdi 15–30% — sufficient effort to prevent atrophy without inducing fatigue." },
+              { strategy: "Early spontaneous breathing", detail: "Daily SBTs and early transition to assisted modes. The BREATHE trial supports early spontaneous breathing to preserve diaphragm function." },
+              { strategy: "Minimise NMBAs", detail: "Limit NMBAs to indications with strong evidence (e.g., severe ARDS first 48h). Avoid routine paralysis beyond this period." },
+              { strategy: "Titrate pressure support", detail: "Avoid over-assistance. Excessive PS suppresses respiratory effort. Use P0.1 (airway occlusion pressure at 100ms) to monitor drive — target 1–4 cmH₂O." },
+              { strategy: "Diaphragm-protective ventilation", detail: "Emerging concept (Goligher et al.): adjust ventilator settings to maintain diaphragmatic activity within a safe zone — analogous to lung-protective ventilation for the respiratory muscles." },
+              { strategy: "Nutrition optimisation", detail: "Adequate protein (1.2–2.0 g/kg/day) and caloric intake. Early enteral nutrition. Correct electrolyte deficiencies (phosphate, magnesium, calcium) that impair contractility." },
+              { strategy: "Phrenic nerve stimulation", detail: "Temporary transvenous phrenic nerve pacing is an emerging therapy to maintain diaphragm activity during CMV. RESCUE trials ongoing." },
+              { strategy: "Pharmacological targets", detail: "Antioxidants (e.g., N-acetylcysteine), protease inhibitors, and anabolic agents (testosterone, growth factors) are under investigation but not yet in clinical practice." },
+            ].map((item) => (
+              <div key={item.strategy} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.strategy}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Monitoring Diaphragmatic Effort</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">P0.1:</span> Airway occlusion pressure at 100 ms — reflects respiratory drive. Target 1–4 cmH₂O. &lt;1 = low effort (over-assisted); &gt;4 = excessive effort (under-assisted or high load).</li>
+            <li><span className="font-semibold text-foreground">Electrical activity of the diaphragm (Edi):</span> Measured via specialised nasogastric catheter (NAVA). Reflects neural respiratory drive. Edi &lt;5 µV suggests excessive unloading; Edi &gt;15 µV suggests excessive loading.</li>
+            <li><span className="font-semibold text-foreground">Transdiaphragmatic pressure (Pdi):</span> Gold standard for diaphragm strength — requires oesophageal and gastric balloon catheters. Pdi<sub>twitch</sub> &lt;11 cmH₂O after magnetic phrenic nerve stimulation confirms severe weakness.</li>
+            <li><span className="font-semibold text-foreground">Serial ultrasound:</span> Repeat Tdi and TFdi measurements every 48–72 hours to track trajectory. A decreasing Tdi trend should prompt reduction in ventilatory support if clinically safe.</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -847,6 +945,10 @@ const MechanicalVentilationTopic = () => {
         "Brochard: NIV in COPD reduced intubation 74% → 26% and mortality 29% → 9%",
         "3CPO: CPAP and BiPAP equally improve symptoms in ACPO but no mortality benefit over standard O₂",
         "NIV first-line for COPD exacerbation with pH 7.25–7.35; check ABG at 1–2h — if no improvement, escalate",
+        "VIDD begins within 18–69 hours of CMV — diaphragm loses ~6% thickness per day",
+        "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure",
+        "Diaphragm-protective ventilation: maintain TFdi 15–30% during assisted ventilation (Goligher)",
+        "P0.1 target 1–4 cmH₂O — reflects respiratory drive; guides ventilator titration",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
