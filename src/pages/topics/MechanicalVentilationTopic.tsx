@@ -1027,6 +1027,128 @@ const MechanicalVentilationTopic = () => {
             ))}
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-Intensive Care Syndrome (PICS)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012), it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">The Three Domains of PICS</h3>
+          <div className="space-y-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Physical Domain</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">ICUAW:</span> Persistent weakness from CIP/CIM — up to 50% have measurable weakness at 1 year. Many unable to return to pre-morbid functional level.</li>
+                <li><span className="font-semibold text-foreground">Reduced exercise capacity:</span> 6-minute walk distance remains below predicted at 12 months in ~60% of ARDS survivors (Herridge et al., 2003, 2011).</li>
+                <li><span className="font-semibold text-foreground">Pulmonary dysfunction:</span> Restrictive defect, reduced DLCO, and dyspnoea. Usually improves over 6–12 months but may persist in severe ARDS.</li>
+                <li><span className="font-semibold text-foreground">Swallowing dysfunction:</span> Post-extubation dysphagia in 20–80% of prolonged intubation patients. Risk of aspiration.</li>
+                <li><span className="font-semibold text-foreground">Pain:</span> Chronic pain syndromes in 30–50% — shoulder, back, and generalised myalgia. Often under-recognised.</li>
+                <li><span className="font-semibold text-foreground">Functional decline:</span> Only 50% return to work at 1 year. Many require carer support for ADLs.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Cognitive Domain</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">Prevalence:</span> 25–80% of ICU survivors at hospital discharge; 20–40% persist at 1 year (Pandharipande et al., 2013 — BRAIN-ICU study).</li>
+                <li><span className="font-semibold text-foreground">Deficits:</span> Executive function, memory, attention, processing speed, and visuospatial ability. Severity comparable to mild traumatic brain injury or early Alzheimer's disease.</li>
+                <li><span className="font-semibold text-foreground">Risk factors:</span> Delirium duration (strongest predictor — each additional day increases cognitive impairment risk), hypoxia, hypotension, dysglycaemia, sepsis, and pre-existing cognitive reserve.</li>
+                <li><span className="font-semibold text-foreground">BRAIN-ICU:</span> Longer delirium duration was independently associated with worse global cognition at 3 and 12 months, irrespective of sedative exposure or age.</li>
+                <li><span className="font-semibold text-foreground">Assessment:</span> Montreal Cognitive Assessment (MoCA), Mini-Mental State Examination (MMSE), neuropsychological testing battery for detailed assessment.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Psychological Domain</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><span className="font-semibold text-foreground">Depression:</span> 30–40% at 12 months. Associated with functional limitation, pain, and pre-existing mental health history.</li>
+                <li><span className="font-semibold text-foreground">Anxiety:</span> 30–40% prevalence. Often co-morbid with depression and PTSD.</li>
+                <li><span className="font-semibold text-foreground">PTSD:</span> 10–25% of ICU survivors. Risk factors: delirium, benzodiazepine use, recall of frightening ICU experiences, restraint use, and female sex.</li>
+                <li><span className="font-semibold text-foreground">Sleep disturbance:</span> Insomnia, fragmented sleep architecture, and circadian disruption persist for months post-discharge.</li>
+                <li><span className="font-semibold text-foreground">Assessment tools:</span> Hospital Anxiety and Depression Scale (HADS), Patient Health Questionnaire (PHQ-9), Impact of Event Scale – Revised (IES-R) for PTSD screening.</li>
+              </ul>
+            </div>
+
+            <div className="p-4 rounded-lg border-2 border-primary/20 bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm">PICS-Family (PICS-F)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Anxiety in 70% of family members during ICU stay; persists in 15–25% at 6 months</li>
+                <li>Depression in 15–30% of caregivers; complicated grief in those bereaved in ICU</li>
+                <li>PTSD symptoms in 30–50% of family members — higher if witnessed resuscitation or end-of-life decisions</li>
+                <li>Caregiver burden, social isolation, financial strain, and relationship disruption</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Risk Factors for PICS</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { factor: "Delirium duration", detail: "Strongest modifiable risk factor for cognitive PICS. Each day of delirium increases risk of long-term cognitive impairment (BRAIN-ICU)." },
+              { factor: "Sepsis & multi-organ failure", detail: "Systemic inflammation damages CNS, peripheral nerves, and muscles simultaneously. Higher SOFA scores predict worse outcomes." },
+              { factor: "Prolonged mechanical ventilation", detail: "Duration of MV correlates with ICUAW severity, PTSD risk, and cognitive decline. Promotes immobility and delirium." },
+              { factor: "Benzodiazepine use", detail: "Associated with delirium (Pandharipande, 2006) and PTSD. Use dexmedetomidine or propofol-based sedation where possible." },
+              { factor: "Pre-existing factors", detail: "Prior psychiatric history, cognitive impairment, frailty, alcohol dependence, and low socioeconomic status increase vulnerability." },
+              { factor: "ICU environment", detail: "Sleep deprivation, noise, loss of day-night cycle, physical restraint, and social isolation contribute to psychological morbidity." },
+            ].map((item) => (
+              <div key={item.factor} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.factor}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Prevention — The ABCDEF Bundle</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The <span className="font-semibold text-foreground">ABCDEF bundle</span> is an evidence-based framework to reduce PICS risk during ICU admission:
+          </p>
+          <div className="space-y-2 mb-4">
+            {[
+              { letter: "A", title: "Assess, prevent, and manage pain", detail: "Protocolised analgesia. Use BPS or CPOT scales. Prioritise multimodal analgesia over opioids." },
+              { letter: "B", title: "Both spontaneous awakening and breathing trials", detail: "Daily SAT + SBT. Paired trials reduce ventilation duration and ICU stay (Girard, 2008 — ABC trial)." },
+              { letter: "C", title: "Choice of analgesia and sedation", detail: "Avoid benzodiazepines. Target light sedation (RASS 0 to -1). Use dexmedetomidine or propofol." },
+              { letter: "D", title: "Delirium: assess, prevent, and manage", detail: "Screen with CAM-ICU every shift. Non-pharmacological prevention: orientation, sleep hygiene, mobilisation, family presence. Avoid haloperidol routinely." },
+              { letter: "E", title: "Early mobilisation and exercise", detail: "Within 48–72h. Schweickert (2009): improved functional outcomes and reduced delirium. Structured rehab programme." },
+              { letter: "F", title: "Family engagement and empowerment", detail: "Open visiting, family participation in care, communication, ICU diaries, and psychological support for families." },
+            ].map((item) => (
+              <div key={item.letter} className="p-3 rounded-lg bg-secondary/30 border border-border flex gap-3">
+                <span className="font-bold text-primary text-lg shrink-0">{item.letter}</span>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{item.title}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">ICU Diaries</h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Patient diaries written by staff and family during the ICU stay help bridge memory gaps and provide a coherent narrative. The <span className="font-semibold text-foreground">POPPI trial</span> (2019) showed no overall benefit from a nurse-led preventive psychological intervention, but <span className="font-semibold text-foreground">Jones et al. (2010)</span> demonstrated that ICU diaries reduced new-onset PTSD symptoms. Diaries are recommended by NICE and ICS guidelines as part of routine ICU care.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">ICU Follow-Up Clinic Structure</h3>
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+              <li><span className="font-semibold text-foreground">Timing:</span> First visit at 2–3 months post-discharge, then 6 and 12 months. NICE CG83 (2009, updated 2017) recommends structured follow-up for patients with ICU stays ≥4 days.</li>
+              <li><span className="font-semibold text-foreground">Team:</span> ICU consultant, specialist nurse, physiotherapist, psychologist, pharmacist. GP liaison essential.</li>
+              <li><span className="font-semibold text-foreground">Physical assessment:</span> Functional capacity (6MWT, grip strength), nutritional status, wound healing, ongoing organ dysfunction, medication review.</li>
+              <li><span className="font-semibold text-foreground">Cognitive screening:</span> MoCA or MMSE. Referral for neuropsychological assessment if deficits detected. Occupational therapy for cognitive rehabilitation.</li>
+              <li><span className="font-semibold text-foreground">Psychological screening:</span> HADS (anxiety/depression), IES-R (PTSD). Referral to clinical psychology or liaison psychiatry. Signpost to peer support groups.</li>
+              <li><span className="font-semibold text-foreground">ICU diary review:</span> Walk through the diary with the patient to contextualise their ICU experience, fill memory gaps, and address delusional memories.</li>
+              <li><span className="font-semibold text-foreground">Return to work support:</span> Occupational health referral, phased return planning, vocational rehabilitation. Address employer communication.</li>
+              <li><span className="font-semibold text-foreground">Family/carer support:</span> Screen for PICS-F. Offer psychological support and signpost to carer services.</li>
+            </ul>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Key Trials & Evidence</h3>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">Herridge et al. (2003, 2011):</span> ARDS survivors — persistent functional limitation and reduced quality of life at 5 years. Muscle wasting and weakness were the primary causes, not pulmonary dysfunction.</li>
+            <li><span className="font-semibold text-foreground">BRAIN-ICU (Pandharipande, 2013):</span> 821 patients — delirium duration independently predicted cognitive impairment at 3 and 12 months. 34% had deficits similar to moderate TBI at 12 months.</li>
+            <li><span className="font-semibold text-foreground">Schweickert (2009):</span> Early physical and occupational therapy in MV patients — improved functional independence at discharge (59% vs 35%), shorter delirium (2 vs 4 days).</li>
+            <li><span className="font-semibold text-foreground">Girard — ABC trial (2008):</span> Paired SAT + SBT reduced ventilation days, ICU stay, and 1-year mortality compared to SBT alone.</li>
+            <li><span className="font-semibold text-foreground">POPPI (2019):</span> Nurse-led preventive psychological intervention did not reduce PTSD at 6 months. Highlights difficulty of single-component psychological interventions in ICU.</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -1038,23 +1160,17 @@ const MechanicalVentilationTopic = () => {
         "Driving pressure (Pplat - PEEP) is the strongest predictor of ARDS mortality",
         "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance",
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
-        "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
         "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30",
-        "TracMan: early vs late tracheostomy — no mortality difference",
         "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation",
         "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success",
-        "FLORALI: HFNO reduced intubation and mortality in severe hypoxaemia (P/F ≤200)",
-        "CPAP = single constant pressure (recruits, no ventilatory support); BiPAP = IPAP + EPAP (augments Vt, clears CO₂)",
-        "Brochard: NIV in COPD reduced intubation 74% → 26% and mortality 29% → 9%",
-        "3CPO: CPAP and BiPAP equally improve symptoms in ACPO but no mortality benefit over standard O₂",
-        "NIV first-line for COPD exacerbation with pH 7.25–7.35; check ABG at 1–2h — if no improvement, escalate",
         "VIDD begins within 18–69 hours of CMV — diaphragm loses ~6% thickness per day",
         "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure",
-        "Diaphragm-protective ventilation: maintain TFdi 15–30% during assisted ventilation (Goligher)",
-        "P0.1 target 1–4 cmH₂O — reflects respiratory drive; guides ventilator titration",
-        "ICUAW affects 25–50% of patients ventilated >7 days; MRC sum score <48/60 confirms diagnosis",
-        "CIP = axonal neuropathy (reduced SNAPs, slow recovery); CIM = myopathy (normal SNAPs, faster recovery)",
-        "Early mobilisation within 48–72h improves functional independence (59% vs 35%, Schweickert)",
+        "ICUAW: MRC sum score <48/60 confirms diagnosis; CIP has reduced SNAPs, CIM has normal SNAPs",
+        "Early mobilisation within 48–72h improves functional independence (Schweickert: 59% vs 35%)",
+        "PICS affects 50–70% of ICU survivors across physical, cognitive, and psychological domains",
+        "Delirium duration is the strongest modifiable risk factor for cognitive PICS (BRAIN-ICU)",
+        "ABCDEF bundle: pain, SAT/SBT, sedation choice, delirium, early mobility, family engagement",
+        "ICU follow-up clinics at 2–3, 6, and 12 months — screen physical, cognitive, and psychological domains",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
