@@ -81,10 +81,12 @@ const AcuteLiverFailureTopic = () => {
               { grade: "ACLF Grade 2", description: "Two organ failures", mortality: "~32%" },
               { grade: "ACLF Grade 3", description: "Three or more organ failures", mortality: "~75%" },
             ].map((g) => (
-              <div key={g.grade} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{g.grade}</span>
-                <span className="text-sm text-muted-foreground flex-1">{g.description}</span>
-                <span className="text-sm font-semibold text-destructive whitespace-nowrap">28-d mortality: {g.mortality}</span>
+              <div key={g.grade} className="p-3 rounded border border-border">
+                <div className="flex justify-between items-start mb-1">
+                  <p className="font-bold text-primary text-sm">{g.grade}</p>
+                  <span className="text-sm font-semibold text-destructive">28-d mortality: {g.mortality}</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{g.description}</p>
               </div>
             ))}
           </div>
@@ -118,9 +120,9 @@ const AcuteLiverFailureTopic = () => {
               { system: "Infection", management: "Cirrhosis-associated immune dysfunction (CAID). Low threshold for cultures and empiric broad-spectrum antibiotics. SBP prophylaxis (norfloxacin/ciprofloxacin). Consider antifungals if deteriorating on antibiotics." },
               { system: "Nutrition", management: "High protein requirement (1.2–1.5 g/kg/day) — do NOT restrict protein. Calorie target 25–30 kcal/kg/day. Correct micronutrient deficiencies (thiamine, zinc, fat-soluble vitamins). Nasogastric feeding if unable to eat." },
             ].map((s) => (
-              <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[110px]">{s.system}</span>
-                <span className="text-sm text-muted-foreground">{s.management}</span>
+              <div key={s.system} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.system}</p>
+                <p className="text-sm text-muted-foreground">{s.management}</p>
               </div>
             ))}
           </div>
@@ -203,9 +205,9 @@ const AcuteLiverFailureTopic = () => {
               { score: "Maddrey DF", use: "Specific to alcoholic hepatitis. DF = 4.6 × (PT − control PT) + bilirubin (mg/dL). DF ≥32 = severe — consider steroids." },
               { score: "Lille Score", use: "Day 7 response to steroids in alcoholic hepatitis. >0.45 = non-responder — stop prednisolone. Combines age, albumin, bilirubin (day 0 & 7), creatinine, PT." },
             ].map((s) => (
-              <div key={s.score} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{s.score}</span>
-                <span className="text-sm text-muted-foreground">{s.use}</span>
+              <div key={s.score} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.score}</p>
+                <p className="text-sm text-muted-foreground">{s.use}</p>
               </div>
             ))}
           </div>

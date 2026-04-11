@@ -75,9 +75,9 @@ const OrganDonationTopic = () => {
               { step: "2. Exclude reversible causes", detail: "No hypothermia (core temp must be ≥34°C). No residual sedation/paralysis (adequate time for drug clearance — use context-sensitive half-times, consider organ dysfunction). No severe metabolic/endocrine derangement (Na⁺, glucose, thyroid). No unresuscitated circulatory shock." },
               { step: "3. Apnoea pre-condition", detail: "Patient must be on a ventilator because of inadequate spontaneous respiration. This is a prerequisite, not a test." },
             ].map((s) => (
-              <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[160px]">{s.step}</span>
-                <span className="text-sm text-muted-foreground">{s.detail}</span>
+              <div key={s.step} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.step}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
               </div>
             ))}
           </div>
@@ -92,9 +92,9 @@ const OrganDonationTopic = () => {
               { test: "5. Gag reflex (CN IX, X)", detail: "Stimulate posterior pharynx with spatula or suction catheter. No gag response." },
               { test: "6. Cough reflex (CN X)", detail: "Pass suction catheter into trachea beyond the carina. No cough or reflex response." },
             ].map((t) => (
-              <div key={t.test} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[200px]">{t.test}</span>
-                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              <div key={t.test} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{t.test}</p>
+                <p className="text-sm text-muted-foreground">{t.detail}</p>
               </div>
             ))}
           </div>
@@ -108,9 +108,9 @@ const OrganDonationTopic = () => {
               { step: "Confirm PaCO₂", detail: "Arterial blood gas: PaCO₂ must rise to >6.65 kPa (50 mmHg) AND have risen by >0.5 kPa from baseline. If PaCO₂ target not reached, continue observation (may need >5 min)." },
               { step: "Result", detail: "No respiratory effort with PaCO₂ >6.65 kPa confirms absent brainstem respiratory drive. Reconnect to ventilator immediately after the test." },
             ].map((s) => (
-              <div key={s.step} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{s.step}</span>
-                <span className="text-sm text-muted-foreground">{s.detail}</span>
+              <div key={s.step} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.step}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
               </div>
             ))}
           </div>
@@ -141,9 +141,9 @@ const OrganDonationTopic = () => {
               { flag: "Posterior Fossa Pathology", detail: "Isolated infratentorial lesion (e.g. cerebellar haemorrhage) may destroy brainstem while cortex remains viable. UK guidance considers this BSD, but some jurisdictions require ancillary testing to confirm absent cortical function." },
               { flag: "Children (<2 months)", detail: "UK guidance recommends caution in neonates. Immature nervous system may make testing unreliable. Specialist neonatal/paediatric neurology input required." },
             ].map((f) => (
-              <div key={f.flag} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-destructive text-sm whitespace-nowrap min-w-[160px]">{f.flag}</span>
-                <span className="text-sm text-muted-foreground">{f.detail}</span>
+              <div key={f.flag} className="p-3 rounded border border-border">
+                <p className="font-bold text-destructive text-sm mb-1">{f.flag}</p>
+                <p className="text-sm text-muted-foreground">{f.detail}</p>
               </div>
             ))}
           </div>

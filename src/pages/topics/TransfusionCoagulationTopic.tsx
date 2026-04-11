@@ -154,9 +154,9 @@ const TransfusionCoagulationTopic = () => {
               { trigger: "ABC Score", detail: "Assessment of Blood Consumption. Penetrating mechanism, SBP ≤90, HR ≥120, positive FAST. Score ≥2 predicts massive transfusion (sensitivity ~75%, specificity ~85%)." },
               { trigger: "ROTEM/TEG", detail: "Point-of-care viscoelastic testing to guide ongoing product replacement. FIBTEM A5 <12 mm → fibrinogen replacement. EXTEM CT >80 s → FFP." },
             ].map((t) => (
-              <div key={t.trigger} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[90px]">{t.trigger}</span>
-                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              <div key={t.trigger} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{t.trigger}</p>
+                <p className="text-sm text-muted-foreground">{t.detail}</p>
               </div>
             ))}
           </div>
@@ -209,9 +209,9 @@ const TransfusionCoagulationTopic = () => {
               { complication: "TRALI / TACO", detail: "TRALI: non-cardiogenic pulmonary oedema (donor antibodies). TACO: volume overload, especially elderly/cardiac patients. Differentiate by BNP, echo, clinical context." },
               { complication: "Hypomagnasaemia", detail: "Citrate also chelates magnesium. Worsens cardiac irritability and coagulopathy. Monitor and replace." },
             ].map((c) => (
-              <div key={c.complication} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{c.complication}</span>
-                <span className="text-sm text-muted-foreground">{c.detail}</span>
+              <div key={c.complication} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{c.complication}</p>
+                <p className="text-sm text-muted-foreground">{c.detail}</p>
               </div>
             ))}
           </div>
@@ -260,9 +260,9 @@ const TransfusionCoagulationTopic = () => {
               { phase: "Fibrinolysis", detail: "Secondary plasmin activation breaks down fibrin clots → elevated D-dimers and FDPs. FDPs themselves are anticoagulant → worsen bleeding. Fibrinolytic shutdown may occur in trauma DIC." },
               { phase: "Anticoagulant Depletion", detail: "Antithrombin III, protein C, and protein S consumed. Loss of natural anticoagulant pathways perpetuates thrombosis." },
             ].map((p) => (
-              <div key={p.phase} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{p.phase}</span>
-                <span className="text-sm text-muted-foreground">{p.detail}</span>
+              <div key={p.phase} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{p.phase}</p>
+                <p className="text-sm text-muted-foreground">{p.detail}</p>
               </div>
             ))}
           </div>
@@ -344,9 +344,9 @@ const TransfusionCoagulationTopic = () => {
               { test: "ROTEM/TEG", detail: "Consumptive pattern: prolonged CT, low MCF, increased lysis (ML >15%). More informative than PT/APTT for guiding targeted replacement." },
               { test: "Factor VIII vs V", detail: "Factor VIII preserved in DIC (acute phase reactant) but low in liver failure. Factor V low in both. Helps distinguish DIC from hepatic coagulopathy." },
             ].map((t) => (
-              <div key={t.test} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{t.test}</span>
-                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              <div key={t.test} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{t.test}</p>
+                <p className="text-sm text-muted-foreground">{t.detail}</p>
               </div>
             ))}
           </div>
@@ -361,9 +361,9 @@ const TransfusionCoagulationTopic = () => {
               { principle: "AT Replacement", management: "AT concentrate if AT <50% and not responding. KyberSept trial — no overall mortality benefit in sepsis-DIC, but subgroup signal without heparin. Not routine." },
               { principle: "Activated Protein C", management: "Drotrecogin alfa — withdrawn (2011) after PROWESS-SHOCK showed no benefit. Historical/exam interest only." },
             ].map((m) => (
-              <div key={m.principle} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[130px]">{m.principle}</span>
-                <span className="text-sm text-muted-foreground">{m.management}</span>
+              <div key={m.principle} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{m.principle}</p>
+                <p className="text-sm text-muted-foreground">{m.management}</p>
               </div>
             ))}
           </div>

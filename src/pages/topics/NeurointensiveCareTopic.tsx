@@ -264,9 +264,9 @@ const NeurointensiveCareTopic = () => {
               { test: "EEG", detail: "Diffuse slowing, epileptiform activity. Extreme delta brush pattern characteristic (but not pathognomonic) of anti-NMDAR encephalitis." },
               { test: "Tumour Screen", detail: "CT/MRI/USS pelvis (ovarian teratoma — NMDAR). CT chest/abdo (thymoma — CASPR2; lung/breast — GABA-B/AMPAR). Consider PET-CT if initial imaging negative." },
             ].map((t) => (
-              <div key={t.test} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[90px]">{t.test}</span>
-                <span className="text-sm text-muted-foreground">{t.detail}</span>
+              <div key={t.test} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{t.test}</p>
+                <p className="text-sm text-muted-foreground">{t.detail}</p>
               </div>
             ))}
           </div>
@@ -281,9 +281,9 @@ const NeurointensiveCareTopic = () => {
               { system: "Psychiatric", management: "Psychosis, agitation, catatonia common in anti-NMDAR. Avoid antipsychotics if possible (worsen dyskinesias, NMS risk). Low-dose benzodiazepines preferred for agitation. Dexmedetomidine useful in ICU." },
               { system: "Sodium", management: "Anti-LGI1: hyponatraemia (SIADH) — may be severe. Fluid restriction, consider tolvaptan cautiously. Monitor closely during immunotherapy as sodium may correct rapidly." },
             ].map((s) => (
-              <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[110px]">{s.system}</span>
-                <span className="text-sm text-muted-foreground">{s.management}</span>
+              <div key={s.system} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.system}</p>
+                <p className="text-sm text-muted-foreground">{s.management}</p>
               </div>
             ))}
           </div>
@@ -325,9 +325,9 @@ const NeurointensiveCareTopic = () => {
               { ab: "Anti-LGI1", prognosis: "Good response to immunotherapy. Seizures often refractory to AEDs but respond well to steroids/IVIg. Cognitive impairment may persist. Hyponatraemia resolves with treatment." },
               { ab: "Paraneoplastic (GABA-B/AMPAR)", prognosis: "Prognosis depends on underlying malignancy. Poorer if tumour not identified or not resectable. May respond partially to immunotherapy." },
             ].map((p) => (
-              <div key={p.ab} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[120px]">{p.ab}</span>
-                <span className="text-sm text-muted-foreground">{p.prognosis}</span>
+              <div key={p.ab} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{p.ab}</p>
+                <p className="text-sm text-muted-foreground">{p.prognosis}</p>
               </div>
             ))}
           </div>
@@ -368,9 +368,9 @@ const NeurointensiveCareTopic = () => {
               { indication: "Autonomic", detail: "Labile BP (hyper/hypotension), tachycardia/bradycardia, arrhythmias, urinary retention, ileus. Autonomic dysfunction present in ~70% of ventilated patients." },
               { indication: "Rapid Progression", detail: "Inability to walk within 1 week of onset. Rapid deterioration of power — may need elective intubation before crisis." },
             ].map((i) => (
-              <div key={i.indication} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{i.indication}</span>
-                <span className="text-sm text-muted-foreground">{i.detail}</span>
+              <div key={i.indication} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{i.indication}</p>
+                <p className="text-sm text-muted-foreground">{i.detail}</p>
               </div>
             ))}
           </div>
@@ -385,9 +385,9 @@ const NeurointensiveCareTopic = () => {
               { system: "Nutrition", management: "Early enteral nutrition. NG/NJ tube if bulbar dysfunction. Assess swallowing formally before oral intake. Caloric needs may be lower (reduced muscle activity) but catabolism is high." },
               { system: "Rehabilitation", management: "Early physiotherapy — passive movements to prevent contractures. Psychological support — patients often fully aware while paralysed (locked-in-like experience). Fatigue is a major long-term issue even after recovery." },
             ].map((s) => (
-              <div key={s.system} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{s.system}</span>
-                <span className="text-sm text-muted-foreground">{s.management}</span>
+              <div key={s.system} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.system}</p>
+                <p className="text-sm text-muted-foreground">{s.management}</p>
               </div>
             ))}
           </div>
@@ -430,9 +430,9 @@ const NeurointensiveCareTopic = () => {
               { factor: "Poor Prognostic Features", detail: "Age >60, rapid onset (<7 days to ventilation), preceding Campylobacter, axonal subtype (AMAN/AMSAN), need for ventilation, absent CMAPs on NCS." },
               { factor: "Recovery", detail: "~80% walk independently at 6 months. ~20% have significant residual disability. Mortality ~5% (usually autonomic, PE, nosocomial infection). Fatigue persists in >60% at 1 year." },
             ].map((f) => (
-              <div key={f.factor} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{f.factor}</span>
-                <span className="text-sm text-muted-foreground">{f.detail}</span>
+              <div key={f.factor} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{f.factor}</p>
+                <p className="text-sm text-muted-foreground">{f.detail}</p>
               </div>
             ))}
           </div>
