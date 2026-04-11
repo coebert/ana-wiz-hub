@@ -382,6 +382,92 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Negative cultures:</span> If cultures negative at 48–72h and clinical improvement, strongly consider stopping antibiotics — the diagnosis may not be VAP.</li>
           </ul>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Events (VAE) — CDC Surveillance Framework</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            In 2013, the CDC replaced the traditional VAP surveillance definition with a tiered, objective framework called <span className="font-semibold text-foreground">Ventilator-Associated Events (VAE)</span>. This was designed to improve reproducibility, reduce subjective interpretation (particularly of CXR), and capture a broader range of complications in mechanically ventilated patients — not just pneumonia.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">The Three-Tier Hierarchy</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Each tier is a subset of the one above — every possible VAP is an IVAC, and every IVAC is a VAC:
+          </p>
+          <div className="space-y-3 mb-4">
+            {[
+              {
+                tier: "Tier 1 — Ventilator-Associated Condition (VAC)",
+                criteria: "After ≥2 calendar days of stable or decreasing ventilator settings, the patient develops sustained respiratory deterioration defined as: increase in daily minimum FiO₂ ≥0.20 (20 percentage points) for ≥2 calendar days, OR increase in daily minimum PEEP ≥3 cmH₂O for ≥2 calendar days.",
+                significance: "Captures any cause of respiratory deterioration — pneumonia, fluid overload, atelectasis, ARDS, PE. Most objective and reproducible tier. ~5–10% of ventilated patients develop VAC."
+              },
+              {
+                tier: "Tier 2 — Infection-Related VAC (IVAC)",
+                criteria: "VAC plus evidence of infection: temperature >38°C or <36°C OR WCC ≥12,000 or ≤4,000 cells/mm³, AND a new antimicrobial agent started and continued for ≥4 qualifying calendar days.",
+                significance: "Narrows VAC to cases where infection is suspected and acted upon. The 4-day antibiotic criterion ensures clinician commitment to an infectious diagnosis, not empirical cover that was quickly stopped."
+              },
+              {
+                tier: "Tier 3 — Possible VAP (PVAP)",
+                criteria: "IVAC plus one of: (1) purulent respiratory secretions (≥25 neutrophils and ≤10 squamous epithelial cells per LPF) AND a positive quantitative or semi-quantitative respiratory culture, OR (2) positive lung histopathology, OR (3) positive Legionella or respiratory virus test.",
+                significance: "Closest to the traditional VAP definition but still does not require CXR interpretation. Uses objective microbiological and histopathological criteria."
+              },
+            ].map((t) => (
+              <div key={t.tier} className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{t.tier}</p>
+                <p className="text-sm text-muted-foreground mt-1"><span className="font-medium text-foreground">Criteria: </span>{t.criteria}</p>
+                <p className="text-sm text-muted-foreground mt-1"><span className="font-medium text-foreground">Significance: </span>{t.significance}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">Key Definitions & Timings</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { label: "Baseline period", detail: "≥2 calendar days of stable or decreasing daily minimum FiO₂ or PEEP (the 'period of stability')." },
+              { label: "Sustained deterioration", detail: "The increase in FiO₂ or PEEP must persist for ≥2 consecutive calendar days to qualify as a VAC." },
+              { label: "VAE window period", detail: "Infection criteria (temperature, WCC, antibiotics) must occur within a window from 2 days before to 2 days after VAC onset." },
+              { label: "Day 1 of MV", detail: "Day of intubation or admission to the unit while ventilated. VAE cannot occur before calendar day 3 (requires ≥2 days of baseline stability)." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-xs text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">VAC vs Traditional VAP — Why It Matters</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/30">
+                  <th className="text-left p-3 border-b border-border text-foreground">Feature</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">Traditional VAP</th>
+                  <th className="text-left p-3 border-b border-border text-foreground">CDC VAE Framework</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">CXR interpretation</td><td className="p-3 border-b border-border">Required — subjective, poor inter-rater reliability</td><td className="p-3 border-b border-border">Not required — uses objective FiO₂/PEEP data</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Reproducibility</td><td className="p-3 border-b border-border">Low — rates vary 10-fold between institutions</td><td className="p-3 border-b border-border">High — algorithmic, can be auto-extracted from EHR</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Scope</td><td className="p-3 border-b border-border">Pneumonia only</td><td className="p-3 border-b border-border">All causes of respiratory deterioration (broader)</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Clinical utility</td><td className="p-3 border-b border-border">Guides individual patient treatment</td><td className="p-3 border-b border-border">Designed for surveillance and benchmarking, not individual diagnosis</td></tr>
+                <tr><td className="p-3 border-b border-border font-medium text-foreground">Outcome association</td><td className="p-3 border-b border-border">Variable</td><td className="p-3 border-b border-border">VAC independently associated with mortality, prolonged MV, and ICU LOS</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mb-2">VAE Prevention Strategies</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Because VAC captures non-infectious complications, prevention extends beyond the traditional VAP bundle:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+            <li><span className="font-semibold text-foreground">Minimise ventilator days:</span> Daily SBTs, protocolised weaning, early mobilisation</li>
+            <li><span className="font-semibold text-foreground">Conservative fluid management:</span> Reduces pulmonary oedema — a common cause of VAC (FACTT trial: conservative strategy reduced ventilator days)</li>
+            <li><span className="font-semibold text-foreground">Lung-protective ventilation:</span> Prevents VILI-related deterioration that would trigger VAC criteria</li>
+            <li><span className="font-semibold text-foreground">Aspiration prevention:</span> HOB elevation, subglottic drainage, cuff pressure management</li>
+            <li><span className="font-semibold text-foreground">Sedation minimisation:</span> Light sedation targets (RASS 0 to −2) reduce atelectasis and promote spontaneous breathing</li>
+            <li><span className="font-semibold text-foreground">VTE prophylaxis:</span> PE can cause VAC by increasing FiO₂/PEEP requirements</li>
+            <li><span className="font-semibold text-foreground">Transfusion restriction:</span> Liberal transfusion associated with pulmonary complications (TRICC, TRISS trials)</li>
+          </ul>
+        </div>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
@@ -390,15 +476,15 @@ const MechanicalVentilationTopic = () => {
         "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",
         "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
         "Daily SBTs are the best strategy for weaning — do not delay",
-        "RSBI (f/VT) <105 breaths/min/L predicts successful extubation",
         "Driving pressure (Pplat - PEEP) is the strongest predictor of ARDS mortality",
         "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance",
         "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
         "ACURASYS showed NMB benefit vs deep sedation; ROSE showed no benefit vs light sedation",
-        "Cisatracurium: organ-independent Hofmann elimination; rocuronium: sugammadex-reversible",
         "VAP prevention bundle: HOB elevation, daily sedation hold, subglottic drainage, oral care, cuff pressure 20–30",
         "VAP diagnosis: new CXR infiltrate + ≥2 clinical criteria + quantitative cultures (BAL ≥10⁴ CFU/mL)",
-        "Treat VAP for 7 days; de-escalate at 48–72h based on cultures; use PCT to guide stopping",
+        "Treat VAP for 7 days; de-escalate at 48–72h; use PCT to guide stopping",
+        "VAE: CDC tiered framework — VAC (FiO₂/PEEP deterioration) → IVAC (+ infection signs) → Possible VAP (+ micro)",
+        "VAC is defined by ↑FiO₂ ≥0.20 or ↑PEEP ≥3 sustained for ≥2 days after ≥2 days of stability",
         "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
       ]} />
 
