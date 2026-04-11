@@ -188,7 +188,7 @@ const ICPMonitoringDevicesDiagram = () => {
 
         <svg viewBox="0 0 440 220" className="w-full max-w-lg mx-auto mb-4" aria-label="Optic nerve sheath diameter measurement">
           {/* Eye globe */}
-          <circle cx="150" cy="110" r="55" fill="hsl(var(--secondary))" opacity="0.3" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
+          <circle cx="150" cy="110" r="55" fill="hsl(var(--secondary))" stroke="hsl(var(--foreground))" strokeWidth="2" opacity="0.4" />
           {/* Lens */}
           <ellipse cx="105" cy="110" rx="8" ry="18" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.3" />
           {/* Optic nerve */}
