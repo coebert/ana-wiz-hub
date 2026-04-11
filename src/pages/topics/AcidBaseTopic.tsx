@@ -56,7 +56,7 @@ const AcidBaseTopic = () => {
           <div className="space-y-3">
             {[
               { var: "PaCO₂", detail: "Respiratory component. Regulated by ventilation. Acts as an independent variable that directly influences water dissociation and thus [H⁺]." },
-              { var: "Total weak acids (Atot)", detail: "Mainly albumin and phosphate. These partially dissociate and contribute to [H⁺]. ↓Albumin → metabolic alkalosis (each 10 g/L decrease ↑ base excess by ~2.5 mEq/L). Common in ICU patients — 'occult alkalosis' masks concurrent acidosis." },
+              { var: "Total weak acids (Atot)", detail: "Atot stands for 'A-total' — the total concentration of all non-volatile weak acids in plasma. 'A' represents the weak acid; 'tot' denotes the sum of both dissociated (A⁻) and undissociated (HA) forms. In practice, Atot is dominated by albumin (~80%) and inorganic phosphate (~20%). These partially dissociate at physiological pH and contribute to [H⁺]. ↓Albumin → ↓Atot → metabolic alkalosis (each 10 g/L decrease ↑ base excess by ~2.5 mEq/L). Common in ICU patients — this 'occult alkalosis' masks concurrent acidosis." },
             ].map((v) => (
               <div key={v.var} className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">{v.var}</p>
