@@ -7,7 +7,8 @@ import * as THREE from "three";
 
 type StructureKey =
   | "lca" | "lad" | "lcx" | "rca" | "pda"
-  | "sa-node" | "av-node" | "bundle-his" | "left-bundle" | "right-bundle" | "purkinje"
+  | "diagonal" | "om" | "am" | "septal-perf" | "coronary-sinus"
+  | "sa-node" | "av-node" | "bundle-his" | "left-bundle" | "left-anterior-fascicle" | "left-posterior-fascicle" | "right-bundle" | "purkinje"
   | "mitral" | "aortic" | "tricuspid" | "pulmonary";
 
 interface Structure {
