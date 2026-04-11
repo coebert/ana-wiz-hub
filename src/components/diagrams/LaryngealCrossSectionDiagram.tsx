@@ -185,10 +185,16 @@ const LaryngealCrossSectionDiagram = () => {
         <TabsContent value="sagittal">
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
-              <svg viewBox="0 0 260 310" width="260" height="310" className="border border-border rounded">
+              <svg viewBox="0 0 280 340" width="280" height="340" className="border border-border rounded">
                 {/* Background: pharyngeal/airway lumen */}
-                <path d="M110,20 C110,30 108,45 106,60 C104,78 103,95 105,110 C107,125 109,140 110,155 C110,168 108,180 105,195 C103,208 102,220 103,235 C104,250 105,265 105,280 L155,280 C155,265 156,250 157,235 C158,220 157,208 155,195 C152,180 150,168 150,155 C151,140 153,125 155,110 C157,95 156,78 154,60 C152,45 150,30 150,20 Z"
+                <path d="M120,20 C120,30 118,45 116,60 C114,78 113,95 115,110 C117,125 119,140 120,155 C120,168 118,180 115,195 C113,208 112,220 113,235 C114,250 115,265 115,280 L165,280 C165,265 166,250 167,235 C168,220 167,208 165,195 C162,180 160,168 160,155 C161,140 163,125 165,110 C167,95 166,78 164,60 C162,45 160,30 160,20 Z"
                   fill="hsl(200, 30%, 92%)" opacity="0.15" stroke="none" />
+
+                {/* Posterior pharyngeal wall / vertebral bodies */}
+                <rect x="165" y="30" width="12" height="270" rx="4" fill="hsl(30, 20%, 75%)" opacity="0.12" />
+                {[50, 90, 130, 170, 210, 250].map((y, i) => (
+                  <line key={`vert-${i}`} x1="166" y1={y} x2="176" y2={y} stroke="hsl(30, 20%, 60%)" strokeWidth="0.5" opacity="0.2" />
+                ))}
 
                 {/* Aryepiglottic fold */}
                 <path
