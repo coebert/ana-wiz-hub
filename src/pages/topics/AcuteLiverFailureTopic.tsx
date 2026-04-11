@@ -81,10 +81,12 @@ const AcuteLiverFailureTopic = () => {
               { grade: "ACLF Grade 2", description: "Two organ failures", mortality: "~32%" },
               { grade: "ACLF Grade 3", description: "Three or more organ failures", mortality: "~75%" },
             ].map((g) => (
-              <div key={g.grade} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-[100px]">{g.grade}</span>
-                <span className="text-sm text-muted-foreground flex-1">{g.description}</span>
-                <span className="text-sm font-semibold text-destructive whitespace-nowrap">28-d mortality: {g.mortality}</span>
+              <div key={g.grade} className="p-3 rounded border border-border">
+                <div className="flex justify-between items-start mb-1">
+                  <p className="font-bold text-primary text-sm">{g.grade}</p>
+                  <span className="text-sm font-semibold text-destructive">28-d mortality: {g.mortality}</span>
+                </div>
+                <p className="text-sm text-muted-foreground">{g.description}</p>
               </div>
             ))}
           </div>

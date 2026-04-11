@@ -65,9 +65,9 @@ const AirwayAnatomyTopic = () => {
               { nerve: "Unilateral RLN palsy", detail: "Cord adducts to paramedian position. Hoarseness but airway usually adequate." },
               { nerve: "Bilateral RLN palsy", detail: "Both cords paramedian → stridor, airway obstruction. May require emergency intubation or tracheostomy." },
             ].map((n) => (
-              <div key={n.nerve} className="flex gap-3 p-3 rounded border border-border">
-                <span className="font-bold text-primary text-sm whitespace-nowrap min-w-fit">{n.nerve}</span>
-                <span className="text-sm text-muted-foreground">{n.detail}</span>
+              <div key={n.nerve} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{n.nerve}</p>
+                <p className="text-sm text-muted-foreground">{n.detail}</p>
               </div>
             ))}
           </div>
