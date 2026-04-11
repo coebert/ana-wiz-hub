@@ -1,168 +1,190 @@
 const AxialView = () => (
-  <svg viewBox="0 0 500 400" className="w-full">
+  <svg viewBox="0 0 520 420" className="w-full">
     {/* Background body outline — thoracic cross-section */}
-    <ellipse cx="250" cy="185" rx="210" ry="160" fill="hsl(var(--secondary)/0.3)" stroke="hsl(var(--border))" strokeWidth="2" />
-
-    {/* Vertebral body (posterior) */}
-    <rect x="215" y="275" width="70" height="45" rx="8" fill="hsl(var(--muted-foreground)/0.15)" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
-    <text x="250" y="300" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">Vertebral body</text>
-
-    {/* Spinal cord */}
-    <circle cx="250" cy="265" r="9" fill="hsl(var(--muted-foreground)/0.2)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-    <text x="250" y="268" fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="middle">SC</text>
-
-    {/* Descending Aorta */}
-    <circle cx="205" cy="248" r="24" fill="hsl(0 65% 50% / 0.15)" stroke="hsl(0 65% 50%)" strokeWidth="2.5" />
-    <text x="205" y="245" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Descending</text>
-    <text x="205" y="255" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Aorta</text>
-    <circle cx="205" cy="263" r="3" fill="hsl(0 65% 50%)" />
-    <text x="218" y="267" fontSize="5" fill="hsl(0 65% 50%)">flow ⊙</text>
-
-    {/* Oesophagus */}
-    <ellipse cx="250" cy="218" rx="15" ry="11" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
-    <text x="250" y="221" fontSize="6" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="bold">Oesoph.</text>
-
-    {/* Probe */}
-    <rect x="244" y="210" width="12" height="16" rx="4" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-    <text x="250" y="222" fontSize="4.5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="bold">Probe</text>
-
-    {/* Doppler beam */}
-    <line x1="248" y1="224" x2="215" y2="242" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 2" />
-    <line x1="248" y1="224" x2="195" y2="238" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="3 2" opacity="0.5" />
-    <line x1="248" y1="224" x2="218" y2="256" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="3 2" opacity="0.5" />
-    <text x="218" y="235" fontSize="6" fill="hsl(var(--primary))" fontWeight="600" transform="rotate(-25, 218, 235)">Doppler beam</text>
-
-    {/* Trachea */}
-    <circle cx="250" cy="140" r="17" fill="hsl(200 40% 90% / 0.3)" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
-    <text x="250" y="138" fontSize="6.5" fill="hsl(200 40% 50%)" textAnchor="middle">Trachea</text>
-    <text x="250" y="147" fontSize="5" fill="hsl(200 40% 50%)" textAnchor="middle">(carina)</text>
-
-    {/* Lungs */}
-    <ellipse cx="140" cy="170" rx="52" ry="55" fill="hsl(200 30% 85% / 0.2)" stroke="hsl(200 30% 60%)" strokeWidth="1" strokeDasharray="3 2" />
-    <text x="140" y="168" fontSize="7" fill="hsl(200 30% 60%)" textAnchor="middle">Left lung</text>
-    <ellipse cx="360" cy="170" rx="52" ry="55" fill="hsl(200 30% 85% / 0.2)" stroke="hsl(200 30% 60%)" strokeWidth="1" strokeDasharray="3 2" />
-    <text x="360" y="168" fontSize="7" fill="hsl(200 30% 60%)" textAnchor="middle">Right lung</text>
-
-    {/* Sternum */}
-    <rect x="230" y="38" width="40" height="16" rx="4" fill="hsl(var(--muted-foreground)/0.12)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-    <text x="250" y="49" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Sternum</text>
+    <ellipse cx="260" cy="200" rx="220" ry="170" fill="hsl(var(--secondary)/0.3)" stroke="hsl(var(--border))" strokeWidth="2" />
 
     {/* Orientation */}
-    <text x="250" y="30" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">ANTERIOR</text>
-    <text x="250" y="348" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">POSTERIOR</text>
-    <text x="30" y="185" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">RIGHT</text>
-    <text x="470" y="185" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">LEFT</text>
+    <text x="260" y="22" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">ANTERIOR</text>
+    <text x="260" y="390" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">POSTERIOR</text>
+    <text x="28" y="200" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">RIGHT</text>
+    <text x="492" y="200" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">LEFT</text>
 
-    {/* Callout */}
-    <line x1="262" y1="210" x2="340" y2="90" stroke="hsl(var(--border))" strokeWidth="0.8" />
-    <rect x="340" y="72" width="140" height="38" rx="5" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
-    <text x="410" y="85" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Probe at 35-40 cm from teeth</text>
-    <text x="410" y="96" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Rotated to face aorta (max signal)</text>
-    <text x="410" y="105" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">4 MHz continuous-wave Doppler</text>
+    {/* Sternum */}
+    <rect x="238" y="38" width="44" height="18" rx="4" fill="hsl(var(--muted-foreground)/0.12)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
+    <text x="260" y="50" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">Sternum</text>
 
-    {/* Doppler equation */}
-    <line x1="190" y1="270" x2="60" y2="290" stroke="hsl(var(--border))" strokeWidth="0.8" />
-    <rect x="15" y="282" width="148" height="48" rx="5" fill="hsl(0 65% 50% / 0.05)" stroke="hsl(0 65% 50% / 0.3)" strokeWidth="1" />
-    <text x="89" y="295" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Doppler Equation</text>
-    <text x="89" y="306" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Δf = 2 · f₀ · v · cos θ / c</text>
-    <text x="89" y="316" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">v = blood velocity, θ ≈ 45°</text>
-    <text x="89" y="326" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">Frequency shift → velocity → flow</text>
+    {/* Left lung */}
+    <ellipse cx="145" cy="185" rx="58" ry="62" fill="hsl(200 30% 85% / 0.2)" stroke="hsl(200 30% 60%)" strokeWidth="1" strokeDasharray="3 2" />
+    <text x="145" y="185" fontSize="8" fill="hsl(200 30% 60%)" textAnchor="middle">Left lung</text>
 
-    <text x="250" y="370" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Axial (transverse) cross-section</text>
-    <text x="250" y="382" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">T5-T6 level, viewed from below</text>
+    {/* Right lung */}
+    <ellipse cx="375" cy="185" rx="58" ry="62" fill="hsl(200 30% 85% / 0.2)" stroke="hsl(200 30% 60%)" strokeWidth="1" strokeDasharray="3 2" />
+    <text x="375" y="185" fontSize="8" fill="hsl(200 30% 60%)" textAnchor="middle">Right lung</text>
+
+    {/* Trachea */}
+    <circle cx="260" cy="120" r="20" fill="hsl(200 40% 90% / 0.3)" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
+    <text x="260" y="118" fontSize="7" fill="hsl(200 40% 50%)" textAnchor="middle">Trachea</text>
+    <text x="260" y="127" fontSize="6" fill="hsl(200 40% 50%)" textAnchor="middle">(carina)</text>
+
+    {/* Vertebral body (posterior) */}
+    <rect x="225" y="300" width="70" height="48" rx="8" fill="hsl(var(--muted-foreground)/0.15)" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
+    <text x="260" y="322" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">Vertebral</text>
+    <text x="260" y="334" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">body</text>
+
+    {/* Spinal cord */}
+    <circle cx="260" cy="285" r="10" fill="hsl(var(--muted-foreground)/0.2)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
+    <text x="260" y="288" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">SC</text>
+
+    {/* Descending Aorta */}
+    <circle cx="200" cy="260" r="28" fill="hsl(0 65% 50% / 0.12)" stroke="hsl(0 65% 50%)" strokeWidth="2.5" />
+    <circle cx="200" cy="272" r="3" fill="hsl(0 65% 50%)" />
+
+    {/* Aorta label — positioned to the left, outside the circle */}
+    <line x1="175" y1="250" x2="120" y2="230" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <text x="118" y="225" fontSize="8" fill="hsl(0 65% 50%)" textAnchor="end" fontWeight="bold">Descending</text>
+    <text x="118" y="236" fontSize="8" fill="hsl(0 65% 50%)" textAnchor="end" fontWeight="bold">Aorta</text>
+    <text x="118" y="248" fontSize="6.5" fill="hsl(0 65% 50%)" textAnchor="end">Blood flow ⊙ (out of page)</text>
+
+    {/* Oesophagus — between trachea and aorta */}
+    <ellipse cx="260" cy="215" rx="16" ry="13" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
+
+    {/* Oesophagus label — positioned to the right */}
+    <line x1="276" y1="210" x2="310" y2="195" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <text x="315" y="192" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">Oesophagus</text>
+
+    {/* Doppler probe inside oesophagus */}
+    <rect x="253" y="207" width="14" height="16" rx="5" fill="hsl(var(--primary)/0.35)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+
+    {/* Probe label */}
+    <line x1="267" y1="220" x2="315" y2="230" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <text x="318" y="228" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">Doppler probe</text>
+    <text x="318" y="238" fontSize="6" fill="hsl(var(--muted-foreground))">4 MHz CW Doppler</text>
+
+    {/* Doppler beam — angled toward aorta */}
+    <polygon points="257,222 210,248 210,260 215,268 257,222"
+      fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="3 2" />
+    <text x="222" y="243" fontSize="6.5" fill="hsl(var(--primary))" fontWeight="600" transform="rotate(-30, 222, 243)">Doppler beam</text>
+
+    {/* 45° angle arc */}
+    <path d="M 257,210 A 12,12 0 0,0 248,222" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+    <text x="240" y="210" fontSize="5.5" fill="hsl(var(--primary))">45°</text>
+
+    {/* Callout: probe insertion */}
+    <rect x="348" y="95" width="150" height="40" rx="5" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
+    <text x="423" y="110" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Probe at 35-40 cm from teeth</text>
+    <text x="423" y="121" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Rotated to face aorta (max signal)</text>
+    <text x="423" y="131" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Measures descending aortic velocity</text>
+    <line x1="348" y1="120" x2="276" y2="205" stroke="hsl(var(--border))" strokeWidth="0.8" />
+
+    {/* Callout: Doppler equation */}
+    <rect x="55" y="310" width="148" height="52" rx="5" fill="hsl(0 65% 50% / 0.05)" stroke="hsl(0 65% 50% / 0.3)" strokeWidth="1" />
+    <text x="129" y="325" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Doppler Equation</text>
+    <text x="129" y="337" fontSize="6.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">Δf = 2 · f₀ · v · cos θ / c</text>
+    <text x="129" y="349" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">v = blood velocity, θ ≈ 45°</text>
+    <text x="129" y="359" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Frequency shift → velocity → flow</text>
+
+    <text x="260" y="405" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Axial (transverse) cross-section</text>
+    <text x="260" y="416" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">T5-T6 level, viewed from below</text>
   </svg>
 );
 
 const SagittalView = () => (
-  <svg viewBox="0 0 500 400" className="w-full">
+  <svg viewBox="0 0 520 420" className="w-full">
     {/* Body outline — sagittal thorax */}
-    <path d="M 80 50 Q 120 30 250 25 Q 380 30 420 50 L 430 340 Q 380 360 250 365 Q 120 360 70 340 Z"
+    <path d="M 70 55 Q 110 35 240 30 Q 370 35 410 55 L 420 340 Q 370 360 240 365 Q 110 360 60 340 Z"
       fill="hsl(var(--secondary)/0.2)" stroke="hsl(var(--border))" strokeWidth="1.5" />
 
-    {/* ─── Vertebral column (posterior, right side) ─── */}
-    {[55, 95, 135, 175, 215, 255, 295].map((y, i) => (
-      <g key={i}>
-        <rect x="350" y={y} width="50" height="32" rx="5" fill="hsl(var(--muted-foreground)/0.12)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
-        <text x="375" y={y + 20} fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">T{i + 2}</text>
-      </g>
-    ))}
-    <text x="375" y="345" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">Spine</text>
-
-    {/* ─── Descending Aorta (runs parallel anterior to spine) ─── */}
-    <rect x="310" y="45" width="22" height="290" rx="10" fill="hsl(0 65% 50% / 0.12)" stroke="hsl(0 65% 50%)" strokeWidth="2" />
-    <text x="321" y="200" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold" transform="rotate(-90, 321, 200)">DESCENDING AORTA</text>
-    {/* Flow arrow downward */}
-    <line x1="321" y1="60" x2="321" y2="320" stroke="hsl(0 65% 50%)" strokeWidth="1.2" markerEnd="url(#sagArrowRed)" />
-
-    {/* ─── Oesophagus (anterior to aorta) ─── */}
-    <rect x="270" y="45" width="18" height="290" rx="8" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
-    <text x="279" y="200" fontSize="6.5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="bold" transform="rotate(-90, 279, 200)">OESOPHAGUS</text>
-
-    {/* ─── Doppler probe inside oesophagus ─── */}
-    <rect x="273" y="165" width="12" height="55" rx="5" fill="hsl(var(--primary)/0.35)" stroke="hsl(var(--primary))" strokeWidth="2" />
-    <text x="279" y="195" fontSize="5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="bold" transform="rotate(-90, 279, 195)">PROBE</text>
-
-    {/* Probe cable going up through oesophagus & out mouth */}
-    <line x1="279" y1="165" x2="279" y2="45" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="3 2" />
-    <text x="279" y="38" fontSize="6" fill="hsl(var(--primary))" textAnchor="middle">↑ to mouth</text>
-
-    {/* ─── Doppler beam from probe toward aorta ─── */}
-    <polygon points="285,185 310,175 310,205" fill="hsl(var(--primary)/0.12)" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="3 2" />
-    <text x="300" y="215" fontSize="5.5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="600">Beam</text>
-    <text x="300" y="223" fontSize="5" fill="hsl(var(--primary))" textAnchor="middle">(45° to flow)</text>
-
-    {/* ─── Trachea (anterior to oesophagus, upper portion) ─── */}
-    <rect x="220" y="45" width="30" height="120" rx="12" fill="hsl(200 40% 90% / 0.25)" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
-    <text x="235" y="110" fontSize="6" fill="hsl(200 40% 50%)" textAnchor="middle" transform="rotate(-90, 235, 110)">TRACHEA</text>
-    {/* Carina / bifurcation */}
-    <line x1="232" y1="165" x2="210" y2="190" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
-    <line x1="238" y1="165" x2="250" y2="190" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
-    <text x="230" y="175" fontSize="5" fill="hsl(200 40% 50%)" textAnchor="middle">Carina</text>
-
-    {/* ─── Heart (anterior, left side) ─── */}
-    <ellipse cx="160" cy="175" rx="60" ry="55" fill="hsl(0 50% 50% / 0.06)" stroke="hsl(0 50% 50% / 0.4)" strokeWidth="1.5" strokeDasharray="4 3" />
-    <text x="160" y="170" fontSize="8" fill="hsl(0 50% 50% / 0.6)" textAnchor="middle">Heart</text>
-    <text x="160" y="182" fontSize="6" fill="hsl(0 50% 50% / 0.4)" textAnchor="middle">(LV posterior)</text>
-
-    {/* Aortic arch */}
-    <path d="M 180 125 Q 200 60 260 55 Q 300 50 315 55" fill="none" stroke="hsl(0 65% 50%)" strokeWidth="2" strokeDasharray="4 3" />
-    <text x="240" y="70" fontSize="6" fill="hsl(0 65% 50%)" textAnchor="middle">Aortic arch</text>
-
-    {/* ─── Depth markings on probe cable ─── */}
-    {[85, 105, 125, 145].map((y, i) => (
-      <g key={i}>
-        <line x1="274" y1={y} x2="270" y2={y} stroke="hsl(var(--primary))" strokeWidth="1" />
-        <text x="266" y={y + 2} fontSize="4.5" fill="hsl(var(--primary))" textAnchor="end">{25 + i * 5} cm</text>
-      </g>
-    ))}
-
-    {/* T5-T6 level indicator */}
-    <line x1="100" y1="190" x2="430" y2="190" stroke="hsl(var(--foreground)/0.15)" strokeWidth="0.8" strokeDasharray="6 3" />
-    <text x="95" y="188" fontSize="6" fill="hsl(var(--foreground))" textAnchor="end" fontWeight="600">T5-T6</text>
-    <text x="95" y="197" fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="end">optimal level</text>
-
     {/* Orientation */}
-    <text x="115" y="25" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">ANTERIOR</text>
-    <text x="395" y="25" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">POSTERIOR</text>
-    <text x="250" y="15" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">SUPERIOR ↑</text>
-    <text x="250" y="358" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">↓ INFERIOR</text>
+    <text x="90" y="25" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">ANTERIOR</text>
+    <text x="380" y="25" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">POSTERIOR</text>
+    <text x="240" y="18" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">SUPERIOR ↑</text>
+    <text x="240" y="378" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">↓ INFERIOR</text>
 
-    {/* Annotation callouts */}
-    <rect x="90" y="260" width="138" height="58" rx="5" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
-    <text x="159" y="274" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Probe tip at T5-T6</text>
-    <text x="159" y="285" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">Oesophagus lies directly</text>
-    <text x="159" y="295" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">anterior to descending aorta</text>
-    <text x="159" y="305" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">at this level — ideal window</text>
-    <text x="159" y="315" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">for Doppler insonation</text>
+    {/* ─── Vertebral column (far right) ─── */}
+    {[60, 100, 140, 180, 220, 260, 300].map((y, i) => (
+      <g key={i}>
+        <rect x="380" y={y} width="35" height="32" rx="5" fill="hsl(var(--muted-foreground)/0.12)" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
+        <text x="397" y={y + 20} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">T{i + 2}</text>
+      </g>
+    ))}
+    <text x="397" y="348" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">Spine</text>
 
-    <text x="250" y="380" fontSize="8" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Sagittal (lateral) view</text>
-    <text x="250" y="392" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Left para-sagittal plane</text>
-
+    {/* ─── Descending Aorta (vertical tube, right of centre) ─── */}
+    <rect x="330" y="50" width="24" height="290" rx="11" fill="hsl(0 65% 50% / 0.10)" stroke="hsl(0 65% 50%)" strokeWidth="2" />
+    {/* Flow arrow */}
     <defs>
       <marker id="sagArrowRed" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
         <polygon points="0 0, 6 2, 0 4" fill="hsl(0 65% 50%)" />
       </marker>
     </defs>
+    <line x1="342" y1="65" x2="342" y2="325" stroke="hsl(0 65% 50%)" strokeWidth="1.2" markerEnd="url(#sagArrowRed)" />
+    {/* Aorta label — outside the tube */}
+    <text x="342" y="355" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Descending</text>
+    <text x="342" y="365" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Aorta ↓</text>
+
+    {/* ─── Oesophagus (left of aorta, well separated) ─── */}
+    <rect x="275" y="50" width="20" height="290" rx="9" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+    {/* Oesophagus label — outside, to the left */}
+    <text x="268" y="100" fontSize="7" fill="hsl(var(--primary))" textAnchor="end" fontWeight="bold">Oesophagus</text>
+    <line x1="270" y1="98" x2="275" y2="98" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+
+    {/* ─── Doppler probe inside oesophagus ─── */}
+    <rect x="278" y="175" width="14" height="50" rx="6" fill="hsl(var(--primary)/0.35)" stroke="hsl(var(--primary))" strokeWidth="2" />
+    {/* Probe label */}
+    <text x="268" y="203" fontSize="7" fill="hsl(var(--primary))" textAnchor="end" fontWeight="bold">Probe</text>
+    <line x1="270" y1="201" x2="278" y2="201" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+
+    {/* Probe cable going up */}
+    <line x1="285" y1="175" x2="285" y2="50" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="3 2" />
+    <text x="285" y="42" fontSize="7" fill="hsl(var(--primary))" textAnchor="middle">↑ to mouth</text>
+
+    {/* ─── Doppler beam (cone from probe toward aorta) ─── */}
+    <polygon points="292,192 330,182 330,212"
+      fill="hsl(var(--primary)/0.10)" stroke="hsl(var(--primary))" strokeWidth="1" strokeDasharray="3 2" />
+    {/* Beam label — below the cone, clear of structures */}
+    <text x="310" y="225" fontSize="6.5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="600">Doppler beam</text>
+    <text x="310" y="235" fontSize="6" fill="hsl(var(--primary))" textAnchor="middle">(45° to flow)</text>
+
+    {/* ─── Trachea (anterior, upper portion) ─── */}
+    <rect x="215" y="50" width="28" height="115" rx="12" fill="hsl(200 40% 90% / 0.25)" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
+    <text x="208" y="115" fontSize="7" fill="hsl(200 40% 50%)" textAnchor="end">Trachea</text>
+    <line x1="210" y1="113" x2="215" y2="113" stroke="hsl(200 40% 50%)" strokeWidth="0.8" />
+    {/* Carina / bifurcation */}
+    <line x1="226" y1="165" x2="210" y2="188" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
+    <line x1="234" y1="165" x2="245" y2="188" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
+    <text x="228" y="180" fontSize="6" fill="hsl(200 40% 50%)" textAnchor="middle">Carina</text>
+
+    {/* ─── Heart (anterior) ─── */}
+    <ellipse cx="155" cy="185" rx="55" ry="50" fill="hsl(0 50% 50% / 0.06)" stroke="hsl(0 50% 50% / 0.4)" strokeWidth="1.5" strokeDasharray="4 3" />
+    <text x="155" y="182" fontSize="9" fill="hsl(0 50% 50% / 0.5)" textAnchor="middle">Heart</text>
+    <text x="155" y="195" fontSize="6" fill="hsl(0 50% 50% / 0.4)" textAnchor="middle">(LV posterior)</text>
+
+    {/* Aortic arch */}
+    <path d="M 175 135 Q 200 65 255 58 Q 300 52 330 55" fill="none" stroke="hsl(0 65% 50%)" strokeWidth="2" strokeDasharray="4 3" />
+    <text x="200" y="82" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle">Aortic arch</text>
+
+    {/* ─── Depth markings on probe cable ─── */}
+    {[90, 115, 140, 165].map((y, i) => (
+      <g key={i}>
+        <line x1="278" y1={y} x2="272" y2={y} stroke="hsl(var(--primary))" strokeWidth="1" />
+        <text x="268" y={y + 3} fontSize="5.5" fill="hsl(var(--primary))" textAnchor="end">{25 + i * 5} cm</text>
+      </g>
+    ))}
+
+    {/* T5-T6 level indicator */}
+    <line x1="75" y1="197" x2="420" y2="197" stroke="hsl(var(--foreground)/0.12)" strokeWidth="0.8" strokeDasharray="6 3" />
+    <text x="78" y="193" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">T5-T6</text>
+    <text x="78" y="204" fontSize="5.5" fill="hsl(var(--muted-foreground))">optimal level</text>
+
+    {/* Annotation callout */}
+    <rect x="80" y="265" width="148" height="55" rx="5" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
+    <text x="154" y="280" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Probe tip at T5-T6</text>
+    <text x="154" y="292" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Oesophagus lies directly</text>
+    <text x="154" y="302" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">anterior to descending aorta</text>
+    <text x="154" y="312" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">at this level — ideal window</text>
+
+    <text x="240" y="400" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="bold">Sagittal (lateral) view</text>
+    <text x="240" y="412" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Left para-sagittal plane</text>
   </svg>
 );
 
