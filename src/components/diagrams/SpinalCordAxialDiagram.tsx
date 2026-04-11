@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type TractKey = "dorsal-col" | "lat-cst" | "ant-cst" | "stt" | "post-horn" | "ant-horn" | "lat-horn" | "central" | "asa" | "psa" | "dorsal-root" | "ventral-root";
+type TractKey = "dorsal-col" | "lat-cst" | "ant-cst" | "stt" | "post-horn" | "ant-horn" | "lat-horn" | "central" | "asa" | "psa" | "dorsal-root" | "ventral-root" | "post-spinocerebellar" | "ant-spinocerebellar" | "rubrospinal" | "reticulospinal";
 type SyndromeKey = "anterior" | "central" | "brown-sequard" | "posterior" | "complete";
 type CordLevel = "cervical" | "thoracic" | "lumbar" | "sacral";
 
@@ -57,6 +57,18 @@ const TRACTS: Record<TractKey, TractInfo> = {
   "ventral-root": { label: "Ventral Root", category: "nerve", color: "hsl(150 50% 50%)",
     detail: "Motor efferents from anterior horn (α, γ motor neurons) and sympathetic preganglionic fibres (T1–L2) or parasympathetic (S2–S4). Bell-Magendie law: dorsal = sensory, ventral = motor. Ventral roots join dorsal roots to form mixed spinal nerve in intervertebral foramen.",
     modality: "Motor and autonomic efferents" },
+  "post-spinocerebellar": { label: "Posterior Spinocerebellar Tract", category: "white", color: "hsl(170 50% 45%)",
+    detail: "Originates from Clarke's column (nucleus dorsalis, C8–L2). Carries ipsilateral proprioceptive information from lower limbs to cerebellum via inferior cerebellar peduncle. Does NOT decussate. Relays information about muscle length, tension, and joint position for unconscious coordination.",
+    modality: "Unconscious proprioception (lower limbs — ipsilateral)" },
+  "ant-spinocerebellar": { label: "Anterior Spinocerebellar Tract", category: "white", color: "hsl(160 45% 50%)",
+    detail: "Originates from spinal border cells (L1–L5). Crosses midline in cord, ascends in anterolateral funiculus, enters cerebellum via superior cerebellar peduncle where it crosses AGAIN — net result: ipsilateral information. Carries information about whole-limb movement patterns (Golgi tendon organs).",
+    modality: "Unconscious proprioception (lower limbs — double-cross)" },
+  rubrospinal: { label: "Rubrospinal Tract", category: "white", color: "hsl(15 55% 50%)",
+    detail: "From red nucleus (midbrain), decussates immediately (ventral tegmental decussation), descends in lateral funiculus adjacent to lateral CST. Facilitates flexor motor neurons. Relatively minor in humans compared to other mammals — largely superseded by corticospinal tract. Best developed in cervical cord.",
+    modality: "Flexor motor facilitation (rudimentary in humans)" },
+  reticulospinal: { label: "Reticulospinal Tracts", category: "white", color: "hsl(50 50% 48%)",
+    detail: "Pontine (medial) reticulospinal: ipsilateral, in anterior funiculus — facilitates extensors (antigravity muscles), inhibits flexors. Medullary (lateral) reticulospinal: bilateral, in anterior funiculus — inhibits extensors, facilitates flexors. Important for postural control, muscle tone, and locomotion. Target of volatile anaesthetic agents affecting muscle tone.",
+    modality: "Posture, muscle tone, locomotion (bilateral)" },
 };
 
 const SYNDROMES: Record<SyndromeKey, SyndromeInfo> = {
@@ -212,7 +224,67 @@ const SpinalCordAxialDiagram = () => {
             className="cursor-pointer transition-all duration-200"
             onClick={() => { setSelectedTract(selectedTract === "ant-cst" ? null : "ant-cst"); setSelectedSyndrome(null); }} />
 
-          {/* ═══ GREY MATTER (butterfly/H shape) ═══ */}
+          {/* Posterior Spinocerebellar Tract — posterolateral, between lat CST and cord surface */}
+          <path d={`M${cx - 50},${cy - cordRy + 18} Q${cx - cordRx + 8},${cy - 15} ${cx - cordRx + 12},${cy + 5}
+                    Q${cx - cordRx + 14},${cy + 15} ${cx - 52},${cy + 18}
+                    Q${cx - 48},${cy} ${cx - 50},${cy - cordRy + 18} Z`}
+            fill={TRACTS["post-spinocerebellar"].color} fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.45 : isTractDimmed("post-spinocerebellar") ? 0.04 : 0.08}
+            stroke={TRACTS["post-spinocerebellar"].color} strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "post-spinocerebellar" ? null : "post-spinocerebellar"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 50},${cy - cordRy + 18} Q${cx + cordRx - 8},${cy - 15} ${cx + cordRx - 12},${cy + 5}
+                    Q${cx + cordRx - 14},${cy + 15} ${cx + 52},${cy + 18}
+                    Q${cx + 48},${cy} ${cx + 50},${cy - cordRy + 18} Z`}
+            fill={TRACTS["post-spinocerebellar"].color} fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.45 : isTractDimmed("post-spinocerebellar") ? 0.04 : 0.08}
+            stroke={TRACTS["post-spinocerebellar"].color} strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "post-spinocerebellar" ? null : "post-spinocerebellar"); setSelectedSyndrome(null); }} />
+
+          {/* Anterior Spinocerebellar Tract — anterolateral, superficial to STT */}
+          <path d={`M${cx - 58},${cy + 22} Q${cx - cordRx + 12},${cy + 40} ${cx - cordRx + 18},${cy + cordRy - 25}
+                    Q${cx - 48},${cy + cordRy - 15} ${cx - 42},${cy + 38}
+                    Q${cx - 48},${cy + 30} ${cx - 58},${cy + 22} Z`}
+            fill={TRACTS["ant-spinocerebellar"].color} fillOpacity={isTractHighlighted("ant-spinocerebellar") ? 0.4 : isTractDimmed("ant-spinocerebellar") ? 0.04 : 0.06}
+            stroke={TRACTS["ant-spinocerebellar"].color} strokeWidth={isTractHighlighted("ant-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "ant-spinocerebellar" ? null : "ant-spinocerebellar"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 58},${cy + 22} Q${cx + cordRx - 12},${cy + 40} ${cx + cordRx - 18},${cy + cordRy - 25}
+                    Q${cx + 48},${cy + cordRy - 15} ${cx + 42},${cy + 38}
+                    Q${cx + 48},${cy + 30} ${cx + 58},${cy + 22} Z`}
+            fill={TRACTS["ant-spinocerebellar"].color} fillOpacity={isTractHighlighted("ant-spinocerebellar") ? 0.4 : isTractDimmed("ant-spinocerebellar") ? 0.04 : 0.06}
+            stroke={TRACTS["ant-spinocerebellar"].color} strokeWidth={isTractHighlighted("ant-spinocerebellar") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "ant-spinocerebellar" ? null : "ant-spinocerebellar"); setSelectedSyndrome(null); }} />
+
+          {/* Rubrospinal Tract — small, adjacent to lateral CST */}
+          <path d={`M${cx - 48},${cy - 8} Q${cx - 55},${cy} ${cx - 50},${cy + 10}
+                    Q${cx - 46},${cy + 5} ${cx - 45},${cy - 3} Z`}
+            fill={TRACTS.rubrospinal.color} fillOpacity={isTractHighlighted("rubrospinal") ? 0.45 : isTractDimmed("rubrospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.rubrospinal.color} strokeWidth={isTractHighlighted("rubrospinal") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "rubrospinal" ? null : "rubrospinal"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 48},${cy - 8} Q${cx + 55},${cy} ${cx + 50},${cy + 10}
+                    Q${cx + 46},${cy + 5} ${cx + 45},${cy - 3} Z`}
+            fill={TRACTS.rubrospinal.color} fillOpacity={isTractHighlighted("rubrospinal") ? 0.45 : isTractDimmed("rubrospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.rubrospinal.color} strokeWidth={isTractHighlighted("rubrospinal") ? 1.5 : 0.3} strokeOpacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "rubrospinal" ? null : "rubrospinal"); setSelectedSyndrome(null); }} />
+
+          {/* Reticulospinal Tracts — anterior funiculus, near midline */}
+          <path d={`M${cx - 18},${cy + 25} Q${cx - 28},${cy + 45} ${cx - 22},${cy + cordRy - 15}
+                    Q${cx - 16},${cy + cordRy - 8} ${cx - 16},${cy + 55}
+                    Q${cx - 14},${cy + 35} ${cx - 18},${cy + 25} Z`}
+            fill={TRACTS.reticulospinal.color} fillOpacity={isTractHighlighted("reticulospinal") ? 0.4 : isTractDimmed("reticulospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.reticulospinal.color} strokeWidth={isTractHighlighted("reticulospinal") ? 1.2 : 0.3} strokeOpacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "reticulospinal" ? null : "reticulospinal"); setSelectedSyndrome(null); }} />
+          <path d={`M${cx + 18},${cy + 25} Q${cx + 28},${cy + 45} ${cx + 22},${cy + cordRy - 15}
+                    Q${cx + 16},${cy + cordRy - 8} ${cx + 16},${cy + 55}
+                    Q${cx + 14},${cy + 35} ${cx + 18},${cy + 25} Z`}
+            fill={TRACTS.reticulospinal.color} fillOpacity={isTractHighlighted("reticulospinal") ? 0.4 : isTractDimmed("reticulospinal") ? 0.04 : 0.06}
+            stroke={TRACTS.reticulospinal.color} strokeWidth={isTractHighlighted("reticulospinal") ? 1.2 : 0.3} strokeOpacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}
+            className="cursor-pointer transition-all duration-200"
+            onClick={() => { setSelectedTract(selectedTract === "reticulospinal" ? null : "reticulospinal"); setSelectedSyndrome(null); }} />
           {/* Grey commissure (connecting bar) */}
           <rect x={cx - 10} y={cy - 4} width={20} height={8} rx="2"
             fill={TRACTS["post-horn"].color} fillOpacity={0.3}
@@ -292,6 +364,59 @@ const SpinalCordAxialDiagram = () => {
               <text x={cx + 44} y={cy - 15} fontSize="5" fill={TRACTS["lat-horn"].color} textAnchor="middle" opacity={isTractDimmed("lat-horn") ? 0.05 : 0.5}>IML</text>
             </>
           )}
+
+          {/* Clarke's column (nucleus dorsalis) — at base of posterior horn, thoracic only */}
+          {level.hasLateralHorn && (
+            <>
+              <ellipse cx={cx - 16} cy={cy - 18} rx={5} ry={4}
+                fill="hsl(170 50% 45%)" fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.5 : 0.08}
+                stroke="hsl(170 50% 45%)" strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.2 : 0.4}
+                opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.6} />
+              <ellipse cx={cx + 16} cy={cy - 18} rx={5} ry={4}
+                fill="hsl(170 50% 45%)" fillOpacity={isTractHighlighted("post-spinocerebellar") ? 0.5 : 0.08}
+                stroke="hsl(170 50% 45%)" strokeWidth={isTractHighlighted("post-spinocerebellar") ? 1.2 : 0.4}
+                opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.6} />
+              <text x={cx} y={cy - 25} fontSize="4.5" fill="hsl(170 50% 45%)" textAnchor="middle" opacity={isTractDimmed("post-spinocerebellar") ? 0.05 : 0.4}>Clarke's column</text>
+            </>
+          )}
+
+          {/* Rexed laminae labels (when posterior horn selected) */}
+          {isTractHighlighted("post-horn") && (
+            <g fontSize="4" fill={TRACTS["post-horn"].color} opacity="0.5">
+              <text x={cx - 30} y={cy - 68} textAnchor="middle">I</text>
+              <text x={cx - 29} y={cy - 62} textAnchor="middle" fontWeight="600">II (SG)</text>
+              <text x={cx - 28} y={cy - 55} textAnchor="middle">III-IV</text>
+              <text x={cx - 25} y={cy - 45} textAnchor="middle">V</text>
+              <text x={cx - 18} y={cy - 30} textAnchor="middle">VI</text>
+            </g>
+          )}
+
+          {/* Rexed laminae labels (when anterior horn selected) */}
+          {isTractHighlighted("ant-horn") && (
+            <g fontSize="4" fill={TRACTS["ant-horn"].color} opacity="0.5">
+              <text x={cx - 12} y={cy + 15} textAnchor="middle">VII</text>
+              <text x={cx} y={cy + 6} textAnchor="middle">VIII</text>
+              <text x={cx - 42} y={cy + 55} textAnchor="middle" fontWeight="600">IX (α-MN)</text>
+              <text x={cx} y={cy + 12} textAnchor="middle">X</text>
+            </g>
+          )}
+
+          {/* Anterior white commissure — crossing fibres (STT decussation) */}
+          <g opacity={isTractHighlighted("stt") ? 0.5 : 0.08}>
+            <path d={`M${cx - 8},${cy + 5} Q${cx},${cy + 10} ${cx + 8},${cy + 5}`}
+              stroke={TRACTS.stt.color} strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" />
+            <path d={`M${cx + 8},${cy + 5} Q${cx},${cy + 12} ${cx - 8},${cy + 5}`}
+              stroke={TRACTS.stt.color} strokeWidth="0.6" fill="none" strokeDasharray="1.5 1.5" />
+          </g>
+
+          {/* Vasocorona (pial arterial plexus around cord surface) */}
+          <g opacity={isTractHighlighted("asa") || isTractHighlighted("psa") ? 0.35 : 0.06}>
+            <ellipse cx={cx} cy={cy} rx={cordRx + 5} ry={cordRy + 5}
+              fill="none" stroke="hsl(0 50% 50%)" strokeWidth="0.6" strokeDasharray="3 4" />
+            {isTractHighlighted("asa") && (
+              <text x={cx + cordRx + 12} y={cy} fontSize="5" fill="hsl(0 50% 50%)" opacity="0.5">Vasocorona</text>
+            )}
+          </g>
 
           {/* ═══ BLOOD SUPPLY ═══ */}
           {/* ASA — anterior midline */}
@@ -404,6 +529,13 @@ const SpinalCordAxialDiagram = () => {
             <text x={cx + cordRx + 5} y={cy - 5} textAnchor="start" fill={TRACTS["lat-cst"].color} opacity={isTractDimmed("lat-cst") ? 0.1 : 0.6}>Lat CST</text>
             <text x={cx - cordRx - 5} y={cy + 45} textAnchor="end" fill={TRACTS.stt.color} opacity={isTractDimmed("stt") ? 0.1 : 0.6}>STT</text>
             <text x={cx + cordRx + 5} y={cy + 45} textAnchor="start" fill={TRACTS.stt.color} opacity={isTractDimmed("stt") ? 0.1 : 0.6}>STT</text>
+            {/* New tract labels */}
+            <text x={cx - cordRx - 5} y={cy + 10} textAnchor="end" fontSize="5" fill={TRACTS["post-spinocerebellar"].color} opacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}>PSCT</text>
+            <text x={cx + cordRx + 5} y={cy + 10} textAnchor="start" fontSize="5" fill={TRACTS["post-spinocerebellar"].color} opacity={isTractDimmed("post-spinocerebellar") ? 0.1 : 0.4}>PSCT</text>
+            <text x={cx - cordRx - 5} y={cy + 58} textAnchor="end" fontSize="5" fill={TRACTS["ant-spinocerebellar"].color} opacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.35}>ASCT</text>
+            <text x={cx + cordRx + 5} y={cy + 58} textAnchor="start" fontSize="5" fill={TRACTS["ant-spinocerebellar"].color} opacity={isTractDimmed("ant-spinocerebellar") ? 0.1 : 0.35}>ASCT</text>
+            <text x={cx - cordRx - 5} y={cy + 20} textAnchor="end" fontSize="4.5" fill={TRACTS.rubrospinal.color} opacity={isTractDimmed("rubrospinal") ? 0.1 : 0.3}>RubST</text>
+            <text x={cx - 20} y={cy + cordRy + 15} textAnchor="end" fontSize="4.5" fill={TRACTS.reticulospinal.color} opacity={isTractDimmed("reticulospinal") ? 0.1 : 0.3}>RetST</text>
           </g>
         </svg>
 
