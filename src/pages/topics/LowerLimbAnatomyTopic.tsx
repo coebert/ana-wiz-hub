@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
+import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
+import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
 
 const LowerLimbAnatomyTopic = () => {
@@ -66,20 +68,60 @@ const LowerLimbAnatomyTopic = () => {
             </table>
           </div>
         </div>
+
+        {/* ── ARTERIAL SUPPLY ── */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arterial Supply of the Lower Limb</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill in vascular and perioperative assessment.
+          </p>
+          <LowerLimbArteriesDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Peripheral Pulse Assessment</p>
+              <p className="text-sm text-muted-foreground mt-1">Femoral: mid-inguinal point. Popliteal: deep in the popliteal fossa with knee flexed. Posterior tibial: posterior to the medial malleolus. Dorsalis pedis: lateral to EHL tendon (absent in 5–12%). Document pulses pre-operatively, especially before vascular, orthopaedic, and regional anaesthesia procedures.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Compartment Syndrome</p>
+              <p className="text-sm text-muted-foreground mt-1">The leg has 4 compartments: anterior (deep peroneal nerve, anterior tibial artery), lateral (superficial peroneal nerve), deep posterior (tibial nerve, posterior tibial and peroneal arteries), superficial posterior. Anterior compartment is most commonly affected. All 4 compartments must be released at fasciotomy. Pain out of proportion to injury + pain on passive stretch are key signs.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── VENOUS DRAINAGE ── */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Venous Drainage of the Lower Limb</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The lower limb has superficial and deep venous systems connected by perforating veins. The great saphenous vein (GSV) is the longest vein in the body, running along the medial limb from ankle to groin. The small saphenous vein (SSV) runs posteriorly in the calf. The deep system (tibial veins, popliteal, femoral) carries the majority of venous return, driven by the calf muscle pump. DVT prevention is a cornerstone of perioperative care.
+          </p>
+          <LowerLimbVeinsDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">DVT Risk & Prevention</p>
+              <p className="text-sm text-muted-foreground mt-1">Virchow's triad: stasis, endothelial injury, hypercoagulability. Perioperative prevention: early mobilisation, TEDs, intermittent pneumatic compression, pharmacological thromboprophylaxis (LMWH/DOACs). Risk assessment: NICE CG89 — all surgical patients should have VTE risk assessment on admission.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">GSV Cutdown</p>
+              <p className="text-sm text-muted-foreground mt-1">Emergency venous access: 1 cm anterior and 1 cm superior to the medial malleolus. Transverse skin incision, blunt dissection to expose the vein, tie distally, venotomy, and advance cannula proximally. Landmark-based — can be performed when peripheral IV and central access fail.</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
         "Femoral nerve (L2-L4): lateral to femoral artery under inguinal ligament. Motor: quadriceps. Sensory: anterior thigh + medial leg (saphenous)",
         "Sciatic nerve (L4-S3): largest nerve. Two components — tibial (plantarflexion) and common peroneal (dorsiflexion)",
         "Common peroneal nerve wraps around fibular neck — vulnerable to compression → foot drop",
-        "Fascia iliaca block covers femoral + obturator + LCNT — excellent for hip fracture analgesia",
+        "Femoral artery palpated at the mid-inguinal point; profunda femoris is the main supply to thigh musculature",
+        "Displaced intracapsular #NOF disrupts the MCFA → AVN of femoral head → hemiarthroplasty required",
+        "Great saphenous vein: medial limb, drains at SFJ in groin. Cutdown landmark: 1 cm anterior + superior to medial malleolus",
+        "May-Thurner syndrome: left CIV compression → higher incidence of left-sided DVT",
         "Adductor canal block: motor-sparing alternative to femoral nerve block for knee surgery",
-        "Ankle block: 5 nerves — tibial (behind medial malleolus), deep/superficial peroneal, sural, saphenous",
       ]} />
       <QuizSection questions={lowerLimbAnatomyQuestions} />
       <ReferencesList topicId="lower-limb-anatomy" />
       <SeeAlso topicId="lower-limb-anatomy" />
-        <TopicCompletionToggle topicId="lower-limb-anatomy" topicTitle="Lower Limb &amp; Lumbosacral Plexus" />
+      <TopicCompletionToggle topicId="lower-limb-anatomy" topicTitle="Lower Limb &amp; Lumbosacral Plexus" />
     </SectionLayout>
   );
 };
