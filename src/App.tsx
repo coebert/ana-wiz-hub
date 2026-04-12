@@ -128,6 +128,7 @@ const AirwayAnatomyTopic = lazy(() => import("./pages/topics/AirwayAnatomyTopic"
 const CardiacAnatomyTopic = lazy(() => import("./pages/topics/CardiacAnatomyTopic"));
 const SpinalAnatomyTopic = lazy(() => import("./pages/topics/SpinalAnatomyTopic"));
 const BrachialPlexusTopic = lazy(() => import("./pages/topics/BrachialPlexusTopic"));
+const UpperLimbAnatomyTopic = lazy(() => import("./pages/topics/UpperLimbAnatomyTopic"));
 const ThoracicAnatomyTopic = lazy(() => import("./pages/topics/ThoracicAnatomyTopic"));
 const AbdominalAnatomyTopic = lazy(() => import("./pages/topics/AbdominalAnatomyTopic"));
 const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTopic"));
@@ -280,6 +281,7 @@ const App = () => (
           <Route path="/anatomy/cardiac-anatomy" element={<CardiacAnatomyTopic />} />
           <Route path="/anatomy/spinal-anatomy" element={<SpinalAnatomyTopic />} />
           <Route path="/anatomy/brachial-plexus" element={<BrachialPlexusTopic />} />
+          <Route path="/anatomy/upper-limb-anatomy" element={<UpperLimbAnatomyTopic />} />
           <Route path="/anatomy/thoracic-anatomy" element={<ThoracicAnatomyTopic />} />
           <Route path="/anatomy/abdominal-anatomy" element={<AbdominalAnatomyTopic />} />
           <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
