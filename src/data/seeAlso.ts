@@ -71,11 +71,11 @@ export const seeAlsoMap: Record<string, string[]> = {
   "abdominal-anatomy": ["bariatric-anaesthesia", "hepatobiliary-transplant", "urological-anaesthesia"],
   "head-neck-anatomy": ["airway-anatomy", "ent-anaesthesia", "neuroanatomy"],
   "neuroanatomy": ["neuroanaesthesia", "neurointensive-care", "head-neck-anatomy", "spinal-anatomy"],
-  "lower-limb-anatomy": ["brachial-plexus", "regional-anaesthesia", "orthopaedic-anaesthesia"],
+  "lower-limb-anatomy": ["upper-limb-anatomy", "regional-anaesthesia", "orthopaedic-anaesthesia"],
 
   // ── Clinical ──
   "airway-management": ["airway-anatomy", "clinical-incidents", "ent-anaesthesia", "lasers-fibreoptics"],
-  "regional-anaesthesia": ["local-anaesthetics", "brachial-plexus", "lower-limb-anatomy", "spinal-anatomy", "anticoagulants"],
+  "regional-anaesthesia": ["local-anaesthetics", "upper-limb-anatomy", "lower-limb-anatomy", "spinal-anatomy", "anticoagulants"],
   "obstetric-anaesthesia": ["maternal-physiology", "foetal-circulation", "regional-anaesthesia", "antiemetics"],
   "paediatric-anaesthesia": ["foetal-circulation", "paediatric-icu", "airway-management"],
   "neuroanaesthesia": ["neuroanatomy", "neurointensive-care", "depth-of-anaesthesia"],
