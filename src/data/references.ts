@@ -559,4 +559,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Neuromuscular", citation: "Association of Anaesthetists. Anaesthesia and neuromuscular disorders. Anaesthesia. 2023;78:364-376." },
     { label: "Autonomic Dysreflexia", citation: "Krassioukov A et al. A systematic review of the management of autonomic dysreflexia after spinal cord injury. Arch Phys Med Rehabil. 2009;90:682-695.", url: "https://doi.org/10.1016/j.apmr.2008.10.017" },
   ],
+  "upper-limb-anatomy": [
+    { label: "BJA Educ 2021", citation: "Jagannathan R, Nair VP. Brachial plexus anatomy and ultrasound-guided blocks. BJA Education. 2021;21(7):259-264.", url: "https://doi.org/10.1016/j.bjae.2021.02.005" },
+    { label: "Ellis & Feldman Ch.8", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 8: The Upper Limb." },
+    { label: "Last's Anatomy Ch.3", citation: "Sinnatamby CS. Last's Anatomy: Regional and Applied. 12th ed. Churchill Livingstone; 2011. Chapter 3: Upper Limb." },
+    { label: "BJA Educ 2005", citation: "Defined by arterial cannulation and the Allen test. BJA Education. 2005;5(4):132-135." },
+    { label: "NICE CG49", citation: "National Institute for Health and Care Excellence. Guidance on the use of ultrasound locating devices for placing central venous catheters. NICE CG49. 2002 (updated 2016).", url: "https://www.nice.org.uk/guidance/ta49" },
+  ],
 };
