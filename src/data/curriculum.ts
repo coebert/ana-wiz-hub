@@ -1,5 +1,5 @@
 export type ExamTag = "primary" | "final" | "fficm";
-export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative";
+export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative" | "chemistry";
 
 export interface Topic {
   id: string;
@@ -143,6 +143,14 @@ export const perioperativeTopics: Topic[] = [
   { id: "perioperative-fluids", title: "Perioperative Fluid Therapy", description: "Crystalloids vs colloids, goal-directed, fluid responsiveness", section: "perioperative", examTags: ["final", "fficm"], available: true },
 ];
 
+export const chemistryTopics: Topic[] = [
+  { id: "atomic-structure-bonding", title: "Atomic Structure & Chemical Bonding", description: "Electron configuration, ionic/covalent/metallic bonds, intermolecular forces, electronegativity", section: "chemistry", examTags: ["primary"], available: true },
+  { id: "acids-bases-buffers", title: "Acids, Bases & Buffer Systems", description: "pH, pKa, Henderson-Hasselbalch equation, physiological buffers, strong vs weak acids", section: "chemistry", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "organic-chemistry", title: "Organic Chemistry for Anaesthetists", description: "Functional groups, isomerism, chirality, and their relevance to drug structure and action", section: "chemistry", examTags: ["primary"], available: true },
+  { id: "solutions-concentration", title: "Solutions & Concentration", description: "Molarity, molality, osmolality, osmolarity, tonicity, colligative properties", section: "chemistry", examTags: ["primary", "final"], available: true },
+  { id: "oxidation-reduction", title: "Oxidation, Reduction & Electrochemistry", description: "Redox reactions, electrode potentials, clinical electrodes, free radicals", section: "chemistry", examTags: ["primary"], available: true },
+];
+
 export const allTopics: Topic[] = [
   ...physicsTopics,
   ...physiologyTopics,
@@ -151,6 +159,7 @@ export const allTopics: Topic[] = [
   ...clinicalTopics,
   ...intensiveCareTopics,
   ...perioperativeTopics,
+  ...chemistryTopics,
 ];
 
 export const topicsBySection: Record<Section, Topic[]> = {
@@ -161,6 +170,7 @@ export const topicsBySection: Record<Section, Topic[]> = {
   clinical: clinicalTopics,
   "intensive-care": intensiveCareTopics,
   perioperative: perioperativeTopics,
+  chemistry: chemistryTopics,
 };
 
 export const sectionMeta: Record<Section, { label: string; path: string }> = {
@@ -171,4 +181,5 @@ export const sectionMeta: Record<Section, { label: string; path: string }> = {
   clinical: { label: "Clinical Anaesthesia", path: "/clinical" },
   "intensive-care": { label: "Intensive Care", path: "/intensive-care" },
   perioperative: { label: "Perioperative Medicine", path: "/perioperative" },
+  chemistry: { label: "Chemistry Foundations", path: "/chemistry" },
 };

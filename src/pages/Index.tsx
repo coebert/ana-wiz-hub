@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone } from "lucide-react";
+import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -77,6 +77,15 @@ const sections: {
     cardClass: "section-card-perioperative",
     iconColor: "text-perioperative",
     sectionKey: "perioperative",
+  },
+  {
+    title: "Chemistry Foundations",
+    description: "Essential chemistry for anaesthetists — bonding, acids & bases, organic chemistry, solutions",
+    icon: Beaker,
+    path: "/chemistry",
+    cardClass: "section-card-chemistry",
+    iconColor: "text-chemistry",
+    sectionKey: "chemistry",
   },
 ];
 

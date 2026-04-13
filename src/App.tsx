@@ -20,6 +20,7 @@ const ClinicalSection = lazy(() => import("./pages/ClinicalSection"));
 const IntensiveCareSection = lazy(() => import("./pages/IntensiveCareSection"));
 const PerioperativeSection = lazy(() => import("./pages/PerioperativeSection"));
 const AnatomySection = lazy(() => import("./pages/AnatomySection"));
+const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
 
 // Lazy load topic pages
 const GasLawsTopic = lazy(() => import("./pages/topics/GasLawsTopic"));
@@ -135,6 +136,11 @@ const HeadNeckAnatomyTopic = lazy(() => import("./pages/topics/HeadNeckAnatomyTo
 const NeuroanatomyTopic = lazy(() => import("./pages/topics/NeuroanatomyTopic"));
 const LowerLimbAnatomyTopic = lazy(() => import("./pages/topics/LowerLimbAnatomyTopic"));
 const EquipmentMonitoringTopic = lazy(() => import("./pages/topics/EquipmentMonitoringTopic"));
+const AtomicStructureBondingTopic = lazy(() => import("./pages/topics/AtomicStructureBondingTopic"));
+const AcidsBasesBuffersTopic = lazy(() => import("./pages/topics/AcidsBasesBuffersTopic"));
+const OrganicChemistryTopic = lazy(() => import("./pages/topics/OrganicChemistryTopic"));
+const SolutionsConcentrationTopic = lazy(() => import("./pages/topics/SolutionsConcentrationTopic"));
+const OxidationReductionTopic = lazy(() => import("./pages/topics/OxidationReductionTopic"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
 
@@ -167,6 +173,7 @@ const App = () => (
           <Route path="/intensive-care" element={<IntensiveCareSection />} />
           <Route path="/perioperative" element={<PerioperativeSection />} />
           <Route path="/anatomy" element={<AnatomySection />} />
+          <Route path="/chemistry" element={<ChemistrySection />} />
           {/* Physics */}
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
           <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />
@@ -287,6 +294,12 @@ const App = () => (
           <Route path="/anatomy/head-neck-anatomy" element={<HeadNeckAnatomyTopic />} />
           <Route path="/anatomy/neuroanatomy" element={<NeuroanatomyTopic />} />
           <Route path="/anatomy/lower-limb-anatomy" element={<LowerLimbAnatomyTopic />} />
+          {/* Chemistry Foundations */}
+          <Route path="/chemistry/atomic-structure-bonding" element={<AtomicStructureBondingTopic />} />
+          <Route path="/chemistry/acids-bases-buffers" element={<AcidsBasesBuffersTopic />} />
+          <Route path="/chemistry/organic-chemistry" element={<OrganicChemistryTopic />} />
+          <Route path="/chemistry/solutions-concentration" element={<SolutionsConcentrationTopic />} />
+          <Route path="/chemistry/oxidation-reduction" element={<OxidationReductionTopic />} />
           {/* Admin */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin" element={<AdminDashboard />} />

@@ -79,6 +79,10 @@ export default {
           DEFAULT: "hsl(var(--anatomy))",
           light: "hsl(var(--anatomy-light))",
         },
+        chemistry: {
+          DEFAULT: "hsl(var(--chemistry))",
+          light: "hsl(var(--chemistry-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
