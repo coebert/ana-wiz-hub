@@ -61,6 +61,8 @@
     --perioperative-light: 45 60% 95%;
     --anatomy: 190 60% 42%;
     --anatomy-light: 190 50% 95%;
+    --chemistry: 95 55% 38%;
+    --chemistry-light: 95 45% 94%;
 
     --gradient-hero: linear-gradient(135deg, hsl(210 70% 35%), hsl(200 60% 45%), hsl(170 50% 40%));
     --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 15% 96%));
@@ -167,6 +169,14 @@
   }
   .section-card-anatomy:hover {
     background-color: hsl(var(--anatomy-light));
+  }
+
+  .section-card-chemistry {
+    @apply border-l-4 transition-all duration-200;
+    border-left-color: hsl(var(--chemistry));
+  }
+  .section-card-chemistry:hover {
+    background-color: hsl(var(--chemistry-light));
   }
 
   .key-point {

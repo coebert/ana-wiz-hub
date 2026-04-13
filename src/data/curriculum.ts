@@ -1,5 +1,5 @@
 export type ExamTag = "primary" | "final" | "fficm";
-export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative";
+export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative" | "chemistry";
 
 export interface Topic {
   id: string;
