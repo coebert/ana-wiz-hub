@@ -128,4 +128,11 @@ export const seeAlsoMap: Record<string, string[]> = {
   "preoperative-assessment": ["cardiovascular-disease", "respiratory-disease", "elderly-anaesthesia", "enhanced-recovery", "endocrine-disease"],
   "enhanced-recovery": ["preoperative-assessment", "perioperative-fluids", "day-surgery", "pain-medicine"],
   "perioperative-fluids": ["starling-forces", "renal-physiology", "enhanced-recovery", "cardiac-output-monitoring"],
+
+  // ── Chemistry Foundations ──
+  "atomic-structure-bonding": ["organic-chemistry", "solutions-concentration", "local-anaesthetics", "volatile-agents"],
+  "acids-bases-buffers": ["acid-base", "abg-analyser", "renal-physiology", "pharmacokinetics", "solutions-concentration"],
+  "organic-chemistry": ["atomic-structure-bonding", "iv-anaesthetics", "local-anaesthetics", "opioids", "volatile-agents", "pharmacodynamics"],
+  "solutions-concentration": ["perioperative-fluids", "acids-bases-buffers", "pharmacokinetics", "renal-physiology"],
+  "oxidation-reduction": ["abg-analyser", "pulse-oximetry", "acid-base", "atomic-structure-bonding", "clinical-measurement"],
 };

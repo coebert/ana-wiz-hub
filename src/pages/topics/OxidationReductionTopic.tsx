@@ -3,6 +3,7 @@ import { RedoxElectrochemistryDiagram } from "@/components/diagrams/RedoxElectro
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { SeeAlso } from "@/components/SeeAlso";
 import { redoxQuiz } from "@/data/quizzes";
 
 const OxidationReductionTopic = () => {
@@ -50,6 +51,7 @@ const OxidationReductionTopic = () => {
         />
 
         <QuizSection questions={redoxQuiz} />
+        <SeeAlso topicId="oxidation-reduction" />
         <TopicCompletionToggle topicId="oxidation-reduction" topicTitle="Oxidation, Reduction & Electrochemistry" />
       </div>
     </SectionLayout>

@@ -3,6 +3,7 @@ import { SolutionsConcentrationDiagram } from "@/components/diagrams/SolutionsCo
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { SeeAlso } from "@/components/SeeAlso";
 import { solutionsConcentrationQuiz } from "@/data/quizzes";
 
 const SolutionsConcentrationTopic = () => {
@@ -44,6 +45,7 @@ const SolutionsConcentrationTopic = () => {
         />
 
         <QuizSection questions={solutionsConcentrationQuiz} />
+        <SeeAlso topicId="solutions-concentration" />
         <TopicCompletionToggle topicId="solutions-concentration" topicTitle="Solutions & Concentration" />
       </div>
     </SectionLayout>
