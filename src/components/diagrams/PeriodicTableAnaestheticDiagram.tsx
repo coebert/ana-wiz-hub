@@ -5,7 +5,7 @@ interface Element {
   name: string;
   atomicNumber: number;
   atomicMass: string;
-  category: "alkali" | "alkaline" | "transition" | "halogen" | "other";
+  category: "alkali" | "alkaline" | "transition" | "halogen" | "other" | "polyatomic";
   group: number;
   period: number;
   electronConfig: string;
@@ -106,6 +106,24 @@ const elements: Element[] = [
     clinicalPearl: "Amiodarone-induced thyrotoxicosis (AIT) — Type 1 (excess iodine → increased T₄ in abnormal gland) vs Type 2 (destructive thyroiditis releasing stored hormone). Pre-thyroidectomy: Lugol's iodine for 10 days reduces gland vascularity and thyroid storm risk.",
     disorders: ["Thyrotoxicosis/thyroid storm — life-threatening perioperative emergency", "Amiodarone-induced thyroid dysfunction (AIT Type 1 vs 2)", "Iodine contrast allergy (not true iodine allergy)"]
   },
+  {
+    symbol: "PO₄", name: "Phosphate", atomicNumber: 15, atomicMass: "94.97",
+    category: "polyatomic", group: 15, period: 3, electronConfig: "PO₄³⁻",
+    normalRange: "0.8–1.5 mmol/L",
+    physiology: "Essential for energy metabolism — ATP (adenosine triphosphate) is the universal energy currency. Component of DNA/RNA backbone (phosphodiester bonds), cell membrane phospholipids, and 2,3-DPG (regulates O₂-Hb affinity). Phosphate buffer system (H₂PO₄⁻/HPO₄²⁻, pKa 6.8) is the main intracellular and urinary buffer.",
+    pharmacology: "IV sodium phosphate (Polyfusor®) for severe hypophosphataemia (0.3–0.5 mmol/kg over 6h). Phosphate-containing enemas (Fleet®) can cause fatal hyperphosphataemia in children/elderly. Phosphate binders (sevelamer, calcium acetate) in CKD. Fosphenytoin is a phosphate ester prodrug of phenytoin.",
+    clinicalPearl: "Refeeding syndrome: insulin surge drives PO₄ into cells → acute hypophosphataemia → ATP depletion → respiratory muscle weakness, cardiac failure, arrhythmias. Check PO₄ before starting nutrition in malnourished/ICU patients. Correct to >0.5 mmol/L before extubation — diaphragm weakness is underappreciated.",
+    disorders: ["Hypophosphataemia — refeeding syndrome, DKA treatment, CRRT", "Hyperphosphataemia — CKD, tumour lysis, rhabdomyolysis", "Refeeding syndrome — potentially fatal if unrecognised"]
+  },
+  {
+    symbol: "HCO₃⁻", name: "Bicarbonate", atomicNumber: 6, atomicMass: "61.02",
+    category: "polyatomic", group: 14, period: 2, electronConfig: "HCO₃⁻",
+    normalRange: "22–26 mmol/L",
+    physiology: "The most important extracellular buffer. Bicarbonate buffer system: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻ (catalysed by carbonic anhydrase). Open system — CO₂ eliminated by lungs, HCO₃⁻ regulated by kidneys. Henderson-Hasselbalch: pH = 6.1 + log([HCO₃⁻] / 0.03 × PaCO₂). Normal ratio 20:1 maintains pH 7.4.",
+    pharmacology: "8.4% NaHCO₃ (1 mmol/mL) for severe metabolic acidosis (pH <7.1), hyperkalaemia (drives K⁺ intracellularly), and tricyclic antidepressant overdose (sodium loading + alkalinisation). 1.26% NaHCO₃ is isotonic. Generates CO₂ — ensure adequate ventilation. Citrate in RRT is metabolised to HCO₃⁻.",
+    clinicalPearl: "Bicarbonate therapy is controversial — generates CO₂ (worsens intracellular acidosis if ventilation inadequate), causes hypokalaemia, hypernatraemia, and left-shifts the O₂ dissociation curve. ALS guidelines: consider in pH <7.1 or hyperkalaemia. Stewart approach: HCO₃⁻ is a dependent variable — treat the cause (SID, weak acids, CO₂) not the number.",
+    disorders: ["Metabolic acidosis — low HCO₃⁻ (DKA, lactic acidosis, renal tubular acidosis)", "Metabolic alkalosis — high HCO₃⁻ (vomiting, diuretics, Cushing's)", "Respiratory compensation — Winter's formula: expected PaCO₂ = 1.5 × [HCO₃⁻] + 8 ± 2"]
+  },
 ];
 
 const categoryColors: Record<string, { bg: string; border: string; text: string; label: string }> = {
@@ -113,6 +131,7 @@ const categoryColors: Record<string, { bg: string; border: string; text: string;
   alkaline: { bg: "bg-orange-500/15", border: "border-orange-500/40", text: "text-orange-400", label: "Alkaline Earth Metals" },
   transition: { bg: "bg-sky-500/15", border: "border-sky-500/40", text: "text-sky-400", label: "Transition Metals" },
   halogen: { bg: "bg-emerald-500/15", border: "border-emerald-500/40", text: "text-emerald-400", label: "Halogens" },
+  polyatomic: { bg: "bg-violet-500/15", border: "border-violet-500/40", text: "text-violet-400", label: "Polyatomic Ions" },
   other: { bg: "bg-purple-500/15", border: "border-purple-500/40", text: "text-purple-400", label: "Other Non-metals" },
 };
 
@@ -133,7 +152,7 @@ export const PeriodicTableAnaestheticDiagram = () => {
       </div>
 
       {/* Element Grid */}
-      <div className="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-10 gap-1.5 sm:gap-2">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-6 gap-1.5 sm:gap-2">
         {elements.map((el) => {
           const cat = categoryColors[el.category];
           const isSelected = selected?.symbol === el.symbol;
