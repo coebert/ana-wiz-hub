@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { AtomicStructureDiagram } from "@/components/diagrams/AtomicStructureDiagram";
+import { PeriodicTableAnaestheticDiagram } from "@/components/diagrams/PeriodicTableAnaestheticDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -37,6 +38,15 @@ const AtomicStructureBondingTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Diagram</h2>
           <AtomicStructureDiagram />
+        </section>
+
+        {/* Periodic Table of Anaesthetic Elements */}
+        <section>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Periodic Table of Anaesthetic Elements</h2>
+          <p className="text-sm text-muted-foreground mb-4">
+            The ten elements below are the most clinically important for anaesthetists. Tap each to explore its role in physiology, pharmacology, and clinical practice.
+          </p>
+          <PeriodicTableAnaestheticDiagram />
         </section>
 
         {/* Electron Configuration */}
