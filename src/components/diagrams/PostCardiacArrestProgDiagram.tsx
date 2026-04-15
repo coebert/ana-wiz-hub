@@ -4,53 +4,67 @@ type TimePoint = "pre72" | "72h" | "modalities" | "decision";
 
 interface ModalityInfo {
   name: string;
+  shortName: string;
   timing: string;
   poorPrognosticSign: string;
   detail: string;
   color: string;
   icon: string;
+  startH: number;
+  endH: number;
+  peakH?: number; // optimal assessment time
 }
 
 const modalities: ModalityInfo[] = [
   {
     name: "Clinical Examination",
+    shortName: "Clinical",
     timing: "≥72 h post-ROSC",
     poorPrognosticSign: "Bilateral absent pupillary & corneal reflexes",
     detail: "Pupillary light reflex and corneal reflex assessed at ≥72 h (or after rewarming). Quantitative pupillometry (NPi <2) more reliable than standard assessment. Myoclonus status within 72 h is a poor sign but NOT status epilepticus alone. GCS Motor 1–2 at 72 h is the entry criterion for formal prognostication.",
     color: "hsl(0, 75%, 55%)",
     icon: "👁️",
+    startH: 72, endH: 120, peakH: 72,
   },
   {
     name: "Electroencephalography (EEG)",
+    shortName: "EEG",
     timing: "≥24 h, reassess ≥72 h",
     poorPrognosticSign: "Highly malignant pattern: suppression or burst-suppression",
     detail: "Highly malignant = suppression (<10 μV), burst-suppression (with or without discharges). Malignant = discontinuous/low-voltage + discharges. Unreactive EEG backgrounds are also concerning. Continuous EEG monitoring preferred. Confounders: residual sedation, hypothermia, metabolic derangement. EEG reactivity testing should be standardised.",
     color: "hsl(270, 65%, 55%)",
     icon: "📊",
+    startH: 24, endH: 120, peakH: 72,
   },
   {
     name: "Somatosensory Evoked Potentials (SSEP)",
+    shortName: "SSEP",
     timing: "≥24 h post-ROSC",
     poorPrognosticSign: "Bilateral absent N20 cortical responses",
     detail: "Median nerve SSEPs — bilateral absence of N20 is one of the most robust predictors (FPR <1% in most studies). Should be performed by experienced neurophysiologist. Not affected by sedation at clinical doses. Peripheral N13/N14 must be present to confirm technical adequacy. Can be performed during TTM.",
     color: "hsl(210, 75%, 55%)",
     icon: "⚡",
+    startH: 24, endH: 120, peakH: 48,
   },
   {
     name: "Neuroimaging",
+    shortName: "Imaging",
     timing: "24–72 h (CT); 2–5 days (MRI)",
     poorPrognosticSign: "Diffuse cerebral oedema (CT) / Extensive DWI restriction (MRI)",
     detail: "CT: loss of grey-white matter differentiation (GWR <1.10–1.22 depending on region). MRI DWI: extensive cortical/deep grey diffusion restriction at 2–5 days. MRI more sensitive than CT. Whole-brain apparent diffusion coefficient (ADC) values aid quantification. CT is practical early; MRI is the gold standard for prognostication when feasible.",
     color: "hsl(160, 65%, 45%)",
     icon: "🧠",
+    startH: 24, endH: 120, peakH: 72,
   },
   {
     name: "Biomarkers",
+    shortName: "NSE",
     timing: "24–72 h post-ROSC",
     poorPrognosticSign: "NSE >60 μg/L at 48–72 h",
     detail: "Neuron-specific enolase (NSE): >60 μg/L at 48–72 h strongly associated with poor outcome (ERC/ESICM 2021). Must check for haemolysis (falsely elevated). S100B is less well validated. Serial NSE measurements (rising trend) more informative than single values. No single biomarker threshold is 100% specific — always combine with other modalities.",
     color: "hsl(35, 85%, 50%)",
     icon: "🧪",
+    startH: 24, endH: 72, peakH: 48,
   },
 ];
 
@@ -178,7 +192,91 @@ const PostCardiacArrestProgDiagram = () => {
           })}
         </div>
 
-        {/* Expanded modality detail */}
+        {/* Visual timeline SVG — when each modality becomes valid */}
+        <div className="rounded-lg border border-border bg-background p-4 mb-4">
+          <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wide">Modality Validity Windows (0–120 h post-ROSC)</p>
+          <svg viewBox="0 0 600 195" className="w-full h-auto">
+            {/* Time axis */}
+            <line x1="80" y1="175" x2="580" y2="175" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.4" />
+            {/* Hour markers */}
+            {[0, 24, 48, 72, 96, 120].map((h) => {
+              const x = 80 + (h / 120) * 500;
+              return (
+                <g key={h}>
+                  <line x1={x} y1="170" x2={x} y2="180" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity="0.5" />
+                  <text x={x} y="192" textAnchor="middle" className="fill-muted-foreground text-[9px]">{h}h</text>
+                </g>
+              );
+            })}
+            {/* 72h decision line */}
+            <line x1={80 + (72 / 120) * 500} y1="5" x2={80 + (72 / 120) * 500} y2="170" stroke="hsl(0, 75%, 55%)" strokeWidth="1" strokeDasharray="4,3" opacity="0.5" />
+            <text x={80 + (72 / 120) * 500} y="14" textAnchor="middle" className="text-[8px] font-bold" fill="hsl(0, 75%, 55%)">≥72 h: formal prognostication</text>
+
+            {/* TTM bar */}
+            {(() => {
+              const y = 28;
+              const x1 = 80;
+              const x2 = 80 + (48 / 120) * 500;
+              return (
+                <g>
+                  <rect x={x1} y={y} width={x2 - x1} height="14" rx="3" fill="hsl(210, 75%, 55%)" opacity="0.15" stroke="hsl(210, 75%, 55%)" strokeWidth="0.5" />
+                  <text x={x1 + 4} y={y + 10} className="text-[7px] font-semibold" fill="hsl(210, 75%, 55%)">TTM (32–36°C) + Rewarming</text>
+                  <text x={5} y={y + 10} className="text-[8px] font-medium fill-muted-foreground">TTM</text>
+                </g>
+              );
+            })()}
+
+            {/* Modality bars */}
+            {modalities.map((m, i) => {
+              const y = 50 + i * 28;
+              const barX1 = 80 + (m.startH / 120) * 500;
+              const barX2 = 80 + (m.endH / 120) * 500;
+              const peakX = m.peakH ? 80 + (m.peakH / 120) * 500 : undefined;
+              const isHighlighted = activeModality === i;
+              return (
+                <g key={m.name} onClick={() => setActiveModality(activeModality === i ? null : i)} style={{ cursor: "pointer" }}>
+                  {/* Label */}
+                  <text x={5} y={y + 12} className={`text-[8px] font-medium ${isHighlighted ? "fill-foreground" : "fill-muted-foreground"}`}>
+                    {m.icon} {m.shortName}
+                  </text>
+                  {/* Invalid zone (hatched/dimmed) */}
+                  <rect x={80} y={y + 2} width={barX1 - 80} height="16" rx="2" fill="hsl(var(--muted-foreground))" opacity="0.05" />
+                  {/* Valid window bar */}
+                  <rect
+                    x={barX1} y={y + 2} width={barX2 - barX1} height="16" rx="3"
+                    fill={m.color} opacity={isHighlighted ? 0.45 : 0.25}
+                    stroke={m.color} strokeWidth={isHighlighted ? "1.5" : "0.5"}
+                  />
+                  {/* Peak/optimal marker */}
+                  {peakX && (
+                    <g>
+                      <circle cx={peakX} cy={y + 10} r="4" fill={m.color} opacity={isHighlighted ? 0.9 : 0.6} />
+                      <circle cx={peakX} cy={y + 10} r="2" fill="white" opacity="0.8" />
+                    </g>
+                  )}
+                  {/* Timing label on bar */}
+                  <text x={barX1 + 5} y={y + 13} className="text-[7px] font-medium" fill="white" opacity="0.9">
+                    {m.timing}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+          <div className="flex items-center gap-4 mt-2">
+            <div className="flex items-center gap-1.5">
+              <div className="w-6 h-2.5 rounded-sm bg-muted-foreground/20 border border-muted-foreground/30" />
+              <span className="text-[9px] text-muted-foreground">Valid window</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/50 border border-muted-foreground/60 relative">
+                <div className="absolute inset-[3px] rounded-full bg-white/80" />
+              </div>
+              <span className="text-[9px] text-muted-foreground">Optimal timing</span>
+            </div>
+            <span className="text-[9px] text-muted-foreground italic">Click a bar for details</span>
+          </div>
+        </div>
+
         {activeModality !== null && (
           <div className="rounded-lg border p-4 mb-4 animate-fade-in" style={{ borderColor: modalities[activeModality].color + "40", backgroundColor: modalities[activeModality].color + "08" }}>
             <div className="flex items-start gap-2 mb-2">
