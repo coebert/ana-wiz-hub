@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
+import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -147,6 +148,8 @@ const SepsisTopic = () => {
               </tbody>
             </table>
           </div>
+
+          <SepsisBiomarkerKineticsDiagram />
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Practical Approach</h3>
           <div className="space-y-2">
