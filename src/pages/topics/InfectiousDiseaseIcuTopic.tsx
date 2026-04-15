@@ -5,10 +5,12 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
 
 const InfectiousDiseaseIcuTopic = () => {
   return (
     <SectionLayout title="Infectious Disease in ICU" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <InfectionSiteMapDiagram />
       <section className="space-y-8 mb-10">
 
         {/* ---- Respiratory infections ---- */}
