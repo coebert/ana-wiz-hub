@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
 
 const PrognosticationEthicsIcuTopic = () => {
   return (
@@ -17,6 +18,11 @@ const PrognosticationEthicsIcuTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Prognostication is one of the most challenging and important skills in intensive care medicine. Accurate outcome prediction guides treatment decisions, family communication, resource allocation, and end-of-life planning. No single tool is perfectly predictive — clinical judgement integrating multiple data sources remains essential.
           </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Diagrams</h2>
+          <PostCardiacArrestProgDiagram />
         </div>
 
         {/* ---- Scoring Systems ---- */}
