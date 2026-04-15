@@ -6,6 +6,7 @@ import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
+import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 
 const BronchospasticFailureTopic = () => {
   return (
@@ -378,6 +379,8 @@ const BronchospasticFailureTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Volatile anaesthetic agents (isoflurane, sevoflurane) are potent bronchodilators that act by direct smooth muscle relaxation, inhibition of airway reflexes, and reduction of inflammatory mediator release. They have been used as rescue therapy in refractory bronchospasm for decades, but traditionally required an anaesthetic machine at the bedside. The development of the <strong>Anaesthetic Conserving Device (AnaConDa / Sedaconda)</strong> has made ICU delivery practical.
           </p>
+
+          <SedacondaDiagram />
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Mechanism of Bronchodilation</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
