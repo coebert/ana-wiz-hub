@@ -112,8 +112,100 @@ const InfectiousDiseaseIcuTopic = () => {
           </div>
         </div>
 
+        {/* ---- Gram-Positive vs Gram-Negative Sepsis ---- */}
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Urosepsis</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gram-Positive vs Gram-Negative Sepsis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The distinction between Gram-positive and Gram-negative organisms is fundamental to understanding sepsis pathophysiology, empiric antibiotic selection, and clinical presentation. While the final common pathway of septic shock is similar, the initiating mechanisms and clinical nuances differ.
+          </p>
+
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Gram-Positive Sepsis</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Gram-Negative Sepsis</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Cell wall structure</td>
+                  <td>Thick peptidoglycan layer, lipoteichoic acid (LTA), teichoic acids. No outer membrane. Crystal violet retention on Gram stain.</td>
+                  <td>Thin peptidoglycan, outer membrane containing lipopolysaccharide (LPS/endotoxin). Periplasmic space. Pink/red on Gram stain.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Primary toxin / PAMP</td>
+                  <td>Lipoteichoic acid, peptidoglycan fragments, superantigens (TSST-1, PVL, streptococcal pyrogenic exotoxins). Recognised by TLR-2.</td>
+                  <td>LPS (endotoxin) — lipid A component is the primary immunostimulant. Recognised by TLR-4 via MD-2/CD14 complex. Extremely potent — nanogram quantities trigger systemic inflammation.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Immune activation</td>
+                  <td>TLR-2 → MyD88 → NF-κB → pro-inflammatory cytokines. Superantigens bypass normal antigen processing → polyclonal T-cell activation → cytokine storm (toxic shock syndromes).</td>
+                  <td>LPS–TLR-4 → MyD88 and TRIF pathways → NF-κB + IRF3 → TNF-α, IL-1β, IL-6 + type I interferons. Complement activation. Endotoxin also activates coagulation cascade directly.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Common organisms</td>
+                  <td><em>S. aureus</em> (MSSA/MRSA), <em>S. pneumoniae</em>, <em>Streptococcus pyogenes</em> (GAS), <em>Enterococcus</em> spp., coagulase-negative <em>Staphylococci</em></td>
+                  <td><em>E. coli</em> (most common), <em>Klebsiella</em>, <em>Pseudomonas</em>, <em>Acinetobacter</em>, <em>Neisseria meningitidis</em>, <em>Bacteroides</em> (anaerobe)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Common sources</td>
+                  <td>Skin/soft tissue, intravascular devices (CLABSI), endocarditis, bone/joint, post-surgical wound infections</td>
+                  <td>Urinary tract (most common), intra-abdominal (biliary, perforated viscus), respiratory (HAP/VAP), meningitis</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Haemodynamic pattern</td>
+                  <td>Vasodilatory shock similar to Gram-negative. Superantigen-mediated toxic shock: profound capillary leak, erythroderma, desquamation.</td>
+                  <td>Classic 'warm shock' → vasodilatory with high cardiac output initially. Endotoxin is the most potent trigger of distributive shock. DIC more commonly associated with Gram-negative bacteraemia.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">DIC association</td>
+                  <td>Less common but occurs (especially meningococcal-like purpura fulminans with GAS). <em>S. aureus</em> bacteraemia can cause DIC in severe cases.</td>
+                  <td>Strongly associated — LPS directly activates tissue factor and coagulation cascade. Meningococcal sepsis is the archetype. Symmetrical peripheral gangrene.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Empiric antibiotics</td>
+                  <td>Flucloxacillin (MSSA), vancomycin (MRSA risk), linezolid or daptomycin for resistant organisms. Clindamycin added for toxin suppression in necrotising/toxic shock.</td>
+                  <td>Piperacillin-tazobactam, ceftriaxone, or meropenem (if ESBL/CRE risk). Gentamicin for synergy in severe sepsis. Anti-pseudomonal cover if HAP/VAP or immunocompromised.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Special considerations</td>
+                  <td><em>S. aureus</em> bacteraemia: always requires echocardiography, repeat cultures at 48–72 h, minimum 2 weeks IV therapy (4–6 weeks if endocarditis). PVL-positive strains → necrotising pneumonia risk.</td>
+                  <td>Jarisch-Herxheimer-like reactions possible with high-burden bacteraemia (endotoxin release on bacterial lysis). Source control is paramount (drain collections, relieve obstruction). Monitor for AKI (endotoxin-mediated).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxic Shock Syndromes</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Staphylococcal Toxic Shock (TSS)</p>
+              <p className="text-xs text-muted-foreground mt-1">TSST-1 superantigen (or enterotoxins B/C). Classic: fever &gt;38.9°C, diffuse macular erythroderma, desquamation (1–2 weeks later), hypotension, ≥3 organ systems involved. Historically associated with tampon use but now more common with wound infections. Treatment: source control + flucloxacillin + clindamycin (toxin suppression) + IVIG.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Streptococcal Toxic Shock (STSS)</p>
+              <p className="text-xs text-muted-foreground mt-1">Group A <em>Streptococcus</em> pyrogenic exotoxins (SpeA, SpeC). More severe than staphylococcal TSS — mortality 30–70%. Often associated with necrotising fasciitis or puerperal sepsis. Pain out of proportion. Treatment: surgical debridement + benzylpenicillin + clindamycin + IVIG (INSTINCT trial).</p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Endotoxin & the Sepsis Cascade</h3>
+          <div className="space-y-2">
+            {[
+              { label: "LPS Structure", detail: "Lipid A (toxic moiety, conserved) + core oligosaccharide + O-antigen (variable, determines serotype). LPS is released on bacterial lysis or during growth. Detected by Limulus amebocyte lysate (LAL) assay — basis of endotoxin activity assay (EAA)." },
+              { label: "Signalling Cascade", detail: "LPS binds LBP (LPS-binding protein) → transfers to CD14 → presented to TLR-4/MD-2 complex → intracellular signalling via MyD88 (early) and TRIF (late) → NF-κB activation → TNF-α, IL-1β, IL-6, IL-8 release → systemic inflammatory response." },
+              { label: "Clinical Implications", detail: "Antibiotic-induced endotoxin release may cause transient deterioration (especially with bactericidal agents in high-burden Gram-negative sepsis). This underpinned historical interest in polymyxin B haemoperfusion (EUPHRATES trial — no overall benefit but signal in high-EAA subgroup). Endotoxin tolerance: repeated exposure → attenuated response (immunoparalysis in prolonged sepsis)." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Urinary tract infections are the second most common source of sepsis in ICU. Obstruction (calculi, BPH) is a common precipitant requiring urgent source control.
           </p>
