@@ -6,6 +6,7 @@ import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
+import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
 
 const BronchospasticFailureTopic = () => {
   return (
