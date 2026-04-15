@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
 
 const BronchospasticFailureTopic = () => {
   return (
@@ -67,6 +68,8 @@ const BronchospasticFailureTopic = () => {
               <p className="text-xs text-muted-foreground mt-1">Eosinophilic airway inflammation (4–12 h), mucosal oedema, mucus plugging. Responds to corticosteroids. Mucus plugging is the major cause of death at post-mortem — contributes to refractory hypoxaemia.</p>
             </div>
           </div>
+
+          <DynamicHyperinflationDiagram />
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Dynamic Hyperinflation & Gas Trapping</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
