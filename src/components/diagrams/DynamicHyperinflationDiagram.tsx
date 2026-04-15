@@ -1,21 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type Phase = "normal" | "mild" | "severe" | "arrest";
 
 interface PhaseData {
   label: string;
   description: string;
-  lungVolume: number; // percentage fill
+  lungVolume: number;
   autoPeep: string;
   venousReturn: string;
   cardiacOutput: string;
   bp: string;
   flowReturnsToZero: boolean;
-  flowTruncation: number; // 0-1, how much of exp flow is completed
+  flowTruncation: number;
   alveolarPressure: string;
   clinicalSigns: string[];
   management: string[];
   color: string;
+  heartRate: number; // beats per animation cycle
+  heartScale: number; // 0-1, how much the heart can expand (preload)
 }
 
 const phases: Record<Phase, PhaseData> = {
@@ -33,6 +35,8 @@ const phases: Record<Phase, PhaseData> = {
     clinicalSigns: ["Normal breath sounds", "No hyperexpansion", "Stable haemodynamics"],
     management: [],
     color: "hsl(var(--primary))",
+    heartRate: 1.2,
+    heartScale: 1,
   },
   mild: {
     label: "Mild Gas Trapping",
@@ -48,6 +52,8 @@ const phases: Record<Phase, PhaseData> = {
     clinicalSigns: ["Wheeze on auscultation", "Increased work of breathing", "Mild pulsus paradoxus"],
     management: ["Optimise bronchodilators", "Reduce respiratory rate", "Increase I:E ratio"],
     color: "hsl(45, 93%, 47%)",
+    heartRate: 1.6,
+    heartScale: 0.75,
   },
   severe: {
     label: "Severe Hyperinflation",
@@ -63,6 +69,8 @@ const phases: Record<Phase, PhaseData> = {
     clinicalSigns: ["Silent chest", "Severe pulsus paradoxus (>25 mmHg)", "Tachycardia", "Hypotension", "Rising plateau pressure (>30 cmH₂O)"],
     management: ["Disconnect ventilator — allow prolonged expiration", "RR 8–10, I:E 1:4–1:5", "Permissive hypercapnia", "Exclude pneumothorax"],
     color: "hsl(25, 95%, 53%)",
+    heartRate: 2.2,
+    heartScale: 0.45,
   },
   arrest: {
     label: "PEA Arrest",
@@ -78,6 +86,8 @@ const phases: Record<Phase, PhaseData> = {
     clinicalSigns: ["PEA / asystole", "No cardiac output despite CPR", "Bilateral hyperresonance"],
     management: ["Disconnect ETT — manually compress chest for 60s", "Bilateral thoracostomies (exclude tension pneumothorax)", "IV adrenaline", "Slow hand ventilation once decompressed (6–8 bpm)"],
     color: "hsl(0, 84%, 60%)",
+    heartRate: 0.3,
+    heartScale: 0.15,
   },
 };
 
@@ -86,11 +96,59 @@ const phaseOrder: Phase[] = ["normal", "mild", "severe", "arrest"];
 const DynamicHyperinflationDiagram = () => {
   const [selected, setSelected] = useState<Phase>("normal");
   const data = phases[selected];
+  const [animT, setAnimT] = useState(0);
+  const rafRef = useRef<number>(0);
+  const lastRef = useRef<number>(0);
+
+  useEffect(() => {
+    lastRef.current = performance.now();
+    const tick = (now: number) => {
+      const dt = (now - lastRef.current) / 1000;
+      lastRef.current = now;
+      setAnimT((prev) => (prev + dt) % 100);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  // Breathing cycle: 3 second period
+  const breathCycle = (animT % 3) / 3; // 0-1
+  // Inspiration 0-0.3, Expiration 0.3-1
+  const inspFrac = breathCycle < 0.3 ? breathCycle / 0.3 : 0;
+  const expFrac = breathCycle >= 0.3 ? (breathCycle - 0.3) / 0.7 : 0;
+  const isInsp = breathCycle < 0.3;
+
+  // Lung expansion during breathing (sinusoidal)
+  const baseVol = data.lungVolume;
+  const breathAmplitude = Math.max(5, 20 - (data.lungVolume / 100) * 15);
+  const breathOffset = isInsp
+    ? Math.sin(inspFrac * Math.PI * 0.5) * breathAmplitude
+    : Math.sin((1 - expFrac * data.flowTruncation) * Math.PI * 0.5) * breathAmplitude;
+  const currentVol = baseVol + breathOffset;
+
+  // Lung scale factor for SVG
+  const lungScale = 0.7 + (currentVol / 100) * 0.35;
+
+  // Heart beat animation
+  const heartBeat = Math.sin(animT * data.heartRate * Math.PI * 2);
+  const heartPump = Math.max(0, heartBeat) * 0.15 * data.heartScale;
+
+  // Heart compression from lungs
+  const heartRx = (14 - (currentVol / 100) * 8) * (1 + heartPump);
+  const heartRy = (18 - (currentVol / 100) * 10) * (1 + heartPump * 0.7);
+  const heartOpacity = 0.85 - (currentVol / 100) * 0.4;
+
+  // Venous return arrows opacity (less with more hyperinflation)
+  const venousArrowOpacity = data.heartScale * 0.7;
+
+  // Flow waveform animated cursor position
+  const flowCursorX = 40 + breathCycle * 190;
 
   return (
     <div className="rounded-xl border border-border bg-card p-4 sm:p-6 mb-8">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">Dynamic Hyperinflation & Auto-PEEP</h3>
-      <p className="text-xs text-muted-foreground mb-4">Select a phase to explore the mechanism of gas trapping and its cardiovascular consequences</p>
+      <p className="text-xs text-muted-foreground mb-4">Select a phase to see progressive hyperexpansion and cardiovascular compromise</p>
 
       {/* Phase selector */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
@@ -115,73 +173,116 @@ const DynamicHyperinflationDiagram = () => {
 
       {/* Main content grid */}
       <div className="grid md:grid-cols-2 gap-4 mb-4">
-        {/* Left: Lung & Flow Visualisation */}
+        {/* Left: Animated Lung & Heart */}
         <div className="space-y-4">
-          {/* Lung volume visualisation */}
           <div className="rounded-lg border border-border bg-background p-4">
-            <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Lung Volume</p>
-            <div className="relative mx-auto w-40 h-48">
-              {/* Lung outline */}
-              <svg viewBox="0 0 160 192" className="w-full h-full">
+            <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Animated Lung & Heart</p>
+            <div className="relative mx-auto" style={{ width: 220, height: 260 }}>
+              <svg viewBox="0 0 220 260" className="w-full h-full">
                 {/* Trachea */}
-                <rect x="72" y="0" width="16" height="30" rx="4" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.5" />
-                {/* Left lung outline */}
-                <path
-                  d="M70 30 Q30 50 25 100 Q20 155 55 175 Q70 182 75 170 L75 30 Z"
-                  fill="none"
-                  stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="1.5"
-                  opacity="0.4"
-                />
-                {/* Right lung outline */}
-                <path
-                  d="M90 30 Q130 50 135 100 Q140 155 105 175 Q90 182 85 170 L85 30 Z"
-                  fill="none"
-                  stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="1.5"
-                  opacity="0.4"
-                />
-                {/* Left lung fill */}
-                <path
-                  d="M70 30 Q30 50 25 100 Q20 155 55 175 Q70 182 75 170 L75 30 Z"
-                  fill={data.color}
-                  opacity={0.15 + (data.lungVolume / 100) * 0.45}
-                  className="transition-all duration-700 ease-in-out"
-                />
-                {/* Right lung fill */}
-                <path
-                  d="M90 30 Q130 50 135 100 Q140 155 105 175 Q90 182 85 170 L85 30 Z"
-                  fill={data.color}
-                  opacity={0.15 + (data.lungVolume / 100) * 0.45}
-                  className="transition-all duration-700 ease-in-out"
-                />
-                {/* Heart */}
-                <ellipse
-                  cx="80"
-                  cy="120"
-                  rx={14 - (data.lungVolume / 100) * 6}
-                  ry={16 - (data.lungVolume / 100) * 7}
-                  fill="hsl(0, 70%, 55%)"
-                  opacity={0.7 - (data.lungVolume / 100) * 0.3}
-                  className="transition-all duration-700 ease-in-out"
-                />
-                {/* Volume label */}
-                <text x="80" y="100" textAnchor="middle" className="fill-foreground text-[10px] font-bold">
-                  {data.lungVolume}% TLC
+                <rect x="102" y="5" width="16" height="35" rx="4" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.5" />
+
+                {/* Left lung */}
+                <g transform={`translate(110, 140) scale(${-lungScale}, ${lungScale})`} style={{ transformOrigin: '0 0' }}>
+                  <path
+                    d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
+                    fill={data.color}
+                    opacity={0.12 + (currentVol / 100) * 0.35}
+                  />
+                  <path
+                    d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
+                    fill="none"
+                    stroke="hsl(var(--muted-foreground))"
+                    strokeWidth="1.2"
+                    opacity="0.4"
+                  />
+                </g>
+
+                {/* Right lung */}
+                <g transform={`translate(110, 140) scale(${lungScale}, ${lungScale})`} style={{ transformOrigin: '0 0' }}>
+                  <path
+                    d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
+                    fill={data.color}
+                    opacity={0.12 + (currentVol / 100) * 0.35}
+                  />
+                  <path
+                    d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
+                    fill="none"
+                    stroke="hsl(var(--muted-foreground))"
+                    strokeWidth="1.2"
+                    opacity="0.4"
+                  />
+                </g>
+
+                {/* Heart - anatomical shape */}
+                <g transform={`translate(110, 148)`}>
+                  {/* Venous return arrows (SVC/IVC) */}
+                  <line x1="0" y1={-35} x2="0" y2={-heartRy - 4} stroke="hsl(210, 80%, 55%)" strokeWidth="1.5" opacity={venousArrowOpacity} markerEnd="url(#arrowBlue)" />
+                  <line x1="0" y1={35} x2="0" y2={heartRy + 4} stroke="hsl(210, 80%, 55%)" strokeWidth="1.5" opacity={venousArrowOpacity} markerEnd="url(#arrowBlueUp)" />
+                  {venousArrowOpacity < 0.4 && (
+                    <text x="22" y={-28} className="text-[7px] font-bold" fill="hsl(0, 84%, 60%)">↓ Venous return</text>
+                  )}
+
+                  {/* Heart shape using a proper heart path */}
+                  <path
+                    d={`M 0 ${heartRy * 0.9}
+                        C ${-heartRx * 0.8} ${heartRy * 0.5}, ${-heartRx * 1.1} ${-heartRy * 0.3}, 0 ${-heartRy * 0.7}
+                        C ${heartRx * 1.1} ${-heartRy * 0.3}, ${heartRx * 0.8} ${heartRy * 0.5}, 0 ${heartRy * 0.9} Z`}
+                    fill="hsl(0, 65%, 48%)"
+                    opacity={heartOpacity}
+                    stroke="hsl(0, 50%, 35%)"
+                    strokeWidth="1"
+                  />
+                  {/* Heart chambers indication */}
+                  <line x1="0" y1={-heartRy * 0.3} x2="0" y2={heartRy * 0.7} stroke="hsl(0, 50%, 35%)" strokeWidth="0.5" opacity={heartOpacity * 0.5} />
+
+                  {/* CO output arrow (aorta) */}
+                  <line x1={heartRx * 0.3} y1={-heartRy * 0.6} x2={heartRx * 0.3 + 15} y2={-heartRy * 0.6 - 12} stroke="hsl(0, 70%, 55%)" strokeWidth={1.5 * data.heartScale + 0.5} opacity={0.3 + data.heartScale * 0.5} markerEnd="url(#arrowRed)" />
+                </g>
+
+                {/* Compression arrows when severe */}
+                {selected !== "normal" && (
+                  <>
+                    <path d={`M ${60} 148 L ${110 - heartRx - 6} 148`} stroke={data.color} strokeWidth="1" opacity="0.5" markerEnd="url(#arrowCompress)" strokeDasharray="3,2" />
+                    <path d={`M ${160} 148 L ${110 + heartRx + 6} 148`} stroke={data.color} strokeWidth="1" opacity="0.5" markerEnd="url(#arrowCompress)" strokeDasharray="3,2" />
+                  </>
+                )}
+
+                {/* Labels */}
+                <text x="110" y="230" textAnchor="middle" className="fill-foreground text-[9px] font-bold">
+                  {Math.round(currentVol)}% TLC
                 </text>
+                <text x="110" y="242" textAnchor="middle" className="fill-muted-foreground text-[7px]">
+                  {isInsp ? "← Inspiration" : "→ Expiration"}
+                </text>
+
+                {/* Arrow markers */}
+                <defs>
+                  <marker id="arrowBlue" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6" fill="hsl(210, 80%, 55%)" />
+                  </marker>
+                  <marker id="arrowBlueUp" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6" fill="hsl(210, 80%, 55%)" />
+                  </marker>
+                  <marker id="arrowRed" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6" fill="hsl(0, 70%, 55%)" />
+                  </marker>
+                  <marker id="arrowCompress" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                    <path d="M0,0 L6,3 L0,6" fill={data.color} />
+                  </marker>
+                </defs>
               </svg>
             </div>
             <p className="text-center text-xs text-muted-foreground mt-1">{data.description}</p>
           </div>
 
-          {/* Expiratory flow waveform */}
+          {/* Expiratory flow waveform with animated cursor */}
           <div className="rounded-lg border border-border bg-background p-4">
             <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Expiratory Flow Waveform</p>
             <svg viewBox="0 0 280 100" className="w-full h-auto">
               {/* Axes */}
               <line x1="30" y1="50" x2="270" y2="50" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.3" />
               <line x1="30" y1="10" x2="30" y2="90" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.3" />
-              {/* Zero flow line label */}
               <text x="5" y="53" className="fill-muted-foreground text-[7px]">0</text>
               <text x="2" y="20" className="fill-muted-foreground text-[7px]">Insp</text>
               <text x="2" y="85" className="fill-muted-foreground text-[7px]">Exp</text>
@@ -191,6 +292,9 @@ const DynamicHyperinflationDiagram = () => {
               {renderBreath(40, data.flowTruncation, data.color, data.flowReturnsToZero)}
               {/* Breath 2 */}
               {renderBreath(140, data.flowTruncation, data.color, data.flowReturnsToZero)}
+
+              {/* Animated cursor line */}
+              <line x1={flowCursorX} y1="8" x2={flowCursorX} y2="92" stroke={data.color} strokeWidth="1" opacity="0.4" strokeDasharray="2,2" />
 
               {/* Auto-PEEP indicator */}
               {!data.flowReturnsToZero && (
@@ -233,6 +337,39 @@ const DynamicHyperinflationDiagram = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Heart status indicator */}
+          <div className="rounded-lg border border-border bg-background p-3">
+            <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Heart Status</p>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: data.color + "15", borderColor: data.color + "40", borderWidth: 1 }}>
+                <span className="text-lg" role="img" aria-label="heart">
+                  {selected === "arrest" ? "💔" : "❤️"}
+                </span>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-medium text-foreground">Preload:</span>
+                  <div className="flex-1 h-2 bg-secondary/50 rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full transition-all duration-700"
+                      style={{
+                        width: `${data.heartScale * 100}%`,
+                        backgroundColor: data.heartScale > 0.5 ? "hsl(0, 65%, 48%)" : data.color,
+                      }}
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold" style={{ color: data.color }}>{Math.round(data.heartScale * 100)}%</span>
+                </div>
+                <p className="text-[10px] text-muted-foreground">
+                  {selected === "normal" && "Normal venous return → adequate preload → good stroke volume"}
+                  {selected === "mild" && "Mildly reduced venous return → reduced preload → compensatory tachycardia"}
+                  {selected === "severe" && "Severely impaired venous return → critically low preload → hypotension"}
+                  {selected === "arrest" && "Venous return obstructed → no preload → no cardiac output → PEA"}
+                </p>
+              </div>
             </div>
           </div>
 
@@ -285,9 +422,7 @@ function renderBreath(startX: number, truncation: number, color: string, returns
   const baseY = 50;
   const breathWidth = 80;
 
-  // Inspiration phase (above baseline)
   const inspEnd = startX + breathWidth * 0.3;
-  // Expiration phase
   const expEnd = startX + breathWidth;
   const actualExpEndY = returnsToZero ? baseY : baseY + (expPeakY - baseY) * (1 - truncation);
 
@@ -305,7 +440,6 @@ function renderBreath(startX: number, truncation: number, color: string, returns
       fill="none"
       stroke={color}
       strokeWidth="2"
-      className="transition-all duration-500"
     />
   );
 }
