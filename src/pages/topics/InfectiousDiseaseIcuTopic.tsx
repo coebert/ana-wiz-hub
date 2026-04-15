@@ -479,6 +479,9 @@ const InfectiousDiseaseIcuTopic = () => {
         "S. aureus bacteraemia always requires echocardiography and a minimum 2 weeks IV antibiotics",
         "C. difficile: oral vancomycin first-line; severe/fulminant cases need surgical review for colectomy",
         "Source control is the most important intervention in intra-abdominal sepsis and necrotising fasciitis",
+        "CRE: ceftazidime-avibactam for KPC/OXA-48; cefiderocol for NDM — always involve microbiology/ID",
+        "ESCAPPM organisms risk inducible AmpC resistance on 3rd-gen cephalosporins — use carbapenems or cefepime",
+        "Candida auris is an emerging MDR yeast requiring MALDI-TOF identification, contact isolation, and enhanced environmental cleaning",
       ]} />
 
       <QuizSection questions={infectiousDiseaseIcuQuestions} />
