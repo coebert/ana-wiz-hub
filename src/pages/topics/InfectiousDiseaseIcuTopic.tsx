@@ -451,6 +451,39 @@ const InfectiousDiseaseIcuTopic = () => {
           </div>
         </div>
 
+        {/* ---- Leptospirosis ---- */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Leptospirosis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            <em>Leptospira interrogans</em> is a spirochaete transmitted through contact with water or soil contaminated by infected animal urine (rats, cattle, dogs). Occupational risk in farmers, sewer workers, and military personnel. Incubation 2–30 days. Endemic in tropical regions but occurs worldwide — consider in travellers returning with fever and multi-organ dysfunction.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Anicteric Leptospirosis (90%)</p>
+              <p className="text-xs text-muted-foreground mt-1">Biphasic illness: acute bacteraemic phase (fever, myalgia, conjunctival suffusion, headache) followed by immune phase. Usually self-limiting. Suffusion without purulent discharge is a distinguishing feature.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Weil's Disease (severe, ~10%)</p>
+              <p className="text-xs text-muted-foreground mt-1">Triad of jaundice, AKI, and haemorrhage. Jaundice is due to hepatocellular dysfunction but hepatic failure is rare — transaminases only modestly elevated (unlike viral hepatitis). Thrombocytopenia common. Mortality 5–15%.</p>
+            </div>
+          </div>
+          <div className="space-y-2">
+            {[
+              { label: "Renal Involvement", detail: "Non-oliguric AKI with hypokalaemia (unique — most AKI causes hyperkalaemia). Direct tubular toxicity and interstitial nephritis. Usually recovers with supportive care ± RRT. Hypokalaemia may require aggressive replacement." },
+              { label: "Pulmonary Haemorrhage", detail: "Diffuse alveolar haemorrhage is the most feared complication — can cause rapidly fatal respiratory failure. Haemoptysis, bilateral infiltrates, falling haemoglobin. May require intubation and lung-protective ventilation. Consider pulsed methylprednisolone (evidence limited but used in severe cases)." },
+              { label: "Cardiac Involvement", detail: "Myocarditis, arrhythmias, and cardiovascular collapse. ECG changes include ST-segment abnormalities and conduction defects. Troponin elevation common." },
+              { label: "Diagnosis", detail: "MAT (microscopic agglutination test) — gold standard but takes 7–10 days. IgM ELISA for rapid screening. PCR on blood (first week) or urine (second week). Dark-field microscopy (low sensitivity). Blood cultures in EMJH medium (slow — weeks)." },
+              { label: "Treatment", detail: "Mild: oral doxycycline 100 mg BD or amoxicillin. Severe (Weil's): IV benzylpenicillin 1.2 g QDS or ceftriaxone 1 g OD. Early antibiotics reduce duration and complications. Jarisch-Herxheimer reaction may occur (treat supportively). Doxycycline 200 mg weekly for prophylaxis in high-risk exposure." },
+              { label: "ICU Management", detail: "Organ support: RRT for AKI, mechanical ventilation for pulmonary haemorrhage/ARDS, vasopressors for shock. Correct coagulopathy and thrombocytopenia. Monitor for myocarditis. Notifiable disease in the UK." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ---- Infection control ---- */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
