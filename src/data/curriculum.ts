@@ -117,26 +117,35 @@ export const clinicalTopics: Topic[] = [
 ];
 
 export const intensiveCareTopics: Topic[] = [
-  { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  // Respiratory
   { id: "mechanical-ventilation", title: "Mechanical Ventilation", description: "Ventilator modes, ARDS protocols, lung-protective strategies, weaning", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "circulatory-failure", title: "Circulatory Failure & Shock", description: "Cardiogenic, distributive, obstructive, hypovolaemic shock management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "aki-rrt", title: "Acute Kidney Injury & RRT", description: "KDIGO staging, CRRT, IHD, indications for renal replacement therapy", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "acute-liver-failure", title: "Acute Liver Failure", description: "Paracetamol toxicity, King's College criteria, liver transplantation", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "neurointensive-care", title: "Neurointensive Care", description: "TBI management, SAH, status epilepticus, brain death testing", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "cardiac-output-monitoring", title: "Cardiac Output Monitoring", description: "PA catheter, PiCCO, oesophageal Doppler, echocardiography", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "acid-base", title: "Acid-Base Disorders", description: "Stewart approach, strong ion difference, anion gap, base excess", section: "intensive-care", examTags: ["primary", "final", "fficm"], available: true },
   { id: "ards", title: "ARDS & Lung Injury", description: "Berlin definition, prone positioning, ECMO, rescue therapies", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "icu-nutrition", title: "Nutrition in Critical Care", description: "Enteral vs parenteral, refeeding syndrome, metabolic response to illness", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive transfusion protocols, DIC, TEG/ROTEM, blood products", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm"], available: true },
-  { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "bronchospastic-failure", title: "Bronchospastic Respiratory Failure", description: "Life-threatening asthma, IECOPD, pharmacology, NIV, ventilation strategies, inhaled volatiles via Sedaconda", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  // Cardiovascular
+  { id: "circulatory-failure", title: "Circulatory Failure & Shock", description: "Cardiogenic, distributive, obstructive, hypovolaemic shock management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "cardiac-output-monitoring", title: "Cardiac Output Monitoring", description: "PA catheter, PiCCO, oesophageal Doppler, echocardiography", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  // Sepsis & Infection
+  { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm"], available: true },
+  // Renal & Metabolic
+  { id: "aki-rrt", title: "Acute Kidney Injury & RRT", description: "KDIGO staging, CRRT, IHD, indications for renal replacement therapy", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "acid-base", title: "Acid-Base Disorders", description: "Stewart approach, strong ion difference, anion gap, base excess", section: "intensive-care", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "icu-nutrition", title: "Nutrition in Critical Care", description: "Enteral vs parenteral, refeeding syndrome, metabolic response to illness", section: "intensive-care", examTags: ["fficm"], available: true },
+  // Neuro
+  { id: "neurointensive-care", title: "Neurointensive Care", description: "TBI management, SAH, status epilepticus, brain death testing", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm"], available: true },
+  // Hepatic
+  { id: "acute-liver-failure", title: "Acute Liver Failure", description: "Paracetamol toxicity, King's College criteria, liver transplantation", section: "intensive-care", examTags: ["fficm"], available: true },
+  { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  // Haematology
+  { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive transfusion protocols, DIC, TEG/ROTEM, blood products", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm"], available: true },
+  // Special Populations
+  { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm"], available: true },
+  // Ethics & Outcomes
+  { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "prognostication-ethics-icu", title: "Prognostication, Ethics & Outcomes", description: "Prognostic scoring, treatment escalation plans, medical ethics, withdrawal of treatment, PICS, long-term outcomes", section: "intensive-care", examTags: ["final", "fficm"], available: true },
 ];
 
