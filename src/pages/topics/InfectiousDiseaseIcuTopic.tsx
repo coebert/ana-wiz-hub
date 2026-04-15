@@ -334,6 +334,123 @@ const InfectiousDiseaseIcuTopic = () => {
           </div>
         </div>
 
+        {/* ---- Drug-Resistant Organisms ---- */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug-Resistant Organisms</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Antimicrobial resistance (AMR) is a critical challenge in ICU. Prolonged antibiotic courses, immunosuppression, invasive devices, and cross-contamination drive selection and transmission of multi-drug resistant organisms (MDROs).
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Positive Resistant Organisms</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Organism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Resistance Mechanism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Treatment Options</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">MRSA</td>
+                  <td><em>mecA</em> gene → altered PBP2a with low β-lactam affinity. Community-associated (CA-MRSA) often PVL-positive — necrotising pneumonia, skin abscesses.</td>
+                  <td>Vancomycin (trough 15–20 mg/L for serious infections) or teicoplanin. Linezolid for pneumonia (better lung penetration). Daptomycin for bacteraemia (inactivated by surfactant — not for pneumonia). Decolonisation: nasal mupirocin + chlorhexidine washes.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">VRE</td>
+                  <td><em>vanA</em> (high-level, transferable) or <em>vanB</em> genes. <em>E. faecium</em> more commonly resistant than <em>E. faecalis</em>. Intrinsically resistant to cephalosporins.</td>
+                  <td>Linezolid (oral bioavailability ~100%) or daptomycin. Tigecycline for intra-abdominal/soft tissue. Contact isolation essential.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Penicillin-resistant <em>S. pneumoniae</em></td>
+                  <td>Altered PBPs. MIC-dependent: intermediate vs high-level resistance. More common in certain serotypes.</td>
+                  <td>High-dose ceftriaxone (2 g BD) for meningitis. Vancomycin added empirically for CNS infection. Respiratory infections often still respond to high-dose amoxicillin.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Negative Resistant Organisms</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Organism / Mechanism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Key Features</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Treatment Options</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">ESBL producers</td>
+                  <td>Extended-spectrum β-lactamases hydrolyse 3rd-generation cephalosporins. Common in <em>E. coli</em>, <em>Klebsiella</em>. Risk factors: prior antibiotics, travel to endemic areas, recurrent UTIs.</td>
+                  <td>Carbapenems (meropenem) are first-line for serious infections. Piperacillin-tazobactam may be adequate for UTIs (MERINO trial suggests inferiority for bacteraemia). Fosfomycin for uncomplicated UTI.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">AmpC producers</td>
+                  <td>Chromosomal or plasmid-mediated AmpC β-lactamases. The 'ESCAPPM' organisms (<em>Enterobacter, Serratia, Citrobacter, Aeromonas, Proteus vulgaris, Providencia, Morganella</em>). Risk of inducible resistance on 3rd-gen cephalosporins.</td>
+                  <td>Carbapenems or cefepime (stable to AmpC). Avoid ceftriaxone/ceftazidime — risk of selecting resistant mutants during therapy.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Carbapenem-resistant Enterobacterales (CRE)</td>
+                  <td>Carbapenemases: KPC, NDM, OXA-48, VIM, IMP. NDM and OXA-48 prevalent in South Asia and Middle East. Plasmid-mediated — horizontal gene transfer. Mortality 40–50%.</td>
+                  <td>Ceftazidime-avibactam (KPC, OXA-48). Meropenem-vaborbactam (KPC). Cefiderocol (NDM, all carbapenemases). Colistin (nephrotoxic — last resort). Combination therapy often used. Infectious diseases input essential.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">MDR <em>Pseudomonas aeruginosa</em></td>
+                  <td>Multiple mechanisms: efflux pumps, porin loss, AmpC, metallo-β-lactamases. Biofilm formation on devices. Intrinsically resistant to many antibiotics.</td>
+                  <td>Anti-pseudomonal β-lactams (piperacillin-tazobactam, ceftazidime, meropenem) based on sensitivities. Ceftolozane-tazobactam for MDR strains. Nebulised colistin as adjunct in VAP. Combination therapy for severe infections.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">MDR <em>Acinetobacter baumannii</em></td>
+                  <td>Intrinsically resistant to many antibiotics. OXA-type carbapenemases. Survives on environmental surfaces for weeks — outbreaks in ICU. Associated with VAP, wound infections, bacteraemia.</td>
+                  <td>High-dose ampicillin-sulbactam (sulbactam has intrinsic activity). Colistin ± meropenem (if MIC ≤8). Tigecycline for non-bacteraemic infections. Environmental decontamination critical.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Drug-Resistant Fungi</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm"><em>Candida auris</em></p>
+              <p className="text-xs text-muted-foreground mt-1">Emerging multidrug-resistant yeast. Often resistant to fluconazole; variable echinocandin and amphotericin B susceptibility. Persists on skin and environmental surfaces. Difficult to identify — requires MALDI-TOF or molecular methods. Outbreaks in ICUs worldwide. Contact isolation + enhanced environmental cleaning essential.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Azole-resistant <em>Aspergillus fumigatus</em></p>
+              <p className="text-xs text-muted-foreground mt-1">TR34/L98H and TR46/Y121F/T289A mutations — linked to environmental azole fungicide use. Voriconazole resistance → liposomal amphotericin B first-line. Susceptibility testing essential. Increasing prevalence in Europe.</p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Drug-Resistant Tuberculosis</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">MDR-TB</p>
+              <p className="text-xs text-muted-foreground mt-1">Resistant to rifampicin AND isoniazid. Requires 9–18 month regimens with second-line agents: bedaquiline, linezolid, levofloxacin, clofazimine. Specialist TB centre referral. Airborne precautions with negative-pressure isolation.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">XDR-TB</p>
+              <p className="text-xs text-muted-foreground mt-1">MDR-TB + resistance to fluoroquinolones AND ≥1 injectable agent (or bedaquiline/linezolid per 2021 WHO definition). Extremely limited treatment options. Mortality high without access to newer agents. GeneXpert MTB/RIF for rapid rifampicin resistance detection.</p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">ICU Strategies for Managing MDROs</h3>
+          <div className="space-y-2">
+            {[
+              { label: "Screening & Surveillance", detail: "Admission screening for MRSA, CPE, VRE in high-risk patients (recent hospitalisation, travel to endemic areas, prior MDROs). Rectal swabs for CPE/VRE, nasal swabs for MRSA. Active surveillance cultures." },
+              { label: "Contact Precautions", detail: "Single-room isolation or cohorting. Dedicated equipment. Gowns and gloves for all contact. Enhanced terminal cleaning with hydrogen peroxide vapour or UV-C for CPE and C. auris." },
+              { label: "Antibiotic Stewardship", detail: "Empiric broad-spectrum → de-escalate at 48–72 h based on cultures. Carbapenem-sparing strategies where possible. Procalcitonin-guided duration. Regular antibiogram review. Restrict fluoroquinolones and carbapenems." },
+              { label: "Novel Agents & Approaches", detail: "Ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol, ceftolozane-tazobactam, eravacycline. Phage therapy (experimental). Faecal microbiota transplant for recurrent C. difficile. Pipeline agents in clinical trials." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* ---- Infection control ---- */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
@@ -362,6 +479,9 @@ const InfectiousDiseaseIcuTopic = () => {
         "S. aureus bacteraemia always requires echocardiography and a minimum 2 weeks IV antibiotics",
         "C. difficile: oral vancomycin first-line; severe/fulminant cases need surgical review for colectomy",
         "Source control is the most important intervention in intra-abdominal sepsis and necrotising fasciitis",
+        "CRE: ceftazidime-avibactam for KPC/OXA-48; cefiderocol for NDM — always involve microbiology/ID",
+        "ESCAPPM organisms risk inducible AmpC resistance on 3rd-gen cephalosporins — use carbapenems or cefepime",
+        "Candida auris is an emerging MDR yeast requiring MALDI-TOF identification, contact isolation, and enhanced environmental cleaning",
       ]} />
 
       <QuizSection questions={infectiousDiseaseIcuQuestions} />
