@@ -174,6 +174,9 @@ const SepsisTopic = () => {
         "Noradrenaline is the first-line vasopressor; vasopressin is second-line",
         "Each hour delay in antibiotics increases mortality by approximately 7%",
         "Source control is critical — drain, debride, or remove infected sources early",
+        "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality",
+        "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy",
+        "No single biomarker diagnoses sepsis — trends are more informative than single values",
       ]} />
 
       <QuizSection questions={sepsisQuestions} />
