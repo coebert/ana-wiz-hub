@@ -351,6 +351,140 @@ const PrognosticationEthicsIcuTopic = () => {
           </div>
         </div>
 
+        {/* ---- ICU Admission & Triage ---- */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Admission, Triage & Resource Allocation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            ICU beds are a finite, expensive resource. Admission decisions must balance the duty to the individual patient against the responsibility to use limited resources fairly. Effective triage requires clinical expertise, ethical reasoning, and clear communication.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Who Benefits from ICU Admission?</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Priority</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Description</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Examples</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Priority 1</td>
+                  <td>Critically ill, unstable — require intensive monitoring and treatment not available elsewhere. High likelihood of recovery with ICU care.</td>
+                  <td>Post-operative complications, acute respiratory failure requiring intubation, septic shock needing vasopressors</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Priority 2</td>
+                  <td>Require intensive monitoring and may need immediate intervention. May have chronic comorbidities that reduce likelihood of recovery.</td>
+                  <td>Acute-on-chronic respiratory failure, unstable angina with dynamic ECG changes, diabetic ketoacidosis with organ dysfunction</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Priority 3</td>
+                  <td>Critically ill but with reduced probability of recovery due to underlying disease or severity. May benefit from a trial of ICU therapy with defined limits.</td>
+                  <td>Advanced malignancy with acute reversible complication, severe COPD with pneumonia, elderly frail patient with sepsis</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Priority 4</td>
+                  <td>Generally not appropriate for ICU. Either too well (can be managed on a ward) or too sick (ICU care would not alter outcome).</td>
+                  <td>Low-risk elective post-op (too well); end-stage irreversible organ failure with no reversible component (too sick)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Principles of ICU Gatekeeping</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { label: "Reversibility", detail: "The core question: does the patient have a potentially reversible condition that requires organ support? ICU admission is most appropriate when the acute illness is treatable and the patient has reasonable baseline function. Irreversible disease without a reversible precipitant is unlikely to benefit." },
+              { label: "Benefit vs Burden", detail: "ICU care carries significant burdens: invasive procedures, pain, delirium, loss of autonomy, nosocomial infection, psychological harm, and family distress. These must be weighed against the potential benefit of survival with acceptable quality of life. The question is not 'can we treat?' but 'should we treat?'" },
+              { label: "Functional Baseline & Frailty", detail: "Pre-morbid functional status is a stronger predictor of ICU outcome than age alone. The Clinical Frailty Scale (CFS ≥5 = mildly frail) identifies patients at higher risk of poor outcome. NICE COVID-19 guidelines used CFS ≥5 as a factor in ICU triage. Frailty assessment should be routine for all emergency ICU referrals." },
+              { label: "The 'Too Sick' and 'Too Well' Problem", detail: "Many inappropriate ICU admissions fall into two categories: patients who are too well for ICU (could be managed on a ward with appropriate monitoring) and patients who are too sick to benefit (the disease trajectory is irreversible). Both waste ICU capacity and expose patients to unnecessary harm." },
+              { label: "Consultant-Led Decision Making", detail: "ICU admission decisions should be made by the ICU consultant or senior registrar on call. They should assess the patient directly wherever possible. The decision is the ICU team's to make — referring teams can request, not demand, ICU admission. Clear documentation of the decision and rationale is essential." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Resource Allocation & Rationing</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Micro-Allocation</p>
+              <p className="text-xs text-muted-foreground mt-1">Day-to-day decisions about individual patient admissions, discharges, and bed management. The ICU consultant balances the needs of patients currently in ICU against those waiting for admission. 'Delayed discharge' and 'premature discharge' both carry risks. Bed occupancy &gt;85% is associated with increased refusal rates and worse outcomes for refused patients.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Macro-Allocation</p>
+              <p className="text-xs text-muted-foreground mt-1">System-level decisions about how many ICU beds a hospital or region needs. UK has ~6.6 ICU beds per 100,000 population (cf. Germany ~29, USA ~34). Funding decisions, staffing ratios (1:1 nursing), and equipment procurement are macro-allocation. Pandemic highlighted the fragility of running ICU at near-maximum capacity.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pandemic Triage</p>
+              <p className="text-xs text-muted-foreground mt-1">When demand exceeds capacity, triage protocols prioritise patients most likely to benefit. Utilitarian approach: greatest good for greatest number. NICE COVID-19 rapid guidance recommended CFS assessment and consideration of comorbidity burden. Pandemic triage protocols must be transparent, consistent, non-discriminatory, and pre-agreed.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Ethical Frameworks for Rationing</p>
+              <p className="text-xs text-muted-foreground mt-1">First-come-first-served (simple but ignores clinical need), utilitarian (maximise lives saved), egalitarian (equal access), prioritarian (prioritise the worst-off), lottery (random — avoids bias). Most real-world triage uses a hybrid: clinical benefit first, with fairness as a tiebreaker. No framework is universally accepted — transparency is key.</p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Critical Care Outreach & Rapid Response</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { label: "Track & Trigger Systems", detail: "National Early Warning Score (NEWS2) is the UK standard. Aggregate weighted scores from physiological parameters (RR, SpO₂, BP, pulse, consciousness, temperature). NEWS ≥5 = urgent response; NEWS ≥7 = emergency response; NEWS 3 in any single parameter = urgent review. Designed to detect deterioration early and trigger appropriate escalation." },
+              { label: "Critical Care Outreach Teams (CCOT)", detail: "Multidisciplinary teams (typically ICU nurses, physiotherapists, sometimes medical staff) that extend ICU expertise to the ward. Functions: respond to deteriorating patients, support ward staff with skills and education, facilitate step-down from ICU, assist with end-of-life care decisions, and reduce avoidable ICU admissions and cardiac arrests. Evidence supports reduced unexpected cardiac arrests and improved early intervention." },
+              { label: "Benefits of Outreach", detail: "Earlier identification of deteriorating patients. Reduced avoidable cardiac arrests. Facilitated appropriate ICU admission (right patient, right time). Supported safe step-down from ICU to ward. Education and upskilling of ward staff. Improved communication between ward and ICU teams. Support for DNACPR and treatment escalation planning." },
+              { label: "ICNARC & National Audit", detail: "The Intensive Care National Audit & Research Centre (ICNARC) runs the Case Mix Programme (CMP) — a national clinical audit of patient outcomes from adult ICUs in England, Wales, and Northern Ireland. Benchmarks unit performance using standardised mortality ratios (SMR). Identifies outliers for review. Data feeds into national quality improvement. Participation is near-universal in NHS ICUs." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Levels of Critical Care (ICS Standards)</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Level</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Care</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Nursing Ratio</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Location</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Level 0</td>
+                  <td>Normal ward care</td>
+                  <td>Standard</td>
+                  <td>General ward</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Level 1</td>
+                  <td>At risk of deterioration or recently stepped down from higher care. Additional monitoring/intervention.</td>
+                  <td>Enhanced (variable)</td>
+                  <td>Ward with outreach support</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Level 2 (HDU)</td>
+                  <td>Single organ support (excluding advanced respiratory support) or post-operative care, or step-down from Level 3</td>
+                  <td>1:2</td>
+                  <td>High Dependency Unit</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Level 3 (ICU)</td>
+                  <td>Advanced respiratory support alone, or support of ≥2 organ systems, or chronic ventilation support</td>
+                  <td>1:1</td>
+                  <td>Intensive Care Unit</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
       </section>
 
       <KeyLearningPoints points={[
