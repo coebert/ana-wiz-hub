@@ -80,7 +80,38 @@ const InfectiousDiseaseIcuTopic = () => {
           </div>
         </div>
 
-        {/* ---- Urosepsis ---- */}
+        {/* ---- PVL Pneumonia ---- */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">PVL-Positive <em>Staphylococcus aureus</em> Pneumonia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Panton-Valentine Leukocidin (PVL) is a pore-forming cytotoxin produced by certain strains of <em>S. aureus</em> (both MSSA and MRSA). PVL-positive necrotising pneumonia is a rare but devastating condition, predominantly affecting previously healthy young adults, often preceded by influenza-like illness or skin infection.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pathophysiology</p>
+              <p className="text-xs text-muted-foreground mt-1">PVL forms pores in neutrophil and macrophage membranes → massive neutrophil lysis → release of proteolytic enzymes → necrotising tissue destruction and haemorrhagic alveolar necrosis. The toxin-mediated damage is disproportionate to bacterial load.</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Clinical Presentation</p>
+              <p className="text-xs text-muted-foreground mt-1">Preceding flu-like prodrome or skin boils. Rapid deterioration: high fever, haemoptysis, leucopenia (paradoxical — WCC often &lt;2 × 10⁹/L despite severe sepsis), multilobar cavitating consolidation, pleural effusions. Shock and ARDS develop within hours. Mortality 50–75%.</p>
+            </div>
+          </div>
+          <div className="space-y-2">
+            {[
+              { label: "Key Diagnostic Clues", detail: "Young, previously healthy patient with rapidly progressive pneumonia + leucopenia + haemoptysis. History of recurrent skin abscesses (boils/furunculosis) in patient or close contacts. CXR/CT: multilobar consolidation with necrosis/cavitation. Blood cultures often positive. Send isolate for PVL gene testing (PCR for lukS-PV and lukF-PV genes)." },
+              { label: "Antimicrobial Therapy", detail: "CRITICAL: Suppress toxin production. IV linezolid (inhibits toxin synthesis at ribosomal level) + IV clindamycin (also inhibits toxin production). Add IV flucloxacillin or vancomycin (if MRSA) for bactericidal activity. Rifampicin may be added for synergy. IVIG 2 g/kg (neutralises circulating PVL toxin) — give early. Avoid sole use of β-lactams at sub-inhibitory concentrations as this may paradoxically increase toxin production." },
+              { label: "ICU Management", detail: "Early intubation and lung-protective ventilation — ARDS is almost universal. Prone positioning. Consider VV-ECMO early given the high mortality and young patient demographic. Aggressive haemodynamic resuscitation with vasopressors. Surgical debridement of necrotic lung (lobectomy/pneumonectomy) may be life-saving in refractory cases." },
+              { label: "Infection Control & Contacts", detail: "PHE (UKHSA) guidelines: screen household contacts for PVL carriage (nasal, axillary, groin swabs). Decolonisation of patient and carriers: nasal mupirocin + chlorhexidine body washes × 5 days. Recurrent skin infections in close contacts is a red flag. Not routinely airborne — standard and contact precautions." },
+              { label: "Skin & Soft Tissue PVL Disease", detail: "PVL-positive S. aureus more commonly causes recurrent boils, abscesses, and cellulitis. Necrotising pneumonia is the rare but most severe manifestation. Always consider PVL testing in young patients with recurrent staphylococcal skin infections." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Urosepsis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
