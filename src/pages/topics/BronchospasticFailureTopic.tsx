@@ -69,6 +69,8 @@ const BronchospasticFailureTopic = () => {
             </div>
           </div>
 
+          <DynamicHyperinflationDiagram />
+
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Dynamic Hyperinflation & Gas Trapping</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Narrowed airways increase expiratory time constants. If insufficient time is allowed for expiration, gas trapping occurs → progressive hyperinflation → intrinsic PEEP (auto-PEEP) → reduced venous return → cardiovascular collapse. This is the primary mechanism of peri-arrest deterioration in severe asthma.
