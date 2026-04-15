@@ -136,6 +136,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "bronchospastic-failure", title: "Bronchospastic Respiratory Failure", description: "Life-threatening asthma, IECOPD, pharmacology, NIV, ventilation strategies, inhaled volatiles via Sedaconda", section: "intensive-care", examTags: ["final", "fficm"], available: true },
 ];
 
 export const perioperativeTopics: Topic[] = [

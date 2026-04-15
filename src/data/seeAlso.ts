@@ -106,14 +106,15 @@ export const seeAlsoMap: Record<string, string[]> = {
 
   // ── Intensive Care ──
   "sepsis": ["vasoactive-agents", "antimicrobials-icu", "circulatory-failure", "acid-base", "infectious-disease-icu"],
-  "mechanical-ventilation": ["ventilators", "lung-mechanics", "ards", "respiratory-disease"],
+  "mechanical-ventilation": ["ventilators", "lung-mechanics", "ards", "respiratory-disease", "bronchospastic-failure"],
   "circulatory-failure": ["vasoactive-agents", "cardiac-output-monitoring", "starling-forces", "sepsis", "cardiovascular-disease"],
   "aki-rrt": ["renal-physiology", "perioperative-fluids", "acid-base", "sepsis"],
   "acute-liver-failure": ["hepatic-physiology", "hepatobiliary-transplant", "toxicology"],
   "neurointensive-care": ["neuroanatomy", "neuroanaesthesia", "organ-donation", "icu-sedation-delirium", "infectious-disease-icu"],
   "cardiac-output-monitoring": ["circulatory-failure", "clinical-measurement", "ultrasound-physics"],
   "acid-base": ["abg-analyser", "renal-physiology", "aki-rrt"],
-  "ards": ["mechanical-ventilation", "ventilation-perfusion", "ecmo", "lung-mechanics"],
+  "ards": ["mechanical-ventilation", "ventilation-perfusion", "ecmo", "lung-mechanics", "bronchospastic-failure"],
+  "bronchospastic-failure": ["mechanical-ventilation", "ards", "respiratory-disease", "lung-mechanics", "volatile-agents", "icu-sedation-delirium", "ecmo", "ventilators"],
   "icu-nutrition": ["gi-physiology", "aki-rrt", "sepsis"],
   "transfusion-coagulation": ["haematology-immunity", "anticoagulants", "haematology-icu", "trauma-emergency"],
   "icu-sedation-delirium": ["neurointensive-care", "elderly-anaesthesia", "opioids"],
