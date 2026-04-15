@@ -95,6 +95,75 @@ const SepsisTopic = () => {
             IV hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) if haemodynamic instability persists despite adequate fluid resuscitation and vasopressor therapy. ADRENAL and APROCCHSS trials support use in refractory septic shock for faster shock reversal but no mortality benefit is definitively proven.
           </p>
         </div>
+
+        {/* ---- Sepsis Biomarkers ---- */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sepsis Biomarkers</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            No single biomarker is diagnostic of sepsis. Biomarkers support diagnosis, guide antibiotic duration, prognosticate, and monitor treatment response. Understanding their kinetics and limitations is essential.
+          </p>
+
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Biomarker</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Source & Kinetics</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Clinical Utility</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Limitations</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">CRP</td>
+                  <td>Hepatic acute-phase protein. Rises 6–8 h, peaks 36–50 h. Half-life ~19 h. Triggered by IL-6.</td>
+                  <td>Widely available, inexpensive. Tracks trends and treatment response. Values &gt;100 mg/L suggest significant bacterial infection but not diagnostic.</td>
+                  <td>Non-specific — elevated post-surgery, trauma, autoimmune disease, malignancy. Slow kinetics. Poor bacterial vs viral discrimination. Low in hepatic failure.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Procalcitonin (PCT)</td>
+                  <td>Calcitonin precursor. Extra-thyroidal production induced by endotoxin and TNF-α/IL-6. Rises 2–4 h, peaks 12–24 h, half-life 24–30 h.</td>
+                  <td><strong>Best evidence for guiding antibiotic duration</strong> (PRORATA, SAPS trials). SSC 2021 recommends PCT-guided de-escalation. &lt;0.1 ng/mL: bacterial infection unlikely. &gt;0.5 ng/mL: systemic bacterial infection likely. 80% decline from peak supports stopping antibiotics.</td>
+                  <td>Elevated post-surgery, burns, cardiogenic shock, renal failure. Not reliably raised in localised infections. Cost higher than CRP. Viral infections generally suppress PCT (helps differentiate).</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Lactate</td>
+                  <td>Anaerobic glycolysis end-product. Normal &lt;2 mmol/L. In sepsis: tissue hypoperfusion AND β₂-adrenergic aerobic glycolysis. Rapid point-of-care assay.</td>
+                  <td><strong>Prognostic marker and resuscitation target</strong>. Lactate &gt;2 mmol/L defines septic shock (+ vasopressors). Clearance &gt;20% in 2 h → improved outcomes. Part of Hour-1 bundle. Serial measurements guide resuscitation.</td>
+                  <td>Non-specific: seizures, mesenteric ischaemia, liver failure, β₂-agonists, metformin, thiamine deficiency. Type A (hypoperfusion) vs Type B (non-hypoperfusion) distinction important. Hepatic impairment reduces clearance.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Presepsin (sCD14-ST)</td>
+                  <td>Soluble fragment of CD14 (monocyte LPS receptor). Rises within 2 h (faster than PCT), peaks 3 h. Half-life 1–3 h — very rapid kinetics.</td>
+                  <td>Emerging biomarker with fastest kinetics. &gt;600 pg/mL suggests sepsis. May have superior diagnostic accuracy to PCT for early bacterial sepsis in some studies. Rising levels predict worse prognosis.</td>
+                  <td>Not widely available — requires specific immunoassay. Elevated in renal failure. Limited evidence vs PCT/CRP — few large RCTs. Not yet in SSC guidelines. Assay standardisation evolving.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Endotoxin Activity Assay (EAA)</td>
+                  <td>Measures LPS-induced neutrophil oxidative burst. Reflects circulating endotoxin. Results &lt;30 min. Scale 0–1: low (&lt;0.4), intermediate (0.4–0.59), high (≥0.6).</td>
+                  <td>Specific for Gram-negative sepsis. High EAA (≥0.6) → worse outcomes. Guided polymyxin B haemoperfusion in EUPHRATES trial (post-hoc benefit in EAA 0.6–0.89 subgroup). May differentiate Gram-negative vs Gram-positive source.</td>
+                  <td>Gram-negative only — normal in Gram-positive/fungal sepsis. EUPHRATES failed primary endpoint. Limited availability. Does not distinguish viable bacteria from LPS fragments. Antibiotic-induced endotoxin release may confound.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Practical Approach</h3>
+          <div className="space-y-2">
+            {[
+              { label: "Diagnosis", detail: "No biomarker replaces clinical assessment. PCT >0.5 ng/mL with compatible clinical picture supports bacterial sepsis. Presepsin may add value in early detection but availability is limited." },
+              { label: "Antibiotic Stewardship", detail: "PCT-guided algorithms reduce antibiotic duration by 2–3 days without increasing mortality (multiple RCTs). SSC 2021 recommends daily PCT for de-escalation. PCT that fails to decline suggests inadequate source control, resistant organism, or non-infectious cause." },
+              { label: "Prognostication", detail: "Lactate >4 mmol/L: mortality ~30–40%. Persistently elevated lactate despite resuscitation is the strongest predictor of poor outcome. Rising PCT/CRP despite treatment suggests treatment failure." },
+              { label: "Serial Monitoring", detail: "Trends are more informative than single values. Lactate 2–4 hourly during resuscitation, CRP daily, PCT 24–48 hourly. Declining trajectory supports current management; plateau or rise mandates reassessment." },
+            ].map((item) => (
+              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </section>
 
       <SepsisManagementDiagram />
@@ -105,6 +174,9 @@ const SepsisTopic = () => {
         "Noradrenaline is the first-line vasopressor; vasopressin is second-line",
         "Each hour delay in antibiotics increases mortality by approximately 7%",
         "Source control is critical — drain, debride, or remove infected sources early",
+        "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality",
+        "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy",
+        "No single biomarker diagnoses sepsis — trends are more informative than single values",
       ]} />
 
       <QuizSection questions={sepsisQuestions} />
