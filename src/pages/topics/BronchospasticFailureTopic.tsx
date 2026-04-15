@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
 
 const BronchospasticFailureTopic = () => {
   return (
