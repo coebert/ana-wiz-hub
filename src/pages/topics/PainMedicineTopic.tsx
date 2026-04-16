@@ -52,6 +52,80 @@ const PainMedicineTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">IV Magnesium as an Analgesic</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Magnesium is a physiological NMDA receptor antagonist and calcium channel blocker with established analgesic properties when used perioperatively.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mechanism of Action</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Voltage-dependent block of NMDA receptor ion channel (Mg²⁺ plug) — prevents glutamate-mediated central sensitisation and wind-up</li>
+                <li>L-type and N-type calcium channel antagonism → reduces neurotransmitter release at dorsal horn</li>
+                <li>Potentiates opioid receptor binding and reduces tolerance development</li>
+                <li>Anti-inflammatory effects: reduces IL-6, TNF-α, and CRP</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Dosing & Monitoring</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong className="text-foreground">Bolus:</strong> 30–50 mg/kg IV over 15–30 min at induction</li>
+                <li><strong className="text-foreground">Infusion:</strong> 6–15 mg/kg/hr intraoperatively</li>
+                <li><strong className="text-foreground">Target serum Mg²⁺:</strong> 2–4 mmol/L (therapeutic range)</li>
+                <li><strong className="text-foreground">Monitor:</strong> Deep tendon reflexes, respiratory rate. Risk of hypotension, muscle weakness, prolonged NMBA effect</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border bg-card">
+            <p className="font-semibold text-foreground text-sm mb-1">Evidence Summary</p>
+            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+              <li><strong className="text-foreground">Albrecht et al. (2013) — Cochrane Review:</strong> 25 RCTs (1461 patients). IV MgSO₄ reduced morphine consumption by ~25% at 24h, reduced pain scores at rest and movement, and decreased PONV. No increase in haemodynamic instability.</li>
+              <li><strong className="text-foreground">De Oliveira et al. (2013) — Meta-analysis:</strong> Perioperative Mg reduced opioid use (mean 10.5 mg morphine equivalents), reduced pain scores at 4–6h and 24h, and decreased shivering.</li>
+              <li><strong className="text-foreground">Murphy et al. (2013):</strong> Demonstrated that Mg potentiates morphine analgesia via attenuation of NMDA-mediated central sensitisation.</li>
+              <li>Most consistent benefit in orthopaedic, abdominal, and cardiac surgery. Limited evidence for ambulatory surgery.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">IV Lidocaine (Lignocaine) as an Analgesic</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Systemic IV lidocaine infusion has emerged as a key component of multimodal, opioid-sparing analgesia, particularly in abdominal surgery where regional anaesthesia is not possible.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mechanisms of Action</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong className="text-foreground">Na⁺ channel blockade:</strong> Blocks voltage-gated sodium channels on peripheral and central neurons, reducing ectopic firing and nociceptive transmission</li>
+                <li><strong className="text-foreground">Anti-inflammatory:</strong> Inhibits neutrophil priming, reduces IL-1β, IL-6, TNF-α, and complement activation. Attenuates the surgical inflammatory response</li>
+                <li><strong className="text-foreground">NMDA antagonism:</strong> Weak antagonism at NMDA receptors — contributes to anti-hyperalgesic effect</li>
+                <li><strong className="text-foreground">Glycinergic:</strong> Potentiates inhibitory glycine receptors in the dorsal horn</li>
+                <li><strong className="text-foreground">Prokinetic:</strong> Accelerates return of GI function (anti-ileus effect) — likely via anti-inflammatory mechanism and sympatholysis</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Dosing & Safety</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong className="text-foreground">Bolus:</strong> 1–1.5 mg/kg IV over 10 min at induction</li>
+                <li><strong className="text-foreground">Infusion:</strong> 1–2 mg/kg/hr intraoperatively (some protocols continue 24–48h post-op at 0.5–1 mg/kg/hr)</li>
+                <li><strong className="text-foreground">Therapeutic level:</strong> 2–5 µg/mL (toxic &gt;5 µg/mL)</li>
+                <li><strong className="text-foreground">LAST risk:</strong> Perioral tingling → tinnitus → seizures → arrhythmia → cardiac arrest. Treat with Intralipid® 20%</li>
+                <li><strong className="text-foreground">Contraindications:</strong> Heart block, severe hepatic impairment, concurrent amiodarone, allergy to amide LAs</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border bg-card">
+            <p className="font-semibold text-foreground text-sm mb-1">Evidence Summary</p>
+            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+              <li><strong className="text-foreground">Weibel et al. (2018) — Cochrane Review:</strong> 68 RCTs (4525 patients). IV lidocaine reduced pain scores at 1–4h (low-certainty evidence), reduced opioid consumption, reduced ileus duration, and shortened hospital stay — primarily in open abdominal surgery.</li>
+              <li><strong className="text-foreground">LOLIPOP trial (2024):</strong> Large multicentre RCT (n=562) found no significant benefit of IV lidocaine over placebo for quality of recovery after laparoscopic surgery. Questioned the role in minimally invasive surgery.</li>
+              <li><strong className="text-foreground">Vigneault et al. (2011) — Meta-analysis:</strong> Demonstrated significant reductions in pain, opioid consumption, PONV, ileus, and length of stay in abdominal surgery.</li>
+              <li><strong className="text-foreground">Consensus:</strong> Strongest evidence in open abdominal surgery. Less convincing for laparoscopic, orthopaedic, or breast surgery. ERAS protocols include IV lidocaine as an option when epidural not feasible.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neuropathic Pain Management</h2>
           <div className="space-y-2">
             {[
