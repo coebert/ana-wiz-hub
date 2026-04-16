@@ -154,7 +154,9 @@ const PainMedicineTopic = () => {
       </section>
 
       <KeyLearningPoints points={[
-        "Multimodal analgesia reduces opioid consumption and improves outcomes — use paracetamol, NSAIDs, gabapentinoids, ketamine",
+        "Multimodal analgesia reduces opioid consumption and improves outcomes — use paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
+        "IV magnesium (NMDA antagonist) reduces opioid consumption by ~25% (Cochrane 2013) — bolus 30–50 mg/kg then 6–15 mg/kg/hr",
+        "IV lidocaine strongest evidence in open abdominal surgery — anti-inflammatory, prokinetic, opioid-sparing. LOLIPOP trial questioned benefit in laparoscopic surgery",
         "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin, or gabapentin (NICE CG173)",
         "Ketamine (NMDA antagonist) prevents wind-up and central sensitisation — useful in opioid-tolerant patients",
         "CRPS diagnosed by Budapest criteria — MDT approach with physiotherapy as cornerstone",
