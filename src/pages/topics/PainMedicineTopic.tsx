@@ -43,7 +43,9 @@ const PainMedicineTopic = () => {
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NSAIDs</td><td>COX-1 & COX-2 inhibition</td><td>Renal, GI, platelet effects. Avoid post-CABG. Ibuprofen, diclofenac, ketorolac.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Gabapentinoids</td><td>α₂δ calcium channel subunit binding</td><td>Pregabalin, gabapentin. Neuropathic pain. NICE recommends for post-op. Sedation, dizziness.</td></tr>
                 <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ketamine</td><td>NMDA receptor antagonist</td><td>Prevents central sensitisation, opioid-sparing. 0.1–0.5 mg/kg/hr infusion. Psychomimetic effects.</td></tr>
-                <tr><td className="py-2 font-medium text-foreground">Clonidine/Dexmedetomidine</td><td>α₂-agonists</td><td>Analgesic, opioid-sparing, anxiolytic. Dexmedetomidine: cooperative sedation without respiratory depression.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Clonidine/Dexmedetomidine</td><td>α₂-agonists</td><td>Analgesic, opioid-sparing, anxiolytic. Dexmedetomidine: cooperative sedation without respiratory depression.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">IV Magnesium</td><td>NMDA receptor antagonist, Ca²⁺ channel blocker</td><td>30–50 mg/kg bolus then 6–15 mg/kg/hr. Opioid-sparing (20–25%). Monitor for hypotension, muscle weakness.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">IV Lidocaine</td><td>Na⁺ channel blockade, anti-inflammatory cytokine modulation</td><td>1–1.5 mg/kg bolus then 1–2 mg/kg/hr. Abdominal surgery evidence strongest. Monitor for LAST.</td></tr>
               </tbody>
             </table>
           </div>
