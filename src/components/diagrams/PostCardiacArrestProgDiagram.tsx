@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type TimePoint = "pre72" | "72h" | "modalities" | "decision";
 
