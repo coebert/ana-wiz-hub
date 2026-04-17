@@ -7,6 +7,7 @@ import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagr
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
+import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
