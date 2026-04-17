@@ -11,6 +11,7 @@ import AntifungalTargetsDiagram from "@/components/diagrams/AntifungalTargetsDia
 import AntiviralCycleDiagram from "@/components/diagrams/AntiviralCycleDiagram";
 import GramNegativeEnvelopeDiagram from "@/components/diagrams/GramNegativeEnvelopeDiagram";
 import MDRGramNegativeSelector from "@/components/diagrams/MDRGramNegativeSelector";
+import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamaseClassificationTable";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -129,6 +130,7 @@ const AntimicrobialsTopic = () => {
             <div className="space-y-6">
               <AntibioticTargetsDiagram />
               <GramNegativeEnvelopeDiagram />
+              <BetaLactamaseClassificationTable />
               <MDRGramNegativeSelector />
               {antibioticClasses.map((group) => (
                 <div key={group.group}>
