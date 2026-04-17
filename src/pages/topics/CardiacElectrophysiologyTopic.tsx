@@ -6,6 +6,7 @@ import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
+import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
 
 const CardiacElectrophysiologyTopic = () => {
   return (
@@ -33,6 +34,16 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long QT Syndrome & Torsades de Pointes</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Prolonged phase 3 repolarisation creates a window for L-type Ca²⁺ channel reactivation → early afterdepolarisations (EADs) → triggered polymorphic VT (torsades). Switch between triggers to see how class III antiarrhythmics, hypokalaemia and congenital LQT mutations stretch the action potential and collapse the repolarisation reserve.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <LongQTTorsadesDiagram />
           </div>
         </div>
 
