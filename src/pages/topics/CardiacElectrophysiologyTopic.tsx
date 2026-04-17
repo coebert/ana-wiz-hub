@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
+import IonChannelTimelineDiagram from "@/components/diagrams/IonChannelTimelineDiagram";
 
 const CardiacElectrophysiologyTopic = () => {
   return (
@@ -34,6 +35,16 @@ const CardiacElectrophysiologyTopic = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ion Channel Timeline</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            See exactly which ion channels are open at each phase. The action potential is plotted at the top with INa, ICa-L, Ito, IKr, IKs, IK1 and If currents stacked beneath, time-aligned. Hover or click any trace to highlight it and read its function. Switch between ventricular and pacemaker cells to see how the channel set differs.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <IonChannelTimelineDiagram />
           </div>
         </div>
 
