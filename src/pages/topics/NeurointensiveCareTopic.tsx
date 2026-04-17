@@ -241,6 +241,8 @@ const NeurointensiveCareTopic = () => {
             Cerebral microdialysis (CMD) is a focal, bedside neurochemical monitor that samples the brain extracellular fluid (ECF) of a small volume of cortex (~1 cm³ around the catheter tip). It complements global monitors (ICP, CPP, PbtO₂, jugular bulb) by detecting cellular distress — disordered glucose, lactate and pyruvate metabolism, glutamate excitotoxicity and membrane breakdown — often <em>before</em> ICP rises or PbtO₂ falls. Used predominantly in poor-grade SAH and severe TBI in selected neuro-ICU centres (Cambridge, Lund, Edinburgh, Addenbrooke's-style protocols).
           </p>
 
+          <CerebralMicrodialysisDiagram />
+
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Catheter & Principle</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             <div className="p-4 rounded-lg border border-border">
