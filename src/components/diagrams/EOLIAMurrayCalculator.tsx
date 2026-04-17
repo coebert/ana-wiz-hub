@@ -272,4 +272,100 @@ function Slider({ label, value, min, max, step, unit, onChange, decimals = 0 }: 
   );
 }
 
+/* ───── Trend chart ───── */
+interface TrendPoint { t: number; dp: number; pplat: number; compliance: number; }
+
+function TrendChart({ history, onReset }: { history: TrendPoint[]; onReset: () => void }) {
+  const W = 360, H = 150, PL = 36, PR = 36, PT = 18, PB = 22;
+  const plotW = W - PL - PR;
+  const plotH = H - PT - PB;
+  const n = Math.max(history.length, 2);
+
+  const yLMax = 45, yLMin = 0;
+  const yRMax = 80, yRMin = 0;
+  const xScale = (i: number) => PL + (i / (n - 1)) * plotW;
+  const yL = (v: number) => PT + plotH - ((v - yLMin) / (yLMax - yLMin)) * plotH;
+  const yR = (v: number) => PT + plotH - ((v - yRMin) / (yRMax - yRMin)) * plotH;
+
+  const linePath = (key: keyof TrendPoint, scale: (v: number) => number) =>
+    history
+      .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(i).toFixed(1)},${scale(p[key] as number).toFixed(1)}`)
+      .join(" ");
+
+  const last = history[history.length - 1];
+  const dpColor =
+    last.dp <= 14 ? "hsl(var(--icu))" :
+    last.dp <= 18 ? "hsl(45 90% 50%)" :
+    "hsl(var(--destructive))";
+
+  return (
+    <div className="rounded-lg border border-border bg-background/40 p-3 mb-3">
+      <div className="flex items-center justify-between mb-1 flex-wrap gap-2">
+        <p className="text-sm font-semibold text-foreground">Trajectory — ΔP, Pplat &amp; Compliance</p>
+        <button
+          onClick={onReset}
+          className="text-[10px] px-2 py-1 rounded border border-border bg-secondary hover:bg-secondary/80 text-foreground"
+        >
+          Reset trend
+        </button>
+      </div>
+
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label="Trend of driving pressure, plateau pressure and compliance">
+        {[0, 15, 30, 45].map((p) => (
+          <g key={p}>
+            <line x1={PL} x2={W - PR} y1={yL(p)} y2={yL(p)} stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray={p === 0 ? "0" : "3 3"} opacity={0.7} />
+            <text x={PL - 4} y={yL(p) + 3} textAnchor="end" fontSize={8} fill="hsl(var(--muted-foreground))">{p}</text>
+          </g>
+        ))}
+        {[0, 40, 80].map((v) => (
+          <text key={v} x={W - PR + 4} y={yR(v) + 3} fontSize={8} fill="hsl(var(--muted-foreground))">{v}</text>
+        ))}
+
+        <rect x={PL} y={yL(14)} width={plotW} height={yL(0) - yL(14)} fill="hsl(var(--icu))" opacity={0.06} />
+        <line x1={PL} x2={W - PR} y1={yL(14)} y2={yL(14)} stroke="hsl(var(--destructive))" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.6} />
+        <text x={W - PR - 2} y={yL(14) - 2} textAnchor="end" fontSize={8} fill="hsl(var(--destructive))">ΔP 14</text>
+
+        <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} />
+        <line x1={W - PR} y1={PT} x2={W - PR} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} opacity={0.6} />
+        <line x1={PL} y1={PT + plotH} x2={W - PR} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} />
+        <text x={10} y={PT + plotH / 2} textAnchor="middle" fontSize={9} fill="hsl(var(--foreground))" transform={`rotate(-90, 10, ${PT + plotH / 2})`}>cmH₂O</text>
+        <text x={W - 8} y={PT + plotH / 2} textAnchor="middle" fontSize={9} fill="hsl(var(--foreground))" transform={`rotate(90, ${W - 8}, ${PT + plotH / 2})`}>mL/cmH₂O</text>
+        <text x={PL + plotW / 2} y={H - 4} textAnchor="middle" fontSize={9} fill="hsl(var(--muted-foreground))">adjustments →</text>
+
+        <path d={linePath("pplat", yL)} fill="none" stroke="hsl(var(--accent))" strokeWidth={1.5} strokeDasharray="4 2" />
+        <path d={linePath("dp", yL)} fill="none" stroke={dpColor} strokeWidth={2.2} />
+        <path d={linePath("compliance", yR)} fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} />
+
+        {history.length > 0 && (
+          <>
+            <circle cx={xScale(n - 1)} cy={yL(last.dp)} r={3.5} fill={dpColor} stroke="hsl(var(--card))" strokeWidth={1} />
+            <circle cx={xScale(n - 1)} cy={yL(last.pplat)} r={3} fill="hsl(var(--accent))" stroke="hsl(var(--card))" strokeWidth={1} />
+            <circle cx={xScale(n - 1)} cy={yR(last.compliance)} r={3} fill="hsl(var(--primary))" stroke="hsl(var(--card))" strokeWidth={1} />
+          </>
+        )}
+      </svg>
+
+      <div className="grid grid-cols-3 gap-2 text-[11px] mt-1">
+        <LegendDot color={dpColor} label={`ΔP ${last.dp}`} />
+        <LegendDot color="hsl(var(--accent))" dashed label={`Pplat ${last.pplat}`} />
+        <LegendDot color="hsl(var(--primary))" label={`C ${last.compliance}`} />
+      </div>
+      <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
+        Shaded band = ΔP ≤ 14 cmH₂O safety zone (Amato 2015). Trend captures each settled adjustment (last 20 shown).
+      </p>
+    </div>
+  );
+}
+
+function LegendDot({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
+  return (
+    <div className="flex items-center gap-1.5">
+      <svg width={20} height={6}>
+        <line x1={0} x2={20} y1={3} y2={3} stroke={color} strokeWidth={2} strokeDasharray={dashed ? "3 2" : "0"} />
+      </svg>
+      <span className="text-muted-foreground font-mono">{label}</span>
+    </div>
+  );
+}
+
 export default EOLIAMurrayCalculator;
