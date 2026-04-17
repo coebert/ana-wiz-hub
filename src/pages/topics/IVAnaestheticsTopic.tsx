@@ -9,6 +9,7 @@ import { PRISDiagram } from "@/components/diagrams/PRISDiagram";
 import { SchniderEleveldDiagram } from "@/components/diagrams/SchniderEleveldDiagram";
 import { KetaminePharmacologyDiagram } from "@/components/diagrams/KetaminePharmacologyDiagram";
 import { DexmedetomidineDiagram } from "@/components/diagrams/DexmedetomidineDiagram";
+import { EtomidatePharmacologyDiagram } from "@/components/diagrams/EtomidatePharmacologyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -141,6 +142,9 @@ const IVAnaestheticsTopic = () => {
             suppression (inhibits 11β-hydroxylase — even a single dose suppresses cortisol for up to 24 hours). Pain on injection.
             Myoclonus (not seizure activity). High incidence of PONV. Not recommended for infusion due to adrenal suppression.
           </p>
+          <div className="mt-6">
+            <EtomidatePharmacologyDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
