@@ -1,5 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Play, Pause, RotateCcw } from "lucide-react";
+
+/* Channel activity windows as fraction of cycle (0..1) for each view */
+const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
+  { id: "INa",  label: "INa (fast Na⁺)",       start: 0.06,  end: 0.10, color: "hsl(0, 75%, 55%)" },
+  { id: "Ito",  label: "Ito (transient K⁺)",   start: 0.09,  end: 0.15, color: "hsl(30, 85%, 50%)" },
+  { id: "ICaL", label: "ICa-L (L-type Ca²⁺)",  start: 0.10,  end: 0.58, color: "hsl(160, 70%, 40%)" },
+  { id: "IKr",  label: "IKr/IKs (K⁺ efflux)",  start: 0.55,  end: 0.82, color: "hsl(270, 70%, 55%)" },
+  { id: "IK1",  label: "IK1 (resting K⁺)",     start: 0.80,  end: 1.00, color: "hsl(210, 70%, 50%)" },
+];
+
+const pacemakerChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
+  { id: "If",   label: "If (funny current)",   start: 0.00, end: 0.42, color: "hsl(45, 85%, 50%)" },
+  { id: "ICaT", label: "ICa-T (T-type Ca²⁺)",  start: 0.30, end: 0.48, color: "hsl(15, 80%, 50%)" },
+  { id: "ICaL", label: "ICa-L (Phase 0)",      start: 0.45, end: 0.62, color: "hsl(160, 70%, 40%)" },
+  { id: "IKr",  label: "IKr (repolarisation)", start: 0.58, end: 0.95, color: "hsl(270, 70%, 55%)" },
+];
 
 interface DrugClass {
   id: string;
@@ -98,12 +115,40 @@ type ViewMode = "contractile" | "pacemaker";
 const VaughanWilliamsAPDiagram = () => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const [view, setView] = useState<ViewMode>("contractile");
+  const [time, setTime] = useState(0); // 0..1
+  const [playing, setPlaying] = useState(false);
+  const rafRef = useRef<number | null>(null);
+  const lastTsRef = useRef<number | null>(null);
   const selected = selectedClass ? drugClasses.find((d) => d.id === selectedClass) : null;
+
+  const cycleMs = 2400;
+
+  useEffect(() => {
+    if (!playing) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastTsRef.current = null;
+      return;
+    }
+    const tick = (ts: number) => {
+      if (lastTsRef.current == null) lastTsRef.current = ts;
+      const dt = ts - lastTsRef.current;
+      lastTsRef.current = ts;
+      setTime((t) => (t + dt / cycleMs) % 1);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [playing]);
+
+  const channels = view === "contractile" ? contractileChannels : pacemakerChannels;
+  const activeChannels = channels.filter((c) => time >= c.start && time <= c.end);
 
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground text-center">
-        Click a drug class to see where it acts on the cardiac action potential
+        Click a drug class to see where it acts — or press play to sweep the timeline and see which channels are open
       </p>
 
       {/* View toggle */}
@@ -155,12 +200,63 @@ const VaughanWilliamsAPDiagram = () => {
         })}
       </div>
 
+      {/* Playhead controls */}
+      <div className="flex items-center gap-3 max-w-xl mx-auto px-1">
+        <button
+          onClick={() => setPlaying((p) => !p)}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
+          aria-label={playing ? "Pause" : "Play"}
+        >
+          {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+        </button>
+        <button
+          onClick={() => { setTime(0); setPlaying(false); }}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-muted text-foreground hover:bg-muted/70 transition-colors shrink-0"
+          aria-label="Reset"
+        >
+          <RotateCcw className="w-4 h-4" />
+        </button>
+        <input
+          type="range"
+          min={0}
+          max={1000}
+          value={Math.round(time * 1000)}
+          onChange={(e) => { setTime(Number(e.target.value) / 1000); setPlaying(false); }}
+          className="flex-1 accent-primary"
+          aria-label="Scrub timeline"
+        />
+        <span className="text-xs font-mono text-muted-foreground w-14 text-right tabular-nums">
+          {(time * cycleMs / 1000).toFixed(2)}s
+        </span>
+      </div>
+
+      {/* Active channels readout */}
+      <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
+        {channels.map((c) => {
+          const active = activeChannels.some((a) => a.id === c.id);
+          return (
+            <span
+              key={c.id}
+              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150"
+              style={{
+                borderColor: c.color,
+                backgroundColor: active ? c.color : "transparent",
+                color: active ? "white" : c.color,
+                opacity: active ? 1 : 0.4,
+              }}
+            >
+              {c.label}
+            </span>
+          );
+        })}
+      </div>
+
       {/* SVG Diagrams */}
       <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
         {view === "contractile" ? (
-          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} />
+          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
         ) : (
-          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} />
+          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
         )}
       </div>
 
@@ -230,10 +326,12 @@ const ContractileView = ({
   selectedClass,
   setSelectedClass,
   selected,
+  time,
 }: {
   selectedClass: string | null;
   setSelectedClass: (c: string | null) => void;
   selected: DrugClass | undefined;
+  time: number;
 }) => {
   const w = 500, h = 300;
   const phaseX = {
@@ -329,6 +427,21 @@ const ContractileView = ({
           </g>
         );
       })}
+
+      {/* Animated playhead */}
+      {(() => {
+        const x = 50 + time * (480 - 50);
+        return (
+          <g style={{ pointerEvents: "none" }}>
+            <line x1={x} y1={20} x2={x} y2={240} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.85} />
+            <circle cx={x} cy={20} r={4} fill="hsl(var(--primary))" />
+            <rect x={x - 16} y={4} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} />
+            <text x={x} y={13} fontSize="7" fill="white" textAnchor="middle" fontWeight="bold">
+              {(time * 2.4).toFixed(2)}s
+            </text>
+          </g>
+        );
+      })()}
     </svg>
   );
 };
@@ -338,10 +451,12 @@ const PacemakerView = ({
   selectedClass,
   setSelectedClass,
   selected,
+  time,
 }: {
   selectedClass: string | null;
   setSelectedClass: (c: string | null) => void;
   selected: DrugClass | undefined;
+  time: number;
 }) => {
   const w = 500, h = 340;
 
@@ -521,6 +636,21 @@ const PacemakerView = ({
           Class IV — Ca²⁺ block
         </text>
       </g>
+
+      {/* Animated playhead — first cycle spans x=50→310 */}
+      {(() => {
+        const x = 50 + time * (310 - 50);
+        return (
+          <g style={{ pointerEvents: "none" }}>
+            <line x1={x} y1={25} x2={x} y2={250} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.85} />
+            <circle cx={x} cy={25} r={4} fill="hsl(var(--primary))" />
+            <rect x={x - 16} y={9} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} />
+            <text x={x} y={18} fontSize="7" fill="white" textAnchor="middle" fontWeight="bold">
+              {(time * 2.4).toFixed(2)}s
+            </text>
+          </g>
+        );
+      })()}
     </svg>
   );
 };
