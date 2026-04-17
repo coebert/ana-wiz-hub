@@ -73,6 +73,17 @@ const IVAnaestheticsTopic = () => {
             </p>
             <PRISDiagram />
           </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Schnider vs Eleveld — General-Purpose TCI</h3>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              The Eleveld model (2018) is a single propofol model derived from a pooled dataset of more than 1,000 subjects
+              ranging from neonates to the very elderly and BMI 12–52. It uses allometric scaling, a maturation function, and
+              fat-free mass — replacing the need to choose between Schnider, Marsh and paediatric models. Compare the two side
+              by side at population extremes.
+            </p>
+            <SchniderEleveldDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
