@@ -125,6 +125,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "circulatory-failure", title: "Circulatory Failure & Shock", description: "Cardiogenic, distributive, obstructive, hypovolaemic shock management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "cardiac-output-monitoring", title: "Cardiac Output Monitoring", description: "PA catheter, PiCCO, oesophageal Doppler, echocardiography", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "pulmonary-hypertension", title: "Pulmonary Hypertension Management", description: "WHO classification, RV-protective strategy, targeted vasodilators, perioperative care and crisis management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   // Sepsis & Infection
   { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm"], available: true },
