@@ -659,6 +659,21 @@ const PacemakerView = ({
           Class IV — Ca²⁺ block
         </text>
       </g>
+
+      {/* Animated playhead — first cycle spans x=50→310 */}
+      {(() => {
+        const x = 50 + time * (310 - 50);
+        return (
+          <g style={{ pointerEvents: "none" }}>
+            <line x1={x} y1={25} x2={x} y2={250} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.85} />
+            <circle cx={x} cy={25} r={4} fill="hsl(var(--primary))" />
+            <rect x={x - 16} y={9} width={32} height={12} rx={2} fill="hsl(var(--primary))" opacity={0.92} />
+            <text x={x} y={18} fontSize="7" fill="white" textAnchor="middle" fontWeight="bold">
+              {(time * 2.4).toFixed(2)}s
+            </text>
+          </g>
+        );
+      })()}
     </svg>
   );
 };
