@@ -123,6 +123,7 @@ const AntimicrobialsTopic = () => {
           {/* Antibiotics */}
           {tab === "antibiotics" && (
             <div className="space-y-6">
+              <AntibioticTargetsDiagram />
               {antibioticClasses.map((group) => (
                 <div key={group.group}>
                   <h3 className="text-lg font-serif font-bold text-foreground mb-3">{group.group}</h3>
