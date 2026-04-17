@@ -80,6 +80,15 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
           </div>
         </div>
+
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Placental Drug Transfer</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The placenta is a lipid bilayer; drugs cross by passive diffusion governed by Fick's law. Four physicochemical properties determine transfer — molecular weight, lipid solubility, protein binding and degree of ionisation. The interactive plot below shows where common anaesthetic drugs sit.
+          </p>
+          <PlacentalDrugTransferDiagram />
+        </div>
       </section>
 
       <KeyLearningPoints points={[
