@@ -6,6 +6,7 @@ import { prognosticationIcuQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
+import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
 
 const PrognosticationEthicsIcuTopic = () => {
   return (
@@ -23,6 +24,7 @@ const PrognosticationEthicsIcuTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Diagrams</h2>
           <PostCardiacArrestProgDiagram />
+          <APACHEIICalculator />
         </div>
 
         {/* ---- Scoring Systems ---- */}
