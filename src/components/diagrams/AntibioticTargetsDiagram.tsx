@@ -106,7 +106,7 @@ const AntibioticTargetsDiagram = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* SVG diagram */}
         <div className="lg:col-span-3">
-          <svg viewBox="0 0 600 480" className="w-full h-auto rounded-lg border border-border bg-background">
+          <svg viewBox="0 0 760 520" className="w-full h-auto rounded-lg border border-border bg-background">
             <defs>
               <radialGradient id="cytoplasm" cx="50%" cy="50%" r="60%">
                 <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.6" />
@@ -118,9 +118,14 @@ const AntibioticTargetsDiagram = () => {
               </pattern>
             </defs>
 
+            {/* Title strip */}
+            <text x="380" y="28" textAnchor="middle" fontSize="14" fontWeight="600" fill="hsl(var(--foreground))">
+              Bacterial cell — antibiotic target sites
+            </text>
+
             {/* Cell wall (outer ring) — peptidoglycan */}
             <ellipse
-              cx="300" cy="240" rx="240" ry="170"
+              cx="380" cy="270" rx="220" ry="160"
               fill="url(#peptidoglycan)"
               stroke={active === "wall" ? "hsl(15 90% 55%)" : "hsl(15 90% 55% / 0.5)"}
               strokeWidth={active === "wall" ? 5 : 2}
@@ -130,7 +135,7 @@ const AntibioticTargetsDiagram = () => {
 
             {/* Cell membrane */}
             <ellipse
-              cx="300" cy="240" rx="220" ry="155"
+              cx="380" cy="270" rx="200" ry="145"
               fill="hsl(280 70% 55% / 0.08)"
               stroke={active === "membrane" ? "hsl(280 70% 55%)" : "hsl(280 70% 55% / 0.6)"}
               strokeWidth={active === "membrane" ? 5 : 2.5}
@@ -140,27 +145,26 @@ const AntibioticTargetsDiagram = () => {
             />
 
             {/* Cytoplasm */}
-            <ellipse cx="300" cy="240" rx="210" ry="148" fill="url(#cytoplasm)" />
+            <ellipse cx="380" cy="270" rx="190" ry="138" fill="url(#cytoplasm)" />
 
-            {/* DNA — supercoiled loop */}
+            {/* DNA — supercoiled loop (left side of cytoplasm) */}
             <g
               className="cursor-pointer transition-all"
               onClick={() => setActive("dna")}
               opacity={active === "dna" ? 1 : 0.85}
             >
               <path
-                d="M 220 220 C 200 200, 240 180, 270 200 S 320 230, 300 250 S 240 280, 220 260 S 200 230, 220 220 Z"
+                d="M 290 250 C 270 230, 310 210, 340 230 S 380 260, 360 280 S 310 305, 290 285 S 270 260, 290 250 Z"
                 fill="none"
                 stroke={active === "dna" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.7)"}
                 strokeWidth={active === "dna" ? 3.5 : 2.5}
               />
               <path
-                d="M 220 230 C 205 215, 235 195, 260 210 S 305 235, 295 250 S 245 270, 230 255 S 210 235, 220 230 Z"
+                d="M 290 260 C 275 245, 305 225, 330 240 S 375 265, 365 280 S 315 295, 300 285 S 280 265, 290 260 Z"
                 fill="none"
                 stroke={active === "dna" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.5)"}
                 strokeWidth={active === "dna" ? 3 : 2}
               />
-              <text x="225" y="195" fontSize="10" fill="hsl(var(--muted-foreground))" fontFamily="monospace">DNA</text>
             </g>
 
             {/* RNA polymerase / mRNA strand */}
@@ -169,22 +173,21 @@ const AntibioticTargetsDiagram = () => {
               onClick={() => setActive("rna")}
               opacity={active === "rna" ? 1 : 0.85}
             >
-              <circle cx="280" cy="240" r="9" fill={active === "rna" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
+              <circle cx="370" cy="200" r="9" fill={active === "rna" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
               <path
-                d="M 289 240 Q 320 240, 340 250 T 380 245"
+                d="M 379 200 Q 410 200, 430 210 T 470 205"
                 stroke={active === "rna" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"}
                 strokeWidth={active === "rna" ? 2.5 : 2}
                 fill="none"
                 strokeDasharray="3 2"
               />
-              <text x="345" y="238" fontSize="10" fill="hsl(var(--muted-foreground))" fontFamily="monospace">mRNA</text>
             </g>
 
             {/* Ribosomes — 30S and 50S subunits */}
             {[
-              { x: 380, y: 200 },
-              { x: 200, y: 290 },
-              { x: 360, y: 295 },
+              { x: 460, y: 250 },
+              { x: 320, y: 340 },
+              { x: 460, y: 340 },
             ].map((r, i) => (
               <g key={i}>
                 {/* 50S (larger, top) */}
@@ -214,25 +217,22 @@ const AntibioticTargetsDiagram = () => {
               onClick={() => setActive("folate")}
               opacity={active === "folate" ? 1 : 0.85}
             >
-              <rect x="155" y="225" width="36" height="18" rx="4"
-                fill={active === "folate" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.6)"} />
-              <text x="173" y="237" fontSize="9" fill="white" fontFamily="monospace" textAnchor="middle">DHPS/DHFR</text>
+              <rect x="240" y="345" width="48" height="20" rx="4"
+                fill={active === "folate" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.7)"} />
+              <text x="264" y="358" fontSize="10" fill="white" fontFamily="monospace" textAnchor="middle" fontWeight="600">DHPS/DHFR</text>
             </g>
 
-            {/* Annotation lines and labels */}
-            <Annotation x1={540} y1={100} x2={510} y2={150} label="Cell wall" sub="β-lactams, glycopeptides" color="hsl(15 90% 55%)" active={active === "wall"} onClick={() => setActive("wall")} anchor="end" tx={550} ty={92} />
-            <Annotation x1={60}  y1={120} x2={100} y2={160} label="Cell membrane" sub="Polymyxins, daptomycin" color="hsl(280 70% 55%)" active={active === "membrane"} onClick={() => setActive("membrane")} anchor="start" tx={50} ty={112} />
-            <Annotation x1={60}  y1={300} x2={150} y2={285} label="Folate synthesis" sub="Sulfonamides, trimethoprim" color="hsl(330 70% 55%)" active={active === "folate"} onClick={() => setActive("folate")} anchor="start" tx={50} ty={293} />
-            <Annotation x1={60}  y1={400} x2={195} y2={300} label="30S ribosome" sub="Aminoglycosides, tetracyclines" color="hsl(195 80% 50%)" active={active === "30s"} onClick={() => setActive("30s")} anchor="start" tx={50} ty={392} />
-            <Annotation x1={540} y1={400} x2={370} y2={300} label="50S ribosome" sub="Macrolides, clindamycin, linezolid" color="hsl(210 75% 50%)" active={active === "50s"} onClick={() => setActive("50s")} anchor="end" tx={550} ty={392} />
-            <Annotation x1={540} y1={300} x2={310} y2={250} label="DNA gyrase / topo IV" sub="Fluoroquinolones, metronidazole" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="end" tx={550} ty={293} />
-            <Annotation x1={540} y1={200} x2={365} y2={245} label="RNA polymerase" sub="Rifampicin" color="hsl(45 90% 50%)" active={active === "rna"} onClick={() => setActive("rna")} anchor="end" tx={550} ty={192} />
+            {/* Annotation lines and labels — placed in left/right gutters */}
+            <Annotation x1={750} y1={90}  x2={585} y2={150} label="Cell wall" sub="β-lactams, glycopeptides" color="hsl(15 90% 55%)" active={active === "wall"} onClick={() => setActive("wall")} anchor="end" tx={755} ty={82} />
+            <Annotation x1={10}  y1={110} x2={185} y2={170} label="Cell membrane" sub="Polymyxins, daptomycin" color="hsl(280 70% 55%)" active={active === "membrane"} onClick={() => setActive("membrane")} anchor="start" tx={5} ty={102} />
+            <Annotation x1={750} y1={210} x2={460} y2={205} label="50S ribosome" sub="Macrolides, clindamycin, linezolid" color="hsl(210 75% 50%)" active={active === "50s"} onClick={() => setActive("50s")} anchor="end" tx={755} ty={202} />
+            <Annotation x1={750} y1={310} x2={475} y2={345} label="30S ribosome" sub="Aminoglycosides, tetracyclines" color="hsl(195 80% 50%)" active={active === "30s"} onClick={() => setActive("30s")} anchor="end" tx={755} ty={302} />
+            <Annotation x1={10}  y1={210} x2={300} y2={265} label="DNA gyrase / topo IV" sub="Fluoroquinolones, metronidazole" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="start" tx={5} ty={202} />
+            <Annotation x1={10}  y1={300} x2={250} y2={355} label="Folate synthesis" sub="Sulfonamides, trimethoprim" color="hsl(330 70% 55%)" active={active === "folate"} onClick={() => setActive("folate")} anchor="start" tx={5} ty={292} />
+            <Annotation x1={10}  y1={400} x2={365} y2={205} label="RNA polymerase" sub="Rifampicin" color="hsl(45 90% 50%)" active={active === "rna"} onClick={() => setActive("rna")} anchor="start" tx={5} ty={392} />
 
-            {/* Title strip */}
-            <text x="300" y="30" textAnchor="middle" fontSize="13" fontWeight="600" fill="hsl(var(--foreground))">
-              Bacterial cell — antibiotic target sites
-            </text>
-            <text x="300" y="465" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+            {/* Footnote */}
+            <text x="380" y="500" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
               Schematic — Gram-negative cells additionally have an LPS-bearing outer membrane (target of polymyxins)
             </text>
           </svg>
