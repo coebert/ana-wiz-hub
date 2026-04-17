@@ -10,6 +10,7 @@ import { SchniderEleveldDiagram } from "@/components/diagrams/SchniderEleveldDia
 import { KetaminePharmacologyDiagram } from "@/components/diagrams/KetaminePharmacologyDiagram";
 import { DexmedetomidineDiagram } from "@/components/diagrams/DexmedetomidineDiagram";
 import { EtomidatePharmacologyDiagram } from "@/components/diagrams/EtomidatePharmacologyDiagram";
+import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPharmacologyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -144,6 +145,33 @@ const IVAnaestheticsTopic = () => {
           </p>
           <div className="mt-6">
             <EtomidatePharmacologyDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Midazolam</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Water-soluble imidazobenzodiazepine. The diazepine ring is <strong>open and ionised at pH 3.5</strong> (vial),
+            making it injectable without solvent; at physiological pH the ring closes and the molecule becomes highly
+            lipid-soluble, accounting for its rapid CNS penetration. Doses: sedation 0.05–0.1 mg/kg IV, induction
+            0.2–0.3 mg/kg, premed 0.5 mg/kg PO (paeds).
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Mechanism</strong>: positive allosteric modulator at the <strong>α/γ interface of GABA-A</strong>
+            receptors — increases <em>frequency</em> of chloride channel opening (barbiturates increase duration). Selectivity
+            for α₁-containing receptors mediates sedation, anterograde amnesia and anticonvulsant action; α₂/α₃ mediate
+            anxiolysis and muscle relaxation. <strong>CVS</strong>: mild ↓ SVR, well-preserved cardiac output. <strong>RS</strong>:
+            dose-dependent respiratory depression, synergistic with opioids.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>PK</strong>: t½ 1.5–2.5 h, Vd 1.0–1.5 L/kg, 96% protein-bound. Hepatic CYP3A4 → α-hydroxy-midazolam
+            (10% potency) → UGT-glucuronidation to <strong>α-hydroxy-midazolam-glucuronide</strong>, which is <em>active</em>,
+            water-soluble, and <strong>renally excreted</strong>. In AKI/CKD the glucuronide accumulates → prolonged sedation
+            for days after stopping an infusion. <strong>Reversal</strong>: flumazenil 200 µg + 100 µg/min titrated; t½
+            shorter than midazolam → resedation likely.
+          </p>
+          <div className="mt-6">
+            <MidazolamPharmacologyDiagram />
           </div>
         </section>
 
