@@ -16,6 +16,7 @@ const RegionalAnaesthesiaTopic = () => {
     <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <DermatomeMapDiagram />
       <NerveDermatomeOverlayDiagram />
+      <SpinalBlockHeightAssessmentTool />
       <RegionalBlocksDiagram />
       <NeuraxialNeedlesDiagram />
       <section className="space-y-6 mb-10">
