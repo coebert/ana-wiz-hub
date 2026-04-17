@@ -9,6 +9,7 @@ import { CountercurrentMultiplierDiagram } from "@/components/diagrams/Countercu
 import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
+import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
