@@ -7,6 +7,7 @@ import { antimicrobialsQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
+import AntifungalTargetsDiagram from "@/components/diagrams/AntifungalTargetsDiagram";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -148,6 +149,7 @@ const AntimicrobialsTopic = () => {
           {/* Antifungals */}
           {tab === "antifungals" && (
             <div className="space-y-3">
+              <AntifungalTargetsDiagram />
               {antifungalClasses.map((a) => (
                 <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
                   <h4 className="font-bold text-foreground">{a.name}</h4>
