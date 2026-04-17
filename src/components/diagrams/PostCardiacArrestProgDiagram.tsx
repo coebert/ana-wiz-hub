@@ -159,7 +159,14 @@ const PostCardiacArrestProgDiagram = () => {
           <div className="flex-1">
             <h4 className="text-sm font-bold text-foreground mb-1">{currentStep.title}</h4>
             <p className="text-xs text-muted-foreground leading-relaxed mb-2">{currentStep.content}</p>
-            <div className="inline-block px-2 py-1 rounded text-[10px] font-bold" style={{ backgroundColor: currentStep.color + "18", color: currentStep.color }}>
+            <div
+              className="inline-block px-2 py-1 rounded text-[10px] font-bold border"
+              style={{
+                backgroundColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.12)"),
+                borderColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.35)"),
+                color: currentStep.color,
+              }}
+            >
               {currentStep.highlight}
             </div>
           </div>
@@ -277,22 +284,35 @@ const PostCardiacArrestProgDiagram = () => {
           </div>
         </div>
 
-        {activeModality !== null && (
-          <div className="rounded-lg border p-4 mb-4 animate-fade-in" style={{ borderColor: modalities[activeModality].color + "60", backgroundColor: modalities[activeModality].color + "08" }}>
-            <div className="flex items-start gap-2 mb-2">
-              <span className="text-xl">{modalities[activeModality].icon}</span>
-              <div>
-                <h4 className="text-sm font-bold text-foreground">{modalities[activeModality].name}</h4>
-                <p className="text-[10px] font-semibold text-foreground/80">{modalities[activeModality].timing}</p>
+        {activeModality !== null && (() => {
+          const m = modalities[activeModality];
+          // Convert "hsl(H, S%, L%)" → "hsla(H, S%, L%, A)" for proper translucency.
+          // Appending hex alpha to an hsl() string produces invalid CSS, which was
+          // causing the browser to fall back to an opaque colour (illegible amber card).
+          const tint = (alpha: number) => m.color.replace(/^hsl\(([^)]+)\)$/, `hsla($1, ${alpha})`);
+          return (
+            <div
+              className="rounded-lg border p-4 mb-4 animate-fade-in bg-card"
+              style={{ borderColor: tint(0.45) }}
+            >
+              <div className="flex items-start gap-2 mb-2">
+                <span className="text-xl">{m.icon}</span>
+                <div>
+                  <h4 className="text-sm font-bold text-foreground">{m.name}</h4>
+                  <p className="text-[10px] font-semibold text-muted-foreground">{m.timing}</p>
+                </div>
               </div>
+              <div
+                className="rounded px-2 py-1.5 mb-2 border-l-2 bg-background"
+                style={{ borderLeftColor: m.color }}
+              >
+                <p className="text-xs font-semibold" style={{ color: m.color }}>Poor prognostic sign</p>
+                <p className="text-xs text-foreground font-medium leading-snug">{m.poorPrognosticSign}</p>
+              </div>
+              <p className="text-xs text-foreground/80 leading-relaxed">{m.detail}</p>
             </div>
-            <div className="rounded px-2 py-1.5 mb-2 border-l-2" style={{ backgroundColor: modalities[activeModality].color + "18", borderLeftColor: modalities[activeModality].color }}>
-              <p className="text-xs font-semibold text-foreground">Poor prognostic sign:</p>
-              <p className="text-xs text-foreground font-medium">{modalities[activeModality].poorPrognosticSign}</p>
-            </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">{modalities[activeModality].detail}</p>
-          </div>
-        )}
+          );
+        })()}
       </div>
 
       {/* Decision rule summary */}
