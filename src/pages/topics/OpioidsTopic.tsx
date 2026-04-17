@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
+import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -42,6 +43,7 @@ const OpioidsTopic = () => {
           <div className="bg-card rounded-xl border border-border p-6 mt-4">
             <OpioidReceptorDiagram />
           </div>
+          <OpioidReceptorSignalingDiagram />
         </section>
 
         <section className="mb-10">
