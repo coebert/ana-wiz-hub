@@ -276,13 +276,18 @@ const VaughanWilliamsAPDiagram = () => {
         </p>
       )}
 
-      {/* SVG Diagrams */}
-      <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
-        {view === "contractile" ? (
-          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-        ) : (
-          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-        )}
+      {/* SVG Diagrams + ECG strip side-by-side */}
+      <div className="grid lg:grid-cols-2 gap-3">
+        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+          {view === "contractile" ? (
+            <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
+          ) : (
+            <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
+          )}
+        </div>
+        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+          <ECGStrip selected={selected} time={time} />
+        </div>
       </div>
 
       {/* Detail panel */}
@@ -676,6 +681,145 @@ const PacemakerView = ({
           </g>
         );
       })()}
+    </svg>
+  );
+};
+
+/* ─── ECG STRIP ─── */
+const ECGStrip = ({ selected, time }: { selected: DrugClass | undefined | null; time: number }) => {
+  const w = 500, h = 300;
+  const baseline = 150;
+
+  const mods: Record<string, { pr: number; qrs: number; qt: number; note: string }> = {
+    Ia:  { pr: 1.0,  qrs: 1.4, qt: 1.3,  note: "↑ QRS, ↑ QT (Na⁺ + K⁺ block)" },
+    Ib:  { pr: 1.0,  qrs: 1.0, qt: 0.95, note: "minimal change in normal tissue" },
+    Ic:  { pr: 1.1,  qrs: 1.7, qt: 1.05, note: "markedly ↑ QRS (slow Na⁺ block)" },
+    II:  { pr: 1.3,  qrs: 1.0, qt: 1.0,  note: "↑ PR, ↓ HR (β-block)" },
+    III: { pr: 1.0,  qrs: 1.0, qt: 1.5,  note: "↑↑ QT (K⁺ block)" },
+    IV:  { pr: 1.35, qrs: 1.0, qt: 1.0,  note: "↑ PR, ↓ HR (Ca²⁺ block at AV node)" },
+  };
+  const m = selected ? mods[selected.id] : { pr: 1, qrs: 1, qt: 1, note: "" };
+
+  const stripStart = 50;
+  const stripEnd = 480;
+  const stripWidth = stripEnd - stripStart;
+  const baseRR = 1000;
+  const ms2x = (ms: number) => stripStart + (ms / baseRR) * stripWidth;
+
+  const pStart = 40;
+  const pEnd = pStart + 80;
+  const prEnd = pStart + 160 * m.pr;
+  const qStart = prEnd;
+  const qrsEnd = qStart + 90 * m.qrs;
+  const stEnd = qrsEnd + 80;
+  const tEnd = qStart + 380 * m.qt;
+  const tPeak = (stEnd + tEnd) / 2;
+
+  const y0 = baseline;
+  const pPeak = (pStart + pEnd) / 2;
+  const qDip = qStart + (qrsEnd - qStart) * 0.2;
+  const rPeak = qStart + (qrsEnd - qStart) * 0.5;
+  const sDip = qStart + (qrsEnd - qStart) * 0.8;
+
+  const path = [
+    `M ${ms2x(0)},${y0}`,
+    `L ${ms2x(pStart)},${y0}`,
+    `Q ${ms2x(pPeak)},${y0 - 18} ${ms2x(pEnd)},${y0}`,
+    `L ${ms2x(prEnd)},${y0}`,
+    `L ${ms2x(qDip)},${y0 + 12}`,
+    `L ${ms2x(rPeak)},${y0 - 90}`,
+    `L ${ms2x(sDip)},${y0 + 18}`,
+    `L ${ms2x(qrsEnd)},${y0}`,
+    `L ${ms2x(stEnd)},${y0}`,
+    `Q ${ms2x(tPeak)},${y0 - 35} ${ms2x(tEnd)},${y0}`,
+    `L ${ms2x(baseRR)},${y0}`,
+  ].join(" ");
+
+  const playX = ms2x(time * baseRR);
+
+  const Bar = ({ x1, x2, y, label, value, color }: { x1: number; x2: number; y: number; label: string; value: string; color: string }) => (
+    <g>
+      <line x1={x1} y1={y} x2={x2} y2={y} stroke={color} strokeWidth={2} />
+      <line x1={x1} y1={y - 4} x2={x1} y2={y + 4} stroke={color} strokeWidth={2} />
+      <line x1={x2} y1={y - 4} x2={x2} y2={y + 4} stroke={color} strokeWidth={2} />
+      <text x={(x1 + x2) / 2} y={y - 4} fontSize="9" fill={color} textAnchor="middle" fontWeight="600">
+        {label} {value}
+      </text>
+    </g>
+  );
+
+  const prMs = Math.round(160 * m.pr);
+  const qrsMs = Math.round(90 * m.qrs);
+  const qtMs = Math.round(380 * m.qt);
+
+  const prChanged = m.pr !== 1;
+  const qrsChanged = m.qrs !== 1;
+  const qtChanged = m.qt !== 1;
+  const muted = "hsl(var(--muted-foreground))";
+  const prCol = prChanged && selected ? selected.color : muted;
+  const qrsCol = qrsChanged && selected ? selected.color : muted;
+  const qtCol = qtChanged && selected ? selected.color : muted;
+
+  // Baseline ghost path (when a class is selected)
+  const _prEnd = pStart + 160;
+  const _qrsEnd = _prEnd + 90;
+  const _stEnd = _qrsEnd + 80;
+  const _tEnd = _prEnd + 380;
+  const _tPeak = (_stEnd + _tEnd) / 2;
+  const _qDip = _prEnd + 90 * 0.2;
+  const _rPeak = _prEnd + 90 * 0.5;
+  const _sDip = _prEnd + 90 * 0.8;
+  const ghostPath = [
+    `M ${ms2x(0)},${y0}`,
+    `L ${ms2x(pStart)},${y0}`,
+    `Q ${ms2x(pPeak)},${y0 - 18} ${ms2x(pEnd)},${y0}`,
+    `L ${ms2x(_prEnd)},${y0}`,
+    `L ${ms2x(_qDip)},${y0 + 12}`,
+    `L ${ms2x(_rPeak)},${y0 - 90}`,
+    `L ${ms2x(_sDip)},${y0 + 18}`,
+    `L ${ms2x(_qrsEnd)},${y0}`,
+    `L ${ms2x(_stEnd)},${y0}`,
+    `Q ${ms2x(_tPeak)},${y0 - 35} ${ms2x(_tEnd)},${y0}`,
+    `L ${ms2x(baseRR)},${y0}`,
+  ].join(" ");
+
+  return (
+    <svg viewBox={`0 0 ${w} ${h}`} className="w-full max-w-xl mx-auto" style={{ minWidth: 360 }}>
+      <text x={w / 2} y={14} fontSize="10" fill="currentColor" opacity={0.5} textAnchor="middle" fontWeight="600">
+        Surface ECG (Lead II)
+      </text>
+
+      <defs>
+        <pattern id="ecgGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(0, 70%, 60%)" strokeWidth="0.4" opacity="0.25" />
+        </pattern>
+      </defs>
+      <rect x={stripStart} y={30} width={stripWidth} height={200} fill="url(#ecgGrid)" />
+
+      {selected && (
+        <path d={ghostPath} fill="none" stroke="currentColor" strokeWidth={1} opacity={0.3} strokeDasharray="3,3" />
+      )}
+
+      <path d={path} fill="none" stroke={selected ? selected.color : "hsl(var(--primary))"} strokeWidth={2} strokeLinejoin="round" />
+
+      <text x={ms2x(pPeak)} y={y0 - 24} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">P</text>
+      <text x={ms2x(rPeak)} y={y0 - 96} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">R</text>
+      <text x={ms2x(tPeak)} y={y0 - 40} fontSize="10" fill="currentColor" opacity={0.7} textAnchor="middle" fontWeight="bold">T</text>
+
+      <Bar x1={ms2x(pStart)} x2={ms2x(prEnd)} y={y0 + 55} label="PR" value={`${prMs}ms`} color={prCol} />
+      <Bar x1={ms2x(qStart)} x2={ms2x(qrsEnd)} y={y0 + 75} label="QRS" value={`${qrsMs}ms`} color={qrsCol} />
+      <Bar x1={ms2x(qStart)} x2={ms2x(tEnd)} y={y0 + 95} label="QT" value={`${qtMs}ms`} color={qtCol} />
+
+      <line x1={playX} y1={30} x2={playX} y2={230} stroke="hsl(var(--primary))" strokeWidth={1.5} opacity={0.6} strokeDasharray="3,3" />
+
+      <text x={w / 2} y={278} fontSize="10" fill="currentColor" opacity={0.75} textAnchor="middle" fontStyle="italic">
+        {selected ? `Class ${selected.id}: ${m.note}` : "Select a drug class to see PR / QRS / QT change"}
+      </text>
+      {selected && (
+        <text x={w / 2} y={293} fontSize="9" fill="currentColor" opacity={0.45} textAnchor="middle">
+          dashed = baseline · solid coloured = on Class {selected.id}
+        </text>
+      )}
     </svg>
   );
 };
