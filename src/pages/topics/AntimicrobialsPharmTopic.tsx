@@ -8,6 +8,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
 import AntifungalTargetsDiagram from "@/components/diagrams/AntifungalTargetsDiagram";
+import AntiviralCycleDiagram from "@/components/diagrams/AntiviralCycleDiagram";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -168,6 +169,7 @@ const AntimicrobialsTopic = () => {
           {/* Antivirals */}
           {tab === "antivirals" && (
             <div className="space-y-3">
+              <AntiviralCycleDiagram />
               {antiviralClasses.map((a) => (
                 <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
                   <h4 className="font-bold text-foreground">{a.name}</h4>
