@@ -432,6 +432,75 @@ const VasoactiveAgentsTopic = () => {
           </ul>
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Methylene Blue</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            A phenothiazine-derived dye used as a non-adrenergic vasoconstrictor in refractory vasoplegic shock. It targets the NO–cGMP pathway that drives pathological vasodilation when adrenergic and vasopressinergic agents are failing or maximally dosed.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Mechanism of action</h3>
+          <ul className="text-foreground/90 space-y-1 list-disc list-inside">
+            <li><strong>Inhibits inducible nitric oxide synthase (iNOS)</strong> — reducing endothelial NO production driven by sepsis-/CPB-related cytokines (TNF-α, IL-1, IL-6).</li>
+            <li><strong>Inhibits soluble guanylate cyclase (sGC)</strong> in vascular smooth muscle — preventing the NO → cGMP → PKG → MLCK-dephosphorylation cascade that causes vasodilation.</li>
+            <li>Net effect: restoration of vascular tone, ↑ SVR and MAP, with little direct effect on cardiac contractility.</li>
+            <li>Also inhibits monoamine oxidase A and is itself a weak serotonin reuptake inhibitor — explains the serotonin-syndrome interaction.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Indications</h3>
+          <ul className="text-foreground/90 space-y-1 list-disc list-inside">
+            <li><strong>Refractory vasoplegic septic shock</strong> — unresponsive to noradrenaline + vasopressin (± adrenaline) and adequately fluid-resuscitated.</li>
+            <li><strong>Post-cardiopulmonary bypass vasoplegia</strong> — strongest evidence base; reduces noradrenaline requirement, ICU LOS and mortality (Levin 2004 RCT).</li>
+            <li><strong>Anaphylactic shock refractory to adrenaline</strong> — case-series evidence.</li>
+            <li><strong>Hepatopulmonary syndrome</strong> and <strong>liver-transplant vasoplegia</strong>.</li>
+            <li><strong>Methaemoglobinaemia</strong> (different indication, different dose — see below).</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Dosing</h3>
+          <div className="overflow-x-auto my-3">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Indication</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Dose</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Vasoplegic shock — bolus</td>
+                  <td className="px-4 py-2 font-mono">1–2 mg/kg IV over 20–60 min</td>
+                  <td className="px-4 py-2">Effect within minutes; duration 1–2 h. Avoid &gt; 2 mg/kg as bolus (pulmonary vasoconstriction, ↑ PVR)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Vasoplegic shock — infusion</td>
+                  <td className="px-4 py-2 font-mono">0.25–2 mg/kg/h</td>
+                  <td className="px-4 py-2">Follow-on infusion if response to bolus; titrate to MAP and noradrenaline weaning</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Methaemoglobinaemia</td>
+                  <td className="px-4 py-2 font-mono">1–2 mg/kg IV over 5 min, repeat in 1 h</td>
+                  <td className="px-4 py-2">Reduces Fe³⁺ → Fe²⁺ via NADPH-methaemoglobin reductase. Contra-indicated in G6PD deficiency (haemolysis)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Cautions &amp; adverse effects</h3>
+          <ul className="text-foreground/90 space-y-1 list-disc list-inside">
+            <li><strong>G6PD deficiency</strong> — risk of acute haemolytic anaemia; relative contra-indication.</li>
+            <li><strong>Serotonergic drugs</strong> (SSRIs, SNRIs, tramadol, MAO-inhibitors) — risk of serotonin syndrome via MAO-A inhibition; avoid where possible.</li>
+            <li><strong>Pulmonary vasoconstriction</strong> — ↑ PVR; caution with pre-existing pulmonary hypertension or RV failure.</li>
+            <li><strong>Pulse oximetry artefact</strong> — false ↓ SpO₂ for 10–60 min (absorbs at 660 nm). Use ABG SaO₂ for monitoring.</li>
+            <li>Blue–green discolouration of <strong>urine and skin</strong>; transient blue tint to the surgical field.</li>
+            <li>High doses may paradoxically <em>cause</em> methaemoglobinaemia, worsening oxygen delivery.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4">Place in therapy</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Surviving Sepsis Campaign 2021 lists methylene blue as a salvage option for catecholamine-refractory vasoplegic shock alongside angiotensin II and high-dose vasopressin. The strongest evidence is in post-CPB vasoplegia, where early use (within 6 h of diagnosis) reduces noradrenaline dose, ICU length of stay and mortality. Increasingly used earlier in septic vasoplegia, though a clear mortality benefit remains unproven.
+          </p>
+        </section>
+
         <div className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
           <VasoactiveStructures />
