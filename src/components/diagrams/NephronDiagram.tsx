@@ -1,28 +1,30 @@
 import { useState } from "react";
 
-type SegmentId = "glomerulus" | "pct" | "desc-loh" | "thin-asc" | "thick-asc" | "dct" | "ccd" | "mcd" | "afferent" | "efferent" | "macula" | "vasa-recta";
+type SegmentId = "glomerulus" | "pct" | "desc-loh" | "thin-asc" | "thick-asc" | "dct" | "ccd" | "mcd" | "afferent" | "efferent" | "macula" | "vasa-recta" | "peritubular";
 
 interface Segment {
   id: SegmentId;
   label: string;
   category: "filtration" | "reabsorption" | "secretion" | "vascular";
+  zone: "cortex" | "outer-medulla" | "inner-medulla" | "spans";
   info: string;
   transport: string;
 }
 
 const segments: Segment[] = [
-  { id: "afferent", label: "Afferent Arteriole", category: "vascular", info: "Delivers blood to glomerulus. Dilated by prostaglandins (PGE₂/PGI₂ — blocked by NSAIDs → ↓GFR). Myogenic autoregulation + tubuloglomerular feedback maintain constant GFR over MAP 80–180 mmHg. Constricted by sympathetic stimulation and angiotensin II (but less than efferent).", transport: "PGE₂/PGI₂ → vasodilation; sympathetic → constriction" },
-  { id: "efferent", label: "Efferent Arteriole", category: "vascular", info: "Exits glomerulus. Preferentially constricted by angiotensin II → maintains GFR when perfusion pressure drops (↑filtration fraction). ACE inhibitors dilate efferent → ↓GFR and ↓filtration fraction (protective in diabetic nephropathy by ↓intraglomerular pressure). Gives rise to peritubular capillaries (cortical) or vasa recta (juxtamedullary).", transport: "ANG II → vasoconstriction (ACEi target)" },
-  { id: "glomerulus", label: "Glomerulus", category: "filtration", info: "GFR ≈ 125 mL/min (180 L/day). Three-layer barrier: fenestrated endothelium (70–100 nm pores), glomerular basement membrane (type IV collagen + heparan sulphate — negative charge barrier), podocyte foot processes with slit diaphragms (nephrin protein — 25–60 nm). Filters molecules <70 kDa and negatively charged proteins are repelled. Net filtration pressure ≈ 15 mmHg = (P_GC 50 − P_BC 10) − (π_GC 25 − π_BC 0). Mesangial cells contract (ANG II) to ↓surface area and ↓GFR.", transport: "Ultrafiltration (size + charge selective)" },
-  { id: "pct", label: "Proximal Convoluted Tubule", category: "reabsorption", info: "Reabsorbs 65–70% Na⁺/H₂O (isotonic), ALL glucose (SGLT2 apical + GLUT2 basolateral, Tm 375 mg/min → glycosuria above this), ALL amino acids, 85% HCO₃⁻ (carbonic anhydrase II/IV + NHE3 Na⁺/H⁺ exchanger → acetazolamide target), 65% K⁺, 50% urea (solvent drag). Brush border (microvilli) ↑surface area ×40. Abundant mitochondria power basolateral Na⁺/K⁺-ATPase which drives all secondary active transport. Also secretes: organic acids (PAH — basis of RPF measurement), drugs (penicillin, furosemide), creatinine.", transport: "SGLT2, NHE3, Na⁺/K⁺-ATPase, CA II/IV" },
-  { id: "desc-loh", label: "Descending Limb (thin)", category: "reabsorption", info: "Highly permeable to water via AQP1 (constitutive — not ADH-dependent), impermeable to solutes. Water moves out by osmosis into hypertonic medullary interstitium (300→1200 mOsm/kg at papilla tip). Tubular fluid becomes progressively concentrated. Thin epithelium with few mitochondria (passive transport only). Part of countercurrent multiplier — descending limb concentrates fluid that ascending limb then dilutes.", transport: "AQP1 (water only — constitutive)" },
-  { id: "thin-asc", label: "Thin Ascending Limb", category: "reabsorption", info: "Impermeable to water (no aquaporins). Passive NaCl reabsorption down concentration gradient (tubular fluid hypertonic from descending limb). Tubular fluid begins to dilute. Thin flat epithelium. Part of countercurrent multiplier — passive component adds to interstitial tonicity.", transport: "Passive NaCl diffusion" },
-  { id: "thick-asc", label: "Thick Ascending Limb", category: "reabsorption", info: "NKCC2 cotransporter (Na⁺/K⁺/2Cl⁻) on apical membrane — PRIMARY TARGET OF LOOP DIURETICS (furosemide, bumetanide). Impermeable to water → 'diluting segment'. Reabsorbs 25% filtered Na⁺. K⁺ recycling via apical ROMK generates +8 mV lumen-positive transepithelial potential → drives paracellular reabsorption of Ca²⁺ and Mg²⁺ (loop diuretics → hypocalcaemia, hypomagnesaemia). Tall cuboidal epithelium, abundant mitochondria. Bartter syndrome = genetic NKCC2 dysfunction.", transport: "NKCC2 (furosemide target), ROMK" },
-  { id: "macula", label: "Macula Densa", category: "filtration", info: "Specialised plaque of cells at TAL-DCT junction, adjacent to glomerulus. Part of juxtaglomerular apparatus (JGA) with JG cells (modified smooth muscle in afferent arteriole wall — contain renin granules) and extraglomerular mesangial cells. Senses tubular [NaCl] via apical NKCC2: ↓NaCl → adenosine ↓ → afferent dilation + renin release → ↑GFR (tubuloglomerular feedback). ↑NaCl → adenosine ↑ → afferent constriction → ↓GFR. This feedback loop stabilises SNGFR.", transport: "NaCl sensor → TGF + RAAS activation" },
-  { id: "dct", label: "Distal Convoluted Tubule", category: "reabsorption", info: "NCC (Na⁺/Cl⁻ cotransporter) on apical membrane — TARGET OF THIAZIDE DIURETICS (bendroflumethiazide, hydrochlorothiazide). Reabsorbs 5% filtered Na⁺. Also: active transcellular Ca²⁺ reabsorption via apical TRPV5 channel → calbindin → basolateral NCX/PMCA, stimulated by PTH and calcitriol. Thiazides → ↑Ca²⁺ reabsorption (used in hypercalciuria/stones). Gitelman syndrome = genetic NCC dysfunction (metabolic alkalosis, hypokalaemia, hypomagnesaemia).", transport: "NCC (thiazide target), TRPV5 (Ca²⁺)" },
-  { id: "ccd", label: "Cortical Collecting Duct", category: "secretion", info: "Two cell types: PRINCIPAL cells — apical ENaC (Na⁺ channel, aldosterone-sensitive → amiloride/triamterene/spironolactone targets) and ROMK (K⁺ secretion channel — aldosterone ↑expression). Aldosterone binds intracellular MR → ↑ENaC, ↑ROMK, ↑Na⁺/K⁺-ATPase. Liddle syndrome = gain-of-function ENaC. INTERCALATED cells: Type A (α) — apical H⁺-ATPase and H⁺/K⁺-ATPase → acid secretion, basolateral AE1 (Cl⁻/HCO₃⁻ exchanger); Type B (β) — apical pendrin (Cl⁻/HCO₃⁻) → alkali secretion. ADH → AQP2 insertion into apical membrane (V2 receptor → cAMP → exocytosis of AQP2 vesicles). Basolateral AQP3/4 always present.", transport: "ENaC, ROMK, H⁺-ATPase, AQP2 (ADH)" },
-  { id: "mcd", label: "Medullary Collecting Duct", category: "reabsorption", info: "Final concentration of urine. ADH-dependent water reabsorption (AQP2 apical, AQP3/4 basolateral). Urea recycling via UT-A1 (apical, ADH-sensitive) and UT-A3 (basolateral) → urea moves into medullary interstitium → contributes ~50% of inner medullary osmolality → essential for concentrating ability. Without ADH: dilute urine (50 mOsm/kg). Maximum ADH: concentrated urine (1200 mOsm/kg). Also secretes H⁺ via intercalated cells. Diabetes insipidus: central (↓ADH) or nephrogenic (V2R/AQP2 mutations, lithium).", transport: "AQP2/3/4, UT-A1/3 (urea recycling)" },
-  { id: "vasa-recta", label: "Vasa Recta", category: "vascular", info: "Specialised peritubular capillaries of juxtamedullary nephrons. Descending vasa recta (DVR): continuous endothelium with UT-B urea transporter and AQP1. Ascending vasa recta (AVR): fenestrated endothelium. Functions as countercurrent EXCHANGER (not multiplier): sluggish flow allows equilibration with interstitium without washing out medullary gradient. Descending limb loses water, gains solute; ascending limb gains water, loses solute. Net effect: O₂/nutrients delivered, gradient preserved. Medullary blood flow only 5-10% of total RBF.", transport: "Countercurrent exchange (AQP1, UT-B)" },
+  { id: "afferent", label: "Afferent Arteriole", category: "vascular", zone: "cortex", info: "Delivers blood from interlobular artery to glomerulus. Dilated by prostaglandins (PGE₂/PGI₂ — blocked by NSAIDs → ↓GFR). Myogenic autoregulation + tubuloglomerular feedback maintain constant GFR over MAP 80–180 mmHg. Constricted by sympathetic stimulation and angiotensin II (but less than efferent).", transport: "PGE₂/PGI₂ → vasodilation; sympathetic → constriction" },
+  { id: "efferent", label: "Efferent Arteriole", category: "vascular", zone: "cortex", info: "Exits glomerulus. Preferentially constricted by angiotensin II → maintains GFR when perfusion pressure drops (↑filtration fraction). ACE inhibitors dilate efferent → ↓GFR (renoprotective in diabetic nephropathy). In cortical nephrons gives rise to peritubular capillaries; in juxtamedullary nephrons gives rise to vasa recta that descend into the medulla.", transport: "ANG II → vasoconstriction (ACEi target)" },
+  { id: "glomerulus", label: "Glomerulus", category: "filtration", zone: "cortex", info: "Lies in the renal cortex. GFR ≈ 125 mL/min (180 L/day). Three-layer barrier: fenestrated endothelium (70–100 nm pores), glomerular basement membrane (type IV collagen + heparan sulphate — negative charge barrier), podocyte foot processes with slit diaphragms (nephrin — 25–60 nm). Filters molecules <70 kDa; negatively charged proteins repelled. Net filtration pressure ≈ 15 mmHg = (P_GC 50 − P_BC 10) − (π_GC 25 − π_BC 0). Mesangial cells contract (ANG II) to ↓Kf.", transport: "Ultrafiltration (size + charge selective)" },
+  { id: "pct", label: "Proximal Convoluted Tubule", category: "reabsorption", zone: "cortex", info: "Entirely cortical. Reabsorbs 65–70% Na⁺/H₂O (isotonic), ALL glucose (SGLT2 apical + GLUT2 basolateral, Tm 375 mg/min), ALL amino acids, 85% HCO₃⁻ (CA II/IV + NHE3 — acetazolamide target), 65% K⁺. Brush border ↑surface area ×40. Abundant mitochondria power basolateral Na⁺/K⁺-ATPase. Secretes organic acids (PAH — basis of RPF), drugs (penicillin, furosemide), creatinine. The straight portion (pars recta) descends into the outer medulla.", transport: "SGLT2, NHE3, Na⁺/K⁺-ATPase, CA II/IV" },
+  { id: "desc-loh", label: "Descending Limb (thin)", category: "reabsorption", zone: "spans", info: "Descends from cortex through outer medulla into inner medulla. Highly permeable to water via AQP1 (constitutive — not ADH-dependent), impermeable to solutes. Water moves out by osmosis into hypertonic medullary interstitium (300→1200 mOsm/kg at papilla tip). Tubular fluid becomes progressively concentrated. Thin epithelium with few mitochondria.", transport: "AQP1 (water only — constitutive)" },
+  { id: "thin-asc", label: "Thin Ascending Limb", category: "reabsorption", zone: "inner-medulla", info: "Inner medullary segment (only present in juxtamedullary nephrons with long loops). Impermeable to water (no aquaporins). Passive NaCl reabsorption down concentration gradient. Tubular fluid begins to dilute. Thin flat epithelium — passive component of countercurrent multiplier.", transport: "Passive NaCl diffusion" },
+  { id: "thick-asc", label: "Thick Ascending Limb", category: "reabsorption", zone: "outer-medulla", info: "Outer medullary segment, ascends back to cortex. NKCC2 (Na⁺/K⁺/2Cl⁻) on apical membrane — PRIMARY TARGET OF LOOP DIURETICS. Impermeable to water → 'diluting segment'. Reabsorbs 25% filtered Na⁺. K⁺ recycling via apical ROMK generates +8 mV lumen-positive transepithelial potential → drives paracellular Ca²⁺ and Mg²⁺ reabsorption (loop diuretics → hypocalcaemia/hypomagnesaemia). Tall cuboidal epithelium, abundant mitochondria. Bartter syndrome = NKCC2 dysfunction.", transport: "NKCC2 (furosemide target), ROMK" },
+  { id: "macula", label: "Macula Densa", category: "filtration", zone: "cortex", info: "Specialised plaque at the TAL-DCT junction where the ascending limb returns to its parent glomerulus — anatomical basis of the JGA. Senses tubular [NaCl] via apical NKCC2: ↓NaCl → adenosine ↓ → afferent dilation + renin release → ↑GFR (tubuloglomerular feedback). ↑NaCl → adenosine ↑ → afferent constriction → ↓GFR.", transport: "NaCl sensor → TGF + RAAS activation" },
+  { id: "dct", label: "Distal Convoluted Tubule", category: "reabsorption", zone: "cortex", info: "Cortical. NCC (Na⁺/Cl⁻ cotransporter) on apical membrane — TARGET OF THIAZIDE DIURETICS. Reabsorbs 5% filtered Na⁺. Active transcellular Ca²⁺ reabsorption via apical TRPV5 → calbindin → basolateral NCX/PMCA, stimulated by PTH and calcitriol. Thiazides → ↑Ca²⁺ reabsorption (hypercalciuria/stones treatment). Gitelman syndrome = NCC dysfunction.", transport: "NCC (thiazide target), TRPV5 (Ca²⁺)" },
+  { id: "ccd", label: "Cortical Collecting Duct", category: "secretion", zone: "cortex", info: "Cortical segment. PRINCIPAL cells — apical ENaC (aldosterone-sensitive → amiloride/spironolactone targets) + ROMK (K⁺ secretion). INTERCALATED cells: Type A (α) — apical H⁺-ATPase, basolateral AE1 (acid secretion); Type B (β) — apical pendrin (alkali secretion). ADH → V2R → cAMP → AQP2 insertion into apical membrane.", transport: "ENaC, ROMK, H⁺-ATPase, AQP2 (ADH)" },
+  { id: "mcd", label: "Medullary Collecting Duct", category: "reabsorption", zone: "spans", info: "Descends through outer and inner medulla to papilla, draining into ducts of Bellini. Final concentration of urine. ADH-dependent water reabsorption (AQP2 apical, AQP3/4 basolateral). Urea recycling via UT-A1 (apical, ADH-sensitive) and UT-A3 (basolateral) → urea moves into medullary interstitium → ~50% of inner medullary osmolality. Without ADH: 50 mOsm/kg; max ADH: 1200 mOsm/kg.", transport: "AQP2/3/4, UT-A1/3 (urea recycling)" },
+  { id: "vasa-recta", label: "Vasa Recta", category: "vascular", zone: "spans", info: "Hairpin capillary loops arising from efferent arterioles of juxtamedullary nephrons, running PARALLEL to the loop of Henle. Descending vasa recta (DVR): continuous endothelium with UT-B and AQP1. Ascending vasa recta (AVR): fenestrated endothelium. Functions as countercurrent EXCHANGER (not multiplier): sluggish flow allows equilibration with interstitium without washing out the medullary gradient. Medullary blood flow only 5–10% of total RBF — protective for gradient, but the outer medulla is vulnerable to ischaemic injury (ATN).", transport: "Countercurrent exchange (AQP1, UT-B)" },
+  { id: "peritubular", label: "Peritubular Capillaries", category: "vascular", zone: "cortex", info: "Cortical capillary network arising from efferent arterioles of cortical (superficial) nephrons. Wrap around PCT, DCT and CCD in the cortex. Low hydrostatic pressure + high oncotic pressure (post-glomerular plasma is concentrated) favour reabsorption of fluid from cortical tubules into the bloodstream.", transport: "Bulk reabsorption (Starling forces favour uptake)" },
 ];
 
 const categoryColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -32,63 +34,92 @@ const categoryColors: Record<string, { bg: string; border: string; text: string 
   vascular: { bg: "bg-red-500/10", border: "border-red-500/40", text: "text-red-400" },
 };
 
-// Helper: generate a parallel offset path for hollow tube effect
+// === Tubule paths (hollow double-walled) ===
+// Cortex: y < 200. Outer medulla: y 200-380. Inner medulla: y 380-560. Papilla tip ~ y 560.
 const tubePaths = {
-  pctOuter: "M 178 90 Q 200 95 220 85 Q 245 73 265 83 Q 285 95 300 80 Q 320 63 335 75 Q 350 90 340 110 Q 330 130 310 135",
-  pctInner: "M 178 100 Q 200 105 220 95 Q 245 83 265 93 Q 285 105 300 90 Q 320 73 335 85 Q 350 100 340 120 Q 330 140 310 145",
-  pctLumen: "M 178 95 Q 200 100 220 90 Q 245 78 265 88 Q 285 100 300 85 Q 320 68 335 80 Q 350 95 340 115 Q 330 135 310 140",
-  descOuter: "M 305 140 Q 300 160 293 200 Q 285 260 280 320 Q 275 380 273 430 Q 271 460 275 485",
-  descInner: "M 315 140 Q 310 160 303 200 Q 295 260 290 320 Q 285 380 283 430 Q 281 460 285 485",
-  descLumen: "M 310 140 Q 305 160 298 200 Q 290 260 285 320 Q 280 380 278 430 Q 276 460 280 485",
-  thinAscOuter: "M 305 485 Q 308 445 311 405 Q 313 375 315 345",
-  thinAscInner: "M 315 485 Q 318 445 321 405 Q 323 375 325 345",
-  thinAscLumen: "M 310 485 Q 313 445 316 405 Q 318 375 320 345",
-  thickAscOuter: "M 314 345 Q 317 305 322 265 Q 327 235 332 205 Q 337 175 342 145 Q 344 125 337 108",
-  thickAscInner: "M 326 345 Q 329 305 334 265 Q 339 235 344 205 Q 349 175 354 145 Q 356 125 349 108",
-  thickAscLumen: "M 320 345 Q 323 305 328 265 Q 333 235 338 205 Q 343 175 348 145 Q 350 125 343 108",
-  dctOuter: "M 337 108 Q 355 88 375 90 Q 398 95 410 110 Q 422 128 408 145 Q 393 158 378 148",
-  dctInner: "M 349 108 Q 365 92 385 98 Q 405 108 415 122 Q 425 138 412 150 Q 398 160 388 152",
-  dctLumen: "M 343 108 Q 360 90 380 94 Q 401 101 412 116 Q 423 133 410 148 Q 396 159 383 150",
-  ccdOuter: "M 378 148 Q 375 170 373 195 Q 372 210 371 228",
-  ccdInner: "M 388 152 Q 386 172 384 197 Q 383 212 382 228",
-  ccdLumen: "M 383 150 Q 381 171 379 196 Q 378 211 377 228",
-  mcdOuter: "M 371 228 Q 369 280 367 340 Q 365 400 363 450 Q 362 475 362 495",
-  mcdInner: "M 382 228 Q 380 280 378 340 Q 376 400 374 450 Q 373 475 373 495",
-  mcdLumen: "M 377 228 Q 375 280 373 340 Q 371 400 369 450 Q 368 475 368 495",
+  // PCT — convoluted, entirely in cortex (y 90-180)
+  pctOuter: "M 178 100 Q 195 115 215 105 Q 240 92 258 108 Q 275 125 295 110 Q 315 92 330 110 Q 345 130 332 148 Q 318 162 302 158 Q 290 154 295 168",
+  pctInner: "M 178 110 Q 195 125 215 115 Q 240 102 258 118 Q 275 135 295 120 Q 315 102 330 120 Q 345 140 332 158 Q 318 172 302 168 Q 290 164 295 178",
+  pctLumen: "M 178 105 Q 195 120 215 110 Q 240 97 258 113 Q 275 130 295 115 Q 315 97 330 115 Q 345 135 332 153 Q 318 167 302 163 Q 290 159 295 173",
+
+  // Pars recta of PCT + descending limb — straight, dives from cortex through outer medulla into inner medulla (y 180 → 555)
+  descOuter: "M 295 178 L 293 200 L 290 280 L 287 380 L 284 470 L 282 540",
+  descInner: "M 305 178 L 303 200 L 300 280 L 297 380 L 294 470 L 292 540",
+  descLumen: "M 300 178 L 298 200 L 295 280 L 292 380 L 289 470 L 287 540",
+
+  // Hairpin turn at papilla (y ~ 555)
+  // Thin ascending limb — inner medulla only (y 555 → 380)
+  thinAscOuter: "M 312 540 L 314 470 L 316 400 L 318 380",
+  thinAscInner: "M 322 540 L 324 470 L 326 400 L 328 380",
+  thinAscLumen: "M 317 540 L 319 470 L 321 400 L 323 380",
+
+  // Thick ascending limb — outer medulla (y 380 → 200), then back to cortex
+  thickAscOuter: "M 318 380 L 322 300 L 326 240 L 330 200 L 334 180 L 338 160",
+  thickAscInner: "M 328 380 L 332 300 L 336 240 L 340 200 L 344 180 L 348 160",
+  thickAscLumen: "M 323 380 L 327 300 L 331 240 L 335 200 L 339 180 L 343 160",
+
+  // DCT — short, convoluted, returns near glomerulus (cortex)
+  dctOuter: "M 338 160 Q 360 145 380 150 Q 400 158 408 140 Q 415 122 400 115 Q 388 112 385 128",
+  dctInner: "M 348 160 Q 368 152 388 158 Q 405 165 415 148 Q 423 130 405 122 Q 393 119 392 132",
+  dctLumen: "M 343 160 Q 364 148 384 154 Q 402 162 411 144 Q 419 126 402 118 Q 390 115 388 130",
+
+  // CCD — cortex only (y 130 → 195)
+  ccdOuter: "M 388 130 L 386 160 L 384 195",
+  ccdInner: "M 398 130 L 396 160 L 394 195",
+  ccdLumen: "M 393 130 L 391 160 L 389 195",
+
+  // MCD — descends through outer and inner medulla to papilla (y 195 → 565)
+  mcdOuter: "M 384 195 L 382 280 L 380 380 L 378 470 L 376 540 L 372 565",
+  mcdInner: "M 394 195 L 392 280 L 390 380 L 388 470 L 386 540 L 382 565",
+  mcdLumen: "M 389 195 L 387 280 L 385 380 L 383 470 L 381 540 L 377 565",
 };
 
-// Vasa recta paths — wrapping closely around the loop of Henle
+// Vasa recta — hairpin loops running PARALLEL to the loop of Henle (juxtamedullary)
+// They enter the medulla just adjacent to the descending limb and descend deep, then ascend
 const vasaRectaPaths = {
-  dvrOuter: "M 225 58 Q 218 120 212 200 Q 206 300 200 400 Q 197 450 204 488",
-  dvrInner: "M 232 58 Q 225 120 219 200 Q 213 300 207 400 Q 204 450 211 488",
-  avrOuter: "M 211 488 Q 218 450 224 400 Q 231 300 237 200 Q 243 120 250 58",
-  avrInner: "M 204 488 Q 211 450 217 400 Q 224 300 230 200 Q 236 120 243 58",
-  // Additional capillary branches wrapping around the hairpin
-  branchDvr1: "M 212 260 Q 240 270 260 280 Q 272 290 275 300",
-  branchDvr2: "M 206 370 Q 230 380 255 390 Q 270 400 273 410",
-  branchDvr3: "M 200 440 Q 230 450 260 460 Q 275 465 278 470",
-  branchAvr1: "M 290 300 Q 310 295 325 290 Q 335 285 337 280",
-  branchAvr2: "M 290 410 Q 310 405 325 395 Q 335 385 337 378",
-  branchAvr3: "M 285 470 Q 310 465 325 455 Q 335 445 340 440",
+  // Descending vasa recta (arterial) — runs just lateral (left) of the descending LoH
+  dvrOuter: "M 248 175 L 246 200 L 243 280 L 240 380 L 237 470 L 235 535",
+  dvrInner: "M 256 175 L 254 200 L 251 280 L 248 380 L 245 470 L 243 535",
+  // Hairpin at deep medulla (around y 545)
+  dvrHairpin: "M 235 535 Q 240 558 252 562 Q 264 558 269 535",
+  // Ascending vasa recta (venous) — runs just medial of descending, between DVR and tubule
+  avrOuter: "M 269 535 L 267 470 L 265 380 L 263 280 L 261 200 L 259 175",
+  avrInner: "M 261 535 L 259 470 L 257 380 L 255 280 L 253 200 L 251 175",
+
+  // A second vasa recta bundle on the right side of the loop (paired with thick/thin ascending)
+  dvr2Outer: "M 358 175 L 356 200 L 354 280 L 352 380 L 350 470 L 348 530",
+  dvr2Inner: "M 366 175 L 364 200 L 362 280 L 360 380 L 358 470 L 356 530",
+  dvr2Hairpin: "M 348 530 Q 353 552 365 555 Q 377 552 382 530",
+  avr2Outer: "M 382 530 L 380 470 L 378 380 L 376 280 L 374 200 L 372 175",
+  avr2Inner: "M 374 530 L 372 470 L 370 380 L 368 280 L 366 200 L 364 175",
 };
+
+// Peritubular capillary network paths (cortex only)
+const peritubularPaths = [
+  "M 205 130 Q 225 138 240 148 Q 258 158 275 152",
+  "M 215 165 Q 235 172 255 168 Q 270 165 280 170",
+  "M 360 130 Q 378 138 395 148 Q 410 155 425 150",
+  "M 365 175 Q 380 178 395 175 Q 410 172 420 168",
+  "M 195 145 Q 210 152 225 158",
+  "M 410 165 Q 425 162 438 156",
+];
 
 export const NephronDiagram = () => {
   const [active, setActive] = useState<SegmentId | null>(null);
   const [filter, setFilter] = useState<string | null>(null);
+  const [showZones, setShowZones] = useState(true);
   const activeSegment = segments.find(s => s.id === active);
 
   const categories = ["filtration", "reabsorption", "secretion", "vascular"];
 
   const isVisible = (seg: Segment) => !filter || seg.category === filter;
   const isActive = (id: SegmentId) => active === id;
-
   const seg = (id: SegmentId) => segments.find(s => s.id === id)!;
 
-  // Hollow tube renderer
-  const HollowTube = ({ id, outerPath, innerPath, lumenPath, color, activeColor, wallWidth = 1.2, lumenColor, onClick }: {
+  const HollowTube = ({ id, outerPath, innerPath, lumenPath, color, activeColor, wallWidth = 1.2, lumenColor, dashed, onClick }: {
     id: SegmentId; outerPath: string; innerPath: string; lumenPath?: string;
     color: string; activeColor: string; wallWidth?: number;
-    lumenColor?: string; onClick: () => void;
+    lumenColor?: string; dashed?: boolean; onClick: () => void;
   }) => {
     const s = seg(id);
     const vis = isVisible(s);
@@ -96,26 +127,18 @@ export const NephronDiagram = () => {
     const strokeColor = act ? activeColor : color;
     return (
       <g opacity={vis ? 1 : 0.12} className="cursor-pointer transition-all" onClick={onClick}>
-        {/* Lumen fill */}
-        {lumenPath && (
-          <path d={`${outerPath} L ${innerPath.split(' ').slice(-2).join(' ')} ${innerPath.split(' ').reverse().map((v, i, a) => {
-            // We can't easily reverse a Q path, so use a filled area approach
-            return v;
-          }).join(' ')}`}
-            fill="none" />
-        )}
-        {/* Outer wall */}
-        <path d={outerPath} fill="none" stroke={strokeColor} strokeWidth={act ? wallWidth + 0.6 : wallWidth} strokeLinecap="round" />
-        {/* Inner wall */}
-        <path d={innerPath} fill="none" stroke={strokeColor} strokeWidth={act ? wallWidth + 0.6 : wallWidth} strokeLinecap="round" />
-        {/* Lumen highlight — semi-transparent fill along center */}
+        <path d={outerPath} fill="none" stroke={strokeColor}
+          strokeWidth={act ? wallWidth + 0.6 : wallWidth} strokeLinecap="round"
+          strokeDasharray={dashed ? "5 2" : undefined} />
+        <path d={innerPath} fill="none" stroke={strokeColor}
+          strokeWidth={act ? wallWidth + 0.6 : wallWidth} strokeLinecap="round"
+          strokeDasharray={dashed ? "5 2" : undefined} />
         {lumenPath && (
           <path d={lumenPath} fill="none"
-            stroke={lumenColor || strokeColor} strokeWidth={act ? 5 : 3}
-            strokeLinecap="round" opacity={0.08} />
+            stroke={lumenColor || strokeColor} strokeWidth={act ? 5 : 3.5}
+            strokeLinecap="round" opacity={0.1} />
         )}
-        {/* Invisible thick click target */}
-        <path d={lumenPath || outerPath} fill="none" stroke="transparent" strokeWidth="16" className="cursor-pointer" onClick={onClick} />
+        <path d={lumenPath || outerPath} fill="none" stroke="transparent" strokeWidth="14" onClick={onClick} />
       </g>
     );
   };
@@ -124,8 +147,7 @@ export const NephronDiagram = () => {
 
   return (
     <div className="space-y-4">
-      {/* Category filter */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 items-center">
         {categories.map(cat => (
           <button
             key={cat}
@@ -139,30 +161,37 @@ export const NephronDiagram = () => {
             {cat}
           </button>
         ))}
+        <button
+          onClick={() => setShowZones(!showZones)}
+          className={`px-3 py-1 rounded-full text-xs font-medium border transition-all ml-auto ${
+            showZones ? "bg-primary/15 border-primary/40 text-primary" : "bg-secondary/50 border-border text-muted-foreground"
+          }`}
+        >
+          {showZones ? "Hide" : "Show"} cortex/medulla zones
+        </button>
       </div>
 
-      <svg viewBox="0 0 520 560" className="w-full" role="img" aria-label="Nephron diagram with hollow tubules and vasa recta">
+      <svg viewBox="0 0 540 620" className="w-full" role="img" aria-label="Juxtamedullary nephron with vasa recta and corticomedullary zones">
         <defs>
-          <linearGradient id="medGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0.08" />
-            <stop offset="100%" stopColor="hsl(30, 50%, 50%)" stopOpacity="0.06" />
-          </linearGradient>
           <linearGradient id="cortexGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0.12" />
+            <stop offset="0%" stopColor="hsl(35 55% 70%)" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="hsl(35 55% 65%)" stopOpacity="0.10" />
           </linearGradient>
-          <linearGradient id="lumenGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="hsl(45 80% 65%)" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="hsl(45 60% 45%)" stopOpacity="0.05" />
+          <linearGradient id="outerMedGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="hsl(15 50% 55%)" stopOpacity="0.10" />
+            <stop offset="100%" stopColor="hsl(15 50% 45%)" stopOpacity="0.14" />
           </linearGradient>
-          {/* Arterial blood gradient for vasa recta */}
+          <linearGradient id="innerMedGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="hsl(15 50% 40%)" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="hsl(15 55% 30%)" stopOpacity="0.22" />
+          </linearGradient>
           <linearGradient id="dvrGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="hsl(0 65% 55%)" />
-            <stop offset="100%" stopColor="hsl(0 50% 40%)" />
+            <stop offset="0%" stopColor="hsl(0 70% 55%)" />
+            <stop offset="100%" stopColor="hsl(0 60% 42%)" />
           </linearGradient>
           <linearGradient id="avrGrad" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0%" stopColor="hsl(220 50% 40%)" />
-            <stop offset="100%" stopColor="hsl(220 45% 55%)" />
+            <stop offset="0%" stopColor="hsl(220 55% 38%)" />
+            <stop offset="100%" stopColor="hsl(220 50% 55%)" />
           </linearGradient>
           <marker id="arrowGreen" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
             <path d="M0,0 L6,2 L0,4" fill="hsl(150 50% 55%)" />
@@ -176,461 +205,427 @@ export const NephronDiagram = () => {
           <marker id="arrowYellow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
             <path d="M0,0 L6,2 L0,4" fill="hsl(45 60% 50%)" />
           </marker>
-          <marker id="arrowRed" markerWidth="5" markerHeight="4" refX="4" refY="2" orient="auto">
-            <path d="M0,0 L5,2 L0,4" fill="hsl(0 55% 50%)" />
-          </marker>
-          <marker id="arrowPurple" markerWidth="5" markerHeight="4" refX="4" refY="2" orient="auto">
-            <path d="M0,0 L5,2 L0,4" fill="hsl(220 45% 55%)" />
-          </marker>
-          {/* Epithelial cell pattern for brush border */}
-          <pattern id="brushBorder" patternUnits="userSpaceOnUse" width="3" height="6" patternTransform="rotate(0)">
-            <line x1="1.5" y1="6" x2="1.5" y2="2" stroke="hsl(150 50% 40%)" strokeWidth="0.5" opacity="0.4" />
-          </pattern>
         </defs>
 
-        {/* Background zones */}
-        <rect x="0" y="0" width="520" height="220" fill="url(#cortexGrad)" rx="8" />
-        <rect x="0" y="220" width="520" height="340" fill="url(#medGrad)" rx="8" />
-        <text x="12" y="20" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600" opacity="0.6">CORTEX</text>
-        <text x="12" y="238" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600" opacity="0.4">OUTER MEDULLA</text>
-        <text x="12" y="415" fontSize="10" fill="hsl(var(--muted-foreground))" fontWeight="600" opacity="0.3">INNER MEDULLA</text>
-        <line x1="0" y1="220" x2="520" y2="220" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="4 4" />
-        <line x1="0" y1="400" x2="520" y2="400" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="4 4" />
+        {/* ====== CORTEX / OUTER MEDULLA / INNER MEDULLA ZONES ====== */}
+        {showZones && (
+          <>
+            <rect x="0" y="0" width="540" height="200" fill="url(#cortexGrad)" />
+            <rect x="0" y="200" width="540" height="180" fill="url(#outerMedGrad)" />
+            <rect x="0" y="380" width="540" height="240" fill="url(#innerMedGrad)" />
 
-        {/* ========== VASA RECTA — drawn first so tubules overlay ========== */}
-        <g opacity={isVisible(seg("vasa-recta")) ? (isActive("vasa-recta") ? 1 : 0.55) : 0.08}
-           className="cursor-pointer" onClick={toggle("vasa-recta")}>
-          {/* DVR — descending (arterial, red) */}
-          <path d={vasaRectaPaths.dvrOuter} fill="none" stroke="url(#dvrGrad)"
-            strokeWidth={isActive("vasa-recta") ? 2.2 : 1.2} strokeLinecap="round" />
-          <path d={vasaRectaPaths.dvrInner} fill="none" stroke="url(#dvrGrad)"
-            strokeWidth={isActive("vasa-recta") ? 2.2 : 1.2} strokeLinecap="round" />
-          {/* DVR lumen */}
-          <path d="M 228 58 Q 221 120 215 200 Q 209 300 203 400 Q 200 450 207 488" fill="none"
-            stroke="hsl(0 60% 55%)" strokeWidth="4" opacity="0.06" strokeLinecap="round" />
+            {/* Corticomedullary junction — solid line */}
+            <line x1="0" y1="200" x2="540" y2="200" stroke="hsl(15 50% 40%)" strokeWidth="1" opacity="0.5" />
+            <text x="540" y="197" fontSize="6.5" fill="hsl(15 50% 40%)" textAnchor="end" opacity="0.6" fontStyle="italic">corticomedullary junction</text>
 
-          {/* AVR — ascending (venous, blue) */}
-          <path d={vasaRectaPaths.avrOuter} fill="none" stroke="url(#avrGrad)"
-            strokeWidth={isActive("vasa-recta") ? 2.2 : 1.2} strokeLinecap="round" />
-          <path d={vasaRectaPaths.avrInner} fill="none" stroke="url(#avrGrad)"
-            strokeWidth={isActive("vasa-recta") ? 2.2 : 1.2} strokeLinecap="round" />
-          {/* AVR lumen */}
-          <path d="M 207 488 Q 214 450 220 400 Q 227 300 233 200 Q 239 120 246 58" fill="none"
-            stroke="hsl(220 45% 55%)" strokeWidth="4" opacity="0.06" strokeLinecap="round" />
+            {/* Outer / inner medulla boundary — dashed */}
+            <line x1="0" y1="380" x2="540" y2="380" stroke="hsl(15 50% 35%)" strokeWidth="0.7" strokeDasharray="4 3" opacity="0.45" />
 
-          {/* Peritubular capillary branches wrapping around LoH */}
-          {[vasaRectaPaths.branchDvr1, vasaRectaPaths.branchDvr2, vasaRectaPaths.branchDvr3].map((p, i) => (
-            <path key={`bdvr-${i}`} d={p} fill="none" stroke="hsl(0 50% 50%)"
-              strokeWidth={isActive("vasa-recta") ? 1.4 : 0.7} strokeDasharray="3 2" opacity={isActive("vasa-recta") ? 0.6 : 0.3} />
-          ))}
-          {[vasaRectaPaths.branchAvr1, vasaRectaPaths.branchAvr2, vasaRectaPaths.branchAvr3].map((p, i) => (
-            <path key={`bavr-${i}`} d={p} fill="none" stroke="hsl(220 40% 50%)"
-              strokeWidth={isActive("vasa-recta") ? 1.4 : 0.7} strokeDasharray="3 2" opacity={isActive("vasa-recta") ? 0.6 : 0.3} />
-          ))}
+            {/* Zone labels (left margin) */}
+            <text x="10" y="22" fontSize="11" fill="hsl(35 55% 45%)" fontWeight="700" opacity="0.75">CORTEX</text>
+            <text x="10" y="36" fontSize="6.5" fill="hsl(35 55% 45%)" opacity="0.55" fontStyle="italic">renal corpuscle, PCT, DCT, CCD</text>
 
-          {/* Fenestrations on AVR */}
-          {isActive("vasa-recta") && [160, 250, 340, 420].map((y, i) => {
-            const x = 237 - (y - 58) * 0.014;
-            return (
-              <g key={`fen-${i}`} opacity="0.5">
-                <circle cx={x + 5} cy={y} r="1.2" fill="none" stroke="hsl(220 45% 55%)" strokeWidth="0.6" />
-                <circle cx={x + 5} cy={y + 8} r="1.2" fill="none" stroke="hsl(220 45% 55%)" strokeWidth="0.6" />
-              </g>
-            );
-          })}
+            <text x="10" y="220" fontSize="11" fill="hsl(15 55% 40%)" fontWeight="700" opacity="0.75">OUTER MEDULLA</text>
+            <text x="10" y="234" fontSize="6.5" fill="hsl(15 55% 40%)" opacity="0.55" fontStyle="italic">thick ascending limb, MCD</text>
 
-          {/* Invisible click target */}
-          <path d="M 228 58 Q 221 120 215 200 Q 209 300 203 400 Q 200 450 207 488 Q 214 450 220 400 Q 227 300 233 200 Q 239 120 246 58"
-            fill="transparent" stroke="transparent" strokeWidth="20" />
+            <text x="10" y="400" fontSize="11" fill="hsl(15 60% 35%)" fontWeight="700" opacity="0.8">INNER MEDULLA</text>
+            <text x="10" y="414" fontSize="6.5" fill="hsl(15 60% 35%)" opacity="0.6" fontStyle="italic">thin descending + ascending limbs, MCD</text>
 
-          {/* Direction arrows */}
-          {[150, 300, 420].map(y => (
-            <g key={`dvr-arr-${y}`}>
-              <polygon points={`${218 - (y-58)*0.011},${y-4} ${218 - (y-58)*0.011},${y+4} ${214 - (y-58)*0.011},${y}`}
-                fill="hsl(0 55% 50%)" opacity={isActive("vasa-recta") ? 0.5 : 0.2} />
-            </g>
-          ))}
-          {[150, 300, 420].map(y => (
-            <g key={`avr-arr-${y}`}>
-              <polygon points={`${237 - (y-58)*0.014 + 6},${y+4} ${237 - (y-58)*0.014 + 6},${y-4} ${241 - (y-58)*0.014 + 6},${y}`}
-                fill="hsl(220 45% 55%)" opacity={isActive("vasa-recta") ? 0.5 : 0.2} />
-            </g>
-          ))}
+            <text x="10" y="585" fontSize="9" fill="hsl(15 60% 30%)" fontWeight="700" opacity="0.7">PAPILLA</text>
+          </>
+        )}
 
-          {/* Exchange arrows between DVR/AVR */}
-          {isActive("vasa-recta") && [200, 330, 430].map((y, i) => (
-            <g key={`exch-${i}`} opacity="0.4">
-              <line x1={220} y1={y} x2={230} y2={y} stroke="hsl(200 50% 60%)" strokeWidth="0.8" />
-              <text x={225} y={y - 4} fontSize="4" fill="hsl(200 50% 60%)" textAnchor="middle">
-                {["H₂O→", "NaCl←", "urea←"][i]}
-              </text>
-            </g>
-          ))}
+        {/* Faint capsule outline at top */}
+        <path d="M 0 4 Q 270 -4 540 4" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+
+        {/* ============= INTERLOBULAR ARTERY (left) ============= */}
+        <g opacity="0.55">
+          <path d="M 30 30 L 32 100 L 35 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2.2" strokeLinecap="round" />
+          <path d="M 36 30 L 38 100 L 41 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2.2" strokeLinecap="round" />
+          <path d="M 33 30 L 35 100 L 38 175" fill="none" stroke="hsl(0 65% 55%)" strokeWidth="3.5" opacity="0.18" strokeLinecap="round" />
+          <text x="14" y="100" fontSize="6.5" fill="hsl(0 50% 50%)" opacity="0.7" fontWeight="600" transform="rotate(-90 14 100)">interlobular a.</text>
         </g>
-        <text x="218" y="535" fontSize="7.5" fill="hsl(0 40% 50%)" textAnchor="middle"
-          opacity={isVisible(seg("vasa-recta")) ? 0.6 : 0.1} fontWeight="600">Vasa recta</text>
+
+        {/* ============= INTERLOBULAR VEIN (far right) ============= */}
+        <g opacity="0.55">
+          <path d="M 510 30 L 508 200 L 506 380 L 504 560" fill="none" stroke="hsl(220 55% 45%)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M 516 30 L 514 200 L 512 380 L 510 560" fill="none" stroke="hsl(220 55% 45%)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M 513 30 L 511 200 L 509 380 L 507 560" fill="none" stroke="hsl(220 50% 50%)" strokeWidth="3" opacity="0.15" strokeLinecap="round" />
+          <text x="525" y="100" fontSize="6.5" fill="hsl(220 50% 50%)" opacity="0.7" fontWeight="600" transform="rotate(90 525 100)">venous return</text>
+        </g>
+
+        {/* ============= VASA RECTA — drawn before tubules ============= */}
+        <g opacity={isVisible(seg("vasa-recta")) ? (isActive("vasa-recta") ? 1 : 0.7) : 0.08}
+           className="cursor-pointer" onClick={toggle("vasa-recta")}>
+          {/* Bundle 1 (left of LoH) */}
+          <path d={vasaRectaPaths.dvrOuter} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.8 : 1.1} strokeLinecap="round" />
+          <path d={vasaRectaPaths.dvrInner} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.8 : 1.1} strokeLinecap="round" />
+          <path d="M 252 175 L 250 280 L 247 400 L 244 500 L 242 532" fill="none"
+            stroke="hsl(0 65% 55%)" strokeWidth="3" opacity="0.10" strokeLinecap="round" />
+          {/* Hairpin */}
+          <path d={vasaRectaPaths.dvrHairpin} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.8 : 1.1} strokeLinecap="round" />
+          <path d={vasaRectaPaths.avrOuter} fill="none" stroke="url(#avrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.8 : 1.1} strokeLinecap="round" />
+          <path d={vasaRectaPaths.avrInner} fill="none" stroke="url(#avrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.8 : 1.1} strokeLinecap="round" />
+          <path d="M 265 535 L 263 400 L 260 280 L 258 200 L 256 175" fill="none"
+            stroke="hsl(220 55% 50%)" strokeWidth="3" opacity="0.10" strokeLinecap="round" />
+
+          {/* Bundle 2 (right of LoH, paired with thick ascending) */}
+          <path d={vasaRectaPaths.dvr2Outer} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.6 : 0.95} strokeLinecap="round" opacity="0.8" />
+          <path d={vasaRectaPaths.dvr2Inner} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.6 : 0.95} strokeLinecap="round" opacity="0.8" />
+          <path d={vasaRectaPaths.dvr2Hairpin} fill="none" stroke="url(#dvrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.6 : 0.95} strokeLinecap="round" opacity="0.8" />
+          <path d={vasaRectaPaths.avr2Outer} fill="none" stroke="url(#avrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.6 : 0.95} strokeLinecap="round" opacity="0.8" />
+          <path d={vasaRectaPaths.avr2Inner} fill="none" stroke="url(#avrGrad)"
+            strokeWidth={isActive("vasa-recta") ? 1.6 : 0.95} strokeLinecap="round" opacity="0.8" />
+
+          {/* Direction arrows on DVR */}
+          {[260, 360, 460].map(y => (
+            <polygon key={`dvr-arr-${y}`} points={`${247 - (y - 175) * 0.025},${y - 4} ${247 - (y - 175) * 0.025},${y + 4} ${243 - (y - 175) * 0.025},${y}`}
+              fill="hsl(0 65% 50%)" opacity={isActive("vasa-recta") ? 0.7 : 0.4} />
+          ))}
+          {/* Direction arrows on AVR (upward) */}
+          {[260, 360, 460].map(y => (
+            <polygon key={`avr-arr-${y}`} points={`${265 - (y - 175) * 0.022 + 4},${y + 4} ${265 - (y - 175) * 0.022 + 4},${y - 4} ${269 - (y - 175) * 0.022 + 4},${y}`}
+              fill="hsl(220 55% 50%)" opacity={isActive("vasa-recta") ? 0.7 : 0.4} />
+          ))}
+
+          {/* Exchange annotations between paired DVR/AVR when active */}
+          {isActive("vasa-recta") && [
+            { y: 280, label: "H₂O →" },
+            { y: 400, label: "← NaCl" },
+            { y: 500, label: "← urea" },
+          ].map((m, i) => (
+            <g key={`exch-${i}`} opacity="0.7">
+              <line x1={258} y1={m.y} x2={264} y2={m.y} stroke="hsl(200 55% 55%)" strokeWidth="0.8" />
+              <text x={261} y={m.y - 4} fontSize="4.5" fill="hsl(200 60% 55%)" textAnchor="middle">{m.label}</text>
+            </g>
+          ))}
+
+          {/* Big invisible click target across both bundles */}
+          <rect x="230" y="170" width="160" height="395" fill="transparent" />
+        </g>
+
+        {/* Vasa recta legend */}
         {isActive("vasa-recta") && (
-          <g opacity="0.5">
-            <text x="200" y="548" fontSize="5.5" fill="hsl(0 45% 55%)">DVR ↓ (arterial)</text>
-            <text x="200" y="556" fontSize="5.5" fill="hsl(220 45% 55%)">AVR ↑ (venous)</text>
+          <g opacity="0.85">
+            <rect x="380" y="565" width="150" height="42" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.6" />
+            <line x1="386" y1="574" x2="396" y2="574" stroke="hsl(0 65% 50%)" strokeWidth="2" />
+            <text x="400" y="576" fontSize="6" fill="hsl(0 60% 50%)">DVR ↓ (arterial, continuous)</text>
+            <line x1="386" y1="586" x2="396" y2="586" stroke="hsl(220 55% 50%)" strokeWidth="2" />
+            <text x="400" y="588" fontSize="6" fill="hsl(220 55% 50%)">AVR ↑ (venous, fenestrated)</text>
+            <text x="386" y="600" fontSize="5" fill="hsl(var(--muted-foreground))" fontStyle="italic">Countercurrent exchanger preserves gradient</text>
           </g>
         )}
 
-        {/* ========== AFFERENT ARTERIOLE ========== */}
+        {/* ============= PERITUBULAR CAPILLARY NETWORK (cortex only) ============= */}
+        <g opacity={isVisible(seg("peritubular")) ? (isActive("peritubular") ? 0.9 : 0.45) : 0.08}
+           className="cursor-pointer" onClick={toggle("peritubular")}>
+          {peritubularPaths.map((d, i) => (
+            <path key={`ptc-${i}`} d={d} fill="none" stroke="hsl(340 45% 55%)"
+              strokeWidth={isActive("peritubular") ? 1.4 : 0.9} strokeLinecap="round"
+              strokeDasharray="2 2" />
+          ))}
+          {/* Click target */}
+          <rect x="190" y="120" width="260" height="65" fill="transparent" />
+        </g>
+
+        {/* ============= AFFERENT ARTERIOLE ============= */}
         <g opacity={isVisible(seg("afferent")) ? 1 : 0.12} className="cursor-pointer" onClick={toggle("afferent")}>
-          {/* Hollow vessel walls */}
-          <path d="M 40 90 Q 60 85 80 80 Q 100 73 115 70" fill="none"
+          <path d="M 41 100 Q 65 102 90 105 Q 110 108 122 110" fill="none"
             stroke={isActive("afferent") ? "hsl(0 70% 55%)" : "hsl(0 60% 50%)"}
-            strokeWidth={isActive("afferent") ? 1.8 : 1.2} />
-          <path d="M 40 100 Q 60 95 80 90 Q 100 83 115 80" fill="none"
+            strokeWidth={isActive("afferent") ? 2 : 1.4} />
+          <path d="M 41 112 Q 65 114 90 117 Q 110 120 122 122" fill="none"
             stroke={isActive("afferent") ? "hsl(0 70% 55%)" : "hsl(0 60% 50%)"}
-            strokeWidth={isActive("afferent") ? 1.8 : 1.2} />
-          {/* Lumen fill */}
-          <path d="M 40 95 Q 60 90 80 85 Q 100 78 115 75" fill="none"
-            stroke="hsl(0 60% 50%)" strokeWidth="6" opacity="0.08" strokeLinecap="round" />
-          {/* Smooth muscle bumps */}
-          {[55, 70, 85, 100].map((x, i) => (
-            <ellipse key={`aff-sm-${i}`} cx={x} cy={87 - i * 2.5} rx={3} ry={2}
-              fill="hsl(0 50% 50%)" fillOpacity={isActive("afferent") ? 0.3 : 0.15}
+            strokeWidth={isActive("afferent") ? 2 : 1.4} />
+          <path d="M 41 106 Q 65 108 90 111 Q 110 114 122 116" fill="none"
+            stroke="hsl(0 65% 55%)" strokeWidth="6" opacity="0.10" strokeLinecap="round" />
+          {[60, 78, 96, 114].map((x, i) => (
+            <ellipse key={`aff-sm-${i}`} cx={x} cy={107 + i * 0.5} rx={3} ry={2}
+              fill="hsl(0 55% 55%)" fillOpacity={isActive("afferent") ? 0.35 : 0.18}
               stroke="hsl(0 60% 50%)" strokeWidth="0.5" />
           ))}
-          {/* Flow arrow */}
-          <polygon points="42,92 42,98 32,95" fill="hsl(0 60% 50%)" opacity="0.7" />
-          {/* Click target */}
-          <path d="M 40 95 Q 60 90 80 85 Q 100 78 115 75" fill="none" stroke="transparent" strokeWidth="18" />
+          <polygon points="44,103 44,109 36,106" fill="hsl(0 60% 50%)" opacity="0.7" />
+          <path d="M 41 106 Q 65 108 90 111 Q 110 114 122 116" fill="none" stroke="transparent" strokeWidth="16" />
         </g>
+        <text x="78" y="92" fontSize="6.5" fill="hsl(0 50% 50%)" opacity={isVisible(seg("afferent")) ? 0.7 : 0.1} fontStyle="italic">afferent arteriole</text>
 
         {/* JG cells */}
-        {[105, 112].map((x, i) => (
+        {[115, 122].map((x, i) => (
           <g key={`jg-${i}`} opacity={isVisible(seg("afferent")) ? 0.7 : 0.1}>
-            <circle cx={x} cy={76 - i} r={4} fill="hsl(260 50% 55%)" fillOpacity="0.2"
-              stroke="hsl(260 50% 55%)" strokeWidth="0.8" />
-            <circle cx={x - 1} cy={76 - i - 1} r={0.9} fill="hsl(260 50% 55%)" fillOpacity="0.6" />
-            <circle cx={x + 1} cy={76 - i + 0.5} r={0.9} fill="hsl(260 50% 55%)" fillOpacity="0.6" />
+            <circle cx={x} cy={111 - i * 0.5} r={3.5} fill="hsl(260 50% 55%)" fillOpacity="0.22"
+              stroke="hsl(260 50% 55%)" strokeWidth="0.7" />
           </g>
         ))}
-        <text x="98" y="65" fontSize="5" fill="hsl(260 50% 55%)" opacity={isVisible(seg("afferent")) ? 0.6 : 0.1}>JG cells</text>
 
-        {/* ========== EFFERENT ARTERIOLE ========== */}
+        {/* ============= EFFERENT ARTERIOLE — dives down to become vasa recta ============= */}
         <g opacity={isVisible(seg("efferent")) ? 1 : 0.12} className="cursor-pointer" onClick={toggle("efferent")}>
-          <path d="M 165 70 Q 185 63 200 55 Q 215 47 225 50" fill="none"
-            stroke={isActive("efferent") ? "hsl(0 50% 48%)" : "hsl(0 40% 40%)"}
-            strokeWidth={isActive("efferent") ? 1.6 : 1} />
-          <path d="M 165 80 Q 185 73 200 65 Q 215 57 225 60" fill="none"
-            stroke={isActive("efferent") ? "hsl(0 50% 48%)" : "hsl(0 40% 40%)"}
-            strokeWidth={isActive("efferent") ? 1.6 : 1} />
-          <path d="M 165 75 Q 185 68 200 60 Q 215 52 225 55" fill="none"
-            stroke="hsl(0 40% 40%)" strokeWidth="5" opacity="0.06" strokeLinecap="round" />
-          <path d="M 165 75 Q 185 68 200 60 Q 215 52 225 55" fill="none" stroke="transparent" strokeWidth="18" />
+          {/* exits glomerulus from top right, curves down to feed vasa recta */}
+          <path d="M 195 90 Q 215 90 230 105 Q 245 125 248 150 Q 250 165 250 175" fill="none"
+            stroke={isActive("efferent") ? "hsl(0 50% 50%)" : "hsl(0 40% 42%)"}
+            strokeWidth={isActive("efferent") ? 1.7 : 1.1} />
+          <path d="M 195 100 Q 218 100 235 113 Q 250 132 254 152 Q 256 165 256 175" fill="none"
+            stroke={isActive("efferent") ? "hsl(0 50% 50%)" : "hsl(0 40% 42%)"}
+            strokeWidth={isActive("efferent") ? 1.7 : 1.1} />
+          <path d="M 195 95 Q 217 95 233 109 Q 248 128 251 151 Q 253 165 253 175" fill="none"
+            stroke="hsl(0 45% 45%)" strokeWidth="5" opacity="0.08" strokeLinecap="round" />
+          <path d="M 195 95 Q 217 95 233 109 Q 248 128 251 151 Q 253 165 253 175" fill="none" stroke="transparent" strokeWidth="14" />
+          <text x="200" y="135" fontSize="5.5" fill="hsl(0 45% 45%)" opacity={isVisible(seg("efferent")) ? 0.65 : 0.1} fontStyle="italic">efferent → vasa recta</text>
         </g>
 
-        {/* ========== BOWMAN'S CAPSULE + GLOMERULUS ========== */}
+        {/* ============= BOWMAN'S CAPSULE + GLOMERULUS ============= */}
         <g opacity={isVisible(seg("glomerulus")) ? 1 : 0.12} className="cursor-pointer" onClick={toggle("glomerulus")}>
-          {/* Bowman's capsule — double wall */}
-          <ellipse cx="140" cy="85" rx="44" ry="34" fill="none"
-            stroke={isActive("glomerulus") ? "hsl(var(--primary))" : "hsl(var(--primary)/0.5)"}
-            strokeWidth={isActive("glomerulus") ? 2.5 : 1.5} />
-          <ellipse cx="140" cy="85" rx="40" ry="30" fill="none"
-            stroke={isActive("glomerulus") ? "hsl(var(--primary)/0.6)" : "hsl(var(--primary)/0.25)"}
+          {/* Bowman's capsule — double wall (cup-shaped) */}
+          <ellipse cx="160" cy="100" rx="42" ry="34" fill="none"
+            stroke={isActive("glomerulus") ? "hsl(var(--primary))" : "hsl(var(--primary)/0.55)"}
+            strokeWidth={isActive("glomerulus") ? 2.4 : 1.5} />
+          <ellipse cx="160" cy="100" rx="38" ry="30" fill="none"
+            stroke={isActive("glomerulus") ? "hsl(var(--primary)/0.65)" : "hsl(var(--primary)/0.3)"}
             strokeWidth="1" />
-          {/* Bowman's space — faint fill between walls */}
-          <ellipse cx="140" cy="85" rx="42" ry="32" fill="hsl(var(--primary))" fillOpacity="0.03" />
-          <text x="112" y="58" fontSize="5" fill="hsl(var(--primary))" opacity={0.5}>Bowman's space</text>
+          <ellipse cx="160" cy="100" rx="40" ry="32" fill="hsl(var(--primary))" fillOpacity="0.04" />
+          <text x="118" y="76" fontSize="5.5" fill="hsl(var(--primary))" opacity={0.55}>Bowman's capsule</text>
 
-          {/* Glomerular capillary tuft — more realistic loops */}
+          {/* Glomerular capillary tuft — realistic loops */}
           {[
-            "M 125 72 Q 120 80 128 85 Q 135 90 130 95",
-            "M 135 70 Q 130 78 138 82 Q 145 87 140 93",
-            "M 145 72 Q 140 80 148 84 Q 155 88 150 94",
-            "M 155 75 Q 150 82 155 88 Q 160 92 155 96",
-            "M 130 78 Q 138 75 145 78 Q 150 82 145 87",
+            "M 142 88 Q 135 96 144 102 Q 152 108 146 115",
+            "M 154 86 Q 147 95 156 100 Q 165 106 158 113",
+            "M 166 86 Q 159 95 168 99 Q 178 105 170 112",
+            "M 178 90 Q 170 98 176 105 Q 184 110 178 116",
+            "M 148 100 Q 158 96 168 99 Q 175 103 168 109",
           ].map((d, i) => (
             <path key={`glom-loop-${i}`} d={d} fill="none"
-              stroke="hsl(0 60% 50%)" strokeWidth="2.5" strokeLinecap="round"
-              opacity={isActive("glomerulus") ? 0.7 : 0.5} />
+              stroke="hsl(0 60% 50%)" strokeWidth="2.4" strokeLinecap="round"
+              opacity={isActive("glomerulus") ? 0.75 : 0.55} />
           ))}
-          {/* Capillary lumens */}
-          {[
-            "M 125 72 Q 120 80 128 85 Q 135 90 130 95",
-            "M 135 70 Q 130 78 138 82 Q 145 87 140 93",
-            "M 145 72 Q 140 80 148 84 Q 155 88 150 94",
-          ].map((d, i) => (
-            <path key={`glom-lumen-${i}`} d={d} fill="none"
-              stroke="hsl(0 55% 55%)" strokeWidth="1.2" strokeLinecap="round" opacity="0.15" />
-          ))}
-          {/* Mesangial cells */}
+          {/* Mesangial cells when active */}
           {isActive("glomerulus") && [
-            { cx: 137, cy: 83 }, { cx: 143, cy: 88 }, { cx: 133, cy: 90 },
+            { cx: 156, cy: 100 }, { cx: 165, cy: 105 }, { cx: 152, cy: 108 },
           ].map((c, i) => (
-            <g key={`mes-${i}`} opacity="0.4">
-              <polygon points={`${c.cx-2},${c.cy} ${c.cx},${c.cy-2} ${c.cx+2},${c.cy} ${c.cx},${c.cy+2}`}
-                fill="hsl(30 50% 55%)" />
-            </g>
+            <polygon key={`mes-${i}`} points={`${c.cx-2},${c.cy} ${c.cx},${c.cy-2.5} ${c.cx+2},${c.cy} ${c.cx},${c.cy+2.5}`}
+              fill="hsl(30 50% 55%)" opacity="0.5" />
           ))}
-          {/* Podocyte foot processes when active */}
           {isActive("glomerulus") && (
             <g opacity="0.4">
-              {Array.from({ length: 16 }).map((_, i) => {
-                const angle = (i * 22.5 + 45) * Math.PI / 180;
-                const r1 = 31;
-                const r2 = 36;
-                const x1 = 140 + r1 * Math.cos(angle);
-                const y1 = 85 + r1 * 0.76 * Math.sin(angle);
-                const x2 = 140 + r2 * Math.cos(angle);
-                const y2 = 85 + r2 * 0.76 * Math.sin(angle);
+              {Array.from({ length: 14 }).map((_, i) => {
+                const angle = (i * 25.7 + 50) * Math.PI / 180;
+                const r1 = 31, r2 = 36;
+                const x1 = 160 + r1 * Math.cos(angle);
+                const y1 = 100 + r1 * 0.78 * Math.sin(angle);
+                const x2 = 160 + r2 * Math.cos(angle);
+                const y2 = 100 + r2 * 0.78 * Math.sin(angle);
                 return <line key={`pod-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
                   stroke="hsl(var(--primary))" strokeWidth="0.8" />;
               })}
-              <text x="178" y="112" fontSize="4.5" fill="hsl(var(--primary))">Podocyte foot processes</text>
+              <text x="200" y="130" fontSize="4.5" fill="hsl(var(--primary))">Podocyte foot processes</text>
             </g>
           )}
-          {/* Click target */}
-          <ellipse cx="140" cy="85" rx="44" ry="34" fill="transparent" />
+          <ellipse cx="160" cy="100" rx="42" ry="34" fill="transparent" />
         </g>
-        <text x="140" y="128" fontSize="6" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="600"
-          opacity={isVisible(seg("glomerulus")) ? 0.6 : 0.1}>GFR ≈ 125 mL/min</text>
+        <text x="160" y="148" fontSize="6.5" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="600"
+          opacity={isVisible(seg("glomerulus")) ? 0.7 : 0.1}>renal corpuscle · GFR ≈ 125 mL/min</text>
 
-        {/* ========== PCT — HOLLOW TUBE WITH BRUSH BORDER ========== */}
+        {/* ============= PCT (cortex) ============= */}
         <HollowTube id="pct" outerPath={tubePaths.pctOuter} innerPath={tubePaths.pctInner}
           lumenPath={tubePaths.pctLumen}
-          color="hsl(150 50% 40%)" activeColor="hsl(150 60% 45%)" wallWidth={1.3}
-          lumenColor="hsl(150 50% 45%)" onClick={toggle("pct")} />
-        {/* Brush border microvilli on outer wall */}
-        {[190, 205, 220, 238, 255, 270, 285, 300, 315, 330].map((x, i) => {
-          const yBase = 74 + Math.sin(i * 0.85) * 8;
+          color="hsl(150 50% 40%)" activeColor="hsl(150 60% 48%)" wallWidth={1.4}
+          lumenColor="hsl(150 55% 50%)" onClick={toggle("pct")} />
+        {/* Brush border microvilli */}
+        {[195, 215, 240, 258, 278, 298, 320].map((x, i) => {
+          const yBase = 92 + Math.sin(i * 0.8) * 6;
           return (
-            <g key={`bb-${i}`} opacity={isVisible(seg("pct")) ? (isActive("pct") ? 0.6 : 0.35) : 0.06}>
-              {[-2, -0.7, 0.7, 2].map((dx, j) => (
-                <line key={j} x1={x + dx} y1={yBase} x2={x + dx} y2={yBase - 4.5}
-                  stroke="hsl(150 50% 40%)" strokeWidth="0.5" />
+            <g key={`bb-${i}`} opacity={isVisible(seg("pct")) ? (isActive("pct") ? 0.6 : 0.32) : 0.06}>
+              {[-1.5, -0.5, 0.5, 1.5].map((dx, j) => (
+                <line key={j} x1={x + dx} y1={yBase} x2={x + dx} y2={yBase - 4}
+                  stroke="hsl(150 50% 40%)" strokeWidth="0.45" />
               ))}
             </g>
           );
         })}
-        {/* Mitochondria along PCT when active */}
-        {isActive("pct") && [215, 260, 305].map((x, i) => (
-          <g key={`mito-pct-${i}`} opacity="0.4">
-            <ellipse cx={x} cy={102 + (i % 2) * 5} rx={4.5} ry={2.2} fill="none"
-              stroke="hsl(150 40% 55%)" strokeWidth="0.8" />
-            <path d={`M${x - 2},${102 + (i % 2) * 5} Q${x},${100 + (i % 2) * 5} ${x + 2},${102 + (i % 2) * 5}`}
-              fill="none" stroke="hsl(150 40% 55%)" strokeWidth="0.5" />
+        {/* Reabsorption arrows up (into peritubular cap) */}
+        {[225, 270, 315].map((x, i) => (
+          <g key={`pct-arr-${i}`} opacity={isVisible(seg("pct")) ? 0.55 : 0.1}>
+            <line x1={x} y1={75} x2={x} y2={62} stroke="hsl(150 50% 55%)" strokeWidth="1.3" markerEnd="url(#arrowGreen)" />
+            <text x={x} y={58} fontSize="6.5" fill="hsl(150 50% 55%)" textAnchor="middle">{["Na⁺ H₂O", "Glucose", "HCO₃⁻"][i]}</text>
           </g>
         ))}
-        {/* Reabsorption arrows */}
-        {[220, 270, 320].map((x, i) => (
-          <g key={`pct-arr-${i}`} opacity={isVisible(seg("pct")) ? 0.6 : 0.1}>
-            <line x1={x} y1={65} x2={x} y2={50} stroke="hsl(150 50% 55%)" strokeWidth="1.5" markerEnd="url(#arrowGreen)" />
-            <text x={x} y={46} fontSize="7" fill="hsl(150 50% 55%)" textAnchor="middle">{["Na⁺ H₂O", "Glucose", "HCO₃⁻"][i]}</text>
-          </g>
-        ))}
-        {isActive("pct") && (
-          <g opacity="0.45">
-            <line x1={250} y1={112} x2={250} y2={102} stroke="hsl(45 60% 55%)" strokeWidth="1.2" />
-            <text x={250} y={118} fontSize="5.5" fill="hsl(45 60% 55%)" textAnchor="middle">PAH, drugs ↑</text>
-          </g>
-        )}
 
-        {/* ========== DESCENDING LIMB — THIN HOLLOW TUBE ========== */}
+        {/* ============= DESCENDING LIMB (cortex → outer med → inner med) ============= */}
         <HollowTube id="desc-loh" outerPath={tubePaths.descOuter} innerPath={tubePaths.descInner}
           lumenPath={tubePaths.descLumen}
-          color="hsl(200 50% 45%)" activeColor="hsl(200 60% 55%)" wallWidth={0.8}
-          lumenColor="hsl(200 50% 50%)" onClick={toggle("desc-loh")} />
-        {/* Water arrows out */}
-        {[200, 300, 400, 450].map((y, i) => (
-          <g key={`dloh-${i}`} opacity={isVisible(seg("desc-loh")) ? 0.5 : 0.1}>
-            <line x1={270} y1={y} x2={255} y2={y} stroke="hsl(200 50% 55%)" strokeWidth="1.5" markerEnd="url(#arrowBlue)" />
-            <text x={248} y={y + 3} fontSize="7" fill="hsl(200 50% 55%)" textAnchor="end">H₂O</text>
+          color="hsl(200 55% 48%)" activeColor="hsl(200 65% 55%)" wallWidth={0.9}
+          lumenColor="hsl(200 55% 52%)" onClick={toggle("desc-loh")} />
+        {/* Water arrows — out of descending limb into medullary interstitium */}
+        {[260, 350, 440, 510].map((y, i) => (
+          <g key={`dloh-${i}`} opacity={isVisible(seg("desc-loh")) ? 0.55 : 0.1}>
+            <line x1={283} y1={y} x2={272} y2={y} stroke="hsl(200 55% 55%)" strokeWidth="1.2" markerEnd="url(#arrowBlue)" />
+            <text x={268} y={y + 2.5} fontSize="6" fill="hsl(200 55% 55%)" textAnchor="end">H₂O</text>
           </g>
         ))}
-        {isActive("desc-loh") && (
-          <text x="260" y="250" fontSize="5.5" fill="hsl(200 50% 55%)" textAnchor="end" opacity="0.7">AQP1</text>
-        )}
 
-        {/* ========== HAIRPIN TURN ========== */}
-        <path d="M 275 485 Q 280 505 295 510 Q 310 505 315 485" fill="none"
-          stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.4" />
-        {/* Outer wall of hairpin */}
-        <path d="M 271 485 Q 275 510 295 516 Q 315 510 319 485" fill="none"
+        {/* ============= HAIRPIN (deep inner medulla) ============= */}
+        <path d="M 285 540 Q 295 568 305 568 Q 315 568 322 540" fill="none"
+          stroke="hsl(var(--muted-foreground))" strokeWidth="1.4" opacity="0.45" />
+        <path d="M 282 540 Q 295 575 305 575 Q 320 575 326 540" fill="none"
           stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
 
-        {/* ========== THIN ASCENDING LIMB — THIN HOLLOW TUBE ========== */}
+        {/* ============= THIN ASCENDING (inner medulla) ============= */}
         <HollowTube id="thin-asc" outerPath={tubePaths.thinAscOuter} innerPath={tubePaths.thinAscInner}
           lumenPath={tubePaths.thinAscLumen}
-          color="hsl(30 50% 45%)" activeColor="hsl(30 60% 55%)" wallWidth={0.8}
-          lumenColor="hsl(30 50% 50%)" onClick={toggle("thin-asc")} />
+          color="hsl(30 55% 48%)" activeColor="hsl(30 65% 55%)" wallWidth={0.9}
+          lumenColor="hsl(30 55% 52%)" onClick={toggle("thin-asc")} />
 
-        {/* ========== THICK ASCENDING LIMB — THICKER HOLLOW TUBE ========== */}
+        {/* ============= THICK ASCENDING (outer medulla → cortex) ============= */}
         <HollowTube id="thick-asc" outerPath={tubePaths.thickAscOuter} innerPath={tubePaths.thickAscInner}
           lumenPath={tubePaths.thickAscLumen}
-          color="hsl(30 60% 45%)" activeColor="hsl(30 70% 55%)" wallWidth={1.4}
-          lumenColor="hsl(30 60% 50%)" onClick={toggle("thick-asc")} />
-        {/* Tall epithelial cells shown as small rectangles along thick ascending when active */}
-        {isActive("thick-asc") && [260, 290, 320].map((y, i) => {
-          const x = 328 + (345 - y) * 0.025;
+          color="hsl(30 65% 45%)" activeColor="hsl(30 75% 55%)" wallWidth={1.5}
+          lumenColor="hsl(30 65% 50%)" onClick={toggle("thick-asc")} />
+        {/* TAL cells when active */}
+        {isActive("thick-asc") && [240, 280, 320].map((y, i) => {
+          const x = 326 + (380 - y) * 0.045;
           return (
-            <g key={`tal-cell-${i}`} opacity="0.35">
-              <rect x={x - 2} y={y - 3} width="4" height="6" rx="1"
-                fill="hsl(30 60% 50%)" fillOpacity="0.3" stroke="hsl(30 60% 50%)" strokeWidth="0.5" />
-              <circle cx={x} cy={y} r="1" fill="hsl(30 50% 40%)" />
-            </g>
+            <rect key={`tal-cell-${i}`} x={x - 2} y={y - 3} width="4" height="6" rx="0.8"
+              fill="hsl(30 65% 50%)" fillOpacity="0.35" stroke="hsl(30 65% 50%)" strokeWidth="0.5" opacity="0.6" />
           );
         })}
-        {/* NKCC2 annotation */}
         <g opacity={isVisible(seg("thick-asc")) ? 0.6 : 0.1}>
-          <line x1={350} y1={255} x2={380} y2={255} stroke="hsl(30 60% 55%)" strokeWidth="1.5" markerEnd="url(#arrowOrange)" />
-          <text x={385} y={252} fontSize="7" fill="hsl(30 60% 55%)">Na⁺/K⁺/2Cl⁻</text>
-          <text x={385} y={262} fontSize="6" fill="hsl(30 50% 55%)" fontStyle="italic">(furosemide ✕)</text>
+          <line x1={350} y1={290} x2={395} y2={290} stroke="hsl(30 60% 55%)" strokeWidth="1.2" markerEnd="url(#arrowOrange)" />
+          <text x={400} y={288} fontSize="7" fill="hsl(30 60% 55%)">Na⁺/K⁺/2Cl⁻</text>
+          <text x={400} y={297} fontSize="6" fill="hsl(30 50% 55%)" fontStyle="italic">(furosemide ✕)</text>
         </g>
-        {isActive("thick-asc") && (
-          <g opacity="0.5">
-            <line x1={350} y1={285} x2={380} y2={285} stroke="hsl(30 60% 55%)" strokeWidth="1" />
-            <text x={385} y={283} fontSize="5.5" fill="hsl(30 50% 55%)">Ca²⁺, Mg²⁺ (paracellular)</text>
-            <text x={385} y={293} fontSize="5" fill="hsl(30 40% 50%)">+8 mV lumen potential</text>
-          </g>
-        )}
 
-        {/* ========== MACULA DENSA ========== */}
-        <g className="cursor-pointer" onClick={toggle("macula")}
-          opacity={isVisible(seg("macula")) ? 1 : 0.12}>
-          <rect x="330" y="100" width="26" height="14" rx="4"
-            fill={isActive("macula") ? "hsl(260 60% 55%/0.3)" : "hsl(260 50% 45%/0.15)"}
-            stroke="hsl(260 50% 55%)" strokeWidth="1.5" />
-          {[336, 343, 350].map((x, i) => (
-            <circle key={`md-${i}`} cx={x} cy={107} r={2.2}
-              fill="hsl(260 50% 55%)" fillOpacity={isActive("macula") ? 0.5 : 0.3} />
+        {/* ============= MACULA DENSA ============= */}
+        <g className="cursor-pointer" onClick={toggle("macula")} opacity={isVisible(seg("macula")) ? 1 : 0.12}>
+          <rect x="328" y="148" width="22" height="12" rx="3"
+            fill={isActive("macula") ? "hsl(260 60% 55%/0.32)" : "hsl(260 50% 50%/0.16)"}
+            stroke="hsl(260 50% 55%)" strokeWidth="1.3" />
+          {[333, 339, 345].map((x, i) => (
+            <circle key={`md-${i}`} cx={x} cy={154} r={1.8}
+              fill="hsl(260 55% 55%)" fillOpacity={isActive("macula") ? 0.55 : 0.32} />
           ))}
         </g>
-        <text x="343" y="96" fontSize="6.5" fill="hsl(260 50% 55%)" textAnchor="middle"
-          opacity={isVisible(seg("macula")) ? 0.8 : 0.12} fontWeight="600">MD</text>
-        <path d="M 340 100 Q 300 60 170 85" fill="none"
-          stroke="hsl(260 50% 55%)" strokeWidth="0.6" strokeDasharray="3 3"
-          opacity={isActive("macula") ? 0.5 : 0.08} />
+        <text x="339" y="144" fontSize="6.5" fill="hsl(260 55% 55%)" textAnchor="middle"
+          opacity={isVisible(seg("macula")) ? 0.85 : 0.12} fontWeight="600">MD</text>
+        <path d="M 332 148 Q 250 130 195 105" fill="none"
+          stroke="hsl(260 55% 55%)" strokeWidth="0.6" strokeDasharray="3 3"
+          opacity={isActive("macula") ? 0.55 : 0.1} />
         {isActive("macula") && (
-          <text x="250" y="72" fontSize="5" fill="hsl(260 50% 55%)" textAnchor="middle" opacity="0.6">TGF → glomerulus</text>
+          <text x="270" y="120" fontSize="5" fill="hsl(260 55% 55%)" textAnchor="middle" opacity="0.7">TGF → afferent arteriole</text>
         )}
 
-        {/* ========== DCT — HOLLOW TUBE ========== */}
+        {/* ============= DCT (cortex) ============= */}
         <HollowTube id="dct" outerPath={tubePaths.dctOuter} innerPath={tubePaths.dctInner}
           lumenPath={tubePaths.dctLumen}
-          color="hsl(45 60% 40%)" activeColor="hsl(45 70% 50%)" wallWidth={1.2}
-          lumenColor="hsl(45 60% 45%)" onClick={toggle("dct")} />
+          color="hsl(45 60% 42%)" activeColor="hsl(45 70% 52%)" wallWidth={1.3}
+          lumenColor="hsl(45 60% 48%)" onClick={toggle("dct")} />
         <g opacity={isVisible(seg("dct")) ? 0.6 : 0.1}>
-          <line x1={418} y1={112} x2={445} y2={102} stroke="hsl(45 60% 50%)" strokeWidth="1.5" markerEnd="url(#arrowYellow)" />
-          <text x={450} y={100} fontSize="7" fill="hsl(45 60% 50%)">Na⁺/Cl⁻</text>
-          <text x={450} y={110} fontSize="6" fill="hsl(45 50% 50%)" fontStyle="italic">(thiazide ✕)</text>
+          <line x1={420} y1={148} x2={448} y2={140} stroke="hsl(45 60% 50%)" strokeWidth="1.4" markerEnd="url(#arrowYellow)" />
+          <text x={452} y={138} fontSize="7" fill="hsl(45 60% 50%)">Na⁺/Cl⁻</text>
+          <text x={452} y={148} fontSize="6" fill="hsl(45 50% 50%)" fontStyle="italic">(thiazide ✕)</text>
         </g>
-        {isActive("dct") && (
-          <g opacity="0.5">
-            <line x1={418} y1={132} x2={445} y2={126} stroke="hsl(45 60% 50%)" strokeWidth="1" />
-            <text x={450} y={126} fontSize="5.5" fill="hsl(45 50% 50%)">Ca²⁺ (TRPV5, PTH↑)</text>
-          </g>
-        )}
 
-        {/* ========== CCD — HOLLOW TUBE, DASHED WALLS ========== */}
-        <g opacity={isVisible(seg("ccd")) ? 1 : 0.12} className="cursor-pointer" onClick={toggle("ccd")}>
-          <path d={tubePaths.ccdOuter} fill="none"
-            stroke={isActive("ccd") ? "hsl(270 60% 55%)" : "hsl(270 50% 45%)"}
-            strokeWidth={isActive("ccd") ? 1.6 : 1} strokeDasharray="6 2" />
-          <path d={tubePaths.ccdInner} fill="none"
-            stroke={isActive("ccd") ? "hsl(270 60% 55%)" : "hsl(270 50% 45%)"}
-            strokeWidth={isActive("ccd") ? 1.6 : 1} strokeDasharray="6 2" />
-          <path d={tubePaths.ccdLumen} fill="none" stroke="hsl(270 50% 50%)" strokeWidth="4" opacity="0.06" />
-          <path d={tubePaths.ccdLumen} fill="none" stroke="transparent" strokeWidth="16" />
-        </g>
-        {isActive("ccd") && (
-          <g opacity="0.6">
-            <rect x="395" y="160" width="75" height="55" rx="4" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" />
-            <text x="432" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--foreground))" fontWeight="600">Cell types:</text>
-            <circle cx="403" cy="184" r="3" fill="hsl(270 50% 55%)" fillOpacity="0.4" stroke="hsl(270 50% 55%)" strokeWidth="0.8" />
-            <text x="410" y="186" fontSize="5" fill="hsl(270 50% 55%)">Principal (ENaC, ROMK)</text>
-            <circle cx="403" cy="200" r="3" fill="hsl(0 50% 55%)" fillOpacity="0.4" stroke="hsl(0 50% 55%)" strokeWidth="0.8" />
-            <text x="410" y="202" fontSize="5" fill="hsl(0 50% 55%)">Intercalated (H⁺-ATPase)</text>
-          </g>
-        )}
+        {/* ============= CCD (cortex) ============= */}
+        <HollowTube id="ccd" outerPath={tubePaths.ccdOuter} innerPath={tubePaths.ccdInner}
+          lumenPath={tubePaths.ccdLumen}
+          color="hsl(270 50% 48%)" activeColor="hsl(270 60% 58%)" wallWidth={1.1}
+          lumenColor="hsl(270 50% 52%)" dashed
+          onClick={toggle("ccd")} />
         <g opacity={isVisible(seg("ccd")) ? 0.6 : 0.1}>
-          <line x1={395} y1={185} x2={425} y2={180} stroke="hsl(270 50% 55%)" strokeWidth="1.5" />
-          <text x={430} y={178} fontSize="7" fill="hsl(270 50% 55%)">ENaC (aldosterone)</text>
-          <text x={430} y={188} fontSize="7" fill="hsl(270 50% 55%)">AQP2 (ADH)</text>
+          <line x1={400} y1={170} x2={440} y2={168} stroke="hsl(270 50% 55%)" strokeWidth="1.2" />
+          <text x={444} y={167} fontSize="6.5" fill="hsl(270 50% 55%)">ENaC (aldo)</text>
+          <text x={444} y={177} fontSize="6.5" fill="hsl(270 50% 55%)">AQP2 (ADH)</text>
         </g>
 
-        {/* ========== MCD — HOLLOW TUBE, DASHED WALLS ========== */}
-        <g opacity={isVisible(seg("mcd")) ? 1 : 0.12} className="cursor-pointer" onClick={toggle("mcd")}>
-          <path d={tubePaths.mcdOuter} fill="none"
-            stroke={isActive("mcd") ? "hsl(270 60% 55%)" : "hsl(270 40% 40%)"}
-            strokeWidth={isActive("mcd") ? 1.6 : 1} strokeDasharray="6 2" />
-          <path d={tubePaths.mcdInner} fill="none"
-            stroke={isActive("mcd") ? "hsl(270 60% 55%)" : "hsl(270 40% 40%)"}
-            strokeWidth={isActive("mcd") ? 1.6 : 1} strokeDasharray="6 2" />
-          <path d={tubePaths.mcdLumen} fill="none" stroke="hsl(270 40% 45%)" strokeWidth="4" opacity="0.06" />
-          <path d={tubePaths.mcdLumen} fill="none" stroke="transparent" strokeWidth="16" />
-        </g>
-        <g opacity={isVisible(seg("mcd")) ? 0.5 : 0.1}>
-          <line x1={385} y1={445} x2={420} y2={440} stroke="hsl(270 40% 50%)" strokeWidth="1.5" />
-          <text x={425} y={438} fontSize="7" fill="hsl(270 40% 50%)">Urea recycling</text>
-          <text x={425} y={448} fontSize="7" fill="hsl(270 40% 50%)">H₂O (ADH)</text>
-        </g>
+        {/* ============= MCD (outer + inner medulla → papilla) ============= */}
+        <HollowTube id="mcd" outerPath={tubePaths.mcdOuter} innerPath={tubePaths.mcdInner}
+          lumenPath={tubePaths.mcdLumen}
+          color="hsl(270 45% 42%)" activeColor="hsl(270 55% 55%)" wallWidth={1.1}
+          lumenColor="hsl(270 45% 48%)" dashed
+          onClick={toggle("mcd")} />
         {isActive("mcd") && (
-          <g opacity="0.4">
-            <path d="M 365 465 Q 345 475 325 465 Q 305 455 295 445" fill="none"
-              stroke="hsl(30 50% 55%)" strokeWidth="1.2" strokeDasharray="3 2" />
-            <text x="320" y="460" fontSize="5" fill="hsl(30 50% 55%)" textAnchor="middle">Urea → interstitium</text>
-            <text x="320" y="468" fontSize="4.5" fill="hsl(30 40% 50%)" textAnchor="middle">(UT-A1, ADH-sensitive)</text>
+          <g opacity="0.5">
+            <path d="M 380 470 Q 360 475 340 470" fill="none"
+              stroke="hsl(30 50% 55%)" strokeWidth="1" strokeDasharray="3 2" />
+            <text x="360" y="465" fontSize="5" fill="hsl(30 50% 55%)" textAnchor="middle">Urea → interstitium (UT-A1)</text>
           </g>
         )}
 
-        {/* Urine output */}
-        <polygon points="368,500 363,510 373,510" fill="hsl(var(--muted-foreground))" opacity="0.6" />
-        <text x="368" y="525" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">→ Urine</text>
-        <text x="368" y="537" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.5">50–1200 mOsm/kg</text>
+        {/* Urine output at papilla */}
+        <polygon points="377,575 372,587 382,587" fill="hsl(var(--muted-foreground))" opacity="0.65" />
+        <text x="377" y="600" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">→ Urine</text>
+        <text x="377" y="612" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.55">50–1200 mOsm/kg</text>
 
-        {/* ========== OSMOLALITY GRADIENT ========== */}
+        {/* ============= OSMOLALITY GRADIENT (right margin) ============= */}
         {[
-          { y: 195, osm: "300" },
-          { y: 310, osm: "600" },
-          { y: 430, osm: "900" },
-          { y: 500, osm: "1200" },
+          { y: 195, osm: "300", label: "isotonic" },
+          { y: 290, osm: "600" },
+          { y: 400, osm: "900" },
+          { y: 540, osm: "1200", label: "papilla" },
         ].map(m => (
-          <text key={m.y} x="508" y={m.y} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.4">
-            {m.osm}
-          </text>
+          <g key={m.y}>
+            <text x="490" y={m.y} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.55" fontWeight="600">
+              {m.osm}
+            </text>
+            {m.label && (
+              <text x="490" y={m.y + 8} fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.4" fontStyle="italic">
+                {m.label}
+              </text>
+            )}
+          </g>
         ))}
-        <text x="508" y="175" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.3">mOsm/kg</text>
+        <text x="490" y="178" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.45">mOsm/kg</text>
 
-        {/* ========== SEGMENT LABELS ========== */}
+        {/* ============= SEGMENT LABELS ============= */}
         {[
-          { id: "glomerulus" as SegmentId, x: 140, y: 47, label: "Glomerulus" },
-          { id: "pct" as SegmentId, x: 268, y: 58, label: "PCT" },
-          { id: "desc-loh" as SegmentId, x: 258, y: 335, label: "Desc. LoH" },
-          { id: "thin-asc" as SegmentId, x: 345, y: 435, label: "Thin Asc." },
-          { id: "thick-asc" as SegmentId, x: 370, y: 275, label: "Thick Asc." },
-          { id: "dct" as SegmentId, x: 400, y: 78, label: "DCT" },
-          { id: "ccd" as SegmentId, x: 405, y: 205, label: "CCD" },
-          { id: "mcd" as SegmentId, x: 400, y: 375, label: "MCD" },
+          { id: "glomerulus" as SegmentId, x: 160, y: 162, label: "Glomerulus" },
+          { id: "pct" as SegmentId, x: 250, y: 60, label: "PCT" },
+          { id: "dct" as SegmentId, x: 410, y: 100, label: "DCT" },
+          { id: "ccd" as SegmentId, x: 442, y: 200, label: "CCD" },
+          { id: "thick-asc" as SegmentId, x: 358, y: 250, label: "Thick Asc." },
+          { id: "desc-loh" as SegmentId, x: 285, y: 310, label: "Desc. LoH" },
+          { id: "mcd" as SegmentId, x: 420, y: 420, label: "MCD" },
+          { id: "thin-asc" as SegmentId, x: 350, y: 470, label: "Thin Asc." },
         ].map(lbl => {
           const s = seg(lbl.id);
           return (
             <g key={lbl.id} onClick={toggle(lbl.id)}
               className="cursor-pointer" opacity={isVisible(s) ? 1 : 0.12}>
-              <rect x={lbl.x - 26} y={lbl.y - 9} width="52" height="17" rx="4"
-                fill={isActive(lbl.id) ? "hsl(var(--primary)/0.25)" : "hsl(var(--secondary)/0.6)"}
+              <rect x={lbl.x - 27} y={lbl.y - 9} width="54" height="16" rx="4"
+                fill={isActive(lbl.id) ? "hsl(var(--primary)/0.25)" : "hsl(var(--secondary)/0.7)"}
                 stroke={isActive(lbl.id) ? "hsl(var(--primary))" : "hsl(var(--border))"}
                 strokeWidth="1" />
-              <text x={lbl.x} y={lbl.y + 3} fontSize="7.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
+              <text x={lbl.x} y={lbl.y + 2.5} fontSize="7.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
                 {lbl.label}
               </text>
             </g>
           );
         })}
+
+        {/* "Juxtamedullary nephron" caption */}
+        <text x="270" y="618" fontSize="6.5" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.5" fontStyle="italic">
+          Juxtamedullary nephron — long loop of Henle reaches papilla, paired with vasa recta
+        </text>
       </svg>
 
       {/* Info panel */}
       {activeSegment ? (
         <div className={`rounded-lg border p-4 animate-fade-in ${categoryColors[activeSegment.category].bg} ${categoryColors[activeSegment.category].border}`}>
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
             <p className="text-sm font-semibold text-foreground">{activeSegment.label}</p>
-            <span className={`text-xs font-medium capitalize ${categoryColors[activeSegment.category].text}`}>
-              {activeSegment.category}
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-medium uppercase tracking-wide px-2 py-0.5 rounded-full bg-background/60 text-muted-foreground border border-border">
+                {activeSegment.zone === "spans" ? "cortex → medulla" : activeSegment.zone.replace("-", " ")}
+              </span>
+              <span className={`text-xs font-medium capitalize ${categoryColors[activeSegment.category].text}`}>
+                {activeSegment.category}
+              </span>
+            </div>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">{activeSegment.info}</p>
           <p className="text-xs text-muted-foreground mt-2 font-medium">
@@ -638,7 +633,7 @@ export const NephronDiagram = () => {
           </p>
         </div>
       ) : (
-        <p className="text-sm text-muted-foreground text-center">Click any nephron segment to explore its function, transporters, and drug targets</p>
+        <p className="text-sm text-muted-foreground text-center">Click any nephron segment, the vasa recta, or peritubular capillaries to explore — toggle the cortex/medulla zones with the button above</p>
       )}
     </div>
   );
