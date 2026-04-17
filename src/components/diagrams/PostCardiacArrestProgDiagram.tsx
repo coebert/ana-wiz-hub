@@ -159,7 +159,14 @@ const PostCardiacArrestProgDiagram = () => {
           <div className="flex-1">
             <h4 className="text-sm font-bold text-foreground mb-1">{currentStep.title}</h4>
             <p className="text-xs text-muted-foreground leading-relaxed mb-2">{currentStep.content}</p>
-            <div className="inline-block px-2 py-1 rounded text-[10px] font-bold" style={{ backgroundColor: currentStep.color + "18", color: currentStep.color }}>
+            <div
+              className="inline-block px-2 py-1 rounded text-[10px] font-bold border"
+              style={{
+                backgroundColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.12)"),
+                borderColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.35)"),
+                color: currentStep.color,
+              }}
+            >
               {currentStep.highlight}
             </div>
           </div>
