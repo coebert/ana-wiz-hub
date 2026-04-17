@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
+import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -78,6 +79,15 @@ const ObstetricAnaesthesiaTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Alternative when epidural contraindicated. Bolus 30–40 µg, lockout 2 min. Requires 1:1 midwifery, continuous SpO₂ monitoring. Risk of respiratory depression.</p>
             </div>
           </div>
+        </div>
+
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Placental Drug Transfer</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The placenta is a lipid bilayer; drugs cross by passive diffusion governed by Fick's law. Four physicochemical properties determine transfer — molecular weight, lipid solubility, protein binding and degree of ionisation. The interactive plot below shows where common anaesthetic drugs sit.
+          </p>
+          <PlacentalDrugTransferDiagram />
         </div>
       </section>
 
