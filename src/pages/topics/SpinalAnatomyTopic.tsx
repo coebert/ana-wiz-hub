@@ -7,6 +7,7 @@ import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCross
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
 import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalDiagram";
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
+import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -86,6 +87,7 @@ const SpinalAnatomyTopic = () => {
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatomes & Myotomes</h2>
+          <InteractiveDermatomeMap />
           <DermatomeMyotomeDiagram />
         </div>
 
