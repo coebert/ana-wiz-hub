@@ -6,6 +6,7 @@ import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
 import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
+import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
