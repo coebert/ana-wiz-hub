@@ -6,6 +6,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
 import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram";
+import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratificationCalculator";
 
 const keyPoints = [
   "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units",
@@ -61,6 +62,7 @@ const PulmonaryHypertensionTopic = () => {
               </ul>
             </div>
           </div>
+          <PHRiskStratificationCalculator />
         </section>
 
         {/* Pathophysiology of RV Failure */}
