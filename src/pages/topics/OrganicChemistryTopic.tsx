@@ -91,6 +91,9 @@ const OrganicChemistryTopic = () => {
             <AmineComparisonDiagram />
           </div>
         </section>
+
+        <section>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lipophilicity & Drug Delivery</h2>
           <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
             <p>
               A drug's <strong>partition coefficient</strong> (oil:water ratio) determines how it distributes between 
