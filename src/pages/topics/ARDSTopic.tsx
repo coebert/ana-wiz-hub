@@ -6,6 +6,7 @@ import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeComparisonDiagram";
+import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -63,6 +64,7 @@ const ARDSTopic = () => {
       </section>
 
       {/* ECMO Section */}
+      <EOLIAMurrayCalculator />
       <ECMOCircuitDiagram />
       <ECMOTroubleshootingDiagram />
 
