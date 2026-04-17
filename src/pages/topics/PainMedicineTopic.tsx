@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { painMedicineQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
 
 const PainMedicineTopic = () => {
   return (
@@ -26,6 +27,8 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </div>
+
+        <DorsalHornSynapseDiagram />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Analgesia (WHO Ladder & Beyond)</h2>
