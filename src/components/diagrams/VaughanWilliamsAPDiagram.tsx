@@ -25,6 +25,7 @@ interface DrugClass {
   color: string;
   phases: number[];
   pacemakerPhases?: number[];
+  blocks: string[]; // channel ids blocked by this drug class
   mechanism: string;
   effect: string;
   examples: string;
