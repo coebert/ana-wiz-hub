@@ -299,17 +299,17 @@ const GramNegativeEnvelopeDiagram = () => {
             </div>
           </div>
 
-          <div className="mt-3 grid grid-cols-2 gap-1">
+          <div className="mt-3 grid grid-cols-2 gap-1.5">
             {FEATURES.map((s) => (
               <button
                 key={s.key}
                 onClick={() => setActive(s.key)}
-                className="text-[11px] px-2 py-1 rounded border border-border text-left transition-all"
+                className="text-[11px] px-2 py-1.5 rounded border text-left transition-all"
                 style={{
-                  backgroundColor: active === s.key ? `${s.color}26` : "transparent",
+                  backgroundColor: active === s.key ? `${s.color}26` : "hsl(var(--background))",
                   borderColor: active === s.key ? s.color : "hsl(var(--border))",
                   color: active === s.key ? s.color : "hsl(var(--foreground))",
-                  fontWeight: active === s.key ? 600 : 400,
+                  fontWeight: active === s.key ? 600 : 500,
                 }}
               >
                 {s.label}
