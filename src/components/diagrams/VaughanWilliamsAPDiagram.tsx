@@ -88,6 +88,7 @@ const drugClasses: DrugClass[] = [
     fullName: "K⁺ channel blockers",
     color: "hsl(270, 70%, 55%)",
     phases: [3],
+    blocks: ["IKr"],
     mechanism: "Block IKr/IKs → delay repolarisation → ↑ APD and ERP",
     effect: "Prolonged Phase 3 → ↑ refractory period → terminates re-entry circuits",
     examples: "Amiodarone, Sotalol, Dronedarone",
