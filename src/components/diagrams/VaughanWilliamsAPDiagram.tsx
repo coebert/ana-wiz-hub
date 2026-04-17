@@ -51,6 +51,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (fast)",
     color: "hsl(15, 80%, 50%)",
     phases: [0],
+    blocks: ["INa"],
     mechanism: "Fast dissociation — selective for inactivated Na⁺ channels in ischaemic tissue; ↓ APD",
     effect: "Minimal effect on normal tissue; ↓ Phase 0 in depolarised/ischaemic cells",
     examples: "Lidocaine, Mexiletine, Phenytoin",
