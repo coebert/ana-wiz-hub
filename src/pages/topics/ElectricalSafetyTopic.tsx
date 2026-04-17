@@ -8,6 +8,7 @@ import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/Defibrillat
 import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
 import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
+import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -144,6 +145,7 @@ const ElectricalSafetyTopic = () => {
               Ignition of alcohol-based skin prep or airway fires with high FiO₂.
             </p>
           </div>
+          <DiathermyDiagram />
         </section>
 
         <section className="mb-10">
