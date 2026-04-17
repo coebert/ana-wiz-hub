@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
+import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram";
 
 const keyPoints = [
   "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units",
@@ -65,6 +66,7 @@ const PulmonaryHypertensionTopic = () => {
         {/* Pathophysiology of RV Failure */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology — Why the RV Fails</h2>
+          <RVFailureSpiralDiagram />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
