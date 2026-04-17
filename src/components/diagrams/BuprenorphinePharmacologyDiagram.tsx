@@ -418,7 +418,7 @@ export const BuprenorphinePharmacologyDiagram = () => {
                 <li>Initial: <strong className="text-foreground">2 mg IV naloxone</strong>, repeat or escalate to 4–10 mg</li>
                 <li>May require <strong className="text-foreground">infusion 4–10 mg/h</strong> due to long bup duration</li>
                 <li><strong className="text-foreground">Support ventilation</strong> while reversal takes effect</li>
-                <li>Naloxone effect outlasts on bup < full agonists — observe for re-sedation</li>
+                <li>Naloxone effect outlasts on bup &lt; full agonists — observe for re-sedation</li>
               </ul>
             </div>
           </div>
