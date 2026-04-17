@@ -112,6 +112,20 @@ const ElectricalSafetyTopic = () => {
             <strong>Type B</strong>: body contact, leakage &lt;100 µA. <strong>Type BF</strong>: floating patient connection,
             &lt;100 µA. <strong>Type CF</strong>: cardiac floating, leakage &lt;10 µA — required for intracardiac use.
           </p>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Microshock — Why 100 µA Can Kill</h3>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              <strong>Microshock</strong> is the induction of ventricular fibrillation by very small currents (as low as
+              <strong> 100 µA at 50 Hz</strong>) delivered <em>directly to the myocardium</em> via a conductive intracardiac
+              pathway — typically a CVP or PA catheter, transvenous pacing wire, or saline-filled pressure transducer line.
+              The skin's natural impedance (~100 kΩ) is bypassed, and current is concentrated over a tiny endocardial area,
+              producing the high local current density needed to depolarise the ventricle during the vulnerable T-wave period.
+              This is the rationale for the <strong>Type CF (&lt;10 µA)</strong> standard — a 10× safety margin below the VF
+              threshold.
+            </p>
+            <MicroshockDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
