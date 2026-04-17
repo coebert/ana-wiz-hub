@@ -43,7 +43,15 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Cortical vs Juxtamedullary Nephrons</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Two functionally distinct populations of nephrons exist. Compare their anatomy, post-glomerular vasculature,
+            and roles — toggle the feature pills to highlight differences side-by-side.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <CorticalJuxtamedullaryDiagram />
+          </div>
+        </section>
           <p className="text-foreground/90 leading-relaxed">
             GFR ≈ 125 ml/min (180 L/day). The glomerular filtration barrier consists of fenestrated endothelium, basement
             membrane, and podocyte slit diaphragms. Filtration depends on <strong>Starling forces</strong>: net filtration
