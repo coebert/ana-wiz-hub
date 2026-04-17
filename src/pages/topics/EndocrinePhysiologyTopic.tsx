@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
 
 const EndocrinePhysiologyTopic = () => {
   return (
@@ -27,6 +28,18 @@ const EndocrinePhysiologyTopic = () => {
                 <tr><td className="py-2 font-medium text-foreground">GH</td><td>Anterior pituitary</td><td>Acromegaly: difficult airway, OSA, ↑ cardiac disease</td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">HPA Axis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
+            short- and long-loop negative feedback. Switch between scenarios to see how surgical stress, exogenous
+            steroids and adrenal/pituitary failure remodel the cascade.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <HPAAxisDiagram />
           </div>
         </div>
 
