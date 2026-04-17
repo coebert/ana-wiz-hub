@@ -52,6 +52,9 @@ const RenalPhysiologyTopic = () => {
             <CorticalJuxtamedullaryDiagram />
           </div>
         </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration</h2>
           <p className="text-foreground/90 leading-relaxed">
             GFR ≈ 125 ml/min (180 L/day). The glomerular filtration barrier consists of fenestrated endothelium, basement
             membrane, and podocyte slit diaphragms. Filtration depends on <strong>Starling forces</strong>: net filtration
