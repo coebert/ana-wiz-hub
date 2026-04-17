@@ -167,6 +167,95 @@ const SepsisTopic = () => {
           </div>
         </div>
 
+        {/* Guideline comparison */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Side-by-side summary of the three contemporary sepsis guidelines on the four big management decisions.
+            Where they differ matters in vivas — particularly antibiotic timing windows.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-xs min-w-[720px]">
+              <thead>
+                <tr className="bg-secondary/40 text-foreground">
+                  <th className="text-left p-2 font-semibold border-b border-border">Topic</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Surviving Sepsis Campaign 2021</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">NICE NG51 (UK, updated 2024)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">IDSA 2024 (sepsis position statement)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground align-top">
+                {[
+                  {
+                    topic: "Antibiotic timing",
+                    ssc: "Septic shock or definite sepsis: within 1h. Possible sepsis without shock: investigate and give within 3h if sepsis confirmed.",
+                    nice: "High-risk criteria with suspected sepsis: within 1h of identification. Otherwise senior review and source-specific assessment.",
+                    idsa: "Disagrees with rigid 1h target for all — argues 1h is appropriate for septic shock but causes diagnostic over-treatment in undifferentiated patients. Recommends rapid assessment, with timing tailored to certainty of diagnosis (within 1h for shock, within 3h for probable sepsis).",
+                  },
+                  {
+                    topic: "Initial fluids",
+                    ssc: "30 mL/kg balanced crystalloid within 3h for sepsis-induced hypoperfusion or septic shock. Reassess dynamically. Albumin if large volumes needed.",
+                    nice: "IV crystalloid bolus 500 mL over <15 min if hypotensive or lactate >2 — repeat to max 30 mL/kg with senior review. Avoid starches and gelatins.",
+                    idsa: "Critical of fixed 30 mL/kg target — recommends individualised, dynamic assessment (CLASSIC, CLOVERS trials). Restrictive strategy non-inferior in many. Use balanced crystalloid; avoid 0.9% saline in large volumes.",
+                  },
+                  {
+                    topic: "Vasopressor choice & target",
+                    ssc: "Noradrenaline first line. Target MAP ≥65. Add vasopressin (0.03 U/min) if NA dose rising — start at NA 0.25–0.5 µg/kg/min. Adrenaline if still inadequate. Dobutamine for cardiac dysfunction.",
+                    nice: "Noradrenaline first line in critical care for MAP ≥65. Peripheral noradrenaline acceptable short-term while CVC sited.",
+                    idsa: "Endorses noradrenaline first line, MAP ≥65 (higher target 80–85 only in chronic hypertension — SEPSISPAM). Earlier vasopressin addition supported. Methylene blue for refractory vasoplegia.",
+                  },
+                  {
+                    topic: "Corticosteroids",
+                    ssc: "Suggest IV hydrocortisone 200 mg/day in septic shock with ongoing vasopressor requirement (NA/adrenaline ≥0.25 µg/kg/min for ≥4h). Weak recommendation.",
+                    nice: "Consider hydrocortisone in septic shock not responding to fluid + vasopressors; refer to critical care.",
+                    idsa: "Supports hydrocortisone 200 mg/day in vasopressor-dependent septic shock (APROCCHSS, ADRENAL meta-analysis — faster shock reversal, possible mortality benefit). Add fludrocortisone 50 µg/day per APROCCHSS.",
+                  },
+                  {
+                    topic: "Lactate-guided resuscitation",
+                    ssc: "Suggest using serial lactate to guide resuscitation in patients with elevated lactate.",
+                    nice: "Lactate >2 = high risk; >4 = very high risk. Use to escalate care.",
+                    idsa: "Lactate clearance useful but not superior to dynamic measures (capillary refill — ANDROMEDA-SHOCK). Avoid chasing lactate with more fluid in non-fluid-responsive patients.",
+                  },
+                  {
+                    topic: "Source control",
+                    ssc: "As soon as possible — within 6–12h where logistically feasible.",
+                    nice: "Identify and control source urgently; involve relevant specialty.",
+                    idsa: "Earliest feasible — recognises 6–12h is operational rather than evidence-based; emphasises minimally invasive options first.",
+                  },
+                ].map((row) => (
+                  <tr key={row.topic} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
+                    <td className="p-2 font-semibold text-foreground">{row.topic}</td>
+                    <td className="p-2">{row.ssc}</td>
+                    <td className="p-2">{row.nice}</td>
+                    <td className="p-2">{row.idsa}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-4 grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they all agree</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Antibiotics within 1h for septic shock</li>
+                <li>Noradrenaline first-line vasopressor; MAP target ≥65 mmHg</li>
+                <li>Balanced crystalloid over 0.9% saline; avoid starches and gelatins</li>
+                <li>Hydrocortisone 200 mg/day in vasopressor-dependent septic shock</li>
+                <li>Urgent source control</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they differ</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>1h antibiotic target</strong>: SSC/NICE strict for high-risk; IDSA 2024 pushes back — risk of over-treatment in undifferentiated patients</li>
+                <li><strong>30 mL/kg fluid bolus</strong>: SSC mandates; IDSA prefers individualised approach (CLASSIC/CLOVERS)</li>
+                <li><strong>Steroid recommendation strength</strong>: SSC weak; IDSA stronger, with added fludrocortisone per APROCCHSS</li>
+                <li><strong>Lactate clearance</strong>: SSC endorses; IDSA notes capillary refill (ANDROMEDA-SHOCK) equally valid and avoids fluid overload</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <SepsisManagementDiagram />
