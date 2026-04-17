@@ -126,6 +126,7 @@ const ToxicologyTopic = lazy(() => import("./pages/topics/ToxicologyTopic"));
 const InfectiousDiseaseIcuTopic = lazy(() => import("./pages/topics/InfectiousDiseaseIcuTopic"));
 const BronchospasticFailureTopic = lazy(() => import("./pages/topics/BronchospasticFailureTopic"));
 const PrognosticationEthicsIcuTopic = lazy(() => import("./pages/topics/PrognosticationEthicsIcuTopic"));
+const PulmonaryHypertensionTopic = lazy(() => import("./pages/topics/PulmonaryHypertensionTopic"));
 const PreoperativeAssessmentTopic = lazy(() => import("./pages/topics/PreoperativeAssessmentTopic"));
 const EnhancedRecoveryTopic = lazy(() => import("./pages/topics/EnhancedRecoveryTopic"));
 const PerioperativeFluidsTopic = lazy(() => import("./pages/topics/PerioperativeFluidsTopic"));
@@ -287,6 +288,7 @@ const App = () => (
           <Route path="/intensive-care/infectious-disease-icu" element={<InfectiousDiseaseIcuTopic />} />
           <Route path="/intensive-care/bronchospastic-failure" element={<BronchospasticFailureTopic />} />
           <Route path="/intensive-care/prognostication-ethics-icu" element={<PrognosticationEthicsIcuTopic />} />
+          <Route path="/intensive-care/pulmonary-hypertension" element={<PulmonaryHypertensionTopic />} />
           {/* Perioperative */}
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
