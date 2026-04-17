@@ -209,10 +209,27 @@ const AntiviralCycleDiagram = () => {
           </svg>
         </div>
 
-        {/* Detail panel */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 flex flex-col gap-3 min-w-0">
+          <div className="grid grid-cols-2 gap-1.5">
+            {STEPS.map((s) => (
+              <button
+                key={s.key}
+                onClick={() => setActive(s.key)}
+                className="text-[11px] px-2 py-1.5 rounded border text-left transition-all"
+                style={{
+                  backgroundColor: active === s.key ? `${s.color}26` : "hsl(var(--background))",
+                  borderColor: active === s.key ? s.color : "hsl(var(--border))",
+                  color: active === s.key ? s.color : "hsl(var(--foreground))",
+                  fontWeight: active === s.key ? 600 : 500,
+                }}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+
           <div
-            className="rounded-lg border-l-4 border-border p-3 h-full"
+            className="rounded-lg border-l-4 border-border p-3"
             style={{ borderLeftColor: step.color, backgroundColor: `${step.color}10` }}
           >
             <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: step.color }}>
@@ -229,24 +246,6 @@ const AntiviralCycleDiagram = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="mt-3 grid grid-cols-2 gap-1">
-            {STEPS.map((s) => (
-              <button
-                key={s.key}
-                onClick={() => setActive(s.key)}
-                className="text-[11px] px-2 py-1 rounded border border-border text-left transition-all"
-                style={{
-                  backgroundColor: active === s.key ? `${s.color}26` : "transparent",
-                  borderColor: active === s.key ? s.color : "hsl(var(--border))",
-                  color: active === s.key ? s.color : "hsl(var(--foreground))",
-                  fontWeight: active === s.key ? 600 : 400,
-                }}
-              >
-                {s.label}
-              </button>
-            ))}
           </div>
         </div>
       </div>

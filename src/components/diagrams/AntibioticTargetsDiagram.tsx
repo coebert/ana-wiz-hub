@@ -238,10 +238,29 @@ const AntibioticTargetsDiagram = () => {
           </svg>
         </div>
 
-        {/* Detail panel */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 flex flex-col gap-3 min-w-0">
+          {/* Selector buttons — moved ABOVE detail to prevent cell overflow */}
+          <div className="grid grid-cols-2 gap-1.5">
+            {SITES.map((s) => (
+              <button
+                key={s.key}
+                onClick={() => setActive(s.key)}
+                className="text-[11px] px-2 py-1.5 rounded border text-left transition-all"
+                style={{
+                  backgroundColor: active === s.key ? `${s.color}26` : "hsl(var(--background))",
+                  borderColor: active === s.key ? s.color : "hsl(var(--border))",
+                  color: active === s.key ? s.color : "hsl(var(--foreground))",
+                  fontWeight: active === s.key ? 600 : 500,
+                }}
+              >
+                {s.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Detail panel */}
           <div
-            className="rounded-lg border-l-4 border-border p-3 h-full"
+            className="rounded-lg border-l-4 border-border p-3"
             style={{ borderLeftColor: site.color, backgroundColor: `${site.color}10` }}
           >
             <p className="text-xs uppercase tracking-wide font-semibold" style={{ color: site.color }}>
@@ -258,24 +277,6 @@ const AntibioticTargetsDiagram = () => {
                 </div>
               ))}
             </div>
-          </div>
-
-          <div className="mt-3 grid grid-cols-2 gap-1.5">
-            {SITES.map((s) => (
-              <button
-                key={s.key}
-                onClick={() => setActive(s.key)}
-                className="text-[11px] px-2 py-1.5 rounded border text-left transition-all bg-background"
-                style={{
-                  backgroundColor: active === s.key ? `${s.color}26` : "hsl(var(--background))",
-                  borderColor: active === s.key ? s.color : "hsl(var(--border))",
-                  color: active === s.key ? s.color : "hsl(var(--foreground))",
-                  fontWeight: active === s.key ? 600 : 500,
-                }}
-              >
-                {s.label}
-              </button>
-            ))}
           </div>
         </div>
       </div>
