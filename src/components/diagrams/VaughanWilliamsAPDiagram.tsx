@@ -76,6 +76,7 @@ const drugClasses: DrugClass[] = [
     color: "hsl(210, 80%, 55%)",
     phases: [4],
     pacemakerPhases: [4],
+    blocks: ["If", "ICaL"],
     mechanism: "Block β₁ receptors → ↓ cAMP → ↓ If current slope and ↓ ICa-L",
     effect: "↓ Phase 4 slope in pacemaker cells → ↓ automaticity and ↓ AV conduction",
     examples: "Atenolol, Metoprolol, Esmolol, Bisoprolol",
