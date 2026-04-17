@@ -35,9 +35,12 @@ const APACHEIICalculator = () => {
   // Comparison: SOFA at 24 h
   const [sofa, setSofa] = useState(8);
 
+  // Clinical Frailty Scale (Rockwood) — Muscedere 2017 frailty overlay
+  const [cfs, setCfs] = useState(5);
+
   const result = useMemo(
-    () => evaluate({ temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission }),
-    [temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission]
+    () => evaluate({ temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission, cfs }),
+    [temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission, cfs]
   );
 
   return (
