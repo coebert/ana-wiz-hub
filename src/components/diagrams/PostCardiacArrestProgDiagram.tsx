@@ -163,8 +163,8 @@ const PostCardiacArrestProgDiagram = () => {
             <div
               className="inline-block px-2 py-1 rounded text-[10px] font-bold border"
               style={{
-                backgroundColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.12)"),
-                borderColor: currentStep.color.replace(/^hsl\(([^)]+)\)$/, "hsla($1, 0.35)"),
+                backgroundColor: withAlpha(currentStep.color, 0.12),
+                borderColor: withAlpha(currentStep.color, 0.35),
                 color: currentStep.color,
               }}
             >
@@ -287,14 +287,10 @@ const PostCardiacArrestProgDiagram = () => {
 
         {activeModality !== null && (() => {
           const m = modalities[activeModality];
-          // Convert "hsl(H, S%, L%)" → "hsla(H, S%, L%, A)" for proper translucency.
-          // Appending hex alpha to an hsl() string produces invalid CSS, which was
-          // causing the browser to fall back to an opaque colour (illegible amber card).
-          const tint = (alpha: number) => m.color.replace(/^hsl\(([^)]+)\)$/, `hsla($1, ${alpha})`);
           return (
             <div
               className="rounded-lg border p-4 mb-4 animate-fade-in bg-card"
-              style={{ borderColor: tint(0.45) }}
+              style={{ borderColor: withAlpha(m.color, 0.45) }}
             >
               <div className="flex items-start gap-2 mb-2">
                 <span className="text-xl">{m.icon}</span>
