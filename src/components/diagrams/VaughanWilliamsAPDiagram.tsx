@@ -39,6 +39,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (intermediate)",
     color: "hsl(0, 75%, 55%)",
     phases: [0],
+    blocks: ["INa", "IKr"],
     mechanism: "Intermediate dissociation from Na⁺ channels; also blocks K⁺ channels → ↑ APD",
     effect: "↓ Phase 0 upstroke velocity, ↑ QRS width, ↑ QT interval",
     examples: "Procainamide, Quinidine, Disopyramide",
