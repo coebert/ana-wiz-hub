@@ -7,6 +7,7 @@ import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagr
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
 import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
 import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
+import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
