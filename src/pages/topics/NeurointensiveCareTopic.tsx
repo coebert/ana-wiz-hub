@@ -574,6 +574,81 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </div>
+
+        {/* Devastating Brain Injury */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Devastating Brain Injury (DBI)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Devastating brain injury is defined (FICM/ICS/RCEM/NHSBT consensus 2018, reaffirmed 2023) as <strong>any neurological condition assessed at presentation as an immediate threat to life or incompatible with good functional recovery, and where early limitation or withdrawal of therapy is being considered within 72 hours of admission to ICU</strong>. Common causes: severe TBI, large intracerebral or subarachnoid haemorrhage, malignant MCA infarction, hypoxic-ischaemic injury post-cardiac arrest, devastating CNS infection.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Why it matters</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
+            <li>Early withdrawal of life-sustaining treatment (WLST) within hours of presentation has historically been common, but <strong>early prognostication is unreliable</strong> — confounders (sedation, hypothermia, metabolic derangement, evolving oedema) mean patients can be wrongly judged to have an unsurvivable injury.</li>
+            <li>Patients deemed "futile" early have sometimes survived with meaningful recovery when given more time and full supportive therapy.</li>
+            <li>Premature WLST also denies potential opportunities for organ donation (DBD or DCD).</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">The 72-hour consensus</h3>
+          <div className="p-4 rounded-lg border border-primary/30 bg-secondary/30 mb-4">
+            <p className="text-sm text-foreground font-semibold mb-2">FICM/ICS/RCEM/NHSBT 2018 consensus (endorsed by AoMRC):</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              "All patients with a suspected devastating brain injury should receive <strong>active resuscitation and admission to critical care for a period of observation of at least 72 hours</strong> from the time of injury or ICU admission, before any decision is made about WLST or limitation of treatment, unless they meet criteria for brainstem death testing or have an absolute contraindication to ongoing care."
+            </p>
+            <p className="text-xs text-muted-foreground mt-3 italic">
+              The 72-hour window allows: (1) full neurological reassessment off sedation, (2) resolution of confounders (temperature, electrolytes, drugs), (3) declaration of evolving injury (oedema peaks 48–72h), (4) family discussions and second opinions, (5) consideration of organ donation pathways.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Management framework (first 72h)</h3>
+          <div className="space-y-3 mb-4">
+            {[
+              { phase: "0–6h", actions: "Full A-E resuscitation. Intubate and ventilate (lung-protective, normocapnia 4.5–5.0 kPa). Treat raised ICP empirically (head up 30°, sedation, mannitol/hypertonic saline if signs of herniation). Urgent CT ± CT angiogram. Neurosurgical referral for any potentially reversible lesion (EDH, large SDH, hydrocephalus, posterior fossa haemorrhage)." },
+              { phase: "6–24h", actions: "Targeted temperature management (avoid hyperthermia, target 36–37 °C). Maintain CPP 60–70, ICP <22, MAP per pathology, glucose 6–10 mmol/L, Na⁺ 140–150. Correct coagulopathy. Repeat CT for evolving lesions or unexplained neurological change. Document baseline neurology when sedation lightened." },
+              { phase: "24–72h", actions: "Daily multidisciplinary review. Continue full supportive care. Withhold formal prognostication until confounders excluded and ≥72h elapsed. Early discussion with family about prognosis uncertainty, ceilings of care, and — if appropriate — organ donation. Involve specialist nurse for organ donation (SN-OD) early when DBI is suspected." },
+              { phase: "After 72h", actions: "Formal prognostication: senior clinician assessment off sedation, multimodal where possible (clinical examination, imaging, EEG, evoked potentials). Decisions on WLST or transition to organ donation pathway made by ≥2 senior clinicians with family involvement. Document rationale clearly." },
+            ].map((p) => (
+              <div key={p.phase} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{p.phase}</p>
+                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{p.actions}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Confounders that must be excluded before prognostication</h3>
+          <div className="grid sm:grid-cols-2 gap-2 mb-4">
+            {[
+              "Residual sedation / neuromuscular blockade (check drug half-lives, consider reversal)",
+              "Hypothermia <34 °C (rewarm to ≥36 °C before assessment)",
+              "Metabolic derangement (Na⁺, glucose, urea, ammonia, endocrine)",
+              "Hypotension / inadequate cerebral perfusion",
+              "Hypoxia / hypercapnia",
+              "Seizure activity (consider continuous EEG if suspicion of NCSE)",
+              "Drug or alcohol intoxication",
+              "Severe acidosis or hepatic/renal failure",
+            ].map((c) => (
+              <div key={c} className="p-2 rounded bg-secondary/30 border border-border text-xs text-muted-foreground">{c}</div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Organ donation pathway</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+            DBI patients are a major source of deceased organ donors. The 72-hour window is also the period during which donation potential is identified:
+          </p>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4">
+            <li><strong>Refer early to SN-OD</strong> as soon as a clinical trigger is met — typically a catastrophic brain injury with planned brainstem testing or planned WLST. Referral does not commit to donation.</li>
+            <li><strong>DBD (donation after brainstem death)</strong>: full ancillary care continued until brainstem death tests; donor optimisation per DBD bundle (haemodynamic, lung-protective, hormonal — methylprednisolone, vasopressin, T3 if needed).</li>
+            <li><strong>DCD (donation after circulatory death)</strong>: when brainstem death will not occur but WLST is planned, controlled DCD pathway can be offered. Maastricht category III.</li>
+            <li>Family approach should be collaborative between intensivist and SN-OD, ideally after the family understands the prognosis is hopeless — never combine the two conversations.</li>
+          </ul>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              The DBI consensus document is examined frequently in the FFICM. Remember the headline number — <strong>≥72 hours of full active treatment before WLST decisions</strong> — and the rationale (confounder exclusion, evolution of injury, organ donation opportunity, family preparation). Exceptions: meets brainstem death criteria, or absolute contraindication to ongoing care (e.g. no neurosurgical option for a clearly unsurvivable lesion in a patient with a valid advance decision refusing such care).
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -589,6 +664,7 @@ const NeurointensiveCareTopic = () => {
         "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
         "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
         "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
+        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
