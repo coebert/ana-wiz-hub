@@ -176,6 +176,7 @@ const IVAnaestheticsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Dexmedetomidine</h2>
           <p className="text-foreground/90 leading-relaxed">
             Highly selective <strong>α₂-adrenergic agonist</strong> (α₂ : α₁ ≈ 1620 : 1) — the dextro-isomer of medetomidine.
             Acts at pre-synaptic α₂A autoreceptors in the <strong>locus coeruleus</strong>, reducing noradrenaline release and
