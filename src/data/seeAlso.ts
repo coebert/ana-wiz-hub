@@ -110,6 +110,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "circulatory-failure": ["vasoactive-agents", "cardiac-output-monitoring", "starling-forces", "sepsis", "cardiovascular-disease"],
   "aki-rrt": ["renal-physiology", "perioperative-fluids", "acid-base", "sepsis"],
   "acute-liver-failure": ["hepatic-physiology", "hepatobiliary-transplant", "toxicology"],
+  "acute-pancreatitis": ["sepsis", "ards", "aki-rrt", "icu-nutrition", "abdominal-anatomy"],
   "neurointensive-care": ["neuroanatomy", "neuroanaesthesia", "organ-donation", "icu-sedation-delirium", "infectious-disease-icu"],
   "cardiac-output-monitoring": ["circulatory-failure", "clinical-measurement", "ultrasound-physics"],
   "acid-base": ["abg-analyser", "renal-physiology", "aki-rrt"],

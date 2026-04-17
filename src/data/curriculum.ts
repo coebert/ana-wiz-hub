@@ -138,6 +138,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm"], available: true },
   // Hepatic
   { id: "acute-liver-failure", title: "Acute Liver Failure", description: "Paracetamol toxicity, King's College criteria, liver transplantation", section: "intensive-care", examTags: ["fficm"], available: true },
+  { id: "acute-pancreatitis", title: "Acute Severe Pancreatitis", description: "Atlanta classification, Glasgow score, fluid resuscitation, step-up necrosectomy, tertiary referral", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   // Haematology
   { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive transfusion protocols, DIC, TEG/ROTEM, blood products", section: "intensive-care", examTags: ["final", "fficm"], available: true },

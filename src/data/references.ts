@@ -398,6 +398,14 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "King's Criteria", citation: "O'Grady JG et al. Early indicators of prognosis in fulminant hepatic failure. Gastroenterology. 1989;97(2):439-445.", url: "https://doi.org/10.1016/0016-5085(89)90081-4" },
     { label: "BJA Educ 2019", citation: "Stravitz RT, Lee WM. Acute liver failure. Lancet. 2019;394(10201):869-881.", url: "https://doi.org/10.1016/S0140-6736(19)31894-X" },
   ],
+  "acute-pancreatitis": [
+    { label: "IAP/APA 2013", citation: "Working Group IAP/APA Acute Pancreatitis Guidelines. IAP/APA evidence-based guidelines for the management of acute pancreatitis. Pancreatology. 2013;13(4 Suppl 2):e1-15.", url: "https://doi.org/10.1016/j.pan.2013.07.063" },
+    { label: "Atlanta 2012", citation: "Banks PA et al. Classification of acute pancreatitis—2012: revision of the Atlanta classification and definitions by international consensus. Gut. 2013;62(1):102-111.", url: "https://doi.org/10.1136/gutjnl-2012-302779" },
+    { label: "WATERFALL 2022", citation: "de-Madaria E et al. Aggressive or moderate fluid resuscitation in acute pancreatitis. N Engl J Med. 2022;387(11):989-1000.", url: "https://doi.org/10.1056/NEJMoa2202884" },
+    { label: "PANTER 2010", citation: "van Santvoort HC et al. A step-up approach or open necrosectomy for necrotizing pancreatitis. N Engl J Med. 2010;362(16):1491-1502.", url: "https://doi.org/10.1056/NEJMoa0908821" },
+    { label: "BJA Educ 2018", citation: "Young SP, Thompson JP. Severe acute pancreatitis. BJA Education. 2008;8(4):125-128.", url: "https://doi.org/10.1093/bjaceaccp/mkn022" },
+    { label: "BSG 2024", citation: "British Society of Gastroenterology guidelines on the management of acute pancreatitis. Gut. 2024.", url: "https://www.bsg.org.uk/clinical-resource/uk-guidelines-for-the-management-of-acute-pancreatitis/" },
+  ],
   "icu-nutrition": [
     { label: "ESPEN 2019", citation: "Singer P et al. ESPEN guideline on clinical nutrition in the intensive care unit. Clin Nutr. 2019;38(1):48-79.", url: "https://doi.org/10.1016/j.clnu.2018.08.037" },
     { label: "BJA Educ 2016", citation: "Preiser JC et al. ICU nutrition — progress and pitfalls. BJA Education. 2016;16(8):275-280.", url: "https://doi.org/10.1093/bjaed/mkv059" },
