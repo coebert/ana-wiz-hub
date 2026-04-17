@@ -25,6 +25,7 @@ interface DrugClass {
   color: string;
   phases: number[];
   pacemakerPhases?: number[];
+  blocks: string[]; // channel ids blocked by this drug class
   mechanism: string;
   effect: string;
   examples: string;
@@ -38,6 +39,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (intermediate)",
     color: "hsl(0, 75%, 55%)",
     phases: [0],
+    blocks: ["INa", "IKr"],
     mechanism: "Intermediate dissociation from Na⁺ channels; also blocks K⁺ channels → ↑ APD",
     effect: "↓ Phase 0 upstroke velocity, ↑ QRS width, ↑ QT interval",
     examples: "Procainamide, Quinidine, Disopyramide",
@@ -49,6 +51,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (fast)",
     color: "hsl(15, 80%, 50%)",
     phases: [0],
+    blocks: ["INa"],
     mechanism: "Fast dissociation — selective for inactivated Na⁺ channels in ischaemic tissue; ↓ APD",
     effect: "Minimal effect on normal tissue; ↓ Phase 0 in depolarised/ischaemic cells",
     examples: "Lidocaine, Mexiletine, Phenytoin",
@@ -60,6 +63,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (slow)",
     color: "hsl(30, 85%, 50%)",
     phases: [0],
+    blocks: ["INa"],
     mechanism: "Slow dissociation — potent, use-dependent Na⁺ blockade; no change in APD",
     effect: "Marked ↓ Phase 0 upstroke; marked slowing of conduction",
     examples: "Flecainide, Propafenone",
@@ -72,6 +76,7 @@ const drugClasses: DrugClass[] = [
     color: "hsl(210, 80%, 55%)",
     phases: [4],
     pacemakerPhases: [4],
+    blocks: ["If", "ICaL"],
     mechanism: "Block β₁ receptors → ↓ cAMP → ↓ If current slope and ↓ ICa-L",
     effect: "↓ Phase 4 slope in pacemaker cells → ↓ automaticity and ↓ AV conduction",
     examples: "Atenolol, Metoprolol, Esmolol, Bisoprolol",
@@ -83,6 +88,7 @@ const drugClasses: DrugClass[] = [
     fullName: "K⁺ channel blockers",
     color: "hsl(270, 70%, 55%)",
     phases: [3],
+    blocks: ["IKr"],
     mechanism: "Block IKr/IKs → delay repolarisation → ↑ APD and ERP",
     effect: "Prolonged Phase 3 → ↑ refractory period → terminates re-entry circuits",
     examples: "Amiodarone, Sotalol, Dronedarone",
@@ -95,6 +101,7 @@ const drugClasses: DrugClass[] = [
     color: "hsl(160, 70%, 40%)",
     phases: [0, 2],
     pacemakerPhases: [0],
+    blocks: ["ICaL"],
     mechanism: "Block L-type Ca²⁺ channels → ↓ Phase 0 in pacemaker cells; ↓ Phase 2 plateau in contractile cells",
     effect: "↓ SA node automaticity, ↓ AV conduction velocity, ↓ contractility",
     examples: "Verapamil, Diltiazem",
@@ -234,22 +241,40 @@ const VaughanWilliamsAPDiagram = () => {
       <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
         {channels.map((c) => {
           const active = activeChannels.some((a) => a.id === c.id);
+          const blocked = !!selected && selected.blocks.includes(c.id);
           return (
             <span
               key={c.id}
-              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150"
+              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150 relative inline-flex items-center gap-1"
               style={{
-                borderColor: c.color,
-                backgroundColor: active ? c.color : "transparent",
-                color: active ? "white" : c.color,
-                opacity: active ? 1 : 0.4,
+                borderColor: blocked ? selected!.color : c.color,
+                borderWidth: blocked ? 2 : 1,
+                backgroundColor: blocked
+                  ? (active ? selected!.color : "transparent")
+                  : (active ? c.color : "transparent"),
+                color: blocked
+                  ? (active ? "white" : selected!.color)
+                  : (active ? "white" : c.color),
+                opacity: blocked ? 1 : active ? 1 : 0.4,
+                textDecoration: blocked && active ? "line-through" : "none",
+                boxShadow: blocked && active ? `0 0 0 2px ${selected!.color}55` : "none",
               }}
+              title={blocked ? `Blocked by Class ${selected!.id}` : undefined}
             >
+              {blocked && <span aria-hidden className="text-[9px]">⛔</span>}
               {c.label}
             </span>
           );
         })}
       </div>
+
+      {/* Blocking legend */}
+      {selected && selected.blocks.length > 0 && (
+        <p className="text-center text-[11px] text-muted-foreground -mt-2">
+          <span className="font-semibold" style={{ color: selected.color }}>Class {selected.id}</span> blocks{" "}
+          <span className="font-semibold">{selected.blocks.join(", ")}</span> — watch the badge light up red as the playhead enters its window
+        </p>
+      )}
 
       {/* SVG Diagrams */}
       <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
