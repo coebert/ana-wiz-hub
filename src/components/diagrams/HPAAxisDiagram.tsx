@@ -72,14 +72,14 @@ export const HPAAxisDiagram = () => {
   const [scenario, setScenario] = useState<Highlight>("normal");
   const data = scenarios[scenario];
 
-  const arrowOpacity = (level: Scenario["crh"]) => {
+  const arrowOpacity = (level: string) => {
     if (level === "suppressed") return 0.15;
     if (level === "low") return 0.4;
     if (level === "normal") return 0.75;
     if (level === "high") return 1;
     return 1;
   };
-  const arrowWidth = (level: Scenario["crh"]) => {
+  const arrowWidth = (level: string) => {
     if (level === "suppressed") return 1;
     if (level === "low") return 1.5;
     if (level === "normal") return 2.4;
