@@ -235,6 +235,124 @@ const NeurointensiveCareTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Microdialysis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cerebral microdialysis (CMD) is a focal, bedside neurochemical monitor that samples the brain extracellular fluid (ECF) of a small volume of cortex (~1 cm³ around the catheter tip). It complements global monitors (ICP, CPP, PbtO₂, jugular bulb) by detecting cellular distress — disordered glucose, lactate and pyruvate metabolism, glutamate excitotoxicity and membrane breakdown — often <em>before</em> ICP rises or PbtO₂ falls. Used predominantly in poor-grade SAH and severe TBI in selected neuro-ICU centres (Cambridge, Lund, Edinburgh, Addenbrooke's-style protocols).
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Catheter & Principle</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Construction</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Coaxial double-lumen catheter (~0.6 mm OD) with a semipermeable polyamide membrane at the tip (typically 10 mm length, 20 kDa cut-off; 100 kDa "high cut-off" membranes used for cytokine/protein recovery). Inserted via a cranial access bolt — usually a triple-lumen bolt that also carries an ICP probe and a PbtO₂ (Licox) probe.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">How it Works</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Sterile isotonic perfusate (CNS Perfusion Fluid — closely matches CSF ionic composition) is pumped through the catheter at <strong>0.3 µL/min</strong>. Small molecules diffuse across the membrane down their concentration gradient between brain ECF and perfusate. Effluent (microdialysate) is collected in microvials, changed hourly, and analysed at the bedside (ISCUS analyser — enzymatic / colorimetric) for glucose, lactate, pyruvate, glutamate and glycerol.
+              </p>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Catheter Placement</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Pathology</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Target Location</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Rationale</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Diffuse TBI</td><td>Right frontal (non-dominant), normal-appearing white matter</td><td>Detect global secondary insults; standard "Lund/Cambridge" position</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Focal TBI / contusion</td><td>Pericontusional "penumbra" (~1 cm from visible lesion)</td><td>Tissue at risk — most likely to benefit from intervention</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Poor-grade SAH</td><td>Vascular territory at highest risk of DCI (often A2/MCA territory ipsilateral to ruptured aneurysm)</td><td>Early detection of delayed cerebral ischaemia from vasospasm</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground italic mb-4">
+            Position is confirmed on CT — interpretation always requires knowing whether the catheter sits in normal, peri-lesional or frankly infarcted tissue. Always discard the first hour of data after insertion (microtrauma artefact).
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Measured Markers & Normal Ranges</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Marker</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Normal (mmol/L*)</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Reflects</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Glucose</td><td>1.7–2.5 (alarm &lt;0.8)</td><td>Substrate delivery; tracks systemic glucose with delay</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Lactate</td><td>1–4</td><td>Anaerobic metabolism, mitochondrial dysfunction or hyperglycolysis</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pyruvate</td><td>70–150 µmol/L</td><td>Substrate flux through glycolysis</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><strong>Lactate / Pyruvate Ratio (LPR)</strong></td><td><strong>&lt;25 (alarm &gt;25; severe &gt;40)</strong></td><td><strong>The single most useful marker — cellular redox state (NADH:NAD⁺); ↑ in ischaemia AND mitochondrial dysfunction</strong></td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Glutamate</td><td>&lt;10 µmol/L</td><td>Excitotoxicity — released from injured neurons; also reflects ischaemia</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Glycerol</td><td>&lt;100 µmol/L</td><td>Membrane phospholipid breakdown — structural cell damage</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground italic mb-4">
+            *Reported concentrations are <strong>relative</strong> — true ECF values are higher because recovery across the membrane is incomplete (typically 60–70% at 0.3 µL/min). Trends over time matter more than single absolute values.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Interpreting the Patterns</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { pattern: "Ischaemia (Type 1 metabolic crisis)", detail: "↑ LPR (>25), ↓ pyruvate, ↓ tissue glucose, ↑ glutamate, ↑ glycerol. Caused by ↓ delivery — hypotension, ↑ ICP/↓ CPP, vasospasm in SAH, hypoxia. Action: optimise CPP, exclude vasospasm, increase oxygen delivery." },
+              { pattern: "Mitochondrial dysfunction (Type 2 metabolic crisis)", detail: "↑ LPR (>25) but pyruvate is NORMAL or HIGH and tissue glucose is preserved. Substrate is reaching the cell but cannot be used. Common after TBI — does not respond to ↑ CPP and indicates a poor prognosis. May respond to therapies aimed at restoring mitochondrial function (currently experimental)." },
+              { pattern: "Neuroglycopenia", detail: "Tissue glucose <0.8 mmol/L, often with rising LPR. Triggered by tight systemic glucose control (NICE-SUGAR-style targets ~4.5–6 mmol/L). CMD has reshaped TBI glucose targets — consensus now favours 6–10 mmol/L systemic glucose to keep brain glucose >0.8." },
+              { pattern: "Excitotoxicity / membrane breakdown", detail: "↑ Glutamate and ↑ glycerol with rising LPR. Marks evolving cellular injury. May precede CT changes by hours. Particularly relevant around contusions and after delayed ischaemic events in SAH." },
+            ].map((p) => (
+              <div key={p.pattern} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{p.pattern}</p>
+                <p className="text-sm text-muted-foreground">{p.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Clinical Use</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Severe TBI</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Detects neurochemical deterioration before ICP/CPP changes. Used to titrate CPP individually (some patients need higher CPP to normalise LPR), to set safe glucose targets, and to identify mitochondrial crisis (which will <em>not</em> respond to further haemodynamic escalation). Endorsed by the 2014 international consensus statement on multimodal monitoring (Le Roux et al, Neurocrit Care/ICM).
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Poor-grade SAH</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Early warning for delayed cerebral ischaemia (DCI) — LPR and glutamate often rise hours before clinical deterioration or angiographic vasospasm becomes apparent in sedated patients in whom neurological examination is impossible. Triggers escalation: induced hypertension, angiography ± intra-arterial vasodilator/angioplasty.
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Other Uses</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                ICH (perihaematomal penumbra), acute liver failure (ammonia and glutamine to monitor cerebral oedema risk), epilepsy surgery research, and pharmacokinetic studies (CNS penetration of antibiotics, antiepileptics, sedatives — using larger pore-size membranes).
+              </p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Limitations</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Focal sample (~1 cm³) — risks missing pathology if poorly sited. Hourly sampling lag — not real-time. Resource-intensive (analyser, dedicated nursing, expertise to interpret). Invasive — small risks of haemorrhage and infection (similar to ICP probe). No RCT has yet shown that CMD-guided therapy improves outcomes — it remains a tool to refine multimodal management rather than a stand-alone monitor.
+              </p>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Pearl</p>
+            <p className="text-sm text-muted-foreground">
+              The <strong>Lactate:Pyruvate Ratio (LPR)</strong> is the single highest-yield CMD value. Threshold &gt;25 = metabolic crisis; &gt;40 = severe. Distinguish ischaemia (LPR ↑ <em>with</em> ↓ pyruvate) from mitochondrial dysfunction (LPR ↑ <em>with</em> normal/↑ pyruvate) — they look similar but have completely different management implications. CMD also drove the move <em>away</em> from tight glycaemic control in TBI after evidence of brain neuroglycopenia at systemic glucose 4.5–6 mmol/L (Vespa, Oddo).
+            </p>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autoimmune Encephalitis — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
@@ -454,6 +572,7 @@ const NeurointensiveCareTopic = () => {
         "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
         "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
         "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
+        "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)",
         "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
         "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
         "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
