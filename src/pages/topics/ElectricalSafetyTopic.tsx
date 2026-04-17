@@ -6,6 +6,7 @@ import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
 import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
+import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -85,6 +86,17 @@ const ElectricalSafetyTopic = () => {
           </p>
           <div className="mt-4">
             <IsolationTransformerDiagram />
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">RCD / RCCB — Why Theatres Don't Use One</h3>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              Outside theatre, an earthed mains supply is protected by a <strong>Residual Current Device (RCD / RCCB)</strong>.
+              An RCD compares the live and neutral currents through a single toroidal current transformer; any imbalance &gt; 30 mA
+              triggers disconnection within 40 ms — fast enough to prevent ventricular fibrillation in most macroshock scenarios.
+              In theatre this auto-disconnect is itself a hazard, which is why an isolated supply with a LIM is preferred.
+            </p>
+            <RCDDiagram />
           </div>
         </section>
 
