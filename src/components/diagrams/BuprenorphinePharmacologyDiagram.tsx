@@ -351,7 +351,7 @@ export const BuprenorphinePharmacologyDiagram = () => {
             <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
               <li>Hepatic metabolism via <strong className="text-foreground">CYP3A4</strong> → norbuprenorphine (active). Glucuronidation via UGT1A1/2B7.</li>
               <li>Excretion: 70% biliary (faecal), 30% renal — <strong className="text-foreground">no dose adjustment in renal impairment</strong>.</li>
-              <li>Plasma t½ 24–37 h (variable). MOR dissociation t½ > receptor binding determines clinical duration.</li>
+              <li>Plasma t½ 24–37 h (variable). MOR dissociation t½ &gt; receptor binding determines clinical duration.</li>
               <li>Negligible oral bioavailability (extensive first-pass) — only sublingual, transdermal, buccal, IV/IM, or SC depot.</li>
             </ul>
           </div>
