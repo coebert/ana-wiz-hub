@@ -330,6 +330,7 @@ const OpioidsTopic = () => {
             most opioids → risk of re-narcotisation). Pulmonary oedema and cardiovascular collapse can occur with excessive
             or rapid administration.
           </p>
+          <NaloxoneDiagram />
         </section>
 
         <section className="mb-10">
