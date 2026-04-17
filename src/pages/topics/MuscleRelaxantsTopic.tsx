@@ -7,6 +7,7 @@ import MuscleRelaxantStructures from "@/components/diagrams/MuscleRelaxantStruct
 import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram";
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
+import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -135,6 +136,10 @@ const MuscleRelaxantsTopic = () => {
               reported). Does not reverse suxamethonium or benzylisoquinoliniums. May interfere with some coagulation assays.
               Rocuronium + sugammadex has been proposed as an alternative to suxamethonium for RSI.
             </p>
+          </div>
+
+          <div className="mt-6">
+            <SugammadexDiagram />
           </div>
         </section>
 
