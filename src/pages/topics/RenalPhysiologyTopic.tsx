@@ -12,6 +12,7 @@ import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
 import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
+import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -156,6 +157,17 @@ const RenalPhysiologyTopic = () => {
           </div>
         </section>
 
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Hyponatraemia Workup Algorithm</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            A structured approach to hyponatraemia (Na⁺ &lt; 135 mmol/L): plasma osmolality → urine osmolality →
+            volume status → urine sodium. Click through each step to reach the diagnosis (SIADH, hypovolaemic,
+            hypervolaemic, pseudo, primary polydipsia).
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <HyponatraemiaWorkupDiagram />
+          </div>
+        </section>
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
