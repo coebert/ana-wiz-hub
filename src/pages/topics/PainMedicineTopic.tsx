@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { painMedicineQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
 
 const PainMedicineTopic = () => {
   return (
