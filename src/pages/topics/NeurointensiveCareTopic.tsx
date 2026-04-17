@@ -6,6 +6,7 @@ import { neurointensiveCareQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
+import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 
 const NeurointensiveCareTopic = () => {
   return (
