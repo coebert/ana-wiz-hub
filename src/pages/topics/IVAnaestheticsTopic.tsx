@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
+import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -46,6 +47,18 @@ const IVAnaestheticsTopic = () => {
               LBM) to achieve and maintain a target plasma or effect-site concentration. Propofol is ideal for TIVA due to its
               short context-sensitive half-time at moderate infusion durations.
             </p>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Interactive 3-Compartment TCI Simulator</h3>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              Adjust bolus, infusion rate, and patient covariates to see how the Marsh and Schnider models predict plasma (Cp)
+              and effect-site (Ce) concentration over time. Note the hysteresis between Cp and Ce — the rationale for effect-site
+              targeting.
+            </p>
+            <div className="bg-card rounded-xl border border-border p-4">
+              <PropofolTCISimulatorDiagram />
+            </div>
           </div>
         </section>
 
