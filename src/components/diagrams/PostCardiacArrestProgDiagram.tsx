@@ -254,8 +254,8 @@ const PostCardiacArrestProgDiagram = () => {
                       <circle cx={peakX} cy={y + 10} r="2" fill="white" opacity="0.8" />
                     </g>
                   )}
-                  {/* Timing label on bar */}
-                  <text x={barX1 + 5} y={y + 13} className="text-[7px] font-medium" fill="white" opacity="0.9">
+                  {/* Timing label on bar — dark text for contrast against translucent fill */}
+                  <text x={barX1 + 5} y={y + 13} className="text-[7px] font-semibold fill-foreground">
                     {m.timing}
                   </text>
                 </g>
@@ -278,17 +278,17 @@ const PostCardiacArrestProgDiagram = () => {
         </div>
 
         {activeModality !== null && (
-          <div className="rounded-lg border p-4 mb-4 animate-fade-in" style={{ borderColor: modalities[activeModality].color + "40", backgroundColor: modalities[activeModality].color + "08" }}>
+          <div className="rounded-lg border p-4 mb-4 animate-fade-in" style={{ borderColor: modalities[activeModality].color + "60", backgroundColor: modalities[activeModality].color + "08" }}>
             <div className="flex items-start gap-2 mb-2">
               <span className="text-xl">{modalities[activeModality].icon}</span>
               <div>
                 <h4 className="text-sm font-bold text-foreground">{modalities[activeModality].name}</h4>
-                <p className="text-[10px] font-medium" style={{ color: modalities[activeModality].color }}>{modalities[activeModality].timing}</p>
+                <p className="text-[10px] font-semibold text-foreground/80">{modalities[activeModality].timing}</p>
               </div>
             </div>
-            <div className="rounded px-2 py-1.5 mb-2" style={{ backgroundColor: modalities[activeModality].color + "15" }}>
+            <div className="rounded px-2 py-1.5 mb-2 border-l-2" style={{ backgroundColor: modalities[activeModality].color + "18", borderLeftColor: modalities[activeModality].color }}>
               <p className="text-xs font-semibold text-foreground">Poor prognostic sign:</p>
-              <p className="text-xs" style={{ color: modalities[activeModality].color }}>{modalities[activeModality].poorPrognosticSign}</p>
+              <p className="text-xs text-foreground font-medium">{modalities[activeModality].poorPrognosticSign}</p>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">{modalities[activeModality].detail}</p>
           </div>
