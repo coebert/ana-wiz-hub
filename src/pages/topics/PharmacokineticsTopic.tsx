@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
+import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -96,6 +97,7 @@ const PharmacokineticsTopic = () => {
             compartments. Remifentanil has a short, constant CSHT (~3-4 min) regardless of infusion duration, while
             fentanyl's CSHT increases markedly with prolonged infusions.
           </p>
+          <CSHTComparisonDiagram />
         </section>
       </div>
 
