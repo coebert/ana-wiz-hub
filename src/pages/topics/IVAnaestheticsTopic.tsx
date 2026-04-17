@@ -12,6 +12,7 @@ import { DexmedetomidineDiagram } from "@/components/diagrams/DexmedetomidineDia
 import { EtomidatePharmacologyDiagram } from "@/components/diagrams/EtomidatePharmacologyDiagram";
 import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPharmacologyDiagram";
 import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/BenzodiazepineComparisonDiagram";
+import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -176,6 +177,9 @@ const IVAnaestheticsTopic = () => {
           </div>
           <div className="mt-6">
             <BenzodiazepineComparisonDiagram />
+          </div>
+          <div className="mt-6">
+            <FlumazenilDiagram />
           </div>
         </section>
 
