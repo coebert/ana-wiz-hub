@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
+import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
