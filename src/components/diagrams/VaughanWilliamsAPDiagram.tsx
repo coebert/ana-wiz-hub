@@ -1,5 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Play, Pause, RotateCcw } from "lucide-react";
+
+/* Channel activity windows as fraction of cycle (0..1) for each view */
+const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
+  { id: "INa",  label: "INa (fast Na⁺)",       start: 0.06,  end: 0.10, color: "hsl(0, 75%, 55%)" },
+  { id: "Ito",  label: "Ito (transient K⁺)",   start: 0.09,  end: 0.15, color: "hsl(30, 85%, 50%)" },
+  { id: "ICaL", label: "ICa-L (L-type Ca²⁺)",  start: 0.10,  end: 0.58, color: "hsl(160, 70%, 40%)" },
+  { id: "IKr",  label: "IKr/IKs (K⁺ efflux)",  start: 0.55,  end: 0.82, color: "hsl(270, 70%, 55%)" },
+  { id: "IK1",  label: "IK1 (resting K⁺)",     start: 0.80,  end: 1.00, color: "hsl(210, 70%, 50%)" },
+];
+
+const pacemakerChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
+  { id: "If",   label: "If (funny current)",   start: 0.00, end: 0.42, color: "hsl(45, 85%, 50%)" },
+  { id: "ICaT", label: "ICa-T (T-type Ca²⁺)",  start: 0.30, end: 0.48, color: "hsl(15, 80%, 50%)" },
+  { id: "ICaL", label: "ICa-L (Phase 0)",      start: 0.45, end: 0.62, color: "hsl(160, 70%, 40%)" },
+  { id: "IKr",  label: "IKr (repolarisation)", start: 0.58, end: 0.95, color: "hsl(270, 70%, 55%)" },
+];
 
 interface DrugClass {
   id: string;
