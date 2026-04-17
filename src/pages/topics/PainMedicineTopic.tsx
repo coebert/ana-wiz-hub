@@ -30,6 +30,7 @@ const PainMedicineTopic = () => {
 
         <DorsalHornSynapseDiagram />
 
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Analgesia (WHO Ladder & Beyond)</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
