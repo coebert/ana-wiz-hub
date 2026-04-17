@@ -115,12 +115,40 @@ type ViewMode = "contractile" | "pacemaker";
 const VaughanWilliamsAPDiagram = () => {
   const [selectedClass, setSelectedClass] = useState<string | null>(null);
   const [view, setView] = useState<ViewMode>("contractile");
+  const [time, setTime] = useState(0); // 0..1
+  const [playing, setPlaying] = useState(false);
+  const rafRef = useRef<number | null>(null);
+  const lastTsRef = useRef<number | null>(null);
   const selected = selectedClass ? drugClasses.find((d) => d.id === selectedClass) : null;
+
+  const cycleMs = 2400;
+
+  useEffect(() => {
+    if (!playing) {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastTsRef.current = null;
+      return;
+    }
+    const tick = (ts: number) => {
+      if (lastTsRef.current == null) lastTsRef.current = ts;
+      const dt = ts - lastTsRef.current;
+      lastTsRef.current = ts;
+      setTime((t) => (t + dt / cycleMs) % 1);
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [playing]);
+
+  const channels = view === "contractile" ? contractileChannels : pacemakerChannels;
+  const activeChannels = channels.filter((c) => time >= c.start && time <= c.end);
 
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground text-center">
-        Click a drug class to see where it acts on the cardiac action potential
+        Click a drug class to see where it acts — or press play to sweep the timeline and see which channels are open
       </p>
 
       {/* View toggle */}
@@ -172,14 +200,88 @@ const VaughanWilliamsAPDiagram = () => {
         })}
       </div>
 
+      {/* Playhead controls */}
+      <div className="flex items-center gap-3 max-w-xl mx-auto px-1">
+        <button
+          onClick={() => setPlaying((p) => !p)}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
+          aria-label={playing ? "Pause" : "Play"}
+        >
+          {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+        </button>
+        <button
+          onClick={() => { setTime(0); setPlaying(false); }}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-muted text-foreground hover:bg-muted/70 transition-colors shrink-0"
+          aria-label="Reset"
+        >
+          <RotateCcw className="w-4 h-4" />
+        </button>
+        <input
+          type="range"
+          min={0}
+          max={1000}
+          value={Math.round(time * 1000)}
+          onChange={(e) => { setTime(Number(e.target.value) / 1000); setPlaying(false); }}
+          className="flex-1 accent-primary"
+          aria-label="Scrub timeline"
+        />
+        <span className="text-xs font-mono text-muted-foreground w-14 text-right tabular-nums">
+          {(time * cycleMs / 1000).toFixed(2)}s
+        </span>
+      </div>
+
+      {/* Active channels readout */}
+      <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
+        {channels.map((c) => {
+          const active = activeChannels.some((a) => a.id === c.id);
+          return (
+            <span
+              key={c.id}
+              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150"
+              style={{
+                borderColor: c.color,
+                backgroundColor: active ? c.color : "transparent",
+                color: active ? "white" : c.color,
+                opacity: active ? 1 : 0.4,
+              }}
+            >
+              {c.label}
+            </span>
+          );
+        })}
+      </div>
+
       {/* SVG Diagrams */}
       <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
         {view === "contractile" ? (
-          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} />
+          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
         ) : (
-          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} />
+          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
         )}
       </div>
+
+      {/* Detail panel */}
+      {selected && (
+        <div
+          className="border rounded-lg p-4 space-y-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+          style={{ borderColor: selected.color + "66" }}
+        >
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge className="text-xs font-bold text-white" style={{ backgroundColor: selected.color }}>
+              Class {selected.id}
+            </Badge>
+            <span className="text-sm font-semibold text-foreground">{selected.fullName}</span>
+            {view === "contractile" && (
+              <Badge variant="outline" className="text-[10px]">
+                Phase {selected.phases.join(" & ")}
+              </Badge>
+            )}
+            {view === "pacemaker" && selected.pacemakerPhases && (
+              <Badge variant="outline" className="text-[10px]">
+                Pacemaker Phase {selected.pacemakerPhases.join(" & ")}
+              </Badge>
+            )}
+          </div>
 
       {/* Detail panel */}
       {selected && (
