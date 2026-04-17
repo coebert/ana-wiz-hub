@@ -9,6 +9,7 @@ import { CountercurrentMultiplierDiagram } from "@/components/diagrams/Countercu
 import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrierDiagram";
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
+import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -38,6 +39,17 @@ const RenalPhysiologyTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-6">
             <NephronDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Cortical vs Juxtamedullary Nephrons</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Two functionally distinct populations of nephrons exist. Compare their anatomy, post-glomerular vasculature,
+            and roles — toggle the feature pills to highlight differences side-by-side.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <CorticalJuxtamedullaryDiagram />
           </div>
         </section>
 
