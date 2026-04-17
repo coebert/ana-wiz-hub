@@ -13,6 +13,7 @@ import GramNegativeEnvelopeDiagram from "@/components/diagrams/GramNegativeEnvel
 import MDRGramNegativeSelector from "@/components/diagrams/MDRGramNegativeSelector";
 import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamaseClassificationTable";
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
+import EmpiricalSepsisChooser from "@/components/diagrams/EmpiricalSepsisChooser";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -134,6 +135,7 @@ const AntimicrobialsTopic = () => {
               <GramNegativeEnvelopeDiagram />
               <BetaLactamaseClassificationTable />
               <MDRGramNegativeSelector />
+              <EmpiricalSepsisChooser />
               {antibioticClasses.map((group) => (
                 <div key={group.group}>
                   <h3 className="text-lg font-serif font-bold text-foreground mb-3">{group.group}</h3>
