@@ -293,7 +293,32 @@ const chronicPts = (c: ChronicHealth) =>
 interface Inputs {
   temp: number; map: number; hr: number; rr: number; aaO2: number; pao2: number; fio2: number;
   phArt: number; na: number; k: number; creat: number; aki: boolean; hct: number; wcc: number; gcs: number;
-  age: number; chronic: ChronicHealth; admission: AdmissionType;
+  age: number; chronic: ChronicHealth; admission: AdmissionType; cfs: number;
+}
+
+/* ───── CFS helpers (Rockwood Clinical Frailty Scale) ───── */
+const CFS_LABELS = [
+  "", "Very fit", "Well", "Managing well", "Vulnerable",
+  "Mildly frail", "Moderately frail", "Severely frail", "Very severely frail", "Terminally ill"
+];
+export function cfsLabel(c: number) {
+  return CFS_LABELS[Math.max(1, Math.min(9, Math.round(c)))] ?? "";
+}
+/**
+ * Frailty odds ratio for in-hospital mortality (Muscedere 2017 meta-analysis,
+ * adjusted OR 1.81 for CFS ≥ 5 vs CFS < 5). We model a smooth per-unit OR ≈ 1.22
+ * for CFS ≥ 5, anchored so CFS 5 ≈ 1.22, CFS 7 ≈ 1.81, CFS 9 ≈ 2.69.
+ */
+function frailtyOR(cfs: number) {
+  if (cfs <= 4) return 1.0;
+  return Math.pow(1.22, cfs - 4);
+}
+
+function frailtyMessage(cfs: number) {
+  if (cfs <= 4) return "";
+  if (cfs <= 6) return "Pre-morbid frailty present — expect ~30–50% higher hospital mortality and ~2× length of stay vs non-frail counterparts. Discuss realistic functional goals and rehabilitation potential early.";
+  if (cfs <= 7) return "Severe frailty — adjusted OR ~1.81 for hospital mortality and 1.71 for 1-year mortality. Survivors frequently discharge to higher level of care. Goals-of-care conversation essential within 48 h.";
+  return "Very severe / terminal frailty — score-derived mortality substantially under-estimates true risk. Consider whether ICU admission aligns with patient values; comfort-focused care often more appropriate.";
 }
 
 function evaluate(i: Inputs) {
@@ -321,18 +346,27 @@ function evaluate(i: Inputs) {
   const total = aps + ageP + chronicP;
 
   // Predicted hospital mortality — Knaus 1985 logistic regression
-  // logit = -3.517 + 0.146 * APACHE II + diagnostic category coefficient + (post-op emergency adj)
-  // Simplified — using non-op baseline; post-op elective subtracts ~0.6 from logit;
-  // post-op emergency uses the +0.613 adjustment in addition to non-op coefficient.
   let logit = -3.517 + 0.146 * total;
   if (i.admission === "postOpElective") logit -= 0.6;
   if (i.admission === "postOpEmergency") logit += 0.613;
   const mortalityPct = (1 / (1 + Math.exp(-logit))) * 100;
 
+  // Frailty-adjusted mortality — apply OR to baseline odds, then convert back
+  const fOR = frailtyOR(i.cfs);
+  const baseOdds = mortalityPct / Math.max(0.0001, 100 - mortalityPct);
+  const adjOdds = baseOdds * fOR;
+  const adjMortalityPct = (adjOdds / (1 + adjOdds)) * 100;
+
   const color =
     total >= 35 ? "hsl(var(--destructive))" :
     total >= 25 ? "hsl(15 90% 55%)" :
     total >= 15 ? "hsl(45 90% 50%)" :
+    "hsl(var(--icu))";
+
+  const adjColor =
+    adjMortalityPct >= 70 ? "hsl(var(--destructive))" :
+    adjMortalityPct >= 40 ? "hsl(15 90% 55%)" :
+    adjMortalityPct >= 15 ? "hsl(45 90% 50%)" :
     "hsl(var(--icu))";
 
   let bandTitle = "", bandDetail = "";
@@ -350,7 +384,11 @@ function evaluate(i: Inputs) {
     bandDetail = "Consider whether ICU admission is required vs HDU/ward step-down once stable. Score may reflect short physiological perturbation only.";
   }
 
-  return { breakdown, aps, agePts: ageP, chronicPts: chronicP, total, mortalityPct, color, bandTitle, bandDetail };
+  return {
+    breakdown, aps, agePts: ageP, chronicPts: chronicP, total,
+    mortalityPct, color, bandTitle, bandDetail,
+    frailtyOR: fOR, adjMortalityPct, adjColor, frailtyMessage: frailtyMessage(i.cfs),
+  };
 }
 
 /* ───── SOFA mortality reference (Ferreira 2001) ───── */
