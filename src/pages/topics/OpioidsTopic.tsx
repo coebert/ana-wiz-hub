@@ -45,6 +45,7 @@ const OpioidsTopic = () => {
             <OpioidReceptorDiagram />
           </div>
           <OpioidReceptorSignalingDiagram />
+          <OIHToleranceDiagram />
         </section>
 
         <section className="mb-10">
