@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
 import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
 import ChiralityAnaesthesiaDiagram from "@/components/diagrams/ChiralityAnaesthesiaDiagram";
+import AmineComparisonDiagram from "@/components/diagrams/AmineComparisonDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -64,6 +65,30 @@ const OrganicChemistryTopic = () => {
 
           <div className="mt-6">
             <ChiralityAnaesthesiaDiagram />
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tertiary vs Quaternary Amines</h2>
+          <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
+            <p>
+              Nitrogen sits at the heart of an enormous fraction of anaesthetic drugs — local anaesthetics, opioids, 
+              vasopressors, antimuscarinics and every non-depolarising muscle relaxant. The single most important 
+              question to ask of any nitrogen-containing drug is: <strong>how many carbon substituents are on the nitrogen?</strong>
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li><strong>Tertiary amine (R₃N):</strong> three carbon substituents, one lone pair. The lone pair can accept a proton, so the drug exists in equilibrium between an unionised (lipid-soluble) form and a protonated (water-soluble) form. The ratio is set by the drug's pKa and the surrounding pH — the Henderson–Hasselbalch equation. Only the unionised form crosses lipid membranes including the BBB and placenta.</li>
+              <li><strong>Quaternary amine (R₄N⁺):</strong> four carbon substituents and a permanent positive charge. There is no neutral form, so it cannot dissolve in the lipid bilayer at any pH. This produces the predictable clinical signature of every quaternary drug: poor oral absorption, small volume of distribution, no BBB or placental crossing, and renal excretion of the parent compound.</li>
+            </ul>
+            <p>
+              This single structural feature explains why <strong>neostigmine must be paired with glycopyrrolate</strong> 
+              (both quaternary, no central effects), why <strong>suxamethonium and rocuronium are safe for the foetus</strong> 
+              (don't cross placenta), and why <strong>atropine causes central anticholinergic syndrome but glycopyrrolate doesn't</strong>.
+            </p>
+          </div>
+
+          <div className="mt-4">
+            <AmineComparisonDiagram />
           </div>
         </section>
 
