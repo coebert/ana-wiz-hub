@@ -10,6 +10,7 @@ import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrie
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
+import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -50,6 +51,19 @@ const RenalPhysiologyTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-6">
             <CorticalJuxtamedullaryDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Renal Blood Flow Distribution</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The kidneys receive ~20% of cardiac output (≈1100 ml/min) but distribute it very unevenly: the cortex
+            receives ~90%, the medulla only 5–10%. This protects the corticomedullary osmotic gradient but leaves
+            the outer medulla vulnerable to ischaemia. Switch between scenarios to see how shock, contrast, and
+            NSAIDs/ACEi precipitate ATN.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <RenalBloodFlowDiagram />
           </div>
         </section>
 
