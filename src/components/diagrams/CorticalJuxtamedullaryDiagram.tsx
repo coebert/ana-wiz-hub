@@ -107,7 +107,6 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
 
       {/* === Interlobular artery (left) === */}
       <g opacity="0.6">
-        <path d="M 30 10 L 32 cortexBottom".replace("cortexBottom", String(cortexBottom))} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" />
         <path d={`M 30 10 L 32 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" />
         <path d={`M 36 10 L 38 ${cortexBottom - 5}`} fill="none" stroke="hsl(0 60% 50%)" strokeWidth="1.6" />
       </g>
