@@ -270,6 +270,7 @@ const App = () => (
           <Route path="/intensive-care/circulatory-failure" element={<CirculatoryFailureTopic />} />
           <Route path="/intensive-care/aki-rrt" element={<AkiRrtTopic />} />
           <Route path="/intensive-care/acute-liver-failure" element={<AcuteLiverFailureTopic />} />
+          <Route path="/intensive-care/acute-pancreatitis" element={<AcutePancreatitisTopic />} />
           <Route path="/intensive-care/neurointensive-care" element={<NeurointensiveCareTopic />} />
           <Route path="/intensive-care/cardiac-output-monitoring" element={<CardiacOutputMonitoringTopic />} />
           <Route path="/intensive-care/acid-base" element={<AcidBaseTopic />} />
