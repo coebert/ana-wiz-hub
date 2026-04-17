@@ -64,6 +64,7 @@ const ARDSTopic = () => {
       </section>
 
       {/* ECMO Section */}
+      <EOLIAMurrayCalculator />
       <ECMOCircuitDiagram />
       <ECMOTroubleshootingDiagram />
 
