@@ -6,6 +6,7 @@ import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
 import { PRISDiagram } from "@/components/diagrams/PRISDiagram";
+import { SchniderEleveldDiagram } from "@/components/diagrams/SchniderEleveldDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
