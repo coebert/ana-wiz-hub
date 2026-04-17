@@ -12,8 +12,6 @@
  *
  * Use `withAlpha(color, 0.09)` from `@/lib/color-utils` instead.
  */
-"use strict";
-
 const HEX_ALPHA_RE = /^[0-9a-fA-F]{2}$/;
 const COLOR_HINT_RE = /color|colour|tint|fill|stroke|bg|background|border|shade|hue|palette/i;
 
@@ -66,7 +64,7 @@ function leftLooksLikeColor(node) {
   return false;
 }
 
-module.exports = {
+const rule = {
   meta: {
     type: "problem",
     docs: {
