@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
 import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
+import ChiralityAnaesthesiaDiagram from "@/components/diagrams/ChiralityAnaesthesiaDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -59,6 +60,10 @@ const OrganicChemistryTopic = () => {
 
           <div className="mt-4">
             <IsomerismDiagram />
+          </div>
+
+          <div className="mt-6">
+            <ChiralityAnaesthesiaDiagram />
           </div>
         </section>
 
