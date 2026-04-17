@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
 
 const EndocrinePhysiologyTopic = () => {
   return (
