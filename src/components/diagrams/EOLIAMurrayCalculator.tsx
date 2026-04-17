@@ -21,6 +21,30 @@ const EOLIAMurrayCalculator = () => {
     [pf, ph, paco2, pplat, compliance, quadrants, peep, optimised]
   );
 
+  // Trend history — captures each settled adjustment (debounced)
+  const dp = pplat - peep;
+  const [history, setHistory] = useState<TrendPoint[]>([
+    { t: 0, dp: 34 - 14, pplat: 34, compliance: 22 },
+  ]);
+  const debRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (debRef.current) window.clearTimeout(debRef.current);
+    debRef.current = window.setTimeout(() => {
+      setHistory((h) => {
+        const last = h[h.length - 1];
+        if (last && last.pplat === pplat && last.compliance === compliance && last.dp === dp) return h;
+        const next = [...h, { t: h.length, dp, pplat, compliance }];
+        return next.length > 20 ? next.slice(next.length - 20) : next;
+      });
+    }, 350);
+    return () => {
+      if (debRef.current) window.clearTimeout(debRef.current);
+    };
+  }, [pplat, peep, compliance, dp]);
+
+  const resetHistory = () =>
+    setHistory([{ t: 0, dp, pplat, compliance }]);
+
   return (
     <div className="rounded-xl border border-border bg-card p-4 my-6">
       <h3 className="text-lg font-semibold text-foreground">EOLIA / Murray ECMO Eligibility Calculator</h3>
