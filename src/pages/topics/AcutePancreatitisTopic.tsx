@@ -227,7 +227,7 @@ const AcutePancreatitisTopic = () => {
           "Diagnose with 2 of 3: typical pain + amylase/lipase ≥3× ULN + characteristic imaging (Atlanta 2012)",
           "Severity stratification: Glasgow (Imrie), APACHE-II ≥8, BISAP, CRP >150 at 48h, persistent organ failure >48h",
           "I GET SMASHED — gallstones (50%) and ethanol (25%) account for most UK cases",
-          "Goal-directed fluid resuscitation with balanced crystalloid (Hartmann's) — WATERFALL trial showed aggressive fluid causes harm",
+          "Fluids (WATERFALL/AGA 2024): balanced crystalloid (Ringer's lactate) — 10 mL/kg bolus only if hypovolaemic, then 1.5 mL/kg/h, reassess at 12/24/48/72h. Aggressive resuscitation causes fluid overload (20.5% vs 6.3%) with no clinical benefit",
           "Early enteral nutrition (NG/NJ) within 24–72h reduces infectious complications and mortality vs TPN",
           "Prophylactic antibiotics are NOT indicated — only for proven infection or infected necrosis (carbapenem)",
           "ERCP within 24–72h only for cholangitis or persistent biliary obstruction; cholecystectomy same admission for mild gallstone pancreatitis",
