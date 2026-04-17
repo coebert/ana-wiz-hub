@@ -12,6 +12,7 @@ import AntiviralCycleDiagram from "@/components/diagrams/AntiviralCycleDiagram";
 import GramNegativeEnvelopeDiagram from "@/components/diagrams/GramNegativeEnvelopeDiagram";
 import MDRGramNegativeSelector from "@/components/diagrams/MDRGramNegativeSelector";
 import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamaseClassificationTable";
+import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -129,6 +130,7 @@ const AntimicrobialsTopic = () => {
           {tab === "antibiotics" && (
             <div className="space-y-6">
               <AntibioticTargetsDiagram />
+              <AntibioticPKPDPrimer />
               <GramNegativeEnvelopeDiagram />
               <BetaLactamaseClassificationTable />
               <MDRGramNegativeSelector />
