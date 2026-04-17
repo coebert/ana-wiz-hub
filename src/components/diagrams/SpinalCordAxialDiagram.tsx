@@ -817,7 +817,7 @@ const SpinalCordAxialDiagram = () => {
                     className="text-[10px] px-1.5 py-0.5 rounded font-semibold uppercase tracking-wide"
                     style={{
                       color: activeInfo.direction === "ascending" ? ASC : DESC,
-                      backgroundColor: (activeInfo.direction === "ascending" ? ASC : DESC) + "1F",
+                      backgroundColor: withAlpha(activeInfo.direction === "ascending" ? ASC : DESC, 0.12),
                     }}
                   >
                     {activeInfo.direction === "ascending" ? "▲ Ascending" : "▼ Descending"}

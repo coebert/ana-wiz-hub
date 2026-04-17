@@ -309,7 +309,7 @@ const CoagulationCascadeDiagram = () => {
               { phase: "termination" as CellPhase, title: "4. Termination / Regulation", desc: "ATIII (enhanced by heparin) neutralises IIa, Xa. Thrombin + thrombomodulin activate Protein C → APC + Protein S inactivate Va, VIIIa. TFPI inhibits TF·VIIa·Xa. Fibrinolysis: tPA → plasmin degrades fibrin. Balance prevents thrombosis." },
             ]).map(({ phase, title, desc }) => (
               <div key={phase} className={`p-3 rounded-lg border transition-all ${highlightPhase === phase ? "border-primary/30 bg-primary/5" : "border-border"}`}
-                style={highlightPhase === phase ? { borderColor: cellPhaseColors[phase] + "60" } : {}}>
+                style={highlightPhase === phase ? { borderColor: withAlpha(cellPhaseColors[phase], 0.38) } : {}}>
                 <p className="text-sm font-semibold text-foreground" style={{ color: cellPhaseColors[phase] }}>{title}</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</p>
               </div>
