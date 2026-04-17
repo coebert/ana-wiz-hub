@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
+import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 
 const NeurointensiveCareTopic = () => {
   return (
@@ -353,6 +354,14 @@ const NeurointensiveCareTopic = () => {
               The <strong>Lactate:Pyruvate Ratio (LPR)</strong> is the single highest-yield CMD value. Threshold &gt;25 = metabolic crisis; &gt;40 = severe. Distinguish ischaemia (LPR ↑ <em>with</em> ↓ pyruvate) from mitochondrial dysfunction (LPR ↑ <em>with</em> normal/↑ pyruvate) — they look similar but have completely different management implications. CMD also drove the move <em>away</em> from tight glycaemic control in TBI after evidence of brain neuroglycopenia at systemic glucose 4.5–6 mmol/L (Vespa, Oddo).
             </p>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Neuromonitoring — Synthesis</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            No single monitor captures the full picture of brain physiology. Modern neuro-ICUs combine pressure, flow surrogate, oxygenation and biochemistry to triangulate cellular distress. Use the interactive overview below to compare the six core modalities — what each measures, their spatial vs temporal resolution, and where each excels or fails.
+          </p>
+          <MultimodalNeuromonitoringDiagram />
         </div>
 
         <div>
