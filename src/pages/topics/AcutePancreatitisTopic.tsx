@@ -220,6 +220,103 @@ const AcutePancreatitisTopic = () => {
             regional HPB / pancreatic MDT.
           </p>
         </div>
+
+        {/* Guideline comparison */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Side-by-side summary of the four major contemporary guidelines on the four big management decisions.
+            Where they agree is as instructive as where they differ.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-xs min-w-[720px]">
+              <thead>
+                <tr className="bg-secondary/40 text-foreground">
+                  <th className="text-left p-2 font-semibold border-b border-border">Topic</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">IAP/APA 2013</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">AGA 2018 / 2024 update</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">BSG 2024 (UK)</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">WSES 2019 (revised 2023)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground align-top">
+                {[
+                  {
+                    topic: "Initial fluids",
+                    iap: "Ringer's lactate. Goal-directed (HR <120, MAP 65–85, UO ≥0.5 mL/kg/h, HCT 35–44). Historically endorsed 5–10 mL/kg/h.",
+                    aga: "2018: RL preferred, goal-directed. 2024 update post-WATERFALL: moderate resuscitation (10 mL/kg bolus only if hypovolaemic, then 1.5 mL/kg/h LR). Avoid aggressive fluids.",
+                    bsg: "Balanced crystalloid (RL/Hartmann's). Adopt WATERFALL moderate strategy. Reassess 12/24/48/72h. Avoid 0.9% saline.",
+                    wses: "RL is fluid of choice. Goal-directed. 2023 revision aligns with WATERFALL — moderate over aggressive.",
+                  },
+                  {
+                    topic: "Prophylactic antibiotics",
+                    iap: "NOT recommended in any acute pancreatitis (including severe / necrotising).",
+                    aga: "Strongly NOT recommended (no benefit, increases resistance & fungal infection).",
+                    bsg: "NOT recommended. Use only for proven extra-pancreatic infection or infected necrosis.",
+                    wses: "NOT recommended for prophylaxis. Carbapenem (or quinolone + metronidazole) only for confirmed infected necrosis.",
+                  },
+                  {
+                    topic: "ERCP timing",
+                    iap: "Urgent ERCP (<24h) for cholangitis. <72h for persistent biliary obstruction. NOT for predicted severe pancreatitis without cholangitis/obstruction.",
+                    aga: "Same: urgent ERCP only for concurrent cholangitis. APEC trial confirmed no benefit of routine early ERCP in severe gallstone pancreatitis without cholangitis.",
+                    bsg: "ERCP within 24h for cholangitis; within 72h for persistent CBD obstruction. Index-admission cholecystectomy for mild gallstone pancreatitis.",
+                    wses: "Urgent ERCP <24h for cholangitis only. Same-admission cholecystectomy for mild biliary AP.",
+                  },
+                  {
+                    topic: "Necrosectomy approach",
+                    iap: "Step-up: percutaneous/endoscopic drainage first → minimally invasive necrosectomy (VARD) → open as last resort. Delay >4 weeks if possible (PANTER trial).",
+                    aga: "Step-up endorsed. Endoscopic transgastric drainage preferred over percutaneous when anatomy allows (TENSION trial — fewer fistulae, shorter LOS). Delay >4 weeks.",
+                    bsg: "Step-up. Endoscopic-first preferred for retrogastric WON. Open necrosectomy only when minimally invasive options exhausted.",
+                    wses: "Step-up. Endoscopic = percutaneous as first step (operator/anatomy dependent). Open necrosectomy reserved for failed minimally invasive.",
+                  },
+                  {
+                    topic: "Nutrition",
+                    iap: "Early enteral within 72h (NG = NJ). TPN only if enteral intolerance >5–7 days.",
+                    aga: "Early enteral (within 24h if tolerated). Oral feeding as soon as possible in mild AP — do not wait for amylase to normalise.",
+                    bsg: "Early enteral within 72h. NG first-line; switch to NJ only if intolerance.",
+                    wses: "Early enteral within 24–72h. NG and NJ equivalent. TPN reserved.",
+                  },
+                  {
+                    topic: "Cholecystectomy (mild gallstone AP)",
+                    iap: "Same admission.",
+                    aga: "Same admission (strong recommendation).",
+                    bsg: "Same admission, ideally within 2 weeks of discharge if not done as inpatient.",
+                    wses: "Same admission.",
+                  },
+                ].map((row) => (
+                  <tr key={row.topic} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
+                    <td className="p-2 font-semibold text-foreground">{row.topic}</td>
+                    <td className="p-2">{row.iap}</td>
+                    <td className="p-2">{row.aga}</td>
+                    <td className="p-2">{row.bsg}</td>
+                    <td className="p-2">{row.wses}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-4 grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they all agree</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Balanced crystalloid (Ringer's lactate) over 0.9% saline</li>
+                <li>NO prophylactic antibiotics — even in necrotising AP</li>
+                <li>Urgent ERCP only for concurrent cholangitis (not for severe AP per se)</li>
+                <li>Step-up approach to necrosis; delay intervention &gt;4 weeks if possible</li>
+                <li>Early enteral nutrition over TPN; same-admission cholecystectomy for mild gallstone AP</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they differ</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>Fluid rate</strong>: older IAP/APA 2013 (5–10 mL/kg/h) vs post-WATERFALL moderate (1.5 mL/kg/h) — newer guidelines have converged on moderate</li>
+                <li><strong>Endoscopic vs percutaneous drainage</strong>: AGA &amp; BSG favour endoscopic-first for retrogastric WON; WSES treats them as equivalent</li>
+                <li><strong>Oral refeeding timing</strong>: AGA most permissive (start as tolerated, do not wait for enzymes)</li>
+                <li><strong>Antibiotic choice for infected necrosis</strong>: carbapenem universal first line; WSES allows quinolone + metronidazole</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints
