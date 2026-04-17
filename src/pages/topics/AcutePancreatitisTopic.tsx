@@ -115,8 +115,8 @@ const AcutePancreatitisTopic = () => {
                 detail: "Supplemental O₂. Up to 60% develop hypoxaemia (atelectasis, pleural effusion, ARDS). Monitor for early ARDS — admit to HDU/ICU early if SpO₂ requirement, RR &gt;20, or working hard. Intubate for airway protection if encephalopathic or for ARDS lung-protective ventilation.",
               },
               {
-                topic: "C — Circulation / Fluids",
-                detail: "Hartmann's / Plasmalyte preferred over 0.9% saline (Cochrane: lower SIRS, hyperchloraemic acidosis avoided). Initial bolus 10 mL/kg, then 1.5–3 mL/kg/h titrated to MAP ≥65, urine output 0.5 mL/kg/h, HCT 35–44%, BUN trend, lactate clearance. AVOID 'aggressive' fluid (WATERFALL trial 2022 — moderate resuscitation reduced fluid overload without worsening outcomes). Vasopressors (noradrenaline) if MAP target unmet despite fluid.",
+                topic: "C — Circulation / Fluids (WATERFALL-aligned, current standard)",
+                detail: "Use balanced crystalloid (Hartmann's / Ringer's lactate) — avoid 0.9% saline (hyperchloraemic acidosis, worsens SIRS). Assess volume status first: if hypovolaemic give a 10 mL/kg bolus of Ringer's lactate; if normovolaemic, no bolus is needed. Then run maintenance at 1.5 mL/kg/h LR. Reassess clinically and biochemically at 12, 24, 48 and 72h and titrate to MAP ≥65 mmHg, urine output ≥0.5 mL/kg/h, lactate clearance, falling BUN and HCT. The WATERFALL trial (NEJM 2022) was stopped early because aggressive resuscitation (20 mL/kg bolus + 3 mL/kg/h) caused significantly more fluid overload (20.5% vs 6.3%) and longer hospital stay without reducing progression to moderate/severe disease — moderate, goal-directed resuscitation is now standard (endorsed by AGA 2024 and BSG 2024). Vasopressors (noradrenaline) if MAP target unmet despite adequate volume — do NOT chase MAP with more fluid once euvolaemic.",
               },
               {
                 topic: "D — Analgesia",
