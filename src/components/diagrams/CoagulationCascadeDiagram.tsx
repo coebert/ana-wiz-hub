@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 /* ────────────────────────── data ────────────────────────── */
 
@@ -308,7 +309,7 @@ const CoagulationCascadeDiagram = () => {
               { phase: "termination" as CellPhase, title: "4. Termination / Regulation", desc: "ATIII (enhanced by heparin) neutralises IIa, Xa. Thrombin + thrombomodulin activate Protein C → APC + Protein S inactivate Va, VIIIa. TFPI inhibits TF·VIIa·Xa. Fibrinolysis: tPA → plasmin degrades fibrin. Balance prevents thrombosis." },
             ]).map(({ phase, title, desc }) => (
               <div key={phase} className={`p-3 rounded-lg border transition-all ${highlightPhase === phase ? "border-primary/30 bg-primary/5" : "border-border"}`}
-                style={highlightPhase === phase ? { borderColor: cellPhaseColors[phase] + "60" } : {}}>
+                style={highlightPhase === phase ? { borderColor: withAlpha(cellPhaseColors[phase], 0.38) } : {}}>
                 <p className="text-sm font-semibold text-foreground" style={{ color: cellPhaseColors[phase] }}>{title}</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{desc}</p>
               </div>
@@ -352,7 +353,7 @@ const CoagulationCascadeDiagram = () => {
             {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => {
               const m = pathwayMeta[p];
               return (
-                <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: m.color + "40" }}>
+                <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
                     <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>

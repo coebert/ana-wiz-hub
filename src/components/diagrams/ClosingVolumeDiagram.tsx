@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Phase = 1 | 2 | 3 | 4;
 
@@ -165,7 +166,7 @@ const ClosingVolumeDiagram = () => {
                 ? "border-border shadow-sm text-foreground"
                 : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
             }`}
-            style={selectedPhase === p.phase ? { backgroundColor: p.color + "18" } : {}}>
+            style={selectedPhase === p.phase ? { backgroundColor: withAlpha(p.color, 0.09) } : {}}>
             {p.label.split(" (")[0]}
           </button>
         ))}

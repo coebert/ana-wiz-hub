@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Severity = "normal" | "mild" | "severe";
 
@@ -81,7 +82,7 @@ const PVRecruitmentDiagram = () => {
             className={`flex-1 px-2 py-2 rounded-lg text-xs font-medium transition-all border ${
               severity === s ? "border-border shadow-sm text-foreground" : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
             }`}
-            style={severity === s ? { backgroundColor: profiles[s].color + "18" } : {}}>
+            style={severity === s ? { backgroundColor: withAlpha(profiles[s].color, 0.09) } : {}}>
             {profiles[s].label}
           </button>
         ))}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 interface SpinalLevel {
   id: string;
@@ -215,7 +216,7 @@ const DermatomeMyotomeDiagram = () => {
                             ? "border-primary bg-primary/20 text-foreground"
                             : "border-border hover:bg-muted/50 text-muted-foreground"
                         }`}
-                        style={selected === l.id ? { borderColor: l.color, backgroundColor: l.color + "22" } : {}}
+                        style={selected === l.id ? { borderColor: l.color, backgroundColor: withAlpha(l.color, 0.13) } : {}}
                       >
                         {l.level}
                       </button>

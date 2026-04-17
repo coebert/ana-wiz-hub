@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold" | "conus-elasticus" | "quadrangular-membrane" | "pre-epiglottic" | "corniculate" | "cuneiform" | "reinke-space";
 
@@ -618,7 +619,7 @@ const LaryngealCrossSectionDiagram = () => {
                     className={`px-1.5 py-0.5 rounded text-xs transition-colors border ${
                       selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
                     }`}
-                    style={selected === key ? { borderColor: structures[key].color, backgroundColor: structures[key].color + "18", color: structures[key].color } : {}}
+                    style={selected === key ? { borderColor: structures[key].color, backgroundColor: withAlpha(structures[key].color, 0.09), color: structures[key].color } : {}}
                   >
                     {structures[key].label.replace(" (Vestibular Folds)", "").replace(" (Folds)", "").replace(" (Recess)", "").replace(" (CTM)", "")}
                   </button>

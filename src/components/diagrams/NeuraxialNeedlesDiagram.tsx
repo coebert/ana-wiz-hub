@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { withAlpha } from "@/lib/color-utils";
 
 type NeedleKey = "quincke" | "whitacre" | "sprotte" | "tuohy" | "huber" | "pencilpoint-general";
 
@@ -402,7 +403,7 @@ const NeuraxialNeedlesDiagram = () => {
               className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
                 isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
               }`}
-              style={isActive ? { borderColor: n.color, backgroundColor: n.color + "18", color: n.color } : {}}
+              style={isActive ? { borderColor: n.color, backgroundColor: withAlpha(n.color, 0.09), color: n.color } : {}}
             >
               {n.label}
             </button>

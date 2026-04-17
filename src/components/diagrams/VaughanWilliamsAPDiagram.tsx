@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Play, Pause, RotateCcw } from "lucide-react";
+import { withAlpha } from "@/lib/color-utils";
 
 /* Channel activity windows as fraction of cycle (0..1) for each view */
 const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
@@ -296,7 +297,7 @@ const VaughanWilliamsAPDiagram = () => {
       {selected && (
         <div
           className="border rounded-lg p-4 space-y-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-          style={{ borderColor: selected.color + "66" }}
+          style={{ borderColor: withAlpha(selected.color, 0.4) }}
         >
           <div className="flex items-center gap-2 flex-wrap">
             <Badge className="text-xs font-bold text-white" style={{ backgroundColor: selected.color }}>

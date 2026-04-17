@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type ViewMode = "overview" | "bohr" | "vq";
 
@@ -80,7 +81,7 @@ function OverviewView({ highlightType, setHighlightType }: {
                 ? "border-border shadow-sm text-foreground"
                 : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
             }`}
-            style={highlightType === t.key ? { backgroundColor: t.color + "20" } : {}}
+            style={highlightType === t.key ? { backgroundColor: withAlpha(t.color, 0.13) } : {}}
           >
             {t.label}
           </button>

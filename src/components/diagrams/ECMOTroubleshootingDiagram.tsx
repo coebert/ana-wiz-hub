@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Scenario = "desaturation" | "circuit" | "pump";
 
@@ -75,7 +76,7 @@ const ECMOTroubleshootingDiagram = () => {
             className="px-3 py-2 rounded-lg text-sm font-medium border transition-all flex items-center gap-2"
             style={{
               borderColor: selected === s ? scenarios[s].color : "hsl(var(--border))",
-              backgroundColor: selected === s ? scenarios[s].color + "15" : "transparent",
+              backgroundColor: selected === s ? withAlpha(scenarios[s].color, 0.08) : "transparent",
               color: selected === s ? scenarios[s].color : "hsl(var(--muted-foreground))",
             }}>
             <span>{scenarios[s].icon}</span>
@@ -86,7 +87,7 @@ const ECMOTroubleshootingDiagram = () => {
 
       <div className="animate-fade-in" key={selected}>
         {/* Header */}
-        <div className="flex items-center gap-2 mb-4 p-3 rounded-lg border" style={{ borderColor: info.color + "40", backgroundColor: info.color + "08" }}>
+        <div className="flex items-center gap-2 mb-4 p-3 rounded-lg border" style={{ borderColor: withAlpha(info.color, 0.25), backgroundColor: withAlpha(info.color, 0.03) }}>
           <span className="text-2xl">{info.icon}</span>
           <div>
             <p className="font-bold text-foreground">{info.label}</p>

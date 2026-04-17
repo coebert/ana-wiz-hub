@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Mode = "vcv" | "pcv" | "psv";
 
@@ -60,7 +61,7 @@ const VentilatorWaveformsDiagram = () => {
             className={`flex-1 px-2 py-2 rounded-lg text-xs font-medium transition-all border ${
               mode === m.key ? "border-border shadow-sm text-foreground" : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
             }`}
-            style={mode === m.key ? { backgroundColor: m.color + "18" } : {}}>
+            style={mode === m.key ? { backgroundColor: withAlpha(m.color, 0.09) } : {}}>
             <div>{m.label}</div>
             <div className="text-[10px] opacity-70">{m.full}</div>
           </button>

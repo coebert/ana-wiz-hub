@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 interface DermatomeLevel {
   id: string;
@@ -580,7 +581,7 @@ const DermatomeMapDiagram = () => {
                             ? "border-primary bg-primary/20 text-foreground"
                             : "border-border hover:bg-muted/50 text-muted-foreground"
                         }`}
-                        style={selected === d.id ? { borderColor: d.color, backgroundColor: d.color + "22" } : {}}
+                        style={selected === d.id ? { borderColor: d.color, backgroundColor: withAlpha(d.color, 0.13) } : {}}
                       >
                         {d.level}
                       </button>
