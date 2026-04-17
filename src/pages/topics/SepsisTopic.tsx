@@ -7,6 +7,7 @@ import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagr
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
+import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -39,6 +40,8 @@ const SepsisTopic = () => {
         <SepsisScoreCalculator />
 
         <LactateCRTTool />
+
+        <VasopressorLadderTool />
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hour-1 Bundle (SSC 2021)</h2>
