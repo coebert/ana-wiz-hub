@@ -63,6 +63,7 @@ const drugClasses: DrugClass[] = [
     fullName: "Na⁺ block (slow)",
     color: "hsl(30, 85%, 50%)",
     phases: [0],
+    blocks: ["INa"],
     mechanism: "Slow dissociation — potent, use-dependent Na⁺ blockade; no change in APD",
     effect: "Marked ↓ Phase 0 upstroke; marked slowing of conduction",
     examples: "Flecainide, Propafenone",
