@@ -241,22 +241,40 @@ const VaughanWilliamsAPDiagram = () => {
       <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
         {channels.map((c) => {
           const active = activeChannels.some((a) => a.id === c.id);
+          const blocked = !!selected && selected.blocks.includes(c.id);
           return (
             <span
               key={c.id}
-              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150"
+              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150 relative inline-flex items-center gap-1"
               style={{
-                borderColor: c.color,
-                backgroundColor: active ? c.color : "transparent",
-                color: active ? "white" : c.color,
-                opacity: active ? 1 : 0.4,
+                borderColor: blocked ? selected!.color : c.color,
+                borderWidth: blocked ? 2 : 1,
+                backgroundColor: blocked
+                  ? (active ? selected!.color : "transparent")
+                  : (active ? c.color : "transparent"),
+                color: blocked
+                  ? (active ? "white" : selected!.color)
+                  : (active ? "white" : c.color),
+                opacity: blocked ? 1 : active ? 1 : 0.4,
+                textDecoration: blocked && active ? "line-through" : "none",
+                boxShadow: blocked && active ? `0 0 0 2px ${selected!.color}55` : "none",
               }}
+              title={blocked ? `Blocked by Class ${selected!.id}` : undefined}
             >
+              {blocked && <span aria-hidden className="text-[9px]">⛔</span>}
               {c.label}
             </span>
           );
         })}
       </div>
+
+      {/* Blocking legend */}
+      {selected && selected.blocks.length > 0 && (
+        <p className="text-center text-[11px] text-muted-foreground -mt-2">
+          <span className="font-semibold" style={{ color: selected.color }}>Class {selected.id}</span> blocks{" "}
+          <span className="font-semibold">{selected.blocks.join(", ")}</span> — watch the badge light up red as the playhead enters its window
+        </p>
+      )}
 
       {/* SVG Diagrams */}
       <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
