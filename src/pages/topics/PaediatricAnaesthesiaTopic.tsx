@@ -65,6 +65,14 @@ const PaediatricAnaesthesiaTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Paediatric Surgical Procedures</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Five exam-favourite paediatric procedures, each illustrating a different anaesthetic principle — sepsis & coagulopathy (NEC), correcting electrolytes before surgery (pyloric stenosis), shared & ductal-dependent airway physiology (TOF), time-critical theatre access (testicular torsion), and spontaneous-ventilation airway management (inhaled foreign body). Click each site on the diagram below to explore.
+          </p>
+          <PaediatricSurgicalProceduresDiagram />
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
             Maintenance fluids: 4-2-1 rule (Holliday-Segar). Use isotonic balanced solutions (Hartmann's/Plasmalyte). Avoid hypotonic solutions — risk of hyponatraemia.
