@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
+import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalDiagram";
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -68,6 +69,8 @@ const SpinalAnatomyTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord</h2>
 
           <SpinalCordCrossSectionDiagram />
+
+          <SpinalCordSagittalDiagram />
 
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
