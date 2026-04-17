@@ -237,29 +237,31 @@ const VaughanWilliamsAPDiagram = () => {
         </span>
       </div>
 
-      {/* Active channels readout */}
+      {/* Active channels readout — blocked currents appear suppressed (greyed) */}
       <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
         {channels.map((c) => {
           const active = activeChannels.some((a) => a.id === c.id);
           const blocked = !!selected && selected.blocks.includes(c.id);
+          const greyBorder = "hsl(var(--muted-foreground))";
           return (
             <span
               key={c.id}
               className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150 relative inline-flex items-center gap-1"
               style={{
-                borderColor: blocked ? selected!.color : c.color,
-                borderWidth: blocked ? 2 : 1,
+                borderColor: blocked ? greyBorder : c.color,
+                borderWidth: 1,
+                borderStyle: blocked ? "dashed" : "solid",
                 backgroundColor: blocked
-                  ? (active ? selected!.color : "transparent")
+                  ? (active ? "hsl(var(--muted))" : "transparent")
                   : (active ? c.color : "transparent"),
                 color: blocked
-                  ? (active ? "white" : selected!.color)
+                  ? "hsl(var(--muted-foreground))"
                   : (active ? "white" : c.color),
-                opacity: blocked ? 1 : active ? 1 : 0.4,
-                textDecoration: blocked && active ? "line-through" : "none",
-                boxShadow: blocked && active ? `0 0 0 2px ${selected!.color}55` : "none",
+                opacity: blocked ? (active ? 0.55 : 0.35) : (active ? 1 : 0.4),
+                textDecoration: blocked ? "line-through" : "none",
+                filter: blocked ? "grayscale(1)" : "none",
               }}
-              title={blocked ? `Blocked by Class ${selected!.id}` : undefined}
+              title={blocked ? `Blocked by Class ${selected!.id} — current suppressed` : undefined}
             >
               {blocked && <span aria-hidden className="text-[9px]">⛔</span>}
               {c.label}
