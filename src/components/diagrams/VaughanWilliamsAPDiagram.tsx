@@ -101,6 +101,7 @@ const drugClasses: DrugClass[] = [
     color: "hsl(160, 70%, 40%)",
     phases: [0, 2],
     pacemakerPhases: [0],
+    blocks: ["ICaL"],
     mechanism: "Block L-type Ca²⁺ channels → ↓ Phase 0 in pacemaker cells; ↓ Phase 2 plateau in contractile cells",
     effect: "↓ SA node automaticity, ↓ AV conduction velocity, ↓ contractility",
     examples: "Verapamil, Diltiazem",
