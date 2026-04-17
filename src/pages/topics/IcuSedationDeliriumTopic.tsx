@@ -6,6 +6,7 @@ import { icuSedationDeliriumQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
+import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
 
 const IcuSedationDeliriumTopic = () => {
   return (
