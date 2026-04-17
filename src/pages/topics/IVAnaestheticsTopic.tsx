@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
+import { PRISDiagram } from "@/components/diagrams/PRISDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -59,6 +60,17 @@ const IVAnaestheticsTopic = () => {
             <div className="bg-card rounded-xl border border-border p-4">
               <PropofolTCISimulatorDiagram />
             </div>
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-3">Propofol Infusion Syndrome (PRIS)</h3>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              A rare but often fatal complication of prolonged, high-dose propofol infusion. Propofol inhibits the mitochondrial
+              electron transport chain and fatty-acid β-oxidation, producing metabolic acidosis, rhabdomyolysis, and
+              cardiovascular collapse. Classic thresholds are <strong>&gt; 4 mg/kg/h for &gt; 48 h</strong>, but it can occur with
+              shorter exposures in susceptible patients.
+            </p>
+            <PRISDiagram />
           </div>
         </section>
 
