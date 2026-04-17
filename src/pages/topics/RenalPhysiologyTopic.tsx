@@ -10,6 +10,7 @@ import { GlomerularBarrierDiagram } from "@/components/diagrams/GlomerularBarrie
 import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
+import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
