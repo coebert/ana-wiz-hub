@@ -70,8 +70,9 @@ const IcuSedationDeliriumTopic = () => {
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">ABCDEF Bundle</p>
               <p className="text-sm text-muted-foreground mt-1"><strong>A</strong>ssess pain, <strong>B</strong>oth SATs & SBTs, <strong>C</strong>hoice of sedation, <strong>D</strong>elirium monitoring, <strong>E</strong>arly mobility, <strong>F</strong>amily engagement. Reduces delirium, ventilator days, and mortality.</p>
-            </div>
           </div>
+          <CAMICUFlowchartDiagram />
+        </div>
         </div>
 
         <div>
