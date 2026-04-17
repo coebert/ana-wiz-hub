@@ -664,6 +664,7 @@ const NeurointensiveCareTopic = () => {
         "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
         "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
         "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
+        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
       ]} />
 
       <QuizSection questions={neurointensiveCareQuestions} />
