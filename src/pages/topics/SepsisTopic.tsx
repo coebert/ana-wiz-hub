@@ -41,6 +41,8 @@ const SepsisTopic = () => {
 
         <LactateCRTTool />
 
+        <VasopressorLadderTool />
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hour-1 Bundle (SSC 2021)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
