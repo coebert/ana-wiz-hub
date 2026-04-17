@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 interface ZoneData {
   zone: number;
@@ -72,7 +73,7 @@ const WestZonesDiagram = () => {
                 ? "border-border shadow-sm text-foreground"
                 : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
             }`}
-            style={selectedZone === i ? { backgroundColor: z.color + "18" } : {}}
+            style={selectedZone === i ? { backgroundColor: withAlpha(z.color, 0.09) } : {}}
           >
             Zone {z.zone}
           </button>

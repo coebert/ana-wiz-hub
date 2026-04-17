@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Phase = "normal" | "mild" | "severe" | "arrest";
 
@@ -344,7 +345,7 @@ const DynamicHyperinflationDiagram = () => {
           <div className="rounded-lg border border-border bg-background p-3">
             <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase tracking-wide">Heart Status</p>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: data.color + "15", borderColor: data.color + "40", borderWidth: 1 }}>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: withAlpha(data.color, 0.08), borderColor: withAlpha(data.color, 0.25), borderWidth: 1 }}>
                 <span className="text-lg" role="img" aria-label="heart">
                   {selected === "arrest" ? "💔" : "❤️"}
                 </span>
@@ -388,7 +389,7 @@ const DynamicHyperinflationDiagram = () => {
 
           {/* Management */}
           {data.management.length > 0 && (
-            <div className="rounded-lg border p-4" style={{ borderColor: data.color + "40", backgroundColor: data.color + "08" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: withAlpha(data.color, 0.25), backgroundColor: withAlpha(data.color, 0.03) }}>
               <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Management</p>
               <ol className="space-y-1">
                 {data.management.map((step, i) => (

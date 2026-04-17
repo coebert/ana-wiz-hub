@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 type TriangleKey = "anterior" | "posterior" | "carotid" | "muscular" | "submandibular" | "submental" | "occipital" | "supraclavicular";
 
@@ -500,7 +501,7 @@ const NeckTrianglesDiagram = () => {
                     className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
                       selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
                     }`}
-                    style={selected === key ? { borderColor: triangles[key].color, backgroundColor: triangles[key].color + "18" } : {}}
+                    style={selected === key ? { borderColor: triangles[key].color, backgroundColor: withAlpha(triangles[key].color, 0.09) } : {}}
                   >
                     <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: triangles[key].color, opacity: 0.7 }} />
                     {triangles[key].label.replace(" Triangle", "").replace("Submandibular (Digastric)", "Submand.").replace("Supraclavicular (Subclavian)", "Supraclav.")}

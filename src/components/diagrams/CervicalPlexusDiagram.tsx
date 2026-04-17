@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type BranchKey = "superficial" | "deep" | "phrenic" | "ansa";
 
@@ -241,7 +242,7 @@ const CervicalPlexusDiagram = () => {
                 className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
                   selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
                 }`}
-                style={selected === key ? { borderColor: branches[key].color, backgroundColor: branches[key].color + "18" } : {}}
+                style={selected === key ? { borderColor: branches[key].color, backgroundColor: withAlpha(branches[key].color, 0.09) } : {}}
               >
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: branches[key].color, opacity: 0.7 }} />
                 {branches[key].label.replace("Cervical Plexus", "CP").replace("Nerve", "N.")}

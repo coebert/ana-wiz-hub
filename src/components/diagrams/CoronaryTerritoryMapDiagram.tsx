@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type Territory = "anterior" | "lateral" | "inferior" | "posterior" | "septal" | "rv" | null;
 
@@ -209,7 +210,7 @@ const CoronaryTerritoryMapDiagram = () => {
         <div className="flex-1 min-w-0">
           {info ? (
             <div className="space-y-3 animate-fade-in" key={selected}>
-              <div className="p-4 rounded-lg border" style={{ borderColor: info.color + "40" }}>
+              <div className="p-4 rounded-lg border" style={{ borderColor: withAlpha(info.color, 0.25) }}>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: info.color }} />
                   <p className="font-bold text-foreground">{info.label} Territory</p>

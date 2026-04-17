@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { withAlpha } from "@/lib/color-utils";
 
 /* ────────────────────────── data ────────────────────────── */
 
@@ -352,7 +353,7 @@ const CoagulationCascadeDiagram = () => {
             {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => {
               const m = pathwayMeta[p];
               return (
-                <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: m.color + "40" }}>
+                <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
                     <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>

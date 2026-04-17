@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
 
@@ -307,7 +308,7 @@ const LumbosacralPlexusDiagram = () => {
                 className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
                   selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
                 }`}
-                style={selected === key ? { borderColor: nerves[key].color, backgroundColor: nerves[key].color + "18" } : {}}
+                style={selected === key ? { borderColor: nerves[key].color, backgroundColor: withAlpha(nerves[key].color, 0.09) } : {}}
               >
                 <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: nerves[key].color, opacity: 0.7 }} />
                 {nerves[key].label.replace("Nerve", "n.").replace("Lateral Cutaneous n. of Thigh", "LCNT").replace("Common Peroneal (Fibular) n.", "C. Peroneal")}

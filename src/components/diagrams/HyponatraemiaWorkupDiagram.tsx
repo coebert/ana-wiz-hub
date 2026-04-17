@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw } from "lucide-react";
+import { withAlpha } from "@/lib/color-utils";
 
 type StepKey = "plasmaOsm" | "urineOsm" | "urineNa" | "volume";
 type PlasmaOsm = "low" | "normalHigh";
@@ -298,7 +299,7 @@ const HyponatraemiaWorkupDiagram = () => {
       {diagnosis && (
         <div
           className="border-2 rounded-xl p-5 space-y-3 animate-in fade-in-0 slide-in-from-bottom-2 duration-300"
-          style={{ borderColor: diagnosis.color, backgroundColor: diagnosis.color + "10" }}
+          style={{ borderColor: diagnosis.color, backgroundColor: withAlpha(diagnosis.color, 0.06) }}
         >
           <div className="flex items-center gap-2 flex-wrap">
             <Badge className="text-xs font-bold text-white" style={{ backgroundColor: diagnosis.color }}>

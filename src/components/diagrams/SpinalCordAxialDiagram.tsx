@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withAlpha } from "@/lib/color-utils";
 
 // =================================================================
 // Types & data
@@ -332,7 +333,7 @@ const SpinalCordAxialDiagram = () => {
             className={`px-2 py-0.5 rounded text-[10px] font-medium border transition-all ${
               selectedSyndrome === sk ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
             }`}
-            style={selectedSyndrome === sk ? { borderColor: SYNDROMES[sk].color, backgroundColor: SYNDROMES[sk].color + "1F" } : {}}
+            style={selectedSyndrome === sk ? { borderColor: SYNDROMES[sk].color, backgroundColor: withAlpha(SYNDROMES[sk].color, 0.12) } : {}}
           >
             {SYNDROMES[sk].label.replace(" Syndrome", "").replace(" (Hemisection)", "")}
           </button>
@@ -794,13 +795,13 @@ const SpinalCordAxialDiagram = () => {
         {/* Info panel */}
         <div className="flex-1 min-w-0">
           {syndInfo ? (
-            <div className="p-4 rounded-lg border animate-fade-in" style={{ borderColor: syndInfo.color + "40" }}>
+            <div className="p-4 rounded-lg border animate-fade-in" style={{ borderColor: withAlpha(syndInfo.color, 0.25) }}>
               <p className="font-bold text-sm" style={{ color: syndInfo.color }}>{syndInfo.label}</p>
               <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Cause:</span> {syndInfo.cause}</p>
               <p className="text-xs text-muted-foreground mt-1"><span className="font-semibold text-foreground">Deficit:</span> {syndInfo.deficit}</p>
               <div className="flex flex-wrap gap-1 mt-2">
                 {syndInfo.affected.map((tk) => (
-                  <span key={tk} className="px-1.5 py-0.5 rounded text-[9px] border" style={{ borderColor: TRACTS[tk].color + "50", color: TRACTS[tk].color }}>
+                  <span key={tk} className="px-1.5 py-0.5 rounded text-[9px] border" style={{ borderColor: withAlpha(TRACTS[tk].color, 0.31), color: TRACTS[tk].color }}>
                     {TRACTS[tk].label}
                   </span>
                 ))}
