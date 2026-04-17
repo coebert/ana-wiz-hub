@@ -99,16 +99,62 @@ const ElectricalSafetyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Theatre Environment — Humidity & Footwear</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Two often-overlooked engineering controls in the operating theatre — controlled humidity and antistatic footwear —
+            were introduced in the era of flammable anaesthetic agents (ether, cyclopropane) but remain part of modern theatre
+            design because they continue to mitigate electrical risk.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Why humidity matters</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Theatre humidity is maintained at <strong className="text-foreground">50–60% relative humidity</strong> (with temperature 20–22 °C).</li>
+                <li>At low humidity (&lt; 40%), insulating surfaces (vinyl flooring, plastics, drapes, hair, clothing) accumulate
+                  <strong className="text-foreground"> static charge</strong> by triboelectric (friction-induced) charging.</li>
+                <li>Higher humidity allows a thin film of water on surfaces to act as a <strong className="text-foreground">conductive path</strong>,
+                  continuously bleeding static charge to earth before it reaches a hazardous potential.</li>
+                <li>This <strong className="text-foreground">prevents spark formation</strong> — historically critical to avoid ignition of
+                  ether/cyclopropane mixtures, but still relevant to: airway fires, alcohol-based skin prep ignition, microelectronic
+                  device damage, and patient micro-shock from static discharge to monitoring leads or intracardiac catheters.</li>
+                <li>Humidity also reduces <strong className="text-foreground">skin resistance</strong> in sweating staff and patients — a
+                  trade-off that increases macroshock hazard slightly, but the dominant benefit is static dissipation.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Antistatic theatre footwear</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Theatre clogs and overshoes are made of <strong className="text-foreground">antistatic (conductive) rubber</strong>
+                  — typically with a sole resistance of <strong className="text-foreground">75 kΩ – 10 MΩ</strong>.</li>
+                <li>This range is deliberately chosen as a <strong className="text-foreground">"Goldilocks" resistance</strong>:</li>
+                <li><strong className="text-foreground">Low enough</strong> to <em>continuously drain static charge</em> from the wearer
+                  to the conductive theatre floor (and on to earth) — preventing spark discharge.</li>
+                <li><strong className="text-foreground">High enough</strong> to <em>limit current flow</em> if the wearer accidentally
+                  becomes part of a mains circuit — at 240 V across &gt; 75 kΩ, current is limited to &lt; 3 mA (well below the 15 mA
+                  let-go threshold and the 100 mA VF threshold).</li>
+                <li>Combined with a <strong className="text-foreground">conductive floor</strong> (resistance 20 kΩ – 5 MΩ between two
+                  electrodes 60 cm apart), the staff member–shoe–floor system acts as a controlled, slow discharge path.</li>
+                <li>Pure rubber boots (very high resistance) would <em>protect against macroshock</em> but allow <strong className="text-foreground">static
+                  build-up</strong> — and so are not used in theatre.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Defibrillation</h2>
           <p className="text-foreground/90 leading-relaxed">
             Defibrillation delivers a large DC current (~30–40 A peak) to simultaneously depolarise a critical mass of
             myocardium, allowing the SA node to resume normal conduction. Modern biphasic defibrillators are more effective
             at lower energy (120–200 J) than monophasic (360 J). Transthoracic impedance (~70–80 Ω) affects current delivery.
           </p>
+          <DefibrillatorCapacitorDiagram />
         </section>
       </div>
 
       <ElectricalSafetyDiagram />
+
 
       <KeyLearningPoints points={[
         "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
