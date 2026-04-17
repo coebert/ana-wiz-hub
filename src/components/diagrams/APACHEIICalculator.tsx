@@ -105,6 +105,21 @@ const APACHEIICalculator = () => {
         </div>
       </div>
 
+      <p className="text-xs font-semibold text-foreground mb-2">Clinical Frailty Scale (Rockwood) — Muscedere 2017 overlay</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 items-start">
+        <div className="md:col-span-2">
+          <Slider label={`CFS — ${cfsLabel(cfs)}`} value={cfs} min={1} max={9} step={1} unit="" onChange={setCfs} />
+          <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
+            1 Very fit · 2 Well · 3 Managing well · 4 Vulnerable · 5 Mildly frail · 6 Moderately frail · 7 Severely frail · 8 Very severely frail · 9 Terminally ill. Frail = CFS ≥ 5.
+          </p>
+        </div>
+        <div className="rounded-md border border-border bg-secondary/40 p-2">
+          <p className="text-[10px] text-muted-foreground">Frailty OR (vs CFS &lt; 5)</p>
+          <p className="text-lg font-bold font-mono text-foreground">×{result.frailtyOR.toFixed(2)}</p>
+          <p className="text-[10px] text-muted-foreground">Hospital mortality, Muscedere 2017 (n=421, ≥80 y ICU cohort)</p>
+        </div>
+      </div>
+
       {/* Score breakdown */}
       <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
         <div className="flex items-baseline justify-between mb-2 flex-wrap gap-2">
