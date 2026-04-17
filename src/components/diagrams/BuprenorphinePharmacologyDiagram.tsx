@@ -292,7 +292,7 @@ export const BuprenorphinePharmacologyDiagram = () => {
           <div className="mt-4 p-4 rounded-lg border border-border bg-background">
             <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">Clinical consequences of high affinity</p>
             <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li><strong className="text-foreground">Displaces full agonists from MOR</strong> → precipitated withdrawal if given to a patient on full agonist therapy. Wait until mild-moderate withdrawal (COWS > 8) before initiating.</li>
+              <li><strong className="text-foreground">Displaces full agonists from MOR</strong> → precipitated withdrawal if given to a patient on full agonist therapy. Wait until mild-moderate withdrawal (COWS &gt; 8) before initiating.</li>
               <li><strong className="text-foreground">Blocks subsequent opioid analgesia</strong> — full agonists given on top of buprenorphine have markedly reduced effect.</li>
               <li><strong className="text-foreground">Naloxone reversal requires very high doses</strong> (4–10 mg, sometimes infusion) and is often incomplete — be prepared to support ventilation.</li>
               <li><strong className="text-foreground">Long duration of action</strong> (24–72 h) due to slow MOR dissociation, despite short plasma half-life.</li>
