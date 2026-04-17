@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import NerveDermatomeOverlayDiagram from "@/components/diagrams/NerveDermatomeOverlayDiagram";
+import SpinalBlockHeightAssessmentTool from "@/components/diagrams/SpinalBlockHeightAssessmentTool";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
