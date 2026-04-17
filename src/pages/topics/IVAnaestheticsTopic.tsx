@@ -7,6 +7,7 @@ import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructur
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
 import { PRISDiagram } from "@/components/diagrams/PRISDiagram";
 import { SchniderEleveldDiagram } from "@/components/diagrams/SchniderEleveldDiagram";
+import { KetaminePharmacologyDiagram } from "@/components/diagrams/KetaminePharmacologyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -121,6 +122,10 @@ const IVAnaestheticsTopic = () => {
               uncooperative patients/children). It has anti-inflammatory properties and is increasingly used in sub-anaesthetic
               doses for chronic pain and treatment-resistant depression.
             </p>
+          </div>
+
+          <div className="mt-6">
+            <KetaminePharmacologyDiagram />
           </div>
         </section>
 
