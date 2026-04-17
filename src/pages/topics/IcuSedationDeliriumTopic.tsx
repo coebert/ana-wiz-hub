@@ -52,10 +52,8 @@ const IcuSedationDeliriumTopic = () => {
               </div>
             ))}
           </div>
+          <ICUSedationComparisonDiagram />
         </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Delirium</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Affects up to 80% of ventilated patients. Associated with increased mortality, prolonged ventilation, and long-term cognitive impairment. Screen with CAM-ICU.
           </p>
