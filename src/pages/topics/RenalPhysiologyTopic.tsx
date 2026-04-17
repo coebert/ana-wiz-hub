@@ -12,6 +12,7 @@ import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
 import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
+import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
