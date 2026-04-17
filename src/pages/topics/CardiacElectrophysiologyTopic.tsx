@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 
 const CardiacElectrophysiologyTopic = () => {
   return (
