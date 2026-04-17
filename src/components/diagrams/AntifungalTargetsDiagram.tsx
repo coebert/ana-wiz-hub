@@ -79,7 +79,7 @@ const AntifungalTargetsDiagram = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* SVG diagram */}
         <div className="lg:col-span-3">
-          <svg viewBox="0 0 600 480" className="w-full h-auto rounded-lg border border-border bg-background">
+          <svg viewBox="0 0 760 520" className="w-full h-auto rounded-lg border border-border bg-background">
             <defs>
               <radialGradient id="fcytoplasm" cx="50%" cy="50%" r="60%">
                 <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.6" />
@@ -97,9 +97,14 @@ const AntifungalTargetsDiagram = () => {
               </pattern>
             </defs>
 
+            {/* Title strip */}
+            <text x="380" y="28" textAnchor="middle" fontSize="14" fontWeight="600" fill="hsl(var(--foreground))">
+              Fungal cell — antifungal target sites
+            </text>
+
             {/* Cell wall — β-(1,3)-D-glucan + chitin */}
             <ellipse
-              cx="300" cy="240" rx="240" ry="170"
+              cx="380" cy="270" rx="220" ry="160"
               fill="url(#glucan)"
               stroke={active === "wall" ? "hsl(15 90% 55%)" : "hsl(15 90% 55% / 0.5)"}
               strokeWidth={active === "wall" ? 5 : 2}
@@ -109,7 +114,7 @@ const AntifungalTargetsDiagram = () => {
 
             {/* Cell membrane — ergosterol */}
             <ellipse
-              cx="300" cy="240" rx="220" ry="155"
+              cx="380" cy="270" rx="200" ry="145"
               fill="url(#ergopattern)"
               stroke={active === "membrane" ? "hsl(280 70% 55%)" : "hsl(280 70% 55% / 0.6)"}
               strokeWidth={active === "membrane" ? 5 : 2.5}
@@ -118,7 +123,7 @@ const AntifungalTargetsDiagram = () => {
             />
 
             {/* Cytoplasm */}
-            <ellipse cx="300" cy="240" rx="210" ry="148" fill="url(#fcytoplasm)" />
+            <ellipse cx="380" cy="270" rx="190" ry="138" fill="url(#fcytoplasm)" />
 
             {/* Nucleus with DNA / flucytosine target */}
             <g
@@ -127,24 +132,23 @@ const AntifungalTargetsDiagram = () => {
               opacity={active === "dna" ? 1 : 0.85}
             >
               <ellipse
-                cx="260" cy="235" rx="55" ry="40"
+                cx="320" cy="250" rx="55" ry="38"
                 fill={active === "dna" ? "hsl(160 70% 40% / 0.25)" : "hsl(160 70% 40% / 0.12)"}
                 stroke={active === "dna" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.6)"}
                 strokeWidth={active === "dna" ? 3 : 2}
               />
               <path
-                d="M 230 225 Q 250 215, 270 225 T 290 235"
+                d="M 290 240 Q 310 230, 330 240 T 350 250"
                 fill="none"
                 stroke={active === "dna" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.7)"}
                 strokeWidth="2"
               />
               <path
-                d="M 230 245 Q 250 255, 270 245 T 290 235"
+                d="M 290 260 Q 310 270, 330 260 T 350 250"
                 fill="none"
                 stroke={active === "dna" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.5)"}
                 strokeWidth="2"
               />
-              <text x="260" y="260" fontSize="10" fill="hsl(var(--muted-foreground))" fontFamily="monospace" textAnchor="middle">Nucleus / DNA</text>
             </g>
 
             {/* Ergosterol synthesis — ER cluster */}
@@ -154,13 +158,12 @@ const AntifungalTargetsDiagram = () => {
               opacity={active === "ergosterol" ? 1 : 0.85}
             >
               <path
-                d="M 360 200 Q 400 195, 430 215 Q 440 235, 420 250 Q 390 260, 365 245 Q 350 225, 360 200 Z"
+                d="M 430 230 Q 480 225, 520 250 Q 530 275, 505 290 Q 460 295, 435 275 Q 420 250, 430 230 Z"
                 fill={active === "ergosterol" ? "hsl(195 80% 50% / 0.35)" : "hsl(195 80% 50% / 0.18)"}
                 stroke={active === "ergosterol" ? "hsl(195 80% 50%)" : "hsl(195 80% 50% / 0.6)"}
                 strokeWidth={active === "ergosterol" ? 2.5 : 1.8}
               />
-              <text x="395" y="232" fontSize="9" fill="hsl(var(--foreground))" fontFamily="monospace" textAnchor="middle">14α-demethylase</text>
-              <text x="395" y="244" fontSize="8" fill="hsl(var(--muted-foreground))" fontFamily="monospace" textAnchor="middle">lanosterol → ergosterol</text>
+              <text x="475" y="260" fontSize="10" fill="hsl(var(--foreground))" fontFamily="monospace" textAnchor="middle" fontWeight="600">14α-demethylase</text>
             </g>
 
             {/* Mitotic spindle / microtubules */}
@@ -169,34 +172,30 @@ const AntifungalTargetsDiagram = () => {
               onClick={() => setActive("mitotic")}
               opacity={active === "mitotic" ? 1 : 0.85}
             >
-              <circle cx="200" cy="320" r="4" fill={active === "mitotic" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
-              <circle cx="290" cy="320" r="4" fill={active === "mitotic" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
+              <circle cx="290" cy="360" r="5" fill={active === "mitotic" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
+              <circle cx="380" cy="360" r="5" fill={active === "mitotic" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"} />
               {[0, 1, 2, 3, 4].map((i) => (
                 <line
                   key={i}
-                  x1="200" y1="320"
-                  x2={290} y2={320}
-                  transform={`rotate(${(i - 2) * 8} 245 320)`}
+                  x1="290" y1="360"
+                  x2={380} y2={360}
+                  transform={`rotate(${(i - 2) * 8} 335 360)`}
                   stroke={active === "mitotic" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.6)"}
                   strokeWidth={active === "mitotic" ? 1.8 : 1.2}
                 />
               ))}
-              <text x="245" y="348" fontSize="9" fill="hsl(var(--muted-foreground))" fontFamily="monospace" textAnchor="middle">Mitotic spindle</text>
             </g>
 
-            {/* Annotation lines and labels */}
-            <Annotation x1={540} y1={100} x2={510} y2={150} label="Cell wall (β-glucan)" sub="Echinocandins" color="hsl(15 90% 55%)" active={active === "wall"} onClick={() => setActive("wall")} anchor="end" tx={550} ty={92} />
-            <Annotation x1={60}  y1={120} x2={100} y2={160} label="Ergosterol membrane" sub="Amphotericin B, nystatin" color="hsl(280 70% 55%)" active={active === "membrane"} onClick={() => setActive("membrane")} anchor="start" tx={50} ty={112} />
-            <Annotation x1={540} y1={230} x2={430} y2={225} label="Ergosterol synthesis" sub="Azoles, terbinafine" color="hsl(195 80% 50%)" active={active === "ergosterol"} onClick={() => setActive("ergosterol")} anchor="end" tx={550} ty={222} />
-            <Annotation x1={60}  y1={260} x2={210} y2={235} label="Nucleic acid synthesis" sub="Flucytosine (5-FC)" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="start" tx={50} ty={252} />
-            <Annotation x1={60}  y1={400} x2={245} y2={325} label="Mitotic spindle" sub="Griseofulvin" color="hsl(45 90% 50%)" active={active === "mitotic"} onClick={() => setActive("mitotic")} anchor="start" tx={50} ty={392} />
+            {/* Annotation lines and labels — placed in left/right gutters */}
+            <Annotation x1={750} y1={90}  x2={585} y2={150} label="Cell wall (β-glucan)" sub="Echinocandins" color="hsl(15 90% 55%)" active={active === "wall"} onClick={() => setActive("wall")} anchor="end" tx={755} ty={82} />
+            <Annotation x1={10}  y1={110} x2={185} y2={170} label="Ergosterol membrane" sub="Amphotericin B, nystatin" color="hsl(280 70% 55%)" active={active === "membrane"} onClick={() => setActive("membrane")} anchor="start" tx={5} ty={102} />
+            <Annotation x1={750} y1={250} x2={530} y2={260} label="Ergosterol synthesis" sub="Azoles, terbinafine" color="hsl(195 80% 50%)" active={active === "ergosterol"} onClick={() => setActive("ergosterol")} anchor="end" tx={755} ty={242} />
+            <Annotation x1={10}  y1={250} x2={270} y2={250} label="Nucleic acid synthesis" sub="Flucytosine (5-FC)" color="hsl(160 70% 40%)" active={active === "dna"} onClick={() => setActive("dna")} anchor="start" tx={5} ty={242} />
+            <Annotation x1={10}  y1={400} x2={290} y2={365} label="Mitotic spindle" sub="Griseofulvin" color="hsl(45 90% 50%)" active={active === "mitotic"} onClick={() => setActive("mitotic")} anchor="start" tx={5} ty={392} />
 
-            {/* Title strip */}
-            <text x="300" y="30" textAnchor="middle" fontSize="13" fontWeight="600" fill="hsl(var(--foreground))">
-              Fungal cell — antifungal target sites
-            </text>
-            <text x="300" y="465" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
-              Schematic — fungal wall (β-glucan + chitin) and ergosterol membrane have no human equivalents → key selectivity targets
+            {/* Footnote */}
+            <text x="380" y="500" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+              Schematic — fungal wall (β-glucan/chitin) and ergosterol membrane have no human equivalents → key selectivity targets
             </text>
           </svg>
         </div>
