@@ -167,19 +167,28 @@ const APACHEIICalculator = () => {
       </div>
 
       {/* Side-by-side comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
         <div className="rounded-lg border border-border bg-background/40 p-3">
-          <p className="text-xs font-semibold text-foreground">APACHE II — predicted hospital mortality</p>
+          <p className="text-xs font-semibold text-foreground">APACHE II — predicted mortality</p>
           <p className="text-3xl font-bold mt-1" style={{ color: result.color }}>
             {result.mortalityPct.toFixed(1)}<span className="text-base">%</span>
           </p>
           <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Knaus logistic model · {admission === "nonOp" ? "non-operative" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"} admission
+            Knaus model · {admission === "nonOp" ? "non-op" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"}
+          </p>
+        </div>
+        <div className="rounded-lg border-2 p-3" style={{ borderColor: result.adjColor, backgroundColor: `${result.adjColor}14` }}>
+          <p className="text-xs font-semibold text-foreground">Frailty-adjusted mortality</p>
+          <p className="text-3xl font-bold mt-1" style={{ color: result.adjColor }}>
+            {result.adjMortalityPct.toFixed(1)}<span className="text-base">%</span>
+          </p>
+          <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+            CFS {cfs} · OR ×{result.frailtyOR.toFixed(2)} on baseline odds (Muscedere 2017)
           </p>
         </div>
         <div className="rounded-lg border border-border bg-background/40 p-3">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-foreground">SOFA at 24 h — predicted mortality</p>
+            <p className="text-xs font-semibold text-foreground">SOFA at 24 h</p>
             <input
               type="number"
               min={0}
@@ -193,7 +202,7 @@ const APACHEIICalculator = () => {
             {sofaMortality(sofa).toFixed(0)}<span className="text-base">%</span>
           </p>
           <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Ferreira 2001 · max SOFA in first 24 h vs ICU mortality
+            Ferreira 2001 · max SOFA in 24 h
           </p>
         </div>
       </div>
@@ -205,21 +214,27 @@ const APACHEIICalculator = () => {
       >
         <p className="text-sm font-bold" style={{ color: result.color }}>{result.bandTitle}</p>
         <p className="text-xs text-foreground mt-1 leading-relaxed">{result.bandDetail}</p>
+        {cfs >= 5 && (
+          <p className="text-xs text-foreground mt-2 leading-relaxed border-t border-border/50 pt-2">
+            <strong>Frailty modifier (CFS {cfs} — {cfsLabel(cfs)}):</strong> {result.frailtyMessage}
+          </p>
+        )}
       </div>
 
       {/* APACHE vs SOFA explainer */}
       <div className="rounded-lg border border-border p-3">
-        <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA — when to use which</p>
+        <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA vs frailty — when to use which</p>
         <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-          <li><strong>APACHE II</strong> — calculated once on the worst values in the first 24 h; better discrimination for hospital mortality (AUROC ~0.85). Disadvantage: cannot track over time.</li>
-          <li><strong>SOFA</strong> — daily organ-dysfunction score; trajectory matters more than single value. Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
+          <li><strong>APACHE II</strong> — worst values in first 24 h; AUROC ~0.85 for hospital mortality. Cannot track trajectory.</li>
+          <li><strong>SOFA</strong> — daily organ-dysfunction score; Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
+          <li><strong>CFS (Muscedere 2017)</strong> — pre-morbid frailty independently predicts hospital mortality (adjusted OR 1.81 for CFS ≥5) and 1-year mortality (OR 1.71) in ≥80 y ICU patients. Frail patients have ~2× LOS and higher disability at discharge. Adds discrimination beyond APACHE II in the elderly.</li>
           <li>SAPS II / APACHE IV outperform APACHE II in modern cohorts but are more complex.</li>
           <li>All scores are calibrated to populations — use as a communication and audit tool, not a single-patient verdict.</li>
         </ul>
       </div>
 
       <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Knaus WA et al. APACHE II. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. SOFA. Intensive Care Med 1996;22:707.
+        Refs: Knaus WA et al. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. Intensive Care Med 1996;22:707. Muscedere J et al. Intensive Care Med 2017;43:1105 (CFS &amp; outcomes in critically ill elderly).
       </p>
     </div>
   );
