@@ -276,13 +276,18 @@ const VaughanWilliamsAPDiagram = () => {
         </p>
       )}
 
-      {/* SVG Diagrams */}
-      <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
-        {view === "contractile" ? (
-          <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-        ) : (
-          <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-        )}
+      {/* SVG Diagrams + ECG strip side-by-side */}
+      <div className="grid lg:grid-cols-2 gap-3">
+        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+          {view === "contractile" ? (
+            <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
+          ) : (
+            <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
+          )}
+        </div>
+        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+          <ECGStrip selected={selected} time={time} />
+        </div>
       </div>
 
       {/* Detail panel */}
