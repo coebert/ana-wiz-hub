@@ -4,6 +4,7 @@ import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidRece
 import { OIHToleranceDiagram } from "@/components/diagrams/OIHToleranceDiagram";
 import { MethadonePharmacologyDiagram } from "@/components/diagrams/MethadonePharmacologyDiagram";
 import { BuprenorphinePharmacologyDiagram } from "@/components/diagrams/BuprenorphinePharmacologyDiagram";
+import { RemifentanilPKDiagram } from "@/components/diagrams/RemifentanilPKDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
