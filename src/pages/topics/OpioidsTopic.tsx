@@ -47,6 +47,7 @@ const OpioidsTopic = () => {
           </div>
           <OpioidReceptorSignalingDiagram />
           <OIHToleranceDiagram />
+          <MethadonePharmacologyDiagram />
         </section>
 
         <section className="mb-10">
