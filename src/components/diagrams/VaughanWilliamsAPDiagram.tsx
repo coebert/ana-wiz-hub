@@ -282,29 +282,6 @@ const VaughanWilliamsAPDiagram = () => {
               </Badge>
             )}
           </div>
-
-      {/* Detail panel */}
-      {selected && (
-        <div
-          className="border rounded-lg p-4 space-y-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-          style={{ borderColor: selected.color + "66" }}
-        >
-          <div className="flex items-center gap-2 flex-wrap">
-            <Badge className="text-xs font-bold text-white" style={{ backgroundColor: selected.color }}>
-              Class {selected.id}
-            </Badge>
-            <span className="text-sm font-semibold text-foreground">{selected.fullName}</span>
-            {view === "contractile" && (
-              <Badge variant="outline" className="text-[10px]">
-                Phase {selected.phases.join(" & ")}
-              </Badge>
-            )}
-            {view === "pacemaker" && selected.pacemakerPhases && (
-              <Badge variant="outline" className="text-[10px]">
-                Pacemaker Phase {selected.pacemakerPhases.join(" & ")}
-              </Badge>
-            )}
-          </div>
           <div className="grid gap-2 text-sm">
             <div>
               <span className="text-muted-foreground font-medium">Target phases: </span>
