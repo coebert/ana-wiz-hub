@@ -96,50 +96,52 @@ const GramNegativeEnvelopeDiagram = () => {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* SVG diagram */}
         <div className="lg:col-span-3">
-          <svg viewBox="0 0 600 480" className="w-full h-auto rounded-lg border border-border bg-background">
+          <svg viewBox="0 0 760 480" className="w-full h-auto rounded-lg border border-border bg-background">
             <defs>
               <pattern id="lpsOuter" patternUnits="userSpaceOnUse" width="20" height="40">
-                {/* LPS sugars on top */}
                 <circle cx="5" cy="6" r="3" fill="hsl(15 90% 55%)" />
                 <circle cx="10" cy="3" r="2.5" fill="hsl(15 90% 60%)" />
                 <circle cx="15" cy="6" r="3" fill="hsl(15 90% 55%)" />
                 <line x1="10" y1="9" x2="10" y2="20" stroke="hsl(15 90% 45%)" strokeWidth="1" />
-                {/* Lipid A head */}
                 <circle cx="10" cy="22" r="2.5" fill="hsl(15 90% 45%)" />
-                {/* Acyl tails */}
                 <line x1="9" y1="24" x2="7" y2="36" stroke="hsl(15 60% 35%)" strokeWidth="1" />
                 <line x1="11" y1="24" x2="13" y2="36" stroke="hsl(15 60% 35%)" strokeWidth="1" />
               </pattern>
-              <pattern id="phospholipid" patternUnits="userSpaceOnUse" width="12" height="30">
+              <pattern id="phospholipid" patternUnits="userSpaceOnUse" width="12" height="32">
                 <circle cx="6" cy="3" r="2.2" fill="hsl(280 50% 60%)" />
                 <line x1="5" y1="5" x2="4" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
                 <line x1="7" y1="5" x2="8" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <line x1="5" y1="16" x2="4" y2="25" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <line x1="7" y1="16" x2="8" y2="25" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <circle cx="6" cy="27" r="2.2" fill="hsl(280 50% 60%)" />
+                <line x1="5" y1="18" x2="4" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
+                <line x1="7" y1="18" x2="8" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
+                <circle cx="6" cy="29" r="2.2" fill="hsl(280 50% 60%)" />
               </pattern>
+              <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M 0 0 L 5 10 L 10 0 z" fill="hsl(var(--muted-foreground))" />
+              </marker>
+              <marker id="arrowUp" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(210 75% 50%)" />
+              </marker>
             </defs>
 
             {/* Title */}
-            <text x="300" y="22" textAnchor="middle" fontSize="13" fontWeight="600" fill="hsl(var(--foreground))">
+            <text x="290" y="22" textAnchor="middle" fontSize="13" fontWeight="600" fill="hsl(var(--foreground))">
               Gram-negative cell envelope (cross-section)
             </text>
 
             {/* Extracellular label */}
-            <text x="300" y="45" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+            <text x="290" y="50" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
               extracellular
             </text>
 
             {/* OUTER MEMBRANE — LPS (clickable) */}
             <rect
-              x="60" y="60" width="480" height="42"
+              x="40" y="62" width="500" height="42"
               fill="url(#lpsOuter)"
               stroke={active === "lps" ? "hsl(15 90% 55%)" : "hsl(15 90% 55% / 0.5)"}
               strokeWidth={active === "lps" ? 4 : 1.5}
               className="cursor-pointer transition-all"
               onClick={() => setActive("lps")}
             />
-            <text x="70" y="78" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">LPS outer membrane</text>
 
             {/* PORIN (clickable) */}
             <g
@@ -147,61 +149,52 @@ const GramNegativeEnvelopeDiagram = () => {
               onClick={() => setActive("porin")}
             >
               <rect
-                x="245" y="60" width="40" height="42"
+                x="225" y="62" width="40" height="42"
                 fill={active === "porin" ? "hsl(45 90% 50% / 0.45)" : "hsl(45 90% 50% / 0.25)"}
                 stroke={active === "porin" ? "hsl(45 90% 50%)" : "hsl(45 90% 50% / 0.7)"}
                 strokeWidth={active === "porin" ? 3.5 : 2}
                 rx="4"
               />
-              <text x="265" y="86" fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">porin</text>
-              {/* β-lactam molecule passing through */}
-              <circle cx="265" cy="50" r="5" fill="hsl(45 90% 50%)" />
-              <text x="265" y="40" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">β-lactam</text>
-              <line x1="265" y1="55" x2="265" y2="105" stroke="hsl(45 90% 50%)" strokeWidth="1.5" strokeDasharray="2 2" markerEnd="url(#arrowDown)" />
+              <text x="245" y="88" fontSize="10" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">porin</text>
             </g>
 
-            {/* Polymyxin attacking LPS */}
+            {/* Polymyxin attacking LPS (only when active) */}
             {active === "lps" && (
               <g>
-                <circle cx="120" cy="48" r="6" fill="hsl(15 90% 55%)" />
-                <text x="120" y="38" fontSize="8" fill="hsl(15 90% 55%)" textAnchor="middle" fontWeight="600">polymyxin</text>
-                <line x1="120" y1="54" x2="120" y2="68" stroke="hsl(15 90% 55%)" strokeWidth="1.5" markerEnd="url(#arrowDown)" />
+                <circle cx="100" cy="48" r="6" fill="hsl(15 90% 55%)" />
+                <text x="100" y="40" fontSize="9" fill="hsl(15 90% 55%)" textAnchor="middle" fontWeight="600">polymyxin</text>
+                <line x1="100" y1="54" x2="100" y2="60" stroke="hsl(15 90% 55%)" strokeWidth="1.5" markerEnd="url(#arrowDown)" />
               </g>
             )}
 
-            <defs>
-              <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="5" markerHeight="5" orient="auto">
-                <path d="M 0 0 L 5 10 L 10 0 z" fill="hsl(var(--muted-foreground))" />
-              </marker>
-            </defs>
-
             {/* PERIPLASM (clickable) */}
             <rect
-              x="60" y="105" width="480" height="90"
+              x="40" y="107" width="500" height="80"
               fill={active === "periplasm" ? "hsl(330 70% 55% / 0.18)" : "hsl(330 70% 55% / 0.08)"}
               stroke={active === "periplasm" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.4)"}
               strokeWidth={active === "periplasm" ? 3 : 1}
               className="cursor-pointer transition-all"
               onClick={() => setActive("periplasm")}
             />
-            <text x="70" y="120" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">Periplasm</text>
+            <text x="50" y="124" fontSize="10" fill="hsl(var(--foreground))" fontWeight="600">Periplasm</text>
 
             {/* β-lactamase enzymes in periplasm */}
             <g
               className="cursor-pointer transition-all"
               onClick={() => setActive("periplasm")}
             >
-              {[{ x: 180, y: 145 }, { x: 320, y: 155 }, { x: 430, y: 140 }].map((p, i) => (
+              {[{ x: 130, y: 158 }, { x: 340, y: 162 }, { x: 460, y: 155 }].map((p, i) => (
                 <g key={i}>
-                  <ellipse cx={p.x} cy={p.y} rx="18" ry="13"
+                  <ellipse cx={p.x} cy={p.y} rx="22" ry="13"
                     fill={active === "periplasm" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.7)"}
                     stroke="hsl(330 70% 40%)" strokeWidth="1" />
-                  <text x={p.x} y={p.y + 3} fontSize="8" fill="white" textAnchor="middle" fontWeight="600">β-lact'ase</text>
+                  <text x={p.x} y={p.y + 3.5} fontSize="9" fill="white" textAnchor="middle" fontWeight="600">β-lactamase</text>
                 </g>
               ))}
-              {/* β-lactam being hydrolysed near porin entry */}
-              <circle cx="265" cy="125" r="4.5" fill="hsl(45 90% 50%)" />
-              <line x1="270" y1="128" x2="305" y2="148" stroke="hsl(330 70% 55%)" strokeWidth="1.5" strokeDasharray="2 2" markerEnd="url(#arrowDown)" />
+              {/* β-lactam emerging from porin, being hydrolysed */}
+              <circle cx="245" cy="135" r="5" fill="hsl(45 90% 50%)" />
+              <text x="245" y="125" fontSize="9" fill="hsl(45 90% 50%)" textAnchor="middle" fontWeight="600">β-lactam</text>
+              <line x1="250" y1="138" x2="320" y2="158" stroke="hsl(330 70% 55%)" strokeWidth="1.5" strokeDasharray="2 2" markerEnd="url(#arrowDown)" />
             </g>
 
             {/* PEPTIDOGLYCAN layer (clickable) */}
@@ -210,41 +203,40 @@ const GramNegativeEnvelopeDiagram = () => {
               onClick={() => setActive("peptidoglycan")}
             >
               <rect
-                x="60" y="195" width="480" height="14"
+                x="40" y="187" width="500" height="14"
                 fill={active === "peptidoglycan" ? "hsl(160 70% 40% / 0.5)" : "hsl(160 70% 40% / 0.3)"}
                 stroke={active === "peptidoglycan" ? "hsl(160 70% 40%)" : "hsl(160 70% 40% / 0.6)"}
                 strokeWidth={active === "peptidoglycan" ? 3 : 1.5}
               />
-              <text x="70" y="205" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">Peptidoglycan (thin)</text>
-              {/* Cross-link marks */}
-              {[100, 160, 220, 340, 400, 460, 510].map((x) => (
-                <line key={x} x1={x} y1={196} x2={x} y2={208} stroke="hsl(160 70% 40%)" strokeWidth="0.8" />
+              <text x="50" y="197" fontSize="10" fill="hsl(var(--foreground))" fontWeight="600">Peptidoglycan</text>
+              {[100, 175, 250, 380, 450, 510].map((x) => (
+                <line key={x} x1={x} y1={188} x2={x} y2={200} stroke="hsl(160 70% 40%)" strokeWidth="0.8" />
               ))}
             </g>
 
             {/* INNER (CYTOPLASMIC) MEMBRANE (clickable) */}
             <rect
-              x="60" y="212" width="480" height="32"
+              x="40" y="206" width="500" height="34"
               fill="url(#phospholipid)"
               stroke={active === "inner" ? "hsl(280 70% 55%)" : "hsl(280 70% 55% / 0.5)"}
               strokeWidth={active === "inner" ? 4 : 1.5}
               className="cursor-pointer transition-all"
               onClick={() => setActive("inner")}
             />
-            <text x="70" y="230" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">Inner membrane</text>
+            <text x="50" y="226" fontSize="10" fill="hsl(var(--foreground))" fontWeight="600">Inner membrane</text>
 
-            {/* PBPs on inner membrane */}
-            {[140, 240, 380, 480].map((x) => (
+            {/* PBPs anchored on inner membrane facing periplasm */}
+            {[140, 220, 360, 480].map((x) => (
               <g key={x}>
-                <rect x={x - 6} y={200} width={12} height={14} rx={2}
+                <rect x={x - 8} y={196} width={16} height={12} rx={2}
                   fill="hsl(160 70% 30%)" stroke="hsl(160 70% 20%)" strokeWidth="0.8" />
-                <text x={x} y={210} fontSize="7" fill="white" textAnchor="middle" fontWeight="600">PBP</text>
+                <text x={x} y={205} fontSize="8" fill="white" textAnchor="middle" fontWeight="600">PBP</text>
               </g>
             ))}
 
             {/* CYTOPLASM */}
-            <rect x="60" y="244" width="480" height="180" fill="hsl(var(--muted) / 0.25)" stroke="hsl(var(--border))" strokeWidth="1" />
-            <text x="300" y="270" textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))" fontStyle="italic">cytoplasm</text>
+            <rect x="40" y="240" width="500" height="180" fill="hsl(var(--muted) / 0.25)" stroke="hsl(var(--border))" strokeWidth="1" />
+            <text x="290" y="270" textAnchor="middle" fontSize="11" fill="hsl(var(--muted-foreground))" fontStyle="italic">cytoplasm</text>
 
             {/* EFFLUX PUMP (RND tripartite) — spans all three layers (clickable) */}
             <g
@@ -252,37 +244,34 @@ const GramNegativeEnvelopeDiagram = () => {
               onClick={() => setActive("efflux")}
             >
               {/* Outer membrane channel (TolC/OprM) */}
-              <rect x={400} y={60} width={20} height={42}
+              <rect x={400} y={62} width={20} height={42}
                 fill={active === "efflux" ? "hsl(210 75% 50%)" : "hsl(210 75% 50% / 0.7)"}
                 stroke={active === "efflux" ? "hsl(210 75% 35%)" : "transparent"}
                 strokeWidth={active === "efflux" ? 2.5 : 0} rx="3" />
               {/* Periplasmic adapter (AcrA/MexA) */}
-              <path d={`M 402 102 L 418 102 L 415 212 L 405 212 Z`}
+              <path d={`M 402 104 L 418 104 L 415 206 L 405 206 Z`}
                 fill={active === "efflux" ? "hsl(210 75% 50% / 0.85)" : "hsl(210 75% 50% / 0.6)"} />
               {/* Inner membrane pump (AcrB/MexB) */}
-              <rect x={395} y={212} width={30} height={32}
+              <rect x={395} y={206} width={30} height={34}
                 fill={active === "efflux" ? "hsl(210 75% 50%)" : "hsl(210 75% 50% / 0.7)"}
                 stroke={active === "efflux" ? "hsl(210 75% 35%)" : "transparent"}
                 strokeWidth={active === "efflux" ? 2.5 : 0} rx="3" />
               {/* Drug being expelled */}
               <circle cx={410} cy={150} r={3.5} fill="hsl(195 80% 50%)" />
-              <line x1={410} y1={155} x2={410} y2={48} stroke="hsl(210 75% 50%)" strokeWidth="1.5" strokeDasharray="3 2" markerEnd="url(#arrowUp)" />
-              <defs>
-                <marker id="arrowUp" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="5" markerHeight="5" orient="auto">
-                  <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(210 75% 50%)" />
-                </marker>
-              </defs>
-              <text x={410} y={42} fontSize="8" fill="hsl(210 75% 50%)" textAnchor="middle" fontWeight="600">efflux pump</text>
+              <line x1={410} y1={155} x2={410} y2={50} stroke="hsl(210 75% 50%)" strokeWidth="1.5" strokeDasharray="3 2" markerEnd="url(#arrowUp)" />
+              <text x={410} y={42} fontSize="9" fill="hsl(210 75% 50%)" textAnchor="middle" fontWeight="600">efflux</text>
             </g>
 
-            {/* Right-side legend annotations */}
-            <Annotation x1={555} y1={80}  x2={540} y2={80}  label="LPS / lipid A" sub="polymyxin target" color="hsl(15 90% 55%)" active={active === "lps"} onClick={() => setActive("lps")} tx={555} ty={75} />
-            <Annotation x1={555} y1={150} x2={460} y2={150} label="Periplasm" sub="β-lactamases hydrolyse here" color="hsl(330 70% 55%)" active={active === "periplasm"} onClick={() => setActive("periplasm")} tx={555} ty={145} />
-            <Annotation x1={555} y1={205} x2={530} y2={205} label="Peptidoglycan" sub="PBP target (β-lactams)" color="hsl(160 70% 40%)" active={active === "peptidoglycan"} onClick={() => setActive("peptidoglycan")} tx={555} ty={200} />
-            <Annotation x1={555} y1={228} x2={530} y2={228} label="Inner membrane" sub="aminoglycoside uptake" color="hsl(280 70% 55%)" active={active === "inner"} onClick={() => setActive("inner")} tx={555} ty={223} />
+            {/* Right-side annotations in dedicated gutter (560-755) */}
+            <Annotation x1={560} y1={83}  x2={540} y2={83}  label="LPS / lipid A" sub="polymyxin target" color="hsl(15 90% 55%)" active={active === "lps"} onClick={() => setActive("lps")} tx={755} ty={78} />
+            <Annotation x1={560} y1={147} x2={485} y2={150} label="Periplasm" sub="β-lactamases hydrolyse here" color="hsl(330 70% 55%)" active={active === "periplasm"} onClick={() => setActive("periplasm")} tx={755} ty={142} />
+            <Annotation x1={560} y1={194} x2={540} y2={194} label="Peptidoglycan" sub="PBP target (β-lactams)" color="hsl(160 70% 40%)" active={active === "peptidoglycan"} onClick={() => setActive("peptidoglycan")} tx={755} ty={189} />
+            <Annotation x1={560} y1={223} x2={540} y2={223} label="Inner membrane" sub="aminoglycoside uptake" color="hsl(280 70% 55%)" active={active === "inner"} onClick={() => setActive("inner")} tx={755} ty={218} />
+            <Annotation x1={560} y1={120} x2={425} y2={120} label="Efflux pump (RND)" sub="AcrAB-TolC, MexAB-OprM" color="hsl(210 75% 50%)" active={active === "efflux"} onClick={() => setActive("efflux")} tx={755} ty={258} />
+            <Annotation x1={560} y1={88}  x2={265} y2={88}  label="Porin (OmpF/C, OprD)" sub="β-lactam entry route" color="hsl(45 90% 50%)" active={active === "porin"} onClick={() => setActive("porin")} tx={755} ty={298} />
 
             {/* Bottom note */}
-            <text x="300" y="455" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
+            <text x="290" y="455" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">
               Vancomycin & daptomycin cannot cross the LPS outer membrane → no Gram-negative activity
             </text>
           </svg>
