@@ -56,6 +56,10 @@ const OrganicChemistryTopic = () => {
               and explains its yellow colour in solution.
             </p>
           </div>
+
+          <div className="mt-4">
+            <IsomerismDiagram />
+          </div>
         </section>
 
         <section>
