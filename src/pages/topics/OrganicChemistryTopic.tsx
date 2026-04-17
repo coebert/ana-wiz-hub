@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { OrganicChemistryDiagram } from "@/components/diagrams/OrganicChemistryDiagram";
+import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -54,6 +55,10 @@ const OrganicChemistryTopic = () => {
               forms. Thiopentone exists as keto and enol tautomers — the enol form (thiol) gives it its name 
               and explains its yellow colour in solution.
             </p>
+          </div>
+
+          <div className="mt-4">
+            <IsomerismDiagram />
           </div>
         </section>
 
