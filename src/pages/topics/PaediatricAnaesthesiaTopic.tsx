@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
