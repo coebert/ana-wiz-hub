@@ -6,6 +6,7 @@ import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
+import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
