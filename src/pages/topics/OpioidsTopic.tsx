@@ -51,6 +51,7 @@ const OpioidsTopic = () => {
           <OIHToleranceDiagram />
           <MethadonePharmacologyDiagram />
           <BuprenorphinePharmacologyDiagram />
+          <RemifentanilPKDiagram />
         </section>
 
         <section className="mb-10">
