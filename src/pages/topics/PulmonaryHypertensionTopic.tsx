@@ -102,10 +102,90 @@ const PulmonaryHypertensionTopic = () => {
                 <li>Inhaled agents preserve V/Q matching, unlike IV vasodilators which dilate poorly ventilated regions and worsen shunt</li>
               </ul>
             </div>
+            <div className="bg-card border border-border rounded-lg p-4">
+              <h3 className="font-semibold text-foreground mb-2">Comparative Table — Targeted Pulmonary Vasodilators</h3>
+              <p className="text-xs text-muted-foreground mb-3">Doses are typical adult starting/maintenance values; check local protocols. Pathway colour: <span className="text-clinical font-semibold">NO/cGMP</span>, <span className="text-icu font-semibold">Endothelin</span>, <span className="text-perioperative font-semibold">Prostacyclin</span>.</p>
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <table className="w-full text-xs border-collapse min-w-[640px]">
+                  <thead>
+                    <tr className="border-b-2 border-border bg-secondary/30">
+                      <th className="text-left p-2 font-semibold text-foreground">Drug</th>
+                      <th className="text-left p-2 font-semibold text-foreground">Class / Mechanism</th>
+                      <th className="text-left p-2 font-semibold text-foreground">Route &amp; Dose</th>
+                      <th className="text-left p-2 font-semibold text-foreground">t½</th>
+                      <th className="text-left p-2 font-semibold text-foreground">Key Side Effects / Cautions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {/* NO/cGMP pathway */}
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-clinical mr-1.5 align-middle"></span>Sildenafil</td>
+                      <td className="p-2 text-muted-foreground">PDE-5 inhibitor → ↑cGMP → pulmonary vasodilation</td>
+                      <td className="p-2 text-muted-foreground">PO 20 mg TDS (up to 80 mg TDS); IV 10 mg TDS</td>
+                      <td className="p-2 text-muted-foreground">~4 h</td>
+                      <td className="p-2 text-muted-foreground">Headache, flushing, dyspepsia, visual disturbance (NAION); contraindicated with nitrates and riociguat</td>
+                    </tr>
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-clinical mr-1.5 align-middle"></span>Riociguat</td>
+                      <td className="p-2 text-muted-foreground">Soluble guanylate cyclase stimulator (NO-independent ↑cGMP)</td>
+                      <td className="p-2 text-muted-foreground">PO 1 mg TDS, titrated to 2.5 mg TDS</td>
+                      <td className="p-2 text-muted-foreground">5–10 h</td>
+                      <td className="p-2 text-muted-foreground">Hypotension, syncope, haemoptysis; teratogenic (REMS programme); only oral agent licensed for CTEPH; never combine with PDE-5i or nitrates</td>
+                    </tr>
+                    {/* Endothelin pathway */}
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-icu mr-1.5 align-middle"></span>Bosentan</td>
+                      <td className="p-2 text-muted-foreground">Dual ET<sub>A</sub>/ET<sub>B</sub> endothelin receptor antagonist</td>
+                      <td className="p-2 text-muted-foreground">PO 62.5 mg BD × 4 wk → 125 mg BD</td>
+                      <td className="p-2 text-muted-foreground">~5 h (active metabolite ~9 h)</td>
+                      <td className="p-2 text-muted-foreground">Hepatotoxicity (monthly LFTs mandatory), anaemia, peripheral oedema; teratogenic; CYP3A4/2C9 inducer — reduces warfarin and OCP levels</td>
+                    </tr>
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-icu mr-1.5 align-middle"></span>Macitentan</td>
+                      <td className="p-2 text-muted-foreground">Dual ET<sub>A</sub>/ET<sub>B</sub> antagonist (high tissue affinity)</td>
+                      <td className="p-2 text-muted-foreground">PO 10 mg OD</td>
+                      <td className="p-2 text-muted-foreground">~16 h (parent), ~48 h (active metabolite)</td>
+                      <td className="p-2 text-muted-foreground">Anaemia (monitor Hb), nasopharyngitis, headache; less hepatotoxicity than bosentan but still teratogenic; SERAPHIN trial — first to show morbidity/mortality benefit</td>
+                    </tr>
+                    {/* Prostacyclin pathway */}
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-perioperative mr-1.5 align-middle"></span>Iloprost</td>
+                      <td className="p-2 text-muted-foreground">Synthetic prostacyclin (PGI₂) analogue → IP receptor → ↑cAMP</td>
+                      <td className="p-2 text-muted-foreground">Inhaled (nebulised) 2.5–5 µg, 6–9 times/day; IV in crisis</td>
+                      <td className="p-2 text-muted-foreground">20–30 min</td>
+                      <td className="p-2 text-muted-foreground">Cough, jaw pain, flushing, hypotension; bronchospasm; frequent dosing burdens patients</td>
+                    </tr>
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-perioperative mr-1.5 align-middle"></span>Epoprostenol</td>
+                      <td className="p-2 text-muted-foreground">Native prostacyclin (PGI₂) — most potent pulmonary vasodilator</td>
+                      <td className="p-2 text-muted-foreground">Continuous IV via tunnelled central line; start 2 ng/kg/min, titrate</td>
+                      <td className="p-2 text-muted-foreground"><strong className="text-destructive">3–5 min</strong></td>
+                      <td className="p-2 text-muted-foreground"><strong>Abrupt cessation is fatal</strong> — rebound PH crisis. Line sepsis, jaw pain, diarrhoea, thrombocytopenia. Only agent with mortality benefit in WHO IV PAH</td>
+                    </tr>
+                    <tr className="border-b border-border/50 hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-perioperative mr-1.5 align-middle"></span>Treprostinil</td>
+                      <td className="p-2 text-muted-foreground">Stable prostacyclin analogue (longer half-life)</td>
+                      <td className="p-2 text-muted-foreground">SC infusion (1.25 ng/kg/min, titrated), IV, inhaled QDS, or PO</td>
+                      <td className="p-2 text-muted-foreground">~4 h</td>
+                      <td className="p-2 text-muted-foreground">SC infusion site pain (limits use); same prostacyclin class effects; longer t½ allows safer transient interruption than epoprostenol</td>
+                    </tr>
+                    <tr className="hover:bg-secondary/20">
+                      <td className="p-2 font-medium text-foreground"><span className="inline-block w-1.5 h-1.5 rounded-full bg-perioperative mr-1.5 align-middle"></span>Selexipag</td>
+                      <td className="p-2 text-muted-foreground">Selective oral IP-receptor agonist (non-prostanoid)</td>
+                      <td className="p-2 text-muted-foreground">PO 200 µg BD, titrated weekly to max 1600 µg BD</td>
+                      <td className="p-2 text-muted-foreground">~1 h (active metabolite ~10 h)</td>
+                      <td className="p-2 text-muted-foreground">Headache, diarrhoea, jaw pain, nausea; GRIPHON trial showed reduced morbidity events; oral alternative to parenteral prostacyclins</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-[11px] text-muted-foreground italic mt-3">
+                Group 1 PAH is treated with upfront combination therapy (e.g. ambrisentan + tadalafil, AMBITION trial). These agents are <strong>not</strong> indicated in Group 2 (left heart) or uncomplicated Group 3 PH — they may worsen pulmonary oedema or V/Q mismatch. <strong>Never abruptly stop</strong> any of these drugs perioperatively.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Perioperative & ICU Management */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Perioperative & ICU Management</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
