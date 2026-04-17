@@ -35,9 +35,12 @@ const APACHEIICalculator = () => {
   // Comparison: SOFA at 24 h
   const [sofa, setSofa] = useState(8);
 
+  // Clinical Frailty Scale (Rockwood) — Muscedere 2017 frailty overlay
+  const [cfs, setCfs] = useState(5);
+
   const result = useMemo(
-    () => evaluate({ temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission }),
-    [temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission]
+    () => evaluate({ temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission, cfs }),
+    [temp, map, hr, rr, aaO2, pao2, fio2, phArt, na, k, creat, aki, hct, wcc, gcs, age, chronic, admission, cfs]
   );
 
   return (
@@ -102,6 +105,21 @@ const APACHEIICalculator = () => {
         </div>
       </div>
 
+      <p className="text-xs font-semibold text-foreground mb-2">Clinical Frailty Scale (Rockwood) — Muscedere 2017 overlay</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 items-start">
+        <div className="md:col-span-2">
+          <Slider label={`CFS — ${cfsLabel(cfs)}`} value={cfs} min={1} max={9} step={1} unit="" onChange={setCfs} />
+          <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
+            1 Very fit · 2 Well · 3 Managing well · 4 Vulnerable · 5 Mildly frail · 6 Moderately frail · 7 Severely frail · 8 Very severely frail · 9 Terminally ill. Frail = CFS ≥ 5.
+          </p>
+        </div>
+        <div className="rounded-md border border-border bg-secondary/40 p-2">
+          <p className="text-[10px] text-muted-foreground">Frailty OR (vs CFS &lt; 5)</p>
+          <p className="text-lg font-bold font-mono text-foreground">×{result.frailtyOR.toFixed(2)}</p>
+          <p className="text-[10px] text-muted-foreground">Hospital mortality, Muscedere 2017 (n=421, ≥80 y ICU cohort)</p>
+        </div>
+      </div>
+
       {/* Score breakdown */}
       <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
         <div className="flex items-baseline justify-between mb-2 flex-wrap gap-2">
@@ -149,19 +167,28 @@ const APACHEIICalculator = () => {
       </div>
 
       {/* Side-by-side comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
         <div className="rounded-lg border border-border bg-background/40 p-3">
-          <p className="text-xs font-semibold text-foreground">APACHE II — predicted hospital mortality</p>
+          <p className="text-xs font-semibold text-foreground">APACHE II — predicted mortality</p>
           <p className="text-3xl font-bold mt-1" style={{ color: result.color }}>
             {result.mortalityPct.toFixed(1)}<span className="text-base">%</span>
           </p>
           <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Knaus logistic model · {admission === "nonOp" ? "non-operative" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"} admission
+            Knaus model · {admission === "nonOp" ? "non-op" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"}
+          </p>
+        </div>
+        <div className="rounded-lg border-2 p-3" style={{ borderColor: result.adjColor, backgroundColor: `${result.adjColor}14` }}>
+          <p className="text-xs font-semibold text-foreground">Frailty-adjusted mortality</p>
+          <p className="text-3xl font-bold mt-1" style={{ color: result.adjColor }}>
+            {result.adjMortalityPct.toFixed(1)}<span className="text-base">%</span>
+          </p>
+          <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+            CFS {cfs} · OR ×{result.frailtyOR.toFixed(2)} on baseline odds (Muscedere 2017)
           </p>
         </div>
         <div className="rounded-lg border border-border bg-background/40 p-3">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-foreground">SOFA at 24 h — predicted mortality</p>
+            <p className="text-xs font-semibold text-foreground">SOFA at 24 h</p>
             <input
               type="number"
               min={0}
@@ -175,7 +202,7 @@ const APACHEIICalculator = () => {
             {sofaMortality(sofa).toFixed(0)}<span className="text-base">%</span>
           </p>
           <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Ferreira 2001 · max SOFA in first 24 h vs ICU mortality
+            Ferreira 2001 · max SOFA in 24 h
           </p>
         </div>
       </div>
@@ -187,21 +214,27 @@ const APACHEIICalculator = () => {
       >
         <p className="text-sm font-bold" style={{ color: result.color }}>{result.bandTitle}</p>
         <p className="text-xs text-foreground mt-1 leading-relaxed">{result.bandDetail}</p>
+        {cfs >= 5 && (
+          <p className="text-xs text-foreground mt-2 leading-relaxed border-t border-border/50 pt-2">
+            <strong>Frailty modifier (CFS {cfs} — {cfsLabel(cfs)}):</strong> {result.frailtyMessage}
+          </p>
+        )}
       </div>
 
       {/* APACHE vs SOFA explainer */}
       <div className="rounded-lg border border-border p-3">
-        <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA — when to use which</p>
+        <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA vs frailty — when to use which</p>
         <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-          <li><strong>APACHE II</strong> — calculated once on the worst values in the first 24 h; better discrimination for hospital mortality (AUROC ~0.85). Disadvantage: cannot track over time.</li>
-          <li><strong>SOFA</strong> — daily organ-dysfunction score; trajectory matters more than single value. Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
+          <li><strong>APACHE II</strong> — worst values in first 24 h; AUROC ~0.85 for hospital mortality. Cannot track trajectory.</li>
+          <li><strong>SOFA</strong> — daily organ-dysfunction score; Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
+          <li><strong>CFS (Muscedere 2017)</strong> — pre-morbid frailty independently predicts hospital mortality (adjusted OR 1.81 for CFS ≥5) and 1-year mortality (OR 1.71) in ≥80 y ICU patients. Frail patients have ~2× LOS and higher disability at discharge. Adds discrimination beyond APACHE II in the elderly.</li>
           <li>SAPS II / APACHE IV outperform APACHE II in modern cohorts but are more complex.</li>
           <li>All scores are calibrated to populations — use as a communication and audit tool, not a single-patient verdict.</li>
         </ul>
       </div>
 
       <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Knaus WA et al. APACHE II. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. SOFA. Intensive Care Med 1996;22:707.
+        Refs: Knaus WA et al. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. Intensive Care Med 1996;22:707. Muscedere J et al. Intensive Care Med 2017;43:1105 (CFS &amp; outcomes in critically ill elderly).
       </p>
     </div>
   );
@@ -260,7 +293,32 @@ const chronicPts = (c: ChronicHealth) =>
 interface Inputs {
   temp: number; map: number; hr: number; rr: number; aaO2: number; pao2: number; fio2: number;
   phArt: number; na: number; k: number; creat: number; aki: boolean; hct: number; wcc: number; gcs: number;
-  age: number; chronic: ChronicHealth; admission: AdmissionType;
+  age: number; chronic: ChronicHealth; admission: AdmissionType; cfs: number;
+}
+
+/* ───── CFS helpers (Rockwood Clinical Frailty Scale) ───── */
+const CFS_LABELS = [
+  "", "Very fit", "Well", "Managing well", "Vulnerable",
+  "Mildly frail", "Moderately frail", "Severely frail", "Very severely frail", "Terminally ill"
+];
+export function cfsLabel(c: number) {
+  return CFS_LABELS[Math.max(1, Math.min(9, Math.round(c)))] ?? "";
+}
+/**
+ * Frailty odds ratio for in-hospital mortality (Muscedere 2017 meta-analysis,
+ * adjusted OR 1.81 for CFS ≥ 5 vs CFS < 5). We model a smooth per-unit OR ≈ 1.22
+ * for CFS ≥ 5, anchored so CFS 5 ≈ 1.22, CFS 7 ≈ 1.81, CFS 9 ≈ 2.69.
+ */
+function frailtyOR(cfs: number) {
+  if (cfs <= 4) return 1.0;
+  return Math.pow(1.22, cfs - 4);
+}
+
+function frailtyMessage(cfs: number) {
+  if (cfs <= 4) return "";
+  if (cfs <= 6) return "Pre-morbid frailty present — expect ~30–50% higher hospital mortality and ~2× length of stay vs non-frail counterparts. Discuss realistic functional goals and rehabilitation potential early.";
+  if (cfs <= 7) return "Severe frailty — adjusted OR ~1.81 for hospital mortality and 1.71 for 1-year mortality. Survivors frequently discharge to higher level of care. Goals-of-care conversation essential within 48 h.";
+  return "Very severe / terminal frailty — score-derived mortality substantially under-estimates true risk. Consider whether ICU admission aligns with patient values; comfort-focused care often more appropriate.";
 }
 
 function evaluate(i: Inputs) {
@@ -288,18 +346,27 @@ function evaluate(i: Inputs) {
   const total = aps + ageP + chronicP;
 
   // Predicted hospital mortality — Knaus 1985 logistic regression
-  // logit = -3.517 + 0.146 * APACHE II + diagnostic category coefficient + (post-op emergency adj)
-  // Simplified — using non-op baseline; post-op elective subtracts ~0.6 from logit;
-  // post-op emergency uses the +0.613 adjustment in addition to non-op coefficient.
   let logit = -3.517 + 0.146 * total;
   if (i.admission === "postOpElective") logit -= 0.6;
   if (i.admission === "postOpEmergency") logit += 0.613;
   const mortalityPct = (1 / (1 + Math.exp(-logit))) * 100;
 
+  // Frailty-adjusted mortality — apply OR to baseline odds, then convert back
+  const fOR = frailtyOR(i.cfs);
+  const baseOdds = mortalityPct / Math.max(0.0001, 100 - mortalityPct);
+  const adjOdds = baseOdds * fOR;
+  const adjMortalityPct = (adjOdds / (1 + adjOdds)) * 100;
+
   const color =
     total >= 35 ? "hsl(var(--destructive))" :
     total >= 25 ? "hsl(15 90% 55%)" :
     total >= 15 ? "hsl(45 90% 50%)" :
+    "hsl(var(--icu))";
+
+  const adjColor =
+    adjMortalityPct >= 70 ? "hsl(var(--destructive))" :
+    adjMortalityPct >= 40 ? "hsl(15 90% 55%)" :
+    adjMortalityPct >= 15 ? "hsl(45 90% 50%)" :
     "hsl(var(--icu))";
 
   let bandTitle = "", bandDetail = "";
@@ -317,7 +384,11 @@ function evaluate(i: Inputs) {
     bandDetail = "Consider whether ICU admission is required vs HDU/ward step-down once stable. Score may reflect short physiological perturbation only.";
   }
 
-  return { breakdown, aps, agePts: ageP, chronicPts: chronicP, total, mortalityPct, color, bandTitle, bandDetail };
+  return {
+    breakdown, aps, agePts: ageP, chronicPts: chronicP, total,
+    mortalityPct, color, bandTitle, bandDetail,
+    frailtyOR: fOR, adjMortalityPct, adjColor, frailtyMessage: frailtyMessage(i.cfs),
+  };
 }
 
 /* ───── SOFA mortality reference (Ferreira 2001) ───── */
