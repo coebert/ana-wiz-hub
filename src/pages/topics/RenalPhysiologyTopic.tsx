@@ -11,6 +11,7 @@ import { JGADiagram } from "@/components/diagrams/JGADiagram";
 import { RAASCascadeDiagram } from "@/components/diagrams/RAASCascadeDiagram";
 import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJuxtamedullaryDiagram";
 import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
+import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -140,6 +141,18 @@ const RenalPhysiologyTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-6">
             <CountercurrentMultiplierDiagram />
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Urine Concentration & Dilution Simulator</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Slide the ADH level from 0 to 100% to see how tubular fluid osmolality changes through each nephron segment
+            — and how final urine osmolality varies between 50 mOsm/kg (water diuresis / DI) and 1200 mOsm/kg
+            (maximal antidiuresis / SIADH).
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <UrineConcentrationSimulator />
           </div>
         </section>
 
