@@ -13,7 +13,10 @@ const CardiacElectrophysiologyTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Action Potentials</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">The heart has two types of action potential: the fast-response (atrial/ventricular myocytes, Purkinje fibres) and the slow-response (SA and AV nodes).</p>
+          <p className="text-muted-foreground leading-relaxed mb-3">The heart has two types of action potential: the fast-response (atrial/ventricular myocytes, Purkinje fibres) and the slow-response (SA and AV nodes). The interactive plots below show membrane potential (mV) against time with each phase highlighted — toggle between cell types and click any phase for ion-current detail.</p>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6 mb-4">
+            <CardiacActionPotentialDiagram />
+          </div>
           <div className="space-y-3">
             {[
               { phase: "Phase 0", fast: "Rapid Na⁺ influx (INa) → rapid depolarisation. Velocity ~1 m/s in ventricle.", slow: "Slow Ca²⁺ influx (ICa-L) → slow depolarisation. Velocity ~0.05 m/s in AV node." },
