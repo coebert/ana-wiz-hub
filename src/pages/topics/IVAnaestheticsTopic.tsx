@@ -8,6 +8,7 @@ import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISi
 import { PRISDiagram } from "@/components/diagrams/PRISDiagram";
 import { SchniderEleveldDiagram } from "@/components/diagrams/SchniderEleveldDiagram";
 import { KetaminePharmacologyDiagram } from "@/components/diagrams/KetaminePharmacologyDiagram";
+import { DexmedetomidineDiagram } from "@/components/diagrams/DexmedetomidineDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -140,6 +141,31 @@ const IVAnaestheticsTopic = () => {
             suppression (inhibits 11β-hydroxylase — even a single dose suppresses cortisol for up to 24 hours). Pain on injection.
             Myoclonus (not seizure activity). High incidence of PONV. Not recommended for infusion due to adrenal suppression.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Dexmedetomidine</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Highly selective <strong>α₂-adrenergic agonist</strong> (α₂ : α₁ ≈ 1620 : 1) — the dextro-isomer of medetomidine.
+            Acts at pre-synaptic α₂A autoreceptors in the <strong>locus coeruleus</strong>, reducing noradrenaline release and
+            disinhibiting the ventrolateral preoptic nucleus (VLPO). The result is a <strong>NREM-stage-2-like sedation</strong> —
+            patients are easily roused, follow commands, and have minimal respiratory depression.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Dosing (Dexdor)</strong>: maintenance infusion 0.2–1.4 µg/kg/h titrated to RASS. Optional loading dose
+            1 µg/kg over 10 min produces a transient hypertensive peak (peripheral α₂B vasoconstriction) followed by hypotension
+            and bradycardia (central α₂A) — the characteristic <strong>biphasic BP response</strong>. Slow infusion without a
+            bolus avoids the initial hypertension.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            <strong>Other uses</strong>: awake fibre-optic intubation, regional block adjunct, paediatric premedication
+            (intranasal), opioid/alcohol withdrawal. <strong>SPICE-III (2019)</strong> showed non-inferior 90-day mortality vs
+            standard sedation, with more ventilator-free days and less delirium. Cautions: bradycardia, hypotension, hepatic
+            dysfunction (reduce dose), and rebound hypertension on prolonged-use cessation.
+          </p>
+          <div className="mt-6">
+            <DexmedetomidineDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
