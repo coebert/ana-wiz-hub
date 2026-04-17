@@ -5,6 +5,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
+import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTransformerDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -64,6 +65,26 @@ const ElectricalSafetyTopic = () => {
               Patients with intracardiac catheters are "electrically susceptible." All equipment contacting the patient must
               have leakage current &lt;10 µA (Type CF equipment). Saline-filled CVP lines can act as conductors.
             </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Isolation Transformer & Line Isolation Monitor (LIM)</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            In critical-care areas (operating theatres, cardiac cath labs, ICU bedspaces) the standard earthed mains supply is
+            replaced by an <strong>isolated power system</strong>. A 1:1 isolation transformer magnetically couples power to the
+            theatre but removes the earth reference — both downstream conductors "float" relative to earth. Because no normal
+            return path exists through earth, a patient or staff member touching a single live conductor cannot complete a
+            circuit and no current flows through them.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            A <strong>Line Isolation Monitor (LIM)</strong> continuously measures the impedance from each line to earth. A
+            single insulation fault is detected and alarmed (typically when leakage current would exceed ~2 mA), but the supply
+            is deliberately <em>not</em> automatically interrupted — abrupt loss of power to a ventilator or bypass pump may be
+            more dangerous than the fault itself. Two simultaneous faults are required for a hazardous shock.
+          </p>
+          <div className="mt-4">
+            <IsolationTransformerDiagram />
           </div>
         </section>
 
