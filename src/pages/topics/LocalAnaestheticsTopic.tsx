@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { PKaDiagram } from "@/components/diagrams/PKaDiagram";
 import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHasselbalchDiagram";
+import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -45,6 +46,9 @@ const LocalAnaestheticsTopic = () => {
           </div>
           <div className="mt-4">
             <HendersonHasselbalchDiagram />
+          </div>
+          <div className="mt-4">
+            <IonTrappingDiagram />
           </div>
           <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
             <p className="text-sm font-medium text-foreground">The Key Principle</p>
