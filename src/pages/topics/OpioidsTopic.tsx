@@ -3,6 +3,7 @@ import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
 import { OIHToleranceDiagram } from "@/components/diagrams/OIHToleranceDiagram";
 import { MethadonePharmacologyDiagram } from "@/components/diagrams/MethadonePharmacologyDiagram";
+import { BuprenorphinePharmacologyDiagram } from "@/components/diagrams/BuprenorphinePharmacologyDiagram";
 import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
