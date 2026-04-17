@@ -474,10 +474,12 @@ const PacemakerView = ({
   selectedClass,
   setSelectedClass,
   selected,
+  time,
 }: {
   selectedClass: string | null;
   setSelectedClass: (c: string | null) => void;
   selected: DrugClass | undefined;
+  time: number;
 }) => {
   const w = 500, h = 340;
 
