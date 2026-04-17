@@ -426,7 +426,7 @@ export const BuprenorphinePharmacologyDiagram = () => {
           {/* Naloxone-containing formulations note */}
           <div className="p-3 rounded-lg border border-border bg-card">
             <p className="text-xs text-muted-foreground">
-              <strong className="text-foreground">Suboxone® (bup + naloxone)</strong> is generally safe perioperatively — the naloxone has negligible effect via the sublingual route (BA < 10%) and serves only to deter IV abuse.
+              <strong className="text-foreground">Suboxone® (bup + naloxone)</strong> is generally safe perioperatively — the naloxone has negligible effect via the sublingual route (BA &lt; 10%) and serves only to deter IV abuse.
             </p>
           </div>
         </div>
