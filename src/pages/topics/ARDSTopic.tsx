@@ -432,6 +432,102 @@ const ARDSTopic = () => {
             </table>
           </div>
         </div>
+
+        {/* Guideline comparison */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Side-by-side summary of the contemporary ARDS frameworks. Berlin 2012 is purely diagnostic, while
+            ESICM 2023 and the ATS/ESICM/SCCM 2024 Global Definition cover both diagnosis and management — the 2024
+            update notably includes non-intubated patients on HFNO.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-xs min-w-[760px]">
+              <thead>
+                <tr className="bg-secondary/40 text-foreground">
+                  <th className="text-left p-2 font-semibold border-b border-border">Topic</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">Berlin 2012</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">ESICM 2023</th>
+                  <th className="text-left p-2 font-semibold border-b border-border">ATS/ESICM/SCCM 2024 (Global Definition)</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground align-top">
+                {[
+                  {
+                    topic: "Definition / severity",
+                    berlin: "Acute (≤7d), bilateral opacities, not fully explained by cardiac failure, P/F on PEEP ≥5: mild 200–300, moderate 100–200, severe ≤100. Requires invasive ventilation.",
+                    esicm: "Adopts Berlin. Adds 'ARDS on HFNO' category for ≥30 L/min when intubation deferred.",
+                    global: "Expands Berlin: includes non-intubated patients on HFNO ≥30 L/min or NIV/CPAP ≥5 cmH₂O. SpO₂/FiO₂ ratio ≤315 acceptable when ABG unavailable. Removes mandatory PEEP threshold for non-intubated.",
+                  },
+                  {
+                    topic: "Tidal volume",
+                    berlin: "Not prescriptive (definition only) — implies low V_T per ARDSnet (6 mL/kg PBW).",
+                    esicm: "6 mL/kg PBW (strong). Plateau pressure ≤30 cmH₂O. Driving pressure ≤15 cmH₂O.",
+                    global: "Reaffirms 4–8 mL/kg PBW (target 6). Plateau ≤30, driving pressure ≤15. Personalised based on respiratory mechanics.",
+                  },
+                  {
+                    topic: "PEEP strategy",
+                    berlin: "PEEP ≥5 required to define ARDS — no specific titration recommendation.",
+                    esicm: "Higher PEEP in moderate–severe ARDS (conditional). Use ARDSnet PEEP/FiO₂ tables or oesophageal manometry. Recruitment manoeuvres NOT recommended (ART trial — increased mortality).",
+                    global: "Higher PEEP for moderate–severe. Individualise (PEEP/FiO₂ table, transpulmonary pressure, EIT). Avoid sustained recruitment manoeuvres.",
+                  },
+                  {
+                    topic: "Prone positioning",
+                    berlin: "Not addressed.",
+                    esicm: "Strong recommendation — prone for ≥12h (ideally 16h) in moderate–severe ARDS (P/F <150). Based on PROSEVA (mortality benefit).",
+                    global: "Strong recommendation — prone ≥12–16h/day in moderate–severe ARDS, including awake proning in non-intubated COVID-related ARDS (RECOVERY-RS). Initiate within first 36h.",
+                  },
+                  {
+                    topic: "Neuromuscular blockade",
+                    berlin: "Not addressed.",
+                    esicm: "Conditional — short-course (≤48h) cisatracurium for moderate–severe ARDS with severe dyssynchrony. ROSE trial diluted earlier ACURASYS benefit, so reserved for refractory dyssynchrony rather than routine.",
+                    global: "Same as ESICM — NMB only for severe dyssynchrony or refractory hypoxaemia, NOT routine. Use deep sedation first.",
+                  },
+                  {
+                    topic: "ECMO criteria",
+                    berlin: "Not addressed.",
+                    esicm: "VV-ECMO for severe ARDS refractory to optimal conventional therapy (lung-protective + prone + NMB). Refer early. EOLIA criteria: P/F <80 for >6h, OR pH <7.25 + PaCO₂ ≥60 for >6h, OR Murray ≥3.",
+                    global: "Endorses VV-ECMO for severe ARDS refractory to conventional therapy. Refer early to ECMO centre. Bayesian re-analysis of EOLIA + post-hoc data support mortality benefit.",
+                  },
+                  {
+                    topic: "Steroids",
+                    berlin: "Not addressed.",
+                    esicm: "Conditional recommendation — methylprednisolone in early moderate–severe ARDS (DEXA-ARDS, CoDEX). Avoid in late fibroproliferative phase.",
+                    global: "Supports steroids in moderate–severe ARDS, particularly COVID-19 (dexamethasone 6 mg per RECOVERY).",
+                  },
+                ].map((row) => (
+                  <tr key={row.topic} className="border-b border-border last:border-b-0 hover:bg-secondary/20">
+                    <td className="p-2 font-semibold text-foreground">{row.topic}</td>
+                    <td className="p-2">{row.berlin}</td>
+                    <td className="p-2">{row.esicm}</td>
+                    <td className="p-2">{row.global}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-4 grid sm:grid-cols-2 gap-3">
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they all agree</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li>Low tidal volume (6 mL/kg PBW), plateau ≤30, driving pressure ≤15</li>
+                <li>Prone positioning ≥12–16h for moderate–severe ARDS (PROSEVA)</li>
+                <li>VV-ECMO referral for severe refractory ARDS (EOLIA)</li>
+                <li>Avoid sustained recruitment manoeuvres (ART trial harm)</li>
+                <li>Conservative fluid balance once shock resolved (FACTT)</li>
+              </ul>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Where they differ</p>
+              <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+                <li><strong>Diagnostic scope</strong>: Global 2024 includes HFNO/NIV patients and SpO₂/FiO₂; Berlin requires invasive ventilation + ABG</li>
+                <li><strong>NMB</strong>: ESICM/Global narrow indication after ROSE; older practice was routine for moderate–severe</li>
+                <li><strong>PEEP titration</strong>: Global emphasises personalisation (transpulmonary pressure, EIT) vs older PEEP/FiO₂ table</li>
+                <li><strong>Steroids</strong>: stronger endorsement in Global (post-COVID evidence) than earlier guidance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
