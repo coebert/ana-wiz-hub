@@ -125,6 +125,9 @@ const EOLIAMurrayCalculator = () => {
         </ul>
       </div>
 
+      {/* Trend mini-chart */}
+      <TrendChart history={history} onReset={resetHistory} />
+
       {/* Recommendation */}
       <div
         className="rounded-lg p-3 border-l-4"
