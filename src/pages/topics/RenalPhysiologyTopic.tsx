@@ -155,6 +155,9 @@ const RenalPhysiologyTopic = () => {
             <UrineConcentrationSimulator />
           </div>
         </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
             reabsorption in PCT (85%) via carbonic anhydrase. (2) Titratable acid excretion (H₂PO₄⁻). (3) Ammonium (NH₄⁺)
