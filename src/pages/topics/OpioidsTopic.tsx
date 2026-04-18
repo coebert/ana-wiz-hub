@@ -357,8 +357,12 @@ const OpioidsTopic = () => {
           <NaloxoneDiagram />
         </section>
 
-        <section id="toc-synthesis" className="mb-10 scroll-mt-24">
-          <div className="overflow-x-auto">
+        <div id="toc-synthesis" className="scroll-mt-24">
+          <SynthesisBlock
+            title="Comparative Pharmacology of µ-Opioids"
+            subtitle="Side-by-side reference of the major perioperative µ-agonists. Use to anchor onset, potency and the single defining feature of each agent."
+            variant="table"
+          >
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-border">
@@ -385,8 +389,8 @@ const OpioidsTopic = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
+          </SynthesisBlock>
+        </div>
 
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Equianalgesic Dose Conversion</h2>
