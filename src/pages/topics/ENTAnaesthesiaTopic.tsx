@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -109,6 +110,7 @@ const ENTAnaesthesiaTopic = () => {
             <li><strong>Critical safety message — the neck-breather</strong>: a laryngectomy patient has <strong>no connection between mouth/nose and trachea</strong>. Bag-mask ventilation via the face will not work; oral/nasal intubation is impossible. In an emergency, <em>oxygenate and ventilate via the stoma</em> using a paediatric face mask or LMA over the stoma, or re-intubate the stoma directly. Bedside signage and the National Tracheostomy Safety Project <em>laryngectomy</em> emergency algorithm (red board) must be in place</li>
             <li><strong>Specific complications</strong>: massive haemorrhage (carotid blowout — late, catastrophic), pharyngocutaneous fistula, flap failure, chyle leak (left neck dissection — thoracic duct), hypocalcaemia (if parathyroids removed), shoulder dysfunction (accessory nerve), and tracheostome stenosis</li>
           </ul>
+          <LaryngectomyAirwayHandoverDiagram />
         </div>
       </section>
 
