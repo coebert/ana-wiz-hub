@@ -369,6 +369,7 @@ const ABGAnalyserTopic = () => {
         "Severinghaus: CO₂ crosses Teflon membrane → CO₂+H₂O→H⁺+HCO₃⁻ → pH change measured by inner glass electrode. Slowest response (~60–120s).",
         "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO₂ in breathing circuit.",
         "α-stat vs pH-stat: α-stat (uncorrected at 37°C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.",
+        "Optodes: fibre-optic fluorescence sensors. PO₂ optode uses ruthenium dye fluorescence quenching (Stern–Volmer); pH optode is ratiometric; PCO₂ optode = Severinghaus with pH optode inside. Don't consume O₂, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.",
       ]} />
 
       <QuizSection questions={abgAnalyserQuestions} />
