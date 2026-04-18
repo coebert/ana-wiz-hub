@@ -9,6 +9,7 @@ import NeckCrossSectionDiagram from "@/components/diagrams/NeckCrossSectionDiagr
 import LaryngealNervesDiagram from "@/components/diagrams/LaryngealNervesDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
+import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -115,6 +116,14 @@ const HeadNeckAnatomyTopic = () => {
             The orbit contains seven extraocular muscles controlling eye movement and eyelid elevation. The classic mnemonic "LR6 SO4, all the Rest III" summarises their innervation — essential for interpreting cranial nerve palsies and understanding ophthalmic regional anaesthesia.
           </p>
           <OrbitAnatomyDiagram />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bony Orbit — Foramina & Fissures</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            The orbit is a four-walled pyramidal cavity formed by seven bones, with its apex at the optic canal. Knowledge of which structures pass through each foramen and fissure underpins the interpretation of orbital fractures, the planning of regional blocks of the eye and face (supra-orbital, infra-orbital, peribulbar/retrobulbar), and the localisation of cranial nerve lesions causing ophthalmoplegia or sensory loss.
+          </p>
+          <OrbitBonyAnatomyDiagram />
         </div>
       </section>
 
