@@ -451,18 +451,18 @@ const NeckTrianglesDiagram = () => {
                 </g>
 
                 {/* ════════ ANATOMICAL LANDMARK LABELS ════════ */}
-                <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
-                  <text x="62" y="58" fontSize="4.5">Mastoid</text>
-                  <text x="76" y="74" fontSize="4" opacity="0.5">Angle</text>
-                  <text x="108" y="114" fontSize="4.5">Hyoid</text>
-                  <text x="140" y="244" fontSize="5">Clavicle</text>
-                  <text x="112" y="244" fontSize="4.5">Midline</text>
-                  <text x="94" y="70" fontSize="5">Mandible</text>
-                  {/* SCM label along muscle body */}
-                  <text x="108" y="150" fontSize="6" transform="rotate(64,108,150)" fontWeight="600" opacity="0.3">SCM</text>
-                  {/* Trapezius */}
-                  <text x="172" y="158" fontSize="5" transform="rotate(35,172,158)" opacity="0.3">Trapezius</text>
-                </g>
+                {showLabels && (
+                  <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5" className="select-none pointer-events-none">
+                    <text x="62" y="58" fontSize="4.5">Mastoid</text>
+                    <text x="76" y="74" fontSize="4" opacity="0.6">Angle</text>
+                    <text x="108" y="114" fontSize="4.5">Hyoid</text>
+                    <text x="140" y="244" fontSize="5">Clavicle</text>
+                    <text x="112" y="244" fontSize="4.5">Midline</text>
+                    <text x="94" y="70" fontSize="5">Mandible</text>
+                    <text x="108" y="150" fontSize="6" transform="rotate(64,108,150)" fontWeight="600" opacity="0.4">SCM</text>
+                    <text x="172" y="158" fontSize="5" transform="rotate(35,172,158)" opacity="0.4">Trapezius</text>
+                  </g>
+                )}
 
                 {/* ════════ CONTEXT-SENSITIVE OVERLAYS ════════ */}
                 {selected === "carotid" && (
