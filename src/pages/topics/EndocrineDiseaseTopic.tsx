@@ -25,6 +25,9 @@ const EndocrineDiseaseTopic = () => {
       accentColor="text-clinical"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
+        </p>
         <KeyLearningPoints points={keyPoints} />
         <PerioperativeDiabetesDiagram />
 

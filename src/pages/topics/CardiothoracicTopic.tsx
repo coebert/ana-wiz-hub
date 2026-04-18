@@ -12,6 +12,9 @@ import { SeeAlso } from "@/components/SeeAlso";
 const CardiothoracicTopic = () => {
   return (
     <SectionLayout title="Cardiothoracic Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+      <p className="text-muted-foreground leading-relaxed mb-6">
+        Cardiothoracic anaesthesia centres on three high-stakes domains: cardiopulmonary bypass physiology, lung isolation for thoracic surgery, and the management of one-lung ventilation. The diagrams below provide an at-a-glance reference for the CPB circuit, double-lumen tube positioning, and a structured approach to OLV troubleshooting before the detailed text.
+      </p>
       <CPBCircuitDiagram />
       <DLTInsertionDiagram />
       <OLVTroubleshootingDiagram />

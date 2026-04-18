@@ -12,6 +12,9 @@ const ToxicologyTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">General Principles</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Poisoning management on the ICU follows a small set of principles: stabilise with ABCDE, identify the toxin (with NPIS/TOXBASE support), decontaminate where appropriate, enhance elimination when an effective modality exists, and recognise the toxidrome patterns that often arrive before a confirmed history.
+          </p>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>ABCDE approach</strong>: stabilise first, identify toxin second. Contact National Poisons Information Service (NPIS/TOXBASE)</li>
             <li><strong>Decontamination</strong>: activated charcoal (1g/kg) within 1h of ingestion (most effective &lt;30min). Not for hydrocarbons, metals, alcohols, acids/alkalis</li>

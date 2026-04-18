@@ -13,6 +13,9 @@ const OrganDonationTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Types of Organ Donation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            UK deceased organ donation falls into two pathways with distinct legal, logistical, and physiological implications: donation after brainstem death (DBD) and donation after circulatory death (DCD). The cards below compare the two before subsequent sections explore the legal framework, brainstem death testing, and donor management in detail.
+          </p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Donation after Brainstem Death (DBD)</p>

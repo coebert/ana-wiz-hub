@@ -25,6 +25,9 @@ const PlasticSurgeryTopic = () => {
       accentColor="text-clinical"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Free tissue transfer (free flap) surgery is a microvascular endurance event in which flap survival depends on meticulous perioperative haemodynamic, thermal, and rheological management. This topic covers the principles of flap perfusion, prolonged-surgery considerations, and the regional techniques that contribute to both analgesia and microcirculatory flow.
+        </p>
         <KeyLearningPoints points={keyPoints} />
         <FreeFlaPerfusionDiagram />
 

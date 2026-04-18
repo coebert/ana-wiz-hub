@@ -13,6 +13,9 @@ const PaediatricAnaesthesiaTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anatomical & Physiological Differences</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Children are not small adults: differences in airway anatomy, respiratory mechanics, rate-dependent cardiac output, thermoregulation, and drug handling all translate into distinct anaesthetic priorities. The table below summarises the system-by-system contrasts that drive equipment choice, monitoring, and emergency response in paediatric practice.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

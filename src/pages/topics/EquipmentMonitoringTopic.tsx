@@ -30,6 +30,9 @@ const EquipmentMonitoringTopic = () => {
       accentColor="text-physics"
     >
       <div className="space-y-10">
+        <p className="text-muted-foreground leading-relaxed">
+          This page is a consolidated overview of the core anaesthetic equipment topics — the anaesthetic machine, breathing circuits and scavenging, vaporizers, and regional/neuraxial needles. Each subtopic links to a dedicated detailed page; use the cards below to navigate.
+        </p>
         {/* Quick-nav cards */}
         <section>
           <h2 className="text-xl font-serif font-bold text-foreground mb-4">Detailed Topic Pages</h2>

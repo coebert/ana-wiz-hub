@@ -17,6 +17,9 @@ import { SeeAlso } from "@/components/SeeAlso";
 const AirwayManagementTopic = () => {
   return (
     <SectionLayout title="Airway Management" subtitle="FRCA Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+      <p className="text-muted-foreground leading-relaxed mb-6">
+        Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway Society (DAS) algorithms standardise the approach to anticipated and unanticipated difficulty, supported by structured assessment tools and a hierarchy of rescue techniques culminating in front-of-neck access. The diagrams below summarise the DAS pathway, laryngoscopy grading, and pre-operative risk scoring.
+      </p>
       <DASAlgorithmDiagram />
       <CormackLehaneDiagram />
       <MallampatiDiagram />
