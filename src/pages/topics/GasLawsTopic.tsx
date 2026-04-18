@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
+import { CriticalTemperatureDiagram } from "@/components/diagrams/CriticalTemperatureDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -150,6 +151,70 @@ const GasLawsTopic = () => {
             T = absolute temperature. Real gases deviate from ideal behaviour at high pressures and low temperatures,
             described by the van der Waals equation.
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Critical Temperature & Critical Pressure</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The <strong>critical temperature</strong> of a substance is the temperature above which it cannot be
+            liquefied by the application of pressure alone, no matter how great. The <strong>critical pressure</strong>
+            is the pressure required to liquefy the gas at exactly its critical temperature. Above the critical
+            temperature, the substance can only exist as a gas; below it, gas and liquid phases can coexist if the
+            pressure is high enough.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Key values for anaesthetic gases</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-5">
+              <li><strong>Oxygen:</strong> critical temperature −118 °C, critical pressure 50 bar</li>
+              <li><strong>Nitrous oxide:</strong> critical temperature 36.5 °C, critical pressure 72 bar</li>
+              <li><strong>Carbon dioxide:</strong> critical temperature 31 °C, critical pressure 74 bar</li>
+              <li><strong>Air:</strong> critical temperature −141 °C (pseudo-critical, as it is a mixture)</li>
+            </ul>
+          </div>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Cylinder Behaviour: N₂O vs O₂</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2 mb-4">
+            Use the slider below to empty each cylinder and observe how the pressure gauge behaves. The contrast
+            between N₂O and O₂ is a direct consequence of where room temperature sits relative to each gas's critical
+            temperature.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <CriticalTemperatureDiagram />
+          </div>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Why N₂O cylinder pressure is constant</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            At a typical room temperature of 20 °C, N₂O is <em>below</em> its critical temperature of 36.5 °C. When
+            it is compressed into a cylinder it partially liquefies, so the cylinder contains a two-phase system: a
+            pool of liquid N₂O at the bottom in equilibrium with N₂O vapour above it. The pressure of the vapour
+            phase is the <strong>saturated vapour pressure</strong> (SVP) of N₂O, which depends only on temperature —
+            approximately 52 bar at 20 °C.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            As gas is drawn off, more liquid evaporates to replace it and the vapour pressure stays constant. The
+            gauge therefore continues to read ~52 bar throughout the working life of the cylinder, even as the
+            contents progressively diminish. Only once the very last drop of liquid has evaporated does the cylinder
+            behave as a simple gas reservoir — and at that point the pressure falls rapidly as the remaining vapour
+            is consumed (typically when ~20% of the original mass remains).
+          </p>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            By contrast, O₂ has a critical temperature of −118 °C, far below room temperature. It cannot be liquefied
+            by pressure alone at 20 °C and is stored as a compressed gas only. The cylinder pressure therefore obeys
+            Boyle's law and falls linearly as oxygen is used, making the gauge a reliable indicator of remaining
+            contents.
+          </p>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Clinical Application</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The contents of an N₂O cylinder are determined by <strong>weighing</strong> (full weight − tare weight),
+              not by the pressure gauge. Cylinders are filled to a <strong>filling ratio</strong> (mass of N₂O / mass
+              of water that would fill the cylinder) of 0.75 in temperate climates and 0.67 in the tropics, to leave
+              vapour headspace and prevent dangerous pressure rises if the cylinder warms. As N₂O vaporises, latent
+              heat of vaporisation cools the cylinder and the vapour pressure (and hence delivered pressure) actually
+              <em> falls</em> during heavy use — frost may form on the outside of the cylinder.
+            </p>
+          </div>
         </section>
 
         <section className="mb-10">
