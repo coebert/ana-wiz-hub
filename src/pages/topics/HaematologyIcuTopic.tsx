@@ -1,13 +1,26 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-ttp", label: "TTP" },
+  { id: "toc-tma", label: "TMAs" },
+  { id: "toc-hus", label: "HUS" },
+  { id: "toc-hlh", label: "HLH" },
+  { id: "toc-icu-common", label: "ICU Care" },
+  { id: "toc-hit", label: "HIT" },
+  { id: "toc-anticoag", label: "Anticoagulation" },
+  { id: "toc-synthesis", label: "Synthesis" },
+];
+
 const HaematologyIcuTopic = () => {
   return (
     <SectionLayout title="Haematological & Immunological Disorders" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
         {/* Introduction */}
         <div>
@@ -18,7 +31,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* TTP */}
-        <div>
+        <div id="toc-ttp" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thrombotic Thrombocytopenic Purpura (TTP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             TTP is a thrombotic microangiopathy (TMA) caused by severe deficiency of ADAMTS13 — a metalloproteinase that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, uncleaved vWF multimers cause platelet aggregation in the microvasculature, leading to thrombocytopenia, microangiopathic haemolytic anaemia (MAHA), and organ ischaemia.
