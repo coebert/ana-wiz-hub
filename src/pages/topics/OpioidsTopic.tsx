@@ -49,10 +49,14 @@ const OpioidsTopic = () => {
             <OpioidReceptorDiagram />
           </div>
           <OpioidReceptorSignalingDiagram />
-          <OIHToleranceDiagram />
-          <MethadonePharmacologyDiagram />
-          <BuprenorphinePharmacologyDiagram />
-          <RemifentanilPKDiagram />
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Comparing the molecular skeletons of the major opioid families (phenanthrenes, phenylpiperidines, diphenylheptanes) helps explain potency, lipid solubility, and receptor selectivity.
+          </p>
+          <OpioidStructures />
         </section>
 
         <section className="mb-10">
@@ -96,6 +100,9 @@ const OpioidsTopic = () => {
               opioid-induced hyperalgesia (OIH) after prolonged high-dose use. Dose reduction in the elderly but no adjustment
               for renal/hepatic impairment. Potent bradycardia risk — glycopyrrolate may be needed.
             </p>
+          </div>
+          <div className="mt-4">
+            <RemifentanilPKDiagram />
           </div>
         </section>
 
@@ -229,6 +236,11 @@ const OpioidsTopic = () => {
               <li>• Ceiling effects on respiratory depression make these agents theoretically safer in overdose than pure agonists</li>
             </ul>
           </div>
+
+          <div className="mt-6 space-y-6">
+            <BuprenorphinePharmacologyDiagram />
+            <MethadonePharmacologyDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
@@ -237,6 +249,10 @@ const OpioidsTopic = () => {
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
             in opioid efficacy — but they have different mechanisms and require different management strategies.
           </p>
+
+          <div className="mt-4">
+            <OIHToleranceDiagram />
+          </div>
 
           <div className="grid md:grid-cols-2 gap-4 mt-4">
             <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
@@ -433,11 +449,6 @@ const OpioidsTopic = () => {
         "Alfentanil: pKa 6.5 → 90% un-ionised → fastest onset despite lower lipid solubility than fentanyl.",
         "Naloxone: competitive antagonist, duration 30-60 min. Risk of re-narcotisation. Titrate carefully to avoid acute reversal."
       ]} />
-
-        <div>
-          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
-          <OpioidStructures />
-        </div>
 
         <QuizSection questions={opioidsQuiz} />
       <ReferencesList topicId="opioids" />
