@@ -267,7 +267,13 @@ const SepsisTopic = () => {
 
       </section>
 
-      <SepsisManagementDiagram />
+      <section className="mb-10">
+        <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Synthesis — Sepsis Management Algorithm</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          Putting it all together: the integrated bundle from recognition through resuscitation, source control, vasopressor titration and de-escalation.
+        </p>
+        <SepsisManagementDiagram />
+      </section>
 
       <KeyLearningPoints points={[
         "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",

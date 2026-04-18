@@ -26,8 +26,6 @@ const PulmonaryHypertensionTopic = () => {
       accentColor="text-icu"
     >
       <div className="space-y-8">
-        <KeyLearningPoints points={keyPoints} />
-
         {/* Definition & Classification */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Classification</h2>
