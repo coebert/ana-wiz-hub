@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ReferencesList } from "@/components/ReferencesList";
 import { redoxQuiz } from "@/data/quizzes";
 
 const OxidationReductionTopic = () => {
@@ -51,6 +52,7 @@ const OxidationReductionTopic = () => {
         />
 
         <QuizSection questions={redoxQuiz} />
+        <ReferencesList topicId="oxidation-reduction" />
         <SeeAlso topicId="oxidation-reduction" />
         <TopicCompletionToggle topicId="oxidation-reduction" topicTitle="Oxidation, Reduction & Electrochemistry" />
       </div>

@@ -4,6 +4,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ReferencesList } from "@/components/ReferencesList";
 import { acidsBasesQuiz } from "@/data/quizzes";
 
 const AcidsBasesBuffersTopic = () => {
@@ -80,6 +81,7 @@ const AcidsBasesBuffersTopic = () => {
         />
 
         <QuizSection questions={acidsBasesQuiz} />
+        <ReferencesList topicId="acids-bases-buffers" />
         <SeeAlso topicId="acids-bases-buffers" />
         <TopicCompletionToggle topicId="acids-bases-buffers" topicTitle="Acids, Bases & Buffer Systems" />
       </div>
