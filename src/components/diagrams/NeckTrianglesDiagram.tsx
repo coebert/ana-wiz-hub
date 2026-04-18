@@ -134,6 +134,8 @@ const pts = {
 const NeckTrianglesDiagram = () => {
   const [selected, setSelected] = useState<TriangleKey>("anterior");
   const [showSubdivisions, setShowSubdivisions] = useState(true);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = triangles[selected];
 
   // ── SCM centreline path (curved) for triangle boundaries ──
