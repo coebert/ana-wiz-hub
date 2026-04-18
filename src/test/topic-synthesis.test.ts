@@ -27,8 +27,10 @@ const REQUIRED_COMPONENTS = [
 // Per-file opt-outs. Key = filename, value = list of component names allowed
 // to be missing (with brief justification in a comment).
 const ALLOWED_MISSING: Record<string, string[]> = {
-  // Add entries here as needed, e.g.:
-  // "SomeStubTopic.tsx": ["QuizSection"], // placeholder topic, no quiz authored yet
+  // Quiz content not yet authored for these large ICU overview topics.
+  // TODO: author quizzes and remove these entries.
+  "HaematologyIcuTopic.tsx": ["QuizSection"],
+  "PaediatricIcuTopic.tsx": ["QuizSection"],
 };
 
 const topicFiles = readdirSync(TOPICS_DIR)
