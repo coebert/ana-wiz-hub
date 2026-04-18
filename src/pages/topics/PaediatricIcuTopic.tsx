@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 
 const PaediatricIcuTopic = () => {
   return (
@@ -14,6 +15,15 @@ const PaediatricIcuTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Paediatric intensive care (PIC) requires understanding of age-specific physiology, pharmacology, and disease patterns. Children are not small adults — differences in airway anatomy, cardiovascular reserve, thermoregulation, and drug handling demand a tailored approach. Key conditions include bronchiolitis, sepsis, status epilepticus, congenital heart disease, and traumatic brain injury.
           </p>
+        </div>
+
+        {/* WETFLAG */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-2">WETFLAG — paediatric resuscitation mnemonic</h2>
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus. It generates the seven weight-based numbers needed to deliver immediate life-saving therapy without doing arithmetic under stress: <strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose. Adjust the slider to see how the numbers scale with age, or override with measured weight.
+          </p>
+          <WETFLAGDiagram />
         </div>
 
         {/* Age-Specific Physiological Differences */}
