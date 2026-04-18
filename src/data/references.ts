@@ -119,6 +119,37 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2015", citation: "Greenhalgh T. How to read a paper: Statistics for the non-statistician. BMJ. 1997;315:422-425.", url: "https://doi.org/10.1136/bmj.315.7105.422" },
   ],
 
+  // ──────── CHEMISTRY ────────
+  "atomic-structure-bonding": [
+    { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 2: Drug Action." },
+    { label: "Cross & Plunkett Ch.2", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Cambridge University Press; 2014. Chapter 2: Atomic Structure." },
+    { label: "BJA Educ 2010", citation: "Sneyd JR. Bonding and intermolecular forces in anaesthetic pharmacology. BJA Education. 2010;10(2):41-44.", url: "https://doi.org/10.1093/bjaceaccp/mkq003" },
+  ],
+  "acids-bases-buffers": [
+    { label: "BJA Educ 2009", citation: "Hopkins E, Sanvictores T, Sharma S. Physiology, Acid Base Balance. BJA Education. 2009;9(1):24-28.", url: "https://doi.org/10.1093/bjaceaccp/mkn053" },
+    { label: "Peck & Hill Ch.2", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 2: pH, pKa and Henderson-Hasselbalch." },
+    { label: "Cross & Plunkett Ch.3", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 3: Physical Chemistry." },
+    { label: "Stewart 1983", citation: "Stewart PA. Modern quantitative acid-base chemistry. Can J Physiol Pharmacol. 1983;61(12):1444-1461.", url: "https://doi.org/10.1139/y83-207" },
+  ],
+  "solutions-concentration": [
+    { label: "Cross & Plunkett Ch.3", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 3: Solutions, Osmolality and Tonicity." },
+    { label: "Severs 2015", citation: "Severs D, Hoorn EJ, Rookmaaker MB. A critical appraisal of intravenous fluids: from the physiological basis to clinical evidence. Nephrol Dial Transplant. 2015;30(2):178-187.", url: "https://doi.org/10.1093/ndt/gfu005" },
+    { label: "NICE CG174", citation: "National Institute for Health and Care Excellence. Intravenous fluid therapy in adults in hospital. NICE Clinical Guideline CG174; updated 2017.", url: "https://www.nice.org.uk/guidance/cg174" },
+    { label: "Lobo & Awad 2014", citation: "Lobo DN, Awad S. Should chloride-rich crystalloids remain the mainstay of fluid resuscitation? Kidney Int. 2014;86(6):1096-1105.", url: "https://doi.org/10.1038/ki.2014.105" },
+  ],
+  "organic-chemistry": [
+    { label: "Peck & Hill Ch.3", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Chapter 3: Drug Passage Across the Cell Membrane." },
+    { label: "Cross & Plunkett Ch.4", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 4: Isomerism and Pharmaceutical Chemistry." },
+    { label: "BJA Educ 2008", citation: "Calvey TN, Williams NE. Stereochemistry and anaesthetic drugs. BJA Education. 2008;8(2):51-54.", url: "https://doi.org/10.1093/bjaceaccp/mkn009" },
+    { label: "Nau & Strichartz 2002", citation: "Nau C, Strichartz GR. Drug chirality in anesthesia. Anesthesiology. 2002;97(2):497-502.", url: "https://doi.org/10.1097/00000542-200208000-00029" },
+  ],
+  "oxidation-reduction": [
+    { label: "BJA Educ 2010", citation: "Skinner H. Electrochemistry and the measurement of blood gases. BJA Education. 2010;10(1):19-22.", url: "https://doi.org/10.1093/bjaceaccp/mkp043" },
+    { label: "Cross & Plunkett Ch.3", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 3: Oxidation, Reduction and Electrochemistry." },
+    { label: "Wright 1999 (MetHb)", citation: "Wright RO, Lewander WJ, Woolf AD. Methemoglobinemia: etiology, pharmacology, and clinical management. Ann Emerg Med. 1999;34(5):646-656.", url: "https://doi.org/10.1016/S0196-0644(99)70167-8" },
+    { label: "Halliwell & Gutteridge", citation: "Halliwell B, Gutteridge JMC. Free Radicals in Biology and Medicine. 5th ed. Oxford University Press; 2015. Chapters 1-3: Oxygen, Free Radicals and Antioxidants." },
+  ],
+
   // ──────── PHYSIOLOGY ────────
   "cardiac-cycle": [
     { label: "BJA Educ 2018", citation: "Brown D, Edwards H. The cardiac cycle. BJA Education. 2005;5(3):82-86.", url: "https://doi.org/10.1093/bjaceaccp/mki024" },
