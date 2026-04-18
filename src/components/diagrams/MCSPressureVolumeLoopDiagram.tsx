@@ -75,13 +75,13 @@ const STATES: Record<State, LoopParams> = {
   },
 };
 
-const W = 580;
-const H = 380;
-const PAD = { top: 30, right: 30, bottom: 50, left: 60 };
+const W = 620;
+const H = 440;
+const PAD = { top: 40, right: 40, bottom: 60, left: 70 };
 const PLOT_W = W - PAD.left - PAD.right;
 const PLOT_H = H - PAD.top - PAD.bottom;
-const V_MAX = 230;
-const P_MAX = 160;
+const V_MAX = 250;
+const P_MAX = 180;
 
 const xOf = (v: number) => PAD.left + (v / V_MAX) * PLOT_W;
 const yOf = (p: number) => PAD.top + PLOT_H - (p / P_MAX) * PLOT_H;
@@ -223,7 +223,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
   const baselineSW = loops.baseline.area;
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-3 my-6">
+    <div className="w-full max-w-4xl mx-auto space-y-3 my-6">
       <div className="text-center">
         <h3 className="text-lg font-serif font-bold text-foreground">
           Pressure–Volume Loops: MCS Device Effects
@@ -264,7 +264,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
               <text x={PAD.left - 6} y={yOf(p) + 3} textAnchor="end" fontSize="10" className="fill-muted-foreground">{p}</text>
             </g>
           ))}
-          {[0, 50, 100, 150, 200].map((v) => (
+          {[0, 50, 100, 150, 200, 250].map((v) => (
             <g key={`gv${v}`}>
               <line x1={xOf(v)} y1={PAD.top} x2={xOf(v)} y2={PAD.top + PLOT_H} stroke="hsl(210 20% 95%)" />
               <text x={xOf(v)} y={PAD.top + PLOT_H + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">{v}</text>
