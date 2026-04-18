@@ -79,6 +79,7 @@ const CardiacOutputMonitoringTopic = () => {
       <PiCCODiagram />
       <PACDiagram />
       <EchoDiagram />
+      <TOEViewsDiagram />
 
       <KeyLearningPoints points={[
         "PAC is the gold standard but PAC-Man trial showed no mortality benefit from routine use",
