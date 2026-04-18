@@ -591,7 +591,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 10. INTEGRATED COMPARISON ================= */}
-        <div className="mb-10">
+        <div id="toc-synthesis" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Haemodynamic Effects — Side-by-Side Comparison</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Having reviewed each agent individually, this consolidated table summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change.
