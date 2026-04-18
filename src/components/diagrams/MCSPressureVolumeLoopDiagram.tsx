@@ -75,13 +75,13 @@ const STATES: Record<State, LoopParams> = {
   },
 };
 
-const W = 580;
-const H = 380;
-const PAD = { top: 30, right: 30, bottom: 50, left: 60 };
+const W = 620;
+const H = 440;
+const PAD = { top: 40, right: 40, bottom: 60, left: 70 };
 const PLOT_W = W - PAD.left - PAD.right;
 const PLOT_H = H - PAD.top - PAD.bottom;
-const V_MAX = 230;
-const P_MAX = 160;
+const V_MAX = 250;
+const P_MAX = 180;
 
 const xOf = (v: number) => PAD.left + (v / V_MAX) * PLOT_W;
 const yOf = (p: number) => PAD.top + PLOT_H - (p / P_MAX) * PLOT_H;
@@ -223,7 +223,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
   const baselineSW = loops.baseline.area;
 
   return (
-    <div className="w-full max-w-3xl mx-auto space-y-3 my-6">
+    <div className="w-full max-w-4xl mx-auto space-y-3 my-6">
       <div className="text-center">
         <h3 className="text-lg font-serif font-bold text-foreground">
           Pressure–Volume Loops: MCS Device Effects
@@ -264,7 +264,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
               <text x={PAD.left - 6} y={yOf(p) + 3} textAnchor="end" fontSize="10" className="fill-muted-foreground">{p}</text>
             </g>
           ))}
-          {[0, 50, 100, 150, 200].map((v) => (
+          {[0, 50, 100, 150, 200, 250].map((v) => (
             <g key={`gv${v}`}>
               <line x1={xOf(v)} y1={PAD.top} x2={xOf(v)} y2={PAD.top + PLOT_H} stroke="hsl(210 20% 95%)" />
               <text x={xOf(v)} y={PAD.top + PLOT_H + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">{v}</text>
@@ -275,25 +275,25 @@ export const MCSPressureVolumeLoopDiagram = () => {
           <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
           <line x1={PAD.left} y1={PAD.top + PLOT_H} x2={W - PAD.right} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
           <text x={PAD.left + PLOT_W / 2} y={H - 10} textAnchor="middle" fontSize="11" className="fill-foreground font-medium">LV Volume (mL)</text>
-          <text x={16} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 16 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
+          <text x={20} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 20 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
             LV Pressure (mmHg)
           </text>
 
           {/* ESPVR (baseline) — dashed grey */}
           <path d={espvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="4 3" fill="none" />
-          <text x={W - PAD.right - 5} y={yOf(espvrP(220, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
+          <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
 
           {/* ESPVR (shock) — dashed red */}
           {(active.has("shock") || active.has("iabp") || active.has("impella") || active.has("ecmo") || active.has("lvad")) && (
             <>
               <path d={espvrShockPath} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.6" />
-              <text x={W - PAD.right - 5} y={yOf(espvrP(220, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
+              <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
             </>
           )}
 
           {/* EDPVR */}
           <path d={edpvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="2 2" fill="none" />
-          <text x={xOf(210)} y={yOf(edpvrP(210, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
+          <text x={xOf(230)} y={yOf(edpvrP(230, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
 
           {/* Loops */}
           {ALL_STATES.filter((s) => active.has(s)).map((s) => {
