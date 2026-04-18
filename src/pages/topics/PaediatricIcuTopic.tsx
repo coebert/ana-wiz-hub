@@ -4,6 +4,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { QuizSection } from "@/components/QuizSection";
 import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
 
@@ -350,6 +351,75 @@ const PaediatricIcuTopic = () => {
           "Paediatric cardiac arrest is usually respiratory in origin — 5 rescue breaths first, defibrillation 4 J/kg",
           "Brainstem death testing in children: >2 months, NOT applicable <37 weeks corrected gestational age",
           "FEAST trial: fluid boluses increased mortality in resource-limited settings — does NOT change UK practice"
+        ]} />
+
+        <QuizSection questions={[
+          {
+            question: "A 6-month-old infant (8 kg) presents in shock. After airway and breathing are addressed, what is the appropriate initial fluid bolus?",
+            options: [
+              "20 ml/kg 0.9% saline (160 ml) over 5 minutes, reassess",
+              "10–20 ml/kg balanced crystalloid (80–160 ml) with reassessment after each bolus",
+              "60 ml/kg crystalloid as a single rapid bolus",
+              "5 ml/kg 5% albumin only",
+            ],
+            correctIndex: 1,
+            explanation: "Current UK/APLS guidance is 10–20 ml/kg crystalloid boluses with reassessment after each, watching for fluid overload (hepatomegaly, crackles). Large volume rapid resuscitation has been deprioritised after FEAST and concerns about iatrogenic harm.",
+          },
+          {
+            question: "A 4-year-old with hypoplastic left heart syndrome (post-Norwood) has SpO₂ of 92% on supplemental oxygen with worsening acidosis and poor perfusion. What is the most likely problem?",
+            options: [
+              "Inadequate oxygenation requiring more FiO₂",
+              "Pulmonary overcirculation with systemic steal — reduce FiO₂",
+              "Cyanotic spell requiring morphine and knee-to-chest",
+              "Sepsis until proven otherwise",
+            ],
+            correctIndex: 1,
+            explanation: "In single-ventricle physiology, target SpO₂ is 75–85%. SpO₂ of 92% indicates excessive pulmonary blood flow at the expense of systemic perfusion (Qp:Qs imbalance), causing acidosis. Reduce FiO₂ (often to 0.21) and consider permissive hypercapnia to raise PVR.",
+          },
+          {
+            question: "A previously well 2-year-old collapses. Initial rhythm is asystole. Which of the following best reflects paediatric resuscitation priorities?",
+            options: [
+              "Immediate defibrillation at 4 J/kg",
+              "5 rescue breaths first, then CPR at 15:2 with adrenaline 10 mcg/kg every 3–5 min",
+              "Adrenaline 1 mg IV every 3–5 minutes as per adult ALS",
+              "Atropine 20 mcg/kg as first-line drug",
+            ],
+            correctIndex: 1,
+            explanation: "Paediatric arrests are usually hypoxic in origin, hence 5 rescue breaths precede CPR. Adrenaline dose is 10 mcg/kg (0.1 ml/kg of 1:10,000) every 3–5 minutes. Defibrillation at 4 J/kg is reserved for shockable rhythms (VF/pVT).",
+          },
+          {
+            question: "A 10-kg toddler is admitted post-operatively. Which maintenance fluid is most appropriate?",
+            options: [
+              "0.18% saline / 4% dextrose at 40 ml/h",
+              "0.9% saline or balanced crystalloid (e.g. Plasma-Lyte) with 5% dextrose at 40 ml/h",
+              "0.45% saline at 100 ml/h",
+              "Hartmann's at 60 ml/h with no glucose",
+            ],
+            correctIndex: 1,
+            explanation: "NICE/NPSA recommend isotonic maintenance fluids in children (0.9% saline or balanced crystalloid, with 5% dextrose for glucose). Hypotonic fluids (0.18%/0.45%) cause fatal hyponatraemic encephalopathy. Holliday-Segar 4-2-1 → 40 ml/h for 10 kg.",
+          },
+          {
+            question: "Which statement about brainstem death testing in children is correct?",
+            options: [
+              "It can be performed in any infant once apnoea is documented",
+              "It is not applicable below 37 weeks corrected gestational age, and additional caution is required under 2 months",
+              "It requires EEG confirmation in all children",
+              "The same hypothermia thresholds as adults apply without modification",
+            ],
+            correctIndex: 1,
+            explanation: "UK Academy of Medical Royal Colleges guidance: BSD testing is not applicable below 37 weeks corrected gestational age. Between term and 2 months, criteria are rarely fulfilled and ancillary testing is often required. Above 2 months, standard clinical criteria apply.",
+          },
+          {
+            question: "Following a febrile seizure, a child becomes drowsy with new focal neurology. Glucose is 2.1 mmol/L. What is the immediate management?",
+            options: [
+              "Buccal midazolam 0.5 mg/kg",
+              "IV/IO 10% dextrose 2 ml/kg bolus, then reassess",
+              "Mannitol 0.5 g/kg for cerebral oedema",
+              "Phenytoin loading dose 20 mg/kg",
+            ],
+            correctIndex: 1,
+            explanation: "Hypoglycaemia must be corrected immediately in any obtunded child: 10% dextrose 2 ml/kg IV/IO (avoid 50% dextrose — hyperosmolar, vein damage). Always check glucose ('DEFG — Don't Ever Forget Glucose') before attributing altered consciousness to other causes.",
+          },
         ]} />
       </section>
 
