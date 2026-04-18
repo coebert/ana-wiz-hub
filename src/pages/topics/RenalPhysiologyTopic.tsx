@@ -250,6 +250,58 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Acute Kidney Injury — KDIGO Definition & Staging</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The <strong>KDIGO 2012</strong> consensus harmonised earlier RIFLE and AKIN definitions. AKI is diagnosed by
+            <strong> any</strong> of: a rise in serum creatinine ≥26.5 µmol/L within 48 h, a rise to ≥1.5× baseline known
+            or presumed to have occurred within the prior 7 days, or urine output &lt;0.5 ml/kg/hr for ≥6 h. Severity is
+            graded 1–3 by the <em>worst</em> of the creatinine or urine-output criteria.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card mb-6">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Stage</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Serum creatinine</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Urine output</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">1</td>
+                  <td className="p-3 align-top text-foreground/80">↑ ≥26.5 µmol/L within 48 h, <em>or</em> 1.5–1.9× baseline</td>
+                  <td className="p-3 align-top text-foreground/80">&lt;0.5 ml/kg/hr for 6–12 h</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">2</td>
+                  <td className="p-3 align-top text-foreground/80">2.0–2.9× baseline</td>
+                  <td className="p-3 align-top text-foreground/80">&lt;0.5 ml/kg/hr for ≥12 h</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">3</td>
+                  <td className="p-3 align-top text-foreground/80">≥3.0× baseline, <em>or</em> Cr ≥354 µmol/L, <em>or</em> initiation of RRT, <em>or</em> (in &lt;18 y) eGFR &lt;35 ml/min/1.73 m²</td>
+                  <td className="p-3 align-top text-foreground/80">&lt;0.3 ml/kg/hr for ≥24 h, <em>or</em> anuria for ≥12 h</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            <strong>Indications for RRT (AEIOU):</strong> refractory <strong>A</strong>cidosis (pH &lt;7.15),
+            <strong> E</strong>lectrolyte disturbance (K⁺ &gt;6.5 or rapidly rising), <strong>I</strong>ntoxications
+            (lithium, salicylate, methanol, ethylene glycol, metformin), refractory fluid <strong>O</strong>verload,
+            and <strong>U</strong>raemic complications (encephalopathy, pericarditis, bleeding).
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive KDIGO Stage Classifier</h3>
+            <p className="text-sm text-muted-foreground mb-5">
+              Enter baseline and current creatinine, urine output and duration of oliguria. The classifier returns the
+              KDIGO stage with criterion-level explanation, mortality estimate and management priorities.
+            </p>
+            <KDIGOAKIClassifier />
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
