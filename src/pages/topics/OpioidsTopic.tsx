@@ -71,8 +71,7 @@ const OpioidsTopic = () => {
           <OpioidStructures />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Morphine</h2>
+        <section id="toc-agents" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Natural phenanthrene opioid. Dose: 0.1–0.2 mg/kg IV. Oral bioavailability ~30% (extensive first-pass metabolism).
             Onset 15–20 min IV (poor lipid solubility, slow BBB penetration). Duration 3–4 hours.
