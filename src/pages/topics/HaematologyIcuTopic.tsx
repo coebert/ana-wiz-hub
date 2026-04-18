@@ -5,6 +5,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { QuizSection } from "@/components/QuizSection";
 
 const tocItems = [
   { id: "toc-ttp", label: "TTP" },
@@ -760,6 +761,75 @@ const HaematologyIcuTopic = () => {
           "Liver failure: elevated INR ≠ auto-anticoagulation — rebalanced haemostasis; still needs VTE prophylaxis",
           "TEG/ROTEM is superior to PT/INR for assessing haemostasis in liver failure — do NOT correct INR with FFP prophylactically",
           "HLH: ferritin >10,000 ~90% sensitivity; treat trigger + dexamethasone/etoposide; anakinra for MAS/HLH",
+        ]} />
+
+        <QuizSection questions={[
+          {
+            question: "A 34-year-old woman presents with fever, confusion, MAHA, thrombocytopenia (platelets 12), and AKI. PT and APTT are normal. What is the most appropriate immediate management?",
+            options: [
+              "Platelet transfusion to target >50 × 10⁹/L before line insertion",
+              "Urgent plasma exchange and high-dose corticosteroids",
+              "Empirical heparin infusion for presumed DIC",
+              "Eculizumab as first-line therapy",
+            ],
+            correctIndex: 1,
+            explanation: "Pentad with normal coagulation strongly suggests TTP (ADAMTS13 deficiency). PLASMIC ≥6 mandates urgent plasma exchange + steroids; platelet transfusion is contraindicated (fuels microvascular thrombosis). Eculizumab is reserved for atypical HUS.",
+          },
+          {
+            question: "A patient on UFH for 7 days develops platelet drop from 240 to 80 × 10⁹/L and a new DVT. 4Ts score is 6. Which is the most appropriate next step?",
+            options: [
+              "Stop heparin and start warfarin immediately",
+              "Continue heparin and add aspirin",
+              "Stop ALL heparin (including flushes) and start argatroban",
+              "Switch to LMWH at therapeutic dose",
+            ],
+            correctIndex: 2,
+            explanation: "High-probability HIT requires cessation of all heparin (including line flushes) and a non-heparin anticoagulant — argatroban is first-line in the UK. Warfarin is contraindicated in acute HIT due to protein C depletion causing venous limb gangrene; LMWH cross-reacts with HIT antibodies.",
+          },
+          {
+            question: "A patient on CRRT with regional citrate anticoagulation develops a rising total calcium with falling ionised calcium (ratio 2.8) and worsening metabolic acidosis. What is the diagnosis?",
+            options: [
+              "Hypercalcaemia of malignancy",
+              "Citrate accumulation (citrate toxicity)",
+              "Filter clotting from inadequate anticoagulation",
+              "Hyperparathyroidism",
+            ],
+            correctIndex: 1,
+            explanation: "A total:ionised Ca²⁺ ratio >2.5 with metabolic acidosis is the hallmark of citrate accumulation, typically in liver failure where citrate metabolism (Krebs cycle) is impaired. Reduce or stop citrate and consider switching anticoagulation strategy.",
+          },
+          {
+            question: "An adult on VV-ECMO develops new HIT (4Ts 7, positive functional assay). Which anticoagulant is most appropriate?",
+            options: [
+              "Warfarin bridged with fondaparinux",
+              "LMWH at therapeutic dose",
+              "Bivalirudin infusion",
+              "Apixaban",
+            ],
+            correctIndex: 2,
+            explanation: "Bivalirudin is first-line in HIT-on-ECMO: enzymatic metabolism (independent of organ function), very short half-life (~25 min) allowing rapid titration, and no cross-reactivity with HIT antibodies. DOACs and warfarin are unsuitable in this acute, unstable setting.",
+          },
+          {
+            question: "A patient with decompensated cirrhosis (INR 2.4, platelets 55) is bleeding from oesophageal varices. ROTEM shows normal EXTEM CT and MCF. What does this suggest?",
+            options: [
+              "Empirical FFP to correct INR is indicated",
+              "Rebalanced haemostasis — avoid prophylactic FFP; treat the bleeding source",
+              "Severe coagulopathy requiring 4-factor PCC",
+              "Heparin-like effect from endogenous heparinoids",
+            ],
+            correctIndex: 1,
+            explanation: "In liver failure, INR overestimates bleeding risk because procoagulant and anticoagulant factors fall in parallel ('rebalanced haemostasis'). Normal ROTEM confirms adequate global haemostasis; FFP causes volume overload and raises portal pressure. Treat the source (endoscopy, terlipressin, antibiotics).",
+          },
+          {
+            question: "A 28-year-old develops fever, hepatosplenomegaly, pancytopenia, and ferritin 32,000 ng/mL after EBV infection. Triglycerides and LDH are markedly raised. What is the most appropriate initial therapy?",
+            options: [
+              "Broad-spectrum antibiotics alone and supportive care",
+              "Treat trigger plus dexamethasone ± etoposide (HLH-94 protocol)",
+              "Plasma exchange",
+              "Rituximab monotherapy",
+            ],
+            correctIndex: 1,
+            explanation: "Findings meet HLH-2004 criteria (ferritin >10,000 has ~90% sensitivity). Management is treat the trigger (EBV → consider rituximab) plus immunosuppression with dexamethasone ± etoposide (HLH-94). Anakinra is preferred for MAS-HLH in rheumatic disease.",
+          },
         ]} />
       </section>
 
