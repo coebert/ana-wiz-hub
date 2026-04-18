@@ -9,6 +9,7 @@ import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingD
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { StickyTOC } from "@/components/StickyTOC";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 
 const tocItems = [
   { id: "toc-foundations", label: "Foundations" },
