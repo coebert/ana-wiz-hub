@@ -312,6 +312,91 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Contrast-Induced Acute Kidney Injury (CI-AKI)</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            CI-AKI (also termed contrast-associated AKI, CA-AKI) is defined as a rise in serum creatinine ≥26.5 µmol/L
+            or ≥1.5× baseline within 48–72 h of intravascular iodinated contrast, in the absence of an alternative cause.
+            Pathogenesis is multifactorial: direct tubular toxicity (osmotic and oxidative injury to PCT cells),
+            medullary ischaemia (contrast-induced renal vasoconstriction reduces outer-medullary blood flow), and
+            tubular obstruction by Tamm–Horsfall protein casts. Most cases are self-limiting, peaking at day 3–5 and
+            resolving within 7–10 days, but ~1% require RRT and CI-AKI is independently associated with increased
+            short- and long-term mortality.
+          </p>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            <strong>Risk factors</strong> are conventionally divided into <em>patient-related</em> (CKD — especially
+            eGFR &lt;30, diabetic nephropathy, age &gt;75, anaemia, heart failure, hypovolaemia, hypotension, IABP,
+            nephrotoxic drugs) and <em>procedure-related</em> (contrast volume, intra-arterial &gt; intravenous route,
+            high osmolality, repeated exposures within 72 h). The interaction of pre-existing CKD with diabetes is
+            particularly potent (CI-AKI in &gt;25%).
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-3">Mehran Score</h3>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            The Mehran score (Mehran et al., <em>JACC</em> 2004) was derived from 8,357 PCI patients and remains the
+            most widely used CI-AKI risk prediction tool. It stratifies patients into four risk bands using eight
+            weighted clinical variables.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-6 mb-6">
+            <h4 className="text-base font-serif font-bold text-foreground mb-1">Interactive Mehran Score Calculator</h4>
+            <p className="text-sm text-muted-foreground mb-5">
+              Tick the relevant risk factors and enter contrast volume and eGFR. Returns total score, risk band, and
+              estimated CI-AKI / dialysis incidence with management actions.
+            </p>
+            <MehranScoreCalculator />
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-3">KDIGO 2012 Recommendations for Prevention</h3>
+          <ul className="list-disc pl-6 space-y-2 text-foreground/90">
+            <li>
+              <strong>Risk-stratify all patients</strong> before elective contrast-enhanced procedures using eGFR
+              (CKD-EPI) and clinical risk score (e.g. Mehran). Avoid contrast where a non-contrast alternative
+              (ultrasound, non-contrast MRI, V/Q scan) gives comparable diagnostic information.
+            </li>
+            <li>
+              <strong>Iso-osmolar (290 mOsm/kg, e.g. iodixanol)</strong> or <strong>low-osmolar non-ionic</strong>
+              contrast (~600–900 mOsm/kg, e.g. iohexol, iopamidol) is preferred over high-osmolar ionic contrast
+              (≥1500 mOsm/kg). KDIGO suggests iso-osmolar agents in patients at increased risk; head-to-head trials
+              (CARE, ICON, RECOVER) show inconsistent superiority of iodixanol over modern low-osmolar agents — the
+              key principle is to <em>avoid high-osmolar</em> contrast and <strong>minimise total volume</strong>.
+            </li>
+            <li>
+              <strong>IV volume expansion with isotonic crystalloid</strong> (KDIGO grade 1A) is the cornerstone of
+              prevention. Standard regimen: 0.9% saline 1 ml/kg/hr for 6–12 h pre-procedure and 6–12 h post (total
+              ~1–1.5 L). Sodium bicarbonate (1.26%/1.4%) is no longer recommended over saline (PRESERVE 2018: no
+              difference). Oral hydration alone is insufficient in high-risk patients.
+            </li>
+            <li>
+              <strong>Withhold nephrotoxins</strong>: NSAIDs, aminoglycosides, amphotericin, calcineurin inhibitors.
+              Hold ACEi/ARB and diuretics on the day if euvolaemic and at risk. Stop metformin and SGLT2 inhibitors
+              48 h pre-procedure if eGFR &lt;30 (lactic acidosis / euglycaemic DKA risk if AKI develops).
+            </li>
+            <li>
+              <strong>Minimise contrast dose</strong>: aim for contrast volume (mL) &lt; 3 × eGFR. Avoid repeat
+              exposure within 48–72 h if possible (cumulative risk).
+            </li>
+            <li>
+              <strong>N-acetylcysteine and prophylactic RRT are NOT recommended</strong>. PRESERVE (2018, n = 5177)
+              showed no benefit of NAC over placebo. Prophylactic haemofiltration/dialysis does not improve outcomes
+              and exposes patients to procedural risks.
+            </li>
+            <li>
+              <strong>Monitor</strong> serum creatinine at 48–72 h post-contrast in at-risk patients (eGFR &lt;60,
+              diabetes, ≥1 Mehran factor). Outpatient follow-up creatinine if eGFR &lt;45.
+            </li>
+          </ul>
+
+          <div className="rounded-lg bg-muted/40 border border-border p-4 mt-5 text-sm text-foreground/85">
+            <p className="font-semibold text-foreground mb-1">Anaesthetic/perioperative pearls</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Maintain MAP ≥65 mmHg throughout — hypotension is the most modifiable peri-procedural risk factor.</li>
+              <li>Avoid hyperchloraemic fluids (large-volume 0.9% saline can cause hyperchloraemic acidosis); balanced crystalloid is reasonable but saline retains the strongest evidence base for CI-AKI prophylaxis.</li>
+              <li>Gadolinium-based MRI contrast does <em>not</em> cause CI-AKI but, at eGFR &lt;30, group I gadolinium agents risk nephrogenic systemic fibrosis (NSF) — use group II macrocyclic agents (gadobutrol, gadoteridol) at the lowest dose.</li>
+              <li>Document risk-benefit discussion when contrast is given in eGFR &lt;30 or established AKI.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
