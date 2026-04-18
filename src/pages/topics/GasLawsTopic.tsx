@@ -3,6 +3,7 @@ import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
 import { CriticalTemperatureDiagram } from "@/components/diagrams/CriticalTemperatureDiagram";
 import { AndrewsIsothermsDiagram } from "@/components/diagrams/AndrewsIsothermsDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { gasLawsQuiz } from "@/data/quizzes";
