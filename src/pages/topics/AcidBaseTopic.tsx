@@ -14,6 +14,9 @@ const AcidBaseTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systematic ABG Interpretation</h2>
+          <div className="mb-4">
+            <AcidBaseInterpretationDiagram />
+          </div>
           <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
             <li>Assess oxygenation: P/F ratio, A-a gradient</li>
             <li>Identify the primary disorder (pH + PaCO₂ + HCO₃⁻)</li>
@@ -52,6 +55,9 @@ const AcidBaseTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             The physicochemical (Stewart) approach identifies 3 independent variables that determine pH. Unlike the Henderson-Hasselbalch approach, HCO₃⁻ is a <strong>dependent</strong> variable — it changes as a consequence of the independent variables, not as a cause.
           </p>
+          <div className="mb-4">
+            <StewartAcidBaseDiagram />
+          </div>
           <div className="space-y-3">
             {[
               { var: "PaCO₂", detail: "Respiratory component. Regulated by ventilation. Acts as an independent variable that directly influences water dissociation and thus [H⁺]." },
