@@ -17,6 +17,9 @@ const ARDSTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Berlin Definition (2012)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The Berlin definition replaced the 1994 AECC criteria and stratifies ARDS by oxygenation impairment (PaO₂/FiO₂ on ≥5 cmH₂O PEEP) into mild, moderate, and severe categories — each with a stepwise rise in mortality. Onset must be within 7 days of a known insult, with bilateral opacities not fully explained by cardiac failure or volume overload.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

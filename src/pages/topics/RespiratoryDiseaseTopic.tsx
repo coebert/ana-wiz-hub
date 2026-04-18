@@ -25,6 +25,9 @@ const RespiratoryDiseaseTopic = () => {
       accentColor="text-clinical"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Respiratory co-existing disease is a leading driver of postoperative pulmonary complications — atelectasis, pneumonia, prolonged ventilation, and unplanned ICU admission. This topic covers the high-yield conditions: asthma and COPD, obstructive sleep apnoea, restrictive lung disease, pulmonary fibrosis, and the perioperative implications of recent respiratory infection.
+        </p>
         <KeyLearningPoints points={keyPoints} />
         <RespiratoryDrugSafetyDiagram />
 

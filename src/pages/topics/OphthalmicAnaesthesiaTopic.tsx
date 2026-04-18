@@ -10,6 +10,9 @@ const OphthalmicAnaesthesiaTopic = () => {
   return (
     <SectionLayout title="Ophthalmic Anaesthesia" subtitle="FRCA Final — Clinical" backPath="/clinical" backLabel="Clinical" accentColor="text-clinical">
       <section className="space-y-6 mb-10">
+        <p className="text-muted-foreground leading-relaxed">
+          Ophthalmic anaesthesia is dominated by two priorities: controlling intra-ocular pressure during open-eye surgery, and providing reliable akinesia and analgesia — increasingly through regional rather than general techniques. The oculocardiac reflex remains the classic intra-operative event to anticipate, particularly in paediatric strabismus surgery.
+        </p>
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ocular Physiology</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">

@@ -13,6 +13,9 @@ const ObstetricAnaesthesiaTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Changes of Pregnancy</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Pregnancy alters virtually every organ system, and the resulting changes shape every aspect of obstetric anaesthetic practice — from rapid desaturation on apnoea to exaggerated hypotension after neuraxial blockade and reduced local anaesthetic dose requirements. The table below summarises the changes by system alongside their anaesthetic implications.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

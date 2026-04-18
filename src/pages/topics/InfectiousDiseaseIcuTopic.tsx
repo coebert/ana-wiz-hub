@@ -28,6 +28,9 @@ const InfectiousDiseaseIcuTopic = () => {
   return (
     <SectionLayout title="Infectious Disease in ICU" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
       <StickyTOC items={tocItems} />
+      <p className="text-muted-foreground leading-relaxed mb-6">
+        Infection is the dominant driver of organ failure on the modern ICU. This topic walks through the major infection sites and syndromes encountered in critical care — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control. The site map below previews the anatomical organisation of the topic.
+      </p>
       <InfectionSiteMapDiagram />
       <section className="space-y-8 mb-10">
 

@@ -14,6 +14,9 @@ const NeuroanaesthesiaTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Physiology for Anaesthesia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Neuroanaesthesia is built on a small number of physiological levers — cerebral blood flow, intracranial pressure, and cerebral perfusion pressure — and how anaesthetic agents and ventilatory choices manipulate them. The two summary cards below outline the baseline numbers and the Monro-Kellie framework that underpin every clinical decision in this topic.
+          </p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Cerebral Blood Flow</p>

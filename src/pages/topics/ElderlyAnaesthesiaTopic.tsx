@@ -25,6 +25,9 @@ const ElderlyAnaesthesiaTopic = () => {
       accentColor="text-clinical"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Elderly patients now form the majority of the surgical workload in many UK hospitals. Reduced physiological reserve, altered pharmacokinetics, frailty, and a high background prevalence of comorbidity all combine to elevate perioperative risk. This topic outlines the age-related changes that matter at induction, maintenance, and emergence, and the practical strategies — including frailty assessment and delirium prevention — that improve outcomes.
+        </p>
         <KeyLearningPoints points={keyPoints} />
         <FrailtyAssessmentDiagram />
 

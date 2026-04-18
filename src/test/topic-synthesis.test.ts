@@ -43,6 +43,30 @@ describe("Topic synthesis sections", () => {
       name,
       pos: content.indexOf(marker),
     }));
+
+    /**
+     * Intro paragraph audit: every topic should open with prose
+     * (a `<p>` element) before the first table, diagram, or grid.
+     * Rationale: orients the learner before plunging into structured
+     * data — improves scanability and exam-style framing.
+     */
+    it("opens with an intro <p> before any table/diagram/grid", () => {
+      const start = content.indexOf("<SectionLayout");
+      expect(start, "<SectionLayout> not found").toBeGreaterThan(-1);
+      const openEnd = content.indexOf(">", start);
+      const body = content.slice(openEnd + 1);
+      const PARA_RE = /<p[\s>]/;
+      const BLOCKING_RE =
+        /<table\b|className="[^"]*\bgrid\b[^"]*"|<[A-Z][A-Za-z0-9]*Diagram\b/;
+      const pIdx = body.search(PARA_RE);
+      const bIdx = body.search(BLOCKING_RE);
+      const hasIntroProse = bIdx === -1 || (pIdx !== -1 && pIdx < bIdx);
+      expect(
+        hasIntroProse,
+        `${file} renders a table/diagram/grid before any intro <p>. Add a brief introductory paragraph at the top of the topic body.`,
+      ).toBe(true);
+    });
+
     const allowedMissing = ALLOWED_MISSING[file] ?? [];
 
     it("includes all required synthesis components", () => {

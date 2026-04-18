@@ -25,6 +25,9 @@ const InterventionalRadiologyTopic = () => {
       accentColor="text-clinical"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Interventional radiology brings increasingly complex procedures — TIPSS, embolisation for major haemorrhage, aortic stent-grafting, mechanical thrombectomy — to a remote-location environment with limited space, restricted patient access, and specific hazards from contrast media and ionising radiation. This topic covers the safety framework, contrast reactions, radiation protection, and procedure-specific anaesthetic considerations.
+        </p>
         <KeyLearningPoints points={keyPoints} />
         <ContrastReactionDiagram />
 

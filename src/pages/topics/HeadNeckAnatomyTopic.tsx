@@ -18,6 +18,9 @@ const HeadNeckAnatomyTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cranial Nerves — Anaesthetic Relevance</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Six cranial nerves carry particular significance for the anaesthetist — they provide the sensory targets for airway and regional blocks, supply motor function vulnerable to surgical injury, and mediate reflexes (oculocardiac, gag) that have direct intra-operative consequences. The table below summarises the specific anaesthetic implications of each.
+          </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

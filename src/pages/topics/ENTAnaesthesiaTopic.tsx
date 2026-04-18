@@ -14,6 +14,9 @@ const ENTAnaesthesiaTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shared Airway</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            ENT and maxillofacial anaesthesia is defined by sharing the airway with the surgeon. Success depends on clear communication, deliberate tube and ventilation choices, and a pre-agreed plan for managing intra-operative airway loss — particularly during laryngeal, tonsillar, and post-tracheostomy procedures.
+          </p>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
             <li><strong>Core challenge</strong>: surgeon and anaesthetist share the airway. Communication, planning, and a robust difficult airway strategy are essential</li>
             <li><strong>Tube options</strong>: south-facing RAE (oral), north-facing RAE (nasal), reinforced/flexometallic, microlaryngoscopy tubes (5.0–6.0 mm ID)</li>

@@ -15,6 +15,9 @@ const AcidBaseTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systematic ABG Interpretation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A structured approach to arterial blood gas analysis prevents the common pitfall of anchoring on a single derangement and missing mixed disorders. Work through oxygenation, primary acid-base disturbance, expected compensation, anion gap, and the delta ratio in that order — each step adds diagnostic information that the previous one cannot provide.
+          </p>
           <div className="mb-4">
             <AcidBaseInterpretationDiagram />
           </div>

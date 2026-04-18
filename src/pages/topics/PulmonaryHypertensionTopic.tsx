@@ -27,6 +27,9 @@ const PulmonaryHypertensionTopic = () => {
       accentColor="text-icu"
     >
       <div className="space-y-8">
+        <p className="text-muted-foreground leading-relaxed">
+          Pulmonary hypertension is a heterogeneous group of disorders united by elevated pulmonary vascular resistance and right-ventricular vulnerability. Perioperative and ICU mortality is high; the central principle is to protect the right ventricle by maintaining systemic perfusion pressure above pulmonary pressure while avoiding any insult that acutely raises PVR.
+        </p>
         {/* Definition & Classification */}
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Classification</h2>
