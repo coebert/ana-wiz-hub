@@ -76,6 +76,9 @@ const RegionalAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success rates and reducing complications.
           </p>
+          <div className="my-4">
+            <RegionalBlocksDiagram />
+          </div>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { block: "Interscalene", indication: "Shoulder surgery", nerves: "C5-C7 roots", risk: "Phrenic nerve palsy (100%)" },
@@ -118,6 +121,9 @@ const RegionalAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-4">
             Systematic assessment of sensory block height is essential after neuraxial blockade to confirm adequacy for surgery, detect excessive spread, and monitor regression. Cold spray (ethyl chloride) is the standard bedside tool — it tests <strong>loss of cold sensation</strong>, which corresponds to <strong>C-fibre and Aδ-fibre blockade</strong> (small myelinated/unmyelinated fibres blocked earliest by local anaesthetics).
           </p>
+          <div className="my-4">
+            <SpinalBlockHeightAssessmentTool />
+          </div>
 
           <div className="rounded-xl border border-border bg-card p-5 mb-4">
             <h3 className="font-semibold text-foreground mb-3">How to Test with Cold Spray</h3>
