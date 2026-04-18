@@ -223,6 +223,8 @@ const EchoDiagram = () => {
             <line x1="180" y1="92" x2="180" y2="180" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.6" strokeDasharray="2 2" />
             <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.8">M-mode</text>
           </g>
+          <PlaxDoppler mode={doppler} />
+          <DopplerDefs />
           <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Parasternal Long Axis — anatomical orientation</text>
         </svg>
       ),
