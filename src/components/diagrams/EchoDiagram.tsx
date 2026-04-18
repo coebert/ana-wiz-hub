@@ -33,8 +33,8 @@ const EchoDiagram = () => {
         <path key={r} d={`M ${200 - r * 0.6},${5 + r * 0.8} A ${r},${r} 0 0 0 ${200 + r * 0.6},${5 + r * 0.8}`}
           fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0.18" strokeDasharray="2 3" />
       ))}
-      <circle cx="92" cy="60" r="3" fill="hsl(var(--primary))" />
-      <text x="100" y="63" fontSize="6" fill="#ffffff" opacity="0.7">marker</text>
+      <circle cx="92" cy="60" r="2.5" fill="hsl(var(--primary))" />
+      <text x="88" y="50" fontSize="5" fill="#ffffff" opacity="0.7" textAnchor="end">probe ▸</text>
       <text x="345" y="240" fontSize="6" fill="#ffffff" opacity="0.6" textAnchor="end">16 cm</text>
     </g>
   );
@@ -182,46 +182,49 @@ const EchoDiagram = () => {
           <g clipPath="url(#sector-clip)">
             {/* Anterior chest wall echo (bright top band) */}
             <rect x="60" y="48" width="280" height="6" fill="#e8e8c8" opacity="0.5" />
-            {/* RV — small triangular anterior chamber */}
+            {/* RV */}
             <path d="M 110,58 Q 150,55 215,62 L 220,95 Q 165,90 115,92 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="150" y="80" fontSize="9" fill="#fff8d0" fontWeight="700">RV</text>
-            {/* IVS — bright myocardial echo */}
+            {/* IVS */}
             <path d="M 115,92 Q 175,98 240,108 L 240,118 Q 175,108 115,103 Z" fill="#c8c098" opacity="0.85" />
-            <text x="180" y="105" fontSize="6" fill="#1a1a1a" fontWeight="600">IVS</text>
-            {/* LV cavity — long elliptical */}
+            {/* LV cavity */}
             <path d="M 115,103 Q 175,108 240,118 L 270,165 Q 200,180 120,165 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="180" y="148" fontSize="14" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            {/* Posterior wall — bright myocardium */}
+            {/* Posterior wall */}
             <path d="M 120,165 Q 200,180 270,165 L 275,180 Q 200,195 120,180 Z" fill="#c8c098" opacity="0.85" />
-            <text x="200" y="175" fontSize="6" fill="#1a1a1a" fontWeight="600" textAnchor="middle">PW</text>
             {/* Mitral valve leaflets */}
             <path d="M 240,108 Q 248,128 245,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
             <path d="M 270,118 Q 262,138 250,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
-            <text x="285" y="135" fontSize="7" fill="#fff8d0" fontWeight="600">AMVL</text>
-            <text x="285" y="148" fontSize="7" fill="#fff8d0" fontWeight="600">PMVL</text>
-            {/* Chordae tendineae */}
+            {/* Chordae */}
             <line x1="245" y1="148" x2="232" y2="170" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
             <line x1="250" y1="148" x2="240" y2="172" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
             {/* LVOT + Aortic root */}
             <path d="M 240,108 L 290,80 L 320,90 L 325,135 L 280,148 L 270,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="295" y="115" fontSize="7" fill="#fff8d0" fontWeight="600">Ao root</text>
-            {/* Aortic valve cusps */}
+            {/* AV cusps */}
             <line x1="278" y1="100" x2="282" y2="115" stroke="#fff8d0" strokeWidth="1.2" />
             <line x1="305" y1="105" x2="301" y2="120" stroke="#fff8d0" strokeWidth="1.2" />
-            <text x="278" y="95" fontSize="6" fill="#fff8d0" fontWeight="600">AV</text>
             <path d="M 282,115 Q 292,128 301,120" fill="none" stroke="#d8d8a8" strokeWidth="0.6" opacity="0.7" />
-            {/* LA — posterior chamber */}
-            <path d="M 270,148 Q 320,160 340,180 L 335,210 Q 280,210 245,190 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="295" y="185" fontSize="11" fill="#fff8d0" fontWeight="800">LA</text>
-            {/* Descending aorta cross-section */}
-            <circle cx="310" cy="218" r="10" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
-            <text x="310" y="221" fontSize="5" fill="#fff8d0" fontWeight="600" textAnchor="middle">DAo</text>
-            {/* Pericardium echo */}
+            {/* LA */}
+            <path d="M 270,148 Q 320,160 335,180 L 330,205 Q 280,205 245,190 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
+            {/* Descending aorta */}
+            <circle cx="295" cy="215" r="9" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
+            {/* Pericardium */}
             <path d="M 120,180 Q 200,195 275,180" fill="none" stroke="#ffffd0" strokeWidth="0.8" opacity="0.6" strokeDasharray="3 2" />
-            <text x="160" y="200" fontSize="5" fill="#fff8d0" opacity="0.7">pericardium</text>
-            {/* M-mode caliper line through LV */}
+            {/* M-mode caliper line */}
             <line x1="180" y1="92" x2="180" y2="180" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.6" strokeDasharray="2 2" />
-            <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.8">M-mode</text>
+          </g>
+          {/* Labels (outside clipPath so never clipped) */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="160" y="78" fontSize="9" fill="#fff8d0" fontWeight="700">RV</text>
+            <text x="180" y="105" fontSize="6" fill="#1a1a1a" fontWeight="600">IVS</text>
+            <text x="180" y="148" fontSize="14" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="200" y="175" fontSize="6" fill="#1a1a1a" fontWeight="600" textAnchor="middle">PW</text>
+            <text x="247" y="135" fontSize="6" fill="#fff8d0" fontWeight="600">AMVL</text>
+            <text x="252" y="158" fontSize="6" fill="#fff8d0" fontWeight="600">PMVL</text>
+            <text x="298" y="113" fontSize="6.5" fill="#fff8d0" fontWeight="600">Ao root</text>
+            <text x="278" y="95" fontSize="6" fill="#fff8d0" fontWeight="600">AV</text>
+            <text x="290" y="178" fontSize="11" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="295" y="218" fontSize="5" fill="#fff8d0" fontWeight="600" textAnchor="middle">DAo</text>
+            <text x="160" y="200" fontSize="5" fill="#fff8d0" opacity="0.7">pericardium</text>
+            <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.85">M-mode</text>
           </g>
           <PlaxDoppler mode={doppler} />
           <DopplerDefs />
@@ -241,44 +244,48 @@ const EchoDiagram = () => {
         <svg viewBox="0 0 400 250" className="w-full h-auto">
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
-            {/* LV — circular doughnut, mid-papillary level */}
-            <circle cx="210" cy="148" r="58" fill="#c8c098" opacity="0.9" />
-            <circle cx="210" cy="148" r="42" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.4" />
-            {/* Coronary territory segmentation — 6 segments */}
+            {/* LV — circular doughnut */}
+            <circle cx="200" cy="148" r="58" fill="#c8c098" opacity="0.9" />
+            <circle cx="200" cy="148" r="42" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.4" />
+            {/* Coronary segmentation lines */}
             <g stroke="#fff8d0" strokeWidth="0.4" opacity="0.45" fill="none">
-              <line x1="210" y1="106" x2="210" y2="190" />
-              <line x1="173" y1="127" x2="247" y2="169" />
-              <line x1="173" y1="169" x2="247" y2="127" />
+              <line x1="200" y1="106" x2="200" y2="190" />
+              <line x1="163" y1="127" x2="237" y2="169" />
+              <line x1="163" y1="169" x2="237" y2="127" />
             </g>
-            <text x="210" y="100" fontSize="6" fill="#ff9090" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
-            <text x="262" y="135" fontSize="6" fill="#90c0ff" fontWeight="700">ANT-SEPT</text>
-            <text x="262" y="168" fontSize="6" fill="#90ffb0" fontWeight="700">INF-SEPT</text>
-            <text x="210" y="206" fontSize="6" fill="#ffd090" fontWeight="700" textAnchor="middle">INF (RCA)</text>
-            <text x="158" y="168" fontSize="6" fill="#c090ff" fontWeight="700" textAnchor="end">INF-LAT</text>
-            <text x="158" y="135" fontSize="6" fill="#ff90d0" fontWeight="700" textAnchor="end">ANT-LAT (LCx)</text>
-            <text x="210" y="151" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
             {/* Papillary muscles */}
-            <ellipse cx="184" cy="128" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
-            <ellipse cx="232" cy="172" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
-            <text x="178" y="120" fontSize="5" fill="#fff8d0" opacity="0.8">AL pap</text>
-            <text x="238" y="184" fontSize="5" fill="#fff8d0" opacity="0.8">PM pap</text>
-            {/* RV crescent — anterior, wraps around LV septum */}
-            <path d="M 165,90 Q 110,135 175,205 Q 190,180 178,148 Q 170,115 195,95 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="138" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
-            <text x="190" y="151" fontSize="5" fill="#1a1a1a" fontWeight="700" textAnchor="middle">IVS</text>
-            <circle cx="210" cy="148" r="60" fill="none" stroke="#ffffd0" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
-            {/* Inset: aortic valve at base — Mercedes-Benz sign */}
-            <g transform="translate(310,80)">
-              <rect x="-32" y="-25" width="64" height="55" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-              <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
-              <line x1="0" y1="0" x2="0" y2="-18" stroke="#fff8d0" strokeWidth="1" />
-              <line x1="0" y1="0" x2="15.6" y2="9" stroke="#fff8d0" strokeWidth="1" />
-              <line x1="0" y1="0" x2="-15.6" y2="9" stroke="#fff8d0" strokeWidth="1" />
-              <text x="0" y="-19" fontSize="5" fill="#fff8d0" textAnchor="middle">L</text>
-              <text x="14" y="13" fontSize="5" fill="#fff8d0">R</text>
-              <text x="-14" y="13" fontSize="5" fill="#fff8d0" textAnchor="end">N</text>
-              <text x="0" y="26" fontSize="5" fill="#fff8d0" textAnchor="middle" fontWeight="600">AV (base)</text>
-            </g>
+            <ellipse cx="174" cy="128" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
+            <ellipse cx="222" cy="172" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
+            {/* RV crescent */}
+            <path d="M 155,90 Q 100,135 165,205 Q 180,180 168,148 Q 160,115 185,95 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <circle cx="200" cy="148" r="60" fill="none" stroke="#ffffd0" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
+          </g>
+          {/* Labels — placed outside clipPath but inside the visible sector area */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="200" y="151" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="128" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="187" y="151" fontSize="5" fill="#1a1a1a" fontWeight="700" textAnchor="middle">IVS</text>
+            {/* Coronary territory labels — moved INSIDE the donut sector, around the ring */}
+            <text x="200" y="118" fontSize="5.5" fill="#ff9090" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
+            <text x="226" y="132" fontSize="5" fill="#90c0ff" fontWeight="700" textAnchor="middle">ANT-SEPT</text>
+            <text x="226" y="170" fontSize="5" fill="#90ffb0" fontWeight="700" textAnchor="middle">INF-SEPT</text>
+            <text x="200" y="186" fontSize="5.5" fill="#ffd090" fontWeight="700" textAnchor="middle">INF (RCA)</text>
+            <text x="174" y="170" fontSize="5" fill="#c090ff" fontWeight="700" textAnchor="middle">INF-LAT</text>
+            <text x="174" y="132" fontSize="5" fill="#ff90d0" fontWeight="700" textAnchor="middle">ANT-LAT</text>
+            <text x="170" y="120" fontSize="4.5" fill="#fff8d0" opacity="0.85">AL pap</text>
+            <text x="226" y="186" fontSize="4.5" fill="#fff8d0" opacity="0.85">PM pap</text>
+          </g>
+          {/* AV inset — moved BELOW the sector tip on the right, fully visible */}
+          <g transform="translate(345,150)">
+            <rect x="-32" y="-30" width="64" height="60" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <circle cx="0" cy="-3" r="18" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="0" y2="-21" stroke="#fff8d0" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="-15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
+            <text x="0" y="-22" fontSize="5" fill="#fff8d0" textAnchor="middle">L</text>
+            <text x="14" y="10" fontSize="5" fill="#fff8d0">R</text>
+            <text x="-14" y="10" fontSize="5" fill="#fff8d0" textAnchor="end">N</text>
+            <text x="0" y="24" fontSize="5" fill="#fff8d0" textAnchor="middle" fontWeight="600">AV (base)</text>
           </g>
           <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">PSAX mid-papillary — 6 coronary segments + AV inset</text>
         </svg>
@@ -296,42 +303,45 @@ const EchoDiagram = () => {
         <svg viewBox="0 0 400 250" className="w-full h-auto">
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
-            {/* LV — large left-side chamber, pointed apex at top */}
+            {/* LV */}
             <path d="M 200,55 Q 165,70 145,100 Q 132,135 138,170 Q 148,195 195,200 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="170" y="135" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            {/* RV — smaller right-side chamber */}
+            {/* RV */}
             <path d="M 200,55 Q 232,70 252,100 Q 263,130 258,162 Q 248,182 205,188 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="232" y="125" fontSize="11" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
             {/* Moderator band */}
             <line x1="218" y1="155" x2="245" y2="170" stroke="#fff8d0" strokeWidth="1" opacity="0.7" />
-            <text x="252" y="175" fontSize="5" fill="#fff8d0" opacity="0.8">mod band</text>
             {/* IVS */}
             <path d="M 200,60 L 198,135 L 200,195" fill="none" stroke="#c8c098" strokeWidth="3" opacity="0.9" />
-            <text x="184" y="80" fontSize="5" fill="#fff8d0" opacity="0.8">IVS</text>
-            {/* MV — anterior + posterior leaflets */}
+            {/* MV */}
             <line x1="148" y1="200" x2="180" y2="195" stroke="#fff8d0" strokeWidth="1.5" />
             <line x1="180" y1="195" x2="200" y2="200" stroke="#fff8d0" strokeWidth="1.5" />
-            <text x="155" y="192" fontSize="6" fill="#fff8d0" fontWeight="700">MV</text>
-            {/* TV — slightly more apical */}
+            {/* TV */}
             <line x1="200" y1="195" x2="220" y2="190" stroke="#fff8d0" strokeWidth="1.5" />
             <line x1="220" y1="190" x2="252" y2="185" stroke="#fff8d0" strokeWidth="1.5" />
-            <text x="240" y="182" fontSize="6" fill="#fff8d0" fontWeight="700">TV</text>
             {/* Atria */}
             <path d="M 148,200 Q 150,225 200,228 Q 250,225 252,185 L 220,190 L 200,200 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="175" y="221" fontSize="10" fill="#fff8d0" fontWeight="800">LA</text>
-            <text x="225" y="218" fontSize="10" fill="#fff8d0" fontWeight="800">RA</text>
             {/* IAS */}
             <line x1="200" y1="200" x2="200" y2="228" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
-            <text x="184" y="217" fontSize="5" fill="#fff8d0" opacity="0.8">IAS</text>
-            {/* Pulmonary vein entering LA */}
-            <path d="M 150,225 Q 130,235 115,232" fill="none" stroke="#d8d8a8" strokeWidth="1" opacity="0.7" />
-            <text x="110" y="240" fontSize="5" fill="#fff8d0" opacity="0.7" textAnchor="end">PV</text>
+            {/* Pulmonary vein */}
+            <path d="M 150,225 Q 135,232 122,230" fill="none" stroke="#d8d8a8" strokeWidth="1" opacity="0.7" />
             {/* TAPSE caliper */}
             <line x1="252" y1="185" x2="252" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
             <line x1="248" y1="185" x2="256" y2="185" stroke="hsl(var(--primary))" strokeWidth="0.6" />
             <line x1="248" y1="170" x2="256" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
-            <text x="262" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
+          </g>
+          {/* Labels outside clipPath */}
+          <g fontFamily="system-ui, sans-serif">
             <text x="200" y="50" fontSize="6" fill="#fff8d0" textAnchor="middle" fontWeight="700">apex</text>
+            <text x="170" y="135" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="232" y="125" fontSize="11" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="184" y="80" fontSize="5" fill="#fff8d0" opacity="0.85">IVS</text>
+            <text x="218" y="165" fontSize="4.5" fill="#fff8d0" opacity="0.85">mod band</text>
+            <text x="158" y="192" fontSize="6" fill="#fff8d0" fontWeight="700">MV</text>
+            <text x="232" y="184" fontSize="6" fill="#fff8d0" fontWeight="700">TV</text>
+            <text x="172" y="221" fontSize="10" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="222" y="218" fontSize="10" fill="#fff8d0" fontWeight="800">RA</text>
+            <text x="184" y="217" fontSize="5" fill="#fff8d0" opacity="0.85">IAS</text>
+            <text x="118" y="240" fontSize="5" fill="#fff8d0" opacity="0.7" textAnchor="end">PV</text>
+            <text x="260" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
           </g>
           <A4cDoppler mode={doppler} />
           <DopplerDefs />
@@ -359,48 +369,52 @@ const EchoDiagram = () => {
             </marker>
           </defs>
           <g clipPath="url(#sector-clip)">
-            {/* Liver parenchyma — acoustic window */}
-            <path d="M 70,55 Q 200,50 330,60 L 320,110 Q 200,115 80,108 Z" fill="#5a4838" opacity="0.55" />
-            <text x="200" y="85" fontSize="9" fill="#f0e0c0" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
-            <path d="M 280,75 Q 250,90 235,110" fill="none" stroke="#9bb8d8" strokeWidth="1.5" opacity="0.7" />
-            <text x="285" y="73" fontSize="5" fill="#9bb8d8">hepatic v.</text>
-            {/* RA closest to liver/probe */}
-            <path d="M 100,115 Q 90,140 100,165 Q 130,178 165,170 L 165,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="125" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">RA</text>
+            {/* Liver — narrowed to fit sector */}
+            <path d="M 95,55 Q 200,52 305,62 L 295,108 Q 200,113 105,106 Z" fill="#5a4838" opacity="0.55" />
+            <path d="M 260,75 Q 235,90 222,108" fill="none" stroke="#9bb8d8" strokeWidth="1.5" opacity="0.7" />
+            {/* RA — shifted right and narrowed */}
+            <path d="M 105,118 Q 95,140 105,165 Q 130,176 158,168 L 158,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* RV */}
-            <path d="M 165,118 L 165,170 Q 200,182 235,170 L 235,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="200" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <path d="M 158,120 L 158,168 Q 195,180 225,168 L 225,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* LA */}
-            <path d="M 235,118 L 235,170 Q 270,178 300,165 L 300,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="265" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">LA</text>
-            {/* LV — far field */}
-            <path d="M 300,120 L 300,165 Q 320,180 340,170 L 340,125 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="318" y="150" fontSize="8" fill="#fff8d0" fontWeight="800">LV</text>
+            <path d="M 225,120 L 225,168 Q 250,176 275,165 L 275,122 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            {/* LV — pulled INSIDE the sector (was at x=300-340, clipped) */}
+            <path d="M 275,122 L 275,165 Q 295,178 312,168 L 312,127 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* Septae */}
-            <line x1="235" y1="118" x2="235" y2="172" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
-            <line x1="200" y1="120" x2="200" y2="170" stroke="#c8c098" strokeWidth="0.5" opacity="0.6" />
+            <line x1="225" y1="120" x2="225" y2="170" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
+            <line x1="192" y1="122" x2="192" y2="170" stroke="#c8c098" strokeWidth="0.5" opacity="0.6" />
             {/* AV valve plane */}
-            <line x1="170" y1="142" x2="195" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="205" y1="142" x2="230" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="240" y1="142" x2="265" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="275" y1="142" x2="298" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="162" y1="143" x2="188" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="196" y1="143" x2="221" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="229" y1="143" x2="271" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="279" y1="143" x2="308" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
             {/* Pericardium */}
-            <path d="M 100,115 Q 90,140 100,165 Q 200,190 340,170 L 340,125 Q 200,112 100,115 Z" fill="none" stroke="#ffffd0" strokeWidth="0.6" opacity="0.55" strokeDasharray="3 2" />
-            {/* IVC long-axis inset */}
-            <g transform="translate(280,210)">
-              <rect x="-70" y="-22" width="140" height="40" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-              <path d="M -65,-2 Q -30,-6 0,-7 Q 30,-8 60,-12 L 60,-2 Q 30,2 0,3 Q -30,4 -65,8 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.8" />
-              <text x="-55" y="0" fontSize="5" fill="#fff8d0" fontWeight="700">IVC</text>
-              <line x1="-20" y1="-8" x2="-20" y2="3" stroke="hsl(var(--primary))" strokeWidth="0.4" strokeDasharray="1 1" />
-              <text x="-18" y="-10" fontSize="4" fill="hsl(var(--primary))">d</text>
-              <circle cx="60" cy="-7" r="3" fill="#d8d8a8" />
-              <text x="63" y="-9" fontSize="4" fill="#fff8d0">→ RA</text>
-              <path d="M 0,-15 L 0,-9" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
-              <path d="M 0,11 L 0,5" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
-              <text x="5" y="-13" fontSize="4" fill="#90ff90">inspiration</text>
-            </g>
+            <path d="M 105,118 Q 95,140 105,165 Q 200,185 312,168 L 312,127 Q 200,114 105,118 Z" fill="none" stroke="#ffffd0" strokeWidth="0.6" opacity="0.55" strokeDasharray="3 2" />
           </g>
-          <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Subcostal 4-chamber + IVC long-axis inset</text>
+          {/* Labels outside clipPath */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="200" y="85" fontSize="9" fill="#f0e0c0" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
+            <text x="263" y="73" fontSize="5" fill="#9bb8d8">hepatic v.</text>
+            <text x="125" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">RA</text>
+            <text x="190" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="250" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="293" y="150" fontSize="9" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+          </g>
+          {/* IVC inset — moved BELOW sector so it doesn't overlap chambers */}
+          <g transform="translate(200,225)">
+            <rect x="-95" y="-15" width="190" height="28" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <path d="M -88,2 Q -45,-3 0,-5 Q 45,-7 82,-9 L 82,-1 Q 45,3 0,5 Q -45,7 -88,10 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.8" />
+            <text x="-78" y="3" fontSize="5" fill="#fff8d0" fontWeight="700">IVC</text>
+            <line x1="-30" y1="-6" x2="-30" y2="6" stroke="hsl(var(--primary))" strokeWidth="0.4" strokeDasharray="1 1" />
+            <text x="-26" y="-7" fontSize="4" fill="hsl(var(--primary))">d</text>
+            <circle cx="82" cy="-5" r="3" fill="#d8d8a8" />
+            <text x="86" y="-7" fontSize="4" fill="#fff8d0">→ RA</text>
+            <path d="M 0,-12 L 0,-7" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
+            <path d="M 0,11 L 0,6" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
+            <text x="4" y="-10" fontSize="4" fill="#90ff90">inspiration</text>
+            <text x="0" y="-10" fontSize="4" fill="#fff8d0" opacity="0.7" textAnchor="middle">IVC long-axis (90° rotation)</text>
+          </g>
+          <text x="200" y="248" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Subcostal 4-chamber + IVC inset</text>
         </svg>
       ),
     },
