@@ -147,20 +147,19 @@ export const intensiveCareTopics: Topic[] = [
   // Cardiovascular
   { id: "circulatory-failure", title: "Circulatory Failure, Shock & Mechanical Circulatory Support", description: "Hypovolaemic, cardiogenic, distributive and obstructive shock; vasopressor rationale; IABP, Impella, LVAD, VV/VA-ECMO", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "cardiac-output-monitoring", title: "Cardiac Output Monitoring", description: "PA catheter, PiCCO, oesophageal Doppler, echocardiography", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  
   { id: "pulmonary-hypertension", title: "Pulmonary Hypertension Management", description: "WHO classification, RV-protective strategy, targeted vasodilators, perioperative care and crisis management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   // Sepsis & Infection
   { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "infectious-disease-icu", title: "Infectious Disease in ICU", description: "Organisms causing critical illness, pneumonia, urosepsis, CNS infections, necrotising fasciitis, fungal infections", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "antimicrobials-icu", title: "Antimicrobials in ICU", description: "Empiric therapy, antimicrobial resistance, stewardship, PK/PD dosing", section: "intensive-care", examTags: ["fficm"], available: true },
   // Renal & Metabolic
-  { id: "aki-rrt", title: "Acute Kidney Injury & RRT", description: "KDIGO staging, CRRT, IHD, indications for renal replacement therapy", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "acid-base", title: "Acid-Base Disorders", description: "Stewart approach, strong ion difference, anion gap, base excess", section: "intensive-care", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "aki-rrt", title: "Acute Kidney Injury & RRT", description: "KDIGO staging, CRRT, IHD, indications for renal replacement therapy", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "icu-nutrition", title: "Nutrition in Critical Care", description: "Enteral vs parenteral, refeeding syndrome, metabolic response to illness", section: "intensive-care", examTags: ["fficm"], available: true },
   // Neuro
   { id: "neurointensive-care", title: "Neurointensive Care", description: "TBI management, SAH, status epilepticus, brain death testing", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm"], available: true },
-  // Hepatic
+  // Hepatic & Toxicology
   { id: "acute-liver-failure", title: "Acute Liver Failure", description: "Paracetamol toxicity, King's College criteria, liver transplantation", section: "intensive-care", examTags: ["fficm"], available: true },
   { id: "acute-pancreatitis", title: "Acute Severe Pancreatitis", description: "Atlanta classification, Glasgow score, fluid resuscitation, step-up necrosectomy, tertiary referral", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm"], available: true },
@@ -175,9 +174,15 @@ export const intensiveCareTopics: Topic[] = [
 ];
 
 export const perioperativeTopics: Topic[] = [
+  // Assessment & optimisation
   { id: "preoperative-assessment", title: "Preoperative Assessment", description: "Risk stratification, CPET, cardiac risk indices, optimisation", section: "perioperative", examTags: ["final"], available: true },
   { id: "enhanced-recovery", title: "Enhanced Recovery (ERAS)", description: "Perioperative care pathways, prehabilitation, goal-directed therapy", section: "perioperative", examTags: ["final"], available: true },
   { id: "perioperative-fluids", title: "Perioperative Fluid Therapy", description: "Crystalloids vs colloids, goal-directed, fluid responsiveness", section: "perioperative", examTags: ["final", "fficm"], available: true },
+  // Co-existing disease
+  { id: "cardiovascular-disease", title: "Cardiovascular Co-Existing Disease", description: "IHD, valvular disease, heart failure, arrhythmias, pacemakers/ICDs, pulmonary hypertension, ACHD", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "respiratory-disease", title: "Respiratory Co-Existing Disease", description: "Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, respiratory infections", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "endocrine-disease", title: "Endocrine Co-Existing Disease", description: "Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, carcinoid syndrome", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "neurological-disease", title: "Neurological Co-Existing Disease", description: "Myasthenia gravis, epilepsy, MS, Parkinson's, MND, muscular dystrophies, spinal cord injury", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const chemistryTopics: Topic[] = [
