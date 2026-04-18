@@ -70,7 +70,131 @@ const PulseOximetryTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Capnography</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Co-oximetry</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            A <strong>co-oximeter</strong> is a multi-wavelength spectrophotometer (typically 4–8 wavelengths, modern
+            laboratory units up to 128) that quantifies <strong>each individual haemoglobin species</strong> in a sample
+            of haemolysed whole blood. It is the reference method against which pulse oximetry is calibrated, and is
+            built into all modern blood-gas analysers.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Principle</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Each haemoglobin species — oxyhaemoglobin (HbO₂), deoxyhaemoglobin (HHb), carboxyhaemoglobin (COHb) and
+            methaemoglobin (MetHb) — has a <strong>unique absorption spectrum</strong>. With <em>n</em> unknowns, you
+            need at least <em>n</em> wavelengths and a system of simultaneous Beer-Lambert equations:
+          </p>
+          <div className="bg-muted/40 rounded-lg p-4 border border-border my-3">
+            <p className="text-center font-mono text-foreground text-sm">
+              A<sub>λ₁</sub> = ε<sub>HbO₂,λ₁</sub>·c<sub>HbO₂</sub> + ε<sub>HHb,λ₁</sub>·c<sub>HHb</sub> + ε<sub>COHb,λ₁</sub>·c<sub>COHb</sub> + ε<sub>MetHb,λ₁</sub>·c<sub>MetHb</sub>
+            </p>
+            <p className="text-center font-mono text-foreground text-sm mt-1">… (one equation per wavelength) …</p>
+            <p className="text-xs text-muted-foreground text-center mt-2">
+              The sample is first <strong>haemolysed</strong> (ultrasound or surfactant) so that scattering by intact red
+              cells is eliminated and the assumptions of Beer-Lambert are met. The instrument then solves the matrix to
+              give the <strong>fractional concentration</strong> of each species.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Two ways to express oxygen saturation</h3>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Term</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Definition</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Behaviour with COHb / MetHb</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">SpO₂ (pulse ox)</td>
+                  <td className="p-3 align-top text-foreground/80">"Functional" saturation = HbO₂ / (HbO₂ + HHb)</td>
+                  <td className="p-3 align-top text-foreground/80">Ignores dyshaemoglobins → falsely reassuring in CO; drifts to ~85% in MetHb.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">SaO₂ / FO₂Hb (co-ox)</td>
+                  <td className="p-3 align-top text-foreground/80">"Fractional" saturation = HbO₂ / (HbO₂ + HHb + COHb + MetHb)</td>
+                  <td className="p-3 align-top text-foreground/80">True proportion of total haemoglobin carrying O₂. Falls in proportion to dyshaemoglobinaemia.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Co-oximetry vs pulse oximetry</h3>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Feature</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Pulse oximetry (SpO₂)</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Co-oximetry</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr><td className="p-3 font-medium text-foreground">Wavelengths</td><td className="p-3 text-foreground/80">2 (660 + 940 nm)</td><td className="p-3 text-foreground/80">4–128 across the visible–NIR range</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Sample</td><td className="p-3 text-foreground/80">Pulsatile arterial bed in vivo (transmitted/reflected)</td><td className="p-3 text-foreground/80">Haemolysed whole blood ex vivo</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Output</td><td className="p-3 text-foreground/80">Functional SpO₂ only</td><td className="p-3 text-foreground/80">HbO₂, HHb, COHb, MetHb, total Hb, fractional & functional SaO₂</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Detects COHb?</td><td className="p-3 text-foreground/80">No — reads ~100%</td><td className="p-3 text-foreground/80">Yes — direct quantification</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Detects MetHb?</td><td className="p-3 text-foreground/80">No — drifts to 85%</td><td className="p-3 text-foreground/80">Yes</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Continuous?</td><td className="p-3 text-foreground/80">Yes (real-time)</td><td className="p-3 text-foreground/80">Intermittent (sample-based)</td></tr>
+                <tr><td className="p-3 font-medium text-foreground">Where</td><td className="p-3 text-foreground/80">Bedside, ubiquitous</td><td className="p-3 text-foreground/80">Built into ABG analysers (Radiometer ABL, GEM, Siemens RAPIDPoint)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-3 text-sm">
+            <strong>Pulse co-oximeters</strong> (e.g. Masimo Rainbow SET) extend the principle non-invasively, using
+            7–12 wavelengths to estimate SpCO and SpMet at the bedside. Useful as a screening tool but less accurate
+            than blood-sample co-oximetry — confirmation with arterial co-oximetry is required before treatment
+            decisions.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Clinical applications</h3>
+
+          <div className="bg-card rounded-lg border border-border p-4 mt-3">
+            <h4 className="font-semibold text-foreground mb-2">Carbon monoxide poisoning</h4>
+            <p className="text-sm text-foreground/90 mb-2">
+              CO binds Hb with ~240× the affinity of O₂, forming COHb that is bright cherry-red and absorbs almost
+              identically to HbO₂ at 660 nm. Pulse oximetry therefore reads falsely high (often 100%) despite profound
+              tissue hypoxia. CO also <strong>shifts the ODC to the left</strong>, impairing offloading of the residual
+              oxygen.
+            </p>
+            <ul className="list-disc pl-5 text-sm text-foreground/90 space-y-0.5">
+              <li><strong>When to suspect:</strong> house fire, faulty boiler, suicide attempt, multiple casualties from the same building, headache + nausea + confusion + cherry-red skin.</li>
+              <li><strong>Diagnosis:</strong> arterial co-oximetry. Normal COHb &lt;3% (non-smokers), &lt;10% (smokers). Symptoms typically &gt;15%; severe &gt;25%; coma/death &gt;40–60%.</li>
+              <li><strong>Treatment:</strong> 100% O₂ via tight-fitting non-rebreather → t½ COHb falls from ~250 min (room air) to ~80 min (15 L/min mask) to ~22 min (hyperbaric at 3 ATA).</li>
+              <li><strong>HBO indications:</strong> COHb &gt;25% (15% in pregnancy), loss of consciousness, neurological signs, ECG ischaemia, persistent symptoms after 4 h of normobaric O₂.</li>
+              <li><strong>Pitfall:</strong> the PaO₂ on an ABG is <em>normal</em> (it measures dissolved O₂) — only co-oximetry-derived SaO₂ reveals the true catastrophe.</li>
+            </ul>
+          </div>
+
+          <div className="bg-card rounded-lg border border-border p-4 mt-3">
+            <h4 className="font-semibold text-foreground mb-2">Methaemoglobinaemia</h4>
+            <p className="text-sm text-foreground/90 mb-2">
+              MetHb contains iron in the ferric (Fe³⁺) state, which cannot bind O₂ and shifts the ODC of the remaining
+              functional Hb to the left. Causes: <strong>local anaesthetics</strong> (prilocaine — classically EMLA in
+              neonates, benzocaine sprays for awake fibreoptic), <strong>dapsone</strong>, nitrates / nitrites, sulphonamides, inhaled NO, aniline dyes, congenital cytochrome-b₅-reductase deficiency.
+            </p>
+            <ul className="list-disc pl-5 text-sm text-foreground/90 space-y-0.5">
+              <li><strong>Presentation:</strong> "<em>chocolate-brown</em>" arterial blood, central cyanosis disproportionate to PaO₂, SpO₂ stuck at ~85% that does <em>not</em> rise with supplemental O₂ ("oxygen-resistant cyanosis").</li>
+              <li><strong>Diagnosis:</strong> co-oximetry. Symptoms ~15%; dyspnoea/fatigue ~30%; metabolic acidosis &amp; arrhythmia &gt;50%; lethal &gt;70%.</li>
+              <li><strong>Treatment:</strong> high-flow O₂, remove the trigger. <strong>Methylene blue 1–2 mg/kg IV over 5 min</strong> (acts as an electron acceptor for NADPH-MetHb reductase). Avoid in G6PD deficiency (risk of haemolysis) — use ascorbic acid or exchange transfusion instead.</li>
+              <li><strong>Sulphaemoglobinaemia</strong> behaves similarly clinically but cannot be reduced by methylene blue and resolves only with red-cell turnover.</li>
+            </ul>
+          </div>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Exam pearl</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Two-wavelength pulse oximetry only distinguishes <em>two</em> species. Whenever clinical state and SpO₂
+              disagree (cherry-red after a fire, oxygen-resistant cyanosis after prilocaine, chocolate-brown ABG sample),
+              the answer is <strong>co-oximetry</strong>. The defining numbers: COHb ~250 min half-life on air, ~80 min
+              on 100% O₂, ~22 min HBO; methylene blue 1–2 mg/kg, contraindicated in G6PD deficiency.
+            </p>
+          </div>
+        </section>
+
+
           <p className="text-foreground/90 leading-relaxed">
             Capnography measures CO₂ concentration using <strong>infrared absorption</strong> at 4.26 µm. CO₂ absorbs
             infrared because it is a polyatomic molecule with different atoms — it has a changing dipole moment during
