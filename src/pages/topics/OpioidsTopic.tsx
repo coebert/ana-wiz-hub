@@ -252,8 +252,7 @@ const OpioidsTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
+        <section id="toc-tolerance" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
             in opioid efficacy — but they have different mechanisms and require different management strategies.
