@@ -134,6 +134,8 @@ const pts = {
 const NeckTrianglesDiagram = () => {
   const [selected, setSelected] = useState<TriangleKey>("anterior");
   const [showSubdivisions, setShowSubdivisions] = useState(true);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = triangles[selected];
 
   // ── SCM centreline path (curved) for triangle boundaries ──
@@ -196,6 +198,18 @@ const NeckTrianglesDiagram = () => {
             >
               {showSubdivisions ? "Show major only" : "Show subdivisions"}
             </button>
+            <button
+              onClick={() => setShowSutures(!showSutures)}
+              className={`text-xs px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
+            >
+              Sutures & detail
+            </button>
+            <button
+              onClick={() => setShowLabels(!showLabels)}
+              className={`text-xs px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
+            >
+              Labels
+            </button>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
@@ -204,19 +218,50 @@ const NeckTrianglesDiagram = () => {
                 <defs>
                   {/* Bone texture for mandible */}
                   <linearGradient id="nt-boneGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.12" />
+                    <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.18" />
                     <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.06" />
                   </linearGradient>
-                  {/* SCM muscle gradient */}
+                  {/* SCM muscle gradient — fibre-direction shading */}
                   <linearGradient id="nt-scmGrad" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="hsl(var(--foreground))" stopOpacity="0.1" />
-                    <stop offset="50%" stopColor="hsl(var(--foreground))" stopOpacity="0.16" />
-                    <stop offset="100%" stopColor="hsl(var(--foreground))" stopOpacity="0.08" />
+                    <stop offset="0%" stopColor="hsl(0, 50%, 55%)" stopOpacity="0.18" />
+                    <stop offset="50%" stopColor="hsl(0, 55%, 45%)" stopOpacity="0.28" />
+                    <stop offset="100%" stopColor="hsl(0, 50%, 55%)" stopOpacity="0.14" />
                   </linearGradient>
+                  {/* Per-triangle depth shading — radial highlight */}
+                  {triangleOrder.map((key) => (
+                    <radialGradient key={`grad-${key}`} id={`nt-grad-${key}`} cx="50%" cy="40%" r="65%">
+                      <stop offset="0%" stopColor={triangles[key].color} stopOpacity="0.45" />
+                      <stop offset="100%" stopColor={triangles[key].color} stopOpacity="0.08" />
+                    </radialGradient>
+                  ))}
+                  {/* Subtle skin/tissue grain */}
+                  <pattern id="nt-grain" patternUnits="userSpaceOnUse" width="5" height="5">
+                    <circle cx="1" cy="1" r="0.35" fill="hsl(var(--muted-foreground))" opacity="0.16" />
+                  </pattern>
+                  {/* Drop shadow for prominent structures */}
+                  <filter id="nt-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                    <feOffset dx="0.5" dy="1.2" result="off" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
                 </defs>
 
+                {/* Compass */}
+                {showLabels && (
+                  <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">
+                    <text x="138" y="8" textAnchor="middle">SUPERIOR</text>
+                    <text x="138" y="252" textAnchor="middle">INFERIOR</text>
+                    <text x="22" y="130" textAnchor="middle" transform="rotate(-90, 22, 130)">ANTERIOR</text>
+                    <text x="248" y="130" textAnchor="middle" transform="rotate(90, 248, 130)">POSTERIOR</text>
+                  </g>
+                )}
+
+                {/* Tissue grain background overlay */}
+                <rect x="15" y="0" width="240" height="255" fill="url(#nt-grain)" opacity="0.5" />
+
                 {/* ════════ HEAD SILHOUETTE ════════ */}
-                <g stroke="hsl(var(--foreground))" fill="none" opacity="0.2">
+                <g stroke="hsl(var(--foreground))" fill="none" opacity="0.22">
                   {/* Cranium vault */}
                   <path d="M108,10 C88,8 68,16 58,30 C50,44 52,56 58,62" strokeWidth="1.5" />
                   {/* Occiput → mastoid */}
@@ -312,7 +357,7 @@ const NeckTrianglesDiagram = () => {
                   strokeWidth="0.6" opacity="0.1" strokeDasharray="5 4" />
 
                 {/* ════════ DIGASTRIC MUSCLE (subdivision boundary) ════════ */}
-                {showSubdivisions && (
+                {showSubdivisions && showSutures && (
                   <g>
                     {/* Post belly: mastoid → intermediate tendon */}
                     <path d="M76,72 C82,78 90,86 98,92 C104,95 108,96 108,96"
@@ -323,16 +368,19 @@ const NeckTrianglesDiagram = () => {
                     {/* Ant belly: intermediate tendon → chin */}
                     <path d="M108,96 C112,92 115,88 118,84"
                       stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.18" />
-                    {/* Label */}
-                    <text x="84" y="92" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35"
-                      transform="rotate(-20,84,92)">Post. digastric</text>
-                    <text x="114" y="92" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.3"
-                      transform="rotate(-55,114,92)">Ant.</text>
+                    {showLabels && (
+                      <>
+                        <text x="84" y="92" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4"
+                          transform="rotate(-20,84,92)">Post. digastric</text>
+                        <text x="114" y="92" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.35"
+                          transform="rotate(-55,114,92)">Ant.</text>
+                      </>
+                    )}
                   </g>
                 )}
 
                 {/* ════════ OMOHYOID (subdivision boundary) ════════ */}
-                {showSubdivisions && (
+                {showSubdivisions && showSutures && (
                   <g>
                     {/* Sup belly: hyoid region → crosses SCM */}
                     <path d="M118,164 C120,166 124,170 128,172"
@@ -343,12 +391,13 @@ const NeckTrianglesDiagram = () => {
                     {/* Inf belly: SCM → lateral */}
                     <path d="M128,172 C145,170 165,169 184,170"
                       stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
-                    {/* Label */}
-                    <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">Omohyoid</text>
+                    {showLabels && (
+                      <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4">Omohyoid</text>
+                    )}
                   </g>
                 )}
 
-                {/* ════════ TRIANGLE FILL REGIONS ════════ */}
+                {/* ════════ TRIANGLE FILL REGIONS — with depth gradient + outline ════════ */}
                 {displayTriangles.map((key) => {
                   const isActive = selected === key;
                   const t = triangles[key];
@@ -366,11 +415,18 @@ const NeckTrianglesDiagram = () => {
                   }
                   return (
                     <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                      <path d={paths[key]} fill={t.color}
-                        fillOpacity={isActive ? 0.35 : 0.08}
+                      {/* Depth-shaded fill */}
+                      <path d={paths[key]}
+                        fill={isActive ? `url(#nt-grad-${key})` : t.color}
+                        fillOpacity={isActive ? 1 : 0.1}
                         stroke={t.color}
                         strokeWidth={isActive ? 2 : 0.8}
+                        filter={isActive ? "url(#nt-shadow)" : undefined}
                         className="transition-all duration-200" />
+                      {/* Subtle bone-grain overlay on active triangle for tactile depth */}
+                      {isActive && (
+                        <path d={paths[key]} fill="url(#nt-grain)" opacity="0.45" pointerEvents="none" />
+                      )}
                     </g>
                   );
                 })}
@@ -395,18 +451,18 @@ const NeckTrianglesDiagram = () => {
                 </g>
 
                 {/* ════════ ANATOMICAL LANDMARK LABELS ════════ */}
-                <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
-                  <text x="62" y="58" fontSize="4.5">Mastoid</text>
-                  <text x="76" y="74" fontSize="4" opacity="0.5">Angle</text>
-                  <text x="108" y="114" fontSize="4.5">Hyoid</text>
-                  <text x="140" y="244" fontSize="5">Clavicle</text>
-                  <text x="112" y="244" fontSize="4.5">Midline</text>
-                  <text x="94" y="70" fontSize="5">Mandible</text>
-                  {/* SCM label along muscle body */}
-                  <text x="108" y="150" fontSize="6" transform="rotate(64,108,150)" fontWeight="600" opacity="0.3">SCM</text>
-                  {/* Trapezius */}
-                  <text x="172" y="158" fontSize="5" transform="rotate(35,172,158)" opacity="0.3">Trapezius</text>
-                </g>
+                {showLabels && (
+                  <g fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5" className="select-none pointer-events-none">
+                    <text x="62" y="58" fontSize="4.5">Mastoid</text>
+                    <text x="76" y="74" fontSize="4" opacity="0.6">Angle</text>
+                    <text x="108" y="114" fontSize="4.5">Hyoid</text>
+                    <text x="140" y="244" fontSize="5">Clavicle</text>
+                    <text x="112" y="244" fontSize="4.5">Midline</text>
+                    <text x="94" y="70" fontSize="5">Mandible</text>
+                    <text x="108" y="150" fontSize="6" transform="rotate(64,108,150)" fontWeight="600" opacity="0.4">SCM</text>
+                    <text x="172" y="158" fontSize="5" transform="rotate(35,172,158)" opacity="0.4">Trapezius</text>
+                  </g>
+                )}
 
                 {/* ════════ CONTEXT-SENSITIVE OVERLAYS ════════ */}
                 {selected === "carotid" && (
