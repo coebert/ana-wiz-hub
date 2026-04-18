@@ -302,6 +302,173 @@ const GasLawsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Joule–Thomson Effect & Adiabatic Expansion</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            When a real gas expands, its temperature changes. Two distinct mechanisms operate in clinical practice:
+            <strong> adiabatic expansion</strong> (work done by the gas as it pushes back its surroundings, no heat
+            exchange) and the <strong>Joule–Thomson effect</strong> (isenthalpic throttling through a restriction with
+            no external work). Both produce cooling on cylinder discharge but for different physical reasons.
+          </p>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Adiabatic expansion</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            An <em>adiabatic</em> process exchanges no heat with the surroundings (Q = 0). For an ideal gas the first
+            law gives ΔU = −W; the gas does work at the expense of its own internal energy, so its temperature falls.
+            For a reversible adiabatic process:
+          </p>
+          <div className="bg-muted/40 rounded-lg p-4 mt-2 border border-border">
+            <p className="text-foreground font-mono text-center">
+              PV<sup>γ</sup> = constant &nbsp;&nbsp; and &nbsp;&nbsp; T₁V₁<sup>γ−1</sup> = T₂V₂<sup>γ−1</sup>
+            </p>
+            <p className="text-sm text-muted-foreground text-center mt-2">
+              where γ = Cp/Cv (1.40 for diatomic gases such as O₂ and N₂; 1.31 for N₂O; 1.67 for monatomic helium).
+            </p>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Adiabatic expansion underlies <strong>cryotherapy probes</strong> (rapid expansion of high-pressure gas at
+            the probe tip cools tissue to −70 °C or below for ablation of tumours, arrhythmic foci or skin lesions),
+            and the <strong>cooling of an O₂ cylinder during fast discharge</strong> — the gas remaining in the
+            cylinder expands almost adiabatically as molecules leave, so the cylinder body cools and any moisture in
+            the surrounding air condenses or freezes on it.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Worked example — adiabatic emptying of an O₂ cylinder</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              An E-size O₂ cylinder is opened from 137 bar (absolute ≈138 bar) to atmospheric pressure (1 bar) so
+              quickly that no heat enters from the cylinder wall. With γ = 1.40 and T₁ = 293 K (20 °C):
+            </p>
+            <p className="text-foreground font-mono text-center mt-2">
+              T₂ = T₁ (P₂/P₁)<sup>(γ−1)/γ</sup> = 293 × (1/138)<sup>0.286</sup> ≈ 78 K (−195 °C)
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">
+              In practice heat conduction from the cylinder wall and ambient air limits cooling to a much smaller
+              drop (~30–50 °C surface temperature fall during fast discharge), but it explains the frost on a
+              rapidly discharged O₂ cylinder despite O₂ being well above its J–T inversion temperature.
+            </p>
+          </div>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">The Joule–Thomson (throttling) effect</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            When a real gas is forced through a porous plug, narrow valve or other restriction without doing external
+            work and without heat exchange, the process is <strong>isenthalpic</strong> (H = constant). For an ideal
+            gas H depends only on T, so there is no temperature change. For a <em>real</em> gas there is, because of
+            the work done against (or by) intermolecular forces:
+          </p>
+          <div className="bg-muted/40 rounded-lg p-4 mt-2 border border-border">
+            <p className="text-foreground font-mono text-center">
+              μ<sub>JT</sub> = (∂T/∂P)<sub>H</sub>
+            </p>
+            <p className="text-sm text-muted-foreground text-center mt-2">
+              μ<sub>JT</sub> &gt; 0: gas <strong>cools</strong> on expansion. μ<sub>JT</sub> &lt; 0: gas <strong>warms</strong>.
+            </p>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            At low temperatures, attractive intermolecular forces dominate; the gas does work against them as it
+            expands and so cools (μ<sub>JT</sub> &gt; 0). At very high temperatures, repulsive forces dominate; the
+            gas warms on expansion (μ<sub>JT</sub> &lt; 0). The temperature at which μ<sub>JT</sub> = 0 — the dividing
+            line between cooling and warming — is the <strong>inversion temperature</strong>.
+          </p>
+
+          <div className="overflow-x-auto rounded-xl border border-border bg-card mt-4">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Gas</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Inversion T (max)</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Behaviour at room T (293 K) on throttling</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 font-medium text-foreground">N₂O</td>
+                  <td className="p-3 text-foreground/80">~1500 K</td>
+                  <td className="p-3 text-foreground/80">Cools strongly (~0.25 K per bar)</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">CO₂</td>
+                  <td className="p-3 text-foreground/80">~1500 K</td>
+                  <td className="p-3 text-foreground/80">Cools strongly — used in cryotherapy</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">N₂</td>
+                  <td className="p-3 text-foreground/80">~620 K</td>
+                  <td className="p-3 text-foreground/80">Cools modestly</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">O₂</td>
+                  <td className="p-3 text-foreground/80">~760 K</td>
+                  <td className="p-3 text-foreground/80">Cools modestly (~0.31 K per bar)</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">H₂</td>
+                  <td className="p-3 text-foreground/80">~205 K</td>
+                  <td className="p-3 text-foreground/80"><strong>Warms</strong> — must be pre-cooled below 205 K to liquefy</td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-medium text-foreground">He</td>
+                  <td className="p-3 text-foreground/80">~45 K</td>
+                  <td className="p-3 text-foreground/80"><strong>Warms</strong> — must be pre-cooled to liquefy (key to MRI cryostat design)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Worked example — frost on an N₂O cylinder</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            During heavy use (e.g. continuous flow at 6 L/min during a long case), liquid N₂O at the bottom of the
+            cylinder evaporates to replace withdrawn vapour. Two cooling mechanisms now act in concert:
+          </p>
+          <ol className="list-decimal pl-6 space-y-2 mt-2 text-foreground/90">
+            <li>
+              <strong>Latent heat of vaporisation</strong> (~376 kJ/kg) — energy is taken from the remaining liquid
+              and the cylinder wall to convert liquid N₂O to vapour, cooling the cylinder.
+            </li>
+            <li>
+              <strong>Joule–Thomson cooling at the regulator</strong> — vapour at ~52 bar is throttled to pipeline
+              pressure (~4 bar). With μ<sub>JT</sub> ≈ 0.25 K/bar, the temperature drop across the regulator is
+              roughly (52 − 4) × 0.25 ≈ <strong>12 °C</strong>.
+            </li>
+          </ol>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            As the cylinder cools, saturated vapour pressure of N₂O <em>falls</em> (hence delivered pressure drops
+            during fast discharge), the cylinder body may cool below the dew-point of room air, and a ring of frost
+            forms at the level of the liquid–vapour interface. The height of the frost line gives a rough visual
+            indication of remaining liquid contents.
+          </p>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Worked example — cryotherapy probe</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            A typical cryoprobe uses N₂O or CO₂ supplied at ~50 bar and throttled at the probe tip to ~1 bar through
+            a Joule–Thomson nozzle. Because both gases are well below their inversion temperatures, the throttling
+            cools the tip:
+          </p>
+          <div className="bg-muted/40 rounded-lg p-4 mt-2 border border-border">
+            <p className="text-foreground font-mono text-center">
+              ΔT ≈ μ<sub>JT</sub> × ΔP ≈ 0.25 × 49 ≈ 12 °C per pass
+            </p>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            Repeated cycling of the gas through a counter-current heat exchanger (the <strong>Linde process</strong>,
+            same principle as the Hampson–Linde liquefier) achieves probe-tip temperatures of −70 °C with N₂O/CO₂ and
+            below −180 °C with liquid-nitrogen-cooled systems. Used clinically for cryoablation of cardiac arrhythmias
+            (pulmonary vein isolation), prostate and renal tumours, retinal detachment repair, and dermatological
+            lesions.
+          </p>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Clinical Application — H₂ and He</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Hydrogen and helium have inversion temperatures below room temperature (205 K and 45 K respectively),
+              so they <em>warm</em> on throttling at 20 °C. To liquefy them they must first be pre-cooled below the
+              inversion temperature (e.g. by liquid nitrogen for H₂, by liquid hydrogen for He) before throttling
+              becomes useful. This is why MRI cryostats use liquid helium that has been laboriously pre-cooled
+              through a multi-stage cascade — and why a sudden quench of an MRI magnet vents enormous volumes of
+              warming He gas rather than a self-cooling jet.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Henry's Law</h2>
           <p className="text-foreground/90 leading-relaxed">
             At constant temperature, the amount of gas dissolved in a liquid is directly proportional to the partial
@@ -325,6 +492,8 @@ const GasLawsTopic = () => {
         "Dalton's law: total pressure equals the sum of partial pressures. Fundamental to the alveolar gas equation and FiO₂ calculations.",
         "The ideal gas equation (PV = nRT) combines all individual gas laws. Real gases deviate at high pressure and low temperature.",
         "Henry's law: gas dissolved in liquid is proportional to its partial pressure. Governs O₂/CO₂ transport and volatile agent uptake.",
+        "Adiabatic expansion (PVγ = constant) cools a gas as it does work — explains rapid O₂ cylinder cooling and reversible adiabatic processes.",
+        "Joule–Thomson effect: isenthalpic throttling cools real gases below their inversion temperature (N₂O, CO₂, O₂, N₂ at room T) and warms H₂ and He.",
         "Understanding gas behaviour is critical for safe use of medical gas systems, ventilation, and altitude/diving physiology."
       ]} />
       <QuizSection questions={gasLawsQuiz} />
