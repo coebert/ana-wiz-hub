@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
@@ -9,6 +10,19 @@ import { SeeAlso } from "@/components/SeeAlso";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
+
+const tocItems = [
+  { id: "toc-tbi", label: "TBI" },
+  { id: "toc-status", label: "Status Epilepticus" },
+  { id: "toc-sah", label: "SAH" },
+  { id: "toc-bsd", label: "Brainstem Death" },
+  { id: "toc-sci", label: "Spinal Cord Injury" },
+  { id: "toc-icp", label: "ICP / Microdialysis" },
+  { id: "toc-encephalitis", label: "Autoimmune Enceph." },
+  { id: "toc-gbs", label: "GBS" },
+  { id: "toc-dbi", label: "Devastating BI" },
+  { id: "toc-synthesis", label: "Synthesis" },
+];
 
 const NeurointensiveCareTopic = () => {
   return (

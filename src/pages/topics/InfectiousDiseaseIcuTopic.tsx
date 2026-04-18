@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
@@ -7,6 +8,21 @@ import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
+
+const tocItems = [
+  { id: "toc-respiratory", label: "Respiratory" },
+  { id: "toc-sepsis", label: "Gram +/− Sepsis" },
+  { id: "toc-cns", label: "CNS" },
+  { id: "toc-abdo", label: "Abdo / Nec Fasc" },
+  { id: "toc-bloodstream", label: "Bloodstream" },
+  { id: "toc-fungal", label: "Fungal" },
+  { id: "toc-endocarditis", label: "Endocarditis" },
+  { id: "toc-cdiff", label: "C. difficile" },
+  { id: "toc-viral", label: "Viral" },
+  { id: "toc-mdr", label: "MDR" },
+  { id: "toc-control", label: "Infection Control" },
+  { id: "toc-synthesis", label: "Synthesis" },
+];
 
 const InfectiousDiseaseIcuTopic = () => {
   return (

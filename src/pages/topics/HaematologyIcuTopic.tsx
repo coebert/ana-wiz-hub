@@ -107,7 +107,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* Differentiating TMAs */}
-        <div>
+        <div id="toc-tma" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Differentiating Thrombotic Microangiopathies</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -156,7 +156,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* HUS */}
-        <div>
+        <div id="toc-hus" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemolytic Uraemic Syndrome (HUS)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HUS is a thrombotic microangiopathy characterised by the triad of MAHA, thrombocytopenia, and acute kidney injury. Unlike TTP, the predominant target organ is the kidney. Two major forms exist with fundamentally different pathophysiology and management.
@@ -253,7 +253,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* HLH */}
-        <div>
+        <div id="toc-hlh" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HLH is a syndrome of pathological immune activation characterised by uncontrolled proliferation of activated lymphocytes and macrophages, with excessive cytokine release ("cytokine storm"). It results in multi-organ failure with a mortality of 50–90% if untreated.
@@ -354,7 +354,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* ICU Considerations */}
-        <div>
+        <div id="toc-icu-common" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Considerations Common to Both</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -397,7 +397,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* HIT */}
-        <div>
+        <div id="toc-hit" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heparin-Induced Thrombocytopenia (HIT)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HIT is a prothrombotic immune-mediated adverse drug reaction caused by antibodies against complexes of platelet factor 4 (PF4) and heparin. Despite causing thrombocytopenia, the dominant clinical risk is <strong>thrombosis</strong> (not bleeding) — HIT is a paradoxical prothrombotic thrombocytopenia.
@@ -576,7 +576,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* Anticoagulation in Special ICU Populations */}
-        <div>
+        <div id="toc-anticoag" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation in Special ICU Populations</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Anticoagulation in ICU is complicated by organ dysfunction, extracorporeal circuits, coagulopathy, and bleeding risk. Three common scenarios require specific approaches: renal replacement therapy (RRT), extracorporeal membrane oxygenation (ECMO), and acute liver failure.
@@ -714,6 +714,7 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        <div id="toc-synthesis" className="scroll-mt-24" />
         <SynthesisBlock
           title="ICU Haematology — Diagnosis & Action Matrix"
           subtitle="The high-yield differential of thrombocytopenia, microangiopathy, and bleeding in the critically ill — with the single defining test and first action for each."
