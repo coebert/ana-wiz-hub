@@ -8,43 +8,15 @@ const tabs: { id: TabId; label: string; color: string }[] = [
 ];
 
 export const RemifentanilPKDiagram = () => {
-  const [tab, setTab] = useState<TabId>("csht");
-  const [duration, setDuration] = useState<number>(180); // infusion duration min for slider
-  const [visible, setVisible] = useState<Record<string, boolean>>({
-    remi: true,
-    alf: true,
-    suf: true,
-    fent: true,
-  });
+  const [tab, setTab] = useState<TabId>("metabolism");
 
   const active = tabs.find((t) => t.id === tab) ?? tabs[0];
 
-  // Plot dimensions
-  const W = 800;
-  const H = 360;
-  const padL = 60;
-  const padR = 30;
-  const padT = 40;
-  const padB = 60;
-  const xMax = 600; // minutes infusion duration
-  const yMax = 300; // CSHT minutes
-
-  const xScale = (t: number) => padL + (t / xMax) * (W - padL - padR);
-  const yScale = (v: number) => H - padB - (Math.min(v, yMax) / yMax) * (H - padT - padB);
-
-  const buildPath = (op: Opioid) => {
-    const pts: string[] = [];
-    for (let t = 0; t <= xMax; t += 10) {
-      pts.push(`${pts.length === 0 ? "M" : "L"} ${xScale(t)} ${yScale(op.csht(t))}`);
-    }
-    return pts.join(" ");
-  };
-
   return (
     <div className="w-full bg-card border border-border rounded-lg p-4 sm:p-6 my-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Remifentanil — CSHT & Organ-Independent Metabolism</h3>
+      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Remifentanil — Organ-Independent Metabolism</h3>
       <p className="text-sm text-muted-foreground mb-4">
-        Remifentanil's flat ~3-minute CSHT — independent of infusion duration — is unique among opioids and underpins its perioperative versatility.
+        Remifentanil's non-specific esterase metabolism makes it independent of hepatic and renal function — the basis for its uniquely flat context-sensitive half-time and perioperative versatility.
       </p>
 
       <div className="flex flex-wrap gap-2 mb-4">
@@ -63,126 +35,6 @@ export const RemifentanilPKDiagram = () => {
           </button>
         ))}
       </div>
-
-      {/* CSHT */}
-      {tab === "csht" && (
-        <div>
-          {/* Toggle chips */}
-          <div className="flex flex-wrap gap-2 mb-3">
-            {opioids.map((op) => (
-              <button
-                key={op.id}
-                onClick={() => setVisible({ ...visible, [op.id]: !visible[op.id] })}
-                className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-all ${
-                  visible[op.id] ? "text-background" : "text-foreground bg-background"
-                }`}
-                style={{
-                  backgroundColor: visible[op.id] ? op.color : "transparent",
-                  borderColor: op.color,
-                }}
-              >
-                {op.name}
-              </button>
-            ))}
-          </div>
-
-          <div className="w-full overflow-x-auto">
-            <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" style={{ minWidth: 600 }}>
-              {/* Axes */}
-              <line x1={padL} y1={H - padB} x2={W - padR} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-              <line x1={padL} y1={padT} x2={padL} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-
-              <text x={W / 2} y={H - 15} textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="600">
-                Infusion duration (min)
-              </text>
-              <text
-                x={20}
-                y={H / 2}
-                textAnchor="middle"
-                className="fill-foreground"
-                fontSize="11"
-                fontWeight="600"
-                transform={`rotate(-90 20 ${H / 2})`}
-              >
-                Context-sensitive half-time (min)
-              </text>
-
-              {/* Grid + ticks */}
-              {[0, 100, 200, 300, 400, 500, 600].map((t) => (
-                <g key={t}>
-                  <line x1={xScale(t)} y1={H - padB} x2={xScale(t)} y2={H - padB + 5} stroke="hsl(var(--foreground))" strokeWidth="1" />
-                  <line x1={xScale(t)} y1={padT} x2={xScale(t)} y2={H - padB} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.5" />
-                  <text x={xScale(t)} y={H - padB + 18} textAnchor="middle" className="fill-muted-foreground" fontSize="9">{t}</text>
-                </g>
-              ))}
-              {[0, 60, 120, 180, 240, 300].map((y) => (
-                <g key={y}>
-                  <line x1={padL - 5} y1={yScale(y)} x2={padL} y2={yScale(y)} stroke="hsl(var(--foreground))" strokeWidth="1" />
-                  <line x1={padL} y1={yScale(y)} x2={W - padR} y2={yScale(y)} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.5" />
-                  <text x={padL - 8} y={yScale(y) + 3} textAnchor="end" className="fill-muted-foreground" fontSize="9">{y}</text>
-                </g>
-              ))}
-
-              {/* Curves */}
-              {opioids.map(
-                (op) =>
-                  visible[op.id] && (
-                    <g key={op.id}>
-                      <path d={buildPath(op)} fill="none" stroke={op.color} strokeWidth="3" />
-                      {/* End-of-curve label */}
-                      <text x={xScale(xMax) - 5} y={yScale(op.csht(xMax)) - 8} textAnchor="end" className="fill-foreground" fontSize="10" fontWeight="600">
-                        {op.name}
-                      </text>
-                    </g>
-                  )
-              )}
-
-              {/* Vertical marker for slider */}
-              <line x1={xScale(duration)} y1={padT} x2={xScale(duration)} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
-              {opioids.map(
-                (op) =>
-                  visible[op.id] && (
-                    <circle key={op.id} cx={xScale(duration)} cy={yScale(op.csht(duration))} r="5" fill={op.color} stroke="hsl(var(--background))" strokeWidth="2" />
-                  )
-              )}
-            </svg>
-          </div>
-
-          {/* Slider + readouts */}
-          <div className="mt-4 p-4 rounded-lg border-2" style={{ borderColor: active.color, backgroundColor: `${active.color}10` }}>
-            <label className="block text-sm font-medium text-foreground mb-2">
-              Infusion duration: <span className="font-bold" style={{ color: active.color }}>{duration} min</span> ({(duration / 60).toFixed(1)} h)
-            </label>
-            <input
-              type="range"
-              min={0}
-              max={600}
-              step={10}
-              value={duration}
-              onChange={(e) => setDuration(Number(e.target.value))}
-              className="w-full mb-3 accent-foreground"
-            />
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-              {opioids.map((op) => (
-                <div key={op.id} className="p-2 rounded bg-background border-2" style={{ borderColor: op.color }}>
-                  <p className="text-muted-foreground">{op.name}</p>
-                  <p className="font-bold text-base text-foreground">{Math.round(op.csht(duration))} min</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4 p-4 rounded-lg border border-border bg-background">
-            <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">What CSHT means</p>
-            <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-              <li>The time for plasma concentration to fall by <strong className="text-foreground">50%</strong> after stopping a continuous infusion that has maintained a steady plasma level.</li>
-              <li>Depends on infusion duration because of accumulation in peripheral compartments — explains why fentanyl behaves very differently after a 30-min vs 6-h infusion.</li>
-              <li><strong className="text-foreground">Remifentanil's CSHT is essentially flat at ~3 min</strong> regardless of duration — no clinically meaningful accumulation.</li>
-              <li>Sufentanil unexpectedly performs well on prolonged infusion due to a large volume of distribution and re-distribution kinetics.</li>
-            </ul>
-          </div>
-        </div>
-      )}
 
       {/* METABOLISM */}
       {tab === "metabolism" && (
