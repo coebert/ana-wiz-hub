@@ -487,6 +487,41 @@ const GasLawsTopic = () => {
         </section>
       </div>
 
+      <SynthesisBlock
+        title="Gas Laws — Equation, Anaesthetic Application"
+        subtitle="The headline equations and where each one bites in clinical practice."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Law</th>
+              <th className="text-left p-2 text-foreground font-semibold">Equation</th>
+              <th className="text-left p-2 text-foreground font-semibold">Anaesthetic Application</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Boyle", "P₁V₁ = P₂V₂ (constant T)", "Pneumothorax expansion at altitude; cylinder contents calculation"],
+              ["Charles", "V₁/T₁ = V₂/T₂ (constant P)", "Volume changes in heated humidifiers; pressure-volume loops"],
+              ["Gay-Lussac", "P₁/T₁ = P₂/T₂ (constant V)", "Cylinder pressure rises with ambient temperature"],
+              ["Avogadro", "Equal V at STP contain equal n", "1 mol gas = 22.4 L at STP — basis of vaporiser calibration"],
+              ["Ideal gas (combined)", "PV = nRT", "Predicts behaviour of medical gases over wide ranges"],
+              ["Dalton", "P_total = ΣP_partial", "Partial-pressure based gas analysis; alveolar gas equation"],
+              ["Henry", "C = k·P (constant T)", "O₂/CO₂ transport in blood; volatile uptake; nitrogen narcosis"],
+              ["Graham", "Rate ∝ 1/√MW", "Diffusion of gases across alveolar membrane"],
+              ["Fick (diffusion)", "J = −D·A·ΔC/d", "Pulmonary diffusion capacity (DLCO); placental gas transfer"],
+            ].map(([law, eqn, app]) => (
+              <tr key={law as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{law}</td>
+                <td className="p-2 text-muted-foreground font-mono text-xs">{eqn}</td>
+                <td className="p-2 text-muted-foreground">{app}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "Boyle's law (P₁V₁ = P₂V₂): at constant temperature, pressure and volume are inversely proportional. Relevant to pneumothorax expansion and gas cylinder contents.",
         "Charles' law (V₁/T₁ = V₂/T₂): at constant pressure, volume is proportional to absolute temperature. Explains ATPS to BTPS correction.",

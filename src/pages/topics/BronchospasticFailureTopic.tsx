@@ -458,6 +458,41 @@ const BronchospasticFailureTopic = () => {
 
       </section>
 
+      <SynthesisBlock
+        title="Severe Bronchospasm in the Ventilated Patient — Stepwise Plan"
+        subtitle="From immediate ventilator manoeuvres through bronchodilator therapy to rescue strategies."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Step</th>
+              <th className="text-left p-2 text-foreground font-semibold">Intervention</th>
+              <th className="text-left p-2 text-foreground font-semibold">Rationale / Trigger</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["1 — Recognise", "Wheeze, ↑Paw, ↑PetCO₂, expiratory flow not returning to baseline", "Diagnose dynamic hyperinflation — DISCONNECT if PEA arrest"],
+              ["2 — Ventilator", "↓ RR (8–10), ↑ Te (I:E 1:4–1:5), Vt 6 ml/kg, accept permissive hypercapnia", "Allow complete expiration; reduce auto-PEEP"],
+              ["3 — Inhaled β₂", "Salbutamol MDI 8–12 puffs via spacer (or 5 mg neb)", "First-line bronchodilator — repeat as needed"],
+              ["4 — Anticholinergic", "Ipratropium 500 µg neb 4–6-hrly", "Synergistic with β₂; useful in COPD"],
+              ["5 — Steroid", "IV hydrocortisone 200 mg or methylprednisolone 60–125 mg", "Onset 4–6 h — give early"],
+              ["6 — IV magnesium", "MgSO₄ 2 g IV over 20 min", "Smooth muscle relaxation; reasonable evidence"],
+              ["7 — Volatile / ketamine", "Sevoflurane via Sedaconda; ketamine 1–3 mg/kg/hr", "Bronchodilator; consider if refractory"],
+              ["8 — Adrenaline", "IV bolus 10–50 µg or infusion", "Severe refractory bronchospasm; consider IM 0.5 mg if anaphylaxis"],
+              ["9 — Rescue", "Heliox · bronchoscopic lavage · VV-ECMO · transfer for inhalational GA", "Near-fatal asthma — ECMO referral early"],
+            ].map(([step, intervention, rationale]) => (
+              <tr key={step as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{step}</td>
+                <td className="p-2 text-muted-foreground">{intervention}</td>
+                <td className="p-2 text-muted-foreground">{rationale}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs",
         "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority",

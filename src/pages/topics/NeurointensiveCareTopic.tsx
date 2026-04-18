@@ -652,6 +652,40 @@ const NeurointensiveCareTopic = () => {
         </div>
       </section>
 
+      <SynthesisBlock
+        title="Neurointensive Care — At a Glance"
+        subtitle="Targets and triggers across the major neurological emergencies, from TBI through brainstem death."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Domain</th>
+              <th className="text-left p-2 text-foreground font-semibold">Target / Threshold</th>
+              <th className="text-left p-2 text-foreground font-semibold">Action</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["TBI — CPP", "60–70 mmHg", "MAP target ≥80 with vasopressors; avoid hypotension"],
+              ["TBI — ICP", "<22 mmHg", "Tier 1: HOB 30°, sedation, normocapnia, osmotherapy"],
+              ["Refractory ICP", "Failed tier 1–2", "Decompressive craniectomy (RESCUEicp) or barbiturate coma"],
+              ["SAH — vasospasm", "Day 4–14", "Nimodipine 60 mg PO 4-hrly; HHH only if confirmed DCI"],
+              ["Status epilepticus", ">5 min seizure or recurrent", "IV benzo → levetiracetam/phenytoin/valproate → anaesthesia"],
+              ["Acute stroke", "<4.5 h thrombolysis; <6 h (up to 24 h) thrombectomy", "NIHSS, CT/CTA, BP <185/110 pre-tPA"],
+              ["Brainstem death", "Coma + apnoea + absent brainstem reflexes ×2 by 2 doctors", "Refer SN-OD before testing for organ donation pathway"],
+              ["WLST decision", "≥72 h full active treatment (DBI 2025)", "MDT involvement; family collaboration; SN-OD discussion"],
+            ].map(([domain, target, action]) => (
+              <tr key={domain as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{domain}</td>
+                <td className="p-2 text-muted-foreground">{target}</td>
+                <td className="p-2 text-muted-foreground">{action}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia",
         "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use",

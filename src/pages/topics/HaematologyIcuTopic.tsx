@@ -701,6 +701,39 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        <SynthesisBlock
+          title="ICU Haematology — Diagnosis & Action Matrix"
+          subtitle="The high-yield differential of thrombocytopenia, microangiopathy, and bleeding in the critically ill — with the single defining test and first action for each."
+          variant="table"
+        >
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-border bg-secondary/50">
+                <th className="text-left p-2 text-foreground font-semibold">Condition</th>
+                <th className="text-left p-2 text-foreground font-semibold">Defining Test</th>
+                <th className="text-left p-2 text-foreground font-semibold">First Action</th>
+              </tr>
+            </thead>
+            <tbody className="text-foreground/90">
+              {[
+                ["TTP", "ADAMTS13 activity <10%", "Plasma exchange — DO NOT transfuse platelets"],
+                ["HIT (type II)", "4Ts ≥4 → ELISA → SRA confirmation", "Stop heparin; start non-heparin anticoagulant (argatroban/bivalirudin)"],
+                ["DIC", "↑PT/APTT, ↓fibrinogen, ↑D-dimer, ↓platelets", "Treat underlying cause; supportive blood products"],
+                ["HUS (atypical)", "Schistocytes + AKI + low ADAMTS13 ruled out", "Eculizumab; supportive care"],
+                ["Massive haemorrhage", "Clinical + dynamic Hb / lactate", "Activate MHP — 1:1:1 ratio; TXA <3 h (CRASH-2)"],
+                ["Liver failure coagulopathy", "Rebalanced haemostasis (TEG/ROTEM)", "Avoid prophylactic FFP; correct only for procedure/bleeding"],
+                ["CRRT anticoagulation", "iCa²⁺ post-filter 0.25–0.35 mmol/L", "Regional citrate (1st line); UFH if liver failure"],
+              ].map(([condition, test, action]) => (
+                <tr key={condition as string} className="border-b border-border/50">
+                  <td className="p-2 font-medium">{condition}</td>
+                  <td className="p-2 text-muted-foreground">{test}</td>
+                  <td className="p-2 text-muted-foreground">{action}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </SynthesisBlock>
+
         <KeyLearningPoints points={[
           "TTP: ADAMTS13 <10% → microvascular thrombosis; DO NOT transfuse platelets; PLASMIC ≥6 → start plasma exchange",
           "Normal PT/APTT with MAHA + thrombocytopenia distinguishes TTP/HUS from DIC",
