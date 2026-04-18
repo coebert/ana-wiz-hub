@@ -397,6 +397,230 @@ const RenalPhysiologyTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Perioperative Drug Dosing in Renal Impairment</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Renal impairment alters drug pharmacokinetics in three ways: (1) reduced renal excretion of parent drug or
+            active metabolites, (2) altered protein binding (uraemia displaces acidic drugs from albumin), and
+            (3) altered volume of distribution (oedema, acidosis). Threshold for dose adjustment is generally
+            <strong> eGFR &lt;50–60 ml/min/1.73 m²</strong>; many drugs require avoidance below 30. Use ideal or
+            adjusted body weight for hydrophilic drugs. The table below summarises the agents most often encountered
+            perioperatively.
+          </p>
+
+          <div className="overflow-x-auto rounded-xl border border-border bg-card mb-6">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Drug class / agent</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Renal handling</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Dose adjustment / preferred choice</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Key caveats</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr className="bg-muted/20">
+                  <td colSpan={4} className="p-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Opioids</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Morphine</td>
+                  <td className="p-3 align-top text-foreground/80">Active metabolites M3G (neuroexcitatory) and M6G (analgesic, sedating) accumulate</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Avoid</strong> if eGFR &lt;30. Reduce dose 50–75% if eGFR 30–50.</td>
+                  <td className="p-3 align-top text-foreground/80">Prolonged sedation, respiratory depression, myoclonus. Same applies to diamorphine, codeine (→ morphine).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Oxycodone</td>
+                  <td className="p-3 align-top text-foreground/80">Hepatic metabolism; ~10% renal excretion of active drug</td>
+                  <td className="p-3 align-top text-foreground/80">Reduce dose 50% if eGFR &lt;30. Cautious titration.</td>
+                  <td className="p-3 align-top text-foreground/80">Better tolerated than morphine but still accumulates.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Fentanyl / alfentanil</td>
+                  <td className="p-3 align-top text-foreground/80">Hepatic metabolism, inactive metabolites</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Preferred</strong> intraoperative opioids. No dose change for single doses.</td>
+                  <td className="p-3 align-top text-foreground/80">Context-sensitive half-time prolonged with infusions; titrate to effect.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Remifentanil</td>
+                  <td className="p-3 align-top text-foreground/80">Plasma esterase metabolism — independent of renal/hepatic function</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Drug of choice</strong> for infusions in renal failure.</td>
+                  <td className="p-3 align-top text-foreground/80">Plan post-op analgesia (rapid offset).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Pethidine</td>
+                  <td className="p-3 align-top text-foreground/80">Norpethidine (pro-convulsant) accumulates</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Avoid completely</strong></td>
+                  <td className="p-3 align-top text-foreground/80">Risk of seizures.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Tramadol</td>
+                  <td className="p-3 align-top text-foreground/80">Active metabolite (O-desmethyltramadol) renally excreted</td>
+                  <td className="p-3 align-top text-foreground/80">Max 50–100 mg 12-hourly if eGFR &lt;30; avoid &lt;15.</td>
+                  <td className="p-3 align-top text-foreground/80">Lowers seizure threshold; serotonergic.</td>
+                </tr>
+
+                <tr className="bg-muted/20">
+                  <td colSpan={4} className="p-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Neuromuscular blockers & reversal</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Atracurium / cisatracurium</td>
+                  <td className="p-3 align-top text-foreground/80">Hofmann elimination (organ-independent) + ester hydrolysis</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Drug of choice</strong> in renal failure. No dose change.</td>
+                  <td className="p-3 align-top text-foreground/80">Laudanosine accumulates with prolonged infusions (theoretical CNS effects, rarely clinical).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Rocuronium / vecuronium</td>
+                  <td className="p-3 align-top text-foreground/80">~30% renal excretion (rocuronium); active 3-OH metabolite of vecuronium accumulates</td>
+                  <td className="p-3 align-top text-foreground/80">Acceptable single dose. Avoid infusions; use TOF monitoring; expect prolonged action.</td>
+                  <td className="p-3 align-top text-foreground/80">Reverse with sugammadex (renally excreted but rocuronium-sugammadex complex still effective; safe in dialysis per recent data).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Suxamethonium</td>
+                  <td className="p-3 align-top text-foreground/80">Plasma cholinesterase; renal handling not relevant</td>
+                  <td className="p-3 align-top text-foreground/80">Standard dose. <strong>Avoid if K⁺ &gt;5.5</strong> or pre-existing hyperkalaemia.</td>
+                  <td className="p-3 align-top text-foreground/80">Transient ↑K⁺ ~0.5 mmol/L — may precipitate arrhythmia in CKD/dialysis-dependent.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Neostigmine</td>
+                  <td className="p-3 align-top text-foreground/80">~50% renal excretion — half-life prolonged</td>
+                  <td className="p-3 align-top text-foreground/80">Standard dose; duration matches relaxant prolongation.</td>
+                  <td className="p-3 align-top text-foreground/80">Recurarisation unlikely as neostigmine outlasts the relaxant.</td>
+                </tr>
+
+                <tr className="bg-muted/20">
+                  <td colSpan={4} className="p-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Antibiotics</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Aminoglycosides (gentamicin, amikacin)</td>
+                  <td className="p-3 align-top text-foreground/80">Almost entirely renal; nephrotoxic + ototoxic</td>
+                  <td className="p-3 align-top text-foreground/80">Extended interval (24–48 h). Use Hartford nomogram or trough levels &lt;1 mg/L. Avoid if alternatives exist.</td>
+                  <td className="p-3 align-top text-foreground/80">Cumulative toxicity — limit course to ≤72 h where possible.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Vancomycin</td>
+                  <td className="p-3 align-top text-foreground/80">~90% renal; nephrotoxic at high troughs</td>
+                  <td className="p-3 align-top text-foreground/80">Loading dose 25–30 mg/kg, then dose by levels. Target trough 15–20 mg/L (or AUC₂₄ 400–600).</td>
+                  <td className="p-3 align-top text-foreground/80">Synergistic toxicity with aminoglycosides, piperacillin-tazobactam.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">β-lactams (penicillins, cephalosporins, carbapenems)</td>
+                  <td className="p-3 align-top text-foreground/80">Predominantly renal</td>
+                  <td className="p-3 align-top text-foreground/80">Reduce dose or extend interval per BNF when eGFR &lt;30. Time-dependent killing — favour extended infusions.</td>
+                  <td className="p-3 align-top text-foreground/80">Neurotoxicity (seizures) with cefepime, imipenem in CKD if not adjusted.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Co-amoxiclav, piperacillin-tazobactam</td>
+                  <td className="p-3 align-top text-foreground/80">Renal</td>
+                  <td className="p-3 align-top text-foreground/80">Extend interval to 8–12 h if eGFR &lt;30.</td>
+                  <td className="p-3 align-top text-foreground/80">Pip-taz + vancomycin associated with ↑AKI (controversial).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Metronidazole, clindamycin, linezolid, ciprofloxacin</td>
+                  <td className="p-3 align-top text-foreground/80">Hepatic / mixed</td>
+                  <td className="p-3 align-top text-foreground/80">Standard dose (cipro: reduce if eGFR &lt;30).</td>
+                  <td className="p-3 align-top text-foreground/80">Generally safe choices.</td>
+                </tr>
+
+                <tr className="bg-muted/20">
+                  <td colSpan={4} className="p-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Anticoagulants — LMWH & DOACs</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Enoxaparin</td>
+                  <td className="p-3 align-top text-foreground/80">Renal clearance — anti-Xa accumulates</td>
+                  <td className="p-3 align-top text-foreground/80">Prophylaxis: 20 mg OD if eGFR &lt;30. Treatment: 1 mg/kg OD (not BD); monitor anti-Xa (target 0.5–1.0).</td>
+                  <td className="p-3 align-top text-foreground/80">Bleeding risk ↑↑ in dialysis — switch to UFH.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Dalteparin / tinzaparin</td>
+                  <td className="p-3 align-top text-foreground/80">Less renal accumulation than enoxaparin</td>
+                  <td className="p-3 align-top text-foreground/80">Tinzaparin licensed down to eGFR 20; monitor anti-Xa &lt;30.</td>
+                  <td className="p-3 align-top text-foreground/80">Preferred LMWH in moderate CKD.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Unfractionated heparin</td>
+                  <td className="p-3 align-top text-foreground/80">Reticulo-endothelial clearance — non-renal</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Preferred</strong> if eGFR &lt;30 or dialysis. Monitor APTT.</td>
+                  <td className="p-3 align-top text-foreground/80">Reversible with protamine.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Dabigatran</td>
+                  <td className="p-3 align-top text-foreground/80">~80% renal</td>
+                  <td className="p-3 align-top text-foreground/80">Avoid if CrCl &lt;30. Reverse with idarucizumab.</td>
+                  <td className="p-3 align-top text-foreground/80">Most renally-dependent DOAC.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Rivaroxaban / apixaban / edoxaban</td>
+                  <td className="p-3 align-top text-foreground/80">Apixaban ~25%, rivaroxaban ~35%, edoxaban ~50% renal</td>
+                  <td className="p-3 align-top text-foreground/80">Apixaban is preferred DOAC in CKD. Dose reduce per SmPC if CrCl 15–30. Avoid all if &lt;15.</td>
+                  <td className="p-3 align-top text-foreground/80">Reverse Xa inhibitors with andexanet alfa or 4-factor PCC.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Warfarin</td>
+                  <td className="p-3 align-top text-foreground/80">Hepatic</td>
+                  <td className="p-3 align-top text-foreground/80">No dose change but ↑sensitivity in CKD; check INR more frequently.</td>
+                  <td className="p-3 align-top text-foreground/80">Often preferred over DOACs at very low GFR / dialysis (limited DOAC data).</td>
+                </tr>
+
+                <tr className="bg-muted/20">
+                  <td colSpan={4} className="p-2 px-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Contrast & other perioperative agents</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Iodinated IV contrast</td>
+                  <td className="p-3 align-top text-foreground/80">Renal excretion; risk of CI-AKI</td>
+                  <td className="p-3 align-top text-foreground/80">Iso- or low-osmolar at lowest possible volume (mL &lt; 3 × eGFR). IV crystalloid pre/post if eGFR &lt;45.</td>
+                  <td className="p-3 align-top text-foreground/80">See dedicated CI-AKI section above.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Gadolinium MRI contrast</td>
+                  <td className="p-3 align-top text-foreground/80">Renal</td>
+                  <td className="p-3 align-top text-foreground/80">Use group II macrocyclic agents (gadobutrol, gadoteridol) at lowest dose; avoid group I if eGFR &lt;30.</td>
+                  <td className="p-3 align-top text-foreground/80">Risk of nephrogenic systemic fibrosis (NSF).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">NSAIDs (diclofenac, ibuprofen, ketorolac)</td>
+                  <td className="p-3 align-top text-foreground/80">Block afferent prostaglandin vasodilation → ↓RBF, ↓GFR</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Avoid</strong> in eGFR &lt;60 perioperatively, hypovolaemia, sepsis, on ACEi/ARB + diuretic ("triple whammy").</td>
+                  <td className="p-3 align-top text-foreground/80">Significant cause of preventable AKI.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Metformin</td>
+                  <td className="p-3 align-top text-foreground/80">Renal — risk of lactic acidosis if AKI</td>
+                  <td className="p-3 align-top text-foreground/80">Hold 48 h pre-procedure if eGFR &lt;30 or contrast planned. Restart 48 h post if creatinine stable.</td>
+                  <td className="p-3 align-top text-foreground/80">MALA carries high mortality.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">SGLT2 inhibitors (empagliflozin, dapagliflozin)</td>
+                  <td className="p-3 align-top text-foreground/80">Modest renal clearance; risk of euglycaemic DKA perioperatively</td>
+                  <td className="p-3 align-top text-foreground/80"><strong>Stop ≥3 days pre-op</strong> for major surgery (MHRA/ABCD guidance).</td>
+                  <td className="p-3 align-top text-foreground/80">Restart when eating/drinking and eGFR stable.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">ACEi / ARB</td>
+                  <td className="p-3 align-top text-foreground/80">Block efferent vasoconstriction → ↓GFR if hypovolaemic</td>
+                  <td className="p-3 align-top text-foreground/80">Hold on day of major surgery if hypotension/AKI risk; continue for HF on cardiology advice.</td>
+                  <td className="p-3 align-top text-foreground/80">Hyperkalaemia risk; restart when euvolaemic.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Local anaesthetics, propofol, volatiles, ketamine</td>
+                  <td className="p-3 align-top text-foreground/80">Hepatic metabolism, inactive metabolites</td>
+                  <td className="p-3 align-top text-foreground/80">No dose adjustment required.</td>
+                  <td className="p-3 align-top text-foreground/80">Sevoflurane &gt; 2 MAC for prolonged low-flow → Compound A (theoretical, not clinical).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="rounded-lg bg-muted/40 border border-border p-4 text-sm text-foreground/85">
+            <p className="font-semibold text-foreground mb-1">Bottom-line perioperative choices in significant CKD (eGFR &lt;30)</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li><strong>Induction/maintenance:</strong> propofol + fentanyl/alfentanil + cisatracurium (or rocuronium with sugammadex reversal) + sevoflurane.</li>
+              <li><strong>Infusion analgesia:</strong> remifentanil. <strong>Post-op:</strong> oxycodone (reduced dose) or fentanyl PCA; avoid morphine.</li>
+              <li><strong>Anticoagulation:</strong> UFH preferred over LMWH; warfarin or apixaban if oral needed.</li>
+              <li><strong>Avoid:</strong> NSAIDs, morphine, pethidine, gentamicin (where alternative exists), high-osmolar contrast, group I gadolinium agents.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
