@@ -80,6 +80,7 @@ const CardiacOutputMonitoringTopic = () => {
       <PiCCODiagram />
       <PACDiagram />
       <EchoDiagram />
+      <MModeDiagram />
       <TOEViewsDiagram />
 
       <KeyLearningPoints points={[
