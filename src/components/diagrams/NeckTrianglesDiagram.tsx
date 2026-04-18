@@ -357,7 +357,7 @@ const NeckTrianglesDiagram = () => {
                   strokeWidth="0.6" opacity="0.1" strokeDasharray="5 4" />
 
                 {/* ════════ DIGASTRIC MUSCLE (subdivision boundary) ════════ */}
-                {showSubdivisions && (
+                {showSubdivisions && showSutures && (
                   <g>
                     {/* Post belly: mastoid → intermediate tendon */}
                     <path d="M76,72 C82,78 90,86 98,92 C104,95 108,96 108,96"
@@ -368,16 +368,19 @@ const NeckTrianglesDiagram = () => {
                     {/* Ant belly: intermediate tendon → chin */}
                     <path d="M108,96 C112,92 115,88 118,84"
                       stroke="hsl(var(--foreground))" strokeWidth="2" fill="none" opacity="0.18" />
-                    {/* Label */}
-                    <text x="84" y="92" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35"
-                      transform="rotate(-20,84,92)">Post. digastric</text>
-                    <text x="114" y="92" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.3"
-                      transform="rotate(-55,114,92)">Ant.</text>
+                    {showLabels && (
+                      <>
+                        <text x="84" y="92" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4"
+                          transform="rotate(-20,84,92)">Post. digastric</text>
+                        <text x="114" y="92" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.35"
+                          transform="rotate(-55,114,92)">Ant.</text>
+                      </>
+                    )}
                   </g>
                 )}
 
                 {/* ════════ OMOHYOID (subdivision boundary) ════════ */}
-                {showSubdivisions && (
+                {showSubdivisions && showSutures && (
                   <g>
                     {/* Sup belly: hyoid region → crosses SCM */}
                     <path d="M118,164 C120,166 124,170 128,172"
@@ -388,12 +391,13 @@ const NeckTrianglesDiagram = () => {
                     {/* Inf belly: SCM → lateral */}
                     <path d="M128,172 C145,170 165,169 184,170"
                       stroke="hsl(var(--foreground))" strokeWidth="2.5" fill="none" opacity="0.18" />
-                    {/* Label */}
-                    <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.35">Omohyoid</text>
+                    {showLabels && (
+                      <text x="152" y="166" fontSize="4" fill="hsl(var(--muted-foreground))" opacity="0.4">Omohyoid</text>
+                    )}
                   </g>
                 )}
 
-                {/* ════════ TRIANGLE FILL REGIONS ════════ */}
+                {/* ════════ TRIANGLE FILL REGIONS — with depth gradient + outline ════════ */}
                 {displayTriangles.map((key) => {
                   const isActive = selected === key;
                   const t = triangles[key];
@@ -411,11 +415,18 @@ const NeckTrianglesDiagram = () => {
                   }
                   return (
                     <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                      <path d={paths[key]} fill={t.color}
-                        fillOpacity={isActive ? 0.35 : 0.08}
+                      {/* Depth-shaded fill */}
+                      <path d={paths[key]}
+                        fill={isActive ? `url(#nt-grad-${key})` : t.color}
+                        fillOpacity={isActive ? 1 : 0.1}
                         stroke={t.color}
                         strokeWidth={isActive ? 2 : 0.8}
+                        filter={isActive ? "url(#nt-shadow)" : undefined}
                         className="transition-all duration-200" />
+                      {/* Subtle bone-grain overlay on active triangle for tactile depth */}
+                      {isActive && (
+                        <path d={paths[key]} fill="url(#nt-grain)" opacity="0.45" pointerEvents="none" />
+                      )}
                     </g>
                   );
                 })}
