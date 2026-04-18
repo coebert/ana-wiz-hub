@@ -443,7 +443,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
+        <section id="toc-trials" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Key Trials</h2>
           <div className="space-y-3">
             {[
