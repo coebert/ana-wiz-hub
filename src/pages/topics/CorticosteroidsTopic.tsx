@@ -5,14 +5,16 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { corticosteroidsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/CorticosteroidPharmacodynamicsDiagram";
 
 const CorticosteroidsTopic = () => {
   return (
     <SectionLayout title="Corticosteroids & Endocrine Pharmacology" subtitle="FRCA Primary & Final — Pharmacology" backPath="/pharmacology" backLabel="Pharmacology" accentColor="text-pharmacology">
       <section className="space-y-6 mb-10">
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroid Pharmacology</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">Corticosteroids bind intracellular receptors → nuclear translocation → gene transcription modulation. Anti-inflammatory: ↓ phospholipase A₂ (via lipocortin-1), ↓ COX-2, ↓ cytokines, ↓ leukocyte migration.</p>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroid Pharmacodynamics</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.</p>
+          <CorticosteroidPharmacodynamicsDiagram />
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead><tr className="border-b border-border">
