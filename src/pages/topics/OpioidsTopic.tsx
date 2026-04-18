@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
 import { OIHToleranceDiagram } from "@/components/diagrams/OIHToleranceDiagram";
@@ -15,6 +16,18 @@ import OpioidStructures from "@/components/diagrams/OpioidStructures";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-introduction", label: "Introduction" },
+  { id: "toc-receptors", label: "Receptors" },
+  { id: "toc-structures", label: "Structures" },
+  { id: "toc-agents", label: "Individual Agents" },
+  { id: "toc-csht", label: "CSHT" },
+  { id: "toc-partial-agonists", label: "Partial Agonists" },
+  { id: "toc-tolerance", label: "Tolerance & OIH" },
+  { id: "toc-naloxone", label: "Naloxone" },
+  { id: "toc-synthesis", label: "Comparison" },
+];
+
 const OpioidsTopic = () => {
   return (
     <SectionLayout
@@ -24,8 +37,9 @@ const OpioidsTopic = () => {
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
     >
+      <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
-        <section className="mb-10">
+        <section id="toc-introduction" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
             Opioids are the cornerstone of perioperative analgesia. Understanding receptor subtypes, the clinical pharmacology
@@ -33,8 +47,7 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Opioid Receptors</h2>
+        <section id="toc-receptors" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Three classical receptors, all G-protein coupled (Gi/Go): <strong>µ (mu/MOP)</strong> — analgesia (supraspinal and
             spinal), respiratory depression, euphoria, physical dependence, miosis, ↓GI motility, bradycardia.
@@ -51,16 +64,14 @@ const OpioidsTopic = () => {
           <OpioidReceptorSignalingDiagram />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
+        <section id="toc-structures" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed mb-3">
             Comparing the molecular skeletons of the major opioid families (phenanthrenes, phenylpiperidines, diphenylheptanes) helps explain potency, lipid solubility, and receptor selectivity.
           </p>
           <OpioidStructures />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Morphine</h2>
+        <section id="toc-agents" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Natural phenanthrene opioid. Dose: 0.1–0.2 mg/kg IV. Oral bioavailability ~30% (extensive first-pass metabolism).
             Onset 15–20 min IV (poor lipid solubility, slow BBB penetration). Duration 3–4 hours.
@@ -121,16 +132,14 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-Sensitive Half-Times</h2>
+        <section id="toc-csht" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed mb-4">
             The context-sensitive half-time (CSHT) is the time for plasma concentration to fall by 50% after stopping an infusion of a given duration. Unlike elimination half-life, CSHT accounts for redistribution between compartments and is therefore <strong>dependent on the "context" of infusion duration</strong> — making it far more clinically useful for predicting recovery from opioid infusions.
           </p>
           <CSHTDiagram />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Partial Agonists & Mixed Agonist-Antagonists</h2>
+        <section id="toc-partial-agonists" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             These agents have complex receptor profiles that distinguish them from pure µ agonists. Understanding their
             pharmacology is essential as they have important implications for perioperative management, addiction medicine,
@@ -243,8 +252,7 @@ const OpioidsTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
+        <section id="toc-tolerance" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
             in opioid efficacy — but they have different mechanisms and require different management strategies.
@@ -339,8 +347,7 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Naloxone</h2>
+        <section id="toc-naloxone" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min IV. Duration 30–60 min (shorter than
             most opioids → risk of re-narcotisation). Pulmonary oedema and cardiovascular collapse can occur with excessive
@@ -349,8 +356,7 @@ const OpioidsTopic = () => {
           <NaloxoneDiagram />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
+        <section id="toc-synthesis" className="mb-10 scroll-mt-24">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>

@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
@@ -10,11 +11,25 @@ import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-introduction", label: "Introduction" },
+  { id: "toc-modes", label: "Modes" },
+  { id: "toc-lung-protective", label: "Lung-Protective" },
+  { id: "toc-aprv", label: "APRV" },
+  { id: "toc-advanced", label: "Advanced" },
+  { id: "toc-vap", label: "VAP / VAE" },
+  { id: "toc-tracheostomy", label: "Tracheostomy" },
+  { id: "toc-weaning", label: "Weaning & Extubation" },
+  { id: "toc-hfno-niv", label: "HFNO / NIV" },
+  { id: "toc-longterm", label: "Long-term" },
+];
+
 const MechanicalVentilationTopic = () => {
   return (
     <SectionLayout title="Mechanical Ventilation" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="toc-introduction" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
             Mechanical ventilation is the most common organ support in ICU. Understanding ventilator modes, lung-protective strategies, and weaning principles is essential for safe management of critically ill patients.
@@ -31,7 +46,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-modes" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Ventilator Modes</h2>
           <div className="space-y-3">
             {[
@@ -49,7 +64,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-lung-protective" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lung-Protective Ventilation</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The ARDSNet strategy reduces mortality by minimising ventilator-induced lung injury (VILI):
@@ -71,14 +86,14 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-weaning" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Weaning</h2>
           <p className="text-muted-foreground leading-relaxed">
             Weaning accounts for ~40% of total ventilation time. Daily spontaneous breathing trials (SBT) using T-piece or low-level PSV (5-8 cmH₂O) are recommended. Assess readiness: resolving pathology, adequate oxygenation (FiO₂ ≤0.4, PEEP ≤8), haemodynamic stability, GCS ≥8. Rapid shallow breathing index (f/VT) &lt;105 predicts successful extubation.
           </p>
         </div>
 
-        <div>
+        <div id="toc-aprv" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Pressure Release Ventilation (APRV)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is a time-cycled, pressure-limited mode that maintains a prolonged high airway pressure (P<sub>high</sub>) to recruit and hold open alveoli, with brief intermittent releases to a low pressure (P<sub>low</sub>) to allow CO₂ clearance. Crucially, the patient can breathe spontaneously throughout the entire cycle, which preserves diaphragmatic tone, improves V/Q matching, and reduces sedation requirements.
@@ -138,7 +153,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-advanced" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Advanced Ventilator Strategies</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             When conventional lung-protective ventilation fails to achieve adequate gas exchange in severe ARDS (P/F ratio &lt;150 despite optimised PEEP and FiO₂), several rescue strategies should be considered. These are adjuncts to — not replacements for — standard lung-protective ventilation.
@@ -289,7 +304,7 @@ const MechanicalVentilationTopic = () => {
           </ol>
         </div>
 
-        <div>
+        <div id="toc-vap" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Pneumonia (VAP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             VAP is a nosocomial pneumonia developing ≥48 hours after endotracheal intubation. It affects 5–40% of mechanically ventilated patients, increases ICU mortality by 5–13%, and prolongs mechanical ventilation by 7–9 days. Pathogenesis involves aspiration of oropharyngeal secretions past the ETT cuff, biofilm formation on the endotracheal tube, and impaired mucociliary clearance.
@@ -469,7 +484,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div>
+        <div id="toc-tracheostomy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy in the ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Tracheostomy is performed in ~10–15% of mechanically ventilated ICU patients. Potential benefits include reduced dead space, improved secretion management, lower sedation requirements, facilitated weaning, and improved patient comfort and communication. However, optimal timing remains debated.
@@ -649,7 +664,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div>
+        <div id="toc-hfno-niv" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High-Flow Nasal Oxygen (HFNO)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             HFNO delivers heated, humidified oxygen at flow rates of 30–70 L/min via wide-bore nasal cannulae. It has transformed the management of acute hypoxaemic respiratory failure and is increasingly used across pre-oxygenation, post-extubation support, and as an alternative to NIV.
@@ -827,7 +842,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div>
+        <div id="toc-longterm" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Induced Diaphragmatic Dysfunction (VIDD)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation itself injures the diaphragm. Diaphragmatic atrophy begins within <span className="font-semibold text-foreground">18–69 hours</span> of controlled ventilation (Levine et al., 2008) and is a major contributor to weaning failure, prolonged ICU stay, and increased mortality.
