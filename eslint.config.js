@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import noHexAlphaConcat from "./eslint-rules/no-hex-alpha-concat.js";
+import diagramNeedsHeading from "./eslint-rules/diagram-needs-heading.js";
 
 export default tseslint.config(
   { ignores: ["dist", "eslint-rules"] },
