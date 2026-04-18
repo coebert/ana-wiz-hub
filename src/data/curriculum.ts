@@ -122,9 +122,9 @@ export const intensiveCareTopics: Topic[] = [
   { id: "ards", title: "ARDS & Lung Injury", description: "Berlin definition, prone positioning, ECMO, rescue therapies", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "bronchospastic-failure", title: "Bronchospastic Respiratory Failure", description: "Life-threatening asthma, IECOPD, pharmacology, NIV, ventilation strategies, inhaled volatiles via Sedaconda", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   // Cardiovascular
-  { id: "circulatory-failure", title: "Circulatory Failure & Shock", description: "Cardiogenic, distributive, obstructive, hypovolaemic shock management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  { id: "circulatory-failure", title: "Circulatory Failure, Shock & Mechanical Circulatory Support", description: "Hypovolaemic, cardiogenic, distributive and obstructive shock; vasopressor rationale; IABP, Impella, LVAD, VV/VA-ECMO", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   { id: "cardiac-output-monitoring", title: "Cardiac Output Monitoring", description: "PA catheter, PiCCO, oesophageal Doppler, echocardiography", section: "intensive-care", examTags: ["final", "fficm"], available: true },
-  { id: "ecmo", title: "ECMO & Mechanical Circulatory Support", description: "VV vs VA ECMO, cannulation, anticoagulation, troubleshooting, IABP, Impella", section: "intensive-care", examTags: ["final", "fficm"], available: true },
+  
   { id: "pulmonary-hypertension", title: "Pulmonary Hypertension Management", description: "WHO classification, RV-protective strategy, targeted vasodilators, perioperative care and crisis management", section: "intensive-care", examTags: ["final", "fficm"], available: true },
   // Sepsis & Infection
   { id: "sepsis", title: "Sepsis & Septic Shock", description: "Surviving Sepsis guidelines, early recognition, bundles, vasopressors", section: "intensive-care", examTags: ["final", "fficm"], available: true },

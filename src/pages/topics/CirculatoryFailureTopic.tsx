@@ -2,7 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { circulatoryFailureQuestions } from "@/data/quizzes";
+import { circulatoryFailureQuestions, ecmoQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
 import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
@@ -12,7 +12,7 @@ import { SeeAlso } from "@/components/SeeAlso";
 
 const CirculatoryFailureTopic = () => {
   return (
-    <SectionLayout title="Circulatory Failure & Shock" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+    <SectionLayout title="Circulatory Failure, Shock & Mechanical Circulatory Support" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
@@ -181,24 +181,66 @@ const CirculatoryFailureTopic = () => {
             VA-ECMO is the most powerful form of MCS — it provides full cardiopulmonary support by draining venous blood, oxygenating it through a membrane oxygenator, and returning it to the systemic arterial system. The peripheral femoro-femoral configuration is the most common emergency setup but produces two unique haemodynamic problems shown below.
           </p>
           <VAECMOCircuitDiagram />
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">VV-ECMO vs VA-ECMO — configuration comparison</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead><tr className="border-b border-border">
+                <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                <th className="text-left py-2 text-foreground font-semibold">VV-ECMO</th>
+                <th className="text-left py-2 text-foreground font-semibold">VA-ECMO</th>
+              </tr></thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Indication</td><td>Severe respiratory failure (ARDS)</td><td>Cardiogenic shock ± respiratory failure</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cannulation</td><td>Femoral vein → internal jugular (or dual-lumen Avalon in IJ)</td><td>Femoral vein → femoral artery (peripheral) or RA → aorta (central)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiac support</td><td>None — patient's heart provides CO</td><td>Yes — provides cardiac output and gas exchange</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Oxygenation</td><td>Returned blood mixes with native venous return; risk of recirculation</td><td>Retrograde aortic flow → risk of differential hypoxia (Harlequin)</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Major complications</td><td>Recirculation, haemolysis, bleeding, cannula displacement</td><td>Limb ischaemia, LV distension, differential hypoxia, stroke, bleeding</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">ECMO circuit fundamentals</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+            <li><strong className="text-foreground">Components:</strong> drainage cannula → centrifugal pump → polymethylpentene membrane oxygenator → heat exchanger → return cannula.</li>
+            <li><strong className="text-foreground">Flow rates:</strong> VV-ECMO 50–80 mL/kg/min for adequate oxygenation; VA-ECMO 3–6 L/min (sufficient to support CO).</li>
+            <li><strong className="text-foreground">Sweep gas</strong> controls CO₂ removal (↑ sweep → ↓ PaCO₂); membrane <strong>FiO₂</strong> controls PaO₂. The two are independent.</li>
+            <li><strong className="text-foreground">Anticoagulation:</strong> UFH infusion targeting APTT 60–80 s or ACT 180–220 s. Bivalirudin if HIT.</li>
+            <li><strong className="text-foreground">Weaning</strong> — VV: reduce sweep gas (FdO₂ + flow) and observe ABGs on native ventilation. VA: turn-down trial, echo for LV/RV recovery, lactate and SvO₂ trends.</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Indications & evidence</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+            <li><strong className="text-foreground">VV-ECMO for ARDS:</strong> CESAR (2009) — survival benefit when referred to an ECMO centre. EOLIA (2018) — no significant 60-day mortality benefit but 28% crossover; Bayesian re-analysis suggests probable benefit. Used as rescue after prone positioning, NMB and iNO have failed.</li>
+            <li><strong className="text-foreground">VA-ECMO:</strong> refractory cardiogenic shock (post-MI, fulminant myocarditis, post-cardiotomy), bridge to transplant/LVAD, refractory cardiac arrest (eCPR — ARREST 2020 showed survival benefit in shockable OHCA).</li>
+            <li><strong className="text-foreground">IABP-SHOCK II</strong> — no mortality benefit from routine IABP in cardiogenic shock complicating MI; IABP no longer Class I indication.</li>
+            <li><strong className="text-foreground">Contraindications:</strong> irreversible underlying disease, futility, uncontrolled bleeding, advanced directive against. Severe AR contraindicates VA-ECMO (worsens LV distension).</li>
+          </ul>
         </div>
       </section>
 
       <FluidResponsivenessDiagram />
 
       <KeyLearningPoints points={[
-        "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive",
+        "Classify shock by mechanism: hypovolaemic, cardiogenic, distributive, obstructive — each has a characteristic CVP/CO/SVR pattern",
         "Dynamic indices (PPV, SVV, PLR) are superior to static measures (CVP) for fluid responsiveness",
         "Passive leg raise is the gold standard — works in spontaneous breathing and arrhythmias",
-        "Cardiogenic shock: inotropes + vasopressors, avoid fluid overload, consider mechanical support",
-        "Lactate clearance (>20% in 2h) is a useful target for resuscitation adequacy",
+        "Cardiogenic shock: inotropes + vasopressors, avoid fluid overload, consider mechanical support (IABP, Impella, VA-ECMO)",
+        "Vasopressors restore CPP = DBP − LVEDP — subendocardial perfusion is the rate-limiting step in shock",
+        "Lactate clearance (>20% in 2 h) is a useful target for resuscitation adequacy",
+        "VV-ECMO: respiratory support only. VA-ECMO: cardiac + respiratory support, but risks limb ischaemia, LV distension and Harlequin syndrome",
+        "Sweep gas controls CO₂ removal; membrane FiO₂ controls oxygenation — they are independent levers",
+        "Harlequin (differential hypoxia): cyanosed upper body + pink legs — monitor right-radial ABG/SpO₂",
+        "IABP: inflates in diastole (↑ coronary perfusion), deflates in systole (↓ afterload) — contraindicated in AR/dissection; IABP-SHOCK II showed no mortality benefit",
+        "Impella unloads the LV directly (↓ LVEDP, ↓ MVO₂); LVAD provides total LV bypass for bridge-to-transplant or destination therapy",
+        "ECMO anticoagulation: UFH targeting APTT 60–80 s — balance bleeding vs circuit thrombosis",
       ]} />
 
-      <QuizSection questions={circulatoryFailureQuestions} />
+      <QuizSection questions={[...circulatoryFailureQuestions, ...ecmoQuestions]} />
       <ReferencesList topicId="circulatory-failure" />
 
       <SeeAlso topicId="circulatory-failure" />
-        <TopicCompletionToggle topicId="circulatory-failure" topicTitle="Circulatory Failure &amp; Shock" />
+        <TopicCompletionToggle topicId="circulatory-failure" topicTitle="Circulatory Failure, Shock &amp; Mechanical Circulatory Support" />
     </SectionLayout>
   );
 };

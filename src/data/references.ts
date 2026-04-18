@@ -387,6 +387,11 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2019", citation: "Vincent JL, De Backer D. Circulatory shock. N Engl J Med. 2013;369:1726-1734.", url: "https://doi.org/10.1056/NEJMra1208943" },
     { label: "SSC 2021 Haemodynamics", citation: "Evans L et al. Surviving Sepsis Campaign 2021. Section: Haemodynamic Management.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
     { label: "BJA Educ 2014", citation: "Cecconi M et al. Consensus on circulatory shock and hemodynamic monitoring (ESICM). Intensive Care Med. 2014;40(12):1795-1815.", url: "https://doi.org/10.1007/s00134-014-3525-z" },
+    { label: "ELSO Guidelines 2017", citation: "Extracorporeal Life Support Organization. ELSO Guidelines for Adult Respiratory Failure. Version 1.4. 2017.", url: "https://www.elso.org/ecmo-resources/elso-ecmo-guidelines.aspx" },
+    { label: "BJA Educ 2018 (ECMO)", citation: "Squiers JJ, et al. ECMO for adults with severe respiratory failure. Best Pract Res Clin Anaesthesiol. 2017;31(2):163-175.", url: "https://doi.org/10.1016/j.bpa.2017.07.002" },
+    { label: "FICM ECMO 2021", citation: "Faculty of Intensive Care Medicine. ECMO for COVID-19 and Beyond: Standards and Guidelines. 2021.", url: "https://www.ficm.ac.uk" },
+    { label: "SHOCK trial", citation: "Hochman JS et al. Early revascularization in acute MI complicated by cardiogenic shock. NEJM. 1999;341:625-634.", url: "https://doi.org/10.1056/NEJM199908263410901" },
+    { label: "IABP-SHOCK II", citation: "Thiele H et al. IABP in cardiogenic shock complicating acute MI. NEJM. 2012;367:1287-1296.", url: "https://doi.org/10.1056/NEJMoa1208410" },
   ],
   "neurointensive-care": [
     { label: "BJA Educ 2018", citation: "Smith M. Monitoring intracranial pressure in traumatic brain injury. Anesth Analg. 2008;106(1):240-248.", url: "https://doi.org/10.1213/01.ane.0000297296.52006.8e" },
@@ -505,11 +510,6 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "AAGBI Transfer 2009", citation: "Association of Anaesthetists. AAGBI Safety Guideline: Interhospital Transfer. 2009.", url: "https://www.aagbi.org/sites/default/files/interhospital09.pdf" },
     { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidelines for the Transport of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/Society/Policy_and_Guidelines" },
     { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
-  ],
-  "ecmo": [
-    { label: "ELSO Guidelines 2017", citation: "Extracorporeal Life Support Organization. ELSO Guidelines for Adult Respiratory Failure. Version 1.4. 2017.", url: "https://www.elso.org/ecmo-resources/elso-ecmo-guidelines.aspx" },
-    { label: "BJA Educ 2018", citation: "Squiers JJ, et al. ECMO for adults with severe respiratory failure. Best Pract Res Clin Anaesthesiol. 2017;31(2):163-175.", url: "https://doi.org/10.1016/j.bpa.2017.07.002" },
-    { label: "FICM ECMO 2021", citation: "Faculty of Intensive Care Medicine. ECMO for COVID-19 and Beyond: Standards and Guidelines. 2021.", url: "https://www.ficm.ac.uk" },
   ],
   "toxicology": [
     { label: "NPIS Toxbase", citation: "National Poisons Information Service. TOXBASE Clinical Toxicology Database.", url: "https://www.toxbase.org" },
