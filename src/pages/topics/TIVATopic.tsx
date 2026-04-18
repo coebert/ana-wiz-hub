@@ -185,18 +185,11 @@ const TIVATopic = () => {
               </p>
             </div>
           </div>
+          <div className="mt-6">
+            <TCISimulatorDiagram />
+          </div>
         </div>
       </section>
-
-      {/* Interactive Model Comparison */}
-      {/* TCI Simulator */}
-      <TCISimulatorDiagram />
-
-      {/* CSHT Diagram */}
-      <CSHTDiagram />
-
-      {/* Decrement Time Diagram */}
-      <DecrementTimeDiagram />
 
       <div className="border border-border rounded-lg p-4 mb-10">
         <h3 className="text-lg font-serif font-bold text-foreground mb-1">TCI Model Explorer</h3>
@@ -268,6 +261,18 @@ const TIVATopic = () => {
                 <tr><td className="py-2 font-medium text-foreground">Best suited for</td><td>Cp targeting in average adults</td><td>Ce targeting, elderly, UK standard</td></tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        {/* Recovery from infusion — synthesis: CSHT + decrement times */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Recovery — CSHT & Decrement Times</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Once you understand the models and targeting modes, the practical question is: <strong>how long until the patient wakes up?</strong> Context-sensitive half-times and decrement times quantify offset of effect after stopping an infusion of a given duration.
+          </p>
+          <div className="space-y-6">
+            <CSHTDiagram />
+            <DecrementTimeDiagram />
           </div>
         </div>
 

@@ -14,17 +14,26 @@ import { SeeAlso } from "@/components/SeeAlso";
 const RegionalAnaesthesiaTopic = () => {
   return (
     <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <DermatomeMapDiagram />
-      <NerveDermatomeOverlayDiagram />
-      <SpinalBlockHeightAssessmentTool />
-      <RegionalBlocksDiagram />
-      <NeuraxialNeedlesDiagram />
+      <section className="mb-10">
+        <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          Knowing surface dermatomes and their corresponding spinal levels underpins every regional and neuraxial technique — for planning block height, predicting surgical coverage, and detecting unexpectedly high blocks.
+        </p>
+        <div className="space-y-6">
+          <DermatomeMapDiagram />
+          <NerveDermatomeOverlayDiagram />
+        </div>
+      </section>
+
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Anaesthesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Intrathecal injection of local anaesthetic ± opioid into the subarachnoid space, typically at L3/4 or L4/5.
           </p>
+          <div className="my-4">
+            <NeuraxialNeedlesDiagram />
+          </div>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Heavy (Hyperbaric) Bupivacaine</p>
@@ -67,6 +76,9 @@ const RegionalAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success rates and reducing complications.
           </p>
+          <div className="my-4">
+            <RegionalBlocksDiagram />
+          </div>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               { block: "Interscalene", indication: "Shoulder surgery", nerves: "C5-C7 roots", risk: "Phrenic nerve palsy (100%)" },
@@ -109,6 +121,9 @@ const RegionalAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-4">
             Systematic assessment of sensory block height is essential after neuraxial blockade to confirm adequacy for surgery, detect excessive spread, and monitor regression. Cold spray (ethyl chloride) is the standard bedside tool — it tests <strong>loss of cold sensation</strong>, which corresponds to <strong>C-fibre and Aδ-fibre blockade</strong> (small myelinated/unmyelinated fibres blocked earliest by local anaesthetics).
           </p>
+          <div className="my-4">
+            <SpinalBlockHeightAssessmentTool />
+          </div>
 
           <div className="rounded-xl border border-border bg-card p-5 mb-4">
             <h3 className="font-semibold text-foreground mb-3">How to Test with Cold Spray</h3>

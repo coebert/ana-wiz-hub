@@ -32,6 +32,14 @@ const VolatileAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            All modern volatile agents are halogenated ethers (sevoflurane, isoflurane, desflurane, enflurane) or alkanes (halothane). Halogenation with fluorine increases stability and reduces flammability; the size and shape of the molecule influence potency and partition coefficients.
+          </p>
+          <VolatileAgentStructures />
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Minimum Alveolar Concentration (MAC)</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             MAC is defined as the minimum alveolar concentration of an inhaled anaesthetic at 1 atmosphere that prevents
@@ -308,11 +316,6 @@ const VolatileAgentsTopic = () => {
         "Sevoflurane: non-pungent, ideal for inhalational induction. Desflurane: fastest recovery but pungent, needs heated vaporizer. Isoflurane: slower, good muscle relaxation.",
         "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors."
       ]} />
-
-        <div>
-          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
-          <VolatileAgentStructures />
-        </div>
 
       <QuizSection questions={volatileAgentsQuiz} />
       <ReferencesList topicId="volatile-agents" />
