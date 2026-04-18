@@ -11,7 +11,6 @@ import { SeeAlso } from "@/components/SeeAlso";
 const AcidBaseTopic = () => {
   return (
     <SectionLayout title="Acid-Base Disorders" subtitle="Primary / Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <StewartAcidBaseDiagram />
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systematic ABG Interpretation</h2>
