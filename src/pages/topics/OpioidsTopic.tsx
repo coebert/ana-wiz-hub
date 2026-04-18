@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
 import { OIHToleranceDiagram } from "@/components/diagrams/OIHToleranceDiagram";
