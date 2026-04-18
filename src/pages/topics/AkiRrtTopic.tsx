@@ -460,6 +460,39 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
+        <SynthesisBlock
+          title="AKI & RRT — At a Glance"
+          subtitle="Bringing together staging, prevention, and decision points for renal replacement."
+          variant="table"
+        >
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-border bg-secondary/50">
+                <th className="text-left p-2 text-foreground font-semibold">Domain</th>
+                <th className="text-left p-2 text-foreground font-semibold">Trigger / Threshold</th>
+                <th className="text-left p-2 text-foreground font-semibold">Action</th>
+              </tr>
+            </thead>
+            <tbody className="text-foreground/90">
+              {[
+                ["Staging (KDIGO)", "↑Cr ≥26 µmol/L in 48 h, or ≥1.5× baseline in 7 d, or UO <0.5 ml/kg/hr ×6 h", "Stage 1 → review nephrotoxins; Stage 2 → escalate care; Stage 3 → consider RRT"],
+                ["CI-AKI prevention", "eGFR <60, diabetes, CCF, age >75, contrast volume", "Isotonic crystalloid 1 ml/kg/hr pre/post; iso-/low-osmolar contrast; hold ACEi/ARB/NSAIDs/metformin"],
+                ["Drug dosing", "eGFR <30 ml/min/1.73 m²", "Avoid morphine/pethidine/NSAIDs/gentamicin; safe: fentanyl, cisatracurium, sugammadex (caution), apixaban (dose-adjusted)"],
+                ["RRT indication (AEIOU)", "Refractory Acidosis, Electrolytes (K⁺ >6.5), Intoxication, fluid Overload, Uraemic complications", "Initiate RRT — modality per haemodynamics"],
+                ["Modality choice", "Haemodynamic instability", "CRRT (CVVHDF preferred); IHD if stable or urgent K⁺ removal"],
+                ["Anticoagulation", "Bleeding risk vs circuit life", "Regional citrate (1st line in most ICUs); UFH if liver failure / citrate contraindicated"],
+                ["Initiation timing", "STARRT-AKI / AKIKI", "Wait for conventional indications — early initiation no mortality benefit"],
+              ].map(([domain, trigger, action]) => (
+                <tr key={domain as string} className="border-b border-border/50">
+                  <td className="p-2 font-medium">{domain}</td>
+                  <td className="p-2 text-muted-foreground">{trigger}</td>
+                  <td className="p-2 text-muted-foreground">{action}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </SynthesisBlock>
+
       </div>
 
       <KeyLearningPoints points={[
