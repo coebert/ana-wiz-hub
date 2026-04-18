@@ -139,8 +139,7 @@ const OpioidsTopic = () => {
           <CSHTDiagram />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Partial Agonists & Mixed Agonist-Antagonists</h2>
+        <section id="toc-partial-agonists" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             These agents have complex receptor profiles that distinguish them from pure µ agonists. Understanding their
             pharmacology is essential as they have important implications for perioperative management, addiction medicine,
