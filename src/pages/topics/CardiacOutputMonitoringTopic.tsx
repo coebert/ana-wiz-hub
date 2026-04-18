@@ -6,6 +6,7 @@ import { CardiacOutputMonitorDiagram } from "@/components/diagrams/CardiacOutput
 import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
 import EchoDiagram from "@/components/diagrams/EchoDiagram";
+import TOEViewsDiagram from "@/components/diagrams/TOEViewsDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
@@ -78,6 +79,7 @@ const CardiacOutputMonitoringTopic = () => {
       <PiCCODiagram />
       <PACDiagram />
       <EchoDiagram />
+      <TOEViewsDiagram />
 
       <KeyLearningPoints points={[
         "PAC is the gold standard but PAC-Man trial showed no mortality benefit from routine use",
