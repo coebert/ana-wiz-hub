@@ -1,52 +1,10 @@
 import { useState } from "react";
 
-type TabId = "csht" | "metabolism" | "clinical";
+type TabId = "metabolism" | "clinical";
 
 const tabs: { id: TabId; label: string; color: string }[] = [
-  { id: "csht", label: "CSHT comparison", color: "hsl(210 70% 55%)" },
   { id: "metabolism", label: "Esterase metabolism", color: "hsl(140 55% 45%)" },
   { id: "clinical", label: "Clinical implications", color: "hsl(0 70% 55%)" },
-];
-
-interface Opioid {
-  id: string;
-  name: string;
-  color: string;
-  // CSHT model: t50 in min as a function of infusion duration t (min)
-  csht: (t: number) => number;
-  metabolism: string;
-}
-
-// Approximate CSHT curves derived from Hughes/Shafer simulations
-const opioids: Opioid[] = [
-  {
-    id: "remi",
-    name: "Remifentanil",
-    color: "hsl(0 70% 55%)",
-    csht: () => 3.5, // essentially flat at ~3-4 min
-    metabolism: "Non-specific tissue + plasma esterases (organ-independent)",
-  },
-  {
-    id: "alf",
-    name: "Alfentanil",
-    color: "hsl(45 85% 50%)",
-    csht: (t) => 30 + Math.min(60, t * 0.18),
-    metabolism: "Hepatic CYP3A4",
-  },
-  {
-    id: "suf",
-    name: "Sufentanil",
-    color: "hsl(140 55% 45%)",
-    csht: (t) => 20 + Math.min(40, t * 0.05),
-    metabolism: "Hepatic CYP3A4",
-  },
-  {
-    id: "fent",
-    name: "Fentanyl",
-    color: "hsl(280 65% 55%)",
-    csht: (t) => Math.min(280, 10 + t * 0.45),
-    metabolism: "Hepatic CYP3A4",
-  },
 ];
 
 export const RemifentanilPKDiagram = () => {
