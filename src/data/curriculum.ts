@@ -107,35 +107,36 @@ export const anatomyTopics: Topic[] = [
 ];
 
 export const clinicalTopics: Topic[] = [
+  // Core skills
   { id: "airway-management", title: "Airway Management", description: "Difficult airway algorithms, DAS guidelines, supraglottic devices, surgical airway", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "regional-anaesthesia", title: "Regional & Neuraxial Anaesthesia", description: "Spinal, epidural, nerve blocks, ultrasound-guided techniques", section: "clinical", examTags: ["final"], available: true },
+  { id: "tiva", title: "Total Intravenous Anaesthesia (TIVA)", description: "TCI pharmacokinetic models, Marsh vs Schnider vs Eleveld, Cp vs Ce targeting, practical TIVA setup", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "pain-medicine", title: "Pain Medicine", description: "Acute and chronic pain, neuropathic pain, multimodal analgesia, interventions", section: "clinical", examTags: ["final", "fficm"], available: true },
+  // Major sub-specialties
   { id: "obstetric-anaesthesia", title: "Obstetric Anaesthesia", description: "Caesarean section, epidural labour analgesia, high-risk obstetrics, PPH", section: "clinical", examTags: ["final"], available: true },
   { id: "paediatric-anaesthesia", title: "Paediatric Anaesthesia", description: "Neonatal physiology, paediatric pharmacology, common procedures", section: "clinical", examTags: ["final"], available: true },
   { id: "neuroanaesthesia", title: "Neuroanaesthesia", description: "ICP management, posterior fossa surgery, neuromonitoring, awakening", section: "clinical", examTags: ["final"], available: true },
   { id: "cardiothoracic", title: "Cardiothoracic Anaesthesia", description: "Cardiopulmonary bypass, one-lung ventilation, TOE basics", section: "clinical", examTags: ["final"], available: true },
-  { id: "trauma-emergency", title: "Trauma & Emergency Anaesthesia", description: "RSI, damage control resuscitation, massive transfusion, ATLS", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "pain-medicine", title: "Pain Medicine", description: "Acute and chronic pain, neuropathic pain, multimodal analgesia, interventions", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "tiva", title: "Total Intravenous Anaesthesia (TIVA)", description: "TCI pharmacokinetic models, Marsh vs Schnider vs Eleveld, Cp vs Ce targeting, practical TIVA setup", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  // Surgical specialties
   { id: "orthopaedic-anaesthesia", title: "Orthopaedic Anaesthesia", description: "Tourniquets, cement reactions, fat embolism, regional techniques, enhanced recovery", section: "clinical", examTags: ["final"], available: true },
-  { id: "ophthalmic-anaesthesia", title: "Ophthalmic Anaesthesia", description: "Ocular physiology, IOP, peribulbar/sub-Tenon's blocks, oculocardiac reflex", section: "clinical", examTags: ["final"], available: true },
-  { id: "day-surgery", title: "Day Surgery", description: "Patient selection, anaesthetic techniques, PONV prevention, discharge criteria", section: "clinical", examTags: ["final"], available: true },
-  { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "bariatric-anaesthesia", title: "Bariatric Anaesthesia", description: "Obesity physiology, drug dosing, airway management, OSA/OHS, bariatric surgery", section: "clinical", examTags: ["final"], available: true },
   { id: "vascular-anaesthesia", title: "Vascular Anaesthesia", description: "AAA repair, aortic cross-clamping, carotid endarterectomy, peripheral vascular surgery", section: "clinical", examTags: ["final"], available: true },
   { id: "ent-anaesthesia", title: "ENT & Maxillofacial Anaesthesia", description: "Shared airway, tonsillectomy, laser surgery, nasal/ear surgery, tracheostomy, Le Fort fractures", section: "clinical", examTags: ["final"], available: true },
-  { id: "burns-plastics", title: "Burns & Plastic Surgery", description: "Burn pathophysiology, Parkland formula, airway burns, suxamethonium risk, free flap surgery", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "emergency-surgery", title: "Anaesthesia for Emergency Surgery", description: "Emergency laparotomy, appendicectomy, ruptured ectopic, NCEPOD classification, NELA standards", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "ophthalmic-anaesthesia", title: "Ophthalmic Anaesthesia", description: "Ocular physiology, IOP, peribulbar/sub-Tenon's blocks, oculocardiac reflex", section: "clinical", examTags: ["final"], available: true },
   { id: "urological-anaesthesia", title: "Urological Anaesthesia", description: "TURP syndrome, lithotomy positioning, radical cystectomy, nephrectomy, ESWL", section: "clinical", examTags: ["final"], available: true },
   { id: "gynaecological-anaesthesia", title: "Gynaecological Anaesthesia", description: "Laparoscopic/robotic surgery, hysteroscopy fluid absorption, major oncology, Trendelenburg effects", section: "clinical", examTags: ["final"], available: true },
   { id: "hepatobiliary-transplant", title: "Hepatobiliary & Transplant Anaesthesia", description: "Liver resection, low CVP technique, liver transplant phases, cirrhotic patient, post-reperfusion syndrome", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "burns-plastics", title: "Burns & Plastic Surgery", description: "Burn pathophysiology, Parkland formula, airway burns, suxamethonium risk, free flap surgery", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "plastic-surgery", title: "Plastic Surgery & Microsurgery", description: "Free flap perfusion, microsurgical principles, prolonged surgery, digital replantation, DIEP flap", section: "clinical", examTags: ["final"], available: true },
-  { id: "interventional-radiology", title: "Anaesthesia for Interventional Radiology", description: "Remote location anaesthesia, contrast reactions, radiation safety, TIPSS, embolisation, EVAR", section: "clinical", examTags: ["final"], available: true },
+  // Special populations & settings
+  { id: "bariatric-anaesthesia", title: "Bariatric Anaesthesia", description: "Obesity physiology, drug dosing, airway management, OSA/OHS, bariatric surgery", section: "clinical", examTags: ["final"], available: true },
   { id: "elderly-anaesthesia", title: "Anaesthesia for the Elderly", description: "Frailty, age-related physiology, postoperative delirium, hip fracture, pharmacological changes", section: "clinical", examTags: ["final", "fficm"], available: true },
-  { id: "cardiovascular-disease", title: "Cardiovascular Co-Existing Disease", description: "IHD, valvular disease, heart failure, arrhythmias, pacemakers/ICDs, pulmonary hypertension, ACHD", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "respiratory-disease", title: "Respiratory Co-Existing Disease", description: "Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, respiratory infections", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "endocrine-disease", title: "Endocrine Co-Existing Disease", description: "Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, carcinoid syndrome", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "neurological-disease", title: "Neurological Co-Existing Disease", description: "Myasthenia gravis, epilepsy, MS, Parkinson's, MND, muscular dystrophies, spinal cord injury", section: "clinical", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "day-surgery", title: "Day Surgery", description: "Patient selection, anaesthetic techniques, PONV prevention, discharge criteria", section: "clinical", examTags: ["final"], available: true },
+  { id: "interventional-radiology", title: "Anaesthesia for Interventional Radiology", description: "Remote location anaesthesia, contrast reactions, radiation safety, TIPSS, embolisation, EVAR", section: "clinical", examTags: ["final"], available: true },
+  { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
+  // Emergencies & incidents
+  { id: "emergency-surgery", title: "Anaesthesia for Emergency Surgery", description: "Emergency laparotomy, appendicectomy, ruptured ectopic, NCEPOD classification, NELA standards", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "trauma-emergency", title: "Trauma & Emergency Anaesthesia", description: "RSI, damage control resuscitation, massive transfusion, ATLS", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
