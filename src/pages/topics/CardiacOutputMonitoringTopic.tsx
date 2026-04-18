@@ -7,6 +7,7 @@ import PiCCODiagram from "@/components/diagrams/PiCCODiagram";
 import PACDiagram from "@/components/diagrams/PACDiagram";
 import EchoDiagram from "@/components/diagrams/EchoDiagram";
 import TOEViewsDiagram from "@/components/diagrams/TOEViewsDiagram";
+import MModeDiagram from "@/components/diagrams/MModeDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
