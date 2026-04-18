@@ -69,18 +69,23 @@ export const physiologyTopics: Topic[] = [
 ];
 
 export const pharmacologyTopics: Topic[] = [
+  // Principles
   { id: "pharmacokinetics", title: "Pharmacokinetic Principles", description: "Compartment models, volume of distribution, clearance, half-life", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "pharmacodynamics", title: "Pharmacodynamics & Drug Receptors", description: "Dose-response, agonists/antagonists, receptor types, signal transduction, drug interactions", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  // Anaesthetic agents
   { id: "iv-anaesthetics", title: "Intravenous Anaesthetic Agents", description: "Propofol, thiopentone, ketamine, etomidate — mechanisms and pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "volatile-agents", title: "Volatile Anaesthetic Agents", description: "MAC, Meyer-Overton, blood-gas partition coefficient, uptake and distribution", section: "pharmacology", examTags: ["primary", "final"], available: true },
-  { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "muscle-relaxants", title: "Neuromuscular Blocking Agents", description: "Depolarising vs non-depolarising, reversal agents, sugammadex", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "local-anaesthetics", title: "Local Anaesthetic Agents", description: "Mechanism, pKa, protein binding, toxicity, lipid rescue", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  // Analgesia
+  { id: "opioids", title: "Opioid Pharmacology", description: "Receptor subtypes, clinical pharmacology of morphine, fentanyl, remifentanil", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "nsaids-paracetamol", title: "NSAIDs & Paracetamol", description: "COX inhibition, aspirin, coxibs, paracetamol mechanism and toxicity, ceiling effects", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  // Cardiovascular
   { id: "vasoactive-agents", title: "Vasoactive & Inotropic Agents", description: "Catecholamines, vasopressors, inotropes, inodilators, vasodilators, digoxin, calcium, and receptor pharmacology", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antiarrhythmics", title: "Antiarrhythmic Drugs", description: "Vaughan-Williams classification, Na⁺/K⁺/Ca²⁺ channel blockers, β-blockers, amiodarone, adenosine, and pro-arrhythmic risk", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "anticoagulants", title: "Anticoagulant Pharmacology", description: "Heparins (UFH/LMWH), warfarin, DOACs, HIT, reversal agents, and perioperative/neuraxial management", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "pharmacodynamics", title: "Pharmacodynamics & Drug Receptors", description: "Dose-response, agonists/antagonists, receptor types, signal transduction, drug interactions", section: "pharmacology", examTags: ["primary", "final"], available: true },
-  { id: "nsaids-paracetamol", title: "NSAIDs & Paracetamol", description: "COX inhibition, aspirin, coxibs, paracetamol mechanism and toxicity, ceiling effects", section: "pharmacology", examTags: ["primary", "final"], available: true },
+  // Anti-infectives & adjuncts
+  { id: "antimicrobials-pharm", title: "Antimicrobials", description: "Antibiotics, antifungals, and antivirals — mechanisms, spectrum, resistance, and ICU considerations", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "antiemetics", title: "Antiemetics", description: "PONV risk factors, receptor targets, ondansetron, dexamethasone, multimodal prophylaxis", section: "pharmacology", examTags: ["primary", "final"], available: true },
   { id: "corticosteroids", title: "Corticosteroids & Endocrine Pharmacology", description: "Steroid potency, HPA suppression, perioperative steroid cover, mineralocorticoid effects", section: "pharmacology", examTags: ["primary", "final", "fficm"], available: true },
 ];
