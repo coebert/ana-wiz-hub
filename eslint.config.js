@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import noHexAlphaConcat from "./eslint-rules/no-hex-alpha-concat.js";
+import diagramNeedsHeading from "./eslint-rules/diagram-needs-heading.js";
 
 export default tseslint.config(
   { ignores: ["dist", "eslint-rules"] },
@@ -20,6 +21,7 @@ export default tseslint.config(
       "lovable-local": {
         rules: {
           "no-hex-alpha-concat": noHexAlphaConcat,
+          "diagram-needs-heading": diagramNeedsHeading,
         },
       },
     },
@@ -28,6 +30,7 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": "off",
       "lovable-local/no-hex-alpha-concat": "error",
+      "lovable-local/diagram-needs-heading": "error",
     },
   },
 );
