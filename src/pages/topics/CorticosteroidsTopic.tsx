@@ -15,6 +15,10 @@ const CorticosteroidsTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroid Pharmacodynamics</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.</p>
           <CorticosteroidPharmacodynamicsDiagram />
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Steroid potency &amp; duration</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead><tr className="border-b border-border">
