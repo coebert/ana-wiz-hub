@@ -17,6 +17,15 @@ const PaediatricIcuTopic = () => {
           </p>
         </div>
 
+        {/* WETFLAG */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-2">WETFLAG — paediatric resuscitation mnemonic</h2>
+          <p className="text-muted-foreground leading-relaxed mb-2">
+            <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus. It generates the seven weight-based numbers needed to deliver immediate life-saving therapy without doing arithmetic under stress: <strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose. Adjust the slider to see how the numbers scale with age, or override with measured weight.
+          </p>
+          <WETFLAGDiagram />
+        </div>
+
         {/* Age-Specific Physiological Differences */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Age-Specific Physiological Differences</h2>
