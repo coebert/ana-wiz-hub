@@ -158,7 +158,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
+        <section id="toc-drug-dosing" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Perioperative Drug Dosing in Renal Impairment</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Renal impairment alters drug pharmacokinetics in three ways: (1) reduced renal excretion of parent drug or
