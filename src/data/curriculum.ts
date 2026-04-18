@@ -45,21 +45,27 @@ export const physicsTopics: Topic[] = [
 ];
 
 export const physiologyTopics: Topic[] = [
-  { id: "oxygen-haemoglobin", title: "Oxygen-Haemoglobin Dissociation", description: "The ODC, Bohr effect, factors shifting the curve, oxygen delivery", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  // Cardiovascular
   { id: "cardiac-cycle", title: "The Cardiac Cycle", description: "Pressure-volume loops, Wiggers diagram, cardiac output", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "lung-mechanics", title: "Lung Mechanics", description: "Compliance, resistance, surfactant, work of breathing", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "renal-physiology", title: "Renal Physiology", description: "GFR, tubular function, acid-base balance, electrolyte handling", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examTags: ["primary", "final"], available: true },
-  { id: "autonomic-nervous", title: "Autonomic Nervous System", description: "Sympathetic and parasympathetic pathways, receptors, reflexes", section: "physiology", examTags: ["primary", "final"], available: true },
-  { id: "maternal-physiology", title: "Maternal Physiology", description: "Cardiovascular, respiratory, haematological and pharmacological changes in pregnancy", section: "physiology", examTags: ["primary", "final"], available: true },
-  { id: "foetal-circulation", title: "Foetal Circulation", description: "Foetal shunts, HbF, transitional circulation, persistent pulmonary hypertension", section: "physiology", examTags: ["primary", "final"], available: true },
-  { id: "hepatic-physiology", title: "Hepatic Physiology", description: "Hepatic blood supply, acinar zones, drug metabolism, synthetic function, LFTs", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "starling-forces", title: "Starling Forces & Fluid Exchange", description: "Revised Starling equation, glycocalyx, transcapillary filtration, oedema formation", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "gi-physiology", title: "Gastrointestinal Physiology", description: "Gastric acid secretion, nausea & vomiting pathways, gut motility, and anaesthetic implications", section: "physiology", examTags: ["primary", "final"], available: true },
   { id: "cardiac-electrophysiology", title: "Cardiac Electrophysiology", description: "Cardiac action potentials, ion channels, pacemaker cells, conduction system, anti-arrhythmic mechanisms", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "starling-forces", title: "Starling Forces & Fluid Exchange", description: "Revised Starling equation, glycocalyx, transcapillary filtration, oedema formation", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  // Respiratory
+  { id: "lung-mechanics", title: "Lung Mechanics", description: "Compliance, resistance, surfactant, work of breathing", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
   { id: "ventilation-perfusion", title: "Ventilation-Perfusion Matching", description: "V/Q ratio, West's zones, HPV, shunt equation, alveolar gas equation, A-a gradient", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "oxygen-haemoglobin", title: "Oxygen-Haemoglobin Dissociation", description: "The ODC, Bohr effect, factors shifting the curve, oxygen delivery", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  // Neuro & Neuromuscular
+  { id: "autonomic-nervous", title: "Autonomic Nervous System", description: "Sympathetic and parasympathetic pathways, receptors, reflexes", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "neuromuscular", title: "Neuromuscular Transmission", description: "Motor endplate, acetylcholine, muscle contraction, monitoring", section: "physiology", examTags: ["primary", "final"], available: true },
+  // Renal, GI, Hepatic
+  { id: "renal-physiology", title: "Renal Physiology", description: "GFR, tubular function, acid-base balance, electrolyte handling", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "gi-physiology", title: "Gastrointestinal Physiology", description: "Gastric acid secretion, nausea & vomiting pathways, gut motility, and anaesthetic implications", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "hepatic-physiology", title: "Hepatic Physiology", description: "Hepatic blood supply, acinar zones, drug metabolism, synthetic function, LFTs", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  // Endocrine & Haematology
   { id: "endocrine-physiology", title: "Endocrine Physiology", description: "HPA axis, stress response, thyroid, insulin, adrenal, and perioperative endocrine management", section: "physiology", examTags: ["primary", "final"], available: true },
   { id: "haematology-immunity", title: "Haematology & Immunity", description: "Coagulation cascade, blood groups, transfusion, innate/adaptive immunity, hypersensitivity", section: "physiology", examTags: ["primary", "final", "fficm"], available: true },
+  // Developmental physiology
+  { id: "maternal-physiology", title: "Maternal Physiology", description: "Cardiovascular, respiratory, haematological and pharmacological changes in pregnancy", section: "physiology", examTags: ["primary", "final"], available: true },
+  { id: "foetal-circulation", title: "Foetal Circulation", description: "Foetal shunts, HbF, transitional circulation, persistent pulmonary hypertension", section: "physiology", examTags: ["primary", "final"], available: true },
 ];
 
 export const pharmacologyTopics: Topic[] = [
