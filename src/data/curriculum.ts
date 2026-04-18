@@ -11,30 +11,37 @@ export interface Topic {
 }
 
 export const physicsTopics: Topic[] = [
+  // Foundations
+  { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
+  { id: "math-concepts", title: "Mathematical Concepts", description: "Graph shapes, exponentials, logarithms, sigmoid curves and their physiological and pharmacokinetic applications", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "gas-laws", title: "Gas Laws", description: "Boyle's, Charles', Dalton's, Henry's laws and their clinical applications", section: "physics", examTags: ["primary", "final"], available: true },
+  // Electricity & Optics
+  { id: "electricity-magnetism", title: "Electricity & Magnetism", description: "Ohm's law, capacitance, inductance, transformers, and the Wheatstone bridge", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "electrical-safety", title: "Electrical Safety", description: "Microshock, macroshock, diathermy, defibrillation", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "defibrillation-pacing", title: "Defibrillation & Pacing", description: "Monophasic vs biphasic waveforms, transthoracic impedance, pacemaker modes, and EMI", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "optics-light", title: "Optics & Light", description: "Reflection, refraction, fibreoptics, Beer-Lambert law, and spectrophotometry", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "lasers-fibreoptics", title: "Lasers & Fibreoptics", description: "LASER principles, fibreoptic light transmission, total internal reflection, clinical applications", section: "physics", examTags: ["primary", "final"], available: true },
+  // Measurement principles
   { id: "pressure-measurement", title: "Pressure Measurement", description: "Transducers, manometers, and invasive monitoring principles", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "flow-measurement", title: "Flow & Flowmeters", description: "Laminar vs turbulent flow, Hagen-Poiseuille equation, rotameters", section: "physics", examTags: ["primary"], available: true },
-  { id: "vaporizers", title: "Vaporizers", description: "Physics of vaporization, SVP, plenum and draw-over vaporizers", section: "physics", examTags: ["primary"], available: true },
-  { id: "electrical-safety", title: "Electrical Safety", description: "Microshock, macroshock, diathermy, defibrillation", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "abg-analyser", title: "ABG Analyser & Gas Measurement", description: "pH electrode, Clark electrode, Severinghaus electrode, galvanic fuel cell", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "temperature-measurement", title: "Temperature Measurement", description: "Thermocouples, thermistors, resistance thermometers, infrared tympanic thermometry", section: "physics", examTags: ["primary", "final"], available: true },
   { id: "humidity-gas-sampling", title: "Humidity & Gas Analysis", description: "Pneumotachographs, mass spectrometry, Raman scattering, humidification physics", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "lasers-fibreoptics", title: "Lasers & Fibreoptics", description: "LASER principles, fibreoptic light transmission, total internal reflection, clinical applications", section: "physics", examTags: ["primary", "final"], available: true },
+  // Imaging
   { id: "ultrasound-physics", title: "Ultrasound Physics", description: "Piezoelectric effect, frequency vs resolution, Doppler effect, artefacts", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "mri-physics", title: "MRI Physics", description: "Nuclear spin, precession, T1/T2 relaxation, MRI safety for anaesthetists", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "breathing-circuits", title: "Breathing Circuits & Scavenging", description: "Mapleson classification, circle system, soda lime, scavenging systems", section: "physics", examTags: ["primary", "final"], available: true },
+  // Anaesthetic equipment
   { id: "anaesthetic-machine", title: "The Anaesthetic Machine", description: "Pipeline supply, cylinder storage, pressure regulators, flowmeters, and safety features", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "defibrillation-pacing", title: "Defibrillation & Pacing", description: "Monophasic vs biphasic waveforms, transthoracic impedance, pacemaker modes, and EMI", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "si-units-thermodynamics", title: "SI Units & Thermodynamics", description: "SI units, gas law derivations, latent heat, specific heat capacity, and laws of thermodynamics", section: "physics", examTags: ["primary"], available: true },
-  { id: "optics-light", title: "Optics & Light", description: "Reflection, refraction, fibreoptics, Beer-Lambert law, and spectrophotometry", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "electricity-magnetism", title: "Electricity & Magnetism", description: "Ohm's law, capacitance, inductance, transformers, and the Wheatstone bridge", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "statistics-ebm", title: "Statistics & Evidence-Based Medicine", description: "Study design, p-values, odds ratios, NNT, sensitivity/specificity, and common statistical tests", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "breathing-circuits", title: "Breathing Circuits & Scavenging", description: "Mapleson classification, circle system, soda lime, scavenging systems", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "vaporizers", title: "Vaporizers", description: "Physics of vaporization, SVP, plenum and draw-over vaporizers", section: "physics", examTags: ["primary"], available: true },
   { id: "ventilators", title: "Ventilators", description: "Ventilator classification, mechanisms, historic and modern models including Manley, Penlon, and Oxylog", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "math-concepts", title: "Mathematical Concepts", description: "Graph shapes, exponentials, logarithms, sigmoid curves and their physiological and pharmacokinetic applications", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "depth-of-anaesthesia", title: "Depth of Anaesthesia Monitoring", description: "BIS, Entropy, Narcotrend — processed EEG, suppression ratio, SEF, and clinical evidence", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "equipment-monitoring", title: "Equipment & Monitoring", description: "Consolidated overview of anaesthetic machine, breathing circuits, vaporizers, and needles", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  // Patient monitoring
+  { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "abg-analyser", title: "ABG Analyser & Gas Measurement", description: "pH electrode, Clark electrode, Severinghaus electrode, galvanic fuel cell", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "depth-of-anaesthesia", title: "Depth of Anaesthesia Monitoring", description: "BIS, Entropy, Narcotrend — processed EEG, suppression ratio, SEF, and clinical evidence", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  // Research methods
+  { id: "statistics-ebm", title: "Statistics & Evidence-Based Medicine", description: "Study design, p-values, odds ratios, NNT, sensitivity/specificity, and common statistical tests", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
 ];
 
 export const physiologyTopics: Topic[] = [
