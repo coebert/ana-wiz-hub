@@ -244,44 +244,48 @@ const EchoDiagram = () => {
         <svg viewBox="0 0 400 250" className="w-full h-auto">
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
-            {/* LV — circular doughnut, mid-papillary level */}
-            <circle cx="210" cy="148" r="58" fill="#c8c098" opacity="0.9" />
-            <circle cx="210" cy="148" r="42" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.4" />
-            {/* Coronary territory segmentation — 6 segments */}
+            {/* LV — circular doughnut */}
+            <circle cx="200" cy="148" r="58" fill="#c8c098" opacity="0.9" />
+            <circle cx="200" cy="148" r="42" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.4" />
+            {/* Coronary segmentation lines */}
             <g stroke="#fff8d0" strokeWidth="0.4" opacity="0.45" fill="none">
-              <line x1="210" y1="106" x2="210" y2="190" />
-              <line x1="173" y1="127" x2="247" y2="169" />
-              <line x1="173" y1="169" x2="247" y2="127" />
+              <line x1="200" y1="106" x2="200" y2="190" />
+              <line x1="163" y1="127" x2="237" y2="169" />
+              <line x1="163" y1="169" x2="237" y2="127" />
             </g>
-            <text x="210" y="100" fontSize="6" fill="#ff9090" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
-            <text x="262" y="135" fontSize="6" fill="#90c0ff" fontWeight="700">ANT-SEPT</text>
-            <text x="262" y="168" fontSize="6" fill="#90ffb0" fontWeight="700">INF-SEPT</text>
-            <text x="210" y="206" fontSize="6" fill="#ffd090" fontWeight="700" textAnchor="middle">INF (RCA)</text>
-            <text x="158" y="168" fontSize="6" fill="#c090ff" fontWeight="700" textAnchor="end">INF-LAT</text>
-            <text x="158" y="135" fontSize="6" fill="#ff90d0" fontWeight="700" textAnchor="end">ANT-LAT (LCx)</text>
-            <text x="210" y="151" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
             {/* Papillary muscles */}
-            <ellipse cx="184" cy="128" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
-            <ellipse cx="232" cy="172" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
-            <text x="178" y="120" fontSize="5" fill="#fff8d0" opacity="0.8">AL pap</text>
-            <text x="238" y="184" fontSize="5" fill="#fff8d0" opacity="0.8">PM pap</text>
-            {/* RV crescent — anterior, wraps around LV septum */}
-            <path d="M 165,90 Q 110,135 175,205 Q 190,180 178,148 Q 170,115 195,95 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="138" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
-            <text x="190" y="151" fontSize="5" fill="#1a1a1a" fontWeight="700" textAnchor="middle">IVS</text>
-            <circle cx="210" cy="148" r="60" fill="none" stroke="#ffffd0" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
-            {/* Inset: aortic valve at base — Mercedes-Benz sign */}
-            <g transform="translate(310,80)">
-              <rect x="-32" y="-25" width="64" height="55" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-              <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
-              <line x1="0" y1="0" x2="0" y2="-18" stroke="#fff8d0" strokeWidth="1" />
-              <line x1="0" y1="0" x2="15.6" y2="9" stroke="#fff8d0" strokeWidth="1" />
-              <line x1="0" y1="0" x2="-15.6" y2="9" stroke="#fff8d0" strokeWidth="1" />
-              <text x="0" y="-19" fontSize="5" fill="#fff8d0" textAnchor="middle">L</text>
-              <text x="14" y="13" fontSize="5" fill="#fff8d0">R</text>
-              <text x="-14" y="13" fontSize="5" fill="#fff8d0" textAnchor="end">N</text>
-              <text x="0" y="26" fontSize="5" fill="#fff8d0" textAnchor="middle" fontWeight="600">AV (base)</text>
-            </g>
+            <ellipse cx="174" cy="128" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
+            <ellipse cx="222" cy="172" rx="6" ry="5" fill="#c8c098" opacity="0.9" />
+            {/* RV crescent */}
+            <path d="M 155,90 Q 100,135 165,205 Q 180,180 168,148 Q 160,115 185,95 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.3" />
+            <circle cx="200" cy="148" r="60" fill="none" stroke="#ffffd0" strokeWidth="0.5" opacity="0.5" strokeDasharray="3 2" />
+          </g>
+          {/* Labels — placed outside clipPath but inside the visible sector area */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="200" y="151" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="128" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="187" y="151" fontSize="5" fill="#1a1a1a" fontWeight="700" textAnchor="middle">IVS</text>
+            {/* Coronary territory labels — moved INSIDE the donut sector, around the ring */}
+            <text x="200" y="118" fontSize="5.5" fill="#ff9090" fontWeight="700" textAnchor="middle">ANT (LAD)</text>
+            <text x="226" y="132" fontSize="5" fill="#90c0ff" fontWeight="700" textAnchor="middle">ANT-SEPT</text>
+            <text x="226" y="170" fontSize="5" fill="#90ffb0" fontWeight="700" textAnchor="middle">INF-SEPT</text>
+            <text x="200" y="186" fontSize="5.5" fill="#ffd090" fontWeight="700" textAnchor="middle">INF (RCA)</text>
+            <text x="174" y="170" fontSize="5" fill="#c090ff" fontWeight="700" textAnchor="middle">INF-LAT</text>
+            <text x="174" y="132" fontSize="5" fill="#ff90d0" fontWeight="700" textAnchor="middle">ANT-LAT</text>
+            <text x="170" y="120" fontSize="4.5" fill="#fff8d0" opacity="0.85">AL pap</text>
+            <text x="226" y="186" fontSize="4.5" fill="#fff8d0" opacity="0.85">PM pap</text>
+          </g>
+          {/* AV inset — moved BELOW the sector tip on the right, fully visible */}
+          <g transform="translate(345,150)">
+            <rect x="-32" y="-30" width="64" height="60" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <circle cx="0" cy="-3" r="18" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="0" y2="-21" stroke="#fff8d0" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
+            <line x1="0" y1="-3" x2="-15.6" y2="6" stroke="#fff8d0" strokeWidth="1" />
+            <text x="0" y="-22" fontSize="5" fill="#fff8d0" textAnchor="middle">L</text>
+            <text x="14" y="10" fontSize="5" fill="#fff8d0">R</text>
+            <text x="-14" y="10" fontSize="5" fill="#fff8d0" textAnchor="end">N</text>
+            <text x="0" y="24" fontSize="5" fill="#fff8d0" textAnchor="middle" fontWeight="600">AV (base)</text>
           </g>
           <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">PSAX mid-papillary — 6 coronary segments + AV inset</text>
         </svg>
