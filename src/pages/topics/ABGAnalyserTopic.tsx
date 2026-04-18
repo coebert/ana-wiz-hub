@@ -10,14 +10,15 @@ import { SeeAlso } from "@/components/SeeAlso";
 const ABGAnalyserTopic = () => {
   return (
     <SectionLayout title="ABG Analyser & Gas Measurement" subtitle="Primary / Final — Physics" backPath="/physics" backLabel="Physics" accentColor="text-physics">
-      <ABGAnalyserDiagram />
-
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ABG Analyser Overview</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             A modern blood gas analyser directly measures three parameters — pH, PO₂, and PCO₂ — using electrochemical electrodes maintained at 37°C. All other values (HCO₃⁻, base excess, SaO₂) are <strong>calculated</strong> using the Henderson-Hasselbalch equation and standard algorithms.
           </p>
+          <div className="my-4">
+            <ABGAnalyserDiagram />
+          </div>
           <div className="grid sm:grid-cols-3 gap-3">
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">pH</p>
