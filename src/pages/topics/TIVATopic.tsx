@@ -4,6 +4,7 @@ import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import DecrementTimeDiagram from "@/components/diagrams/DecrementTimeDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { tivaQuestions } from "@/data/quizzes";

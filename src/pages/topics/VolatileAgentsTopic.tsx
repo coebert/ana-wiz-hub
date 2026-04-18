@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { MACDiagram } from "@/components/diagrams/MACDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { volatileAgentsQuiz } from "@/data/quizzes";

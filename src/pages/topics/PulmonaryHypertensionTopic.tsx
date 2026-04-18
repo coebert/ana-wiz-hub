@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
