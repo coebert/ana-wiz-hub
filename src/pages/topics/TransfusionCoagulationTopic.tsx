@@ -115,40 +115,6 @@ const TransfusionCoagulationTopic = () => {
         </div>
 
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viscoelastic Testing (ROTEM/TEG)</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Point-of-care coagulation assessment guiding targeted blood product therapy. Reduces empiric transfusion and improves outcomes.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">ROTEM Parameters</p>
-              <p className="text-sm text-muted-foreground mt-1">EXTEM CT: extrinsic pathway (FFP). FIBTEM A5/MCF: fibrinogen contribution (cryoprecipitate if {'<'} 12mm). EXTEM MCF: platelet contribution. HEPTEM: heparin effect.</p>
-            </div>
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Goal-Directed Algorithm</p>
-              <p className="text-sm text-muted-foreground mt-1">FIBTEM low → cryoprecipitate. EXTEM CT prolonged → FFP. EXTEM MCF low (FIBTEM normal) → platelets. HEPTEM shorter than INTEM → protamine. Reduces blood product use by 30–50%.</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Transfusion Trials</h2>
-          <div className="space-y-2">
-            {[
-              { trial: "TRICC (1999)", result: "Restrictive (Hb 70 g/L trigger) as safe as liberal (100 g/L) in most ICU patients. Lower in-hospital mortality trend." },
-              { trial: "TRISS (2014)", result: "Restrictive (Hb 70) vs liberal (90) in septic shock — no difference in 90-day mortality or ischaemic events." },
-              { trial: "TITRe2 (2015)", result: "Restrictive (Hb 75) vs liberal (90) post-cardiac surgery — restrictive non-inferior. Trend to higher mortality in restrictive group." },
-              { trial: "PROPPR (2015)", result: "1:1:1 vs 1:1:2 (PRBC:FFP:Plt) in trauma — 1:1:1 achieved haemostasis faster, no mortality difference." },
-            ].map((t) => (
-              <div key={t.trial} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{t.trial}</p>
-                <p className="text-sm text-muted-foreground mt-1">{t.result}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Massive Transfusion Protocol (MTP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Massive transfusion is defined as replacement of one entire blood volume within 24 hours (~70 mL/kg, ~10 units PRBC in a 70 kg adult), or {'>'} 4 units PRBC within 1 hour with ongoing bleeding anticipated. Activation of an MTP ensures rapid, coordinated delivery of blood products.
@@ -236,6 +202,40 @@ const TransfusionCoagulationTopic = () => {
             <p className="text-sm text-muted-foreground">
               Massive transfusion is a very common FRCA/FFICM exam topic. Know: the lethal triad, citrate-induced hypocalcaemia (commonest dangerous complication), PROPPR trial (1:1:1), damage control resuscitation principles, and the late metabolic alkalosis from citrate metabolism. Remember that standard coagulation tests (PT/APTT) are performed at 37°C and may underestimate coagulopathy in a hypothermic patient — viscoelastic testing is more informative.
             </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viscoelastic Testing (ROTEM/TEG)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Point-of-care coagulation assessment guiding targeted blood product therapy. Reduces empiric transfusion and improves outcomes.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">ROTEM Parameters</p>
+              <p className="text-sm text-muted-foreground mt-1">EXTEM CT: extrinsic pathway (FFP). FIBTEM A5/MCF: fibrinogen contribution (cryoprecipitate if {'<'} 12mm). EXTEM MCF: platelet contribution. HEPTEM: heparin effect.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Goal-Directed Algorithm</p>
+              <p className="text-sm text-muted-foreground mt-1">FIBTEM low → cryoprecipitate. EXTEM CT prolonged → FFP. EXTEM MCF low (FIBTEM normal) → platelets. HEPTEM shorter than INTEM → protamine. Reduces blood product use by 30–50%.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Transfusion Trials</h2>
+          <div className="space-y-2">
+            {[
+              { trial: "TRICC (1999)", result: "Restrictive (Hb 70 g/L trigger) as safe as liberal (100 g/L) in most ICU patients. Lower in-hospital mortality trend." },
+              { trial: "TRISS (2014)", result: "Restrictive (Hb 70) vs liberal (90) in septic shock — no difference in 90-day mortality or ischaemic events." },
+              { trial: "TITRe2 (2015)", result: "Restrictive (Hb 75) vs liberal (90) post-cardiac surgery — restrictive non-inferior. Trend to higher mortality in restrictive group." },
+              { trial: "PROPPR (2015)", result: "1:1:1 vs 1:1:2 (PRBC:FFP:Plt) in trauma — 1:1:1 achieved haemostasis faster, no mortality difference." },
+            ].map((t) => (
+              <div key={t.trial} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                <p className="font-semibold text-foreground text-sm">{t.trial}</p>
+                <p className="text-sm text-muted-foreground mt-1">{t.result}</p>
+              </div>
+            ))}
           </div>
         </div>
 
