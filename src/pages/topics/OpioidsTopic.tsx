@@ -49,10 +49,14 @@ const OpioidsTopic = () => {
             <OpioidReceptorDiagram />
           </div>
           <OpioidReceptorSignalingDiagram />
-          <OIHToleranceDiagram />
-          <MethadonePharmacologyDiagram />
-          <BuprenorphinePharmacologyDiagram />
-          <RemifentanilPKDiagram />
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Comparing the molecular skeletons of the major opioid families (phenanthrenes, phenylpiperidines, diphenylheptanes) helps explain potency, lipid solubility, and receptor selectivity.
+          </p>
+          <OpioidStructures />
         </section>
 
         <section className="mb-10">
