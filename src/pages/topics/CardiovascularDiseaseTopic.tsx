@@ -20,8 +20,8 @@ const CardiovascularDiseaseTopic = () => {
     <SectionLayout
       title="Cardiovascular Co-Existing Disease"
       subtitle="Ischaemic heart disease, valvular disease, heart failure, arrhythmias, pulmonary hypertension, and congenital heart disease in adults"
-      backPath="/clinical"
-      backLabel="Clinical Anaesthesia"
+      backPath="/perioperative"
+      backLabel="Perioperative Medicine"
       accentColor="text-clinical"
     >
       <div className="space-y-8">
