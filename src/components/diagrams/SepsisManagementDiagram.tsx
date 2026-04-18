@@ -79,20 +79,19 @@ const SepsisManagementDiagram = () => {
         <TabsContent value="vasopressors">
           {/* Escalation SVG */}
           <div className="bg-background rounded-lg border border-border p-3 mb-3">
-            <svg viewBox="0 0 380 140" className="w-full h-auto">
-              {/* Escalation arrows */}
+            <svg viewBox="0 0 420 180" className="w-full h-auto">
+              <text x="14" y="100" fontSize="9" className="fill-muted-foreground" transform="rotate(-90,14,100)">Escalation →</text>
               {vasopressors.slice(0, 4).map((v, i) => {
-                const y = 20 + i * 30;
-                const width = [300, 240, 180, 140][i];
+                const y = 18 + i * 38;
+                const width = [340, 280, 220, 170][i];
                 return (
                   <g key={v.id}>
-                    <rect x="40" y={y} width={width} height="22" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
-                    <text x="48" y={y + 14} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
-                    <text x={44 + width - 8} y={y + 14} textAnchor="end" fontSize="7" className="fill-muted-foreground">{v.dose}</text>
+                    <rect x="36" y={y} width={width} height="20" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
+                    <text x="44" y={y + 13} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
+                    <text x="44" y={y + 30} fontSize="8" className="fill-muted-foreground">{v.dose}</text>
                   </g>
                 );
               })}
-              <text x="20" y="85" fontSize="8" className="fill-muted-foreground" transform="rotate(-90,20,85)">Escalation →</text>
             </svg>
           </div>
 
