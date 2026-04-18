@@ -73,7 +73,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
+        <section id="toc-ci-aki" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Contrast-Induced Acute Kidney Injury (CI-AKI)</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             CI-AKI (also termed contrast-associated AKI, CA-AKI) is defined as a rise in serum creatinine ≥26.5 µmol/L
