@@ -20,8 +20,8 @@ const RespiratoryDiseaseTopic = () => {
     <SectionLayout
       title="Respiratory Co-Existing Disease"
       subtitle="Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, and respiratory infections"
-      backPath="/clinical"
-      backLabel="Clinical Anaesthesia"
+      backPath="/perioperative"
+      backLabel="Perioperative Medicine"
       accentColor="text-clinical"
     >
       <div className="space-y-8">

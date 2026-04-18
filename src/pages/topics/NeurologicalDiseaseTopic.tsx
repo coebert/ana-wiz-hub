@@ -20,8 +20,8 @@ const NeurologicalDiseaseTopic = () => {
     <SectionLayout
       title="Neurological Co-Existing Disease"
       subtitle="Myasthenia gravis, epilepsy, multiple sclerosis, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury"
-      backPath="/clinical"
-      backLabel="Clinical Anaesthesia"
+      backPath="/perioperative"
+      backLabel="Perioperative Medicine"
       accentColor="text-clinical"
     >
       <div className="space-y-8">

@@ -20,8 +20,8 @@ const EndocrineDiseaseTopic = () => {
     <SectionLayout
       title="Endocrine Co-Existing Disease"
       subtitle="Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, and carcinoid syndrome"
-      backPath="/clinical"
-      backLabel="Clinical Anaesthesia"
+      backPath="/perioperative"
+      backLabel="Perioperative Medicine"
       accentColor="text-clinical"
     >
       <div className="space-y-8">
