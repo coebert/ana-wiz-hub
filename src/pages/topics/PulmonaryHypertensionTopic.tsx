@@ -281,6 +281,8 @@ const PulmonaryHypertensionTopic = () => {
           </div>
         </section>
 
+        <KeyLearningPoints points={keyPoints} />
+
         <QuizSection questions={pulmonaryHypertensionQuestions} />
         <ReferencesList topicId="pulmonary-hypertension" />
         <SeeAlso topicId="pulmonary-hypertension" />
