@@ -223,7 +223,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
   const baselineSW = loops.baseline.area;
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-3 my-6">
+    <div className="w-full max-w-6xl mx-auto space-y-3 my-6">
       <div className="text-center">
         <h3 className="text-lg font-serif font-bold text-foreground">
           Pressure–Volume Loops: MCS Device Effects
@@ -255,62 +255,181 @@ export const MCSPressureVolumeLoopDiagram = () => {
         })}
       </div>
 
-      <div className="bg-card rounded-lg border border-border p-3">
-        <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
-          {/* grid */}
-          {[0, 40, 80, 120, 160].map((p) => (
-            <g key={`gp${p}`}>
-              <line x1={PAD.left} y1={yOf(p)} x2={W - PAD.right} y2={yOf(p)} stroke="hsl(210 20% 92%)" />
-              <text x={PAD.left - 6} y={yOf(p) + 3} textAnchor="end" fontSize="10" className="fill-muted-foreground">{p}</text>
-            </g>
-          ))}
-          {[0, 50, 100, 150, 200, 250].map((v) => (
-            <g key={`gv${v}`}>
-              <line x1={xOf(v)} y1={PAD.top} x2={xOf(v)} y2={PAD.top + PLOT_H} stroke="hsl(210 20% 95%)" />
-              <text x={xOf(v)} y={PAD.top + PLOT_H + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">{v}</text>
-            </g>
-          ))}
+      <div className="grid lg:grid-cols-[2fr_1fr] gap-3">
+        <div className="bg-card rounded-lg border border-border p-3">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
+            {/* grid */}
+            {[0, 40, 80, 120, 160].map((p) => (
+              <g key={`gp${p}`}>
+                <line x1={PAD.left} y1={yOf(p)} x2={W - PAD.right} y2={yOf(p)} stroke="hsl(210 20% 92%)" />
+                <text x={PAD.left - 6} y={yOf(p) + 3} textAnchor="end" fontSize="10" className="fill-muted-foreground">{p}</text>
+              </g>
+            ))}
+            {[0, 50, 100, 150, 200, 250].map((v) => (
+              <g key={`gv${v}`}>
+                <line x1={xOf(v)} y1={PAD.top} x2={xOf(v)} y2={PAD.top + PLOT_H} stroke="hsl(210 20% 95%)" />
+                <text x={xOf(v)} y={PAD.top + PLOT_H + 14} textAnchor="middle" fontSize="10" className="fill-muted-foreground">{v}</text>
+              </g>
+            ))}
 
-          {/* axes */}
-          <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
-          <line x1={PAD.left} y1={PAD.top + PLOT_H} x2={W - PAD.right} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
-          <text x={PAD.left + PLOT_W / 2} y={H - 10} textAnchor="middle" fontSize="11" className="fill-foreground font-medium">LV Volume (mL)</text>
-          <text x={20} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 20 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
-            LV Pressure (mmHg)
-          </text>
+            {/* axes */}
+            <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
+            <line x1={PAD.left} y1={PAD.top + PLOT_H} x2={W - PAD.right} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
+            <text x={PAD.left + PLOT_W / 2} y={H - 10} textAnchor="middle" fontSize="11" className="fill-foreground font-medium">LV Volume (mL)</text>
+            <text x={20} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 20 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
+              LV Pressure (mmHg)
+            </text>
 
-          {/* ESPVR (baseline) — dashed grey */}
-          <path d={espvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="4 3" fill="none" />
-          <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
+            {/* ESPVR (baseline) — dashed grey */}
+            <path d={espvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="4 3" fill="none" />
+            <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
 
-          {/* ESPVR (shock) — dashed red */}
-          {(active.has("shock") || active.has("iabp") || active.has("impella") || active.has("ecmo") || active.has("lvad")) && (
-            <>
-              <path d={espvrShockPath} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.6" />
-              <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
-            </>
-          )}
+            {/* ESPVR (shock) — dashed red */}
+            {(active.has("shock") || active.has("iabp") || active.has("impella") || active.has("ecmo") || active.has("lvad")) && (
+              <>
+                <path d={espvrShockPath} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.6" />
+                <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
+              </>
+            )}
 
-          {/* EDPVR */}
-          <path d={edpvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="2 2" fill="none" />
-          <text x={xOf(230)} y={yOf(edpvrP(230, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
+            {/* EDPVR */}
+            <path d={edpvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="2 2" fill="none" />
+            <text x={xOf(230)} y={yOf(edpvrP(230, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
 
-          {/* Loops */}
-          {ALL_STATES.filter((s) => active.has(s)).map((s) => {
-            const isHL = highlight === s;
-            return (
-              <path
-                key={s}
-                d={loops[s].path}
-                stroke={STATES[s].color}
-                strokeWidth={isHL ? 2.5 : 1.8}
-                fill={STATES[s].color}
-                fillOpacity={isHL ? 0.18 : 0.08}
-                opacity={isHL ? 1 : 0.85}
-              />
+            {/* Loops */}
+            {ALL_STATES.filter((s) => active.has(s)).map((s) => {
+              const isHL = highlight === s;
+              return (
+                <path
+                  key={s}
+                  d={loops[s].path}
+                  stroke={STATES[s].color}
+                  strokeWidth={isHL ? 2.5 : 1.8}
+                  fill={STATES[s].color}
+                  fillOpacity={isHL ? 0.18 : 0.08}
+                  opacity={isHL ? 1 : 0.85}
+                />
+              );
+            })}
+          </svg>
+        </div>
+
+        {/* Stroke work / PVA bar chart */}
+        <div className="bg-card rounded-lg border border-border p-3 flex flex-col">
+          <div className="text-center mb-1">
+            <p className="text-xs font-semibold text-foreground">Stroke Work + PE = PVA</p>
+            <p className="text-[10px] text-muted-foreground">PVA ∝ MVO₂ per beat</p>
+          </div>
+          {(() => {
+            const activeStates = ALL_STATES.filter((s) => active.has(s));
+            const maxPVA = Math.max(
+              ...ALL_STATES.map((s) => loops[s].area + loops[s].pe),
+              1,
             );
-          })}
-        </svg>
+            const BW = 360;
+            const BH = 320;
+            const BPAD = { top: 24, right: 14, bottom: 60, left: 44 };
+            const PW = BW - BPAD.left - BPAD.right;
+            const PH = BH - BPAD.top - BPAD.bottom;
+            const n = Math.max(activeStates.length, 1);
+            const bandW = PW / n;
+            const barW = Math.min(38, bandW * 0.65);
+            const yScale = (val: number) => BPAD.top + PH - (val / maxPVA) * PH;
+            const ticks = [0, 0.25, 0.5, 0.75, 1].map((f) => Math.round((f * maxPVA) / 1000) * 1000);
+            return (
+              <svg viewBox={`0 0 ${BW} ${BH}`} className="w-full flex-1">
+                {/* gridlines */}
+                {ticks.map((t) => (
+                  <g key={t}>
+                    <line x1={BPAD.left} y1={yScale(t)} x2={BW - BPAD.right} y2={yScale(t)} stroke="hsl(210 20% 92%)" />
+                    <text x={BPAD.left - 4} y={yScale(t) + 3} textAnchor="end" fontSize="9" className="fill-muted-foreground">{(t / 1000).toFixed(1)}k</text>
+                  </g>
+                ))}
+                {/* axes */}
+                <line x1={BPAD.left} y1={BPAD.top} x2={BPAD.left} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1.2" />
+                <line x1={BPAD.left} y1={BPAD.top + PH} x2={BW - BPAD.right} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1.2" />
+                <text x={12} y={BPAD.top + PH / 2} textAnchor="middle" transform={`rotate(-90 12 ${BPAD.top + PH / 2})`} fontSize="10" className="fill-foreground font-medium">mmHg·mL</text>
+
+                {/* Baseline reference line */}
+                {active.has("baseline") && (
+                  <>
+                    <line
+                      x1={BPAD.left}
+                      x2={BW - BPAD.right}
+                      y1={yScale(loops.baseline.area + loops.baseline.pe)}
+                      y2={yScale(loops.baseline.area + loops.baseline.pe)}
+                      stroke="hsl(215 25% 40%)"
+                      strokeDasharray="3 3"
+                      strokeWidth="0.8"
+                      opacity="0.7"
+                    />
+                    <text x={BW - BPAD.right - 2} y={yScale(loops.baseline.area + loops.baseline.pe) - 3} textAnchor="end" fontSize="8" className="fill-muted-foreground">baseline PVA</text>
+                  </>
+                )}
+
+                {activeStates.map((s, i) => {
+                  const ew = loops[s].area;
+                  const pe = loops[s].pe;
+                  const pva = ew + pe;
+                  const cx = BPAD.left + bandW * (i + 0.5);
+                  const x = cx - barW / 2;
+                  const yPVA = yScale(pva);
+                  const yEW = yScale(ew);
+                  const peH = yEW - yPVA; // PE on top
+                  const ewH = BPAD.top + PH - yEW;
+                  const isHL = highlight === s;
+                  return (
+                    <g key={s} opacity={isHL ? 1 : 0.9}>
+                      {/* PE (top, lighter) */}
+                      <rect x={x} y={yPVA} width={barW} height={Math.max(0, peH)} fill={STATES[s].color} fillOpacity="0.35" stroke={STATES[s].color} strokeWidth={isHL ? 1.5 : 0.8} />
+                      {/* EW (bottom, darker) */}
+                      <rect x={x} y={yEW} width={barW} height={Math.max(0, ewH)} fill={STATES[s].color} fillOpacity="0.85" stroke={STATES[s].color} strokeWidth={isHL ? 1.5 : 0.8} />
+                      {/* PVA value above bar */}
+                      <text x={cx} y={yPVA - 4} textAnchor="middle" fontSize="9" className="fill-foreground" fontWeight={isHL ? 700 : 500}>
+                        {Math.round(pva).toLocaleString()}
+                      </text>
+                      {/* Δ vs baseline */}
+                      {s !== "baseline" && (
+                        <text x={cx} y={BPAD.top + PH + 14} textAnchor="middle" fontSize="8" className="fill-muted-foreground">
+                          {pva > baselineSW + loops.baseline.pe ? "↑" : "↓"}
+                          {Math.round(((pva - (loops.baseline.area + loops.baseline.pe)) / (loops.baseline.area + loops.baseline.pe)) * 100)}%
+                        </text>
+                      )}
+                      {/* state label, rotated for fit */}
+                      <text
+                        x={cx}
+                        y={BPAD.top + PH + 28}
+                        textAnchor="end"
+                        fontSize="9"
+                        fill={STATES[s].color}
+                        fontWeight={isHL ? 700 : 500}
+                        transform={`rotate(-35 ${cx} ${BPAD.top + PH + 28})`}
+                      >
+                        {STATES[s].shortLabel}
+                      </text>
+                    </g>
+                  );
+                })}
+
+                {activeStates.length === 0 && (
+                  <text x={BW / 2} y={BPAD.top + PH / 2} textAnchor="middle" fontSize="10" className="fill-muted-foreground">Toggle a state to display</text>
+                )}
+              </svg>
+            );
+          })()}
+
+          {/* Legend */}
+          <div className="flex items-center justify-center gap-3 text-[10px] text-muted-foreground mt-1">
+            <div className="flex items-center gap-1">
+              <span className="inline-block w-3 h-3 rounded-sm bg-foreground/70" />
+              <span>EW (loop area)</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <span className="inline-block w-3 h-3 rounded-sm bg-foreground/30 border border-foreground/50" />
+              <span>PE</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Highlighted state description */}
