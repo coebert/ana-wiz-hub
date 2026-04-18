@@ -252,6 +252,49 @@ const HaematologyIcuTopic = () => {
           </div>
         </div>
 
+        {/* ICU Considerations */}
+        <div id="toc-icu-common" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Considerations Common to Both</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Issue</th>
+                  <th className="text-left py-2 text-foreground font-semibold">TTP</th>
+                  <th className="text-left py-2 text-foreground font-semibold">HLH</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Vascular access</td>
+                  <td className="py-2">Large-bore dialysis catheter for TPE (Vascath)</td>
+                  <td className="py-2">Standard CVC; coagulopathy may complicate insertion</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Transfusion</td>
+                  <td className="py-2">Avoid platelets; RBC as needed</td>
+                  <td className="py-2">All products as needed; transfusion-dependent pancytopenia common</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Neurological monitoring</td>
+                  <td className="py-2">Stroke, seizures — consider MRI brain</td>
+                  <td className="py-2">Encephalopathy, seizures — CSF may show haemophagocytosis</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Infection risk</td>
+                  <td className="py-2">Immunosuppression from rituximab/steroids</td>
+                  <td className="py-2">Profound immunosuppression — etoposide causes neutropenia; infection is leading cause of death</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Monitoring response</td>
+                  <td className="py-2">Platelet count, LDH, ADAMTS13 activity</td>
+                  <td className="py-2">Ferritin trend (falling = responding), sCD25, cytopenia recovery</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         {/* HLH */}
         <div id="toc-hlh" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
@@ -350,49 +393,6 @@ const HaematologyIcuTopic = () => {
             <p className="text-sm text-muted-foreground mt-1">
               A ferritin &gt;10,000 µg/L has ~90% sensitivity and 96% specificity for HLH. In any ICU patient with unexplained multi-organ failure, check ferritin early — it may be the clue to diagnosis.
             </p>
-          </div>
-        </div>
-
-        {/* ICU Considerations */}
-        <div id="toc-icu-common" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Considerations Common to Both</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Issue</th>
-                  <th className="text-left py-2 text-foreground font-semibold">TTP</th>
-                  <th className="text-left py-2 text-foreground font-semibold">HLH</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Vascular access</td>
-                  <td className="py-2">Large-bore dialysis catheter for TPE (Vascath)</td>
-                  <td className="py-2">Standard CVC; coagulopathy may complicate insertion</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Transfusion</td>
-                  <td className="py-2">Avoid platelets; RBC as needed</td>
-                  <td className="py-2">All products as needed; transfusion-dependent pancytopenia common</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Neurological monitoring</td>
-                  <td className="py-2">Stroke, seizures — consider MRI brain</td>
-                  <td className="py-2">Encephalopathy, seizures — CSF may show haemophagocytosis</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Infection risk</td>
-                  <td className="py-2">Immunosuppression from rituximab/steroids</td>
-                  <td className="py-2">Profound immunosuppression — etoposide causes neutropenia; infection is leading cause of death</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Monitoring response</td>
-                  <td className="py-2">Platelet count, LDH, ADAMTS13 activity</td>
-                  <td className="py-2">Ferritin trend (falling = responding), sCD25, cytopenia recovery</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
 

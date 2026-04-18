@@ -297,6 +297,17 @@ const TIVATopic = () => {
           </div>
         </div>
 
+        {/* Propofol Infusion Syndrome */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Propofol Infusion Syndrome (PRIS)</h2>
+          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
+            <p className="text-sm font-bold text-destructive mb-2">⚠ Rare but Fatal Complication</p>
+            <p className="text-sm text-muted-foreground">
+              <strong>Definition:</strong> Metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure, renal failure, lipaemia, hepatomegaly. <strong>Mechanism:</strong> Mitochondrial respiratory chain inhibition → impaired fatty acid oxidation. <strong>Risk factors:</strong> Propofol &gt;4 mg/kg/hr for &gt;48 hours, catecholamine/steroid co-administration, critical illness (especially neuro/sepsis), paediatric ICU. <strong>Management:</strong> Stop propofol immediately, supportive care, RRT for metabolic derangement, alternative sedation (midazolam, dexmedetomidine). <strong>Prevention:</strong> Limit ICU propofol to &lt;4 mg/kg/hr. Monitor lactate, CK, triglycerides daily. Time-limit propofol sedation.
+            </p>
+          </div>
+        </div>
+
         {/* Special Populations */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Special Populations</h2>
@@ -312,17 +323,6 @@ const TIVATopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">{p.detail}</p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Propofol Infusion Syndrome */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Propofol Infusion Syndrome (PRIS)</h2>
-          <div className="p-4 rounded-lg border border-destructive/30 bg-destructive/5">
-            <p className="text-sm font-bold text-destructive mb-2">⚠ Rare but Fatal Complication</p>
-            <p className="text-sm text-muted-foreground">
-              <strong>Definition:</strong> Metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure, renal failure, lipaemia, hepatomegaly. <strong>Mechanism:</strong> Mitochondrial respiratory chain inhibition → impaired fatty acid oxidation. <strong>Risk factors:</strong> Propofol &gt;4 mg/kg/hr for &gt;48 hours, catecholamine/steroid co-administration, critical illness (especially neuro/sepsis), paediatric ICU. <strong>Management:</strong> Stop propofol immediately, supportive care, RRT for metabolic derangement, alternative sedation (midazolam, dexmedetomidine). <strong>Prevention:</strong> Limit ICU propofol to &lt;4 mg/kg/hr. Monitor lactate, CK, triglycerides daily. Time-limit propofol sedation.
-            </p>
           </div>
         </div>
       </section>
