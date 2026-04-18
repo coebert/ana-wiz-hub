@@ -14,6 +14,7 @@ import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagr
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
+import { EGFRCalculator } from "@/components/diagrams/EGFRCalculator";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -247,6 +248,14 @@ const RenalPhysiologyTopic = () => {
             iohexol when an accurate measured GFR is required (transplant donor, carboplatin dosing); use injury
             biomarkers (NephroCheck) for early AKI prediction in high-risk perioperative/ICU patients.
           </p>
+          <div className="bg-card rounded-xl border border-border p-6 mt-6">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive CKD-EPI 2021 eGFR Calculator</h3>
+            <p className="text-sm text-muted-foreground mb-5">
+              Enter serum creatinine, age and sex. The race-free 2021 equation returns eGFR with KDIGO CKD stage
+              (G1–G5), colour-coded severity band, and stage-specific perioperative actions.
+            </p>
+            <EGFRCalculator />
+          </div>
         </section>
 
         <section className="mb-10">
