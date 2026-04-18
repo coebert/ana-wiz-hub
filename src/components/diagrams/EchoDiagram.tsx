@@ -33,8 +33,8 @@ const EchoDiagram = () => {
         <path key={r} d={`M ${200 - r * 0.6},${5 + r * 0.8} A ${r},${r} 0 0 0 ${200 + r * 0.6},${5 + r * 0.8}`}
           fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0.18" strokeDasharray="2 3" />
       ))}
-      <circle cx="92" cy="60" r="3" fill="hsl(var(--primary))" />
-      <text x="100" y="63" fontSize="6" fill="#ffffff" opacity="0.7">marker</text>
+      <circle cx="92" cy="60" r="2.5" fill="hsl(var(--primary))" />
+      <text x="88" y="50" fontSize="5" fill="#ffffff" opacity="0.7" textAnchor="end">probe ▸</text>
       <text x="345" y="240" fontSize="6" fill="#ffffff" opacity="0.6" textAnchor="end">16 cm</text>
     </g>
   );
