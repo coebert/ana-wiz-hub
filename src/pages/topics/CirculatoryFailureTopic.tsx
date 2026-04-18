@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { circulatoryFailureQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
 import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
+import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -161,6 +162,18 @@ const CirculatoryFailureTopic = () => {
             When pharmacological therapy fails to restore adequate perfusion in cardiogenic shock, MCS devices can directly augment cardiac output, unload the failing left ventricle, and buy time for recovery, decision, transplantation, or destination therapy. The three principal LV-support devices differ fundamentally in <em>how</em> they generate flow and <em>how much</em> they unload the ventricle.
           </p>
           <MechanicalCirculatorySupportDiagram />
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">Pressure–volume loop analysis</h3>
+          <p className="text-foreground/90 leading-relaxed text-sm mb-2">
+            The clearest way to compare MCS devices is on the LV pressure–volume (PV) loop. Cardiogenic shock collapses the loop into a tall, wide, low-stroke-work box (low contractility = flatter ESPVR, high LVEDP). Each device modifies the loop differently:
+          </p>
+          <ul className="list-disc pl-6 space-y-1 text-foreground/90 text-sm mb-3">
+            <li><strong>IABP:</strong> small leftward shift — modest ↓ESV/↑SV from afterload reduction; EDV largely unchanged. Stroke work and PVA modestly reduced.</li>
+            <li><strong>Impella:</strong> direct LV unloading — loop shrinks and shifts left. EDV ↓, ESV ↓, LVEDP ↓↓, native stroke work ↓ (much of CO is now pump output). PVA falls markedly → ↓MVO₂.</li>
+            <li><strong>VA-ECMO:</strong> peripheral retrograde flow ↑↑ afterload → loop becomes tall and may collapse to an isovolumetric vertical line (AV never opens). LVEDP rises → LV distension and pulmonary oedema unless vented (Impella, IABP, atrial septostomy).</li>
+            <li><strong>Durable LVAD:</strong> maximal unloading — loop collapses to a small triangle or vertical line at low volume. LVEDP minimal; the native heart contributes essentially no stroke work.</li>
+          </ul>
+          <MCSPressureVolumeLoopDiagram />
         </div>
       </section>
 
