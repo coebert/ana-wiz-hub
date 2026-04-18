@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
+import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
 
 const PaediatricIcuTopic = () => {
   return (
@@ -17,13 +18,16 @@ const PaediatricIcuTopic = () => {
           </p>
         </div>
 
-        {/* WETFLAG */}
+        {/* WETFLAG + Vitals reference */}
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-2">WETFLAG — paediatric resuscitation mnemonic</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-2">WETFLAG & age-specific vital signs</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
-            <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus. It generates the seven weight-based numbers needed to deliver immediate life-saving therapy without doing arithmetic under stress: <strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose. Adjust the slider to see how the numbers scale with age, or override with measured weight.
+            <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus — generating the seven weight-based numbers (<strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose) needed to deliver immediate therapy without doing arithmetic under stress. Alongside it, the vitals table gives age-banded normal ranges for HR, RR, SBP and urine output so deviations can be recognised at a glance.
           </p>
-          <WETFLAGDiagram />
+          <div className="grid lg:grid-cols-2 gap-4 items-start">
+            <WETFLAGDiagram />
+            <PaediatricVitalsTable />
+          </div>
         </div>
 
         {/* Age-Specific Physiological Differences */}
