@@ -13,6 +13,7 @@ import { CorticalJuxtamedullaryDiagram } from "@/components/diagrams/CorticalJux
 import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagram";
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
+import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 

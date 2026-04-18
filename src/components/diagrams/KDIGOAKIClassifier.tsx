@@ -10,6 +10,7 @@ interface Result {
   stage: Stage;
   creatReason: string;
   uoReason: string;
+  label: string;
   mortality: string;
   advice: string;
   band: string;
