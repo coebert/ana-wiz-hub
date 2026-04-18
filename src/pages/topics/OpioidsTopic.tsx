@@ -16,6 +16,18 @@ import OpioidStructures from "@/components/diagrams/OpioidStructures";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-introduction", label: "Introduction" },
+  { id: "toc-receptors", label: "Receptors" },
+  { id: "toc-structures", label: "Structures" },
+  { id: "toc-agents", label: "Individual Agents" },
+  { id: "toc-csht", label: "CSHT" },
+  { id: "toc-partial-agonists", label: "Partial Agonists" },
+  { id: "toc-tolerance", label: "Tolerance & OIH" },
+  { id: "toc-naloxone", label: "Naloxone" },
+  { id: "toc-synthesis", label: "Comparison" },
+];
+
 const OpioidsTopic = () => {
   return (
     <SectionLayout
@@ -25,8 +37,9 @@ const OpioidsTopic = () => {
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
     >
+      <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
-        <section className="mb-10">
+        <section id="toc-introduction" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
             Opioids are the cornerstone of perioperative analgesia. Understanding receptor subtypes, the clinical pharmacology
