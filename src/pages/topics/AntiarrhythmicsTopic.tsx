@@ -187,12 +187,10 @@ const AntiarrhythmicsTopic = () => {
           ]}
         />
 
-      <ReferencesList topicId="antiarrhythmics" />
-
+        <QuizSection questions={antiarrhythmicsQuiz} />
+        <ReferencesList topicId="antiarrhythmics" />
         <SeeAlso topicId="antiarrhythmics" />
         <TopicCompletionToggle topicId="antiarrhythmics" topicTitle="Antiarrhythmic Drugs" />
-
-        <QuizSection questions={antiarrhythmicsQuiz} />
       </div>
     </SectionLayout>
   );

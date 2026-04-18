@@ -7,6 +7,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ReferencesList } from "@/components/ReferencesList";
 import { organicChemistryQuiz } from "@/data/quizzes";
 
 const OrganicChemistryTopic = () => {
@@ -121,6 +122,7 @@ const OrganicChemistryTopic = () => {
         />
 
         <QuizSection questions={organicChemistryQuiz} />
+        <ReferencesList topicId="organic-chemistry" />
         <SeeAlso topicId="organic-chemistry" />
         <TopicCompletionToggle topicId="organic-chemistry" topicTitle="Organic Chemistry for Anaesthetists" />
       </div>

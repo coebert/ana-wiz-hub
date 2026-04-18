@@ -5,6 +5,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ReferencesList } from "@/components/ReferencesList";
 import { atomicStructureQuiz } from "@/data/quizzes";
 
 const AtomicStructureBondingTopic = () => {
@@ -96,6 +97,7 @@ const AtomicStructureBondingTopic = () => {
         />
 
         <QuizSection questions={atomicStructureQuiz} />
+        <ReferencesList topicId="atomic-structure-bonding" />
         <SeeAlso topicId="atomic-structure-bonding" />
         <TopicCompletionToggle topicId="atomic-structure-bonding" topicTitle="Atomic Structure & Chemical Bonding" />
       </div>
