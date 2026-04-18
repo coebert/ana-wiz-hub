@@ -242,6 +242,9 @@ const OpioidsTopic = () => {
             <MethadonePharmacologyDiagram />
           </div>
         </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
           <p className="text-foreground/90 leading-relaxed">
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
             in opioid efficacy — but they have different mechanisms and require different management strategies.
@@ -250,6 +253,8 @@ const OpioidsTopic = () => {
           <div className="mt-4">
             <OIHToleranceDiagram />
           </div>
+
+          <div className="grid md:grid-cols-2 gap-4 mt-4">
             <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
               <h3 className="font-semibold text-primary text-sm mb-2">Tolerance</h3>
               <p className="text-sm text-foreground/80 leading-relaxed">
