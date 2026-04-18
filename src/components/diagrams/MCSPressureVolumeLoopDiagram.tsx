@@ -275,7 +275,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
           <line x1={PAD.left} y1={PAD.top} x2={PAD.left} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
           <line x1={PAD.left} y1={PAD.top + PLOT_H} x2={W - PAD.right} y2={PAD.top + PLOT_H} stroke="hsl(215 25% 15%)" strokeWidth="1.5" />
           <text x={PAD.left + PLOT_W / 2} y={H - 10} textAnchor="middle" fontSize="11" className="fill-foreground font-medium">LV Volume (mL)</text>
-          <text x={16} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 16 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
+          <text x={20} y={PAD.top + PLOT_H / 2} textAnchor="middle" transform={`rotate(-90 20 ${PAD.top + PLOT_H / 2})`} fontSize="11" className="fill-foreground font-medium">
             LV Pressure (mmHg)
           </text>
 
