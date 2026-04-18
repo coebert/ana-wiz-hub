@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
@@ -290,6 +291,21 @@ const RegionalAnaesthesiaTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Regional Anaesthesia — Block Choice & Safety"
+        subtitle="High-yield checks before, during, and after every regional technique."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Stop-Before-You-Block</strong>: name, mark, side, allergies, anticoagulation, plan documented immediately before injection.</li>
+          <li><strong>LA toxicity (LAST)</strong>: max safe doses (lidocaine 3 mg/kg plain / 7 with adrenaline; bupivacaine 2 mg/kg). Treat with 20% Intralipid 1.5 ml/kg bolus + 0.25 ml/kg/min infusion.</li>
+          <li><strong>Neuraxial — anticoagulation</strong>: follow AAGBI 2013 — LMWH prophylactic 12 h gap, treatment 24 h; remove catheter only when coagulation back to baseline.</li>
+          <li><strong>Block height assessment</strong>: cold (Aδ, C-fibres) — most reliable bedside test; pinprick = surgical anaesthesia; T4 needed for upper-abdominal surgery.</li>
+          <li><strong>Ultrasound vs nerve stimulator</strong>: US improves success and reduces complications (Cochrane 2015). Combination is standard for deep blocks.</li>
+          <li><strong>Adjuvants</strong>: dexamethasone (perineural or IV) prolongs analgesia; clonidine and dexmedetomidine prolong block but cause sedation/hypotension.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block",

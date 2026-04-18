@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { renalPhysiologyQuiz } from "@/data/quizzes";
@@ -298,6 +299,39 @@ const RenalPhysiologyTopic = () => {
           </div>
         </section>
       </div>
+
+      <SynthesisBlock
+        title="Renal Physiology — Numbers to Reproduce"
+        subtitle="The high-yield values that anchor most renal viva questions."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Parameter</th>
+              <th className="text-left p-2 text-foreground font-semibold">Value</th>
+              <th className="text-left p-2 text-foreground font-semibold">Significance</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Renal blood flow", "1100 ml/min (~20% CO)", "Highest specific organ flow per gram"],
+              ["GFR", "120 ml/min/1.73 m²", "Filtration fraction ≈ 0.2"],
+              ["Filtration pressure (net)", "10 mmHg", "P_glom (60) − P_Bowman (15) − π_glom (35)"],
+              ["Tubular reabsorption — Na⁺", "67% PCT, 25% LoH, 5% DCT, 3% CD", "Fine tuning at DCT (thiazide) and CD (aldosterone)"],
+              ["Maximum urine osmolality", "1200–1400 mOsm/kg", "Requires intact medullary gradient + ADH"],
+              ["Renal threshold for glucose", "~10 mmol/L (180 mg/dl)", "Glycosuria appears above this"],
+              ["Aldosterone trigger", "↓effective circulating volume, ↑K⁺, AT-II", "Acts on principal cells of CD — ENaC + Na⁺/K⁺-ATPase"],
+            ].map(([p, val, sig]) => (
+              <tr key={p as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{p}</td>
+                <td className="p-2 text-muted-foreground">{val}</td>
+                <td className="p-2 text-muted-foreground">{sig}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).",

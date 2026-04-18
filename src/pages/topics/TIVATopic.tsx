@@ -4,6 +4,7 @@ import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import DecrementTimeDiagram from "@/components/diagrams/DecrementTimeDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { tivaQuestions } from "@/data/quizzes";
@@ -325,6 +326,21 @@ const TIVATopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="TIVA — Practical Synthesis"
+        subtitle="Setup checklist and recovery considerations for a safe TCI propofol-remifentanil anaesthetic."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Model choice</strong>: Marsh (adults, weight only) vs Schnider (adults, age/height/lean body mass) — Schnider gives lower induction Cp and is preferred in elderly/lean patients.</li>
+          <li><strong>Targets</strong>: Cp 4–6 µg/ml propofol + remifentanil 3–5 ng/ml for surgical anaesthesia. Reduce by 30–50% in elderly.</li>
+          <li><strong>Effect-site (Ce) targeting</strong> reaches steady state faster than plasma targeting — preferred for induction.</li>
+          <li><strong>Always use processed EEG</strong> with NMB to avoid awareness (NAP5 — TIVA + NMB highest risk).</li>
+          <li><strong>Recovery</strong>: CSHT propofol ~10 min after 1 h infusion, ~25 min after 8 h. Remifentanil constant ~4 min — give transition analgesia before stopping.</li>
+          <li><strong>PRIS</strong>: high-dose (&gt;4 mg/kg/hr) prolonged (&gt;48 h) propofol → metabolic acidosis, rhabdomyolysis, cardiac failure. Stop infusion immediately if suspected.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate",

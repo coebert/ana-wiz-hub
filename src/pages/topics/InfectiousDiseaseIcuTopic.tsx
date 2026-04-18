@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
@@ -626,6 +627,40 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
       </section>
+
+      <SynthesisBlock
+        title="ICU Infections — Bug, Drug & Pearl"
+        subtitle="The headline pathogens and empirical regimens for the major ICU infection syndromes."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Syndrome</th>
+              <th className="text-left p-2 text-foreground font-semibold">Likely Pathogens</th>
+              <th className="text-left p-2 text-foreground font-semibold">Empirical Therapy / Pearl</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["CAP — severe", "S. pneumoniae, H. influenzae, Legionella, atypicals", "Co-amox + macrolide; β-lactams ineffective vs Legionella"],
+              ["HAP / VAP", "P. aeruginosa, MRSA, ESBL Enterobacterales", "Pip-tazo or meropenem ± vancomycin; de-escalate at 48–72 h"],
+              ["Catheter sepsis", "CoNS, S. aureus, Candida", "Remove line; vancomycin + antifungal if Candida likely"],
+              ["Intra-abdominal", "E. coli, Klebsiella, Bacteroides, enterococci", "Pip-tazo or meropenem; SOURCE CONTROL is paramount"],
+              ["Meningitis", "S. pneumoniae, N. meningitidis, Listeria (>50 y)", "Ceftriaxone + amoxicillin (Listeria cover) + dexamethasone"],
+              ["Necrotising fasciitis", "Group A strep, polymicrobial, Clostridia", "Surgical debridement; benzylpenicillin + clindamycin"],
+              ["Neutropenic sepsis", "Gram-negatives, viridans strep, fungi", "Pip-tazo within 1 h; G-CSF if prolonged"],
+              ["C. difficile", "Toxin-producing C. difficile", "Oral vancomycin / fidaxomicin; soap & water hand hygiene"],
+            ].map(([syndrome, bugs, drug]) => (
+              <tr key={syndrome as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{syndrome}</td>
+                <td className="p-2 text-muted-foreground">{bugs}</td>
+                <td className="p-2 text-muted-foreground">{drug}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Legionella is intracellular — β-lactams are ineffective; treat with macrolides or fluoroquinolones",

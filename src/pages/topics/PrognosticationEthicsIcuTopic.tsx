@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
@@ -488,6 +489,22 @@ const PrognosticationEthicsIcuTopic = () => {
         </div>
 
       </section>
+
+      <SynthesisBlock
+        title="ICU Decision-Making Framework"
+        subtitle="A pragmatic synthesis of when to escalate, when to limit, and how to communicate."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Trial of treatment</strong>: time-limited (typically 48–72 h) with explicit, measurable goals agreed with family. Re-review formally at the end of the trial — escalate, continue, or de-escalate.</li>
+          <li><strong>Best-interests decisions (Mental Capacity Act 2005)</strong>: when the patient lacks capacity, clinicians decide in their best interests considering past wishes, values, and family input — not what the family wants per se.</li>
+          <li><strong>Prognostic scoring (APACHE, SOFA)</strong>: validated for population outcomes only. Never the sole basis for individual treatment decisions.</li>
+          <li><strong>Withdrawal vs withholding</strong>: ethically and legally equivalent (UK case law). Avoid emotive distinction with families.</li>
+          <li><strong>Organ donation pathway</strong>: refer to SN-OD early when WLST or brainstem testing is being considered — referral does not commit to donation.</li>
+          <li><strong>Conflict resolution</strong>: second clinical opinion → ethics consultation → mediation → court (Re J/Charlie Gard pathway). Document each step.</li>
+          <li><strong>Communication</strong>: separate prognosis conversations from organ-donation conversations. Use clear language ("dying" / "death") rather than euphemisms.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient",

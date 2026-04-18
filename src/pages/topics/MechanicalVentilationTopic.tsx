@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { VentilatorWaveformsDiagram } from "@/components/diagrams/VentilatorWaveformsDiagram";
@@ -1167,6 +1168,41 @@ const MechanicalVentilationTopic = () => {
       </section>
 
       <VentilatorWaveformsGuideDiagram />
+
+      <SynthesisBlock
+        title="Mechanical Ventilation — At a Glance"
+        subtitle="A consolidated reference linking mode choice, lung-protective targets, weaning, and long-term complications."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Domain</th>
+              <th className="text-left p-2 text-foreground font-semibold">Target / Threshold</th>
+              <th className="text-left p-2 text-foreground font-semibold">Rationale</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Mode (initial)", "VCV (controlled) or PCV with set RR/FiO₂/PEEP", "VCV guarantees minute volume; PCV limits peak airway pressure"],
+              ["Tidal volume", "6 ml/kg PBW (ARDS); 6–8 ml/kg PBW (uninjured lung)", "ARDSNet 2000 — ↓ ventilator-induced lung injury & mortality"],
+              ["Plateau pressure", "<30 cmH₂O", "Surrogate for end-inspiratory transpulmonary pressure / overdistension"],
+              ["Driving pressure", "<15 cmH₂O", "Amato 2015 — strongest mortality predictor independent of Vt"],
+              ["PEEP", "5–24 cmH₂O titrated to oxygenation/compliance", "ALVEOLI / EXPRESS / LOV — moderate-high PEEP in moderate-severe ARDS"],
+              ["Weaning trigger", "FiO₂ ≤0.4, PEEP ≤8, awake, haemodynamically stable", "Daily SAT + SBT (ABC trial) — ↓ ventilator days"],
+              ["Tracheostomy timing", "Day 7–10 if extubation unlikely (TracMan)", "No mortality benefit from very early; consider patient comfort"],
+              ["VAP prevention bundle", "HOB 30–45°, oral chlorhexidine, daily SAT, SUP, VTE prophylaxis", "↓ VAP rates; quality marker"],
+              ["Post-ICU follow-up", "Screen for PICS at 2–3 months", "Cognitive, physical, psychological domains — early rehab improves outcomes"],
+            ].map(([domain, target, rationale]) => (
+              <tr key={domain as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{domain}</td>
+                <td className="p-2 text-muted-foreground">{target}</td>
+                <td className="p-2 text-muted-foreground">{rationale}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",

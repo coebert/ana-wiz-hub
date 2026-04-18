@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { acidBaseQuestions } from "@/data/quizzes";
@@ -381,6 +382,20 @@ const AcidBaseTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="ABG Interpretation — One-Page Summary"
+        subtitle="The five-step workflow that anchors every gas you'll be shown in an exam or on the unit."
+        variant="summary"
+      >
+        <ol className="space-y-2 list-decimal list-inside text-sm">
+          <li><strong>Acidaemia or alkalaemia?</strong> pH &lt;7.35 / &gt;7.45.</li>
+          <li><strong>Primary disturbance</strong>: PaCO₂ direction matches pH → respiratory; HCO₃⁻ direction matches pH → metabolic.</li>
+          <li><strong>Compensation appropriate?</strong> Apply Winters' formula (metabolic acidosis: PaCO₂ ≈ 1.5×HCO₃⁻ + 8 ± 2).</li>
+          <li><strong>Anion gap</strong> if metabolic acidosis: AG = (Na⁺) − (Cl⁻ + HCO₃⁻). Normal 8–12. Calculate Δ-ratio if raised.</li>
+          <li><strong>Stewart for unexplained acidosis</strong>: SID, A_TOT, PaCO₂. Useful for hyperchloraemic and dilutional acidoses missed by Henderson-Hasselbalch.</li>
+        </ol>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio",

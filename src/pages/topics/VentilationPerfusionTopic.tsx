@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
@@ -310,6 +311,20 @@ const VentilationPerfusionTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="V/Q Matching — Clinical Translation"
+        subtitle="What changes in V/Q look like at the bedside, and how to fix them."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Shunt (V/Q = 0)</strong>: blood passes unventilated alveoli — pneumonia, atelectasis, pulmonary oedema, ARDS. Hypoxaemia <em>not</em> corrected by 100% O₂. Treat: PEEP, recruitment, prone positioning.</li>
+          <li><strong>Dead space (V/Q = ∞)</strong>: ventilation without perfusion — PE, ↓CO, high PEEP, emphysema. Causes ↑PaCO₂ and ↑PetCO₂–PaCO₂ gradient. Treat the cause.</li>
+          <li><strong>Hypoxic pulmonary vasoconstriction (HPV)</strong>: redirects blood from poorly ventilated alveoli — abolished by volatile agents (high doses), Ca²⁺-channel blockers, vasodilators.</li>
+          <li><strong>West zones</strong>: zone 1 (PA &gt; Pa &gt; Pv — minimal flow, dead space) prevented by PEEP; zone 3 dominant in ICU patients.</li>
+          <li><strong>One-lung ventilation</strong>: shunt fraction 20–30%; HPV in non-ventilated lung reduces shunt — preserve with TIVA, avoid high FiO₂ over-prolonged periods.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)",

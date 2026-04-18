@@ -4,6 +4,7 @@ import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
@@ -326,6 +327,20 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Depth of Anaesthesia Monitoring — When and How"
+        subtitle="Indications, devices, and target ranges for processed EEG."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Strong indications</strong> (AAGBI/RCoA): TIVA + NMB, high awareness risk (cardiac, obstetric GA, trauma), elderly/frail (titrate to avoid burst suppression).</li>
+          <li><strong>BIS target 40–60</strong> for surgical anaesthesia. Values &lt;40 associated with delirium (ENGAGES trial — but no mortality benefit).</li>
+          <li><strong>Density spectral array (DSA)</strong>: visualises EEG power vs frequency over time — confirms anaesthetic state and detects burst suppression.</li>
+          <li><strong>Limitations</strong>: 30-s delay, ketamine/N₂O paradoxically ↑BIS, NMBs reduce frontal EMG artefact.</li>
+          <li><strong>Don't replace clinical assessment</strong>: end-tidal volatile concentration, MAC, autonomic signs all complement processed EEG.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth",

@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
@@ -390,6 +391,20 @@ const TransfusionCoagulationTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Transfusion & Coagulation — Bottom Line"
+        subtitle="The decision points that drive transfusion practice in the bleeding patient."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Massive haemorrhage</strong>: activate MHP, give 1:1:1 (RBC : FFP : platelets), tranexamic acid within 3 h (CRASH-2 / WOMAN), maintain Ca²⁺, temperature, pH.</li>
+          <li><strong>Restrictive transfusion</strong>: Hb threshold 70 g/L (80 g/L in cardiac/ACS) — TRICC / TRISS / TITRe2 evidence.</li>
+          <li><strong>Reverse anticoagulants</strong>: warfarin → PCC + vit K; dabigatran → idarucizumab; FXa inhibitors → andexanet or PCC.</li>
+          <li><strong>Major haemorrhage targets</strong>: Hb &gt;80, platelets &gt;50 (&gt;100 if CNS), fibrinogen &gt;1.5 g/L, INR &lt;1.5.</li>
+          <li><strong>Viscoelastic testing (TEG/ROTEM)</strong>: guides factor concentrate vs FFP vs cryoprecipitate vs platelets in real time.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS",

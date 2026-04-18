@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { organDonationQuestions } from "@/data/quizzes";
@@ -361,6 +362,20 @@ const OrganDonationTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Organ Donation — Pathway at a Glance"
+        subtitle="The two donation pathways, the triggers for SN-OD referral, and the donor optimisation bundle."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>DBD (donation after brainstem death)</strong>: requires confirmed brainstem death by 2 doctors at 2 separate tests; physiological support continued until retrieval.</li>
+          <li><strong>DCD (donation after circulatory death)</strong>: when WLST is planned but BSD will not occur — Maastricht III; controlled withdrawal in theatre/ICU with rapid retrieval after asystole + 5 min stand-off.</li>
+          <li><strong>Refer SN-OD early</strong>: any catastrophic brain injury where BSD testing or WLST is being considered. Referral does not commit to donation.</li>
+          <li><strong>Donor optimisation bundle (DBD)</strong>: lung-protective ventilation, MAP ≥65, CVP 6–10, hormonal therapy (methylprednisolone, vasopressin, T3 if cardiac instability), normothermia, glycaemic control.</li>
+          <li><strong>Family approach</strong>: collaborative between intensivist and SN-OD, separate from prognosis discussion. Honour past wishes (ODR, family knowledge).</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "DCD now accounts for ~60% of deceased organ donations in the UK — Category III (controlled) is most common",

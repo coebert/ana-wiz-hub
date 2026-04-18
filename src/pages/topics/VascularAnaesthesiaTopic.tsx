@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
@@ -247,6 +248,21 @@ const VascularAnaesthesiaTopic = () => {
           </ul>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Vascular Anaesthesia — Bottom Line"
+        subtitle="Key risk-stratification, monitoring and protective strategies for major vascular surgery."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Preoperative cardiac risk</strong>: RCRI / METS score; CPET if available. Continue β-blockers and statins; stop ACEi/ARB on the morning of surgery.</li>
+          <li><strong>EVAR vs open AAA</strong>: EVAR has lower 30-day mortality (EVAR-1) but no long-term survival benefit; open repair more durable in fit patients.</li>
+          <li><strong>Aortic cross-clamp</strong>: profound ↑afterload + ↓ distal perfusion. Use vasodilators (GTN), titrated cardiac filling, and monitor end-organ perfusion.</li>
+          <li><strong>Renal protection</strong>: maintain perfusion (MAP &gt;65), avoid nephrotoxins, judicious contrast — no benefit from mannitol or 'renal-dose' dopamine.</li>
+          <li><strong>Spinal cord protection (TAAA)</strong>: CSF drainage, MAP ≥80, motor-evoked potential monitoring, intercostal artery reimplantation.</li>
+          <li><strong>Carotid surgery</strong>: regional (deep + superficial cervical block) or GA with arterial line; awake testing during clamp gold standard for shunt decision.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Aortic cross-clamping: ↑ SVR/afterload above clamp; ischaemia below. Unclamp → ↓ SVR, acidosis, ↑ K⁺ — pre-load before release",

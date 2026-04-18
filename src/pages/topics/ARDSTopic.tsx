@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ardsQuestions } from "@/data/quizzes";
@@ -534,6 +535,40 @@ const ARDSTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="ARDS — Severity-Stratified Management"
+        subtitle="An at-a-glance map from the Berlin/Global definition to the corresponding evidence-based interventions."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Severity</th>
+              <th className="text-left p-2 text-foreground font-semibold">P/F (PEEP ≥5)</th>
+              <th className="text-left p-2 text-foreground font-semibold">Mortality</th>
+              <th className="text-left p-2 text-foreground font-semibold">Key Interventions</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Mild", "200–300", "~27%", "Vt 6 ml/kg PBW · plateau <30 · driving Δ <15 · moderate PEEP"],
+              ["Moderate", "100–200", "~32%", "+ Higher PEEP (LOV/EXPRESS) · consider proning if P/F <150"],
+              ["Severe", "<100", "~45%", "Proning ≥16 h (PROSEVA) · NMB if dyssynchrony · ECMO referral if refractory (EOLIA)"],
+            ].map(([severity, pf, mortality, action]) => (
+              <tr key={severity as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{severity}</td>
+                <td className="p-2 text-muted-foreground">{pf}</td>
+                <td className="p-2 text-muted-foreground">{mortality}</td>
+                <td className="p-2 text-muted-foreground">{action}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="text-xs text-muted-foreground mt-3">
+          Cross-cutting: low Vt + low driving pressure are the only ventilator interventions with consistent mortality benefit. Steroids (dexamethasone, COVID-era evidence) and conservative fluids (FACTT) improve secondary outcomes across all severities.
+        </p>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Berlin definition: mild (P/F 200-300), moderate (100-200), severe (<100) with PEEP ≥5",

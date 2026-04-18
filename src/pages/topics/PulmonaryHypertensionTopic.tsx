@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -280,6 +281,21 @@ const PulmonaryHypertensionTopic = () => {
             </div>
           </div>
         </section>
+
+        <SynthesisBlock
+          title="Pulmonary Hypertension — Perioperative Synthesis"
+          subtitle="Avoiding the right-ventricular death spiral in the patient with PH."
+          variant="summary"
+        >
+          <ul className="space-y-2 list-disc list-inside text-sm">
+            <li><strong>Diagnosis (2022 ESC/ERS)</strong>: mean PAP &gt;20 mmHg at rest by RHC. Group 1 (PAH) = PVR &gt;2 WU and PCWP ≤15.</li>
+            <li><strong>Avoid the killers</strong>: hypoxia, hypercapnia, acidosis, hypothermia — all ↑PVR. Maintain SVR with noradrenaline / vasopressin.</li>
+            <li><strong>Pulmonary vasodilators</strong>: inhaled NO (5–40 ppm) or epoprostenol — selectively reduce PVR without dropping SVR.</li>
+            <li><strong>RV support</strong>: dobutamine or milrinone for inotropy; vasopressin preserves coronary perfusion to RV.</li>
+            <li><strong>Anaesthetic technique</strong>: regional preferred where feasible; if GA — slow induction, etomidate + opioid; avoid N₂O (↑PVR), high airway pressures, dynamic hyperinflation.</li>
+            <li><strong>Refractory failure</strong>: VA-ECMO bridge; consider transfer to PH centre.</li>
+          </ul>
+        </SynthesisBlock>
 
         <KeyLearningPoints points={keyPoints} />
 

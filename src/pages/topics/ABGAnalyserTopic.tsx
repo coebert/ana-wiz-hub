@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { abgAnalyserQuestions } from "@/data/quizzes";
@@ -362,6 +363,38 @@ const ABGAnalyserTopic = () => {
           </div>
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Blood Gas Analyser — What's Measured vs Calculated"
+        subtitle="The headline distinction that drives most viva questions on this topic."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Parameter</th>
+              <th className="text-left p-2 text-foreground font-semibold">Status</th>
+              <th className="text-left p-2 text-foreground font-semibold">Method / Source</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["pH", "Measured", "Sanz electrode (glass H⁺-selective, vs Ag/AgCl reference) at 37 °C"],
+              ["PCO₂", "Measured", "Severinghaus electrode (CO₂ → bicarbonate buffer → pH change)"],
+              ["PO₂", "Measured", "Clark electrode (polarographic, O₂ reduction at platinum cathode)"],
+              ["HCO₃⁻ / BE", "Calculated", "Henderson-Hasselbalch from pH and PCO₂"],
+              ["SaO₂", "Calculated", "Standard O₂-Hb dissociation curve (or measured by co-oximeter)"],
+              ["COHb / MetHb", "Measured (co-oximeter)", "Multi-wavelength spectrophotometry"],
+            ].map(([p, status, method]) => (
+              <tr key={p as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{p}</td>
+                <td className="p-2 text-muted-foreground">{status}</td>
+                <td className="p-2 text-muted-foreground">{method}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "ABG directly measures pH (glass electrode), PO₂ (Clark), PCO₂ (Severinghaus). HCO₃⁻ and BE are calculated.",

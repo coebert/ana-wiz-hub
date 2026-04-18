@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { lungMechanicsQuiz } from "@/data/quizzes";
@@ -328,6 +329,40 @@ const LungMechanicsTopic = () => {
           </div>
         </section>
       </div>
+
+      <SynthesisBlock
+        title="Lung Mechanics — High-Yield Numbers"
+        subtitle="The values you'll be asked to reproduce in a viva."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Parameter</th>
+              <th className="text-left p-2 text-foreground font-semibold">Normal value</th>
+              <th className="text-left p-2 text-foreground font-semibold">Significance</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Tidal volume (Vt)", "6–8 ml/kg PBW", "Lung-protective in ARDS: 6 ml/kg"],
+              ["FRC", "30 ml/kg (~2.5 L)", "↓ supine, pregnancy, GA, obesity — risk of atelectasis"],
+              ["Closing capacity", "≈FRC by age 44 (supine) / 66 (erect)", "If CC > FRC → V/Q mismatch + hypoxaemia"],
+              ["Anatomical dead space", "2 ml/kg (~150 ml)", "Includes ETT/circuit in ventilated patient"],
+              ["Static compliance", "60–100 ml/cmH₂O", "↓ ARDS, fibrosis; ↑ emphysema"],
+              ["Airway resistance", "1–2 cmH₂O/L/s", "↑ asthma, COPD, ETT (esp. small bore)"],
+              ["DLCO", "20–30 ml/min/mmHg", "↓ emphysema, fibrosis, anaemia, PE"],
+              ["Time constant (τ)", "C × R ≈ 0.5 s", "3τ ≈ complete expiration; ↑ in obstructive disease"],
+            ].map(([p, val, sig]) => (
+              <tr key={p as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{p}</td>
+                <td className="p-2 text-muted-foreground">{val}</td>
+                <td className="p-2 text-muted-foreground">{sig}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.",

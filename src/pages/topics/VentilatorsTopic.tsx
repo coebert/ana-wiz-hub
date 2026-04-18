@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import BagInBottleDiagram from "@/components/diagrams/BagInBottleDiagram";
@@ -348,6 +349,21 @@ const VentilatorsTopic = () => {
           <RitchieWhistleDiagram />
         </div>
       </section>
+
+      <SynthesisBlock
+        title="Anaesthetic Machine — Safety Critical Features"
+        subtitle="The headline safety mechanisms tested across primary FRCA equipment vivas."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>O₂ failure warning (Ritchie whistle)</strong>: triggers when O₂ pressure &lt;200 kPa; powered by residual O₂ itself.</li>
+          <li><strong>O₂/N₂O ratio interlock (hypoxic guard)</strong>: prevents delivery of &lt;25% O₂.</li>
+          <li><strong>Pin-index safety system (PISS)</strong>: prevents fitting of wrong cylinder; non-interchangeable screw thread (NIST) for pipelines.</li>
+          <li><strong>Vaporiser safety</strong>: agent-specific fillers, anti-spillage interlock, calibrated for 100% agent vapour pressure at 20 °C.</li>
+          <li><strong>Scavenging</strong>: active (preferred — adjustable suction) or passive; protects theatre staff from chronic exposure.</li>
+          <li><strong>Pre-use check (AAGBI 2012)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment.</li>
+        </ul>
+      </SynthesisBlock>
 
       <KeyLearningPoints points={[
         "Ventilators are classified by power source (pneumatic vs electric), mechanism (MVD, bag-in-bottle, piston, turbine), and cycling (time, volume, pressure, flow)",

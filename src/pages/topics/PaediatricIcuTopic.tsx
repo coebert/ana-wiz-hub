@@ -1,5 +1,6 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -325,7 +326,22 @@ const PaediatricIcuTopic = () => {
           </div>
         </div>
 
-        <KeyLearningPoints points={[
+      <SynthesisBlock
+        title="Paediatric ICU — Critical Differences vs Adults"
+        subtitle="The size, physiology, and pharmacology adjustments that matter at the bedside."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Tube sizing</strong>: cuffed ETT internal diameter = (age/4) + 3.5; length = (age/2) + 12 (oral). Use length-based weight estimation (Broselow) for emergencies.</li>
+          <li><strong>Fluid resuscitation</strong>: 10–20 ml/kg isotonic crystalloid bolus, reassess after each — over-resuscitation harms (FEAST trial).</li>
+          <li><strong>Maintenance fluids</strong>: isotonic only (NICE 2015 — hyponatraemic deaths from hypotonic). Holliday-Segar 4-2-1 rule for rate.</li>
+          <li><strong>Sepsis</strong>: surviving Sepsis Children — antibiotics within 1 h, fluid &lt;40 ml/kg if no PICU access, vasopressor of choice noradrenaline (cold) or adrenaline (warm).</li>
+          <li><strong>Drug dosing</strong>: weight-based (mg/kg). Sugammadex 2–4 mg/kg, suxamethonium 1.5–2 mg/kg (higher than adults).</li>
+          <li><strong>Family-centred care</strong>: structured updates, consider parental presence at procedures and resuscitation.</li>
+        </ul>
+      </SynthesisBlock>
+
+      <KeyLearningPoints points={[
           "Children have HR-dependent cardiac output — bradycardia is a pre-arrest sign; treat with atropine 20 mcg/kg",
           "Paediatric septic shock: 10–20 ml/kg boluses with reassessment; adrenaline for cold shock, noradrenaline for warm shock",
           "Single ventricle physiology: target SpO₂ 75–85%; excessive O₂ causes pulmonary overcirculation and systemic steal",
