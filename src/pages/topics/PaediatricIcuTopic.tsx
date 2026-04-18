@@ -3,6 +3,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 
 const PaediatricIcuTopic = () => {
   return (
