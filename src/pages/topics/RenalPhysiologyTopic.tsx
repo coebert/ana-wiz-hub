@@ -169,6 +169,86 @@ const RenalPhysiologyTopic = () => {
           </div>
         </section>
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Measurement of Renal Function</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            GFR is the best overall index of renal function but cannot be measured directly. Instead, the
+            <strong> clearance</strong> of a marker substance is used: <em>Clearance = (U × V) / P</em>, where
+            U = urinary concentration, V = urine flow rate, P = plasma concentration. The ideal marker is freely
+            filtered, not reabsorbed, not secreted, not metabolised, not protein-bound, and non-toxic. No endogenous
+            substance fulfils all criteria perfectly, so each marker carries trade-offs between accuracy, practicality
+            and cost.
+          </p>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Marker</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Type</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Advantages</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Disadvantages</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Inulin</td>
+                  <td className="p-3 align-top text-foreground/80">Exogenous polysaccharide (fructose polymer)</td>
+                  <td className="p-3 align-top text-foreground/80">Gold standard. Freely filtered, not reabsorbed, not secreted, not metabolised, not protein-bound. True GFR.</td>
+                  <td className="p-3 align-top text-foreground/80">Requires continuous IV infusion + timed urine collections + bladder catheterisation. Expensive, impractical clinically — research only.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Creatinine</td>
+                  <td className="p-3 align-top text-foreground/80">Endogenous (muscle creatine breakdown)</td>
+                  <td className="p-3 align-top text-foreground/80">Cheap, readily available, freely filtered. Steady production in stable patients. Basis of eGFR (CKD-EPI, MDRD).</td>
+                  <td className="p-3 align-top text-foreground/80">~10–20% tubular secretion overestimates GFR (worse at low GFR). Affected by muscle mass, age, sex, race, diet (cooked meat), drugs (trimethoprim, cimetidine block secretion). Insensitive — plasma rises only after ~50% GFR loss.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Cystatin C</td>
+                  <td className="p-3 align-top text-foreground/80">Endogenous 13 kDa protein, produced by all nucleated cells</td>
+                  <td className="p-3 align-top text-foreground/80">Independent of muscle mass, age, sex. Detects early GFR decline ("creatinine-blind range"). Useful in elderly, children, cirrhosis, amputees.</td>
+                  <td className="p-3 align-top text-foreground/80">More expensive. Affected by thyroid dysfunction, steroids, smoking, inflammation, obesity. Reabsorbed and metabolised by PCT (so urinary clearance not usable — plasma only).</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Urea</td>
+                  <td className="p-3 align-top text-foreground/80">Endogenous (hepatic protein catabolism)</td>
+                  <td className="p-3 align-top text-foreground/80">Cheap, ubiquitous. Useful with creatinine to assess hydration (urea:creatinine ratio &gt; 100:1 suggests pre-renal AKI or GI bleed).</td>
+                  <td className="p-3 align-top text-foreground/80">40–50% tubular reabsorption (more in dehydration) underestimates GFR. Affected by protein intake, GI bleeding, catabolism, steroids, liver failure. Poor GFR marker.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">PAH (para-aminohippurate)</td>
+                  <td className="p-3 align-top text-foreground/80">Exogenous organic acid</td>
+                  <td className="p-3 align-top text-foreground/80">Almost completely cleared in single pass (filtered + secreted). Measures effective <strong>renal plasma flow</strong> (ERPF ≈ 600 ml/min) → calculate RBF and filtration fraction.</td>
+                  <td className="p-3 align-top text-foreground/80">Requires IV infusion + timed urine. Extraction ratio falls at high plasma levels and in renal disease. Research / physiology lab use only.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground"><sup>51</sup>Cr-EDTA / <sup>99m</sup>Tc-DTPA</td>
+                  <td className="p-3 align-top text-foreground/80">Exogenous radiolabelled chelates</td>
+                  <td className="p-3 align-top text-foreground/80">Accurate measured GFR from plasma disappearance curve — no urine collection. Reference standard in clinical practice (transplant work-up, chemotherapy dosing, living donor assessment).</td>
+                  <td className="p-3 align-top text-foreground/80">Radiation exposure (small). Requires nuclear medicine facility. Slow (3–4 h sampling). EDTA slightly underestimates, DTPA can be protein-bound.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">Iohexol</td>
+                  <td className="p-3 align-top text-foreground/80">Exogenous non-ionic iodinated contrast</td>
+                  <td className="p-3 align-top text-foreground/80">Non-radioactive alternative to Cr-EDTA. Accurate measured GFR by plasma clearance. Increasingly used in paediatrics and research.</td>
+                  <td className="p-3 align-top text-foreground/80">Risk of contrast nephropathy / anaphylaxis (rare at GFR doses). HPLC or X-ray fluorescence assay needed — not routine.</td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">NGAL, KIM-1, IL-18, [TIMP-2]·[IGFBP7]</td>
+                  <td className="p-3 align-top text-foreground/80">Tubular injury biomarkers (urine/plasma)</td>
+                  <td className="p-3 align-top text-foreground/80">Detect AKI hours before creatinine rises. NephroCheck® ([TIMP-2]·[IGFBP7]) FDA-approved for AKI risk stratification in ICU.</td>
+                  <td className="p-3 align-top text-foreground/80">Mark <em>injury</em>, not function — do not measure GFR. Expensive, limited availability, variable cut-offs. Not yet routine outside specialist ICU/cardiac surgery.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-foreground/80 leading-relaxed mt-4 text-sm">
+            <strong>Clinical bottom line:</strong> serum creatinine + eGFR (CKD-EPI) is the workhorse; add cystatin C
+            when creatinine is unreliable (extremes of muscle mass, cirrhosis, early CKD); use <sup>51</sup>Cr-EDTA or
+            iohexol when an accurate measured GFR is required (transplant donor, carboplatin dosing); use injury
+            biomarkers (NephroCheck) for early AKI prediction in high-risk perioperative/ICU patients.
+          </p>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
           <p className="text-foreground/90 leading-relaxed">
             The kidneys regenerate HCO₃⁻ and excrete H⁺. Daily acid load ≈ 1 mmol/kg H⁺. Three mechanisms: (1) HCO₃⁻
