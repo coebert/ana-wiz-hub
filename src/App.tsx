@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { ProgressProvider } from "@/contexts/ProgressContext";
 import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
 import { AuthProvider } from "@/hooks/useAuth";
@@ -121,7 +121,7 @@ const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"
 const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
 const PaediatricIcuTopic = lazy(() => import("./pages/topics/PaediatricIcuTopic"));
 const HaematologyIcuTopic = lazy(() => import("./pages/topics/HaematologyIcuTopic"));
-const ECMOTopic = lazy(() => import("./pages/topics/ECMOTopic"));
+
 const ToxicologyTopic = lazy(() => import("./pages/topics/ToxicologyTopic"));
 const InfectiousDiseaseIcuTopic = lazy(() => import("./pages/topics/InfectiousDiseaseIcuTopic"));
 const BronchospasticFailureTopic = lazy(() => import("./pages/topics/BronchospasticFailureTopic"));
@@ -283,7 +283,7 @@ const App = () => (
           <Route path="/intensive-care/antimicrobials-icu" element={<AntimicrobialsIcuTopic />} />
           <Route path="/intensive-care/paediatric-icu" element={<PaediatricIcuTopic />} />
           <Route path="/intensive-care/haematology-icu" element={<HaematologyIcuTopic />} />
-          <Route path="/intensive-care/ecmo" element={<ECMOTopic />} />
+          <Route path="/intensive-care/ecmo" element={<Navigate to="/intensive-care/circulatory-failure" replace />} />
           <Route path="/intensive-care/toxicology" element={<ToxicologyTopic />} />
           <Route path="/intensive-care/infectious-disease-icu" element={<InfectiousDiseaseIcuTopic />} />
           <Route path="/intensive-care/bronchospastic-failure" element={<BronchospasticFailureTopic />} />
