@@ -11,11 +11,25 @@ import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-introduction", label: "Introduction" },
+  { id: "toc-modes", label: "Modes" },
+  { id: "toc-lung-protective", label: "Lung-Protective" },
+  { id: "toc-aprv", label: "APRV" },
+  { id: "toc-advanced", label: "Advanced" },
+  { id: "toc-vap", label: "VAP / VAE" },
+  { id: "toc-tracheostomy", label: "Tracheostomy" },
+  { id: "toc-weaning", label: "Weaning & Extubation" },
+  { id: "toc-hfno-niv", label: "HFNO / NIV" },
+  { id: "toc-longterm", label: "Long-term" },
+];
+
 const MechanicalVentilationTopic = () => {
   return (
     <SectionLayout title="Mechanical Ventilation" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="toc-introduction" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
             Mechanical ventilation is the most common organ support in ICU. Understanding ventilator modes, lung-protective strategies, and weaning principles is essential for safe management of critically ill patients.
