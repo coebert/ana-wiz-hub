@@ -591,12 +591,12 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 10. INTEGRATED COMPARISON ================= */}
-        <div id="toc-synthesis" className="mb-10 scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Haemodynamic Effects — Side-by-Side Comparison</h2>
-          <p className="text-foreground/90 leading-relaxed mb-4">
-            Having reviewed each agent individually, this consolidated table summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change.
-          </p>
-          <div className="overflow-x-auto">
+        <div id="toc-synthesis" className="scroll-mt-24">
+          <SynthesisBlock
+            title="Haemodynamic Effects — Side-by-Side Comparison"
+            subtitle="Having reviewed each agent individually, this consolidated table summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change."
+            variant="table"
+          >
             <table className="min-w-full text-sm border border-border rounded-lg">
               <thead>
                 <tr className="bg-secondary/50">
@@ -637,11 +637,12 @@ const VasoactiveAgentsTopic = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">
-            ↑↑↑ = marked increase, ↑↑ = moderate increase, ↑ = mild increase, ↔ = no significant change, ↓ = decrease. Effects are dose-dependent and vary with clinical context. Agents grouped: vasopressors → inopressor → inotropes/inodilators.
-          </p>
+            <p className="text-xs text-muted-foreground mt-3">
+              ↑↑↑ = marked increase, ↑↑ = moderate increase, ↑ = mild increase, ↔ = no significant change, ↓ = decrease. Effects are dose-dependent and vary with clinical context. Agents grouped: vasopressors → inopressor → inotropes/inodilators.
+            </p>
+          </SynthesisBlock>
         </div>
+
 
         <KeyLearningPoints
           points={[
