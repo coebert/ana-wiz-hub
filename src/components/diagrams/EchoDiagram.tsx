@@ -455,6 +455,52 @@ const EchoDiagram = () => {
             return (
               <div className="animate-fade-in space-y-3">
                 <div className="bg-background rounded-lg border border-border p-2">{v.svg}</div>
+                {(v.id === "plax" || v.id === "a4c") && (
+                  <div className="p-2 rounded-lg border border-border bg-background space-y-2">
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <span className="text-[11px] font-semibold text-foreground">Colour Doppler overlay</span>
+                      <span className="text-[10px] text-muted-foreground">Red = towards probe · Blue = away · Mosaic = aliased (above Nyquist)</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {([
+                        { id: "off", label: "Off" },
+                        { id: "normal", label: "Normal flow" },
+                        { id: "mr", label: "MR" },
+                        { id: "ar", label: "AR" },
+                        { id: "tr", label: "TR" },
+                        { id: "ms", label: "MS" },
+                      ] as { id: DopplerJet; label: string }[]).map((opt) => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setDoppler(opt.id)}
+                          className={`px-2 py-1 rounded text-[10px] font-semibold border transition-all ${doppler === opt.id ? "border-primary bg-primary/15 text-foreground ring-1 ring-primary" : "border-border text-muted-foreground hover:border-primary/50"}`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                    {doppler !== "off" && (
+                      <div className="text-[11px] text-muted-foreground space-y-1 pt-1 border-t border-border">
+                        {doppler === "normal" && (
+                          <p><strong className="text-foreground">Normal flow:</strong> low-velocity laminar flow stays within the Nyquist limit, so colour stays pure red (towards probe) or pure blue (away). MV inflow appears red on PLAX/A4C in diastole; LVOT→Ao appears blue on PLAX in systole.</p>
+                        )}
+                        {doppler === "mr" && (
+                          <p><strong className="text-foreground">Mitral regurgitation:</strong> high-velocity systolic jet from LV→LA. Mosaic colours indicate aliasing (velocity exceeds Nyquist limit ≈ ½ PRF). <strong className="text-foreground">PISA</strong> (proximal isovelocity surface area) — flow converges into hemispheric shells on the LV side; measure the radius (r) at the aliasing velocity (Va) to calculate <em>EROA = 2πr² × Va / Vmax</em>. Severe MR: EROA ≥0.4 cm², jet area &gt;40% of LA, vena contracta ≥7 mm.</p>
+                        )}
+                        {doppler === "ar" && (
+                          <p><strong className="text-foreground">Aortic regurgitation:</strong> diastolic mosaic jet from aortic root back into the LV (PLAX or A5C). Severity by jet width / LVOT diameter ratio (&gt;65% = severe), vena contracta ≥6 mm, pressure half-time &lt;200 ms (severe), holodiastolic flow reversal in descending aorta.</p>
+                        )}
+                        {doppler === "tr" && (
+                          <p><strong className="text-foreground">Tricuspid regurgitation:</strong> systolic jet RV→RA on A4C. CW Doppler peak velocity (TR Vmax) used to estimate <strong className="text-foreground">PASP = 4·(TR Vmax)² + RAP</strong> (modified Bernoulli). Mild TR is present in ~70% of normal subjects and is the main route to non-invasive PASP estimation.</p>
+                        )}
+                        {doppler === "ms" && (
+                          <p><strong className="text-foreground">Mitral stenosis:</strong> narrow high-velocity diastolic mosaic jet through stenotic orifice (rheumatic in most cases). Severity by mean gradient (severe &gt;10 mmHg), pressure half-time (MVA = 220 / PHT; severe ≤1.0 cm²) and planimetered orifice area on PSAX.</p>
+                        )}
+                        <p className="pt-1 border-t border-border/60"><strong className="text-foreground">Nyquist limit:</strong> the maximum unambiguous velocity = ½ PRF. Velocities above this <em>alias</em> — red wraps to blue (or vice-versa), producing the characteristic mosaic. Lowering the Nyquist (colour scale) increases sensitivity to slow flow but worsens aliasing for high-velocity jets.</p>
+                      </div>
+                    )}
+                  </div>
+                )}
                 <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
                   <p className="font-bold text-foreground text-sm">{v.full} ({v.name})</p>
                   <div className="p-2 rounded bg-background border border-border">
