@@ -362,6 +362,7 @@ const ABGAnalyserTopic = () => {
         </div>
       </section>
 
+      <KeyLearningPoints points={[
         "ABG directly measures pH (glass electrode), PO₂ (Clark), PCO₂ (Severinghaus). HCO₃⁻ and BE are calculated.",
         "Clark electrode: amperometric, −0.6V polarizing voltage, Pt cathode reduces O₂ (O₂+2H₂O+4e⁻→4OH⁻), Ag anode oxidised (4Ag+4Cl⁻→4AgCl+4e⁻). Current ∝ PO₂.",
         "pH glass electrode: H⁺ exchanges with Li⁺/Na⁺ in hydrated gel layers — boundary potential follows Nernst equation (61.5 mV/pH unit at 37°C).",
