@@ -370,16 +370,6 @@ const AkiRrtTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">RRT Circuit Comparison</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            Compare CRRT and IHD circuits with animated blood and dialysate flow.
-          </p>
-          <div className="rounded-xl border border-border bg-card p-4">
-            <RRTCircuitDiagram />
-          </div>
-        </section>
-
-        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Indications for RRT in ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             No single absolute trigger — consider the clinical context. Common indications (mnemonic: <strong>AEIOU</strong>):
@@ -401,6 +391,24 @@ const AkiRrtTopic = () => {
                 <span className="text-sm text-muted-foreground">{item.cause}</span>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">RRT Modalities Overview</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Compare the major continuous and intermittent renal replacement modalities side-by-side.
+          </p>
+          <RRTModalitiesDiagram />
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">RRT Circuit Comparison</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Compare CRRT and IHD circuits with animated blood and dialysate flow.
+          </p>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <RRTCircuitDiagram />
           </div>
         </section>
 
@@ -438,7 +446,6 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <RRTModalitiesDiagram />
       </div>
 
       <KeyLearningPoints points={[
