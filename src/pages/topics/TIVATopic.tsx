@@ -264,6 +264,18 @@ const TIVATopic = () => {
           </div>
         </div>
 
+        {/* Recovery from infusion — synthesis: CSHT + decrement times */}
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Recovery — CSHT & Decrement Times</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Once you understand the models and targeting modes, the practical question is: <strong>how long until the patient wakes up?</strong> Context-sensitive half-times and decrement times quantify offset of effect after stopping an infusion of a given duration.
+          </p>
+          <div className="space-y-6">
+            <CSHTDiagram />
+            <DecrementTimeDiagram />
+          </div>
+        </div>
+
         {/* Practical TIVA Setup */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Practical TIVA Setup & Safety</h2>
