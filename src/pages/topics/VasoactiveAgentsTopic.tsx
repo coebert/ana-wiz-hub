@@ -8,6 +8,17 @@ import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { StickyTOC } from "@/components/StickyTOC";
+
+const tocItems = [
+  { id: "toc-foundations", label: "Foundations" },
+  { id: "toc-vasopressors", label: "Vasopressors" },
+  { id: "toc-inopressor", label: "Inopressor" },
+  { id: "toc-inotropes", label: "Inotropes & Inodilators" },
+  { id: "toc-vasodilators", label: "Vasodilators" },
+  { id: "toc-salvage", label: "Salvage Therapy" },
+  { id: "toc-synthesis", label: "Comparison Table" },
+];
 
 const VasoactiveAgentsTopic = () => {
   return (
@@ -18,9 +29,10 @@ const VasoactiveAgentsTopic = () => {
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
     >
+      <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
         {/* ================= 1. ORIENTATION ================= */}
-        <section className="mb-10">
+        <section id="toc-foundations" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
             Vasoactive and inotropic agents are drugs that alter vascular tone and/or cardiac function. They are essential in the management
@@ -215,7 +227,7 @@ const VasoactiveAgentsTopic = () => {
         </div>
 
         {/* ================= 5. INDIVIDUAL AGENTS — VASOPRESSORS ================= */}
-        <section className="mb-6">
+        <section id="toc-vasopressors" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Vasopressors</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Agents whose primary role is to raise systemic vascular resistance and mean arterial pressure, predominantly via α₁ or V₁ receptors.
@@ -293,7 +305,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 6. INOPRESSOR (bridge) ================= */}
-        <section className="mb-6">
+        <section id="toc-inopressor" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Inopressor</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Adrenaline straddles the vasopressor/inotrope categories — its effect depends on dose.
@@ -322,7 +334,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 7. INOTROPES & INODILATORS ================= */}
-        <section className="mb-6">
+        <section id="toc-inotropes" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Inotropes & Inodilators</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Agents whose primary role is to augment myocardial contractility (and often reduce afterload).
@@ -472,7 +484,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 8. VASODILATORS ================= */}
-        <section className="mb-6">
+        <section id="toc-vasodilators" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Vasodilators</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Agents that reduce vascular tone — used for hypertensive crises, controlled hypotension, acute heart failure, and myocardial ischaemia.
@@ -502,7 +514,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         {/* ================= 9. SALVAGE THERAPY ================= */}
-        <section className="mb-6">
+        <section id="toc-salvage" className="mb-6 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Salvage Therapy for Refractory Vasoplegia</h2>
           <p className="text-foreground/90 leading-relaxed mt-3">
             Non-adrenergic, non-vasopressinergic agents reserved for shock unresponsive to conventional therapy.
