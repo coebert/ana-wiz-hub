@@ -132,8 +132,7 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-Sensitive Half-Times</h2>
+        <section id="toc-csht" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed mb-4">
             The context-sensitive half-time (CSHT) is the time for plasma concentration to fall by 50% after stopping an infusion of a given duration. Unlike elimination half-life, CSHT accounts for redistribution between compartments and is therefore <strong>dependent on the "context" of infusion duration</strong> — making it far more clinically useful for predicting recovery from opioid infusions.
           </p>
