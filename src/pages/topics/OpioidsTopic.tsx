@@ -101,6 +101,9 @@ const OpioidsTopic = () => {
               for renal/hepatic impairment. Potent bradycardia risk — glycopyrrolate may be needed.
             </p>
           </div>
+          <div className="mt-4">
+            <RemifentanilPKDiagram />
+          </div>
         </section>
 
         <section className="mb-10">
@@ -233,16 +236,20 @@ const OpioidsTopic = () => {
               <li>• Ceiling effects on respiratory depression make these agents theoretically safer in overdose than pure agonists</li>
             </ul>
           </div>
-        </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Tolerance & Opioid-Induced Hyperalgesia</h2>
+          <div className="mt-6 space-y-6">
+            <BuprenorphinePharmacologyDiagram />
+            <MethadonePharmacologyDiagram />
+          </div>
+        </section>
           <p className="text-foreground/90 leading-relaxed">
             Tolerance and opioid-induced hyperalgesia (OIH) are distinct phenomena that both manifest as apparent reduction
             in opioid efficacy — but they have different mechanisms and require different management strategies.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-4 mt-4">
+          <div className="mt-4">
+            <OIHToleranceDiagram />
+          </div>
             <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
               <h3 className="font-semibold text-primary text-sm mb-2">Tolerance</h3>
               <p className="text-sm text-foreground/80 leading-relaxed">
@@ -437,11 +444,6 @@ const OpioidsTopic = () => {
         "Alfentanil: pKa 6.5 → 90% un-ionised → fastest onset despite lower lipid solubility than fentanyl.",
         "Naloxone: competitive antagonist, duration 30-60 min. Risk of re-narcotisation. Titrate carefully to avoid acute reversal."
       ]} />
-
-        <div>
-          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
-          <OpioidStructures />
-        </div>
 
         <QuizSection questions={opioidsQuiz} />
       <ReferencesList topicId="opioids" />
