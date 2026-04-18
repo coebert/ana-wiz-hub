@@ -198,6 +198,18 @@ const NeckTrianglesDiagram = () => {
             >
               {showSubdivisions ? "Show major only" : "Show subdivisions"}
             </button>
+            <button
+              onClick={() => setShowSutures(!showSutures)}
+              className={`text-xs px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
+            >
+              Sutures & detail
+            </button>
+            <button
+              onClick={() => setShowLabels(!showLabels)}
+              className={`text-xs px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
+            >
+              Labels
+            </button>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
