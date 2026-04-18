@@ -43,6 +43,47 @@ const CirculatoryFailureTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Illustrative Clinical Examples</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Hypovolaemic</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">22-year-old motorcyclist, blunt abdominal trauma.</p>
+              <p className="text-sm text-foreground/90">HR 135, BP 78/55, cool peripheries, CRT 4 s, lactate 6.2, Hb 72 g/L. FAST: free fluid in Morison's pouch — splenic laceration. <strong>Pattern:</strong> ↓preload, ↓CO, ↑SVR (compensatory), ↓CVP. <strong>Treat:</strong> haemorrhage control + balanced blood products (1:1:1), permissive hypotension until source controlled.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Cardiogenic</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">68-year-old with anterior STEMI 6 h ago.</p>
+              <p className="text-sm text-foreground/90">HR 110, BP 82/64, cold mottled legs, raised JVP, bibasal crackles, lactate 4.8, oliguric. Echo: LVEF 18%, akinetic anterior wall. <strong>Pattern:</strong> ↑CVP/PAOP, ↓↓CO, ↑SVR. <strong>Treat:</strong> emergency PCI, dobutamine ± noradrenaline, careful diuresis, consider IABP/Impella/VA-ECMO if refractory.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — septic</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">74-year-old with urosepsis from obstructed pyelonephritis.</p>
+              <p className="text-sm text-foreground/90">T 39.1, HR 128, BP 76/38 (MAP 51) despite 30 mL/kg crystalloid, warm flushed peripheries, bounding pulse, lactate 4.1, WCC 22. <strong>Pattern:</strong> ↓↓SVR, ↑/N CO ("warm shock"), ↓CVP. <strong>Treat:</strong> source control (urgent nephrostomy), broad-spectrum antibiotics within 1 h, noradrenaline to MAP ≥65, vasopressin if rising NA requirement, hydrocortisone if refractory.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — anaphylactic</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">35-year-old, IV teicoplanin at induction.</p>
+              <p className="text-sm text-foreground/90">Sudden ↓ETCO₂, peak airway pressure 38, urticaria, BP 50/30, tryptase rising. <strong>Pattern:</strong> profound vasodilation + capillary leak + bronchospasm. <strong>Treat:</strong> stop trigger, IM adrenaline 500 µg (or IV 50 µg boluses titrated), 100% O₂, IV fluid bolus, second-line: salbutamol, hydrocortisone, chlorphenamine.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Distributive — neurogenic</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">28-year-old, fall from height, complete C5 cord injury.</p>
+              <p className="text-sm text-foreground/90">HR 48 (loss of cardiac sympathetic outflow T1–T4), BP 78/40, warm dry skin <em>below</em> the lesion, priapism. <strong>Pattern:</strong> ↓SVR + bradycardia. <strong>Treat:</strong> cautious fluids, noradrenaline (α + modest β), atropine/glycopyrrolate or pacing for bradycardia, MAP target 85–90 for spinal cord perfusion.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Obstructive — massive PE</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">52-year-old, post-op day 4 hip replacement, sudden collapse.</p>
+              <p className="text-sm text-foreground/90">HR 140, BP 70/50, JVP elevated, ETCO₂ 1.8 kPa, S1Q3T3 on ECG, RV dilated on bedside echo with septal bowing. <strong>Pattern:</strong> ↑CVP, ↓CO, RV failure. <strong>Treat:</strong> systemic thrombolysis (alteplase 50 mg) or surgical/catheter embolectomy, noradrenaline to support coronary perfusion of the ischaemic RV, avoid fluid overload (worsens RV distension).</p>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-4 md:col-span-2">
+              <h3 className="font-serif font-semibold text-foreground mb-1">Obstructive — tension pneumothorax / tamponade</h3>
+              <p className="text-xs text-muted-foreground italic mb-2">Ventilated trauma patient becomes hypotensive 10 min after intubation.</p>
+              <p className="text-sm text-foreground/90">↑ peak airway pressure, tracheal deviation, absent breath sounds left, distended neck veins → <strong>tension pneumothorax</strong> — needle decompression then chest drain. Alternative: muffled heart sounds, equal air entry, pulsus paradoxus, swinging RA collapse on echo → <strong>tamponade</strong> — pericardiocentesis. <strong>Pattern:</strong> ↑CVP, ↓venous return, ↓CO, ↑SVR. Vasopressors and fluid are temporising only — definitive treatment is mechanical relief of the obstruction.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Assessment of Fluid Responsiveness</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Static measures (CVP, PAOP) are poor predictors. Dynamic indices are more reliable:
