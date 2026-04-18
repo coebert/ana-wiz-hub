@@ -14,6 +14,7 @@ import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagr
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
+import { EGFRCalculator } from "@/components/diagrams/EGFRCalculator";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
