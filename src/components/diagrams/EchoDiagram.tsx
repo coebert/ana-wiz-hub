@@ -39,6 +39,134 @@ const EchoDiagram = () => {
     </g>
   );
 
+  const DopplerDefs = () => (
+    <defs>
+      <radialGradient id="jet-red" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#ff2a2a" stopOpacity="0.95" />
+        <stop offset="60%" stopColor="#ff7a3a" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#ff2a2a" stopOpacity="0" />
+      </radialGradient>
+      <radialGradient id="jet-blue" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stopColor="#2a6dff" stopOpacity="0.95" />
+        <stop offset="60%" stopColor="#3acfff" stopOpacity="0.7" />
+        <stop offset="100%" stopColor="#2a6dff" stopOpacity="0" />
+      </radialGradient>
+      <linearGradient id="jet-mosaic" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#2a6dff" stopOpacity="0.9" />
+        <stop offset="25%" stopColor="#3acfff" stopOpacity="0.85" />
+        <stop offset="45%" stopColor="#7dfb6e" stopOpacity="0.85" />
+        <stop offset="65%" stopColor="#fff04a" stopOpacity="0.9" />
+        <stop offset="85%" stopColor="#ff7a3a" stopOpacity="0.9" />
+        <stop offset="100%" stopColor="#ff2a2a" stopOpacity="0.95" />
+      </linearGradient>
+      <radialGradient id="pisa-shell" cx="50%" cy="100%" r="80%">
+        <stop offset="0%" stopColor="#fff04a" stopOpacity="0" />
+        <stop offset="60%" stopColor="#fff04a" stopOpacity="0.85" />
+        <stop offset="100%" stopColor="#ff7a3a" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+  );
+
+  const DopplerScale = () => (
+    <g>
+      <rect x="350" y="55" width="6" height="55" fill="url(#jet-mosaic)" stroke="#fff8d0" strokeWidth="0.3" />
+      <text x="358" y="60" fontSize="5" fill="#ff5050" fontWeight="700">+0.6</text>
+      <text x="358" y="86" fontSize="5" fill="#fff8d0">0</text>
+      <text x="358" y="112" fontSize="5" fill="#3a8dff" fontWeight="700">−0.6</text>
+      <text x="358" y="120" fontSize="4" fill="#fff8d0" opacity="0.8">m/s Nyq</text>
+    </g>
+  );
+
+  const PlaxDoppler = ({ mode }: { mode: DopplerJet }) => {
+    if (mode === "off") return null;
+    return (
+      <g clipPath="url(#sector-clip)" style={{ mixBlendMode: "screen" }}>
+        {mode === "normal" && (
+          <>
+            <ellipse cx="215" cy="135" rx="22" ry="12" fill="url(#jet-red)" transform="rotate(-25 215 135)" />
+            <ellipse cx="295" cy="115" rx="20" ry="9" fill="url(#jet-blue)" transform="rotate(-15 295 115)" />
+            <text x="218" y="128" fontSize="5" fill="#fff8d0" fontWeight="700">MV inflow</text>
+            <text x="282" y="108" fontSize="5" fill="#fff8d0" fontWeight="700">LVOT→Ao</text>
+          </>
+        )}
+        {mode === "mr" && (
+          <>
+            <path d="M 252,150 Q 285,160 320,180 Q 305,195 280,195 Q 260,180 248,158 Z" fill="url(#jet-mosaic)" opacity="0.92" />
+            <path d="M 235,148 A 10,10 0 0 1 255,148 Z" fill="url(#pisa-shell)" />
+            <line x1="245" y1="148" x2="245" y2="138" stroke="#fff04a" strokeWidth="0.5" strokeDasharray="1 1" />
+            <text x="248" y="140" fontSize="5" fill="#fff04a" fontWeight="700">PISA r</text>
+            <text x="295" y="172" fontSize="6" fill="#fff8d0" fontWeight="700">MR jet</text>
+            <text x="295" y="180" fontSize="4" fill="#fff8d0" opacity="0.85">(mosaic = aliased)</text>
+          </>
+        )}
+        {mode === "ar" && (
+          <>
+            <path d="M 290,118 Q 270,135 240,160 Q 225,170 215,158 Q 235,135 270,115 Z" fill="url(#jet-mosaic)" opacity="0.9" />
+            <text x="225" y="155" fontSize="6" fill="#fff8d0" fontWeight="700">AR jet</text>
+            <text x="225" y="163" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, into LV)</text>
+          </>
+        )}
+        {mode === "ms" && (
+          <>
+            <path d="M 248,148 Q 235,160 220,172 Q 200,178 180,170 Q 200,160 230,150 Z" fill="url(#jet-mosaic)" opacity="0.92" />
+            <path d="M 240,152 A 9,9 0 0 0 258,152 Z" fill="url(#pisa-shell)" transform="rotate(180 249 152)" />
+            <text x="195" y="168" fontSize="6" fill="#fff8d0" fontWeight="700">MS jet</text>
+            <text x="195" y="176" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, narrow)</text>
+          </>
+        )}
+        {mode === "tr" && (
+          <text x="200" y="80" fontSize="6" fill="#fff8d0" fontWeight="700" textAnchor="middle">TR best seen on A4C</text>
+        )}
+        <DopplerScale />
+      </g>
+    );
+  };
+
+  const A4cDoppler = ({ mode }: { mode: DopplerJet }) => {
+    if (mode === "off") return null;
+    return (
+      <g clipPath="url(#sector-clip)" style={{ mixBlendMode: "screen" }}>
+        {mode === "normal" && (
+          <>
+            <ellipse cx="170" cy="180" rx="18" ry="10" fill="url(#jet-red)" />
+            <ellipse cx="225" cy="172" rx="15" ry="9" fill="url(#jet-red)" />
+            <text x="148" y="178" fontSize="5" fill="#fff8d0" fontWeight="700">MV in</text>
+            <text x="232" y="170" fontSize="5" fill="#fff8d0" fontWeight="700">TV in</text>
+          </>
+        )}
+        {mode === "mr" && (
+          <>
+            <path d="M 178,200 Q 175,212 175,222 Q 195,228 205,222 Q 200,210 192,200 Z" fill="url(#jet-mosaic)" opacity="0.92" />
+            <path d="M 175,198 A 8,8 0 0 1 191,198 Z" fill="url(#pisa-shell)" transform="rotate(180 183 198)" />
+            <text x="148" y="218" fontSize="6" fill="#fff8d0" fontWeight="700">MR jet</text>
+            <text x="148" y="225" fontSize="4" fill="#fff8d0" opacity="0.85">(into LA)</text>
+          </>
+        )}
+        {mode === "tr" && (
+          <>
+            <path d="M 222,193 Q 230,210 240,222 Q 248,225 245,210 Q 235,198 228,190 Z" fill="url(#jet-mosaic)" opacity="0.92" />
+            <text x="252" y="215" fontSize="6" fill="#fff8d0" fontWeight="700">TR jet</text>
+            <text x="252" y="222" fontSize="4" fill="#fff8d0" opacity="0.85">→ PASP (Bernoulli)</text>
+          </>
+        )}
+        {mode === "ms" && (
+          <>
+            <path d="M 178,196 Q 168,180 158,165 Q 148,150 155,140 Q 175,160 188,190 Z" fill="url(#jet-mosaic)" opacity="0.92" />
+            <text x="130" y="158" fontSize="6" fill="#fff8d0" fontWeight="700">MS jet</text>
+            <text x="130" y="165" fontSize="4" fill="#fff8d0" opacity="0.85">(diastolic, narrow)</text>
+          </>
+        )}
+        {mode === "ar" && (
+          <>
+            <text x="160" y="120" fontSize="6" fill="#fff8d0" fontWeight="700">AR not well seen on A4C</text>
+            <text x="160" y="128" fontSize="5" fill="#fff8d0" opacity="0.85">— use PLAX / A5C</text>
+          </>
+        )}
+        <DopplerScale />
+      </g>
+    );
+  };
+
   const views = [
     {
       id: "plax",
