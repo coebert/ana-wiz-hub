@@ -110,21 +110,22 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           </div>
         </div>
 
-        {/* Interactive EEG Trace Diagram */}
-        <EEGTraceDiagram />
-
-        {/* DSA Spectrogram Diagram */}
-        <DSASpectrogramDiagram />
-
-        {/* BIS Trend Simulator */}
-        <BISTrendDiagram />
-
-        {/* EEG Fundamentals */}
+        {/* EEG Fundamentals — foundations before drilling into traces */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">EEG Fundamentals for Anaesthetists</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             All processed EEG monitors derive their output from raw electroencephalography. Understanding the key EEG parameters helps interpret monitor values and troubleshoot artefacts.
           </p>
+
+          <div className="my-6">
+            <EEGTraceDiagram />
+          </div>
+          <div className="my-6">
+            <DSASpectrogramDiagram />
+          </div>
+          <div className="my-6">
+            <BISTrendDiagram />
+          </div>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
