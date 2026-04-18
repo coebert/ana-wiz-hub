@@ -8,6 +8,7 @@ import { FlowVolumeLoopDiagram } from "@/components/diagrams/FlowVolumeLoopDiagr
 import { PVLoopWOBDiagram } from "@/components/diagrams/PVLoopWOBDiagram";
 import { LungVolumesDiagram } from "@/components/diagrams/LungVolumesDiagram";
 import { DeadSpaceDiagram } from "@/components/diagrams/DeadSpaceDiagram";
+import { FowlersMethodDiagram } from "@/components/diagrams/FowlersMethodDiagram";
 import { AlveolarGasEquationDiagram } from "@/components/diagrams/AlveolarGasEquationDiagram";
 import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 import { ClosingVolumeDiagram } from "@/components/diagrams/ClosingVolumeDiagram";
@@ -141,6 +142,57 @@ const LungMechanicsTopic = () => {
           </p>
           <div className="bg-card rounded-xl border border-border p-4">
             <DeadSpaceDiagram />
+          </div>
+
+          <h3 className="text-xl font-serif font-semibold text-foreground mt-8 mb-3">
+            Fowler's Method — Measuring Anatomical Dead Space
+          </h3>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Described by <strong>Ward Fowler in 1948</strong>, this single-breath nitrogen washout remains the
+            reference technique for <strong>anatomical</strong> dead space (the volume of conducting airways from the
+            lips to the respiratory bronchioles, where no gas exchange occurs). Anatomical V<sub>D</sub> ≈
+            <strong> 2 mL/kg</strong> (~150 mL in a 70 kg adult).
+          </p>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            <strong>Method:</strong> the subject takes a single vital-capacity breath of <strong>100% O₂</strong>
+            (washing N₂ out of the conducting airways but not the alveoli, where N₂ is diluted by O₂ from the FRC).
+            They then exhale slowly through a <em>rapid-response nitrogen analyser</em> (originally an emission
+            spectrometer; now mass spectrometry) while exhaled volume is recorded simultaneously by a spirometer or
+            integrated pneumotachograph. Plotting expired [N₂] against exhaled volume gives the
+            <em> nitrogen expirogram</em> with three characteristic phases:
+          </p>
+          <ul className="list-disc pl-6 text-foreground/90 mb-4 space-y-1">
+            <li><strong>Phase I</strong> — pure dead-space gas (100% O₂, [N₂] = 0).</li>
+            <li><strong>Phase II</strong> — rapid S-shaped rise as mixed dead-space and alveolar gas reaches the analyser.</li>
+            <li><strong>Phase III</strong> — alveolar plateau. In health it is nearly flat; in disease (COPD, asthma, ageing) it slopes upwards owing to <em>uneven emptying</em> of slow alveolar compartments containing more N₂.</li>
+          </ul>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Anatomical dead space is found graphically by the <strong>equal-area construction</strong>: a vertical
+            line is drawn through phase II such that the area <em>between the curve and the plateau on its left</em>
+            (triangle A) equals the area <em>between the plateau and the curve on its right</em> (triangle B). The
+            volume on the x-axis at that vertical is V<sub>D(anat)</sub>. Geometrically, this is the volume at which
+            50% of the gas reaching the analyser is of alveolar origin.
+          </p>
+          <div className="bg-card rounded-xl border border-border p-4">
+            <FowlersMethodDiagram />
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 mt-4 text-sm">
+            <div className="rounded-lg border border-border bg-muted/30 p-3">
+              <p className="font-semibold text-foreground mb-1">Fowler vs Bohr — what does each measure?</p>
+              <ul className="list-disc pl-4 text-foreground/85 space-y-1">
+                <li><strong>Fowler</strong> → <em>anatomical</em> V<sub>D</sub> (volume of conducting airways).</li>
+                <li><strong>Bohr</strong> (V<sub>D</sub>/V<sub>T</sub> = (PaCO₂ − P<sub>E</sub>CO₂)/PaCO₂) → <em>physiological</em> V<sub>D</sub> (anatomical + alveolar dead space).</li>
+                <li>Difference between them = <strong>alveolar dead space</strong>, normally negligible; raised in PE, hypotension, IPPV with high airway pressures.</li>
+              </ul>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/30 p-3">
+              <p className="font-semibold text-foreground mb-1">Factors that change anatomical V<sub>D</sub></p>
+              <ul className="list-disc pl-4 text-foreground/85 space-y-1">
+                <li>↑ Posture (standing &gt; supine), large tidal volume, neck extension, bronchodilators, age.</li>
+                <li>↓ Tracheostomy / cricothyroidotomy (bypasses upper-airway V<sub>D</sub>; reduces it by ~50%).</li>
+                <li>Apparatus dead space (HME, catheter mount, mask) <em>adds</em> to V<sub>D</sub> — significant in paediatrics where V<sub>T</sub> is small.</li>
+              </ul>
+            </div>
           </div>
         </section>
       </div>
