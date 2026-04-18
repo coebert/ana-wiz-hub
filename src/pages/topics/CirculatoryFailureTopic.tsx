@@ -6,6 +6,7 @@ import { circulatoryFailureQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
 import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
+import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -174,6 +175,12 @@ const CirculatoryFailureTopic = () => {
             <li><strong>Durable LVAD:</strong> maximal unloading — loop collapses to a small triangle or vertical line at low volume. LVEDP minimal; the native heart contributes essentially no stroke work.</li>
           </ul>
           <MCSPressureVolumeLoopDiagram />
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">VA-ECMO circuit in detail</h3>
+          <p className="text-foreground/90 leading-relaxed text-sm mb-3">
+            VA-ECMO is the most powerful form of MCS — it provides full cardiopulmonary support by draining venous blood, oxygenating it through a membrane oxygenator, and returning it to the systemic arterial system. The peripheral femoro-femoral configuration is the most common emergency setup but produces two unique haemodynamic problems shown below.
+          </p>
+          <VAECMOCircuitDiagram />
         </div>
       </section>
 
