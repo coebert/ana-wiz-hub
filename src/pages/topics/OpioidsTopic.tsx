@@ -347,8 +347,7 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Naloxone</h2>
+        <section id="toc-naloxone" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min IV. Duration 30–60 min (shorter than
             most opioids → risk of re-narcotisation). Pulmonary oedema and cardiovascular collapse can occur with excessive
