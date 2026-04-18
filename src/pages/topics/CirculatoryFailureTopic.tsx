@@ -4,6 +4,7 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { circulatoryFailureQuestions } from "@/data/quizzes";
 import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenessDiagram";
+import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -59,6 +60,14 @@ const CirculatoryFailureTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Caused by acute MI, myocarditis, cardiomyopathy, valvular emergency. Management: early revascularisation (PCI for STEMI), inotropes (dobutamine, milrinone), vasopressors if needed (noradrenaline). Consider mechanical circulatory support (IABP, Impella, VA-ECMO) for refractory cases. Avoid excessive fluids (may worsen pulmonary oedema).
           </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Mechanical Circulatory Support (MCS)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            When pharmacological therapy fails to restore adequate perfusion in cardiogenic shock, MCS devices can directly augment cardiac output, unload the failing left ventricle, and buy time for recovery, decision, transplantation, or destination therapy. The three principal LV-support devices differ fundamentally in <em>how</em> they generate flow and <em>how much</em> they unload the ventricle.
+          </p>
+          <MechanicalCirculatorySupportDiagram />
         </div>
       </section>
 
