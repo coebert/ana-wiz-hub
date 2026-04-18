@@ -118,6 +118,7 @@ const ENTAnaesthesiaTopic = () => {
         "Laser airway surgery: FiO₂ ≤0.3, avoid N₂O, laser-safe tube. Airway fire protocol: stop gas, remove tube, flood with saline",
         "Middle ear surgery: avoid N₂O (middle ear pressure). TIVA preferred. Avoid maintenance paralysis (facial nerve monitoring)",
         "Stridor at rest = >50% obstruction. Inspiratory = supraglottic, biphasic = glottic. Heliox reduces turbulent flow resistance",
+        "Laryngectomy: rehearse the tube hand-over to the surgical field; post-op the patient is a neck-breather — bag-mask via face will not work, ventilate via the stoma",
       ]} />
       <QuizSection questions={entAnaesthesiaQuestions} />
       <ReferencesList topicId="ent-anaesthesia" />
