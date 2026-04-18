@@ -6,6 +6,7 @@ import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
+import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -90,6 +91,7 @@ const ENTAnaesthesiaTopic = () => {
             <li><strong>IMF (intermaxillary fixation)</strong>: jaws wired shut post-op. Wire cutters must accompany patient at all times. Risk of aspiration if vomiting — antiemetics essential</li>
             <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid hypotension/vasopressors (flap perfusion). Maintain normothermia, Hb &gt;80 g/L, adequate hydration. Flap monitoring post-op</li>
           </ul>
+          <LeFortFractureDiagram />
         </div>
 
         <div>
