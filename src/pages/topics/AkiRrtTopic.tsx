@@ -415,7 +415,7 @@ const AkiRrtTopic = () => {
           <RRTModalitiesDiagram />
         </section>
 
-        <section className="mb-10">
+        <section id="toc-circuit" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Circuit Comparison</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare CRRT and IHD circuits with animated blood and dialysate flow.
