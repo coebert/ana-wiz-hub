@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
+type DopplerJet =
+  | "off"
+  | "normal"
+  | "mr"
+  | "ar"
+  | "tr"
+  | "ms";
+
 const EchoDiagram = () => {
   const [selectedView, setSelectedView] = useState<string | null>(null);
   const [selectedMeasurement, setSelectedMeasurement] = useState<string | null>(null);
   const [selectedFUSE, setSelectedFUSE] = useState<number | null>(null);
+  const [doppler, setDoppler] = useState<DopplerJet>("off");
 
   // Reusable ultrasound sector frame — mimics the fan-shaped image with depth markers
   const SectorFrame = () => (
