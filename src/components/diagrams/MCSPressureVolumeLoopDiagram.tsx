@@ -281,19 +281,19 @@ export const MCSPressureVolumeLoopDiagram = () => {
 
           {/* ESPVR (baseline) — dashed grey */}
           <path d={espvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="4 3" fill="none" />
-          <text x={W - PAD.right - 5} y={yOf(espvrP(220, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
+          <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.baseline)) - 5} textAnchor="end" fontSize="9" className="fill-muted-foreground">ESPVR (normal)</text>
 
           {/* ESPVR (shock) — dashed red */}
           {(active.has("shock") || active.has("iabp") || active.has("impella") || active.has("ecmo") || active.has("lvad")) && (
             <>
               <path d={espvrShockPath} stroke="hsl(0 70% 50%)" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.6" />
-              <text x={W - PAD.right - 5} y={yOf(espvrP(220, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
+              <text x={W - PAD.right - 5} y={yOf(espvrP(240, STATES.shock)) - 5} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_50%)]" opacity="0.8">ESPVR (shock)</text>
             </>
           )}
 
           {/* EDPVR */}
           <path d={edpvrPath} stroke="hsl(215 25% 40%)" strokeWidth="1" strokeDasharray="2 2" fill="none" />
-          <text x={xOf(210)} y={yOf(edpvrP(210, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
+          <text x={xOf(230)} y={yOf(edpvrP(230, STATES.shock)) - 4} fontSize="9" className="fill-muted-foreground">EDPVR</text>
 
           {/* Loops */}
           {ALL_STATES.filter((s) => active.has(s)).map((s) => {
