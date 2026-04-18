@@ -86,8 +86,13 @@ export const RAASCascadeDiagram = () => {
   const hl = (id: NodeId) => active === id;
   const dim = (id: NodeId) => active !== null && active !== id;
 
-  const boxW = 110;
-  const drugW = 80;
+  // Layout constants (viewBox 640 × 640)
+  // Central cascade column at x=320 (boxes 260-380), drugs on left col, effects on right
+  const cx = 320;        // cascade centre
+  const boxW = 120;
+  const boxH = 38;
+  const drugX = 20;      // drugs left column
+  const drugW = 110;
 
   return (
     <div className="space-y-4">
@@ -110,7 +115,7 @@ export const RAASCascadeDiagram = () => {
         ))}
       </div>
 
-      <svg viewBox="0 0 520 540" className="w-full" role="img" aria-label="RAAS cascade diagram">
+      <svg viewBox="0 0 640 660" className="w-full" role="img" aria-label="RAAS cascade diagram">
         <defs>
           <marker id="raasArr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
             <path d="M0,0 L7,2.5 L0,5" fill="hsl(var(--muted-foreground))" opacity="0.5" />
@@ -118,67 +123,69 @@ export const RAASCascadeDiagram = () => {
           <marker id="raasArrRed" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
             <path d="M0,0 L7,2.5 L0,5" fill="hsl(0 55% 50%)" />
           </marker>
-          <marker id="raasArrGreen" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
-            <path d="M0,0 L7,2.5 L0,5" fill="hsl(150 55% 40%)" />
+          <marker id="raasArrBlue" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L7,2.5 L0,5" fill="hsl(210 50% 50%)" />
           </marker>
         </defs>
 
-        {/* ===== MAIN CASCADE (vertical center) ===== */}
-        {/* Angiotensinogen */}
+        {/* ===== MAIN CASCADE (vertical centre, x = 260..380) ===== */}
+        {/* Angiotensinogen y=10..48 */}
         <g className="cursor-pointer" onClick={toggle("angiotensinogen")} opacity={dim("angiotensinogen") ? 0.3 : 1}>
-          <rect x={205} y={10} width={boxW} height={36} rx={6}
+          <rect x={cx - boxW / 2} y={10} width={boxW} height={boxH} rx={6}
             fill={hl("angiotensinogen") ? "hsl(30 50% 50%/0.2)" : "hsl(30 50% 50%/0.08)"}
             stroke="hsl(30 50% 50%)" strokeWidth={hl("angiotensinogen") ? 2 : 1} />
-          <text x={260} y={26} fontSize="8" fill="hsl(30 50% 50%)" textAnchor="middle" fontWeight="700">Angiotensinogen</text>
-          <text x={260} y={38} fontSize="5.5" fill="hsl(30 50% 50%)" textAnchor="middle" opacity="0.6">α₂-globulin (liver)</text>
+          <text x={cx} y={27} fontSize="9" fill="hsl(30 50% 50%)" textAnchor="middle" fontWeight="700">Angiotensinogen</text>
+          <text x={cx} y={40} fontSize="6" fill="hsl(30 50% 50%)" textAnchor="middle" opacity="0.7">α₂-globulin (liver)</text>
         </g>
 
-        {/* Arrow + Renin label */}
-        <line x1={260} y1={46} x2={260} y2={80} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("renin") ? 0.2 : 0.7} />
+        {/* Arrow + Renin label (label placed RIGHT of arrow at x=400) */}
+        <line x1={cx} y1={48} x2={cx} y2={92} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("renin") ? 0.2 : 0.7} />
         <g className="cursor-pointer" onClick={toggle("renin")} opacity={dim("renin") ? 0.3 : 1}>
-          <rect x={265} y={53} width={55} height={18} rx={4}
+          <rect x={395} y={58} width={70} height={20} rx={4}
             fill={hl("renin") ? "hsl(260 55% 55%/0.2)" : "hsl(260 55% 55%/0.08)"}
             stroke="hsl(260 55% 55%)" strokeWidth={hl("renin") ? 1.5 : 0.8} />
-          <text x={292} y={66} fontSize="7" fill="hsl(260 55% 55%)" textAnchor="middle" fontWeight="600">Renin</text>
+          <text x={430} y={72} fontSize="8" fill="hsl(260 55% 55%)" textAnchor="middle" fontWeight="600">Renin</text>
+          <line x1={395} y1={68} x2={cx + boxW / 2 + 2} y2={68} stroke="hsl(260 55% 55%)" strokeWidth="0.6" strokeDasharray="2 2" opacity="0.5" />
         </g>
 
-        {/* ANG I */}
+        {/* ANG I y=92..130 */}
         <g className="cursor-pointer" onClick={toggle("ang1")} opacity={dim("ang1") ? 0.3 : 1}>
-          <rect x={205} y={82} width={boxW} height={36} rx={6}
+          <rect x={cx - boxW / 2} y={94} width={boxW} height={boxH} rx={6}
             fill={hl("ang1") ? "hsl(270 45% 50%/0.2)" : "hsl(270 45% 50%/0.08)"}
             stroke="hsl(270 45% 50%)" strokeWidth={hl("ang1") ? 2 : 1} />
-          <text x={260} y={98} fontSize="8" fill="hsl(270 45% 50%)" textAnchor="middle" fontWeight="700">Angiotensin I</text>
-          <text x={260} y={110} fontSize="5.5" fill="hsl(270 45% 50%)" textAnchor="middle" opacity="0.6">decapeptide (inactive)</text>
+          <text x={cx} y={111} fontSize="9" fill="hsl(270 45% 50%)" textAnchor="middle" fontWeight="700">Angiotensin I</text>
+          <text x={cx} y={124} fontSize="6" fill="hsl(270 45% 50%)" textAnchor="middle" opacity="0.7">decapeptide (inactive)</text>
         </g>
 
-        {/* Arrow + ACE label */}
-        <line x1={260} y1={118} x2={260} y2={155} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("ace") ? 0.2 : 0.7} />
+        {/* Arrow + ACE label (right) */}
+        <line x1={cx} y1={132} x2={cx} y2={176} stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("ace") ? 0.2 : 0.7} />
         <g className="cursor-pointer" onClick={toggle("ace")} opacity={dim("ace") ? 0.3 : 1}>
-          <rect x={265} y={125} width={65} height={18} rx={4}
+          <rect x={395} y={142} width={80} height={20} rx={4}
             fill={hl("ace") ? "hsl(0 50% 50%/0.2)" : "hsl(0 50% 50%/0.08)"}
             stroke="hsl(0 50% 50%)" strokeWidth={hl("ace") ? 1.5 : 0.8} />
-          <text x={297} y={138} fontSize="7" fill="hsl(0 50% 50%)" textAnchor="middle" fontWeight="600">ACE (lung)</text>
+          <text x={435} y={156} fontSize="8" fill="hsl(0 50% 50%)" textAnchor="middle" fontWeight="600">ACE (lung)</text>
+          <line x1={395} y1={152} x2={cx + boxW / 2 + 2} y2={152} stroke="hsl(0 50% 50%)" strokeWidth="0.6" strokeDasharray="2 2" opacity="0.5" />
         </g>
 
-        {/* ANG II */}
+        {/* ANG II y=178..216 */}
         <g className="cursor-pointer" onClick={toggle("ang2")} opacity={dim("ang2") ? 0.3 : 1}>
-          <rect x={205} y={157} width={boxW} height={36} rx={6}
+          <rect x={cx - boxW / 2} y={178} width={boxW} height={boxH} rx={6}
             fill={hl("ang2") ? "hsl(0 60% 50%/0.2)" : "hsl(0 60% 50%/0.08)"}
             stroke="hsl(0 60% 50%)" strokeWidth={hl("ang2") ? 2 : 1} />
-          <text x={260} y={173} fontSize="8" fill="hsl(0 60% 50%)" textAnchor="middle" fontWeight="700">Angiotensin II</text>
-          <text x={260} y={185} fontSize="5.5" fill="hsl(0 60% 50%)" textAnchor="middle" opacity="0.6">octapeptide (active)</text>
+          <text x={cx} y={195} fontSize="9" fill="hsl(0 60% 50%)" textAnchor="middle" fontWeight="700">Angiotensin II</text>
+          <text x={cx} y={208} fontSize="6" fill="hsl(0 60% 50%)" textAnchor="middle" opacity="0.7">octapeptide (active)</text>
         </g>
 
         {/* ===== BRANCHING FROM ANG II ===== */}
-        {/* AT₁ — left branch */}
-        <path d="M 220 193 Q 220 210 150 220 Q 100 228 100 240" fill="none"
-          stroke="hsl(0 55% 48%)" strokeWidth="1" markerEnd="url(#raasArrRed)" opacity={dim("at1") ? 0.2 : 0.5} />
+        {/* AT₁ — left branch — box x=160..300, y=250..360 */}
+        <path d="M 280 216 Q 260 235 240 250" fill="none"
+          stroke="hsl(0 55% 48%)" strokeWidth="1.2" markerEnd="url(#raasArrRed)" opacity={dim("at1") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("at1")} opacity={dim("at1") ? 0.3 : 1}>
-          <rect x={40} y={242} width={120} height={100} rx={6}
+          <rect x={160} y={252} width={140} height={108} rx={6}
             fill={hl("at1") ? "hsl(0 55% 48%/0.15)" : "hsl(0 55% 48%/0.05)"}
             stroke="hsl(0 55% 48%)" strokeWidth={hl("at1") ? 1.5 : 0.8} />
-          <text x={100} y={256} fontSize="7.5" fill="hsl(0 55% 48%)" textAnchor="middle" fontWeight="700">AT₁ Receptor</text>
-          <text x={100} y={266} fontSize="5" fill="hsl(0 55% 48%)" textAnchor="middle" opacity="0.5">(Gq → PLC → ↑Ca²⁺)</text>
+          <text x={230} y={268} fontSize="8.5" fill="hsl(0 55% 48%)" textAnchor="middle" fontWeight="700">AT₁ Receptor</text>
+          <text x={230} y={279} fontSize="5.5" fill="hsl(0 55% 48%)" textAnchor="middle" opacity="0.6">(Gq → PLC → ↑Ca²⁺)</text>
           {[
             "• Vasoconstriction",
             "• ↑ Aldosterone",
@@ -187,118 +194,114 @@ export const RAASCascadeDiagram = () => {
             "• Proximal Na⁺ reabsorption",
             "• Cardiac hypertrophy",
           ].map((t, i) => (
-            <text key={i} x={50} y={280 + i * 10} fontSize="5" fill="hsl(0 50% 48%)" opacity="0.7">{t}</text>
+            <text key={i} x={172} y={295 + i * 10} fontSize="5.5" fill="hsl(0 50% 48%)" opacity="0.75">{t}</text>
           ))}
         </g>
 
-        {/* AT₂ — right branch */}
-        <path d="M 300 193 Q 300 210 370 220 Q 420 228 420 240" fill="none"
-          stroke="hsl(210 50% 50%)" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("at2") ? 0.2 : 0.5} />
+        {/* AT₂ — right branch — box x=470..610, y=250..340 */}
+        <path d="M 360 216 Q 410 235 470 252" fill="none"
+          stroke="hsl(210 50% 50%)" strokeWidth="1.2" markerEnd="url(#raasArrBlue)" opacity={dim("at2") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("at2")} opacity={dim("at2") ? 0.3 : 1}>
-          <rect x={360} y={242} width={120} height={80} rx={6}
+          <rect x={470} y={254} width={140} height={88} rx={6}
             fill={hl("at2") ? "hsl(210 50% 50%/0.15)" : "hsl(210 50% 50%/0.05)"}
             stroke="hsl(210 50% 50%)" strokeWidth={hl("at2") ? 1.5 : 0.8} />
-          <text x={420} y={256} fontSize="7.5" fill="hsl(210 50% 50%)" textAnchor="middle" fontWeight="700">AT₂ Receptor</text>
-          <text x={420} y={266} fontSize="5" fill="hsl(210 50% 50%)" textAnchor="middle" opacity="0.5">(counter-regulatory)</text>
+          <text x={540} y={270} fontSize="8.5" fill="hsl(210 50% 50%)" textAnchor="middle" fontWeight="700">AT₂ Receptor</text>
+          <text x={540} y={281} fontSize="5.5" fill="hsl(210 50% 50%)" textAnchor="middle" opacity="0.6">(counter-regulatory)</text>
           {[
             "• Vasodilation (NO)",
             "• Anti-proliferation",
             "• Anti-fibrosis",
             "• Apoptosis",
           ].map((t, i) => (
-            <text key={i} x={370} y={280 + i * 10} fontSize="5" fill="hsl(210 50% 50%)" opacity="0.7">{t}</text>
+            <text key={i} x={482} y={297 + i * 10} fontSize="5.5" fill="hsl(210 50% 50%)" opacity="0.75">{t}</text>
           ))}
         </g>
 
-        {/* Aldosterone — from AT₁ */}
-        <path d="M 100 342 Q 100 360 100 370" fill="none"
-          stroke="hsl(45 60% 48%)" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("aldosterone") ? 0.2 : 0.5} />
+        {/* Aldosterone — from AT₁ — box x=160..300, y=400..470 */}
+        <line x1={200} y1={360} x2={200} y2={398} stroke="hsl(45 60% 48%)" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("aldosterone") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("aldosterone")} opacity={dim("aldosterone") ? 0.3 : 1}>
-          <rect x={35} y={372} width={130} height={55} rx={6}
+          <rect x={160} y={400} width={140} height={70} rx={6}
             fill={hl("aldosterone") ? "hsl(45 60% 48%/0.15)" : "hsl(45 60% 48%/0.05)"}
             stroke="hsl(45 60% 48%)" strokeWidth={hl("aldosterone") ? 1.5 : 0.8} />
-          <text x={100} y={386} fontSize="7.5" fill="hsl(45 60% 48%)" textAnchor="middle" fontWeight="700">Aldosterone</text>
-          <text x={100} y={396} fontSize="5" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.5">(zona glomerulosa)</text>
-          <text x={100} y={408} fontSize="5" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.6">↑ENaC → Na⁺ reabsorption</text>
-          <text x={100} y={418} fontSize="5" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.6">K⁺ secretion</text>
+          <text x={230} y={416} fontSize="8.5" fill="hsl(45 60% 48%)" textAnchor="middle" fontWeight="700">Aldosterone</text>
+          <text x={230} y={428} fontSize="5.5" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.6">(zona glomerulosa)</text>
+          <text x={230} y={444} fontSize="6" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.75">↑ENaC → Na⁺ reabsorption</text>
+          <text x={230} y={456} fontSize="6" fill="hsl(45 60% 48%)" textAnchor="middle" opacity="0.75">K⁺ secretion</text>
         </g>
 
-        {/* ADH — center-right from AT₁ */}
-        <path d="M 150 310 Q 200 330 240 360 Q 260 375 260 380" fill="none"
-          stroke="hsl(200 50% 48%)" strokeWidth="1" markerEnd="url(#raasArr)" opacity={dim("adh") ? 0.2 : 0.5} />
+        {/* ADH — from AT₁, routed to right of cascade — box x=470..610, y=400..460 */}
+        <path d="M 300 320 Q 400 320 470 420" fill="none"
+          stroke="hsl(200 50% 48%)" strokeWidth="1.2" markerEnd="url(#raasArr)" opacity={dim("adh") ? 0.2 : 0.6} />
         <g className="cursor-pointer" onClick={toggle("adh")} opacity={dim("adh") ? 0.3 : 1}>
-          <rect x={200} y={382} width={120} height={45} rx={6}
+          <rect x={470} y={400} width={140} height={60} rx={6}
             fill={hl("adh") ? "hsl(200 50% 48%/0.15)" : "hsl(200 50% 48%/0.05)"}
             stroke="hsl(200 50% 48%)" strokeWidth={hl("adh") ? 1.5 : 0.8} />
-          <text x={260} y={396} fontSize="7.5" fill="hsl(200 50% 48%)" textAnchor="middle" fontWeight="700">ADH (Vasopressin)</text>
-          <text x={260} y={408} fontSize="5" fill="hsl(200 50% 48%)" textAnchor="middle" opacity="0.6">V₂ → AQP2 → H₂O reabsorption</text>
-          <text x={260} y={418} fontSize="5" fill="hsl(200 50% 48%)" textAnchor="middle" opacity="0.6">V₁ → vasoconstriction</text>
+          <text x={540} y={418} fontSize="8.5" fill="hsl(200 50% 48%)" textAnchor="middle" fontWeight="700">ADH (Vasopressin)</text>
+          <text x={540} y={434} fontSize="6" fill="hsl(200 50% 48%)" textAnchor="middle" opacity="0.75">V₂ → AQP2 → H₂O reabsorption</text>
+          <text x={540} y={446} fontSize="6" fill="hsl(200 50% 48%)" textAnchor="middle" opacity="0.75">V₁ → vasoconstriction</text>
         </g>
 
-        {/* ===== DRUG INTERVENTION POINTS ===== */}
-        {/* DRI — blocks renin */}
+        {/* ===== DRUG INTERVENTION POINTS — left column x=20..130 ===== */}
+        {/* DRI — blocks renin (target: renin label at y≈68) */}
         <g className="cursor-pointer" onClick={toggle("dri")} opacity={dim("dri") ? 0.3 : 1}>
-          <rect x={10} y={48} width={drugW} height={28} rx={5}
+          <rect x={drugX} y={54} width={drugW} height={30} rx={5}
             fill={hl("dri") ? "hsl(90 45% 40%/0.2)" : "hsl(90 45% 40%/0.08)"}
             stroke="hsl(90 45% 40%)" strokeWidth={hl("dri") ? 2 : 1} strokeDasharray={hl("dri") ? "0" : "4 2"} />
-          <text x={50} y={60} fontSize="6.5" fill="hsl(90 45% 40%)" textAnchor="middle" fontWeight="700">DRI</text>
-          <text x={50} y={70} fontSize="5" fill="hsl(90 45% 40%)" textAnchor="middle" opacity="0.6">(aliskiren)</text>
-          <line x1={90} y1={62} x2={210} y2={62} stroke="hsl(90 45% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.5" />
-          <text x={150} y={58} fontSize="7" fill="hsl(90 45% 40%)" textAnchor="middle" fontWeight="800">✕</text>
+          <text x={drugX + drugW / 2} y={67} fontSize="7.5" fill="hsl(90 45% 40%)" textAnchor="middle" fontWeight="700">DRI</text>
+          <text x={drugX + drugW / 2} y={78} fontSize="6" fill="hsl(90 45% 40%)" textAnchor="middle" opacity="0.7">(aliskiren)</text>
         </g>
+        <line x1={drugX + drugW} y1={68} x2={cx - boxW / 2 - 4} y2={68} stroke="hsl(90 45% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("dri") ? 0.15 : 0.55} />
+        <text x={cx - boxW / 2 - 8} y={71} fontSize="9" fill="hsl(90 45% 40%)" textAnchor="end" fontWeight="800" opacity={dim("dri") ? 0.2 : 0.85}>✕</text>
 
-        {/* ACEi — blocks ACE */}
+        {/* ACEi — blocks ACE (target: ACE label at y≈152) */}
         <g className="cursor-pointer" onClick={toggle("acei")} opacity={dim("acei") ? 0.3 : 1}>
-          <rect x={10} y={120} width={drugW} height={28} rx={5}
+          <rect x={drugX} y={138} width={drugW} height={30} rx={5}
             fill={hl("acei") ? "hsl(150 55% 40%/0.2)" : "hsl(150 55% 40%/0.08)"}
             stroke="hsl(150 55% 40%)" strokeWidth={hl("acei") ? 2 : 1} strokeDasharray={hl("acei") ? "0" : "4 2"} />
-          <text x={50} y={132} fontSize="6.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="700">ACE Inhibitors</text>
-          <text x={50} y={142} fontSize="5" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.6">(ramipril, enalapril)</text>
-          <line x1={90} y1={134} x2={210} y2={134} stroke="hsl(150 55% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.5" />
-          <text x={150} y={130} fontSize="7" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="800">✕</text>
-          {/* Bradykinin note */}
-          {hl("acei") && (
-            <g>
-              <rect x={340} y={120} width={130} height={28} rx={4} fill="hsl(150 50% 40%/0.1)" stroke="hsl(150 50% 40%)" strokeWidth="0.6" />
-              <text x={405} y={132} fontSize="5.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="600">Also: ↑ Bradykinin</text>
-              <text x={405} y={142} fontSize="5" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.6">→ vasodilation, cough (10-15%)</text>
-            </g>
-          )}
+          <text x={drugX + drugW / 2} y={151} fontSize="7.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="700">ACE Inhibitors</text>
+          <text x={drugX + drugW / 2} y={162} fontSize="6" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.7">(ramipril, enalapril)</text>
         </g>
+        <line x1={drugX + drugW} y1={152} x2={cx - boxW / 2 - 4} y2={152} stroke="hsl(150 55% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("acei") ? 0.15 : 0.55} />
+        <text x={cx - boxW / 2 - 8} y={155} fontSize="9" fill="hsl(150 55% 40%)" textAnchor="end" fontWeight="800" opacity={dim("acei") ? 0.2 : 0.85}>✕</text>
+        {hl("acei") && (
+          <g>
+            <rect x={400} y={476} width={210} height={32} rx={4} fill="hsl(150 50% 40%/0.1)" stroke="hsl(150 50% 40%)" strokeWidth="0.6" />
+            <text x={505} y={490} fontSize="6.5" fill="hsl(150 55% 40%)" textAnchor="middle" fontWeight="600">Also: ↑ Bradykinin</text>
+            <text x={505} y={501} fontSize="6" fill="hsl(150 55% 40%)" textAnchor="middle" opacity="0.7">→ vasodilation, cough (10-15%)</text>
+          </g>
+        )}
 
-        {/* ARB — blocks AT₁ */}
+        {/* ARB — blocks AT₁ receptor */}
         <g className="cursor-pointer" onClick={toggle("arb")} opacity={dim("arb") ? 0.3 : 1}>
-          <rect x={10} y={225} width={drugW} height={28} rx={5}
+          <rect x={drugX} y={278} width={drugW} height={30} rx={5}
             fill={hl("arb") ? "hsl(180 50% 40%/0.2)" : "hsl(180 50% 40%/0.08)"}
             stroke="hsl(180 50% 40%)" strokeWidth={hl("arb") ? 2 : 1} strokeDasharray={hl("arb") ? "0" : "4 2"} />
-          <text x={50} y={237} fontSize="6.5" fill="hsl(180 50% 40%)" textAnchor="middle" fontWeight="700">ARBs</text>
-          <text x={50} y={247} fontSize="5" fill="hsl(180 50% 40%)" textAnchor="middle" opacity="0.6">(losartan, candesartan)</text>
-          <path d="M 50 253 Q 50 260 60 268 Q 70 275 80 280" fill="none"
-            stroke="hsl(180 50% 40%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.5" />
-          <text x={65} y={266} fontSize="7" fill="hsl(180 50% 40%)" fontWeight="800">✕</text>
+          <text x={drugX + drugW / 2} y={291} fontSize="7.5" fill="hsl(180 50% 40%)" textAnchor="middle" fontWeight="700">ARBs</text>
+          <text x={drugX + drugW / 2} y={302} fontSize="6" fill="hsl(180 50% 40%)" textAnchor="middle" opacity="0.7">(losartan, candesartan)</text>
         </g>
+        <line x1={drugX + drugW} y1={293} x2={158} y2={293} stroke="hsl(180 50% 40%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("arb") ? 0.15 : 0.55} />
+        <text x={155} y={296} fontSize="9" fill="hsl(180 50% 40%)" textAnchor="end" fontWeight="800" opacity={dim("arb") ? 0.2 : 0.85}>✕</text>
 
         {/* MRA — blocks aldosterone receptor */}
         <g className="cursor-pointer" onClick={toggle("mra")} opacity={dim("mra") ? 0.3 : 1}>
-          <rect x={10} y={380} width={drugW} height={36} rx={5}
+          <rect x={drugX} y={420} width={drugW} height={36} rx={5}
             fill={hl("mra") ? "hsl(320 50% 45%/0.2)" : "hsl(320 50% 45%/0.08)"}
             stroke="hsl(320 50% 45%)" strokeWidth={hl("mra") ? 2 : 1} strokeDasharray={hl("mra") ? "0" : "4 2"} />
-          <text x={50} y={394} fontSize="6.5" fill="hsl(320 50% 45%)" textAnchor="middle" fontWeight="700">MR Antagonists</text>
-          <text x={50} y={404} fontSize="5" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.6">(spironolactone,</text>
-          <text x={50} y={412} fontSize="5" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.6">eplerenone)</text>
-          <path d="M 55 380 Q 55 375 70 370 Q 80 365 85 372" fill="none"
-            stroke="hsl(320 50% 45%)" strokeWidth="1" strokeDasharray="3 2" opacity="0.5" />
-          <text x={70} y={370} fontSize="7" fill="hsl(320 50% 45%)" fontWeight="800">✕</text>
+          <text x={drugX + drugW / 2} y={434} fontSize="7.5" fill="hsl(320 50% 45%)" textAnchor="middle" fontWeight="700">MR Antagonists</text>
+          <text x={drugX + drugW / 2} y={445} fontSize="6" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.7">(spironolactone,</text>
+          <text x={drugX + drugW / 2} y={453} fontSize="6" fill="hsl(320 50% 45%)" textAnchor="middle" opacity="0.7">eplerenone)</text>
         </g>
+        <line x1={drugX + drugW} y1={435} x2={158} y2={435} stroke="hsl(320 50% 45%)" strokeWidth="0.9" strokeDasharray="3 2" opacity={dim("mra") ? 0.15 : 0.55} />
+        <text x={155} y={438} fontSize="9" fill="hsl(320 50% 45%)" textAnchor="end" fontWeight="800" opacity={dim("mra") ? 0.2 : 0.85}>✕</text>
 
-        {/* ===== NEGATIVE FEEDBACK ARROW ===== */}
-        <path d="M 315 175 Q 450 175 480 130 Q 500 90 480 50 Q 465 25 400 20 Q 330 15 300 28" fill="none"
-          stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="4 2" markerEnd="url(#raasArr)" opacity="0.25" />
-        <text x={478} y={100} fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4" transform="rotate(90, 478, 100)">negative feedback</text>
+        {/* ===== NEGATIVE FEEDBACK ARROW — runs along far right, well clear of AT₂/ADH ===== */}
+        <path d="M 380 197 Q 625 197 625 110 Q 625 30 540 22 Q 460 16 380 22" fill="none"
+          stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="4 2" markerEnd="url(#raasArr)" opacity="0.3" />
+        <text x={620} y={130} fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.55" transform="rotate(90, 620, 130)">negative feedback (↓ renin)</text>
 
-        {/* ===== SUMMARY BOX ===== */}
-        <rect x={340} y={450} width={170} height={80} rx={6} fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.8" />
-        <text x={425} y={466} fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">Net Effect of RAAS</text>
+        {/* ===== SUMMARY BOX (bottom centre) ===== */}
+        <rect x={170} y={540} width={300} height={100} rx={6} fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.8" />
+        <text x={320} y={558} fontSize="9" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="700">Net Effect of RAAS</text>
         {[
           "↑ Blood pressure (vasoconstriction)",
           "↑ Blood volume (Na⁺/H₂O retention)",
@@ -306,7 +309,7 @@ export const RAASCascadeDiagram = () => {
           "Maintain GFR (efferent constriction)",
           "↑ K⁺ excretion",
         ].map((t, i) => (
-          <text key={i} x={350} y={480 + i * 10} fontSize="5.5" fill="hsl(var(--muted-foreground))">{t}</text>
+          <text key={i} x={185} y={576 + i * 12} fontSize="7" fill="hsl(var(--muted-foreground))">{t}</text>
         ))}
       </svg>
 
