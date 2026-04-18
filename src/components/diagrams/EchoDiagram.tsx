@@ -369,48 +369,52 @@ const EchoDiagram = () => {
             </marker>
           </defs>
           <g clipPath="url(#sector-clip)">
-            {/* Liver parenchyma — acoustic window */}
-            <path d="M 70,55 Q 200,50 330,60 L 320,110 Q 200,115 80,108 Z" fill="#5a4838" opacity="0.55" />
-            <text x="200" y="85" fontSize="9" fill="#f0e0c0" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
-            <path d="M 280,75 Q 250,90 235,110" fill="none" stroke="#9bb8d8" strokeWidth="1.5" opacity="0.7" />
-            <text x="285" y="73" fontSize="5" fill="#9bb8d8">hepatic v.</text>
-            {/* RA closest to liver/probe */}
-            <path d="M 100,115 Q 90,140 100,165 Q 130,178 165,170 L 165,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="125" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">RA</text>
+            {/* Liver — narrowed to fit sector */}
+            <path d="M 95,55 Q 200,52 305,62 L 295,108 Q 200,113 105,106 Z" fill="#5a4838" opacity="0.55" />
+            <path d="M 260,75 Q 235,90 222,108" fill="none" stroke="#9bb8d8" strokeWidth="1.5" opacity="0.7" />
+            {/* RA — shifted right and narrowed */}
+            <path d="M 105,118 Q 95,140 105,165 Q 130,176 158,168 L 158,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* RV */}
-            <path d="M 165,118 L 165,170 Q 200,182 235,170 L 235,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="200" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <path d="M 158,120 L 158,168 Q 195,180 225,168 L 225,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* LA */}
-            <path d="M 235,118 L 235,170 Q 270,178 300,165 L 300,120 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="265" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">LA</text>
-            {/* LV — far field */}
-            <path d="M 300,120 L 300,165 Q 320,180 340,170 L 340,125 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="318" y="150" fontSize="8" fill="#fff8d0" fontWeight="800">LV</text>
+            <path d="M 225,120 L 225,168 Q 250,176 275,165 L 275,122 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
+            {/* LV — pulled INSIDE the sector (was at x=300-340, clipped) */}
+            <path d="M 275,122 L 275,165 Q 295,178 312,168 L 312,127 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
             {/* Septae */}
-            <line x1="235" y1="118" x2="235" y2="172" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
-            <line x1="200" y1="120" x2="200" y2="170" stroke="#c8c098" strokeWidth="0.5" opacity="0.6" />
+            <line x1="225" y1="120" x2="225" y2="170" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
+            <line x1="192" y1="122" x2="192" y2="170" stroke="#c8c098" strokeWidth="0.5" opacity="0.6" />
             {/* AV valve plane */}
-            <line x1="170" y1="142" x2="195" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="205" y1="142" x2="230" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="240" y1="142" x2="265" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
-            <line x1="275" y1="142" x2="298" y2="142" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="162" y1="143" x2="188" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="196" y1="143" x2="221" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="229" y1="143" x2="271" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
+            <line x1="279" y1="143" x2="308" y2="143" stroke="#fff8d0" strokeWidth="1.2" />
             {/* Pericardium */}
-            <path d="M 100,115 Q 90,140 100,165 Q 200,190 340,170 L 340,125 Q 200,112 100,115 Z" fill="none" stroke="#ffffd0" strokeWidth="0.6" opacity="0.55" strokeDasharray="3 2" />
-            {/* IVC long-axis inset */}
-            <g transform="translate(280,210)">
-              <rect x="-70" y="-22" width="140" height="40" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
-              <path d="M -65,-2 Q -30,-6 0,-7 Q 30,-8 60,-12 L 60,-2 Q 30,2 0,3 Q -30,4 -65,8 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.8" />
-              <text x="-55" y="0" fontSize="5" fill="#fff8d0" fontWeight="700">IVC</text>
-              <line x1="-20" y1="-8" x2="-20" y2="3" stroke="hsl(var(--primary))" strokeWidth="0.4" strokeDasharray="1 1" />
-              <text x="-18" y="-10" fontSize="4" fill="hsl(var(--primary))">d</text>
-              <circle cx="60" cy="-7" r="3" fill="#d8d8a8" />
-              <text x="63" y="-9" fontSize="4" fill="#fff8d0">→ RA</text>
-              <path d="M 0,-15 L 0,-9" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
-              <path d="M 0,11 L 0,5" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
-              <text x="5" y="-13" fontSize="4" fill="#90ff90">inspiration</text>
-            </g>
+            <path d="M 105,118 Q 95,140 105,165 Q 200,185 312,168 L 312,127 Q 200,114 105,118 Z" fill="none" stroke="#ffffd0" strokeWidth="0.6" opacity="0.55" strokeDasharray="3 2" />
           </g>
-          <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Subcostal 4-chamber + IVC long-axis inset</text>
+          {/* Labels outside clipPath */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="200" y="85" fontSize="9" fill="#f0e0c0" fontWeight="700" textAnchor="middle">Liver (acoustic window)</text>
+            <text x="263" y="73" fontSize="5" fill="#9bb8d8">hepatic v.</text>
+            <text x="125" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">RA</text>
+            <text x="190" y="148" fontSize="10" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="250" y="148" fontSize="9" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="293" y="150" fontSize="9" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+          </g>
+          {/* IVC inset — moved BELOW sector so it doesn't overlap chambers */}
+          <g transform="translate(200,225)">
+            <rect x="-95" y="-15" width="190" height="28" fill="#000" stroke="hsl(var(--border))" strokeWidth="0.5" rx="2" />
+            <path d="M -88,2 Q -45,-3 0,-5 Q 45,-7 82,-9 L 82,-1 Q 45,3 0,5 Q -45,7 -88,10 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.8" />
+            <text x="-78" y="3" fontSize="5" fill="#fff8d0" fontWeight="700">IVC</text>
+            <line x1="-30" y1="-6" x2="-30" y2="6" stroke="hsl(var(--primary))" strokeWidth="0.4" strokeDasharray="1 1" />
+            <text x="-26" y="-7" fontSize="4" fill="hsl(var(--primary))">d</text>
+            <circle cx="82" cy="-5" r="3" fill="#d8d8a8" />
+            <text x="86" y="-7" fontSize="4" fill="#fff8d0">→ RA</text>
+            <path d="M 0,-12 L 0,-7" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-down-sm)" />
+            <path d="M 0,11 L 0,6" stroke="#90ff90" strokeWidth="0.5" markerEnd="url(#arrow-up-sm)" />
+            <text x="4" y="-10" fontSize="4" fill="#90ff90">inspiration</text>
+            <text x="0" y="-10" fontSize="4" fill="#fff8d0" opacity="0.7" textAnchor="middle">IVC long-axis (90° rotation)</text>
+          </g>
+          <text x="200" y="248" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Subcostal 4-chamber + IVC inset</text>
         </svg>
       ),
     },
