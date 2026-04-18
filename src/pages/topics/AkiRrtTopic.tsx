@@ -407,7 +407,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
+        <section id="toc-modalities" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Modalities Overview</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare the major continuous and intermittent renal replacement modalities side-by-side.
