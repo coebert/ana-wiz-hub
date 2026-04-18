@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-type GasLaw = "boyles" | "charles" | "daltons";
+type GasLaw = "boyles" | "charles" | "gaylussac" | "daltons";
 
 export const GasLawsDiagram = () => {
   const [activeLaw, setActiveLaw] = useState<GasLaw>("boyles");
@@ -19,7 +19,7 @@ export const GasLawsDiagram = () => {
   return (
     <div className="w-full max-w-lg mx-auto">
       <div className="flex gap-2 justify-center mb-6">
-        {(["boyles", "charles", "daltons"] as GasLaw[]).map((law) => (
+        {(["boyles", "charles", "gaylussac", "daltons"] as GasLaw[]).map((law) => (
           <button
             key={law}
             onClick={() => setActiveLaw(law)}
@@ -29,7 +29,13 @@ export const GasLawsDiagram = () => {
                 : "border-border text-muted-foreground hover:border-physics/50"
             }`}
           >
-            {law === "boyles" ? "Boyle's" : law === "charles" ? "Charles'" : "Dalton's"}
+            {law === "boyles"
+              ? "Boyle's"
+              : law === "charles"
+              ? "Charles'"
+              : law === "gaylussac"
+              ? "Gay-Lussac's"
+              : "Dalton's"}
           </button>
         ))}
       </div>
@@ -113,6 +119,64 @@ export const GasLawsDiagram = () => {
             </text>
             <text x={286} y={70} textAnchor="middle" className="fill-muted-foreground" fontSize="11">
               {(273 + oscillate * 100).toFixed(0)} K
+            </text>
+          </g>
+        )}
+
+        {activeLaw === "gaylussac" && (
+          <g>
+            {/* Rigid container - fixed size */}
+            <rect
+              x={120}
+              y={50}
+              width={160}
+              height={170}
+              rx="8"
+              fill={`hsl(${30 - oscillate * 30} ${50 + oscillate * 30}% ${90 - oscillate * 25}%)`}
+              stroke="hsl(210 70% 35%)"
+              strokeWidth="3"
+            />
+            {/* "Rigid" indicator hatching on walls */}
+            <text x={200} y={42} textAnchor="middle" className="fill-muted-foreground" fontSize="10">
+              Rigid container — constant V
+            </text>
+            {/* Particles - speed scales with temperature */}
+            {Array.from({ length: 9 }).map((_, i) => {
+              const speed = 1 + oscillate * 3;
+              const px = 130 + ((i * 37 + animFrame * speed) % 140);
+              const py = 60 + ((i * 53 + animFrame * (speed + 0.5)) % 150);
+              return (
+                <circle
+                  key={i}
+                  cx={px}
+                  cy={py}
+                  r={4}
+                  fill={`hsl(${30 - oscillate * 30} ${50 + oscillate * 30}% 45%)`}
+                  opacity="0.85"
+                />
+              );
+            })}
+            {/* Pressure gauge */}
+            <circle cx={325} cy={130} r={28} fill="hsl(210 20% 95%)" stroke="hsl(210 20% 40%)" strokeWidth="2" />
+            <line
+              x1={325}
+              y1={130}
+              x2={325 + Math.cos(Math.PI * (1 - oscillate * 0.9) + Math.PI) * 20}
+              y2={130 + Math.sin(Math.PI * (1 - oscillate * 0.9) + Math.PI) * 20}
+              stroke="hsl(0 70% 50%)"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+            <circle cx={325} cy={130} r={3} fill="hsl(210 20% 30%)" />
+            <text x={325} y={172} textAnchor="middle" className="fill-muted-foreground" fontSize="10">
+              P = {(1 + oscillate * 1.5).toFixed(1)} atm
+            </text>
+            {/* Temperature indicator */}
+            <text x={200} y={245} textAnchor="middle" className="fill-muted-foreground" fontSize="11">
+              T = {(273 + oscillate * 150).toFixed(0)} K
+            </text>
+            <text x={200} y={268} textAnchor="middle" className="fill-foreground font-medium" fontSize="13">
+              P₁/T₁ = P₂/T₂ (at constant V)
             </text>
           </g>
         )}

@@ -73,6 +73,59 @@ const GasLawsTopic = () => {
         </section>
 
         <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Gay-Lussac's Law</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            At constant volume, the pressure of a fixed mass of gas is directly proportional to its absolute temperature
+            (<strong>P₁/T₁ = P₂/T₂</strong>). As temperature rises, gas molecules move faster and strike the rigid
+            container walls more frequently and forcefully, raising the measured pressure.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Clinical Application</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The pressure inside a full oxygen cylinder rises if the cylinder is stored in a hot environment, and falls
+              if it is cooled. This is why cylinder pressures should be interpreted in the context of ambient temperature,
+              and why cylinders must be protected from fire — a heated cylinder can develop dangerously high internal
+              pressures and rupture.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">The Combined Gas Law</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Boyle's, Charles' and Gay-Lussac's laws can be unified into a single expression that relates pressure,
+            volume and absolute temperature for a fixed mass of gas:
+          </p>
+          <div className="bg-card border border-border rounded-lg p-4 mt-3 text-center">
+            <p className="text-lg font-mono text-foreground">
+              (P₁ × V₁) / T₁ = (P₂ × V₂) / T₂
+            </p>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Each individual gas law is a special case in which one of the three variables is held constant:
+          </p>
+          <ul className="list-disc pl-6 mt-2 space-y-1 text-foreground/90">
+            <li><strong>Constant T</strong> → P₁V₁ = P₂V₂ (Boyle's law)</li>
+            <li><strong>Constant P</strong> → V₁/T₁ = V₂/T₂ (Charles' law)</li>
+            <li><strong>Constant V</strong> → P₁/T₁ = P₂/T₂ (Gay-Lussac's law)</li>
+          </ul>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            The combined gas law is the practical bridge to the ideal gas equation (PV = nRT): when the amount of gas
+            (n) is also allowed to vary, the constant of proportionality becomes nR. Temperature must always be in
+            Kelvin, and pressures must be absolute (not gauge) for the relationship to hold.
+          </p>
+          <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+            <p className="text-sm font-medium text-foreground">Clinical Application</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Converting a measured gas volume between conditions — for example, expired gas volumes measured at ATPS
+              (ambient temperature and pressure, saturated) being corrected to BTPS (body temperature and pressure,
+              saturated) or STPD (standard temperature and pressure, dry) for metabolic calculations — relies directly
+              on the combined gas law.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Dalton's Law of Partial Pressures</h2>
           <p className="text-foreground/90 leading-relaxed">
             In a mixture of gases, the total pressure equals the sum of the partial pressures of each constituent gas
