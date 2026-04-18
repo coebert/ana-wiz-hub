@@ -234,6 +234,39 @@ const AntimicrobialsTopic = () => {
         </div>
       </section>
 
+      <SynthesisBlock
+        title="Antimicrobials — Class, Mechanism, ICU Pearl"
+        subtitle="The headline drug classes you need to recognise on a viva."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Class</th>
+              <th className="text-left p-2 text-foreground font-semibold">Mechanism</th>
+              <th className="text-left p-2 text-foreground font-semibold">ICU Pearl</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["β-lactams (penicillin, cephalosporin, carbapenem)", "Cell-wall synthesis (PBP)", "Time-dependent killing — extend infusion (4 h pip-tazo, meropenem) in critically ill"],
+              ["Aminoglycosides (gentamicin)", "30S ribosome — ↓ protein synthesis", "Concentration-dependent — once daily; therapeutic drug monitoring; nephro/ototoxic"],
+              ["Glycopeptides (vancomycin)", "Cell-wall (D-Ala-D-Ala)", "AUC₂₄/MIC 400–600 target (not trough alone); infusion-related reactions"],
+              ["Fluoroquinolones (cipro, levo)", "DNA gyrase / topoisomerase IV", "QT prolongation, tendinopathy, C. difficile risk; covers atypical pathogens"],
+              ["Macrolides (clari, azith)", "50S ribosome", "QT prolongation; CYP3A4 inhibitors → drug interactions"],
+              ["Oxazolidinones (linezolid)", "50S ribosome (initiation)", "VRE/MRSA cover; thrombocytopenia &gt;14 d; serotonin syndrome with SSRI"],
+              ["Antifungals (echinocandins, azoles, AmB)", "β-glucan / ergosterol", "Caspofungin first-line invasive candidiasis; AmB nephrotoxic"],
+            ].map(([cls, mech, pearl]) => (
+              <tr key={cls as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{cls}</td>
+                <td className="p-2 text-muted-foreground">{mech}</td>
+                <td className="p-2 text-muted-foreground">{pearl}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "β-Lactams (penicillins, cephalosporins, carbapenems) are bactericidal, time-dependent — optimise with extended or continuous infusion",
         "Aminoglycosides are bactericidal, concentration-dependent with PAE — optimise with once-daily dosing and trough monitoring",

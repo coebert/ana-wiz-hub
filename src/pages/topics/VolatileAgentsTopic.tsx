@@ -308,6 +308,39 @@ const VolatileAgentsTopic = () => {
         </section>
       </div>
 
+      <SynthesisBlock
+        title="Volatile Agents — Side-by-Side Comparison"
+        subtitle="The high-yield numbers and clinical character of each modern agent."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Agent</th>
+              <th className="text-left p-2 text-foreground font-semibold">MAC (40 y)</th>
+              <th className="text-left p-2 text-foreground font-semibold">Blood-gas λ</th>
+              <th className="text-left p-2 text-foreground font-semibold">Key character</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Sevoflurane", "1.8%", "0.65", "Non-irritant — induction agent of choice; nephrotoxic Compound A only at low flows + dry CO₂ absorber"],
+              ["Isoflurane", "1.15%", "1.4", "Cheap, well-tolerated; pungent so unsuitable for inhalational induction"],
+              ["Desflurane", "6.0%", "0.42", "Fastest emergence; pungent (laryngospasm); requires heated vaporiser; very low solubility"],
+              ["N₂O", "104%", "0.47", "Adjunct only; expands air-filled cavities; bone marrow / vit B12 risk with prolonged exposure"],
+              ["Halothane (historical)", "0.75%", "2.4", "Sensitises myocardium to catecholamines; halothane hepatitis"],
+            ].map(([agent, mac, lambda, char]) => (
+              <tr key={agent as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{agent}</td>
+                <td className="p-2 text-muted-foreground">{mac}</td>
+                <td className="p-2 text-muted-foreground">{lambda}</td>
+                <td className="p-2 text-muted-foreground">{char}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "MAC is the ED₅₀ for immobility; lower MAC = more potent. MAC values are additive between agents.",
         "Blood:gas partition coefficient determines speed of onset — low BGPC (desflurane 0.42) = fast onset; high BGPC (halothane 2.54) = slow onset.",

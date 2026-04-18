@@ -252,6 +252,38 @@ const IVAnaestheticsTopic = () => {
         </section>
       </div>
 
+      <SynthesisBlock
+        title="IV Induction Agents — Side-by-Side"
+        subtitle="The high-yield comparison across the four FRCA induction agents."
+        variant="table"
+      >
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr className="border-b border-border bg-secondary/50">
+              <th className="text-left p-2 text-foreground font-semibold">Agent</th>
+              <th className="text-left p-2 text-foreground font-semibold">Induction dose</th>
+              <th className="text-left p-2 text-foreground font-semibold">CVS</th>
+              <th className="text-left p-2 text-foreground font-semibold">Distinguishing feature</th>
+            </tr>
+          </thead>
+          <tbody className="text-foreground/90">
+            {[
+              ["Propofol", "1.5–2.5 mg/kg", "↓ MAP, ↓ SVR, ↓ contractility", "Pain on injection; PRIS in prolonged high-dose infusion"],
+              ["Thiopentone", "3–5 mg/kg", "↓ MAP, venodilation", "Anti-convulsant; avoid in porphyria; intra-arterial = arteritis"],
+              ["Etomidate", "0.3 mg/kg", "Cardiostable", "Adrenal suppression even after single dose; avoid in sepsis"],
+              ["Ketamine", "1–2 mg/kg IV / 5–10 mg/kg IM", "↑ HR, ↑ BP (sympathomimetic)", "Bronchodilator, analgesic; emergence phenomena; ↑ICP debated"],
+            ].map(([agent, dose, cvs, feat]) => (
+              <tr key={agent as string} className="border-b border-border/50">
+                <td className="p-2 font-medium">{agent}</td>
+                <td className="p-2 text-muted-foreground">{dose}</td>
+                <td className="p-2 text-muted-foreground">{cvs}</td>
+                <td className="p-2 text-muted-foreground">{feat}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.",
         "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.",

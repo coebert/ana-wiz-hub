@@ -236,7 +236,22 @@ const EquipmentMonitoringTopic = () => {
           </div>
         </section>
 
-        <KeyLearningPoints points={[
+      <SynthesisBlock
+        title="Equipment & Monitoring — AAGBI Minimum Standards"
+        subtitle="The mandatory monitors and the principle each addresses."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Continuous (every anaesthetic)</strong>: pulse oximetry · NIBP · ECG · capnography · FiO₂ · airway pressure · agent analyser (when volatile in use).</li>
+          <li><strong>Capnography</strong>: gold standard for confirming tracheal intubation, monitoring ventilation, and detecting circuit disconnection — mandatory for transfers.</li>
+          <li><strong>Neuromuscular monitoring</strong>: TOF before extubation whenever NMBs used (NAP6 / RA-UK guidance); TOF ratio &gt;0.9 needed for safe extubation.</li>
+          <li><strong>Temperature</strong>: continuous monitoring for procedures &gt;30 min — active warming if &lt;36 °C (NICE CG65).</li>
+          <li><strong>Invasive monitoring (selected patients)</strong>: arterial line for beat-to-beat BP/ABG; central venous access for vasopressors / multi-line infusion.</li>
+          <li><strong>Alarm management</strong>: never silence indefinitely; review default thresholds and document any changes.</li>
+        </ul>
+      </SynthesisBlock>
+
+      <KeyLearningPoints points={[
           "The anaesthetic machine delivers gas via pipeline (400 kPa) or cylinders through regulators, flowmeters, and vaporizer to the breathing system.",
           "Oxygen failure alarm (Ritchie whistle) is gas-powered, not electrical — it sounds even during power failure.",
           "Mapleson A is most efficient for spontaneous ventilation; Mapleson D (Bain) for controlled ventilation.",

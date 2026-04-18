@@ -276,6 +276,21 @@ const SepsisTopic = () => {
         <SepsisManagementDiagram />
       </section>
 
+      <SynthesisBlock
+        title="Sepsis — Hour-1 Bundle Synthesis"
+        subtitle="The Surviving Sepsis 2021 bundle distilled to the actions that change outcome."
+        variant="summary"
+      >
+        <ul className="space-y-2 list-disc list-inside text-sm">
+          <li><strong>Measure lactate</strong>; remeasure if &gt;2 mmol/L.</li>
+          <li><strong>Blood cultures × 2</strong> before antibiotics (don't delay antibiotics &gt;45 min).</li>
+          <li><strong>Broad-spectrum antibiotics within 1 h</strong> (septic shock); within 3 h (sepsis without shock if uncertain).</li>
+          <li><strong>30 ml/kg balanced crystalloid</strong> if hypotensive or lactate ≥4 mmol/L — reassess fluid responsiveness.</li>
+          <li><strong>Vasopressors for MAP ≥65</strong> if hypotensive after fluid (or alongside) — noradrenaline first-line; add vasopressin / hydrocortisone if catecholamine-resistant.</li>
+          <li><strong>Source control</strong> as soon as anatomically feasible — drainage, debridement, removal of infected device.</li>
+        </ul>
+      </SynthesisBlock>
+
       <KeyLearningPoints points={[
         "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",
         "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors",
