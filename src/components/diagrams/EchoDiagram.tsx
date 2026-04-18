@@ -333,6 +333,8 @@ const EchoDiagram = () => {
             <text x="262" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
             <text x="200" y="50" fontSize="6" fill="#fff8d0" textAnchor="middle" fontWeight="700">apex</text>
           </g>
+          <A4cDoppler mode={doppler} />
+          <DopplerDefs />
           <text x="200" y="245" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontStyle="italic">Apical 4-chamber — apex at top, RV:LV ratio assessable</text>
         </svg>
       ),
