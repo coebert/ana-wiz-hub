@@ -19,6 +19,7 @@ const VasoactiveAgentsTopic = () => {
       accentColor="text-pharmacology"
     >
       <div className="prose prose-slate max-w-none">
+        {/* ================= 1. ORIENTATION ================= */}
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
@@ -26,62 +27,19 @@ const VasoactiveAgentsTopic = () => {
             of haemodynamic instability during anaesthesia and critical care. Understanding their receptor pharmacology,
             mechanisms, and clinical applications is fundamental to FRCA and FFICM examinations.
           </p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Inotrope Classification by Mechanism</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            Inotropes increase myocardial contractility through different intracellular pathways. They can be classified by their mechanism of action:
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            This topic is structured to build from <strong>foundations → mechanisms → individual agents → integrated comparison</strong>.
+            Begin with the broad classification and receptor science, then explore each agent grouped by clinical role
+            (vasopressors → inotropes/inodilators → vasodilators → salvage therapy), before consolidating with the
+            haemodynamic effects table.
           </p>
-          <div className="overflow-x-auto my-4">
-            <table className="min-w-full text-sm border border-border rounded-lg">
-              <thead>
-                <tr className="bg-secondary/50">
-                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
-                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Agents</th>
-                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Pathway</th>
-                </tr>
-              </thead>
-              <tbody className="text-foreground/90">
-                <tr className="border-b border-border">
-                  <td className="px-4 py-2 font-medium">↑ cAMP (receptor-mediated)</td>
-                  <td className="px-4 py-2">Adrenaline, dobutamine, dopamine, isoprenaline</td>
-                  <td className="px-4 py-2">β₁ agonism → Gs → adenylyl cyclase → ↑ cAMP → PKA → ↑ Ca²⁺ entry</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="px-4 py-2 font-medium">↑ cAMP (enzyme inhibition)</td>
-                  <td className="px-4 py-2">Milrinone, enoximone</td>
-                  <td className="px-4 py-2">PDE III inhibition → ↓ cAMP breakdown → ↑ cAMP → PKA</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="px-4 py-2 font-medium">Calcium sensitisation</td>
-                  <td className="px-4 py-2">Levosimendan</td>
-                  <td className="px-4 py-2">Stabilises Ca²⁺–troponin C complex → ↑ contractile force without ↑ [Ca²⁺]ᵢ</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="px-4 py-2 font-medium">Na⁺/K⁺-ATPase inhibition</td>
-                  <td className="px-4 py-2">Digoxin</td>
-                  <td className="px-4 py-2">↑ intracellular Na⁺ → Na⁺/Ca²⁺ exchanger reversal → ↑ [Ca²⁺]ᵢ</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="px-4 py-2 font-medium">Direct Ca²⁺ supplementation</td>
-                  <td className="px-4 py-2">Calcium chloride / gluconate</td>
-                  <td className="px-4 py-2">↑ extracellular [Ca²⁺] → ↑ Ca²⁺ available for excitation-contraction coupling</td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-2 font-medium">↑ cAMP (glucagon receptor)</td>
-                  <td className="px-4 py-2">Glucagon</td>
-                  <td className="px-4 py-2">Glucagon receptor → Gs → ↑ cAMP (bypasses β-receptor)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </section>
 
+        {/* ================= 2. BIG-PICTURE CLASSIFICATION ================= */}
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Classification</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Classification of Vasoactive Agents</h2>
           <p className="text-foreground/90 leading-relaxed">
-            Vasoactive agents can be classified by their primary mechanism of action:
+            Vasoactive agents can be grouped by their primary mechanism of action:
           </p>
           <div className="overflow-x-auto my-4">
             <table className="min-w-full text-sm border border-border rounded-lg">
@@ -128,6 +86,7 @@ const VasoactiveAgentsTopic = () => {
           </div>
         </section>
 
+        {/* ================= 3. RECEPTOR FOUNDATIONS ================= */}
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Adrenoreceptor Pharmacology</h2>
           <p className="text-foreground/90 leading-relaxed">
@@ -179,8 +138,170 @@ const VasoactiveAgentsTopic = () => {
           </div>
         </section>
 
+        {/* Molecular structures support the receptor section */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures of Catecholamines</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Subtle structural differences on the catechol ring and amine side-chain determine receptor selectivity, metabolism by COMT/MAO, and lipid solubility.
+          </p>
+          <VasoactiveStructures />
+        </div>
+
+        {/* ================= 4. INOTROPE MECHANISMS ================= */}
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Adrenaline (Epinephrine)</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Inotrope Classification by Cellular Mechanism</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Inotropes increase myocardial contractility through several distinct intracellular pathways. The unifying theme is increased
+            availability of, or sensitivity to, intracellular calcium:
+          </p>
+          <div className="overflow-x-auto my-4">
+            <table className="min-w-full text-sm border border-border rounded-lg">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Agents</th>
+                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Pathway</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (receptor-mediated)</td>
+                  <td className="px-4 py-2">Adrenaline, dobutamine, dopamine, isoprenaline</td>
+                  <td className="px-4 py-2">β₁ agonism → Gs → adenylyl cyclase → ↑ cAMP → PKA → ↑ Ca²⁺ entry</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (enzyme inhibition)</td>
+                  <td className="px-4 py-2">Milrinone, enoximone</td>
+                  <td className="px-4 py-2">PDE III inhibition → ↓ cAMP breakdown → ↑ cAMP → PKA</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">↑ cAMP (glucagon receptor)</td>
+                  <td className="px-4 py-2">Glucagon</td>
+                  <td className="px-4 py-2">Glucagon receptor → Gs → ↑ cAMP (bypasses β-receptor)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Calcium sensitisation</td>
+                  <td className="px-4 py-2">Levosimendan</td>
+                  <td className="px-4 py-2">Stabilises Ca²⁺–troponin C complex → ↑ contractile force without ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="px-4 py-2 font-medium">Na⁺/K⁺-ATPase inhibition</td>
+                  <td className="px-4 py-2">Digoxin</td>
+                  <td className="px-4 py-2">↑ intracellular Na⁺ → Na⁺/Ca²⁺ exchanger reversal → ↑ [Ca²⁺]ᵢ</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-medium">Direct Ca²⁺ supplementation</td>
+                  <td className="px-4 py-2">Calcium chloride / gluconate</td>
+                  <td className="px-4 py-2">↑ extracellular [Ca²⁺] → ↑ Ca²⁺ available for excitation-contraction coupling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Signalling diagram supports the mechanism table */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Inotrope Signalling Pathways</h2>
+          <InotropeSignallingDiagram />
+        </div>
+
+        {/* Interactive receptor diagram bridges receptors → individual agents */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Selectivity</h2>
+          <p className="text-foreground/90 leading-relaxed mb-4">
+            Use this tool to visualise how receptor activity changes with dose for each agent — a useful bridge between receptor theory and the agent-by-agent profiles below.
+          </p>
+          <VasoactiveReceptorDiagram />
+        </div>
+
+        {/* ================= 5. INDIVIDUAL AGENTS — VASOPRESSORS ================= */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Vasopressors</h2>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Agents whose primary role is to raise systemic vascular resistance and mean arterial pressure, predominantly via α₁ or V₁ receptors.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Noradrenaline (Norepinephrine)</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Primary neurotransmitter at postganglionic sympathetic nerve terminals. <strong>Predominantly α₁ agonist</strong> with
+            some β₁ activity but minimal β₂ effect.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Dose range:</strong> 0.01–1.0 µg/kg/min (typically 0.05–0.3 µg/kg/min)</li>
+            <li><strong>Haemodynamic effect:</strong> ↑ SVR, ↑ MAP, ↑ diastolic BP. Reflex bradycardia may occur</li>
+            <li><strong>First-line vasopressor</strong> in septic shock (Surviving Sepsis Campaign 2021)</li>
+            <li><strong>Must be given via central venous access</strong> — extravasation causes tissue necrosis</li>
+          </ul>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            Unlike adrenaline, noradrenaline has minimal β₂ effect → no vasodilation, no bronchodilation,
+            no significant hyperglycaemia or hypokalaemia.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Phenylephrine</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            Synthetic <strong>pure α₁ agonist</strong>. No β-receptor activity. Causes predictable vasoconstriction without
+            direct cardiac stimulation. Reflex bradycardia is common.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Bolus:</strong> 50–100 µg IV for acute hypotension (e.g., spinal-induced)</li>
+            <li><strong>Infusion:</strong> 0.25–1.0 µg/kg/min</li>
+            <li><strong>Advantages:</strong> predictable response, no tachycardia, safe in peripheral IV</li>
+            <li><strong>Obstetric use:</strong> preferred vasopressor for spinal hypotension in caesarean section (↓ fetal acidosis vs ephedrine)</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Metaraminol</h3>
+          <ul className="text-foreground/90 space-y-1">
+            <li>Predominantly indirect sympathomimetic with direct α₁ agonism</li>
+            <li>Bolus: 0.5–1 mg IV. Infusion: 0.5–5 mg/hr</li>
+            <li>Acts as a false transmitter — displaces NA but is a weaker agonist → tachyphylaxis</li>
+            <li>Longer acting than phenylephrine (15–20 min). Causes reflex bradycardia</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Ephedrine</h3>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Indirect sympathomimetic</strong> — displaces noradrenaline from vesicles + weak direct α and β agonism</li>
+            <li>Mixed α and β effects → ↑ HR, ↑ BP, bronchodilation</li>
+            <li>Bolus: 3–6 mg IV. Duration 10–15 min. Tachyphylaxis with repeated doses</li>
+            <li>Crosses placenta → traditionally used in obstetric hypotension (now largely replaced by phenylephrine)</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Vasopressin & Terlipressin</h3>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Vasopressin</strong> (ADH) is a nonapeptide hormone acting on V₁ (vascular smooth muscle → vasoconstriction),
+            V₂ (collecting duct → water reabsorption), and V₃/V1b (anterior pituitary → ACTH release) receptors.
+          </p>
+          <ul className="text-foreground/90 space-y-1">
+            <li><strong>Dose in septic shock:</strong> 0.01–0.04 units/min (added to noradrenaline, not first-line)</li>
+            <li>Catecholamine-sparing effect — particularly useful in catecholamine-refractory shock</li>
+            <li>Causes vasoconstriction via V₁ receptors even in acidotic states (unlike catecholamines)</li>
+            <li><strong>VASST trial:</strong> no mortality benefit overall but possible benefit in less severe septic shock</li>
+          </ul>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            <strong>Terlipressin</strong> is a synthetic vasopressin analogue with greater V₁ selectivity. Used in variceal
+            haemorrhage (splanchnic vasoconstriction) and hepatorenal syndrome (CONFIRM trial 2021).
+          </p>
+        </section>
+
+        {/* ================= 6. INOPRESSOR (bridge) ================= */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Inopressor</h2>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Adrenaline straddles the vasopressor/inotrope categories — its effect depends on dose.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Adrenaline (Epinephrine)</h3>
           <p className="text-foreground/90 leading-relaxed">
             Endogenous catecholamine released from the adrenal medulla (80% adrenaline, 20% noradrenaline). Acts on all
             adrenoreceptors with <strong>dose-dependent selectivity</strong>:
@@ -200,40 +321,31 @@ const VasoactiveAgentsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Noradrenaline (Norepinephrine)</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            Primary neurotransmitter at postganglionic sympathetic nerve terminals. <strong>Predominantly α₁ agonist</strong> with
-            some β₁ activity but minimal β₂ effect.
-          </p>
-          <ul className="text-foreground/90 space-y-1">
-            <li><strong>Dose range:</strong> 0.01–1.0 µg/kg/min (typically 0.05–0.3 µg/kg/min)</li>
-            <li><strong>Haemodynamic effect:</strong> ↑ SVR, ↑ MAP, ↑ diastolic BP. Reflex bradycardia may occur</li>
-            <li><strong>First-line vasopressor</strong> in septic shock (Surviving Sepsis Campaign 2021)</li>
-            <li><strong>Must be given via central venous access</strong> — extravasation causes tissue necrosis</li>
-          </ul>
-          <p className="text-foreground/90 leading-relaxed mt-2">
-            Unlike adrenaline, noradrenaline has minimal β₂ effect → no vasodilation, no bronchodilation,
-            no significant hyperglycaemia or hypokalaemia.
+        {/* ================= 7. INOTROPES & INODILATORS ================= */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Inotropes & Inodilators</h2>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Agents whose primary role is to augment myocardial contractility (and often reduce afterload).
           </p>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Phenylephrine</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Dobutamine</h3>
           <p className="text-foreground/90 leading-relaxed">
-            Synthetic <strong>pure α₁ agonist</strong>. No β-receptor activity. Causes predictable vasoconstriction without
-            direct cardiac stimulation. Reflex bradycardia is common.
+            Synthetic catecholamine. Predominantly <strong>β₁ agonist</strong> with some β₂ and minimal α₁ activity.
+            An <strong>inodilator</strong> — increases cardiac contractility while reducing afterload.
           </p>
           <ul className="text-foreground/90 space-y-1">
-            <li><strong>Bolus:</strong> 50–100 µg IV for acute hypotension (e.g., spinal-induced)</li>
-            <li><strong>Infusion:</strong> 0.25–1.0 µg/kg/min</li>
-            <li><strong>Advantages:</strong> predictable response, no tachycardia, safe in peripheral IV</li>
-            <li><strong>Obstetric use:</strong> preferred vasopressor for spinal hypotension in caesarean section (↓ fetal acidosis vs ephedrine)</li>
+            <li><strong>Dose:</strong> 2.5–20 µg/kg/min</li>
+            <li><strong>Primary indication:</strong> low cardiac output states (cardiogenic shock, post-cardiac surgery)</li>
+            <li><strong>Haemodynamics:</strong> ↑ CO, ↓ PCWP, ↓/= SVR. May ↓ MAP due to β₂ vasodilation</li>
+            <li><strong>Tachyphylaxis</strong> develops with prolonged use (β-receptor downregulation)</li>
+            <li>Racemic mixture: (+) isomer = β₁ agonist, (−) isomer = α₁ agonist</li>
           </ul>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Dopamine</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Dopamine</h3>
           <p className="text-foreground/90 leading-relaxed">
             Endogenous catecholamine precursor to noradrenaline. Dose-dependent receptor selectivity (though the traditional
             "renal-dose dopamine" concept is now largely abandoned):
@@ -250,40 +362,21 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Dobutamine</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Isoprenaline (Isoproterenol)</h3>
           <p className="text-foreground/90 leading-relaxed">
-            Synthetic catecholamine. Predominantly <strong>β₁ agonist</strong> with some β₂ and minimal α₁ activity.
-            An <strong>inodilator</strong> — increases cardiac contractility while reducing afterload.
+            Synthetic catecholamine. <strong>Non-selective β agonist</strong> (β₁ = β₂) with no α activity.
           </p>
           <ul className="text-foreground/90 space-y-1">
-            <li><strong>Dose:</strong> 2.5–20 µg/kg/min</li>
-            <li><strong>Primary indication:</strong> low cardiac output states (cardiogenic shock, post-cardiac surgery)</li>
-            <li><strong>Haemodynamics:</strong> ↑ CO, ↓ PCWP, ↓/= SVR. May ↓ MAP due to β₂ vasodilation</li>
-            <li><strong>Tachyphylaxis</strong> develops with prolonged use (β-receptor downregulation)</li>
-            <li>Racemic mixture: (+) isomer = β₁ agonist, (−) isomer = α₁ agonist</li>
+            <li><strong>Dose:</strong> 0.5–10 µg/min IV infusion</li>
+            <li><strong>Effects:</strong> ↑ HR (potent chronotrope), ↑ contractility, bronchodilation, vasodilation (β₂ → ↓ SVR, ↓ diastolic BP)</li>
+            <li><strong>Uses:</strong> symptomatic bradycardia (bridge to pacing), torsades de pointes, β-blocker overdose, heart transplant (denervated heart)</li>
+            <li>Increases myocardial O₂ demand while reducing diastolic perfusion pressure → risk of ischaemia</li>
+            <li>No longer first-line for bradycardia (atropine/pacing preferred)</li>
           </ul>
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Vasopressin & Terlipressin</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            <strong>Vasopressin</strong> (ADH) is a nonapeptide hormone acting on V₁ (vascular smooth muscle → vasoconstriction),
-            V₂ (collecting duct → water reabsorption), and V₃/V1b (anterior pituitary → ACTH release) receptors.
-          </p>
-          <ul className="text-foreground/90 space-y-1">
-            <li><strong>Dose in septic shock:</strong> 0.01–0.04 units/min (added to noradrenaline, not first-line)</li>
-            <li>Catecholamine-sparing effect — particularly useful in catecholamine-refractory shock</li>
-            <li>Causes vasoconstriction via V₁ receptors even in acidotic states (unlike catecholamines)</li>
-            <li><strong>VASST trial:</strong> no mortality benefit overall but possible benefit in less severe septic shock</li>
-          </ul>
-          <p className="text-foreground/90 leading-relaxed mt-2">
-            <strong>Terlipressin</strong> is a synthetic vasopressin analogue with greater V₁ selectivity. Used in variceal
-            haemorrhage (splanchnic vasoconstriction) and hepatorenal syndrome (CONFIRM trial 2021).
-          </p>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Phosphodiesterase III Inhibitors</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Phosphodiesterase III Inhibitors (Milrinone, Enoximone)</h3>
           <p className="text-foreground/90 leading-relaxed">
             <strong>Milrinone</strong> and <strong>enoximone</strong> inhibit PDE III, preventing breakdown of cAMP.
             This produces <strong>inodilation</strong>: ↑ contractility (cardiac muscle) and vasodilation (vascular smooth muscle).
@@ -298,7 +391,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Levosimendan</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Levosimendan</h3>
           <p className="text-foreground/90 leading-relaxed">
             <strong>Calcium sensitiser</strong> — binds to troponin C and stabilises the calcium-troponin C complex,
             enhancing contractile force without increasing intracellular calcium or myocardial oxygen demand.
@@ -313,61 +406,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Vasodilators</h2>
-          <h3 className="text-lg font-semibold text-foreground mt-4">Glyceryl Trinitrate (GTN)</h3>
-          <ul className="text-foreground/90 space-y-1">
-            <li>Organic nitrate → releases NO → ↑ cGMP → smooth muscle relaxation</li>
-            <li><strong>Predominantly venodilator</strong> at low doses → ↓ preload → ↓ LVEDP</li>
-            <li>Higher doses → arteriolar dilation → ↓ afterload</li>
-            <li>Dose: 0.5–10 µg/kg/min. Tolerance develops within 24–48 hours</li>
-            <li>Uses: myocardial ischaemia, acute heart failure, controlled hypotension</li>
-          </ul>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4">Sodium Nitroprusside (SNP)</h3>
-          <ul className="text-foreground/90 space-y-1">
-            <li>Direct NO donor → balanced arterial and venous dilation</li>
-            <li>Extremely rapid onset and offset (1–2 min). Dose: 0.5–8 µg/kg/min</li>
-            <li><strong>Cyanide toxicity:</strong> SNP releases 5 CN⁻ ions per molecule. Metabolised by rhodanase to thiocyanate (needs thiosulphate)</li>
-            <li>Signs of toxicity: tachyphylaxis, lactic acidosis, arrhythmias. Treat with hydroxocobalamin or sodium thiosulphate</li>
-            <li>Protect from light (photodegradation). Maximum duration 72 hours, max dose 1.5 mg/kg</li>
-          </ul>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Ephedrine & Metaraminol</h2>
-          <h3 className="text-lg font-semibold text-foreground mt-4">Ephedrine</h3>
-          <ul className="text-foreground/90 space-y-1">
-            <li><strong>Indirect sympathomimetic</strong> — displaces noradrenaline from vesicles + weak direct α and β agonism</li>
-            <li>Mixed α and β effects → ↑ HR, ↑ BP, bronchodilation</li>
-            <li>Bolus: 3–6 mg IV. Duration 10–15 min. Tachyphylaxis with repeated doses</li>
-            <li>Crosses placenta → traditionally used in obstetric hypotension (now largely replaced by phenylephrine)</li>
-          </ul>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4">Metaraminol</h3>
-          <ul className="text-foreground/90 space-y-1">
-            <li>Predominantly indirect sympathomimetic with direct α₁ agonism</li>
-            <li>Bolus: 0.5–1 mg IV. Infusion: 0.5–5 mg/hr</li>
-            <li>Acts as a false transmitter — displaces NA but is a weaker agonist → tachyphylaxis</li>
-            <li>Longer acting than phenylephrine (15–20 min). Causes reflex bradycardia</li>
-          </ul>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Isoprenaline (Isoproterenol)</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            Synthetic catecholamine. <strong>Non-selective β agonist</strong> (β₁ = β₂) with no α activity.
-          </p>
-          <ul className="text-foreground/90 space-y-1">
-            <li><strong>Dose:</strong> 0.5–10 µg/min IV infusion</li>
-            <li><strong>Effects:</strong> ↑ HR (potent chronotrope), ↑ contractility, bronchodilation, vasodilation (β₂ → ↓ SVR, ↓ diastolic BP)</li>
-            <li><strong>Uses:</strong> symptomatic bradycardia (bridge to pacing), torsades de pointes, β-blocker overdose, heart transplant (denervated heart)</li>
-            <li>Increases myocardial O₂ demand while reducing diastolic perfusion pressure → risk of ischaemia</li>
-            <li>No longer first-line for bradycardia (atropine/pacing preferred)</li>
-          </ul>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Digoxin</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Digoxin</h3>
           <p className="text-foreground/90 leading-relaxed">
             Cardiac glycoside from <em>Digitalis</em> species. <strong>Inhibits Na⁺/K⁺-ATPase</strong> → ↑ intracellular Na⁺ → reversal of Na⁺/Ca²⁺ exchanger → ↑ intracellular Ca²⁺ → positive inotropy.
           </p>
@@ -383,7 +422,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Glucagon</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Glucagon</h3>
           <p className="text-foreground/90 leading-relaxed">
             Pancreatic peptide hormone that acts on glucagon receptors in the heart to activate adenylyl cyclase via Gs proteins, <strong>independently of the β-receptor</strong>.
           </p>
@@ -398,7 +437,7 @@ const VasoactiveAgentsTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Calcium</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Calcium</h3>
           <p className="text-foreground/90 leading-relaxed">
             Ionised calcium is essential for excitation-contraction coupling in cardiac and smooth muscle. Supplementation increases contractility by increasing extracellular Ca²⁺ available for entry via L-type channels.
           </p>
@@ -432,13 +471,51 @@ const VasoactiveAgentsTopic = () => {
           </ul>
         </section>
 
+        {/* ================= 8. VASODILATORS ================= */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Vasodilators</h2>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Agents that reduce vascular tone — used for hypertensive crises, controlled hypotension, acute heart failure, and myocardial ischaemia.
+          </p>
+        </section>
+
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Methylene Blue</h2>
+          <h3 className="text-xl font-serif font-bold text-foreground">Glyceryl Trinitrate (GTN)</h3>
+          <ul className="text-foreground/90 space-y-1">
+            <li>Organic nitrate → releases NO → ↑ cGMP → smooth muscle relaxation</li>
+            <li><strong>Predominantly venodilator</strong> at low doses → ↓ preload → ↓ LVEDP</li>
+            <li>Higher doses → arteriolar dilation → ↓ afterload</li>
+            <li>Dose: 0.5–10 µg/kg/min. Tolerance develops within 24–48 hours</li>
+            <li>Uses: myocardial ischaemia, acute heart failure, controlled hypotension</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Sodium Nitroprusside (SNP)</h3>
+          <ul className="text-foreground/90 space-y-1">
+            <li>Direct NO donor → balanced arterial and venous dilation</li>
+            <li>Extremely rapid onset and offset (1–2 min). Dose: 0.5–8 µg/kg/min</li>
+            <li><strong>Cyanide toxicity:</strong> SNP releases 5 CN⁻ ions per molecule. Metabolised by rhodanase to thiocyanate (needs thiosulphate)</li>
+            <li>Signs of toxicity: tachyphylaxis, lactic acidosis, arrhythmias. Treat with hydroxocobalamin or sodium thiosulphate</li>
+            <li>Protect from light (photodegradation). Maximum duration 72 hours, max dose 1.5 mg/kg</li>
+          </ul>
+        </section>
+
+        {/* ================= 9. SALVAGE THERAPY ================= */}
+        <section className="mb-6">
+          <h2 className="text-2xl font-serif font-bold text-foreground border-b border-border pb-2">Salvage Therapy for Refractory Vasoplegia</h2>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Non-adrenergic, non-vasopressinergic agents reserved for shock unresponsive to conventional therapy.
+          </p>
+        </section>
+
+        <section className="mb-10">
+          <h3 className="text-xl font-serif font-bold text-foreground">Methylene Blue</h3>
           <p className="text-foreground/90 leading-relaxed">
             A phenothiazine-derived dye used as a non-adrenergic vasoconstrictor in refractory vasoplegic shock. It targets the NO–cGMP pathway that drives pathological vasodilation when adrenergic and vasopressinergic agents are failing or maximally dosed.
           </p>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4">Mechanism of action</h3>
+          <h4 className="text-lg font-semibold text-foreground mt-4">Mechanism of action</h4>
           <ul className="text-foreground/90 space-y-1 list-disc list-inside">
             <li><strong>Inhibits inducible nitric oxide synthase (iNOS)</strong> — reducing endothelial NO production driven by sepsis-/CPB-related cytokines (TNF-α, IL-1, IL-6).</li>
             <li><strong>Inhibits soluble guanylate cyclase (sGC)</strong> in vascular smooth muscle — preventing the NO → cGMP → PKG → MLCK-dephosphorylation cascade that causes vasodilation.</li>
@@ -446,7 +523,7 @@ const VasoactiveAgentsTopic = () => {
             <li>Also inhibits monoamine oxidase A and is itself a weak serotonin reuptake inhibitor — explains the serotonin-syndrome interaction.</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4">Indications</h3>
+          <h4 className="text-lg font-semibold text-foreground mt-4">Indications</h4>
           <ul className="text-foreground/90 space-y-1 list-disc list-inside">
             <li><strong>Refractory vasoplegic septic shock</strong> — unresponsive to noradrenaline + vasopressin (± adrenaline) and adequately fluid-resuscitated.</li>
             <li><strong>Post-cardiopulmonary bypass vasoplegia</strong> — strongest evidence base; reduces noradrenaline requirement, ICU LOS and mortality (Levin 2004 RCT).</li>
@@ -455,7 +532,7 @@ const VasoactiveAgentsTopic = () => {
             <li><strong>Methaemoglobinaemia</strong> (different indication, different dose — see below).</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4">Dosing</h3>
+          <h4 className="text-lg font-semibold text-foreground mt-4">Dosing</h4>
           <div className="overflow-x-auto my-3">
             <table className="min-w-full text-sm border border-border rounded-lg">
               <thead>
@@ -485,7 +562,7 @@ const VasoactiveAgentsTopic = () => {
             </table>
           </div>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4">Cautions &amp; adverse effects</h3>
+          <h4 className="text-lg font-semibold text-foreground mt-4">Cautions &amp; adverse effects</h4>
           <ul className="text-foreground/90 space-y-1 list-disc list-inside">
             <li><strong>G6PD deficiency</strong> — risk of acute haemolytic anaemia; relative contra-indication.</li>
             <li><strong>Serotonergic drugs</strong> (SSRIs, SNRIs, tramadol, MAO-inhibitors) — risk of serotonin syndrome via MAO-A inhibition; avoid where possible.</li>
@@ -495,31 +572,17 @@ const VasoactiveAgentsTopic = () => {
             <li>High doses may paradoxically <em>cause</em> methaemoglobinaemia, worsening oxygen delivery.</li>
           </ul>
 
-          <h3 className="text-lg font-semibold text-foreground mt-4">Place in therapy</h3>
+          <h4 className="text-lg font-semibold text-foreground mt-4">Place in therapy</h4>
           <p className="text-foreground/90 leading-relaxed">
             Surviving Sepsis Campaign 2021 lists methylene blue as a salvage option for catecholamine-refractory vasoplegic shock alongside angiotensin II and high-dose vasopressin. The strongest evidence is in post-CPB vasoplegia, where early use (within 6 h of diagnosis) reduces noradrenaline dose, ICU length of stay and mortality. Increasingly used earlier in septic vasoplegia, though a clear mortality benefit remains unproven.
           </p>
         </section>
 
+        {/* ================= 10. INTEGRATED COMPARISON ================= */}
         <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Molecular Structures</h2>
-          <VasoactiveStructures />
-        </div>
-
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Inotrope Signalling Pathways</h2>
-          <InotropeSignallingDiagram />
-        </div>
-
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Receptor Diagram</h2>
-          <VasoactiveReceptorDiagram />
-        </div>
-
-        <div className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Haemodynamic Effects Comparison</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Haemodynamic Effects — Side-by-Side Comparison</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
-            The table below summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change.
+            Having reviewed each agent individually, this consolidated table summarises the expected haemodynamic effects of commonly used inotropes and vasopressors at standard clinical doses. Arrows indicate direction and magnitude of change.
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm border border-border rounded-lg">
@@ -535,9 +598,12 @@ const VasoactiveAgentsTopic = () => {
               </thead>
               <tbody className="text-foreground/90">
                 {[
+                  { agent: "Noradrenaline", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↑", mvo2: "↑" },
+                  { agent: "Phenylephrine", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑↑", co: "↓", mvo2: "↑" },
+                  { agent: "Metaraminol", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑", co: "↔", mvo2: "↑" },
+                  { agent: "Vasopressin", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↓", mvo2: "↔" },
                   { agent: "Adrenaline (low)", hr: "↑", map: "↑", svr: "↓/↔", co: "↑↑", mvo2: "↑↑" },
                   { agent: "Adrenaline (high)", hr: "↑↑", map: "↑↑", svr: "↑↑", co: "↑↑", mvo2: "↑↑↑" },
-                  { agent: "Noradrenaline", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↑", mvo2: "↑" },
                   { agent: "Dobutamine", hr: "↑", map: "↔/↑", svr: "↓", co: "↑↑", mvo2: "↑↑" },
                   { agent: "Dopamine (low)", hr: "↔", map: "↔", svr: "↔", co: "↔/↑", mvo2: "↔" },
                   { agent: "Dopamine (high)", hr: "↑↑", map: "↑↑", svr: "↑↑", co: "↑", mvo2: "↑↑" },
@@ -545,11 +611,8 @@ const VasoactiveAgentsTopic = () => {
                   { agent: "Milrinone", hr: "↔/↑", map: "↓", svr: "↓↓", co: "↑↑", mvo2: "↔/↑" },
                   { agent: "Levosimendan", hr: "↔/↑", map: "↓", svr: "↓", co: "↑↑", mvo2: "↔" },
                   { agent: "Digoxin", hr: "↓", map: "↔", svr: "↔", co: "↑", mvo2: "↔/↓" },
-                  { agent: "Vasopressin", hr: "↔/↓", map: "↑↑", svr: "↑↑", co: "↔/↓", mvo2: "↔" },
-                  { agent: "Phenylephrine", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑↑", co: "↓", mvo2: "↑" },
-                  { agent: "Metaraminol", hr: "↓ (reflex)", map: "↑↑", svr: "↑↑", co: "↔", mvo2: "↑" },
-                  { agent: "Calcium", hr: "↔", map: "↑", svr: "↔/↑", co: "↑", mvo2: "↑" },
                   { agent: "Glucagon", hr: "↑", map: "↑", svr: "↔", co: "↑", mvo2: "↑" },
+                  { agent: "Calcium", hr: "↔", map: "↑", svr: "↔/↑", co: "↑", mvo2: "↑" },
                 ].map((row) => (
                   <tr key={row.agent} className="border-b border-border/50 hover:bg-muted/30 transition-colors">
                     <td className="px-3 py-2 font-medium">{row.agent}</td>
@@ -564,7 +627,7 @@ const VasoactiveAgentsTopic = () => {
             </table>
           </div>
           <p className="text-xs text-muted-foreground mt-2">
-            ↑↑↑ = marked increase, ↑↑ = moderate increase, ↑ = mild increase, ↔ = no significant change, ↓ = decrease. Effects are dose-dependent and vary with clinical context.
+            ↑↑↑ = marked increase, ↑↑ = moderate increase, ↑ = mild increase, ↔ = no significant change, ↓ = decrease. Effects are dose-dependent and vary with clinical context. Agents grouped: vasopressors → inopressor → inotropes/inodilators.
           </p>
         </div>
 
@@ -581,6 +644,7 @@ const VasoactiveAgentsTopic = () => {
             "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand",
             "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
             "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
+            "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC",
           ]}
         />
 
