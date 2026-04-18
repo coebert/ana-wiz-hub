@@ -21,6 +21,7 @@ export default tseslint.config(
       "lovable-local": {
         rules: {
           "no-hex-alpha-concat": noHexAlphaConcat,
+          "diagram-needs-heading": diagramNeedsHeading,
         },
       },
     },
@@ -29,6 +30,7 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": "off",
       "lovable-local/no-hex-alpha-concat": "error",
+      "lovable-local/diagram-needs-heading": "error",
     },
   },
 );
