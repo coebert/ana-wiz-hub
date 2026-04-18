@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import { GasLawsDiagram } from "@/components/diagrams/GasLawsDiagram";
 import { CriticalTemperatureDiagram } from "@/components/diagrams/CriticalTemperatureDiagram";
+import { AndrewsIsothermsDiagram } from "@/components/diagrams/AndrewsIsothermsDiagram";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
@@ -213,6 +214,89 @@ const GasLawsTopic = () => {
               vapour headspace and prevent dangerous pressure rises if the cylinder warms. As N₂O vaporises, latent
               heat of vaporisation cools the cylinder and the vapour pressure (and hence delivered pressure) actually
               <em> falls</em> during heavy use — frost may form on the outside of the cylinder.
+            </p>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Andrews' Isotherms — N₂O on a P–V Diagram</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Thomas Andrews' classic 1869 experiments on CO₂ produced the first family of isotherms — curves of
+            pressure against volume at constant temperature — that revealed the nature of the critical point. The same
+            picture applies to N₂O, which is the anaesthetic gas most often discussed in these terms because its
+            critical temperature (36.5 °C) sits within the clinical range.
+          </p>
+
+          <div className="bg-card rounded-xl border border-border p-6 mt-4">
+            <h3 className="text-lg font-serif font-bold text-foreground mb-1">Interactive P–V Diagram</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Drag the temperature slider to see the isotherm change shape. Below Tc the curve enters the two-phase
+              dome and is replaced by a horizontal tie-line at the saturated vapour pressure (liquid and vapour
+              coexist). At Tc the inflection becomes a single point — the critical point. Above Tc the gas can no
+              longer be liquefied at any pressure and the isotherm approaches a smooth Boyle's-law hyperbola.
+            </p>
+            <AndrewsIsothermsDiagram />
+          </div>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">How to read the diagram</h3>
+          <ul className="text-foreground/90 leading-relaxed mt-2 list-disc pl-6 space-y-2">
+            <li>
+              <strong>Sub-critical isotherms (T &lt; Tc).</strong> Starting from large volume (right) and compressing
+              the gas, pressure rises along the vapour branch until it meets the dashed dome at the saturated-vapour
+              point. Further compression occurs at <em>constant pressure</em> (the horizontal tie-line) as vapour
+              condenses to liquid — this is the two-phase region. Once all the vapour is liquid (saturated-liquid
+              point on the left of the dome), pressure rises almost vertically because liquids are nearly
+              incompressible.
+            </li>
+            <li>
+              <strong>The critical isotherm (T = Tc, 36.5 °C for N₂O).</strong> The horizontal tie-line shrinks to a
+              single point — the <strong>critical point</strong> — where the densities of liquid and vapour become
+              equal and the meniscus disappears (critical opalescence). The isotherm has a point of inflection here
+              with (∂P/∂V)<sub>T</sub> = 0 and (∂²P/∂V²)<sub>T</sub> = 0.
+            </li>
+            <li>
+              <strong>Super-critical isotherms (T &gt; Tc).</strong> No phase change is possible at any pressure. The
+              substance exists as a single fluid phase whose density rises smoothly with pressure. At high T the curve
+              tends to PV = constant (Boyle's law).
+            </li>
+            <li>
+              <strong>The dashed dome</strong> is the locus of all saturated-liquid and saturated-vapour points; its
+              apex is the critical point. Inside the dome, liquid and vapour coexist; outside it, only one phase
+              exists.
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-serif font-bold text-foreground mt-6">Pseudo-critical temperature</h3>
+          <p className="text-foreground/90 leading-relaxed mt-2">
+            For a <em>mixture</em> of gases there is no single critical temperature. Instead a{" "}
+            <strong>pseudo-critical temperature</strong> is defined: the temperature below which the components of
+            the mixture may separate into two phases. Two clinically important examples:
+          </p>
+          <ul className="text-foreground/90 leading-relaxed mt-2 list-disc pl-6 space-y-2">
+            <li>
+              <strong>Air (≈79 % N₂, 21 % O₂):</strong> pseudo-critical temperature −141 °C — the temperature below
+              which air, if compressed, can separate into liquid O₂ and gaseous N₂. Industrially exploited in
+              fractional distillation of liquid air to produce medical O₂.
+            </li>
+            <li>
+              <strong>Entonox (50 % N₂O / 50 % O₂):</strong> pseudo-critical temperature{" "}
+              <strong>−5.5 °C at 137 bar</strong> (the cylinder pressure). Below this, the N₂O can liquefy out and
+              pool at the bottom of the cylinder, leaving an O₂-rich gas to be delivered first and a hypoxic
+              N₂O-rich mixture later — the so-called <em>Poynting effect failure</em>. Cylinders left in cold
+              environments must be re-warmed (≥10 °C for at least 2 h, or 24 h with inversion) and inverted three
+              times before clinical use.
+            </li>
+          </ul>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Clinical Application</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              Andrews' isotherms explain why N₂O behaves so differently from O₂ in storage: N₂O is operated <em>just
+              below</em> its Tc, sitting inside the two-phase dome where vapour pressure is essentially independent
+              of cylinder volume. O₂ at room temperature lies on a super-critical isotherm — far above its Tc of
+              −118 °C — so its cylinder pressure tracks contents linearly. The same diagram also predicts that on a
+              hot day (&gt;36.5 °C) an N₂O cylinder transitions to a super-critical state, the liquid disappears, and
+              the contents can no longer be estimated by weighing alone.
             </p>
           </div>
         </section>
