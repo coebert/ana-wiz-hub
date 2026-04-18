@@ -27,11 +27,12 @@ const tocItems = [
 const InfectiousDiseaseIcuTopic = () => {
   return (
     <SectionLayout title="Infectious Disease in ICU" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <InfectionSiteMapDiagram />
       <section className="space-y-8 mb-10">
 
         {/* ---- Respiratory infections ---- */}
-        <div>
+        <div id="toc-respiratory" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Pneumonia is the most common infection requiring ICU admission. Causative organisms differ between community-acquired (CAP), hospital-acquired (HAP) and ventilator-associated (VAP) pneumonia.
@@ -130,7 +131,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Gram-Positive vs Gram-Negative Sepsis ---- */}
-        <div>
+        <div id="toc-sepsis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gram-Positive vs Gram-Negative Sepsis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The distinction between Gram-positive and Gram-negative organisms is fundamental to understanding sepsis pathophysiology, empiric antibiotic selection, and clinical presentation. While the final common pathway of septic shock is similar, the initiating mechanisms and clinical nuances differ.
@@ -243,7 +244,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- CNS Infections ---- */}
-        <div>
+        <div id="toc-cns" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">CNS Infections</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Meningitis and encephalitis present with reduced consciousness, seizures and raised ICP — often requiring ICU for airway protection and ICP management.
@@ -284,7 +285,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Intra-abdominal ---- */}
-        <div>
+        <div id="toc-abdo" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-abdominal Sepsis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Abdominal sepsis accounts for ~20% of ICU sepsis. Source control (surgery or drainage) is the critical intervention — antibiotics alone are insufficient.
@@ -333,7 +334,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Bloodstream / Line infections ---- */}
-        <div>
+        <div id="toc-bloodstream" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bloodstream & Line Infections</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Central line-associated bloodstream infections (CLABSIs) are a major preventable cause of ICU morbidity. The 'Matching Michigan' and similar bundles have reduced CLABSI rates significantly.
@@ -355,7 +356,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Fungal Infections ---- */}
-        <div>
+        <div id="toc-fungal" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fungal Infections in ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Invasive fungal infections carry high mortality (30–60%) and are increasing in prevalence. ICU patients are at risk due to broad-spectrum antibiotics, central lines, TPN, immunosuppression, and prolonged stay.
@@ -401,7 +402,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Endocarditis ---- */}
-        <div>
+        <div id="toc-endocarditis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Endocarditis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Modified Duke criteria for diagnosis. Common organisms: <em>S. aureus</em> (acute, IVDU), <em>Streptococci</em> (subacute, native valve), <em>Enterococcus</em>, HACEK group. ICU admission for septic shock, heart failure, or embolic complications.
@@ -419,7 +420,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- C. difficile ---- */}
-        <div>
+        <div id="toc-cdiff" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3"><em>Clostridioides difficile</em> Infection</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Toxin-mediated colitis associated with antibiotic exposure (fluoroquinolones, cephalosporins, clindamycin). Severity ranges from mild diarrhoea to fulminant colitis with toxic megacolon.
@@ -437,7 +438,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Viral infections ---- */}
-        <div>
+        <div id="toc-viral" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viral Infections in ICU</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -475,7 +476,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Drug-Resistant Organisms ---- */}
-        <div>
+        <div id="toc-mdr" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug-Resistant Organisms</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Antimicrobial resistance (AMR) is a critical challenge in ICU. Prolonged antibiotic courses, immunosuppression, invasive devices, and cross-contamination drive selection and transmission of multi-drug resistant organisms (MDROs).
@@ -625,7 +626,7 @@ const InfectiousDiseaseIcuTopic = () => {
         </div>
 
         {/* ---- Infection control ---- */}
-        <div>
+        <div id="toc-control" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
           <div className="space-y-2">
             {[
@@ -644,6 +645,7 @@ const InfectiousDiseaseIcuTopic = () => {
 
       </section>
 
+      <div id="toc-synthesis" className="scroll-mt-24" />
       <SynthesisBlock
         title="ICU Infections — Bug, Drug & Pearl"
         subtitle="The headline pathogens and empirical regimens for the major ICU infection syndromes."

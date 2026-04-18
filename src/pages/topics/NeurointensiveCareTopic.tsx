@@ -27,8 +27,9 @@ const tocItems = [
 const NeurointensiveCareTopic = () => {
   return (
     <SectionLayout title="Neurointensive Care" subtitle="FRCA / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="toc-tbi" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Traumatic Brain Injury (TBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Primary injury occurs at impact (contusion, DAI, haematoma). Secondary injury (hypoxia, hypotension, pyrexia, hyperglycaemia) is preventable and the focus of ICU management.
@@ -53,7 +54,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-status" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Status Epilepticus</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness. Medical emergency — time-critical escalation.
@@ -72,7 +73,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-sah" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Subarachnoid Haemorrhage (SAH)</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -86,7 +87,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-bsd" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brain Death & Brainstem Testing</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
             UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered).
@@ -106,7 +107,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-sci" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury (SCI) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Acute traumatic SCI requires a multidisciplinary ICU approach. The level and completeness of injury determines respiratory, cardiovascular, and autonomic consequences. Assume spinal instability until cleared. ASIA (American Spinal Injury Association) impairment scale classifies injury severity A–E.
@@ -243,7 +244,7 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </div>
-        <div>
+        <div id="toc-icp" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
@@ -379,7 +380,7 @@ const NeurointensiveCareTopic = () => {
           <MultimodalNeuromonitoringDiagram />
         </div>
 
-        <div>
+        <div id="toc-encephalitis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autoimmune Encephalitis — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
@@ -485,7 +486,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-gbs" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain-Barré Syndrome (GBS) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             GBS is an acute immune-mediated polyradiculoneuropathy causing ascending flaccid paralysis. ~25% require ICU admission for respiratory failure or autonomic instability. Mortality ~5%, but significant long-term morbidity. Two-thirds have preceding infection (Campylobacter jejuni, CMV, EBV, Zika).
@@ -666,6 +667,7 @@ const NeurointensiveCareTopic = () => {
         </div>
       </section>
 
+      <div id="toc-synthesis" className="scroll-mt-24" />
       <SynthesisBlock
         title="Neurointensive Care — At a Glance"
         subtitle="Targets and triggers across the major neurological emergencies, from TBI through brainstem death."
