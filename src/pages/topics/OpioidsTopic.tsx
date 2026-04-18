@@ -356,8 +356,7 @@ const OpioidsTopic = () => {
           <NaloxoneDiagram />
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Comparative Table</h2>
+        <section id="toc-synthesis" className="mb-10 scroll-mt-24">
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
