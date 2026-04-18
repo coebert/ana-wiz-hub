@@ -47,8 +47,7 @@ const OpioidsTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Opioid Receptors</h2>
+        <section id="toc-receptors" className="mb-10 scroll-mt-24">
           <p className="text-foreground/90 leading-relaxed">
             Three classical receptors, all G-protein coupled (Gi/Go): <strong>µ (mu/MOP)</strong> — analgesia (supraspinal and
             spinal), respiratory depression, euphoria, physical dependence, miosis, ↓GI motility, bradycardia.
