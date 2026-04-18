@@ -236,6 +236,130 @@ const ABGAnalyserTopic = () => {
             ))}
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Optodes (Optical Sensors)</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            An <strong>optode</strong> (or optrode) is an optical analogue of an electrochemical electrode. Instead of
+            generating a current or potential, it measures the analyte by changes in the <strong>fluorescence</strong>
+            (or absorbance) of a chemical indicator immobilised at the tip of an optical fibre. Optodes are the basis
+            of modern point-of-care and intravascular blood-gas monitoring, single-use cassette analysers (e.g.
+            i-STAT-style cartridges, GEM Premier, Radiometer ABL), and CPB in-line monitors.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Principle of operation</h3>
+          <ol className="list-decimal pl-6 space-y-2 text-foreground/90">
+            <li>
+              An <strong>excitation light</strong> (LED or laser) of a specific wavelength is delivered down a fibre-
+              optic cable to a <strong>fluorophore</strong> embedded in a polymer matrix at the sensor tip.
+            </li>
+            <li>
+              The fluorophore absorbs photons and re-emits at a longer wavelength (Stokes shift). The intensity,
+              wavelength shift, or <strong>fluorescence decay time</strong> depends on the local concentration of the
+              analyte (O₂, CO₂, H⁺ etc.).
+            </li>
+            <li>
+              The emitted light returns up the same (or a parallel) fibre to a photodetector, where the signal is
+              processed to give the analyte concentration.
+            </li>
+          </ol>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Specific optode chemistries</h3>
+          <div className="overflow-x-auto rounded-xl border border-border bg-card">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50">
+                <tr className="border-b border-border">
+                  <th className="text-left p-3 font-semibold text-foreground">Analyte</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Indicator dye</th>
+                  <th className="text-left p-3 font-semibold text-foreground">Mechanism</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">PO₂</td>
+                  <td className="p-3 align-top text-foreground/80">Ruthenium / platinum porphyrin complexes</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    O₂ <strong>quenches</strong> fluorescence by collisional energy transfer. Quantified by the
+                    Stern–Volmer relation: I₀/I = 1 + K·[O₂]. Higher PO₂ → less fluorescence and shorter decay time.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">pH</td>
+                  <td className="p-3 align-top text-foreground/80">Hydroxypyrene-trisulphonate (HPTS) or fluorescein derivatives</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    Protonated and deprotonated forms of the dye fluoresce at different intensities/wavelengths.
+                    Ratio of the two emission peaks gives pH directly (ratiometric — independent of dye concentration
+                    or LED drift).
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 align-top font-medium text-foreground">PCO₂</td>
+                  <td className="p-3 align-top text-foreground/80">pH optode behind a CO₂-permeable membrane (Severinghaus principle)</td>
+                  <td className="p-3 align-top text-foreground/80">
+                    CO₂ diffuses across a silicone or Teflon membrane into a thin bicarbonate film, generating H⁺
+                    that the underlying pH optode measures. PCO₂ is calculated from the Henderson–Hasselbalch
+                    relation.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Stern–Volmer equation (PO₂ optode)</h3>
+          <div className="bg-muted/40 rounded-lg p-4 border border-border">
+            <p className="text-foreground font-mono text-center">
+              I₀ / I = τ₀ / τ = 1 + K<sub>SV</sub> · PO₂
+            </p>
+            <p className="text-sm text-muted-foreground text-center mt-2">
+              I₀, τ₀ = fluorescence intensity / decay time in the absence of O₂; I, τ = values at PO₂. K<sub>SV</sub>
+              is the Stern–Volmer quenching constant.
+            </p>
+          </div>
+          <p className="text-foreground/90 leading-relaxed mt-3">
+            Modern systems prefer measuring <strong>fluorescence lifetime (τ)</strong> rather than absolute intensity
+            because lifetime is unaffected by dye photobleaching, fibre bending losses, or LED ageing — making the
+            sensor inherently self-calibrating.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Advantages over conventional electrodes</h3>
+          <ul className="list-disc pl-6 space-y-1 text-foreground/90">
+            <li><strong>No reference electrode</strong> required — fully optical, avoids the junction-potential errors of glass and Clark electrodes.</li>
+            <li><strong>No O₂ consumption</strong> (unlike the Clark electrode which consumes O₂ at its cathode), so optodes are stable in low-flow situations and small samples.</li>
+            <li><strong>Miniaturisable</strong> to &lt;500 µm diameter — suitable for intravascular and intraparenchymal use (e.g. brain tissue PtO₂ probes — Licox, Neurotrend).</li>
+            <li><strong>Disposable, single-use cassettes</strong> — pre-calibrated, no daily quality-control runs, no electrode maintenance.</li>
+            <li><strong>MRI-compatible</strong> — fibre-optic, no metal parts or electromagnetic interference.</li>
+            <li><strong>Ratiometric pH measurement</strong> is independent of light-source drift and ambient illumination.</li>
+            <li>Faster equilibration than the Severinghaus electrode for PCO₂.</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Limitations</h3>
+          <ul className="list-disc pl-6 space-y-1 text-foreground/90">
+            <li><strong>Photobleaching</strong> of the fluorophore over time — limits sensor lifespan to hours–days.</li>
+            <li><strong>Temperature dependence</strong> — fluorescence quenching is temperature-sensitive; built-in thermistor and software correction required.</li>
+            <li>PO₂ optodes are <strong>non-linear</strong> (Stern–Volmer), most accurate at low PO₂; high-PaO₂ readings less precise than the Clark electrode.</li>
+            <li>More expensive per disposable cassette than reusable electrodes for high-throughput laboratories.</li>
+            <li>Fibre fragility, particularly for indwelling intravascular probes.</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-5 mb-2">Clinical applications</h3>
+          <ul className="list-disc pl-6 space-y-1 text-foreground/90">
+            <li><strong>Point-of-care blood-gas analysers</strong> using disposable cartridges (i-STAT, epoc, GEM Premier).</li>
+            <li><strong>Intravascular continuous blood-gas monitoring</strong> (Paratrend / Neurotrend, historically) — a 0.5 mm catheter with three optodes (PO₂, PCO₂, pH) plus a thermocouple, sited via an arterial cannula.</li>
+            <li><strong>Cardiopulmonary bypass</strong> in-line gas monitors for continuous PO₂ / PCO₂ / pH on the venous and arterial sides of the circuit (e.g. Terumo CDI 500).</li>
+            <li><strong>Brain tissue oxygenation (PbtO₂)</strong> probes (Licox, Neurovent-PTO) for monitoring after traumatic brain injury and subarachnoid haemorrhage.</li>
+            <li><strong>Transcutaneous CO₂ / O₂</strong> monitoring in neonates and during sleep studies.</li>
+          </ul>
+
+          <div className="bg-secondary/30 rounded-lg p-4 mt-4 border border-border">
+            <p className="text-sm font-medium text-foreground">Exam pearl</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The single most testable fact: a PO₂ optode works by <strong>fluorescence quenching</strong> of a
+              ruthenium dye, described by the <strong>Stern–Volmer equation</strong>, and — unlike the Clark electrode
+              — does <strong>not consume oxygen</strong>. The pH optode is <strong>ratiometric</strong>; the PCO₂
+              optode is essentially a Severinghaus electrode with the inner pH glass replaced by a pH optode.
+            </p>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -245,6 +369,7 @@ const ABGAnalyserTopic = () => {
         "Severinghaus: CO₂ crosses Teflon membrane → CO₂+H₂O→H⁺+HCO₃⁻ → pH change measured by inner glass electrode. Slowest response (~60–120s).",
         "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO₂ in breathing circuit.",
         "α-stat vs pH-stat: α-stat (uncorrected at 37°C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.",
+        "Optodes: fibre-optic fluorescence sensors. PO₂ optode uses ruthenium dye fluorescence quenching (Stern–Volmer); pH optode is ratiometric; PCO₂ optode = Severinghaus with pH optode inside. Don't consume O₂, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.",
       ]} />
 
       <QuizSection questions={abgAnalyserQuestions} />
