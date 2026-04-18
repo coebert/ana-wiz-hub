@@ -14,17 +14,26 @@ import { SeeAlso } from "@/components/SeeAlso";
 const RegionalAnaesthesiaTopic = () => {
   return (
     <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <DermatomeMapDiagram />
-      <NerveDermatomeOverlayDiagram />
-      <SpinalBlockHeightAssessmentTool />
-      <RegionalBlocksDiagram />
-      <NeuraxialNeedlesDiagram />
+      <section className="mb-10">
+        <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
+        <p className="text-muted-foreground leading-relaxed mb-4">
+          Knowing surface dermatomes and their corresponding spinal levels underpins every regional and neuraxial technique — for planning block height, predicting surgical coverage, and detecting unexpectedly high blocks.
+        </p>
+        <div className="space-y-6">
+          <DermatomeMapDiagram />
+          <NerveDermatomeOverlayDiagram />
+        </div>
+      </section>
+
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Anaesthesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Intrathecal injection of local anaesthetic ± opioid into the subarachnoid space, typically at L3/4 or L4/5.
           </p>
+          <div className="my-4">
+            <NeuraxialNeedlesDiagram />
+          </div>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Heavy (Hyperbaric) Bupivacaine</p>
