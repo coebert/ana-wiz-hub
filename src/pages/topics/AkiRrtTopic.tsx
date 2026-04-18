@@ -11,11 +11,23 @@ import { akiRrtQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
+const tocItems = [
+  { id: "toc-kdigo", label: "KDIGO Staging" },
+  { id: "toc-ci-aki", label: "CI-AKI" },
+  { id: "toc-drug-dosing", label: "Drug Dosing" },
+  { id: "toc-indications", label: "RRT Indications" },
+  { id: "toc-modalities", label: "Modalities" },
+  { id: "toc-circuit", label: "Circuit" },
+  { id: "toc-anticoagulation", label: "Anticoagulation" },
+  { id: "toc-trials", label: "Key Trials" },
+];
+
 const AkiRrtTopic = () => {
   return (
     <SectionLayout title="Acute Kidney Injury & RRT" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+      <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
-        <section className="mb-10">
+        <section id="toc-kdigo" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">KDIGO Definition & Staging</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             The <strong>KDIGO 2012</strong> consensus harmonised earlier RIFLE and AKIN definitions. AKI is diagnosed by
