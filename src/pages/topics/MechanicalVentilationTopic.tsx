@@ -46,7 +46,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="toc-modes" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Ventilator Modes</h2>
           <div className="space-y-3">
             {[
