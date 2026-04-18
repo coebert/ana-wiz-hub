@@ -662,12 +662,10 @@ const VasoactiveAgentsTopic = () => {
           ]}
         />
 
-      <ReferencesList topicId="vasoactive-agents" />
-
+        <QuizSection questions={vasoactiveAgentsQuiz} />
+        <ReferencesList topicId="vasoactive-agents" />
         <SeeAlso topicId="vasoactive-agents" />
         <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive & Inotropic Agents" />
-
-        <QuizSection questions={vasoactiveAgentsQuiz} />
       </div>
     </SectionLayout>
   );
