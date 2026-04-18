@@ -182,46 +182,49 @@ const EchoDiagram = () => {
           <g clipPath="url(#sector-clip)">
             {/* Anterior chest wall echo (bright top band) */}
             <rect x="60" y="48" width="280" height="6" fill="#e8e8c8" opacity="0.5" />
-            {/* RV — small triangular anterior chamber */}
+            {/* RV */}
             <path d="M 110,58 Q 150,55 215,62 L 220,95 Q 165,90 115,92 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="150" y="80" fontSize="9" fill="#fff8d0" fontWeight="700">RV</text>
-            {/* IVS — bright myocardial echo */}
+            {/* IVS */}
             <path d="M 115,92 Q 175,98 240,108 L 240,118 Q 175,108 115,103 Z" fill="#c8c098" opacity="0.85" />
-            <text x="180" y="105" fontSize="6" fill="#1a1a1a" fontWeight="600">IVS</text>
-            {/* LV cavity — long elliptical */}
+            {/* LV cavity */}
             <path d="M 115,103 Q 175,108 240,118 L 270,165 Q 200,180 120,165 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="180" y="148" fontSize="14" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            {/* Posterior wall — bright myocardium */}
+            {/* Posterior wall */}
             <path d="M 120,165 Q 200,180 270,165 L 275,180 Q 200,195 120,180 Z" fill="#c8c098" opacity="0.85" />
-            <text x="200" y="175" fontSize="6" fill="#1a1a1a" fontWeight="600" textAnchor="middle">PW</text>
             {/* Mitral valve leaflets */}
             <path d="M 240,108 Q 248,128 245,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
             <path d="M 270,118 Q 262,138 250,148" fill="none" stroke="#fff8d0" strokeWidth="1.4" />
-            <text x="285" y="135" fontSize="7" fill="#fff8d0" fontWeight="600">AMVL</text>
-            <text x="285" y="148" fontSize="7" fill="#fff8d0" fontWeight="600">PMVL</text>
-            {/* Chordae tendineae */}
+            {/* Chordae */}
             <line x1="245" y1="148" x2="232" y2="170" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
             <line x1="250" y1="148" x2="240" y2="172" stroke="#fff8d0" strokeWidth="0.4" opacity="0.7" />
             {/* LVOT + Aortic root */}
             <path d="M 240,108 L 290,80 L 320,90 L 325,135 L 280,148 L 270,118 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="295" y="115" fontSize="7" fill="#fff8d0" fontWeight="600">Ao root</text>
-            {/* Aortic valve cusps */}
+            {/* AV cusps */}
             <line x1="278" y1="100" x2="282" y2="115" stroke="#fff8d0" strokeWidth="1.2" />
             <line x1="305" y1="105" x2="301" y2="120" stroke="#fff8d0" strokeWidth="1.2" />
-            <text x="278" y="95" fontSize="6" fill="#fff8d0" fontWeight="600">AV</text>
             <path d="M 282,115 Q 292,128 301,120" fill="none" stroke="#d8d8a8" strokeWidth="0.6" opacity="0.7" />
-            {/* LA — posterior chamber */}
-            <path d="M 270,148 Q 320,160 340,180 L 335,210 Q 280,210 245,190 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
-            <text x="295" y="185" fontSize="11" fill="#fff8d0" fontWeight="800">LA</text>
-            {/* Descending aorta cross-section */}
-            <circle cx="310" cy="218" r="10" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
-            <text x="310" y="221" fontSize="5" fill="#fff8d0" fontWeight="600" textAnchor="middle">DAo</text>
-            {/* Pericardium echo */}
+            {/* LA */}
+            <path d="M 270,148 Q 320,160 335,180 L 330,205 Q 280,205 245,190 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.2" />
+            {/* Descending aorta */}
+            <circle cx="295" cy="215" r="9" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1" />
+            {/* Pericardium */}
             <path d="M 120,180 Q 200,195 275,180" fill="none" stroke="#ffffd0" strokeWidth="0.8" opacity="0.6" strokeDasharray="3 2" />
-            <text x="160" y="200" fontSize="5" fill="#fff8d0" opacity="0.7">pericardium</text>
-            {/* M-mode caliper line through LV */}
+            {/* M-mode caliper line */}
             <line x1="180" y1="92" x2="180" y2="180" stroke="hsl(var(--primary))" strokeWidth="0.5" opacity="0.6" strokeDasharray="2 2" />
-            <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.8">M-mode</text>
+          </g>
+          {/* Labels (outside clipPath so never clipped) */}
+          <g fontFamily="system-ui, sans-serif">
+            <text x="160" y="78" fontSize="9" fill="#fff8d0" fontWeight="700">RV</text>
+            <text x="180" y="105" fontSize="6" fill="#1a1a1a" fontWeight="600">IVS</text>
+            <text x="180" y="148" fontSize="14" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="200" y="175" fontSize="6" fill="#1a1a1a" fontWeight="600" textAnchor="middle">PW</text>
+            <text x="247" y="135" fontSize="6" fill="#fff8d0" fontWeight="600">AMVL</text>
+            <text x="252" y="158" fontSize="6" fill="#fff8d0" fontWeight="600">PMVL</text>
+            <text x="298" y="113" fontSize="6.5" fill="#fff8d0" fontWeight="600">Ao root</text>
+            <text x="278" y="95" fontSize="6" fill="#fff8d0" fontWeight="600">AV</text>
+            <text x="290" y="178" fontSize="11" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="295" y="218" fontSize="5" fill="#fff8d0" fontWeight="600" textAnchor="middle">DAo</text>
+            <text x="160" y="200" fontSize="5" fill="#fff8d0" opacity="0.7">pericardium</text>
+            <text x="184" y="135" fontSize="5" fill="hsl(var(--primary))" opacity="0.85">M-mode</text>
           </g>
           <PlaxDoppler mode={doppler} />
           <DopplerDefs />
