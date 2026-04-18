@@ -303,42 +303,45 @@ const EchoDiagram = () => {
         <svg viewBox="0 0 400 250" className="w-full h-auto">
           <SectorFrame />
           <g clipPath="url(#sector-clip)">
-            {/* LV — large left-side chamber, pointed apex at top */}
+            {/* LV */}
             <path d="M 200,55 Q 165,70 145,100 Q 132,135 138,170 Q 148,195 195,200 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="170" y="135" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
-            {/* RV — smaller right-side chamber */}
+            {/* RV */}
             <path d="M 200,55 Q 232,70 252,100 Q 263,130 258,162 Q 248,182 205,188 L 200,135 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="232" y="125" fontSize="11" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
             {/* Moderator band */}
             <line x1="218" y1="155" x2="245" y2="170" stroke="#fff8d0" strokeWidth="1" opacity="0.7" />
-            <text x="252" y="175" fontSize="5" fill="#fff8d0" opacity="0.8">mod band</text>
             {/* IVS */}
             <path d="M 200,60 L 198,135 L 200,195" fill="none" stroke="#c8c098" strokeWidth="3" opacity="0.9" />
-            <text x="184" y="80" fontSize="5" fill="#fff8d0" opacity="0.8">IVS</text>
-            {/* MV — anterior + posterior leaflets */}
+            {/* MV */}
             <line x1="148" y1="200" x2="180" y2="195" stroke="#fff8d0" strokeWidth="1.5" />
             <line x1="180" y1="195" x2="200" y2="200" stroke="#fff8d0" strokeWidth="1.5" />
-            <text x="155" y="192" fontSize="6" fill="#fff8d0" fontWeight="700">MV</text>
-            {/* TV — slightly more apical */}
+            {/* TV */}
             <line x1="200" y1="195" x2="220" y2="190" stroke="#fff8d0" strokeWidth="1.5" />
             <line x1="220" y1="190" x2="252" y2="185" stroke="#fff8d0" strokeWidth="1.5" />
-            <text x="240" y="182" fontSize="6" fill="#fff8d0" fontWeight="700">TV</text>
             {/* Atria */}
             <path d="M 148,200 Q 150,225 200,228 Q 250,225 252,185 L 220,190 L 200,200 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="1.3" />
-            <text x="175" y="221" fontSize="10" fill="#fff8d0" fontWeight="800">LA</text>
-            <text x="225" y="218" fontSize="10" fill="#fff8d0" fontWeight="800">RA</text>
             {/* IAS */}
             <line x1="200" y1="200" x2="200" y2="228" stroke="#c8c098" strokeWidth="2" opacity="0.9" />
-            <text x="184" y="217" fontSize="5" fill="#fff8d0" opacity="0.8">IAS</text>
-            {/* Pulmonary vein entering LA */}
-            <path d="M 150,225 Q 130,235 115,232" fill="none" stroke="#d8d8a8" strokeWidth="1" opacity="0.7" />
-            <text x="110" y="240" fontSize="5" fill="#fff8d0" opacity="0.7" textAnchor="end">PV</text>
+            {/* Pulmonary vein */}
+            <path d="M 150,225 Q 135,232 122,230" fill="none" stroke="#d8d8a8" strokeWidth="1" opacity="0.7" />
             {/* TAPSE caliper */}
             <line x1="252" y1="185" x2="252" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
             <line x1="248" y1="185" x2="256" y2="185" stroke="hsl(var(--primary))" strokeWidth="0.6" />
             <line x1="248" y1="170" x2="256" y2="170" stroke="hsl(var(--primary))" strokeWidth="0.6" />
-            <text x="262" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
+          </g>
+          {/* Labels outside clipPath */}
+          <g fontFamily="system-ui, sans-serif">
             <text x="200" y="50" fontSize="6" fill="#fff8d0" textAnchor="middle" fontWeight="700">apex</text>
+            <text x="170" y="135" fontSize="13" fill="#fff8d0" fontWeight="800" textAnchor="middle">LV</text>
+            <text x="232" y="125" fontSize="11" fill="#fff8d0" fontWeight="800" textAnchor="middle">RV</text>
+            <text x="184" y="80" fontSize="5" fill="#fff8d0" opacity="0.85">IVS</text>
+            <text x="218" y="165" fontSize="4.5" fill="#fff8d0" opacity="0.85">mod band</text>
+            <text x="158" y="192" fontSize="6" fill="#fff8d0" fontWeight="700">MV</text>
+            <text x="232" y="184" fontSize="6" fill="#fff8d0" fontWeight="700">TV</text>
+            <text x="172" y="221" fontSize="10" fill="#fff8d0" fontWeight="800">LA</text>
+            <text x="222" y="218" fontSize="10" fill="#fff8d0" fontWeight="800">RA</text>
+            <text x="184" y="217" fontSize="5" fill="#fff8d0" opacity="0.85">IAS</text>
+            <text x="118" y="240" fontSize="5" fill="#fff8d0" opacity="0.7" textAnchor="end">PV</text>
+            <text x="260" y="180" fontSize="5" fill="hsl(var(--primary))" fontWeight="700">TAPSE</text>
           </g>
           <A4cDoppler mode={doppler} />
           <DopplerDefs />
