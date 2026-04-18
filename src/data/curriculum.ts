@@ -91,14 +91,18 @@ export const pharmacologyTopics: Topic[] = [
 ];
 
 export const anatomyTopics: Topic[] = [
-  { id: "airway-anatomy", title: "Airway & Laryngeal Anatomy", description: "Nasal cavity, pharynx, larynx, trachea, bronchial tree, innervation", section: "anatomy", examTags: ["primary", "final"], available: true },
-  { id: "cardiac-anatomy", title: "Cardiac & Great Vessel Anatomy", description: "Heart chambers, coronary arteries, conducting system, great vessels", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "spinal-anatomy", title: "Vertebral Column & Spinal Cord", description: "Vertebral anatomy, meninges, epidural space, CSF, spinal tracts", section: "anatomy", examTags: ["primary", "final"], available: true },
-  { id: "upper-limb-anatomy", title: "Upper Limb Anatomy", description: "Brachial plexus, arterial supply, cubital fossa, venous drainage — cannulation and regional blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
-  { id: "thoracic-anatomy", title: "Thoracic Anatomy", description: "Lungs, pleura, mediastinum, intercostal space, thoracic wall", section: "anatomy", examTags: ["primary", "final"], available: true },
-  { id: "abdominal-anatomy", title: "Abdominal & Pelvic Anatomy", description: "Abdominal wall layers, inguinal canal, peritoneum, major organs", section: "anatomy", examTags: ["primary", "final"], available: true },
+  // Head & central nervous system
   { id: "head-neck-anatomy", title: "Head & Neck Anatomy", description: "Cranial nerves, neck triangles, blood supply, skull base foramina", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "neuroanatomy", title: "Neuroanatomy", description: "Brain anatomy, cranial fossae, circle of Willis, CSF circulation, autonomic pathways", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "airway-anatomy", title: "Airway & Laryngeal Anatomy", description: "Nasal cavity, pharynx, larynx, trachea, bronchial tree, innervation", section: "anatomy", examTags: ["primary", "final"], available: true },
+  // Spine
+  { id: "spinal-anatomy", title: "Vertebral Column & Spinal Cord", description: "Vertebral anatomy, meninges, epidural space, CSF, spinal tracts", section: "anatomy", examTags: ["primary", "final"], available: true },
+  // Trunk
+  { id: "thoracic-anatomy", title: "Thoracic Anatomy", description: "Lungs, pleura, mediastinum, intercostal space, thoracic wall", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "cardiac-anatomy", title: "Cardiac & Great Vessel Anatomy", description: "Heart chambers, coronary arteries, conducting system, great vessels", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "abdominal-anatomy", title: "Abdominal & Pelvic Anatomy", description: "Abdominal wall layers, inguinal canal, peritoneum, major organs", section: "anatomy", examTags: ["primary", "final"], available: true },
+  // Limbs
+  { id: "upper-limb-anatomy", title: "Upper Limb Anatomy", description: "Brachial plexus, arterial supply, cubital fossa, venous drainage — cannulation and regional blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "lower-limb-anatomy", title: "Lower Limb & Lumbosacral Plexus", description: "Lumbar and sacral plexus, femoral/sciatic nerves, dermatomes, lower limb blocks", section: "anatomy", examTags: ["primary", "final"], available: true },
 ];
 
