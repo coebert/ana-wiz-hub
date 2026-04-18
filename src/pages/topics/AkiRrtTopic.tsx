@@ -382,7 +382,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section className="mb-10">
+        <section id="toc-indications" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Indications for RRT in ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             No single absolute trigger — consider the clinical context. Common indications (mnemonic: <strong>AEIOU</strong>):
