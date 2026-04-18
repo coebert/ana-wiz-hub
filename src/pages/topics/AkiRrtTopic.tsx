@@ -1,4 +1,5 @@
 import { SectionLayout } from "@/components/SectionLayout";
+import { StickyTOC } from "@/components/StickyTOC";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
