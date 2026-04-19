@@ -211,18 +211,18 @@ export const wellensContent: EcgExpandedContent = {
   ],
   comparison: {
     columns: [
-      { key: "twave", label: "T wave V2–V3" },
-      { key: "st", label: "ST segment" },
-      { key: "rwave", label: "R-wave progression" },
+      { key: "pWave", label: "T wave V2–V3" },
+      { key: "qrs", label: "ST segment" },
+      { key: "rhythm", label: "R-wave progression" },
       { key: "key", label: "Implication" },
     ],
     rows: [
-      { label: "Wellens A", twave: "Biphasic (+/–)", st: "Isoelectric or < 1 mm", rwave: "Preserved", key: "Critical proximal LAD — early angio" },
-      { label: "Wellens B", twave: "Deep symmetric inv ≥ 2 mm", st: "Isoelectric or < 1 mm", rwave: "Preserved", key: "Critical proximal LAD — early angio", highlight: true },
-      { label: "Anterior STEMI", twave: "Hyperacute or upright", st: "ST↑ ≥ 2 mm", rwave: "Loss of R wave evolving", key: "Activate cath lab now" },
-      { label: "NSTEMI / strain", twave: "Asymmetric T inv", st: "ST↓ horizontal/downsloping", rwave: "Often preserved", key: "Risk-stratify, troponin trend" },
-      { label: "Pseudonormalisation", twave: "Reverts to upright when pain returns", st: "May rise during pain", rwave: "Preserved", key: "Re-occlusion — emergency angio" },
-      { label: "Persistent juvenile T inv", twave: "Inverted V1–V3, no symptoms", st: "Isoelectric", rwave: "Preserved", key: "Benign — unchanged on serial ECGs" },
+      { label: "Wellens A", pWave: "Biphasic (+/–)", qrs: "Isoelectric or < 1 mm", rhythm: "Preserved", key: "Critical proximal LAD — early angio" },
+      { label: "Wellens B", pWave: "Deep symmetric inv ≥ 2 mm", qrs: "Isoelectric or < 1 mm", rhythm: "Preserved", key: "Critical proximal LAD — early angio", highlight: true },
+      { label: "Anterior STEMI", pWave: "Hyperacute or upright", qrs: "ST↑ ≥ 2 mm", rhythm: "Loss of R wave evolving", key: "Activate cath lab now" },
+      { label: "NSTEMI / strain", pWave: "Asymmetric T inv", qrs: "ST↓ horizontal/downsloping", rhythm: "Often preserved", key: "Risk-stratify, troponin trend" },
+      { label: "Pseudonormalisation", pWave: "Reverts to upright when pain returns", qrs: "May rise during pain", rhythm: "Preserved", key: "Re-occlusion — emergency angio" },
+      { label: "Persistent juvenile T inv", pWave: "Inverted V1–V3, no symptoms", qrs: "Isoelectric", rhythm: "Preserved", key: "Benign — unchanged on serial ECGs" },
     ],
   },
   pitfalls: [
