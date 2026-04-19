@@ -83,6 +83,8 @@ const structures: Structure[] = [
 
 const NeckCrossSectionDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
   const info = selected ? structures.find((s) => s.id === selected) : null;
 
@@ -91,23 +93,76 @@ const NeckCrossSectionDiagram = () => {
 
   return (
     <div className="my-6">
-      <h3 className="text-lg font-semibold text-foreground mb-2">
-        Cross-Section of Neck at C6 Level
-      </h3>
-      <p className="text-sm text-muted-foreground mb-4">
-        Tap a structure to explore its contents and clinical relevance.
-      </p>
+      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+        <div>
+          <h3 className="text-lg font-semibold text-foreground">
+            Cross-Section of Neck at C6 Level
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Tap a structure to explore its contents and clinical relevance.
+          </p>
+        </div>
+        <div className="flex gap-1.5 text-xs">
+          <button
+            onClick={() => setShowSutures((v) => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Detail {showSutures ? "✓" : "○"}
+          </button>
+          <button
+            onClick={() => setShowLabels((v) => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Labels {showLabels ? "✓" : "○"}
+          </button>
+        </div>
+      </div>
       <div className="flex flex-col lg:flex-row gap-4">
         <svg viewBox="0 0 500 500" className="w-full max-w-[500px] mx-auto" style={{ background: "hsl(var(--card))" }}>
           <defs>
-            <radialGradient id="ncx-skinGrad" cx="50%" cy="50%">
-              <stop offset="0%" stopColor="#f5deb3" />
-              <stop offset="100%" stopColor="#e8c9a0" />
+            <radialGradient id="ncx-skinGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fbe9c8" />
+              <stop offset="70%" stopColor="#e8c9a0" />
+              <stop offset="100%" stopColor="#b8956c" />
             </radialGradient>
-            <radialGradient id="ncx-bodyGrad" cx="50%" cy="50%">
-              <stop offset="0%" stopColor="#e8e8e8" />
-              <stop offset="100%" stopColor="#c4c4c4" />
+            <radialGradient id="ncx-bodyGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#f4f4f4" />
+              <stop offset="100%" stopColor="#a8a8a8" />
             </radialGradient>
+            <radialGradient id="ncx-tracheaGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="#fffbe6" />
+              <stop offset="100%" stopColor="#fde68a" />
+            </radialGradient>
+            <radialGradient id="ncx-thyroidGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fde7f3" />
+              <stop offset="100%" stopColor="#f3a5cb" />
+            </radialGradient>
+            <radialGradient id="ncx-vesselGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#fca5a5" />
+              <stop offset="100%" stopColor="#991b1b" />
+            </radialGradient>
+            <radialGradient id="ncx-veinGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#93c5fd" />
+              <stop offset="100%" stopColor="#1e3a5f" />
+            </radialGradient>
+            <radialGradient id="ncx-scmGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fecaca" />
+              <stop offset="100%" stopColor="#b91c1c" />
+            </radialGradient>
+            <pattern id="ncx-grain" patternUnits="userSpaceOnUse" width="6" height="6">
+              <rect width="6" height="6" fill="transparent" />
+              <circle cx="1.5" cy="1.5" r="0.4" fill="#7a5a3a" opacity="0.18" />
+              <circle cx="4.5" cy="4.5" r="0.4" fill="#7a5a3a" opacity="0.12" />
+            </pattern>
+            <pattern id="ncx-muscleFibre" patternUnits="userSpaceOnUse" width="4" height="4">
+              <path d="M0,2 L4,2" stroke="#7f1d1d" strokeWidth="0.3" opacity="0.35" />
+            </pattern>
+            <filter id="ncx-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+              <feOffset dx="0" dy="1" result="off" />
+              <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+              <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
           </defs>
 
           {/* Skin outline — outer ellipse */}
