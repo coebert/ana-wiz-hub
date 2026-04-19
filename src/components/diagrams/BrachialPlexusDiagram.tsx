@@ -449,10 +449,10 @@ const BrachialPlexusDiagram = () => {
               <p className="text-xs font-semibold text-muted-foreground mb-1">Cutaneous Dermatomes</p>
               <HandDermatomeMap />
               <div className="text-[10px] text-muted-foreground space-y-0.5 text-center mt-1">
-                <p><span className="font-bold" style={{ color: "hsl(150, 50%, 42%)" }}>C6</span> — thumb + lateral</p>
-                <p><span className="font-bold" style={{ color: "hsl(45, 65%, 48%)" }}>C7</span> — middle finger</p>
-                <p><span className="font-bold" style={{ color: "hsl(210, 55%, 50%)" }}>C8</span> — ring + little</p>
-                <p><span className="font-bold" style={{ color: "hsl(270, 45%, 50%)" }}>T1</span> — medial forearm</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C6 }}>C6</span> — thumb + lateral</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C7 }}>C7</span> — middle finger</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C8 }}>C8</span> — ring + little</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.T1 }}>T1</span> — medial forearm</p>
               </div>
             </div>
           )}
