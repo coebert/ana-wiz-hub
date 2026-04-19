@@ -87,6 +87,7 @@ const CardiacAnatomyTopic = () => {
           <HeartBlockDiagram />
           <BundleBranchBlockDiagram />
           <TachyarrhythmiaDiagram />
+          <PacingDevicesDiagram />
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">SA Node</p>
