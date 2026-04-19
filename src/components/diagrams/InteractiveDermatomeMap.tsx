@@ -269,57 +269,66 @@ const InteractiveDermatomeMap = () => {
               </g>
             )}
           </svg>
-        </div>
-      </div>
-
-      {/* Selected dermatome info */}
-      {sel && (
-        <div className="mt-4 p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
-          <div className="flex items-baseline gap-3 flex-wrap">
-            <span className="text-lg font-bold text-foreground">{sel.level}</span>
-            <span
-              className="text-xs font-semibold uppercase px-2 py-0.5 rounded"
-              style={{ background: REGION_COLOR[sel.region], color: "white" }}
-            >
-              {sel.region}
-            </span>
-            <span className="text-sm text-muted-foreground">{sel.landmark}</span>
           </div>
         </div>
-      )}
 
-      {/* Legend */}
-      <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-        {(Object.keys(REGION_COLOR) as Dermatome["region"][]).map((r) => (
-          <div key={r} className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded" style={{ background: REGION_COLOR[r] }} />
-            <span className="capitalize text-muted-foreground">{r}</span>
-          </div>
-        ))}
-      </div>
-
-      {/* Quick-jump key levels */}
-      <div className="mt-3">
-        <p className="text-xs font-semibold text-foreground mb-2">Key block heights:</p>
-        <div className="flex flex-wrap gap-1.5">
-          {[
-            { level: "C4", note: "Diaphragm — phrenic palsy if blocked" },
-            { level: "T4", note: "Nipple — C-section minimum" },
-            { level: "T6", note: "Xiphisternum — upper abdo surgery" },
-            { level: "T10", note: "Umbilicus — labour analgesia / TURP" },
-            { level: "L1", note: "Inguinal — hernia / lower limb" },
-            { level: "S2-4", note: "Saddle block — perineal" },
-          ].map((k) => (
-            <button
-              key={k.level}
-              onClick={() => setSelected(k.level === "S2-4" ? "S4-S5" : k.level)}
-              className="text-[10px] px-2 py-1 rounded border border-border hover:bg-muted/50 transition"
-              title={k.note}
+        {/* Standardised detail panel with left-border accent */}
+        <div className="mt-4 min-h-[80px]">
+          {sel ? (
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: REGION_COLOR[sel.region] }}
             >
-              <span className="font-bold text-primary">{k.level}</span>
-              <span className="text-muted-foreground ml-1">{k.note}</span>
-            </button>
+              <div className="flex items-center justify-between gap-2">
+                <p className="font-semibold text-foreground text-sm">{sel.level} — {sel.landmark}</p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{ background: withAlpha(REGION_COLOR[sel.region], 0.15), color: REGION_COLOR[sel.region] }}
+                >
+                  {sel.region}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="p-3 rounded-lg border border-dashed border-border bg-background/40">
+              <p className="text-xs text-muted-foreground italic">Click a dermatome to see its spinal level and landmark.</p>
+            </div>
+          )}
+        </div>
+
+        {/* Legend */}
+        <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          {(Object.keys(REGION_COLOR) as Dermatome["region"][]).map((r) => (
+            <div key={r} className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded" style={{ background: REGION_COLOR[r] }} />
+              <span className="capitalize text-muted-foreground">{r}</span>
+            </div>
           ))}
+        </div>
+
+        {/* Quick-jump key levels */}
+        <div className="mt-3">
+          <p className="text-xs font-semibold text-foreground mb-2">Key block heights:</p>
+          <div className="flex flex-wrap gap-1.5">
+            {[
+              { level: "C4", note: "Diaphragm — phrenic palsy if blocked" },
+              { level: "T4", note: "Nipple — C-section minimum" },
+              { level: "T6", note: "Xiphisternum — upper abdo surgery" },
+              { level: "T10", note: "Umbilicus — labour analgesia / TURP" },
+              { level: "L1", note: "Inguinal — hernia / lower limb" },
+              { level: "S2-4", note: "Saddle block — perineal" },
+            ].map((k) => (
+              <button
+                key={k.level}
+                onClick={() => setSelected(k.level === "S2-4" ? "S4-S5" : k.level)}
+                className="text-[10px] px-2 py-1 rounded border border-border hover:bg-muted/50 transition"
+                title={k.note}
+              >
+                <span className="font-bold text-primary">{k.level}</span>
+                <span className="text-muted-foreground ml-1">{k.note}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
