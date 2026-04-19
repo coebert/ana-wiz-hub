@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { normaliseLevel, findLocalLevel, type CanonicalLevel } from "@/lib/dermatome-sync";
 
 interface SpinalLevel {
   id: string;
@@ -55,8 +56,32 @@ const regionLabels: Record<string, string> = {
   sacral: "Sacral",
 };
 
-const DermatomeMyotomeDiagram = () => {
-  const [selected, setSelected] = useState<string | null>(null);
+interface DermatomeMyotomeDiagramProps {
+  /** Optional controlled canonical level (e.g. "T10", "S2-4"). */
+  selectedLevel?: CanonicalLevel | null;
+  /** Notified on every click with the canonical level (or null when un-mappable). */
+  onLevelChange?: (level: CanonicalLevel | null) => void;
+}
+
+const DermatomeMyotomeDiagram = ({ selectedLevel, onLevelChange }: DermatomeMyotomeDiagramProps = {}) => {
+  const isControlled = selectedLevel !== undefined;
+  const [internal, setInternal] = useState<string | null>(null);
+
+  // When controlled: resolve canonical -> local id (e.g. "T10" -> "t10"); when uncontrolled: internal id.
+  const selected = isControlled
+    ? findLocalLevel(levels, selectedLevel ?? null, "level")?.id ?? null
+    : internal;
+
+  const setSelected = (local: string | null) => {
+    if (!isControlled) setInternal(local);
+    if (local === null) {
+      onLevelChange?.(null);
+      return;
+    }
+    const lvl = levels.find((l) => l.id === local);
+    onLevelChange?.(lvl ? normaliseLevel(lvl.level) : null);
+  };
+
   const [view, setView] = useState<"map" | "myotomes" | "reflexes">("map");
   const [showLandmarks, setShowLandmarks] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
