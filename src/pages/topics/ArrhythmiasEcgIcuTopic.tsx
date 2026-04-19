@@ -119,7 +119,47 @@ const ArrhythmiasEcgIcuTopic = () => {
             <div className="p-3 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Right-sided leads</p>
               <p className="text-xs text-muted-foreground mt-1">Inferior STEMI: always do V4R. ST elevation = RV infarct → preload-dependent → cautious nitrates, fluid load, avoid β-blockers.</p>
+        </div>
+
+        {/* ─────────── Wellens syndrome ─────────── */}
+        <div id="wellens" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Wellens Syndrome</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Wellens syndrome is a pre-infarction ECG pattern caused by a critical proximal LAD
+            stenosis. The classic trap is that the patient is <span className="font-medium text-foreground">pain-free</span> at the time of the ECG, the
+            <span className="font-medium text-foreground"> ST segment is isoelectric</span>, and the <span className="font-medium text-foreground">troponin is often normal</span> — yet without
+            angiography they are at very high risk of an extensive anterior MI within days. Two
+            morphologies are recognised in V2–V3: <span className="font-medium text-foreground">pattern A</span> (biphasic positive-then-negative T
+            waves, ≈ 25%) and <span className="font-medium text-foreground">pattern B</span> (deep symmetrically inverted T waves, ≈ 75%, often spilling
+            into V1 and V4). Recognise it, do not stress test, refer for early invasive coronary
+            angiography.
+          </p>
+          <ExpandableEcgCard content={wellensContent}>
+            {() => <WellensSyndromeDiagram />}
+          </ExpandableEcgCard>
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-3 rounded-lg border border-icu/30 bg-icu/5">
+              <p className="font-semibold text-foreground text-sm">de Zwaan diagnostic criteria</p>
+              <ul className="text-xs text-muted-foreground mt-1 space-y-0.5 leading-snug">
+                <li>· Recent angina, now resolved</li>
+                <li>· Biphasic or deeply inverted T in V2–V3 (± V1, V4)</li>
+                <li>· Isoelectric or minimally elevated ST (&lt; 1 mm)</li>
+                <li>· Preserved precordial R waves, no Q waves</li>
+                <li>· Normal or only minimally elevated troponin</li>
+              </ul>
             </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pseudonormalisation pitfall</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-snug">
+                The Wellens T waves can transiently revert to upright when chest pain returns —
+                this represents <em>active re-occlusion</em> of the LAD, not improvement. A repeat
+                ECG during pain that looks "more normal" than the pain-free baseline is a red flag
+                for evolving STEMI: activate the primary PCI pathway.
+              </p>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
 
