@@ -92,9 +92,8 @@ export const pharmacologyTopics: Topic[] = [
 
 export const anatomyTopics: Topic[] = [
   // Head & central nervous system
-  { id: "head-neck-anatomy", title: "Head & Neck Anatomy", description: "Cranial nerves, neck triangles, blood supply, skull base foramina", section: "anatomy", examTags: ["primary", "final"], available: true },
+  { id: "head-neck-anatomy", title: "Head, Neck & Airway Anatomy", description: "Cranial nerves, neck triangles, larynx, trachea, bronchial tree, skull base, orbit", section: "anatomy", examTags: ["primary", "final"], available: true },
   { id: "neuroanatomy", title: "Neuroanatomy", description: "Brain anatomy, cranial fossae, circle of Willis, CSF circulation, autonomic pathways", section: "anatomy", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "airway-anatomy", title: "Airway & Laryngeal Anatomy", description: "Nasal cavity, pharynx, larynx, trachea, bronchial tree, innervation", section: "anatomy", examTags: ["primary", "final"], available: true },
   // Spine
   { id: "spinal-anatomy", title: "Vertebral Column & Spinal Cord", description: "Vertebral anatomy, meninges, epidural space, CSF, spinal tracts", section: "anatomy", examTags: ["primary", "final"], available: true },
   // Trunk
