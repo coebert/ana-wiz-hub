@@ -638,6 +638,104 @@ const AdenosineRow = ({ info, compact = false }: { info: AdenosineInfo; compact?
   );
 };
 
+/* ───────────── Adenosine simulator (interactive) ───────────── */
+
+const AdenosineSimulator = ({ info }: { info: TachyInfo }) => {
+  const [active, setActive] = useState(false);
+  const [remaining, setRemaining] = useState(0);
+  const timerRef = useRef<number | null>(null);
+  const tickRef = useRef<number | null>(null);
+  const isDanger = info.adenosine.response === "danger";
+  const style = ADENOSINE_STYLE[info.adenosine.response];
+
+  // Reset when the user switches arrhythmia
+  useEffect(() => {
+    setActive(false);
+    setRemaining(0);
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    if (tickRef.current) window.clearInterval(tickRef.current);
+  }, [info.label]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      if (tickRef.current) window.clearInterval(tickRef.current);
+    };
+  }, []);
+
+  const give = () => {
+    if (active || isDanger) return;
+    const total = 5;
+    setActive(true);
+    setRemaining(total);
+    tickRef.current = window.setInterval(() => {
+      setRemaining((r) => Math.max(0, r - 1));
+    }, 1000);
+    timerRef.current = window.setTimeout(() => {
+      setActive(false);
+      setRemaining(0);
+      if (tickRef.current) window.clearInterval(tickRef.current);
+    }, total * 1000);
+  };
+
+  return (
+    <div
+      className="mt-2 p-2.5 rounded-md border space-y-2"
+      style={{
+        borderColor: withAlpha(style.color, 0.35),
+        backgroundColor: withAlpha(style.color, 0.05),
+      }}
+    >
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <p className="text-[11px] font-semibold text-foreground flex items-center gap-1.5">
+          <span aria-hidden>💉</span> Interactive: simulate adenosine 6 mg IV bolus
+        </p>
+        <button
+          type="button"
+          onClick={give}
+          disabled={active || isDanger}
+          className="text-[11px] font-medium px-3 py-1 rounded transition-all disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105"
+          style={{
+            backgroundColor: isDanger ? "hsl(var(--muted))" : style.color,
+            color: isDanger ? "hsl(var(--muted-foreground))" : "white",
+          }}
+          aria-label={isDanger ? "Adenosine contraindicated" : active ? `Adenosine effect — ${remaining} seconds remaining` : "Give adenosine"}
+        >
+          {isDanger ? "⚠ Contraindicated" : active ? `Effect · ${remaining}s` : "Give adenosine"}
+        </button>
+      </div>
+
+      {active && !isDanger && (
+        <div className="animate-fade-in space-y-1">
+          <div className="flex items-center justify-between text-[10px]">
+            <span className="font-semibold" style={{ color: style.color }}>
+              Post-adenosine — {info.adenosine.label}
+            </span>
+            <span className="text-muted-foreground">~5 s window</span>
+          </div>
+          <RhythmStrip tachy={info} color={info.color} mode="adenosine" />
+          <p className="text-[10px] text-muted-foreground italic leading-snug">{info.adenosine.detail}</p>
+          <div className="h-1 w-full bg-muted rounded overflow-hidden">
+            <div
+              className="h-full transition-all duration-1000 ease-linear"
+              style={{
+                width: `${(remaining / 5) * 100}%`,
+                backgroundColor: style.color,
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {isDanger && (
+        <p className="text-[10.5px] leading-snug" style={{ color: style.color }}>
+          Adenosine not given — risk of bradycardia-induced QT prolongation worsening torsades. Treat with magnesium and rate support instead.
+        </p>
+      )}
+    </div>
+  );
+};
+
 /* ───────────── Main component ───────────── */
 
 
