@@ -10,12 +10,22 @@ import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagr
 import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "vertebral-column", label: "Vertebral Column", group: "Bony Anatomy" },
+  { id: "neuraxial-layers", label: "Neuraxial Layers", group: "Approach" },
+  { id: "spinal-cord", label: "Spinal Cord", group: "Neural" },
+  { id: "dermatomes-myotomes", label: "Dermatomes & Myotomes", group: "Neural" },
+  { id: "epidural-space", label: "Epidural Space & Plexus", group: "Approach" },
+];
 
 const SpinalAnatomyTopic = () => {
   return (
     <SectionLayout title="Vertebral Column & Spinal Cord" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="vertebral-column" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vertebral Column</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             33 vertebrae: 7 cervical, 12 thoracic, 5 lumbar, 5 sacral (fused), 4 coccygeal (fused). Intervertebral discs between C2/3 and L5/S1. Spinal canal contains the spinal cord, meninges, CSF, epidural space contents, and spinal nerves.
@@ -38,7 +48,7 @@ const SpinalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="neuraxial-layers" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Layers Traversed During Neuraxial Block</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Midline approach (superficial → deep):
@@ -66,7 +76,7 @@ const SpinalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="spinal-cord" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord</h2>
 
           <SpinalCordCrossSectionDiagram />
@@ -85,13 +95,13 @@ const SpinalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="dermatomes-myotomes" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatomes & Myotomes</h2>
           <InteractiveDermatomeMap />
           <DermatomeMyotomeDiagram />
         </div>
 
-        <div>
+        <div id="epidural-space" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epidural Space & Venous Plexus</h2>
           <p className="text-muted-foreground leading-relaxed">
             The epidural space is a potential space between the ligamentum flavum/periosteum and dura. It contains fat, lymphatics, and the internal vertebral venous plexus (Batson's plexus). This plexus is valveless and communicates with pelvic veins — becomes engorged in pregnancy (reduced epidural space volume, higher block with same dose) and with raised intra-abdominal pressure. The epidural space is widest posteriorly at L2 (5–6 mm).

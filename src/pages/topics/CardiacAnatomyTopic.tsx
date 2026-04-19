@@ -7,12 +7,21 @@ import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "chambers-valves", label: "Chambers & Valves", group: "Structure" },
+  { id: "coronary-arteries", label: "Coronary Arteries", group: "Structure" },
+  { id: "conducting-system", label: "Conducting System", group: "Electrical" },
+  { id: "great-vessels", label: "Great Vessels & Pericardium", group: "Surrounds" },
+];
 
 const CardiacAnatomyTopic = () => {
   return (
     <SectionLayout title="Cardiac & Great Vessel Anatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="chambers-valves" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Chambers & Valves</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The heart lies in the middle mediastinum, enclosed in pericardium. Two-thirds lies to the left of the midline. The cardiac skeleton (fibrous rings) provides electrical insulation between atria and ventricles.
@@ -32,7 +41,7 @@ const CardiacAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="coronary-arteries" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coronary Arteries</h2>
           <div className="space-y-2">
             {[
@@ -54,7 +63,7 @@ const CardiacAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="conducting-system" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Conducting System</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             SA node (pacemaker, 60–100 bpm) → atrial conduction → AV node (inherent rate 40–60, 0.1s delay) → bundle of His → right and left bundle branches → Purkinje fibres → ventricular muscle.
@@ -71,7 +80,7 @@ const CardiacAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="great-vessels" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Great Vessels & Pericardium</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
