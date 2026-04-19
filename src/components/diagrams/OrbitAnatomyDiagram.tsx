@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 interface OrbitalStructure {
   id: string;
@@ -58,13 +59,21 @@ const otherStructures = [
 const OrbitAnatomyDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [showOther, setShowOther] = useState<string | null>(null);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
   const selectedMuscle = muscles.find(m => m.id === selected);
 
   return (
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <h4 className="text-sm font-semibold text-foreground mb-3 text-center">Orbit — Extraocular Muscles & Nerve Supply (Anterior View)</h4>
+        <DiagramToggleBar
+          title="Orbit — Extraocular Muscles & Nerve Supply (Anterior View)"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+          ]}
+        />
 
         <svg viewBox="0 0 600 500" className="w-full max-w-lg mx-auto">
           {/* Orbital rim */}
