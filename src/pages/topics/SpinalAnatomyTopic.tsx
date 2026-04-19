@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
@@ -21,6 +22,10 @@ const tocItems = [
 ];
 
 const SpinalAnatomyTopic = () => {
+  // Synced selection between InteractiveDermatomeMap and DermatomeMyotomeDiagram —
+  // canonical level keys ("C5", "T10", "S2-4") via src/lib/dermatome-sync.ts.
+  const [dermatomeLevel, setDermatomeLevel] = useState<string | null>("T10");
+
   return (
     <SectionLayout title="Vertebral Column & Spinal Cord" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
       <TopicTableOfContents items={tocItems} />
@@ -97,8 +102,14 @@ const SpinalAnatomyTopic = () => {
 
         <div id="dermatomes-myotomes" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatomes & Myotomes</h2>
-          <InteractiveDermatomeMap />
-          <DermatomeMyotomeDiagram />
+          <InteractiveDermatomeMap
+            selectedLevel={dermatomeLevel}
+            onLevelChange={setDermatomeLevel}
+          />
+          <DermatomeMyotomeDiagram
+            selectedLevel={dermatomeLevel}
+            onLevelChange={setDermatomeLevel}
+          />
         </div>
 
         <div id="epidural-space" className="scroll-mt-24">
