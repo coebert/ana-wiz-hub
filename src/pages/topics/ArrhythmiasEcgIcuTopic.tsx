@@ -13,6 +13,7 @@ import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram
 import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
 import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
+import StemiLocalisationDiagram from "@/components/diagrams/StemiLocalisationDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 
 const tocItems = [
