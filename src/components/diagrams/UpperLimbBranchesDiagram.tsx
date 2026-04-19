@@ -279,7 +279,7 @@ const UpperLimbBranchesDiagram = () => {
           ? "Select a nerve to trace its course (anterior + posterior) and see motor / sensory / clinical pearls."
           : "Select a regional block — covered nerves and their sensory zones light up; missed nerves are listed."}
         toggles={[
-          { id: "labels", label: "Labels", value: showLabels, onChange: () => setShowLabels((v) => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
         ]}
       />
 
