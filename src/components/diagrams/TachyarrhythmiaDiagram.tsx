@@ -79,6 +79,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "No P waves, irregularly irregular narrow QRS, fibrillatory baseline.",
     pathophysiology: "Multiple re-entrant wavelets in atria; pulmonary vein triggers. AV node filters → variable ventricular rate.",
     management: "Rate (β-blocker, CCB, digoxin) vs rhythm (DCCV, amiodarone, ablation). Anticoagulate per CHA₂DS₂-VASc.",
+    adenosine: { response: "unmask", label: "Unmasks fibrillatory baseline", detail: "Transient AV block slows ventricular response → reveals chaotic atrial activity. Diagnostic but not therapeutic." },
   },
   flutter: {
     label: "Atrial flutter",
