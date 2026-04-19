@@ -13,6 +13,7 @@ import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
+import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -237,6 +238,7 @@ const HeadNeckAnatomyTopic = () => {
               </div>
             </div>
             <TracheobronchialTreeDiagram />
+            <BronchoscopicViewDiagram />
           </div>
         </section>
 
