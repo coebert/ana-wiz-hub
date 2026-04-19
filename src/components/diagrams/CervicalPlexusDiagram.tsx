@@ -259,7 +259,7 @@ const CervicalPlexusDiagram = () => {
             ]}
           />
 
-          <PlexusChipRow
+          <PlexusChipRow<BranchKey>
             selected={selected}
             onSelect={setSelected}
             items={branchKeys.map((k) => ({
