@@ -239,36 +239,38 @@ const CervicalPlexusDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0 space-y-3">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: info.color }} />
-              <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-              <span className="text-xs text-muted-foreground">({info.roots})</span>
-            </div>
-            <p className="text-xs text-muted-foreground mt-1">{info.description}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground">
-              <strong>Clinical:</strong> {info.clinical}
-            </p>
-          </div>
+          <PlexusDetailPanel
+            reactKey={selected}
+            title={info.label}
+            roots={info.roots}
+            region={
+              selected === "superficial"
+                ? "Superficial"
+                : selected === "deep"
+                ? "Deep"
+                : selected === "phrenic"
+                ? "Phrenic"
+                : "Ansa"
+            }
+            accent={info.color}
+            fields={[
+              { label: "Anatomy", value: info.description },
+              { label: "Clinical", value: info.clinical },
+            ]}
+          />
 
-          <div className="flex flex-wrap gap-1">
-            {branchKeys.map(key => (
-              <button
-                key={key}
-                onClick={() => setSelected(key)}
-                className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
-                  selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
-                }`}
-                style={selected === key ? { borderColor: branches[key].color, backgroundColor: withAlpha(branches[key].color, 0.09) } : {}}
-              >
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: branches[key].color, opacity: 0.7 }} />
-                {branches[key].label.replace("Cervical Plexus", "CP").replace("Nerve", "N.")}
-              </button>
-            ))}
-          </div>
+          <PlexusChipRow
+            selected={selected}
+            onSelect={setSelected}
+            items={branchKeys.map((k) => ({
+              key: k,
+              color: branches[k].color,
+              label: branches[k].label.replace("Cervical Plexus", "CP").replace("Nerve", "N."),
+            }))}
+          />
         </div>
       </div>
-    </div>
+    </PlexusCard>
   );
 };
 
