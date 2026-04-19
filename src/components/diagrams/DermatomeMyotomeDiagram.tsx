@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 interface SpinalLevel {
   id: string;
@@ -58,20 +58,24 @@ const regionLabels: Record<string, string> = {
 const DermatomeMyotomeDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [view, setView] = useState<"map" | "myotomes" | "reflexes">("map");
+  const [showLandmarks, setShowLandmarks] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
   const activeLevel = levels.find(l => l.id === selected);
+  const accent = activeLevel?.color ?? "hsl(var(--anatomy))";
 
   return (
-    <Card className="mb-8 border-border bg-card">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-lg font-serif text-foreground">
-          Dermatome & Myotome Reference
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Select a spinal level to view its dermatome, myotome, reflex, and regional block relevance.
-        </p>
-      </CardHeader>
-      <CardContent>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Dermatome & Myotome reference"
+          subtitle="Tap a body region or spinal level to view dermatome, myotome, reflex and block relevance."
+          toggles={[
+            { label: "Landmarks", active: showLandmarks, onChange: () => setShowLandmarks((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
+
         <Tabs value={view} onValueChange={(v) => setView(v as typeof view)} className="mb-4">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="map" className="text-xs">Dermatome Map</TabsTrigger>
@@ -85,6 +89,19 @@ const DermatomeMyotomeDiagram = () => {
               <div className="flex-shrink-0 mx-auto">
                 <svg viewBox="0 0 200 425" width="220" className="max-w-full">
                   <defs>
+                    <radialGradient id="dm-bgShade" cx="50%" cy="45%" r="65%">
+                      <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.04" />
+                    </radialGradient>
+                    <pattern id="dm-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                      <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+                    </pattern>
+                    <filter id="dm-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                      <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                      <feOffset dx="0" dy="1.2" result="off" />
+                      <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                    </filter>
                     <linearGradient id="body-fill" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.1" />
                       <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0.03" />
@@ -95,6 +112,9 @@ const DermatomeMyotomeDiagram = () => {
                       <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.06" />
                     </linearGradient>
                   </defs>
+
+                  {/* Background depth plate */}
+                  <rect x="2" y="2" width="196" height="421" rx="8" fill="url(#dm-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
 
                   {/* Body outline — improved anatomical proportions */}
                   <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="url(#body-fill)" opacity="0.45">
