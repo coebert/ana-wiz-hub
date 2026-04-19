@@ -21,6 +21,11 @@ interface BlockInfo {
   pathophysiology: string;
   management: string;
   pacing: "Rarely" | "Usually no" | "Often" | "Always";
+  /** Recommended device when pacing is indicated. */
+  device: "None" | "DDD" | "VVI" | "DDD ± CRT";
+  deviceRationale: string;
+  /** Which leads the device places — drives the PaceOverlay. */
+  leads: { ra: boolean; rv: boolean; lv: boolean };
 }
 
 const BLOCKS: Record<BlockKey, BlockInfo> = {
@@ -34,6 +39,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Slowed AV-nodal conduction. Often vagal tone, drugs (β-blocker, digoxin, CCB), inferior MI, athletes.",
     management: "Usually benign — treat cause. Caution with further AV-blocking drugs.",
     pacing: "Rarely",
+    device: "None",
+    deviceRationale: "No device unless symptomatic with very long PR (rare 'pseudo-pacemaker' syndrome).",
+    leads: { ra: false, rv: false, lv: false },
   },
   mobitz1: {
     label: "2° AV block — Mobitz I (Wenckebach)",
@@ -45,6 +53,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Decremental conduction in AV node. Inferior MI (RCA → AV node), high vagal tone, AV-nodal blockers.",
     management: "Usually no treatment unless symptomatic bradycardia. Atropine if needed.",
     pacing: "Usually no",
+    device: "None",
+    deviceRationale: "Vagal / nodal — usually reversible. Pace only if symptomatic bradycardia despite cause control.",
+    leads: { ra: false, rv: false, lv: false },
   },
   mobitz2: {
     label: "2° AV block — Mobitz II",
@@ -56,6 +67,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "His-Purkinje disease. Anterior MI (LAD → septal branches), fibrosis (Lev / Lenègre).",
     management: "Permanent pacing — high risk of progression to complete block.",
     pacing: "Often",
+    device: "DDD",
+    deviceRationale: "Dual-chamber (RA + RV) — preserves AV synchrony; infranodal block won't recover.",
+    leads: { ra: true, rv: true, lv: false },
   },
   complete: {
     label: "3° AV block (complete)",
@@ -67,6 +81,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Complete failure at AV node, His or bilateral bundles. Inferior MI (junctional escape, narrow), anterior MI (ventricular escape, wide, slow).",
     management: "Atropine ± isoprenaline / external pacing → permanent PPM.",
     pacing: "Always",
+    device: "DDD ± CRT",
+    deviceRationale: "DDD if SR; VVI if AF. Add LV lead via coronary sinus (CRT-P/D) if EF ≤ 35% & expected high RV-pacing burden.",
+    leads: { ra: true, rv: true, lv: true },
   },
 };
 
@@ -309,12 +326,97 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
   );
 };
 
+/* ───────────── Pace overlay (PPM lead positions) ───────────── */
+
+const PaceOverlay = ({ block }: { block: BlockInfo }) => {
+  const { ra, rv, lv } = block.leads;
+  if (!ra && !rv && !lv) {
+    return (
+      <div className="flex items-center justify-center w-[110px] h-[140px] rounded-md border border-dashed border-border bg-background/40">
+        <span className="text-[9px] text-muted-foreground text-center px-2 leading-snug">No device<br/>indicated</span>
+      </div>
+    );
+  }
+
+  // Wire colours per lead — RA blue, RV amber, LV red
+  const RA = "hsl(210, 70%, 50%)";
+  const RV = "hsl(35, 80%, 50%)";
+  const LV = "hsl(0, 70%, 50%)";
+
+  return (
+    <svg viewBox="0 0 110 140" className="w-[110px] h-[140px]" role="img" aria-label={`Pacemaker lead positions for ${block.label}: ${block.device}`}>
+      {/* Heart silhouette */}
+      <path
+        d="M 55 22 C 22 22 8 50 16 92 C 24 122 44 134 55 138 C 66 134 86 122 94 92 C 102 50 88 22 55 22 Z"
+        fill="hsl(0, 30%, 88%)"
+        fillOpacity="0.18"
+        stroke="hsl(var(--border))"
+        strokeWidth="0.6"
+      />
+      {/* IV septum */}
+      <line x1="55" y1="55" x2="55" y2="125" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+      {/* Atrial / ventricular divider */}
+      <line x1="22" y1="58" x2="88" y2="58" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+
+      {/* Chamber labels */}
+      <text x="38" y="42" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.7">RA</text>
+      <text x="72" y="42" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.7">LA</text>
+      <text x="36" y="98" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.7">RV</text>
+      <text x="74" y="98" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.7">LV</text>
+
+      {/* Pulse generator (left infraclavicular) */}
+      <rect x="2" y="6" width="14" height="9" rx="2" fill="hsl(var(--foreground))" opacity="0.85" />
+      <text x="9" y="13" fontSize="5" fill="hsl(var(--background))" textAnchor="middle" fontWeight="bold">PG</text>
+
+      {/* SVC entry point shared */}
+      <circle cx="40" cy="22" r="1.4" fill="hsl(var(--muted-foreground))" opacity="0.5" />
+
+      {/* RA lead — curls into right atrial appendage */}
+      {ra && (
+        <g>
+          <path d="M 16 11 Q 28 14 40 22 Q 42 32 38 42" fill="none" stroke={RA} strokeWidth="1.4" strokeLinecap="round" />
+          {/* Tip — J-shaped */}
+          <path d="M 38 42 q -3 4 1 6 q 4 1 4 -3" fill="none" stroke={RA} strokeWidth="1.4" strokeLinecap="round" />
+          <circle cx="42" cy="44" r="1.6" fill={RA} />
+          <text x="20" y="22" fontSize="5.5" fill={RA} fontWeight="bold">RA</text>
+        </g>
+      )}
+
+      {/* RV lead — through tricuspid to RV apex */}
+      {rv && (
+        <g>
+          <path d="M 16 13 Q 30 16 40 22 Q 50 38 46 60 Q 40 80 36 92" fill="none" stroke={RV} strokeWidth="1.4" strokeLinecap="round" />
+          <circle cx="36" cy="92" r="1.8" fill={RV} />
+          <text x="28" y="115" fontSize="5.5" fill={RV} fontWeight="bold" textAnchor="middle">RV apex</text>
+        </g>
+      )}
+
+      {/* LV lead — via coronary sinus to lateral LV epicardium */}
+      {lv && (
+        <g>
+          <path
+            d="M 16 14 Q 30 18 40 22 Q 56 30 64 50 Q 78 70 80 92"
+            fill="none"
+            stroke={LV}
+            strokeWidth="1.4"
+            strokeLinecap="round"
+            strokeDasharray="4 1.5"
+          />
+          <circle cx="80" cy="92" r="1.8" fill={LV} />
+          <text x="82" y="115" fontSize="5.5" fill={LV} fontWeight="bold" textAnchor="end">LV (CS)</text>
+        </g>
+      )}
+    </svg>
+  );
+};
+
 /* ───────────── Main component ───────────── */
 
 const HeartBlockDiagram = () => {
   const [selected, setSelected] = useState<BlockKey>("first");
   const [showLabels, setShowLabels] = useState(true);
   const [showAll, setShowAll] = useState(true);
+  const [showPacing, setShowPacing] = useState(true);
 
   const info = BLOCKS[selected];
 
@@ -326,6 +428,7 @@ const HeartBlockDiagram = () => {
           subtitle="1° → Mobitz I → Mobitz II → 3°. Tap a card to see the detail panel below."
           toggles={[
             { label: "All four", active: showAll, onChange: () => setShowAll((s) => !s) },
+            { label: "Pacing leads", active: showPacing, onChange: () => setShowPacing((s) => !s) },
             { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
           ]}
         />
@@ -393,6 +496,27 @@ const HeartBlockDiagram = () => {
                       )}
                     </div>
                   </div>
+
+                  {showPacing && (
+                    <div className="mt-3 pt-3 border-t border-border/60 flex gap-3 items-center">
+                      <PaceOverlay block={b} />
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] uppercase tracking-wide font-bold text-foreground">Device:</span>
+                          <span
+                            className="text-[10px] font-bold px-1.5 py-0.5 rounded"
+                            style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                          >
+                            {b.device}
+                          </span>
+                          {b.leads.ra && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(210,70%,50%)]/15 text-[hsl(210,70%,40%)] dark:text-[hsl(210,70%,65%)] font-semibold">RA</span>}
+                          {b.leads.rv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(35,80%,50%)]/15 text-[hsl(35,80%,38%)] dark:text-[hsl(35,80%,60%)] font-semibold">RV</span>}
+                          {b.leads.lv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(0,70%,50%)]/15 text-[hsl(0,70%,45%)] dark:text-[hsl(0,70%,65%)] font-semibold">LV (CS)</span>}
+                        </div>
+                        <p className="text-[10px] text-muted-foreground leading-snug">{b.deviceRationale}</p>
+                      </div>
+                    </div>
+                  )}
                 </button>
               );
             })}
@@ -408,6 +532,23 @@ const HeartBlockDiagram = () => {
                 <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
               </div>
             </div>
+            {showPacing && (
+              <div className="mt-3 pt-3 border-t border-border/60 flex gap-3 items-center">
+                <PaceOverlay block={info} />
+                <div className="min-w-0 flex-1 space-y-1">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-wide font-bold text-foreground">Device:</span>
+                    <span
+                      className="text-[10px] font-bold px-1.5 py-0.5 rounded"
+                      style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+                    >
+                      {info.device}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground leading-snug">{info.deviceRationale}</p>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -434,6 +575,9 @@ const HeartBlockDiagram = () => {
             </p>
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Device:</span> {info.device} — {info.deviceRationale}
             </p>
           </div>
         </div>
