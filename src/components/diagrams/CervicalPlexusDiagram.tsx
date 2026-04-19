@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { withAlpha } from "@/lib/color-utils";
+import { PlexusCard, PlexusChipRow, PlexusDetailPanel } from "./plexusShared";
 
 type BranchKey = "superficial" | "deep" | "phrenic" | "ansa";
 
