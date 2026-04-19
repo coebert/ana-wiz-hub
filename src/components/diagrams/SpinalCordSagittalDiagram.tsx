@@ -369,7 +369,6 @@ const SpinalCordSagittalDiagram = () => {
         </div>
       </div>
     </div>
-      </div>
   );
 };
 
