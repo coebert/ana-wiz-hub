@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type LayerKey = "skin" | "ext-intercostal" | "int-intercostal" | "innermost" | "neurovascular" | "endothoracic" | "parietal-pleura" | "pleural-space" | "visceral-pleura" | "lung" | "rib-above" | "rib-below";
 
@@ -44,24 +45,68 @@ const layerGeom: Record<LayerKey, { y: number; h: number }> = {
 
 const IntercostalAnatomyDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("neurovascular");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = layers[selected];
 
   const layerW = 160;
   const xOff = 60;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Intercostal Space — Cross-Section</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any layer to see anatomy and clinical relevance for chest procedures</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Intercostal space — cross-section"
+          subtitle="Tap any layer to see its anatomy and clinical relevance for chest procedures"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col sm:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 280 255" width="280" height="255" className="border border-border rounded">
-            {/* Needle trajectory */}
-            <path d="M20,240 C30,220 45,195 55,170 L60,158"
-              stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.4" fill="none" />
-            <text x="10" y="248" fontSize="6" fill="hsl(var(--muted-foreground))">Needle / drain</text>
-            <text x="30" y="225" fontSize="5" fill="hsl(195, 55%, 55%)" opacity="0.6">↑ above lower rib</text>
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div className="flex-shrink-0 mx-auto">
+            <svg viewBox="0 0 280 255" className="w-full max-w-[320px]" role="img" aria-label="Cross-section through an intercostal space showing layers from skin to lung">
+              <defs>
+                <radialGradient id="ics-bgShade" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+                </radialGradient>
+                <pattern id="ics-grain" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+                </pattern>
+                <filter id="ics-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                  <feOffset dx="0" dy="1.2" result="off" />
+                  <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+
+              <rect x="2" y="2" width="276" height="251" rx="8" fill="url(#ics-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+              {showSutures && <rect x="2" y="2" width="276" height="251" rx="8" fill="url(#ics-grain)" pointerEvents="none" />}
+
+              {/* Compass labels (gated by Labels) */}
+              {showLabels && (
+                <g pointerEvents="none">
+                  <text x="140" y="12" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">SUPERFICIAL</text>
+                  <text x="140" y="252" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">DEEP</text>
+                </g>
+              )}
+
+              {/* Needle trajectory (gated by Sutures) */}
+              {showSutures && (
+                <>
+                  <path d="M20,240 C30,220 45,195 55,170 L60,158"
+                    stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 2" opacity="0.45" fill="none" />
+                  {showLabels && (
+                    <>
+                      <text x="10" y="248" fontSize="6" fill="hsl(var(--muted-foreground))">Needle / drain</text>
+                      <text x="30" y="225" fontSize="5" fill="hsl(195, 55%, 55%)" opacity="0.7">↑ above lower rib</text>
+                    </>
+                  )}
+                </>
+              )}
 
             {layerOrder.map((key) => {
               const l = layers[key];
