@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type StructureKey = "biceps-tendon" | "brachial-artery" | "median-nerve" | "radial-nerve" | "bicipital-aponeurosis" | "musculocutaneous" | "cephalic-vein" | "basilic-vein" | "median-cubital-vein" | "pronator-teres" | "brachioradialis" | "supinator" | "radial-recurrent";
 
@@ -100,24 +101,56 @@ const categories = {
 
 const AntecubitalFossaDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("biceps-tendon");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = structures[selected];
   const isActive = (k: StructureKey) => selected === k;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Cubital Fossa — Anterior View</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap structures to explore anatomy. Contents medial → lateral: Nerve, Artery, Tendon (TAN)</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Cubital fossa — anterior view"
+          subtitle="Tap structures to explore anatomy. Contents medial → lateral: Nerve, Artery, Tendon (TAN)"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 300 340" width="300" height="340" className="border border-border rounded bg-background">
+          <svg viewBox="0 0 300 340" className="w-full max-w-[320px]" role="img" aria-label="Anterior view of the cubital fossa with TAN contents and bordering muscles">
+            <defs>
+              <radialGradient id="acf-bgShade" cx="50%" cy="50%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="acf-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="acf-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="296" height="336" rx="10" fill="url(#acf-tissue)" pointerEvents="none" />}
+
             {/* Arm outline */}
-            <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.3" />
-            <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.3" />
+            <path d="M90,10 Q80,60 75,120 Q70,160 60,200 Q55,240 50,280 Q48,300 45,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M210,10 Q220,60 225,120 Q228,160 235,200 Q238,240 240,280 Q242,300 245,330" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
 
             {/* Elbow crease */}
-            <path d="M70,155 Q150,148 230,155" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="4 3" opacity="0.3" />
-            <text x="240" y="150" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4">Elbow crease</text>
+            {showSutures && (
+              <path d="M70,155 Q150,148 230,155" fill="none" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="4 3" opacity="0.45" />
+            )}
+            {showLabels && (
+              <text x="240" y="150" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Elbow crease</text>
+            )}
 
             {/* Cubital fossa triangle */}
             {/* Pronator teres - medial border */}
@@ -271,11 +304,17 @@ const AntecubitalFossaDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
-              <strong>Clinical:</strong> {info.clinicalNote}
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
             </p>
           </div>
 
@@ -297,6 +336,7 @@ const AntecubitalFossaDiagram = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
