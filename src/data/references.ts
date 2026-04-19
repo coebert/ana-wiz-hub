@@ -108,6 +108,14 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.14", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapter 14: Defibrillation." },
     { label: "BJA Educ 2005", citation: "Nolan JP, Soar J. Defibrillation in clinical practice. BJA Education. 2005;5(1):8-11.", url: "https://doi.org/10.1093/bjaceaccp/mki003" },
   ],
+  "arrhythmias-ecg-icu": [
+    { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Adult Advanced Life Support, Tachycardia and Bradycardia algorithms. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines" },
+    { label: "ERC/ESICM 2021 Post-Resus", citation: "Nolan JP, Sandroni C, Böttiger BW, et al. European Resuscitation Council and European Society of Intensive Care Medicine guidelines 2021: post-resuscitation care. Resuscitation. 2021;161:220-269.", url: "https://doi.org/10.1016/j.resuscitation.2021.02.012" },
+    { label: "ESC 2020 AF guidelines", citation: "Hindricks G, Potpara T, Dagres N, et al. 2020 ESC Guidelines for the diagnosis and management of atrial fibrillation. Eur Heart J. 2021;42(5):373-498.", url: "https://doi.org/10.1093/eurheartj/ehaa612" },
+    { label: "BJA Educ 2018", citation: "Bashir Y, Betts TR. Acute management of arrhythmias in the critically ill. BJA Education. 2018;18(7):207-213.", url: "https://doi.org/10.1016/j.bjae.2018.04.003" },
+    { label: "TTM2 Trial", citation: "Dankiewicz J, Cronberg T, Lilja G, et al. Hypothermia versus Normothermia after Out-of-Hospital Cardiac Arrest. N Engl J Med. 2021;384:2283-2294.", url: "https://doi.org/10.1056/NEJMoa2100591" },
+    { label: "ACC/AHA/HRS 2017", citation: "Al-Khatib SM, Stevenson WG, Ackerman MJ, et al. 2017 AHA/ACC/HRS Guideline for Management of Patients With Ventricular Arrhythmias and the Prevention of Sudden Cardiac Death. Circulation. 2018;138(13):e272-e391.", url: "https://doi.org/10.1161/CIR.0000000000000549" },
+  ],
   "ventilators": [
     { label: "Al-Shaikh & Stacey Ch.9", citation: "Al-Shaikh B, Stacey S. Essentials of Anaesthetic Equipment. 5th ed. Chapter 9: Ventilators and Humidifiers." },
     { label: "BJA Educ 2016", citation: "Garg R. Mechanical ventilators. BJA Education. 2016;16(6):186-192.", url: "https://doi.org/10.1093/bjaed/mkv066" },
