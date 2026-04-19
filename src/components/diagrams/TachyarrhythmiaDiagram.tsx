@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 
@@ -774,6 +774,7 @@ const TachyarrhythmiaDiagram = () => {
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
             </p>
+            <AdenosineSimulator info={info} />
             <AdenosineRow info={info.adenosine} />
           </div>
         </div>
