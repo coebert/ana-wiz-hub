@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type RegionKey =
   | "vertebral-body" | "disc-foramen" | "transverse-process" | "costotransverse-joint"
@@ -161,6 +162,8 @@ const categories = [
 
 const ParavertebralSpaceDiagram = () => {
   const [selected, setSelected] = useState<RegionKey>("pvs-contents");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
   const info = regions[selected];
 
   const isActive = (key: RegionKey) => selected === key;
@@ -168,9 +171,16 @@ const ParavertebralSpaceDiagram = () => {
   const sw = (key: RegionKey, active: number, idle: number) => isActive(key) ? active : idle;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Paravertebral Space — Axial Cross-Section (Thoracic)</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any structure for detailed anatomy and clinical notes. View is looking caudally (patient's left on your right).</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Paravertebral Space — Axial Cross-Section (Thoracic)"
+          subtitle="Tap any structure for detailed anatomy and clinical notes. View is looking caudally (patient's left on your right)."
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
       <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
@@ -627,6 +637,7 @@ const ParavertebralSpaceDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 

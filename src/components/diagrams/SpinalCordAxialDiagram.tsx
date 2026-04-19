@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 // =================================================================
 // Types & data
@@ -232,6 +233,8 @@ const SpinalCordAxialDiagram = () => {
   const [selectedTract, setSelectedTract] = useState<TractKey | null>(null);
   const [selectedSyndrome, setSelectedSyndrome] = useState<SyndromeKey | null>(null);
   const [cordLevel, setCordLevel] = useState<CordLevel>("thoracic");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
 
   const activeInfo = selectedTract ? TRACTS[selectedTract] : null;
   const syndInfo = selectedSyndrome ? SYNDROMES[selectedSyndrome] : null;
@@ -282,11 +285,16 @@ const SpinalCordAxialDiagram = () => {
   // We split white matter into wedges around the cord's outer rim (rIn=0.55 .. rOut=0.97).
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6 bg-card/30">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Spinal Cord — Axial Cross-Section</h3>
-      <p className="text-xs text-muted-foreground mb-3">
-        Tap a structure for details. Switch cord level to see how the cord changes shape and proportion.
-      </p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Spinal Cord — Axial Cross-Section"
+          subtitle="Tap a structure for details. Switch cord level to see how the cord changes shape and proportion."
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
       {/* Level selector with size hint */}
       <div className="flex flex-wrap gap-1.5 mb-2">
@@ -889,6 +897,7 @@ const SpinalCordAxialDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 
