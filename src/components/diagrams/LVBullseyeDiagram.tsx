@@ -277,7 +277,7 @@ const LVBullseyeDiagram = () => {
                   stroke={isSelected ? meta.color : "hsl(var(--background))"}
                   strokeWidth={strokeWidth}
                   className="cursor-pointer transition-all duration-150"
-                  onClick={() => setSelected(s.id)}
+                  onClick={() => handleSegmentClick(s)}
                   aria-label={`Segment ${s.id}: ${s.name}`}
                 />
               );
