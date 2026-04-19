@@ -93,9 +93,15 @@ const CervicalPlexusDiagram = () => {
             ))}
 
             {/* ─── SCM reference (vertical dashed) ─── */}
-            <line x1="195" y1="30" x2="195" y2="195" stroke="hsl(var(--foreground))" strokeWidth="1.5"
-              opacity="0.12" strokeDasharray="5 3" />
-            <text x="198" y="38" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">SCM post. border</text>
+            {showSutures && (
+              <>
+                <line x1="195" y1="30" x2="195" y2="195" stroke="hsl(var(--foreground))" strokeWidth="1.5"
+                  opacity="0.12" strokeDasharray="5 3" />
+                {showLabels && (
+                  <text x="198" y="38" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">SCM post. border</text>
+                )}
+              </>
+            )}
 
             {/* ═══ SUPERFICIAL CERVICAL PLEXUS ═══ */}
             <g opacity={selected === "superficial" ? 1 : 0.3} className="cursor-pointer transition-opacity duration-200"
@@ -220,13 +226,15 @@ const CervicalPlexusDiagram = () => {
             </g>
 
             {/* Root labels */}
-            <g fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
-              <text x="38" y="54" textAnchor="middle">C1</text>
-              <text x="38" y="84" textAnchor="middle">C2</text>
-              <text x="38" y="114" textAnchor="middle">C3</text>
-              <text x="38" y="144" textAnchor="middle">C4</text>
-              <text x="38" y="174" textAnchor="middle">C5</text>
-            </g>
+            {showLabels && (
+              <g fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
+                <text x="38" y="54" textAnchor="middle">C1</text>
+                <text x="38" y="84" textAnchor="middle">C2</text>
+                <text x="38" y="114" textAnchor="middle">C3</text>
+                <text x="38" y="144" textAnchor="middle">C4</text>
+                <text x="38" y="174" textAnchor="middle">C5</text>
+              </g>
+            )}
           </svg>
         </div>
 
