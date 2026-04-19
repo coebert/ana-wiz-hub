@@ -523,7 +523,39 @@ const RhythmStrip = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
   );
 };
 
+/* ───────────── Adenosine response row ───────────── */
+
+const AdenosineRow = ({ info, compact = false }: { info: AdenosineInfo; compact?: boolean }) => {
+  const style = ADENOSINE_STYLE[info.response];
+  return (
+    <div
+      className="flex items-start gap-2 mt-1.5 p-1.5 rounded-md border"
+      style={{
+        borderColor: withAlpha(style.color, 0.4),
+        backgroundColor: withAlpha(style.color, 0.08),
+      }}
+    >
+      <span
+        className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+        style={{ backgroundColor: style.color, color: "white" }}
+        aria-hidden
+      >
+        {style.icon}
+      </span>
+      <div className="min-w-0 leading-tight">
+        <p className="text-[10px] font-semibold" style={{ color: style.color }}>
+          Adenosine: {info.label}
+        </p>
+        {!compact && (
+          <p className="text-[10px] text-muted-foreground mt-0.5">{info.detail}</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 /* ───────────── Main component ───────────── */
+
 
 const TachyarrhythmiaDiagram = () => {
   const [selected, setSelected] = useState<TachyKey>("sinus");
