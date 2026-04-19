@@ -303,6 +303,57 @@ const PacingDevicesDiagram = () => {
                 ))}
               </ul>
             </div>
+            {detail.leads.shock && (
+              <div
+                className="sm:col-span-2 mt-1 p-3 rounded-md border-2"
+                style={{
+                  borderColor: "hsl(38 92% 50% / 0.5)",
+                  backgroundColor: "hsl(38 92% 50% / 0.06)",
+                }}
+              >
+                <p
+                  className="font-semibold mb-2 flex items-center gap-1.5 text-[13px]"
+                  style={{ color: "hsl(38 92% 40%)" }}
+                >
+                  <span aria-hidden>🩺</span> Perioperative management — anaesthetist
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3 text-[11px]">
+                  <div>
+                    <p className="font-semibold text-foreground mb-1">🧲 Magnet response</p>
+                    <ul className="space-y-1 text-muted-foreground">
+                      <li>• ICD/CRT-D: <span className="font-medium text-foreground">suspends shock therapy</span> while in place — pacing function unchanged</li>
+                      <li>• Pacemaker (no shock): magnet → asynchronous pacing (DOO/VOO) at fixed magnet rate</li>
+                      <li>• Remove magnet → therapy resumes immediately</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground mb-1">⚡ Diathermy precautions</p>
+                    <ul className="space-y-1 text-muted-foreground">
+                      <li>• <span className="font-medium text-foreground">Bipolar &gt; monopolar</span> wherever possible</li>
+                      <li>• If monopolar essential: short bursts (&lt; 5 s), low power, return pad sited so current vector avoids the device</li>
+                      <li>• Surgery below umbilicus: usually no reprogramming needed; above umbilicus near generator: deactivate / magnet</li>
+                      <li>• External defib pads <span className="font-medium text-foreground">anterior–posterior</span>, ≥ 8 cm from generator</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground mb-1">⚙ Reprogramming / consent</p>
+                    <ul className="space-y-1 text-muted-foreground">
+                      <li>• Pre-op cardiac physiologist interrogation (battery, lead integrity, dependence, last therapy)</li>
+                      <li>• Document indication, model, mode, magnet rate</li>
+                      <li>• Tachy therapies <span className="font-medium text-foreground">OFF</span> for above-umbilicus surgery (or magnet on field)</li>
+                      <li>• Continuous ECG + arterial line; external pads on; reactivate before leaving recovery</li>
+                      <li>• Consent for shocks during the case + post-op interrogation</li>
+                    </ul>
+                  </div>
+                </div>
+                <p
+                  className="mt-2 pt-2 border-t text-[10.5px] text-muted-foreground italic"
+                  style={{ borderColor: "hsl(38 92% 50% / 0.25)" }}
+                >
+                  Reference: AAGBI / MHRA / Heart Rhythm Society perioperative CIED guidelines.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       )}
