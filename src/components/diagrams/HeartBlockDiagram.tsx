@@ -21,6 +21,11 @@ interface BlockInfo {
   pathophysiology: string;
   management: string;
   pacing: "Rarely" | "Usually no" | "Often" | "Always";
+  /** Recommended device when pacing is indicated. */
+  device: "None" | "DDD" | "VVI" | "DDD ± CRT";
+  deviceRationale: string;
+  /** Which leads the device places — drives the PaceOverlay. */
+  leads: { ra: boolean; rv: boolean; lv: boolean };
 }
 
 const BLOCKS: Record<BlockKey, BlockInfo> = {
@@ -34,6 +39,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Slowed AV-nodal conduction. Often vagal tone, drugs (β-blocker, digoxin, CCB), inferior MI, athletes.",
     management: "Usually benign — treat cause. Caution with further AV-blocking drugs.",
     pacing: "Rarely",
+    device: "None",
+    deviceRationale: "No device unless symptomatic with very long PR (rare 'pseudo-pacemaker' syndrome).",
+    leads: { ra: false, rv: false, lv: false },
   },
   mobitz1: {
     label: "2° AV block — Mobitz I (Wenckebach)",
@@ -45,6 +53,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Decremental conduction in AV node. Inferior MI (RCA → AV node), high vagal tone, AV-nodal blockers.",
     management: "Usually no treatment unless symptomatic bradycardia. Atropine if needed.",
     pacing: "Usually no",
+    device: "None",
+    deviceRationale: "Vagal / nodal — usually reversible. Pace only if symptomatic bradycardia despite cause control.",
+    leads: { ra: false, rv: false, lv: false },
   },
   mobitz2: {
     label: "2° AV block — Mobitz II",
@@ -56,6 +67,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "His-Purkinje disease. Anterior MI (LAD → septal branches), fibrosis (Lev / Lenègre).",
     management: "Permanent pacing — high risk of progression to complete block.",
     pacing: "Often",
+    device: "DDD",
+    deviceRationale: "Dual-chamber (RA + RV) — preserves AV synchrony; infranodal block won't recover.",
+    leads: { ra: true, rv: true, lv: false },
   },
   complete: {
     label: "3° AV block (complete)",
@@ -67,6 +81,9 @@ const BLOCKS: Record<BlockKey, BlockInfo> = {
     pathophysiology: "Complete failure at AV node, His or bilateral bundles. Inferior MI (junctional escape, narrow), anterior MI (ventricular escape, wide, slow).",
     management: "Atropine ± isoprenaline / external pacing → permanent PPM.",
     pacing: "Always",
+    device: "DDD ± CRT",
+    deviceRationale: "DDD if SR; VVI if AF. Add LV lead via coronary sinus (CRT-P/D) if EF ≤ 35% & expected high RV-pacing burden.",
+    leads: { ra: true, rv: true, lv: true },
   },
 };
 
