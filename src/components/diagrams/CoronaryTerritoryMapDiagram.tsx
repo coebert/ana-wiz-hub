@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
-type Territory = "anterior" | "lateral" | "inferior" | "posterior" | "septal" | "rv" | null;
+type Territory = "anterior" | "lateral" | "inferior" | "posterior" | "septal" | "rv";
 
-const territories: Record<Exclude<Territory, null>, {
+const territories: Record<Territory, {
   label: string;
   artery: string;
   leads: string[];
@@ -70,189 +71,206 @@ const ecgLeadPositions: Record<string, { x: number; y: number }> = {
 const extraLeads = ["V3R", "V4R", "V7", "V8", "V9"];
 
 const CoronaryTerritoryMapDiagram = () => {
-  const [selected, setSelected] = useState<Territory>(null);
+  const [selected, setSelected] = useState<Territory>("anterior");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
-  const isLeadHighlighted = (lead: string) => {
-    if (!selected) return false;
-    return territories[selected].leads.includes(lead);
-  };
+  const isLeadHighlighted = (lead: string) => territories[selected].leads.includes(lead);
+  const isLeadReciprocal = (lead: string) => territories[selected].reciprocal.includes(lead);
 
-  const isLeadReciprocal = (lead: string) => {
-    if (!selected) return false;
-    return territories[selected].reciprocal.includes(lead);
-  };
-
-  const getLeadColor = (lead: string) => {
-    if (!selected) return "hsl(var(--muted-foreground))";
-    if (isLeadHighlighted(lead)) return territories[selected].color;
-    if (isLeadReciprocal(lead)) return "hsl(var(--muted-foreground))";
-    return "hsl(var(--muted-foreground))";
-  };
-
-  const getLeadOpacity = (lead: string) => {
-    if (!selected) return 0.5;
-    if (isLeadHighlighted(lead)) return 1;
-    if (isLeadReciprocal(lead)) return 0.7;
-    return 0.15;
-  };
-
-  const info = selected ? territories[selected] : null;
+  const info = territories[selected];
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Coronary Territory Map</h3>
-      <p className="text-xs text-muted-foreground mb-4">Select a territory to see corresponding ECG leads and culprit artery</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Coronary territory map"
+          subtitle="Tap a territory to highlight its ECG leads, culprit artery and reciprocal changes"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      {/* Territory selector */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {(Object.keys(territories) as Exclude<Territory, null>[]).map((t) => (
-          <button
-            key={t}
-            onClick={() => setSelected(selected === t ? null : t)}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
-            style={{
-              borderColor: selected === t ? territories[t].color : "hsl(var(--border))",
-              backgroundColor: selected === t ? territories[t].color : "transparent",
-              color: selected === t ? "white" : "hsl(var(--muted-foreground))",
-            }}
-          >
-            {territories[t].label}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-5">
-        {/* 12-lead ECG grid */}
-        <div className="flex-shrink-0">
-          <svg viewBox="0 0 420 200" width="400" height="190" className="border border-border rounded bg-gradient-to-b from-background to-secondary/10">
-            {/* Grid labels */}
-            <text x="62" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" fontWeight="bold">Limb</text>
-            <text x="135" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" fontWeight="bold">Augmented</text>
-            <text x="208" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" fontWeight="bold">Septal/Ant</text>
-            <text x="355" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" fontWeight="bold">Lateral</text>
-
-            {/* Standard 12-lead boxes */}
-            {Object.entries(ecgLeadPositions).map(([lead, pos]) => {
-              const highlighted = isLeadHighlighted(lead);
-              const reciprocal = isLeadReciprocal(lead);
-              const color = getLeadColor(lead);
-              const opacity = getLeadOpacity(lead);
-
-              return (
-                <g key={lead}>
-                  <rect
-                    x={pos.x - 30} y={pos.y - 15} width="60" height="30" rx="5"
-                    fill={highlighted ? color : reciprocal ? "hsl(var(--muted-foreground))" : "hsl(var(--muted-foreground))"}
-                    fillOpacity={highlighted ? 0.15 : reciprocal ? 0.06 : 0.03}
-                    stroke={highlighted ? color : "hsl(var(--border))"}
-                    strokeWidth={highlighted ? 1.5 : 0.8}
-                    opacity={opacity}
-                  />
-                  <text
-                    x={pos.x} y={pos.y + 1}
-                    textAnchor="middle" dominantBaseline="middle"
-                    fontSize="10" fontWeight={highlighted ? "bold" : "normal"}
-                    fill={highlighted ? color : "hsl(var(--foreground))"}
-                    opacity={opacity}
-                  >
-                    {lead}
-                  </text>
-                  {highlighted && (
-                    <text x={pos.x} y={pos.y + 12} textAnchor="middle" fontSize="5" fill={color} opacity="0.7">
-                      ST ↑
-                    </text>
-                  )}
-                  {reciprocal && (
-                    <text x={pos.x} y={pos.y + 12} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.5">
-                      ST ↓ reciprocal
-                    </text>
-                  )}
-                </g>
-              );
-            })}
-
-            {/* Extra leads row */}
-            <line x1="32" y1="168" x2="388" y2="168" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.3" />
-            {extraLeads.map((lead, i) => {
-              const x = 62 + i * 80;
-              const y = 185;
-              const highlighted = isLeadHighlighted(lead);
-              const color = highlighted && info ? info.color : "hsl(var(--muted-foreground))";
-              const opacity = selected ? (highlighted ? 1 : 0.15) : 0.4;
-
-              return (
-                <g key={lead}>
-                  <rect
-                    x={x - 28} y={y - 12} width="56" height="22" rx="4"
-                    fill={highlighted ? color : "hsl(var(--muted-foreground))"}
-                    fillOpacity={highlighted ? 0.12 : 0.02}
-                    stroke={highlighted ? color : "hsl(var(--border))"}
-                    strokeWidth={highlighted ? 1.5 : 0.5}
-                    opacity={opacity}
-                    strokeDasharray={highlighted ? "none" : "3 2"}
-                  />
-                  <text
-                    x={x} y={y} textAnchor="middle" dominantBaseline="middle"
-                    fontSize="8" fontWeight={highlighted ? "bold" : "normal"}
-                    fill={highlighted ? color : "hsl(var(--foreground))"}
-                    opacity={opacity}
-                  >
-                    {lead}
-                  </text>
-                </g>
-              );
-            })}
-            <text x="210" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.35">Additional leads (not standard 12-lead)</text>
-          </svg>
+        {/* Territory selector */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {(Object.keys(territories) as Territory[]).map((t) => (
+            <button
+              key={t}
+              onClick={() => setSelected(t)}
+              aria-pressed={selected === t}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-all"
+              style={{
+                borderColor: selected === t ? territories[t].color : "hsl(var(--border))",
+                backgroundColor: selected === t ? territories[t].color : "transparent",
+                color: selected === t ? "white" : "hsl(var(--muted-foreground))",
+              }}
+            >
+              {territories[t].label}
+            </button>
+          ))}
         </div>
 
-        {/* Info panel */}
-        <div className="flex-1 min-w-0">
-          {info ? (
-            <div className="space-y-3 animate-fade-in" key={selected}>
-              <div className="p-4 rounded-lg border" style={{ borderColor: withAlpha(info.color, 0.25) }}>
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: info.color }} />
-                  <p className="font-bold text-foreground">{info.label} Territory</p>
-                </div>
-                <p className="text-sm font-semibold" style={{ color: info.color }}>
-                  Culprit: {info.artery}
-                </p>
-                <p className="text-xs text-muted-foreground mt-2 leading-relaxed">{info.detail}</p>
-              </div>
+        <div className="flex flex-col lg:flex-row gap-5">
+          {/* 12-lead ECG grid */}
+          <div className="flex-shrink-0 mx-auto">
+            <svg
+              viewBox="0 0 420 210"
+              className="w-full max-w-[420px]"
+              role="img"
+              aria-label="12-lead ECG grid with selected coronary territory leads highlighted"
+            >
+              <defs>
+                <radialGradient id="ctm-bgShade" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.04" />
+                </radialGradient>
+                <pattern id="ctm-grid" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+                </pattern>
+                <filter id="ctm-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                  <feOffset dx="0" dy="1.2" result="off" />
+                  <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
 
-              <div className="grid grid-cols-2 gap-2">
-                <div className="p-3 rounded-lg border border-border">
-                  <p className="text-xs font-semibold text-foreground mb-1">ST Elevation</p>
-                  <div className="flex flex-wrap gap-1">
-                    {info.leads.map((l) => (
-                      <span key={l} className="px-2 py-0.5 rounded text-xs font-bold text-white" style={{ backgroundColor: info.color }}>
-                        {l}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="p-3 rounded-lg border border-border">
-                  <p className="text-xs font-semibold text-foreground mb-1">Reciprocal ↓</p>
-                  <div className="flex flex-wrap gap-1">
-                    {info.reciprocal.length > 0 ? info.reciprocal.map((l) => (
-                      <span key={l} className="px-2 py-0.5 rounded text-xs font-medium bg-muted text-muted-foreground">
-                        {l}
-                      </span>
-                    )) : (
-                      <span className="text-xs text-muted-foreground">—</span>
+              {/* Background plate with depth */}
+              <rect x="2" y="2" width="416" height="206" rx="8" fill="url(#ctm-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+              {showSutures && (
+                <rect x="2" y="2" width="416" height="206" rx="8" fill="url(#ctm-grid)" pointerEvents="none" />
+              )}
+
+              {/* Column headers */}
+              {showLabels && (
+                <>
+                  <text x="62" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="bold">Limb</text>
+                  <text x="135" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="bold">Augmented</text>
+                  <text x="208" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="bold">Septal/Ant</text>
+                  <text x="355" y="25" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="bold">Lateral</text>
+                </>
+              )}
+
+              {/* Standard 12-lead boxes */}
+              {Object.entries(ecgLeadPositions).map(([lead, pos]) => {
+                const highlighted = isLeadHighlighted(lead);
+                const reciprocal = isLeadReciprocal(lead);
+                const color = highlighted ? info.color : "hsl(var(--muted-foreground))";
+                const opacity = highlighted ? 1 : reciprocal ? 0.7 : 0.18;
+
+                return (
+                  <g key={lead} filter={highlighted ? "url(#ctm-shadow)" : undefined}>
+                    <rect
+                      x={pos.x - 30} y={pos.y - 15} width="60" height="30" rx="5"
+                      fill={highlighted ? color : "hsl(var(--muted-foreground))"}
+                      fillOpacity={highlighted ? 0.18 : reciprocal ? 0.06 : 0.03}
+                      stroke={highlighted ? color : "hsl(var(--border))"}
+                      strokeWidth={highlighted ? 1.6 : 0.8}
+                      opacity={opacity}
+                    />
+                    <text
+                      x={pos.x} y={pos.y + 1}
+                      textAnchor="middle" dominantBaseline="middle"
+                      fontSize="10" fontWeight={highlighted ? "bold" : "normal"}
+                      fill={highlighted ? color : "hsl(var(--foreground))"}
+                      opacity={opacity}
+                    >
+                      {lead}
+                    </text>
+                    {highlighted && (
+                      <text x={pos.x} y={pos.y + 12} textAnchor="middle" fontSize="5" fill={color} opacity="0.8">ST ↑</text>
                     )}
-                  </div>
+                    {reciprocal && (
+                      <text x={pos.x} y={pos.y + 12} textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.6">ST ↓ reciprocal</text>
+                    )}
+                  </g>
+                );
+              })}
+
+              {/* Extra leads row */}
+              <line x1="32" y1="168" x2="388" y2="168" stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+              {extraLeads.map((lead, i) => {
+                const x = 62 + i * 80;
+                const y = 188;
+                const highlighted = isLeadHighlighted(lead);
+                const color = highlighted ? info.color : "hsl(var(--muted-foreground))";
+                const opacity = highlighted ? 1 : 0.18;
+
+                return (
+                  <g key={lead} filter={highlighted ? "url(#ctm-shadow)" : undefined}>
+                    <rect
+                      x={x - 28} y={y - 12} width="56" height="22" rx="4"
+                      fill={highlighted ? color : "hsl(var(--muted-foreground))"}
+                      fillOpacity={highlighted ? 0.15 : 0.02}
+                      stroke={highlighted ? color : "hsl(var(--border))"}
+                      strokeWidth={highlighted ? 1.6 : 0.5}
+                      opacity={opacity}
+                      strokeDasharray={highlighted ? "none" : "3 2"}
+                    />
+                    <text
+                      x={x} y={y} textAnchor="middle" dominantBaseline="middle"
+                      fontSize="8" fontWeight={highlighted ? "bold" : "normal"}
+                      fill={highlighted ? color : "hsl(var(--foreground))"}
+                      opacity={opacity}
+                    >
+                      {lead}
+                    </text>
+                  </g>
+                );
+              })}
+              {showLabels && (
+                <text x="210" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.5">Additional leads (not standard 12-lead)</text>
+              )}
+            </svg>
+          </div>
+
+          {/* Lead summary cards */}
+          <div className="flex-1 min-w-0 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-xs font-semibold text-foreground mb-1">ST elevation</p>
+                <div className="flex flex-wrap gap-1">
+                  {info.leads.map((l) => (
+                    <span key={l} className="px-2 py-0.5 rounded text-xs font-bold text-white" style={{ backgroundColor: info.color }}>
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="text-xs font-semibold text-foreground mb-1">Reciprocal ↓</p>
+                <div className="flex flex-wrap gap-1">
+                  {info.reciprocal.length > 0 ? info.reciprocal.map((l) => (
+                    <span key={l} className="px-2 py-0.5 rounded text-xs font-medium bg-muted text-muted-foreground">
+                      {l}
+                    </span>
+                  )) : (
+                    <span className="text-xs text-muted-foreground">—</span>
+                  )}
                 </div>
               </div>
             </div>
-          ) : (
-            <div className="h-full flex items-center justify-center p-6">
-              <p className="text-sm text-muted-foreground text-center opacity-50">
-                Select a coronary territory above to highlight the corresponding ECG leads
-              </p>
+          </div>
+        </div>
+
+        {/* Standardised detail panel */}
+        <div className="mt-4 min-h-[110px]">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <p className="font-semibold text-foreground text-sm">{info.label} territory</p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+              >
+                {info.artery}
+              </span>
             </div>
-          )}
+            <p className="text-xs text-muted-foreground">{info.detail}</p>
+          </div>
         </div>
       </div>
     </div>
