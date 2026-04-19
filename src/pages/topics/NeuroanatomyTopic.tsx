@@ -7,12 +7,21 @@ import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "circle-of-willis", label: "Circle of Willis", group: "Vascular" },
+  { id: "icp-meninges", label: "ICP & Meninges", group: "Coverings" },
+  { id: "skull-base", label: "Skull Base & Foramina", group: "Coverings" },
+  { id: "brainstem", label: "Brainstem & Autonomic Centres", group: "Function" },
+];
 
 const NeuroanatomyTopic = () => {
   return (
     <SectionLayout title="Neuroanatomy" subtitle="FRCA / FFICM — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="circle-of-willis" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Blood Supply — Circle of Willis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The brain receives 15% of cardiac output (~750 ml/min). Autoregulation maintains CBF between MAP 50–150 mmHg. The circle of Willis provides collateral circulation between anterior (ICA) and posterior (vertebrobasilar) circulations.
@@ -32,7 +41,7 @@ const NeuroanatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="icp-meninges" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intracranial Pressure & Meninges</h2>
           <div className="space-y-2">
             {[
@@ -50,7 +59,7 @@ const NeuroanatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="skull-base" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
 
           <SkullBaseDiagram />
@@ -73,7 +82,7 @@ const NeuroanatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="brainstem" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brainstem & Autonomic Centres</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
