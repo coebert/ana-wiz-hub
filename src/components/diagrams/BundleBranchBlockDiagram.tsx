@@ -28,7 +28,7 @@ interface BlockInfo {
   };
   qrsWide: boolean;
   v1: "rsR'" | "broad-S" | "qR-narrow" | "rS-narrow" | "rs-tall";
-  v6: "wide-S" | "broad-monophasic" | "qR-narrow" | "rS-narrow" | "monophasic";
+  v6: "wide-S" | "broad-monophasic" | "qR-narrow" | "rS-narrow" | "rs-tall" | "monophasic";
   axis: string;
   qrsDuration: string;
   pathophysiology: string;
