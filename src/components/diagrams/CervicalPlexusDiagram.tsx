@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 
 type BranchKey = "superficial" | "deep" | "phrenic" | "ansa";
