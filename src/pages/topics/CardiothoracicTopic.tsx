@@ -8,10 +8,20 @@ import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "cpb-overview", label: "CPB circuit & anticoagulation", group: "Cardiac surgery" },
+  { id: "cpb-physiology", label: "Physiological effects of CPB", group: "Cardiac surgery" },
+  { id: "cardiac-considerations", label: "Key cardiac procedures", group: "Cardiac surgery" },
+  { id: "opcab", label: "On-pump vs off-pump (OPCAB)", group: "Cardiac surgery" },
+  { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
+];
 
 const CardiothoracicTopic = () => {
   return (
     <SectionLayout title="Cardiothoracic Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+      <TopicTableOfContents items={tocItems} />
       <p className="text-muted-foreground leading-relaxed mb-6">
         Cardiothoracic anaesthesia centres on three high-stakes domains: cardiopulmonary bypass physiology, lung isolation for thoracic surgery, and the management of one-lung ventilation. The diagrams below provide an at-a-glance reference for the CPB circuit, double-lumen tube positioning, and a structured approach to OLV troubleshooting before the detailed text.
       </p>
@@ -19,7 +29,7 @@ const CardiothoracicTopic = () => {
       <DLTInsertionDiagram />
       <OLVTroubleshootingDiagram />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="cpb-overview" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Bypass (CPB)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             CPB allows the heart and lungs to be bypassed during cardiac surgery. Understanding the circuit and physiological derangements is essential.
@@ -36,7 +46,7 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="cpb-physiology" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Effects of CPB</h2>
           <div className="space-y-2">
             {[
@@ -54,7 +64,7 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="olv" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -71,7 +81,7 @@ const CardiothoracicTopic = () => {
           </p>
         </div>
 
-        <div>
+        <div id="cardiac-considerations" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Cardiac Surgery Considerations</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -85,7 +95,7 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="opcab" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">On-Pump vs Off-Pump Cardiac Surgery (OPCAB)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Coronary artery bypass grafting (CABG) can be performed with cardiopulmonary bypass (on-pump) or on the beating heart (off-pump / OPCAB). Each approach has distinct anaesthetic challenges.
