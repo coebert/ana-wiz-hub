@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { PlexusCard, PlexusChipRow, PlexusDetailPanel } from "./plexusShared";
+import { PlexusCard, PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
 
 type BranchKey = "superficial" | "deep" | "phrenic" | "ansa";
 
@@ -76,9 +76,9 @@ const CervicalPlexusDiagram = () => {
               {["C1", "C2", "C3", "C4", "C5"].map((level) => (
                 <g key={level}>
                   <rect x={spineX - 14} y={rootY[level] - 10} width="28" height="20" rx="3"
-                    fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
-                  <text x={spineX} y={rootY[level] + 4} fontSize="9" fill="hsl(var(--foreground))"
-                    textAnchor="middle" fontWeight="600">{level}</text>
+                    fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1.25" />
+                  <text x={spineX} y={rootY[level] + 4} fontSize="9" fill={ROOT_COLORS[level]}
+                    textAnchor="middle" fontWeight="700">{level}</text>
                 </g>
               ))}
               {/* Spinal cord */}

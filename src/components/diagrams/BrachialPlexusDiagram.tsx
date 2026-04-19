@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { PlexusDetailPanel } from "./plexusShared";
+import { PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
 
 type LevelKey = "roots" | "trunks" | "divisions" | "cords" | "branches";
 
@@ -25,11 +25,11 @@ const levelInfo: Record<LevelKey, { label: string; y: number; blockApproach: str
 
 const elements: PlexusElement[] = [
   // Roots
-  { id: "c5", label: "C5", level: "roots", x: 100, y: 60, color: "hsl(0, 65%, 55%)", detail: "Ventral ramus of C5. Emerges between anterior and middle scalene muscles at level of cricoid cartilage. Contributions: dorsal scapular nerve (C5) → rhomboids; nerve to subclavius; phrenic nerve (C3,4,5 — 'keeps the diaphragm alive').", connections: ["sup"] },
-  { id: "c6", label: "C6", level: "roots", x: 155, y: 60, color: "hsl(20, 70%, 52%)", detail: "Ventral ramus of C6. Exits at Chassaignac's tubercle (C6 transverse process — landmark for interscalene block). Long thoracic nerve (C5,6,7) → serratus anterior ('winged scapula' if damaged).", connections: ["sup"] },
-  { id: "c7", label: "C7", level: "roots", x: 210, y: 60, color: "hsl(45, 65%, 48%)", detail: "Ventral ramus of C7. Largest root — forms entire middle trunk alone. Long thoracic nerve contribution (C5,6,7). C7 dermatome = middle finger (exam favourite).", connections: ["mid"] },
-  { id: "c8", label: "C8", level: "roots", x: 265, y: 60, color: "hsl(150, 50%, 42%)", detail: "Ventral ramus of C8. Passes over 1st rib posterior to subclavian artery. Joins T1 to form inferior trunk. Vulnerable to cervical rib compression (thoracic outlet syndrome).", connections: ["inf"] },
-  { id: "t1", label: "T1", level: "roots", x: 320, y: 60, color: "hsl(210, 55%, 50%)", detail: "Ventral ramus of T1. Smallest root. Joins C8 → inferior trunk. Carries sympathetic fibres to stellate ganglion — T1 avulsion → Horner's syndrome (miosis, ptosis, anhidrosis, enophthalmos).", connections: ["inf"] },
+  { id: "c5", label: "C5", level: "roots", x: 100, y: 60, color: ROOT_COLORS.C5, detail: "Ventral ramus of C5. Emerges between anterior and middle scalene muscles at level of cricoid cartilage. Contributions: dorsal scapular nerve (C5) → rhomboids; nerve to subclavius; phrenic nerve (C3,4,5 — 'keeps the diaphragm alive').", connections: ["sup"] },
+  { id: "c6", label: "C6", level: "roots", x: 155, y: 60, color: ROOT_COLORS.C6, detail: "Ventral ramus of C6. Exits at Chassaignac's tubercle (C6 transverse process — landmark for interscalene block). Long thoracic nerve (C5,6,7) → serratus anterior ('winged scapula' if damaged).", connections: ["sup"] },
+  { id: "c7", label: "C7", level: "roots", x: 210, y: 60, color: ROOT_COLORS.C7, detail: "Ventral ramus of C7. Largest root — forms entire middle trunk alone. Long thoracic nerve contribution (C5,6,7). C7 dermatome = middle finger (exam favourite).", connections: ["mid"] },
+  { id: "c8", label: "C8", level: "roots", x: 265, y: 60, color: ROOT_COLORS.C8, detail: "Ventral ramus of C8. Passes over 1st rib posterior to subclavian artery. Joins T1 to form inferior trunk. Vulnerable to cervical rib compression (thoracic outlet syndrome).", connections: ["inf"] },
+  { id: "t1", label: "T1", level: "roots", x: 320, y: 60, color: ROOT_COLORS.T1, detail: "Ventral ramus of T1. Smallest root. Joins C8 → inferior trunk. Carries sympathetic fibres to stellate ganglion — T1 avulsion → Horner's syndrome (miosis, ptosis, anhidrosis, enophthalmos).", connections: ["inf"] },
 
   // Trunks
   { id: "sup", label: "Superior (C5,6)", level: "trunks", x: 120, y: 140, color: "hsl(10, 65%, 52%)", detail: "Erb's point: union of C5,6. Suprascapular nerve branches here (C5,6) → supraspinatus (abduction 0-15°) & infraspinatus (lateral rotation). Upper trunk palsy = Erb-Duchenne: 'waiter's tip' (arm adducted, medially rotated, extended elbow).", connections: ["ant-sup", "post-sup"] },
@@ -129,17 +129,17 @@ const HandDermatomeMap = () => (
     <path d="M 70 145 Q 30 140 20 110 Q 15 90 20 70 L 10 30 L 20 15 L 30 30 L 30 55 L 35 20 L 45 5 L 55 20 L 50 55 L 55 15 L 65 2 L 75 15 L 70 55 L 80 18 L 90 5 L 95 22 L 85 55 L 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 Q 125 105 120 110 Q 100 140 70 145 Z"
       fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6" />
     <path d="M 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 L 120 110 Q 105 120 90 125 L 85 100 L 85 55 L 100 35 Z"
-      fill="hsl(150, 50%, 42%)" fillOpacity="0.25" stroke="hsl(150, 50%, 42%)" strokeWidth="0.8" />
-    <text x="105" y="80" fontSize="8" fill="hsl(150, 50%, 42%)" fontWeight="bold">C6</text>
+      fill={ROOT_COLORS.C6} fillOpacity="0.25" stroke={ROOT_COLORS.C6} strokeWidth="0.8" />
+    <text x="105" y="80" fontSize="8" fill={ROOT_COLORS.C6} fontWeight="bold">C6</text>
     <path d="M 55 15 L 65 2 L 75 15 L 70 55 L 50 55 L 55 15 Z"
-      fill="hsl(45, 65%, 48%)" fillOpacity="0.25" stroke="hsl(45, 65%, 48%)" strokeWidth="0.8" />
-    <text x="60" y="38" fontSize="7" fill="hsl(45, 65%, 48%)" fontWeight="bold">C7</text>
+      fill={ROOT_COLORS.C7} fillOpacity="0.25" stroke={ROOT_COLORS.C7} strokeWidth="0.8" />
+    <text x="60" y="38" fontSize="7" fill={ROOT_COLORS.C7} fontWeight="bold">C7</text>
     <path d="M 10 30 L 20 15 L 30 30 L 30 55 L 20 70 Q 15 90 20 110 Q 30 140 50 143 L 50 55 L 35 20 L 45 5 L 50 10 L 50 55"
-      fill="hsl(210, 55%, 50%)" fillOpacity="0.2" stroke="hsl(210, 55%, 50%)" strokeWidth="0.8" />
-    <text x="22" y="80" fontSize="8" fill="hsl(210, 55%, 50%)" fontWeight="bold">C8</text>
+      fill={ROOT_COLORS.C8} fillOpacity="0.2" stroke={ROOT_COLORS.C8} strokeWidth="0.8" />
+    <text x="22" y="80" fontSize="8" fill={ROOT_COLORS.C8} fontWeight="bold">C8</text>
     <path d="M 20 110 Q 30 140 50 143 L 70 145 L 70 130 L 40 125 L 25 112 Z"
-      fill="hsl(270, 45%, 50%)" fillOpacity="0.2" stroke="hsl(270, 45%, 50%)" strokeWidth="0.8" />
-    <text x="45" y="140" fontSize="7" fill="hsl(270, 45%, 50%)" fontWeight="bold">T1</text>
+      fill={ROOT_COLORS.T1} fillOpacity="0.2" stroke={ROOT_COLORS.T1} strokeWidth="0.8" />
+    <text x="45" y="140" fontSize="7" fill={ROOT_COLORS.T1} fontWeight="bold">T1</text>
     <text x="70" y="115" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Palmar</text>
   </svg>
 );
@@ -449,10 +449,10 @@ const BrachialPlexusDiagram = () => {
               <p className="text-xs font-semibold text-muted-foreground mb-1">Cutaneous Dermatomes</p>
               <HandDermatomeMap />
               <div className="text-[10px] text-muted-foreground space-y-0.5 text-center mt-1">
-                <p><span className="font-bold" style={{ color: "hsl(150, 50%, 42%)" }}>C6</span> — thumb + lateral</p>
-                <p><span className="font-bold" style={{ color: "hsl(45, 65%, 48%)" }}>C7</span> — middle finger</p>
-                <p><span className="font-bold" style={{ color: "hsl(210, 55%, 50%)" }}>C8</span> — ring + little</p>
-                <p><span className="font-bold" style={{ color: "hsl(270, 45%, 50%)" }}>T1</span> — medial forearm</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C6 }}>C6</span> — thumb + lateral</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C7 }}>C7</span> — middle finger</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.C8 }}>C8</span> — ring + little</p>
+                <p><span className="font-bold" style={{ color: ROOT_COLORS.T1 }}>T1</span> — medial forearm</p>
               </div>
             </div>
           )}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { PlexusChipRow, PlexusDetailPanel } from "./plexusShared";
+import { PlexusChipRow, PlexusDetailPanel, ROOT_COLORS } from "./plexusShared";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
 
@@ -149,9 +149,9 @@ const LumbosacralPlexusDiagram = () => {
                 return (
                   <g key={level}>
                     <rect x={spineX - 12} y={rootY[level] - 9} width={isSacral ? 24 : 26} height={isSacral ? 18 : 20}
-                      rx="3" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="1" />
-                    <text x={spineX} y={rootY[level] + 4} fontSize="8" fill="hsl(var(--foreground))"
-                      textAnchor="middle" fontWeight="600">{level}</text>
+                      rx="3" fill="hsl(var(--muted))" stroke={ROOT_COLORS[level]} strokeWidth="1.25" />
+                    <text x={spineX} y={rootY[level] + 4} fontSize="8" fill={ROOT_COLORS[level]}
+                      textAnchor="middle" fontWeight="700">{level}</text>
                   </g>
                 );
               })}

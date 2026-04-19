@@ -12,10 +12,53 @@ import { withAlpha } from "@/lib/color-utils";
  *  - render the detail panel via `<PlexusDetailPanel>` below the SVG with a 4 px left border keyed to the selected nerve
  *  - render a chip row via `<PlexusChipRow>` so the selectable nerves are visible without scanning the SVG
  *
- * Root colours are deliberately NOT enforced here — each plexus has its own
- * mnemonic colour story (e.g. brachial cord colours mapped to lateral / posterior /
- * medial). The shared bits are the SHELL and the DETAIL PANEL.
+ * Root colours ARE enforced via {@link ROOT_COLORS} so that any given spinal
+ * root (e.g. C7, L4) shows the same hue across cervical, brachial and
+ * lumbosacral plexus diagrams. Each plexus may still pick its own colours for
+ * trunks / divisions / cords / branches — the shared bit is the ROOT level.
  */
+
+/**
+ * Canonical hue ramp for spinal nerve roots, shared across every plexus diagram.
+ *
+ * Design:
+ *  - C1–T1 forms a smooth red→orange→yellow→green→blue→indigo arc so adjacent
+ *    cervical roots are visually distinguishable but stay within one family.
+ *  - L1–S4 reuses the same arc on the lumbar/sacral half of the cord, so the
+ *    eye learns "warm = upper, cool = lower" once and applies it everywhere.
+ *  - Values are deliberately mid-saturation / mid-lightness HSL so the same
+ *    swatch reads correctly on dark backgrounds, in chip pills, and as SVG fill.
+ *
+ * Use this map for: vertebra label fill, root node fill, dermatome legend
+ * swatches, and any "root pill" UI in plexus diagrams.
+ */
+export const ROOT_COLORS: Record<string, string> = {
+  // Cervical
+  C1: "hsl(330, 50%, 52%)",
+  C2: "hsl(350, 60%, 54%)",
+  C3: "hsl(10, 65%, 54%)",
+  C4: "hsl(25, 68%, 52%)",
+  C5: "hsl(0, 65%, 55%)",
+  C6: "hsl(20, 70%, 52%)",
+  C7: "hsl(45, 65%, 48%)",
+  C8: "hsl(150, 50%, 42%)",
+  // Thoracic (only T1 is plexus-relevant)
+  T1: "hsl(210, 55%, 50%)",
+  // Lumbosacral
+  L1: "hsl(0, 65%, 55%)",
+  L2: "hsl(20, 70%, 52%)",
+  L3: "hsl(45, 65%, 48%)",
+  L4: "hsl(90, 45%, 45%)",
+  L5: "hsl(150, 50%, 42%)",
+  S1: "hsl(190, 55%, 48%)",
+  S2: "hsl(210, 55%, 50%)",
+  S3: "hsl(250, 45%, 55%)",
+  S4: "hsl(280, 45%, 55%)",
+};
+
+/** Helper — returns the canonical root colour, or foreground if unknown. */
+export const rootColor = (level: string): string =>
+  ROOT_COLORS[level.toUpperCase()] ?? "hsl(var(--foreground))";
 
 export interface PlexusDetailField {
   /** Bold inline label, e.g. "Motor", "Sensory", "Block". */
