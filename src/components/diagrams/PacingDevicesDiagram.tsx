@@ -346,7 +346,10 @@ const PacingDevicesDiagram = () => {
                     </ul>
                   </div>
                 </div>
-                <p className="mt-2 pt-2 border-t border-amber-500/20 text-[10.5px] text-muted-foreground italic">
+                <p
+                  className="mt-2 pt-2 border-t text-[10.5px] text-muted-foreground italic"
+                  style={{ borderColor: "hsl(38 92% 50% / 0.25)" }}
+                >
                   Reference: AAGBI / MHRA / Heart Rhythm Society perioperative CIED guidelines.
                 </p>
               </div>
