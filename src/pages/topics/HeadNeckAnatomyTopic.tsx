@@ -11,6 +11,7 @@ import LaryngealCrossSectionDiagram from "@/components/diagrams/LaryngealCrossSe
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
+import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -173,6 +174,7 @@ const HeadNeckAnatomyTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Right main bronchus: wider, shorter, more vertical (25°) — foreign bodies more likely to enter right side. Left main bronchus: narrower, longer, more horizontal (45°). Left-sided DLT preferred.</p>
             </div>
           </div>
+          <TracheobronchialTreeDiagram />
         </div>
 
         <div>
