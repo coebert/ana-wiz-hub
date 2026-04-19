@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { ChevronRight, ExternalLink } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { TopicCard } from "@/components/TopicCard";
 import { clinicalTopics } from "@/data/curriculum";
