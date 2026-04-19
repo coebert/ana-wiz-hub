@@ -165,16 +165,27 @@ const NeckCrossSectionDiagram = () => {
             </filter>
           </defs>
 
-          {/* Skin outline — outer ellipse */}
+          {/* Skin outline — outer ellipse with depth shading */}
           <ellipse
             cx="250" cy="250" rx="220" ry="200"
             fill="url(#ncx-skinGrad)"
             stroke={highlight("skin") ? "#f59e0b" : "#a0886a"}
             strokeWidth={highlight("skin") ? 3 : 1.5}
             opacity={opacity("skin")}
+            filter="url(#ncx-shadow)"
             onClick={() => setSelected(selected === "skin" ? null : "skin")}
             className="cursor-pointer"
           />
+          {/* Grain texture overlay */}
+          <ellipse cx="250" cy="250" rx="218" ry="198" fill="url(#ncx-grain)" opacity="0.55" pointerEvents="none" />
+          {/* Platysma demarcation */}
+          {showSutures && (
+            <ellipse cx="250" cy="250" rx="208" ry="188" fill="none" stroke="#a0886a" strokeWidth="0.6" strokeDasharray="2 3" opacity="0.55" pointerEvents="none" />
+          )}
+          {/* Alar fascia (danger space) */}
+          {showSutures && (
+            <path d="M170,300 Q200,290 250,288 Q300,290 330,300" fill="none" stroke="#7c3aed" strokeWidth="0.6" strokeDasharray="1.5 2" opacity="0.5" pointerEvents="none" />
+          )}
 
           {/* Investing layer */}
           <ellipse
