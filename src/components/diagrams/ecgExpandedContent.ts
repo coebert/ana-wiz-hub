@@ -237,6 +237,8 @@ export const wellensContent: EcgExpandedContent = {
     { scenario: "Patient on the cardiac ward with known Wellens pattern B, suddenly develops chest pain.", ecgFinding: "Repeat ECG — T waves now upright in V2–V3 with 1 mm ST elevation appearing.", diagnosis: "Pseudonormalisation — proximal LAD re-occlusion.", management: "Activate primary PCI pathway immediately; treat as evolving anterior STEMI." },
   ],
 };
+
+export const eegTraceContent: EcgExpandedContent = {
   title: "EEG patterns — sedation, seizures and post-arrest",
   summary:
     "Recognise the dominant rhythm by frequency band (β/α/θ/δ), spot suppression and ictal patterns, and use the same scaffold for processed-EEG depth monitoring and post-arrest prognostication.",
