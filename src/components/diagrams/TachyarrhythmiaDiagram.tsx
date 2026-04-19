@@ -639,6 +639,7 @@ const TachyarrhythmiaDiagram = () => {
                       {showLabels && (
                         <p className="text-[10px] text-muted-foreground mt-1.5 italic leading-snug">{t.ecg}</p>
                       )}
+                      <AdenosineRow info={t.adenosine} compact />
                     </div>
                   </div>
                 </button>
@@ -656,6 +657,7 @@ const TachyarrhythmiaDiagram = () => {
                 </p>
                 <RhythmStrip tachy={info} color={info.color} />
                 <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
+                <AdenosineRow info={info.adenosine} compact />
               </div>
             </div>
           </div>
@@ -688,6 +690,7 @@ const TachyarrhythmiaDiagram = () => {
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
             </p>
+            <AdenosineRow info={info.adenosine} />
           </div>
         </div>
       </div>
