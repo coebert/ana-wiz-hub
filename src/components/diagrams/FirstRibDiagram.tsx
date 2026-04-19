@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type StructureKey =
   | "rib" | "scalene-tubercle" | "subclavian-vein" | "subclavian-artery"
@@ -154,23 +155,63 @@ const categories = {
 
 const FirstRibDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("rib");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = structures[selected];
+  const categoryLabel: Record<Structure["category"], string> = {
+    bone: "Bone & cartilage",
+    muscle: "Muscle",
+    vessel: "Vessel / duct",
+    nerve: "Nerve / ganglion",
+    other: "Other",
+  };
 
   const isActive = (key: StructureKey) => selected === key;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">First Rib — Superior View</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any structure to explore anatomy and clinical relevance</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="First rib — superior view"
+          subtitle="Tap any structure to explore anatomy and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 420 330" width="420" height="330" className="border border-border rounded bg-background">
-            {/* Orientation labels */}
-            <text x="210" y="12" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="middle" fontStyle="italic">Anterior</text>
-            <text x="210" y="325" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="middle" fontStyle="italic">Posterior</text>
-            <text x="8" y="165" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="start" fontStyle="italic">Medial</text>
-            <text x="412" y="165" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="end" fontStyle="italic">Lateral</text>
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
+          <div className="flex-shrink-0 mx-auto">
+            <svg viewBox="0 0 420 330" className="w-full max-w-2xl" role="img" aria-label="First rib superior view with neurovascular relations">
+              <defs>
+                <radialGradient id="fr-bgShade" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                  <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+                </radialGradient>
+                <pattern id="fr-boneGrain" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.2" />
+                </pattern>
+                <filter id="fr-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+                  <feOffset dx="0" dy="1.5" result="off" />
+                  <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                  <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+
+              {/* Background depth plate */}
+              <rect x="2" y="2" width="416" height="326" rx="10" fill="url(#fr-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+              {showSutures && <rect x="2" y="2" width="416" height="326" rx="10" fill="url(#fr-boneGrain)" pointerEvents="none" />}
+
+              {/* Compass labels (gated by Labels) */}
+              {showLabels && (
+                <g pointerEvents="none">
+                  <text x="210" y="14" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">ANTERIOR</text>
+                  <text x="210" y="324" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">POSTERIOR</text>
+                  <text x="10" y="168" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">MEDIAL</text>
+                  <text x="412" y="168" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="end" fontWeight="600">LATERAL</text>
+                </g>
+              )}
 
             {/* Pleural dome - deepest layer */}
             <g className="cursor-pointer" onClick={() => setSelected("pleural-dome")}>
@@ -443,38 +484,52 @@ const FirstRibDiagram = () => {
           </svg>
         </div>
 
-        <div className="flex-1 min-w-0">
-          {/* Info panel */}
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
-              <strong>Clinical:</strong> {info.clinicalNote}
-            </p>
-          </div>
-
-          {/* Categorised buttons */}
-          <div className="mt-3 space-y-2">
-            {Object.values(categories).map(cat => (
-              <div key={cat.label}>
-                <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
-                <div className="flex flex-wrap gap-1.5">
-                  {cat.keys.map(key => (
-                    <button
-                      key={key}
-                      onClick={() => setSelected(key)}
-                      className={`text-xs px-2 py-1 rounded border transition-all ${
-                        selected === key
-                          ? "border-primary bg-primary/10 text-foreground font-medium"
-                          : "border-border text-muted-foreground hover:border-primary/50"
-                      }`}
-                    >
-                      {structures[key].label.split(" (")[0].split(" /")[0]}
-                    </button>
-                  ))}
-                </div>
+          <div className="flex-1 min-w-0">
+            {/* Standardised detail panel */}
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <p className="font-semibold text-foreground text-sm">{info.label}</p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{ background: `${info.color}26`, color: info.color }}
+                >
+                  {categoryLabel[info.category]}
+                </span>
               </div>
-            ))}
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+              </p>
+            </div>
+
+            {/* Categorised buttons */}
+            <div className="mt-3 space-y-2">
+              {Object.values(categories).map((cat) => (
+                <div key={cat.label}>
+                  <p className="text-xs text-muted-foreground font-medium mb-1">{cat.label}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.keys.map((key) => (
+                      <button
+                        key={key}
+                        onClick={() => setSelected(key)}
+                        className={`text-xs px-2 py-1 rounded border transition-all ${
+                          selected === key
+                            ? "border-primary bg-primary/10 text-foreground font-medium"
+                            : "border-border text-muted-foreground hover:border-primary/50"
+                        }`}
+                      >
+                        {structures[key].label.split(" (")[0].split(" /")[0]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
