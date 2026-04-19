@@ -205,6 +205,8 @@ const App = () => (
           <Route path="/physics/ventilators" element={<VentilatorsTopic />} />
           <Route path="/physics/math-concepts" element={<MathConceptsTopic />} />
           <Route path="/physics/depth-of-anaesthesia" element={<DepthOfAnaesthesiaMonitoringTopic />} />
+          {/* Cross-section alias — depth-of-anaesthesia is also commonly looked for under /clinical */}
+          <Route path="/clinical/depth-of-anaesthesia" element={<Navigate to="/physics/depth-of-anaesthesia" replace />} />
           <Route path="/physics/equipment-monitoring" element={<EquipmentMonitoringTopic />} />
           {/* Physiology */}
           <Route path="/physiology/oxygen-haemoglobin" element={<OxygenHaemoglobinTopic />} />
