@@ -66,6 +66,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Normal P before every QRS, regular, narrow QRS. P morphology unchanged.",
     pathophysiology: "Physiological — pain, fever, hypovolaemia, hypoxia, anxiety, β-agonists, hyperthyroidism. Almost always secondary.",
     management: "Treat the cause. Avoid β-blockade until volume / oxygen / sepsis addressed.",
+    adenosine: { response: "slow", label: "Transient slowing", detail: "Brief, gradual slowing then resumes — confirms sinus origin and rules out re-entrant SVT." },
   },
   af: {
     label: "Atrial fibrillation",
