@@ -251,9 +251,18 @@ const CircleOfWillisDiagram = () => {
     groupFilter === "all" || vessels[key].group === groupFilter;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Circle of Willis — Vascular Map</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any vessel to see territory, clinical significance, and stroke syndromes</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Circle of Willis — Vascular Map"
+          subtitle="Tap any vessel to see territory, clinical significance, and stroke syndromes"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+            { label: "Aneurysms", active: showAneurysms, onChange: () => setShowAneurysms(s => !s) },
+            { label: "Cranial nerves", active: showCNs, onChange: () => setShowCNs(s => !s) },
+          ]}
+        />
 
       {/* Group filter */}
       <div className="flex flex-wrap gap-1.5 mb-3">

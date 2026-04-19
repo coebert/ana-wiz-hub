@@ -66,11 +66,16 @@ const SpinalCordSagittalDiagram = () => {
   const isHL = (k: string) => highlight === k;
 
   return (
-    <div className="my-6">
-      <div className="rounded-lg border border-border bg-card p-4">
-        <p className="text-sm font-semibold text-foreground mb-3 text-center">
-          Sagittal View — Spinal Cord, Dermatome Levels, Conus, Cauda Equina & Adamkiewicz
-        </p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Sagittal View — Spinal Cord, Dermatome Levels, Conus, Cauda Equina & Adamkiewicz"
+          subtitle="Hover key structures in the side panel"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
         <div className="grid lg:grid-cols-[1fr_auto] gap-4 items-start">
           <div className="overflow-x-auto">
