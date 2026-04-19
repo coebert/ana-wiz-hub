@@ -304,8 +304,17 @@ const PacingDevicesDiagram = () => {
               </ul>
             </div>
             {detail.leads.shock && (
-              <div className="sm:col-span-2 mt-1 p-3 rounded-md border-2 border-amber-500/40 bg-amber-500/5">
-                <p className="font-semibold text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-1.5 text-[13px]">
+              <div
+                className="sm:col-span-2 mt-1 p-3 rounded-md border-2"
+                style={{
+                  borderColor: "hsl(38 92% 50% / 0.5)",
+                  backgroundColor: "hsl(38 92% 50% / 0.06)",
+                }}
+              >
+                <p
+                  className="font-semibold mb-2 flex items-center gap-1.5 text-[13px]"
+                  style={{ color: "hsl(38 92% 40%)" }}
+                >
                   <span aria-hidden>🩺</span> Perioperative management — anaesthetist
                 </p>
                 <div className="grid sm:grid-cols-3 gap-3 text-[11px]">
