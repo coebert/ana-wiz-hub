@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 // =================================================================
 // Types & data

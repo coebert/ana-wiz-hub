@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type RegionKey =
   | "vertebral-body" | "disc-foramen" | "transverse-process" | "costotransverse-joint"

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 const SpinalCordSagittalDiagram = () => {
   const [highlight, setHighlight] = useState<string | null>(null);
