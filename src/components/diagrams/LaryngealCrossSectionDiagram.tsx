@@ -306,8 +306,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Hyoid bone */}
                 <path
                   d="M60,60 C62,55 70,50 85,48 C100,46 115,48 130,50 C145,48 160,46 175,48 C190,50 198,55 200,60 C198,64 192,66 185,65 C175,63 165,60 155,58 C145,56 135,56 130,57 C125,56 115,56 105,58 C95,60 85,63 75,65 C68,66 62,64 60,60 Z"
-                  fill={structures.hyoid.color}
-                  fillOpacity={opacity("hyoid")}
+                  fill={isActive("hyoid") ? structures.hyoid.color : "url(#lcx-hyoidGrad)"}
+                  fillOpacity={isActive("hyoid") ? 0.65 : 0.55}
                   stroke={structures.hyoid.color}
                   strokeWidth={sw("hyoid")}
                   className="cursor-pointer transition-all duration-200"
@@ -330,8 +330,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Thyroid cartilage */}
                 <path
                   d="M72,82 L72,145 C72,152 80,158 95,160 C110,162 120,158 130,148 C140,158 150,162 165,160 C180,158 188,152 188,145 L188,82 C185,80 175,78 160,80 C145,82 135,83 130,84 C125,83 115,82 100,80 C85,78 75,80 72,82 Z"
-                  fill={structures.thyroid.color}
-                  fillOpacity={opacity("thyroid")}
+                  fill={isActive("thyroid") ? structures.thyroid.color : "url(#lcx-cartGrad)"}
+                  fillOpacity={isActive("thyroid") ? 0.65 : 0.55}
                   stroke={structures.thyroid.color}
                   strokeWidth={sw("thyroid")}
                   className="cursor-pointer transition-all duration-200"
@@ -542,8 +542,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Cricoid cartilage */}
                 <path
                   d="M82,178 C82,176 90,174 105,174 L155,174 C170,174 178,176 178,178 L178,200 C178,210 170,218 155,220 C140,222 120,222 105,220 C90,218 82,210 82,200 Z"
-                  fill={structures.cricoid.color}
-                  fillOpacity={opacity("cricoid")}
+                  fill={isActive("cricoid") ? structures.cricoid.color : "url(#lcx-cricoidGrad)"}
+                  fillOpacity={isActive("cricoid") ? 0.65 : 0.55}
                   stroke={structures.cricoid.color}
                   strokeWidth={sw("cricoid")}
                   className="cursor-pointer transition-all duration-200"
