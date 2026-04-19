@@ -6,6 +6,7 @@ import { upperLimbAnatomyQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
 import UpperLimbArteriesDiagram from "@/components/diagrams/UpperLimbArteriesDiagram";
+import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
 import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagram";
 import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
@@ -94,6 +95,9 @@ const UpperLimbAnatomyTopic = () => {
                 <tr><td className="py-2 font-medium text-foreground">Axillary</td><td>C5,6</td><td>Deltoid, teres minor</td><td>Regimental badge area</td></tr>
               </tbody>
             </table>
+          </div>
+          <div className="mt-4">
+            <UpperLimbBranchesDiagram />
           </div>
         </div>
 

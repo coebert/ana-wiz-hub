@@ -8,6 +8,8 @@ import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import NerveDermatomeOverlayDiagram from "@/components/diagrams/NerveDermatomeOverlayDiagram";
 import SpinalBlockHeightAssessmentTool from "@/components/diagrams/SpinalBlockHeightAssessmentTool";
 import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
+import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
+import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -109,6 +111,10 @@ const RegionalAnaesthesiaTopic = () => {
                 <p className="text-xs text-muted-foreground"><strong>Risk:</strong> {b.risk}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-6 space-y-6">
+            <UpperLimbBranchesDiagram />
+            <LowerLimbBranchesDiagram />
           </div>
         </div>
 
