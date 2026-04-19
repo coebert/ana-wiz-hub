@@ -62,19 +62,19 @@ export const seeAlsoMap: Record<string, string[]> = {
   "corticosteroids": ["endocrine-physiology", "endocrine-disease", "ards"],
 
   // ── Anatomy ──
-  "airway-anatomy": ["airway-management", "head-neck-anatomy", "ent-anaesthesia"],
+  
   "cardiac-anatomy": ["cardiac-cycle", "cardiac-electrophysiology", "cardiothoracic", "thoracic-anatomy"],
   "spinal-anatomy": ["regional-anaesthesia", "neuroanatomy", "spinal-cord-injury"],
   "brachial-plexus": ["regional-anaesthesia", "lower-limb-anatomy", "upper-limb-anatomy"],
   "upper-limb-anatomy": ["regional-anaesthesia", "lower-limb-anatomy", "head-neck-anatomy", "thoracic-anatomy"],
   "thoracic-anatomy": ["cardiothoracic", "cardiac-anatomy", "lung-mechanics"],
   "abdominal-anatomy": ["bariatric-anaesthesia", "hepatobiliary-transplant", "urological-anaesthesia"],
-  "head-neck-anatomy": ["airway-anatomy", "ent-anaesthesia", "neuroanatomy"],
+  "head-neck-anatomy": ["airway-management", "ent-anaesthesia", "neuroanatomy"],
   "neuroanatomy": ["neuroanaesthesia", "neurointensive-care", "head-neck-anatomy", "spinal-anatomy"],
   "lower-limb-anatomy": ["upper-limb-anatomy", "regional-anaesthesia", "orthopaedic-anaesthesia"],
 
   // ── Clinical ──
-  "airway-management": ["airway-anatomy", "clinical-incidents", "ent-anaesthesia", "lasers-fibreoptics"],
+  "airway-management": ["head-neck-anatomy", "clinical-incidents", "ent-anaesthesia", "lasers-fibreoptics"],
   "regional-anaesthesia": ["local-anaesthetics", "upper-limb-anatomy", "lower-limb-anatomy", "spinal-anatomy", "anticoagulants"],
   "obstetric-anaesthesia": ["maternal-physiology", "foetal-circulation", "regional-anaesthesia", "antiemetics"],
   "paediatric-anaesthesia": ["foetal-circulation", "paediatric-icu", "airway-management"],
@@ -90,7 +90,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "transfer-medicine": ["trauma-emergency", "clinical-incidents", "equipment-monitoring"],
   "bariatric-anaesthesia": ["gi-physiology", "airway-management", "respiratory-disease"],
   "vascular-anaesthesia": ["cardiovascular-disease", "regional-anaesthesia", "cardiothoracic"],
-  "ent-anaesthesia": ["airway-anatomy", "airway-management", "lasers-fibreoptics", "head-neck-anatomy"],
+  "ent-anaesthesia": ["head-neck-anatomy", "airway-management", "lasers-fibreoptics"],
   "burns-plastics": ["plastic-surgery", "perioperative-fluids", "pain-medicine", "airway-management"],
   "emergency-surgery": ["trauma-emergency", "preoperative-assessment", "perioperative-fluids"],
   "urological-anaesthesia": ["abdominal-anatomy", "regional-anaesthesia", "perioperative-fluids"],
