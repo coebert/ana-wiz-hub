@@ -92,6 +92,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Sawtooth flutter waves (best in II, III, aVF). Regular ventricular response (2:1, 3:1, 4:1).",
     pathophysiology: "Macro re-entry in right atrium around tricuspid annulus, through cavo-tricuspid isthmus (CTI).",
     management: "DCCV, ablation of CTI (highly curative). Rate control as for AF; anticoagulate as for AF.",
+    adenosine: { response: "unmask", label: "Unmasks sawtooth waves", detail: "Brief AV block exposes flutter waves at ~300/min — diagnostic. Will not terminate macro-re-entry." },
   },
   avnrt: {
     label: "AVNRT",
