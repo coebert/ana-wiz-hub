@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type VeinKey = "cephalic" | "basilic" | "median-cubital" | "median-forearm" | "axillary" | "subclavian" | "brachiocephalic" | "deep-veins" | "dorsal-venous" | "external-jugular";
 
@@ -79,30 +80,65 @@ const veinOrder: VeinKey[] = [
 
 const UpperLimbVeinsDiagram = () => {
   const [selected, setSelected] = useState<VeinKey>("median-cubital");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = veins[selected];
   const isActive = (k: VeinKey) => selected === k;
   const blue = "hsl(220, 60%, 50%)";
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Venous Drainage of the Upper Limb</h3>
-      <p className="text-xs text-muted-foreground mb-3">Superficial and deep venous systems with clinical correlations</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Venous drainage of the upper limb"
+          subtitle="Superficial and deep venous systems with clinical correlations"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 220 500" width="220" height="500" className="border border-border rounded bg-background">
-            {/* Arm outline */}
-            <path d="M60,20 Q50,80 50,140 Q48,200 45,250 Q40,300 35,350 Q30,400 25,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.3" />
-            <path d="M160,20 Q170,80 170,140 Q172,200 175,250 Q178,300 180,350 Q182,400 185,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.3" />
+          <svg viewBox="0 0 220 500" className="w-full max-w-[240px]" role="img" aria-label="Venous drainage of the upper limb showing superficial and deep systems">
+            <defs>
+              <radialGradient id="ulv-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(220, 50%, 30%)" stopOpacity="0.14" />
+                <stop offset="100%" stopColor="hsl(220, 40%, 20%)" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="ulv-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="ulv-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.26" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
 
-            {/* Region labels */}
-            <text x="190" y="60" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">Axilla</text>
-            <text x="190" y="155" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">Arm</text>
-            <line x1="40" y1="240" x2="180" y2="240" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.25" />
-            <text x="185" y="243" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">Elbow</text>
-            <text x="190" y="330" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">Forearm</text>
-            <line x1="35" y1="400" x2="175" y2="400" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.25" />
-            <text x="180" y="403" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.3">Wrist</text>
+            <rect x="2" y="2" width="216" height="496" rx="10" fill="url(#ulv-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="216" height="496" rx="10" fill="url(#ulv-tissue)" pointerEvents="none" />}
+
+            {/* Arm outline */}
+            <path d="M60,20 Q50,80 50,140 Q48,200 45,250 Q40,300 35,350 Q30,400 25,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M160,20 Q170,80 170,140 Q172,200 175,250 Q178,300 180,350 Q182,400 185,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="40" y1="240" x2="180" y2="240" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.4" />
+                <line x1="35" y1="400" x2="175" y2="400" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.4" />
+              </g>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="190" y="60" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Axilla</text>
+                <text x="190" y="155" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Arm</text>
+                <text x="185" y="243" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Elbow</text>
+                <text x="190" y="330" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Forearm</text>
+                <text x="180" y="403" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Wrist</text>
+              </g>
+            )}
 
             {/* Brachiocephalic veins → SVC */}
             <g className="cursor-pointer" onClick={() => setSelected("brachiocephalic")}>
@@ -196,11 +232,17 @@ const UpperLimbVeinsDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
-              <strong>Clinical:</strong> {info.clinicalNote}
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
             </p>
           </div>
 
@@ -218,6 +260,7 @@ const UpperLimbVeinsDiagram = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
