@@ -276,3 +276,85 @@ export const postArrestProgContent: EcgExpandedContent = {
     { scenario: "Day 3 post-arrest, TTM 36 °C complete. NSE 38 µg/L, EEG continuous reactive background, SSEP N20 present bilaterally, GCS M4 to pain.", ecgFinding: "All favourable modalities.", diagnosis: "Recovery possible — continue active care.", management: "Wean sedation, daily SAT/SBT, intensive neuro-rehab planning." },
   ],
 };
+
+export const dsaSpectrogramContent: EcgExpandedContent = {
+  title: "Density spectral array (DSA) — anaesthetic depth at a glance",
+  summary:
+    "DSA plots EEG power vs frequency over time as a heat map. Pattern recognition (frontal α band, slow waves, burst-suppression) is more robust than any single index value.",
+  annotations: [
+    { label: "X axis", value: "Time", description: "Last ~10 min scrolling left → right. Lets you see drift before the BIS number does." },
+    { label: "Y axis", value: "0–30 Hz", description: "Power per frequency bin. Lower = δ/θ, mid = α, upper = β. Different anaesthetics have signature patterns." },
+    { label: "Colour intensity", description: "Red/yellow = high power, blue = low power. A clean horizontal red band at 8–12 Hz = strong frontal α (adequate propofol/volatile depth)." },
+    { label: "Frontal α band (8–12 Hz)", value: "Adequate depth", description: "Strong continuous α band on DSA = unconsciousness with propofol or sevoflurane. Loss of α suggests light plane OR very deep / burst-suppression." },
+    { label: "Slow-δ band (<1 Hz)", description: "Co-exists with α at maintenance depth. Increases relative to α as depth increases." },
+    { label: "Burst-suppression on DSA", description: "Vertical multi-frequency stripes separated by near-blue (silent) gaps — looks like a 'bar code'. Avoid in elderly / frail unless targeting RSE." },
+    { label: "Ketamine pattern", description: "Loss of α, prominent β/γ activity → DSA shows shift to higher frequencies even at deep planes." },
+    { label: "Dexmedetomidine pattern", description: "Resembles natural sleep — slow-wave activity dominates with preserved spindles." },
+  ],
+  comparison: {
+    columns: [
+      { key: "key", label: "DSA signature" },
+      { key: "rhythm", label: "Clinical implication" },
+    ],
+    rows: [
+      { label: "Strong frontal α + slow-δ", key: "Continuous red band 8–12 Hz", rhythm: "Adequate propofol / volatile depth" },
+      { label: "Loss of α", key: "Power collapses below 8 Hz", rhythm: "Light plane → risk of awareness", highlight: true },
+      { label: "Burst-suppression", key: "Bar-code stripes with blue gaps", rhythm: "Too deep — ↑ delirium / mortality risk in elderly" },
+      { label: "Isoelectric", key: "Uniformly blue", rhythm: "Profound suppression — wake the patient up" },
+      { label: "Ketamine pattern", key: "High β/γ, no α band", rhythm: "Adequate dissociative depth — BIS unreliable" },
+      { label: "Dexmedetomidine", key: "Slow-wave dominant, spindles", rhythm: "Sleep-like sedation, easily rousable" },
+    ],
+  },
+  pitfalls: [
+    { mistake: "Trusting BIS over DSA in elderly patients", reality: "Brain ageing reduces α power → BIS reads low even at adequate depth, prompting harmful overdose.", tip: "Look at DSA for α-band presence; titrate to pattern, not a number." },
+    { mistake: "Calling burst-suppression 'good depth'", reality: "BS exposure increases delirium and 1-year mortality in elderly.", tip: "Aim for continuous α + δ; reduce dose if BS appears unintentionally." },
+    { mistake: "Using DSA / BIS alone to detect awareness on TIVA + NMB", reality: "DSA lag is 30–60 s; awareness can occur before pattern changes.", tip: "Combine processed EEG with end-tidal anaesthetic / TIVA TCI targeting and clinical signs." },
+    { mistake: "Ignoring electrode artefact", reality: "Diathermy, EMG, and dried gel produce broadband colour that mimics arousal.", tip: "Check signal quality index; re-prep skin if SQI <80%." },
+  ],
+  vignettes: [
+    { scenario: "82-year-old, hip fracture under TIVA. BIS 38, surgeon happy. DSA shows bar-code burst-suppression for 20 min.", ecgFinding: "Bar-code BS on DSA despite 'normal' BIS.", diagnosis: "Inadvertent over-sedation in a vulnerable brain.", management: "Reduce propofol TCI by 0.5 µg/mL, watch DSA recover continuous α + δ; document to mitigate POD risk." },
+    { scenario: "Young trauma patient on ketamine + propofol TIVA. BIS reads 70, you panic.", ecgFinding: "DSA shows shift to β/γ, no α band — typical ketamine pattern.", diagnosis: "Ketamine confounds BIS; depth is adequate.", management: "Trust the pattern, avoid bolus propofol on BIS alone; clinical signs (BP, HR, lacrimation) more useful." },
+  ],
+};
+
+export const bisTrendContent: EcgExpandedContent = {
+  title: "BIS trend — interpreting the index over time",
+  summary:
+    "BIS is a 0–100 dimensionless index from a proprietary algorithm. The trend line — and its agreement with the DSA — matters more than any one number.",
+  annotations: [
+    { label: "BIS 100", description: "Awake, eyes open, responsive." },
+    { label: "BIS 80–90", description: "Light sedation; recall of auditory stimuli possible." },
+    { label: "BIS 60–80", description: "Moderate–deep sedation; loss of explicit recall around 65." },
+    { label: "BIS 40–60", value: "General anaesthesia target", description: "Recommended target range for general anaesthesia. Awareness rare but not zero (esp. with NMB on TIVA)." },
+    { label: "BIS 20–40", description: "Deep hypnotic state; risk of burst-suppression." },
+    { label: "BIS <20 / 0", description: "Burst-suppression or isoelectric — too deep; check DSA, reduce dose." },
+    { label: "Signal quality index (SQI)", value: "Aim >80%", description: "Low SQI = artefact (sweat, EMG, electrode lift). Don't act on BIS values when SQI <50%." },
+    { label: "Suppression ratio (SR)", description: "Percentage of time the EEG is suppressed in the last 63 s. SR >0% means burst-suppression — likely too deep." },
+    { label: "EMG bar", description: "High EMG (frontalis activity) inflates BIS — common in light NMB or under-sedation. Always cross-check." },
+  ],
+  comparison: {
+    columns: [
+      { key: "rate", label: "BIS range" },
+      { key: "key", label: "Clinical state" },
+      { key: "rhythm", label: "Action" },
+    ],
+    rows: [
+      { label: "Awake", rate: "100–90", key: "Eyes open, responsive", rhythm: "Pre-induction baseline" },
+      { label: "Sedation", rate: "90–60", key: "Conscious sedation; recall possible >70", rhythm: "Procedural sedation target" },
+      { label: "GA target", rate: "60–40", key: "Unconsciousness, no recall", rhythm: "Maintain; avoid drift", highlight: true },
+      { label: "Deep hypnosis", rate: "40–20", key: "Risk of BS, especially elderly", rhythm: "Reduce dose unless RSE target" },
+      { label: "Suppression", rate: "<20", key: "Burst-suppression / isoelectric", rhythm: "Wake up — ↑ POD / mortality" },
+    ],
+  },
+  pitfalls: [
+    { mistake: "Treating BIS as a stand-alone awareness monitor", reality: "B-Aware and B-Unaware trials show no clear advantage over end-tidal MAC monitoring; awareness still occurs at BIS 40–60.", tip: "Use BIS + ETMAC + DSA + clinical signs. NMB-paralysed TIVA is highest risk — never paralyse without confirmed depth." },
+    { mistake: "Bolus propofol on a transient BIS spike", reality: "Diathermy, EMG, sudden movement, and warming blankets all spike BIS.", tip: "Check SQI, EMG bar, and DSA before reacting; transient spikes <30 s rarely reflect arousal." },
+    { mistake: "Targeting BIS 40 in elderly to 'be safe'", reality: "Lower BIS targets increase BS exposure and POD without reducing awareness.", tip: "BIS 50–60 with continuous α on DSA is safer in >70-year-olds." },
+    { mistake: "Ignoring suppression ratio", reality: "BIS may stay 40–50 while SR creeps up — depth is uneven.", tip: "Watch SR; >0% sustained = back off the propofol/volatile." },
+  ],
+  vignettes: [
+    { scenario: "Maintenance sevoflurane 1.0 MAC, BIS 28, SR 18%. Patient is 78, ASA 3.", ecgFinding: "BIS too low, SR creeping, DSA shows bar-code BS.", diagnosis: "Excessive depth in vulnerable brain — POD risk.", management: "Reduce sevoflurane to 0.8 MAC, watch BIS trend up to 45–55 and SR fall to 0; document for handover." },
+    { scenario: "Laparoscopy, sudden BIS jump 40 → 78 with high EMG bar; surgeon using diathermy.", ecgFinding: "Transient artefact spike during diathermy.", diagnosis: "Diathermy / EMG artefact, not arousal.", management: "Confirm with DSA (unchanged α band), don't bolus; if BIS stays high after diathermy off, then assess depth properly." },
+    { scenario: "TIVA + rocuronium, BIS 65 sustained for 5 min, raw EEG flat-ish, no clinical signs.", ecgFinding: "BIS borderline with paralysed patient.", diagnosis: "Possible inadequate depth — high stakes with NMB.", management: "Increase propofol TCI by 0.5 µg/mL, recheck DSA for α band re-emergence; document and consider isolated forearm if persistent." },
+  ],
+};

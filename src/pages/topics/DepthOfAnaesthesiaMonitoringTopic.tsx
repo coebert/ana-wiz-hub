@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
-import { eegTraceContent } from "@/components/diagrams/ecgExpandedContent";
+import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
@@ -126,10 +126,14 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
             </ExpandableEcgCard>
           </div>
           <div className="my-6">
-            <DSASpectrogramDiagram />
+            <ExpandableEcgCard content={dsaSpectrogramContent}>
+              {() => <DSASpectrogramDiagram />}
+            </ExpandableEcgCard>
           </div>
           <div className="my-6">
-            <BISTrendDiagram />
+            <ExpandableEcgCard content={bisTrendContent}>
+              {() => <BISTrendDiagram />}
+            </ExpandableEcgCard>
           </div>
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
