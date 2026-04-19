@@ -198,7 +198,45 @@ export const twelveLeadContent: EcgExpandedContent = {
   ],
 };
 
-export const eegTraceContent: EcgExpandedContent = {
+export const wellensContent: EcgExpandedContent = {
+  title: "Wellens syndrome — proximal LAD warning",
+  summary:
+    "Biphasic or deeply inverted T waves in V2–V3 captured during a pain-free window after recent unstable angina. Signals critical proximal LAD stenosis and high risk of imminent anterior MI — refer for early angiography, do not stress test.",
+  annotations: [
+    { label: "Pattern A", value: "≈ 25%", description: "Biphasic T wave in V2–V3 — initial small positive deflection then sharp symmetric negative deflection. Subtle and easily overlooked on quick eyeballing." },
+    { label: "Pattern B", value: "≈ 75%", description: "Deeply (≥ 2 mm) and symmetrically inverted T waves in V2–V3, often spilling into V1 and V4. Striking morphology in an otherwise reassuring (pain-free) patient." },
+    { label: "ST segment", value: "Isoelectric or < 1 mm ↑", description: "Crucially the patient is NOT having a STEMI at the moment of the ECG — there is no significant ST elevation. Hence the trap: troponin is often normal too." },
+    { label: "R-wave progression", description: "Preserved precordial R waves — there are no Q waves and no loss of R wave height. If Q waves are present, the infarct has already happened." },
+    { label: "Clinical context", description: "Recent typical anginal chest pain, now resolved spontaneously or with GTN. ECG is taken in the pain-free interval — pattern can normalise transiently if pain returns ('pseudonormalisation')." },
+  ],
+  comparison: {
+    columns: [
+      { key: "twave", label: "T wave V2–V3" },
+      { key: "st", label: "ST segment" },
+      { key: "rwave", label: "R-wave progression" },
+      { key: "key", label: "Implication" },
+    ],
+    rows: [
+      { label: "Wellens A", twave: "Biphasic (+/–)", st: "Isoelectric or < 1 mm", rwave: "Preserved", key: "Critical proximal LAD — early angio" },
+      { label: "Wellens B", twave: "Deep symmetric inv ≥ 2 mm", st: "Isoelectric or < 1 mm", rwave: "Preserved", key: "Critical proximal LAD — early angio", highlight: true },
+      { label: "Anterior STEMI", twave: "Hyperacute or upright", st: "ST↑ ≥ 2 mm", rwave: "Loss of R wave evolving", key: "Activate cath lab now" },
+      { label: "NSTEMI / strain", twave: "Asymmetric T inv", st: "ST↓ horizontal/downsloping", rwave: "Often preserved", key: "Risk-stratify, troponin trend" },
+      { label: "Pseudonormalisation", twave: "Reverts to upright when pain returns", st: "May rise during pain", rwave: "Preserved", key: "Re-occlusion — emergency angio" },
+      { label: "Persistent juvenile T inv", twave: "Inverted V1–V3, no symptoms", st: "Isoelectric", rwave: "Preserved", key: "Benign — unchanged on serial ECGs" },
+    ],
+  },
+  pitfalls: [
+    { mistake: "Stress-testing a pain-free patient with biphasic V2–V3 T waves", reality: "Provoking ischaemia in a critical proximal LAD lesion can precipitate the very anterior MI you were trying to predict.", tip: "Pattern recognition first — if Wellens criteria met, go straight to coronary angiography." },
+    { mistake: "Reassuring on the basis of a normal troponin", reality: "Troponin is normal or only minimally elevated in classic Wellens because no infarct has yet occurred — it is a pre-infarction warning sign.", tip: "Treat the ECG pattern + history as the diagnosis; do not wait for troponin to rise." },
+    { mistake: "Missing 'pseudonormalisation'", reality: "T waves can transiently revert to upright when pain returns (active ischaemia) — a sign of re-occlusion, not improvement.", tip: "Repeat ECG during pain; compare with the pain-free baseline tracing." },
+    { mistake: "Calling V2–V3 T inversion 'old' or 'non-specific'", reality: "Classic Wellens is often mis-coded by triage as a non-specific T-wave abnormality.", tip: "Any new T inversion in V2–V3 with a recent angina history needs cardiology review before discharge." },
+  ],
+  vignettes: [
+    { scenario: "58-year-old man, two days of intermittent central chest pain, last episode 4 h ago. Now pain-free. ED triage ECG.", ecgFinding: "Deep symmetric T inversions V2–V4, isoelectric ST, preserved R waves. Initial troponin 18 ng/L (just above URL).", diagnosis: "Wellens syndrome — pattern B.", management: "Admit, dual antiplatelet + fulvarinox-anticoagulation per local ACS protocol, in-patient coronary angiography within 24 h. Avoid stress test. Cath shows 95% proximal LAD stenosis → PCI with DES." },
+    { scenario: "47-year-old female, atypical chest pain at rest, GTN-responsive, now asymptomatic in observation unit.", ecgFinding: "Biphasic T waves V2–V3 (positive then negative), no ST elevation, troponin negative ×2.", diagnosis: "Wellens pattern A — risk of imminent anterior MI.", management: "Cardiology referral for inpatient angiography; do NOT discharge home and do NOT do a treadmill test. Symptom-limited mobilisation only until cath." },
+    { scenario: "Patient on the cardiac ward with known Wellens pattern B, suddenly develops chest pain.", ecgFinding: "Repeat ECG — T waves now upright in V2–V3 with 1 mm ST elevation appearing.", diagnosis: "Pseudonormalisation — proximal LAD re-occlusion.", management: "Activate primary PCI pathway immediately; treat as evolving anterior STEMI." },
+  ],
+};
   title: "EEG patterns — sedation, seizures and post-arrest",
   summary:
     "Recognise the dominant rhythm by frequency band (β/α/θ/δ), spot suppression and ictal patterns, and use the same scaffold for processed-EEG depth monitoring and post-arrest prognostication.",
