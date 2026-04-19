@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type ArteryKey = "external-iliac" | "femoral" | "profunda-femoris" | "popliteal" | "anterior-tibial" | "posterior-tibial" | "peroneal" | "dorsalis-pedis" | "medial-plantar" | "lateral-plantar" | "genicular" | "circumflex-femoral";
 
@@ -93,28 +94,63 @@ const categories = {
 
 const LowerLimbArteriesDiagram = () => {
   const [selected, setSelected] = useState<ArteryKey>("femoral");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = arteries[selected];
   const isActive = (k: ArteryKey) => selected === k;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Arterial Supply of the Lower Limb</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any vessel to explore its course and clinical relevance</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Arterial supply of the lower limb"
+          subtitle="Tap any vessel to explore its course and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 200 580" width="200" height="580" className="border border-border rounded bg-background">
-            {/* Leg outline */}
-            <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.25" />
-            <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.25" />
+          <svg viewBox="0 0 200 580" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the lower limb from external iliac to plantar arches">
+            <defs>
+              <radialGradient id="lla-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.14" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="lla-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="lla-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
 
-            {/* Landmarks */}
-            <line x1="40" y1="30" x2="160" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.2" />
-            <text x="165" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Inguinal lig.</text>
-            <line x1="40" y1="280" x2="160" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.2" />
-            <text x="165" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Knee</text>
-            <line x1="35" y1="460" x2="145" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.2" />
-            <text x="150" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.4">Ankle</text>
+            <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-tissue)" pointerEvents="none" />}
+
+            {/* Leg outline */}
+            <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="40" y1="30" x2="160" y2="30" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="40" y1="280" x2="160" y2="280" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+                <line x1="35" y1="460" x2="145" y2="460" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.35" />
+              </g>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="165" y="33" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Inguinal lig.</text>
+                <text x="165" y="283" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Knee</text>
+                <text x="150" y="463" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600">Ankle</text>
+              </g>
+            )}
 
             {/* External iliac */}
             <g className="cursor-pointer" onClick={() => setSelected("external-iliac")}>
@@ -228,11 +264,17 @@ const LowerLimbArteriesDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
-              <strong>Clinical:</strong> {info.clinicalNote}
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
             </p>
           </div>
 
@@ -254,6 +296,7 @@ const LowerLimbArteriesDiagram = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

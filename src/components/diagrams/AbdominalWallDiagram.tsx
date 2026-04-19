@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type LayerKey = "skin" | "camper" | "scarpa" | "ext-oblique" | "int-oblique" | "tap-plane" | "transversus" | "transversalis" | "extraperitoneal" | "peritoneum";
 
@@ -39,6 +40,8 @@ const layerGeom: Record<LayerKey, { y: number; h: number }> = {
 
 const AbdominalWallDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("tap-plane");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = layers[selected];
 
   const layerW = 190;
@@ -47,14 +50,31 @@ const AbdominalWallDiagram = () => {
   const svgH = 240;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Abdominal Wall Layers & TAP Block Plane</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any layer to explore anatomy and relevance to regional techniques</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Abdominal wall layers & TAP block plane"
+          subtitle="Tap any layer to explore anatomy and relevance to regional techniques"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col sm:flex-row gap-4 items-start">
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox={`0 0 ${svgW} ${svgH}`} width={svgW} height={svgH} className="border border-border rounded">
+          <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full max-w-[330px]" role="img" aria-label="Abdominal wall layers cross-section showing TAP block plane">
             <defs>
+              <radialGradient id="abw-bgShade" cx="50%" cy="50%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.13" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <filter id="abw-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.26" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
               {/* Skin texture */}
               <pattern id="skinTex" patternUnits="userSpaceOnUse" width="6" height="6">
                 <circle cx="3" cy="3" r="0.4" fill="hsl(25, 40%, 50%)" opacity="0.25" />
@@ -312,14 +332,21 @@ const AbdominalWallDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground">
-              <strong>Clinical:</strong> {info.clinicalNote}
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
             </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

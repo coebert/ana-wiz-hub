@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type ArteryKey = "subclavian" | "axillary" | "brachial" | "profunda-brachii" | "radial" | "ulnar" | "anterior-interosseous" | "posterior-interosseous" | "superficial-palmar" | "deep-palmar" | "princeps-pollicis";
 
@@ -86,27 +87,61 @@ const arteryOrder: ArteryKey[] = [
 
 const UpperLimbArteriesDiagram = () => {
   const [selected, setSelected] = useState<ArteryKey>("brachial");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = arteries[selected];
   const isActive = (k: ArteryKey) => selected === k;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Arterial Supply of the Upper Limb</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any vessel to explore its course and clinical relevance</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Arterial supply of the upper limb"
+          subtitle="Tap any vessel to explore its course and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col lg:flex-row gap-4 items-start">
+        <div className="flex flex-col lg:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 0 200 500" width="200" height="500" className="border border-border rounded bg-background">
+          <svg viewBox="0 0 200 500" className="w-full max-w-[220px]" role="img" aria-label="Arterial supply of the upper limb from subclavian to digital arteries">
+            <defs>
+              <radialGradient id="ula-bgShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.16" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="ula-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="ula-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.28" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="2" y="2" width="196" height="496" rx="10" fill="url(#ula-tissue)" pointerEvents="none" />}
+
             {/* Arm outline */}
-            <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.3" />
-            {/* Shoulder label */}
-            <text x="100" y="25" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.4" textAnchor="middle">Shoulder</text>
-            {/* Elbow line */}
-            <line x1="50" y1="230" x2="150" y2="230" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.3" />
-            <text x="155" y="233" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4">Elbow</text>
-            {/* Wrist line */}
-            <line x1="40" y1="390" x2="140" y2="390" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.3" />
-            <text x="145" y="393" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4">Wrist</text>
+            <path d="M70,10 Q50,80 55,150 Q57,200 60,250 Q55,300 50,350 Q45,380 30,450 M130,10 Q150,80 145,150 Q143,200 140,250 Q142,300 140,350 Q138,380 115,450" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            {/* Compass + landmarks (gated by sutures) */}
+            {showSutures && (
+              <g pointerEvents="none">
+                <line x1="50" y1="230" x2="150" y2="230" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
+                <line x1="40" y1="390" x2="140" y2="390" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.45" />
+              </g>
+            )}
+            {showLabels && (
+              <g pointerEvents="none">
+                <text x="100" y="25" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.55" textAnchor="middle" fontWeight="600">SHOULDER</text>
+                <text x="155" y="233" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Elbow</text>
+                <text x="145" y="393" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.55">Wrist</text>
+              </g>
+            )}
 
             {/* Subclavian */}
             <g className="cursor-pointer" onClick={() => setSelected("subclavian")}>
@@ -197,11 +232,17 @@ const UpperLimbArteriesDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground leading-relaxed">
-              <strong>Clinical:</strong> {info.clinicalNote}
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <p className="font-semibold text-foreground text-sm">{info.label}</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
             </p>
           </div>
 
@@ -219,6 +260,7 @@ const UpperLimbArteriesDiagram = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

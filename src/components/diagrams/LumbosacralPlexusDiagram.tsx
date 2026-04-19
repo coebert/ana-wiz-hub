@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
@@ -91,6 +92,8 @@ const nerveKeys: NerveKey[] = ["femoral", "obturator", "lcnt", "sciatic", "tibia
 
 const LumbosacralPlexusDiagram = () => {
   const [selected, setSelected] = useState<NerveKey>("femoral");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = nerves[selected];
 
   const spineX = 55;
@@ -107,13 +110,38 @@ const LumbosacralPlexusDiagram = () => {
   const sacralTrunkX = 140;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Lumbosacral Plexus (L1–S4)</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a nerve to see its roots, distribution, block techniques, and clinical relevance</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Lumbosacral plexus (L1–S4)"
+          subtitle="Tap a nerve to see its roots, distribution, block techniques and clinical relevance"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="flex flex-col sm:flex-row gap-4 items-start">
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="0 5 350 250" width="360" height="258" className="border border-border rounded bg-card">
+          <svg viewBox="0 5 350 250" className="w-full max-w-[380px]" role="img" aria-label="Lumbosacral plexus showing roots L1 to S4 and major branches">
+            <defs>
+              <radialGradient id="lsp-bgShade" cx="50%" cy="50%" r="65%">
+                <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.15" />
+                <stop offset="100%" stopColor="hsl(var(--anatomy))" stopOpacity="0.03" />
+              </radialGradient>
+              <pattern id="lsp-tissue" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="lsp-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1.2" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.26" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            <rect x="0" y="5" width="350" height="250" rx="10" fill="url(#lsp-bgShade)" stroke="hsl(var(--border))" strokeWidth="0.5" />
+            {showSutures && <rect x="0" y="5" width="350" height="250" rx="10" fill="url(#lsp-tissue)" pointerEvents="none" />}
             {/* ─── Vertebral bodies ─── */}
             <g>
               {allRoots.map((level) => {
@@ -283,21 +311,25 @@ const LumbosacralPlexusDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0 space-y-3">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: info.color }} />
-              <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            key={selected}
+          >
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
+              <p className="font-semibold text-foreground text-sm">{info.label}</p>
               <span className="text-xs text-muted-foreground">({info.roots})</span>
-              <span className="text-xs px-1.5 py-0.5 rounded border border-border text-muted-foreground">
-                {info.plexus === "lumbar" ? "Lumbar" : "Sacral"} plexus
+              <span
+                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md ml-auto"
+                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+              >
+                {info.plexus === "lumbar" ? "Lumbar" : "Sacral"}
               </span>
             </div>
-            <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Motor:</strong> {info.motor}</p>
-            <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Sensory:</strong> {info.sensory}</p>
-            <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Block:</strong> {info.block}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground">
-              <strong>Clinical:</strong> {info.clinical}
-            </p>
+            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Motor:</span> {info.motor}</p>
+            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Sensory:</span> {info.sensory}</p>
+            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Block:</span> {info.block}</p>
+            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {info.clinical}</p>
           </div>
 
           <div className="flex flex-wrap gap-1">
@@ -316,6 +348,7 @@ const LumbosacralPlexusDiagram = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

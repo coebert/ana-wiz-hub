@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type BlockLevel = "interscalene" | "supraclavicular" | "infraclavicular" | "axillary";
 
@@ -326,53 +327,51 @@ const BrachialPlexusUltrasoundDiagram = () => {
   const info = levels[selected];
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Ultrasound Anatomy — Brachial Plexus Blocks</h3>
-      <p className="text-xs text-muted-foreground mb-4">Select a block level to see the sonographic appearance and key landmarks</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Ultrasound anatomy — brachial plexus blocks"
+          subtitle="Select a block level to see the sonographic appearance and key landmarks"
+          toggles={[
+            { label: "Needle", active: showNeedle, onChange: () => setShowNeedle(!showNeedle) },
+          ]}
+        />
 
-      <div className="flex flex-wrap gap-2 mb-4">
-        {(Object.keys(levels) as BlockLevel[]).map((l) => (
-          <button key={l} onClick={() => setSelected(l)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-              selected === l
-                ? "bg-primary text-primary-foreground border-primary"
-                : "border-border text-muted-foreground hover:text-foreground"
-            }`}>
-            {levels[l].label}
-          </button>
-        ))}
-        <button
-          onClick={() => setShowNeedle(!showNeedle)}
-          className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-            showNeedle
-              ? "bg-yellow-500/20 text-yellow-400 border-yellow-500/40"
-              : "border-border text-muted-foreground hover:text-foreground"
-          }`}>
-          🎯 {showNeedle ? "Hide" : "Show"} Needle
-        </button>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
-        <div className="flex-shrink-0 mx-auto">
-          <SonoView level={selected} size={220} showNeedle={showNeedle} />
+        <div className="flex flex-wrap gap-2 mb-4">
+          {(Object.keys(levels) as BlockLevel[]).map((l) => (
+            <button key={l} onClick={() => setSelected(l)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                selected === l
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}>
+              {levels[l].label}
+            </button>
+          ))}
         </div>
 
-        <div className="flex-1 min-w-0 space-y-3">
-          <div className="p-3 rounded-lg border border-border">
-            <p className="font-bold text-foreground text-sm">{info.label} — {info.subtitle}</p>
-            <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{info.description}</p>
+        <div className="flex flex-col md:flex-row gap-5 items-start animate-fade-in" key={`${selected}-${showNeedle}`}>
+          <div className="flex-shrink-0 mx-auto">
+            <SonoView level={selected} size={220} showNeedle={showNeedle} />
           </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="font-semibold text-foreground text-xs">Key Landmarks</p>
-            <p className="text-xs text-muted-foreground mt-1">{info.landmarks}</p>
-          </div>
-          <div className="p-3 rounded-lg border border-border">
-            <p className="font-semibold text-foreground text-xs">Needle Technique</p>
-            <p className="text-xs text-muted-foreground mt-1">{info.needle}</p>
-          </div>
-          <div className="p-3 rounded-lg border border-border bg-secondary/20">
-            <p className="font-semibold text-foreground text-xs">💡 Scanning Tips</p>
-            <p className="text-xs text-muted-foreground mt-1">{info.tips}</p>
+
+          <div className="flex-1 min-w-0 space-y-3">
+            <div className="p-3 rounded-lg border border-border bg-background/80 min-h-[110px]" style={{ borderLeftWidth: 4, borderLeftColor: "hsl(var(--primary))" }}>
+              <p className="font-semibold text-foreground text-sm">{info.label} — {info.subtitle}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{info.description}</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-xs">Key landmarks</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.landmarks}</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-xs">Needle technique</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.needle}</p>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-xs">Scanning tips</p>
+              <p className="text-xs text-muted-foreground mt-1">{info.tips}</p>
+            </div>
           </div>
         </div>
       </div>
