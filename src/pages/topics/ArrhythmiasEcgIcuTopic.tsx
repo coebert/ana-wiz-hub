@@ -91,6 +91,7 @@ const ArrhythmiasEcgIcuTopic = () => {
           </p>
           <CoronarySelectionProvider initial="anterior">
             <TwelveLeadEcgDiagram />
+            <StemiLocalisationDiagram />
           </CoronarySelectionProvider>
 
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
