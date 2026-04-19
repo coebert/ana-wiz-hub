@@ -262,6 +262,10 @@ const PacingDevicesDiagram = () => {
               </div>
               <HeartWithLeads device={d} />
               <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{d.indication}</p>
+              <div className="mt-1.5 pt-1.5 border-t border-border/60">
+                <p className="text-[9px] font-semibold text-destructive/80 uppercase tracking-wide mb-0.5">⚠ Top complication</p>
+                <p className="text-[10px] text-muted-foreground line-clamp-2">{d.complications[0]}</p>
+              </div>
             </button>
           );
         })}
