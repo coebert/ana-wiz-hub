@@ -15,6 +15,14 @@ import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import StemiLocalisationDiagram from "@/components/diagrams/StemiLocalisationDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
+import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
+import {
+  bradyContent,
+  heartBlockContent,
+  bbbContent,
+  tachyContent,
+  twelveLeadContent,
+} from "@/components/diagrams/ecgExpandedContent";
 
 const tocItems = [
   { id: "ecg-approach", label: "Systematic ECG approach", group: "Interpretation" },
@@ -90,8 +98,14 @@ const ArrhythmiasEcgIcuTopic = () => {
             STEMI activation, and post-thrombolysis ECGs.
           </p>
           <CoronarySelectionProvider initial="anterior">
-            <TwelveLeadEcgDiagram />
-            <StemiLocalisationDiagram />
+            <ExpandableEcgCard content={twelveLeadContent}>
+              {() => (
+                <>
+                  <TwelveLeadEcgDiagram />
+                  <StemiLocalisationDiagram />
+                </>
+              )}
+            </ExpandableEcgCard>
           </CoronarySelectionProvider>
 
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
@@ -117,7 +131,9 @@ const ArrhythmiasEcgIcuTopic = () => {
             the SA/AV nodal supply via RCA), <span className="font-medium text-foreground">electrolytes</span> (hyperkalaemia, hypothermia),
             <span className="font-medium text-foreground"> raised ICP</span> (Cushing's reflex), and <span className="font-medium text-foreground">hypoxia/vagal</span> stimulation.
           </p>
-          <BradyarrhythmiaDiagram />
+          <ExpandableEcgCard content={bradyContent}>
+            {() => <BradyarrhythmiaDiagram />}
+          </ExpandableEcgCard>
         </div>
 
         {/* ─────────── Heart block ─────────── */}
@@ -129,7 +145,9 @@ const ArrhythmiasEcgIcuTopic = () => {
             blocks (Mobitz II, complete) drop to a slow ventricular escape — early temporary pacing
             and definitive PPM.
           </p>
-          <HeartBlockDiagram />
+          <ExpandableEcgCard content={heartBlockContent}>
+            {() => <HeartBlockDiagram />}
+          </ExpandableEcgCard>
         </div>
 
         {/* ─────────── Bundle branch block ─────────── */}
@@ -140,7 +158,9 @@ const ArrhythmiasEcgIcuTopic = () => {
             (Sgarbossa criteria for new LBBB), masks underlying ischaemia, and warns of progression
             to complete heart block (e.g. bifascicular + 1° = trifascicular block — pace early).
           </p>
-          <BundleBranchBlockDiagram />
+          <ExpandableEcgCard content={bbbContent}>
+            {() => <BundleBranchBlockDiagram />}
+          </ExpandableEcgCard>
         </div>
 
         {/* ─────────── Tachyarrhythmias ─────────── */}
@@ -152,7 +172,9 @@ const ArrhythmiasEcgIcuTopic = () => {
             septic patients and is often the first sign of evolving shock, fluid overload, or
             electrolyte derangement — treat the cause before reaching for amiodarone.
           </p>
-          <TachyarrhythmiaDiagram />
+          <ExpandableEcgCard content={tachyContent}>
+            {() => <TachyarrhythmiaDiagram />}
+          </ExpandableEcgCard>
         </div>
 
         {/* ─────────── Peri-arrest algorithms ─────────── */}

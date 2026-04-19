@@ -186,6 +186,19 @@
   .topic-card {
     @apply p-4 rounded-lg bg-card border border-border hover:shadow-md transition-all duration-200 cursor-pointer;
   }
+
+  /* Bumps the inline rendering of any ECG diagram wrapped in
+     <ExpandableEcgCard> so the rhythm strips are immediately readable
+     without forcing the user into the modal. The diagrams use SVGs with
+     responsive widths, so we widen the natural max-width and slightly
+     enlarge text inside. */
+  .ecg-bigger-default svg {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  .ecg-bigger-default > div > div {
+    padding: 1.25rem;
+  }
 }
 
 @layer utilities {
