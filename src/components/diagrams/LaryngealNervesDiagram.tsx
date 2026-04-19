@@ -75,30 +75,14 @@ const LaryngealNervesDiagram = () => {
 
   return (
     <div className="my-6">
-      <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-        <h3 className="text-lg font-semibold text-foreground">Laryngeal Nerve Supply</h3>
-        <div className="flex gap-2 text-[11px]">
-          <button
-            type="button"
-            onClick={() => setShowSutures((s) => !s)}
-            className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-              showSutures ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-            }`}
-          >
-            Detail lines
-          </button>
-          <button
-            type="button"
-            onClick={() => setShowLabels((s) => !s)}
-            className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-              showLabels ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-            }`}
-          >
-            Labels
-          </button>
-        </div>
-      </div>
-      <p className="text-sm text-muted-foreground mb-4">Tap a structure to see its course, function, and clinical relevance.</p>
+      <DiagramToggleBar
+        title="Laryngeal Nerve Supply"
+        subtitle="Tap a structure to see its course, function, and clinical relevance."
+        toggles={[
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+        ]}
+      />
 
       <div className="flex flex-col lg:flex-row gap-4">
         <svg viewBox="0 0 460 620" className="w-full max-w-[460px] mx-auto" style={{ background: "hsl(var(--card))" }}>

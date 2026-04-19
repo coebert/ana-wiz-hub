@@ -182,8 +182,15 @@ const NeckTrianglesDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Triangles of the Neck — Interactive</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a triangle to see borders, contents, and clinical relevance. Right lateral view.</p>
+      <DiagramToggleBar
+        title="Triangles of the Neck — Interactive"
+        subtitle="Tap a triangle to see borders, contents, and clinical relevance. Right lateral view."
+        toggles={[
+          { label: "Subdivisions", active: showSubdivisions, onChange: () => setShowSubdivisions(v => !v) },
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+        ]}
+      />
 
       <Tabs defaultValue="triangles">
         <TabsList className="grid w-full grid-cols-2 mb-3">
@@ -192,26 +199,6 @@ const NeckTrianglesDiagram = () => {
         </TabsList>
 
         <TabsContent value="triangles">
-          <div className="flex flex-wrap gap-1.5 mb-3">
-            <button
-              onClick={() => setShowSubdivisions(!showSubdivisions)}
-              className={`text-xs px-2 py-1 rounded border transition-colors ${showSubdivisions ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
-            >
-              {showSubdivisions ? "Show major only" : "Show subdivisions"}
-            </button>
-            <button
-              onClick={() => setShowSutures(!showSutures)}
-              className={`text-xs px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
-            >
-              Sutures & detail
-            </button>
-            <button
-              onClick={() => setShowLabels(!showLabels)}
-              className={`text-xs px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"}`}
-            >
-              Labels
-            </button>
-          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">

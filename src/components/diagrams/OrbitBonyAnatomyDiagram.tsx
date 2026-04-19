@@ -337,34 +337,14 @@ const OrbitBonyAnatomyDiagram = () => {
   return (
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-          <h4 className="text-sm font-semibold text-foreground">
-            Bony Orbit — Right Orbit, Anterior View
-          </h4>
-          <div className="flex gap-2 text-[11px]">
-            <button
-              type="button"
-              onClick={() => setShowSutures((s) => !s)}
-              className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-                showSutures ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-              }`}
-            >
-              Sutures
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowLabels((s) => !s)}
-              className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-                showLabels ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-              }`}
-            >
-              Labels
-            </button>
-          </div>
-        </div>
-        <p className="text-xs text-muted-foreground mb-3 italic">
-          Tap a bone or an opening to reveal its contents and clinical relevance.
-        </p>
+        <DiagramToggleBar
+          title="Bony Orbit — Right Orbit, Anterior View"
+          subtitle="Tap a bone or an opening to reveal its contents and clinical relevance."
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
         <svg
           viewBox="0 0 600 500"
