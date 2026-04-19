@@ -15,6 +15,14 @@ import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import StemiLocalisationDiagram from "@/components/diagrams/StemiLocalisationDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
+import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
+import {
+  bradyContent,
+  heartBlockContent,
+  bbbContent,
+  tachyContent,
+  twelveLeadContent,
+} from "@/components/diagrams/ecgExpandedContent";
 
 const tocItems = [
   { id: "ecg-approach", label: "Systematic ECG approach", group: "Interpretation" },
