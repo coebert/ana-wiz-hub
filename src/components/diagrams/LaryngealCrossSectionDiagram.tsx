@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 

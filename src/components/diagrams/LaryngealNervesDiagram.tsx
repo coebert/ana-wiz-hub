@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type Branch = {
   id: string;
