@@ -76,11 +76,14 @@ const ExpandableEcgCard = ({ content, children }: ExpandableEcgCardProps) => {
 
   return (
     <div className="relative group">
-      {/* Expand button — overlays the top-right of the diagram card */}
+      {/* Expand button — floats above the diagram card. Sits OUTSIDE the
+          card on desktop (negative offsets) so it never collides with the
+          DiagramToggleBar toggles in the top-right of the inner card.
+          On small screens it tucks neatly inside the card border. */}
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="absolute top-2 right-2 z-10 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium bg-background/90 border border-border text-foreground hover:bg-accent hover:text-accent-foreground transition-colors shadow-sm"
+        className="absolute z-20 top-2 right-2 sm:-top-3 sm:-right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium bg-background border border-border text-foreground hover:bg-accent hover:text-accent-foreground transition-colors shadow-md"
         aria-label={`Expand ${content.title} for full-size view and detailed teaching`}
       >
         <Maximize2 className="w-3.5 h-3.5" />
