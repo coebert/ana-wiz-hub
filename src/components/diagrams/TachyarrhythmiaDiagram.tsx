@@ -24,6 +24,14 @@ type FocusKind =
   | "v-chaos"          // VF — disorganised ventricular activity
   | "torsade";         // Torsades — twisting axis on long QT
 
+type AdenosineResponse = "terminate" | "unmask" | "slow" | "no-effect" | "danger";
+
+interface AdenosineInfo {
+  response: AdenosineResponse;
+  label: string;
+  detail: string;
+}
+
 interface TachyInfo {
   label: string;
   shortLabel: string;
@@ -35,7 +43,16 @@ interface TachyInfo {
   ecg: string;
   pathophysiology: string;
   management: string;
+  adenosine: AdenosineInfo;
 }
+
+const ADENOSINE_STYLE: Record<AdenosineResponse, { color: string; icon: string }> = {
+  terminate: { color: "hsl(140, 60%, 40%)", icon: "✓" },
+  unmask: { color: "hsl(35, 85%, 45%)", icon: "👁" },
+  slow: { color: "hsl(210, 70%, 50%)", icon: "↓" },
+  "no-effect": { color: "hsl(0, 0%, 50%)", icon: "—" },
+  danger: { color: "hsl(0, 75%, 50%)", icon: "⚠" },
+};
 
 const TACHYS: Record<TachyKey, TachyInfo> = {
   sinus: {
