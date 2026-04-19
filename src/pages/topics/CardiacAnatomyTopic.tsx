@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
+import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
@@ -60,6 +61,7 @@ const CardiacAnatomyTopic = () => {
 
           <div className="mt-4">
             <CoronaryTerritoryMapDiagram />
+            <CoronaryTreeDiagram />
           </div>
         </div>
 
