@@ -30,6 +30,8 @@ const layerOrder: LayerKey[] = ["skin", "subcut", "supraspinous", "interspinous"
 
 const SpinalCordCrossSectionDiagram = () => {
   const [selected, setSelected] = useState<LayerKey>("epidural");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
   const info = layers[selected];
 
   const svgWidth = 310;
@@ -45,9 +47,16 @@ const SpinalCordCrossSectionDiagram = () => {
   const totalH = cumY + 14;
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Spinal Cord Layers — Neuraxial Cross-Section</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a layer to see clinical relevance for epidural and spinal anaesthesia</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Spinal Cord Layers — Neuraxial Cross-Section"
+          subtitle="Tap a layer to see clinical relevance for epidural and spinal anaesthesia"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
