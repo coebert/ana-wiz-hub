@@ -78,10 +78,14 @@ const OrbitAnatomyDiagram = () => {
         <svg viewBox="0 0 600 500" className="w-full max-w-lg mx-auto">
           {/* Orbital rim */}
           <ellipse cx={300} cy={250} rx={150} ry={130} fill="none" stroke="hsl(var(--border))" strokeWidth={2.5} />
-          <text x={300} y={30} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">SUPERIOR</text>
-          <text x={300} y={490} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">INFERIOR</text>
-          <text x={90} y={255} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">MEDIAL</text>
-          <text x={510} y={255} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">LATERAL</text>
+          {showLabels && (
+            <>
+              <text x={300} y={30} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">SUPERIOR</text>
+              <text x={300} y={490} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">INFERIOR</text>
+              <text x={90} y={255} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">MEDIAL</text>
+              <text x={510} y={255} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">LATERAL</text>
+            </>
+          )}
 
           {/* Globe */}
           <circle cx={300} cy={250} r={65} fill="hsl(var(--background))" stroke="hsl(var(--foreground))" strokeWidth={1.5} opacity={0.3} />
@@ -92,7 +96,9 @@ const OrbitAnatomyDiagram = () => {
 
           {/* Optic nerve */}
           <line x1={300} y1={315} x2={300} y2={460} stroke="hsl(var(--foreground))" strokeWidth={3} opacity={0.2} />
-          <text x={315} y={445} className="text-[8px] fill-muted-foreground">CN II</text>
+          {showLabels && (
+            <text x={315} y={445} className="text-[8px] fill-muted-foreground">CN II</text>
+          )}
 
           {/* Muscles */}
           {muscles.map(m => {
@@ -105,25 +111,39 @@ const OrbitAnatomyDiagram = () => {
           })}
 
           {/* Muscle labels */}
-          <text x={300} y={70} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "sr" ? null : "sr")}>Superior Rectus</text>
-          <text x={300} y={445} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "ir" ? null : "ir")}>Inferior Rectus</text>
-          <text x={120} y={245} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "mr" ? null : "mr")}>Medial Rectus</text>
-          <text x={490} y={245} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "lr" ? null : "lr")}>Lateral Rectus</text>
-          <text x={155} y={115} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "so" ? null : "so")}>Sup. Oblique</text>
-          <text x={155} y={390} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "io" ? null : "io")}>Inf. Oblique</text>
-          <text x={300} y={128} textAnchor="middle" className="text-[8px] fill-foreground cursor-pointer" opacity={0.7} onClick={() => setSelected(selected === "lps" ? null : "lps")}>LPS</text>
+          {showLabels && (
+            <>
+              <text x={300} y={70} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "sr" ? null : "sr")}>Superior Rectus</text>
+              <text x={300} y={445} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "ir" ? null : "ir")}>Inferior Rectus</text>
+              <text x={120} y={245} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "mr" ? null : "mr")}>Medial Rectus</text>
+              <text x={490} y={245} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "lr" ? null : "lr")}>Lateral Rectus</text>
+              <text x={155} y={115} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "so" ? null : "so")}>Sup. Oblique</text>
+              <text x={155} y={390} textAnchor="middle" className="text-[9px] fill-foreground font-medium cursor-pointer" onClick={() => setSelected(selected === "io" ? null : "io")}>Inf. Oblique</text>
+              <text x={300} y={128} textAnchor="middle" className="text-[8px] fill-foreground cursor-pointer" opacity={0.7} onClick={() => setSelected(selected === "lps" ? null : "lps")}>LPS</text>
+            </>
+          )}
 
           {/* Nerve colour key in SVG */}
-          <rect x={20} y={450} width={8} height={8} rx={1} fill="hsl(210 70% 55%)" opacity={0.7} />
-          <text x={32} y={457} className="text-[7px] fill-muted-foreground">CN VI (LR6)</text>
-          <rect x={20} y={462} width={8} height={8} rx={1} fill="hsl(280 55% 55%)" opacity={0.7} />
-          <text x={32} y={469} className="text-[7px] fill-muted-foreground">CN IV (SO4)</text>
-          <rect x={20} y={474} width={8} height={8} rx={1} fill="hsl(0 70% 55%)" opacity={0.7} />
-          <text x={32} y={481} className="text-[7px] fill-muted-foreground">CN III (rest)</text>
+          {showSutures && (
+            <>
+              <rect x={20} y={450} width={8} height={8} rx={1} fill="hsl(210 70% 55%)" opacity={0.7} />
+              <text x={32} y={457} className="text-[7px] fill-muted-foreground">CN VI (LR6)</text>
+              <rect x={20} y={462} width={8} height={8} rx={1} fill="hsl(280 55% 55%)" opacity={0.7} />
+              <text x={32} y={469} className="text-[7px] fill-muted-foreground">CN IV (SO4)</text>
+              <rect x={20} y={474} width={8} height={8} rx={1} fill="hsl(0 70% 55%)" opacity={0.7} />
+              <text x={32} y={481} className="text-[7px] fill-muted-foreground">CN III (rest)</text>
+            </>
+          )}
 
           {/* Trochlea label */}
-          <circle cx={175} cy={135} r={4} fill="none" stroke="hsl(var(--foreground))" strokeWidth={1} opacity={0.4} />
-          <text x={175} y={150} textAnchor="middle" className="text-[7px] fill-muted-foreground italic">trochlea</text>
+          {showSutures && (
+            <>
+              <circle cx={175} cy={135} r={4} fill="none" stroke="hsl(var(--foreground))" strokeWidth={1} opacity={0.4} />
+              {showLabels && (
+                <text x={175} y={150} textAnchor="middle" className="text-[7px] fill-muted-foreground italic">trochlea</text>
+              )}
+            </>
+          )}
         </svg>
 
         {/* Mnemonic */}
