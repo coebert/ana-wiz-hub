@@ -277,11 +277,6 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
 
   // ──────── ANATOMY ────────
-  "airway-anatomy": [
-    { label: "BJA Educ 2005", citation: "Dua A. Airway anatomy. BJA Education. 2005;5(4):118-121.", url: "https://doi.org/10.1093/bjaceaccp/mki033" },
-    { label: "Ellis & Feldman", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Wiley-Blackwell; 2014. Chapter 1: The Airway." },
-    { label: "BJA Educ 2019", citation: "Ahmad I, El-Boghdadly K. Applied anatomy of the airway. BJA Education. 2019;19(7):215-221.", url: "https://doi.org/10.1016/j.bjae.2019.03.002" },
-  ],
   "cardiac-anatomy": [
     { label: "Ellis & Feldman Ch.3", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 3: The Heart." },
     { label: "Power & Kam Ch.3", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 3: Cardiac Anatomy." },
@@ -309,7 +304,9 @@ export const topicReferences: Record<string, Reference[]> = {
   ],
   "head-neck-anatomy": [
     { label: "Ellis & Feldman Ch.5", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 5: The Head and Neck." },
+    { label: "Ellis & Feldman Ch.1", citation: "Ellis H, Feldman S, Harrop-Griffiths W. Anatomy for Anaesthetists. 9th ed. Chapter 1: The Airway." },
     { label: "BJA Educ 2005", citation: "Dua A. Applied anatomy of the head and neck. BJA Education. 2005;5(4):118-121.", url: "https://doi.org/10.1093/bjaceaccp/mki033" },
+    { label: "BJA Educ 2019", citation: "Ahmad I, El-Boghdadly K. Applied anatomy of the airway. BJA Education. 2019;19(7):215-221.", url: "https://doi.org/10.1016/j.bjae.2019.03.002" },
     { label: "Power & Kam Ch.12", citation: "Power I, Kam P. Principles of Physiology for the Anaesthetist. 3rd ed. Chapter 12: Cranial Nerves and Special Senses." },
   ],
   "neuroanatomy": [
