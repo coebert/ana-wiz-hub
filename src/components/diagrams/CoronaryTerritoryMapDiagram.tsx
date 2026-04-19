@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
 
-type Territory = "anterior" | "lateral" | "inferior" | "posterior" | "septal" | "rv";
+type Territory = CoronaryTerritory;
 
 const territories: Record<Territory, {
   label: string;
@@ -71,7 +72,7 @@ const ecgLeadPositions: Record<string, { x: number; y: number }> = {
 const extraLeads = ["V3R", "V4R", "V7", "V8", "V9"];
 
 const CoronaryTerritoryMapDiagram = () => {
-  const [selected, setSelected] = useState<Territory>("anterior");
+  const [selected, setSelected] = useCoronarySelection("anterior");
   const [showSutures, setShowSutures] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
 

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
+import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
 
 /**
  * AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary
@@ -18,7 +19,7 @@ import { withAlpha } from "@/lib/color-utils";
  *   Apex  (17, centre dot):      apical cap (LAD)
  */
 
-type Territory = "anterior" | "septal" | "lateral" | "inferior" | "posterior" | "rv";
+type Territory = CoronaryTerritory;
 
 const territoryMeta: Record<Territory, { label: string; artery: string; leads: string; color: string }> = {
   anterior:  { label: "Anterior",       artery: "LAD",                       leads: "V1–V4",      color: "hsl(0, 60%, 50%)" },
