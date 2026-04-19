@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
 
-type Territory = "anterior" | "septal" | "lateral" | "inferior" | "posterior" | "rv";
+type Territory = CoronaryTerritory;
 
 const territories: Record<Territory, {
   label: string;
@@ -103,7 +104,7 @@ const branches: Branch[] = [
 ];
 
 const CoronaryTreeDiagram = () => {
-  const [selected, setSelected] = useState<Territory>("anterior");
+  const [selected, setSelected] = useCoronarySelection("anterior");
   const [showLabels, setShowLabels] = useState(true);
   const [showHeart, setShowHeart] = useState(true);
 

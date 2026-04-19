@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
+import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
 
 /**
  * AHA 17-segment short-axis LV bullseye, colour-keyed to the SAME six coronary
@@ -18,7 +19,7 @@ import { withAlpha } from "@/lib/color-utils";
  *   Apex  (17, centre dot):      apical cap (LAD)
  */
 
-type Territory = "anterior" | "septal" | "lateral" | "inferior" | "posterior" | "rv";
+type Territory = CoronaryTerritory;
 
 const territoryMeta: Record<Territory, { label: string; artery: string; leads: string; color: string }> = {
   anterior:  { label: "Anterior",       artery: "LAD",                       leads: "V1–V4",      color: "hsl(0, 60%, 50%)" },
@@ -136,13 +137,37 @@ const segmentLabelPos = (s: Segment) => {
 const territoryOrder: Territory[] = ["anterior", "septal", "lateral", "inferior", "posterior", "rv"];
 
 const LVBullseyeDiagram = () => {
-  const [selected, setSelected] = useState<number>(17);
+  const [sharedTerritory, setSharedTerritory] = useCoronarySelection("anterior");
+  const [selected, setSelected] = useState<number>(() => {
+    const first = segments.find((s) => s.territory === sharedTerritory);
+    return first?.id ?? 17;
+  });
   const [showLabels, setShowLabels] = useState(true);
   const [showRingLabels, setShowRingLabels] = useState(true);
-  const [highlightedTerritory, setHighlightedTerritory] = useState<Territory | null>(null);
 
   const activeSeg = segments.find((s) => s.id === selected) ?? segments[16];
   const activeMeta = territoryMeta[activeSeg.territory];
+
+  // When the shared territory changes (from another diagram), jump selection
+  // to the first segment of that territory so the bullseye stays in sync.
+  useEffect(() => {
+    if (activeSeg.territory === sharedTerritory) return;
+    const first = segments.find((s) => s.territory === sharedTerritory);
+    if (first) setSelected(first.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sharedTerritory]);
+
+  // Legend highlight derives from the shared territory (RV is LV-only → null).
+  const highlightedTerritory: Territory | null =
+    sharedTerritory === "rv" ? null : sharedTerritory;
+  const setHighlightedTerritory = (t: Territory | null) => {
+    if (t) setSharedTerritory(t);
+  };
+
+  const handleSegmentClick = (s: Segment) => {
+    setSelected(s.id);
+    if (s.territory !== sharedTerritory) setSharedTerritory(s.territory);
+  };
 
   return (
     <div className="my-6 space-y-4">
@@ -252,7 +277,7 @@ const LVBullseyeDiagram = () => {
                   stroke={isSelected ? meta.color : "hsl(var(--background))"}
                   strokeWidth={strokeWidth}
                   className="cursor-pointer transition-all duration-150"
-                  onClick={() => setSelected(s.id)}
+                  onClick={() => handleSegmentClick(s)}
                   aria-label={`Segment ${s.id}: ${s.name}`}
                 />
               );
