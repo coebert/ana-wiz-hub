@@ -3,6 +3,8 @@ import { DiagramToggleBar } from "./DiagramToggleBar";
 
 const SpinalCordSagittalDiagram = () => {
   const [highlight, setHighlight] = useState<string | null>(null);
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
 
   // Vertebral levels with y-coordinates (top of vertebra)
   const vertebrae = [
@@ -367,6 +369,7 @@ const SpinalCordSagittalDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 

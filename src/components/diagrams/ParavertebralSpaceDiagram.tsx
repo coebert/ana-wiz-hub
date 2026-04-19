@@ -162,6 +162,8 @@ const categories = [
 
 const ParavertebralSpaceDiagram = () => {
   const [selected, setSelected] = useState<RegionKey>("pvs-contents");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
   const info = regions[selected];
 
   const isActive = (key: RegionKey) => selected === key;
@@ -635,6 +637,7 @@ const ParavertebralSpaceDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 

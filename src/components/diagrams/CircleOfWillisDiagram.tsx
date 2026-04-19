@@ -245,6 +245,8 @@ const CircleOfWillisDiagram = () => {
   const [showAneurysms, setShowAneurysms] = useState(true);
   const [showCNs, setShowCNs] = useState(false);
   const [groupFilter, setGroupFilter] = useState<GroupFilter>("all");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
   const info = vessels[selected];
 
   const isVisible = (key: VesselKey) =>
@@ -510,6 +512,7 @@ const CircleOfWillisDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 

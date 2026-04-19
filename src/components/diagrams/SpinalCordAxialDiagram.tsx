@@ -233,6 +233,8 @@ const SpinalCordAxialDiagram = () => {
   const [selectedTract, setSelectedTract] = useState<TractKey | null>(null);
   const [selectedSyndrome, setSelectedSyndrome] = useState<SyndromeKey | null>(null);
   const [cordLevel, setCordLevel] = useState<CordLevel>("thoracic");
+  const [showSutures, setShowSutures] = useState<boolean>(true);
+  const [showLabels, setShowLabels] = useState<boolean>(true);
 
   const activeInfo = selectedTract ? TRACTS[selectedTract] : null;
   const syndInfo = selectedSyndrome ? SYNDROMES[selectedSyndrome] : null;
@@ -895,6 +897,7 @@ const SpinalCordAxialDiagram = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
 
