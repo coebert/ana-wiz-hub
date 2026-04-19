@@ -7,6 +7,7 @@ import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
+import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
 import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
@@ -68,6 +69,7 @@ const CardiacAnatomyTopic = () => {
               <CoronaryTerritoryMapDiagram />
               <CoronaryTreeDiagram />
               <LVBullseyeDiagram />
+              <TwelveLeadEcgDiagram />
             </CoronarySelectionProvider>
           </div>
         </div>
