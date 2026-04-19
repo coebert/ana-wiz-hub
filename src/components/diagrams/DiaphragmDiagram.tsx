@@ -1,20 +1,32 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 const hiatus = [
-  { name: "Aortic hiatus", level: "T12", contents: "Aorta, thoracic duct, azygos vein", color: "hsl(0, 60%, 55%)" },
-  { name: "Oesophageal hiatus", level: "T10", contents: "Oesophagus, vagal trunks (ant & post)", color: "hsl(140, 50%, 45%)" },
-  { name: "Vena caval foramen", level: "T8", contents: "IVC, right phrenic nerve", color: "hsl(220, 60%, 55%)" },
+  { name: "Aortic hiatus", level: "T12", contents: "Aorta, thoracic duct, azygos vein", color: "hsl(0, 60%, 55%)", clinical: "Passes BEHIND the crura — not through the diaphragm. Aorta is therefore not compressed during diaphragmatic contraction." },
+  { name: "Oesophageal hiatus", level: "T10", contents: "Oesophagus, vagal trunks (anterior & posterior)", color: "hsl(140, 50%, 45%)", clinical: "Passes through the right crus, which contributes to the lower oesophageal sphincter mechanism. Site of sliding/rolling hiatus hernia." },
+  { name: "Vena caval foramen", level: "T8", contents: "IVC, right phrenic nerve", color: "hsl(220, 60%, 55%)", clinical: "Sits within the central tendon — widens during inspiration to augment venous return. Right phrenic nerve passes through to supply the diaphragm from below." },
 ];
 
 export const DiaphragmDiagram = () => {
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState<number>(0);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
+
+  const item = hiatus[active];
 
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-foreground">Diaphragm — Inferior View</h3>
-      <p className="text-sm text-muted-foreground">Click an opening to highlight it. The diaphragm is viewed from below (abdominal surface).</p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Diaphragm — inferior view"
+          subtitle="Tap an opening, crus or ligament. The diaphragm is viewed from below (abdominal surface)."
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <svg viewBox="0 0 500 420" className="w-full max-w-xl mx-auto" role="img" aria-label="Diaphragm inferior view showing borders, muscular slips, crura and three major openings">
+        <svg viewBox="0 0 500 420" className="w-full max-w-2xl mx-auto" role="img" aria-label="Diaphragm inferior view showing borders, muscular slips, crura and three major openings">
         <defs>
           <radialGradient id="diaGrad" cx="50%" cy="48%" r="48%">
             <stop offset="0%" stopColor="hsl(0, 30%, 55%)" stopOpacity="0.18" />
@@ -23,12 +35,18 @@ export const DiaphragmDiagram = () => {
           </radialGradient>
           {/* muscle fibre pattern */}
           <pattern id="diaFibre" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(0)">
-            <line x1="3" y1="0" x2="3" y2="6" stroke="hsl(0, 25%, 50%)" strokeWidth="0.4" opacity="0.12" />
+            <line x1="3" y1="0" x2="3" y2="6" stroke="hsl(0, 25%, 50%)" strokeWidth="0.4" opacity="0.18" />
           </pattern>
           {/* radial fibre pattern */}
           <pattern id="radFibre" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
-            <line x1="4" y1="0" x2="4" y2="8" stroke="hsl(0, 20%, 48%)" strokeWidth="0.3" opacity="0.08" />
+            <line x1="4" y1="0" x2="4" y2="8" stroke="hsl(0, 20%, 48%)" strokeWidth="0.3" opacity="0.12" />
           </pattern>
+          <filter id="diaShadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+            <feOffset dx="0" dy="2" result="off" />
+            <feComponentTransfer><feFuncA type="linear" slope="0.32" /></feComponentTransfer>
+            <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
 
         {/* ===== DOME OUTLINE — asymmetric, right higher ===== */}
