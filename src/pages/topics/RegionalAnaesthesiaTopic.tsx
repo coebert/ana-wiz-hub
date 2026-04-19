@@ -11,11 +11,24 @@ import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "dermatomes", label: "Dermatome anatomy", group: "Foundations" },
+  { id: "spinal", label: "Spinal anaesthesia", group: "Neuraxial" },
+  { id: "epidural", label: "Epidural anaesthesia", group: "Neuraxial" },
+  { id: "complications", label: "Neuraxial complications", group: "Neuraxial" },
+  { id: "upper-limb", label: "Upper limb & truncal blocks", group: "Peripheral blocks" },
+  { id: "block-height", label: "Block height assessment", group: "Assessment" },
+  { id: "bromage", label: "Bromage scale", group: "Assessment" },
+  { id: "regression", label: "Block regression times", group: "Assessment" },
+];
 
 const RegionalAnaesthesiaTopic = () => {
   return (
     <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <section className="mb-10">
+      <TopicTableOfContents items={tocItems} />
+      <section id="dermatomes" className="scroll-mt-24 mb-10">
         <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Knowing surface dermatomes and their corresponding spinal levels underpins every regional and neuraxial technique — for planning block height, predicting surgical coverage, and detecting unexpectedly high blocks.
@@ -27,7 +40,7 @@ const RegionalAnaesthesiaTopic = () => {
       </section>
 
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="spinal" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Anaesthesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Intrathecal injection of local anaesthetic ± opioid into the subarachnoid space, typically at L3/4 or L4/5.
@@ -47,7 +60,7 @@ const RegionalAnaesthesiaTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="epidural" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epidural Anaesthesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Catheter-based technique allowing continuous or bolus top-ups. Needle enters the epidural space (loss of resistance to saline or air).
@@ -72,7 +85,7 @@ const RegionalAnaesthesiaTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="upper-limb" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Peripheral Nerve Blocks</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Ultrasound-guided blocks have revolutionised regional anaesthesia, improving success rates and reducing complications.
@@ -99,7 +112,7 @@ const RegionalAnaesthesiaTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="complications" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Complications of Neuraxial Blockade</h2>
           <div className="space-y-2">
             {[
@@ -117,7 +130,7 @@ const RegionalAnaesthesiaTopic = () => {
           </div>
         </div>
         {/* Block Height Assessment */}
-        <div>
+        <div id="block-height" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Block Height Assessment Guide</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Systematic assessment of sensory block height is essential after neuraxial blockade to confirm adequacy for surgery, detect excessive spread, and monitor regression. Cold spray (ethyl chloride) is the standard bedside tool — it tests <strong>loss of cold sensation</strong>, which corresponds to <strong>C-fibre and Aδ-fibre blockade</strong> (small myelinated/unmyelinated fibres blocked earliest by local anaesthetics).
@@ -179,7 +192,7 @@ const RegionalAnaesthesiaTopic = () => {
         </div>
 
         {/* Bromage Scale */}
-        <div>
+        <div id="bromage" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bromage Scale — Motor Block Assessment</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The modified Bromage scale grades motor blockade of the lower limbs. It is the standard tool for assessing motor block density and monitoring regression after neuraxial anaesthesia.
@@ -225,7 +238,7 @@ const RegionalAnaesthesiaTopic = () => {
         </div>
 
         {/* Regression Times */}
-        <div>
+        <div id="regression" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Expected Block Regression Times</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Block regression follows a predictable pattern: sympathetic function returns first, then sensory, then motor. Regression rate depends on the local anaesthetic used, dose, and adjuncts. The <strong>two-segment regression time</strong> (time for sensory level to drop by 2 dermatomes) is a key pharmacokinetic parameter.
