@@ -29,6 +29,7 @@ import {
 const tocItems = [
   { id: "ecg-approach", label: "Systematic ECG approach", group: "Interpretation" },
   { id: "12-lead", label: "12-lead schematic", group: "Interpretation" },
+  { id: "wellens", label: "Wellens syndrome", group: "Interpretation" },
   { id: "bradys", label: "Bradyarrhythmias", group: "Rhythms" },
   { id: "heart-block", label: "Heart block", group: "Rhythms" },
   { id: "bbb", label: "Bundle branch block", group: "Rhythms" },
