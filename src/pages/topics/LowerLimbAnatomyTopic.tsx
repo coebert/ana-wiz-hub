@@ -8,12 +8,22 @@ import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDia
 import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
 import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "lumbar-plexus", label: "Lumbar Plexus", group: "Neural" },
+  { id: "sacral-plexus", label: "Sacral Plexus", group: "Neural" },
+  { id: "lower-limb-blocks", label: "Key Blocks", group: "Neural" },
+  { id: "arterial-supply", label: "Arterial Supply", group: "Vascular" },
+  { id: "venous-drainage", label: "Venous Drainage", group: "Vascular" },
+];
 
 const LowerLimbAnatomyTopic = () => {
   return (
     <SectionLayout title="Lower Limb & Lumbosacral Plexus" subtitle="FRCA Primary & Final — Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-clinical">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="lumbar-plexus" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lumbar Plexus (L1-L4)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
           <LumbosacralPlexusDiagram />
@@ -32,7 +42,7 @@ const LowerLimbAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="sacral-plexus" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sacral Plexus (L4-S3)</h2>
           <div className="space-y-3">
             {[
@@ -49,7 +59,7 @@ const LowerLimbAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="lower-limb-blocks" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Blocks for Lower Limb</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -70,7 +80,7 @@ const LowerLimbAnatomyTopic = () => {
         </div>
 
         {/* ── ARTERIAL SUPPLY ── */}
-        <div>
+        <div id="arterial-supply" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arterial Supply of the Lower Limb</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill in vascular and perioperative assessment.
@@ -89,7 +99,7 @@ const LowerLimbAnatomyTopic = () => {
         </div>
 
         {/* ── VENOUS DRAINAGE ── */}
-        <div>
+        <div id="venous-drainage" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Venous Drainage of the Lower Limb</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The lower limb has superficial and deep venous systems connected by perforating veins. The great saphenous vein (GSV) is the longest vein in the body, running along the medial limb from ankle to groin. The small saphenous vein (SSV) runs posteriorly in the calf. The deep system (tibial veins, popliteal, femoral) carries the majority of venous return, driven by the calf muscle pump. DVT prevention is a cornerstone of perioperative care.
