@@ -532,6 +532,23 @@ const HeartBlockDiagram = () => {
                 <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
               </div>
             </div>
+            {showPacing && (
+              <div className="mt-3 pt-3 border-t border-border/60 flex gap-3 items-center">
+                <PaceOverlay block={info} />
+                <div className="min-w-0 flex-1 space-y-1">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-wide font-bold text-foreground">Device:</span>
+                    <span
+                      className="text-[10px] font-bold px-1.5 py-0.5 rounded"
+                      style={{ background: withAlpha(info.color, 0.15), color: info.color }}
+                    >
+                      {info.device}
+                    </span>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground leading-snug">{info.deviceRationale}</p>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -558,6 +575,9 @@ const HeartBlockDiagram = () => {
             </p>
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Device:</span> {info.device} — {info.deviceRationale}
             </p>
           </div>
         </div>
