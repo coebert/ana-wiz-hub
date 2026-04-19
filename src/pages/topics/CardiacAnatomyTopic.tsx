@@ -7,6 +7,7 @@ import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
+import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
@@ -72,6 +73,8 @@ const CardiacAnatomyTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             SA node (pacemaker, 60–100 bpm) → atrial conduction → AV node (inherent rate 40–60, 0.1s delay) → bundle of His → right and left bundle branches → Purkinje fibres → ventricular muscle.
           </p>
+
+          <CardiacConductionDiagram />
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">SA Node</p>
