@@ -12,6 +12,7 @@ import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDia
 import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
 import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
 import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
+import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
@@ -86,6 +87,7 @@ const CardiacAnatomyTopic = () => {
           <HeartBlockDiagram />
           <BundleBranchBlockDiagram />
           <TachyarrhythmiaDiagram />
+          <PacingDevicesDiagram />
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">SA Node</p>
