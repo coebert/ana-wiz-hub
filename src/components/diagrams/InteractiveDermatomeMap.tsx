@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { normaliseLevel, findLocalLevel, type CanonicalLevel } from "@/lib/dermatome-sync";
 
 type Dermatome = {
   level: string;
@@ -97,8 +98,27 @@ const REGION_COLOR: Record<Dermatome["region"], string> = {
   sacral: "hsl(var(--destructive))",
 };
 
-const InteractiveDermatomeMap = () => {
-  const [selected, setSelected] = useState<string | null>("T10");
+interface InteractiveDermatomeMapProps {
+  /** Optional controlled canonical level (e.g. "T10", "S2-4"). */
+  selectedLevel?: CanonicalLevel | null;
+  /** Notified on every click with the canonical level (or null when un-mappable). */
+  onLevelChange?: (level: CanonicalLevel | null) => void;
+}
+
+const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDermatomeMapProps = {}) => {
+  const isControlled = selectedLevel !== undefined;
+  const [internal, setInternal] = useState<string | null>("T10");
+
+  // When controlled: resolve canonical -> local level string; when uncontrolled: use internal local id.
+  const selected = isControlled
+    ? findLocalLevel(DERMATOMES, selectedLevel ?? null, "level")?.level ?? null
+    : internal;
+
+  const setSelected = (local: string) => {
+    if (!isControlled) setInternal(local);
+    onLevelChange?.(normaliseLevel(local));
+  };
+
   const [showLabels, setShowLabels] = useState(true);
   const [showPosterior, setShowPosterior] = useState(true);
 
