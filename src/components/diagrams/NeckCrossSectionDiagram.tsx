@@ -268,7 +268,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Trachea */}
           <circle
             cx="250" cy="220" r="22"
-            fill={highlight("trachea") ? "#fef08a" : "#fef9c3"}
+            fill={highlight("trachea") ? "#fef08a" : "url(#ncx-tracheaGrad)"}
             stroke={highlight("trachea") ? "#f59e0b" : "#ca8a04"}
             strokeWidth={highlight("trachea") ? 3 : 1.5}
             opacity={opacity("trachea")}
@@ -299,7 +299,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Thyroid lobes */}
           <ellipse
             cx="210" cy="215" rx="22" ry="28"
-            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            fill={highlight("thyroid") ? "#fbcfe8" : "url(#ncx-thyroidGrad)"}
             stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
             strokeWidth={highlight("thyroid") ? 3 : 1.5}
             opacity={opacity("thyroid")}
@@ -308,7 +308,7 @@ const NeckCrossSectionDiagram = () => {
           />
           <ellipse
             cx="290" cy="215" rx="22" ry="28"
-            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            fill={highlight("thyroid") ? "#fbcfe8" : "url(#ncx-thyroidGrad)"}
             stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
             strokeWidth={highlight("thyroid") ? 3 : 1.5}
             opacity={opacity("thyroid")}
@@ -337,10 +337,10 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {/* CCA */}
-          <circle cx="162" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <circle cx="162" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="162" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
           {/* IJV */}
-          <ellipse cx="145" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <ellipse cx="145" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="145" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           {/* Vagus */}
           <circle cx="155" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
@@ -359,9 +359,9 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "carotid" ? null : "carotid")}
             className="cursor-pointer"
           />
-          <circle cx="338" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <circle cx="338" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="338" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
-          <ellipse cx="355" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <ellipse cx="355" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="355" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           <circle cx="345" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
 
@@ -369,7 +369,7 @@ const NeckCrossSectionDiagram = () => {
           <ellipse
             cx="130" cy="195" rx="28" ry="14"
             transform="rotate(-30 130 195)"
-            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            fill={highlight("scm") ? "#fca5a5" : "url(#ncx-scmGrad)"}
             stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
             strokeWidth={highlight("scm") ? 3 : 1.5}
             opacity={opacity("scm")}
@@ -382,7 +382,7 @@ const NeckCrossSectionDiagram = () => {
           <ellipse
             cx="370" cy="195" rx="28" ry="14"
             transform="rotate(30 370 195)"
-            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            fill={highlight("scm") ? "#fca5a5" : "url(#ncx-scmGrad)"}
             stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
             strokeWidth={highlight("scm") ? 3 : 1.5}
             opacity={opacity("scm")}
