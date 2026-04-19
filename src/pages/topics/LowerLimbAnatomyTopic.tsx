@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { lowerLimbAnatomyQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDiagram";
+import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
 import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -27,6 +28,7 @@ const LowerLimbAnatomyTopic = () => {
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lumbar Plexus (L1-L4)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
           <LumbosacralPlexusDiagram />
+          <LowerLimbBranchesDiagram />
           <div className="space-y-3">
             {[
               { nerve: "Femoral nerve (L2-L4)", desc: "Passes under inguinal ligament lateral to femoral artery (VAN: vein-artery-nerve). Motor: quadriceps (knee extension), sartorius. Sensory: anterior thigh, medial leg (saphenous branch). Block: below inguinal ligament lateral to artery, or fascia iliaca block." },
