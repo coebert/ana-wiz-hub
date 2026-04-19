@@ -1,5 +1,7 @@
 import { useState } from "react";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
+import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
+import { eegTraceContent } from "@/components/diagrams/ecgExpandedContent";
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { SectionLayout } from "@/components/SectionLayout";
@@ -119,7 +121,9 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           </p>
 
           <div className="my-6">
-            <EEGTraceDiagram />
+            <ExpandableEcgCard content={eegTraceContent}>
+              {() => <EEGTraceDiagram />}
+            </ExpandableEcgCard>
           </div>
           <div className="my-6">
             <DSASpectrogramDiagram />

@@ -197,3 +197,82 @@ export const twelveLeadContent: EcgExpandedContent = {
     { scenario: "Hypotensive patient post-MI with 12-lead showing ST↑ aVR, ST↓ across 8 leads.", ecgFinding: "Diffuse ST↓ + aVR ST↑.", diagnosis: "Left main / triple-vessel disease.", management: "Urgent angiography; consider IABP or Impella for cardiogenic shock; dual antiplatelet, heparin." },
   ],
 };
+
+export const eegTraceContent: EcgExpandedContent = {
+  title: "EEG patterns — sedation, seizures and post-arrest",
+  summary:
+    "Recognise the dominant rhythm by frequency band (β/α/θ/δ), spot suppression and ictal patterns, and use the same scaffold for processed-EEG depth monitoring and post-arrest prognostication.",
+  annotations: [
+    { label: "Beta (β)", value: "13–30 Hz", description: "Awake, alert, eyes open. Also seen with benzodiazepine 'beta buzz' over the frontal leads." },
+    { label: "Alpha (α)", value: "8–13 Hz", description: "Posterior dominant rhythm with eyes closed. 'Alpha coma' (anteriorised, non-reactive) is a poor post-arrest sign." },
+    { label: "Theta (θ)", value: "4–8 Hz", description: "Drowsiness, light sleep, moderate sedation; appears under propofol / volatile MAC ~0.5." },
+    { label: "Delta (δ)", value: "0.5–4 Hz", description: "Deep sleep, deep anaesthesia, encephalopathy. Generalised δ in a non-sedated patient = worry." },
+    { label: "Burst-suppression", description: "Bursts of mixed activity separated by ≥1 s of suppression (<5 µV). Targeted in refractory status epilepticus and seen with deep anaesthesia, hypothermia, severe HIE." },
+    { label: "Generalised periodic discharges (GPDs)", description: "Stereotyped epileptiform discharges at fixed intervals. After cardiac arrest, GPDs at >2 Hz on a continuous background may be ictal — treat and reassess." },
+    { label: "Highly malignant patterns (post-arrest)", description: "Suppression (<10 µV all channels), burst-suppression with identical bursts, suppression + periodic discharges. ESICM/ERC class as 'highly malignant' — strong predictor of poor outcome at ≥24 h." },
+  ],
+  comparison: {
+    columns: [
+      { key: "rate", label: "Frequency / pattern" },
+      { key: "key", label: "Clinical context" },
+    ],
+    rows: [
+      { label: "β buzz", rate: "13–30 Hz, frontal", key: "Benzodiazepine effect; light sedation" },
+      { label: "α posterior dominant", rate: "8–13 Hz, occipital", key: "Awake, eyes closed" },
+      { label: "α coma", rate: "8–13 Hz, anterior, non-reactive", key: "Poor post-arrest sign", highlight: true },
+      { label: "θ slowing", rate: "4–8 Hz", key: "Light–moderate sedation, mild encephalopathy" },
+      { label: "δ slowing", rate: "0.5–4 Hz", key: "Deep anaesthesia or severe encephalopathy" },
+      { label: "Burst-suppression", rate: "Bursts + ≥1 s flat", key: "Deep anaesthesia, RSE target, severe HIE", highlight: true },
+      { label: "Status epilepticus", rate: "Continuous spike-wave / rhythmic >2.5 Hz", key: "Treat as seizure; load AED" },
+      { label: "Suppressed background", rate: "<10 µV all channels", key: "Highly malignant post-arrest" },
+    ],
+  },
+  pitfalls: [
+    { mistake: "Calling burst-suppression 'good news' post-arrest", reality: "Identical-burst burst-suppression at ≥24 h is highly malignant; only heterogeneous bursts on a continuous background are reactive.", tip: "Look at burst morphology and reactivity to stimulation before prognosticating." },
+    { mistake: "Diagnosing seizures from frontal EMG artefact on processed EEG", reality: "Shivering / frontalis EMG inflates BIS and SEF, mimicking arousal.", tip: "Look at the raw EEG / DSA, not just BIS number; use forehead muscle relaxation if shivering." },
+    { mistake: "Stopping sedation while paralysed", reality: "Awareness with NMB is catastrophic; BIS alone has poor sensitivity in TIVA.", tip: "Use processed EEG + clinical context (HR, lacrimation) and avoid prolonged paralysis without confirmed sedation depth." },
+    { mistake: "Prognosticating before 72 h off sedation", reality: "Sedatives, hypothermia and renal/hepatic impairment delay clearance and confound EEG.", tip: "ERC: multimodal prognostication ≥72 h post-ROSC after sedation washout." },
+  ],
+  vignettes: [
+    { scenario: "Day-1 post-VF arrest, TTM 36 °C, intubated on propofol + remifentanil. cEEG shows continuous, reactive δ–θ background with no epileptiform activity.", ecgFinding: "Continuous reactive background, no GPDs.", diagnosis: "Benign post-arrest pattern.", management: "Continue current TTM; defer prognostication to ≥72 h, multimodal." },
+    { scenario: "Day-2 post-arrest, off sedation 24 h. cEEG shows identical bursts every 6 s on a flat background, no reactivity.", ecgFinding: "Identical-burst burst-suppression, unreactive.", diagnosis: "Highly malignant pattern.", management: "Combine with NSE (>60 µg/L), bilaterally absent N20 SSEP, MRI DWI lesions; family discussion ≥72 h." },
+    { scenario: "Theatre case under TIVA, BIS 60 → 90 with HR up; surgeon says diathermy is on.", ecgFinding: "BIS spike with high SQI; raw EEG unchanged.", diagnosis: "Diathermy artefact.", management: "Confirm raw EEG, ignore BIS spike; do not bolus propofol on artefact alone." },
+  ],
+};
+
+export const postArrestProgContent: EcgExpandedContent = {
+  title: "Post-cardiac-arrest neuroprognostication timeline",
+  summary:
+    "ERC 2021 multimodal framework: combine clinical exam, EEG, SSEP, biomarkers and MRI from ≥72 h post-ROSC, after sedation washout and normothermia.",
+  annotations: [
+    { label: "0–24 h", description: "Stabilise (TTM, MAP, SpO₂, normocapnia). NO prognostication — too many confounders. Manage seizures aggressively." },
+    { label: "24–48 h", description: "NSE day 1 baseline. Rising trend over 48–72 h is more predictive than absolute value. cEEG to detect non-convulsive seizures." },
+    { label: "48–72 h", description: "Bilaterally absent pupillary + corneal reflexes off sedation, status myoclonus, NSE >60 µg/L at 48–72 h all carry FPR <5% for poor outcome (when combined)." },
+    { label: "≥72 h (multimodal)", description: "ERC algorithm: 2 of {bilaterally absent N20 SSEP, highly malignant EEG, diffuse MRI DWI lesions, NSE >60 at 48–72 h, status myoclonus, no pupil/corneal reflexes} — robust prediction of poor neurological outcome." },
+    { label: "Confounders to exclude first", description: "Sedation, NMB, hypothermia, severe metabolic derangement, hypotension, hepatic/renal failure — all delay or mimic poor exam findings." },
+  ],
+  comparison: {
+    columns: [
+      { key: "rate", label: "Earliest reliable timing" },
+      { key: "key", label: "Cut-off / interpretation" },
+    ],
+    rows: [
+      { label: "Pupillary + corneal reflexes", rate: "≥72 h, off sedation", key: "Bilaterally absent — strong predictor", highlight: true },
+      { label: "Status myoclonus", rate: "<48 h, persistent", key: "Combine with EEG (Lance–Adams reactive ≠ poor)" },
+      { label: "EEG (highly malignant)", rate: "≥24 h, ideally ≥72 h", key: "Suppression / identical burst-suppression / suppression + periodic discharges" },
+      { label: "SSEP N20", rate: "24–72 h", key: "Bilaterally absent N20 — robust predictor when no confounders", highlight: true },
+      { label: "NSE", rate: "48 + 72 h trend", key: ">60 µg/L at 48–72 h or rising trend (haemolysis falsely elevates)" },
+      { label: "MRI DWI", rate: "2–7 days", key: "Diffuse cortical + deep grey matter restriction" },
+    ],
+  },
+  pitfalls: [
+    { mistake: "Prognosticating at 24 h on clinical exam alone", reality: "Hypothermia + sedatives confound; FPR is unacceptable.", tip: "Wait ≥72 h, off sedation, normothermic." },
+    { mistake: "Using a single modality", reality: "Each test has FPR 0–10%; combining ≥2 brings FPR <1%.", tip: "Always multimodal; document every test before discussing withdrawal." },
+    { mistake: "Calling Lance–Adams 'status myoclonus'", reality: "Lance–Adams is post-anoxic action myoclonus with preserved consciousness — survivors recover function.", tip: "Status myoclonus = generalised, continuous, comatose patient; needs EEG to differentiate." },
+    { mistake: "Treating elevated NSE as definitive", reality: "Haemolysis (sample handling, ECMO), neuroendocrine tumours falsely elevate NSE.", tip: "Always trend over 48–72 h and combine with other modalities; reject haemolysed samples." },
+  ],
+  vignettes: [
+    { scenario: "OHCA, downtime 12 min, ROSC after 25 min CPR. Day 3 off sedation 48 h: GCS M1, absent pupil + corneal reflexes, NSE 95 → 120 µg/L, identical-burst BS on EEG, bilaterally absent N20.", ecgFinding: "≥4 unfavourable modalities concordant.", diagnosis: "Poor neurological outcome highly likely.", management: "MDT + family meeting; consider WLST and organ donation pathway." },
+    { scenario: "Day 3 post-arrest, TTM 36 °C complete. NSE 38 µg/L, EEG continuous reactive background, SSEP N20 present bilaterally, GCS M4 to pain.", ecgFinding: "All favourable modalities.", diagnosis: "Recovery possible — continue active care.", management: "Wean sedation, daily SAT/SBT, intensive neuro-rehab planning." },
+  ],
+};
