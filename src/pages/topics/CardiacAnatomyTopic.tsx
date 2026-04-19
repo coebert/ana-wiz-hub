@@ -12,6 +12,7 @@ import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDia
 import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
 import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
 import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
+import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
 import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
