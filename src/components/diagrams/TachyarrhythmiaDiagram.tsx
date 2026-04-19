@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 
@@ -398,99 +398,183 @@ const drawBeat = (cx: number, baseline: number, opts: { p?: boolean; qrs?: boole
   return d;
 };
 
-const RhythmStrip = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
+type StripMode = "baseline" | "adenosine";
+
+const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; color: string; mode?: StripMode }) => {
   const W = 360;
   const H = 70;
   const baseline = 42;
-  const uid = tachy.shortLabel;
+  const uid = `${tachy.shortLabel}-${mode}`;
 
   let beats: Beat[] = [];
   let custom: React.ReactNode = null;
 
-  switch (tachy.focus) {
-    case "sa-fast":
-      // Sinus tach — every P → narrow QRS, regular, fast
-      beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 10 }));
-      break;
+  if (mode === "adenosine") {
+    // Predicted post-adenosine response
+    switch (tachy.focus) {
+      case "av-reentry":
+      case "accessory":
+        // AVNRT / orthodromic AVRT — abrupt termination → sinus rhythm with normal P-QRS-T
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 12 }));
+        custom = (
+          <line x1="20" y1="6" x2="20" y2={H - 6} stroke={color} strokeWidth="1.2" strokeDasharray="3 2" opacity="0.7" />
+        );
+        break;
 
-    case "atrial-chaos":
-      // AF — irregularly irregular narrow QRS, no P, fibrillatory baseline
-      beats = [
-        { cx: 35, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 95, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 138, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 215, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 260, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 322, qrs: true, t: true, p: false, pr: 0 },
-      ];
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1)) * 1.2}`).join(" ")}`}
-          fill="none" stroke={color} strokeWidth="0.8" opacity="0.55"
-        />
-      );
-      break;
+      case "atrial-chaos":
+        // AF — AV block transiently slows ventricle → fibrillatory baseline exposed (~5s window)
+        beats = [
+          { cx: 35, qrs: true, t: true, p: false, pr: 0 },
+          // long gap with chaotic baseline ...
+          { cx: 320, qrs: true, t: true, p: false, pr: 0 },
+        ];
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1) + Math.sin(i * 3.4)) * 2.5}`).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1" opacity="0.85"
+          />
+        );
+        break;
 
-    case "atrial-circuit":
-      // Flutter — sawtooth baseline + 2:1 narrow QRS (every other flutter wave conducts)
-      beats = [40, 130, 220, 310].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
-            const x = i * 10;
-            const y = baseline + (i % 2 === 0 ? -5 : 4);
-            return `L ${x} ${y}`;
-          }).join(" ")}`}
-          fill="none" stroke={color} strokeWidth="1" opacity="0.7"
-        />
-      );
-      break;
+      case "atrial-circuit":
+        // Flutter — AV block exposes the sawtooth at ~300/min (no QRS during pause)
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
+              const x = i * 10;
+              const y = baseline + (i % 2 === 0 ? -8 : 6);
+              return `L ${x} ${y}`;
+            }).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1.4" opacity="0.95"
+          />
+        );
+        break;
 
-    case "av-reentry":
-      // AVNRT — very fast regular narrow QRS, no obvious P
-      beats = [30, 65, 100, 135, 170, 205, 240, 275, 310, 345].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
-      break;
+      case "sa-fast":
+        // Sinus tach — transient slowing then returns (wider P-P intervals)
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 12 }));
+        break;
 
-    case "accessory":
-      // AVRT (orthodromic) — fast regular narrow QRS with retrograde (inverted) P after each QRS
-      beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({
-        cx, qrs: true, t: true, p: true, invertedP: true, pr: -16,
-      }));
-      break;
+      case "ventricular":
+      case "v-chaos":
+        // VT / VF — no effect; replicate baseline appearance
+        if (tachy.focus === "ventricular") {
+          beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
+        } else {
+          custom = (
+            <path
+              d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+                const x = i * 2;
+                const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
+                return `L ${x} ${baseline + noise}`;
+              }).join(" ")}`}
+              fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+            />
+          );
+        }
+        break;
 
-    case "ventricular":
-      // Monomorphic VT — wide regular QRS
-      beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
-      break;
+      case "torsade":
+        // Contraindicated — show the baseline twisting envelope; the warning lives on the button
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const envelope = Math.sin(i * 0.08) * 18;
+              const wave = Math.sin(i * 0.85) * envelope;
+              return `L ${x} ${baseline + wave}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+          />
+        );
+        break;
+    }
+  } else {
+    switch (tachy.focus) {
+      case "sa-fast":
+        // Sinus tach — every P → narrow QRS, regular, fast
+        beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 10 }));
+        break;
 
-    case "v-chaos":
-      // VF — chaotic squiggle, no organised beats
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
-            const x = i * 2;
-            const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
-            return `L ${x} ${baseline + noise}`;
-          }).join(" ")}`}
-          fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
-        />
-      );
-      break;
+      case "atrial-chaos":
+        // AF — irregularly irregular narrow QRS, no P, fibrillatory baseline
+        beats = [
+          { cx: 35, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 95, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 138, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 215, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 260, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 322, qrs: true, t: true, p: false, pr: 0 },
+        ];
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1)) * 1.2}`).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="0.8" opacity="0.55"
+          />
+        );
+        break;
 
-    case "torsade":
-      // Torsades — sinusoidal envelope where amplitude waxes and wanes (twisting axis)
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
-            const x = i * 2;
-            const envelope = Math.sin(i * 0.08) * 18;
-            const wave = Math.sin(i * 0.85) * envelope;
-            return `L ${x} ${baseline + wave}`;
-          }).join(" ")}`}
-          fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
-        />
-      );
-      break;
+      case "atrial-circuit":
+        // Flutter — sawtooth baseline + 2:1 narrow QRS
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
+              const x = i * 10;
+              const y = baseline + (i % 2 === 0 ? -5 : 4);
+              return `L ${x} ${y}`;
+            }).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1" opacity="0.7"
+          />
+        );
+        break;
+
+      case "av-reentry":
+        // AVNRT — very fast regular narrow QRS, no obvious P
+        beats = [30, 65, 100, 135, 170, 205, 240, 275, 310, 345].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
+        break;
+
+      case "accessory":
+        // AVRT (orthodromic) — fast regular narrow QRS with retrograde P after each QRS
+        beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({
+          cx, qrs: true, t: true, p: true, invertedP: true, pr: -16,
+        }));
+        break;
+
+      case "ventricular":
+        // Monomorphic VT — wide regular QRS
+        beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
+        break;
+
+      case "v-chaos":
+        // VF — chaotic squiggle
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
+              return `L ${x} ${baseline + noise}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+          />
+        );
+        break;
+
+      case "torsade":
+        // Torsades — sinusoidal envelope (twisting axis)
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const envelope = Math.sin(i * 0.08) * 18;
+              const wave = Math.sin(i * 0.85) * envelope;
+              return `L ${x} ${baseline + wave}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+          />
+        );
+        break;
+    }
   }
 
   return (
@@ -550,6 +634,104 @@ const AdenosineRow = ({ info, compact = false }: { info: AdenosineInfo; compact?
           <p className="text-[10px] text-muted-foreground mt-0.5">{info.detail}</p>
         )}
       </div>
+    </div>
+  );
+};
+
+/* ───────────── Adenosine simulator (interactive) ───────────── */
+
+const AdenosineSimulator = ({ info }: { info: TachyInfo }) => {
+  const [active, setActive] = useState(false);
+  const [remaining, setRemaining] = useState(0);
+  const timerRef = useRef<number | null>(null);
+  const tickRef = useRef<number | null>(null);
+  const isDanger = info.adenosine.response === "danger";
+  const style = ADENOSINE_STYLE[info.adenosine.response];
+
+  // Reset when the user switches arrhythmia
+  useEffect(() => {
+    setActive(false);
+    setRemaining(0);
+    if (timerRef.current) window.clearTimeout(timerRef.current);
+    if (tickRef.current) window.clearInterval(tickRef.current);
+  }, [info.label]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current);
+      if (tickRef.current) window.clearInterval(tickRef.current);
+    };
+  }, []);
+
+  const give = () => {
+    if (active || isDanger) return;
+    const total = 5;
+    setActive(true);
+    setRemaining(total);
+    tickRef.current = window.setInterval(() => {
+      setRemaining((r) => Math.max(0, r - 1));
+    }, 1000);
+    timerRef.current = window.setTimeout(() => {
+      setActive(false);
+      setRemaining(0);
+      if (tickRef.current) window.clearInterval(tickRef.current);
+    }, total * 1000);
+  };
+
+  return (
+    <div
+      className="mt-2 p-2.5 rounded-md border space-y-2"
+      style={{
+        borderColor: withAlpha(style.color, 0.35),
+        backgroundColor: withAlpha(style.color, 0.05),
+      }}
+    >
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <p className="text-[11px] font-semibold text-foreground flex items-center gap-1.5">
+          <span aria-hidden>💉</span> Interactive: simulate adenosine 6 mg IV bolus
+        </p>
+        <button
+          type="button"
+          onClick={give}
+          disabled={active || isDanger}
+          className="text-[11px] font-medium px-3 py-1 rounded transition-all disabled:opacity-60 disabled:cursor-not-allowed hover:scale-105"
+          style={{
+            backgroundColor: isDanger ? "hsl(var(--muted))" : style.color,
+            color: isDanger ? "hsl(var(--muted-foreground))" : "white",
+          }}
+          aria-label={isDanger ? "Adenosine contraindicated" : active ? `Adenosine effect — ${remaining} seconds remaining` : "Give adenosine"}
+        >
+          {isDanger ? "⚠ Contraindicated" : active ? `Effect · ${remaining}s` : "Give adenosine"}
+        </button>
+      </div>
+
+      {active && !isDanger && (
+        <div className="animate-fade-in space-y-1">
+          <div className="flex items-center justify-between text-[10px]">
+            <span className="font-semibold" style={{ color: style.color }}>
+              Post-adenosine — {info.adenosine.label}
+            </span>
+            <span className="text-muted-foreground">~5 s window</span>
+          </div>
+          <RhythmStrip tachy={info} color={info.color} mode="adenosine" />
+          <p className="text-[10px] text-muted-foreground italic leading-snug">{info.adenosine.detail}</p>
+          <div className="h-1 w-full bg-muted rounded overflow-hidden">
+            <div
+              className="h-full transition-all duration-1000 ease-linear"
+              style={{
+                width: `${(remaining / 5) * 100}%`,
+                backgroundColor: style.color,
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {isDanger && (
+        <p className="text-[10.5px] leading-snug" style={{ color: style.color }}>
+          Adenosine not given — risk of bradycardia-induced QT prolongation worsening torsades. Treat with magnesium and rate support instead.
+        </p>
+      )}
     </div>
   );
 };
@@ -690,6 +872,7 @@ const TachyarrhythmiaDiagram = () => {
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
             </p>
+            <AdenosineSimulator info={info} />
             <AdenosineRow info={info.adenosine} />
           </div>
         </div>
