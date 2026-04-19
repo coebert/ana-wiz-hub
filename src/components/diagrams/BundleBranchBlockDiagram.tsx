@@ -120,7 +120,7 @@ const ORDER: BlockKey[] = ["rbbb", "lbbb", "lafb", "lpfb", "bifasc", "trifasc"];
 
 /* ───────────── Mini conduction tree ───────────── */
 
-const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
+const TreeMini = ({ block, color, hero = false }: { block: BlockInfo; color: string; hero?: boolean }) => {
   const dim = "hsl(var(--muted-foreground))";
   const ok = "hsl(var(--foreground))";
 
@@ -133,8 +133,14 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
   // Unique ID for this card's gradient defs
   const uid = block.shortLabel;
 
+  // Hero variant fills its container at all breakpoints — used in the
+  // selected/expanded card so the conduction tree inside the Expand &
+  // Learn modal mirrors the inline mobile hero look. Compact variant
+  // caps at 200px on ≥sm for the multi-card overview grid.
+  const sizeClass = hero ? "w-full max-w-none" : "w-full max-w-none sm:max-w-[200px]";
+
   return (
-    <svg viewBox="0 0 180 200" className="w-full max-w-none sm:max-w-[200px] mx-auto" role="img" aria-label={`Conduction tree showing ${block.label}`}>
+    <svg viewBox="0 0 180 200" className={`${sizeClass} mx-auto`} role="img" aria-label={`Conduction tree showing ${block.label}`}>
       <defs>
         <radialGradient id={`bbb-bg-${uid}`} cx="50%" cy="40%" r="65%">
           <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
@@ -404,8 +410,8 @@ const BundleBranchBlockDiagram = () => {
         ) : (
           <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
             <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
-              <TreeMini block={info} color={info.color} />
+            <div className="flex flex-col gap-3">
+              <TreeMini block={info} color={info.color} hero />
               <div className="min-w-0 space-y-1.5">
                 <div className="flex gap-2">
                   <Waveform label="V1" kind={info.v1} color={info.color} wide={info.qrsWide} />
