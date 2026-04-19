@@ -24,6 +24,14 @@ type FocusKind =
   | "v-chaos"          // VF — disorganised ventricular activity
   | "torsade";         // Torsades — twisting axis on long QT
 
+type AdenosineResponse = "terminate" | "unmask" | "slow" | "no-effect" | "danger";
+
+interface AdenosineInfo {
+  response: AdenosineResponse;
+  label: string;
+  detail: string;
+}
+
 interface TachyInfo {
   label: string;
   shortLabel: string;
@@ -35,7 +43,16 @@ interface TachyInfo {
   ecg: string;
   pathophysiology: string;
   management: string;
+  adenosine: AdenosineInfo;
 }
+
+const ADENOSINE_STYLE: Record<AdenosineResponse, { color: string; icon: string }> = {
+  terminate: { color: "hsl(140, 60%, 40%)", icon: "✓" },
+  unmask: { color: "hsl(35, 85%, 45%)", icon: "👁" },
+  slow: { color: "hsl(210, 70%, 50%)", icon: "↓" },
+  "no-effect": { color: "hsl(0, 0%, 50%)", icon: "—" },
+  danger: { color: "hsl(0, 75%, 50%)", icon: "⚠" },
+};
 
 const TACHYS: Record<TachyKey, TachyInfo> = {
   sinus: {
@@ -49,6 +66,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Normal P before every QRS, regular, narrow QRS. P morphology unchanged.",
     pathophysiology: "Physiological — pain, fever, hypovolaemia, hypoxia, anxiety, β-agonists, hyperthyroidism. Almost always secondary.",
     management: "Treat the cause. Avoid β-blockade until volume / oxygen / sepsis addressed.",
+    adenosine: { response: "slow", label: "Transient slowing", detail: "Brief, gradual slowing then resumes — confirms sinus origin and rules out re-entrant SVT." },
   },
   af: {
     label: "Atrial fibrillation",
@@ -61,6 +79,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "No P waves, irregularly irregular narrow QRS, fibrillatory baseline.",
     pathophysiology: "Multiple re-entrant wavelets in atria; pulmonary vein triggers. AV node filters → variable ventricular rate.",
     management: "Rate (β-blocker, CCB, digoxin) vs rhythm (DCCV, amiodarone, ablation). Anticoagulate per CHA₂DS₂-VASc.",
+    adenosine: { response: "unmask", label: "Unmasks fibrillatory baseline", detail: "Transient AV block slows ventricular response → reveals chaotic atrial activity. Diagnostic but not therapeutic." },
   },
   flutter: {
     label: "Atrial flutter",
@@ -73,6 +92,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Sawtooth flutter waves (best in II, III, aVF). Regular ventricular response (2:1, 3:1, 4:1).",
     pathophysiology: "Macro re-entry in right atrium around tricuspid annulus, through cavo-tricuspid isthmus (CTI).",
     management: "DCCV, ablation of CTI (highly curative). Rate control as for AF; anticoagulate as for AF.",
+    adenosine: { response: "unmask", label: "Unmasks sawtooth waves", detail: "Brief AV block exposes flutter waves at ~300/min — diagnostic. Will not terminate macro-re-entry." },
   },
   avnrt: {
     label: "AVNRT",
@@ -85,6 +105,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Regular narrow-complex tachycardia. P often buried in QRS or just after (pseudo-R' in V1, pseudo-S in II/III/aVF).",
     pathophysiology: "Re-entry within / around AV node using slow (α) and fast (β) pathways — typical (slow-fast) is most common.",
     management: "Vagal manoeuvres → adenosine 6 mg → 12 mg. DCCV if unstable. Long-term: β-blocker, slow-pathway ablation.",
+    adenosine: { response: "terminate", label: "Terminates abruptly", detail: "Blocks AV node → breaks the re-entry circuit. Diagnostic AND therapeutic — sudden return to sinus." },
   },
   avrt: {
     label: "AVRT (WPW-related)",
@@ -97,6 +118,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Orthodromic (90%): narrow QRS, retrograde P after QRS. Antidromic (10%): wide bizarre QRS. Sinus rhythm shows delta wave + short PR.",
     pathophysiology: "Macro re-entry between atria & ventricles via accessory pathway (Bundle of Kent) + AV node.",
     management: "Stable orthodromic: vagal → adenosine. Pre-excited AF: AVOID adenosine/CCB/digoxin → DCCV or procainamide. Definitive: pathway ablation.",
+    adenosine: { response: "terminate", label: "Terminates orthodromic AVRT", detail: "Breaks circuit at AV node. ⚠ DANGEROUS in pre-excited AF — accelerates conduction down accessory pathway → VF." },
   },
   vt: {
     label: "Ventricular tachycardia (monomorphic)",
@@ -109,6 +131,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Wide regular QRS > 120 ms, AV dissociation, capture/fusion beats. Concordance in chest leads.",
     pathophysiology: "Re-entry around scar (post-MI) most common; also idiopathic outflow-tract VT. Dangerous — may degenerate to VF.",
     management: "Pulseless: defibrillate (shockable algorithm). Stable: amiodarone 300 mg. Unstable: synchronised DCCV. Long-term: ICD ± ablation.",
+    adenosine: { response: "no-effect", label: "No effect (usually)", detail: "Circuit lies below AV node — adenosine cannot interrupt it. Rare exception: idiopathic fascicular / RVOT VT may terminate." },
   },
   vf: {
     label: "Ventricular fibrillation",
@@ -121,6 +144,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "No discernible P, QRS or T. Coarse → fine VF over time.",
     pathophysiology: "Multiple disordered ventricular wavelets. No cardiac output. Most common rhythm in sudden cardiac arrest.",
     management: "Immediate defibrillation + CPR (shockable algorithm). Adrenaline 1 mg every 3–5 min, amiodarone 300 mg after 3rd shock.",
+    adenosine: { response: "no-effect", label: "Not indicated — defibrillate", detail: "Cardiac arrest rhythm. Adenosine has no role; immediate unsynchronised defibrillation." },
   },
   torsades: {
     label: "Torsades de pointes",
@@ -133,6 +157,7 @@ const TACHYS: Record<TachyKey, TachyInfo> = {
     ecg: "Polymorphic VT with QRS axis 'twisting' around baseline. Preceded by long QT.",
     pathophysiology: "Triggered activity (early afterdepolarisations) on prolonged QT — congenital LQTS or acquired (drugs, ↓K⁺, ↓Mg²⁺, ↓Ca²⁺, bradycardia).",
     management: "IV magnesium 2 g (even if normal Mg). Stop offending drug, correct K⁺. Overdrive pacing or isoprenaline if bradycardia-dependent. Defib if pulseless.",
+    adenosine: { response: "danger", label: "Avoid — may worsen", detail: "Resulting bradycardia prolongs QT further → more torsades. Treat with magnesium and rate support, not adenosine." },
   },
 };
 
@@ -498,7 +523,39 @@ const RhythmStrip = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
   );
 };
 
+/* ───────────── Adenosine response row ───────────── */
+
+const AdenosineRow = ({ info, compact = false }: { info: AdenosineInfo; compact?: boolean }) => {
+  const style = ADENOSINE_STYLE[info.response];
+  return (
+    <div
+      className="flex items-start gap-2 mt-1.5 p-1.5 rounded-md border"
+      style={{
+        borderColor: withAlpha(style.color, 0.4),
+        backgroundColor: withAlpha(style.color, 0.08),
+      }}
+    >
+      <span
+        className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+        style={{ backgroundColor: style.color, color: "white" }}
+        aria-hidden
+      >
+        {style.icon}
+      </span>
+      <div className="min-w-0 leading-tight">
+        <p className="text-[10px] font-semibold" style={{ color: style.color }}>
+          Adenosine: {info.label}
+        </p>
+        {!compact && (
+          <p className="text-[10px] text-muted-foreground mt-0.5">{info.detail}</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 /* ───────────── Main component ───────────── */
+
 
 const TachyarrhythmiaDiagram = () => {
   const [selected, setSelected] = useState<TachyKey>("sinus");
@@ -582,6 +639,7 @@ const TachyarrhythmiaDiagram = () => {
                       {showLabels && (
                         <p className="text-[10px] text-muted-foreground mt-1.5 italic leading-snug">{t.ecg}</p>
                       )}
+                      <AdenosineRow info={t.adenosine} compact />
                     </div>
                   </div>
                 </button>
@@ -599,6 +657,7 @@ const TachyarrhythmiaDiagram = () => {
                 </p>
                 <RhythmStrip tachy={info} color={info.color} />
                 <p className="text-[10px] text-muted-foreground mt-1.5 italic">{info.ecg}</p>
+                <AdenosineRow info={info.adenosine} compact />
               </div>
             </div>
           </div>
@@ -631,6 +690,7 @@ const TachyarrhythmiaDiagram = () => {
             <p className="text-xs text-muted-foreground">
               <span className="font-medium text-foreground">Management:</span> {info.management}
             </p>
+            <AdenosineRow info={info.adenosine} />
           </div>
         </div>
       </div>
