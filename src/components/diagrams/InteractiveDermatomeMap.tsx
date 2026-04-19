@@ -99,6 +99,8 @@ const REGION_COLOR: Record<Dermatome["region"], string> = {
 
 const InteractiveDermatomeMap = () => {
   const [selected, setSelected] = useState<string | null>("T10");
+  const [showLabels, setShowLabels] = useState(true);
+  const [showPosterior, setShowPosterior] = useState(true);
 
   const sel = DERMATOMES.find((d) => d.level === selected) ?? null;
 
