@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type LevelKey = "roots" | "trunks" | "divisions" | "cords" | "branches";
 
@@ -154,33 +155,17 @@ const BrachialPlexusDiagram = () => {
   const activeBlock = blockSites.find(b => b.id === selectedBlock);
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6 space-y-4">
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground">Interactive Brachial Plexus</h3>
-          <p className="text-xs text-muted-foreground">Tap any element for details. Tap level labels for block approaches.</p>
-        </div>
-        <div className="flex gap-2 flex-wrap">
-          <button
-            onClick={() => setShowBlockSites(!showBlockSites)}
-            className={`px-2 py-1 rounded text-xs font-medium transition-all ${showBlockSites ? "bg-primary/20 text-primary border border-primary/40" : "bg-secondary text-muted-foreground border border-border"}`}
-          >
-            🎯 Block Sites
-          </button>
-          <button
-            onClick={() => setShowAnnotations(!showAnnotations)}
-            className={`px-2 py-1 rounded text-xs font-medium transition-all ${showAnnotations ? "bg-primary/20 text-primary border border-primary/40" : "bg-secondary text-muted-foreground border border-border"}`}
-          >
-            Branches
-          </button>
-          <button
-            onClick={() => setShowDermatomes(!showDermatomes)}
-            className={`px-2 py-1 rounded text-xs font-medium transition-all ${showDermatomes ? "bg-primary/20 text-primary border border-primary/40" : "bg-secondary text-muted-foreground border border-border"}`}
-          >
-            Dermatomes
-          </button>
-        </div>
-      </div>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4 space-y-4">
+        <DiagramToggleBar
+          title="Interactive brachial plexus"
+          subtitle="Tap any element for details. Tap level labels for block approaches."
+          toggles={[
+            { label: "Block sites", active: showBlockSites, onChange: () => setShowBlockSites(!showBlockSites) },
+            { label: "Branches", active: showAnnotations, onChange: () => setShowAnnotations(!showAnnotations) },
+            { label: "Dermatomes", active: showDermatomes, onChange: () => setShowDermatomes(!showDermatomes) },
+          ]}
+        />
 
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex-1">
@@ -537,15 +522,19 @@ const BrachialPlexusDiagram = () => {
 
       {/* Plexus element detail card */}
       {activeEl && !activeBlock && (
-        <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: activeEl.color }} />
-            <p className="font-bold text-sm" style={{ color: activeEl.color }}>{activeEl.label}</p>
+        <div
+          className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+          style={{ borderLeftWidth: 4, borderLeftColor: activeEl.color }}
+          key={selected}
+        >
+          <div className="flex items-center gap-2">
+            <p className="font-semibold text-foreground text-sm">{activeEl.label}</p>
             <span className="text-[10px] text-muted-foreground uppercase tracking-wide ml-auto">{levelInfo[activeEl.level].label}</span>
           </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">{activeEl.detail}</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">{activeEl.detail}</p>
         </div>
       )}
+      </div>
     </div>
   );
 };
