@@ -47,6 +47,8 @@ const branchKeys: BranchKey[] = ["superficial", "deep", "phrenic", "ansa"];
 
 const CervicalPlexusDiagram = () => {
   const [selected, setSelected] = useState<BranchKey>("superficial");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = branches[selected];
 
   // Spine x positions
@@ -57,8 +59,14 @@ const CervicalPlexusDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Cervical Plexus (C1–C4)</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a branch to see roots, anatomy, and clinical relevance</p>
+      <DiagramToggleBar
+        title="Cervical Plexus (C1–C4)"
+        subtitle="Tap a branch to see roots, anatomy, and clinical relevance"
+        toggles={[
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+        ]}
+      />
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
