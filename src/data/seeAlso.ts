@@ -63,7 +63,7 @@ export const seeAlsoMap: Record<string, string[]> = {
 
   // ── Anatomy ──
   
-  "cardiac-anatomy": ["cardiac-cycle", "cardiac-electrophysiology", "cardiothoracic", "thoracic-anatomy"],
+  "cardiac-anatomy": ["cardiac-cycle", "cardiac-electrophysiology", "cardiothoracic", "thoracic-anatomy", "arrhythmias-ecg-icu"],
   "spinal-anatomy": ["regional-anaesthesia", "neuroanatomy", "spinal-cord-injury"],
   "brachial-plexus": ["regional-anaesthesia", "lower-limb-anatomy", "upper-limb-anatomy"],
   "upper-limb-anatomy": ["regional-anaesthesia", "lower-limb-anatomy", "head-neck-anatomy", "thoracic-anatomy"],
