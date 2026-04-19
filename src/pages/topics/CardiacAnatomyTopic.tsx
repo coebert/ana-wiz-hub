@@ -11,6 +11,7 @@ import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDia
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
+import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 
 const tocItems = [
   { id: "chambers-valves", label: "Chambers & Valves", group: "Structure" },
@@ -62,9 +63,11 @@ const CardiacAnatomyTopic = () => {
           </div>
 
           <div className="mt-4">
-            <CoronaryTerritoryMapDiagram />
-            <CoronaryTreeDiagram />
-            <LVBullseyeDiagram />
+            <CoronarySelectionProvider initial="anterior">
+              <CoronaryTerritoryMapDiagram />
+              <CoronaryTreeDiagram />
+              <LVBullseyeDiagram />
+            </CoronarySelectionProvider>
           </div>
         </div>
 
