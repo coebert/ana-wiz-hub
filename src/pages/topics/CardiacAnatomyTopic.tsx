@@ -11,6 +11,7 @@ import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
 import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
 import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
+import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
