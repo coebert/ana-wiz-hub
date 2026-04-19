@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { PlexusDetailPanel } from "./plexusShared";
 
 type LevelKey = "roots" | "trunks" | "divisions" | "cords" | "branches";
 
@@ -522,17 +523,13 @@ const BrachialPlexusDiagram = () => {
 
       {/* Plexus element detail card */}
       {activeEl && !activeBlock && (
-        <div
-          className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-          style={{ borderLeftWidth: 4, borderLeftColor: activeEl.color }}
-          key={selected}
-        >
-          <div className="flex items-center gap-2">
-            <p className="font-semibold text-foreground text-sm">{activeEl.label}</p>
-            <span className="text-[10px] text-muted-foreground uppercase tracking-wide ml-auto">{levelInfo[activeEl.level].label}</span>
-          </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">{activeEl.detail}</p>
-        </div>
+        <PlexusDetailPanel
+          reactKey={selected}
+          title={activeEl.label}
+          region={levelInfo[activeEl.level].label}
+          accent={activeEl.color}
+          fields={[{ label: "Detail", value: activeEl.detail }]}
+        />
       )}
       </div>
     </div>

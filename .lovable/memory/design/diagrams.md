@@ -1,6 +1,6 @@
 ---
 name: Anatomy diagram style
-description: Required visual + interaction conventions for every anatomy diagram (DiagramToggleBar, gradients, patterns, palette, detail panel)
+description: Required visual + interaction conventions for every anatomy diagram (DiagramToggleBar, gradients, patterns, palette, detail panel, plexus shared module)
 type: design
 ---
 
@@ -16,4 +16,10 @@ Non-negotiable rules:
 - Labels gated by `showLabels`, sutures/fibres/reference lines gated by `showSutures`. Selected element brightens BOTH itself and the partner of any paired structure.
 - `role="img"` + descriptive `aria-label` on every `<svg>`.
 
-Reference implementations: `SkullBaseDiagram.tsx`, `OrbitBonyAnatomyDiagram.tsx`, `LaryngealNervesDiagram.tsx`, `NeckTrianglesDiagram.tsx`, `LaryngealCrossSectionDiagram.tsx`.
+Plexus diagrams (cervical, brachial, lumbosacral) use shared primitives from `src/components/diagrams/plexusShared.tsx`:
+- `<PlexusCard>` — standard outer shell.
+- `<PlexusDetailPanel>` — standard left-border detail card with title/roots/region badge/typed fields. Always use this instead of hand-rolling a panel.
+- `<PlexusChipRow<K>>` — standard pill chip row of selectable nerves below the panel. Pass an explicit generic `<K>` to satisfy the setState type.
+- Layout: spinal column LEFT, branches fanning RIGHT.
+
+Reference implementations: `SkullBaseDiagram.tsx`, `OrbitBonyAnatomyDiagram.tsx`, `LaryngealNervesDiagram.tsx`, `NeckTrianglesDiagram.tsx`, `LaryngealCrossSectionDiagram.tsx`, `LumbosacralPlexusDiagram.tsx` (canonical plexus example).

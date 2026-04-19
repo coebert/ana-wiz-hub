@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
-import { withAlpha } from "@/lib/color-utils";
+import { PlexusChipRow, PlexusDetailPanel } from "./plexusShared";
 
 type NerveKey = "femoral" | "obturator" | "lcnt" | "sciatic" | "tibial" | "peroneal" | "pudendal";
 
@@ -311,42 +311,32 @@ const LumbosacralPlexusDiagram = () => {
         </div>
 
         <div className="flex-1 min-w-0 space-y-3">
-          <div
-            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-            style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
-            key={selected}
-          >
-            <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <p className="font-semibold text-foreground text-sm">{info.label}</p>
-              <span className="text-xs text-muted-foreground">({info.roots})</span>
-              <span
-                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md ml-auto"
-                style={{ background: withAlpha(info.color, 0.15), color: info.color }}
-              >
-                {info.plexus === "lumbar" ? "Lumbar" : "Sacral"}
-              </span>
-            </div>
-            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Motor:</span> {info.motor}</p>
-            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Sensory:</span> {info.sensory}</p>
-            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Block:</span> {info.block}</p>
-            <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {info.clinical}</p>
-          </div>
+          <PlexusDetailPanel
+            reactKey={selected}
+            title={info.label}
+            roots={info.roots}
+            region={info.plexus === "lumbar" ? "Lumbar" : "Sacral"}
+            accent={info.color}
+            fields={[
+              { label: "Motor", value: info.motor },
+              { label: "Sensory", value: info.sensory },
+              { label: "Block", value: info.block },
+              { label: "Clinical", value: info.clinical },
+            ]}
+          />
 
-          <div className="flex flex-wrap gap-1">
-            {nerveKeys.map(key => (
-              <button
-                key={key}
-                onClick={() => setSelected(key)}
-                className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
-                  selected === key ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
-                }`}
-                style={selected === key ? { borderColor: nerves[key].color, backgroundColor: withAlpha(nerves[key].color, 0.09) } : {}}
-              >
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: nerves[key].color, opacity: 0.7 }} />
-                {nerves[key].label.replace("Nerve", "n.").replace("Lateral Cutaneous n. of Thigh", "LCNT").replace("Common Peroneal (Fibular) n.", "C. Peroneal")}
-              </button>
-            ))}
-          </div>
+          <PlexusChipRow<NerveKey>
+            selected={selected}
+            onSelect={setSelected}
+            items={nerveKeys.map((k) => ({
+              key: k,
+              color: nerves[k].color,
+              label: nerves[k].label
+                .replace("Nerve", "n.")
+                .replace("Lateral Cutaneous n. of Thigh", "LCNT")
+                .replace("Common Peroneal (Fibular) n.", "C. Peroneal"),
+            }))}
+          />
         </div>
       </div>
       </div>
