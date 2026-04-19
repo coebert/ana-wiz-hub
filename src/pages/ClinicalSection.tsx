@@ -40,6 +40,35 @@ const ClinicalSection = () => {
             examTags={topic.examTags}
           />
         ))}
+
+        {/* Cross-listed: lives in Physics but clinically relevant */}
+        <div className="pt-4">
+          <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-2">
+            Related — cross-listed from other sections
+          </p>
+          <Link
+            to="/physics/depth-of-anaesthesia"
+            className="topic-card section-card-clinical block group border-dashed"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    Depth of Anaesthesia Monitoring
+                  </h3>
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium border bg-physics/10 text-physics border-physics/20">
+                    <ExternalLink className="h-2.5 w-2.5" />
+                    Lives in Physics
+                  </span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">
+                  BIS, Entropy, Narcotrend — processed EEG, suppression ratio, SEF, and clinical evidence
+                </p>
+              </div>
+              <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+            </div>
+          </Link>
+        </div>
       </div>
     </SectionLayout>
   );
