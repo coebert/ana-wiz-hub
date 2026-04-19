@@ -164,6 +164,8 @@ const intrinsicMuscles = [
 
 const LaryngealCrossSectionDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("cricothyroid-membrane");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = structures[selected];
 
   const click = (key: StructureKey) => () => setSelected(key);
@@ -173,8 +175,26 @@ const LaryngealCrossSectionDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Laryngeal Anatomy — Sagittal Cross-Section</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap any structure to see its anatomy and anaesthetic relevance</p>
+      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+        <div>
+          <h3 className="text-lg font-serif font-bold text-foreground">Laryngeal Anatomy — Sagittal Cross-Section</h3>
+          <p className="text-xs text-muted-foreground">Tap any structure to see its anatomy and anaesthetic relevance</p>
+        </div>
+        <div className="flex gap-1.5 text-xs">
+          <button
+            onClick={() => setShowSutures(v => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Detail {showSutures ? "✓" : "○"}
+          </button>
+          <button
+            onClick={() => setShowLabels(v => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Labels {showLabels ? "✓" : "○"}
+          </button>
+        </div>
+      </div>
 
       <Tabs defaultValue="sagittal">
         <TabsList className="grid w-full grid-cols-3 mb-3">
@@ -187,15 +207,48 @@ const LaryngealCrossSectionDiagram = () => {
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <div className="flex-shrink-0 mx-auto">
               <svg viewBox="0 0 280 340" width="280" height="340" className="border border-border rounded">
-                {/* Background: pharyngeal/airway lumen */}
+                <defs>
+                  <radialGradient id="lcx-airwayGrad" cx="50%" cy="40%" r="60%">
+                    <stop offset="0%" stopColor="hsl(200, 35%, 96%)" />
+                    <stop offset="100%" stopColor="hsl(200, 25%, 78%)" />
+                  </radialGradient>
+                  <radialGradient id="lcx-cartGrad" cx="50%" cy="35%" r="65%">
+                    <stop offset="0%" stopColor="hsl(210, 55%, 70%)" />
+                    <stop offset="100%" stopColor="hsl(210, 50%, 38%)" />
+                  </radialGradient>
+                  <radialGradient id="lcx-cricoidGrad" cx="50%" cy="35%" r="65%">
+                    <stop offset="0%" stopColor="hsl(220, 60%, 65%)" />
+                    <stop offset="100%" stopColor="hsl(220, 55%, 35%)" />
+                  </radialGradient>
+                  <radialGradient id="lcx-hyoidGrad" cx="50%" cy="35%" r="65%">
+                    <stop offset="0%" stopColor="hsl(30, 65%, 70%)" />
+                    <stop offset="100%" stopColor="hsl(30, 55%, 40%)" />
+                  </radialGradient>
+                  <pattern id="lcx-grain" patternUnits="userSpaceOnUse" width="5" height="5">
+                    <rect width="5" height="5" fill="transparent" />
+                    <circle cx="1" cy="1" r="0.3" fill="#7a5a3a" opacity="0.18" />
+                    <circle cx="3.5" cy="3.5" r="0.3" fill="#7a5a3a" opacity="0.12" />
+                  </pattern>
+                  <filter id="lcx-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                    <feOffset dx="0" dy="0.8" result="off" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.3" /></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                </defs>
+
+                {/* Background: pharyngeal/airway lumen with depth gradient */}
                 <path d="M120,20 C120,30 118,45 116,60 C114,78 113,95 115,110 C117,125 119,140 120,155 C120,168 118,180 115,195 C113,208 112,220 113,235 C114,250 115,265 115,280 L165,280 C165,265 166,250 167,235 C168,220 167,208 165,195 C162,180 160,168 160,155 C161,140 163,125 165,110 C167,95 166,78 164,60 C162,45 160,30 160,20 Z"
-                  fill="hsl(200, 30%, 92%)" opacity="0.15" stroke="none" />
+                  fill="url(#lcx-airwayGrad)" opacity="0.22" stroke="none" />
 
                 {/* Posterior pharyngeal wall / vertebral bodies */}
-                <rect x="165" y="30" width="12" height="270" rx="4" fill="hsl(30, 20%, 75%)" opacity="0.12" />
+                <rect x="165" y="30" width="12" height="270" rx="4" fill="hsl(30, 20%, 75%)" opacity="0.18" />
                 {[50, 90, 130, 170, 210, 250].map((y, i) => (
-                  <line key={`vert-${i}`} x1="166" y1={y} x2="176" y2={y} stroke="hsl(30, 20%, 60%)" strokeWidth="0.5" opacity="0.2" />
+                  <line key={`vert-${i}`} x1="166" y1={y} x2="176" y2={y} stroke="hsl(30, 20%, 60%)" strokeWidth={showSutures ? 0.7 : 0.5} strokeDasharray={showSutures ? "" : "1 1"} opacity={showSutures ? 0.45 : 0.2} />
                 ))}
+                {showSutures && (
+                  <rect x="165" y="30" width="12" height="270" fill="url(#lcx-grain)" opacity="0.5" pointerEvents="none" />
+                )}
 
                 {/* Aryepiglottic fold */}
                 <path
@@ -253,8 +306,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Hyoid bone */}
                 <path
                   d="M60,60 C62,55 70,50 85,48 C100,46 115,48 130,50 C145,48 160,46 175,48 C190,50 198,55 200,60 C198,64 192,66 185,65 C175,63 165,60 155,58 C145,56 135,56 130,57 C125,56 115,56 105,58 C95,60 85,63 75,65 C68,66 62,64 60,60 Z"
-                  fill={structures.hyoid.color}
-                  fillOpacity={opacity("hyoid")}
+                  fill={isActive("hyoid") ? structures.hyoid.color : "url(#lcx-hyoidGrad)"}
+                  fillOpacity={isActive("hyoid") ? 0.65 : 0.55}
                   stroke={structures.hyoid.color}
                   strokeWidth={sw("hyoid")}
                   className="cursor-pointer transition-all duration-200"
@@ -277,8 +330,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Thyroid cartilage */}
                 <path
                   d="M72,82 L72,145 C72,152 80,158 95,160 C110,162 120,158 130,148 C140,158 150,162 165,160 C180,158 188,152 188,145 L188,82 C185,80 175,78 160,80 C145,82 135,83 130,84 C125,83 115,82 100,80 C85,78 75,80 72,82 Z"
-                  fill={structures.thyroid.color}
-                  fillOpacity={opacity("thyroid")}
+                  fill={isActive("thyroid") ? structures.thyroid.color : "url(#lcx-cartGrad)"}
+                  fillOpacity={isActive("thyroid") ? 0.65 : 0.55}
                   stroke={structures.thyroid.color}
                   strokeWidth={sw("thyroid")}
                   className="cursor-pointer transition-all duration-200"
@@ -489,8 +542,8 @@ const LaryngealCrossSectionDiagram = () => {
                 {/* Cricoid cartilage */}
                 <path
                   d="M82,178 C82,176 90,174 105,174 L155,174 C170,174 178,176 178,178 L178,200 C178,210 170,218 155,220 C140,222 120,222 105,220 C90,218 82,210 82,200 Z"
-                  fill={structures.cricoid.color}
-                  fillOpacity={opacity("cricoid")}
+                  fill={isActive("cricoid") ? structures.cricoid.color : "url(#lcx-cricoidGrad)"}
+                  fillOpacity={isActive("cricoid") ? 0.65 : 0.55}
                   stroke={structures.cricoid.color}
                   strokeWidth={sw("cricoid")}
                   className="cursor-pointer transition-all duration-200"

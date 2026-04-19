@@ -83,6 +83,8 @@ const structures: Structure[] = [
 
 const NeckCrossSectionDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
 
   const info = selected ? structures.find((s) => s.id === selected) : null;
 
@@ -91,35 +93,99 @@ const NeckCrossSectionDiagram = () => {
 
   return (
     <div className="my-6">
-      <h3 className="text-lg font-semibold text-foreground mb-2">
-        Cross-Section of Neck at C6 Level
-      </h3>
-      <p className="text-sm text-muted-foreground mb-4">
-        Tap a structure to explore its contents and clinical relevance.
-      </p>
+      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+        <div>
+          <h3 className="text-lg font-semibold text-foreground">
+            Cross-Section of Neck at C6 Level
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Tap a structure to explore its contents and clinical relevance.
+          </p>
+        </div>
+        <div className="flex gap-1.5 text-xs">
+          <button
+            onClick={() => setShowSutures((v) => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Detail {showSutures ? "✓" : "○"}
+          </button>
+          <button
+            onClick={() => setShowLabels((v) => !v)}
+            className={`px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
+          >
+            Labels {showLabels ? "✓" : "○"}
+          </button>
+        </div>
+      </div>
       <div className="flex flex-col lg:flex-row gap-4">
         <svg viewBox="0 0 500 500" className="w-full max-w-[500px] mx-auto" style={{ background: "hsl(var(--card))" }}>
           <defs>
-            <radialGradient id="ncx-skinGrad" cx="50%" cy="50%">
-              <stop offset="0%" stopColor="#f5deb3" />
-              <stop offset="100%" stopColor="#e8c9a0" />
+            <radialGradient id="ncx-skinGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fbe9c8" />
+              <stop offset="70%" stopColor="#e8c9a0" />
+              <stop offset="100%" stopColor="#b8956c" />
             </radialGradient>
-            <radialGradient id="ncx-bodyGrad" cx="50%" cy="50%">
-              <stop offset="0%" stopColor="#e8e8e8" />
-              <stop offset="100%" stopColor="#c4c4c4" />
+            <radialGradient id="ncx-bodyGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#f4f4f4" />
+              <stop offset="100%" stopColor="#a8a8a8" />
             </radialGradient>
+            <radialGradient id="ncx-tracheaGrad" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="#fffbe6" />
+              <stop offset="100%" stopColor="#fde68a" />
+            </radialGradient>
+            <radialGradient id="ncx-thyroidGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fde7f3" />
+              <stop offset="100%" stopColor="#f3a5cb" />
+            </radialGradient>
+            <radialGradient id="ncx-vesselGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#fca5a5" />
+              <stop offset="100%" stopColor="#991b1b" />
+            </radialGradient>
+            <radialGradient id="ncx-veinGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stopColor="#93c5fd" />
+              <stop offset="100%" stopColor="#1e3a5f" />
+            </radialGradient>
+            <radialGradient id="ncx-scmGrad" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stopColor="#fecaca" />
+              <stop offset="100%" stopColor="#b91c1c" />
+            </radialGradient>
+            <pattern id="ncx-grain" patternUnits="userSpaceOnUse" width="6" height="6">
+              <rect width="6" height="6" fill="transparent" />
+              <circle cx="1.5" cy="1.5" r="0.4" fill="#7a5a3a" opacity="0.18" />
+              <circle cx="4.5" cy="4.5" r="0.4" fill="#7a5a3a" opacity="0.12" />
+            </pattern>
+            <pattern id="ncx-muscleFibre" patternUnits="userSpaceOnUse" width="4" height="4">
+              <path d="M0,2 L4,2" stroke="#7f1d1d" strokeWidth="0.3" opacity="0.35" />
+            </pattern>
+            <filter id="ncx-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+              <feOffset dx="0" dy="1" result="off" />
+              <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+              <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
           </defs>
 
-          {/* Skin outline — outer ellipse */}
+          {/* Skin outline — outer ellipse with depth shading */}
           <ellipse
             cx="250" cy="250" rx="220" ry="200"
             fill="url(#ncx-skinGrad)"
             stroke={highlight("skin") ? "#f59e0b" : "#a0886a"}
             strokeWidth={highlight("skin") ? 3 : 1.5}
             opacity={opacity("skin")}
+            filter="url(#ncx-shadow)"
             onClick={() => setSelected(selected === "skin" ? null : "skin")}
             className="cursor-pointer"
           />
+          {/* Grain texture overlay */}
+          <ellipse cx="250" cy="250" rx="218" ry="198" fill="url(#ncx-grain)" opacity="0.55" pointerEvents="none" />
+          {/* Platysma demarcation */}
+          {showSutures && (
+            <ellipse cx="250" cy="250" rx="208" ry="188" fill="none" stroke="#a0886a" strokeWidth="0.6" strokeDasharray="2 3" opacity="0.55" pointerEvents="none" />
+          )}
+          {/* Alar fascia (danger space) */}
+          {showSutures && (
+            <path d="M170,300 Q200,290 250,288 Q300,290 330,300" fill="none" stroke="#7c3aed" strokeWidth="0.6" strokeDasharray="1.5 2" opacity="0.5" pointerEvents="none" />
+          )}
 
           {/* Investing layer */}
           <ellipse
@@ -132,7 +198,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "investing" ? null : "investing")}
             className="cursor-pointer"
           />
-          {!selected || selected === "investing" ? (
+          {showLabels && (!selected || selected === "investing") ? (
             <text x="250" y="82" textAnchor="middle" fontSize="9" fill="#16a34a" fontWeight="600">Investing Layer</text>
           ) : null}
 
@@ -147,7 +213,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "pretracheal" ? null : "pretracheal")}
             className="cursor-pointer"
           />
-          {!selected || selected === "pretracheal" ? (
+          {showLabels && (!selected || selected === "pretracheal") ? (
             <text x="250" y="155" textAnchor="middle" fontSize="8" fill="#3b82f6" fontWeight="600">Pretracheal Layer</text>
           ) : null}
 
@@ -162,7 +228,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "prevertebral" ? null : "prevertebral")}
             className="cursor-pointer"
           />
-          {!selected || selected === "prevertebral" ? (
+          {showLabels && (!selected || selected === "prevertebral") ? (
             <text x="250" y="375" textAnchor="middle" fontSize="8" fill="#7c3aed" fontWeight="600">Prevertebral Layer</text>
           ) : null}
 
@@ -180,7 +246,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Transverse processes / carotid tubercle */}
           <rect x="175" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
           <rect x="285" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <>
               <text x="165" y="308" textAnchor="middle" fontSize="7" fill="#666">Carotid</text>
               <text x="165" y="316" textAnchor="middle" fontSize="7" fill="#666">tubercle</text>
@@ -195,14 +261,14 @@ const NeckCrossSectionDiagram = () => {
           {/* Longus colli muscles */}
           <ellipse cx="220" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
           <ellipse cx="280" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <text x="250" y="280" textAnchor="middle" fontSize="7" fill="#9b2c2c">Longus colli</text>
           ) : null}
 
           {/* Trachea */}
           <circle
             cx="250" cy="220" r="22"
-            fill={highlight("trachea") ? "#fef08a" : "#fef9c3"}
+            fill={highlight("trachea") ? "#fef08a" : "url(#ncx-tracheaGrad)"}
             stroke={highlight("trachea") ? "#f59e0b" : "#ca8a04"}
             strokeWidth={highlight("trachea") ? 3 : 1.5}
             opacity={opacity("trachea")}
@@ -226,14 +292,14 @@ const NeckCrossSectionDiagram = () => {
           {/* RLN dots in T-O groove */}
           <circle cx="228" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
           <circle cx="268" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
-          {!selected || selected === "trachea" ? (
+          {showLabels && (!selected || selected === "trachea") ? (
             <text x="228" y="235" textAnchor="middle" fontSize="6" fill="#166534">RLN</text>
           ) : null}
 
           {/* Thyroid lobes */}
           <ellipse
             cx="210" cy="215" rx="22" ry="28"
-            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            fill={highlight("thyroid") ? "#fbcfe8" : "url(#ncx-thyroidGrad)"}
             stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
             strokeWidth={highlight("thyroid") ? 3 : 1.5}
             opacity={opacity("thyroid")}
@@ -242,14 +308,14 @@ const NeckCrossSectionDiagram = () => {
           />
           <ellipse
             cx="290" cy="215" rx="22" ry="28"
-            fill={highlight("thyroid") ? "#fbcfe8" : "#fce7f3"}
+            fill={highlight("thyroid") ? "#fbcfe8" : "url(#ncx-thyroidGrad)"}
             stroke={highlight("thyroid") ? "#ec4899" : "#db2777"}
             strokeWidth={highlight("thyroid") ? 3 : 1.5}
             opacity={opacity("thyroid")}
             onClick={() => setSelected(selected === "thyroid" ? null : "thyroid")}
             className="cursor-pointer"
           />
-          {!selected || selected === "thyroid" ? (
+          {showLabels && (!selected || selected === "thyroid") ? (
             <>
               <text x="210" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
               <text x="290" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
@@ -271,14 +337,14 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {/* CCA */}
-          <circle cx="162" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <circle cx="162" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="162" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
           {/* IJV */}
-          <ellipse cx="145" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <ellipse cx="145" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="145" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           {/* Vagus */}
           <circle cx="155" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
-          {!selected || selected === "carotid" ? (
+          {showLabels && (!selected || selected === "carotid") ? (
             <text x="155" y="260" textAnchor="middle" fontSize="6" fill="#92400e">X (vagus)</text>
           ) : null}
 
@@ -293,9 +359,9 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "carotid" ? null : "carotid")}
             className="cursor-pointer"
           />
-          <circle cx="338" cy="235" r="10" fill="#ef4444" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <circle cx="338" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="338" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
-          <ellipse cx="355" cy="222" rx="12" ry="14" fill="#3b82f6" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <ellipse cx="355" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
           <text x="355" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           <circle cx="345" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
 
@@ -303,40 +369,51 @@ const NeckCrossSectionDiagram = () => {
           <ellipse
             cx="130" cy="195" rx="28" ry="14"
             transform="rotate(-30 130 195)"
-            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            fill={highlight("scm") ? "#fca5a5" : "url(#ncx-scmGrad)"}
             stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
             strokeWidth={highlight("scm") ? 3 : 1.5}
             opacity={opacity("scm")}
             onClick={() => setSelected(selected === "scm" ? null : "scm")}
             className="cursor-pointer"
           />
-          {!selected || selected === "scm" ? (
+          {showLabels && (!selected || selected === "scm") ? (
             <text x="115" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(-30 115 180)">SCM</text>
           ) : null}
           <ellipse
             cx="370" cy="195" rx="28" ry="14"
             transform="rotate(30 370 195)"
-            fill={highlight("scm") ? "#fca5a5" : "#fecaca"}
+            fill={highlight("scm") ? "#fca5a5" : "url(#ncx-scmGrad)"}
             stroke={highlight("scm") ? "#dc2626" : "#ef4444"}
             strokeWidth={highlight("scm") ? 3 : 1.5}
             opacity={opacity("scm")}
             onClick={() => setSelected(selected === "scm" ? null : "scm")}
             className="cursor-pointer"
           />
-          {!selected || selected === "scm" ? (
+          {showLabels && (!selected || selected === "scm") ? (
             <text x="385" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
           ) : null}
+          {/* SCM fibre overlay */}
+          {showSutures && (
+            <>
+              <ellipse cx="130" cy="195" rx="27" ry="13" transform="rotate(-30 130 195)" fill="url(#ncx-muscleFibre)" opacity={opacity("scm") * 0.7} pointerEvents="none" />
+              <ellipse cx="370" cy="195" rx="27" ry="13" transform="rotate(30 370 195)" fill="url(#ncx-muscleFibre)" opacity={opacity("scm") * 0.7} pointerEvents="none" />
+            </>
+          )}
 
           {/* Trapezius (posterior) */}
           <ellipse cx="145" cy="340" rx="30" ry="12" transform="rotate(40 145 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
           <ellipse cx="355" cy="340" rx="30" ry="12" transform="rotate(-40 355 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
-          <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
-          <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+          {showLabels && (
+            <>
+              <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+              <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+            </>
+          )}
 
           {/* Vertebral artery in transverse foramen */}
           <circle cx="195" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
           <circle cx="305" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <text x="195" y="340" textAnchor="middle" fontSize="6" fill="#991b1b">VA</text>
           ) : null}
 
@@ -347,7 +424,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Strap muscles */}
           <ellipse cx="230" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
           <ellipse cx="270" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
-          {!selected || selected === "pretracheal" ? (
+          {showLabels && (!selected || selected === "pretracheal") ? (
             <text x="250" y="172" textAnchor="middle" fontSize="7" fill="#059669">Strap mm.</text>
           ) : null}
         </svg>
