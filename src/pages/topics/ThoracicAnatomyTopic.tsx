@@ -9,12 +9,24 @@ import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "thoracic-wall", label: "Thoracic Wall", group: "Wall" },
+  { id: "pleura", label: "Pleura", group: "Cavities" },
+  { id: "mediastinum", label: "Mediastinum", group: "Cavities" },
+  { id: "lung-anatomy", label: "Lung Anatomy", group: "Viscera" },
+  { id: "diaphragm", label: "Diaphragm", group: "Wall" },
+  { id: "paravertebral-space", label: "Paravertebral Space", group: "Block-relevant" },
+  { id: "first-rib", label: "First Rib", group: "Block-relevant" },
+];
 
 const ThoracicAnatomyTopic = () => {
   return (
     <SectionLayout title="Thoracic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="thoracic-wall" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Wall & Intercostal Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The thoracic cage comprises 12 pairs of ribs, sternum, and thoracic vertebrae. The intercostal space is key for chest drain insertion, intercostal nerve blocks, and thoracic procedures.
@@ -41,7 +53,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="pleura" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pleura</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -55,7 +67,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="mediastinum" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Mediastinum</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -69,7 +81,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="lung-anatomy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lung Anatomy</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -83,7 +95,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="diaphragm" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diaphragm</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Principal muscle of respiration. Dome-shaped. Motor supply: phrenic nerve (C3,4,5 — "C3,4,5 keeps the diaphragm alive"). Right crus: larger, encircles oesophagus. Three major openings: aortic hiatus (T12 — aorta, thoracic duct, azygos vein), oesophageal hiatus (T10 — oesophagus, vagal trunks), vena caval foramen (T8 — IVC, right phrenic nerve).
@@ -93,7 +105,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="paravertebral-space" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paravertebral Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The paravertebral space is a wedge-shaped potential space lateral to the vertebral column.
@@ -116,7 +128,7 @@ const ThoracicAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="first-rib" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The First Rib</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The first rib is the broadest, shortest, and most curved rib. It is flattened with superior and inferior surfaces.

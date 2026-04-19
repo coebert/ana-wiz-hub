@@ -13,10 +13,22 @@ import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDia
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "airway-assessment", label: "Airway Assessment", group: "Assessment" },
+  { id: "introduction", label: "Introduction", group: "Overview" },
+  { id: "airway-devices", label: "Airway Devices", group: "Equipment" },
+  { id: "breathing-circuits", label: "Breathing Circuits", group: "Equipment" },
+  { id: "das-algorithm", label: "DAS Algorithm", group: "Difficult Airway" },
+  { id: "airway-innervation", label: "Airway Innervation", group: "Difficult Airway" },
+  { id: "fona", label: "Front-of-Neck Access", group: "Difficult Airway" },
+];
 
 const AirwayManagementTopic = () => {
   return (
     <SectionLayout title="Airway Management" subtitle="FRCA Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+      <TopicTableOfContents items={tocItems} />
       <p className="text-muted-foreground leading-relaxed mb-6">
         Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway Society (DAS) algorithms standardise the approach to anticipated and unanticipated difficulty, supported by structured assessment tools and a hierarchy of rescue techniques culminating in front-of-neck access. The diagrams below summarise the DAS pathway, laryngoscopy grading, and pre-operative risk scoring.
       </p>
@@ -25,7 +37,7 @@ const AirwayManagementTopic = () => {
       <MallampatiDiagram />
       <WilsonRiskScoreCalculator />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="airway-assessment" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Assessment</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Systematic assessment of the airway is essential before every anaesthetic. Explore Mallampati scoring, predictors of difficulty, and anterior neck anatomy for emergency front-of-neck access.
@@ -35,14 +47,14 @@ const AirwayManagementTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="introduction" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
             Airway management is the cornerstone of anaesthetic practice and critical care. The Difficult Airway Society (DAS) guidelines provide structured algorithms for unanticipated difficult intubation. Understanding equipment, techniques, and rescue pathways is essential for safe practice.
           </p>
         </div>
 
-        <div>
+        <div id="airway-devices" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Devices Comparison</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare endotracheal tubes, supraglottic airways, and videolaryngoscope types with cross-sectional diagrams.
@@ -52,7 +64,7 @@ const AirwayManagementTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="breathing-circuits" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Breathing Circuits</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Explore the different breathing systems with animated gas flow. Understand the efficiency of each for spontaneous vs controlled ventilation.
@@ -62,7 +74,7 @@ const AirwayManagementTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="das-algorithm" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">DAS Difficult Intubation Algorithm</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The 2015 DAS guidelines outline four plans for managing unanticipated difficult tracheal intubation in adults.
@@ -85,7 +97,7 @@ const AirwayManagementTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="airway-innervation" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Innervation for Awake Intubation</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Successful awake fibreoptic intubation requires systematic topicalisation of the airway. Each zone is innervated by a different cranial nerve and requires a specific block or spray technique.
@@ -93,7 +105,7 @@ const AirwayManagementTopic = () => {
           <AirwayInnervationDiagram />
         </div>
 
-        <div>
+        <div id="fona" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Front-of-Neck Access (FONA)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The scalpel-bougie-tube technique is the DAS-recommended surgical airway for can't intubate, can't oxygenate (CICO):

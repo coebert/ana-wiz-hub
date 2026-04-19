@@ -10,13 +10,24 @@ import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagr
 import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "brachial-plexus", label: "Brachial Plexus", group: "Neural" },
+  { id: "block-approaches", label: "Block Approaches", group: "Neural" },
+  { id: "terminal-nerves", label: "Terminal Nerves", group: "Neural" },
+  { id: "arterial-supply", label: "Arterial Supply", group: "Vascular" },
+  { id: "cubital-fossa", label: "Cubital Fossa", group: "Vascular" },
+  { id: "venous-drainage", label: "Venous Drainage", group: "Vascular" },
+];
 
 const UpperLimbAnatomyTopic = () => {
   return (
     <SectionLayout title="Upper Limb Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
         {/* ── BRACHIAL PLEXUS ── */}
-        <div>
+        <div id="brachial-plexus" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brachial Plexus</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).
@@ -39,7 +50,7 @@ const UpperLimbAnatomyTopic = () => {
 
         <BrachialPlexusDiagram />
 
-        <div>
+        <div id="block-approaches" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Block Approaches & Anatomy</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -63,7 +74,7 @@ const UpperLimbAnatomyTopic = () => {
 
         <BrachialPlexusUltrasoundDiagram />
 
-        <div>
+        <div id="terminal-nerves" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Terminal Nerves</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -87,7 +98,7 @@ const UpperLimbAnatomyTopic = () => {
         </div>
 
         {/* ── ARTERIAL SUPPLY ── */}
-        <div>
+        <div id="arterial-supply" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Arterial Supply of the Upper Limb</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The arterial supply follows a continuous chain: subclavian → axillary → brachial → radial and ulnar arteries. Each segment is defined by anatomical landmarks and gives important branches. The radial and ulnar arteries form the superficial and deep palmar arches in the hand, providing redundant perfusion — the basis for Allen's test.
@@ -106,7 +117,7 @@ const UpperLimbAnatomyTopic = () => {
         </div>
 
         {/* ── CUBITAL FOSSA ── */}
-        <div>
+        <div id="cubital-fossa" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Cubital Fossa</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The cubital fossa is a triangular depression on the anterior aspect of the elbow. Its borders are: lateral — brachioradialis; medial — pronator teres; superior — an imaginary line between the epicondyles. The roof is formed by skin, superficial fascia (containing the median cubital vein and cutaneous nerves), and the bicipital aponeurosis. The floor is formed by brachialis (proximally) and supinator (distally). Contents from lateral to medial: <strong>T</strong>endon (biceps), <strong>A</strong>rtery (brachial), <strong>N</strong>erve (median).
@@ -115,7 +126,7 @@ const UpperLimbAnatomyTopic = () => {
         </div>
 
         {/* ── VENOUS DRAINAGE ── */}
-        <div>
+        <div id="venous-drainage" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Venous Drainage of the Upper Limb</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The upper limb has superficial and deep venous systems. The superficial system (cephalic, basilic, median cubital veins) is clinically important for venepuncture, IV cannulation, and PICC line insertion. The deep system (venae comitantes accompanying the arteries) handles the majority of venous return. Both systems communicate via perforating veins.

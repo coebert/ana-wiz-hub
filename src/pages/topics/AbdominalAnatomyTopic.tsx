@@ -6,12 +6,21 @@ import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import TopicTableOfContents from "@/components/TopicTableOfContents";
+
+const tocItems = [
+  { id: "abdominal-wall", label: "Abdominal Wall", group: "Wall" },
+  { id: "inguinal-canal", label: "Inguinal Canal", group: "Wall" },
+  { id: "abdominal-organs", label: "Abdominal Organs", group: "Viscera" },
+  { id: "pelvic-anatomy", label: "Pelvic Anatomy", group: "Viscera" },
+];
 
 const AbdominalAnatomyTopic = () => {
   return (
     <SectionLayout title="Abdominal & Pelvic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
+      <TopicTableOfContents items={tocItems} />
       <section className="space-y-6 mb-10">
-        <div>
+        <div id="abdominal-wall" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anterior Abdominal Wall Layers</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Understanding the abdominal wall layers is essential for TAP blocks, rectus sheath blocks, and laparoscopic port placement.
@@ -35,7 +44,7 @@ const AbdominalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="inguinal-canal" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Inguinal Canal</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -49,7 +58,7 @@ const AbdominalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="abdominal-organs" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Abdominal Organs — Anaesthetic Relevance</h2>
           <div className="space-y-2">
             {[
@@ -66,7 +75,7 @@ const AbdominalAnatomyTopic = () => {
           </div>
         </div>
 
-        <div>
+        <div id="pelvic-anatomy" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pelvic Anatomy</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
