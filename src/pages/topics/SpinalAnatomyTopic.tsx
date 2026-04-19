@@ -9,6 +9,7 @@ import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram
 import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalDiagram";
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
+import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
@@ -117,6 +118,8 @@ const SpinalAnatomyTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             The epidural space is a potential space between the ligamentum flavum/periosteum and dura. It contains fat, lymphatics, and the internal vertebral venous plexus (Batson's plexus). This plexus is valveless and communicates with pelvic veins — becomes engorged in pregnancy (reduced epidural space volume, higher block with same dose) and with raised intra-abdominal pressure. The epidural space is widest posteriorly at L2 (5–6 mm).
           </p>
+
+          <EpiduralSpaceDiagram />
         </div>
       </section>
 
