@@ -178,28 +178,30 @@ const DermatomeMyotomeDiagram = () => {
                   {/* Midline */}
                   <line x1="100" y1="56" x2="100" y2="244" stroke="hsl(var(--muted-foreground))" strokeWidth="0.25" strokeDasharray="2 4" opacity="0.15" />
 
-                  {/* Landmark annotations — more detailed */}
-                  <g opacity="0.35" fontSize="4" fill="hsl(var(--muted-foreground))">
-                    {/* Nipples T4 */}
-                    <circle cx="90" cy="126" r="1.2" />
-                    <circle cx="110" cy="126" r="1.2" />
-                    <line x1="114" y1="126" x2="136" y2="126" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
-                    <text x="138" y="128" fontSize="3.5" fontWeight="600">T4 nipple</text>
-                    {/* Xiphisternum T6 */}
-                    <circle cx="100" cy="148" r="0.8" />
-                    <line x1="104" y1="148" x2="136" y2="148" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                    <text x="138" y="150" fontSize="3.5">T6 xiphoid</text>
-                    {/* Umbilicus T10 */}
-                    <circle cx="100" cy="196" r="1.8" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-                    <line x1="104" y1="196" x2="136" y2="196" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
-                    <text x="138" y="198" fontSize="3.5" fontWeight="600">T10 umbilicus</text>
-                    {/* Inguinal L1 */}
-                    <line x1="110" y1="234" x2="136" y2="234" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                    <text x="138" y="236" fontSize="3.5">L1 groin</text>
-                    {/* Knee L3 */}
-                    <line x1="118" y1="320" x2="136" y2="320" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                    <text x="138" y="322" fontSize="3.5">L3 knee</text>
-                  </g>
+                  {/* Landmark annotations — toggle via showLandmarks */}
+                  {showLandmarks && (
+                    <g opacity="0.45" fontSize="4" fill="hsl(var(--muted-foreground))">
+                      {/* Nipples T4 */}
+                      <circle cx="90" cy="126" r="1.2" />
+                      <circle cx="110" cy="126" r="1.2" />
+                      <line x1="114" y1="126" x2="136" y2="126" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                      {showLabels && <text x="138" y="128" fontSize="3.5" fontWeight="600">T4 nipple</text>}
+                      {/* Xiphisternum T6 */}
+                      <circle cx="100" cy="148" r="0.8" />
+                      <line x1="104" y1="148" x2="136" y2="148" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                      {showLabels && <text x="138" y="150" fontSize="3.5">T6 xiphoid</text>}
+                      {/* Umbilicus T10 */}
+                      <circle cx="100" cy="196" r="1.8" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+                      <line x1="104" y1="196" x2="136" y2="196" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                      {showLabels && <text x="138" y="198" fontSize="3.5" fontWeight="600">T10 umbilicus</text>}
+                      {/* Inguinal L1 */}
+                      <line x1="110" y1="234" x2="136" y2="234" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                      {showLabels && <text x="138" y="236" fontSize="3.5">L1 groin</text>}
+                      {/* Knee L3 */}
+                      <line x1="118" y1="320" x2="136" y2="320" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
+                      {showLabels && <text x="138" y="322" fontSize="3.5">L3 knee</text>}
+                    </g>
+                  )}
 
                   {/* Dermatome regions */}
                   {levels.map(l => (
@@ -244,40 +246,45 @@ const DermatomeMyotomeDiagram = () => {
                   </div>
                 </div>
 
-                {/* Detail panel */}
+                {/* Standardised detail panel with left-border accent */}
                 {activeLevel ? (
-                  <div className="p-4 rounded-lg border border-border animate-fade-in space-y-3">
-                    <div className="flex items-center gap-2">
+                  <div
+                    className="p-4 rounded-lg border border-border bg-background/80 animate-fade-in space-y-2"
+                    style={{ borderLeftWidth: 4, borderLeftColor: accent }}
+                  >
+                    <div className="flex items-center justify-between gap-2">
                       <span className="text-lg font-bold" style={{ color: activeLevel.color }}>{activeLevel.level}</span>
-                      <Badge variant="outline" className={`text-xs ${regionColors[activeLevel.region]}`}>
+                      <Badge variant="outline" className="text-xs" style={{ borderColor: withAlpha(accent, 0.4), color: accent }}>
                         {regionLabels[activeLevel.region]}
                       </Badge>
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Dermatome</p>
-                      <p className="text-sm text-muted-foreground">{activeLevel.dermatome}</p>
+                      <p className="text-[10px] font-semibold text-foreground uppercase tracking-wide mb-0.5">Dermatome</p>
+                      <p className="text-xs text-muted-foreground">{activeLevel.dermatome}</p>
                     </div>
 
                     <div>
-                      <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Myotome</p>
-                      <p className="text-sm text-muted-foreground">{activeLevel.myotome}</p>
+                      <p className="text-[10px] font-semibold text-foreground uppercase tracking-wide mb-0.5">Myotome</p>
+                      <p className="text-xs text-muted-foreground">{activeLevel.myotome}</p>
                     </div>
 
                     {activeLevel.reflex && (
                       <div>
-                        <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-0.5">Reflex</p>
-                        <p className="text-sm text-muted-foreground">{activeLevel.reflex}</p>
+                        <p className="text-[10px] font-semibold text-foreground uppercase tracking-wide mb-0.5">Reflex</p>
+                        <p className="text-xs text-muted-foreground">{activeLevel.reflex}</p>
                       </div>
                     )}
 
                     <div className="pt-2 border-t border-border/50">
-                      <p className="text-xs font-semibold text-amber-400 mb-0.5">Regional Block</p>
-                      <p className="text-sm text-muted-foreground">{activeLevel.blockRelevance}</p>
+                      <p className="text-[10px] font-semibold uppercase tracking-wide mb-0.5" style={{ color: accent }}>Regional Block</p>
+                      <p className="text-xs text-muted-foreground">{activeLevel.blockRelevance}</p>
                     </div>
                   </div>
                 ) : (
-                  <p className="text-xs text-muted-foreground italic">Tap a spinal level button or body region above</p>
+                  <div className="p-4 rounded-lg border border-dashed border-border bg-background/40">
+                    <p className="text-xs text-muted-foreground italic">Tap a spinal level button or body region to see dermatome, myotome, reflex and regional block relevance.</p>
+                  </div>
                 )}
 
                 {/* Quick landmark key */}
@@ -376,8 +383,8 @@ const DermatomeMyotomeDiagram = () => {
             </div>
           </TabsContent>
         </Tabs>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 
