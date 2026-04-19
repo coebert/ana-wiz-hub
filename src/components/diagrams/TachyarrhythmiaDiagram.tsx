@@ -398,99 +398,183 @@ const drawBeat = (cx: number, baseline: number, opts: { p?: boolean; qrs?: boole
   return d;
 };
 
-const RhythmStrip = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
+type StripMode = "baseline" | "adenosine";
+
+const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; color: string; mode?: StripMode }) => {
   const W = 360;
   const H = 70;
   const baseline = 42;
-  const uid = tachy.shortLabel;
+  const uid = `${tachy.shortLabel}-${mode}`;
 
   let beats: Beat[] = [];
   let custom: React.ReactNode = null;
 
-  switch (tachy.focus) {
-    case "sa-fast":
-      // Sinus tach — every P → narrow QRS, regular, fast
-      beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 10 }));
-      break;
+  if (mode === "adenosine") {
+    // Predicted post-adenosine response
+    switch (tachy.focus) {
+      case "av-reentry":
+      case "accessory":
+        // AVNRT / orthodromic AVRT — abrupt termination → sinus rhythm with normal P-QRS-T
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 12 }));
+        custom = (
+          <line x1="20" y1="6" x2="20" y2={H - 6} stroke={color} strokeWidth="1.2" strokeDasharray="3 2" opacity="0.7" />
+        );
+        break;
 
-    case "atrial-chaos":
-      // AF — irregularly irregular narrow QRS, no P, fibrillatory baseline
-      beats = [
-        { cx: 35, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 95, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 138, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 215, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 260, qrs: true, t: true, p: false, pr: 0 },
-        { cx: 322, qrs: true, t: true, p: false, pr: 0 },
-      ];
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1)) * 1.2}`).join(" ")}`}
-          fill="none" stroke={color} strokeWidth="0.8" opacity="0.55"
-        />
-      );
-      break;
+      case "atrial-chaos":
+        // AF — AV block transiently slows ventricle → fibrillatory baseline exposed (~5s window)
+        beats = [
+          { cx: 35, qrs: true, t: true, p: false, pr: 0 },
+          // long gap with chaotic baseline ...
+          { cx: 320, qrs: true, t: true, p: false, pr: 0 },
+        ];
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1) + Math.sin(i * 3.4)) * 2.5}`).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1" opacity="0.85"
+          />
+        );
+        break;
 
-    case "atrial-circuit":
-      // Flutter — sawtooth baseline + 2:1 narrow QRS (every other flutter wave conducts)
-      beats = [40, 130, 220, 310].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
-            const x = i * 10;
-            const y = baseline + (i % 2 === 0 ? -5 : 4);
-            return `L ${x} ${y}`;
-          }).join(" ")}`}
-          fill="none" stroke={color} strokeWidth="1" opacity="0.7"
-        />
-      );
-      break;
+      case "atrial-circuit":
+        // Flutter — AV block exposes the sawtooth at ~300/min (no QRS during pause)
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
+              const x = i * 10;
+              const y = baseline + (i % 2 === 0 ? -8 : 6);
+              return `L ${x} ${y}`;
+            }).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1.4" opacity="0.95"
+          />
+        );
+        break;
 
-    case "av-reentry":
-      // AVNRT — very fast regular narrow QRS, no obvious P
-      beats = [30, 65, 100, 135, 170, 205, 240, 275, 310, 345].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
-      break;
+      case "sa-fast":
+        // Sinus tach — transient slowing then returns (wider P-P intervals)
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 12 }));
+        break;
 
-    case "accessory":
-      // AVRT (orthodromic) — fast regular narrow QRS with retrograde (inverted) P after each QRS
-      beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({
-        cx, qrs: true, t: true, p: true, invertedP: true, pr: -16,
-      }));
-      break;
+      case "ventricular":
+      case "v-chaos":
+        // VT / VF — no effect; replicate baseline appearance
+        if (tachy.focus === "ventricular") {
+          beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
+        } else {
+          custom = (
+            <path
+              d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+                const x = i * 2;
+                const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
+                return `L ${x} ${baseline + noise}`;
+              }).join(" ")}`}
+              fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+            />
+          );
+        }
+        break;
 
-    case "ventricular":
-      // Monomorphic VT — wide regular QRS
-      beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
-      break;
+      case "torsade":
+        // Contraindicated — show the baseline twisting envelope; the warning lives on the button
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const envelope = Math.sin(i * 0.08) * 18;
+              const wave = Math.sin(i * 0.85) * envelope;
+              return `L ${x} ${baseline + wave}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+          />
+        );
+        break;
+    }
+  } else {
+    switch (tachy.focus) {
+      case "sa-fast":
+        // Sinus tach — every P → narrow QRS, regular, fast
+        beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 10 }));
+        break;
 
-    case "v-chaos":
-      // VF — chaotic squiggle, no organised beats
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
-            const x = i * 2;
-            const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
-            return `L ${x} ${baseline + noise}`;
-          }).join(" ")}`}
-          fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
-        />
-      );
-      break;
+      case "atrial-chaos":
+        // AF — irregularly irregular narrow QRS, no P, fibrillatory baseline
+        beats = [
+          { cx: 35, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 95, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 138, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 215, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 260, qrs: true, t: true, p: false, pr: 0 },
+          { cx: 322, qrs: true, t: true, p: false, pr: 0 },
+        ];
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1)) * 1.2}`).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="0.8" opacity="0.55"
+          />
+        );
+        break;
 
-    case "torsade":
-      // Torsades — sinusoidal envelope where amplitude waxes and wanes (twisting axis)
-      custom = (
-        <path
-          d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
-            const x = i * 2;
-            const envelope = Math.sin(i * 0.08) * 18;
-            const wave = Math.sin(i * 0.85) * envelope;
-            return `L ${x} ${baseline + wave}`;
-          }).join(" ")}`}
-          fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
-        />
-      );
-      break;
+      case "atrial-circuit":
+        // Flutter — sawtooth baseline + 2:1 narrow QRS
+        beats = [40, 130, 220, 310].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 36 }, (_, i) => {
+              const x = i * 10;
+              const y = baseline + (i % 2 === 0 ? -5 : 4);
+              return `L ${x} ${y}`;
+            }).join(" ")}`}
+            fill="none" stroke={color} strokeWidth="1" opacity="0.7"
+          />
+        );
+        break;
+
+      case "av-reentry":
+        // AVNRT — very fast regular narrow QRS, no obvious P
+        beats = [30, 65, 100, 135, 170, 205, 240, 275, 310, 345].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0 }));
+        break;
+
+      case "accessory":
+        // AVRT (orthodromic) — fast regular narrow QRS with retrograde P after each QRS
+        beats = [30, 75, 120, 165, 210, 255, 300, 345].map((cx) => ({
+          cx, qrs: true, t: true, p: true, invertedP: true, pr: -16,
+        }));
+        break;
+
+      case "ventricular":
+        // Monomorphic VT — wide regular QRS
+        beats = [30, 80, 130, 180, 230, 280, 330].map((cx) => ({ cx, qrs: true, t: true, p: false, pr: 0, wide: true }));
+        break;
+
+      case "v-chaos":
+        // VF — chaotic squiggle
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
+              return `L ${x} ${baseline + noise}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+          />
+        );
+        break;
+
+      case "torsade":
+        // Torsades — sinusoidal envelope (twisting axis)
+        custom = (
+          <path
+            d={`M 0 ${baseline} ${Array.from({ length: 180 }, (_, i) => {
+              const x = i * 2;
+              const envelope = Math.sin(i * 0.08) * 18;
+              const wave = Math.sin(i * 0.85) * envelope;
+              return `L ${x} ${baseline + wave}`;
+            }).join(" ")}`}
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+          />
+        );
+        break;
+    }
   }
 
   return (
