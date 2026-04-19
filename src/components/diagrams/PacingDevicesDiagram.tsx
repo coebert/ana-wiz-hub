@@ -290,6 +290,19 @@ const PacingDevicesDiagram = () => {
               <p className="font-semibold text-foreground mb-0.5">Clinical pearl</p>
               <p className="text-muted-foreground">{detail.pearl}</p>
             </div>
+            <div className="sm:col-span-2 mt-1 pt-2 border-t border-primary/20">
+              <p className="font-semibold text-destructive mb-1 flex items-center gap-1">
+                <span aria-hidden>⚠</span> Complications
+              </p>
+              <ul className="space-y-0.5">
+                {detail.complications.map((c, i) => (
+                  <li key={i} className="text-muted-foreground flex gap-1.5 leading-snug">
+                    <span className="text-destructive/70 flex-shrink-0">•</span>
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
