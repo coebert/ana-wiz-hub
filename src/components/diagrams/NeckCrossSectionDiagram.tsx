@@ -198,7 +198,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "investing" ? null : "investing")}
             className="cursor-pointer"
           />
-          {!selected || selected === "investing" ? (
+          {showLabels && (!selected || selected === "investing") ? (
             <text x="250" y="82" textAnchor="middle" fontSize="9" fill="#16a34a" fontWeight="600">Investing Layer</text>
           ) : null}
 
@@ -213,7 +213,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "pretracheal" ? null : "pretracheal")}
             className="cursor-pointer"
           />
-          {!selected || selected === "pretracheal" ? (
+          {showLabels && (!selected || selected === "pretracheal") ? (
             <text x="250" y="155" textAnchor="middle" fontSize="8" fill="#3b82f6" fontWeight="600">Pretracheal Layer</text>
           ) : null}
 
@@ -228,7 +228,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "prevertebral" ? null : "prevertebral")}
             className="cursor-pointer"
           />
-          {!selected || selected === "prevertebral" ? (
+          {showLabels && (!selected || selected === "prevertebral") ? (
             <text x="250" y="375" textAnchor="middle" fontSize="8" fill="#7c3aed" fontWeight="600">Prevertebral Layer</text>
           ) : null}
 
@@ -246,7 +246,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Transverse processes / carotid tubercle */}
           <rect x="175" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
           <rect x="285" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <>
               <text x="165" y="308" textAnchor="middle" fontSize="7" fill="#666">Carotid</text>
               <text x="165" y="316" textAnchor="middle" fontSize="7" fill="#666">tubercle</text>
@@ -261,7 +261,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Longus colli muscles */}
           <ellipse cx="220" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
           <ellipse cx="280" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <text x="250" y="280" textAnchor="middle" fontSize="7" fill="#9b2c2c">Longus colli</text>
           ) : null}
 
@@ -292,7 +292,7 @@ const NeckCrossSectionDiagram = () => {
           {/* RLN dots in T-O groove */}
           <circle cx="228" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
           <circle cx="268" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
-          {!selected || selected === "trachea" ? (
+          {showLabels && (!selected || selected === "trachea") ? (
             <text x="228" y="235" textAnchor="middle" fontSize="6" fill="#166534">RLN</text>
           ) : null}
 
@@ -315,7 +315,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "thyroid" ? null : "thyroid")}
             className="cursor-pointer"
           />
-          {!selected || selected === "thyroid" ? (
+          {showLabels && (!selected || selected === "thyroid") ? (
             <>
               <text x="210" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
               <text x="290" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
@@ -344,7 +344,7 @@ const NeckCrossSectionDiagram = () => {
           <text x="145" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           {/* Vagus */}
           <circle cx="155" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
-          {!selected || selected === "carotid" ? (
+          {showLabels && (!selected || selected === "carotid") ? (
             <text x="155" y="260" textAnchor="middle" fontSize="6" fill="#92400e">X (vagus)</text>
           ) : null}
 
@@ -376,7 +376,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "scm" ? null : "scm")}
             className="cursor-pointer"
           />
-          {!selected || selected === "scm" ? (
+          {showLabels && (!selected || selected === "scm") ? (
             <text x="115" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(-30 115 180)">SCM</text>
           ) : null}
           <ellipse
@@ -389,7 +389,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "scm" ? null : "scm")}
             className="cursor-pointer"
           />
-          {!selected || selected === "scm" ? (
+          {showLabels && (!selected || selected === "scm") ? (
             <text x="385" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
           ) : null}
 
@@ -402,7 +402,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Vertebral artery in transverse foramen */}
           <circle cx="195" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
           <circle cx="305" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
-          {!selected || selected === "vertebral" ? (
+          {showLabels && (!selected || selected === "vertebral") ? (
             <text x="195" y="340" textAnchor="middle" fontSize="6" fill="#991b1b">VA</text>
           ) : null}
 
@@ -413,7 +413,7 @@ const NeckCrossSectionDiagram = () => {
           {/* Strap muscles */}
           <ellipse cx="230" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
           <ellipse cx="270" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
-          {!selected || selected === "pretracheal" ? (
+          {showLabels && (!selected || selected === "pretracheal") ? (
             <text x="250" y="172" textAnchor="middle" fontSize="7" fill="#059669">Strap mm.</text>
           ) : null}
         </svg>
