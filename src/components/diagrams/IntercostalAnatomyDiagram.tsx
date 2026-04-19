@@ -238,13 +238,19 @@ const IntercostalAnatomyDiagram = () => {
           </svg>
         </div>
 
-        <div className="flex-1 min-w-0">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-            <p className="text-sm text-muted-foreground mt-1">{info.detail}</p>
-            <p className="text-xs mt-2 p-2 rounded bg-secondary/50 text-foreground">
-              <strong>Clinical:</strong> {info.clinicalNote}
-            </p>
+          <div className="flex-1 min-w-0">
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: info.color }}
+            >
+              <p className="font-semibold text-foreground text-sm">{info.label}</p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Anatomy:</span> {info.detail}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                <span className="font-medium text-foreground">Clinical:</span> {info.clinicalNote}
+              </p>
+            </div>
           </div>
         </div>
       </div>
