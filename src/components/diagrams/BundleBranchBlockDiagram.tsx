@@ -383,7 +383,7 @@ const BundleBranchBlockDiagram = () => {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-[auto_1fr] gap-3 items-center">
+                  <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
                     <TreeMini block={b} color={b.color} />
                     <div className="min-w-0 space-y-1.5">
                       <div className="flex gap-2">
@@ -404,7 +404,7 @@ const BundleBranchBlockDiagram = () => {
         ) : (
           <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
             <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="grid grid-cols-[auto_1fr] gap-3 items-center">
+            <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
               <TreeMini block={info} color={info.color} />
               <div className="min-w-0 space-y-1.5">
                 <div className="flex gap-2">
