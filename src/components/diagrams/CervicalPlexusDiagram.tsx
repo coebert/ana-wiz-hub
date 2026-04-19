@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 import { withAlpha } from "@/lib/color-utils";
 
 type BranchKey = "superficial" | "deep" | "phrenic" | "ansa";
@@ -46,6 +47,8 @@ const branchKeys: BranchKey[] = ["superficial", "deep", "phrenic", "ansa"];
 
 const CervicalPlexusDiagram = () => {
   const [selected, setSelected] = useState<BranchKey>("superficial");
+  const [showSutures, setShowSutures] = useState(true);
+  const [showLabels, setShowLabels] = useState(true);
   const info = branches[selected];
 
   // Spine x positions
@@ -56,8 +59,14 @@ const CervicalPlexusDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Cervical Plexus (C1–C4)</h3>
-      <p className="text-xs text-muted-foreground mb-3">Tap a branch to see roots, anatomy, and clinical relevance</p>
+      <DiagramToggleBar
+        title="Cervical Plexus (C1–C4)"
+        subtitle="Tap a branch to see roots, anatomy, and clinical relevance"
+        toggles={[
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+        ]}
+      />
 
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="flex-shrink-0 mx-auto">
@@ -84,9 +93,15 @@ const CervicalPlexusDiagram = () => {
             ))}
 
             {/* ─── SCM reference (vertical dashed) ─── */}
-            <line x1="195" y1="30" x2="195" y2="195" stroke="hsl(var(--foreground))" strokeWidth="1.5"
-              opacity="0.12" strokeDasharray="5 3" />
-            <text x="198" y="38" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">SCM post. border</text>
+            {showSutures && (
+              <>
+                <line x1="195" y1="30" x2="195" y2="195" stroke="hsl(var(--foreground))" strokeWidth="1.5"
+                  opacity="0.12" strokeDasharray="5 3" />
+                {showLabels && (
+                  <text x="198" y="38" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">SCM post. border</text>
+                )}
+              </>
+            )}
 
             {/* ═══ SUPERFICIAL CERVICAL PLEXUS ═══ */}
             <g opacity={selected === "superficial" ? 1 : 0.3} className="cursor-pointer transition-opacity duration-200"
@@ -211,13 +226,15 @@ const CervicalPlexusDiagram = () => {
             </g>
 
             {/* Root labels */}
-            <g fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
-              <text x="38" y="54" textAnchor="middle">C1</text>
-              <text x="38" y="84" textAnchor="middle">C2</text>
-              <text x="38" y="114" textAnchor="middle">C3</text>
-              <text x="38" y="144" textAnchor="middle">C4</text>
-              <text x="38" y="174" textAnchor="middle">C5</text>
-            </g>
+            {showLabels && (
+              <g fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.4" className="select-none pointer-events-none">
+                <text x="38" y="54" textAnchor="middle">C1</text>
+                <text x="38" y="84" textAnchor="middle">C2</text>
+                <text x="38" y="114" textAnchor="middle">C3</text>
+                <text x="38" y="144" textAnchor="middle">C4</text>
+                <text x="38" y="174" textAnchor="middle">C5</text>
+              </g>
+            )}
           </svg>
         </div>
 

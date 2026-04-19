@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 
@@ -175,26 +176,14 @@ const LaryngealCrossSectionDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-        <div>
-          <h3 className="text-lg font-serif font-bold text-foreground">Laryngeal Anatomy — Sagittal Cross-Section</h3>
-          <p className="text-xs text-muted-foreground">Tap any structure to see its anatomy and anaesthetic relevance</p>
-        </div>
-        <div className="flex gap-1.5 text-xs">
-          <button
-            onClick={() => setShowSutures(v => !v)}
-            className={`px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
-          >
-            Detail {showSutures ? "✓" : "○"}
-          </button>
-          <button
-            onClick={() => setShowLabels(v => !v)}
-            className={`px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
-          >
-            Labels {showLabels ? "✓" : "○"}
-          </button>
-        </div>
-      </div>
+      <DiagramToggleBar
+        title="Laryngeal Anatomy — Sagittal Cross-Section"
+        subtitle="Tap any structure to see its anatomy and anaesthetic relevance"
+        toggles={[
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+        ]}
+      />
 
       <Tabs defaultValue="sagittal">
         <TabsList className="grid w-full grid-cols-3 mb-3">

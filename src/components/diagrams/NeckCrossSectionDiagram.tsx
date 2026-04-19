@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type Structure = {
   id: string;
@@ -93,30 +94,14 @@ const NeckCrossSectionDiagram = () => {
 
   return (
     <div className="my-6">
-      <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-        <div>
-          <h3 className="text-lg font-semibold text-foreground">
-            Cross-Section of Neck at C6 Level
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            Tap a structure to explore its contents and clinical relevance.
-          </p>
-        </div>
-        <div className="flex gap-1.5 text-xs">
-          <button
-            onClick={() => setShowSutures((v) => !v)}
-            className={`px-2 py-1 rounded border transition-colors ${showSutures ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
-          >
-            Detail {showSutures ? "✓" : "○"}
-          </button>
-          <button
-            onClick={() => setShowLabels((v) => !v)}
-            className={`px-2 py-1 rounded border transition-colors ${showLabels ? "border-primary bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"}`}
-          >
-            Labels {showLabels ? "✓" : "○"}
-          </button>
-        </div>
-      </div>
+      <DiagramToggleBar
+        title="Cross-Section of Neck at C6 Level"
+        subtitle="Tap a structure to explore its contents and clinical relevance."
+        toggles={[
+          { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
+          { label: "Labels", active: showLabels, onChange: () => setShowLabels(v => !v) },
+        ]}
+      />
       <div className="flex flex-col lg:flex-row gap-4">
         <svg viewBox="0 0 500 500" className="w-full max-w-[500px] mx-auto" style={{ background: "hsl(var(--card))" }}>
           <defs>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramToggleBar } from "./DiagramToggleBar";
 
 interface Foramen {
   id: string;
@@ -270,31 +271,13 @@ const SkullBaseDiagram = () => {
   return (
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
-          <h4 className="text-sm font-semibold text-foreground">
-            Internal Surface of the Skull Base — Cranial Nerve Foramina
-          </h4>
-          <div className="flex gap-2 text-[11px]">
-            <button
-              type="button"
-              onClick={() => setShowSutures((s) => !s)}
-              className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-                showSutures ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-              }`}
-            >
-              Sutures
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowLabels((s) => !s)}
-              className={`px-2 py-0.5 rounded-md border border-border transition-colors ${
-                showLabels ? "bg-primary/15 text-foreground" : "bg-background text-muted-foreground"
-              }`}
-            >
-              Labels
-            </button>
-          </div>
-        </div>
+        <DiagramToggleBar
+          title="Internal Surface of the Skull Base — Cranial Nerve Foramina"
+          toggles={[
+            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+          ]}
+        />
 
         <div className="flex flex-wrap gap-3 justify-center mb-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
