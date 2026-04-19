@@ -392,12 +392,23 @@ const NeckCrossSectionDiagram = () => {
           {showLabels && (!selected || selected === "scm") ? (
             <text x="385" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
           ) : null}
+          {/* SCM fibre overlay */}
+          {showSutures && (
+            <>
+              <ellipse cx="130" cy="195" rx="27" ry="13" transform="rotate(-30 130 195)" fill="url(#ncx-muscleFibre)" opacity={opacity("scm") * 0.7} pointerEvents="none" />
+              <ellipse cx="370" cy="195" rx="27" ry="13" transform="rotate(30 370 195)" fill="url(#ncx-muscleFibre)" opacity={opacity("scm") * 0.7} pointerEvents="none" />
+            </>
+          )}
 
           {/* Trapezius (posterior) */}
           <ellipse cx="145" cy="340" rx="30" ry="12" transform="rotate(40 145 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
           <ellipse cx="355" cy="340" rx="30" ry="12" transform="rotate(-40 355 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
-          <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
-          <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+          {showLabels && (
+            <>
+              <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+              <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+            </>
+          )}
 
           {/* Vertebral artery in transverse foramen */}
           <circle cx="195" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
