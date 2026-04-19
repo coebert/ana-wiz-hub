@@ -146,7 +146,7 @@ const InteractiveDermatomeMap = () => {
               <title>{`${d.level} — ${d.landmark}`}</title>
             </polygon>
             {/* Level label on selected */}
-            {isSel && d[side] && (() => {
+            {isSel && showLabels && d[side] && (() => {
               const pts = d[side]!.split(" ").map((p) => p.split(",").map(Number));
               const cx = pts.reduce((s, [x]) => s + x, 0) / pts.length;
               const cy = pts.reduce((s, [, y]) => s + y, 0) / pts.length;
@@ -160,33 +160,40 @@ const InteractiveDermatomeMap = () => {
         );
       })}
 
-      <text x="100" y="10" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(var(--foreground))">
-        {side === "anterior" ? "ANTERIOR" : "POSTERIOR"}
-      </text>
+      {showLabels && (
+        <text x="100" y="10" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(var(--foreground))">
+          {side === "anterior" ? "ANTERIOR" : "POSTERIOR"}
+        </text>
+      )}
     </svg>
   );
 
   return (
-    <div className="my-6 rounded-lg border border-border bg-card p-4">
-      <p className="text-sm font-semibold text-foreground mb-1 text-center">
-        Interactive Dermatome Map
-      </p>
-      <p className="text-xs text-muted-foreground text-center mb-4">
-        Click any dermatome to highlight its spinal cord level
-      </p>
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4">
+        <DiagramToggleBar
+          title="Interactive dermatome map"
+          subtitle="Click any dermatome on the body to highlight its spinal cord level."
+          toggles={[
+            { label: "Posterior view", active: showPosterior, onChange: () => setShowPosterior((s) => !s) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+          ]}
+        />
 
-      <div className="grid lg:grid-cols-[1fr_1fr_auto] gap-4 items-start">
-        {/* Anterior body */}
-        <div>
-          <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Anterior view</p>
-          {renderBody("anterior")}
-        </div>
+        <div className={`grid gap-4 items-start ${showPosterior ? "lg:grid-cols-[1fr_1fr_auto]" : "lg:grid-cols-[1fr_auto]"}`}>
+          {/* Anterior body */}
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Anterior view</p>
+            {renderBody("anterior")}
+          </div>
 
-        {/* Posterior body */}
-        <div>
-          <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Posterior view</p>
-          {renderBody("posterior")}
-        </div>
+          {/* Posterior body */}
+          {showPosterior && (
+            <div>
+              <p className="text-xs font-semibold text-muted-foreground text-center mb-1">Posterior view</p>
+              {renderBody("posterior")}
+            </div>
+          )}
 
         {/* Coupled cord */}
         <div className="lg:w-48">
