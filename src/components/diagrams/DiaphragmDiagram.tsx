@@ -184,37 +184,64 @@ export const DiaphragmDiagram = () => {
         <text x="175" y="365" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">Splanchnic nn.</text>
         <text x="175" y="374" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.3">(pierce crura)</text>
 
-        {/* ===== ANTERIOR / POSTERIOR labels ===== */}
-        <text x="250" y="22" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">ANTERIOR</text>
-        <text x="250" y="398" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.3" fontWeight="600">POSTERIOR</text>
-        <text x="30" y="260" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.25" transform="rotate(-90, 30, 260)">RIGHT</text>
-        <text x="475" y="260" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.25" transform="rotate(90, 475, 260)">LEFT</text>
-      </svg>
+        {/* ===== Compass labels (gated by Labels) ===== */}
+        {showLabels && (
+          <g pointerEvents="none">
+            <text x="250" y="22" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600">ANTERIOR</text>
+            <text x="250" y="412" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600">POSTERIOR</text>
+            <text x="14" y="215" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600">RIGHT</text>
+            <text x="475" y="215" fontSize="9" fill="hsl(var(--muted-foreground))" opacity="0.5" fontWeight="600">LEFT</text>
+          </g>
+        )}
+        </svg>
 
-      {/* Info cards */}
-      <div className="grid sm:grid-cols-3 gap-2">
-        {hiatus.map((h, i) => (
-          <button
-            key={h.name}
-            onClick={() => setActive(active === i ? null : i)}
-            className={`text-left p-3 rounded-lg border transition-all ${active === i ? "border-primary bg-primary/5 shadow-sm" : "border-border hover:border-primary/40"}`}
+        <p className="text-xs text-center text-muted-foreground mt-2 italic">
+          <span className="font-semibold not-italic text-foreground">"I 8 10 Eggs At 12" — </span>
+          IVC at T8, oEsophagus at T10, Aorta at T12.
+        </p>
+
+        {/* Hiatus chips */}
+        <div className="grid sm:grid-cols-3 gap-2 mt-3">
+          {hiatus.map((h, i) => (
+            <button
+              key={h.name}
+              onClick={() => setActive(i)}
+              aria-pressed={active === i}
+              className={`text-left p-3 rounded-lg border transition-all ${active === i ? "border-primary bg-primary/5 shadow-sm" : "border-border hover:border-primary/40"}`}
+            >
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: h.color }} />
+                <span className="font-semibold text-foreground text-sm">{h.name}</span>
+                <span className="text-xs font-bold ml-auto" style={{ color: h.color }}>{h.level}</span>
+              </div>
+              <p className="text-xs text-muted-foreground">{h.contents}</p>
+            </button>
+          ))}
+        </div>
+
+        {/* Standardised detail panel */}
+        <div className="mt-4 min-h-[110px]">
+          <div
+            className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+            style={{ borderLeftWidth: 4, borderLeftColor: item.color }}
           >
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: h.color }} />
-              <span className="font-semibold text-foreground text-sm">{h.name}</span>
-              <span className="text-xs font-bold ml-auto" style={{ color: h.color }}>{h.level}</span>
+            <div className="flex items-center justify-between gap-2">
+              <p className="font-semibold text-foreground text-sm">{item.name}</p>
+              <span
+                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                style={{ background: `${item.color}26`, color: item.color }}
+              >
+                {item.level}
+              </span>
             </div>
-            <p className="text-xs text-muted-foreground">{h.contents}</p>
-          </button>
-        ))}
-      </div>
-
-      <div className="text-xs text-muted-foreground p-3 rounded-lg border border-border bg-secondary/20 space-y-1">
-        <p><strong className="text-foreground">Key relationships:</strong></p>
-        <p>• IVC foramen (T8) passes through the <em>central tendon</em> — contracts during inspiration, aiding venous return</p>
-        <p>• Oesophageal hiatus (T10) passes through the <em>right crus</em> — acts as a sphincter mechanism</p>
-        <p>• Aortic hiatus (T12) passes <em>behind</em> the crura (not through the diaphragm) — aorta is not compressed during contraction</p>
-        <p>• Mnemonic: <strong>"I 8 10 Eggs At 12"</strong> — IVC at T8, oEsophagus at T10, Aorta at T12</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Transmits:</span> {item.contents}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-foreground">Clinical:</span> {item.clinical}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
