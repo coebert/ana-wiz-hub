@@ -134,7 +134,7 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
   const uid = block.shortLabel;
 
   return (
-    <svg viewBox="0 0 180 200" className="w-full max-w-[200px] mx-auto" role="img" aria-label={`Conduction tree showing ${block.label}`}>
+    <svg viewBox="0 0 180 200" className="w-full max-w-none sm:max-w-[200px] mx-auto" role="img" aria-label={`Conduction tree showing ${block.label}`}>
       <defs>
         <radialGradient id={`bbb-bg-${uid}`} cx="50%" cy="40%" r="65%">
           <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />

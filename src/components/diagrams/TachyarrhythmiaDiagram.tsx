@@ -171,7 +171,7 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
   const uid = tachy.shortLabel;
 
   return (
-    <svg viewBox="0 0 180 200" className="w-full max-w-[200px] mx-auto" role="img" aria-label={`Conduction tree showing ${tachy.label}`}>
+    <svg viewBox="0 0 180 200" className="w-full max-w-none sm:max-w-[200px] mx-auto" role="img" aria-label={`Conduction tree showing ${tachy.label}`}>
       <defs>
         <radialGradient id={`tachy-bg-${uid}`} cx="50%" cy="40%" r="65%">
           <stop offset="0%" stopColor="hsl(var(--anatomy))" stopOpacity="0.18" />
