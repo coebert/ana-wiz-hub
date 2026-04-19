@@ -58,7 +58,7 @@ const CervicalPlexusDiagram = () => {
   const rootY: Record<string, number> = { C1: 50, C2: 80, C3: 110, C4: 140, C5: 170 };
 
   return (
-    <div className="border border-border rounded-lg p-4 mb-6">
+    <PlexusCard>
       <DiagramToggleBar
         title="Cervical Plexus (C1–C4)"
         subtitle="Tap a branch to see roots, anatomy, and clinical relevance"
