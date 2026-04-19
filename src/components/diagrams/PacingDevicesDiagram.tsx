@@ -10,7 +10,18 @@ interface DeviceInfo {
   indication: string;
   pathophys: string;
   pearl: string;
+  complications: string[];
 }
+
+// Generic complications shared by any transvenous lead-based device
+const COMMON_TRANSVENOUS = [
+  "Pneumothorax (subclavian puncture, ~1–2%)",
+  "Pocket haematoma / infection",
+  "Lead displacement (early, especially RA & LV)",
+  "Twiddler's syndrome — patient rotates generator → lead dislodgement",
+  "Generator pocket erosion / chronic pain",
+  "Venous thrombosis / SVC obstruction",
+];
 
 const DEVICES: Record<DeviceId, DeviceInfo> = {
   AAI: {
@@ -21,6 +32,11 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "Sick sinus syndrome with intact AV conduction",
     pathophys: "Single RA lead paces and senses the atrium; no ventricular backup.",
     pearl: "Avoid if any AV nodal disease — risk of asystole if AV block develops.",
+    complications: [
+      "Progression to AV block → asystole (no ventricular backup)",
+      "RA lead displacement (appendage is unstable site)",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   VVI: {
     id: "VVI",
@@ -30,6 +46,12 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "Permanent AF with slow ventricular response; bail-out single-lead",
     pathophys: "Single RV apical lead paces ventricle on demand. No AV synchrony.",
     pearl: "Pacemaker syndrome from loss of AV synchrony — fatigue, dyspnoea, cannon a-waves.",
+    complications: [
+      "Pacemaker syndrome (loss of AV synchrony)",
+      "RV apical pacing-induced cardiomyopathy (chronic dyssynchrony)",
+      "RV lead perforation → tamponade",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   DDD: {
     id: "DDD",
@@ -39,6 +61,12 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "AV block (Mobitz II, complete) with sinus rhythm; preserves AV synchrony",
     pathophys: "RA lead tracks intrinsic P-waves; RV lead delivers paced QRS after programmed AV delay.",
     pearl: "Mode-switches to DDI/VVI during AT/AF to prevent rapid ventricular tracking.",
+    complications: [
+      "Pacemaker-mediated tachycardia (endless-loop via retrograde P)",
+      "Cross-talk (atrial output sensed on V channel) → V output inhibited",
+      "Lead displacement (RA more common than RV)",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   "CRT-P": {
     id: "CRT-P",
@@ -48,6 +76,13 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "HFrEF (EF ≤ 35%), LBBB with QRS ≥ 130 ms, NYHA II–IV on optimal medical therapy",
     pathophys: "Simultaneous (or sequential) RV + LV pacing resynchronises septal-lateral wall contraction.",
     pearl: "Aim for > 95% biventricular capture; phrenic nerve stimulation is the classic LV-lead complication.",
+    complications: [
+      "Phrenic nerve stimulation (LV lead — diaphragmatic twitching)",
+      "LV lead dislodgement (coronary sinus — highest of all leads)",
+      "Coronary sinus dissection during implant",
+      "Loss of biventricular capture → CRT non-responder",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   "CRT-D": {
     id: "CRT-D",
@@ -57,6 +92,14 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "CRT indications + primary/secondary VT/VF prevention (e.g. ischaemic CM, EF ≤ 35%)",
     pathophys: "Adds tiered therapy: ATP, then synchronised cardioversion, then defibrillation.",
     pearl: "Most modern CRT implants are CRT-D unless frailty / short prognosis favours CRT-P.",
+    complications: [
+      "Inappropriate shocks (AF, lead noise, T-wave oversensing)",
+      "Phrenic nerve stimulation from LV lead",
+      "LV lead dislodgement",
+      "Electrical storm (≥ 3 shocks in 24 h)",
+      "Psychological impact of shocks",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   ICD: {
     id: "ICD",
@@ -66,6 +109,14 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "Secondary prevention (VF/VT arrest); primary in EF ≤ 35%, HCM, LQTS, Brugada with risk factors",
     pathophys: "Senses VT/VF, delivers ATP for VT, biphasic shock (30–40 J) for VF.",
     pearl: "Magnet over generator suspends shock therapy — use perioperatively with diathermy.",
+    complications: [
+      "Inappropriate shocks (most common — AF, SVT, T-wave oversensing, lead fracture)",
+      "Lead fracture / insulation breach → noise → spurious shocks",
+      "Failure to defibrillate (rare; check DFT)",
+      "Diathermy-induced inappropriate therapy (use magnet perioperatively)",
+      "Electrical storm; psychological morbidity",
+      ...COMMON_TRANSVENOUS,
+    ],
   },
   leadless: {
     id: "leadless",
@@ -75,6 +126,14 @@ const DEVICES: Record<DeviceId, DeviceInfo> = {
     indication: "Bradycardia in AF, limited venous access, high infection risk, dialysis patients",
     pathophys: "Self-contained pacemaker delivered via femoral vein, tined into RV septum.",
     pearl: "No pocket, no lead — eliminates pocket infection and lead fracture; battery ~ 12 yrs.",
+    complications: [
+      "Femoral vascular access complications (haematoma, AV fistula, pseudoaneurysm)",
+      "Cardiac perforation / tamponade at deployment (~1%)",
+      "Device embolisation",
+      "Dislodgement (rare once tined)",
+      "End-of-life: device left in situ, new one implanted (no extraction)",
+      "Same VVI dyssynchrony issues as transvenous VVI",
+    ],
   },
 };
 
@@ -203,6 +262,10 @@ const PacingDevicesDiagram = () => {
               </div>
               <HeartWithLeads device={d} />
               <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{d.indication}</p>
+              <div className="mt-1.5 pt-1.5 border-t border-border/60">
+                <p className="text-[9px] font-semibold text-destructive/80 uppercase tracking-wide mb-0.5">⚠ Top complication</p>
+                <p className="text-[10px] text-muted-foreground line-clamp-2">{d.complications[0]}</p>
+              </div>
             </button>
           );
         })}
@@ -226,6 +289,19 @@ const PacingDevicesDiagram = () => {
             <div className="sm:col-span-2">
               <p className="font-semibold text-foreground mb-0.5">Clinical pearl</p>
               <p className="text-muted-foreground">{detail.pearl}</p>
+            </div>
+            <div className="sm:col-span-2 mt-1 pt-2 border-t border-primary/20">
+              <p className="font-semibold text-destructive mb-1 flex items-center gap-1">
+                <span aria-hidden>⚠</span> Complications
+              </p>
+              <ul className="space-y-0.5">
+                {detail.complications.map((c, i) => (
+                  <li key={i} className="text-muted-foreground flex gap-1.5 leading-snug">
+                    <span className="text-destructive/70 flex-shrink-0">•</span>
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
