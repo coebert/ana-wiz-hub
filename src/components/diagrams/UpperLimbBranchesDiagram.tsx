@@ -279,7 +279,7 @@ const UpperLimbBranchesDiagram = () => {
           ? "Select a nerve to trace its course (anterior + posterior) and see motor / sensory / clinical pearls."
           : "Select a regional block — covered nerves and their sensory zones light up; missed nerves are listed."}
         toggles={[
-          { id: "labels", label: "Labels", value: showLabels, onChange: setShowLabels },
+          { id: "labels", label: "Labels", value: showLabels, onChange: () => setShowLabels((v) => !v) },
         ]}
       />
 
@@ -309,7 +309,7 @@ const UpperLimbBranchesDiagram = () => {
       {detail}
 
       {mode === "branches" ? (
-        <PlexusChipRow
+        <PlexusChipRow<NerveKey>
           items={(Object.keys(NERVES) as NerveKey[]).map((k) => ({
             key: k, label: NERVES[k].label, color: NERVE_COLOR[k],
           }))}
@@ -317,7 +317,7 @@ const UpperLimbBranchesDiagram = () => {
           onSelect={setSelectedNerve}
         />
       ) : (
-        <PlexusChipRow
+        <PlexusChipRow<BlockKey>
           items={(Object.keys(BLOCKS) as BlockKey[]).map((k) => ({
             key: k, label: BLOCKS[k].label, color: "hsl(var(--clinical))",
           }))}
