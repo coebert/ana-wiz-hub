@@ -410,8 +410,8 @@ const BundleBranchBlockDiagram = () => {
         ) : (
           <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
             <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
-              <TreeMini block={info} color={info.color} />
+            <div className="flex flex-col gap-3">
+              <TreeMini block={info} color={info.color} hero />
               <div className="min-w-0 space-y-1.5">
                 <div className="flex gap-2">
                   <Waveform label="V1" kind={info.v1} color={info.color} wide={info.qrsWide} />
