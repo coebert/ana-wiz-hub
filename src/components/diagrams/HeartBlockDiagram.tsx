@@ -498,7 +498,7 @@ const HeartBlockDiagram = () => {
                   </div>
 
                   {showPacing && (
-                    <div className="mt-3 pt-3 border-t border-border/60 flex gap-3 items-center">
+                    <div className="mt-3 pt-3 border-t border-border/60 flex flex-col sm:flex-row gap-3 sm:items-center">
                       <PaceOverlay block={b} />
                       <div className="min-w-0 flex-1 space-y-1">
                         <div className="flex items-center gap-1.5 flex-wrap">
@@ -533,7 +533,7 @@ const HeartBlockDiagram = () => {
               </div>
             </div>
             {showPacing && (
-              <div className="mt-3 pt-3 border-t border-border/60 flex gap-3 items-center">
+              <div className="mt-3 pt-3 border-t border-border/60 flex flex-col sm:flex-row gap-3 sm:items-center">
                 <PaceOverlay block={info} />
                 <div className="min-w-0 flex-1 space-y-1">
                   <div className="flex items-center gap-1.5 flex-wrap">
