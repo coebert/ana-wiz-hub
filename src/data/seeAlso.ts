@@ -63,7 +63,7 @@ export const seeAlsoMap: Record<string, string[]> = {
 
   // ── Anatomy ──
   
-  "cardiac-anatomy": ["cardiac-cycle", "cardiac-electrophysiology", "cardiothoracic", "thoracic-anatomy"],
+  "cardiac-anatomy": ["cardiac-cycle", "cardiac-electrophysiology", "cardiothoracic", "thoracic-anatomy", "arrhythmias-ecg-icu"],
   "spinal-anatomy": ["regional-anaesthesia", "neuroanatomy", "spinal-cord-injury"],
   "brachial-plexus": ["regional-anaesthesia", "lower-limb-anatomy", "upper-limb-anatomy"],
   "upper-limb-anatomy": ["regional-anaesthesia", "lower-limb-anatomy", "head-neck-anatomy", "thoracic-anatomy"],
@@ -116,6 +116,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "acid-base": ["abg-analyser", "renal-physiology", "aki-rrt"],
   "ards": ["mechanical-ventilation", "ventilation-perfusion", "circulatory-failure", "lung-mechanics", "bronchospastic-failure", "pulmonary-hypertension"],
   "bronchospastic-failure": ["mechanical-ventilation", "ards", "respiratory-disease", "lung-mechanics", "volatile-agents", "icu-sedation-delirium", "circulatory-failure", "ventilators"],
+  "arrhythmias-ecg-icu": ["cardiac-electrophysiology", "cardiac-anatomy", "antiarrhythmics", "defibrillation-pacing", "circulatory-failure", "cardiovascular-disease", "toxicology", "acid-base"],
   "icu-nutrition": ["gi-physiology", "aki-rrt", "sepsis"],
   "transfusion-coagulation": ["haematology-immunity", "anticoagulants", "haematology-icu", "trauma-emergency"],
   "icu-sedation-delirium": ["neurointensive-care", "elderly-anaesthesia", "opioids", "prognostication-ethics-icu"],
