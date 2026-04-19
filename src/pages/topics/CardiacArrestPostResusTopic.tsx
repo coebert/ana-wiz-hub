@@ -13,6 +13,8 @@ import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
+import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
+import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
@@ -226,7 +228,9 @@ const CardiacArrestPostResusTopic = () => {
             therapy.
           </p>
 
-          <PostCardiacArrestProgDiagram />
+          <ExpandableEcgCard content={postArrestProgContent}>
+            {() => <PostCardiacArrestProgDiagram />}
+          </ExpandableEcgCard>
 
           <div className="mt-4 p-3 rounded-lg border border-icu/30 bg-icu/5">
             <p className="text-sm font-semibold text-foreground mb-1">Confounders that must be excluded first</p>
@@ -299,7 +303,9 @@ const CardiacArrestPostResusTopic = () => {
             <p className="text-xs text-muted-foreground mb-3">
               The same EEG depth scale used for anaesthesia mapping (below) also frames post-ROSC interpretation: a reactive, continuous background after rewarming is reassuring, while persistent burst-suppression or isoelectricity at ≥ 72 h (off sedation) carries grave significance.
             </p>
-            <EEGTraceDiagram />
+            <ExpandableEcgCard content={eegTraceContent}>
+              {() => <EEGTraceDiagram />}
+            </ExpandableEcgCard>
           </div>
 
           <div className="mt-4">
