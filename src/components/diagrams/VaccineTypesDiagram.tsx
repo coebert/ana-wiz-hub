@@ -270,11 +270,12 @@ export const VaccineTypesDiagram = () => {
             </div>
           </div>
 
-          {/* Memory + durability */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {/* Memory + durability + boosters + cold chain */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <MetaCard label="Memory profile" value={active.memory} color={active.color} />
             <MetaCard label="Durability" value={active.durability} color={active.color} />
             <MetaCard label="Boosters" value={active.boosters} color={active.color} />
+            <MetaCard label="Cold chain / storage" value={active.coldChain} color={active.color} icon="❄" />
           </div>
 
           {/* Examples */}
