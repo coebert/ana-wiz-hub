@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
+import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
