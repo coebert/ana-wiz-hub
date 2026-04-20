@@ -8,6 +8,8 @@ import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeComparisonDiagram";
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
+import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
+import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
