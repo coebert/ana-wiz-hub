@@ -16,11 +16,13 @@ export const SupportSection = () => {
   const [type, setType] = useState<FormType>("topic");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — real users leave blank
   const [sending, setSending] = useState(false);
 
   const resetForm = () => {
     setSubject("");
     setMessage("");
+    setWebsite("");
     setType("topic");
   };
 
@@ -30,7 +32,7 @@ export const SupportSection = () => {
     setSending(true);
     try {
       const { data, error } = await supabase.functions.invoke("send-feedback", {
-        body: { type, subject, message },
+        body: { type, subject, message, website },
       });
       if (error || (data as any)?.error) {
         throw new Error((data as any)?.error ?? error?.message ?? "Send failed");
@@ -40,7 +42,12 @@ export const SupportSection = () => {
       setFeedbackOpen(false);
     } catch (err) {
       console.error(err);
-      toast.error("Couldn't send feedback. Please try again later.");
+      const msg = err instanceof Error ? err.message : "";
+      if (msg.toLowerCase().includes("too many")) {
+        toast.error("Too many submissions — please wait a few minutes.");
+      } else {
+        toast.error("Couldn't send feedback. Please try again later.");
+      }
     } finally {
       setSending(false);
     }
@@ -123,6 +130,28 @@ export const SupportSection = () => {
             </div>
 
             <form onSubmit={handleSend} className="space-y-3">
+              {/* Honeypot — hidden from real users, bots fill it */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-10000px",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden",
+                }}
+              >
+                <label htmlFor="website-url-hp">Website (leave blank)</label>
+                <input
+                  id="website-url-hp"
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
               <div className="flex gap-2">
                 <button
                   type="button"
