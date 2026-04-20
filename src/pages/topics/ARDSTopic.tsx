@@ -641,6 +641,19 @@ const ARDSTopic = () => {
             </table>
           </div>
 
+          <DiagramSection
+            title="Interactive Decision Tree — 'Should I Give Steroids?'"
+            intro={
+              <p>
+                Walk through severity, suspected pathogen, shock status and contraindications to get an evidence-based
+                regimen at the leaf node. Synthesises CAPE COD 2023, RECOVERY 2021, ATS/IDSA 2024, ESICM/SCCM 2024 and
+                Bozzette 1990 into a single bedside aid.
+              </p>
+            }
+          >
+            <PneumoniaSteroidDecisionTree />
+          </DiagramSection>
+
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Adverse effects to monitor</h3>
           <p className="text-muted-foreground leading-relaxed">
             Hyperglycaemia (most common, often requires insulin infusion), secondary bacterial / fungal infections (CAPA risk in COVID), GI bleeding (co-prescribe PPI), neuropsychiatric effects, ICU-acquired weakness (synergistic with NMB), and <strong>strongyloides hyperinfection</strong> in patients from endemic areas — give empirical ivermectin if recent travel/residence and unable to test promptly.
