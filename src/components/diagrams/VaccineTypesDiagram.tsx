@@ -22,6 +22,7 @@ interface VaccineData {
   memory: string;
   durability: string;
   boosters: string;
+  coldChain: string;
   pros: string[];
   cons: string[];
   anaesthetic: string[];
@@ -39,6 +40,7 @@ const VACCINES: VaccineData[] = [
     memory: "Broad and long-lived: high-affinity IgG, memory B, memory CD4⁺ Th1 and CD8⁺ CTL",
     durability: "Decades to lifelong (often 1–2 doses)",
     boosters: "Rarely needed — MMR ×2, YF single dose now considered lifelong (WHO 2016)",
+    coldChain: "Strict — most stored 2–8 °C; MMR/varicella/YF reconstituted vials discarded after 1–6 h. BCG and freeze-dried YF need protection from light. Disrupted cold chain = denatured vaccine.",
     pros: ["Strongest, most complete immunity (cellular + humoral + mucosal for some)", "Few doses required"],
     cons: ["Risk of disease in immunocompromised", "Cold chain", "Reversion to virulence (OPV → VAPP)"],
     anaesthetic: [
@@ -58,6 +60,7 @@ const VACCINES: VaccineData[] = [
     memory: "Predominantly humoral (IgG via Th2/Tfh); minimal CD8⁺ priming as antigen does not enter cytoplasm",
     durability: "Years; boosters often required",
     boosters: "Periodic — annual influenza, every 10 yr rabies pre-exposure",
+    coldChain: "Standard refrigeration 2–8 °C. Robust — better thermostability than live vaccines. NEVER freeze (alum adjuvant aggregates → loss of potency).",
     pros: ["Safe in immunocompromised and pregnancy", "Stable", "No reversion risk"],
     cons: ["Weaker, shorter-lived response", "Multiple doses + adjuvant often required", "Poor mucosal immunity"],
     anaesthetic: [
@@ -76,6 +79,7 @@ const VACCINES: VaccineData[] = [
     memory: "Strong humoral; conjugation to carrier protein (CRM197, tetanus toxoid) converts T-independent polysaccharide → T-dependent response with class switch and memory",
     durability: "Years to decades with conjugate; pure polysaccharide (PPV23) gives ~5 yr only",
     boosters: "Conjugate: long-lived; PPV23: 5 yearly in asplenic",
+    coldChain: "Standard 2–8 °C; do NOT freeze (alum/AS01 adjuvants damaged). Generally robust — suitable for low-resource settings.",
     pros: ["Very safe — no infectious material", "Suitable for immunocompromised", "Targeted antigen → fewer reactogenic side effects"],
     cons: ["Often need adjuvant (alum, AS01, AS04)", "Limited CTL response"],
     anaesthetic: [
@@ -95,6 +99,7 @@ const VACCINES: VaccineData[] = [
     memory: "Anti-toxin neutralising IgG, T-cell help via carrier — robust and long-lived",
     durability: "10 years",
     boosters: "Booster every 10 yr; tetanus-prone wound → assess immunisation status, give booster ± tetanus immunoglobulin (TIG)",
+    coldChain: "Standard 2–8 °C, do not freeze. Among the most thermostable vaccines — tolerates short excursions; ideal for field use.",
     pros: ["Excellent neutralising antibody", "Very safe"],
     cons: ["Only protects against toxin-mediated disease, not colonisation"],
     anaesthetic: [
@@ -113,6 +118,7 @@ const VACCINES: VaccineData[] = [
     memory: "Balanced humoral + cellular; strong CD8⁺ priming because antigen synthesised endogenously and loaded on MHC-I",
     durability: "Months to ~1 year for circulating IgG; T-cell memory more durable",
     boosters: "Variant-updated boosters required (e.g. annually for COVID-19 in high-risk groups)",
+    coldChain: "Ultra-cold originally — Pfizer/BNT162b2 −80 to −60 °C, Moderna −25 to −15 °C. Now relaxed to 2–8 °C for limited days. LNP fragility = the central logistical challenge of mRNA platforms.",
     pros: ["Rapid design & manufacture (<2 weeks from sequence)", "No infectious material", "Strong cellular + humoral arm"],
     cons: ["Cold chain (−70 °C original, now relaxed)", "Reactogenicity (myalgia, fever)", "Rare myocarditis in young males (1 in ~30,000)"],
     anaesthetic: [
@@ -132,6 +138,7 @@ const VACCINES: VaccineData[] = [
     memory: "Strong humoral and CD8⁺ CTL via endogenous antigen expression; anti-vector immunity may limit boosting",
     durability: "Months to years; heterologous prime-boost (vector + mRNA) often used",
     boosters: "Anti-vector immunity reduces efficacy of repeat doses with same vector",
+    coldChain: "Standard 2–8 °C — major advantage over mRNA. ChAdOx1 stable for 6 months refrigerated; well-suited to low-resource settings (the original rationale for the Oxford platform).",
     pros: ["Strong cellular + humoral response", "Single-dose options (Ad26.COV2.S)", "Good thermostability vs mRNA"],
     cons: ["Anti-vector immunity", "Vaccine-induced thrombotic thrombocytopenia (VITT) with ChAdOx1/Ad26 — rare but serious"],
     anaesthetic: [
@@ -148,6 +155,17 @@ const ARM_LABELS: { key: keyof ImmuneArmScore; label: string; subtitle: string }
   { key: "cd8Ctl", label: "CD8⁺ Cytotoxic", subtitle: "Kills infected cells (MHC-I)" },
   { key: "mucosalIgA", label: "Mucosal IgA", subtitle: "Secretory IgA at portal of entry" },
 ];
+
+const coldChainShort = (k: VaccineKey): string => {
+  switch (k) {
+    case "live": return "2–8 °C, strict";
+    case "inactivated": return "2–8 °C, no freeze";
+    case "subunit": return "2–8 °C, no freeze";
+    case "toxoid": return "2–8 °C, robust";
+    case "mrna": return "−80 to −20 °C";
+    case "vector": return "2–8 °C, 6 mo";
+  }
+};
 
 export const VaccineTypesDiagram = () => {
   const [selected, setSelected] = useState<VaccineKey>("live");
@@ -223,10 +241,23 @@ export const VaccineTypesDiagram = () => {
                   ))}
                 </tr>
               ))}
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-2">
+                  <div className="font-medium text-foreground flex items-center gap-1">
+                    <span aria-hidden>❄</span> Cold chain
+                  </div>
+                  <div className="text-[10px] text-muted-foreground">Storage temperature</div>
+                </td>
+                {VACCINES.map(v => (
+                  <td key={v.key} className="text-center py-2 px-1 text-[10px] text-muted-foreground leading-tight">
+                    {coldChainShort(v.key)}
+                  </td>
+                ))}
+              </tr>
             </tbody>
           </table>
           <p className="text-[10px] text-muted-foreground mt-2 italic">
-            Bars: 0 = none, 4 = strongest. Live attenuated and mRNA/vector platforms uniquely prime CD8⁺ CTLs because antigen reaches MHC-I from the cytoplasm.
+            Bars: 0 = none, 4 = strongest. Live attenuated and mRNA/vector platforms uniquely prime CD8⁺ CTLs because antigen reaches MHC-I from the cytoplasm. mRNA's ultra-cold chain remains its biggest deployment hurdle.
           </p>
         </div>
       ) : (
@@ -263,11 +294,12 @@ export const VaccineTypesDiagram = () => {
             </div>
           </div>
 
-          {/* Memory + durability */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {/* Memory + durability + boosters + cold chain */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <MetaCard label="Memory profile" value={active.memory} color={active.color} />
             <MetaCard label="Durability" value={active.durability} color={active.color} />
             <MetaCard label="Boosters" value={active.boosters} color={active.color} />
+            <MetaCard label="Cold chain / storage" value={active.coldChain} color={active.color} icon="❄" />
           </div>
 
           {/* Examples */}
@@ -297,9 +329,10 @@ const ArmStrengthBar = ({ score, color }: { score: number; color: string }) => (
   </div>
 );
 
-const MetaCard = ({ label, value, color }: { label: string; value: string; color: string }) => (
+const MetaCard = ({ label, value, color, icon }: { label: string; value: string; color: string; icon?: string }) => (
   <div className="rounded-lg border border-border p-2.5">
-    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color }}>
+    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1 flex items-center gap-1" style={{ color }}>
+      {icon && <span aria-hidden>{icon}</span>}
       {label}
     </div>
     <div className="text-xs text-muted-foreground leading-relaxed">{value}</div>
