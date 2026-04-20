@@ -6,6 +6,8 @@ import { painMedicineQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
+import { DiagramSection } from "@/components/DiagramSection";
+import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 
 const PainMedicineTopic = () => {
   return (
@@ -160,6 +162,17 @@ const PainMedicineTopic = () => {
             </p>
           </div>
         </div>
+
+        <DiagramSection
+          title="Nociceptive vs Neuropathic vs Nociplastic — Mechanism Comparison"
+          intro={
+            <p>
+              Modern pain medicine recognises three distinct mechanism categories (IASP). The lesion site, signalling biology, exemplar conditions and the drugs that work — or do harm — are different for each. Click a mechanism to see the lesion site light up on the pathway above and the targeted treatment vs low-value options.
+            </p>
+          }
+        >
+          <PainMechanismsDiagram />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specialised Multidisciplinary Pain Teams</h2>
