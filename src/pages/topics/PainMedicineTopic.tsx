@@ -9,6 +9,7 @@ import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynaps
 import { DiagramSection } from "@/components/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
+import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
 
 const PainMedicineTopic = () => {
   return (
@@ -408,6 +409,19 @@ const PainMedicineTopic = () => {
             }
           >
             <OpioidConversionCalculator />
+          </DiagramSection>
+
+          <DiagramSection
+            title="PCA / NCA + Epidural Prescribing Calculator"
+            intro={
+              <p>
+                Weight-based PCA (morphine, fentanyl, oxycodone) and epidural infusion rates with adult and paediatric
+                variants. Includes APAGBI-aligned NCA settings for children &lt;6 yr, infant LA-toxicity ceilings, and
+                APM/RCoA monitoring requirements.
+              </p>
+            }
+          >
+            <PcaEpiduralCalculator />
           </DiagramSection>
           <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Interventional Techniques — When Opioids Fail</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
