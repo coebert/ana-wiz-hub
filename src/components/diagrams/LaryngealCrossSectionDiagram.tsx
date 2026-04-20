@@ -177,7 +177,7 @@ const LaryngealCrossSectionDiagram = () => {
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
       <DiagramToggleBar
-        title="Laryngeal Anatomy — Sagittal Cross-Section"
+        title="Laryngeal Anatomy — Coronal Cross-Section"
         subtitle="Tap any structure to see its anatomy and anaesthetic relevance"
         toggles={[
           { label: "Sutures", active: showSutures, onChange: () => setShowSutures(v => !v) },
@@ -187,7 +187,7 @@ const LaryngealCrossSectionDiagram = () => {
 
       <Tabs defaultValue="sagittal">
         <TabsList className="grid w-full grid-cols-3 mb-3">
-          <TabsTrigger value="sagittal" className="text-xs">Sagittal View</TabsTrigger>
+          <TabsTrigger value="sagittal" className="text-xs">Coronal View</TabsTrigger>
           <TabsTrigger value="axial" className="text-xs">Axial (Superior)</TabsTrigger>
           <TabsTrigger value="muscles" className="text-xs">Intrinsic Muscles</TabsTrigger>
         </TabsList>
