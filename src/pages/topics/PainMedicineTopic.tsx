@@ -310,6 +310,170 @@ const PainMedicineTopic = () => {
             </div>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cancer Pain Management</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Pain affects ~55% of patients during cancer treatment and ~66% of those with advanced disease (van den Beuken-van Everdingen, 2016). Despite decades of guidance it remains <strong>under-treated in around one-third</strong> of patients (the "pain treatment gap"). Modern cancer pain care is mechanism-based, multimodal, integrated with oncology and palliative care, and increasingly involves interventional techniques alongside opioids.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">WHO Analgesic Ladder — Revisited (2018 update)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The original 1986 three-step ladder remains a useful teaching framework but has been substantially refined. The <strong>WHO 2018 cancer-pain guideline</strong> moved away from the rigid stepwise progression in favour of <em>tailoring opioid choice and route to pain severity and mechanism from the outset</em>. Key updates:
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Original 3-step ladder (1986)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Step 1:</strong> Non-opioid (paracetamol, NSAID) ± adjuvant</li>
+                <li><strong>Step 2:</strong> Weak opioid (codeine, tramadol) ± non-opioid ± adjuvant</li>
+                <li><strong>Step 3:</strong> Strong opioid (morphine) ± non-opioid ± adjuvant</li>
+                <li>By the clock, by the mouth, by the ladder, for the individual, attention to detail</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Modern modifications</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Step 2 increasingly skipped — start <strong>low-dose strong opioid</strong> (morphine 5 mg q4h) for moderate–severe pain (better titration, fewer ceiling effects).</li>
+                <li><strong>4th step</strong> proposed: interventional techniques (neuraxial, neurolytic blocks, intrathecal delivery, neuromodulation) for refractory pain.</li>
+                <li>Adjuvants are <em>not optional add-ons</em> — they're the cornerstone for neuropathic and bone pain.</li>
+                <li>Mechanism-based selection: bone (NSAID + bisphosphonate ± radiotherapy), neuropathic (gabapentinoid/TCA/SNRI), visceral (opioid + antispasmodic), inflammatory (steroid).</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border-l-4 border-clinical bg-secondary/30 mb-3">
+            <p className="font-semibold text-foreground text-sm mb-1">Breakthrough cancer pain (BTcP)</p>
+            <p className="text-sm text-muted-foreground">
+              Defined as a transient exacerbation of pain on a background of otherwise controlled chronic pain. Affects ~60% of cancer-pain patients. Manage with a <strong>rescue dose = 1/6 to 1/10 of the 24-h oral morphine equivalent</strong> (immediate-release oral morphine, oxycodone IR or, for incident/predictable pain with rapid onset, <strong>transmucosal/intranasal fentanyl</strong>). If &gt;3–4 rescue doses/day are needed, increase the background dose by ~30–50%.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Opioid Rotation (Switching)</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Indicated when (1) analgesia is inadequate despite dose escalation, (2) intolerable side effects (sedation, hallucinations, myoclonus, constipation, hyperalgesia), (3) tolerance, or (4) renal impairment requiring a safer opioid. The basis is <strong>incomplete cross-tolerance</strong> between opioids — different μ-receptor binding, intracellular signalling and active metabolites mean a different opioid often achieves analgesia at a lower equianalgesic dose with a better side-effect profile.
+          </p>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Opioid</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Equianalgesic ratio (oral morphine = 1)</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Oral morphine</td><td>1 (reference)</td><td>Active metabolites M3G (neurotoxic) and M6G (analgesic) accumulate in renal failure.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Oral oxycodone</td><td>~1.5–2× more potent</td><td>30 mg morphine ≈ 15–20 mg oxycodone. Less histamine release; partial CYP2D6 metabolism.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Oral hydromorphone</td><td>~5–7× more potent</td><td>Useful in renal impairment; smaller volumes for SC infusion.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Transdermal fentanyl</td><td>25 µg/h ≈ 60–90 mg oral morphine/day</td><td>Useful for stable pain, dysphagia, bowel obstruction, renal failure. NOT for opioid-naïve or unstable pain.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Transdermal buprenorphine</td><td>5 µg/h ≈ ~10–15 mg oral morphine/day</td><td>Partial agonist with high receptor affinity; safe in renal impairment; ceiling for respiratory depression.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">SC morphine</td><td>2× oral morphine</td><td>Common in palliative syringe drivers (with anti-emetic ± hyoscine).</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Methadone</td><td>Variable (5–15× depending on dose)</td><td>NMDA antagonism, no active metabolites — useful in refractory neuropathic pain. Long, unpredictable half-life — <strong>specialist initiation only</strong>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mb-3">
+            <p className="font-semibold text-foreground text-sm mb-1">Safe rotation principles</p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mt-1">
+              <li>Calculate the 24-h oral morphine equivalent dose (OMEDD).</li>
+              <li>Convert to the equianalgesic dose of the new opioid using a published table.</li>
+              <li><strong>Reduce by 25–50%</strong> for incomplete cross-tolerance (50% reduction if elderly, frail, renal/hepatic impairment, very high doses).</li>
+              <li>Provide rescue at 1/6 of the new 24-h dose; titrate up over 2–3 days.</li>
+              <li>Methadone rotation requires a <strong>different ratio at higher OMEDDs</strong> and is typically done under specialist palliative care supervision, often with admission.</li>
+            </ul>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Interventional Techniques — When Opioids Fail</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Approximately <strong>10–20% of cancer-pain patients</strong> have pain refractory to systemic analgesia or develop intolerable side effects. Interventional ("4th-step") techniques can achieve dramatic improvements and reduce systemic opioid burden.
+          </p>
+
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="font-semibold text-foreground text-sm">Coeliac plexus block / neurolysis</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              <strong>Indication:</strong> upper-abdominal visceral pain — particularly <strong>pancreatic cancer</strong>, also gastric, hepatic and biliary malignancy. The coeliac plexus (T5–T12 sympathetic afferents) lies anterolateral to the aorta at L1.
+            </p>
+            <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+              <li><strong>Approaches:</strong> percutaneous posterior (CT- or fluoroscopy-guided, retrocrural or anterocrural), anterior trans-aortic, or <strong>endoscopic ultrasound-guided</strong> (transgastric — increasingly the technique of choice when EUS expertise is available).</li>
+              <li><strong>Diagnostic block</strong> with local anaesthetic first; <strong>neurolysis</strong> with 50–100% absolute alcohol (or 6% phenol) if effective.</li>
+              <li><strong>Evidence:</strong> Wong RCT (2004, JAMA) and Cochrane (Arcidiacono 2011) — significant pain reduction and ~40–50% lower opioid requirement vs systemic analgesia alone in pancreatic cancer; possibly improved quality of life. Effect lasts weeks–months.</li>
+              <li><strong>Complications:</strong> orthostatic hypotension (sympathetic blockade), diarrhoea (unopposed parasympathetic), back pain, retroperitoneal haemorrhage; rare but devastating <strong>paraplegia</strong> from inadvertent injection into the artery of Adamkiewicz.</li>
+              <li>Best performed <strong>early</strong> in pancreatic cancer pain rather than as a last resort — outcomes correlate inversely with disease burden.</li>
+            </ul>
+          </div>
+
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="font-semibold text-foreground text-sm">Other neurolytic / interventional options by site</p>
+            <div className="overflow-x-auto mt-2">
+              <table className="w-full text-sm border-collapse">
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Hypogastric plexus block</td><td>Pelvic visceral pain (cervical, prostate, rectal cancer).</td></tr>
+                  <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Ganglion impar block</td><td>Perineal / coccygeal pain (rectal, anal, vulval cancer).</td></tr>
+                  <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Stellate ganglion block</td><td>Head/neck/upper-limb sympathetic pain; post-radiation neuropathy.</td></tr>
+                  <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Intercostal / paravertebral neurolysis</td><td>Chest-wall metastases, post-thoracotomy pain in cancer.</td></tr>
+                  <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">Vertebral augmentation (kyphoplasty / vertebroplasty)</td><td>Painful vertebral metastases / pathological compression fractures.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Cordotomy (percutaneous cervical)</td><td>Unilateral cancer pain below C5 with limited prognosis (e.g. mesothelioma); largely confined to specialist UK centres.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Intrathecal Drug Delivery (IDD) Pumps</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Implanted programmable pump (e.g. Medtronic SynchroMed) delivering analgesia directly into the CSF via a tunnelled intrathecal catheter. Allows analgesia at <strong>~1/300 of the equivalent oral morphine dose</strong>, dramatically reducing systemic side effects.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Indications &amp; evidence</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Refractory cancer pain (life expectancy ≥3 months, failed systemic opioids).</li>
+                <li>Refractory non-cancer pain (chronic spinal pain, FBSS) — more controversial; PACC (Polyanalgesic Consensus Conference) 2017 guidelines.</li>
+                <li><strong>Smith RCT (2002, J Clin Oncol):</strong> IDD vs comprehensive medical management in cancer pain — better pain control, fewer toxicities, and a 6-month survival benefit (likely from reduced opioid morbidity).</li>
+                <li>Always preceded by a <strong>trial</strong> (intrathecal bolus, continuous external infusion, or epidural) before permanent implant.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Drugs (PACC 2017 recommendations)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>First-line:</strong> intrathecal morphine, ziconomide, or hydromorphone.</li>
+                <li><strong>Adjuncts:</strong> bupivacaine (for incident/somatic pain), clonidine, baclofen (for spasticity-related pain).</li>
+                <li><strong>Conversion:</strong> oral morphine : IV morphine : epidural morphine : intrathecal morphine ≈ <strong>300 : 100 : 10 : 1</strong>.</li>
+                <li><strong>Complications:</strong> infection / meningitis, catheter migration or kinking, granuloma at catheter tip (especially with high-dose morphine), pump malfunction, <strong>opioid withdrawal or overdose if pump fails</strong> — patients carry a wallet card and need 24/7 access to a specialist centre.</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Palliative Care Multidisciplinary Team</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cancer pain is rarely a pain problem alone — Cicely Saunders' concept of <strong>"total pain"</strong> (physical, psychological, social, spiritual) demands an MDT response. Early integration of palliative care (Temel NEJM 2010 — early palliative care in metastatic NSCLC improved quality of life <em>and</em> survival) is now a cornerstone of oncology practice.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Core MDT membership</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Palliative care consultant</strong> (medicine of palliative care)</li>
+                <li><strong>Pain physician</strong> (FPM-accredited anaesthetist) for interventional input</li>
+                <li><strong>Oncologist</strong> &amp; clinical nurse specialist (CNS)</li>
+                <li><strong>Specialist palliative care nurse</strong> (community / hospice / hospital)</li>
+                <li><strong>Pharmacist</strong> — complex polypharmacy, syringe-driver compatibility, controlled drug supply</li>
+                <li><strong>Psychologist / psychiatrist</strong>, social worker, occupational therapist, physiotherapist</li>
+                <li><strong>Chaplain / spiritual care</strong>, bereavement support</li>
+                <li>Family / informal carers as central members of the team</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Service structure (UK)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Hospital specialist palliative care team</strong> — inpatient referrals, complex symptom control, end-of-life care planning.</li>
+                <li><strong>Community palliative care</strong> — Macmillan / Marie Curie nurses, GPs, district nurses; supports preferred place of care/death.</li>
+                <li><strong>Hospices</strong> — inpatient (symptom control, end-of-life), day units, hospice-at-home.</li>
+                <li><strong>Anaesthetic / pain interventional clinics</strong> — coeliac plexus, IDD, neuromodulation.</li>
+                <li><strong>Advance care planning</strong>: ReSPECT process, DNACPR discussions, lasting power of attorney, preferred place of care.</li>
+                <li>End-of-life care guided by individualised care plans (replaced the discredited Liverpool Care Pathway after Neuberger 2013).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
@@ -321,6 +485,11 @@ const PainMedicineTopic = () => {
         "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
         "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
         "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
+        "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential",
+        "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only",
+        "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz",
+        "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain",
+        "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'",
       ]} />
 
       <QuizSection questions={painMedicineQuestions} />
