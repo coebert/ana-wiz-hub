@@ -5,6 +5,9 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
+import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
