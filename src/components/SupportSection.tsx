@@ -29,7 +29,7 @@ export const SupportSection = () => {
   };
 
   return (
-    <section className="container mx-auto px-4 pb-12">
+    <section id="support" className="container mx-auto px-4 pb-12 scroll-mt-20">
       <div className="max-w-3xl mx-auto rounded-xl border border-border bg-card p-6 md:p-8">
         <div className="flex items-start gap-3 mb-4">
           <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" />
