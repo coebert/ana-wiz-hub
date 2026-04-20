@@ -5,6 +5,7 @@ import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
 import { Section, topicsBySection } from "@/data/curriculum";
+import { SupportSection } from "@/components/SupportSection";
 
 const sections: {
   title: string;
@@ -178,6 +179,8 @@ const Index = () => {
           })}
         </div>
       </section>
+
+      <SupportSection />
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
