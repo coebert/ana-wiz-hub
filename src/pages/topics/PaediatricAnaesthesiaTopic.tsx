@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
 import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
+import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentSizer";
 import { DiagramSection } from "@/components/DiagramSection";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
@@ -50,19 +51,18 @@ const PaediatricAnaesthesiaTopic = () => {
           <PaediatricPhysiologyDiagram />
         </DiagramSection>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ETT Size & Drug Doses</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">ETT Sizing</p>
-              <p className="text-sm text-muted-foreground mt-1">Uncuffed: age/4 + 4. Cuffed: age/4 + 3.5. Length (oral): age/2 + 12 cm. Neonate: 3.0–3.5 mm (term).</p>
-            </div>
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Key Drug Doses</p>
-              <p className="text-sm text-muted-foreground mt-1">Propofol: 3–5 mg/kg (neonates need more per kg). Suxamethonium: 2 mg/kg IV (children have ↑Vd). Atropine: 20 µg/kg. Adrenaline: 10 µg/kg (cardiac arrest).</p>
-            </div>
-          </div>
-        </div>
+        <DiagramSection
+          title="Paediatric Equipment Sizer + Emergency Drug Doses"
+          intro={
+            <p>
+              An interactive WETFLAG-extended tool: enter age <em>or</em> measured weight and get every airway tube, supraglottic
+              device, drainage catheter, vascular access size, defibrillator setting and emergency drug dose recalculated live.
+              Use it to brief the team before paediatric induction or at the start of any resus.
+            </p>
+          }
+        >
+          <PaediatricEquipmentSizer />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Common Paediatric Scenarios</h2>
