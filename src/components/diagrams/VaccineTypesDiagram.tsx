@@ -156,6 +156,17 @@ const ARM_LABELS: { key: keyof ImmuneArmScore; label: string; subtitle: string }
   { key: "mucosalIgA", label: "Mucosal IgA", subtitle: "Secretory IgA at portal of entry" },
 ];
 
+const coldChainShort = (k: VaccineKey): string => {
+  switch (k) {
+    case "live": return "2–8 °C, strict";
+    case "inactivated": return "2–8 °C, no freeze";
+    case "subunit": return "2–8 °C, no freeze";
+    case "toxoid": return "2–8 °C, robust";
+    case "mrna": return "−80 to −20 °C";
+    case "vector": return "2–8 °C, 6 mo";
+  }
+};
+
 export const VaccineTypesDiagram = () => {
   const [selected, setSelected] = useState<VaccineKey>("live");
   const [compareMode, setCompareMode] = useState(false);
