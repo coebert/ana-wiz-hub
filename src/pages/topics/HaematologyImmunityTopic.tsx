@@ -107,6 +107,20 @@ const HaematologyImmunityTopic = () => {
           </div>
         </div>
 
+        <DiagramSection
+          title="Interactive: Immune Response Timeline"
+          intro="Toggle between bacterial vs viral pathogens and naïve vs re-exposed states. The pathogen-burden curve, swimlane phases and cellular players all redraw — re-exposure suppresses the burden curve almost entirely, illustrating why vaccination works."
+        >
+          <ImmuneResponseTimelineDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Antibody Kinetics — Primary vs Secondary"
+          intro="Log-titre plot of IgM and IgG across a first exposure (day 0) and re-challenge (day 28). The secondary IgG response is faster (1–3 days), larger (100–1000× higher peak) and predominantly class-switched — the immunological basis of vaccination."
+        >
+          <AntibodyKineticsDiagram />
+        </DiagramSection>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naïve vs Secondary Response — at a glance</h2>
           <div className="overflow-x-auto">
