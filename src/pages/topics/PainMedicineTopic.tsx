@@ -485,6 +485,11 @@ const PainMedicineTopic = () => {
         "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
         "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
         "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
+        "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential",
+        "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only",
+        "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz",
+        "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain",
+        "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'",
       ]} />
 
       <QuizSection questions={painMedicineQuestions} />
