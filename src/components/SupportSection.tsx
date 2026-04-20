@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Heart, MessageSquare, ExternalLink, X, Send } from "lucide-react";
-
-const CONTACT_EMAIL = "coebert@gmail.com";
+import { Heart, MessageSquare, ExternalLink, X, Send, Loader2 } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 // PayPal.me works for any personal PayPal account — no charity/business
 // enrollment required (unlike paypal.com/donate which is gated to PayPal
 // Giving Fund-enrolled organisations). Set this to your PayPal.me handle
@@ -16,15 +16,34 @@ export const SupportSection = () => {
   const [type, setType] = useState<FormType>("topic");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
 
-  const handleSend = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setSubject("");
+    setMessage("");
+    setType("topic");
+  };
+
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    const prefix = type === "topic" ? "[Topic request]" : "[Possible error]";
-    const mailSubject = `${prefix} ${subject || "AnaesthesiaCore feedback"}`;
-    const body = `${message}\n\n— Sent from AnaesthesiaCore`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      mailSubject,
-    )}&body=${encodeURIComponent(body)}`;
+    if (sending) return;
+    setSending(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-feedback", {
+        body: { type, subject, message },
+      });
+      if (error || (data as any)?.error) {
+        throw new Error((data as any)?.error ?? error?.message ?? "Send failed");
+      }
+      toast.success("Feedback sent — thank you!");
+      resetForm();
+      setFeedbackOpen(false);
+    } catch (err) {
+      console.error(err);
+      toast.error("Couldn't send feedback. Please try again later.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -168,17 +187,26 @@ export const SupportSection = () => {
               </div>
 
               <p className="text-[11px] text-muted-foreground">
-                This opens your email app with a message addressed to{" "}
-                <span className="font-mono">{CONTACT_EMAIL}</span>. Hit send in
-                your mail client to deliver it.
+                Your message is sent directly to the AnaesthesiaCore team — no
+                email app needed.
               </p>
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                <Send className="h-4 w-4" />
-                Open in email app
+                {sending ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" />
+                    Send feedback
+                  </>
+                )}
               </button>
             </form>
           </div>
