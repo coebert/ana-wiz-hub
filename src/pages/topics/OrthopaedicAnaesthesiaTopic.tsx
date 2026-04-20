@@ -113,6 +113,17 @@ const OrthopaedicAnaesthesiaTopic = () => {
           </p>
         </div>
 
+        <DiagramSection
+          title="Single-shot vs Continuous Catheter — Analgesic Profile over 72 h"
+          intro={
+            <p>
+              The two regional strategies produce very different pain trajectories. Hover the timeline to read pain scores at any timepoint, and click a phase chip (or band) to see what is happening pharmacologically and clinically. The single-shot curve illustrates the wear-off cliff and rebound peak that dominate day-case patient experience; the catheter curve shows the smoother profile that underpins ambulatory pump programmes.
+            </p>
+          }
+        >
+          <BlockAnalgesiaProfileDiagram />
+        </DiagramSection>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Day-Case Joint Replacement — Evidence</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
