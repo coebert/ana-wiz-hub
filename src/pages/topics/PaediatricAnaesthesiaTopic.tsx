@@ -211,6 +211,9 @@ const PaediatricAnaesthesiaTopic = () => {
         "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5",
         "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency",
         "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children",
+        "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS",
+        "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA",
+        "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement",
       ]} />
 
       <QuizSection questions={paediatricAnaesthesiaQuestions} />
