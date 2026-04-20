@@ -1,6 +1,7 @@
 import { SectionLayout } from "@/components/SectionLayout";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
+import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
@@ -37,6 +38,17 @@ const PaediatricAnaesthesiaTopic = () => {
             </table>
           </div>
         </div>
+
+        <DiagramSection
+          title="Paediatric Physiology vs Adult — Interactive Comparison"
+          intro={
+            <p>
+              Click a system on the infant silhouette (or a chip below) to see neonate, infant and child values side-by-side with the adult reference. Use this to internalise <em>which</em> values change <em>when</em> — and the practical anaesthetic implication for each system.
+            </p>
+          }
+        >
+          <PaediatricPhysiologyDiagram />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ETT Size & Drug Doses</h2>
