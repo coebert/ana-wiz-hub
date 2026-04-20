@@ -4,6 +4,8 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
+import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
+import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -38,6 +40,13 @@ const ObstetricAnaesthesiaTopic = () => {
             </table>
           </div>
         </div>
+
+        <DiagramSection
+          title="Pregnancy Physiology — Interactive Summary"
+          intro="Click a system on the silhouette (or the chip row) to see direction, magnitude and the key anaesthetic implication for each major change."
+        >
+          <PregnancyPhysiologyDiagram />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthesia for Caesarean Section</h2>
