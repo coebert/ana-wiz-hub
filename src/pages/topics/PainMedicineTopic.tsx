@@ -8,6 +8,7 @@ import { SeeAlso } from "@/components/SeeAlso";
 import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
+import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
 
 const PainMedicineTopic = () => {
   return (
@@ -396,6 +397,18 @@ const PainMedicineTopic = () => {
             </ul>
           </div>
 
+          <DiagramSection
+            title="Interactive Opioid Conversion Calculator"
+            intro={
+              <p>
+                Translate the current opioid regimen into 24-h <strong>OMEDD</strong>, then rotate to a target opioid with the
+                standard 25–50% incomplete cross-tolerance reduction applied automatically. Use the high-risk toggle for
+                elderly/frail patients, renal/hepatic impairment, very high doses, or patch rotations.
+              </p>
+            }
+          >
+            <OpioidConversionCalculator />
+          </DiagramSection>
           <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Interventional Techniques — When Opioids Fail</h3>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Approximately <strong>10–20% of cancer-pain patients</strong> have pain refractory to systemic analgesia or develop intolerable side effects. Interventional ("4th-step") techniques can achieve dramatic improvements and reduce systemic opioid burden.
