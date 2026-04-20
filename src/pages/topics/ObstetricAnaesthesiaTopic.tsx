@@ -41,6 +41,13 @@ const ObstetricAnaesthesiaTopic = () => {
           </div>
         </div>
 
+        <DiagramSection
+          title="Pregnancy Physiology — Interactive Summary"
+          intro="Click a system on the silhouette (or the chip row) to see direction, magnitude and the key anaesthetic implication for each major change."
+        >
+          <PregnancyPhysiologyDiagram />
+        </DiagramSection>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthesia for Caesarean Section</h2>
           <div className="grid sm:grid-cols-2 gap-3">
