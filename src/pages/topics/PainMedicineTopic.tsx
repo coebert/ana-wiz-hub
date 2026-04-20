@@ -146,13 +146,169 @@ const PainMedicineTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Chronic Pain — General Principles</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Chronic pain is defined (IASP / ICD-11, 2019) as pain that persists or recurs for &gt;3 months. It is now formally recognised as a <strong>disease in its own right</strong> when it cannot be better explained by another condition (chronic primary pain) — encompassing fibromyalgia, chronic primary low back pain, primary headaches and CRPS. The dominant biological substrate is <strong>central sensitisation / nociplastic pain</strong>: amplified central nervous system processing without ongoing tissue or nerve damage. Genetic predisposition, adverse childhood experiences, sleep disruption, mood disorder and autonomic dysregulation all contribute.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Modern guidance (<strong>NICE NG193, 2021</strong>) marks a deliberate shift away from pharmacological and procedural management of chronic primary pain toward <strong>supported self-management, exercise, psychological therapy and acupuncture</strong>. Notably, paracetamol, NSAIDs, opioids, gabapentinoids and benzodiazepines are <em>not</em> recommended for chronic primary pain (excluding established neuropathic pain, which still follows NICE CG173). Antidepressants (amitriptyline, citalopram, duloxetine, fluoxetine, paroxetine, sertraline) <em>can</em> be considered.
+          </p>
+          <div className="p-4 rounded-lg border-l-4 border-clinical bg-secondary/30">
+            <p className="font-semibold text-foreground text-sm mb-1">Biopsychosocial model — the modern formulation</p>
+            <p className="text-sm text-muted-foreground">
+              Pain experience = biological inputs (peripheral &amp; central nociception, inflammation, autonomic) × psychological factors (catastrophising, fear-avoidance, depression, PTSD) × social context (work, relationships, deprivation, healthcare access). Treating any single domain in isolation typically fails — hence the central role of multidisciplinary teams.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specialised Multidisciplinary Pain Teams</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            UK chronic-pain services are organised in tiers per the <strong>British Pain Society / FPM Core Standards (2021)</strong> and the <strong>NHS Long Term Plan</strong>. Specialised pain MDTs offer the best functional outcomes for complex, refractory or high-impact chronic pain.
+          </p>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Tier</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Setting</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Role</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">1 — Self-management</td><td>Community / online</td><td>Patient education, exercise apps, peer-support, NHS "Live Well with Pain" resources.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">2 — Primary care</td><td>GP, practice physio, social prescriber</td><td>Initial assessment, NICE NG193 / CG173 first-line management, screening for red/yellow flags.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">3 — Community pain MDT</td><td>Pain physician/GPwER, physio, psychologist</td><td>Pain Management Programmes (PMPs), assessment for tier-4 referral.</td></tr>
+                <tr className="border-b border-border align-top"><td className="py-2 font-medium text-foreground">4 — Specialist hospital MDT</td><td>Tertiary pain centre</td><td>Complex/refractory pain, interventional procedures (radiofrequency, neuromodulation, intrathecal pumps), opioid stewardship clinics.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">5 — Highly specialised</td><td>Supraregional commissioned centre (NHS England SCS service)</td><td>Spinal cord stimulation, intrathecal drug delivery, paediatric chronic pain, complex CRPS, post-amputation pain.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Core MDT membership</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Pain physician(s)</strong> (consultant anaesthetist with FPM accreditation, ± neurologist, ± rheumatologist)</li>
+                <li><strong>Clinical psychologist</strong> trained in CBT / ACT for pain</li>
+                <li><strong>Specialist physiotherapist</strong> (graded activity, pacing, desensitisation)</li>
+                <li><strong>Occupational therapist</strong> (functional adaptation, vocational rehab)</li>
+                <li><strong>Specialist pain nurse</strong> (medication review, opioid taper, self-management coaching)</li>
+                <li><strong>Pharmacist</strong> (deprescribing, complex polypharmacy)</li>
+                <li>Liaison psychiatry, social worker, peer-support worker as required</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pain Management Programmes (PMPs)</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                Group-based, intensive (typically 8 × half-day or 5 × full-day) programmes combining CBT/ACT, paced exercise, education and goal-setting. <strong>Strongest evidence base of any chronic-pain intervention</strong> — Cochrane 2012 (Williams) and subsequent reviews show medium-effect-size improvements in disability, mood and self-efficacy that <em>persist at 12 months</em>, even where pain intensity itself changes little. The aim is restored function, not abolition of pain.
+              </p>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border-l-4 border-destructive bg-destructive/5 mt-3">
+            <p className="font-semibold text-foreground text-sm">Opioid stewardship</p>
+            <p className="text-sm text-muted-foreground mt-1">
+              The <strong>FPM "Opioids Aware"</strong> resource and the <strong>Royal College "Painkillers Don't Exist"</strong> campaign emphasise that long-term opioids are rarely effective for chronic non-cancer pain and carry harms (hyperalgesia, hormonal suppression, falls, dependence). Specialist MDTs increasingly run dedicated opioid-tapering clinics; doses &gt;120 mg oral morphine equivalents per day rarely confer additional benefit and should prompt review.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fibromyalgia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Prevalence ~2–4%, F:M ~3:1. Now diagnosed using the <strong>2016 revised ACR criteria</strong>: Widespread Pain Index (WPI) ≥7 + Symptom Severity Score (SSS) ≥5 (or WPI 4–6 + SSS ≥9) for ≥3 months, with no condition that better explains the pain. The original 1990 tender-point criteria are obsolete.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mechanism — current evidence</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Nociplastic pain</strong> — augmented central pain processing (functional MRI shows enhanced activation of insula, S1/S2, ACC; reduced descending inhibition from PAG/RVM).</li>
+                <li>Elevated <strong>substance P</strong> and <strong>glutamate</strong> in CSF; reduced serotonin, noradrenaline and dopamine signalling.</li>
+                <li>Evidence of <strong>small-fibre neuropathy</strong> on skin biopsy in ~40% (Üçeyler 2013) — challenges the purely "central" view.</li>
+                <li>Strong genetic component (heritability ~50%); polymorphisms in catecholamine and serotonin transporter genes.</li>
+                <li>Frequent comorbidities: IBS, migraine, restless legs, depression, anxiety, sleep disorder.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Best-evidenced management (EULAR 2016)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Aerobic + strengthening exercise</strong> — strongest single evidence (Cochrane Bidonde 2017). Graded, low-impact (swimming, cycling, tai chi).</li>
+                <li><strong>CBT / ACT</strong> — improves function and mood; effect persists at 12 months.</li>
+                <li><strong>Multicomponent rehabilitation</strong> (PMP) — recommended for refractory cases.</li>
+                <li><strong>Pharmacological (selected patients):</strong> amitriptyline 10–50 mg ON, duloxetine 60 mg OD, pregabalin 150–450 mg/day, low-dose naltrexone (emerging — Younger 2013).</li>
+                <li><strong>Avoid:</strong> NSAIDs (ineffective), opioids (worsen central sensitisation, FDA black-box for tramadol misuse), corticosteroids.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myalgic Encephalomyelitis / Chronic Fatigue Syndrome (ME/CFS)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Diagnosed clinically (<strong>NICE NG206, 2021</strong>; IOM 2015 criteria) by ≥3 months of <strong>debilitating fatigue + post-exertional malaise (PEM) + unrefreshing sleep + cognitive dysfunction or orthostatic intolerance</strong>, after exclusion of alternative diagnoses. Often follows a viral illness; long-COVID overlaps clinically and may share mechanisms.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mechanism — current evidence</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Mitochondrial / bioenergetic dysfunction</strong> — impaired oxidative phosphorylation, abnormal lactate kinetics on repeat CPET (Snell 2013, Davenport 2019).</li>
+                <li><strong>Neuroinflammation</strong> — PET imaging shows microglial activation in cingulate, thalamus and midbrain (Nakatomi 2014).</li>
+                <li><strong>Autonomic dysregulation</strong> — high prevalence of POTS / orthostatic intolerance.</li>
+                <li><strong>Immune dysregulation</strong> — altered NK-cell function, persistent cytokine signatures (IL-1β, IL-6, TNF-α).</li>
+                <li><strong>HPA-axis hypofunction</strong> — mild hypocortisolism in many patients.</li>
+                <li>Long-COVID has revitalised mechanistic research; significant overlap suggests shared post-viral pathophysiology.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Management (NICE NG206)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Energy management ("pacing")</strong> within an individual energy envelope is the cornerstone — <em>not</em> graded exercise therapy (GET), which NG206 explicitly removed after the PACE trial controversies and patient harm reports.</li>
+                <li>CBT may be offered to <strong>support coping</strong>, but is no longer presented as curative.</li>
+                <li>Symptom-targeted treatment: sleep hygiene, low-dose amitriptyline for pain/sleep, postural management for POTS (compression, salt, fludrocortisone).</li>
+                <li>Avoid: prescribed exercise programmes, "psychogenic" framing, dismissing PEM.</li>
+                <li><strong>Anaesthetic implications:</strong> heightened sensitivity to opioids and sedatives; risk of post-operative crash; plan day-case carefully; consider regional anaesthesia; warn re: prolonged recovery.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Complex Regional Pain Syndrome (CRPS)</h2>
-          <p className="text-muted-foreground leading-relaxed mb-2">
-            Budapest criteria: continuing pain disproportionate to inciting event + signs/symptoms in ≥3 of 4 categories (sensory, vasomotor, sudomotor/oedema, motor/trophic) + signs in ≥2 categories at examination.
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Disabling regional pain syndrome typically following a (often minor) limb injury or surgery. <strong>CRPS-I</strong> = no identifiable nerve lesion (~90%); <strong>CRPS-II</strong> = following identifiable peripheral nerve injury. Female:male ~3–4:1, peak 40–60 yr. Diagnosed clinically using the <strong>Budapest criteria (Harden 2010, IASP-endorsed)</strong>:
           </p>
-          <p className="text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Treatment:</strong> MDT approach — physiotherapy (essential), psychology, pharmacology (neuropathic agents), sympathetic blocks, spinal cord stimulation, mirror therapy.
-          </p>
+          <div className="p-4 rounded-lg bg-secondary/30 border border-border mb-3">
+            <p className="font-semibold text-foreground text-sm mb-1">Budapest criteria — all four must be met</p>
+            <ol className="list-decimal list-inside text-sm text-muted-foreground space-y-1">
+              <li>Continuing pain disproportionate to any inciting event.</li>
+              <li><strong>Symptoms</strong> reported in ≥3 of 4 categories: sensory (hyperalgesia, allodynia); vasomotor (temperature/skin colour asymmetry); sudomotor/oedema (sweating, swelling); motor/trophic (weakness, tremor, dystonia, hair/nail/skin changes).</li>
+              <li><strong>Signs</strong> at examination in ≥2 of the same 4 categories.</li>
+              <li>No alternative diagnosis better explains the signs and symptoms.</li>
+            </ol>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mechanisms — current understanding</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Peripheral:</strong> neurogenic inflammation (substance P, CGRP, bradykinin), small-fibre denervation, microvascular dysfunction.</li>
+                <li><strong>Autonomic:</strong> early sympathetic dysregulation → vasomotor/sudomotor changes; later sympatho-adrenergic receptor up-regulation.</li>
+                <li><strong>Central:</strong> cortical reorganisation (shrinkage of S1 representation of affected limb — Maihöfner 2003), central sensitisation, altered body schema.</li>
+                <li><strong>Immune:</strong> auto-antibodies against β2-adrenergic and M2 muscarinic receptors (Goebel 2011) — basis for IVIG trials.</li>
+                <li><strong>Genetic:</strong> HLA associations; family clustering reported.</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Best-evidenced management (RCP / BPS 2018; Goebel 2018)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Early MDT referral &amp; rehabilitation is the single most important intervention</strong> — outcomes are time-critical (better if treated &lt;6 months).</li>
+                <li><strong>Physiotherapy:</strong> graded motor imagery (laterality recognition → imagined movement → mirror therapy — Moseley 2004), desensitisation, functional restoration.</li>
+                <li><strong>Psychology:</strong> CBT, ACT, addressing fear-avoidance and kinesiophobia.</li>
+                <li><strong>Pharmacology:</strong> neuropathic agents (amitriptyline, duloxetine, gabapentinoids); short course of oral steroids in early/inflammatory phase (Christensen 1982); bisphosphonates (zoledronate / pamidronate — Varenna 2013) have RCT support in early CRPS with bone marrow oedema.</li>
+                <li><strong>Interventional (selected, refractory):</strong> sympathetic blocks (limited evidence — Cochrane O'Connell 2016 found no significant effect); <strong>spinal cord stimulation</strong> NICE TA159 — best-evidenced interventional therapy, sustained benefit at 5 yr (Kemler 2008); ketamine infusion; intrathecal baclofen for CRPS dystonia.</li>
+                <li><strong>Prevention:</strong> Vitamin C 500 mg/day for 50 days post wrist fracture reduces CRPS incidence (Zollinger 2007; meta-analysis Aïm 2017) — recommended by RCP guideline.</li>
+                <li><strong>Avoid:</strong> immobilisation, repeat surgery on the affected limb, opioid escalation.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
