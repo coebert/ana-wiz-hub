@@ -9,6 +9,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
 import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
+import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
