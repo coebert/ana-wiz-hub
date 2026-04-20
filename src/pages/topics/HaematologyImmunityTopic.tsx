@@ -9,6 +9,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
 import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
+import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -127,6 +128,13 @@ const HaematologyImmunityTopic = () => {
           intro="Select a type to compare mechanism, time course, classic examples, diagnostic tests and the anaesthetic-specific correlates. The log-scale timeline strip overlays all four so you can see at a glance why Type I is a theatre emergency in minutes while Type IV contact dermatitis takes 48–72 h."
         >
           <HypersensitivityComparisonDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Vaccine Platforms — Which Immune Arm?"
+          intro="Pick a platform (live, inactivated, subunit/conjugate, toxoid, mRNA, viral vector) to see which arms of the immune system it preferentially primes, the resulting memory profile and the perioperative implications. Switch to Compare mode for a side-by-side matrix of B-cell, CD4⁺, CD8⁺ and mucosal IgA strength."
+        >
+          <VaccineTypesDiagram />
         </DiagramSection>
 
         <div>
