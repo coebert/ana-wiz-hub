@@ -5,6 +5,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
+import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumLegWeaknessDecisionTree";
 import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
@@ -469,6 +470,13 @@ const ObstetricAnaesthesiaTopic = () => {
             Reference: OAA/RCoA <em>Management of postpartum nerve injuries</em> (2023); NAP3 (RCoA, 2009); Wong et al., <em>Anesthesiology</em> 2003 — incidence of postpartum nerve injury 0.92%.
           </p>
         </div>
+
+        <DiagramSection
+          title="Interactive: Postpartum Leg Weakness Decision Tree"
+          intro="Use the 5-step walkthrough below to triage postpartum leg weakness or sensory disturbance — the tool flags time-critical neuraxial pathology requiring urgent MRI versus the much commoner intrinsic obstetric nerve palsies and musculoskeletal causes."
+        >
+          <PostpartumLegWeaknessDecisionTree />
+        </DiagramSection>
       </section>
 
       <KeyLearningPoints points={[
