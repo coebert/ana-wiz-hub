@@ -130,6 +130,28 @@ export const SupportSection = () => {
             </div>
 
             <form onSubmit={handleSend} className="space-y-3">
+              {/* Honeypot — hidden from real users, bots fill it */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-10000px",
+                  width: "1px",
+                  height: "1px",
+                  overflow: "hidden",
+                }}
+              >
+                <label htmlFor="website-url-hp">Website (leave blank)</label>
+                <input
+                  id="website-url-hp"
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                />
+              </div>
               <div className="flex gap-2">
                 <button
                   type="button"
