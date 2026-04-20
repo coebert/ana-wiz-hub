@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -110,6 +112,17 @@ const OrthopaedicAnaesthesiaTopic = () => {
             <strong className="text-foreground">Evidence:</strong> Williams (2007), Sunderland (2016) and the PROSPECT TKA recommendations (2022) all stress that without a structured "transition analgesia" plan, day-case regional anaesthesia simply <em>delays</em> rather than reduces pain. Continuous catheters (see below) are one solution; pre-emptive multimodal oral analgesia is the other.
           </p>
         </div>
+
+        <DiagramSection
+          title="Single-shot vs Continuous Catheter — Analgesic Profile over 72 h"
+          intro={
+            <p>
+              The two regional strategies produce very different pain trajectories. Hover the timeline to read pain scores at any timepoint, and click a phase chip (or band) to see what is happening pharmacologically and clinically. The single-shot curve illustrates the wear-off cliff and rebound peak that dominate day-case patient experience; the catheter curve shows the smoother profile that underpins ambulatory pump programmes.
+            </p>
+          }
+        >
+          <BlockAnalgesiaProfileDiagram />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Day-Case Joint Replacement — Evidence</h2>
