@@ -4,6 +4,8 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
+import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
+import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
