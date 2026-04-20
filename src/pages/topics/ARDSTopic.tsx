@@ -8,6 +8,8 @@ import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
 import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeComparisonDiagram";
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
+import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
+import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -638,6 +640,19 @@ const ARDSTopic = () => {
               </tbody>
             </table>
           </div>
+
+          <DiagramSection
+            title="Interactive Decision Tree — 'Should I Give Steroids?'"
+            intro={
+              <p>
+                Walk through severity, suspected pathogen, shock status and contraindications to get an evidence-based
+                regimen at the leaf node. Synthesises CAPE COD 2023, RECOVERY 2021, ATS/IDSA 2024, ESICM/SCCM 2024 and
+                Bozzette 1990 into a single bedside aid.
+              </p>
+            }
+          >
+            <PneumoniaSteroidDecisionTree />
+          </DiagramSection>
 
           <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Adverse effects to monitor</h3>
           <p className="text-muted-foreground leading-relaxed">
