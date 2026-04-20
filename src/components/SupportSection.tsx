@@ -16,11 +16,13 @@ export const SupportSection = () => {
   const [type, setType] = useState<FormType>("topic");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — real users leave blank
   const [sending, setSending] = useState(false);
 
   const resetForm = () => {
     setSubject("");
     setMessage("");
+    setWebsite("");
     setType("topic");
   };
 
@@ -30,7 +32,7 @@ export const SupportSection = () => {
     setSending(true);
     try {
       const { data, error } = await supabase.functions.invoke("send-feedback", {
-        body: { type, subject, message },
+        body: { type, subject, message, website },
       });
       if (error || (data as any)?.error) {
         throw new Error((data as any)?.error ?? error?.message ?? "Send failed");
@@ -40,7 +42,12 @@ export const SupportSection = () => {
       setFeedbackOpen(false);
     } catch (err) {
       console.error(err);
-      toast.error("Couldn't send feedback. Please try again later.");
+      const msg = err instanceof Error ? err.message : "";
+      if (msg.toLowerCase().includes("too many")) {
+        toast.error("Too many submissions — please wait a few minutes.");
+      } else {
+        toast.error("Couldn't send feedback. Please try again later.");
+      }
     } finally {
       setSending(false);
     }
