@@ -346,6 +346,129 @@ const ObstetricAnaesthesiaTopic = () => {
           </p>
           <PlacentalDrugTransferDiagram />
         </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postpartum Bladder, Bowel & Lower-Limb Neurological Symptoms After Neuraxial Block</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            New neurological symptoms after labour are common (transient deficits ~1 in 100–200 deliveries) but persistent neuraxial injury is rare (~1 in 24,000–50,000 per NAP3). Most postpartum nerve injuries are <strong>obstetric</strong> (compression/stretch from the fetal head, instrumental delivery, or lithotomy positioning) rather than caused by the epidural or spinal itself. The anaesthetist's role is structured assessment, exclusion of time-critical neuraxial pathology, and onward neurology/obstetric referral.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Red flags — exclude cord/cauda equina pathology urgently</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Vertebral canal haematoma and epidural abscess are surgical emergencies — irreversible damage occurs within ~8 h of cord compression. Suspect and image (urgent MRI within 4 h of suspicion) if any of:
+          </p>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Block that fails to regress</strong> by 4 h after last epidural top-up (or by expected duration of spinal)</li>
+            <li><strong>Recurrence</strong> of dense motor/sensory block after initial recovery</li>
+            <li><strong>Bilateral</strong> leg weakness, saddle anaesthesia, painless urinary retention with overflow, faecal incontinence, loss of anal tone</li>
+            <li><strong>Severe back pain</strong> with fever, raised inflammatory markers, or progressive neurology (abscess); coagulopathy, recent LMWH or difficult/bloody insertion (haematoma)</li>
+          </ul>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Action: stop epidural infusion, neurological examination (power, sensation, reflexes, perianal sensation, anal tone, post-void residual), check coagulation, urgent MRI whole spine, contact on-call neurosurgery. Do <em>not</em> wait for neurology opinion before imaging.
+          </p>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Postpartum bladder dysfunction</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Covert postpartum urinary retention affects up to 15% of women; overt retention 1–5%. Risk factors: epidural/spinal, prolonged second stage, instrumental delivery, episiotomy, primiparity, large baby, perineal trauma. Mechanism is multifactorial — bladder over-distension, parasympathetic disruption, perineal pain, and (for neuraxial) residual block of S2–S4.
+          </p>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Routine practice</strong>: document spontaneous void within 6 h of delivery or epidural removal; if not, bladder scan and in/out catheterise if &gt;500 ml</li>
+            <li><strong>Persistent retention</strong> (residual &gt;150 ml after void, or unable to void): indwelling catheter for 24–48 h with free drainage, then trial without catheter; refer urogynaecology if fails</li>
+            <li><strong>Suspect neuraxial cause</strong> if accompanied by saddle anaesthesia, leg weakness, or painless retention — image urgently as above</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Postpartum bowel dysfunction</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Constipation</strong>: extremely common — opioids (PCA, neuraxial diamorphine), iron, dehydration, perineal pain. Treat with laxatives, fluids, mobilisation</li>
+            <li><strong>Faecal incontinence / urgency</strong>: usually due to <em>obstetric anal sphincter injury (OASI)</em> — third/fourth-degree tear, instrumental delivery, large baby. Refer perineal clinic</li>
+            <li><strong>Loss of anal tone with saddle anaesthesia</strong>: cauda equina until proven otherwise — urgent MRI</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Lower-limb neurological symptoms — obstetric vs neuraxial</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Distribution and timing are key. <strong>Neuraxial injury</strong> tends to be bilateral, follows a dermatomal/myotomal pattern matching the level of insertion, and is present immediately on block resolution. <strong>Intrinsic obstetric palsies</strong> are typically unilateral, follow a peripheral nerve distribution, and are noticed when the woman first stands or mobilises.
+          </p>
+
+          <div className="overflow-x-auto -mx-4 px-4 mb-4">
+            <table className="w-full text-sm border border-border rounded-lg">
+              <thead className="bg-secondary/50">
+                <tr>
+                  <th className="text-left p-2 border-b border-border">Nerve / lesion</th>
+                  <th className="text-left p-2 border-b border-border">Mechanism</th>
+                  <th className="text-left p-2 border-b border-border">Motor</th>
+                  <th className="text-left p-2 border-b border-border">Sensory</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Lumbosacral trunk (L4–L5)</td>
+                  <td className="p-2">Compression by fetal head against pelvic brim — cephalopelvic disproportion, prolonged/obstructed labour, instrumental delivery. Most common intrinsic obstetric palsy.</td>
+                  <td className="p-2">Foot drop (tibialis anterior, peronei); weak hip abduction</td>
+                  <td className="p-2">Lateral calf, dorsum of foot</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Common peroneal</td>
+                  <td className="p-2">External compression at fibular head from prolonged lithotomy / leg-rest pressure (often bilateral)</td>
+                  <td className="p-2">Foot drop, weak eversion (inversion preserved — distinguishes from L5)</td>
+                  <td className="p-2">Lateral calf, dorsum of foot</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Femoral</td>
+                  <td className="p-2">Prolonged hyperflexion/abduction in lithotomy — compression under inguinal ligament</td>
+                  <td className="p-2">Weak quadriceps (knee gives way), absent knee jerk; iliopsoas spared</td>
+                  <td className="p-2">Anterior thigh, medial calf (saphenous)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Lateral cutaneous of thigh (meralgia paraesthetica)</td>
+                  <td className="p-2">Compression at ASIS during lithotomy or by retractors at CS</td>
+                  <td className="p-2">None (pure sensory)</td>
+                  <td className="p-2">Burning/numbness over anterolateral thigh</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Obturator</td>
+                  <td className="p-2">Compression in obturator canal by fetal head or forceps</td>
+                  <td className="p-2">Weak hip adduction</td>
+                  <td className="p-2">Medial thigh</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="p-2 font-semibold text-foreground">Sciatic</td>
+                  <td className="p-2">Prolonged sitting on bedpan, malpositioning, hard surface</td>
+                  <td className="p-2">Hamstrings + all below-knee weakness</td>
+                  <td className="p-2">Posterior thigh, lower leg, foot</td>
+                </tr>
+                <tr>
+                  <td className="p-2 font-semibold text-foreground">Pubic symphysis / SI joint dysfunction</td>
+                  <td className="p-2">Relaxin-mediated ligamentous laxity, vaginal delivery</td>
+                  <td className="p-2">Antalgic gait, painful weight-bearing — <em>not</em> true weakness</td>
+                  <td className="p-2">Pelvic / groin pain, no sensory loss</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Features pointing to obstetric (not neuraxial) cause</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Unilateral</strong> deficit — neuraxial complications are usually bilateral or symmetrical</li>
+            <li>Distribution matches a <strong>peripheral nerve</strong> rather than a dermatome/myotome</li>
+            <li>Risk factors present: prolonged second stage &gt;2 h, instrumental delivery, lithotomy &gt;2 h, cephalopelvic disproportion, short stature, large baby</li>
+            <li>Symptoms first noted on <strong>standing/mobilising</strong> rather than as the block wears off</li>
+            <li>Block recovered fully and normally before symptoms appeared</li>
+            <li>No back pain, no fever, no sphincter involvement</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Investigation & follow-up</h3>
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+            <li><strong>Bedside</strong>: detailed motor/sensory map, reflexes, perianal sensation, anal tone, bladder scan</li>
+            <li><strong>Imaging</strong>: MRI spine if any red flag; MRI pelvis/lumbosacral plexus if persistent peripheral palsy</li>
+            <li><strong>Nerve conduction / EMG</strong>: useful from ~3 weeks (allows Wallerian degeneration to develop) to localise lesion and prognosticate</li>
+            <li><strong>Most obstetric palsies recover fully in 6–8 weeks</strong>; arrange neurology / obstetric anaesthesia follow-up and document on OAA Postpartum Neurological Symptom pathway</li>
+            <li>Refer to physiotherapy; foot-drop splint if needed; safeguarding for falls/driving</li>
+          </ul>
+
+          <p className="text-muted-foreground leading-relaxed text-sm italic">
+            Reference: OAA/RCoA <em>Management of postpartum nerve injuries</em> (2023); NAP3 (RCoA, 2009); Wong et al., <em>Anesthesiology</em> 2003 — incidence of postpartum nerve injury 0.92%.
+          </p>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
