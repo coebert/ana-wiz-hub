@@ -6,7 +6,7 @@ const CONTACT_EMAIL = "coebert@gmail.com";
 // enrollment required (unlike paypal.com/donate which is gated to PayPal
 // Giving Fund-enrolled organisations). Set this to your PayPal.me handle
 // (create one for free at https://paypal.me — it takes ~30 seconds).
-const PAYPAL_ME_HANDLE = "coebert";
+const PAYPAL_ME_HANDLE = "RCoe";
 const PAYPAL_URL = `https://www.paypal.com/paypalme/${PAYPAL_ME_HANDLE}`;
 
 type FormType = "topic" | "error";
