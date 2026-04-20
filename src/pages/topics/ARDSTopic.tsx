@@ -539,6 +539,113 @@ const ARDSTopic = () => {
         </div>
       </section>
 
+      <section className="space-y-4 mb-10">
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroids in Severe Pneumonia — Updated Evidence</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The role of steroids in pneumonia has been transformed since 2020. Three high-quality RCTs (RECOVERY, CAPE COD, ESCAPe) and the post-COVID guideline updates have moved corticosteroids from "controversial adjunct" to <strong>standard care in severe community-acquired pneumonia (sCAP) and COVID-19 pneumonia requiring oxygen</strong>. The picture for influenza and non-severe CAP remains more nuanced.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">COVID-19 pneumonia — the paradigm shifter</h3>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left p-2 text-foreground font-semibold">Trial</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Population</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Intervention</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Outcome</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">RECOVERY (Horby, NEJM 2021)</td><td className="p-2">6,425 hospitalised COVID-19</td><td className="p-2">Dexamethasone 6 mg OD × 10 d vs usual care</td><td className="p-2">28-day mortality ↓ overall (22.9% vs 25.7%, RR 0.83). Benefit confined to those on O₂ (RR 0.82) or IMV (RR 0.64); <strong>harm signal in patients NOT requiring oxygen</strong>.</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">REMAP-CAP steroid domain (Angus, JAMA 2020)</td><td className="p-2">384 ICU COVID-19</td><td className="p-2">Hydrocortisone 50 mg QDS × 7 d vs no steroid</td><td className="p-2">Bayesian probability of superiority ≥93% for organ-support-free days. Stopped early after RECOVERY.</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">COVID STEROID 2 (Munch, JAMA 2021)</td><td className="p-2">1,000 patients on ≥10 L/min O₂</td><td className="p-2">Dexamethasone 12 mg vs 6 mg × 10 d</td><td className="p-2">No significant difference in days alive without life support at 28 days. <strong>6 mg remains standard.</strong></td></tr>
+                <tr><td className="p-2 font-medium text-foreground">RECOVERY high-dose (2023, Lancet)</td><td className="p-2">Hypoxic, escalating O₂ need</td><td className="p-2">Dex 20 mg × 5 d then 10 mg × 5 d vs 6 mg × 10 d</td><td className="p-2">No mortality benefit; <strong>more hyperglycaemia &amp; infection</strong>. High dose not recommended outside trials.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-3 rounded-lg border-l-4 border-primary bg-secondary/30 mb-4">
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Practice point:</strong> dexamethasone 6 mg OD (PO/IV) for up to 10 days, in any hospitalised COVID-19 patient requiring supplemental oxygen or organ support. Equivalent doses: hydrocortisone 50 mg QDS, methylprednisolone 32 mg OD, prednisolone 40 mg OD. Combine with tocilizumab (single 8 mg/kg) if CRP ≥75 mg/L or escalating O₂ requirement (REMAP-CAP / RECOVERY).
+            </p>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Severe community-acquired pneumonia (non-COVID)</h3>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left p-2 text-foreground font-semibold">Trial</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Population</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Intervention</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Outcome</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">CAPE COD (Dequin, NEJM 2023)</td><td className="p-2">800 ICU sCAP (PSI &gt;130, mech vent, HFNO with PaO₂/FiO₂ &lt;300, or NIV)</td><td className="p-2">Hydrocortisone 200 mg/day × 4–7 d then taper vs placebo. <strong>Excluded influenza & septic shock.</strong></td><td className="p-2"><strong>28-day mortality 6.2% vs 11.9% (ARR 5.6%, NNT 18).</strong> Less intubation (18% vs 29.5%), less vasopressor use. No ↑ in nosocomial infection or GI bleed; mild ↑ in insulin requirement.</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">ESCAPe (Meduri, ICM 2022)</td><td className="p-2">584 US veterans, severe CAP within 96 h of ICU admission</td><td className="p-2">Methylprednisolone 40 mg/day taper × 20 d</td><td className="p-2">No 60-day mortality benefit (16% vs 18%). Late enrolment (median 60 h) and predominantly male/older cohort. Less compelling than CAPE COD.</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">Torres (JAMA 2015)</td><td className="p-2">120 sCAP with ↑CRP (&gt;150 mg/L)</td><td className="p-2">Methylpred 0.5 mg/kg BD × 5 d</td><td className="p-2">Treatment failure 13% vs 31%; no mortality difference. Hyperinflammatory signal.</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Stern Cochrane (2017, updated 2023)</td><td className="p-2">17 RCTs, ~3,000 hospitalised CAP</td><td className="p-2">Steroids vs placebo</td><td className="p-2">All-cause mortality reduced in <strong>severe CAP only</strong> (RR 0.58); no benefit in non-severe. Reduced LOS, time to clinical stability across all severities. Trade-off: hyperglycaemia (NNH ~10).</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="p-3 rounded-lg border-l-4 border-clinical bg-secondary/30 mb-2">
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Current consensus (ATS/IDSA 2024 update, ESICM/SCCM 2024):</strong> hydrocortisone 200 mg/day (continuous infusion or 50 mg QDS) for 4–7 days then taper, in adults admitted to ICU with severe CAP <em>not</em> caused by influenza, ideally started within 24 h of ICU admission. CAPE COD-style dosing is now recommended over older methylprednisolone regimens.
+            </p>
+          </div>
+          <div className="p-3 rounded-lg border-l-4 border-destructive bg-destructive/5 mb-4">
+            <p className="text-sm text-muted-foreground">
+              <strong className="text-foreground">Caveats:</strong> CAPE COD <em>excluded</em> influenza, septic shock requiring high-dose vasopressors, and immunocompromised hosts. Benefit may not extend to these groups. Always send respiratory viral PCR + atypical screen before committing to steroids — particularly to exclude influenza.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Influenza pneumonia — caution</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Observational data (Rodrigo 2016 meta-analysis, Moreno 2018, REVA-FRENCH ICU Network) consistently show <strong>increased mortality, longer ICU stay and more secondary infections</strong> with corticosteroids in influenza pneumonia. The 2024 ATS/IDSA, WHO and ESICM guidelines all recommend <strong>against routine steroids in influenza</strong>, restricting use to recognised secondary indications (refractory septic shock per SURVIVING SEPSIS, exacerbation of COPD/asthma, or established ARDS where benefit is felt to outweigh harm). Always test for influenza in any patient being considered for steroids during the respiratory virus season.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Pneumocystis (PJP) pneumonia</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Long-established benefit in <strong>HIV-associated PJP with PaO₂ &lt;9.3 kPa or A–a gradient &gt;4.7 kPa on room air</strong>: prednisolone 40 mg BD × 5 d → 40 mg OD × 5 d → 20 mg OD × 11 d, started within 72 h of antimicrobial therapy (Bozzette NEJM 1990). Evidence in non-HIV PJP (haematology, transplant) is weaker but most centres extrapolate the same regimen.
+          </p>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Mechanism — why does it work?</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Suppression of host hyperinflammation</strong> — IL-6, TNF-α, IL-1β downregulation prevents the diffuse alveolar damage that drives ARDS in severe pneumonia.</li>
+            <li><strong>Reduced pulmonary vascular permeability</strong> — preserves alveolar–capillary barrier; mirrors the vasogenic-oedema hypothesis in COVID-19.</li>
+            <li><strong>Restored vascular tone</strong> — counters relative adrenal insufficiency and reduces vasopressor requirement (CAPE COD secondary outcome).</li>
+            <li><strong>Neutrophil &amp; macrophage modulation</strong> — at the cost of impairing pathogen clearance, which is why benefit is concentrated in <em>severe</em>, hyperinflammatory disease.</li>
+          </ul>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Practical prescribing summary</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left p-2 text-foreground font-semibold">Indication</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Regimen</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Evidence base</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">Hospitalised COVID-19 needing O₂</td><td className="p-2">Dexamethasone 6 mg OD PO/IV × up to 10 days</td><td className="p-2">RECOVERY 2021 (NEJM)</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">ICU sCAP (non-influenza, non-shock)</td><td className="p-2">Hydrocortisone 200 mg/day (50 mg QDS or infusion) × 4–7 d, then taper over 8–14 d</td><td className="p-2">CAPE COD 2023 (NEJM)</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">Septic shock complicating pneumonia</td><td className="p-2">Hydrocortisone 200 mg/day if vasopressors persist</td><td className="p-2">SURVIVING SEPSIS 2021; ADRENAL/APROCCHSS 2018</td></tr>
+                <tr className="border-b border-border align-top"><td className="p-2 font-medium text-foreground">HIV-PJP with hypoxia</td><td className="p-2">Prednisolone taper 40 mg BD → 20 mg OD over 21 d</td><td className="p-2">Bozzette 1990</td></tr>
+                <tr><td className="p-2 font-medium text-foreground">Influenza pneumonia (alone)</td><td className="p-2"><strong>Avoid</strong> — only if co-existing recognised indication (shock, COPD, ARDS)</td><td className="p-2">Rodrigo 2016 meta; ATS/IDSA 2024</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Adverse effects to monitor</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            Hyperglycaemia (most common, often requires insulin infusion), secondary bacterial / fungal infections (CAPA risk in COVID), GI bleeding (co-prescribe PPI), neuropsychiatric effects, ICU-acquired weakness (synergistic with NMB), and <strong>strongyloides hyperinfection</strong> in patients from endemic areas — give empirical ivermectin if recent travel/residence and unable to test promptly.
+          </p>
+        </div>
+      </section>
+
       <SynthesisBlock
         title="ARDS — Severity-Stratified Management"
         subtitle="An at-a-glance map from the Berlin/Global definition to the corresponding evidence-based interventions."
