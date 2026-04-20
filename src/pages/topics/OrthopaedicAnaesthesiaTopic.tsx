@@ -125,6 +125,17 @@ const OrthopaedicAnaesthesiaTopic = () => {
           <BlockAnalgesiaProfileDiagram />
         </DiagramSection>
 
+        <DiagramSection
+          title="Lower-Limb Regional Blocks — Coverage Map"
+          intro={
+            <p>
+              Click a block (chip below or marker on the leg) to see its sensory and motor territory shaded on anterior + posterior leg silhouettes, the needle entry point and the clinical use-case. The "·MS" tag flags motor-sparing blocks that support early mobilisation and day-case pathways.
+            </p>
+          }
+        >
+          <LowerLimbBlocksDiagram />
+        </DiagramSection>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Day-Case Joint Replacement — Evidence</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
