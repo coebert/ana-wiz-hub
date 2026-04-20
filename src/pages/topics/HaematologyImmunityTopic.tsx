@@ -8,6 +8,7 @@ import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
 import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
+import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -119,6 +120,13 @@ const HaematologyImmunityTopic = () => {
           intro="Log-titre plot of IgM and IgG across a first exposure (day 0) and re-challenge (day 28). The secondary IgG response is faster (1–3 days), larger (100–1000× higher peak) and predominantly class-switched — the immunological basis of vaccination."
         >
           <AntibodyKineticsDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Hypersensitivity Reactions — Type I to IV"
+          intro="Select a type to compare mechanism, time course, classic examples, diagnostic tests and the anaesthetic-specific correlates. The log-scale timeline strip overlays all four so you can see at a glance why Type I is a theatre emergency in minutes while Type IV contact dermatitis takes 48–72 h."
+        >
+          <HypersensitivityComparisonDiagram />
         </DiagramSection>
 
         <div>
