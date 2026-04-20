@@ -11,6 +11,7 @@ import RegionalBlocksDiagram from "@/components/diagrams/RegionalBlocksDiagram";
 import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
 import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
+import NeuraxialAnticoagRiskTool from "@/components/diagrams/NeuraxialAnticoagRiskTool";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
@@ -134,6 +135,14 @@ const RegionalAnaesthesiaTopic = () => {
               </div>
             ))}
           </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-6 mb-2">
+            Anticoagulation & Bleeding Risk — Interactive Stratification
+          </h3>
+          <p className="text-muted-foreground leading-relaxed mb-3 text-sm">
+            Vertebral canal haematoma is the most feared neuraxial complication. The tool below cross-references the patient's antiplatelet/anticoagulant, time since last dose, platelet count, coagulation status and intended technique against the published intervals from the AAGBI <em>Regional anaesthesia and patients with abnormalities of coagulation</em> (2013) and ESAIC 2022 update.
+          </p>
+          <NeuraxialAnticoagRiskTool />
         </div>
         {/* Block Height Assessment */}
         <div id="block-height" className="scroll-mt-24">
