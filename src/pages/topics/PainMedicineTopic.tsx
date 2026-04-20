@@ -313,13 +313,14 @@ const PainMedicineTopic = () => {
       </section>
 
       <KeyLearningPoints points={[
-        "Multimodal analgesia reduces opioid consumption and improves outcomes — use paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
-        "IV magnesium (NMDA antagonist) reduces opioid consumption by ~25% (Cochrane 2013) — bolus 30–50 mg/kg then 6–15 mg/kg/hr",
-        "IV lidocaine strongest evidence in open abdominal surgery — anti-inflammatory, prokinetic, opioid-sparing. LOLIPOP trial questioned benefit in laparoscopic surgery",
-        "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin, or gabapentin (NICE CG173)",
-        "Ketamine (NMDA antagonist) prevents wind-up and central sensitisation — useful in opioid-tolerant patients",
-        "CRPS diagnosed by Budapest criteria — MDT approach with physiotherapy as cornerstone",
-        "Aδ fibres: fast, sharp pain; C fibres: slow, burning pain — both synapse in dorsal horn laminae I, II, V",
+        "Multimodal analgesia reduces opioid consumption and improves outcomes — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
+        "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery",
+        "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)",
+        "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants",
+        "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function",
+        "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
+        "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
+        "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
       ]} />
 
       <QuizSection questions={painMedicineQuestions} />
