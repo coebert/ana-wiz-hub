@@ -230,10 +230,23 @@ export const VaccineTypesDiagram = () => {
                   ))}
                 </tr>
               ))}
+              <tr className="border-b border-border/50">
+                <td className="py-2 pr-2">
+                  <div className="font-medium text-foreground flex items-center gap-1">
+                    <span aria-hidden>❄</span> Cold chain
+                  </div>
+                  <div className="text-[10px] text-muted-foreground">Storage temperature</div>
+                </td>
+                {VACCINES.map(v => (
+                  <td key={v.key} className="text-center py-2 px-1 text-[10px] text-muted-foreground leading-tight">
+                    {coldChainShort(v.key)}
+                  </td>
+                ))}
+              </tr>
             </tbody>
           </table>
           <p className="text-[10px] text-muted-foreground mt-2 italic">
-            Bars: 0 = none, 4 = strongest. Live attenuated and mRNA/vector platforms uniquely prime CD8⁺ CTLs because antigen reaches MHC-I from the cytoplasm.
+            Bars: 0 = none, 4 = strongest. Live attenuated and mRNA/vector platforms uniquely prime CD8⁺ CTLs because antigen reaches MHC-I from the cytoplasm. mRNA's ultra-cold chain remains its biggest deployment hurdle.
           </p>
         </div>
       ) : (
@@ -305,9 +318,10 @@ const ArmStrengthBar = ({ score, color }: { score: number; color: string }) => (
   </div>
 );
 
-const MetaCard = ({ label, value, color }: { label: string; value: string; color: string }) => (
+const MetaCard = ({ label, value, color, icon }: { label: string; value: string; color: string; icon?: string }) => (
   <div className="rounded-lg border border-border p-2.5">
-    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color }}>
+    <div className="text-[10px] uppercase tracking-wide font-semibold mb-1 flex items-center gap-1" style={{ color }}>
+      {icon && <span aria-hidden>{icon}</span>}
       {label}
     </div>
     <div className="text-xs text-muted-foreground leading-relaxed">{value}</div>
