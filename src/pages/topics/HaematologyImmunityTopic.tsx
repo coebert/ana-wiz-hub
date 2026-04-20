@@ -130,6 +130,13 @@ const HaematologyImmunityTopic = () => {
           <HypersensitivityComparisonDiagram />
         </DiagramSection>
 
+        <DiagramSection
+          title="Vaccine Platforms — Which Immune Arm?"
+          intro="Pick a platform (live, inactivated, subunit/conjugate, toxoid, mRNA, viral vector) to see which arms of the immune system it preferentially primes, the resulting memory profile and the perioperative implications. Switch to Compare mode for a side-by-side matrix of B-cell, CD4⁺, CD8⁺ and mucosal IgA strength."
+        >
+          <VaccineTypesDiagram />
+        </DiagramSection>
+
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naïve vs Secondary Response — at a glance</h2>
           <div className="overflow-x-auto">
