@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
+import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -122,6 +123,17 @@ const OrthopaedicAnaesthesiaTopic = () => {
           }
         >
           <BlockAnalgesiaProfileDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Lower-Limb Regional Blocks — Coverage Map"
+          intro={
+            <p>
+              Click a block (chip below or marker on the leg) to see its sensory and motor territory shaded on anterior + posterior leg silhouettes, the needle entry point and the clinical use-case. The "·MS" tag flags motor-sparing blocks that support early mobilisation and day-case pathways.
+            </p>
+          }
+        >
+          <LowerLimbBlocksDiagram />
         </DiagramSection>
 
         <div>
