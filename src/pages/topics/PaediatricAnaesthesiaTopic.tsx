@@ -2,6 +2,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
 import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
+import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentSizer";
 import { DiagramSection } from "@/components/DiagramSection";
 import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { QuizSection } from "@/components/QuizSection";
