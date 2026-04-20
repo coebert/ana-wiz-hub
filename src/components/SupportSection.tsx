@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Heart, MessageSquare, ExternalLink, X, Send } from "lucide-react";
 
-const PAYPAL_EMAIL = "coebert@gmail.com";
 const CONTACT_EMAIL = "coebert@gmail.com";
-const PAYPAL_URL = `https://www.paypal.com/paypalme/${encodeURIComponent("")}`;
-// PayPal.me requires a username, not an email. Fall back to the generic
-// "send money" link which pre-fills the recipient by email address.
-const PAYPAL_SEND_URL = `https://www.paypal.com/donate/?business=${encodeURIComponent(
-  PAYPAL_EMAIL,
-)}&item_name=${encodeURIComponent("AnaesthesiaCore upkeep & development")}&currency_code=GBP`;
+// PayPal.me works for any personal PayPal account — no charity/business
+// enrollment required (unlike paypal.com/donate which is gated to PayPal
+// Giving Fund-enrolled organisations). Set this to your PayPal.me handle
+// (create one for free at https://paypal.me — it takes ~30 seconds).
+const PAYPAL_ME_HANDLE = "coebert";
+const PAYPAL_URL = `https://www.paypal.com/paypalme/${PAYPAL_ME_HANDLE}`;
 
 type FormType = "topic" | "error";
 
@@ -59,7 +58,7 @@ export const SupportSection = () => {
 
         <div className="flex flex-col sm:flex-row gap-2.5 mt-5">
           <a
-            href={PAYPAL_SEND_URL}
+            href={PAYPAL_URL}
             target="_blank"
             rel="noreferrer"
             className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
@@ -78,8 +77,7 @@ export const SupportSection = () => {
         </div>
 
         <p className="text-xs text-muted-foreground mt-3">
-          Donations sent to PayPal account:{" "}
-          <span className="font-mono">{PAYPAL_EMAIL}</span>
+          Donations sent via PayPal.me/<span className="font-mono">{PAYPAL_ME_HANDLE}</span>.
         </p>
       </div>
 
