@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -24,6 +24,7 @@ const examFilters: { label: string; value: ExamTag | null }[] = [
 
 export const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
   const { activeExam, setActiveExam } = useExamFilter();
 
@@ -38,6 +39,23 @@ export const Header = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
+
+  useEffect(() => {
+    if (location.pathname === "/" && location.hash === "#support") {
+      const el = document.getElementById("support");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location.pathname, location.hash]);
+
+  const goToSupport = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      document.getElementById("support")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", "/#support");
+    } else {
+      navigate("/#support");
+    }
+  };
 
   return (
     <>
@@ -88,6 +106,16 @@ export const Header = () => {
                 </button>
               ))}
             </div>
+
+            <a
+              href="/#support"
+              onClick={goToSupport}
+              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              title="Support this app"
+            >
+              <HandHeart className="h-3.5 w-3.5" />
+              <span className="hidden md:inline">Support</span>
+            </a>
 
             <button
               onClick={() => setSearchOpen(true)}
