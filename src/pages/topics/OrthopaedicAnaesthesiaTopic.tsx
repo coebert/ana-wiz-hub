@@ -240,11 +240,13 @@ const OrthopaedicAnaesthesiaTopic = () => {
       </section>
 
       <KeyLearningPoints points={[
-        "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca block for analgesia",
+        "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia",
         "Tourniquet: upper limb 50-100 mmHg above SBP. Safe limit ~2h. Deflation → ↓ pH, ↑ K⁺, ↑ CO₂, ↑ lactate",
         "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing",
-        "Fat embolism syndrome: 24-72h post-fracture. Triad: respiratory distress, neurological changes, petechial rash",
-        "Early mobilisation, VTE prophylaxis, and avoidance of hypotension are key perioperative priorities",
+        "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)",
+        "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan",
+        "Home perineural catheters (Ilfeld evidence) extend analgesia 48–72h but require 24/7 APS support and red-flag teaching",
+        "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag",
       ]} />
       <QuizSection questions={orthopaedicAnaesthesiaQuestions} />
       <ReferencesList topicId="orthopaedic-anaesthesia" />
