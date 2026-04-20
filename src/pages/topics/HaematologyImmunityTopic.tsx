@@ -10,6 +10,7 @@ import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseT
 import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
 import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
+import AsplenicVaccinationFlowchart from "@/components/diagrams/AsplenicVaccinationFlowchart";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -135,6 +136,13 @@ const HaematologyImmunityTopic = () => {
           intro="Pick a platform (live, inactivated, subunit/conjugate, toxoid, mRNA, viral vector) to see which arms of the immune system it preferentially primes, the resulting memory profile and the perioperative implications. Switch to Compare mode for a side-by-side matrix of B-cell, CD4⁺, CD8⁺ and mucosal IgA strength."
         >
           <VaccineTypesDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Asplenic / Hyposplenic Patient — Immunisation Flowchart"
+          intro="Select the clinical scenario (elective, emergency or established hyposplenism) to see the correct vaccination window, then click each of the four mandatory vaccine groups for agents, schedule and rationale. Lifelong penicillin V prophylaxis and the patient-held alert card are summarised below — together these are the BSH/BCSH bundle that prevents overwhelming post-splenectomy infection (OPSI)."
+        >
+          <AsplenicVaccinationFlowchart />
         </DiagramSection>
 
         <div>
