@@ -5,6 +5,9 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { haematologyImmunityQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import ImmuneResponseTimelineDiagram from "@/components/diagrams/ImmuneResponseTimelineDiagram";
+import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -103,6 +106,20 @@ const HaematologyImmunityTopic = () => {
             <p><strong>Anaesthetic relevance:</strong> surgery + GA cause transient cell-mediated immunosuppression (↓ NK activity, ↓ Th1, ↑ Th2 shift, IL-10) — opioids and volatiles contribute. Reactivation of HSV, VZV, CMV is well described post-op, particularly in the immunosuppressed.</p>
           </div>
         </div>
+
+        <DiagramSection
+          title="Interactive: Immune Response Timeline"
+          intro="Toggle between bacterial vs viral pathogens and naïve vs re-exposed states. The pathogen-burden curve, swimlane phases and cellular players all redraw — re-exposure suppresses the burden curve almost entirely, illustrating why vaccination works."
+        >
+          <ImmuneResponseTimelineDiagram />
+        </DiagramSection>
+
+        <DiagramSection
+          title="Antibody Kinetics — Primary vs Secondary"
+          intro="Log-titre plot of IgM and IgG across a first exposure (day 0) and re-challenge (day 28). The secondary IgG response is faster (1–3 days), larger (100–1000× higher peak) and predominantly class-switched — the immunological basis of vaccination."
+        >
+          <AntibodyKineticsDiagram />
+        </DiagramSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naïve vs Secondary Response — at a glance</h2>
