@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
+import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAnticoagulationPathway";
+import { DiagramSection } from "@/components/DiagramSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
