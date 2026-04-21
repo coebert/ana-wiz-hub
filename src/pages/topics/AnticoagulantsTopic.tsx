@@ -325,6 +325,13 @@ const AnticoagulantsTopic = () => {
             Based on AAGBI/ESRA/ASRA guidelines. Always consider individual patient factors (renal function, bleeding risk, urgency).
           </p>
         </section>
+
+        <DiagramSection
+          title="Bridging Anticoagulation — Decision Pathway"
+          intro="Decide whether a warfarinised patient needs LMWH bridging around surgery. Pick the indication, the thrombotic-risk band (CHA₂DS₂-VASc / valve type / time since VTE) and the surgical bleeding risk — the verdict updates live, with the BRIDGE-trial rationale for why most low/intermediate-risk patients should NOT be bridged. The full LMWH protocol appears when bridging (or individualised assessment) is indicated."
+        >
+          <BridgingAnticoagulationPathway />
+        </DiagramSection>
       </div>
 
       <KeyLearningPoints
