@@ -186,8 +186,9 @@ const LaryngealCrossSectionDiagram = () => {
       />
 
       <Tabs defaultValue="sagittal">
-        <TabsList className="grid w-full grid-cols-3 mb-3">
+        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-3">
           <TabsTrigger value="sagittal" className="text-xs">Coronal View</TabsTrigger>
+          <TabsTrigger value="true-sagittal" className="text-xs">Sagittal (Lateral)</TabsTrigger>
           <TabsTrigger value="axial" className="text-xs">Axial (Superior)</TabsTrigger>
           <TabsTrigger value="muscles" className="text-xs">Intrinsic Muscles</TabsTrigger>
         </TabsList>
