@@ -524,6 +524,16 @@ const DLTInsertionDiagram = () => {
         </div>
         <p className="text-[10px] text-muted-foreground mt-2 text-center">Depth at teeth ≈ height (cm) ÷ 10 + 12</p>
       </div>
+
+      <GuidedWalkthroughOverlay
+        open={walkthroughOpen}
+        onClose={() => setWalkthroughOpen(false)}
+        steps={walkthroughSteps}
+        stepIndex={currentStep}
+        onStepChange={setCurrentStep}
+        title="DLT insertion — confirmation walkthrough"
+        subtitle={`${dltSide === "left" ? "Left-sided" : "Right-sided"} double-lumen tube`}
+      />
     </div>
   );
 };

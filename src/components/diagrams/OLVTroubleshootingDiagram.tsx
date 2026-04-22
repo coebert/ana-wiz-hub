@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { PlayCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
 
 interface AlgorithmStep {
   id: string;
@@ -138,6 +140,23 @@ const urgencyLabels: Record<string, string> = {
 const OLVTroubleshootingDiagram = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [expandedSteps, setExpandedSteps] = useState<Set<number>>(new Set([0]));
+  const [walkthroughOpen, setWalkthroughOpen] = useState(false);
+
+  const walkthroughSteps: WalkthroughStep[] = steps.map((s) => ({
+    id: s.id,
+    title: s.title.replace(/^\d+\.\s*/, ""),
+    detail: s.detail,
+    actions: s.actions,
+    confirmation: s.resolved
+      ? `If resolved: ${s.resolved}`
+      : "If hypoxia persists, escalate to the next step.",
+    tone:
+      s.urgency === "escalation"
+        ? "critical"
+        : s.urgency === "immediate"
+          ? "warn"
+          : "info",
+  }));
 
   const toggleStep = (index: number) => {
     setActiveStep(index);
