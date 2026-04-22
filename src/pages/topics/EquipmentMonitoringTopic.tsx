@@ -250,72 +250,152 @@ const EquipmentMonitoringTopic = () => {
               placement and the resulting force vector. Modern variants (McCoy, polio handle, videolaryngoscopes)
               address specific clinical scenarios where the standard Macintosh fails or is impractical.
             </p>
-            <div className="grid gap-3 sm:grid-cols-2 mt-3">
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">Macintosh (Curved)</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Tip in vallecula → indirect epiglottic elevation via the hyoepiglottic ligament. Default adult blade
-                  (size 3 = average adult, size 4 = larger). Leaves more pharyngeal room for the ETT and reduces
-                  epiglottic trauma.
-                  <InlineRef topicId="equipment-monitoring" refLabel="Macintosh 1943" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
-                </p>
-              </div>
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">Miller (Straight)</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Tip passes <em>under</em> the epiglottis and lifts it directly. Preferred for neonates and infants
-                  (large, floppy, omega-shaped epiglottis) and for an anterior larynx in adults. Narrower flange means
-                  less ETT-passage room.
-                  <InlineRef topicId="equipment-monitoring" refLabel="Miller 1941" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ Paeds Airway 2017" />
-                </p>
-              </div>
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">McCoy (Articulated)</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Macintosh with a hinged distal tip operated by a handle lever — flexes the tip to lift the
-                  hyoepiglottic ligament and improve the view by ≥1 Cormack-Lehane grade. Useful with cervical-spine
-                  immobilisation or unexpected grade 2b/3a.
-                  <InlineRef topicId="equipment-monitoring" refLabel="McCoy & Mirakhur 1993" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="Cormack & Lehane 1984" />
-                </p>
-              </div>
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">Polio Blade</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Mac-style blade attached at ~135° to the handle so the operator can clear a large chest, breasts, or
-                  body cast. Designed for iron-lung polio patients; now largely replaced by short-handled Macintoshes
-                  and videolaryngoscopes.
-                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
-                </p>
-              </div>
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">Wisconsin / Wis-Hipple</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Straight blade with a wider flange than the Miller — better tongue control with more room for the ETT.
-                  Wis-Hipple modification is a popular neonatal blade in North American practice.
-                  <InlineRef topicId="equipment-monitoring" refLabel="Weiss & Engelhardt 2010" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ Paeds Airway 2017" />
-                </p>
-              </div>
-              <div className="rounded-lg bg-secondary/30 border border-border p-3">
-                <p className="font-semibold text-foreground text-sm">Videolaryngoscope</p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  Camera at the blade tip transmits the glottic view to a screen — no need for direct line-of-sight.
-                  Mac-shaped (C-MAC, McGRATH) or hyperangulated (GlideScope, X-blade — needs a stylet-shaped ETT).
-                  First-line for anticipated difficult airway per DAS 2015.
-                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="Cochrane VL 2022" />
-                  <InlineRef topicId="equipment-monitoring" refLabel="NAP4 2011" />
-                </p>
-              </div>
-            </div>
-            <p className="text-xs text-muted-foreground italic">
-              <strong>Pearl:</strong> A better view does not always mean an easier intubation — particularly with
-              hyperangulated videolaryngoscopes where ETT delivery requires a pre-shaped stylet.
-              <InlineRef topicId="equipment-monitoring" refLabel="NAP4 2011" />
-            </p>
+            {(() => {
+              const bladeContext: Record<string, { title: string; color: string; keyPoints: string[] }> = {
+                macintosh: {
+                  title: "Macintosh — FRCA key points",
+                  color: "hsl(210, 65%, 50%)",
+                  keyPoints: [
+                    "FRCA Primary — Equipment: identify the curved Macintosh blade and describe sizing (1–4) by patient age/build.",
+                    "Force vector is 45° forward and upward along the handle; never lever on the upper incisors.",
+                    "Indirect epiglottic elevation via the hyoepiglottic ligament — vallecular pressure is essential for view.",
+                    "Default Plan A blade in DAS 2015 unanticipated difficult intubation algorithm for adults.",
+                  ],
+                },
+                miller: {
+                  title: "Miller — FRCA key points",
+                  color: "hsl(140, 55%, 42%)",
+                  keyPoints: [
+                    "FRCA Primary — Equipment: identify the straight Miller blade and its paediatric sizing (0 = preterm, 1 = neonate/infant).",
+                    "Direct epiglottic elevation — tip passes posterior to the epiglottis (large, floppy, U-shaped in neonates).",
+                    "Narrower flange leaves less ETT-passage space; precise midline technique required.",
+                    "Higher epiglottic trauma and laryngospasm risk if anaesthesia is light — adequate depth essential.",
+                  ],
+                },
+                mccoy: {
+                  title: "McCoy — FRCA key points",
+                  color: "hsl(280, 50%, 55%)",
+                  keyPoints: [
+                    "FRCA Primary — Equipment: recognise the lever mechanism and explain how it improves view by ≥1 Cormack-Lehane grade.",
+                    "Useful rescue blade for grade 2b/3a views and when manual in-line stabilisation limits neck extension.",
+                    "Less helpful when the limiting factor is mouth opening rather than view.",
+                    "Tip flexion engages the hyoepiglottic ligament without needing greater axial force.",
+                  ],
+                },
+                polio: {
+                  title: "Polio blade — FRCA key points",
+                  color: "hsl(25, 75%, 50%)",
+                  keyPoints: [
+                    "FRCA Primary — Equipment: recognise the obtuse (~135°) handle-blade angle and historical context.",
+                    "Indications now niche: large breasts (obstetrics), morbid obesity, halo traction, kyphoscoliosis, body casts.",
+                    "Largely superseded by short-handle Macintosh and videolaryngoscopy (DAS 2015 default Plan A alternative).",
+                    "Awkward force vector — clean lift harder; not stocked on most modern airway trolleys.",
+                  ],
+                },
+                wisconsin: {
+                  title: "Wisconsin / Wis-Hipple — FRCA key points",
+                  color: "hsl(195, 60%, 45%)",
+                  keyPoints: [
+                    "FRCA Primary — Paediatric equipment: identify the wide-flange straight blade and Wis-Hipple neonatal modification.",
+                    "Direct epiglottic elevation with broader lingual surface — better tongue control than Miller.",
+                    "Useful when Miller flange is too narrow to control the tongue or pass the ETT.",
+                    "Per APAGBI/Weiss & Engelhardt: have multiple blade types/sizes available for the unexpected paediatric difficult airway.",
+                  ],
+                },
+                videolaryngoscope: {
+                  title: "Videolaryngoscope — FRCA key points",
+                  color: "hsl(0, 65%, 55%)",
+                  keyPoints: [
+                    "FRCA Final — DAS 2015: videolaryngoscopy is an alternative Plan A device and rescue tool; immediate availability mandated.",
+                    "Mac-shaped (C-MAC, McGRATH) — direct or indirect technique; hyperangulated (GlideScope, X-blade) — needs stylet-shaped ETT.",
+                    "Cochrane 2022: VL improves first-pass success and reduces failed intubation versus direct laryngoscopy in adults.",
+                    "NAP4: most major airway events occurred when difficulty was unanticipated — VL improves view but \"can see, can't intubate\" remains a risk.",
+                  ],
+                },
+              };
+              const Cite = ({ blade, refLabel }: { blade: keyof typeof bladeContext; refLabel: string }) => {
+                const ctx = bladeContext[blade];
+                return (
+                  <InlineRef
+                    topicId="equipment-monitoring"
+                    refLabel={refLabel}
+                    contextTitle={ctx.title}
+                    keyPoints={ctx.keyPoints}
+                    accentColor={ctx.color}
+                  />
+                );
+              };
+              return (
+                <>
+                  <div className="grid gap-3 sm:grid-cols-2 mt-3">
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">Macintosh (Curved)</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Tip in vallecula → indirect epiglottic elevation via the hyoepiglottic ligament. Default adult blade
+                        (size 3 = average adult, size 4 = larger). Leaves more pharyngeal room for the ETT and reduces
+                        epiglottic trauma.
+                        <Cite blade="macintosh" refLabel="Macintosh 1943" />
+                        <Cite blade="macintosh" refLabel="DAS 2015" />
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">Miller (Straight)</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Tip passes <em>under</em> the epiglottis and lifts it directly. Preferred for neonates and infants
+                        (large, floppy, omega-shaped epiglottis) and for an anterior larynx in adults. Narrower flange means
+                        less ETT-passage room.
+                        <Cite blade="miller" refLabel="Miller 1941" />
+                        <Cite blade="miller" refLabel="BJA Educ Paeds Airway 2017" />
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">McCoy (Articulated)</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Macintosh with a hinged distal tip operated by a handle lever — flexes the tip to lift the
+                        hyoepiglottic ligament and improve the view by ≥1 Cormack-Lehane grade. Useful with cervical-spine
+                        immobilisation or unexpected grade 2b/3a.
+                        <Cite blade="mccoy" refLabel="McCoy & Mirakhur 1993" />
+                        <Cite blade="mccoy" refLabel="Cormack & Lehane 1984" />
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">Polio Blade</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Mac-style blade attached at ~135° to the handle so the operator can clear a large chest, breasts, or
+                        body cast. Designed for iron-lung polio patients; now largely replaced by short-handled Macintoshes
+                        and videolaryngoscopes.
+                        <Cite blade="polio" refLabel="DAS 2015" />
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">Wisconsin / Wis-Hipple</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Straight blade with a wider flange than the Miller — better tongue control with more room for the ETT.
+                        Wis-Hipple modification is a popular neonatal blade in North American practice.
+                        <Cite blade="wisconsin" refLabel="Weiss & Engelhardt 2010" />
+                        <Cite blade="wisconsin" refLabel="BJA Educ Paeds Airway 2017" />
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                      <p className="font-semibold text-foreground text-sm">Videolaryngoscope</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Camera at the blade tip transmits the glottic view to a screen — no need for direct line-of-sight.
+                        Mac-shaped (C-MAC, McGRATH) or hyperangulated (GlideScope, X-blade — needs a stylet-shaped ETT).
+                        First-line for anticipated difficult airway per DAS 2015.
+                        <Cite blade="videolaryngoscope" refLabel="DAS 2015" />
+                        <Cite blade="videolaryngoscope" refLabel="Cochrane VL 2022" />
+                        <Cite blade="videolaryngoscope" refLabel="NAP4 2011" />
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground italic">
+                    <strong>Pearl:</strong> A better view does not always mean an easier intubation — particularly with
+                    hyperangulated videolaryngoscopes where ETT delivery requires a pre-shaped stylet.
+                    <Cite blade="videolaryngoscope" refLabel="NAP4 2011" />
+                  </p>
+                </>
+              );
+            })()}
             <p className="text-[11px] text-muted-foreground">
               Tap any blade in the diagram below to open its <strong>FRCA Key Learning Points</strong> (Clinical Use tab) and full source list.
             </p>
