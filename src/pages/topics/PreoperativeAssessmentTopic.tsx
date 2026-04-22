@@ -143,7 +143,126 @@ const PreoperativeAssessmentTopic = () => {
       </section>
 
       <DiagramSection
-        title="Preoperative Blood Pressure Management"
+        title="Preoperative Anaemia — Hb Targets & Iron Therapy"
+        intro={
+          <p>
+            Preoperative anaemia is present in <strong>30–40%</strong> of major surgical patients and is an <em>independent</em> risk factor for transfusion, AKI, infection, longer LOS and 30-day mortality (VISION, Musallam <em>Lancet</em> 2011). The <strong>NICE NG24 / NATA / 2017 International Consensus on Patient Blood Management</strong> recommends screening, classification, and treatment <strong>≥ 4–6 weeks before elective surgery</strong> wherever feasible.
+          </p>
+        }
+      >
+        <div className="grid sm:grid-cols-3 gap-3 mb-4">
+          <div className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
+            <CheckCircle2 className="h-5 w-5 text-perioperative mb-2" />
+            <p className="font-semibold text-foreground text-sm">TARGET MET</p>
+            <p className="text-xs font-mono text-muted-foreground mt-1">Hb ≥ 130 g/L (men)<br/>Hb ≥ 130 g/L (women, WHO 2017 PBM)</p>
+            <p className="text-sm text-muted-foreground mt-2 leading-snug">
+              No iron / ESA required. Note: WHO 2017 raised the female pre-op target to 130 g/L (from 120) to equalise transfusion risk — surgery causes equal blood loss regardless of sex.
+            </p>
+          </div>
+          <div className="p-4 rounded-lg border-2 border-accent/40 bg-accent/5">
+            <AlertTriangle className="h-5 w-5 text-accent mb-2" />
+            <p className="font-semibold text-foreground text-sm">INVESTIGATE & TREAT</p>
+            <p className="text-xs font-mono text-muted-foreground mt-1">Hb 100–129 g/L</p>
+            <p className="text-sm text-muted-foreground mt-2 leading-snug">
+              Check ferritin, TSAT, CRP, B12, folate, U&E, eGFR. Identify cause (iron deficiency &gt; 50% of cases). Treat ≥ 4 weeks pre-op if possible.
+            </p>
+          </div>
+          <div className="p-4 rounded-lg border-2 border-destructive/40 bg-destructive/5">
+            <XCircle className="h-5 w-5 text-destructive mb-2" />
+            <p className="font-semibold text-foreground text-sm">DEFER ELECTIVE SURGERY</p>
+            <p className="text-xs font-mono text-muted-foreground mt-1">Hb &lt; 100 g/L</p>
+            <p className="text-sm text-muted-foreground mt-2 leading-snug">
+              Postpone elective major / blood-loss surgery if reasonably safe. Investigate (GI workup if iron deficient + no obvious cause), refer haematology/gastro, treat with IV iron ± ESA.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+            <FlaskConical className="h-4 w-4 text-perioperative" /> Anaemia classification — interpret ferritin in context of CRP
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs sm:text-sm border-collapse min-w-[600px]">
+              <thead>
+                <tr className="border-b-2 border-border bg-muted/30">
+                  <th className="text-left p-2 text-foreground font-semibold">Pattern</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Ferritin</th>
+                  <th className="text-left p-2 text-foreground font-semibold">TSAT</th>
+                  <th className="text-left p-2 text-foreground font-semibold">CRP</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Treatment</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border align-top">
+                  <td className="p-2 font-medium text-foreground">Absolute iron deficiency</td>
+                  <td className="p-2">&lt; 30 µg/L</td>
+                  <td className="p-2">&lt; 20%</td>
+                  <td className="p-2">Normal</td>
+                  <td className="p-2">Oral iron first-line if ≥ 6 weeks to surgery; otherwise IV iron</td>
+                </tr>
+                <tr className="border-b border-border align-top">
+                  <td className="p-2 font-medium text-foreground">Functional / inflammatory (ACD)</td>
+                  <td className="p-2">30–100 µg/L (or up to 300 if CRP ↑)</td>
+                  <td className="p-2">&lt; 20%</td>
+                  <td className="p-2">↑</td>
+                  <td className="p-2"><strong>IV iron</strong> — oral ineffective (hepcidin blocks absorption)</td>
+                </tr>
+                <tr className="border-b border-border align-top">
+                  <td className="p-2 font-medium text-foreground">CKD-associated anaemia</td>
+                  <td className="p-2">Variable</td>
+                  <td className="p-2">&lt; 20%</td>
+                  <td className="p-2">±</td>
+                  <td className="p-2">IV iron + consider ESA (target Hb 100–120)</td>
+                </tr>
+                <tr className="border-b border-border align-top">
+                  <td className="p-2 font-medium text-foreground">B12 / folate deficient</td>
+                  <td className="p-2">Normal/↑</td>
+                  <td className="p-2">Normal</td>
+                  <td className="p-2">Normal</td>
+                  <td className="p-2">Replace deficient haematinic; surgery can usually proceed with response</td>
+                </tr>
+                <tr className="align-top">
+                  <td className="p-2 font-medium text-foreground">Iron-replete, unexplained</td>
+                  <td className="p-2">&gt; 100 µg/L</td>
+                  <td className="p-2">&gt; 20%</td>
+                  <td className="p-2">Normal</td>
+                  <td className="p-2">Refer haematology — myelodysplasia, haemoglobinopathy, marrow disease</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-3 mt-4">
+          <div className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
+            <p className="font-semibold text-foreground text-sm">When to offer ORAL iron</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-4">
+              <li><strong>Absolute iron deficiency</strong> (ferritin &lt; 30 µg/L, TSAT &lt; 20%, normal CRP)</li>
+              <li><strong>≥ 6 weeks before surgery</strong> — time to raise Hb by ~10–20 g/L</li>
+              <li>Patient tolerates GI side-effects and absorption is intact (no IBD, coeliac, prior bariatric surgery)</li>
+              <li><strong>Regimen:</strong> ferrous sulfate / fumarate / gluconate <strong>40–60 mg elemental iron <em>once daily or alternate day</em></strong> (PROFIT, Stoffel <em>Lancet Haem</em> 2017 — alternate-day dosing improves absorption by lowering hepcidin)</li>
+              <li>Recheck FBC + ferritin at 4 weeks; if Hb rise &lt; 10 g/L → switch to IV iron</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
+            <p className="font-semibold text-foreground text-sm">When to give IV iron instead</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-4">
+              <li><strong>&lt; 6 weeks until surgery</strong> (oral iron too slow)</li>
+              <li><strong>Functional iron deficiency / ACD</strong> (raised CRP — hepcidin blocks oral absorption)</li>
+              <li>CKD (eGFR &lt; 60), IBD, malabsorption, post-bariatric, prior intolerance/failure of oral iron</li>
+              <li>Severe anaemia (Hb &lt; 100 g/L) needing rapid correction</li>
+              <li><strong>Preferred preparation:</strong> ferric carboxymaltose 1 g single dose (or up to 20 mg/kg) — IV infusion over 15 min; or ferric derisomaltose 1–2 g</li>
+              <li>Expected response: Hb ↑ by ~20 g/L over 2–3 weeks; reduces transfusion by 30–50% (PREVENTT, Richards <em>Lancet</em> 2020 — IV iron in major abdominal surgery did not reduce transfusion or LOS, but reduced postoperative anaemia and readmissions)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
+          <p className="text-sm text-foreground">
+            <span className="font-semibold">Evidence base:</span> Musallam et al, <em>Lancet</em> 2011 (n &gt; 227,000 — pre-op anaemia ↑ 30-day mortality OR 1.42 across all severities); FAIR-HF / FERRIC-HF (IV iron in heart failure); FIT trial (Khalafallah, <em>Lancet Haem</em> 2016 — IV ferric carboxymaltose pre-op raised Hb and reduced transfusion in elective surgery); PREVENTT (Lancet 2020 — pragmatic trial, neutral for primary outcome but supports IV iron for anaemia correction); 2017 International Consensus Statement on PBM (Munoz <em>Anaesthesia</em> 2017); NICE NG24 (Blood transfusion, 2015); Centre for Perioperative Care (CPOC) <em>Anaemia in the Perioperative Pathway</em> 2022.
+          </p>
+        </div>
+      </DiagramSection>
         intro={
           <p>
             The 2016 joint <strong>AAGBI / British Hypertension Society</strong> guideline reframed BP management around <em>risk stratification</em> rather than rigid thresholds. The principle: <strong>elective surgery should not be cancelled in primary care–referred patients with documented BP &lt; 180/110 mmHg</strong>. Cancelling a list slot rarely improves outcomes and delays definitive surgery.
