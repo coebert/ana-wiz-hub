@@ -15,8 +15,8 @@ const tocItems = [
   { id: "cpb-physiology", label: "Physiological effects of CPB", group: "Cardiac surgery" },
   { id: "cardiac-considerations", label: "Key cardiac procedures", group: "Cardiac surgery" },
   { id: "opcab", label: "On-pump vs off-pump (OPCAB)", group: "Cardiac surgery" },
-  { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
   { id: "dhca", label: "Deep hypothermic circulatory arrest", group: "Cardiac surgery" },
+  { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
 ];
 
 const CardiothoracicTopic = () => {
@@ -24,18 +24,18 @@ const CardiothoracicTopic = () => {
     <SectionLayout title="Cardiothoracic Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <TopicTableOfContents items={tocItems} />
       <p className="text-muted-foreground leading-relaxed mb-6">
-        Cardiothoracic anaesthesia centres on three high-stakes domains: cardiopulmonary bypass physiology, lung isolation for thoracic surgery, and the management of one-lung ventilation. The diagrams below provide an at-a-glance reference for the CPB circuit, double-lumen tube positioning, and a structured approach to OLV troubleshooting before the detailed text.
+        Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
       </p>
-      <CPBCircuitDiagram />
-      <DLTInsertionDiagram />
-      <OLVTroubleshootingDiagram />
+
       <section className="space-y-6 mb-10">
+        {/* ───────── Cardiac surgery ───────── */}
         <div id="cpb-overview" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Bypass (CPB)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             CPB allows the heart and lungs to be bypassed during cardiac surgery. Understanding the circuit and physiological derangements is essential.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <CPBCircuitDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">CPB Circuit Components</p>
               <p className="text-sm text-muted-foreground mt-1">Venous cannula (RA/SVC/IVC) → venous reservoir → pump (roller/centrifugal) → oxygenator/heat exchanger → arterial filter → arterial cannula (aorta). Prime volume ~1.5 L (haemodilution).</p>
@@ -65,22 +65,6 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-        <div id="olv" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Double-Lumen Tube (DLT)</p>
-              <p className="text-sm text-muted-foreground mt-1">Left-sided DLT preferred (right upper lobe anatomy variable). Confirm position with fibreoptic bronchoscopy. Sizes: 35–41 Fr (women 35–37, men 39–41).</p>
-            </div>
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Bronchial Blocker</p>
-              <p className="text-sm text-muted-foreground mt-1">Alternative to DLT. Passed through single-lumen ETT. Useful in difficult airway, existing tracheostomy. Slower deflation, less reliable isolation.</p>
-            </div>
-          </div>
-          <p className="text-muted-foreground leading-relaxed mt-3">
-            <strong className="text-foreground">Hypoxia during OLV:</strong> Hypoxic pulmonary vasoconstriction (HPV) diverts blood from the collapsed lung. Management: ↑FiO₂, CPAP to non-dependent lung (5–10 cmH₂O), PEEP to dependent lung, check tube position, recruitment manoeuvres.
-          </p>
-        </div>
 
         <div id="cardiac-considerations" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Cardiac Surgery Considerations</h2>
@@ -290,6 +274,39 @@ const CardiothoracicTopic = () => {
                 <li>Always confirm electrocerebral silence (EEG burst-suppression) before circulatory arrest.</li>
               </ul>
             </div>
+          </div>
+        </div>
+
+        {/* ───────── Thoracic surgery ───────── */}
+        <div id="olv" className="scroll-mt-24 pt-4 border-t border-border">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            One-lung ventilation underpins almost all thoracic surgery — lobectomy, pneumonectomy, oesophagectomy, thymectomy, lung volume reduction, and most VATS procedures. The aims are to deflate the operative lung for surgical access while maintaining adequate gas exchange through the dependent lung. Successful OLV requires the right device, confirmed correct position, and a clear plan for hypoxia.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Devices for lung isolation</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Double-Lumen Tube (DLT)</p>
+              <p className="text-sm text-muted-foreground mt-1">Left-sided DLT preferred (right upper lobe anatomy variable). Confirm position with fibreoptic bronchoscopy. Sizes: 35–41 Fr (women 35–37, men 39–41). Allows independent ventilation, suction and CPAP to either lung.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Bronchial Blocker</p>
+              <p className="text-sm text-muted-foreground mt-1">Alternative to DLT — passed through a single-lumen ETT. Useful in difficult airway, existing tracheostomy, or for postoperative ventilation. Slower deflation, less reliable isolation, no independent suction.</p>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <DLTInsertionDiagram />
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">Physiology & hypoxia management</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong className="text-foreground">Hypoxic pulmonary vasoconstriction (HPV)</strong> diverts blood from the collapsed (non-dependent) lung, limiting shunt to ~20–30%. HPV is inhibited by volatiles &gt;1 MAC, vasodilators (GTN, SNP), hypothermia, and acidosis. Stepwise management of desaturation during OLV: ↑FiO₂ → check tube position with fibreoptic bronchoscope → recruitment to dependent lung → PEEP 5 cmH₂O to dependent lung → CPAP 5–10 cmH₂O to non-dependent lung → intermittent reinflation → if persistent, ask surgeon to clamp PA of operative lung (during pneumonectomy).
+          </p>
+
+          <div className="mt-4">
+            <OLVTroubleshootingDiagram />
           </div>
         </div>
       </section>
