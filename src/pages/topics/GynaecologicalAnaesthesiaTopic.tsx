@@ -113,11 +113,21 @@ const GynaecologicalAnaesthesiaTopic = () => {
           "British Society for Gynaecological Endoscopy (BSGE) — Management of fluid distension media in operative hysteroscopy (2018)",
           "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth 2006;96:8-20 — TURP/glycine syndrome",
         ],
+        diagrams: [
+          "Hayden P, Cowman S. Anaesthesia for laparoscopic surgery. BJA Educ 2011;11(5):177-180",
+          "BSGE 2018 — Management of fluid distension media in operative hysteroscopy",
+        ],
         keyPoints: [
           "Mavarez-Martinez A et al. Anesthetic considerations for robotic gynecologic surgery. Local Reg Anesth 2020",
           "Nelson G et al. ERAS Society guidelines for perioperative care in gynecologic/oncology surgery. Int J Gynecol Cancer 2019",
         ],
       }}
+      diagrams={
+        <>
+          <PneumoperitoneumTrendelenburgDiagram />
+          <TURPSyndromeDiagram />
+        </>
+      }
       keyPoints={[
         "Pneumoperitoneum + steep Trendelenburg: ↑ PaCO₂, ↓ FRC, ↑ IOP/ICP, facial and laryngeal oedema",
         "Robotic surgery: prolonged position → airway oedema; plan for difficult extubation; limited patient access during dock",
