@@ -1,706 +1,493 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { StickyTOC } from "@/components/StickyTOC";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
+import { WorkedExample } from "@/components/WorkedExamples";
 
-const tocItems = [
-  { id: "toc-respiratory", label: "Respiratory" },
-  { id: "toc-sepsis", label: "Gram +/− Sepsis" },
-  { id: "toc-cns", label: "CNS" },
-  { id: "toc-abdo", label: "Abdo / Nec Fasc" },
-  { id: "toc-bloodstream", label: "Bloodstream" },
-  { id: "toc-fungal", label: "Fungal" },
-  { id: "toc-endocarditis", label: "Endocarditis" },
-  { id: "toc-cdiff", label: "C. difficile" },
-  { id: "toc-viral", label: "Viral" },
-  { id: "toc-mdr", label: "MDR" },
-  { id: "toc-control", label: "Infection Control" },
-  { id: "toc-synthesis", label: "Synthesis" },
+const objectives = [
+  "Differentiate the causative organisms, severity scoring and empiric therapy for CAP, HAP and VAP",
+  "Recognise high-mortality syndromes (Legionella, PVL-positive S. aureus, necrotising fasciitis, Weil's disease) and their distinctive features",
+  "Compare Gram-positive and Gram-negative sepsis: pathophysiology, clinical pattern and antibiotic implications",
+  "Identify multi-drug-resistant organisms (MRSA, VRE, ESBL, AmpC, CRE, MDR Pseudomonas/Acinetobacter, C. auris) and select appropriate therapy",
+  "Apply infection-control bundles (CLABSI prevention, ventilator bundle, isolation, stewardship) on the ICU",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Severe CAP with multi-organ failure",
+    scenario:
+      "55-year-old returning from a hotel stay, presents with high fever, dry cough, confusion, diarrhoea. Na⁺ 122, CK 1500, lymphopenia, deranged LFTs. CXR: progressive RLL consolidation. CURB-65 = 4.",
+    working:
+      "Hyponatraemia + dry cough + diarrhoea + raised CK + LFT derangement + recent hotel stay → suspect Legionella pneumophila. Send urinary antigen (rapid; ~80% sensitivity for serogroup 1) and respiratory PCR. β-lactams alone are ineffective — Legionella is intracellular. Empiric severe CAP: co-amoxiclav + macrolide; in suspected Legionella escalate macrolide-based or fluoroquinolone-based therapy (azithromycin or levofloxacin). Notifiable disease — inform Public Health.",
+    answer:
+      "Severe Legionella pneumonia. Treat with IV levofloxacin or high-dose azithromycin (± combination if critically ill); add empiric β-lactam for atypical-CAP cover until Legionella confirmed; supportive ICU care, RRT if AKI; notify Public Health.",
+  },
+  {
+    title: "Necrotising fasciitis with toxic shock",
+    scenario:
+      "Previously well 38-year-old, 24 h history of severe leg pain after minor scratch. BP 80/40, HR 130, lactate 5.2, WCC 22, CK 6000, sodium 128, creatinine 220. Erythema with disproportionate pain; LRINEC = 9.",
+    working:
+      "LRINEC ≥6 strongly suggests necrotising soft-tissue infection. Most likely Type II monomicrobial (Group A Streptococcus) given previously well patient and rapid course. Streptococcal toxic shock often coexists. Surgical debridement is the single most important intervention — must not be delayed for imaging. Antibiotics: piperacillin-tazobactam OR meropenem (broad cover) + clindamycin (toxin suppression — Eagle effect; β-lactams alone less effective at high inoculum) + vancomycin if MRSA risk. Consider IVIG for streptococcal TSS (INSTINCT-style data).",
+    answer:
+      "Emergency theatre for radical debridement (anticipate relooks at 24–48 h); antibiotics = pip-tazo/meropenem + clindamycin + vancomycin; IVIG if streptococcal TSS confirmed; ICU for vasopressors, AKI/RRT, anticipate ARDS and DIC.",
+  },
 ];
 
 const InfectiousDiseaseIcuTopic = () => {
   return (
-    <SectionLayout title="Infectious Disease in ICU" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <StickyTOC items={tocItems} />
-      <p className="text-muted-foreground leading-relaxed mb-6">
-        Infection is the dominant driver of organ failure on the modern ICU. This topic walks through the major infection sites and syndromes encountered in critical care — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control. The site map below previews the anatomical organisation of the topic.
-      </p>
-      <InfectionSiteMapDiagram />
-      <section className="space-y-8 mb-10">
+    <TopicTemplate
+      title="Infectious Disease in ICU"
+      subtitle="FFICM — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      topicId="infectious-disease-icu"
+      topicTitle="Infectious Disease in ICU"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      quizQuestions={infectiousDiseaseIcuQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 4.7", "EDIC 5.7"] },
+        workedExamples: { exams: ["final", "fficm", "edic"] },
+        keyPoints: { exams: ["final", "fficm", "edic"] },
+      }}
+      keyPoints={[
+        "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram",
+        "Legionella: hyponatraemia + dry cough + GI symptoms + raised CK — treat with macrolide or fluoroquinolone (β-lactams ineffective)",
+        "PVL-positive S. aureus necrotising pneumonia: leucopenia + haemoptysis in young patient → linezolid + clindamycin + IVIG, consider VV-ECMO",
+        "Source control (drainage/debridement) is paramount in intra-abdominal sepsis and necrotising fasciitis — antibiotics alone are insufficient",
+        "S. aureus bacteraemia always requires echocardiography, repeat cultures at 48–72 h, and minimum 2 weeks IV therapy",
+        "ESBL bacteraemia: meropenem first-line — MERINO showed pip-tazo inferior",
+        "C. difficile: oral vancomycin first-line; fidaxomicin for recurrence; FMT for refractory disease",
+        "Antimicrobial stewardship: start smart, then focus — de-escalate at 48–72 h; procalcitonin can shorten duration",
+      ]}
+      coreConcepts={
+        <>
+          <ExamSection id="overview" exams={["final", "fficm", "edic"]}>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Infection is the dominant driver of organ failure on the modern ICU. The site map below previews the anatomical organisation of the topic — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control.
+            </p>
+            <InfectionSiteMapDiagram />
+          </ExamSection>
 
-        {/* ---- Respiratory infections ---- */}
-        <div id="toc-respiratory" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Pneumonia is the most common infection requiring ICU admission. Causative organisms differ between community-acquired (CAP), hospital-acquired (HAP) and ventilator-associated (VAP) pneumonia.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Type</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Common Organisms</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Key Points</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">CAP (severe)</td>
-                  <td><em>S. pneumoniae</em>, <em>S. aureus</em>, <em>Legionella</em>, influenza, SARS-CoV-2</td>
-                  <td>CURB-65 / PSI for severity. Empiric: co-amoxiclav + macrolide or β-lactam + respiratory fluoroquinolone.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">HAP / VAP</td>
-                  <td><em>Pseudomonas</em>, <em>S. aureus</em> (MRSA), <em>Klebsiella</em>, <em>Acinetobacter</em></td>
-                  <td>VAP: &gt;48 h after intubation. Diagnosis: new infiltrates + sepsis markers. Quantitative BAL cultures. Anti-pseudomonal β-lactam ± aminoglycoside.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Aspiration</td>
-                  <td>Anaerobes, <em>Streptococci</em>, Gram-negatives</td>
-                  <td>Chemical pneumonitis → secondary bacterial infection. Co-amoxiclav or piperacillin-tazobactam.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Immunocompromised</td>
-                  <td><em>Pneumocystis jirovecii</em>, CMV, <em>Aspergillus</em></td>
-                  <td>PJP: bilateral ground-glass, high-dose co-trimoxazole ± steroids. Aspergillus: voriconazole first-line.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <ExamSection id="respiratory" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.7"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Pneumonia is the most common infection requiring ICU admission. Causative organisms differ between community-acquired (CAP), hospital-acquired (HAP) and ventilator-associated (VAP) pneumonia.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Type</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Common Organisms</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Key Points</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CAP (severe)</td><td><em>S. pneumoniae</em>, <em>S. aureus</em>, <em>Legionella</em>, influenza, SARS-CoV-2</td><td>CURB-65 / PSI for severity. Empiric: co-amoxiclav + macrolide or β-lactam + respiratory fluoroquinolone.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">HAP / VAP</td><td><em>Pseudomonas</em>, <em>S. aureus</em> (MRSA), <em>Klebsiella</em>, <em>Acinetobacter</em></td><td>VAP: &gt;48 h after intubation. Quantitative BAL. Anti-pseudomonal β-lactam ± aminoglycoside.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Aspiration</td><td>Anaerobes, <em>Streptococci</em>, Gram-negatives</td><td>Chemical pneumonitis → secondary infection. Co-amoxiclav or pip-tazo.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Immunocompromised</td><td><em>Pneumocystis jirovecii</em>, CMV, <em>Aspergillus</em></td><td>PJP: bilateral ground-glass, high-dose co-trimoxazole ± steroids. Aspergillus: voriconazole first-line.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
 
-        {/* ---- Legionella ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Legionella Pneumonia</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            <em>Legionella pneumophila</em> (serogroup 1) causes ~5% of severe CAP admissions. It is an intracellular Gram-negative rod acquired from contaminated water systems — there is no person-to-person transmission.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Clinical Features</p>
-              <p className="text-xs text-muted-foreground mt-1">High fever, dry cough, confusion, diarrhoea, hyponatraemia (SIADH), raised CK, lymphopenia, deranged LFTs. CXR: progressive consolidation (may lag behind clinical picture).</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Diagnosis</p>
-              <p className="text-xs text-muted-foreground mt-1">Urinary antigen test (rapid, sensitivity ~80% for serogroup 1). PCR on respiratory samples. Culture on BCYE agar (slow). Notifiable disease — inform Public Health.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Treatment</p>
-              <p className="text-xs text-muted-foreground mt-1">First-line: macrolide (azithromycin) or fluoroquinolone (levofloxacin). Severe: combination therapy. Duration 7–14 days (21 days if immunocompromised). β-lactams are ineffective — Legionella is intracellular.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">ICU Relevance</p>
-              <p className="text-xs text-muted-foreground mt-1">Can cause rapidly progressive respiratory failure, multi-organ dysfunction, rhabdomyolysis, and renal failure. May require mechanical ventilation and RRT. Mortality 10–30% in ICU.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- PVL Pneumonia ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">PVL-Positive <em>Staphylococcus aureus</em> Pneumonia</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Panton-Valentine Leukocidin (PVL) is a pore-forming cytotoxin produced by certain strains of <em>S. aureus</em> (both MSSA and MRSA). PVL-positive necrotising pneumonia is a rare but devastating condition, predominantly affecting previously healthy young adults, often preceded by influenza-like illness or skin infection.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Pathophysiology</p>
-              <p className="text-xs text-muted-foreground mt-1">PVL forms pores in neutrophil and macrophage membranes → massive neutrophil lysis → release of proteolytic enzymes → necrotising tissue destruction and haemorrhagic alveolar necrosis. The toxin-mediated damage is disproportionate to bacterial load.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Clinical Presentation</p>
-              <p className="text-xs text-muted-foreground mt-1">Preceding flu-like prodrome or skin boils. Rapid deterioration: high fever, haemoptysis, leucopenia (paradoxical — WCC often &lt;2 × 10⁹/L despite severe sepsis), multilobar cavitating consolidation, pleural effusions. Shock and ARDS develop within hours. Mortality 50–75%.</p>
-            </div>
-          </div>
-          <div className="space-y-2">
-            {[
-              { label: "Key Diagnostic Clues", detail: "Young, previously healthy patient with rapidly progressive pneumonia + leucopenia + haemoptysis. History of recurrent skin abscesses (boils/furunculosis) in patient or close contacts. CXR/CT: multilobar consolidation with necrosis/cavitation. Blood cultures often positive. Send isolate for PVL gene testing (PCR for lukS-PV and lukF-PV genes)." },
-              { label: "Antimicrobial Therapy", detail: "CRITICAL: Suppress toxin production. IV linezolid (inhibits toxin synthesis at ribosomal level) + IV clindamycin (also inhibits toxin production). Add IV flucloxacillin or vancomycin (if MRSA) for bactericidal activity. Rifampicin may be added for synergy. IVIG 2 g/kg (neutralises circulating PVL toxin) — give early. Avoid sole use of β-lactams at sub-inhibitory concentrations as this may paradoxically increase toxin production." },
-              { label: "ICU Management", detail: "Early intubation and lung-protective ventilation — ARDS is almost universal. Prone positioning. Consider VV-ECMO early given the high mortality and young patient demographic. Aggressive haemodynamic resuscitation with vasopressors. Surgical debridement of necrotic lung (lobectomy/pneumonectomy) may be life-saving in refractory cases." },
-              { label: "Infection Control & Contacts", detail: "PHE (UKHSA) guidelines: screen household contacts for PVL carriage (nasal, axillary, groin swabs). Decolonisation of patient and carriers: nasal mupirocin + chlorhexidine body washes × 5 days. Recurrent skin infections in close contacts is a red flag. Not routinely airborne — standard and contact precautions." },
-              { label: "Skin & Soft Tissue PVL Disease", detail: "PVL-positive S. aureus more commonly causes recurrent boils, abscesses, and cellulitis. Necrotising pneumonia is the rare but most severe manifestation. Always consider PVL testing in young patients with recurrent staphylococcal skin infections." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+          <ExamSection id="legionella" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Legionella Pneumonia</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <em>Legionella pneumophila</em> (serogroup 1) causes ~5% of severe CAP. Intracellular Gram-negative rod from contaminated water systems — no person-to-person transmission.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Clinical Features</p>
+                <p className="text-xs text-muted-foreground mt-1">High fever, dry cough, confusion, diarrhoea, hyponatraemia (SIADH), raised CK, lymphopenia, deranged LFTs.</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Gram-Positive vs Gram-Negative Sepsis ---- */}
-        <div id="toc-sepsis" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gram-Positive vs Gram-Negative Sepsis</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            The distinction between Gram-positive and Gram-negative organisms is fundamental to understanding sepsis pathophysiology, empiric antibiotic selection, and clinical presentation. While the final common pathway of septic shock is similar, the initiating mechanisms and clinical nuances differ.
-          </p>
-
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Gram-Positive Sepsis</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Gram-Negative Sepsis</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Cell wall structure</td>
-                  <td>Thick peptidoglycan layer, lipoteichoic acid (LTA), teichoic acids. No outer membrane. Crystal violet retention on Gram stain.</td>
-                  <td>Thin peptidoglycan, outer membrane containing lipopolysaccharide (LPS/endotoxin). Periplasmic space. Pink/red on Gram stain.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Primary toxin / PAMP</td>
-                  <td>Lipoteichoic acid, peptidoglycan fragments, superantigens (TSST-1, PVL, streptococcal pyrogenic exotoxins). Recognised by TLR-2.</td>
-                  <td>LPS (endotoxin) — lipid A component is the primary immunostimulant. Recognised by TLR-4 via MD-2/CD14 complex. Extremely potent — nanogram quantities trigger systemic inflammation.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Immune activation</td>
-                  <td>TLR-2 → MyD88 → NF-κB → pro-inflammatory cytokines. Superantigens bypass normal antigen processing → polyclonal T-cell activation → cytokine storm (toxic shock syndromes).</td>
-                  <td>LPS–TLR-4 → MyD88 and TRIF pathways → NF-κB + IRF3 → TNF-α, IL-1β, IL-6 + type I interferons. Complement activation. Endotoxin also activates coagulation cascade directly.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Common organisms</td>
-                  <td><em>S. aureus</em> (MSSA/MRSA), <em>S. pneumoniae</em>, <em>Streptococcus pyogenes</em> (GAS), <em>Enterococcus</em> spp., coagulase-negative <em>Staphylococci</em></td>
-                  <td><em>E. coli</em> (most common), <em>Klebsiella</em>, <em>Pseudomonas</em>, <em>Acinetobacter</em>, <em>Neisseria meningitidis</em>, <em>Bacteroides</em> (anaerobe)</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Common sources</td>
-                  <td>Skin/soft tissue, intravascular devices (CLABSI), endocarditis, bone/joint, post-surgical wound infections</td>
-                  <td>Urinary tract (most common), intra-abdominal (biliary, perforated viscus), respiratory (HAP/VAP), meningitis</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Haemodynamic pattern</td>
-                  <td>Vasodilatory shock similar to Gram-negative. Superantigen-mediated toxic shock: profound capillary leak, erythroderma, desquamation.</td>
-                  <td>Classic 'warm shock' → vasodilatory with high cardiac output initially. Endotoxin is the most potent trigger of distributive shock. DIC more commonly associated with Gram-negative bacteraemia.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">DIC association</td>
-                  <td>Less common but occurs (especially meningococcal-like purpura fulminans with GAS). <em>S. aureus</em> bacteraemia can cause DIC in severe cases.</td>
-                  <td>Strongly associated — LPS directly activates tissue factor and coagulation cascade. Meningococcal sepsis is the archetype. Symmetrical peripheral gangrene.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Empiric antibiotics</td>
-                  <td>Flucloxacillin (MSSA), vancomycin (MRSA risk), linezolid or daptomycin for resistant organisms. Clindamycin added for toxin suppression in necrotising/toxic shock.</td>
-                  <td>Piperacillin-tazobactam, ceftriaxone, or meropenem (if ESBL/CRE risk). Gentamicin for synergy in severe sepsis. Anti-pseudomonal cover if HAP/VAP or immunocompromised.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Special considerations</td>
-                  <td><em>S. aureus</em> bacteraemia: always requires echocardiography, repeat cultures at 48–72 h, minimum 2 weeks IV therapy (4–6 weeks if endocarditis). PVL-positive strains → necrotising pneumonia risk.</td>
-                  <td>Jarisch-Herxheimer-like reactions possible with high-burden bacteraemia (endotoxin release on bacterial lysis). Source control is paramount (drain collections, relieve obstruction). Monitor for AKI (endotoxin-mediated).</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxic Shock Syndromes</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Staphylococcal Toxic Shock (TSS)</p>
-              <p className="text-xs text-muted-foreground mt-1">TSST-1 superantigen (or enterotoxins B/C). Classic: fever &gt;38.9°C, diffuse macular erythroderma, desquamation (1–2 weeks later), hypotension, ≥3 organ systems involved. Historically associated with tampon use but now more common with wound infections. Treatment: source control + flucloxacillin + clindamycin (toxin suppression) + IVIG.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Streptococcal Toxic Shock (STSS)</p>
-              <p className="text-xs text-muted-foreground mt-1">Group A <em>Streptococcus</em> pyrogenic exotoxins (SpeA, SpeC). More severe than staphylococcal TSS — mortality 30–70%. Often associated with necrotising fasciitis or puerperal sepsis. Pain out of proportion. Treatment: surgical debridement + benzylpenicillin + clindamycin + IVIG (INSTINCT trial).</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Endotoxin & the Sepsis Cascade</h3>
-          <div className="space-y-2">
-            {[
-              { label: "LPS Structure", detail: "Lipid A (toxic moiety, conserved) + core oligosaccharide + O-antigen (variable, determines serotype). LPS is released on bacterial lysis or during growth. Detected by Limulus amebocyte lysate (LAL) assay — basis of endotoxin activity assay (EAA)." },
-              { label: "Signalling Cascade", detail: "LPS binds LBP (LPS-binding protein) → transfers to CD14 → presented to TLR-4/MD-2 complex → intracellular signalling via MyD88 (early) and TRIF (late) → NF-κB activation → TNF-α, IL-1β, IL-6, IL-8 release → systemic inflammatory response." },
-              { label: "Clinical Implications", detail: "Antibiotic-induced endotoxin release may cause transient deterioration (especially with bactericidal agents in high-burden Gram-negative sepsis). This underpinned historical interest in polymyxin B haemoperfusion (EUPHRATES trial — no overall benefit but signal in high-EAA subgroup). Endotoxin tolerance: repeated exposure → attenuated response (immunoparalysis in prolonged sepsis)." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Diagnosis</p>
+                <p className="text-xs text-muted-foreground mt-1">Urinary antigen (rapid, ~80% sens for serogroup 1). PCR on respiratory samples. Notifiable disease.</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Urinary tract infections are the second most common source of sepsis in ICU. Obstruction (calculi, BPH) is a common precipitant requiring urgent source control.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Common Organisms</p>
-              <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em> (most common), <em>Klebsiella</em>, <em>Proteus</em>, <em>Pseudomonas</em> (catheter-associated), <em>Enterococcus</em>.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Source Control</p>
-              <p className="text-xs text-muted-foreground mt-1">Urgent imaging (CT/USS). Nephrostomy or ureteric stent for obstructed pyelonephritis. Remove/replace urinary catheters.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Empiric Therapy</p>
-              <p className="text-xs text-muted-foreground mt-1">Piperacillin-tazobactam or gentamicin + amoxicillin. Consider ESBL risk: meropenem if previous ESBL colonisation. Follow local antibiogram.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- CNS Infections ---- */}
-        <div id="toc-cns" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">CNS Infections</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Meningitis and encephalitis present with reduced consciousness, seizures and raised ICP — often requiring ICU for airway protection and ICP management.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Condition</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Organisms</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Management</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Bacterial meningitis</td>
-                  <td><em>N. meningitidis</em>, <em>S. pneumoniae</em>, <em>Listeria</em> (elderly/immunocompromised)</td>
-                  <td>Ceftriaxone 2 g BD + dexamethasone 10 mg QDS (before or with first dose). Add amoxicillin if Listeria risk. LP when safe.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Viral encephalitis</td>
-                  <td>HSV-1 (most common treatable), VZV, enterovirus</td>
-                  <td>IV aciclovir 10 mg/kg TDS empirically. MRI: temporal lobe signal changes in HSV. CSF PCR for diagnosis.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Brain abscess</td>
-                  <td>Mixed anaerobes, <em>Streptococci</em>, <em>S. aureus</em></td>
-                  <td>Ceftriaxone + metronidazole. Neurosurgical aspiration/drainage if &gt;2.5 cm or midline shift.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Fungal meningitis</td>
-                  <td><em>Cryptococcus neoformans</em> (HIV/immunosuppression)</td>
-                  <td>Amphotericin B + flucytosine induction, then fluconazole. Raised ICP may require repeated LP or shunt.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ---- Intra-abdominal ---- */}
-        <div id="toc-abdo" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-abdominal Sepsis</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Abdominal sepsis accounts for ~20% of ICU sepsis. Source control (surgery or drainage) is the critical intervention — antibiotics alone are insufficient.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Common Sources</p>
-              <p className="text-xs text-muted-foreground mt-1">Perforated viscus, anastomotic leak, cholangitis, diverticular abscess, pancreatitis with infected necrosis.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Organisms</p>
-              <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em>, <em>Bacteroides</em>, <em>Enterococcus</em>, <em>Klebsiella</em>. Tertiary peritonitis: <em>Candida</em>, <em>Enterococcus faecium</em>, MDR Gram-negatives.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Necrotising Fasciitis ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Necrotising Fasciitis</h2>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            A rapidly progressive, life-threatening soft-tissue infection spreading along fascial planes. Mortality 20–40% even with treatment. Early surgical debridement is the single most important intervention.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Type I (Polymicrobial)</p>
-              <p className="text-xs text-muted-foreground mt-1">Mixed aerobes + anaerobes. Typically post-operative or perineal (Fournier's gangrene). Risk factors: diabetes, immunosuppression, peripheral vascular disease.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Type II (Monomicrobial)</p>
-              <p className="text-xs text-muted-foreground mt-1">Group A <em>Streptococcus</em> (most common), <em>S. aureus</em>, <em>Clostridium</em>. Can occur in healthy patients. Streptococcal toxic shock syndrome in ~50%.</p>
-            </div>
-          </div>
-          <div className="space-y-2">
-            {[
-              { label: "Clinical Features", detail: "Pain out of proportion to signs, rapidly spreading erythema, crepitus (gas gangrene), blistering, skin necrosis, systemic toxicity. LRINEC score ≥6 suggests necrotising infection." },
-              { label: "Surgical Management", detail: "Emergency radical debridement — the 'finger test' at fascial plane. Often requires multiple returns to theatre (relook at 24–48 h). May require amputation. Vacuum-assisted closure for open wounds." },
-              { label: "Medical Management", detail: "Broad-spectrum: piperacillin-tazobactam or meropenem + clindamycin (inhibits toxin production) + vancomycin (if MRSA risk). IVIG considered for streptococcal toxic shock. HDU/ICU for organ support." },
-              { label: "ICU Considerations", detail: "Massive fluid requirements (capillary leak + third-spacing). Vasopressor support. Early intubation if spreading cervical/facial involvement. Anticipate DIC, AKI, ARDS." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Treatment</p>
+                <p className="text-xs text-muted-foreground mt-1">Macrolide (azithromycin) or fluoroquinolone (levofloxacin). 7–14 days (21 if immunocompromised). β-lactams ineffective.</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Bloodstream / Line infections ---- */}
-        <div id="toc-bloodstream" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bloodstream & Line Infections</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Central line-associated bloodstream infections (CLABSIs) are a major preventable cause of ICU morbidity. The 'Matching Michigan' and similar bundles have reduced CLABSI rates significantly.
-          </p>
-          <div className="grid sm:grid-cols-3 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Organisms</p>
-              <p className="text-xs text-muted-foreground mt-1">Coagulase-negative <em>Staphylococci</em>, <em>S. aureus</em>, <em>Candida</em>, <em>Enterococcus</em>, Gram-negatives. <em>S. aureus</em> bacteraemia: always requires echocardiography and prolonged treatment.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Prevention Bundle</p>
-              <p className="text-xs text-muted-foreground mt-1">Hand hygiene, full barrier precautions, chlorhexidine skin prep, optimal site selection (avoid femoral), daily line necessity review, aseptic technique.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Management</p>
-              <p className="text-xs text-muted-foreground mt-1">Remove/exchange line. Paired blood cultures (peripheral + line — differential time to positivity). Empiric vancomycin + Gram-negative cover. Duration depends on organism.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Fungal Infections ---- */}
-        <div id="toc-fungal" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fungal Infections in ICU</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Invasive fungal infections carry high mortality (30–60%) and are increasing in prevalence. ICU patients are at risk due to broad-spectrum antibiotics, central lines, TPN, immunosuppression, and prolonged stay.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Organism</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Clinical Presentation</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Diagnosis & Treatment</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground"><em>Candida</em> spp.</td>
-                  <td>Candidaemia, intra-abdominal candidiasis, candiduria. <em>C. albicans</em> most common but <em>C. auris</em> is an emerging MDR threat.</td>
-                  <td>Blood cultures (sensitivity ~50%). 1,3-β-D-glucan. Empiric echinocandin (anidulafungin/caspofungin) — IDSA guidelines. Fluconazole step-down for sensitive species. Remove lines.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground"><em>Aspergillus</em></td>
-                  <td>Invasive pulmonary aspergillosis (IPA). CT: halo sign, air-crescent sign. COVID-associated pulmonary aspergillosis (CAPA).</td>
-                  <td>Galactomannan antigen (serum/BAL). Voriconazole first-line (TDM essential, target 1–5.5 mg/L). Isavuconazole or liposomal amphotericin B alternatives.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground"><em>Pneumocystis jirovecii</em></td>
-                  <td>PJP: bilateral ground-glass opacities, hypoxaemia, high LDH. HIV and non-HIV immunosuppression (steroids, transplant).</td>
-                  <td>High-dose co-trimoxazole (120 mg/kg/day in divided doses). Adjunctive steroids if PaO₂ &lt; 9.3 kPa. Duration 21 days (HIV) or 14 days (non-HIV).</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground"><em>Cryptococcus</em></td>
-                  <td>Meningoencephalitis in HIV/immunosuppressed. Raised ICP, headache, confusion. India ink stain, cryptococcal antigen.</td>
-                  <td>Amphotericin B + flucytosine induction (2 weeks) → fluconazole consolidation. Serial LPs for ICP management.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Mucormycosis</td>
-                  <td>Rhinocerebral, pulmonary, or disseminated. Diabetes (esp. DKA), haematological malignancy. Angioinvasive — tissue necrosis.</td>
-                  <td>Surgical debridement essential. Liposomal amphotericin B. Correct underlying risk factors (glycaemic control). High mortality.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ---- Endocarditis ---- */}
-        <div id="toc-endocarditis" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Endocarditis</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Modified Duke criteria for diagnosis. Common organisms: <em>S. aureus</em> (acute, IVDU), <em>Streptococci</em> (subacute, native valve), <em>Enterococcus</em>, HACEK group. ICU admission for septic shock, heart failure, or embolic complications.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Medical Management</p>
-              <p className="text-xs text-muted-foreground mt-1">Empiric: flucloxacillin + gentamicin (native valve) or vancomycin + gentamicin + rifampicin (prosthetic). Guided by cultures — prolonged course (4–6 weeks IV).</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Surgical Indications</p>
-              <p className="text-xs text-muted-foreground mt-1">Heart failure from valvular destruction, uncontrolled infection, abscess formation, recurrent emboli, large vegetations (&gt;10 mm). Early surgery improves outcomes in selected patients.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- C. difficile ---- */}
-        <div id="toc-cdiff" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3"><em>Clostridioides difficile</em> Infection</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Toxin-mediated colitis associated with antibiotic exposure (fluoroquinolones, cephalosporins, clindamycin). Severity ranges from mild diarrhoea to fulminant colitis with toxic megacolon.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Mild–Moderate</p>
-              <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 125 mg QDS (10–14 days). Fidaxomicin for recurrent episodes. Stop causative antibiotics if possible.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Severe / Fulminant</p>
-              <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 500 mg QDS + IV metronidazole. WCC &gt;15, creatinine rise, lactate &gt;2.2, toxic megacolon → surgical review for subtotal colectomy. Faecal microbiota transplantation for recurrence.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Viral infections ---- */}
-        <div id="toc-viral" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viral Infections in ICU</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Virus</th>
-                  <th className="text-left py-2 text-foreground font-semibold">ICU Presentation</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Treatment</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Influenza</td>
-                  <td>ARDS, myocarditis, secondary bacterial pneumonia</td>
-                  <td>Oseltamivir (even if &gt;48 h from onset in ICU patients). Suspect and treat early.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">SARS-CoV-2</td>
-                  <td>ARDS, ARDS phenotypes, VTE, cytokine storm</td>
-                  <td>Dexamethasone (RECOVERY trial), tocilizumab, baricitinib. Prone positioning. Anticoagulation.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">HSV / VZV</td>
-                  <td>Encephalitis, hepatitis, disseminated in immunocompromised</td>
-                  <td>IV aciclovir 10 mg/kg TDS. Adequate hydration to prevent crystalluria.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">CMV</td>
-                  <td>Reactivation in immunosuppressed: pneumonitis, colitis, hepatitis</td>
-                  <td>IV ganciclovir or oral valganciclovir. Monitor for myelosuppression.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ---- Drug-Resistant Organisms ---- */}
-        <div id="toc-mdr" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug-Resistant Organisms</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Antimicrobial resistance (AMR) is a critical challenge in ICU. Prolonged antibiotic courses, immunosuppression, invasive devices, and cross-contamination drive selection and transmission of multi-drug resistant organisms (MDROs).
-          </p>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Positive Resistant Organisms</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Organism</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Resistance Mechanism</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Treatment Options</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">MRSA</td>
-                  <td><em>mecA</em> gene → altered PBP2a with low β-lactam affinity. Community-associated (CA-MRSA) often PVL-positive — necrotising pneumonia, skin abscesses.</td>
-                  <td>Vancomycin (trough 15–20 mg/L for serious infections) or teicoplanin. Linezolid for pneumonia (better lung penetration). Daptomycin for bacteraemia (inactivated by surfactant — not for pneumonia). Decolonisation: nasal mupirocin + chlorhexidine washes.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">VRE</td>
-                  <td><em>vanA</em> (high-level, transferable) or <em>vanB</em> genes. <em>E. faecium</em> more commonly resistant than <em>E. faecalis</em>. Intrinsically resistant to cephalosporins.</td>
-                  <td>Linezolid (oral bioavailability ~100%) or daptomycin. Tigecycline for intra-abdominal/soft tissue. Contact isolation essential.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Penicillin-resistant <em>S. pneumoniae</em></td>
-                  <td>Altered PBPs. MIC-dependent: intermediate vs high-level resistance. More common in certain serotypes.</td>
-                  <td>High-dose ceftriaxone (2 g BD) for meningitis. Vancomycin added empirically for CNS infection. Respiratory infections often still respond to high-dose amoxicillin.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Negative Resistant Organisms</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Organism / Mechanism</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Key Features</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Treatment Options</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">ESBL producers</td>
-                  <td>Extended-spectrum β-lactamases hydrolyse 3rd-generation cephalosporins. Common in <em>E. coli</em>, <em>Klebsiella</em>. Risk factors: prior antibiotics, travel to endemic areas, recurrent UTIs.</td>
-                  <td>Carbapenems (meropenem) are first-line for serious infections. Piperacillin-tazobactam may be adequate for UTIs (MERINO trial suggests inferiority for bacteraemia). Fosfomycin for uncomplicated UTI.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">AmpC producers</td>
-                  <td>Chromosomal or plasmid-mediated AmpC β-lactamases. The 'ESCAPPM' organisms (<em>Enterobacter, Serratia, Citrobacter, Aeromonas, Proteus vulgaris, Providencia, Morganella</em>). Risk of inducible resistance on 3rd-gen cephalosporins.</td>
-                  <td>Carbapenems or cefepime (stable to AmpC). Avoid ceftriaxone/ceftazidime — risk of selecting resistant mutants during therapy.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Carbapenem-resistant Enterobacterales (CRE)</td>
-                  <td>Carbapenemases: KPC, NDM, OXA-48, VIM, IMP. NDM and OXA-48 prevalent in South Asia and Middle East. Plasmid-mediated — horizontal gene transfer. Mortality 40–50%.</td>
-                  <td>Ceftazidime-avibactam (KPC, OXA-48). Meropenem-vaborbactam (KPC). Cefiderocol (NDM, all carbapenemases). Colistin (nephrotoxic — last resort). Combination therapy often used. Infectious diseases input essential.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">MDR <em>Pseudomonas aeruginosa</em></td>
-                  <td>Multiple mechanisms: efflux pumps, porin loss, AmpC, metallo-β-lactamases. Biofilm formation on devices. Intrinsically resistant to many antibiotics.</td>
-                  <td>Anti-pseudomonal β-lactams (piperacillin-tazobactam, ceftazidime, meropenem) based on sensitivities. Ceftolozane-tazobactam for MDR strains. Nebulised colistin as adjunct in VAP. Combination therapy for severe infections.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">MDR <em>Acinetobacter baumannii</em></td>
-                  <td>Intrinsically resistant to many antibiotics. OXA-type carbapenemases. Survives on environmental surfaces for weeks — outbreaks in ICU. Associated with VAP, wound infections, bacteraemia.</td>
-                  <td>High-dose ampicillin-sulbactam (sulbactam has intrinsic activity). Colistin ± meropenem (if MIC ≤8). Tigecycline for non-bacteraemic infections. Environmental decontamination critical.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Drug-Resistant Fungi</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm"><em>Candida auris</em></p>
-              <p className="text-xs text-muted-foreground mt-1">Emerging multidrug-resistant yeast. Often resistant to fluconazole; variable echinocandin and amphotericin B susceptibility. Persists on skin and environmental surfaces. Difficult to identify — requires MALDI-TOF or molecular methods. Outbreaks in ICUs worldwide. Contact isolation + enhanced environmental cleaning essential.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Azole-resistant <em>Aspergillus fumigatus</em></p>
-              <p className="text-xs text-muted-foreground mt-1">TR34/L98H and TR46/Y121F/T289A mutations — linked to environmental azole fungicide use. Voriconazole resistance → liposomal amphotericin B first-line. Susceptibility testing essential. Increasing prevalence in Europe.</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Drug-Resistant Tuberculosis</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">MDR-TB</p>
-              <p className="text-xs text-muted-foreground mt-1">Resistant to rifampicin AND isoniazid. Requires 9–18 month regimens with second-line agents: bedaquiline, linezolid, levofloxacin, clofazimine. Specialist TB centre referral. Airborne precautions with negative-pressure isolation.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">XDR-TB</p>
-              <p className="text-xs text-muted-foreground mt-1">MDR-TB + resistance to fluoroquinolones AND ≥1 injectable agent (or bedaquiline/linezolid per 2021 WHO definition). Extremely limited treatment options. Mortality high without access to newer agents. GeneXpert MTB/RIF for rapid rifampicin resistance detection.</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">ICU Strategies for Managing MDROs</h3>
-          <div className="space-y-2">
-            {[
-              { label: "Screening & Surveillance", detail: "Admission screening for MRSA, CPE, VRE in high-risk patients (recent hospitalisation, travel to endemic areas, prior MDROs). Rectal swabs for CPE/VRE, nasal swabs for MRSA. Active surveillance cultures." },
-              { label: "Contact Precautions", detail: "Single-room isolation or cohorting. Dedicated equipment. Gowns and gloves for all contact. Enhanced terminal cleaning with hydrogen peroxide vapour or UV-C for CPE and C. auris." },
-              { label: "Antibiotic Stewardship", detail: "Empiric broad-spectrum → de-escalate at 48–72 h based on cultures. Carbapenem-sparing strategies where possible. Procalcitonin-guided duration. Regular antibiogram review. Restrict fluoroquinolones and carbapenems." },
-              { label: "Novel Agents & Approaches", detail: "Ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol, ceftolozane-tazobactam, eravacycline. Phage therapy (experimental). Faecal microbiota transplant for recurrent C. difficile. Pipeline agents in clinical trials." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">ICU Relevance</p>
+                <p className="text-xs text-muted-foreground mt-1">Rapidly progressive respiratory failure, MOF, rhabdomyolysis, AKI. Mortality 10–30% in ICU.</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Leptospirosis ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Leptospirosis</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            <em>Leptospira interrogans</em> is a spirochaete transmitted through contact with water or soil contaminated by infected animal urine (rats, cattle, dogs). Occupational risk in farmers, sewer workers, and military personnel. Incubation 2–30 days. Endemic in tropical regions but occurs worldwide — consider in travellers returning with fever and multi-organ dysfunction.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Anicteric Leptospirosis (90%)</p>
-              <p className="text-xs text-muted-foreground mt-1">Biphasic illness: acute bacteraemic phase (fever, myalgia, conjunctival suffusion, headache) followed by immune phase. Usually self-limiting. Suffusion without purulent discharge is a distinguishing feature.</p>
             </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Weil's Disease (severe, ~10%)</p>
-              <p className="text-xs text-muted-foreground mt-1">Triad of jaundice, AKI, and haemorrhage. Jaundice is due to hepatocellular dysfunction but hepatic failure is rare — transaminases only modestly elevated (unlike viral hepatitis). Thrombocytopenia common. Mortality 5–15%.</p>
+          </ExamSection>
+
+          <ExamSection id="pvl" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">PVL-Positive <em>Staphylococcus aureus</em> Pneumonia</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Panton-Valentine Leukocidin is a pore-forming cytotoxin (MSSA or MRSA). Necrotising pneumonia in previously healthy young adults, often after influenza or skin infection. Mortality 50–75%.
+            </p>
+            <div className="space-y-2">
+              {[
+                { label: "Diagnostic Clues", detail: "Young, previously healthy, rapidly progressive pneumonia + leucopenia (paradoxical, often <2 ×10⁹/L) + haemoptysis. Multilobar cavitating consolidation. PCR for lukS-PV/lukF-PV genes." },
+                { label: "Antimicrobial Therapy", detail: "Suppress toxin: linezolid + clindamycin (both inhibit toxin synthesis). Add flucloxacillin or vancomycin (if MRSA). IVIG 2 g/kg neutralises circulating toxin. Avoid sub-inhibitory β-lactams (paradoxical ↑ toxin)." },
+                { label: "ICU Management", detail: "Early intubation, lung-protective ventilation, prone positioning. Consider VV-ECMO early. Aggressive vasopressor support. Surgical debridement of necrotic lung in refractory cases." },
+                { label: "Infection Control & Contacts", detail: "UKHSA: screen household contacts (nasal, axilla, groin). Decolonisation: nasal mupirocin + chlorhexidine washes ×5 days. Recurrent skin abscesses in close contacts is a red flag." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
             </div>
-          </div>
-          <div className="space-y-2">
-            {[
-              { label: "Renal Involvement", detail: "Non-oliguric AKI with hypokalaemia (unique — most AKI causes hyperkalaemia). Direct tubular toxicity and interstitial nephritis. Usually recovers with supportive care ± RRT. Hypokalaemia may require aggressive replacement." },
-              { label: "Pulmonary Haemorrhage", detail: "Diffuse alveolar haemorrhage is the most feared complication — can cause rapidly fatal respiratory failure. Haemoptysis, bilateral infiltrates, falling haemoglobin. May require intubation and lung-protective ventilation. Consider pulsed methylprednisolone (evidence limited but used in severe cases)." },
-              { label: "Cardiac Involvement", detail: "Myocarditis, arrhythmias, and cardiovascular collapse. ECG changes include ST-segment abnormalities and conduction defects. Troponin elevation common." },
-              { label: "Diagnosis", detail: "MAT (microscopic agglutination test) — gold standard but takes 7–10 days. IgM ELISA for rapid screening. PCR on blood (first week) or urine (second week). Dark-field microscopy (low sensitivity). Blood cultures in EMJH medium (slow — weeks)." },
-              { label: "Treatment", detail: "Mild: oral doxycycline 100 mg BD or amoxicillin. Severe (Weil's): IV benzylpenicillin 1.2 g QDS or ceftriaxone 1 g OD. Early antibiotics reduce duration and complications. Jarisch-Herxheimer reaction may occur (treat supportively). Doxycycline 200 mg weekly for prophylaxis in high-risk exposure." },
-              { label: "ICU Management", detail: "Organ support: RRT for AKI, mechanical ventilation for pulmonary haemorrhage/ARDS, vasopressors for shock. Correct coagulopathy and thrombocytopenia. Monitor for myocarditis. Notifiable disease in the UK." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+          </ExamSection>
+
+          <ExamSection id="sepsis" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gram-Positive vs Gram-Negative Sepsis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The distinction is fundamental to sepsis pathophysiology, empiric antibiotic selection, and clinical presentation.
+            </p>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Gram-Positive</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Gram-Negative</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cell wall</td><td>Thick peptidoglycan, lipoteichoic acid; no outer membrane.</td><td>Outer membrane with LPS (endotoxin); thin peptidoglycan.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PAMP / receptor</td><td>LTA, peptidoglycan, superantigens (TSST-1, PVL); TLR-2.</td><td>LPS lipid A; TLR-4 via MD-2/CD14. Nanogram quantities trigger systemic inflammation.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Common organisms</td><td><em>S. aureus</em>, <em>S. pneumoniae</em>, GAS, <em>Enterococcus</em>, CoNS</td><td><em>E. coli</em>, <em>Klebsiella</em>, <em>Pseudomonas</em>, <em>Acinetobacter</em>, <em>Neisseria</em>, <em>Bacteroides</em></td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Common sources</td><td>Skin/soft tissue, intravascular devices, endocarditis, bone/joint, surgical wounds</td><td>UTI (most common), intra-abdominal, HAP/VAP, meningitis</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">DIC association</td><td>Less common but occurs (purpura fulminans-like with GAS)</td><td>Strongly associated — LPS activates tissue factor. Meningococcal sepsis is the archetype.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Empiric antibiotics</td><td>Flucloxacillin (MSSA), vancomycin (MRSA risk), clindamycin for toxin suppression</td><td>Pip-tazo, ceftriaxone, or meropenem (ESBL/CRE risk). Anti-pseudomonal cover for HAP/VAP.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Toxic Shock Syndromes</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Staphylococcal TSS</p>
+                <p className="text-xs text-muted-foreground mt-1">TSST-1 superantigen. Fever, diffuse erythroderma, desquamation, hypotension, ≥3 organ systems. Treatment: source control + flucloxacillin + clindamycin + IVIG.</p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Infection control ---- */}
-        <div id="toc-control" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
-          <div className="space-y-2">
-            {[
-              { label: "Hand Hygiene", detail: "WHO 5 moments. Alcohol gel for most situations; soap and water for C. difficile and norovirus (spore-forming)." },
-              { label: "Ventilator Bundle", detail: "Head-of-bed elevation 30–45°, daily sedation holds, oral chlorhexidine, peptic ulcer prophylaxis, VTE prophylaxis, daily assessment of extubation readiness." },
-              { label: "Isolation Precautions", detail: "Contact (MRSA, VRE, C. difficile), droplet (influenza, meningococcus), airborne (TB, measles, VZV — negative-pressure room)." },
-              { label: "Antimicrobial Stewardship", detail: "Start smart, then focus. De-escalation at 48–72 h. Procalcitonin-guided duration. Audit and feedback. Restrict high-risk antibiotics." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Streptococcal TSS</p>
+                <p className="text-xs text-muted-foreground mt-1">Group A Strep pyrogenic exotoxins. Mortality 30–70%. Often with necrotising fasciitis. Pain out of proportion. Surgical debridement + benzylpenicillin + clindamycin + IVIG.</p>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </ExamSection>
 
-      </section>
+          <ExamSection id="urosepsis" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Urosepsis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              UTIs are the second commonest source of ICU sepsis. Obstruction (calculi, BPH) is a common precipitant requiring urgent source control.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Common Organisms</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em>, <em>Klebsiella</em>, <em>Proteus</em>, <em>Pseudomonas</em>, <em>Enterococcus</em>.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Source Control</p>
+                <p className="text-xs text-muted-foreground mt-1">Urgent imaging. Nephrostomy/stent for obstructed pyelonephritis. Remove/replace catheters.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Empiric Therapy</p>
+                <p className="text-xs text-muted-foreground mt-1">Pip-tazo or gentamicin + amoxicillin. Meropenem if previous ESBL.</p>
+              </div>
+            </div>
+          </ExamSection>
 
-      <div id="toc-synthesis" className="scroll-mt-24" />
-      <SynthesisBlock
-        title="ICU Infections — Bug, Drug & Pearl"
-        subtitle="The headline pathogens and empirical regimens for the major ICU infection syndromes."
-        variant="table"
-      >
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="border-b border-border bg-secondary/50">
-              <th className="text-left p-2 text-foreground font-semibold">Syndrome</th>
-              <th className="text-left p-2 text-foreground font-semibold">Likely Pathogens</th>
-              <th className="text-left p-2 text-foreground font-semibold">Empirical Therapy / Pearl</th>
-            </tr>
-          </thead>
-          <tbody className="text-foreground/90">
-            {[
-              ["CAP — severe", "S. pneumoniae, H. influenzae, Legionella, atypicals", "Co-amox + macrolide; β-lactams ineffective vs Legionella"],
-              ["HAP / VAP", "P. aeruginosa, MRSA, ESBL Enterobacterales", "Pip-tazo or meropenem ± vancomycin; de-escalate at 48–72 h"],
-              ["Catheter sepsis", "CoNS, S. aureus, Candida", "Remove line; vancomycin + antifungal if Candida likely"],
-              ["Intra-abdominal", "E. coli, Klebsiella, Bacteroides, enterococci", "Pip-tazo or meropenem; SOURCE CONTROL is paramount"],
-              ["Meningitis", "S. pneumoniae, N. meningitidis, Listeria (>50 y)", "Ceftriaxone + amoxicillin (Listeria cover) + dexamethasone"],
-              ["Necrotising fasciitis", "Group A strep, polymicrobial, Clostridia", "Surgical debridement; benzylpenicillin + clindamycin"],
-              ["Neutropenic sepsis", "Gram-negatives, viridans strep, fungi", "Pip-tazo within 1 h; G-CSF if prolonged"],
-              ["C. difficile", "Toxin-producing C. difficile", "Oral vancomycin / fidaxomicin; soap & water hand hygiene"],
-            ].map(([syndrome, bugs, drug]) => (
-              <tr key={syndrome as string} className="border-b border-border/50">
-                <td className="p-2 font-medium">{syndrome}</td>
-                <td className="p-2 text-muted-foreground">{bugs}</td>
-                <td className="p-2 text-muted-foreground">{drug}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </SynthesisBlock>
+          <ExamSection id="cns" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">CNS Infections</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Condition</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Organisms</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Management</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bacterial meningitis</td><td><em>N. meningitidis</em>, <em>S. pneumoniae</em>, <em>Listeria</em></td><td>Ceftriaxone 2 g BD + dexamethasone 10 mg QDS. Add amoxicillin if Listeria risk.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Viral encephalitis</td><td>HSV-1, VZV, enterovirus</td><td>IV aciclovir 10 mg/kg TDS. MRI: temporal lobe in HSV. CSF PCR.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Brain abscess</td><td>Mixed anaerobes, Streptococci, S. aureus</td><td>Ceftriaxone + metronidazole. Aspirate if &gt;2.5 cm.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Fungal meningitis</td><td><em>Cryptococcus neoformans</em></td><td>Amphotericin B + flucytosine then fluconazole. ICP control.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
 
-      <KeyLearningPoints points={[
-        "Legionella is intracellular — β-lactams are ineffective; treat with macrolides or fluoroquinolones",
-        "Necrotising fasciitis: pain out of proportion, crepitus, systemic toxicity — emergency surgical debridement is the priority",
-        "Invasive candidiasis: echinocandins first-line empirically; remove all intravascular lines",
-        "Invasive aspergillosis: voriconazole first-line with TDM; halo sign on CT is the classic early finding",
-        "S. aureus bacteraemia always requires echocardiography and a minimum 2 weeks IV antibiotics",
-        "C. difficile: oral vancomycin first-line; severe/fulminant cases need surgical review for colectomy",
-        "Source control is the most important intervention in intra-abdominal sepsis and necrotising fasciitis",
-        "CRE: ceftazidime-avibactam for KPC/OXA-48; cefiderocol for NDM — always involve microbiology/ID",
-        "ESCAPPM organisms risk inducible AmpC resistance on 3rd-gen cephalosporins — use carbapenems or cefepime",
-        "Candida auris is an emerging MDR yeast requiring MALDI-TOF identification, contact isolation, and enhanced environmental cleaning",
-      ]} />
+          <ExamSection id="abdo" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-abdominal Sepsis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              ~20% of ICU sepsis. Source control (surgery or drainage) is the critical intervention.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Common Sources</p>
+                <p className="text-xs text-muted-foreground mt-1">Perforated viscus, anastomotic leak, cholangitis, diverticular abscess, infected pancreatic necrosis.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Organisms</p>
+                <p className="text-xs text-muted-foreground mt-1"><em>E. coli</em>, <em>Bacteroides</em>, <em>Enterococcus</em>, <em>Klebsiella</em>. Tertiary peritonitis: <em>Candida</em>, <em>E. faecium</em>, MDR Gram-negatives.</p>
+              </div>
+            </div>
+          </ExamSection>
 
-      <QuizSection questions={infectiousDiseaseIcuQuestions} />
-      <ReferencesList topicId="infectious-disease-icu" />
-      <SeeAlso topicId="infectious-disease-icu" />
-      <TopicCompletionToggle topicId="infectious-disease-icu" topicTitle="Infectious Disease in ICU" />
-    </SectionLayout>
+          <ExamSection id="necfasc" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Necrotising Fasciitis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Rapidly progressive fascial-plane infection. Mortality 20–40%. Early surgical debridement is the single most important intervention.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Type I (Polymicrobial)</p>
+                <p className="text-xs text-muted-foreground mt-1">Mixed aerobes + anaerobes. Post-op or perineal (Fournier's). Risk: diabetes, immunosuppression, PVD.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Type II (Monomicrobial)</p>
+                <p className="text-xs text-muted-foreground mt-1">Group A Strep, S. aureus, Clostridium. Healthy patients. STSS in ~50%.</p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {[
+                { label: "Clinical Features", detail: "Pain out of proportion, rapidly spreading erythema, crepitus, bullae, necrosis, systemic toxicity. LRINEC ≥6." },
+                { label: "Surgical Management", detail: "Emergency radical debridement — 'finger test' at fascial plane. Multiple relooks. Possible amputation. VAC for open wounds." },
+                { label: "Medical", detail: "Pip-tazo or meropenem + clindamycin (toxin suppression) + vancomycin (MRSA risk). IVIG for STSS." },
+                { label: "ICU Considerations", detail: "Massive fluid requirements, vasopressors, anticipate DIC/AKI/ARDS. Early intubation if cervicofacial spread." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+
+          <ExamSection id="bloodstream" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bloodstream & Line Infections</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              CLABSI is a major preventable cause of ICU morbidity. 'Matching Michigan' bundles have reduced rates significantly.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Organisms</p>
+                <p className="text-xs text-muted-foreground mt-1">CoNS, S. aureus, Candida, Enterococcus, Gram-negatives. S. aureus bacteraemia: always echo + prolonged therapy.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Prevention Bundle</p>
+                <p className="text-xs text-muted-foreground mt-1">Hand hygiene, full barrier, chlorhexidine prep, avoid femoral, daily review, aseptic technique.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Management</p>
+                <p className="text-xs text-muted-foreground mt-1">Remove/exchange line. Paired cultures (differential time to positivity). Empiric vancomycin + Gram-negative cover.</p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="fungal" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fungal Infections in ICU</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Invasive fungal infections carry 30–60% mortality. Risk: broad-spectrum antibiotics, central lines, TPN, immunosuppression.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Organism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Presentation</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Diagnosis & Treatment</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><em>Candida</em> spp.</td><td>Candidaemia, intra-abdominal, candiduria. C. auris emerging MDR.</td><td>Cultures (~50% sens), 1,3-β-D-glucan. Empiric echinocandin (IDSA). Remove lines.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><em>Aspergillus</em></td><td>IPA: halo/air-crescent. CAPA in COVID.</td><td>Galactomannan. Voriconazole + TDM (1–5.5 mg/L). Isavuconazole or L-AmB alternatives.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><em>Pneumocystis</em></td><td>Bilateral GGO, hypoxaemia, ↑LDH. HIV / non-HIV immunosuppression.</td><td>High-dose co-trimoxazole + steroids if PaO₂ &lt;9.3 kPa. 14–21 days.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground"><em>Cryptococcus</em></td><td>Meningoencephalitis in immunosuppressed. ↑ICP.</td><td>Amphotericin B + flucytosine → fluconazole. Serial LPs.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Mucormycosis</td><td>Rhinocerebral/pulmonary in DKA, haematological malignancy. Angioinvasive.</td><td>Surgical debridement + L-AmB. Correct risk factors.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="endocarditis" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Endocarditis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Modified Duke criteria. <em>S. aureus</em> (acute, IVDU), Streptococci (subacute), Enterococcus, HACEK group. ICU for septic shock, heart failure, embolic complications.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Medical</p>
+                <p className="text-xs text-muted-foreground mt-1">Empiric: flucloxacillin + gentamicin (native) or vancomycin + gentamicin + rifampicin (prosthetic). 4–6 weeks IV.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Surgical Indications</p>
+                <p className="text-xs text-muted-foreground mt-1">Heart failure, uncontrolled infection, abscess, recurrent emboli, large vegetations (&gt;10 mm).</p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="cdiff" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3"><em>Clostridioides difficile</em> Infection</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Toxin-mediated colitis after antibiotics (fluoroquinolones, cephalosporins, clindamycin).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Mild–Moderate</p>
+                <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 125 mg QDS × 10–14 d. Fidaxomicin for recurrence.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Severe / Fulminant</p>
+                <p className="text-xs text-muted-foreground mt-1">Oral vancomycin 500 mg QDS + IV metronidazole. Toxic megacolon → subtotal colectomy. FMT for recurrence.</p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="viral" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viral Infections in ICU</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Virus</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Presentation</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Treatment</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Influenza</td><td>ARDS, myocarditis, secondary bacterial pneumonia</td><td>Oseltamivir (even if &gt;48 h in ICU).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SARS-CoV-2</td><td>ARDS, VTE, cytokine storm</td><td>Dexamethasone (RECOVERY), tocilizumab, baricitinib. Prone, anticoagulation.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">HSV / VZV</td><td>Encephalitis, hepatitis, disseminated</td><td>IV aciclovir 10 mg/kg TDS. Hydration to prevent crystalluria.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">CMV</td><td>Reactivation in immunosuppressed</td><td>Ganciclovir or valganciclovir. Monitor for myelosuppression.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="mdr" exams={["fficm", "edic"]} curriculumCodes={["FFICM 4.7"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug-Resistant Organisms</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              AMR is a critical ICU challenge. Prolonged antibiotics, immunosuppression, devices, and cross-contamination drive MDRO selection and transmission.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Positive Resistant Organisms</h3>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Organism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Treatment</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">MRSA</td><td><em>mecA</em> → altered PBP2a. CA-MRSA often PVL+.</td><td>Vancomycin (trough 15–20), teicoplanin. Linezolid for pneumonia. Daptomycin for bacteraemia.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VRE</td><td><em>vanA/vanB</em> genes. <em>E. faecium</em> common.</td><td>Linezolid or daptomycin. Tigecycline for soft tissue. Contact isolation.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">PRSP</td><td>Altered PBPs.</td><td>High-dose ceftriaxone (2 g BD) for meningitis + vancomycin empiric.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Gram-Negative Resistant Organisms</h3>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Organism</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Key Features</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Treatment</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ESBL</td><td>Hydrolyse 3rd-gen cephalosporins. Common <em>E. coli</em>, <em>Klebsiella</em>.</td><td>Meropenem first-line (MERINO showed pip-tazo inferior for bacteraemia). Fosfomycin for UTI.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">AmpC (ESCAPPM)</td><td>Inducible resistance on 3rd-gen cephalosporins.</td><td>Carbapenem or cefepime. Avoid ceftriaxone/ceftazidime.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">CRE</td><td>KPC, NDM, OXA-48, VIM, IMP. Mortality 40–50%.</td><td>Ceftazidime-avibactam (KPC, OXA-48), meropenem-vaborbactam, cefiderocol, colistin (last resort).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">MDR <em>Pseudomonas</em></td><td>Efflux pumps, porin loss, AmpC, MBLs.</td><td>Anti-pseudomonal β-lactam by sensitivities. Ceftolozane-tazobactam. Nebulised colistin.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">MDR <em>Acinetobacter</em></td><td>OXA-type carbapenemases. Environmental persistence.</td><td>Sulbactam, colistin ± meropenem (if MIC ≤8). Tigecycline.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Drug-Resistant Fungi</h3>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm"><em>Candida auris</em></p>
+                <p className="text-xs text-muted-foreground mt-1">Often fluconazole-resistant; variable echinocandin/AmB susceptibility. Persists on skin/surfaces. ICU outbreaks. Contact isolation + enhanced cleaning.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Azole-resistant <em>A. fumigatus</em></p>
+                <p className="text-xs text-muted-foreground mt-1">TR34/L98H, TR46/Y121F/T289A — environmental azole fungicide use. Switch to L-AmB. Susceptibility testing essential.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">ICU Strategies for Managing MDROs</h3>
+            <div className="space-y-2">
+              {[
+                { label: "Screening & Surveillance", detail: "Admission screening for MRSA, CPE, VRE in high-risk patients. Active surveillance cultures." },
+                { label: "Contact Precautions", detail: "Single-room/cohorting. Dedicated equipment. Enhanced terminal cleaning (H₂O₂ vapour or UV-C) for CPE and C. auris." },
+                { label: "Antibiotic Stewardship", detail: "Empiric → de-escalate at 48–72 h. Carbapenem-sparing where possible. Procalcitonin-guided duration." },
+                { label: "Novel Agents", detail: "Ceftazidime-avibactam, meropenem-vaborbactam, cefiderocol, ceftolozane-tazobactam, eravacycline. Phage therapy (experimental). FMT for recurrent C. difficile." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+
+          <ExamSection id="leptospirosis" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Leptospirosis</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              <em>Leptospira interrogans</em> spirochaete via animal urine-contaminated water/soil. Occupational risk (farmers, sewer workers). Endemic in tropics — consider in returning travellers with fever + multi-organ dysfunction.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Anicteric (90%)</p>
+                <p className="text-xs text-muted-foreground mt-1">Biphasic: bacteraemic phase (fever, myalgia, conjunctival suffusion) then immune phase. Usually self-limiting.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Weil's Disease (10%, severe)</p>
+                <p className="text-xs text-muted-foreground mt-1">Triad of jaundice, AKI, haemorrhage. Mortality 5–15%. Pulmonary haemorrhage is the most feared complication.</p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {[
+                { label: "Renal", detail: "Non-oliguric AKI with hypokalaemia (unique). Direct tubular toxicity + interstitial nephritis. Recovers with supportive ± RRT." },
+                { label: "Pulmonary Haemorrhage", detail: "Diffuse alveolar haemorrhage — rapidly fatal. Lung-protective ventilation. Pulsed methylprednisolone in severe cases." },
+                { label: "Diagnosis", detail: "MAT (gold standard, slow). IgM ELISA. PCR (blood week 1, urine week 2). Notifiable disease." },
+                { label: "Treatment", detail: "Mild: oral doxycycline or amoxicillin. Severe (Weil's): IV benzylpenicillin or ceftriaxone. Jarisch-Herxheimer may occur." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+
+          <ExamSection id="control" exams={["final", "fficm", "edic"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
+            <div className="space-y-2">
+              {[
+                { label: "Hand Hygiene", detail: "WHO 5 moments. Soap and water for C. difficile and norovirus (spore-forming)." },
+                { label: "Ventilator Bundle", detail: "Head-of-bed 30–45°, daily sedation holds, oral chlorhexidine, peptic ulcer + VTE prophylaxis, daily extubation assessment." },
+                { label: "Isolation Precautions", detail: "Contact (MRSA, VRE, C. difficile), droplet (influenza, meningococcus), airborne (TB, measles, VZV — negative pressure)." },
+                { label: "Antimicrobial Stewardship", detail: "Start smart, then focus. De-escalate at 48–72 h. Procalcitonin-guided duration. Audit and feedback." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.label}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+        </>
+      }
+    />
   );
 };
 
