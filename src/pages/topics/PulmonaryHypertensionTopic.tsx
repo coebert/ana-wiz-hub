@@ -5,9 +5,11 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ExamSection } from "@/components/ExamSection";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
 import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram";
 import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratificationCalculator";
+import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDiagram";
 
 const keyPoints = [
   "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units",
@@ -68,21 +70,24 @@ const PulmonaryHypertensionTopic = () => {
         </section>
 
         {/* Pathophysiology of RV Failure */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology — Why the RV Fails</h2>
-          <RVFailureSpiralDiagram />
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <ul className="list-disc list-inside space-y-1 text-sm">
-                <li>The thin-walled RV is designed for a low-impedance circulation; it tolerates volume but not pressure overload</li>
-                <li>Acute rises in PVR cause RV dilatation → tricuspid regurgitation → further RV dilatation (a vicious cycle)</li>
-                <li>RV dilatation shifts the interventricular septum leftwards (reverse Bernheim effect) → reduced LV preload, reduced cardiac output, systemic hypotension</li>
-                <li>Unlike the LV, the RV is perfused throughout the cardiac cycle; once RV pressure approaches aortic pressure, RV perfusion becomes systolic-only and ischaemia develops</li>
-                <li>The result is a "spiral of death": ↑PVR → RV failure → ↓LV filling → ↓MAP → ↓RV coronary perfusion → worsening RV failure</li>
-              </ul>
+        <ExamSection id="pathophysiology" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pathophysiology — From Endothelial Injury to RV Failure</h2>
+            <PHPathophysiologyDiagram />
+            <RVFailureSpiralDiagram />
+            <div className="space-y-4 text-muted-foreground leading-relaxed mt-4">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>The thin-walled RV is designed for a low-impedance circulation; it tolerates volume but not pressure overload</li>
+                  <li>Acute rises in PVR cause RV dilatation → tricuspid regurgitation → further RV dilatation (a vicious cycle)</li>
+                  <li>RV dilatation shifts the interventricular septum leftwards (reverse Bernheim effect) → reduced LV preload, reduced cardiac output, systemic hypotension</li>
+                  <li>Unlike the LV, the RV is perfused throughout the cardiac cycle; once RV pressure approaches aortic pressure, RV perfusion becomes systolic-only and ischaemia develops</li>
+                  <li>The result is a "spiral of death": ↑PVR → RV failure → ↓LV filling → ↓MAP → ↓RV coronary perfusion → worsening RV failure</li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </ExamSection>
 
         {/* Targeted PAH Therapy */}
         <section>
