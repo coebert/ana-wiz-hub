@@ -37,21 +37,25 @@ const PressureMeasurementTopic = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Manometers</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            A manometer measures pressure using a column of liquid. The <strong>U-tube manometer</strong> contains water or
-            mercury and reads the pressure difference between two ports. The <strong>Bourdon gauge</strong> uses a curved metal
-            tube that straightens with increasing pressure, connected to a pointer — used on gas cylinders and anaesthetic machines.
-          </p>
+        <DiagramSection
+          title="Manometers"
+          intro={
+            <>
+              A manometer measures pressure using either a column of liquid (U-tube) or the elastic deformation of a
+              curved metal tube (Bourdon gauge). Toggle between the two below to compare their working principles.
+            </>
+          }
+        >
+          <ManometerDiagram />
           <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
             <p className="text-sm font-medium text-foreground">Clinical Application</p>
             <p className="text-sm text-muted-foreground mt-1">
               CVP was historically measured using a water manometer (cmH₂O). A 20 cmH₂O column equates to approximately
               15 mmHg. Modern practice uses electronic transducers, but understanding the principle remains essential.
+              Bourdon gauges remain ubiquitous on cylinder yokes and pipeline regulators.
             </p>
           </div>
-        </section>
+        </DiagramSection>
 
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Pressure Transducers</h2>
