@@ -839,28 +839,9 @@ const NeurointensiveCareTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia",
-        "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use",
-        "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention",
-        "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
-        "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
-        "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
-        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
-        "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)",
-        "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
-        "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
-        "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
-        "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
-        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
-      ]} />
-
-      <QuizSection questions={neurointensiveCareQuestions} />
-      <ReferencesList topicId="neurointensive-care" />
-
-      <SeeAlso topicId="neurointensive-care" />
-        <TopicCompletionToggle topicId="neurointensive-care" topicTitle="Neurointensive Care" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
