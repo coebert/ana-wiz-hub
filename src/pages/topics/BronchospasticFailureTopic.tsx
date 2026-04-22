@@ -113,12 +113,6 @@ const BronchospasticFailureTopic = () => {
       topicId="bronchospastic-failure"
       topicTitle="Bronchospastic Respiratory Failure"
       quizQuestions={bronchospasticFailureQuestions}
-      diagrams={
-        <>
-          <DynamicHyperinflationDiagram />
-          <SedacondaDiagram />
-        </>
-      }
       coreConcepts={
     <>
       <section className="space-y-8 mb-10">
