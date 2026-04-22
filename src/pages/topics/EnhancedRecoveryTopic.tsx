@@ -147,6 +147,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Colorectal Surgery",
               subtitle: "ERAS® Society 2018 (Gustafsson et al, World J Surg)",
+              refLabel: "ERAS Colorectal 2018",
               evidence: "Original and most validated pathway. Median LOS 4–5 d (vs 8–10), complications −40%.",
               elements: [
                 "Pre-op: counselling + carb load (50 g maltodextrin 2h pre-op); no mechanical bowel prep for colon (selective for rectal)",
@@ -157,6 +158,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Hip & Knee Arthroplasty",
               subtitle: "ERAS® Society 2020 (Wainwright et al, Acta Orthop)",
+              refLabel: "ERAS Arthroplasty 2020",
               evidence: "Day-of-surgery discharge feasible in selected patients. LOS reduced from 5–7 d to 1–3 d; transfusion rates ↓ ~70% with TXA.",
               elements: [
                 "Pre-op: prehab exercise + iron optimisation; spinal anaesthesia preferred over GA (lower DVT, blood loss, mortality)",
@@ -167,6 +169,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Cardiac Surgery (ERAS® Cardiac)",
               subtitle: "Engelman et al, JAMA Surg 2019",
+              refLabel: "ERAS Cardiac 2019",
               evidence: "Newest pathway. Reduces ICU LOS, opioid consumption, and ventilation time; non-inferior safety.",
               elements: [
                 "Pre-op: carb load if not diabetic; correct anaemia (IV iron); insulin sliding scale (target 7.8–10 mmol/L)",
@@ -179,7 +182,10 @@ const EnhancedRecoveryTopic = () => {
               <div className="flex items-start gap-2 mb-2">
                 <Award className="h-5 w-5 text-perioperative mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-semibold text-foreground">{p.title}</p>
+                  <p className="font-semibold text-foreground">
+                    {p.title}
+                    <InlineRef topicId="enhanced-recovery" refLabel={p.refLabel} />
+                  </p>
                   <p className="text-xs text-muted-foreground">{p.subtitle}</p>
                 </div>
               </div>
