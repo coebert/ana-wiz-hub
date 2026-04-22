@@ -190,13 +190,15 @@ const ImmuneCellLineageDiagram = () => {
   const currentStep = activeSteps[stepIdx % activeSteps.length];
 
   useEffect(() => {
-    if (view !== "activation" || !playing) return;
+    if (view !== "activation" || !playing || pinnedCellId) return;
     const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), currentStep?.duration ?? 1500);
     return () => clearTimeout(t);
-  }, [view, playing, stepIdx, currentStep, activeSteps.length]);
+  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId]);
 
-  // Reset when switching pathway
-  useEffect(() => { setStepIdx(0); }, [pathway, view]);
+  // Reset when switching pathway / view; clear any pinned cell
+  useEffect(() => { setStepIdx(0); setPinnedCellId(null); }, [pathway, view]);
+  // Clear the pin when the step advances naturally
+  useEffect(() => { setPinnedCellId(null); }, [stepIdx]);
 
   const resolvePoint = (id: string) => {
     if (id === "ag-source") return ANTIGEN_ANCHOR;
@@ -379,12 +381,17 @@ const ImmuneCellLineageDiagram = () => {
             return (
               <g
                 key={c.id}
-                onClick={() => setSelected(isSel ? c.id : c.id)}
+                onClick={() => {
+                  setSelected(c.id);
+                  if (view === "activation" && currentStep && c.id === currentStep.to) {
+                    setPinnedCellId(c.id);
+                  }
+                }}
                 style={{ cursor: "pointer" }}
                 opacity={dim ? 0.2 : 1}
                 filter="url(#icl-cellShadow)"
               >
-                <CellShape c={c} fill={fill} stroke={stroke} selected={isSel} />
+                <CellShape c={c} fill={fill} stroke={stroke} selected={isSel || pinnedCellId === c.id} />
                 {showLabels && (
                   <text
                     x={c.x}
