@@ -55,6 +55,11 @@ const modalities: Modality[] = [
       { id: "t6", severity: "major", title: "Low cardiac output states", why: "Slow transit allows indicator loss to surrounding tissues — small numerator and broad curve overestimates CO at the low end.", examPearl: "Thermodilution is least accurate when you most need it (CO < 2.5 L/min)." },
       { id: "t7", severity: "minor", title: "Catheter malposition / thrombus on thermistor", why: "Damped thermistor signal flattens the curve; CO appears spuriously low or noisy.", examPearl: "Check PA waveform and CXR position; flush carefully." },
       { id: "t8", severity: "minor", title: "Arrhythmia between injections", why: "Beat-to-beat SV variability widens scatter; mean of three may not reflect steady-state.", examPearl: "Document rhythm at the time of measurement." },
+      { id: "t9", severity: "critical", title: "VA-ECMO support", why: "Extracorporeal circuit diverts a variable fraction of venous return and re-warms/cools blood; thermistor sees indicator that has bypassed the heart entirely.", examPearl: "Native CO on VA-ECMO cannot be measured by thermodilution — use echo (LVOT VTI) or pulsatility of arterial trace." },
+      { id: "t10", severity: "major", title: "Open chest / post-cardiotomy", why: "Loss of intrathoracic pressure swing alters venous return between injections; surgical handling of the heart distorts indicator transit.", examPearl: "Wait until chest closed and steady-state before trusting absolute CO." },
+      { id: "t11", severity: "major", title: "Pneumonectomy / single-lung ventilation", why: "Altered pulmonary vascular bed changes indicator transit time and curve shape, particularly for TPTD-derived volumes (EVLW, GEDV).", examPearl: "TPTD volumetric indices unvalidated post-pneumonectomy." },
+      { id: "t12", severity: "major", title: "Aortic aneurysm or aortic stent graft (TPTD)", why: "PiCCO assumes a normal arterial tree between injection and femoral detection; large aneurysmal volume prolongs MTt and overestimates GEDV/ITTV.", examPearl: "TPTD volumes unreliable in large AAA." },
+      { id: "t13", severity: "minor", title: "Femoral arterial line in severe PVD (TPTD)", why: "Damped detection thermistor signal blunts the curve.", examPearl: "Consider axillary access if femoral inadequate." },
     ],
   },
   {
