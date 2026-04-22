@@ -174,11 +174,21 @@ const OLVTroubleshootingDiagram = () => {
   return (
     <Card className="mb-8 border-border bg-card">
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg font-serif text-foreground">
-          Hypoxia During OLV — Troubleshooting Algorithm
-        </CardTitle>
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <CardTitle className="text-lg font-serif text-foreground">
+            Hypoxia During OLV — Troubleshooting Algorithm
+          </CardTitle>
+          <button
+            type="button"
+            onClick={() => setWalkthroughOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            <PlayCircle className="w-3.5 h-3.5" />
+            Rescue walkthrough
+          </button>
+        </div>
         <p className="text-sm text-muted-foreground">
-          Stepwise approach to managing desaturation during one-lung ventilation. Tap each step to expand. Progress through sequentially if hypoxia persists.
+          Stepwise approach to managing desaturation during one-lung ventilation. Tap each step to expand, or launch the rescue walkthrough to tick off actions as you perform them.
         </p>
       </CardHeader>
       <CardContent>
