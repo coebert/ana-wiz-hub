@@ -388,9 +388,9 @@ const NeurointensiveCareTopic = () => {
             ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
           </p>
           <ICPMonitoringDevicesDiagram />
-        </div>
+        </ExamSection>
 
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Microdialysis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Cerebral microdialysis (CMD) is a focal, bedside neurochemical monitor that samples the brain extracellular fluid (ECF) of a small volume of cortex (~1 cm³ around the catheter tip). It complements global monitors (ICP, CPP, PbtO₂, jugular bulb) by detecting cellular distress — disordered glucose, lactate and pyruvate metabolism, glutamate excitotoxicity and membrane breakdown — often <em>before</em> ICP rises or PbtO₂ falls. Used predominantly in poor-grade SAH and severe TBI in selected neuro-ICU centres (Cambridge, Lund, Edinburgh, Addenbrooke's-style protocols).
