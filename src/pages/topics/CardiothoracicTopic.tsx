@@ -276,6 +276,39 @@ const CardiothoracicTopic = () => {
             </div>
           </div>
         </div>
+
+        {/* ───────── Thoracic surgery ───────── */}
+        <div id="olv" className="scroll-mt-24 pt-4 border-t border-border">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            One-lung ventilation underpins almost all thoracic surgery — lobectomy, pneumonectomy, oesophagectomy, thymectomy, lung volume reduction, and most VATS procedures. The aims are to deflate the operative lung for surgical access while maintaining adequate gas exchange through the dependent lung. Successful OLV requires the right device, confirmed correct position, and a clear plan for hypoxia.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Devices for lung isolation</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Double-Lumen Tube (DLT)</p>
+              <p className="text-sm text-muted-foreground mt-1">Left-sided DLT preferred (right upper lobe anatomy variable). Confirm position with fibreoptic bronchoscopy. Sizes: 35–41 Fr (women 35–37, men 39–41). Allows independent ventilation, suction and CPAP to either lung.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Bronchial Blocker</p>
+              <p className="text-sm text-muted-foreground mt-1">Alternative to DLT — passed through a single-lumen ETT. Useful in difficult airway, existing tracheostomy, or for postoperative ventilation. Slower deflation, less reliable isolation, no independent suction.</p>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <DLTInsertionDiagram />
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mt-6 mb-2">Physiology & hypoxia management</h3>
+          <p className="text-muted-foreground leading-relaxed">
+            <strong className="text-foreground">Hypoxic pulmonary vasoconstriction (HPV)</strong> diverts blood from the collapsed (non-dependent) lung, limiting shunt to ~20–30%. HPV is inhibited by volatiles &gt;1 MAC, vasodilators (GTN, SNP), hypothermia, and acidosis. Stepwise management of desaturation during OLV: ↑FiO₂ → check tube position with fibreoptic bronchoscope → recruitment to dependent lung → PEEP 5 cmH₂O to dependent lung → CPAP 5–10 cmH₂O to non-dependent lung → intermittent reinflation → if persistent, ask surgeon to clamp PA of operative lung (during pneumonectomy).
+          </p>
+
+          <div className="mt-4">
+            <OLVTroubleshootingDiagram />
+          </div>
+        </div>
       </section>
 
       <KeyLearningPoints points={[
