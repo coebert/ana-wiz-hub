@@ -4,8 +4,10 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { starlingForcesQuestions } from "@/data/quizzes";
 import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
+import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
 
 const StarlingForcesTopic = () => {
   return (
@@ -79,7 +81,7 @@ const StarlingForcesTopic = () => {
       <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Endothelial Glycocalyx</h2>
-          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+          <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-4">
             <li>A 0.5–3 µm thick gel-like layer on the luminal surface of endothelial cells</li>
             <li>Composed of proteoglycans, glycosaminoglycans (heparan sulphate, hyaluronic acid), and glycoproteins</li>
             <li>Acts as a <strong>molecular sieve</strong> — excludes plasma proteins, creating a protein-free sub-glycocalyx space</li>
@@ -88,6 +90,13 @@ const StarlingForcesTopic = () => {
             <li>Damage releases syndecan-1 and heparan sulphate into plasma (measurable biomarkers)</li>
             <li>Glycocalyx shedding → ↑ permeability → ↑ interstitial protein → oedema (explains why crystalloid boluses in sepsis are poorly retained)</li>
           </ul>
+
+          <DiagramSection
+            title="Glycocalyx — Structure, Function & Shedding"
+            intro={<p>Toggle between the intact endothelial surface layer (ESL) and the shed, oedema-forming state seen in sepsis, hypervolaemia and ischaemia–reperfusion.</p>}
+          >
+            <GlycocalyxDiagram />
+          </DiagramSection>
         </div>
 
         <div>
