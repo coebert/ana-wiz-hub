@@ -17,12 +17,14 @@ const examTagLabels: Record<ExamTag, string> = {
   primary: "Primary",
   final: "Final",
   fficm: "FFICM",
+  edic: "EDIC",
 };
 
 const examTagColors: Record<ExamTag, string> = {
   primary: "bg-primary/10 text-primary border-primary/20",
   final: "bg-amber-500/10 text-amber-700 border-amber-500/20",
   fficm: "bg-emerald-500/10 text-emerald-700 border-emerald-500/20",
+  edic: "bg-sky-500/10 text-sky-700 border-sky-500/20",
 };
 
 export const TopicCard = ({ title, description, path, section, topicId, examTags }: TopicCardProps) => {
