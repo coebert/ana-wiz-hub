@@ -26,10 +26,10 @@ const AbdominalAnatomyTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        objectives: ["abdominal-anatomy"],
-        diagrams: ["abdominal-anatomy"],
-        workedExamples: ["abdominal-anatomy"],
-        keyPoints: ["abdominal-anatomy"],
+        objectives: ["Ellis & Feldman Ch.4", "Miller Ch.47"],
+        diagrams: ["BJA Educ 2015", "Ellis & Feldman Ch.4"],
+        workedExamples: ["BJA Educ 2015", "Miller Ch.47"],
+        keyPoints: ["Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
       }}
       diagrams={<AbdominalWallDiagram />}
       coreConcepts={
