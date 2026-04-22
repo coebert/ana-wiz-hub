@@ -487,6 +487,8 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ESPEN 2019", citation: "Singer P et al. ESPEN guideline on clinical nutrition in the intensive care unit. Clin Nutr. 2019;38(1):48-79.", url: "https://doi.org/10.1016/j.clnu.2018.08.037" },
     { label: "BJA Educ 2016", citation: "Preiser JC et al. ICU nutrition — progress and pitfalls. BJA Education. 2016;16(8):275-280.", url: "https://doi.org/10.1093/bjaed/mkv059" },
     { label: "NICE CG32", citation: "NICE. Nutrition support for adults: oral nutrition support, enteral tube feeding and parenteral nutrition (CG32). 2006 (updated 2017).", url: "https://www.nice.org.uk/guidance/cg32" },
+    { label: "NICE-SUGAR 2009", citation: "NICE-SUGAR Investigators. Intensive versus conventional glucose control in critically ill patients. N Engl J Med. 2009;360:1283-1297.", url: "https://doi.org/10.1056/NEJMoa0810625" },
+    { label: "EPaNIC 2011", citation: "Casaer MP et al. Early versus late parenteral nutrition in critically ill adults. N Engl J Med. 2011;365:506-517.", url: "https://doi.org/10.1056/NEJMoa1102662" },
   ],
   "icu-sedation-delirium": [
     { label: "BJA Educ 2019", citation: "Barr J et al. Clinical practice guidelines for the management of pain, agitation, and delirium (PAD) in adult patients in the ICU. Crit Care Med. 2013;41(1):263-306.", url: "https://doi.org/10.1097/CCM.0b013e3182783b72" },
