@@ -216,195 +216,243 @@ interface BladeShapeProps {
  *  - dur: motion duration in seconds.
  */
 const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: number; r: number; label: string }; dur: number }> = {
-  macintosh:         { path: "M40,118 Q90,150 148,148",                 target: { x: 148, y: 148, r: 7,  label: "Vallecula" },                dur: 2.4 },
-  miller:            { path: "M40,118 Q100,135 160,124 Q168,122 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
-  mccoy:             { path: "M40,118 Q90,150 145,150",                 target: { x: 145, y: 150, r: 7,  label: "Vallecula (then flex tip)" }, dur: 2.4 },
-  polio:             { path: "M55,118 Q95,150 148,150",                 target: { x: 148, y: 150, r: 7,  label: "Vallecula" },                dur: 2.4 },
-  wisconsin:         { path: "M40,116 Q100,130 160,122 Q168,120 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
-  videolaryngoscope: { path: "M40,118 Q70,150 100,170 Q140,185 158,166", target: { x: 178, y: 105, r: 8,  label: "Glottic view (camera)" },    dur: 3.0 },
+  macintosh:         { path: "M70,82 Q120,150 175,178 Q200,188 215,182",          target: { x: 215, y: 182, r: 8,  label: "Vallecula" },                dur: 2.6 },
+  miller:            { path: "M70,82 Q130,138 200,158 Q220,162 232,150",          target: { x: 232, y: 150, r: 8,  label: "Under epiglottis" },         dur: 2.7 },
+  mccoy:             { path: "M70,82 Q120,150 175,178 Q195,184 208,182",          target: { x: 208, y: 182, r: 8,  label: "Vallecula → flex tip" },     dur: 2.8 },
+  polio:             { path: "M88,72 Q140,150 185,178 Q205,184 218,180",          target: { x: 218, y: 180, r: 8,  label: "Vallecula" },                dur: 2.6 },
+  wisconsin:         { path: "M70,82 Q130,140 200,158 Q220,162 232,150",          target: { x: 232, y: 150, r: 8,  label: "Under epiglottis" },         dur: 2.7 },
+  videolaryngoscope: { path: "M70,82 Q110,140 150,180 Q185,210 215,200",          target: { x: 222, y: 138, r: 9,  label: "Glottic view (camera)" },    dur: 3.0 },
 };
+
+/* ---------- Shared visual primitives ---------- */
+
+const Defs = ({ bladeKey, color }: { bladeKey: BladeKey; color: string }) => (
+  <defs>
+    <linearGradient id={`steel-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stopColor="hsl(210, 12%, 88%)" />
+      <stop offset="35%" stopColor="hsl(210, 10%, 72%)" />
+      <stop offset="55%" stopColor="hsl(210, 12%, 56%)" />
+      <stop offset="100%" stopColor="hsl(210, 14%, 40%)" />
+    </linearGradient>
+    <linearGradient id={`channel-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(210, 14%, 38%)" />
+      <stop offset="100%" stopColor="hsl(210, 16%, 58%)" />
+    </linearGradient>
+    <linearGradient id={`handle-${bladeKey}`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="hsl(220, 8%, 22%)" />
+      <stop offset="50%" stopColor="hsl(220, 8%, 36%)" />
+      <stop offset="100%" stopColor="hsl(220, 8%, 18%)" />
+    </linearGradient>
+    <linearGradient id={`brass-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(45, 55%, 75%)" />
+      <stop offset="100%" stopColor="hsl(38, 60%, 45%)" />
+    </linearGradient>
+    <radialGradient id={`bulb-${bladeKey}`} cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stopColor="hsl(55, 100%, 92%)" />
+      <stop offset="40%" stopColor="hsl(50, 100%, 72%)" />
+      <stop offset="100%" stopColor="hsl(45, 90%, 50%)" stopOpacity="0" />
+    </radialGradient>
+    <filter id={`shadow-${bladeKey}`} x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+      <feOffset dx="0.6" dy="1.2" result="off" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <clipPath id={`hclip-${bladeKey}`}><rect x="37" y="14" width="26" height="68" /></clipPath>
+  </defs>
+);
+
+const Handle = ({ bladeKey, transform }: { bladeKey: BladeKey; transform?: string }) => (
+  <g transform={transform} filter={`url(#shadow-${bladeKey})`}>
+    <ellipse cx="50" cy="14" rx="13" ry="3.2" fill="hsl(220, 8%, 26%)" />
+    <rect x="37" y="14" width="26" height="68" rx="2" fill={`url(#handle-${bladeKey})`} stroke="hsl(220, 10%, 14%)" strokeWidth="0.5" />
+    <g opacity="0.55" clipPath={`url(#hclip-${bladeKey})`}>
+      {Array.from({ length: 14 }).map((_, i) => (
+        <line key={`a${i}`} x1={37} y1={18 + i * 5} x2={63} y2={13 + i * 5} stroke="hsl(220, 5%, 10%)" strokeWidth="0.35" />
+      ))}
+      {Array.from({ length: 14 }).map((_, i) => (
+        <line key={`b${i}`} x1={37} y1={13 + i * 5} x2={63} y2={18 + i * 5} stroke="hsl(220, 5%, 10%)" strokeWidth="0.35" />
+      ))}
+    </g>
+    <rect x="38" y="16" width="2" height="64" rx="1" fill="hsl(220, 8%, 60%)" opacity="0.5" />
+    <rect x="35" y="80" width="30" height="6" rx="1" fill={`url(#brass-${bladeKey})`} stroke="hsl(38, 50%, 30%)" strokeWidth="0.4" />
+    <path d="M40,86 L40,96 L60,96 L60,86 Z" fill={`url(#brass-${bladeKey})`} stroke="hsl(38, 50%, 30%)" strokeWidth="0.4" />
+    <circle cx="50" cy="91" r="1.4" fill="hsl(38, 50%, 30%)" />
+  </g>
+);
 
 const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps) => {
   const b = blades[bladeKey];
-  const gradId = `blade-${bladeKey}`;
   const traj = tipTrajectory[bladeKey];
+  const steel = `url(#steel-${bladeKey})`;
+  const channel = `url(#channel-${bladeKey})`;
+  const accent = b.color;
 
   return (
-    <svg viewBox="0 0 220 240" className="w-full max-w-[260px] mx-auto" style={{ opacity }}>
-      <defs>
-        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={b.color} stopOpacity="0.9" />
-          <stop offset="100%" stopColor={b.color} stopOpacity="0.55" />
-        </linearGradient>
-      </defs>
+    <svg viewBox="0 0 260 260" className="w-full max-w-[300px] mx-auto" style={{ opacity }}>
+      <Defs bladeKey={bladeKey} color={accent} />
 
-      {/* Reference anatomy: tongue + epiglottis + vocal cords */}
-      <g opacity={animate ? 0.42 : 0.18}>
+      {/* Reference anatomy — sagittal cross-section through the upper airway */}
+      <g opacity={animate ? 0.5 : 0.22}>
+        {/* Hard palate */}
+        <path d="M150,90 Q190,82 230,98 L232,108 Q190,96 150,104 Z" fill="hsl(15, 35%, 78%)" />
+        <text x="190" y="92" fontSize="5.5" fill="hsl(15, 35%, 50%)">Hard palate</text>
         {/* Tongue */}
-        <path d="M40,170 Q90,140 140,150 Q160,155 170,170 L170,200 L40,200 Z" fill="hsl(var(--muted-foreground))" />
-        <text x="60" y="195" fontSize="6" fill="hsl(var(--muted-foreground))">Tongue</text>
+        <path d="M120,150 Q160,130 200,150 Q220,158 215,180 L120,180 Z" fill="hsl(0, 45%, 72%)" stroke="hsl(0, 40%, 52%)" strokeWidth="0.4" />
+        <text x="155" y="172" fontSize="5.5" fill="hsl(0, 40%, 40%)">Tongue (base)</text>
+        {/* Hyoepiglottic ligament */}
+        <path d="M210,178 L222,160" stroke="hsl(45, 40%, 45%)" strokeWidth="0.6" strokeDasharray="1.5 1" opacity="0.7" />
         {/* Epiglottis */}
-        <path d="M150,150 Q160,130 168,118 Q172,114 174,118 Q170,135 162,152 Z" fill="hsl(280, 40%, 55%)" />
-        <text x="180" y="125" fontSize="6" fill="hsl(280, 40%, 55%)">Epiglottis</text>
+        <path d="M218,178 Q228,158 232,138 Q235,132 238,138 Q236,160 226,180 Z" fill="hsl(15, 55%, 68%)" stroke="hsl(15, 55%, 45%)" strokeWidth="0.4" />
+        <text x="240" y="148" fontSize="5.5" fill="hsl(15, 55%, 40%)">Epiglottis</text>
         {/* Vallecula */}
-        <circle cx="148" cy="148" r="3" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 1" />
-        <text x="115" y="146" fontSize="5" fill="hsl(var(--muted-foreground))">Vallecula</text>
-        {/* Cords */}
-        <line x1="170" y1="115" x2="195" y2="100" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="2 1" />
-        <text x="186" y="95" fontSize="5" fill="hsl(var(--muted-foreground))">Cords</text>
+        <ellipse cx="215" cy="180" rx="4" ry="2.5" fill="hsl(0, 25%, 50%)" opacity="0.6" />
+        <text x="180" y="195" fontSize="5" fill="hsl(var(--muted-foreground))">Vallecula</text>
+        {/* Vocal cords */}
+        <path d="M232,138 L246,128 L244,142 Z" fill="hsl(40, 25%, 92%)" stroke="hsl(40, 20%, 60%)" strokeWidth="0.4" />
+        <text x="248" y="124" fontSize="5" fill="hsl(40, 20%, 45%)">Cords</text>
+        {/* Trachea */}
+        <path d="M232,144 L240,148 L244,200 L228,200 Z" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1" opacity="0.5" />
+        {/* Posterior pharyngeal wall */}
+        <path d="M120,90 Q115,140 120,200" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1" opacity="0.45" />
+        {/* Upper incisors */}
+        <path d="M126,126 L132,128 L132,134 L126,132 Z" fill="hsl(40, 25%, 92%)" stroke="hsl(40, 20%, 50%)" strokeWidth="0.3" />
       </g>
-      {/* Handle (common to all) */}
-      {bladeKey !== "polio" && (
-        <g>
-          <rect x="20" y="20" width="14" height="90" rx="2" fill="hsl(var(--muted))" stroke="hsl(0,0%,55%)" strokeWidth="0.6" />
-          {/* Handle ridges */}
-          {[0, 1, 2, 3, 4, 5, 6].map(i => (
-            <line key={i} x1="22" y1={28 + i * 12} x2="32" y2={28 + i * 12} stroke="hsl(0,0%,40%)" strokeWidth="0.4" opacity="0.4" />
-          ))}
-        </g>
-      )}
+
 
       {/* Blade-specific shapes */}
       {bladeKey === "macintosh" && (
         <g>
-          {/* Curved blade */}
-          <path
-            d="M34,110 Q50,135 90,150 Q120,158 150,150"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="14"
-            strokeLinecap="round"
-          />
-          {/* Flange (lateral wall) */}
-          <path d="M34,110 Q50,138 90,154 Q120,162 152,154 L150,148 Q120,156 90,148 Q52,134 36,108 Z" fill={withAlpha(b.color, 0.25)} stroke={b.color} strokeWidth="0.5" />
-          {/* Light position */}
-          <circle cx="142" cy="151" r="2" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          {/* Tip arrow into vallecula */}
-          <path d="M148,148 L142,142" stroke={b.color} strokeWidth="0.6" markerEnd="url(#arrow)" />
-          <text x="105" y="180" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Curved · tip in vallecula</text>
+          <Handle bladeKey={bladeKey} transform="translate(20,0)" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M70,96 L88,96 Q102,108 122,128 Q150,158 180,178 Q204,190 218,184 L222,180 Q210,184 192,180 Q165,170 140,148 Q110,118 92,104 L70,104 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M75,99 L88,99 Q102,110 122,130 Q150,160 180,180 Q200,190 215,184" fill="none" stroke={channel} strokeWidth="3.2" strokeLinecap="round" opacity="0.85" />
+            <path d="M76,100 Q104,114 134,140 Q168,168 198,184" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" strokeLinecap="round" opacity="0.7" />
+            <path d="M70,96 L88,96 Q102,108 122,128 Q150,158 180,178 Q204,190 218,184 L218,176 Q200,182 180,170 Q150,148 120,118 Q102,100 88,90 L70,90 Z" fill={withAlpha(accent, 0.18)} stroke={accent} strokeWidth="0.4" />
+            <ellipse cx="220" cy="183" rx="4" ry="2.2" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.4" />
+          </g>
+          <path d="M82,93 Q108,116 140,144 Q172,170 210,184" fill="none" stroke="hsl(45, 80%, 70%)" strokeWidth="0.6" strokeDasharray="0.8 1" opacity="0.7" />
+          <circle cx="208" cy="184" r="6" fill={`url(#bulb-${bladeKey})`} opacity="0.9" />
+          <circle cx="208" cy="184" r="1.6" fill="hsl(50, 100%, 88%)" stroke="hsl(40, 80%, 45%)" strokeWidth="0.4" />
+          <text x="105" y="118" fontSize="4.5" fill="hsl(210, 14%, 25%)" fontWeight="700" opacity="0.7">MAC 3</text>
+          <text x="130" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Curved · tip → vallecula</text>
+          <text x="130" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Indirect epiglottic elevation</text>
         </g>
       )}
 
       {bladeKey === "miller" && (
         <g>
-          {/* Straight blade */}
-          <path
-            d="M34,110 L155,128"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="12"
-            strokeLinecap="round"
-          />
-          {/* Slight upturn at tip */}
-          <path d="M150,128 Q160,128 165,122" fill="none" stroke={`url(#${gradId})`} strokeWidth="12" strokeLinecap="round" />
-          {/* Channel (concave upper surface) */}
-          <path d="M34,106 L165,118 L165,124 L34,114 Z" fill={withAlpha(b.color, 0.22)} stroke={b.color} strokeWidth="0.5" />
-          {/* Light */}
-          <circle cx="158" cy="124" r="2" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          {/* Tip lifts under epiglottis */}
-          <path d="M165,122 L170,118" stroke={b.color} strokeWidth="0.6" markerEnd="url(#arrow)" />
-          <text x="100" y="180" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Straight · tip lifts epiglottis</text>
+          <Handle bladeKey={bladeKey} transform="translate(20,0)" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M70,96 L82,96 Q92,104 108,116 Q145,140 195,158 Q220,166 232,156 L234,150 Q220,160 196,150 Q150,134 110,108 Q94,98 82,90 L70,90 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M76,99 Q98,110 130,128 Q170,148 215,158 Q226,160 233,152" fill="none" stroke={channel} strokeWidth="2.6" strokeLinecap="round" opacity="0.85" />
+            <path d="M77,99 Q108,114 150,134 Q190,152 222,158" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" opacity="0.7" />
+            <path d="M228,154 Q236,150 240,142 Q237,148 233,152 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.5" />
+            <path d="M76,93 L84,93 Q100,100 130,114 Q170,134 210,150 L210,154 Q170,140 130,120 Q100,106 84,98 L76,98 Z" fill={withAlpha(accent, 0.18)} stroke={accent} strokeWidth="0.4" />
+          </g>
+          <path d="M82,93 Q120,114 168,136 Q210,154 230,156" fill="none" stroke="hsl(45, 80%, 70%)" strokeWidth="0.6" strokeDasharray="0.8 1" opacity="0.7" />
+          <circle cx="226" cy="156" r="5.5" fill={`url(#bulb-${bladeKey})`} opacity="0.9" />
+          <circle cx="226" cy="156" r="1.5" fill="hsl(50, 100%, 88%)" stroke="hsl(40, 80%, 45%)" strokeWidth="0.4" />
+          <text x="115" y="116" fontSize="4.5" fill="hsl(210, 14%, 25%)" fontWeight="700" opacity="0.7">MIL 1</text>
+          <text x="130" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Straight · tip lifts epiglottis</text>
+          <text x="130" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Direct elevation (paediatric / anterior larynx)</text>
         </g>
       )}
 
       {bladeKey === "mccoy" && (
         <g>
-          {/* Macintosh-style blade with hinged tip */}
-          <path
-            d="M34,110 Q50,135 90,150 Q115,156 135,152"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="14"
-            strokeLinecap="round"
-          />
-          {/* Hinged distal tip — drawn flexed */}
-          <path
-            d="M135,152 Q148,148 152,138"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="12"
-            strokeLinecap="round"
-          />
-          {/* Hinge marker */}
-          <circle cx="135" cy="152" r="2.5" fill="hsl(var(--background))" stroke={b.color} strokeWidth="1.2" />
-          {/* Lever on handle */}
-          <rect x="34" y="22" width="10" height="22" rx="1.5" fill={b.color} opacity="0.7" />
-          <text x="50" y="34" fontSize="5" fill={b.color} fontWeight="600">Lever</text>
-          <path d="M44,33 Q70,40 100,80" fill="none" stroke={b.color} strokeWidth="0.5" strokeDasharray="2 1.5" opacity="0.7" />
-          {/* Light */}
-          <circle cx="148" cy="142" r="2" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          <text x="100" y="180" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Hinged tip · improves view ≥1 grade</text>
+          <Handle bladeKey={bladeKey} transform="translate(20,0)" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M40,30 L40,72 Q40,76 44,76 L52,76 Q56,76 56,72 L56,30 Q56,26 52,26 L44,26 Q40,26 40,30 Z" fill={accent} stroke="hsl(0, 0%, 15%)" strokeWidth="0.4" opacity="0.92" />
+            <text x="48" y="56" textAnchor="middle" fontSize="4.2" fill="hsl(0,0%,100%)" fontWeight="700">LEVER</text>
+          </g>
+          <path d="M50,76 Q70,90 110,118 Q140,140 170,160 Q188,170 196,176" fill="none" stroke="hsl(220, 10%, 30%)" strokeWidth="0.5" strokeDasharray="1.2 1" opacity="0.6" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M70,96 L86,96 Q100,108 122,128 Q148,156 178,176 L194,182 L196,178 L182,170 Q156,154 132,130 Q108,108 92,96 L70,90 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <circle cx="196" cy="180" r="3.5" fill="hsl(210, 14%, 32%)" stroke="hsl(210, 18%, 78%)" strokeWidth="0.7" />
+            <circle cx="196" cy="180" r="1.2" fill="hsl(0, 0%, 12%)" />
+            <path d="M194,178 L208,184 Q214,184 214,180 Q216,170 210,166 L196,178 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M76,100 Q108,116 140,142 Q170,168 192,178" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" opacity="0.7" />
+            <path d="M70,90 L86,90 Q100,102 122,122 Q148,150 178,170 L182,166 Q156,148 132,124 Q108,102 92,90 L70,84 Z" fill={withAlpha(accent, 0.16)} stroke={accent} strokeWidth="0.4" />
+          </g>
+          <path d="M196,180 A 14,14 0 0 0 210,166" fill="none" stroke={accent} strokeWidth="0.5" strokeDasharray="1.2 1" opacity="0.7" />
+          <text x="218" y="170" fontSize="4.5" fill={accent} fontWeight="600">~70°</text>
+          <circle cx="208" cy="180" r="5" fill={`url(#bulb-${bladeKey})`} opacity="0.9" />
+          <circle cx="208" cy="180" r="1.4" fill="hsl(50, 100%, 88%)" stroke="hsl(40, 80%, 45%)" strokeWidth="0.4" />
+          <text x="105" y="118" fontSize="4.5" fill="hsl(210, 14%, 25%)" fontWeight="700" opacity="0.7">McCOY 3</text>
+          <text x="130" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Hinged tip · improves view ≥ 1 grade</text>
+          <text x="130" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Lever flexes distal segment</text>
         </g>
       )}
 
       {bladeKey === "polio" && (
         <g>
-          {/* Angled handle (~135°) */}
-          <g transform="rotate(-45 27 110)">
-            <rect x="20" y="20" width="14" height="90" rx="2" fill="hsl(var(--muted))" stroke="hsl(0,0%,55%)" strokeWidth="0.6" />
-            {[0, 1, 2, 3, 4, 5, 6].map(i => (
-              <line key={i} x1="22" y1={28 + i * 12} x2="32" y2={28 + i * 12} stroke="hsl(0,0%,40%)" strokeWidth="0.4" opacity="0.4" />
-            ))}
+          <g transform="rotate(-50 40 90)">
+            <Handle bladeKey={bladeKey} transform="translate(0,0)" />
           </g>
-          {/* Curved Mac-style blade emerging from angled handle */}
-          <path
-            d="M50,110 Q72,140 110,150 Q130,154 150,150"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="14"
-            strokeLinecap="round"
-          />
-          <path d="M50,110 Q72,143 110,154 Q130,158 152,154 L150,148 Q130,152 110,148 Q72,138 52,108 Z" fill={withAlpha(b.color, 0.25)} stroke={b.color} strokeWidth="0.5" />
-          <circle cx="142" cy="151" r="2" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          {/* Angle marker */}
-          <path d="M40,110 A 16,16 0 0 0 50,118" fill="none" stroke={b.color} strokeWidth="0.6" strokeDasharray="1.5 1" />
-          <text x="35" y="128" fontSize="5" fill={b.color}>~135°</text>
-          <text x="100" y="190" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Obtuse handle · clears chest/breasts</text>
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M88,82 L102,84 Q118,96 138,118 Q166,148 194,170 Q212,180 222,176 L226,172 Q214,176 196,170 Q170,158 144,134 Q120,110 104,94 L88,76 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M92,86 Q120,108 150,134 Q180,158 208,176" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" opacity="0.7" />
+            <path d="M92,86 Q118,100 138,118 Q166,146 194,166 Q210,176 222,176 L222,170 Q200,172 178,162 Q150,142 124,116 Q108,100 96,82 L92,80 Z" fill={withAlpha(accent, 0.18)} stroke={accent} strokeWidth="0.4" />
+          </g>
+          <path d="M88,82 A 16,16 0 0 0 76,96" fill="none" stroke={accent} strokeWidth="0.6" strokeDasharray="1.5 1" opacity="0.8" />
+          <text x="62" y="106" fontSize="5" fill={accent} fontWeight="600">~135°</text>
+          <circle cx="216" cy="178" r="5.5" fill={`url(#bulb-${bladeKey})`} opacity="0.9" />
+          <circle cx="216" cy="178" r="1.5" fill="hsl(50, 100%, 88%)" stroke="hsl(40, 80%, 45%)" strokeWidth="0.4" />
+          <text x="120" y="120" fontSize="4.5" fill="hsl(210, 14%, 25%)" fontWeight="700" opacity="0.7">POLIO 3</text>
+          <text x="140" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Obtuse handle · clears chest / breasts</text>
+          <text x="140" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Historical — replaced by short-handle Mac / VL</text>
         </g>
       )}
 
       {bladeKey === "wisconsin" && (
         <g>
-          {/* Straight blade with wider flange */}
-          <path
-            d="M34,108 L160,124"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="12"
-            strokeLinecap="round"
-          />
-          {/* Wide flange */}
-          <path d="M34,100 L160,118 L160,128 L34,116 Z" fill={withAlpha(b.color, 0.3)} stroke={b.color} strokeWidth="0.5" />
-          {/* Tip slight upturn */}
-          <path d="M155,124 Q165,124 168,120" fill="none" stroke={`url(#${gradId})`} strokeWidth="12" strokeLinecap="round" />
-          <circle cx="158" cy="122" r="2" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          <text x="100" y="180" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Straight · wide flange (paediatric)</text>
+          <Handle bladeKey={bladeKey} transform="translate(20,0)" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M70,96 L82,96 Q92,104 108,114 Q150,134 200,150 Q224,156 234,148 L236,142 Q224,150 200,142 Q150,128 108,104 Q94,96 82,86 L70,86 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M70,86 L82,86 Q100,94 130,108 Q170,128 212,144 L212,140 Q170,124 130,102 Q100,90 82,80 L70,80 Z" fill={withAlpha(accent, 0.22)} stroke={accent} strokeWidth="0.5" />
+            <path d="M77,99 Q108,114 150,132 Q190,148 220,150" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" opacity="0.7" />
+            <path d="M232,148 Q238,144 240,138 Q237,144 234,148 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.5" />
+          </g>
+          <circle cx="226" cy="150" r="5.5" fill={`url(#bulb-${bladeKey})`} opacity="0.9" />
+          <circle cx="226" cy="150" r="1.5" fill="hsl(50, 100%, 88%)" stroke="hsl(40, 80%, 45%)" strokeWidth="0.4" />
+          <text x="115" y="112" fontSize="4.5" fill="hsl(210, 14%, 25%)" fontWeight="700" opacity="0.7">WIS-HIPPLE 1.5</text>
+          <text x="130" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Straight · wide flange (paediatric)</text>
+          <text x="130" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Better tongue control than Miller</text>
         </g>
       )}
 
       {bladeKey === "videolaryngoscope" && (
         <g>
-          {/* Hyperangulated blade */}
-          <path
-            d="M34,110 Q60,140 80,165 Q95,185 130,180 Q150,178 158,165"
-            fill="none"
-            stroke={`url(#${gradId})`}
-            strokeWidth="13"
-            strokeLinecap="round"
-          />
-          {/* Camera at tip */}
-          <circle cx="155" cy="166" r="3.5" fill="hsl(var(--background))" stroke={b.color} strokeWidth="1.5" />
-          <circle cx="155" cy="166" r="1.5" fill={b.color} />
-          {/* Light */}
-          <circle cx="148" cy="172" r="1.8" fill="hsl(50, 100%, 70%)" stroke="hsl(50, 80%, 40%)" strokeWidth="0.4" />
-          {/* Cable to screen */}
-          <path d="M27,30 Q10,50 8,90" fill="none" stroke={b.color} strokeWidth="1.2" strokeDasharray="2 2" />
-          {/* Mini screen */}
-          <rect x="2" y="92" width="22" height="16" rx="2" fill="hsl(var(--card))" stroke={b.color} strokeWidth="0.8" />
-          <rect x="4" y="94" width="18" height="12" rx="1" fill={withAlpha(b.color, 0.35)} />
-          <text x="13" y="103" textAnchor="middle" fontSize="5" fill={b.color} fontWeight="600">VIEW</text>
-          {/* Angle indicator */}
-          <text x="100" y="200" textAnchor="middle" fontSize="6.5" fill={b.color} fontWeight="600">Hyperangulated · camera at tip</text>
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <rect x="32" y="8" width="34" height="86" rx="4" fill={`url(#handle-${bladeKey})`} stroke="hsl(220, 10%, 14%)" strokeWidth="0.6" />
+            <circle cx="49" cy="32" r="2.4" fill="hsl(0, 0%, 14%)" stroke={accent} strokeWidth="0.6" />
+            <circle cx="49" cy="32" r="0.9" fill={accent} />
+            {Array.from({ length: 8 }).map((_, i) => (
+              <line key={i} x1={34} y1={48 + i * 5} x2={64} y2={48 + i * 5} stroke="hsl(220, 6%, 14%)" strokeWidth="0.35" opacity="0.55" />
+            ))}
+            <rect x="30" y="92" width="38" height="6" rx="1" fill={`url(#brass-${bladeKey})`} stroke="hsl(38, 50%, 30%)" strokeWidth="0.4" />
+          </g>
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <path d="M70,96 L88,96 Q100,114 110,142 Q120,176 144,196 Q172,212 200,206 Q216,200 222,188 L226,184 Q218,196 202,200 Q176,204 152,190 Q132,176 122,150 Q112,120 100,104 Q90,90 88,90 L70,90 Z" fill={steel} stroke="hsl(210, 14%, 30%)" strokeWidth="0.6" />
+            <path d="M76,99 Q98,118 110,148 Q124,180 152,196 Q180,206 215,194" fill="none" stroke={channel} strokeWidth="3.4" strokeLinecap="round" opacity="0.85" />
+            <path d="M77,100 Q98,118 112,150 Q128,182 158,198 Q188,206 218,194" fill="none" stroke="hsl(210, 18%, 96%)" strokeWidth="0.7" opacity="0.7" />
+            <ellipse cx="220" cy="190" rx="6" ry="4.5" fill="hsl(220, 10%, 12%)" stroke={accent} strokeWidth="0.7" />
+            <circle cx="220" cy="190" r="2.4" fill="hsl(220, 30%, 18%)" stroke="hsl(210, 12%, 70%)" strokeWidth="0.5" />
+            <circle cx="220" cy="190" r="1" fill="hsl(180, 60%, 75%)" opacity="0.85" />
+            <circle cx="215" cy="186" r="0.8" fill="hsl(50, 100%, 92%)" />
+            <circle cx="225" cy="186" r="0.8" fill="hsl(50, 100%, 92%)" />
+          </g>
+          <path d="M49,8 Q40,2 24,12 Q12,22 14,46" fill="none" stroke="hsl(220, 10%, 25%)" strokeWidth="1.6" strokeLinecap="round" />
+          <g filter={`url(#shadow-${bladeKey})`}>
+            <rect x="2" y="44" width="32" height="24" rx="2.5" fill="hsl(220, 12%, 14%)" stroke="hsl(220, 10%, 8%)" strokeWidth="0.6" />
+            <rect x="4" y="46" width="28" height="18" rx="1" fill="hsl(200, 30%, 22%)" />
+            <ellipse cx="18" cy="55" rx="9" ry="6" fill="hsl(15, 45%, 60%)" opacity="0.9" />
+            <path d="M14,53 L22,53 L20,58 L18,60 L16,58 Z" fill="hsl(40, 25%, 92%)" />
+            <text x="18" y="70" textAnchor="middle" fontSize="3" fill={accent} fontWeight="700">LIVE</text>
+          </g>
+          <text x="130" y="232" textAnchor="middle" fontSize="7" fill={accent} fontWeight="600">Hyperangulated · camera at tip</text>
+          <text x="130" y="242" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))">Indirect view — stylet-shaped ETT required</text>
         </g>
       )}
 
