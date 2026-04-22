@@ -197,6 +197,31 @@ const CardiothoracicTopic = () => {
             DHCA is a controlled period of complete circulatory arrest performed under profound hypothermia (classically 14–20 °C nasopharyngeal). Cooling slows cerebral metabolism (~6–7% per °C, Q₁₀ ≈ 2–3) and provides a finite "safe" window of organ ischaemia in which the surgeon can operate on a bloodless, cannula-free aortic arch or great vessels. It is an inherently high-risk technique reserved for cases where conventional CPB cannot provide adequate exposure or distal perfusion.
           </p>
 
+          <div className="mb-5 rounded-lg border border-primary/30 bg-primary/5 p-3">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-primary mb-2">
+              Related sections in this topic
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { href: "#cpb-physiology", label: "CPB physiology", note: "hypothermia, non-pulsatile flow, SIRS" },
+                { href: "#cpb-overview", label: "Anticoagulation & heparin reversal", note: "300–400 u/kg, ACT >480 s, protamine 1 mg/100 u" },
+                { href: "#cpb-overview", label: "Rewarming on CPB", note: "≤10 °C gradient, never >37 °C, de-airing" },
+                { href: "#cals", label: "Cardiac arrest after cardiac surgery", note: "post-op CALS modifications" },
+              ].map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="group inline-flex flex-col rounded-md border border-border bg-background px-2.5 py-1.5 hover:border-primary hover:bg-primary/10 transition-colors"
+                >
+                  <span className="text-xs font-semibold text-foreground group-hover:text-primary">
+                    → {l.label}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground">{l.note}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
           <div className="space-y-4">
             <div>
               <h3 className="text-lg font-serif font-bold text-foreground mb-2">Indications — procedures potentially requiring DHCA</h3>
