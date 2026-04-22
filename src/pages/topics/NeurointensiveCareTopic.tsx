@@ -516,9 +516,9 @@ const NeurointensiveCareTopic = () => {
             No single monitor captures the full picture of brain physiology. Modern neuro-ICUs combine pressure, flow surrogate, oxygenation and biochemistry to triangulate cellular distress. Use the interactive overview below to compare the six core modalities — what each measures, their spatial vs temporal resolution, and where each excels or fails.
           </p>
           <MultimodalNeuromonitoringDiagram />
-        </div>
+        </ExamSection>
 
-        <div id="toc-encephalitis" className="scroll-mt-24">
+        <ExamSection id="toc-encephalitis" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autoimmune Encephalitis — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
