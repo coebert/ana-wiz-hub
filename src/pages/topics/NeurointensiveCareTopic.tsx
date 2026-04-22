@@ -225,7 +225,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <div id="toc-bsd" className="scroll-mt-24">
+        <ExamSection id="toc-bsd" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brain Death & Brainstem Testing</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
             UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered).
@@ -243,7 +243,7 @@ const NeurointensiveCareTopic = () => {
               <div key={test} className="p-2 rounded border border-border text-xs text-muted-foreground">{test}</div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
         <div id="toc-sci" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury (SCI) — ICU Management</h2>
