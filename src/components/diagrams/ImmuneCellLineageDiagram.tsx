@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import InlineRef from "@/components/InlineRef";
 
 type Branch = "myeloid" | "lymphoid";
 type Arm = "innate" | "adaptive" | "bridge";
