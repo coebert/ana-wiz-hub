@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PlayCircle } from "lucide-react";
+import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
 
 interface Step {
   id: number;
@@ -128,8 +130,32 @@ type DLTSide = "left" | "right";
 const DLTInsertionDiagram = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [dltSide, setDltSide] = useState<DLTSide>("left");
+  const [walkthroughOpen, setWalkthroughOpen] = useState(false);
 
   const step = STEPS[currentStep];
+
+  // Build walkthrough steps from STEPS — confirmation actions for each phase
+  const walkthroughSteps: WalkthroughStep[] = STEPS.map((s) => {
+    // Build action checklist from instruction + tips + pitfalls (key items)
+    const actions: string[] = [];
+    // Take instruction as the primary confirmation
+    actions.push(s.instruction);
+    // Add up to 3 most important tips as discrete checks
+    s.tips.slice(0, 3).forEach((t) => actions.push(`Confirm: ${t}`));
+    return {
+      id: s.id,
+      title: s.title,
+      detail: s.pitfalls?.length
+        ? `Watch for: ${s.pitfalls.join(" · ")}`
+        : undefined,
+      actions,
+      confirmation:
+        s.id === STEPS.length
+          ? "DLT position re-confirmed in lateral position. Safe to begin one-lung ventilation."
+          : "Step confirmed — advance to the next phase.",
+      tone: s.id === 7 ? "warn" : "info",
+    };
+  });
 
   // Diagram rendering per step
   const renderStepDiagram = (stepId: number) => {
@@ -387,8 +413,18 @@ const DLTInsertionDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
-      <p className="text-xs text-muted-foreground mb-4">Navigate through each step. Select left or right DLT below.</p>
+      <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
+        <h3 className="text-lg font-serif font-bold text-foreground">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
+        <button
+          type="button"
+          onClick={() => setWalkthroughOpen(true)}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+        >
+          <PlayCircle className="w-3.5 h-3.5" />
+          Guided walkthrough
+        </button>
+      </div>
+      <p className="text-xs text-muted-foreground mb-4">Navigate through each step, or launch the guided walkthrough to tick off confirmation actions as you progress.</p>
 
       {/* DLT side selector */}
       <div className="flex items-center gap-2 mb-4">
@@ -488,6 +524,16 @@ const DLTInsertionDiagram = () => {
         </div>
         <p className="text-[10px] text-muted-foreground mt-2 text-center">Depth at teeth ≈ height (cm) ÷ 10 + 12</p>
       </div>
+
+      <GuidedWalkthroughOverlay
+        open={walkthroughOpen}
+        onClose={() => setWalkthroughOpen(false)}
+        steps={walkthroughSteps}
+        stepIndex={currentStep}
+        onStepChange={setCurrentStep}
+        title="DLT insertion — confirmation walkthrough"
+        subtitle={`${dltSide === "left" ? "Left-sided" : "Right-sided"} double-lumen tube`}
+      />
     </div>
   );
 };

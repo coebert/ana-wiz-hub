@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { PlayCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
 
 interface AlgorithmStep {
   id: string;
@@ -138,6 +140,23 @@ const urgencyLabels: Record<string, string> = {
 const OLVTroubleshootingDiagram = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [expandedSteps, setExpandedSteps] = useState<Set<number>>(new Set([0]));
+  const [walkthroughOpen, setWalkthroughOpen] = useState(false);
+
+  const walkthroughSteps: WalkthroughStep[] = steps.map((s) => ({
+    id: s.id,
+    title: s.title.replace(/^\d+\.\s*/, ""),
+    detail: s.detail,
+    actions: s.actions,
+    confirmation: s.resolved
+      ? `If resolved: ${s.resolved}`
+      : "If hypoxia persists, escalate to the next step.",
+    tone:
+      s.urgency === "escalation"
+        ? "critical"
+        : s.urgency === "immediate"
+          ? "warn"
+          : "info",
+  }));
 
   const toggleStep = (index: number) => {
     setActiveStep(index);
@@ -155,11 +174,21 @@ const OLVTroubleshootingDiagram = () => {
   return (
     <Card className="mb-8 border-border bg-card">
       <CardHeader className="pb-3">
-        <CardTitle className="text-lg font-serif text-foreground">
-          Hypoxia During OLV — Troubleshooting Algorithm
-        </CardTitle>
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <CardTitle className="text-lg font-serif text-foreground">
+            Hypoxia During OLV — Troubleshooting Algorithm
+          </CardTitle>
+          <button
+            type="button"
+            onClick={() => setWalkthroughOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            <PlayCircle className="w-3.5 h-3.5" />
+            Rescue walkthrough
+          </button>
+        </div>
         <p className="text-sm text-muted-foreground">
-          Stepwise approach to managing desaturation during one-lung ventilation. Tap each step to expand. Progress through sequentially if hypoxia persists.
+          Stepwise approach to managing desaturation during one-lung ventilation. Tap each step to expand, or launch the rescue walkthrough to tick off actions as you perform them.
         </p>
       </CardHeader>
       <CardContent>
@@ -254,6 +283,19 @@ const OLVTroubleshootingDiagram = () => {
           </div>
         </div>
       </CardContent>
+
+      <GuidedWalkthroughOverlay
+        open={walkthroughOpen}
+        onClose={() => setWalkthroughOpen(false)}
+        steps={walkthroughSteps}
+        stepIndex={activeStep}
+        onStepChange={(i) => {
+          setActiveStep(i);
+          setExpandedSteps((prev) => new Set(prev).add(i));
+        }}
+        title="OLV hypoxia — rescue walkthrough"
+        subtitle="Step through the algorithm; tick off each action as performed"
+      />
     </Card>
   );
 };
