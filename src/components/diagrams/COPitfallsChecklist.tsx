@@ -76,6 +76,12 @@ const modalities: Modality[] = [
       { id: "p6", severity: "major", title: "Prolonged interval since last calibration", why: "Drift over 8 h, particularly with thermal events or position change.", examPearl: "PiCCO/LiDCO: recalibrate every 8 h or after any major haemodynamic change." },
       { id: "p7", severity: "major", title: "Peripheral arterial line in shock", why: "Radial-aortic pressure gradient widens in vasoplegia; the radial waveform underestimates central SV.", examPearl: "Femoral access preferred for PiCCO; check for radial-femoral gradient in profound shock." },
       { id: "p8", severity: "minor", title: "LiDCO-specific: lithium therapy or first-trimester pregnancy", why: "Baseline lithium invalidates calibration; teratogenicity concern.", examPearl: "Also avoid within 30 min of non-depolarising NMBA (electrode cross-reactivity)." },
+      { id: "p9", severity: "critical", title: "VA-ECMO / non-pulsatile flow", why: "Pulse contour algorithms require a pulsatile arterial waveform; ECMO flattens or abolishes pulsatility.", examPearl: "Pulse contour CO invalid on full VA-ECMO support; reduces with VAD too." },
+      { id: "p10", severity: "critical", title: "LVAD (continuous-flow)", why: "Minimal arterial pulsatility; pulse contour and finger-cuff devices fail.", examPearl: "Use echo or thermodilution (if PAC in situ)." },
+      { id: "p11", severity: "major", title: "Open chest / sternotomy open", why: "Loss of pleural pressure transmission changes aortic compliance estimate and abolishes meaningful SVV/PPV.", examPearl: "Recalibrate after chest closure; SVV/PPV not interpretable with open chest." },
+      { id: "p12", severity: "major", title: "ECMO cannula in femoral artery (TPTD/pulse contour)", why: "Retrograde flow from return cannula corrupts both the calibration thermal curve and the pulse contour upstream of detection.", examPearl: "Avoid PiCCO on the cannulated limb." },
+      { id: "p13", severity: "major", title: "Transducer height / zero errors", why: "Transducer above phlebostatic axis under-reads MAP and shifts pulse contour SV; below over-reads. 10 cm error ≈ 7.5 mmHg.", examPearl: "Re-zero at the phlebostatic axis after every position change — classic SOE pitfall." },
+      { id: "p14", severity: "minor", title: "Air bubble or clot in tubing", why: "Damps high-frequency components, flattens dicrotic notch, degrades pulse contour analysis.", examPearl: "Square-wave test should return to baseline after 1–2 oscillations." },
     ],
   },
   {
