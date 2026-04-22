@@ -597,23 +597,9 @@ const AkiRrtTopic = () => {
 
       </div>
 
-      <KeyLearningPoints points={[
-        "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output (<0.5 ml/kg/hr).",
-        "CI-AKI: prevent with iso/low-osmolar contrast, IV isotonic crystalloid (1 ml/kg/hr pre/post), withhold nephrotoxins. NAC and prophylactic RRT not recommended.",
-        "Mehran score stratifies CI-AKI risk using 8 weighted factors; high score patients need maximal prophylaxis.",
-        "Renal-friendly perioperative drugs: fentanyl/alfentanil/remifentanil, cisatracurium, UFH, apixaban. Avoid morphine, pethidine, NSAIDs, gentamicin where possible.",
-        "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺.",
-        "AEIOU: Acidosis, Electrolytes, Intoxication, Overload, Uraemia — indications for RRT.",
-        "Regional citrate anticoagulation is preferred for CRRT — avoids systemic bleeding.",
-        "STARRT-AKI / AKIKI: no benefit from early RRT initiation — wait for conventional indications.",
-      ]} />
-
-      <QuizSection questions={akiRrtQuestions} />
-      <ReferencesList topicId="aki-rrt" />
-
-      <SeeAlso topicId="aki-rrt" />
-        <TopicCompletionToggle topicId="aki-rrt" topicTitle="Acute Kidney Injury & RRT" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
