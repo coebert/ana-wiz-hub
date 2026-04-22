@@ -593,6 +593,29 @@ export const LaryngoscopeBladesDiagram = () => {
             <p className="font-semibold text-foreground mb-1">Indications</p>
             <p className="text-muted-foreground">{info.indications}</p>
           </div>
+
+          <div
+            className="rounded-lg border-l-4 border border-border p-3 mt-3 text-xs"
+            style={{ borderLeftColor: info.color, backgroundColor: withAlpha(info.color, 0.06) }}
+          >
+            <p className="font-semibold text-foreground mb-1.5">FRCA Key Learning Points</p>
+            <ul className="space-y-1 list-disc list-inside text-muted-foreground">
+              {info.keyPoints.map((kp, i) => <li key={i}>{kp}</li>)}
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-[11px]">
+            <p className="font-semibold text-foreground mb-1">Sources</p>
+            <p className="text-muted-foreground">
+              {info.refs.map((r, i) => (
+                <span key={r}>
+                  {i > 0 && " · "}
+                  {r}
+                  <InlineRef topicId="equipment-monitoring" refLabel={r} />
+                </span>
+              ))}
+            </p>
+          </div>
         </TabsContent>
 
         <TabsContent value="comparison" className="mt-3">
