@@ -109,6 +109,13 @@ export const TopicTemplate = ({
   topicTitle,
   quizQuestions,
 }: TopicTemplateProps) => {
+  const { activeExam } = useExamFilter();
+
+  const showObjectives = blockMatches(sectionExamMapping?.objectives, activeExam);
+  const showDiagrams = blockMatches(sectionExamMapping?.diagrams, activeExam);
+  const showWorkedExamples = blockMatches(sectionExamMapping?.workedExamples, activeExam);
+  const showKeyPoints = blockMatches(sectionExamMapping?.keyPoints, activeExam);
+
   return (
     <SectionLayout
       title={title}
@@ -119,6 +126,7 @@ export const TopicTemplate = ({
       disableAutoTOC={disableAutoTOC}
     >
       <div className="space-y-10">
+        <TopicExamFilterBar />
         <div>
           {sectionExamMapping?.objectives && (
             <ExamMappingBadges
