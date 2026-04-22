@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import InlineRef from "@/components/InlineRef";
 
 type Branch = "myeloid" | "lymphoid";
 type Arm = "innate" | "adaptive" | "bridge";
@@ -144,6 +145,8 @@ interface Step {
   token: string;
   color: string;
   duration?: number;
+  /** Reference labels (must match entries in references.ts under "haematology-immunity") */
+  refs?: string[];
 }
 
 const ANTIGEN_ANCHOR = { x: 60, y: 450 };
@@ -154,11 +157,11 @@ const pathways: Record<Pathway, { title: string; caption: string; steps: Step[] 
     caption:
       "Tissue dendritic cell captures antigen, migrates to the draining lymph node, presents on MHC-II to a naïve CD4⁺ T cell. The activated Th cell licences a B cell (CD40L–CD40 + IL-4) → germinal centre → plasma cell secreting class-switched IgG.",
     steps: [
-      { from: "ag-source", to: "dc",       label: "Antigen captured by tissue DC",       token: "Ag",     color: "hsl(45 90% 50%)", duration: 1400 },
-      { from: "dc",        to: "th",       label: "DC presents on MHC-II → TCR",         token: "MHC-II", color: armColor.bridge,   duration: 1600 },
-      { from: "th",        to: "bcell",    label: "Th help: CD40L–CD40 + IL-4",          token: "IL-4",   color: armColor.adaptive, duration: 1400 },
-      { from: "bcell",     to: "plasma",   label: "B cell → plasma cell (class switch)", token: "→ PC",   color: armColor.adaptive, duration: 1200 },
-      { from: "plasma",    to: "ag-source",label: "Secreted IgG opsonises antigen",      token: "IgG",    color: "hsl(140 55% 40%)", duration: 1600 },
+      { from: "ag-source", to: "dc",       label: "Antigen captured by tissue DC",       token: "Ag",     color: "hsl(45 90% 50%)", duration: 1400, refs: ["Banchereau Nature 1998", "BJA Educ Innate 2018"] },
+      { from: "dc",        to: "th",       label: "DC presents on MHC-II → TCR",         token: "MHC-II", color: armColor.bridge,   duration: 1600, refs: ["Mellman Cell 2001", "Smith-Garvin Annu Rev 2009", "BJA Educ Adaptive 2019"] },
+      { from: "th",        to: "bcell",    label: "Th help: CD40L–CD40 + IL-4",          token: "IL-4",   color: armColor.adaptive, duration: 1400, refs: ["Crotty Immunity 2014", "BJA Educ Adaptive 2019"] },
+      { from: "bcell",     to: "plasma",   label: "B cell → plasma cell (class switch)", token: "→ PC",   color: armColor.adaptive, duration: 1200, refs: ["Stavnezer Annu Rev 2008", "Nutt Nat Rev 2015"] },
+      { from: "plasma",    to: "ag-source",label: "Secreted IgG opsonises antigen",      token: "IgG",    color: "hsl(140 55% 40%)", duration: 1600, refs: ["Nutt Nat Rev 2015", "BJA Educ Adaptive 2019"] },
     ],
   },
   "il5-eos": {
@@ -166,10 +169,10 @@ const pathways: Record<Pathway, { title: string; caption: string; steps: Step[] 
     caption:
       "Th2 cells (and ILC2) secrete IL-5 in response to allergens or helminths. IL-5 drives bone-marrow eosinophil maturation and egress, then recruits mature eosinophils to tissue where they degranulate (major basic protein, ECP).",
     steps: [
-      { from: "ag-source", to: "th",       label: "Allergen / helminth antigen → Th2",   token: "Ag",   color: "hsl(45 90% 50%)", duration: 1300 },
-      { from: "th",        to: "eos",      label: "Th2 secretes IL-5",                   token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700 },
-      { from: "ilc",       to: "eos",      label: "ILC2 reinforces IL-5 signal",         token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700 },
-      { from: "eos",       to: "ag-source",label: "Eosinophil → tissue, degranulation",  token: "MBP",  color: "hsl(15 75% 52%)", duration: 1500 },
+      { from: "ag-source", to: "th",       label: "Allergen / helminth antigen → Th2",   token: "Ag",   color: "hsl(45 90% 50%)", duration: 1300, refs: ["Forbes Nat Rev 2013", "BJA Educ Eosinophil 2020"] },
+      { from: "th",        to: "eos",      label: "Th2 secretes IL-5",                   token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700, refs: ["Rothenberg NEJM 1998", "Bel NEJM 2014 Mepolizumab"] },
+      { from: "ilc",       to: "eos",      label: "ILC2 reinforces IL-5 signal",         token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700, refs: ["Klose Cell 2014 ILC2"] },
+      { from: "eos",       to: "ag-source",label: "Eosinophil → tissue, degranulation",  token: "MBP",  color: "hsl(15 75% 52%)", duration: 1500, refs: ["Rothenberg NEJM 1998", "BJA Educ Eosinophil 2020"] },
     ],
   },
 };
@@ -548,6 +551,18 @@ const ImmuneCellLineageDiagram = () => {
                     </span>
                   </div>
                   <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
+                  {currentStep.refs && currentStep.refs.length > 0 && (
+                    <p className="text-[11px] text-muted-foreground">
+                      <span className="font-medium text-foreground">Sources:</span>{" "}
+                      {currentStep.refs.map((r, i) => (
+                        <span key={r}>
+                          {i > 0 && " · "}
+                          {r}
+                          <InlineRef topicId="haematology-immunity" refLabel={r} />
+                        </span>
+                      ))}
+                    </p>
+                  )}
                   {currentStep.to !== "ag-source" && (
                     <p className="text-[11px] text-muted-foreground italic">
                       Tip: tap the destination cell ({cells.find((c) => c.id === currentStep.to)?.short ?? currentStep.to}) to read its full profile.
