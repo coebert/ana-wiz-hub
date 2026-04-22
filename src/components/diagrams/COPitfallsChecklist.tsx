@@ -97,6 +97,11 @@ const modalities: Modality[] = [
       { id: "d5", severity: "major", title: "LVOT diameter measurement error (echo)", why: "Diameter is squared in the area calculation — a 10% error becomes 20% in SV.", examPearl: "Measure in mid-systole, parasternal long-axis, inner-edge to inner-edge." },
       { id: "d6", severity: "major", title: "Awake patient discomfort / movement", why: "Probe shift loses focus, gag interferes; not tolerated unsedated.", examPearl: "Best in the anaesthetised, intubated patient." },
       { id: "d7", severity: "minor", title: "Recent oesophageal/upper GI surgery, varices, coagulopathy", why: "Risk of perforation or bleeding from probe insertion.", examPearl: "Relative contraindications — risk-benefit assessment." },
+      { id: "d8", severity: "critical", title: "Absolute contraindications to oesophageal probe", why: "Severe oropharyngeal/oesophageal pathology, recent oesophagectomy, oesophageal stents, severe bleeding diathesis, intra-aortic balloon pump in descending aorta.", examPearl: "Know the absolute list — common SOE recall question." },
+      { id: "d9", severity: "major", title: "Aortic cross-clamp / cardiopulmonary bypass", why: "Descending aortic flow no longer reflects systemic CO; nomogram invalid during bypass.", examPearl: "Suspend Doppler interpretation during cross-clamp and CPB." },
+      { id: "d10", severity: "major", title: "Severe AS or AR (echo CO)", why: "AS: turbulent jet violates laminar-flow assumption; AR: regurgitant volume not subtracted from forward SV.", examPearl: "LVOT VTI overestimates forward SV in AR; use 3D echo or MRI." },
+      { id: "d11", severity: "major", title: "Subaortic / dynamic LVOT obstruction (HOCM)", why: "Velocity profile is not flat across LVOT; assumption of uniform velocity fails.", examPearl: "Continuity equation needs different sampling site." },
+      { id: "d12", severity: "minor", title: "Pacing or arrhythmia (echo)", why: "Beat-to-beat SV variability — single-beat VTI unrepresentative.", examPearl: "Average ≥3 beats in sinus, ≥5 beats in AF." },
     ],
   },
   {
