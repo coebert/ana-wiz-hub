@@ -1,16 +1,125 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Define and classify ALF (hyperacute/acute/subacute) and identify common UK aetiologies.",
+  "Deliver organ-system-based ICU management of ALF, including ICP control in grade III/IV encephalopathy.",
+  "Apply King's College Criteria to identify patients requiring emergency liver transplant assessment.",
+  "Define ACLF using EASL-CLIF, grade by organ failures, and prognosticate using day 3–7 trajectory.",
+  "Diagnose and manage HRS-AKI using ICA 2015 criteria, terlipressin + albumin, and noradrenaline alternatives.",
+  "Use Child-Pugh, MELD/UKELD, Maddrey DF and Lille scores to risk-stratify and guide steroid therapy.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "King's College Criteria — paracetamol ALF",
+    scenario: (
+      <>
+        25-year-old, staggered paracetamol overdose presenting at 72 h. Day 3 in ICU on NAC:
+        pH 7.22 after fluid resuscitation, INR 7.0, creatinine 340 µmol/L, grade III encephalopathy.
+        Should you refer for transplant?
+      </>
+    ),
+    working: (
+      <>
+        King's paracetamol criteria — list if{" "}
+        <strong>pH &lt;7.3 after resuscitation</strong> (single most powerful predictor) OR all
+        three: INR &gt;6.5, creatinine &gt;300 µmol/L, grade III/IV encephalopathy. This patient
+        meets the pH criterion AND the triple criteria.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Refer immediately to transplant centre.</strong> Without transplant, mortality
+        approaches 90%. Continue NAC, manage cerebral oedema (head-up 30°, target Na 145–155,
+        consider ICP monitoring, hypertonic saline for surges), CRRT for renal failure (also
+        controls ammonia and avoids ICP swings of IHD).
+      </>
+    ),
+  },
+  {
+    title: "HRS-AKI diagnosis and treatment",
+    scenario: (
+      <>
+        Patient with alcoholic cirrhosis admitted with SBP. Creatinine rises from 95 → 220 µmol/L
+        over 5 days despite antibiotics. Urine Na 12 mEq/L, no proteinuria, USS normal. Diuretics
+        stopped. After 48 h of 20% albumin 1 g/kg → no improvement. Diagnosis and next step?
+      </>
+    ),
+    working: (
+      <>
+        AKI criteria met (≥50% rise from baseline). Urine Na &lt;20 + low FENa + bland urine + no
+        obstruction → functional AKI. Failure to respond to albumin volume expansion confirms{" "}
+        <strong>HRS-AKI</strong> (ICA 2015). Common precipitant: SBP.
+      </>
+    ),
+    answer: (
+      <>
+        Start <strong>terlipressin 2 mg IV q4–6h</strong> (or 2–4 mg/24 h infusion — fewer
+        ischaemic side effects, CONFIRM trial) + albumin 20–40 g/day. Target Cr &lt;133 µmol/L.
+        If contraindicated (IHD, PVD): noradrenaline to ↑ MAP by 10 mmHg + albumin. Non-responder
+        by day 4 → CRRT bridge to transplant assessment.
+      </>
+    ),
+  },
+  {
+    title: "Maddrey DF and the Lille decision",
+    scenario: (
+      <>
+        Severe alcoholic hepatitis: bilirubin 320 µmol/L (18.7 mg/dL), PT 24 s (control 12 s).
+        Calculate Maddrey DF and decide on steroids. At day 7 the Lille score returns 0.62 — what
+        next?
+      </>
+    ),
+    working: (
+      <>
+        Maddrey DF = 4.6 × (PT − control) + bilirubin (mg/dL) = 4.6 × (24 − 12) + 18.7 ={" "}
+        4.6 × 12 + 18.7 = 55.2 + 18.7 = <strong>73.9</strong>. DF ≥32 = severe → steroids
+        indicated provided no contraindication (sepsis, GI bleed, active TB, AKI). Lille at day
+        7: <strong>&gt;0.45 = non-responder</strong>.
+      </>
+    ),
+    answer: (
+      <>
+        Start prednisolone 40 mg/day with PPI cover and infection screen. At day 7, Lille 0.62 →
+        <strong> stop prednisolone</strong> (continued steroids in non-responders worsen
+        infection without survival benefit). Refer for early liver transplant assessment per
+        ACCELERATE-AH criteria; palliative care input if not a candidate (6-month untreated
+        mortality ~75%).
+      </>
+    ),
+  },
+];
 
 const AcuteLiverFailureTopic = () => {
   return (
-    <SectionLayout title="Acute Liver Failure" subtitle="FRCA / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Acute Liver Failure"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "Paracetamol is the commonest cause of ALF in the UK — treat with NAC, best prognosis",
+        "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)",
+        "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy",
+        "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need",
+        "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality",
+        "Trajectory at day 3–7 is more prognostically important than admission ACLF grade",
+        "HRS-AKI: terlipressin (2 mg q4–6h or infusion) + albumin; noradrenaline if terlipressin contraindicated",
+        "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)",
+        "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day",
+      ]}
+      topicId="acute-liver-failure"
+      topicTitle="Acute Liver Failure"
+      quizQuestions={acuteLiverFailureQuestions}
+      coreConcepts={
+    <>
+      <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Aetiology</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -221,23 +330,9 @@ const AcuteLiverFailureTopic = () => {
         </div>
       </section>
 
-      <KeyLearningPoints points={[
-        "Paracetamol is the commonest cause of ALF in the UK — treat with NAC, best prognosis",
-        "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)",
-        "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy",
-        "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need",
-        "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality",
-        "Trajectory at day 3–7 is more prognostically important than admission ACLF grade",
-        "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)",
-        "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day",
-      ]} />
-
-      <QuizSection questions={acuteLiverFailureQuestions} />
-      <ReferencesList topicId="acute-liver-failure" />
-
-      <SeeAlso topicId="acute-liver-failure" />
-        <TopicCompletionToggle topicId="acute-liver-failure" topicTitle="Acute Liver Failure" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
