@@ -52,7 +52,7 @@ const MRIPhysicsTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["AAGBI Safety in MRI 2019", "RCR MRI safety guidelines"],
+        workedExamples: ["AAGBI 2010", "AAGBI 2010"],
       }}
       keyPoints={[
         "MRI uses hydrogen protons (¹H) which precess at the Larmor frequency ω₀ = γB₀ (42.58 MHz/T × field strength)",

@@ -102,18 +102,18 @@ const BrachialPlexusTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "Standring S (ed). Gray's Anatomy, 42nd edition (Elsevier, 2021) — brachial plexus chapter",
-          "Hadzic A. Textbook of Regional Anesthesia and Acute Pain Management, 2nd ed (NYSORA, 2017)",
-          "RA-UK / ESRA — Regional anaesthesia educational resources (rauk.org / esraeurope.org)",
+          "Ellis & Feldman Ch.8",
+          "Miller Ch.46",
+          "BJA Educ 2014",
         ],
         workedExamples: [
-          "Renes SH et al. Phrenic nerve palsy following ultrasound-guided interscalene block. Reg Anesth Pain Med 2009;34:498-502",
-          "El-Boghdadly K et al. Phrenic-sparing alternatives to interscalene block: a systematic review. Br J Anaesth 2017;119:159-71",
-          "BJA Educ — Hewson DW, Bedforth NM. Regional anaesthesia for the upper limb. BJA Educ 2019;19(3):86-92",
+          "BJA Educ 2014",
+          "BJA Educ 2014",
+          "BJA Educ 2014",
         ],
         keyPoints: [
-          "Neal JM et al. The ASRA evidence-based regional anesthesia guidelines (4th ed). Reg Anesth Pain Med 2018",
-          "Marhofer P. Ultrasound Guidance in Regional Anaesthesia, 2nd ed (Oxford, 2010)",
+          "Miller Ch.46",
+          "BJA Educ 2014",
         ],
       }}
       keyPoints={[

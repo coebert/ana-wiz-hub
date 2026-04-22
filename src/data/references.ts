@@ -707,4 +707,10 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017 ENT", citation: "Charters P, Ahmad I. Anaesthesia for ENT surgery. BJA Education. 2014;14(5):201-205.", url: "https://doi.org/10.1093/bjaceaccp/mkt059" },
     { label: "BJA Educ 2015 Laser", citation: "Kitching AJ, Edge CJ. Lasers and surgery. BJA Education. 2003;3(5):143-146.", url: "https://doi.org/10.1093/bjacepd/mkg143" },
   ],
+  "gynaecological-anaesthesia": [
+    { label: "BJA Educ 2011 Lap", citation: "Hayden P, Cowman S. Anaesthesia for laparoscopic surgery. BJA Education (Contin Educ Anaesth Crit Care Pain). 2011;11(5):177-180.", url: "https://doi.org/10.1093/bjaceaccp/mkr027" },
+    { label: "BSGE 2018", citation: "British Society for Gynaecological Endoscopy. Management of fluid distension media in operative hysteroscopy. BSGE Guideline; 2018.", url: "https://www.bsge.org.uk/" },
+    { label: "BJA Educ 2014 TURP", citation: "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth. 2006;96(1):8-20 — TURP/glycine syndrome (also referenced under urological anaesthesia).", url: "https://doi.org/10.1093/bja/aei279" },
+    { label: "ERAS Gynae 2019", citation: "Nelson G et al. Guidelines for perioperative care in gynecologic/oncology surgery: ERAS Society recommendations — 2019 update. Int J Gynecol Cancer. 2019;29(4):651-668.", url: "https://doi.org/10.1136/ijgc-2019-000356" },
+  ],
 };

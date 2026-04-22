@@ -102,18 +102,18 @@ const ClinicalIncidentsTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "AAGBI/RCoA Quick Reference Handbook — Crisis management algorithms",
-          "Cook TM et al. NAP6 — Perioperative anaphylaxis. Br J Anaesth 2018;121:159-71",
-          "Pandit JJ et al. NAP5 — Accidental awareness during general anaesthesia. Br J Anaesth 2014;113:549-59",
+          "AAGBI 2009",
+          "NAP Reports",
+          "NAP Reports",
         ],
         workedExamples: [
-          "Harper NJN et al. AAGBI Guideline: Suspected anaphylactic reactions associated with anaesthesia. Anaesthesia 2009;64:199-211 (updated NAP6 2018)",
-          "Hopkins PM et al. Malignant hyperthermia 2020: AAGBI Guideline. Anaesthesia 2021;76:655-664",
-          "AAGBI Safety Guideline — Management of severe local anaesthetic toxicity (2010, updated 2020)",
+          "AAGBI 2009",
+          "AAGBI 2011",
+          "AAGBI 2011",
         ],
         keyPoints: [
-          "Weinberg GL. Lipid emulsion infusion for LAST. Reg Anesth Pain Med 2012;37:188-93",
-          "Rosenberg H et al. Malignant hyperthermia: a review. Orphanet J Rare Dis 2015;10:93",
+          "AAGBI 2011",
+          "BJA Educ 2011",
         ],
       }}
       keyPoints={[

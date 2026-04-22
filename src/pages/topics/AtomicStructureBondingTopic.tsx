@@ -99,15 +99,15 @@ const AtomicStructureBondingTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "Cross M, Plunkett E. Physics, Pharmacology and Physiology for Anaesthetists, 2nd ed (Cambridge UP, 2014)",
-          "Atkins PW, de Paula J. Physical Chemistry, 11th ed (OUP, 2018) — bonding and intermolecular forces chapters",
+          "Cross & Plunkett Ch.2",
+          "Peck & Hill Ch.2",
         ],
         workedExamples: [
-          "Eger EI II. Characteristics of anesthetic agents used for induction and maintenance. Am J Health Syst Pharm 2004;61:S3-10",
-          "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia, 5th ed (Butterworth-Heinemann, 2003) — vaporiser physics",
+          "BJA Educ 2010",
+          "Cross & Plunkett Ch.2",
         ],
         keyPoints: [
-          "Pinnock C, Lin T, Smith T. Fundamentals of Anaesthesia, 4th ed (Cambridge UP) — chemistry primer",
+          "Peck & Hill Ch.2",
         ],
       }}
       keyPoints={[

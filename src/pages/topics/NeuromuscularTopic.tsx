@@ -108,9 +108,9 @@ const NeuromuscularTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        objectives: ["Martyn BJA Educ 2020", "Peck & Hill"],
-        workedExamples: ["AAGBI NMB Guidelines 2021", "BJA Educ 2020"],
-        keyPoints: ["Martyn BJA Educ 2020"],
+        objectives: ["BJA Educ 2005", "Power & Kam Ch.15"],
+        workedExamples: ["BJA Educ 2005", "BJA Educ 2005"],
+        keyPoints: ["BJA Educ 2005"],
       }}
       diagrams={
         <>

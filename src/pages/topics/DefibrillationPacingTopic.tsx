@@ -52,7 +52,7 @@ const DefibrillationPacingTopic = () => {
         keyPoints: { exams: ["primary", "final", "fficm"] },
       }}
       sectionSources={{
-        workedExamples: ["MHRA / AAGBI guidance on perioperative management of CIEDs"],
+        workedExamples: ["Resuscitation Council UK 2021"],
       }}
       keyPoints={[
         "Biphasic defibrillators use lower energy (120–200 J vs 360 J monophasic) with equal or superior efficacy and less myocardial damage",

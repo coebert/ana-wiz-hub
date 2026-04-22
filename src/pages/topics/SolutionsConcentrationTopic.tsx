@@ -52,7 +52,7 @@ const SolutionsConcentrationTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["Resuscitation Council UK — Anaphylaxis 2021", "BJA Educ — Hyponatraemia in the perioperative period"],
+        workedExamples: ["Severs 2015", "Lobo & Awad 2014"],
       }}
       keyPoints={[
         "1% solution = 10 mg/mL. Adrenaline 1:1,000 = 1 mg/mL; 1:10,000 = 100 µg/mL",

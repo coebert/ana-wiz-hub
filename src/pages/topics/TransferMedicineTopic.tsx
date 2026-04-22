@@ -99,19 +99,19 @@ const TransferMedicineTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "Intensive Care Society — Guidance on the Transfer of the Critically Ill Adult (4th edition, 2019)",
-          "Association of Anaesthetists (AAGBI) — Safer pre-hospital anaesthesia (2017) and Interhospital transfer guidelines (2009, updated 2019)",
-          "RCoA 2021 Curriculum — Transfer Medicine (Stage 2 Higher / FFICM 2.6)",
+          "ICS Transfer 2019",
+          "AAGBI Transfer 2009",
+          "BJA Educ 2018",
         ],
         workedExamples: [
-          "Nathanson MH et al. AAGBI: Safer transfer of patients (2018). Anaesthesia 2019;74:498-507",
-          "Droogh JM et al. Inter-hospital transport of critically ill patients: expect surprises. Crit Care 2012;16:R26",
-          "Martin TE. Handbook of Patient Transportation, 2nd ed (Cambridge UP) — oxygen calculations and Boyle's law in air transfer",
+          "AAGBI Transfer 2009",
+          "ICS Transfer 2019",
+          "BJA Educ 2018",
         ],
         keyPoints: [
-          "Warren J et al. Guidelines for the inter- and intrahospital transport of critically ill patients. Crit Care Med 2004;32:256-62",
-          "Singh JM et al. Air medical transport: physiological considerations. Anesth Analg 2018 — gas expansion at altitude",
-          "Faculty of Pre-Hospital Care (RCSEd) — Pre-hospital emergency anaesthesia consensus (2017)",
+          "ICS Transfer 2019",
+          "BJA Educ 2018",
+          "AAGBI Transfer 2009",
         ],
       }}
       keyPoints={[

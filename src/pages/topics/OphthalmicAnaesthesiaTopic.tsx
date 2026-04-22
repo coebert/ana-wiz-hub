@@ -51,7 +51,7 @@ const OphthalmicAnaesthesiaTopic = () => {
         keyPoints: { exams: ["final"] },
       }}
       sectionSources={{
-        workedExamples: ["RCoA / RCOphth Joint Guidelines on Local Anaesthesia for Ophthalmic Surgery 2012"],
+        workedExamples: ["RCOphth/RCoA 2012"],
       }}
       keyPoints={[
         "IOP ↑ by suxamethonium, coughing, prone, N₂O (if SF₆ present); IOP ↓ by propofol, volatiles, mannitol",

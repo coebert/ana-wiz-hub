@@ -29,9 +29,9 @@ const PharmacokineticsTopic = () => {
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.2", "BJA Educ 2017"],
-        diagrams: ["BJA Educ 2014", "Schnider 1998"],
+        diagrams: ["BJA Educ 2017", "Stanski & Shafer"],
         workedExamples: ["Peck & Hill Ch.2", "Stanski & Shafer"],
-        keyPoints: ["Peck & Hill Ch.2", "BJA Educ 2014", "Stanski & Shafer"],
+        keyPoints: ["Peck & Hill Ch.2", "BJA Educ 2017", "Stanski & Shafer"],
       }}
       diagrams={
         <>

@@ -103,9 +103,9 @@ const CardiacCycleTopic = () => {
         keyPoints: { exams: ["primary", "final", "fficm"] },
       }}
       sectionSources={{
-        objectives: ["Levick Cardiovascular Physiology", "Pappano & Wier"],
-        workedExamples: ["BJA Educ AS 2014", "Resus Council ALS 2021"],
-        keyPoints: ["Levick Cardiovascular Physiology", "BJA Educ"],
+        objectives: ["Power & Kam Ch.4", "Ganong Ch.30"],
+        workedExamples: ["BJA Educ 2018", "BJA Educ 2018"],
+        keyPoints: ["Power & Kam Ch.4", "BJA Educ 2018"],
       }}
       diagrams={
         <>

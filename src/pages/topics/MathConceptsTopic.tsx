@@ -52,7 +52,7 @@ const MathConceptsTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett — Physics, Pharmacology and Physiology for Anaesthetists"],
+        objectives: ["Cross & Plunkett Ch.1"],
       }}
       keyPoints={[
         "Linear (y = kx): Ohm's law, laminar flow, Beer-Lambert — direct proportionality",

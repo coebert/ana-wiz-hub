@@ -104,22 +104,22 @@ const GynaecologicalAnaesthesiaTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "RCoA 2021 Curriculum — General duties / specialty placements (Gynaecology)",
-          "BJA Educ — Hayden P, Cowman S. Anaesthesia for laparoscopic surgery. Contin Educ Anaesth Crit Care Pain 2011;11(5):177-180",
-          "Centre for Perioperative Care (CPOC) — Guideline for Perioperative Care for People with Diabetes / ERAS principles (2021)",
+          "BJA Educ 2011 Lap",
+          "BJA Educ 2011 Lap",
+          "ERAS Gynae 2019",
         ],
         workedExamples: [
-          "Gerges FJ et al. Anesthesia for laparoscopy: a review. J Clin Anesth 2006;18:67-78 — gas embolism management",
-          "British Society for Gynaecological Endoscopy (BSGE) — Management of fluid distension media in operative hysteroscopy (2018)",
-          "Hahn RG. Fluid absorption in endoscopic surgery. Br J Anaesth 2006;96:8-20 — TURP/glycine syndrome",
+          "BJA Educ 2011 Lap",
+          "BSGE 2018",
+          "BJA Educ 2014 TURP",
         ],
         diagrams: [
-          "Hayden P, Cowman S. Anaesthesia for laparoscopic surgery. BJA Educ 2011;11(5):177-180",
-          "BSGE 2018 — Management of fluid distension media in operative hysteroscopy",
+          "BJA Educ 2011 Lap",
+          "BSGE 2018",
         ],
         keyPoints: [
-          "Mavarez-Martinez A et al. Anesthetic considerations for robotic gynecologic surgery. Local Reg Anesth 2020",
-          "Nelson G et al. ERAS Society guidelines for perioperative care in gynecologic/oncology surgery. Int J Gynecol Cancer 2019",
+          "BJA Educ 2011 Lap",
+          "ERAS Gynae 2019",
         ],
       }}
       diagrams={
