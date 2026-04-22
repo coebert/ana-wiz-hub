@@ -361,6 +361,43 @@ const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps)
         </g>
       )}
 
+      {/* ===== Animated tip trajectory + target halo (Phase: insertion → target) ===== */}
+      {animate && (
+        <g key={`anim-${bladeKey}`}>
+          {/* Faint dashed trajectory line */}
+          <path
+            d={traj.path}
+            fill="none"
+            stroke={b.color}
+            strokeWidth="1"
+            strokeDasharray="3 2.5"
+            opacity="0.55"
+          />
+          {/* Pulsing halo on the target anatomy */}
+          <circle cx={traj.target.x} cy={traj.target.y} r={traj.target.r} fill="none" stroke={b.color} strokeWidth="1.5" opacity="0.9">
+            <animate attributeName="r" values={`${traj.target.r};${traj.target.r + 6};${traj.target.r}`} dur="1.4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.9;0.15;0.9" dur="1.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx={traj.target.x} cy={traj.target.y} r="2.5" fill={b.color} opacity="0.95" />
+          {/* Target caption */}
+          <text x={traj.target.x + 9} y={traj.target.y - 2} fontSize="6" fill={b.color} fontWeight="700">
+            {traj.target.label}
+          </text>
+          {/* Moving tip marker — repeats every cycle */}
+          <g>
+            <circle r="4.5" fill={b.color} opacity="0.95" stroke="hsl(var(--background))" strokeWidth="1">
+              <animateMotion dur={`${traj.dur}s`} repeatCount="indefinite" path={traj.path} rotate="auto" />
+              <animate attributeName="opacity" values="0;1;1;0.2" keyTimes="0;0.15;0.85;1" dur={`${traj.dur}s`} repeatCount="indefinite" />
+            </circle>
+            {/* Glow trail */}
+            <circle r="9" fill="none" stroke={b.color} strokeWidth="0.8" opacity="0.35">
+              <animateMotion dur={`${traj.dur}s`} repeatCount="indefinite" path={traj.path} />
+              <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.85;1" dur={`${traj.dur}s`} repeatCount="indefinite" />
+            </circle>
+          </g>
+        </g>
+      )}
+
       {/* Arrow marker definition */}
       <defs>
         <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
