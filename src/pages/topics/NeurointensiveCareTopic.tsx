@@ -382,7 +382,7 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </ExamSection>
-        <div id="toc-icp" className="scroll-mt-24">
+        <ExamSection id="toc-icp" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
