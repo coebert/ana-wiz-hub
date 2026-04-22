@@ -11,6 +11,7 @@ import AntibodyKineticsDiagram from "@/components/diagrams/AntibodyKineticsDiagr
 import HypersensitivityComparisonDiagram from "@/components/diagrams/HypersensitivityComparisonDiagram";
 import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
 import AsplenicVaccinationFlowchart from "@/components/diagrams/AsplenicVaccinationFlowchart";
+import ImmuneCellLineageDiagram from "@/components/diagrams/ImmuneCellLineageDiagram";
 
 const HaematologyImmunityTopic = () => {
   return (
@@ -109,6 +110,13 @@ const HaematologyImmunityTopic = () => {
             <p><strong>Anaesthetic relevance:</strong> surgery + GA cause transient cell-mediated immunosuppression (↓ NK activity, ↓ Th1, ↑ Th2 shift, IL-10) — opioids and volatiles contribute. Reactivation of HSV, VZV, CMV is well described post-op, particularly in the immunosuppressed.</p>
           </div>
         </div>
+
+        <DiagramSection
+          title="Immune Cell Lineages — Myeloid & Lymphoid Family Tree"
+          intro="Click any cell to reveal its role, function and clinical relevance. Use the highlight chips to fade everything that isn't innate or adaptive — dendritic cells and NK cells stay lit because they bridge both arms. Cell shapes mirror the classical morphology (multilobed neutrophil, kidney-shaped monocyte, eccentric-nucleus plasma cell, dendritic processes)."
+        >
+          <ImmuneCellLineageDiagram />
+        </DiagramSection>
 
         <DiagramSection
           title="Interactive: Immune Response Timeline"
