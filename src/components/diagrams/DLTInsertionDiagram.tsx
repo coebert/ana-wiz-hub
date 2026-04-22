@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { PlayCircle } from "lucide-react";
+import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
 
 interface Step {
   id: number;
@@ -128,8 +130,32 @@ type DLTSide = "left" | "right";
 const DLTInsertionDiagram = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [dltSide, setDltSide] = useState<DLTSide>("left");
+  const [walkthroughOpen, setWalkthroughOpen] = useState(false);
 
   const step = STEPS[currentStep];
+
+  // Build walkthrough steps from STEPS — confirmation actions for each phase
+  const walkthroughSteps: WalkthroughStep[] = STEPS.map((s) => {
+    // Build action checklist from instruction + tips + pitfalls (key items)
+    const actions: string[] = [];
+    // Take instruction as the primary confirmation
+    actions.push(s.instruction);
+    // Add up to 3 most important tips as discrete checks
+    s.tips.slice(0, 3).forEach((t) => actions.push(`Confirm: ${t}`));
+    return {
+      id: s.id,
+      title: s.title,
+      detail: s.pitfalls?.length
+        ? `Watch for: ${s.pitfalls.join(" · ")}`
+        : undefined,
+      actions,
+      confirmation:
+        s.id === STEPS.length
+          ? "DLT position re-confirmed in lateral position. Safe to begin one-lung ventilation."
+          : "Step confirmed — advance to the next phase.",
+      tone: s.id === 7 ? "warn" : "info",
+    };
+  });
 
   // Diagram rendering per step
   const renderStepDiagram = (stepId: number) => {
