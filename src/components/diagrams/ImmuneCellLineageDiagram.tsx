@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type Branch = "myeloid" | "lymphoid";
