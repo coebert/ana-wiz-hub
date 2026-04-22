@@ -177,6 +177,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Antidotes</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
