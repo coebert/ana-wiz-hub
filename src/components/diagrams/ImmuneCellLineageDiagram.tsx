@@ -182,6 +182,7 @@ const ImmuneCellLineageDiagram = () => {
   const [pathway, setPathway] = useState<Pathway>("antigen-dc-t-b");
   const [stepIdx, setStepIdx] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [speed, setSpeed] = useState<0.5 | 0.75 | 1 | 1.5 | 2>(1);
   const [selected, setSelected] = useState<string>("dc");
   /** In activation view, set when user clicks the current step's destination cell so the panel shows that cell's deep detail instead of the step caption. */
   const [pinnedCellId, setPinnedCellId] = useState<string | null>(null);
