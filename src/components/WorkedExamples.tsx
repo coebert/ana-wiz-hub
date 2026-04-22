@@ -16,17 +16,23 @@ interface WorkedExamplesProps {
   examples: WorkedExample[];
   /** Optional override heading */
   heading?: string;
+  /** Optional anchor id for the wrapping block (defaults to "worked-examples"). */
+  blockId?: string;
 }
 
 /**
- * Standard "Worked Examples" block — clinical vignettes and/or numerical
- * worked calculations. Sits between Diagrams and the Summary on every topic
- * where it adds value (omit on topics where it doesn't fit).
+ * Standard "Worked Examples" block. Each example gets a stable anchor
+ * (`#example-1`, `#example-2`, …) so the in-page references panel can
+ * deep-link from a citation to the example it supports.
  */
-export const WorkedExamples = ({ examples, heading = "Worked Examples" }: WorkedExamplesProps) => {
+export const WorkedExamples = ({
+  examples,
+  heading = "Worked Examples",
+  blockId = "worked-examples",
+}: WorkedExamplesProps) => {
   if (!examples.length) return null;
   return (
-    <section>
+    <section id={blockId} className="scroll-mt-24">
       <h2 className="flex items-center gap-2 text-2xl font-serif font-bold text-foreground mb-4">
         <FlaskConical className="h-6 w-6 text-accent" />
         {heading}
@@ -35,7 +41,8 @@ export const WorkedExamples = ({ examples, heading = "Worked Examples" }: Worked
         {examples.map((ex, i) => (
           <div
             key={i}
-            className="rounded-xl border border-border bg-card p-5 shadow-sm"
+            id={`example-${i + 1}`}
+            className="rounded-xl border border-border bg-card p-5 shadow-sm scroll-mt-24"
           >
             <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
               Example {i + 1}
