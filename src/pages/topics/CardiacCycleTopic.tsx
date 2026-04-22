@@ -213,13 +213,160 @@ const CardiacCycleTopic = () => {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Heart Sounds</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Heart Sounds & Added Sounds</h2>
           <p className="text-foreground/90 leading-relaxed">
             <strong>S1</strong> is caused by closure of the mitral and tricuspid valves at the onset of ventricular
             systole. It is best heard at the apex. <strong>S2</strong> results from closure of the aortic and pulmonary
             valves at the end of systole. Physiological splitting of S2 occurs during inspiration when increased venous
             return delays pulmonary valve closure.
           </p>
+          <ul className="mt-3 space-y-1 text-sm text-foreground/80">
+            <li><strong>S3</strong> — early diastolic, rapid filling against a stiff or volume-loaded ventricle (HF, MR; normal in young).</li>
+            <li><strong>S4</strong> — late diastolic, atrial contraction into a non-compliant ventricle (LVH, AS, ischaemia); absent in AF.</li>
+            <li><strong>Wide fixed split S2</strong> — ASD. <strong>Reversed split</strong> — LBBB, severe AS.</li>
+            <li><strong>Opening snap</strong> — mitral stenosis. <strong>Ejection click</strong> — bicuspid AV / AS.</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Right Heart Cycle & Ventricular Interdependence</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The right ventricle (RV) follows the same sequence of phases but operates at much lower pressures. Key
+            differences relevant to anaesthesia and intensive care:
+          </p>
+          <ul className="mt-3 space-y-2 text-sm text-foreground/80">
+            <li><strong>Lower pressure system</strong> — RV peak ~25 mmHg vs LV ~120 mmHg; thinner, crescentic geometry.</li>
+            <li><strong>Earlier opening, later closure</strong> — pulmonary valve opens before aortic and closes after, producing physiological splitting of S2.</li>
+            <li><strong>Continuous ejection profile</strong> — low PVR allows ejection throughout most of systole with minimal isovolumetric phase.</li>
+            <li><strong>Afterload-sensitive</strong> — small rises in PVR (hypoxia, hypercapnia, acidosis, PE) markedly reduce RV stroke volume.</li>
+            <li><strong>Ventricular interdependence</strong> — shared septum and pericardium mean RV dilation impairs LV filling (acute PE, RV infarct, tamponade).</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">JVP / CVP Waveform (FFICM)</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            The CVP trace reflects right atrial pressure and shares the same a, c, v wave structure as the LA trace
+            but is directly visible at the bedside as the JVP. Recognising abnormal waves is an FFICM exam staple.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border mt-3">
+            <table className="w-full text-sm">
+              <thead className="bg-secondary/50">
+                <tr>
+                  <th className="text-left p-2 font-semibold">Wave / descent</th>
+                  <th className="text-left p-2 font-semibold">Mechanism</th>
+                  <th className="text-left p-2 font-semibold">Pathological correlate</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr><td className="p-2"><strong>a</strong></td><td className="p-2">Atrial contraction</td><td className="p-2">Absent in AF; large in TS, PHT, RVH; cannon in CHB / VT / junctional rhythm</td></tr>
+                <tr><td className="p-2"><strong>c</strong></td><td className="p-2">TV bulging into RA in early systole</td><td className="p-2">Rarely visible clinically</td></tr>
+                <tr><td className="p-2"><strong>x descent</strong></td><td className="p-2">Atrial relaxation + downward AV ring movement</td><td className="p-2">Prominent in tamponade & constrictive pericarditis</td></tr>
+                <tr><td className="p-2"><strong>v</strong></td><td className="p-2">Atrial filling against closed TV</td><td className="p-2">Giant in TR ("cv" or systolic wave)</td></tr>
+                <tr><td className="p-2"><strong>y descent</strong></td><td className="p-2">Rapid atrial emptying when TV opens</td><td className="p-2">Steep in constrictive pericarditis ("M/W"); blunted in tamponade</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Coronary Perfusion & the Cycle</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            <strong>Left coronary flow occurs predominantly in diastole</strong> because intramyocardial pressure
+            during systole exceeds aortic pressure in the subendocardium. RV perfusion occurs throughout the cycle
+            because RV intramural pressure is low.
+          </p>
+          <ul className="mt-3 space-y-1 text-sm text-foreground/80">
+            <li>Coronary Perfusion Pressure (CPP) ≈ <strong>Aortic Diastolic Pressure − LVEDP</strong>.</li>
+            <li>Tachycardia shortens diastole more than systole → reduced subendocardial perfusion (rate control in AS, IHD).</li>
+            <li>Aortic regurgitation and severe hypotension lower diastolic pressure and CPP.</li>
+            <li>LV hypertrophy raises LVEDP and intramural pressure, predisposing to subendocardial ischaemia.</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Determinants of Stroke Volume & Cardiac Output</h2>
+          <div className="grid md:grid-cols-2 gap-4 mt-3">
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Preload</h3>
+              <p className="text-sm text-foreground/80 mt-1">
+                LVEDV — determined by venous return, atrial contraction, ventricular compliance, intrathoracic pressure
+                and cycle length. Estimated by CVP, PCWP, IVC distensibility or dynamic indices (PPV, SVV).
+              </p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Afterload</h3>
+              <p className="text-sm text-foreground/80 mt-1">
+                Wall stress during ejection; approximated by SVR and aortic impedance. Influenced by aortic compliance,
+                viscosity and outflow obstruction (AS, HOCM). Laplace: σ = P·r / 2h.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Contractility</h3>
+              <p className="text-sm text-foreground/80 mt-1">
+                Load-independent inotropy. Best assessed by ESPVR slope, dP/dt<sub>max</sub>, or ejection fraction
+                (load-dependent). Modulated by sympathetic tone, calcium, pH and drugs.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border p-4">
+              <h3 className="font-semibold text-foreground">Heart Rate & Rhythm</h3>
+              <p className="text-sm text-foreground/80 mt-1">
+                CO = HR × SV. Optimal HR balances filling time vs output. Loss of AV synchrony (AF, junctional, VVI
+                pacing) loses the atrial kick — significant in stiff ventricles (AS, HCM, diastolic dysfunction).
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Diastolic Function</h2>
+          <p className="text-foreground/90 leading-relaxed">
+            Diastole has four sub-phases: isovolumetric relaxation, rapid filling, diastasis and atrial systole. Active
+            relaxation (lusitropy) is ATP-dependent (SERCA reuptake of Ca²⁺) and is impaired by ischaemia. Passive
+            stiffness depends on titin, collagen, fibrosis and hypertrophy.
+          </p>
+          <ul className="mt-3 space-y-1 text-sm text-foreground/80">
+            <li><strong>Grade I (impaired relaxation)</strong> — E/A &lt; 0.8, prolonged DT.</li>
+            <li><strong>Grade II (pseudonormal)</strong> — normal E/A but elevated E/e′ (&gt;14).</li>
+            <li><strong>Grade III (restrictive)</strong> — E/A &gt; 2, short DT, high LA pressure.</li>
+            <li>Anaesthetic implications: maintain sinus rhythm, avoid tachycardia, optimise preload, treat ischaemia, avoid abrupt afterload changes.</li>
+          </ul>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Applied Pathophysiology</h2>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-sm">
+              <thead className="bg-secondary/50">
+                <tr>
+                  <th className="text-left p-2 font-semibold">Condition</th>
+                  <th className="text-left p-2 font-semibold">Cycle change</th>
+                  <th className="text-left p-2 font-semibold">Anaesthetic priority</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr><td className="p-2">Aortic stenosis</td><td className="p-2">Pressure-overloaded LV, prolonged ejection, steep ESPVR</td><td className="p-2">Sinus rhythm, normal HR, maintain SVR & preload, avoid hypotension</td></tr>
+                <tr><td className="p-2">Aortic regurgitation</td><td className="p-2">Volume overload, wide pulse pressure, low aortic DBP</td><td className="p-2">"Fast, full, forward" — modest tachycardia, vasodilate, avoid bradycardia</td></tr>
+                <tr><td className="p-2">Mitral stenosis</td><td className="p-2">Raised LA pressure, large a wave, fixed SV</td><td className="p-2">Avoid tachycardia and AF; cautious fluids; avoid PHT triggers</td></tr>
+                <tr><td className="p-2">Mitral regurgitation</td><td className="p-2">Giant v wave, regurgitant fraction</td><td className="p-2">Reduce afterload, mild tachycardia, avoid bradycardia</td></tr>
+                <tr><td className="p-2">HOCM</td><td className="p-2">Dynamic LVOT obstruction worsened by ↓preload / ↑contractility</td><td className="p-2">Maintain preload, afterload & sinus rhythm; avoid inotropes</td></tr>
+                <tr><td className="p-2">Tamponade</td><td className="p-2">Equalised diastolic pressures, blunted y descent, pulsus paradoxus</td><td className="p-2">"Fast, full, tight" — preserve preload, HR, SVR; drain</td></tr>
+                <tr><td className="p-2">Constrictive pericarditis</td><td className="p-2">Steep x and y descents, dip-and-plateau LV trace</td><td className="p-2">Maintain preload & rate; pericardiectomy definitive</td></tr>
+                <tr><td className="p-2">Atrial fibrillation</td><td className="p-2">Loss of atrial kick, irregular filling time</td><td className="p-2">Rate control, anticoagulation; rhythm control if compromise</td></tr>
+                <tr><td className="p-2">RV failure / acute PE</td><td className="p-2">RV dilation, septal shift, impaired LV filling</td><td className="p-2">Avoid hypoxia/hypercapnia, support RV (noradrenaline, milrinone, iNO)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Invasive Waveform Correlations</h2>
+          <ul className="mt-2 space-y-2 text-sm text-foreground/80">
+            <li><strong>Arterial line</strong> — upstroke = rapid ejection; dicrotic notch = aortic valve closure (end systole); area under systolic portion ∝ stroke volume; slope reflects contractility; downstroke reflects SVR and compliance.</li>
+            <li><strong>CVP</strong> — direct visualisation of a, c, v waves and x, y descents; useful in arrhythmia (cannon a), TR (cv wave) and tamponade (blunted y).</li>
+            <li><strong>PA catheter</strong> — RA → RV (square root, large pulse pressure) → PA (diastolic step-up, dicrotic notch) → PCWP (a, c, v waves like LA, slightly delayed).</li>
+            <li><strong>Pulse pressure variation (PPV)</strong> — reflects preload responsiveness in ventilated patients (PPV &gt; 13% suggests fluid responsiveness).</li>
+          </ul>
         </section>
 
         <section className="mb-10">
