@@ -16,8 +16,31 @@ const workedExamples: WorkedExample[] = [
     title: "Buprenorphine in a patient on chronic morphine",
     scenario:
       "A patient on regular morphine 60 mg PO for chronic pain is started on sublingual buprenorphine 8 mg for substitution therapy. Within hours she develops withdrawal symptoms. Why?",
-    working:
-      "Buprenorphine is a high-affinity partial agonist at the μ-opioid receptor (intrinsic activity ~0.4) with a much higher receptor affinity than morphine (full agonist, intrinsic activity 1).\nWhen given to a fully μ-occupied patient, buprenorphine displaces morphine from the receptor but only delivers a partial signal — the net opioid effect falls → precipitated withdrawal.\nBuprenorphine also has a ceiling effect on respiratory depression but not on analgesia.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Classify each drug.</strong> Morphine = full μ-agonist (intrinsic activity ≈ 1). Buprenorphine = high-affinity <strong>partial</strong> μ-agonist (intrinsic activity ≈ 0.4) and κ-antagonist.</li>
+          <li><strong>Compare receptor affinity.</strong> Buprenorphine Ki ≈ 0.2 nM vs morphine Ki ≈ 1.8 nM → buprenorphine binds ~10× more tightly.</li>
+          <li><strong>Predict the result.</strong> When given to a μ-saturated patient, buprenorphine <strong>displaces</strong> morphine but only delivers a partial signal → net opioid effect falls → precipitated withdrawal.</li>
+          <li><strong>Quantify the timing.</strong> Withdrawal onset is rapid (minutes-hours) because buprenorphine reaches peak occupancy within 1–2 h sublingually.</li>
+          <li><strong>Apply the safe induction rule.</strong> Wait until COWS ≥ 12 (objective withdrawal) OR use the Bernese 'micro-induction' (0.2 mg buprenorphine repeated while continuing the full agonist).</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Key pharmacology to recall</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Buprenorphine has a <strong>ceiling effect on respiratory depression</strong> but not on analgesia.</li>
+          <li>Reversal needs HIGH-dose naloxone infusion (e.g. 4 mg/h) due to high receptor affinity.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Treating buprenorphine like a weak opioid — its high affinity blocks subsequent full agonists in theatre.</li>
+            <li>Standard naloxone bolus (400 µg) failing to reverse buprenorphine and being misread as 'not opioid'.</li>
+            <li>Stopping the buprenorphine perioperatively without a plan — withdrawal + uncontrolled pain ensues.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Buprenorphine displaced morphine from the μ-receptor; its lower intrinsic activity provided a smaller signal → precipitated withdrawal. Always wait for objective withdrawal (COWS ≥ 12) before initiating buprenorphine in opioid-dependent patients (the 'micro-induction' or Bernese protocol minimises this risk).",
   },
@@ -25,8 +48,35 @@ const workedExamples: WorkedExample[] = [
     title: "Reading a parallel right-shift on a dose-response curve",
     scenario:
       "An exam graph shows a noradrenaline log dose-response curve (control), and a second curve shifted to the right with an unchanged Emax. Which class of antagonist explains this, and which doesn't?",
-    working:
-      "Parallel rightward shift with preserved Emax = competitive (reversible) antagonist. The agonist can still reach Emax — just needs higher concentrations (↑ EC₅₀).\nNon-competitive (irreversible or allosteric) antagonists cause a ↓ Emax: the curve is depressed, not parallel-shifted.\nExample of competitive at α₁: phentolamine. Example of irreversible at α₁: phenoxybenzamine (the answer to a phaeochromocytoma curve).",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step interpretation</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Read the axes.</strong> X-axis is log[agonist]; Y-axis is response (% Emax).</li>
+          <li><strong>Identify the change.</strong> Curve shifted right (↑ EC₅₀) but Emax unchanged → the agonist can still achieve maximum response, just needs more.</li>
+          <li><strong>Match to mechanism.</strong> Parallel rightward shift with preserved Emax = <strong>competitive (surmountable) antagonism</strong>.</li>
+          <li><strong>Contrast with non-competitive.</strong> Irreversible/allosteric antagonists give a depressed curve (↓ Emax), not a parallel shift.</li>
+          <li><strong>Apply Schild analysis.</strong> Dose ratio (DR) = EC₅₀(antagonist)/EC₅₀(control). pA₂ is the −log of antagonist concentration that produces DR = 2 — a measure of antagonist potency.</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Worked numbers</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>If control EC₅₀ = 10⁻⁸ M and antagonist EC₅₀ = 10⁻⁶ M → DR = 100 → log(DR−1) = ~2 → strong competitive blockade.</li>
+        </ul>
+        <p className="font-semibold text-foreground mt-2">Examples to memorise</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li><strong>Competitive at α₁:</strong> phentolamine. <strong>Irreversible at α₁:</strong> phenoxybenzamine (the phaeochromocytoma curve).</li>
+          <li><strong>Competitive at nAChR:</strong> non-depolarising NMBs (atracurium). <strong>Channel block:</strong> ketamine at NMDA.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Confusing 'partial agonist' with 'competitive antagonist' — partial agonists give a curve with REDUCED Emax even alone.</li>
+            <li>Reading 'shift' from a linear (not log) plot — the dose-response only looks parallel on a log scale.</li>
+            <li>Calling a curve flattened by toxicity 'non-competitive antagonism' — confounder, not pharmacology.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "A competitive (surmountable) antagonist such as phentolamine. A non-competitive antagonist (e.g. phenoxybenzamine) would lower Emax. Recognising shift vs depression is a high-yield FRCA Primary visual question.",
   },
