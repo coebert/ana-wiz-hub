@@ -54,7 +54,7 @@ const PressureMeasurementTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ — Invasive arterial pressure monitoring"],
+        workedExamples: ["BJA Educ 2015"],
       }}
       keyPoints={[
         "Pressure = Force/Area. SI unit is Pascal. Clinical units: mmHg, cmH₂O, kPa, bar.",

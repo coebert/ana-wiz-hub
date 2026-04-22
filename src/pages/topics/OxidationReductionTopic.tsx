@@ -52,7 +52,7 @@ const OxidationReductionTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ — Methaemoglobinaemia", "BJA Educ — Blood gas analysis"],
+        workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010"],
       }}
       keyPoints={[
         "OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons). Always occur together",

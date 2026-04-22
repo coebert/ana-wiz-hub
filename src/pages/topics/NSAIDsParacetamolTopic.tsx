@@ -97,18 +97,18 @@ const NSAIDsParacetamolTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "RCoA 2021 Curriculum — Pharmacology domain (Primary & Final)",
-          "BJA Education — Chau A, Carr DB. NSAIDs and the perioperative period. BJA Educ 2018;18(2):52-9",
+          "Peck & Hill Ch.15",
+          "BJA Educ 2018",
         ],
         workedExamples: [
-          "MHRA Drug Safety Update — Paracetamol overdose: new guidance on use of intravenous acetylcysteine (Sept 2012, updated 2023)",
-          "Lapi F et al. Concurrent use of diuretics, ACEi/ARBs, and NSAIDs and risk of AKI: 'triple whammy' nested case-control. BMJ 2013;346:e8525",
-          "Wallace JL. Prostaglandins, NSAIDs, and gastric mucosal protection. Physiol Rev 2008;88:1547-65",
+          "NICE Paracetamol OD",
+          "BJA Educ 2018",
+          "Peck & Hill Ch.15",
         ],
         keyPoints: [
-          "Bertolini A et al. Paracetamol: new vistas of an old drug. CNS Drug Rev 2006;12:250-75",
-          "Wong A, Karunaratne D, Auzinger G. Acute liver failure: a practical update. BJA Educ 2019;19(1):11-17 — NAPQI mechanism",
-          "Bromfield K, Rinehart L. Update on NSAIDs in the perioperative setting. Anesth Analg 2020 — COX-2 cardiovascular risk",
+          "Peck & Hill Ch.15",
+          "NICE Paracetamol OD",
+          "BJA Educ 2018",
         ],
       }}
       keyPoints={[

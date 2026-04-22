@@ -52,7 +52,7 @@ const OpticsLightTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["BJA Educ — CO poisoning and pulse oximetry"],
+        workedExamples: ["BJA Educ 2004"],
       }}
       keyPoints={[
         "Law of reflection: angle of incidence = angle of reflection (θᵢ = θᵣ); incident ray, reflected ray, and normal lie in the same plane",

@@ -55,7 +55,7 @@ const FlowMeasurementTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        objectives: ["Cross & Plunkett — Physics, Pharmacology and Physiology for Anaesthetists"],
+        objectives: ["Cross & Plunkett Ch.8"],
       }}
       keyPoints={[
         "Hagen-Poiseuille: Q = πΔPr⁴/8ηl. Flow ∝ r⁴ — halving radius reduces flow 16-fold.",

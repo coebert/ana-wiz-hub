@@ -52,7 +52,7 @@ const LaserFibreopticsTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["DAS / AAGBI Airway laser safety guidance"],
+        workedExamples: ["BJA Educ 2004"],
       }}
       keyPoints={[
         "LASER = Light Amplification by Stimulated Emission of Radiation — requires population inversion in a gain medium",

@@ -51,7 +51,7 @@ const AntiemeticsTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
-        workedExamples: ["4th Consensus Guidelines for the Management of PONV (Gan 2020)"],
+        workedExamples: ["Gan et al. 2020"],
       }}
       keyPoints={[
         "Apfel score: female, non-smoker, history of PONV, postoperative opioids — each adds ~20% risk",

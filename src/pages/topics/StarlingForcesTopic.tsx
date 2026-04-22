@@ -100,8 +100,8 @@ const StarlingForcesTopic = () => {
         keyPoints: { exams: ["primary", "final", "fficm"] },
       }}
       sectionSources={{
-        objectives: ["Levick & Michel 2010", "BJA Educ 2017"],
-        workedExamples: ["Surviving Sepsis 2021", "BJA Educ 2017"],
+        objectives: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
+        workedExamples: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],
         keyPoints: ["Levick & Michel 2010"],
       }}
       diagrams={

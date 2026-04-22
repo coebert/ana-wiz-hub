@@ -121,9 +121,9 @@ const HaematologyImmunityTopic = () => {
         keyPoints: { exams: ["primary", "final", "fficm"] },
       }}
       sectionSources={{
-        objectives: ["Hoffbrand Essential Haematology", "Abbas Cellular Immunology"],
-        workedExamples: ["NAP6 2018", "AAGBI Anaphylaxis 2018", "PROPPR 2015", "WOMAN 2017"],
-        keyPoints: ["Hoffbrand Essential Haematology", "BJA Educ Immunology"],
+        objectives: ["Allman & Wilson Ch.18", "BJA Educ Adaptive 2019"],
+        workedExamples: ["AAGBI Anaphylaxis 2021", "AAGBI Anaphylaxis 2021", "BJA Educ 2017", "BJA Educ 2017"],
+        keyPoints: ["Allman & Wilson Ch.18", "BJA Educ Immune 2016"],
       }}
       diagrams={
         <>

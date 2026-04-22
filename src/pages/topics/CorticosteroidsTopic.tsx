@@ -101,17 +101,17 @@ const CorticosteroidsTopic = () => {
       }}
       sectionSources={{
         objectives: [
-          "RCoA 2021 Curriculum — Pharmacology and Endocrine domains",
-          "Woodcock T et al. Guidelines for the management of glucocorticoids during the peri-operative period (AAGBI/AOMRC 2020). Anaesthesia 2020;75:654-63",
+          "Peck & Hill Ch.17",
+          "AAGBI Steroid Cover",
         ],
         workedExamples: [
-          "Centre for Perioperative Care (CPOC) — Guideline for Perioperative Care for People with Diabetes Mellitus (2021)",
-          "Joint British Diabetes Societies — Management of adults with diabetes undergoing surgery and elective procedures (2023)",
-          "BJA Educ — Perioperative steroid replacement therapy (Yong SL et al.)",
+          "BJA Educ 2012",
+          "BJA Educ 2012",
+          "BJA Educ 2012",
         ],
         keyPoints: [
-          "Buchman AL. Side effects of corticosteroid therapy. J Clin Gastroenterol 2001;33:289-94",
-          "Liu MM et al. Perioperative steroid management: approaches based on current evidence. Anesthesiology 2017;127:166-72",
+          "Peck & Hill Ch.17",
+          "AAGBI Steroid Cover",
         ],
       }}
       keyPoints={[

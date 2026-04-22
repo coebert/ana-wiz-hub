@@ -51,7 +51,7 @@ const DaySurgeryTopic = () => {
         keyPoints: { exams: ["final"] },
       }}
       sectionSources={{
-        workedExamples: ["BADS Directory of Procedures (6th edition)", "AAGBI/BADS Day Surgery Guidelines 2019"],
+        workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019"],
       }}
       keyPoints={[
         "BADS target: ~80% of elective surgery as day case. ASA I–III with stable comorbidities suitable",
