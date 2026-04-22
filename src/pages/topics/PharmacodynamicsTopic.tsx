@@ -51,9 +51,20 @@ const PharmacodynamicsTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
+        objectives: [
+          "RCoA 2021 Curriculum — Pharmacology (Primary)",
+          "Rang HP, Ritter JM, Flower RJ, Henderson G. Rang & Dale's Pharmacology, 9th ed (Elsevier, 2019) — chapters 2-3 (receptor theory)",
+          "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care, 5th ed (Cambridge UP, 2020)",
+        ],
         workedExamples: [
-          "Rang & Dale's Pharmacology, 9th ed — receptor theory chapters",
-          "BJA Educ — Opioid pharmacology and partial agonists",
+          "Davis MP. Twelve reasons for considering buprenorphine as a frontline analgesic. J Support Oncol 2012;10:209-19 — partial agonism and precipitated withdrawal",
+          "Hämmig R et al. Use of microdoses for induction of buprenorphine treatment (the Bernese method). Subst Abuse Rehabil 2016;7:99-105",
+          "Kenakin T. A Pharmacology Primer, 5th ed — competitive vs non-competitive antagonism and dose-response curve interpretation",
+        ],
+        keyPoints: [
+          "Sasaki M et al. Inverse agonism at GPCRs and constitutive activity. Br J Pharmacol 2017",
+          "Lynch JJ, Castagné V. Tachyphylaxis: receptor desensitisation and internalisation. Pharmacol Rev — receptor regulation",
+          "Aronson JK. Meyler's Side Effects of Drugs, 16th ed — narrow therapeutic index drugs",
         ],
       }}
       keyPoints={[

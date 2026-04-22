@@ -51,10 +51,21 @@ const TraumaEmergencyTopic = () => {
         keyPoints: { exams: ["final", "fficm"] },
       }}
       sectionSources={{
+        objectives: [
+          "RCoA 2021 Curriculum — Trauma & Stabilisation (Final), FFICM 2.5",
+          "Royal College of Surgeons / NICE NG39 — Major trauma: assessment and initial management (2016, updated 2023)",
+          "ATLS Student Course Manual, 10th edition (American College of Surgeons, 2018)",
+        ],
         workedExamples: [
-          "CRASH-2 Trial (Lancet 2010)",
-          "NICE NG39 — Major trauma: assessment and initial management",
-          "ATLS 10th edition (American College of Surgeons)",
+          "CRASH-2 collaborators. Effects of tranexamic acid on death in trauma patients with significant haemorrhage. Lancet 2010;376:23-32",
+          "Holcomb JB et al. PROPPR Trial — Plasma, platelets, RBC ratios in severe trauma. JAMA 2015;313:471-82",
+          "Sihler KC, Napolitano LM. Complications of massive transfusion. Chest 2010;137:209-20 — citrate, K⁺, hypothermia",
+          "Lyon RM et al. Pre-hospital RSI: ketamine vs etomidate in trauma. Br J Anaesth 2015;114:266-74",
+        ],
+        keyPoints: [
+          "Spahn DR et al. The European guideline on management of major bleeding and coagulopathy following trauma (6th ed). Crit Care 2023;27:80",
+          "Cannon JW. Hemorrhagic shock. N Engl J Med 2018;378:370-9 — lethal triad and damage-control resuscitation",
+          "Davenport R et al. ROTEM-guided major haemorrhage protocols. Br J Anaesth 2017;119:347-55",
         ],
       }}
       keyPoints={[
