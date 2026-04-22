@@ -6,6 +6,8 @@ import { pressureMeasurementQuiz } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
+import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
+import { DiagramSection } from "@/components/DiagramSection";
 
 const PressureMeasurementTopic = () => {
   return (
