@@ -232,7 +232,7 @@ const EnhancedRecoveryTopic = () => {
         </div>
         <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
           <p className="text-sm text-foreground">
-            <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13) demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
+            <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13)<InlineRef topicId="enhanced-recovery" refLabel="NHS ERPP 2013" /> demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
           </p>
         </div>
       </DiagramSection>
