@@ -6,6 +6,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { QuizSection } from "@/components/QuizSection";
+import { ExamSection } from "@/components/ExamSection";
+import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
 
 const tocItems = [
   { id: "toc-ttp", label: "TTP" },
@@ -22,7 +24,8 @@ const HaematologyIcuTopic = () => {
   return (
     <SectionLayout title="Haematological & Immunological Disorders" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
       <StickyTOC items={tocItems} />
-      <section className="space-y-6 mb-10">
+      <TopicExamFilterBar />
+      <section className="space-y-6 mb-10 mt-6">
         {/* Introduction */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
@@ -32,7 +35,7 @@ const HaematologyIcuTopic = () => {
         </div>
 
         {/* TTP */}
-        <div id="toc-ttp" className="scroll-mt-24">
+        <ExamSection id="toc-ttp" className="scroll-mt-24" exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thrombotic Thrombocytopenic Purpura (TTP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             TTP is a thrombotic microangiopathy (TMA) caused by severe deficiency of ADAMTS13 — a metalloproteinase that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, uncleaved vWF multimers cause platelet aggregation in the microvasculature, leading to thrombocytopenia, microangiopathic haemolytic anaemia (MAHA), and organ ischaemia.
@@ -105,10 +108,10 @@ const HaematologyIcuTopic = () => {
               Platelet transfusion is contraindicated — it provides substrate for microvascular thrombosis ("fuel on the fire"). Exception: life-threatening haemorrhage or essential invasive procedures.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Differentiating TMAs */}
-        <div id="toc-tma" className="scroll-mt-24">
+        <ExamSection id="toc-tma" className="scroll-mt-24" exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Differentiating Thrombotic Microangiopathies</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -154,10 +157,10 @@ const HaematologyIcuTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* HUS */}
-        <div id="toc-hus" className="scroll-mt-24">
+        <ExamSection id="toc-hus" className="scroll-mt-24" exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemolytic Uraemic Syndrome (HUS)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HUS is a thrombotic microangiopathy characterised by the triad of MAHA, thrombocytopenia, and acute kidney injury. Unlike TTP, the predominant target organ is the kidney. Two major forms exist with fundamentally different pathophysiology and management.
@@ -251,10 +254,10 @@ const HaematologyIcuTopic = () => {
               The key diagnostic step in any TMA is ADAMTS13 activity: {'<'}10% = TTP (plasma exchange), {'>'}10% = consider HUS. For HUS, distinguish typical (diarrhoeal prodrome, supportive care, NO antibiotics) from atypical (complement-mediated, eculizumab). Remember: normal coagulation screen distinguishes TTP/HUS from DIC. Platelet transfusion is contraindicated in both TTP and HUS.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         {/* ICU Considerations */}
-        <div id="toc-icu-common" className="scroll-mt-24">
+        <ExamSection id="toc-icu-common" className="scroll-mt-24" exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Considerations Common to Both</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -294,10 +297,10 @@ const HaematologyIcuTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* HLH */}
-        <div id="toc-hlh" className="scroll-mt-24">
+        <ExamSection id="toc-hlh" className="scroll-mt-24" exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HLH is a syndrome of pathological immune activation characterised by uncontrolled proliferation of activated lymphocytes and macrophages, with excessive cytokine release ("cytokine storm"). It results in multi-organ failure with a mortality of 50–90% if untreated.
@@ -395,10 +398,10 @@ const HaematologyIcuTopic = () => {
               A ferritin &gt;10,000 µg/L has ~90% sensitivity and 96% specificity for HLH. In any ICU patient with unexplained multi-organ failure, check ferritin early — it may be the clue to diagnosis.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         {/* HIT */}
-        <div id="toc-hit" className="scroll-mt-24">
+        <ExamSection id="toc-hit" className="scroll-mt-24" exams={["primary", "final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heparin-Induced Thrombocytopenia (HIT)</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             HIT is a prothrombotic immune-mediated adverse drug reaction caused by antibodies against complexes of platelet factor 4 (PF4) and heparin. Despite causing thrombocytopenia, the dominant clinical risk is <strong>thrombosis</strong> (not bleeding) — HIT is a paradoxical prothrombotic thrombocytopenia.
@@ -574,10 +577,10 @@ const HaematologyIcuTopic = () => {
               HIT is a favourite FRCA/FFICM exam topic. Know the 4Ts score cold (especially timing: day 5–10 or ≤1 day with recent exposure). Remember: HIT is a prothrombotic condition — the risk is clotting, not bleeding. LMWH cannot substitute for UFH (cross-reactivity). Warfarin is contraindicated acutely (protein C depletion → limb gangrene). Argatroban is first-line in UK ICU.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Anticoagulation in Special ICU Populations */}
-        <div id="toc-anticoag" className="scroll-mt-24">
+        <ExamSection id="toc-anticoag" className="scroll-mt-24" exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation in Special ICU Populations</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Anticoagulation in ICU is complicated by organ dysfunction, extracorporeal circuits, coagulopathy, and bleeding risk. Three common scenarios require specific approaches: renal replacement therapy (RRT), extracorporeal membrane oxygenation (ECMO), and acute liver failure.
@@ -713,7 +716,7 @@ const HaematologyIcuTopic = () => {
               Regional citrate for CRRT is the most examined anticoagulation topic: know the mechanism (Ca²⁺ chelation), monitoring (ionised calcium, total:ionised ratio), and contraindication (liver failure → citrate accumulation). For ECMO, anti-Xa is the most reliable monitoring tool. In liver failure, remember: elevated INR ≠ auto-anticoagulation — the concept of rebalanced haemostasis is heavily tested.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         <div id="toc-synthesis" className="scroll-mt-24" />
         <SynthesisBlock
