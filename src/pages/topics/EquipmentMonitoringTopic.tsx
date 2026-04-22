@@ -13,6 +13,7 @@ import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
+import InlineRef from "@/components/InlineRef";
 
 const subtopicLinks = [
   { path: "/physics/anaesthetic-machine", title: "The Anaesthetic Machine", desc: "Pipeline supply, regulators, flowmeters, safety features" },
@@ -256,6 +257,8 @@ const EquipmentMonitoringTopic = () => {
                   Tip in vallecula → indirect epiglottic elevation via the hyoepiglottic ligament. Default adult blade
                   (size 3 = average adult, size 4 = larger). Leaves more pharyngeal room for the ETT and reduces
                   epiglottic trauma.
+                  <InlineRef topicId="equipment-monitoring" refLabel="Macintosh 1943" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
                 </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
@@ -264,6 +267,8 @@ const EquipmentMonitoringTopic = () => {
                   Tip passes <em>under</em> the epiglottis and lifts it directly. Preferred for neonates and infants
                   (large, floppy, omega-shaped epiglottis) and for an anterior larynx in adults. Narrower flange means
                   less ETT-passage room.
+                  <InlineRef topicId="equipment-monitoring" refLabel="Miller 1941" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ Paeds Airway 2017" />
                 </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
@@ -272,6 +277,8 @@ const EquipmentMonitoringTopic = () => {
                   Macintosh with a hinged distal tip operated by a handle lever — flexes the tip to lift the
                   hyoepiglottic ligament and improve the view by ≥1 Cormack-Lehane grade. Useful with cervical-spine
                   immobilisation or unexpected grade 2b/3a.
+                  <InlineRef topicId="equipment-monitoring" refLabel="McCoy & Mirakhur 1993" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="Cormack & Lehane 1984" />
                 </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
@@ -280,6 +287,7 @@ const EquipmentMonitoringTopic = () => {
                   Mac-style blade attached at ~135° to the handle so the operator can clear a large chest, breasts, or
                   body cast. Designed for iron-lung polio patients; now largely replaced by short-handled Macintoshes
                   and videolaryngoscopes.
+                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
                 </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
@@ -287,6 +295,8 @@ const EquipmentMonitoringTopic = () => {
                 <p className="text-xs text-muted-foreground mt-1">
                   Straight blade with a wider flange than the Miller — better tongue control with more room for the ETT.
                   Wis-Hipple modification is a popular neonatal blade in North American practice.
+                  <InlineRef topicId="equipment-monitoring" refLabel="Weiss & Engelhardt 2010" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="BJA Educ Paeds Airway 2017" />
                 </p>
               </div>
               <div className="rounded-lg bg-secondary/30 border border-border p-3">
@@ -295,12 +305,19 @@ const EquipmentMonitoringTopic = () => {
                   Camera at the blade tip transmits the glottic view to a screen — no need for direct line-of-sight.
                   Mac-shaped (C-MAC, McGRATH) or hyperangulated (GlideScope, X-blade — needs a stylet-shaped ETT).
                   First-line for anticipated difficult airway per DAS 2015.
+                  <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="Cochrane VL 2022" />
+                  <InlineRef topicId="equipment-monitoring" refLabel="NAP4 2011" />
                 </p>
               </div>
             </div>
             <p className="text-xs text-muted-foreground italic">
               <strong>Pearl:</strong> A better view does not always mean an easier intubation — particularly with
               hyperangulated videolaryngoscopes where ETT delivery requires a pre-shaped stylet.
+              <InlineRef topicId="equipment-monitoring" refLabel="NAP4 2011" />
+            </p>
+            <p className="text-[11px] text-muted-foreground">
+              Tap any blade in the diagram below to open its <strong>FRCA Key Learning Points</strong> (Clinical Use tab) and full source list.
             </p>
           </div>
           <div className="bg-card rounded-xl border border-border p-4 mt-4">

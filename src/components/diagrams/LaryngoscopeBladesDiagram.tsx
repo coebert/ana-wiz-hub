@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import InlineRef from "@/components/InlineRef";
 
 type BladeKey = "macintosh" | "miller" | "mccoy" | "polio" | "wisconsin" | "videolaryngoscope";
 
@@ -15,6 +16,10 @@ interface BladeInfo {
   limitations: string[];
   indications: string;
   historicalNote: string;
+  /** FRCA-mapped key learning points for the curriculum */
+  keyPoints: string[];
+  /** Reference labels (must match entries in references.ts under "equipment-monitoring") */
+  refs: string[];
 }
 
 const blades: Record<BladeKey, BladeInfo> = {
@@ -39,6 +44,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Standard for adults and children >2 years. First-line choice in routine elective and emergency adult intubation.",
     historicalNote: "Sir Robert Macintosh (Oxford, 1943) — observed the easier laryngeal view when a tonsillectomy gag pressed in the vallecula.",
+    keyPoints: [
+      "FRCA Primary — Equipment: identify the curved Macintosh blade and describe sizing (1–4) by patient age/build.",
+      "Force vector is 45° forward and upward along the handle; never lever on the upper incisors.",
+      "Indirect epiglottic elevation via the hyoepiglottic ligament — vallecular pressure is essential for view.",
+      "Default Plan A blade in DAS 2015 unanticipated difficult intubation algorithm for adults.",
+    ],
+    refs: ["Macintosh 1943", "Cormack & Lehane 1984", "DAS 2015"],
   },
   miller: {
     label: "Miller",
@@ -61,6 +73,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Paediatric anaesthesia (especially <1 year). Difficult adult airway with anterior larynx. Some prefer for awake intubation.",
     historicalNote: "Robert A. Miller (San Antonio, 1941) — straight blade with a slight upward curve at the tip.",
+    keyPoints: [
+      "FRCA Primary — Equipment: identify the straight Miller blade and its paediatric sizing (0 = preterm, 1 = neonate/infant).",
+      "Direct epiglottic elevation — tip passes posterior to the epiglottis (large, floppy, U-shaped in neonates).",
+      "Narrower flange leaves less ETT-passage space; precise midline technique required.",
+      "Higher epiglottic trauma and laryngospasm risk if anaesthesia is light — adequate depth essential.",
+    ],
+    refs: ["Miller 1941", "BJA Educ Paeds Airway 2017", "Weiss & Engelhardt 2010"],
   },
   mccoy: {
     label: "McCoy",
@@ -83,6 +102,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Difficult airway algorithm, cervical spine precautions (manual in-line stabilisation), failed first-attempt Macintosh.",
     historicalNote: "McCoy and Mirakhur (Belfast, 1993) — hinged-tip modification of the standard Macintosh.",
+    keyPoints: [
+      "FRCA Primary — Equipment: recognise the lever mechanism and explain how it improves view by ≥1 Cormack-Lehane grade.",
+      "Useful rescue blade for grade 2b/3a views and when manual in-line stabilisation limits neck extension.",
+      "Less helpful when the limiting factor is mouth opening rather than view.",
+      "Tip flexion engages the hyoepiglottic ligament without needing greater axial force.",
+    ],
+    refs: ["McCoy & Mirakhur 1993", "Cormack & Lehane 1984", "DAS 2015"],
   },
   polio: {
     label: "Polio",
@@ -105,6 +131,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Now mostly historical. Short-handled Macintosh or videolaryngoscope preferred for the same indications.",
     historicalNote: "Developed in the 1950s for intubating polio patients ventilated in iron lungs (chest enclosed in tank ventilator).",
+    keyPoints: [
+      "FRCA Primary — Equipment: recognise the obtuse (~135°) handle-blade angle and historical context.",
+      "Indications now niche: large breasts (obstetrics), morbid obesity, halo traction, kyphoscoliosis, body casts.",
+      "Largely superseded by short-handle Macintosh and videolaryngoscopy (DAS 2015 default Plan A alternative).",
+      "Awkward force vector — clean lift harder; not stocked on most modern airway trolleys.",
+    ],
+    refs: ["DAS 2015", "NAP4 2011"],
   },
   wisconsin: {
     label: "Wisconsin / Wis-Hipple",
@@ -125,6 +158,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Paediatric anaesthesia (alternative to Miller). Wis-Hipple is a popular neonatal blade in North American practice.",
     historicalNote: "Designed at the University of Wisconsin (1941). Wis-Hipple is a 1949 modification by Hipple for infants.",
+    keyPoints: [
+      "FRCA Primary — Paediatric equipment: identify the wide-flange straight blade and Wis-Hipple neonatal modification.",
+      "Direct epiglottic elevation with broader lingual surface — better tongue control than Miller.",
+      "Useful when Miller flange is too narrow to control the tongue or pass the ETT.",
+      "Per APAGBI/Weiss & Engelhardt: have multiple blade types/sizes available for the unexpected paediatric difficult airway.",
+    ],
+    refs: ["BJA Educ Paeds Airway 2017", "Weiss & Engelhardt 2010"],
   },
   videolaryngoscope: {
     label: "Videolaryngoscope (e.g., C-MAC, GlideScope)",
@@ -149,6 +189,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "DAS algorithm Plan A alternative to direct laryngoscopy; primary tool in many anticipated difficult airways and ICU intubations.",
     historicalNote: "GlideScope (Pacey, 2001) — first commercially successful videolaryngoscope. Now standard equipment per DAS/RCoA recommendations.",
+    keyPoints: [
+      "FRCA Final — DAS 2015: videolaryngoscopy is an alternative Plan A device and rescue tool; immediate availability mandated.",
+      "Mac-shaped (C-MAC, McGRATH) — direct or indirect technique; hyperangulated (GlideScope, X-blade) — needs stylet-shaped ETT.",
+      "Cochrane 2022: VL improves first-pass success and reduces failed intubation versus direct laryngoscopy in adults.",
+      "NAP4: most major airway events occurred when difficulty was unanticipated — VL improves view but \"can see, can't intubate\" remains a risk.",
+    ],
+    refs: ["DAS 2015", "Cochrane VL 2022", "NAP4 2011", "BJA Educ Videolaryngoscopy 2016"],
   },
 };
 
@@ -509,7 +556,12 @@ export const LaryngoscopeBladesDiagram = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Mechanism of exposure</p>
-                <p className="text-muted-foreground">{info.mechanism}</p>
+                <p className="text-muted-foreground">
+                  {info.mechanism}
+                  {info.refs.map((r) => (
+                    <InlineRef key={r} topicId="equipment-monitoring" refLabel={r} />
+                  ))}
+                </p>
               </div>
               <div>
                 <p className="font-semibold text-foreground">Sizes available</p>
@@ -540,6 +592,29 @@ export const LaryngoscopeBladesDiagram = () => {
           <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-xs">
             <p className="font-semibold text-foreground mb-1">Indications</p>
             <p className="text-muted-foreground">{info.indications}</p>
+          </div>
+
+          <div
+            className="rounded-lg border-l-4 border border-border p-3 mt-3 text-xs"
+            style={{ borderLeftColor: info.color, backgroundColor: withAlpha(info.color, 0.06) }}
+          >
+            <p className="font-semibold text-foreground mb-1.5">FRCA Key Learning Points</p>
+            <ul className="space-y-1 list-disc list-inside text-muted-foreground">
+              {info.keyPoints.map((kp, i) => <li key={i}>{kp}</li>)}
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-[11px]">
+            <p className="font-semibold text-foreground mb-1">Sources</p>
+            <p className="text-muted-foreground">
+              {info.refs.map((r, i) => (
+                <span key={r}>
+                  {i > 0 && " · "}
+                  {r}
+                  <InlineRef topicId="equipment-monitoring" refLabel={r} />
+                </span>
+              ))}
+            </p>
           </div>
         </TabsContent>
 
