@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
+import { InlineRef } from "@/components/InlineRef";
 
 const EnhancedRecoveryTopic = () => {
   return (
