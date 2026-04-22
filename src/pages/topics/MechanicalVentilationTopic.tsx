@@ -13,9 +13,11 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
 const tocItems = [
-  { id: "toc-introduction", label: "Introduction" },
+  { id: "toc-introduction", label: "Indications" },
+  { id: "toc-mechanics", label: "Mechanics" },
   { id: "toc-modes", label: "Modes" },
-  { id: "toc-lung-protective", label: "Lung-Protective" },
+  { id: "toc-lung-protective", label: "LPV & VILI" },
+  { id: "toc-dyssynchrony", label: "Dyssynchrony" },
   { id: "toc-aprv", label: "APRV" },
   { id: "toc-advanced", label: "Advanced" },
   { id: "toc-vap", label: "VAP / VAE" },
@@ -30,54 +32,158 @@ const MechanicalVentilationTopic = () => {
     <SectionLayout title="Mechanical Ventilation" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
+        {/* ───── 1. Indications ───── */}
         <div id="toc-introduction" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Mechanical ventilation is the most common organ support in ICU. Understanding ventilator modes, lung-protective strategies, and weaning principles is essential for safe management of critically ill patients.
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Indications for Invasive Ventilation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Mechanical ventilation is the most common organ support in ICU. Indications fall into four overlapping groups — recognising the dominant problem guides initial mode and settings.
           </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Category</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Mechanism</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Examples</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 1 (hypoxaemic) failure</td><td>PaO₂ &lt; 8 kPa on FiO₂ ≥ 0.6 — V/Q mismatch, shunt</td><td>ARDS, severe pneumonia, pulmonary oedema, PE</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Type 2 (hypercapnic) failure</td><td>PaCO₂ &gt; 6.5 kPa with acidosis — alveolar hypoventilation</td><td>COPD exacerbation, severe asthma, opioid overdose, neuromuscular weakness</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Airway protection</td><td>GCS ≤ 8 or loss of protective reflexes</td><td>TBI, status epilepticus, intoxication, anaphylaxis</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Reduce work of breathing / metabolic demand</td><td>Offload respiratory muscles to redirect O₂ delivery</td><td>Severe sepsis, cardiogenic shock, post-cardiac arrest, raised ICP requiring controlled PaCO₂</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* ───── 2. Respiratory mechanics ───── */}
+        <div id="toc-mechanics" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">2. Respiratory Mechanics on the Ventilator</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Every ventilator setting is an attempt to deliver gas against the patient's <strong>compliance</strong> and <strong>resistance</strong>. The equation of motion summarises this:
+          </p>
+          <div className="rounded-lg bg-muted/40 p-3 font-mono text-sm text-foreground mb-4 text-center">
+            P<sub>airway</sub> = (V<sub>T</sub> / C<sub>RS</sub>) + (Flow × R<sub>aw</sub>) + PEEP<sub>tot</sub>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Compliance (C)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                <strong>Static C<sub>RS</sub></strong> = V<sub>T</sub> / (P<sub>plat</sub> − PEEP<sub>tot</sub>). Normal 60–100 mL/cmH₂O; ARDS 20–40. <strong>Dynamic C</strong> uses peak pressure and is lower (includes resistive component).
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Resistance (R<sub>aw</sub>)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                R<sub>aw</sub> = (P<sub>peak</sub> − P<sub>plat</sub>) / Flow. Normal &lt; 10 cmH₂O/L/s. Raised in bronchospasm, secretions, kinked ETT, small ETT (Hagen-Poiseuille — radius⁴).
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Time constant (τ)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                τ = R × C. 95% of inflation/emptying takes 3τ. Long τ (high R, e.g. asthma) → slow expiration → risk of <strong>auto-PEEP</strong>.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Auto-PEEP / intrinsic PEEP</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Detected by an <strong>expiratory hold</strong>. Causes hypotension (↓venous return), barotrauma, dyssynchrony. Treat: ↓RR, ↑ expiratory time (I:E 1:3 or longer), bronchodilators, sedation.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Driving pressure (ΔP)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                ΔP = P<sub>plat</sub> − PEEP = V<sub>T</sub> / C<sub>RS</sub>. <strong>&lt; 15 cmH₂O</strong>. Strongest single mortality predictor in ARDS (Amato, NEJM 2015).
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm mb-1">Transpulmonary pressure (P<sub>L</sub>)</p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                P<sub>L</sub> = P<sub>alv</sub> − P<sub>pleural</sub> (oesophageal balloon). True distending pressure — useful in obesity, ascites, chest wall stiffness where P<sub>plat</sub> overestimates lung stress.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator Waveforms</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Ventilator Waveforms</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
-            Explore pressure and volume waveforms for the key ventilator modes.
+            Explore pressure, flow and volume waveforms for the key ventilator modes — pattern recognition is core to bedside dyssynchrony detection.
           </p>
           <div className="rounded-xl border border-border bg-card p-4">
             <VentilatorWaveformsDiagram />
           </div>
         </div>
 
+        {/* ───── 4. Modes ───── */}
         <div id="toc-modes" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Ventilator Modes</h2>
-          <div className="space-y-3">
-            {[
-              { mode: "Volume Control (VCV)", desc: "Set tidal volume and rate. Delivers constant flow. Pressure varies with compliance/resistance. Risk of barotrauma if compliance drops." },
-              { mode: "Pressure Control (PCV)", desc: "Set inspiratory pressure and rate. Delivers decelerating flow. Volume varies. Better alveolar recruitment, more comfortable." },
-              { mode: "Pressure Support (PSV)", desc: "Patient-triggered. Set support pressure, patient determines rate and Ti. Used for weaning. Requires intact respiratory drive." },
-              { mode: "SIMV", desc: "Combines mandatory (VC or PC) breaths with spontaneous breathing. Reduces ventilator dyssynchrony. Less used for weaning now." },
-              { mode: "APRV / BiLevel", desc: "Time-cycled alternating between high and low CPAP levels. Allows spontaneous breathing throughout. Used in ARDS for alveolar recruitment." },
-            ].map((m) => (
-              <div key={m.mode} className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">{m.mode}</p>
-                <p className="text-sm text-muted-foreground mt-1">{m.desc}</p>
-              </div>
-            ))}
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Ventilator Modes</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Every breath is defined by three variables: <strong>trigger</strong> (what starts it), <strong>limit / target</strong> (what controls it during inspiration), and <strong>cycle</strong> (what ends it).
+          </p>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Mode</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Trigger</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Limit</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Cycle</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Best for</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VCV</td><td>Time / patient</td><td>Flow (constant)</td><td>Volume</td><td>Guaranteed minute volume; ARDSNet protocol</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCV</td><td>Time / patient</td><td>Pressure (decelerating flow)</td><td>Time</td><td>Limits airway pressure; better recruitment; paeds</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PRVC / Autoflow</td><td>Time / patient</td><td>Pressure (adjusted to deliver target Vt)</td><td>Time</td><td>Volume guarantee with pressure-limited safety</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PSV</td><td>Patient (flow/pressure)</td><td>Pressure</td><td>Flow (% of peak — usually 25%)</td><td>Spontaneous mode; weaning</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SIMV ± PS</td><td>Mixed (mandatory + spontaneous)</td><td>Volume or pressure</td><td>Volume / time / flow</td><td>Largely historical — associated with prolonged weaning</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">APRV / BiLevel</td><td>Time + spontaneous overlay</td><td>Pressure (P<sub>high</sub> / P<sub>low</sub>)</td><td>Time (T<sub>high</sub> → T<sub>low</sub>)</td><td>Refractory hypoxaemia; spontaneous breathing throughout</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">NAVA</td><td>Diaphragmatic EMG (Edi catheter)</td><td>Pressure proportional to Edi</td><td>Drop in Edi</td><td>Improved synchrony; weaning; paediatrics</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">PAV+</td><td>Patient effort</td><td>Pressure proportional to instantaneous flow & volume</td><td>End of patient effort</td><td>Synchronous proportional support; weaning</td></tr>
+              </tbody>
+            </table>
           </div>
+          <p className="text-xs text-muted-foreground italic">
+            Aside: SIMV is no longer recommended for routine weaning (Brochard 1994; Esteban 1995) — direct PSV or T-piece SBTs are superior.
+          </p>
         </div>
 
+        {/* ───── 5. LPV & VILI ───── */}
         <div id="toc-lung-protective" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lung-Protective Ventilation</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">5. Lung-Protective Ventilation & VILI</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            The ARDSNet strategy reduces mortality by minimising ventilator-induced lung injury (VILI):
+            VILI is the iatrogenic injury produced by mechanical ventilation. The ARDSNet bundle limits the four mechanisms below and reduces mortality by ~9% absolute (NEJM 2000).
           </p>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm">Volutrauma</p>
+              <p className="text-xs text-muted-foreground">Over-distension by excessive V<sub>T</sub> — the dominant injury (animal models: high-V<sub>T</sub>/low-pressure injures, low-V<sub>T</sub>/high-pressure does not).</p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm">Barotrauma</p>
+              <p className="text-xs text-muted-foreground">High transpulmonary pressure → pneumothorax, pneumomediastinum, surgical emphysema. Limit P<sub>plat</sub> &lt; 30 cmH₂O.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm">Atelectrauma</p>
+              <p className="text-xs text-muted-foreground">Repeated alveolar opening/closing → shear injury. Prevent with adequate PEEP keeping alveoli open through expiration.</p>
+            </div>
+            <div className="rounded-lg border border-border bg-muted/20 p-3">
+              <p className="font-semibold text-foreground text-sm">Biotrauma</p>
+              <p className="text-xs text-muted-foreground">Mechanical strain → cytokine release (IL-6, TNF-α) → systemic inflammation and remote organ injury (MODS).</p>
+            </div>
+          </div>
+          <p className="text-muted-foreground leading-relaxed mb-3">The ARDSNet targets:</p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { label: "Tidal Volume", value: "6 ml/kg IBW" },
-              { label: "Plateau Pressure", value: "≤30 cmH₂O" },
-              { label: "Driving Pressure", value: "≤15 cmH₂O (Pplat - PEEP)" },
-              { label: "PEEP", value: "Titrate using FiO₂/PEEP table" },
-              { label: "Permissive Hypercapnia", value: "Accept pH ≥7.20" },
-              { label: "Target SpO₂", value: "88-95%" },
+              { label: "Tidal volume", value: "6 mL/kg IBW (4–8 mL/kg)" },
+              { label: "Plateau pressure", value: "≤30 cmH₂O" },
+              { label: "Driving pressure (ΔP)", value: "≤15 cmH₂O (Pplat − PEEP)" },
+              { label: "PEEP", value: "Higher in moderate–severe ARDS (FiO₂/PEEP table)" },
+              { label: "Permissive hypercapnia", value: "Accept pH ≥ 7.20 unless raised ICP" },
+              { label: "Target SpO₂", value: "88–95% (PaO₂ 7.3–10.7 kPa)" },
             ].map((item) => (
               <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
                 <p className="text-xs text-muted-foreground">{item.label}</p>
@@ -85,12 +191,43 @@ const MechanicalVentilationTopic = () => {
               </div>
             ))}
           </div>
+          <p className="text-xs text-muted-foreground italic mt-3">
+            Mechanical power (Gattinoni 2016) integrates V<sub>T</sub>, ΔP, RR, PEEP and flow into one number (J/min); &gt; 17 J/min independently predicts mortality.
+          </p>
         </div>
 
+        {/* ───── 6. Dyssynchrony ───── */}
+        <div id="toc-dyssynchrony" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6. Patient–Ventilator Dyssynchrony</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Occurs in ~25% of ventilated patients; ≥ 10% of breaths dyssynchronous independently predicts mortality and prolonged ventilation. Recognition is by waveform inspection — a core EDIC/FFICM SOE skill.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Type</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Waveform clue</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Cause / fix</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ineffective triggering</td><td>Patient effort visible on flow/Paw without ventilator delivery</td><td>Auto-PEEP, oversedation, weak effort. ↓ trigger sensitivity, treat auto-PEEP.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Double triggering / breath stacking</td><td>Two consecutive breaths separated by &lt; ½ Ti</td><td>Patient demand &gt; set V<sub>T</sub>. Increase V<sub>T</sub> cautiously, switch to PCV/PSV, deepen sedation.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Reverse triggering</td><td>Diaphragmatic contraction entrained by mandatory breath (sedated patient)</td><td>Recently described; may cause breath-stacking and pendelluft. Lighten or deepen sedation; consider NMB.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Flow asynchrony</td><td>Concave Paw curve in VCV (flow starvation) or scooped flow in PCV</td><td>Increase peak flow (VCV) or rise time (PCV).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Premature cycling</td><td>Ventilator cycles off while patient still inspiring (PSV)</td><td>↓ expiratory trigger sensitivity (e.g. 25% → 10%); lengthen Ti.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Delayed cycling</td><td>Ventilator continues delivering after patient effort ended (e.g. COPD on PSV)</td><td>↑ expiratory trigger sensitivity; ↓ pressure support.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* ───── 7. Brief weaning placeholder (full section later) ───── */}
         <div id="toc-weaning" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Weaning</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Weaning — Overview</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Weaning accounts for ~40% of total ventilation time. Daily spontaneous breathing trials (SBT) using T-piece or low-level PSV (5-8 cmH₂O) are recommended. Assess readiness: resolving pathology, adequate oxygenation (FiO₂ ≤0.4, PEEP ≤8), haemodynamic stability, GCS ≥8. Rapid shallow breathing index (f/VT) &lt;105 predicts successful extubation.
+            Weaning accounts for ~40% of total ventilation time. WIND classification: <strong>simple</strong> (extubated on first SBT, ~60%), <strong>difficult</strong> (1–7 days / 2–3 SBTs), <strong>prolonged</strong> (&gt; 7 days or &gt; 3 SBTs). Daily paired SAT + SBT (ABC trial — Girard, Lancet 2008) reduce ventilator days. Detailed extubation criteria, cuff-leak test and high-risk extubation are covered in <a href="#toc-tracheostomy" className="text-primary hover:underline">section 11–12</a>.
           </p>
         </div>
 
