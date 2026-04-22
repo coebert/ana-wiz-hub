@@ -24,18 +24,18 @@ const CardiothoracicTopic = () => {
     <SectionLayout title="Cardiothoracic Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
       <TopicTableOfContents items={tocItems} />
       <p className="text-muted-foreground leading-relaxed mb-6">
-        Cardiothoracic anaesthesia centres on three high-stakes domains: cardiopulmonary bypass physiology, lung isolation for thoracic surgery, and the management of one-lung ventilation. The diagrams below provide an at-a-glance reference for the CPB circuit, double-lumen tube positioning, and a structured approach to OLV troubleshooting before the detailed text.
+        Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
       </p>
-      <CPBCircuitDiagram />
-      <DLTInsertionDiagram />
-      <OLVTroubleshootingDiagram />
+
       <section className="space-y-6 mb-10">
+        {/* ───────── Cardiac surgery ───────── */}
         <div id="cpb-overview" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Bypass (CPB)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             CPB allows the heart and lungs to be bypassed during cardiac surgery. Understanding the circuit and physiological derangements is essential.
           </p>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <CPBCircuitDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">CPB Circuit Components</p>
               <p className="text-sm text-muted-foreground mt-1">Venous cannula (RA/SVC/IVC) → venous reservoir → pump (roller/centrifugal) → oxygenator/heat exchanger → arterial filter → arterial cannula (aorta). Prime volume ~1.5 L (haemodilution).</p>
