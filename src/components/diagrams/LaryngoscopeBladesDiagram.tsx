@@ -157,11 +157,30 @@ const bladeOrder: BladeKey[] = ["macintosh", "miller", "mccoy", "polio", "wiscon
 interface BladeShapeProps {
   bladeKey: BladeKey;
   opacity?: number;
+  /** When true, render the animated tip trajectory + target halo overlay */
+  animate?: boolean;
 }
 
-const BladeShape = ({ bladeKey, opacity = 1 }: BladeShapeProps) => {
+/**
+ * Per-blade animation metadata.
+ *  - path: SVG path the moving tip follows (start of insertion → final target).
+ *  - target: anatomy point that pulses while the tip arrives.
+ *  - targetLabel: short caption rendered next to the halo.
+ *  - dur: motion duration in seconds.
+ */
+const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: number; r: number; label: string }; dur: number }> = {
+  macintosh:         { path: "M40,118 Q90,150 148,148",                 target: { x: 148, y: 148, r: 7,  label: "Vallecula" },                dur: 2.4 },
+  miller:            { path: "M40,118 Q100,135 160,124 Q168,122 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
+  mccoy:             { path: "M40,118 Q90,150 145,150",                 target: { x: 145, y: 150, r: 7,  label: "Vallecula (then flex tip)" }, dur: 2.4 },
+  polio:             { path: "M55,118 Q95,150 148,150",                 target: { x: 148, y: 150, r: 7,  label: "Vallecula" },                dur: 2.4 },
+  wisconsin:         { path: "M40,116 Q100,130 160,122 Q168,120 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
+  videolaryngoscope: { path: "M40,118 Q70,150 100,170 Q140,185 158,166", target: { x: 178, y: 105, r: 8,  label: "Glottic view (camera)" },    dur: 3.0 },
+};
+
+const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps) => {
   const b = blades[bladeKey];
   const gradId = `blade-${bladeKey}`;
+  const traj = tipTrajectory[bladeKey];
 
   return (
     <svg viewBox="0 0 220 240" className="w-full max-w-[260px] mx-auto" style={{ opacity }}>
@@ -172,8 +191,8 @@ const BladeShape = ({ bladeKey, opacity = 1 }: BladeShapeProps) => {
         </linearGradient>
       </defs>
 
-      {/* Reference anatomy: tongue + epiglottis + vocal cords (faint) */}
-      <g opacity="0.18">
+      {/* Reference anatomy: tongue + epiglottis + vocal cords */}
+      <g opacity={animate ? 0.42 : 0.18}>
         {/* Tongue */}
         <path d="M40,170 Q90,140 140,150 Q160,155 170,170 L170,200 L40,200 Z" fill="hsl(var(--muted-foreground))" />
         <text x="60" y="195" fontSize="6" fill="hsl(var(--muted-foreground))">Tongue</text>
@@ -187,7 +206,6 @@ const BladeShape = ({ bladeKey, opacity = 1 }: BladeShapeProps) => {
         <line x1="170" y1="115" x2="195" y2="100" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="2 1" />
         <text x="186" y="95" fontSize="5" fill="hsl(var(--muted-foreground))">Cords</text>
       </g>
-
       {/* Handle (common to all) */}
       {bladeKey !== "polio" && (
         <g>
@@ -343,6 +361,43 @@ const BladeShape = ({ bladeKey, opacity = 1 }: BladeShapeProps) => {
         </g>
       )}
 
+      {/* ===== Animated tip trajectory + target halo (Phase: insertion → target) ===== */}
+      {animate && (
+        <g key={`anim-${bladeKey}`}>
+          {/* Faint dashed trajectory line */}
+          <path
+            d={traj.path}
+            fill="none"
+            stroke={b.color}
+            strokeWidth="1"
+            strokeDasharray="3 2.5"
+            opacity="0.55"
+          />
+          {/* Pulsing halo on the target anatomy */}
+          <circle cx={traj.target.x} cy={traj.target.y} r={traj.target.r} fill="none" stroke={b.color} strokeWidth="1.5" opacity="0.9">
+            <animate attributeName="r" values={`${traj.target.r};${traj.target.r + 6};${traj.target.r}`} dur="1.4s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.9;0.15;0.9" dur="1.4s" repeatCount="indefinite" />
+          </circle>
+          <circle cx={traj.target.x} cy={traj.target.y} r="2.5" fill={b.color} opacity="0.95" />
+          {/* Target caption */}
+          <text x={traj.target.x + 9} y={traj.target.y - 2} fontSize="6" fill={b.color} fontWeight="700">
+            {traj.target.label}
+          </text>
+          {/* Moving tip marker — repeats every cycle */}
+          <g>
+            <circle r="4.5" fill={b.color} opacity="0.95" stroke="hsl(var(--background))" strokeWidth="1">
+              <animateMotion dur={`${traj.dur}s`} repeatCount="indefinite" path={traj.path} rotate="auto" />
+              <animate attributeName="opacity" values="0;1;1;0.2" keyTimes="0;0.15;0.85;1" dur={`${traj.dur}s`} repeatCount="indefinite" />
+            </circle>
+            {/* Glow trail */}
+            <circle r="9" fill="none" stroke={b.color} strokeWidth="0.8" opacity="0.35">
+              <animateMotion dur={`${traj.dur}s`} repeatCount="indefinite" path={traj.path} />
+              <animate attributeName="opacity" values="0;0.4;0.4;0" keyTimes="0;0.15;0.85;1" dur={`${traj.dur}s`} repeatCount="indefinite" />
+            </circle>
+          </g>
+        </g>
+      )}
+
       {/* Arrow marker definition */}
       <defs>
         <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
@@ -385,7 +440,9 @@ const ShapeComparison = () => (
 
 export const LaryngoscopeBladesDiagram = () => {
   const [selected, setSelected] = useState<BladeKey>("macintosh");
+  const [animate, setAnimate] = useState(true);
   const info = blades[selected];
+  const traj = tipTrajectory[selected];
 
   return (
     <div className="border border-border rounded-lg p-4 mb-2 space-y-4">
@@ -425,8 +482,25 @@ export const LaryngoscopeBladesDiagram = () => {
 
         <TabsContent value="diagram" className="mt-3">
           <div className="grid sm:grid-cols-[1fr_1.2fr] gap-4 items-start">
-            <div className="rounded-lg bg-secondary/20 border border-border p-2">
-              <BladeShape bladeKey={selected} />
+            <div className="rounded-lg bg-secondary/20 border border-border p-2 space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[11px] text-muted-foreground">
+                  Target: <span className="font-semibold" style={{ color: info.color }}>{traj.target.label}</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setAnimate(a => !a)}
+                  aria-pressed={animate}
+                  className={`px-2 py-0.5 rounded text-[11px] border transition-colors ${
+                    animate
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {animate ? "⏸ Pause" : "▶ Animate tip"}
+                </button>
+              </div>
+              <BladeShape bladeKey={selected} animate={animate} />
             </div>
             <div className="space-y-2 text-xs">
               <div>
