@@ -2,6 +2,8 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { gynaecologicalAnaesthesiaQuestions } from "@/data/quizzes";
+import PneumoperitoneumTrendelenburgDiagram from "@/components/diagrams/PneumoperitoneumTrendelenburgDiagram";
+import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
 
 const objectives = [
   "Predict the cardiovascular and respiratory consequences of pneumoperitoneum + steep Trendelenburg",
@@ -96,6 +98,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
       quizQuestions={gynaecologicalAnaesthesiaQuestions}
       sectionExamMapping={{
         objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia (specialty)"] },
+        diagrams: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia (specialty)"] },
         workedExamples: { exams: ["final"] },
         keyPoints: { exams: ["final"] },
       }}
