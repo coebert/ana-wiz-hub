@@ -8,6 +8,7 @@ import TOEViewsDiagram from "@/components/diagrams/TOEViewsDiagram";
 import MModeDiagram from "@/components/diagrams/MModeDiagram";
 import MModePathologyDiagram from "@/components/diagrams/MModePathologyDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
+import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
 
