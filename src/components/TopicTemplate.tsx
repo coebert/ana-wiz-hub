@@ -1,0 +1,106 @@
+import { ReactNode } from "react";
+import { SectionLayout } from "@/components/SectionLayout";
+import { LearningObjectives } from "@/components/LearningObjectives";
+import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { WorkedExamples, WorkedExample } from "@/components/WorkedExamples";
+import { QuizSection } from "@/components/QuizSection";
+import { ReferencesList } from "@/components/ReferencesList";
+import { SeeAlso } from "@/components/SeeAlso";
+import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+
+interface TopicTemplateProps {
+  // SectionLayout props
+  title: string;
+  subtitle: string;
+  backPath?: string;
+  backLabel?: string;
+  accentColor?: string;
+  disableAutoTOC?: boolean;
+
+  // Required structural blocks
+  /** 3–6 short, action-led objectives shown at the top of every topic. */
+  objectives: string[];
+  /** "Core Concepts" — the main teaching content, organised into sections. */
+  coreConcepts: ReactNode;
+  /** "Key Learning Points" — final summary bullets. */
+  keyPoints: string[];
+
+  // Optional structural blocks
+  /** "Diagrams & Visualisations" — interactive diagrams/animations. */
+  diagrams?: ReactNode;
+  /** "Worked Examples" — clinical vignettes and/or calculations. Omit when not relevant. */
+  workedExamples?: WorkedExample[];
+
+  // Footer wiring (kept in current order)
+  topicId: string;
+  topicTitle?: string;
+  /** Quiz questions in the format expected by QuizSection. */
+  quizQuestions?: unknown[];
+}
+
+/**
+ * Standardised topic page template. All audited topics should use this so
+ * the curriculum reads consistently:
+ *   1. Learning Objectives
+ *   2. Core Concepts (free-form sections)
+ *   3. Diagrams & Visualisations (optional)
+ *   4. Worked Examples (optional)
+ *   5. Summary / Key Learning Points
+ *   6. Quiz → References → See Also → Completion
+ */
+export const TopicTemplate = ({
+  title,
+  subtitle,
+  backPath,
+  backLabel,
+  accentColor,
+  disableAutoTOC,
+  objectives,
+  coreConcepts,
+  keyPoints,
+  diagrams,
+  workedExamples,
+  topicId,
+  topicTitle,
+  quizQuestions,
+}: TopicTemplateProps) => {
+  return (
+    <SectionLayout
+      title={title}
+      subtitle={subtitle}
+      backPath={backPath}
+      backLabel={backLabel}
+      accentColor={accentColor}
+      disableAutoTOC={disableAutoTOC}
+    >
+      <div className="space-y-10">
+        <LearningObjectives objectives={objectives} />
+
+        <section className="space-y-8">{coreConcepts}</section>
+
+        {diagrams && (
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
+              Diagrams &amp; Visualisations
+            </h2>
+            <div className="space-y-6">{diagrams}</div>
+          </section>
+        )}
+
+        {workedExamples && workedExamples.length > 0 && (
+          <WorkedExamples examples={workedExamples} />
+        )}
+
+        <KeyLearningPoints points={keyPoints} />
+
+        {quizQuestions && quizQuestions.length > 0 && (
+          // QuizSection's prop is loosely typed across the codebase; cast here.
+          <QuizSection questions={quizQuestions as never} />
+        )}
+        <ReferencesList topicId={topicId} />
+        <SeeAlso topicId={topicId} />
+        <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
+      </div>
+    </SectionLayout>
+  );
+};
