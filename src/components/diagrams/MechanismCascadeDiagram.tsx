@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Play, Pause, RotateCcw } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
 
 /**
  * Re-usable animated mechanism cascade.
@@ -13,6 +13,15 @@ import { Play, Pause, RotateCcw } from "lucide-react";
  * (host response, autodigestion, ammonia → oedema, post-ROSC pillars).
  */
 
+export interface CascadeSource {
+  /** Short citation label, e.g. "BJA Educ 2023" or "ERC 2021". */
+  label: string;
+  /** Full citation text shown in the bibliography. */
+  citation: string;
+  /** External URL (DOI, journal, guideline). */
+  url: string;
+}
+
 export interface CascadeStep {
   /** Short label inside the node (1-3 words). */
   node: string;
@@ -22,6 +31,11 @@ export interface CascadeStep {
   title: string;
   /** Body text for the explanation card. */
   body: string;
+  /**
+   * Sources backing this step. Rendered inline as numbered superscript links
+   * matching the consolidated bibliography at the foot of the diagram.
+   */
+  sources?: CascadeSource[];
 }
 
 interface MechanismCascadeDiagramProps {
@@ -58,6 +72,31 @@ export const MechanismCascadeDiagram = ({
 
   const accentVar = `hsl(var(--${accent}))`;
   const current = steps[step];
+
+  /**
+   * Build a stable, de-duplicated bibliography across all steps.
+   * Order is determined by first appearance (step order, then source order
+   * within step). Each unique URL gets a 1-based number used both inline and
+   * in the consolidated list at the bottom.
+   */
+  const bibliography = useMemo(() => {
+    const list: CascadeSource[] = [];
+    const indexByUrl = new Map<string, number>();
+    for (const s of steps) {
+      for (const src of s.sources ?? []) {
+        if (!indexByUrl.has(src.url)) {
+          list.push(src);
+          indexByUrl.set(src.url, list.length);
+        }
+      }
+    }
+    return { list, indexByUrl };
+  }, [steps]);
+
+  /** Citation numbers (in bibliography order) for the current step's sources. */
+  const currentSourceIndexes = (current.sources ?? [])
+    .map((src) => bibliography.indexByUrl.get(src.url))
+    .filter((n): n is number => typeof n === "number");
 
   return (
     <div className="rounded-xl border border-border bg-card/40 p-4">
@@ -135,9 +174,75 @@ export const MechanismCascadeDiagram = ({
           >
             Step {step + 1} · {current.title}
           </p>
-          <p className="text-sm text-foreground leading-relaxed">{current.body}</p>
+          <p className="text-sm text-foreground leading-relaxed">
+            {current.body}
+            {currentSourceIndexes.length > 0 && (
+              <span className="ml-1 inline-flex items-baseline gap-0.5 align-baseline">
+                {currentSourceIndexes.map((n, i) => {
+                  const src = bibliography.list[n - 1];
+                  return (
+                    <a
+                      key={src.url}
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${src.label} — ${src.citation}`}
+                      className="text-[10px] font-bold align-super rounded-sm px-1 transition-colors hover:underline"
+                      style={{
+                        color: accentVar,
+                        backgroundColor: `hsl(var(--${accent}) / 0.12)`,
+                      }}
+                    >
+                      [{n}]{i < currentSourceIndexes.length - 1 ? "" : ""}
+                    </a>
+                  );
+                })}
+              </span>
+            )}
+          </p>
         </div>
       </div>
+
+      {/* Consolidated bibliography */}
+      {bibliography.list.length > 0 && (
+        <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
+          <div className="flex items-center gap-1.5 mb-2">
+            <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+            <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+              Sources for this cascade
+            </p>
+          </div>
+          <ol className="space-y-1.5 list-none">
+            {bibliography.list.map((src, i) => (
+              <li
+                key={src.url}
+                className="text-[11px] text-muted-foreground leading-relaxed flex gap-1.5"
+              >
+                <span
+                  className="font-bold shrink-0"
+                  style={{ color: accentVar }}
+                >
+                  [{i + 1}]
+                </span>
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline group/cite"
+                >
+                  <span className="font-semibold text-foreground">{src.label}</span>
+                  {" — "}
+                  <span className="group-hover/cite:text-foreground">{src.citation}</span>
+                  <ExternalLink
+                    className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
+                    style={{ color: accentVar }}
+                  />
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </div>
   );
 };
