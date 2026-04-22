@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { toxicologyQuestions } from "@/data/quizzes";
 import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogramDiagram";
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
@@ -147,6 +148,12 @@ const ToxicologyTopic = () => {
         workedExamples: ["AAGBI Lipid Rescue", "NPIS Toxbase"],
         keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue"],
       }}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["CC1.10", "11A04"] },
+        diagrams: { exams: ["final", "fficm", "edic"] },
+        workedExamples: { exams: ["final", "fficm", "edic"] },
+        keyPoints: { exams: ["final", "fficm", "edic"] },
+      }}
       diagrams={
         <>
           <ToxidromeComparatorDiagram />
@@ -156,6 +163,7 @@ const ToxicologyTopic = () => {
       coreConcepts={
         <>
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.10"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">General Principles</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Poisoning management on the ICU follows a small set of principles: stabilise with ABCDE, identify the toxin (with NPIS/TOXBASE support), decontaminate where appropriate, enhance elimination when an effective modality exists, and recognise the toxidrome patterns that often arrive before a confirmed history.
@@ -169,6 +177,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Antidotes</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -192,6 +201,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tricyclic Antidepressant OD</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism of toxicity</strong>: Na⁺ channel blockade (→ wide QRS, arrhythmias), anticholinergic effects, α₁ blockade (→ hypotension), serotonin/noradrenaline reuptake inhibition</li>
@@ -201,6 +211,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Salicylate Poisoning</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Early: respiratory alkalosis (central stimulation) → mixed metabolic acidosis + respiratory alkalosis → late: metabolic acidosis predominates</li>
@@ -210,6 +221,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Removal of Toxins</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
               Extracorporeal techniques (haemodialysis, haemofiltration, haemoperfusion) can remove toxins that meet specific pharmacokinetic criteria. The <strong>EXTRIP</strong> (Extracorporeal Treatments in Poisoning) workgroup provides evidence-based recommendations.

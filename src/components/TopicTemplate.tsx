@@ -8,6 +8,10 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { ExamTag } from "@/data/curriculum";
+
+type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
 interface TopicTemplateProps {
   // SectionLayout props
@@ -45,6 +49,20 @@ interface TopicTemplateProps {
     keyPoints?: string[];
   };
 
+  /**
+   * Per-section curriculum exam mapping. Renders a small `ExamMappingBadges`
+   * row at the TOP of each block so learners see at a glance whether the
+   * subsection is FRCA Primary / Final / FFICM / EDIC relevant. All keys
+   * optional. Inside `coreConcepts`, drop `<ExamMappingBadges />` directly
+   * at the top of each `<section>`.
+   */
+  sectionExamMapping?: {
+    objectives?: SectionExamMap;
+    diagrams?: SectionExamMap;
+    workedExamples?: SectionExamMap;
+    keyPoints?: SectionExamMap;
+  };
+
   // Footer wiring (kept in current order)
   topicId: string;
   topicTitle?: string;
@@ -75,6 +93,7 @@ export const TopicTemplate = ({
   diagrams,
   workedExamples,
   sectionSources,
+  sectionExamMapping,
   topicId,
   topicTitle,
   quizQuestions,
@@ -90,6 +109,12 @@ export const TopicTemplate = ({
     >
       <div className="space-y-10">
         <div>
+          {sectionExamMapping?.objectives && (
+            <ExamMappingBadges
+              exams={sectionExamMapping.objectives.exams}
+              curriculumCodes={sectionExamMapping.objectives.curriculumCodes}
+            />
+          )}
           <LearningObjectives objectives={objectives} />
           {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
             <SectionReferences
@@ -108,6 +133,12 @@ export const TopicTemplate = ({
             <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
               Diagrams &amp; Visualisations
             </h2>
+            {sectionExamMapping?.diagrams && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.diagrams.exams}
+                curriculumCodes={sectionExamMapping.diagrams.curriculumCodes}
+              />
+            )}
             <div className="space-y-6">{diagrams}</div>
             {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
               <SectionReferences
@@ -121,6 +152,12 @@ export const TopicTemplate = ({
 
         {workedExamples && workedExamples.length > 0 && (
           <div>
+            {sectionExamMapping?.workedExamples && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.workedExamples.exams}
+                curriculumCodes={sectionExamMapping.workedExamples.curriculumCodes}
+              />
+            )}
             <WorkedExamples examples={workedExamples} />
             {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
               <SectionReferences
@@ -134,6 +171,12 @@ export const TopicTemplate = ({
         )}
 
         <div>
+          {sectionExamMapping?.keyPoints && (
+            <ExamMappingBadges
+              exams={sectionExamMapping.keyPoints.exams}
+              curriculumCodes={sectionExamMapping.keyPoints.curriculumCodes}
+            />
+          )}
           <KeyLearningPoints points={keyPoints} />
           {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
             <SectionReferences
