@@ -347,8 +347,8 @@ const ImmuneCellLineageDiagram = () => {
           <text x="155" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">MYELOID</text>
           <text x="465" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">LYMPHOID</text>
 
-          {/* Lineage links */}
-          {showLineages && cells.filter((c) => c.parent).map((c) => {
+          {/* Lineage links (lineage view only) */}
+          {view === "lineage" && showLineages && cells.filter((c) => c.parent).map((c) => {
             const p = cells.find((x) => x.id === c.parent)!;
             const dim = isDimmed(c) || isDimmed(p);
             return (
@@ -396,6 +396,77 @@ const ImmuneCellLineageDiagram = () => {
               </g>
             );
           })}
+
+          {/* Activation overlay */}
+          {view === "activation" && (() => {
+            const renderArrow = (from: string, to: string, color: string, isCurrent: boolean, key: string) => {
+              const a = resolvePoint(from);
+              const b = resolvePoint(to);
+              const mx = (a.x + b.x) / 2;
+              const my = (a.y + b.y) / 2 - 30;
+              const d = `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`;
+              return (
+                <path
+                  key={key}
+                  id={key}
+                  d={d}
+                  fill="none"
+                  stroke={color}
+                  strokeWidth={isCurrent ? 1.8 : 0.8}
+                  strokeDasharray={isCurrent ? "0" : "3 3"}
+                  opacity={isCurrent ? 0.9 : 0.35}
+                />
+              );
+            };
+            return (
+              <g>
+                {/* Antigen / pathogen anchor (off-graph) */}
+                <g>
+                  <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="14" fill="hsl(45 90% 50%)" opacity="0.25" />
+                  <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="8" fill="hsl(45 90% 50%)" opacity="0.85" stroke="hsl(45 90% 35%)" strokeWidth="1" />
+                  <text x={ANTIGEN_ANCHOR.x} y={ANTIGEN_ANCHOR.y + 26} textAnchor="middle" className="text-[8.5px] fill-foreground font-medium">
+                    {pathway === "il5-eos" ? "Allergen" : "Antigen"}
+                  </text>
+                </g>
+
+                {/* All step arrows (faint) */}
+                {activeSteps.map((s, i) =>
+                  renderArrow(s.from, s.to, s.color, false, `arr-bg-${i}`)
+                )}
+                {/* Current step arrow (bold) */}
+                {currentStep && renderArrow(currentStep.from, currentStep.to, currentStep.color, true, `arr-cur`)}
+
+                {/* Animated token */}
+                {currentStep && (() => {
+                  const a = resolvePoint(currentStep.from);
+                  const b = resolvePoint(currentStep.to);
+                  const mx = (a.x + b.x) / 2;
+                  const my = (a.y + b.y) / 2 - 30;
+                  return (
+                    <g key={`tok-${stepIdx}-${pathway}`}>
+                      <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1.2">
+                        <animateMotion
+                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          repeatCount="1"
+                          fill="freeze"
+                          path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
+                        />
+                      </circle>
+                      <text fontSize="7" textAnchor="middle" dy="2" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
+                        <animateMotion
+                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          repeatCount="1"
+                          fill="freeze"
+                          path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
+                        />
+                        {currentStep.token}
+                      </text>
+                    </g>
+                  );
+                })()}
+              </g>
+            );
+          })()}
         </svg>
 
         {/* Mnemonic / footer */}
