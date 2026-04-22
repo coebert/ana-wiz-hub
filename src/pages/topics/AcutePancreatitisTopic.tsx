@@ -1,23 +1,127 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
+import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Diagnose acute pancreatitis using the Atlanta 2012 criteria and stratify severity with Glasgow (Imrie), APACHE-II and CRP at 48 h.",
+  "Apply the WATERFALL moderate fluid strategy with balanced crystalloid and avoid the harms of aggressive resuscitation.",
+  "Justify the use of early enteral nutrition (NG/NJ within 24–72 h) over TPN.",
+  "Decide when antibiotics, ERCP and cholecystectomy are indicated — and when they are not.",
+  "Apply the step-up approach to pancreatic necrosis (drainage → minimally invasive → open) and recognise infected necrosis.",
+  "Identify systemic complications (ARDS, AKI, ACS, splanchnic vein thrombosis) and trigger tertiary HPB/ICU referral.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Glasgow (Imrie) severity at 48 h",
+    scenario: (
+      <>
+        58-year-old with gallstone pancreatitis. At 48 h: PaO₂ 7.6 kPa on 4 L O₂, WBC 18, Ca²⁺ 1.85 mmol/L,
+        urea 18 mmol/L, AST 240, albumin 28 g/L, glucose 12 mmol/L. CRP 220 mg/L.
+      </>
+    ),
+    working: (
+      <>
+        Glasgow criteria met: PaO₂ &lt;8, age &gt;55, WBC &gt;15, Ca²⁺ &lt;2.0, urea &gt;16, AST &gt;200,
+        albumin &lt;32, glucose &gt;10 — score 8/8. CRP &gt;150 at 48 h corroborates severe disease.
+      </>
+    ),
+    answer: (
+      <>
+        Predicted severe acute pancreatitis. Escalate to HDU/ICU, refer to tertiary HPB centre, plan
+        contrast-enhanced CT at 72–96 h, ensure early enteral feeding, lung-protective ventilation if
+        ARDS develops.
+      </>
+    ),
+  },
+  {
+    title: "WATERFALL fluid prescription",
+    scenario: (
+      <>
+        70 kg patient with acute pancreatitis, MAP 78, lactate 1.6, urine output 0.6 mL/kg/h, no clinical
+        signs of hypovolaemia. The on-call SHO suggests a 20 mL/kg bolus and 3 mL/kg/h Ringer's lactate.
+      </>
+    ),
+    working: (
+      <>
+        WATERFALL (NEJM 2022) was stopped early: aggressive arm = 20.5 % fluid overload vs 6.3 % moderate,
+        with no benefit on disease progression. The patient is normovolaemic — no bolus is indicated.
+        Maintenance = 1.5 mL/kg/h × 70 kg ≈ 105 mL/h Hartmann's.
+      </>
+    ),
+    answer: (
+      <>
+        No bolus. Run Hartmann's at ~ 105 mL/h (1.5 mL/kg/h). Reassess at 12, 24, 48 and 72 h targeting
+        MAP ≥ 65, UO ≥ 0.5 mL/kg/h, falling lactate, BUN and HCT. Use noradrenaline if MAP target unmet
+        once euvolaemic — do not chase MAP with more fluid.
+      </>
+    ),
+  },
+  {
+    title: "Suspected infected necrosis at day 12",
+    scenario: (
+      <>
+        Severe necrotising pancreatitis. Initially improving, but at day 12 the patient is febrile to
+        39 °C, WCC rising, new noradrenaline requirement. CT shows extensive walled-off necrosis with
+        gas bubbles within the collection.
+      </>
+    ),
+    working: (
+      <>
+        Gas in a necrotic collection plus clinical deterioration is highly suggestive of infected
+        necrosis — a leading cause of late mortality. Carbapenems have the best pancreatic penetration.
+        Step-up source control (PANTER trial): percutaneous or endoscopic transgastric drainage first,
+        not immediate open necrosectomy.
+      </>
+    ),
+    answer: (
+      <>
+        Start meropenem, blood and (if accessible) FNA cultures. Discuss with HPB MDT for endoscopic
+        transgastric or percutaneous drainage as the first step; reserve VARD or open necrosectomy for
+        failed minimally invasive approach. Delay any intervention beyond 4 weeks where possible to
+        allow demarcation.
+      </>
+    ),
+  },
+];
+
+const keyPoints = [
+  "Diagnose with 2 of 3: typical pain + amylase/lipase ≥3× ULN + characteristic imaging (Atlanta 2012)",
+  "Severity stratification: Glasgow (Imrie), APACHE-II ≥8, BISAP, CRP >150 at 48h, persistent organ failure >48h",
+  "I GET SMASHED — gallstones (50%) and ethanol (25%) account for most UK cases",
+  "Fluids (WATERFALL/AGA 2024): balanced crystalloid (Ringer's lactate) — 10 mL/kg bolus only if hypovolaemic, then 1.5 mL/kg/h, reassess at 12/24/48/72h. Aggressive resuscitation causes fluid overload (20.5% vs 6.3%) with no clinical benefit",
+  "Early enteral nutrition (NG/NJ) within 24–72h reduces infectious complications and mortality vs TPN",
+  "Prophylactic antibiotics are NOT indicated — only for proven infection or infected necrosis (carbapenem)",
+  "ERCP within 24–72h only for cholangitis or persistent biliary obstruction; cholecystectomy same admission for mild gallstone pancreatitis",
+  "Step-up approach to necrosis (PANTER trial): drainage → minimally invasive → open necrosectomy as last resort, delay >4 weeks",
+  "Refer early to tertiary HPB/ICU centre for severe disease, necrosis, organ failure, or need for IR/advanced endoscopy",
+];
 
 const AcutePancreatitisTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Acute Severe Pancreatitis"
       subtitle="FRCA Final / FFICM — Intensive Care"
       backPath="/intensive-care"
       backLabel="Intensive Care"
       accentColor="text-icu"
-    >
-      <section className="space-y-6 mb-10">
-        {/* Definition */}
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={keyPoints}
+      topicId="acute-pancreatitis"
+      topicTitle="Acute Severe Pancreatitis"
+      quizQuestions={acutePancreatitisQuestions}
+      diagrams={
+        <>
+          <GlasgowImrieScoreDiagram />
+          <WaterfallFluidDiagram />
+        </>
+      }
+      coreConcepts={
+        <section className="space-y-6">
+          {/* Definition */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Definition & Severity</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
