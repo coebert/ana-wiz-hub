@@ -145,6 +145,98 @@ const AnaestheticMachineTopic = () => {
           </div>
         </div>
 
+        <div>
+          <h2 className="text-xl font-bold text-foreground mb-2">Standard Anaesthetic Machine Check (AAGBI 2012)</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              A structured pre-use check must be performed at the <strong>start of every operating list</strong>, with an
+              abbreviated check between cases. The check should follow a logical "<strong>upstream-to-downstream</strong>"
+              sequence — from gas supply, through the machine, to the breathing system and patient. Document completion
+              on the anaesthetic chart and attach a "Machine Checked" label.
+            </p>
+
+            <ol className="list-decimal list-inside space-y-3 pl-2">
+              <li>
+                <strong>Self-test & power supply.</strong> Confirm the machine is plugged into mains and the
+                <strong> battery back-up</strong> is charged (≥30 min reserve). Allow the machine's electronic
+                self-test to complete without interruption.
+              </li>
+              <li>
+                <strong>Suction.</strong> Check suction is connected, switched on, and generates a vacuum of at least
+                <strong> −500 mmHg</strong> when the tubing is occluded. A working Yankauer must be immediately to hand.
+              </li>
+              <li>
+                <strong>Gas supplies — pipelines.</strong> Confirm O₂, N₂O, and Air pipelines are connected to the
+                correct <strong>Schrader/NIST</strong> sockets and that each pipeline gauge reads <strong>~400 kPa</strong>.
+                Verify colour-coding and that hoses are not kinked.
+              </li>
+              <li>
+                <strong>Gas supplies — cylinders.</strong> Open each reserve cylinder in turn: check the gauge, then
+                close. The O₂ cylinder should be <strong>at least half full</strong> (~68 bar). Confirm the
+                <strong> pin-index</strong> and that no cylinder hisses when opened.
+              </li>
+              <li>
+                <strong>Flowmeters.</strong> Turn each flowmeter through its full range and check the bobbin rotates
+                freely without sticking. Confirm the <strong>anti-hypoxia (hypoxic guard) link</strong> by attempting
+                to deliver pure N₂O — minimum 25% O₂ should be maintained.
+              </li>
+              <li>
+                <strong>O₂ failure alarm.</strong> With the O₂ flowmeter open, disconnect the O₂ pipeline (or close
+                the cylinder). The <strong>Ritchie whistle</strong> should sound, N₂O flow should cut off, and the
+                <strong> anti-hypoxia cut-off</strong> should activate. Reconnect O₂ and confirm flow is restored.
+              </li>
+              <li>
+                <strong>O₂ flush.</strong> Press the emergency O₂ flush — confirm a free flow of <strong>35–75 L/min</strong>
+                without pressure rise within the breathing system.
+              </li>
+              <li>
+                <strong>Vaporizers.</strong> Check each vaporizer is <strong>seated correctly</strong>, locked,
+                adequately filled, and that the filling port is closed. Confirm control dials turn smoothly. Check
+                for leaks at every dial setting (high and zero).
+              </li>
+              <li>
+                <strong>Breathing system.</strong> Inspect for correct configuration and patency. Perform a
+                <strong> "two-bag" test</strong>: occlude the patient end with a second reservoir bag, close the APL
+                valve, and pressurise to ~30 cmH₂O — the system should hold pressure with no leak. Then ventilate
+                manually and mechanically to confirm unidirectional valves move appropriately.
+              </li>
+              <li>
+                <strong>Scavenging (AGSS).</strong> Confirm the active scavenging system is connected, switched on,
+                and that the float/indicator shows adequate flow.
+              </li>
+              <li>
+                <strong>Ventilator.</strong> Set typical parameters (TV 500 mL, RR 12, I:E 1:2) and ventilate a test
+                lung. Confirm bellows fill and empty correctly, and that <strong>disconnect, high-pressure, and
+                low-tidal-volume alarms</strong> are enabled and audible.
+              </li>
+              <li>
+                <strong>Monitoring.</strong> Switch on and confirm calibration of: <strong>SpO₂, ECG, NIBP, capnography,
+                FiO₂ analyser, agent monitor, and temperature</strong>. Set appropriate alarm limits — these must
+                <em> never</em> be silenced or set to default-off.
+              </li>
+              <li>
+                <strong>Airway equipment.</strong> Confirm immediate availability of facemasks (multiple sizes),
+                <strong> functioning laryngoscopes</strong> (direct + video back-up), tracheal tubes (cuff-tested),
+                supraglottic airways, bougie/stylet, Magill forceps, and a <strong>self-inflating bag</strong> for
+                emergency ventilation independent of the machine.
+              </li>
+              <li>
+                <strong>Final documentation.</strong> Record the check in the anaesthetic chart and attach the
+                "Machine Checked" label. Between cases, repeat an <strong>abbreviated check</strong>: breathing
+                system integrity (two-bag test), vaporizer level, suction, and monitoring.
+              </li>
+            </ol>
+
+            <p className="text-sm italic">
+              <strong>Mnemonic — "POWER on the MACHINE":</strong> <em>P</em>ower & self-test · <em>O</em>xygen supply
+              & alarm · <em>W</em>aveform/monitoring · <em>E</em>mergency O₂ flush · <em>R</em>eservoir cylinders ·
+              <em>M</em>achine flowmeters & vaporizers · <em>A</em>irway equipment · <em>C</em>ircuit (two-bag test) ·
+              <em>H</em>oses & scavenging · <em>I</em>nduction drugs ready · <em>N</em>otes documented ·
+              <em>E</em>mergency self-inflating bag.
+            </p>
+          </div>
+        </div>
+
         <QuizSection questions={anaestheticMachineQuiz} />
 
       <ReferencesList topicId="anaesthetic-machine" />
