@@ -300,6 +300,24 @@ const ImmuneCellLineageDiagram = () => {
               >
                 Step ›
               </button>
+              <div className="inline-flex items-center rounded border border-border overflow-hidden" role="group" aria-label="Animation speed">
+                <span className="px-1.5 py-1 text-[10px] uppercase tracking-wide text-muted-foreground bg-muted/30">Speed</span>
+                {([0.5, 0.75, 1, 1.5, 2] as const).map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => setSpeed(s)}
+                    aria-pressed={speed === s}
+                    className={`px-2 py-1 border-l border-border transition-colors ${
+                      speed === s
+                        ? "bg-primary/10 text-foreground"
+                        : "text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    {s}×
+                  </button>
+                ))}
+              </div>
             </>
           )}
 
