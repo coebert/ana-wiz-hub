@@ -122,8 +122,7 @@ const IcuNutritionTopic = () => {
       }
       coreConcepts={
         <>
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]} />
+          <ExamSection exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Metabolic Response to Critical Illness</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Critical illness induces a catabolic state with hyperglycaemia, protein catabolism and lipolysis. The metabolic response has two phases:
@@ -142,10 +141,9 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Enteral vs Parenteral Nutrition</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -164,10 +162,9 @@ const IcuNutritionTopic = () => {
                 </tbody>
               </table>
             </div>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Calorie &amp; Protein Targets (ESPEN 2019)</h2>
             <div className="space-y-2">
               {[
@@ -182,10 +179,9 @@ const IcuNutritionTopic = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]} />
+          <ExamSection exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Refeeding Syndrome</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Life-threatening shifts in fluids and electrolytes when nutrition is restarted after prolonged starvation. Insulin surge drives K⁺, PO₄³⁻ and Mg²⁺ intracellularly, causing arrhythmias, cardiac failure, respiratory muscle weakness and Wernicke&apos;s encephalopathy. Use the calculator above for stratification.
@@ -204,10 +200,9 @@ const IcuNutritionTopic = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Nutrition Trials</h2>
             <div className="space-y-2">
               {[
