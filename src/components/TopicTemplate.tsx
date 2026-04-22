@@ -93,6 +93,7 @@ export const TopicTemplate = ({
   diagrams,
   workedExamples,
   sectionSources,
+  sectionExamMapping,
   topicId,
   topicTitle,
   quizQuestions,
@@ -108,6 +109,12 @@ export const TopicTemplate = ({
     >
       <div className="space-y-10">
         <div>
+          {sectionExamMapping?.objectives && (
+            <ExamMappingBadges
+              exams={sectionExamMapping.objectives.exams}
+              curriculumCodes={sectionExamMapping.objectives.curriculumCodes}
+            />
+          )}
           <LearningObjectives objectives={objectives} />
           {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
             <SectionReferences
@@ -126,6 +133,12 @@ export const TopicTemplate = ({
             <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
               Diagrams &amp; Visualisations
             </h2>
+            {sectionExamMapping?.diagrams && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.diagrams.exams}
+                curriculumCodes={sectionExamMapping.diagrams.curriculumCodes}
+              />
+            )}
             <div className="space-y-6">{diagrams}</div>
             {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
               <SectionReferences
@@ -139,6 +152,12 @@ export const TopicTemplate = ({
 
         {workedExamples && workedExamples.length > 0 && (
           <div>
+            {sectionExamMapping?.workedExamples && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.workedExamples.exams}
+                curriculumCodes={sectionExamMapping.workedExamples.curriculumCodes}
+              />
+            )}
             <WorkedExamples examples={workedExamples} />
             {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
               <SectionReferences
@@ -152,6 +171,12 @@ export const TopicTemplate = ({
         )}
 
         <div>
+          {sectionExamMapping?.keyPoints && (
+            <ExamMappingBadges
+              exams={sectionExamMapping.keyPoints.exams}
+              curriculumCodes={sectionExamMapping.keyPoints.curriculumCodes}
+            />
+          )}
           <KeyLearningPoints points={keyPoints} />
           {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
             <SectionReferences
