@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { ZoomableSVG } from "./ZoomableSVG";
 
 type Tab = "reflection" | "refraction" | "fibreoptics" | "beer-lambert" | "spectrophotometry";
 
@@ -15,7 +16,7 @@ const ReflectionDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Reflection of Light</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 350" className="w-full h-auto" role="img" aria-label="Diagram of the laws of reflection: an incident ray strikes a mirror at angle theta-i and reflects at an equal angle theta-r, with the normal shown as a dashed vertical line.">
+      <ZoomableSVG><svg viewBox="0 0 600 350" className="w-full h-auto" role="img" aria-label="Diagram of the laws of reflection: an incident ray strikes a mirror at angle theta-i and reflects at an equal angle theta-r, with the normal shown as a dashed vertical line.">
         <text x="300" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Laws of Reflection</text>
 
         {/* Mirror surface */}
@@ -57,7 +58,7 @@ const ReflectionDiagram = () => (
         <text x="30" y="310" className="fill-muted-foreground text-[9.5px]">• Specular: smooth surface → parallel rays remain parallel (mirrors, glass)</text>
         <text x="30" y="328" className="fill-muted-foreground text-[9.5px]">• Diffuse: rough surface → rays scattered in all directions (paper, skin)</text>
         <text x="30" y="346" className="fill-muted-foreground text-[9.5px]">• Clinical: pulse oximetry uses reflectance mode when transmission is not possible (forehead sensors)</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -66,7 +67,7 @@ const RefractionDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Refraction & Snell's Law</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Snell's law diagram: a light ray enters a denser medium and bends toward the normal. Below, the critical angle and total internal reflection are explained.">
+      <ZoomableSVG><svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Snell's law diagram: a light ray enters a denser medium and bends toward the normal. Below, the critical angle and total internal reflection are explained.">
         <text x="300" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Snell's Law: n₁ sin θ₁ = n₂ sin θ₂</text>
 
         {/* Media boundary */}
@@ -101,7 +102,7 @@ const RefractionDiagram = () => (
         ].map((t, i) => (
           <text key={i} x="45" y={303 + i * 14} className="fill-muted-foreground text-[9.5px]">{t}</text>
         ))}
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -110,7 +111,7 @@ const FibreopticsDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Fibreoptic Light Transmission</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Fibreoptic bundle cross-section showing core, cladding and a zig-zag light path undergoing total internal reflection along the fibre.">
+      <ZoomableSVG><svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Fibreoptic bundle cross-section showing core, cladding and a zig-zag light path undergoing total internal reflection along the fibre.">
         <text x="300" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Fibreoptic Bundle Structure</text>
 
         {/* Fibre cross-section */}
@@ -156,7 +157,7 @@ const FibreopticsDiagram = () => (
         {/* Key points */}
         <text x="20" y="370" className="fill-foreground text-[11px] font-bold">Key Points</text>
         <text x="30" y="388" className="fill-muted-foreground text-[9.5px]">• Typical fibres: 8–12 μm diameter, 10,000–30,000 per bundle • Numerical aperture = sin(acceptance angle) determines light-gathering</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -165,7 +166,7 @@ const BeerLambertDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Beer-Lambert Law</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 420" className="w-full h-auto" role="img" aria-label="Beer-Lambert law schematic: a monochromatic light source passes through a sample cuvette of concentration c and path length l, with intensity I detected on the far side.">
+      <ZoomableSVG><svg viewBox="0 0 600 420" className="w-full h-auto" role="img" aria-label="Beer-Lambert law schematic: a monochromatic light source passes through a sample cuvette of concentration c and path length l, with intensity I detected on the far side.">
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[14px] font-bold">A = ε × c × l</text>
         <text x="300" y="40" textAnchor="middle" className="fill-muted-foreground text-[9px]">Absorbance = molar absorptivity × concentration × path length</text>
 
@@ -214,7 +215,7 @@ const BeerLambertDiagram = () => (
         <text x="30" y="380" className="fill-muted-foreground text-[9.5px]">• Uses 2 wavelengths: 660 nm (red) and 940 nm (infrared)</text>
         <text x="30" y="398" className="fill-muted-foreground text-[9.5px]">• HbO₂ absorbs more IR; deoxy-Hb absorbs more red → ratio R = (AC₆₆₀/DC₆₆₀)/(AC₉₄₀/DC₉₄₀)</text>
         <text x="30" y="416" className="fill-muted-foreground text-[9.5px]">• R calibrated empirically against healthy volunteers (inaccurate below SpO₂ ~70%)</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -223,7 +224,7 @@ const SpectrophotometryDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Spectrophotometry & Absorption Spectra</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 450" className="w-full h-auto" role="img" aria-label="Absorption spectra of oxyhaemoglobin and deoxyhaemoglobin from 600 to 940 nanometres, showing the isobestic point near 800 nm and the two pulse-oximeter wavelengths at 660 and 940 nm.">
+      <ZoomableSVG><svg viewBox="0 0 600 450" className="w-full h-auto" role="img" aria-label="Absorption spectra of oxyhaemoglobin and deoxyhaemoglobin from 600 to 940 nanometres, showing the isobestic point near 800 nm and the two pulse-oximeter wavelengths at 660 and 940 nm.">
         <text x="300" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Absorption Spectra of Haemoglobin Species</text>
 
         <rect x="40" y="30" width="520" height="200" rx="8" fill="hsl(var(--secondary)/0.2)" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -282,7 +283,7 @@ const SpectrophotometryDiagram = () => (
 
         {/* Key fact */}
         <text x="300" y="440" textAnchor="middle" className="fill-foreground text-[10px] font-semibold">Isobestic point (~800 nm): HbO₂ and Hb absorb equally — used for calibration and total Hb measurement</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );

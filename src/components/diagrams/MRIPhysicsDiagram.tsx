@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { ZoomableSVG } from "./ZoomableSVG";
 
 const NuclearSpinTab = () => (
   <div className="space-y-4">
@@ -8,7 +9,7 @@ const NuclearSpinTab = () => (
     <p className="text-sm text-muted-foreground">
       Hydrogen nuclei (protons) possess spin and act as tiny magnets. In a strong magnetic field (B₀), they align and precess at the Larmor frequency.
     </p>
-    <svg viewBox="0 0 400 310" className="w-full max-w-md mx-auto" role="img" aria-label="A hydrogen proton precessing around the main magnetic field B₀ in a cone, with the Larmor equation omega-zero equals gamma times B-zero. Side panels show parallel-versus-anti-parallel alignment and the slight excess that produces the net magnetisation M-zero.">
+    <ZoomableSVG><svg viewBox="0 0 400 310" className="w-full max-w-md mx-auto" role="img" aria-label="A hydrogen proton precessing around the main magnetic field B₀ in a cone, with the Larmor equation omega-zero equals gamma times B-zero. Side panels show parallel-versus-anti-parallel alignment and the slight excess that produces the net magnetisation M-zero.">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">Proton Precession in B₀</text>
 
       {/* B₀ field arrow */}
@@ -78,7 +79,7 @@ const NuclearSpinTab = () => (
           <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
         </marker>
       </defs>
-    </svg>
+    </svg></ZoomableSVG>
 
     <div className="bg-card border border-border rounded-lg p-4 space-y-2">
       <h4 className="font-semibold text-sm text-foreground">Key Physics</h4>
@@ -97,7 +98,7 @@ const NuclearSpinTab = () => (
 const RelaxationTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">T1 & T2 Relaxation</h3>
-    <svg viewBox="0 0 400 340" className="w-full max-w-md mx-auto" role="img" aria-label="Two graphs side by side: T1 longitudinal recovery (Mz returns to M-zero after 63% recovery at one T1 time constant, faster for fat than water) and T2 transverse decay (Mxy falls to 37% remaining at one T2, with T2-star always faster than T2). Below, a tissue contrast table shows fat appears bright on T1-weighted images and water appears bright on T2-weighted images.">
+    <ZoomableSVG><svg viewBox="0 0 400 340" className="w-full max-w-md mx-auto" role="img" aria-label="Two graphs side by side: T1 longitudinal recovery (Mz returns to M-zero after 63% recovery at one T1 time constant, faster for fat than water) and T2 transverse decay (Mxy falls to 37% remaining at one T2, with T2-star always faster than T2). Below, a tissue contrast table shows fat appears bright on T1-weighted images and water appears bright on T2-weighted images.">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">Relaxation After RF Pulse</text>
 
       {/* T1 Recovery graph */}
@@ -179,7 +180,7 @@ const RelaxationTab = () => (
       <rect x="60" y="275" width="280" height="50" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
       <text x="200" y="295" textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))" fontWeight="bold">Mnemonic: "WW2" — Water is White on T2</text>
       <text x="200" y="315" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">T1 = anatomy (fat bright) • T2 = pathology (oedema/fluid bright)</text>
-    </svg>
+    </svg></ZoomableSVG>
 
     <div className="bg-card border border-border rounded-lg p-4 space-y-2">
       <h4 className="font-semibold text-sm text-foreground">Key Physics</h4>
@@ -198,7 +199,7 @@ const RelaxationTab = () => (
 const SafetyTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">MRI Safety for Anaesthetists</h3>
-    <svg viewBox="0 0 400 320" className="w-full max-w-md mx-auto" role="img" aria-label="Four MRI safety zones (I public, II screening, III controlled access, IV magnet room), the three principal hazards (missile effect, thermal burns from RF heating, and device malfunction), and the three equipment labels (MR Safe in green, MR Conditional in amber, MR Unsafe in red).">
+    <ZoomableSVG><svg viewBox="0 0 400 320" className="w-full max-w-md mx-auto" role="img" aria-label="Four MRI safety zones (I public, II screening, III controlled access, IV magnet room), the three principal hazards (missile effect, thermal burns from RF heating, and device malfunction), and the three equipment labels (MR Safe in green, MR Conditional in amber, MR Unsafe in red).">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">MRI Safety Zones</text>
 
       {/* Zone diagram */}
@@ -264,7 +265,7 @@ const SafetyTab = () => (
 
       {/* Anaesthetic considerations */}
       <text x="200" y="308" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="bold">MR-compatible: monitors, ventilator, infusion pumps, anaesthetic machine — all must be non-ferromagnetic</text>
-    </svg>
+    </svg></ZoomableSVG>
 
     <div className="bg-card border border-border rounded-lg p-4 space-y-2">
       <h4 className="font-semibold text-sm text-foreground">Anaesthetic Considerations for MRI</h4>

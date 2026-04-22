@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { ZoomableSVG } from "./ZoomableSVG";
 
 type Tab = "waveforms" | "impedance" | "pacemaker" | "emi";
 
@@ -14,7 +15,7 @@ const WaveformsDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Monophasic vs Biphasic Waveforms</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 380" className="w-full h-auto" role="img" aria-label="Comparison of a monophasic damped sinusoidal defibrillator waveform with a biphasic truncated exponential waveform, followed by a comparison table of energy, efficacy and myocardial damage.">
+      <ZoomableSVG><svg viewBox="0 0 600 380" className="w-full h-auto" role="img" aria-label="Comparison of a monophasic damped sinusoidal defibrillator waveform with a biphasic truncated exponential waveform, followed by a comparison table of energy, efficacy and myocardial damage.">
         {/* Monophasic */}
         <text x="150" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Monophasic (MDS)</text>
         <rect x="10" y="28" width="280" height="140" rx="8" fill="hsl(var(--secondary)/0.3)" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -69,7 +70,7 @@ const WaveformsDiagram = () => (
 
         {/* Key formula */}
         <text x="300" y="365" textAnchor="middle" className="fill-foreground text-[11px] font-semibold">Energy (J) = Power (W) × Time (s) = V × I × t</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -78,7 +79,7 @@ const ImpedanceDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Transthoracic Impedance (TTI)</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Schematic of the chest in cross-section showing two defibrillation pads, a heart, and the current pathway. Approximately 4% of delivered current traverses the heart.">
+      <ZoomableSVG><svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Schematic of the chest in cross-section showing two defibrillation pads, a heart, and the current pathway. Approximately 4% of delivered current traverses the heart.">
         {/* Chest cross-section schematic */}
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Current Pathway Through the Chest</text>
         
@@ -124,7 +125,7 @@ const ImpedanceDiagram = () => (
         {/* Pad positions */}
         <text x="20" y="375" className="fill-foreground text-[12px] font-bold">Pad Positions</text>
         <text x="30" y="395" className="fill-muted-foreground text-[10px]">• Anterolateral: right sternal edge (below clavicle) + left mid-axillary line (V6 position)</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -133,7 +134,7 @@ const PacemakerDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Pacemaker Modes (NBG Code)</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 480" className="w-full h-auto" role="img" aria-label="Five-position NASPE-BPEG generic pacemaker code with explanations and a list of common pacing modes including VVI, AAI, DDD, and asynchronous VOO/DOO with magnet application.">
+      <ZoomableSVG><svg viewBox="0 0 600 480" className="w-full h-auto" role="img" aria-label="Five-position NASPE-BPEG generic pacemaker code with explanations and a list of common pacing modes including VVI, AAI, DDD, and asynchronous VOO/DOO with magnet application.">
         {/* NBG code explanation */}
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">NASPE/BPEG Generic (NBG) Pacemaker Code</text>
 
@@ -175,7 +176,7 @@ const PacemakerDiagram = () => (
         <text x="20" y="440" className="fill-foreground text-[12px] font-bold">Temporary Pacing Methods</text>
         <text x="30" y="458" className="fill-muted-foreground text-[10px]">• Transcutaneous (external pads, painful, bridge only) • Transvenous (RV apex via central vein, reliable)</text>
         <text x="30" y="475" className="fill-muted-foreground text-[10px]">• Epicardial (post cardiac surgery) • Transoesophageal (atrial pacing only)</text>
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
@@ -184,7 +185,7 @@ const EMIDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Electromagnetic Interference & Perioperative Safety</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 500" className="w-full h-auto" role="img" aria-label="Sources of electromagnetic interference in the operating theatre and a three-phase pre, intra and post-operative management plan for patients with cardiac implantable electronic devices.">
+      <ZoomableSVG><svg viewBox="0 0 600 500" className="w-full h-auto" role="img" aria-label="Sources of electromagnetic interference in the operating theatre and a three-phase pre, intra and post-operative management plan for patients with cardiac implantable electronic devices.">
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Sources of EMI in Theatre</text>
 
         {[
@@ -219,7 +220,7 @@ const EMIDiagram = () => (
             ))}
           </g>
         ))}
-      </svg>
+      </svg></ZoomableSVG>
     </div>
   </div>
 );
