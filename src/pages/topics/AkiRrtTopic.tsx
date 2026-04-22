@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
