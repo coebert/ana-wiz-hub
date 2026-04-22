@@ -44,6 +44,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Standard for adults and children >2 years. First-line choice in routine elective and emergency adult intubation.",
     historicalNote: "Sir Robert Macintosh (Oxford, 1943) — observed the easier laryngeal view when a tonsillectomy gag pressed in the vallecula.",
+    keyPoints: [
+      "FRCA Primary — Equipment: identify the curved Macintosh blade and describe sizing (1–4) by patient age/build.",
+      "Force vector is 45° forward and upward along the handle; never lever on the upper incisors.",
+      "Indirect epiglottic elevation via the hyoepiglottic ligament — vallecular pressure is essential for view.",
+      "Default Plan A blade in DAS 2015 unanticipated difficult intubation algorithm for adults.",
+    ],
+    refs: ["Macintosh 1943", "Cormack & Lehane 1984", "DAS 2015"],
   },
   miller: {
     label: "Miller",
