@@ -110,6 +110,11 @@ const IcuSedationDeliriumTopic = () => {
       topicId="icu-sedation-delirium"
       topicTitle="ICU Sedation & Delirium"
       quizQuestions={icuSedationDeliriumQuestions}
+      sectionSources={{
+        objectives: ["BJA Educ 2017", "BJA Educ 2019"],
+        workedExamples: ["BJA Educ 2017", "DAS-Delirium"],
+        keyPoints: ["BJA Educ 2019", "DAS-Delirium"],
+      }}
       coreConcepts={
         <section className="space-y-6">
           {/* RASS */}
