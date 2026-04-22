@@ -5,9 +5,11 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { ExamSection } from "@/components/ExamSection";
 import { pulmonaryHypertensionQuestions } from "@/data/quizzes";
 import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram";
 import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratificationCalculator";
+import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDiagram";
 
 const keyPoints = [
   "Pulmonary hypertension is defined as a resting mean pulmonary artery pressure (mPAP) ≥20 mmHg (2022 ESC/ERS); pre-capillary PH additionally requires PAWP ≤15 mmHg and PVR >2 Wood units",
