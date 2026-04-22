@@ -283,6 +283,19 @@ const OLVTroubleshootingDiagram = () => {
           </div>
         </div>
       </CardContent>
+
+      <GuidedWalkthroughOverlay
+        open={walkthroughOpen}
+        onClose={() => setWalkthroughOpen(false)}
+        steps={walkthroughSteps}
+        stepIndex={activeStep}
+        onStepChange={(i) => {
+          setActiveStep(i);
+          setExpandedSteps((prev) => new Set(prev).add(i));
+        }}
+        title="OLV hypoxia — rescue walkthrough"
+        subtitle="Step through the algorithm; tick off each action as performed"
+      />
     </Card>
   );
 };
