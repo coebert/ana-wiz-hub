@@ -802,7 +802,7 @@ const NeurointensiveCareTopic = () => {
               The DBI consensus document is examined frequently in the FFICM. Remember the headline number — <strong>≥72 hours of full active treatment before WLST decisions</strong> — and the rationale (confounder exclusion, evolution of injury, organ donation opportunity, family preparation). Exceptions: meets brainstem death criteria, or absolute contraindication to ongoing care (e.g. no neurosurgical option for a clearly unsurvivable lesion in a patient with a valid advance decision refusing such care).
             </p>
           </div>
-        </div>
+        </ExamSection>
       </section>
 
       <div id="toc-synthesis" className="scroll-mt-24" />
