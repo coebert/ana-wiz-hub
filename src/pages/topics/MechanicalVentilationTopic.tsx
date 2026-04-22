@@ -112,7 +112,7 @@ const MechanicalVentilationTopic = () => {
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
         {/* ───── 1. Indications ───── */}
-        <div id="toc-introduction" className="scroll-mt-24">
+        <ExamSection id="toc-introduction" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Indications for Invasive Ventilation</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation is the most common organ support in ICU. Indications fall into four overlapping groups — recognising the dominant problem guides initial mode and settings.
@@ -137,7 +137,7 @@ const MechanicalVentilationTopic = () => {
         </div>
 
         {/* ───── 2. Respiratory mechanics ───── */}
-        <div id="toc-mechanics" className="scroll-mt-24">
+        <ExamSection id="toc-mechanics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">2. Respiratory Mechanics on the Ventilator</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Every ventilator setting is an attempt to deliver gas against the patient's <strong>compliance</strong> and <strong>resistance</strong>. The equation of motion summarises this:
@@ -197,7 +197,7 @@ const MechanicalVentilationTopic = () => {
         </div>
 
         {/* ───── 4. Modes ───── */}
-        <div id="toc-modes" className="scroll-mt-24">
+        <ExamSection id="toc-modes" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Ventilator Modes</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Every breath is defined by three variables: <strong>trigger</strong> (what starts it), <strong>limit / target</strong> (what controls it during inspiration), and <strong>cycle</strong> (what ends it).
@@ -231,7 +231,7 @@ const MechanicalVentilationTopic = () => {
         </div>
 
         {/* ───── 5. LPV & VILI ───── */}
-        <div id="toc-lung-protective" className="scroll-mt-24">
+        <ExamSection id="toc-lung-protective" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">5. Lung-Protective Ventilation & VILI</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             VILI is the iatrogenic injury produced by mechanical ventilation. The ARDSNet bundle limits the four mechanisms below and reduces mortality by ~9% absolute (NEJM 2000).
@@ -276,7 +276,7 @@ const MechanicalVentilationTopic = () => {
         </div>
 
         {/* ───── 6. Dyssynchrony ───── */}
-        <div id="toc-dyssynchrony" className="scroll-mt-24">
+        <ExamSection id="toc-dyssynchrony" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6. Patient–Ventilator Dyssynchrony</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Occurs in ~25% of ventilated patients; ≥ 10% of breaths dyssynchronous independently predicts mortality and prolonged ventilation. Recognition is by waveform inspection — a core EDIC/FFICM SOE skill.
@@ -303,14 +303,14 @@ const MechanicalVentilationTopic = () => {
         </div>
 
         {/* ───── 7. Brief weaning placeholder (full section later) ───── */}
-        <div id="toc-weaning" className="scroll-mt-24">
+        <ExamSection id="toc-weaning" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Weaning — Overview</h2>
           <p className="text-muted-foreground leading-relaxed">
             Weaning accounts for ~40% of total ventilation time. WIND classification: <strong>simple</strong> (extubated on first SBT, ~60%), <strong>difficult</strong> (1–7 days / 2–3 SBTs), <strong>prolonged</strong> (&gt; 7 days or &gt; 3 SBTs). Daily paired SAT + SBT (ABC trial — Girard, Lancet 2008) reduce ventilator days. Detailed extubation criteria, cuff-leak test and high-risk extubation are covered in <a href="#toc-tracheostomy" className="text-primary hover:underline">section 11–12</a>.
           </p>
         </div>
 
-        <div id="toc-aprv" className="scroll-mt-24">
+        <ExamSection id="toc-aprv" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Pressure Release Ventilation (APRV)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is a time-cycled, pressure-limited mode that maintains a prolonged high airway pressure (P<sub>high</sub>) to recruit and hold open alveoli, with brief intermittent releases to a low pressure (P<sub>low</sub>) to allow CO₂ clearance. Crucially, the patient can breathe spontaneously throughout the entire cycle, which preserves diaphragmatic tone, improves V/Q matching, and reduces sedation requirements.
@@ -370,7 +370,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </div>
 
-        <div id="toc-advanced" className="scroll-mt-24">
+        <ExamSection id="toc-advanced" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Advanced Ventilator Strategies</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             When conventional lung-protective ventilation fails to achieve adequate gas exchange in severe ARDS (P/F ratio &lt;150 despite optimised PEEP and FiO₂), several rescue strategies should be considered. These are adjuncts to — not replacements for — standard lung-protective ventilation.
@@ -521,7 +521,7 @@ const MechanicalVentilationTopic = () => {
           </ol>
         </div>
 
-        <div id="toc-vap" className="scroll-mt-24">
+        <ExamSection id="toc-vap" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Pneumonia (VAP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             VAP is a nosocomial pneumonia developing ≥48 hours after endotracheal intubation. It affects 5–40% of mechanically ventilated patients, increases ICU mortality by 5–13%, and prolongs mechanical ventilation by 7–9 days. Pathogenesis involves aspiration of oropharyngeal secretions past the ETT cuff, biofilm formation on the endotracheal tube, and impaired mucociliary clearance.
@@ -701,7 +701,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div id="toc-tracheostomy" className="scroll-mt-24">
+        <ExamSection id="toc-tracheostomy" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy in the ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Tracheostomy is performed in ~10–15% of mechanically ventilated ICU patients. Potential benefits include reduced dead space, improved secretion management, lower sedation requirements, facilitated weaning, and improved patient comfort and communication. However, optimal timing remains debated.
@@ -881,7 +881,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div id="toc-hfno-niv" className="scroll-mt-24">
+        <ExamSection id="toc-hfno-niv" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High-Flow Nasal Oxygen (HFNO)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             HFNO delivers heated, humidified oxygen at flow rates of 30–70 L/min via wide-bore nasal cannulae. It has transformed the management of acute hypoxaemic respiratory failure and is increasingly used across pre-oxygenation, post-extubation support, and as an alternative to NIV.
@@ -1059,7 +1059,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </div>
 
-        <div id="toc-longterm" className="scroll-mt-24">
+        <ExamSection id="toc-longterm" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Induced Diaphragmatic Dysfunction (VIDD)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation itself injures the diaphragm. Diaphragmatic atrophy begins within <span className="font-semibold text-foreground">18–69 hours</span> of controlled ventilation (Levine et al., 2008) and is a major contributor to weaning failure, prolonged ICU stay, and increased mortality.
