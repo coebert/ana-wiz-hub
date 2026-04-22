@@ -192,7 +192,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <div id="toc-status" className="scroll-mt-24">
+        <ExamSection id="toc-status" exams={["primary", "final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Status Epilepticus</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness. Medical emergency — time-critical escalation.
@@ -209,7 +209,7 @@ const NeurointensiveCareTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
         <div id="toc-sah" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Subarachnoid Haemorrhage (SAH)</h2>
