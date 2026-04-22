@@ -157,11 +157,30 @@ const bladeOrder: BladeKey[] = ["macintosh", "miller", "mccoy", "polio", "wiscon
 interface BladeShapeProps {
   bladeKey: BladeKey;
   opacity?: number;
+  /** When true, render the animated tip trajectory + target halo overlay */
+  animate?: boolean;
 }
 
-const BladeShape = ({ bladeKey, opacity = 1 }: BladeShapeProps) => {
+/**
+ * Per-blade animation metadata.
+ *  - path: SVG path the moving tip follows (start of insertion → final target).
+ *  - target: anatomy point that pulses while the tip arrives.
+ *  - targetLabel: short caption rendered next to the halo.
+ *  - dur: motion duration in seconds.
+ */
+const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: number; r: number; label: string }; dur: number }> = {
+  macintosh:         { path: "M40,118 Q90,150 148,148",                 target: { x: 148, y: 148, r: 7,  label: "Vallecula" },                dur: 2.4 },
+  miller:            { path: "M40,118 Q100,135 160,124 Q168,122 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
+  mccoy:             { path: "M40,118 Q90,150 145,150",                 target: { x: 145, y: 150, r: 7,  label: "Vallecula (then flex tip)" }, dur: 2.4 },
+  polio:             { path: "M55,118 Q95,150 148,150",                 target: { x: 148, y: 150, r: 7,  label: "Vallecula" },                dur: 2.4 },
+  wisconsin:         { path: "M40,116 Q100,130 160,122 Q168,120 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
+  videolaryngoscope: { path: "M40,118 Q70,150 100,170 Q140,185 158,166", target: { x: 178, y: 105, r: 8,  label: "Glottic view (camera)" },    dur: 3.0 },
+};
+
+const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps) => {
   const b = blades[bladeKey];
   const gradId = `blade-${bladeKey}`;
+  const traj = tipTrajectory[bladeKey];
 
   return (
     <svg viewBox="0 0 220 240" className="w-full max-w-[260px] mx-auto" style={{ opacity }}>
