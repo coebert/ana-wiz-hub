@@ -482,8 +482,25 @@ export const LaryngoscopeBladesDiagram = () => {
 
         <TabsContent value="diagram" className="mt-3">
           <div className="grid sm:grid-cols-[1fr_1.2fr] gap-4 items-start">
-            <div className="rounded-lg bg-secondary/20 border border-border p-2">
-              <BladeShape bladeKey={selected} />
+            <div className="rounded-lg bg-secondary/20 border border-border p-2 space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[11px] text-muted-foreground">
+                  Target: <span className="font-semibold" style={{ color: info.color }}>{traj.target.label}</span>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setAnimate(a => !a)}
+                  aria-pressed={animate}
+                  className={`px-2 py-0.5 rounded text-[11px] border transition-colors ${
+                    animate
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {animate ? "⏸ Pause" : "▶ Animate tip"}
+                </button>
+              </div>
+              <BladeShape bladeKey={selected} animate={animate} />
             </div>
             <div className="space-y-2 text-xs">
               <div>
