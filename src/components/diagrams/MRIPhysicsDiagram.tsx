@@ -302,8 +302,16 @@ const MRIPhysicsDiagram = () => {
             numbers="ω₀ = γ × B₀. At 1.5 T → 42.58 × 1.5 = 63.87 MHz. At 3 T → 42.58 × 3 = 127.74 MHz. SAR scales with B₀² for a given sequence, so 3 T deposits roughly 4× the RF energy per kilogram."
             takeaway="The RF transmit chain must be tuned to 64 MHz at 1.5 T or 128 MHz at 3 T. Higher field strengths give better SNR but a much higher SAR — tighter scanning duty cycles and a higher index of suspicion for thermal injury (loops of wire, ECG leads, tattoos)."
           />
-        </TabsContent>
-        <TabsContent value="relaxation">
+          <DiagramLearningPoints
+            anchorId="nuclear-spin"
+            anchorLabel="Nuclear Spin & Precession"
+            points={[
+              "¹H protons (spin ½) align parallel/anti-parallel in B₀; small parallel excess gives net M₀.",
+              "Larmor equation: ω₀ = γ × B₀ (γ for ¹H = 42.58 MHz/T).",
+              "Resonance: an RF pulse at ω₀ tips M₀ into the transverse plane (90° flip); 180° inverts M₀.",
+              "Higher B₀ → higher SNR but quadratically higher SAR (∝ B₀²) and more artefact.",
+            ]}
+          />
           <RelaxationTab />
           <WorkedExampleCallout
             title="Choosing the sequence for a suspected stroke"
@@ -311,8 +319,17 @@ const MRIPhysicsDiagram = () => {
             numbers="T1-weighted (short TR ~500 ms, short TE ~15 ms) makes fat bright and water dark — best for anatomy. T2-weighted (long TR ~3,000 ms, long TE ~90 ms) makes water bright and fat dark — best for oedema, CSF and pathology. DWI is even more sensitive in the first hours of stroke, but T2/FLAIR remains the workhorse on most curricula."
             takeaway="'WW2' — Water is White on T2. T1 = anatomy, T2 = pathology. Gadolinium shortens T1 and brightens enhancing lesions on post-contrast T1-weighted images."
           />
-        </TabsContent>
-        <TabsContent value="safety">
+          <DiagramLearningPoints
+            anchorId="relaxation"
+            anchorLabel="T1 & T2 Relaxation"
+            points={[
+              "T1 (spin-lattice): longitudinal recovery; time to 63% of M₀ — fat short, water long.",
+              "T2 (spin-spin): transverse decay; time to 37% remaining — fat short, water long.",
+              "T2* < T2 always (includes B₀ field inhomogeneity dephasing).",
+              "T1W (short TR/TE) = anatomy; T2W (long TR/TE) = pathology — 'WW2: Water is White on T2'.",
+              "Gadolinium shortens T1 → bright on T1W; avoid if eGFR <30 (NSF risk).",
+            ]}
+          />
           <SafetyTab />
           <WorkedExampleCallout
             title="Anaesthesia for paediatric brain MRI"
@@ -320,8 +337,17 @@ const MRIPhysicsDiagram = () => {
             numbers="Pre-screen: implants, prior surgery, foreign bodies, eGFR (avoid gadolinium if eGFR <30 → NSF risk). Equipment: MR-conditional anaesthetic machine and monitor, non-ferromagnetic laryngoscope and trolley, aluminium gas cylinders, long sampling lines for capnography, fibreoptic ECG cables to avoid focal burns. Brief the team on the quench drill and noise (>99 dB inside the bore)."
             takeaway="Treat MRI as a remote, hazardous environment: only MR-conditional kit beyond Zone IV, long IV/breathing extensions, dedicated MR-trained team, and a documented quench-and-evacuation plan before any case starts."
           />
-        </TabsContent>
-      </Tabs>
+          <DiagramLearningPoints
+            anchorId="safety"
+            anchorLabel="MRI Safety for Anaesthetists"
+            points={[
+              "Four zones: I (public) → II (screening) → III (controlled) → IV (magnet room).",
+              "Three hazards: missile/projectile, thermal (RF heating, SAR), device malfunction.",
+              "Equipment labels: MR Safe (green), MR Conditional (amber), MR Unsafe (red).",
+              "Quench = rapid helium boil-off → asphyxiation risk; emergency O₂ + evacuation plan mandatory.",
+              "Monitoring: MR-conditional pulse oximetry, capnography (long sampling line), fibreoptic ECG.",
+            ]}
+          />
     </div>
   );
 };
