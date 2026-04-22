@@ -7,6 +7,7 @@ import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
 import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
 import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
+import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
@@ -462,6 +463,8 @@ const CardiothoracicTopic = () => {
           </p>
 
           <CardiacArrestPostCardiacSurgeryDiagram />
+
+          <ArrestTimeWindowWidget />
 
           <div className="grid sm:grid-cols-2 gap-3 mt-4">
             <div className="p-4 rounded-lg border border-border">
