@@ -6,6 +6,7 @@ import { cardiothoracicQuestions } from "@/data/quizzes";
 import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
 import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
+import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
