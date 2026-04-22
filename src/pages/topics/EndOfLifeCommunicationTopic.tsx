@@ -200,24 +200,9 @@ const EndOfLifeCommunicationTopic = () => {
           ]}
         />
 
-        <ReferencesList
-          references={[
-            { title: "FICM / ICS — Care at the End of Life: A guide to best practice (2019)", url: "https://www.ficm.ac.uk/standards-research-revalidation/care-end-life" },
-            { title: "GMC — Treatment and care towards the end of life: good practice in decision making", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/end-of-life-care" },
-            { title: "Lautrette A et al. A communication strategy and brochure for relatives of patients dying in the ICU. NEJM 2007;356:469–78." },
-            { title: "Baile WF et al. SPIKES — A six-step protocol for delivering bad news. Oncologist 2000;5:302–11." },
-            { title: "Mental Capacity Act 2005 (UK)" },
-            { title: "Re Y [2018] UKSC 46 — Court ruling on withdrawal of CANH" },
-          ]}
-        />
+        <ReferencesList topicId="end-of-life-communication" />
 
-        <SeeAlso
-          items={[
-            { label: "Prognostication, Ethics & Outcomes", path: "/intensive-care/prognostication-ethics-icu" },
-            { label: "Organ Donation", path: "/intensive-care/organ-donation" },
-            { label: "Non-Technical Skills & Human Factors", path: "/intensive-care/non-technical-skills" },
-          ]}
-        />
+        <SeeAlso topicId="end-of-life-communication" />
 
         <QuizSection questions={quiz} />
 

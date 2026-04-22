@@ -207,25 +207,9 @@ const NonTechnicalSkillsTopic = () => {
           ]}
         />
 
-        <ReferencesList
-          references={[
-            { title: "Fletcher G et al. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. BJA 2003;90:580–8." },
-            { title: "Royal College of Anaesthetists — ANTS handbook", url: "https://www.rcoa.ac.uk" },
-            { title: "Reason J. Human error: models and management. BMJ 2000;320:768–70." },
-            { title: "NHS England — Patient Safety Incident Response Framework (PSIRF), 2022", url: "https://www.england.nhs.uk/patient-safety/patient-safety-insight/incident-response-framework/" },
-            { title: "Marx D. Patient Safety and the 'Just Culture': A Primer for Health Care Executives, 2001." },
-            { title: "Clinical Human Factors Group — Elaine Bromiley case", url: "https://chfg.org" },
-            { title: "Rall M, Gaba DM. Human performance and patient safety. In: Miller's Anesthesia, 8th ed." },
-          ]}
-        />
+        <ReferencesList topicId="non-technical-skills" />
 
-        <SeeAlso
-          items={[
-            { label: "End-of-Life Care & Communication", path: "/intensive-care/end-of-life-communication" },
-            { label: "Clinical Incidents & Patient Safety", path: "/clinical/clinical-incidents" },
-            { label: "Transfer Medicine", path: "/clinical/transfer-medicine" },
-          ]}
-        />
+        <SeeAlso topicId="non-technical-skills" />
 
         <QuizSection questions={quiz} />
 
