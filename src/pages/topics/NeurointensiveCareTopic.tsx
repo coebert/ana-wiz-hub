@@ -211,7 +211,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <div id="toc-sah" className="scroll-mt-24">
+        <ExamSection id="toc-sah" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Subarachnoid Haemorrhage (SAH)</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -223,7 +223,7 @@ const NeurointensiveCareTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Rebleeding (highest risk day 1 — secure aneurysm early). Vasospasm (days 3–14, peak day 7 — nimodipine 60 mg 4-hourly, triple-H therapy). Hydrocephalus (EVD). Hyponatraemia (cerebral salt wasting vs SIADH).</p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         <div id="toc-bsd" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brain Death & Brainstem Testing</h2>
