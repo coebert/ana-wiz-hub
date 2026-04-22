@@ -151,16 +151,16 @@ const PreoperativeAssessmentTopic = () => {
         }
       >
         <div className="grid sm:grid-cols-3 gap-3 mb-4">
-          <div className="p-4 rounded-lg border-2 border-emerald-500/40 bg-emerald-500/5">
-            <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mb-2" />
+          <div className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
+            <CheckCircle2 className="h-5 w-5 text-perioperative mb-2" />
             <p className="font-semibold text-foreground text-sm">PROCEED</p>
             <p className="text-xs font-mono text-muted-foreground mt-1">Clinic BP &lt; 160/100</p>
             <p className="text-sm text-muted-foreground mt-2 leading-snug">
               No additional preoperative action required. Continue usual antihypertensives (omit ACE-I / ARB on day of surgery).
             </p>
           </div>
-          <div className="p-4 rounded-lg border-2 border-amber-500/40 bg-amber-500/5">
-            <AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400 mb-2" />
+          <div className="p-4 rounded-lg border-2 border-accent/40 bg-accent/5">
+            <AlertTriangle className="h-5 w-5 text-accent mb-2" />
             <p className="font-semibold text-foreground text-sm">PROCEED WITH CAUTION</p>
             <p className="text-xs font-mono text-muted-foreground mt-1">160–179 / 100–109</p>
             <p className="text-sm text-muted-foreground mt-2 leading-snug">
