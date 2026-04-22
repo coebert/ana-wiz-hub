@@ -174,9 +174,75 @@ export const MechanismCascadeDiagram = ({
           >
             Step {step + 1} · {current.title}
           </p>
-          <p className="text-sm text-foreground leading-relaxed">{current.body}</p>
+          <p className="text-sm text-foreground leading-relaxed">
+            {current.body}
+            {currentSourceIndexes.length > 0 && (
+              <span className="ml-1 inline-flex items-baseline gap-0.5 align-baseline">
+                {currentSourceIndexes.map((n, i) => {
+                  const src = bibliography.list[n - 1];
+                  return (
+                    <a
+                      key={src.url}
+                      href={src.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${src.label} — ${src.citation}`}
+                      className="text-[10px] font-bold align-super rounded-sm px-1 transition-colors hover:underline"
+                      style={{
+                        color: accentVar,
+                        backgroundColor: `hsl(var(--${accent}) / 0.12)`,
+                      }}
+                    >
+                      [{n}]{i < currentSourceIndexes.length - 1 ? "" : ""}
+                    </a>
+                  );
+                })}
+              </span>
+            )}
+          </p>
         </div>
       </div>
+
+      {/* Consolidated bibliography */}
+      {bibliography.list.length > 0 && (
+        <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
+          <div className="flex items-center gap-1.5 mb-2">
+            <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+            <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+              Sources for this cascade
+            </p>
+          </div>
+          <ol className="space-y-1.5 list-none">
+            {bibliography.list.map((src, i) => (
+              <li
+                key={src.url}
+                className="text-[11px] text-muted-foreground leading-relaxed flex gap-1.5"
+              >
+                <span
+                  className="font-bold shrink-0"
+                  style={{ color: accentVar }}
+                >
+                  [{i + 1}]
+                </span>
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline group/cite"
+                >
+                  <span className="font-semibold text-foreground">{src.label}</span>
+                  {" — "}
+                  <span className="group-hover/cite:text-foreground">{src.citation}</span>
+                  <ExternalLink
+                    className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
+                    style={{ color: accentVar }}
+                  />
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </div>
   );
 };
