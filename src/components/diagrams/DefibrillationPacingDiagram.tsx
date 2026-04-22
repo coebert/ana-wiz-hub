@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { WorkedExampleCallout } from "./WorkedExampleCallout";
 
 type Tab = "waveforms" | "impedance" | "pacemaker" | "emi";
 
@@ -13,7 +14,7 @@ const WaveformsDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Monophasic vs Biphasic Waveforms</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 380" className="w-full h-auto">
+      <svg viewBox="0 0 600 380" className="w-full h-auto" role="img" aria-label="Comparison of a monophasic damped sinusoidal defibrillator waveform with a biphasic truncated exponential waveform, followed by a comparison table of energy, efficacy and myocardial damage.">
         {/* Monophasic */}
         <text x="150" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Monophasic (MDS)</text>
         <rect x="10" y="28" width="280" height="140" rx="8" fill="hsl(var(--secondary)/0.3)" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -22,8 +23,10 @@ const WaveformsDiagram = () => (
         <line x1="40" y1="45" x2="40" y2="155" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
         <text x="35" y="50" textAnchor="end" className="fill-muted-foreground text-[8px]">+</text>
         <text x="270" y="152" className="fill-muted-foreground text-[8px]">ms</text>
-        {/* Monophasic damped sinusoidal */}
-        <path d="M 40 140 Q 60 40, 100 60 Q 140 80, 180 120 Q 210 135, 250 140" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+        {/* Monophasic damped sinusoidal — animated draw-on */}
+        <path d="M 40 140 Q 60 40, 100 60 Q 140 80, 180 120 Q 210 135, 250 140" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="400" strokeDashoffset="400">
+          <animate attributeName="stroke-dashoffset" from="400" to="0" dur="1.6s" repeatCount="indefinite" />
+        </path>
         <text x="150" y="55" textAnchor="middle" className="fill-destructive text-[9px] font-medium">Single polarity</text>
         <text x="150" y="105" textAnchor="middle" className="fill-muted-foreground text-[9px]">Current flows one direction</text>
 
@@ -34,9 +37,13 @@ const WaveformsDiagram = () => (
         <line x1="340" y1="45" x2="340" y2="155" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
         <text x="335" y="50" textAnchor="end" className="fill-muted-foreground text-[8px]">+</text>
         <text x="335" y="155" textAnchor="end" className="fill-muted-foreground text-[8px]">−</text>
-        {/* Biphasic truncated exponential */}
-        <path d="M 340 100 L 345 55 Q 380 58, 430 70 L 430 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
-        <path d="M 430 100 L 430 130 Q 470 128, 520 118 L 520 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        {/* Biphasic truncated exponential — animated draw-on */}
+        <path d="M 340 100 L 345 55 Q 380 58, 430 70 L 430 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeDasharray="200" strokeDashoffset="200">
+          <animate attributeName="stroke-dashoffset" from="200" to="0" dur="0.8s" begin="0s;reanim.end+0.8s" id="phase1" repeatCount="1" fill="freeze" />
+        </path>
+        <path d="M 430 100 L 430 130 Q 470 128, 520 118 L 520 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeDasharray="200" strokeDashoffset="200">
+          <animate attributeName="stroke-dashoffset" from="200" to="0" dur="0.8s" begin="phase1.end" id="reanim" repeatCount="1" fill="freeze" />
+        </path>
         <text x="385" y="53" textAnchor="middle" className="fill-primary text-[9px] font-medium">Phase 1 (+)</text>
         <text x="475" y="145" textAnchor="middle" className="fill-primary text-[9px] font-medium">Phase 2 (−)</text>
 
@@ -71,7 +78,7 @@ const ImpedanceDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Transthoracic Impedance (TTI)</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 400" className="w-full h-auto">
+      <svg viewBox="0 0 600 400" className="w-full h-auto" role="img" aria-label="Schematic of the chest in cross-section showing two defibrillation pads, a heart, and the current pathway. Approximately 4% of delivered current traverses the heart.">
         {/* Chest cross-section schematic */}
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Current Pathway Through the Chest</text>
         
@@ -88,9 +95,13 @@ const ImpedanceDiagram = () => (
         <rect x="405" y="130" width="40" height="20" rx="4" fill="hsl(var(--primary))" />
         <text x="425" y="144" textAnchor="middle" fill="#fff" className="text-[8px] font-bold">PAD</text>
 
-        {/* Current path */}
-        <path d="M 195 90 Q 250 100, 265 120" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4" />
-        <path d="M 335 140 Q 370 145, 405 140" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4" />
+        {/* Current path with travelling pulse */}
+        <path id="def-currentPath" d="M 195 90 Q 250 100, 265 120 L 335 140 Q 370 145, 405 140" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4" />
+        <circle r="3" fill="hsl(var(--primary))">
+          <animateMotion dur="1.4s" repeatCount="indefinite">
+            <mpath href="#def-currentPath" />
+          </animateMotion>
+        </circle>
         <text x="300" y="175" textAnchor="middle" className="fill-muted-foreground text-[9px]">Only ~4% of current traverses the heart</text>
 
         {/* TTI value */}
@@ -122,7 +133,7 @@ const PacemakerDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Pacemaker Modes (NBG Code)</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 480" className="w-full h-auto">
+      <svg viewBox="0 0 600 480" className="w-full h-auto" role="img" aria-label="Five-position NASPE-BPEG generic pacemaker code with explanations and a list of common pacing modes including VVI, AAI, DDD, and asynchronous VOO/DOO with magnet application.">
         {/* NBG code explanation */}
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">NASPE/BPEG Generic (NBG) Pacemaker Code</text>
 
@@ -173,7 +184,7 @@ const EMIDiagram = () => (
   <div className="space-y-4">
     <h4 className="font-semibold text-foreground">Electromagnetic Interference & Perioperative Safety</h4>
     <div className="bg-secondary/30 rounded-xl p-5 border border-border">
-      <svg viewBox="0 0 600 500" className="w-full h-auto">
+      <svg viewBox="0 0 600 500" className="w-full h-auto" role="img" aria-label="Sources of electromagnetic interference in the operating theatre and a three-phase pre, intra and post-operative management plan for patients with cardiac implantable electronic devices.">
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Sources of EMI in Theatre</text>
 
         {[
@@ -234,10 +245,50 @@ const DefibrillationPacingDiagram = () => {
         ))}
       </div>
 
-      {activeTab === "waveforms" && <WaveformsDiagram />}
-      {activeTab === "impedance" && <ImpedanceDiagram />}
-      {activeTab === "pacemaker" && <PacemakerDiagram />}
-      {activeTab === "emi" && <EMIDiagram />}
+      {activeTab === "waveforms" && (
+        <>
+          <WaveformsDiagram />
+          <WorkedExampleCallout
+            title="Capacitor energy in a defibrillator"
+            scenario="A 32 µF capacitor is charged to 5,000 V before discharge across a patient with VF."
+            numbers="E = ½CV² = 0.5 × 32 × 10⁻⁶ × (5,000)² = 400 J stored. With transthoracic impedance ~75 Ω, only ~4% reaches the myocardium. Biphasic devices then use impedance compensation to deliver a consistent transmyocardial current."
+            takeaway="Selected energy on the front panel (e.g. 200 J) is what the device delivers into a 50 Ω test load — only a small fraction reaches the heart, which is why pad contact, expiration phase and gel pads matter so much."
+          />
+        </>
+      )}
+      {activeTab === "impedance" && (
+        <>
+          <ImpedanceDiagram />
+          <WorkedExampleCallout
+            title="Reducing TTI at the bedside"
+            scenario="A hairy-chested adult arrests in the resus bay. Initial 200 J biphasic shock fails to terminate VF."
+            numbers="Manoeuvres that drop TTI: shave the chest under the pads, apply firm 25 lb pressure, deliver during expiration, ensure conductive gel pads, and use the largest adult pads available. Each repeated shock also lowers TTI as tissue conductivity rises."
+            takeaway="Before escalating energy, optimise pad contact — a 20–30% drop in TTI translates directly into a higher transmyocardial current at the same selected energy."
+          />
+        </>
+      )}
+      {activeTab === "pacemaker" && (
+        <>
+          <PacemakerDiagram />
+          <WorkedExampleCallout
+            title="Magnet over a DDD pacemaker"
+            scenario="A 78-year-old DDD-paced for complete heart block is listed for laparoscopic cholecystectomy with monopolar diathermy."
+            numbers="A magnet placed over the generator typically converts the device to DOO (dual-chamber asynchronous) at a fixed magnet rate — sensing is disabled, eliminating the risk of EMI-induced inhibition. The magnet rate also indicates battery status (rate falls as the battery depletes)."
+            takeaway="DDD → DOO via magnet is safe for diathermy in a pacing-dependent patient — but always interrogate the device pre-op to confirm the magnet response, and re-interrogate post-op to confirm settings are unchanged."
+          />
+        </>
+      )}
+      {activeTab === "emi" && (
+        <>
+          <EMIDiagram />
+          <WorkedExampleCallout
+            title="ICD patient for elective surgery"
+            scenario="A 65-year-old with an ICD for ischaemic cardiomyopathy is listed for inguinal hernia repair under GA with monopolar diathermy."
+            numbers="Pre-op: interrogate the device, document anti-tachy zones. Intra-op: apply external defib pads BEFORE disabling anti-tachy therapies (magnet OR reprogramming). Use bipolar diathermy where possible; monopolar in <5 s bursts with the return pad on the thigh so the current vector avoids the generator. Post-op: re-enable anti-tachy therapies before leaving recovery."
+            takeaway="Disabling an ICD without external defib pads in place is unsafe — the patient is unprotected from VT/VF until the ICD is reactivated."
+          />
+        </>
+      )}
     </div>
   );
 };

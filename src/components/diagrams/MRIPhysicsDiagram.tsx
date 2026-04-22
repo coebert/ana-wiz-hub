@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { WorkedExampleCallout } from "./WorkedExampleCallout";
 
 const NuclearSpinTab = () => (
   <div className="space-y-4">
@@ -7,7 +8,7 @@ const NuclearSpinTab = () => (
     <p className="text-sm text-muted-foreground">
       Hydrogen nuclei (protons) possess spin and act as tiny magnets. In a strong magnetic field (B₀), they align and precess at the Larmor frequency.
     </p>
-    <svg viewBox="0 0 400 310" className="w-full max-w-md mx-auto">
+    <svg viewBox="0 0 400 310" className="w-full max-w-md mx-auto" role="img" aria-label="A hydrogen proton precessing around the main magnetic field B₀ in a cone, with the Larmor equation omega-zero equals gamma times B-zero. Side panels show parallel-versus-anti-parallel alignment and the slight excess that produces the net magnetisation M-zero.">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">Proton Precession in B₀</text>
 
       {/* B₀ field arrow */}
@@ -96,7 +97,7 @@ const NuclearSpinTab = () => (
 const RelaxationTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">T1 & T2 Relaxation</h3>
-    <svg viewBox="0 0 400 340" className="w-full max-w-md mx-auto">
+    <svg viewBox="0 0 400 340" className="w-full max-w-md mx-auto" role="img" aria-label="Two graphs side by side: T1 longitudinal recovery (Mz returns to M-zero after 63% recovery at one T1 time constant, faster for fat than water) and T2 transverse decay (Mxy falls to 37% remaining at one T2, with T2-star always faster than T2). Below, a tissue contrast table shows fat appears bright on T1-weighted images and water appears bright on T2-weighted images.">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">Relaxation After RF Pulse</text>
 
       {/* T1 Recovery graph */}
@@ -110,8 +111,10 @@ const RelaxationTab = () => (
       <text x="32" y="105" fontSize="6" fill="hsl(var(--muted-foreground))" transform="rotate(-90,32,105)">Mz</text>
       <text x="110" y="156" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Time</text>
 
-      {/* T1 curve - exponential recovery */}
-      <path d="M 42 142 Q 70 140, 90 115 Q 110 95, 130 82 Q 150 74, 175 72" stroke="#10B981" strokeWidth="2.5" fill="none" />
+      {/* T1 curve - exponential recovery, animated draw-on */}
+      <path d="M 42 142 Q 70 140, 90 115 Q 110 95, 130 82 Q 150 74, 175 72" stroke="#10B981" strokeWidth="2.5" fill="none" strokeDasharray="180" strokeDashoffset="180">
+        <animate attributeName="stroke-dashoffset" from="180" to="0" dur="2.4s" repeatCount="indefinite" />
+      </path>
       <text x="170" y="68" fontSize="7" fill="#10B981" fontWeight="bold">M₀</text>
 
       {/* T1 marker */}
@@ -136,8 +139,10 @@ const RelaxationTab = () => (
       <text x="222" y="105" fontSize="6" fill="hsl(var(--muted-foreground))" transform="rotate(-90,222,105)">Mxy</text>
       <text x="300" y="156" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Time</text>
 
-      {/* T2 curve - exponential decay */}
-      <path d="M 232 72 Q 260 78, 280 100 Q 300 120, 320 132 Q 340 140, 365 143" stroke="hsl(var(--destructive))" strokeWidth="2.5" fill="none" />
+      {/* T2 curve - exponential decay, animated draw-on */}
+      <path d="M 232 72 Q 260 78, 280 100 Q 300 120, 320 132 Q 340 140, 365 143" stroke="hsl(var(--destructive))" strokeWidth="2.5" fill="none" strokeDasharray="180" strokeDashoffset="180">
+        <animate attributeName="stroke-dashoffset" from="180" to="0" dur="2.4s" repeatCount="indefinite" />
+      </path>
 
       {/* T2 marker */}
       <line x1="280" y1="145" x2="280" y2="100" stroke="hsl(var(--destructive))" strokeWidth="1" strokeDasharray="3,2" />
@@ -193,7 +198,7 @@ const RelaxationTab = () => (
 const SafetyTab = () => (
   <div className="space-y-4">
     <h3 className="text-lg font-semibold text-foreground">MRI Safety for Anaesthetists</h3>
-    <svg viewBox="0 0 400 320" className="w-full max-w-md mx-auto">
+    <svg viewBox="0 0 400 320" className="w-full max-w-md mx-auto" role="img" aria-label="Four MRI safety zones (I public, II screening, III controlled access, IV magnet room), the three principal hazards (missile effect, thermal burns from RF heating, and device malfunction), and the three equipment labels (MR Safe in green, MR Conditional in amber, MR Unsafe in red).">
       <text x="200" y="18" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="bold">MRI Safety Zones</text>
 
       {/* Zone diagram */}
@@ -287,9 +292,33 @@ const MRIPhysicsDiagram = () => {
           <TabsTrigger value="relaxation" className="text-xs">T1/T2 Relaxation</TabsTrigger>
           <TabsTrigger value="safety" className="text-xs">MRI Safety</TabsTrigger>
         </TabsList>
-        <TabsContent value="spin"><NuclearSpinTab /></TabsContent>
-        <TabsContent value="relaxation"><RelaxationTab /></TabsContent>
-        <TabsContent value="safety"><SafetyTab /></TabsContent>
+        <TabsContent value="spin">
+          <NuclearSpinTab />
+          <WorkedExampleCallout
+            title="Larmor frequency at 1.5 T vs 3 T"
+            scenario="An MRI department has both a 1.5 T and a 3 T scanner. Calculate the proton Larmor frequency at each field strength (γ for ¹H = 42.58 MHz/T)."
+            numbers="ω₀ = γ × B₀. At 1.5 T → 42.58 × 1.5 = 63.87 MHz. At 3 T → 42.58 × 3 = 127.74 MHz. SAR scales with B₀² for a given sequence, so 3 T deposits roughly 4× the RF energy per kilogram."
+            takeaway="The RF transmit chain must be tuned to 64 MHz at 1.5 T or 128 MHz at 3 T. Higher field strengths give better SNR but a much higher SAR — tighter scanning duty cycles and a higher index of suspicion for thermal injury (loops of wire, ECG leads, tattoos)."
+          />
+        </TabsContent>
+        <TabsContent value="relaxation">
+          <RelaxationTab />
+          <WorkedExampleCallout
+            title="Choosing the sequence for a suspected stroke"
+            scenario="A 65-year-old with sudden right-sided weakness comes for an MRI brain. Which weighting best demonstrates oedema and ischaemia?"
+            numbers="T1-weighted (short TR ~500 ms, short TE ~15 ms) makes fat bright and water dark — best for anatomy. T2-weighted (long TR ~3,000 ms, long TE ~90 ms) makes water bright and fat dark — best for oedema, CSF and pathology. DWI is even more sensitive in the first hours of stroke, but T2/FLAIR remains the workhorse on most curricula."
+            takeaway="'WW2' — Water is White on T2. T1 = anatomy, T2 = pathology. Gadolinium shortens T1 and brightens enhancing lesions on post-contrast T1-weighted images."
+          />
+        </TabsContent>
+        <TabsContent value="safety">
+          <SafetyTab />
+          <WorkedExampleCallout
+            title="Anaesthesia for paediatric brain MRI"
+            scenario="A 4-year-old needs GA for a 60-minute brain MRI with gadolinium contrast."
+            numbers="Pre-screen: implants, prior surgery, foreign bodies, eGFR (avoid gadolinium if eGFR <30 → NSF risk). Equipment: MR-conditional anaesthetic machine and monitor, non-ferromagnetic laryngoscope and trolley, aluminium gas cylinders, long sampling lines for capnography, fibreoptic ECG cables to avoid focal burns. Brief the team on the quench drill and noise (>99 dB inside the bore)."
+            takeaway="Treat MRI as a remote, hazardous environment: only MR-conditional kit beyond Zone IV, long IV/breathing extensions, dedicated MR-trained team, and a documented quench-and-evacuation plan before any case starts."
+          />
+        </TabsContent>
       </Tabs>
     </div>
   );
