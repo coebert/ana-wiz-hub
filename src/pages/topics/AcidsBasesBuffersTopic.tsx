@@ -17,8 +17,31 @@ const workedExamples: WorkedExample[] = [
     title: "Local anaesthetic failure in an abscess",
     scenario:
       "A patient with a dental abscess (local tissue pH ~6.0) receives lidocaine (pKa 7.9) for an inferior alveolar block. The block fails. Why, and what would you do differently?",
-    working:
-      "Lidocaine is a weak base. Henderson-Hasselbalch (for bases): % unionised = 100 / [1 + 10^(pKa − pH)].\nAt physiological pH 7.4: % unionised = 100 / [1 + 10^(7.9 − 7.4)] = 100 / [1 + 10^0.5] = 100/4.16 ≈ 24%.\nAt abscess pH 6.0: % unionised = 100 / [1 + 10^(7.9 − 6.0)] = 100 / [1 + 79.4] ≈ 1.2%.\nOnly the unionised (B) form crosses the nerve membrane. Dropping unionised fraction from 24% to 1% explains the dramatic loss of efficacy.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step calculation</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Recall the equation for a base.</strong> % unionised = 100 / [1 + 10^(pKa − pH)]. Only the unionised (B) form crosses the nerve membrane.</li>
+          <li><strong>Calculate at physiological pH 7.4.</strong> 100 / [1 + 10^(7.9 − 7.4)] = 100 / [1 + 10^0.5] = 100 / 4.16 ≈ <strong>24% unionised</strong>.</li>
+          <li><strong>Calculate at abscess pH 6.0.</strong> 100 / [1 + 10^(7.9 − 6.0)] = 100 / [1 + 79.4] ≈ <strong>1.2% unionised</strong>.</li>
+          <li><strong>Compare.</strong> Unionised drug falls from 24% → 1.2% — a <strong>20-fold drop</strong> in active species reaching the axon.</li>
+          <li><strong>Choose a remedy.</strong> Option A: drain the abscess (raises tissue pH). Option B: regional block away from infected tissue (mental, mandibular nerve more proximally). Option C: alkalinise the LA at injection (1 mEq NaHCO₃ per 10 mL lidocaine).</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Useful rule of thumb</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>When pH = pKa → exactly 50% ionised : 50% unionised. Each pH unit moves the ratio by 10-fold.</li>
+          <li>Lower pKa local anaesthetics (mepivacaine 7.6, lidocaine 7.9) have faster onset because more drug is unionised at physiological pH.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Using the WEAK ACID form of Henderson-Hasselbalch for a base (or vice versa) — answer comes out the wrong way round.</li>
+            <li>Adding bicarbonate to <strong>bupivacaine</strong> — it precipitates above pH ≈ 6.8.</li>
+            <li>Blaming 'patient anatomy' for a block that failed because of tissue acidosis.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Acidic infected tissue ionises the local anaesthetic, leaving little unionised drug to cross the nerve membrane. Either drain/treat the abscess first, use a regional block away from the infected tissue, or alkalinise the LA with bicarbonate (1 mEq per 10 mL of lidocaine) to raise the unionised fraction at injection.",
   },
@@ -26,10 +49,34 @@ const workedExamples: WorkedExample[] = [
     title: "Urinary alkalinisation in salicylate overdose",
     scenario:
       "A 30-year-old presents with aspirin overdose (salicylate 650 mg/L; pH 7.32; HCO₃⁻ 14). Why does giving IV bicarbonate help, and what's the target urinary pH?",
-    working:
-      "Salicylic acid is a weak acid (pKa 3.5). In acidic urine it remains predominantly unionised → reabsorbed.\nAlkalinising urine to pH 7.5–8.5 ionises the drug (HA → H⁺ + A⁻). The ionised salicylate cannot cross the renal tubular membrane → 'ion trapping' → urinary excretion increased ~10–20-fold.\nGive 1.26% or 8.4% sodium bicarbonate IV; monitor K⁺ (often falls — replace) and urinary pH every hour.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Classify the drug.</strong> Salicylic acid = weak acid, pKa 3.5. Equation for an acid: % ionised = 100 / [1 + 10^(pH − pKa)] (or rearranged Henderson-Hasselbalch).</li>
+          <li><strong>Estimate at urine pH 5.</strong> pH − pKa = 1.5 → ratio A⁻/HA = 10^1.5 ≈ 32:1 → ~3% remains unionised and is reabsorbed.</li>
+          <li><strong>Estimate at urine pH 8.</strong> pH − pKa = 4.5 → ratio ≈ 31,600:1 → unionised fraction ≈ 0.003%. Reabsorption falls by ~1,000-fold.</li>
+          <li><strong>Apply ion trapping.</strong> Ionised salicylate cannot cross the tubular membrane → trapped in urine → excreted. Net effect: 10–20× ↑ in renal clearance.</li>
+          <li><strong>Treat.</strong> 1.5 L of 1.26% NaHCO₃ (or 225 mL of 8.4% diluted) over 2 h, then titrate. Add KCl to maintain serum K⁺ &gt; 4.0 — alkalosis worsens hypokalaemia AND hypokalaemia stops urinary alkalinisation working (the H⁺/K⁺ exchanger keeps reabsorbing H⁺).</li>
+          <li><strong>Monitor.</strong> Hourly urinary pH (target <strong>7.5–8.5</strong>), serum K⁺, ABG, salicylate level every 2 h.</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points for haemodialysis</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Salicylate &gt; 700 mg/L (acute) or &gt; 500 mg/L (chronic).</li>
+          <li>Severe acidosis (pH &lt; 7.2), AKI, pulmonary/cerebral oedema, altered mental state, or refractory to alkalinisation.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Failing to replace K⁺ — without it the urine never alkalinises despite IV bicarbonate.</li>
+            <li>Intubating a salicylate overdose without high minute ventilation — sudden ↓ respiratory drive lets PaCO₂ rise, pH crashes, salicylate enters CNS.</li>
+            <li>Using the BASE form of Henderson-Hasselbalch for salicylate — gives the inverse (wrong) answer.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
-      "Sodium bicarbonate raises urinary pH to trap ionised salicylate in the tubule. Target urinary pH 7.5–8.5, monitoring serum K⁺ (replacement essential — alkalosis worsens hypokalaemia and hypokalaemia stops urinary alkalinisation working). Haemodialysis is indicated for severe toxicity (level &gt; 700 mg/L, neurology, renal failure, refractory acidosis).",
+      "Sodium bicarbonate raises urinary pH to trap ionised salicylate in the tubule. Target urinary pH 7.5–8.5, monitoring serum K⁺ (replacement essential — alkalosis worsens hypokalaemia and hypokalaemia stops urinary alkalinisation working). Haemodialysis is indicated for severe toxicity (level > 700 mg/L, neurology, renal failure, refractory acidosis).",
   },
 ];
 
