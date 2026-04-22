@@ -65,22 +65,6 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-        <div id="olv" className="scroll-mt-24">
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Double-Lumen Tube (DLT)</p>
-              <p className="text-sm text-muted-foreground mt-1">Left-sided DLT preferred (right upper lobe anatomy variable). Confirm position with fibreoptic bronchoscopy. Sizes: 35–41 Fr (women 35–37, men 39–41).</p>
-            </div>
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Bronchial Blocker</p>
-              <p className="text-sm text-muted-foreground mt-1">Alternative to DLT. Passed through single-lumen ETT. Useful in difficult airway, existing tracheostomy. Slower deflation, less reliable isolation.</p>
-            </div>
-          </div>
-          <p className="text-muted-foreground leading-relaxed mt-3">
-            <strong className="text-foreground">Hypoxia during OLV:</strong> Hypoxic pulmonary vasoconstriction (HPV) diverts blood from the collapsed lung. Management: ↑FiO₂, CPAP to non-dependent lung (5–10 cmH₂O), PEEP to dependent lung, check tube position, recruitment manoeuvres.
-          </p>
-        </div>
 
         <div id="cardiac-considerations" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Cardiac Surgery Considerations</h2>
