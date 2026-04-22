@@ -134,7 +134,7 @@ const MechanicalVentilationTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* ───── 2. Respiratory mechanics ───── */}
         <ExamSection id="toc-mechanics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
@@ -184,7 +184,7 @@ const MechanicalVentilationTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Ventilator Waveforms</h2>
@@ -228,7 +228,7 @@ const MechanicalVentilationTopic = () => {
           <p className="text-xs text-muted-foreground italic">
             Aside: SIMV is no longer recommended for routine weaning (Brochard 1994; Esteban 1995) — direct PSV or T-piece SBTs are superior.
           </p>
-        </div>
+        </ExamSection>
 
         {/* ───── 5. LPV & VILI ───── */}
         <ExamSection id="toc-lung-protective" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
@@ -273,7 +273,7 @@ const MechanicalVentilationTopic = () => {
           <p className="text-xs text-muted-foreground italic mt-3">
             Mechanical power (Gattinoni 2016) integrates V<sub>T</sub>, ΔP, RR, PEEP and flow into one number (J/min); &gt; 17 J/min independently predicts mortality.
           </p>
-        </div>
+        </ExamSection>
 
         {/* ───── 6. Dyssynchrony ───── */}
         <ExamSection id="toc-dyssynchrony" exams={["fficm", "edic"]} className="scroll-mt-24">
@@ -300,7 +300,7 @@ const MechanicalVentilationTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* ───── 7. Brief weaning placeholder (full section later) ───── */}
         <ExamSection id="toc-weaning" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
@@ -308,7 +308,7 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Weaning accounts for ~40% of total ventilation time. WIND classification: <strong>simple</strong> (extubated on first SBT, ~60%), <strong>difficult</strong> (1–7 days / 2–3 SBTs), <strong>prolonged</strong> (&gt; 7 days or &gt; 3 SBTs). Daily paired SAT + SBT (ABC trial — Girard, Lancet 2008) reduce ventilator days. Detailed extubation criteria, cuff-leak test and high-risk extubation are covered in <a href="#toc-tracheostomy" className="text-primary hover:underline">section 11–12</a>.
           </p>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-aprv" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Pressure Release Ventilation (APRV)</h2>
@@ -368,7 +368,7 @@ const MechanicalVentilationTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-advanced" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Advanced Ventilator Strategies</h2>
@@ -519,7 +519,7 @@ const MechanicalVentilationTopic = () => {
             <li>Inhaled pulmonary vasodilator (epoprostenol or iNO) as oxygenation bridge</li>
             <li>Consider ECMO referral if P/F &lt;80 for &gt;6 hours or pH &lt;7.20 with Pplat &gt;30 despite above</li>
           </ol>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-vap" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Pneumonia (VAP)</h2>
@@ -613,7 +613,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">PCT-guided stopping:</span> Consider stopping antibiotics if PCT &lt;0.5 μg/L or has fallen &gt;80% from peak. Reduces antibiotic exposure without increasing mortality (PRORATA, SAPS trials).</li>
             <li><span className="font-semibold text-foreground">Negative cultures:</span> If cultures negative at 48–72h and clinical improvement, strongly consider stopping antibiotics — the diagnosis may not be VAP.</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Events (VAE) — CDC Surveillance Framework</h2>
@@ -779,7 +779,7 @@ const MechanicalVentilationTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             The National Tracheostomy Safety Project (NTSP) provides standardised emergency algorithms for tracheostomy and laryngectomy patients. Key principles: <span className="font-semibold text-foreground">call for help early</span>, assess patency (pass suction catheter), remove inner cannula, deflate cuff, if still obstructed remove the tracheostomy tube entirely, cover stoma and manage as standard airway (oral intubation from above). A laryngectomy patient has <span className="font-semibold text-foreground">no upper airway connection</span> — ventilate via the stoma only. Bedhead signs indicating tracheostomy vs laryngectomy must be displayed.
           </p>
-        </div>
+        </ExamSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extubation</h2>
@@ -961,7 +961,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Nasal obstruction:</span> Severe nasal polyps, septal deviation, or recent nasal surgery may prevent cannula placement.</li>
             <li><span className="font-semibold text-foreground">Aerosol generation:</span> HFNO is an aerosol-generating procedure (AGP). Requires appropriate PPE and isolation in infectious cases (e.g., COVID-19, influenza, TB).</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation (NIV)</h2>
@@ -1155,7 +1155,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Transdiaphragmatic pressure (Pdi):</span> Gold standard for diaphragm strength — requires oesophageal and gastric balloon catheters. Pdi<sub>twitch</sub> &lt;11 cmH₂O after magnetic phrenic nerve stimulation confirms severe weakness.</li>
             <li><span className="font-semibold text-foreground">Serial ultrasound:</span> Repeat Tdi and TFdi measurements every 48–72 hours to track trajectory. A decreasing Tdi trend should prompt reduction in ventilatory support if clinically safe.</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Acquired Weakness (ICUAW)</h2>
