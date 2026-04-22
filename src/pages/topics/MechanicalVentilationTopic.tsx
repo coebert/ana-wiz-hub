@@ -94,7 +94,20 @@ const tocItems = [
 
 const MechanicalVentilationTopic = () => {
   return (
-    <SectionLayout title="Mechanical Ventilation" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+    <TopicTemplate
+      title="Mechanical Ventilation"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={keyPoints}
+      topicId="mechanical-ventilation"
+      topicTitle="Mechanical Ventilation"
+      quizQuestions={mechanicalVentilationQuestions}
+      coreConcepts={
+    <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
         {/* ───── 1. Indications ───── */}
