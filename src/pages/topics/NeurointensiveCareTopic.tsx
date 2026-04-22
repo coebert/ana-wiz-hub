@@ -1,15 +1,11 @@
-import { SectionLayout } from "@/components/SectionLayout";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { StickyTOC } from "@/components/StickyTOC";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { neurointensiveCareQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
+import type { WorkedExample } from "@/components/WorkedExamples";
 
 const tocItems = [
   { id: "toc-tbi", label: "TBI" },
@@ -24,11 +20,152 @@ const tocItems = [
   { id: "toc-synthesis", label: "Synthesis" },
 ];
 
+const objectives = [
+  "Apply BTF targets (ICP, CPP, PaCO₂, temperature, glucose) to prevent secondary brain injury in TBI.",
+  "Escalate status epilepticus through benzodiazepine → second-line AED → general anaesthesia with EEG.",
+  "Manage SAH complications: rebleeding, vasospasm (nimodipine), hydrocephalus, cerebral salt wasting vs SIADH.",
+  "Perform UK brainstem death testing — confounder exclusion, two doctors, two sets, apnoea test PaCO₂ >6.65 kPa.",
+  "Manage acute SCI: MAP ≥85 mmHg, neurogenic vs spinal shock, autonomic dysreflexia, suxamethonium safety window.",
+  "Interpret ICP, EVD, PbtO₂ and microdialysis (LPR, glucose, glycerol) to guide tier-based therapy.",
+  "Recognise autoimmune encephalitis, GBS respiratory failure (20/30/40 rule), and the devastating brain injury pathway.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "CPP and tier-based ICP escalation",
+    scenario: (
+      <>
+        Severe TBI day 2. ICP 28 mmHg, MAP 78 mmHg, PaCO₂ 5.2 kPa, temp 38.2°C, sedated and
+        paralysed. Calculate CPP and outline the next two tiers of management.
+      </>
+    ),
+    working: (
+      <>
+        CPP = MAP − ICP = 78 − 28 = <strong>50 mmHg</strong> (target 60–70). ICP &gt;22 mmHg
+        sustained → tier escalation indicated. Pyrexia is increasing CMRO₂ ~7%/°C and worsening
+        ICP.
+      </>
+    ),
+    answer: (
+      <>
+        Tier 1: optimise sedation/analgesia, head-up 30°, ensure venous drainage (no tight tube
+        ties), normocapnia, treat pyrexia (paracetamol + active cooling to 36–37°C), drain CSF
+        if EVD in situ, raise MAP with noradrenaline to CPP 60–70. Tier 2: hyperosmolar therapy —
+        2.7%/3% saline or mannitol 0.5–1 g/kg (check Na, osmolality). Tier 3 (if refractory):
+        decompressive craniectomy (RESCUEicp — survival ↑ but with greater disability) or
+        thiopentone coma with continuous EEG. Avoid prophylactic hyperventilation and
+        hypothermia (Eurotherm: harmful).
+      </>
+    ),
+  },
+  {
+    title: "Brainstem death apnoea test",
+    scenario: (
+      <>
+        Patient meets preconditions for BSD testing. Pre-test ABG: PaCO₂ 5.0 kPa, pH 7.40. After
+        5 min apnoeic oxygenation (no ventilator effort observed), ABG: PaCO₂ 7.2 kPa, pH 7.20.
+        Is this a valid apnoea test?
+      </>
+    ),
+    working: (
+      <>
+        UK criteria: PaCO₂ must rise to <strong>&gt;6.65 kPa</strong> AND pH &lt;7.40, with no
+        respiratory effort observed. Both met. Test confirms absent respiratory drive.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Valid apnoea test consistent with brainstem death.</strong> Combined with the
+        other 6 brainstem reflex tests (pupils, corneal, oculovestibular, motor in CN
+        distribution, gag, cough) by two suitably qualified doctors on two separate occasions,
+        this completes UK BSD diagnosis. Time of death = completion of second set. Refer to
+        SN-OD before any limitation of treatment is communicated.
+      </>
+    ),
+  },
+  {
+    title: "Suxamethonium in spinal cord injury",
+    scenario: (
+      <>
+        T6 complete SCI sustained 4 weeks ago, now requires urgent re-laparotomy. Trainee
+        suggests RSI with suxamethonium. Is this safe?
+      </>
+    ),
+    working: (
+      <>
+        Upregulation of extra-junctional ACh receptors begins ~24–48 h post-denervation injury,
+        peaks 7–10 days, persists ~6–12 months (some sources quote &gt;12 m). Suxamethonium can
+        cause massive K⁺ efflux → cardiac arrest.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Avoid suxamethonium between 48 h and ~12 months post-SCI</strong>. Use rocuronium
+        1.2 mg/kg for RSI (reversible with sugammadex 16 mg/kg). The same caveat applies to burns,
+        prolonged immobility, and denervation injuries.
+      </>
+    ),
+  },
+  {
+    title: "Cerebral microdialysis interpretation",
+    scenario: (
+      <>
+        TBI day 4. Microdialysis: lactate 6.2, pyruvate 50, lactate/pyruvate ratio (LPR) 124,
+        glucose 0.4 mmol/L, glycerol 120 µmol/L. CPP currently 70 mmHg. What does this show?
+      </>
+    ),
+    working: (
+      <>
+        LPR &gt;25 = metabolic crisis. <strong>Low pyruvate + high LPR + low glucose</strong> →
+        ischaemic pattern (substrate delivery failure). Rising glycerol = cell membrane
+        breakdown. Contrast: normal/high pyruvate with high LPR = mitochondrial dysfunction
+        (won't respond to ↑ CPP).
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Ischaemic crisis</strong> despite "adequate" CPP — push CPP towards 70 mmHg,
+        check for vasospasm (TCD/CT angio), exclude raised ICP / herniation, confirm Hb
+        &gt;90 g/L, ensure normoglycaemia. If LPR pattern were mitochondrial, raising CPP would
+        not help — consider reducing metabolic demand (deeper sedation, normothermia, treat
+        seizures).
+      </>
+    ),
+  },
+];
+
 const NeurointensiveCareTopic = () => {
   return (
-    <SectionLayout title="Neurointensive Care" subtitle="FRCA / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+    <TopicTemplate
+      title="Neurointensive Care"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia",
+        "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use",
+        "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention",
+        "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
+        "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
+        "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
+        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
+        "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)",
+        "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
+        "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
+        "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
+        "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
+        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
+      ]}
+      topicId="neurointensive-care"
+      topicTitle="Neurointensive Care"
+      quizQuestions={neurointensiveCareQuestions}
+      coreConcepts={
+    <>
       <StickyTOC items={tocItems} />
-      <section className="space-y-6 mb-10">
+      <section className="space-y-6">
         <div id="toc-tbi" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Traumatic Brain Injury (TBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -702,28 +839,9 @@ const NeurointensiveCareTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "TBI: prevent secondary injury — maintain CPP 60-70, ICP <22, normocapnia, normothermia, normoglycaemia",
-        "Eurotherm trial: therapeutic hypothermia is harmful in TBI — do not use",
-        "SAH vasospasm peaks day 7 — nimodipine is the only proven pharmacological intervention",
-        "Status epilepticus: benzodiazepine → levetiracetam/phenytoin/valproate → RSI + thiopentone/propofol",
-        "Brainstem death: 2 sets of tests, 2 senior doctors, exclude confounders, apnoea test PaCO₂ >6.65 kPa",
-        "SCI: MAP ≥85 mmHg for 5–7 days; suxamethonium contraindicated 48h–12m post-injury (hyperkalaemia)",
-        "EVD is gold standard for ICP monitoring — only device that can drain CSF therapeutically",
-        "Cerebral microdialysis: LPR >25 = metabolic crisis. ↓ pyruvate = ischaemia; normal/↑ pyruvate = mitochondrial dysfunction (won't respond to ↑ CPP)",
-        "Anti-NMDAR encephalitis: start immunotherapy empirically — do not wait for antibody results",
-        "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
-        "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
-        "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
-        "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
-      ]} />
-
-      <QuizSection questions={neurointensiveCareQuestions} />
-      <ReferencesList topicId="neurointensive-care" />
-
-      <SeeAlso topicId="neurointensive-care" />
-        <TopicCompletionToggle topicId="neurointensive-care" topicTitle="Neurointensive Care" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
