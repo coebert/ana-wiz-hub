@@ -514,6 +514,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "RCPCH 2019", citation: "Royal College of Paediatrics and Child Health. Standards for the care of critically ill or injured children. RCPCH; 2019.", url: "https://www.rcpch.ac.uk/resources/standards-care-critically-ill-or-injured-children" },
     { label: "BJA Educ 2019", citation: "Tibby SM, Durward A. Paediatric intensive care. BJA Education. 2010;10(5):152-157.", url: "https://doi.org/10.1093/bjaceaccp/mkq029" },
     { label: "Resuscitation Council UK 2021", citation: "Resuscitation Council UK. Paediatric Advanced Life Support Guidelines. 2021.", url: "https://www.resus.org.uk/library/2021-resuscitation-guidelines/paediatric-advanced-life-support-guidelines" },
+    { label: "FEAST 2011", citation: "Maitland K et al. Mortality after fluid bolus in African children with severe infection (FEAST). N Engl J Med. 2011;364:2483-2495.", url: "https://doi.org/10.1056/NEJMoa1101549" },
+    { label: "NICE NG29", citation: "NICE. Intravenous fluid therapy in children and young people in hospital (NG29). 2015.", url: "https://www.nice.org.uk/guidance/ng29" },
+  ],
+  "prognostication-ethics-icu": [
+    { label: "ERC/ESICM 2021", citation: "Nolan JP, Sandroni C, Böttiger BW, et al. European Resuscitation Council and European Society of Intensive Care Medicine guidelines 2021: post-resuscitation care. Resuscitation. 2021;161:220-269.", url: "https://doi.org/10.1016/j.resuscitation.2021.02.012" },
+    { label: "GMC 2022", citation: "General Medical Council. Treatment and care towards the end of life: good practice in decision making. GMC; 2022.", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/treatment-and-care-towards-the-end-of-life" },
+    { label: "Mental Capacity Act 2005", citation: "UK Parliament. Mental Capacity Act 2005. London: TSO; 2005.", url: "https://www.legislation.gov.uk/ukpga/2005/9/contents" },
+    { label: "NICE CG83", citation: "NICE. Rehabilitation after critical illness in adults (CG83). 2009.", url: "https://www.nice.org.uk/guidance/cg83" },
+    { label: "BJA Educ 2018 PICS", citation: "Rawal G, Yadav S, Kumar R. Post-intensive care syndrome: an overview. J Transl Int Med. 2017;5(2):90-92.", url: "https://doi.org/10.1515/jtim-2016-0016" },
   ],
   "gi-physiology": [
     { label: "Peck & Hill Ch.11", citation: "Peck TE, Hill SA. Pharmacology for Anaesthesia and Intensive Care. 5th ed. Cambridge University Press; 2021. Chapter 11: Gastrointestinal Tract." },
