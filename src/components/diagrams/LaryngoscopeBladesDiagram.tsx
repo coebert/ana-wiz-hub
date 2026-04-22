@@ -607,7 +607,14 @@ export const LaryngoscopeBladesDiagram = () => {
                 <p className="text-muted-foreground">
                   {info.mechanism}
                   {info.refs.map((r) => (
-                    <InlineRef key={r} topicId="equipment-monitoring" refLabel={r} />
+                    <InlineRef
+                      key={r}
+                      topicId="equipment-monitoring"
+                      refLabel={r}
+                      contextTitle={`${info.label} — FRCA key points`}
+                      keyPoints={info.keyPoints}
+                      accentColor={info.color}
+                    />
                   ))}
                 </p>
               </div>
@@ -659,7 +666,13 @@ export const LaryngoscopeBladesDiagram = () => {
                 <span key={r}>
                   {i > 0 && " · "}
                   {r}
-                  <InlineRef topicId="equipment-monitoring" refLabel={r} />
+                  <InlineRef
+                    topicId="equipment-monitoring"
+                    refLabel={r}
+                    contextTitle={`${info.label} — FRCA key points`}
+                    keyPoints={info.keyPoints}
+                    accentColor={info.color}
+                  />
                 </span>
               ))}
             </p>
