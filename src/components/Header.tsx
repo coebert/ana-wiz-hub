@@ -20,6 +20,7 @@ const examFilters: { label: string; value: ExamTag | null }[] = [
   { label: "Primary", value: "primary" },
   { label: "Final", value: "final" },
   { label: "FFICM", value: "fficm" },
+  { label: "EDIC", value: "edic" },
 ];
 
 export const Header = () => {
