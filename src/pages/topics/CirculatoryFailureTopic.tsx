@@ -5,6 +5,7 @@ import FluidResponsivenessDiagram from "@/components/diagrams/FluidResponsivenes
 import MechanicalCirculatorySupportDiagram from "@/components/diagrams/MechanicalCirculatorySupportDiagram";
 import MCSPressureVolumeLoopDiagram from "@/components/diagrams/MCSPressureVolumeLoopDiagram";
 import VAECMOCircuitDiagram from "@/components/diagrams/VAECMOCircuitDiagram";
+import CPPSpiralDiagram from "@/components/diagrams/CPPSpiralDiagram";
 
 const objectives = [
   "Classify shock by mechanism (hypovolaemic, cardiogenic, distributive, obstructive) and recognise the characteristic CVP / CO / SVR pattern of each.",
@@ -233,7 +234,8 @@ const coreConcepts = (
       </div>
 
       <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">The vicious cycle of hypotension in shock</h3>
-      <ol className="list-decimal pl-6 space-y-1 text-foreground/90 text-sm">
+      <CPPSpiralDiagram />
+      <ol className="list-decimal pl-6 space-y-1 text-foreground/90 text-sm mt-3">
         <li>SVR falls (sepsis, anaphylaxis) <em>or</em> CO falls (cardiogenic) → <strong>diastolic BP falls</strong>.</li>
         <li>Low DBP → <strong>↓ coronary perfusion pressure</strong> → subendocardial ischaemia.</li>
         <li>Ischaemic myocardium contracts and relaxes more poorly → <strong>↓ stroke volume + ↑ LVEDP</strong>.</li>

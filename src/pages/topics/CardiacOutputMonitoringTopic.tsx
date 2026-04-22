@@ -8,6 +8,7 @@ import TOEViewsDiagram from "@/components/diagrams/TOEViewsDiagram";
 import MModeDiagram from "@/components/diagrams/MModeDiagram";
 import MModePathologyDiagram from "@/components/diagrams/MModePathologyDiagram";
 import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerDiagram";
+import ThermodilutionDiagram from "@/components/diagrams/ThermodilutionDiagram";
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
 
@@ -113,6 +114,7 @@ const CoreConcepts = () => (
           <p className="text-xs text-muted-foreground mt-2">
             Where V<sub>i</sub> = volume injected, T<sub>b</sub>/T<sub>i</sub> = blood/injectate temperature, K = computation constant, and ∫ΔT·dt = area under the temperature-time curve at the thermistor. A small AUC reflects rapid wash-out and high CO; a large AUC reflects slow wash-out and low CO.
           </p>
+          <ThermodilutionDiagram />
         </div>
         <div className="rounded-lg border border-border p-4">
           <p className="font-semibold text-foreground text-sm mb-1">Doppler principle</p>
