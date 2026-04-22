@@ -8,6 +8,10 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { ExamTag } from "@/data/curriculum";
+
+type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
 interface TopicTemplateProps {
   // SectionLayout props
