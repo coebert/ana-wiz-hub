@@ -217,30 +217,84 @@ const ImmuneCellLineageDiagram = () => {
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
-          title="Immune cell lineages — from HSC to effector"
-          subtitle="Tap any cell for role, function and clinical relevance"
+          title={view === "lineage" ? "Immune cell lineages — from HSC to effector" : "Activation pathways — animated cell-to-cell signalling"}
+          subtitle={view === "lineage" ? "Tap any cell for role, function and clinical relevance" : "Watch antigen, MHC, cytokines and antibody travel between cells"}
           toggles={[
             { label: "Lineages", active: showLineages, onChange: () => setShowLineages((s) => !s) },
             { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
           ]}
         />
 
-        {/* Arm filter chips */}
-        <div className="flex flex-wrap gap-1.5 text-xs mb-3">
-          {(["all", "innate", "adaptive"] as const).map((k) => (
-            <button
-              key={k}
-              type="button"
-              onClick={() => setHighlight(k)}
-              className={`px-2 py-1 rounded border transition-colors capitalize ${
-                highlight === k
-                  ? "border-primary bg-primary/10 text-foreground"
-                  : "border-border text-muted-foreground hover:bg-muted/50"
-              }`}
-            >
-              {k === "all" ? "Show all" : `Highlight ${k}`}
-            </button>
-          ))}
+        {/* View mode + context controls */}
+        <div className="flex flex-wrap items-center gap-1.5 text-xs mb-3">
+          <div className="inline-flex rounded-md border border-border overflow-hidden">
+            {(["lineage", "activation"] as const).map((m) => (
+              <button
+                key={m}
+                type="button"
+                onClick={() => setView(m)}
+                className={`px-2.5 py-1 transition-colors capitalize ${
+                  view === m ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-muted/50"
+                }`}
+              >
+                {m === "lineage" ? "Lineage view" : "Activation pathways"}
+              </button>
+            ))}
+          </div>
+
+          {view === "lineage" && (
+            <>
+              {(["all", "innate", "adaptive"] as const).map((k) => (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => setHighlight(k)}
+                  className={`px-2 py-1 rounded border transition-colors capitalize ${
+                    highlight === k
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {k === "all" ? "Show all" : `Highlight ${k}`}
+                </button>
+              ))}
+            </>
+          )}
+
+          {view === "activation" && (
+            <>
+              {(Object.keys(pathways) as Pathway[]).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => setPathway(p)}
+                  className={`px-2 py-1 rounded border transition-colors ${
+                    pathway === p
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {p === "antigen-dc-t-b" ? "Ag → DC → T → B" : "IL-5 → eosinophil"}
+                </button>
+              ))}
+              <button
+                type="button"
+                onClick={() => setPlaying((p) => !p)}
+                className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
+                aria-pressed={playing}
+              >
+                {playing ? "⏸ Pause" : "▶ Play"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setStepIdx((i) => (i + 1) % activeSteps.length)}
+                className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
+              >
+                Step ›
+              </button>
+            </>
+          )}
+
           <span className="ml-auto flex items-center gap-3 text-[11px] text-muted-foreground">
             <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.innate }} /> Innate</span>
             <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.adaptive }} /> Adaptive</span>
