@@ -391,13 +391,16 @@ const CardiacCycleTopic = () => {
       </div>
 
       <KeyLearningPoints points={[
-        "The cardiac cycle consists of systole (~300 ms) and diastole (~560 ms) at a normal heart rate.",
-        "S1 = AV valve closure (start of systole); S2 = semilunar valve closure (end of systole) with dicrotic notch.",
-        "Isovolumetric contraction and relaxation are periods where all valves are closed and pressure changes without volume change.",
-        "Passive filling (rapid filling + diastasis) accounts for 70-80% of ventricular volume; atrial kick adds 15-25%.",
-        "Diastasis is the first phase lost in tachycardia — explaining reduced filling and cardiac output at high heart rates.",
-        "LA pressure trace: a wave (atrial contraction), c wave (AV bulge), v wave (atrial filling), x and y descents.",
-        "Giant a waves suggest tricuspid stenosis or cannon waves in complete heart block; giant v waves suggest mitral/tricuspid regurgitation."
+        "Cardiac cycle = systole (~300 ms) + diastole (~560 ms) at HR 70; diastole shortens disproportionately with tachycardia.",
+        "S1 = AV valve closure (start of systole); S2 = semilunar valve closure (end of systole) with dicrotic notch; S3/S4 reflect filling pathology.",
+        "Isovolumetric contraction and relaxation: all valves closed; pressure changes without volume change.",
+        "Passive filling contributes 70–80% of LVEDV; atrial kick adds 15–25% — critical in stiff ventricles (AS, HCM, diastolic dysfunction).",
+        "SV determinants: preload, afterload, contractility; CO = HR × SV; rhythm contributes via AV synchrony.",
+        "LA/CVP trace: a (atrial contraction), c (AV bulge), v (atrial filling), x and y descents — interpret abnormalities at the bedside.",
+        "Cannon a = AV dissociation; giant a = TS/PHT; giant v = MR/TR; steep y = constriction; blunted y = tamponade.",
+        "Left coronary perfusion is diastolic — CPP ≈ aortic DBP − LVEDP; protect with rate control, adequate DBP, low LVEDP.",
+        "Right heart operates at low pressure; RV is afterload-sensitive — small ↑PVR markedly reduces RV SV (PE, hypoxia, acidosis).",
+        "Valvular lesions each have characteristic loop and waveform changes that drive specific anaesthetic targets (HR, SVR, preload, rhythm)."
       ]} />
       <QuizSection questions={cardiacCycleQuiz} />
       <ReferencesList topicId="cardiac-cycle" />
