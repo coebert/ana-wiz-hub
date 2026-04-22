@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { corticosteroidsQuestions } from "@/data/quizzes";
 import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/CorticosteroidPharmacodynamicsDiagram";
+import { HPAAxisSuppressionDiagram } from "@/components/diagrams/HPAAxisSuppressionDiagram";
 
 const objectives = [
   "Describe glucocorticoid receptor signalling and distinguish transrepression from transactivation",
@@ -130,6 +131,9 @@ const CorticosteroidsTopic = () => {
               Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.
             </p>
             <CorticosteroidPharmacodynamicsDiagram />
+            <div className="mt-4">
+              <HPAAxisSuppressionDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="potency" exams={["primary", "final"]}>

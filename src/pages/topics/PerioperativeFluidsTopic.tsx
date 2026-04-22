@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
+import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/GlycocalyxSheddingCascadeDiagram";
 
 const PerioperativeFluidsTopic = () => {
   return (
@@ -34,12 +35,15 @@ const PerioperativeFluidsTopic = () => {
         keyPoints: ["BJA Educ 2017", "NICE CG174", "BJA Educ 2019"],
       }}
       diagrams={
-        <DiagramSection
-          title="Glycocalyx — Intact vs Shed"
-          intro={<p>Cross-section of the endothelial surface layer (ESL): proteoglycan / GAG mesh that excludes plasma proteins, and the consequences of its shedding by ANP, inflammation and crystalloid overload.</p>}
-        >
-          <GlycocalyxDiagram />
-        </DiagramSection>
+        <>
+          <DiagramSection
+            title="Glycocalyx — Intact vs Shed"
+            intro={<p>Cross-section of the endothelial surface layer (ESL): proteoglycan / GAG mesh that excludes plasma proteins, and the consequences of its shedding by ANP, inflammation and crystalloid overload.</p>}
+          >
+            <GlycocalyxDiagram />
+          </DiagramSection>
+          <GlycocalyxSheddingCascadeDiagram />
+        </>
       }
       coreConcepts={
         <>

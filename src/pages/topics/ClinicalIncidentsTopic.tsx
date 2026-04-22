@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { clinicalIncidentsQuestions } from "@/data/quizzes";
 import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
 import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
+import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
 
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
@@ -144,6 +145,9 @@ const ClinicalIncidentsTopic = () => {
               </ol>
             </div>
             <AnaphylaxisPathophysiologyDiagram />
+            <div className="mt-4">
+              <AnaphylaxisCascadeDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="mh" exams={["final", "fficm"]}>
