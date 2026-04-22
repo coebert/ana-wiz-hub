@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import InlineRef from "@/components/InlineRef";
 
 type BladeKey = "macintosh" | "miller" | "mccoy" | "polio" | "wisconsin" | "videolaryngoscope";
 
@@ -15,6 +16,10 @@ interface BladeInfo {
   limitations: string[];
   indications: string;
   historicalNote: string;
+  /** FRCA-mapped key learning points for the curriculum */
+  keyPoints: string[];
+  /** Reference labels (must match entries in references.ts under "equipment-monitoring") */
+  refs: string[];
 }
 
 const blades: Record<BladeKey, BladeInfo> = {
