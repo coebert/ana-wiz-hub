@@ -7,6 +7,7 @@ import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
+import { InlineRef } from "@/components/InlineRef";
 
 const EnhancedRecoveryTopic = () => {
   return (
@@ -111,17 +112,20 @@ const EnhancedRecoveryTopic = () => {
             <FlaskConical className="h-4 w-4 text-perioperative" /> Landmark trials & meta-analyses
           </p>
           {[
-            { trial: "ERAS Compliance Group (Ann Surg 2015)", n: "n = 2,352 colorectal", finding: "Each 10% increase in protocol compliance reduced 30-day morbidity (OR 0.86) and LOS. Compliance > 70% was the inflection point for benefit." },
-            { trial: "LAFA Trial (Ann Surg 2011)", n: "n = 400 colonic resection", finding: "2×2 factorial: laparoscopy + ERAS vs open + traditional care. Laparoscopy was the dominant LOS driver; ERAS reduced LOS independently. Combined arm: median LOS 5 days vs 7." },
-            { trial: "EnROL (Br J Surg 2014)", n: "n = 204 colorectal", finding: "Lap vs open within an ERAS pathway. Laparoscopy reduced physical fatigue and time to recovery (median 5 vs 7 d). Confirmed ERAS benefits hold within minimally invasive surgery." },
-            { trial: "Cochrane Review (Spanjersberg / Greco, updated 2020)", n: "RCT meta-analysis", finding: "ERAS reduced LOS by ~2.5 days and overall complications (RR 0.60, 95% CI 0.46–0.76) without increase in readmission or mortality." },
-            { trial: "POWER Study (Br J Anaesth 2019)", n: "n = 2,084 elective colorectal, 80 hospitals", finding: "Higher per-protocol ERAS adherence independently reduced moderate-to-severe complications (OR 0.34) and 30-day mortality." },
-            { trial: "RELIEF Trial (NEJM 2018)", n: "n = 3,000 major abdominal", finding: "Restrictive (~6 mL/kg/h) vs liberal (~10 mL/kg/h) IV fluid. Restrictive arm had higher AKI (8.6% vs 5.0%). Re-defined 'goal-directed, zero-balance' as the ERAS fluid target — not blanket restriction." },
-            { trial: "OPTIMISE / OPTIMISE II", n: "n = 734 / 2,500 high-risk GI surgery", finding: "Cardiac output–guided GDFT showed a non-significant reduction in 30-day complications; supports individualised haemodynamic optimisation within ERAS." },
+            { trial: "ERAS Compliance Group (Ann Surg 2015)", refLabel: "ERAS Compliance 2015", n: "n = 2,352 colorectal", finding: "Each 10% increase in protocol compliance reduced 30-day morbidity (OR 0.86) and LOS. Compliance > 70% was the inflection point for benefit." },
+            { trial: "LAFA Trial (Ann Surg 2011)", refLabel: "LAFA 2011", n: "n = 400 colonic resection", finding: "2×2 factorial: laparoscopy + ERAS vs open + traditional care. Laparoscopy was the dominant LOS driver; ERAS reduced LOS independently. Combined arm: median LOS 5 days vs 7." },
+            { trial: "EnROL (J Clin Oncol 2014)", refLabel: "EnROL 2014", n: "n = 204 colorectal", finding: "Lap vs open within an ERAS pathway. Laparoscopy reduced physical fatigue and time to recovery (median 5 vs 7 d). Confirmed ERAS benefits hold within minimally invasive surgery." },
+            { trial: "Cochrane Review (Spanjersberg 2011 / Greco 2014)", refLabel: "Cochrane 2011", n: "RCT meta-analysis", finding: "ERAS reduced LOS by ~2.5 days and overall complications (RR 0.60, 95% CI 0.46–0.76) without increase in readmission or mortality." },
+            { trial: "POWER Study (JAMA Surg 2019)", refLabel: "POWER 2019", n: "n = 2,084 elective colorectal, 80 hospitals", finding: "Higher per-protocol ERAS adherence independently reduced moderate-to-severe complications (OR 0.34) and 30-day mortality." },
+            { trial: "RELIEF Trial (NEJM 2018)", refLabel: "RELIEF 2018", n: "n = 3,000 major abdominal", finding: "Restrictive (~6 mL/kg/h) vs liberal (~10 mL/kg/h) IV fluid. Restrictive arm had higher AKI (8.6% vs 5.0%). Re-defined 'goal-directed, zero-balance' as the ERAS fluid target — not blanket restriction." },
+            { trial: "OPTIMISE (JAMA 2014)", refLabel: "OPTIMISE 2014", n: "n = 734 high-risk GI surgery", finding: "Cardiac output–guided GDFT showed a non-significant reduction in 30-day complications; supports individualised haemodynamic optimisation within ERAS." },
           ].map((t) => (
             <div key={t.trial} className="p-3 rounded-lg border border-border bg-card">
               <div className="flex items-baseline justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">{t.trial}</p>
+                <p className="font-semibold text-foreground text-sm">
+                  {t.trial}
+                  <InlineRef topicId="enhanced-recovery" refLabel={t.refLabel} />
+                </p>
                 <p className="text-xs text-muted-foreground font-mono">{t.n}</p>
               </div>
               <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{t.finding}</p>
@@ -143,6 +147,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Colorectal Surgery",
               subtitle: "ERAS® Society 2018 (Gustafsson et al, World J Surg)",
+              refLabel: "ERAS Colorectal 2018",
               evidence: "Original and most validated pathway. Median LOS 4–5 d (vs 8–10), complications −40%.",
               elements: [
                 "Pre-op: counselling + carb load (50 g maltodextrin 2h pre-op); no mechanical bowel prep for colon (selective for rectal)",
@@ -153,6 +158,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Hip & Knee Arthroplasty",
               subtitle: "ERAS® Society 2020 (Wainwright et al, Acta Orthop)",
+              refLabel: "ERAS Arthroplasty 2020",
               evidence: "Day-of-surgery discharge feasible in selected patients. LOS reduced from 5–7 d to 1–3 d; transfusion rates ↓ ~70% with TXA.",
               elements: [
                 "Pre-op: prehab exercise + iron optimisation; spinal anaesthesia preferred over GA (lower DVT, blood loss, mortality)",
@@ -163,6 +169,7 @@ const EnhancedRecoveryTopic = () => {
             {
               title: "Cardiac Surgery (ERAS® Cardiac)",
               subtitle: "Engelman et al, JAMA Surg 2019",
+              refLabel: "ERAS Cardiac 2019",
               evidence: "Newest pathway. Reduces ICU LOS, opioid consumption, and ventilation time; non-inferior safety.",
               elements: [
                 "Pre-op: carb load if not diabetic; correct anaemia (IV iron); insulin sliding scale (target 7.8–10 mmol/L)",
@@ -175,7 +182,10 @@ const EnhancedRecoveryTopic = () => {
               <div className="flex items-start gap-2 mb-2">
                 <Award className="h-5 w-5 text-perioperative mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-semibold text-foreground">{p.title}</p>
+                  <p className="font-semibold text-foreground">
+                    {p.title}
+                    <InlineRef topicId="enhanced-recovery" refLabel={p.refLabel} />
+                  </p>
                   <p className="text-xs text-muted-foreground">{p.subtitle}</p>
                 </div>
               </div>
@@ -222,7 +232,7 @@ const EnhancedRecoveryTopic = () => {
         </div>
         <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
           <p className="text-sm text-foreground">
-            <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13) demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
+            <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13)<InlineRef topicId="enhanced-recovery" refLabel="NHS ERPP 2013" /> demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
           </p>
         </div>
       </DiagramSection>
