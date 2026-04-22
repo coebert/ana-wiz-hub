@@ -32,6 +32,19 @@ interface TopicTemplateProps {
   /** "Worked Examples" — clinical vignettes and/or calculations. Omit when not relevant. */
   workedExamples?: WorkedExample[];
 
+  /**
+   * Per-section reference mapping. Each key pins a list of reference labels
+   * (must exist in `topicReferences[topicId]`) to a section so learners can
+   * see exactly which BJA Education / guideline / textbook sources support
+   * that block. All keys are optional.
+   */
+  sectionSources?: {
+    objectives?: string[];
+    diagrams?: string[];
+    workedExamples?: string[];
+    keyPoints?: string[];
+  };
+
   // Footer wiring (kept in current order)
   topicId: string;
   topicTitle?: string;
