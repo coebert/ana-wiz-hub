@@ -1,112 +1,240 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { icuSedationDeliriumQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { ICUSedationComparisonDiagram } from "@/components/diagrams/ICUSedationComparisonDiagram";
 import { CAMICUFlowchartDiagram } from "@/components/diagrams/CAMICUFlowchartDiagram";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Score sedation depth using RASS and target light sedation (0 to −2) unless a specific indication for deep sedation exists.",
+  "Compare propofol, midazolam, dexmedetomidine and remifentanil for ICU sedation, including PRIS risk and pharmacokinetics in organ failure.",
+  "Screen for delirium with CAM-ICU and apply the ABCDEF bundle to reduce ventilator days, delirium and mortality.",
+  "Manage hyperactive and hypoactive delirium with non-pharmacological measures first; recognise that haloperidol does not improve outcomes (MIND-USA, AID-ICU).",
+  "Recognise, prevent and treat propofol infusion syndrome (PRIS).",
+  "Apply daily Spontaneous Awakening (SAT) and Spontaneous Breathing (SBT) trials safely.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Suspected propofol infusion syndrome",
+    scenario: (
+      <>
+        25-year-old with severe TBI, day 4 of ventilation. Propofol 5 mg/kg/h for ICP control plus
+        noradrenaline. Now: lactate 6.5, K⁺ 6.1, CK 8000, ECG with new RBBB and Brugada-like ST changes.
+      </>
+    ),
+    working: (
+      <>
+        PRIS criteria: propofol &gt; 4 mg/kg/h for &gt; 48 h plus metabolic acidosis, rhabdomyolysis,
+        hyperkalaemia, cardiac dysfunction. Mechanism: impaired free fatty acid oxidation and
+        mitochondrial dysfunction.
+      </>
+    ),
+    answer: (
+      <>
+        Stop propofol immediately. Switch to midazolam or dexmedetomidine (± analgesia with fentanyl/
+        alfentanil). Treat hyperkalaemia, support haemodynamics, consider CRRT. For ongoing ICP control
+        use thiopentone, ketamine or volatile via Sedaconda. Mortality of established PRIS &gt; 30 %.
+      </>
+    ),
+  },
+  {
+    title: "CAM-ICU positive after extubation delay",
+    scenario: (
+      <>
+        Day 6 ventilated pneumonia. RASS −1. Nurse reports the patient is inattentive, pulls at lines
+        intermittently and is disoriented. Sedation has been midazolam infusion + intermittent
+        haloperidol PRN.
+      </>
+    ),
+    working: (
+      <>
+        CAM-ICU: acute fluctuating course (yes) + inattention (yes) + altered consciousness or
+        disorganised thinking (yes) → delirium positive. Midazolam is a reversible risk factor;
+        haloperidol does not treat delirium (MIND-USA, AID-ICU).
+      </>
+    ),
+    answer: (
+      <>
+        Stop midazolam and haloperidol. Switch to dexmedetomidine (preferred in delirium). Apply ABCDEF
+        bundle: assess pain, daily SAT/SBT, choose dex, reorient, mobilise early, family at bedside,
+        sleep hygiene (cluster care, earplugs, eye mask). Reassess CAM-ICU each shift.
+      </>
+    ),
+  },
+  {
+    title: "Daily SAT/SBT — when to abort",
+    scenario: (
+      <>
+        Stable ARDS patient day 5, FiO₂ 0.4, PEEP 8, RASS −2 on propofol + alfentanil. SAT begun:
+        propofol stopped. After 30 min: RR 35, SpO₂ 88 %, HR 130, agitated, SBP 180.
+      </>
+    ),
+    working: (
+      <>
+        Failure criteria for SAT: agitation/anxiety, RR &gt; 35 for &gt; 5 min, SpO₂ &lt; 88 %, acute
+        arrhythmia, signs of distress. Restart sedation at half the previous rate, then titrate.
+      </>
+    ),
+    answer: (
+      <>
+        Restart propofol at half the prior rate. Reassess pain (alfentanil bolus if appropriate). Retry
+        SAT in 24 h with anticipatory analgesia and consider switch to dexmedetomidine to allow
+        cooperative arousal. Document failure mode for the next attempt.
+      </>
+    ),
+  },
+];
+
+const keyPoints = [
+  "Target light sedation (RASS 0 to −2) with daily sedation holds — improves ventilator-free days and ICU outcomes",
+  "PRIS risk: propofol >4 mg/kg/h for >48h → metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure",
+  "CAM-ICU = acute onset/fluctuating course + inattention + (altered consciousness OR disorganised thinking)",
+  "ABCDEF bundle (Assess pain, Both SAT/SBT, Choice of sedation, Delirium monitoring, Early mobility, Family) reduces delirium and mortality",
+  "Dexmedetomidine is preferred in delirious patients (SPICE III: shorter time to extubation, neutral on mortality)",
+  "Haloperidol does NOT treat or prevent ICU delirium (MIND-USA, AID-ICU)",
+  "Avoid benzodiazepines for routine sedation — independent risk factor for delirium",
+  "Non-pharmacological measures (sleep hygiene, reorientation, mobilisation, family) are first-line for delirium",
+];
 
 const IcuSedationDeliriumTopic = () => {
   return (
-    <SectionLayout title="ICU Sedation & Delirium" subtitle="FRCA / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <section className="space-y-6 mb-10">
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Target light sedation (RASS 0 to −2) unless specific indication for deep sedation. Daily sedation holds improve outcomes.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">RASS Score</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Term</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Description</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+4</td><td>Combative</td><td>Violent, immediate danger to staff</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+1 to +3</td><td>Agitated</td><td>Anxious, aggressive, pulling at lines</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">0</td><td>Alert & calm</td><td>Spontaneously attentive</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−1 to −2</td><td>Light sedation</td><td>Drowsy, eye opening to voice ({'>'} 10s)</td></tr>
-                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−3 to −4</td><td>Moderate/Deep</td><td>Movement or eye opening to voice/physical stimulation</td></tr>
-                <tr><td className="py-2 font-medium text-foreground">−5</td><td>Unarousable</td><td>No response to voice or physical stimulation</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedative Agents Comparison</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { agent: "Propofol", pros: "Rapid onset/offset, anti-emetic, reduces ICP", cons: "Hypotension, hypertriglyceridaemia, PRIS (propofol infusion syndrome) >4 mg/kg/hr for >48h" },
-              { agent: "Midazolam", pros: "Anxiolytic, amnestic, anticonvulsant", cons: "Accumulation in renal/hepatic failure, prolonged sedation, delirium risk" },
-              { agent: "Dexmedetomidine", pros: "Cooperative sedation, no respiratory depression, reduces delirium (SPICE III — neutral on mortality)", cons: "Bradycardia, hypotension, limited depth of sedation" },
-              { agent: "Alfentanil/Remifentanil", pros: "Excellent analgesia-based sedation, predictable offset", cons: "Rigidity at high doses, hyperalgesia with prolonged remifentanil" },
-            ].map((a) => (
-              <div key={a.agent} className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">{a.agent}</p>
-                <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Pros:</strong> {a.pros}</p>
-                <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Cons:</strong> {a.cons}</p>
-              </div>
-            ))}
-          </div>
-          <ICUSedationComparisonDiagram />
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Delirium</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Affects up to 80% of ventilated patients. Associated with increased mortality, prolonged ventilation, and long-term cognitive impairment. Screen with CAM-ICU.
-          </p>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">CAM-ICU Assessment</p>
-              <p className="text-sm text-muted-foreground mt-1">4 features: (1) Acute onset/fluctuating course + (2) Inattention + (3) Altered consciousness OR (4) Disorganised thinking. Delirium positive = Feature 1+2 + either 3 or 4.</p>
+    <TopicTemplate
+      title="ICU Sedation & Delirium"
+      subtitle="FRCA / FFICM — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={keyPoints}
+      topicId="icu-sedation-delirium"
+      topicTitle="ICU Sedation & Delirium"
+      quizQuestions={icuSedationDeliriumQuestions}
+      coreConcepts={
+        <section className="space-y-6">
+          {/* RASS */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation Assessment (RASS)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Target light sedation (RASS 0 to −2) unless specific indication for deep sedation (refractory
+              ICP, severe ARDS with paralysis, status epilepticus). Daily sedation holds (SAT) paired with
+              spontaneous breathing trials (SBT) — the ABC trial — reduce ventilator days and mortality.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">RASS</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Term</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+4</td><td>Combative</td><td>Violent, immediate danger to staff</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">+1 to +3</td><td>Agitated</td><td>Anxious, aggressive, pulling at lines</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">0</td><td>Alert &amp; calm</td><td>Spontaneously attentive</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−1 to −2</td><td>Light sedation</td><td>Drowsy, eye opening to voice (&gt; 10 s)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">−3 to −4</td><td>Moderate / deep</td><td>Movement or eye opening to voice or physical stimulation</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">−5</td><td>Unarousable</td><td>No response to voice or physical stimulation</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div className="p-4 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">ABCDEF Bundle</p>
-              <p className="text-sm text-muted-foreground mt-1"><strong>A</strong>ssess pain, <strong>B</strong>oth SATs & SBTs, <strong>C</strong>hoice of sedation, <strong>D</strong>elirium monitoring, <strong>E</strong>arly mobility, <strong>F</strong>amily engagement. Reduces delirium, ventilator days, and mortality.</p>
           </div>
-          <CAMICUFlowchartDiagram />
-        </div>
-        </div>
 
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Delirium Prevention & Treatment</h2>
-          <div className="space-y-2">
-            {[
-              { approach: "Non-pharmacological (first-line)", detail: "Sleep hygiene (reduce nocturnal interventions, earplugs, eye masks), early mobilisation, reorientation, cognitive stimulation, family presence, minimise benzodiazepines." },
-              { approach: "Dexmedetomidine", detail: "Preferred sedative in delirious patients — SPICE III: no mortality difference vs usual care, but shorter time to extubation." },
-              { approach: "Haloperidol", detail: "MIND-USA, AID-ICU: no benefit for treatment or prevention of ICU delirium. Not routinely recommended." },
-              { approach: "Propofol Infusion Syndrome", detail: "PRIS: metabolic acidosis, rhabdomyolysis, hyperkalaemia, cardiac failure. Risk: >4 mg/kg/hr for >48h. Treat: stop propofol, supportive care." },
-            ].map((a) => (
-              <div key={a.approach} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{a.approach}</p>
-                <p className="text-sm text-muted-foreground mt-1">{a.detail}</p>
+          {/* Sedative agents */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedative Agents</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { agent: "Propofol", pros: "Rapid onset/offset, anti-emetic, reduces ICP and CMRO₂", cons: "Hypotension, hypertriglyceridaemia, PRIS at >4 mg/kg/h for >48 h, lipid load" },
+                { agent: "Midazolam", pros: "Anxiolytic, amnestic, anticonvulsant", cons: "Active metabolite (1-OH-midazolam) accumulates in renal failure; prolonged sedation; independent risk factor for delirium" },
+                { agent: "Dexmedetomidine", pros: "α₂-agonist; cooperative sedation, no respiratory depression, sympatholytic, may reduce delirium duration (SPICE III)", cons: "Bradycardia, hypotension, limited depth of sedation, expensive" },
+                { agent: "Alfentanil / Remifentanil", pros: "Analgesia-based sedation; remifentanil offset independent of organ function (esterase metabolism)", cons: "Chest wall rigidity at high doses; remifentanil-induced hyperalgesia and acute tolerance" },
+              ].map((a) => (
+                <div key={a.agent} className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{a.agent}</p>
+                  <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Pros:</strong> {a.pros}</p>
+                  <p className="text-xs text-muted-foreground mt-1"><strong className="text-foreground">Cons:</strong> {a.cons}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4">
+              <ICUSedationComparisonDiagram />
+            </div>
+          </div>
+
+          {/* Delirium */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Delirium</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Affects up to 80 % of ventilated patients. Independently associated with increased
+              mortality, prolonged ventilation and long-term cognitive impairment. Three subtypes:
+              hyperactive (5 %, easily recognised), hypoactive (most common, frequently missed) and
+              mixed. Screen with CAM-ICU each shift.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">CAM-ICU</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  4 features: (1) acute onset / fluctuating course + (2) inattention + (3) altered
+                  consciousness OR (4) disorganised thinking. Positive = 1 + 2 + (3 or 4).
+                </p>
               </div>
-            ))}
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">ABCDEF bundle</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  <strong>A</strong>ssess pain · <strong>B</strong>oth SAT &amp; SBT · <strong>C</strong>hoice
+                  of sedation · <strong>D</strong>elirium monitoring · <strong>E</strong>arly mobility ·
+                  <strong> F</strong>amily engagement. Reduces delirium, ventilator days and mortality.
+                </p>
+              </div>
+            </div>
+            <CAMICUFlowchartDiagram />
           </div>
-        </div>
-      </section>
 
-      <KeyLearningPoints points={[
-        "Target light sedation (RASS 0 to −2) with daily sedation holds — improves outcomes",
-        "PRIS risk: propofol >4 mg/kg/hr for >48h → metabolic acidosis, rhabdomyolysis, cardiac failure",
-        "CAM-ICU: acute onset + inattention + altered consciousness or disorganised thinking",
-        "ABCDEF bundle reduces delirium, ventilator days, and ICU mortality",
-        "Haloperidol has no proven benefit for ICU delirium (MIND-USA, AID-ICU trials)",
-      ]} />
+          {/* Prevention & treatment */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Delirium Prevention &amp; Treatment</h2>
+            <div className="space-y-2">
+              {[
+                { approach: "Non-pharmacological (first-line)", detail: "Sleep hygiene (cluster nocturnal interventions, earplugs, eye masks, light/dark cycling), early mobilisation, reorientation, cognitive stimulation, family presence, minimise benzodiazepines, optimise hearing aids/glasses." },
+                { approach: "Dexmedetomidine", detail: "Preferred sedative in the delirious or agitated patient. SPICE III: no mortality difference vs usual care but shorter time to extubation; useful for agitation impeding weaning." },
+                { approach: "Haloperidol / atypical antipsychotics", detail: "MIND-USA and AID-ICU: no benefit for treatment or prevention of ICU delirium. Reserve for distressing hyperactive symptoms not controlled by non-pharmacological measures; balance against QT prolongation and EPSE." },
+                { approach: "Propofol infusion syndrome (PRIS)", detail: "Triad: metabolic acidosis + rhabdomyolysis/hyperkalaemia + cardiac dysfunction (Brugada-like ECG, RBBB). Risk: >4 mg/kg/h for >48 h, young / lean / catecholamine-loaded patients. Treat: stop propofol, switch agent, supportive care, CRRT for refractory acidosis/hyperkalaemia." },
+              ].map((a) => (
+                <div key={a.approach} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{a.approach}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{a.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <QuizSection questions={icuSedationDeliriumQuestions} />
-      <ReferencesList topicId="icu-sedation-delirium" />
-
-      <SeeAlso topicId="icu-sedation-delirium" />
-        <TopicCompletionToggle topicId="icu-sedation-delirium" topicTitle="ICU Sedation & Delirium" />
-    </SectionLayout>
+          {/* Daily SAT/SBT */}
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Daily SAT &amp; SBT</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Spontaneous Awakening Trial (SAT)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Stop sedation each morning unless contraindicated (paralysis, ICP, status, severe ARDS
+                  with intolerance, escalating vasopressors). Failure: agitation, RR &gt; 35 for &gt; 5 min,
+                  SpO₂ &lt; 88 %, acute arrhythmia. Restart at half the prior rate.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Spontaneous Breathing Trial (SBT)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  If SAT passes — 30–120 min on PSV ≤ 8 cmH₂O / PEEP ≤ 5 or T-piece. Pass if RSBI
+                  (RR/V<sub>T</sub>) &lt; 105, stable haemodynamics, SpO₂ ≥ 90 %, no distress. Coupled
+                  SAT + SBT (ABC trial) ↓ ventilator days &amp; mortality.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      }
+    />
   );
 };
 
