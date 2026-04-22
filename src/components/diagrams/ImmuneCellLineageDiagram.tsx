@@ -474,10 +474,10 @@ const ImmuneCellLineageDiagram = () => {
                   const mx = (a.x + b.x) / 2;
                   const my = (a.y + b.y) / 2 - 30;
                   return (
-                    <g key={`tok-${stepIdx}-${pathway}`}>
+                    <g key={`tok-${stepIdx}-${pathway}-${speed}`}>
                       <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1.2">
                         <animateMotion
-                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
                           repeatCount="1"
                           fill="freeze"
                           path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
@@ -485,7 +485,7 @@ const ImmuneCellLineageDiagram = () => {
                       </circle>
                       <text fontSize="7" textAnchor="middle" dy="2" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
                         <animateMotion
-                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
                           repeatCount="1"
                           fill="freeze"
                           path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
