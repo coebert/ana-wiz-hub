@@ -330,23 +330,9 @@ const AcuteLiverFailureTopic = () => {
         </div>
       </section>
 
-      <KeyLearningPoints points={[
-        "Paracetamol is the commonest cause of ALF in the UK — treat with NAC, best prognosis",
-        "Do NOT correct INR unless bleeding — it is a prognostic marker (King's criteria)",
-        "Cerebral oedema is the leading cause of death in ALF — manage ICP aggressively in grade III/IV encephalopathy",
-        "King's criteria (paracetamol): pH <7.3 is the strongest single predictor for transplant need",
-        "ACLF is graded by number of organ failures (CLIF-C) — grade 3 has ~75% 28-day mortality",
-        "Trajectory at day 3–7 is more prognostically important than admission ACLF grade",
-        "Alcoholic hepatitis: Maddrey DF ≥32 → prednisolone; Lille >0.45 at day 7 → stop steroids (non-responder)",
-        "Do NOT restrict protein in hepatic encephalopathy — target 1.2–1.5 g/kg/day",
-      ]} />
-
-      <QuizSection questions={acuteLiverFailureQuestions} />
-      <ReferencesList topicId="acute-liver-failure" />
-
-      <SeeAlso topicId="acute-liver-failure" />
-        <TopicCompletionToggle topicId="acute-liver-failure" topicTitle="Acute Liver Failure" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
