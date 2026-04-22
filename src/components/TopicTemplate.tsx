@@ -9,9 +9,20 @@ import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
+import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
+
+/**
+ * Returns true if the block is visible under the current exam filter.
+ * Blocks without a `sectionExamMapping` entry are always shown (we can't
+ * judge their relevance), so the filter only ever HIDES explicitly mapped
+ * blocks that don't match.
+ */
+const blockMatches = (mapping: SectionExamMap | undefined, active: ExamTag | null) =>
+  !active || !mapping || mapping.exams.includes(active);
 
 interface TopicTemplateProps {
   // SectionLayout props
