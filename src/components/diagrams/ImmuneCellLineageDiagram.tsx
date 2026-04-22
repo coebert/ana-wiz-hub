@@ -182,6 +182,7 @@ const ImmuneCellLineageDiagram = () => {
   const [pathway, setPathway] = useState<Pathway>("antigen-dc-t-b");
   const [stepIdx, setStepIdx] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [speed, setSpeed] = useState<0.5 | 0.75 | 1 | 1.5 | 2>(1);
   const [selected, setSelected] = useState<string>("dc");
   /** In activation view, set when user clicks the current step's destination cell so the panel shows that cell's deep detail instead of the step caption. */
   const [pinnedCellId, setPinnedCellId] = useState<string | null>(null);
@@ -194,9 +195,9 @@ const ImmuneCellLineageDiagram = () => {
 
   useEffect(() => {
     if (view !== "activation" || !playing || pinnedCellId) return;
-    const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), currentStep?.duration ?? 1500);
+    const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), (currentStep?.duration ?? 1500) / speed);
     return () => clearTimeout(t);
-  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId]);
+  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId, speed]);
 
   // Reset when switching pathway / view; clear any pinned cell
   useEffect(() => { setStepIdx(0); setPinnedCellId(null); }, [pathway, view]);
@@ -299,6 +300,24 @@ const ImmuneCellLineageDiagram = () => {
               >
                 Step ›
               </button>
+              <div className="inline-flex items-center rounded border border-border overflow-hidden" role="group" aria-label="Animation speed">
+                <span className="px-1.5 py-1 text-[10px] uppercase tracking-wide text-muted-foreground bg-muted/30">Speed</span>
+                {([0.5, 0.75, 1, 1.5, 2] as const).map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => setSpeed(s)}
+                    aria-pressed={speed === s}
+                    className={`px-2 py-1 border-l border-border transition-colors ${
+                      speed === s
+                        ? "bg-primary/10 text-foreground"
+                        : "text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    {s}×
+                  </button>
+                ))}
+              </div>
             </>
           )}
 
@@ -455,10 +474,10 @@ const ImmuneCellLineageDiagram = () => {
                   const mx = (a.x + b.x) / 2;
                   const my = (a.y + b.y) / 2 - 30;
                   return (
-                    <g key={`tok-${stepIdx}-${pathway}`}>
+                    <g key={`tok-${stepIdx}-${pathway}-${speed}`}>
                       <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1.2">
                         <animateMotion
-                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
                           repeatCount="1"
                           fill="freeze"
                           path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
@@ -466,7 +485,7 @@ const ImmuneCellLineageDiagram = () => {
                       </circle>
                       <text fontSize="7" textAnchor="middle" dy="2" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
                         <animateMotion
-                          dur={`${(currentStep.duration ?? 1500) / 1000}s`}
+                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
                           repeatCount="1"
                           fill="freeze"
                           path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
