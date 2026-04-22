@@ -180,6 +180,8 @@ const ImmuneCellLineageDiagram = () => {
   const [stepIdx, setStepIdx] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [selected, setSelected] = useState<string>("dc");
+  /** In activation view, set when user clicks the current step's destination cell so the panel shows that cell's deep detail instead of the step caption. */
+  const [pinnedCellId, setPinnedCellId] = useState<string | null>(null);
   const [showLabels, setShowLabels] = useState(true);
   const [showLineages, setShowLineages] = useState(true);
   const [highlight, setHighlight] = useState<"all" | "innate" | "adaptive">("all");
@@ -188,13 +190,15 @@ const ImmuneCellLineageDiagram = () => {
   const currentStep = activeSteps[stepIdx % activeSteps.length];
 
   useEffect(() => {
-    if (view !== "activation" || !playing) return;
+    if (view !== "activation" || !playing || pinnedCellId) return;
     const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), currentStep?.duration ?? 1500);
     return () => clearTimeout(t);
-  }, [view, playing, stepIdx, currentStep, activeSteps.length]);
+  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId]);
 
-  // Reset when switching pathway
-  useEffect(() => { setStepIdx(0); }, [pathway, view]);
+  // Reset when switching pathway / view; clear any pinned cell
+  useEffect(() => { setStepIdx(0); setPinnedCellId(null); }, [pathway, view]);
+  // Clear the pin when the step advances naturally
+  useEffect(() => { setPinnedCellId(null); }, [stepIdx]);
 
   const resolvePoint = (id: string) => {
     if (id === "ag-source") return ANTIGEN_ANCHOR;
@@ -377,12 +381,17 @@ const ImmuneCellLineageDiagram = () => {
             return (
               <g
                 key={c.id}
-                onClick={() => setSelected(isSel ? c.id : c.id)}
+                onClick={() => {
+                  setSelected(c.id);
+                  if (view === "activation" && currentStep && c.id === currentStep.to) {
+                    setPinnedCellId(c.id);
+                  }
+                }}
                 style={{ cursor: "pointer" }}
                 opacity={dim ? 0.2 : 1}
                 filter="url(#icl-cellShadow)"
               >
-                <CellShape c={c} fill={fill} stroke={stroke} selected={isSel} />
+                <CellShape c={c} fill={fill} stroke={stroke} selected={isSel || pinnedCellId === c.id} />
                 {showLabels && (
                   <text
                     x={c.x}
@@ -484,33 +493,78 @@ const ImmuneCellLineageDiagram = () => {
         {/* Detail / step panel */}
         <div className="mt-4 min-h-[140px]">
           {view === "activation" ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
-              key={`step-${pathway}-${stepIdx}`}
-              style={{ borderLeftWidth: 4, borderLeftColor: currentStep.color }}
-            >
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">
-                  Step {stepIdx + 1} / {activeSteps.length} — {currentStep.label}
-                </p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: `${currentStep.color}26`, color: currentStep.color }}
+            (() => {
+              const pinned = pinnedCellId ? cells.find((c) => c.id === pinnedCellId) : null;
+              if (pinned) {
+                const accent = pinned.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[pinned.arm];
+                return (
+                  <div
+                    className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
+                    key={`pin-${pinned.id}`}
+                    style={{ borderLeftWidth: 4, borderLeftColor: accent }}
+                  >
+                    <div className="flex items-center justify-between gap-2 flex-wrap">
+                      <p className="font-semibold text-foreground text-sm">{pinned.label}</p>
+                      <div className="flex items-center gap-1.5">
+                        <span
+                          className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                          style={{ background: `${accent}26`, color: accent }}
+                        >
+                          {pinned.branch === "stem" ? "Stem" : pinned.branch} · {pinned.arm}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setPinnedCellId(null)}
+                          className="text-[10px] px-1.5 py-0.5 rounded-md border border-border text-muted-foreground hover:bg-muted/50"
+                        >
+                          ← Back to step
+                        </button>
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground italic">
+                      Step {stepIdx + 1} destination · {currentStep.label}
+                    </p>
+                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {pinned.role}</p>
+                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {pinned.function}</p>
+                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {pinned.clinical}</p>
+                  </div>
+                );
+              }
+              return (
+                <div
+                  className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
+                  key={`step-${pathway}-${stepIdx}`}
+                  style={{ borderLeftWidth: 4, borderLeftColor: currentStep.color }}
                 >
-                  {currentStep.token}
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
-              <div className="flex gap-1 mt-1">
-                {activeSteps.map((_, i) => (
-                  <span
-                    key={i}
-                    className="h-1 flex-1 rounded-full transition-colors"
-                    style={{ background: i === stepIdx ? currentStep.color : "hsl(var(--muted))" }}
-                  />
-                ))}
-              </div>
-            </div>
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <p className="font-semibold text-foreground text-sm">
+                      Step {stepIdx + 1} / {activeSteps.length} — {currentStep.label}
+                    </p>
+                    <span
+                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                      style={{ background: `${currentStep.color}26`, color: currentStep.color }}
+                    >
+                      {currentStep.token}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
+                  {currentStep.to !== "ag-source" && (
+                    <p className="text-[11px] text-muted-foreground italic">
+                      Tip: tap the destination cell ({cells.find((c) => c.id === currentStep.to)?.short ?? currentStep.to}) to read its full profile.
+                    </p>
+                  )}
+                  <div className="flex gap-1 mt-1">
+                    {activeSteps.map((_, i) => (
+                      <span
+                        key={i}
+                        className="h-1 flex-1 rounded-full transition-colors"
+                        style={{ background: i === stepIdx ? currentStep.color : "hsl(var(--muted))" }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })()
           ) : sel ? (
             <div
               className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
