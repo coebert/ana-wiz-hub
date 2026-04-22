@@ -330,6 +330,8 @@ const MRIPhysicsDiagram = () => {
               "Gadolinium shortens T1 → bright on T1W; avoid if eGFR <30 (NSF risk).",
             ]}
           />
+        </TabsContent>
+        <TabsContent value="safety">
           <SafetyTab />
           <WorkedExampleCallout
             title="Anaesthesia for paediatric brain MRI"
@@ -348,6 +350,8 @@ const MRIPhysicsDiagram = () => {
               "Monitoring: MR-conditional pulse oximetry, capnography (long sampling line), fibreoptic ECG.",
             ]}
           />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
