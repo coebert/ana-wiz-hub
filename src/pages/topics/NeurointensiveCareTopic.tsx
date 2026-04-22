@@ -245,7 +245,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <div id="toc-sci" className="scroll-mt-24">
+        <ExamSection id="toc-sci" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury (SCI) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Acute traumatic SCI requires a multidisciplinary ICU approach. The level and completeness of injury determines respiratory, cardiovascular, and autonomic consequences. Assume spinal instability until cleared. ASIA (American Spinal Injury Association) impairment scale classifies injury severity A–E.
