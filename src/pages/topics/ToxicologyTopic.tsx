@@ -1,5 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { ExamSection } from "@/components/ExamSection";
 import { toxicologyQuestions } from "@/data/quizzes";
 import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogramDiagram";
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
@@ -162,8 +162,7 @@ const ToxicologyTopic = () => {
       }
       coreConcepts={
         <>
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.10"]} />
+          <ExamSection exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.10"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">General Principles</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Poisoning management on the ICU follows a small set of principles: stabilise with ABCDE, identify the toxin (with NPIS/TOXBASE support), decontaminate where appropriate, enhance elimination when an effective modality exists, and recognise the toxidrome patterns that often arrive before a confirmed history.
@@ -174,10 +173,9 @@ const ToxicologyTopic = () => {
               <li><strong>Enhanced elimination</strong>: urinary alkalinisation (salicylates, methotrexate), haemodialysis (methanol, ethylene glycol, salicylates, lithium), haemoperfusion (rarely used)</li>
               <li><strong>Toxidromes</strong>: see the comparator below — pattern recognition narrows the differential before a tox screen returns</li>
             </ul>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Antidotes</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -198,30 +196,27 @@ const ToxicologyTopic = () => {
                 </tbody>
               </table>
             </div>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tricyclic Antidepressant OD</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism of toxicity</strong>: Na⁺ channel blockade (→ wide QRS, arrhythmias), anticholinergic effects, α₁ blockade (→ hypotension), serotonin/noradrenaline reuptake inhibition</li>
               <li><strong>ECG features</strong>: sinus tachycardia, QRS &gt;100 ms (risk of seizures), QRS &gt;160 ms (risk of VT/VF). Right axis deviation of terminal 40 ms (R in aVR &gt;3 mm)</li>
               <li><strong>Treatment</strong>: IV sodium bicarbonate 8.4% (50–100 mL) for QRS &gt;120 ms or arrhythmias. Target pH 7.45–7.55. Overcomes Na⁺ channel block. Avoid class Ia antiarrhythmics</li>
             </ul>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
+          <ExamSection exams={["final", "fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Salicylate Poisoning</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Early: respiratory alkalosis (central stimulation) → mixed metabolic acidosis + respiratory alkalosis → late: metabolic acidosis predominates</li>
               <li>Other features: tinnitus, hypoglycaemia (children), hyperthermia, non-cardiogenic pulmonary oedema, coagulopathy</li>
               <li><strong>Treatment</strong>: activated charcoal (if &lt;1 h), urinary alkalinisation (NaHCO₃ to pH 7.5–8.5), haemodialysis (level &gt;700 mg/L, renal failure, pulmonary oedema, seizures)</li>
             </ul>
-          </div>
+          </ExamSection>
 
-          <div>
-            <ExamMappingBadges exams={["fficm", "edic"]} />
+          <ExamSection exams={["fficm", "edic"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Removal of Toxins</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
               Extracorporeal techniques (haemodialysis, haemofiltration, haemoperfusion) can remove toxins that meet specific pharmacokinetic criteria. The <strong>EXTRIP</strong> (Extracorporeal Treatments in Poisoning) workgroup provides evidence-based recommendations.
@@ -291,7 +286,7 @@ const ToxicologyTopic = () => {
                 </tbody>
               </table>
             </div>
-          </div>
+          </ExamSection>
         </>
       }
     />

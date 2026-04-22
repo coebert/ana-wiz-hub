@@ -9,9 +9,20 @@ import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
+import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
+
+/**
+ * Returns true if the block is visible under the current exam filter.
+ * Blocks without a `sectionExamMapping` entry are always shown (we can't
+ * judge their relevance), so the filter only ever HIDES explicitly mapped
+ * blocks that don't match.
+ */
+const blockMatches = (mapping: SectionExamMap | undefined, active: ExamTag | null) =>
+  !active || !mapping || mapping.exams.includes(active);
 
 interface TopicTemplateProps {
   // SectionLayout props
@@ -98,6 +109,13 @@ export const TopicTemplate = ({
   topicTitle,
   quizQuestions,
 }: TopicTemplateProps) => {
+  const { activeExam } = useExamFilter();
+
+  const showObjectives = blockMatches(sectionExamMapping?.objectives, activeExam);
+  const showDiagrams = blockMatches(sectionExamMapping?.diagrams, activeExam);
+  const showWorkedExamples = blockMatches(sectionExamMapping?.workedExamples, activeExam);
+  const showKeyPoints = blockMatches(sectionExamMapping?.keyPoints, activeExam);
+
   return (
     <SectionLayout
       title={title}
@@ -108,29 +126,32 @@ export const TopicTemplate = ({
       disableAutoTOC={disableAutoTOC}
     >
       <div className="space-y-10">
-        <div>
-          {sectionExamMapping?.objectives && (
-            <ExamMappingBadges
-              exams={sectionExamMapping.objectives.exams}
-              curriculumCodes={sectionExamMapping.objectives.curriculumCodes}
-            />
-          )}
-          <LearningObjectives objectives={objectives} />
-          {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
-            <SectionReferences
-              topicId={topicId}
-              refLabels={sectionSources.objectives}
-              heading="Sources for these objectives"
-              dense
-              targetId="objectives"
-              targetLabel="Jump to objectives"
-            />
-          )}
-        </div>
+        <TopicExamFilterBar />
+        {showObjectives && (
+          <div>
+            {sectionExamMapping?.objectives && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.objectives.exams}
+                curriculumCodes={sectionExamMapping.objectives.curriculumCodes}
+              />
+            )}
+            <LearningObjectives objectives={objectives} />
+            {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
+              <SectionReferences
+                topicId={topicId}
+                refLabels={sectionSources.objectives}
+                heading="Sources for these objectives"
+                dense
+                targetId="objectives"
+                targetLabel="Jump to objectives"
+              />
+            )}
+          </div>
+        )}
 
         <section className="space-y-8">{coreConcepts}</section>
 
-        {diagrams && (
+        {diagrams && showDiagrams && (
           <section id="diagrams" className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
               Diagrams &amp; Visualisations
@@ -154,7 +175,7 @@ export const TopicTemplate = ({
           </section>
         )}
 
-        {workedExamples && workedExamples.length > 0 && (
+        {workedExamples && workedExamples.length > 0 && showWorkedExamples && (
           <div>
             {sectionExamMapping?.workedExamples && (
               <ExamMappingBadges
@@ -176,25 +197,27 @@ export const TopicTemplate = ({
           </div>
         )}
 
-        <div>
-          {sectionExamMapping?.keyPoints && (
-            <ExamMappingBadges
-              exams={sectionExamMapping.keyPoints.exams}
-              curriculumCodes={sectionExamMapping.keyPoints.curriculumCodes}
-            />
-          )}
-          <KeyLearningPoints points={keyPoints} />
-          {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
-            <SectionReferences
-              topicId={topicId}
-              refLabels={sectionSources.keyPoints}
-              heading="Sources for these key points"
-              dense
-              targetId="key-points"
-              targetLabel="Jump to key points"
-            />
-          )}
-        </div>
+        {showKeyPoints && (
+          <div>
+            {sectionExamMapping?.keyPoints && (
+              <ExamMappingBadges
+                exams={sectionExamMapping.keyPoints.exams}
+                curriculumCodes={sectionExamMapping.keyPoints.curriculumCodes}
+              />
+            )}
+            <KeyLearningPoints points={keyPoints} />
+            {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
+              <SectionReferences
+                topicId={topicId}
+                refLabels={sectionSources.keyPoints}
+                heading="Sources for these key points"
+                dense
+                targetId="key-points"
+                targetLabel="Jump to key points"
+              />
+            )}
+          </div>
+        )}
 
         {quizQuestions && quizQuestions.length > 0 && (
           // QuizSection's prop is loosely typed across the codebase; cast here.
