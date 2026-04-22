@@ -280,6 +280,43 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
+        {/* Cardiac arrest after cardiac surgery */}
+        <div id="cals" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Arrest Following Cardiac Surgery</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cardiac arrest in the first 24–72 hours after cardiac surgery is a uniquely manageable emergency: the patient is monitored, the team is on site, mechanical support and re-operation are immediately available, and the cause is usually one of a small list of surgically reversible problems (tamponade, bleeding, graft occlusion, severe arrhythmia, electrolyte derangement, pacing failure). Standard ALS — designed for the unwitnessed community arrest — is therefore <strong>modified</strong> by the EACTS/EACTA 2009 guideline (updated 2017), now adopted by the Resuscitation Council UK as the basis for cardiac advanced life support (CALS) in CICU.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Three principles drive every modification: (1) most arrests are witnessed and immediately shockable, so <strong>up to three stacked shocks come before chest compressions</strong>; (2) <strong>bolus adrenaline can be catastrophic</strong> after recent anastomoses, so it is withheld or titrated; and (3) <strong>emergency resternotomy within 5 minutes</strong> is the definitive intervention if the first-line steps fail. Every cardiac ICU keeps a sterile resternotomy set, a designated trained surgical responder, and pre-applied defibrillator pads at every bedside.
+          </p>
+
+          <CardiacArrestPostCardiacSurgeryDiagram />
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Surgery-specific reversible causes</p>
+              <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                <li><strong>Tamponade</strong> — bleeding into the pericardium; confirm on TOE; relieved by resternotomy</li>
+                <li><strong>Major haemorrhage</strong> — surgical bleeder; volume + resternotomy</li>
+                <li><strong>Graft occlusion / kink</strong> — ST changes, regional wall-motion abnormality</li>
+                <li><strong>Tension pneumothorax</strong> — IMA harvest or chest-drain malfunction</li>
+                <li><strong>Severe hyperkalaemia / acidosis</strong> — residual cardioplegia effect</li>
+                <li><strong>Pacing failure</strong> — disconnected wire, depleted box, capture loss</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Team & equipment standards</p>
+              <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                <li>Resternotomy trolley at every bed (sterile gown, scalpel, wire-cutters, sternal retractor, internal paddles)</li>
+                <li>≥1 surgical responder available 24/7 within 5 min</li>
+                <li>Defib pads pre-applied AP, pacing box checked at every handover</li>
+                <li>Routine annual CALS simulation training for the whole CICU team</li>
+                <li>Consider VA-ECMO / IABP / temporary VAD early if no ROSC</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* ───────── Thoracic surgery ───────── */}
         <div id="olv" className="scroll-mt-24 pt-4 border-t border-border">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
