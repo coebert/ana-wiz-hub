@@ -1,0 +1,261 @@
+import { useMemo, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+
+type Severity = "critical" | "major" | "minor";
+
+interface Pitfall {
+  id: string;
+  title: string;
+  why: string;
+  examPearl: string;
+  severity: Severity;
+}
+
+interface Modality {
+  id: string;
+  label: string;
+  fullName: string;
+  oneLiner: string;
+  pitfalls: Pitfall[];
+}
+
+const severityStyles: Record<Severity, { dot: string; badge: string; label: string }> = {
+  critical: {
+    dot: "bg-destructive",
+    badge: "bg-destructive/15 text-destructive border-destructive/30",
+    label: "Critical",
+  },
+  major: {
+    dot: "bg-icu",
+    badge: "bg-icu/15 text-icu border-icu/30",
+    label: "Major",
+  },
+  minor: {
+    dot: "bg-muted-foreground",
+    badge: "bg-muted text-muted-foreground border-border",
+    label: "Minor",
+  },
+};
+
+const modalities: Modality[] = [
+  {
+    id: "thermo",
+    label: "Thermodilution",
+    fullName: "Thermodilution (PAC bolus / continuous, PiCCO TPTD)",
+    oneLiner: "Indicator (cold saline) area-under-the-curve. Vulnerable to anything that changes injectate, transit, or baseline temperature.",
+    pitfalls: [
+      { id: "t1", severity: "critical", title: "Tricuspid regurgitation", why: "Recirculation of cold indicator across the incompetent valve broadens the curve and overestimates CO.", examPearl: "Classic SBA: \"PAC overestimates CO in...\" → severe TR." },
+      { id: "t2", severity: "critical", title: "Intracardiac shunt (ASD/VSD/PFO)", why: "Indicator bypasses the systemic circulation — left-to-right shunt loses cold to the lungs (overestimates CO); right-to-left loses indicator to systemic circulation (underestimates).", examPearl: "Use Fick or echo if shunt suspected; thermodilution invalid." },
+      { id: "t3", severity: "major", title: "Wrong injectate volume or temperature", why: "Stewart-Hamilton numerator depends on (Vᵢ × ΔT). 5 mL instead of 10 mL halves the calculated CO; warm 'iced' saline does the same.", examPearl: "Always 10 mL of 0–5 °C saline for adult PAC; volume entered must match the syringe." },
+      { id: "t4", severity: "major", title: "Respiratory cycle variation", why: "Cyclic changes in venous return alter CO across a breath; single injections can vary ±10–20%.", examPearl: "Inject at end-expiration; take the mean of three injections within 10%." },
+      { id: "t5", severity: "major", title: "Rapid temperature drift (CRRT, ECMO, warming devices)", why: "Baseline blood temperature is unstable so the curve cannot be integrated reliably.", examPearl: "Pause warming/CRRT for the measurement, or use an alternative monitor (echo, pulse contour with calibration when stable)." },
+      { id: "t6", severity: "major", title: "Low cardiac output states", why: "Slow transit allows indicator loss to surrounding tissues — small numerator and broad curve overestimates CO at the low end.", examPearl: "Thermodilution is least accurate when you most need it (CO < 2.5 L/min)." },
+      { id: "t7", severity: "minor", title: "Catheter malposition / thrombus on thermistor", why: "Damped thermistor signal flattens the curve; CO appears spuriously low or noisy.", examPearl: "Check PA waveform and CXR position; flush carefully." },
+      { id: "t8", severity: "minor", title: "Arrhythmia between injections", why: "Beat-to-beat SV variability widens scatter; mean of three may not reflect steady-state.", examPearl: "Document rhythm at the time of measurement." },
+    ],
+  },
+  {
+    id: "pulse",
+    label: "Pulse contour",
+    fullName: "Pulse contour / pulse power analysis (PiCCO, LiDCO, FloTrac, ProAQT)",
+    oneLiner: "Beat-to-beat SV from the systolic area of the arterial waveform, scaled by an estimate of aortic compliance. Anything that changes compliance or distorts the trace causes error.",
+    pitfalls: [
+      { id: "p1", severity: "critical", title: "Aortic regurgitation", why: "Diastolic regurgitant flow corrupts the pulse contour; systolic area no longer equates to forward SV.", examPearl: "Severe AR is an absolute pitfall for all pulse contour devices." },
+      { id: "p2", severity: "critical", title: "Intra-aortic balloon pump (IABP)", why: "Counterpulsation distorts the systolic area and adds a second pressure wave.", examPearl: "Pulse contour CO unreliable on IABP; use TPTD calibration value or echo." },
+      { id: "p3", severity: "critical", title: "Severe arrhythmia (AF with rapid ventricular response, ectopy)", why: "Beat-to-beat SV varies widely; uncalibrated devices (FloTrac) particularly susceptible.", examPearl: "Trends are more reliable than absolute numbers." },
+      { id: "p4", severity: "major", title: "Damped or over-resonant arterial line", why: "Damping flattens the systolic peak (under-reads SV); resonance exaggerates it (over-reads).", examPearl: "Always perform a fast-flush (square-wave) test before trusting pulse contour CO." },
+      { id: "p5", severity: "major", title: "Rapid changes in SVR (vasopressor titration, vasoplegia)", why: "Aortic compliance is recalculated only periodically; uncalibrated FloTrac historically performed poorly in low-SVR sepsis (improved in 4th-generation algorithm).", examPearl: "Recalibrate (PiCCO/LiDCO) after any major vasoactive change." },
+      { id: "p6", severity: "major", title: "Prolonged interval since last calibration", why: "Drift over 8 h, particularly with thermal events or position change.", examPearl: "PiCCO/LiDCO: recalibrate every 8 h or after any major haemodynamic change." },
+      { id: "p7", severity: "major", title: "Peripheral arterial line in shock", why: "Radial-aortic pressure gradient widens in vasoplegia; the radial waveform underestimates central SV.", examPearl: "Femoral access preferred for PiCCO; check for radial-femoral gradient in profound shock." },
+      { id: "p8", severity: "minor", title: "LiDCO-specific: lithium therapy or first-trimester pregnancy", why: "Baseline lithium invalidates calibration; teratogenicity concern.", examPearl: "Also avoid within 30 min of non-depolarising NMBA (electrode cross-reactivity)." },
+    ],
+  },
+  {
+    id: "doppler",
+    label: "Doppler",
+    fullName: "Oesophageal Doppler (CardioQ) and echo-derived CO",
+    oneLiner: "Δf = (2 f₀ v cos θ) / c. Errors come from beam alignment, fixed-area assumptions, and operator factors.",
+    pitfalls: [
+      { id: "d1", severity: "critical", title: "Probe malposition / loss of focus", why: "Off-axis beam underestimates velocity (cos θ); the assumed descending aortic area no longer matches.", examPearl: "Constantly re-focus the signal — operator dependence is the dominant error source." },
+      { id: "d2", severity: "critical", title: "Aortic disease (aneurysm, dissection, coarctation)", why: "Distorts the descending aortic geometry; nomogram-based area is wrong.", examPearl: "Contraindicated in known aortic pathology." },
+      { id: "d3", severity: "major", title: "Assumed 70:30 split between descending and brachiocephalic flow", why: "Ratio changes with cross-clamp, brain injury, or anaesthesia depth — absolute CO becomes inaccurate.", examPearl: "Best used as a trend monitor for SV optimisation, not absolute CO." },
+      { id: "d4", severity: "major", title: "LVOT VTI off-axis (echo)", why: "cos θ error: a 20° angulation underestimates SV by ~6%.", examPearl: "Apical 5-chamber view; align Doppler beam parallel to flow." },
+      { id: "d5", severity: "major", title: "LVOT diameter measurement error (echo)", why: "Diameter is squared in the area calculation — a 10% error becomes 20% in SV.", examPearl: "Measure in mid-systole, parasternal long-axis, inner-edge to inner-edge." },
+      { id: "d6", severity: "major", title: "Awake patient discomfort / movement", why: "Probe shift loses focus, gag interferes; not tolerated unsedated.", examPearl: "Best in the anaesthetised, intubated patient." },
+      { id: "d7", severity: "minor", title: "Recent oesophageal/upper GI surgery, varices, coagulopathy", why: "Risk of perforation or bleeding from probe insertion.", examPearl: "Relative contraindications — risk-benefit assessment." },
+    ],
+  },
+  {
+    id: "impedance",
+    label: "Impedance / Bioreactance",
+    fullName: "Thoracic bioimpedance and bioreactance (NICOM, Cheetah)",
+    oneLiner: "Detects volumetric blood movement in the aorta from changes in thoracic electrical resistance (impedance) or signal phase (bioreactance).",
+    pitfalls: [
+      { id: "i1", severity: "critical", title: "Diathermy / electrocautery interference", why: "High-frequency electrosurgical noise saturates the receiver.", examPearl: "Unusable intra-operatively when diathermy is active." },
+      { id: "i2", severity: "critical", title: "Pulmonary oedema, large pleural effusion or pneumothorax", why: "Extra fluid or air dramatically alters thoracic impedance independent of CO.", examPearl: "Avoid in florid ARDS, severe pulmonary oedema, or post-thoracic surgery." },
+      { id: "i3", severity: "major", title: "Patient motion / shivering", why: "Movement artefact dominates the small impedance changes from cardiac ejection.", examPearl: "Bioreactance (phase shift) is more robust than classic impedance but still motion-sensitive." },
+      { id: "i4", severity: "major", title: "Low-flow / shock states", why: "Signal-to-noise ratio collapses; trending and absolute values both deteriorate.", examPearl: "Reasonable for trending in stable patients; not for severe shock." },
+      { id: "i5", severity: "major", title: "Severe arrhythmia", why: "Beat-to-beat variability and irregular timing degrade signal averaging.", examPearl: "AF reduces accuracy similarly to other beat-to-beat methods." },
+      { id: "i6", severity: "minor", title: "Electrode placement / skin contact", why: "Sweating, hair, or oedema increase impedance at the skin interface.", examPearl: "Clean, dry skin; replace electrodes per manufacturer." },
+      { id: "i7", severity: "minor", title: "Pacing spikes", why: "May be misinterpreted as cardiac signal in classic impedance devices.", examPearl: "Bioreactance less affected." },
+    ],
+  },
+  {
+    id: "noninv",
+    label: "Non-invasive",
+    fullName: "Volume-clamp finger cuff (ClearSight/Nexfin) & dynamic indices (SVV/PPV)",
+    oneLiner: "Continuous brachial-equivalent pressure reconstruction or respiratory variation analysis. Sensitive to peripheral perfusion and ventilatory conditions.",
+    pitfalls: [
+      { id: "n1", severity: "critical", title: "Peripheral vasoconstriction / cold fingers", why: "Volume-clamp depends on a pulsatile finger arteriole; vasoconstriction loses the signal.", examPearl: "Unreliable in profound shock, hypothermia, or high-dose noradrenaline." },
+      { id: "n2", severity: "critical", title: "SVV/PPV in spontaneous breathing or open chest", why: "Heart-lung interactions absent or unpredictable; the variation does not reflect preload reserve.", examPearl: "SVV/PPV require mandatory ventilation, V_T ≥ 8 mL/kg, sinus rhythm, closed chest." },
+      { id: "n3", severity: "critical", title: "SVV/PPV in arrhythmia", why: "Beat-to-beat SV variation is not respiratory in origin.", examPearl: "Atrial fibrillation invalidates SVV/PPV — use passive leg raise instead." },
+      { id: "n4", severity: "major", title: "Low tidal volume (lung-protective ventilation)", why: "V_T < 8 mL/kg generates insufficient cyclic preload change to drive measurable SVV.", examPearl: "Use end-expiratory occlusion or PLR in ARDS." },
+      { id: "n5", severity: "major", title: "Right ventricular failure", why: "Cyclic SVV is generated by RV-LV interaction; severe RV failure reverses or abolishes the relationship.", examPearl: "False positives and negatives both occur." },
+      { id: "n6", severity: "major", title: "Raised intra-abdominal pressure", why: "Alters transmission of pleural pressure to the heart; SVV/PPV thresholds become unreliable.", examPearl: "Common pitfall in liver failure, abdominal compartment syndrome." },
+      { id: "n7", severity: "major", title: "Finger oedema or prolonged cuff use", why: "Volume-clamp accuracy drops; risk of digital ischaemia with continuous use > 8 h.", examPearl: "Alternate fingers; remove for ≥30 min every 8 h." },
+      { id: "n8", severity: "minor", title: "Brachial-equivalent reconstruction error", why: "Algorithm assumes typical age/sex/BP relationships; outliers (vascular disease) less accurate.", examPearl: "Trends more reliable than absolute values." },
+    ],
+  },
+];
+
+const COPitfallsChecklist = () => {
+  const [active, setActive] = useState<string>(modalities[0].id);
+  const [checked, setChecked] = useState<Record<string, boolean>>({});
+  const [filter, setFilter] = useState<Severity | "all">("all");
+
+  const current = modalities.find((m) => m.id === active)!;
+  const visible = useMemo(
+    () => (filter === "all" ? current.pitfalls : current.pitfalls.filter((p) => p.severity === filter)),
+    [current, filter],
+  );
+  const completed = current.pitfalls.filter((p) => checked[`${current.id}:${p.id}`]).length;
+  const total = current.pitfalls.length;
+  const pct = total ? Math.round((completed / total) * 100) : 0;
+
+  const toggle = (pitfallId: string) => {
+    const key = `${current.id}:${pitfallId}`;
+    setChecked((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const resetCurrent = () => {
+    setChecked((prev) => {
+      const next = { ...prev };
+      current.pitfalls.forEach((p) => delete next[`${current.id}:${p.id}`]);
+      return next;
+    });
+  };
+
+  return (
+    <div className="my-6 rounded-xl border border-border bg-card p-4 sm:p-5">
+      <div className="mb-3">
+        <h3 className="text-lg font-bold text-foreground">CO Monitoring — Pitfalls Checklist</h3>
+        <p className="text-sm text-muted-foreground">
+          One-page exam-ready error sources for each modality. Tick as you revise; switch tabs to compare.
+        </p>
+      </div>
+
+      <Tabs value={active} onValueChange={setActive} className="w-full">
+        <TabsList className="grid w-full grid-cols-5 mb-4 h-auto">
+          {modalities.map((m) => (
+            <TabsTrigger key={m.id} value={m.id} className="text-[11px] sm:text-xs px-1.5 py-2 leading-tight whitespace-normal">
+              {m.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+        {modalities.map((m) => (
+          <TabsContent key={m.id} value={m.id} className="mt-0">
+            {/* Header card */}
+            <div className="rounded-lg border border-border bg-muted/30 p-3 mb-3">
+              <p className="font-semibold text-foreground text-sm">{m.fullName}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{m.oneLiner}</p>
+            </div>
+
+            {/* Controls */}
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div className="flex flex-wrap gap-1.5">
+                {(["all", "critical", "major", "minor"] as const).map((f) => (
+                  <Button
+                    key={f}
+                    size="sm"
+                    variant={filter === f ? "default" : "outline"}
+                    className="h-7 px-2.5 text-xs capitalize"
+                    onClick={() => setFilter(f)}
+                  >
+                    {f}
+                    {f !== "all" && (
+                      <span className="ml-1.5 opacity-70">
+                        {m.pitfalls.filter((p) => p.severity === f).length}
+                      </span>
+                    )}
+                  </Button>
+                ))}
+              </div>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span>{completed}/{total} reviewed</span>
+                <div className="w-20 h-1.5 rounded-full bg-muted overflow-hidden">
+                  <div className="h-full bg-primary transition-all" style={{ width: `${pct}%` }} />
+                </div>
+                <Button size="sm" variant="ghost" className="h-7 px-2 text-xs" onClick={resetCurrent}>
+                  Reset
+                </Button>
+              </div>
+            </div>
+
+            {/* Pitfall list */}
+            <ul className="space-y-2">
+              {visible.map((p) => {
+                const key = `${m.id}:${p.id}`;
+                const isChecked = !!checked[key];
+                const sev = severityStyles[p.severity];
+                return (
+                  <li
+                    key={p.id}
+                    className={`rounded-lg border border-border p-3 transition-colors ${isChecked ? "bg-muted/40 opacity-70" : "bg-background"}`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id={key}
+                        checked={isChecked}
+                        onCheckedChange={() => toggle(p.id)}
+                        className="mt-0.5"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <label
+                            htmlFor={key}
+                            className={`font-semibold text-sm text-foreground cursor-pointer ${isChecked ? "line-through" : ""}`}
+                          >
+                            <span className={`inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle ${sev.dot}`} />
+                            {p.title}
+                          </label>
+                          <Badge variant="outline" className={`text-[10px] uppercase tracking-wide ${sev.badge}`}>
+                            {sev.label}
+                          </Badge>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          <span className="font-medium text-foreground">Why:</span> {p.why}
+                        </p>
+                        <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                          <span className="font-medium text-foreground">Exam pearl:</span> {p.examPearl}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+              {visible.length === 0 && (
+                <li className="text-xs text-muted-foreground text-center py-6">No pitfalls in this severity for this modality.</li>
+              )}
+            </ul>
+          </TabsContent>
+        ))}
+      </Tabs>
+    </div>
+  );
+};
+
+export default COPitfallsChecklist;
