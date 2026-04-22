@@ -277,6 +277,98 @@ const CardiothoracicTopic = () => {
                 <li>Always confirm electrocerebral silence (EEG burst-suppression) before circulatory arrest.</li>
               </ul>
             </div>
+
+            {/* Complication quick-reference */}
+            <div>
+              <h3 className="text-lg font-serif font-bold text-foreground mb-2">DHCA Complication Quick-Reference</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                A bedside-style aide-mémoire: complication → likely mechanism → immediate anaesthetic action. Use as a structured framework for the post-bypass period in viva or in real life.
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-secondary/50">
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border w-1/5">Complication</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border w-2/5">Likely cause</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border w-2/5">Immediate anaesthetic management</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground align-top">
+                    {[
+                      {
+                        c: "Coagulopathy / surgical bleeding",
+                        cause: "Hypothermia-induced platelet dysfunction, dilution and consumption of factors, hyperfibrinolysis, residual heparin / heparin rebound, hepatic congestion.",
+                        mgmt: "Rewarm to ≥36 °C (corrects platelet function). ROTEM/TEG-guided product use: FFP for prolonged CT, cryoprecipitate or fibrinogen concentrate if FIBTEM A10 <8 mm, platelets if low or dysfunctional, PCC if vitamin-K factors deficient. Tranexamic acid 1 g (ATACAS). Recheck ACT and give additional protamine if heparin rebound.",
+                      },
+                      {
+                        c: "Low cardiac output syndrome",
+                        cause: "Myocardial stunning from arrest + reperfusion, prolonged cross-clamp, inadequate myocardial protection, RV failure from air/embolism, vasoplegia.",
+                        mgmt: "TOE to define the cause (LV/RV function, filling, valves). Optimise rate (80–100, sinus or A-paced) → preload → contractility (adrenaline 0.05–0.1 mcg/kg/min, milrinone 0.375–0.75 mcg/kg/min, dobutamine) → afterload (noradrenaline / vasopressin for vasoplegia). Escalate early to IABP or VA-ECMO if SvO₂ <60% and lactate rising despite inotropes.",
+                      },
+                      {
+                        c: "Vasoplegia (post-CPB)",
+                        cause: "SIRS amplified by deep hypothermia and rewarming; pre-op ACEi/ARB; bypass duration; profound NO release.",
+                        mgmt: "Noradrenaline first line; add vasopressin 0.03 U/min (VANCS); methylene blue 1–2 mg/kg if refractory; consider hydroxocobalamin in extreme cases. Treat any contributing acidosis and ensure normal calcium.",
+                      },
+                      {
+                        c: "Acute kidney injury (AKI)",
+                        cause: "Low-flow non-pulsatile CPB, haemoglobinuria, micro-embolism, prolonged hypothermic ischaemia, contrast load, vasopressor exposure, hypovolaemia.",
+                        mgmt: "Maintain MAP ≥75 mmHg (higher in chronic hypertension). Avoid hypovolaemia and hyperchloraemia (use balanced solutions). Stop nephrotoxins (NSAIDs, aminoglycosides, ACEi/ARB). Alkalinise urine if pigmenturia. Early renal-replacement therapy if KDIGO 3 with fluid overload, severe acidosis, or hyperkalaemia.",
+                      },
+                      {
+                        c: "Stroke / new neurological deficit",
+                        cause: "Embolism (air, atheroma, thrombus), watershed hypoperfusion during arrest, prolonged arrest >40 min without selective cerebral perfusion, hyperthermic rewarming.",
+                        mgmt: "Maintain MAP 80–90 mmHg, head-up 30°, normocapnia, normoglycaemia, strict normothermia (avoid pyrexia for 48 h). Urgent CT head, neurology and cardiothoracic input. Sedation hold to assess as soon as haemodynamically safe.",
+                      },
+                      {
+                        c: "Temporary neurological dysfunction (delirium / agitation)",
+                        cause: "Subclinical cerebral injury, opioid and benzodiazepine load, sleep disruption, sepsis, electrolytes, alcohol withdrawal.",
+                        mgmt: "Treat reversible causes (pain, electrolytes, hypoxia, sepsis). Minimise benzodiazepines; dexmedetomidine infusion for agitation; haloperidol if needed. Re-orient frequently; restore sleep–wake cycle.",
+                      },
+                      {
+                        c: "Post-op seizures",
+                        cause: "Ischaemic injury, tranexamic acid (dose-related, especially >50 mg/kg), metabolic derangement, hyperthermia.",
+                        mgmt: "Stop TXA. Levetiracetam first line; benzodiazepine for active seizure. Correct sodium, glucose, magnesium. EEG to exclude non-convulsive status. Review imaging.",
+                      },
+                      {
+                        c: "Hyperthermia on rewarming",
+                        cause: "Aggressive arterial-line rewarming, residual SIRS, infection, inflammatory response.",
+                        mgmt: "Never warm arterial blood >37 °C and limit gradient to ≤10 °C. Active cooling (surface, intravascular) for any temperature ≥38 °C in first 48 h. Treat sepsis early.",
+                      },
+                      {
+                        c: "Pulmonary dysfunction / prolonged ventilation",
+                        cause: "CPB-related lung injury (SIRS, capillary leak), atelectasis, pleural effusion, phrenic nerve injury from cold, transfusion-related acute lung injury (TRALI).",
+                        mgmt: "Lung-protective ventilation (VT 6 mL/kg, PEEP 8–10, plateau <30). Recruitment manoeuvres. Restrictive transfusion. Diuresis once haemodynamically stable. Early extubation when criteria met.",
+                      },
+                      {
+                        c: "Splanchnic / hepatic dysfunction",
+                        cause: "Low-flow CPB, vasoconstrictor exposure, hypothermic hepatic ischaemia, RV failure causing congestion.",
+                        mgmt: "Maintain MAP and CO. Trend lactate, LFTs, INR. Enteral feed cautiously. Treat sepsis early; cover for translocation if persistent ileus and rising lactate.",
+                      },
+                      {
+                        c: "Hyperglycaemia",
+                        cause: "Stress response, steroids given as part of neuroprotection bundle, inflammation.",
+                        mgmt: "Insulin infusion targeting 6–10 mmol/L (NICE-SUGAR — avoid tight control <6). Hourly BG monitoring; avoid hypoglycaemia which worsens neurological outcome.",
+                      },
+                      {
+                        c: "Arrhythmia (AF / VT / heart block)",
+                        cause: "Atrial cannulation trauma, electrolyte shifts (K⁺, Mg²⁺), reperfusion, ischaemia, conduction-system oedema.",
+                        mgmt: "Correct K⁺ &gt;4.5, Mg²⁺ &gt;1.0 mmol/L. Use existing epicardial pacing wires for bradycardia/heart block. Amiodarone for AF/VT; DC cardioversion if unstable. Restart beta-blocker as soon as tolerated.",
+                      },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-border last:border-0 hover:bg-accent/20">
+                        <td className="p-3 font-semibold text-foreground">{row.c}</td>
+                        <td className="p-3">{row.cause}</td>
+                        <td className="p-3">{row.mgmt}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground italic mt-2">
+                Always work in parallel with the cardiac surgical team; many DHCA complications (bleeding, tamponade, low output) are corrected at the table or with mechanical support, not pharmacology alone.
+              </p>
+            </div>
           </div>
         </div>
 
