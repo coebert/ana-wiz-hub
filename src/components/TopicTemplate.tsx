@@ -49,6 +49,20 @@ interface TopicTemplateProps {
     keyPoints?: string[];
   };
 
+  /**
+   * Per-section curriculum exam mapping. Renders a small `ExamMappingBadges`
+   * row at the TOP of each block so learners see at a glance whether the
+   * subsection is FRCA Primary / Final / FFICM / EDIC relevant. All keys
+   * optional. Inside `coreConcepts`, drop `<ExamMappingBadges />` directly
+   * at the top of each `<section>`.
+   */
+  sectionExamMapping?: {
+    objectives?: SectionExamMap;
+    diagrams?: SectionExamMap;
+    workedExamples?: SectionExamMap;
+    keyPoints?: SectionExamMap;
+  };
+
   // Footer wiring (kept in current order)
   topicId: string;
   topicTitle?: string;
