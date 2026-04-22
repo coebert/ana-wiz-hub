@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
+import { RRTCircuitFlowDiagram } from "@/components/diagrams/RRTCircuitFlowDiagram";
 import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
 import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
 import { MehranScoreCalculator } from "@/components/diagrams/MehranScoreCalculator";
@@ -524,7 +525,8 @@ const AkiRrtTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare CRRT and IHD circuits with animated blood and dialysate flow.
           </p>
-          <div className="rounded-xl border border-border bg-card p-4">
+          <RRTCircuitFlowDiagram />
+          <div className="rounded-xl border border-border bg-card p-4 mt-4">
             <RRTCircuitDiagram />
           </div>
         </ExamSection>
