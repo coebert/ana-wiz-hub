@@ -413,8 +413,18 @@ const DLTInsertionDiagram = () => {
 
   return (
     <div className="border border-border rounded-lg p-4 mb-6">
-      <h3 className="text-lg font-serif font-bold text-foreground mb-1">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
-      <p className="text-xs text-muted-foreground mb-4">Navigate through each step. Select left or right DLT below.</p>
+      <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
+        <h3 className="text-lg font-serif font-bold text-foreground">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
+        <button
+          type="button"
+          onClick={() => setWalkthroughOpen(true)}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+        >
+          <PlayCircle className="w-3.5 h-3.5" />
+          Guided walkthrough
+        </button>
+      </div>
+      <p className="text-xs text-muted-foreground mb-4">Navigate through each step, or launch the guided walkthrough to tick off confirmation actions as you progress.</p>
 
       {/* DLT side selector */}
       <div className="flex items-center gap-2 mb-4">
