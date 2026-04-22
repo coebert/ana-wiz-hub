@@ -1,512 +1,93 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { prognosticationIcuQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
 import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Apply multimodal post-cardiac arrest prognostication (ERC/ESICM 2021) at ≥72 h with at least two concordant indicators.",
+  "Use validated scoring systems (APACHE II/IV, SOFA, ICNARC, SAPS 3) appropriately for population-level outcome prediction.",
+  "Construct treatment escalation plans, including ReSPECT, time-limited trials, DNACPR, and comfort care.",
+  "Apply the Mental Capacity Act 2005, ADRT, LPA, and best-interests framework to decision-making in ICU.",
+  "Recognise Post-Intensive Care Syndrome (PICS) — physical, cognitive, and psychological — and the role of the ABCDEF bundle in prevention.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Post-arrest prognostication at 72 h",
+    scenario: (
+      <>
+        A 58-year-old has a witnessed VF arrest, ROSC at 18 min. TTM at 36°C for 24 h, then
+        rewarmed. At 72 h after rewarming: GCS M2, bilateral absent pupillary and corneal reflexes,
+        NSE rising (78 → 95 µg/L), MRI shows diffuse cortical diffusion restriction. SSEPs not yet
+        performed. EEG shows burst-suppression. How would you approach prognostication?
+      </>
+    ),
+    working: (
+      <>
+        ERC/ESICM 2021 mandates a <strong>multimodal</strong> assessment at <strong>≥72 h after
+        ROSC</strong> (or ≥72 h after rewarming). At least <strong>two concordant</strong> poor
+        prognostic indicators are required to predict poor outcome. Confounders (sedation,
+        hypothermia, paralysis, organ dysfunction) must be excluded. A single test (NSE alone) is
+        insufficient — and self-fulfilling prophecy is a major concern.
+      </>
+    ),
+    answer: (
+      <>
+        Multiple concordant indicators present: bilateral absent pupillary <em>and</em> corneal
+        reflexes, NSE &gt;60 µg/L and rising, MRI diffuse anoxic injury, malignant EEG. After
+        confirming sedation washout, this constitutes adequate evidence of poor neurological
+        prognosis. SSEP would add further confirmation. Discuss in MDT, then with family in a
+        structured meeting using clear language; do not act on a single early test.
+      </>
+    ),
+  },
+  {
+    title: "Best-interests decision under the MCA",
+    scenario: (
+      <>
+        An 82-year-old with severe dementia, frailty (CFS 7), and metastatic cancer is admitted
+        with septic shock requiring vasopressors and intubation. The family insists "you must do
+        everything." Under UK law, who makes the decision and how do you proceed?
+      </>
+    ),
+    working: (
+      <>
+        The patient lacks capacity. There is no ADRT or registered Health &amp; Welfare LPA. Under
+        the <strong>Mental Capacity Act 2005</strong>, the treating clinicians must decide in the
+        patient's <strong>best interests</strong> — considering past wishes, beliefs, values, and
+        any factors the patient would consider. The family is consulted but does not have legal
+        authority to demand treatment.
+      </>
+    ),
+    answer: (
+      <>
+        Hold a structured family meeting with senior clinician, bedside nurse, and (if available) a
+        palliative care or ethics representative. Explore the patient's prior expressed wishes and
+        values. Explain that continued escalation is unlikely to achieve a quality of life she would
+        have valued, and may prolong dying. Offer a <strong>time-limited trial</strong> (e.g.
+        24–48 h) with explicit success/failure criteria, or transition to comfort care with
+        anticipatory prescribing. Document the decision, rationale, and discussion in detail. If
+        agreement cannot be reached, consider second opinion, mediation, ethics consultation, and
+        ultimately the Court of Protection.
+      </>
+    ),
+  },
+];
 
 const PrognosticationEthicsIcuTopic = () => {
   return (
-    <SectionLayout title="Prognostication, Ethics & Outcomes" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <section className="space-y-8 mb-10">
-
-        {/* ---- Prognostication ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognostication in Intensive Care</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Prognostication is one of the most challenging and important skills in intensive care medicine. Accurate outcome prediction guides treatment decisions, family communication, resource allocation, and end-of-life planning. No single tool is perfectly predictive — clinical judgement integrating multiple data sources remains essential.
-          </p>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-4">Interactive Diagrams</h2>
-          <PostCardiacArrestProgDiagram />
-          <APACHEIICalculator />
-        </div>
-
-        {/* ---- Scoring Systems ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognostic Scoring Systems</h2>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Score</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Variables & Timing</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Use & Limitations</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">APACHE II</td>
-                  <td>12 physiological variables + age + chronic health. Worst values in first 24 h of ICU admission.</td>
-                  <td>Population-level mortality prediction. Widely validated. Not designed for individual prognostication. Older model — may overestimate mortality with modern care. Does not account for treatment intensity.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">APACHE IV</td>
-                  <td>Updated with 142 diagnostic categories, admission source, mechanical ventilation status. First 24 h data.</td>
-                  <td>Better calibration than APACHE II for contemporary ICU populations. Requires proprietary software. US-centric validation.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">ICNARC Model</td>
-                  <td>UK-specific. Physiological variables from first 24 h + admission diagnosis + source. Updated regularly against national audit data.</td>
-                  <td>Gold standard for UK ICU benchmarking. Used in ICNARC Case Mix Programme (CMP). Standardised Mortality Ratio (SMR) = observed/expected deaths. Better calibrated for UK practice than APACHE.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">SOFA</td>
-                  <td>6 organ systems scored 0–4 (respiratory, cardiovascular, hepatic, coagulation, renal, neurological). Daily calculation.</td>
-                  <td>Tracks organ dysfunction trajectory. Rising SOFA predicts mortality (delta-SOFA). Integral to Sepsis-3 definition (≥2-point rise). Useful for serial assessment. Not admission-specific.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">SAPS 3</td>
-                  <td>Pre-ICU variables + admission physiology + admission reason. Calculated at ICU admission (first hour).</td>
-                  <td>International validation. Accounts for case mix and lead-time bias. Hospital mortality prediction. Requires electronic calculation.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">GCS (neurological)</td>
-                  <td>Eye, verbal, motor components. Serial assessment.</td>
-                  <td>After cardiac arrest: motor score at 72 h is part of multimodal prognostication (ERC/ESICM 2021). After TBI: GCS at 6 h predicts outcome. Confounded by sedation, paralysis, intubation.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Disease-Specific Prognostication</h3>
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "Post-Cardiac Arrest (ERC/ESICM 2021)", detail: "Multimodal strategy at ≥72 h after ROSC (or after rewarming if TTM used). No single test is 100% predictive. Combine: bilateral absent pupillary light reflexes, bilateral absent N20 on SSEP, highly malignant EEG (suppression, burst-suppression), neuron-specific enolase (NSE) >60 μg/L, diffuse anoxic injury on MRI (diffusion restriction), absent brainstem reflexes. At least 2 concordant poor prognostic signs required. Avoid self-fulfilling prophecy — do not withdraw based on early single findings." },
-              { label: "Traumatic Brain Injury", detail: "CRASH and IMPACT models incorporate age, GCS, pupil reactivity, CT findings (Marshall classification), and secondary insults. Extended Glasgow Outcome Scale (GOS-E) at 6 months is the standard outcome measure. Young patients with reactive pupils have potential for good recovery even with low initial GCS." },
-              { label: "ARDS", detail: "Severity by PaO₂/FiO₂ ratio (Berlin criteria). Driving pressure >15 cmH₂O independently predicts mortality. Persistent ARDS at day 7 carries worse prognosis. ECMO referral scores (RESP, PRESERVE) aid selection." },
-              { label: "Acute Liver Failure", detail: "King's College criteria (paracetamol and non-paracetamol). MELD score. Arterial lactate >3.5 mmol/L after resuscitation predicts need for transplant. Serial assessment — trajectory matters more than single values." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Limitations of Prognostic Scores</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Population vs Individual</p>
-              <p className="text-xs text-muted-foreground mt-1">Scoring systems predict group mortality rates, not individual outcomes. A 30% predicted mortality means ~70% of similar patients survive. Never use a single score to justify withdrawal of treatment for an individual.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Self-Fulfilling Prophecy</p>
-              <p className="text-xs text-muted-foreground mt-1">If clinicians withdraw treatment based on a poor prognostic prediction, the patient dies — apparently confirming the prediction. This circular reasoning is a major ethical concern, particularly in post-cardiac arrest prognostication. Blinded prognostication protocols help mitigate this bias.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Treatment Escalation & Limits ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Treatment Escalation Plans & Limits</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Treatment escalation plans (TEPs) document decisions about the appropriateness of specific interventions. They are anticipatory — made prospectively before a crisis occurs. Clear documentation supports consistent decision-making, respects patient autonomy, and reduces inappropriate or unwanted escalation.
-          </p>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Levels of Treatment Limitation</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Level</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Description</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Examples</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Full escalation</td>
-                  <td>All appropriate treatments including CPR, intubation, organ support</td>
-                  <td>Young patient with reversible pathology</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Ward-based ceiling</td>
-                  <td>Full active treatment on the ward but not for ICU admission</td>
-                  <td>Patient with advanced comorbidities where ICU unlikely to benefit</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Treatment trial</td>
-                  <td>Time-limited ICU admission with defined review points and criteria for continuation or withdrawal</td>
-                  <td>Uncertain prognosis — reassess at 48–72 h</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">DNAR / DNACPR</td>
-                  <td>Do Not Attempt Cardiopulmonary Resuscitation. Does NOT limit other treatments unless specified.</td>
-                  <td>Common misconception: DNACPR ≠ withdrawal of all active care. Patient may still receive ICU, ventilation, antibiotics.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Comfort care only</td>
-                  <td>Focus on symptom control, dignity, and comfort. No disease-modifying treatments.</td>
-                  <td>End-of-life care pathway. Symptom management with opioids, benzodiazepines, anti-secretory agents.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "ReSPECT Process", detail: "Recommended Summary Plan for Emergency Care and Treatment. National (UK) approach to emergency care planning. Creates personalised recommendations based on shared decision-making. Includes CPR recommendation, preferred escalation level, and patient's priorities. Portable across care settings. Legally advisory, not legally binding (unlike ADRT)." },
-              { label: "Documentation Requirements", detail: "Clear, unambiguous language. Specific treatments included/excluded. Name and grade of decision-maker. Evidence of discussion with patient/family. Review date. Accessible in medical notes and electronically. Communicated to all relevant teams." },
-              { label: "Time-Limited Treatment Trials", detail: "Increasingly used when prognosis is uncertain. Define specific goals and timeframe (e.g. 'trial of NIV for 48 h — escalate to intubation if improving, palliate if deteriorating'). Reduces futile prolonged ICU stays. Requires clear communication with patient/family about what 'success' and 'failure' look like." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Ethics ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medical Ethics in Intensive Care</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Ethical principles underpin every ICU decision, from admission and escalation to withdrawal and organ donation. The four pillars of medical ethics (Beauchamp & Childress) apply with particular intensity in critical care.
-          </p>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">The Four Pillars</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Autonomy</p>
-              <p className="text-xs text-muted-foreground mt-1">The right of a competent patient to make informed decisions about their care, including refusal of treatment. In ICU, patients often lack capacity → advance decisions, lasting power of attorney, and best-interests decisions become critical. Mental Capacity Act 2005 (England & Wales): assume capacity unless proven otherwise.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Beneficence</p>
-              <p className="text-xs text-muted-foreground mt-1">The duty to act in the patient's best interest. In ICU: does continued treatment offer realistic benefit? Benefit must be defined in terms meaningful to the patient (not just survival, but quality of survival). 'Doing something' is not always beneficent.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Non-maleficence</p>
-              <p className="text-xs text-muted-foreground mt-1">'First, do no harm.' Prolonging dying rather than living causes harm. ICU treatments carry significant burdens: pain, delirium, loss of dignity, psychological trauma. The balance between benefit and burden must be continuously reassessed.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Justice</p>
-              <p className="text-xs text-muted-foreground mt-1">Fair allocation of finite resources. ICU beds, ECMO circuits, and specialist staff are limited. Admitting one patient may deny access to another. Triage decisions should be transparent, consistent, and based on clinical criteria — never on social worth or ability to pay.</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Legal Framework (UK)</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Instrument</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Key Points</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Mental Capacity Act 2005</td>
-                  <td>Applies in England & Wales. Five principles: presume capacity, support decision-making, unwise decisions allowed, best interests, least restrictive option. Capacity is decision-specific and time-specific. Two-stage test: (1) impairment of mind/brain, (2) unable to understand, retain, weigh, or communicate the decision.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Advance Decision to Refuse Treatment (ADRT)</td>
-                  <td>Legally binding if valid and applicable. Must be written, signed, and witnessed if refusing life-sustaining treatment. Must specify the treatment refused and the circumstances. Cannot demand treatment. Overrides family and clinician opinions.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Lasting Power of Attorney (LPA)</td>
-                  <td>Health and Welfare LPA allows a designated person to make decisions on behalf of an incapacitated patient. Must be registered with the Office of the Public Guardian. LPA for health can only be used when the patient lacks capacity. Attorney must act in best interests.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Best Interests Decision</td>
-                  <td>When patient lacks capacity and has no ADRT or LPA: clinicians decide in best interests. Must consider patient's past and present wishes, beliefs, values, and any relevant factors they would consider. Consult family/friends, IMCA if no one else to consult. Not determined by clinical team alone.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Court of Protection</td>
-                  <td>Can be asked to make decisions when there is disagreement between clinicians and family. Recent cases: Charlie Gard (2017), Alfie Evans (2018) — courts upheld clinicians' view that continued treatment was not in the child's best interests. Rarely needed — most disputes resolved through mediation.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* ---- Withdrawal & End of Life ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Withdrawal of Treatment & End-of-Life Care</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Approximately 70–80% of ICU deaths in the UK follow a decision to withdraw or withhold life-sustaining treatment. Ethically and legally, withdrawal and withholding are equivalent (GMC guidance, BMA). The distinction between withdrawing treatment and euthanasia is fundamental.
-          </p>
-
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "Withholding vs Withdrawing", detail: "Ethically equivalent — both involve not providing a treatment that is no longer in the patient's best interest. Psychologically, withdrawal can feel harder for clinicians and families. There is no legal or ethical obligation to provide treatment that is futile or burdensome. Not providing treatment ≠ 'doing nothing' — the focus shifts to comfort care." },
-              { label: "Doctrine of Double Effect", detail: "It is ethically permissible to give medications (e.g. opioids, sedatives) with the primary intention of relieving suffering, even if a foreseeable side effect is hastening death. Four conditions: (1) the act itself is morally neutral, (2) the good effect (comfort) is intended, (3) the bad effect (death) is foreseen but not intended, (4) the good effect is proportionate. This is legally and ethically distinct from euthanasia." },
-              { label: "Process of Withdrawal", detail: "Senior-led, multidisciplinary decision. Discussion with family — they are consulted but do not make the decision (UK law). Clear documentation of decision, rationale, and those involved. Anticipatory prescribing: morphine/diamorphine, midazolam, glycopyrronium, levomepromazine. Remove monitoring that does not contribute to comfort. Maintain dignity, privacy, and family access. No fixed timeline — withdrawal is not a single event." },
-              { label: "Symptom Management", detail: "Opioids: titrate to respiratory comfort, not respiratory rate. Midazolam: for agitation, anxiety, seizures. Glycopyrronium/hyoscine: for death rattle (secretions). Levomepromazine: for nausea, agitation. Syringe driver for continuous infusion. Regular reassessment and dose titration. Family presence encouraged." },
-              { label: "Organ Donation After Death", detail: "Withdrawal of treatment and organ donation are separate decisions. The treating team must not be the organ donation team. Specialist Nurses for Organ Donation (SNODs) should be involved early. DCD (donation after circulatory death) is the most common pathway after treatment withdrawal in UK ICU. Deemed consent (opt-out) legislation in England (2020), Wales (2015), Scotland (2021)." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- Communication ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Communication & Family</h2>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Breaking Bad News</p>
-              <p className="text-xs text-muted-foreground mt-1">SPIKES framework: Setting, Perception, Invitation, Knowledge, Emotions, Strategy/Summary. Allow silence. Avoid medical jargon. Check understanding. Be honest about uncertainty. Document the conversation.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Family Meetings</p>
-              <p className="text-xs text-muted-foreground mt-1">Structured, planned, with clear objectives. Involve senior clinician, bedside nurse, and other relevant disciplines. Explore family's understanding and expectations. Shared decision-making — not information delivery. Regular updates even when there is no change. Document outcomes and plan.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Conflict Resolution</p>
-              <p className="text-xs text-muted-foreground mt-1">Disagreements between clinicians and families are common. Strategies: second opinions, ethics committee involvement, independent mediation, pastoral/spiritual support, time for reflection, involvement of PALS. Court of Protection as last resort. Avoid adversarial language. Document all discussions.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Cultural & Religious Considerations</p>
-              <p className="text-xs text-muted-foreground mt-1">Diverse views on brain death, treatment withdrawal, autopsy, and organ donation. Some faiths do not accept brain death as death. Rapid access to chaplaincy/spiritual care. Accommodate religious rituals where possible. Never assume — ask the family what is important to them.</p>
-            </div>
-          </div>
-        </div>
-
-        {/* ---- Long-Term Outcomes ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long-Term Outcomes After Critical Illness</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            Survival to ICU discharge is only the beginning. Critical illness survivors face a constellation of physical, cognitive, and psychological sequelae collectively termed <strong>Post-Intensive Care Syndrome (PICS)</strong>. Understanding these outcomes is essential for informed consent, prognostication, and follow-up planning.
-          </p>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Post-Intensive Care Syndrome (PICS)</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Domain</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Manifestations</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Risk Factors & Prevalence</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Physical</td>
-                  <td>ICU-acquired weakness (CIP/CIM), reduced exercise capacity, fatigue, weight loss, joint contractures, dysphagia, chronic pain, tracheal stenosis</td>
-                  <td>ICU-AW affects 25–50% of patients ventilated &gt;7 days. Risk: sepsis, multi-organ failure, steroids, neuromuscular blockers, immobility. May persist for years.</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Cognitive</td>
-                  <td>Memory impairment, impaired executive function, reduced processing speed, difficulty concentrating, delirium-related cognitive decline</td>
-                  <td>Affects 30–80% of ICU survivors at hospital discharge. Duration of delirium is the strongest predictor. Similar to mild TBI or early Alzheimer's on neuropsychological testing. May improve over 12 months but often persists.</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Psychological</td>
-                  <td>PTSD (10–50%), anxiety (30–40%), depression (25–30%), sleep disturbance, altered body image, loss of independence</td>
-                  <td>Risk factors: delirium, benzodiazepine use, frightening ICU memories/delusions, pre-existing psychiatric history, female sex. PICS-F: family members also affected (anxiety, depression, complicated grief).</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">ICU-Acquired Weakness</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Critical Illness Polyneuropathy (CIP)</p>
-              <p className="text-xs text-muted-foreground mt-1">Axonal sensorimotor polyneuropathy. Distal weakness, areflexia, sensory loss. EMG/NCS: reduced CMAP and SNAP amplitudes with normal conduction velocities. Sepsis and multi-organ failure are the strongest risk factors. Recovery over weeks to months but may be incomplete.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Critical Illness Myopathy (CIM)</p>
-              <p className="text-xs text-muted-foreground mt-1">Primary myopathy with myosin loss. Proximal weakness, preserved reflexes (initially), elevated CK. Risk: steroids + neuromuscular blockers synergistic. EMG: small-amplitude, short-duration motor unit potentials. Generally better prognosis than CIP. Often coexists (CIPNM).</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Outcome Measures</h3>
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "Mortality", detail: "In-ICU, in-hospital, 30-day, 90-day, and 1-year mortality. UK ICU mortality ~15–20%; hospital mortality ~25%. Post-discharge mortality remains elevated for years — 'hidden mortality.' 5-year survival after ICU may be 50–60% depending on case mix." },
-              { label: "Functional Outcome Scales", detail: "Extended Glasgow Outcome Scale (GOS-E): 8 categories from death to upper good recovery — standard for TBI. Karnofsky Performance Status (KPS) and WHO Performance Status: functional capacity. EQ-5D: health-related quality of life. Barthel Index: activities of daily living. SF-36: physical and mental health domains." },
-              { label: "Return to Work / Social Function", detail: "Only 50–70% of working-age ICU survivors return to work within 12 months. Cognitive impairment is the strongest barrier. Many return at reduced capacity or different role. Financial hardship, relationship breakdown, and social isolation are common. Rehabilitation needs are often unmet." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- ICU Follow-Up & Rehabilitation ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Follow-Up & Rehabilitation</h2>
-          <div className="space-y-2">
-            {[
-              { label: "NICE CG83 (Rehabilitation After Critical Illness)", detail: "Recommends structured rehabilitation assessment at ICU discharge, ward discharge, and 2–3 months post-ICU. Physical, cognitive, and psychological domains should all be assessed. Individualised rehabilitation goals. Referral to specialist services (physiotherapy, psychology, occupational therapy, speech and language therapy)." },
-              { label: "ICU Follow-Up Clinics", detail: "Review at 2–3 months post-discharge. Multidisciplinary: intensivist, nurse, physiotherapist, psychologist. Assess PICS domains, medication review, provide information and peer support. Patient diaries (written during ICU stay) help fill memory gaps and reduce PTSD symptoms. Not yet universally available — significant variation across UK." },
-              { label: "Prevention Strategies (In ICU)", detail: "ABCDEF Bundle: Assess, prevent, and manage pain; Both spontaneous awakening and breathing trials; Choice of analgesia and sedation; Delirium assess and manage; Early mobility and exercise; Family engagement. Early mobilisation: physiotherapy-led, reduces ICU-AW and delirium, shortens ventilator days. Minimise benzodiazepines (increase delirium risk). Promote sleep hygiene. ICU diaries." },
-              { label: "Staff Wellbeing & Moral Distress", detail: "ICU clinicians experience high rates of burnout, moral distress, and compassion fatigue. End-of-life decisions, perceived futile treatment, and pandemic pressures are major contributors. Schwartz rounds, peer support, debriefing after difficult cases, and access to psychological support are essential. Staff wellbeing directly impacts patient safety and quality of care." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ---- ICU Admission & Triage ---- */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Admission, Triage & Resource Allocation</h2>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            ICU beds are a finite, expensive resource. Admission decisions must balance the duty to the individual patient against the responsibility to use limited resources fairly. Effective triage requires clinical expertise, ethical reasoning, and clear communication.
-          </p>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Who Benefits from ICU Admission?</h3>
-          <div className="overflow-x-auto mb-4">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Priority</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Description</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Examples</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Priority 1</td>
-                  <td>Critically ill, unstable — require intensive monitoring and treatment not available elsewhere. High likelihood of recovery with ICU care.</td>
-                  <td>Post-operative complications, acute respiratory failure requiring intubation, septic shock needing vasopressors</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Priority 2</td>
-                  <td>Require intensive monitoring and may need immediate intervention. May have chronic comorbidities that reduce likelihood of recovery.</td>
-                  <td>Acute-on-chronic respiratory failure, unstable angina with dynamic ECG changes, diabetic ketoacidosis with organ dysfunction</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Priority 3</td>
-                  <td>Critically ill but with reduced probability of recovery due to underlying disease or severity. May benefit from a trial of ICU therapy with defined limits.</td>
-                  <td>Advanced malignancy with acute reversible complication, severe COPD with pneumonia, elderly frail patient with sepsis</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Priority 4</td>
-                  <td>Generally not appropriate for ICU. Either too well (can be managed on a ward) or too sick (ICU care would not alter outcome).</td>
-                  <td>Low-risk elective post-op (too well); end-stage irreversible organ failure with no reversible component (too sick)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Principles of ICU Gatekeeping</h3>
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "Reversibility", detail: "The core question: does the patient have a potentially reversible condition that requires organ support? ICU admission is most appropriate when the acute illness is treatable and the patient has reasonable baseline function. Irreversible disease without a reversible precipitant is unlikely to benefit." },
-              { label: "Benefit vs Burden", detail: "ICU care carries significant burdens: invasive procedures, pain, delirium, loss of autonomy, nosocomial infection, psychological harm, and family distress. These must be weighed against the potential benefit of survival with acceptable quality of life. The question is not 'can we treat?' but 'should we treat?'" },
-              { label: "Functional Baseline & Frailty", detail: "Pre-morbid functional status is a stronger predictor of ICU outcome than age alone. The Clinical Frailty Scale (CFS ≥5 = mildly frail) identifies patients at higher risk of poor outcome. NICE COVID-19 guidelines used CFS ≥5 as a factor in ICU triage. Frailty assessment should be routine for all emergency ICU referrals." },
-              { label: "The 'Too Sick' and 'Too Well' Problem", detail: "Many inappropriate ICU admissions fall into two categories: patients who are too well for ICU (could be managed on a ward with appropriate monitoring) and patients who are too sick to benefit (the disease trajectory is irreversible). Both waste ICU capacity and expose patients to unnecessary harm." },
-              { label: "Consultant-Led Decision Making", detail: "ICU admission decisions should be made by the ICU consultant or senior registrar on call. They should assess the patient directly wherever possible. The decision is the ICU team's to make — referring teams can request, not demand, ICU admission. Clear documentation of the decision and rationale is essential." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Resource Allocation & Rationing</h3>
-          <div className="grid sm:grid-cols-2 gap-3 mb-4">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Micro-Allocation</p>
-              <p className="text-xs text-muted-foreground mt-1">Day-to-day decisions about individual patient admissions, discharges, and bed management. The ICU consultant balances the needs of patients currently in ICU against those waiting for admission. 'Delayed discharge' and 'premature discharge' both carry risks. Bed occupancy &gt;85% is associated with increased refusal rates and worse outcomes for refused patients.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Macro-Allocation</p>
-              <p className="text-xs text-muted-foreground mt-1">System-level decisions about how many ICU beds a hospital or region needs. UK has ~6.6 ICU beds per 100,000 population (cf. Germany ~29, USA ~34). Funding decisions, staffing ratios (1:1 nursing), and equipment procurement are macro-allocation. Pandemic highlighted the fragility of running ICU at near-maximum capacity.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Pandemic Triage</p>
-              <p className="text-xs text-muted-foreground mt-1">When demand exceeds capacity, triage protocols prioritise patients most likely to benefit. Utilitarian approach: greatest good for greatest number. NICE COVID-19 rapid guidance recommended CFS assessment and consideration of comorbidity burden. Pandemic triage protocols must be transparent, consistent, non-discriminatory, and pre-agreed.</p>
-            </div>
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm">Ethical Frameworks for Rationing</p>
-              <p className="text-xs text-muted-foreground mt-1">First-come-first-served (simple but ignores clinical need), utilitarian (maximise lives saved), egalitarian (equal access), prioritarian (prioritise the worst-off), lottery (random — avoids bias). Most real-world triage uses a hybrid: clinical benefit first, with fairness as a tiebreaker. No framework is universally accepted — transparency is key.</p>
-            </div>
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Critical Care Outreach & Rapid Response</h3>
-          <div className="space-y-2 mb-4">
-            {[
-              { label: "Track & Trigger Systems", detail: "National Early Warning Score (NEWS2) is the UK standard. Aggregate weighted scores from physiological parameters (RR, SpO₂, BP, pulse, consciousness, temperature). NEWS ≥5 = urgent response; NEWS ≥7 = emergency response; NEWS 3 in any single parameter = urgent review. Designed to detect deterioration early and trigger appropriate escalation." },
-              { label: "Critical Care Outreach Teams (CCOT)", detail: "Multidisciplinary teams (typically ICU nurses, physiotherapists, sometimes medical staff) that extend ICU expertise to the ward. Functions: respond to deteriorating patients, support ward staff with skills and education, facilitate step-down from ICU, assist with end-of-life care decisions, and reduce avoidable ICU admissions and cardiac arrests. Evidence supports reduced unexpected cardiac arrests and improved early intervention." },
-              { label: "Benefits of Outreach", detail: "Earlier identification of deteriorating patients. Reduced avoidable cardiac arrests. Facilitated appropriate ICU admission (right patient, right time). Supported safe step-down from ICU to ward. Education and upskilling of ward staff. Improved communication between ward and ICU teams. Support for DNACPR and treatment escalation planning." },
-              { label: "ICNARC & National Audit", detail: "The Intensive Care National Audit & Research Centre (ICNARC) runs the Case Mix Programme (CMP) — a national clinical audit of patient outcomes from adult ICUs in England, Wales, and Northern Ireland. Benchmarks unit performance using standardised mortality ratios (SMR). Identifies outliers for review. Data feeds into national quality improvement. Participation is near-universal in NHS ICUs." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="font-semibold text-foreground text-sm">{item.label}</p>
-                <p className="text-sm text-muted-foreground mt-1">{item.detail}</p>
-              </div>
-            ))}
-          </div>
-
-          <h3 className="text-lg font-semibold text-foreground mt-4 mb-2">Levels of Critical Care (ICS Standards)</h3>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-2 text-foreground font-semibold">Level</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Care</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Nursing Ratio</th>
-                  <th className="text-left py-2 text-foreground font-semibold">Location</th>
-                </tr>
-              </thead>
-              <tbody className="text-muted-foreground">
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Level 0</td>
-                  <td>Normal ward care</td>
-                  <td>Standard</td>
-                  <td>General ward</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Level 1</td>
-                  <td>At risk of deterioration or recently stepped down from higher care. Additional monitoring/intervention.</td>
-                  <td>Enhanced (variable)</td>
-                  <td>Ward with outreach support</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-medium text-foreground">Level 2 (HDU)</td>
-                  <td>Single organ support (excluding advanced respiratory support) or post-operative care, or step-down from Level 3</td>
-                  <td>1:2</td>
-                  <td>High Dependency Unit</td>
-                </tr>
-                <tr>
-                  <td className="py-2 font-medium text-foreground">Level 3 (ICU)</td>
-                  <td>Advanced respiratory support alone, or support of ≥2 organ systems, or chronic ventilation support</td>
-                  <td>1:1</td>
-                  <td>Intensive Care Unit</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </section>
-
-      <SynthesisBlock
-        title="ICU Decision-Making Framework"
-        subtitle="A pragmatic synthesis of when to escalate, when to limit, and how to communicate."
-        variant="summary"
-      >
-        <ul className="space-y-2 list-disc list-inside text-sm">
-          <li><strong>Trial of treatment</strong>: time-limited (typically 48–72 h) with explicit, measurable goals agreed with family. Re-review formally at the end of the trial — escalate, continue, or de-escalate.</li>
-          <li><strong>Best-interests decisions (Mental Capacity Act 2005)</strong>: when the patient lacks capacity, clinicians decide in their best interests considering past wishes, values, and family input — not what the family wants per se.</li>
-          <li><strong>Prognostic scoring (APACHE, SOFA)</strong>: validated for population outcomes only. Never the sole basis for individual treatment decisions.</li>
-          <li><strong>Withdrawal vs withholding</strong>: ethically and legally equivalent (UK case law). Avoid emotive distinction with families.</li>
-          <li><strong>Organ donation pathway</strong>: refer to SN-OD early when WLST or brainstem testing is being considered — referral does not commit to donation.</li>
-          <li><strong>Conflict resolution</strong>: second clinical opinion → ethics consultation → mediation → court (Re J/Charlie Gard pathway). Document each step.</li>
-          <li><strong>Communication</strong>: separate prognosis conversations from organ-donation conversations. Use clear language ("dying" / "death") rather than euphemisms.</li>
-        </ul>
-      </SynthesisBlock>
-
-      <KeyLearningPoints points={[
+    <TopicTemplate
+      title="Prognostication, Ethics &amp; Outcomes"
+      subtitle="FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
         "Prognostic scores predict population outcomes — never use a single score to determine treatment for an individual patient",
         "Post-cardiac arrest prognostication: multimodal at ≥72 h — at least 2 concordant poor prognostic signs required (ERC/ESICM 2021)",
         "Withholding and withdrawing treatment are ethically and legally equivalent (GMC/BMA guidance)",
@@ -517,13 +98,210 @@ const PrognosticationEthicsIcuTopic = () => {
         "ICU-acquired weakness: CIP is axonal neuropathy, CIM is primary myopathy — often coexist. Sepsis is the strongest risk factor",
         "ABCDEF bundle reduces delirium, ICU-AW, and improves long-term outcomes — early mobilisation is a key component",
         "Self-fulfilling prophecy: withdrawing treatment based on early prediction confirms the prediction — use blinded multimodal assessment",
-      ]} />
+      ]}
+      topicId="prognostication-ethics-icu"
+      topicTitle="Prognostication, Ethics & Outcomes"
+      quizQuestions={prognosticationIcuQuestions}
+      sectionSources={{
+        objectives: ["ERC/ESICM 2021", "GMC 2022", "Mental Capacity Act 2005"],
+        workedExamples: ["ERC/ESICM 2021", "Mental Capacity Act 2005"],
+        keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ 2018 PICS"],
+      }}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },
+        workedExamples: { exams: ["final", "fficm", "edic"] },
+        keyPoints: { exams: ["final", "fficm", "edic"] },
+      }}
+      coreConcepts={
+        <>
+          <ExamSection id="diagrams" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Interactive Tools</h2>
+            <PostCardiacArrestProgDiagram />
+            <APACHEIICalculator />
+          </ExamSection>
 
-      <QuizSection questions={prognosticationIcuQuestions} />
-      <ReferencesList topicId="prognostication-ethics-icu" />
-      <SeeAlso topicId="prognostication-ethics-icu" />
-      <TopicCompletionToggle topicId="prognostication-ethics-icu" topicTitle="Prognostication, Ethics & Outcomes" />
-    </SectionLayout>
+          <ExamSection id="scoring" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognostic Scoring Systems</h2>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Score</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Variables &amp; Timing</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Use &amp; Limitations</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">APACHE II</td><td>12 physiological + age + chronic health, worst values first 24 h</td><td>Population mortality. Widely validated. Not for individual decisions.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">APACHE IV</td><td>142 diagnoses, admission source, vent status, first 24 h</td><td>Better calibration. Proprietary software, US-centric.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ICNARC</td><td>UK-specific, physiology + diagnosis + source, first 24 h</td><td>UK gold standard. SMR via Case Mix Programme.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SOFA</td><td>6 organ systems 0–4, daily</td><td>Tracks dysfunction. Δ-SOFA predicts mortality. Sepsis-3 (≥2-point rise).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">SAPS 3</td><td>Pre-ICU + admission physiology, first hour</td><td>International. Hospital mortality.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">GCS</td><td>E/V/M, serial</td><td>Motor at 72 h post-arrest part of multimodal prognostication.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Post-Cardiac Arrest (ERC/ESICM 2021)</h3>
+            <p className="text-sm text-muted-foreground mb-2">Multimodal at ≥72 h after ROSC (or rewarming if TTM). At least 2 concordant indicators: bilateral absent pupil + corneal reflexes; bilateral absent N20 SSEP; highly malignant EEG (suppression, burst-suppression); NSE &gt;60 µg/L; diffuse anoxic injury on MRI; absent brainstem reflexes.</p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Population vs Individual</p>
+                <p className="text-xs text-muted-foreground mt-1">Scores predict group mortality. A 30% predicted mortality means ~70% survive — never use a single score to justify withdrawal.</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Self-Fulfilling Prophecy</p>
+                <p className="text-xs text-muted-foreground mt-1">Withdrawing on early prediction confirms it. Major ethical concern in post-arrest prognostication; blinded protocols mitigate bias.</p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="escalation" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Treatment Escalation Plans</h2>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Level</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Description</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Examples</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Full escalation</td><td>All treatments incl. CPR, intubation, organ support</td><td>Young patient, reversible</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Ward ceiling</td><td>Full ward care, no ICU</td><td>Advanced comorbidity</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Treatment trial</td><td>Time-limited ICU with review points</td><td>Uncertain prognosis, 48–72 h</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">DNACPR</td><td>No CPR; does NOT limit other treatments</td><td>Common misconception</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Comfort care</td><td>Symptom control, dignity</td><td>End-of-life pathway</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground"><strong>ReSPECT</strong> — UK national approach: personalised recommendations, portable across care settings, advisory not legally binding. Time-limited trials are increasingly used when prognosis is uncertain.</p>
+          </ExamSection>
+
+          <ExamSection id="ethics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medical Ethics &amp; UK Law</h2>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              {[
+                { p: "Autonomy", d: "Right of competent patient to decide, including refusal. ICU patients often lack capacity → ADRT, LPA, best interests." },
+                { p: "Beneficence", d: "Act in patient's interest. Define benefit in terms meaningful to the patient — not just survival." },
+                { p: "Non-maleficence", d: "Prolonging dying causes harm. Continuously reassess benefit vs burden." },
+                { p: "Justice", d: "Fair allocation. Triage transparent, consistent, clinical." },
+              ].map((x) => (
+                <div key={x.p} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{x.p}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{x.d}</p>
+                </div>
+              ))}
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Instrument</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Key Points</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Mental Capacity Act 2005</td><td>5 principles: presume capacity, support, allow unwise decisions, best interests, least restrictive. Decision- and time-specific.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">ADRT</td><td>Legally binding if valid &amp; applicable. Written, signed, witnessed for life-sustaining treatment refusal. Cannot demand treatment.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">LPA (Health &amp; Welfare)</td><td>Registered with Office of the Public Guardian. Used only when patient lacks capacity. Attorney must act in best interests.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Best Interests</td><td>When no ADRT/LPA: clinicians decide considering past wishes, values, family input. IMCA if no one to consult.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Court of Protection</td><td>Disagreement resolution. Charlie Gard, Alfie Evans precedents — clinicians' best-interests view upheld.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="withdrawal" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Withdrawal &amp; End-of-Life Care</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              ~70–80% of UK ICU deaths follow a decision to withdraw or withhold life-sustaining treatment. Withdrawal and withholding are ethically &amp; legally equivalent (GMC/BMA).
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
+              <li><strong>Doctrine of double effect</strong>: medications for comfort permitted even if they may hasten death — distinct from euthanasia.</li>
+              <li><strong>Process</strong>: senior-led, MDT, family consulted but do not decide. Anticipatory prescribing: morphine, midazolam, glycopyrronium, levomepromazine.</li>
+              <li><strong>Symptom management</strong>: titrate opioids to comfort, not RR. Syringe driver for continuous infusion.</li>
+              <li><strong>Organ donation pathway is separate</strong> from withdrawal. SN-OD involved early.</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="pics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long-Term Outcomes &amp; PICS</h2>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Domain</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Manifestations</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Risk &amp; Prevalence</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Physical</td><td>ICU-AW (CIP/CIM), reduced exercise, fatigue, dysphagia, tracheal stenosis</td><td>25–50% of patients ventilated &gt;7 days. Risk: sepsis, MOF, steroids, NMB.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cognitive</td><td>Memory, executive function, processing speed</td><td>30–80% at hospital discharge. Delirium duration is strongest predictor.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Psychological</td><td>PTSD (10–50%), anxiety (30–40%), depression (25–30%)</td><td>Risk: delirium, benzodiazepines, frightening memories. PICS-F affects family.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground"><strong>ABCDEF bundle</strong>: Assess pain, Both SAT/SBT, Choice of analgesia/sedation, Delirium, Early mobility, Family. Reduces delirium, ICU-AW, ventilator days. NICE CG83 recommends structured rehabilitation assessment at ICU and ward discharge plus 2–3 months. ICU follow-up clinics with patient diaries reduce PTSD.</p>
+          </ExamSection>
+
+          <ExamSection id="triage" exams={["fficm", "edic"]} className="scroll-mt-24">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Admission, Triage &amp; Outreach</h2>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Priority</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Description</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">P1</td><td>Critically ill, unstable, high likelihood of recovery with ICU.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">P2</td><td>Need monitoring; may have comorbidities.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">P3</td><td>Reduced recovery probability — consider time-limited trial.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">P4</td><td>Generally not appropriate — too well or too sick.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm text-muted-foreground mb-2"><strong>Frailty</strong> (CFS ≥5) predicts outcome better than age alone. Consultant-led decisions; treating teams can request, not demand. <strong>NEWS2 ≥5</strong> = urgent response. <strong>Critical Care Outreach (CCOT)</strong> reduces avoidable arrests and supports step-down. <strong>ICNARC CMP</strong> benchmarks UK units.</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Level</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Care</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Nursing</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">L0</td><td>Ward</td><td>Standard</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">L1</td><td>At-risk / step-down</td><td>Enhanced</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">L2 (HDU)</td><td>Single organ support (not adv. resp)</td><td>1:2</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">L3 (ICU)</td><td>Adv. resp or ≥2 organ support</td><td>1:1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
+
+          <SynthesisBlock
+            title="ICU Decision-Making Framework"
+            subtitle="A pragmatic synthesis of when to escalate, when to limit, and how to communicate."
+            variant="summary"
+          >
+            <ul className="space-y-2 list-disc list-inside text-sm">
+              <li><strong>Trial of treatment</strong>: time-limited (48–72 h) with explicit goals; formal re-review.</li>
+              <li><strong>Best-interests (MCA 2005)</strong>: clinicians decide considering past wishes, values, family input.</li>
+              <li><strong>Prognostic scores</strong>: validated for populations only — never sole basis for individual decisions.</li>
+              <li><strong>Withdrawal vs withholding</strong>: ethically &amp; legally equivalent (UK case law).</li>
+              <li><strong>Organ donation</strong>: refer SN-OD early when WLST/BSD considered — referral does not commit.</li>
+              <li><strong>Conflict resolution</strong>: 2nd opinion → ethics → mediation → court.</li>
+              <li><strong>Communication</strong>: separate prognosis and donation conversations; clear language.</li>
+            </ul>
+          </SynthesisBlock>
+        </>
+      }
+    />
   );
 };
 
