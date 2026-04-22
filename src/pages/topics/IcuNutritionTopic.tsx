@@ -1,5 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
-import { ExamMappingBadges } from "@/components/ExamMappingBadges";
+import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
