@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -13,6 +13,7 @@ const navItems = [
   { label: "Clinical", path: "/clinical", icon: Stethoscope, color: "text-clinical" },
   { label: "ICU", path: "/intensive-care", icon: Activity, color: "text-icu" },
   { label: "Periop", path: "/perioperative", icon: ClipboardList, color: "text-perioperative" },
+  { label: "Map", path: "/map", icon: Network, color: "text-primary" },
 ];
 
 const examFilters: { label: string; value: ExamTag | null }[] = [
