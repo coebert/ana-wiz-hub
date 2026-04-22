@@ -16,8 +16,33 @@ const workedExamples: WorkedExample[] = [
     title: "Choosing an induction agent for unstable polytrauma",
     scenario:
       "A 25-year-old motorcyclist arrives with HR 130, SBP 80 mmHg, GCS 9, suspected splenic rupture and a likely C-spine injury. Theatre is ready. Plan the RSI.",
-    working:
-      "Pre-oxygenation 3 min while resuscitating with 1:1:1 product through a rapid infuser; activate MHP; TXA 1 g IV (within 3 h CRASH-2 window).\nInduction: ketamine 1–2 mg/kg IV (preserves SVR, bronchodilator) — avoid propofol/thiopentone in shock. Reduce dose if obtunded.\nParalysis: rocuronium 1.2 mg/kg (rapid, no IOP/ICP rise; sugammadex available).\nManual in-line stabilisation; cricoid pressure (controversial — release if it impairs view).\nVideolaryngoscope first attempt; vasopressor (metaraminol/noradrenaline) immediately available.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step RSI plan</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Resuscitate before you intubate.</strong> Activate MHP, give 1 g TXA IV (CRASH-2 window: within 3 h), start 1:1:1 product through a rapid infuser.</li>
+          <li><strong>Pre-oxygenate while preparing.</strong> 3 min tidal-volume O₂ at 15 L/min; head-up 20° if BP allows; apnoeic oxygenation via nasal cannula 15 L/min.</li>
+          <li><strong>Choose induction agent.</strong> Ketamine <strong>1–2 mg/kg IV</strong> (preserves SVR, bronchodilator). Reduce to 0.5–1 mg/kg if obtunded. Avoid propofol/thiopentone — drop SVR catastrophically in shock.</li>
+          <li><strong>Choose neuromuscular blocker.</strong> Rocuronium <strong>1.2 mg/kg</strong> (rapid, no IOP/ICP rise, sugammadex 16 mg/kg available for failed intubation).</li>
+          <li><strong>Manage the C-spine.</strong> Manual in-line stabilisation with the front of the collar removed. Cricoid pressure remains controversial — release if it impairs the laryngoscopy view.</li>
+          <li><strong>Plan A → B → C.</strong> Videolaryngoscope first attempt; second-generation SAD ready; FONA kit open on the trolley.</li>
+          <li><strong>Vasopressor on the syringe.</strong> Push-dose metaraminol 0.5 mg or noradrenaline infusion ready to run before laryngoscopy.</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>If isolated TBI: keep MAP ≥ 80 mmHg (CPP) — permissive hypotension does NOT apply.</li>
+          <li>If suxamethonium chosen: avoid in crush injury &gt; 24 h, burns &gt; 24 h, spinal cord injury &gt; 72 h (hyperkalaemia).</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Standard induction doses in a shocked patient → cardiovascular arrest on induction.</li>
+            <li>Forgetting to give TXA in the first 3 hours (mortality benefit is time-dependent — harm if given &gt; 3 h).</li>
+            <li>Excessive crystalloid before product → dilutional coagulopathy and worsened bleeding.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Ketamine + rocuronium RSI with manual in-line stabilisation, videolaryngoscope, and vasopressor on the syringe. Run damage-control resuscitation in parallel: 1:1:1 products, TXA within 3 h, permissive hypotension (SBP target 80–90 mmHg, except in TBI where MAP ≥ 80). Anticipate haemodynamic collapse on induction.",
   },
@@ -25,8 +50,32 @@ const workedExamples: WorkedExample[] = [
     title: "Citrate toxicity during massive transfusion",
     scenario:
       "Mid-laparotomy a patient has received 10 units of PRBC, 8 units of FFP and 2 pools of platelets. ABG: pH 7.18, ionised Ca²⁺ 0.78 mmol/L, K⁺ 5.9 mmol/L, lactate 8. The arterial line trace shows pulsus alternans. What's happening and what do you do?",
-    working:
-      "Citrate (anticoagulant in stored blood) chelates ionised Ca²⁺. Normally metabolised by the liver but during massive transfusion + hepatic hypoperfusion → citrate toxicity → ↓ iCa²⁺ → impaired contractility, hypotension, prolonged QT.\nHyperkalaemia from haemolysis in stored blood compounds the picture.\nGive 10 mL of 10% calcium chloride IV (or 30 mL calcium gluconate) and recheck iCa²⁺. Treat hyperkalaemia (insulin/dextrose ± salbutamol).",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step interpretation</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Recognise the pattern.</strong> Massive transfusion + ↓ iCa²⁺ (&lt; 0.9) + ↑ K⁺ + acidosis + impaired contractility = <strong>citrate toxicity</strong>.</li>
+          <li><strong>Mechanism.</strong> Stored blood contains citrate (anticoagulant). Citrate chelates ionised Ca²⁺. Hepatic hypoperfusion in shock prevents normal citrate metabolism → it accumulates.</li>
+          <li><strong>Treat ↓ iCa²⁺ now.</strong> 10 mL of 10% calcium chloride IV (= 6.8 mmol Ca²⁺) OR 30 mL of 10% calcium gluconate (= 6.6 mmol Ca²⁺). CaCl₂ delivers 3× more elemental calcium per mL but is more vesicant — central line preferred.</li>
+          <li><strong>Treat hyperkalaemia.</strong> 10 units soluble insulin in 100 mL 20% dextrose ± 5 mg salbutamol nebuliser; the calcium just given also stabilises the myocardium.</li>
+          <li><strong>Address the lethal triad.</strong> Active warming (Bair Hugger + warmed fluids); correct acidosis by restoring perfusion (not bicarbonate); ROTEM/TEG to guide further FFP/cryo/platelets.</li>
+          <li><strong>Repeat ABG every 30 min</strong> during ongoing MHP — iCa²⁺ &gt; 1.0, K⁺ &lt; 5.5, pH &gt; 7.25, temp &gt; 36 °C.</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Cryoprecipitate if fibrinogen &lt; 1.5 g/L (or ROTEM FIBTEM A5 &lt; 10 mm).</li>
+          <li>Stop platelets if count &gt; 100 unless ongoing surgical bleeding.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Reading the <em>total</em> calcium instead of <em>ionised</em> — only iCa²⁺ matters during transfusion.</li>
+            <li>Giving CaCl₂ peripherally → tissue necrosis if extravasates.</li>
+            <li>Reaching for bicarbonate to 'correct' the acidosis — worsens iCa²⁺ and shifts O₂ dissociation curve left.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Treat citrate toxicity: 10% calcium chloride 10 mL IV (or calcium gluconate 30 mL). Continue active warming, ROTEM/TEG-guided product replacement, and treat the hyperkalaemia. Send repeat iCa²⁺ every 30 min during ongoing transfusion — citrate is the silent killer in MHP scenarios.",
   },
