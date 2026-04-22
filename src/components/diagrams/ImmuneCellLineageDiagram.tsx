@@ -537,6 +537,7 @@ const ImmuneCellLineageDiagram = () => {
           )}
         </div>
 
+
         {/* Detail panel */}
         <div className="mt-4 min-h-[140px]">
           {sel ? (
