@@ -5,6 +5,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { WorkedExamples, WorkedExample } from "@/components/WorkedExamples";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
@@ -30,6 +31,19 @@ interface TopicTemplateProps {
   diagrams?: ReactNode;
   /** "Worked Examples" — clinical vignettes and/or calculations. Omit when not relevant. */
   workedExamples?: WorkedExample[];
+
+  /**
+   * Per-section reference mapping. Each key pins a list of reference labels
+   * (must exist in `topicReferences[topicId]`) to a section so learners can
+   * see exactly which BJA Education / guideline / textbook sources support
+   * that block. All keys are optional.
+   */
+  sectionSources?: {
+    objectives?: string[];
+    diagrams?: string[];
+    workedExamples?: string[];
+    keyPoints?: string[];
+  };
 
   // Footer wiring (kept in current order)
   topicId: string;
@@ -60,6 +74,7 @@ export const TopicTemplate = ({
   keyPoints,
   diagrams,
   workedExamples,
+  sectionSources,
   topicId,
   topicTitle,
   quizQuestions,
@@ -74,7 +89,17 @@ export const TopicTemplate = ({
       disableAutoTOC={disableAutoTOC}
     >
       <div className="space-y-10">
-        <LearningObjectives objectives={objectives} />
+        <div>
+          <LearningObjectives objectives={objectives} />
+          {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
+            <SectionReferences
+              topicId={topicId}
+              refLabels={sectionSources.objectives}
+              heading="Sources for these objectives"
+              dense
+            />
+          )}
+        </div>
 
         <section className="space-y-8">{coreConcepts}</section>
 
@@ -84,14 +109,41 @@ export const TopicTemplate = ({
               Diagrams &amp; Visualisations
             </h2>
             <div className="space-y-6">{diagrams}</div>
+            {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
+              <SectionReferences
+                topicId={topicId}
+                refLabels={sectionSources.diagrams}
+                heading="Sources for these diagrams"
+              />
+            )}
           </section>
         )}
 
         {workedExamples && workedExamples.length > 0 && (
-          <WorkedExamples examples={workedExamples} />
+          <div>
+            <WorkedExamples examples={workedExamples} />
+            {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
+              <SectionReferences
+                topicId={topicId}
+                refLabels={sectionSources.workedExamples}
+                heading="Sources for these examples"
+                dense
+              />
+            )}
+          </div>
         )}
 
-        <KeyLearningPoints points={keyPoints} />
+        <div>
+          <KeyLearningPoints points={keyPoints} />
+          {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
+            <SectionReferences
+              topicId={topicId}
+              refLabels={sectionSources.keyPoints}
+              heading="Sources for these key points"
+              dense
+            />
+          )}
+        </div>
 
         {quizQuestions && quizQuestions.length > 0 && (
           // QuizSection's prop is loosely typed across the codebase; cast here.
