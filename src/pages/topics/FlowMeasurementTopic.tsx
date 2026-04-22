@@ -5,6 +5,8 @@ import { QuizSection } from "@/components/QuizSection";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
 import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
+import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
+import WrightRespirometerDiagram from "@/components/diagrams/WrightRespirometerDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -81,14 +83,16 @@ const FlowMeasurementTopic = () => {
 
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Other Flowmeters</h2>
-          <p className="text-foreground/90 leading-relaxed">
+          <p className="text-foreground/90 leading-relaxed mb-4">
             <strong>Pneumotachograph</strong>: measures pressure drop across a known resistance (Fleisch — bundle of tubes;
             Lilly — fine mesh screen). Integrating flow over time gives volume — the basis of many ventilator spirometers.
           </p>
-          <p className="text-foreground/90 leading-relaxed mt-3">
+          <PneumotachographDiagram />
+          <p className="text-foreground/90 leading-relaxed mt-3 mb-4">
             <strong>Wright respirometer</strong>: a turbine vane flowmeter. Under-reads at low flows and over-reads at high
             flows. Measures expired tidal and minute volumes.
           </p>
+          <WrightRespirometerDiagram />
         </section>
 
         <section className="mb-10">
