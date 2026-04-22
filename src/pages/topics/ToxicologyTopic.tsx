@@ -286,7 +286,7 @@ const ToxicologyTopic = () => {
                 </tbody>
               </table>
             </div>
-          </div>
+          </ExamSection>
         </>
       }
     />
