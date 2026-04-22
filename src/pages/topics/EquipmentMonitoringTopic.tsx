@@ -11,6 +11,7 @@ import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineD
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
+import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
 
 const subtopicLinks = [
@@ -239,6 +240,73 @@ const EquipmentMonitoringTopic = () => {
           </div>
         </section>
 
+        <section>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-2">Laryngoscope Blades</h2>
+          <div className="text-muted-foreground leading-relaxed space-y-3">
+            <p>
+              Blade choice determines how the epiglottis is elevated and the glottis exposed. The two foundational
+              shapes — <strong>curved (Macintosh)</strong> and <strong>straight (Miller)</strong> — differ in tip
+              placement and the resulting force vector. Modern variants (McCoy, polio handle, videolaryngoscopes)
+              address specific clinical scenarios where the standard Macintosh fails or is impractical.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2 mt-3">
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">Macintosh (Curved)</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Tip in vallecula → indirect epiglottic elevation via the hyoepiglottic ligament. Default adult blade
+                  (size 3 = average adult, size 4 = larger). Leaves more pharyngeal room for the ETT and reduces
+                  epiglottic trauma.
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">Miller (Straight)</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Tip passes <em>under</em> the epiglottis and lifts it directly. Preferred for neonates and infants
+                  (large, floppy, omega-shaped epiglottis) and for an anterior larynx in adults. Narrower flange means
+                  less ETT-passage room.
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">McCoy (Articulated)</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Macintosh with a hinged distal tip operated by a handle lever — flexes the tip to lift the
+                  hyoepiglottic ligament and improve the view by ≥1 Cormack-Lehane grade. Useful with cervical-spine
+                  immobilisation or unexpected grade 2b/3a.
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">Polio Blade</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Mac-style blade attached at ~135° to the handle so the operator can clear a large chest, breasts, or
+                  body cast. Designed for iron-lung polio patients; now largely replaced by short-handled Macintoshes
+                  and videolaryngoscopes.
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">Wisconsin / Wis-Hipple</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Straight blade with a wider flange than the Miller — better tongue control with more room for the ETT.
+                  Wis-Hipple modification is a popular neonatal blade in North American practice.
+                </p>
+              </div>
+              <div className="rounded-lg bg-secondary/30 border border-border p-3">
+                <p className="font-semibold text-foreground text-sm">Videolaryngoscope</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  Camera at the blade tip transmits the glottic view to a screen — no need for direct line-of-sight.
+                  Mac-shaped (C-MAC, McGRATH) or hyperangulated (GlideScope, X-blade — needs a stylet-shaped ETT).
+                  First-line for anticipated difficult airway per DAS 2015.
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground italic">
+              <strong>Pearl:</strong> A better view does not always mean an easier intubation — particularly with
+              hyperangulated videolaryngoscopes where ETT delivery requires a pre-shaped stylet.
+            </p>
+          </div>
+          <div className="bg-card rounded-xl border border-border p-4 mt-4">
+            <LaryngoscopeBladesDiagram />
+          </div>
+        </section>
       <SynthesisBlock
         title="Equipment & Monitoring — AAGBI Minimum Standards"
         subtitle="The mandatory monitors and the principle each addresses."
