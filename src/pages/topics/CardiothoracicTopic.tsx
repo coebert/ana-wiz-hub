@@ -15,8 +15,8 @@ const tocItems = [
   { id: "cpb-physiology", label: "Physiological effects of CPB", group: "Cardiac surgery" },
   { id: "cardiac-considerations", label: "Key cardiac procedures", group: "Cardiac surgery" },
   { id: "opcab", label: "On-pump vs off-pump (OPCAB)", group: "Cardiac surgery" },
-  { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
   { id: "dhca", label: "Deep hypothermic circulatory arrest", group: "Cardiac surgery" },
+  { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
 ];
 
 const CardiothoracicTopic = () => {
