@@ -4,8 +4,10 @@ import { QuizSection } from "@/components/QuizSection";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { starlingForcesQuestions } from "@/data/quizzes";
 import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
+import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
 
 const StarlingForcesTopic = () => {
   return (
