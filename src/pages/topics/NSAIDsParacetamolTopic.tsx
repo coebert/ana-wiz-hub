@@ -16,8 +16,30 @@ const workedExamples: WorkedExample[] = [
     title: "NSAID risk-benefit after a knee replacement",
     scenario:
       "A 72-year-old man (eGFR 55 mL/min, on ramipril and apixaban) has a primary TKR. The orthopaedic team request ibuprofen 400 mg TDS for postoperative analgesia. How do you respond?",
-    working:
-      "NSAIDs reduce afferent arteriolar PGE₂ → ↓ GFR. Combined with an ACE inhibitor (efferent dilation) and any perioperative hypovolaemia, the 'triple whammy' (NSAID + ACEi + diuretic-or-hypovolaemia) markedly increases AKI risk.\nApixaban + NSAID also raises GI and surgical-site bleeding risk.\nMultimodal alternatives: paracetamol + local infiltration analgesia (LIA) ± single-shot adductor-canal block + PRN oxycodone.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Identify the renal risk profile.</strong> eGFR 55 (CKD stage 3a), age &gt; 65, and an ACE inhibitor on board.</li>
+          <li><strong>Apply the 'triple whammy' rule.</strong> NSAID + ACEi/ARB + diuretic-or-volume-depletion → AKI. Surgery itself supplies the third hit (fasting, blood loss, third-spacing).</li>
+          <li><strong>Quantify bleeding risk.</strong> Apixaban + NSAID roughly doubles GI bleeding and increases surgical-site bleeding.</li>
+          <li><strong>Build the multimodal alternative.</strong> Paracetamol 1 g QDS + LIA at the surgical site + adductor-canal block + low-dose oxycodone PRN.</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>If eGFR were &gt; 60, no ACEi, no anticoagulant and patient &lt; 65 → short-course NSAID acceptable.</li>
+          <li>Always document a stop date (≤ 5 days) when an NSAID is prescribed perioperatively.</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Assuming 'topical' or 'PR' diclofenac avoids systemic effects — it doesn't, GFR still falls.</li>
+            <li>Forgetting that COX-2 selective drugs (parecoxib) still cause renal injury — selectivity only spares the GI tract.</li>
+            <li>Restarting the ACEi the morning of surgery 'because the patient takes it at home'.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Avoid routine NSAIDs in this patient. Use paracetamol, regional analgesia (adductor canal / LIA), and short-course low-dose opioids. Reserve NSAIDs for younger, well-hydrated patients with normal renal function and no anticoagulant — and document a clear stop date.",
   },
@@ -25,8 +47,31 @@ const workedExamples: WorkedExample[] = [
     title: "Staggered paracetamol overdose",
     scenario:
       "A 25-year-old woman (50 kg, on phenytoin, malnourished) presents 14 h after a 'staggered' paracetamol overdose totalling 12 g over 6 h. Plasma paracetamol level is 'below the treatment line' on the Rumack-Matthew nomogram. Do you treat?",
-    working:
-      "The Rumack-Matthew nomogram is only valid for a single acute ingestion at a known time. It cannot be used for staggered overdoses.\nRisk factors here: enzyme induction (phenytoin → ↑ CYP2E1 → ↑ NAPQI), malnutrition (↓ glutathione), and low body weight — all push the toxicity threshold lower (75 mg/kg or even 50 mg/kg for high-risk patients).\nUK MHRA guidance: treat any staggered overdose ≥ 75 mg/kg in 24 h with NAC regardless of level.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Calculate the dose per kg.</strong> 12 g ÷ 50 kg = 240 mg/kg — well above the 150 mg/kg toxic threshold and far above the 75 mg/kg high-risk threshold.</li>
+          <li><strong>Test the nomogram's validity.</strong> Rumack-Matthew is only valid for a single ingestion at a known time (4–15 h post-ingestion). A 6-hour staggered ingestion fails this rule.</li>
+          <li><strong>Identify high-risk modifiers.</strong> Phenytoin → CYP2E1 induction → ↑ NAPQI. Malnutrition → glutathione depletion. Low body weight → lower absolute reserve.</li>
+          <li><strong>Apply MHRA 2012 guidance.</strong> Treat any staggered overdose ≥ 75 mg/kg/24 h with NAC regardless of paracetamol level.</li>
+          <li><strong>Choose the regimen.</strong> Standard 21-h IV NAC: 150 mg/kg over 1 h → 50 mg/kg over 4 h → 100 mg/kg over 16 h. Or SNAP (12 h, lower anaphylactoid rate).</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points at 24 h</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Continue NAC if ALT rising, INR &gt; 1.3, paracetamol still detectable, or acidosis.</li>
+          <li>Refer to a transplant centre if King's College Criteria met (pH &lt; 7.3 OR all of: INR &gt; 6.5, creatinine &gt; 300, grade III/IV encephalopathy).</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Reading a single level off the nomogram for a staggered or unknown-time ingestion.</li>
+            <li>Stopping NAC at 21 h despite ongoing transaminitis or coagulopathy.</li>
+            <li>Confusing the anaphylactoid reaction (flush, bronchospasm in first hour) with true allergy — slow the rate, give antihistamine, do not stop permanently.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Treat with N-acetylcysteine immediately — do not rely on the nomogram for staggered overdoses or high-risk patients. Use the standard 21-h IV NAC regimen (or the simplified SNAP protocol) and monitor LFTs, INR, creatinine, lactate and pH at 24 h to guide continuation.",
   },
