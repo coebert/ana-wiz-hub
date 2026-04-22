@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
+import PancreatitisAutodigestionDiagram from "@/components/diagrams/PancreatitisAutodigestionDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
@@ -144,6 +145,10 @@ const AcutePancreatitisTopic = () => {
           <p className="text-xs text-muted-foreground mt-3 italic">
             Organ failure is defined by the modified Marshall score (≥2 in respiratory, cardiovascular or renal systems).
           </p>
+        </div>
+
+        <div>
+          <PancreatitisAutodigestionDiagram />
         </div>
 
         {/* Causes */}
