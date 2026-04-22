@@ -117,6 +117,10 @@ const modalities: Modality[] = [
       { id: "i5", severity: "major", title: "Severe arrhythmia", why: "Beat-to-beat variability and irregular timing degrade signal averaging.", examPearl: "AF reduces accuracy similarly to other beat-to-beat methods." },
       { id: "i6", severity: "minor", title: "Electrode placement / skin contact", why: "Sweating, hair, or oedema increase impedance at the skin interface.", examPearl: "Clean, dry skin; replace electrodes per manufacturer." },
       { id: "i7", severity: "minor", title: "Pacing spikes", why: "May be misinterpreted as cardiac signal in classic impedance devices.", examPearl: "Bioreactance less affected." },
+      { id: "i8", severity: "critical", title: "Implanted devices crossing the thorax (CIED leads, CRT, ICD)", why: "Metal leads alter the electrical field; pacing artefact may be counted as ejection.", examPearl: "Avoid in CRT/ICD patients, particularly with biventricular pacing." },
+      { id: "i9", severity: "critical", title: "Open chest / mediastinal drains / large dressings", why: "Disrupts the closed thoracic volume conductor model.", examPearl: "Not for use in cardiothoracic ICU early post-op." },
+      { id: "i10", severity: "major", title: "Aortic balloon pump / VA-ECMO", why: "Non-physiological flow patterns are not modelled.", examPearl: "Bioreactance unvalidated on mechanical circulatory support." },
+      { id: "i11", severity: "major", title: "Morbid obesity or very low BMI", why: "Signal attenuation (obesity) or anatomic mismatch with nomograms.", examPearl: "Accuracy degrades at BMI extremes." },
     ],
   },
   {
