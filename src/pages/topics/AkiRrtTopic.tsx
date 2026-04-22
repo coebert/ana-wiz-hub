@@ -175,7 +175,7 @@ const AkiRrtTopic = () => {
             </p>
             <KDIGOAKIClassifier />
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-ci-aki" exams={["final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Contrast-Induced Acute Kidney Injury (CI-AKI)</h2>
@@ -260,7 +260,7 @@ const AkiRrtTopic = () => {
               <li>Document risk-benefit discussion when contrast is given in eGFR &lt;30 or established AKI.</li>
             </ul>
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-drug-dosing" exams={["primary", "final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Perioperative Drug Dosing in Renal Impairment</h2>
@@ -484,7 +484,7 @@ const AkiRrtTopic = () => {
               <li><strong>Avoid:</strong> NSAIDs, morphine, pethidine, gentamicin (where alternative exists), high-osmolar contrast, group I gadolinium agents.</li>
             </ul>
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-indications" exams={["final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Indications for RRT in ICU</h2>
@@ -509,7 +509,7 @@ const AkiRrtTopic = () => {
               </div>
             ))}
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-modalities" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Modalities Overview</h2>
@@ -517,7 +517,7 @@ const AkiRrtTopic = () => {
             Compare the major continuous and intermittent renal replacement modalities side-by-side.
           </p>
           <RRTModalitiesDiagram />
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-circuit" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Circuit Comparison</h2>
@@ -527,7 +527,7 @@ const AkiRrtTopic = () => {
           <div className="rounded-xl border border-border bg-card p-4">
             <RRTCircuitDiagram />
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-anticoagulation" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Anticoagulation for CRRT</h2>
@@ -545,7 +545,7 @@ const AkiRrtTopic = () => {
               <p className="text-sm text-muted-foreground mt-1">Prostacyclin (PGI₂) infused pre-filter — inhibits platelet aggregation and provides regional circuit anticoagulation. Short half-life (~6 min) so effect largely confined to the circuit. Useful when citrate is contraindicated (severe liver failure, citrate accumulation) or in HIT. Main side-effect is systemic hypotension at higher doses. Typical dose 2-5 ng/kg/min. Can be combined with low-dose heparin for synergistic effect.</p>
             </div>
           </div>
-        </section>
+        </ExamSection>
 
         <ExamSection id="toc-trials" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Key Trials</h2>
@@ -561,7 +561,7 @@ const AkiRrtTopic = () => {
               </div>
             ))}
           </div>
-        </section>
+        </ExamSection>
 
         <SynthesisBlock
           title="AKI & RRT — At a Glance"
