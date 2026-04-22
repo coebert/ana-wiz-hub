@@ -11,6 +11,7 @@ import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineD
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
+import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
 
 const subtopicLinks = [
