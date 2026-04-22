@@ -15,6 +15,8 @@ interface ExamSectionProps {
   children: ReactNode;
   /** Optional className passed to the wrapping element. */
   className?: string;
+  /** Optional DOM id (for in-page TOC anchors / scroll targeting). */
+  id?: string;
 }
 
 /**
@@ -40,12 +42,13 @@ export const ExamSection = ({
   badgeLabel,
   children,
   className,
+  id,
 }: ExamSectionProps) => {
   const { activeExam } = useExamFilter();
   const matches = !activeExam || exams.includes(activeExam);
 
   return (
-    <div className={className}>
+    <div id={id} className={className}>
       <ExamMappingBadges exams={exams} curriculumCodes={curriculumCodes} label={badgeLabel} />
       {matches ? (
         children
