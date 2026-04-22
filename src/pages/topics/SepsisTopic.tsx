@@ -3,6 +3,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
+import SepsisHostResponseDiagram from "@/components/diagrams/SepsisHostResponseDiagram";
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
@@ -125,6 +126,10 @@ const SepsisTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Sepsis is a life-threatening organ dysfunction caused by a dysregulated host response to infection (Sepsis-3, 2016). It remains the leading cause of mortality in ICU. Early recognition, source control, and protocolised resuscitation are the cornerstones of management.
           </p>
+        </div>
+
+        <div>
+          <SepsisHostResponseDiagram />
         </div>
 
         <div>

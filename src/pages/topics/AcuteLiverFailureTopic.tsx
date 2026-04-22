@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { acuteLiverFailureQuestions } from "@/data/quizzes";
 import CLIFCACLFDiagram from "@/components/diagrams/CLIFCACLFDiagram";
+import ALFCerebralOedemaDiagram from "@/components/diagrams/ALFCerebralOedemaDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
@@ -138,6 +139,10 @@ const AcuteLiverFailureTopic = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div>
+          <ALFCerebralOedemaDiagram />
         </div>
 
         <div>

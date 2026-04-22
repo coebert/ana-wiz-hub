@@ -5,6 +5,7 @@ import TopicTableOfContents from "@/components/TopicTableOfContents";
 import TtmTargetExplorerDiagram from "@/components/diagrams/TtmTargetExplorerDiagram";
 import EcprDecisionTreeDiagram from "@/components/diagrams/EcprDecisionTreeDiagram";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
+import PostCardiacArrestSyndromeDiagram from "@/components/diagrams/PostCardiacArrestSyndromeDiagram";
 import EEGTraceDiagram from "@/components/diagrams/EEGTraceDiagram";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
@@ -119,6 +120,10 @@ const coreConcepts = (
           </div>
         ))}
       </div>
+    </div>
+
+    <div>
+      <PostCardiacArrestSyndromeDiagram />
     </div>
 
     {/* ─────────── Post-ROSC bundle ─────────── */}
