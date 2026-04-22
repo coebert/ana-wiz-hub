@@ -602,24 +602,11 @@ const BronchospasticFailureTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs",
-        "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority",
-        "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma",
-        "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring",
-        "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)",
-        "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails",
-        "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine",
-        "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this",
-        "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia",
-      ]} />
-
-      <QuizSection questions={bronchospasticFailureQuestions} />
-      <ReferencesList topicId="bronchospastic-failure" />
-      <SeeAlso topicId="bronchospastic-failure" />
-      <TopicCompletionToggle topicId="bronchospastic-failure" topicTitle="Bronchospastic Respiratory Failure" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
 export default BronchospasticFailureTopic;
+
