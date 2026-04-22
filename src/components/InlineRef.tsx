@@ -9,16 +9,33 @@ interface InlineRefProps {
   refLabel: string;
   /** Optional override label to display in the marker (defaults to numeric index in topic) */
   marker?: string;
+  /** Optional context heading shown above the key points (e.g., blade name) */
+  contextTitle?: string;
+  /** Optional list of key learning points shown inside the popover beneath the citation */
+  keyPoints?: string[];
+  /** Optional accent colour (HSL string) applied to the context title and bullet markers */
+  accentColor?: string;
 }
 
 /**
  * Inline citation marker — BJA Education-style superscript.
- * Click opens a popover with the full citation and link out to DOI/source.
+ * Click opens a popover with the full citation, link out to DOI/source,
+ * and (optionally) the contextual key learning points for the surrounding topic.
  *
  * Usage:
  *   <InlineRef topicId="enhanced-recovery" refLabel="RELIEF 2018" />
+ *   <InlineRef topicId="equipment-monitoring" refLabel="DAS 2015"
+ *              contextTitle="Macintosh — key points"
+ *              keyPoints={info.keyPoints} accentColor={info.color} />
  */
-export const InlineRef = ({ topicId, refLabel, marker }: InlineRefProps) => {
+export const InlineRef = ({
+  topicId,
+  refLabel,
+  marker,
+  contextTitle,
+  keyPoints,
+  accentColor,
+}: InlineRefProps) => {
   const refs = topicReferences[topicId] ?? [];
   const idx = refs.findIndex((r) => r.label === refLabel);
   const ref = idx >= 0 ? refs[idx] : null;
@@ -33,6 +50,8 @@ export const InlineRef = ({ topicId, refLabel, marker }: InlineRefProps) => {
     );
   }
 
+  const hasKeyPoints = keyPoints && keyPoints.length > 0;
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -44,7 +63,7 @@ export const InlineRef = ({ topicId, refLabel, marker }: InlineRefProps) => {
           [{display}]
         </button>
       </PopoverTrigger>
-      <PopoverContent className="w-80 text-xs leading-relaxed" side="top">
+      <PopoverContent className="w-96 max-w-[92vw] text-xs leading-relaxed max-h-[70vh] overflow-y-auto" side="top">
         <p className="font-semibold text-foreground mb-1">{ref.label}</p>
         <p className="text-muted-foreground mb-2">{ref.citation}</p>
         {ref.url && (
@@ -56,6 +75,30 @@ export const InlineRef = ({ topicId, refLabel, marker }: InlineRefProps) => {
           >
             Open source <ExternalLink className="h-3 w-3" />
           </a>
+        )}
+
+        {hasKeyPoints && (
+          <div className="mt-3 pt-3 border-t border-border">
+            {contextTitle && (
+              <p
+                className="font-semibold mb-1.5 text-[11px] uppercase tracking-wide"
+                style={accentColor ? { color: accentColor } : undefined}
+              >
+                {contextTitle}
+              </p>
+            )}
+            <ul className="space-y-1 text-muted-foreground">
+              {keyPoints!.map((kp, i) => (
+                <li key={i} className="flex gap-1.5">
+                  <span
+                    className="flex-shrink-0 mt-1 inline-block w-1 h-1 rounded-full"
+                    style={{ backgroundColor: accentColor ?? "currentColor" }}
+                  />
+                  <span className="leading-snug">{kp}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </PopoverContent>
     </Popover>
