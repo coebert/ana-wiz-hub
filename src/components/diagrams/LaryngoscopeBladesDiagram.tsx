@@ -221,7 +221,7 @@ const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: nu
   mccoy:             { path: "M70,82 Q120,150 175,178 Q195,184 208,182",          target: { x: 208, y: 182, r: 8,  label: "Vallecula → flex tip" },     dur: 2.8 },
   polio:             { path: "M88,72 Q140,150 185,178 Q205,184 218,180",          target: { x: 218, y: 180, r: 8,  label: "Vallecula" },                dur: 2.6 },
   wisconsin:         { path: "M70,82 Q130,140 200,158 Q220,162 232,150",          target: { x: 232, y: 150, r: 8,  label: "Under epiglottis" },         dur: 2.7 },
-  videolaryngoscope: { path: "M70,82 Q110,140 150,180 Q185,210 215,200",          target: { x: 222, y: 138, r: 9,  label: "Glottic view (camera)" },    dur: 3.0 },
+  videolaryngoscope: { path: "M70,82 Q110,140 150,180 Q200,210 222,180 Q228,160 222,138",  target: { x: 222, y: 138, r: 9,  label: "Glottic view (camera)" },    dur: 3.0 },
 };
 
 /* ---------- Shared visual primitives ---------- */
