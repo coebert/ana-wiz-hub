@@ -550,12 +550,7 @@ const ImmuneCellLineageDiagram = () => {
                       {currentStep.token}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {pathways[pathway].caption}
-                    {currentStep.refs?.map((r) => (
-                      <InlineRef key={r} topicId="haematology-immunity" refLabel={r} />
-                    ))}
-                  </p>
+                  <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
                   {currentStep.refs && currentStep.refs.length > 0 && (
                     <p className="text-[11px] text-muted-foreground">
                       <span className="font-medium text-foreground">Sources:</span>{" "}
