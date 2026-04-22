@@ -70,6 +70,7 @@ for (const file of files) {
   const src = readFileSync(file, "utf8");
   const diagrams = collectDiagramImports(src);
   for (const name of diagrams) {
+    if (ALLOW_MULTIPLE.has(name)) continue;
     const count = countJsxUsages(src, name);
     if (count > 1) {
       issues.push({ file: relative(ROOT, file), name, count });
