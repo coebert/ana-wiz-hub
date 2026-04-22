@@ -147,6 +147,12 @@ const ToxicologyTopic = () => {
         workedExamples: ["AAGBI Lipid Rescue", "NPIS Toxbase"],
         keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue"],
       }}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["CC1.10", "11A04"] },
+        diagrams: { exams: ["final", "fficm", "edic"] },
+        workedExamples: { exams: ["final", "fficm", "edic"] },
+        keyPoints: { exams: ["final", "fficm", "edic"] },
+      }}
       diagrams={
         <>
           <ToxidromeComparatorDiagram />
