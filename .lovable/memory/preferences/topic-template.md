@@ -14,6 +14,8 @@ Required structure (in order):
 5. **Key Learning Points** — final summary bullets via `keyPoints` prop.
 6. **Quiz → References → See Also → Completion toggle** — auto-rendered by template.
 
-**How to apply:** When auditing a topic, replace the manual SectionLayout scaffold with `<TopicTemplate>` and pass `objectives`, `coreConcepts` (JSX), `keyPoints`, optional `diagrams` and `workedExamples`, plus `topicId`/`quizQuestions`/back-nav props.
+**In-page references panel (`sectionSources` prop):** Optional but encouraged on audited topics. Map reference labels (must exist in `topicReferences[topicId]`) to the section they support. Keys: `objectives`, `diagrams`, `workedExamples`, `keyPoints`. Renders a compact `<SectionReferences>` panel beneath each block so learners see which BJA Education / guideline / textbook source backs that block. Unknown labels are ignored at runtime with a dev-only warning.
 
-**Why:** Consistent learner experience across FRCA/FFICM/EDIC; enforces curriculum-aligned scaffolding (objectives → content → application → recall).
+**How to apply:** When auditing a topic, replace the manual SectionLayout scaffold with `<TopicTemplate>` and pass `objectives`, `coreConcepts` (JSX), `keyPoints`, optional `diagrams` and `workedExamples`, optional `sectionSources`, plus `topicId`/`quizQuestions`/back-nav props.
+
+**Why:** Consistent learner experience across FRCA/FFICM/EDIC; enforces curriculum-aligned scaffolding (objectives → content → application → recall) and surfaces evidence base inline.
