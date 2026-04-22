@@ -5,6 +5,7 @@ import { KeyLearningPoints } from "@/components/KeyLearningPoints";
 import { WorkedExamples, WorkedExample } from "@/components/WorkedExamples";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
+import { SectionReferences } from "@/components/SectionReferences";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 
