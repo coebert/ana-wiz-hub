@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
 
 const EnhancedRecoveryTopic = () => {
   return (
