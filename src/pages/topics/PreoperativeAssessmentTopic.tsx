@@ -263,6 +263,9 @@ const PreoperativeAssessmentTopic = () => {
           </p>
         </div>
       </DiagramSection>
+
+      <DiagramSection
+        title="Preoperative Blood Pressure Management"
         intro={
           <p>
             The 2016 joint <strong>AAGBI / British Hypertension Society</strong> guideline reframed BP management around <em>risk stratification</em> rather than rigid thresholds. The principle: <strong>elective surgery should not be cancelled in primary care–referred patients with documented BP &lt; 180/110 mmHg</strong>. Cancelling a list slot rarely improves outcomes and delays definitive surgery.
