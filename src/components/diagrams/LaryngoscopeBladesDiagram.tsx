@@ -73,6 +73,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Paediatric anaesthesia (especially <1 year). Difficult adult airway with anterior larynx. Some prefer for awake intubation.",
     historicalNote: "Robert A. Miller (San Antonio, 1941) — straight blade with a slight upward curve at the tip.",
+    keyPoints: [
+      "FRCA Primary — Equipment: identify the straight Miller blade and its paediatric sizing (0 = preterm, 1 = neonate/infant).",
+      "Direct epiglottic elevation — tip passes posterior to the epiglottis (large, floppy, U-shaped in neonates).",
+      "Narrower flange leaves less ETT-passage space; precise midline technique required.",
+      "Higher epiglottic trauma and laryngospasm risk if anaesthesia is light — adequate depth essential.",
+    ],
+    refs: ["Miller 1941", "BJA Educ Paeds Airway 2017", "Weiss & Engelhardt 2010"],
   },
   mccoy: {
     label: "McCoy",
@@ -95,6 +102,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Difficult airway algorithm, cervical spine precautions (manual in-line stabilisation), failed first-attempt Macintosh.",
     historicalNote: "McCoy and Mirakhur (Belfast, 1993) — hinged-tip modification of the standard Macintosh.",
+    keyPoints: [
+      "FRCA Primary — Equipment: recognise the lever mechanism and explain how it improves view by ≥1 Cormack-Lehane grade.",
+      "Useful rescue blade for grade 2b/3a views and when manual in-line stabilisation limits neck extension.",
+      "Less helpful when the limiting factor is mouth opening rather than view.",
+      "Tip flexion engages the hyoepiglottic ligament without needing greater axial force.",
+    ],
+    refs: ["McCoy & Mirakhur 1993", "Cormack & Lehane 1984", "DAS 2015"],
   },
   polio: {
     label: "Polio",
@@ -117,6 +131,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Now mostly historical. Short-handled Macintosh or videolaryngoscope preferred for the same indications.",
     historicalNote: "Developed in the 1950s for intubating polio patients ventilated in iron lungs (chest enclosed in tank ventilator).",
+    keyPoints: [
+      "FRCA Primary — Equipment: recognise the obtuse (~135°) handle-blade angle and historical context.",
+      "Indications now niche: large breasts (obstetrics), morbid obesity, halo traction, kyphoscoliosis, body casts.",
+      "Largely superseded by short-handle Macintosh and videolaryngoscopy (DAS 2015 default Plan A alternative).",
+      "Awkward force vector — clean lift harder; not stocked on most modern airway trolleys.",
+    ],
+    refs: ["DAS 2015", "NAP4 2011"],
   },
   wisconsin: {
     label: "Wisconsin / Wis-Hipple",
@@ -137,6 +158,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "Paediatric anaesthesia (alternative to Miller). Wis-Hipple is a popular neonatal blade in North American practice.",
     historicalNote: "Designed at the University of Wisconsin (1941). Wis-Hipple is a 1949 modification by Hipple for infants.",
+    keyPoints: [
+      "FRCA Primary — Paediatric equipment: identify the wide-flange straight blade and Wis-Hipple neonatal modification.",
+      "Direct epiglottic elevation with broader lingual surface — better tongue control than Miller.",
+      "Useful when Miller flange is too narrow to control the tongue or pass the ETT.",
+      "Per APAGBI/Weiss & Engelhardt: have multiple blade types/sizes available for the unexpected paediatric difficult airway.",
+    ],
+    refs: ["BJA Educ Paeds Airway 2017", "Weiss & Engelhardt 2010"],
   },
   videolaryngoscope: {
     label: "Videolaryngoscope (e.g., C-MAC, GlideScope)",
@@ -161,6 +189,13 @@ const blades: Record<BladeKey, BladeInfo> = {
     ],
     indications: "DAS algorithm Plan A alternative to direct laryngoscopy; primary tool in many anticipated difficult airways and ICU intubations.",
     historicalNote: "GlideScope (Pacey, 2001) — first commercially successful videolaryngoscope. Now standard equipment per DAS/RCoA recommendations.",
+    keyPoints: [
+      "FRCA Final — DAS 2015: videolaryngoscopy is an alternative Plan A device and rescue tool; immediate availability mandated.",
+      "Mac-shaped (C-MAC, McGRATH) — direct or indirect technique; hyperangulated (GlideScope, X-blade) — needs stylet-shaped ETT.",
+      "Cochrane 2022: VL improves first-pass success and reduces failed intubation versus direct laryngoscopy in adults.",
+      "NAP4: most major airway events occurred when difficulty was unanticipated — VL improves view but \"can see, can't intubate\" remains a risk.",
+    ],
+    refs: ["DAS 2015", "Cochrane VL 2022", "NAP4 2011", "BJA Educ Videolaryngoscopy 2016"],
   },
 };
 
