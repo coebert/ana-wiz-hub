@@ -52,9 +52,21 @@ const AcidsBasesBuffersTopic = () => {
         keyPoints: { exams: ["primary", "final"] },
       }}
       sectionSources={{
+        objectives: [
+          "RCoA 2021 Curriculum — Physics & Clinical Measurement / Pharmacology (Primary)",
+          "Pinnock C, Lin T, Smith T. Fundamentals of Anaesthesia, 4th ed (Cambridge UP) — acid-base chapter",
+          "Cross M, Plunkett E. Physics, Pharmacology and Physiology for Anaesthetists, 2nd ed (Cambridge UP, 2014)",
+        ],
         workedExamples: [
-          "BJA Educ — Local anaesthetics: physical chemistry and clinical use",
-          "TOXBASE / NPIS guidance on salicylate poisoning",
+          "Becker DE, Reed KL. Local anesthetics: review of pharmacological considerations. Anesth Prog 2012;59:90-102 — pKa, ionisation, infected tissue",
+          "Catterall WA, Mackie K. Local anesthetics. In: Goodman & Gilman's, 13th ed — Henderson-Hasselbalch applied to LA",
+          "Proudfoot AT, Krenzelok EP, Vale JA. Position paper on urine alkalinization. J Toxicol Clin Toxicol 2004;42:1-26 — salicylate ion trapping",
+          "TOXBASE / NPIS — Salicylate poisoning monograph (current edition)",
+        ],
+        keyPoints: [
+          "Story DA. Bench-to-bedside review: a brief history of clinical acid-base. Crit Care 2004;8:253-8 — bicarbonate buffer system",
+          "Stewart PA. Modern quantitative acid-base chemistry. Can J Physiol Pharmacol 1983;61:1444-61 — strong ion difference",
+          "Siggaard-Andersen O. The Acid-Base Status of the Blood (Copenhagen, 1974) — buffer base concept",
         ],
       }}
       keyPoints={[
