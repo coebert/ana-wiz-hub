@@ -6,6 +6,8 @@ import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 
 const PreoperativeAssessmentTopic = () => {
   return (
