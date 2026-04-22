@@ -14,8 +14,10 @@ Required structure (in order):
 5. **Key Learning Points** — final summary bullets via `keyPoints` prop.
 6. **Quiz → References → See Also → Completion toggle** — auto-rendered by template.
 
-**In-page references panel (`sectionSources` prop):** Optional but encouraged on audited topics. Map reference labels (must exist in `topicReferences[topicId]`) to the section they support. Keys: `objectives`, `diagrams`, `workedExamples`, `keyPoints`. Renders a compact `<SectionReferences>` panel beneath each block so learners see which BJA Education / guideline / textbook source backs that block. Unknown labels are ignored at runtime with a dev-only warning.
+**In-page references panel (`sectionSources` prop):** Optional but encouraged on audited topics. Map reference labels (must exist in `topicReferences[topicId]`) to the section they support. Keys: `objectives`, `diagrams`, `workedExamples`, `keyPoints`. Renders a compact `<SectionReferences>` panel beneath each block. Unknown labels are ignored at runtime with a dev-only warning.
 
-**How to apply:** When auditing a topic, replace the manual SectionLayout scaffold with `<TopicTemplate>` and pass `objectives`, `coreConcepts` (JSX), `keyPoints`, optional `diagrams` and `workedExamples`, optional `sectionSources`, plus `topicId`/`quizQuestions`/back-nav props.
+**Per-section exam mapping (`sectionExamMapping` prop):** Optional but encouraged. Maps each block to FRCA Primary / Final / FFICM / EDIC plus optional curriculum codes. Renders `<ExamMappingBadges>` at the TOP of each block (objectives / diagrams / workedExamples / keyPoints). For finer-grained mapping inside `coreConcepts`, drop `<ExamMappingBadges exams={[...]} curriculumCodes={[...]} />` from `@/components/ExamMappingBadges` directly above each subsection's `<h2>`. Each FRCA exam has a distinct semantic-token colour (physiology/pharmacology/icu/clinical) for fast scanning.
 
-**Why:** Consistent learner experience across FRCA/FFICM/EDIC; enforces curriculum-aligned scaffolding (objectives → content → application → recall) and surfaces evidence base inline.
+**How to apply:** When auditing a topic, replace the manual SectionLayout scaffold with `<TopicTemplate>` and pass `objectives`, `coreConcepts` (JSX with inline `<ExamMappingBadges>` per subsection), `keyPoints`, optional `diagrams` and `workedExamples`, optional `sectionSources` and `sectionExamMapping`, plus `topicId`/`quizQuestions`/back-nav props.
+
+**Why:** Consistent learner experience across FRCA/FFICM/EDIC; enforces curriculum-aligned scaffolding (objectives → content → application → recall), surfaces evidence base inline, and lets learners filter mentally by which exam each subsection serves.
