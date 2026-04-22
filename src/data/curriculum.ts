@@ -165,9 +165,11 @@ export const intensiveCareTopics: Topic[] = [
   { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   // Special Populations
   { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
-  // Ethics & Outcomes
+  // Ethics, Communication & Outcomes
   { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "prognostication-ethics-icu", title: "Prognostication, Ethics & Outcomes", description: "Prognostic scoring, treatment escalation plans, medical ethics, withdrawal of treatment, PICS, long-term outcomes", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
+  { id: "end-of-life-communication", title: "End-of-Life Care & Communication", description: "Breaking bad news, family meetings, withdrawal of life-sustaining treatment, symptom control at end of life, conflict resolution, cultural and spiritual care", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
+  { id: "non-technical-skills", title: "Non-Technical Skills & Human Factors", description: "ANTS framework, situation awareness, decision-making, teamwork, leadership, crisis resource management, debriefing, just culture", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
 ];
 
 export const perioperativeTopics: Topic[] = [
