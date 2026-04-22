@@ -1,17 +1,126 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { bronchospasticFailureQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import DynamicHyperinflationDiagram from "@/components/diagrams/DynamicHyperinflationDiagram";
 import SedacondaDiagram from "@/components/diagrams/SedacondaDiagram";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Apply BTS/SIGN criteria to recognise life-threatening and near-fatal asthma and escalate appropriately.",
+  "Set safe ventilator parameters in severe bronchospasm — low RR, prolonged expiratory time, permissive hypercapnia — and detect dynamic hyperinflation.",
+  "Choose ketamine as the induction agent and outline rescue strategies (volatile via Sedaconda, heliox, ECMO).",
+  "Differentiate management of IECOPD from asthma — controlled O₂ 88–92 %, NIV first-line for hypercapnic respiratory failure.",
+  "Manage cardiovascular collapse from auto-PEEP by ventilator disconnection, fluid and reduction of minute ventilation.",
+  "Explain how Sedaconda/AnaConDa delivers volatile agent through a standard ICU ventilator.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Auto-PEEP cardiac arrest",
+    scenario: (
+      <>
+        Intubated severe asthmatic on VCV: Vt 500 mL, RR 18, I:E 1:2, PEEP 5. Within 8 min the patient
+        develops PEA arrest, peak Paw 60, abdomen distending, no breath sounds bilaterally.
+      </>
+    ),
+    working: (
+      <>
+        Differential is dynamic hyperinflation (auto-PEEP) vs bilateral tension pneumothorax. Both are
+        managed by immediate <strong>disconnection from the ventilator</strong> ± bilateral finger
+        thoracostomies. Expiratory hold post-resus would confirm total PEEP ≫ set PEEP.
+      </>
+    ),
+    answer: (
+      <>
+        Disconnect from circuit and let chest deflate (often gives ROSC). Resume at RR 8, I:E 1:5,
+        Vt 6 mL/kg, PEEP 0–3, accept pH ≥ 7.15. Bronchodilators, ketamine sedation, IV magnesium 2 g.
+        If still failing → volatile via Sedaconda or VV-ECMO referral.
+      </>
+    ),
+  },
+  {
+    title: "IECOPD — choosing NIV vs intubation",
+    scenario: (
+      <>
+        70-year-old with IECOPD. RR 28, SpO₂ 84 % on 28 % Venturi (target 88–92 %). ABG: pH 7.24, PaCO₂
+        9.8 kPa, HCO₃ 32, GCS 14 with mild confusion.
+      </>
+    ),
+    working: (
+      <>
+        Hypercapnic acidosis pH 7.24 is in the NIV window (pH 7.25–7.35 ideal but use down to ~7.20 with
+        close monitoring). Conscious enough to protect airway. Controlled O₂ on Venturi already set
+        appropriately (88–92 %). NIV NNT to avoid intubation ≈ 5 (Plant 2000).
+      </>
+    ),
+    answer: (
+      <>
+        Start BiPAP (IPAP 12–15, EPAP 4–5, FiO₂ titrated to SpO₂ 88–92 %). Reassess pH, PaCO₂ and GCS at
+        1 h — if no improvement or deterioration, intubate (ketamine + rocuronium), set RR 10, I:E 1:4,
+        accept permissive hypercapnia.
+      </>
+    ),
+  },
+  {
+    title: "Sedaconda for refractory bronchospasm",
+    scenario: (
+      <>
+        Day 2 ventilated near-fatal asthma. Maxed on salbutamol, ipratropium, magnesium, ketamine
+        infusion, IV adrenaline 0.1 µg/kg/min, plateau still 38, ETCO₂ 11 kPa.
+      </>
+    ),
+    working: (
+      <>
+        Volatile anaesthetics are potent bronchodilators (sevoflurane, isoflurane). Sedaconda places a
+        carbon reflector between the ETT and ventilator that recaptures ~ 90 % of exhaled volatile,
+        allowing delivery via a standard ICU ventilator with a small syringe driver, no anaesthetic
+        machine required.
+      </>
+    ),
+    answer: (
+      <>
+        Set up Sedaconda with sevoflurane 5–8 mL/h, target end-tidal sevo 0.5–1 % (~ 0.3–0.5 MAC).
+        Monitor end-tidal volatile, BP (vasodilation), and watch for fluoride accumulation if &gt; 48 h.
+        If still failing → VV-ECMO referral.
+      </>
+    ),
+  },
+];
+
+const keyPoints = [
+  "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs",
+  "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority",
+  "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma",
+  "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring",
+  "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)",
+  "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails",
+  "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine",
+  "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this",
+  "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia",
+];
 
 const BronchospasticFailureTopic = () => {
   return (
-    <SectionLayout title="Bronchospastic Respiratory Failure" subtitle="FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+    <TopicTemplate
+      title="Bronchospastic Respiratory Failure"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={keyPoints}
+      topicId="bronchospastic-failure"
+      topicTitle="Bronchospastic Respiratory Failure"
+      quizQuestions={bronchospasticFailureQuestions}
+      diagrams={
+        <>
+          <DynamicHyperinflationDiagram />
+          <SedacondaDiagram />
+        </>
+      }
+      coreConcepts={
+    <>
       <section className="space-y-8 mb-10">
 
         {/* ---- Overview ---- */}
@@ -493,24 +602,11 @@ const BronchospasticFailureTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "Dynamic hyperinflation and auto-PEEP cause cardiovascular collapse in ventilated bronchospasm — disconnect the ventilator if PEA arrest occurs",
-        "Ventilation strategy: low RR, prolonged I:E ratio, high inspiratory flow, permissive hypercapnia — minimising gas trapping is the priority",
-        "NIV is first-line for hypercapnic respiratory failure in COPD (pH 7.25–7.35) but NOT for acute asthma",
-        "Normal or rising PaCO₂ in acute asthma is a life-threatening sign — the patient is tiring",
-        "Ketamine is the ideal induction agent for intubation in bronchospasm (bronchodilator + haemodynamic stability)",
-        "Volatile agents via Sedaconda/AnaConDa provide potent bronchodilation in refractory bronchospasm — rescue therapy when conventional treatment fails",
-        "Sedaconda uses a carbon reflector to recapture ~90% of exhaled volatile, allowing delivery via standard ICU ventilators without an anaesthetic machine",
-        "Mucus plugging is the major cause of death in fatal asthma — corticosteroids and bronchoscopic lavage address this",
-        "COPD O₂ target 88–92%; asthma O₂ target 94–98% — controlled oxygen is critical in COPD to avoid worsening hypercapnia",
-      ]} />
-
-      <QuizSection questions={bronchospasticFailureQuestions} />
-      <ReferencesList topicId="bronchospastic-failure" />
-      <SeeAlso topicId="bronchospastic-failure" />
-      <TopicCompletionToggle topicId="bronchospastic-failure" topicTitle="Bronchospastic Respiratory Failure" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
 export default BronchospasticFailureTopic;
+
