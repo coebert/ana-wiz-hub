@@ -470,10 +470,72 @@ const ImmuneCellLineageDiagram = () => {
         </svg>
 
         {/* Mnemonic / footer */}
-        <p className="text-xs text-center text-muted-foreground mt-2 italic">
-          <span className="font-semibold not-italic text-foreground">Never Eat Black Mango Mash — </span>
-          Neutrophil, Eosinophil, Basophil, Monocyte, Mast cell — the myeloid effectors of innate immunity.
-        </p>
+        {view === "lineage" ? (
+          <p className="text-xs text-center text-muted-foreground mt-2 italic">
+            <span className="font-semibold not-italic text-foreground">Never Eat Black Mango Mash — </span>
+            Neutrophil, Eosinophil, Basophil, Monocyte, Mast cell — the myeloid effectors of innate immunity.
+          </p>
+        ) : (
+          <p className="text-xs text-center text-muted-foreground mt-2 italic">
+            <span className="font-semibold not-italic text-foreground">{pathways[pathway].title}</span>
+          </p>
+        )}
+
+        {/* Detail / step panel */}
+        <div className="mt-4 min-h-[140px]">
+          {view === "activation" ? (
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
+              key={`step-${pathway}-${stepIdx}`}
+              style={{ borderLeftWidth: 4, borderLeftColor: currentStep.color }}
+            >
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-foreground text-sm">
+                  Step {stepIdx + 1} / {activeSteps.length} — {currentStep.label}
+                </p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{ background: `${currentStep.color}26`, color: currentStep.color }}
+                >
+                  {currentStep.token}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
+              <div className="flex gap-1 mt-1">
+                {activeSteps.map((_, i) => (
+                  <span
+                    key={i}
+                    className="h-1 flex-1 rounded-full transition-colors"
+                    style={{ background: i === stepIdx ? currentStep.color : "hsl(var(--muted))" }}
+                  />
+                ))}
+              </div>
+            </div>
+          ) : sel ? (
+            <div
+              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+              style={{ borderLeftWidth: 4, borderLeftColor: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm] }}
+            >
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-foreground text-sm">{sel.label}</p>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                  style={{
+                    background: sel.arm === "stem" ? "hsl(var(--muted))" : `${armColor[sel.arm]}26`,
+                    color: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm],
+                  }}
+                >
+                  {sel.branch === "stem" ? "Stem" : sel.branch} · {sel.arm}
+                </span>
+              </div>
+              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {sel.role}</p>
+              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {sel.function}</p>
+              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {sel.clinical}</p>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground text-center italic">Tap a cell above to see role, function and clinical relevance.</p>
+          )}
+        </div>
 
         {/* Detail panel */}
         <div className="mt-4 min-h-[140px]">
