@@ -727,10 +727,10 @@ const NeurointensiveCareTopic = () => {
               GBS is a favourite FFICM/FRCA exam topic. Key points: the 20/30/40 rule for intubation (FVC/MIP/MEP), suxamethonium is SAFE (contrast with MND/burns/denervation), steroids do NOT work (unlike CIDP), IVIg and PLEX are equivalent but should NOT be combined, and autonomic instability can cause sudden cardiac death — continuous monitoring essential.
             </p>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Devastating Brain Injury */}
-        <div className="mb-10">
+        <ExamSection exams={["fficm", "edic"]} className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Devastating Brain Injury (DBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Devastating brain injury is defined (FICM/ICS/RCEM/NHSBT consensus 2018, reaffirmed 2023) as <strong>any neurological condition assessed at presentation as an immediate threat to life or incompatible with good functional recovery, and where early limitation or withdrawal of therapy is being considered within 72 hours of admission to ICU</strong>. Common causes: severe TBI, large intracerebral or subarachnoid haemorrhage, malignant MCA infarction, hypoxic-ischaemic injury post-cardiac arrest, devastating CNS infection.
