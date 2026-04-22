@@ -73,6 +73,31 @@ export const MechanismCascadeDiagram = ({
   const accentVar = `hsl(var(--${accent}))`;
   const current = steps[step];
 
+  /**
+   * Build a stable, de-duplicated bibliography across all steps.
+   * Order is determined by first appearance (step order, then source order
+   * within step). Each unique URL gets a 1-based number used both inline and
+   * in the consolidated list at the bottom.
+   */
+  const bibliography = useMemo(() => {
+    const list: CascadeSource[] = [];
+    const indexByUrl = new Map<string, number>();
+    for (const s of steps) {
+      for (const src of s.sources ?? []) {
+        if (!indexByUrl.has(src.url)) {
+          list.push(src);
+          indexByUrl.set(src.url, list.length);
+        }
+      }
+    }
+    return { list, indexByUrl };
+  }, [steps]);
+
+  /** Citation numbers (in bibliography order) for the current step's sources. */
+  const currentSourceIndexes = (current.sources ?? [])
+    .map((src) => bibliography.indexByUrl.get(src.url))
+    .filter((n): n is number => typeof n === "number");
+
   return (
     <div className="rounded-xl border border-border bg-card/40 p-4">
       <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
