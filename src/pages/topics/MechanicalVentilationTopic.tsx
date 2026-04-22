@@ -186,7 +186,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </ExamSection>
 
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Ventilator Waveforms</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Explore pressure, flow and volume waveforms for the key ventilator modes — pattern recognition is core to bedside dyssynchrony detection.
@@ -194,7 +194,7 @@ const MechanicalVentilationTopic = () => {
           <div className="rounded-xl border border-border bg-card p-4">
             <VentilatorWaveformsDiagram />
           </div>
-        </div>
+        </ExamSection>
 
         {/* ───── 4. Modes ───── */}
         <ExamSection id="toc-modes" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
@@ -615,7 +615,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Events (VAE) — CDC Surveillance Framework</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             In 2013, the CDC replaced the traditional VAP surveillance definition with a tiered, objective framework called <span className="font-semibold text-foreground">Ventilator-Associated Events (VAE)</span>. This was designed to improve reproducibility, reduce subjective interpretation (particularly of CXR), and capture a broader range of complications in mechanically ventilated patients — not just pneumonia.
@@ -699,7 +699,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">VTE prophylaxis:</span> PE can cause VAC by increasing FiO₂/PEEP requirements</li>
             <li><span className="font-semibold text-foreground">Transfusion restriction:</span> Liberal transfusion associated with pulmonary complications (TRICC, TRISS trials)</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-tracheostomy" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy in the ICU</h2>
@@ -781,7 +781,7 @@ const MechanicalVentilationTopic = () => {
           </p>
         </ExamSection>
 
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extubation</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Extubation failure (re-intubation within 48–72 hours) occurs in 10–20% of ICU patients and is independently associated with increased mortality, prolonged ICU stay, and higher rates of tracheostomy. Identifying high-risk patients and planning a structured extubation strategy is essential.
@@ -879,7 +879,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">NIV:</span> Prophylactic NIV after extubation reduces re-intubation in high-risk patients (obesity, COPD, heart failure, hypercapnia). Should be applied immediately post-extubation, not as rescue after failure.</li>
             <li><span className="font-semibold text-foreground">Do not delay re-intubation:</span> If NIV/HFNO used as rescue for post-extubation respiratory failure, re-intubation should not be delayed. The Esteban trial (2004) showed increased mortality with NIV for post-extubation respiratory failure compared with standard therapy — likely due to delayed re-intubation.</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-hfno-niv" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High-Flow Nasal Oxygen (HFNO)</h2>
@@ -963,7 +963,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation (NIV)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             NIV delivers positive pressure ventilation via a mask interface without endotracheal intubation. It reduces work of breathing, improves gas exchange, and avoids intubation-related complications. NIV encompasses two distinct modalities: continuous positive airway pressure (CPAP) and bilevel positive airway pressure (BiPAP/NIV-PS).
@@ -1057,7 +1057,7 @@ const MechanicalVentilationTopic = () => {
             <li>Excessive secretions or poor cough</li>
             <li>Poor mask tolerance or frequent removal</li>
           </ul>
-        </div>
+        </ExamSection>
 
         <ExamSection id="toc-longterm" exams={["fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Induced Diaphragmatic Dysfunction (VIDD)</h2>
@@ -1157,7 +1157,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Acquired Weakness (ICUAW)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             ICU-acquired weakness affects <span className="font-semibold text-foreground">25–50%</span> of patients ventilated for ≥7 days. It encompasses critical illness polyneuropathy (CIP), critical illness myopathy (CIM), and the overlap syndrome (CIPNM). ICUAW is independently associated with prolonged ventilation, weaning failure, increased ICU/hospital mortality, and long-term functional disability.
@@ -1258,9 +1258,9 @@ const MechanicalVentilationTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-Intensive Care Syndrome (PICS)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012), it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.
@@ -1380,7 +1380,7 @@ const MechanicalVentilationTopic = () => {
             <li><span className="font-semibold text-foreground">Girard — ABC trial (2008):</span> Paired SAT + SBT reduced ventilation days, ICU stay, and 1-year mortality compared to SBT alone.</li>
             <li><span className="font-semibold text-foreground">POPPI (2019):</span> Nurse-led preventive psychological intervention did not reduce PTSD at 6 months. Highlights difficulty of single-component psychological interventions in ICU.</li>
           </ul>
-        </div>
+        </ExamSection>
       </section>
 
       <VentilatorWaveformsGuideDiagram />
