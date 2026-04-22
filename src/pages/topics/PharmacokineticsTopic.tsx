@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelDiagram";
 import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagram";
+import { ADMECascadeDiagram } from "@/components/diagrams/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
 
 const PharmacokineticsTopic = () => {
@@ -35,6 +36,7 @@ const PharmacokineticsTopic = () => {
       }}
       diagrams={
         <>
+          <ADMECascadeDiagram />
           <div className="bg-card rounded-xl border border-border p-6">
             <CompartmentModelDiagram />
           </div>

@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
+import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -37,6 +38,7 @@ const NeuroanaesthesiaTopic = () => {
         <>
           <CBFAutoregulationDiagram />
           <ICPVolumeCurveDiagram />
+          <RaisedICPCascadeDiagram />
         </>
       }
       coreConcepts={
