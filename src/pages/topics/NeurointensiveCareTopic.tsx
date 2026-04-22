@@ -381,7 +381,7 @@ const NeurointensiveCareTopic = () => {
               <strong>NASCIS II/III trials</strong> suggested benefit of high-dose methylprednisolone within 8 hours. However, these trials had significant methodological flaws. Current guidelines (NICE, AANS/CNS) <strong>do NOT recommend</strong> routine methylprednisolone for acute SCI due to lack of evidence for benefit and increased complications (infections, GI bleeding, hyperglycaemia). This is frequently examined.
             </p>
           </div>
-        </div>
+        </ExamSection>
         <div id="toc-icp" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
