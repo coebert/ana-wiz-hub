@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
 
 const EnhancedRecoveryTopic = () => {
   return (
@@ -80,12 +82,160 @@ const EnhancedRecoveryTopic = () => {
         </div>
       </section>
 
+      <DiagramSection
+        title="Evidence Base — Outcome Effects of ERAS"
+        intro={
+          <p>
+            ERAS pathways have one of the largest evidence bases in perioperative medicine. Effects are most pronounced in colorectal, hepatobiliary, urological, and orthopaedic surgery, and are reproducible across hospital systems.
+          </p>
+        }
+      >
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+          {[
+            { icon: TrendingDown, stat: "−30 to 50%", label: "Length of stay", detail: "Colorectal LOS reduced from 8–10 to 4–5 days" },
+            { icon: TrendingDown, stat: "−40%", label: "Overall complications", detail: "Pulmonary, infective, cardiac (RR ~0.60)" },
+            { icon: TrendingDown, stat: "−50%", label: "Readmission risk", detail: "When ≥ 70% protocol compliance achieved" },
+            { icon: TrendingUp, stat: "≥ 70%", label: "Compliance threshold", detail: "Dose–response: outcomes improve with each additional element" },
+          ].map((m) => (
+            <div key={m.label} className="p-4 rounded-lg border border-border bg-card">
+              <m.icon className="h-5 w-5 text-perioperative mb-2" />
+              <p className="text-2xl font-serif font-bold text-foreground">{m.stat}</p>
+              <p className="text-xs font-semibold text-foreground mt-1">{m.label}</p>
+              <p className="text-xs text-muted-foreground mt-1 leading-snug">{m.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-3">
+          <p className="text-sm font-semibold text-foreground flex items-center gap-2">
+            <FlaskConical className="h-4 w-4 text-perioperative" /> Landmark trials & meta-analyses
+          </p>
+          {[
+            { trial: "ERAS Compliance Group (Ann Surg 2015)", n: "n = 2,352 colorectal", finding: "Each 10% increase in protocol compliance reduced 30-day morbidity (OR 0.86) and LOS. Compliance > 70% was the inflection point for benefit." },
+            { trial: "LAFA Trial (Ann Surg 2011)", n: "n = 400 colonic resection", finding: "2×2 factorial: laparoscopy + ERAS vs open + traditional care. Laparoscopy was the dominant LOS driver; ERAS reduced LOS independently. Combined arm: median LOS 5 days vs 7." },
+            { trial: "EnROL (Br J Surg 2014)", n: "n = 204 colorectal", finding: "Lap vs open within an ERAS pathway. Laparoscopy reduced physical fatigue and time to recovery (median 5 vs 7 d). Confirmed ERAS benefits hold within minimally invasive surgery." },
+            { trial: "Cochrane Review (Spanjersberg / Greco, updated 2020)", n: "RCT meta-analysis", finding: "ERAS reduced LOS by ~2.5 days and overall complications (RR 0.60, 95% CI 0.46–0.76) without increase in readmission or mortality." },
+            { trial: "POWER Study (Br J Anaesth 2019)", n: "n = 2,084 elective colorectal, 80 hospitals", finding: "Higher per-protocol ERAS adherence independently reduced moderate-to-severe complications (OR 0.34) and 30-day mortality." },
+            { trial: "RELIEF Trial (NEJM 2018)", n: "n = 3,000 major abdominal", finding: "Restrictive (~6 mL/kg/h) vs liberal (~10 mL/kg/h) IV fluid. Restrictive arm had higher AKI (8.6% vs 5.0%). Re-defined 'goal-directed, zero-balance' as the ERAS fluid target — not blanket restriction." },
+            { trial: "OPTIMISE / OPTIMISE II", n: "n = 734 / 2,500 high-risk GI surgery", finding: "Cardiac output–guided GDFT showed a non-significant reduction in 30-day complications; supports individualised haemodynamic optimisation within ERAS." },
+          ].map((t) => (
+            <div key={t.trial} className="p-3 rounded-lg border border-border bg-card">
+              <div className="flex items-baseline justify-between gap-2 flex-wrap">
+                <p className="font-semibold text-foreground text-sm">{t.trial}</p>
+                <p className="text-xs text-muted-foreground font-mono">{t.n}</p>
+              </div>
+              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{t.finding}</p>
+            </div>
+          ))}
+        </div>
+      </DiagramSection>
+
+      <DiagramSection
+        title="Exemplar ERAS Protocols by Surgical Specialty"
+        intro={
+          <p>
+            ERAS® Society guidelines now exist for &gt; 20 procedures. The principles are conserved but specific elements (analgesic strategy, drain use, mobilisation timing) are tailored. Below: three of the most evidence-rich pathways.
+          </p>
+        }
+      >
+        <div className="space-y-4">
+          {[
+            {
+              title: "Colorectal Surgery",
+              subtitle: "ERAS® Society 2018 (Gustafsson et al, World J Surg)",
+              evidence: "Original and most validated pathway. Median LOS 4–5 d (vs 8–10), complications −40%.",
+              elements: [
+                "Pre-op: counselling + carb load (50 g maltodextrin 2h pre-op); no mechanical bowel prep for colon (selective for rectal)",
+                "Intra-op: thoracic epidural OR TAP block + lidocaine infusion; laparoscopic approach; goal-directed fluid (CO monitor); normothermia ≥ 36°C",
+                "Post-op: chewing gum + early enteral nutrition day 0; mobilise > 2h day 0, > 6h day 1; remove urinary catheter day 1; multimodal opioid-sparing analgesia",
+              ],
+            },
+            {
+              title: "Hip & Knee Arthroplasty",
+              subtitle: "ERAS® Society 2020 (Wainwright et al, Acta Orthop)",
+              evidence: "Day-of-surgery discharge feasible in selected patients. LOS reduced from 5–7 d to 1–3 d; transfusion rates ↓ ~70% with TXA.",
+              elements: [
+                "Pre-op: prehab exercise + iron optimisation; spinal anaesthesia preferred over GA (lower DVT, blood loss, mortality)",
+                "Intra-op: tranexamic acid 15 mg/kg IV (or topical); local infiltration analgesia (LIA — bupivacaine ± adrenaline ± ketorolac); avoid drains and urinary catheters",
+                "Post-op: mobilise within 4h of return to ward; no PCA opioids (oral multimodal); discharge criteria-based, often day 1–2",
+              ],
+            },
+            {
+              title: "Cardiac Surgery (ERAS® Cardiac)",
+              subtitle: "Engelman et al, JAMA Surg 2019",
+              evidence: "Newest pathway. Reduces ICU LOS, opioid consumption, and ventilation time; non-inferior safety.",
+              elements: [
+                "Pre-op: carb load if not diabetic; correct anaemia (IV iron); insulin sliding scale (target 7.8–10 mmol/L)",
+                "Intra-op: bilateral parasternal / erector spinae blocks; opioid-sparing TIVA option; goal-directed perfusion on bypass; rigid sternal fixation in selected pts",
+                "Post-op: extubation within 6h ('fast-track'); chest drain removal day 1 if drainage < 150 mL/8h; early mobilisation; multimodal analgesia (paracetamol + dexmedetomidine + regional)",
+              ],
+            },
+          ].map((p) => (
+            <div key={p.title} className="p-4 rounded-lg border-2 border-perioperative/40 bg-perioperative/5">
+              <div className="flex items-start gap-2 mb-2">
+                <Award className="h-5 w-5 text-perioperative mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-semibold text-foreground">{p.title}</p>
+                  <p className="text-xs text-muted-foreground">{p.subtitle}</p>
+                </div>
+              </div>
+              <p className="text-sm text-foreground mb-2 italic">{p.evidence}</p>
+              <ul className="space-y-1.5">
+                {p.elements.map((e, i) => (
+                  <li key={i} className="text-sm text-muted-foreground leading-relaxed pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-perioperative">
+                    {e}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </DiagramSection>
+
+      <DiagramSection
+        title="Implementation, Compliance & Audit"
+        intro={
+          <p>
+            ERAS is an <em>implementation science</em> challenge as much as a clinical one. Outcomes correlate tightly with measured compliance — the ERAS® Interactive Audit System (EIAS) is the validated tool.
+          </p>
+        }
+      >
+        <div className="grid sm:grid-cols-2 gap-3">
+          <div className="p-4 rounded-lg border border-border bg-card">
+            <p className="font-semibold text-foreground text-sm">Barriers to compliance</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-4">
+              <li>Surgeon preference (drains, NG tubes, prolonged fasting)</li>
+              <li>Lack of dedicated ERAS nurse coordinator</li>
+              <li>Out-of-hours admissions bypassing pathway</li>
+              <li>Patient comorbidity / frailty (real or perceived)</li>
+            </ul>
+          </div>
+          <div className="p-4 rounded-lg border border-border bg-card">
+            <p className="font-semibold text-foreground text-sm">Enablers</p>
+            <ul className="text-sm text-muted-foreground mt-2 space-y-1 list-disc pl-4">
+              <li>Multidisciplinary team with named champion</li>
+              <li>Pre-printed order sets / electronic prescribing bundles</li>
+              <li>Continuous audit + feedback (EIAS dashboard)</li>
+              <li>Patient-held diary with daily milestones</li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-3 p-3 rounded-lg border-l-4 border-perioperative bg-perioperative/5">
+          <p className="text-sm text-foreground">
+            <span className="font-semibold">Health-economic impact:</span> The NHS Enhanced Recovery Partnership Programme (2009–13) demonstrated mean LOS reduction of 1.6–2.6 days across colorectal, urological, gynaecological and orthopaedic surgery, with estimated annual savings of <strong>£70–90 million</strong> in bed-days alone, without increased readmission or mortality.
+          </p>
+        </div>
+      </DiagramSection>
+
       <KeyLearningPoints points={[
-        "ERAS reduces length of stay by 30% and complications by 40% across surgical specialties",
+        "ERAS reduces length of stay by 30–50% and complications by ~40% (Cochrane RR 0.60); compliance ≥ 70% is the dose–response threshold",
+        "Landmark evidence: ERAS Compliance Group 2015, LAFA, POWER, Cochrane 2020 — consistent across colorectal, urological, hepatobiliary, orthopaedic and now cardiac surgery",
+        "RELIEF trial: 'restrictive' fluid (≤ 6 mL/kg/h) increases AKI — current ERAS standard is goal-directed, zero-balance fluid therapy",
         "Carbohydrate loading 2h pre-op reduces insulin resistance and improves patient well-being",
-        "Prehabilitation: structured exercise 4–6 weeks pre-op improves fitness and outcomes",
-        "Anaemia optimisation: IV iron if deficient, target Hb >130 (men) / >120 (women) — reduces transfusion",
-        "Apfel PONV score: female, non-smoker, PONV history, opioids — multimodal prophylaxis for ≥2 risk factors",
+        "Prehabilitation (4–6 weeks structured exercise) and IV iron for anaemia (Hb target > 130 men / > 120 women) reduce complications and transfusion",
+        "ERAS Cardiac (2019) and arthroplasty (2020) protocols extend benefits beyond GI surgery; TXA + spinal anaesthesia + LIA are pillars in joint replacement",
+        "Apfel PONV score (female, non-smoker, PONV history, opioids) — multimodal prophylaxis for ≥ 2 risk factors",
+        "Implementation requires MDT champion, dedicated coordinator, audit (EIAS), and order-set bundles — NHS programme saved £70–90 m/yr in bed-days",
       ]} />
 
       <QuizSection questions={enhancedRecoveryQuestions} />
