@@ -15,7 +15,7 @@ const quiz: QuizQuestion[] = [
       "'It is your decision, so let me know what you would like us to do.'",
       "'We will continue everything until she has a cardiac arrest.'",
     ],
-    correctAnswer: 0,
+    correctIndex: 0,
     explanation:
       "Best practice (GMC 'Treatment and care towards the end of life', FICM/ICS 'Care at the End of Life') is to reframe withdrawal as a change in goals of care — from disease-modifying treatment to comfort. Avoid the phrase 'withdrawal of care' (care is never withdrawn) and avoid placing the entire decision burden on the family; the decision is medical, made in the patient's best interests, with the family's view of the patient's wishes informing it.",
   },
@@ -28,7 +28,7 @@ const quiz: QuizQuestion[] = [
       "Obtaining the patient/family's Invitation",
       "Prescribing sedation before disclosure",
     ],
-    correctAnswer: 3,
+    correctIndex: 3,
     explanation:
       "SPIKES = Setting, Perception, Invitation, Knowledge, Emotions/Empathy, Strategy/Summary. Pre-emptive sedation is not part of the protocol and may impair the family's ability to engage. Empathic responses (NURSE statements: Name, Understand, Respect, Support, Explore) are recommended.",
   },

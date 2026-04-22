@@ -15,7 +15,7 @@ const quiz: QuizQuestion[] = [
       "Inadequate manual dexterity",
       "Lack of equipment availability",
     ],
-    correctAnswer: 1,
+    correctIndex: 1,
     explanation:
       "All four ANTS categories are relevant, but the immediate failure is the trainee not escalating concern. The PACE/CUSS graded assertiveness model (Probe → Alert → Challenge → Emergency, or Concern → Uncomfortable → Safety issue → Stop) is taught precisely for this scenario. Fixation error ('plan continuation bias') by the consultant is a parallel situation-awareness failure.",
   },
@@ -28,7 +28,7 @@ const quiz: QuizQuestion[] = [
       "Distinguishing human error and at-risk behaviour (managed by support and system change) from reckless behaviour (managed by accountability)",
       "Conducting all reviews in private without the staff involved",
     ],
-    correctAnswer: 2,
+    correctIndex: 2,
     explanation:
       "A just culture (Reason; Marx) distinguishes inadvertent error and at-risk behaviour — addressed by system redesign, coaching and support — from reckless behaviour (conscious disregard of substantial risk), which warrants accountability. It is neither a 'no-blame' culture nor a punitive one. NHS England's Patient Safety Incident Response Framework (PSIRF, 2022) embeds this approach.",
   },
