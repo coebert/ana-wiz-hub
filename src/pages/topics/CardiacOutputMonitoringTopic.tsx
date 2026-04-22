@@ -75,6 +75,119 @@ const CardiacOutputMonitoringTopic = () => {
             ))}
           </div>
         </div>
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Acronyms & Abbreviations</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            A glossary of abbreviations used throughout this topic and its diagrams. Grouped by theme for quick reference.
+          </p>
+
+          <div className="space-y-4">
+            {[
+              {
+                group: "Devices & techniques",
+                items: [
+                  ["PAC", "Pulmonary Artery Catheter (Swan-Ganz catheter)"],
+                  ["PiCCO", "Pulse Contour Cardiac Output (transpulmonary thermodilution + pulse contour analysis)"],
+                  ["TPTD", "Transpulmonary Thermodilution — cold indicator injected centrally, detected at a peripheral (femoral) artery thermistor"],
+                  ["LiDCO", "Lithium Dilution Cardiac Output (lithium chloride indicator + arterial sensor, calibrates pulse power analysis)"],
+                  ["PulseCO", "Pulse Power Analysis — the continuous CO algorithm used by LiDCO between calibrations"],
+                  ["FloTrac/Vigileo", "Uncalibrated arterial pulse contour CO monitor (Edwards)"],
+                  ["NICOM", "Non-Invasive Cardiac Output Monitor — bioreactance (phase-shift) analysis via thoracic electrodes"],
+                  ["ODM", "Oesophageal Doppler Monitor"],
+                  ["TTE / TOE", "Transthoracic / Transoesophageal Echocardiography (TEE in US usage)"],
+                  ["FOCUS / FATE", "Focused critical-care echo protocols (Focused Cardiac Ultrasound / Focus-Assessed Transthoracic Echo)"],
+                  ["BSE", "British Society of Echocardiography (accreditation body)"],
+                  ["CVC", "Central Venous Catheter"],
+                ],
+              },
+              {
+                group: "Flow, pressure & resistance",
+                items: [
+                  ["CO", "Cardiac Output (L/min)"],
+                  ["CI", "Cardiac Index — CO indexed to body surface area (L/min/m²)"],
+                  ["SV", "Stroke Volume (mL)"],
+                  ["SVI", "Stroke Volume Index (mL/m²)"],
+                  ["HR", "Heart Rate"],
+                  ["BSA", "Body Surface Area"],
+                  ["PBW", "Predicted Body Weight (used for EVLWI indexing)"],
+                  ["MAP", "Mean Arterial Pressure"],
+                  ["CVP", "Central Venous Pressure"],
+                  ["PA", "Pulmonary Artery"],
+                  ["RA / RV / LA / LV", "Right Atrium / Right Ventricle / Left Atrium / Left Ventricle"],
+                  ["PAOP / PCWP", "Pulmonary Artery Occlusion Pressure / Pulmonary Capillary Wedge Pressure (estimate of LA pressure)"],
+                  ["LVEDP", "Left Ventricular End-Diastolic Pressure"],
+                  ["SVR / SVRI", "Systemic Vascular Resistance / Resistance Index"],
+                  ["PVR", "Pulmonary Vascular Resistance"],
+                ],
+              },
+              {
+                group: "PiCCO-derived volumes & thermodilution maths",
+                items: [
+                  ["MTt", "Mean Transit Time of the thermal indicator from injection to detection"],
+                  ["DSt", "Down-Slope Time — exponential decay time of the thermodilution curve (reflects largest mixing chamber, the lungs)"],
+                  ["ITTV", "Intrathoracic Thermal Volume = CO × MTt (total volume the indicator passes through between CVC and femoral artery)"],
+                  ["PTV", "Pulmonary Thermal Volume = CO × DSt (volume of the lungs as the largest mixing chamber)"],
+                  ["GEDV", "Global End-Diastolic Volume = ITTV − PTV (combined end-diastolic volume of all four cardiac chambers)"],
+                  ["GEDI", "Global End-Diastolic Volume Index = GEDV / BSA — volumetric preload marker"],
+                  ["ITBV", "Intrathoracic Blood Volume ≈ 1.25 × GEDV (empirical relationship)"],
+                  ["PBV", "Pulmonary Blood Volume = ITBV − GEDV"],
+                  ["EVLW", "Extravascular Lung Water = ITTV − ITBV (water in lung interstitium and alveoli)"],
+                  ["EVLWI", "EVLW indexed to predicted body weight (mL/kg)"],
+                  ["PVPI", "Pulmonary Vascular Permeability Index = EVLW / PBV (distinguishes hydrostatic vs permeability oedema)"],
+                  ["GEF", "Global Ejection Fraction = 4 × SV / GEDV (biventricular contractility surrogate)"],
+                  ["CFI", "Cardiac Function Index = CO / GEDV (contractility surrogate, similar to GEF)"],
+                  ["dP/dt", "Rate of pressure rise — contractility index from arterial waveform"],
+                ],
+              },
+              {
+                group: "Dynamic & oxygenation indices",
+                items: [
+                  ["SVV", "Stroke Volume Variation across the respiratory cycle (%) — fluid responsiveness marker"],
+                  ["PPV", "Pulse Pressure Variation across the respiratory cycle (%) — fluid responsiveness marker"],
+                  ["FTc", "Corrected Flow Time (oesophageal Doppler) — systolic flow time corrected to HR 60; <330 ms suggests hypovolaemia"],
+                  ["PV", "Peak Velocity (oesophageal Doppler) — surrogate for contractility"],
+                  ["VTI / LVOT VTI", "Velocity-Time Integral / Velocity-Time Integral across the LV Outflow Tract (used for echo SV calculation)"],
+                  ["LVOT", "Left Ventricular Outflow Tract"],
+                  ["LVEF / EF", "Left Ventricular Ejection Fraction"],
+                  ["SvO₂", "Mixed Venous Oxygen Saturation (sampled from PA — true mixed venous)"],
+                  ["ScvO₂", "Central Venous Oxygen Saturation (sampled from CVC tip — surrogate for SvO₂)"],
+                  ["CaO₂ / CvO₂", "Arterial / Venous Oxygen Content (used in the Fick equation)"],
+                  ["VO₂", "Oxygen Consumption (mL/min)"],
+                  ["DO₂", "Oxygen Delivery = CO × CaO₂"],
+                ],
+              },
+              {
+                group: "Clinical, ventilation & trial terms",
+                items: [
+                  ["GDT", "Goal-Directed (fluid) Therapy"],
+                  ["NMBA", "Neuromuscular Blocking Agent"],
+                  ["MV", "Mechanical Ventilation (or, in physiology, Minute Ventilation — context-dependent)"],
+                  ["VT", "Tidal Volume"],
+                  ["IABP", "Intra-Aortic Balloon Pump"],
+                  ["ARDS", "Acute Respiratory Distress Syndrome"],
+                  ["IVC / SVC", "Inferior / Superior Vena Cava"],
+                  ["AF", "Atrial Fibrillation"],
+                  ["HTN", "Hypertension"],
+                  ["PAC-Man", "UK multicentre RCT (2005) showing no mortality benefit from routine PAC use in ICU"],
+                ],
+              },
+            ].map((section) => (
+              <div key={section.group} className="rounded-lg border border-border bg-card overflow-hidden">
+                <div className="px-4 py-2 bg-muted/50 border-b border-border">
+                  <p className="font-semibold text-foreground text-sm">{section.group}</p>
+                </div>
+                <dl className="divide-y divide-border">
+                  {section.items.map(([abbr, expansion]) => (
+                    <div key={abbr} className="grid grid-cols-[7rem_1fr] sm:grid-cols-[9rem_1fr] gap-3 px-4 py-2.5">
+                      <dt className="font-mono text-xs sm:text-sm font-semibold text-foreground">{abbr}</dt>
+                      <dd className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{expansion}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <OesophagealDopplerDiagram />
