@@ -7,6 +7,7 @@ import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeCom
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
 import { DiagramSection } from "@/components/DiagramSection";
+import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
@@ -120,7 +121,7 @@ const ARDSTopic = () => {
       coreConcepts={
     <>
       <section className="space-y-6">
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]} curriculumCodes={["CC2.4"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Berlin Definition (2012)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The Berlin definition replaced the 1994 AECC criteria and stratifies ARDS by oxygenation impairment (PaO₂/FiO₂ on ≥5 cmH₂O PEEP) into mild, moderate, and severe categories — each with a stepwise rise in mortality. Onset must be within 7 days of a known insult, with bilateral opacities not fully explained by cardiac failure or volume overload.
@@ -144,9 +145,9 @@ const ARDSTopic = () => {
           <p className="text-sm text-muted-foreground mt-2">
             All with: onset within 7 days, bilateral opacities on CXR/CT, not fully explained by cardiac failure/fluid overload, PEEP ≥5 cmH₂O.
           </p>
-        </div>
+        </ExamSection>
 
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Management Strategy</h2>
           <div className="space-y-3">
             {[
@@ -160,14 +161,14 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prone Positioning</h2>
           <p className="text-muted-foreground leading-relaxed">
             PROSEVA trial (2013): prone positioning ≥16h/day in moderate-severe ARDS (P/F &lt;150) reduced 28-day mortality from 32.8% to 16.0% (NNT = 6). Mechanism: improved V/Q matching, recruitment of dorsal lung, reduced transpulmonary pressure gradient, improved drainage of secretions. Contraindications: spinal instability, open abdomen, raised ICP.
           </p>
-        </div>
+        </ExamSection>
 
         <ARDSVentModeComparisonDiagram />
       </section>
@@ -179,7 +180,7 @@ const ARDSTopic = () => {
 
       <section className="space-y-6 mb-10">
         {/* ECMO Indications & Referral */}
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO — Indications & Referral Criteria</h2>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -201,10 +202,10 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Key ECMO Parameters */}
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Adjustable ECMO Parameters</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -264,10 +265,10 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Anticoagulation */}
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation on ECMO</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             The extracorporeal circuit activates the coagulation cascade on contact with foreign surfaces. Anticoagulation is essential to prevent circuit thrombosis but must be balanced against bleeding risk — the leading cause of morbidity on ECMO.
@@ -330,10 +331,10 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         {/* ECMO Complications */}
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO Complications</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
@@ -350,10 +351,10 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
         {/* Weaning */}
-        <div>
+        <ExamSection exams={["fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO Weaning & Decannulation</h2>
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -369,10 +370,10 @@ const ARDSTopic = () => {
               </p>
             </div>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Key Evidence */}
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key ECMO Evidence</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -402,10 +403,10 @@ const ARDSTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* COVID-19 Severe Respiratory Failure */}
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">COVID-19 — Severe Respiratory Failure</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             COVID-19 pneumonitis can cause ARDS but may present with atypical features. The evidence base evolved rapidly during the pandemic and continues to be refined. Key principles align with standard ARDS management but with specific pharmacological adjuncts.
@@ -497,10 +498,10 @@ const ARDSTopic = () => {
               </div>
             ))}
           </div>
-        </div>
+        </ExamSection>
 
         {/* Key COVID Trials */}
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key COVID-19 Critical Care Trials</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -545,10 +546,10 @@ const ARDSTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         {/* Guideline comparison */}
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Major Guideline Comparison</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Side-by-side summary of the contemporary ARDS frameworks. Berlin 2012 is purely diagnostic, while
@@ -641,11 +642,11 @@ const ARDSTopic = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </ExamSection>
       </section>
 
       <section className="space-y-4 mb-10">
-        <div>
+        <ExamSection exams={["final", "fficm", "edic"]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroids in Severe Pneumonia — Updated Evidence</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             The role of steroids in pneumonia has been transformed since 2020. Three high-quality RCTs (RECOVERY, CAPE COD, ESCAPe) and the post-COVID guideline updates have moved corticosteroids from "controversial adjunct" to <strong>standard care in severe community-acquired pneumonia (sCAP) and COVID-19 pneumonia requiring oxygen</strong>. The picture for influenza and non-severe CAP remains more nuanced.
@@ -761,7 +762,7 @@ const ARDSTopic = () => {
           <p className="text-muted-foreground leading-relaxed">
             Hyperglycaemia (most common, often requires insulin infusion), secondary bacterial / fungal infections (CAPA risk in COVID), GI bleeding (co-prescribe PPI), neuropsychiatric effects, ICU-acquired weakness (synergistic with NMB), and <strong>strongyloides hyperinfection</strong> in patients from endemic areas — give empirical ivermectin if recent travel/residence and unable to test promptly.
           </p>
-        </div>
+        </ExamSection>
       </section>
 
       <SynthesisBlock
