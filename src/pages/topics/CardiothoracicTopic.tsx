@@ -6,6 +6,7 @@ import { cardiothoracicQuestions } from "@/data/quizzes";
 import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
 import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
+import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
@@ -16,7 +17,9 @@ const tocItems = [
   { id: "cardiac-considerations", label: "Key cardiac procedures", group: "Cardiac surgery" },
   { id: "opcab", label: "On-pump vs off-pump (OPCAB)", group: "Cardiac surgery" },
   { id: "dhca", label: "Deep hypothermic circulatory arrest", group: "Cardiac surgery" },
+  { id: "cals", label: "Cardiac arrest after cardiac surgery", group: "Cardiac surgery" },
   { id: "olv", label: "One-lung ventilation", group: "Thoracic surgery" },
+  { id: "analgesia", label: "Post-operative analgesia", group: "Post-operative" },
 ];
 
 const CardiothoracicTopic = () => {
@@ -277,6 +280,43 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
+        {/* Cardiac arrest after cardiac surgery */}
+        <div id="cals" className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Arrest Following Cardiac Surgery</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Cardiac arrest in the first 24–72 hours after cardiac surgery is a uniquely manageable emergency: the patient is monitored, the team is on site, mechanical support and re-operation are immediately available, and the cause is usually one of a small list of surgically reversible problems (tamponade, bleeding, graft occlusion, severe arrhythmia, electrolyte derangement, pacing failure). Standard ALS — designed for the unwitnessed community arrest — is therefore <strong>modified</strong> by the EACTS/EACTA 2009 guideline (updated 2017), now adopted by the Resuscitation Council UK as the basis for cardiac advanced life support (CALS) in CICU.
+          </p>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Three principles drive every modification: (1) most arrests are witnessed and immediately shockable, so <strong>up to three stacked shocks come before chest compressions</strong>; (2) <strong>bolus adrenaline can be catastrophic</strong> after recent anastomoses, so it is withheld or titrated; and (3) <strong>emergency resternotomy within 5 minutes</strong> is the definitive intervention if the first-line steps fail. Every cardiac ICU keeps a sterile resternotomy set, a designated trained surgical responder, and pre-applied defibrillator pads at every bedside.
+          </p>
+
+          <CardiacArrestPostCardiacSurgeryDiagram />
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Surgery-specific reversible causes</p>
+              <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                <li><strong>Tamponade</strong> — bleeding into the pericardium; confirm on TOE; relieved by resternotomy</li>
+                <li><strong>Major haemorrhage</strong> — surgical bleeder; volume + resternotomy</li>
+                <li><strong>Graft occlusion / kink</strong> — ST changes, regional wall-motion abnormality</li>
+                <li><strong>Tension pneumothorax</strong> — IMA harvest or chest-drain malfunction</li>
+                <li><strong>Severe hyperkalaemia / acidosis</strong> — residual cardioplegia effect</li>
+                <li><strong>Pacing failure</strong> — disconnected wire, depleted box, capture loss</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Team & equipment standards</p>
+              <ul className="text-sm text-muted-foreground mt-1 list-disc list-inside space-y-1">
+                <li>Resternotomy trolley at every bed (sterile gown, scalpel, wire-cutters, sternal retractor, internal paddles)</li>
+                <li>≥1 surgical responder available 24/7 within 5 min</li>
+                <li>Defib pads pre-applied AP, pacing box checked at every handover</li>
+                <li>Routine annual CALS simulation training for the whole CICU team</li>
+                <li>Consider VA-ECMO / IABP / temporary VAD early if no ROSC</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {/* ───────── Thoracic surgery ───────── */}
         <div id="olv" className="scroll-mt-24 pt-4 border-t border-border">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">One-Lung Ventilation (OLV)</h2>
@@ -307,6 +347,121 @@ const CardiothoracicTopic = () => {
 
           <div className="mt-4">
             <OLVTroubleshootingDiagram />
+          </div>
+        </div>
+
+        {/* ───────── Post-operative analgesia ───────── */}
+        <div id="analgesia" className="scroll-mt-24 pt-4 border-t border-border">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-Operative Analgesia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Pain after cardiothoracic surgery is severe, somatic and visceral, and powerfully affects respiratory mechanics, sputum clearance, ambulation, and the development of chronic post-surgical pain (CPSP — up to 50% after thoracotomy, 30% after sternotomy). A <strong>multimodal, opioid-sparing</strong> approach is now standard, with regional techniques tailored to the procedure. ERAS-Cardiac (2019) and ERAS-Thoracic (2019) both place regional analgesia at the heart of recovery.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Principles for every patient</h3>
+          <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside mb-5">
+            <li><strong>Multimodal baseline</strong>: regular paracetamol; NSAIDs only if no contraindication (bleeding, AKI, fresh anastomoses — caution in cardiac surgery, often avoided); gabapentinoid for thoracotomy where appropriate.</li>
+            <li><strong>Opioid sparing</strong>: PCA morphine/fentanyl on top of regional block; avoid opioid-only regimens (respiratory depression, ileus, delirium, CPSP).</li>
+            <li><strong>Regional technique</strong> chosen by the procedure (see table); single-shot for short procedures, catheter for major resections / sternotomy.</li>
+            <li><strong>Adjuncts</strong>: dexmedetomidine, IV lidocaine, ketamine infusion — useful in opioid-tolerant patients and to reduce CPSP.</li>
+            <li><strong>Anticoagulation timing</strong> (AAGBI/ESRA): hold LMWH ≥12 h before catheter removal; full anticoagulation for CPB requires careful timing of any neuraxial block (most centres avoid epidural with planned CPB).</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Procedure-specific approach</h3>
+          <div className="overflow-x-auto rounded-lg border border-border mb-4">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-secondary/50">
+                  <th className="text-left p-3 font-semibold text-foreground border-b border-border">Procedure</th>
+                  <th className="text-left p-3 font-semibold text-foreground border-b border-border">Pain pattern</th>
+                  <th className="text-left p-3 font-semibold text-foreground border-b border-border">Preferred regional</th>
+                  <th className="text-left p-3 font-semibold text-foreground border-b border-border">Multimodal & notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                {[
+                  {
+                    proc: "Median sternotomy (CABG, AVR, MVR)",
+                    pain: "Severe somatic sternal pain + bone, drains, internal mammary harvest pain",
+                    regional: "Bilateral parasternal block (PECS/PIFB) or bilateral erector spinae plane (ESP) catheters; high-dose opioid PCA historically",
+                    notes: "Avoid thoracic epidural with planned full heparinisation. NSAIDs contentious — many cardiac centres avoid in first 48 h. Paracetamol + opioid PCA + bilateral PIFB is now the ERAS-Cardiac default.",
+                  },
+                  {
+                    proc: "Off-pump CABG (OPCAB)",
+                    pain: "As sternotomy",
+                    regional: "Bilateral PIFB / ESP block",
+                    notes: "Lower bleeding risk than on-pump → more flexibility with NSAIDs and earlier mobilisation.",
+                  },
+                  {
+                    proc: "Minimally invasive cardiac (mini-thoracotomy MVR, MIDCAB)",
+                    pain: "Severe unilateral chest-wall + rib-spreader pain",
+                    regional: "Serratus anterior plane block or ESP catheter on the operative side",
+                    notes: "Catheter-based regional reduces opioid use and accelerates fast-track extubation.",
+                  },
+                  {
+                    proc: "Open thoracotomy (lobectomy, oesophagectomy)",
+                    pain: "Very severe — chest wall, intercostal nerve, drains, visceral pleural pain",
+                    regional: "Thoracic epidural (gold standard) OR paravertebral catheter (PVB) — equivalent analgesia, fewer side-effects (PROSPECT 2015)",
+                    notes: "Catheter for 48–72 h. PVB preferred if coagulopathy, hypotension or anticoagulation. Add gabapentinoid + ketamine to reduce CPSP.",
+                  },
+                  {
+                    proc: "VATS lobectomy / wedge",
+                    pain: "Moderate — port sites + chest drain",
+                    regional: "Single-shot PVB, ESP block, or serratus anterior block at induction",
+                    notes: "Cornerstone of ERAS-Thoracic — same-day mobilisation, often discharged 2–3 days. Avoid epidural (overkill, hypotension delays discharge).",
+                  },
+                  {
+                    proc: "Pneumonectomy",
+                    pain: "Severe — chest-wall + mediastinal stretch",
+                    regional: "Thoracic epidural or paravertebral catheter",
+                    notes: "Avoid fluid overload (pulmonary oedema in remaining lung). Epidural-induced hypotension treated with vasopressor, NOT volume.",
+                  },
+                  {
+                    proc: "Oesophagectomy (Ivor-Lewis / McKeown)",
+                    pain: "Severe — thoracotomy + laparotomy/laparoscopy + neck",
+                    regional: "Thoracic epidural — covers both thoracic and upper-abdominal incisions; OR PVB + TAP block",
+                    notes: "Epidural reduces respiratory complications and may improve anastomotic perfusion. Maintain MAP with vasopressor not fluid.",
+                  },
+                  {
+                    proc: "Lung transplant",
+                    pain: "Bilateral 'clamshell' or sequential thoracotomies — very severe",
+                    regional: "Bilateral PVB catheters or thoracic epidural (timing depends on ECMO/anticoagulation plan)",
+                    notes: "Multimodal essential for early extubation, cough and graft protection. Avoid NSAIDs (renal protection of graft and immunosuppression interactions).",
+                  },
+                  {
+                    proc: "Thymectomy / mediastinal mass (sternotomy or VATS)",
+                    pain: "Procedure-dependent",
+                    regional: "PIFB / ESP for sternotomy; PVB or serratus for VATS",
+                    notes: "Myasthenia gravis — minimise opioids; sensitive to residual NMB; avoid respiratory depression at all costs.",
+                  },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-border last:border-0 align-top hover:bg-accent/20">
+                    <td className="p-3 font-medium text-foreground">{row.proc}</td>
+                    <td className="p-3">{row.pain}</td>
+                    <td className="p-3">{row.regional}</td>
+                    <td className="p-3">{row.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Thoracic epidural vs paravertebral block (PROSPECT)</p>
+              <p className="text-sm text-muted-foreground mt-1">For thoracotomy, paravertebral block (single shot or catheter) provides <strong>equivalent analgesia</strong> with significantly less hypotension, urinary retention, nausea, and pulmonary complications. Both are recommended; PVB is the preferred technique where epidural is contraindicated or undesirable.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Chronic post-surgical pain (CPSP)</p>
+              <p className="text-sm text-muted-foreground mt-1">Post-thoracotomy pain syndrome occurs in up to 50% at 1 year. Risk factors: severe acute pain, female sex, intercostal nerve damage, repeated surgery, psychological factors. Mitigation: regional block established <em>before</em> incision, multimodal analgesia, gabapentinoids, ketamine, IV lidocaine, and proactive pain-team follow-up.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Fascial-plane blocks — practical roles</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>ESP</strong>: thoracic and abdominal — easy under US, low complication risk. <strong>Serratus anterior</strong>: lateral chest wall, ideal for VATS, drains. <strong>PIFB / parasternal</strong>: sternotomy. <strong>PECS I/II</strong>: anterior chest wall, breast surgery. All preferred where neuraxial is risky.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">ERAS-Cardiac & ERAS-Thoracic targets</p>
+              <p className="text-sm text-muted-foreground mt-1">Multimodal opioid-sparing analgesia, early extubation (&lt;6 h), early mobilisation (POD 0–1), early oral intake, removal of catheters/drains as soon as possible, structured opioid weaning at discharge. Pain scores are a primary quality outcome.</p>
+            </div>
           </div>
         </div>
       </section>
