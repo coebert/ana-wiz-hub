@@ -60,13 +60,20 @@ const PerioperativeFluidsTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             The endothelial glycocalyx is a carbohydrate-rich layer lining the vascular endothelium. It regulates vascular permeability, prevents leucocyte adhesion, and modulates coagulation.
           </p>
-          <div className="p-4 rounded-lg border border-border">
+          <div className="p-4 rounded-lg border border-border mb-4">
             <p className="text-sm text-muted-foreground">
               <strong className="text-foreground">Revised Starling:</strong> Fluid filtration occurs across the glycocalyx, not at the capillary level. The sub-glycocalyx oncotic pressure (not interstitial) opposes filtration. There is no venous reabsorption in most tissues — lymphatic drainage returns filtered fluid.
               <br /><br />
               <strong className="text-foreground">Clinical implication:</strong> Fluid overload, inflammation, ANP, and surgical stress damage the glycocalyx → increased permeability → oedema. Avoid hypervolaemia — it sheds the glycocalyx via ANP release.
             </p>
           </div>
+
+          <DiagramSection
+            title="Glycocalyx — Intact vs Shed"
+            intro={<p>Cross-section of the endothelial surface layer (ESL): proteoglycan / GAG mesh that excludes plasma proteins, and the consequences of its shedding by ANP, inflammation and crystalloid overload.</p>}
+          >
+            <GlycocalyxDiagram />
+          </DiagramSection>
         </div>
 
         <div>
