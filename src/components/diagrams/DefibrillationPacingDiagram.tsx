@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { DiagramLearningPoints } from "./DiagramLearningPoints";
 import { ZoomableSVG } from "./ZoomableSVG";
 
 type Tab = "waveforms" | "impedance" | "pacemaker" | "emi";
@@ -255,6 +256,16 @@ const DefibrillationPacingDiagram = () => {
             numbers="E = ½CV² = 0.5 × 32 × 10⁻⁶ × (5,000)² = 400 J stored. With transthoracic impedance ~75 Ω, only ~4% reaches the myocardium. Biphasic devices then use impedance compensation to deliver a consistent transmyocardial current."
             takeaway="Selected energy on the front panel (e.g. 200 J) is what the device delivers into a 50 Ω test load — only a small fraction reaches the heart, which is why pad contact, expiration phase and gel pads matter so much."
           />
+          <DiagramLearningPoints
+            anchorId="waveforms"
+            anchorLabel="Defibrillation Waveforms"
+            points={[
+              "Stored energy E = ½CV²; delivered energy depends on transthoracic impedance.",
+              "Monophasic (MDS): single polarity, up to 360 J for VF — largely superseded.",
+              "Biphasic (BTE / RLB): 120–200 J, equal/superior efficacy, less myocardial damage.",
+              "Biphasic devices auto-compensate for impedance — delivered current is more consistent.",
+            ]}
+          />
         </>
       )}
       {activeTab === "impedance" && (
@@ -265,6 +276,16 @@ const DefibrillationPacingDiagram = () => {
             scenario="A hairy-chested adult arrests in the resus bay. Initial 200 J biphasic shock fails to terminate VF."
             numbers="Manoeuvres that drop TTI: shave the chest under the pads, apply firm 25 lb pressure, deliver during expiration, ensure conductive gel pads, and use the largest adult pads available. Each repeated shock also lowers TTI as tissue conductivity rises."
             takeaway="Before escalating energy, optimise pad contact — a 20–30% drop in TTI translates directly into a higher transmyocardial current at the same selected energy."
+          />
+          <DiagramLearningPoints
+            anchorId="tti"
+            anchorLabel="Transthoracic Impedance"
+            points={[
+              "Typical TTI 70–80 Ω (range 15–150 Ω); only ~4% of current crosses the myocardium.",
+              "↑ TTI: obesity, COPD/hyperinflation, hairy chest, small/poor-contact pads.",
+              "↓ TTI: gel pads, 25 lb pressure, expiration, larger pads, repeated shocks.",
+              "Anterolateral pad position (R sternal edge + L mid-axillary) is standard.",
+            ]}
           />
         </>
       )}
@@ -277,6 +298,16 @@ const DefibrillationPacingDiagram = () => {
             numbers="A magnet placed over the generator typically converts the device to DOO (dual-chamber asynchronous) at a fixed magnet rate — sensing is disabled, eliminating the risk of EMI-induced inhibition. The magnet rate also indicates battery status (rate falls as the battery depletes)."
             takeaway="DDD → DOO via magnet is safe for diathermy in a pacing-dependent patient — but always interrogate the device pre-op to confirm the magnet response, and re-interrogate post-op to confirm settings are unchanged."
           />
+          <DiagramLearningPoints
+            anchorId="pacing-modes"
+            anchorLabel="Pacemaker Modes"
+            points={[
+              "NBG code (5 positions): paced / sensed / response / rate-modulation / multisite.",
+              "VVI = ventricular demand; AAI requires intact AV conduction; DDD is most physiological.",
+              "VOO/DOO = asynchronous (no sensing) — magnet response in most pacemakers.",
+              "Magnet rate also reflects battery status (falls as battery depletes).",
+            ]}
+          />
         </>
       )}
       {activeTab === "emi" && (
@@ -287,6 +318,16 @@ const DefibrillationPacingDiagram = () => {
             scenario="A 65-year-old with an ICD for ischaemic cardiomyopathy is listed for inguinal hernia repair under GA with monopolar diathermy."
             numbers="Pre-op: interrogate the device, document anti-tachy zones. Intra-op: apply external defib pads BEFORE disabling anti-tachy therapies (magnet OR reprogramming). Use bipolar diathermy where possible; monopolar in <5 s bursts with the return pad on the thigh so the current vector avoids the generator. Post-op: re-enable anti-tachy therapies before leaving recovery."
             takeaway="Disabling an ICD without external defib pads in place is unsafe — the patient is unprotected from VT/VF until the ICD is reactivated."
+          />
+          <DiagramLearningPoints
+            anchorId="emi"
+            anchorLabel="Electromagnetic Interference"
+            points={[
+              "Diathermy is the commonest source of EMI; bipolar > monopolar for safety.",
+              "Pacemaker EMI risks: inappropriate inhibition or inappropriate ventricular tracking.",
+              "ICDs: disable anti-tachy therapies intra-op (magnet or reprogramme) — only after external pads are on.",
+              "Re-interrogate every CIED post-op before discharge from recovery.",
+            ]}
           />
         </>
       )}
