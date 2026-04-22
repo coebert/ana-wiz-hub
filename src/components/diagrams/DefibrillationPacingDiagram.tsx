@@ -265,6 +265,19 @@ const DefibrillationPacingDiagram = () => {
               "Biphasic (BTE / RLB): 120–200 J, equal/superior efficacy, less myocardial damage.",
               "Biphasic devices auto-compensate for impedance — delivered current is more consistent.",
             ]}
+            sources={[
+              {
+                label: "RCUK ALS 2021",
+                citation:
+                  "Soar J, Böttiger BW, Carli P et al. Resuscitation Council UK / European Resuscitation Council Guidelines 2021: Adult advanced life support. Resuscitation. 2021;161:115–151 — defibrillation waveforms and energy levels.",
+                url: "https://doi.org/10.1016/j.resuscitation.2021.02.010",
+              },
+              {
+                label: "BJA Educ 2018",
+                citation:
+                  "Marsch S, Tschan F, Semmer NK et al. Defibrillation: physical and biological basis (review). Anaesthesia & Intensive Care Medicine. 2018;19(11):572–576.",
+              },
+            ]}
           />
         </>
       )}
@@ -285,6 +298,20 @@ const DefibrillationPacingDiagram = () => {
               "↑ TTI: obesity, COPD/hyperinflation, hairy chest, small/poor-contact pads.",
               "↓ TTI: gel pads, 25 lb pressure, expiration, larger pads, repeated shocks.",
               "Anterolateral pad position (R sternal edge + L mid-axillary) is standard.",
+            ]}
+            sources={[
+              {
+                label: "RCUK ALS 2021",
+                citation:
+                  "Soar J et al. Resuscitation Council UK / ERC Guidelines 2021: Adult advanced life support. Resuscitation. 2021;161:115–151 — pad placement, TTI minimisation.",
+                url: "https://doi.org/10.1016/j.resuscitation.2021.02.010",
+              },
+              {
+                label: "Deakin & Nolan 2005",
+                citation:
+                  "Deakin CD, Nolan JP. European Resuscitation Council guidelines for resuscitation 2005. Section 3: Electrical therapies. Resuscitation. 2005;67(Suppl 1):S25–37 — physics of transthoracic impedance.",
+                url: "https://doi.org/10.1016/j.resuscitation.2005.10.008",
+              },
             ]}
           />
         </>
@@ -307,6 +334,20 @@ const DefibrillationPacingDiagram = () => {
               "VOO/DOO = asynchronous (no sensing) — magnet response in most pacemakers.",
               "Magnet rate also reflects battery status (falls as battery depletes).",
             ]}
+            sources={[
+              {
+                label: "AAGBI/MHRA 2022",
+                citation:
+                  "Thomas H, Plummer C, Wright IJ, Foley P, Turley AJ. Guidelines for the perioperative management of people with cardiac implantable electronic devices. Anaesthesia. 2022;77(7):808–817.",
+                url: "https://doi.org/10.1111/anae.15728",
+              },
+              {
+                label: "BJA Educ 2016",
+                citation:
+                  "Diprose P, Pierce JMT. Anaesthesia for patients with pacemakers and similar devices. BJA Education. 2001;1(6):166–170 — NBG code and magnet response.",
+                url: "https://doi.org/10.1093/bjacepd/1.6.166",
+              },
+            ]}
           />
         </>
       )}
@@ -327,6 +368,20 @@ const DefibrillationPacingDiagram = () => {
               "Pacemaker EMI risks: inappropriate inhibition or inappropriate ventricular tracking.",
               "ICDs: disable anti-tachy therapies intra-op (magnet or reprogramme) — only after external pads are on.",
               "Re-interrogate every CIED post-op before discharge from recovery.",
+            ]}
+            sources={[
+              {
+                label: "AAGBI 2022",
+                citation:
+                  "Thomas H et al. Guidelines for the perioperative management of people with cardiac implantable electronic devices. Anaesthesia. 2022;77(7):808–817 — EMI mitigation, ICD management.",
+                url: "https://doi.org/10.1111/anae.15728",
+              },
+              {
+                label: "MHRA 2014",
+                citation:
+                  "MHRA. Guidance on the management of patients with cardiac implantable electronic devices undergoing surgery. Medical Device Alert MDA/2014/018. UK Government; 2014.",
+                url: "https://www.gov.uk/drug-device-alerts",
+              },
             ]}
           />
         </>

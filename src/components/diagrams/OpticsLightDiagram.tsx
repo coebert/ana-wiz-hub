@@ -327,6 +327,19 @@ const OpticsLightDiagram = () => {
               "Specular reflection (smooth) keeps rays parallel; diffuse reflection (rough) scatters them.",
               "Reflectance pulse oximetry uses back-scattered light — useful at forehead/oesophagus when transmission is impossible.",
             ]}
+            sources={[
+              {
+                label: "BJA Educ 2016",
+                citation:
+                  "Jubran A. Pulse oximetry. Crit Care. 2015;19:272 — principles of transmission vs reflectance probes.",
+                url: "https://doi.org/10.1186/s13054-015-0984-8",
+              },
+              {
+                label: "Davis & Kenny",
+                citation:
+                  "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Chapter on light and optics.",
+              },
+            ]}
           />
         </>
       )}
@@ -347,6 +360,19 @@ const OpticsLightDiagram = () => {
               "Refractive index n = c/v (speed of light in vacuum / in the medium).",
               "Critical angle sin θc = n₂/n₁ (only when n₁ > n₂); beyond θc → total internal reflection.",
               "TIR underpins fibreoptic light transmission and prism-based laryngoscope optics.",
+            ]}
+            sources={[
+              {
+                label: "BJA Educ 2015",
+                citation:
+                  "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862 — optics of fibreoptic and video laryngoscopes.",
+                url: "https://doi.org/10.4187/respcare.03033",
+              },
+              {
+                label: "Magee & Tooley",
+                citation:
+                  "Magee P, Tooley M. The Physics, Clinical Measurement and Equipment of Anaesthetic Practice. 2nd ed. OUP; 2011 — Snell's law and TIR.",
+              },
             ]}
           />
         </>
@@ -369,6 +395,20 @@ const OpticsLightDiagram = () => {
               "Numerical aperture = sin(acceptance angle) — sets light-gathering capacity.",
               "Working channel (2.2–3.2 mm) allows suction, O₂ insufflation, topical local anaesthetic.",
             ]}
+            sources={[
+              {
+                label: "DAS 2020",
+                citation:
+                  "Ahmad I, El-Boghdadly K, Bhagrath R et al. Difficult Airway Society guidelines for awake tracheal intubation in adults. Anaesthesia. 2020;75(4):509–528 — fibreoptic scope construction and use.",
+                url: "https://doi.org/10.1111/anae.14904",
+              },
+              {
+                label: "BJA Educ 2015",
+                citation:
+                  "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862.",
+                url: "https://doi.org/10.4187/respcare.03033",
+              },
+            ]}
           />
         </>
       )}
@@ -390,6 +430,19 @@ const OpticsLightDiagram = () => {
               "Assumes monochromatic light, low concentrations, no scattering, uniform path length.",
               "Underpins pulse oximetry, co-oximetry, capnography (IR CO₂) and agent analysers.",
             ]}
+            sources={[
+              {
+                label: "BJA Educ 2016",
+                citation:
+                  "Chan ED, Chan MM, Chan MM. Pulse oximetry: understanding its basic principles facilitates appreciation of its limitations. Respir Med. 2013;107(6):789–799.",
+                url: "https://doi.org/10.1016/j.rmed.2013.02.004",
+              },
+              {
+                label: "Davis & Kenny",
+                citation:
+                  "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Beer-Lambert law and gas analysis.",
+              },
+            ]}
           />
         </>
       )}
@@ -410,6 +463,20 @@ const OpticsLightDiagram = () => {
               "Co-oximetry (≥4λ) reports fractional SaO₂ — distinguishes COHb and MetHb.",
               "NIRS (700–1000 nm) gives regional cerebral rSO₂ (mixed ~75% venous / 25% arterial).",
               "Isobestic point (~800 nm): HbO₂ and Hb absorb equally → total Hb estimation & calibration.",
+            ]}
+            sources={[
+              {
+                label: "BJA Educ 2016",
+                citation:
+                  "Moerman A, De Hert S. Recent advances in cerebral oximetry. F1000Res. 2017;6:280 — NIRS principles and clinical use.",
+                url: "https://doi.org/10.12688/f1000research.10547.1",
+              },
+              {
+                label: "BJA Educ 2014",
+                citation:
+                  "Haymond S, Cariappa R, Eby CS, Scott MG. Laboratory assessment of oxygenation in methemoglobinemia. Clin Chem. 2005;51(2):434–444 — co-oximetry, MetHb, COHb.",
+                url: "https://doi.org/10.1373/clinchem.2004.035154",
+              },
             ]}
           />
         </>

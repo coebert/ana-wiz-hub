@@ -311,6 +311,19 @@ const MRIPhysicsDiagram = () => {
               "Resonance: an RF pulse at ω₀ tips M₀ into the transverse plane (90° flip); 180° inverts M₀.",
               "Higher B₀ → higher SNR but quadratically higher SAR (∝ B₀²) and more artefact.",
             ]}
+            sources={[
+              {
+                label: "BJA Educ 2018",
+                citation:
+                  "Reddy U, White MJ, Wilson SR. Anaesthesia for magnetic resonance imaging. BJA Education. 2012;12(3):140–144 (reprinted in Cont Educ Anaesth Crit Care Pain).",
+                url: "https://doi.org/10.1093/bjaceaccp/mks002",
+              },
+              {
+                label: "Westbrook (textbook)",
+                citation:
+                  "Westbrook C, Talbot J. MRI in Practice. 5th ed. Wiley-Blackwell; 2018 — Chapters 1–2 (spin physics, Larmor equation, resonance).",
+              },
+            ]}
           />
           <RelaxationTab />
           <WorkedExampleCallout
@@ -328,6 +341,20 @@ const MRIPhysicsDiagram = () => {
               "T2* < T2 always (includes B₀ field inhomogeneity dephasing).",
               "T1W (short TR/TE) = anatomy; T2W (long TR/TE) = pathology — 'WW2: Water is White on T2'.",
               "Gadolinium shortens T1 → bright on T1W; avoid if eGFR <30 (NSF risk).",
+            ]}
+            sources={[
+              {
+                label: "BJA Educ 2012",
+                citation:
+                  "Reddy U, White MJ, Wilson SR. Anaesthesia for magnetic resonance imaging. Cont Educ Anaesth Crit Care Pain. 2012;12(3):140–144.",
+                url: "https://doi.org/10.1093/bjaceaccp/mks002",
+              },
+              {
+                label: "MHRA 2021",
+                citation:
+                  "Medicines and Healthcare products Regulatory Agency. Safety guidelines for magnetic resonance imaging equipment in clinical use. MHRA; 2021 — gadolinium-based contrast and NSF guidance.",
+                url: "https://www.gov.uk/government/publications/safety-guidelines-for-magnetic-resonance-imaging-equipment-in-clinical-use",
+              },
             ]}
           />
         </TabsContent>
@@ -348,6 +375,26 @@ const MRIPhysicsDiagram = () => {
               "Equipment labels: MR Safe (green), MR Conditional (amber), MR Unsafe (red).",
               "Quench = rapid helium boil-off → asphyxiation risk; emergency O₂ + evacuation plan mandatory.",
               "Monitoring: MR-conditional pulse oximetry, capnography (long sampling line), fibreoptic ECG.",
+            ]}
+            sources={[
+              {
+                label: "AAGBI 2019",
+                citation:
+                  "Wilson SR, Shinde S, Appleby I et al. Guidelines for the safe provision of anaesthesia in magnetic resonance units 2019. Anaesthesia. 2019;74(5):638–650.",
+                url: "https://doi.org/10.1111/anae.14578",
+              },
+              {
+                label: "ACR 2020",
+                citation:
+                  "Greenberg TD, Hoff MN, Gilk TB et al. ACR guidance document on MR safe practices: 2020 update. J Magn Reson Imaging. 2020;51(2):331–338.",
+                url: "https://doi.org/10.1002/jmri.26880",
+              },
+              {
+                label: "MHRA 2021",
+                citation:
+                  "MHRA. Safety guidelines for magnetic resonance imaging equipment in clinical use. 2021 — zones, labelling, quench procedures.",
+                url: "https://www.gov.uk/government/publications/safety-guidelines-for-magnetic-resonance-imaging-equipment-in-clinical-use",
+              },
             ]}
           />
         </TabsContent>

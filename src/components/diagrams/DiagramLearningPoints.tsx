@@ -1,4 +1,13 @@
-import { GraduationCap, ArrowDownToLine } from "lucide-react";
+import { GraduationCap, ArrowDownToLine, BookOpen, ExternalLink } from "lucide-react";
+
+export interface LearningPointSource {
+  /** Short citation label, e.g. "BJA Educ 2018". */
+  label: string;
+  /** Full citation (authors, title, journal, year, pages). */
+  citation: string;
+  /** Optional DOI / PubMed / guideline URL. */
+  url?: string;
+}
 
 interface DiagramLearningPointsProps {
   /** FRCA-style learning points relevant to the active diagram tab. */
@@ -9,18 +18,26 @@ interface DiagramLearningPointsProps {
   anchorLabel: string;
   /** Optional override for the heading. Defaults to "FRCA learning points". */
   title?: string;
+  /**
+   * Reliable references (BJA Education, RCoA / Resus Council guidelines, primary
+   * physics texts) that underpin the learning points. Rendered as a compact
+   * citation list beneath the bullets so every claim is traceable.
+   */
+  sources?: LearningPointSource[];
 }
 
 /**
  * Compact FRCA learning-points card displayed beneath each interactive
  * diagram tab. Includes a one-click jump to the matching curriculum
- * subsection via in-page anchor scrolling.
+ * subsection via in-page anchor scrolling, plus a sources block so each
+ * bullet can be traced back to a published reference.
  */
 export const DiagramLearningPoints = ({
   points,
   anchorId,
   anchorLabel,
   title = "FRCA learning points",
+  sources,
 }: DiagramLearningPointsProps) => {
   const handleJump = () => {
     const el = document.getElementById(anchorId);
@@ -49,6 +66,41 @@ export const DiagramLearningPoints = ({
           <li key={i}>{p}</li>
         ))}
       </ul>
+
+      {sources && sources.length > 0 && (
+        <div
+          className="mt-2 pt-2 border-t border-border/60"
+          aria-label={`Sources for ${title}`}
+        >
+          <div className="flex items-center gap-1.5 mb-1">
+            <BookOpen className="h-3 w-3 text-muted-foreground" aria-hidden="true" />
+            <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+              Sources
+            </p>
+          </div>
+          <ul className="space-y-1">
+            {sources.map((s, i) => (
+              <li key={i} className="text-[11px] leading-snug text-muted-foreground">
+                <span className="font-medium text-foreground/80">{s.label}:</span>{" "}
+                {s.url ? (
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline text-primary inline-flex items-center gap-0.5 break-words"
+                  >
+                    {s.citation}
+                    <ExternalLink className="h-2.5 w-2.5 inline-block shrink-0" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span>{s.citation}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       <button
         type="button"
         onClick={handleJump}
