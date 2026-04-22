@@ -134,14 +134,80 @@ const linkPath = (a: Cell, b: Cell) => {
   return `M ${a.x} ${a.y + 14} C ${a.x} ${midY}, ${b.x} ${midY}, ${b.x} ${b.y - 14}`;
 };
 
+type ViewMode = "lineage" | "activation";
+type Pathway = "antigen-dc-t-b" | "il5-eos";
+
+interface Step {
+  from: string;
+  to: string;
+  label: string;
+  token: string;
+  color: string;
+  duration?: number;
+}
+
+const ANTIGEN_ANCHOR = { x: 60, y: 450 };
+
+const pathways: Record<Pathway, { title: string; caption: string; steps: Step[] }> = {
+  "antigen-dc-t-b": {
+    title: "Antigen → DC → T helper → B cell",
+    caption:
+      "Tissue dendritic cell captures antigen, migrates to the draining lymph node, presents on MHC-II to a naïve CD4⁺ T cell. The activated Th cell licences a B cell (CD40L–CD40 + IL-4) → germinal centre → plasma cell secreting class-switched IgG.",
+    steps: [
+      { from: "ag-source", to: "dc",       label: "Antigen captured by tissue DC",       token: "Ag",     color: "hsl(45 90% 50%)", duration: 1400 },
+      { from: "dc",        to: "th",       label: "DC presents on MHC-II → TCR",         token: "MHC-II", color: armColor.bridge,   duration: 1600 },
+      { from: "th",        to: "bcell",    label: "Th help: CD40L–CD40 + IL-4",          token: "IL-4",   color: armColor.adaptive, duration: 1400 },
+      { from: "bcell",     to: "plasma",   label: "B cell → plasma cell (class switch)", token: "→ PC",   color: armColor.adaptive, duration: 1200 },
+      { from: "plasma",    to: "ag-source",label: "Secreted IgG opsonises antigen",      token: "IgG",    color: "hsl(140 55% 40%)", duration: 1600 },
+    ],
+  },
+  "il5-eos": {
+    title: "IL-5 → eosinophil recruitment",
+    caption:
+      "Th2 cells (and ILC2) secrete IL-5 in response to allergens or helminths. IL-5 drives bone-marrow eosinophil maturation and egress, then recruits mature eosinophils to tissue where they degranulate (major basic protein, ECP).",
+    steps: [
+      { from: "ag-source", to: "th",       label: "Allergen / helminth antigen → Th2",   token: "Ag",   color: "hsl(45 90% 50%)", duration: 1300 },
+      { from: "th",        to: "eos",      label: "Th2 secretes IL-5",                   token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700 },
+      { from: "ilc",       to: "eos",      label: "ILC2 reinforces IL-5 signal",         token: "IL-5", color: "hsl(15 75% 52%)", duration: 1700 },
+      { from: "eos",       to: "ag-source",label: "Eosinophil → tissue, degranulation",  token: "MBP",  color: "hsl(15 75% 52%)", duration: 1500 },
+    ],
+  },
+};
+
 const ImmuneCellLineageDiagram = () => {
+  const [view, setView] = useState<ViewMode>("lineage");
+  const [pathway, setPathway] = useState<Pathway>("antigen-dc-t-b");
+  const [stepIdx, setStepIdx] = useState(0);
+  const [playing, setPlaying] = useState(true);
   const [selected, setSelected] = useState<string>("dc");
   const [showLabels, setShowLabels] = useState(true);
   const [showLineages, setShowLineages] = useState(true);
   const [highlight, setHighlight] = useState<"all" | "innate" | "adaptive">("all");
 
+  const activeSteps = pathways[pathway].steps;
+  const currentStep = activeSteps[stepIdx % activeSteps.length];
+
+  useEffect(() => {
+    if (view !== "activation" || !playing) return;
+    const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), currentStep?.duration ?? 1500);
+    return () => clearTimeout(t);
+  }, [view, playing, stepIdx, currentStep, activeSteps.length]);
+
+  // Reset when switching pathway
+  useEffect(() => { setStepIdx(0); }, [pathway, view]);
+
+  const resolvePoint = (id: string) => {
+    if (id === "ag-source") return ANTIGEN_ANCHOR;
+    const c = cells.find((x) => x.id === id)!;
+    return { x: c.x, y: c.y };
+  };
+
   const sel = cells.find((c) => c.id === selected);
   const isDimmed = (c: Cell) => {
+    if (view === "activation") {
+      const inPath = activeSteps.some((s) => s.from === c.id || s.to === c.id);
+      return !inPath;
+    }
     if (highlight === "all") return false;
     if (c.arm === "stem" || c.arm === "bridge") return false;
     return c.arm !== highlight;
