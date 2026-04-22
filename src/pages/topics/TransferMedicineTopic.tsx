@@ -16,8 +16,32 @@ const workedExamples: WorkedExample[] = [
     title: "Oxygen requirement for a 90-minute road transfer",
     scenario:
       "A ventilated TBI patient needs transfer to a neurosurgical centre 90 min away. Minute ventilation 8 L/min, FiO₂ 0.5 on a transport ventilator that uses ~1 L/min driving gas. How much O₂ do you carry?",
-    working:
-      "FiO₂ 0.5 at MV 8 L/min ≈ 4 L/min O₂ delivered. Add ~1 L/min driving gas → ~5 L/min total.\nDuration 90 min → 450 L. Apply 2× safety factor (delays, traffic, escalating FiO₂) → 900 L.\nE-cylinder = 680 L. Therefore carry at least 2 full E-cylinders, or 1 E + a CD-cylinder (460 L) = 1,140 L.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step calculation</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>O₂ delivered to patient.</strong> FiO₂ 0.5 × MV 8 L/min = <strong>4 L/min</strong>.</li>
+          <li><strong>Add ventilator driving gas.</strong> 4 + 1 = <strong>5 L/min</strong> total consumption.</li>
+          <li><strong>Convert duration to volume.</strong> 5 L/min × 90 min = <strong>450 L baseline</strong>.</li>
+          <li><strong>Apply 2× safety factor.</strong> 450 × 2 = <strong>900 L</strong> minimum to carry (covers traffic, FiO₂ escalation, transfer delay).</li>
+          <li><strong>Choose cylinders.</strong> E-cylinder = 680 L; CD-cylinder = 460 L. Carry 2 × E (1,360 L) or 1 × E + 1 × CD (1,140 L).</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>Check gauges fully open before departure — gauge reads pressure, not volume.</li>
+          <li>Confirm receiving unit O₂ is connected on arrival before disconnecting cylinders.</li>
+          <li>If FiO₂ rises to 1.0, recalculate (consumption doubles → reserve halves).</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Forgetting the driving gas — turbine ventilators use little, but pneumatic ventilators can use 1–2 L/min on top of patient flow.</li>
+            <li>Calculating without a safety factor and arriving with an empty cylinder in a lift.</li>
+            <li>Using cylinder content tables instead of measuring the actual gauge — partially used cylinders are a major cause of in-transit hypoxia.</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Take a minimum of two full E-cylinders (1,360 L). Always pre-calculate using flow × time × 2 safety factor, check cylinder gauges before departure, and confirm receiving unit O₂ is available on arrival. A single cylinder would risk run-out before reaching destination.",
   },
@@ -25,8 +49,31 @@ const workedExamples: WorkedExample[] = [
     title: "Air transfer of a patient with a chest drain",
     scenario:
       "A 35-year-old with traumatic pneumothorax and chest drain in situ requires fixed-wing transfer at cabin altitude 8,000 ft. How does this affect management?",
-    working:
-      "At 8,000 ft cabin altitude (~75 kPa) gas volumes expand by ~25% (Boyle's law: P₁V₁ = P₂V₂).\nChest-drain rules: NEVER clamp a chest drain — even briefly. Gas continues to leak from lung; clamping risks tension pneumothorax.\nUse an underwater seal kept upright OR a Heimlich (flutter) valve for transport.\nETT cuff also expands — use saline (not air) or check pressure regularly.",
+    working: (
+      <div className="space-y-2">
+        <p className="font-semibold text-foreground">Step-by-step reasoning</p>
+        <ol className="list-decimal list-inside space-y-1">
+          <li><strong>Estimate cabin pressure.</strong> 8,000 ft cabin altitude ≈ 75 kPa (sea level 101 kPa).</li>
+          <li><strong>Apply Boyle's law.</strong> P₁V₁ = P₂V₂ → V₂/V₁ = 101/75 ≈ <strong>1.35</strong> — gas-filled cavities expand by ~35% (commonly quoted as 25–35%).</li>
+          <li><strong>List affected spaces.</strong> Pneumothorax, ETT cuff, bowel, middle ear, sinuses, pneumocephalus, eye gas after vitrectomy.</li>
+          <li><strong>Mitigate each.</strong> Drain on continuous underwater seal or Heimlich valve (NEVER clamp). Replace ETT cuff air with saline OR monitor cuff manometer (target ≤ 30 cmH₂O).</li>
+          <li><strong>Compensate for ↓ PaO₂.</strong> Increase FiO₂; aim SpO₂ ≥ 94% in flight (≥ 96% if TBI).</li>
+        </ol>
+        <p className="font-semibold text-foreground mt-2">Decision points</p>
+        <ul className="list-disc list-inside space-y-1">
+          <li>If pneumothorax untreated → insert chest drain BEFORE flight, not at altitude.</li>
+          <li>Acute desaturation in flight = exclude tension pneumothorax (re-examine, consider needle decompression).</li>
+        </ul>
+        <div className="mt-2 rounded-md border border-destructive/30 bg-destructive/5 p-2">
+          <p className="text-xs font-semibold uppercase tracking-wide text-destructive mb-1">Common traps</p>
+          <ul className="list-disc list-inside space-y-1 text-foreground">
+            <li>Clamping a chest drain 'just for the transfer' — converts simple pneumothorax to tension.</li>
+            <li>Ignoring middle-ear/sinus expansion in conscious patients (severe pain on descent).</li>
+            <li>Forgetting that recent diving (within 24 h) is a relative contraindication to flight (residual nitrogen).</li>
+          </ul>
+        </div>
+      </div>
+    ),
     answer:
       "Maintain the chest drain on continuous underwater seal (kept upright, below the patient) or a Heimlich valve — never clamp. Fill the ETT cuff with saline or monitor the cuff manometer at altitude. Counsel the team that any new desaturation in flight should prompt assessment for a tension pneumothorax.",
   },
