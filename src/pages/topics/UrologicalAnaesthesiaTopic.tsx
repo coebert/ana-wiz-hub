@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
+import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
@@ -21,14 +22,17 @@ const UrologicalAnaesthesiaTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: ["final"], curriculumCodes: ["CU_BK_03"] },
+        diagrams: { exams: ["final"], curriculumCodes: ["CU_BK_03"] },
         workedExamples: { exams: ["final"] },
         keyPoints: { exams: ["final"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2014 TURP", "BJA Educ 2017 Cystectomy"],
+        diagrams: ["BJA Educ 2014 TURP"],
         workedExamples: ["BJA Educ 2014 TURP", "AAGBI Lithotomy 2015"],
         keyPoints: ["BJA Educ 2014 TURP", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015"],
       }}
+      diagrams={<TURPSyndromeDiagram />}
       coreConcepts={
         <>
           <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>

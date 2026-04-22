@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
+import LiverTransplantPhasesDiagram from "@/components/diagrams/LiverTransplantPhasesDiagram";
 
 const HepatobiliaryTransplantTopic = () => {
   return (
@@ -21,14 +22,17 @@ const HepatobiliaryTransplantTopic = () => {
       ]}
       sectionExamMapping={{
         objectives: { exams: ["final"], curriculumCodes: ["CH_BK_03"] },
+        diagrams: { exams: ["final"], curriculumCodes: ["CH_BK_03"] },
         workedExamples: { exams: ["final"] },
         keyPoints: { exams: ["final"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2017 LiverResection", "AAGBI Cirrhosis 2017"],
+        diagrams: ["BJA Educ 2010 LT"],
         workedExamples: ["BJA Educ 2010 LT", "ITLS Reperfusion"],
         keyPoints: ["BJA Educ 2017 LiverResection", "BJA Educ 2010 LT", "AAGBI Cirrhosis 2017"],
       }}
+      diagrams={<LiverTransplantPhasesDiagram />}
       coreConcepts={
         <>
           <ExamSection exams={["final"]} curriculumCodes={["CH_BK_03"]}>
