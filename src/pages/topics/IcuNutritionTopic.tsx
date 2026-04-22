@@ -218,7 +218,7 @@ const IcuNutritionTopic = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </ExamSection>
         </>
       }
     />
