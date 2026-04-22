@@ -195,9 +195,9 @@ const ImmuneCellLineageDiagram = () => {
 
   useEffect(() => {
     if (view !== "activation" || !playing || pinnedCellId) return;
-    const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), currentStep?.duration ?? 1500);
+    const t = setTimeout(() => setStepIdx((i) => (i + 1) % activeSteps.length), (currentStep?.duration ?? 1500) / speed);
     return () => clearTimeout(t);
-  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId]);
+  }, [view, playing, stepIdx, currentStep, activeSteps.length, pinnedCellId, speed]);
 
   // Reset when switching pathway / view; clear any pinned cell
   useEffect(() => { setStepIdx(0); setPinnedCellId(null); }, [pathway, view]);
