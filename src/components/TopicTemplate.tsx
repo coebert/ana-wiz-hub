@@ -122,6 +122,8 @@ export const TopicTemplate = ({
               refLabels={sectionSources.objectives}
               heading="Sources for these objectives"
               dense
+              targetId="objectives"
+              targetLabel="Jump to objectives"
             />
           )}
         </div>
@@ -129,7 +131,7 @@ export const TopicTemplate = ({
         <section className="space-y-8">{coreConcepts}</section>
 
         {diagrams && (
-          <section>
+          <section id="diagrams" className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-4">
               Diagrams &amp; Visualisations
             </h2>
@@ -145,6 +147,8 @@ export const TopicTemplate = ({
                 topicId={topicId}
                 refLabels={sectionSources.diagrams}
                 heading="Sources for these diagrams"
+                targetId="diagrams"
+                targetLabel="Jump to diagrams"
               />
             )}
           </section>
@@ -165,6 +169,8 @@ export const TopicTemplate = ({
                 refLabels={sectionSources.workedExamples}
                 heading="Sources for these examples"
                 dense
+                targetId="worked-examples"
+                targetLabel="Jump to examples"
               />
             )}
           </div>
@@ -184,6 +190,8 @@ export const TopicTemplate = ({
               refLabels={sectionSources.keyPoints}
               heading="Sources for these key points"
               dense
+              targetId="key-points"
+              targetLabel="Jump to key points"
             />
           )}
         </div>
