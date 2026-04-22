@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiacArrestPostResusQuestions } from "@/data/quizzes";
 import TopicTableOfContents from "@/components/TopicTableOfContents";
+import { ExamSection } from "@/components/ExamSection";
 import TtmTargetExplorerDiagram from "@/components/diagrams/TtmTargetExplorerDiagram";
 import EcprDecisionTreeDiagram from "@/components/diagrams/EcprDecisionTreeDiagram";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
