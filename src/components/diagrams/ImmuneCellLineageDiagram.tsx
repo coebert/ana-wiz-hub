@@ -550,7 +550,24 @@ const ImmuneCellLineageDiagram = () => {
                       {currentStep.token}
                     </span>
                   </div>
-                  <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {pathways[pathway].caption}
+                    {currentStep.refs?.map((r) => (
+                      <InlineRef key={r} topicId="haematology-immunity" refLabel={r} />
+                    ))}
+                  </p>
+                  {currentStep.refs && currentStep.refs.length > 0 && (
+                    <p className="text-[11px] text-muted-foreground">
+                      <span className="font-medium text-foreground">Sources:</span>{" "}
+                      {currentStep.refs.map((r, i) => (
+                        <span key={r}>
+                          {i > 0 && " · "}
+                          {r}
+                          <InlineRef topicId="haematology-immunity" refLabel={r} />
+                        </span>
+                      ))}
+                    </p>
+                  )}
                   {currentStep.to !== "ag-source" && (
                     <p className="text-[11px] text-muted-foreground italic">
                       Tip: tap the destination cell ({cells.find((c) => c.id === currentStep.to)?.short ?? currentStep.to}) to read its full profile.
