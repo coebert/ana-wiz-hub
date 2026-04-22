@@ -333,6 +333,20 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2007", citation: "Dinsmore J. Cerebral blood flow and metabolism — anatomy and physiology. BJA Education. 2007;7(3):89-94.", url: "https://doi.org/10.1093/bjaceaccp/mkm016" },
   ],
 
+  "equipment-monitoring": [
+    { label: "Macintosh 1943", citation: "Macintosh RR. A new laryngoscope. Lancet. 1943;241(6233):205.", url: "https://doi.org/10.1016/S0140-6736(00)89390-3" },
+    { label: "Miller 1941", citation: "Miller RA. A new laryngoscope. Anesthesiology. 1941;2(3):317-320.", url: "https://doi.org/10.1097/00000542-194105000-00008" },
+    { label: "McCoy & Mirakhur 1993", citation: "McCoy EP, Mirakhur RK. The levering laryngoscope. Anaesthesia. 1993;48(6):516-519.", url: "https://doi.org/10.1111/j.1365-2044.1993.tb07073.x" },
+    { label: "Cormack & Lehane 1984", citation: "Cormack RS, Lehane J. Difficult tracheal intubation in obstetrics. Anaesthesia. 1984;39(11):1105-1111.", url: "https://doi.org/10.1111/j.1365-2044.1984.tb08932.x" },
+    { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
+    { label: "NAP4 2011", citation: "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.", url: "https://doi.org/10.1093/bja/aer058" },
+    { label: "BJA Educ Videolaryngoscopy 2016", citation: "Paolini JB, Donati F, Drolet P. Review article: video-laryngoscopy: another tool for difficult intubation or a new paradigm in anesthesia? Can J Anaesth. 2013;60(2):184-191.", url: "https://doi.org/10.1007/s12630-012-9859-5" },
+    { label: "Cochrane VL 2022", citation: "Hansel J, Rogers AM, Lewis SR, Cook TM, Smith AF. Videolaryngoscopy versus direct laryngoscopy for adults undergoing tracheal intubation. Cochrane Database Syst Rev. 2022;4:CD011136.", url: "https://doi.org/10.1002/14651858.CD011136.pub3" },
+    { label: "BJA Educ Paeds Airway 2017", citation: "Harless J, Ramaiah R, Bhananker SM. Pediatric airway management. Int J Crit Illn Inj Sci. 2014;4(1):65-70.", url: "https://doi.org/10.4103/2229-5151.128015" },
+    { label: "Weiss & Engelhardt 2010", citation: "Weiss M, Engelhardt T. Proposal for the management of the unexpected difficult pediatric airway. Paediatr Anaesth. 2010;20(5):454-464.", url: "https://doi.org/10.1111/j.1460-9592.2010.03284.x" },
+    { label: "AAGBI Standards 2015", citation: "Checketts MR et al. Recommendations for standards of monitoring during anaesthesia and recovery 2015. Anaesthesia. 2016;71(1):85-93.", url: "https://doi.org/10.1111/anae.13316" },
+  ],
+
   // ──────── CLINICAL ────────
   "airway-management": [
     { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
