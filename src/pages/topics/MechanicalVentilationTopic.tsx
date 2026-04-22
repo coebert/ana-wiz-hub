@@ -1419,34 +1419,11 @@ const MechanicalVentilationTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "VCV guarantees volume; PCV guarantees pressure — know the trade-offs",
-        "Lung-protective ventilation: 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
-        "Daily SBTs are the best strategy for weaning — do not delay",
-        "Driving pressure (Pplat - PEEP) is the strongest predictor of ARDS mortality",
-        "APRV uses prolonged P high for recruitment with brief releases for CO₂ clearance",
-        "PROSEVA: prone ≥16 hrs/day reduced 28-day mortality from 33% to 16% (NNT 6)",
-        "VAP prevention: HOB elevation, daily sedation hold, subglottic drainage, cuff pressure 20–30",
-        "Cuff leak <110 mL predicts stridor — give prophylactic steroids 12–24h pre-extubation",
-        "HFNO: dead space washout + ~1 cmH₂O PEEP per 10 L/min; ROX index ≥4.88 predicts success",
-        "VIDD begins within 18–69 hours of CMV — diaphragm loses ~6% thickness per day",
-        "TFdi >30% predicts successful extubation; TFdi <20% predicts weaning failure",
-        "ICUAW: MRC sum score <48/60 confirms diagnosis; CIP has reduced SNAPs, CIM has normal SNAPs",
-        "Early mobilisation within 48–72h improves functional independence (Schweickert: 59% vs 35%)",
-        "PICS affects 50–70% of ICU survivors across physical, cognitive, and psychological domains",
-        "Delirium duration is the strongest modifiable risk factor for cognitive PICS (BRAIN-ICU)",
-        "ABCDEF bundle: pain, SAT/SBT, sedation choice, delirium, early mobility, family engagement",
-        "ICU follow-up clinics at 2–3, 6, and 12 months — screen physical, cognitive, and psychological domains",
-        "Rescue ladder: optimise LPV → NMB → prone → inhaled vasodilator → consider ECMO",
-      ]} />
-
-      <QuizSection questions={mechanicalVentilationQuestions} />
-      <ReferencesList topicId="mechanical-ventilation" />
-
-      <SeeAlso topicId="mechanical-ventilation" />
-        <TopicCompletionToggle topicId="mechanical-ventilation" topicTitle="Mechanical Ventilation" />
-    </SectionLayout>
+    </>
+      }
+    />
   );
 };
 
 export default MechanicalVentilationTopic;
+
