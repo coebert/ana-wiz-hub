@@ -167,7 +167,7 @@ const NeurointensiveCareTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6">
-        <div id="toc-tbi" className="scroll-mt-24">
+        <ExamSection id="toc-tbi" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Traumatic Brain Injury (TBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Primary injury occurs at impact (contusion, DAI, haematoma). Secondary injury (hypoxia, hypotension, pyrexia, hyperglycaemia) is preventable and the focus of ICU management.
@@ -190,7 +190,7 @@ const NeurointensiveCareTopic = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </ExamSection>
 
         <div id="toc-status" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Status Epilepticus</h2>
