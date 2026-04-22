@@ -660,4 +660,21 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2005", citation: "Defined by arterial cannulation and the Allen test. BJA Education. 2005;5(4):132-135." },
     { label: "NICE CG49", citation: "National Institute for Health and Care Excellence. Guidance on the use of ultrasound locating devices for placing central venous catheters. NICE CG49. 2002 (updated 2016).", url: "https://www.nice.org.uk/guidance/ta49" },
   ],
+  "end-of-life-communication": [
+    { label: "FICM/ICS 2019", citation: "Faculty of Intensive Care Medicine & Intensive Care Society. Care at the End of Life: A guide to best practice, discussion and decision-making in and around critical care. 2019.", url: "https://www.ficm.ac.uk/standards-research-revalidation/care-end-life" },
+    { label: "GMC EoL", citation: "General Medical Council. Treatment and care towards the end of life: good practice in decision making. 2010 (updated).", url: "https://www.gmc-uk.org/professional-standards/professional-standards-for-doctors/end-of-life-care" },
+    { label: "NEJM 2007", citation: "Lautrette A, Darmon M, Megarbane B, et al. A communication strategy and brochure for relatives of patients dying in the ICU. N Engl J Med. 2007;356(5):469-478." },
+    { label: "Oncologist 2000", citation: "Baile WF, Buckman R, Lenzi R, et al. SPIKES — A six-step protocol for delivering bad news. Oncologist. 2000;5(4):302-311." },
+    { label: "MCA 2005", citation: "Mental Capacity Act 2005. UK Parliament.", url: "https://www.legislation.gov.uk/ukpga/2005/9" },
+    { label: "BJA Educ 2017", citation: "Hawryluck L. Withdrawal of life-sustaining therapy in the ICU. BJA Education. 2017;17(11):359-364." },
+  ],
+  "non-technical-skills": [
+    { label: "BJA 2003", citation: "Fletcher G, Flin R, McGeorge P, et al. Anaesthetists' Non-Technical Skills (ANTS): evaluation of a behavioural marker system. Br J Anaesth. 2003;90(5):580-588." },
+    { label: "RCoA ANTS", citation: "Royal College of Anaesthetists. ANTS — Anaesthetists' Non-Technical Skills handbook.", url: "https://www.rcoa.ac.uk" },
+    { label: "BMJ 2000", citation: "Reason J. Human error: models and management. BMJ. 2000;320(7237):768-770." },
+    { label: "PSIRF 2022", citation: "NHS England. Patient Safety Incident Response Framework. 2022.", url: "https://www.england.nhs.uk/patient-safety/patient-safety-insight/incident-response-framework/" },
+    { label: "Marx 2001", citation: "Marx D. Patient Safety and the 'Just Culture': A Primer for Health Care Executives. Columbia University; 2001." },
+    { label: "CHFG", citation: "Clinical Human Factors Group. Just a Routine Operation — the Elaine Bromiley case.", url: "https://chfg.org" },
+    { label: "BJA Educ 2018", citation: "Flin R, Patey R. Non-technical skills for anaesthetists: developing and applying ANTS. BJA Education. 2018;18(8):254-260." },
+  ],
 };
