@@ -191,8 +191,8 @@ const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps)
         </linearGradient>
       </defs>
 
-      {/* Reference anatomy: tongue + epiglottis + vocal cords (faint) */}
-      <g opacity="0.18">
+      {/* Reference anatomy: tongue + epiglottis + vocal cords */}
+      <g opacity={animate ? 0.42 : 0.18}>
         {/* Tongue */}
         <path d="M40,170 Q90,140 140,150 Q160,155 170,170 L170,200 L40,200 Z" fill="hsl(var(--muted-foreground))" />
         <text x="60" y="195" fontSize="6" fill="hsl(var(--muted-foreground))">Tongue</text>
@@ -206,7 +206,6 @@ const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps)
         <line x1="170" y1="115" x2="195" y2="100" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="2 1" />
         <text x="186" y="95" fontSize="5" fill="hsl(var(--muted-foreground))">Cords</text>
       </g>
-
       {/* Handle (common to all) */}
       {bladeKey !== "polio" && (
         <g>
