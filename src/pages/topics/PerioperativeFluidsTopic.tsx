@@ -5,6 +5,8 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { perioperativeFluidsQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import { DiagramSection } from "@/components/DiagramSection";
+import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 
 const PerioperativeFluidsTopic = () => {
   return (
