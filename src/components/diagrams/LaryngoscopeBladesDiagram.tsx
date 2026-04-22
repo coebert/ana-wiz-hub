@@ -440,7 +440,9 @@ const ShapeComparison = () => (
 
 export const LaryngoscopeBladesDiagram = () => {
   const [selected, setSelected] = useState<BladeKey>("macintosh");
+  const [animate, setAnimate] = useState(true);
   const info = blades[selected];
+  const traj = tipTrajectory[selected];
 
   return (
     <div className="border border-border rounded-lg p-4 mb-2 space-y-4">
