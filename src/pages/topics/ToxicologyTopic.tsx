@@ -201,6 +201,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tricyclic Antidepressant OD</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism of toxicity</strong>: Na⁺ channel blockade (→ wide QRS, arrhythmias), anticholinergic effects, α₁ blockade (→ hypotension), serotonin/noradrenaline reuptake inhibition</li>
@@ -210,6 +211,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Salicylate Poisoning</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Early: respiratory alkalosis (central stimulation) → mixed metabolic acidosis + respiratory alkalosis → late: metabolic acidosis predominates</li>
@@ -219,6 +221,7 @@ const ToxicologyTopic = () => {
           </div>
 
           <div>
+            <ExamMappingBadges exams={["fficm", "edic"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Removal of Toxins</h2>
             <p className="text-sm text-muted-foreground leading-relaxed mb-3">
               Extracorporeal techniques (haemodialysis, haemofiltration, haemoperfusion) can remove toxins that meet specific pharmacokinetic criteria. The <strong>EXTRIP</strong> (Extracorporeal Treatments in Poisoning) workgroup provides evidence-based recommendations.
