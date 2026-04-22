@@ -622,9 +622,9 @@ const NeurointensiveCareTopic = () => {
               Anti-NMDAR encephalitis is the most commonly examined AIE. Know the clinical progression (psychiatric → seizures → movement disorder → autonomic → coma), the association with ovarian teratoma, the principle of starting immunotherapy empirically before antibody results return, and the need for early second-line escalation if no response. Remember that antipsychotics should be avoided (NMS risk, worsened dyskinesias).
             </p>
           </div>
-        </div>
+        </ExamSection>
 
-        <div id="toc-gbs" className="scroll-mt-24">
+        <ExamSection id="toc-gbs" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain-Barré Syndrome (GBS) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             GBS is an acute immune-mediated polyradiculoneuropathy causing ascending flaccid paralysis. ~25% require ICU admission for respiratory failure or autonomic instability. Mortality ~5%, but significant long-term morbidity. Two-thirds have preceding infection (Campylobacter jejuni, CMV, EBV, Zika).
