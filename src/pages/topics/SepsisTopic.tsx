@@ -1,21 +1,125 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { sepsisQuestions } from "@/data/quizzes";
 import SepsisManagementDiagram from "@/components/diagrams/SepsisManagementDiagram";
 import SepsisBiomarkerKineticsDiagram from "@/components/diagrams/SepsisBiomarkerKineticsDiagram";
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Apply Sepsis-3 definitions and use SOFA / qSOFA / NEWS2 to recognise sepsis and septic shock.",
+  "Deliver the SSC Hour-1 bundle and justify antibiotic, fluid and vasopressor choices.",
+  "Titrate noradrenaline, vasopressin, adrenaline and hydrocortisone for catecholamine-resistant shock.",
+  "Interpret lactate, CRP, procalcitonin and presepsin trends to guide resuscitation and antibiotic stewardship.",
+  "Compare SSC 2021, NICE NG51 and IDSA 2024 guidance on antibiotic timing, fluids and steroids.",
+  "Plan source control and de-escalation, including PCT-guided antibiotic stop rules.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Recognising septic shock at the bedside",
+    scenario: (
+      <>
+        72-year-old with urinary sepsis. After 30 mL/kg Hartmann's: BP 82/40 (MAP 54), HR 118,
+        lactate 3.6 mmol/L, RR 26, GCS 14. Noradrenaline started. Does this meet septic shock
+        criteria?
+      </>
+    ),
+    working: (
+      <>
+        Sepsis-3 septic shock = sepsis + <strong>vasopressor required for MAP ≥65</strong> AND
+        <strong> lactate &gt;2 mmol/L</strong> after adequate fluid. Both true here. qSOFA
+        (RR ≥22 ✓, altered mentation ✓, SBP ≤100 ✓) = 3.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Septic shock confirmed.</strong> Hospital mortality ~40%. Escalate: titrate
+        noradrenaline to MAP ≥65, recheck lactate at 2 h, add vasopressin 0.03 U/min if NA
+        &gt;0.25–0.5 µg/kg/min, hydrocortisone 200 mg/day if vasopressor-dependent &gt;4 h, urgent
+        source control (CT KUB ± nephrostomy).
+      </>
+    ),
+  },
+  {
+    title: "Fluid resuscitation calculation",
+    scenario: (
+      <>
+        85 kg patient with septic shock. What initial crystalloid volume does SSC 2021 recommend,
+        and what fluid would you choose?
+      </>
+    ),
+    working: (
+      <>
+        SSC: 30 mL/kg balanced crystalloid within 3 h → 30 × 85 ={" "}
+        <strong>2 550 mL</strong>. Avoid 0.9% saline (hyperchloraemic acidosis, AKI signal in
+        SMART/SALT-ED), starches (VISEP/CHEST — AKI/death), gelatins.
+      </>
+    ),
+    answer: (
+      <>
+        Give ~2.5 L Hartmann's or Plasma-Lyte. Reassess <em>dynamically</em> after each 250–500
+        mL bolus (PLR, stroke volume variation, IVC, capillary refill — ANDROMEDA-SHOCK). IDSA
+        2024 cautions against rigidly chasing 30 mL/kg if not fluid-responsive — switch to
+        vasopressors and consider albumin if &gt;60–80 mL/kg given.
+      </>
+    ),
+  },
+  {
+    title: "PCT-guided antibiotic stewardship",
+    scenario: (
+      <>
+        Day 5 of meropenem for community-acquired pneumonia with bacteraemia. Patient afebrile,
+        off vasopressors. PCT peaked at 18 ng/mL on day 2, now 2.0 ng/mL. Stop antibiotics?
+      </>
+    ),
+    working: (
+      <>
+        PCT-guided de-escalation rules (PRORATA / SAPS): stop antibiotics if PCT{" "}
+        <strong>&lt;0.5 ng/mL</strong> OR <strong>≥80% decline from peak</strong>. 2.0 / 18.0 =
+        89% decline ✓. Clinical resolution ✓.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Yes — stop antibiotics.</strong> Document source control adequate, no ongoing
+        organ dysfunction. PCT-guided de-escalation reduces antibiotic days by 2–3 with no
+        mortality penalty (SSC 2021 endorses). If PCT failed to decline → think inadequate
+        source control, resistant organism, or alternative diagnosis.
+      </>
+    ),
+  },
+];
 
 const SepsisTopic = () => {
   return (
-    <SectionLayout title="Sepsis & Septic Shock" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Sepsis & Septic Shock"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "Sepsis-3: infection + organ dysfunction (SOFA ≥2). Septic shock: vasopressors needed + lactate >2",
+        "Hour-1 bundle: lactate, cultures, antibiotics, fluids (30 ml/kg), vasopressors",
+        "Noradrenaline is the first-line vasopressor; vasopressin is second-line",
+        "Each hour delay in antibiotics increases mortality by approximately 7%",
+        "Source control is critical — drain, debride, or remove infected sources early",
+        "PCT-guided de-escalation reduces antibiotic duration by 2–3 days without increasing mortality",
+        "Lactate >4 mmol/L carries 30–40% mortality; serial clearance guides resuscitation adequacy",
+        "No single biomarker diagnoses sepsis — trends are more informative than single values",
+        "IDSA 2024 challenges rigid 1h antibiotic + 30 mL/kg fluid targets in undifferentiated sepsis",
+      ]}
+      topicId="sepsis"
+      topicTitle="Sepsis & Septic Shock"
+      quizQuestions={sepsisQuestions}
+      coreConcepts={
+    <>
+      <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
           <p className="text-muted-foreground leading-relaxed">
