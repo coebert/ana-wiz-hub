@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Play, Pause, RotateCcw } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
 
 /**
  * Re-usable animated mechanism cascade.
@@ -13,6 +13,15 @@ import { Play, Pause, RotateCcw } from "lucide-react";
  * (host response, autodigestion, ammonia → oedema, post-ROSC pillars).
  */
 
+export interface CascadeSource {
+  /** Short citation label, e.g. "BJA Educ 2023" or "ERC 2021". */
+  label: string;
+  /** Full citation text shown in the bibliography. */
+  citation: string;
+  /** External URL (DOI, journal, guideline). */
+  url: string;
+}
+
 export interface CascadeStep {
   /** Short label inside the node (1-3 words). */
   node: string;
@@ -22,6 +31,11 @@ export interface CascadeStep {
   title: string;
   /** Body text for the explanation card. */
   body: string;
+  /**
+   * Sources backing this step. Rendered inline as numbered superscript links
+   * matching the consolidated bibliography at the foot of the diagram.
+   */
+  sources?: CascadeSource[];
 }
 
 interface MechanismCascadeDiagramProps {
