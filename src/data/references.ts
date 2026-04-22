@@ -688,4 +688,23 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "CHFG", citation: "Clinical Human Factors Group. Just a Routine Operation — the Elaine Bromiley case.", url: "https://chfg.org" },
     { label: "BJA Educ 2018", citation: "Flin R, Patey R. Non-technical skills for anaesthetists: developing and applying ANTS. BJA Education. 2018;18(8):254-260." },
   ],
+  "urological-anaesthesia": [
+    { label: "BJA Educ 2014 TURP", citation: "Hahn RG. Fluid absorption in endoscopic surgery. BJA Education. 2006;6(5):195-198.", url: "https://doi.org/10.1093/bjaceaccp/mkl033" },
+    { label: "AAGBI Lithotomy 2015", citation: "Association of Anaesthetists. Safe practice in lithotomy and lateral positions. AAGBI guidance.", url: "https://anaesthetists.org" },
+    { label: "BJA Educ 2017 Cystectomy", citation: "Pillai P et al. Anaesthesia for radical cystectomy and urinary diversion. BJA Education. 2018;18(2):54-60.", url: "https://doi.org/10.1016/j.bjae.2017.11.005" },
+    { label: "ERAS Cystectomy 2013", citation: "Cerantola Y et al. Guidelines for perioperative care after radical cystectomy for bladder cancer: ERAS Society recommendations. Clin Nutr. 2013;32(6):879-887.", url: "https://doi.org/10.1016/j.clnu.2013.09.014" },
+  ],
+  "hepatobiliary-transplant": [
+    { label: "BJA Educ 2010 LT", citation: "Mandell MS, Lindenfeld J, Tsou MY, Zimmerman M. Cardiac evaluation of liver transplant candidates. World J Gastroenterol. 2008;14(22):3445-3451.", url: "https://doi.org/10.3748/wjg.14.3445" },
+    { label: "BJA Educ 2017 LiverResection", citation: "Hartog A, Mills G. Anaesthesia for hepatic resection surgery. BJA Education. 2009;9(1):1-5.", url: "https://doi.org/10.1093/bjaceaccp/mkn049" },
+    { label: "AAGBI Cirrhosis 2017", citation: "Vaja R et al. Anaesthesia for patients with liver disease. BJA Education. 2010;10(1):15-19.", url: "https://doi.org/10.1093/bjaceaccp/mkp040" },
+    { label: "ITLS Reperfusion", citation: "Aggarwal S et al. Postreperfusion syndrome: hypotension after reperfusion of the transplanted liver. J Crit Care. 1993;8(3):154-160." },
+  ],
+  "ent-anaesthesia": [
+    { label: "DAS 2015", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
+    { label: "NAP4 2011", citation: "Cook TM, Woodall N, Frerk C. Major complications of airway management in the UK (NAP4). Br J Anaesth. 2011;106(5):617-631.", url: "https://doi.org/10.1093/bja/aer058" },
+    { label: "NTSP 2014", citation: "McGrath BA et al. Multidisciplinary guidelines for the management of tracheostomy and laryngectomy airway emergencies (National Tracheostomy Safety Project). Anaesthesia. 2012;67(9):1025-1041.", url: "https://doi.org/10.1111/j.1365-2044.2012.07217.x" },
+    { label: "BJA Educ 2017 ENT", citation: "Charters P, Ahmad I. Anaesthesia for ENT surgery. BJA Education. 2014;14(5):201-205.", url: "https://doi.org/10.1093/bjaceaccp/mkt059" },
+    { label: "BJA Educ 2015 Laser", citation: "Kitching AJ, Edge CJ. Lasers and surgery. BJA Education. 2003;3(5):143-146.", url: "https://doi.org/10.1093/bjacepd/mkg143" },
+  ],
 };
