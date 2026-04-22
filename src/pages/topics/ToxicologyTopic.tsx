@@ -1,4 +1,5 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { toxicologyQuestions } from "@/data/quizzes";
 import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogramDiagram";
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
