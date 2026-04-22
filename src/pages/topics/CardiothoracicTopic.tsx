@@ -68,7 +68,6 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
 
-
         <div id="cardiac-considerations" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Cardiac Surgery Considerations</h2>
           <div className="grid sm:grid-cols-2 gap-3">
@@ -235,6 +234,86 @@ const CardiothoracicTopic = () => {
                 <li><strong>Separation from CPB.</strong> Restore sinus rhythm (defibrillate as needed), pace as required, optimise haemodynamics with inotropes/vasopressors. Reverse heparin with protamine. Anticipate coagulopathy — give platelets, FFP, cryoprecipitate, fibrinogen concentrate guided by ROTEM/TEG. Tranexamic acid throughout (ATACAS).</li>
                 <li><strong>Post-op.</strong> ICU admission ventilated; delayed neurological assessment; maintain normoglycaemia, normocapnia, MAP &gt;70 mmHg, and strict normothermia (avoid pyrexia for 48 h).</li>
               </ol>
+            </div>
+
+            {/* Acid–base & cerebral perfusion comparison tables */}
+            <div>
+              <h3 className="text-lg font-serif font-bold text-foreground mb-2">Acid–base strategy: pH-stat vs α-stat</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Both manage the temperature-dependent shift in CO₂ solubility on CPB but with opposite priorities — uniform brain cooling vs preserved cerebral autoregulation.
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-secondary/50">
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border w-1/4">Feature</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border">pH-stat</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border">α-stat</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground align-top">
+                    {[
+                      { f: "Principle", a: "Maintain pH 7.40 and PaCO₂ 5.3 kPa corrected to the patient's actual temperature.", b: "Maintain pH 7.40 and PaCO₂ 5.3 kPa measured at 37 °C — uncorrected for temperature." },
+                      { f: "How achieved", a: "Add CO₂ to the oxygenator (or reduce sweep gas flow) during cooling.", b: "No CO₂ added — sweep gas adjusted to keep machine ABG at 37 °C values." },
+                      { f: "Cerebral blood flow", a: "Higher — CO₂-mediated vasodilation; CBF/CMRO₂ uncoupled (luxury perfusion).", b: "Lower — preserved CO₂ reactivity and pressure autoregulation; CBF coupled to CMRO₂." },
+                      { f: "Brain cooling", a: "More uniform and faster — useful when planning DHCA.", b: "Less uniform — slower brain cooling." },
+                      { f: "Embolic load to brain", a: "Higher — increased CBF carries more gaseous/particulate emboli.", b: "Lower — protective against embolic stroke." },
+                      { f: "Best evidence-based use", a: "Cooling phase before DHCA, paediatric/congenital cardiac surgery.", b: "Adult cardiac surgery without DHCA; rewarming phase after DHCA." },
+                      { f: "Targets", a: "pH 7.40 and PaCO₂ 5.3 kPa at the patient's temperature (machine pH appears alkalotic, PaCO₂ low at 37 °C).", b: "pH 7.40 and PaCO₂ 5.3 kPa at 37 °C (machine values); when corrected to patient temperature, pH appears more alkalotic and PaCO₂ lower." },
+                      { f: "Advantages", a: "Faster, more uniform brain cooling; theoretically improves neuroprotection before DHCA.", b: "Maintains autoregulation; lower stroke rate in adult cardiac surgery; simpler — no CO₂ titration." },
+                      { f: "Limitations", a: "Loss of cerebral autoregulation; higher embolic load; may worsen ICP.", b: "Slower, less uniform brain cooling; potentially less effective neuroprotection during prolonged DHCA." },
+                      { f: "Practical rule", a: "Use during cooling.", b: "Use during rewarming and routine adult CPB." },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-border last:border-0 hover:bg-accent/20">
+                        <td className="p-3 font-medium text-foreground">{row.f}</td>
+                        <td className="p-3">{row.a}</td>
+                        <td className="p-3">{row.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-serif font-bold text-foreground mb-2">Cerebral perfusion adjuncts: ASCP vs RCP</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                Selective cerebral perfusion extends the safe arrest window beyond the ~30 min permitted by hypothermia alone. Antegrade is now the gold standard; retrograde retains a role when antegrade cannulation is not feasible.
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-secondary/50">
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border w-1/4">Feature</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border">Antegrade SCP (ASCP)</th>
+                      <th className="text-left p-3 font-semibold text-foreground border-b border-border">Retrograde CP (RCP)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground align-top">
+                    {[
+                      { f: "Cannulation route", a: "Right axillary, innominate, or direct head-vessel cannulation (selective unilateral or bilateral via left CCA).", b: "Via the SVC cannula — oxygenated blood pumped retrograde up the SVC into the cerebral venous system." },
+                      { f: "Direction of flow", a: "Antegrade — physiological direction down the cerebral arterial tree.", b: "Retrograde — through the venous system; significant venous valve resistance and AV shunting." },
+                      { f: "Flow rate target", a: "10 mL/kg/min (typical 600–1000 mL/min in adults).", b: "200–500 mL/min (limited by SVC pressure)." },
+                      { f: "Pressure target", a: "Right radial arterial pressure 50–70 mmHg.", b: "SVC (CVP) pressure ≤25 mmHg — higher risks cerebral oedema." },
+                      { f: "Temperature", a: "Permits use at moderate hypothermia (24–28 °C).", b: "Generally used at deep hypothermia (18–20 °C); little additional metabolic support otherwise." },
+                      { f: "Safe arrest time", a: "60–90 min (some series report 90+ min with bilateral ASCP).", b: "Up to 40–45 min — limited by oedema and incomplete metabolic substrate delivery." },
+                      { f: "Mechanism of benefit", a: "Genuine oxygen and substrate delivery to the brain at near-normal CBF.", b: "Primarily flushes air/particulate debris from cerebral vessels; modest metabolic support; maintains brain cooling." },
+                      { f: "Advantages", a: "Effective oxygen delivery → longer safe arrest window; permits warmer temperatures; reduces stroke and TND; allows complex arch reconstruction.", b: "Simple — uses existing SVC cannula; no extra arterial cannulation; flushes embolic debris; useful when ASCP is not feasible (severe atheroma, dissection of head vessels)." },
+                      { f: "Limitations / risks", a: "Requires extra cannulation (axillary access, technical complexity); risk of arterial dissection, embolism, malperfusion if pressure too high; right radial only monitors right hemisphere unless bilateral cannulation used.", b: "Limited oxygen delivery — most flow shunted through AV connections; cerebral oedema if pressure >25 mmHg; shorter safe time; not a substitute for ASCP in long arrests." },
+                      { f: "Current role", a: "Modern gold standard — has driven a shift from profound (14–20 °C) to moderate (24–28 °C) hypothermia.", b: "Adjunct or alternative when ASCP is contraindicated; commonly combined with brief DHCA for de-airing." },
+                    ].map((row, i) => (
+                      <tr key={i} className="border-b border-border last:border-0 hover:bg-accent/20">
+                        <td className="p-3 font-medium text-foreground">{row.f}</td>
+                        <td className="p-3">{row.a}</td>
+                        <td className="p-3">{row.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-muted-foreground italic mt-2">
+                Exam pearl: bilateral ASCP via right axillary + left CCA gives the most reliable global cerebral perfusion; right-radial pressure alone can mask left-hemisphere malperfusion if the circle of Willis is incomplete.
+              </p>
             </div>
 
             <div>
