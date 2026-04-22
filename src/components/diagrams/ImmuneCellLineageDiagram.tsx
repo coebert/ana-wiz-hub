@@ -180,6 +180,8 @@ const ImmuneCellLineageDiagram = () => {
   const [stepIdx, setStepIdx] = useState(0);
   const [playing, setPlaying] = useState(true);
   const [selected, setSelected] = useState<string>("dc");
+  /** In activation view, set when user clicks the current step's destination cell so the panel shows that cell's deep detail instead of the step caption. */
+  const [pinnedCellId, setPinnedCellId] = useState<string | null>(null);
   const [showLabels, setShowLabels] = useState(true);
   const [showLineages, setShowLineages] = useState(true);
   const [highlight, setHighlight] = useState<"all" | "innate" | "adaptive">("all");
