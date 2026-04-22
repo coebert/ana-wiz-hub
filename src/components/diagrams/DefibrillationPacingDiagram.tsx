@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { DiagramLearningPoints } from "./DiagramLearningPoints";
 import { ZoomableSVG } from "./ZoomableSVG";
 
 type Tab = "waveforms" | "impedance" | "pacemaker" | "emi";

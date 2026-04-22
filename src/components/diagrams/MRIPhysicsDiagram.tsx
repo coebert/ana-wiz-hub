@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
+import { DiagramLearningPoints } from "./DiagramLearningPoints";
 import { ZoomableSVG } from "./ZoomableSVG";
 
 const NuclearSpinTab = () => (
