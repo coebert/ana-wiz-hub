@@ -1,16 +1,12 @@
-import { SectionLayout } from "@/components/SectionLayout";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { RRTCircuitDiagram } from "@/components/diagrams/RRTCircuitDiagram";
 import RRTModalitiesDiagram from "@/components/diagrams/RRTModalitiesDiagram";
 import { KDIGOAKIClassifier } from "@/components/diagrams/KDIGOAKIClassifier";
 import { MehranScoreCalculator } from "@/components/diagrams/MehranScoreCalculator";
 import { akiRrtQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+import type { WorkedExample } from "@/components/WorkedExamples";
 
 const tocItems = [
   { id: "toc-kdigo", label: "KDIGO Staging" },
@@ -23,9 +19,115 @@ const tocItems = [
   { id: "toc-trials", label: "Key Trials" },
 ];
 
+const objectives = [
+  "Diagnose and stage AKI using KDIGO 2012 (creatinine and urine output criteria).",
+  "Risk-stratify and prevent contrast-induced AKI using the Mehran score and KDIGO prophylaxis bundle.",
+  "Adjust perioperative drug dosing in renal impairment, identifying renal-friendly alternatives.",
+  "List the AEIOU indications for RRT and apply STARRT-AKI / AKIKI evidence on timing of initiation.",
+  "Compare CRRT, IHD, SLED and PD modalities and select appropriately by haemodynamics and goals.",
+  "Prescribe regional citrate vs systemic heparin anticoagulation safely and recognise complications.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "KDIGO staging from creatinine + urine output",
+    scenario: (
+      <>
+        72 kg post-laparotomy patient. Baseline creatinine 80 µmol/L. Day 2: creatinine 220 µmol/L,
+        urine output 25 mL/h for the last 14 h. Stage?
+      </>
+    ),
+    working: (
+      <>
+        Creatinine ratio 220 / 80 = <strong>2.75×</strong> (KDIGO 2: 2.0–2.9×). Urine output 25 / 72
+        = 0.35 mL/kg/h, &lt;0.5 mL/kg/h for ≥12 h = <strong>KDIGO 2</strong>. Use the worst
+        criterion → still stage 2.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>KDIGO Stage 2 AKI.</strong> Stop nephrotoxins, ensure euvolaemia and MAP ≥65–70,
+        review imaging for obstruction, send urine dip + ACR. No mandatory RRT — escalate only if
+        AEIOU criteria develop or oliguria progresses to stage 3.
+      </>
+    ),
+  },
+  {
+    title: "CI-AKI prophylaxis dose calculation",
+    scenario: (
+      <>
+        78-year-old, 65 kg, eGFR 38, diabetic, listed for elective coronary angiogram with planned
+        contrast volume 120 mL of iohexol. Plan prophylaxis.
+      </>
+    ),
+    working: (
+      <>
+        Mehran high risk (age &gt;75, diabetes, eGFR &lt;60, anticipated contrast). Contrast safe
+        ceiling = 3 × eGFR = 3 × 38 = <strong>114 mL</strong> — planned 120 mL is borderline; ask
+        cardiology to minimise. IV 0.9% saline 1 mL/kg/h × 12 h pre + 12 h post = 65 × 1 × 24 ={" "}
+        <strong>1 560 mL total</strong>. Hold metformin/SGLT2 48 h, hold ACEi/diuretic on day,
+        avoid NSAIDs.
+      </>
+    ),
+    answer: (
+      <>
+        Iso-/low-osmolar contrast, minimise volume, isotonic saline 65 mL/h × 24 h around
+        procedure, withhold nephrotoxins, recheck creatinine at 48–72 h.{" "}
+        <strong>Do NOT give NAC or prophylactic RRT</strong> (PRESERVE — no benefit).
+      </>
+    ),
+  },
+  {
+    title: "Citrate CRRT — metabolic alarm",
+    scenario: (
+      <>
+        Day 3 CVVH with regional citrate. Total Ca 3.1 mmol/L, ionised Ca 0.95 mmol/L
+        (total/ionised ratio 3.3), HCO₃⁻ 32, base excess +6. What is happening?
+      </>
+    ),
+    working: (
+      <>
+        Normal total/ionised ratio &lt;2.5. Ratio &gt;2.5 indicates <strong>citrate accumulation</strong>{" "}
+        ("citrate lock") — usually in liver failure or shock with poor citrate metabolism. Rising
+        total Ca with low/normal ionised Ca + metabolic alkalosis is the classic triad.
+      </>
+    ),
+    answer: (
+      <>
+        Reduce citrate dose (or pre-filter blood flow), increase systemic Ca infusion, reassess
+        liver function and shock. Persistent ratio &gt;2.5 → switch to systemic heparin or
+        no-anticoagulation strategy. Untreated → severe metabolic alkalosis and ionised
+        hypocalcaemia (arrhythmia, seizures).
+      </>
+    ),
+  },
+];
+
 const AkiRrtTopic = () => {
   return (
-    <SectionLayout title="Acute Kidney Injury & RRT" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
+    <TopicTemplate
+      title="Acute Kidney Injury & RRT"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "KDIGO stages AKI by creatinine rise (1.5×, 2×, 3× baseline) and urine output (<0.5 ml/kg/hr).",
+        "CI-AKI: prevent with iso/low-osmolar contrast, IV isotonic crystalloid (1 ml/kg/hr pre/post), withhold nephrotoxins. NAC and prophylactic RRT not recommended.",
+        "Mehran score stratifies CI-AKI risk using 8 weighted factors; high score patients need maximal prophylaxis.",
+        "Renal-friendly perioperative drugs: fentanyl/alfentanil/remifentanil, cisatracurium, UFH, apixaban. Avoid morphine, pethidine, NSAIDs, gentamicin where possible.",
+        "CRRT preferred in haemodynamically unstable ICU patients; IHD for stable / urgent K⁺.",
+        "AEIOU: Acidosis, Electrolytes, Intoxication, Overload, Uraemia — indications for RRT.",
+        "Regional citrate anticoagulation is preferred for CRRT — avoids systemic bleeding; total/ionised Ca ratio >2.5 = citrate accumulation.",
+        "STARRT-AKI / AKIKI: no benefit from early RRT initiation — wait for conventional indications.",
+      ]}
+      topicId="aki-rrt"
+      topicTitle="Acute Kidney Injury & RRT"
+      quizQuestions={akiRrtQuestions}
+      coreConcepts={
+    <>
       <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
         <section id="toc-kdigo" className="mb-10 scroll-mt-24">
