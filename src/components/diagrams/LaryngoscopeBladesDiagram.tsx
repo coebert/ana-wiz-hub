@@ -556,7 +556,12 @@ export const LaryngoscopeBladesDiagram = () => {
               </div>
               <div>
                 <p className="font-semibold text-foreground">Mechanism of exposure</p>
-                <p className="text-muted-foreground">{info.mechanism}</p>
+                <p className="text-muted-foreground">
+                  {info.mechanism}
+                  {info.refs.map((r) => (
+                    <InlineRef key={r} topicId="equipment-monitoring" refLabel={r} />
+                  ))}
+                </p>
               </div>
               <div>
                 <p className="font-semibold text-foreground">Sizes available</p>
