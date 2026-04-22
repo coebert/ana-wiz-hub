@@ -13,6 +13,7 @@ import OesophagealDopplerDiagram from "@/components/diagrams/OesophagealDopplerD
 import { cardiacOutputMonitoringQuestions } from "@/data/quizzes";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
+import COPitfallsChecklist from "@/components/diagrams/COPitfallsChecklist";
 
 const CardiacOutputMonitoringTopic = () => {
   return (
@@ -263,17 +264,13 @@ const CardiacOutputMonitoringTopic = () => {
           </div>
         </div>
 
-        {/* 12. Pitfalls & sources of error */}
+        {/* 12. Pitfalls checklist (interactive, per-modality) */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12. Pitfalls & Sources of Error</h2>
-          <ul className="text-sm text-muted-foreground space-y-1.5 list-disc pl-5">
-            <li><span className="font-medium text-foreground">All thermodilution:</span> tricuspid regurgitation, intracardiac shunts, rapid temperature drift (CRRT, ECMO, warming devices), incorrect injectate volume/temperature, respiratory variation.</li>
-            <li><span className="font-medium text-foreground">All pulse contour:</span> aortic regurgitation, IABP, severe arrhythmia (especially uncalibrated), damped or over-resonant arterial line, rapid SVR changes.</li>
-            <li><span className="font-medium text-foreground">Oesophageal Doppler:</span> probe malposition (fixed-area assumption breaks), aortic disease, awake patient discomfort.</li>
-            <li><span className="font-medium text-foreground">Echo:</span> off-axis LVOT VTI underestimates SV (cos θ); incorrect LVOT diameter is squared and amplifies error; operator dependence.</li>
-            <li><span className="font-medium text-foreground">Bioimpedance/bioreactance:</span> diathermy, motion, pulmonary oedema, pleural effusions, low-flow states.</li>
-            <li><span className="font-medium text-foreground">SVV/PPV:</span> spontaneous breathing, low V<sub>T</sub>, arrhythmia, open chest, raised intra-abdominal pressure, RV failure all invalidate.</li>
-          </ul>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Use the interactive checklist below to revise the most exam-relevant error sources for each CO modality. Each pitfall is graded by severity, with a one-line "why" and an exam pearl.
+          </p>
+          <COPitfallsChecklist />
         </div>
 
         {/* 13. Evidence base */}
