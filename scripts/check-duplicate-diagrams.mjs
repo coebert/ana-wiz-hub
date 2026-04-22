@@ -16,6 +16,16 @@ import { join, relative } from "node:path";
 const ROOT = process.cwd();
 const TOPICS_DIR = join(ROOT, "src", "pages", "topics");
 
+/**
+ * Components that are designed as reusable "card" wrappers and may legitimately
+ * appear many times on a single topic page (one per ECG strip, one per curve, etc.).
+ * Add new entries here when introducing a new repeating diagram primitive.
+ */
+const ALLOW_MULTIPLE = new Set([
+  "ExpandableEcgCard",
+  "OxygenDissociationCurve",
+]);
+
 function listTsxFiles(dir) {
   const out = [];
   for (const name of readdirSync(dir)) {
