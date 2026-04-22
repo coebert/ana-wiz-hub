@@ -131,7 +131,7 @@ const AkiRrtTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <div className="prose prose-slate max-w-none">
-        <section id="toc-kdigo" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-kdigo" exams={["primary", "final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">KDIGO Definition & Staging</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             The <strong>KDIGO 2012</strong> consensus harmonised earlier RIFLE and AKIN definitions. AKI is diagnosed by
@@ -177,7 +177,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-ci-aki" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-ci-aki" exams={["final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Contrast-Induced Acute Kidney Injury (CI-AKI)</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             CI-AKI (also termed contrast-associated AKI, CA-AKI) is defined as a rise in serum creatinine ≥26.5 µmol/L
@@ -262,7 +262,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-drug-dosing" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-drug-dosing" exams={["primary", "final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Perioperative Drug Dosing in Renal Impairment</h2>
           <p className="text-foreground/90 leading-relaxed mb-4">
             Renal impairment alters drug pharmacokinetics in three ways: (1) reduced renal excretion of parent drug or
@@ -486,7 +486,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-indications" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-indications" exams={["final", "fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Indications for RRT in ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             No single absolute trigger — consider the clinical context. Common indications (mnemonic: <strong>AEIOU</strong>):
@@ -511,7 +511,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-modalities" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-modalities" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Modalities Overview</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare the major continuous and intermittent renal replacement modalities side-by-side.
@@ -519,7 +519,7 @@ const AkiRrtTopic = () => {
           <RRTModalitiesDiagram />
         </section>
 
-        <section id="toc-circuit" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-circuit" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">RRT Circuit Comparison</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Compare CRRT and IHD circuits with animated blood and dialysate flow.
@@ -529,7 +529,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-anticoagulation" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-anticoagulation" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Anticoagulation for CRRT</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -547,7 +547,7 @@ const AkiRrtTopic = () => {
           </div>
         </section>
 
-        <section id="toc-trials" className="mb-10 scroll-mt-24">
+        <ExamSection id="toc-trials" exams={["fficm", "edic"]} className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Key Trials</h2>
           <div className="space-y-3">
             {[
