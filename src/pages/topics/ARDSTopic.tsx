@@ -1,8 +1,5 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ardsQuestions } from "@/data/quizzes";
 import ECMOCircuitDiagram from "@/components/diagrams/ECMOCircuitDiagram";
 import ECMOTroubleshootingDiagram from "@/components/diagrams/ECMOTroubleshootingDiagram";
@@ -10,13 +7,119 @@ import ARDSVentModeComparisonDiagram from "@/components/diagrams/ARDSVentModeCom
 import EOLIAMurrayCalculator from "@/components/diagrams/EOLIAMurrayCalculator";
 import PneumoniaSteroidDecisionTree from "@/components/diagrams/PneumoniaSteroidDecisionTree";
 import { DiagramSection } from "@/components/DiagramSection";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+import type { WorkedExample } from "@/components/WorkedExamples";
+
+const objectives = [
+  "Apply the Berlin definition to stratify ARDS severity and prognosis.",
+  "Prescribe lung-protective ventilation (Vt, plateau and driving pressure, PEEP titration).",
+  "Justify and deliver adjuncts: prone positioning, neuromuscular blockade, recruitment, iNO.",
+  "Identify candidates for VV-ECMO using EOLIA / Murray score and outline referral.",
+  "Describe ECMO circuit physiology, anticoagulation, and management of common complications.",
+  "Manage COVID-19 specific evidence: dexamethasone, tocilizumab, anticoagulation, respiratory support escalation.",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "P/F ratio and Berlin staging",
+    scenario: (
+      <>
+        Intubated patient on FiO₂ 0.8, PEEP 12 cmH₂O. ABG: PaO₂ 9.6 kPa, PaCO₂ 6.0 kPa.
+        Bilateral infiltrates on CXR, no LV failure on echo. Classify the ARDS.
+      </>
+    ),
+    working: (
+      <>
+        Convert PaO₂ to mmHg: 9.6 × 7.5 = <strong>72 mmHg</strong>. P/F = 72 / 0.8 ={" "}
+        <strong>90 mmHg</strong>. PEEP ≥5 ✓, bilateral opacities ✓, not cardiac ✓.
+      </>
+    ),
+    answer: (
+      <>
+        <strong>Severe ARDS</strong> (P/F &lt;100). Mortality ~45%. Indications now triggered for
+        prone positioning ≥16 h/day and early ECMO referral discussion (EOLIA threshold P/F &lt;80
+        for &gt;6 h despite optimisation).
+      </>
+    ),
+  },
+  {
+    title: "Driving pressure assessment",
+    scenario: (
+      <>
+        70 kg (IBW) ARDS patient on VCV: Vt 420 mL, PEEP 14, plateau pressure 32 cmH₂O. Should
+        you change anything?
+      </>
+    ),
+    working: (
+      <>
+        Vt = 420 / 70 = <strong>6 mL/kg IBW</strong> ✓. Driving pressure ΔP = Pplat − PEEP =
+        32 − 14 = <strong>18 cmH₂O</strong> (target ≤15). Plateau also above 30 cmH₂O ceiling.
+      </>
+    ),
+    answer: (
+      <>
+        Reduce Vt towards 4–5 mL/kg IBW (permissive hypercapnia), reassess plateau and driving
+        pressure. If ΔP remains &gt;15 despite this, recheck PEEP titration (decremental PEEP
+        trial) and consider prone positioning — driving pressure is the strongest ventilator
+        predictor of mortality (Amato 2015).
+      </>
+    ),
+  },
+  {
+    title: "VV-ECMO sweep vs flow troubleshooting",
+    scenario: (
+      <>
+        Patient on VV-ECMO, blood flow 4.5 L/min, sweep 4 L/min, FdO₂ 1.0. SpO₂ 88%, PaCO₂ 4.2
+        kPa. How do you respond?
+      </>
+    ),
+    working: (
+      <>
+        Recall: <strong>blood flow → oxygenation</strong>; <strong>sweep gas → CO₂ clearance</strong>.
+        Hypoxaemia + hypocapnia means too much sweep and not enough oxygenated blood reaching the
+        patient. Check for recirculation (venous SpO₂ rising), Hb &gt;80 g/L, oxygenator
+        function (pre/post gases).
+      </>
+    ),
+    answer: (
+      <>
+        Reduce sweep to ~2 L/min to normalise PaCO₂ (avoid rapid drop &gt;1.3 kPa/h — risk of
+        cerebral vasoconstriction and seizures). Increase blood flow if cannulae allow, transfuse
+        to Hb 80–90 g/L, and recruit native lung. If oxygenator post-membrane PaO₂ low →
+        change oxygenator.
+      </>
+    ),
+  },
+];
 
 const ARDSTopic = () => {
   return (
-    <SectionLayout title="ARDS & Lung Injury" subtitle="FRCA Final / FFICM — Intensive Care" backPath="/intensive-care" backLabel="Intensive Care" accentColor="text-icu">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="ARDS & Lung Injury"
+      subtitle="FRCA Final / FFICM / EDIC — Intensive Care"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "Berlin definition: mild (P/F 200-300), moderate (100-200), severe (<100) with PEEP ≥5",
+        "Lung-protective ventilation: VT 6 ml/kg IBW, Pplat ≤30, driving pressure ≤15",
+        "Prone positioning ≥16h/day reduces mortality in moderate-severe ARDS (PROSEVA)",
+        "VV-ECMO: respiratory support only — ↑ blood flow = ↑ oxygenation, ↑ sweep = ↑ CO₂ removal",
+        "VA-ECMO: cardiac + respiratory — risk of Harlequin syndrome (monitor R radial SpO₂) and LV distension",
+        "UFH is first-line anticoagulation: target APTT 50–70s or anti-Xa 0.3–0.5 IU/mL; bivalirudin for HIT",
+        "COVID-19: Dexamethasone 6 mg/d × 10d is standard of care (RECOVERY). Add tocilizumab within 24h of organ support if CRP >75",
+        "COVID-19: Therapeutic anticoagulation benefits moderate (non-ICU) patients but NOT critically ill (REMAP-CAP/ATTACC/ACTIV-4a)",
+        "COVID-19: CPAP preferred over HFNO over standard O₂ for non-intubated patients (RECOVERY-RS). Awake proning reduces intubation",
+        "VV weaning: sweep-off trial (NOT flow-off). VA weaning: gradual flow reduction with echo assessment",
+        "EOLIA: VV-ECMO for P/F <80 — non-significant but practice-changing (28% crossover, Bayesian benefit ~88%)",
+      ]}
+      topicId="ards"
+      topicTitle="ARDS & Lung Injury"
+      quizQuestions={ardsQuestions}
+      coreConcepts={
+    <>
+      <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Berlin Definition (2012)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
