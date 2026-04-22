@@ -163,6 +163,7 @@ const ToxicologyTopic = () => {
       coreConcepts={
         <>
           <div>
+            <ExamMappingBadges exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.10"]} />
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">General Principles</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Poisoning management on the ICU follows a small set of principles: stabilise with ABCDE, identify the toxin (with NPIS/TOXBASE support), decontaminate where appropriate, enhance elimination when an effective modality exists, and recognise the toxidrome patterns that often arrive before a confirmed history.
