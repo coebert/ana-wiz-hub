@@ -4,6 +4,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { QuizSection } from "@/components/QuizSection";
 import { flowMeasurementQuiz } from "@/data/quizzes";
 import { FlowDiagram } from "@/components/diagrams/FlowDiagram";
+import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
 import { ReferencesList } from "@/components/ReferencesList";
 import { SeeAlso } from "@/components/SeeAlso";
 
@@ -70,11 +71,12 @@ const FlowMeasurementTopic = () => {
             gap is narrow (tube-like) — flow is laminar and depends on <em>viscosity</em>. At high flows, the gap is wide
             (orifice-like) — flow is turbulent and depends on <em>density</em>.
           </p>
-          <p className="text-foreground/90 leading-relaxed mt-3">
+          <p className="text-foreground/90 leading-relaxed mt-3 mb-4">
             Rotameters are calibrated for specific gases at specific temperatures and pressures, and are read at the top of
             the bobbin (ball floats read at centre). O₂ rotameter is placed downstream to prevent hypoxic mixtures if an
             upstream tube leaks.
           </p>
+          <RotameterDiagram />
         </section>
 
         <section className="mb-10">
