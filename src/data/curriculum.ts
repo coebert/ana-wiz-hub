@@ -29,12 +29,8 @@ export const physicsTopics: Topic[] = [
   // Imaging
   { id: "ultrasound-physics", title: "Ultrasound Physics", description: "Piezoelectric effect, frequency vs resolution, Doppler effect, artefacts", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "mri-physics", title: "MRI Physics", description: "Nuclear spin, precession, T1/T2 relaxation, MRI safety for anaesthetists", section: "physics", examTags: ["primary", "final"], available: true },
-  // Anaesthetic equipment
-  { id: "anaesthetic-machine", title: "The Anaesthetic Machine", description: "Pipeline supply, cylinder storage, pressure regulators, flowmeters, and safety features", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "breathing-circuits", title: "Breathing Circuits & Scavenging", description: "Mapleson classification, circle system, soda lime, scavenging systems", section: "physics", examTags: ["primary", "final"], available: true },
-  { id: "vaporizers", title: "Vaporizers", description: "Physics of vaporization, SVP, plenum and draw-over vaporizers", section: "physics", examTags: ["primary"], available: true },
-  { id: "ventilators", title: "Ventilators", description: "Ventilator classification, mechanisms, historic and modern models including Manley, Penlon, and Oxylog", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
-  { id: "equipment-monitoring", title: "Equipment & Monitoring", description: "Consolidated overview of anaesthetic machine, breathing circuits, vaporizers, and needles", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
+  // Anaesthetic equipment & monitoring (consolidated)
+  { id: "equipment-monitoring", title: "Anaesthetic Equipment & Monitoring", description: "Unified workstation tour: machine, vaporizers, circuits, ventilators, monitoring, airway equipment and AAGBI safety checks", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   // Patient monitoring
   { id: "clinical-measurement", title: "Clinical Measurement", description: "Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "pulse-oximetry", title: "Pulse Oximetry & Capnography", description: "Beer-Lambert law, absorption spectroscopy, infrared analysis", section: "physics", examTags: ["primary", "final", "fficm"], available: true },

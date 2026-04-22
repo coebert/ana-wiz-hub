@@ -26,7 +26,7 @@ const ChemistrySection = lazy(() => import("./pages/ChemistrySection"));
 const GasLawsTopic = lazy(() => import("./pages/topics/GasLawsTopic"));
 const PressureMeasurementTopic = lazy(() => import("./pages/topics/PressureMeasurementTopic"));
 const FlowMeasurementTopic = lazy(() => import("./pages/topics/FlowMeasurementTopic"));
-const VaporizersTopic = lazy(() => import("./pages/topics/VaporizersTopic"));
+
 const ElectricalSafetyTopic = lazy(() => import("./pages/topics/ElectricalSafetyTopic"));
 const PulseOximetryTopic = lazy(() => import("./pages/topics/PulseOximetryTopic"));
 const ABGAnalyserTopic = lazy(() => import("./pages/topics/ABGAnalyserTopic"));
@@ -35,15 +35,13 @@ const HumidityGasSamplingTopic = lazy(() => import("./pages/topics/HumidityGasSa
 const LaserFibreopticsTopic = lazy(() => import("./pages/topics/LaserFibreopticsTopic"));
 const UltrasoundPhysicsTopic = lazy(() => import("./pages/topics/UltrasoundPhysicsTopic"));
 const MRIPhysicsTopic = lazy(() => import("./pages/topics/MRIPhysicsTopic"));
-const BreathingCircuitsTopic = lazy(() => import("./pages/topics/BreathingCircuitsTopic"));
-const AnaestheticMachineTopic = lazy(() => import("./pages/topics/AnaestheticMachineTopic"));
 const DefibrillationPacingTopic = lazy(() => import("./pages/topics/DefibrillationPacingTopic"));
 const ClinicalMeasurementTopic = lazy(() => import("./pages/topics/ClinicalMeasurementTopic"));
 const SIUnitsThermodynamicsTopic = lazy(() => import("./pages/topics/SIUnitsThermodynamicsTopic"));
 const OpticsLightTopic = lazy(() => import("./pages/topics/OpticsLightTopic"));
 const ElectricityMagnetismTopic = lazy(() => import("./pages/topics/ElectricityMagnetismTopic"));
 const StatisticsEBMTopic = lazy(() => import("./pages/topics/StatisticsEBMTopic"));
-const VentilatorsTopic = lazy(() => import("./pages/topics/VentilatorsTopic"));
+
 const MathConceptsTopic = lazy(() => import("./pages/topics/MathConceptsTopic"));
 const DepthOfAnaesthesiaMonitoringTopic = lazy(() => import("./pages/topics/DepthOfAnaesthesiaMonitoringTopic"));
 const OxygenHaemoglobinTopic = lazy(() => import("./pages/topics/OxygenHaemoglobinTopic"));
@@ -185,7 +183,7 @@ const App = () => (
           <Route path="/physics/gas-laws" element={<GasLawsTopic />} />
           <Route path="/physics/pressure-measurement" element={<PressureMeasurementTopic />} />
           <Route path="/physics/flow-measurement" element={<FlowMeasurementTopic />} />
-          <Route path="/physics/vaporizers" element={<VaporizersTopic />} />
+          
           <Route path="/physics/electrical-safety" element={<ElectricalSafetyTopic />} />
           <Route path="/physics/pulse-oximetry" element={<PulseOximetryTopic />} />
           <Route path="/physics/abg-analyser" element={<ABGAnalyserTopic />} />
@@ -194,15 +192,13 @@ const App = () => (
           <Route path="/physics/lasers-fibreoptics" element={<LaserFibreopticsTopic />} />
           <Route path="/physics/ultrasound-physics" element={<UltrasoundPhysicsTopic />} />
           <Route path="/physics/mri-physics" element={<MRIPhysicsTopic />} />
-          <Route path="/physics/breathing-circuits" element={<BreathingCircuitsTopic />} />
-          <Route path="/physics/anaesthetic-machine" element={<AnaestheticMachineTopic />} />
           <Route path="/physics/defibrillation-pacing" element={<DefibrillationPacingTopic />} />
           <Route path="/physics/clinical-measurement" element={<ClinicalMeasurementTopic />} />
           <Route path="/physics/si-units-thermodynamics" element={<SIUnitsThermodynamicsTopic />} />
           <Route path="/physics/optics-light" element={<OpticsLightTopic />} />
           <Route path="/physics/electricity-magnetism" element={<ElectricityMagnetismTopic />} />
           <Route path="/physics/statistics-ebm" element={<StatisticsEBMTopic />} />
-          <Route path="/physics/ventilators" element={<VentilatorsTopic />} />
+          
           <Route path="/physics/math-concepts" element={<MathConceptsTopic />} />
           <Route path="/physics/depth-of-anaesthesia" element={<DepthOfAnaesthesiaMonitoringTopic />} />
           {/* Cross-section alias — depth-of-anaesthesia is also commonly looked for under /clinical */}
