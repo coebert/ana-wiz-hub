@@ -21,15 +21,77 @@ const CardiacCycleTopic = () => {
     >
       <div className="prose prose-slate max-w-none">
         <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
+          <h2 className="text-2xl font-serif font-bold text-foreground">Introduction & Curriculum Scope</h2>
           <p className="text-foreground/90 leading-relaxed">
-            The cardiac cycle encompasses all events from the beginning of one heartbeat to the beginning of the next.
-            It comprises systole (contraction and ejection) and diastole (relaxation and filling). At a heart rate of
-            70 bpm, the cycle lasts approximately 860 ms, with systole occupying ~300 ms and diastole ~560 ms.
+            The cardiac cycle encompasses all electrical and mechanical events from the beginning of one heartbeat to
+            the beginning of the next. It comprises <strong>systole</strong> (isovolumetric contraction + ejection)
+            and <strong>diastole</strong> (isovolumetric relaxation + filling). At a heart rate of 70 bpm, the cycle
+            lasts ~860 ms (systole ~300 ms, diastole ~560 ms). As heart rate rises, diastole shortens
+            disproportionately, compromising filling and coronary perfusion.
           </p>
-          <p className="text-sm text-muted-foreground italic mt-2">
-            Reference: Levick JR. An Introduction to Cardiovascular Physiology, 6th edition. CRC Press, 2018; BJA Education, Cardiovascular Physiology.
+          <div className="grid md:grid-cols-2 gap-3 mt-4">
+            <div className="rounded-lg border border-border bg-secondary/30 p-3">
+              <p className="text-xs font-semibold text-foreground uppercase tracking-wide">FRCA Primary</p>
+              <p className="text-xs text-foreground/80 mt-1">
+                Phases of the cycle, Wiggers diagram, pressure–volume loop, Frank–Starling relationship,
+                determinants of stroke volume and cardiac output, heart sounds, atrial pressure waveform,
+                ventricular action potential.
+              </p>
+            </div>
+            <div className="rounded-lg border border-border bg-secondary/30 p-3">
+              <p className="text-xs font-semibold text-foreground uppercase tracking-wide">FRCA Final / FFICM</p>
+              <p className="text-xs text-foreground/80 mt-1">
+                Right heart cycle, JVP/CVP waveform interpretation, PA catheter traces, valvular and
+                pericardial pathophysiology, ventricular interdependence, diastolic dysfunction, coronary
+                perfusion physiology, applied haemodynamics in shock and arrhythmia.
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground italic mt-3">
+            References: Levick JR, <em>An Introduction to Cardiovascular Physiology</em>, 6th edn (CRC Press, 2018);
+            Pappano & Wier, <em>Cardiovascular Physiology</em>, 11th edn (Elsevier); BJA Education — Cardiovascular
+            Physiology series; FRCA Primary & Final curriculum (RCoA 2021); FFICM curriculum (FICM 2019).
           </p>
+        </section>
+
+        <section className="mb-10">
+          <h2 className="text-2xl font-serif font-bold text-foreground">Normal Pressure & Volume Reference</h2>
+          <p className="text-foreground/90 leading-relaxed mb-3">
+            Approximate adult resting values you should be able to quote in the viva.
+          </p>
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full text-sm">
+              <thead className="bg-secondary/50">
+                <tr>
+                  <th className="text-left p-2 font-semibold">Chamber / Vessel</th>
+                  <th className="text-left p-2 font-semibold">Systolic (mmHg)</th>
+                  <th className="text-left p-2 font-semibold">Diastolic / Mean (mmHg)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                <tr><td className="p-2">Right atrium (CVP)</td><td className="p-2">—</td><td className="p-2">mean 2–6</td></tr>
+                <tr><td className="p-2">Right ventricle</td><td className="p-2">15–25</td><td className="p-2">0–8</td></tr>
+                <tr><td className="p-2">Pulmonary artery</td><td className="p-2">15–25</td><td className="p-2">8–15 (mean 10–20)</td></tr>
+                <tr><td className="p-2">PCWP / LA</td><td className="p-2">—</td><td className="p-2">mean 6–12</td></tr>
+                <tr><td className="p-2">Left ventricle</td><td className="p-2">100–140</td><td className="p-2">3–12 (LVEDP)</td></tr>
+                <tr><td className="p-2">Aorta</td><td className="p-2">100–140</td><td className="p-2">60–90 (mean 70–105)</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="grid md:grid-cols-3 gap-3 mt-4">
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs font-semibold text-foreground">Volumes</p>
+              <p className="text-xs text-foreground/80 mt-1">LVEDV ~120 mL · LVESV ~50 mL · SV ~70 mL · EF ~55–70%</p>
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs font-semibold text-foreground">Output</p>
+              <p className="text-xs text-foreground/80 mt-1">CO = HR × SV ≈ 5 L/min · CI 2.5–4 L/min/m²</p>
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs font-semibold text-foreground">Resistance</p>
+              <p className="text-xs text-foreground/80 mt-1">SVR 800–1200 · PVR 50–150 dyn·s·cm⁻⁵</p>
+            </div>
+          </div>
         </section>
 
         <section className="mb-10">
