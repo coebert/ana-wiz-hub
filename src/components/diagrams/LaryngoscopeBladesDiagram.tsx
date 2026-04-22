@@ -216,53 +216,109 @@ interface BladeShapeProps {
  *  - dur: motion duration in seconds.
  */
 const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: number; r: number; label: string }; dur: number }> = {
-  macintosh:         { path: "M40,118 Q90,150 148,148",                 target: { x: 148, y: 148, r: 7,  label: "Vallecula" },                dur: 2.4 },
-  miller:            { path: "M40,118 Q100,135 160,124 Q168,122 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
-  mccoy:             { path: "M40,118 Q90,150 145,150",                 target: { x: 145, y: 150, r: 7,  label: "Vallecula (then flex tip)" }, dur: 2.4 },
-  polio:             { path: "M55,118 Q95,150 148,150",                 target: { x: 148, y: 150, r: 7,  label: "Vallecula" },                dur: 2.4 },
-  wisconsin:         { path: "M40,116 Q100,130 160,122 Q168,120 170,118", target: { x: 170, y: 118, r: 7,  label: "Under epiglottis" },         dur: 2.6 },
-  videolaryngoscope: { path: "M40,118 Q70,150 100,170 Q140,185 158,166", target: { x: 178, y: 105, r: 8,  label: "Glottic view (camera)" },    dur: 3.0 },
+  macintosh:         { path: "M70,82 Q120,150 175,178 Q200,188 215,182",          target: { x: 215, y: 182, r: 8,  label: "Vallecula" },                dur: 2.6 },
+  miller:            { path: "M70,82 Q130,138 200,158 Q220,162 232,150",          target: { x: 232, y: 150, r: 8,  label: "Under epiglottis" },         dur: 2.7 },
+  mccoy:             { path: "M70,82 Q120,150 175,178 Q195,184 208,182",          target: { x: 208, y: 182, r: 8,  label: "Vallecula → flex tip" },     dur: 2.8 },
+  polio:             { path: "M88,72 Q140,150 185,178 Q205,184 218,180",          target: { x: 218, y: 180, r: 8,  label: "Vallecula" },                dur: 2.6 },
+  wisconsin:         { path: "M70,82 Q130,140 200,158 Q220,162 232,150",          target: { x: 232, y: 150, r: 8,  label: "Under epiglottis" },         dur: 2.7 },
+  videolaryngoscope: { path: "M70,82 Q110,140 150,180 Q185,210 215,200",          target: { x: 222, y: 138, r: 9,  label: "Glottic view (camera)" },    dur: 3.0 },
 };
+
+/* ---------- Shared visual primitives ---------- */
+
+const Defs = ({ bladeKey, color }: { bladeKey: BladeKey; color: string }) => (
+  <defs>
+    <linearGradient id={`steel-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stopColor="hsl(210, 12%, 88%)" />
+      <stop offset="35%" stopColor="hsl(210, 10%, 72%)" />
+      <stop offset="55%" stopColor="hsl(210, 12%, 56%)" />
+      <stop offset="100%" stopColor="hsl(210, 14%, 40%)" />
+    </linearGradient>
+    <linearGradient id={`channel-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(210, 14%, 38%)" />
+      <stop offset="100%" stopColor="hsl(210, 16%, 58%)" />
+    </linearGradient>
+    <linearGradient id={`handle-${bladeKey}`} x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="hsl(220, 8%, 22%)" />
+      <stop offset="50%" stopColor="hsl(220, 8%, 36%)" />
+      <stop offset="100%" stopColor="hsl(220, 8%, 18%)" />
+    </linearGradient>
+    <linearGradient id={`brass-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(45, 55%, 75%)" />
+      <stop offset="100%" stopColor="hsl(38, 60%, 45%)" />
+    </linearGradient>
+    <radialGradient id={`bulb-${bladeKey}`} cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stopColor="hsl(55, 100%, 92%)" />
+      <stop offset="40%" stopColor="hsl(50, 100%, 72%)" />
+      <stop offset="100%" stopColor="hsl(45, 90%, 50%)" stopOpacity="0" />
+    </radialGradient>
+    <filter id={`shadow-${bladeKey}`} x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+      <feOffset dx="0.6" dy="1.2" result="off" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+      <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+    <clipPath id={`hclip-${bladeKey}`}><rect x="37" y="14" width="26" height="68" /></clipPath>
+  </defs>
+);
+
+const Handle = ({ bladeKey, transform }: { bladeKey: BladeKey; transform?: string }) => (
+  <g transform={transform} filter={`url(#shadow-${bladeKey})`}>
+    <ellipse cx="50" cy="14" rx="13" ry="3.2" fill="hsl(220, 8%, 26%)" />
+    <rect x="37" y="14" width="26" height="68" rx="2" fill={`url(#handle-${bladeKey})`} stroke="hsl(220, 10%, 14%)" strokeWidth="0.5" />
+    <g opacity="0.55" clipPath={`url(#hclip-${bladeKey})`}>
+      {Array.from({ length: 14 }).map((_, i) => (
+        <line key={`a${i}`} x1={37} y1={18 + i * 5} x2={63} y2={13 + i * 5} stroke="hsl(220, 5%, 10%)" strokeWidth="0.35" />
+      ))}
+      {Array.from({ length: 14 }).map((_, i) => (
+        <line key={`b${i}`} x1={37} y1={13 + i * 5} x2={63} y2={18 + i * 5} stroke="hsl(220, 5%, 10%)" strokeWidth="0.35" />
+      ))}
+    </g>
+    <rect x="38" y="16" width="2" height="64" rx="1" fill="hsl(220, 8%, 60%)" opacity="0.5" />
+    <rect x="35" y="80" width="30" height="6" rx="1" fill={`url(#brass-${bladeKey})`} stroke="hsl(38, 50%, 30%)" strokeWidth="0.4" />
+    <path d="M40,86 L40,96 L60,96 L60,86 Z" fill={`url(#brass-${bladeKey})`} stroke="hsl(38, 50%, 30%)" strokeWidth="0.4" />
+    <circle cx="50" cy="91" r="1.4" fill="hsl(38, 50%, 30%)" />
+  </g>
+);
 
 const BladeShape = ({ bladeKey, opacity = 1, animate = false }: BladeShapeProps) => {
   const b = blades[bladeKey];
-  const gradId = `blade-${bladeKey}`;
   const traj = tipTrajectory[bladeKey];
+  const steel = `url(#steel-${bladeKey})`;
+  const channel = `url(#channel-${bladeKey})`;
+  const accent = b.color;
 
   return (
-    <svg viewBox="0 0 220 240" className="w-full max-w-[260px] mx-auto" style={{ opacity }}>
-      <defs>
-        <linearGradient id={gradId} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={b.color} stopOpacity="0.9" />
-          <stop offset="100%" stopColor={b.color} stopOpacity="0.55" />
-        </linearGradient>
-      </defs>
+    <svg viewBox="0 0 260 260" className="w-full max-w-[300px] mx-auto" style={{ opacity }}>
+      <Defs bladeKey={bladeKey} color={accent} />
 
-      {/* Reference anatomy: tongue + epiglottis + vocal cords */}
-      <g opacity={animate ? 0.42 : 0.18}>
+      {/* Reference anatomy — sagittal cross-section through the upper airway */}
+      <g opacity={animate ? 0.5 : 0.22}>
+        {/* Hard palate */}
+        <path d="M150,90 Q190,82 230,98 L232,108 Q190,96 150,104 Z" fill="hsl(15, 35%, 78%)" />
+        <text x="190" y="92" fontSize="5.5" fill="hsl(15, 35%, 50%)">Hard palate</text>
         {/* Tongue */}
-        <path d="M40,170 Q90,140 140,150 Q160,155 170,170 L170,200 L40,200 Z" fill="hsl(var(--muted-foreground))" />
-        <text x="60" y="195" fontSize="6" fill="hsl(var(--muted-foreground))">Tongue</text>
+        <path d="M120,150 Q160,130 200,150 Q220,158 215,180 L120,180 Z" fill="hsl(0, 45%, 72%)" stroke="hsl(0, 40%, 52%)" strokeWidth="0.4" />
+        <text x="155" y="172" fontSize="5.5" fill="hsl(0, 40%, 40%)">Tongue (base)</text>
+        {/* Hyoepiglottic ligament */}
+        <path d="M210,178 L222,160" stroke="hsl(45, 40%, 45%)" strokeWidth="0.6" strokeDasharray="1.5 1" opacity="0.7" />
         {/* Epiglottis */}
-        <path d="M150,150 Q160,130 168,118 Q172,114 174,118 Q170,135 162,152 Z" fill="hsl(280, 40%, 55%)" />
-        <text x="180" y="125" fontSize="6" fill="hsl(280, 40%, 55%)">Epiglottis</text>
+        <path d="M218,178 Q228,158 232,138 Q235,132 238,138 Q236,160 226,180 Z" fill="hsl(15, 55%, 68%)" stroke="hsl(15, 55%, 45%)" strokeWidth="0.4" />
+        <text x="240" y="148" fontSize="5.5" fill="hsl(15, 55%, 40%)">Epiglottis</text>
         {/* Vallecula */}
-        <circle cx="148" cy="148" r="3" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 1" />
-        <text x="115" y="146" fontSize="5" fill="hsl(var(--muted-foreground))">Vallecula</text>
-        {/* Cords */}
-        <line x1="170" y1="115" x2="195" y2="100" stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" strokeDasharray="2 1" />
-        <text x="186" y="95" fontSize="5" fill="hsl(var(--muted-foreground))">Cords</text>
+        <ellipse cx="215" cy="180" rx="4" ry="2.5" fill="hsl(0, 25%, 50%)" opacity="0.6" />
+        <text x="180" y="195" fontSize="5" fill="hsl(var(--muted-foreground))">Vallecula</text>
+        {/* Vocal cords */}
+        <path d="M232,138 L246,128 L244,142 Z" fill="hsl(40, 25%, 92%)" stroke="hsl(40, 20%, 60%)" strokeWidth="0.4" />
+        <text x="248" y="124" fontSize="5" fill="hsl(40, 20%, 45%)">Cords</text>
+        {/* Trachea */}
+        <path d="M232,144 L240,148 L244,200 L228,200 Z" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1" opacity="0.5" />
+        {/* Posterior pharyngeal wall */}
+        <path d="M120,90 Q115,140 120,200" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.4" strokeDasharray="1.5 1" opacity="0.45" />
+        {/* Upper incisors */}
+        <path d="M126,126 L132,128 L132,134 L126,132 Z" fill="hsl(40, 25%, 92%)" stroke="hsl(40, 20%, 50%)" strokeWidth="0.3" />
       </g>
-      {/* Handle (common to all) */}
-      {bladeKey !== "polio" && (
-        <g>
-          <rect x="20" y="20" width="14" height="90" rx="2" fill="hsl(var(--muted))" stroke="hsl(0,0%,55%)" strokeWidth="0.6" />
-          {/* Handle ridges */}
-          {[0, 1, 2, 3, 4, 5, 6].map(i => (
-            <line key={i} x1="22" y1={28 + i * 12} x2="32" y2={28 + i * 12} stroke="hsl(0,0%,40%)" strokeWidth="0.4" opacity="0.4" />
-          ))}
-        </g>
-      )}
+
 
       {/* Blade-specific shapes */}
       {bladeKey === "macintosh" && (
