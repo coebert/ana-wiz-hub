@@ -137,6 +137,12 @@ const modalities: Modality[] = [
       { id: "n6", severity: "major", title: "Raised intra-abdominal pressure", why: "Alters transmission of pleural pressure to the heart; SVV/PPV thresholds become unreliable.", examPearl: "Common pitfall in liver failure, abdominal compartment syndrome." },
       { id: "n7", severity: "major", title: "Finger oedema or prolonged cuff use", why: "Volume-clamp accuracy drops; risk of digital ischaemia with continuous use > 8 h.", examPearl: "Alternate fingers; remove for ≥30 min every 8 h." },
       { id: "n8", severity: "minor", title: "Brachial-equivalent reconstruction error", why: "Algorithm assumes typical age/sex/BP relationships; outliers (vascular disease) less accurate.", examPearl: "Trends more reliable than absolute values." },
+      { id: "n9", severity: "critical", title: "Atrial/ventricular pacing dependence (SVV/PPV)", why: "Fixed-rate pacing can synchronise with the ventilator producing spurious SVV; loss of atrial kick alters baseline SV.", examPearl: "Interpret SVV cautiously in any paced rhythm." },
+      { id: "n10", severity: "critical", title: "VA-ECMO / IABP / LVAD (volume-clamp)", why: "Non-pulsatile or counterpulsated flow violates finger-cuff reconstruction.", examPearl: "Volume-clamp devices fail on mechanical circulatory support." },
+      { id: "n11", severity: "major", title: "High PEEP (> 10 cmH₂O)", why: "Exaggerates cyclic preload swing — over-estimates SVV/PPV and may falsely predict fluid responsiveness.", examPearl: "Adjust threshold upwards or use PLR." },
+      { id: "n12", severity: "major", title: "Severe pulmonary hypertension / cor pulmonale", why: "RV unable to transmit cyclic preload changes to LV; SVV/PPV unreliable.", examPearl: "Echo or PAC preferred." },
+      { id: "n13", severity: "major", title: "Prone position", why: "Altered chest wall and abdominal compliance change SVV/PPV thresholds; volume-clamp finger access difficult.", examPearl: "Use PLR substitute (Trendelenburg) or end-expiratory occlusion." },
+      { id: "n14", severity: "minor", title: "Arteriovenous fistula on cuff arm", why: "Distorts pulsation; risk of fistula damage with prolonged cuff inflation.", examPearl: "Use opposite hand." },
     ],
   },
 ];
