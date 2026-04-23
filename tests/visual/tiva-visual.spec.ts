@@ -35,13 +35,94 @@ async function freezeAnimations(page: Page) {
   });
 }
 
-/** Wait for SVG diagrams to be in DOM and for animated blocks to settle. */
+/**
+ * Wait for diagrams to be FULLY rendered, not just present in the DOM.
+ *
+ * Slower CI machines and cold caches frequently produced flaky screenshots
+ * because the SVG `<svg>` element existed but its content (axes, plotted
+ * paths, legend text) had not yet been drawn by React's effect / raf
+ * passes. We now wait on stable, content-specific signals from each of
+ * the three TIVA diagrams so the screenshot only fires after every plot
+ * has actually painted its contents.
+ */
 async function waitForDiagrams(page: Page) {
   await page.waitForLoadState("networkidle");
-  // At least one SVG diagram should be present on the TIVA page
-  await page.locator("svg").first().waitFor({ state: "visible", timeout: 10_000 });
-  // The model-switch fade-in block should be mounted
-  await page.locator(".animate-fade-in").first().waitFor({ state: "attached" });
+
+  // 1. Container-level: at least one SVG diagram in the DOM and visible.
+  await page
+    .locator("svg")
+    .first()
+    .waitFor({ state: "visible", timeout: 15_000 });
+
+  // 2. TCISimulatorDiagram — wait for the static legend labels that
+  //    render on every paint regardless of model selection / animation.
+  await expect
+    .poll(
+      async () =>
+        (await page.locator("svg text", { hasText: "Marsh Cp (solid)" }).count()) > 0,
+      { timeout: 15_000, message: "TCISimulatorDiagram legend not rendered" },
+    )
+    .toBe(true);
+  await expect
+    .poll(
+      async () =>
+        (await page.locator("svg text", { hasText: "Target Ce" }).count()) > 0,
+      { timeout: 15_000, message: "TCISimulatorDiagram target label not rendered" },
+    )
+    .toBe(true);
+  // Plotted curves: TCISimulatorDiagram draws several <path> elements for
+  // Marsh/Schnider Cp/Ce; insist on the curves having rendered.
+  await expect
+    .poll(async () => await page.locator("svg path").count(), {
+      timeout: 15_000,
+      message: "TCI simulator paths not rendered",
+    })
+    .toBeGreaterThan(4);
+
+  // 3. CSHTDiagram — drug names are rendered as <text> labels for each
+  //    plotted drug. Wait for the canonical set so we know the curves are
+  //    drawn and the legend is laid out.
+  for (const drug of ["Propofol", "Remifentanil", "Fentanyl"]) {
+    await expect
+      .poll(
+        async () =>
+          (await page.locator("svg text", { hasText: drug }).count()) > 0,
+        { timeout: 15_000, message: `CSHTDiagram missing drug label "${drug}"` },
+      )
+      .toBe(true);
+  }
+
+  // 4. DecrementTimeDiagram — a "min" axis tick proves the y-axis labels
+  //    have actually rendered (rather than just the empty SVG frame).
+  await expect
+    .poll(
+      async () =>
+        (await page.locator("svg text", { hasText: /min$/ }).count()) > 0,
+      { timeout: 15_000, message: "DecrementTimeDiagram axis ticks not rendered" },
+    )
+    .toBe(true);
+
+  // 5. Animated cue blocks should be mounted (model-switch fade-in).
+  await page
+    .locator(".animate-fade-in")
+    .first()
+    .waitFor({ state: "attached", timeout: 10_000 });
+
+  // 6. Final settle: wait for fonts so text-metric-driven layout is
+  //    stable (fallback → web font swap can move text by 1–2px and produce
+  //    pixel diffs), then for two animation frames so React commits land.
+  await page.evaluate(async () => {
+    if ("fonts" in document) {
+      await (document as unknown as { fonts: { ready: Promise<unknown> } })
+        .fonts.ready;
+    }
+  });
+  await page.evaluate(
+    () =>
+      new Promise((r) =>
+        requestAnimationFrame(() => requestAnimationFrame(() => r(null))),
+      ),
+  );
 }
 
 test.describe("TIVA page — visual regression across viewports", () => {
