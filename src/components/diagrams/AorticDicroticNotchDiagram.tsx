@@ -109,6 +109,13 @@ const NOTCH_PAUSE_MS = 900;
 const AorticDicroticNotchDiagram = () => {
   const [t, setT] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [showIABP, setShowIABP] = useState(true);
+
+  // IABP timing (counterpulsation, 1:1):
+  //   Inflation: at the dichrotic notch (aortic valve closure, start of diastole)
+  //   Deflation: just before next systolic upstroke (end-diastole)
+  const INFLATE_T = NOTCH_T;          // 0.55 — onset of diastole
+  const DEFLATE_T = 0.97;             // just before next ejection (~0.05)
 
   useEffect(() => {
     if (!playing) return;
