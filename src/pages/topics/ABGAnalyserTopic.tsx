@@ -394,7 +394,6 @@ const ABGAnalyserTopic = () => {
             </p>
           </div>
         </div>
-      </section>
 
       <SynthesisBlock
         title="Blood Gas Analyser — What's Measured vs Calculated"
