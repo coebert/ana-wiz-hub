@@ -465,6 +465,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           markers={[0.0, 0.25, 0.5, 0.75]}
           targetId="technique-bolus"
           linkLabel="Read about boluses →"
+          callouts={[
+            { at: 0.04, label: "1st bolus", dy: -14 },
+            { at: 0.18, label: "trough — patient moves", dy: 16 },
+            { at: 0.54, label: "peak — apnoea risk", dy: -14 },
+            { at: 0.92, label: "sawtooth pattern", dy: 14 },
+          ]}
         />
         <Panel
           title="Manual infusion"
@@ -474,6 +480,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           colorVar="--accent-foreground"
           targetId="technique-infusion"
           linkLabel="Read about manual infusion →"
+          callouts={[
+            { at: 0.05, label: "infusion starts", dy: 14 },
+            { at: 0.32, label: "1τ ≈ 63% of target", dy: -14 },
+            { at: 0.7, label: "approaching steady state", dy: -14 },
+            { at: 0.95, label: "≈ 4–5τ to plateau", dy: 12 },
+          ]}
         />
         <Panel
           title="TCI (Cp/Ce target)"
@@ -483,6 +495,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           colorVar="--primary"
           targetId="technique-tci"
           linkLabel="Read about TCI →"
+          callouts={[
+            { at: 0.04, label: "loading bolus", dy: 14 },
+            { at: 0.1, label: "brief overshoot", dy: -14 },
+            { at: 0.4, label: "rate adjusts to hold target", dy: -14 },
+            { at: 0.85, label: "stable Ce — easy titration", dy: 14 },
+          ]}
         />
       </div>
 
