@@ -10,6 +10,7 @@ import { SeeAlso } from "@/components/SeeAlso";
 import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
+import { LazyDiagrams } from "@/components/LazyDiagrams";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 
@@ -162,7 +163,9 @@ export const TopicTemplate = ({
                 curriculumCodes={sectionExamMapping.diagrams.curriculumCodes}
               />
             )}
-            <div className="space-y-6">{diagrams}</div>
+            <LazyDiagrams>
+              <div className="space-y-6">{diagrams}</div>
+            </LazyDiagrams>
             {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
               <SectionReferences
                 topicId={topicId}
