@@ -153,7 +153,33 @@ const TIVATopic = () => {
   const info = models[selectedModel];
 
   return (
-    <SectionLayout title="Total Intravenous Anaesthesia (TIVA)" subtitle="FRCA Primary & Final / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
+    <TopicTemplate
+      title="Total Intravenous Anaesthesia (TIVA)"
+      subtitle="FRCA Primary & Final / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="tiva"
+      topicTitle="Total Intravenous Anaesthesia (TIVA)"
+      objectives={objectives}
+      workedExamples={workedExamplesData}
+      quizQuestions={tivaQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final", "fficm"] },
+        workedExamples: { exams: ["primary", "final", "fficm"] },
+        keyPoints: { exams: ["primary", "final", "fficm"] },
+      }}
+      keyPoints={[
+        "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate",
+        "Marsh: weight-only, V1 scales with TBW, ke0 0.26 min⁻¹ — risk of overdose in obese, slower Ce equilibration",
+        "Schnider: age/sex/LBM covariates, fixed V1 (4.27 L), ke0 0.456 min⁻¹ — UK preferred for Ce targeting, safer in elderly",
+        "Eleveld: universal model (neonates to elderly), allometric scaling, accounts for opioid interaction — most modern",
+        "Minto: standard remifentanil model. CSHT ~3–4 min regardless of duration. Ce targets: analgesia 2–4, surgery 4–8 ng/mL",
+        "Effect-site targeting: pump overshoots Cp to fill effect site faster. Lower ke0 (Marsh) → larger overshoot → more haemodynamic instability",
+        "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)",
+        "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately",
+      ]}
+      coreConcepts={<>
       {/* Introduction */}
       <section className="space-y-6 mb-10">
         <div>
@@ -367,24 +393,8 @@ const TIVATopic = () => {
           <li><strong>PRIS</strong>: high-dose (&gt;4 mg/kg/hr) prolonged (&gt;48 h) propofol → metabolic acidosis, rhabdomyolysis, cardiac failure. Stop infusion immediately if suspected.</li>
         </ul>
       </SynthesisBlock>
-
-      <KeyLearningPoints points={[
-        "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate",
-        "Marsh: weight-only, V1 scales with TBW, ke0 0.26 min⁻¹ — risk of overdose in obese, slower Ce equilibration",
-        "Schnider: age/sex/LBM covariates, fixed V1 (4.27 L), ke0 0.456 min⁻¹ — UK preferred for Ce targeting, safer in elderly",
-        "Eleveld: universal model (neonates to elderly), allometric scaling, accounts for opioid interaction — most modern",
-        "Minto: standard remifentanil model. CSHT ~3–4 min regardless of duration. Ce targets: analgesia 2–4, surgery 4–8 ng/mL",
-        "Effect-site targeting: pump overshoots Cp to fill effect site faster. Lower ke0 (Marsh) → larger overshoot → more haemodynamic instability",
-        "BIS/Entropy monitoring mandatory for TIVA (NAP5). Awareness risk 5× higher with TIVA vs volatile (1:8,000)",
-        "PRIS: propofol >4 mg/kg/hr for >48h → mitochondrial failure, metabolic acidosis, rhabdomyolysis. Stop propofol immediately",
-      ]} />
-
-      <QuizSection questions={tivaQuestions} />
-      <ReferencesList topicId="tiva" />
-
-      <SeeAlso topicId="tiva" />
-        <TopicCompletionToggle topicId="tiva" topicTitle="Total Intravenous Anaesthesia (TIVA)" />
-    </SectionLayout>
+      </>}
+    />
   );
 };
 
