@@ -41,8 +41,8 @@ const HeadNeckAnatomyTopic = () => {
         "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["frca-primary", "frca-final"] },
-        keyPoints: { exams: ["frca-primary", "frca-final"] },
+        objectives: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
       }}
       coreConcepts={
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">

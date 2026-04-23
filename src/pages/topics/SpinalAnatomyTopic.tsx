@@ -38,8 +38,8 @@ const SpinalAnatomyTopic = () => {
         "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["frca-primary", "frca-final"] },
-        keyPoints: { exams: ["frca-primary", "frca-final"] },
+        objectives: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

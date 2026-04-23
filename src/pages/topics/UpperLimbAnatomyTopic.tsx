@@ -35,8 +35,8 @@ const UpperLimbAnatomyTopic = () => {
         "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["frca-primary", "frca-final"] },
-        keyPoints: { exams: ["frca-primary", "frca-final"] },
+        objectives: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
