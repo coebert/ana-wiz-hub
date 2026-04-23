@@ -1,19 +1,48 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
 import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumLegWeaknessDecisionTree";
 import { DiagramSection } from "@/components/DiagramSection";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const ObstetricAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Obstetric Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Obstetric Anaesthesia"
+      subtitle="FRCA / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="obstetric-anaesthesia"
+      topicTitle="Obstetric Anaesthesia"
+      quizQuestions={obstetricAnaesthesiaQuestions}
+      objectives={[
+        "Describe the major physiological changes of pregnancy and their anaesthetic implications",
+        "Plan a safe spinal, epidural top-up, or RSI GA for caesarean section using appropriate doses and targets",
+        "Recognise and manage major obstetric emergencies (PPH, severe pre-eclampsia, AFE, failed intubation)",
+        "Apply OAA/AAGBI 2020 principles to GA for Cat 1 LSCS (pre-ox, RSI, MAC, awareness prevention)",
+        "Triage postpartum leg weakness — distinguish neuraxial red flags from intrinsic obstetric nerve palsies",
+      ]}
+      keyPoints={[
+        "Pregnancy: ↑CO 40%, ↓FRC 20%, ↑O₂ consumption — rapid desaturation on apnoea",
+        "Spinal for CS: heavy bupivacaine + fentanyl + diamorphine, target T4, phenylephrine infusion",
+        "PPH: commonest cause is uterine atony — oxytocin → ergometrine → carboprost → surgical",
+        "Pre-eclampsia: MgSO₄ 4g bolus for seizure prophylaxis; definitive treatment is delivery",
+        "PIEB epidural technique provides better analgesia and satisfaction than continuous infusion",
+        "Cat 1 GA: target ≥1.0 MAC pre-delivery + processed EEG — obstetric GA is highest awareness-risk group (NAP5)",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
+        diagrams: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
+        keyPoints: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
+      }}
+      sectionSources={{
+        objectives: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
+        diagrams: ["BJA Educ 2019", "OAA/DAS 2015"],
+        keyPoints: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],
+      }}
+      coreConcepts={
+        <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Changes of Pregnancy</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -477,22 +506,9 @@ const ObstetricAnaesthesiaTopic = () => {
         >
           <PostpartumLegWeaknessDecisionTree />
         </DiagramSection>
-      </section>
-
-      <KeyLearningPoints points={[
-        "Pregnancy: ↑CO 40%, ↓FRC 20%, ↑O₂ consumption — rapid desaturation on apnoea",
-        "Spinal for CS: heavy bupivacaine + fentanyl + diamorphine, target T4, phenylephrine infusion",
-        "PPH: commonest cause is uterine atony — oxytocin → ergometrine → carboprost → surgical",
-        "Pre-eclampsia: MgSO₄ 4g bolus for seizure prophylaxis; definitive treatment is delivery",
-        "PIEB epidural technique provides better analgesia and satisfaction than continuous infusion",
-      ]} />
-
-      <QuizSection questions={obstetricAnaesthesiaQuestions} />
-      <ReferencesList topicId="obstetric-anaesthesia" />
-
-      <SeeAlso topicId="obstetric-anaesthesia" />
-        <TopicCompletionToggle topicId="obstetric-anaesthesia" topicTitle="Obstetric Anaesthesia" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 
