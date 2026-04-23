@@ -14,6 +14,7 @@ import { LazyDiagrams } from "@/components/LazyDiagrams";
 import { ExamSummary } from "@/components/ExamSummary";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
+import { topicReferences } from "@/data/references";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
