@@ -1,20 +1,76 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { painMedicineQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { DorsalHornSynapseDiagram } from "@/components/diagrams/DorsalHornSynapseDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
 import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
 
+const objectives = [
+  "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",
+  "Build a multimodal opioid-sparing analgesic plan (paracetamol, NSAID, gabapentinoids, ketamine, IV Mg, IV lidocaine)",
+  "Apply NICE NG193 (chronic primary pain) and CG173 (neuropathic pain) recommendations",
+  "Manage CRPS using Budapest criteria with early MDT, graded motor imagery and SCS where indicated",
+  "Perform safe opioid rotation using OMEDD with a 25–50% dose reduction for incomplete cross-tolerance",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Opioid rotation — oral morphine to subcutaneous diamorphine",
+    scenario:
+      "A palliative cancer patient on oral morphine 60 mg modified-release BD develops persistent vomiting and is no longer absorbing oral medication. Calculate an equivalent 24-h subcutaneous diamorphine infusion via syringe driver.",
+    working:
+      "Total oral morphine = 120 mg/24 h.\nOral morphine : SC morphine = 2 : 1 → SC morphine = 60 mg/24 h.\nSC morphine : SC diamorphine ≈ 3 : 1 → SC diamorphine = 20 mg/24 h.\nReduce by 25–33% for incomplete cross-tolerance and to allow titration → start ~15 mg SC diamorphine over 24 h via syringe driver.\nPrescribe rescue: SC diamorphine 2.5 mg PRN q1h (≈1/6 of 24-h dose).",
+    answer:
+      "Start SC diamorphine ~15 mg over 24 h with rescue SC diamorphine 2.5 mg PRN q1h, and review after 24 h.",
+  },
+  {
+    title: "Acute neuropathic pain after thoracotomy",
+    scenario:
+      "Two weeks after a thoracotomy, a patient describes persistent burning, allodynia and electric-shock pains in the scar — typical of neuropathic post-thoracotomy pain. What is your first-line management plan?",
+    working:
+      "Confirm neuropathic features (DN4 / S-LANCSS) — burning, shooting, allodynia, hyperalgesia in dermatomal distribution.\nApply NICE CG173: first-line monotherapy from amitriptyline, duloxetine, gabapentin or pregabalin (chosen for comorbidity / interaction profile).\nStart amitriptyline 10 mg ON, titrate to 25–75 mg ON; OR pregabalin 75 mg BD titrated to 150–300 mg BD.\nMaintain multimodal analgesia (paracetamol + NSAID if no contraindication); add topical 5% lidocaine patch for focal allodynia.\nReview at 4–6 weeks; if inadequate, switch to a different first-line agent before combining; refer to chronic pain MDT if persistent.",
+    answer:
+      "Start a NICE first-line agent (e.g. amitriptyline 10 mg ON titrated, or pregabalin 75 mg BD titrated), continue multimodal analgesia, add topical 5% lidocaine for focal allodynia, and refer to the pain MDT if not improving at 4–6 weeks.",
+  },
+];
+
 const PainMedicineTopic = () => {
   return (
-    <SectionLayout title="Pain Medicine" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Pain Medicine"
+      subtitle="FRCA / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="pain-medicine"
+      topicTitle="Pain Medicine"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      quizQuestions={painMedicineQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      keyPoints={[
+        "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
+        "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery",
+        "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)",
+        "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants",
+        "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function",
+        "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
+        "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
+        "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
+        "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential",
+        "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only",
+        "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz",
+        "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain",
+        "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'",
+      ]}
+      coreConcepts={
+        <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pain Pathways & Classification</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -515,29 +571,8 @@ const PainMedicineTopic = () => {
           </div>
         </div>
       </section>
-
-      <KeyLearningPoints points={[
-        "Multimodal analgesia reduces opioid consumption and improves outcomes — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",
-        "IV magnesium reduces 24-h opioid use ~25% (Cochrane 2013); IV lidocaine — strongest evidence in open abdominal surgery (Weibel 2018), LOLIPOP 2024 questioned benefit in laparoscopic surgery",
-        "Neuropathic pain first-line: amitriptyline, duloxetine, pregabalin or gabapentin (NICE CG173)",
-        "NICE NG193 (2021): chronic primary pain — do NOT offer paracetamol, NSAIDs, opioids, gabapentinoids; offer exercise, CBT/ACT, acupuncture, certain antidepressants",
-        "Specialist pain MDT (physician, psychologist, physio, OT, nurse, pharmacist) + Pain Management Programmes — strongest evidence base for restored function",
-        "Fibromyalgia (ACR 2016): nociplastic central sensitisation; aerobic exercise + CBT + duloxetine/amitriptyline (EULAR 2016); avoid opioids and NSAIDs",
-        "ME/CFS (NICE NG206, 2021): pacing within energy envelope, NOT graded exercise therapy; PEM is the cardinal feature",
-        "CRPS — Budapest criteria; early MDT and graded motor imagery / mirror therapy; SCS (NICE TA159) for refractory; vitamin C 500 mg × 50 days post wrist # for prevention",
-        "Cancer pain WHO ladder revisited (2018) — skip step 2, start low-dose strong opioid; consider 4th 'interventional' step; mechanism-based adjuvants are essential",
-        "Opioid rotation: calculate 24-h OMEDD, convert, reduce 25–50% for incomplete cross-tolerance; methadone is specialist-only",
-        "Coeliac plexus neurolysis — first-line interventional for pancreatic cancer pain (Wong 2004); EUS-guided increasingly preferred; risk of paraplegia from artery of Adamkiewicz",
-        "Intrathecal pumps: oral : IV : epidural : intrathecal morphine ≈ 300 : 100 : 10 : 1; Smith 2002 showed survival benefit in refractory cancer pain",
-        "Early palliative care MDT (Temel NEJM 2010) improves QoL and survival; addresses Cicely Saunders' 'total pain'",
-      ]} />
-
-      <QuizSection questions={painMedicineQuestions} />
-      <ReferencesList topicId="pain-medicine" />
-
-      <SeeAlso topicId="pain-medicine" />
-        <TopicCompletionToggle topicId="pain-medicine" topicTitle="Pain Medicine" />
-    </SectionLayout>
+      }
+    />
   );
 };
 
