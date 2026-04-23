@@ -1,7 +1,4 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { electricalSafetyQuiz } from "@/data/quizzes";
 import ElectricalSafetyDiagram from "@/components/diagrams/ElectricalSafetyDiagram";
 import { DefibrillatorCapacitorDiagram } from "@/components/diagrams/DefibrillatorCapacitorDiagram";
@@ -9,19 +6,47 @@ import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTran
 import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Define macroshock and microshock and quote the threshold currents that cause perception, let-go, respiratory arrest and VF.",
+  "Explain why intracardiac catheters reduce the VF threshold to ~150 µA and the rationale for Type CF equipment.",
+  "Describe the isolated power supply with line isolation monitor and contrast with RCD/RCCB protection.",
+  "Compare monopolar and bipolar diathermy, listing the principal hazards and how they are mitigated.",
+  "Explain the role of theatre humidity (50–60%) and antistatic footwear (75 kΩ–10 MΩ) in electrical safety.",
+  "Outline the physics of capacitor-based defibrillators and contrast monophasic and biphasic waveforms.",
+];
+
+const keyPoints = [
+  "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
+  "Type CF equipment (leakage <10 µA) required for intracardiac connections.",
+  "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.",
+  "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.",
+  "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).",
+  "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.",
+  "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.",
+  "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).",
+  "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic.",
+];
 
 const ElectricalSafetyTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Electrical Safety"
       subtitle="FRCA Primary — Physics"
       backPath="/physics"
       backLabel="Physics"
       accentColor="text-physics"
-    >
-      <div className="prose prose-slate max-w-none">
+      topicId="electrical-safety"
+      topicTitle="Electrical Safety"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={electricalSafetyQuiz}
+      sectionExamMapping={{
+        objectives: { exams: ["primary"] },
+        keyPoints: { exams: ["primary"] },
+      }}
+      coreConcepts={
+        <div className="prose prose-slate max-w-none">
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
@@ -201,27 +226,10 @@ const ElectricalSafetyTopic = () => {
           </p>
           <DefibrillatorCapacitorDiagram />
         </section>
-      </div>
-
-      <ElectricalSafetyDiagram />
-
-      <KeyLearningPoints points={[
-        "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
-        "Type CF equipment (leakage <10 µA) required for intracardiac connections.",
-        "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.",
-        "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.",
-        "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).",
-        "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.",
-        "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.",
-        "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).",
-        "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic."
-      ]} />
-      <QuizSection questions={electricalSafetyQuiz} />
-      <ReferencesList topicId="electrical-safety" />
-
-      <SeeAlso topicId="electrical-safety" />
-        <TopicCompletionToggle topicId="electrical-safety" topicTitle="Electrical Safety" />
-    </SectionLayout>
+          <ElectricalSafetyDiagram />
+        </div>
+      }
+    />
   );
 };
 

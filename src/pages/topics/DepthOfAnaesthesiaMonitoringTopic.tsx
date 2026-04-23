@@ -4,14 +4,28 @@ import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Explain the rationale for processed EEG monitoring with reference to NAP5, NICE and AAGBI guidance.",
+  "Describe the EEG bands (β/α/θ/δ) and how they change with anaesthetic depth.",
+  "Compare BIS, Entropy and Narcotrend in terms of scale, algorithm and unique parameters.",
+  "Interpret SEF95, suppression ratio and density spectral array on a depth monitor.",
+  "Recognise common artefacts (EMG, NMB, ketamine, diathermy) and limitations of processed EEG.",
+];
+
+const keyPoints = [
+  "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth",
+  "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic",
+  "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz",
+  "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator",
+  "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis",
+  "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia",
+  "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable",
+  "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases",
+];
 
 type Monitor = "bis" | "entropy" | "narcotrend";
 
@@ -89,7 +103,23 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
   const info = monitors[selectedMonitor];
 
   return (
-    <SectionLayout title="Depth of Anaesthesia Monitoring" subtitle="FRCA Primary & Final / FFICM — Physics & Clinical Measurement" backPath="/physics" backLabel="Physics" accentColor="text-physics">
+    <TopicTemplate
+      title="Depth of Anaesthesia Monitoring"
+      subtitle="FRCA Primary & Final / FFICM — Physics & Clinical Measurement"
+      backPath="/physics"
+      backLabel="Physics"
+      accentColor="text-physics"
+      topicId="depth-of-anaesthesia"
+      topicTitle="Depth of Anaesthesia Monitoring"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={depthOfAnaesthesiaQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final", "fficm"] },
+        keyPoints: { exams: ["primary", "final", "fficm"] },
+      }}
+      coreConcepts={
+        <>
       {/* Introduction */}
       <section className="space-y-6 mb-10">
         <div>
@@ -349,24 +379,9 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
           <li><strong>Don't replace clinical assessment</strong>: end-tidal volatile concentration, MAC, autonomic signs all complement processed EEG.</li>
         </ul>
       </SynthesisBlock>
-
-      <KeyLearningPoints points={[
-        "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth",
-        "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic",
-        "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz",
-        "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator",
-        "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis",
-        "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia",
-        "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable",
-        "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases",
-      ]} />
-
-      <QuizSection questions={depthOfAnaesthesiaQuestions} />
-      <ReferencesList topicId="depth-of-anaesthesia" />
-
-      <SeeAlso topicId="depth-of-anaesthesia" />
-        <TopicCompletionToggle topicId="depth-of-anaesthesia" topicTitle="Depth of Anaesthesia Monitoring" />
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
