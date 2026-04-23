@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import OpioidReceptorDiagram from "@/components/diagrams/OpioidReceptorDiagram";
 import { OpioidReceptorSignalingDiagram } from "@/components/diagrams/OpioidReceptorSignalingDiagram";
+import { OpioidSignallingCascadeAnimation } from "@/components/diagrams/OpioidSignallingCascadeAnimation";
 import { OIHToleranceDiagram } from "@/components/diagrams/OIHToleranceDiagram";
 import { MethadonePharmacologyDiagram } from "@/components/diagrams/MethadonePharmacologyDiagram";
 import { BuprenorphinePharmacologyDiagram } from "@/components/diagrams/BuprenorphinePharmacologyDiagram";
@@ -130,6 +131,7 @@ const OpioidsTopic = () => {
       }}
       diagrams={
         <>
+          <OpioidSignallingCascadeAnimation />
           <div className="bg-card rounded-xl border border-border p-6">
             <OpioidReceptorDiagram />
           </div>

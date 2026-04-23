@@ -3,6 +3,7 @@ import { obstetricAnaesthesiaQuestions } from "@/data/quizzes";
 import PlacentalDrugTransferDiagram from "@/components/diagrams/PlacentalDrugTransferDiagram";
 import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiologyDiagram";
 import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumLegWeaknessDecisionTree";
+import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
 import { DiagramSection } from "@/components/DiagramSection";
 
 const ObstetricAnaesthesiaTopic = () => {
@@ -97,6 +98,10 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-muted-foreground leading-relaxed mb-3">
             Category 1 caesarean = immediate threat to maternal/fetal life; decision-to-delivery interval (DDI) target &lt;30 min, with most units aiming for &lt;15 min. GA is chosen when there is no functioning epidural and there is insufficient time for spinal, when neuraxial is contraindicated (coagulopathy, sepsis at site, severe maternal cardiac disease, refusal), or when neuraxial has failed. The OAA/AAGBI 2020 guideline and MBRRACE reports emphasise team-based preparation and meticulous airway management.
           </p>
+
+          <div className="mb-4">
+            <Cat1RSIAnimation />
+          </div>
 
           <div className="space-y-3">
             <div className="p-4 rounded-lg border border-border">
