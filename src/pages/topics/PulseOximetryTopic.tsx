@@ -220,23 +220,9 @@ const PulseOximetryTopic = () => {
           </div>
         </section>
       </div>
-
-      <KeyLearningPoints points={[
-        "Beer-Lambert law: A = εcl. Absorbance depends on extinction coefficient, concentration, and path length.",
-        "Pulse oximetry uses 660 nm (red) and 940 nm (IR). R ratio compared to empirical calibration curve.",
-        "COHb falsely elevates SpO₂; MetHb drives SpO₂ toward 85% (R → 1). Two-wavelength oximeters cannot distinguish dyshaemoglobins.",
-        "Co-oximetry uses ≥4 wavelengths on haemolysed blood to quantify HbO₂, HHb, COHb and MetHb separately — gives fractional SaO₂ vs functional SpO₂.",
-        "CO poisoning: SpO₂ falsely 100%, COHb on co-oximetry; 100% O₂ cuts COHb t½ from 250→80 min, HBO to ~22 min. MetHb: chocolate-brown blood, SpO₂ stuck at 85%, treat with methylene blue 1–2 mg/kg (avoid in G6PD).",
-        "Capnography uses IR absorption at 4.26 µm. Only polyatomic molecules with different atoms absorb IR.",
-        "Normal capnograph: 4 phases. EtCO₂ approximates PaCO₂ (normally 0.5–1 kPa less due to alveolar dead space).",
-        "Sudden loss of EtCO₂ trace demands immediate assessment: check tube position, circuit integrity, and cardiac output."
-      ]} />
-      <QuizSection questions={pulseOximetryQuiz} />
-      <ReferencesList topicId="pulse-oximetry" />
-
-      <SeeAlso topicId="pulse-oximetry" />
-        <TopicCompletionToggle topicId="pulse-oximetry" topicTitle="Pulse Oximetry & Capnography" />
-    </SectionLayout>
+        </div>
+      }
+    />
   );
 };
 

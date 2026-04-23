@@ -4,14 +4,28 @@ import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, dsaSpectrogramContent, bisTrendContent } from "@/components/diagrams/ecgExpandedContent";
 import DSASpectrogramDiagram from "@/components/diagrams/DSASpectrogramDiagram";
 import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Outline the rationale for depth-of-anaesthesia monitoring (NAP5; awareness; elderly outcomes).",
+  "Interpret BIS, SR, SEF95 and Entropy values intra-operatively.",
+  "Recognise pitfalls of processed EEG (EMG, NMB, ketamine, paediatrics).",
+  "Compare BIS, Entropy, Narcotrend and DSA spectrogram approaches.",
+  "Apply NICE DG6 / NAP5 recommendations to TIVA and high-risk cases.",
+];
+
+const keyPoints = [
+  "BIS target 40–60 for GA. BIS >60 with NMB = awareness risk. BIS <40 sustained = excessive depth",
+  "Suppression Ratio: % of time EEG is isoelectric — any SR >0% indicates burst suppression, reduce anaesthetic",
+  "SEF95: frequency below which 95% of EEG power lies. Awake ~25 Hz, anaesthetised ~10–15 Hz, deep <8 Hz",
+  "Entropy: RE−SE gap >5–10 suggests EMG activation (pain/light anaesthesia) — unique nociception indicator",
+  "Narcotrend: stages A–F with NI 0–100. Target D0–D2 (NI 37–65). Pattern recognition rather than spectral analysis",
+  "EMG contamination falsely ELEVATES BIS. NMB may artefactually DROP BIS by removing EMG — not deeper anaesthesia",
+  "Ketamine causes high BIS despite adequate anaesthesia (beta EEG activation) — processed EEG unreliable",
+  "NAP5: awareness 1:19,600 overall, 1:8,000 with TIVA. Recommends processed EEG for all TIVA cases",
+];
 
 type Monitor = "bis" | "entropy" | "narcotrend";
 

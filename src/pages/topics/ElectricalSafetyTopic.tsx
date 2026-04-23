@@ -201,28 +201,9 @@ const ElectricalSafetyTopic = () => {
           </p>
           <DefibrillatorCapacitorDiagram />
         </section>
-      </div>
-
-      <ElectricalSafetyDiagram />
-
-
-      <KeyLearningPoints points={[
-        "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
-        "Type CF equipment (leakage <10 µA) required for intracardiac connections.",
-        "Surgical diathermy uses high-frequency AC (0.4-3 MHz) which does not stimulate muscle/nerve.",
-        "Monopolar diathermy requires a return plate; bipolar does not. Bipolar is safer near pacemakers.",
-        "Equipment classes: I (earthed), II (double insulated), III (low voltage <24V AC).",
-        "Theatre humidity 50–60% prevents static charge accumulation by providing a conductive surface film of water.",
-        "Antistatic theatre footwear has sole resistance 75 kΩ–10 MΩ — drains static slowly while limiting macroshock current to <3 mA.",
-        "Defibrillator capacitor stores energy E = ½CV²; charged slowly (~3 s) and discharged in ~10 ms (biphasic).",
-        "Biphasic defibrillators deliver equivalent efficacy at lower energy than monophasic."
-      ]} />
-      <QuizSection questions={electricalSafetyQuiz} />
-      <ReferencesList topicId="electrical-safety" />
-
-      <SeeAlso topicId="electrical-safety" />
-        <TopicCompletionToggle topicId="electrical-safety" topicTitle="Electrical Safety" />
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 

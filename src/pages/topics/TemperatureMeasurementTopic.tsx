@@ -1,33 +1,51 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Explain the Seebeck effect and the construction of thermocouples.",
+  "Describe thermistors and resistance thermometers (RTDs) and contrast their accuracy/response.",
+  "Apply the Stefan-Boltzmann law to infrared tympanic thermometry.",
+  "Choose appropriate temperature monitoring sites (PA, nasopharyngeal, oesophageal, tympanic, skin).",
+  "Recognise the three phases of perioperative core temperature drop.",
+];
+
+const keyPoints = [
+  "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference",
+  "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear",
+  "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard",
+  "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane",
+  "The tympanic membrane shares its blood supply (internal carotid) with the hypothalamus, reflecting core temperature",
+  "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge",
+  "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature",
+];
 
 const TemperatureMeasurementTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Temperature Measurement"
       subtitle="Thermocouples, thermistors, resistance thermometers, and infrared tympanic thermometry"
       backPath="/physics"
       backLabel="Physics"
       accentColor="text-physics"
-    >
-      <div className="space-y-8">
-        <KeyLearningPoints
-          points={[
-            "Thermocouples use the Seebeck effect — EMF generated at junction of two dissimilar metals proportional to temperature difference",
-            "Thermistors are NTC semiconductors — resistance falls exponentially with rising temperature; very sensitive but non-linear",
-            "Platinum resistance thermometers (RTD/Pt100) have a linear PTC response — most accurate but slowest; laboratory standard",
-            "Infrared tympanic thermometry uses the Stefan-Boltzmann law (P ∝ T⁴) with a thermopile sensor to detect IR radiation from the tympanic membrane",
-            "The tympanic membrane shares its blood supply (internal carotid) with the hypothalamus, reflecting core temperature",
-            "Thermocouples are self-generating (no battery needed); thermistors and RTDs require external power via a Wheatstone bridge",
-            "PA catheter thermistor is the gold standard for core temperature; nasopharyngeal thermocouple best reflects brain temperature",
-          ]}
-        />
+      topicId="temperature-measurement"
+      topicTitle="Temperature Measurement"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={temperatureMeasurementQuiz}
+      diagrams={<TemperatureMeasurementDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["primary"] },
+        diagrams: { exams: ["primary"] },
+        keyPoints: { exams: ["primary"] },
+      }}
+      sectionSources={{
+        objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],
+        diagrams: ["Cross & Plunkett Ch.11"],
+        keyPoints: ["BJA Educ 2014", "NICE CG65", "Cross & Plunkett Ch.11"],
+      }}
+      coreConcepts={
+        <>
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
@@ -141,15 +159,9 @@ const TemperatureMeasurementTopic = () => {
             </p>
           </div>
         </div>
-
-        <QuizSection questions={temperatureMeasurementQuiz} />
-
-      <ReferencesList topicId="temperature-measurement" />
-
-        <SeeAlso topicId="temperature-measurement" />
-        <TopicCompletionToggle topicId="temperature-measurement" topicTitle="Temperature Measurement" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
