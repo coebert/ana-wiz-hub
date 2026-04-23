@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { clampValue, createLinearScale, makeTicks, niceAxisMax } from "@/lib/diagram-scale";
 
 type Phase = 1 | 2 | 3 | 4;
 
@@ -35,19 +36,15 @@ const ClosingVolumeDiagram = () => {
   const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
   const rawPhase4Peak = n2AtEndIII + 25; // theoretical Phase IV end before clamping
 
-  // Dynamic y-axis: round peak up to nearest 10, with a 10% headroom and a 40% floor
-  const niceCeil = (v: number, step: number) => Math.ceil(v / step) * step;
-  const yMax = autoScale
-    ? Math.max(40, niceCeil(rawPhase4Peak * 1.05, 10))
-    : 60; // fixed legacy scale
+  // Dynamic y-axis: round the actual peak up with headroom, never below 40%
+  const yMax = autoScale ? niceAxisMax(rawPhase4Peak, { step: 10, headroom: 1.05, floor: 40 }) : 60;
+  const tickStep = yMax <= 80 ? 10 : 20;
+  const yTicks = makeTicks(yMax, tickStep);
 
-  // Tick spacing: keep ~5–7 ticks regardless of range
-  const tickStep = yMax <= 50 ? 10 : yMax <= 80 ? 10 : 20;
-  const yTicks: number[] = [];
-  for (let v = 0; v <= yMax; v += tickStep) yTicks.push(v);
-
-  const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
-  const phase4EndN2 = Math.min(rawPhase4Peak, yMax);
+  // Single shared scale — every curve control point goes through this so it
+  // can never escape the plot rectangle [0 → 190px (bottom), yMax → 20px (top)].
+  const yScale = createLinearScale({ domain: [0, yMax], range: [190, 20] });
+  const phase4EndN2 = clampValue(rawPhase4Peak, 0, yMax);
 
   return (
     <div className="space-y-4">
