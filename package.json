@@ -14,6 +14,7 @@
     "check:diagrams": "node scripts/check-duplicate-diagrams.mjs",
     "check:sources": "node scripts/check-section-sources.mjs",
     "check:exam-tags": "node scripts/check-exam-tags.mjs",
+    "check:exam-tags:fix": "node scripts/check-exam-tags.mjs --fix",
     "check:all": "npm run check:diagrams && npm run check:sources && npm run check:exam-tags",
     "prepublish": "npm run check:all && npm run lint && npm run format:check && npm run test",
     "test": "vitest run",
