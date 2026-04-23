@@ -1,4 +1,4 @@
-name: Typecheck
+name: CI
 
 on:
   push:
@@ -26,3 +26,22 @@ jobs:
         # (e.g. "ficm" vs "fficm") thanks to the literal-union type in
         # src/data/curriculum.ts.
         run: bunx tsc --noEmit
+
+  format:
+    name: prettier --check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Prettier formatting check
+        # Fails the build if any tracked file differs from .prettierrc.json.
+        # Run `npm run format` locally to fix.
+        run: bunx prettier --check .

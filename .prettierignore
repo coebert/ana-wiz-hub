@@ -1,0 +1,28 @@
+# Build & dependency artefacts
+node_modules
+dist
+build
+coverage
+.next
+.cache
+.vite
+
+# Generated / vendored — never reformat
+src/integrations/supabase/types.ts
+supabase/migrations
+bun.lockb
+bun.lock
+package-lock.json
+*.min.js
+*.min.css
+
+# Memory / docs that aren't code
+.lovable
+mem
+*.md
+
+# Test snapshots (Playwright stores PNG baselines here)
+**/__snapshots__
+
+# Public assets
+public
