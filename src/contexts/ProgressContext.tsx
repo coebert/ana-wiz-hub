@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
-import { allTopics, topicsBySection, Topic, Section } from "@/data/curriculum";
+import { allTopics, topicsBySection, Topic, Section, ExamTag } from "@/data/curriculum";
 
 interface ProgressContextType {
   completedTopics: Set<string>;
@@ -7,6 +7,10 @@ interface ProgressContextType {
   isCompleted: (topicId: string) => boolean;
   getSectionProgress: (section: Section) => { completed: number; total: number };
   getOverallProgress: () => { completed: number; total: number };
+  /** Progress across all available topics tagged for a given exam. */
+  getExamProgress: (exam: ExamTag) => { completed: number; total: number };
+  /** Progress within one section, scoped to topics tagged for the given exam. */
+  getExamSectionProgress: (exam: ExamTag, section: Section) => { completed: number; total: number };
 }
 
 const ProgressContext = createContext<ProgressContextType | null>(null);
@@ -53,8 +57,38 @@ export const ProgressProvider = ({ children }: { children: ReactNode }) => {
     return { completed, total: available.length };
   }, [completedTopics]);
 
+  const getExamProgress = useCallback(
+    (exam: ExamTag) => {
+      const available = allTopics.filter((t) => t.available && t.examTags.includes(exam));
+      const completed = available.filter((t) => completedTopics.has(t.id)).length;
+      return { completed, total: available.length };
+    },
+    [completedTopics]
+  );
+
+  const getExamSectionProgress = useCallback(
+    (exam: ExamTag, section: Section) => {
+      const available = (topicsBySection[section] || []).filter(
+        (t) => t.available && t.examTags.includes(exam)
+      );
+      const completed = available.filter((t) => completedTopics.has(t.id)).length;
+      return { completed, total: available.length };
+    },
+    [completedTopics]
+  );
+
   return (
-    <ProgressContext.Provider value={{ completedTopics, toggleTopic, isCompleted, getSectionProgress, getOverallProgress }}>
+    <ProgressContext.Provider
+      value={{
+        completedTopics,
+        toggleTopic,
+        isCompleted,
+        getSectionProgress,
+        getOverallProgress,
+        getExamProgress,
+        getExamSectionProgress,
+      }}
+    >
       {children}
     </ProgressContext.Provider>
   );
