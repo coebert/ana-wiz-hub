@@ -227,6 +227,11 @@ export const TopicTemplate = ({
           // QuizSection's prop is loosely typed across the codebase; cast here.
           <QuizSection questions={quizQuestions as never} />
         )}
+        <ExamSummary
+          title={title}
+          sectionExamMapping={sectionExamMapping}
+          keyPoints={keyPoints}
+        />
         <ReferencesList topicId={topicId} />
         <SeeAlso topicId={topicId} />
         <TopicCompletionToggle topicId={topicId} topicTitle={topicTitle ?? title} />
