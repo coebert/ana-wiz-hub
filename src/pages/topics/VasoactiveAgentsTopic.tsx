@@ -676,30 +676,10 @@ const VasoactiveAgentsTopic = () => {
           </SynthesisBlock>
         </div>
 
-
-        <KeyLearningPoints
-          points={[
-            "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)",
-            "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁",
-            "Noradrenaline is first-line vasopressor in septic shock (α₁ predominant with some β₁)",
-            "Dobutamine is an inodilator (β₁ > β₂ > α₁) — first-line inotrope in cardiogenic shock",
-            "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients and ↓ PVR",
-            "Digoxin inhibits Na⁺/K⁺-ATPase — toxicity enhanced by ↓K⁺, ↓Mg²⁺, ↑Ca²⁺; treat with DigiFab",
-            "Glucagon bypasses the β-receptor via glucagon receptor → Gs → ↑ cAMP — key in β-blocker OD",
-            "CaCl₂ has 3× more ionised Ca²⁺ than Ca gluconate — preferred in cardiac arrest",
-            "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand",
-            "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
-            "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
-            "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC",
-          ]}
-        />
-
-        <QuizSection questions={vasoactiveAgentsQuiz} />
-        <ReferencesList topicId="vasoactive-agents" />
-        <SeeAlso topicId="vasoactive-agents" />
-        <TopicCompletionToggle topicId="vasoactive-agents" topicTitle="Vasoactive & Inotropic Agents" />
-      </div>
-    </SectionLayout>
+          </div>
+        </>
+      }
+    />
   );
 };
 
