@@ -119,13 +119,24 @@ export const TopicTemplate = ({
 
   // Auto-derive section sources from inline `cites` arrays so authors don't
   // have to maintain a parallel `sectionSources` map. Explicit props always
-  // win; auto-derivation only fills the gap when a key is omitted.
+  // win; auto-derivation only fills the gap when a key is omitted. Order
+  // follows the master `topicReferences` list so the per-section panel
+  // numbers match the bottom References list.
+  const masterOrder = topicReferences[topicId] ?? [];
+  const sortByMaster = (labels: string[]) => {
+    const set = new Set(labels);
+    const ordered = masterOrder.filter((r) => set.has(r.label)).map((r) => r.label);
+    // Append any labels not present in the master list (will be ignored
+    // downstream by SectionReferences with a dev-only warning).
+    const extras = labels.filter((l) => !ordered.includes(l));
+    return [...ordered, ...extras];
+  };
   const uniq = (arr: string[]) => Array.from(new Set(arr));
-  const autoKeyPointCites = uniq(
-    keyPoints.flatMap((p) => (typeof p === "string" ? [] : p.cites ?? [])),
+  const autoKeyPointCites = sortByMaster(
+    uniq(keyPoints.flatMap((p) => (typeof p === "string" ? [] : p.cites ?? []))),
   );
-  const autoWorkedExampleCites = uniq(
-    (workedExamples ?? []).flatMap((ex) => ex.cites ?? []),
+  const autoWorkedExampleCites = sortByMaster(
+    uniq((workedExamples ?? []).flatMap((ex) => ex.cites ?? [])),
   );
 
   const resolvedSources = {
