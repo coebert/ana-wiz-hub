@@ -175,15 +175,9 @@ const ElderlyAnaesthesiaTopic = () => {
             </div>
           </div>
         </section>
-
-        <QuizSection questions={elderlyAnaesthesiaQuestions} />
-
-        <ReferencesList topicId="elderly-anaesthesia" />
-
-        <SeeAlso topicId="elderly-anaesthesia" />
-        <TopicCompletionToggle topicId="elderly-anaesthesia" topicTitle="Anaesthesia for the Elderly Patient" />
-      </div>
-    </SectionLayout>
+        </div>
+      }
+    />
   );
 };
 
