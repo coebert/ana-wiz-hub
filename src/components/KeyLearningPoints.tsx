@@ -37,8 +37,8 @@ export const KeyLearningPoints = ({
       </h3>
       <div className="space-y-3">
         {points.map((point, i) => {
-          const isObj = typeof point === "object" && point !== null;
-          const text = isObj ? point.text : point;
+          const isObj = typeof point !== "string";
+          const text: ReactNode = isObj ? point.text : point;
           const cites = isObj ? point.cites : undefined;
           return (
             <div key={i} id={`keypoint-${i + 1}`} className="key-point scroll-mt-24">
