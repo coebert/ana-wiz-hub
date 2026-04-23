@@ -733,31 +733,9 @@ const EquipmentMonitoringTopic = () => {
             <li><strong>Pre-use check (AAGBI 2012)</strong>: machine, breathing system, vaporiser, monitors, ventilator, suction, drugs, emergency equipment.</li>
           </ul>
         </SynthesisBlock>
-
-        <KeyLearningPoints
-          points={[
-            "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE at −183 °C; cylinders sized A–J with PISS and colour codes.",
-            "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.",
-            "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.",
-            "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.",
-            "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.",
-            "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).",
-            "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).",
-            "Ascending bellows fail to rise on disconnect — primary visual alarm.",
-            "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT.",
-            "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.",
-            "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.",
-            "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.",
-            "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.",
-          ]}
-        />
-
-        <QuizSection questions={[...anaestheticMachineQuiz, ...vaporizersQuiz, ...breathingCircuitsQuiz, ...ventilatorsQuiz]} />
-        <ReferencesList topicId="equipment-monitoring" />
-        <SeeAlso topicId="equipment-monitoring" />
-        <TopicCompletionToggle topicId="equipment-monitoring" topicTitle="Anaesthetic Equipment & Monitoring" />
       </div>
-    </SectionLayout>
+      }
+    />
   );
 };
 
