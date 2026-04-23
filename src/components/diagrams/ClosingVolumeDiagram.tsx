@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { clampValue, createLinearScale, makeTicks, niceAxisMax } from "@/lib/diagram-scale";
 
 type Phase = 1 | 2 | 3 | 4;
 
