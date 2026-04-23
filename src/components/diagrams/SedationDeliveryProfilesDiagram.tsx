@@ -385,6 +385,8 @@ export const SedationDeliveryProfilesDiagram = () => {
           progress={progress}
           colorVar="--destructive"
           markers={[0.0, 0.25, 0.5, 0.75]}
+          targetId="technique-bolus"
+          linkLabel="Read about boluses →"
         />
         <Panel
           title="Manual infusion"
@@ -392,6 +394,8 @@ export const SedationDeliveryProfilesDiagram = () => {
           curve={infusionCurve}
           progress={progress}
           colorVar="--accent-foreground"
+          targetId="technique-infusion"
+          linkLabel="Read about manual infusion →"
         />
         <Panel
           title="TCI (Cp/Ce target)"
@@ -399,6 +403,8 @@ export const SedationDeliveryProfilesDiagram = () => {
           curve={tciCurve}
           progress={progress}
           colorVar="--primary"
+          targetId="technique-tci"
+          linkLabel="Read about TCI →"
         />
       </div>
 
