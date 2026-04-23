@@ -133,8 +133,8 @@ const Panel = ({
   const cursorY = PAD_T + (1 - Math.max(0, Math.min(1, cursorC))) * INNER_H;
 
   const isLinked = Boolean(targetId);
-  const Wrapper = isLinked ? "button" : "div";
-  const wrapperProps: React.ComponentProps<"button"> = isLinked
+  const Wrapper = (isLinked ? "button" : "div") as React.ElementType;
+  const wrapperProps: Record<string, unknown> = isLinked
     ? {
         type: "button",
         onClick: () => targetId && scrollToId(targetId),
@@ -146,7 +146,7 @@ const Panel = ({
     <Wrapper
       {...wrapperProps}
       className={cn(
-        "rounded-lg border border-border bg-card p-3 text-left w-full",
+        "rounded-lg border border-border bg-card p-3 text-left w-full block",
         isLinked &&
           "transition-all hover:border-primary hover:shadow-sm hover:bg-secondary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer",
       )}
