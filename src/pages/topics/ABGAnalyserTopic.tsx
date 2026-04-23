@@ -426,6 +426,7 @@ const ABGAnalyserTopic = () => {
             ))}
           </tbody>
         </table>
+      </SynthesisBlock>
         </section>
       }
     />
