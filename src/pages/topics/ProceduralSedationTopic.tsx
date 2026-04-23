@@ -400,6 +400,10 @@ const ProceduralSedationTopic = () => {
 
           <ExamSection id="complications" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Complications &amp; Rescue</h2>
+            <SedationRescueLadder />
+            <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
+              Other complications to recognise
+            </h3>
             <div className="space-y-3">
               {[
                 { c: "Respiratory depression / apnoea", d: "Most common serious event. Stop sedative, jaw thrust, supplemental O₂, assist ventilation with bag-mask. Reverse benzodiazepines (flumazenil 100–200 µg) and opioids (naloxone 40 µg increments) — beware re-sedation." },
