@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Outline the determinants of intra-ocular pressure and the drugs/manoeuvres that raise or lower it",
@@ -46,9 +47,9 @@ const OphthalmicAnaesthesiaTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={ophthalmicAnaesthesiaQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["RCOphth/RCoA 2012"],

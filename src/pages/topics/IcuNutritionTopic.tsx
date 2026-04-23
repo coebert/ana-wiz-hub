@@ -4,6 +4,7 @@ import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the metabolic response to critical illness and its implications for feeding strategy",
@@ -109,10 +110,10 @@ const IcuNutritionTopic = () => {
         keyPoints: ["ESPEN 2019", "BJA Educ 2016", "NICE CG32"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["CC1.4"] },
-        diagrams: { exams: ["fficm", "edic"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.4"] },
+        diagrams: { exams: [Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       diagrams={
         <>

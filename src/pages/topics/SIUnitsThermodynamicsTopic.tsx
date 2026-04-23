@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
 import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "List the 7 SI base units and the most relevant derived units (Pa, J, W)",
@@ -48,10 +49,10 @@ const SIUnitsThermodynamicsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={siUnitsThermodynamicsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["RCoA Primary — Physics"] },
-        diagrams: { exams: ["primary"] },
-        workedExamples: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics"] },
+        diagrams: { exams: [Exam.PRIMARY] },
+        workedExamples: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       keyPoints={[
         "There are 7 SI base units: metre (m), kilogram (kg), second (s), ampere (A), kelvin (K), mole (mol), candela (cd)",

@@ -19,6 +19,7 @@ import { VILIDiagram } from "@/components/diagrams/VILIDiagram";
 import { PVRecruitmentDiagram } from "@/components/diagrams/PVRecruitmentDiagram";
 import { ControlOfBreathingDiagram } from "@/components/diagrams/ControlOfBreathingDiagram";
 import { DiffusionCapacityDiagram } from "@/components/diagrams/DiffusionCapacityDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define static and dynamic compliance and explain why dynamic < static.",
@@ -107,9 +108,9 @@ const LungMechanicsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={lungMechanicsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RC_BK_01", "RC_BK_02"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["RC_BK_03"] },
-        keyPoints: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RC_BK_01"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_01", "RC_BK_02"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_03"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_01"] },
       }}
       keyPoints={[
         "Compliance = ΔV/ΔP. Total respiratory compliance (~100 ml/cmH₂O) = lung + chest wall in series.",

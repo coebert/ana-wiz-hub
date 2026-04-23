@@ -4,6 +4,7 @@ import { neuroanaesthesiaQuestions } from "@/data/quizzes";
 import CBFAutoregulationDiagram from "@/components/diagrams/CBFAutoregulationDiagram";
 import ICPVolumeCurveDiagram from "@/components/diagrams/ICPVolumeCurveDiagram";
 import { RaisedICPCascadeDiagram } from "@/components/diagrams/RaisedICPCascadeDiagram";
+import { Exam } from "@/data/curriculum";
 
 const NeuroanaesthesiaTopic = () => {
   return (
@@ -23,10 +24,10 @@ const NeuroanaesthesiaTopic = () => {
         "Apply key trial evidence (RESCUEicp, BTF guidelines) to neurocritical care decisions.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["CN_BK_03", "CC1.4"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CN_BK_03", "CC1.4"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2018", "Matta et al."],

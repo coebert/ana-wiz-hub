@@ -5,6 +5,7 @@ import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
+import { Exam } from "@/data/curriculum";
 
 const tocItems = [
   { id: "toc-foundations", label: "Foundations" },
@@ -53,8 +54,8 @@ const VasoactiveAgentsTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={vasoactiveAgentsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary", "final", "fficm"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2019", "Peck & Hill Ch.11"],

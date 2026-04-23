@@ -6,6 +6,7 @@ import { RotameterDiagram } from "@/components/diagrams/RotameterDiagram";
 import PneumotachographDiagram from "@/components/diagrams/PneumotachographDiagram";
 import WrightRespirometerDiagram from "@/components/diagrams/WrightRespirometerDiagram";
 import { flowMeasurementQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Differentiate laminar from turbulent flow and use Reynolds number (Re = ρvd/η) to predict the regime",
@@ -50,9 +51,9 @@ const FlowMeasurementTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={flowMeasurementQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["RCoA Primary — Physics"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.8"],

@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
+import { Exam } from "@/data/curriculum";
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -51,8 +52,8 @@ const AntiarrhythmicsTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={antiarrhythmicsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       diagrams={<VaughanWilliamsAPDiagram />}
       coreConcepts={

@@ -4,6 +4,7 @@ import { SynthesisBlock } from "@/components/SynthesisBlock";
 import WETFLAGDiagram from "@/components/diagrams/WETFLAGDiagram";
 import PaediatricVitalsTable from "@/components/diagrams/PaediatricVitalsTable";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply WETFLAG and APLS age-banded vitals to deliver immediate weight-based therapy in a critically unwell child.",
@@ -162,9 +163,9 @@ const PaediatricIcuTopic = () => {
         keyPoints: ["RCPCH 2019", "FEAST 2011", "NICE NG29"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["fficm", "edic"], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
-        workedExamples: { exams: ["fficm", "edic"] },
-        keyPoints: { exams: ["fficm", "edic"] },
+        objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

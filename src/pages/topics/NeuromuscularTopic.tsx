@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { NMJDiagram } from "@/components/diagrams/NMJDiagram";
 import NeuromuscularMonitoringDiagram from "@/components/diagrams/NeuromuscularMonitoringDiagram";
 import { neuromuscularQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the sequence of events at the neuromuscular junction from action potential arrival to ACh hydrolysis.",
@@ -102,10 +103,10 @@ const NeuromuscularTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["NA_BK_03"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["primary", "final", "fficm"], curriculumCodes: ["NA_BK_03", "OA_BK_03"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["NA_BK_03"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["NA_BK_03", "OA_BK_03"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2005", "Power & Kam Ch.15"],

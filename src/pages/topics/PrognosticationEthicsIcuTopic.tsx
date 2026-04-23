@@ -5,6 +5,7 @@ import { prognosticationIcuQuestions } from "@/data/quizzes";
 import PostCardiacArrestProgDiagram from "@/components/diagrams/PostCardiacArrestProgDiagram";
 import APACHEIICalculator from "@/components/diagrams/APACHEIICalculator";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply multimodal post-cardiac arrest prognostication (ERC/ESICM 2021) at ≥72 h with at least two concordant indicators.",
@@ -108,9 +109,9 @@ const PrognosticationEthicsIcuTopic = () => {
         keyPoints: ["GMC 2022", "NICE CG83", "BJA Educ 2018 PICS"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 7.2"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

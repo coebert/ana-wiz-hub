@@ -4,6 +4,7 @@ import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyD
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
+import { Exam } from "@/data/curriculum";
 
 const ThoracicAnatomyTopic = () => {
   return (
@@ -33,8 +34,8 @@ const ThoracicAnatomyTopic = () => {
         "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

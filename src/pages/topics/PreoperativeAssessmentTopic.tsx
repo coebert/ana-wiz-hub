@@ -3,6 +3,7 @@ import { preoperativeAssessmentQuestions } from "@/data/quizzes";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
+import { Exam } from "@/data/curriculum";
 
 const PreoperativeAssessmentTopic = () => {
   return (
@@ -32,9 +33,9 @@ const PreoperativeAssessmentTopic = () => {
         "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
-        diagrams: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
-        keyPoints: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PO_BK_01"] },
       }}
       sectionSources={{
         objectives: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],

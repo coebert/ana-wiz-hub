@@ -6,6 +6,7 @@ import { CriticalTemperatureDiagram } from "@/components/diagrams/CriticalTemper
 import { AndrewsIsothermsDiagram } from "@/components/diagrams/AndrewsIsothermsDiagram";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { gasLawsQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "State Boyle's, Charles', Gay-Lussac's, Dalton's and Henry's laws and combine them as PV = nRT.",
@@ -109,10 +110,10 @@ const GasLawsTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PH_BK_01"] },
-        diagrams: { exams: ["primary", "final"], curriculumCodes: ["PH_BK_01"] },
-        workedExamples: { exams: ["primary", "final"], curriculumCodes: ["PH_BK_01"] },
-        keyPoints: { exams: ["primary", "final"], curriculumCodes: ["PH_BK_01"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_01"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PH_BK_01"] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.1", "Peck & Hill Ch.1"],

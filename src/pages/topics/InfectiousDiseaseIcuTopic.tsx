@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { infectiousDiseaseIcuQuestions } from "@/data/quizzes";
 import InfectionSiteMapDiagram from "@/components/diagrams/InfectionSiteMapDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Differentiate the causative organisms, severity scoring and empiric therapy for CAP, HAP and VAP",
@@ -47,9 +48,9 @@ const InfectiousDiseaseIcuTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={infectiousDiseaseIcuQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 4.7", "EDIC 5.7"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.7", "EDIC 5.7"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
         "Pneumonia is the commonest infection requiring ICU admission — categorise CAP/HAP/VAP and tailor empirical cover to local antibiogram",

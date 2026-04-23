@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the legal and ethical framework for end-of-life decision-making in UK ICU practice (MCA 2005, GMC, FICM/ICS).",
@@ -68,8 +69,8 @@ const EndOfLifeCommunicationTopic = () => {
         keyPoints: ["FICM/ICS 2019", "GMC EoL", "NEJM 2007", "BJA Educ 2017"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["fficm", "edic"], curriculumCodes: ["FFICM 5.5", "EDIC 12"] },
-        keyPoints: { exams: ["fficm", "edic"] },
+        objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.5", "EDIC 12"] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

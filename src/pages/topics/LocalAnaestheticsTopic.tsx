@@ -4,6 +4,7 @@ import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHass
 import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
 import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
+import { Exam } from "@/data/curriculum";
 
 const LocalAnaestheticsTopic = () => {
   return (
@@ -34,9 +35,9 @@ const LocalAnaestheticsTopic = () => {
         "Bupivacaine is most cardiotoxic due to slow dissociation from cardiac Na⁺ channels; ropivacaine is the safer S-enantiomer alternative.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.8", "AAGBI 2010"],

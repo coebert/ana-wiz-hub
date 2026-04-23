@@ -5,6 +5,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the regional V/Q distribution from apex to base in the upright lung.",
@@ -95,9 +96,9 @@ const VentilationPerfusionTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={ventilationPerfusionQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RC_BK_02"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["RC_BK_02", "RC_BK_03"] },
-        keyPoints: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RC_BK_02"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02", "RC_BK_03"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RC_BK_02"] },
       }}
       keyPoints={[
         "Normal V̇/Q̇ ≈ 0.8. Apex has highest V/Q (~3.3, dead space-like), base has lowest (~0.6, shunt-like)",

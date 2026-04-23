@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { statisticsEBMQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Distinguish RCT, cohort, case-control, cross-sectional and ecological designs and their measures of effect",
@@ -46,9 +47,9 @@ const StatisticsEBMTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={statisticsEBMQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA Primary — Statistics"] },
-        workedExamples: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Primary — Statistics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true",

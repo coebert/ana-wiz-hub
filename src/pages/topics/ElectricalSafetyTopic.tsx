@@ -6,6 +6,7 @@ import { IsolationTransformerDiagram } from "@/components/diagrams/IsolationTran
 import { RCDDiagram } from "@/components/diagrams/RCDDiagram";
 import { MicroshockDiagram } from "@/components/diagrams/MicroshockDiagram";
 import { DiathermyDiagram } from "@/components/diagrams/DiathermyDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define macroshock and microshock and quote the threshold currents that cause perception, let-go, respiratory arrest and VF.",
@@ -42,8 +43,8 @@ const ElectricalSafetyTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={electricalSafetyQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       coreConcepts={
         <div className="prose prose-slate max-w-none">

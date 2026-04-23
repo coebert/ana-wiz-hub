@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { RedoxElectrochemistryDiagram } from "@/components/diagrams/RedoxElectrochemistryDiagram";
 import { redoxQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define oxidation and reduction in terms of electron transfer (OIL RIG) and identify oxidising/reducing agents",
@@ -47,9 +48,9 @@ const OxidationReductionTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={redoxQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["Wright 1999 (MetHb)", "BJA Educ 2010"],

@@ -3,6 +3,7 @@ import { enhancedRecoveryQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import { TrendingDown, TrendingUp, Award, FlaskConical } from "lucide-react";
 import { InlineRef } from "@/components/InlineRef";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Outline the three temporal pillars (pre/intra/postoperative) of an ERAS pathway",
@@ -37,8 +38,8 @@ const EnhancedRecoveryTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={enhancedRecoveryQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
         <>

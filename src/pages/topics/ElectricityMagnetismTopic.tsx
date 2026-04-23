@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import ElectricityMagnetismDiagram from "@/components/diagrams/ElectricityMagnetismDiagram";
 import { electricityMagnetismQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply Ohm's law and the power equations (P = VI = I²R = V²/R) to clinical scenarios",
@@ -47,9 +48,9 @@ const ElectricityMagnetismTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={electricityMagnetismQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       keyPoints={[
         "Ohm's law: V = IR. Power: P = VI = I²R = V²/R. Series resistances add; parallel: 1/R = 1/R₁ + 1/R₂",

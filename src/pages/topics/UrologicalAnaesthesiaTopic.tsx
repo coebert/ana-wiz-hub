@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
+import { Exam } from "@/data/curriculum";
 
 const UrologicalAnaesthesiaTopic = () => {
   return (
@@ -21,10 +22,10 @@ const UrologicalAnaesthesiaTopic = () => {
         "Outline considerations for nephrectomy, robotic urology and ESWL.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["CU_BK_03"] },
-        diagrams: { exams: ["final"], curriculumCodes: ["CU_BK_03"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["CU_BK_03"] },
+        diagrams: { exams: [Exam.FINAL], curriculumCodes: ["CU_BK_03"] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2014 TURP", "BJA Educ 2017 Cystectomy"],

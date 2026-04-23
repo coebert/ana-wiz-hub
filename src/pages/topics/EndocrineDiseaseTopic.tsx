@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
 import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply JBDS-IP perioperative diabetes pathway, including VRIII indications and glucose targets.",
@@ -33,9 +34,9 @@ const EndocrineDiseaseTopic = () => {
       quizQuestions={endocrineDiseaseQuestions}
       diagrams={<PerioperativeDiabetesDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"] },
-        diagrams: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015 DM", "JBDS-IP 2021", "Addison's Guidelines"],

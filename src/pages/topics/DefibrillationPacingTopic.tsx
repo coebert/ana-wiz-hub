@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import DefibrillationPacingDiagram from "@/components/diagrams/DefibrillationPacingDiagram";
 import { defibrillationPacingQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Compare monophasic and biphasic defibrillation waveforms in terms of energy, efficacy and myocardial injury",
@@ -47,9 +48,9 @@ const DefibrillationPacingTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={defibrillationPacingQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics", "FFICM 2.5"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics", "FFICM 2.5"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         workedExamples: ["Resuscitation Council UK 2021"],

@@ -11,6 +11,7 @@ import { EtomidatePharmacologyDiagram } from "@/components/diagrams/EtomidatePha
 import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPharmacologyDiagram";
 import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/BenzodiazepineComparisonDiagram";
 import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
+import { Exam } from "@/data/curriculum";
 
 const IVAnaestheticsTopic = () => {
   return (
@@ -40,9 +41,9 @@ const IVAnaestheticsTopic = () => {
         "PRIS: >4 mg/kg/h for >48h — metabolic acidosis, rhabdomyolysis, cardiovascular collapse. Stop infusion, supportive care.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],

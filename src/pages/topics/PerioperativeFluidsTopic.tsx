@@ -4,6 +4,7 @@ import { perioperativeFluidsQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { GlycocalyxSheddingCascadeDiagram } from "@/components/diagrams/GlycocalyxSheddingCascadeDiagram";
+import { Exam } from "@/data/curriculum";
 
 const PerioperativeFluidsTopic = () => {
   return (
@@ -23,10 +24,10 @@ const PerioperativeFluidsTopic = () => {
         "Use major trial evidence (SMART, RELIEF, BaSICS) to choose a fluid strategy.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["POM_BK_06"] },
-        diagrams: { exams: ["final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["POM_BK_06"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["NICE CG174", "BJA Educ 2017"],

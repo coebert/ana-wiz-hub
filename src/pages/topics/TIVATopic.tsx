@@ -6,6 +6,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { tivaQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe 3-compartment mammillary PK models and the role of V1, V2, V3, k10 and ke0",
@@ -165,9 +166,9 @@ const TIVATopic = () => {
       workedExamples={workedExamples}
       quizQuestions={tivaQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "TCI pumps use 3-compartment models to predict Cp and Ce — V1 determines bolus size, clearance determines maintenance rate",

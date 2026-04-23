@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the dual hepatic blood supply, hepatic arterial buffer response, and the effect of anaesthesia on flow.",
@@ -92,10 +93,10 @@ const HepaticPhysiologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["CR_BK_06"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["OA_BK_05"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_06"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.13"],

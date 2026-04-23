@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { pulseOximetryQuiz } from "@/data/quizzes";
 import { AbsorptionSpectraDiagram } from "@/components/diagrams/AbsorptionSpectraDiagram";
 import { CapnographyDiagram } from "@/components/diagrams/CapnographyDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply the Beer-Lambert law to explain how pulse oximetry derives SpO₂ from red and infrared absorption.",
@@ -36,8 +37,8 @@ const PulseOximetryTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={pulseOximetryQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       coreConcepts={
         <div className="prose prose-slate max-w-none">

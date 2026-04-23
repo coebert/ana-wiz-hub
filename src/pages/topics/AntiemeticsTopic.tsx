@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { antiemeticsQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply the Apfel score to estimate baseline PONV risk and stratify prophylaxis",
@@ -46,9 +47,9 @@ const AntiemeticsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={antiemeticsQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Pharmacology"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Pharmacology"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["Gan et al. 2020"],

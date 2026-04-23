@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { abgAnalyserQuestions } from "@/data/quizzes";
 import ABGAnalyserDiagram from "@/components/diagrams/ABGAnalyserDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the construction and principle of the pH (Sanz) glass electrode.",
@@ -35,8 +36,8 @@ const ABGAnalyserTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={abgAnalyserQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2017", "Cross & Plunkett Ch.15-16", "Middleton Ch.18"],

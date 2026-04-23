@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { giPhysiologyQuestions } from "@/data/quizzes";
 import VomitingControlDiagram from "@/components/diagrams/VomitingControlDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the cellular control of gastric acid secretion and the receptor pharmacology that targets it.",
@@ -86,10 +87,10 @@ const GastrointestinalPhysiologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["primary", "final"], curriculumCodes: ["OA_BK_03"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_06", "OA_BK_03"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OA_BK_03"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.11"],

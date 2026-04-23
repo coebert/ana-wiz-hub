@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
 import { mriPhysicsQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Explain how nuclear spin, the Larmor equation (ω₀ = γB₀) and resonance generate the MR signal",
@@ -47,9 +48,9 @@ const MRIPhysicsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={mriPhysicsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["AAGBI 2010", "AAGBI 2010"],

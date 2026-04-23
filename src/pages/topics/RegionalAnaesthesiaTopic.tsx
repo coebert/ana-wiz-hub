@@ -12,6 +12,7 @@ import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagr
 import NeuraxialAnticoagRiskTool from "@/components/diagrams/NeuraxialAnticoagRiskTool";
 import AnticoagRestartTimeline from "@/components/diagrams/AnticoagRestartTimeline";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { Exam } from "@/data/curriculum";
 
 const tocItems = [
   { id: "dermatomes", label: "Dermatome anatomy", group: "Foundations" },
@@ -67,9 +68,9 @@ const RegionalAnaesthesiaTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={regionalAnaesthesiaQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA — Regional Anaesthesia"] },
-        workedExamples: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA — Regional Anaesthesia"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block",

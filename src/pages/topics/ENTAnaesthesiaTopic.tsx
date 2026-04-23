@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
+import { Exam } from "@/data/curriculum";
 
 const ENTAnaesthesiaTopic = () => {
   return (
@@ -22,10 +23,10 @@ const ENTAnaesthesiaTopic = () => {
         "Anaesthetise for Le Fort facial trauma with secured airway and CSF leak risk.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["EN_BK_03"] },
-        diagrams: { exams: ["final"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["EN_BK_03"] },
+        diagrams: { exams: [Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2017 ENT", "DAS 2015"],

@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
 import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Optimise asthma and COPD preoperatively and select bronchodilator-friendly anaesthetic agents.",
@@ -33,9 +34,9 @@ const RespiratoryDiseaseTopic = () => {
       quizQuestions={respiratoryDiseaseQuestions}
       diagrams={<RespiratoryDrugSafetyDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"] },
-        diagrams: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BTS/SIGN 2019", "NICE NG115", "Lumb Ch.27"],

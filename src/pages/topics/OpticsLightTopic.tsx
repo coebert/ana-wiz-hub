@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import OpticsLightDiagram from "@/components/diagrams/OpticsLightDiagram";
 import { opticsLightQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "State the laws of reflection and refraction (Snell's law) and apply them to clinical optics",
@@ -47,9 +48,9 @@ const OpticsLightTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={opticsLightQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2004"],

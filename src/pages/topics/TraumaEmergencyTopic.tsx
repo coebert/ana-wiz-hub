@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { traumaEmergencyQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Perform an RSI tailored to the trauma patient (haemodynamic state, c-spine, full stomach)",
@@ -95,9 +96,9 @@ const TraumaEmergencyTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={traumaEmergencyQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Trauma & Stabilisation", "FFICM 2.5"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Trauma & Stabilisation", "FFICM 2.5"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: [

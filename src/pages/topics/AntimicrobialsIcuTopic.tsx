@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { antimicrobialsIcuQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply PK/PD principles (time-, concentration-, AUC/MIC-dependent killing) to antimicrobial dosing in critical illness.",
@@ -95,9 +96,9 @@ const AntimicrobialsIcuTopic = () => {
         keyPoints: ["SSC 2021 Antimicrobials", "BJA Educ 2016"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["fficm", "edic"], curriculumCodes: ["FFICM 4.7", "EDIC 5.3"] },
-        workedExamples: { exams: ["fficm", "edic"] },
-        keyPoints: { exams: ["fficm", "edic"] },
+        objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.7", "EDIC 5.3"] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

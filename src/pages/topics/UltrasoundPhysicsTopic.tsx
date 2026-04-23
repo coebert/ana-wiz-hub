@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import UltrasoundPhysicsDiagram from "@/components/diagrams/UltrasoundPhysicsDiagram";
 import { ultrasoundPhysicsQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Explain the piezoelectric effect and the components of a clinical ultrasound transducer",
@@ -47,9 +48,9 @@ const UltrasoundPhysicsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={ultrasoundPhysicsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics", "FFICM 2.5"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics", "FFICM 2.5"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2017", "BJA Educ 2017"],

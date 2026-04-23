@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define absolute and relative humidity and recall the saturated value at 37 °C (44 mg/L)",
@@ -47,9 +48,9 @@ const HumidityGasSamplingTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={humidityGasSamplingQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.9"],

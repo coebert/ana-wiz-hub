@@ -6,6 +6,7 @@ import UpperLimbArteriesDiagram from "@/components/diagrams/UpperLimbArteriesDia
 import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
 import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagram";
 import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
+import { Exam } from "@/data/curriculum";
 
 const UpperLimbAnatomyTopic = () => {
   return (
@@ -35,8 +36,8 @@ const UpperLimbAnatomyTopic = () => {
         "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

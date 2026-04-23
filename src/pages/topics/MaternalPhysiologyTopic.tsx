@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the major cardiovascular changes of pregnancy and explain aortocaval compression.",
@@ -84,9 +85,9 @@ const MaternalPhysiologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["OB_BK_01"] },
-        workedExamples: { exams: ["primary", "final"], curriculumCodes: ["OB_BK_02"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OB_BK_01"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OB_BK_02"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.17"],

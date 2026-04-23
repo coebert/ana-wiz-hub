@@ -3,6 +3,7 @@ import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
 import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
+import { Exam } from "@/data/curriculum";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
@@ -32,8 +33,8 @@ const OrthopaedicAnaesthesiaTopic = () => {
         "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

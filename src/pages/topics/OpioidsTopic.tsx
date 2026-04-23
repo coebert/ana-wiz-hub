@@ -13,6 +13,7 @@ import CSHTDiagram from "@/components/diagrams/CSHTDiagram";
 import OpioidStructures from "@/components/diagrams/OpioidStructures";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { opioidsQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe µ, κ and δ receptor signalling (Gi/Go → ↓cAMP, K⁺ efflux, Ca²⁺ closure) and the clinical effects mediated by each.",
@@ -118,10 +119,10 @@ const OpioidsTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
-        workedExamples: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2016", "Peck & Hill Ch.6"],

@@ -7,6 +7,7 @@ import BISTrendDiagram from "@/components/diagrams/BISTrendDiagram";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { depthOfAnaesthesiaQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Explain the rationale for processed EEG monitoring with reference to NAP5, NICE and AAGBI guidance.",
@@ -115,8 +116,8 @@ const DepthOfAnaesthesiaMonitoringTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={depthOfAnaesthesiaQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       coreConcepts={
         <>

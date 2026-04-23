@@ -6,6 +6,7 @@ import RVFailureSpiralDiagram from "@/components/diagrams/RVFailureSpiralDiagram
 import PHRiskStratificationCalculator from "@/components/diagrams/PHRiskStratificationCalculator";
 import PHPathophysiologyDiagram from "@/components/diagrams/PHPathophysiologyDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define pulmonary hypertension using 2022 ESC/ERS haemodynamic criteria and classify by WHO group.",
@@ -104,10 +105,10 @@ const PulmonaryHypertensionTopic = () => {
         </div>
       }
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FRCA Final CV", "FFICM 4.5", "EDIC 3"] },
-        diagrams: { exams: ["final", "fficm", "edic"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FRCA Final CV", "FFICM 4.5", "EDIC 3"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
+import { Exam } from "@/data/curriculum";
 
 const keyPoints = [
   "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
@@ -30,8 +31,8 @@ const ElderlyAnaesthesiaTopic = () => {
       ]}
       keyPoints={keyPoints}
       sectionExamMapping={{
-        objectives: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
         <div className="space-y-8">

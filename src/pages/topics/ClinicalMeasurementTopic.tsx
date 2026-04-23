@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Set up an invasive arterial line correctly (zeroing, levelling, transducer choice).",
@@ -35,9 +36,9 @@ const ClinicalMeasurementTopic = () => {
       quizQuestions={clinicalMeasurementQuiz}
       diagrams={<ClinicalMeasurementDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        diagrams: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.16", "Middleton Ch.18"],

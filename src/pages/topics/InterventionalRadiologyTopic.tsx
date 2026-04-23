@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
 import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply AAGBI standards for anaesthesia in remote locations to the IR suite",
@@ -48,10 +49,10 @@ const InterventionalRadiologyTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={interventionalRadiologyQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        diagrams: { exams: ["final"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        diagrams: { exams: [Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       keyPoints={[
         "IR suites are remote locations — apply AAGBI standards: full equipment, monitoring, capnography and trained assistance",
