@@ -3,6 +3,7 @@ import { emergencySurgeryQuestions } from "@/data/quizzes";
 import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassificationDiagram";
 import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
 import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/EmergencyLaparotomyBundleDiagram";
+import { EmergencySurgeryGlossaryDrawer } from "@/components/EmergencySurgeryGlossaryDrawer";
 
 const objectives = [
   "Apply the NCEPOD classification to prioritise emergency surgery and resuscitation.",
@@ -53,6 +54,9 @@ const EmergencySurgeryTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
+          <div className="flex justify-end">
+            <EmergencySurgeryGlossaryDrawer />
+          </div>
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
