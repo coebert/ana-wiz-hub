@@ -124,9 +124,15 @@ const Index = () => {
           </div>
 
           {overall.total > 0 && (
-            <div className="mt-8 max-w-xs mx-auto">
+            <Link
+              to="/progress"
+              className="mt-8 max-w-xs mx-auto block group"
+              aria-label="View detailed progress dashboard"
+            >
               <div className="flex items-center justify-between text-xs text-primary-foreground/70 mb-1.5">
-                <span>Overall progress</span>
+                <span className="group-hover:text-primary-foreground transition-colors">
+                  Overall progress · view dashboard →
+                </span>
                 <span>{overall.completed}/{overall.total} topics</span>
               </div>
               <div className="h-2 rounded-full bg-primary-foreground/20 overflow-hidden">
@@ -135,7 +141,7 @@ const Index = () => {
                   style={{ width: `${(overall.completed / overall.total) * 100}%` }}
                 />
               </div>
-            </div>
+            </Link>
           )}
         </div>
       </section>
