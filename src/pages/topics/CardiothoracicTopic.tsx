@@ -1,15 +1,11 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { cardiothoracicQuestions } from "@/data/quizzes";
 import CPBCircuitDiagram from "@/components/diagrams/CPBCircuitDiagram";
 import DLTInsertionDiagram from "@/components/diagrams/DLTInsertionDiagram";
 import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingDiagram";
 import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
 import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const tocItems = [
@@ -23,15 +19,68 @@ const tocItems = [
   { id: "analgesia", label: "Post-operative analgesia", group: "Post-operative" },
 ];
 
+const objectives = [
+  "Describe the CPB circuit, anticoagulation targets and physiological effects of bypass",
+  "Compare on-pump and off-pump CABG (ROOBY, CORONARY, GOPCABE)",
+  "Apply DHCA conduct: cooling strategy, cerebral perfusion adjuncts (ASCP/RCP), pH-stat vs α-stat",
+  "Run modified CALS for cardiac arrest after cardiac surgery (10-min sternotomy window)",
+  "Plan one-lung ventilation: DLT placement, hypoxia troubleshooting, HPV preservation",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Hypoxia 5 minutes into one-lung ventilation",
+    scenario:
+      "A patient on left-sided DLT for right thoracotomy desaturates to SpO₂ 86% five minutes after starting OLV. PIP has risen and the surgeon reports a partly inflated right lung. What is your stepwise response?",
+    working:
+      "1. Increase FiO₂ to 1.0; check breath sounds and capnography trace.\n2. Confirm DLT position with fibreoptic bronchoscopy — most common cause is tube migration (left bronchial cuff herniated or main carina lost).\n3. Suction both lumens to clear secretions/blood.\n4. Apply 5 cmH₂O CPAP to the non-ventilated (operative) lung; or 5 cmH₂O PEEP to the dependent lung.\n5. If still hypoxic: intermittent re-inflation of the operative lung between surgical steps; consider lobar blocker for selective lobar ventilation.\n6. Ultimate rescue: ask surgeon to clamp the operative pulmonary artery (eliminates shunt) or revert to two-lung ventilation.",
+    answer:
+      "FiO₂ 1.0 → confirm DLT position fibreoptically → suction → CPAP to operative lung + PEEP to dependent lung → intermittent re-inflation → PA clamp or revert to two-lung ventilation as rescue.",
+  },
+  {
+    title: "Cardiac arrest 4 hours after CABG — apply CALS",
+    scenario:
+      "A post-CABG patient in CICU develops VF four hours after sternal closure. How does your management differ from standard ALS?",
+    working:
+      "Modified CALS (EACTS/STS):\n• Up to 3 stacked DC shocks (200 J biphasic) BEFORE chest compressions for VF/pVT — most arrests in this window are shockable and stacked shocks have higher first-shock success.\n• Withhold adrenaline initially (risk of severe rebound hypertension on ROSC) — pace if asystole/PEA with wires in situ.\n• Chest compressions only if shocks fail.\n• Prepare for emergency RE-STERNOTOMY within 5 minutes (10-minute window from arrest) if no ROSC — internal cardiac massage is more effective and excludes tamponade/graft occlusion.\n• Call cardiothoracic surgeon; activate ECPR if available.",
+    answer:
+      "Up to 3 stacked DC shocks first, withhold adrenaline, pace if shockable rhythm absent, and prepare for emergency re-sternotomy within 5 minutes if not in ROSC.",
+  },
+];
+
 const CardiothoracicTopic = () => {
   return (
-    <SectionLayout title="Cardiothoracic Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <TopicTableOfContents items={tocItems} />
-      <p className="text-muted-foreground leading-relaxed mb-6">
-        Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
-      </p>
+    <TopicTemplate
+      title="Cardiothoracic Anaesthesia"
+      subtitle="FRCA / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="cardiothoracic"
+      topicTitle="Cardiothoracic Anaesthesia"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      quizQuestions={cardiothoracicQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      keyPoints={[
+        "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio",
+        "CPB activates SIRS — complement, cytokines, coagulopathy; TXA reduces bleeding (ATACAS)",
+        "Left-sided DLT preferred for OLV; always confirm position with fibreoptic bronchoscopy",
+        "HPV reduces shunt during OLV — inhibited by volatiles >1 MAC, vasodilators, and hypothermia",
+        "Aortic stenosis: maintain SVR and sinus rhythm, avoid tachycardia and hypotension",
+      ]}
+      coreConcepts={
+        <>
+          <TopicTableOfContents items={tocItems} />
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Cardiothoracic anaesthesia is built around two distinct domains. <strong>Cardiac surgery</strong> centres on cardiopulmonary bypass — its circuit, its physiological consequences, and the specific demands of valve, coronary, and aortic-arch procedures. <strong>Thoracic surgery</strong> centres on lung isolation and the management of one-lung ventilation. The topic below follows that order: cardiac fundamentals first, then thoracic.
+          </p>
 
-      <section className="space-y-6 mb-10">
+          <section className="space-y-6 mb-10">
         {/* ───────── Cardiac surgery ───────── */}
         <div id="cpb-overview" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiopulmonary Bypass (CPB)</h2>
@@ -664,21 +713,9 @@ const CardiothoracicTopic = () => {
           </div>
         </div>
       </section>
-
-      <KeyLearningPoints points={[
-        "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio",
-        "CPB activates SIRS — complement, cytokines, coagulopathy; TXA reduces bleeding (ATACAS)",
-        "Left-sided DLT preferred for OLV; always confirm position with fibreoptic bronchoscopy",
-        "HPV reduces shunt during OLV — inhibited by volatiles >1 MAC, vasodilators, and hypothermia",
-        "Aortic stenosis: maintain SVR and sinus rhythm, avoid tachycardia and hypotension",
-      ]} />
-
-      <QuizSection questions={cardiothoracicQuestions} />
-      <ReferencesList topicId="cardiothoracic" />
-
-      <SeeAlso topicId="cardiothoracic" />
-        <TopicCompletionToggle topicId="cardiothoracic" topicTitle="Cardiothoracic Anaesthesia" />
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
