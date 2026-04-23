@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { proceduralSedationQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
+import { SedationDeliveryProfilesDiagram } from "@/components/diagrams/SedationDeliveryProfilesDiagram";
 
 const objectives = [
   "Define sedation and distinguish minimal, moderate, deep sedation and general anaesthesia (ASA continuum)",
