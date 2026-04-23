@@ -147,6 +147,7 @@ export const clinicalTopics: Topic[] = [
   { id: "bariatric-anaesthesia", title: "Bariatric Anaesthesia", description: "Obesity physiology, drug dosing, airway management, OSA/OHS, bariatric surgery", section: "clinical", examTags: ["final"], available: true },
   { id: "elderly-anaesthesia", title: "Anaesthesia for the Elderly", description: "Frailty, age-related physiology, postoperative delirium, hip fracture, pharmacological changes", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "day-surgery", title: "Day Surgery", description: "Patient selection, anaesthetic techniques, PONV prevention, discharge criteria", section: "clinical", examTags: ["final"], available: true },
+  { id: "procedural-sedation", title: "Procedural Sedation", description: "Sedation continuum, drug techniques (bolus, infusion, TCI), patient selection, safe practice", section: "clinical", examTags: ["primary", "final"], available: true },
   { id: "interventional-radiology", title: "Anaesthesia for Interventional Radiology", description: "Remote location anaesthesia, contrast reactions, radiation safety, TIPSS, embolisation, EVAR", section: "clinical", examTags: ["final"], available: true },
   { id: "transfer-medicine", title: "Transfer Medicine", description: "AAGBI transfer guidelines, equipment, monitoring, packaging, aeromedical physiology", section: "clinical", examTags: ["final", "fficm"], available: true },
   // Emergencies & incidents
