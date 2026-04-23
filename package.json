@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "check:diagrams": "node scripts/check-duplicate-diagrams.mjs",
     "check:sources": "node scripts/check-section-sources.mjs",
-    "check:all": "npm run check:diagrams && npm run check:sources",
+    "check:exam-tags": "node scripts/check-exam-tags.mjs",
+    "check:all": "npm run check:diagrams && npm run check:sources && npm run check:exam-tags",
     "prepublish": "npm run check:all && npm run lint && npm run test",
     "test": "vitest run",
     "test:watch": "vitest"
