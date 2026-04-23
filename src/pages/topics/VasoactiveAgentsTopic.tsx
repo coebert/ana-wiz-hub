@@ -1,13 +1,8 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { vasoactiveAgentsQuiz } from "@/data/quizzes";
 import VasoactiveReceptorDiagram from "@/components/diagrams/VasoactiveReceptorDiagram";
 import VasoactiveStructures from "@/components/diagrams/VasoactiveStructures";
 import InotropeSignallingDiagram from "@/components/diagrams/InotropeSignallingDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { StickyTOC } from "@/components/StickyTOC";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 
@@ -21,17 +16,54 @@ const tocItems = [
   { id: "toc-synthesis", label: "Comparison Table" },
 ];
 
+const objectives = [
+  "Classify vasoactive agents by mechanism (catecholamines, sympathomimetics, PDE inhibitors, vasopressin analogues, Ca²⁺ sensitisers, vasodilators).",
+  "Describe adrenoreceptor subtypes and their downstream signalling (Gs/Gq/Gi → cAMP / IP₃ / DAG).",
+  "Choose appropriate first-line agents for septic, cardiogenic and vasoplegic shock with dose ranges.",
+  "Explain non-catecholamine inotropic strategies (PDE III inhibition, Ca²⁺ sensitisation, glucagon, digoxin, Ca²⁺).",
+  "Recognise indications, dosing and toxicity of salvage agents (vasopressin, methylene blue, angiotensin II).",
+];
+
+const keyPoints = [
+  "Inotropes work by ↑ cAMP (β-agonists, PDE inhibitors, glucagon), Ca²⁺ sensitisation, or Na⁺/K⁺-ATPase inhibition (digoxin)",
+  "Adrenaline has dose-dependent receptor selectivity: low-dose β₂, moderate β₁, high-dose α₁",
+  "Noradrenaline is first-line vasopressor in septic shock (α₁ predominant with some β₁)",
+  "Dobutamine is an inodilator (β₁ > β₂ > α₁) — first-line inotrope in cardiogenic shock",
+  "PDE III inhibitors (milrinone) bypass β-receptors — effective in β-blocked patients and ↓ PVR",
+  "Digoxin inhibits Na⁺/K⁺-ATPase — toxicity enhanced by ↓K⁺, ↓Mg²⁺, ↑Ca²⁺; treat with DigiFab",
+  "Glucagon bypasses the β-receptor via glucagon receptor → Gs → ↑ cAMP — key in β-blocker OD",
+  "CaCl₂ has 3× more ionised Ca²⁺ than Ca gluconate — preferred in cardiac arrest",
+  "Levosimendan sensitises troponin C to calcium — no increase in myocardial O₂ demand",
+  "Vasopressin acts via V₁ receptors — works even in acidosis when catecholamines fail",
+  "GTN is predominantly a venodilator (↓ preload); SNP is a balanced arteriovenous dilator releasing cyanide",
+  "Methylene blue is a salvage option in refractory vasoplegia — inhibits iNOS and sGC",
+];
+
 const VasoactiveAgentsTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Vasoactive & Inotropic Agents"
       subtitle="FRCA Primary & Final — Pharmacology"
       backPath="/pharmacology"
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
-    >
-      <StickyTOC items={tocItems} />
-      <div className="prose prose-slate max-w-none">
+      topicId="vasoactive-agents"
+      topicTitle="Vasoactive & Inotropic Agents"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={vasoactiveAgentsQuiz}
+      sectionExamMapping={{
+        objectives: { exams: ["FRCA Primary", "FRCA Final", "FFICM"], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: ["FRCA Primary", "FRCA Final", "FFICM"], curriculumCodes: ["PR_BK_05"] },
+      }}
+      sectionSources={{
+        objectives: ["BJA Educ 2019", "Peck & Hill Ch.11"],
+        keyPoints: ["BJA Educ 2019", "Peck & Hill Ch.11", "BJA Educ 2004"],
+      }}
+      coreConcepts={
+        <>
+          <StickyTOC items={tocItems} />
+          <div className="prose prose-slate max-w-none">
         {/* ================= 1. ORIENTATION ================= */}
         <section id="toc-foundations" className="mb-10 scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
