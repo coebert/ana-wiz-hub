@@ -54,7 +54,6 @@ const ProceduralSedationTopic = () => {
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
-        coreConcepts: ["AoMRC Safe Sedation 2013", "AAGBI/RCoA Safe Sedation Practice 2021", "ASA Continuum of Depth of Sedation 2019"],
         workedExamples: ["DAS Awake Tracheal Intubation 2020", "BSG Endoscopy Sedation 2023"],
       }}
       keyPoints={[
@@ -173,9 +172,8 @@ const ProceduralSedationTopic = () => {
             </div>
             <CrossReferenceCallout
               variant="inline"
-              targetTopicId="tiva"
-              targetTitle="Total Intravenous Anaesthesia"
               reason="TCI models (Marsh, Schnider, Eleveld, Minto), context-sensitive half-times and the simulator that underpin TCI sedation are explored in detail in the TIVA topic."
+              links={[{ topicId: "tiva" }]}
             />
           </ExamSection>
 
@@ -226,9 +224,8 @@ const ProceduralSedationTopic = () => {
             </div>
             <CrossReferenceCallout
               variant="inline"
-              targetTopicId="iv-anaesthetics"
-              targetTitle="IV Anaesthetics"
               reason="Pharmacokinetics, pharmacodynamics and side-effect profiles of propofol, ketamine, midazolam and etomidate are covered in depth in the IV Anaesthetics topic."
+              links={[{ topicId: "iv-anaesthetics" }]}
             />
           </ExamSection>
 
@@ -294,9 +291,8 @@ const ProceduralSedationTopic = () => {
             </div>
             <CrossReferenceCallout
               variant="panel"
-              targetTopicId="icu-sedation-delirium"
-              targetTitle="ICU Sedation &amp; Delirium"
-              reason="For continuous sedation of intubated critically ill patients (RASS-targeted infusions, PRIS, CAM-ICU, ABCDEF bundle), see the dedicated ICU Sedation &amp; Delirium topic — the principles, drugs and risk profile differ substantially from short-procedure sedation."
+              reason="For continuous sedation of intubated critically ill patients (RASS-targeted infusions, PRIS, CAM-ICU, ABCDEF bundle), see the dedicated ICU Sedation & Delirium topic — the principles, drugs and risk profile differ substantially from short-procedure sedation."
+              links={[{ topicId: "icu-sedation-delirium" }]}
             />
           </ExamSection>
         </>
