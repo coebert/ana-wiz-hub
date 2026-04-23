@@ -19,3 +19,4 @@ For EVERY "add to topic" request: auto-run placement flow (read → 3-layer dedu
 - [Diagram registry](mem://reference/diagram-registry) — src/lib/diagram-registry.ts: DiagramFingerprint, findSimilarDiagrams
 - [Semantic dedupe](mem://reference/semantic-dedupe) — semantic-dedupe edge function + src/lib/semantic-dedupe.ts
 - [Cross-reference recommender](mem://reference/cross-reference-recommender) — src/lib/cross-reference-recommender.ts + CrossReferenceCallout.tsx
+- [Source library](mem://reference/source-library) — src/data/sources.ts canonical bibliographic sources + resolveReference helper
