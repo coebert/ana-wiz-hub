@@ -25,7 +25,7 @@ const ABGAnalyserTopic = () => {
   return (
     <TopicTemplate
       title="ABG Analyser & Gas Measurement"
-      subtitle="Primary / Final \u2014 Physics"
+      subtitle="Primary / Final — Physics"
       backPath="/physics"
       backLabel="Physics"
       accentColor="text-physics"
@@ -47,7 +47,7 @@ const ABGAnalyserTopic = () => {
           <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ABG Analyser Overview</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              A modern blood gas analyser directly measures three parameters \u2014 pH, PO\u2082, and PCO\u2082 \u2014 using electrochemical electrodes maintained at 37\u00B0C. All other values (HCO\u2083\u207B, base excess, SaO\u2082) are <strong>calculated</strong> using the Henderson-Hasselbalch equation and standard algorithms.
+              A modern blood gas analyser directly measures three parameters — pH, PO₂, and PCO₂ — using electrochemical electrodes maintained at 37°C. All other values (HCO₃⁻, base excess, SaO₂) are <strong>calculated</strong> using the Henderson-Hasselbalch equation and standard algorithms.
             </p>
             <div className="my-4">
               <ABGAnalyserDiagram />
@@ -426,24 +426,9 @@ const ABGAnalyserTopic = () => {
             ))}
           </tbody>
         </table>
-      </SynthesisBlock>
-
-      <KeyLearningPoints points={[
-        "ABG directly measures pH (glass electrode), PO₂ (Clark), PCO₂ (Severinghaus). HCO₃⁻ and BE are calculated.",
-        "Clark electrode: amperometric, −0.6V polarizing voltage, Pt cathode reduces O₂ (O₂+2H₂O+4e⁻→4OH⁻), Ag anode oxidised (4Ag+4Cl⁻→4AgCl+4e⁻). Current ∝ PO₂.",
-        "pH glass electrode: H⁺ exchanges with Li⁺/Na⁺ in hydrated gel layers — boundary potential follows Nernst equation (61.5 mV/pH unit at 37°C).",
-        "Severinghaus: CO₂ crosses Teflon membrane → CO₂+H₂O→H⁺+HCO₃⁻ → pH change measured by inner glass electrode. Slowest response (~60–120s).",
-        "Galvanic fuel cell: self-generating EMF, gold cathode/lead anode (consumed), same cathode reaction as Clark. Measures FiO₂ in breathing circuit.",
-        "α-stat vs pH-stat: α-stat (uncorrected at 37°C) preferred in adults; pH-stat (corrected to patient temp) in paediatric cardiac surgery.",
-        "Optodes: fibre-optic fluorescence sensors. PO₂ optode uses ruthenium dye fluorescence quenching (Stern–Volmer); pH optode is ratiometric; PCO₂ optode = Severinghaus with pH optode inside. Don't consume O₂, MRI-compatible, used in POC cartridges, intravascular and CPB monitors.",
-      ]} />
-
-      <QuizSection questions={abgAnalyserQuestions} />
-      <ReferencesList topicId="abg-analyser" />
-
-      <SeeAlso topicId="abg-analyser" />
-      <TopicCompletionToggle topicId="abg-analyser" topicTitle="ABG Analyser & Gas Measurement" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 
