@@ -58,9 +58,9 @@ const ClosingVolumeDiagram = () => {
         <text x="225" y="215" textAnchor="middle" className="text-[10px] fill-muted-foreground">Expired Volume (L)</text>
         <text x="15" y="105" textAnchor="middle" className="text-[10px] fill-muted-foreground" transform="rotate(-90,15,105)">N₂ Concentration (%)</text>
 
-        {/* Y-axis labels */}
-        {[0, 10, 20, 30, 40].map(v => {
-          const y = 190 - (v / 40) * 160;
+        {/* Y-axis labels (0–60 % to accommodate elderly Phase IV peak) */}
+        {[0, 10, 20, 30, 40, 50, 60].map(v => {
+          const y = 190 - (v / 60) * 160;
           return (
             <g key={v}>
               <line x1="56" y1={y} x2="60" y2={y} stroke="hsl(var(--border))" strokeWidth="1" />
@@ -96,8 +96,10 @@ const ClosingVolumeDiagram = () => {
           // Phase III: gentle slope (alveolar plateau)
           // Phase IV: steep rise (closing volume)
           
+          const yMax = 60;
+          const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
           const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
-          const phase4EndN2 = Math.min(n2AtEndIII + 25, 40);
+          const phase4EndN2 = Math.min(n2AtEndIII + 25, yMax);
 
           const pathD = [
             `M 60,190`,
@@ -105,11 +107,11 @@ const ClosingVolumeDiagram = () => {
             `L 100,189`,
             `C 105,189 108,185 110,180`,
             // Phase II - S-shaped rise
-            `C 120,150 140,${190 - (30 / 40) * 160 - 5} 160,${190 - (30 / 40) * 160}`,
+            `C 120,150 140,${yScale(30) - 5} 160,${yScale(30)}`,
             // Phase III - gentle upslope
-            `L ${phase4Start},${190 - (n2AtEndIII / 40) * 160}`,
+            `L ${phase4Start},${yScale(n2AtEndIII)}`,
             // Phase IV - steep rise
-            `C ${phase4Start + 15},${190 - ((n2AtEndIII + 10) / 40) * 160} ${phase4Start + 30},${190 - ((n2AtEndIII + 18) / 40) * 160} 380,${190 - (phase4EndN2 / 40) * 160}`,
+            `C ${phase4Start + 15},${yScale(n2AtEndIII + 10)} ${phase4Start + 30},${yScale(n2AtEndIII + 18)} 380,${yScale(phase4EndN2)}`,
           ].join(" ");
 
           return (
@@ -135,7 +137,7 @@ const ClosingVolumeDiagram = () => {
           const cvX = ageGroup === "young" ? 320 : 290;
           const slopeIII = ageGroup === "young" ? 0.08 : 0.18;
           const n2AtCV = 30 + slopeIII * (cvX - 160);
-          const cvY = 190 - (n2AtCV / 40) * 160;
+          const cvY = 190 - (Math.min(n2AtCV, 60) / 60) * 160;
           return (
             <g>
               <line x1={cvX} y1={cvY} x2={cvX} y2={195} stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" strokeDasharray="4,3" />
