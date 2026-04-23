@@ -22,11 +22,32 @@ const ClosingVolumeDiagram = () => {
   const [selectedPhase, setSelectedPhase] = useState<Phase | null>(null);
   const [showCapacity, setShowCapacity] = useState(false);
   const [ageGroup, setAgeGroup] = useState<"young" | "elderly">("young");
+  const [autoScale, setAutoScale] = useState(true);
 
   // CV increases with age; CC = CV + RV
   const cv = ageGroup === "young" ? 10 : 25; // % of VC
   const rv = 25; // % of TLC simplified
   const cc = cv + rv; // closing capacity
+
+  // Curve parameters (single source of truth — used for both rendering & scaling)
+  const phase4Start = ageGroup === "young" ? 320 : 290;
+  const slopeIII = ageGroup === "young" ? 0.08 : 0.18; // steeper in elderly
+  const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
+  const rawPhase4Peak = n2AtEndIII + 25; // theoretical Phase IV end before clamping
+
+  // Dynamic y-axis: round peak up to nearest 10, with a 10% headroom and a 40% floor
+  const niceCeil = (v: number, step: number) => Math.ceil(v / step) * step;
+  const yMax = autoScale
+    ? Math.max(40, niceCeil(rawPhase4Peak * 1.05, 10))
+    : 60; // fixed legacy scale
+
+  // Tick spacing: keep ~5–7 ticks regardless of range
+  const tickStep = yMax <= 50 ? 10 : yMax <= 80 ? 10 : 20;
+  const yTicks: number[] = [];
+  for (let v = 0; v <= yMax; v += tickStep) yTicks.push(v);
+
+  const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
+  const phase4EndN2 = Math.min(rawPhase4Peak, yMax);
 
   return (
     <div className="space-y-4">
