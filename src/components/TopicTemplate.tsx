@@ -233,7 +233,13 @@ export const TopicTemplate = ({
         <ExamSummary
           title={title}
           sectionExamMapping={sectionExamMapping}
-          keyPoints={keyPoints}
+          keyPoints={keyPoints.map((p) =>
+            typeof p === "string"
+              ? p
+              : typeof p.text === "string"
+                ? p.text
+                : "",
+          )}
         />
         <ReferencesList topicId={topicId} />
         <SeeAlso topicId={topicId} />
