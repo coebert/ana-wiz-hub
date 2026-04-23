@@ -1,7 +1,7 @@
 import { ExternalLink, BookOpen, ChevronRight } from "lucide-react";
 import { topicReferences, Reference } from "@/data/references";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ReferencesListProps {
   topicId: string;
@@ -10,6 +10,28 @@ interface ReferencesListProps {
 export const ReferencesList = ({ topicId }: ReferencesListProps) => {
   const refs = topicReferences[topicId];
   const [open, setOpen] = useState(false);
+
+  // Auto-expand and scroll into view if the URL hash points at a reference
+  // (e.g. when a footnote chip on an animated diagram is clicked).
+  useEffect(() => {
+    if (!refs) return;
+    const tryOpenFromHash = () => {
+      const hash = window.location.hash.replace(/^#/, "");
+      if (!hash) return;
+      if (hash === "references" || hash.startsWith("ref-")) {
+        setOpen(true);
+        // Re-scroll AFTER the collapsible renders the content.
+        requestAnimationFrame(() => {
+          const el = document.getElementById(hash);
+          el?.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+    };
+    tryOpenFromHash();
+    window.addEventListener("hashchange", tryOpenFromHash);
+    return () => window.removeEventListener("hashchange", tryOpenFromHash);
+  }, [refs]);
+
   if (!refs || refs.length === 0) return null;
 
   return (
