@@ -50,7 +50,7 @@ export const SectionReferences = ({
   }
 
   if (import.meta.env.DEV && missing.length > 0) {
-    // eslint-disable-next-line no-console
+     
     console.warn(
       `[SectionReferences] Unknown ref labels for topic "${topicId}":`,
       missing,
