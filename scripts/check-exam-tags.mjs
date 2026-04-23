@@ -18,7 +18,7 @@
 import { readFileSync, statSync, readdirSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { Linter } from "eslint";
-import tsParser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint";
 import validExamTag from "../eslint-rules/valid-exam-tag.js";
 
 const ROOT = resolve(new URL("..", import.meta.url).pathname);
@@ -55,7 +55,7 @@ const config = [
   {
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
-      parser: tsParser,
+      parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
