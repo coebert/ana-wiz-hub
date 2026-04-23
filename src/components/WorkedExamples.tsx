@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { FlaskConical } from "lucide-react";
+import { Cite } from "@/components/Cite";
 
 export interface WorkedExample {
   /** Short scenario or calculation title */
@@ -10,6 +11,12 @@ export interface WorkedExample {
   working: ReactNode;
   /** Final answer or take-home message */
   answer: ReactNode;
+  /**
+   * Optional inline citations for this example. Reference labels must
+   * exist in `topicReferences[topicId]`; rendered as numeric superscripts
+   * next to the example title.
+   */
+  cites?: string[];
 }
 
 interface WorkedExamplesProps {
@@ -18,6 +25,8 @@ interface WorkedExamplesProps {
   heading?: string;
   /** Optional anchor id for the wrapping block (defaults to "worked-examples"). */
   blockId?: string;
+  /** Topic ID used to resolve citation labels → numeric superscripts. */
+  topicId?: string;
 }
 
 /**
@@ -29,6 +38,7 @@ export const WorkedExamples = ({
   examples,
   heading = "Worked Examples",
   blockId = "worked-examples",
+  topicId,
 }: WorkedExamplesProps) => {
   if (!examples.length) return null;
   return (
@@ -47,7 +57,12 @@ export const WorkedExamples = ({
             <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
               Example {i + 1}
             </p>
-            <h3 className="text-base font-semibold text-foreground mb-3">{ex.title}</h3>
+            <h3 className="text-base font-semibold text-foreground mb-3">
+              {ex.title}
+              {topicId && ex.cites && ex.cites.length > 0 && (
+                <Cite topicId={topicId} labels={ex.cites} />
+              )}
+            </h3>
 
             <div className="space-y-3 text-sm">
               <div>

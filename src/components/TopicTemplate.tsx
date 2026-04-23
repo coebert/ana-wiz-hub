@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { LearningObjectives } from "@/components/LearningObjectives";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { KeyLearningPoints, KeyPoint } from "@/components/KeyLearningPoints";
 import { WorkedExamples, WorkedExample } from "@/components/WorkedExamples";
 import { QuizSection } from "@/components/QuizSection";
 import { ReferencesList } from "@/components/ReferencesList";
@@ -40,8 +40,11 @@ interface TopicTemplateProps {
   objectives: string[];
   /** "Core Concepts" — the main teaching content, organised into sections. */
   coreConcepts: ReactNode;
-  /** "Key Learning Points" — final summary bullets. */
-  keyPoints: string[];
+  /**
+   * "Key Learning Points" — final summary bullets. Each entry can be a
+   * plain string OR `{ text, cites }` for inline numeric citations.
+   */
+  keyPoints: KeyPoint[];
 
   // Optional structural blocks
   /** "Diagrams & Visualisations" — interactive diagrams/animations. */
@@ -187,7 +190,7 @@ export const TopicTemplate = ({
                 curriculumCodes={sectionExamMapping.workedExamples.curriculumCodes}
               />
             )}
-            <WorkedExamples examples={workedExamples} />
+            <WorkedExamples examples={workedExamples} topicId={topicId} />
             {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
               <SectionReferences
                 topicId={topicId}
@@ -209,7 +212,7 @@ export const TopicTemplate = ({
                 curriculumCodes={sectionExamMapping.keyPoints.curriculumCodes}
               />
             )}
-            <KeyLearningPoints points={keyPoints} />
+            <KeyLearningPoints points={keyPoints} topicId={topicId} />
             {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
               <SectionReferences
                 topicId={topicId}
@@ -230,7 +233,13 @@ export const TopicTemplate = ({
         <ExamSummary
           title={title}
           sectionExamMapping={sectionExamMapping}
-          keyPoints={keyPoints}
+          keyPoints={keyPoints.map((p) =>
+            typeof p === "string"
+              ? p
+              : typeof p.text === "string"
+                ? p.text
+                : "",
+          )}
         />
         <ReferencesList topicId={topicId} />
         <SeeAlso topicId={topicId} />
