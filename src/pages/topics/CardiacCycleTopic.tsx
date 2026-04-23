@@ -5,6 +5,7 @@ import { WiggersDiagram } from "@/components/diagrams/WiggersDiagram";
 import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
 import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
+import AorticDicroticNotchDiagram from "@/components/diagrams/AorticDicroticNotchDiagram";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 
 const objectives = [
@@ -112,6 +113,10 @@ const CardiacCycleTopic = () => {
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <h3 className="text-base font-semibold text-foreground mb-3">Wiggers Diagram</h3>
             <WiggersDiagram />
+          </div>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <h3 className="text-base font-semibold text-foreground mb-3">Aortic Pressure & the Dichrotic Notch</h3>
+            <AorticDicroticNotchDiagram />
           </div>
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <h3 className="text-base font-semibold text-foreground mb-3">Pressure–Volume Loop</h3>
