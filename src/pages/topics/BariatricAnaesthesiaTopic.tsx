@@ -1,17 +1,39 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Bariatric Anaesthesia" subtitle="FRCA Final — Clinical" backPath="/clinical" backLabel="Clinical" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Bariatric Anaesthesia"
+      subtitle="FRCA Final — Clinical"
+      backPath="/clinical"
+      backLabel="Clinical"
+      accentColor="text-clinical"
+      topicId="bariatric-anaesthesia"
+      topicTitle="Bariatric Anaesthesia"
+      quizQuestions={bariatricAnaesthesiaQuestions}
+      objectives={[
+        "Describe the physiological changes of obesity relevant to anaesthesia",
+        "Apply weight scalars (LBW, IBW, ABW, TBW) appropriately to anaesthetic drug dosing",
+        "Plan safe airway management including ramped positioning and apnoeic oxygenation",
+        "Recognise and risk-stratify obstructive sleep apnoea using STOP-BANG",
+        "Outline postoperative care priorities including analgesia and VTE prophylaxis",
+      ]}
+      keyPoints={[
+        "FRC falls dramatically in obesity — may fall below closing capacity causing shunt even during tidal breathing",
+        "Ramped position + head-up tilt + apnoeic oxygenation are essential for safe airway management",
+        "Drug dosing: LBW for propofol/remifentanil/NMBAs, TBW for succinylcholine, ABW for sugammadex",
+        "STOP-BANG ≥5 = high-risk OSA. Screen for OHS (daytime hypercapnia) if BMI ≥30 + OSA",
+        "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["final"] },
+        keyPoints: { exams: ["final"] },
+      }}
+      coreConcepts={
+        <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obesity: Definitions & Epidemiology</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -224,19 +246,8 @@ const BariatricAnaesthesiaTopic = () => {
           </ul>
         </div>
       </section>
-
-      <KeyLearningPoints points={[
-        "FRC falls dramatically in obesity — may fall below closing capacity causing shunt even during tidal breathing",
-        "Ramped position + head-up tilt + apnoeic oxygenation are essential for safe airway management",
-        "Drug dosing: LBW for propofol/remifentanil/NMBAs, TBW for succinylcholine, ABW for sugammadex",
-        "STOP-BANG ≥5 = high-risk OSA. Screen for OHS (daytime hypercapnia) if BMI ≥30 + OSA",
-        "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia",
-      ]} />
-      <QuizSection questions={bariatricAnaesthesiaQuestions} />
-      <ReferencesList topicId="bariatric-anaesthesia" />
-      <SeeAlso topicId="bariatric-anaesthesia" />
-        <TopicCompletionToggle topicId="bariatric-anaesthesia" topicTitle="Bariatric Anaesthesia" />
-    </SectionLayout>
+      }
+    />
   );
 };
 

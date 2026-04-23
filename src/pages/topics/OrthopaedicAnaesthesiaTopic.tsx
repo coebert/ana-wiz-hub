@@ -1,18 +1,42 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { orthopaedicAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { BlockAnalgesiaProfileDiagram } from "@/components/diagrams/BlockAnalgesiaProfileDiagram";
 import { LowerLimbBlocksDiagram } from "@/components/diagrams/LowerLimbBlocksDiagram";
 
 const OrthopaedicAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Orthopaedic Anaesthesia" subtitle="FRCA Final — Clinical" backPath="/clinical" backLabel="Clinical" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Orthopaedic Anaesthesia"
+      subtitle="FRCA Final — Clinical"
+      backPath="/clinical"
+      backLabel="Clinical"
+      accentColor="text-clinical"
+      topicId="orthopaedic-anaesthesia"
+      topicTitle="Orthopaedic Anaesthesia"
+      quizQuestions={orthopaedicAnaesthesiaQuestions}
+      objectives={[
+        "Manage anaesthesia for hip fracture according to NICE/AAGBI standards",
+        "Describe tourniquet physiology and the consequences of inflation and deflation",
+        "Recognise, prevent, and treat bone cement implantation syndrome (BCIS)",
+        "Plan a motor-sparing analgesic strategy for day-case lower-limb arthroplasty",
+        "Identify high-risk patients for compartment syndrome and modify regional technique accordingly",
+      ]}
+      keyPoints={[
+        "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia",
+        "Tourniquet: upper limb 50-100 mmHg above SBP. Safe limit ~2h. Deflation → ↓ pH, ↑ K⁺, ↑ CO₂, ↑ lactate",
+        "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing",
+        "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)",
+        "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan",
+        "Home perineural catheters (Ilfeld evidence) extend analgesia 48–72h but require 24/7 APS support and red-flag teaching",
+        "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["final"] },
+        keyPoints: { exams: ["final"] },
+      }}
+      coreConcepts={
+        <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hip Fracture (#NOF)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -263,21 +287,8 @@ const OrthopaedicAnaesthesiaTopic = () => {
           </div>
         </div>
       </section>
-
-      <KeyLearningPoints points={[
-        "#NOF: surgery within 36h. Spinal anaesthesia recommended (NICE). Fascia iliaca / PENG block for analgesia",
-        "Tourniquet: upper limb 50-100 mmHg above SBP. Safe limit ~2h. Deflation → ↓ pH, ↑ K⁺, ↑ CO₂, ↑ lactate",
-        "BCIS: fat/marrow embolism during cement insertion → hypoxia, hypotension, ↓ consciousness. Warn before cementing",
-        "Day-case TKA recipe: low-dose spinal + adductor canal + IPACK + LIA + multimodal oral analgesia (motor-sparing)",
-        "Counsel patients about the 'block wear-off cliff' — start regular paracetamol/NSAID before pain returns; provide written plan",
-        "Home perineural catheters (Ilfeld evidence) extend analgesia 48–72h but require 24/7 APS support and red-flag teaching",
-        "Compartment syndrome in high-risk limbs: discuss with surgeon, use dilute LA (0.2% ropivacaine), avoid long adjuncts, treat escalating top-up demand as a red flag",
-      ]} />
-      <QuizSection questions={orthopaedicAnaesthesiaQuestions} />
-      <ReferencesList topicId="orthopaedic-anaesthesia" />
-      <SeeAlso topicId="orthopaedic-anaesthesia" />
-        <TopicCompletionToggle topicId="orthopaedic-anaesthesia" topicTitle="Orthopaedic Anaesthesia" />
-    </SectionLayout>
+      }
+    />
   );
 };
 

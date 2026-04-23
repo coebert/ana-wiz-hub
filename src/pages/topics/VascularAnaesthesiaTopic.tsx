@@ -1,16 +1,42 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const VascularAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Vascular Anaesthesia" subtitle="FRCA Final — Clinical" backPath="/clinical" backLabel="Clinical" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Vascular Anaesthesia"
+      subtitle="FRCA Final — Clinical"
+      backPath="/clinical"
+      backLabel="Clinical"
+      accentColor="text-clinical"
+      topicId="vascular-anaesthesia"
+      topicTitle="Vascular Anaesthesia"
+      quizQuestions={vascularAnaesthesiaQuestions}
+      objectives={[
+        "Compare anaesthetic management of open AAA, EVAR, and ruptured AAA repair",
+        "Describe the haemodynamic and metabolic consequences of aortic cross-clamping and unclamping",
+        "Plan anaesthesia for carotid endarterectomy with appropriate cerebral monitoring",
+        "Apply spinal cord and renal protection strategies during major aortic surgery",
+        "Risk-stratify vascular surgical patients using RCRI, METs, and CPET",
+      ]}
+      keyPoints={[
+        "Aortic cross-clamping: ↑ SVR/afterload above clamp; ischaemia below. Unclamp → ↓ SVR, acidosis, ↑ K⁺ — pre-load before release",
+        "Ruptured AAA: permissive hypotension (SBP 70–80) until aortic control. Massive transfusion protocol",
+        "CEA: GALA trial — no outcome difference GA vs regional; awake neurological exam under cervical plexus block remains the gold-standard cerebral monitor",
+        "CEA shunting: Cochrane (2014) found no benefit of routine over selective shunting — awake testing gives the lowest shunt rate (~10–15%)",
+        "Cervical plexus block: intermediate (sub-SCM, ultrasound-guided) now preferred over deep — equivalent surgical conditions with far fewer phrenic/RLN/intravertebral complications",
+        "Post-CEA: tight BP control (SBP <140–160) for days to prevent cerebral hyperperfusion syndrome — peaks days 3–7",
+        "Vascular patients have high cardiac risk — Lee's RCRI, CPET (AT <11 = high risk), continue statins/beta-blockers perioperatively",
+        "Ischaemia-reperfusion: K⁺ release, myoglobin, lactate washout can cause arrhythmias, AKI, ARDS",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["final"] },
+        keyPoints: { exams: ["final"] },
+      }}
+      coreConcepts={
+        <>
+        <section className="space-y-6 mb-10">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Abdominal Aortic Aneurysm (AAA)</h2>
           <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -262,23 +288,10 @@ const VascularAnaesthesiaTopic = () => {
           <li><strong>Spinal cord protection (TAAA)</strong>: CSF drainage, MAP ≥80, motor-evoked potential monitoring, intercostal artery reimplantation.</li>
           <li><strong>Carotid surgery</strong>: regional (deep + superficial cervical block) or GA with arterial line; awake testing during clamp gold standard for shunt decision.</li>
         </ul>
-      </SynthesisBlock>
-
-      <KeyLearningPoints points={[
-        "Aortic cross-clamping: ↑ SVR/afterload above clamp; ischaemia below. Unclamp → ↓ SVR, acidosis, ↑ K⁺ — pre-load before release",
-        "Ruptured AAA: permissive hypotension (SBP 70–80) until aortic control. Massive transfusion protocol",
-        "CEA: GALA trial — no outcome difference GA vs regional; awake neurological exam under cervical plexus block remains the gold-standard cerebral monitor",
-        "CEA shunting: Cochrane (2014) found no benefit of routine over selective shunting — awake testing gives the lowest shunt rate (~10–15%)",
-        "Cervical plexus block: intermediate (sub-SCM, ultrasound-guided) now preferred over deep — equivalent surgical conditions with far fewer phrenic/RLN/intravertebral complications",
-        "Post-CEA: tight BP control (SBP <140–160) for days to prevent cerebral hyperperfusion syndrome — peaks days 3–7",
-        "Vascular patients have high cardiac risk — Lee's RCRI, CPET (AT <11 = high risk), continue statins/beta-blockers perioperatively",
-        "Ischaemia-reperfusion: K⁺ release, myoglobin, lactate washout can cause arrhythmias, AKI, ARDS",
-      ]} />
-      <QuizSection questions={vascularAnaesthesiaQuestions} />
-      <ReferencesList topicId="vascular-anaesthesia" />
-      <SeeAlso topicId="vascular-anaesthesia" />
-        <TopicCompletionToggle topicId="vascular-anaesthesia" topicTitle="Vascular Anaesthesia" />
-    </SectionLayout>
+        </SynthesisBlock>
+        </>
+      }
+    />
   );
 };
 
