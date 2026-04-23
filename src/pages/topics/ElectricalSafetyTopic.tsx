@@ -205,7 +205,6 @@ const ElectricalSafetyTopic = () => {
 
       <ElectricalSafetyDiagram />
 
-
       <KeyLearningPoints points={[
         "Macroshock VF threshold ~100 mA via skin; microshock VF threshold ~150 µA via intracardiac catheter.",
         "Type CF equipment (leakage <10 µA) required for intracardiac connections.",
