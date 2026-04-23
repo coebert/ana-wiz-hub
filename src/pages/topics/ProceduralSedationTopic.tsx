@@ -7,6 +7,7 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { SedationDeliveryProfilesDiagram } from "@/components/diagrams/SedationDeliveryProfilesDiagram";
 import { SedationRescueLadder } from "@/components/SedationRescueLadder";
 import { SedationDecisionGate } from "@/components/SedationDecisionGate";
+import { SedationDischargeChecklist } from "@/components/SedationDischargeChecklist";
 
 const objectives = [
   "Define sedation and distinguish minimal, moderate, deep sedation and general anaesthesia (ASA continuum)",
@@ -398,6 +399,14 @@ const ProceduralSedationTopic = () => {
               <li><strong>Recovery</strong>: same standards as post-GA — recovery area with trained staff, monitoring continued until discharge criteria met (modified Aldrete or PADSS)</li>
               <li><strong>Discharge</strong>: stable observations, full orientation, oral fluids tolerated, pain controlled, responsible adult escort, written instructions</li>
             </ul>
+          </ExamSection>
+
+          <ExamSection id="discharge" exams={[Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Discharge Criteria</h2>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Discharge after sedation is a clinical decision, not a clock-based one. Apply a structured score (modified Aldrete to leave first-stage recovery, PADSS to leave the day-unit), check observation timing, and screen for red-flag symptoms before allowing the patient home with their escort.
+            </p>
+            <SedationDischargeChecklist />
           </ExamSection>
 
           <ExamSection id="complications" exams={[Exam.FINAL]}>
