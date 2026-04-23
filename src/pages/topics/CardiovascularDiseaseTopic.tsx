@@ -1,11 +1,14 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { ReferencesList } from "@/components/ReferencesList";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
-import { SeeAlso } from "@/components/SeeAlso";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
+
+const objectives = [
+  "Stratify perioperative cardiac risk (METs, RCRI, ESC/ESA pathway) and decide on further investigation.",
+  "Set haemodynamic goals for ischaemic heart disease and major valvular lesions, especially severe AS.",
+  "Manage heart failure, perioperative β-blockade, statins and antiplatelet/anticoagulant therapy.",
+  "Plan safe management of patients with permanent pacemakers and ICDs.",
+  "Anaesthetise patients with pulmonary hypertension and adult congenital heart disease while protecting RV function.",
+];
 
 const keyPoints = [
   "Ischaemic heart disease is the leading cause of perioperative cardiac morbidity — maintain coronary perfusion pressure (CPP = DBP − LVEDP), avoid tachycardia, and continue β-blockers and statins perioperatively",
@@ -17,18 +20,33 @@ const keyPoints = [
 
 const CardiovascularDiseaseTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Cardiovascular Co-Existing Disease"
       subtitle="Ischaemic heart disease, valvular disease, heart failure, arrhythmias, pulmonary hypertension, and congenital heart disease in adults"
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-clinical"
-    >
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
+      topicId="cardiovascular-disease"
+      topicTitle="Cardiovascular Co-Existing Disease"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={cardiovascularDiseaseQuestions}
+      diagrams={<ValvularHaemodynamicsDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"] },
+        diagrams: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      sectionSources={{
+        objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],
+        diagrams: ["BJA Educ 2015 Valvular"],
+        keyPoints: ["BJA Educ 2017", "ESC/ESA 2022", "BJA Educ 2015 Valvular", "AHA/ACC 2014"],
+      }}
+      coreConcepts={
+        <>
+          <p className="text-muted-foreground leading-relaxed">
           Cardiovascular disease is the leading driver of perioperative morbidity and mortality. This topic covers the conditions most likely to influence anaesthetic planning — ischaemic heart disease, valvular pathology, heart failure, arrhythmias and devices, pulmonary hypertension, and adult congenital heart disease — with a focus on risk stratification, optimisation, and intra-operative goals.
         </p>
-        <KeyLearningPoints points={keyPoints} />
 
         {/* Ischaemic Heart Disease */}
         <section>
@@ -186,13 +204,9 @@ const CardiovascularDiseaseTopic = () => {
             </div>
           </div>
         </section>
-
-        <QuizSection questions={cardiovascularDiseaseQuestions} />
-        <ReferencesList topicId="cardiovascular-disease" />
-        <SeeAlso topicId="cardiovascular-disease" />
-        <TopicCompletionToggle topicId="cardiovascular-disease" topicTitle="Cardiovascular Co-Existing Disease" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 

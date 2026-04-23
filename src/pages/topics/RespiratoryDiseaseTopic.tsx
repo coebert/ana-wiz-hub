@@ -1,11 +1,14 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { ReferencesList } from "@/components/ReferencesList";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
-import { SeeAlso } from "@/components/SeeAlso";
 import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
+
+const objectives = [
+  "Optimise asthma and COPD preoperatively and select bronchodilator-friendly anaesthetic agents.",
+  "Identify and manage obstructive sleep apnoea perioperatively (STOP-BANG, CPAP, opioid-sparing).",
+  "Adjust ventilation strategy for restrictive lung disease and recognise risk of barotrauma.",
+  "Decide whether to proceed, postpone, or modify technique in patients with recent URTI/LRTI.",
+  "Recognise and treat acute intraoperative bronchospasm.",
+];
 
 const keyPoints = [
   "Asthma: avoid histamine-releasing drugs (atracurium, morphine, thiopentone); desflurane and dry gases may trigger bronchospasm — use sevoflurane which has bronchodilator properties",
@@ -17,19 +20,33 @@ const keyPoints = [
 
 const RespiratoryDiseaseTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Respiratory Co-Existing Disease"
       subtitle="Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, and respiratory infections"
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-clinical"
-    >
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
+      topicId="respiratory-disease"
+      topicTitle="Respiratory Co-Existing Disease"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={respiratoryDiseaseQuestions}
+      diagrams={<RespiratoryDrugSafetyDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"] },
+        diagrams: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      sectionSources={{
+        objectives: ["BTS/SIGN 2019", "NICE NG115", "Lumb Ch.27"],
+        diagrams: ["BJA Educ 2017 Asthma"],
+        keyPoints: ["BJA Educ 2017 Asthma", "BTS/SIGN 2019", "NICE NG115", "STOP-BANG", "Lumb Ch.27"],
+      }}
+      coreConcepts={
+        <>
+          <p className="text-muted-foreground leading-relaxed">
           Respiratory co-existing disease is a leading driver of postoperative pulmonary complications — atelectasis, pneumonia, prolonged ventilation, and unplanned ICU admission. This topic covers the high-yield conditions: asthma and COPD, obstructive sleep apnoea, restrictive lung disease, pulmonary fibrosis, and the perioperative implications of recent respiratory infection.
         </p>
-        <KeyLearningPoints points={keyPoints} />
-        <RespiratoryDrugSafetyDiagram />
 
         {/* Asthma */}
         <section>
@@ -146,13 +163,9 @@ const RespiratoryDiseaseTopic = () => {
             </div>
           </div>
         </section>
-
-        <QuizSection questions={respiratoryDiseaseQuestions} />
-        <ReferencesList topicId="respiratory-disease" />
-        <SeeAlso topicId="respiratory-disease" />
-        <TopicCompletionToggle topicId="respiratory-disease" topicTitle="Respiratory Co-Existing Disease" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 

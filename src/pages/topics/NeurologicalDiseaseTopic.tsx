@@ -1,11 +1,14 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { ReferencesList } from "@/components/ReferencesList";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
-import { SeeAlso } from "@/components/SeeAlso";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
+
+const objectives = [
+  "Choose neuromuscular blockers and reversal strategies for myasthenia gravis and other neuromuscular disorders.",
+  "Manage patients with epilepsy peri-operatively, avoiding pro-convulsant agents.",
+  "Plan anaesthesia for multiple sclerosis and Parkinson's disease without precipitating relapse or withdrawal.",
+  "Recognise and treat autonomic dysreflexia in spinal cord injury.",
+  "Adjust technique for muscular dystrophies and motor neuron disease (MH risk, sux/volatile avoidance).",
+];
 
 const keyPoints = [
   "Myasthenia gravis: increased sensitivity to non-depolarising NMBAs (use 10–50% of normal dose); resistance to suxamethonium (ED₉₅ 2.6× normal); always use neuromuscular monitoring",
@@ -17,19 +20,33 @@ const keyPoints = [
 
 const NeurologicalDiseaseTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Neurological Co-Existing Disease"
       subtitle="Myasthenia gravis, epilepsy, multiple sclerosis, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury"
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-clinical"
-    >
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
+      topicId="neurological-disease"
+      topicTitle="Neurological Co-Existing Disease"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={neurologicalDiseaseQuestions}
+      diagrams={<MGNMBASensitivityDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"] },
+        diagrams: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      sectionSources={{
+        objectives: ["BJA Educ 2018 MG", "BJA Educ 2014 PD", "BJA Educ 2015 Epilepsy"],
+        diagrams: ["BJA Educ 2018 MG", "AAGBI Neuromuscular"],
+        keyPoints: ["BJA Educ 2018 MG", "BJA Educ 2014 PD", "BJA Educ 2015 Epilepsy", "AAGBI Neuromuscular", "Autonomic Dysreflexia"],
+      }}
+      coreConcepts={
+        <>
+          <p className="text-muted-foreground leading-relaxed">
           Neurological co-existing disease changes drug handling, raises specific intra-operative risks, and dictates choices around regional versus general anaesthesia. This topic covers the high-yield conditions — myasthenia gravis, epilepsy, MS, Parkinson's disease, motor neuron disease, muscular dystrophies, and spinal cord injury — with an emphasis on neuromuscular blocker selection, autonomic safety, and continuation of disease-modifying therapy.
         </p>
-        <KeyLearningPoints points={keyPoints} />
-        <MGNMBASensitivityDiagram />
 
         {/* Myasthenia Gravis */}
         <section>
@@ -174,13 +191,9 @@ const NeurologicalDiseaseTopic = () => {
             </div>
           </div>
         </section>
-
-        <QuizSection questions={neurologicalDiseaseQuestions} />
-        <ReferencesList topicId="neurological-disease" />
-        <SeeAlso topicId="neurological-disease" />
-        <TopicCompletionToggle topicId="neurological-disease" topicTitle="Neurological Co-Existing Disease" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
