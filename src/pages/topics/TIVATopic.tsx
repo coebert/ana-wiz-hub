@@ -15,7 +15,7 @@ const objectives = [
   "Recognise and prevent propofol infusion syndrome (PRIS)",
 ];
 
-const workedExamplesData: WorkedExample[] = [
+const workedExamples: WorkedExample[] = [
   {
     title: "Selecting a TCI model for a 78-year-old, 60 kg patient",
     scenario:
@@ -162,7 +162,7 @@ const TIVATopic = () => {
       topicId="tiva"
       topicTitle="Total Intravenous Anaesthesia (TIVA)"
       objectives={objectives}
-      workedExamples={workedExamplesData}
+      workedExamples={workedExamples}
       quizQuestions={tivaQuestions}
       sectionExamMapping={{
         objectives: { exams: ["primary", "final", "fficm"] },
