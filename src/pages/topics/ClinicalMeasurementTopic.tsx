@@ -1,33 +1,51 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { clinicalMeasurementQuiz } from "@/data/quizzes";
 import ClinicalMeasurementDiagram from "@/components/diagrams/ClinicalMeasurementDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Set up an invasive arterial line correctly (zeroing, levelling, transducer choice).",
+  "Apply the concepts of natural frequency and damping to interpret arterial waveforms.",
+  "Diagnose under- and over-damping with the fast-flush square-wave test.",
+  "Interpret CVP waveforms (a, c, x, v, y) and recognise pathological patterns.",
+  "Compare cardiac output measurement techniques (PAC thermodilution vs non-invasive methods).",
+];
+
+const keyPoints = [
+  "Arterial transducers use a Wheatstone bridge strain gauge; zero to atmosphere and level to the phlebostatic axis (mid-axillary, 4th ICS)",
+  "Natural frequency must be >10× the fundamental frequency of the arterial waveform (ideally >200 Hz) to avoid resonance artefact",
+  "Optimal damping coefficient = 0.64 — flat frequency response with no overshoot; assessed by the fast flush (square wave) test",
+  "Underdamped: >2 oscillations after flush → overestimates SBP; Overdamped: no oscillations → underestimates SBP; MAP preserved in both",
+  "CVP waveform: a (atrial contraction), c (tricuspid closure), x (atrial relaxation), v (passive filling), y (rapid emptying)",
+  "PAC thermodilution is the clinical gold standard for CO measurement; Stewart-Hamilton equation: CO inversely proportional to area under curve",
+  "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography",
+];
 
 const ClinicalMeasurementTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Clinical Measurement"
       subtitle="Invasive arterial monitoring, natural frequency and damping, CVP, and cardiac output techniques"
       backPath="/physics"
       backLabel="Physics"
       accentColor="text-physics"
-    >
-      <div className="space-y-8">
-        <KeyLearningPoints
-          points={[
-            "Arterial transducers use a Wheatstone bridge strain gauge; zero to atmosphere and level to the phlebostatic axis (mid-axillary, 4th ICS)",
-            "Natural frequency must be >10× the fundamental frequency of the arterial waveform (ideally >200 Hz) to avoid resonance artefact",
-            "Optimal damping coefficient = 0.64 — flat frequency response with no overshoot; assessed by the fast flush (square wave) test",
-            "Underdamped: >2 oscillations after flush → overestimates SBP; Overdamped: no oscillations → underestimates SBP; MAP preserved in both",
-            "CVP waveform: a (atrial contraction), c (tricuspid closure), x (atrial relaxation), v (passive filling), y (rapid emptying)",
-            "PAC thermodilution is the clinical gold standard for CO measurement; Stewart-Hamilton equation: CO inversely proportional to area under curve",
-            "Non-invasive CO methods: oesophageal Doppler (VTI × CSA × HR), LiDCO, FloTrac, thoracic bioimpedance, echocardiography",
-          ]}
-        />
+      topicId="clinical-measurement"
+      topicTitle="Clinical Measurement"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={clinicalMeasurementQuiz}
+      diagrams={<ClinicalMeasurementDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final"] },
+        diagrams: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
+      }}
+      sectionSources={{
+        objectives: ["Cross & Plunkett Ch.16", "Middleton Ch.18"],
+        diagrams: ["BJA Educ 2005"],
+        keyPoints: ["Cross & Plunkett Ch.16", "Middleton Ch.18", "BJA Educ 2005"],
+      }}
+      coreConcepts={
+        <>
 
         <div>
           <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
