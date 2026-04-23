@@ -707,6 +707,16 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2017 ENT", citation: "Charters P, Ahmad I. Anaesthesia for ENT surgery. BJA Education. 2014;14(5):201-205.", url: "https://doi.org/10.1093/bjaceaccp/mkt059" },
     { label: "BJA Educ 2015 Laser", citation: "Kitching AJ, Edge CJ. Lasers and surgery. BJA Education. 2003;3(5):143-146.", url: "https://doi.org/10.1093/bjacepd/mkg143" },
   ],
+  "emergency-surgery": [
+    { label: "NELA Year 9 Report", citation: "National Emergency Laparotomy Audit. Ninth Patient Report of NELA. RCoA; 2023.", url: "https://www.nela.org.uk/reports" },
+    { label: "NCEPOD Knowing the Risk", citation: "National Confidential Enquiry into Patient Outcome and Death. Knowing the Risk: a review of the peri-operative care of surgical patients. NCEPOD; 2011.", url: "https://www.ncepod.org.uk/2011poc.html" },
+    { label: "RCoA Emergency Laparotomy", citation: "Royal College of Anaesthetists. Guidelines for the Provision of Anaesthesia Services for Emergency Surgery (Chapter 5). 2024.", url: "https://rcoa.ac.uk/gpas/chapter-5" },
+    { label: "BJA Educ 2017 EmLap", citation: "Foss NB, Kehlet H. Perioperative haemodynamic optimisation in emergency surgery. BJA Education. 2017;17(7):217-223.", url: "https://doi.org/10.1093/bjaed/mkw076" },
+    { label: "DAS 2015 RSI", citation: "Frerk C et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. Br J Anaesth. 2015;115(6):827-848.", url: "https://doi.org/10.1093/bja/aev371" },
+    { label: "P-POSSUM", citation: "Prytherch DR et al. POSSUM and Portsmouth POSSUM for predicting mortality. Br J Surg. 1998;85(9):1217-1220.", url: "https://doi.org/10.1046/j.1365-2168.1998.00840.x" },
+    { label: "SORT", citation: "Protopapa KL et al. Development and validation of the Surgical Outcome Risk Tool (SORT). Br J Surg. 2014;101(13):1774-1783.", url: "https://doi.org/10.1002/bjs.9638" },
+    { label: "AAGBI Pre-op 2010", citation: "Association of Anaesthetists. Pre-operative assessment and patient preparation. AAGBI Safety Guideline; 2010.", url: "https://anaesthetists.org" },
+  ],
   "gynaecological-anaesthesia": [
     { label: "BJA Educ 2011 Lap", citation: "Hayden P, Cowman S. Anaesthesia for laparoscopic surgery. BJA Education (Contin Educ Anaesth Crit Care Pain). 2011;11(5):177-180.", url: "https://doi.org/10.1093/bjaceaccp/mkr027" },
     { label: "BSGE 2018", citation: "British Society for Gynaecological Endoscopy. Management of fluid distension media in operative hysteroscopy. BSGE Guideline; 2018.", url: "https://www.bsge.org.uk/" },
