@@ -6,6 +6,7 @@ import PVLoopDiagram from "@/components/diagrams/PVLoopDiagram";
 import FrankStarlingDiagram from "@/components/diagrams/FrankStarlingDiagram";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import AorticDicroticNotchDiagram from "@/components/diagrams/AorticDicroticNotchDiagram";
+import DichroticNotchComparisonPanel from "@/components/diagrams/DichroticNotchComparisonPanel";
 import { cardiacCycleQuiz } from "@/data/quizzes";
 
 const objectives = [
