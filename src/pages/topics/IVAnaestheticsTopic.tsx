@@ -274,8 +274,6 @@ const IVAnaestheticsTopic = () => {
             </table>
           </div>
         </section>
-      </div>
-
       <SynthesisBlock
         title="IV Induction Agents — Side-by-Side"
         subtitle="The high-yield comparison across the four FRCA induction agents."
@@ -308,26 +306,13 @@ const IVAnaestheticsTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.",
-        "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.",
-        "Ketamine: NMDA antagonist. Only IV agent with significant analgesia. Indirect sympathomimetic. Emergence phenomena. Bronchodilator.",
-        "Etomidate: most haemodynamically stable agent. Inhibits 11β-hydroxylase (adrenal suppression for ~24h even after single dose).",
-        "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.",
-        "TCI models: Marsh (weight-based) and Schnider (age, weight, height, LBM) for propofol delivery."
-      ]} />
-
-        <div>
-          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
-          <IVAnaestheticStructures />
-        </div>
-
-        <QuizSection questions={ivAnaestheticsQuiz} />
-      <ReferencesList topicId="iv-anaesthetics" />
-
-      <SeeAlso topicId="iv-anaesthetics" />
-        <TopicCompletionToggle topicId="iv-anaesthetics" topicTitle="Intravenous Anaesthetic Agents" />
-    </SectionLayout>
+      <div>
+        <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+        <IVAnaestheticStructures />
+      </div>
+      </div>
+      }
+    />
   );
 };
 
