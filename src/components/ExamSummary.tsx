@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { GraduationCap, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ExamTag } from "@/data/curriculum";
+import { Exam, ExamTag } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { cn } from "@/lib/utils";
 
