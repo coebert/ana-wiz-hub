@@ -105,7 +105,7 @@ const MaternalPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={["primary", "final"]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
             <p className="text-muted-foreground leading-relaxed">
               Pregnancy induces profound physiological adaptations across every organ system to meet the metabolic
@@ -114,7 +114,7 @@ const MaternalPhysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="cardiovascular" exams={["primary", "final"]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="cardiovascular" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiovascular Changes</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -137,7 +137,7 @@ const MaternalPhysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="respiratory" exams={["primary", "final"]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="respiratory" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Changes</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -160,7 +160,7 @@ const MaternalPhysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="haematology" exams={["primary", "final", "fficm"]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="haematology" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OB_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haematological Changes</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li>
@@ -182,7 +182,7 @@ const MaternalPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="gi-airway" exams={["primary", "final"]} curriculumCodes={["OB_BK_02"]}>
+          <ExamSection id="gi-airway" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gastrointestinal & Airway Changes</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>↓ Lower oesophageal sphincter tone</strong> (progesterone) + ↑ intragastric pressure (gravid uterus) → ↑ aspiration risk.</li>
@@ -193,7 +193,7 @@ const MaternalPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="renal-hepatic" exams={["primary", "final"]} curriculumCodes={["OB_BK_01"]}>
+          <ExamSection id="renal-hepatic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Renal & Hepatic Changes</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Renal blood flow</strong> ↑ 50–80% → GFR ↑ 50% → ↓ creatinine (normal upper limit ~75 µmol/L in pregnancy).</li>
@@ -203,7 +203,7 @@ const MaternalPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="pharmacology" exams={["primary", "final"]} curriculumCodes={["OB_BK_02"]}>
+          <ExamSection id="pharmacology" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacological Implications</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>↑ Volume of distribution</strong>: ↑ plasma volume and total body water → larger loading doses may be needed for some drugs.</li>

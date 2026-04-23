@@ -123,7 +123,7 @@ const LungMechanicsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -133,7 +133,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="lung-volumes" exams={["primary", "final"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="lung-volumes" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Lung Volumes & Capacities</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -145,7 +145,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="compliance-curves" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="compliance-curves" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Compliance Curves</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -157,7 +157,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="compliance" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="compliance" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Compliance</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -181,7 +181,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="surfactant" exams={["primary", "final"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="surfactant" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Surfactant</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -197,7 +197,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="airway-resistance" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="airway-resistance" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Airway Resistance</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -213,7 +213,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="flow-volume-loops" exams={["primary", "final"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="flow-volume-loops" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Flow-Volume Loops</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -225,7 +225,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="work-of-breathing" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="work-of-breathing" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Work of Breathing</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -239,7 +239,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="dead-space" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="dead-space" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Dead Space & V/Q Mismatch</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -301,7 +301,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="alveolar-gas" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="alveolar-gas" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Alveolar Gas Equation & Oxygen Cascade</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -313,7 +313,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="west-zones" exams={["primary", "final"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="west-zones" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">West's Lung Zones</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -326,7 +326,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="closing-volume" exams={["primary", "final"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="closing-volume" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Closing Volume & Closing Capacity</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -339,7 +339,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="ventilator-waveforms" exams={["final", "fficm"]} curriculumCodes={["RC_BK_03"]}>
+          <ExamSection id="ventilator-waveforms" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_03"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Ventilator Waveforms</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -352,7 +352,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="auto-peep" exams={["final", "fficm"]} curriculumCodes={["RC_BK_03"]}>
+          <ExamSection id="auto-peep" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_03"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Auto-PEEP & Air Trapping</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -365,7 +365,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="transpulmonary" exams={["fficm"]} curriculumCodes={["RC_BK_03"]}>
+          <ExamSection id="transpulmonary" exams={[Exam.FFICM]} curriculumCodes={["RC_BK_03"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Transpulmonary Pressure & Oesophageal Manometry</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -379,7 +379,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="vili" exams={["final", "fficm"]} curriculumCodes={["RC_BK_03"]}>
+          <ExamSection id="vili" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_03"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">VILI: Stress, Strain & Mechanical Power</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -392,7 +392,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="pv-recruitment" exams={["fficm"]} curriculumCodes={["RC_BK_03"]}>
+          <ExamSection id="pv-recruitment" exams={[Exam.FFICM]} curriculumCodes={["RC_BK_03"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">PV Recruitment Curve & Hysteresis</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -405,7 +405,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="control-of-breathing" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="control-of-breathing" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Control of Breathing</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -419,7 +419,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="diffusion" exams={["primary", "final"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="diffusion" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Diffusion & Gas Transfer</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -433,7 +433,7 @@ const LungMechanicsTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="synthesis" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="synthesis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_01"]}>
             <SynthesisBlock
               title="Lung Mechanics — High-Yield Numbers"
               subtitle="The values you'll be asked to reproduce in a viva."

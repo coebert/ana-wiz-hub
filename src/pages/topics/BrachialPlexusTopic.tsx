@@ -127,7 +127,7 @@ const BrachialPlexusTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="organisation" exams={["primary"]} curriculumCodes={["RCoA Primary — Anatomy"]}>
+          <ExamSection id="organisation" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Anatomy"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Organisation: Roots → Trunks → Divisions → Cords → Branches</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Formed by ventral rami of C5–T1. Mnemonic: "Robert Taylor Drinks Cold Beer" (Roots, Trunks, Divisions, Cords, Branches).
@@ -148,11 +148,11 @@ const BrachialPlexusTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <BrachialPlexusDiagram />
           </ExamSection>
 
-          <ExamSection id="approaches" exams={["final"]} curriculumCodes={["RCoA Final — Regional Anaesthesia"]}>
+          <ExamSection id="approaches" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Regional Anaesthesia"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Block Approaches & Anatomy</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -174,11 +174,11 @@ const BrachialPlexusTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="ultrasound" exams={["final"]}>
+          <ExamSection id="ultrasound" exams={[Exam.FINAL]}>
             <BrachialPlexusUltrasoundDiagram />
           </ExamSection>
 
-          <ExamSection id="terminal-nerves" exams={["primary", "final"]}>
+          <ExamSection id="terminal-nerves" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Key Terminal Nerves</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">

@@ -136,7 +136,7 @@ const GasLawsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Understanding gas behaviour is fundamental to anaesthetic practice. Gases are used for patient ventilation, as
@@ -145,7 +145,7 @@ const GasLawsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Boyle's Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               At constant temperature, the volume of a given mass of gas is inversely proportional to its pressure
@@ -161,7 +161,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Charles' Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               At constant pressure, the volume of a gas is directly proportional to its absolute temperature
@@ -177,7 +177,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gay-Lussac's Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               At constant volume, the pressure of a fixed mass of gas is directly proportional to its absolute temperature
@@ -195,7 +195,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Combined Gas Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               Boyle's, Charles' and Gay-Lussac's laws can be unified into a single expression that relates pressure,
@@ -228,7 +228,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dalton's Law of Partial Pressures</h2>
             <p className="text-foreground/90 leading-relaxed">
               In a mixture of gases, the total pressure equals the sum of the partial pressures of each constituent gas
@@ -245,7 +245,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Ideal Gas Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               The ideal gas equation <strong>PV = nRT</strong> combines all three laws into a single expression, where
@@ -255,7 +255,7 @@ const GasLawsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Critical Temperature & Critical Pressure</h2>
             <p className="text-foreground/90 leading-relaxed">
               The <strong>critical temperature</strong> of a substance is the temperature above which it cannot be
@@ -309,7 +309,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Andrews' Isotherms — N₂O on a P–V Diagram</h2>
             <p className="text-foreground/90 leading-relaxed">
               Thomas Andrews' classic 1869 experiments on CO₂ produced the first family of isotherms — curves of
@@ -368,7 +368,7 @@ const GasLawsTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Joule–Thomson Effect & Adiabatic Expansion</h2>
             <p className="text-foreground/90 leading-relaxed">
               When a real gas expands, its temperature changes. Two distinct mechanisms operate in clinical practice:
@@ -451,7 +451,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Henry's Law</h2>
             <p className="text-foreground/90 leading-relaxed">
               At constant temperature, the amount of gas dissolved in a liquid is directly proportional to the partial
@@ -468,7 +468,7 @@ const GasLawsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <SynthesisBlock
               title="Gas Laws — Equation, Anaesthetic Application"
               subtitle="The headline equations and where each one bites in clinical practice."

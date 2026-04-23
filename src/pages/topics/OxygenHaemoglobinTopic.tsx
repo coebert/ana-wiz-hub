@@ -122,7 +122,7 @@ const OxygenHaemoglobinTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="normal-curve" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_03"]}>
+          <ExamSection id="normal-curve" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Normal Curve</h2>
             <p className="text-foreground/90 leading-relaxed">
               The oxygen-haemoglobin dissociation curve (ODC) describes the relationship between PaO₂ and the percentage
@@ -136,7 +136,7 @@ const OxygenHaemoglobinTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="shifts" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_03"]}>
+          <ExamSection id="shifts" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Factors Shifting the Curve</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               The curve can shift left (increased affinity, harder to offload O₂) or right (decreased affinity, easier
@@ -167,7 +167,7 @@ const OxygenHaemoglobinTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bohr-haldane" exams={["primary", "final"]} curriculumCodes={["CR_BK_03"]}>
+          <ExamSection id="bohr-haldane" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bohr & Haldane Effects</h2>
             <p className="text-foreground/90 leading-relaxed">
               The <strong>Bohr effect</strong> describes the rightward shift of the ODC caused by increased CO₂ and H⁺
@@ -183,7 +183,7 @@ const OxygenHaemoglobinTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="oxygen-delivery" exams={["primary", "final", "fficm"]} curriculumCodes={["OA_BK_02"]}>
+          <ExamSection id="oxygen-delivery" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Oxygen Delivery (DO₂)</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>DO₂ = CO × CaO₂</strong>, where <strong>CaO₂ = (1.34 × Hb × SaO₂) + (0.0225 × PaO₂)</strong>{" "}
@@ -193,7 +193,7 @@ const OxygenHaemoglobinTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="clinical" exams={["primary", "final", "fficm"]} curriculumCodes={["OA_BK_02"]}>
+          <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Significance</h2>
             <p className="text-foreground/90 leading-relaxed">
               The flat upper portion of the curve means that even moderate drops in PaO₂ from normal values cause

@@ -35,7 +35,7 @@ const AbdominalAnatomyTopic = () => {
       diagrams={<AbdominalWallDiagram />}
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anterior Abdominal Wall Layers</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Understanding the abdominal wall layers is essential for TAP blocks, rectus sheath blocks, and laparoscopic port placement.
@@ -56,7 +56,7 @@ const AbdominalAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Inguinal Canal</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -70,7 +70,7 @@ const AbdominalAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Abdominal Organs — Anaesthetic Relevance</h2>
             <div className="space-y-2">
               {[
@@ -87,7 +87,7 @@ const AbdominalAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pelvic Anatomy</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

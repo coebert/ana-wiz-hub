@@ -76,7 +76,7 @@ const NonTechnicalSkillsTopic = () => {
         <>
           <ExamSection
             id="context"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4"]}
             className="scroll-mt-24"
           >
@@ -87,7 +87,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="ants"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4", "EDIC 11"]}
             className="scroll-mt-24"
           >
@@ -132,7 +132,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="cognitive"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4"]}
             className="scroll-mt-24"
           >
@@ -153,7 +153,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="crm"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4", "EDIC 11"]}
             className="scroll-mt-24"
           >
@@ -186,7 +186,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="sheep"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4"]}
             className="scroll-mt-24"
           >
@@ -208,7 +208,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="briefing"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4", "EDIC 11"]}
             className="scroll-mt-24"
           >
@@ -235,7 +235,7 @@ const NonTechnicalSkillsTopic = () => {
 
           <ExamSection
             id="safety"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.4"]}
             className="scroll-mt-24"
           >

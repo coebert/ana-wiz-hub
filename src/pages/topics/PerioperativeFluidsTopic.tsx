@@ -48,7 +48,7 @@ const PerioperativeFluidsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["POM_BK_06"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["POM_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluid Compartments</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body water (TBW) = ~60% body weight. ICF 40%, ECF 20% (interstitial 15%, plasma 5%). Only 25% of crystalloid remains intravascular — the rest distributes to the interstitium.
@@ -74,7 +74,7 @@ const PerioperativeFluidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["POM_BK_06"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["POM_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Goal-Directed Fluid Therapy (GDFT)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Individualised fluid administration guided by haemodynamic monitoring to optimise stroke volume and tissue oxygen delivery. Reduces complications after major surgery.
@@ -91,7 +91,7 @@ const PerioperativeFluidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Glycocalyx & Revised Starling</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The endothelial glycocalyx is a carbohydrate-rich layer lining the vascular endothelium. It regulates vascular permeability, prevents leucocyte adhesion, and modulates coagulation.
@@ -105,7 +105,7 @@ const PerioperativeFluidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Fluid Trials</h2>
             <div className="space-y-2">
               {[

@@ -43,7 +43,7 @@ const LowerLimbAnatomyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="lumbar-plexus" exams={["primary", "final"]}>
+          <ExamSection id="lumbar-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Lumbar Plexus (L1-L4)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
             <LumbosacralPlexusDiagram />
@@ -63,7 +63,7 @@ const LowerLimbAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="sacral-plexus" exams={["primary", "final"]}>
+          <ExamSection id="sacral-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Sacral Plexus (L4-S3)</h2>
             <div className="space-y-3">
               {[
@@ -80,7 +80,7 @@ const LowerLimbAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="lower-limb-blocks" exams={["primary", "final"]}>
+          <ExamSection id="lower-limb-blocks" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Key Blocks for Lower Limb</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -100,7 +100,7 @@ const LowerLimbAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="arterial-supply" exams={["primary", "final"]}>
+          <ExamSection id="arterial-supply" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Arterial Supply of the Lower Limb</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The arterial supply follows a continuous chain: external iliac → femoral → popliteal → anterior tibial, posterior tibial, and peroneal arteries. The profunda femoris is the main supply to the thigh musculature. Peripheral pulse assessment (femoral, popliteal, posterior tibial, dorsalis pedis) is a fundamental clinical skill.
@@ -118,7 +118,7 @@ const LowerLimbAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="venous-drainage" exams={["primary", "final"]}>
+          <ExamSection id="venous-drainage" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Venous Drainage of the Lower Limb</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The lower limb has superficial and deep venous systems connected by perforating veins. The great saphenous vein (GSV) is the longest vein in the body, running along the medial limb from ankle to groin. The small saphenous vein (SSV) runs posteriorly in the calf. The deep system (tibial veins, popliteal, femoral) carries the majority of venous return, driven by the calf muscle pump. DVT prevention is a cornerstone of perioperative care.

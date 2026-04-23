@@ -65,7 +65,7 @@ const HumidityGasSamplingTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Gas analysis and humidity management are fundamental to safe anaesthesia and ventilation. Understanding the physics
@@ -75,12 +75,12 @@ const HumidityGasSamplingTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <HumidityGasSamplingDiagram />
           </ExamSection>
 
-          <ExamSection id="humidity" exams={["primary", "final"]}>
+          <ExamSection id="humidity" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Humidity & Humidification</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -101,7 +101,7 @@ const HumidityGasSamplingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pneumotachography" exams={["primary", "final"]}>
+          <ExamSection id="pneumotachography" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Pneumotachography</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -118,7 +118,7 @@ const HumidityGasSamplingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="mass-spec" exams={["primary", "final"]}>
+          <ExamSection id="mass-spec" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Mass Spectrometry</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -135,7 +135,7 @@ const HumidityGasSamplingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="raman" exams={["primary", "final"]}>
+          <ExamSection id="raman" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Raman Scattering</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

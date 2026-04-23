@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { GraduationCap, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { ExamTag } from "@/data/curriculum";
+import { Exam, ExamTag } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { cn } from "@/lib/utils";
 
@@ -106,7 +106,7 @@ export const ExamSummary = ({
   if (examsCovered.length === 0) return null;
 
   // Order: Primary → Final → FFICM → EDIC for consistency.
-  const order: ExamTag[] = ["primary", "final", "fficm", "edic"];
+  const order: ExamTag[] = [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC];
   const sortedExams = order.filter((e) => examsCovered.includes(e));
 
   // When an exam filter is active and present in the topic, lead with it.

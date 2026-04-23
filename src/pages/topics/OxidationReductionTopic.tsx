@@ -67,7 +67,7 @@ const OxidationReductionTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Redox Chemistry in Medicine</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -83,12 +83,12 @@ const OxidationReductionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
             <RedoxElectrochemistryDiagram />
           </ExamSection>
 
-          <ExamSection id="methaemoglobin" exams={["primary", "final"]}>
+          <ExamSection id="methaemoglobin" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Methaemoglobinaemia</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -105,7 +105,7 @@ const OxidationReductionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="electrodes" exams={["primary"]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
+          <ExamSection id="electrodes" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Clinical Electrodes</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -125,7 +125,7 @@ const OxidationReductionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="free-radicals" exams={["primary", "final"]}>
+          <ExamSection id="free-radicals" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Free Radicals & Ischaemia–Reperfusion</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

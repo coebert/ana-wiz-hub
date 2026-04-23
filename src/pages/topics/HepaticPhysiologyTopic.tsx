@@ -119,7 +119,7 @@ const HepaticPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
             <p className="text-muted-foreground leading-relaxed">
               The liver is the largest solid organ, receiving ~25% of cardiac output via a dual blood supply. Its
@@ -129,7 +129,7 @@ const HepaticPhysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="blood-supply" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="blood-supply" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hepatic Blood Supply</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -148,7 +148,7 @@ const HepaticPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="acinus" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="acinus" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Functional Anatomy — The Hepatic Acinus</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The functional unit is the hepatic acinus (Rappaport model), divided into three zones based on proximity
@@ -168,7 +168,7 @@ const HepaticPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="metabolic" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="metabolic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Metabolic Functions</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Carbohydrate</strong>: glycogenesis, glycogenolysis, gluconeogenesis — maintains blood glucose 4–6 mmol/L.</li>
@@ -179,7 +179,7 @@ const HepaticPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="drug-metabolism" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="drug-metabolism" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug Metabolism</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The liver is the primary site of drug metabolism, occurring in two phases:
@@ -199,7 +199,7 @@ const HepaticPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="coagulation" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="coagulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Synthetic & Coagulation Function</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Prothrombin time / INR</strong> is the most sensitive marker of synthetic function (Factor VII t½ = 6 h).</li>
@@ -210,7 +210,7 @@ const HepaticPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="lfts" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="lfts" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Liver Function Tests</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -234,7 +234,7 @@ const HepaticPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="anaesthetic-implications" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="anaesthetic-implications" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Implications of Liver Disease</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Pharmacokinetics</strong>: ↓ protein binding (↑ free drug), ↓ phase I metabolism, ↑ Vd (ascites/oedema).</li>

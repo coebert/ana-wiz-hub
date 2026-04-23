@@ -112,7 +112,7 @@ const GastrointestinalPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="gastric-secretion" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="gastric-secretion" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gastric Secretion</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The stomach produces ~2 L of gastric juice/day. Parietal cells secrete HCl via H⁺/K⁺-ATPase (proton pump) on
@@ -160,7 +160,7 @@ const GastrointestinalPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="nausea-vomiting" exams={["primary", "final"]} curriculumCodes={["OA_BK_03"]}>
+          <ExamSection id="nausea-vomiting" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nausea & Vomiting</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The vomiting centre (nucleus tractus solitarius) receives input from multiple sites — this explains why
@@ -200,7 +200,7 @@ const GastrointestinalPhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="motility" exams={["primary", "final"]} curriculumCodes={["CR_BK_06"]}>
+          <ExamSection id="motility" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gut Motility</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
@@ -222,7 +222,7 @@ const GastrointestinalPhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="anaesthetic-implications" exams={["primary", "final", "fficm"]} curriculumCodes={["OA_BK_03"]}>
+          <ExamSection id="anaesthetic-implications" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Implications</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>

@@ -128,7 +128,7 @@ const TraumaEmergencyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["final", "fficm"]}>
+          <ExamSection id="introduction" exams={[Exam.FINAL, Exam.FFICM]}>
             <p className="text-muted-foreground leading-relaxed">
               Trauma is a leading cause of death in young adults. Anaesthetists play a key role in airway management, resuscitation,
               and perioperative care. The ATLS &lt;C&gt;ABCDE approach, damage control resuscitation, and massive transfusion protocols
@@ -136,7 +136,7 @@ const TraumaEmergencyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="rsi" exams={["final", "fficm"]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
+          <ExamSection id="rsi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Trauma & Stabilisation"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Rapid Sequence Induction (RSI)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               RSI is indicated when the patient is at risk of aspiration (full stomach, bowel obstruction, pregnancy, trauma).
@@ -159,7 +159,7 @@ const TraumaEmergencyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="damage-control" exams={["final", "fficm"]} curriculumCodes={["FFICM 2.5"]}>
+          <ExamSection id="damage-control" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Damage Control Resuscitation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Targets the lethal triad of hypothermia, acidosis, and coagulopathy:
@@ -174,7 +174,7 @@ const TraumaEmergencyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="mtp" exams={["final", "fficm"]}>
+          <ExamSection id="mtp" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Massive Transfusion Protocol</h2>
             <p className="text-muted-foreground leading-relaxed">
               Activated when anticipated need for ≥10 units PRBC in 24h or &gt;4 units in 1 hour. Trigger: uncontrolled haemorrhage,

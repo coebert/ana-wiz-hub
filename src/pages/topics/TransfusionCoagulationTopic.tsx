@@ -66,7 +66,7 @@ const TransfusionCoagulationTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="cascade" exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection id="cascade" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coagulation Cascade — Foundations</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               A working knowledge of the intrinsic, extrinsic and common pathways underpins interpretation of clotting tests, transfusion targets, and the rational use of factor concentrates and antifibrinolytics covered below.
@@ -74,7 +74,7 @@ const TransfusionCoagulationTopic = () => {
             <CoagulationCascadeDiagram />
           </ExamSection>
 
-          <ExamSection id="products" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.6"]}>
+          <ExamSection id="products" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Products</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -98,7 +98,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="cryo-vs-fib" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="cryo-vs-fib" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cryoprecipitate vs Fibrinogen Concentrate</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Both replace fibrinogen in major haemorrhage but differ in preparation, safety and evidence.
@@ -117,7 +117,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="reactions" exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection id="reactions" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transfusion Reactions</h2>
             <div className="space-y-2">
               {[
@@ -135,7 +135,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="mtp" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.6"]}>
+          <ExamSection id="mtp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Massive Transfusion Protocol (MTP)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Defined as one entire blood volume in 24 h (~10 units PRBC in 70 kg adult), or &gt;4 units in 1 h with ongoing bleeding. Activation enables coordinated product delivery.
@@ -177,7 +177,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="rotem" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="rotem" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viscoelastic Testing (ROTEM/TEG)</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -191,7 +191,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="trials" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="trials" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Transfusion Trials</h2>
             <div className="space-y-2">
               {[
@@ -208,7 +208,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="dic" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.6", "EDIC 5.6"]}>
+          <ExamSection id="dic" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6", "EDIC 5.6"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Disseminated Intravascular Coagulation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Systemic activation of coagulation and fibrinolysis → microvascular thrombosis + consumptive coagulopathy. Always secondary to an underlying condition (sepsis, trauma, obstetric, malignancy).

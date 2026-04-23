@@ -64,14 +64,14 @@ const InfectiousDiseaseIcuTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="overview" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Infection is the dominant driver of organ failure on the modern ICU. The site map below previews the anatomical organisation of the topic — from respiratory and bloodstream infections through to fungal, viral, and multi-drug-resistant organisms — with an emphasis on source identification, empirical antimicrobial choice, and infection control.
             </p>
             <InfectionSiteMapDiagram />
           </ExamSection>
 
-          <ExamSection id="respiratory" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.7"]}>
+          <ExamSection id="respiratory" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.7"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Respiratory Infections</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Pneumonia is the most common infection requiring ICU admission. Causative organisms differ between community-acquired (CAP), hospital-acquired (HAP) and ventilator-associated (VAP) pneumonia.
@@ -95,7 +95,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="legionella" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="legionella" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Legionella Pneumonia</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               <em>Legionella pneumophila</em> (serogroup 1) causes ~5% of severe CAP. Intracellular Gram-negative rod from contaminated water systems — no person-to-person transmission.
@@ -120,7 +120,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pvl" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="pvl" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">PVL-Positive <em>Staphylococcus aureus</em> Pneumonia</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Panton-Valentine Leukocidin is a pore-forming cytotoxin (MSSA or MRSA). Necrotising pneumonia in previously healthy young adults, often after influenza or skin infection. Mortality 50–75%.
@@ -140,7 +140,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="sepsis" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="sepsis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Gram-Positive vs Gram-Negative Sepsis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The distinction is fundamental to sepsis pathophysiology, empiric antibiotic selection, and clinical presentation.
@@ -178,7 +178,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="urosepsis" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="urosepsis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Urosepsis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               UTIs are the second commonest source of ICU sepsis. Obstruction (calculi, BPH) is a common precipitant requiring urgent source control.
@@ -199,7 +199,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="cns" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="cns" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">CNS Infections</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -220,7 +220,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="abdo" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="abdo" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-abdominal Sepsis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ~20% of ICU sepsis. Source control (surgery or drainage) is the critical intervention.
@@ -237,7 +237,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="necfasc" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="necfasc" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Necrotising Fasciitis</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Rapidly progressive fascial-plane infection. Mortality 20–40%. Early surgical debridement is the single most important intervention.
@@ -267,7 +267,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bloodstream" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="bloodstream" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bloodstream & Line Infections</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               CLABSI is a major preventable cause of ICU morbidity. 'Matching Michigan' bundles have reduced rates significantly.
@@ -288,7 +288,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="fungal" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="fungal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fungal Infections in ICU</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Invasive fungal infections carry 30–60% mortality. Risk: broad-spectrum antibiotics, central lines, TPN, immunosuppression.
@@ -313,7 +313,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="endocarditis" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="endocarditis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infective Endocarditis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Modified Duke criteria. <em>S. aureus</em> (acute, IVDU), Streptococci (subacute), Enterococcus, HACEK group. ICU for septic shock, heart failure, embolic complications.
@@ -330,7 +330,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="cdiff" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="cdiff" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3"><em>Clostridioides difficile</em> Infection</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Toxin-mediated colitis after antibiotics (fluoroquinolones, cephalosporins, clindamycin).
@@ -347,7 +347,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="viral" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="viral" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viral Infections in ICU</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -368,7 +368,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="mdr" exams={["fficm", "edic"]} curriculumCodes={["FFICM 4.7"]}>
+          <ExamSection id="mdr" exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.7"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Drug-Resistant Organisms</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               AMR is a critical ICU challenge. Prolonged antibiotics, immunosuppression, devices, and cross-contamination drive MDRO selection and transmission.
@@ -440,7 +440,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="leptospirosis" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="leptospirosis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Leptospirosis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               <em>Leptospira interrogans</em> spirochaete via animal urine-contaminated water/soil. Occupational risk (farmers, sewer workers). Endemic in tropics — consider in returning travellers with fever + multi-organ dysfunction.
@@ -470,7 +470,7 @@ const InfectiousDiseaseIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="control" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="control" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Infection Control & Prevention</h2>
             <div className="space-y-2">
               {[

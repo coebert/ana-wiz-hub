@@ -44,7 +44,7 @@ const NeuroanaesthesiaTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["CN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Physiology for Anaesthesia</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Neuroanaesthesia is built on a small number of physiological levers — cerebral blood flow, intracranial pressure, and cerebral perfusion pressure — and how anaesthetic agents and ventilatory choices manipulate them.
@@ -61,7 +61,7 @@ const NeuroanaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic Effects on CBF & CMRO₂</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -84,7 +84,7 @@ const NeuroanaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CC1.4"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CC1.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Management</h2>
             <div className="space-y-2">
               {[
@@ -103,7 +103,7 @@ const NeuroanaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Specific Neurosurgical Considerations</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

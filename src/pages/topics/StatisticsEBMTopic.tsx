@@ -62,7 +62,7 @@ const StatisticsEBMTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Statistics and evidence-based medicine (EBM) are examined across the Primary FRCA, Final FRCA, and FFICM. Understanding study design, measures of effect,
@@ -70,7 +70,7 @@ const StatisticsEBMTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="study-design" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="study-design" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Study Design</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -91,7 +91,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hypothesis-testing" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="hypothesis-testing" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Hypothesis Testing & p-Values</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -110,7 +110,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="measures-effect" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="measures-effect" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Measures of Effect</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -131,7 +131,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagnostic-tests" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="diagnostic-tests" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Diagnostic Test Performance</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -157,7 +157,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="statistical-tests" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="statistical-tests" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Common Statistical Tests</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -193,7 +193,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bias-confounding" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="bias-confounding" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Bias, Confounding & Validity</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -212,7 +212,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="meta-analysis" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="meta-analysis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Systematic Reviews & Meta-Analysis</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -230,7 +230,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bayesian" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="bayesian" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Bayesian Concepts</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

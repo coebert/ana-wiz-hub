@@ -123,7 +123,7 @@ const NSAIDsParacetamolTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="nsaid-mechanism" exams={["primary", "final"]}>
+          <ExamSection id="nsaid-mechanism" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">NSAIDs — Mechanism of Action</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               NSAIDs inhibit cyclo-oxygenase (COX), blocking conversion of arachidonic acid to prostaglandins and thromboxanes.
@@ -147,7 +147,7 @@ const NSAIDsParacetamolTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="nsaid-adverse" exams={["primary", "final"]} curriculumCodes={["RCoA Final — Pain Medicine"]}>
+          <ExamSection id="nsaid-adverse" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Final — Pain Medicine"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">NSAID Adverse Effects</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>GI</strong>: ↓ PGE₂/PGI₂ → ↓ mucosal protection → ulceration, bleeding. Risk factors: age, H. pylori, steroids, anticoagulants. COX-2 selective drugs have lower GI risk</li>
@@ -158,7 +158,7 @@ const NSAIDsParacetamolTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="paracetamol" exams={["primary", "final"]}>
+          <ExamSection id="paracetamol" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Paracetamol (Acetaminophen)</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Mechanism</strong>: not fully understood. Central COX inhibition (COX-3?), serotonergic descending pathways, endocannabinoid system (AM404 metabolite), TRPV1 activation. Weak peripheral anti-inflammatory effect</li>

@@ -66,7 +66,7 @@ const LaserFibreopticsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Lasers and fibreoptics are fundamental to modern anaesthetic and surgical practice. Understanding laser physics is
@@ -75,12 +75,12 @@ const LaserFibreopticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <LaserFibreopticsDiagram />
           </ExamSection>
 
-          <ExamSection id="laser-physics" exams={["primary", "final"]}>
+          <ExamSection id="laser-physics" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">LASER Physics</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -104,7 +104,7 @@ const LaserFibreopticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="fibreoptics" exams={["primary", "final"]}>
+          <ExamSection id="fibreoptics" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Fibreoptics & Total Internal Reflection</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -126,7 +126,7 @@ const LaserFibreopticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="laser-safety" exams={["primary", "final"]}>
+          <ExamSection id="laser-safety" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Laser Safety in Anaesthesia</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

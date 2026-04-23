@@ -7,6 +7,7 @@ import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevi
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const tocItems = [
   { id: "toc-tbi", label: "TBI" },
@@ -167,7 +168,7 @@ const NeurointensiveCareTopic = () => {
     <>
       <StickyTOC items={tocItems} />
       <section className="space-y-6">
-        <ExamSection id="toc-tbi" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-tbi" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Traumatic Brain Injury (TBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Primary injury occurs at impact (contusion, DAI, haematoma). Secondary injury (hypoxia, hypotension, pyrexia, hyperglycaemia) is preventable and the focus of ICU management.
@@ -192,7 +193,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-status" exams={["primary", "final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-status" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Status Epilepticus</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Continuous seizure ≥5 minutes or ≥2 seizures without regaining consciousness. Medical emergency — time-critical escalation.
@@ -211,7 +212,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-sah" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-sah" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Subarachnoid Haemorrhage (SAH)</h2>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -225,7 +226,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-bsd" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-bsd" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brain Death & Brainstem Testing</h2>
           <p className="text-muted-foreground leading-relaxed mb-2">
             UK criteria: known irreversible cause of brain damage. Exclude confounders (hypothermia &lt;34°C, drugs, metabolic/endocrine derangement). Two sets of tests by two senior doctors (one ≥5 years registered).
@@ -245,7 +246,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-sci" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-sci" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury (SCI) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Acute traumatic SCI requires a multidisciplinary ICU approach. The level and completeness of injury determines respiratory, cardiovascular, and autonomic consequences. Assume spinal instability until cleared. ASIA (American Spinal Injury Association) impairment scale classifies injury severity A–E.
@@ -382,7 +383,7 @@ const NeurointensiveCareTopic = () => {
             </p>
           </div>
         </ExamSection>
-        <ExamSection id="toc-icp" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-icp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICP Monitoring Devices</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             ICP monitoring is indicated in severe TBI (GCS ≤8 with abnormal CT), SAH with hydrocephalus, and other causes of raised ICP. The choice of device depends on clinical need (diagnostic vs therapeutic CSF drainage), accuracy requirements, and available expertise.
@@ -390,7 +391,7 @@ const NeurointensiveCareTopic = () => {
           <ICPMonitoringDevicesDiagram />
         </ExamSection>
 
-        <ExamSection exams={["fficm", "edic"]}>
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Microdialysis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Cerebral microdialysis (CMD) is a focal, bedside neurochemical monitor that samples the brain extracellular fluid (ECF) of a small volume of cortex (~1 cm³ around the catheter tip). It complements global monitors (ICP, CPP, PbtO₂, jugular bulb) by detecting cellular distress — disordered glucose, lactate and pyruvate metabolism, glutamate excitotoxicity and membrane breakdown — often <em>before</em> ICP rises or PbtO₂ falls. Used predominantly in poor-grade SAH and severe TBI in selected neuro-ICU centres (Cambridge, Lund, Edinburgh, Addenbrooke's-style protocols).
@@ -510,7 +511,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection exams={["fficm", "edic"]}>
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Neuromonitoring — Synthesis</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             No single monitor captures the full picture of brain physiology. Modern neuro-ICUs combine pressure, flow surrogate, oxygenation and biochemistry to triangulate cellular distress. Use the interactive overview below to compare the six core modalities — what each measures, their spatial vs temporal resolution, and where each excels or fails.
@@ -518,7 +519,7 @@ const NeurointensiveCareTopic = () => {
           <MultimodalNeuromonitoringDiagram />
         </ExamSection>
 
-        <ExamSection id="toc-encephalitis" exams={["fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-encephalitis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autoimmune Encephalitis — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Autoimmune encephalitis (AIE) is an increasingly recognised cause of ICU admission with seizures, altered consciousness, and psychiatric features. Prompt recognition and immunotherapy are essential — outcomes are better with early treatment.
@@ -624,7 +625,7 @@ const NeurointensiveCareTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-gbs" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-gbs" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Guillain-Barré Syndrome (GBS) — ICU Management</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             GBS is an acute immune-mediated polyradiculoneuropathy causing ascending flaccid paralysis. ~25% require ICU admission for respiratory failure or autonomic instability. Mortality ~5%, but significant long-term morbidity. Two-thirds have preceding infection (Campylobacter jejuni, CMV, EBV, Zika).
@@ -730,7 +731,7 @@ const NeurointensiveCareTopic = () => {
         </ExamSection>
 
         {/* Devastating Brain Injury */}
-        <ExamSection exams={["fficm", "edic"]} className="mb-10">
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]} className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Devastating Brain Injury (DBI)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Devastating brain injury is defined (FICM/ICS/RCEM/NHSBT consensus 2018, reaffirmed 2023) as <strong>any neurological condition assessed at presentation as an immediate threat to life or incompatible with good functional recovery, and where early limitation or withdrawal of therapy is being considered within 72 hours of admission to ICU</strong>. Common causes: severe TBI, large intracerebral or subarachnoid haemorrhage, malignant MCA infarction, hypoxic-ischaemic injury post-cardiac arrest, devastating CNS infection.

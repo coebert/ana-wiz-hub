@@ -62,7 +62,7 @@ const CardiacAnatomyTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Chambers & Valves</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The heart lies in the middle mediastinum, enclosed in pericardium. Two-thirds lies to the left of the midline. The cardiac skeleton (fibrous rings) provides electrical insulation between atria and ventricles.
@@ -79,7 +79,7 @@ const CardiacAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coronary Arteries</h2>
             <div className="space-y-2">
               {[
@@ -97,7 +97,7 @@ const CardiacAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Conducting System</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               SA node (pacemaker, 60–100 bpm) → atrial conduction → AV node (inherent rate 40–60, 0.1s delay) → bundle of His → right and left bundle branches → Purkinje fibres → ventricular muscle.
@@ -114,7 +114,7 @@ const CardiacAnatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_03"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Great Vessels & Pericardium</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

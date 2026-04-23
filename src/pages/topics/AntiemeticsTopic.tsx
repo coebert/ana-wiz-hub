@@ -65,7 +65,7 @@ const AntiemeticsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="apfel" exams={["primary", "final"]}>
+          <ExamSection id="apfel" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">PONV Risk Factors (Apfel Score)</h2>
             <p className="text-muted-foreground leading-relaxed">
               Each Apfel risk factor adds approximately 20% to the baseline PONV risk: (1) female sex, (2) non-smoker, (3) history of
@@ -75,7 +75,7 @@ const AntiemeticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="drug-classes" exams={["primary", "final"]}>
+          <ExamSection id="drug-classes" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Antiemetic Drug Classes</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -101,7 +101,7 @@ const AntiemeticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="management" exams={["primary", "final"]}>
+          <ExamSection id="management" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">PONV Management Strategy</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Low risk</strong> (Apfel 0–1): no routine prophylaxis</li>

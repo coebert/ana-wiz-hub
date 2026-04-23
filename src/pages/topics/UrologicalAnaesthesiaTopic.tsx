@@ -36,14 +36,14 @@ const UrologicalAnaesthesiaTopic = () => {
       diagrams={<TURPSyndromeDiagram />}
       coreConcepts={
         <>
-          <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Urological surgery ranges from minor cystoscopy to major radical procedures. Anaesthetic considerations include lithotomy positioning, fluid absorption syndromes, laser safety, and the often elderly comorbid patient population. Neuraxial anaesthesia is frequently preferred for lower urinary tract procedures.
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">TURP Syndrome</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Absorption of hypotonic glycine 1.5% irrigation fluid during transurethral resection of the prostate — a potentially life-threatening complication.
@@ -71,14 +71,14 @@ const UrologicalAnaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bipolar TURP & Laser Prostatectomy</h2>
             <p className="text-muted-foreground leading-relaxed">
               Modern bipolar TURP uses isotonic saline irrigation, eliminating the risk of TURP syndrome. HoLEP (holmium laser enucleation) and GreenLight PVP (photoselective vaporisation) also use saline. However, fluid overload from excessive absorption remains possible. Bipolar/laser techniques allow longer resection times and are increasingly standard.
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lithotomy Position</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Nerve injury</strong>: common peroneal nerve (lateral fibular head compression), femoral nerve (hip hyperflexion), obturator nerve</li>
@@ -89,7 +89,7 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["CU_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Radical Cystectomy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Major surgery (4–8 hours) with significant blood loss, fluid shifts, and high complication rate. Often elderly patients with smoking history and cardiovascular disease.
@@ -103,7 +103,7 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]}>
+          <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nephrectomy & Renal Surgery</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
               <li><strong>Lateral position</strong>: dependent lung compression, V/Q mismatch; kidney bridge may compress IVC</li>
@@ -114,7 +114,7 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]}>
+          <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Shock Wave Lithotripsy (ESWL)</h2>
             <p className="text-muted-foreground leading-relaxed">
               Focused shock waves fragment renal/ureteric calculi. Requires immobility and may be painful. Options: sedation + analgesia, spinal anaesthesia, or GA. Cardiac gating (trigger on R-wave) prevents arrhythmias. Contraindicated in pregnancy, aortic aneurysm, and uncorrected coagulopathy.

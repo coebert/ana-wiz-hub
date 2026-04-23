@@ -1,12 +1,12 @@
 import { Filter, X } from "lucide-react";
-import { ExamTag } from "@/data/curriculum";
+import { Exam, ExamTag } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 
 const EXAMS: { value: ExamTag; label: string; tone: string }[] = [
-  { value: "primary", label: "FRCA Primary", tone: "data-[active=true]:bg-physiology data-[active=true]:text-white border-physiology/40 text-physiology" },
-  { value: "final", label: "FRCA Final", tone: "data-[active=true]:bg-pharmacology data-[active=true]:text-white border-pharmacology/40 text-pharmacology" },
-  { value: "fficm", label: "FFICM", tone: "data-[active=true]:bg-icu data-[active=true]:text-white border-icu/40 text-icu" },
-  { value: "edic", label: "EDIC", tone: "data-[active=true]:bg-clinical data-[active=true]:text-white border-clinical/40 text-clinical" },
+  { value: Exam.PRIMARY, label: "FRCA Primary", tone: "data-[active=true]:bg-physiology data-[active=true]:text-white border-physiology/40 text-physiology" },
+  { value: Exam.FINAL, label: "FRCA Final", tone: "data-[active=true]:bg-pharmacology data-[active=true]:text-white border-pharmacology/40 text-pharmacology" },
+  { value: Exam.FFICM, label: "FFICM", tone: "data-[active=true]:bg-icu data-[active=true]:text-white border-icu/40 text-icu" },
+  { value: Exam.EDIC, label: "EDIC", tone: "data-[active=true]:bg-clinical data-[active=true]:text-white border-clinical/40 text-clinical" },
 ];
 
 /**

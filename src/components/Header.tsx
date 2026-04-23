@@ -4,7 +4,7 @@ import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList
 import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
-import { ExamTag } from "@/data/curriculum";
+import { Exam, ExamTag } from "@/data/curriculum";
 
 const navItems = [
   { label: "Physics", path: "/physics", icon: Atom, color: "text-physics" },
@@ -19,10 +19,10 @@ const navItems = [
 
 const examFilters: { label: string; value: ExamTag | null }[] = [
   { label: "All", value: null },
-  { label: "Primary", value: "primary" },
-  { label: "Final", value: "final" },
-  { label: "FFICM", value: "fficm" },
-  { label: "EDIC", value: "edic" },
+  { label: "Primary", value: Exam.PRIMARY },
+  { label: "Final", value: Exam.FINAL },
+  { label: "FFICM", value: Exam.FFICM },
+  { label: "EDIC", value: Exam.EDIC },
 ];
 
 export const Header = () => {

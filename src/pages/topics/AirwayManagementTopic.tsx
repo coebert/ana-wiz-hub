@@ -134,7 +134,7 @@ const AirwayManagementTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Airway management is the cornerstone of safe anaesthetic and critical care practice. The Difficult Airway
@@ -143,7 +143,7 @@ const AirwayManagementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pre-operative airway assessment</h2>
             <p className="text-foreground/90 leading-relaxed">
               Systematic assessment is performed before every anaesthetic. No single test reliably predicts difficulty —
@@ -153,7 +153,7 @@ const AirwayManagementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway equipment</h2>
             <p className="text-foreground/90 leading-relaxed">
               Modern practice favours <strong>2nd-generation supraglottic airways</strong> (i-gel, ProSeal LMA) with gastric
@@ -163,7 +163,7 @@ const AirwayManagementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">DAS 2015 algorithm — four sequential plans</h2>
             <div className="space-y-3">
               {[
@@ -183,7 +183,7 @@ const AirwayManagementTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Awake fibreoptic intubation</h2>
             <p className="text-foreground/90 leading-relaxed">
               Successful AFOI requires systematic topicalisation of every sensory zone of the airway: V₁/V₂ (nasal),
@@ -193,7 +193,7 @@ const AirwayManagementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["CL_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Front-of-neck access (FONA)</h2>
             <p className="text-foreground/90 leading-relaxed mb-3">
               The DAS-recommended scalpel-bougie-tube technique for can't intubate, can't oxygenate (CICO):

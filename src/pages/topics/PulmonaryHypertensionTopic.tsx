@@ -118,7 +118,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="definition"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5"]}
             className="scroll-mt-24"
           >
@@ -159,7 +159,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="pathophysiology"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5"]}
             className="scroll-mt-24"
           >
@@ -180,7 +180,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="targeted-therapy"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5"]}
             className="scroll-mt-24"
           >
@@ -287,7 +287,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="perioperative"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5", "EDIC 3"]}
             className="scroll-mt-24"
           >
@@ -329,7 +329,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="crisis"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 4.5", "EDIC 3"]}
             className="scroll-mt-24"
           >
@@ -360,7 +360,7 @@ const PulmonaryHypertensionTopic = () => {
 
           <ExamSection
             id="special"
-            exams={["final", "fficm", "edic"]}
+            exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FRCA Final CV", "FFICM 4.5"]}
             className="scroll-mt-24"
           >

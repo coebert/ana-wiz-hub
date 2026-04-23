@@ -129,7 +129,7 @@ const PharmacodynamicsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="dose-response" exams={["primary"]}>
+          <ExamSection id="dose-response" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Dose-Response Relationships</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Dose-response curve</strong>: hyperbolic. Log(dose)-response: sigmoid. Emax is the maximal response; EC₅₀ is the concentration producing 50% Emax</li>
@@ -139,7 +139,7 @@ const PharmacodynamicsTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="agonists-antagonists" exams={["primary"]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
+          <ExamSection id="agonists-antagonists" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Agonists & Antagonists</h2>
             <div className="space-y-3">
               {[
@@ -157,7 +157,7 @@ const PharmacodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="receptors" exams={["primary"]}>
+          <ExamSection id="receptors" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Receptor Types & Signal Transduction</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -177,7 +177,7 @@ const PharmacodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="interactions-tolerance" exams={["primary", "final"]}>
+          <ExamSection id="interactions-tolerance" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Drug Interactions & Tolerance</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Synergism</strong>: combined effect &gt; sum of individual effects (e.g., propofol + remifentanil). Shown by isobolograms</li>

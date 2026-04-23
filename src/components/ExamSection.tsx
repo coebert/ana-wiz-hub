@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { EyeOff } from "lucide-react";
-import { ExamTag } from "@/data/curriculum";
+import { ExamTag, Exam } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 
@@ -31,7 +31,7 @@ interface ExamSectionProps {
  *   can see what's been collapsed and immediately clear the filter if needed.
  *
  * Usage:
- *   <ExamSection exams={["final", "fficm"]} curriculumCodes={["CC1.4"]}>
+ *   <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CC1.4"]}>
  *     <h2>...</h2>
  *     ...content...
  *   </ExamSection>

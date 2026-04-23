@@ -129,7 +129,7 @@ const AcidsBasesBuffersTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="foundations" exams={["primary"]}>
+          <ExamSection id="foundations" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Foundations of Acid-Base Chemistry</h2>
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>
@@ -147,12 +147,12 @@ const AcidsBasesBuffersTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
             <AcidsBasesDiagram />
           </ExamSection>
 
-          <ExamSection id="henderson-hasselbalch" exams={["primary", "final"]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
+          <ExamSection id="henderson-hasselbalch" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RCoA Primary — Pharmacology"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">The Henderson-Hasselbalch Equation in Practice</h2>
             <div className="text-muted-foreground space-y-3 leading-relaxed">
               <p>

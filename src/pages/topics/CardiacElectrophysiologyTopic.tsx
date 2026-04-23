@@ -128,7 +128,7 @@ const CardiacElectrophysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="action-potentials" exams={["primary", "final"]} curriculumCodes={["CR_BK_02"]}>
+          <ExamSection id="action-potentials" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac Action Potentials</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The heart has two types of action potential: the fast-response (atrial/ventricular myocytes, Purkinje
@@ -154,7 +154,7 @@ const CardiacElectrophysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="long-qt" exams={["final", "fficm"]} curriculumCodes={["OA_BK_01"]}>
+          <ExamSection id="long-qt" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long QT Syndrome & Torsades de Pointes</h2>
             <p className="text-muted-foreground leading-relaxed">
               Prolonged phase 3 repolarisation creates a window for L-type Ca²⁺ channel reactivation → early
@@ -164,7 +164,7 @@ const CardiacElectrophysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="conduction" exams={["primary", "final"]} curriculumCodes={["CR_BK_02"]}>
+          <ExamSection id="conduction" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Conduction System</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Normal conduction: SA node → atrial myocardium → AV node (delay ~0.1 s) → Bundle of His → left and right
@@ -187,7 +187,7 @@ const CardiacElectrophysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bp-regulation" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_02"]}>
+          <ExamSection id="bp-regulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Pressure Regulation</h2>
             <div className="space-y-3">
               {[
@@ -204,7 +204,7 @@ const CardiacElectrophysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="vascular" exams={["primary", "final"]} curriculumCodes={["CR_BK_02"]}>
+          <ExamSection id="vascular" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vascular Physiology</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Arterioles</strong> are the major site of resistance — control organ blood flow via sympathetic tone and local metabolites (autoregulation).</li>

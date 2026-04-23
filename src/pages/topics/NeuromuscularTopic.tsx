@@ -131,7 +131,7 @@ const NeuromuscularTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]} curriculumCodes={["NA_BK_03"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Neuromuscular transmission is the process by which a motor nerve impulse is converted into
@@ -141,7 +141,7 @@ const NeuromuscularTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="sequence" exams={["primary", "final"]} curriculumCodes={["NA_BK_03"]}>
+          <ExamSection id="sequence" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sequence of Events</h2>
             <div className="space-y-4">
               <div className="rounded-lg border border-border p-4">
@@ -198,7 +198,7 @@ const NeuromuscularTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="receptors" exams={["primary", "final"]} curriculumCodes={["NA_BK_03"]}>
+          <ExamSection id="receptors" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Receptor Subtypes at the NMJ</h2>
             <p className="text-foreground/90 leading-relaxed">There are multiple receptor types at the NMJ:</p>
             <ul className="mt-3 space-y-2 text-foreground/80">
@@ -218,7 +218,7 @@ const NeuromuscularTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="safety-margin" exams={["primary", "final"]} curriculumCodes={["NA_BK_03"]}>
+          <ExamSection id="safety-margin" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["NA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Safety Margin</h2>
             <p className="text-foreground/90 leading-relaxed">
               The NMJ has a large safety margin: approximately 70–80% of receptors must be blocked before
@@ -228,7 +228,7 @@ const NeuromuscularTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="clinical" exams={["primary", "final", "fficm"]} curriculumCodes={["OA_BK_03"]}>
+          <ExamSection id="clinical" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Relevance</h2>
             <div className="bg-secondary/30 rounded-lg p-4 border border-border">
               <p className="text-sm font-medium text-foreground">Conditions Affecting NM Transmission</p>
