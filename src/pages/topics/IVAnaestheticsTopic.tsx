@@ -1,8 +1,5 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
 import { ivAnaestheticsQuiz } from "@/data/quizzes";
 import IVAnaestheticStructures from "@/components/diagrams/IVAnaestheticStructures";
 import { PropofolTCISimulatorDiagram } from "@/components/diagrams/PropofolTCISimulatorDiagram";
@@ -14,19 +11,46 @@ import { EtomidatePharmacologyDiagram } from "@/components/diagrams/EtomidatePha
 import { MidazolamPharmacologyDiagram } from "@/components/diagrams/MidazolamPharmacologyDiagram";
 import { BenzodiazepineComparisonDiagram } from "@/components/diagrams/BenzodiazepineComparisonDiagram";
 import { FlumazenilDiagram } from "@/components/diagrams/FlumazenilDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const IVAnaestheticsTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Intravenous Anaesthetic Agents"
       subtitle="FRCA Primary — Pharmacology"
       backPath="/pharmacology"
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
-    >
-      <div className="prose prose-slate max-w-none">
+      topicId="iv-anaesthetics"
+      topicTitle="Intravenous Anaesthetic Agents"
+      quizQuestions={ivAnaestheticsQuiz}
+      objectives={[
+        "Compare propofol, thiopentone, ketamine, etomidate, midazolam and dexmedetomidine by mechanism, dose, CVS/RS effects",
+        "Explain TCI pharmacokinetic models (Marsh, Schnider, Eleveld) and effect-site targeting",
+        "Recognise and manage propofol infusion syndrome (PRIS) — thresholds, mechanism, treatment",
+        "Describe benzodiazepine receptor pharmacology (α/γ subunits) and the role of flumazenil",
+        "Justify drug choice in compromised patients (etomidate in CV instability, ketamine in tamponade/asthma)",
+      ]}
+      keyPoints={[
+        "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.",
+        "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.",
+        "Ketamine: NMDA antagonist. Only IV agent with significant analgesia. Indirect sympathomimetic. Emergence phenomena. Bronchodilator.",
+        "Etomidate: most haemodynamically stable agent. Inhibits 11β-hydroxylase (adrenal suppression for ~24h even after single dose).",
+        "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.",
+        "TCI models: Marsh (weight-based), Schnider (age, weight, height, LBM), Eleveld (universal — neonates to elderly).",
+        "PRIS: >4 mg/kg/h for >48h — metabolic acidosis, rhabdomyolysis, cardiovascular collapse. Stop infusion, supportive care.",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+      }}
+      sectionSources={{
+        objectives: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
+        diagrams: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
+        keyPoints: ["BJA Educ 2014", "Peck & Hill Ch.5", "Miller Ch.26"],
+      }}
+      coreConcepts={
+        <div className="prose prose-slate max-w-none">
         <section className="mb-10">
           <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
           <p className="text-foreground/90 leading-relaxed">
@@ -250,8 +274,6 @@ const IVAnaestheticsTopic = () => {
             </table>
           </div>
         </section>
-      </div>
-
       <SynthesisBlock
         title="IV Induction Agents — Side-by-Side"
         subtitle="The high-yield comparison across the four FRCA induction agents."
@@ -284,26 +306,13 @@ const IVAnaestheticsTopic = () => {
         </table>
       </SynthesisBlock>
 
-      <KeyLearningPoints points={[
-        "Propofol: GABA_A agonist. Causes hypotension (vasodilation + myocardial depression). Antiemetic. Pain on injection. Lipid emulsion supports bacterial growth.",
-        "Thiopentone: alkaline pH 10.5 — tissue necrosis risk. Absolute contraindication in porphyria. Potent anticonvulsant.",
-        "Ketamine: NMDA antagonist. Only IV agent with significant analgesia. Indirect sympathomimetic. Emergence phenomena. Bronchodilator.",
-        "Etomidate: most haemodynamically stable agent. Inhibits 11β-hydroxylase (adrenal suppression for ~24h even after single dose).",
-        "All IV agents (except ketamine) cause dose-dependent respiratory depression and apnoea.",
-        "TCI models: Marsh (weight-based) and Schnider (age, weight, height, LBM) for propofol delivery."
-      ]} />
-
-        <div>
-          <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
-          <IVAnaestheticStructures />
-        </div>
-
-        <QuizSection questions={ivAnaestheticsQuiz} />
-      <ReferencesList topicId="iv-anaesthetics" />
-
-      <SeeAlso topicId="iv-anaesthetics" />
-        <TopicCompletionToggle topicId="iv-anaesthetics" topicTitle="Intravenous Anaesthetic Agents" />
-    </SectionLayout>
+      <div>
+        <h2 className="text-xl font-bold text-foreground mb-4">Molecular Structures</h2>
+        <IVAnaestheticStructures />
+      </div>
+      </div>
+      }
+    />
   );
 };
 

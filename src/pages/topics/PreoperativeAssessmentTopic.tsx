@@ -1,18 +1,49 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { preoperativeAssessmentQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
 import CPETNinePanelDiagram from "@/components/diagrams/CPETNinePanelDiagram";
-import { SeeAlso } from "@/components/SeeAlso";
 import { DiagramSection } from "@/components/DiagramSection";
 import { CheckCircle2, AlertTriangle, XCircle, FlaskConical, Heart } from "lucide-react";
 
 const PreoperativeAssessmentTopic = () => {
   return (
-    <SectionLayout title="Preoperative Assessment" subtitle="FRCA / FFICM — Perioperative Medicine" backPath="/perioperative" backLabel="Perioperative Medicine" accentColor="text-perioperative">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Preoperative Assessment"
+      subtitle="FRCA / FFICM — Perioperative Medicine"
+      backPath="/perioperative"
+      backLabel="Perioperative Medicine"
+      accentColor="text-perioperative"
+      topicId="preoperative-assessment"
+      topicTitle="Preoperative Assessment"
+      quizQuestions={preoperativeAssessmentQuestions}
+      objectives={[
+        "Stratify perioperative risk using ASA, RCRI, SORT, METs, and CPET thresholds",
+        "Apply NICE NG45 to choose evidence-based preoperative investigations by ASA × surgical severity",
+        "Manage chronic medications perioperatively (ACE-I/ARB, β-blockers, anticoagulants, GLP-1 RAs, insulin)",
+        "Diagnose and treat preoperative anaemia using NICE/CPOC PBM pathway with oral vs IV iron",
+        "Apply AAGBI/BHS 2016 principles to perioperative blood-pressure management without inappropriate cancellation",
+      ]}
+      keyPoints={[
+        "CPET: AT <11 ml/kg/min or VO₂ peak <15 ml/kg/min = high perioperative risk",
+        "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)",
+        "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve",
+        "Previous difficult intubation is the strongest predictor of future difficulty — always check records",
+        "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)",
+        "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI",
+        "Pre-op anaemia (Hb <130 g/L) is an independent risk factor — screen ≥4–6 wk pre-op (NICE NG24/CPOC)",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
+        diagrams: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
+        keyPoints: { exams: ["final", "fficm"], curriculumCodes: ["PO_BK_01"] },
+      }}
+      sectionSources={{
+        objectives: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
+        diagrams: ["NICE NG45", "AAGBI 2010"],
+        keyPoints: ["NICE NG45", "AAGBI 2010", "BJA Educ 2019"],
+      }}
+      coreConcepts={
+        <>
+        <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Risk Assessment</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -428,21 +459,9 @@ const PreoperativeAssessmentTopic = () => {
         </div>
       </DiagramSection>
 
-      <KeyLearningPoints points={[
-        "CPET: AT <11 ml/kg/min or VO₂ peak <15 ml/kg/min = high perioperative risk",
-        "Omit ACE-I/ARBs on day of surgery; continue beta-blockers (POISE: don't initiate perioperatively)",
-        "Functional capacity >4 METs (climb 2 flights) suggests adequate cardiac reserve",
-        "Previous difficult intubation is the strongest predictor of future difficulty — always check records",
-        "GLP-1 RA: hold weekly semaglutide 7 days pre-op; if not held, treat as full stomach (ASA 2023)",
-        "Gastric ultrasound: antral CSA >340 mm² suggests significant residual volume — consider RSI",
-      ]} />
-
-      <QuizSection questions={preoperativeAssessmentQuestions} />
-      <ReferencesList topicId="preoperative-assessment" />
-
-      <SeeAlso topicId="preoperative-assessment" />
-        <TopicCompletionToggle topicId="preoperative-assessment" topicTitle="Preoperative Assessment" />
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
