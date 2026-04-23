@@ -120,6 +120,13 @@ const CardiacCycleTopic = () => {
             <AorticDicroticNotchDiagram />
           </div>
           <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <h3 className="text-base font-semibold text-foreground mb-1">Notch Morphology Across Pathologies</h3>
+            <p className="text-xs text-muted-foreground mb-4">
+              How the dichrotic notch shifts in aortic regurgitation, aortic stenosis, sepsis, and aging arteries — versus the normal reference waveform.
+            </p>
+            <DichroticNotchComparisonPanel />
+          </div>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
             <h3 className="text-base font-semibold text-foreground mb-3">Pressure–Volume Loop</h3>
             <PVLoopDiagram />
           </div>
