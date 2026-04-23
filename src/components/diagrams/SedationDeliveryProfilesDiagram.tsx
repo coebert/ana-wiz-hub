@@ -90,6 +90,18 @@ const tciCurve = (t: number) => {
   return target + 0.012 * Math.sin(t * 28);
 };
 
+interface Callout {
+  /** Trigger time on the normalised x-axis (0..1) */
+  at: number;
+  /** Short label rendered on the plot */
+  label: string;
+  /** Optional offsets (in plot pixels) from the curve point */
+  dx?: number;
+  dy?: number;
+  /** How long the callout stays visible after `at` (0..1). Default 0.18 */
+  hold?: number;
+}
+
 interface PanelProps {
   title: string;
   subtitle: string;
@@ -103,6 +115,8 @@ interface PanelProps {
   targetId?: string;
   /** Accessible label for the scroll link, e.g. "Read more about boluses" */
   linkLabel?: string;
+  /** Timed text labels that fade in/out at specific moments */
+  callouts?: Callout[];
 }
 
 const scrollToId = (id: string) => {
@@ -125,6 +139,7 @@ const Panel = ({
   markers,
   targetId,
   linkLabel,
+  callouts,
 }: PanelProps) => {
   const fullPath = toPath(sampleAt(curve));
   const visiblePath = toPath(sampleAt(curve, Math.max(2, Math.round(N_SAMPLES * progress))));
@@ -286,6 +301,69 @@ const Panel = ({
           stroke="hsl(var(--background))"
           strokeWidth={1.5}
         />
+
+        {/* Timed callouts — fade in/out as the cursor passes their trigger time */}
+        {callouts?.map((co, i) => {
+          const hold = co.hold ?? 0.18;
+          const fade = 0.04;
+          const dt = progress - co.at;
+          let opacity = 0;
+          if (dt >= -fade && dt <= hold + fade) {
+            if (dt < 0) opacity = (dt + fade) / fade; // fade-in
+            else if (dt > hold) opacity = 1 - (dt - hold) / fade; // fade-out
+            else opacity = 1;
+            opacity = Math.max(0, Math.min(1, opacity));
+          }
+          if (opacity <= 0.01) return null;
+
+          const px = PAD_L + co.at * INNER_W;
+          const py =
+            PAD_T + (1 - Math.max(0, Math.min(1, curve(co.at)))) * INNER_H;
+          const dx = co.dx ?? 6;
+          const dy = co.dy ?? -10;
+          const tx = Math.min(PLOT_W - PAD_R - 4, Math.max(PAD_L + 2, px + dx));
+          const ty = Math.min(PAD_T + INNER_H - 2, Math.max(PAD_T + 8, py + dy));
+          const anchor: "start" | "end" =
+            tx > PAD_L + INNER_W - 60 ? "end" : "start";
+          // Approximate text width for backing rect (8px wide chars at 9px font)
+          const charW = 4.4;
+          const textW = co.label.length * charW + 6;
+          const rectX = anchor === "end" ? tx - textW : tx - 3;
+
+          return (
+            <g key={`${i}-${co.label}`} opacity={opacity} style={{ transition: "opacity 80ms linear" }}>
+              <line
+                x1={px}
+                y1={py}
+                x2={tx}
+                y2={ty + 1}
+                stroke={`hsl(var(${colorVar}))`}
+                strokeWidth={0.7}
+                strokeDasharray="2 2"
+              />
+              <rect
+                x={rectX}
+                y={ty - 8}
+                width={textW}
+                height={11}
+                rx={2}
+                fill="hsl(var(--background))"
+                stroke={`hsl(var(${colorVar}) / 0.55)`}
+                strokeWidth={0.6}
+              />
+              <text
+                x={tx}
+                y={ty}
+                fontSize="8.5"
+                fill={`hsl(var(${colorVar}))`}
+                textAnchor={anchor}
+                fontWeight={600}
+              >
+                {co.label}
+              </text>
+            </g>
+          );
+        })}
       </svg>
       {isLinked && (
         <p className="text-[11px] text-primary mt-1.5 font-medium">
@@ -387,6 +465,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           markers={[0.0, 0.25, 0.5, 0.75]}
           targetId="technique-bolus"
           linkLabel="Read about boluses →"
+          callouts={[
+            { at: 0.04, label: "1st bolus", dy: -14 },
+            { at: 0.18, label: "trough — patient moves", dy: 16 },
+            { at: 0.54, label: "peak — apnoea risk", dy: -14 },
+            { at: 0.92, label: "sawtooth pattern", dy: 14 },
+          ]}
         />
         <Panel
           title="Manual infusion"
@@ -396,6 +480,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           colorVar="--accent-foreground"
           targetId="technique-infusion"
           linkLabel="Read about manual infusion →"
+          callouts={[
+            { at: 0.05, label: "infusion starts", dy: 14 },
+            { at: 0.32, label: "1τ ≈ 63% of target", dy: -14 },
+            { at: 0.7, label: "approaching steady state", dy: -14 },
+            { at: 0.95, label: "≈ 4–5τ to plateau", dy: 12 },
+          ]}
         />
         <Panel
           title="TCI (Cp/Ce target)"
@@ -405,6 +495,12 @@ export const SedationDeliveryProfilesDiagram = () => {
           colorVar="--primary"
           targetId="technique-tci"
           linkLabel="Read about TCI →"
+          callouts={[
+            { at: 0.04, label: "loading bolus", dy: 14 },
+            { at: 0.1, label: "brief overshoot", dy: -14 },
+            { at: 0.4, label: "rate adjusts to hold target", dy: -14 },
+            { at: 0.85, label: "stable Ce — easy titration", dy: 14 },
+          ]}
         />
       </div>
 
