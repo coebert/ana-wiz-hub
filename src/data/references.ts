@@ -495,6 +495,14 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "DAS-Delirium", citation: "Ely EW. Delirium in mechanically ventilated patients: ICU-CAM. JAMA. 2001;286(21):2703-2710.", url: "https://doi.org/10.1001/jama.286.21.2703" },
     { label: "BJA Educ 2017", citation: "Reade MC, Finfer S. Sedation and delirium in the intensive care unit. N Engl J Med. 2014;370:444-454.", url: "https://doi.org/10.1056/NEJMra1208705" },
   ],
+  "procedural-sedation": [
+    { label: "AAGBI/RCoA 2021", citation: "Association of Anaesthetists & Royal College of Anaesthetists. Safe Sedation Practice for Healthcare Procedures: Standards and Guidance. 2021.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines/Safe-sedation-practice" },
+    { label: "AoMRC 2013", citation: "Academy of Medical Royal Colleges. Safe Sedation Practice for Healthcare Procedures: Standards and Guidance. 2013.", url: "https://www.aomrc.org.uk/reports-guidance/safe-sedation-practice-1213/" },
+    { label: "ASA 2019", citation: "American Society of Anesthesiologists. Continuum of Depth of Sedation: Definition of General Anesthesia and Levels of Sedation/Analgesia. ASA; 2019.", url: "https://www.asahq.org/standards-and-guidelines/continuum-of-depth-of-sedation-definition-of-general-anesthesia-and-levels-of-sedationanalgesia" },
+    { label: "BJA Educ 2021", citation: "Hinkelbein J et al. European Society of Anaesthesiology and European Board of Anaesthesiology guidelines for procedural sedation and analgesia in adults. Eur J Anaesthesiol. 2018;35(1):6-24.", url: "https://doi.org/10.1097/EJA.0000000000000683" },
+    { label: "DAS ATI 2020", citation: "Ahmad I et al. Difficult Airway Society guidelines for awake tracheal intubation (ATI) in adults. Anaesthesia. 2020;75(4):509-528.", url: "https://doi.org/10.1111/anae.14904" },
+    { label: "BSG 2023", citation: "Sidhu R et al. British Society of Gastroenterology guidelines on sedation in gastrointestinal endoscopy. Gut. 2023;72(2):225-243.", url: "https://doi.org/10.1136/gutjnl-2022-327858" },
+  ],
   "antimicrobials-icu": [
     { label: "SSC 2021 Antimicrobials", citation: "Evans L et al. Surviving Sepsis Campaign 2021. Section: Antimicrobial Therapy.", url: "https://doi.org/10.1097/CCM.0000000000005337" },
     { label: "BJA Educ 2016", citation: "Rawson TM et al. Antimicrobials in the ICU. BJA Education. 2016;16(12):417-421.", url: "https://doi.org/10.1093/bjaed/mkw024" },
