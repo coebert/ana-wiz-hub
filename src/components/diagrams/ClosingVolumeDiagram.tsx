@@ -22,11 +22,32 @@ const ClosingVolumeDiagram = () => {
   const [selectedPhase, setSelectedPhase] = useState<Phase | null>(null);
   const [showCapacity, setShowCapacity] = useState(false);
   const [ageGroup, setAgeGroup] = useState<"young" | "elderly">("young");
+  const [autoScale, setAutoScale] = useState(true);
 
   // CV increases with age; CC = CV + RV
   const cv = ageGroup === "young" ? 10 : 25; // % of VC
   const rv = 25; // % of TLC simplified
   const cc = cv + rv; // closing capacity
+
+  // Curve parameters (single source of truth — used for both rendering & scaling)
+  const phase4Start = ageGroup === "young" ? 320 : 290;
+  const slopeIII = ageGroup === "young" ? 0.08 : 0.18; // steeper in elderly
+  const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
+  const rawPhase4Peak = n2AtEndIII + 25; // theoretical Phase IV end before clamping
+
+  // Dynamic y-axis: round peak up to nearest 10, with a 10% headroom and a 40% floor
+  const niceCeil = (v: number, step: number) => Math.ceil(v / step) * step;
+  const yMax = autoScale
+    ? Math.max(40, niceCeil(rawPhase4Peak * 1.05, 10))
+    : 60; // fixed legacy scale
+
+  // Tick spacing: keep ~5–7 ticks regardless of range
+  const tickStep = yMax <= 50 ? 10 : yMax <= 80 ? 10 : 20;
+  const yTicks: number[] = [];
+  for (let v = 0; v <= yMax; v += tickStep) yTicks.push(v);
+
+  const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
+  const phase4EndN2 = Math.min(rawPhase4Peak, yMax);
 
   return (
     <div className="space-y-4">
@@ -47,6 +68,13 @@ const ClosingVolumeDiagram = () => {
             showCapacity ? "bg-accent text-accent-foreground border-border shadow-sm" : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
           }`}>
           {showCapacity ? "Hide" : "Show"} CC
+        </button>
+        <button onClick={() => setAutoScale(!autoScale)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
+            autoScale ? "bg-accent text-accent-foreground border-border shadow-sm" : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
+          }`}
+          title="Toggle dynamic y-axis scaling based on selected age group">
+          Y-axis: {autoScale ? `Auto (0–${yMax}%)` : "Fixed (0–60%)"}
         </button>
       </div>
 
@@ -86,21 +114,8 @@ const ClosingVolumeDiagram = () => {
           ));
         })()}
 
-        {/* The N₂ curve */}
+        {/* The N₂ curve — uses shared yScale so control points reflect dynamic y-axis */}
         {(() => {
-          const phase4Start = ageGroup === "young" ? 320 : 290;
-          const slopeIII = ageGroup === "young" ? 0.08 : 0.18; // steeper in elderly
-          
-          // Phase I: flat at 0
-          // Phase II: rapid rise
-          // Phase III: gentle slope (alveolar plateau)
-          // Phase IV: steep rise (closing volume)
-          
-          const yMax = 60;
-          const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
-          const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
-          const phase4EndN2 = Math.min(n2AtEndIII + 25, yMax);
-
           const pathD = [
             `M 60,190`,
             // Phase I - flat near zero
@@ -121,7 +136,6 @@ const ClosingVolumeDiagram = () => {
 
         {/* Phase labels */}
         {(() => {
-          const phase4Start = ageGroup === "young" ? 320 : 290;
           const centers = [85, 135, (160 + phase4Start) / 2, (phase4Start + 380) / 2];
           return phases.map((p, i) => (
             <text key={i} x={centers[i]} y={210} textAnchor="middle"
@@ -134,10 +148,9 @@ const ClosingVolumeDiagram = () => {
 
         {/* Closing Volume marker */}
         {(() => {
-          const cvX = ageGroup === "young" ? 320 : 290;
-          const slopeIII = ageGroup === "young" ? 0.08 : 0.18;
+          const cvX = phase4Start;
           const n2AtCV = 30 + slopeIII * (cvX - 160);
-          const cvY = 190 - (Math.min(n2AtCV, 60) / 60) * 160;
+          const cvY = yScale(n2AtCV);
           return (
             <g>
               <line x1={cvX} y1={cvY} x2={cvX} y2={195} stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" strokeDasharray="4,3" />
