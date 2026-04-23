@@ -1,5 +1,8 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { emergencySurgeryQuestions } from "@/data/quizzes";
+import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassificationDiagram";
+import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
+import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/EmergencyLaparotomyBundleDiagram";
 
 const objectives = [
   "Apply the NCEPOD classification to prioritise emergency surgery and resuscitation.",
@@ -31,9 +34,22 @@ const EmergencySurgeryTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={emergencySurgeryQuestions}
+      diagrams={
+        <div className="space-y-6">
+          <NCEPODClassificationDiagram />
+          <EmergencyRSIDiagram />
+          <EmergencyLaparotomyBundleDiagram />
+        </div>
+      }
       sectionExamMapping={{
         objectives: { exams: ["final", "fficm"] },
+        diagrams: { exams: ["final", "fficm"] },
         keyPoints: { exams: ["final", "fficm"] },
+      }}
+      sectionSources={{
+        objectives: ["NCEPOD 2011", "NELA Year 9 2023", "RCoA GPAS Ch.5"],
+        diagrams: ["DAS 2015", "NELA Year 9 2023", "BJA Educ 2017"],
+        keyPoints: ["NELA Year 9 2023", "BJA Educ 2017", "DAS 2015"],
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
