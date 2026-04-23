@@ -1,8 +1,6 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { regionalAnaesthesiaQuestions } from "@/data/quizzes";
 import DermatomeMapDiagram from "@/components/diagrams/DermatomeMapDiagram";
 import NerveDermatomeOverlayDiagram from "@/components/diagrams/NerveDermatomeOverlayDiagram";
@@ -13,8 +11,6 @@ import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDia
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import NeuraxialAnticoagRiskTool from "@/components/diagrams/NeuraxialAnticoagRiskTool";
 import AnticoagRestartTimeline from "@/components/diagrams/AnticoagRestartTimeline";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
 
 const tocItems = [
@@ -28,11 +24,68 @@ const tocItems = [
   { id: "regression", label: "Block regression times", group: "Assessment" },
 ];
 
+const objectives = [
+  "Identify dermatomal landmarks (T4 nipple, T6 xiphisternum, T10 umbilicus, T12 inguinal) for block height planning",
+  "Compare spinal vs epidural pharmacology, onset, density and titratability",
+  "Apply AAGBI 2013 / ESAIC 2022 anticoagulation timing for safe neuraxial block",
+  "Recognise and manage PDPH, neuraxial haematoma/abscess and total spinal",
+  "Assess sensory level (cold spray) and motor block (Bromage) and predict regression",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Spinal for elective caesarean section — block height confirmation",
+    scenario:
+      "Ten minutes after a spinal of 2.4 ml 0.5% heavy bupivacaine + 15 µg fentanyl, you need to confirm a block adequate for caesarean section. What is the minimum acceptable level and how do you test it?",
+    working:
+      "Adequate block for CS: bilateral loss of cold sensation (Aδ-fibre block) to T4 (nipple line) and loss of light touch to T5.\nUse ethyl chloride spray; calibrate on the forearm, then start at the abdomen and move cranially until the patient reports cold returning. Document the highest dermatome with bilateral loss.\nAlso check motor (Bromage 3 expected) and sympathetic block (warm dry feet, hypotension).\nIf level <T4: consider topping up via uplift positioning, IV ketamine/midazolam supplementation, conversion to GA — never rush to start surgery on an inadequate block.",
+    answer:
+      "Need bilateral cold loss to T4 (nipple). Test with ethyl chloride spray, calibrating on the forearm and moving cranially from the abdomen.",
+  },
+  {
+    title: "Epidural top-up timing on a patient on rivaroxaban",
+    scenario:
+      "A patient with an epidural in situ from yesterday took her usual rivaroxaban 20 mg this morning by mistake. When can the epidural catheter be safely removed?",
+    working:
+      "AAGBI 2013 / ESAIC 2022: rivaroxaban (treatment dose) requires a 48 h gap before neuraxial intervention (insertion or catheter removal) due to bleeding/haematoma risk.\nFor prophylactic dose rivaroxaban (10 mg OD), the gap is 18 h.\nNo neuraxial intervention should occur within these windows. Wait the appropriate interval, then remove the catheter and monitor for 6 h with regular neurological observations.\nNext rivaroxaban dose: 6 h after catheter removal.",
+    answer:
+      "Wait 48 h after the rivaroxaban dose (treatment dose) before removing the catheter, then perform regular neurological observations for 6 h. Next dose 6 h after removal.",
+  },
+];
+
 const RegionalAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Regional & Neuraxial Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <TopicTableOfContents items={tocItems} />
-      <section id="dermatomes" className="scroll-mt-24 mb-10">
+    <TopicTemplate
+      title="Regional & Neuraxial Anaesthesia"
+      subtitle="FRCA / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="regional-anaesthesia"
+      topicTitle="Regional & Neuraxial Anaesthesia"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      quizQuestions={regionalAnaesthesiaQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA — Regional Anaesthesia"] },
+        workedExamples: { exams: ["primary", "final", "fficm"] },
+        keyPoints: { exams: ["primary", "final", "fficm"] },
+      }}
+      keyPoints={[
+        "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block",
+        "Hyperbaric bupivacaine spread influenced by baricity and patient position",
+        "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases",
+        "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail",
+        "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical",
+        "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns",
+        "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)",
+        "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge",
+        "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours",
+      ]}
+      coreConcepts={
+        <>
+          <TopicTableOfContents items={tocItems} />
+          <section id="dermatomes" className="scroll-mt-24 mb-10">
         <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dermatome Anatomy — Foundations</h2>
         <p className="text-muted-foreground leading-relaxed mb-4">
           Knowing surface dermatomes and their corresponding spinal levels underpins every regional and neuraxial technique — for planning block height, predicting surgical coverage, and detecting unexpectedly high blocks.
@@ -343,25 +396,9 @@ const RegionalAnaesthesiaTopic = () => {
           <li><strong>Adjuvants</strong>: dexamethasone (perineural or IV) prolongs analgesia; clonidine and dexmedetomidine prolong block but cause sedation/hypotension.</li>
         </ul>
       </SynthesisBlock>
-
-      <KeyLearningPoints points={[
-        "Spinal: rapid dense block, single-shot; Epidural: titratable, catheter-based, differential block",
-        "Hyperbaric bupivacaine spread influenced by baricity and patient position",
-        "Interscalene block causes ipsilateral phrenic nerve palsy in ~100% of cases",
-        "PDPH: worse sitting/standing, treat with epidural blood patch if conservative measures fail",
-        "Follow AAGBI/ESRA anticoagulation guidelines — timing of neuraxial relative to anticoagulants is critical",
-        "Test block height with cold spray: start from blocked area, move cranially until cold sensation returns",
-        "Differential block order: sympathetic (+2 above) > sensory (cold/pinprick) > motor (−2 below sensory level)",
-        "Bromage 0 = full motor; Bromage 3 = complete block. Bromage 0 required before mobilisation/discharge",
-        "Heavy bupivacaine 2-segment regression: 60–90 min; full motor recovery 3–4 hours",
-      ]} />
-
-      <QuizSection questions={regionalAnaesthesiaQuestions} />
-      <ReferencesList topicId="regional-anaesthesia" />
-
-      <SeeAlso topicId="regional-anaesthesia" />
-        <TopicCompletionToggle topicId="regional-anaesthesia" topicTitle="Regional & Neuraxial Anaesthesia" />
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
