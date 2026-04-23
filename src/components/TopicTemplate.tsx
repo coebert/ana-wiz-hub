@@ -11,6 +11,7 @@ import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
 import { LazyDiagrams } from "@/components/LazyDiagrams";
+import { ExamSummary } from "@/components/ExamSummary";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 
@@ -129,7 +130,7 @@ export const TopicTemplate = ({
       <div className="space-y-10">
         <TopicExamFilterBar />
         {showObjectives && (
-          <div>
+          <div id="objectives" className="scroll-mt-24">
             {sectionExamMapping?.objectives && (
               <ExamMappingBadges
                 exams={sectionExamMapping.objectives.exams}
@@ -179,7 +180,7 @@ export const TopicTemplate = ({
         )}
 
         {workedExamples && workedExamples.length > 0 && showWorkedExamples && (
-          <div>
+          <div id="worked-examples" className="scroll-mt-24">
             {sectionExamMapping?.workedExamples && (
               <ExamMappingBadges
                 exams={sectionExamMapping.workedExamples.exams}
@@ -201,7 +202,7 @@ export const TopicTemplate = ({
         )}
 
         {showKeyPoints && (
-          <div>
+          <div id="key-points" className="scroll-mt-24">
             {sectionExamMapping?.keyPoints && (
               <ExamMappingBadges
                 exams={sectionExamMapping.keyPoints.exams}
