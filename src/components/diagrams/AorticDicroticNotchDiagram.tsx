@@ -289,6 +289,109 @@ const AorticDicroticNotchDiagram = () => {
             strokeLinejoin="round"
           />
 
+          {/* IABP augmentation overlay */}
+          {showIABP && (() => {
+            const inflateX = xForT(INFLATE_T);
+            const deflateX = xForT(DEFLATE_T);
+            const balloonActive = t >= INFLATE_T && t < DEFLATE_T;
+            const AUG_PEAK = 135;
+            const REDUCED_EDP = 65;
+            const N = 120;
+            let augD = "";
+            for (let i = 0; i <= N; i++) {
+              const tt = INFLATE_T + (i / N) * (DEFLATE_T - INFLATE_T);
+              const x = (tt - INFLATE_T) / (DEFLATE_T - INFLATE_T);
+              const bump = Math.sin(Math.PI * Math.min(1, x * 1.15));
+              const base = aorticPressure(tt);
+              const augmented =
+                base + (AUG_PEAK - base) * bump * (1 - 0.85 * Math.pow(x, 3));
+              const finalP =
+                x > 0.92
+                  ? REDUCED_EDP + (augmented - REDUCED_EDP) * ((1 - x) / 0.08)
+                  : augmented;
+              const px = xForT(tt);
+              const py = yForP(finalP);
+              augD += i === 0 ? `M ${px.toFixed(2)} ${py.toFixed(2)}` : ` L ${px.toFixed(2)} ${py.toFixed(2)}`;
+            }
+            return (
+              <g>
+                <rect
+                  x={inflateX}
+                  y={PAD_T}
+                  width={deflateX - inflateX}
+                  height={PLOT_H}
+                  fill="hsl(var(--accent) / 0.08)"
+                />
+                <path
+                  d={augD}
+                  fill="none"
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={2}
+                  strokeDasharray="5 3"
+                  opacity={0.9}
+                />
+                <line
+                  x1={inflateX}
+                  x2={inflateX}
+                  y1={PAD_T + 4}
+                  y2={PAD_T + PLOT_H}
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={1.5}
+                />
+                <polygon
+                  points={`${inflateX - 5},${PAD_T + 2} ${inflateX + 5},${PAD_T + 2} ${inflateX},${PAD_T + 10}`}
+                  fill="hsl(var(--accent))"
+                />
+                <text x={inflateX + 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))">
+                  ↑ INFLATE
+                </text>
+                <text x={inflateX + 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))">
+                  at notch → ↑ coronary perfusion
+                </text>
+                <line
+                  x1={deflateX}
+                  x2={deflateX}
+                  y1={PAD_T + 4}
+                  y2={PAD_T + PLOT_H}
+                  stroke="hsl(var(--accent))"
+                  strokeWidth={1.5}
+                />
+                <polygon
+                  points={`${deflateX - 5},${PAD_T + 2} ${deflateX + 5},${PAD_T + 2} ${deflateX},${PAD_T + 10}`}
+                  fill="hsl(var(--accent))"
+                />
+                <text x={deflateX - 6} y={PAD_T + 18} fontSize={10} fontWeight={600} fill="hsl(var(--accent))" textAnchor="end">
+                  ↓ DEFLATE
+                </text>
+                <text x={deflateX - 6} y={PAD_T + 30} fontSize={9} fill="hsl(var(--muted-foreground))" textAnchor="end">
+                  pre-systole → ↓ afterload
+                </text>
+                {balloonActive && (
+                  <g>
+                    <circle
+                      cx={cursorX}
+                      cy={PAD_T + PLOT_H - 14}
+                      r={7}
+                      fill="hsl(var(--accent))"
+                      opacity={0.9}
+                      className="animate-pulse"
+                    />
+                    <text
+                      x={cursorX}
+                      y={PAD_T + PLOT_H - 22}
+                      textAnchor="middle"
+                      fontSize={9}
+                      fontWeight={600}
+                      fill="hsl(var(--accent))"
+                    >
+                      balloon inflated
+                    </text>
+                  </g>
+                )}
+              </g>
+            );
+          })()}
+
           {/* Notch marker */}
           <line
             x1={notchX}
