@@ -42,7 +42,7 @@ export const ReferencesList = ({ topicId }: ReferencesListProps) => {
         <h3 className="text-sm font-semibold text-foreground">References &amp; Further Reading</h3>
         <span className="text-xs text-muted-foreground ml-1">({refs.length})</span>
       </CollapsibleTrigger>
-      <CollapsibleContent className="mt-3" forceMount>
+      <CollapsibleContent className="mt-3">
         <ol className="space-y-2 list-decimal list-inside pl-5">
           {refs.map((ref, i) => {
             const slug = ref.label
