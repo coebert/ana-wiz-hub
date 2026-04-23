@@ -90,8 +90,9 @@ const AlveolarGasEquationDiagram = () => {
               { label: "Mitochondrial", value: Math.max(estimatedPaO2 - 7.3, 0.4) },
             ];
             const maxVal = Math.max(...stages.map(s => s.value), 1);
+            const xScale = createLinearScale({ domain: [0, maxVal], range: [0, 300] });
             return stages.map((s, i) => {
-              const barW = Math.max((s.value / maxVal) * 300, 2);
+              const barW = Math.max(xScale(s.value), 2);
               const y = 5 + i * 19;
               const color = s.value < 8 ? "hsl(0, 70%, 55%)" : s.value < 10.7 ? "hsl(35, 80%, 50%)" : "hsl(210, 70%, 55%)";
               return (
