@@ -192,10 +192,10 @@ export const TopicTemplate = ({
             <LazyDiagrams>
               <div className="space-y-6">{diagrams}</div>
             </LazyDiagrams>
-            {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
+            {resolvedSources.diagrams && resolvedSources.diagrams.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.diagrams}
+                refLabels={resolvedSources.diagrams}
                 heading="Sources for these diagrams"
                 targetId="diagrams"
                 targetLabel="Jump to diagrams"
@@ -213,10 +213,10 @@ export const TopicTemplate = ({
               />
             )}
             <WorkedExamples examples={workedExamples} topicId={topicId} />
-            {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
+            {resolvedSources.workedExamples && resolvedSources.workedExamples.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.workedExamples}
+                refLabels={resolvedSources.workedExamples}
                 heading="Sources for these examples"
                 dense
                 targetId="worked-examples"
@@ -235,10 +235,10 @@ export const TopicTemplate = ({
               />
             )}
             <KeyLearningPoints points={keyPoints} topicId={topicId} />
-            {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
+            {resolvedSources.keyPoints && resolvedSources.keyPoints.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.keyPoints}
+                refLabels={resolvedSources.keyPoints}
                 heading="Sources for these key points"
                 dense
                 targetId="key-points"
