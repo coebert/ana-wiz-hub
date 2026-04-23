@@ -33,6 +33,11 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Audit standard:</strong> documented risk score in &gt;90% of cases.</>,
+    sources: [
+      { label: "NELA Year 9 Report" },
+      { label: "P-POSSUM" },
+      { label: "SORT" },
+    ],
   },
   {
     label: "CT within 2 hours",
@@ -43,6 +48,7 @@ const STEPS: AnimatedMechanismStep[] = [
         Lactate, FBC, U&E, coag, group & save / crossmatch as standard.
       </>
     ),
+    sources: [{ label: "NELA Year 9 Report" }, { label: "RCoA Emergency Laparotomy" }],
   },
   {
     label: "Antibiotics + sepsis-6",
@@ -54,6 +60,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Empiric example:</strong> piperacillin-tazobactam 4.5 g IV (or per local guideline).</>,
+    sources: [{ label: "NELA Year 9 Report" }, { label: "BJA Educ 2017 EmLap" }],
   },
   {
     label: "Consultant presence",
@@ -65,6 +72,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Audit standard:</strong> consultant of both specialties present in &gt;80% of high-risk cases.</>,
+    sources: [{ label: "NELA Year 9 Report" }, { label: "RCoA Emergency Laparotomy" }],
   },
   {
     label: "Theatre + GDT",
@@ -77,6 +85,11 @@ const STEPS: AnimatedMechanismStep[] = [
         sheath or TAP blocks).
       </>
     ),
+    sources: [
+      { label: "NCEPOD Knowing the Risk" },
+      { label: "BJA Educ 2017 EmLap" },
+      { label: "NELA Year 9 Report" },
+    ],
   },
   {
     label: "Postop critical care",
@@ -88,6 +101,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Outcome:</strong> NELA bundle compliance ↓ 30-day mortality from ~12% to ~9%.</>,
+    sources: [{ label: "NELA Year 9 Report" }, { label: "RCoA Emergency Laparotomy" }],
   },
 ];
 

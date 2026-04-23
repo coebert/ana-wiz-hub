@@ -20,6 +20,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Trap:</strong> A "stable" pre-induction BP can collapse the moment sympathetic drive is removed.</>,
+    sources: [{ label: "BJA Educ 2017 EmLap" }, { label: "NELA Year 9 Report" }],
   },
   {
     label: "Pre-O₂ + ramp",
@@ -31,6 +32,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Goal EtO₂ &gt; 0.85</strong> on the capnograph trace before induction.</>,
+    sources: [{ label: "DAS 2015 RSI" }],
   },
   {
     label: "Cricoid + induction",
@@ -42,6 +44,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Alternatives:</strong> etomidate 0.3 mg/kg (cardiostable but adrenal suppression in sepsis).</>,
+    sources: [{ label: "DAS 2015 RSI" }, { label: "BJA Educ 2017 EmLap" }],
   },
   {
     label: "Paralyse",
@@ -54,6 +57,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>Have sugammadex 16 mg/kg drawn up</strong> for any rocuronium RSI.</>,
+    sources: [{ label: "DAS 2015 RSI" }],
   },
   {
     label: "Intubate + confirm",
@@ -65,6 +69,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>No trace = wrong place.</strong> Bilateral breath sounds alone are insufficient.</>,
+    sources: [{ label: "DAS 2015 RSI" }],
   },
   {
     label: "Post-intubation",
@@ -77,6 +82,7 @@ const STEPS: AnimatedMechanismStep[] = [
       </>
     ),
     callout: <><strong>NELA standard:</strong> arterial line and (if high-risk) cardiac output monitor before knife-to-skin.</>,
+    sources: [{ label: "NELA Year 9 Report" }, { label: "BJA Educ 2017 EmLap" }],
   },
 ];
 
