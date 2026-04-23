@@ -293,9 +293,9 @@ export const SedationDecisionGate = () => {
       </header>
 
       <div className="space-y-4">
-        <Segment legend="ASA physical status" options={ASA_OPTIONS} value={asa} onChange={setAsa} />
-        <Segment legend="Predicted airway difficulty" options={AIRWAY_OPTIONS} value={airway} onChange={setAirway} />
-        <Segment legend="OSA / BMI risk" options={OSA_OPTIONS} value={osa} onChange={setOsa} />
+        <Segment<AsaKey> legend="ASA physical status" options={ASA_OPTIONS} value={asa} onChange={setAsa} />
+        <Segment<AirwayKey> legend="Predicted airway difficulty" options={AIRWAY_OPTIONS} value={airway} onChange={setAirway} />
+        <Segment<OsaKey> legend="OSA / BMI risk" options={OSA_OPTIONS} value={osa} onChange={setOsa} />
       </div>
 
       {/* Recommendation */}
