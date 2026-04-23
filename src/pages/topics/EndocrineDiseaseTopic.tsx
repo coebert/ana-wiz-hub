@@ -1,11 +1,14 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { ReferencesList } from "@/components/ReferencesList";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
-import { SeeAlso } from "@/components/SeeAlso";
 import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
+
+const objectives = [
+  "Apply JBDS-IP perioperative diabetes pathway, including VRIII indications and glucose targets.",
+  "Optimise hyper- and hypothyroid patients and recognise/treat thyroid storm.",
+  "Plan α- then β-blockade for phaeochromocytoma and intra-operative haemodynamic management.",
+  "Decide perioperative steroid supplementation for chronic glucocorticoid users; recognise Addisonian crisis.",
+  "Manage carcinoid syndrome with octreotide and avoid trigger drugs.",
+];
 
 const keyPoints = [
   "Diabetes mellitus: target perioperative blood glucose 6–10 mmol/L; avoid hypoglycaemia (more dangerous than moderate hyperglycaemia); use variable-rate insulin infusion (VRIII) for patients who will miss ≥1 meal",
@@ -17,19 +20,33 @@ const keyPoints = [
 
 const EndocrineDiseaseTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Endocrine Co-Existing Disease"
       subtitle="Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, and carcinoid syndrome"
       backPath="/perioperative"
       backLabel="Perioperative Medicine"
       accentColor="text-clinical"
-    >
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
+      topicId="endocrine-disease"
+      topicTitle="Endocrine Co-Existing Disease"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={endocrineDiseaseQuestions}
+      diagrams={<PerioperativeDiabetesDiagram />}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"] },
+        diagrams: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      sectionSources={{
+        objectives: ["BJA Educ 2015 DM", "JBDS-IP 2021", "Addison's Guidelines"],
+        diagrams: ["JBDS-IP 2021", "BJA Educ 2015 DM"],
+        keyPoints: ["BJA Educ 2015 DM", "JBDS-IP 2021", "BJA Educ 2014 Thyroid", "BJA Educ 2017 Phaeochromocytoma", "Addison's Guidelines"],
+      }}
+      coreConcepts={
+        <>
+          <p className="text-muted-foreground leading-relaxed">
           Endocrine disease alters perioperative physiology in ways that demand specific planning: glucose targets and insulin handling in diabetes, the catastrophic risk of unrecognised thyroid storm or phaeochromocytoma, and the need for steroid supplementation in patients with HPA-axis suppression. This topic covers the high-yield endocrine conditions encountered in adult anaesthetic practice and the principles that prevent decompensation.
         </p>
-        <KeyLearningPoints points={keyPoints} />
-        <PerioperativeDiabetesDiagram />
 
         {/* Diabetes Mellitus */}
         <section>
@@ -161,13 +178,9 @@ const EndocrineDiseaseTopic = () => {
             </div>
           </div>
         </section>
-
-        <QuizSection questions={endocrineDiseaseQuestions} />
-        <ReferencesList topicId="endocrine-disease" />
-        <SeeAlso topicId="endocrine-disease" />
-        <TopicCompletionToggle topicId="endocrine-disease" topicTitle="Endocrine Co-Existing Disease" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
