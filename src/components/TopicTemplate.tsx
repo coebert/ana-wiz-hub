@@ -14,6 +14,7 @@ import { LazyDiagrams } from "@/components/LazyDiagrams";
 import { ExamSummary } from "@/components/ExamSummary";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
+import { topicReferences } from "@/data/references";
 
 type SectionExamMap = { exams: ExamTag[]; curriculumCodes?: string[] };
 
@@ -116,6 +117,39 @@ export const TopicTemplate = ({
 }: TopicTemplateProps) => {
   const { activeExam } = useExamFilter();
 
+  // Auto-derive section sources from inline `cites` arrays so authors don't
+  // have to maintain a parallel `sectionSources` map. Explicit props always
+  // win; auto-derivation only fills the gap when a key is omitted. Order
+  // follows the master `topicReferences` list so the per-section panel
+  // numbers match the bottom References list.
+  const masterOrder = topicReferences[topicId] ?? [];
+  const sortByMaster = (labels: string[]) => {
+    const set = new Set(labels);
+    const ordered = masterOrder.filter((r) => set.has(r.label)).map((r) => r.label);
+    // Append any labels not present in the master list (will be ignored
+    // downstream by SectionReferences with a dev-only warning).
+    const extras = labels.filter((l) => !ordered.includes(l));
+    return [...ordered, ...extras];
+  };
+  const uniq = (arr: string[]) => Array.from(new Set(arr));
+  const autoKeyPointCites = sortByMaster(
+    uniq(keyPoints.flatMap((p) => (typeof p === "string" ? [] : p.cites ?? []))),
+  );
+  const autoWorkedExampleCites = sortByMaster(
+    uniq((workedExamples ?? []).flatMap((ex) => ex.cites ?? [])),
+  );
+
+  const resolvedSources = {
+    objectives: sectionSources?.objectives,
+    diagrams: sectionSources?.diagrams,
+    workedExamples:
+      sectionSources?.workedExamples ??
+      (autoWorkedExampleCites.length > 0 ? autoWorkedExampleCites : undefined),
+    keyPoints:
+      sectionSources?.keyPoints ??
+      (autoKeyPointCites.length > 0 ? autoKeyPointCites : undefined),
+  };
+
   const showObjectives = blockMatches(sectionExamMapping?.objectives, activeExam);
   const showDiagrams = blockMatches(sectionExamMapping?.diagrams, activeExam);
   const showWorkedExamples = blockMatches(sectionExamMapping?.workedExamples, activeExam);
@@ -141,10 +175,10 @@ export const TopicTemplate = ({
               />
             )}
             <LearningObjectives objectives={objectives} />
-            {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
+            {resolvedSources.objectives && resolvedSources.objectives.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.objectives}
+                refLabels={resolvedSources.objectives}
                 heading="Sources for these objectives"
                 dense
                 targetId="objectives"
@@ -170,10 +204,10 @@ export const TopicTemplate = ({
             <LazyDiagrams>
               <div className="space-y-6">{diagrams}</div>
             </LazyDiagrams>
-            {sectionSources?.diagrams && sectionSources.diagrams.length > 0 && (
+            {resolvedSources.diagrams && resolvedSources.diagrams.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.diagrams}
+                refLabels={resolvedSources.diagrams}
                 heading="Sources for these diagrams"
                 targetId="diagrams"
                 targetLabel="Jump to diagrams"
@@ -191,10 +225,10 @@ export const TopicTemplate = ({
               />
             )}
             <WorkedExamples examples={workedExamples} topicId={topicId} />
-            {sectionSources?.workedExamples && sectionSources.workedExamples.length > 0 && (
+            {resolvedSources.workedExamples && resolvedSources.workedExamples.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.workedExamples}
+                refLabels={resolvedSources.workedExamples}
                 heading="Sources for these examples"
                 dense
                 targetId="worked-examples"
@@ -213,10 +247,10 @@ export const TopicTemplate = ({
               />
             )}
             <KeyLearningPoints points={keyPoints} topicId={topicId} />
-            {sectionSources?.keyPoints && sectionSources.keyPoints.length > 0 && (
+            {resolvedSources.keyPoints && resolvedSources.keyPoints.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.keyPoints}
+                refLabels={resolvedSources.keyPoints}
                 heading="Sources for these key points"
                 dense
                 targetId="key-points"
