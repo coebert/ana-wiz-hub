@@ -5,6 +5,7 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import noHexAlphaConcat from "./eslint-rules/no-hex-alpha-concat.js";
 import diagramNeedsHeading from "./eslint-rules/diagram-needs-heading.js";
+import validExamTag from "./eslint-rules/valid-exam-tag.js";
 
 export default tseslint.config(
   { ignores: ["dist", "eslint-rules"] },
@@ -22,6 +23,7 @@ export default tseslint.config(
         rules: {
           "no-hex-alpha-concat": noHexAlphaConcat,
           "diagram-needs-heading": diagramNeedsHeading,
+          "valid-exam-tag": validExamTag,
         },
       },
     },
@@ -31,6 +33,7 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
       "lovable-local/no-hex-alpha-concat": "error",
       "lovable-local/diagram-needs-heading": "error",
+      "lovable-local/valid-exam-tag": "error",
     },
   },
 );
