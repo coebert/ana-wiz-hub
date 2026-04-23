@@ -163,10 +163,10 @@ export const TopicTemplate = ({
               />
             )}
             <LearningObjectives objectives={objectives} />
-            {sectionSources?.objectives && sectionSources.objectives.length > 0 && (
+            {resolvedSources.objectives && resolvedSources.objectives.length > 0 && (
               <SectionReferences
                 topicId={topicId}
-                refLabels={sectionSources.objectives}
+                refLabels={resolvedSources.objectives}
                 heading="Sources for these objectives"
                 dense
                 targetId="objectives"
