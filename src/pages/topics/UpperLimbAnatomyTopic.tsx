@@ -1,7 +1,4 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { upperLimbAnatomyQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
@@ -9,24 +6,40 @@ import UpperLimbArteriesDiagram from "@/components/diagrams/UpperLimbArteriesDia
 import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
 import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagram";
 import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
-import TopicTableOfContents from "@/components/TopicTableOfContents";
-
-const tocItems = [
-  { id: "brachial-plexus", label: "Brachial Plexus", group: "Neural" },
-  { id: "block-approaches", label: "Block Approaches", group: "Neural" },
-  { id: "terminal-nerves", label: "Terminal Nerves", group: "Neural" },
-  { id: "arterial-supply", label: "Arterial Supply", group: "Vascular" },
-  { id: "cubital-fossa", label: "Cubital Fossa", group: "Vascular" },
-  { id: "venous-drainage", label: "Venous Drainage", group: "Vascular" },
-];
 
 const UpperLimbAnatomyTopic = () => {
   return (
-    <SectionLayout title="Upper Limb Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <TopicTableOfContents items={tocItems} />
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Upper Limb Anatomy"
+      subtitle="FRCA — Applied Anatomy"
+      backPath="/anatomy"
+      backLabel="Anatomy"
+      accentColor="text-anatomy"
+      topicId="upper-limb-anatomy"
+      topicTitle="Upper Limb Anatomy"
+      quizQuestions={upperLimbAnatomyQuestions}
+      objectives={[
+        "Describe the anatomy of the brachial plexus from roots to terminal branches",
+        "Compare interscalene, supraclavicular, infraclavicular, and axillary block approaches",
+        "Identify the motor and sensory distributions of the median, ulnar, radial, and musculocutaneous nerves",
+        "Outline the arterial supply of the upper limb and the basis of Allen's test",
+        "Describe the cubital fossa and venous anatomy relevant to vascular access and PICC lines",
+      ]}
+      keyPoints={[
+        "Brachial plexus: C5–T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches",
+        "Interscalene block targets C5–7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy",
+        "Cubital fossa contents lateral to medial: TAN — Tendon, Artery, Nerve",
+        "Radial artery cannulation requires Allen's test — superficial palmar arch (ulnar) provides collateral",
+        "Basilic vein preferred for PICC lines — larger calibre, straighter course than cephalic",
+        "Musculocutaneous nerve leaves the brachial plexus sheath early — block separately at axillary level",
+        "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
+      }}
+      coreConcepts={
+        <section className="space-y-6 mb-10">
         {/* ── BRACHIAL PLEXUS ── */}
         <div id="brachial-plexus" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brachial Plexus</h2>
@@ -147,24 +160,9 @@ const UpperLimbAnatomyTopic = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      <KeyLearningPoints points={[
-        "Brachial plexus: C5–T1. 'Robert Taylor Drinks Cold Beer' — Roots, Trunks, Divisions, Cords, Branches",
-        "Interscalene block targets C5–7 (shoulder surgery) — 100% ipsilateral phrenic nerve palsy",
-        "Cubital fossa contents lateral to medial: TAN — Tendon, Artery, Nerve",
-        "Radial artery cannulation requires Allen's test — superficial palmar arch (ulnar) provides collateral",
-        "Basilic vein preferred for PICC lines — larger calibre, straighter course than cephalic",
-        "Musculocutaneous nerve leaves the brachial plexus sheath early — block separately at axillary level",
-        "Subclavian vein is ANTERIOR to scalenus anterior; artery is POSTERIOR",
-      ]} />
-
-      <QuizSection questions={upperLimbAnatomyQuestions} />
-      <ReferencesList topicId="upper-limb-anatomy" />
-
-      <SeeAlso topicId="upper-limb-anatomy" />
-      <TopicCompletionToggle topicId="upper-limb-anatomy" topicTitle="Upper Limb Anatomy" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 
