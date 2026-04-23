@@ -401,6 +401,14 @@ const ProceduralSedationTopic = () => {
             </ul>
           </ExamSection>
 
+          <ExamSection id="discharge" exams={[Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Discharge Criteria</h2>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Discharge after sedation is a clinical decision, not a clock-based one. Apply a structured score (modified Aldrete to leave first-stage recovery, PADSS to leave the day-unit), check observation timing, and screen for red-flag symptoms before allowing the patient home with their escort.
+            </p>
+            <SedationDischargeChecklist />
+          </ExamSection>
+
           <ExamSection id="complications" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Complications &amp; Rescue</h2>
             <SedationRescueLadder />
