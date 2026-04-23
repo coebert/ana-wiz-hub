@@ -90,6 +90,18 @@ const tciCurve = (t: number) => {
   return target + 0.012 * Math.sin(t * 28);
 };
 
+interface Callout {
+  /** Trigger time on the normalised x-axis (0..1) */
+  at: number;
+  /** Short label rendered on the plot */
+  label: string;
+  /** Optional offsets (in plot pixels) from the curve point */
+  dx?: number;
+  dy?: number;
+  /** How long the callout stays visible after `at` (0..1). Default 0.18 */
+  hold?: number;
+}
+
 interface PanelProps {
   title: string;
   subtitle: string;
@@ -103,6 +115,8 @@ interface PanelProps {
   targetId?: string;
   /** Accessible label for the scroll link, e.g. "Read more about boluses" */
   linkLabel?: string;
+  /** Timed text labels that fade in/out at specific moments */
+  callouts?: Callout[];
 }
 
 const scrollToId = (id: string) => {
