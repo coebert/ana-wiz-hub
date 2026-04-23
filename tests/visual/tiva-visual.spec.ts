@@ -181,3 +181,147 @@ test.describe("TIVA page — visual regression across viewports", () => {
     });
   }
 });
+
+test.describe("TIVA page — model selector interaction & animated cue updates", () => {
+  // Runs once at desktop only — the interaction logic is viewport-independent
+  // and re-running across all 3 viewports would triple the snapshot footprint
+  // without exercising new code paths.
+  test("switching PK model re-runs the fade-in cue and updates content", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1366, height: 768 });
+    await page.goto(TIVA_PATH, { waitUntil: "domcontentloaded" });
+    await waitForDiagrams(page);
+
+    // The "TCI Model Explorer" panel is the only block whose header is
+    // exactly that string — scope all interactions/screenshots to it so a
+    // change elsewhere on the page can't flake this test.
+    const explorer = page
+      .locator("div", {
+        has: page.getByRole("heading", { name: "TCI Model Explorer" }),
+      })
+      .first();
+    await expect(explorer).toBeVisible();
+
+    // The animated cue is the `.animate-fade-in` block keyed on the
+    // selected model — re-mounted on every selection.
+    const cue = explorer.locator(".animate-fade-in").first();
+
+    // Default state: Marsh selected → header reads "Marsh Model — Propofol".
+    await expect(cue).toContainText("Marsh Model");
+    await expect(cue).toContainText("Propofol");
+
+    // Settle for the baseline screenshot. Freeze CSS animations only AFTER
+    // we've captured the initial render so the click below can play the
+    // 0.3s fade-in we explicitly want to verify.
+    await freezeAnimations(page);
+    await expect(cue).toHaveScreenshot("tiva-model-cue-marsh.png", {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.02,
+    });
+
+    // Unfreeze: re-add a stylesheet that restores default durations so the
+    // model-switch fade-in animation actually runs.
+    await page.addStyleTag({
+      content: `*, *::before, *::after { animation-duration: revert !important; transition-duration: revert !important; }`,
+    });
+
+    // Click the Schnider button — this triggers React to remount the
+    // `.animate-fade-in` block (because its `key` changes), replaying the
+    // 0.3s fade-in keyframe.
+    await page.getByRole("button", { name: /^Schnider/ }).click();
+
+    // Wait for the cue to actually settle on the new content. Polling on
+    // text content is more reliable than waiting on `animationend` because
+    // the old node is unmounted before the listener can attach.
+    await expect(cue).toContainText("Schnider Model", { timeout: 5_000 });
+    await expect(cue).toContainText("Age, weight, height, sex, LBM");
+
+    // Wait for the fade-in animation to finish (keyframe is 0.3s) plus a
+    // small buffer for compositor commit.
+    await page.waitForTimeout(450);
+
+    // Re-freeze for a deterministic screenshot.
+    await freezeAnimations(page);
+
+    await expect(cue).toHaveScreenshot("tiva-model-cue-schnider.png", {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.02,
+    });
+
+    // Switch a third time (Eleveld) and verify another fade-in cycle runs
+    // — covers the case where React might fail to remount on repeat keys.
+    await page.addStyleTag({
+      content: `*, *::before, *::after { animation-duration: revert !important; transition-duration: revert !important; }`,
+    });
+    await page.getByRole("button", { name: /^Eleveld/ }).click();
+    await expect(cue).toContainText("Eleveld Model", { timeout: 5_000 });
+    await expect(cue).toContainText(/opioid interaction/i);
+    await page.waitForTimeout(450);
+    await freezeAnimations(page);
+    await expect(cue).toHaveScreenshot("tiva-model-cue-eleveld.png", {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+
+  test("toggling a CSHT drug hides its curve and updates the legend", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1366, height: 768 });
+    await page.goto(TIVA_PATH, { waitUntil: "domcontentloaded" });
+    await waitForDiagrams(page);
+    await freezeAnimations(page);
+
+    // Scope to the CSHT diagram block — its <h3> is "Context-Sensitive
+    // Half-Time (CSHT)".
+    const csht = page
+      .locator("div", {
+        has: page.getByRole("heading", {
+          name: /Context-Sensitive Half-Time/i,
+        }),
+      })
+      .first();
+    await expect(csht).toBeVisible();
+
+    // Baseline: all 5 drug curves rendered → at least 5 plotted <path>s.
+    const pathCount = await csht.locator("svg path").count();
+    expect(pathCount, "expected ≥5 CSHT drug curves").toBeGreaterThanOrEqual(5);
+    await expect(csht).toHaveScreenshot("tiva-csht-all-drugs.png", {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.02,
+    });
+
+    // Toggle Fentanyl off via the drug button (rendered as a <button> in
+    // CSHTDiagram with the drug name as its text).
+    const fentanylBtn = csht.getByRole("button", { name: /^Fentanyl/ });
+    await fentanylBtn.click();
+
+    // Wait for the SVG to re-render without the Fentanyl path. Easiest
+    // signal: the in-SVG <text> label "Fentanyl" disappears (it's only
+    // rendered for visible drugs).
+    await expect(csht.locator("svg text", { hasText: "Fentanyl" })).toHaveCount(
+      0,
+      { timeout: 5_000 },
+    );
+
+    // Path count should drop by exactly 1 (one curve removed).
+    const newPathCount = await csht.locator("svg path").count();
+    expect(
+      newPathCount,
+      "expected exactly one fewer plotted path after toggling Fentanyl off",
+    ).toBe(pathCount - 1);
+
+    // Other drug labels still present.
+    for (const drug of ["Propofol", "Remifentanil"]) {
+      await expect(
+        csht.locator("svg text", { hasText: drug }),
+      ).not.toHaveCount(0);
+    }
+
+    await expect(csht).toHaveScreenshot("tiva-csht-fentanyl-off.png", {
+      animations: "disabled",
+      maxDiffPixelRatio: 0.02,
+    });
+  });
+});
