@@ -116,6 +116,28 @@ export const TopicTemplate = ({
 }: TopicTemplateProps) => {
   const { activeExam } = useExamFilter();
 
+  // Auto-derive section sources from inline `cites` arrays so authors don't
+  // have to maintain a parallel `sectionSources` map. Explicit props always
+  // win; auto-derivation only fills the gap when a key is omitted.
+  const uniq = (arr: string[]) => Array.from(new Set(arr));
+  const autoKeyPointCites = uniq(
+    keyPoints.flatMap((p) => (typeof p === "string" ? [] : p.cites ?? [])),
+  );
+  const autoWorkedExampleCites = uniq(
+    (workedExamples ?? []).flatMap((ex) => ex.cites ?? []),
+  );
+
+  const resolvedSources = {
+    objectives: sectionSources?.objectives,
+    diagrams: sectionSources?.diagrams,
+    workedExamples:
+      sectionSources?.workedExamples ??
+      (autoWorkedExampleCites.length > 0 ? autoWorkedExampleCites : undefined),
+    keyPoints:
+      sectionSources?.keyPoints ??
+      (autoKeyPointCites.length > 0 ? autoKeyPointCites : undefined),
+  };
+
   const showObjectives = blockMatches(sectionExamMapping?.objectives, activeExam);
   const showDiagrams = blockMatches(sectionExamMapping?.diagrams, activeExam);
   const showWorkedExamples = blockMatches(sectionExamMapping?.workedExamples, activeExam);
