@@ -169,7 +169,7 @@ const PaediatricIcuTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection id="wetflag" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="wetflag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">WETFLAG &amp; Age-Specific Vital Signs</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               <strong>WETFLAG</strong> is the standard APLS pre-calculation performed when any unwell child arrives in resus — generating the seven weight-based numbers (<strong>W</strong>eight · <strong>E</strong>nergy · <strong>T</strong>ube · <strong>F</strong>luids · <strong>L</strong>orazepam · <strong>A</strong>drenaline · <strong>G</strong>lucose) needed to deliver immediate therapy without doing arithmetic under stress. Alongside it, the vitals table gives age-banded normal ranges for HR, RR, SBP and urine output so deviations can be recognised at a glance.
@@ -180,7 +180,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="physiology" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="physiology" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Age-Specific Physiology</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -203,7 +203,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="airway" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="airway" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway &amp; Ventilation in PICU</h2>
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -221,7 +221,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="sepsis" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="sepsis" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paediatric Sepsis &amp; Shock</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Children more commonly present with <strong>cold shock</strong> (vasoconstricted, poor perfusion) than warm vasodilated shock. Antibiotics within 1 h. Fluid in 10–20 ml/kg boluses (NOT 30 ml/kg) with reassessment after each — up to 40–60 ml/kg in first hour. Hepatomegaly = fluid overload. Vasoactive support if fluid-refractory after 40 ml/kg: peripheral adrenaline (cold) or noradrenaline (warm). Stress-dose hydrocortisone for catecholamine-resistant shock.
@@ -234,7 +234,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="cardiac" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="cardiac" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cardiac &amp; Congenital Heart Disease</h2>
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-border bg-secondary/30">
@@ -252,7 +252,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="neurocrit" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="neurocrit" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Paediatric Neurocritical Care</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -272,12 +272,12 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="sedation" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="sedation" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sedation, Analgesia &amp; Withdrawal</h2>
             <p className="text-muted-foreground text-sm mb-2">COMFORT-B (target 11–17), FLACC for pre-verbal pain. Morphine 10–40 mcg/kg/h, midazolam 1–4 mcg/kg/min, dexmedetomidine 0.2–1.4 mcg/kg/h. <strong>Avoid prolonged propofol infusions (&gt;48 h) — PRIS</strong>: metabolic acidosis, rhabdomyolysis, cardiac failure. Iatrogenic withdrawal after &gt;5 days opioid/benzo: WAT-1 scoring; wean by 10–20%/day with enteral conversion.</p>
           </ExamSection>
 
-          <ExamSection id="fluids" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="fluids" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fluids, Electrolytes &amp; Nutrition</h2>
             <p className="text-muted-foreground text-sm mb-2">
               <strong>Holliday-Segar:</strong> 4 ml/kg/h (first 10 kg) + 2 ml/kg/h (10–20 kg) + 1 ml/kg/h (each kg &gt;20). <strong>Use isotonic fluids only</strong> (0.9% NaCl + 5% dextrose) — hypotonic fluids cause fatal hyponatraemia (NICE NG29).
@@ -285,7 +285,7 @@ const PaediatricIcuTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="resus" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="resus" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Resuscitation Key Numbers</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -311,7 +311,7 @@ const PaediatricIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="ethics" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="ethics" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Safeguarding &amp; End-of-Life</h2>
             <p className="text-muted-foreground text-sm">
               All PICU staff need Level 3 safeguarding. Best-interests framework — parents central to decision-making but cannot demand futile treatment. Brainstem death testing requires &gt;2 months age (NOT applicable &lt;37 weeks corrected gestational age), 2 consultants, 2 sets of tests. Family-centred care: open visiting, parental presence, play specialists, bereavement support.

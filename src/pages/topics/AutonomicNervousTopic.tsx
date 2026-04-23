@@ -120,7 +120,7 @@ const AutonomicNervousTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={["primary", "final"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
             <p className="text-foreground/90 leading-relaxed">
               The autonomic nervous system (ANS) controls involuntary functions including heart rate, blood pressure,
@@ -129,7 +129,7 @@ const AutonomicNervousTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="sympathetic" exams={["primary", "final"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="sympathetic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Sympathetic Nervous System</h2>
             <p className="text-foreground/90 leading-relaxed">
               Thoracolumbar outflow (T1–L2). Short preganglionic neurones (ACh at nicotinic receptors in paravertebral
@@ -143,7 +143,7 @@ const AutonomicNervousTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="parasympathetic" exams={["primary", "final"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="parasympathetic" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parasympathetic Nervous System</h2>
             <p className="text-foreground/90 leading-relaxed">
               Craniosacral outflow (CN III, VII, IX, X + S2–S4). Long preganglionic neurones → short postganglionic
@@ -158,7 +158,7 @@ const AutonomicNervousTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="neurotransmitters" exams={["primary", "final"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="neurotransmitters" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Neurotransmitter Synthesis & Metabolism</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Noradrenaline synthesis</strong>: Tyrosine → DOPA (tyrosine hydroxylase, rate-limiting) → Dopamine
@@ -172,7 +172,7 @@ const AutonomicNervousTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="reflexes" exams={["primary", "final", "fficm"]} curriculumCodes={["OA_BK_06"]}>
+          <ExamSection id="reflexes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Autonomic Reflexes</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Baroreceptor reflex</strong>: carotid sinus (CN IX) and aortic arch (CN X) → NTS in medulla →

@@ -63,7 +63,7 @@ const OphthalmicAnaesthesiaTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["final"]}>
+          <ExamSection id="introduction" exams={[Exam.FINAL]}>
             <p className="text-muted-foreground leading-relaxed">
               Ophthalmic anaesthesia is dominated by two priorities: controlling intra-ocular pressure during open-eye surgery, and
               providing reliable akinesia and analgesia — increasingly through regional rather than general techniques. The
@@ -72,7 +72,7 @@ const OphthalmicAnaesthesiaTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="iop" exams={["final"]}>
+          <ExamSection id="iop" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Ocular Physiology</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>IOP</strong>: normal 10–21 mmHg. Aqueous humour produced by ciliary body, drains via canal of Schlemm. IOP ↑ by: coughing, straining, prone, N₂O (if SF₆ in eye), suxamethonium, ketamine</li>
@@ -81,7 +81,7 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="regional" exams={["final"]}>
+          <ExamSection id="regional" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Regional Techniques</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -103,7 +103,7 @@ const OphthalmicAnaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="open-globe" exams={["final"]}>
+          <ExamSection id="open-globe" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Open Globe Injury</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>Avoid ↑ IOP: suxamethonium is <strong>relatively</strong> contraindicated (but may be used if RSI required for life-threatening aspiration risk — benefit vs risk)</li>
@@ -113,7 +113,7 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="brainstem-anaesthesia" exams={["final"]}>
+          <ExamSection id="brainstem-anaesthesia" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Brainstem Anaesthesia</h2>
             <p className="text-muted-foreground leading-relaxed">
               A rare but life-threatening complication of retrobulbar (and occasionally peribulbar) block: local anaesthetic tracks

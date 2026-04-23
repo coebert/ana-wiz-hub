@@ -66,7 +66,7 @@ const MRIPhysicsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               MRI is increasingly used for diagnostic and interventional procedures requiring anaesthesia, particularly in
@@ -76,12 +76,12 @@ const MRIPhysicsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <MRIPhysicsDiagram />
           </ExamSection>
 
-          <ExamSection id="nuclear-spin" exams={["primary", "final"]}>
+          <ExamSection id="nuclear-spin" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Nuclear Spin & Precession</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -100,7 +100,7 @@ const MRIPhysicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="relaxation" exams={["primary", "final"]}>
+          <ExamSection id="relaxation" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">T1 & T2 Relaxation</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -122,7 +122,7 @@ const MRIPhysicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="safety" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="safety" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">MRI Safety for Anaesthetists</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

@@ -115,7 +115,7 @@ const EndocrinePhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="hp-axis" exams={["primary", "final"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="hp-axis" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hypothalamic-Pituitary Axis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The hypothalamus controls the anterior pituitary via releasing/inhibiting hormones through the
@@ -157,7 +157,7 @@ const EndocrinePhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hpa-axis" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="hpa-axis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">HPA Axis</h2>
             <p className="text-muted-foreground leading-relaxed">
               The hypothalamic-pituitary-adrenal axis governs cortisol secretion through a three-tier cascade with both
@@ -166,7 +166,7 @@ const EndocrinePhysiologyTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="adrenal" exams={["primary", "final"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="adrenal" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal Glands</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -198,7 +198,7 @@ const EndocrinePhysiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="thyroid-calcium" exams={["primary", "final"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="thyroid-calcium" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid & Calcium Homeostasis</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
@@ -220,7 +220,7 @@ const EndocrinePhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="insulin-glucose" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="insulin-glucose" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Insulin & Glucose</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>
@@ -242,7 +242,7 @@ const EndocrinePhysiologyTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="stress-response" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_07"]}>
+          <ExamSection id="stress-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Surgical Stress Response</h2>
             <p className="text-muted-foreground leading-relaxed">
               Surgical injury activates the HPA axis and sympathetic nervous system. Key features: ↑ cortisol,

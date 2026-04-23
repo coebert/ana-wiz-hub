@@ -63,7 +63,7 @@ const PlasticSurgeryTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="principles" exams={["final"]}>
+          <ExamSection id="principles" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Free Flap Surgery — Anaesthetic Principles</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Free tissue transfer involves harvesting a composite tissue flap (skin, muscle, bone) with its vascular pedicle and anastomosing it to recipient vessels at the defect site. Flap survival depends on <strong className="text-foreground">microvascular patency</strong>, influenced by haemodynamics, temperature, coagulation, and vasoactive drugs.
@@ -80,7 +80,7 @@ const PlasticSurgeryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="prolonged-surgery" exams={["final"]}>
+          <ExamSection id="prolonged-surgery" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Management of Prolonged Surgery</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Microsurgery and reconstructive cases routinely last 6–12+ hours. Careful planning mitigates complications of prolonged anaesthesia.
@@ -98,7 +98,7 @@ const PlasticSurgeryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="specific-procedures" exams={["final"]}>
+          <ExamSection id="specific-procedures" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Specific Reconstructive Procedures</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Head & Neck Free Flaps</h3>
@@ -128,7 +128,7 @@ const PlasticSurgeryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="anticoagulation" exams={["final"]}>
+          <ExamSection id="anticoagulation" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Anticoagulation & Flap Monitoring</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Postoperative anticoagulation protocols vary by institution but commonly include:

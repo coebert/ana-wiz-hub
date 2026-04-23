@@ -46,7 +46,7 @@ const PharmacokineticsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Pharmacokinetics describes what the body does to a drug — its absorption, distribution, metabolism, and
@@ -55,7 +55,7 @@ const PharmacokineticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Compartment Models</h2>
             <p className="text-foreground/90 leading-relaxed">
               Compartment models are mathematical abstractions that describe drug distribution. The body is divided into
@@ -66,7 +66,7 @@ const PharmacokineticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Volume of Distribution (Vd)</h2>
             <p className="text-foreground/90 leading-relaxed">
               Vd is a theoretical volume that would be required to contain the total amount of drug at the same concentration
@@ -82,7 +82,7 @@ const PharmacokineticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clearance</h2>
             <p className="text-foreground/90 leading-relaxed">
               Clearance (Cl) is the volume of plasma from which drug is completely removed per unit time (mL/min or L/h).
@@ -96,7 +96,7 @@ const PharmacokineticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Half-Life and Steady State</h2>
             <p className="text-foreground/90 leading-relaxed">
               The elimination half-life (t½) is the time for plasma concentration to fall by 50%:
@@ -106,7 +106,7 @@ const PharmacokineticsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PH_BK_01"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PH_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-Sensitive Half-Time</h2>
             <p className="text-foreground/90 leading-relaxed">
               Unlike terminal half-life, the context-sensitive half-time (CSHT) describes the time for plasma concentration

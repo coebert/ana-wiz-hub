@@ -122,7 +122,7 @@ const AtomicStructureBondingTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="why" exams={["primary"]}>
+          <ExamSection id="why" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Why Chemistry Matters for Anaesthetists</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -138,12 +138,12 @@ const AtomicStructureBondingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
             <AtomicStructureDiagram />
           </ExamSection>
 
-          <ExamSection id="periodic" exams={["primary"]}>
+          <ExamSection id="periodic" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Periodic Table of Anaesthetic Elements</h2>
             <p className="text-sm text-muted-foreground mb-4">
               The ten elements below are the most clinically important for anaesthetists. Tap each to explore its role in physiology, pharmacology, and clinical practice.
@@ -151,7 +151,7 @@ const AtomicStructureBondingTopic = () => {
             <PeriodicTableAnaestheticDiagram />
           </ExamSection>
 
-          <ExamSection id="electrons" exams={["primary"]}>
+          <ExamSection id="electrons" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Electron Configuration</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -167,7 +167,7 @@ const AtomicStructureBondingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="forces" exams={["primary"]} curriculumCodes={["RCoA Primary — Physics & Clinical Measurement"]}>
+          <ExamSection id="forces" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Physics & Clinical Measurement"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Intermolecular Forces & Clinical Relevance</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>

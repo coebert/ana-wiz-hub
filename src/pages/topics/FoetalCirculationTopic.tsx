@@ -115,7 +115,7 @@ const FoetalCirculationTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="overview" exams={["primary", "final"]} curriculumCodes={["PA_BK_01"]}>
+          <ExamSection id="overview" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Overview</h2>
             <p className="text-muted-foreground leading-relaxed">
               The foetal circulation is uniquely designed to bypass the non-functioning lungs, directing oxygenated
@@ -124,7 +124,7 @@ const FoetalCirculationTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="shunts" exams={["primary", "final"]} curriculumCodes={["PA_BK_01"]}>
+          <ExamSection id="shunts" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Three Foetal Shunts</h2>
             <div className="space-y-3">
               {[
@@ -149,7 +149,7 @@ const FoetalCirculationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="flow-pathway" exams={["primary", "final"]} curriculumCodes={["PA_BK_01"]}>
+          <ExamSection id="flow-pathway" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Blood Flow Pathway</h2>
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <ol className="space-y-2 text-sm text-muted-foreground list-decimal list-inside leading-relaxed">
@@ -164,7 +164,7 @@ const FoetalCirculationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="oxygen-delivery" exams={["primary", "final"]} curriculumCodes={["PA_BK_01"]}>
+          <ExamSection id="oxygen-delivery" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PA_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Foetal Oxygen Delivery</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[
@@ -183,7 +183,7 @@ const FoetalCirculationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="transitional" exams={["primary", "final", "fficm"]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="transitional" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transitional Circulation at Birth</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>First breath</strong>: alveolar expansion → dramatic ↓ PVR (8–10×) → ↑ pulmonary blood flow.</li>
@@ -195,7 +195,7 @@ const FoetalCirculationTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="pphn" exams={["final", "fficm"]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="pphn" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Persistent Pulmonary Hypertension of the Newborn (PPHN)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Failure of the normal transitional changes leads to persistent pulmonary hypertension of the newborn:
@@ -208,7 +208,7 @@ const FoetalCirculationTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="pharmacology" exams={["final", "fficm"]} curriculumCodes={["PA_BK_02"]}>
+          <ExamSection id="pharmacology" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["PA_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pharmacological Manipulation of the Ductus</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               {[

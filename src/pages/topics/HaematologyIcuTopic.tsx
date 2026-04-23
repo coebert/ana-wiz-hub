@@ -176,7 +176,7 @@ const HaematologyIcuTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection id="ttp" exams={["final", "fficm", "edic"]} curriculumCodes={["CC1.4"]} className="scroll-mt-24">
+          <ExamSection id="ttp" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["CC1.4"]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thrombotic Thrombocytopenic Purpura (TTP)</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               TTP is a thrombotic microangiopathy (TMA) caused by severe deficiency of ADAMTS13 — a metalloproteinase that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, uncleaved vWF multimers cause platelet aggregation in the microvasculature, leading to thrombocytopenia, microangiopathic haemolytic anaemia (MAHA), and organ ischaemia.
@@ -216,7 +216,7 @@ const HaematologyIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="tma" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="tma" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Differentiating TMAs (TTP / HUS / DIC)</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -238,7 +238,7 @@ const HaematologyIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hus" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="hus" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemolytic Uraemic Syndrome (HUS)</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               MAHA + thrombocytopenia + AKI. Two forms: <strong>Typical (STEC-HUS)</strong> from Shiga toxin–producing E. coli (O157:H7) — antibiotics contraindicated, supportive care; mortality &lt;5%. <strong>Atypical (aHUS)</strong> from complement dysregulation — requires <strong>eculizumab</strong> (anti-C5) which reduces ESRD from ~50% to &lt;10%. Vaccinate against N. meningitidis before starting (or give prophylactic antibiotics).
@@ -251,7 +251,7 @@ const HaematologyIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hlh" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="hlh" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemophagocytic Lymphohistiocytosis (HLH)</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Pathological immune activation with cytokine storm and multi-organ failure. Mortality 50–90% untreated. Triggers: infection (EBV most common), malignancy, autoimmune (MAS in adult-onset Still's, SLE).
@@ -282,7 +282,7 @@ const HaematologyIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hit" exams={["primary", "final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="hit" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heparin-Induced Thrombocytopenia (HIT)</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Type II HIT is a paradoxical <strong>prothrombotic</strong> immune-mediated reaction: IgG vs PF4–heparin → Fc receptor platelet activation → thrombin generation. Onset day 5–10 (or ≤1 day if heparin in last 100 days). Risk: UFH (1–5%) &gt; LMWH (~0.1%).
@@ -321,7 +321,7 @@ const HaematologyIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="anticoag" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="anticoag" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anticoagulation in CRRT, ECMO &amp; Liver Failure</h2>
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Regional citrate (CRRT first-line, KDIGO)</h3>
             <p className="text-muted-foreground text-sm mb-3">

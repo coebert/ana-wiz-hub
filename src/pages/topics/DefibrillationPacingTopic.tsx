@@ -66,7 +66,7 @@ const DefibrillationPacingTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Defibrillation delivers a controlled electrical shock to depolarise a critical mass of myocardium simultaneously,
@@ -77,12 +77,12 @@ const DefibrillationPacingTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <DefibrillationPacingDiagram />
           </ExamSection>
 
-          <ExamSection id="waveforms" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="waveforms" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Defibrillation Waveforms</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -104,7 +104,7 @@ const DefibrillationPacingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="tti" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="tti" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Transthoracic Impedance</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -126,7 +126,7 @@ const DefibrillationPacingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pacing-modes" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="pacing-modes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Pacemaker Modes</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -148,7 +148,7 @@ const DefibrillationPacingTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="emi" exams={["final", "fficm"]} curriculumCodes={["FFICM 2.5"]}>
+          <ExamSection id="emi" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.5"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Electromagnetic Interference</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

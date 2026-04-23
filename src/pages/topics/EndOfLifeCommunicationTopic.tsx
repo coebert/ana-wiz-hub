@@ -76,7 +76,7 @@ const EndOfLifeCommunicationTopic = () => {
         <>
           <ExamSection
             id="context"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5"]}
             className="scroll-mt-24"
           >
@@ -87,7 +87,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="framework"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5", "EDIC 12"]}
             className="scroll-mt-24"
           >
@@ -117,7 +117,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="communication"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5", "EDIC 12"]}
             className="scroll-mt-24"
           >
@@ -148,7 +148,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="withdrawal"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5"]}
             className="scroll-mt-24"
           >
@@ -181,7 +181,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="conflict"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5", "EDIC 12"]}
             className="scroll-mt-24"
           >
@@ -201,7 +201,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="symptoms"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5"]}
             className="scroll-mt-24"
           >
@@ -228,7 +228,7 @@ const EndOfLifeCommunicationTopic = () => {
 
           <ExamSection
             id="after-death"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 5.5"]}
             className="scroll-mt-24"
           >

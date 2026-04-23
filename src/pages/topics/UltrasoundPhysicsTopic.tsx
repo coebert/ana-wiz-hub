@@ -66,7 +66,7 @@ const UltrasoundPhysicsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Ultrasound has become indispensable in anaesthesia and critical care — from vascular access and nerve blocks to
@@ -76,12 +76,12 @@ const UltrasoundPhysicsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <UltrasoundPhysicsDiagram />
           </ExamSection>
 
-          <ExamSection id="piezoelectric" exams={["primary", "final"]}>
+          <ExamSection id="piezoelectric" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Piezoelectric Effect & Transducer Design</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -99,7 +99,7 @@ const UltrasoundPhysicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="resolution" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="resolution" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Frequency, Resolution & Penetration</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -121,7 +121,7 @@ const UltrasoundPhysicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="doppler" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="doppler" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Doppler Ultrasound</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -144,7 +144,7 @@ const UltrasoundPhysicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="artefacts" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="artefacts" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Ultrasound Artefacts</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

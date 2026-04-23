@@ -139,14 +139,14 @@ const GynaecologicalAnaesthesiaTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["final"]}>
+          <ExamSection id="introduction" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Gynaecological surgery encompasses a wide range from minor day-case procedures (hysteroscopy, laparoscopic sterilisation) to major oncological operations (radical hysterectomy, pelvic exenteration). Key considerations include laparoscopic pneumoperitoneum effects, positioning (Trendelenburg/lithotomy), venous thromboembolism risk, and the increasing role of robotic surgery.
             </p>
           </ExamSection>
 
-          <ExamSection id="laparoscopic" exams={["final"]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
+          <ExamSection id="laparoscopic" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia (specialty)"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Laparoscopic Gynaecological Surgery</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Most gynaecological procedures are now laparoscopic or robotic. The combination of pneumoperitoneum and steep Trendelenburg creates unique physiological challenges.
@@ -168,7 +168,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="robotic" exams={["final"]}>
+          <ExamSection id="robotic" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Robotic Gynaecological Surgery</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Robotic-assisted procedures require prolonged steep Trendelenburg (up to 30°) and pneumoperitoneum, often for 3–6 hours.
@@ -182,7 +182,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="hysteroscopy" exams={["final"]}>
+          <ExamSection id="hysteroscopy" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Hysteroscopy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Diagnostic hysteroscopy is often performed under local anaesthesia or sedation. Operative hysteroscopy (resection of fibroids, endometrial ablation) requires GA or spinal.
@@ -195,7 +195,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="oncology" exams={["final"]}>
+          <ExamSection id="oncology" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Major Gynaecological Oncology</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Radical hysterectomy, pelvic exenteration, and debulking surgery for ovarian cancer are major procedures with significant morbidity.
@@ -210,7 +210,7 @@ const GynaecologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="ectopic" exams={["final"]}>
+          <ExamSection id="ectopic" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Ectopic Pregnancy — Anaesthetic Considerations</h2>
             <p className="text-muted-foreground leading-relaxed">
               Unruptured ectopic may be managed laparoscopically as an elective/urgent case. Ruptured ectopic is covered in the Emergency Surgery topic. For unruptured cases: standard laparoscopic anaesthesia, awareness of haemorrhage risk, crossmatch available, and anti-D immunoglobulin for Rh-negative patients.

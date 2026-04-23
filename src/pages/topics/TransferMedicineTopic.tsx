@@ -125,7 +125,7 @@ const TransferMedicineTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="principles" exams={["final", "fficm"]}>
+          <ExamSection id="principles" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Transfer</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ICS/AAGBI guidelines: the standard of care during transfer should be at least as good as at the referring hospital.
@@ -138,7 +138,7 @@ const TransferMedicineTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="abcde" exams={["final", "fficm"]}>
+          <ExamSection id="abcde" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Preparation — ABCDE Stabilisation</h2>
             <div className="space-y-3">
               {[
@@ -156,7 +156,7 @@ const TransferMedicineTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="equipment" exams={["final", "fficm"]}>
+          <ExamSection id="equipment" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Equipment & Documentation</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Monitoring</strong>: ECG, SpO₂, ETCO₂, invasive BP, temperature — minimum standard. Battery backup essential</li>
@@ -166,7 +166,7 @@ const TransferMedicineTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="physics" exams={["final", "fficm"]} curriculumCodes={["FFICM 2.6"]}>
+          <ExamSection id="physics" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Physics of Transport</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Acceleration/deceleration</strong>: affects BP measurement (transducer position relative to heart changes), ↑ ICP risk, equipment movement</li>

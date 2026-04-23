@@ -63,7 +63,7 @@ const AcidBaseTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="systematic-abg" exams={["primary", "final", "fficm", "edic"]} curriculumCodes={["FFICM 4.4"]}>
+          <ExamSection id="systematic-abg" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Systematic ABG Interpretation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               A structured approach to arterial blood gas analysis prevents the common pitfall of anchoring on a single derangement and missing mixed disorders. Work through oxygenation, primary acid-base disturbance, expected compensation, anion gap, and the delta ratio in that order — each step adds diagnostic information that the previous one cannot provide.
@@ -80,7 +80,7 @@ const AcidBaseTopic = () => {
             </ol>
           </ExamSection>
 
-          <ExamSection id="hagma" exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection id="hagma" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High Anion Gap Metabolic Acidosis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Mnemonic: <strong>MUDPILES</strong></p>
             <div className="grid sm:grid-cols-2 gap-2">
@@ -102,7 +102,7 @@ const AcidBaseTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="stewart" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
+          <ExamSection id="stewart" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.4", "EDIC 5.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Stewart Approach</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The physicochemical (Stewart) approach identifies 3 independent variables that determine pH. Unlike the Henderson-Hasselbalch approach, HCO₃⁻ is a <strong>dependent</strong> variable — it changes as a consequence of the independent variables, not as a cause.
@@ -151,7 +151,7 @@ const AcidBaseTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="comparing-frameworks" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="comparing-frameworks" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Comparing Frameworks</h2>
             <div className="grid sm:grid-cols-3 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -169,7 +169,7 @@ const AcidBaseTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="lactic" exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection id="lactic" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lactic Acidosis</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-3 rounded-lg border border-border">

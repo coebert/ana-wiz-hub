@@ -164,7 +164,7 @@ const OpioidsTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Opioids are the cornerstone of perioperative analgesia. Understanding receptor subtypes, the clinical pharmacology
@@ -172,7 +172,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Opioid receptors and signalling</h2>
             <p className="text-foreground/90 leading-relaxed">
               Three classical receptors, all G-protein coupled (Gi/Go): <strong>µ (mu/MOP)</strong> — analgesia (supraspinal and
@@ -186,7 +186,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Morphine</h2>
             <p className="text-foreground/90 leading-relaxed">
               Natural phenanthrene opioid. Dose: 0.1–0.2 mg/kg IV. Oral bioavailability ~30 % (extensive first-pass). Onset 15–20 min IV
@@ -196,7 +196,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Fentanyl</h2>
             <p className="text-foreground/90 leading-relaxed">
               Synthetic phenylpiperidine. 100× potency of morphine. Dose 1–2 µg/kg IV. High lipid solubility → rapid onset
@@ -206,7 +206,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Remifentanil</h2>
             <p className="text-foreground/90 leading-relaxed">
               Ultra-short-acting synthetic opioid. Unique <strong>ester linkage</strong> → metabolised by non-specific tissue
@@ -216,7 +216,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other µ-agonists</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Alfentanil</strong>: low pKa 6.5 → 90 % un-ionised at pH 7.4 → faster onset than fentanyl despite lower
@@ -227,7 +227,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Context-sensitive half-time</h2>
             <p className="text-foreground/90 leading-relaxed">
               The CSHT is the time for plasma concentration to fall by 50 % after stopping an infusion of a given duration.
@@ -236,7 +236,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Partial agonists & mixed agonist–antagonists</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Buprenorphine</strong> — partial µ agonist + κ antagonist. High µ affinity (slow dissociation, hard to
@@ -247,7 +247,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tolerance vs opioid-induced hyperalgesia</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Tolerance</strong> — rightward shift of dose–response curve; pain in original distribution responds to
@@ -259,7 +259,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naloxone</h2>
             <p className="text-foreground/90 leading-relaxed">
               Competitive µ, κ, δ antagonist. IV dose 1–4 µg/kg titrated. Onset 1–2 min. Duration 30–60 min — shorter than most
@@ -268,7 +268,7 @@ const OpioidsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["PR_BK_05"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["PR_BK_05"]}>
             <SynthesisBlock
               title="Comparative pharmacology of µ-opioids"
               subtitle="Side-by-side reference for the major perioperative µ-agonists."

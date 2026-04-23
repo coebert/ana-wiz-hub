@@ -126,7 +126,7 @@ const StarlingForcesTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Transcapillary fluid exchange is governed by the balance of hydrostatic and oncotic pressures
@@ -136,7 +136,7 @@ const StarlingForcesTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="equation" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="equation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Starling Equation</h2>
             <div className="p-4 rounded-lg border border-border bg-secondary/20">
               <p className="font-mono text-sm text-foreground text-center mb-3">
@@ -154,7 +154,7 @@ const StarlingForcesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="classic-vs-revised" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="classic-vs-revised" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Classic vs Revised Model</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -191,7 +191,7 @@ const StarlingForcesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="glycocalyx" exams={["final", "fficm"]} curriculumCodes={["OA_BK_06"]}>
+          <ExamSection id="glycocalyx" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Endothelial Glycocalyx</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li>A 0.5–3 µm thick gel-like layer on the luminal surface of endothelial cells</li>
@@ -204,7 +204,7 @@ const StarlingForcesTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="fluid-therapy" exams={["final", "fficm"]} curriculumCodes={["OA_BK_06"]}>
+          <ExamSection id="fluid-therapy" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_06"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Clinical Implications for Fluid Therapy</h2>
             <div className="space-y-3">
               {[
@@ -221,7 +221,7 @@ const StarlingForcesTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="oedema" exams={["primary", "final"]} curriculumCodes={["CR_BK_05"]}>
+          <ExamSection id="oedema" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Oedema Formation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Oedema occurs when the rate of capillary filtration exceeds lymphatic drainage capacity. Safety factors against oedema include:

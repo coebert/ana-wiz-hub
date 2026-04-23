@@ -64,7 +64,7 @@ const DaySurgeryTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="selection" exams={["final"]}>
+          <ExamSection id="selection" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Patient Selection</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The British Association of Day Surgery (BADS) recommends that ~80% of elective surgery be delivered as day case.
@@ -79,7 +79,7 @@ const DaySurgeryTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="anaesthetic-technique" exams={["final"]}>
+          <ExamSection id="anaesthetic-technique" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Anaesthetic Principles</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Short-acting agents</strong>: propofol, remifentanil, desflurane/sevoflurane, mivacurium/sugammadex</li>
@@ -89,7 +89,7 @@ const DaySurgeryTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="discharge" exams={["final"]}>
+          <ExamSection id="discharge" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Discharge Criteria</h2>
             <div className="space-y-3">
               {[

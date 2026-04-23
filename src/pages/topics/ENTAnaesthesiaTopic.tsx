@@ -42,7 +42,7 @@ const ENTAnaesthesiaTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["final"]} curriculumCodes={["EN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shared Airway</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ENT and maxillofacial anaesthesia is defined by sharing the airway with the surgeon. Success depends on clear communication, deliberate tube and ventilation choices, and a pre-agreed plan for managing intra-operative airway loss — particularly during laryngeal, tonsillar, and post-tracheostomy procedures.
@@ -55,7 +55,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["EN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tonsillectomy</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Population</strong>: predominantly children. Commonly associated with OSA — assess severity (sleep study, history of desaturations)</li>
@@ -66,7 +66,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["EN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Microlaryngoscopy & Laser Surgery</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Microlaryngoscopy tube (MLT)</strong>: small ID (5.0–6.0 mm) to maximise surgical view. Increased airway resistance — monitor closely</li>
@@ -76,7 +76,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]}>
+          <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nasal Surgery</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Septoplasty/rhinoplasty/FESS</strong>: oral RAE or reinforced tube. Topical vasoconstrictors (xylometazoline, cocaine 5–10%) + infiltration with adrenaline</li>
@@ -86,7 +86,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]}>
+          <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Middle Ear Surgery</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>N₂O</strong>: avoid — diffuses into non-compliant middle ear cavity 34× faster than N₂ leaves. ↑ middle ear pressure → tympanic membrane graft displacement, disruption of ossicular reconstruction</li>
@@ -96,7 +96,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["EN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Obstruction & Stridor</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Causes</strong>: epiglottitis, croup, foreign body, tumour (laryngeal/pharyngeal), Ludwig's angina, post-operative haematoma (thyroid/neck surgery), anaphylaxis, burns</li>
@@ -106,7 +106,7 @@ const ENTAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection exams={["final"]} curriculumCodes={["EN_BK_03"]}>
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy & Laryngectomy</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Surgical vs percutaneous</strong>: percutaneous dilatational (PDT) at bedside in ICU is most common. Surgical preferred if abnormal anatomy, paediatric, or emergency</li>

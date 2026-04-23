@@ -126,7 +126,7 @@ const CorticosteroidsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="pd" exams={["primary"]}>
+          <ExamSection id="pd" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Corticosteroid Pharmacodynamics</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Corticosteroids bind the cytoplasmic glucocorticoid receptor (GR) → nuclear translocation → gene transcription modulation. Therapeutic anti-inflammatory effects are largely <strong>transrepression</strong> (↓ NF-κB, ↓ cytokines, ↓ COX-2, ↓ phospholipase A₂ via lipocortin-1); many side effects come from <strong>transactivation</strong> (gluconeogenesis, Na⁺ retention). A small subset of effects is <strong>non-genomic</strong> and acts within minutes.
@@ -137,7 +137,7 @@ const CorticosteroidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="potency" exams={["primary", "final"]}>
+          <ExamSection id="potency" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Steroid potency &amp; duration</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -158,7 +158,7 @@ const CorticosteroidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="cover" exams={["final"]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+          <ExamSection id="cover" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Perioperative Steroid Cover (AAGBI/AOMRC 2020)</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>HPA suppression</strong>: likely if prednisolone ≥ 5 mg/day for &gt; 4 weeks (or equivalent), Cushing's appearance, or recent cessation of long-term steroids</li>
@@ -169,7 +169,7 @@ const CorticosteroidsTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="insulin" exams={["primary", "final"]}>
+          <ExamSection id="insulin" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Insulin Preparations</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -190,7 +190,7 @@ const CorticosteroidsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="thyroid" exams={["primary", "final"]}>
+          <ExamSection id="thyroid" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Thyroid Pharmacology</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Carbimazole</strong>: prodrug of methimazole. Inhibits thyroid peroxidase (iodination/coupling). Takes 4–6 weeks for full effect. Risk: agranulocytosis</li>

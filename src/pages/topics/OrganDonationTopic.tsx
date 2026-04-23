@@ -107,7 +107,7 @@ const OrganDonationTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection id="types" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="types" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Types of Organ Donation</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
@@ -121,7 +121,7 @@ const OrganDonationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="legal" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="legal" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Legal &amp; Ethical Framework (UK)</h2>
             <div className="space-y-2">
               {[
@@ -138,7 +138,7 @@ const OrganDonationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bsd-testing" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="bsd-testing" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brainstem Death Testing</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               UK definition (AoMRC 2008): irreversible loss of capacity for consciousness combined with irreversible loss of capacity to breathe. Two sets of tests by two senior doctors (one a consultant), both registered &gt;5 years, neither part of the transplant team.
@@ -168,12 +168,12 @@ const OrganDonationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bsd-redflags" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="bsd-redflags" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Red Flags &amp; Ancillary Tests</h2>
             <p className="text-muted-foreground text-sm mb-3">Confounders that may render testing unreliable: residual sedation (esp. thiopentone, opioids in renal/hepatic failure), residual paralysis, hypothermia (&lt;34°C), severe metabolic derangement, high cervical injury, GBS / locked-in, cranial nerve injury, pre-existing pupil abnormalities, isolated posterior fossa pathology, neonates &lt;2 months. Use ancillary tests when clinical assessment cannot be completed: <strong>CT angiography</strong> (4-point scoring; increasingly used in UK), <strong>4-vessel angiography</strong> (gold standard internationally), EEG (limited), TCD (operator-dependent).</p>
           </ExamSection>
 
-          <ExamSection id="donor-mgmt" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="donor-mgmt" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Management of the Donor</h2>
             <div className="space-y-2">
               {[
@@ -191,7 +191,7 @@ const OrganDonationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="dcd" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="dcd" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">DCD — Pathway &amp; Maastricht Classification</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               DCD ~60% of UK deceased donations. Functional WIT begins when SBP &lt;50 mmHg. Mandatory 5-min hands-off period after asystole; legal time of death = end of 5 min.
@@ -224,7 +224,7 @@ const OrganDonationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="nrp" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="nrp" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Normothermic Regional Perfusion (NRP)</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               NRP restores warm oxygenated blood flow to donor organs <em>in situ</em> after DCD death is confirmed. <strong>Abdominal NRP (aNRP)</strong>: femoral cannulation, arch vessels clamped/balloon-occluded to prevent cerebral reperfusion. <strong>TA-NRP</strong>: also perfuses thoracic organs — enables DCD heart transplantation. Critical step is <strong>arch vessel exclusion before initiating NRP</strong>.

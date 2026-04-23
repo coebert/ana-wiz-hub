@@ -83,7 +83,7 @@ const ArrhythmiasEcgIcuTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="ecg-approach" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 2.4"]}>
+          <ExamSection id="ecg-approach" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A Systematic ECG Approach in the ICU</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ICU patients accumulate dozens of ECGs — most reviewed in seconds. A reproducible
@@ -120,7 +120,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="12-lead" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 2.4"]}>
+          <ExamSection id="12-lead" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.4"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12-Lead Schematic & Coronary Territories</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Each lead "looks at" a region of the LV supplied by a specific coronary artery. Click a
@@ -149,7 +149,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="wellens" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="wellens" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Wellens Syndrome</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Wellens syndrome is a pre-infarction ECG pattern caused by a critical proximal LAD
@@ -181,11 +181,11 @@ const ArrhythmiasEcgIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <CardiacConductionDiagram />
           </ExamSection>
 
-          <ExamSection id="bradys" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="bradys" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bradyarrhythmias</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               In ICU, bradycardia is rarely "physiological". Look for <span className="font-medium text-foreground">drugs</span> (β-blockers,
@@ -198,7 +198,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </ExpandableEcgCard>
           </ExamSection>
 
-          <ExamSection id="heart-block" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="heart-block" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Block</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The site of block predicts both the escape rhythm and the device choice. Nodal blocks
@@ -211,7 +211,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </ExpandableEcgCard>
           </ExamSection>
 
-          <ExamSection id="bbb" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="bbb" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Bundle Branch & Fascicular Block</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Recognising bundle branch block matters in ICU because it complicates STEMI diagnosis
@@ -223,7 +223,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </ExpandableEcgCard>
           </ExamSection>
 
-          <ExamSection id="tachys" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="tachys" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tachyarrhythmias</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The key bedside split: <span className="font-medium text-foreground">narrow vs wide</span>, then
@@ -236,7 +236,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </ExpandableEcgCard>
           </ExamSection>
 
-          <ExamSection id="peri-arrest" exams={["final", "fficm", "edic"]} curriculumCodes={["RCUK 2021"]}>
+          <ExamSection id="peri-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["RCUK 2021"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Peri-arrest Algorithms (RCUK 2021)</h2>
             <div className="grid md:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border bg-card">
@@ -272,7 +272,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="electrolytes" exams={["primary", "final", "fficm", "edic"]}>
+          <ExamSection id="electrolytes" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Electrolyte &amp; Drug-Induced Arrhythmias</h2>
             <div className="space-y-2">
               {[
@@ -293,7 +293,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pacing-devices" exams={["final", "fficm", "edic"]}>
+          <ExamSection id="pacing-devices" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pacing &amp; Defibrillator Devices in the ICU</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Recognise device, mode, and the patient's degree of pacing dependence on every ICU
@@ -304,7 +304,7 @@ const ArrhythmiasEcgIcuTopic = () => {
             <PacingDevicesDiagram />
           </ExamSection>
 
-          <ExamSection id="post-arrest" exams={["final", "fficm", "edic"]} curriculumCodes={["FFICM 2.5"]}>
+          <ExamSection id="post-arrest" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.5"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-cardiac-arrest Care &amp; ECG Surveillance</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

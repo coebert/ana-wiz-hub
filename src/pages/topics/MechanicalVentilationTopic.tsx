@@ -8,6 +8,7 @@ import APRVWaveformDiagram from "@/components/diagrams/APRVWaveformDiagram";
 import APRVExpiratoryFlowDiagram from "@/components/diagrams/APRVExpiratoryFlowDiagram";
 import { mechanicalVentilationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Recognise the four indications for invasive ventilation and pick an initial mode based on the dominant pathology.",
@@ -112,7 +113,7 @@ const MechanicalVentilationTopic = () => {
       <StickyTOC items={tocItems} />
       <section className="space-y-6 mb-10">
         {/* ───── 1. Indications ───── */}
-        <ExamSection id="toc-introduction" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-introduction" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Indications for Invasive Ventilation</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation is the most common organ support in ICU. Indications fall into four overlapping groups — recognising the dominant problem guides initial mode and settings.
@@ -137,7 +138,7 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         {/* ───── 2. Respiratory mechanics ───── */}
-        <ExamSection id="toc-mechanics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-mechanics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">2. Respiratory Mechanics on the Ventilator</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Every ventilator setting is an attempt to deliver gas against the patient's <strong>compliance</strong> and <strong>resistance</strong>. The equation of motion summarises this:
@@ -186,7 +187,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection exams={["final", "fficm", "edic"]}>
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Ventilator Waveforms</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             Explore pressure, flow and volume waveforms for the key ventilator modes — pattern recognition is core to bedside dyssynchrony detection.
@@ -197,7 +198,7 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         {/* ───── 4. Modes ───── */}
-        <ExamSection id="toc-modes" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-modes" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Ventilator Modes</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Every breath is defined by three variables: <strong>trigger</strong> (what starts it), <strong>limit / target</strong> (what controls it during inspiration), and <strong>cycle</strong> (what ends it).
@@ -231,7 +232,7 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         {/* ───── 5. LPV & VILI ───── */}
-        <ExamSection id="toc-lung-protective" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-lung-protective" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">5. Lung-Protective Ventilation & VILI</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             VILI is the iatrogenic injury produced by mechanical ventilation. The ARDSNet bundle limits the four mechanisms below and reduces mortality by ~9% absolute (NEJM 2000).
@@ -276,7 +277,7 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         {/* ───── 6. Dyssynchrony ───── */}
-        <ExamSection id="toc-dyssynchrony" exams={["fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-dyssynchrony" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6. Patient–Ventilator Dyssynchrony</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Occurs in ~25% of ventilated patients; ≥ 10% of breaths dyssynchronous independently predicts mortality and prolonged ventilation. Recognition is by waveform inspection — a core EDIC/FFICM SOE skill.
@@ -303,14 +304,14 @@ const MechanicalVentilationTopic = () => {
         </ExamSection>
 
         {/* ───── 7. Brief weaning placeholder (full section later) ───── */}
-        <ExamSection id="toc-weaning" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-weaning" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Weaning — Overview</h2>
           <p className="text-muted-foreground leading-relaxed">
             Weaning accounts for ~40% of total ventilation time. WIND classification: <strong>simple</strong> (extubated on first SBT, ~60%), <strong>difficult</strong> (1–7 days / 2–3 SBTs), <strong>prolonged</strong> (&gt; 7 days or &gt; 3 SBTs). Daily paired SAT + SBT (ABC trial — Girard, Lancet 2008) reduce ventilator days. Detailed extubation criteria, cuff-leak test and high-risk extubation are covered in <a href="#toc-tracheostomy" className="text-primary hover:underline">section 11–12</a>.
           </p>
         </ExamSection>
 
-        <ExamSection id="toc-aprv" exams={["fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-aprv" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Airway Pressure Release Ventilation (APRV)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             APRV is a time-cycled, pressure-limited mode that maintains a prolonged high airway pressure (P<sub>high</sub>) to recruit and hold open alveoli, with brief intermittent releases to a low pressure (P<sub>low</sub>) to allow CO₂ clearance. Crucially, the patient can breathe spontaneously throughout the entire cycle, which preserves diaphragmatic tone, improves V/Q matching, and reduces sedation requirements.
@@ -370,7 +371,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection id="toc-advanced" exams={["fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-advanced" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Advanced Ventilator Strategies</h2>
           <p className="text-muted-foreground leading-relaxed mb-4">
             When conventional lung-protective ventilation fails to achieve adequate gas exchange in severe ARDS (P/F ratio &lt;150 despite optimised PEEP and FiO₂), several rescue strategies should be considered. These are adjuncts to — not replacements for — standard lung-protective ventilation.
@@ -521,7 +522,7 @@ const MechanicalVentilationTopic = () => {
           </ol>
         </ExamSection>
 
-        <ExamSection id="toc-vap" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-vap" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Pneumonia (VAP)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             VAP is a nosocomial pneumonia developing ≥48 hours after endotracheal intubation. It affects 5–40% of mechanically ventilated patients, increases ICU mortality by 5–13%, and prolongs mechanical ventilation by 7–9 days. Pathogenesis involves aspiration of oropharyngeal secretions past the ETT cuff, biofilm formation on the endotracheal tube, and impaired mucociliary clearance.
@@ -615,7 +616,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection exams={["fficm", "edic"]}>
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Associated Events (VAE) — CDC Surveillance Framework</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             In 2013, the CDC replaced the traditional VAP surveillance definition with a tiered, objective framework called <span className="font-semibold text-foreground">Ventilator-Associated Events (VAE)</span>. This was designed to improve reproducibility, reduce subjective interpretation (particularly of CXR), and capture a broader range of complications in mechanically ventilated patients — not just pneumonia.
@@ -701,7 +702,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection id="toc-tracheostomy" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-tracheostomy" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tracheostomy in the ICU</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Tracheostomy is performed in ~10–15% of mechanically ventilated ICU patients. Potential benefits include reduced dead space, improved secretion management, lower sedation requirements, facilitated weaning, and improved patient comfort and communication. However, optimal timing remains debated.
@@ -781,7 +782,7 @@ const MechanicalVentilationTopic = () => {
           </p>
         </ExamSection>
 
-        <ExamSection exams={["final", "fficm", "edic"]}>
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extubation</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Extubation failure (re-intubation within 48–72 hours) occurs in 10–20% of ICU patients and is independently associated with increased mortality, prolonged ICU stay, and higher rates of tracheostomy. Identifying high-risk patients and planning a structured extubation strategy is essential.
@@ -881,7 +882,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection id="toc-hfno-niv" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-hfno-niv" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">High-Flow Nasal Oxygen (HFNO)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             HFNO delivers heated, humidified oxygen at flow rates of 30–70 L/min via wide-bore nasal cannulae. It has transformed the management of acute hypoxaemic respiratory failure and is increasingly used across pre-oxygenation, post-extubation support, and as an alternative to NIV.
@@ -963,7 +964,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection exams={["final", "fficm", "edic"]}>
+        <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Ventilation (NIV)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             NIV delivers positive pressure ventilation via a mask interface without endotracheal intubation. It reduces work of breathing, improves gas exchange, and avoids intubation-related complications. NIV encompasses two distinct modalities: continuous positive airway pressure (CPAP) and bilevel positive airway pressure (BiPAP/NIV-PS).
@@ -1059,7 +1060,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection id="toc-longterm" exams={["fficm", "edic"]} className="scroll-mt-24">
+        <ExamSection id="toc-longterm" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ventilator-Induced Diaphragmatic Dysfunction (VIDD)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Mechanical ventilation itself injures the diaphragm. Diaphragmatic atrophy begins within <span className="font-semibold text-foreground">18–69 hours</span> of controlled ventilation (Levine et al., 2008) and is a major contributor to weaning failure, prolonged ICU stay, and increased mortality.
@@ -1157,7 +1158,7 @@ const MechanicalVentilationTopic = () => {
           </ul>
         </ExamSection>
 
-        <ExamSection exams={["fficm", "edic"]}>
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Acquired Weakness (ICUAW)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             ICU-acquired weakness affects <span className="font-semibold text-foreground">25–50%</span> of patients ventilated for ≥7 days. It encompasses critical illness polyneuropathy (CIP), critical illness myopathy (CIM), and the overlap syndrome (CIPNM). ICUAW is independently associated with prolonged ventilation, weaning failure, increased ICU/hospital mortality, and long-term functional disability.
@@ -1260,7 +1261,7 @@ const MechanicalVentilationTopic = () => {
           </div>
         </ExamSection>
 
-        <ExamSection exams={["fficm", "edic"]}>
+        <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-Intensive Care Syndrome (PICS)</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             PICS describes the new or worsening impairments in <span className="font-semibold text-foreground">physical, cognitive, and psychological</span> health that persist after critical illness. First defined by the Society of Critical Care Medicine (2012), it affects <span className="font-semibold text-foreground">50–70%</span> of ICU survivors and significantly reduces quality of life for months to years. <span className="font-semibold text-foreground">PICS-Family (PICS-F)</span> recognises the psychological burden on caregivers.

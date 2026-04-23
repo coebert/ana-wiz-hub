@@ -63,7 +63,7 @@ const InterventionalRadiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="remote-location" exams={["final"]}>
+          <ExamSection id="remote-location" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Remote Location Anaesthesia</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               IR suites present unique challenges: unfamiliar environment, limited access to the patient (often within a C-arm), restricted space, and reduced staffing. The <strong className="text-foreground">AAGBI guidelines for anaesthesia outside the operating theatre</strong> mandate the same standards of monitoring, equipment, and assistance.
@@ -80,7 +80,7 @@ const InterventionalRadiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="contrast" exams={["final"]}>
+          <ExamSection id="contrast" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Contrast Media Reactions</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Iodinated Contrast Reactions</h3>
@@ -103,7 +103,7 @@ const InterventionalRadiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="radiation" exams={["final"]}>
+          <ExamSection id="radiation" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Radiation Safety</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               All staff in the IR suite are exposed to ionising radiation. The <strong className="text-foreground">ALARA principle</strong> (As Low As Reasonably Achievable) guides practice.
@@ -120,7 +120,7 @@ const InterventionalRadiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="procedure-specific" exams={["final"]}>
+          <ExamSection id="procedure-specific" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Procedure-Specific Considerations</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">TIPSS</h3>
@@ -151,7 +151,7 @@ const InterventionalRadiologyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="sedation" exams={["final"]}>
+          <ExamSection id="sedation" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Sedation for IR Procedures</h2>
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">

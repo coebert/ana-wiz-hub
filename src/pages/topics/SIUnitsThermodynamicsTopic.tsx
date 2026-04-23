@@ -65,7 +65,7 @@ const SIUnitsThermodynamicsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               A solid understanding of SI units, gas laws, and thermodynamic principles underpins much of the physics examined
@@ -76,7 +76,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="si-units" exams={["primary"]}>
+          <ExamSection id="si-units" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">SI Units</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -94,7 +94,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="temperature-scales" exams={["primary"]}>
+          <ExamSection id="temperature-scales" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Temperature Scales</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -128,7 +128,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="thermometry" exams={["primary"]}>
+          <ExamSection id="thermometry" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Clinical Thermometry Principles</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -164,7 +164,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="gas-laws" exams={["primary"]}>
+          <ExamSection id="gas-laws" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Gas Law Derivations</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -185,7 +185,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="heat-capacity" exams={["primary"]}>
+          <ExamSection id="heat-capacity" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Heat & Specific Heat Capacity</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -205,7 +205,7 @@ const SIUnitsThermodynamicsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="thermodynamic-laws" exams={["primary"]}>
+          <ExamSection id="thermodynamic-laws" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Laws of Thermodynamics</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

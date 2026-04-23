@@ -14,6 +14,7 @@ import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNe
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import ExpandableEcgCard from "@/components/diagrams/ExpandableEcgCard";
 import { eegTraceContent, postArrestProgContent } from "@/components/diagrams/ecgExpandedContent";
+import { Exam } from "@/data/curriculum";
 
 const tocItems = [
   { id: "overview", label: "Overview & chain of survival", group: "Background" },
@@ -94,7 +95,7 @@ const coreConcepts = (
     <TopicTableOfContents items={tocItems} />
 
     {/* ─────────── Overview ─────────── */}
-    <ExamSection id="overview" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="overview" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">From ROSC to Recovery</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
         Survival from cardiac arrest hinges on a chain of survival, but
@@ -123,12 +124,12 @@ const coreConcepts = (
       </div>
     </ExamSection>
 
-    <ExamSection exams={["fficm", "edic"]}>
+    <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
       <PostCardiacArrestSyndromeDiagram />
     </ExamSection>
 
     {/* ─────────── Post-ROSC bundle ─────────── */}
-    <ExamSection id="rosc-bundle" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="rosc-bundle" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Post-ROSC Bundle (ERC/ESICM 2021)</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
         Within the first 6 h after ROSC, deliver a structured bundle in
@@ -203,7 +204,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── TTM ─────────── */}
-    <ExamSection id="ttm" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="ttm" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Targeted Temperature Management</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
         TTM aims to <span className="font-medium text-foreground">prevent secondary brain injury</span> from
@@ -239,7 +240,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Haemodynamics ─────────── */}
-    <ExamSection id="haemodynamics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="haemodynamics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Haemodynamic & Ventilatory Targets</h2>
       <div className="overflow-x-auto -mx-2 sm:mx-0">
         <table className="w-full text-xs border border-border bg-card rounded-lg">
@@ -272,7 +273,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Neuroprognostication ─────────── */}
-    <ExamSection id="neuroprog" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="neuroprog" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multimodal Neuroprognostication</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
         No single test predicts poor outcome with sufficient certainty —
@@ -298,7 +299,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Modality deep-dive ─────────── */}
-    <ExamSection id="modalities" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="modalities" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Modality Deep-Dive</h2>
 
       <div className="space-y-3">
@@ -353,7 +354,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── eCPR ─────────── */}
-    <ExamSection id="ecpr" exams={["fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="ecpr" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ECMO-CPR (eCPR)</h2>
       <p className="text-muted-foreground leading-relaxed mb-3">
         eCPR is VA-ECMO initiated <em>during</em> ongoing CPR for refractory
@@ -391,7 +392,7 @@ const coreConcepts = (
     </ExamSection>
 
     {/* ─────────── Family / WLST ─────────── */}
-    <ExamSection id="ethics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+    <ExamSection id="ethics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
       <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Family Communication, WLST & Donation</h2>
       <div className="grid md:grid-cols-2 gap-3">
         <div className="p-3 rounded-lg border border-border bg-card">

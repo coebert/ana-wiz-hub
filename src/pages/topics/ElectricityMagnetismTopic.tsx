@@ -63,7 +63,7 @@ const ElectricityMagnetismTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Electrical principles are fundamental to understanding anaesthetic and monitoring equipment. From the simple
@@ -74,12 +74,12 @@ const ElectricityMagnetismTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <ElectricityMagnetismDiagram />
           </ExamSection>
 
-          <ExamSection id="ohms-law" exams={["primary", "final"]}>
+          <ExamSection id="ohms-law" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Ohm's Law & Circuit Fundamentals</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -99,7 +99,7 @@ const ElectricityMagnetismTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="capacitance" exams={["primary", "final"]}>
+          <ExamSection id="capacitance" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Capacitance</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -117,7 +117,7 @@ const ElectricityMagnetismTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="inductance" exams={["primary", "final"]}>
+          <ExamSection id="inductance" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Inductance & Transformers</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -136,7 +136,7 @@ const ElectricityMagnetismTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="wheatstone" exams={["primary", "final"]}>
+          <ExamSection id="wheatstone" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Wheatstone Bridge</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

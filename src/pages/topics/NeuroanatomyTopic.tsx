@@ -41,7 +41,7 @@ const NeuroanatomyTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_07"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cerebral Blood Supply — Circle of Willis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The brain receives 15% of cardiac output (~750 ml/min). Autoregulation maintains CBF between MAP 50–150 mmHg. The circle of Willis provides collateral circulation between anterior (ICA) and posterior (vertebrobasilar) circulations.
@@ -58,7 +58,7 @@ const NeuroanatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final", "fficm"]} curriculumCodes={["AN_BK_07"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intracranial Pressure & Meninges</h2>
             <div className="space-y-2">
               {[
@@ -76,7 +76,7 @@ const NeuroanatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary", "final"]} curriculumCodes={["AN_BK_07"]}>
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Skull Base & Foramina</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">
@@ -96,7 +96,7 @@ const NeuroanatomyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["final", "fficm"]} curriculumCodes={["AN_BK_07"]}>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["AN_BK_07"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Brainstem & Autonomic Centres</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">

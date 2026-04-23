@@ -66,7 +66,7 @@ const SolutionsConcentrationTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Solutions in Anaesthetic Practice</h2>
             <p className="text-muted-foreground leading-relaxed">
               Every drug you administer is a solution. Understanding concentration units, osmolality, and tonicity is essential
@@ -75,12 +75,12 @@ const SolutionsConcentrationTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagram</h2>
             <SolutionsConcentrationDiagram />
           </ExamSection>
 
-          <ExamSection id="concentration-units" exams={["primary"]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
+          <ExamSection id="concentration-units" exams={[Exam.PRIMARY]} curriculumCodes={["RCoA Primary — Clinical Measurement"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Concentration Units</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -96,7 +96,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="osmolality-tonicity" exams={["primary", "final"]}>
+          <ExamSection id="osmolality-tonicity" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Osmolality, Osmolarity & Tonicity</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -113,7 +113,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="osmolar-gap" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="osmolar-gap" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Calculated Osmolarity & The Osmolar Gap</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -129,7 +129,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="colligative" exams={["primary"]}>
+          <ExamSection id="colligative" exams={[Exam.PRIMARY]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Colligative Properties</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -141,7 +141,7 @@ const SolutionsConcentrationTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hyponatraemia" exams={["final", "fficm"]} curriculumCodes={["FFICM 3.4"]}>
+          <ExamSection id="hyponatraemia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 3.4"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Hyponatraemia & Safe Correction</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

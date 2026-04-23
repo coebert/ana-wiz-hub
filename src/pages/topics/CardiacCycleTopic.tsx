@@ -155,7 +155,7 @@ const CardiacCycleTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction & Curriculum Scope</h2>
             <p className="text-foreground/90 leading-relaxed">
               The cardiac cycle encompasses all electrical and mechanical events from the beginning of one
@@ -166,7 +166,7 @@ const CardiacCycleTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="reference-values" exams={["primary", "final", "fficm"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="reference-values" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Normal Pressure & Volume Reference</h2>
             <p className="text-foreground/90 leading-relaxed mb-3">
               Approximate adult resting values you should be able to quote in the viva.
@@ -206,7 +206,7 @@ const CardiacCycleTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="phases" exams={["primary", "final"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="phases" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Phases of the Cardiac Cycle</h2>
             <div className="space-y-4">
               <div className="rounded-lg border border-border p-4">
@@ -272,7 +272,7 @@ const CardiacCycleTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="atrial-waves" exams={["primary", "final"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="atrial-waves" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Left Atrial Pressure Waves</h2>
             <p className="text-foreground/90 leading-relaxed">
               The LA pressure trace shows three positive waves and two descents:
@@ -286,7 +286,7 @@ const CardiacCycleTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="heart-sounds" exams={["primary", "final"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="heart-sounds" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Heart Sounds & Added Sounds</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>S1</strong> is caused by closure of the mitral and tricuspid valves at the onset of
@@ -302,7 +302,7 @@ const CardiacCycleTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="right-heart" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="right-heart" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Right Heart Cycle & Ventricular Interdependence</h2>
             <p className="text-foreground/90 leading-relaxed">
               The right ventricle (RV) follows the same sequence of phases but operates at much lower
@@ -317,7 +317,7 @@ const CardiacCycleTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="jvp-cvp" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="jvp-cvp" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">JVP / CVP Waveform (FFICM)</h2>
             <p className="text-foreground/90 leading-relaxed">
               The CVP trace reflects right atrial pressure and shares the same a, c, v wave structure as the
@@ -344,7 +344,7 @@ const CardiacCycleTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="coronary-perfusion" exams={["final", "fficm"]} curriculumCodes={["CR_BK_01", "OA_BK_05"]}>
+          <ExamSection id="coronary-perfusion" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_01", "OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coronary Perfusion & the Cycle</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Left coronary flow occurs predominantly in diastole</strong> because intramyocardial
@@ -359,7 +359,7 @@ const CardiacCycleTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="sv-determinants" exams={["primary", "final"]} curriculumCodes={["CR_BK_01"]}>
+          <ExamSection id="sv-determinants" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["CR_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Determinants of Stroke Volume & Cardiac Output</h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="rounded-lg border border-border p-4">
@@ -395,7 +395,7 @@ const CardiacCycleTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diastolic-function" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="diastolic-function" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Diastolic Function</h2>
             <p className="text-foreground/90 leading-relaxed">
               Diastole has four sub-phases: isovolumetric relaxation, rapid filling, diastasis and atrial
@@ -410,7 +410,7 @@ const CardiacCycleTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="applied-pathophysiology" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="applied-pathophysiology" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Applied Pathophysiology</h2>
             <div className="overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-sm">
@@ -436,7 +436,7 @@ const CardiacCycleTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="invasive-waveforms" exams={["final", "fficm"]} curriculumCodes={["OA_BK_05"]}>
+          <ExamSection id="invasive-waveforms" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["OA_BK_05"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Invasive Waveform Correlations</h2>
             <ul className="space-y-2 text-sm text-foreground/80">
               <li><strong>Arterial line</strong> — upstroke = rapid ejection; dicrotic notch = aortic valve closure (end systole); area under systolic portion ∝ stroke volume; slope reflects contractility; downstroke reflects SVR and compliance.</li>

@@ -68,7 +68,7 @@ const FlowMeasurementTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Flow is the volume of fluid passing a point per unit time. Understanding laminar and turbulent flow, and the
@@ -76,7 +76,7 @@ const FlowMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="laminar-turbulent" exams={["primary", "final"]}>
+          <ExamSection id="laminar-turbulent" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Laminar vs Turbulent Flow</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               Use the interactive diagram below to explore the differences between laminar and turbulent flow, including the
@@ -87,7 +87,7 @@ const FlowMeasurementTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hagen-poiseuille" exams={["primary", "final"]}>
+          <ExamSection id="hagen-poiseuille" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hagen-Poiseuille Equation</h2>
             <p className="text-foreground/90 leading-relaxed">
               For laminar flow through a tube: <strong>Q = πΔPr⁴ / 8ηl</strong>, where Q = flow, ΔP = pressure gradient,
@@ -104,7 +104,7 @@ const FlowMeasurementTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="reynolds" exams={["primary", "final"]}>
+          <ExamSection id="reynolds" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Reynolds Number</h2>
             <p className="text-foreground/90 leading-relaxed">
               <strong>Re = ρvd / η</strong>, where ρ = density, v = velocity, d = diameter, η = viscosity. Laminar flow occurs
@@ -114,7 +114,7 @@ const FlowMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="rotameters" exams={["primary"]}>
+          <ExamSection id="rotameters" exams={[Exam.PRIMARY]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Rotameters (Variable Orifice Flowmeters)</h2>
             <p className="text-foreground/90 leading-relaxed">
               A rotameter is a tapered glass tube with a bobbin. As flow increases, the bobbin rises. At low flows, the annular
@@ -129,7 +129,7 @@ const FlowMeasurementTopic = () => {
             <RotameterDiagram />
           </ExamSection>
 
-          <ExamSection id="other-flowmeters" exams={["primary", "final"]}>
+          <ExamSection id="other-flowmeters" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other Flowmeters</h2>
             <p className="text-foreground/90 leading-relaxed mb-4">
               <strong>Pneumotachograph</strong>: measures pressure drop across a known resistance (Fleisch — bundle of tubes;
@@ -143,7 +143,7 @@ const FlowMeasurementTopic = () => {
             <WrightRespirometerDiagram />
           </ExamSection>
 
-          <ExamSection id="venturi" exams={["primary", "final"]}>
+          <ExamSection id="venturi" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">The Venturi Effect & Bernoulli's Principle</h2>
             <p className="text-foreground/90 leading-relaxed">
               Bernoulli's principle: as fluid velocity increases through a constriction, pressure decreases. The <strong>Venturi

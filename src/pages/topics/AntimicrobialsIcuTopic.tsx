@@ -104,7 +104,7 @@ const AntimicrobialsIcuTopic = () => {
         <>
           <ExamSection
             id="pkpd"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 4.7"]}
             className="scroll-mt-24"
           >
@@ -130,7 +130,7 @@ const AntimicrobialsIcuTopic = () => {
 
           <ExamSection
             id="key-agents"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 4.7"]}
             className="scroll-mt-24"
           >
@@ -159,7 +159,7 @@ const AntimicrobialsIcuTopic = () => {
 
           <ExamSection
             id="empirical"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 4.7", "EDIC 5.3"]}
             className="scroll-mt-24"
           >
@@ -186,7 +186,7 @@ const AntimicrobialsIcuTopic = () => {
 
           <ExamSection
             id="stewardship"
-            exams={["fficm", "edic"]}
+            exams={[Exam.FFICM, Exam.EDIC]}
             curriculumCodes={["FFICM 4.7"]}
             className="scroll-mt-24"
           >

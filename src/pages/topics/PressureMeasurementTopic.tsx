@@ -67,7 +67,7 @@ const PressureMeasurementTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
             <p className="text-foreground/90 leading-relaxed">
               Accurate pressure measurement is fundamental to anaesthetic monitoring. Pressures encountered in clinical practice
@@ -76,7 +76,7 @@ const PressureMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="units" exams={["primary", "final"]}>
+          <ExamSection id="units" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Units of Pressure</h2>
             <p className="text-foreground/90 leading-relaxed">
               Pressure = Force / Area. The SI unit is the Pascal (Pa), where 1 Pa = 1 N/m². In clinical practice, pressures are
@@ -85,7 +85,7 @@ const PressureMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="manometers" exams={["primary", "final"]}>
+          <ExamSection id="manometers" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <DiagramSection
               title="Manometers"
               intro={
@@ -107,7 +107,7 @@ const PressureMeasurementTopic = () => {
             </DiagramSection>
           </ExamSection>
 
-          <ExamSection id="transducers" exams={["primary", "final"]}>
+          <ExamSection id="transducers" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Pressure Transducers</h2>
             <p className="text-foreground/90 leading-relaxed">
               Modern invasive pressure monitoring uses a <strong>Wheatstone bridge strain gauge</strong> transducer. A diaphragm
@@ -121,7 +121,7 @@ const PressureMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="arterial" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="arterial" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Invasive Arterial Monitoring</h2>
             <p className="text-foreground/90 leading-relaxed">
               The arterial line system consists of an intra-arterial cannula, fluid-filled non-compliant tubing, a three-way tap,
@@ -130,7 +130,7 @@ const PressureMeasurementTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="dynamic-response" exams={["primary", "final", "fficm"]}>
+          <ExamSection id="dynamic-response" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dynamic Response & Damping</h2>
             <p className="text-foreground/90 leading-relaxed">
               The monitoring system has a <strong>natural (resonant) frequency</strong> — ideally &gt;40 Hz to exceed the
@@ -147,7 +147,7 @@ const PressureMeasurementTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="nibp" exams={["primary", "final"]}>
+          <ExamSection id="nibp" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Non-Invasive Blood Pressure (NIBP)</h2>
             <p className="text-foreground/90 leading-relaxed">
               The <strong>oscillometric method</strong> detects oscillations in cuff pressure during deflation. Maximum oscillation

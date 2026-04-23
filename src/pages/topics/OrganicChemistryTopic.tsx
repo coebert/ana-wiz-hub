@@ -46,7 +46,7 @@ const OrganicChemistryTopic = () => {
       }
       coreConcepts={
         <>
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_02"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Why Organic Chemistry Matters</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -62,7 +62,7 @@ const OrganicChemistryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_02"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Isomerism</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -82,7 +82,7 @@ const OrganicChemistryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_02"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Tertiary vs Quaternary Amines</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>
@@ -102,7 +102,7 @@ const OrganicChemistryTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection exams={["primary"]} curriculumCodes={["PH_BK_02"]}>
+          <ExamSection exams={[Exam.PRIMARY]} curriculumCodes={["PH_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Lipophilicity & Drug Delivery</h2>
             <div className="prose prose-sm max-w-none text-muted-foreground space-y-3">
               <p>

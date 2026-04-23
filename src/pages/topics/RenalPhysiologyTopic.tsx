@@ -106,7 +106,7 @@ const RenalPhysiologyTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -117,7 +117,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="nephron" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="nephron" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Nephron Segments</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -129,7 +129,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="cortical-juxtamedullary" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="cortical-juxtamedullary" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Cortical vs Juxtamedullary Nephrons</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -142,7 +142,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="renal-blood-flow" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="renal-blood-flow" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Renal Blood Flow Distribution</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -157,7 +157,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="gfr" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="gfr" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -173,7 +173,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="jga" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="jga" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Juxtaglomerular Apparatus & TGF</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -186,7 +186,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="filtration-barrier" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="filtration-barrier" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Glomerular Filtration Barrier</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -199,7 +199,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="tubular-cell" exams={["primary", "final"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="tubular-cell" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Cell Transport</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -213,7 +213,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="tubular-summary" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="tubular-summary" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Tubular Function Summary</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -232,7 +232,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="countercurrent" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="countercurrent" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Countercurrent Multiplier</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -245,7 +245,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="urine-simulator" exams={["primary", "final"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="urine-simulator" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_01"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Urine Concentration & Dilution Simulator</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -259,7 +259,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="hyponatraemia" exams={["final", "fficm"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="hyponatraemia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Hyponatraemia Workup Algorithm</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -273,7 +273,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="measurement" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="measurement" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Measurement of Renal Function</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -364,7 +364,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="acid-base" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="acid-base" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Acid-Base Handling</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -375,7 +375,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="endocrine" exams={["primary", "final"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="endocrine" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">Renal Endocrine Function</h2>
               <p className="text-foreground/90 leading-relaxed">
@@ -387,7 +387,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="raas" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_02"]}>
+          <ExamSection id="raas" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_02"]}>
             <section className="mb-8">
               <h2 className="text-2xl font-serif font-bold text-foreground">RAAS Cascade</h2>
               <p className="text-foreground/90 leading-relaxed mb-4">
@@ -400,7 +400,7 @@ const RenalPhysiologyTopic = () => {
             </section>
           </ExamSection>
 
-          <ExamSection id="synthesis" exams={["primary", "final", "fficm"]} curriculumCodes={["RU_BK_01"]}>
+          <ExamSection id="synthesis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RU_BK_01"]}>
             <SynthesisBlock
               title="Renal Physiology — Numbers to Reproduce"
               subtitle="The high-yield values that anchor most renal viva questions."

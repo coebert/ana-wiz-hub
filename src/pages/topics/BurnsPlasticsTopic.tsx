@@ -60,7 +60,7 @@ const BurnsPlasticsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="assessment" exams={["final"]}>
+          <ExamSection id="assessment" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Burns Assessment & Classification</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Total body surface area (TBSA) is estimated using the <strong className="text-foreground">Wallace Rule of Nines</strong> (adult) or the <strong className="text-foreground">Lund & Browder chart</strong> (more accurate, especially in children where head surface area is proportionally larger). The patient's palm (including fingers) ≈ 1% TBSA — useful for small or scattered burns.
@@ -76,7 +76,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pathophysiology" exams={["final"]}>
+          <ExamSection id="pathophysiology" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Burns Pathophysiology</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Burns &gt;20% TBSA trigger a <strong className="text-foreground">systemic inflammatory response</strong> with massive capillary leak, third-spacing, and hypovolaemic shock. The response is biphasic:
@@ -105,7 +105,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="fluids" exams={["final"]}>
+          <ExamSection id="fluids" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Fluid Resuscitation</h2>
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Parkland Formula</h3>
@@ -122,7 +122,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="airway" exams={["final"]}>
+          <ExamSection id="airway" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Airway Burns & Inhalational Injury</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Inhalational injury triples mortality in burn patients. Direct thermal injury is usually supraglottic (the larynx is an effective heat exchanger). Chemical injury from smoke/toxin inhalation affects the lower airways and parenchyma.
@@ -149,7 +149,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="pharmacology" exams={["final"]}>
+          <ExamSection id="pharmacology" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Pharmacological Considerations</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Suxamethonium & Burns</h3>
@@ -168,7 +168,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="surgery" exams={["final"]}>
+          <ExamSection id="surgery" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Burns Surgery</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Debridement & Grafting</h3>
@@ -188,7 +188,7 @@ const BurnsPlasticsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="plastics" exams={["final"]}>
+          <ExamSection id="plastics" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Plastic & Reconstructive Surgery</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">Free Flap Surgery</h3>

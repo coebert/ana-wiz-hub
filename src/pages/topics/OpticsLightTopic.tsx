@@ -66,7 +66,7 @@ const OpticsLightTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final"]}>
+          <ExamSection id="introduction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               The physics of light and optics underpins many monitoring and diagnostic technologies in anaesthesia and critical
@@ -77,12 +77,12 @@ const OpticsLightTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="diagram" exams={["primary", "final"]}>
+          <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <OpticsLightDiagram />
           </ExamSection>
 
-          <ExamSection id="reflection" exams={["primary", "final"]}>
+          <ExamSection id="reflection" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Reflection</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -99,7 +99,7 @@ const OpticsLightTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="refraction" exams={["primary", "final"]}>
+          <ExamSection id="refraction" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Refraction & Total Internal Reflection</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -117,7 +117,7 @@ const OpticsLightTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="fibreoptics" exams={["primary", "final"]}>
+          <ExamSection id="fibreoptics" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Fibreoptics</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -134,7 +134,7 @@ const OpticsLightTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="beer-lambert" exams={["primary", "final"]}>
+          <ExamSection id="beer-lambert" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Beer-Lambert Law</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -150,7 +150,7 @@ const OpticsLightTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="spectrophotometry" exams={["primary", "final"]}>
+          <ExamSection id="spectrophotometry" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Spectrophotometry</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>

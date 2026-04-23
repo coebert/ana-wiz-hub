@@ -128,7 +128,7 @@ const ClinicalIncidentsTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="anaphylaxis" exams={["final", "fficm"]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
+          <ExamSection id="anaphylaxis" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RCoA Final — Clinical Anaesthesia"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Anaphylaxis</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Perioperative anaphylaxis occurs in ~1:10,000 anaesthetics (NAP6). NMBAs are the commonest cause (~60%), followed by antibiotics (especially teicoplanin), chlorhexidine, and patent blue dye.
@@ -151,7 +151,7 @@ const ClinicalIncidentsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="mh" exams={["final", "fficm"]}>
+          <ExamSection id="mh" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Malignant Hyperthermia (MH)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Autosomal dominant ryanodine receptor (RYR1) mutation. Triggered by volatile agents and suxamethonium. Incidence ~1:5,000–15,000. Mortality now &lt; 5% with dantrolene.
@@ -173,7 +173,7 @@ const ClinicalIncidentsTopic = () => {
             <MHPathophysiologyDiagram />
           </ExamSection>
 
-          <ExamSection id="last" exams={["final", "fficm"]}>
+          <ExamSection id="last" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Local Anaesthetic Systemic Toxicity (LAST)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               CNS toxicity precedes cardiac toxicity (except with bupivacaine which can cause simultaneous cardiac arrest). Maximum doses: lidocaine 3 mg/kg (7 with adrenaline), bupivacaine 2 mg/kg.
@@ -190,7 +190,7 @@ const ClinicalIncidentsTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="awareness" exams={["final", "fficm"]}>
+          <ExamSection id="awareness" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Accidental Awareness Under Anaesthesia</h2>
             <p className="text-muted-foreground leading-relaxed">
               NAP5 (2014): incidence ~1:19,000. Risk factors: TIVA without BIS, RSI, cardiac surgery, CS under GA, junior anaesthetist, failure to check equipment. Prevention: processed EEG monitoring (BIS 40–60), end-tidal agent monitoring for volatiles, avoid paralysis unless necessary. Management: immediate acknowledgement, psychological support, formal follow-up.

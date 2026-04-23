@@ -115,13 +115,13 @@ const PrognosticationEthicsIcuTopic = () => {
       }}
       coreConcepts={
         <>
-          <ExamSection id="diagrams" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="diagrams" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Interactive Tools</h2>
             <PostCardiacArrestProgDiagram />
             <APACHEIICalculator />
           </ExamSection>
 
-          <ExamSection id="scoring" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="scoring" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Prognostic Scoring Systems</h2>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
@@ -156,7 +156,7 @@ const PrognosticationEthicsIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="escalation" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="escalation" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Treatment Escalation Plans</h2>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
@@ -179,7 +179,7 @@ const PrognosticationEthicsIcuTopic = () => {
             <p className="text-sm text-muted-foreground"><strong>ReSPECT</strong> — UK national approach: personalised recommendations, portable across care settings, advisory not legally binding. Time-limited trials are increasingly used when prognosis is uncertain.</p>
           </ExamSection>
 
-          <ExamSection id="ethics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="ethics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Medical Ethics &amp; UK Law</h2>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               {[
@@ -213,7 +213,7 @@ const PrognosticationEthicsIcuTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="withdrawal" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="withdrawal" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Withdrawal &amp; End-of-Life Care</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               ~70–80% of UK ICU deaths follow a decision to withdraw or withhold life-sustaining treatment. Withdrawal and withholding are ethically &amp; legally equivalent (GMC/BMA).
@@ -226,7 +226,7 @@ const PrognosticationEthicsIcuTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="pics" exams={["final", "fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="pics" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Long-Term Outcomes &amp; PICS</h2>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">
@@ -247,7 +247,7 @@ const PrognosticationEthicsIcuTopic = () => {
             <p className="text-sm text-muted-foreground"><strong>ABCDEF bundle</strong>: Assess pain, Both SAT/SBT, Choice of analgesia/sedation, Delirium, Early mobility, Family. Reduces delirium, ICU-AW, ventilator days. NICE CG83 recommends structured rehabilitation assessment at ICU and ward discharge plus 2–3 months. ICU follow-up clinics with patient diaries reduce PTSD.</p>
           </ExamSection>
 
-          <ExamSection id="triage" exams={["fficm", "edic"]} className="scroll-mt-24">
+          <ExamSection id="triage" exams={[Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU Admission, Triage &amp; Outreach</h2>
             <div className="overflow-x-auto mb-4">
               <table className="w-full text-sm border-collapse">

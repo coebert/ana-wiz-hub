@@ -184,7 +184,7 @@ const HaematologyImmunityTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="coagulation" exams={["primary", "final", "fficm"]} curriculumCodes={["HI_BK_01"]}>
+          <ExamSection id="coagulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_01"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Coagulation Cascade</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Haemostasis involves primary (platelet plug) and secondary (fibrin clot) phases. The cell-based model describes initiation (TF + VIIa → Xa), amplification (thrombin activates platelets + V, VIII, XI), and propagation (burst of thrombin → fibrin).</p>
             <div className="overflow-x-auto">
@@ -204,7 +204,7 @@ const HaematologyImmunityTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="blood-groups" exams={["primary", "final", "fficm"]} curriculumCodes={["HI_BK_02"]}>
+          <ExamSection id="blood-groups" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Groups & Transfusion</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ABO system</strong>: Group O = universal donor (no A/B antigens); Group AB = universal recipient. Naturally occurring IgM antibodies → immediate haemolytic reaction if mismatched</li>
@@ -214,7 +214,7 @@ const HaematologyImmunityTopic = () => {
             </ul>
           </ExamSection>
 
-          <ExamSection id="immunity-overview" exams={["primary", "final", "fficm"]} curriculumCodes={["HI_BK_03"]}>
+          <ExamSection id="immunity-overview" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Immunity & Inflammation</h2>
             <div className="space-y-3">
               {[
@@ -231,7 +231,7 @@ const HaematologyImmunityTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bacterial-response" exams={["final", "fficm"]} curriculumCodes={["HI_BK_03"]}>
+          <ExamSection id="bacterial-response" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Response to Bacterial Infection</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Extracellular bacteria (e.g. <em>S. pneumoniae</em>, <em>E. coli</em>) are largely countered by the humoral arm; intracellular bacteria (e.g. <em>M. tuberculosis</em>, <em>Listeria</em>) require cell-mediated immunity (Th1/macrophage activation).
@@ -255,7 +255,7 @@ const HaematologyImmunityTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="viral-response" exams={["final", "fficm"]} curriculumCodes={["HI_BK_03"]}>
+          <ExamSection id="viral-response" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["HI_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Response to Viral Infection</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Viruses replicate intracellularly, so the dominant defences are <strong>type I interferons</strong>, <strong>NK cells</strong> and <strong>CD8⁺ cytotoxic T lymphocytes</strong>. Antibodies neutralise free virions but cannot reach intracellular virus.
@@ -278,7 +278,7 @@ const HaematologyImmunityTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="primary-vs-secondary" exams={["primary", "final"]} curriculumCodes={["HI_BK_03"]}>
+          <ExamSection id="primary-vs-secondary" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["HI_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Naïve vs Secondary Response — at a glance</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm border-collapse">

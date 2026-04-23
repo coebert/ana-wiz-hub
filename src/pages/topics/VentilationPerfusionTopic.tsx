@@ -110,7 +110,7 @@ const VentilationPerfusionTopic = () => {
       ]}
       coreConcepts={
         <section className="space-y-6">
-          <ExamSection id="vq-matching" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="vq-matching" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">V/Q Matching</h2>
               <p className="text-muted-foreground leading-relaxed mb-3">Ideal gas exchange requires matched ventilation (V̇) and perfusion (Q̇). Normal overall V̇/Q̇ ≈ 0.8 (V̇ ~4 L/min, Q̇ ~5 L/min). V/Q ratio varies from apex to base in the upright lung due to gravity.</p>
@@ -133,7 +133,7 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="west-zones" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="west-zones" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">West's Zones</h2>
               <div className="space-y-3">
@@ -152,7 +152,7 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="dead-space" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="dead-space" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Dead Space</h2>
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -164,7 +164,7 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bohr-derivation" exams={["primary", "final"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="bohr-derivation" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_02"]}>
             <Collapsible>
               <CollapsibleTrigger className="flex items-center justify-between w-full group">
                 <h2 className="text-2xl font-serif font-bold text-foreground">Bohr Equation — Derivation</h2>
@@ -204,7 +204,7 @@ const VentilationPerfusionTopic = () => {
             </Collapsible>
           </ExamSection>
 
-          <ExamSection id="shunt" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="shunt" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Shunt</h2>
               <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
@@ -215,7 +215,7 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="shunt-derivation" exams={["final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="shunt-derivation" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <Collapsible>
               <CollapsibleTrigger className="flex items-center justify-between w-full group">
                 <h2 className="text-2xl font-serif font-bold text-foreground">Shunt Equation — Derivation</h2>
@@ -266,7 +266,7 @@ const VentilationPerfusionTopic = () => {
             </Collapsible>
           </ExamSection>
 
-          <ExamSection id="control" exams={["primary", "final"]} curriculumCodes={["RC_BK_01"]}>
+          <ExamSection id="control" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["RC_BK_01"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Control of Ventilation</h2>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -285,7 +285,7 @@ const VentilationPerfusionTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="synthesis" exams={["primary", "final", "fficm"]} curriculumCodes={["RC_BK_02"]}>
+          <ExamSection id="synthesis" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <SynthesisBlock
               title="V/Q Matching — Clinical Translation"
               subtitle="What changes in V/Q look like at the bedside, and how to fix them."
