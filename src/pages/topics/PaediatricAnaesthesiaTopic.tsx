@@ -1,20 +1,71 @@
-import { SectionLayout } from "@/components/SectionLayout";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
 import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
 import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentSizer";
 import { DiagramSection } from "@/components/DiagramSection";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { WorkedExample } from "@/components/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
+
+const objectives = [
+  "Identify key anatomical and physiological differences between neonates, infants and adults",
+  "Use the WETFLAG framework to size airway equipment and emergency drug doses",
+  "Recognise and manage paediatric airway emergencies (laryngospasm, epiglottitis)",
+  "Plan paediatric TIVA (remi-prop) and recognise propofol infusion syndrome (PRIS)",
+  "Choose between PCA, NCA and caudal analgesia for paediatric postoperative pain",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "Pyloric stenosis — fluid and electrolyte resuscitation first",
+    scenario:
+      "A 5-week-old infant presents with projectile vomiting, weight loss and a palpable olive. Bloods: Na 132, K 2.9, Cl 88, HCO₃ 34, pH 7.52. Is he ready for theatre?",
+    working:
+      "Classic hypochloraemic, hypokalaemic metabolic alkalosis from prolonged vomiting of gastric HCl.\nThis is a MEDICAL emergency, not a surgical one — uncorrected alkalosis causes post-op apnoea (compensatory hypoventilation perpetuated under anaesthesia).\nResuscitate: 0.9% saline 10–20 ml/kg bolus to restore intravascular volume, then 0.45% saline + 5% dextrose with KCl 20 mmol/L at 1.5 × maintenance.\nTargets before theatre: Na ≥135, K ≥3.5, Cl ≥100, HCO₃ ≤26, normal urine output.\nThen RSI (modified — full stomach), maintain normothermia and glucose monitoring.",
+    answer:
+      "Not yet. Correct the alkalosis and electrolyte deficit (Cl ≥100, HCO₃ ≤26, K ≥3.5) over 24–48 h before theatre, then proceed with modified RSI.",
+  },
+  {
+    title: "ETT and emergency drug doses for a 4-year-old",
+    scenario:
+      "Calculate uncuffed ETT size, weight estimate, adrenaline arrest dose and defibrillation energy for a 4-year-old.",
+    working:
+      "Weight (APLS): (age + 4) × 2 = 16 kg.\nUncuffed ETT: age/4 + 4 = 5.0 mm; cuffed: age/4 + 3.5 = 4.5 mm.\nETT length (oral): age/2 + 12 = 14 cm at the lips.\nAdrenaline (cardiac arrest): 10 µg/kg = 160 µg = 1.6 ml of 1:10,000.\nDefibrillation: 4 J/kg = 64 J (round to 70 J on biphasic).\nFluid bolus (trauma/shock): 10 ml/kg = 160 ml of warmed crystalloid.",
+    answer:
+      "Weight 16 kg; uncuffed ETT 5.0 mm at 14 cm; adrenaline 160 µg (1.6 ml 1:10,000); defibrillate at ~70 J; fluid bolus 160 ml.",
+  },
+];
 
 const PaediatricAnaesthesiaTopic = () => {
   return (
-    <SectionLayout title="Paediatric Anaesthesia" subtitle="FRCA / FFICM — Clinical Anaesthesia" backPath="/clinical" backLabel="Clinical Anaesthesia" accentColor="text-clinical">
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Paediatric Anaesthesia"
+      subtitle="FRCA / FFICM — Clinical Anaesthesia"
+      backPath="/clinical"
+      backLabel="Clinical Anaesthesia"
+      accentColor="text-clinical"
+      topicId="paediatric-anaesthesia"
+      topicTitle="Paediatric Anaesthesia"
+      objectives={objectives}
+      workedExamples={workedExamples}
+      quizQuestions={paediatricAnaesthesiaQuestions}
+      sectionExamMapping={{
+        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: ["final", "fficm"] },
+        keyPoints: { exams: ["final", "fficm"] },
+      }}
+      keyPoints={[
+        "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency",
+        "High O₂ consumption + low FRC = rapid desaturation; pre-oxygenation essential",
+        "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5",
+        "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency",
+        "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children",
+        "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS",
+        "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA",
+        "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement",
+      ]}
+      coreConcepts={
+        <section className="space-y-6">
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anatomical & Physiological Differences</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -215,25 +266,9 @@ const PaediatricAnaesthesiaTopic = () => {
             </p>
           </div>
         </div>
-      </section>
-
-      <KeyLearningPoints points={[
-        "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency",
-        "High O₂ consumption + low FRC = rapid desaturation; pre-oxygenation essential",
-        "ETT size: uncuffed = age/4 + 4; cuffed = age/4 + 3.5",
-        "Pyloric stenosis: correct the alkalosis first — it is a medical, not surgical, emergency",
-        "Use isotonic balanced crystalloids for maintenance — never hypotonic solutions in children",
-        "'Remi-prop' TIVA is ideal for shared-airway, MRI and MH-susceptible children — keep propofol <4 mg/kg/hr to avoid PRIS",
-        "PCA from ~5 yr; below that use NCA. Never codeine <12 yr; never tramadol post-tonsillectomy for OSA",
-        "Caudal block: Armitage 0.5/1.0/1.25 ml/kg of 0.25% bupivacaine for sacral/lumbar/thoracic spread; always test-dose for intravascular placement",
-      ]} />
-
-      <QuizSection questions={paediatricAnaesthesiaQuestions} />
-      <ReferencesList topicId="paediatric-anaesthesia" />
-
-      <SeeAlso topicId="paediatric-anaesthesia" />
-        <TopicCompletionToggle topicId="paediatric-anaesthesia" topicTitle="Paediatric Anaesthesia" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 
