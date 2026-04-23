@@ -115,14 +115,15 @@ const rule = {
         const key = contextKey(node);
         const inExamContext = key && EXAM_HINT_RE.test(key);
 
-        // Trigger if either: typo-close to a valid tag, OR sitting in an
-        // obvious exam context with a non-matching value.
-        const looksLikeTypo = distance > 0 && distance <= 1;
-        if (!looksLikeTypo && !inExamContext) return;
+        // Only flag string literals that sit in an obvious exam context
+        // (examTags array, `exam:` / `exams:` property, `examTags` variable).
+        // This avoids false positives on medical abbreviations like
+        // `id="dic"` (disseminated intravascular coagulation).
+        if (!inExamContext) return;
 
-        // Avoid noise: only flag in exam context, OR when the typo is
-        // unambiguous (distance 1 from exactly one tag).
-        if (!inExamContext && distance !== 1) return;
+        // Within an exam context, only suggest a fix when there's a clearly
+        // close match (distance ≤ 2). Otherwise just report invalid.
+        const showSuggestion = distance <= 2;
 
         context.report({
           node,
