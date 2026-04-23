@@ -220,9 +220,7 @@ const PulseOximetryTopic = () => {
           </div>
         </section>
       </div>
-        </div>
-      }
-    />
+    </SectionLayout>
   );
 };
 
