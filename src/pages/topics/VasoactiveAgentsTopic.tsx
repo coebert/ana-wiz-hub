@@ -53,8 +53,8 @@ const VasoactiveAgentsTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={vasoactiveAgentsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["frca-primary", "frca-final", "fficm"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["frca-primary", "frca-final", "fficm"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: ["primary", "final", "fficm"], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2019", "Peck & Hill Ch.11"],
