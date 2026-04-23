@@ -69,6 +69,13 @@ const ClosingVolumeDiagram = () => {
           }`}>
           {showCapacity ? "Hide" : "Show"} CC
         </button>
+        <button onClick={() => setAutoScale(!autoScale)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${
+            autoScale ? "bg-accent text-accent-foreground border-border shadow-sm" : "border-transparent bg-secondary/50 text-muted-foreground hover:bg-secondary"
+          }`}
+          title="Toggle dynamic y-axis scaling based on selected age group">
+          Y-axis: {autoScale ? `Auto (0–${yMax}%)` : "Fixed (0–60%)"}
+        </button>
       </div>
 
       {/* N₂ Washout Curve SVG */}
@@ -107,21 +114,8 @@ const ClosingVolumeDiagram = () => {
           ));
         })()}
 
-        {/* The N₂ curve */}
+        {/* The N₂ curve — uses shared yScale so control points reflect dynamic y-axis */}
         {(() => {
-          const phase4Start = ageGroup === "young" ? 320 : 290;
-          const slopeIII = ageGroup === "young" ? 0.08 : 0.18; // steeper in elderly
-          
-          // Phase I: flat at 0
-          // Phase II: rapid rise
-          // Phase III: gentle slope (alveolar plateau)
-          // Phase IV: steep rise (closing volume)
-          
-          const yMax = 60;
-          const yScale = (n2: number) => 190 - (Math.min(n2, yMax) / yMax) * 160;
-          const n2AtEndIII = 30 + slopeIII * (phase4Start - 160);
-          const phase4EndN2 = Math.min(n2AtEndIII + 25, yMax);
-
           const pathD = [
             `M 60,190`,
             // Phase I - flat near zero
@@ -142,7 +136,6 @@ const ClosingVolumeDiagram = () => {
 
         {/* Phase labels */}
         {(() => {
-          const phase4Start = ageGroup === "young" ? 320 : 290;
           const centers = [85, 135, (160 + phase4Start) / 2, (phase4Start + 380) / 2];
           return phases.map((p, i) => (
             <text key={i} x={centers[i]} y={210} textAnchor="middle"
@@ -155,10 +148,9 @@ const ClosingVolumeDiagram = () => {
 
         {/* Closing Volume marker */}
         {(() => {
-          const cvX = ageGroup === "young" ? 320 : 290;
-          const slopeIII = ageGroup === "young" ? 0.08 : 0.18;
+          const cvX = phase4Start;
           const n2AtCV = 30 + slopeIII * (cvX - 160);
-          const cvY = 190 - (Math.min(n2AtCV, 60) / 60) * 160;
+          const cvY = yScale(n2AtCV);
           return (
             <g>
               <line x1={cvX} y1={cvY} x2={cvX} y2={195} stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" strokeDasharray="4,3" />
