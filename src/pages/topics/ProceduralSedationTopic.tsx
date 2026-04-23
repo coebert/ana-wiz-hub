@@ -211,6 +211,7 @@ const ProceduralSedationTopic = () => {
 
           <ExamSection id="techniques" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Techniques: Bolus, Infusion and TCI</h2>
+            <SedationDeliveryProfilesDiagram />
             <div className="space-y-3">
               <div className="p-3 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Single bolus / intermittent boluses</p>
