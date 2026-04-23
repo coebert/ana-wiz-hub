@@ -8,6 +8,7 @@ import { SedationDeliveryProfilesDiagram } from "@/components/diagrams/SedationD
 import { SedationRescueLadder } from "@/components/SedationRescueLadder";
 import { SedationDecisionGate } from "@/components/SedationDecisionGate";
 import { SedationDischargeChecklist } from "@/components/SedationDischargeChecklist";
+import { SedationCaseScenarios } from "@/components/SedationCaseScenarios";
 
 const objectives = [
   "Define sedation and distinguish minimal, moderate, deep sedation and general anaesthesia (ASA continuum)",
@@ -363,6 +364,10 @@ const ProceduralSedationTopic = () => {
 
           <ExamSection id="example-procedures" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Example Procedures Requiring Sedation</h2>
+            <SedationCaseScenarios />
+            <h3 className="font-serif font-bold text-foreground text-base mt-6 mb-2">
+              Quick reference — other common procedures
+            </h3>
             <div className="space-y-3">
               {[
                 { proc: "Gastrointestinal endoscopy (OGD, colonoscopy, ERCP)", detail: "Moderate sedation: midazolam + fentanyl or propofol bolus/TCI. ERCP often deep sedation/GA — prone, prolonged, CO₂ insufflation, retained secretions." },
