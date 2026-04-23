@@ -287,7 +287,12 @@ const Panel = ({
           strokeWidth={1.5}
         />
       </svg>
-    </div>
+      {isLinked && (
+        <p className="text-[11px] text-primary mt-1.5 font-medium">
+          {linkLabel ?? "Read more →"}
+        </p>
+      )}
+    </Wrapper>
   );
 };
 
