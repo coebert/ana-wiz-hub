@@ -1,0 +1,377 @@
+import { useEffect, useRef, useState } from "react";
+import { Play, Pause, RotateCcw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+/**
+ * Animated comparison of three IV sedation delivery profiles:
+ *   1. Intermittent boluses — sawtooth peaks/troughs
+ *   2. Manual fixed-rate infusion — slow exponential approach to steady state
+ *   3. Target-controlled infusion (TCI) — overshoot bolus then variable-rate maintenance
+ *
+ * Each panel plots a normalised plasma concentration (Cp) trace against time
+ * and overlays the therapeutic window. A scrubbing time-cursor sweeps across
+ * all three panels in sync so the reader can directly compare what the patient
+ * "sees" at any given moment.
+ *
+ * Pure CSS/SVG animation — no external animation libraries.
+ */
+
+const DURATION_S = 12; // total animation duration
+const PLOT_W = 320;
+const PLOT_H = 110;
+const PAD_L = 28;
+const PAD_R = 8;
+const PAD_T = 10;
+const PAD_B = 22;
+const INNER_W = PLOT_W - PAD_L - PAD_R;
+const INNER_H = PLOT_H - PAD_T - PAD_B;
+
+// Therapeutic window (normalised 0–1)
+const WINDOW_LOW = 0.45;
+const WINDOW_HIGH = 0.75;
+
+// Sample concentration curves over t in [0, 1]
+const N_SAMPLES = 240;
+
+const sampleAt = (
+  fn: (t: number) => number,
+  n = N_SAMPLES,
+): { x: number; y: number }[] => {
+  const pts: { x: number; y: number }[] = [];
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    const c = Math.max(0, Math.min(1, fn(t)));
+    pts.push({
+      x: PAD_L + t * INNER_W,
+      y: PAD_T + (1 - c) * INNER_H,
+    });
+  }
+  return pts;
+};
+
+const toPath = (pts: { x: number; y: number }[]) =>
+  pts.map((p, i) => `${i === 0 ? "M" : "L"} ${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+
+// --- Concentration models (all normalised to 0–1) ---
+
+// Bolus: 4 boluses, each rises sharply then decays exponentially
+const bolusCurve = (t: number) => {
+  const boluses = [0.0, 0.25, 0.5, 0.75];
+  const peak = 0.95;
+  let c = 0;
+  for (const b of boluses) {
+    if (t >= b) {
+      const dt = (t - b) * 28; // decay rate
+      c += peak * Math.exp(-dt) * (1 - Math.exp(-dt * 6));
+    }
+  }
+  return c;
+};
+
+// Manual infusion: exponential approach to steady state at ~0.6
+const infusionCurve = (t: number) => {
+  const ss = 0.6;
+  const tau = 0.32; // time constant
+  return ss * (1 - Math.exp(-t / tau));
+};
+
+// TCI: rapid bolus to target (~0.6), then variable-rate maintenance ≈ flat
+const tciCurve = (t: number) => {
+  const target = 0.6;
+  if (t < 0.06) {
+    return target * (t / 0.06); // fast linear rise (overshoot bolus)
+  }
+  if (t < 0.1) {
+    // small overshoot then settle
+    return target + 0.06 * Math.sin(((t - 0.06) / 0.04) * Math.PI);
+  }
+  // tiny ripple to show variable rate maintaining target
+  return target + 0.012 * Math.sin(t * 28);
+};
+
+interface PanelProps {
+  title: string;
+  subtitle: string;
+  curve: (t: number) => number;
+  progress: number; // 0..1
+  /** Tailwind hue token (without `hsl(var(--…))`) */
+  colorVar: string;
+  /** Vertical event markers along x in [0,1] (e.g. bolus times) */
+  markers?: number[];
+}
+
+const Panel = ({ title, subtitle, curve, progress, colorVar, markers }: PanelProps) => {
+  const fullPath = toPath(sampleAt(curve));
+  const visiblePath = toPath(sampleAt(curve, Math.max(2, Math.round(N_SAMPLES * progress))));
+  const cursorX = PAD_L + progress * INNER_W;
+  const cursorC = curve(progress);
+  const cursorY = PAD_T + (1 - Math.max(0, Math.min(1, cursorC))) * INNER_H;
+
+  return (
+    <div className="rounded-lg border border-border bg-card p-3">
+      <div className="flex items-baseline justify-between mb-1">
+        <p className="font-semibold text-foreground text-sm">{title}</p>
+        <p className="text-[11px] text-muted-foreground">{subtitle}</p>
+      </div>
+      <svg
+        viewBox={`0 0 ${PLOT_W} ${PLOT_H}`}
+        className="w-full h-auto"
+        role="img"
+        aria-label={`${title} concentration vs time`}
+      >
+        {/* Therapeutic window band */}
+        <rect
+          x={PAD_L}
+          y={PAD_T + (1 - WINDOW_HIGH) * INNER_H}
+          width={INNER_W}
+          height={(WINDOW_HIGH - WINDOW_LOW) * INNER_H}
+          fill="hsl(var(--primary) / 0.08)"
+        />
+        <line
+          x1={PAD_L}
+          x2={PAD_L + INNER_W}
+          y1={PAD_T + (1 - WINDOW_HIGH) * INNER_H}
+          y2={PAD_T + (1 - WINDOW_HIGH) * INNER_H}
+          stroke="hsl(var(--primary) / 0.35)"
+          strokeDasharray="3 3"
+          strokeWidth={0.8}
+        />
+        <line
+          x1={PAD_L}
+          x2={PAD_L + INNER_W}
+          y1={PAD_T + (1 - WINDOW_LOW) * INNER_H}
+          y2={PAD_T + (1 - WINDOW_LOW) * INNER_H}
+          stroke="hsl(var(--primary) / 0.35)"
+          strokeDasharray="3 3"
+          strokeWidth={0.8}
+        />
+
+        {/* Axes */}
+        <line
+          x1={PAD_L}
+          x2={PAD_L}
+          y1={PAD_T}
+          y2={PAD_T + INNER_H}
+          stroke="hsl(var(--border))"
+          strokeWidth={1}
+        />
+        <line
+          x1={PAD_L}
+          x2={PAD_L + INNER_W}
+          y1={PAD_T + INNER_H}
+          y2={PAD_T + INNER_H}
+          stroke="hsl(var(--border))"
+          strokeWidth={1}
+        />
+
+        {/* Axis labels */}
+        <text
+          x={4}
+          y={PAD_T + INNER_H / 2}
+          fontSize="9"
+          fill="hsl(var(--muted-foreground))"
+          transform={`rotate(-90 4 ${PAD_T + INNER_H / 2})`}
+          textAnchor="middle"
+        >
+          Cp
+        </text>
+        <text
+          x={PAD_L + INNER_W / 2}
+          y={PLOT_H - 4}
+          fontSize="9"
+          fill="hsl(var(--muted-foreground))"
+          textAnchor="middle"
+        >
+          time →
+        </text>
+        <text
+          x={PAD_L + INNER_W - 2}
+          y={PAD_T + (1 - (WINDOW_LOW + WINDOW_HIGH) / 2) * INNER_H + 3}
+          fontSize="8"
+          fill="hsl(var(--primary))"
+          textAnchor="end"
+          opacity={0.7}
+        >
+          target
+        </text>
+
+        {/* Event markers (e.g. bolus pushes) */}
+        {markers?.map((m, i) => (
+          <g key={i}>
+            <line
+              x1={PAD_L + m * INNER_W}
+              x2={PAD_L + m * INNER_W}
+              y1={PAD_T + INNER_H}
+              y2={PAD_T + INNER_H + 4}
+              stroke={`hsl(var(${colorVar}))`}
+              strokeWidth={1.2}
+            />
+          </g>
+        ))}
+
+        {/* Faint full curve as ghost */}
+        <path
+          d={fullPath}
+          fill="none"
+          stroke={`hsl(var(${colorVar}) / 0.18)`}
+          strokeWidth={1.5}
+        />
+
+        {/* Animated visible curve */}
+        <path
+          d={visiblePath}
+          fill="none"
+          stroke={`hsl(var(${colorVar}))`}
+          strokeWidth={2}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+
+        {/* Cursor */}
+        <line
+          x1={cursorX}
+          x2={cursorX}
+          y1={PAD_T}
+          y2={PAD_T + INNER_H}
+          stroke="hsl(var(--foreground) / 0.25)"
+          strokeWidth={0.8}
+        />
+        <circle
+          cx={cursorX}
+          cy={cursorY}
+          r={3.5}
+          fill={`hsl(var(${colorVar}))`}
+          stroke="hsl(var(--background))"
+          strokeWidth={1.5}
+        />
+      </svg>
+    </div>
+  );
+};
+
+export const SedationDeliveryProfilesDiagram = () => {
+  const [playing, setPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const startRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const baseProgressRef = useRef(0);
+
+  useEffect(() => {
+    if (!playing) return;
+    startRef.current = null;
+    const step = (ts: number) => {
+      if (startRef.current === null) startRef.current = ts;
+      const elapsed = (ts - startRef.current) / 1000;
+      const p = baseProgressRef.current + elapsed / DURATION_S;
+      if (p >= 1) {
+        setProgress(1);
+        setPlaying(false);
+        baseProgressRef.current = 1;
+        return;
+      }
+      setProgress(p);
+      rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      baseProgressRef.current = progress;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playing]);
+
+  const handleReset = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    baseProgressRef.current = 0;
+    setProgress(0);
+    setPlaying(true);
+  };
+
+  const handleToggle = () => {
+    if (progress >= 1) {
+      handleReset();
+      return;
+    }
+    setPlaying((p) => !p);
+  };
+
+  return (
+    <figure className="my-6 rounded-xl border border-border bg-secondary/20 p-4">
+      <figcaption className="mb-3 flex items-start justify-between gap-3">
+        <div>
+          <p className="font-serif font-bold text-foreground text-base">
+            IV sedation delivery profiles
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Plasma concentration (Cp) vs time. Shaded band = therapeutic sedation window.
+          </p>
+        </div>
+        <div className="flex items-center gap-1.5 flex-shrink-0">
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleToggle}
+            aria-label={playing ? "Pause animation" : "Play animation"}
+            className="h-8 px-2"
+          >
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+          </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={handleReset}
+            aria-label="Restart animation"
+            className="h-8 px-2"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+          </Button>
+        </div>
+      </figcaption>
+
+      <div className="grid gap-3 md:grid-cols-3">
+        <Panel
+          title="Intermittent boluses"
+          subtitle="peak–trough sawtooth"
+          curve={bolusCurve}
+          progress={progress}
+          colorVar="--destructive"
+          markers={[0.0, 0.25, 0.5, 0.75]}
+        />
+        <Panel
+          title="Manual infusion"
+          subtitle="slow approach to steady state"
+          curve={infusionCurve}
+          progress={progress}
+          colorVar="--accent-foreground"
+        />
+        <Panel
+          title="TCI (Cp/Ce target)"
+          subtitle="bolus + variable maintenance"
+          curve={tciCurve}
+          progress={progress}
+          colorVar="--primary"
+        />
+      </div>
+
+      <ul className="mt-4 grid gap-2 md:grid-cols-3 text-xs text-muted-foreground leading-relaxed">
+        <li>
+          <span className={cn("inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-destructive")} />
+          Boluses overshoot then fall below target → apnoea, then patient movement.
+        </li>
+        <li>
+          <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-muted-foreground" />
+          Fixed-rate infusion is smoother but takes ~4–5 time constants to reach target.
+        </li>
+        <li>
+          <span className="inline-block w-2 h-2 rounded-full mr-1.5 align-middle bg-primary" />
+          TCI uses a PK model to give an initial bolus then continually adjusts the rate to hold Cp/Ce on target.
+        </li>
+      </ul>
+    </figure>
+  );
+};
+
+export default SedationDeliveryProfilesDiagram;
