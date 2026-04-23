@@ -1,7 +1,24 @@
 import { ReactNode, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
+import { Pause, Play, RotateCcw, ChevronLeft, ChevronRight, BookOpen, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+const slugifyLabel = (label: string) =>
+  label
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+export interface AnimatedMechanismStepSource {
+  /** Short label, must match a `topicReferences` entry on the host topic. */
+  label: string;
+  /** Optional direct URL — if provided, the chip opens it in a new tab.
+   *  If omitted, the chip scrolls to `#ref-{slugified label}` in the page
+   *  references list (auto-expanding it via the standard hash behaviour). */
+  url?: string;
+}
 
 export interface AnimatedMechanismStep {
   /** Short label shown on the chip / step pill (1-3 words). */
@@ -12,6 +29,10 @@ export interface AnimatedMechanismStep {
   callout?: ReactNode;
   /** Optional ms duration override for THIS step (defaults to `stepMs` on the parent). */
   durationMs?: number;
+  /** Optional verified sources backing THIS step. Rendered as a footnote row
+   *  in the side panel — each chip links to the topic's References list
+   *  (or directly out, if a `url` is supplied). */
+  sources?: AnimatedMechanismStepSource[];
 }
 
 export interface AnimatedMechanismProps {
@@ -249,6 +270,38 @@ export const AnimatedMechanism = ({
               )}
             >
               {current.callout}
+            </div>
+          )}
+          {current?.sources && current.sources.length > 0 && (
+            <div
+              key={`sources-${active}`}
+              className="mt-3 pt-3 border-t border-border animate-fade-in"
+              aria-label="Sources for this step"
+            >
+              <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
+                <BookOpen className="h-3 w-3" /> Sources
+              </p>
+              <ul className="flex flex-wrap gap-1.5">
+                {current.sources.map((s, i) => {
+                  const isExternal = !!s.url;
+                  const href = s.url ?? `#ref-${slugifyLabel(s.label)}`;
+                  return (
+                    <li key={`${s.label}-${i}`}>
+                      <a
+                        href={href}
+                        {...(isExternal
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-2 py-0.5 text-[11px] font-medium text-foreground hover:bg-muted hover:border-primary/40 transition-colors"
+                        title={isExternal ? `Open ${s.label}` : `Jump to "${s.label}" in the references list`}
+                      >
+                        <span>{s.label}</span>
+                        {isExternal && <ExternalLink className="h-2.5 w-2.5 text-muted-foreground" />}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           )}
         </aside>

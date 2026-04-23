@@ -67,6 +67,13 @@ const arcPath = (cx: number, cy: number, r: number, start: number, end: number) 
   return `M ${cx} ${cy} L ${s.x} ${s.y} A ${r} ${r} 0 ${large} 1 ${e.x} ${e.y} Z`;
 };
 
+const TIER_SOURCES: Record<1 | 2 | 3 | 4, { label: string }[]> = {
+  1: [{ label: "NCEPOD Knowing the Risk" }, { label: "RCoA Emergency Laparotomy" }],
+  2: [{ label: "NCEPOD Knowing the Risk" }, { label: "NELA Year 9 Report" }],
+  3: [{ label: "NCEPOD Knowing the Risk" }, { label: "AAGBI Pre-op 2010" }],
+  4: [{ label: "AAGBI Pre-op 2010" }, { label: "RCoA Emergency Laparotomy" }],
+};
+
 const STEPS: AnimatedMechanismStep[] = TIERS.map((t) => ({
   label: `Cat ${t.cat} — ${t.label}`,
   detail: (
@@ -83,6 +90,7 @@ const STEPS: AnimatedMechanismStep[] = TIERS.map((t) => ({
   ),
   callout: <><strong>Examples:</strong> {t.examples}</>,
   durationMs: 2800,
+  sources: TIER_SOURCES[t.cat],
 }));
 
 export const NCEPODClassificationDiagram = () => {
