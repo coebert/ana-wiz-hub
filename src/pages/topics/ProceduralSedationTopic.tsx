@@ -218,7 +218,7 @@ const ProceduralSedationTopic = () => {
             <h2 className="text-xl font-bold text-foreground mb-2">Techniques: Bolus, Infusion and TCI</h2>
             <SedationDeliveryProfilesDiagram />
             <div className="space-y-3">
-              <div className="p-3 rounded-lg border border-border">
+              <div id="technique-bolus" className="p-3 rounded-lg border border-border scroll-mt-24">
                 <p className="font-semibold text-foreground text-sm">Single bolus / intermittent boluses</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Simplest technique. Drug given as small incremental IV doses; redose when effect wanes. Plasma concentration follows a peak-and-trough sawtooth.
@@ -226,14 +226,14 @@ const ProceduralSedationTopic = () => {
                   Example: midazolam 0.5–1 mg + fentanyl 25–50 µg titrated for endoscopy.
                 </p>
               </div>
-              <div className="p-3 rounded-lg border border-border">
+              <div id="technique-infusion" className="p-3 rounded-lg border border-border scroll-mt-24">
                 <p className="font-semibold text-foreground text-sm">Manual infusion</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Fixed-rate infusion (mg/kg/h or µg/kg/min). Smoother than boluses but slow to reach steady state (~5 time constants ≈ 4–5× elimination half-life).
                   Useful for longer procedures where TCI unavailable. Example: propofol 1–3 mg/kg/h + remifentanil 0.05–0.1 µg/kg/min.
                 </p>
               </div>
-              <div className="p-3 rounded-lg border border-border">
+              <div id="technique-tci" className="p-3 rounded-lg border border-border scroll-mt-24">
                 <p className="font-semibold text-foreground text-sm">Target-controlled infusion (TCI)</p>
                 <p className="text-sm text-muted-foreground mt-1">
                   Pump uses a built-in PK model to deliver a variable rate that maintains a chosen <strong>plasma (Cp)</strong> or <strong>effect-site (Ce)</strong> concentration.
