@@ -1,4 +1,25 @@
-export type ExamTag = "primary" | "final" | "fficm" | "edic";
+/**
+ * Single source of truth for exam tags.
+ * Use the `EXAM_TAGS` constant or `Exam.*` helper instead of bare string
+ * literals so typos (e.g. "ficm" vs "fficm") cannot compile.
+ */
+export const EXAM_TAGS = ["primary", "final", "fficm", "edic"] as const;
+export type ExamTag = (typeof EXAM_TAGS)[number];
+
+/** Named accessor — `Exam.FFICM` instead of the string "fficm". */
+export const Exam = {
+  PRIMARY: "primary",
+  FINAL: "final",
+  FFICM: "fficm",
+  EDIC: "edic",
+} as const satisfies Record<string, ExamTag>;
+
+/**
+ * Compile-time validator. Use when you must keep an array of literals:
+ *   examTags: examTags("primary", "final", "fficm")
+ * Misspellings are rejected by the compiler.
+ */
+export const examTags = <T extends ExamTag[]>(...tags: T): T => tags;
 export type Section = "physics" | "physiology" | "pharmacology" | "anatomy" | "clinical" | "intensive-care" | "perioperative" | "chemistry";
 
 export interface Topic {
