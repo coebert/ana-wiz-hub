@@ -114,6 +114,7 @@ const ProceduralSedationTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               The same standard of preassessment as for general anaesthesia applies. Document an explicit decision that sedation (vs GA vs LA alone) is appropriate.
             </p>
+            <SedationDecisionGate />
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>ASA grade</strong>: most procedural sedation is for ASA I–III. ASA IV → consider anaesthetist-delivered sedation or GA in theatre</li>
               <li><strong>Airway</strong>: Mallampati, mouth opening, neck movement, dentition, BMI, beard. Predicted difficult airway → caution with deep sedation off-site</li>
