@@ -274,13 +274,14 @@ const ProceduralSedationTopic = () => {
 
             <div className="mb-4 overflow-x-auto rounded-lg border border-border">
               <table className="w-full text-xs md:text-sm">
-                <caption className="sr-only">Comparison of sedation drugs: typical sedation dose, route, onset, duration and common combinations</caption>
+                <caption className="sr-only">Comparison of sedation drugs: typical sedation dose, route, onset, peak effect, duration and common combinations</caption>
                 <thead className="bg-secondary/40 text-foreground">
                   <tr className="text-left">
                     <th scope="col" className="p-2 font-semibold">Drug</th>
                     <th scope="col" className="p-2 font-semibold">Routes</th>
                     <th scope="col" className="p-2 font-semibold">Sedation dose</th>
                     <th scope="col" className="p-2 font-semibold">Onset (IV)</th>
+                    <th scope="col" className="p-2 font-semibold">Peak effect (IV)</th>
                     <th scope="col" className="p-2 font-semibold">Duration (single dose)</th>
                     <th scope="col" className="p-2 font-semibold">Reversal</th>
                     <th scope="col" className="p-2 font-semibold">Common combinations</th>
@@ -288,18 +289,19 @@ const ProceduralSedationTopic = () => {
                 </thead>
                 <tbody className="text-muted-foreground">
                   {[
-                    { drug: "Propofol", routes: "IV bolus, infusion, TCI (Marsh/Schnider)", dose: "10–20 mg boluses; infusion 1–3 mg/kg/h; TCI Ce 0.8–1.5 µg/mL", onset: "30 s", duration: "5–10 min", reversal: "None", combos: "+ remifentanil (TCI); + ketamine ('ketofol' 1:1)" },
-                    { drug: "Midazolam", routes: "IV, IM, intranasal, buccal, PO", dose: "0.5–2 mg IV titrated (max ~0.07 mg/kg)", onset: "2–3 min", duration: "30–60 min", reversal: "Flumazenil 100–200 µg", combos: "+ fentanyl (endoscopy); + ketamine (blunts emergence)" },
-                    { drug: "Ketamine", routes: "IV, IM, intranasal, PO", dose: "0.25–0.5 mg/kg IV; 2–4 mg/kg IM", onset: "30–60 s IV; 3–5 min IM", duration: "10–15 min IV; 15–30 min IM", reversal: "None", combos: "+ propofol ('ketofol'); + midazolam (paeds, ED)" },
-                    { drug: "Fentanyl", routes: "IV, intranasal, transmucosal", dose: "25–50 µg IV titrated", onset: "3–5 min", duration: "30–60 min", reversal: "Naloxone 40 µg increments", combos: "+ midazolam (endoscopy, dental)" },
-                    { drug: "Remifentanil", routes: "IV infusion, TCI (Minto)", dose: "TCI Ce 1–3 ng/mL; infusion 0.05–0.1 µg/kg/min", onset: "1–2 min", duration: "3–5 min (CSHT-independent)", reversal: "Naloxone (rarely needed)", combos: "+ propofol TCI; + dexmedetomidine (AFOI)" },
-                    { drug: "Dexmedetomidine", routes: "IV infusion (± intranasal off-label)", dose: "Load 1 µg/kg over 10 min, then 0.2–1.4 µg/kg/h", onset: "10–20 min (load)", duration: "60–120 min after stopping", reversal: "None (atipamezole not licensed)", combos: "+ remifentanil (AFOI, MRI, awake craniotomy)" },
+                    { drug: "Propofol", routes: "IV bolus, infusion, TCI (Marsh/Schnider)", dose: "10–20 mg boluses; infusion 1–3 mg/kg/h; TCI Ce 0.8–1.5 µg/mL", onset: "30 s", peak: "90–120 s (t½keo ~2.6 min)", duration: "5–10 min", reversal: "None", combos: "+ remifentanil (TCI); + ketamine ('ketofol' 1:1)" },
+                    { drug: "Midazolam", routes: "IV, IM, intranasal, buccal, PO", dose: "0.5–2 mg IV titrated (max ~0.07 mg/kg)", onset: "2–3 min", peak: "5–7 min", duration: "30–60 min", reversal: "Flumazenil 100–200 µg", combos: "+ fentanyl (endoscopy); + ketamine (blunts emergence)" },
+                    { drug: "Ketamine", routes: "IV, IM, intranasal, PO", dose: "0.25–0.5 mg/kg IV; 2–4 mg/kg IM", onset: "30–60 s IV; 3–5 min IM", peak: "1 min IV; 5–20 min IM", duration: "10–15 min IV; 15–30 min IM", reversal: "None", combos: "+ propofol ('ketofol'); + midazolam (paeds, ED)" },
+                    { drug: "Fentanyl", routes: "IV, intranasal, transmucosal", dose: "25–50 µg IV titrated", onset: "3–5 min", peak: "3–5 min", duration: "30–60 min", reversal: "Naloxone 40 µg increments", combos: "+ midazolam (endoscopy, dental)" },
+                    { drug: "Remifentanil", routes: "IV infusion, TCI (Minto)", dose: "TCI Ce 1–3 ng/mL; infusion 0.05–0.1 µg/kg/min", onset: "1–2 min", peak: "1–2 min (t½keo ~1.2 min)", duration: "3–5 min (CSHT-independent)", reversal: "Naloxone (rarely needed)", combos: "+ propofol TCI; + dexmedetomidine (AFOI)" },
+                    { drug: "Dexmedetomidine", routes: "IV infusion (± intranasal off-label)", dose: "Load 1 µg/kg over 10 min, then 0.2–1.4 µg/kg/h", onset: "10–20 min (load)", peak: "~15–30 min after load", duration: "60–120 min after stopping", reversal: "None (atipamezole not licensed)", combos: "+ remifentanil (AFOI, MRI, awake craniotomy)" },
                   ].map((r) => (
                     <tr key={r.drug} className="border-t border-border align-top">
                       <th scope="row" className="p-2 font-semibold text-foreground whitespace-nowrap">{r.drug}</th>
                       <td className="p-2">{r.routes}</td>
                       <td className="p-2">{r.dose}</td>
                       <td className="p-2 whitespace-nowrap">{r.onset}</td>
+                      <td className="p-2 whitespace-nowrap">{r.peak}</td>
                       <td className="p-2 whitespace-nowrap">{r.duration}</td>
                       <td className="p-2">{r.reversal}</td>
                       <td className="p-2">{r.combos}</td>
@@ -309,7 +311,7 @@ const ProceduralSedationTopic = () => {
               </table>
             </div>
             <p className="text-xs text-muted-foreground mb-4 italic">
-              Onset and duration assume IV sedation doses in healthy adults; reduce and slow titration in the elderly, frail, hypovolaemic or hepatic/renal impairment.
+              Onset, peak effect and duration assume IV sedation doses in healthy adults; reduce and slow titration in the elderly, frail, hypovolaemic or hepatic/renal impairment. Peak effect = time for effect-site concentration to equilibrate with plasma after a bolus — wait this long before re-dosing to avoid stacking.
             </p>
 
             <div className="space-y-3">
