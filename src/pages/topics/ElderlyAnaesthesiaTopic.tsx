@@ -1,11 +1,6 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { ReferencesList } from "@/components/ReferencesList";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { elderlyAnaesthesiaQuestions } from "@/data/quizzes";
 import FrailtyAssessmentDiagram from "@/components/diagrams/FrailtyAssessmentDiagram";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const keyPoints = [
   "Physiological reserve is reduced in the elderly — decreased cardiac output, reduced FRC and closing capacity, impaired renal/hepatic drug clearance, and reduced CNS sensitivity thresholds",
@@ -17,27 +12,41 @@ const keyPoints = [
 
 const ElderlyAnaesthesiaTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Anaesthesia for the Elderly Patient"
       subtitle="Age-related physiological changes, frailty assessment, pharmacological considerations, and postoperative cognitive dysfunction"
       backPath="/clinical"
       backLabel="Clinical Anaesthesia"
       accentColor="text-clinical"
-    >
-      <div className="space-y-8">
-        <p className="text-muted-foreground leading-relaxed">
-          Elderly patients now form the majority of the surgical workload in many UK hospitals. Reduced physiological reserve, altered pharmacokinetics, frailty, and a high background prevalence of comorbidity all combine to elevate perioperative risk. This topic outlines the age-related changes that matter at induction, maintenance, and emergence, and the practical strategies — including frailty assessment and delirium prevention — that improve outcomes.
-        </p>
-        <KeyLearningPoints points={keyPoints} />
-        <FrailtyAssessmentDiagram />
+      topicId="elderly-anaesthesia"
+      topicTitle="Anaesthesia for the Elderly Patient"
+      quizQuestions={elderlyAnaesthesiaQuestions}
+      objectives={[
+        "Describe age-related physiological changes affecting anaesthetic management",
+        "Assess frailty using validated tools and integrate it into perioperative risk stratification",
+        "Adjust anaesthetic and analgesic dosing for altered pharmacokinetics in the elderly",
+        "Recognise and manage postoperative delirium and cognitive dysfunction",
+        "Apply NICE NG111 standards to anaesthesia for hip fracture surgery",
+      ]}
+      keyPoints={keyPoints}
+      sectionExamMapping={{
+        objectives: { exams: ["final"] },
+        keyPoints: { exams: ["final"] },
+      }}
+      coreConcepts={
+        <div className="space-y-8">
+          <p className="text-muted-foreground leading-relaxed">
+            Elderly patients now form the majority of the surgical workload in many UK hospitals. Reduced physiological reserve, altered pharmacokinetics, frailty, and a high background prevalence of comorbidity all combine to elevate perioperative risk. This topic outlines the age-related changes that matter at induction, maintenance, and emergence, and the practical strategies — including frailty assessment and delirium prevention — that improve outcomes.
+          </p>
+          <FrailtyAssessmentDiagram />
 
-        {/* Physiological Changes */}
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Age-Related Physiological Changes</h2>
-          <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="font-semibold text-foreground mb-2">Cardiovascular</h3>
-              <ul className="list-disc list-inside space-y-1 text-sm">
+          {/* Physiological Changes */}
+          <section>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Age-Related Physiological Changes</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <div className="bg-card border border-border rounded-lg p-4">
+                <h3 className="font-semibold text-foreground mb-2">Cardiovascular</h3>
+                <ul className="list-disc list-inside space-y-1 text-sm">
                 <li>Reduced cardiac output (↓1% per year after age 30); ↓ maximal heart rate (220 − age)</li>
                 <li>Increased arterial stiffness → isolated systolic hypertension, increased afterload, LV hypertrophy</li>
                 <li>Impaired baroreceptor reflex → exaggerated hypotension with induction agents, neuraxial blockade, and positional changes</li>
