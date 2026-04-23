@@ -134,7 +134,7 @@ const ProgressTracker = () => {
                   {tile.label}
                 </span>
                 {percent === 100 && tile.data.total > 0 && (
-                  <Trophy className="h-3.5 w-3.5 text-amber-500" aria-label="Completed" />
+                  <Trophy className="h-3.5 w-3.5 text-accent" aria-label="Completed" />
                 )}
               </div>
               <div className="flex items-baseline gap-1.5 mb-2">
