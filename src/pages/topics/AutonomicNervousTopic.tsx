@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
 import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Contrast sympathetic and parasympathetic outflow, neurotransmitters and receptor types.",
@@ -88,10 +89,10 @@ const AutonomicNervousTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["CR_BK_05"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["primary", "final"], curriculumCodes: ["OA_BK_06"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["OA_BK_06"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.14"],

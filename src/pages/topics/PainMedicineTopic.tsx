@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
 import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Distinguish nociceptive, neuropathic and nociplastic pain mechanisms and tailor pharmacotherapy accordingly",
@@ -50,9 +51,9 @@ const PainMedicineTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={painMedicineQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "Multimodal analgesia reduces opioid consumption — paracetamol, NSAIDs, gabapentinoids, ketamine, magnesium, IV lidocaine",

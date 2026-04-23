@@ -7,6 +7,7 @@ import OLVTroubleshootingDiagram from "@/components/diagrams/OLVTroubleshootingD
 import CardiacArrestPostCardiacSurgeryDiagram from "@/components/diagrams/CardiacArrestPostCardiacSurgeryDiagram";
 import ArrestTimeWindowWidget from "@/components/diagrams/ArrestTimeWindowWidget";
 import { TopicTableOfContents } from "@/components/TopicTableOfContents";
+import { Exam } from "@/data/curriculum";
 
 const tocItems = [
   { id: "cpb-overview", label: "CPB circuit & anticoagulation", group: "Cardiac surgery" },
@@ -62,9 +63,9 @@ const CardiothoracicTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={cardiothoracicQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "CPB: heparin 300-400 u/kg, target ACT >480s, reverse with protamine 1mg:100u ratio",

@@ -3,6 +3,7 @@ import { anticoagulantsQuiz } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import BridgingAnticoagulationPathway from "@/components/diagrams/BridgingAnticoagulationPathway";
 import { DiagramSection } from "@/components/DiagramSection";
+import { Exam } from "@/data/curriculum";
 
 const heparinComparison = [
   { property: "Source", ufh: "Porcine intestinal mucosa", lmwh: "Depolymerised UFH" },
@@ -53,9 +54,9 @@ const AnticoagulantsTopic = () => {
         "Neuraxial timing: LMWH prophylactic 12 h / therapeutic 24 h; DOACs 48–72 h; warfarin INR ≤1.4.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary", "final"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "NICE NG89", "BSH 2011"],

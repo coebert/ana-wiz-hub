@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { AtomicStructureDiagram } from "@/components/diagrams/AtomicStructureDiagram";
 import { PeriodicTableAnaestheticDiagram } from "@/components/diagrams/PeriodicTableAnaestheticDiagram";
 import { atomicStructureQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Explain electron shell structure and predict reactivity from valence-shell configuration",
@@ -93,9 +94,9 @@ const AtomicStructureBondingTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={atomicStructureQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement", "RCoA Primary — Pharmacology"] },
-        workedExamples: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement", "RCoA Primary — Pharmacology"] },
+        workedExamples: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
         objectives: [

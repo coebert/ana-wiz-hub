@@ -5,6 +5,7 @@ import { starlingForcesQuestions } from "@/data/quizzes";
 import StarlingForcesDiagram from "@/components/diagrams/StarlingForcesDiagram";
 import GlycocalyxDiagram from "@/components/diagrams/GlycocalyxDiagram";
 import { DiagramSection } from "@/components/DiagramSection";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "State the Starling equation and define each term, including the reflection coefficient (σ).",
@@ -94,10 +95,10 @@ const StarlingForcesTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["CR_BK_05"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["primary", "final", "fficm"], curriculumCodes: ["CR_BK_05", "OA_BK_06"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_05", "OA_BK_06"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Levick & Michel 2010", "Woodcock & Woodcock 2012"],

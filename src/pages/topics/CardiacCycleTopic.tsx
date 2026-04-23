@@ -8,6 +8,7 @@ import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPo
 import AorticDicroticNotchDiagram from "@/components/diagrams/AorticDicroticNotchDiagram";
 import DichroticNotchComparisonPanel from "@/components/diagrams/DichroticNotchComparisonPanel";
 import { cardiacCycleQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the seven phases of the cardiac cycle and correlate them with the Wiggers diagram and PV loop.",
@@ -99,10 +100,10 @@ const CardiacCycleTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["CR_BK_01"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["CR_BK_01", "OA_BK_05"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_01"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_01", "OA_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.4", "Ganong Ch.30"],

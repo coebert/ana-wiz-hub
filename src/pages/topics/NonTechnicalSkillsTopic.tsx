@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { QuizQuestion } from "@/components/QuizSection";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Define the four ANTS categories (situation awareness, decision making, task management, team working) and their elements.",
@@ -68,8 +69,8 @@ const NonTechnicalSkillsTopic = () => {
         keyPoints: ["BMJ 2000", "PSIRF 2022", "Marx 2001", "CHFG"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["fficm", "edic"], curriculumCodes: ["FFICM 5.4", "EDIC 11"] },
-        keyPoints: { exams: ["fficm", "edic"] },
+        objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.4", "EDIC 11"] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

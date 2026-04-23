@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the composition, dose, and storage of red cells, FFP, cryoprecipitate, platelets, fibrinogen concentrate and PCC",
@@ -48,9 +49,9 @@ const TransfusionCoagulationTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={transfusionCoagulationQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.6", "EDIC 5.6"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
         "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS",

@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
+import { Exam } from "@/data/curriculum";
 
 const AbdominalAnatomyTopic = () => {
   return (
@@ -20,10 +21,10 @@ const AbdominalAnatomyTopic = () => {
         "Map pelvic autonomic and sacral plexus anatomy onto regional techniques.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["AN_BK_03"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["AN_BK_03"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.4", "Miller Ch.47"],

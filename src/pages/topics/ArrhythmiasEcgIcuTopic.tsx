@@ -21,6 +21,7 @@ import {
   wellensContent,
 } from "@/components/diagrams/ecgExpandedContent";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply a reproducible 8-step ECG analysis (rate, rhythm, P, PR, QRS, ST/T, QT, compare) to any ICU strip or 12-lead",
@@ -66,9 +67,9 @@ const ArrhythmiasEcgIcuTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={arrhythmiasEcgIcuQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 2.4", "EDIC 4.1"] },
-        workedExamples: { exams: ["final", "fficm", "edic"], curriculumCodes: ["FFICM 2.4"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 2.4", "EDIC 4.1"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 2.4"] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
         "Apply the same 8-step ECG analysis (rate · rhythm · P · PR · QRS · ST/T · QT · compare) to every strip — speed comes from consistency, not shortcuts",

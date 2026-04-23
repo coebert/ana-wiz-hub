@@ -5,6 +5,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import FinapresDiagram from "@/components/diagrams/FinapresDiagram";
 import ManometerDiagram from "@/components/diagrams/ManometerDiagram";
 import { pressureMeasurementQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Convert fluently between mmHg, cmH₂O, kPa and bar in clinical pressure measurements",
@@ -49,9 +50,9 @@ const PressureMeasurementTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={pressureMeasurementQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
-        workedExamples: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Physics", "RCoA Final — Physics"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["BJA Educ 2015"],

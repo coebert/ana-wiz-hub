@@ -10,6 +10,7 @@ import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
+import { Exam } from "@/data/curriculum";
 
 const HeadNeckAnatomyTopic = () => {
   return (
@@ -41,8 +42,8 @@ const HeadNeckAnatomyTopic = () => {
         "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">

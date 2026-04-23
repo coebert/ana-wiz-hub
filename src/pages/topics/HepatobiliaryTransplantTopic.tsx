@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { hepatobiliaryTransplantQuestions } from "@/data/quizzes";
 import LiverTransplantPhasesDiagram from "@/components/diagrams/LiverTransplantPhasesDiagram";
+import { Exam } from "@/data/curriculum";
 
 const HepatobiliaryTransplantTopic = () => {
   return (
@@ -21,10 +22,10 @@ const HepatobiliaryTransplantTopic = () => {
         "Adapt anaesthesia for the cirrhotic patient including hepatopulmonary syndrome.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["CH_BK_03"] },
-        diagrams: { exams: ["final"], curriculumCodes: ["CH_BK_03"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["CH_BK_03"] },
+        diagrams: { exams: [Exam.FINAL], curriculumCodes: ["CH_BK_03"] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2017 LiverResection", "AAGBI Cirrhosis 2017"],

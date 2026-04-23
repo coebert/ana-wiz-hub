@@ -5,6 +5,7 @@ import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
 import IonChannelTimelineDiagram from "@/components/diagrams/IonChannelTimelineDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Contrast the fast and slow cardiac action potentials and identify the dominant ionic currents in each phase.",
@@ -89,10 +90,10 @@ const CardiacElectrophysiologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["CR_BK_02"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["OA_BK_01"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["CR_BK_02"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_01"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.4"],

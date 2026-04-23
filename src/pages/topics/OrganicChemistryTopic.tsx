@@ -5,6 +5,7 @@ import IsomerismDiagram from "@/components/diagrams/IsomerismDiagram";
 import ChiralityAnaesthesiaDiagram from "@/components/diagrams/ChiralityAnaesthesiaDiagram";
 import AmineComparisonDiagram from "@/components/diagrams/AmineComparisonDiagram";
 import { organicChemistryQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const OrganicChemistryTopic = () => {
   return (
@@ -24,10 +25,10 @@ const OrganicChemistryTopic = () => {
         "Use lipophilicity to predict CNS penetration and protein binding.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PH_BK_02"] },
-        diagrams: { exams: ["primary"] },
-        workedExamples: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_02"] },
+        diagrams: { exams: [Exam.PRIMARY] },
+        workedExamples: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.3", "Cross & Plunkett Ch.4"],

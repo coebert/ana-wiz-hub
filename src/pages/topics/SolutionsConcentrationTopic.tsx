@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { SolutionsConcentrationDiagram } from "@/components/diagrams/SolutionsConcentrationDiagram";
 import { solutionsConcentrationQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Convert between %, mg/mL, mmol/L and ratio expressions of drug concentration",
@@ -47,9 +48,9 @@ const SolutionsConcentrationTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={solutionsConcentrationQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Physics & Clinical Measurement"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["Severs 2015", "Lobo & Awad 2014"],

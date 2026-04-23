@@ -14,6 +14,7 @@ import { RenalBloodFlowDiagram } from "@/components/diagrams/RenalBloodFlowDiagr
 import { UrineConcentrationSimulator } from "@/components/diagrams/UrineConcentrationSimulator";
 import HyponatraemiaWorkupDiagram from "@/components/diagrams/HyponatraemiaWorkupDiagram";
 import { EGFRCalculator } from "@/components/diagrams/EGFRCalculator";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the structure of the nephron and the functional differences between cortical and juxtamedullary nephrons.",
@@ -91,9 +92,9 @@ const RenalPhysiologyTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={renalPhysiologyQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RU_BK_01", "RU_BK_02"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["RU_BK_02"] },
-        keyPoints: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RU_BK_01"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_01", "RU_BK_02"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_02"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["RU_BK_01"] },
       }}
       keyPoints={[
         "GFR ≈ 125 ml/min. Autoregulation maintains GFR over MAP 80–180 mmHg (myogenic + TGF).",

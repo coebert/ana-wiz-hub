@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Recall the brachial plexus organisation: roots → trunks → divisions → cords → branches (C5–T1)",
@@ -96,9 +97,9 @@ const BrachialPlexusTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={brachialPlexusQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Anatomy", "RCoA Final — Regional Anaesthesia"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Anatomy", "RCoA Final — Regional Anaesthesia"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: [

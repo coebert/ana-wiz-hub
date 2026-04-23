@@ -3,6 +3,7 @@ import { MACDiagram } from "@/components/diagrams/MACDiagram";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
+import { Exam } from "@/data/curriculum";
 
 const VolatileAgentsTopic = () => {
   return (
@@ -32,9 +33,9 @@ const VolatileAgentsTopic = () => {
         "Modern targets include GABAA receptors, glycine receptors, two-pore K⁺ channels (TREK/TASK), and NMDA receptors.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2014", "Peck & Hill Ch.4", "Eger"],

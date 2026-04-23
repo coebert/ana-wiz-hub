@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { bariatricAnaesthesiaQuestions } from "@/data/quizzes";
 import BariatricProceduresDiagram from "@/components/diagrams/BariatricProceduresDiagram";
 import StopBangCalculator from "@/components/diagrams/StopBangCalculator";
+import { Exam } from "@/data/curriculum";
 
 const BariatricAnaesthesiaTopic = () => {
   return (
@@ -29,8 +30,8 @@ const BariatricAnaesthesiaTopic = () => {
         "Postoperative: head-up positioning, resume CPAP, continuous SpO₂, multimodal opioid-sparing analgesia",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

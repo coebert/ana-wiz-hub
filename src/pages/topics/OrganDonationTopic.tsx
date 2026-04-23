@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { organDonationQuestions } from "@/data/quizzes";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Distinguish DBD and DCD pathways and the legal time of death for each.",
@@ -100,9 +101,9 @@ const OrganDonationTopic = () => {
         keyPoints: ["AoMRC 2008", "NICE CG135", "BJA Educ 2016"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["fficm", "edic"], curriculumCodes: ["FFICM 5.5", "EDIC 7.1"] },
-        workedExamples: { exams: ["fficm", "edic"] },
-        keyPoints: { exams: ["fficm", "edic"] },
+        objectives: { exams: [Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 5.5", "EDIC 7.1"] },
+        workedExamples: { exams: [Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FFICM, Exam.EDIC] },
       }}
       coreConcepts={
         <>

@@ -5,6 +5,7 @@ import { NMBAMechanismDiagram } from "@/components/diagrams/NMBAMechanismDiagram
 import { TOFPatternDiagram } from "@/components/diagrams/TOFPatternDiagram";
 import { NMBATimelineDiagram } from "@/components/diagrams/NMBATimelineDiagram";
 import SugammadexDiagram from "@/components/diagrams/SugammadexDiagram";
+import { Exam } from "@/data/curriculum";
 
 const MuscleRelaxantsTopic = () => {
   return (
@@ -33,9 +34,9 @@ const MuscleRelaxantsTopic = () => {
         "TOF ratio <0.9 = residual blockade. Quantitative neuromuscular monitoring is the standard of care.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        diagrams: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
-        keyPoints: { exams: ["primary"], curriculumCodes: ["PR_BK_05"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY], curriculumCodes: ["PR_BK_05"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2015", "Peck & Hill Ch.7", "Fourth National Audit Project"],

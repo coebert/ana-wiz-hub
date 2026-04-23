@@ -4,6 +4,7 @@ import { CompartmentModelDiagram } from "@/components/diagrams/CompartmentModelD
 import { CSHTComparisonDiagram } from "@/components/diagrams/CSHTComparisonDiagram";
 import { ADMECascadeDiagram } from "@/components/diagrams/ADMECascadeDiagram";
 import { pharmacokineticsQuiz } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const PharmacokineticsTopic = () => {
   return (
@@ -23,10 +24,10 @@ const PharmacokineticsTopic = () => {
         "Use context-sensitive half-time to predict offset of TIVA infusions.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary"], curriculumCodes: ["PH_BK_01"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["PH_BK_01"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Peck & Hill Ch.2", "BJA Educ 2017"],

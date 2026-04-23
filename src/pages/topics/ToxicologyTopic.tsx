@@ -4,6 +4,7 @@ import { toxicologyQuestions } from "@/data/quizzes";
 import ParacetamolNomogramDiagram from "@/components/diagrams/ParacetamolNomogramDiagram";
 import ToxidromeComparatorDiagram from "@/components/diagrams/ToxidromeComparatorDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply the ABCDE approach to acute poisoning and identify when to escalate to NPIS/TOXBASE.",
@@ -149,10 +150,10 @@ const ToxicologyTopic = () => {
         keyPoints: ["BJA Educ 2016", "AAGBI Lipid Rescue"],
       }}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm", "edic"], curriculumCodes: ["CC1.10", "11A04"] },
-        diagrams: { exams: ["final", "fficm", "edic"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["final", "fficm", "edic"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["CC1.10", "11A04"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       diagrams={
         <>

@@ -5,6 +5,7 @@ import { clinicalIncidentsQuestions } from "@/data/quizzes";
 import MHPathophysiologyDiagram from "@/components/diagrams/MHPathophysiologyDiagram";
 import AnaphylaxisPathophysiologyDiagram from "@/components/diagrams/AnaphylaxisPathophysiologyDiagram";
 import { AnaphylaxisCascadeDiagram } from "@/components/diagrams/AnaphylaxisCascadeDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Recognise and manage perioperative anaphylaxis using the AAGBI/RCoA algorithm (adrenaline first)",
@@ -97,9 +98,9 @@ const ClinicalIncidentsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={clinicalIncidentsQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia", "FFICM 2.5"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Clinical Anaesthesia", "FFICM 2.5"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: [

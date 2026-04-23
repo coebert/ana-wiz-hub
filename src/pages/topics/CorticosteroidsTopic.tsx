@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { corticosteroidsQuestions } from "@/data/quizzes";
 import { CorticosteroidPharmacodynamicsDiagram } from "@/components/diagrams/CorticosteroidPharmacodynamicsDiagram";
 import { HPAAxisSuppressionDiagram } from "@/components/diagrams/HPAAxisSuppressionDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe glucocorticoid receptor signalling and distinguish transrepression from transactivation",
@@ -96,9 +97,9 @@ const CorticosteroidsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={corticosteroidsQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: [

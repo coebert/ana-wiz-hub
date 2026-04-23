@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { cardiovascularDiseaseQuestions } from "@/data/quizzes";
 import ValvularHaemodynamicsDiagram from "@/components/diagrams/ValvularHaemodynamicsDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Stratify perioperative cardiac risk (METs, RCRI, ESC/ESA pathway) and decide on further investigation.",
@@ -33,9 +34,9 @@ const CardiovascularDiseaseTopic = () => {
       quizQuestions={cardiovascularDiseaseQuestions}
       diagrams={<ValvularHaemodynamicsDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"] },
-        diagrams: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["ESC/ESA 2022", "AHA/ACC 2014"],

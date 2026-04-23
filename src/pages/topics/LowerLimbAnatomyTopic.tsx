@@ -5,6 +5,7 @@ import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDia
 import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
 import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the formation and main branches of the lumbar and sacral plexuses",
@@ -27,8 +28,8 @@ const LowerLimbAnatomyTopic = () => {
       objectives={objectives}
       quizQuestions={lowerLimbAnatomyQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["RCoA Primary — Anatomy"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Anatomy"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       keyPoints={[
         "Femoral nerve (L2-L4): lateral to femoral artery under inguinal ligament. Motor: quadriceps. Sensory: anterior thigh + medial leg (saphenous)",

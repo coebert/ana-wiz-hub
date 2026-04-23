@@ -10,6 +10,7 @@ import MDRGramNegativeSelector from "@/components/diagrams/MDRGramNegativeSelect
 import BetaLactamaseClassificationTable from "@/components/diagrams/BetaLactamaseClassificationTable";
 import AntibioticPKPDPrimer from "@/components/diagrams/AntibioticPKPDPrimer";
 import EmpiricalSepsisChooser from "@/components/diagrams/EmpiricalSepsisChooser";
+import { Exam } from "@/data/curriculum";
 
 type Tab = "antibiotics" | "antifungals" | "antivirals";
 
@@ -103,8 +104,8 @@ const AntimicrobialsTopic = () => {
       keyPoints={keyPoints}
       quizQuestions={antimicrobialsQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       coreConcepts={
         <section className="space-y-8">

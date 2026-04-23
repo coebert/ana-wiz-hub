@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { neuroanatomyQuestions } from "@/data/quizzes";
 import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
+import { Exam } from "@/data/curriculum";
 
 const NeuroanatomyTopic = () => {
   return (
@@ -21,10 +22,10 @@ const NeuroanatomyTopic = () => {
         "Locate brainstem nuclei and apply them to brainstem death testing.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["AN_BK_07"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["AN_BK_07"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.7", "Power & Kam Ch.13"],

@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { foetalCirculationQuestions } from "@/data/quizzes";
 import FoetalCirculationDiagram from "@/components/diagrams/FoetalCirculationDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Identify the three foetal shunts and the role of each in directing oxygenated blood.",
@@ -88,10 +89,10 @@ const FoetalCirculationTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["PA_BK_01"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["PA_BK_02"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["PA_BK_01"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["PA_BK_02"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.18"],

@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Choose neuromuscular blockers and reversal strategies for myasthenia gravis and other neuromuscular disorders.",
@@ -33,9 +34,9 @@ const NeurologicalDiseaseTopic = () => {
       quizQuestions={neurologicalDiseaseQuestions}
       diagrams={<MGNMBASensitivityDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"] },
-        diagrams: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2018 MG", "BJA Educ 2014 PD", "BJA Educ 2015 Epilepsy"],

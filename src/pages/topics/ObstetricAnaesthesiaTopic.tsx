@@ -5,6 +5,7 @@ import PregnancyPhysiologyDiagram from "@/components/diagrams/PregnancyPhysiolog
 import PostpartumLegWeaknessDecisionTree from "@/components/diagrams/PostpartumLegWeaknessDecisionTree";
 import { Cat1RSIAnimation } from "@/components/diagrams/Cat1RSIAnimation";
 import { DiagramSection } from "@/components/DiagramSection";
+import { Exam } from "@/data/curriculum";
 
 const ObstetricAnaesthesiaTopic = () => {
   return (
@@ -33,9 +34,9 @@ const ObstetricAnaesthesiaTopic = () => {
         "Cat 1 GA: target ≥1.0 MAC pre-delivery + processed EEG — obstetric GA is highest awareness-risk group (NAP5)",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
-        diagrams: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
-        keyPoints: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_07"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_07"] },
       }}
       sectionSources={{
         objectives: ["BJA Educ 2019", "OAA/DAS 2015", "MBRRACE-UK"],

@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { plasticSurgeryQuestions } from "@/data/quizzes";
 import FreeFlaPerfusionDiagram from "@/components/diagrams/FreeFlaPerfusionDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply the principles of normotension, normovolaemia and normothermia to optimise free-flap perfusion",
@@ -48,10 +49,10 @@ const PlasticSurgeryTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={plasticSurgeryQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        diagrams: { exams: ["final"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        diagrams: { exams: [Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       keyPoints={[
         "Free-flap surgery demands meticulous haemodynamic management — normotension, normovolaemia, normothermia to optimise flap perfusion",

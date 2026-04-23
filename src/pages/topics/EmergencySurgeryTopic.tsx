@@ -4,6 +4,7 @@ import { NCEPODClassificationDiagram } from "@/components/diagrams/NCEPODClassif
 import { EmergencyRSIDiagram } from "@/components/diagrams/EmergencyRSIDiagram";
 import { EmergencyLaparotomyBundleDiagram } from "@/components/diagrams/EmergencyLaparotomyBundleDiagram";
 import { EmergencySurgeryGlossaryDrawer } from "@/components/EmergencySurgeryGlossaryDrawer";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply the NCEPOD classification to prioritise emergency surgery and resuscitation.",
@@ -43,9 +44,9 @@ const EmergencySurgeryTopic = () => {
         </div>
       }
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"] },
-        diagrams: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["NCEPOD 2011", "NELA Year 9 2023", "RCoA GPAS Ch.5"],

@@ -11,6 +11,7 @@ import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalc
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import { airwayManagementQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
@@ -91,10 +92,10 @@ const AirwayManagementTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_03", "IC_BK_03"] },
-        diagrams: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_03"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_03"] },
-        keyPoints: { exams: ["final", "fficm"], curriculumCodes: ["CL_BK_03"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03", "IC_BK_03"] },
+        diagrams: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["CL_BK_03"] },
       }}
       sectionSources={{
         objectives: ["DAS 2015", "NAP4 2011"],

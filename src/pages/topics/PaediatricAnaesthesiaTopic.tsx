@@ -6,6 +6,7 @@ import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentS
 import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { paediatricAnaesthesiaQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Identify key anatomical and physiological differences between neonates, infants and adults",
@@ -50,9 +51,9 @@ const PaediatricAnaesthesiaTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={paediatricAnaesthesiaQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       keyPoints={[
         "Neonatal cardiac output is rate-dependent — bradycardia is a haemodynamic emergency",

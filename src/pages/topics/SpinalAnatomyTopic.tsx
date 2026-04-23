@@ -7,6 +7,7 @@ import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalD
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
 import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
+import { Exam } from "@/data/curriculum";
 
 const SpinalAnatomyTopic = () => {
   // Synced selection between InteractiveDermatomeMap and DermatomeMyotomeDiagram —
@@ -38,8 +39,8 @@ const SpinalAnatomyTopic = () => {
         "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">

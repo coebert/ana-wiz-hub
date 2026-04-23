@@ -13,6 +13,7 @@ import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram
 import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
 import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
+import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
   return (
@@ -31,10 +32,10 @@ const CardiacAnatomyTopic = () => {
         "Locate the great vessels and pericardial sinuses relevant to cardiac surgery.",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["AN_BK_03"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["primary", "final", "fficm"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["AN_BK_03"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Ellis & Feldman Ch.3", "Power & Kam Ch.3"],

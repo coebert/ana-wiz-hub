@@ -4,6 +4,7 @@ import { acidBaseQuestions } from "@/data/quizzes";
 import StewartAcidBaseDiagram from "@/components/diagrams/StewartAcidBaseDiagram";
 import AcidBaseInterpretationDiagram from "@/components/diagrams/AcidBaseInterpretationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply a five-step systematic ABG interpretation (oxygenation → primary disorder → compensation → anion gap → delta ratio)",
@@ -48,9 +49,9 @@ const AcidBaseTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={acidBaseQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm", "edic"], curriculumCodes: ["FFICM 4.4", "EDIC 5.4"] },
-        workedExamples: { exams: ["final", "fficm", "edic"] },
-        keyPoints: { exams: ["primary", "final", "fficm", "edic"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC], curriculumCodes: ["FFICM 4.4", "EDIC 5.4"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC] },
       }}
       keyPoints={[
         "Systematic approach: oxygenation → primary disorder → compensation → anion gap → delta ratio",

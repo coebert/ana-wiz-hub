@@ -9,6 +9,7 @@ import HypersensitivityComparisonDiagram from "@/components/diagrams/Hypersensit
 import VaccineTypesDiagram from "@/components/diagrams/VaccineTypesDiagram";
 import AsplenicVaccinationFlowchart from "@/components/diagrams/AsplenicVaccinationFlowchart";
 import ImmuneCellLineageDiagram from "@/components/diagrams/ImmuneCellLineageDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Describe the cell-based model of coagulation (initiation, amplification, propagation) and the laboratory tests of each pathway.",
@@ -115,10 +116,10 @@ const HaematologyImmunityTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["HI_BK_01"] },
-        diagrams: { exams: ["primary", "final", "fficm"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["HI_BK_02", "OA_BK_07"] },
-        keyPoints: { exams: ["primary", "final", "fficm"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM], curriculumCodes: ["HI_BK_01"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["HI_BK_02", "OA_BK_07"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: ["Allman & Wilson Ch.18", "BJA Educ Adaptive 2019"],

@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { temperatureMeasurementQuiz } from "@/data/quizzes";
 import TemperatureMeasurementDiagram from "@/components/diagrams/TemperatureMeasurementDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Explain the Seebeck effect and the construction of thermocouples.",
@@ -35,9 +36,9 @@ const TemperatureMeasurementTopic = () => {
       quizQuestions={temperatureMeasurementQuiz}
       diagrams={<TemperatureMeasurementDiagram />}
       sectionExamMapping={{
-        objectives: { exams: ["primary"] },
-        diagrams: { exams: ["primary"] },
-        keyPoints: { exams: ["primary"] },
+        objectives: { exams: [Exam.PRIMARY] },
+        diagrams: { exams: [Exam.PRIMARY] },
+        keyPoints: { exams: [Exam.PRIMARY] },
       }}
       sectionSources={{
         objectives: ["Cross & Plunkett Ch.11", "NICE CG65"],

@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { endocrinePhysiologyQuestions } from "@/data/quizzes";
 import HPAAxisDiagram from "@/components/diagrams/HPAAxisDiagram";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Outline the hypothalamic-pituitary axis and identify hormones with major perioperative relevance.",
@@ -89,10 +90,10 @@ const EndocrinePhysiologyTopic = () => {
       objectives={objectives}
       workedExamples={workedExamples}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final"], curriculumCodes: ["CR_BK_07"] },
-        diagrams: { exams: ["primary", "final"] },
-        workedExamples: { exams: ["final", "fficm"], curriculumCodes: ["OA_BK_05"] },
-        keyPoints: { exams: ["primary", "final"] },
+        objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["CR_BK_07"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["OA_BK_05"] },
+        keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: ["Power & Kam Ch.12"],

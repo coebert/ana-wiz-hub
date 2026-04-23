@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { vascularAnaesthesiaQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const VascularAnaesthesiaTopic = () => {
   return (
@@ -31,8 +32,8 @@ const VascularAnaesthesiaTopic = () => {
         "Ischaemia-reperfusion: K⁺ release, myoglobin, lactate washout can cause arrhythmias, AKI, ARDS",
       ]}
       sectionExamMapping={{
-        objectives: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       coreConcepts={
         <>

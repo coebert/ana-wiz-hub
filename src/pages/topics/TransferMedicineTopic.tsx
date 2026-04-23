@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { transferMedicineQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply ICS / AAGBI standards to plan a safe inter-hospital transfer (decision, personnel, equipment)",
@@ -93,9 +94,9 @@ const TransferMedicineTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={transferMedicineQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final", "fficm"], curriculumCodes: ["FFICM 2.6", "RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final", "fficm"] },
-        keyPoints: { exams: ["final", "fficm"] },
+        objectives: { exams: [Exam.FINAL, Exam.FFICM], curriculumCodes: ["FFICM 2.6", "RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM] },
       }}
       sectionSources={{
         objectives: [

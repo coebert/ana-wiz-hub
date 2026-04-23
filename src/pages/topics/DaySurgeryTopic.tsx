@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { daySurgeryQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Apply BADS-aligned criteria to select patients suitable for day-case surgery",
@@ -46,9 +47,9 @@ const DaySurgeryTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={daySurgeryQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       sectionSources={{
         workedExamples: ["BADS Guidelines", "AAGBI Day Surgery 2019"],

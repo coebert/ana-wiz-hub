@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsPlasticsQuestions } from "@/data/quizzes";
+import { Exam } from "@/data/curriculum";
 
 const objectives = [
   "Estimate burn extent and depth using Wallace's Rule of Nines and Lund & Browder",
@@ -46,9 +47,9 @@ const BurnsPlasticsTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={burnsPlasticsQuestions}
       sectionExamMapping={{
-        objectives: { exams: ["final"], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
-        workedExamples: { exams: ["final"] },
-        keyPoints: { exams: ["final"] },
+        objectives: { exams: [Exam.FINAL], curriculumCodes: ["RCoA Final — Clinical Anaesthesia"] },
+        workedExamples: { exams: [Exam.FINAL] },
+        keyPoints: { exams: [Exam.FINAL] },
       }}
       keyPoints={[
         "Burns >15% TBSA in adults (>10% in children) require formal fluid resuscitation — Parkland: 4 ml × kg × %TBSA in 24 h, half in the first 8 h from time of burn",
