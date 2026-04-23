@@ -160,15 +160,9 @@ const ClinicalMeasurementTopic = () => {
             </p>
           </div>
         </div>
-
-        <QuizSection questions={clinicalMeasurementQuiz} />
-
-      <ReferencesList topicId="clinical-measurement" />
-
-        <SeeAlso topicId="clinical-measurement" />
-        <TopicCompletionToggle topicId="clinical-measurement" topicTitle="Clinical Measurement" />
-      </div>
-    </SectionLayout>
+        </>
+      }
+    />
   );
 };
 
