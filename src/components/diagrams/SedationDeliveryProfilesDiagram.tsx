@@ -139,6 +139,7 @@ const Panel = ({
   markers,
   targetId,
   linkLabel,
+  callouts,
 }: PanelProps) => {
   const fullPath = toPath(sampleAt(curve));
   const visiblePath = toPath(sampleAt(curve, Math.max(2, Math.round(N_SAMPLES * progress))));
