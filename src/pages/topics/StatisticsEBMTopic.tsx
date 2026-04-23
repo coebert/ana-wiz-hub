@@ -46,9 +46,9 @@ const StatisticsEBMTopic = () => {
       workedExamples={workedExamples}
       quizQuestions={statisticsEBMQuiz}
       sectionExamMapping={{
-        objectives: { exams: ["primary", "final", "ficm"], curriculumCodes: ["RCoA Primary — Statistics"] },
-        workedExamples: { exams: ["primary", "final", "ficm"] },
-        keyPoints: { exams: ["primary", "final", "ficm"] },
+        objectives: { exams: ["primary", "final", "fficm"], curriculumCodes: ["RCoA Primary — Statistics"] },
+        workedExamples: { exams: ["primary", "final", "fficm"] },
+        keyPoints: { exams: ["primary", "final", "fficm"] },
       }}
       keyPoints={[
         "A p-value is the probability of observing a result at least as extreme as the data, assuming the null hypothesis is true — NOT the probability the null is true",
@@ -61,7 +61,7 @@ const StatisticsEBMTopic = () => {
       ]}
       coreConcepts={
         <>
-          <ExamSection id="introduction" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="introduction" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Introduction</h2>
             <p className="text-muted-foreground leading-relaxed">
               Statistics and evidence-based medicine (EBM) are examined across the Primary FRCA, Final FRCA, and FFICM. Understanding study design, measures of effect,
@@ -69,7 +69,7 @@ const StatisticsEBMTopic = () => {
             </p>
           </ExamSection>
 
-          <ExamSection id="study-design" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="study-design" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Study Design</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -90,7 +90,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="hypothesis-testing" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="hypothesis-testing" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Hypothesis Testing & p-Values</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -109,7 +109,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="measures-effect" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="measures-effect" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Measures of Effect</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -130,7 +130,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="diagnostic-tests" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="diagnostic-tests" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Diagnostic Test Performance</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -156,7 +156,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="statistical-tests" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="statistical-tests" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Common Statistical Tests</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -192,7 +192,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bias-confounding" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="bias-confounding" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Bias, Confounding & Validity</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -211,7 +211,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="meta-analysis" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="meta-analysis" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Systematic Reviews & Meta-Analysis</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
@@ -229,7 +229,7 @@ const StatisticsEBMTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="bayesian" exams={["primary", "final", "ficm"]}>
+          <ExamSection id="bayesian" exams={["primary", "final", "fficm"]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Bayesian Concepts</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>
