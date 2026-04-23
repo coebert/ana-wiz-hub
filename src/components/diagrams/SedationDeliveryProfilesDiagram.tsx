@@ -99,18 +99,59 @@ interface PanelProps {
   colorVar: string;
   /** Vertical event markers along x in [0,1] (e.g. bolus times) */
   markers?: number[];
+  /** Optional anchor id of an in-page section to scroll to on click */
+  targetId?: string;
+  /** Accessible label for the scroll link, e.g. "Read more about boluses" */
+  linkLabel?: string;
 }
 
-const Panel = ({ title, subtitle, curve, progress, colorVar, markers }: PanelProps) => {
+const scrollToId = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Brief highlight so the user notices where they landed
+  el.classList.add("ring-2", "ring-primary", "ring-offset-2", "ring-offset-background");
+  window.setTimeout(() => {
+    el.classList.remove("ring-2", "ring-primary", "ring-offset-2", "ring-offset-background");
+  }, 1600);
+};
+
+const Panel = ({
+  title,
+  subtitle,
+  curve,
+  progress,
+  colorVar,
+  markers,
+  targetId,
+  linkLabel,
+}: PanelProps) => {
   const fullPath = toPath(sampleAt(curve));
   const visiblePath = toPath(sampleAt(curve, Math.max(2, Math.round(N_SAMPLES * progress))));
   const cursorX = PAD_L + progress * INNER_W;
   const cursorC = curve(progress);
   const cursorY = PAD_T + (1 - Math.max(0, Math.min(1, cursorC))) * INNER_H;
 
+  const isLinked = Boolean(targetId);
+  const Wrapper = isLinked ? "button" : "div";
+  const wrapperProps: React.ComponentProps<"button"> = isLinked
+    ? {
+        type: "button",
+        onClick: () => targetId && scrollToId(targetId),
+        "aria-label": linkLabel ?? `Jump to ${title} explanation`,
+      }
+    : {};
+
   return (
-    <div className="rounded-lg border border-border bg-card p-3">
-      <div className="flex items-baseline justify-between mb-1">
+    <Wrapper
+      {...wrapperProps}
+      className={cn(
+        "rounded-lg border border-border bg-card p-3 text-left w-full",
+        isLinked &&
+          "transition-all hover:border-primary hover:shadow-sm hover:bg-secondary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background cursor-pointer",
+      )}
+    >
+      <div className="flex items-baseline justify-between mb-1 gap-2">
         <p className="font-semibold text-foreground text-sm">{title}</p>
         <p className="text-[11px] text-muted-foreground">{subtitle}</p>
       </div>
