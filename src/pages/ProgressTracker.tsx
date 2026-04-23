@@ -19,6 +19,7 @@ import { ProgressRing } from "@/components/ProgressRing";
 import {
   Section,
   ExamTag,
+  Exam,
   topicsBySection,
   allTopics,
 } from "@/data/curriculum";
@@ -27,10 +28,10 @@ type ExamFilter = "all" | ExamTag;
 
 const examFilters: { label: string; value: ExamFilter; description: string }[] = [
   { label: "All", value: "all", description: "Every available topic across all curricula" },
-  { label: "Primary FRCA", value: "primary", description: "Topics tagged for the FRCA Primary syllabus" },
-  { label: "Final FRCA", value: "final", description: "Topics tagged for the FRCA Final syllabus" },
-  { label: "FFICM", value: "fficm", description: "Topics tagged for the FFICM syllabus" },
-  { label: "EDIC", value: "edic", description: "Topics tagged for the European Diploma in Intensive Care" },
+  { label: "Primary FRCA", value: Exam.PRIMARY, description: "Topics tagged for the FRCA Primary syllabus" },
+  { label: "Final FRCA", value: Exam.FINAL, description: "Topics tagged for the FRCA Final syllabus" },
+  { label: "FFICM", value: Exam.FFICM, description: "Topics tagged for the FFICM syllabus" },
+  { label: "EDIC", value: Exam.EDIC, description: "Topics tagged for the European Diploma in Intensive Care" },
 ];
 
 const sectionMeta: {
@@ -62,20 +63,20 @@ const ProgressTracker = () => {
   const summary = useMemo(
     () => ({
       all: getOverallProgress(),
-      primary: getExamProgress("primary"),
-      final: getExamProgress("final"),
-      fficm: getExamProgress("fficm"),
-      edic: getExamProgress("edic"),
+      primary: getExamProgress(Exam.PRIMARY),
+      final: getExamProgress(Exam.FINAL),
+      fficm: getExamProgress(Exam.FFICM),
+      edic: getExamProgress(Exam.EDIC),
     }),
     [getOverallProgress, getExamProgress]
   );
 
   const summaryTiles: { key: ExamFilter; label: string; data: { completed: number; total: number } }[] = [
     { key: "all", label: "Overall", data: summary.all },
-    { key: "primary", label: "Primary", data: summary.primary },
-    { key: "final", label: "Final", data: summary.final },
-    { key: "fficm", label: "FFICM", data: summary.fficm },
-    { key: "edic", label: "EDIC", data: summary.edic },
+    { key: Exam.PRIMARY, label: "Primary", data: summary.primary },
+    { key: Exam.FINAL, label: "Final", data: summary.final },
+    { key: Exam.FFICM, label: "FFICM", data: summary.fficm },
+    { key: Exam.EDIC, label: "EDIC", data: summary.edic },
   ];
 
   const visibleSections = useMemo(() => {
