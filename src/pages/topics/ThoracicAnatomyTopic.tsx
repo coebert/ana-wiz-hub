@@ -1,31 +1,43 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { thoracicAnatomyQuestions } from "@/data/quizzes";
 import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyDiagram";
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
-import TopicTableOfContents from "@/components/TopicTableOfContents";
-
-const tocItems = [
-  { id: "thoracic-wall", label: "Thoracic Wall", group: "Wall" },
-  { id: "pleura", label: "Pleura", group: "Cavities" },
-  { id: "mediastinum", label: "Mediastinum", group: "Cavities" },
-  { id: "lung-anatomy", label: "Lung Anatomy", group: "Viscera" },
-  { id: "diaphragm", label: "Diaphragm", group: "Wall" },
-  { id: "paravertebral-space", label: "Paravertebral Space", group: "Block-relevant" },
-  { id: "first-rib", label: "First Rib", group: "Block-relevant" },
-];
 
 const ThoracicAnatomyTopic = () => {
   return (
-    <SectionLayout title="Thoracic Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <TopicTableOfContents items={tocItems} />
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Thoracic Anatomy"
+      subtitle="FRCA — Applied Anatomy"
+      backPath="/anatomy"
+      backLabel="Anatomy"
+      accentColor="text-anatomy"
+      topicId="thoracic-anatomy"
+      topicTitle="Thoracic Anatomy"
+      quizQuestions={thoracicAnatomyQuestions}
+      objectives={[
+        "Describe the layers of the intercostal space and safe technique for chest drain insertion",
+        "Outline the boundaries and contents of the superior and inferior mediastinum",
+        "Explain the surgical anatomy relevant to one-lung ventilation and DLT placement",
+        "Identify the boundaries, contents, and indications for paravertebral block",
+        "Describe the first rib and its relevance to supraclavicular block and subclavian access",
+      ]}
+      keyPoints={[
+        "Intercostal neurovascular bundle (VAN) runs below the rib — insert drains above the rib below",
+        "Cervical pleura extends above clavicle — risk during subclavian vein cannulation",
+        "Diaphragm: phrenic nerve C3,4,5. Openings at T8 (IVC), T10 (oesophagus), T12 (aorta)",
+        "Right upper lobe bronchus is eparterial — reason left DLT preferred for one-lung ventilation",
+        "Paravertebral space: unilateral somatic + sympathetic block; bounded by TP, SCTL, parietal pleura",
+        "First rib: scalene tubercle divides subclavian vein (anterior) from artery + brachial plexus (posterior)",
+        "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["frca-primary", "frca-final"] },
+        keyPoints: { exams: ["frca-primary", "frca-final"] },
+      }}
+      coreConcepts={
+        <section className="space-y-6 mb-10">
         <div id="thoracic-wall" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Wall & Intercostal Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -150,24 +162,9 @@ const ThoracicAnatomyTopic = () => {
             </div>
           </div>
         </div>
-      </section>
-
-      <KeyLearningPoints points={[
-        "Intercostal neurovascular bundle (VAN) runs below the rib — insert drains above the rib below",
-        "Cervical pleura extends above clavicle — risk during subclavian vein cannulation",
-        "Diaphragm: phrenic nerve C3,4,5. Openings at T8 (IVC), T10 (oesophagus), T12 (aorta)",
-        "Right upper lobe bronchus is eparterial — reason left DLT preferred for one-lung ventilation",
-        "Paravertebral space: unilateral somatic + sympathetic block; bounded by TP, SCTL, parietal pleura",
-        "First rib: scalene tubercle divides subclavian vein (anterior) from artery + brachial plexus (posterior)",
-        "Supraclavicular block at the first rib — 'spinal anaesthesia of the arm' with highest success for upper limb",
-      ]} />
-
-      <QuizSection questions={thoracicAnatomyQuestions} />
-      <ReferencesList topicId="thoracic-anatomy" />
-
-      <SeeAlso topicId="thoracic-anatomy" />
-        <TopicCompletionToggle topicId="thoracic-anatomy" topicTitle="Thoracic Anatomy" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 

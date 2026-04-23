@@ -1,8 +1,4 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { TopicTableOfContents, type TocItem } from "@/components/TopicTableOfContents";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { headNeckAnatomyQuestions } from "@/data/quizzes";
 import NeckTrianglesDiagram from "@/components/diagrams/NeckTrianglesDiagram";
 import CervicalPlexusDiagram from "@/components/diagrams/CervicalPlexusDiagram";
@@ -14,36 +10,45 @@ import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
-
-const tocItems: TocItem[] = [
-  { id: "cranial-nerves", label: "Cranial nerves", group: "Foundations" },
-  { id: "skull-base", label: "Skull base foramina", group: "Cranial framework" },
-  { id: "orbit-muscles", label: "Orbit & EOM", group: "Cranial framework" },
-  { id: "orbit-bony", label: "Bony orbit", group: "Cranial framework" },
-  { id: "neck-triangles", label: "Triangles of the neck", group: "Neck" },
-  { id: "neck-cross-section", label: "C6 cross-section", group: "Neck" },
-  { id: "cervical-plexus", label: "Cervical plexus", group: "Neck" },
-  { id: "ijv", label: "IJV cannulation", group: "Neck" },
-  { id: "nasal-pharynx", label: "Nasal cavity & pharynx", group: "Airway descent" },
-  { id: "larynx", label: "Larynx", group: "Airway descent" },
-  { id: "laryngeal-innervation", label: "Laryngeal innervation", group: "Airway descent" },
-  { id: "front-of-neck", label: "Cricothyroidotomy & tracheostomy", group: "Airway descent" },
-  { id: "tracheobronchial", label: "Trachea & bronchial tree", group: "Airway descent" },
-];
 
 const HeadNeckAnatomyTopic = () => {
   return (
-    <SectionLayout title="Head, Neck & Airway Anatomy" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <TopicTableOfContents items={tocItems} />
-
-      <div className="lg:pr-64">
-        <p className="text-muted-foreground leading-relaxed mb-6 text-sm italic">
-          This page follows a top-down anatomical journey: cranial nerve overview → bony cranial framework (skull base, orbit) → soft tissue neck (triangles, cross-section, plexus, vascular access) → airway descent from the nose down to the carina and lobar bronchi.
-        </p>
-
+    <TopicTemplate
+      title="Head, Neck & Airway Anatomy"
+      subtitle="FRCA — Applied Anatomy"
+      backPath="/anatomy"
+      backLabel="Anatomy"
+      accentColor="text-anatomy"
+      topicId="head-neck-anatomy"
+      topicTitle="Head, Neck & Airway Anatomy"
+      quizQuestions={headNeckAnatomyQuestions}
+      objectives={[
+        "Identify the cranial nerves of anaesthetic relevance and their clinical applications",
+        "Describe the skull base foramina, orbit, and cranial framework relevant to regional anaesthesia",
+        "Outline the triangles of the neck and the C6 cross-sectional anatomy for vascular access",
+        "Describe the laryngeal anatomy and innervation underpinning airway management",
+        "Apply tracheobronchial anatomy to DLT placement and emergency front-of-neck access",
+      ]}
+      keyPoints={[
+        "Glossopharyngeal nerve (IX) provides oropharyngeal sensation — block for awake fibreoptic intubation",
+        "SLN internal branch: sensory above cords; external branch: motor to cricothyroid (tensor)",
+        "RLN: motor to ALL intrinsic muscles except cricothyroid; left loops under aortic arch",
+        "Bilateral RLN palsy → cords paramedian → stridor → emergency airway required",
+        "Right main bronchus wider, shorter, more vertical — foreign bodies preferentially enter right side",
+        "Cricothyroid membrane: avascular midline landmark for emergency front-of-neck access",
+        "Right IJV preferred for CVC: straighter path to SVC, avoids thoracic duct (left side)",
+        "Accessory nerve (XI) is superficial in posterior triangle — vulnerable to surgical injury",
+        "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["frca-primary", "frca-final"] },
+        keyPoints: { exams: ["frca-primary", "frca-final"] },
+      }}
+      coreConcepts={
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
+          <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
+            This page follows a top-down anatomical journey: cranial nerve overview → bony cranial framework (skull base, orbit) → soft tissue neck (triangles, cross-section, plexus, vascular access) → airway descent from the nose down to the carina and lobar bronchi.
+          </p>
           {/* ============== FOUNDATIONS ============== */}
           <div id="cranial-nerves">
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Cranial Nerves — Anaesthetic Relevance</h2>
@@ -241,26 +246,8 @@ const HeadNeckAnatomyTopic = () => {
             <BronchoscopicViewDiagram />
           </div>
         </section>
-
-        <KeyLearningPoints points={[
-          "Glossopharyngeal nerve (IX) provides oropharyngeal sensation — block for awake fibreoptic intubation",
-          "SLN internal branch: sensory above cords; external branch: motor to cricothyroid (tensor)",
-          "RLN: motor to ALL intrinsic muscles except cricothyroid; left loops under aortic arch",
-          "Bilateral RLN palsy → cords paramedian → stridor → emergency airway required",
-          "Right main bronchus wider, shorter, more vertical — foreign bodies preferentially enter right side",
-          "Cricothyroid membrane: avascular midline landmark for emergency front-of-neck access",
-          "Right IJV preferred for CVC: straighter path to SVC, avoids thoracic duct (left side)",
-          "Accessory nerve (XI) is superficial in posterior triangle — vulnerable to surgical injury",
-          "Deep cervical plexus block risks phrenic nerve paralysis — avoid bilaterally",
-        ]} />
-
-        <QuizSection questions={headNeckAnatomyQuestions} />
-        <ReferencesList topicId="head-neck-anatomy" />
-
-        <SeeAlso topicId="head-neck-anatomy" />
-        <TopicCompletionToggle topicId="head-neck-anatomy" topicTitle="Head, Neck & Airway Anatomy" />
-      </div>
-    </SectionLayout>
+      }
+    />
   );
 };
 

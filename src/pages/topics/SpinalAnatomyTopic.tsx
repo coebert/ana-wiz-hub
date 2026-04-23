@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { spinalAnatomyQuestions } from "@/data/quizzes";
 import SpinalCordCrossSectionDiagram from "@/components/diagrams/SpinalCordCrossSectionDiagram";
 import SpinalCordAxialDiagram from "@/components/diagrams/SpinalCordAxialDiagram";
@@ -10,17 +7,6 @@ import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalD
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
 import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
-import TopicTableOfContents from "@/components/TopicTableOfContents";
-
-const tocItems = [
-  { id: "vertebral-column", label: "Vertebral Column", group: "Bony Anatomy" },
-  { id: "neuraxial-layers", label: "Neuraxial Layers", group: "Approach" },
-  { id: "spinal-cord", label: "Spinal Cord", group: "Neural" },
-  { id: "dermatomes-myotomes", label: "Dermatomes & Myotomes", group: "Neural" },
-  { id: "epidural-space", label: "Epidural Space & Plexus", group: "Approach" },
-];
 
 const SpinalAnatomyTopic = () => {
   // Synced selection between InteractiveDermatomeMap and DermatomeMyotomeDiagram —
@@ -28,9 +14,35 @@ const SpinalAnatomyTopic = () => {
   const [dermatomeLevel, setDermatomeLevel] = useState<string | null>("T10");
 
   return (
-    <SectionLayout title="Vertebral Column & Spinal Cord" subtitle="FRCA — Applied Anatomy" backPath="/anatomy" backLabel="Anatomy" accentColor="text-anatomy">
-      <TopicTableOfContents items={tocItems} />
-      <section className="space-y-6 mb-10">
+    <TopicTemplate
+      title="Vertebral Column & Spinal Cord"
+      subtitle="FRCA — Applied Anatomy"
+      backPath="/anatomy"
+      backLabel="Anatomy"
+      accentColor="text-anatomy"
+      topicId="spinal-anatomy"
+      topicTitle="Vertebral Column & Spinal Cord"
+      quizQuestions={spinalAnatomyQuestions}
+      objectives={[
+        "Describe the vertebral column and identify safe landmarks for neuraxial techniques",
+        "Outline the layers traversed during spinal and epidural anaesthesia",
+        "Explain spinal cord blood supply and the consequences of artery of Adamkiewicz injury",
+        "Apply dermatome and myotome knowledge to assess block height and neurological deficit",
+        "Describe the epidural space and how pregnancy alters local anaesthetic spread",
+      ]}
+      keyPoints={[
+        "Conus medullaris ends L1/2 in adults, L3 in neonates — neuraxial techniques below this level",
+        "Ligamentum flavum: dense elastic tissue providing 'loss of resistance' for epidural identification",
+        "Artery of Adamkiewicz (T9-T12, usually left) — damage causes anterior spinal artery syndrome",
+        "Batson's plexus is valveless — engorges in pregnancy, reducing epidural space volume",
+        "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace",
+      ]}
+      sectionExamMapping={{
+        objectives: { exams: ["frca-primary", "frca-final"] },
+        keyPoints: { exams: ["frca-primary", "frca-final"] },
+      }}
+      coreConcepts={
+        <section className="space-y-6 mb-10">
         <div id="vertebral-column" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vertebral Column</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
@@ -121,22 +133,9 @@ const SpinalAnatomyTopic = () => {
 
           <EpiduralSpaceDiagram />
         </div>
-      </section>
-
-      <KeyLearningPoints points={[
-        "Conus medullaris ends L1/2 in adults, L3 in neonates — neuraxial techniques below this level",
-        "Ligamentum flavum: dense elastic tissue providing 'loss of resistance' for epidural identification",
-        "Artery of Adamkiewicz (T9-T12, usually left) — damage causes anterior spinal artery syndrome",
-        "Batson's plexus is valveless — engorges in pregnancy, reducing epidural space volume",
-        "Tuffier's line (intercristal) identifies L4 spinous process or L3/4 interspace",
-      ]} />
-
-      <QuizSection questions={spinalAnatomyQuestions} />
-      <ReferencesList topicId="spinal-anatomy" />
-
-      <SeeAlso topicId="spinal-anatomy" />
-        <TopicCompletionToggle topicId="spinal-anatomy" topicTitle="Vertebral Column & Spinal Cord" />
-    </SectionLayout>
+        </section>
+      }
+    />
   );
 };
 
