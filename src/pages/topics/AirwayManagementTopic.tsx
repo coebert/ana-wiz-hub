@@ -9,6 +9,7 @@ import CormackLehaneDiagram from "@/components/diagrams/CormackLehaneDiagram";
 import MallampatiDiagram from "@/components/diagrams/MallampatiDiagram";
 import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalculator";
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
+import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import { airwayManagementQuestions } from "@/data/quizzes";
 
 const objectives = [
@@ -103,6 +104,7 @@ const AirwayManagementTopic = () => {
       }}
       diagrams={
         <>
+          <CICODrillAnimation />
           <div className="bg-card rounded-xl border border-border p-6">
             <DASAlgorithmDiagram />
           </div>
