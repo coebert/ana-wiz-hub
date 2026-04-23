@@ -1,11 +1,6 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { antiarrhythmicsQuiz } from "@/data/quizzes";
 import VaughanWilliamsAPDiagram from "@/components/diagrams/VaughanWilliamsAPDiagram";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 
 const drugData = [
   { cls: "Ia", action: "Na⁺ block (intermediate dissociation) + ↑ APD", drugs: "Quinidine, Procainamide, Disopyramide", ecg: "↑ QT, widened QRS", notes: "Use-dependent block. Procainamide for VT & WPW. Risk of torsades." },
@@ -23,176 +18,178 @@ const otherAgents = [
   { drug: "Magnesium", mechanism: "Stabilises membrane potential, blocks Ca²⁺ influx, suppresses EADs", use: "Torsades de pointes, digoxin toxicity, eclampsia. 2 g IV (8 mmol).", caution: "Monitor for hypotension, respiratory depression, loss of reflexes." },
 ];
 
+const objectives = [
+  "Classify antiarrhythmics by Vaughan-Williams class and explain each mechanism on the cardiac action potential",
+  "Distinguish Class I subtypes (Ia/Ib/Ic) by Na⁺ channel kinetics and APD effect",
+  "Describe amiodarone's multi-class activity, pharmacokinetics and toxicity profile",
+  "Outline the role and dosing of adenosine, digoxin, atropine and magnesium",
+  "Recognise pro-arrhythmic risks and CAST-trial implications for structural heart disease",
+];
+
+const keyPoints = [
+  "Vaughan-Williams classifies antiarrhythmics into 4 classes: I (Na⁺ block), II (β-block), III (K⁺ block), IV (Ca²⁺ block)",
+  "Class I subdivides by Na⁺ channel dissociation kinetics: Ia (intermediate, ↑ APD), Ib (fast, ↓ APD), Ic (slow, no change APD)",
+  "Amiodarone has properties of all 4 classes — t½ ~40 days — toxicity: pulmonary fibrosis, thyroid, liver, cornea",
+  "Class Ic drugs (flecainide) are contraindicated post-MI — CAST trial showed ↑ mortality in structural heart disease",
+  "Adenosine (t½ 8–10 s) is first-line for SVT — acts via A₁ receptor → IKAdo → AV node block",
+  "Sotalol has both class II (β-block) and class III (K⁺ block) activity — prolongs QT",
+  "All antiarrhythmics carry pro-arrhythmic risk — especially with hypokalaemia and hypomagnesaemia",
+  "Magnesium is first-line for torsades de pointes — stabilises membrane and suppresses early afterdepolarisations",
+];
+
 const AntiarrhythmicsTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Antiarrhythmic Drugs"
       subtitle="FRCA Primary & Final — Pharmacology"
       backPath="/pharmacology"
       backLabel="Pharmacology"
       accentColor="text-pharmacology"
-    >
-      <div className="prose prose-slate max-w-none">
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            Antiarrhythmic drugs modify cardiac ion channels, receptors, or autonomic tone to prevent or terminate abnormal heart rhythms.
-            The <strong>Vaughan-Williams classification</strong> groups them by their primary electrophysiological mechanism, though many agents
-            have actions spanning multiple classes. Understanding this classification, including its limitations, is core to the FRCA and FFICM curricula.
-          </p>
-        </section>
+      topicId="antiarrhythmics"
+      topicTitle="Antiarrhythmic Drugs"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={antiarrhythmicsQuiz}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final"] },
+        keyPoints: { exams: ["primary", "final"] },
+      }}
+      diagrams={<VaughanWilliamsAPDiagram />}
+      coreConcepts={
+        <div className="prose prose-slate max-w-none">
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Introduction</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              Antiarrhythmic drugs modify cardiac ion channels, receptors, or autonomic tone to prevent or terminate abnormal heart rhythms.
+              The <strong>Vaughan-Williams classification</strong> groups them by their primary electrophysiological mechanism, though many agents
+              have actions spanning multiple classes. Understanding this classification, including its limitations, is core to the FRCA and FFICM curricula.
+            </p>
+          </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Drug Classes & the Action Potential</h2>
-          <p className="text-foreground/90 leading-relaxed mb-4">
-            Each Vaughan-Williams class targets a specific phase of the cardiac action potential. Click a class below to see exactly where it acts and why.
-          </p>
-          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-            <VaughanWilliamsAPDiagram />
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Vaughan-Williams Classification</h2>
-          <div className="overflow-x-auto my-4">
-            <table className="min-w-full text-sm border border-border rounded-lg">
-              <thead>
-                <tr className="bg-secondary/50">
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Class</th>
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Drugs</th>
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">ECG Effects</th>
-                  <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Key Notes</th>
-                </tr>
-              </thead>
-              <tbody className="text-foreground/90">
-                {drugData.map((row) => (
-                  <tr key={row.cls} className="border-b border-border/50">
-                    <td className="px-3 py-2 font-bold text-foreground">{row.cls}</td>
-                    <td className="px-3 py-2">{row.action}</td>
-                    <td className="px-3 py-2">{row.drugs}</td>
-                    <td className="px-3 py-2">{row.ecg}</td>
-                    <td className="px-3 py-2 text-xs">{row.notes}</td>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Vaughan-Williams Classification</h2>
+            <div className="overflow-x-auto my-4">
+              <table className="min-w-full text-sm border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Class</th>
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Mechanism</th>
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Drugs</th>
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">ECG Effects</th>
+                    <th className="px-3 py-2 text-left text-foreground font-semibold border-b border-border">Key Notes</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Class I Subclasses — Na⁺ Channel Kinetics</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            Class I agents differ in their rate of dissociation from the Na⁺ channel, which determines their use-dependence and effect on action potential duration (APD):
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-            <div className="rounded-lg p-4 border border-border bg-card">
-              <p className="font-bold text-foreground mb-1">Ia — Intermediate</p>
-              <p className="text-muted-foreground">↑ APD (blocks K⁺ too). Widens QRS <em>and</em> prolongs QT. Effective for both atrial and ventricular arrhythmias.</p>
+                </thead>
+                <tbody className="text-foreground/90">
+                  {drugData.map((row) => (
+                    <tr key={row.cls} className="border-b border-border/50">
+                      <td className="px-3 py-2 font-bold text-foreground">{row.cls}</td>
+                      <td className="px-3 py-2">{row.action}</td>
+                      <td className="px-3 py-2">{row.drugs}</td>
+                      <td className="px-3 py-2">{row.ecg}</td>
+                      <td className="px-3 py-2 text-xs">{row.notes}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div className="rounded-lg p-4 border border-border bg-card">
-              <p className="font-bold text-foreground mb-1">Ib — Fast</p>
-              <p className="text-muted-foreground">↓ APD. Minimal effect on normal tissue — selectively binds inactivated channels in ischaemic myocardium. Lidocaine is the prototype.</p>
-            </div>
-            <div className="rounded-lg p-4 border border-border bg-card">
-              <p className="font-bold text-foreground mb-1">Ic — Slow</p>
-              <p className="text-muted-foreground">No change in APD. Markedly slows conduction (phase 0). Contraindicated in structural heart disease (CAST trial — ↑ mortality post-MI).</p>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Amiodarone — A Multi-Class Agent</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            Amiodarone is the most frequently examined antiarrhythmic. It has properties of all four Vaughan-Williams classes:
-          </p>
-          <div className="overflow-x-auto my-4">
-            <table className="min-w-full text-sm border border-border rounded-lg">
-              <thead>
-                <tr className="bg-secondary/50">
-                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Property</th>
-                  <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Detail</th>
-                </tr>
-              </thead>
-              <tbody className="text-foreground/90">
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class I</td><td className="px-4 py-2">Na⁺ channel blockade (use-dependent)</td></tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class II</td><td className="px-4 py-2">Non-competitive β-blockade</td></tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class III</td><td className="px-4 py-2">K⁺ channel blockade → ↑ APD & ERP (predominant effect)</td></tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class IV</td><td className="px-4 py-2">Ca²⁺ channel blockade</td></tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Half-life</td><td className="px-4 py-2">~40–55 days (huge Vd, highly lipophilic, iodinated structure)</td></tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Loading</td><td className="px-4 py-2">300 mg IV over 20–60 min (cardiac arrest: bolus), then 900 mg/24 h</td></tr>
-                <tr className="border-b border-border/50">
-                  <td className="px-4 py-2 font-medium">Toxicity</td>
-                  <td className="px-4 py-2">
-                    <strong>Pulmonary fibrosis</strong>, thyroid (hypo- & hyper- due to iodine), hepatotoxicity,
-                    corneal microdeposits, peripheral neuropathy, slate-grey skin, photosensitivity
-                  </td>
-                </tr>
-                <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Interactions</td><td className="px-4 py-2">↑ Digoxin & warfarin levels (CYP inhibition). ↑ QT with other prolonging drugs.</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Other Antiarrhythmic Agents</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            Several important agents fall outside the Vaughan-Williams classification:
-          </p>
-          <div className="space-y-3">
-            {otherAgents.map((a) => (
-              <div key={a.drug} className="rounded-lg p-4 border border-border bg-card">
-                <p className="font-bold text-foreground text-base">{a.drug}</p>
-                <p className="text-foreground/90 text-sm mt-1"><strong>Mechanism:</strong> {a.mechanism}</p>
-                <p className="text-foreground/90 text-sm"><strong>Use:</strong> {a.use}</p>
-                <p className="text-muted-foreground text-xs mt-1"><strong>Caution:</strong> {a.caution}</p>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Class I Subclasses — Na⁺ Channel Kinetics</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Class I agents differ in their rate of dissociation from the Na⁺ channel, which determines their use-dependence and effect on action potential duration (APD):
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Ia — Intermediate</p>
+                <p className="text-muted-foreground">↑ APD (blocks K⁺ too). Widens QRS <em>and</em> prolongs QT. Effective for both atrial and ventricular arrhythmias.</p>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Ib — Fast</p>
+                <p className="text-muted-foreground">↓ APD. Minimal effect on normal tissue — selectively binds inactivated channels in ischaemic myocardium. Lidocaine is the prototype.</p>
+              </div>
+              <div className="rounded-lg p-4 border border-border bg-card">
+                <p className="font-bold text-foreground mb-1">Ic — Slow</p>
+                <p className="text-muted-foreground">No change in APD. Markedly slows conduction (phase 0). Contraindicated in structural heart disease (CAST trial — ↑ mortality post-MI).</p>
+              </div>
+            </div>
+          </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Limitations of the Vaughan-Williams Classification</h2>
-          <p className="text-foreground/90 leading-relaxed">
-            The classification is a simplification — many drugs act on multiple channels (e.g. amiodarone, sotalol, propafenone).
-            The <strong>Sicilian Gambit</strong> (1991) proposed a more detailed framework linking arrhythmia mechanism
-            (re-entry, triggered activity, abnormal automaticity) to the vulnerable parameter and the appropriate drug target.
-            While more comprehensive, the Vaughan-Williams system remains the standard for exam purposes.
-          </p>
-        </section>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Amiodarone — A Multi-Class Agent</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Amiodarone is the most frequently examined antiarrhythmic. It has properties of all four Vaughan-Williams classes:
+            </p>
+            <div className="overflow-x-auto my-4">
+              <table className="min-w-full text-sm border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Property</th>
+                    <th className="px-4 py-2 text-left text-foreground font-semibold border-b border-border">Detail</th>
+                  </tr>
+                </thead>
+                <tbody className="text-foreground/90">
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class I</td><td className="px-4 py-2">Na⁺ channel blockade (use-dependent)</td></tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class II</td><td className="px-4 py-2">Non-competitive β-blockade</td></tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class III</td><td className="px-4 py-2">K⁺ channel blockade → ↑ APD & ERP (predominant effect)</td></tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Class IV</td><td className="px-4 py-2">Ca²⁺ channel blockade</td></tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Half-life</td><td className="px-4 py-2">~40–55 days (huge Vd, highly lipophilic, iodinated structure)</td></tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Loading</td><td className="px-4 py-2">300 mg IV over 20–60 min (cardiac arrest: bolus), then 900 mg/24 h</td></tr>
+                  <tr className="border-b border-border/50">
+                    <td className="px-4 py-2 font-medium">Toxicity</td>
+                    <td className="px-4 py-2">
+                      <strong>Pulmonary fibrosis</strong>, thyroid (hypo- & hyper- due to iodine), hepatotoxicity,
+                      corneal microdeposits, peripheral neuropathy, slate-grey skin, photosensitivity
+                    </td>
+                  </tr>
+                  <tr className="border-b border-border/50"><td className="px-4 py-2 font-medium">Interactions</td><td className="px-4 py-2">↑ Digoxin & warfarin levels (CYP inhibition). ↑ QT with other prolonging drugs.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-serif font-bold text-foreground">Pro-Arrhythmic Risk</h2>
-          <p className="text-foreground/90 leading-relaxed mb-3">
-            All antiarrhythmics can paradoxically cause arrhythmias:
-          </p>
-          <ul className="list-disc list-inside space-y-1 text-foreground/90 text-sm">
-            <li><strong>Class Ia & III:</strong> QT prolongation → torsades de pointes (especially with hypokalaemia/hypomagnesaemia)</li>
-            <li><strong>Class Ic:</strong> ↑ mortality in structural heart disease (CAST trial, 1989 — flecainide & encainide post-MI)</li>
-            <li><strong>Digoxin:</strong> Toxicity causes virtually any arrhythmia — classically bigeminy, slow AF, bidirectional VT</li>
-            <li><strong>Risk factors:</strong> ↓K⁺, ↓Mg²⁺, ↑QTc, structural heart disease, renal impairment, drug interactions</li>
-          </ul>
-        </section>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Other Antiarrhythmic Agents</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Several important agents fall outside the Vaughan-Williams classification:
+            </p>
+            <div className="space-y-3">
+              {otherAgents.map((a) => (
+                <div key={a.drug} className="rounded-lg p-4 border border-border bg-card">
+                  <p className="font-bold text-foreground text-base">{a.drug}</p>
+                  <p className="text-foreground/90 text-sm mt-1"><strong>Mechanism:</strong> {a.mechanism}</p>
+                  <p className="text-foreground/90 text-sm"><strong>Use:</strong> {a.use}</p>
+                  <p className="text-muted-foreground text-xs mt-1"><strong>Caution:</strong> {a.caution}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-        <KeyLearningPoints
-          points={[
-            "Vaughan-Williams classifies antiarrhythmics into 4 classes: I (Na⁺ block), II (β-block), III (K⁺ block), IV (Ca²⁺ block)",
-            "Class I subdivides by Na⁺ channel dissociation kinetics: Ia (intermediate, ↑ APD), Ib (fast, ↓ APD), Ic (slow, no change APD)",
-            "Amiodarone has properties of all 4 classes — t½ ~40 days — toxicity: pulmonary fibrosis, thyroid, liver, cornea",
-            "Class Ic drugs (flecainide) are contraindicated post-MI — CAST trial showed ↑ mortality in structural heart disease",
-            "Adenosine (t½ 8–10 s) is first-line for SVT — acts via A₁ receptor → IKAdo → AV node block",
-            "Sotalol has both class II (β-block) and class III (K⁺ block) activity — prolongs QT",
-            "All antiarrhythmics carry pro-arrhythmic risk — especially with hypokalaemia and hypomagnesaemia",
-            "Magnesium is first-line for torsades de pointes — stabilises membrane and suppresses early afterdepolarisations",
-          ]}
-        />
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Limitations of the Vaughan-Williams Classification</h2>
+            <p className="text-foreground/90 leading-relaxed">
+              The classification is a simplification — many drugs act on multiple channels (e.g. amiodarone, sotalol, propafenone).
+              The <strong>Sicilian Gambit</strong> (1991) proposed a more detailed framework linking arrhythmia mechanism
+              (re-entry, triggered activity, abnormal automaticity) to the vulnerable parameter and the appropriate drug target.
+              While more comprehensive, the Vaughan-Williams system remains the standard for exam purposes.
+            </p>
+          </section>
 
-        <QuizSection questions={antiarrhythmicsQuiz} />
-        <ReferencesList topicId="antiarrhythmics" />
-        <SeeAlso topicId="antiarrhythmics" />
-        <TopicCompletionToggle topicId="antiarrhythmics" topicTitle="Antiarrhythmic Drugs" />
-      </div>
-    </SectionLayout>
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">Pro-Arrhythmic Risk</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              All antiarrhythmics can paradoxically cause arrhythmias:
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-foreground/90 text-sm">
+              <li><strong>Class Ia & III:</strong> QT prolongation → torsades de pointes (especially with hypokalaemia/hypomagnesaemia)</li>
+              <li><strong>Class Ic:</strong> ↑ mortality in structural heart disease (CAST trial, 1989 — flecainide & encainide post-MI)</li>
+              <li><strong>Digoxin:</strong> Toxicity causes virtually any arrhythmia — classically bigeminy, slow AF, bidirectional VT</li>
+              <li><strong>Risk factors:</strong> ↓K⁺, ↓Mg²⁺, ↑QTc, structural heart disease, renal impairment, drug interactions</li>
+            </ul>
+          </section>
+        </div>
+      }
+    />
   );
 };
 

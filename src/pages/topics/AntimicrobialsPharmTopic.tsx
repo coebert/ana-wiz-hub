@@ -1,12 +1,7 @@
 import { useState } from "react";
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { QuizSection } from "@/components/QuizSection";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
 import { antimicrobialsQuiz } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
-import { SeeAlso } from "@/components/SeeAlso";
 import AntibioticTargetsDiagram from "@/components/diagrams/AntibioticTargetsDiagram";
 import AntifungalTargetsDiagram from "@/components/diagrams/AntifungalTargetsDiagram";
 import AntiviralCycleDiagram from "@/components/diagrams/AntiviralCycleDiagram";
@@ -73,217 +68,228 @@ const antiviralClasses = [
   { name: "Direct-Acting Antivirals (DAAs) for HCV", mech: "Target specific HCV proteins: NS3/4A protease, NS5A, NS5B polymerase. Used in combination for cure rates >95%.", examples: "Sofosbuvir/velpatasvir, glecaprevir/pibrentasvir, ledipasvir/sofosbuvir", spectrum: "HCV genotypes 1–6 (pan-genotypic regimens).", adverse: "Generally well tolerated. Check for HBV co-infection (risk of reactivation). Drug interactions with CYP/P-gp." },
 ];
 
+const objectives = [
+  "Classify antibacterials by mechanism (cell-wall, protein synthesis, DNA/RNA, cell membrane) and recall key agents in each",
+  "Apply PK/PD principles (time- vs concentration-dependent killing, PAE, MIC) to dosing decisions in the critically ill",
+  "Outline mechanisms and clinical use of major antifungals and antivirals relevant to anaesthesia and ICU",
+  "Recognise major resistance mechanisms (β-lactamases, PBP2a, VanA/B, efflux, porin loss)",
+  "Adjust antimicrobial dosing for augmented renal clearance, continuous β-lactam infusion and aminoglycoside ODD",
+];
+
+const keyPoints = [
+  "β-Lactams (penicillins, cephalosporins, carbapenems) are bactericidal, time-dependent — optimise with extended or continuous infusion",
+  "Aminoglycosides are bactericidal, concentration-dependent with PAE — optimise with once-daily dosing and trough monitoring",
+  "Vancomycin targets D-Ala-D-Ala in peptidoglycan; monitor troughs (15–20 mg/L); red man syndrome is histamine-mediated, not allergy",
+  "Amphotericin B binds ergosterol (fungicidal, broadest spectrum); liposomal form reduces nephrotoxicity",
+  "Echinocandins inhibit β-(1,3)-D-glucan synthase — first-line for invasive candidiasis; IV only",
+  "Aciclovir is selectively activated by viral thymidine kinase — excellent safety profile due to selective toxicity",
+  "Rifampicin is a potent CYP inducer — reduces levels of warfarin, OCP, midazolam, ciclosporin",
+  "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target",
+];
+
 const AntimicrobialsTopic = () => {
   const [tab, setTab] = useState<Tab>("antibiotics");
 
   return (
-    <SectionLayout title="Antimicrobials" subtitle="FRCA Primary / Final / FFICM — Pharmacology" backPath="/pharmacology" backLabel="Pharmacology" accentColor="text-pharmacology">
-      <section className="space-y-8 mb-10">
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            A thorough understanding of antimicrobial pharmacology is essential for anaesthetists and intensivists. Surgical prophylaxis, treatment of sepsis, and management of hospital-acquired infections all require knowledge of mechanisms of action, spectrum, pharmacokinetics, and adverse effects. This topic covers the major classes of antibacterials, antifungals, and antivirals relevant to the FRCA and FFICM examinations.
-          </p>
-        </div>
-
-        {/* Key Principles */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Pharmacological Principles</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { label: "Bactericidal vs Bacteriostatic", value: "Bactericidal: kills bacteria (β-lactams, aminoglycosides). Bacteriostatic: inhibits growth (macrolides, tetracyclines). Distinction matters in immunosuppression." },
-              { label: "Time-Dependent Killing", value: "Efficacy depends on time above MIC (T>MIC). β-lactams, vancomycin. Optimised by frequent dosing or continuous infusion." },
-              { label: "Concentration-Dependent Killing", value: "Efficacy depends on peak concentration/MIC ratio (Cmax/MIC). Aminoglycosides, fluoroquinolones. Optimised by high-dose, extended-interval dosing." },
-              { label: "Post-Antibiotic Effect (PAE)", value: "Persistent suppression of bacterial growth after drug levels fall below MIC. Prolonged for aminoglycosides and fluoroquinolones." },
-              { label: "MIC & MBC", value: "MIC: minimum inhibitory concentration. MBC: minimum bactericidal concentration. MBC/MIC ratio >4 suggests tolerance." },
-              { label: "Surgical Prophylaxis", value: "Ideally within 60 min of incision (120 min for vancomycin). Repeat if surgery >2 half-lives. Usually single dose." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="text-xs font-semibold text-foreground">{item.label}</p>
-                <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Tab navigation */}
-        <div>
-          <div className="flex gap-2 mb-5">
-            {([
-              { key: "antibiotics", label: "Antibacterials" },
-              { key: "antifungals", label: "Antifungals" },
-              { key: "antivirals", label: "Antivirals" },
-            ] as { key: Tab; label: string }[]).map((t) => (
-              <button
-                key={t.key}
-                onClick={() => setTab(t.key)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  tab === t.key
-                    ? "bg-primary/15 text-primary ring-1 ring-primary/30"
-                    : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
+    <TopicTemplate
+      title="Antimicrobials"
+      subtitle="FRCA Primary / Final / FFICM — Pharmacology"
+      backPath="/pharmacology"
+      backLabel="Pharmacology"
+      accentColor="text-pharmacology"
+      topicId="antimicrobials-pharm"
+      topicTitle="Antimicrobials"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={antimicrobialsQuiz}
+      sectionExamMapping={{
+        objectives: { exams: ["primary", "final", "fficm"] },
+        keyPoints: { exams: ["primary", "final", "fficm"] },
+      }}
+      coreConcepts={
+        <section className="space-y-8">
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Introduction</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              A thorough understanding of antimicrobial pharmacology is essential for anaesthetists and intensivists. Surgical prophylaxis, treatment of sepsis, and management of hospital-acquired infections all require knowledge of mechanisms of action, spectrum, pharmacokinetics, and adverse effects. This topic covers the major classes of antibacterials, antifungals, and antivirals relevant to the FRCA and FFICM examinations.
+            </p>
           </div>
 
-          {/* Antibiotics */}
-          {tab === "antibiotics" && (
-            <div className="space-y-6">
-              <AntibioticTargetsDiagram />
-              <AntibioticPKPDPrimer />
-              <GramNegativeEnvelopeDiagram />
-              <BetaLactamaseClassificationTable />
-              <MDRGramNegativeSelector />
-              <EmpiricalSepsisChooser />
-              {antibioticClasses.map((group) => (
-                <div key={group.group}>
-                  <h3 className="text-lg font-serif font-bold text-foreground mb-3">{group.group}</h3>
-                  <div className="space-y-3">
-                    {group.agents.map((a) => (
-                      <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
-                        <h4 className="font-bold text-foreground">{a.name}</h4>
-                        <div className="space-y-1.5 text-sm">
-                          <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
-                          <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
-                          <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
-                          <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Key Pharmacological Principles</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Bactericidal vs Bacteriostatic", value: "Bactericidal: kills bacteria (β-lactams, aminoglycosides). Bacteriostatic: inhibits growth (macrolides, tetracyclines). Distinction matters in immunosuppression." },
+                { label: "Time-Dependent Killing", value: "Efficacy depends on time above MIC (T>MIC). β-lactams, vancomycin. Optimised by frequent dosing or continuous infusion." },
+                { label: "Concentration-Dependent Killing", value: "Efficacy depends on peak concentration/MIC ratio (Cmax/MIC). Aminoglycosides, fluoroquinolones. Optimised by high-dose, extended-interval dosing." },
+                { label: "Post-Antibiotic Effect (PAE)", value: "Persistent suppression of bacterial growth after drug levels fall below MIC. Prolonged for aminoglycosides and fluoroquinolones." },
+                { label: "MIC & MBC", value: "MIC: minimum inhibitory concentration. MBC: minimum bactericidal concentration. MBC/MIC ratio >4 suggests tolerance." },
+                { label: "Surgical Prophylaxis", value: "Ideally within 60 min of incision (120 min for vancomycin). Repeat if surgery >2 half-lives. Usually single dose." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="flex gap-2 mb-5">
+              {([
+                { key: "antibiotics", label: "Antibacterials" },
+                { key: "antifungals", label: "Antifungals" },
+                { key: "antivirals", label: "Antivirals" },
+              ] as { key: Tab; label: string }[]).map((t) => (
+                <button
+                  key={t.key}
+                  onClick={() => setTab(t.key)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    tab === t.key
+                      ? "bg-primary/15 text-primary ring-1 ring-primary/30"
+                      : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+
+            {tab === "antibiotics" && (
+              <div className="space-y-6">
+                <AntibioticTargetsDiagram />
+                <AntibioticPKPDPrimer />
+                <GramNegativeEnvelopeDiagram />
+                <BetaLactamaseClassificationTable />
+                <MDRGramNegativeSelector />
+                <EmpiricalSepsisChooser />
+                {antibioticClasses.map((group) => (
+                  <div key={group.group}>
+                    <h3 className="text-lg font-serif font-bold text-foreground mb-3">{group.group}</h3>
+                    <div className="space-y-3">
+                      {group.agents.map((a) => (
+                        <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
+                          <h4 className="font-bold text-foreground">{a.name}</h4>
+                          <div className="space-y-1.5 text-sm">
+                            <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
+                            <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
+                            <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
+                            <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Antifungals */}
-          {tab === "antifungals" && (
-            <div className="space-y-3">
-              <AntifungalTargetsDiagram />
-              {antifungalClasses.map((a) => (
-                <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
-                  <h4 className="font-bold text-foreground">{a.name}</h4>
-                  <div className="space-y-1.5 text-sm">
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
-                    {a.pk && <p className="text-muted-foreground"><span className="font-medium text-foreground">PK note:</span> {a.pk}</p>}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* Antivirals */}
-          {tab === "antivirals" && (
-            <div className="space-y-3">
-              <AntiviralCycleDiagram />
-              {antiviralClasses.map((a) => (
-                <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
-                  <h4 className="font-bold text-foreground">{a.name}</h4>
-                  <div className="space-y-1.5 text-sm">
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
-                    <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Antimicrobial Resistance */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Resistance Mechanisms</h2>
-          <div className="space-y-3">
-            {[
-              { mech: "β-Lactamase Production", detail: "Enzymatic hydrolysis of the β-lactam ring. Extended-spectrum β-lactamases (ESBLs) hydrolyse 3rd-gen cephalosporins. Carbapenemases (e.g., NDM-1, KPC) hydrolyse carbapenems. Countered by inhibitors: clavulanate, tazobactam, avibactam." },
-              { mech: "Altered Target Site", detail: "Mutation of the drug target reduces binding. PBP2a in MRSA (mecA gene), altered ribosomal binding sites (macrolide resistance), modified DNA gyrase (quinolone resistance)." },
-              { mech: "Efflux Pumps", detail: "Active transport of antibiotic out of the cell. Common in Gram-negatives. Contributes to multidrug resistance in Pseudomonas and Acinetobacter." },
-              { mech: "Reduced Permeability", detail: "Loss or modification of outer membrane porins (OmpF, OmpC) in Gram-negatives, reducing drug entry. Important for carbapenems and aminoglycosides." },
-              { mech: "Target Modification (Vancomycin)", detail: "VanA/VanB gene clusters modify D-Ala-D-Ala to D-Ala-D-Lac, reducing vancomycin binding 1000-fold. Responsible for VRE." },
-            ].map((r) => (
-              <div key={r.mech} className="p-4 rounded-lg border border-border">
-                <p className="font-semibold text-foreground text-sm">{r.mech}</p>
-                <p className="text-sm text-muted-foreground mt-1">{r.detail}</p>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            )}
 
-        {/* ICU-Specific Considerations */}
-        <div>
-          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Specific Antimicrobial Considerations</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { label: "Augmented Renal Clearance", value: "Young, septic patients may have CrCl >130 ml/min, leading to sub-therapeutic levels of renally-cleared drugs. Consider TDM and extended/continuous infusions." },
-              { label: "Continuous β-Lactam Infusion", value: "Maximises T>MIC. Evidence supports continuous or extended infusions of piperacillin/tazobactam and meropenem in critically ill patients." },
-              { label: "Aminoglycoside Dosing", value: "Once-daily (Hartford nomogram) vs multiple daily dosing. ODD maximises Cmax/MIC and reduces nephrotoxicity. Monitor troughs (<1 mg/L for gentamicin)." },
-              { label: "Antifungal Empirical Therapy", value: "Echinocandins first-line for invasive candidiasis. Voriconazole first-line for invasive aspergillosis. Consider in patients failing to respond to broad-spectrum antibacterials." },
-            ].map((item) => (
-              <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
-                <p className="text-xs font-semibold text-foreground">{item.label}</p>
-                <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+            {tab === "antifungals" && (
+              <div className="space-y-3">
+                <AntifungalTargetsDiagram />
+                {antifungalClasses.map((a) => (
+                  <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
+                    <h4 className="font-bold text-foreground">{a.name}</h4>
+                    <div className="space-y-1.5 text-sm">
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
+                      {a.pk && <p className="text-muted-foreground"><span className="font-medium text-foreground">PK note:</span> {a.pk}</p>}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
+
+            {tab === "antivirals" && (
+              <div className="space-y-3">
+                <AntiviralCycleDiagram />
+                {antiviralClasses.map((a) => (
+                  <div key={a.name} className="p-4 rounded-xl border border-border bg-card space-y-2">
+                    <h4 className="font-bold text-foreground">{a.name}</h4>
+                    <div className="space-y-1.5 text-sm">
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Mechanism:</span> {a.mech}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Examples:</span> {a.examples}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Spectrum:</span> {a.spectrum}</p>
+                      <p className="text-muted-foreground"><span className="font-medium text-foreground">Adverse effects:</span> {a.adverse}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      </section>
 
-      <SynthesisBlock
-        title="Antimicrobials — Class, Mechanism, ICU Pearl"
-        subtitle="The headline drug classes you need to recognise on a viva."
-        variant="table"
-      >
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr className="border-b border-border bg-secondary/50">
-              <th className="text-left p-2 text-foreground font-semibold">Class</th>
-              <th className="text-left p-2 text-foreground font-semibold">Mechanism</th>
-              <th className="text-left p-2 text-foreground font-semibold">ICU Pearl</th>
-            </tr>
-          </thead>
-          <tbody className="text-foreground/90">
-            {[
-              ["β-lactams (penicillin, cephalosporin, carbapenem)", "Cell-wall synthesis (PBP)", "Time-dependent killing — extend infusion (4 h pip-tazo, meropenem) in critically ill"],
-              ["Aminoglycosides (gentamicin)", "30S ribosome — ↓ protein synthesis", "Concentration-dependent — once daily; therapeutic drug monitoring; nephro/ototoxic"],
-              ["Glycopeptides (vancomycin)", "Cell-wall (D-Ala-D-Ala)", "AUC₂₄/MIC 400–600 target (not trough alone); infusion-related reactions"],
-              ["Fluoroquinolones (cipro, levo)", "DNA gyrase / topoisomerase IV", "QT prolongation, tendinopathy, C. difficile risk; covers atypical pathogens"],
-              ["Macrolides (clari, azith)", "50S ribosome", "QT prolongation; CYP3A4 inhibitors → drug interactions"],
-              ["Oxazolidinones (linezolid)", "50S ribosome (initiation)", "VRE/MRSA cover; thrombocytopenia &gt;14 d; serotonin syndrome with SSRI"],
-              ["Antifungals (echinocandins, azoles, AmB)", "β-glucan / ergosterol", "Caspofungin first-line invasive candidiasis; AmB nephrotoxic"],
-            ].map(([cls, mech, pearl]) => (
-              <tr key={cls as string} className="border-b border-border/50">
-                <td className="p-2 font-medium">{cls}</td>
-                <td className="p-2 text-muted-foreground">{mech}</td>
-                <td className="p-2 text-muted-foreground">{pearl}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </SynthesisBlock>
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Antimicrobial Resistance Mechanisms</h2>
+            <div className="space-y-3">
+              {[
+                { mech: "β-Lactamase Production", detail: "Enzymatic hydrolysis of the β-lactam ring. Extended-spectrum β-lactamases (ESBLs) hydrolyse 3rd-gen cephalosporins. Carbapenemases (e.g., NDM-1, KPC) hydrolyse carbapenems. Countered by inhibitors: clavulanate, tazobactam, avibactam." },
+                { mech: "Altered Target Site", detail: "Mutation of the drug target reduces binding. PBP2a in MRSA (mecA gene), altered ribosomal binding sites (macrolide resistance), modified DNA gyrase (quinolone resistance)." },
+                { mech: "Efflux Pumps", detail: "Active transport of antibiotic out of the cell. Common in Gram-negatives. Contributes to multidrug resistance in Pseudomonas and Acinetobacter." },
+                { mech: "Reduced Permeability", detail: "Loss or modification of outer membrane porins (OmpF, OmpC) in Gram-negatives, reducing drug entry. Important for carbapenems and aminoglycosides." },
+                { mech: "Target Modification (Vancomycin)", detail: "VanA/VanB gene clusters modify D-Ala-D-Ala to D-Ala-D-Lac, reducing vancomycin binding 1000-fold. Responsible for VRE." },
+              ].map((r) => (
+                <div key={r.mech} className="p-4 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{r.mech}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{r.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <KeyLearningPoints points={[
-        "β-Lactams (penicillins, cephalosporins, carbapenems) are bactericidal, time-dependent — optimise with extended or continuous infusion",
-        "Aminoglycosides are bactericidal, concentration-dependent with PAE — optimise with once-daily dosing and trough monitoring",
-        "Vancomycin targets D-Ala-D-Ala in peptidoglycan; monitor troughs (15–20 mg/L); red man syndrome is histamine-mediated, not allergy",
-        "Amphotericin B binds ergosterol (fungicidal, broadest spectrum); liposomal form reduces nephrotoxicity",
-        "Echinocandins inhibit β-(1,3)-D-glucan synthase — first-line for invasive candidiasis; IV only",
-        "Aciclovir is selectively activated by viral thymidine kinase — excellent safety profile due to selective toxicity",
-        "Rifampicin is a potent CYP inducer — reduces levels of warfarin, OCP, midazolam, ciclosporin",
-        "MRSA resistance: PBP2a (mecA gene); VRE resistance: D-Ala-D-Lac modification of vancomycin target",
-      ]} />
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">ICU-Specific Antimicrobial Considerations</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {[
+                { label: "Augmented Renal Clearance", value: "Young, septic patients may have CrCl >130 ml/min, leading to sub-therapeutic levels of renally-cleared drugs. Consider TDM and extended/continuous infusions." },
+                { label: "Continuous β-Lactam Infusion", value: "Maximises T>MIC. Evidence supports continuous or extended infusions of piperacillin/tazobactam and meropenem in critically ill patients." },
+                { label: "Aminoglycoside Dosing", value: "Once-daily (Hartford nomogram) vs multiple daily dosing. ODD maximises Cmax/MIC and reduces nephrotoxicity. Monitor troughs (<1 mg/L for gentamicin)." },
+                { label: "Antifungal Empirical Therapy", value: "Echinocandins first-line for invasive candidiasis. Voriconazole first-line for invasive aspergillosis. Consider in patients failing to respond to broad-spectrum antibacterials." },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs font-semibold text-foreground">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      <QuizSection questions={antimicrobialsQuiz} />
-      <ReferencesList topicId="antimicrobials-pharm" />
-
-      <SeeAlso topicId="antimicrobials-pharm" />
-        <TopicCompletionToggle topicId="antimicrobials-pharm" topicTitle="Antimicrobials" />
-    </SectionLayout>
+          <SynthesisBlock
+            title="Antimicrobials — Class, Mechanism, ICU Pearl"
+            subtitle="The headline drug classes you need to recognise on a viva."
+            variant="table"
+          >
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border bg-secondary/50">
+                  <th className="text-left p-2 text-foreground font-semibold">Class</th>
+                  <th className="text-left p-2 text-foreground font-semibold">Mechanism</th>
+                  <th className="text-left p-2 text-foreground font-semibold">ICU Pearl</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground/90">
+                {[
+                  ["β-lactams (penicillin, cephalosporin, carbapenem)", "Cell-wall synthesis (PBP)", "Time-dependent killing — extend infusion (4 h pip-tazo, meropenem) in critically ill"],
+                  ["Aminoglycosides (gentamicin)", "30S ribosome — ↓ protein synthesis", "Concentration-dependent — once daily; therapeutic drug monitoring; nephro/ototoxic"],
+                  ["Glycopeptides (vancomycin)", "Cell-wall (D-Ala-D-Ala)", "AUC₂₄/MIC 400–600 target (not trough alone); infusion-related reactions"],
+                  ["Fluoroquinolones (cipro, levo)", "DNA gyrase / topoisomerase IV", "QT prolongation, tendinopathy, C. difficile risk; covers atypical pathogens"],
+                  ["Macrolides (clari, azith)", "50S ribosome", "QT prolongation; CYP3A4 inhibitors → drug interactions"],
+                  ["Oxazolidinones (linezolid)", "50S ribosome (initiation)", "VRE/MRSA cover; thrombocytopenia >14 d; serotonin syndrome with SSRI"],
+                  ["Antifungals (echinocandins, azoles, AmB)", "β-glucan / ergosterol", "Caspofungin first-line invasive candidiasis; AmB nephrotoxic"],
+                ].map(([cls, mech, pearl]) => (
+                  <tr key={cls as string} className="border-b border-border/50">
+                    <td className="p-2 font-medium">{cls}</td>
+                    <td className="p-2 text-muted-foreground">{mech}</td>
+                    <td className="p-2 text-muted-foreground">{pearl}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </SynthesisBlock>
+        </section>
+      }
+    />
   );
 };
 
