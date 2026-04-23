@@ -121,6 +121,91 @@ const ProceduralSedationTopic = () => {
               <li><strong>Allergy, previous sedation experience, current medication</strong> (especially opioids, benzodiazepines, gabapentinoids — tolerance vs synergy)</li>
               <li><strong>Consent</strong>: explicit discussion of awareness, recall, respiratory depression, and the possibility of conversion to GA</li>
             </ul>
+
+            <div className="mt-5 rounded-lg border border-border bg-secondary/30 p-4">
+              <h3 className="font-serif font-bold text-foreground text-base mb-3">
+                Pre-procedure & monitoring checklist
+              </h3>
+              <p className="text-xs text-muted-foreground mb-3 italic">
+                Aligned to AAGBI/RCoA Safe Sedation Practice for Healthcare Procedures (2021), AoMRC Safe Sedation Practice (2013) and ASA standards. Tick before starting; document in the record.
+              </p>
+
+              {[
+                {
+                  heading: "1. Patient — selection & preparation",
+                  items: [
+                    "ASA grade documented; ASA IV/V → escalate to anaesthetist or GA",
+                    "Focused airway assessment: Mallampati, mouth opening, neck movement, dentition, BMI, beard",
+                    "OSA screen (STOP-BANG) and obesity considered; plan extended monitoring if high risk",
+                    "Fasting status confirmed (6 h solids / 2 h clear fluids for elective deep sedation) or risk–benefit documented",
+                    "Relevant comorbidities reviewed: cardiac, respiratory, hepatic, renal, neurological",
+                    "Allergies, current medications (opioids, benzodiazepines, gabapentinoids, anticoagulants) documented",
+                    "Written informed consent including awareness, recall, respiratory depression, conversion to GA",
+                    "Responsible adult escort and home supervision arranged for day-case discharge",
+                  ],
+                },
+                {
+                  heading: "2. Team & environment",
+                  items: [
+                    "Sedationist trained and competent for the intended depth; not also performing the procedure (for moderate/deep sedation)",
+                    "Trained assistant present whose sole role is patient monitoring",
+                    "Immediate access to airway-trained help and a clear escalation pathway",
+                    "Tipping trolley, suction (Yankauer, working), and reliable patient positioning",
+                    "Resuscitation trolley and defibrillator immediately available; difficult-airway equipment accessible",
+                  ],
+                },
+                {
+                  heading: "3. Drugs & equipment ready",
+                  items: [
+                    "Reliable IV access (≥20 G) secured and patent",
+                    "Oxygen source with nasal cannula / facemask and a self-inflating bag-valve-mask",
+                    "Sedative and analgesic drugs drawn up, labelled and dose-checked",
+                    "Reversal agents drawn up and immediately available: flumazenil (200 µg), naloxone (400 µg)",
+                    "Emergency drugs available: ephedrine, phenylephrine, atropine, adrenaline, IV fluids",
+                  ],
+                },
+                {
+                  heading: "4. Minimum monitoring (continuous, from before first dose until recovery)",
+                  items: [
+                    "Pulse oximetry (SpO₂) — continuous, audible tone",
+                    "Capnography (ETCO₂) — mandatory for moderate and deep sedation",
+                    "Non-invasive blood pressure — at least every 5 min",
+                    "Continuous ECG (3- or 5-lead) for moderate/deep sedation, all cardiac/elderly patients",
+                    "Level of consciousness scored regularly (MOAA/S, Ramsay or OAA/S)",
+                    "Supplemental oxygen titrated to SpO₂; FiO₂ documented",
+                    "Temperature for procedures >30 min or in vulnerable patients",
+                  ],
+                },
+                {
+                  heading: "5. Recovery & discharge",
+                  items: [
+                    "Continued monitoring in a designated recovery area until discharge criteria met",
+                    "Objective discharge score documented (modified Aldrete or PADSS)",
+                    "Verbal and written post-sedation instructions given to patient and escort",
+                    "No driving, operating machinery, signing legal documents or alcohol for 24 h",
+                    "24-hour contact number provided; clear safety-net advice for complications",
+                  ],
+                },
+              ].map((group) => (
+                <div key={group.heading} className="mb-4 last:mb-0">
+                  <p className="font-semibold text-foreground text-sm mb-2">{group.heading}</p>
+                  <ul className="space-y-1.5">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-0.5 flex-shrink-0 inline-block w-4 h-4 rounded border border-primary/40 bg-background"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </ExamSection>
 
           <ExamSection id="techniques" exams={[Exam.PRIMARY, Exam.FINAL]}>
