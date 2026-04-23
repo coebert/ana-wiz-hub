@@ -1,15 +1,11 @@
-import { SectionLayout } from "@/components/SectionLayout";
-import { KeyLearningPoints } from "@/components/KeyLearningPoints";
+import { TopicTemplate } from "@/components/TopicTemplate";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
-import { TopicCompletionToggle } from "@/components/TopicCompletionToggle";
-import { QuizSection } from "@/components/QuizSection";
 import {
   anaestheticMachineQuiz,
   breathingCircuitsQuiz,
   vaporizersQuiz,
   ventilatorsQuiz,
 } from "@/data/quizzes";
-import { ReferencesList } from "@/components/ReferencesList";
 import AnaestheticMachineDiagram from "@/components/diagrams/AnaestheticMachineDiagram";
 import BreathingCircuitsDiagram from "@/components/diagrams/BreathingCircuitsDiagram";
 import { VaporizerDiagram } from "@/components/diagrams/VaporizerDiagram";
@@ -18,8 +14,32 @@ import ManleyMVDDiagram from "@/components/diagrams/ManleyMVDDiagram";
 import RitchieWhistleDiagram from "@/components/diagrams/RitchieWhistleDiagram";
 import NeuraxialNeedlesDiagram from "@/components/diagrams/NeuraxialNeedlesDiagram";
 import LaryngoscopeBladesDiagram from "@/components/diagrams/LaryngoscopeBladesDiagram";
-import { SeeAlso } from "@/components/SeeAlso";
 import InlineRef from "@/components/InlineRef";
+
+const objectives = [
+  "Trace the gas pathway from pipeline/cylinder through regulator, flowmeter, vaporizer and breathing system to patient.",
+  "Compare plenum vs draw-over and TEC 5/7 vs TEC 6 vaporizers, including the splitting ratio calculation.",
+  "Classify Mapleson circuits and identify the most efficient system for spontaneous and controlled ventilation.",
+  "Classify ventilators by power source, mechanism and cycling, citing representative theatre, ICU and transport machines.",
+  "List AAGBI minimum monitoring standards and outline the AAGBI 2012 pre-use machine check.",
+  "Describe key airway equipment (laryngoscope blades, neuraxial needles) and the rationale for their design.",
+];
+
+const keyPoints = [
+  "Pipeline 400 kPa via NIST/Schrader; O₂ stored in VIE at −183 °C; cylinders sized A–J with PISS and colour codes.",
+  "N₂O cylinders contain liquid — pressure constant at 44 bar until exhausted; assess contents by weight; UK filling ratio 0.75.",
+  "Pressure regulators reduce 137 bar → 400 kPa (spring-diaphragm); two-stage minimises seat effect.",
+  "Rotameters: laminar (low flow) viscosity-dependent; turbulent (high) density-dependent; gas-specific; O₂ downstream.",
+  "SVP depends only on agent + temperature; desflurane (BP 22.8 °C) needs heated TEC 6.",
+  "Mapleson A best for SV (FGF ≈ MV); D best for IPPV (FGF 70 mL/kg/min).",
+  "Circle system enables low-flow anaesthesia; soda lime exothermic; desiccation → compound A (sevo) and CO (des).",
+  "Ascending bellows fail to rise on disconnect — primary visual alarm.",
+  "Manley MVD: VT = FGF ÷ RR. Modern piston ventilators decouple FGF for fixed VT.",
+  "Ritchie whistle is gas-powered (Venturi/Bernoulli) — sounds even during power failure.",
+  "AAGBI minimum monitoring: SpO₂, ECG, NIBP, EtCO₂, FiO₂, agent, airway pressure, temperature; TOF if NMBs.",
+  "Pencil-point spinal needles (Whitacre/Sprotte) reduce PDPH vs Quincke; Tuohy directs epidural catheter via Huber tip.",
+  "Pre-use AAGBI 2012 check: upstream-to-downstream sequence; two-bag test for circuit integrity.",
+];
 
 import manleyImg from "@/assets/ventilators/manley-mp3.jpg";
 import nuffieldImg from "@/assets/ventilators/penlon-nuffield-200.jpg";
@@ -130,14 +150,23 @@ const monitoringStandards = [
 
 const EquipmentMonitoringTopic = () => {
   return (
-    <SectionLayout
+    <TopicTemplate
       title="Anaesthetic Equipment & Monitoring"
       subtitle="A unified, exam-ordered tour of the workstation — machine, vaporizers, circuits, ventilators, monitors, airway equipment and safety checks"
       backPath="/physics"
       backLabel="Physics"
       accentColor="text-physics"
-    >
-      <div className="space-y-12">
+      topicId="equipment-monitoring"
+      topicTitle="Anaesthetic Equipment & Monitoring"
+      objectives={objectives}
+      keyPoints={keyPoints}
+      quizQuestions={[...anaestheticMachineQuiz, ...vaporizersQuiz, ...breathingCircuitsQuiz, ...ventilatorsQuiz]}
+      sectionExamMapping={{
+        objectives: { exams: ["primary"] },
+        keyPoints: { exams: ["primary"] },
+      }}
+      coreConcepts={
+        <div className="space-y-12">
 
         {/* ───── Orientation ───── */}
         <section>
