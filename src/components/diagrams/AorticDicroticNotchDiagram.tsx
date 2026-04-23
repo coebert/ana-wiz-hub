@@ -504,6 +504,12 @@ const AorticDicroticNotchDiagram = () => {
         >
           <RotateCcw className="h-4 w-4 mr-1" /> Reset
         </Button>
+        <div className="flex items-center gap-2 ml-2 px-2 py-1 rounded-md border border-border">
+          <Switch id="iabp-toggle" checked={showIABP} onCheckedChange={setShowIABP} />
+          <Label htmlFor="iabp-toggle" className="text-xs cursor-pointer">
+            IABP overlay
+          </Label>
+        </div>
         <span className="ml-auto text-xs text-muted-foreground">
           Current phase:{" "}
           <span
@@ -520,7 +526,7 @@ const AorticDicroticNotchDiagram = () => {
       </div>
 
       <p className="text-xs text-muted-foreground leading-relaxed">
-        The <strong>dichrotic notch</strong> (incisura) marks <strong>aortic valve closure</strong>: the moment ventricular pressure falls below aortic pressure, blood briefly back-flows, the valve snaps shut, and the rebounding column of blood produces a small transient pressure rise. It defines the boundary between <strong>ventricular systole</strong> and <strong>ventricular diastole</strong>, and is the trigger reference used by the <strong>intra-aortic balloon pump</strong> to inflate at the start of diastole.
+        The <strong>dichrotic notch</strong> marks <strong>aortic valve closure</strong> and the start of diastole. The <strong>intra-aortic balloon pump</strong> uses it as its timing reference: the balloon <strong>inflates at the notch</strong> (early diastole) to displace blood retrograde and <strong>augment coronary perfusion pressure</strong>, then <strong>deflates just before the next systolic upstroke</strong>, producing a sudden drop in aortic pressure that <strong>reduces LV afterload</strong> and the work of ejection. Toggle the overlay to see the augmented diastolic peak and reduced end-diastolic pressure produced by 1:1 counterpulsation.
       </p>
     </div>
   );
