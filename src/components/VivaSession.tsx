@@ -423,6 +423,35 @@ const VivaSession = ({
             </button>
           )}
         </label>
+
+        <label className="inline-flex items-center gap-2 text-xs text-foreground cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={prefetchEnabled}
+            onChange={(e) => {
+              setPrefetchEnabled(e.target.checked);
+              if (!e.target.checked) {
+                prefetchedRef.current = null;
+                setPrefetchStatus("idle");
+              }
+            }}
+            className="h-3.5 w-3.5 rounded border-border accent-primary"
+          />
+          <span>Prefetch next question</span>
+          {prefetchEnabled && prefetchStatus === "loading" && (
+            <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+              <Loader2 className="h-3 w-3 animate-spin" /> preparing…
+            </span>
+          )}
+          {prefetchEnabled && prefetchStatus === "ready" && (
+            <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">
+              ready ✓
+            </span>
+          )}
+          {prefetchEnabled && prefetchStatus === "error" && (
+            <span className="text-[11px] text-amber-700 dark:text-amber-400">retry on next</span>
+          )}
+        </label>
       </div>
 
       {/* Browser support warnings */}
