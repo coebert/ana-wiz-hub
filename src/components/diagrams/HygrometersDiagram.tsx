@@ -365,6 +365,7 @@ const DewPointScene = ({ step }: { step: number }) => {
   const absHum = (svpTd * 1000 * 18.015) / (8.314 * (Tamb + 273.15)); // g/m³ ≈ 10.4
 
   return (
+    <div className="space-y-3">
     <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
       {/* Silver tube */}
       <defs>
@@ -551,6 +552,27 @@ const DewPointScene = ({ step }: { step: number }) => {
         Reference (uncooled) silver tube — compare appearance
       </text>
     </svg>
+
+      {/* Mini comparison callout — clarifies what the apparatus does vs the alternative method */}
+      <div className="grid sm:grid-cols-2 gap-2 text-[11px] leading-snug">
+        <div className="rounded-md border border-primary/40 bg-primary/5 p-2">
+          <div className="font-semibold text-primary mb-0.5">This apparatus — Cooling to Td</div>
+          <div className="text-muted-foreground">
+            Cool the surface until dew appears. The thermometer reading <em>is</em> Td.
+            Then derive RH from <span className="font-mono">SVP(Td) / SVP(Tamb)</span>.
+            Td is measured <strong>directly</strong>; humidity is derived.
+          </div>
+        </div>
+        <div className="rounded-md border border-border bg-muted/40 p-2">
+          <div className="font-semibold text-foreground mb-0.5">Other hygrometers — Measuring RH then inferring Td</div>
+          <div className="text-muted-foreground">
+            Hair / wet-and-dry / capacitance sensors give <strong>RH</strong> first;
+            Td is calculated by finding the temperature where <span className="font-mono">SVP(Td) = RH × SVP(Tamb)</span>.
+            RH is measured <strong>directly</strong>; Td is derived.
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
