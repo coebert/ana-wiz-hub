@@ -484,6 +484,8 @@ const DemoVivaInteractive = ({
   const [error, setError] = useState<string | null>(null);
   /** Last submitted answer text — kept after a failure so "Retry marking" can resend it without losing what the candidate said. */
   const [pendingAnswer, setPendingAnswer] = useState<string | null>(null);
+  /** Per-finalised-segment microphone recognition confidence (0–1). */
+  const [confSegments, setConfSegments] = useState<ConfidenceSegment[]>([]);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
