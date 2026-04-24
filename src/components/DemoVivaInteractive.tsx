@@ -441,6 +441,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [initialQuestion]);
 
@@ -585,6 +586,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [lastFeedback]);
 
@@ -596,6 +598,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [initialQuestion]);
 
