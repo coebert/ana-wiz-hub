@@ -98,19 +98,24 @@ const Landing = () => {
           ))}
         </div>
         <section className="mt-12 md:mt-16 max-w-5xl mx-auto">
-          <details className="group rounded-2xl border border-border bg-card/50 shadow-sm">
-            <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-6 py-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <details
+            className="group relative overflow-hidden rounded-2xl border border-primary/20 shadow-sm"
+            style={{ background: "var(--gradient-hero)" }}
+          >
+            {/* Soft overlay so content cards still pop on the gradient */}
+            <div className="absolute inset-0 bg-background/0 dark:bg-background/10 pointer-events-none" />
+            <summary className="relative flex items-center justify-between gap-3 cursor-pointer list-none px-6 py-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               <div className="flex items-center gap-2">
-                <Mic className="h-5 w-5 text-primary" />
-                <span className="font-display text-xl md:text-2xl font-semibold text-foreground tracking-tight">
+                <Mic className="h-5 w-5 text-white" />
+                <span className="font-display text-xl md:text-2xl font-semibold text-white tracking-tight [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
                   See a taste of Viva Practice
                 </span>
               </div>
-              <ChevronDown className="h-5 w-5 text-primary transition-transform group-open:rotate-180" />
+              <ChevronDown className="h-5 w-5 text-white transition-transform group-open:rotate-180" />
             </summary>
 
-            <div className="px-6 pb-6 pt-2">
-              <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-2xl">
+            <div className="relative px-6 pb-6 pt-2">
+              <p className="text-sm md:text-base text-white/90 mb-6 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.25)]">
                 A sample 30-second prompt and the kind of constructive feedback the AI examiner gives.
               </p>
 
