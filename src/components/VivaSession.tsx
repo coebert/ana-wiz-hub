@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
 import VivaRubric from "@/components/VivaRubric";
 import MicHelpPanel from "@/components/MicHelpPanel";
+import MicConfidenceMeter, { type ConfidenceSegment } from "@/components/MicConfidenceMeter";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
 
