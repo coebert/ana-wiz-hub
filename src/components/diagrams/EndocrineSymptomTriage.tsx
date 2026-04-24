@@ -19,7 +19,7 @@ interface Diagnosis {
   key: DxKey;
   name: string;
   oneLiner: string;
-  investigations: string[];
+  investigations: { test: string; why: string }[];
   immediate: string;
   tokenClass: string; // semantic token suffix (destructive, accent, etc.)
 }
@@ -30,11 +30,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Diabetic ketoacidosis (DKA)",
     oneLiner: "Insulin deficit → ketogenesis + high-anion-gap acidosis.",
     investigations: [
-      "Capillary + venous glucose, blood ketones (β-hydroxybutyrate)",
-      "Venous blood gas: pH, HCO₃⁻, anion gap, lactate",
-      "U&Es with K⁺ (and PO₄, Mg) — repeat hourly initially",
-      "Urinalysis (ketones), ECG (K⁺ changes), septic screen / CXR",
-      "HbA1c, amylase if abdo pain, β-hCG in women of childbearing age",
+      { test: "Capillary + venous glucose, blood ketones (β-hydroxybutyrate)", why: "Confirms the diagnostic triad: glucose > 11, ketones ≥ 3. β-OHB tracks insulin sufficiency at cell level — best marker of resolution." },
+      { test: "Venous blood gas: pH, HCO₃⁻, anion gap, lactate", why: "Quantifies severity (pH < 7.10 = HDU/ICU) and confirms HAGMA. HCO₃⁻ rise ≥ 3 mmol/L/h tracks adequate insulin." },
+      { test: "U&Es with K⁺ (and PO₄, Mg) — repeat hourly initially", why: "Insulin drives K⁺ intracellularly; total-body deficit is masked at presentation. Withhold insulin if K⁺ < 3.5." },
+      { test: "Urinalysis (ketones), ECG (K⁺ changes), septic screen / CXR", why: "ECG detects hyper/hypokalaemic changes before bloods return. Sepsis is the commonest precipitant." },
+      { test: "HbA1c, amylase if abdo pain, β-hCG in women of childbearing age", why: "HbA1c distinguishes new T1DM from poor control. Amylase often raised in DKA without pancreatitis. Pregnancy alters fluid/insulin targets." },
     ],
     immediate: "0.9% NaCl 1 L over 1 h → fixed-rate insulin 0.1 U/kg/h once running; replace K⁺ when 3.5–5.5.",
     tokenClass: "destructive",
@@ -44,11 +44,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Hyperosmolar hyperglycaemic state (HHS)",
     oneLiner: "Profound hyperglycaemia + hyperosmolality, minimal ketones, days of dehydration.",
     investigations: [
-      "Glucose, ketones (< 3), VBG (pH > 7.30, HCO₃⁻ > 15)",
-      "Calculated osmolality: 2[Na⁺] + glucose + urea (target > 320)",
-      "U&Es, corrected Na⁺, magnesium, phosphate",
-      "ECG, troponin, CXR — look for MI / sepsis as precipitant",
-      "VTE risk assessment — high thrombotic risk, prophylactic LMWH",
+      { test: "Glucose, ketones (< 3), VBG (pH > 7.30, HCO₃⁻ > 15)", why: "Distinguishes HHS from DKA — minimal ketonaemia and absent acidosis are diagnostic; insulin's residual action prevents ketogenesis." },
+      { test: "Calculated osmolality: 2[Na⁺] + glucose + urea (target > 320)", why: "Osmolality > 320 mOsm/kg defines HHS; correlates with coma > 340. Drives the slow-fluid strategy (Δ ≤ 5 mOsm/kg/h)." },
+      { test: "U&Es, corrected Na⁺, magnesium, phosphate", why: "Apparent low Na⁺ is dilutional — correct +2.4 per 5.5 mmol/L glucose above 5.5. True Na⁺ guides safe rate of fluid replacement." },
+      { test: "ECG, troponin, CXR — look for MI / sepsis as precipitant", why: "Silent MI and sepsis trigger most HHS. Identifying precipitant changes prognosis more than the metabolic correction itself." },
+      { test: "VTE risk assessment — high thrombotic risk, prophylactic LMWH", why: "Hyperviscosity + dehydration + immobility produce VTE rates 5× DKA — prophylaxis is mandatory unless contraindicated." },
     ],
     immediate: "Fluids FIRST (0.9% NaCl ~ 1 L/h titrated). Insulin only after fluids running, low rate 0.05 U/kg/h.",
     tokenClass: "destructive",
@@ -58,11 +58,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Thyroid storm",
     oneLiner: "Decompensated hyperthyroidism — fever, tachycardia, agitation, GI/CNS dysfunction.",
     investigations: [
-      "TSH (suppressed) + free T4 / T3 (raised)",
-      "Burch-Wartofsky Point Scale — ≥ 45 highly suggestive",
-      "FBC, LFTs (cholestasis common), U&Es, glucose, calcium",
-      "ECG (AF in 25%), troponin, echo if HF",
-      "Septic screen + cortisol (cover relative adrenal insufficiency)",
+      { test: "TSH (suppressed) + free T4 / T3 (raised)", why: "Confirms biochemical hyperthyroidism, but storm is a CLINICAL diagnosis — hormone level correlates poorly with severity." },
+      { test: "Burch-Wartofsky Point Scale — ≥ 45 highly suggestive", why: "Operational diagnostic tool: scores temperature, CNS, GI/hepatic, CV and precipitant — separates storm from severe thyrotoxicosis." },
+      { test: "FBC, LFTs (cholestasis common), U&Es, glucose, calcium", why: "Cholestatic LFTs are typical and influence drug choice (PTU > carbimazole if jaundiced). Hypercalcaemia from bone resorption." },
+      { test: "ECG (AF in 25%), troponin, echo if HF", why: "High-output cardiac failure and AF with rapid response are major killers — guide rate control and anticoagulation." },
+      { test: "Septic screen + cortisol (cover relative adrenal insufficiency)", why: "Sepsis is the commonest precipitant. Accelerated cortisol clearance produces relative adrenal insufficiency — cover with hydrocortisone." },
     ],
     immediate: "β-blocker (propranolol/esmolol) → PTU → Lugol's iodine ≥ 1 h later → hydrocortisone → cooling.",
     tokenClass: "physiology",
@@ -72,11 +72,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Myxoedema coma",
     oneLiner: "Severe hypothyroid decompensation with hypothermia + hypoventilation + obtundation.",
     investigations: [
-      "TSH (raised, primary) or low-normal (secondary), free T4 (low)",
-      "VBG/ABG — type II respiratory failure, hyponatraemia",
-      "Cortisol + ACTH (cover before T4 if pituitary cause)",
-      "ECG (bradycardia, low voltage, prolonged QT), CK (rhabdomyolysis)",
-      "Glucose, blood cultures, CXR — sepsis is the usual trigger",
+      { test: "TSH (raised, primary) or low-normal (secondary), free T4 (low)", why: "Distinguishes primary (thyroid failure, ↑↑ TSH) from secondary (pituitary, inappropriately normal/low TSH) — alters need for hydrocortisone first." },
+      { test: "VBG/ABG — type II respiratory failure, hyponatraemia", why: "Central hypoventilation produces CO₂ retention; impaired free-water excretion drives hyponatraemia in ~50%." },
+      { test: "Cortisol + ACTH (cover before T4 if pituitary cause)", why: "Co-existing adrenal insufficiency is common — giving T4 first precipitates Addisonian crisis. Steroid cover is mandatory." },
+      { test: "ECG (bradycardia, low voltage, prolonged QT), CK (rhabdomyolysis)", why: "Long QT predisposes to torsades during rewarming; CK rise reflects myopathy and prognosticates." },
+      { test: "Glucose, blood cultures, CXR — sepsis is the usual trigger", why: "Infection (especially pneumonia/UTI) precipitates 35% of cases; hypothermia masks the usual fever response." },
     ],
     immediate: "IV T3 10–20 mcg bolus then 10 mcg q4h (or T4) + IV hydrocortisone 100 mg q8h + passive rewarming + ventilation.",
     tokenClass: "clinical",
@@ -86,11 +86,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Adrenal (Addisonian) crisis",
     oneLiner: "Refractory shock + low Na⁺ / high K⁺ / low glucose; classic in chronic steroid users.",
     investigations: [
-      "Paired random cortisol + ACTH BEFORE first steroid dose (if practical — never delay treatment)",
-      "U&Es: ↓ Na⁺, ↑ K⁺, ↑ urea; glucose (often low); VBG (mild metabolic acidosis)",
-      "Septic screen — infection is the commonest trigger",
-      "Short Synacthen test once stable (not in acute phase)",
-      "Adrenal antibodies / imaging once stable to find primary cause",
+      { test: "Paired random cortisol + ACTH BEFORE first steroid dose (if practical — never delay treatment)", why: "Cortisol < 100 nmol/L during shock is diagnostic; ACTH localises primary (high) vs secondary (low). Single best diagnostic test." },
+      { test: "U&Es: ↓ Na⁺, ↑ K⁺, ↑ urea; glucose (often low); VBG (mild metabolic acidosis)", why: "Classic biochemical fingerprint reflects aldosterone deficit (Na⁺/K⁺) + cortisol deficit (glucose). Confirms suspicion at the bedside." },
+      { test: "Septic screen — infection is the commonest trigger", why: "Most adrenal crises are precipitated by intercurrent infection in known Addison's; missing it perpetuates the crisis." },
+      { test: "Short Synacthen test once stable (not in acute phase)", why: "Definitive test for primary adrenal insufficiency; pointless acutely (high endogenous ACTH already + dexamethasone doesn't interfere with assay)." },
+      { test: "Adrenal antibodies / imaging once stable to find primary cause", why: "21-OH antibodies confirm autoimmune Addison's (~80%); CT identifies haemorrhage/TB/metastases for the seronegative." },
     ],
     immediate: "Hydrocortisone 100 mg IV stat → 200 mg/24 h + 0.9% NaCl 1 L/h + glucose if hypoglycaemic.",
     tokenClass: "destructive",
@@ -100,11 +100,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Phaeochromocytoma crisis",
     oneLiner: "Catecholamine surge → severe paroxysmal hypertension, arrhythmia, MI, takotsubo.",
     investigations: [
-      "Plasma metanephrines (preferred) or 24-h urinary metanephrines/catecholamines",
-      "ECG, troponin, echo (takotsubo / catecholamine cardiomyopathy)",
-      "CT/MRI adrenals once biochemically confirmed; MIBG if metastatic",
-      "Glucose (often raised), calcium (MEN2 association)",
-      "Genetic testing — RET, VHL, NF1, SDHx",
+      { test: "Plasma metanephrines (preferred) or 24-h urinary metanephrines/catecholamines", why: "Metanephrines are continuously secreted (vs episodic catecholamines) — highest sensitivity (~99%). Avoids missed diagnosis between paroxysms." },
+      { test: "ECG, troponin, echo (takotsubo / catecholamine cardiomyopathy)", why: "Catecholamine surge causes myocardial stunning, takotsubo, MI without coronary disease — guides peri-operative cardiac risk." },
+      { test: "CT/MRI adrenals once biochemically confirmed; MIBG if metastatic", why: "Image AFTER biochemistry — incidentalomas are common. MIBG localises extra-adrenal/metastatic disease for surgical/radio-isotope planning." },
+      { test: "Glucose (often raised), calcium (MEN2 association)", why: "α-mediated insulin suppression causes hyperglycaemia. Hypercalcaemia raises suspicion for MEN2 (medullary thyroid Ca + hyperparathyroidism)." },
+      { test: "Genetic testing — RET, VHL, NF1, SDHx", why: "Up to 40% are hereditary; positive result mandates surveillance for synchronous tumours and family screening." },
     ],
     immediate: "α-blockade FIRST (phentolamine bolus, IV magnesium 2–4 g) THEN β-blocker. Never β-blocker alone.",
     tokenClass: "destructive",
@@ -114,11 +114,11 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
     name: "Pituitary apoplexy",
     oneLiner: "Sudden headache + visual loss + ophthalmoplegia + hypopituitarism.",
     investigations: [
-      "Urgent pituitary MRI (CT if MRI unavailable — shows haemorrhage/infarct)",
-      "Full pituitary screen: cortisol, ACTH, TSH/T4, prolactin, LH/FSH, GH/IGF-1",
-      "U&Es, glucose, osmolality (diabetes insipidus risk)",
-      "Formal visual field assessment + acuity + cranial nerve exam (III, IV, VI)",
-      "Coag screen pre-op; group & save for neurosurgery",
+      { test: "Urgent pituitary MRI (CT if MRI unavailable — shows haemorrhage/infarct)", why: "Imaging is diagnostic; MRI distinguishes haemorrhage from infarction and defines optic chiasm compression — drives the surgical decision." },
+      { test: "Full pituitary screen: cortisol, ACTH, TSH/T4, prolactin, LH/FSH, GH/IGF-1", why: "Apoplexy causes panhypopituitarism in ~80%; baseline before steroid documents axis loss and guides lifelong replacement." },
+      { test: "U&Es, glucose, osmolality (diabetes insipidus risk)", why: "Posterior pituitary involvement causes DI — rising Na⁺ + dilute urine + thirst is the early sign; missed DI causes hypernatraemic encephalopathy." },
+      { test: "Formal visual field assessment + acuity + cranial nerve exam (III, IV, VI)", why: "Bitemporal hemianopia + cavernous-sinus CN palsies are the surgical indications; documents baseline for post-op comparison." },
+      { test: "Coag screen pre-op; group & save for neurosurgery", why: "Often anticoagulated/post-op patients; trans-sphenoidal decompression may proceed within hours so blood products must be ready." },
     ],
     immediate: "Hydrocortisone 100 mg IV stat (BEFORE thyroxine), urgent neurosurgical referral, fluid balance for DI.",
     tokenClass: "clinical",
@@ -349,11 +349,17 @@ const EndocrineSymptomTriage = () => {
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground flex items-center gap-1 mb-1.5">
                   <FlaskConical className="h-3 w-3" /> Required investigations
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-2">
                   {top.dx.investigations.map((inv, i) => (
                     <li key={i} className="text-xs text-foreground flex gap-1.5">
                       <span className="text-muted-foreground shrink-0">{i + 1}.</span>
-                      <span>{inv}</span>
+                      <div className="space-y-0.5">
+                        <p>{inv.test}</p>
+                        <p className="text-[10px] leading-snug text-muted-foreground italic">
+                          <span className="not-italic font-semibold uppercase tracking-wider text-[9px] mr-1">Why</span>
+                          {inv.why}
+                        </p>
+                      </div>
                     </li>
                   ))}
                 </ul>
