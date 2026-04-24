@@ -348,11 +348,21 @@ const wetDrySteps: AnimatedMechanismStep[] = [
 
 const DewPointScene = ({ step }: { step: number }) => {
   // step 0: silver tube clear, T=22 | 1: ether bubbles, T cools toward Td | 2: T = Td, dew forms | 3: read Td
+  const Tamb = 22;
   const Td = 12; // dew point in this scenario
   const tubeT = step >= 2 ? Td : step >= 1 ? 17 : 22;
   const showDew = step >= 2;
   const showBubbles = step >= 1;
   const atDewPoint = step >= 2;
+  const [showSvpTip, setShowSvpTip] = useState(false);
+
+  // Magnus approximation for SVP of water (kPa) — used to verify the
+  // numeric example shown to the learner.
+  const svpKPa = (T: number) => 0.61094 * Math.exp((17.625 * T) / (T + 243.04));
+  const svpAmb = svpKPa(Tamb); // ≈ 2.64 kPa
+  const svpTd = svpKPa(Td); //   ≈ 1.40 kPa  (= actual PH₂O in the room)
+  const rh = (svpTd / svpAmb) * 100; // ≈ 53%
+  const absHum = (svpTd * 1000 * 18.015) / (8.314 * (Tamb + 273.15)); // g/m³ ≈ 10.4
 
   return (
     <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
