@@ -348,11 +348,21 @@ const wetDrySteps: AnimatedMechanismStep[] = [
 
 const DewPointScene = ({ step }: { step: number }) => {
   // step 0: silver tube clear, T=22 | 1: ether bubbles, T cools toward Td | 2: T = Td, dew forms | 3: read Td
+  const Tamb = 22;
   const Td = 12; // dew point in this scenario
   const tubeT = step >= 2 ? Td : step >= 1 ? 17 : 22;
   const showDew = step >= 2;
   const showBubbles = step >= 1;
   const atDewPoint = step >= 2;
+  const [showSvpTip, setShowSvpTip] = useState(false);
+
+  // Magnus approximation for SVP of water (kPa) — used to verify the
+  // numeric example shown to the learner.
+  const svpKPa = (T: number) => 0.61094 * Math.exp((17.625 * T) / (T + 243.04));
+  const svpAmb = svpKPa(Tamb); // ≈ 2.64 kPa
+  const svpTd = svpKPa(Td); //   ≈ 1.40 kPa  (= actual PH₂O in the room)
+  const rh = (svpTd / svpAmb) * 100; // ≈ 53%
+  const absHum = (svpTd * 1000 * 18.015) / (8.314 * (Tamb + 273.15)); // g/m³ ≈ 10.4
 
   return (
     <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
@@ -411,7 +421,7 @@ const DewPointScene = ({ step }: { step: number }) => {
         {tubeT}°C
       </text>
 
-      {/* Td target marker on the thermometer */}
+      {/* Td target marker on the thermometer + info tooltip */}
       {showBubbles && (
         <g className="animate-fade-in">
           <line
@@ -433,6 +443,54 @@ const DewPointScene = ({ step }: { step: number }) => {
           >
             Td = {Td}°C
           </text>
+          {/* Info button */}
+          <g
+            transform={`translate(${140} ${90 - (Td - 5) - 4})`}
+            role="button"
+            tabIndex={0}
+            aria-label="Show how Td relates to saturated vapour pressure"
+            aria-expanded={showSvpTip}
+            onClick={() => setShowSvpTip((v) => !v)}
+            onMouseEnter={() => setShowSvpTip(true)}
+            onMouseLeave={() => setShowSvpTip(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setShowSvpTip((v) => !v);
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <circle r="6" fill="hsl(var(--primary))" />
+            <text textAnchor="middle" y="3" fontSize="9" fontWeight="bold" fill="hsl(var(--primary-foreground))">
+              i
+            </text>
+          </g>
+
+          {/* Tooltip */}
+          {showSvpTip && (
+            <foreignObject x="6" y="6" width="200" height="140" className="animate-fade-in">
+              <div
+                className="rounded-md border border-primary/40 bg-card text-foreground shadow-md p-2 text-[10px] leading-snug"
+                role="tooltip"
+              >
+                <div className="font-semibold text-primary mb-1">SVP check — this scenario</div>
+                <div className="font-mono text-[10px] space-y-0.5">
+                  <div>SVP(T<sub>amb</sub> = {Tamb}°C) ≈ {svpAmb.toFixed(2)} kPa</div>
+                  <div>SVP(T<sub>d</sub> = {Td}°C) ≈ {svpTd.toFixed(2)} kPa</div>
+                  <div>P<sub>H₂O</sub> in room = SVP(T<sub>d</sub>) ≈ {svpTd.toFixed(2)} kPa</div>
+                  <div className="pt-0.5 border-t border-border mt-1">
+                    RH = {svpTd.toFixed(2)} / {svpAmb.toFixed(2)} × 100
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;≈ <span className="text-primary font-bold">{rh.toFixed(0)}%</span>
+                  </div>
+                  <div>
+                    Abs. humidity ≈ <span className="text-primary font-bold">{absHum.toFixed(1)} g/m³</span>
+                  </div>
+                </div>
+              </div>
+            </foreignObject>
+          )}
         </g>
       )}
 
