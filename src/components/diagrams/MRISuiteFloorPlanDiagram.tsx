@@ -216,12 +216,11 @@ export const MRISuiteFloorPlanDiagram = () => {
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
           title="MRI Suite — Bird's-eye view"
-          showSutures={showSutures}
-          showLabels={showLabels}
-          onToggleSutures={() => setShowSutures((v) => !v)}
-          onToggleLabels={() => setShowLabels((v) => !v)}
-          suturesLabel="Gauss lines"
-          labelsLabel="Labels"
+          subtitle="Tap a zone, equipment item or contour for details"
+          toggles={[
+            { label: "Gauss lines", active: showSutures, onChange: () => setShowSutures((v) => !v) },
+            { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
+          ]}
         />
 
         <svg
