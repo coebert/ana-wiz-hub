@@ -424,12 +424,16 @@ const REF = {
 type LabKey = keyof typeof REF;
 
 /** Clinical glossary — what the typical refeeding-trend means at the bedside. */
+type SourceLink = { label: string; url: string; quote: string };
+
 const GLOSSARY: Record<LabKey, {
   full: string;
   trend: string;
   why: string;
   clinical: string;
   threshold: string;
+  trendSources: SourceLink[];
+  actionSources: SourceLink[];
 }> = {
   K: {
     full: "Potassium (K⁺)",
@@ -437,6 +441,25 @@ const GLOSSARY: Record<LabKey, {
     why: "Insulin activates Na⁺/K⁺-ATPase → K⁺ driven into cells. Total-body K⁺ already depleted from starvation, so serum drop is rapid.",
     clinical: "Arrhythmia (VT/VF, torsades), muscle weakness, ileus, ECG changes (flat T, U waves, long QT).",
     threshold: "Replace if <3.5; urgent IV if <3.0 or symptomatic. Cardiac monitor during replacement.",
+    trendSources: [
+      {
+        label: "BJA Educ — Mehanna 2008",
+        url: "https://www.bmj.com/content/336/7659/1495",
+        quote: "“Insulin causes cellular uptake of potassium, magnesium and phosphate, leading to hypokalaemia, hypomagnesaemia and hypophosphataemia.”",
+      },
+      {
+        label: "ASPEN consensus 2020",
+        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
+        quote: "“Decreases in serum potassium, magnesium, and/or phosphorus levels occur within hours to days of reintroducing nutrition.”",
+      },
+    ],
+    actionSources: [
+      {
+        label: "NICE CG32 §1.4",
+        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
+        quote: "“Provide oral, enteral or intravenous supplements of potassium (likely requirement 2–4 mmol/kg/day)…”",
+      },
+    ],
   },
   PO4: {
     full: "Phosphate (PO₄³⁻)",
@@ -444,6 +467,30 @@ const GLOSSARY: Record<LabKey, {
     why: "Consumed making 2,3-DPG, ATP, and phosphorylated glycolytic intermediates. Insulin co-transports PO₄ into cells.",
     clinical: "Diaphragmatic / respiratory muscle weakness (failure to wean), cardiac failure, rhabdomyolysis, haemolysis, paraesthesia, seizures.",
     threshold: "ASPEN: mild <0.65, moderate 0.32–0.50, severe <0.32 mmol/L. Replace IV if <0.5 or symptomatic.",
+    trendSources: [
+      {
+        label: "BJA Educ — Mehanna 2008",
+        url: "https://www.bmj.com/content/336/7659/1495",
+        quote: "“Hypophosphataemia is the hallmark of the refeeding syndrome, usually appearing within the first 72 hours of refeeding.”",
+      },
+      {
+        label: "Frontline Gastro 2020",
+        url: "https://fg.bmj.com/content/11/3/254",
+        quote: "“A fall in serum phosphate to <0.50 mmol/L within 72 hours of feeding is the diagnostic biochemical hallmark.”",
+      },
+    ],
+    actionSources: [
+      {
+        label: "ASPEN consensus 2020 — severity",
+        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
+        quote: "“Mild 0.51–0.65, moderate 0.32–0.50, severe <0.32 mmol/L… intravenous repletion is recommended for severe hypophosphataemia.”",
+      },
+      {
+        label: "NICE CG32 §1.4",
+        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
+        quote: "“Provide phosphate (0.3–0.6 mmol/kg/day)… restore circulatory volume and monitor fluid balance and clinical status closely.”",
+      },
+    ],
   },
   Mg: {
     full: "Magnesium (Mg²⁺)",
@@ -451,6 +498,25 @@ const GLOSSARY: Record<LabKey, {
     why: "Cofactor for Na⁺/K⁺-ATPase and ATP-dependent enzymes; pulled intracellularly. Renal wasting in starvation also contributes.",
     clinical: "Refractory hypokalaemia (cannot correct K⁺ until Mg²⁺ replaced), arrhythmia (torsades), tremor, tetany, seizures.",
     threshold: "Replace if <0.7. Always check Mg²⁺ before giving up on persistent hypokalaemia.",
+    trendSources: [
+      {
+        label: "BJA Educ — Mehanna 2008",
+        url: "https://www.bmj.com/content/336/7659/1495",
+        quote: "“Hypomagnesaemia commonly accompanies hypokalaemia and hypophosphataemia after refeeding.”",
+      },
+      {
+        label: "ASPEN consensus 2020",
+        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
+        quote: "“Mild 1.4–1.6, moderate 1.0–1.3, severe <1.0 mg/dL (<0.4 mmol/L).”",
+      },
+    ],
+    actionSources: [
+      {
+        label: "NICE CG32 §1.4",
+        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
+        quote: "“Provide magnesium (0.2 mmol/kg/day intravenous, 0.4 mmol/kg/day oral)…”",
+      },
+    ],
   },
   Glu: {
     full: "Glucose",
@@ -458,6 +524,25 @@ const GLOSSARY: Record<LabKey, {
     why: "Sudden carbohydrate load on a glycogen-depleted, insulin-resistant patient → transient hyperglycaemia → counter-regulatory insulin surge that triggers the electrolyte shift.",
     clinical: "Hyperglycaemia → osmotic diuresis, fluid overload, infection risk. Late hypoglycaemia possible if feed interrupted.",
     threshold: "Target 6–10 mmol/L (NICE-SUGAR). Avoid IV dextrose boluses; start feed at 10 kcal/kg/day.",
+    trendSources: [
+      {
+        label: "BJA Educ — Mehanna 2008",
+        url: "https://www.bmj.com/content/336/7659/1495",
+        quote: "“The sudden shift from fat to carbohydrate metabolism causes a surge in insulin secretion…”",
+      },
+    ],
+    actionSources: [
+      {
+        label: "NICE CG32 §1.4",
+        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
+        quote: "“Start nutrition support at no more than 10 kcal/kg/day, increasing slowly to meet requirements by 4–7 days.”",
+      },
+      {
+        label: "NICE-SUGAR NEJM 2009",
+        url: "https://www.nejm.org/doi/full/10.1056/NEJMoa0810625",
+        quote: "“A blood glucose target of 180 mg/dL (≈10 mmol/L) or less resulted in lower mortality than intensive control.”",
+      },
+    ],
   },
 };
 
@@ -525,6 +610,20 @@ const LabsPanel = ({ active }: { active: number }) => {
                   <div>
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Typical refeeding trend</dt>
                     <dd className="text-foreground leading-snug">{g.trend}</dd>
+                    <dd className="mt-1 flex flex-wrap gap-1">
+                      {g.trendSources.map((s) => (
+                        <a
+                          key={s.label}
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={s.quote}
+                          className="inline-flex items-center gap-0.5 rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-colors"
+                        >
+                          {s.label} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Why it changes</dt>
@@ -537,6 +636,20 @@ const LabsPanel = ({ active }: { active: number }) => {
                   <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1">
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-primary">Action</dt>
                     <dd className="text-foreground leading-snug">{g.threshold}</dd>
+                    <dd className="mt-1 flex flex-wrap gap-1">
+                      {g.actionSources.map((s) => (
+                        <a
+                          key={s.label}
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={s.quote}
+                          className="inline-flex items-center gap-0.5 rounded border border-primary/30 bg-card px-1.5 py-0.5 text-[9px] font-medium text-primary hover:bg-primary/10 transition-colors"
+                        >
+                          {s.label} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </dd>
                   </div>
                 </dl>
               </PopoverContent>
