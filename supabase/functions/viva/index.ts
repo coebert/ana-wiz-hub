@@ -9,6 +9,8 @@
 //
 // All AI calls go through the Lovable AI Gateway (LOVABLE_API_KEY).
 
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -17,6 +19,32 @@ const corsHeaders = {
 
 const AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
 const MODEL = "google/gemini-3-flash-preview";
+
+/** Service-role Supabase client used only for the model-answer cache. */
+function getServiceClient() {
+  const url = Deno.env.get("SUPABASE_URL");
+  const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
+/**
+ * Normalise a viva question so trivial differences (whitespace, punctuation,
+ * case) all hit the same cache row. Hash with SHA-256 to keep keys short.
+ */
+async function hashQuestion(q: string): Promise<string> {
+  const normalised = q
+    .toLowerCase()
+    .replace(/[\s\u00A0]+/g, " ")
+    .replace(/[“”"']/g, "")
+    .replace(/[^\w\s?-]/g, "")
+    .trim();
+  const bytes = new TextEncoder().encode(normalised);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
 
 type Exam = "primary" | "final" | "fficm";
 type Difficulty = "easy" | "standard" | "hard";
