@@ -342,7 +342,7 @@ Return JSON via the tool call only.`;
                 },
               },
             },
-            required: ["score", "verdict", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
+            required: ["score", "verdict", "answerSummary", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
             additionalProperties: false,
           },
         },
