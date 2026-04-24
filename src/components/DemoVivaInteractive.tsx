@@ -41,9 +41,16 @@ interface AnswerSummary {
   wordCount: number;
 }
 
+type ConfidenceLevel = "high" | "medium" | "low";
+interface Confidence {
+  level: ConfidenceLevel;
+  reason: string;
+}
+
 interface Feedback {
   score: number;
   verdict: string;
+  confidence?: Confidence;
   answerSummary?: AnswerSummary;
   coreFeedback?: CoreFeedback;
   strengths?: string[];
