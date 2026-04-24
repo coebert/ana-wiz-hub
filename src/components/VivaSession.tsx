@@ -501,7 +501,12 @@ const VivaSession = ({
             </Button>
           </div>
 
-          <VivaRubric exam={exam} score={feedback.score} gaps={feedback.gaps} />
+          <VivaRubric
+            exam={exam}
+            score={feedback.score}
+            gaps={feedback.gaps}
+            breakdown={feedback.rubricBreakdown}
+          />
         </div>
       )}
 
