@@ -36,9 +36,15 @@ interface CoreFeedback {
   communication: CoreFeedbackEntry;
 }
 
+interface AnswerSummary {
+  bullets: string[];
+  wordCount: number;
+}
+
 interface Feedback {
   score: number;
   verdict: string;
+  answerSummary?: AnswerSummary;
   coreFeedback?: CoreFeedback;
   strengths?: string[];
   gaps: string[];
