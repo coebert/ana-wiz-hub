@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import LabGlossaryPopover from "@/components/LabGlossaryPopover";
+import type { LabKey as SharedLabKey, SourceLink } from "@/lib/lab-glossary";
 
 /**
  * Refeeding syndrome — pathophysiology animation.
