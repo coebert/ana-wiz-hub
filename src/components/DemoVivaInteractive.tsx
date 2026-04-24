@@ -66,6 +66,8 @@ interface Round {
   kind: "main" | "followup";
   answer: string;
   feedback: Feedback;
+  /** Wall-clock time (ms) the AI examiner took to mark this answer. */
+  latencyMs: number;
 }
 
 interface DemoVivaInteractiveProps {
