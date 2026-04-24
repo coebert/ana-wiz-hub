@@ -29,7 +29,7 @@ const choices: LandingChoice[] = [
   },
   {
     title: "Viva Practice",
-    description: "Rehearse spoken viva answers with examiner-style scoring and feedback.",
+    description: "Practise out loud with an AI examiner who listens to your spoken answers and gives constructive, rubric-based feedback.",
     icon: Mic,
     to: "/viva",
     accent: "text-clinical",
@@ -44,7 +44,7 @@ const Landing = () => {
           <img
             src={brainLogo}
             alt="AnaesthesiaCore logo"
-            className="h-32 w-32 md:h-40 md:w-40 mb-6"
+            className="h-52 w-52 md:h-72 md:w-72 mb-6"
           />
           <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-3 tracking-tight">
             AnaesthesiaCore
