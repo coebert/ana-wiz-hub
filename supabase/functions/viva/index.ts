@@ -130,9 +130,13 @@ async function handleQuestion(b: QuestionBody): Promise<Response> {
     ? `\n\nAVOID repeating or paraphrasing any of these previously-asked questions:\n${b.avoid.slice(0, 12).map((q, i) => `${i + 1}. ${q}`).join("\n")}\nWrite a genuinely DIFFERENT question — different angle, sub-topic, or framing.`
     : "";
 
+  const emphasiseBlock = b.emphasise && b.emphasise.length > 0
+    ? `\n\nEMPHASIS — the candidate scored poorly on these rubric areas last time. Pick a question that genuinely PROBES these areas (not just mentions them):\n${b.emphasise.slice(0, 5).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
+    : "";
+
   const userPrompt = `Topic: "${b.topicTitle}"${b.topicDescription ? ` — ${b.topicDescription}` : ""}.
 Exam standard: ${examLabel[b.exam]}.
-Difficulty: ${difficulty.toUpperCase()} — ${difficultyGuide[difficulty]}${avoidBlock}
+Difficulty: ${difficulty.toUpperCase()} — ${difficultyGuide[difficulty]}${avoidBlock}${emphasiseBlock}
 
 Write ONE viva opening question on this topic.
 Rules:
