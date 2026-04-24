@@ -39,23 +39,32 @@ const choices: LandingChoice[] = [
 const Landing = () => {
   return (
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
-      <section className="container mx-auto px-4 py-12 md:py-20 flex-1">
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <img
-            src={brainLogo}
-            alt="AnaesthesiaCore logo"
-            className="h-52 w-52 md:h-72 md:w-72 mb-6"
-          />
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-3 tracking-tight">
-            AnaesthesiaCore
-          </h1>
-          <p className="font-display text-2xl md:text-3xl font-semibold text-foreground/90 mb-4 tracking-tight">
-            How would you like to study today?
-          </p>
-          <p className="text-base md:text-lg text-muted-foreground">
-            Pick a mode below — read the notes, listen on the move, or rehearse out loud.
-          </p>
+      <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-90"
+          style={{ background: "var(--gradient-hero)" }}
+        />
+        <div className="relative container mx-auto px-4 py-12 md:py-20">
+          <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+            <img
+              src={brainLogo}
+              alt="AnaesthesiaCore logo"
+              className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 opacity-90"
+            />
+            <h1 className="font-display text-5xl md:text-6xl font-bold text-primary-foreground mb-3 tracking-tight">
+              AnaesthesiaCore
+            </h1>
+            <p className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground/90 mb-4 tracking-tight">
+              How would you like to study today?
+            </p>
+            <p className="text-base md:text-lg text-primary-foreground/80">
+              Pick a mode below — read the notes, listen on the move, or rehearse out loud.
+            </p>
+          </div>
         </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-12 md:py-16 flex-1">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
           {choices.map(({ title, description, icon: Icon, to, accent }) => (
