@@ -501,7 +501,7 @@ const VivaSession = ({
               setPrefetchEnabled(e.target.checked);
               if (!e.target.checked) {
                 prefetchedRef.current = null;
-                setPrefetchStatus("idle");
+                cancelPrefetch();
               }
             }}
             className="h-3.5 w-3.5 rounded border-border accent-primary"
