@@ -76,6 +76,26 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         return;
       }
       const result = await generatePodcast(topicId, topicTitle, content);
+
+      // If the backend says another generation is already in flight (likely
+      // started in another tab or just before this click), poll the cached
+      // row instead of showing nothing — surfaces the result as soon as it lands.
+      if (result.status === "generating") {
+        for (let i = 0; i < 60; i++) {
+          await new Promise((r) => setTimeout(r, 5000));
+          const polled = await fetchPodcast(topicId);
+          if (polled && polled.status !== "generating") {
+            setPodcast(polled);
+            return;
+          }
+        }
+        setPodcast({
+          status: "failed",
+          error: "Podcast is still generating. Refresh the page in a minute.",
+        });
+        return;
+      }
+
       setPodcast(result);
     } catch (err) {
       setPodcast({
