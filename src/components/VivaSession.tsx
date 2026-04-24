@@ -66,6 +66,33 @@ function getSpeechRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 
+type Difficulty = "easy" | "standard" | "hard";
+
+const HISTORY_KEY = (topicId: string, exam: Exam) => `viva:asked:${exam}:${topicId}`;
+const MAX_HISTORY = 12;
+
+function loadAsked(topicId: string, exam: Exam): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(HISTORY_KEY(topicId, exam));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((x) => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveAsked(topicId: string, exam: Exam, list: string[]) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      HISTORY_KEY(topicId, exam),
+      JSON.stringify(list.slice(-MAX_HISTORY)),
+    );
+  } catch { /* quota — ignore */ }
+}
+
 const VivaSession = ({
   topicId,
   topicTitle,
@@ -79,6 +106,9 @@ const VivaSession = ({
   const [transcript, setTranscript] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>("standard");
+  const [avoidRepeats, setAvoidRepeats] = useState(true);
+  const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
