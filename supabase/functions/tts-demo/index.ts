@@ -4,7 +4,7 @@
 //
 // Public (no JWT required) — config.toml sets verify_jwt = false.
 
-import { encode as base64Encode } from "https://deno.land/std@0.224.0/encoding/base64.ts";
+import { encodeBase64 } from "https://deno.land/std@0.224.0/encoding/base64.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -66,7 +66,7 @@ Deno.serve(async (req) => {
     }
 
     const buf = await response.arrayBuffer();
-    const audioBase64 = base64Encode(new Uint8Array(buf));
+    const audioBase64 = encodeBase64(new Uint8Array(buf));
 
     return new Response(
       JSON.stringify({ audioBase64, mimeType: "audio/mpeg" }),
