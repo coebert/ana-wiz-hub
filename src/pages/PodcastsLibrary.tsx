@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Download, ExternalLink, Loader2 } from "lucide-react";
+import { Headphones, Download, ExternalLink, Loader2, Search, X } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -29,6 +29,7 @@ const formatDuration = (s: number | null) => {
 const PodcastsLibrary = () => {
   const [podcasts, setPodcasts] = useState<ResolvedPodcast[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -66,10 +67,25 @@ const PodcastsLibrary = () => {
     };
   }, []);
 
-  const grouped = useMemo(() => {
+  const filtered = useMemo(() => {
     if (!podcasts) return null;
+    const q = query.trim().toLowerCase();
+    if (!q) return podcasts;
+    return podcasts.filter((p) => {
+      const sectionLabel = p.section ? sectionMeta[p.section].label.toLowerCase() : "";
+      return (
+        p.topic_title.toLowerCase().includes(q) ||
+        p.topic_id.toLowerCase().includes(q) ||
+        sectionLabel.includes(q) ||
+        (p.script ?? "").toLowerCase().includes(q)
+      );
+    });
+  }, [podcasts, query]);
+
+  const grouped = useMemo(() => {
+    if (!filtered) return null;
     const map = new Map<Section | "_other", ResolvedPodcast[]>();
-    for (const p of podcasts) {
+    for (const p of filtered) {
       const key = p.section ?? "_other";
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push(p);
