@@ -33,6 +33,58 @@ interface RequestBody {
   content: string; // plain text extracted from the topic page
 }
 
+interface FailurePayload {
+  status: "failed";
+  error: string;
+  fallback?: boolean;
+  code?: string;
+}
+
+const jsonResponse = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
+const failureResponse = (payload: FailurePayload, status = 200) => jsonResponse(payload, status);
+
+const normaliseProviderError = (message: string): FailurePayload => {
+  const lower = message.toLowerCase();
+
+  if (lower.includes("insufficient_quota") || lower.includes("exceeded your current quota")) {
+    return {
+      status: "failed",
+      error: "OpenAI TTS credits exhausted. Add billing or switch to another TTS provider.",
+      code: "OPENAI_QUOTA_EXHAUSTED",
+      fallback: true,
+    };
+  }
+
+  if (lower.includes("lovable ai credits exhausted")) {
+    return {
+      status: "failed",
+      error: "Lovable AI credits exhausted. Add credits in Settings → Workspace → Usage.",
+      code: "LOVABLE_AI_CREDITS_EXHAUSTED",
+      fallback: true,
+    };
+  }
+
+  if (lower.includes("rate limit")) {
+    return {
+      status: "failed",
+      error: "Podcast generation is temporarily rate limited. Please try again in a moment.",
+      code: "RATE_LIMITED",
+      fallback: true,
+    };
+  }
+
+  return {
+    status: "failed",
+    error: message,
+    code: "GENERATION_FAILED",
+  };
+};
+
 const SYSTEM_PROMPT = `You are an experienced FRCA (Fellowship of the Royal College of Anaesthetists) examiner and clinical anaesthetist creating audio study material for trainees preparing for the FRCA Primary, Final, and FFICM exams.
 
 Write a 6-minute single-narrator podcast script (~900 words, plain prose only — no headings, no bullet points, no markdown, no stage directions). The script will be read aloud by a text-to-speech engine, so:
@@ -154,13 +206,9 @@ Deno.serve(async (req) => {
     const { topicId, topicTitle, content } = (await req.json()) as RequestBody;
 
     if (!topicId || !topicTitle || !content) {
-      return new Response(
-        JSON.stringify({ error: "topicId, topicTitle and content are required" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
     }
 
-    // Check existing row
     const { data: existing } = await supabase
       .from("podcasts")
       .select("*")
@@ -169,26 +217,19 @@ Deno.serve(async (req) => {
 
     if (existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
-      return new Response(
-        JSON.stringify({
-          status: "ready",
-          audio_url: pub.publicUrl,
-          script: existing.script,
-          duration_seconds: existing.duration_seconds,
-          cached: true,
-        }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({
+        status: "ready",
+        audio_url: pub.publicUrl,
+        script: existing.script,
+        duration_seconds: existing.duration_seconds,
+        cached: true,
+      });
     }
 
     if (existing?.status === "generating") {
-      return new Response(
-        JSON.stringify({ status: "generating", message: "Already in progress" }),
-        { status: 202, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({ status: "generating", message: "Already in progress" }, 202);
     }
 
-    // Upsert generating row
     await supabase.from("podcasts").upsert(
       {
         topic_id: topicId,
@@ -224,7 +265,6 @@ Deno.serve(async (req) => {
         });
       if (uploadErr) throw new Error(`Storage upload failed: ${uploadErr.message}`);
 
-      // Estimate duration: ~150 wpm narration → words / 2.5 = seconds
       const wordCount = script.split(/\s+/).length;
       const durationSeconds = Math.round(wordCount / 2.5);
 
@@ -242,34 +282,26 @@ Deno.serve(async (req) => {
 
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(audioPath);
 
-      return new Response(
-        JSON.stringify({
-          status: "ready",
-          audio_url: pub.publicUrl,
-          script,
-          duration_seconds: durationSeconds,
-          cached: false,
-        }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({
+        status: "ready",
+        audio_url: pub.publicUrl,
+        script,
+        duration_seconds: durationSeconds,
+        cached: false,
+      });
     } catch (genErr) {
       const message = genErr instanceof Error ? genErr.message : String(genErr);
+      const failure = normaliseProviderError(message);
       console.error(`[${topicId}] Generation failed:`, message);
       await supabase
         .from("podcasts")
-        .update({ status: "failed", error_message: message })
+        .update({ status: "failed", error_message: failure.error })
         .eq("topic_id", topicId);
-      return new Response(
-        JSON.stringify({ status: "failed", error: message }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return failureResponse(failure);
     }
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("Request failed:", message);
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return jsonResponse({ error: message }, 500);
   }
 });

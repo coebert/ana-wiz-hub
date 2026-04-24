@@ -83,8 +83,16 @@ export const generatePodcast = async (
     body: { topicId, topicTitle, content },
   });
 
-  if (error) {
-    return { status: "failed", error: error.message };
+  if (data?.status === "failed") {
+    return data as PodcastResult;
   }
+
+  if (error) {
+    return {
+      status: "failed",
+      error: data?.error || error.message || "Podcast generation failed",
+    };
+  }
+
   return data as PodcastResult;
 };
