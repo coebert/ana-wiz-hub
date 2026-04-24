@@ -25,9 +25,21 @@ interface RubricRow {
   quote?: string;
 }
 
+type CoreRating = "strong" | "adequate" | "weak";
+interface CoreFeedbackEntry {
+  rating: CoreRating;
+  comment: string;
+}
+interface CoreFeedback {
+  structure: CoreFeedbackEntry;
+  knowledge: CoreFeedbackEntry;
+  communication: CoreFeedbackEntry;
+}
+
 interface Feedback {
   score: number;
   verdict: string;
+  coreFeedback?: CoreFeedback;
   strengths?: string[];
   gaps: string[];
   modelAnswer: string;
