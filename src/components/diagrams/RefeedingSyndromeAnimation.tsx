@@ -610,6 +610,20 @@ const LabsPanel = ({ active }: { active: number }) => {
                   <div>
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Typical refeeding trend</dt>
                     <dd className="text-foreground leading-snug">{g.trend}</dd>
+                    <dd className="mt-1 flex flex-wrap gap-1">
+                      {g.trendSources.map((s) => (
+                        <a
+                          key={s.label}
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={s.quote}
+                          className="inline-flex items-center gap-0.5 rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-colors"
+                        >
+                          {s.label} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Why it changes</dt>
@@ -622,6 +636,20 @@ const LabsPanel = ({ active }: { active: number }) => {
                   <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1">
                     <dt className="text-[10px] uppercase tracking-wider font-semibold text-primary">Action</dt>
                     <dd className="text-foreground leading-snug">{g.threshold}</dd>
+                    <dd className="mt-1 flex flex-wrap gap-1">
+                      {g.actionSources.map((s) => (
+                        <a
+                          key={s.label}
+                          href={s.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={s.quote}
+                          className="inline-flex items-center gap-0.5 rounded border border-primary/30 bg-card px-1.5 py-0.5 text-[9px] font-medium text-primary hover:bg-primary/10 transition-colors"
+                        >
+                          {s.label} <span aria-hidden="true">↗</span>
+                        </a>
+                      ))}
+                    </dd>
                   </div>
                 </dl>
               </PopoverContent>
