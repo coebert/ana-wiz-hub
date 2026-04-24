@@ -416,7 +416,10 @@ const DemoVivaInteractive = ({
   const [interim, setInterim] = useState("");
   const [recording, setRecording] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitElapsed, setSubmitElapsed] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  /** Last submitted answer text — kept after a failure so "Retry marking" can resend it without losing what the candidate said. */
+  const [pendingAnswer, setPendingAnswer] = useState<string | null>(null);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
