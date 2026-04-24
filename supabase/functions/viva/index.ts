@@ -272,11 +272,14 @@ Deno.serve(async (req) => {
 
   try {
     if (body.mode === "question") {
+      const validDifficulty: Difficulty[] = ["easy", "standard", "hard"];
       if (
         !body.topicId ||
         !body.topicTitle ||
         !validExams.includes(body.exam) ||
-        body.topicTitle.length > 200
+        body.topicTitle.length > 200 ||
+        (body.difficulty && !validDifficulty.includes(body.difficulty)) ||
+        (body.avoid && (!Array.isArray(body.avoid) || body.avoid.length > 20))
       ) {
         return new Response(JSON.stringify({ error: "Invalid question payload" }), {
           status: 400,
