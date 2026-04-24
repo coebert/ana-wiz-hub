@@ -268,6 +268,16 @@ const VivaRubric = ({ exam, score, gaps = [] , breakdown }: VivaRubricProps) => 
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-foreground leading-tight">{c.criterion}</p>
                       <p className="text-xs text-muted-foreground leading-snug">{c.comment}</p>
+                      {c.quote && (
+                        <blockquote className="mt-1 border-l-2 border-amber-500/50 pl-2 py-0.5 text-xs italic text-foreground/80 leading-snug">
+                          {typeof c.tStart === "number" && (
+                            <span className="not-italic font-mono text-[10px] text-muted-foreground mr-1.5 tabular-nums">
+                              [{formatTime(c.tStart)}]
+                            </span>
+                          )}
+                          "{c.quote}"
+                        </blockquote>
+                      )}
                     </div>
                   </li>
                 ))}
