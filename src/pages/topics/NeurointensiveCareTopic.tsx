@@ -18,6 +18,7 @@ const tocItems = [
   { id: "toc-icp", label: "ICP / Microdialysis" },
   { id: "toc-encephalitis", label: "Autoimmune Enceph." },
   { id: "toc-gbs", label: "GBS" },
+  { id: "toc-myasthenic-crisis", label: "Myasthenic Crisis" },
   { id: "toc-dbi", label: "Devastating BI" },
   { id: "toc-synthesis", label: "Synthesis" },
 ];
@@ -159,6 +160,9 @@ const NeurointensiveCareTopic = () => {
         "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
         "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
         "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
+        "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration",
+        "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation",
+        "Myasthenic crisis treatment: IVIg 0.4 g/kg/d × 5 OR PLEX (5 exchanges, equivalent); add high-dose steroids AFTER immunotherapy started — risk of transient worsening at 5–10 days. Stop pyridostigmine if intubated",
         "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
       ]}
       topicId="neurointensive-care"
@@ -726,6 +730,122 @@ const NeurointensiveCareTopic = () => {
             <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
             <p className="text-sm text-muted-foreground">
               GBS is a favourite FFICM/FRCA exam topic. Key points: the 20/30/40 rule for intubation (FVC/MIP/MEP), suxamethonium is SAFE (contrast with MND/burns/denervation), steroids do NOT work (unlike CIDP), IVIg and PLEX are equivalent but should NOT be combined, and autonomic instability can cause sudden cardiac death — continuous monitoring essential.
+            </p>
+          </div>
+        </ExamSection>
+
+        {/* Myasthenic Crisis */}
+        <ExamSection id="toc-myasthenic-crisis" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} className="scroll-mt-24">
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenic Crisis — ICU Management</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Myasthenic crisis is an acute exacerbation of myasthenia gravis with respiratory failure (or severe bulbar weakness threatening the airway) requiring NIV or invasive ventilation. Occurs in ~15–20% of MG patients at some point. Mortality &lt;5% in modern ICUs but historically &gt;40%. Distinguish carefully from <strong>cholinergic crisis</strong> (anticholinesterase overdose) — clinically similar (weakness + respiratory failure) but treatment is opposite.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Common Triggers</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            {[
+              { trigger: "Infection", detail: "Most common precipitant (~40%). Especially respiratory tract infections. Treat aggressively but avoid aminoglycosides, fluoroquinolones, macrolides — all worsen MG." },
+              { trigger: "Drugs", detail: "Aminoglycosides (gent, neomycin), fluoroquinolones (cipro, levo), macrolides (azithro), telithromycin, β-blockers, magnesium (IV/IM), procainamide, statins, ICIs (immune checkpoint inhibitors). Always check before prescribing." },
+              { trigger: "Surgery / Anaesthesia", detail: "Especially thymectomy, but any major surgery. Stress + altered drug handling + opioids + residual NMBA. Plan elective surgery with neurology — optimise MG, consider IVIg/PLEX pre-op." },
+              { trigger: "Pregnancy / postpartum", detail: "Hormonal flux. ~30% worsen during pregnancy or in first month postpartum. Magnesium for pre-eclampsia is contraindicated — use levetiracetam or labetalol." },
+              { trigger: "Tapering immunosuppression", detail: "Rapid steroid taper or stopping azathioprine/mycophenolate. High-dose steroid initiation can paradoxically cause transient worsening at 5–10 days." },
+              { trigger: "Cholinergic overdose", detail: "Excessive pyridostigmine (>120 mg q3h) → cholinergic crisis. Modern era is rare since most patients are on optimised doses + steroids." },
+            ].map((t) => (
+              <div key={t.trigger} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">{t.trigger}</p>
+                <p className="text-sm text-muted-foreground mt-1">{t.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Recognition &amp; Indications for ICU</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { indication: "Respiratory", detail: "Bedside spirometry every 2–4 h. Intubate for FVC <15 mL/kg, NIF (MIP) <−20 cmH₂O, MEP <40, single breath count <20, or rapid trajectory of decline. Hypercapnia and hypoxia are LATE signs — do not wait for them." },
+              { indication: "Bulbar weakness", detail: "Dysphagia, dysphonia, weak cough, pooling secretions, nasal regurgitation. Severe bulbar weakness = intubate even with adequate FVC (aspiration risk)." },
+              { indication: "NIV trial (if appropriate)", detail: "BiPAP can avert intubation in ~70% of selected patients (no severe bulbar weakness, alert, cooperative, no copious secretions). Early NIV (BiPAP IPAP 8–12 / EPAP 4–6) — if no improvement in PaCO₂ within 1–2 h or worsening → intubate." },
+              { indication: "Autonomic / cardiac", detail: "Less prominent than GBS but tachyarrhythmias from autonomic dysfunction or anticholinesterase effects can occur. Continuous ECG monitoring." },
+            ].map((i) => (
+              <div key={i.indication} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{i.indication}</p>
+                <p className="text-sm text-muted-foreground">{i.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Myasthenic vs Cholinergic Crisis</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-destructive font-semibold">Myasthenic Crisis</th>
+                  <th className="text-left py-2 text-clinical font-semibold">Cholinergic Crisis</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Mechanism</td><td>Insufficient ACh effect at NMJ (antibodies + trigger)</td><td>Excess ACh — anticholinesterase overdose</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pupils</td><td>Normal or mydriatic</td><td><strong>Miosis</strong> (muscarinic)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Secretions</td><td>Normal / dry from atropine therapy</td><td><strong>SLUDGE</strong>: Salivation, Lacrimation, Urination, Defecation, GI cramps, Emesis</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Muscle</td><td>Pure weakness</td><td>Weakness + <strong>fasciculations</strong> (nicotinic)</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">HR</td><td>Normal / tachycardia</td><td>Bradycardia</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Edrophonium (Tensilon) test</td><td><strong>Improves</strong> within 30–60 s</td><td><strong>Worsens</strong> (have atropine + airway ready)</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Treatment</td><td>Continue/optimise pyridostigmine + immunotherapy</td><td><strong>Stop</strong> anticholinesterases; atropine 0.5–1 mg IV; supportive ventilation</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Immunotherapy</h3>
+          <div className="grid sm:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border border-l-4 border-l-primary">
+              <p className="font-bold text-foreground text-sm mb-1">IVIg (often first-line)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>0.4 g/kg/day × 5 days (total 2 g/kg)</li>
+                <li>Onset 1–2 weeks; peak benefit at 3–6 weeks</li>
+                <li>Equal efficacy to PLEX (Cochrane / RCTs)</li>
+                <li>Easier logistics, no large-bore access needed</li>
+                <li>Watch for renal impairment, thrombosis, aseptic meningitis, anaphylaxis (IgA deficiency)</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border border-l-4 border-l-accent">
+              <p className="font-bold text-foreground text-sm mb-1">Plasma Exchange (PLEX)</p>
+              <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                <li>5 exchanges over 7–14 days</li>
+                <li>Faster onset (days) — preferred if very severe / rapid deterioration</li>
+                <li>Removes anti-AChR / anti-MuSK antibodies directly</li>
+                <li>Requires large-bore vascular access; haemodynamic effects</li>
+                <li>Do NOT combine with IVIg (PLEX removes IVIg)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30 mb-4">
+            <p className="text-sm font-semibold text-foreground mb-1">⚠️ Steroid-Induced Worsening</p>
+            <p className="text-sm text-muted-foreground">
+              High-dose corticosteroids (prednisolone &gt;1 mg/kg) cause transient worsening of MG in ~50% of patients at 5–10 days, sometimes precipitating crisis. <strong>Always start steroids AFTER IVIg or PLEX</strong> in established crisis, or up-titrate gradually (5–10 mg q3–5d) in the outpatient setting. Cover with continued anticholinesterase + monitor FVC.
+            </p>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Ventilator &amp; ICU Care Specifics</h3>
+          <div className="space-y-2 mb-4">
+            {[
+              { area: "Pyridostigmine on the ventilator", detail: "Stop pyridostigmine once intubated — reduces secretions and removes risk of cholinergic crisis. Restart at low dose (30–60 mg q4h) when planning extubation, titrating to bedside power." },
+              { area: "Sedation", detail: "Propofol + short-acting opioid (remifentanil/fentanyl). Avoid benzodiazepines if possible (prolonged effect, weakness). Ketamine is acceptable. Daily sedation holds to assess weakness." },
+              { area: "Neuromuscular blockade", detail: "If absolutely needed: rocuronium at 1/10–1/5 normal dose (extreme sensitivity to non-depolarisers). Sugammadex reverses cleanly. Suxamethonium: relatively resistant (need higher dose ~2 mg/kg) but unpredictable — avoid if possible. Always quantitative TOF monitoring." },
+              { area: "Weaning &amp; extubation", detail: "Daily SBT once underlying cause controlled and immunotherapy taking effect. Extubate when FVC >15 mL/kg, NIF more negative than −25, awake, cough adequate, no significant bulbar weakness. Have NIV ready post-extubation." },
+              { area: "VTE / nutrition / pressure care", detail: "Standard ICU bundle: LMWH (no anticoagulant interaction with IVIg/PLEX), early enteral feed (NG tube — bulbar weakness common), pressure-area care (immobile and weak)." },
+            ].map((s) => (
+              <div key={s.area} className="p-3 rounded border border-border">
+                <p className="font-bold text-primary text-sm mb-1">{s.area}</p>
+                <p className="text-sm text-muted-foreground">{s.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-4 rounded-lg bg-secondary/50 border border-primary/20">
+            <p className="text-sm font-semibold text-foreground mb-1">💡 Exam Tip</p>
+            <p className="text-sm text-muted-foreground">
+              Favourite FFICM/Final FRCA viva: distinguish myasthenic from cholinergic crisis (SLUDGE + miosis + fasciculations + bradycardia → cholinergic), know the 20/−20 ventilation thresholds (FVC &lt;15 mL/kg, NIF &lt;−20), name three drug classes that worsen MG (aminoglycosides, fluoroquinolones, macrolides — plus magnesium and β-blockers), and explain why steroids must follow (not precede) IVIg/PLEX in established crisis.
             </p>
           </div>
         </ExamSection>
