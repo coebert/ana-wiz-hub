@@ -189,7 +189,26 @@ const CardiacElectrophysiologyTopic = () => {
 
           <ExamSection id="bp-regulation" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CR_BK_02"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Blood Pressure Regulation</h2>
-            <div className="space-y-3">
+            <p className="text-foreground/90 leading-relaxed">
+              Mean arterial pressure is the regulated variable that guarantees organ perfusion. It is the product
+              of cardiac output and systemic vascular resistance (<strong>MAP = CO × SVR</strong>), so any control
+              system must act on heart rate, stroke volume (preload, contractility, afterload), vessel calibre, or
+              circulating volume. The body integrates these effectors through three overlapping time-domains: a fast
+              <em> neural</em> loop, an intermediate <em>neurohormonal</em> loop, and a slow <em>renal–volume</em> loop.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mt-3">
+              The <strong>vasomotor centre</strong> in the rostral ventrolateral medulla sets a tonic sympathetic
+              outflow to resistance arterioles and the heart, with continuous parasympathetic counterbalance from
+              the nucleus ambiguus. <strong>Sensors</strong> feeding this centre are mechanical (high-pressure
+              baroreceptors in the carotid sinus and aortic arch; low-pressure cardiopulmonary stretch receptors in
+              atria and great veins) and chemical (peripheral and central chemoreceptors). <strong>Effectors</strong> are
+              cardiac (β₁ → ↑HR, ↑contractility; M₂ → ↓HR), vascular (α₁ on arterioles → ↑SVR; α₁/venous tone → ↑preload),
+              renal (renin release, tubular Na⁺ handling), and endocrine (vasopressin, adrenaline from the medulla, ANP/BNP
+              from stretched myocardium). The clinical importance is that volatile anaesthetics, neuraxial blockade,
+              propofol and chronic hypertension all blunt or reset different limbs of this loop — explaining why induction
+              hypotension is multifactorial and why a single vasopressor rarely fixes every cause.
+            </p>
+            <div className="space-y-3 mt-4">
               {[
                 { title: "Short-term (seconds–minutes)", desc: "Baroreceptor reflex: carotid sinus (CN IX) and aortic arch (CN X) detect ↑ BP → ↑ afferent firing → NTS → ↑ vagal tone + ↓ sympathetic output → ↓ HR, ↓ contractility, vasodilation. Resets over 24–48 h in chronic hypertension." },
                 { title: "Chemoreceptors", desc: "Peripheral (carotid/aortic bodies): respond to ↓ PaO₂, ↑ PaCO₂, ↓ pH → ↑ sympathetic output + ↑ ventilation. Central (medullary): respond to ↑ CSF H⁺. CNS ischaemic response (Cushing reflex): ↑↑ MAP → severe ↑ BP." },
