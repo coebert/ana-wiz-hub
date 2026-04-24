@@ -512,6 +512,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [initialQuestion]);
 
   useEffect(() => {
@@ -645,6 +646,7 @@ const DemoVivaInteractive = ({
         setPendingAnswer(null);
         finalisedRef.current = "";
         segmentsRef.current = [];
+        setConfSegments([]);
       } catch (err) {
         console.error("Viva feedback failed:", err);
         const msg = err instanceof Error ? err.message : "Could not generate feedback.";
