@@ -239,6 +239,10 @@ ${rubricList}
 Provide:
 - score: integer 0–10 (sum of the rubric marks below)
 - verdict: one short phrase, e.g. "Clear pass", "Borderline", "Fail — significant gaps"
+- coreFeedback: object with EXACTLY these three keys, each an object { rating: "strong" | "adequate" | "weak", comment: string (≤ 30 words, specific and constructive — name what was good or what was missed) }:
+    • structure — was the answer logically ordered (e.g. definition → classification → mechanism → clinical relevance), prioritised correctly, and free of rambling?
+    • knowledge — factual accuracy, depth, and breadth at the named exam standard (named numbers, mechanisms, classifications, evidence).
+    • communication — clarity, fluency, examiner-facing language, signposting; would the examiner find this easy to follow under pressure?
 - strengths: 1–3 short bullets of what was done well (omit if genuinely none)
 - gaps: 1–4 short bullets of missed key facts or wrong statements (be specific — name the structure / number / mechanism that was missed)
 - modelAnswer: a concise model viva answer (4–8 sentences) calibrated to the exam standard
@@ -271,6 +275,40 @@ Return JSON via the tool call only.`;
             properties: {
               score: { type: "integer", minimum: 0, maximum: 10 },
               verdict: { type: "string" },
+              coreFeedback: {
+                type: "object",
+                properties: {
+                  structure: {
+                    type: "object",
+                    properties: {
+                      rating: { type: "string", enum: ["strong", "adequate", "weak"] },
+                      comment: { type: "string" },
+                    },
+                    required: ["rating", "comment"],
+                    additionalProperties: false,
+                  },
+                  knowledge: {
+                    type: "object",
+                    properties: {
+                      rating: { type: "string", enum: ["strong", "adequate", "weak"] },
+                      comment: { type: "string" },
+                    },
+                    required: ["rating", "comment"],
+                    additionalProperties: false,
+                  },
+                  communication: {
+                    type: "object",
+                    properties: {
+                      rating: { type: "string", enum: ["strong", "adequate", "weak"] },
+                      comment: { type: "string" },
+                    },
+                    required: ["rating", "comment"],
+                    additionalProperties: false,
+                  },
+                },
+                required: ["structure", "knowledge", "communication"],
+                additionalProperties: false,
+              },
               strengths: { type: "array", items: { type: "string" } },
               gaps: { type: "array", items: { type: "string" } },
               modelAnswer: { type: "string" },
@@ -292,7 +330,7 @@ Return JSON via the tool call only.`;
                 },
               },
             },
-            required: ["score", "verdict", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
+            required: ["score", "verdict", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
             additionalProperties: false,
           },
         },
