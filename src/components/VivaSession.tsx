@@ -121,12 +121,16 @@ const VivaSession = ({
   const [difficulty, setDifficulty] = useState<Difficulty>("standard");
   const [avoidRepeats, setAvoidRepeats] = useState(true);
   const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
+  const [prefetchEnabled, setPrefetchEnabled] = useState(true);
+  const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
   /** Approximate timeline of finalised speech chunks (seconds since listening started). */
   const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
   const listenStartRef = useRef<number>(0);
+  /** Background-fetched next question; consumed by fetchQuestion when present. */
+  const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
   const sttSupported = !!getSpeechRecognitionCtor();
   const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
 
@@ -147,47 +151,86 @@ const VivaSession = ({
     [ttsSupported],
   );
 
+  /** Low-level call — never touches phase. Returns the question or null on error. */
+  const requestQuestion = useCallback(
+    async (forDifficulty: Difficulty): Promise<string | null> => {
+      const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+      const { data, error } = await supabase.functions.invoke("viva", {
+        body: {
+          mode: "question",
+          topicId,
+          topicTitle,
+          topicDescription,
+          exam,
+          difficulty: forDifficulty,
+          avoid,
+        },
+      });
+      if (error || !data?.question) return null;
+      return data.question as string;
+    },
+    [topicId, topicTitle, topicDescription, exam, avoidRepeats],
+  );
+
   const fetchQuestion = useCallback(async () => {
-    setPhase("loading-question");
     setErrorMsg(null);
-    setQuestion("");
     setTranscript("");
     setInterim("");
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
 
-    const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+    // Use a prefetched question if it matches the current difficulty.
+    const cached = prefetchedRef.current;
+    if (cached && cached.difficulty === difficulty) {
+      prefetchedRef.current = null;
+      setPrefetchStatus("idle");
+      setQuestion(cached.question);
+      const next = [...loadAsked(topicId, exam), cached.question];
+      saveAsked(topicId, exam, next);
+      setAskedCount(Math.min(next.length, MAX_HISTORY));
+      setPhase("ready-to-answer");
+      setTimeout(() => speak(cached.question), 150);
+      return;
+    }
 
-    const { data, error } = await supabase.functions.invoke("viva", {
-      body: {
-        mode: "question",
-        topicId,
-        topicTitle,
-        topicDescription,
-        exam,
-        difficulty,
-        avoid,
-      },
-    });
-
-    if (error || !data?.question) {
-      setErrorMsg(
-        (data as { error?: string } | null)?.error ??
-          error?.message ??
-          "Could not load a question.",
-      );
+    setPhase("loading-question");
+    setQuestion("");
+    const q = await requestQuestion(difficulty);
+    if (!q) {
+      setErrorMsg("Could not load a question.");
       setPhase("error");
       return;
     }
-    setQuestion(data.question);
-    const next = [...loadAsked(topicId, exam), data.question];
+    setQuestion(q);
+    const next = [...loadAsked(topicId, exam), q];
     saveAsked(topicId, exam, next);
     setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
-    // Speak it after a short delay so voices have time to load on first paint.
-    setTimeout(() => speak(data.question), 150);
-  }, [topicId, topicTitle, topicDescription, exam, speak, difficulty, avoidRepeats]);
+    setTimeout(() => speak(q), 150);
+  }, [topicId, exam, speak, difficulty, requestQuestion]);
+
+  /** Background-fetch the next question (e.g. while user is reading feedback). */
+  const prefetchNext = useCallback(async () => {
+    if (!prefetchEnabled) return;
+    if (prefetchedRef.current?.difficulty === difficulty) return; // already cached
+    setPrefetchStatus("loading");
+    const q = await requestQuestion(difficulty);
+    if (!q) {
+      setPrefetchStatus("error");
+      return;
+    }
+    prefetchedRef.current = { question: q, difficulty };
+    setPrefetchStatus("ready");
+  }, [prefetchEnabled, difficulty, requestQuestion]);
+
+  // Invalidate prefetch when difficulty changes.
+  useEffect(() => {
+    if (prefetchedRef.current && prefetchedRef.current.difficulty !== difficulty) {
+      prefetchedRef.current = null;
+      setPrefetchStatus("idle");
+    }
+  }, [difficulty]);
 
   // Initial load.
   useEffect(() => {
@@ -293,7 +336,9 @@ const VivaSession = ({
     }
     setFeedback(data as Feedback);
     setPhase("feedback");
-  }, [interim, topicTitle, exam, question]);
+    // Kick off background prefetch of the next question while user reads feedback.
+    void prefetchNext();
+  }, [interim, topicTitle, exam, question, prefetchNext]);
 
   const stopListening = () => {
     recognitionRef.current?.stop();
@@ -376,6 +421,35 @@ const VivaSession = ({
             >
               Reset
             </button>
+          )}
+        </label>
+
+        <label className="inline-flex items-center gap-2 text-xs text-foreground cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={prefetchEnabled}
+            onChange={(e) => {
+              setPrefetchEnabled(e.target.checked);
+              if (!e.target.checked) {
+                prefetchedRef.current = null;
+                setPrefetchStatus("idle");
+              }
+            }}
+            className="h-3.5 w-3.5 rounded border-border accent-primary"
+          />
+          <span>Prefetch next question</span>
+          {prefetchEnabled && prefetchStatus === "loading" && (
+            <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground">
+              <Loader2 className="h-3 w-3 animate-spin" /> preparing…
+            </span>
+          )}
+          {prefetchEnabled && prefetchStatus === "ready" && (
+            <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">
+              ready ✓
+            </span>
+          )}
+          {prefetchEnabled && prefetchStatus === "error" && (
+            <span className="text-[11px] text-amber-700 dark:text-amber-400">retry on next</span>
           )}
         </label>
       </div>
