@@ -659,6 +659,20 @@ Deno.serve(async (req) => {
       }
       return await handleAnnotate(body);
     }
+    if (body.mode === "model-answer") {
+      if (
+        !body.topicTitle ||
+        !validExams.includes(body.exam) ||
+        !body.question ||
+        body.question.length > 1000
+      ) {
+        return new Response(JSON.stringify({ error: "Invalid model-answer payload" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      return await handleModelAnswer(body);
+    }
     return new Response(JSON.stringify({ error: "Unknown mode" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
