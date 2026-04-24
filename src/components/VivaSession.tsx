@@ -405,6 +405,8 @@ const VivaSession = ({
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
             </Button>
           </div>
+
+          <VivaRubric exam={exam} score={feedback.score} />
         </div>
       )}
 
