@@ -294,6 +294,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </p>
               </div>
             </div>
+            <GuidelineSources sources={ADRENAL_PITUITARY_SOURCES} />
           </ExamSection>
 
           <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
