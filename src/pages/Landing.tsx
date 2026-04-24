@@ -152,6 +152,11 @@ const Landing = () => {
                       { label: "Knowledge (5/5)", text: "Accurate values and correct mention of the alveolar gas equation and Pasteur point." },
                       { label: "Communication (4/5)", text: "Very clear; consider sketching the cascade if a whiteboard is offered — examiners reward visual structure." },
                     ],
+                    curriculum: [
+                      { exam: "Primary" as const, code: "RP_BK_01", topic: "Oxygen cascade and alveolar gas equation" },
+                      { exam: "Primary" as const, code: "RP_BK_03", topic: "Pulmonary gas exchange — V/Q matching and shunt" },
+                      { exam: "Primary" as const, code: "CP_BK_06", topic: "Tissue oxygen delivery and the Pasteur point" },
+                    ],
                   },
                   {
                     tag: "Pharmacology",
