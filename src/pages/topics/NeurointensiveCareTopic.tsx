@@ -742,7 +742,9 @@ const NeurointensiveCareTopic = () => {
             Myasthenic crisis is an acute exacerbation of myasthenia gravis with respiratory failure (or severe bulbar weakness threatening the airway) requiring NIV or invasive ventilation. Occurs in ~15–20% of MG patients at some point. Mortality &lt;5% in modern ICUs but historically &gt;40%. Distinguish carefully from <strong>cholinergic crisis</strong> (anticholinesterase overdose) — clinically similar (weakness + respiratory failure) but treatment is opposite.
           </p>
 
-          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Common Triggers</h3>
+          <MyastheniaCrisisFlowchart />
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2 mt-4">Common Triggers</h3>
           <div className="grid sm:grid-cols-2 gap-3 mb-4">
             {[
               { trigger: "Infection", detail: "Most common precipitant (~40%). Especially respiratory tract infections. Treat aggressively but avoid aminoglycosides, fluoroquinolones, macrolides — all worsen MG." },
