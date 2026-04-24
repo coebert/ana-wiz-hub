@@ -85,9 +85,9 @@ const normaliseProviderError = (message: string): FailurePayload => {
   };
 };
 
-const SYSTEM_PROMPT = `You are an experienced FRCA (Fellowship of the Royal College of Anaesthetists) examiner and clinical anaesthetist creating audio study material for trainees preparing for the FRCA Primary, Final, and FFICM exams.
+const buildSystemPrompt = (targetMinutes: number, targetWords: number) => `You are an experienced FRCA (Fellowship of the Royal College of Anaesthetists) examiner and clinical anaesthetist creating audio study material for trainees preparing for the FRCA Primary, Final, and FFICM exams.
 
-Write a 6-minute single-narrator podcast script (~900 words, plain prose only — no headings, no bullet points, no markdown, no stage directions). The script will be read aloud by a text-to-speech engine, so:
+Write an approximately ${targetMinutes}-minute single-narrator podcast script (~${targetWords} words, plain prose only — no headings, no bullet points, no markdown, no stage directions). The script will be read aloud by a text-to-speech engine, so:
 - Spell out abbreviations on first use (e.g. "MAP, mean arterial pressure")
 - Use natural pauses with commas and full stops
 - Avoid symbols, equations as symbols, or anything that won't read well aloud (write "equals" instead of "=", "times" instead of "×")
@@ -99,20 +99,38 @@ CRITICAL ACCURACY RULES:
 - If the source contains a fact, you may explain it more thoroughly. If the source does NOT contain a fact, do not introduce it.
 - Do not contradict anything in the source.
 - Maintain UK anaesthetic terminology and spelling.
+- For longer topics, use the extra time to cover MORE of the source material in depth — do not pad with filler or repeat the same point.
 
 STRUCTURE (single flowing narration, no section headers spoken aloud):
-1. Brief hook: why this topic matters in exam and clinical practice (~30s)
-2. Core concepts: walk through the key teaching points in a logical order (~3 min)
-3. Exam-focused viva-style framing: "if an examiner asks…", "the classic answer is…", "trainees often forget…" (~1.5 min)
-4. Three to five take-home pearls to remember (~45s)
-5. Brief closing (~15s)
+1. Brief hook: why this topic matters in exam and clinical practice
+2. Core concepts: walk through the key teaching points in a logical order (the bulk of the script)
+3. Exam-focused viva-style framing: "if an examiner asks…", "the classic answer is…", "trainees often forget…"
+4. Three to five take-home pearls to remember
+5. Brief closing
 
 Tone: warm, confident, like a senior trainee tutoring a peer. Not lecturing.
 
 Output ONLY the spoken script. No preamble, no title, no "Welcome back to…", no metadata.`;
 
+// Scale the target podcast length to the source content. Short topics get a
+// concise ~6 min episode; long topics scale up to ~14 min so we don't drop
+// material. Word-rate assumption: ~150 wpm for natural narration.
+function deriveTargetLength(content: string): { minutes: number; words: number } {
+  const sourceWords = content.trim().split(/\s+/).length;
+  // Aim for ~30-40% of source word count, clamped between 900 and 2100 words
+  // (≈ 6 to 14 minutes at 150 wpm).
+  const target = Math.round(sourceWords * 0.35);
+  const words = Math.max(900, Math.min(2100, target));
+  const minutes = Math.max(6, Math.min(14, Math.round(words / 150)));
+  return { minutes, words };
+}
+
 async function generateScript(topicTitle: string, content: string): Promise<string> {
-  const userPrompt = `Topic: ${topicTitle}\n\n--- SOURCE CONTENT (use only this) ---\n\n${content}\n\n--- END SOURCE ---\n\nWrite the 6-minute exam-focused podcast script now.`;
+  const { minutes, words } = deriveTargetLength(content);
+  const systemPrompt = buildSystemPrompt(minutes, words);
+  const userPrompt = `Topic: ${topicTitle}\n\n--- SOURCE CONTENT (use only this) ---\n\n${content}\n\n--- END SOURCE ---\n\nWrite the approximately ${minutes}-minute (~${words} word) exam-focused podcast script now. Use the full target length to cover the source material thoroughly.`;
+
+  console.log(`[script] target ~${minutes} min / ~${words} words from ${content.length} chars source`);
 
   const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
     method: "POST",
@@ -123,7 +141,7 @@ async function generateScript(topicTitle: string, content: string): Promise<stri
     body: JSON.stringify({
       model: "google/gemini-2.5-pro",
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
+        { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
     }),
