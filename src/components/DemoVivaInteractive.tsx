@@ -535,15 +535,19 @@ const DemoVivaInteractive = ({
     setInterim("");
     // Reset the timeline for this recording session.
     segmentsRef.current = [];
+    setConfSegments([]);
     recordingStartRef.current = Date.now();
 
     const r = new Ctor();
     r.lang = "en-GB";
     r.continuous = true;
     r.interimResults = true;
+    // Two alternatives → more reliable confidence on supporting browsers.
+    (r as any).maxAlternatives = 2;
 
     r.onresult = (e: any) => {
       let interimText = "";
+      const newConf: ConfidenceSegment[] = [];
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const res = e.results[i];
         const text = res[0]?.transcript ?? "";
@@ -555,11 +559,16 @@ const DemoVivaInteractive = ({
               Math.round((Date.now() - recordingStartRef.current) / 1000),
             );
             segmentsRef.current.push({ tStart, text: trimmed });
+            const confidence = typeof res[0].confidence === "number" ? res[0].confidence : 0;
+            newConf.push({ text: trimmed, confidence });
           }
           finalisedRef.current += text + " ";
         } else {
           interimText += text;
         }
+      }
+      if (newConf.length > 0) {
+        setConfSegments((prev) => [...prev, ...newConf]);
       }
       setTranscript(finalisedRef.current.trim());
       setInterim(interimText.trim());
