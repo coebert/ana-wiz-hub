@@ -213,6 +213,36 @@ const VivaSession = ({
     }
   }, []);
 
+  /**
+   * Fetch TTS audio for `text` and store it in the cache. Safe to call from
+   * background prefetch — never throws, never plays. If the entry is already
+   * cached this is a no-op. Honours an AbortSignal to allow cancellation.
+   */
+  const prefetchTts = useCallback(
+    async (text: string, signal?: AbortSignal): Promise<void> => {
+      if (!text) return;
+      if (ttsCacheRef.current.has(text)) return;
+      try {
+        const { data, error } = await supabase.functions.invoke("tts-demo", {
+          body: { text },
+          // supabase-js forwards AbortSignal to the underlying fetch.
+          ...(signal ? { signal } : {}),
+        } as { body: unknown; signal?: AbortSignal });
+        if (signal?.aborted) return;
+        if (error) throw new Error(error.message || "TTS request failed");
+        if (!data?.audioBase64) throw new Error("No audio returned");
+        const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+        ttsCacheRef.current.set(text, url);
+      } catch (err) {
+        // Background prefetch — log but don't surface; speak() will refetch on demand.
+        if (!signal?.aborted) {
+          console.warn("[VivaSession] TTS prefetch failed", err);
+        }
+      }
+    },
+    [],
+  );
+
   const speak = useCallback(
     async (text: string) => {
       if (!text) return;
@@ -361,14 +391,19 @@ const VivaSession = ({
     setPrefetchStatus("loading");
     const q = await requestQuestion(difficulty, undefined, controller.signal);
     if (controller.signal.aborted) return; // user cancelled — leave status alone
-    prefetchAbortRef.current = null;
     if (!q) {
+      prefetchAbortRef.current = null;
       setPrefetchStatus("error");
       return;
     }
     prefetchedRef.current = { question: q, difficulty };
+    // Mark the question as ready immediately so the UI can show "ready ✓",
+    // then warm the TTS cache in the background. speak() will pick up the
+    // cached audio the moment the user clicks Next.
     setPrefetchStatus("ready");
-  }, [prefetchEnabled, difficulty, requestQuestion]);
+    await prefetchTts(q, controller.signal);
+    prefetchAbortRef.current = null;
+  }, [prefetchEnabled, difficulty, requestQuestion, prefetchTts]);
 
   // Invalidate prefetch when difficulty changes.
   useEffect(() => {
