@@ -275,7 +275,7 @@ const VivaSession = ({
   /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
   const retakeWithEmphasis = useCallback(async () => {
     const weak = (feedback?.rubricBreakdown ?? [])
-      .filter((b) => b.max > 0 && b.awarded / b.max < 0.5)
+      .filter((b) => b.max > 0 && b.awarded / b.max < weakThreshold)
       .sort((a, b) => a.awarded / a.max - b.awarded / b.max)
       .map((b) => b.criterion);
 
