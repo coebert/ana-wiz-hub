@@ -852,6 +852,15 @@ const VivaSession = ({
               <span className="text-muted-foreground italic">Speak into your microphone…</span>
             )}
           </p>
+
+          {(phase === "listening" || confSegments.length > 0) && (
+            <div className="mt-3">
+              <MicConfidenceMeter
+                segments={confSegments}
+                listening={phase === "listening"}
+              />
+            </div>
+          )}
         </div>
       )}
 
