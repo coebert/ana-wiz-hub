@@ -278,6 +278,7 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     // New question → drop any previous model answer.
     setModelAnswer(null);
     setModelAnswerError(null);
@@ -396,6 +397,7 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     setModelAnswer(null);
     setModelAnswerError(null);
     setModelAnswerLoading(false);
