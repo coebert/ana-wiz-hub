@@ -116,50 +116,99 @@ const Landing = () => {
 
             <div className="relative px-6 pb-6 pt-2">
               <p className="text-sm md:text-base text-white/90 mb-6 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.25)]">
-                A sample 30-second prompt and the kind of constructive feedback the AI examiner gives.
+                A worked example: three viva questions, model candidate answers, and the kind of constructive feedback the AI examiner gives.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-primary" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Sample prompt · 30 seconds
-                    </span>
-                  </div>
-                  <p className="font-display text-lg md:text-xl text-foreground leading-snug mb-4">
-                    "A 68-year-old man is anuric 6 hours after an open AAA repair. Walk me through your immediate assessment and the first three things you would do."
-                  </p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-2 py-0.5 font-medium">
-                      Clinical
-                    </span>
-                    <span>Difficulty: Intermediate</span>
-                  </div>
-                </div>
+              <div className="space-y-5">
+                {[
+                  {
+                    tag: "Clinical",
+                    difficulty: "Intermediate",
+                    question:
+                      "A 68-year-old man is anuric 6 hours after an open AAA repair. Walk me through your immediate assessment and the first three things you would do.",
+                    answer:
+                      "I'd take an A–E approach. After confirming a patent airway and adequate ventilation, I'd review haemodynamics — MAP, CVP, lactate and urine output trend — and think in terms of pre-renal, renal and post-renal causes. My first three actions would be: flush and check the urinary catheter for obstruction; assess volume status with a passive leg raise or fluid challenge of 250 mL crystalloid; and send bloods for U&E, FBC, lactate and a venous gas while reviewing the operative note for cross-clamp time and blood loss.",
+                    feedback: [
+                      { label: "Structure (5/5)", text: "Excellent — pre-renal/renal/post-renal framework signposted clearly and an A–E backbone." },
+                      { label: "Knowledge (4/5)", text: "Catheter check first is exactly right post-laparotomy. Could also mention bladder scan and reviewing recent nephrotoxins (contrast, NSAIDs, gentamicin)." },
+                      { label: "Communication (4/5)", text: "Confident and well-paced. Slow down slightly when listing investigations so the examiner can follow each one." },
+                    ],
+                  },
+                  {
+                    tag: "Physiology",
+                    difficulty: "Primary",
+                    question:
+                      "Define the oxygen cascade and outline the main steps from inspired air to mitochondrion.",
+                    answer:
+                      "The oxygen cascade describes the stepwise fall in PO₂ from atmospheric air to the mitochondrion. Atmospheric PO₂ is around 21 kPa. Once humidified in the airway, inspired PO₂ falls to about 20 kPa. Alveolar PO₂ is roughly 13.3 kPa, calculated using the alveolar gas equation. Arterial PO₂ is slightly lower at about 13 kPa due to V/Q mismatch and shunt. Capillary PO₂ falls further as oxygen is offloaded, and mitochondrial PO₂ is only 0.5–3 kPa — the Pasteur point below which oxidative phosphorylation fails.",
+                    feedback: [
+                      { label: "Structure (5/5)", text: "Textbook stepwise cascade — easy to follow." },
+                      { label: "Knowledge (5/5)", text: "Accurate values and correct mention of the alveolar gas equation and Pasteur point." },
+                      { label: "Communication (4/5)", text: "Very clear; consider sketching the cascade if a whiteboard is offered — examiners reward visual structure." },
+                    ],
+                  },
+                  {
+                    tag: "Pharmacology",
+                    difficulty: "Final",
+                    question:
+                      "Compare the pharmacokinetics of propofol and remifentanil when used together for total intravenous anaesthesia.",
+                    answer:
+                      "Both are ideal TIVA agents because of their short context-sensitive half-times. Propofol follows a three-compartment model with rapid redistribution; its CSHT rises modestly with infusion duration but stays under 40 minutes even after long cases. Remifentanil is metabolised by non-specific tissue and plasma esterases, giving it a CSHT of around 3–5 minutes regardless of infusion length. Synergy means lower doses of each are needed; typical effect-site targets are propofol 3–5 µg/mL and remifentanil 3–6 ng/mL, titrated to processed EEG depth and haemodynamics.",
+                    feedback: [
+                      { label: "Structure (4/5)", text: "Logical comparison. State up front that you'll cover absorption, distribution, metabolism and elimination for full marks." },
+                      { label: "Knowledge (5/5)", text: "Strong on CSHT, esterase metabolism and synergy. Good clinical target ranges." },
+                      { label: "Communication (4/5)", text: "Confident delivery. Pause briefly after each comparison to invite the examiner to probe further." },
+                    ],
+                  },
+                ].map((q, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-border bg-card p-5 md:p-6 shadow-sm"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <Quote className="h-4 w-4 text-primary" />
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Question {i + 1}
+                      </span>
+                      <span className="ml-auto inline-flex items-center rounded-full bg-primary/10 text-primary px-2 py-0.5 text-[11px] font-medium">
+                        {q.tag}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground">{q.difficulty}</span>
+                    </div>
+                    <p className="font-display text-base md:text-lg text-foreground leading-snug mb-4">
+                      "{q.question}"
+                    </p>
 
-                <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-                  <div className="flex items-center gap-2 mb-3">
-                    <MessageSquare className="h-4 w-4 text-primary" />
-                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                      Example examiner feedback
-                    </span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="rounded-xl border border-border/60 bg-muted/40 p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Mic className="h-3.5 w-3.5 text-primary" />
+                          <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            Model candidate answer
+                          </span>
+                        </div>
+                        <p className="text-sm text-foreground/90 leading-relaxed">{q.answer}</p>
+                      </div>
+
+                      <div className="rounded-xl border border-border/60 bg-muted/40 p-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <MessageSquare className="h-3.5 w-3.5 text-primary" />
+                          <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            Examiner feedback
+                          </span>
+                        </div>
+                        <ul className="space-y-2 text-sm text-foreground/90">
+                          {q.feedback.map((f, j) => (
+                            <li key={j}>
+                              <span className="font-semibold text-foreground">{f.label}:</span>{" "}
+                              {f.text}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <ul className="space-y-3 text-sm text-foreground/90">
-                    <li>
-                      <span className="font-semibold text-foreground">Structure (4/5):</span>{" "}
-                      Clear A–E approach — well done. Consider stating your differential framework (pre-renal / renal / post-renal) up front to signal your reasoning.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-foreground">Knowledge (3/5):</span>{" "}
-                      You mentioned bladder scan and fluid challenge, but missed checking the catheter for obstruction first — a common, easily reversible cause post-laparotomy.
-                    </li>
-                    <li>
-                      <span className="font-semibold text-foreground">Communication (5/5):</span>{" "}
-                      Confident pacing and good use of pauses. Examiner could follow your logic easily.
-                    </li>
-                  </ul>
-                </div>
+                ))}
               </div>
             </div>
           </details>
