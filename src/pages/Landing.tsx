@@ -3,6 +3,7 @@ import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDow
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
 import DemoVivaPlayer from "@/components/DemoVivaPlayer";
+import DemoVivaInteractive from "@/components/DemoVivaInteractive";
 
 interface LandingChoice {
   title: string;
@@ -205,6 +206,14 @@ const Landing = () => {
                             text: q.feedback.map((f) => `${f.label}. ${f.text}`).join(" "),
                           },
                         ]}
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <DemoVivaInteractive
+                        question={q.question}
+                        topicTitle={`${q.tag} — demo viva`}
+                        exam={q.difficulty === "Primary" ? "primary" : "final"}
                       />
                     </div>
 
