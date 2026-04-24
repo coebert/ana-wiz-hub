@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target } from "lucide-react";
+import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -148,6 +148,19 @@ const VivaSession = ({
   const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
   const [prefetchEnabled, setPrefetchEnabled] = useState(true);
   const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  /**
+   * Standalone "model answer" generated for the current question, independent
+   * of whether the user attempted the question. Lets users either skip the
+   * answering step or compare their attempt afterwards.
+   */
+  const [modelAnswer, setModelAnswer] = useState<{
+    modelAnswer: string;
+    highYieldPoints: string[];
+    pitfalls: string[];
+  } | null>(null);
+  const [modelAnswerLoading, setModelAnswerLoading] = useState(false);
+  const [modelAnswerError, setModelAnswerError] = useState<string | null>(null);
+  const [modelAnswerOpen, setModelAnswerOpen] = useState(true);
   /**
    * How strict to be when flagging a rubric row as "weak" for emphasis retakes.
    * - lenient: anything below 70% counts as weak (more rows qualify, retake button shows often)
