@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { autonomicNervousQuiz } from "@/data/quizzes";
 import { ANSDiagram } from "@/components/diagrams/ANSDiagram";
 import { ANSPathwayDiagram } from "@/components/diagrams/ANSPathwayDiagram";
+import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -185,6 +186,10 @@ const AutonomicNervousTopic = () => {
               mechanoreceptors → vagal activation → bradycardia + vasodilation. May occur during neuraxial anaesthesia
               or haemorrhage and explains paradoxical bradycardia with hypovolaemia.
             </p>
+            <CrossReferenceCallout
+              reason="The baroreceptor arc is one limb of an integrated short-, medium- and long-term BP control system (RAAS, ADH, ANP, renal pressure-natriuresis)."
+              links={[{ topicId: "cardiac-electrophysiology", anchor: "bp-regulation", label: "Blood Pressure Regulation" }]}
+            />
           </ExamSection>
         </>
       }
