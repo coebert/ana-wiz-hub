@@ -213,6 +213,36 @@ const VivaSession = ({
     }
   }, []);
 
+  /**
+   * Fetch TTS audio for `text` and store it in the cache. Safe to call from
+   * background prefetch — never throws, never plays. If the entry is already
+   * cached this is a no-op. Honours an AbortSignal to allow cancellation.
+   */
+  const prefetchTts = useCallback(
+    async (text: string, signal?: AbortSignal): Promise<void> => {
+      if (!text) return;
+      if (ttsCacheRef.current.has(text)) return;
+      try {
+        const { data, error } = await supabase.functions.invoke("tts-demo", {
+          body: { text },
+          // supabase-js forwards AbortSignal to the underlying fetch.
+          ...(signal ? { signal } : {}),
+        } as { body: unknown; signal?: AbortSignal });
+        if (signal?.aborted) return;
+        if (error) throw new Error(error.message || "TTS request failed");
+        if (!data?.audioBase64) throw new Error("No audio returned");
+        const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+        ttsCacheRef.current.set(text, url);
+      } catch (err) {
+        // Background prefetch — log but don't surface; speak() will refetch on demand.
+        if (!signal?.aborted) {
+          console.warn("[VivaSession] TTS prefetch failed", err);
+        }
+      }
+    },
+    [],
+  );
+
   const speak = useCallback(
     async (text: string) => {
       if (!text) return;
