@@ -363,7 +363,7 @@ const VivaSession = ({
   useEffect(() => {
     fetchQuestion();
     return () => {
-      window.speechSynthesis?.cancel();
+      stopSpeaking();
       recognitionRef.current?.abort();
       prefetchAbortRef.current?.abort();
     };
@@ -378,7 +378,7 @@ const VivaSession = ({
       setPhase("error");
       return;
     }
-    window.speechSynthesis?.cancel();
+    stopSpeaking();
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
     listenStartRef.current = Date.now();
