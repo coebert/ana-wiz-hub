@@ -337,6 +337,16 @@ const VivaRubric = ({ exam, score, gaps = [] , breakdown }: VivaRubricProps) => 
                       Examiner: {awarded.comment}
                     </p>
                   )}
+                  {awarded?.quote && (
+                    <blockquote className="mt-1 border-l-2 border-amber-500/50 pl-2 py-0.5 text-xs italic text-foreground/80 leading-snug">
+                      {typeof awarded.tStart === "number" && (
+                        <span className="not-italic font-mono text-[10px] text-muted-foreground mr-1.5 tabular-nums">
+                          [{formatTime(awarded.tStart)}]
+                        </span>
+                      )}
+                      You said: "{awarded.quote}"
+                    </blockquote>
+                  )}
                   <div className="mt-1.5">
                     <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-0.5">
                       Next practice
