@@ -12,6 +12,7 @@ import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
 import { LazyDiagrams } from "@/components/LazyDiagrams";
 import { ExamSummary } from "@/components/ExamSummary";
+import { TopicPodcastPlayer } from "@/components/TopicPodcastPlayer";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
@@ -166,6 +167,7 @@ export const TopicTemplate = ({
     >
       <div className="space-y-10">
         <TopicExamFilterBar />
+        <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
         {showObjectives && (
           <div id="objectives" className="scroll-mt-24">
             {sectionExamMapping?.objectives && (
