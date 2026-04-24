@@ -715,7 +715,36 @@ const DemoVivaInteractive = ({
             disabled={submitting}
           />
 
-          {error && <p className="text-xs text-destructive">{error}</p>}
+          {submitting && (
+            <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+              <Loader2 className="h-3 w-3 animate-spin text-primary" />
+              <span>
+                Asking the AI examiner…{" "}
+                <span className="font-mono text-foreground/80">
+                  {(submitElapsed / 1000).toFixed(1)}s
+                </span>
+              </span>
+            </div>
+          )}
+
+          {error && !submitting && (
+            <div className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 space-y-2">
+              <p className="text-xs text-destructive">
+                <span className="font-semibold">Marking failed:</span> {error}
+              </p>
+              {pendingAnswer && (
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={retryMarking}
+                >
+                  <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                  Retry marking
+                </Button>
+              )}
+            </div>
+          )}
 
           <div className="flex items-center gap-2 flex-wrap">
             {sttSupported && (
@@ -748,7 +777,7 @@ const DemoVivaInteractive = ({
               {submitting ? (
                 <>
                   <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
-                  Marking…
+                  Marking… {(submitElapsed / 1000).toFixed(1)}s
                 </>
               ) : (
                 <>
