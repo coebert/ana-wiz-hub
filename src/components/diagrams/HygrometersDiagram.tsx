@@ -365,6 +365,7 @@ const DewPointScene = ({ step }: { step: number }) => {
   const absHum = (svpTd * 1000 * 18.015) / (8.314 * (Tamb + 273.15)); // g/m³ ≈ 10.4
 
   return (
+    <div className="space-y-3">
     <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
       {/* Silver tube */}
       <defs>
