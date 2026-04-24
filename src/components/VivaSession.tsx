@@ -171,7 +171,6 @@ const VivaSession = ({
             avoid,
             emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
           },
-          // @ts-expect-error supabase-js forwards extra fetch options including signal
           signal,
         });
         if (signal?.aborted) return null;
