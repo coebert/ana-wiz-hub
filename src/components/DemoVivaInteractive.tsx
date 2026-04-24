@@ -611,6 +611,7 @@ const DemoVivaInteractive = ({
         setInterim("");
         setPendingAnswer(null);
         finalisedRef.current = "";
+        segmentsRef.current = [];
       } catch (err) {
         console.error("Viva feedback failed:", err);
         const msg = err instanceof Error ? err.message : "Could not generate feedback.";
