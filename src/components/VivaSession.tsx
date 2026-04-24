@@ -304,6 +304,7 @@ const VivaSession = ({
     return () => {
       window.speechSynthesis?.cancel();
       recognitionRef.current?.abort();
+      prefetchAbortRef.current?.abort();
     };
   }, [fetchQuestion]);
 
