@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Pause, Play, Square } from "lucide-react";
+import { Pause, Play, Square, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export interface DemoVivaSegment {
   /** Short label shown next to the play indicator (e.g. "Question"). */
@@ -13,103 +15,120 @@ interface DemoVivaPlayerProps {
   segments: DemoVivaSegment[];
 }
 
-type PlayState = "idle" | "playing" | "paused";
+type PlayState = "idle" | "loading" | "playing" | "paused";
 
 /**
- * Plays a sequence of spoken segments in real time using the browser's
- * built-in SpeechSynthesis API. No backend or API key required, so the
- * landing-page demo can be heard immediately on click.
+ * Plays a sequence of spoken segments using the same OpenAI TTS voice
+ * (`gpt-4o-mini-tts` / `alloy`) as the podcast generator, via the
+ * `tts-demo` edge function. Audio for each segment is fetched on demand
+ * and cached in-memory so replays/resumes are instant.
  */
 const DemoVivaPlayer = ({ segments }: DemoVivaPlayerProps) => {
-  const supported =
-    typeof window !== "undefined" && "speechSynthesis" in window;
-
   const [state, setState] = useState<PlayState>("idle");
   const [activeIdx, setActiveIdx] = useState<number>(-1);
   const cancelledRef = useRef(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const cacheRef = useRef<Map<number, string>>(new Map());
 
-  // Stop any in-flight speech if the component unmounts.
+  // Stop any in-flight playback on unmount + revoke object URLs.
   useEffect(() => {
     return () => {
       cancelledRef.current = true;
-      if (supported) window.speechSynthesis.cancel();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+      }
+      cacheRef.current.forEach((url) => URL.revokeObjectURL(url));
+      cacheRef.current.clear();
     };
-  }, [supported]);
+  }, []);
 
-  const speakSegment = useCallback(
-    (text: string) =>
+  const fetchSegmentUrl = useCallback(
+    async (idx: number): Promise<string> => {
+      const cached = cacheRef.current.get(idx);
+      if (cached) return cached;
+
+      const seg = segments[idx];
+      const { data, error } = await supabase.functions.invoke("tts-demo", {
+        body: { text: `${seg.label}. ${seg.text}` },
+      });
+      if (error) throw new Error(error.message || "TTS request failed");
+      if (!data?.audioBase64) throw new Error("No audio returned");
+
+      const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+      cacheRef.current.set(idx, url);
+      return url;
+    },
+    [segments],
+  );
+
+  const playSegment = useCallback(
+    (url: string) =>
       new Promise<void>((resolve, reject) => {
-        if (!supported) return resolve();
-        const u = new SpeechSynthesisUtterance(text);
-        u.rate = 1;
-        u.pitch = 1;
-        const voices = window.speechSynthesis.getVoices();
-        const preferred =
-          voices.find((v) => /en-GB/i.test(v.lang)) ||
-          voices.find((v) => /en[-_]/i.test(v.lang)) ||
-          voices[0];
-        if (preferred) u.voice = preferred;
-        u.onend = () => resolve();
-        u.onerror = (e) => {
-          // "interrupted"/"canceled" are expected when user stops playback.
-          if (e.error === "canceled" || e.error === "interrupted") resolve();
-          else reject(new Error(e.error || "speech error"));
-        };
-        window.speechSynthesis.speak(u);
+        const audio = new Audio(url);
+        audioRef.current = audio;
+        audio.onended = () => resolve();
+        audio.onerror = () => reject(new Error("playback error"));
+        audio.play().catch(reject);
       }),
-    [supported],
+    [],
   );
 
   const stop = useCallback(() => {
     cancelledRef.current = true;
-    if (supported) window.speechSynthesis.cancel();
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
     setState("idle");
     setActiveIdx(-1);
-  }, [supported]);
+  }, []);
 
   const play = useCallback(async () => {
-    if (!supported) return;
-
     // Resume from pause.
-    if (state === "paused") {
-      window.speechSynthesis.resume();
-      setState("playing");
+    if (state === "paused" && audioRef.current) {
+      try {
+        await audioRef.current.play();
+        setState("playing");
+      } catch {
+        /* ignore */
+      }
       return;
     }
 
     cancelledRef.current = false;
-    setState("playing");
+    setState("loading");
 
-    for (let i = 0; i < segments.length; i++) {
-      if (cancelledRef.current) break;
-      setActiveIdx(i);
-      try {
-        await speakSegment(`${segments[i].label}. ${segments[i].text}`);
-      } catch {
-        // Stop the chain on a real error.
-        break;
+    try {
+      for (let i = 0; i < segments.length; i++) {
+        if (cancelledRef.current) break;
+        setActiveIdx(i);
+        const url = await fetchSegmentUrl(i);
+        if (cancelledRef.current) break;
+        setState("playing");
+        try {
+          await playSegment(url);
+        } catch {
+          break;
+        }
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Unable to play audio";
+      toast.error(message);
+    } finally {
+      if (!cancelledRef.current) {
+        setState("idle");
+        setActiveIdx(-1);
       }
     }
-
-    if (!cancelledRef.current) {
-      setState("idle");
-      setActiveIdx(-1);
-    }
-  }, [segments, speakSegment, state, supported]);
+  }, [fetchSegmentUrl, playSegment, segments, state]);
 
   const pause = useCallback(() => {
-    if (!supported) return;
-    window.speechSynthesis.pause();
-    setState("paused");
-  }, [supported]);
-
-  if (!supported) {
-    return (
-      <p className="text-[11px] text-muted-foreground italic">
-        Voice playback isn't supported in this browser — try Chrome, Edge or Safari.
-      </p>
-    );
-  }
+    if (audioRef.current && !audioRef.current.paused) {
+      audioRef.current.pause();
+      setState("paused");
+    }
+  }, []);
 
   return (
     <div className="flex items-center gap-2 flex-wrap">
@@ -119,12 +138,20 @@ const DemoVivaPlayer = ({ segments }: DemoVivaPlayerProps) => {
           Pause
         </Button>
       ) : (
-        <Button type="button" size="sm" onClick={play}>
-          <Play className="h-3.5 w-3.5 mr-1.5" />
-          {state === "paused" ? "Resume" : "Play viva"}
+        <Button type="button" size="sm" onClick={play} disabled={state === "loading"}>
+          {state === "loading" ? (
+            <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
+          ) : (
+            <Play className="h-3.5 w-3.5 mr-1.5" />
+          )}
+          {state === "loading"
+            ? "Loading…"
+            : state === "paused"
+              ? "Resume"
+              : "Play viva"}
         </Button>
       )}
-      {state !== "idle" && (
+      {state !== "idle" && state !== "loading" && (
         <Button type="button" size="sm" variant="outline" onClick={stop}>
           <Square className="h-3.5 w-3.5 mr-1.5" />
           Stop
@@ -132,7 +159,10 @@ const DemoVivaPlayer = ({ segments }: DemoVivaPlayerProps) => {
       )}
       {activeIdx >= 0 && (
         <span className="text-[11px] text-muted-foreground">
-          Now playing: <span className="font-medium text-foreground">{segments[activeIdx].label}</span>
+          Now playing:{" "}
+          <span className="font-medium text-foreground">
+            {segments[activeIdx].label}
+          </span>
         </span>
       )}
     </div>
