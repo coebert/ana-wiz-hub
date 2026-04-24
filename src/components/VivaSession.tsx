@@ -141,6 +141,8 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
 
+    const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+
     const { data, error } = await supabase.functions.invoke("viva", {
       body: {
         mode: "question",
@@ -148,6 +150,8 @@ const VivaSession = ({
         topicTitle,
         topicDescription,
         exam,
+        difficulty,
+        avoid,
       },
     });
 
@@ -161,10 +165,13 @@ const VivaSession = ({
       return;
     }
     setQuestion(data.question);
+    const next = [...loadAsked(topicId, exam), data.question];
+    saveAsked(topicId, exam, next);
+    setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
     // Speak it after a short delay so voices have time to load on first paint.
     setTimeout(() => speak(data.question), 150);
-  }, [topicId, topicTitle, topicDescription, exam, speak]);
+  }, [topicId, topicTitle, topicDescription, exam, speak, difficulty, avoidRepeats]);
 
   // Initial load.
   useEffect(() => {
