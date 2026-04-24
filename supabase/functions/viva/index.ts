@@ -368,7 +368,8 @@ Deno.serve(async (req) => {
         !body.question ||
         !body.transcript ||
         body.transcript.length > 5000 ||
-        body.question.length > 1000
+        body.question.length > 1000 ||
+        (body.segments && (!Array.isArray(body.segments) || body.segments.length > 200))
       ) {
         return new Response(JSON.stringify({ error: "Invalid feedback payload" }), {
           status: 400,
