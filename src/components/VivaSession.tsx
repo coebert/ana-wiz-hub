@@ -692,7 +692,129 @@ const VivaSession = ({
         ) : (
           <p className="text-foreground leading-relaxed">{question || "—"}</p>
         )}
+
+        {/* Model-answer action row — works in any phase once a question is loaded.
+            Lets the user generate the worked answer instead of (or alongside) attempting it. */}
+        {question && phase !== "loading-question" && (
+          <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={generateModelAnswer}
+              disabled={modelAnswerLoading}
+              className="h-8"
+            >
+              {modelAnswerLoading ? (
+                <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
+              ) : (
+                <Sparkles className="h-3.5 w-3.5 mr-1.5" />
+              )}
+              {modelAnswerLoading
+                ? "Generating model answer…"
+                : modelAnswer
+                  ? "Regenerate model answer"
+                  : feedback
+                    ? "Show model answer to compare"
+                    : "Show model answer"}
+            </Button>
+            {!modelAnswer && !modelAnswerLoading && !feedback && (
+              <span className="text-[11px] text-muted-foreground">
+                Skip the attempt — or try first, then compare.
+              </span>
+            )}
+          </div>
+        )}
       </div>
+
+      {/* Standalone model-answer panel — separate from the marked feedback so it
+          works whether or not the user attempted the question. */}
+      {(modelAnswer || modelAnswerError) && (
+        <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 shadow-sm">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-primary" />
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                Model answer
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              {modelAnswer && ttsSupported && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-7 px-2"
+                  onClick={() => speak(modelAnswer.modelAnswer)}
+                  aria-label="Read model answer aloud"
+                >
+                  <Volume2 className="h-3.5 w-3.5" />
+                </Button>
+              )}
+              {modelAnswer && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-7 px-2"
+                  onClick={() => setModelAnswerOpen((o) => !o)}
+                  aria-label={modelAnswerOpen ? "Collapse model answer" : "Expand model answer"}
+                >
+                  {modelAnswerOpen ? (
+                    <ChevronUp className="h-3.5 w-3.5" />
+                  ) : (
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  )}
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {modelAnswerError && (
+            <p className="text-sm text-destructive">{modelAnswerError}</p>
+          )}
+
+          {modelAnswer && modelAnswerOpen && (
+            <div className="space-y-3">
+              <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
+                {modelAnswer.modelAnswer}
+              </p>
+
+              {modelAnswer.highYieldPoints.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                    High-yield points
+                  </p>
+                  <ul className="text-sm text-foreground space-y-0.5 list-disc pl-4">
+                    {modelAnswer.highYieldPoints.map((p, i) => (
+                      <li key={i}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {modelAnswer.pitfalls.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                    Common pitfalls
+                  </p>
+                  <ul className="text-sm text-foreground space-y-0.5 list-disc pl-4">
+                    {modelAnswer.pitfalls.map((p, i) => (
+                      <li key={i}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {feedback && (
+                <p className="text-[11px] text-muted-foreground border-t border-border/50 pt-2">
+                  Compare this against your transcript above to spot what you missed.
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Live transcript */}
       {(phase === "listening" || transcript || interim) && (
