@@ -151,47 +151,86 @@ const VivaSession = ({
     [ttsSupported],
   );
 
+  /** Low-level call — never touches phase. Returns the question or null on error. */
+  const requestQuestion = useCallback(
+    async (forDifficulty: Difficulty): Promise<string | null> => {
+      const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+      const { data, error } = await supabase.functions.invoke("viva", {
+        body: {
+          mode: "question",
+          topicId,
+          topicTitle,
+          topicDescription,
+          exam,
+          difficulty: forDifficulty,
+          avoid,
+        },
+      });
+      if (error || !data?.question) return null;
+      return data.question as string;
+    },
+    [topicId, topicTitle, topicDescription, exam, avoidRepeats],
+  );
+
   const fetchQuestion = useCallback(async () => {
-    setPhase("loading-question");
     setErrorMsg(null);
-    setQuestion("");
     setTranscript("");
     setInterim("");
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
 
-    const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+    // Use a prefetched question if it matches the current difficulty.
+    const cached = prefetchedRef.current;
+    if (cached && cached.difficulty === difficulty) {
+      prefetchedRef.current = null;
+      setPrefetchStatus("idle");
+      setQuestion(cached.question);
+      const next = [...loadAsked(topicId, exam), cached.question];
+      saveAsked(topicId, exam, next);
+      setAskedCount(Math.min(next.length, MAX_HISTORY));
+      setPhase("ready-to-answer");
+      setTimeout(() => speak(cached.question), 150);
+      return;
+    }
 
-    const { data, error } = await supabase.functions.invoke("viva", {
-      body: {
-        mode: "question",
-        topicId,
-        topicTitle,
-        topicDescription,
-        exam,
-        difficulty,
-        avoid,
-      },
-    });
-
-    if (error || !data?.question) {
-      setErrorMsg(
-        (data as { error?: string } | null)?.error ??
-          error?.message ??
-          "Could not load a question.",
-      );
+    setPhase("loading-question");
+    setQuestion("");
+    const q = await requestQuestion(difficulty);
+    if (!q) {
+      setErrorMsg("Could not load a question.");
       setPhase("error");
       return;
     }
-    setQuestion(data.question);
-    const next = [...loadAsked(topicId, exam), data.question];
+    setQuestion(q);
+    const next = [...loadAsked(topicId, exam), q];
     saveAsked(topicId, exam, next);
     setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
-    // Speak it after a short delay so voices have time to load on first paint.
-    setTimeout(() => speak(data.question), 150);
-  }, [topicId, topicTitle, topicDescription, exam, speak, difficulty, avoidRepeats]);
+    setTimeout(() => speak(q), 150);
+  }, [topicId, exam, speak, difficulty, requestQuestion]);
+
+  /** Background-fetch the next question (e.g. while user is reading feedback). */
+  const prefetchNext = useCallback(async () => {
+    if (!prefetchEnabled) return;
+    if (prefetchedRef.current?.difficulty === difficulty) return; // already cached
+    setPrefetchStatus("loading");
+    const q = await requestQuestion(difficulty);
+    if (!q) {
+      setPrefetchStatus("error");
+      return;
+    }
+    prefetchedRef.current = { question: q, difficulty };
+    setPrefetchStatus("ready");
+  }, [prefetchEnabled, difficulty, requestQuestion]);
+
+  // Invalidate prefetch when difficulty changes.
+  useEffect(() => {
+    if (prefetchedRef.current && prefetchedRef.current.difficulty !== difficulty) {
+      prefetchedRef.current = null;
+      setPrefetchStatus("idle");
+    }
+  }, [difficulty]);
 
   // Initial load.
   useEffect(() => {
