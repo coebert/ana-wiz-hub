@@ -248,6 +248,10 @@ export const AnimatedMechanism = ({
         <aside
           className={cn(
             "p-4 sm:p-5 border-t lg:border-t-0 lg:border-l border-border bg-muted/20",
+            // Reserve enough vertical space for the longest step's content
+            // (detail + callout + sources) so auto-advancing doesn't reflow
+            // the panel and visibly bump everything below it.
+            "min-h-[260px] lg:min-h-[320px]",
           )}
           aria-live="polite"
         >
