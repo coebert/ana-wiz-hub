@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target } from "lucide-react";
+import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -149,6 +149,19 @@ const VivaSession = ({
   const [prefetchEnabled, setPrefetchEnabled] = useState(true);
   const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   /**
+   * Standalone "model answer" generated for the current question, independent
+   * of whether the user attempted the question. Lets users either skip the
+   * answering step or compare their attempt afterwards.
+   */
+  const [modelAnswer, setModelAnswer] = useState<{
+    modelAnswer: string;
+    highYieldPoints: string[];
+    pitfalls: string[];
+  } | null>(null);
+  const [modelAnswerLoading, setModelAnswerLoading] = useState(false);
+  const [modelAnswerError, setModelAnswerError] = useState<string | null>(null);
+  const [modelAnswerOpen, setModelAnswerOpen] = useState(true);
+  /**
    * How strict to be when flagging a rubric row as "weak" for emphasis retakes.
    * - lenient: anything below 70% counts as weak (more rows qualify, retake button shows often)
    * - balanced: below 50% (default — only clearly underperforming rows)
@@ -262,6 +275,10 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    // New question → drop any previous model answer.
+    setModelAnswer(null);
+    setModelAnswerError(null);
+    setModelAnswerLoading(false);
 
     // Use a prefetched question if it matches the current difficulty.
     const cached = prefetchedRef.current;
@@ -292,6 +309,40 @@ const VivaSession = ({
     setPhase("ready-to-answer");
     setTimeout(() => speak(q), 150);
   }, [topicId, exam, speak, difficulty, requestQuestion]);
+
+  /**
+   * Generate a standalone model answer for the current question.
+   * Lets the user either skip answering altogether or compare their attempt
+   * against the worked answer afterwards. Independent of the marked feedback.
+   */
+  const generateModelAnswer = useCallback(async () => {
+    if (!question) return;
+    setModelAnswerError(null);
+    setModelAnswerLoading(true);
+    setModelAnswerOpen(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("viva", {
+        body: {
+          mode: "model-answer",
+          topicTitle,
+          exam,
+          question,
+        },
+      });
+      if (error) throw new Error(error.message || "Could not generate model answer");
+      if (!data?.modelAnswer) throw new Error("No model answer returned");
+      setModelAnswer({
+        modelAnswer: String(data.modelAnswer),
+        highYieldPoints: Array.isArray(data.highYieldPoints) ? data.highYieldPoints : [],
+        pitfalls: Array.isArray(data.pitfalls) ? data.pitfalls : [],
+      });
+    } catch (e) {
+      console.error("[VivaSession] model-answer error", e);
+      setModelAnswerError(e instanceof Error ? e.message : "Could not generate model answer");
+    } finally {
+      setModelAnswerLoading(false);
+    }
+  }, [question, topicTitle, exam]);
 
   /** Background-fetch the next question (e.g. while user is reading feedback). */
   const prefetchNext = useCallback(async () => {
@@ -342,6 +393,9 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setModelAnswer(null);
+    setModelAnswerError(null);
+    setModelAnswerLoading(false);
     setPhase("loading-question");
     setQuestion("");
 
@@ -638,7 +692,129 @@ const VivaSession = ({
         ) : (
           <p className="text-foreground leading-relaxed">{question || "—"}</p>
         )}
+
+        {/* Model-answer action row — works in any phase once a question is loaded.
+            Lets the user generate the worked answer instead of (or alongside) attempting it. */}
+        {question && phase !== "loading-question" && (
+          <div className="mt-3 pt-3 border-t border-border/50 flex flex-wrap items-center gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={generateModelAnswer}
+              disabled={modelAnswerLoading}
+              className="h-8"
+            >
+              {modelAnswerLoading ? (
+                <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
+              ) : (
+                <Sparkles className="h-3.5 w-3.5 mr-1.5" />
+              )}
+              {modelAnswerLoading
+                ? "Generating model answer…"
+                : modelAnswer
+                  ? "Regenerate model answer"
+                  : feedback
+                    ? "Show model answer to compare"
+                    : "Show model answer"}
+            </Button>
+            {!modelAnswer && !modelAnswerLoading && !feedback && (
+              <span className="text-[11px] text-muted-foreground">
+                Skip the attempt — or try first, then compare.
+              </span>
+            )}
+          </div>
+        )}
       </div>
+
+      {/* Standalone model-answer panel — separate from the marked feedback so it
+          works whether or not the user attempted the question. */}
+      {(modelAnswer || modelAnswerError) && (
+        <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 shadow-sm">
+          <div className="flex items-start justify-between gap-2 mb-2">
+            <div className="flex items-center gap-2">
+              <Sparkles className="h-4 w-4 text-primary" />
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+                Model answer
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              {modelAnswer && ttsSupported && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-7 px-2"
+                  onClick={() => speak(modelAnswer.modelAnswer)}
+                  aria-label="Read model answer aloud"
+                >
+                  <Volume2 className="h-3.5 w-3.5" />
+                </Button>
+              )}
+              {modelAnswer && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="h-7 px-2"
+                  onClick={() => setModelAnswerOpen((o) => !o)}
+                  aria-label={modelAnswerOpen ? "Collapse model answer" : "Expand model answer"}
+                >
+                  {modelAnswerOpen ? (
+                    <ChevronUp className="h-3.5 w-3.5" />
+                  ) : (
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  )}
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {modelAnswerError && (
+            <p className="text-sm text-destructive">{modelAnswerError}</p>
+          )}
+
+          {modelAnswer && modelAnswerOpen && (
+            <div className="space-y-3">
+              <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
+                {modelAnswer.modelAnswer}
+              </p>
+
+              {modelAnswer.highYieldPoints.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                    High-yield points
+                  </p>
+                  <ul className="text-sm text-foreground space-y-0.5 list-disc pl-4">
+                    {modelAnswer.highYieldPoints.map((p, i) => (
+                      <li key={i}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {modelAnswer.pitfalls.length > 0 && (
+                <div>
+                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+                    Common pitfalls
+                  </p>
+                  <ul className="text-sm text-foreground space-y-0.5 list-disc pl-4">
+                    {modelAnswer.pitfalls.map((p, i) => (
+                      <li key={i}>{p}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {feedback && (
+                <p className="text-[11px] text-muted-foreground border-t border-border/50 pt-2">
+                  Compare this against your transcript above to spot what you missed.
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Live transcript */}
       {(phase === "listening" || transcript || interim) && (
