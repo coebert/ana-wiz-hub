@@ -239,6 +239,9 @@ ${rubricList}
 Provide:
 - score: integer 0–10 (sum of the rubric marks below)
 - verdict: one short phrase, e.g. "Clear pass", "Borderline", "Fail — significant gaps"
+- answerSummary: object with:
+    • bullets: 2–4 short bullets (≤ 18 words each) faithfully recapping the DISTINCT points the candidate actually made (in the order they made them). Do NOT add facts they did not say. If they said almost nothing, return one bullet noting that.
+    • wordCount: integer — approximate number of words in the transcript.
 - coreFeedback: object with EXACTLY these three keys, each an object { rating: "strong" | "adequate" | "weak", comment: string (≤ 30 words, specific and constructive — name what was good or what was missed) }:
     • structure — was the answer logically ordered (e.g. definition → classification → mechanism → clinical relevance), prioritised correctly, and free of rambling?
     • knowledge — factual accuracy, depth, and breadth at the named exam standard (named numbers, mechanisms, classifications, evidence).
