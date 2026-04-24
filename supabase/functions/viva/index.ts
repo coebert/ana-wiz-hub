@@ -58,7 +58,14 @@ interface AnnotateBody {
   modelAnswer: string;
 }
 
-type Body = QuestionBody | FeedbackBody | AnnotateBody;
+interface ModelAnswerBody {
+  mode: "model-answer";
+  topicTitle: string;
+  exam: Exam;
+  question: string;
+}
+
+type Body = QuestionBody | FeedbackBody | AnnotateBody | ModelAnswerBody;
 
 const examLabel: Record<Exam, string> = {
   primary: "FRCA Primary (early CT/ST trainee — basic sciences depth)",
