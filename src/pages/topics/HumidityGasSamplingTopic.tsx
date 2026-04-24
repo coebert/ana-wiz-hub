@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
+import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -99,6 +100,17 @@ const HumidityGasSamplingTopic = () => {
                 but carry risks of circuit condensation, infection, and airway burns.
               </p>
             </div>
+          </ExamSection>
+
+          <ExamSection id="hygrometers" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Measurement of Humidity — Hygrometers</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Four hygrometer types are commonly examined: the <strong>hair</strong> hygrometer (mechanical), the
+              <strong> wet-and-dry bulb</strong> psychrometer (latent heat of evaporation), <strong>Regnault's dew-point</strong>
+              hygrometer (the gold-standard absolute method), and the modern <strong>electrical / capacitance</strong> sensor
+              found in every contemporary anaesthetic monitor. Step through each animation to see the underlying physics.
+            </p>
+            <HygrometersDiagram />
           </ExamSection>
 
           <ExamSection id="pneumotachography" exams={[Exam.PRIMARY, Exam.FINAL]}>
