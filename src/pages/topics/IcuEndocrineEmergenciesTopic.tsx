@@ -218,6 +218,9 @@ const IcuEndocrineEmergenciesTopic = () => {
             </div>
             <GuidelineSources sources={HYPERGLYCAEMIC_SOURCES} />
           </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid emergencies</h2>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 10–30 %)</p>
