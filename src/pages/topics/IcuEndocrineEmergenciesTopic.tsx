@@ -148,6 +148,7 @@ const IcuEndocrineEmergenciesTopic = () => {
           <ThyroidStormAnimation />
           <AdrenalCrisisAnimation />
           <EndocrineEmergencyAlgorithms />
+          <EndocrineEmergencyDrugs />
         </>
       }
       coreConcepts={
