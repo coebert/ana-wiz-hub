@@ -501,6 +501,83 @@ Return JSON via the tool call only.`;
   });
 }
 
+async function handleModelAnswer(b: ModelAnswerBody): Promise<Response> {
+  const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
+
+Examiner question that the candidate has been asked aloud:
+"""${b.question}"""
+
+Write the IDEAL spoken viva answer that a top-scoring candidate would deliver to this question, calibrated precisely to the named exam standard. This is the answer the trainee will compare their own attempt against.
+
+Produce three outputs:
+
+1. modelAnswer — the spoken answer itself, 5–9 sentences, in clear viva-ready prose. It MUST:
+   • be logically ordered (e.g. definition → classification → mechanism → clinical relevance, or a clearly signposted ABCDE / pre-renal / renal / post-renal style framework where appropriate),
+   • include the named numbers, equations, mechanisms, classifications and key safety points an examiner is actively listening for,
+   • use examiner-facing language ("I would…", "The key principle is…", concise signposting),
+   • avoid waffle, hedging, or generic platitudes.
+
+2. highYieldPoints — array of 3–6 short bullets (≤ 18 words each) of the discrete FRCA / FFICM high-yield facts the examiner is checking for in this question (named numbers, equations, definitions, classifications, drug doses, safety bottom-lines). These are the marking-scheme essentials, independent of the prose answer.
+
+3. pitfalls — array of 3–6 short bullets (≤ 22 words each) of the most common candidate errors / omissions on this question (wrong number, missed mechanism, unsafe omission, classic confusion, ordering mistakes).
+
+Return JSON via the tool call only.`;
+
+  const res = await callAI({
+    model: MODEL,
+    messages: [
+      { role: "system", content: SYSTEM },
+      { role: "user", content: userPrompt },
+    ],
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "emit_model_answer",
+          description: "Emit a model viva answer plus high-yield points and pitfalls.",
+          parameters: {
+            type: "object",
+            properties: {
+              modelAnswer: { type: "string" },
+              highYieldPoints: { type: "array", items: { type: "string" } },
+              pitfalls: { type: "array", items: { type: "string" } },
+            },
+            required: ["modelAnswer", "highYieldPoints", "pitfalls"],
+            additionalProperties: false,
+          },
+        },
+      },
+    ],
+    tool_choice: { type: "function", function: { name: "emit_model_answer" } },
+  });
+
+  const errResp = aiErrorResponse(res.status);
+  if (errResp) return errResp;
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("AI model-answer error:", res.status, text);
+    return new Response(JSON.stringify({ error: "AI gateway error" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  const data = await res.json();
+  const args = data?.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
+  let parsed: Record<string, unknown> = {};
+  try {
+    parsed = JSON.parse(args ?? "{}");
+  } catch {
+    return new Response(JSON.stringify({ error: "Could not parse model answer" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+  return new Response(JSON.stringify(parsed), {
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") {
