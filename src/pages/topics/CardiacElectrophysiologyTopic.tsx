@@ -5,6 +5,7 @@ import { cardiacElectrophysiologyQuestions } from "@/data/quizzes";
 import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPotentialDiagram";
 import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
 import IonChannelTimelineDiagram from "@/components/diagrams/IonChannelTimelineDiagram";
+import BPControlLoopDiagram from "@/components/diagrams/BPControlLoopDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -208,6 +209,9 @@ const CardiacElectrophysiologyTopic = () => {
               propofol and chronic hypertension all blunt or reset different limbs of this loop — explaining why induction
               hypotension is multifactorial and why a single vasopressor rarely fixes every cause.
             </p>
+            <div className="mt-4">
+              <BPControlLoopDiagram />
+            </div>
             <div className="space-y-3 mt-4">
               {[
                 { title: "Short-term (seconds–minutes)", desc: "Baroreceptor reflex: carotid sinus (CN IX) and aortic arch (CN X) detect ↑ BP → ↑ afferent firing → NTS → ↑ vagal tone + ↓ sympathetic output → ↓ HR, ↓ contractility, vasodilation. Resets over 24–48 h in chronic hypertension." },
