@@ -160,6 +160,9 @@ const NeurointensiveCareTopic = () => {
         "GBS: 20/30/40 rule for intubation — FVC <20, MIP <−30, MEP <40",
         "GBS: suxamethonium is SAFE; steroids do NOT work; IVIg and PLEX are equivalent but do not combine",
         "GBS autonomic instability can cause sudden cardiac death — continuous ECG monitoring essential",
+        "Myasthenic crisis: trial NIV first if no bulbar weakness (avoids intubation in ~70%); intubate for FVC <15 mL/kg, NIF <−20, severe bulbar dysfunction or aspiration",
+        "Myasthenic vs cholinergic crisis: edrophonium test improves myasthenic, worsens cholinergic; cholinergic = SLUDGE + miosis + fasciculations — stop anticholinesterases, give atropine, support ventilation",
+        "Myasthenic crisis treatment: IVIg 0.4 g/kg/d × 5 OR PLEX (5 exchanges, equivalent); add high-dose steroids AFTER immunotherapy started — risk of transient worsening at 5–10 days. Stop pyridostigmine if intubated",
         "Devastating brain injury (FICM/ICS/RCEM/NHSBT consensus): give ≥72h of full active treatment before WLST decisions — exclude confounders, allow injury to declare, refer SN-OD early",
       ]}
       topicId="neurointensive-care"
