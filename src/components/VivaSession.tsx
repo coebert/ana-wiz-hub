@@ -23,6 +23,10 @@ interface RubricBreakdownItem {
   max: number;
   awarded: number;
   comment: string;
+  /** Verbatim snippet from the transcript that motivated the mark, if any. */
+  quote?: string;
+  /** Approximate seconds from the start of the answer where the snippet was spoken. */
+  tStart?: number;
 }
 
 interface Feedback {
