@@ -66,6 +66,33 @@ function getSpeechRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 
+type Difficulty = "easy" | "standard" | "hard";
+
+const HISTORY_KEY = (topicId: string, exam: Exam) => `viva:asked:${exam}:${topicId}`;
+const MAX_HISTORY = 12;
+
+function loadAsked(topicId: string, exam: Exam): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(HISTORY_KEY(topicId, exam));
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((x) => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveAsked(topicId: string, exam: Exam, list: string[]) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(
+      HISTORY_KEY(topicId, exam),
+      JSON.stringify(list.slice(-MAX_HISTORY)),
+    );
+  } catch { /* quota — ignore */ }
+}
+
 const VivaSession = ({
   topicId,
   topicTitle,
@@ -79,6 +106,9 @@ const VivaSession = ({
   const [transcript, setTranscript] = useState("");
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>("standard");
+  const [avoidRepeats, setAvoidRepeats] = useState(true);
+  const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
@@ -111,6 +141,8 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
 
+    const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
+
     const { data, error } = await supabase.functions.invoke("viva", {
       body: {
         mode: "question",
@@ -118,6 +150,8 @@ const VivaSession = ({
         topicTitle,
         topicDescription,
         exam,
+        difficulty,
+        avoid,
       },
     });
 
@@ -131,10 +165,13 @@ const VivaSession = ({
       return;
     }
     setQuestion(data.question);
+    const next = [...loadAsked(topicId, exam), data.question];
+    saveAsked(topicId, exam, next);
+    setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
     // Speak it after a short delay so voices have time to load on first paint.
     setTimeout(() => speak(data.question), 150);
-  }, [topicId, topicTitle, topicDescription, exam, speak]);
+  }, [topicId, topicTitle, topicDescription, exam, speak, difficulty, avoidRepeats]);
 
   // Initial load.
   useEffect(() => {
@@ -262,6 +299,55 @@ const VivaSession = ({
             </Button>
           )}
         </div>
+      </div>
+
+      {/* Difficulty + avoid-repeats controls */}
+      <div className="flex items-center justify-between gap-3 flex-wrap rounded-lg border border-border bg-muted/20 px-3 py-2">
+        <div className="flex items-center gap-1.5" role="radiogroup" aria-label="Difficulty">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mr-1">
+            Difficulty
+          </span>
+          {(["easy", "standard", "hard"] as Difficulty[]).map((d) => (
+            <button
+              key={d}
+              type="button"
+              role="radio"
+              aria-checked={difficulty === d}
+              onClick={() => setDifficulty(d)}
+              disabled={phase === "loading-question" || phase === "scoring" || phase === "listening"}
+              className={`text-xs px-2 py-1 rounded-md border transition-colors capitalize disabled:opacity-50 ${
+                difficulty === d
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-background text-foreground border-border hover:bg-muted"
+              }`}
+            >
+              {d}
+            </button>
+          ))}
+        </div>
+
+        <label className="inline-flex items-center gap-2 text-xs text-foreground cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={avoidRepeats}
+            onChange={(e) => setAvoidRepeats(e.target.checked)}
+            className="h-3.5 w-3.5 rounded border-border accent-primary"
+          />
+          <span>Avoid recent questions</span>
+          <span className="text-muted-foreground tabular-nums">({askedCount}/{MAX_HISTORY})</span>
+          {askedCount > 0 && (
+            <button
+              type="button"
+              onClick={() => {
+                saveAsked(topicId, exam, []);
+                setAskedCount(0);
+              }}
+              className="ml-1 text-[11px] text-primary hover:underline"
+            >
+              Reset
+            </button>
+          )}
+        </label>
       </div>
 
       {/* Browser support warnings */}
