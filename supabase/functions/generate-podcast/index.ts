@@ -112,16 +112,15 @@ Tone: warm, confident, like a senior trainee tutoring a peer. Not lecturing.
 
 Output ONLY the spoken script. No preamble, no title, no "Welcome back to…", no metadata.`;
 
-// Scale the target podcast length to the source content. Short topics get a
-// concise ~6 min episode; long topics scale up to ~14 min so we don't drop
-// material. Word-rate assumption: ~150 wpm for natural narration.
+// Scale the target podcast length to the source content. No upper cap —
+// long topics produce long episodes. Word-rate assumption: ~150 wpm.
 function deriveTargetLength(content: string): { minutes: number; words: number } {
   const sourceWords = content.trim().split(/\s+/).length;
-  // Aim for ~30-40% of source word count, clamped between 900 and 2100 words
-  // (≈ 6 to 14 minutes at 150 wpm).
+  // Aim for ~35% of source word count, with a minimum of 900 words (~6 min)
+  // so very short topics still get a substantive episode. No maximum.
   const target = Math.round(sourceWords * 0.35);
-  const words = Math.max(900, Math.min(2100, target));
-  const minutes = Math.max(6, Math.min(14, Math.round(words / 150)));
+  const words = Math.max(900, target);
+  const minutes = Math.max(6, Math.round(words / 150));
   return { minutes, words };
 }
 
