@@ -48,6 +48,32 @@ const examLabel: Record<Exam, string> = {
   fficm: "FFICM Final (intensive-care subspecialty — applied critical-care management + evidence)",
 };
 
+// Per-exam rubric — kept in sync with src/components/VivaRubric.tsx so the
+// scored breakdown lines up with the rubric the user sees on screen.
+const RUBRIC: Record<Exam, { criterion: string; max: number }[]> = {
+  primary: [
+    { criterion: "Core facts & definitions", max: 3 },
+    { criterion: "Underlying basic science", max: 3 },
+    { criterion: "Structure & clarity", max: 2 },
+    { criterion: "Clinical relevance", max: 1 },
+    { criterion: "Fluency under pressure", max: 1 },
+  ],
+  final: [
+    { criterion: "Applied clinical reasoning", max: 3 },
+    { criterion: "Integration of basic science", max: 2 },
+    { criterion: "Safety & contingency", max: 2 },
+    { criterion: "Structure & prioritisation", max: 2 },
+    { criterion: "Awareness of guidelines / evidence", max: 1 },
+  ],
+  fficm: [
+    { criterion: "ICU management plan", max: 3 },
+    { criterion: "Evidence base", max: 2 },
+    { criterion: "Risk / benefit & ceilings of care", max: 2 },
+    { criterion: "Safety & complications", max: 2 },
+    { criterion: "Communication & structure", max: 1 },
+  ],
+};
+
 const SYSTEM = `You are an experienced UK examiner for the Royal College of Anaesthetists / FICM viva voce exam.
 You ask one focused, exam-realistic opening question and then grade the candidate fairly.
 Always reflect the actual standard of the named exam (Primary vs Final vs FFICM) — the depth, breadth and language must match.`;
@@ -163,6 +189,11 @@ Return JSON only via the tool call.`;
 }
 
 async function handleFeedback(b: FeedbackBody): Promise<Response> {
+  const rubric = RUBRIC[b.exam];
+  const rubricList = rubric
+    .map((r, i) => `${i + 1}. ${r.criterion} (max ${r.max})`)
+    .join("\n");
+
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that was asked aloud:
@@ -173,13 +204,22 @@ Candidate's spoken answer (auto-transcribed — expect minor speech-to-text erro
 
 Mark this answer as a fair UK viva examiner would. Be constructive, specific, and direct.
 
+The 10 marks are split across this rubric:
+${rubricList}
+
 Provide:
-- score: integer 0–10 (use the full scale; 5 = bare pass at this exam standard, 7 = solid pass, 9–10 = standout)
+- score: integer 0–10 (sum of the rubric marks below)
 - verdict: one short phrase, e.g. "Clear pass", "Borderline", "Fail — significant gaps"
 - strengths: 1–3 short bullets of what was done well (omit if genuinely none)
 - gaps: 1–4 short bullets of missed key facts or wrong statements (be specific — name the structure / number / mechanism that was missed)
 - modelAnswer: a concise model viva answer (4–8 sentences) calibrated to the exam standard
 - nextStep: ONE follow-up viva question the examiner would naturally ask next
+- rubricBreakdown: array — one entry per rubric row above, IN THE SAME ORDER, with:
+    • criterion (exact label from the rubric above)
+    • max (the max marks for that row)
+    • awarded (integer 0..max — your honest mark for that row)
+    • comment (one short sentence explaining the mark)
+  The awarded marks MUST sum to the overall score.
 
 Return JSON via the tool call only.`;
 
@@ -204,8 +244,22 @@ Return JSON via the tool call only.`;
               gaps: { type: "array", items: { type: "string" } },
               modelAnswer: { type: "string" },
               nextStep: { type: "string" },
+              rubricBreakdown: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    criterion: { type: "string" },
+                    max: { type: "integer", minimum: 0, maximum: 10 },
+                    awarded: { type: "integer", minimum: 0, maximum: 10 },
+                    comment: { type: "string" },
+                  },
+                  required: ["criterion", "max", "awarded", "comment"],
+                  additionalProperties: false,
+                },
+              },
             },
-            required: ["score", "verdict", "gaps", "modelAnswer", "nextStep"],
+            required: ["score", "verdict", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
             additionalProperties: false,
           },
         },
