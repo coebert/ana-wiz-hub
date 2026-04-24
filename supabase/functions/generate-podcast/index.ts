@@ -25,7 +25,18 @@ const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY")!;
 
 const TTS_MODEL = "gpt-4o-mini-tts";
 const TTS_VOICE = "alloy"; // calm, neutral narration
-const MAX_TTS_CHARS = 3500; // chunk size; OpenAI hard limit is 4096
+// Target a comfortable chunk size well under OpenAI's 4096-char hard limit.
+// Smaller chunks = faster individual TTS calls + safer retries.
+const MAX_TTS_CHARS = 2800;
+// Hard fallback: if a single sentence exceeds MAX_TTS_CHARS we still need to
+// split it. OpenAI rejects > 4096 chars per request.
+const HARD_TTS_LIMIT = 3900;
+// How many TTS chunks to synthesise concurrently. OpenAI TTS rate limits are
+// generous; 4 in flight keeps total wall-time near a single chunk's latency
+// for episodes up to ~14 min while staying well under any per-minute caps.
+const TTS_CONCURRENCY = 4;
+// Per-chunk retry budget (network blips, transient 5xx, brief 429s).
+const TTS_MAX_RETRIES = 3;
 
 interface RequestBody {
   topicId: string;
