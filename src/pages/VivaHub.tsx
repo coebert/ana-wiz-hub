@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Mic, Search, Shuffle } from "lucide-react";
+import { ArrowLeft, BookOpen, Mic, Search, Shuffle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -134,6 +134,11 @@ const VivaHub = () => {
           </div>
           <Button onClick={startRandom} variant="secondary" disabled={eligible.length === 0}>
             <Shuffle className="h-4 w-4 mr-2" /> Random topic
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/viva/library">
+              <BookOpen className="h-4 w-4 mr-2" /> Question library
+            </Link>
           </Button>
         </section>
 
