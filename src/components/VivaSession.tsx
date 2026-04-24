@@ -153,7 +153,7 @@ const VivaSession = ({
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
   const requestQuestion = useCallback(
-    async (forDifficulty: Difficulty): Promise<string | null> => {
+    async (forDifficulty: Difficulty, emphasise?: string[]): Promise<string | null> => {
       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
       const { data, error } = await supabase.functions.invoke("viva", {
         body: {
@@ -164,6 +164,7 @@ const VivaSession = ({
           exam,
           difficulty: forDifficulty,
           avoid,
+          emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
         },
       });
       if (error || !data?.question) return null;
