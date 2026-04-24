@@ -1,0 +1,707 @@
+import { useState } from "react";
+import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { cn } from "@/lib/utils";
+
+/* ============================================================
+ * Hygrometers — animated diagrams of the four types tested in
+ * the FRCA Primary syllabus:
+ *   1) Hair hygrometer
+ *   2) Wet-and-dry-bulb (psychrometer)
+ *   3) Regnault's dew-point hygrometer
+ *   4) Electrical / capacitance (transducer) hygrometer
+ *
+ * Each tab uses the shared <AnimatedMechanism> for stepping +
+ * play controls, and an SVG scene that responds to the active
+ * step so students can watch the measurement principle unfold.
+ * ============================================================ */
+
+type HygType = "hair" | "wetdry" | "dewpoint" | "electrical";
+
+const TabButton = ({
+  active,
+  onClick,
+  children,
+  sublabel,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+  sublabel: string;
+}) => (
+  <button
+    type="button"
+    onClick={onClick}
+    aria-pressed={active}
+    className={cn(
+      "flex-1 min-w-[140px] px-3 py-2 rounded-lg border text-left transition-colors",
+      active
+        ? "bg-primary text-primary-foreground border-primary shadow-sm"
+        : "bg-card text-foreground border-border hover:bg-muted",
+    )}
+  >
+    <div className="text-sm font-semibold leading-tight">{children}</div>
+    <div className={cn("text-[11px] mt-0.5", active ? "text-primary-foreground/80" : "text-muted-foreground")}>
+      {sublabel}
+    </div>
+  </button>
+);
+
+/* -------------------- 1. HAIR HYGROMETER -------------------- */
+
+const HairScene = ({ step }: { step: number }) => {
+  // step 0: dry, hair short  | 1: humid air arrives | 2: hair lengthens | 3: dial moves
+  const humidity = step >= 1 ? 0.8 : 0.2;
+  const slack = 6 + humidity * 14; // px of mid-point sag
+  const needleAngle = -60 + humidity * 120; // -60° (dry) → +60° (humid)
+
+  return (
+    <svg viewBox="0 0 360 240" role="img" aria-label="Hair hygrometer animation" className="w-full">
+      <defs>
+        <radialGradient id="hyg-hair-bg" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="hsl(var(--muted))" stopOpacity="0.3" />
+          <stop offset="100%" stopColor="hsl(var(--muted))" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect x="0" y="0" width="360" height="240" fill="url(#hyg-hair-bg)" />
+
+      {/* Frame */}
+      <rect x="40" y="50" width="200" height="140" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="2" />
+      <text x="140" y="42" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))">Hair under tension</text>
+
+      {/* Anchor pin (left) */}
+      <circle cx="60" cy="90" r="5" fill="hsl(var(--foreground))" />
+      <text x="56" y="80" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">Fixed</text>
+
+      {/* Pulley (right) */}
+      <circle cx="220" cy="90" r="10" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" />
+      <circle cx="220" cy="90" r="2" fill="hsl(var(--foreground))" />
+
+      {/* Hair — sag depends on humidity (longer hair = more sag) */}
+      <path
+        d={`M 60 90 Q 140 ${90 + slack} 220 90`}
+        stroke="hsl(var(--anatomy, var(--primary)))"
+        strokeWidth="1.5"
+        fill="none"
+        className="transition-all duration-700 ease-out"
+      />
+
+      {/* Spring/weight on the pulley */}
+      <line x1="220" y1="100" x2="220" y2={130 + slack} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+      <rect
+        x="210"
+        y={130 + slack}
+        width="20"
+        height="14"
+        rx="2"
+        fill="hsl(var(--muted))"
+        stroke="hsl(var(--foreground))"
+        strokeWidth="1"
+        className="transition-all duration-700"
+      />
+      <text x="240" y={142 + slack} fontSize="8" fill="hsl(var(--muted-foreground))" className="transition-all duration-700">
+        Tension wt
+      </text>
+
+      {/* Humid air molecules */}
+      {step >= 1 && (
+        <g className="animate-fade-in">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <circle
+              key={i}
+              cx={70 + i * 35}
+              cy={60 + (i % 2) * 8}
+              r="3"
+              fill="hsl(var(--primary))"
+              opacity="0.5"
+            />
+          ))}
+          <text x="140" y="210" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">
+            Humid air → hair absorbs water → lengthens
+          </text>
+        </g>
+      )}
+
+      {/* Dial */}
+      <g transform="translate(300 130)">
+        <circle r="38" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="2" />
+        {/* Tick marks */}
+        {[-60, -30, 0, 30, 60].map((a) => {
+          const rad = ((a - 90) * Math.PI) / 180;
+          return (
+            <line
+              key={a}
+              x1={Math.cos(rad) * 30}
+              y1={Math.sin(rad) * 30}
+              x2={Math.cos(rad) * 36}
+              y2={Math.sin(rad) * 36}
+              stroke="hsl(var(--foreground))"
+              strokeWidth="1"
+            />
+          );
+        })}
+        <text x="-26" y="32" fontSize="7" fill="hsl(var(--muted-foreground))">0%</text>
+        <text x="20" y="32" fontSize="7" fill="hsl(var(--muted-foreground))">100%</text>
+        {/* Needle */}
+        <line
+          x1="0"
+          y1="0"
+          x2="0"
+          y2="-30"
+          stroke="hsl(var(--destructive))"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          transform={`rotate(${needleAngle})`}
+          className="transition-transform duration-700 ease-out"
+        />
+        <circle r="3" fill="hsl(var(--destructive))" />
+        <text y="52" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">
+          % RH
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+const hairSteps: AnimatedMechanismStep[] = [
+  {
+    label: "Dry air",
+    detail: (
+      <>
+        A defatted human hair is held under light tension between a fixed point and a pulley with a counter-weight.
+        In dry conditions the hair is at its shortest and the dial reads low.
+      </>
+    ),
+    callout: "Range ~15-100% RH, slow response (minutes), accuracy ±5%.",
+  },
+  {
+    label: "Humid air",
+    detail: (
+      <>
+        Water molecules in the air are absorbed by the hair (hygroscopic).
+      </>
+    ),
+  },
+  {
+    label: "Hair lengthens",
+    detail: (
+      <>
+        Hair length varies non-linearly with relative humidity (~2.5% length change over the full RH range).
+        The pulley rotates as the hair sags.
+      </>
+    ),
+    callout: "Measures relative humidity directly — no temperature correction needed.",
+  },
+  {
+    label: "Dial reads RH",
+    detail: (
+      <>
+        The pulley drives a needle on a calibrated dial. Cheap, simple, and battery-free — but slow, hysteretic and inaccurate
+        at extremes. Used historically in operating-theatre wall units.
+      </>
+    ),
+    callout: "Disadvantages: non-linear scale, hysteresis, drift, slow response.",
+  },
+];
+
+/* -------------------- 2. WET-AND-DRY-BULB -------------------- */
+
+const WetDryScene = ({ step }: { step: number }) => {
+  // step 0: both bulbs equal | 1: water evaporates from wet bulb | 2: wet bulb cools | 3: ΔT read
+  const dryT = 22;
+  const wetT = step >= 2 ? 16 : step >= 1 ? 19 : 22;
+
+  const mercuryHeight = (t: number) => 30 + (t - 10) * 4; // simple mapping
+
+  const bulbY = 170;
+  const dryHg = mercuryHeight(dryT);
+  const wetHg = mercuryHeight(wetT);
+
+  return (
+    <svg viewBox="0 0 360 240" role="img" aria-label="Wet and dry bulb hygrometer" className="w-full">
+      {/* Dry bulb */}
+      <g>
+        <text x="80" y="25" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">Dry bulb</text>
+        {/* Stem */}
+        <rect x="74" y={bulbY - 110} width="12" height="110" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
+        {/* Mercury */}
+        <rect
+          x="76"
+          y={bulbY - dryHg}
+          width="8"
+          height={dryHg}
+          fill="hsl(var(--destructive))"
+          className="transition-all duration-700"
+        />
+        {/* Bulb */}
+        <circle cx="80" cy={bulbY + 8} r="14" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="1" />
+        <text x="80" y={bulbY + 40} textAnchor="middle" fontSize="11" fontWeight="bold" fill="hsl(var(--destructive))">
+          {dryT}°C
+        </text>
+      </g>
+
+      {/* Wet bulb */}
+      <g>
+        <text x="220" y="25" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">Wet bulb</text>
+        <rect x="214" y={bulbY - 110} width="12" height="110" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
+        <rect
+          x="216"
+          y={bulbY - wetHg}
+          width="8"
+          height={wetHg}
+          fill="hsl(var(--destructive))"
+          className="transition-all duration-700 ease-out"
+        />
+        <circle cx="220" cy={bulbY + 8} r="14" fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="1" />
+
+        {/* Wet wick around bulb */}
+        <path
+          d={`M 220 ${bulbY + 22} Q 220 ${bulbY + 35} 220 ${bulbY + 50}`}
+          stroke="hsl(var(--primary))"
+          strokeWidth="3"
+          fill="none"
+        />
+        <ellipse cx="220" cy={bulbY + 8} rx="16" ry="6" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="1" />
+
+        {/* Reservoir */}
+        <rect x="200" y={bulbY + 50} width="40" height="20" rx="3" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="1" />
+        <text x="220" y={bulbY + 64} textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">H₂O</text>
+
+        <text x="220" y={bulbY + 90} textAnchor="middle" fontSize="11" fontWeight="bold" fill="hsl(var(--destructive))">
+          {wetT}°C
+        </text>
+
+        {/* Evaporation animation */}
+        {step >= 1 && (
+          <g className="animate-fade-in">
+            {[0, 1, 2].map((i) => (
+              <circle
+                key={i}
+                cx={210 + i * 10}
+                cy={bulbY - 5 - i * 6}
+                r="2"
+                fill="hsl(var(--primary))"
+                opacity={0.6 - i * 0.15}
+              />
+            ))}
+          </g>
+        )}
+      </g>
+
+      {/* ΔT readout */}
+      {step >= 3 && (
+        <g className="animate-fade-in">
+          <rect x="120" y="100" width="120" height="40" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+          <text x="180" y="118" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">
+            ΔT = {dryT - wetT}°C
+          </text>
+          <text x="180" y="132" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
+            Look up RH on chart
+          </text>
+        </g>
+      )}
+    </svg>
+  );
+};
+
+const wetDrySteps: AnimatedMechanismStep[] = [
+  {
+    label: "Two thermometers",
+    detail: (
+      <>
+        Two identical mercury thermometers sit side-by-side. One bulb is wrapped in a wick fed by a water reservoir
+        (the wet bulb); the other is bare (the dry bulb). At true saturation both read the same temperature.
+      </>
+    ),
+  },
+  {
+    label: "Evaporation",
+    detail: (
+      <>
+        Water evaporates from the wick at a rate proportional to the humidity deficit
+        of the surrounding air (drier air → faster evaporation).
+      </>
+    ),
+    callout: "Latent heat of vaporisation of water = 2.26 kJ/g.",
+  },
+  {
+    label: "Wet bulb cools",
+    detail: (
+      <>
+        Evaporation removes latent heat from the wet bulb, cooling it below ambient. The wet-bulb temperature falls
+        until heat lost by evaporation equals heat gained by convection from the surrounding air.
+      </>
+    ),
+  },
+  {
+    label: "Read ΔT → RH",
+    detail: (
+      <>
+        The wet-bulb depression (dry T − wet T) is looked up on a psychrometric chart (or hygrometric tables) to give
+        the relative humidity. Accurate when ventilated (e.g. Assmann / sling psychrometer).
+      </>
+    ),
+    callout: "Cheap, accurate, but requires water and adequate airflow over the wick (≥3 m/s).",
+  },
+];
+
+/* -------------------- 3. REGNAULT'S DEW-POINT -------------------- */
+
+const DewPointScene = ({ step }: { step: number }) => {
+  // step 0: silver tube clear, T=22 | 1: ether bubbles, T cools | 2: condensation forms (dew) at T=12 | 3: read T = dew point
+  const tubeT = step >= 2 ? 12 : step >= 1 ? 17 : 22;
+  const showDew = step >= 2;
+  const showBubbles = step >= 1;
+
+  return (
+    <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
+      {/* Silver tube */}
+      <defs>
+        <linearGradient id="hyg-silver" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="hsl(var(--muted))" />
+          <stop offset="50%" stopColor="hsl(var(--background))" />
+          <stop offset="100%" stopColor="hsl(var(--muted))" />
+        </linearGradient>
+      </defs>
+
+      <rect x="80" y="80" width="200" height="60" rx="6" fill="url(#hyg-silver)" stroke="hsl(var(--border))" strokeWidth="2" />
+      <text x="180" y="72" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">
+        Polished silver tube (mirror)
+      </text>
+
+      {/* Ether inside */}
+      <rect x="86" y="86" width="188" height="48" rx="3" fill="hsl(var(--primary)/0.15)" />
+      <text x="180" y="115" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">
+        Liquid ether
+      </text>
+
+      {/* Air-blown tube to bubble ether (cooling) */}
+      <line x1="80" y1="110" x2="40" y2="110" stroke="hsl(var(--foreground))" strokeWidth="2" />
+      <text x="38" y="105" textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">Air pump</text>
+
+      {/* Bubbles */}
+      {showBubbles && (
+        <g className="animate-fade-in">
+          {[0, 1, 2, 3].map((i) => (
+            <circle
+              key={i}
+              cx={100 + i * 40}
+              cy={100 + (i % 2) * 12}
+              r={2 + (i % 2)}
+              fill="none"
+              stroke="hsl(var(--primary))"
+              strokeWidth="1"
+            />
+          ))}
+        </g>
+      )}
+
+      {/* Thermometer in tube */}
+      <rect x="174" y="40" width="12" height="50" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
+      <rect
+        x="176"
+        y={90 - (tubeT - 5)}
+        width="8"
+        height={tubeT - 5}
+        fill="hsl(var(--destructive))"
+        className="transition-all duration-700"
+      />
+      <text x="200" y="55" fontSize="10" fontWeight="bold" fill="hsl(var(--destructive))" className="transition-all duration-700">
+        {tubeT}°C
+      </text>
+
+      {/* Dew/mist forming on outside */}
+      {showDew && (
+        <g className="animate-fade-in">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <circle
+              key={i}
+              cx={92 + (i * 11)}
+              cy={144}
+              r="1.8"
+              fill="hsl(var(--primary))"
+              opacity="0.7"
+            />
+          ))}
+          <text x="180" y="170" textAnchor="middle" fontSize="9" fontWeight="bold" fill="hsl(var(--primary))">
+            Mist appears → dew point reached
+          </text>
+        </g>
+      )}
+
+      {/* Observer's eye */}
+      <g transform="translate(320 120)">
+        <ellipse rx="10" ry="6" fill="hsl(var(--card))" stroke="hsl(var(--foreground))" strokeWidth="1" />
+        <circle r="3" fill="hsl(var(--foreground))" />
+        <text y="20" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Observe</text>
+      </g>
+
+      {/* Reference (control) tube outline */}
+      <rect x="80" y="190" width="200" height="20" rx="4" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" />
+      <text x="180" y="204" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
+        Reference (uncooled) silver tube — compare appearance
+      </text>
+    </svg>
+  );
+};
+
+const dewPointSteps: AnimatedMechanismStep[] = [
+  {
+    label: "Setup",
+    detail: (
+      <>
+        A polished silver tube contains liquid ether and a thermometer. Its mirrored exterior is observed alongside
+        an identical reference tube. At ambient temperature both look the same.
+      </>
+    ),
+    callout: "Regnault's hygrometer — the classical dew-point method.",
+  },
+  {
+    label: "Bubble air → cool ether",
+    detail: (
+      <>
+        Air is bubbled through the ether. Evaporation of the volatile ether absorbs latent heat, progressively cooling
+        the silver tube (and the air immediately adjacent to its surface).
+      </>
+    ),
+  },
+  {
+    label: "Mist forms",
+    detail: (
+      <>
+        When the surface temperature falls to the <strong>dew point</strong>, water vapour in the air begins to condense
+        onto the silver, producing visible misting. The temperature at this exact moment is recorded.
+      </>
+    ),
+    callout: "Dew point = temperature at which the partial pressure of water vapour equals the saturated vapour pressure (100% RH).",
+  },
+  {
+    label: "Calculate humidity",
+    detail: (
+      <>
+        Absolute humidity is read directly from a saturation table at the dew-point temperature. Relative humidity =
+        (SVP at dew point ÷ SVP at ambient temperature) × 100%. Slow but the gold-standard reference method —
+        the principle is also used in modern automated chilled-mirror hygrometers (Peltier-cooled with photo-detection).
+      </>
+    ),
+    callout: "Modern electronic chilled-mirror hygrometers use the same principle but cool with a Peltier element and detect dew optically.",
+  },
+];
+
+/* -------------------- 4. ELECTRICAL / CAPACITANCE -------------------- */
+
+const ElectricalScene = ({ step }: { step: number }) => {
+  // 0: dry sensor low capacitance | 1: humid air arrives | 2: polymer absorbs H2O, C rises | 3: digital readout
+  const cap = step >= 2 ? 0.85 : step >= 1 ? 0.45 : 0.15;
+  const reading = step >= 3 ? 78 : step >= 2 ? 60 : step >= 1 ? 35 : 18;
+
+  return (
+    <svg viewBox="0 0 360 240" role="img" aria-label="Electrical capacitance hygrometer" className="w-full">
+      {/* Capacitor sensor */}
+      <g transform="translate(60 60)">
+        <text x="60" y="-8" textAnchor="middle" fontSize="10" fontWeight="bold" fill="hsl(var(--foreground))">
+          Hygroscopic polymer capacitor
+        </text>
+        {/* Top electrode (porous) */}
+        <rect x="0" y="0" width="120" height="8" fill="hsl(var(--accent))" />
+        {/* Pores */}
+        {[10, 30, 50, 70, 90, 110].map((x) => (
+          <rect key={x} x={x - 2} y="0" width="4" height="8" fill="hsl(var(--background))" />
+        ))}
+        {/* Polymer dielectric */}
+        <rect
+          x="0"
+          y="8"
+          width="120"
+          height="30"
+          fill={`hsl(var(--primary) / ${0.15 + cap * 0.5})`}
+          className="transition-colors duration-700"
+        />
+        <text x="60" y="28" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))">Polymer film</text>
+        {/* Bottom electrode */}
+        <rect x="0" y="38" width="120" height="8" fill="hsl(var(--accent))" />
+
+        {/* Water absorbed dots */}
+        {step >= 2 &&
+          [10, 30, 50, 70, 90, 110].map((x, i) => (
+            <circle
+              key={x}
+              cx={x}
+              cy={20 + (i % 2) * 8}
+              r="2"
+              fill="hsl(var(--primary))"
+              className="animate-fade-in"
+            />
+          ))}
+
+        {/* Leads */}
+        <line x1="60" y1="46" x2="60" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+        <line x1="-10" y1="4" x2="-10" y2="80" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+        <line x1="-10" y1="4" x2="0" y2="4" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+      </g>
+
+      {/* Humid air molecules */}
+      {step >= 1 && (
+        <g className="animate-fade-in">
+          {[0, 1, 2, 3].map((i) => (
+            <circle key={i} cx={70 + i * 30} cy={40 - (i % 2) * 8} r="2.5" fill="hsl(var(--primary))" opacity="0.6" />
+          ))}
+          <text x="120" y="30" fontSize="8" fill="hsl(var(--primary))">H₂O vapour</text>
+        </g>
+      )}
+
+      {/* Bridge / display */}
+      <g transform="translate(230 100)">
+        <rect width="100" height="70" rx="6" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.5" />
+        <text x="50" y="14" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">Bridge circuit</text>
+        <rect x="10" y="20" width="80" height="32" rx="3" fill="hsl(var(--background))" stroke="hsl(var(--border))" />
+        <text
+          x="50"
+          y="42"
+          textAnchor="middle"
+          fontSize="18"
+          fontWeight="bold"
+          fill="hsl(var(--primary))"
+          className="transition-all duration-500 font-mono"
+        >
+          {reading}%
+        </text>
+        <text x="50" y="64" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">RH</text>
+      </g>
+
+      {/* Connecting wires */}
+      <line x1="180" y1="110" x2="230" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+      <line x1="180" y1="140" x2="230" y2="155" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+
+      <text x="180" y="220" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">
+        ΔCapacitance ∝ ΔRelative Humidity
+      </text>
+    </svg>
+  );
+};
+
+const electricalSteps: AnimatedMechanismStep[] = [
+  {
+    label: "Dry sensor",
+    detail: (
+      <>
+        Two electrodes sandwich a thin hygroscopic polymer film, forming a capacitor. The top electrode is porous
+        to let water vapour reach the dielectric. In dry air the capacitance is at baseline.
+      </>
+    ),
+    callout: "Modern operating-theatre & ICU monitors all use this type.",
+  },
+  {
+    label: "Humid air diffuses in",
+    detail: (
+      <>
+        Water vapour passes through the porous electrode and is absorbed by the polymer film.
+      </>
+    ),
+  },
+  {
+    label: "Capacitance rises",
+    detail: (
+      <>
+        Water has a high relative permittivity (εr ≈ 80) compared with the dry polymer (εr ≈ 3-6). Absorbing water
+        therefore raises the dielectric constant and the capacitance, in proportion to the surrounding RH.
+      </>
+    ),
+    callout: "C = ε₀ · εr · A / d — humidity changes εr.",
+  },
+  {
+    label: "Display %RH",
+    detail: (
+      <>
+        The capacitance change is measured by a Wheatstone-bridge / oscillator circuit and displayed as %RH within
+        seconds. Fast, robust, accurate (~±2%), inexpensive — the modern clinical standard.
+      </>
+    ),
+    callout: "Resistive (electrolytic) hygrometers work similarly, measuring conductance instead of capacitance.",
+  },
+];
+
+/* -------------------- TOP-LEVEL COMPONENT -------------------- */
+
+export const HygrometersDiagram = () => {
+  const [type, setType] = useState<HygType>("hair");
+
+  const config: Record<
+    HygType,
+    {
+      title: string;
+      subtitle: string;
+      steps: AnimatedMechanismStep[];
+      render: (s: number) => JSX.Element;
+    }
+  > = {
+    hair: {
+      title: "Hair Hygrometer",
+      subtitle: "Mechanical: a defatted human hair lengthens with humidity, moving a needle on a calibrated dial.",
+      steps: hairSteps,
+      render: (s) => <HairScene step={s} />,
+    },
+    wetdry: {
+      title: "Wet-and-Dry Bulb (Psychrometer)",
+      subtitle: "Two mercury thermometers — evaporation cools the wet bulb; the depression gives RH from a chart.",
+      steps: wetDrySteps,
+      render: (s) => <WetDryScene step={s} />,
+    },
+    dewpoint: {
+      title: "Regnault's Dew-Point Hygrometer",
+      subtitle: "Cool a polished silver tube with evaporating ether until visible dew forms — that temperature is the dew point.",
+      steps: dewPointSteps,
+      render: (s) => <DewPointScene step={s} />,
+    },
+    electrical: {
+      title: "Electrical / Capacitance Hygrometer",
+      subtitle: "A polymer-dielectric capacitor whose capacitance rises as water vapour is absorbed — modern clinical standard.",
+      steps: electricalSteps,
+      render: (s) => <ElectricalScene step={s} />,
+    },
+  };
+
+  const c = config[type];
+
+  return (
+    <div className="my-6 space-y-4">
+      <div className="bg-muted/30 rounded-xl border border-border p-4 space-y-4">
+        <div>
+          <h3 className="text-sm font-semibold text-foreground mb-2">Hygrometers — choose a type</h3>
+          <div className="flex flex-wrap gap-2">
+            <TabButton active={type === "hair"} onClick={() => setType("hair")} sublabel="Mechanical • RH">
+              Hair
+            </TabButton>
+            <TabButton active={type === "wetdry"} onClick={() => setType("wetdry")} sublabel="Psychrometer • ΔT">
+              Wet & Dry Bulb
+            </TabButton>
+            <TabButton active={type === "dewpoint"} onClick={() => setType("dewpoint")} sublabel="Regnault • dew point">
+              Dew Point
+            </TabButton>
+            <TabButton active={type === "electrical"} onClick={() => setType("electrical")} sublabel="Capacitance • RH">
+              Electrical
+            </TabButton>
+          </div>
+        </div>
+
+        <AnimatedMechanism
+          key={type /* remount on type switch so animation restarts */}
+          title={c.title}
+          subtitle={c.subtitle}
+          steps={c.steps}
+          renderScene={c.render}
+          stepMs={2600}
+          accentClass="border-primary/40"
+        />
+
+        <div className="text-xs text-muted-foreground rounded-md border border-border bg-card p-3">
+          <strong className="text-foreground">Exam pearls:</strong> Hair = mechanical, slow, non-linear. Wet-and-dry = uses
+          latent heat of evaporation. Dew point = the only method giving an absolute reading directly (and the
+          gold standard — modern chilled-mirror devices use the same principle). Capacitance = today's clinical
+          standard (fast, accurate, ±2%).
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HygrometersDiagram;
