@@ -153,22 +153,34 @@ const VivaSession = ({
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
   const requestQuestion = useCallback(
-    async (forDifficulty: Difficulty, emphasise?: string[]): Promise<string | null> => {
+    async (
+      forDifficulty: Difficulty,
+      emphasise?: string[],
+      signal?: AbortSignal,
+    ): Promise<string | null> => {
       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
-      const { data, error } = await supabase.functions.invoke("viva", {
-        body: {
-          mode: "question",
-          topicId,
-          topicTitle,
-          topicDescription,
-          exam,
-          difficulty: forDifficulty,
-          avoid,
-          emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
-        },
-      });
-      if (error || !data?.question) return null;
-      return data.question as string;
+      try {
+        const { data, error } = await supabase.functions.invoke("viva", {
+          body: {
+            mode: "question",
+            topicId,
+            topicTitle,
+            topicDescription,
+            exam,
+            difficulty: forDifficulty,
+            avoid,
+            emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
+          },
+          // @ts-expect-error supabase-js forwards extra fetch options including signal
+          signal,
+        });
+        if (signal?.aborted) return null;
+        if (error || !data?.question) return null;
+        return data.question as string;
+      } catch (e) {
+        // AbortError shows up here when the caller cancels.
+        return null;
+      }
     },
     [topicId, topicTitle, topicDescription, exam, avoidRepeats],
   );
