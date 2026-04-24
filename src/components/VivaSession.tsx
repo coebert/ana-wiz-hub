@@ -440,6 +440,7 @@ const VivaSession = ({
     stopSpeaking();
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     listenStartRef.current = Date.now();
     setInterim("");
     setTranscript("");
@@ -448,24 +449,32 @@ const VivaSession = ({
     rec.lang = "en-GB";
     rec.continuous = true;
     rec.interimResults = true;
+    // Ask the engine for a couple of alternatives — confidence is more
+    // reliable on browsers that compute it across alternatives.
+    (rec as any).maxAlternatives = 2;
     rec.onresult = (e: any) => {
       let interimChunk = "";
+      const newConf: ConfidenceSegment[] = [];
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
         if (r.isFinal) {
           const text = r[0].transcript.trim();
           if (text) {
             const tStart = Math.max(0, (Date.now() - listenStartRef.current) / 1000);
-            // Approximate: assume each finalised chunk ENDS now, so its start
-            // is 'now − estimated duration' (≈ 0.35s per word). Clamp ≥ 0.
             const wordCount = text.split(/\s+/).length;
             const approxStart = Math.max(0, tStart - wordCount * 0.35);
             segmentsRef.current.push({ tStart: Math.round(approxStart), text });
             finalTranscriptRef.current += text + " ";
+            // Confidence is 0–1; some engines return undefined, normalise to 0.
+            const confidence = typeof r[0].confidence === "number" ? r[0].confidence : 0;
+            newConf.push({ text, confidence });
           }
         } else {
           interimChunk += r[0].transcript;
         }
+      }
+      if (newConf.length > 0) {
+        setConfSegments((prev) => [...prev, ...newConf]);
       }
       setTranscript(finalTranscriptRef.current.trim());
       setInterim(interimChunk);
