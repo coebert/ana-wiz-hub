@@ -233,6 +233,40 @@ const VivaSession = ({
     }
   }, [difficulty]);
 
+  /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
+  const retakeWithEmphasis = useCallback(async () => {
+    const weak = (feedback?.rubricBreakdown ?? [])
+      .filter((b) => b.max > 0 && b.awarded / b.max < 0.5)
+      .sort((a, b) => a.awarded / a.max - b.awarded / b.max)
+      .map((b) => b.criterion);
+
+    // Bypass the prefetch cache — it doesn't know about emphasis.
+    prefetchedRef.current = null;
+    setPrefetchStatus("idle");
+
+    setErrorMsg(null);
+    setTranscript("");
+    setInterim("");
+    setFeedback(null);
+    finalTranscriptRef.current = "";
+    segmentsRef.current = [];
+    setPhase("loading-question");
+    setQuestion("");
+
+    const q = await requestQuestion(difficulty, weak);
+    if (!q) {
+      setErrorMsg("Could not load a question.");
+      setPhase("error");
+      return;
+    }
+    setQuestion(q);
+    const next = [...loadAsked(topicId, exam), q];
+    saveAsked(topicId, exam, next);
+    setAskedCount(Math.min(next.length, MAX_HISTORY));
+    setPhase("ready-to-answer");
+    setTimeout(() => speak(q), 150);
+  }, [feedback, requestQuestion, difficulty, topicId, exam, speak]);
+
   // Initial load.
   useEffect(() => {
     fetchQuestion();
