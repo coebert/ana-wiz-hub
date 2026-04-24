@@ -316,7 +316,7 @@ const EndocrineSymptomTriage = () => {
                       <div className="h-1.5 mt-1 rounded-full bg-muted overflow-hidden">
                         <div
                           className={`h-full transition-all duration-500 ${
-                            isTop ? `bg-${dx.tokenClass}` : "bg-muted-foreground/40"
+                            isTop ? BAR_CLASS[dx.tokenClass] ?? "bg-primary" : "bg-muted-foreground/40"
                           }`}
                           style={{ width: `${score > 0 ? pct : 0}%` }}
                         />
