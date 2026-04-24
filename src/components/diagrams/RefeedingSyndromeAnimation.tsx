@@ -473,6 +473,56 @@ const LabsPanel = ({ active }: { active: number }) => {
           );
         })}
       </div>
+
+      {/* Sources footer — references for the typical exam-friendly serum
+          trends shown above. Chips link out to the primary literature. */}
+      <div className="mt-2 pt-2 border-t border-border/60">
+        <p className="text-[9px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+          Sources
+        </p>
+        <ul className="flex flex-wrap gap-1.5">
+          {[
+            {
+              label: "NICE CG32 (2006, upd. 2017)",
+              url: "https://www.nice.org.uk/guidance/cg32",
+              title: "Nutrition support for adults — refeeding criteria, 10 kcal/kg start, thiamine 200–300 mg",
+            },
+            {
+              label: "ASPEN Consensus 2020",
+              url: "https://aspenjournals.onlinelibrary.wiley.com/doi/full/10.1002/ncp.10474",
+              title: "da Silva et al. Nutr Clin Pract 2020 — diagnostic criteria & electrolyte thresholds",
+            },
+            {
+              label: "De Silva & Nightingale, Frontline Gastro 2020",
+              url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7447285/",
+              title: "Refeeding syndrome: physiological background and practical management",
+            },
+            {
+              label: "Mehanna et al. BMJ 2008",
+              url: "https://www.bmj.com/content/336/7659/1495",
+              title: "Refeeding syndrome: what it is, and how to prevent and treat it",
+            },
+            {
+              label: "Khan et al. Lit. review 2011",
+              url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2945646/",
+              title: "Refeeding syndrome: a literature review (Gastroenterol Res Pract)",
+            },
+          ].map((s) => (
+            <li key={s.label}>
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={s.title}
+                className="inline-flex items-center gap-1 rounded-full border border-border bg-background px-2 py-0.5 text-[10px] font-medium text-foreground hover:bg-muted hover:border-primary/40 transition-colors"
+              >
+                {s.label}
+                <span aria-hidden className="text-muted-foreground text-[8px]">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
