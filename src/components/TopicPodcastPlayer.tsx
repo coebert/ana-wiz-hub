@@ -35,6 +35,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [duration, setDuration] = useState(0);
   const [speed, setSpeed] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [estimate, setEstimate] = useState<{ minutes: number; words: number; sourceWords: number } | null>(null);
+
+  // Estimate target length from page content once we know there's no cached podcast.
+  useEffect(() => {
+    if (loading || (podcast && podcast.status === "ready")) return;
+    // Defer to next tick so topic DOM is fully rendered.
+    const t = setTimeout(() => {
+      const content = extractTopicContent();
+      if (content && content.length > 50) setEstimate(estimatePodcastTarget(content));
+    }, 0);
+    return () => clearTimeout(t);
+  }, [loading, podcast, topicId]);
 
   // Initial fetch — see if a cached podcast already exists.
   useEffect(() => {
