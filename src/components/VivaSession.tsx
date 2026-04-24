@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
 import VivaRubric from "@/components/VivaRubric";
+import MicHelpPanel from "@/components/MicHelpPanel";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
 
@@ -276,7 +277,7 @@ const VivaSession = ({
         </div>
       )}
 
-      {/* Question */}
+      <MicHelpPanel />
       <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
         <div className="flex items-start justify-between gap-2 mb-2">
           <Badge variant="secondary" className="text-[10px]">Examiner</Badge>
