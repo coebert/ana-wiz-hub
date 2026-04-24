@@ -95,6 +95,45 @@ export type Database = {
         }
         Relationships: []
       }
+      viva_model_answers: {
+        Row: {
+          created_at: string
+          exam: string
+          high_yield_points: Json
+          id: string
+          model_answer: string
+          pitfalls: Json
+          question: string
+          question_hash: string
+          topic_title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          exam: string
+          high_yield_points?: Json
+          id?: string
+          model_answer: string
+          pitfalls?: Json
+          question: string
+          question_hash: string
+          topic_title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          exam?: string
+          high_yield_points?: Json
+          id?: string
+          model_answer?: string
+          pitfalls?: Json
+          question?: string
+          question_hash?: string
+          topic_title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

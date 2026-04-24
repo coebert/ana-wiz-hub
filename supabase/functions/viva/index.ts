@@ -9,6 +9,8 @@
 //
 // All AI calls go through the Lovable AI Gateway (LOVABLE_API_KEY).
 
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
@@ -17,6 +19,32 @@ const corsHeaders = {
 
 const AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
 const MODEL = "google/gemini-3-flash-preview";
+
+/** Service-role Supabase client used only for the model-answer cache. */
+function getServiceClient() {
+  const url = Deno.env.get("SUPABASE_URL");
+  const key = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!url || !key) return null;
+  return createClient(url, key, { auth: { persistSession: false } });
+}
+
+/**
+ * Normalise a viva question so trivial differences (whitespace, punctuation,
+ * case) all hit the same cache row. Hash with SHA-256 to keep keys short.
+ */
+async function hashQuestion(q: string): Promise<string> {
+  const normalised = q
+    .toLowerCase()
+    .replace(/[\s\u00A0]+/g, " ")
+    .replace(/[“”"']/g, "")
+    .replace(/[^\w\s?-]/g, "")
+    .trim();
+  const bytes = new TextEncoder().encode(normalised);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
 
 type Exam = "primary" | "final" | "fficm";
 type Difficulty = "easy" | "standard" | "hard";
@@ -502,6 +530,31 @@ Return JSON via the tool call only.`;
 }
 
 async function handleModelAnswer(b: ModelAnswerBody): Promise<Response> {
+  // 1. Cache lookup — same exam + same (normalised) question → reuse.
+  const questionHash = await hashQuestion(b.question);
+  const supa = getServiceClient();
+  if (supa) {
+    const { data: cached, error: cacheReadErr } = await supa
+      .from("viva_model_answers")
+      .select("model_answer, high_yield_points, pitfalls")
+      .eq("exam", b.exam)
+      .eq("question_hash", questionHash)
+      .maybeSingle();
+    if (cacheReadErr) {
+      console.error("[viva] model-answer cache read failed", cacheReadErr.message);
+    } else if (cached) {
+      return new Response(
+        JSON.stringify({
+          modelAnswer: cached.model_answer,
+          highYieldPoints: cached.high_yield_points ?? [],
+          pitfalls: cached.pitfalls ?? [],
+          cached: true,
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+  }
+
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that the candidate has been asked aloud:
@@ -573,7 +626,29 @@ Return JSON via the tool call only.`;
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
-  return new Response(JSON.stringify(parsed), {
+  // 2. Persist to cache so the next user asking the same question gets the
+  //    same answer instantly. Best-effort — never block the response on this.
+  if (supa && typeof parsed.modelAnswer === "string" && parsed.modelAnswer.length > 0) {
+    const { error: cacheWriteErr } = await supa
+      .from("viva_model_answers")
+      .upsert(
+        {
+          exam: b.exam,
+          question: b.question,
+          question_hash: questionHash,
+          topic_title: b.topicTitle,
+          model_answer: parsed.modelAnswer as string,
+          high_yield_points: Array.isArray(parsed.highYieldPoints) ? parsed.highYieldPoints : [],
+          pitfalls: Array.isArray(parsed.pitfalls) ? parsed.pitfalls : [],
+        },
+        { onConflict: "exam,question_hash" },
+      );
+    if (cacheWriteErr) {
+      console.error("[viva] model-answer cache write failed", cacheWriteErr.message);
+    }
+  }
+
+  return new Response(JSON.stringify({ ...parsed, cached: false }), {
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 }
