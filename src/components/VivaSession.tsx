@@ -336,6 +336,8 @@ const VivaSession = ({
     }
     setFeedback(data as Feedback);
     setPhase("feedback");
+    // Kick off background prefetch of the next question while user reads feedback.
+    void prefetchNext();
   }, [interim, topicTitle, exam, question]);
 
   const stopListening = () => {
