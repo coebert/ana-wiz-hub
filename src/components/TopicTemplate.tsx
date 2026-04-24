@@ -13,6 +13,7 @@ import { TopicExamFilterBar } from "@/components/TopicExamFilterBar";
 import { LazyDiagrams } from "@/components/LazyDiagrams";
 import { ExamSummary } from "@/components/ExamSummary";
 import { TopicPodcastPlayer } from "@/components/TopicPodcastPlayer";
+import VivaLauncher from "@/components/VivaLauncher";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
 import { topicReferences } from "@/data/references";
@@ -168,6 +169,21 @@ export const TopicTemplate = ({
       <div className="space-y-10">
         <TopicExamFilterBar />
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
+        <div className="flex items-center justify-between gap-3 flex-wrap rounded-lg border border-border bg-muted/30 px-4 py-3">
+          <div className="min-w-0">
+            <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+              Viva voce practice
+            </p>
+            <p className="text-sm text-foreground leading-tight">
+              Spoken question · live transcription · constructive AI feedback.
+            </p>
+          </div>
+          <VivaLauncher
+            topicId={topicId}
+            topicTitle={topicTitle ?? title}
+            topicDescription={subtitle}
+          />
+        </div>
         {showObjectives && (
           <div id="objectives" className="scroll-mt-24">
             {sectionExamMapping?.objectives && (
