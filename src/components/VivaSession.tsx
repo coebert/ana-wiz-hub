@@ -359,6 +359,9 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setModelAnswer(null);
+    setModelAnswerError(null);
+    setModelAnswerLoading(false);
     setPhase("loading-question");
     setQuestion("");
 
