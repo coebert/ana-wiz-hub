@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BookOpen, Headphones, Mic, ArrowRight } from "lucide-react";
 import brainLogo from "/brain-logo.png";
+import { SupportSection } from "@/components/SupportSection";
 
 interface LandingChoice {
   title: string;
@@ -37,17 +38,20 @@ const choices: LandingChoice[] = [
 
 const Landing = () => {
   return (
-    <main className="min-h-[calc(100vh-4rem)] bg-background">
-      <section className="container mx-auto px-4 py-12 md:py-20">
+    <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
+      <section className="container mx-auto px-4 py-12 md:py-20 flex-1">
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <img
             src={brainLogo}
-            alt="AnaWiz logo"
-            className="h-16 w-16 md:h-20 md:w-20 mb-6"
+            alt="AnaesthesiaCore logo"
+            className="h-32 w-32 md:h-40 md:w-40 mb-6"
           />
-          <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
-            How would you like to study today?
+          <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-3 tracking-tight">
+            AnaesthesiaCore
           </h1>
+          <p className="font-display text-2xl md:text-3xl font-semibold text-foreground/90 mb-4 tracking-tight">
+            How would you like to study today?
+          </p>
           <p className="text-base md:text-lg text-muted-foreground">
             Pick a mode below — read the notes, listen on the move, or rehearse out loud.
           </p>
@@ -76,6 +80,14 @@ const Landing = () => {
           ))}
         </div>
       </section>
+
+      <SupportSection />
+
+      <footer className="container mx-auto px-4 pb-8 text-center">
+        <p className="text-sm text-muted-foreground/70">
+          App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM
+        </p>
+      </footer>
     </main>
   );
 };
