@@ -778,6 +778,7 @@ const NeurointensiveCareTopic = () => {
           </div>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Myasthenic vs Cholinergic Crisis</h3>
+          <MyasthenicVsCholinergicComparison />
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
