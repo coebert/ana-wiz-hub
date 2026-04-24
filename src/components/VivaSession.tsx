@@ -123,6 +123,14 @@ const VivaSession = ({
   const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
   const [prefetchEnabled, setPrefetchEnabled] = useState(true);
   const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  /**
+   * How strict to be when flagging a rubric row as "weak" for emphasis retakes.
+   * - lenient: anything below 70% counts as weak (more rows qualify, retake button shows often)
+   * - balanced: below 50% (default — only clearly underperforming rows)
+   * - strict: below 30% (only severe gaps trigger an emphasis retake)
+   */
+  const [weakStrictness, setWeakStrictness] = useState<"lenient" | "balanced" | "strict">("balanced");
+  const weakThreshold = weakStrictness === "lenient" ? 0.7 : weakStrictness === "strict" ? 0.3 : 0.5;
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
@@ -267,7 +275,7 @@ const VivaSession = ({
   /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
   const retakeWithEmphasis = useCallback(async () => {
     const weak = (feedback?.rubricBreakdown ?? [])
-      .filter((b) => b.max > 0 && b.awarded / b.max < 0.5)
+      .filter((b) => b.max > 0 && b.awarded / b.max < weakThreshold)
       .sort((a, b) => a.awarded / a.max - b.awarded / b.max)
       .map((b) => b.criterion);
 
@@ -296,7 +304,7 @@ const VivaSession = ({
     setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
     setTimeout(() => speak(q), 150);
-  }, [feedback, requestQuestion, difficulty, topicId, exam, speak, cancelPrefetch]);
+  }, [feedback, requestQuestion, difficulty, topicId, exam, speak, cancelPrefetch, weakThreshold]);
 
   // Initial load.
   useEffect(() => {
@@ -521,6 +529,20 @@ const VivaSession = ({
             <span className="text-[11px] text-amber-700 dark:text-amber-400">retry on next</span>
           )}
         </label>
+
+        <label className="inline-flex items-center gap-2 text-xs text-foreground select-none">
+          <span className="text-muted-foreground">Weak threshold</span>
+          <select
+            value={weakStrictness}
+            onChange={(e) => setWeakStrictness(e.target.value as "lenient" | "balanced" | "strict")}
+            className="h-7 rounded-md border border-border bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+            title="How strict to be when flagging a rubric row as weak for emphasis retakes"
+          >
+            <option value="lenient">Lenient (&lt; 70%)</option>
+            <option value="balanced">Balanced (&lt; 50%)</option>
+            <option value="strict">Strict (&lt; 30%)</option>
+          </select>
+        </label>
       </div>
 
       {/* Browser support warnings */}
@@ -662,7 +684,7 @@ const VivaSession = ({
 
           <div className="flex justify-end gap-2 flex-wrap">
             {(feedback.rubricBreakdown ?? []).some(
-              (b) => b.max > 0 && b.awarded / b.max < 0.5,
+              (b) => b.max > 0 && b.awarded / b.max < weakThreshold,
             ) && (
               <Button onClick={retakeWithEmphasis} variant="default" size="sm">
                 <Target className="h-3.5 w-3.5 mr-1.5" /> Retake with different emphasis
