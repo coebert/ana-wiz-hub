@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDown } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
+import DemoVivaPlayer from "@/components/DemoVivaPlayer";
 
 interface LandingChoice {
   title: string;
@@ -175,9 +176,21 @@ const Landing = () => {
                       </span>
                       <span className="text-[11px] text-muted-foreground">{q.difficulty}</span>
                     </div>
-                    <p className="font-display text-base md:text-lg text-foreground leading-snug mb-4">
+                    <p className="font-display text-base md:text-lg text-foreground leading-snug mb-3">
                       "{q.question}"
                     </p>
+                    <div className="mb-4">
+                      <DemoVivaPlayer
+                        segments={[
+                          { label: "Examiner question", text: q.question },
+                          { label: "Model candidate answer", text: q.answer },
+                          {
+                            label: "Examiner feedback",
+                            text: q.feedback.map((f) => `${f.label}. ${f.text}`).join(" "),
+                          },
+                        ]}
+                      />
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="rounded-xl border border-border/60 bg-muted/40 p-4">
