@@ -8,6 +8,7 @@ import AdrenalCrisisAnimation from "@/components/diagrams/AdrenalCrisisAnimation
 import DKAvsHHSDiagram from "@/components/diagrams/DKAvsHHSDiagram";
 import EndocrineEmergencyAlgorithms from "@/components/diagrams/EndocrineEmergencyAlgorithms";
 import EndocrineEmergencyDrugs from "@/components/diagrams/EndocrineEmergencyDrugs";
+import EndocrineSymptomTriage from "@/components/diagrams/EndocrineSymptomTriage";
 import GuidelineSources, { type GuidelineSource } from "@/components/GuidelineSources";
 import { Exam } from "@/data/curriculum";
 
