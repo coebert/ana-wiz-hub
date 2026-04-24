@@ -175,6 +175,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "acid-base", title: "Acid-Base Disorders", description: "Stewart approach, strong ion difference, anion gap, base excess", section: "intensive-care", examTags: ["primary", "final", "fficm", "edic"], available: true },
   { id: "aki-rrt", title: "Acute Kidney Injury & RRT", description: "KDIGO staging, CRRT, IHD, indications for renal replacement therapy", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "icu-nutrition", title: "Nutrition in Critical Care", description: "Enteral vs parenteral, refeeding syndrome, metabolic response to illness", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
+  { id: "icu-endocrine-emergencies", title: "Endocrine Emergencies in ICU", description: "DKA, HHS, thyroid storm, adrenal (Addisonian) crisis, myxoedema coma, phaeochromocytoma crisis, pituitary apoplexy", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Neuro
   { id: "neurointensive-care", title: "Neurointensive Care", description: "TBI management, SAH, status epilepticus, brain death testing", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "icu-sedation-delirium", title: "ICU Sedation & Delirium", description: "RASS, CAM-ICU, dexmedetomidine, sedation protocols, ABCDEF bundle", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
