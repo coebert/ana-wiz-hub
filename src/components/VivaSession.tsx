@@ -221,7 +221,24 @@ const VivaSession = ({
    *   for a per-session cache of <100 entries.
    */
   const ttsIdFor = useCallback((text: string): string => {
-    const norm = text.trim().replace(/\s+/g, " ").toLowerCase();
+    const norm = text
+      // Normalise unicode (so "é" === "e\u0301" etc.).
+      .normalize("NFKC")
+      // Smart quotes / dashes → ASCII equivalents.
+      .replace(/[\u2018\u2019\u201A\u201B\u2032]/g, "'")
+      .replace(/[\u201C\u201D\u201E\u201F\u2033]/g, '"')
+      .replace(/[\u2013\u2014\u2212]/g, "-")
+      .replace(/\u2026/g, "...")
+      // Common bullet / list markers at start of lines or inline:
+      //   "•", "●", "·", "◦", "▪", "■", "–", "—", "*", "-", numeric "1.", "1)", "(a)", "a)" etc.
+      .replace(/[•●·◦▪■]/g, " ")
+      .replace(/^[\s]*(?:[-*]|\d+[.)]|\(?[a-z]\)|[ivx]+[.)])\s+/gim, " ")
+      // Strip all punctuation that doesn't change meaning (keep letters/digits/space).
+      .replace(/[^\p{L}\p{N}\s]/gu, " ")
+      // Collapse all whitespace (incl. line breaks, tabs, NBSP) to single spaces.
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
     let hash = 5381;
     for (let i = 0; i < norm.length; i++) {
       hash = ((hash << 5) + hash + norm.charCodeAt(i)) | 0;
