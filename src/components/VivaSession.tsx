@@ -338,7 +338,7 @@ const VivaSession = ({
     setPhase("feedback");
     // Kick off background prefetch of the next question while user reads feedback.
     void prefetchNext();
-  }, [interim, topicTitle, exam, question]);
+  }, [interim, topicTitle, exam, question, prefetchNext]);
 
   const stopListening = () => {
     recognitionRef.current?.stop();
