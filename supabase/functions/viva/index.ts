@@ -243,7 +243,16 @@ Provide:
     • level: "high" | "medium" | "low" — high if the answer was substantive and clearly transcribed; medium if some ambiguity or sparseness; low if the transcript was very short, garbled, or off-topic.
     • reason: ≤ 20 words explaining the level (e.g. "Short answer — limited content to mark", "Clear, detailed answer", "Possible transcription noise around drug names").
 - answerSummary: object with:
-    • bullets: 2–4 short bullets (≤ 18 words each) faithfully recapping the DISTINCT points the candidate actually made (in the order they made them). Do NOT add facts they did not say. If they said almost nothing, return one bullet noting that.
+    • bullets: 2–4 bullets faithfully recapping the DISTINCT points the candidate actually made. Each bullet is an object:
+        - text: ≤ 18 words, the point itself. Do NOT add facts they did not say.
+        - tStart: integer seconds — when in the answer the candidate made this point. If a spoken timeline was provided, copy the seconds value from the timeline line that contains the point. If no timeline was provided, estimate the seconds proportionally (assume ~2.5 words/second of speech) based on where the point sits in the transcript text. Use 0 for the very first point.
+        - location: short human label for that moment, derived from tStart and the answer length:
+            · use "Opening" for the first ~25% of the answer
+            · use "Middle" for the central portion
+            · use "Closing" for the final ~25%
+            · OR use a clock label like "around 0:42" if you have an exact tStart from the timeline
+          Pick one form per bullet — keep labels consistent within a single answer.
+      Order the bullets STRICTLY by ascending tStart so they follow the candidate's actual delivery. If they said almost nothing, return a single bullet with tStart 0 and location "Opening".
     • wordCount: integer — approximate number of words in the transcript.
 - coreFeedback: object with EXACTLY these three keys, each an object { rating: "strong" | "adequate" | "weak", comment: string (≤ 30 words, specific and constructive — name what was good or what was missed) }:
     • structure — was the answer logically ordered (e.g. definition → classification → mechanism → clinical relevance), prioritised correctly, and free of rambling?
@@ -293,7 +302,19 @@ Return JSON via the tool call only.`;
               answerSummary: {
                 type: "object",
                 properties: {
-                  bullets: { type: "array", items: { type: "string" } },
+                  bullets: {
+                    type: "array",
+                    items: {
+                      type: "object",
+                      properties: {
+                        text: { type: "string" },
+                        tStart: { type: "integer", minimum: 0 },
+                        location: { type: "string" },
+                      },
+                      required: ["text", "tStart", "location"],
+                      additionalProperties: false,
+                    },
+                  },
                   wordCount: { type: "integer", minimum: 0 },
                 },
                 required: ["bullets", "wordCount"],
