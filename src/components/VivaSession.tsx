@@ -310,6 +310,40 @@ const VivaSession = ({
     setTimeout(() => speak(q), 150);
   }, [topicId, exam, speak, difficulty, requestQuestion]);
 
+  /**
+   * Generate a standalone model answer for the current question.
+   * Lets the user either skip answering altogether or compare their attempt
+   * against the worked answer afterwards. Independent of the marked feedback.
+   */
+  const generateModelAnswer = useCallback(async () => {
+    if (!question) return;
+    setModelAnswerError(null);
+    setModelAnswerLoading(true);
+    setModelAnswerOpen(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("viva", {
+        body: {
+          mode: "model-answer",
+          topicTitle,
+          exam,
+          question,
+        },
+      });
+      if (error) throw new Error(error.message || "Could not generate model answer");
+      if (!data?.modelAnswer) throw new Error("No model answer returned");
+      setModelAnswer({
+        modelAnswer: String(data.modelAnswer),
+        highYieldPoints: Array.isArray(data.highYieldPoints) ? data.highYieldPoints : [],
+        pitfalls: Array.isArray(data.pitfalls) ? data.pitfalls : [],
+      });
+    } catch (e) {
+      console.error("[VivaSession] model-answer error", e);
+      setModelAnswerError(e instanceof Error ? e.message : "Could not generate model answer");
+    } finally {
+      setModelAnswerLoading(false);
+    }
+  }, [question, topicTitle, exam]);
+
   /** Background-fetch the next question (e.g. while user is reading feedback). */
   const prefetchNext = useCallback(async () => {
     if (!prefetchEnabled) return;
