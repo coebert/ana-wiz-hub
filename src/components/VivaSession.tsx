@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle } from "lucide-react";
+import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
