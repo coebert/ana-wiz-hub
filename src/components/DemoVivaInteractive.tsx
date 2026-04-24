@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronRight,
+  Gauge,
   Highlighter,
   Loader2,
   Mic,
@@ -9,6 +10,7 @@ import {
   RotateCcw,
   Send,
   Sparkles,
+  Timer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -41,9 +43,16 @@ interface AnswerSummary {
   wordCount: number;
 }
 
+type ConfidenceLevel = "high" | "medium" | "low";
+interface Confidence {
+  level: ConfidenceLevel;
+  reason: string;
+}
+
 interface Feedback {
   score: number;
   verdict: string;
+  confidence?: Confidence;
   answerSummary?: AnswerSummary;
   coreFeedback?: CoreFeedback;
   strengths?: string[];
@@ -59,6 +68,8 @@ interface Round {
   kind: "main" | "followup";
   answer: string;
   feedback: Feedback;
+  /** Wall-clock time (ms) the AI examiner took to mark this answer. */
+  latencyMs: number;
 }
 
 interface DemoVivaInteractiveProps {
@@ -196,12 +207,43 @@ const FeedbackPanel = ({
             {round.kind === "followup" ? "Follow-up feedback" : "AI examiner feedback"}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="inline-flex items-center rounded-full bg-primary/15 text-primary px-2.5 py-0.5 text-xs font-semibold">
             {fb.score}/10
           </span>
           <span className="text-xs text-foreground/80">{fb.verdict}</span>
         </div>
+      </div>
+
+      {/* Confidence + latency telemetry for this marking */}
+      <div className="flex items-center gap-2 flex-wrap text-[11px]">
+        {fb.confidence && (
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-medium ${
+              fb.confidence.level === "high"
+                ? "border-primary/40 bg-primary/10 text-primary"
+                : fb.confidence.level === "medium"
+                  ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                  : "border-destructive/40 bg-destructive/10 text-destructive"
+            }`}
+            title={fb.confidence.reason}
+          >
+            <Gauge className="h-3 w-3" />
+            Confidence: {fb.confidence.level}
+          </span>
+        )}
+        <span
+          className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card px-2 py-0.5 text-muted-foreground"
+          title="Time the AI examiner took to mark this answer"
+        >
+          <Timer className="h-3 w-3" />
+          {(round.latencyMs / 1000).toFixed(1)}s
+        </span>
+        {fb.confidence?.reason && (
+          <span className="text-muted-foreground italic truncate max-w-full">
+            — {fb.confidence.reason}
+          </span>
+        )}
       </div>
 
       {round.kind === "followup" && (
@@ -407,7 +449,10 @@ const DemoVivaInteractive = ({
   const [interim, setInterim] = useState("");
   const [recording, setRecording] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitElapsed, setSubmitElapsed] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  /** Last submitted answer text — kept after a failure so "Retry marking" can resend it without losing what the candidate said. */
+  const [pendingAnswer, setPendingAnswer] = useState<string | null>(null);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
@@ -429,6 +474,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [initialQuestion]);
 
@@ -500,47 +546,70 @@ const DemoVivaInteractive = ({
     }
   }, []);
 
-  const submit = useCallback(async () => {
+  const submitAnswer = useCallback(
+    async (answer: string) => {
+      setSubmitting(true);
+      setError(null);
+      setSubmitElapsed(0);
+      const startedAt = performance.now();
+      // Tick a live "elapsed" counter every 100ms so the user sees the request progressing.
+      const tick = window.setInterval(() => {
+        setSubmitElapsed(Math.round(performance.now() - startedAt));
+      }, 100);
+      try {
+        const { data, error: invokeError } = await supabase.functions.invoke("viva", {
+          body: {
+            mode: "feedback",
+            topicTitle,
+            exam,
+            question: currentQuestion,
+            transcript: answer,
+          },
+        });
+        if (invokeError) throw invokeError;
+        if (!data || typeof data !== "object" || !("score" in data)) {
+          throw new Error("Unexpected response from examiner.");
+        }
+        const latencyMs = Math.round(performance.now() - startedAt);
+        const fb = data as Feedback;
+        setRounds((prev) => [
+          ...prev,
+          { question: currentQuestion, kind: currentKind, answer, feedback: fb, latencyMs },
+        ]);
+        // Reset answer box for the next round.
+        setShowAnswerBox(false);
+        setTranscript("");
+        setInterim("");
+        setPendingAnswer(null);
+        finalisedRef.current = "";
+      } catch (err) {
+        console.error("Viva feedback failed:", err);
+        const msg = err instanceof Error ? err.message : "Could not generate feedback.";
+        setError(msg);
+        // Keep the answer so "Retry marking" works without losing what they said.
+        setPendingAnswer(answer);
+        toast.error(msg);
+      } finally {
+        window.clearInterval(tick);
+        setSubmitting(false);
+      }
+    },
+    [topicTitle, exam, currentQuestion, currentKind],
+  );
+
+  const submit = useCallback(() => {
     const answer = transcript.trim();
     if (!answer) {
       toast.error("Add an answer first — speak or type.");
       return;
     }
-    setSubmitting(true);
-    setError(null);
-    try {
-      const { data, error: invokeError } = await supabase.functions.invoke("viva", {
-        body: {
-          mode: "feedback",
-          topicTitle,
-          exam,
-          question: currentQuestion,
-          transcript: answer,
-        },
-      });
-      if (invokeError) throw invokeError;
-      if (!data || typeof data !== "object" || !("score" in data)) {
-        throw new Error("Unexpected response from examiner.");
-      }
-      const fb = data as Feedback;
-      setRounds((prev) => [
-        ...prev,
-        { question: currentQuestion, kind: currentKind, answer, feedback: fb },
-      ]);
-      // Reset answer box for the next round.
-      setShowAnswerBox(false);
-      setTranscript("");
-      setInterim("");
-      finalisedRef.current = "";
-    } catch (err) {
-      console.error("Viva feedback failed:", err);
-      const msg = err instanceof Error ? err.message : "Could not generate feedback.";
-      setError(msg);
-      toast.error(msg);
-    } finally {
-      setSubmitting(false);
-    }
-  }, [transcript, topicTitle, exam, currentQuestion, currentKind]);
+    void submitAnswer(answer);
+  }, [transcript, submitAnswer]);
+
+  const retryMarking = useCallback(() => {
+    if (!pendingAnswer) return;
+    void submitAnswer(pendingAnswer);
+  }, [pendingAnswer, submitAnswer]);
 
   const acceptFollowup = useCallback(() => {
     if (!lastFeedback?.nextStep) return;
@@ -550,6 +619,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [lastFeedback]);
 
@@ -561,6 +631,7 @@ const DemoVivaInteractive = ({
     setTranscript("");
     setInterim("");
     setError(null);
+    setPendingAnswer(null);
     finalisedRef.current = "";
   }, [initialQuestion]);
 
@@ -644,7 +715,36 @@ const DemoVivaInteractive = ({
             disabled={submitting}
           />
 
-          {error && <p className="text-xs text-destructive">{error}</p>}
+          {submitting && (
+            <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+              <Loader2 className="h-3 w-3 animate-spin text-primary" />
+              <span>
+                Asking the AI examiner…{" "}
+                <span className="font-mono text-foreground/80">
+                  {(submitElapsed / 1000).toFixed(1)}s
+                </span>
+              </span>
+            </div>
+          )}
+
+          {error && !submitting && (
+            <div className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 space-y-2">
+              <p className="text-xs text-destructive">
+                <span className="font-semibold">Marking failed:</span> {error}
+              </p>
+              {pendingAnswer && (
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  onClick={retryMarking}
+                >
+                  <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                  Retry marking
+                </Button>
+              )}
+            </div>
+          )}
 
           <div className="flex items-center gap-2 flex-wrap">
             {sttSupported && (
@@ -677,7 +777,7 @@ const DemoVivaInteractive = ({
               {submitting ? (
                 <>
                   <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
-                  Marking…
+                  Marking… {(submitElapsed / 1000).toFixed(1)}s
                 </>
               ) : (
                 <>
