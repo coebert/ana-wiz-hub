@@ -169,6 +169,24 @@ export const DIAGRAM_REGISTRY: DiagramFingerprint[] = [
     intent:
       "Canonical multi-trace synchronisation of pressures, volumes, ECG, and heart sounds across one cycle.",
   },
+  {
+    id: "bp-control-loop",
+    component: "BPControlLoopDiagram.tsx",
+    label: "Animated MAP = CO × SVR control loop (sensors → CNS → effectors → MAP)",
+    kind: "schematic",
+    domains: ["physiology"],
+    topics: ["cardiac-electrophysiology"],
+    phenomena: ["cascade"],
+    params: {
+      perturbations: 3, // steady, hypotension, hypertension
+      timeDomains: 3,   // neural, neurohormonal, renal-volume
+      animated: true,
+      hasFeedbackArc: true,
+    },
+    intent:
+      "Show BP regulation as a closed feedback loop and which sensors/effectors recruit on each timescale.",
+    tags: ["MAP", "baroreceptor", "RAAS", "RVLM", "pressure natriuresis", "feedback loop", "sympathetic", "parasympathetic"],
+  },
 ];
 
 // ---------------------------------------------------------------------------
