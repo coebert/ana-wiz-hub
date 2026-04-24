@@ -589,7 +589,7 @@ const dewPointSteps: AnimatedMechanismStep[] = [
     callout: "Regnault's hygrometer — the classical dew-point method and the only one that gives an ABSOLUTE humidity reading directly.",
   },
   {
-    label: "Bubble air → cool ether",
+    label: "Cooling to Td",
     detail: (
       <>
         Air is bubbled through the ether. Evaporation absorbs latent heat (2.26 kJ/g for water — even higher for ether),
@@ -598,7 +598,7 @@ const dewPointSteps: AnimatedMechanismStep[] = [
     ),
   },
   {
-    label: "Mist forms = dew point",
+    label: "Dew forms at Td",
     detail: (
       <>
         Cooling continues until the surface temperature falls to the <strong>dew point (Td)</strong> — the temperature at
