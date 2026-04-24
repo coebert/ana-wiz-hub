@@ -421,7 +421,7 @@ const DewPointScene = ({ step }: { step: number }) => {
         {tubeT}°C
       </text>
 
-      {/* Td target marker on the thermometer */}
+      {/* Td target marker on the thermometer + info tooltip */}
       {showBubbles && (
         <g className="animate-fade-in">
           <line
@@ -443,6 +443,55 @@ const DewPointScene = ({ step }: { step: number }) => {
           >
             Td = {Td}°C
           </text>
+          {/* Info button */}
+          <g
+            transform={`translate(${140} ${90 - (Td - 5) - 4})`}
+            role="button"
+            tabIndex={0}
+            aria-label="Show how Td relates to saturated vapour pressure"
+            aria-expanded={showSvpTip}
+            onClick={() => setShowSvpTip((v) => !v)}
+            onMouseEnter={() => setShowSvpTip(true)}
+            onMouseLeave={() => setShowSvpTip(false)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setShowSvpTip((v) => !v);
+              }
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <circle r="6" fill="hsl(var(--primary))" />
+            <text textAnchor="middle" y="3" fontSize="9" fontWeight="bold" fill="hsl(var(--primary-foreground))">
+              i
+            </text>
+          </g>
+
+          {/* Tooltip */}
+          {showSvpTip && (
+            <foreignObject x="6" y="6" width="200" height="140" className="animate-fade-in">
+              <div
+                xmlns="http://www.w3.org/1999/xhtml"
+                className="rounded-md border border-primary/40 bg-card text-foreground shadow-md p-2 text-[10px] leading-snug"
+                role="tooltip"
+              >
+                <div className="font-semibold text-primary mb-1">SVP check — this scenario</div>
+                <div className="font-mono text-[10px] space-y-0.5">
+                  <div>SVP(T<sub>amb</sub> = {Tamb}°C) ≈ {svpAmb.toFixed(2)} kPa</div>
+                  <div>SVP(T<sub>d</sub> = {Td}°C) ≈ {svpTd.toFixed(2)} kPa</div>
+                  <div>P<sub>H₂O</sub> in room = SVP(T<sub>d</sub>) ≈ {svpTd.toFixed(2)} kPa</div>
+                  <div className="pt-0.5 border-t border-border mt-1">
+                    RH = {svpTd.toFixed(2)} / {svpAmb.toFixed(2)} × 100
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;≈ <span className="text-primary font-bold">{rh.toFixed(0)}%</span>
+                  </div>
+                  <div>
+                    Abs. humidity ≈ <span className="text-primary font-bold">{absHum.toFixed(1)} g/m³</span>
+                  </div>
+                </div>
+              </div>
+            </foreignObject>
+          )}
         </g>
       )}
 
