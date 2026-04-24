@@ -234,7 +234,7 @@ Provide:
 - strengths: 1–3 short bullets of what was done well (omit if genuinely none)
 - gaps: 1–4 short bullets of missed key facts or wrong statements (be specific — name the structure / number / mechanism that was missed)
 - modelAnswer: a concise model viva answer (4–8 sentences) calibrated to the exam standard
-- nextStep: ONE follow-up viva question the examiner would naturally ask next
+- nextStep: ONE specific follow-up viva question targeted DIRECTLY at the candidate's biggest gap above. It should probe the missing concept by name (e.g. "Now write the alveolar gas equation and define each term." or "Walk me through your differential framework for postoperative anuria — pre-renal, renal, post-renal."). Avoid generic prompts; if no gap exists, escalate the difficulty by one step.
 - rubricBreakdown: array — one entry per rubric row above, IN THE SAME ORDER, with:
     • criterion (exact label from the rubric above)
     • max (the max marks for that row)
