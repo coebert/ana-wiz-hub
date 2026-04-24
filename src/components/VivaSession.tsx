@@ -151,6 +151,7 @@ const VivaSession = ({
     setInterim("");
     setFeedback(null);
     finalTranscriptRef.current = "";
+    segmentsRef.current = [];
 
     const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
 
