@@ -358,7 +358,8 @@ Deno.serve(async (req) => {
         !validExams.includes(body.exam) ||
         body.topicTitle.length > 200 ||
         (body.difficulty && !validDifficulty.includes(body.difficulty)) ||
-        (body.avoid && (!Array.isArray(body.avoid) || body.avoid.length > 20))
+        (body.avoid && (!Array.isArray(body.avoid) || body.avoid.length > 20)) ||
+        (body.emphasise && (!Array.isArray(body.emphasise) || body.emphasise.length > 10))
       ) {
         return new Response(JSON.stringify({ error: "Invalid question payload" }), {
           status: 400,
