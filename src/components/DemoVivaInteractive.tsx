@@ -782,6 +782,21 @@ const DemoVivaInteractive = ({
             disabled={submitting}
           />
 
+          {(recording || confSegments.length > 0) && (
+            <MicConfidenceMeter
+              segments={confSegments}
+              listening={recording}
+              onPickFlagged={(seg) => {
+                // Copy the shaky phrase so the user can paste it into a search
+                // engine or quickly find/replace it inside the textarea above.
+                if (typeof navigator !== "undefined" && navigator.clipboard) {
+                  void navigator.clipboard.writeText(seg.text);
+                  toast.success(`Copied "${seg.text}" — edit it in the box above.`);
+                }
+              }}
+            />
+          )}
+
           {submitting && (
             <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
               <Loader2 className="h-3 w-3 animate-spin text-primary" />
