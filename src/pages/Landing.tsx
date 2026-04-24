@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Headphones, Mic, ArrowRight } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
 
@@ -79,7 +79,61 @@ const Landing = () => {
             </Link>
           ))}
         </div>
-      </section>
+        <section className="mt-12 md:mt-16 max-w-5xl mx-auto">
+          <div className="flex items-center justify-center gap-2 mb-5">
+            <Mic className="h-5 w-5 text-clinical" />
+            <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+              A taste of Viva Practice
+            </h2>
+          </div>
+          <p className="text-center text-sm md:text-base text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Here's a sample 30-second prompt and the kind of constructive feedback the AI examiner gives.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <Quote className="h-4 w-4 text-clinical" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Sample prompt · 30 seconds
+                </span>
+              </div>
+              <p className="font-display text-lg md:text-xl text-foreground leading-snug mb-4">
+                "A 68-year-old man is anuric 6 hours after an open AAA repair. Walk me through your immediate assessment and the first three things you would do."
+              </p>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span className="inline-flex items-center rounded-full bg-clinical/10 text-clinical px-2 py-0.5 font-medium">
+                  Clinical
+                </span>
+                <span>Difficulty: Intermediate</span>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <MessageSquare className="h-4 w-4 text-physiology" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Example examiner feedback
+                </span>
+              </div>
+              <ul className="space-y-3 text-sm text-foreground/90">
+                <li>
+                  <span className="font-semibold text-foreground">Structure (4/5):</span>{" "}
+                  Clear A–E approach — well done. Consider stating your differential framework (pre-renal / renal / post-renal) up front to signal your reasoning.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Knowledge (3/5):</span>{" "}
+                  You mentioned bladder scan and fluid challenge, but missed checking the catheter for obstruction first — a common, easily reversible cause post-laparotomy.
+                </li>
+                <li>
+                  <span className="font-semibold text-foreground">Communication (5/5):</span>{" "}
+                  Confident pacing and good use of pauses. Examiner could follow your logic easily.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
 
       <SupportSection />
 
