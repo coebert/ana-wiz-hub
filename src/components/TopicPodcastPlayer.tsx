@@ -220,6 +220,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
   // Ready → player
   const totalDuration = duration || podcast.duration_seconds || 0;
+  const scriptWords = podcast.script ? podcast.script.trim().split(/\s+/).filter(Boolean).length : 0;
 
   return (
     <div className="rounded-xl border border-border bg-card p-4">
@@ -232,6 +233,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           </h3>
           <p className="text-xs text-muted-foreground">
             Exam-focused tutorial · ~{Math.round(totalDuration / 60)} min
+            {scriptWords > 0 && <> · {scriptWords.toLocaleString()} words</>}
           </p>
         </div>
         <Button
