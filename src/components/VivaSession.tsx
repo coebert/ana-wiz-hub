@@ -184,23 +184,42 @@ const VivaSession = ({
     }
   }, []);
   const sttSupported = !!getSpeechRecognitionCtor();
-  const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+  // OpenAI TTS (via tts-demo edge function) is always available — same voice as podcasts.
+  const ttsSupported = true;
+  const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
+  const ttsCacheRef = useRef<Map<string, string>>(new Map());
+
+  const stopSpeaking = useCallback(() => {
+    if (ttsAudioRef.current) {
+      ttsAudioRef.current.pause();
+      ttsAudioRef.current.src = "";
+      ttsAudioRef.current = null;
+    }
+  }, []);
 
   const speak = useCallback(
-    (text: string) => {
-      if (!ttsSupported || !text) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = 0.95;
-      u.pitch = 1;
-      // Prefer an English voice if available.
-      const voices = window.speechSynthesis.getVoices();
-      const en = voices.find((v) => /en[-_]?GB/i.test(v.lang)) ??
-        voices.find((v) => /^en/i.test(v.lang));
-      if (en) u.voice = en;
-      window.speechSynthesis.speak(u);
+    async (text: string) => {
+      if (!text) return;
+      stopSpeaking();
+      try {
+        let url = ttsCacheRef.current.get(text);
+        if (!url) {
+          const { data, error } = await supabase.functions.invoke("tts-demo", {
+            body: { text },
+          });
+          if (error) throw new Error(error.message || "TTS request failed");
+          if (!data?.audioBase64) throw new Error("No audio returned");
+          url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
+          ttsCacheRef.current.set(text, url);
+        }
+        const audio = new Audio(url);
+        ttsAudioRef.current = audio;
+        await audio.play();
+      } catch (err) {
+        console.error("[VivaSession] TTS error", err);
+      }
     },
-    [ttsSupported],
+    [stopSpeaking],
   );
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
@@ -344,7 +363,7 @@ const VivaSession = ({
   useEffect(() => {
     fetchQuestion();
     return () => {
-      window.speechSynthesis?.cancel();
+      stopSpeaking();
       recognitionRef.current?.abort();
       prefetchAbortRef.current?.abort();
     };
@@ -359,7 +378,7 @@ const VivaSession = ({
       setPhase("error");
       return;
     }
-    window.speechSynthesis?.cancel();
+    stopSpeaking();
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
     listenStartRef.current = Date.now();
