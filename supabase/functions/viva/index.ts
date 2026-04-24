@@ -19,6 +19,7 @@ const AI_URL = "https://ai.gateway.lovable.dev/v1/chat/completions";
 const MODEL = "google/gemini-3-flash-preview";
 
 type Exam = "primary" | "final" | "fficm";
+type Difficulty = "easy" | "standard" | "hard";
 
 interface QuestionBody {
   mode: "question";
@@ -26,6 +27,9 @@ interface QuestionBody {
   topicTitle: string;
   topicDescription?: string;
   exam: Exam;
+  difficulty?: Difficulty;
+  /** Recently-asked question stems to avoid repeating. */
+  avoid?: string[];
 }
 
 interface FeedbackBody {
