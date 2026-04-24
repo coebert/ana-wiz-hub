@@ -189,6 +189,11 @@ Return JSON only via the tool call.`;
 }
 
 async function handleFeedback(b: FeedbackBody): Promise<Response> {
+  const rubric = RUBRIC[b.exam];
+  const rubricList = rubric
+    .map((r, i) => `${i + 1}. ${r.criterion} (max ${r.max})`)
+    .join("\n");
+
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that was asked aloud:
@@ -199,13 +204,22 @@ Candidate's spoken answer (auto-transcribed — expect minor speech-to-text erro
 
 Mark this answer as a fair UK viva examiner would. Be constructive, specific, and direct.
 
+The 10 marks are split across this rubric:
+${rubricList}
+
 Provide:
-- score: integer 0–10 (use the full scale; 5 = bare pass at this exam standard, 7 = solid pass, 9–10 = standout)
+- score: integer 0–10 (sum of the rubric marks below)
 - verdict: one short phrase, e.g. "Clear pass", "Borderline", "Fail — significant gaps"
 - strengths: 1–3 short bullets of what was done well (omit if genuinely none)
 - gaps: 1–4 short bullets of missed key facts or wrong statements (be specific — name the structure / number / mechanism that was missed)
 - modelAnswer: a concise model viva answer (4–8 sentences) calibrated to the exam standard
 - nextStep: ONE follow-up viva question the examiner would naturally ask next
+- rubricBreakdown: array — one entry per rubric row above, IN THE SAME ORDER, with:
+    • criterion (exact label from the rubric above)
+    • max (the max marks for that row)
+    • awarded (integer 0..max — your honest mark for that row)
+    • comment (one short sentence explaining the mark)
+  The awarded marks MUST sum to the overall score.
 
 Return JSON via the tool call only.`;
 
@@ -230,8 +244,22 @@ Return JSON via the tool call only.`;
               gaps: { type: "array", items: { type: "string" } },
               modelAnswer: { type: "string" },
               nextStep: { type: "string" },
+              rubricBreakdown: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    criterion: { type: "string" },
+                    max: { type: "integer", minimum: 0, maximum: 10 },
+                    awarded: { type: "integer", minimum: 0, maximum: 10 },
+                    comment: { type: "string" },
+                  },
+                  required: ["criterion", "max", "awarded", "comment"],
+                  additionalProperties: false,
+                },
+              },
             },
-            required: ["score", "verdict", "gaps", "modelAnswer", "nextStep"],
+            required: ["score", "verdict", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
             additionalProperties: false,
           },
         },
