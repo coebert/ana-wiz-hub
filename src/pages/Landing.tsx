@@ -12,27 +12,34 @@ interface LandingChoice {
   accent: string;
 }
 
-const choices: LandingChoice[] = [
+interface LandingChoiceExt extends LandingChoice {
+  iconBg: string;
+}
+
+const choices: LandingChoiceExt[] = [
   {
     title: "Revise",
     description: "Browse the full curriculum by section and dive into structured topic notes.",
     icon: BookOpen,
     to: "/revise",
-    accent: "text-physiology",
+    accent: "text-primary",
+    iconBg: "bg-primary/10",
   },
   {
     title: "Podcast",
     description: "Listen to AI-generated topic podcasts on the go — perfect for commutes.",
     icon: Headphones,
     to: "/podcasts",
-    accent: "text-pharmacology",
+    accent: "text-primary",
+    iconBg: "bg-primary/10",
   },
   {
     title: "Viva Practice",
     description: "Practise out loud with an AI examiner who listens to your spoken answers and gives constructive, rubric-based feedback.",
     icon: Mic,
     to: "/viva",
-    accent: "text-clinical",
+    accent: "text-primary",
+    iconBg: "bg-primary/10",
   },
 ];
 
@@ -67,17 +74,17 @@ const Landing = () => {
       <section className="container mx-auto px-4 py-12 md:py-16 flex-1">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-5xl mx-auto">
-          {choices.map(({ title, description, icon: Icon, to, accent }) => (
+          {choices.map(({ title, description, icon: Icon, to, accent, iconBg }) => (
             <Link
               key={to}
               to={to}
               className="group relative flex flex-col rounded-2xl border border-border bg-card p-6 md:p-8 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <div className="flex items-center justify-between mb-5">
-                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-muted ${accent}`}>
+                <div className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${iconBg} ${accent}`}>
                   <Icon className="h-6 w-6" />
                 </div>
-                <ArrowRight className="h-5 w-5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+                <ArrowRight className="h-5 w-5 text-primary/60 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
               </div>
               <h2 className="font-display text-2xl font-semibold text-foreground mb-2">
                 {title}
@@ -92,12 +99,12 @@ const Landing = () => {
           <details className="group rounded-2xl border border-border bg-card/50 shadow-sm">
             <summary className="flex items-center justify-between gap-3 cursor-pointer list-none px-6 py-4 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
               <div className="flex items-center gap-2">
-                <Mic className="h-5 w-5 text-clinical" />
+                <Mic className="h-5 w-5 text-primary" />
                 <span className="font-display text-xl md:text-2xl font-semibold text-foreground tracking-tight">
                   See a taste of Viva Practice
                 </span>
               </div>
-              <ChevronDown className="h-5 w-5 text-muted-foreground transition-transform group-open:rotate-180" />
+              <ChevronDown className="h-5 w-5 text-primary transition-transform group-open:rotate-180" />
             </summary>
 
             <div className="px-6 pb-6 pt-2">
@@ -108,7 +115,7 @@ const Landing = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
                   <div className="flex items-center gap-2 mb-3">
-                    <Quote className="h-4 w-4 text-clinical" />
+                    <Quote className="h-4 w-4 text-primary" />
                     <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Sample prompt · 30 seconds
                     </span>
@@ -117,7 +124,7 @@ const Landing = () => {
                     "A 68-year-old man is anuric 6 hours after an open AAA repair. Walk me through your immediate assessment and the first three things you would do."
                   </p>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span className="inline-flex items-center rounded-full bg-clinical/10 text-clinical px-2 py-0.5 font-medium">
+                    <span className="inline-flex items-center rounded-full bg-primary/10 text-primary px-2 py-0.5 font-medium">
                       Clinical
                     </span>
                     <span>Difficulty: Intermediate</span>
@@ -126,7 +133,7 @@ const Landing = () => {
 
                 <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
                   <div className="flex items-center gap-2 mb-3">
-                    <MessageSquare className="h-4 w-4 text-physiology" />
+                    <MessageSquare className="h-4 w-4 text-primary" />
                     <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Example examiner feedback
                     </span>
