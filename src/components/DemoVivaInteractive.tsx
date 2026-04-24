@@ -580,6 +580,11 @@ const DemoVivaInteractive = ({
         setSubmitElapsed(Math.round(performance.now() - startedAt));
       }, 100);
       try {
+        // Send the spoken timeline (when we have one) so the examiner can
+        // anchor each "What you said" bullet to its real position in the answer.
+        const segments = segmentsRef.current.length > 0
+          ? segmentsRef.current.slice()
+          : undefined;
         const { data, error: invokeError } = await supabase.functions.invoke("viva", {
           body: {
             mode: "feedback",
@@ -587,6 +592,7 @@ const DemoVivaInteractive = ({
             exam,
             question: currentQuestion,
             transcript: answer,
+            segments,
           },
         });
         if (invokeError) throw invokeError;
