@@ -394,6 +394,85 @@ const RefeedingScene = ({ active }: { active: number }) => {
           )}
         </g>
       </svg>
+
+      {/* Animated example serum labs — change with each step to mirror the
+          intracellular shift shown in the compartment bars above. */}
+      <LabsPanel active={active} />
+    </div>
+  );
+};
+
+/** Per-step example serum values. Units: K mmol/L, PO4 mmol/L, Mg mmol/L,
+ *  glucose mmol/L. Numbers are illustrative (typical exam-friendly values),
+ *  not patient data. */
+const LAB_SERIES: Array<{ K: number; PO4: number; Mg: number; Glu: number; note: string }> = [
+  { K: 4.0, PO4: 0.95, Mg: 0.85, Glu: 4.2, note: "Pre-feed: looks normal — total-body stores depleted" },
+  { K: 3.9, PO4: 0.90, Mg: 0.82, Glu: 9.5, note: "Carb load: glucose climbs first" },
+  { K: 3.1, PO4: 0.55, Mg: 0.65, Glu: 11.8, note: "Insulin surge: K⁺/PO₄/Mg²⁺ shift intracellularly" },
+  { K: 2.8, PO4: 0.38, Mg: 0.58, Glu: 8.0, note: "Thiamine consumed → lactate ↑" },
+  { K: 2.6, PO4: 0.30, Mg: 0.55, Glu: 7.2, note: "Critical: arrhythmia / weakness risk" },
+];
+
+const REF = {
+  K: { lo: 3.5, hi: 5.0, unit: "mmol/L" },
+  PO4: { lo: 0.8, hi: 1.5, unit: "mmol/L" },
+  Mg: { lo: 0.7, hi: 1.0, unit: "mmol/L" },
+  Glu: { lo: 4.0, hi: 7.8, unit: "mmol/L" },
+} as const;
+
+type LabKey = keyof typeof REF;
+
+const LabsPanel = ({ active }: { active: number }) => {
+  const labs = LAB_SERIES[Math.min(active, LAB_SERIES.length - 1)];
+  const items: Array<{ key: LabKey; label: string; value: number }> = [
+    { key: "K", label: "K⁺", value: labs.K },
+    { key: "PO4", label: "PO₄³⁻", value: labs.PO4 },
+    { key: "Mg", label: "Mg²⁺", value: labs.Mg },
+    { key: "Glu", label: "Glucose", value: labs.Glu },
+  ];
+
+  return (
+    <div className="mt-3 rounded-md border border-border bg-card/60 p-2.5">
+      <div className="flex items-center justify-between mb-1.5">
+        <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+          Example serum labs
+        </p>
+        <p className="text-[10px] text-muted-foreground italic">{labs.note}</p>
+      </div>
+      <div className="grid grid-cols-4 gap-2">
+        {items.map((it) => {
+          const { lo, hi, unit } = REF[it.key];
+          const low = it.value < lo;
+          const high = it.value > hi;
+          const tone = low
+            ? "text-destructive border-destructive/50 bg-destructive/10"
+            : high
+            ? "text-clinical border-clinical/50 bg-clinical/10"
+            : "text-foreground border-border bg-muted/40";
+          const arrow = low ? "↓" : high ? "↑" : "";
+          return (
+            <div
+              key={it.key}
+              className={`rounded-md border px-2 py-1.5 transition-colors duration-500 ${tone}`}
+            >
+              <div className="flex items-baseline justify-between">
+                <span className="text-[10px] font-semibold">{it.label}</span>
+                <span className="text-[9px] opacity-70">
+                  {lo}–{hi}
+                </span>
+              </div>
+              <div
+                key={`${it.key}-${active}`}
+                className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
+              >
+                {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
+                <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
+              </div>
+              <div className="text-[9px] opacity-60">{unit}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
