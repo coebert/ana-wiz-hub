@@ -13,6 +13,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 const TopicMap = lazy(() => import("./pages/TopicMap"));
 const ProgressTracker = lazy(() => import("./pages/ProgressTracker"));
+const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
@@ -178,6 +179,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/map" element={<TopicMap />} />
           <Route path="/progress" element={<ProgressTracker />} />
+          <Route path="/podcasts" element={<PodcastsLibrary />} />
           <Route path="/physics" element={<PhysicsSection />} />
           <Route path="/physiology" element={<PhysiologySection />} />
           <Route path="/pharmacology" element={<PharmacologySection />} />
