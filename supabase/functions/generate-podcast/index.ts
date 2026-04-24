@@ -52,7 +52,13 @@ interface RequestBody {
   topicId: string;
   topicTitle: string;
   content: string; // plain text extracted from the topic page
+  force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
+  regeneratePassword?: string;
 }
+
+// Shared secret that authorises bypassing the cached podcast and regenerating
+// from scratch. Owner-only — surfaced via a hidden UI control.
+const REGENERATE_PASSWORD = "555368";
 
 interface FailurePayload {
   status: "failed";
