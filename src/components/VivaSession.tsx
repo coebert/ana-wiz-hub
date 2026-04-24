@@ -203,7 +203,32 @@ const VivaSession = ({
   // OpenAI TTS (via tts-demo edge function) is always available — same voice as podcasts.
   const ttsSupported = true;
   const ttsAudioRef = useRef<HTMLAudioElement | null>(null);
+  /**
+   * Audio cache keyed by a *stable question ID* — a normalised hash of the
+   * spoken text. This means any repeat attempt of the same viva question
+   * (regardless of casing, surrounding whitespace, or re-renders) reuses
+   * the exact same audio buffer instead of re-hitting the TTS API.
+   *
+   * Format of cache value: a `data:audio/mpeg;base64,...` URL ready for
+   * `new Audio(url)`.
+   */
   const ttsCacheRef = useRef<Map<string, string>>(new Map());
+
+  /**
+   * Compute a stable, content-derived ID for a piece of spoken text.
+   * - Trims + collapses whitespace + lowercases so trivial variations hit the same key.
+   * - Uses djb2 (fast, no async, no Web Crypto) — collisions are not a concern
+   *   for a per-session cache of <100 entries.
+   */
+  const ttsIdFor = useCallback((text: string): string => {
+    const norm = text.trim().replace(/\s+/g, " ").toLowerCase();
+    let hash = 5381;
+    for (let i = 0; i < norm.length; i++) {
+      hash = ((hash << 5) + hash + norm.charCodeAt(i)) | 0;
+    }
+    // Tag with length to further reduce collisions across very different texts.
+    return `q_${(hash >>> 0).toString(36)}_${norm.length.toString(36)}`;
+  }, []);
 
   const stopSpeaking = useCallback(() => {
     if (ttsAudioRef.current) {
@@ -221,7 +246,8 @@ const VivaSession = ({
   const prefetchTts = useCallback(
     async (text: string, signal?: AbortSignal): Promise<void> => {
       if (!text) return;
-      if (ttsCacheRef.current.has(text)) return;
+      const id = ttsIdFor(text);
+      if (ttsCacheRef.current.has(id)) return;
       try {
         const { data, error } = await supabase.functions.invoke("tts-demo", {
           body: { text },
@@ -232,7 +258,7 @@ const VivaSession = ({
         if (error) throw new Error(error.message || "TTS request failed");
         if (!data?.audioBase64) throw new Error("No audio returned");
         const url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
-        ttsCacheRef.current.set(text, url);
+        ttsCacheRef.current.set(id, url);
       } catch (err) {
         // Background prefetch — log but don't surface; speak() will refetch on demand.
         if (!signal?.aborted) {
@@ -240,15 +266,16 @@ const VivaSession = ({
         }
       }
     },
-    [],
+    [ttsIdFor],
   );
 
   const speak = useCallback(
     async (text: string) => {
       if (!text) return;
       stopSpeaking();
+      const id = ttsIdFor(text);
       try {
-        let url = ttsCacheRef.current.get(text);
+        let url = ttsCacheRef.current.get(id);
         if (!url) {
           const { data, error } = await supabase.functions.invoke("tts-demo", {
             body: { text },
@@ -256,7 +283,7 @@ const VivaSession = ({
           if (error) throw new Error(error.message || "TTS request failed");
           if (!data?.audioBase64) throw new Error("No audio returned");
           url = `data:${data.mimeType ?? "audio/mpeg"};base64,${data.audioBase64}`;
-          ttsCacheRef.current.set(text, url);
+          ttsCacheRef.current.set(id, url);
         }
         const audio = new Audio(url);
         ttsAudioRef.current = audio;
@@ -265,7 +292,7 @@ const VivaSession = ({
         console.error("[VivaSession] TTS error", err);
       }
     },
-    [stopSpeaking],
+    [stopSpeaking, ttsIdFor],
   );
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
