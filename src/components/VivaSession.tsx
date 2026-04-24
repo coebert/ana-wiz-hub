@@ -568,7 +568,11 @@ const VivaSession = ({
           <span className="text-muted-foreground">Weak threshold</span>
           <select
             value={weakStrictness}
-            onChange={(e) => setWeakStrictness(e.target.value as "lenient" | "balanced" | "strict")}
+            onChange={(e) => {
+              const v = e.target.value as WeakStrictness;
+              setWeakStrictness(v);
+              saveStrictness(topicId, exam, difficulty, v);
+            }}
             className="h-7 rounded-md border border-border bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
             title="How strict to be when flagging a rubric row as weak for emphasis retakes"
           >
