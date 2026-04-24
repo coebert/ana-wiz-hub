@@ -123,6 +123,20 @@ const DIAGNOSES: Record<DxKey, Diagnosis> = {
   },
 };
 
+// Static class maps so Tailwind keeps these classes during purge.
+const BAR_CLASS: Record<string, string> = {
+  destructive: "bg-destructive",
+  physiology: "bg-physiology",
+  clinical: "bg-clinical",
+  accent: "bg-accent",
+};
+const PANEL_CLASS: Record<string, string> = {
+  destructive: "border-destructive/40 bg-destructive/5",
+  physiology: "border-physiology/40 bg-physiology/5",
+  clinical: "border-clinical/40 bg-clinical/5",
+  accent: "border-accent/40 bg-accent/5",
+};
+
 interface Symptom {
   id: string;
   label: string;
