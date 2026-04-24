@@ -304,7 +304,7 @@ const VivaSession = ({
     setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
     setTimeout(() => speak(q), 150);
-  }, [feedback, requestQuestion, difficulty, topicId, exam, speak, cancelPrefetch]);
+  }, [feedback, requestQuestion, difficulty, topicId, exam, speak, cancelPrefetch, weakThreshold]);
 
   // Initial load.
   useEffect(() => {
