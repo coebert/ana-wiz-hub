@@ -131,6 +131,16 @@ const VivaSession = ({
   const listenStartRef = useRef<number>(0);
   /** Background-fetched next question; consumed by fetchQuestion when present. */
   const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
+  /** AbortController for any in-flight background prefetch. */
+  const prefetchAbortRef = useRef<AbortController | null>(null);
+
+  const cancelPrefetch = useCallback(() => {
+    if (prefetchAbortRef.current) {
+      prefetchAbortRef.current.abort();
+      prefetchAbortRef.current = null;
+      setPrefetchStatus((s) => (s === "loading" ? "idle" : s));
+    }
+  }, []);
   const sttSupported = !!getSpeechRecognitionCtor();
   const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
 
@@ -153,22 +163,33 @@ const VivaSession = ({
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
   const requestQuestion = useCallback(
-    async (forDifficulty: Difficulty, emphasise?: string[]): Promise<string | null> => {
+    async (
+      forDifficulty: Difficulty,
+      emphasise?: string[],
+      signal?: AbortSignal,
+    ): Promise<string | null> => {
       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
-      const { data, error } = await supabase.functions.invoke("viva", {
-        body: {
-          mode: "question",
-          topicId,
-          topicTitle,
-          topicDescription,
-          exam,
-          difficulty: forDifficulty,
-          avoid,
-          emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
-        },
-      });
-      if (error || !data?.question) return null;
-      return data.question as string;
+      try {
+        const { data, error } = await supabase.functions.invoke("viva", {
+          body: {
+            mode: "question",
+            topicId,
+            topicTitle,
+            topicDescription,
+            exam,
+            difficulty: forDifficulty,
+            avoid,
+            emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
+          },
+          signal,
+        });
+        if (signal?.aborted) return null;
+        if (error || !data?.question) return null;
+        return data.question as string;
+      } catch (e) {
+        // AbortError shows up here when the caller cancels.
+        return null;
+      }
     },
     [topicId, topicTitle, topicDescription, exam, avoidRepeats],
   );
@@ -215,8 +236,16 @@ const VivaSession = ({
   const prefetchNext = useCallback(async () => {
     if (!prefetchEnabled) return;
     if (prefetchedRef.current?.difficulty === difficulty) return; // already cached
+
+    // Cancel any earlier in-flight prefetch first.
+    prefetchAbortRef.current?.abort();
+    const controller = new AbortController();
+    prefetchAbortRef.current = controller;
+
     setPrefetchStatus("loading");
-    const q = await requestQuestion(difficulty);
+    const q = await requestQuestion(difficulty, undefined, controller.signal);
+    if (controller.signal.aborted) return; // user cancelled — leave status alone
+    prefetchAbortRef.current = null;
     if (!q) {
       setPrefetchStatus("error");
       return;
@@ -231,7 +260,9 @@ const VivaSession = ({
       prefetchedRef.current = null;
       setPrefetchStatus("idle");
     }
-  }, [difficulty]);
+    // Any in-flight prefetch was for the old difficulty — cancel it.
+    cancelPrefetch();
+  }, [difficulty, cancelPrefetch]);
 
   /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
   const retakeWithEmphasis = useCallback(async () => {
@@ -242,7 +273,7 @@ const VivaSession = ({
 
     // Bypass the prefetch cache — it doesn't know about emphasis.
     prefetchedRef.current = null;
-    setPrefetchStatus("idle");
+    cancelPrefetch();
 
     setErrorMsg(null);
     setTranscript("");
@@ -265,7 +296,7 @@ const VivaSession = ({
     setAskedCount(Math.min(next.length, MAX_HISTORY));
     setPhase("ready-to-answer");
     setTimeout(() => speak(q), 150);
-  }, [feedback, requestQuestion, difficulty, topicId, exam, speak]);
+  }, [feedback, requestQuestion, difficulty, topicId, exam, speak, cancelPrefetch]);
 
   // Initial load.
   useEffect(() => {
@@ -273,6 +304,7 @@ const VivaSession = ({
     return () => {
       window.speechSynthesis?.cancel();
       recognitionRef.current?.abort();
+      prefetchAbortRef.current?.abort();
     };
   }, [fetchQuestion]);
 
@@ -333,7 +365,9 @@ const VivaSession = ({
     recognitionRef.current = rec;
     rec.start();
     setPhase("listening");
-  }, []);
+    // The user is answering — kill any in-flight prefetch to free bandwidth/credits.
+    cancelPrefetch();
+  }, [cancelPrefetch]);
 
   const submitAnswer = useCallback(async () => {
     recognitionRef.current?.stop();
@@ -467,7 +501,7 @@ const VivaSession = ({
               setPrefetchEnabled(e.target.checked);
               if (!e.target.checked) {
                 prefetchedRef.current = null;
-                setPrefetchStatus("idle");
+                cancelPrefetch();
               }
             }}
             className="h-3.5 w-3.5 rounded border-border accent-primary"
