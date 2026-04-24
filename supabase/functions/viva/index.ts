@@ -270,6 +270,8 @@ Return JSON via the tool call only.`;
                     max: { type: "integer", minimum: 0, maximum: 10 },
                     awarded: { type: "integer", minimum: 0, maximum: 10 },
                     comment: { type: "string" },
+                    quote: { type: "string" },
+                    tStart: { type: "number", minimum: 0 },
                   },
                   required: ["criterion", "max", "awarded", "comment"],
                   additionalProperties: false,
