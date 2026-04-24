@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 /**
  * Refeeding syndrome — pathophysiology animation.
@@ -422,6 +423,44 @@ const REF = {
 
 type LabKey = keyof typeof REF;
 
+/** Clinical glossary — what the typical refeeding-trend means at the bedside. */
+const GLOSSARY: Record<LabKey, {
+  full: string;
+  trend: string;
+  why: string;
+  clinical: string;
+  threshold: string;
+}> = {
+  K: {
+    full: "Potassium (K⁺)",
+    trend: "Falls with insulin surge (typical nadir 2.5–3.0 mmol/L by day 2–4)",
+    why: "Insulin activates Na⁺/K⁺-ATPase → K⁺ driven into cells. Total-body K⁺ already depleted from starvation, so serum drop is rapid.",
+    clinical: "Arrhythmia (VT/VF, torsades), muscle weakness, ileus, ECG changes (flat T, U waves, long QT).",
+    threshold: "Replace if <3.5; urgent IV if <3.0 or symptomatic. Cardiac monitor during replacement.",
+  },
+  PO4: {
+    full: "Phosphate (PO₄³⁻)",
+    trend: "Drops sharply 24–72 h after feed start; the hallmark biochemistry of refeeding",
+    why: "Consumed making 2,3-DPG, ATP, and phosphorylated glycolytic intermediates. Insulin co-transports PO₄ into cells.",
+    clinical: "Diaphragmatic / respiratory muscle weakness (failure to wean), cardiac failure, rhabdomyolysis, haemolysis, paraesthesia, seizures.",
+    threshold: "ASPEN: mild <0.65, moderate 0.32–0.50, severe <0.32 mmol/L. Replace IV if <0.5 or symptomatic.",
+  },
+  Mg: {
+    full: "Magnesium (Mg²⁺)",
+    trend: "Falls in parallel with K⁺ and PO₄ (often nadir <0.7 mmol/L)",
+    why: "Cofactor for Na⁺/K⁺-ATPase and ATP-dependent enzymes; pulled intracellularly. Renal wasting in starvation also contributes.",
+    clinical: "Refractory hypokalaemia (cannot correct K⁺ until Mg²⁺ replaced), arrhythmia (torsades), tremor, tetany, seizures.",
+    threshold: "Replace if <0.7. Always check Mg²⁺ before giving up on persistent hypokalaemia.",
+  },
+  Glu: {
+    full: "Glucose",
+    trend: "Rises first (carb-naïve metabolism) then settles or undershoots once insulin response peaks",
+    why: "Sudden carbohydrate load on a glycogen-depleted, insulin-resistant patient → transient hyperglycaemia → counter-regulatory insulin surge that triggers the electrolyte shift.",
+    clinical: "Hyperglycaemia → osmotic diuresis, fluid overload, infection risk. Late hypoglycaemia possible if feed interrupted.",
+    threshold: "Target 6–10 mmol/L (NICE-SUGAR). Avoid IV dextrose boluses; start feed at 10 kcal/kg/day.",
+  },
+};
+
 const LabsPanel = ({ active }: { active: number }) => {
   const labs = LAB_SERIES[Math.min(active, LAB_SERIES.length - 1)];
   const items: Array<{ key: LabKey; label: string; value: number }> = [
@@ -433,11 +472,11 @@ const LabsPanel = ({ active }: { active: number }) => {
 
   return (
     <div className="mt-3 rounded-md border border-border bg-card/60 p-2.5">
-      <div className="flex items-center justify-between mb-1.5">
+      <div className="flex items-center justify-between mb-1.5 gap-2">
         <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
-          Example serum labs
+          Example serum labs · <span className="normal-case font-normal italic">tap a cell for clinical meaning</span>
         </p>
-        <p className="text-[10px] text-muted-foreground italic">{labs.note}</p>
+        <p className="text-[10px] text-muted-foreground italic text-right">{labs.note}</p>
       </div>
       <div className="grid grid-cols-4 gap-2">
         {items.map((it) => {
@@ -450,26 +489,58 @@ const LabsPanel = ({ active }: { active: number }) => {
             ? "text-clinical border-clinical/50 bg-clinical/10"
             : "text-foreground border-border bg-muted/40";
           const arrow = low ? "↓" : high ? "↑" : "";
+          const g = GLOSSARY[it.key];
           return (
-            <div
-              key={it.key}
-              className={`rounded-md border px-2 py-1.5 transition-colors duration-500 ${tone}`}
-            >
-              <div className="flex items-baseline justify-between">
-                <span className="text-[10px] font-semibold">{it.label}</span>
-                <span className="text-[9px] opacity-70">
-                  {lo}–{hi}
-                </span>
-              </div>
-              <div
-                key={`${it.key}-${active}`}
-                className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
-              >
-                {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
-                <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
-              </div>
-              <div className="text-[9px] opacity-60">{unit}</div>
-            </div>
+            <Popover key={it.key}>
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  aria-label={`${g.full} — clinical glossary`}
+                  className={`text-left rounded-md border px-2 py-1.5 transition-colors duration-500 hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 ${tone}`}
+                >
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-[10px] font-semibold">{it.label}</span>
+                    <span className="text-[9px] opacity-70">
+                      {lo}–{hi}
+                    </span>
+                  </div>
+                  <div
+                    key={`${it.key}-${active}`}
+                    className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
+                  >
+                    {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
+                    <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
+                  </div>
+                  <div className="text-[9px] opacity-60">{unit}</div>
+                </button>
+              </PopoverTrigger>
+              <PopoverContent side="top" align="center" className="w-72 text-xs p-3">
+                <p className="font-serif font-semibold text-foreground text-sm leading-tight">
+                  {g.full}
+                </p>
+                <p className="text-[10px] text-muted-foreground mt-0.5">
+                  Reference range {lo}–{hi} {unit}
+                </p>
+                <dl className="mt-2 space-y-1.5">
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Typical refeeding trend</dt>
+                    <dd className="text-foreground leading-snug">{g.trend}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Why it changes</dt>
+                    <dd className="text-muted-foreground leading-snug">{g.why}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Clinical effects</dt>
+                    <dd className="text-muted-foreground leading-snug">{g.clinical}</dd>
+                  </div>
+                  <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1">
+                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-primary">Action</dt>
+                    <dd className="text-foreground leading-snug">{g.threshold}</dd>
+                  </div>
+                </dl>
+              </PopoverContent>
+            </Popover>
           );
         })}
       </div>
