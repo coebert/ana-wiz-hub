@@ -38,8 +38,17 @@ interface CoreFeedback {
   communication: CoreFeedbackEntry;
 }
 
+interface SummaryBullet {
+  text: string;
+  /** Approximate seconds from start of answer when this point was made. */
+  tStart: number;
+  /** Short label for that moment (e.g. "Opening", "around 0:42"). */
+  location: string;
+}
+
 interface AnswerSummary {
-  bullets: string[];
+  /** May arrive as plain strings from older responses — normalised before render. */
+  bullets: Array<SummaryBullet | string>;
   wordCount: number;
 }
 
@@ -255,23 +264,44 @@ const FeedbackPanel = ({
         </div>
       )}
 
-      {fb.answerSummary && fb.answerSummary.bullets.length > 0 && (
-        <div className="rounded-lg border border-border/60 bg-card p-3">
-          <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              What you said
-            </p>
-            <span className="text-[10px] text-muted-foreground">
-              ~{fb.answerSummary.wordCount} word{fb.answerSummary.wordCount === 1 ? "" : "s"}
-            </span>
+      {fb.answerSummary && fb.answerSummary.bullets.length > 0 && (() => {
+        // Normalise bullets to {text, tStart, location}, then order by tStart so
+        // they follow the candidate's actual delivery — older responses may
+        // still send plain strings, in which case order is preserved as-is.
+        const normalised = fb.answerSummary.bullets.map((b, i) => {
+          if (typeof b === "string") {
+            return { text: b, tStart: i, location: "" };
+          }
+          return {
+            text: b.text,
+            tStart: typeof b.tStart === "number" ? b.tStart : i,
+            location: b.location ?? "",
+          };
+        });
+        normalised.sort((a, z) => a.tStart - z.tStart);
+        return (
+          <div className="rounded-lg border border-border/60 bg-card p-3">
+            <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                What you said
+              </p>
+              <span className="text-[10px] text-muted-foreground">
+                ~{fb.answerSummary!.wordCount} word{fb.answerSummary!.wordCount === 1 ? "" : "s"} · in spoken order
+              </span>
+            </div>
+            <ol className="text-sm text-foreground/90 space-y-1.5">
+              {normalised.map((b, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="shrink-0 inline-flex items-center rounded-md border border-border/60 bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                    {b.location || `#${i + 1}`}
+                  </span>
+                  <span className="leading-snug">{b.text}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
-            {fb.answerSummary.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+        );
+      })()}
 
       {fb.coreFeedback && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -456,6 +486,9 @@ const DemoVivaInteractive = ({
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
+  /** Approximate timeline of finalised speech chunks during the current recording. */
+  const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
+  const recordingStartRef = useRef<number>(0);
   const sttSupported = !!getSpeechRecognitionCtor();
 
   const followupsAsked = rounds.filter((r) => r.kind === "followup").length;
@@ -497,6 +530,9 @@ const DemoVivaInteractive = ({
     setError(null);
     finalisedRef.current = transcript ? transcript.trim() + " " : "";
     setInterim("");
+    // Reset the timeline for this recording session.
+    segmentsRef.current = [];
+    recordingStartRef.current = Date.now();
 
     const r = new Ctor();
     r.lang = "en-GB";
@@ -509,6 +545,14 @@ const DemoVivaInteractive = ({
         const res = e.results[i];
         const text = res[0]?.transcript ?? "";
         if (res.isFinal) {
+          const trimmed = text.trim();
+          if (trimmed) {
+            const tStart = Math.max(
+              0,
+              Math.round((Date.now() - recordingStartRef.current) / 1000),
+            );
+            segmentsRef.current.push({ tStart, text: trimmed });
+          }
           finalisedRef.current += text + " ";
         } else {
           interimText += text;
@@ -557,6 +601,11 @@ const DemoVivaInteractive = ({
         setSubmitElapsed(Math.round(performance.now() - startedAt));
       }, 100);
       try {
+        // Send the spoken timeline (when we have one) so the examiner can
+        // anchor each "What you said" bullet to its real position in the answer.
+        const segments = segmentsRef.current.length > 0
+          ? segmentsRef.current.slice()
+          : undefined;
         const { data, error: invokeError } = await supabase.functions.invoke("viva", {
           body: {
             mode: "feedback",
@@ -564,6 +613,7 @@ const DemoVivaInteractive = ({
             exam,
             question: currentQuestion,
             transcript: answer,
+            segments,
           },
         });
         if (invokeError) throw invokeError;
@@ -582,6 +632,7 @@ const DemoVivaInteractive = ({
         setInterim("");
         setPendingAnswer(null);
         finalisedRef.current = "";
+        segmentsRef.current = [];
       } catch (err) {
         console.error("Viva feedback failed:", err);
         const msg = err instanceof Error ? err.message : "Could not generate feedback.";
