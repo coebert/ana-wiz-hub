@@ -686,6 +686,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [lastFeedback]);
 
   const reset = useCallback(() => {
@@ -698,6 +699,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [initialQuestion]);
 
   return (
