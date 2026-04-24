@@ -18,6 +18,7 @@ const tocItems = [
   { id: "toc-icp", label: "ICP / Microdialysis" },
   { id: "toc-encephalitis", label: "Autoimmune Enceph." },
   { id: "toc-gbs", label: "GBS" },
+  { id: "toc-myasthenic-crisis", label: "Myasthenic Crisis" },
   { id: "toc-dbi", label: "Devastating BI" },
   { id: "toc-synthesis", label: "Synthesis" },
 ];
