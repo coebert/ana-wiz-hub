@@ -265,6 +265,8 @@ const VivaSession = ({
     }
     setPhase("scoring");
 
+    const segments = segmentsRef.current.slice();
+
     const { data, error } = await supabase.functions.invoke("viva", {
       body: {
         mode: "feedback",
@@ -272,6 +274,7 @@ const VivaSession = ({
         exam,
         question,
         transcript: finalText,
+        segments,
       },
     });
 
