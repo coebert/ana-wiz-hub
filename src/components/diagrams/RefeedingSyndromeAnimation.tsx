@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
 
 /**
