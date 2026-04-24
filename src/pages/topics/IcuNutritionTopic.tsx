@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
+import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeAnimation";
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
 
@@ -187,6 +188,9 @@ const IcuNutritionTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Life-threatening shifts in fluids and electrolytes when nutrition is restarted after prolonged starvation. Insulin surge drives K⁺, PO₄³⁻ and Mg²⁺ intracellularly, causing arrhythmias, cardiac failure, respiratory muscle weakness and Wernicke&apos;s encephalopathy. Use the calculator above for stratification.
             </p>
+            <div className="my-4">
+              <RefeedingSyndromeAnimation />
+            </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Risk factors (NICE CG32)</p>
