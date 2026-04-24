@@ -31,10 +31,20 @@ const MAX_TTS_CHARS = 2800;
 // Hard fallback: if a single sentence exceeds MAX_TTS_CHARS we still need to
 // split it. OpenAI rejects > 4096 chars per request.
 const HARD_TTS_LIMIT = 3900;
-// How many TTS chunks to synthesise concurrently. OpenAI TTS rate limits are
-// generous; 4 in flight keeps total wall-time near a single chunk's latency
-// for episodes up to ~14 min while staying well under any per-minute caps.
-const TTS_CONCURRENCY = 4;
+// How many TTS chunks to synthesise concurrently. Tunable at runtime via the
+// TTS_CONCURRENCY env var (safe default 4). Clamped to [1, 16] so a bad value
+// can never stall generation or hammer the OpenAI API.
+const TTS_CONCURRENCY = (() => {
+  const raw = Deno.env.get("TTS_CONCURRENCY");
+  if (!raw) return 4;
+  const parsed = Number.parseInt(raw, 10);
+  if (!Number.isFinite(parsed) || parsed < 1) {
+    console.warn(`[config] Invalid TTS_CONCURRENCY="${raw}", falling back to 4`);
+    return 4;
+  }
+  return Math.min(parsed, 16);
+})();
+console.log(`[config] TTS_CONCURRENCY effective value: ${TTS_CONCURRENCY}`);
 // Per-chunk retry budget (network blips, transient 5xx, brief 429s).
 const TTS_MAX_RETRIES = 3;
 
