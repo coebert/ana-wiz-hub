@@ -174,6 +174,7 @@ const IcuEndocrineEmergenciesTopic = () => {
       }}
       diagrams={
         <>
+          <EndocrineSymptomTriage />
           <DKAAnimation />
           <DKAvsHHSDiagram />
           <ThyroidStormAnimation />
