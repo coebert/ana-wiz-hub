@@ -391,14 +391,19 @@ const VivaSession = ({
     setPrefetchStatus("loading");
     const q = await requestQuestion(difficulty, undefined, controller.signal);
     if (controller.signal.aborted) return; // user cancelled — leave status alone
-    prefetchAbortRef.current = null;
     if (!q) {
+      prefetchAbortRef.current = null;
       setPrefetchStatus("error");
       return;
     }
     prefetchedRef.current = { question: q, difficulty };
+    // Mark the question as ready immediately so the UI can show "ready ✓",
+    // then warm the TTS cache in the background. speak() will pick up the
+    // cached audio the moment the user clicks Next.
     setPrefetchStatus("ready");
-  }, [prefetchEnabled, difficulty, requestQuestion]);
+    await prefetchTts(q, controller.signal);
+    prefetchAbortRef.current = null;
+  }, [prefetchEnabled, difficulty, requestQuestion, prefetchTts]);
 
   // Invalidate prefetch when difficulty changes.
   useEffect(() => {
