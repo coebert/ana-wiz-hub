@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronRight,
+  Gauge,
   Highlighter,
   Loader2,
   Mic,
@@ -9,6 +10,7 @@ import {
   RotateCcw,
   Send,
   Sparkles,
+  Timer,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
