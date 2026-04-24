@@ -239,6 +239,9 @@ ${rubricList}
 Provide:
 - score: integer 0–10 (sum of the rubric marks below)
 - verdict: one short phrase, e.g. "Clear pass", "Borderline", "Fail — significant gaps"
+- confidence: object describing how confident YOU (the examiner AI) are in this marking, given the transcript quality and depth:
+    • level: "high" | "medium" | "low" — high if the answer was substantive and clearly transcribed; medium if some ambiguity or sparseness; low if the transcript was very short, garbled, or off-topic.
+    • reason: ≤ 20 words explaining the level (e.g. "Short answer — limited content to mark", "Clear, detailed answer", "Possible transcription noise around drug names").
 - answerSummary: object with:
     • bullets: 2–4 short bullets (≤ 18 words each) faithfully recapping the DISTINCT points the candidate actually made (in the order they made them). Do NOT add facts they did not say. If they said almost nothing, return one bullet noting that.
     • wordCount: integer — approximate number of words in the transcript.
@@ -278,6 +281,15 @@ Return JSON via the tool call only.`;
             properties: {
               score: { type: "integer", minimum: 0, maximum: 10 },
               verdict: { type: "string" },
+              confidence: {
+                type: "object",
+                properties: {
+                  level: { type: "string", enum: ["high", "medium", "low"] },
+                  reason: { type: "string" },
+                },
+                required: ["level", "reason"],
+                additionalProperties: false,
+              },
               answerSummary: {
                 type: "object",
                 properties: {
@@ -342,7 +354,7 @@ Return JSON via the tool call only.`;
                 },
               },
             },
-            required: ["score", "verdict", "answerSummary", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
+            required: ["score", "verdict", "confidence", "answerSummary", "coreFeedback", "gaps", "modelAnswer", "nextStep", "rubricBreakdown"],
             additionalProperties: false,
           },
         },
