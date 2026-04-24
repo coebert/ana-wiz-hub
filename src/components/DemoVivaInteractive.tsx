@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import MicConfidenceMeter, { type ConfidenceSegment } from "@/components/MicConfidenceMeter";
 
 type Exam = "primary" | "final" | "fficm";
 
@@ -483,6 +484,8 @@ const DemoVivaInteractive = ({
   const [error, setError] = useState<string | null>(null);
   /** Last submitted answer text — kept after a failure so "Retry marking" can resend it without losing what the candidate said. */
   const [pendingAnswer, setPendingAnswer] = useState<string | null>(null);
+  /** Per-finalised-segment microphone recognition confidence (0–1). */
+  const [confSegments, setConfSegments] = useState<ConfidenceSegment[]>([]);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
@@ -509,6 +512,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [initialQuestion]);
 
   useEffect(() => {
@@ -532,15 +536,19 @@ const DemoVivaInteractive = ({
     setInterim("");
     // Reset the timeline for this recording session.
     segmentsRef.current = [];
+    setConfSegments([]);
     recordingStartRef.current = Date.now();
 
     const r = new Ctor();
     r.lang = "en-GB";
     r.continuous = true;
     r.interimResults = true;
+    // Two alternatives → more reliable confidence on supporting browsers.
+    (r as any).maxAlternatives = 2;
 
     r.onresult = (e: any) => {
       let interimText = "";
+      const newConf: ConfidenceSegment[] = [];
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const res = e.results[i];
         const text = res[0]?.transcript ?? "";
@@ -552,11 +560,16 @@ const DemoVivaInteractive = ({
               Math.round((Date.now() - recordingStartRef.current) / 1000),
             );
             segmentsRef.current.push({ tStart, text: trimmed });
+            const confidence = typeof res[0].confidence === "number" ? res[0].confidence : 0;
+            newConf.push({ text: trimmed, confidence });
           }
           finalisedRef.current += text + " ";
         } else {
           interimText += text;
         }
+      }
+      if (newConf.length > 0) {
+        setConfSegments((prev) => [...prev, ...newConf]);
       }
       setTranscript(finalisedRef.current.trim());
       setInterim(interimText.trim());
@@ -633,6 +646,7 @@ const DemoVivaInteractive = ({
         setPendingAnswer(null);
         finalisedRef.current = "";
         segmentsRef.current = [];
+        setConfSegments([]);
       } catch (err) {
         console.error("Viva feedback failed:", err);
         const msg = err instanceof Error ? err.message : "Could not generate feedback.";
@@ -672,6 +686,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [lastFeedback]);
 
   const reset = useCallback(() => {
@@ -684,6 +699,7 @@ const DemoVivaInteractive = ({
     setError(null);
     setPendingAnswer(null);
     finalisedRef.current = "";
+    setConfSegments([]);
   }, [initialQuestion]);
 
   return (
@@ -765,6 +781,21 @@ const DemoVivaInteractive = ({
             className="text-sm resize-none"
             disabled={submitting}
           />
+
+          {(recording || confSegments.length > 0) && (
+            <MicConfidenceMeter
+              segments={confSegments}
+              listening={recording}
+              onPickFlagged={(seg) => {
+                // Copy the shaky phrase so the user can paste it into a search
+                // engine or quickly find/replace it inside the textarea above.
+                if (typeof navigator !== "undefined" && navigator.clipboard) {
+                  void navigator.clipboard.writeText(seg.text);
+                  toast.success(`Copied "${seg.text}" — edit it in the box above.`);
+                }
+              }}
+            />
+          )}
 
           {submitting && (
             <div className="flex items-center gap-2 text-[11px] text-muted-foreground">

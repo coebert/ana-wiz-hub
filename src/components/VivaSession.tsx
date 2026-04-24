@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
 import VivaRubric from "@/components/VivaRubric";
 import MicHelpPanel from "@/components/MicHelpPanel";
+import MicConfidenceMeter, { type ConfidenceSegment } from "@/components/MicConfidenceMeter";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
 
@@ -184,6 +185,8 @@ const VivaSession = ({
   /** Approximate timeline of finalised speech chunks (seconds since listening started). */
   const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
   const listenStartRef = useRef<number>(0);
+  /** Per-finalised-segment confidence values, surfaced via MicConfidenceMeter. */
+  const [confSegments, setConfSegments] = useState<ConfidenceSegment[]>([]);
   /** Background-fetched next question; consumed by fetchQuestion when present. */
   const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
   /** AbortController for any in-flight background prefetch. */
@@ -275,6 +278,7 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     // New question → drop any previous model answer.
     setModelAnswer(null);
     setModelAnswerError(null);
@@ -393,6 +397,7 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     setModelAnswer(null);
     setModelAnswerError(null);
     setModelAnswerLoading(false);
@@ -435,6 +440,7 @@ const VivaSession = ({
     stopSpeaking();
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    setConfSegments([]);
     listenStartRef.current = Date.now();
     setInterim("");
     setTranscript("");
@@ -443,24 +449,32 @@ const VivaSession = ({
     rec.lang = "en-GB";
     rec.continuous = true;
     rec.interimResults = true;
+    // Ask the engine for a couple of alternatives — confidence is more
+    // reliable on browsers that compute it across alternatives.
+    (rec as any).maxAlternatives = 2;
     rec.onresult = (e: any) => {
       let interimChunk = "";
+      const newConf: ConfidenceSegment[] = [];
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
         if (r.isFinal) {
           const text = r[0].transcript.trim();
           if (text) {
             const tStart = Math.max(0, (Date.now() - listenStartRef.current) / 1000);
-            // Approximate: assume each finalised chunk ENDS now, so its start
-            // is 'now − estimated duration' (≈ 0.35s per word). Clamp ≥ 0.
             const wordCount = text.split(/\s+/).length;
             const approxStart = Math.max(0, tStart - wordCount * 0.35);
             segmentsRef.current.push({ tStart: Math.round(approxStart), text });
             finalTranscriptRef.current += text + " ";
+            // Confidence is 0–1; some engines return undefined, normalise to 0.
+            const confidence = typeof r[0].confidence === "number" ? r[0].confidence : 0;
+            newConf.push({ text, confidence });
           }
         } else {
           interimChunk += r[0].transcript;
         }
+      }
+      if (newConf.length > 0) {
+        setConfSegments((prev) => [...prev, ...newConf]);
       }
       setTranscript(finalTranscriptRef.current.trim());
       setInterim(interimChunk);
@@ -838,6 +852,15 @@ const VivaSession = ({
               <span className="text-muted-foreground italic">Speak into your microphone…</span>
             )}
           </p>
+
+          {(phase === "listening" || confSegments.length > 0) && (
+            <div className="mt-3">
+              <MicConfidenceMeter
+                segments={confSegments}
+                listening={phase === "listening"}
+              />
+            </div>
+          )}
         </div>
       )}
 
