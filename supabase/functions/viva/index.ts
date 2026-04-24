@@ -48,6 +48,32 @@ const examLabel: Record<Exam, string> = {
   fficm: "FFICM Final (intensive-care subspecialty — applied critical-care management + evidence)",
 };
 
+// Per-exam rubric — kept in sync with src/components/VivaRubric.tsx so the
+// scored breakdown lines up with the rubric the user sees on screen.
+const RUBRIC: Record<Exam, { criterion: string; max: number }[]> = {
+  primary: [
+    { criterion: "Core facts & definitions", max: 3 },
+    { criterion: "Underlying basic science", max: 3 },
+    { criterion: "Structure & clarity", max: 2 },
+    { criterion: "Clinical relevance", max: 1 },
+    { criterion: "Fluency under pressure", max: 1 },
+  ],
+  final: [
+    { criterion: "Applied clinical reasoning", max: 3 },
+    { criterion: "Integration of basic science", max: 2 },
+    { criterion: "Safety & contingency", max: 2 },
+    { criterion: "Structure & prioritisation", max: 2 },
+    { criterion: "Awareness of guidelines / evidence", max: 1 },
+  ],
+  fficm: [
+    { criterion: "ICU management plan", max: 3 },
+    { criterion: "Evidence base", max: 2 },
+    { criterion: "Risk / benefit & ceilings of care", max: 2 },
+    { criterion: "Safety & complications", max: 2 },
+    { criterion: "Communication & structure", max: 1 },
+  ],
+};
+
 const SYSTEM = `You are an experienced UK examiner for the Royal College of Anaesthetists / FICM viva voce exam.
 You ask one focused, exam-realistic opening question and then grade the candidate fairly.
 Always reflect the actual standard of the named exam (Primary vs Final vs FFICM) — the depth, breadth and language must match.`;
