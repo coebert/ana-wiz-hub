@@ -369,8 +369,9 @@ export const WiggersDiagram = () => {
         ))}
       </svg>
 
-      {/* Phase info panel */}
-      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 animate-fade-in">
+      {/* Phase info panel — fixed min-height so the description swap during
+          playback doesn't reflow controls below it (visible "screen jump"). */}
+      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 min-h-[140px] sm:min-h-[120px]">
         <div className="flex items-center gap-2 mb-2">
           <span className="w-3 h-3 rounded-full" style={{ backgroundColor: PHASES[activePhaseIdx].color }} />
           <p className="text-sm font-semibold text-foreground">{PHASES[activePhaseIdx].name}</p>

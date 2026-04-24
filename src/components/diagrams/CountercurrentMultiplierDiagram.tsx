@@ -325,8 +325,9 @@ export const CountercurrentMultiplierDiagram = () => {
         </svg>
       </div>
 
-      {/* Step info */}
-      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 animate-fade-in" key={currentStep}>
+      {/* Step info — fixed min-height so auto-advancing through steps doesn't
+          reflow the navigation buttons below it (visible "screen jump"). */}
+      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 min-h-[160px] sm:min-h-[140px]" key={currentStep}>
         <h4 className="text-sm font-bold text-foreground mb-1">{step.title}</h4>
         <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
       </div>
