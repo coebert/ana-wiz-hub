@@ -236,6 +236,36 @@ const Landing = () => {
                         </ul>
                       </div>
                     </div>
+
+                    <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <BookMarked className="h-3.5 w-3.5 text-primary" />
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          FRCA curriculum mapping
+                        </span>
+                      </div>
+                      <ul className="space-y-1.5 text-sm text-foreground/90">
+                        {q.curriculum.map((c, k) => (
+                          <li key={k} className="flex items-start gap-2">
+                            <span
+                              className={`mt-0.5 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider flex-shrink-0 ${
+                                c.exam === "Primary"
+                                  ? "bg-physiology/15 text-physiology"
+                                  : "bg-clinical/15 text-clinical"
+                              }`}
+                            >
+                              {c.exam}
+                            </span>
+                            <span className="leading-snug">
+                              <span className="font-mono text-[11px] text-muted-foreground mr-1.5">
+                                {c.code}
+                              </span>
+                              {c.topic}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 ))}
               </div>
