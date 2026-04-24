@@ -530,6 +530,31 @@ Return JSON via the tool call only.`;
 }
 
 async function handleModelAnswer(b: ModelAnswerBody): Promise<Response> {
+  // 1. Cache lookup — same exam + same (normalised) question → reuse.
+  const questionHash = await hashQuestion(b.question);
+  const supa = getServiceClient();
+  if (supa) {
+    const { data: cached, error: cacheReadErr } = await supa
+      .from("viva_model_answers")
+      .select("model_answer, high_yield_points, pitfalls")
+      .eq("exam", b.exam)
+      .eq("question_hash", questionHash)
+      .maybeSingle();
+    if (cacheReadErr) {
+      console.error("[viva] model-answer cache read failed", cacheReadErr.message);
+    } else if (cached) {
+      return new Response(
+        JSON.stringify({
+          modelAnswer: cached.model_answer,
+          highYieldPoints: cached.high_yield_points ?? [],
+          pitfalls: cached.pitfalls ?? [],
+          cached: true,
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+  }
+
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that the candidate has been asked aloud:
