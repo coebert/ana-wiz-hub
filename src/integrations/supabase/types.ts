@@ -95,6 +95,24 @@ export type Database = {
         }
         Relationships: []
       }
+      viva_model_answer_locks: {
+        Row: {
+          claimed_at: string
+          exam: string
+          question_hash: string
+        }
+        Insert: {
+          claimed_at?: string
+          exam: string
+          question_hash: string
+        }
+        Update: {
+          claimed_at?: string
+          exam?: string
+          question_hash?: string
+        }
+        Relationships: []
+      }
       viva_model_answers: {
         Row: {
           created_at: string
@@ -144,14 +162,6 @@ export type Database = {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
-        Returns: boolean
-      }
-      viva_acquire_model_answer_lock: {
-        Args: { p_exam: string; p_question_hash: string }
-        Returns: undefined
-      }
-      viva_release_model_answer_lock: {
-        Args: { p_exam: string; p_question_hash: string }
         Returns: boolean
       }
     }
