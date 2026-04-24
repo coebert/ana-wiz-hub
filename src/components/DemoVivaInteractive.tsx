@@ -205,12 +205,43 @@ const FeedbackPanel = ({
             {round.kind === "followup" ? "Follow-up feedback" : "AI examiner feedback"}
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="inline-flex items-center rounded-full bg-primary/15 text-primary px-2.5 py-0.5 text-xs font-semibold">
             {fb.score}/10
           </span>
           <span className="text-xs text-foreground/80">{fb.verdict}</span>
         </div>
+      </div>
+
+      {/* Confidence + latency telemetry for this marking */}
+      <div className="flex items-center gap-2 flex-wrap text-[11px]">
+        {fb.confidence && (
+          <span
+            className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 font-medium ${
+              fb.confidence.level === "high"
+                ? "border-primary/40 bg-primary/10 text-primary"
+                : fb.confidence.level === "medium"
+                  ? "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400"
+                  : "border-destructive/40 bg-destructive/10 text-destructive"
+            }`}
+            title={fb.confidence.reason}
+          >
+            <Gauge className="h-3 w-3" />
+            Confidence: {fb.confidence.level}
+          </span>
+        )}
+        <span
+          className="inline-flex items-center gap-1 rounded-full border border-border/60 bg-card px-2 py-0.5 text-muted-foreground"
+          title="Time the AI examiner took to mark this answer"
+        >
+          <Timer className="h-3 w-3" />
+          {(round.latencyMs / 1000).toFixed(1)}s
+        </span>
+        {fb.confidence?.reason && (
+          <span className="text-muted-foreground italic truncate max-w-full">
+            — {fb.confidence.reason}
+          </span>
+        )}
       </div>
 
       {round.kind === "followup" && (
