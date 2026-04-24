@@ -1,5 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Loader2, Mic, MicOff, Send, RotateCcw, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronRight,
+  Loader2,
+  Mic,
+  MicOff,
+  RotateCcw,
+  Send,
+  Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
@@ -25,14 +34,21 @@ interface Feedback {
   rubricBreakdown: RubricRow[];
 }
 
+interface Round {
+  question: string;
+  /** "main" = the original demo question; "followup" = AI-generated follow-up. */
+  kind: "main" | "followup";
+  answer: string;
+  feedback: Feedback;
+}
+
 interface DemoVivaInteractiveProps {
   question: string;
   topicTitle: string;
-  /** Maps to the exam standard the demo question is calibrated to. */
   exam: Exam;
 }
 
-// ---- Browser SpeechRecognition shim (same shape used in VivaSession). -----
+// ---- Browser SpeechRecognition shim --------------------------------------
 type AnyWindow = Window &
   typeof globalThis & {
     SpeechRecognition?: new () => SpeechRecognitionLike;
@@ -57,19 +73,134 @@ function getSpeechRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
   return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
 }
 
-const DemoVivaInteractive = ({ question, topicTitle, exam }: DemoVivaInteractiveProps) => {
+const MAX_FOLLOWUPS = 3;
+
+// ---- Sub-component: a single round of feedback ---------------------------
+const FeedbackPanel = ({ round }: { round: Round }) => {
+  const fb = round.feedback;
+  return (
+    <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-3">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-primary" />
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            {round.kind === "followup" ? "Follow-up feedback" : "AI examiner feedback"}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center rounded-full bg-primary/15 text-primary px-2.5 py-0.5 text-xs font-semibold">
+            {fb.score}/10
+          </span>
+          <span className="text-xs text-foreground/80">{fb.verdict}</span>
+        </div>
+      </div>
+
+      {round.kind === "followup" && (
+        <div className="rounded-lg border border-border/60 bg-card p-3">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+            Examiner asked
+          </p>
+          <p className="text-sm text-foreground/90 italic leading-snug">"{round.question}"</p>
+        </div>
+      )}
+
+      {fb.rubricBreakdown?.length > 0 && (
+        <div className="rounded-lg border border-border/60 bg-card p-3">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+            Rubric breakdown
+          </p>
+          <ul className="space-y-1.5 text-sm">
+            {fb.rubricBreakdown.map((r, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="font-mono text-xs text-primary font-semibold flex-shrink-0 w-10">
+                  {r.awarded}/{r.max}
+                </span>
+                <span className="leading-snug">
+                  <span className="font-medium text-foreground">{r.criterion}:</span>{" "}
+                  <span className="text-foreground/80">{r.comment}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {fb.strengths && fb.strengths.length > 0 && (
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+            Strengths
+          </p>
+          <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
+            {fb.strengths.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {fb.gaps?.length > 0 && (
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+            Gaps the examiner spotted
+          </p>
+          <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
+            {fb.gaps.map((g, i) => (
+              <li key={i}>{g}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div className="rounded-lg border border-border/60 bg-card p-3">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+          Model answer
+        </p>
+        <p className="text-sm text-foreground/90 leading-relaxed">{fb.modelAnswer}</p>
+      </div>
+    </div>
+  );
+};
+
+// ---- Main component ------------------------------------------------------
+const DemoVivaInteractive = ({
+  question: initialQuestion,
+  topicTitle,
+  exam,
+}: DemoVivaInteractiveProps) => {
+  const [rounds, setRounds] = useState<Round[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState(initialQuestion);
+  const [currentKind, setCurrentKind] = useState<"main" | "followup">("main");
+  const [showAnswerBox, setShowAnswerBox] = useState(true);
+
   const [transcript, setTranscript] = useState("");
   const [interim, setInterim] = useState("");
   const [recording, setRecording] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
   const sttSupported = !!getSpeechRecognitionCtor();
 
-  // Cleanup on unmount.
+  const followupsAsked = rounds.filter((r) => r.kind === "followup").length;
+  const lastFeedback = rounds[rounds.length - 1]?.feedback ?? null;
+  const canAskFollowup =
+    !!lastFeedback?.nextStep &&
+    followupsAsked < MAX_FOLLOWUPS &&
+    !showAnswerBox;
+
+  // Reset session when the parent question changes (e.g. card re-renders).
+  useEffect(() => {
+    setRounds([]);
+    setCurrentQuestion(initialQuestion);
+    setCurrentKind("main");
+    setShowAnswerBox(true);
+    setTranscript("");
+    setInterim("");
+    setError(null);
+    finalisedRef.current = "";
+  }, [initialQuestion]);
+
   useEffect(() => {
     return () => {
       try {
@@ -152,7 +283,7 @@ const DemoVivaInteractive = ({ question, topicTitle, exam }: DemoVivaInteractive
           mode: "feedback",
           topicTitle,
           exam,
-          question,
+          question: currentQuestion,
           transcript: answer,
         },
       });
@@ -160,7 +291,16 @@ const DemoVivaInteractive = ({ question, topicTitle, exam }: DemoVivaInteractive
       if (!data || typeof data !== "object" || !("score" in data)) {
         throw new Error("Unexpected response from examiner.");
       }
-      setFeedback(data as Feedback);
+      const fb = data as Feedback;
+      setRounds((prev) => [
+        ...prev,
+        { question: currentQuestion, kind: currentKind, answer, feedback: fb },
+      ]);
+      // Reset answer box for the next round.
+      setShowAnswerBox(false);
+      setTranscript("");
+      setInterim("");
+      finalisedRef.current = "";
     } catch (err) {
       console.error("Viva feedback failed:", err);
       const msg = err instanceof Error ? err.message : "Could not generate feedback.";
@@ -169,185 +309,166 @@ const DemoVivaInteractive = ({ question, topicTitle, exam }: DemoVivaInteractive
     } finally {
       setSubmitting(false);
     }
-  }, [transcript, topicTitle, exam, question]);
+  }, [transcript, topicTitle, exam, currentQuestion, currentKind]);
 
-  const reset = useCallback(() => {
+  const acceptFollowup = useCallback(() => {
+    if (!lastFeedback?.nextStep) return;
+    setCurrentQuestion(lastFeedback.nextStep);
+    setCurrentKind("followup");
+    setShowAnswerBox(true);
     setTranscript("");
     setInterim("");
-    setFeedback(null);
     setError(null);
     finalisedRef.current = "";
-  }, []);
+  }, [lastFeedback]);
 
-  // ---- Rendered states ------------------------------------------------------
-
-  if (feedback) {
-    return (
-      <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-3">
-        <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-primary" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              AI examiner feedback
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center rounded-full bg-primary/15 text-primary px-2.5 py-0.5 text-xs font-semibold">
-              {feedback.score}/10
-            </span>
-            <span className="text-xs text-foreground/80">{feedback.verdict}</span>
-          </div>
-        </div>
-
-        {feedback.rubricBreakdown?.length > 0 && (
-          <div className="rounded-lg border border-border/60 bg-card p-3">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-              Rubric breakdown
-            </p>
-            <ul className="space-y-1.5 text-sm">
-              {feedback.rubricBreakdown.map((r, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="font-mono text-xs text-primary font-semibold flex-shrink-0 w-10">
-                    {r.awarded}/{r.max}
-                  </span>
-                  <span className="leading-snug">
-                    <span className="font-medium text-foreground">{r.criterion}:</span>{" "}
-                    <span className="text-foreground/80">{r.comment}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {feedback.strengths && feedback.strengths.length > 0 && (
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-              Strengths
-            </p>
-            <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
-              {feedback.strengths.map((s, i) => (
-                <li key={i}>{s}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {feedback.gaps?.length > 0 && (
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-              Gaps
-            </p>
-            <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
-              {feedback.gaps.map((g, i) => (
-                <li key={i}>{g}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <div className="rounded-lg border border-border/60 bg-card p-3">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-            Model answer
-          </p>
-          <p className="text-sm text-foreground/90 leading-relaxed">{feedback.modelAnswer}</p>
-        </div>
-
-        {feedback.nextStep && (
-          <p className="text-xs text-muted-foreground italic">
-            <span className="font-semibold text-foreground/80">Examiner would ask next:</span>{" "}
-            {feedback.nextStep}
-          </p>
-        )}
-
-        <Button type="button" size="sm" variant="outline" onClick={reset}>
-          <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-          Try again
-        </Button>
-      </div>
-    );
-  }
+  const reset = useCallback(() => {
+    setRounds([]);
+    setCurrentQuestion(initialQuestion);
+    setCurrentKind("main");
+    setShowAnswerBox(true);
+    setTranscript("");
+    setInterim("");
+    setError(null);
+    finalisedRef.current = "";
+  }, [initialQuestion]);
 
   return (
-    <div className="rounded-xl border border-border/60 bg-card p-4 space-y-3">
-      <div className="flex items-center gap-2">
-        <Mic className="h-3.5 w-3.5 text-primary" />
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Your answer
-        </span>
-      </div>
+    <div className="space-y-3">
+      {/* Past rounds */}
+      {rounds.map((r, i) => (
+        <FeedbackPanel key={i} round={r} />
+      ))}
 
-      <Textarea
-        value={transcript + (interim ? (transcript ? " " : "") + interim : "")}
-        onChange={(e) => {
-          if (recording) return; // don't let typing fight the recogniser
-          setTranscript(e.target.value);
-          finalisedRef.current = e.target.value.trim() + " ";
-        }}
-        placeholder={
-          sttSupported
-            ? "Tap the mic and answer aloud, or type your answer here…"
-            : "Type your answer here (voice input isn't supported in this browser)…"
-        }
-        rows={4}
-        className="text-sm resize-none"
-        disabled={submitting}
-      />
+      {/* Follow-up CTA */}
+      {canAskFollowup && lastFeedback && (
+        <div className="rounded-xl border border-primary/30 bg-primary/10 p-4 space-y-2">
+          <div className="flex items-center gap-2">
+            <ChevronRight className="h-4 w-4 text-primary" />
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-primary">
+              Examiner follow-up · targeted at your gap
+            </span>
+          </div>
+          <p className="text-sm text-foreground/90 leading-snug italic">
+            "{lastFeedback.nextStep}"
+          </p>
+          <div className="flex items-center gap-2 flex-wrap pt-1">
+            <Button type="button" size="sm" onClick={acceptFollowup}>
+              <ArrowRight className="h-3.5 w-3.5 mr-1.5" />
+              Answer follow-up
+            </Button>
+            <Button type="button" size="sm" variant="outline" onClick={reset}>
+              <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+              Restart
+            </Button>
+            <span className="text-[11px] text-muted-foreground">
+              {MAX_FOLLOWUPS - followupsAsked} follow-up
+              {MAX_FOLLOWUPS - followupsAsked === 1 ? "" : "s"} remaining
+            </span>
+          </div>
+        </div>
+      )}
 
-      {error && <p className="text-xs text-destructive">{error}</p>}
-
-      <div className="flex items-center gap-2 flex-wrap">
-        {sttSupported && (
-          <Button
-            type="button"
-            size="sm"
-            variant={recording ? "destructive" : "secondary"}
-            onClick={recording ? stopRecording : startRecording}
-            disabled={submitting}
-          >
-            {recording ? (
-              <>
-                <MicOff className="h-3.5 w-3.5 mr-1.5" />
-                Stop recording
-              </>
-            ) : (
-              <>
-                <Mic className="h-3.5 w-3.5 mr-1.5" />
-                {transcript ? "Resume recording" : "Start answering"}
-              </>
-            )}
-          </Button>
-        )}
-        <Button
-          type="button"
-          size="sm"
-          onClick={submit}
-          disabled={submitting || recording || !transcript.trim()}
-        >
-          {submitting ? (
-            <>
-              <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
-              Marking…
-            </>
-          ) : (
-            <>
-              <Send className="h-3.5 w-3.5 mr-1.5" />
-              Submit for feedback
-            </>
-          )}
+      {/* End-of-session controls when follow-ups exhausted */}
+      {!showAnswerBox && !canAskFollowup && rounds.length > 0 && (
+        <Button type="button" size="sm" variant="outline" onClick={reset}>
+          <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+          Restart this question
         </Button>
-        {transcript && !recording && !submitting && (
-          <Button type="button" size="sm" variant="ghost" onClick={reset}>
-            Clear
-          </Button>
-        )}
-      </div>
+      )}
 
-      {recording && (
-        <p className="text-[11px] text-muted-foreground">
-          <span className="inline-block h-2 w-2 rounded-full bg-destructive animate-pulse mr-1.5 align-middle" />
-          Listening… speak naturally; tap stop when finished.
-        </p>
+      {/* Active answer box */}
+      {showAnswerBox && (
+        <div className="rounded-xl border border-border/60 bg-card p-4 space-y-3">
+          {currentKind === "followup" && (
+            <div className="rounded-lg border border-primary/20 bg-primary/5 p-3">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-primary mb-1">
+                Follow-up question
+              </p>
+              <p className="text-sm text-foreground/90 italic leading-snug">"{currentQuestion}"</p>
+            </div>
+          )}
+
+          <div className="flex items-center gap-2">
+            <Mic className="h-3.5 w-3.5 text-primary" />
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Your answer
+            </span>
+          </div>
+
+          <Textarea
+            value={transcript + (interim ? (transcript ? " " : "") + interim : "")}
+            onChange={(e) => {
+              if (recording) return;
+              setTranscript(e.target.value);
+              finalisedRef.current = e.target.value.trim() + " ";
+            }}
+            placeholder={
+              sttSupported
+                ? "Tap the mic and answer aloud, or type your answer here…"
+                : "Type your answer here (voice input isn't supported in this browser)…"
+            }
+            rows={4}
+            className="text-sm resize-none"
+            disabled={submitting}
+          />
+
+          {error && <p className="text-xs text-destructive">{error}</p>}
+
+          <div className="flex items-center gap-2 flex-wrap">
+            {sttSupported && (
+              <Button
+                type="button"
+                size="sm"
+                variant={recording ? "destructive" : "secondary"}
+                onClick={recording ? stopRecording : startRecording}
+                disabled={submitting}
+              >
+                {recording ? (
+                  <>
+                    <MicOff className="h-3.5 w-3.5 mr-1.5" />
+                    Stop recording
+                  </>
+                ) : (
+                  <>
+                    <Mic className="h-3.5 w-3.5 mr-1.5" />
+                    {transcript ? "Resume recording" : "Start answering"}
+                  </>
+                )}
+              </Button>
+            )}
+            <Button
+              type="button"
+              size="sm"
+              onClick={submit}
+              disabled={submitting || recording || !transcript.trim()}
+            >
+              {submitting ? (
+                <>
+                  <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
+                  Marking…
+                </>
+              ) : (
+                <>
+                  <Send className="h-3.5 w-3.5 mr-1.5" />
+                  Submit for feedback
+                </>
+              )}
+            </Button>
+            {transcript && !recording && !submitting && (
+              <Button type="button" size="sm" variant="ghost" onClick={reset}>
+                Clear
+              </Button>
+            )}
+          </div>
+
+          {recording && (
+            <p className="text-[11px] text-muted-foreground">
+              <span className="inline-block h-2 w-2 rounded-full bg-destructive animate-pulse mr-1.5 align-middle" />
+              Listening… speak naturally; tap stop when finished.
+            </p>
+          )}
+        </div>
       )}
     </div>
   );
