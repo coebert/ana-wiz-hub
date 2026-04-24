@@ -213,6 +213,24 @@ const FeedbackPanel = ({
         </div>
       )}
 
+      {fb.answerSummary && fb.answerSummary.bullets.length > 0 && (
+        <div className="rounded-lg border border-border/60 bg-card p-3">
+          <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              What you said
+            </p>
+            <span className="text-[10px] text-muted-foreground">
+              ~{fb.answerSummary.wordCount} word{fb.answerSummary.wordCount === 1 ? "" : "s"}
+            </span>
+          </div>
+          <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
+            {fb.answerSummary.bullets.map((b, i) => (
+              <li key={i}>{b}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {fb.coreFeedback && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
           {(["structure", "knowledge", "communication"] as const).map((key) => {
