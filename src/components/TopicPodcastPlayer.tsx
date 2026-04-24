@@ -178,9 +178,16 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
               Listen to this topic
             </h3>
             <p className="text-sm text-muted-foreground mt-0.5">
-              An AI-generated, exam-focused 6-minute podcast based on this topic's content.
+              An AI-generated, exam-focused podcast based on this topic's content.
               First listener waits ~30–60 seconds; everyone after gets it instantly.
             </p>
+            {estimate && (
+              <p className="text-xs text-muted-foreground mt-1.5">
+                <span className="font-medium text-foreground">Estimated: ~{estimate.minutes} min</span>{" "}
+                · ~{estimate.words.toLocaleString()} words
+                <span className="text-muted-foreground/70"> (from {estimate.sourceWords.toLocaleString()}-word source)</span>
+              </p>
+            )}
             {isFailed && podcast?.error && (
               <div className="mt-2 flex items-start gap-2 text-sm text-destructive">
                 <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
