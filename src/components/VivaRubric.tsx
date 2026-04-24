@@ -170,11 +170,20 @@ const RUBRICS: Record<Exam, { label: string; rows: RubricRow[]; passMark: string
   },
 };
 
+interface RubricBreakdownItem {
+  criterion: string;
+  max: number;
+  awarded: number;
+  comment: string;
+}
+
 interface VivaRubricProps {
   exam: Exam;
   score?: number;
   /** Gap bullets returned by the examiner — used to highlight focus rows. */
   gaps?: string[];
+  /** Per-criterion marks awarded by the examiner for THIS answer. */
+  breakdown?: RubricBreakdownItem[];
 }
 
 /**
@@ -189,63 +198,148 @@ function rowMatchesGap(row: RubricRow, gaps: string[]): boolean {
   return tokens.some((t) => gapBlob.includes(t));
 }
 
-const VivaRubric = ({ exam, score, gaps = [] }: VivaRubricProps) => {
+const VivaRubric = ({ exam, score, gaps = [] , breakdown }: VivaRubricProps) => {
   const r = RUBRICS[exam];
+
+  // Build a quick lookup from criterion → awarded marks.
+  const awardedByCriterion = new Map<string, RubricBreakdownItem>();
+  breakdown?.forEach((b) => awardedByCriterion.set(b.criterion.trim().toLowerCase(), b));
+
+  // Top contributors: rows where awarded ≥ 75% of max, sorted by awarded desc.
+  const contributors = (breakdown ?? [])
+    .filter((b) => b.max > 0 && b.awarded / b.max >= 0.75)
+    .sort((a, b) => b.awarded - a.awarded);
+
+  // Focus areas: rows where awarded < 50% of max OR matched by free-text gap.
+  const lowRows = (breakdown ?? [])
+    .filter((b) => b.max > 0 && b.awarded / b.max < 0.5)
+    .sort((a, b) => a.awarded / a.max - b.awarded / b.max);
+
   return (
-    <div className="rounded-lg border border-border bg-card/60 p-4">
-      <div className="flex items-baseline justify-between gap-2 flex-wrap mb-2">
-        <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
-          Marking rubric · {r.label}
-        </p>
-        <p className="text-[11px] text-muted-foreground">{r.passMark}</p>
-      </div>
-      <ul className="divide-y divide-border">
-        {r.rows.map((row) => {
-          const flagged = rowMatchesGap(row, gaps);
-          return (
-            <li key={row.criterion} className="py-2.5 flex gap-3 items-start">
-              <span
-                className={`inline-flex items-center justify-center min-w-8 h-6 rounded text-xs font-bold tabular-nums ${
-                  flagged
-                    ? "bg-amber-500/15 text-amber-700 dark:text-amber-300"
-                    : "bg-primary/10 text-primary"
-                }`}
-              >
-                {row.marks}
-              </span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-sm font-medium text-foreground leading-tight">
-                    {row.criterion}
-                  </p>
-                  {flagged && (
-                    <span className="text-[10px] uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-300">
-                      Focus next
+    <div className="space-y-3">
+      {/* Score-contribution highlights */}
+      {breakdown && breakdown.length > 0 && (
+        <div className="rounded-lg border border-border bg-card/60 p-4 space-y-3">
+          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+            Where your marks came from
+          </p>
+
+          {contributors.length > 0 && (
+            <div>
+              <p className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 mb-1">
+                Top contributors
+              </p>
+              <ul className="space-y-1">
+                {contributors.map((c) => (
+                  <li key={c.criterion} className="flex gap-2 items-start text-sm">
+                    <span className="inline-flex items-center justify-center min-w-10 h-6 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-xs font-bold tabular-nums">
+                      {c.awarded}/{c.max}
                     </span>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground leading-snug">{row.detail}</p>
-                <div className="mt-1.5">
-                  <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-0.5">
-                    Next practice
-                  </p>
-                  <ul className="text-xs text-foreground space-y-0.5 list-disc pl-4">
-                    {row.practice.map((p, i) => <li key={i}>{p}</li>)}
-                  </ul>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-      {typeof score === "number" && (
-        <p className="mt-3 text-xs text-muted-foreground">
-          You scored <span className="font-semibold text-foreground">{score}/10</span>
-          {gaps.length > 0
-            ? " — start with the rows marked Focus next."
-            : " — pick the highest-mark row you felt weakest on and rehearse it now."}
-        </p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground leading-tight">{c.criterion}</p>
+                      <p className="text-xs text-muted-foreground leading-snug">{c.comment}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {lowRows.length > 0 && (
+            <div>
+              <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-400 mb-1">
+                Where you lost marks
+              </p>
+              <ul className="space-y-1">
+                {lowRows.map((c) => (
+                  <li key={c.criterion} className="flex gap-2 items-start text-sm">
+                    <span className="inline-flex items-center justify-center min-w-10 h-6 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300 text-xs font-bold tabular-nums">
+                      {c.awarded}/{c.max}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground leading-tight">{c.criterion}</p>
+                      <p className="text-xs text-muted-foreground leading-snug">{c.comment}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {contributors.length === 0 && lowRows.length === 0 && (
+            <p className="text-xs text-muted-foreground">
+              Marks were spread fairly evenly across the rubric — see the full breakdown below.
+            </p>
+          )}
+        </div>
       )}
+
+      {/* Full rubric */}
+      <div className="rounded-lg border border-border bg-card/60 p-4">
+        <div className="flex items-baseline justify-between gap-2 flex-wrap mb-2">
+          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+            Marking rubric · {r.label}
+          </p>
+          <p className="text-[11px] text-muted-foreground">{r.passMark}</p>
+        </div>
+        <ul className="divide-y divide-border">
+          {r.rows.map((row) => {
+            const awarded = awardedByCriterion.get(row.criterion.trim().toLowerCase());
+            const flagged = !!awarded
+              ? awarded.awarded / awarded.max < 0.5
+              : rowMatchesGap(row, gaps);
+            return (
+              <li key={row.criterion} className="py-2.5 flex gap-3 items-start">
+                <span
+                  className={`inline-flex items-center justify-center min-w-10 h-6 rounded text-xs font-bold tabular-nums ${
+                    flagged
+                      ? "bg-amber-500/15 text-amber-700 dark:text-amber-300"
+                      : awarded
+                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300"
+                        : "bg-primary/10 text-primary"
+                  }`}
+                >
+                  {awarded ? `${awarded.awarded}/${row.marks}` : row.marks}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <p className="text-sm font-medium text-foreground leading-tight">
+                      {row.criterion}
+                    </p>
+                    {flagged && (
+                      <span className="text-[10px] uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-300">
+                        Focus next
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-snug">{row.detail}</p>
+                  {awarded?.comment && (
+                    <p className="text-xs italic text-foreground/80 leading-snug mt-1">
+                      Examiner: {awarded.comment}
+                    </p>
+                  )}
+                  <div className="mt-1.5">
+                    <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-0.5">
+                      Next practice
+                    </p>
+                    <ul className="text-xs text-foreground space-y-0.5 list-disc pl-4">
+                      {row.practice.map((p, i) => <li key={i}>{p}</li>)}
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        {typeof score === "number" && (
+          <p className="mt-3 text-xs text-muted-foreground">
+            You scored <span className="font-semibold text-foreground">{score}/10</span>
+            {(lowRows.length > 0 || gaps.length > 0)
+              ? " — start with the rows marked Focus next."
+              : " — pick the highest-mark row you felt weakest on and rehearse it now."}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
