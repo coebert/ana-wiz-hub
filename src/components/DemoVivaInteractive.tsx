@@ -264,23 +264,44 @@ const FeedbackPanel = ({
         </div>
       )}
 
-      {fb.answerSummary && fb.answerSummary.bullets.length > 0 && (
-        <div className="rounded-lg border border-border/60 bg-card p-3">
-          <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              What you said
-            </p>
-            <span className="text-[10px] text-muted-foreground">
-              ~{fb.answerSummary.wordCount} word{fb.answerSummary.wordCount === 1 ? "" : "s"}
-            </span>
+      {fb.answerSummary && fb.answerSummary.bullets.length > 0 && (() => {
+        // Normalise bullets to {text, tStart, location}, then order by tStart so
+        // they follow the candidate's actual delivery — older responses may
+        // still send plain strings, in which case order is preserved as-is.
+        const normalised = fb.answerSummary.bullets.map((b, i) => {
+          if (typeof b === "string") {
+            return { text: b, tStart: i, location: "" };
+          }
+          return {
+            text: b.text,
+            tStart: typeof b.tStart === "number" ? b.tStart : i,
+            location: b.location ?? "",
+          };
+        });
+        normalised.sort((a, z) => a.tStart - z.tStart);
+        return (
+          <div className="rounded-lg border border-border/60 bg-card p-3">
+            <div className="flex items-center justify-between gap-2 flex-wrap mb-1.5">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                What you said
+              </p>
+              <span className="text-[10px] text-muted-foreground">
+                ~{fb.answerSummary!.wordCount} word{fb.answerSummary!.wordCount === 1 ? "" : "s"} · in spoken order
+              </span>
+            </div>
+            <ol className="text-sm text-foreground/90 space-y-1.5">
+              {normalised.map((b, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="shrink-0 inline-flex items-center rounded-md border border-border/60 bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                    {b.location || `#${i + 1}`}
+                  </span>
+                  <span className="leading-snug">{b.text}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
-            {fb.answerSummary.bullets.map((b, i) => (
-              <li key={i}>{b}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+        );
+      })()}
 
       {fb.coreFeedback && (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
