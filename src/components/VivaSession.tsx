@@ -121,12 +121,16 @@ const VivaSession = ({
   const [difficulty, setDifficulty] = useState<Difficulty>("standard");
   const [avoidRepeats, setAvoidRepeats] = useState(true);
   const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
+  const [prefetchEnabled, setPrefetchEnabled] = useState(true);
+  const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
   /** Approximate timeline of finalised speech chunks (seconds since listening started). */
   const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
   const listenStartRef = useRef<number>(0);
+  /** Background-fetched next question; consumed by fetchQuestion when present. */
+  const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
   const sttSupported = !!getSpeechRecognitionCtor();
   const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
 
