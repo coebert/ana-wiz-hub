@@ -529,6 +529,20 @@ const VivaSession = ({
             <span className="text-[11px] text-amber-700 dark:text-amber-400">retry on next</span>
           )}
         </label>
+
+        <label className="inline-flex items-center gap-2 text-xs text-foreground select-none">
+          <span className="text-muted-foreground">Weak threshold</span>
+          <select
+            value={weakStrictness}
+            onChange={(e) => setWeakStrictness(e.target.value as "lenient" | "balanced" | "strict")}
+            className="h-7 rounded-md border border-border bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+            title="How strict to be when flagging a rubric row as weak for emphasis retakes"
+          >
+            <option value="lenient">Lenient (&lt; 70%)</option>
+            <option value="balanced">Balanced (&lt; 50%)</option>
+            <option value="strict">Strict (&lt; 30%)</option>
+          </select>
+        </label>
       </div>
 
       {/* Browser support warnings */}
