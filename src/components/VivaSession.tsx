@@ -364,7 +364,9 @@ const VivaSession = ({
     recognitionRef.current = rec;
     rec.start();
     setPhase("listening");
-  }, []);
+    // The user is answering — kill any in-flight prefetch to free bandwidth/credits.
+    cancelPrefetch();
+  }, [cancelPrefetch]);
 
   const submitAnswer = useCallback(async () => {
     recognitionRef.current?.stop();
