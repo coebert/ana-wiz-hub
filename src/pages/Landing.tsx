@@ -209,6 +209,14 @@ const Landing = () => {
                       />
                     </div>
 
+                    <div className="mb-4">
+                      <DemoVivaInteractive
+                        question={q.question}
+                        topicTitle={`${q.tag} — demo viva`}
+                        exam={q.difficulty === "Primary" ? "primary" : "final"}
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="rounded-xl border border-border/60 bg-muted/40 p-4">
                         <div className="flex items-center gap-2 mb-2">
