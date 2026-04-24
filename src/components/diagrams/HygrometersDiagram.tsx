@@ -449,41 +449,48 @@ const dewPointSteps: AnimatedMechanismStep[] = [
     label: "Setup",
     detail: (
       <>
-        A polished silver tube contains liquid ether and a thermometer. Its mirrored exterior is observed alongside
-        an identical reference tube. At ambient temperature both look the same.
+        A polished silver tube contains a volatile liquid (ether) and a thermometer. Its mirrored exterior is observed
+        alongside an identical reference (uncooled) tube so the eye can detect the moment the surface dulls. At ambient
+        temperature both tubes look identical.
       </>
     ),
-    callout: "Regnault's hygrometer — the classical dew-point method.",
+    callout: "Regnault's hygrometer — the classical dew-point method and the only one that gives an ABSOLUTE humidity reading directly.",
   },
   {
     label: "Bubble air → cool ether",
     detail: (
       <>
-        Air is bubbled through the ether. Evaporation of the volatile ether absorbs latent heat, progressively cooling
-        the silver tube (and the air immediately adjacent to its surface).
+        Air is bubbled through the ether. Evaporation absorbs latent heat (2.26 kJ/g for water — even higher for ether),
+        progressively cooling the silver wall and the thin layer of room air in contact with it.
       </>
     ),
   },
   {
-    label: "Mist forms",
+    label: "Mist forms = dew point",
     detail: (
       <>
-        When the surface temperature falls to the <strong>dew point</strong>, water vapour in the air begins to condense
-        onto the silver, producing visible misting. The temperature at this exact moment is recorded.
+        Cooling continues until the surface temperature falls to the <strong>dew point (Td)</strong> — the temperature at
+        which the partial pressure of water vapour <em>already in the room air</em> equals the saturated vapour pressure (SVP)
+        at that temperature. Water then condenses out of the air onto the silver as a fine mist. The thermometer reading
+        at the instant misting appears <em>is</em> the dew point.
       </>
     ),
-    callout: "Dew point = temperature at which the partial pressure of water vapour equals the saturated vapour pressure (100% RH).",
+    callout: "Dew point Td: the temperature at which ambient water vapour reaches 100% RH (i.e. PH₂O = SVP(Td)).",
   },
   {
-    label: "Calculate humidity",
+    label: "Convert Td → humidity",
     detail: (
       <>
-        Absolute humidity is read directly from a saturation table at the dew-point temperature. Relative humidity =
-        (SVP at dew point ÷ SVP at ambient temperature) × 100%. Slow but the gold-standard reference method —
-        the principle is also used in modern automated chilled-mirror hygrometers (Peltier-cooled with photo-detection).
+        Look up the saturated vapour pressure at the dew point — this <strong>equals</strong> the actual partial pressure of
+        water vapour in the room (giving absolute humidity in mg/L from standard tables). Relative humidity is then
+        <br />
+        <span className="font-mono text-xs">RH (%) = SVP(Td) / SVP(Tambient) × 100</span>.
+        <br />
+        Slow and observer-dependent, but unaffected by ambient temperature changes — hence the reference standard.
       </>
     ),
-    callout: "Modern electronic chilled-mirror hygrometers use the same principle but cool with a Peltier element and detect dew optically.",
+    callout:
+      "Modern automated equivalent: the chilled-mirror (Peltier-cooled) hygrometer — a thermoelectric cooler chills a tiny mirror while a photodetector watches reflected light fall as dew forms; a feedback loop holds the mirror exactly at Td. Same physics, ±0.1 °C accuracy.",
   },
 ];
 
