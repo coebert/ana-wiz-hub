@@ -476,6 +476,22 @@ Deno.serve(async (req) => {
       }
       return await handleFeedback(body);
     }
+    if (body.mode === "annotate") {
+      if (
+        !body.topicTitle ||
+        !validExams.includes(body.exam) ||
+        !body.question ||
+        !body.modelAnswer ||
+        body.modelAnswer.length > 4000 ||
+        body.question.length > 1000
+      ) {
+        return new Response(JSON.stringify({ error: "Invalid annotate payload" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      return await handleAnnotate(body);
+    }
     return new Response(JSON.stringify({ error: "Unknown mode" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
