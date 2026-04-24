@@ -80,6 +80,7 @@ const MRIPhysicsTopic = () => {
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <MRIPhysicsDiagram />
+            <MRISuiteFloorPlanDiagram />
           </ExamSection>
 
           <ExamSection id="nuclear-spin" exams={[Exam.PRIMARY, Exam.FINAL]}>
