@@ -114,6 +114,30 @@ const PodcastsLibrary = () => {
       backLabel="Home"
       disableAutoTOC
     >
+      {podcasts && podcasts.length > 0 && (
+        <div className="mb-6 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search podcasts by topic, keyword, or section…"
+            aria-label="Search podcasts"
+            className="w-full rounded-lg border border-border bg-card pl-9 pr-9 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear search"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          )}
+        </div>
+      )}
+
       {podcasts === null && (
         <div className="flex items-center gap-2 text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" /> Loading podcasts…
@@ -130,6 +154,12 @@ const PodcastsLibrary = () => {
         <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">
           No podcasts have been generated yet. Open any topic and click{" "}
           <span className="font-medium text-foreground">Generate podcast</span> to create one.
+        </div>
+      )}
+
+      {grouped && grouped.length === 0 && podcasts && podcasts.length > 0 && (
+        <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">
+          No podcasts match “{query}”.
         </div>
       )}
 
