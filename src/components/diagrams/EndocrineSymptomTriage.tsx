@@ -329,7 +329,7 @@ const EndocrineSymptomTriage = () => {
           </div>
 
           {hasInput && top.score > 0 && (
-            <div className={`p-4 rounded-lg border-2 border-${top.dx.tokenClass}/40 bg-${top.dx.tokenClass}/5`}>
+            <div className={`p-4 rounded-lg border-2 ${PANEL_CLASS[top.dx.tokenClass] ?? "border-primary/40 bg-primary/5"}`}>
               <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                 Most likely
               </p>
