@@ -347,10 +347,12 @@ const wetDrySteps: AnimatedMechanismStep[] = [
 /* -------------------- 3. REGNAULT'S DEW-POINT -------------------- */
 
 const DewPointScene = ({ step }: { step: number }) => {
-  // step 0: silver tube clear, T=22 | 1: ether bubbles, T cools | 2: condensation forms (dew) at T=12 | 3: read T = dew point
-  const tubeT = step >= 2 ? 12 : step >= 1 ? 17 : 22;
+  // step 0: silver tube clear, T=22 | 1: ether bubbles, T cools toward Td | 2: T = Td, dew forms | 3: read Td
+  const Td = 12; // dew point in this scenario
+  const tubeT = step >= 2 ? Td : step >= 1 ? 17 : 22;
   const showDew = step >= 2;
   const showBubbles = step >= 1;
+  const atDewPoint = step >= 2;
 
   return (
     <svg viewBox="0 0 360 240" role="img" aria-label="Regnault dew point hygrometer" className="w-full">
@@ -409,6 +411,31 @@ const DewPointScene = ({ step }: { step: number }) => {
         {tubeT}°C
       </text>
 
+      {/* Td target marker on the thermometer */}
+      {showBubbles && (
+        <g className="animate-fade-in">
+          <line
+            x1="170"
+            y1={90 - (Td - 5)}
+            x2="158"
+            y2={90 - (Td - 5)}
+            stroke="hsl(var(--primary))"
+            strokeWidth="1.2"
+            strokeDasharray="3 2"
+          />
+          <text
+            x="156"
+            y={94 - (Td - 5)}
+            textAnchor="end"
+            fontSize="8"
+            fill="hsl(var(--primary))"
+            fontWeight="bold"
+          >
+            Td = {Td}°C
+          </text>
+        </g>
+      )}
+
       {/* Dew/mist forming on outside */}
       {showDew && (
         <g className="animate-fade-in">
@@ -422,8 +449,33 @@ const DewPointScene = ({ step }: { step: number }) => {
               opacity="0.7"
             />
           ))}
-          <text x="180" y="170" textAnchor="middle" fontSize="9" fontWeight="bold" fill="hsl(var(--primary))">
-            Mist appears → dew point reached
+        </g>
+      )}
+
+      {/* Status banner — explicit cooling vs misting state */}
+      {showBubbles && (
+        <g className="animate-fade-in">
+          <rect
+            x="60"
+            y="160"
+            width="240"
+            height="26"
+            rx="6"
+            fill={atDewPoint ? "hsl(var(--primary) / 0.15)" : "hsl(var(--muted))"}
+            stroke={atDewPoint ? "hsl(var(--primary))" : "hsl(var(--border))"}
+            strokeWidth="1.2"
+          />
+          <text
+            x="180"
+            y="178"
+            textAnchor="middle"
+            fontSize="10"
+            fontWeight="bold"
+            fill={atDewPoint ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+          >
+            {atDewPoint
+              ? `Misting begins — T = Td (${Td}°C)`
+              : `Cooling… T = ${tubeT}°C  >  Td`}
           </text>
         </g>
       )}
@@ -436,8 +488,8 @@ const DewPointScene = ({ step }: { step: number }) => {
       </g>
 
       {/* Reference (control) tube outline */}
-      <rect x="80" y="190" width="200" height="20" rx="4" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" />
-      <text x="180" y="204" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
+      <rect x="80" y="200" width="200" height="20" rx="4" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" />
+      <text x="180" y="214" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">
         Reference (uncooled) silver tube — compare appearance
       </text>
     </svg>
