@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
+import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 const TopicMap = lazy(() => import("./pages/TopicMap"));
@@ -179,7 +180,8 @@ const App = () => (
         <VisitTrackerWrapper>
         <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="/revise" element={<Index />} />
           <Route path="/map" element={<TopicMap />} />
           <Route path="/progress" element={<ProgressTracker />} />
           <Route path="/podcasts" element={<PodcastsLibrary />} />
