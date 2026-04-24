@@ -349,11 +349,17 @@ const EndocrineSymptomTriage = () => {
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground flex items-center gap-1 mb-1.5">
                   <FlaskConical className="h-3 w-3" /> Required investigations
                 </p>
-                <ul className="space-y-1">
+                <ul className="space-y-2">
                   {top.dx.investigations.map((inv, i) => (
                     <li key={i} className="text-xs text-foreground flex gap-1.5">
                       <span className="text-muted-foreground shrink-0">{i + 1}.</span>
-                      <span>{inv}</span>
+                      <div className="space-y-0.5">
+                        <p>{inv.test}</p>
+                        <p className="text-[10px] leading-snug text-muted-foreground italic">
+                          <span className="not-italic font-semibold uppercase tracking-wider text-[9px] mr-1">Why</span>
+                          {inv.why}
+                        </p>
+                      </div>
                     </li>
                   ))}
                 </ul>
