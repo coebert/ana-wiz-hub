@@ -175,6 +175,15 @@ interface RubricBreakdownItem {
   max: number;
   awarded: number;
   comment: string;
+  quote?: string;
+  tStart?: number;
+}
+
+function formatTime(secs: number): string {
+  const s = Math.max(0, Math.round(secs));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return `${m}:${String(r).padStart(2, "0")}`;
 }
 
 interface VivaRubricProps {
@@ -259,6 +268,16 @@ const VivaRubric = ({ exam, score, gaps = [] , breakdown }: VivaRubricProps) => 
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-foreground leading-tight">{c.criterion}</p>
                       <p className="text-xs text-muted-foreground leading-snug">{c.comment}</p>
+                      {c.quote && (
+                        <blockquote className="mt-1 border-l-2 border-amber-500/50 pl-2 py-0.5 text-xs italic text-foreground/80 leading-snug">
+                          {typeof c.tStart === "number" && (
+                            <span className="not-italic font-mono text-[10px] text-muted-foreground mr-1.5 tabular-nums">
+                              [{formatTime(c.tStart)}]
+                            </span>
+                          )}
+                          "{c.quote}"
+                        </blockquote>
+                      )}
                     </div>
                   </li>
                 ))}
@@ -317,6 +336,16 @@ const VivaRubric = ({ exam, score, gaps = [] , breakdown }: VivaRubricProps) => 
                     <p className="text-xs italic text-foreground/80 leading-snug mt-1">
                       Examiner: {awarded.comment}
                     </p>
+                  )}
+                  {awarded?.quote && (
+                    <blockquote className="mt-1 border-l-2 border-amber-500/50 pl-2 py-0.5 text-xs italic text-foreground/80 leading-snug">
+                      {typeof awarded.tStart === "number" && (
+                        <span className="not-italic font-mono text-[10px] text-muted-foreground mr-1.5 tabular-nums">
+                          [{formatTime(awarded.tStart)}]
+                        </span>
+                      )}
+                      You said: "{awarded.quote}"
+                    </blockquote>
                   )}
                   <div className="mt-1.5">
                     <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-0.5">

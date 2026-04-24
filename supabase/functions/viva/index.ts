@@ -32,12 +32,20 @@ interface QuestionBody {
   avoid?: string[];
 }
 
+interface TranscriptSegment {
+  /** Approximate seconds from the start of the answer. */
+  tStart: number;
+  text: string;
+}
+
 interface FeedbackBody {
   mode: "feedback";
   topicTitle: string;
   exam: Exam;
   question: string;
   transcript: string;
+  /** Optional approximate timeline of what the candidate said. */
+  segments?: TranscriptSegment[];
 }
 
 type Body = QuestionBody | FeedbackBody;
@@ -194,13 +202,20 @@ async function handleFeedback(b: FeedbackBody): Promise<Response> {
     .map((r, i) => `${i + 1}. ${r.criterion} (max ${r.max})`)
     .join("\n");
 
+  const segmentsBlock = b.segments && b.segments.length > 0
+    ? `\n\nApproximate spoken timeline (seconds from start of answer → text). Use these EXACT snippets when quoting:\n${b.segments
+        .slice(0, 60)
+        .map((s) => `[${Math.max(0, Math.round(s.tStart))}s] ${s.text}`)
+        .join("\n")}`
+    : "";
+
   const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that was asked aloud:
 """${b.question}"""
 
 Candidate's spoken answer (auto-transcribed — expect minor speech-to-text errors, do NOT penalise spelling):
-"""${b.transcript}"""
+"""${b.transcript}"""${segmentsBlock}
 
 Mark this answer as a fair UK viva examiner would. Be constructive, specific, and direct.
 
@@ -219,6 +234,8 @@ Provide:
     • max (the max marks for that row)
     • awarded (integer 0..max — your honest mark for that row)
     • comment (one short sentence explaining the mark)
+    • quote (OPTIONAL — for rows scoring < 50% of max, include a SHORT verbatim snippet (≤ 20 words) copied from the timeline above that best illustrates the weakness; for rows scoring ≥ 50% you may omit. NEVER invent words the candidate did not say.)
+    • tStart (OPTIONAL — when you include a quote, the seconds value from the timeline line that contains it)
   The awarded marks MUST sum to the overall score.
 
 Return JSON via the tool call only.`;
@@ -253,6 +270,8 @@ Return JSON via the tool call only.`;
                     max: { type: "integer", minimum: 0, maximum: 10 },
                     awarded: { type: "integer", minimum: 0, maximum: 10 },
                     comment: { type: "string" },
+                    quote: { type: "string" },
+                    tStart: { type: "number", minimum: 0 },
                   },
                   required: ["criterion", "max", "awarded", "comment"],
                   additionalProperties: false,
@@ -349,7 +368,8 @@ Deno.serve(async (req) => {
         !body.question ||
         !body.transcript ||
         body.transcript.length > 5000 ||
-        body.question.length > 1000
+        body.question.length > 1000 ||
+        (body.segments && (!Array.isArray(body.segments) || body.segments.length > 200))
       ) {
         return new Response(JSON.stringify({ error: "Invalid feedback payload" }), {
           status: 400,
