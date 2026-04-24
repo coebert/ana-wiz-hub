@@ -154,8 +154,17 @@ const VivaSession = ({
    * - balanced: below 50% (default — only clearly underperforming rows)
    * - strict: below 30% (only severe gaps trigger an emphasis retake)
    */
-  const [weakStrictness, setWeakStrictness] = useState<"lenient" | "balanced" | "strict">("balanced");
+  const [weakStrictness, setWeakStrictness] = useState<WeakStrictness>(() =>
+    loadStrictness(topicId, exam, "standard"),
+  );
   const weakThreshold = weakStrictness === "lenient" ? 0.7 : weakStrictness === "strict" ? 0.3 : 0.5;
+
+  // Reload the saved strictness whenever the (topic, exam, difficulty) tuple changes
+  // so the user's per-topic / per-difficulty preference stays consistent on switch.
+  useEffect(() => {
+    setWeakStrictness(loadStrictness(topicId, exam, difficulty));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topicId, exam, difficulty]);
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
