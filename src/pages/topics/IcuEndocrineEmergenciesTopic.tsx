@@ -8,7 +8,37 @@ import AdrenalCrisisAnimation from "@/components/diagrams/AdrenalCrisisAnimation
 import DKAvsHHSDiagram from "@/components/diagrams/DKAvsHHSDiagram";
 import EndocrineEmergencyAlgorithms from "@/components/diagrams/EndocrineEmergencyAlgorithms";
 import EndocrineEmergencyDrugs from "@/components/diagrams/EndocrineEmergencyDrugs";
+import GuidelineSources, { type GuidelineSource } from "@/components/GuidelineSources";
 import { Exam } from "@/data/curriculum";
+
+// Section-specific guideline references (BJA Education + primary guidelines)
+const HYPERGLYCAEMIC_SOURCES: GuidelineSource[] = [
+  { label: "JBDS-IP — DKA in adults (2023)", url: "https://abcd.care/sites/default/files/site_uploads/JBDS_Guidelines_Current/JBDS_02_DKA_Guideline_with_QR_code_March_2023.pdf", detail: "Joint British Diabetes Societies fixed-rate insulin protocol, K⁺ replacement and resolution criteria." },
+  { label: "JBDS-IP — HHS in adults (2022)", url: "https://abcd.care/sites/default/files/site_uploads/JBDS_Guidelines_Current/JBDS_06_The_Management_of_the_Hyperosmolar_Hyperglycaemic_State_HHS_in_Adults_FINAL_0.pdf", detail: "HHS diagnosis (osmolality > 320, glucose > 30, pH > 7.30), fluid-first strategy, low-rate insulin." },
+  { label: "BJA Educ — DKA & HHS perioperative", url: "https://www.bjaed.org/article/S2058-5349(22)00076-1/fulltext", detail: "Perioperative recognition and management of hyperglycaemic emergencies." },
+  { label: "NICE NG28 — Type 2 diabetes", url: "https://www.nice.org.uk/guidance/ng28", detail: "SGLT2 inhibitor cessation and euglycaemic DKA risk." },
+];
+
+const THYROID_SOURCES: GuidelineSource[] = [
+  { label: "ATA 2016 — Hyperthyroidism guideline", url: "https://www.thyroid.org/wp-content/uploads/publications/guidelines/2016/ATA-2016-Hyperthyroidism-Guidelines.pdf", detail: "American Thyroid Association management of thyroid storm — 5-step block & support." },
+  { label: "Burch & Wartofsky 1993", url: "https://pubmed.ncbi.nlm.nih.gov/8325286/", detail: "Original Burch-Wartofsky Point Scale for thyroid storm severity." },
+  { label: "BJA Educ — Thyroid disease & anaesthesia", url: "https://www.bjaed.org/article/S2058-5349(20)30005-X/fulltext", detail: "Perioperative thyroid emergencies including storm and myxoedema coma." },
+  { label: "Endocrine Society — Myxoedema coma review", url: "https://academic.oup.com/jcem/article/99/8/2745/2538045", detail: "Diagnosis and IV T3/T4 + hydrocortisone management of myxoedema coma." },
+];
+
+const ADRENAL_PITUITARY_SOURCES: GuidelineSource[] = [
+  { label: "Bornstein 2016 — Endocrine Society Addison's", url: "https://academic.oup.com/jcem/article/101/2/364/2810222", detail: "Diagnosis and treatment of primary adrenal insufficiency including crisis (hydrocortisone 100 mg IV)." },
+  { label: "BJA Educ — Adrenal disease & anaesthesia", url: "https://www.bjaed.org/article/S2058-5349(17)30068-9/fulltext", detail: "Perioperative steroid cover and management of adrenal crisis." },
+  { label: "AAGBI 2020 — Perioperative steroid cover", url: "https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/10.1111/anae.14963", detail: "Stress-dose steroids for surgery in HPA-suppressed patients." },
+  { label: "BJA Educ — Phaeochromocytoma", url: "https://www.bjaed.org/article/S2058-5349(16)30139-4/fulltext", detail: "α-blockade first; never β-blocker alone." },
+  { label: "Society for Endocrinology — Pituitary apoplexy", url: "https://www.endocrinology.org/clinical-practice/clinical-guidance/uk-guidelines-for-the-management-of-pituitary-apoplexy/", detail: "UK guideline — hydrocortisone before thyroxine, urgent neurosurgical referral." },
+];
+
+const PITFALLS_SOURCES: GuidelineSource[] = [
+  { label: "BJA Educ — Etomidate & adrenal suppression", url: "https://www.bjaed.org/article/S2058-5349(17)30068-9/fulltext", detail: "Single dose suppresses 11β-hydroxylase ~24 h." },
+  { label: "MHRA — SGLT2 inhibitors & DKA", url: "https://www.gov.uk/drug-safety-update/sglt2-inhibitors-monitor-ketones-in-blood-during-treatment-interruption-for-surgical-procedures-or-acute-serious-medical-illness", detail: "Stop ≥ 3 days pre-op; monitor ketones — euglycaemic DKA risk." },
+  { label: "BJA Educ — Vasopressors in shock", url: "https://www.bjaed.org/article/S2058-5349(19)30075-1/fulltext", detail: "Differential for catecholamine-resistant shock including adrenal insufficiency." },
+];
 
 const objectives = [
   "Recognise and treat diabetic ketoacidosis using the JBDS-IP fixed-rate insulin protocol, including the potassium paradox",
