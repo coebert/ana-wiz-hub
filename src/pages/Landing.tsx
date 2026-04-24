@@ -3,6 +3,7 @@ import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDow
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
 import DemoVivaPlayer from "@/components/DemoVivaPlayer";
+import DemoVivaInteractive from "@/components/DemoVivaInteractive";
 
 interface LandingChoice {
   title: string;
