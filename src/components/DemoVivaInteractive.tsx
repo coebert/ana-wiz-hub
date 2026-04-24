@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronRight,
+  Highlighter,
   Loader2,
   Mic,
   MicOff,
