@@ -353,7 +353,6 @@ const RefeedingScene = ({ active }: { active: number }) => {
             {showThiamineTip && (
               <foreignObject x="-150" y="-118" width="240" height="118" className="overflow-visible">
                 <div
-                  xmlns="http://www.w3.org/1999/xhtml"
                   className="rounded-md border border-physiology/60 bg-card text-foreground shadow-lg p-2.5 text-[10px] leading-snug animate-fade-in"
                   role="tooltip"
                 >
