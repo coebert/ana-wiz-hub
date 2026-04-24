@@ -205,6 +205,8 @@ const VivaSession = ({
     }
     window.speechSynthesis?.cancel();
     finalTranscriptRef.current = "";
+    segmentsRef.current = [];
+    listenStartRef.current = Date.now();
     setInterim("");
     setTranscript("");
 
@@ -217,7 +219,16 @@ const VivaSession = ({
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
         if (r.isFinal) {
-          finalTranscriptRef.current += r[0].transcript + " ";
+          const text = r[0].transcript.trim();
+          if (text) {
+            const tStart = Math.max(0, (Date.now() - listenStartRef.current) / 1000);
+            // Approximate: assume each finalised chunk ENDS now, so its start
+            // is 'now − estimated duration' (≈ 0.35s per word). Clamp ≥ 0.
+            const wordCount = text.split(/\s+/).length;
+            const approxStart = Math.max(0, tStart - wordCount * 0.35);
+            segmentsRef.current.push({ tStart: Math.round(approxStart), text });
+            finalTranscriptRef.current += text + " ";
+          }
         } else {
           interimChunk += r[0].transcript;
         }
