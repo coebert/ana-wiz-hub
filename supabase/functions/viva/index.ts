@@ -30,6 +30,8 @@ interface QuestionBody {
   difficulty?: Difficulty;
   /** Recently-asked question stems to avoid repeating. */
   avoid?: string[];
+  /** Rubric criteria the next question should weight towards (the candidate's weak rows). */
+  emphasise?: string[];
 }
 
 interface TranscriptSegment {
