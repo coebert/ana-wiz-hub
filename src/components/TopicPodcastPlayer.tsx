@@ -64,7 +64,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     };
   }, [topicId]);
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (opts?: { force?: boolean; regeneratePassword?: string }) => {
     setGenerating(true);
     try {
       const content = extractTopicContent();
@@ -75,7 +75,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         });
         return;
       }
-      const result = await generatePodcast(topicId, topicTitle, content);
+      const result = await generatePodcast(topicId, topicTitle, content, opts);
 
       // If the backend says another generation is already in flight (likely
       // started in another tab or just before this click), poll the cached
@@ -105,6 +105,17 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     } finally {
       setGenerating(false);
     }
+  };
+
+  const handleRegenerate = async () => {
+    const pw = window.prompt("Enter regeneration password:");
+    if (!pw) return;
+    // Reset player state so the user sees the generation UI immediately.
+    setPodcast(null);
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    await handleGenerate({ force: true, regeneratePassword: pw });
   };
 
   // Audio element wiring
