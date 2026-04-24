@@ -500,84 +500,28 @@ const LabsPanel = ({ active }: { active: number }) => {
           const arrow = low ? "↓" : high ? "↑" : "";
           const g = GLOSSARY[it.key];
           return (
-            <Popover key={it.key}>
-              <PopoverTrigger asChild>
-                <button
-                  type="button"
-                  aria-label={`${g.full} — clinical glossary`}
-                  className={`text-left rounded-md border px-2 py-1.5 transition-colors duration-500 hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 ${tone}`}
+            <LabGlossaryPopover key={it.key} labKey={it.key} overrides={REFEEDING_OVERRIDES[it.key]}>
+              <button
+                type="button"
+                aria-label={`${it.label} — clinical glossary`}
+                className={`text-left rounded-md border px-2 py-1.5 transition-colors duration-500 hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 ${tone}`}
+              >
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[10px] font-semibold">{it.label}</span>
+                  <span className="text-[9px] opacity-70">
+                    {lo}–{hi}
+                  </span>
+                </div>
+                <div
+                  key={`${it.key}-${active}`}
+                  className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-[10px] font-semibold">{it.label}</span>
-                    <span className="text-[9px] opacity-70">
-                      {lo}–{hi}
-                    </span>
-                  </div>
-                  <div
-                    key={`${it.key}-${active}`}
-                    className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
-                  >
-                    {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
-                    <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
-                  </div>
-                  <div className="text-[9px] opacity-60">{unit}</div>
-                </button>
-              </PopoverTrigger>
-              <PopoverContent side="top" align="center" className="w-72 text-xs p-3">
-                <p className="font-serif font-semibold text-foreground text-sm leading-tight">
-                  {g.full}
-                </p>
-                <p className="text-[10px] text-muted-foreground mt-0.5">
-                  Reference range {lo}–{hi} {unit}
-                </p>
-                <dl className="mt-2 space-y-1.5">
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Typical refeeding trend</dt>
-                    <dd className="text-foreground leading-snug">{g.trend}</dd>
-                    <dd className="mt-1 flex flex-wrap gap-1">
-                      {g.trendSources.map((s) => (
-                        <a
-                          key={s.label}
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={s.quote}
-                          className="inline-flex items-center gap-0.5 rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-colors"
-                        >
-                          {s.label} <span aria-hidden="true">↗</span>
-                        </a>
-                      ))}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Why it changes</dt>
-                    <dd className="text-muted-foreground leading-snug">{g.why}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Clinical effects</dt>
-                    <dd className="text-muted-foreground leading-snug">{g.clinical}</dd>
-                  </div>
-                  <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1">
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-primary">Action</dt>
-                    <dd className="text-foreground leading-snug">{g.threshold}</dd>
-                    <dd className="mt-1 flex flex-wrap gap-1">
-                      {g.actionSources.map((s) => (
-                        <a
-                          key={s.label}
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={s.quote}
-                          className="inline-flex items-center gap-0.5 rounded border border-primary/30 bg-card px-1.5 py-0.5 text-[9px] font-medium text-primary hover:bg-primary/10 transition-colors"
-                        >
-                          {s.label} <span aria-hidden="true">↗</span>
-                        </a>
-                      ))}
-                    </dd>
-                  </div>
-                </dl>
-              </PopoverContent>
-            </Popover>
+                  {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
+                  <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
+                </div>
+                <div className="text-[9px] opacity-60">{unit}</div>
+              </button>
+            </LabGlossaryPopover>
           );
         })}
       </div>
