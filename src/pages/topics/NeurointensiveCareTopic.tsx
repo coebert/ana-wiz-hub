@@ -6,6 +6,7 @@ import { neurointensiveCareQuestions } from "@/data/quizzes";
 import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevicesDiagram";
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
+import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
