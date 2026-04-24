@@ -465,6 +465,9 @@ const DemoVivaInteractive = ({
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalisedRef = useRef<string>("");
+  /** Approximate timeline of finalised speech chunks during the current recording. */
+  const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
+  const recordingStartRef = useRef<number>(0);
   const sttSupported = !!getSpeechRecognitionCtor();
 
   const followupsAsked = rounds.filter((r) => r.kind === "followup").length;
@@ -506,6 +509,9 @@ const DemoVivaInteractive = ({
     setError(null);
     finalisedRef.current = transcript ? transcript.trim() + " " : "";
     setInterim("");
+    // Reset the timeline for this recording session.
+    segmentsRef.current = [];
+    recordingStartRef.current = Date.now();
 
     const r = new Ctor();
     r.lang = "en-GB";
@@ -518,6 +524,14 @@ const DemoVivaInteractive = ({
         const res = e.results[i];
         const text = res[0]?.transcript ?? "";
         if (res.isFinal) {
+          const trimmed = text.trim();
+          if (trimmed) {
+            const tStart = Math.max(
+              0,
+              Math.round((Date.now() - recordingStartRef.current) / 1000),
+            );
+            segmentsRef.current.push({ tStart, text: trimmed });
+          }
           finalisedRef.current += text + " ";
         } else {
           interimText += text;
