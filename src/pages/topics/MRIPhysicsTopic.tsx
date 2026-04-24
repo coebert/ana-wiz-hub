@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
+import MRISuiteFloorPlanDiagram from "@/components/diagrams/MRISuiteFloorPlanDiagram";
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -79,6 +80,7 @@ const MRIPhysicsTopic = () => {
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-4">Interactive Diagrams</h2>
             <MRIPhysicsDiagram />
+            <MRISuiteFloorPlanDiagram />
           </ExamSection>
 
           <ExamSection id="nuclear-spin" exams={[Exam.PRIMARY, Exam.FINAL]}>
