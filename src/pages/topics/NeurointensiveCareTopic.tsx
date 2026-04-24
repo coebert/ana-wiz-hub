@@ -7,6 +7,7 @@ import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevi
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
+import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
