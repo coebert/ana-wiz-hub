@@ -278,6 +278,15 @@ Return JSON via the tool call only.`;
             properties: {
               score: { type: "integer", minimum: 0, maximum: 10 },
               verdict: { type: "string" },
+              answerSummary: {
+                type: "object",
+                properties: {
+                  bullets: { type: "array", items: { type: "string" } },
+                  wordCount: { type: "integer", minimum: 0 },
+                },
+                required: ["bullets", "wordCount"],
+                additionalProperties: false,
+              },
               coreFeedback: {
                 type: "object",
                 properties: {
