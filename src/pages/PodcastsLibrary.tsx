@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Download, ExternalLink, Loader2 } from "lucide-react";
+import { Headphones, Download, ExternalLink, Loader2, Search, X } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -29,6 +29,7 @@ const formatDuration = (s: number | null) => {
 const PodcastsLibrary = () => {
   const [podcasts, setPodcasts] = useState<ResolvedPodcast[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -66,10 +67,24 @@ const PodcastsLibrary = () => {
     };
   }, []);
 
-  const grouped = useMemo(() => {
+  const filtered = useMemo(() => {
     if (!podcasts) return null;
+    const q = query.trim().toLowerCase();
+    if (!q) return podcasts;
+    return podcasts.filter((p) => {
+      const sectionLabel = p.section ? sectionMeta[p.section].label.toLowerCase() : "";
+      return (
+        p.topic_title.toLowerCase().includes(q) ||
+        p.topic_id.toLowerCase().includes(q) ||
+        sectionLabel.includes(q)
+      );
+    });
+  }, [podcasts, query]);
+
+  const grouped = useMemo(() => {
+    if (!filtered) return null;
     const map = new Map<Section | "_other", ResolvedPodcast[]>();
-    for (const p of podcasts) {
+    for (const p of filtered) {
       const key = p.section ?? "_other";
       if (!map.has(key)) map.set(key, []);
       map.get(key)!.push(p);
@@ -99,6 +114,30 @@ const PodcastsLibrary = () => {
       backLabel="Home"
       disableAutoTOC
     >
+      {podcasts && podcasts.length > 0 && (
+        <div className="mb-6 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search podcasts by topic, keyword, or section…"
+            aria-label="Search podcasts"
+            className="w-full rounded-lg border border-border bg-card pl-9 pr-9 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40"
+          />
+          {query && (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear search"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          )}
+        </div>
+      )}
+
       {podcasts === null && (
         <div className="flex items-center gap-2 text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" /> Loading podcasts…
@@ -115,6 +154,12 @@ const PodcastsLibrary = () => {
         <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">
           No podcasts have been generated yet. Open any topic and click{" "}
           <span className="font-medium text-foreground">Generate podcast</span> to create one.
+        </div>
+      )}
+
+      {grouped && grouped.length === 0 && podcasts && podcasts.length > 0 && (
+        <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">
+          No podcasts match “{query}”.
         </div>
       )}
 
