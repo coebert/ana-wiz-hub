@@ -260,7 +260,9 @@ const VivaSession = ({
       prefetchedRef.current = null;
       setPrefetchStatus("idle");
     }
-  }, [difficulty]);
+    // Any in-flight prefetch was for the old difficulty — cancel it.
+    cancelPrefetch();
+  }, [difficulty, cancelPrefetch]);
 
   /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
   const retakeWithEmphasis = useCallback(async () => {
