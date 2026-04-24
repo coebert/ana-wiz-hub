@@ -185,6 +185,8 @@ const VivaSession = ({
   /** Approximate timeline of finalised speech chunks (seconds since listening started). */
   const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
   const listenStartRef = useRef<number>(0);
+  /** Per-finalised-segment confidence values, surfaced via MicConfidenceMeter. */
+  const [confSegments, setConfSegments] = useState<ConfidenceSegment[]>([]);
   /** Background-fetched next question; consumed by fetchQuestion when present. */
   const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
   /** AbortController for any in-flight background prefetch. */
