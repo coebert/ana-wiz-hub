@@ -626,7 +626,14 @@ const VivaSession = ({
             <p className="text-sm text-foreground italic">{feedback.nextStep}</p>
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2 flex-wrap">
+            {(feedback.rubricBreakdown ?? []).some(
+              (b) => b.max > 0 && b.awarded / b.max < 0.5,
+            ) && (
+              <Button onClick={retakeWithEmphasis} variant="default" size="sm">
+                <Target className="h-3.5 w-3.5 mr-1.5" /> Retake with different emphasis
+              </Button>
+            )}
             <Button onClick={fetchQuestion} variant="outline" size="sm">
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
             </Button>
