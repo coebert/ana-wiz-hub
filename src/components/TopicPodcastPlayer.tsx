@@ -3,6 +3,7 @@ import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Downloa
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
+  estimatePodcastTarget,
   extractTopicContent,
   fetchPodcast,
   generatePodcast,
