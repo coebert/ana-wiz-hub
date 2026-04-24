@@ -105,6 +105,31 @@ function saveAsked(topicId: string, exam: Exam, list: string[]) {
   } catch { /* quota — ignore */ }
 }
 
+type WeakStrictness = "lenient" | "balanced" | "strict";
+const STRICTNESS_KEY = (topicId: string, exam: Exam, difficulty: Difficulty) =>
+  `viva:weakStrictness:${exam}:${topicId}:${difficulty}`;
+
+function loadStrictness(topicId: string, exam: Exam, difficulty: Difficulty): WeakStrictness {
+  if (typeof window === "undefined") return "balanced";
+  try {
+    const raw = window.localStorage.getItem(STRICTNESS_KEY(topicId, exam, difficulty));
+    if (raw === "lenient" || raw === "balanced" || raw === "strict") return raw;
+  } catch { /* ignore */ }
+  return "balanced";
+}
+
+function saveStrictness(
+  topicId: string,
+  exam: Exam,
+  difficulty: Difficulty,
+  value: WeakStrictness,
+) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(STRICTNESS_KEY(topicId, exam, difficulty), value);
+  } catch { /* quota — ignore */ }
+}
+
 const VivaSession = ({
   topicId,
   topicTitle,
