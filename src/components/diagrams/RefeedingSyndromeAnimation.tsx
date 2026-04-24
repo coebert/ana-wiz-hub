@@ -131,6 +131,8 @@ const RefeedingScene = ({ active }: { active: number }) => {
     { label: "Sequelae", sub: "Arrhythmia · Wernicke · resp failure", token: "destructive" },
   ];
 
+  const [showThiamineTip, setShowThiamineTip] = useState(false);
+
   // Compartment shift — extracellular bar shrinks, intracellular bar grows
   // once the insulin step is reached.
   const shifted = active >= 2;
@@ -141,7 +143,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
     <div className="w-full">
       <svg
         viewBox="0 0 380 280"
-        className="w-full h-auto"
+        className="w-full h-auto overflow-visible"
         role="img"
         aria-label="Refeeding syndrome cascade — five-step pathophysiology"
       >
