@@ -218,7 +218,7 @@ export default function ArrestTimeWindowWidget() {
           )}
         </div>
 
-        <div className={`rounded-lg border p-3 ${toneClasses[current.tone]}`}>
+        <div className={`rounded-lg border p-3 min-h-[180px] sm:min-h-[150px] ${toneClasses[current.tone]}`}>
           <div className="flex items-center gap-2 mb-1">
             <span
               className="inline-block w-2 h-2 rounded-full"
