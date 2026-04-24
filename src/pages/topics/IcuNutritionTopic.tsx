@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { icuNutritionQuestions } from "@/data/quizzes";
 import RefeedingRiskCalculatorDiagram from "@/components/diagrams/RefeedingRiskCalculatorDiagram";
+import RefeedingSyndromeAnimation from "@/components/diagrams/RefeedingSyndromeAnimation";
 import EnergyProteinTargetDiagram from "@/components/diagrams/EnergyProteinTargetDiagram";
 import { Exam } from "@/data/curriculum";
 
