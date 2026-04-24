@@ -52,7 +52,13 @@ interface RequestBody {
   topicId: string;
   topicTitle: string;
   content: string; // plain text extracted from the topic page
+  force?: boolean; // bypass cache and regenerate (requires regeneratePassword)
+  regeneratePassword?: string;
 }
+
+// Shared secret that authorises bypassing the cached podcast and regenerating
+// from scratch. Owner-only — surfaced via a hidden UI control.
+const REGENERATE_PASSWORD = "555368";
 
 interface FailurePayload {
   status: "failed";
@@ -343,10 +349,16 @@ Deno.serve(async (req) => {
   const supabase = createClient(SUPABASE_URL, SERVICE_ROLE);
 
   try {
-    const { topicId, topicTitle, content } = (await req.json()) as RequestBody;
+    const { topicId, topicTitle, content, force, regeneratePassword } = (await req.json()) as RequestBody;
 
     if (!topicId || !topicTitle || !content) {
       return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
+    }
+
+    // Validate force-regenerate password before doing anything else.
+    const forceRegenerate = force === true;
+    if (forceRegenerate && regeneratePassword !== REGENERATE_PASSWORD) {
+      return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
     }
 
     const { data: existing } = await supabase
@@ -355,7 +367,7 @@ Deno.serve(async (req) => {
       .eq("topic_id", topicId)
       .maybeSingle();
 
-    if (existing?.status === "ready" && existing.audio_path) {
+    if (!forceRegenerate && existing?.status === "ready" && existing.audio_path) {
       const { data: pub } = supabase.storage.from("podcasts").getPublicUrl(existing.audio_path);
       return jsonResponse({
         status: "ready",
@@ -370,7 +382,8 @@ Deno.serve(async (req) => {
     // (edge function crashed, user closed tab mid-run, etc.) and allow a retry.
     // The previous behaviour silently rejected the request, which made the
     // "Generate podcast" button appear broken on those topics.
-    if (existing?.status === "generating") {
+    // A force-regenerate also bypasses the in-progress guard.
+    if (!forceRegenerate && existing?.status === "generating") {
       const updatedAtMs = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
       const ageMs = Date.now() - updatedAtMs;
       const STALE_AFTER_MS = 3 * 60 * 1000;
@@ -378,6 +391,10 @@ Deno.serve(async (req) => {
         return jsonResponse({ status: "generating", message: "Already in progress" }, 202);
       }
       console.log(`[${topicId}] Reclaiming stale 'generating' row (age ${Math.round(ageMs / 1000)}s)`);
+    }
+
+    if (forceRegenerate) {
+      console.log(`[${topicId}] Force-regenerate authorised — bypassing cache.`);
     }
 
     await supabase.from("podcasts").upsert(

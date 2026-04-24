@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -64,7 +64,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     };
   }, [topicId]);
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (opts?: { force?: boolean; regeneratePassword?: string }) => {
     setGenerating(true);
     try {
       const content = extractTopicContent();
@@ -75,7 +75,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
         });
         return;
       }
-      const result = await generatePodcast(topicId, topicTitle, content);
+      const result = await generatePodcast(topicId, topicTitle, content, opts);
 
       // If the backend says another generation is already in flight (likely
       // started in another tab or just before this click), poll the cached
@@ -105,6 +105,17 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     } finally {
       setGenerating(false);
     }
+  };
+
+  const handleRegenerate = async () => {
+    const pw = window.prompt("Enter regeneration password:");
+    if (!pw) return;
+    // Reset player state so the user sees the generation UI immediately.
+    setPodcast(null);
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    await handleGenerate({ force: true, regeneratePassword: pw });
   };
 
   // Audio element wiring
@@ -215,7 +226,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
               </div>
             )}
             <Button
-              onClick={handleGenerate}
+              onClick={() => handleGenerate()}
               disabled={generating}
               size="sm"
               className="mt-3"
@@ -296,6 +307,21 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           {speed}×
         </Button>
         <div className="flex items-center gap-1">
+          <Button
+            onClick={handleRegenerate}
+            size="sm"
+            variant="ghost"
+            className="text-xs h-8 text-muted-foreground/70 hover:text-foreground"
+            aria-label="Regenerate podcast (password required)"
+            title="Regenerate (password required)"
+            disabled={generating}
+          >
+            {generating ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <RefreshCw className="h-3.5 w-3.5" />
+            )}
+          </Button>
           <Button
             onClick={handleDownload}
             size="sm"

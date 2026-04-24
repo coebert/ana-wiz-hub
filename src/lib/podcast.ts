@@ -93,9 +93,16 @@ export const generatePodcast = async (
   topicId: string,
   topicTitle: string,
   content: string,
+  options?: { force?: boolean; regeneratePassword?: string },
 ): Promise<PodcastResult> => {
   const { data, error } = await supabase.functions.invoke("generate-podcast", {
-    body: { topicId, topicTitle, content },
+    body: {
+      topicId,
+      topicTitle,
+      content,
+      force: options?.force ?? false,
+      regeneratePassword: options?.regeneratePassword,
+    },
   });
 
   if (data?.status === "failed") {
