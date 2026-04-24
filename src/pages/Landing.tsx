@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDown } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
+import DemoVivaPlayer from "@/components/DemoVivaPlayer";
 
 interface LandingChoice {
   title: string;
