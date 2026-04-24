@@ -366,8 +366,18 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Treat any row stuck in "generating" for >3 minutes as abandoned
+    // (edge function crashed, user closed tab mid-run, etc.) and allow a retry.
+    // The previous behaviour silently rejected the request, which made the
+    // "Generate podcast" button appear broken on those topics.
     if (existing?.status === "generating") {
-      return jsonResponse({ status: "generating", message: "Already in progress" }, 202);
+      const updatedAtMs = existing.updated_at ? new Date(existing.updated_at).getTime() : 0;
+      const ageMs = Date.now() - updatedAtMs;
+      const STALE_AFTER_MS = 3 * 60 * 1000;
+      if (ageMs < STALE_AFTER_MS) {
+        return jsonResponse({ status: "generating", message: "Already in progress" }, 202);
+      }
+      console.log(`[${topicId}] Reclaiming stale 'generating' row (age ${Math.round(ageMs / 1000)}s)`);
     }
 
     await supabase.from("podcasts").upsert(
