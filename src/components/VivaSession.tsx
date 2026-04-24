@@ -131,6 +131,16 @@ const VivaSession = ({
   const listenStartRef = useRef<number>(0);
   /** Background-fetched next question; consumed by fetchQuestion when present. */
   const prefetchedRef = useRef<{ question: string; difficulty: Difficulty } | null>(null);
+  /** AbortController for any in-flight background prefetch. */
+  const prefetchAbortRef = useRef<AbortController | null>(null);
+
+  const cancelPrefetch = useCallback(() => {
+    if (prefetchAbortRef.current) {
+      prefetchAbortRef.current.abort();
+      prefetchAbortRef.current = null;
+      setPrefetchStatus((s) => (s === "loading" ? "idle" : s));
+    }
+  }, []);
   const sttSupported = !!getSpeechRecognitionCtor();
   const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
 
