@@ -123,6 +123,14 @@ const VivaSession = ({
   const [askedCount, setAskedCount] = useState(() => loadAsked(topicId, exam).length);
   const [prefetchEnabled, setPrefetchEnabled] = useState(true);
   const [prefetchStatus, setPrefetchStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  /**
+   * How strict to be when flagging a rubric row as "weak" for emphasis retakes.
+   * - lenient: anything below 70% counts as weak (more rows qualify, retake button shows often)
+   * - balanced: below 50% (default — only clearly underperforming rows)
+   * - strict: below 30% (only severe gaps trigger an emphasis retake)
+   */
+  const [weakStrictness, setWeakStrictness] = useState<"lenient" | "balanced" | "strict">("balanced");
+  const weakThreshold = weakStrictness === "lenient" ? 0.7 : weakStrictness === "strict" ? 0.3 : 0.5;
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
