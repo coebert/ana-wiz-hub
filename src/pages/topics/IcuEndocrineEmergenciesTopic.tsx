@@ -179,6 +179,10 @@ const IcuEndocrineEmergenciesTopic = () => {
           <AdrenalCrisisAnimation />
           <EndocrineEmergencyAlgorithms />
           <EndocrineEmergencyDrugs />
+          <GuidelineSources
+            title="Guideline sources — diagrams & algorithms"
+            sources={[...HYPERGLYCAEMIC_SOURCES, ...THYROID_SOURCES, ...ADRENAL_PITUITARY_SOURCES]}
+          />
         </>
       }
       coreConcepts={
