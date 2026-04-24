@@ -38,8 +38,17 @@ interface CoreFeedback {
   communication: CoreFeedbackEntry;
 }
 
+interface SummaryBullet {
+  text: string;
+  /** Approximate seconds from start of answer when this point was made. */
+  tStart: number;
+  /** Short label for that moment (e.g. "Opening", "around 0:42"). */
+  location: string;
+}
+
 interface AnswerSummary {
-  bullets: string[];
+  /** May arrive as plain strings from older responses — normalised before render. */
+  bullets: Array<SummaryBullet | string>;
   wordCount: number;
 }
 
