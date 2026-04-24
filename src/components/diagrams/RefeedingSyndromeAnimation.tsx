@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
 
 /**
@@ -130,6 +131,8 @@ const RefeedingScene = ({ active }: { active: number }) => {
     { label: "Sequelae", sub: "Arrhythmia · Wernicke · resp failure", token: "destructive" },
   ];
 
+  const [showThiamineTip, setShowThiamineTip] = useState(false);
+
   // Compartment shift — extracellular bar shrinks, intracellular bar grows
   // once the insulin step is reached.
   const shifted = active >= 2;
@@ -140,7 +143,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
     <div className="w-full">
       <svg
         viewBox="0 0 380 280"
-        className="w-full h-auto"
+        className="w-full h-auto overflow-visible"
         role="img"
         aria-label="Refeeding syndrome cascade — five-step pathophysiology"
       >
@@ -320,12 +323,61 @@ const RefeedingScene = ({ active }: { active: number }) => {
             </text>
           </g>
 
-          {/* Thiamine tag */}
-          <g transform="translate(0, 132)" opacity={active >= 3 ? 1 : 0.25} className="transition-opacity duration-500">
+          {/* Thiamine tag — with prophylaxis tooltip */}
+          <g transform="translate(0, 132)" opacity={active >= 3 ? 1 : 0.55} className="transition-opacity duration-500">
             <rect width="110" height="22" rx="3" fill="hsl(var(--physiology) / 0.18)" stroke="hsl(var(--physiology))" />
-            <text x="55" y="15" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
+            <text x="50" y="15" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
               thiamine {active >= 3 ? "✗ depleted" : "low reserve"}
             </text>
+            {/* Info button — opens prophylaxis tooltip */}
+            <g
+              transform="translate(92, 4)"
+              className="cursor-pointer"
+              onMouseEnter={() => setShowThiamineTip(true)}
+              onMouseLeave={() => setShowThiamineTip(false)}
+              onFocus={() => setShowThiamineTip(true)}
+              onBlur={() => setShowThiamineTip(false)}
+              onClick={() => setShowThiamineTip((v) => !v)}
+              tabIndex={0}
+              role="button"
+              aria-label="Show thiamine prophylaxis dose and timing"
+              aria-expanded={showThiamineTip}
+            >
+              <circle cx="7" cy="7" r="7" fill="hsl(var(--background))" stroke="hsl(var(--physiology))" strokeWidth="1" />
+              <text x="7" y="10" textAnchor="middle" className="text-[9px] font-bold" fill="hsl(var(--physiology))">
+                i
+              </text>
+            </g>
+
+            {/* Tooltip — anchored above the tag, rendered last so it sits on top */}
+            {showThiamineTip && (
+              <foreignObject x="-150" y="-118" width="240" height="118" className="overflow-visible">
+                <div
+                  className="rounded-md border border-physiology/60 bg-card text-foreground shadow-lg p-2.5 text-[10px] leading-snug animate-fade-in"
+                  role="tooltip"
+                >
+                  <div className="font-semibold text-physiology mb-1">
+                    IV thiamine prophylaxis (NICE CG32)
+                  </div>
+                  <ul className="space-y-0.5 text-muted-foreground">
+                    <li>
+                      <strong className="text-foreground">When:</strong> ≥30 min{" "}
+                      <em>before</em> the first carbohydrate (feed, PN or IV
+                      dextrose).
+                    </li>
+                    <li>
+                      <strong className="text-foreground">Dose:</strong>{" "}
+                      200–300 mg IV (e.g. Pabrinex® 1 pair) once, then daily for
+                      3–10 days.
+                    </li>
+                    <li>
+                      <strong className="text-foreground">Plus:</strong> vitamin
+                      B compound + multivitamin / trace elements daily.
+                    </li>
+                  </ul>
+                </div>
+              </foreignObject>
+            )}
           </g>
 
           {/* Clinical alert */}
