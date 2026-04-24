@@ -1,0 +1,430 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import type { ExamTag } from "@/data/curriculum";
+
+type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
+
+interface VivaSessionProps {
+  topicId: string;
+  topicTitle: string;
+  topicDescription?: string;
+  exam: Exam;
+  /** Called when the user wants to leave the session (e.g. close drawer). */
+  onClose?: () => void;
+}
+
+interface Feedback {
+  score: number;
+  verdict: string;
+  strengths?: string[];
+  gaps: string[];
+  modelAnswer: string;
+  nextStep: string;
+}
+
+type Phase =
+  | "loading-question"
+  | "ready-to-answer"
+  | "listening"
+  | "scoring"
+  | "feedback"
+  | "error";
+
+const examLabels: Record<Exam, string> = {
+  primary: "FRCA Primary",
+  final: "FRCA Final",
+  fficm: "FFICM",
+};
+
+// Browser SpeechRecognition typing — minimal shim, the API is non-standard.
+type AnyWindow = Window &
+  typeof globalThis & {
+    SpeechRecognition?: new () => SpeechRecognitionLike;
+    webkitSpeechRecognition?: new () => SpeechRecognitionLike;
+  };
+
+interface SpeechRecognitionLike extends EventTarget {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: ((e: any) => void) | null;
+  onerror: ((e: any) => void) | null;
+  onend: (() => void) | null;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+}
+
+function getSpeechRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
+  if (typeof window === "undefined") return null;
+  const w = window as AnyWindow;
+  return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
+}
+
+const VivaSession = ({
+  topicId,
+  topicTitle,
+  topicDescription,
+  exam,
+  onClose,
+}: VivaSessionProps) => {
+  const [phase, setPhase] = useState<Phase>("loading-question");
+  const [question, setQuestion] = useState("");
+  const [interim, setInterim] = useState("");
+  const [transcript, setTranscript] = useState("");
+  const [feedback, setFeedback] = useState<Feedback | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const finalTranscriptRef = useRef<string>("");
+  const sttSupported = !!getSpeechRecognitionCtor();
+  const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
+
+  const speak = useCallback(
+    (text: string) => {
+      if (!ttsSupported || !text) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.rate = 0.95;
+      u.pitch = 1;
+      // Prefer an English voice if available.
+      const voices = window.speechSynthesis.getVoices();
+      const en = voices.find((v) => /en[-_]?GB/i.test(v.lang)) ??
+        voices.find((v) => /^en/i.test(v.lang));
+      if (en) u.voice = en;
+      window.speechSynthesis.speak(u);
+    },
+    [ttsSupported],
+  );
+
+  const fetchQuestion = useCallback(async () => {
+    setPhase("loading-question");
+    setErrorMsg(null);
+    setQuestion("");
+    setTranscript("");
+    setInterim("");
+    setFeedback(null);
+    finalTranscriptRef.current = "";
+
+    const { data, error } = await supabase.functions.invoke("viva", {
+      body: {
+        mode: "question",
+        topicId,
+        topicTitle,
+        topicDescription,
+        exam,
+      },
+    });
+
+    if (error || !data?.question) {
+      setErrorMsg(
+        (data as { error?: string } | null)?.error ??
+          error?.message ??
+          "Could not load a question.",
+      );
+      setPhase("error");
+      return;
+    }
+    setQuestion(data.question);
+    setPhase("ready-to-answer");
+    // Speak it after a short delay so voices have time to load on first paint.
+    setTimeout(() => speak(data.question), 150);
+  }, [topicId, topicTitle, topicDescription, exam, speak]);
+
+  // Initial load.
+  useEffect(() => {
+    fetchQuestion();
+    return () => {
+      window.speechSynthesis?.cancel();
+      recognitionRef.current?.abort();
+    };
+  }, [fetchQuestion]);
+
+  const startListening = useCallback(() => {
+    const Ctor = getSpeechRecognitionCtor();
+    if (!Ctor) {
+      setErrorMsg(
+        "Your browser doesn't support live speech recognition. Try Chrome or Edge on desktop.",
+      );
+      setPhase("error");
+      return;
+    }
+    window.speechSynthesis?.cancel();
+    finalTranscriptRef.current = "";
+    setInterim("");
+    setTranscript("");
+
+    const rec = new Ctor();
+    rec.lang = "en-GB";
+    rec.continuous = true;
+    rec.interimResults = true;
+    rec.onresult = (e: any) => {
+      let interimChunk = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (r.isFinal) {
+          finalTranscriptRef.current += r[0].transcript + " ";
+        } else {
+          interimChunk += r[0].transcript;
+        }
+      }
+      setTranscript(finalTranscriptRef.current.trim());
+      setInterim(interimChunk);
+    };
+    rec.onerror = (e: any) => {
+      console.error("SpeechRecognition error:", e);
+      if (e?.error === "not-allowed" || e?.error === "service-not-allowed") {
+        setErrorMsg("Microphone permission was denied. Allow mic access and retry.");
+        setPhase("error");
+      }
+    };
+    rec.onend = () => {
+      // If the user is still in 'listening' phase when the engine auto-stops
+      // (e.g. silence timeout), keep what we have but drop back to ready.
+      setPhase((p) => (p === "listening" ? "listening" : p));
+    };
+    recognitionRef.current = rec;
+    rec.start();
+    setPhase("listening");
+  }, []);
+
+  const submitAnswer = useCallback(async () => {
+    recognitionRef.current?.stop();
+    const finalText = (finalTranscriptRef.current + " " + interim).trim();
+    setTranscript(finalText);
+    setInterim("");
+    if (!finalText) {
+      setErrorMsg("I didn't catch any speech — try again.");
+      setPhase("error");
+      return;
+    }
+    setPhase("scoring");
+
+    const { data, error } = await supabase.functions.invoke("viva", {
+      body: {
+        mode: "feedback",
+        topicTitle,
+        exam,
+        question,
+        transcript: finalText,
+      },
+    });
+
+    if (error || !data || (data as { error?: string }).error) {
+      setErrorMsg(
+        (data as { error?: string } | null)?.error ??
+          error?.message ??
+          "Could not score your answer.",
+      );
+      setPhase("error");
+      return;
+    }
+    setFeedback(data as Feedback);
+    setPhase("feedback");
+  }, [interim, topicTitle, exam, question]);
+
+  const stopListening = () => {
+    recognitionRef.current?.stop();
+    setPhase("ready-to-answer");
+  };
+
+  // ---- Render ------------------------------------------------------------
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <div className="min-w-0">
+          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+            Viva voce · {examLabels[exam]}
+          </p>
+          <h3 className="font-serif font-semibold text-foreground text-lg leading-tight truncate">
+            {topicTitle}
+          </h3>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={fetchQuestion}
+            disabled={phase === "loading-question" || phase === "scoring" || phase === "listening"}
+          >
+            <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+            New question
+          </Button>
+          {onClose && (
+            <Button variant="ghost" size="sm" onClick={onClose}>
+              Close
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {/* Browser support warnings */}
+      {(!sttSupported || !ttsSupported) && phase !== "error" && (
+        <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-900 dark:text-amber-200 flex gap-2">
+          <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
+          <div>
+            {!sttSupported && (
+              <p>Speech recognition isn't supported in this browser — try Chrome or Edge for the full viva experience.</p>
+            )}
+            {!ttsSupported && <p>Voice playback isn't supported — you'll see the question text only.</p>}
+          </div>
+        </div>
+      )}
+
+      {/* Question */}
+      <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <Badge variant="secondary" className="text-[10px]">Examiner</Badge>
+          {ttsSupported && question && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-7 px-2"
+              onClick={() => speak(question)}
+              aria-label="Replay question"
+            >
+              <Volume2 className="h-3.5 w-3.5" />
+            </Button>
+          )}
+        </div>
+        {phase === "loading-question" ? (
+          <p className="text-sm text-muted-foreground flex items-center gap-2">
+            <Loader2 className="h-4 w-4 animate-spin" /> Generating a {examLabels[exam]} viva question…
+          </p>
+        ) : (
+          <p className="text-foreground leading-relaxed">{question || "—"}</p>
+        )}
+      </div>
+
+      {/* Live transcript */}
+      {(phase === "listening" || transcript || interim) && (
+        <div className="rounded-lg border border-border bg-muted/30 p-4">
+          <div className="flex items-center justify-between mb-2">
+            <Badge variant="outline" className="text-[10px]">Your answer</Badge>
+            {phase === "listening" && (
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-destructive">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                </span>
+                Listening…
+              </span>
+            )}
+          </div>
+          <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
+            {transcript}
+            {interim && <span className="text-muted-foreground italic"> {interim}</span>}
+            {!transcript && !interim && (
+              <span className="text-muted-foreground italic">Speak into your microphone…</span>
+            )}
+          </p>
+        </div>
+      )}
+
+      {/* Controls */}
+      {(phase === "ready-to-answer" || phase === "listening") && (
+        <div className="flex justify-center gap-2">
+          {phase !== "listening" ? (
+            <Button onClick={startListening} disabled={!sttSupported || !question} size="lg">
+              <Mic className="h-4 w-4 mr-2" /> Start answering
+            </Button>
+          ) : (
+            <>
+              <Button onClick={stopListening} variant="outline" size="lg">
+                <MicOff className="h-4 w-4 mr-2" /> Pause
+              </Button>
+              <Button onClick={submitAnswer} size="lg">
+                Submit answer
+              </Button>
+            </>
+          )}
+        </div>
+      )}
+
+      {phase === "scoring" && (
+        <div className="text-center text-sm text-muted-foreground flex items-center justify-center gap-2 py-4">
+          <Loader2 className="h-4 w-4 animate-spin" /> Marking your answer…
+        </div>
+      )}
+
+      {/* Feedback */}
+      {phase === "feedback" && feedback && (
+        <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 space-y-3">
+          <div className="flex items-baseline justify-between gap-3 flex-wrap">
+            <p className="font-serif font-bold text-2xl text-foreground">
+              {feedback.score}/10
+              <span className="ml-2 text-sm font-sans font-medium text-muted-foreground">
+                {feedback.verdict}
+              </span>
+            </p>
+          </div>
+
+          {feedback.strengths && feedback.strengths.length > 0 && (
+            <div>
+              <p className="text-[10px] uppercase tracking-wider font-semibold text-emerald-700 dark:text-emerald-400 mb-1">
+                Strengths
+              </p>
+              <ul className="text-sm space-y-0.5 list-disc pl-4 text-foreground">
+                {feedback.strengths.map((s, i) => <li key={i}>{s}</li>)}
+              </ul>
+            </div>
+          )}
+
+          {feedback.gaps.length > 0 && (
+            <div>
+              <p className="text-[10px] uppercase tracking-wider font-semibold text-amber-700 dark:text-amber-400 mb-1">
+                Gaps to close
+              </p>
+              <ul className="text-sm space-y-0.5 list-disc pl-4 text-foreground">
+                {feedback.gaps.map((g, i) => <li key={i}>{g}</li>)}
+              </ul>
+            </div>
+          )}
+
+          <div>
+            <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1">
+              Model answer
+            </p>
+            <p className="text-sm text-foreground leading-relaxed">{feedback.modelAnswer}</p>
+          </div>
+
+          <div className="rounded border-l-2 border-primary/60 bg-card px-3 py-2">
+            <p className="text-[10px] uppercase tracking-wider font-semibold text-primary mb-0.5">
+              Examiner would ask next
+            </p>
+            <p className="text-sm text-foreground italic">{feedback.nextStep}</p>
+          </div>
+
+          <div className="flex justify-end">
+            <Button onClick={fetchQuestion} variant="outline" size="sm">
+              <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {phase === "error" && (
+        <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm text-destructive flex items-start gap-2">
+          <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p>{errorMsg ?? "Something went wrong."}</p>
+            <Button
+              variant="outline"
+              size="sm"
+              className="mt-2"
+              onClick={fetchQuestion}
+            >
+              Try again
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default VivaSession;

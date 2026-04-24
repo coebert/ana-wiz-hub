@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones } from "lucide-react";
+import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -16,6 +16,7 @@ const navItems = [
   { label: "Map", path: "/map", icon: Network, color: "text-primary" },
   { label: "Progress", path: "/progress", icon: BarChart3, color: "text-accent" },
   { label: "Podcasts", path: "/podcasts", icon: Headphones, color: "text-primary" },
+  { label: "Viva", path: "/viva", icon: Mic, color: "text-accent" },
 ];
 
 const examFilters: { label: string; value: ExamTag | null }[] = [
