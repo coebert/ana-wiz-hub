@@ -134,6 +134,11 @@ const Landing = () => {
                       { label: "Knowledge (4/5)", text: "Catheter check first is exactly right post-laparotomy. Could also mention bladder scan and reviewing recent nephrotoxins (contrast, NSAIDs, gentamicin)." },
                       { label: "Communication (4/5)", text: "Confident and well-paced. Slow down slightly when listing investigations so the examiner can follow each one." },
                     ],
+                    curriculum: [
+                      { exam: "Final" as const, code: "CT_BK_22", topic: "Postoperative acute kidney injury — recognition and management" },
+                      { exam: "Final" as const, code: "VS_BK_05", topic: "Anaesthesia for open and endovascular aortic surgery" },
+                      { exam: "Primary" as const, code: "RP_BK_07", topic: "Renal physiology — GFR, autoregulation and oliguria" },
+                    ],
                   },
                   {
                     tag: "Physiology",
