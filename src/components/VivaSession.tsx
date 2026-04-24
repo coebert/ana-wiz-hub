@@ -120,6 +120,9 @@ const VivaSession = ({
 
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const finalTranscriptRef = useRef<string>("");
+  /** Approximate timeline of finalised speech chunks (seconds since listening started). */
+  const segmentsRef = useRef<{ tStart: number; text: string }[]>([]);
+  const listenStartRef = useRef<number>(0);
   const sttSupported = !!getSpeechRecognitionCtor();
   const ttsSupported = typeof window !== "undefined" && "speechSynthesis" in window;
 
