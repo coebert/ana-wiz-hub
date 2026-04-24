@@ -76,8 +76,7 @@ const PodcastsLibrary = () => {
       return (
         p.topic_title.toLowerCase().includes(q) ||
         p.topic_id.toLowerCase().includes(q) ||
-        sectionLabel.includes(q) ||
-        (p.script ?? "").toLowerCase().includes(q)
+        sectionLabel.includes(q)
       );
     });
   }, [podcasts, query]);
