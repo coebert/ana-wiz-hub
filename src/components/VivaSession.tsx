@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle } from "lucide-react";
+import { Mic, MicOff, Volume2, RotateCcw, Loader2, AlertCircle, Target } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -153,7 +153,7 @@ const VivaSession = ({
 
   /** Low-level call — never touches phase. Returns the question or null on error. */
   const requestQuestion = useCallback(
-    async (forDifficulty: Difficulty): Promise<string | null> => {
+    async (forDifficulty: Difficulty, emphasise?: string[]): Promise<string | null> => {
       const avoid = avoidRepeats ? loadAsked(topicId, exam) : [];
       const { data, error } = await supabase.functions.invoke("viva", {
         body: {
@@ -164,6 +164,7 @@ const VivaSession = ({
           exam,
           difficulty: forDifficulty,
           avoid,
+          emphasise: emphasise && emphasise.length > 0 ? emphasise : undefined,
         },
       });
       if (error || !data?.question) return null;
@@ -231,6 +232,40 @@ const VivaSession = ({
       setPrefetchStatus("idle");
     }
   }, [difficulty]);
+
+  /** Fetch a fresh question weighted toward the user's weakest rubric rows. */
+  const retakeWithEmphasis = useCallback(async () => {
+    const weak = (feedback?.rubricBreakdown ?? [])
+      .filter((b) => b.max > 0 && b.awarded / b.max < 0.5)
+      .sort((a, b) => a.awarded / a.max - b.awarded / b.max)
+      .map((b) => b.criterion);
+
+    // Bypass the prefetch cache — it doesn't know about emphasis.
+    prefetchedRef.current = null;
+    setPrefetchStatus("idle");
+
+    setErrorMsg(null);
+    setTranscript("");
+    setInterim("");
+    setFeedback(null);
+    finalTranscriptRef.current = "";
+    segmentsRef.current = [];
+    setPhase("loading-question");
+    setQuestion("");
+
+    const q = await requestQuestion(difficulty, weak);
+    if (!q) {
+      setErrorMsg("Could not load a question.");
+      setPhase("error");
+      return;
+    }
+    setQuestion(q);
+    const next = [...loadAsked(topicId, exam), q];
+    saveAsked(topicId, exam, next);
+    setAskedCount(Math.min(next.length, MAX_HISTORY));
+    setPhase("ready-to-answer");
+    setTimeout(() => speak(q), 150);
+  }, [feedback, requestQuestion, difficulty, topicId, exam, speak]);
 
   // Initial load.
   useEffect(() => {
@@ -591,7 +626,14 @@ const VivaSession = ({
             <p className="text-sm text-foreground italic">{feedback.nextStep}</p>
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-2 flex-wrap">
+            {(feedback.rubricBreakdown ?? []).some(
+              (b) => b.max > 0 && b.awarded / b.max < 0.5,
+            ) && (
+              <Button onClick={retakeWithEmphasis} variant="default" size="sm">
+                <Target className="h-3.5 w-3.5 mr-1.5" /> Retake with different emphasis
+              </Button>
+            )}
             <Button onClick={fetchQuestion} variant="outline" size="sm">
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
             </Button>

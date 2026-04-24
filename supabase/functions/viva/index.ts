@@ -30,6 +30,8 @@ interface QuestionBody {
   difficulty?: Difficulty;
   /** Recently-asked question stems to avoid repeating. */
   avoid?: string[];
+  /** Rubric criteria the next question should weight towards (the candidate's weak rows). */
+  emphasise?: string[];
 }
 
 interface TranscriptSegment {
@@ -128,9 +130,13 @@ async function handleQuestion(b: QuestionBody): Promise<Response> {
     ? `\n\nAVOID repeating or paraphrasing any of these previously-asked questions:\n${b.avoid.slice(0, 12).map((q, i) => `${i + 1}. ${q}`).join("\n")}\nWrite a genuinely DIFFERENT question — different angle, sub-topic, or framing.`
     : "";
 
+  const emphasiseBlock = b.emphasise && b.emphasise.length > 0
+    ? `\n\nEMPHASIS — the candidate scored poorly on these rubric areas last time. Pick a question that genuinely PROBES these areas (not just mentions them):\n${b.emphasise.slice(0, 5).map((c, i) => `${i + 1}. ${c}`).join("\n")}`
+    : "";
+
   const userPrompt = `Topic: "${b.topicTitle}"${b.topicDescription ? ` — ${b.topicDescription}` : ""}.
 Exam standard: ${examLabel[b.exam]}.
-Difficulty: ${difficulty.toUpperCase()} — ${difficultyGuide[difficulty]}${avoidBlock}
+Difficulty: ${difficulty.toUpperCase()} — ${difficultyGuide[difficulty]}${avoidBlock}${emphasiseBlock}
 
 Write ONE viva opening question on this topic.
 Rules:
@@ -352,7 +358,8 @@ Deno.serve(async (req) => {
         !validExams.includes(body.exam) ||
         body.topicTitle.length > 200 ||
         (body.difficulty && !validDifficulty.includes(body.difficulty)) ||
-        (body.avoid && (!Array.isArray(body.avoid) || body.avoid.length > 20))
+        (body.avoid && (!Array.isArray(body.avoid) || body.avoid.length > 20)) ||
+        (body.emphasise && (!Array.isArray(body.emphasise) || body.emphasise.length > 10))
       ) {
         return new Response(JSON.stringify({ error: "Invalid question payload" }), {
           status: 400,
