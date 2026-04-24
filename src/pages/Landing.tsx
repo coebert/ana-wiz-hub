@@ -48,23 +48,25 @@ const Landing = () => {
     <main className="min-h-[calc(100vh-4rem)] bg-background flex flex-col">
       <section className="relative overflow-hidden">
         <div
-          className="absolute inset-0 opacity-90"
+          className="absolute inset-0"
           style={{ background: "var(--gradient-hero)" }}
         />
+        {/* Contrast overlay — ensures text legibility in both light and dark modes */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
         <div className="relative container mx-auto px-4 py-12 md:py-20">
           <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
             <img
               src={brainLogo}
               alt="AnaesthesiaCore logo"
-              className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 opacity-90"
+              className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
             />
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-primary-foreground mb-3 tracking-tight">
+            <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
               AnaesthesiaCore
             </h1>
-            <p className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground/90 mb-4 tracking-tight">
+            <p className="font-display text-2xl md:text-3xl font-semibold text-white/95 mb-4 tracking-tight [text-shadow:0_1px_6px_rgba(0,0,0,0.3)]">
               How would you like to study today?
             </p>
-            <p className="text-base md:text-lg text-primary-foreground/80">
+            <p className="text-base md:text-lg text-white/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
               Pick a mode below — read the notes, listen on the move, or rehearse out loud.
             </p>
           </div>
