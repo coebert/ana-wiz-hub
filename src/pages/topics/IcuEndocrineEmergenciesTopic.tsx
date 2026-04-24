@@ -313,6 +313,7 @@ const IcuEndocrineEmergenciesTopic = () => {
                 </div>
               ))}
             </div>
+            <GuidelineSources sources={PITFALLS_SOURCES} />
           </ExamSection>
         </>
       }
