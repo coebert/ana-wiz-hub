@@ -1,0 +1,282 @@
+import { TopicTemplate } from "@/components/TopicTemplate";
+import { ExamSection } from "@/components/ExamSection";
+import type { WorkedExample } from "@/components/WorkedExamples";
+import { icuEndocrineEmergenciesQuestions } from "@/data/quizzes";
+import DKAAnimation from "@/components/diagrams/DKAAnimation";
+import ThyroidStormAnimation from "@/components/diagrams/ThyroidStormAnimation";
+import AdrenalCrisisAnimation from "@/components/diagrams/AdrenalCrisisAnimation";
+import DKAvsHHSDiagram from "@/components/diagrams/DKAvsHHSDiagram";
+import { Exam } from "@/data/curriculum";
+
+const objectives = [
+  "Recognise and treat diabetic ketoacidosis using the JBDS-IP fixed-rate insulin protocol, including the potassium paradox",
+  "Differentiate hyperosmolar hyperglycaemic state (HHS) from DKA and adapt resuscitation accordingly",
+  "Diagnose thyroid storm using the Burch-Wartofsky scale and apply the five-step block-and-support treatment",
+  "Recognise adrenal (Addisonian) crisis as refractory shock with low Na⁺ / high K⁺ / low glucose, and treat with hydrocortisone before tests",
+  "Outline the recognition and emergency management of myxoedema coma, phaeochromocytoma crisis and pituitary apoplexy",
+];
+
+const workedExamples: WorkedExample[] = [
+  {
+    title: "DKA — first-hour resuscitation (JBDS-IP)",
+    scenario: (
+      <>
+        A 24-year-old with T1DM is brought to ED with vomiting, abdominal pain
+        and Kussmaul breathing after a 48-h gastroenteritis. HR 128, BP 92/58,
+        GCS 14. <strong>Glucose 32 mmol/L · ketones 5.8 · pH 7.08 · HCO₃⁻ 6 ·
+        K⁺ 5.6 · Na⁺ 132</strong>. Weight 70 kg.
+      </>
+    ),
+    working: (
+      <ul className="list-disc list-inside space-y-1">
+        <li>Diagnostic triad met: glucose &gt; 11, ketones ≥ 3, pH &lt; 7.30 → severe DKA (pH &lt; 7.10 or HCO₃⁻ &lt; 5 or K⁺ &lt; 3.5 → HDU/ICU).</li>
+        <li>Hour 1: <strong>0.9% NaCl 1 L over 1 h</strong>. Start <strong>fixed-rate insulin 0.1 U/kg/h = 7 U/h</strong> as soon as fluid running. Continue patient's long-acting insulin.</li>
+        <li>K⁺ 5.6 → no KCl in first bag. Once K⁺ 3.5–5.5 → add 40 mmol KCl/L. K⁺ &lt; 3.5 → halt insulin until replaced.</li>
+        <li>Switch to <strong>10% dextrose at 125 ml/h</strong> when glucose &lt; 14 (run alongside saline) — keeps insulin running until ketones clear.</li>
+        <li>Aim ketones falling ≥ 0.5/h (or HCO₃⁻ rising ≥ 3/h, or glucose falling ≥ 3/h). If not met: increase fixed-rate by 1 U/h.</li>
+        <li>Resolution: ketones &lt; 0.6 + venous pH &gt; 7.30 + HCO₃⁻ &gt; 18.</li>
+      </ul>
+    ),
+    answer: (
+      <>
+        Severe DKA. Activate fixed-rate insulin 7 U/h after 1 L 0.9% NaCl.
+        Withhold KCl until next bag. Continue long-acting insulin. Add 10% dextrose
+        when glucose &lt; 14. Daily K⁺/PO₄/Mg, hourly glucose, 2-hourly ketones
+        until resolution.
+      </>
+    ),
+  },
+  {
+    title: "Thyroid storm — applying the Burch-Wartofsky scale",
+    scenario: (
+      <>
+        A 34-year-old with poorly controlled Graves' disease presents 36 h after
+        an emergency appendicectomy with T 40.2 °C, HR 158 (AF), agitation, mild
+        jaundice and diarrhoea. TSH undetectable, free T4 markedly raised.
+      </>
+    ),
+    working: (
+      <ul className="list-disc list-inside space-y-1">
+        <li>BWPS components: T 40.2 = 25 · agitation = 20 · diarrhoea/jaundice = 20 · AF = 10 · HR 158 = 25 · precipitating event = 10 → <strong>~ 110 → highly suggestive of storm</strong>.</li>
+        <li><strong>Step 1 — β-blockade</strong>: propranolol 1 mg IV titrated, or esmolol infusion (also blocks T₄→T₃).</li>
+        <li><strong>Step 2 — block synthesis</strong>: PTU 500–1000 mg PO/NG load then 250 mg q4h (PTU preferred — also blocks peripheral conversion).</li>
+        <li><strong>Step 3 — block release</strong>: Lugol's iodine 5 drops PO q6h <em>≥ 1 h after PTU</em> (otherwise iodine fuels storm).</li>
+        <li><strong>Step 4 — steroid</strong>: hydrocortisone 100 mg IV q8h (blocks conversion + treats relative adrenal insufficiency).</li>
+        <li><strong>Step 5 — supportive</strong>: paracetamol + active cooling (avoid aspirin), fluids, treat surgical/septic precipitant. Plasmapheresis if refractory.</li>
+      </ul>
+    ),
+    answer: (
+      <>
+        BWPS &gt; 45 → thyroid storm. Treat in this order: β-blocker → PTU →
+        Lugol's iodine (≥ 1 h later) → hydrocortisone → cooling/fluids/treat
+        precipitant. Mortality 10–30 % even with treatment.
+      </>
+    ),
+  },
+  {
+    title: "Adrenal crisis — refractory shock under anaesthesia",
+    scenario: (
+      <>
+        A 45-year-old on 10 mg prednisolone for 3 years (Crohn's) has emergency
+        laparotomy. Intra-op: persistent MAP 50 mmHg despite 2 L crystalloid
+        and noradrenaline 0.4 mcg/kg/min. Post-op blood gas:{" "}
+        <strong>Na⁺ 128 · K⁺ 5.9 · glucose 3.1 · BE −7</strong>.
+      </>
+    ),
+    working: (
+      <ul className="list-disc list-inside space-y-1">
+        <li>Vasopressor-resistant shock + classic biochemistry (low Na⁺, high K⁺, low glucose) in a chronic steroid user → adrenal crisis until proven otherwise.</li>
+        <li>Take paired random cortisol + ACTH if possible — but <strong>do not delay treatment</strong>.</li>
+        <li><strong>Hydrocortisone 100 mg IV stat</strong>, then 200 mg/24 h (50 mg q6h or infusion).</li>
+        <li><strong>1 L 0.9% NaCl over 1 h</strong>; correct glucose with 10% dextrose if &lt; 4.</li>
+        <li>Treat trigger (surgical stress + chronic HPA suppression). Convert to oral hydrocortisone once stable, add fludrocortisone when oral dose &lt; 50 mg/day.</li>
+        <li>Sick-day rules going forward: triple oral dose for 24–48 h around stress; IV cover for any major surgery / vomiting.</li>
+      </ul>
+    ),
+    answer: (
+      <>
+        Adrenal crisis from chronic steroid HPA suppression. Hydrocortisone
+        100 mg IV stat + 200 mg/24 h + 0.9% NaCl 1 L/h + glucose. High-dose
+        hydrocortisone has full mineralocorticoid effect — fludrocortisone not
+        needed acutely.
+      </>
+    ),
+  },
+];
+
+const IcuEndocrineEmergenciesTopic = () => {
+  return (
+    <TopicTemplate
+      title="Endocrine Emergencies in ICU"
+      subtitle="FRCA Final / FFICM / EDIC — DKA, HHS, thyroid storm, adrenal crisis, myxoedema coma, phaeo crisis, pituitary apoplexy"
+      backPath="/intensive-care"
+      backLabel="Intensive Care"
+      accentColor="text-icu"
+      objectives={objectives}
+      topicId="icu-endocrine-emergencies"
+      topicTitle="Endocrine Emergencies in ICU"
+      quizQuestions={icuEndocrineEmergenciesQuestions}
+      workedExamples={workedExamples}
+      keyPoints={[
+        "DKA diagnostic triad (JBDS-IP): glucose > 11 (or known DM) + ketones ≥ 3 (or 2+ on dipstick) + pH < 7.30 / HCO₃⁻ < 15",
+        "DKA potassium paradox: serum K⁺ often normal/high at presentation despite massive total-body deficit — falls fast on insulin; replace K⁺ when 3.5–5.5, halt insulin if K⁺ < 3.5",
+        "HHS: glucose > 30 + osmolality > 320 + minimal ketones — give fluids FIRST (insulin only after fluids running, lower rate 0.05 U/kg/h) to avoid cerebral oedema and pontine myelinolysis",
+        "Thyroid storm (BWPS ≥ 45): treat in order — β-blocker → PTU → Lugol's iodine (≥ 1 h after PTU) → hydrocortisone → cooling. Avoid aspirin (displaces T₄ from TBG)",
+        "Adrenal crisis: refractory shock + low Na⁺ / high K⁺ / low glucose → hydrocortisone 100 mg IV stat BEFORE tests; high-dose hydrocortisone has full mineralocorticoid effect",
+        "Myxoedema coma: hypothermia + hyponatraemia + hypoventilation + obtundation — IV T3/T4 + IV hydrocortisone (cover concurrent adrenal insufficiency) + passive rewarming + ICU ventilation",
+        "Phaeochromocytoma crisis: phenoxybenzamine / phentolamine / IV magnesium FIRST (α-blockade) then β-blockade — never β-blocker alone (unopposed α → hypertensive crisis, pulmonary oedema)",
+        "Pituitary apoplexy: sudden headache + visual loss + ophthalmoplegia + hypopituitarism → hydrocortisone 100 mg IV + urgent neurosurgical referral; replace cortisol BEFORE thyroxine",
+      ]}
+      sectionSources={{
+        objectives: ["JBDS-IP DKA 2023", "JBDS-IP HHS 2022", "Endocrine Society 2016"],
+        diagrams: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Endocrine Society 2016"],
+        workedExamples: ["JBDS-IP DKA 2023", "Burch-Wartofsky 1993", "Bornstein 2016"],
+        keyPoints: ["JBDS-IP", "BJA Educ", "Endocrine Society"],
+      }}
+      sectionExamMapping={{
+        objectives: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        diagrams: { exams: [Exam.FFICM, Exam.EDIC] },
+        workedExamples: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+        keyPoints: { exams: [Exam.FINAL, Exam.FFICM, Exam.EDIC] },
+      }}
+      diagrams={
+        <>
+          <DKAAnimation />
+          <DKAvsHHSDiagram />
+          <ThyroidStormAnimation />
+          <AdrenalCrisisAnimation />
+        </>
+      }
+      coreConcepts={
+        <>
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Hyperglycaemic emergencies — DKA &amp; HHS</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Two ends of the same spectrum: insulin deficiency drives counter-regulatory
+              hormone release, hyperglycaemia, osmotic diuresis and dehydration. DKA
+              additionally has unrestrained lipolysis → ketogenesis → high-anion-gap
+              acidosis. HHS retains enough insulin to suppress ketogenesis but produces
+              extreme hyperglycaemia and hyperosmolality over days. Always look for the
+              precipitant: infection, missed insulin, MI, CVA, steroids, SGLT2 inhibitors
+              (euglycaemic DKA — glucose may be normal).
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Severity criteria — DKA (JBDS-IP)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Severe / HDU referral if any of: pH &lt; 7.10, HCO₃⁻ &lt; 5, K⁺ &lt; 3.5
+                  on admission, GCS &lt; 12, SpO₂ &lt; 92% on air, SBP &lt; 90, HR &gt; 100
+                  or &lt; 60, anion gap &gt; 16, ketones &gt; 6.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">HHS — distinguishing features</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Osmolality &gt; 320 (= 2[Na⁺] + glucose + urea), pH &gt; 7.30, ketones
+                  &lt; 3, glucose &gt; 30. Fluid deficit 100–220 ml/kg. Aim glucose fall
+                  ≤ 5 mmol/L/h, Na⁺ change ≤ 10 mmol/L/24 h. Always give VTE prophylaxis.
+                </p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thyroid emergencies</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Thyroid storm (mortality 10–30 %)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Decompensation of underlying hyperthyroidism by surgery, sepsis, DKA,
+                  iodinated contrast or drug withdrawal. <strong>Burch-Wartofsky ≥ 45</strong>{" "}
+                  highly suggestive. Treat in five steps: β-blockade → PTU → iodine
+                  (≥ 1 h later) → hydrocortisone → support (cooling, fluids, treat trigger).
+                  Avoid aspirin.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Myxoedema coma (mortality 30–40 %)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Severe hypothyroid decompensation: <strong>hypothermia, hypoventilation,
+                  hyponatraemia, bradycardia, obtunded</strong>. Treat with IV T3 (10–20 mcg
+                  bolus then 10 mcg q4h) or IV T4, plus IV hydrocortisone 100 mg q8h
+                  (always cover potential adrenal insufficiency), passive rewarming,
+                  ventilation as needed. Endocrinology referral.
+                </p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Adrenal &amp; pituitary emergencies</h2>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Adrenal (Addisonian) crisis</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Acute decompensation of primary (Addison's, autoimmune, bilateral
+                  adrenal haemorrhage — Waterhouse-Friderichsen) or secondary (HPA
+                  suppression by chronic steroid, pituitary disease) insufficiency.
+                  Refractory shock + Na⁺ ↓ + K⁺ ↑ + glucose ↓. Treat with{" "}
+                  <strong>hydrocortisone 100 mg IV stat then 200 mg/24 h</strong> + 0.9% NaCl
+                  + glucose; do not delay for tests.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Phaeochromocytoma crisis</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Catecholamine surge → severe hypertension, arrhythmia, MI, cerebral
+                  haemorrhage, takotsubo. Manage with{" "}
+                  <strong>α-blockade FIRST</strong> (phentolamine bolus, or
+                  phenoxybenzamine 10 mg q6h titrated, or IV magnesium 2–4 g),{" "}
+                  <em>then</em> β-blockade (esmolol). NEVER β-blocker alone — unopposed
+                  α stimulation causes hypertensive crisis and pulmonary oedema. Avoid
+                  ephedrine, ketamine, halothane, metoclopramide.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Pituitary apoplexy</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Haemorrhage / infarction of a pituitary tumour. Sudden severe headache
+                  + visual field defect + ophthalmoplegia (CN III, IV, VI compression in
+                  cavernous sinus) + hypopituitarism. Give{" "}
+                  <strong>hydrocortisone 100 mg IV stat</strong> (cortisol replacement
+                  is life-saving), urgent MRI, neurosurgical referral. Replace cortisol
+                  BEFORE thyroxine — otherwise precipitates adrenal crisis.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Surgical / sick-day steroid cover</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Patients on &gt; 5 mg prednisolone/day for &gt; 3 weeks risk HPA
+                  suppression. Minor surgery: 25 mg hydrocortisone IV at induction, normal
+                  oral dose post-op. Major surgery: 50–100 mg IV at induction + 200 mg/24 h
+                  for 24–72 h. Sepsis / vomiting / unable to take oral: IV hydrocortisone
+                  100 mg + 200 mg/24 h until eating.
+                </p>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Anaesthetic pitfalls</h2>
+            <div className="space-y-2">
+              {[
+                { topic: "Etomidate", detail: "Single induction dose suppresses 11β-hydroxylase for 24 h — avoid in septic / adrenally compromised patients; consider hydrocortisone cover if used." },
+                { topic: "SGLT2 inhibitors", detail: "Stop ≥ 3 days pre-op. Cause euglycaemic DKA — measure ketones in any unwell perioperative patient on these drugs even if glucose normal." },
+                { topic: "Iodinated contrast", detail: "Can precipitate thyroid storm in untreated hyperthyroidism, and contrast-induced thyrotoxicosis weeks later. Check TFTs in known thyroid disease before contrast." },
+                { topic: "Vasopressor failure", detail: "MAP not responding to noradrenaline ≥ 0.4 mcg/kg/min in shock → think adrenal crisis (give hydrocortisone) and check cortisol; also consider vasopressin and methylene blue." },
+                { topic: "Beta-blockers in phaeo", detail: "Never first-line. Even labetalol's α:β ratio (1:7 PO) is insufficient — use phentolamine or magnesium for crisis." },
+              ].map((it) => (
+                <div key={it.topic} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="font-semibold text-foreground text-sm">{it.topic}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{it.detail}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+        </>
+      }
+    />
+  );
+};
+
+export default IcuEndocrineEmergenciesTopic;
