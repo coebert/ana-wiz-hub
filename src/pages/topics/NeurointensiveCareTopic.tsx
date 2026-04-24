@@ -7,6 +7,7 @@ import ICPMonitoringDevicesDiagram from "@/components/diagrams/ICPMonitoringDevi
 import CerebralMicrodialysisDiagram from "@/components/diagrams/CerebralMicrodialysisDiagram";
 import MultimodalNeuromonitoringDiagram from "@/components/diagrams/MultimodalNeuromonitoringDiagram";
 import MyastheniaCrisisFlowchart from "@/components/diagrams/MyastheniaCrisisFlowchart";
+import MyasthenicVsCholinergicComparison from "@/components/diagrams/MyasthenicVsCholinergicComparison";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
@@ -777,6 +778,7 @@ const NeurointensiveCareTopic = () => {
           </div>
 
           <h3 className="text-lg font-serif font-bold text-foreground mb-2">Myasthenic vs Cholinergic Crisis</h3>
+          <MyasthenicVsCholinergicComparison />
           <div className="overflow-x-auto mb-4">
             <table className="w-full text-sm border-collapse">
               <thead>
