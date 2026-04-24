@@ -50,7 +50,15 @@ interface FeedbackBody {
   segments?: TranscriptSegment[];
 }
 
-type Body = QuestionBody | FeedbackBody;
+interface AnnotateBody {
+  mode: "annotate";
+  topicTitle: string;
+  exam: Exam;
+  question: string;
+  modelAnswer: string;
+}
+
+type Body = QuestionBody | FeedbackBody | AnnotateBody;
 
 const examLabel: Record<Exam, string> = {
   primary: "FRCA Primary (early CT/ST trainee — basic sciences depth)",
