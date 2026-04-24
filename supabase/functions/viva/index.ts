@@ -50,7 +50,15 @@ interface FeedbackBody {
   segments?: TranscriptSegment[];
 }
 
-type Body = QuestionBody | FeedbackBody;
+interface AnnotateBody {
+  mode: "annotate";
+  topicTitle: string;
+  exam: Exam;
+  question: string;
+  modelAnswer: string;
+}
+
+type Body = QuestionBody | FeedbackBody | AnnotateBody;
 
 const examLabel: Record<Exam, string> = {
   primary: "FRCA Primary (early CT/ST trainee — basic sciences depth)",
@@ -320,6 +328,89 @@ Return JSON via the tool call only.`;
   });
 }
 
+async function handleAnnotate(b: AnnotateBody): Promise<Response> {
+  const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
+
+Examiner question:
+"""${b.question}"""
+
+Model candidate answer to annotate:
+"""${b.modelAnswer}"""
+
+Annotate this model answer for an FRCA / FFICM trainee revising for the viva.
+
+Produce TWO outputs:
+
+1. annotatedHtml — the EXACT model answer text with inline highlights wrapped around the substrings that matter. Use ONLY these two HTML tags (nothing else, no <p>, no <br>, no markdown):
+   • <mark data-kind="highyield" title="why this matters">…snippet…</mark> — for exam high-yield content the examiner is actively looking for (definitions, key numbers, mechanisms, named structures, formulae, classifications). The title attribute holds a SHORT (≤ 90 chars) plain-text reason.
+   • <mark data-kind="pitfall" title="common pitfall">…snippet…</mark> — for phrases that, if SAID DIFFERENTLY OR OMITTED, are common candidate errors (wrong number, mixed-up mechanism, missing safety step). The title is the pitfall in plain text.
+   Rules:
+   - Preserve the model answer text verbatim — do not rewrite, paraphrase, reorder, or add prose. Only insert the <mark> tags around existing substrings.
+   - Highlight 4–10 spans total. Do NOT highlight whole sentences if a phrase suffices.
+   - Spans must NOT overlap or nest.
+   - Escape any literal &, <, > in the original text as &amp; &lt; &gt; before wrapping.
+
+2. highYieldPoints — array of 3–6 short bullets (≤ 18 words each) of the discrete FRCA high-yield facts the examiner is checking for in this question (named numbers, equations, definitions, classifications). Independent of the model answer — these are the marking-scheme essentials.
+
+3. pitfalls — array of 3–6 short bullets (≤ 22 words each) of the most common candidate errors / omissions on this question (wrong number, missed mechanism, unsafe omission, classic confusion).
+
+Return JSON via the tool call only.`;
+
+  const res = await callAI({
+    model: MODEL,
+    messages: [
+      { role: "system", content: SYSTEM },
+      { role: "user", content: userPrompt },
+    ],
+    tools: [
+      {
+        type: "function",
+        function: {
+          name: "emit_annotation",
+          description: "Emit annotated model answer + high-yield points + pitfalls.",
+          parameters: {
+            type: "object",
+            properties: {
+              annotatedHtml: { type: "string" },
+              highYieldPoints: { type: "array", items: { type: "string" } },
+              pitfalls: { type: "array", items: { type: "string" } },
+            },
+            required: ["annotatedHtml", "highYieldPoints", "pitfalls"],
+            additionalProperties: false,
+          },
+        },
+      },
+    ],
+    tool_choice: { type: "function", function: { name: "emit_annotation" } },
+  });
+
+  const errResp = aiErrorResponse(res.status);
+  if (errResp) return errResp;
+  if (!res.ok) {
+    const text = await res.text();
+    console.error("AI annotate error:", res.status, text);
+    return new Response(JSON.stringify({ error: "AI gateway error" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  const data = await res.json();
+  const args = data?.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
+  let parsed: Record<string, unknown> = {};
+  try {
+    parsed = JSON.parse(args ?? "{}");
+  } catch {
+    return new Response(JSON.stringify({ error: "Could not parse annotation" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+  return new Response(JSON.stringify(parsed), {
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") {
@@ -384,6 +475,22 @@ Deno.serve(async (req) => {
         });
       }
       return await handleFeedback(body);
+    }
+    if (body.mode === "annotate") {
+      if (
+        !body.topicTitle ||
+        !validExams.includes(body.exam) ||
+        !body.question ||
+        !body.modelAnswer ||
+        body.modelAnswer.length > 4000 ||
+        body.question.length > 1000
+      ) {
+        return new Response(JSON.stringify({ error: "Invalid annotate payload" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      return await handleAnnotate(body);
     }
     return new Response(JSON.stringify({ error: "Unknown mode" }), {
       status: 400,

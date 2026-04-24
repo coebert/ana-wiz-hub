@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   ChevronRight,
+  Highlighter,
   Loader2,
   Mic,
   MicOff,
@@ -75,9 +76,99 @@ function getSpeechRecognitionCtor(): (new () => SpeechRecognitionLike) | null {
 
 const MAX_FOLLOWUPS = 3;
 
+interface Annotation {
+  annotatedHtml: string;
+  highYieldPoints: string[];
+  pitfalls: string[];
+}
+
+/**
+ * Sanitize the AI-returned annotated HTML. We only allow `<mark>` with
+ * `data-kind` ("highyield" | "pitfall") and a plain-text `title`. Everything
+ * else is stripped or escaped — no scripts, no other tags, no attributes.
+ */
+function sanitizeAnnotatedHtml(raw: string): string {
+  if (typeof window === "undefined") return "";
+  const doc = new DOMParser().parseFromString(`<div>${raw}</div>`, "text/html");
+  const root = doc.body.firstElementChild;
+  if (!root) return "";
+
+  const walk = (node: Node): string => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      return (node.textContent ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE) return "";
+    const el = node as Element;
+    const inner = Array.from(el.childNodes).map(walk).join("");
+    if (el.tagName.toLowerCase() === "mark") {
+      const kindRaw = (el.getAttribute("data-kind") ?? "").toLowerCase();
+      const kind = kindRaw === "pitfall" ? "pitfall" : "highyield";
+      const title = (el.getAttribute("title") ?? "")
+        .replace(/[<>"]/g, "")
+        .slice(0, 140);
+      const cls =
+        kind === "pitfall"
+          ? "bg-destructive/15 text-destructive-foreground underline decoration-destructive/60 decoration-dotted underline-offset-2 rounded px-0.5"
+          : "bg-primary/20 text-foreground underline decoration-primary/70 decoration-wavy underline-offset-2 rounded px-0.5";
+      return `<mark data-kind="${kind}" title="${title}" class="${cls}">${inner}</mark>`;
+    }
+    return inner; // strip any other tag, keep its text
+  };
+
+  return Array.from(root.childNodes).map(walk).join("");
+}
+
 // ---- Sub-component: a single round of feedback ---------------------------
-const FeedbackPanel = ({ round }: { round: Round }) => {
+const FeedbackPanel = ({
+  round,
+  topicTitle,
+  exam,
+}: {
+  round: Round;
+  topicTitle: string;
+  exam: Exam;
+}) => {
   const fb = round.feedback;
+  const [annotation, setAnnotation] = useState<Annotation | null>(null);
+  const [annotating, setAnnotating] = useState(false);
+  const [showAnnotation, setShowAnnotation] = useState(false);
+
+  const loadAnnotation = useCallback(async () => {
+    if (annotation) {
+      setShowAnnotation((v) => !v);
+      return;
+    }
+    setAnnotating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("viva", {
+        body: {
+          mode: "annotate",
+          topicTitle,
+          exam,
+          question: round.question,
+          modelAnswer: fb.modelAnswer,
+        },
+      });
+      if (error) throw error;
+      if (!data?.annotatedHtml) throw new Error("No annotation returned");
+      setAnnotation({
+        annotatedHtml: sanitizeAnnotatedHtml(String(data.annotatedHtml)),
+        highYieldPoints: Array.isArray(data.highYieldPoints) ? data.highYieldPoints : [],
+        pitfalls: Array.isArray(data.pitfalls) ? data.pitfalls : [],
+      });
+      setShowAnnotation(true);
+    } catch (err) {
+      console.error("Annotation failed:", err);
+      const msg = err instanceof Error ? err.message : "Could not annotate the answer.";
+      toast.error(msg);
+    } finally {
+      setAnnotating(false);
+    }
+  }, [annotation, topicTitle, exam, round.question, fb.modelAnswer]);
+
   return (
     <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-3">
       <div className="flex items-center justify-between gap-2 flex-wrap">
@@ -151,11 +242,83 @@ const FeedbackPanel = ({ round }: { round: Round }) => {
         </div>
       )}
 
-      <div className="rounded-lg border border-border/60 bg-card p-3">
-        <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">
-          Model answer
-        </p>
-        <p className="text-sm text-foreground/90 leading-relaxed">{fb.modelAnswer}</p>
+      <div className="rounded-lg border border-border/60 bg-card p-3 space-y-2">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Model answer
+          </p>
+          <Button
+            type="button"
+            size="sm"
+            variant={showAnnotation ? "secondary" : "outline"}
+            onClick={loadAnnotation}
+            disabled={annotating}
+          >
+            {annotating ? (
+              <>
+                <Loader2 className="h-3.5 w-3.5 mr-1.5 animate-spin" />
+                Annotating…
+              </>
+            ) : (
+              <>
+                <Highlighter className="h-3.5 w-3.5 mr-1.5" />
+                {annotation
+                  ? showAnnotation
+                    ? "Hide annotations"
+                    : "Show annotations"
+                  : "Reveal annotated answer"}
+              </>
+            )}
+          </Button>
+        </div>
+
+        {showAnnotation && annotation ? (
+          <>
+            <div
+              className="text-sm text-foreground/90 leading-relaxed [&_mark]:text-foreground"
+              // Sanitized in sanitizeAnnotatedHtml — only <mark data-kind title class> survives.
+              dangerouslySetInnerHTML={{ __html: annotation.annotatedHtml }}
+            />
+            <div className="flex items-center gap-3 flex-wrap pt-1 text-[11px] text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <span className="inline-block h-2.5 w-3.5 rounded bg-primary/20 border-b-2 border-primary/70" />
+                FRCA high-yield point
+              </span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="inline-block h-2.5 w-3.5 rounded bg-destructive/15 border-b-2 border-destructive/60 border-dotted" />
+                Common pitfall
+              </span>
+            </div>
+
+            {annotation.highYieldPoints.length > 0 && (
+              <div className="pt-2">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-primary mb-1">
+                  FRCA high-yield checklist
+                </p>
+                <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
+                  {annotation.highYieldPoints.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {annotation.pitfalls.length > 0 && (
+              <div className="pt-2">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-destructive mb-1">
+                  Common pitfalls
+                </p>
+                <ul className="list-disc list-inside text-sm text-foreground/90 space-y-0.5">
+                  {annotation.pitfalls.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
+        ) : (
+          <p className="text-sm text-foreground/90 leading-relaxed">{fb.modelAnswer}</p>
+        )}
       </div>
     </div>
   );
@@ -337,7 +500,7 @@ const DemoVivaInteractive = ({
     <div className="space-y-3">
       {/* Past rounds */}
       {rounds.map((r, i) => (
-        <FeedbackPanel key={i} round={r} />
+        <FeedbackPanel key={i} round={r} topicTitle={topicTitle} exam={exam} />
       ))}
 
       {/* Follow-up CTA */}
