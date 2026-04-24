@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
@@ -119,6 +119,32 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
     setSpeed(SPEEDS[(idx + 1) % SPEEDS.length]);
   };
 
+  const slugify = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "")
+      .slice(0, 60) || "podcast";
+
+  const handleDownload = async () => {
+    if (!podcast?.audio_url) return;
+    try {
+      const res = await fetch(podcast.audio_url);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${slugify(topicTitle)}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      // Fallback: open in new tab
+      window.open(podcast.audio_url, "_blank");
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center gap-2 rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
@@ -227,15 +253,27 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           <Gauge className="mr-1.5 h-3.5 w-3.5" />
           {speed}×
         </Button>
-        <Button
-          onClick={() => setShowScript((s) => !s)}
-          size="sm"
-          variant="ghost"
-          className="text-xs h-8"
-        >
-          <FileText className="mr-1.5 h-3.5 w-3.5" />
-          {showScript ? "Hide transcript" : "Show transcript"}
-        </Button>
+        <div className="flex items-center gap-1">
+          <Button
+            onClick={handleDownload}
+            size="sm"
+            variant="ghost"
+            className="text-xs h-8"
+            aria-label="Download MP3"
+          >
+            <Download className="mr-1.5 h-3.5 w-3.5" />
+            MP3
+          </Button>
+          <Button
+            onClick={() => setShowScript((s) => !s)}
+            size="sm"
+            variant="ghost"
+            className="text-xs h-8"
+          >
+            <FileText className="mr-1.5 h-3.5 w-3.5" />
+            {showScript ? "Hide transcript" : "Show transcript"}
+          </Button>
+        </div>
       </div>
 
       {showScript && podcast.script && (
