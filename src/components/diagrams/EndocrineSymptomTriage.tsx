@@ -19,7 +19,7 @@ interface Diagnosis {
   key: DxKey;
   name: string;
   oneLiner: string;
-  investigations: string[];
+  investigations: { test: string; why: string }[];
   immediate: string;
   tokenClass: string; // semantic token suffix (destructive, accent, etc.)
 }
