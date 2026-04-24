@@ -95,6 +95,24 @@ export type Database = {
         }
         Relationships: []
       }
+      viva_model_answer_locks: {
+        Row: {
+          claimed_at: string
+          exam: string
+          question_hash: string
+        }
+        Insert: {
+          claimed_at?: string
+          exam: string
+          question_hash: string
+        }
+        Update: {
+          claimed_at?: string
+          exam?: string
+          question_hash?: string
+        }
+        Relationships: []
+      }
       viva_model_answers: {
         Row: {
           created_at: string

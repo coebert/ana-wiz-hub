@@ -529,33 +529,153 @@ Return JSON via the tool call only.`;
   });
 }
 
+/**
+ * How long to wait for another worker that's already generating the same
+ * answer before giving up and generating ourselves. AI generation typically
+ * takes 5–15s; 30s gives ample headroom.
+ */
+const LOCK_WAIT_MS = 30_000;
+const LOCK_POLL_MS = 500;
+/** Stale lock rows older than this are ignored (previous worker crashed). */
+const LOCK_STALE_MS = 60_000;
+
+async function readCachedAnswer(
+  supa: ReturnType<typeof getServiceClient>,
+  exam: string,
+  questionHash: string,
+) {
+  if (!supa) return null;
+  const { data, error } = await supa
+    .from("viva_model_answers")
+    .select("model_answer, high_yield_points, pitfalls")
+    .eq("exam", exam)
+    .eq("question_hash", questionHash)
+    .maybeSingle();
+  if (error) {
+    console.error("[viva] cache read failed", error.message);
+    return null;
+  }
+  return data;
+}
+
+function cachedResponse(
+  cached: { model_answer: string; high_yield_points: unknown; pitfalls: unknown },
+  meta: { cached: true; waited?: boolean },
+) {
+  return new Response(
+    JSON.stringify({
+      modelAnswer: cached.model_answer,
+      highYieldPoints: cached.high_yield_points ?? [],
+      pitfalls: cached.pitfalls ?? [],
+      ...meta,
+    }),
+    { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+  );
+}
+
+/**
+ * Try to claim exclusive ownership of generating the model answer for
+ * (exam, questionHash). Returns true if we now own generation, false if
+ * another worker already does. Uses an INSERT … ON CONFLICT DO NOTHING so
+ * the claim is atomic across concurrent edge-function invocations.
+ *
+ * Stale claims (older than LOCK_STALE_MS) are stolen — previous worker
+ * presumably crashed and never released the lock.
+ */
+async function tryClaimLock(
+  supa: NonNullable<ReturnType<typeof getServiceClient>>,
+  exam: string,
+  questionHash: string,
+): Promise<boolean> {
+  const { data: inserted, error } = await supa
+    .from("viva_model_answer_locks")
+    .insert({ exam, question_hash: questionHash })
+    .select("exam")
+    .maybeSingle();
+  if (!error && inserted) return true;
+  // Conflict (or RLS error). Check whether the existing claim is stale.
+  if (error && error.code !== "23505") {
+    console.error("[viva] lock claim failed", error.message);
+    return false;
+  }
+  const { data: existing } = await supa
+    .from("viva_model_answer_locks")
+    .select("claimed_at")
+    .eq("exam", exam)
+    .eq("question_hash", questionHash)
+    .maybeSingle();
+  if (!existing) return false;
+  const ageMs = Date.now() - new Date(existing.claimed_at).getTime();
+  if (ageMs > LOCK_STALE_MS) {
+    // Steal the stale lock by refreshing claimed_at.
+    const { error: updErr } = await supa
+      .from("viva_model_answer_locks")
+      .update({ claimed_at: new Date().toISOString() })
+      .eq("exam", exam)
+      .eq("question_hash", questionHash);
+    if (!updErr) return true;
+  }
+  return false;
+}
+
+async function releaseLock(
+  supa: NonNullable<ReturnType<typeof getServiceClient>>,
+  exam: string,
+  questionHash: string,
+) {
+  const { error } = await supa
+    .from("viva_model_answer_locks")
+    .delete()
+    .eq("exam", exam)
+    .eq("question_hash", questionHash);
+  if (error) console.error("[viva] lock release failed", error.message);
+}
+
 async function handleModelAnswer(b: ModelAnswerBody): Promise<Response> {
-  // 1. Cache lookup — same exam + same (normalised) question → reuse.
   const questionHash = await hashQuestion(b.question);
   const supa = getServiceClient();
+
+  // 1. Fast path — cache hit.
   if (supa) {
-    const { data: cached, error: cacheReadErr } = await supa
-      .from("viva_model_answers")
-      .select("model_answer, high_yield_points, pitfalls")
-      .eq("exam", b.exam)
-      .eq("question_hash", questionHash)
-      .maybeSingle();
-    if (cacheReadErr) {
-      console.error("[viva] model-answer cache read failed", cacheReadErr.message);
-    } else if (cached) {
-      return new Response(
-        JSON.stringify({
-          modelAnswer: cached.model_answer,
-          highYieldPoints: cached.high_yield_points ?? [],
-          pitfalls: cached.pitfalls ?? [],
-          cached: true,
-        }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+    const cached = await readCachedAnswer(supa, b.exam, questionHash);
+    if (cached) return cachedResponse(cached, { cached: true });
+  }
+
+  // 2. Coordinate concurrent generations via the locks table.
+  let weOwnGeneration = false;
+  if (supa) {
+    weOwnGeneration = await tryClaimLock(supa, b.exam, questionHash);
+    if (!weOwnGeneration) {
+      // Another worker is already generating the same answer.
+      // Poll the cache table until it shows up (or the lock disappears).
+      const deadline = Date.now() + LOCK_WAIT_MS;
+      while (Date.now() < deadline) {
+        await new Promise((r) => setTimeout(r, LOCK_POLL_MS));
+        const cached = await readCachedAnswer(supa, b.exam, questionHash);
+        if (cached) return cachedResponse(cached, { cached: true, waited: true });
+        // If the other worker died and the lock got cleared without writing,
+        // try to claim it ourselves and generate.
+        const { data: stillLocked } = await supa
+          .from("viva_model_answer_locks")
+          .select("claimed_at")
+          .eq("exam", b.exam)
+          .eq("question_hash", questionHash)
+          .maybeSingle();
+        if (!stillLocked) {
+          weOwnGeneration = await tryClaimLock(supa, b.exam, questionHash);
+          if (weOwnGeneration) break;
+        }
+      }
+      if (!weOwnGeneration) {
+        // Timed out waiting — fall through and generate anyway so the
+        // caller never sees an error from a hung peer.
+        console.warn("[viva] lock wait timed out — generating without claim");
+      }
     }
   }
 
-  const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
+  try {
+    const userPrompt = `Topic: "${b.topicTitle}". Exam standard: ${examLabel[b.exam]}.
 
 Examiner question that the candidate has been asked aloud:
 """${b.question}"""
@@ -576,81 +696,88 @@ Produce three outputs:
 
 Return JSON via the tool call only.`;
 
-  const res = await callAI({
-    model: MODEL,
-    messages: [
-      { role: "system", content: SYSTEM },
-      { role: "user", content: userPrompt },
-    ],
-    tools: [
-      {
-        type: "function",
-        function: {
-          name: "emit_model_answer",
-          description: "Emit a model viva answer plus high-yield points and pitfalls.",
-          parameters: {
-            type: "object",
-            properties: {
-              modelAnswer: { type: "string" },
-              highYieldPoints: { type: "array", items: { type: "string" } },
-              pitfalls: { type: "array", items: { type: "string" } },
+    const res = await callAI({
+      model: MODEL,
+      messages: [
+        { role: "system", content: SYSTEM },
+        { role: "user", content: userPrompt },
+      ],
+      tools: [
+        {
+          type: "function",
+          function: {
+            name: "emit_model_answer",
+            description: "Emit a model viva answer plus high-yield points and pitfalls.",
+            parameters: {
+              type: "object",
+              properties: {
+                modelAnswer: { type: "string" },
+                highYieldPoints: { type: "array", items: { type: "string" } },
+                pitfalls: { type: "array", items: { type: "string" } },
+              },
+              required: ["modelAnswer", "highYieldPoints", "pitfalls"],
+              additionalProperties: false,
             },
-            required: ["modelAnswer", "highYieldPoints", "pitfalls"],
-            additionalProperties: false,
           },
         },
-      },
-    ],
-    tool_choice: { type: "function", function: { name: "emit_model_answer" } },
-  });
+      ],
+      tool_choice: { type: "function", function: { name: "emit_model_answer" } },
+    });
 
-  const errResp = aiErrorResponse(res.status);
-  if (errResp) return errResp;
-  if (!res.ok) {
-    const text = await res.text();
-    console.error("AI model-answer error:", res.status, text);
-    return new Response(JSON.stringify({ error: "AI gateway error" }), {
-      status: 500,
+    const errResp = aiErrorResponse(res.status);
+    if (errResp) return errResp;
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("AI model-answer error:", res.status, text);
+      return new Response(JSON.stringify({ error: "AI gateway error" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const data = await res.json();
+    const args = data?.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
+    let parsed: Record<string, unknown> = {};
+    try {
+      parsed = JSON.parse(args ?? "{}");
+    } catch {
+      return new Response(JSON.stringify({ error: "Could not parse model answer" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Persist before releasing the lock so any waiter that polls right after
+    // release immediately sees the cached row.
+    if (supa && typeof parsed.modelAnswer === "string" && parsed.modelAnswer.length > 0) {
+      const { error: cacheWriteErr } = await supa
+        .from("viva_model_answers")
+        .upsert(
+          {
+            exam: b.exam,
+            question: b.question,
+            question_hash: questionHash,
+            topic_title: b.topicTitle,
+            model_answer: parsed.modelAnswer as string,
+            high_yield_points: Array.isArray(parsed.highYieldPoints) ? parsed.highYieldPoints : [],
+            pitfalls: Array.isArray(parsed.pitfalls) ? parsed.pitfalls : [],
+          },
+          { onConflict: "exam,question_hash" },
+        );
+      if (cacheWriteErr) {
+        console.error("[viva] model-answer cache write failed", cacheWriteErr.message);
+      }
+    }
+
+    return new Response(JSON.stringify({ ...parsed, cached: false }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
-  }
-
-  const data = await res.json();
-  const args = data?.choices?.[0]?.message?.tool_calls?.[0]?.function?.arguments;
-  let parsed: Record<string, unknown> = {};
-  try {
-    parsed = JSON.parse(args ?? "{}");
-  } catch {
-    return new Response(JSON.stringify({ error: "Could not parse model answer" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-  // 2. Persist to cache so the next user asking the same question gets the
-  //    same answer instantly. Best-effort — never block the response on this.
-  if (supa && typeof parsed.modelAnswer === "string" && parsed.modelAnswer.length > 0) {
-    const { error: cacheWriteErr } = await supa
-      .from("viva_model_answers")
-      .upsert(
-        {
-          exam: b.exam,
-          question: b.question,
-          question_hash: questionHash,
-          topic_title: b.topicTitle,
-          model_answer: parsed.modelAnswer as string,
-          high_yield_points: Array.isArray(parsed.highYieldPoints) ? parsed.highYieldPoints : [],
-          pitfalls: Array.isArray(parsed.pitfalls) ? parsed.pitfalls : [],
-        },
-        { onConflict: "exam,question_hash" },
-      );
-    if (cacheWriteErr) {
-      console.error("[viva] model-answer cache write failed", cacheWriteErr.message);
+  } finally {
+    // Always release so waiters can proceed (or so the next request claims fresh).
+    if (supa && weOwnGeneration) {
+      await releaseLock(supa, b.exam, questionHash);
     }
   }
-
-  return new Response(JSON.stringify({ ...parsed, cached: false }), {
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
-  });
 }
 
 Deno.serve(async (req) => {
