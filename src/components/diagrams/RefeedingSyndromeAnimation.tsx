@@ -498,7 +498,6 @@ const LabsPanel = ({ active }: { active: number }) => {
             ? "text-clinical border-clinical/50 bg-clinical/10"
             : "text-foreground border-border bg-muted/40";
           const arrow = low ? "↓" : high ? "↑" : "";
-          const g = GLOSSARY[it.key];
           return (
             <LabGlossaryPopover key={it.key} labKey={it.key} overrides={REFEEDING_OVERRIDES[it.key]}>
               <button
