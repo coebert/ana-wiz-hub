@@ -7,6 +7,7 @@ import ThyroidStormAnimation from "@/components/diagrams/ThyroidStormAnimation";
 import AdrenalCrisisAnimation from "@/components/diagrams/AdrenalCrisisAnimation";
 import DKAvsHHSDiagram from "@/components/diagrams/DKAvsHHSDiagram";
 import EndocrineEmergencyAlgorithms from "@/components/diagrams/EndocrineEmergencyAlgorithms";
+import EndocrineEmergencyDrugs from "@/components/diagrams/EndocrineEmergencyDrugs";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -147,6 +148,7 @@ const IcuEndocrineEmergenciesTopic = () => {
           <ThyroidStormAnimation />
           <AdrenalCrisisAnimation />
           <EndocrineEmergencyAlgorithms />
+          <EndocrineEmergencyDrugs />
         </>
       }
       coreConcepts={
