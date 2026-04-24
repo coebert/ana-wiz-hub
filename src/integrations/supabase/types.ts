@@ -146,6 +146,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      viva_acquire_model_answer_lock: {
+        Args: { p_exam: string; p_question_hash: string }
+        Returns: undefined
+      }
     }
     Enums: {
       app_role: "admin" | "user"
