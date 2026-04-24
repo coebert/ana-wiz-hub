@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDown } from "lucide-react";
+import { BookOpen, Headphones, Mic, ArrowRight, Quote, MessageSquare, ChevronDown, BookMarked } from "lucide-react";
 import brainLogo from "/brain-logo.png";
 import { SupportSection } from "@/components/SupportSection";
 import DemoVivaPlayer from "@/components/DemoVivaPlayer";
@@ -134,6 +134,11 @@ const Landing = () => {
                       { label: "Knowledge (4/5)", text: "Catheter check first is exactly right post-laparotomy. Could also mention bladder scan and reviewing recent nephrotoxins (contrast, NSAIDs, gentamicin)." },
                       { label: "Communication (4/5)", text: "Confident and well-paced. Slow down slightly when listing investigations so the examiner can follow each one." },
                     ],
+                    curriculum: [
+                      { exam: "Final" as const, code: "CT_BK_22", topic: "Postoperative acute kidney injury — recognition and management" },
+                      { exam: "Final" as const, code: "VS_BK_05", topic: "Anaesthesia for open and endovascular aortic surgery" },
+                      { exam: "Primary" as const, code: "RP_BK_07", topic: "Renal physiology — GFR, autoregulation and oliguria" },
+                    ],
                   },
                   {
                     tag: "Physiology",
@@ -147,6 +152,11 @@ const Landing = () => {
                       { label: "Knowledge (5/5)", text: "Accurate values and correct mention of the alveolar gas equation and Pasteur point." },
                       { label: "Communication (4/5)", text: "Very clear; consider sketching the cascade if a whiteboard is offered — examiners reward visual structure." },
                     ],
+                    curriculum: [
+                      { exam: "Primary" as const, code: "RP_BK_01", topic: "Oxygen cascade and alveolar gas equation" },
+                      { exam: "Primary" as const, code: "RP_BK_03", topic: "Pulmonary gas exchange — V/Q matching and shunt" },
+                      { exam: "Primary" as const, code: "CP_BK_06", topic: "Tissue oxygen delivery and the Pasteur point" },
+                    ],
                   },
                   {
                     tag: "Pharmacology",
@@ -159,6 +169,12 @@ const Landing = () => {
                       { label: "Structure (4/5)", text: "Logical comparison. State up front that you'll cover absorption, distribution, metabolism and elimination for full marks." },
                       { label: "Knowledge (5/5)", text: "Strong on CSHT, esterase metabolism and synergy. Good clinical target ranges." },
                       { label: "Communication (4/5)", text: "Confident delivery. Pause briefly after each comparison to invite the examiner to probe further." },
+                    ],
+                    curriculum: [
+                      { exam: "Primary" as const, code: "PH_BK_04", topic: "Pharmacokinetics — compartment models and context-sensitive half-time" },
+                      { exam: "Primary" as const, code: "PH_BK_09", topic: "Intravenous induction agents — propofol" },
+                      { exam: "Final" as const, code: "GA_BK_11", topic: "Total intravenous anaesthesia (TIVA) — TCI and EEG-guided depth" },
+                      { exam: "Primary" as const, code: "PH_BK_12", topic: "Opioid pharmacology — remifentanil and esterase metabolism" },
                     ],
                   },
                 ].map((q, i) => (
@@ -219,6 +235,36 @@ const Landing = () => {
                           ))}
                         </ul>
                       </div>
+                    </div>
+
+                    <div className="mt-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <BookMarked className="h-3.5 w-3.5 text-primary" />
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                          FRCA curriculum mapping
+                        </span>
+                      </div>
+                      <ul className="space-y-1.5 text-sm text-foreground/90">
+                        {q.curriculum.map((c, k) => (
+                          <li key={k} className="flex items-start gap-2">
+                            <span
+                              className={`mt-0.5 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider flex-shrink-0 ${
+                                c.exam === "Primary"
+                                  ? "bg-physiology/15 text-physiology"
+                                  : "bg-clinical/15 text-clinical"
+                              }`}
+                            >
+                              {c.exam}
+                            </span>
+                            <span className="leading-snug">
+                              <span className="font-mono text-[11px] text-muted-foreground mr-1.5">
+                                {c.code}
+                              </span>
+                              {c.topic}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 ))}
