@@ -207,6 +207,38 @@ const FeedbackPanel = ({
         </div>
       )}
 
+      {fb.coreFeedback && (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          {(["structure", "knowledge", "communication"] as const).map((key) => {
+            const entry = fb.coreFeedback![key];
+            const ratingStyles: Record<CoreRating, string> = {
+              strong: "border-primary/40 bg-primary/10 text-primary",
+              adequate: "border-amber-500/40 bg-amber-500/10 text-amber-600 dark:text-amber-400",
+              weak: "border-destructive/40 bg-destructive/10 text-destructive",
+            };
+            const label = key.charAt(0).toUpperCase() + key.slice(1);
+            return (
+              <div
+                key={key}
+                className="rounded-lg border border-border/60 bg-card p-3 flex flex-col gap-1.5"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    {label}
+                  </p>
+                  <span
+                    className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${ratingStyles[entry.rating]}`}
+                  >
+                    {entry.rating}
+                  </span>
+                </div>
+                <p className="text-xs text-foreground/85 leading-snug">{entry.comment}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {fb.rubricBreakdown?.length > 0 && (
         <div className="rounded-lg border border-border/60 bg-card p-3">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
