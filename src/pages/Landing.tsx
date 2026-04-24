@@ -170,6 +170,12 @@ const Landing = () => {
                       { label: "Knowledge (5/5)", text: "Strong on CSHT, esterase metabolism and synergy. Good clinical target ranges." },
                       { label: "Communication (4/5)", text: "Confident delivery. Pause briefly after each comparison to invite the examiner to probe further." },
                     ],
+                    curriculum: [
+                      { exam: "Primary" as const, code: "PH_BK_04", topic: "Pharmacokinetics — compartment models and context-sensitive half-time" },
+                      { exam: "Primary" as const, code: "PH_BK_09", topic: "Intravenous induction agents — propofol" },
+                      { exam: "Final" as const, code: "GA_BK_11", topic: "Total intravenous anaesthesia (TIVA) — TCI and EEG-guided depth" },
+                      { exam: "Primary" as const, code: "PH_BK_12", topic: "Opioid pharmacology — remifentanil and esterase metabolism" },
+                    ],
                   },
                 ].map((q, i) => (
                   <div
