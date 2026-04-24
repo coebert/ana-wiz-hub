@@ -598,7 +598,7 @@ const dewPointSteps: AnimatedMechanismStep[] = [
     ),
   },
   {
-    label: "Mist forms = dew point",
+    label: "Dew forms at Td",
     detail: (
       <>
         Cooling continues until the surface temperature falls to the <strong>dew point (Td)</strong> — the temperature at
