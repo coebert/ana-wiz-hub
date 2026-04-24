@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download } from "lucide-react";
+import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Download, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
