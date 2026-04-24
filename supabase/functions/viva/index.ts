@@ -84,13 +84,24 @@ function aiErrorResponse(status: number): Response | null {
 }
 
 async function handleQuestion(b: QuestionBody): Promise<Response> {
+  const difficulty: Difficulty = b.difficulty ?? "standard";
+  const difficultyGuide: Record<Difficulty, string> = {
+    easy: "Pitch this at the EASIER end of the named exam — a warm-up opener testing core definitions / first principles. Still exam-appropriate, but more accessible.",
+    standard: "Pitch at the typical mid-range standard for this exam — what an average candidate would expect on the day.",
+    hard: "Pitch at the HARDER end of the exam — a discriminating question requiring integration, less common scenarios, or deeper application. Still fair, not unfair.",
+  };
+  const avoidBlock = b.avoid && b.avoid.length > 0
+    ? `\n\nAVOID repeating or paraphrasing any of these previously-asked questions:\n${b.avoid.slice(0, 12).map((q, i) => `${i + 1}. ${q}`).join("\n")}\nWrite a genuinely DIFFERENT question — different angle, sub-topic, or framing.`
+    : "";
+
   const userPrompt = `Topic: "${b.topicTitle}"${b.topicDescription ? ` — ${b.topicDescription}` : ""}.
 Exam standard: ${examLabel[b.exam]}.
+Difficulty: ${difficulty.toUpperCase()} — ${difficultyGuide[difficulty]}${avoidBlock}
 
 Write ONE viva opening question on this topic.
 Rules:
 - 1–2 sentences, spoken-style (an examiner reading it aloud).
-- Calibrated to the named exam standard — do not over- or under-pitch.
+- Calibrated to the named exam standard AND difficulty above.
 - No multiple-choice, no preamble, no "Tell me everything about…". Open with a stem like "Tell me…", "Define…", "Walk me through…", "How would you assess…".
 - Do NOT include the answer.
 Return JSON only via the tool call.`;
