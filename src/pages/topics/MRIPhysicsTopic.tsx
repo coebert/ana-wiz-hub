@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import MRIPhysicsDiagram from "@/components/diagrams/MRIPhysicsDiagram";
+import MRISuiteFloorPlanDiagram from "@/components/diagrams/MRISuiteFloorPlanDiagram";
 import { mriPhysicsQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
