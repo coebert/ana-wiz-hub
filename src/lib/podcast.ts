@@ -10,6 +10,21 @@ export interface PodcastResult {
 }
 
 /**
+ * Estimate the target podcast length from source content. Mirrors the logic
+ * in supabase/functions/generate-podcast/index.ts (deriveTargetLength) so the
+ * UI can preview what the user will get before kicking off generation.
+ */
+export const estimatePodcastTarget = (
+  content: string,
+): { minutes: number; words: number; sourceWords: number } => {
+  const sourceWords = content.trim().split(/\s+/).filter(Boolean).length;
+  const target = Math.round(sourceWords * 0.35);
+  const words = Math.max(900, target);
+  const minutes = Math.max(6, Math.round(words / 150));
+  return { minutes, words, sourceWords };
+};
+
+/**
  * Pulls the spoken-word content out of the topic page DOM. We deliberately
  * grab structural sections (objectives, core concepts, key learning points,
  * worked examples) and skip nav, footer, quizzes, and references — quizzes
