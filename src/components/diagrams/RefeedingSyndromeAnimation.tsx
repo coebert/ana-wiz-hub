@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import LabGlossaryPopover from "@/components/LabGlossaryPopover";
+import type { LabKey as SharedLabKey, SourceLink } from "@/lib/lab-glossary";
 
 /**
  * Refeeding syndrome — pathophysiology animation.
@@ -423,126 +424,49 @@ const REF = {
 
 type LabKey = keyof typeof REF;
 
-/** Clinical glossary — what the typical refeeding-trend means at the bedside. */
-type SourceLink = { label: string; url: string; quote: string };
-
-const GLOSSARY: Record<LabKey, {
-  full: string;
-  trend: string;
-  why: string;
-  clinical: string;
-  threshold: string;
-  trendSources: SourceLink[];
-  actionSources: SourceLink[];
+/** Refeeding-specific copy + sources that override the central glossary
+ *  defaults inside the LabGlossaryPopover. Keeping the overrides here
+ *  preserves the rich, refeeding-flavoured wording while the rest of the
+ *  app reuses the shared LabGlossaryPopover for other contexts.
+ */
+const REFEEDING_OVERRIDES: Record<SharedLabKey & ("K" | "PO4" | "Mg" | "Glu"), {
+  trend?: string;
+  why?: string;
+  clinical?: string;
+  action?: string;
+  trendSources?: SourceLink[];
+  actionSources?: SourceLink[];
 }> = {
   K: {
-    full: "Potassium (K⁺)",
-    trend: "Falls with insulin surge (typical nadir 2.5–3.0 mmol/L by day 2–4)",
+    trend: "Falls with the insulin surge — typical nadir 2.5–3.0 mmol/L by day 2–4 of refeeding.",
     why: "Insulin activates Na⁺/K⁺-ATPase → K⁺ driven into cells. Total-body K⁺ already depleted from starvation, so serum drop is rapid.",
-    clinical: "Arrhythmia (VT/VF, torsades), muscle weakness, ileus, ECG changes (flat T, U waves, long QT).",
-    threshold: "Replace if <3.5; urgent IV if <3.0 or symptomatic. Cardiac monitor during replacement.",
-    trendSources: [
-      {
-        label: "BJA Educ — Mehanna 2008",
-        url: "https://www.bmj.com/content/336/7659/1495",
-        quote: "“Insulin causes cellular uptake of potassium, magnesium and phosphate, leading to hypokalaemia, hypomagnesaemia and hypophosphataemia.”",
-      },
-      {
-        label: "ASPEN consensus 2020",
-        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
-        quote: "“Decreases in serum potassium, magnesium, and/or phosphorus levels occur within hours to days of reintroducing nutrition.”",
-      },
-    ],
-    actionSources: [
-      {
-        label: "NICE CG32 §1.4",
-        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
-        quote: "“Provide oral, enteral or intravenous supplements of potassium (likely requirement 2–4 mmol/kg/day)…”",
-      },
-    ],
+    action: "Replace if < 3.5; urgent IV if < 3.0 or symptomatic. Cardiac monitor during replacement.",
   },
   PO4: {
-    full: "Phosphate (PO₄³⁻)",
-    trend: "Drops sharply 24–72 h after feed start; the hallmark biochemistry of refeeding",
-    why: "Consumed making 2,3-DPG, ATP, and phosphorylated glycolytic intermediates. Insulin co-transports PO₄ into cells.",
+    trend: "Drops sharply 24–72 h after feed start — the diagnostic biochemical hallmark of refeeding.",
+    why: "Consumed making 2,3-DPG, ATP and phosphorylated glycolytic intermediates. Insulin co-transports PO₄ into cells.",
     clinical: "Diaphragmatic / respiratory muscle weakness (failure to wean), cardiac failure, rhabdomyolysis, haemolysis, paraesthesia, seizures.",
-    threshold: "ASPEN: mild <0.65, moderate 0.32–0.50, severe <0.32 mmol/L. Replace IV if <0.5 or symptomatic.",
+    action: "ASPEN: mild < 0.65, moderate 0.32–0.50, severe < 0.32 mmol/L. Replace IV if < 0.5 or symptomatic.",
     trendSources: [
-      {
-        label: "BJA Educ — Mehanna 2008",
-        url: "https://www.bmj.com/content/336/7659/1495",
-        quote: "“Hypophosphataemia is the hallmark of the refeeding syndrome, usually appearing within the first 72 hours of refeeding.”",
-      },
       {
         label: "Frontline Gastro 2020",
         url: "https://fg.bmj.com/content/11/3/254",
-        quote: "“A fall in serum phosphate to <0.50 mmol/L within 72 hours of feeding is the diagnostic biochemical hallmark.”",
-      },
-    ],
-    actionSources: [
-      {
-        label: "ASPEN consensus 2020 — severity",
-        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
-        quote: "“Mild 0.51–0.65, moderate 0.32–0.50, severe <0.32 mmol/L… intravenous repletion is recommended for severe hypophosphataemia.”",
-      },
-      {
-        label: "NICE CG32 §1.4",
-        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
-        quote: "“Provide phosphate (0.3–0.6 mmol/kg/day)… restore circulatory volume and monitor fluid balance and clinical status closely.”",
+        quote:
+          "A fall in serum phosphate to <0.50 mmol/L within 72 hours of feeding is the diagnostic biochemical hallmark.",
       },
     ],
   },
   Mg: {
-    full: "Magnesium (Mg²⁺)",
-    trend: "Falls in parallel with K⁺ and PO₄ (often nadir <0.7 mmol/L)",
+    trend: "Falls in parallel with K⁺ and PO₄ — often nadir < 0.7 mmol/L during early refeeding.",
     why: "Cofactor for Na⁺/K⁺-ATPase and ATP-dependent enzymes; pulled intracellularly. Renal wasting in starvation also contributes.",
     clinical: "Refractory hypokalaemia (cannot correct K⁺ until Mg²⁺ replaced), arrhythmia (torsades), tremor, tetany, seizures.",
-    threshold: "Replace if <0.7. Always check Mg²⁺ before giving up on persistent hypokalaemia.",
-    trendSources: [
-      {
-        label: "BJA Educ — Mehanna 2008",
-        url: "https://www.bmj.com/content/336/7659/1495",
-        quote: "“Hypomagnesaemia commonly accompanies hypokalaemia and hypophosphataemia after refeeding.”",
-      },
-      {
-        label: "ASPEN consensus 2020",
-        url: "https://aspenjournals.onlinelibrary.wiley.com/doi/10.1002/ncp.10474",
-        quote: "“Mild 1.4–1.6, moderate 1.0–1.3, severe <1.0 mg/dL (<0.4 mmol/L).”",
-      },
-    ],
-    actionSources: [
-      {
-        label: "NICE CG32 §1.4",
-        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
-        quote: "“Provide magnesium (0.2 mmol/kg/day intravenous, 0.4 mmol/kg/day oral)…”",
-      },
-    ],
+    action: "Replace if < 0.7. Always check Mg²⁺ before giving up on persistent hypokalaemia.",
   },
   Glu: {
-    full: "Glucose",
-    trend: "Rises first (carb-naïve metabolism) then settles or undershoots once insulin response peaks",
+    trend: "Rises first (carb-naïve metabolism) then settles or undershoots once the insulin response peaks.",
     why: "Sudden carbohydrate load on a glycogen-depleted, insulin-resistant patient → transient hyperglycaemia → counter-regulatory insulin surge that triggers the electrolyte shift.",
     clinical: "Hyperglycaemia → osmotic diuresis, fluid overload, infection risk. Late hypoglycaemia possible if feed interrupted.",
-    threshold: "Target 6–10 mmol/L (NICE-SUGAR). Avoid IV dextrose boluses; start feed at 10 kcal/kg/day.",
-    trendSources: [
-      {
-        label: "BJA Educ — Mehanna 2008",
-        url: "https://www.bmj.com/content/336/7659/1495",
-        quote: "“The sudden shift from fat to carbohydrate metabolism causes a surge in insulin secretion…”",
-      },
-    ],
-    actionSources: [
-      {
-        label: "NICE CG32 §1.4",
-        url: "https://www.nice.org.uk/guidance/cg32/chapter/Recommendations",
-        quote: "“Start nutrition support at no more than 10 kcal/kg/day, increasing slowly to meet requirements by 4–7 days.”",
-      },
-      {
-        label: "NICE-SUGAR NEJM 2009",
-        url: "https://www.nejm.org/doi/full/10.1056/NEJMoa0810625",
-        quote: "“A blood glucose target of 180 mg/dL (≈10 mmol/L) or less resulted in lower mortality than intensive control.”",
-      },
-    ],
+    action: "Target 6–10 mmol/L (NICE-SUGAR). Avoid IV dextrose boluses; start feed at 10 kcal/kg/day.",
   },
 };
 
@@ -574,86 +498,29 @@ const LabsPanel = ({ active }: { active: number }) => {
             ? "text-clinical border-clinical/50 bg-clinical/10"
             : "text-foreground border-border bg-muted/40";
           const arrow = low ? "↓" : high ? "↑" : "";
-          const g = GLOSSARY[it.key];
           return (
-            <Popover key={it.key}>
-              <PopoverTrigger asChild>
-                <button
-                  type="button"
-                  aria-label={`${g.full} — clinical glossary`}
-                  className={`text-left rounded-md border px-2 py-1.5 transition-colors duration-500 hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 ${tone}`}
+            <LabGlossaryPopover key={it.key} labKey={it.key} overrides={REFEEDING_OVERRIDES[it.key]}>
+              <button
+                type="button"
+                aria-label={`${it.label} — clinical glossary`}
+                className={`text-left rounded-md border px-2 py-1.5 transition-colors duration-500 hover:ring-2 hover:ring-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50 ${tone}`}
+              >
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[10px] font-semibold">{it.label}</span>
+                  <span className="text-[9px] opacity-70">
+                    {lo}–{hi}
+                  </span>
+                </div>
+                <div
+                  key={`${it.key}-${active}`}
+                  className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
                 >
-                  <div className="flex items-baseline justify-between">
-                    <span className="text-[10px] font-semibold">{it.label}</span>
-                    <span className="text-[9px] opacity-70">
-                      {lo}–{hi}
-                    </span>
-                  </div>
-                  <div
-                    key={`${it.key}-${active}`}
-                    className="text-sm font-mono font-bold tabular-nums leading-tight animate-fade-in"
-                  >
-                    {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
-                    <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
-                  </div>
-                  <div className="text-[9px] opacity-60">{unit}</div>
-                </button>
-              </PopoverTrigger>
-              <PopoverContent side="top" align="center" className="w-72 text-xs p-3">
-                <p className="font-serif font-semibold text-foreground text-sm leading-tight">
-                  {g.full}
-                </p>
-                <p className="text-[10px] text-muted-foreground mt-0.5">
-                  Reference range {lo}–{hi} {unit}
-                </p>
-                <dl className="mt-2 space-y-1.5">
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Typical refeeding trend</dt>
-                    <dd className="text-foreground leading-snug">{g.trend}</dd>
-                    <dd className="mt-1 flex flex-wrap gap-1">
-                      {g.trendSources.map((s) => (
-                        <a
-                          key={s.label}
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={s.quote}
-                          className="inline-flex items-center gap-0.5 rounded border border-border/60 bg-muted/40 px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground hover:bg-primary/10 hover:text-primary hover:border-primary/40 transition-colors"
-                        >
-                          {s.label} <span aria-hidden="true">↗</span>
-                        </a>
-                      ))}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Why it changes</dt>
-                    <dd className="text-muted-foreground leading-snug">{g.why}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">Clinical effects</dt>
-                    <dd className="text-muted-foreground leading-snug">{g.clinical}</dd>
-                  </div>
-                  <div className="rounded border-l-2 border-primary/60 bg-primary/5 px-2 py-1">
-                    <dt className="text-[10px] uppercase tracking-wider font-semibold text-primary">Action</dt>
-                    <dd className="text-foreground leading-snug">{g.threshold}</dd>
-                    <dd className="mt-1 flex flex-wrap gap-1">
-                      {g.actionSources.map((s) => (
-                        <a
-                          key={s.label}
-                          href={s.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={s.quote}
-                          className="inline-flex items-center gap-0.5 rounded border border-primary/30 bg-card px-1.5 py-0.5 text-[9px] font-medium text-primary hover:bg-primary/10 transition-colors"
-                        >
-                          {s.label} <span aria-hidden="true">↗</span>
-                        </a>
-                      ))}
-                    </dd>
-                  </div>
-                </dl>
-              </PopoverContent>
-            </Popover>
+                  {it.value.toFixed(it.key === "K" || it.key === "Glu" ? 1 : 2)}
+                  <span className="text-[9px] font-normal opacity-70 ml-0.5">{arrow}</span>
+                </div>
+                <div className="text-[9px] opacity-60">{unit}</div>
+              </button>
+            </LabGlossaryPopover>
           );
         })}
       </div>
