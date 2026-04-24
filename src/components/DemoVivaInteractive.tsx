@@ -500,7 +500,7 @@ const DemoVivaInteractive = ({
     <div className="space-y-3">
       {/* Past rounds */}
       {rounds.map((r, i) => (
-        <FeedbackPanel key={i} round={r} />
+        <FeedbackPanel key={i} round={r} topicTitle={topicTitle} exam={exam} />
       ))}
 
       {/* Follow-up CTA */}
