@@ -273,7 +273,7 @@ const VivaSession = ({
 
     // Bypass the prefetch cache — it doesn't know about emphasis.
     prefetchedRef.current = null;
-    setPrefetchStatus("idle");
+    cancelPrefetch();
 
     setErrorMsg(null);
     setTranscript("");
