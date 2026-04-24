@@ -226,7 +226,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
               </div>
             )}
             <Button
-              onClick={handleGenerate}
+              onClick={() => handleGenerate()}
               disabled={generating}
               size="sm"
               className="mt-3"
