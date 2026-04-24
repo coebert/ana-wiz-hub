@@ -18,6 +18,13 @@ interface VivaSessionProps {
   onClose?: () => void;
 }
 
+interface RubricBreakdownItem {
+  criterion: string;
+  max: number;
+  awarded: number;
+  comment: string;
+}
+
 interface Feedback {
   score: number;
   verdict: string;
@@ -25,6 +32,7 @@ interface Feedback {
   gaps: string[];
   modelAnswer: string;
   nextStep: string;
+  rubricBreakdown?: RubricBreakdownItem[];
 }
 
 type Phase =
