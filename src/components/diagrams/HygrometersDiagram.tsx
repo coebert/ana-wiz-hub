@@ -471,7 +471,6 @@ const DewPointScene = ({ step }: { step: number }) => {
           {showSvpTip && (
             <foreignObject x="6" y="6" width="200" height="140" className="animate-fade-in">
               <div
-                xmlns="http://www.w3.org/1999/xhtml"
                 className="rounded-md border border-primary/40 bg-card text-foreground shadow-md p-2 text-[10px] leading-snug"
                 role="tooltip"
               >
