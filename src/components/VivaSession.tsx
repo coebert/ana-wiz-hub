@@ -236,8 +236,16 @@ const VivaSession = ({
   const prefetchNext = useCallback(async () => {
     if (!prefetchEnabled) return;
     if (prefetchedRef.current?.difficulty === difficulty) return; // already cached
+
+    // Cancel any earlier in-flight prefetch first.
+    prefetchAbortRef.current?.abort();
+    const controller = new AbortController();
+    prefetchAbortRef.current = controller;
+
     setPrefetchStatus("loading");
-    const q = await requestQuestion(difficulty);
+    const q = await requestQuestion(difficulty, undefined, controller.signal);
+    if (controller.signal.aborted) return; // user cancelled — leave status alone
+    prefetchAbortRef.current = null;
     if (!q) {
       setPrefetchStatus("error");
       return;
