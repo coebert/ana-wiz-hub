@@ -171,45 +171,147 @@ async function generateScript(topicTitle: string, content: string): Promise<stri
 }
 
 // Split script at sentence boundaries into chunks <= MAX_TTS_CHARS
+// Split script into TTS-safe chunks. Strategy:
+//   1. Prefer paragraph boundaries (double newline) — keeps natural pauses.
+//   2. Within an oversized paragraph, fall back to sentences.
+//   3. As a last resort (very long sentence — abbreviation list, drug name
+//      string), hard-split on word boundaries at HARD_TTS_LIMIT.
+// This guarantees every chunk is <= HARD_TTS_LIMIT chars so OpenAI never 400s.
 function chunkScript(script: string): string[] {
-  const sentences = script.split(/(?<=[.!?])\s+/);
-  const chunks: string[] = [];
-  let current = "";
-  for (const sentence of sentences) {
-    if ((current + " " + sentence).trim().length > MAX_TTS_CHARS) {
-      if (current) chunks.push(current.trim());
-      current = sentence;
-    } else {
-      current = (current + " " + sentence).trim();
+  const out: string[] = [];
+
+  const pushPacked = (text: string) => {
+    // Greedy-pack sentences into the current open chunk.
+    const sentences = text.split(/(?<=[.!?])\s+/);
+    let current = "";
+    for (const sentence of sentences) {
+      let s = sentence.trim();
+      if (!s) continue;
+
+      // Sentence itself too long — hard split on word boundaries.
+      while (s.length > HARD_TTS_LIMIT) {
+        const slice = s.slice(0, HARD_TTS_LIMIT);
+        const lastSpace = slice.lastIndexOf(" ");
+        const cut = lastSpace > HARD_TTS_LIMIT * 0.6 ? lastSpace : HARD_TTS_LIMIT;
+        if (current) {
+          out.push(current.trim());
+          current = "";
+        }
+        out.push(s.slice(0, cut).trim());
+        s = s.slice(cut).trim();
+      }
+
+      if ((current + " " + s).trim().length > MAX_TTS_CHARS) {
+        if (current) out.push(current.trim());
+        current = s;
+      } else {
+        current = (current + " " + s).trim();
+      }
     }
+    if (current) out.push(current.trim());
+  };
+
+  const paragraphs = script.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
+  if (paragraphs.length === 0) {
+    pushPacked(script);
+  } else {
+    // Pack short paragraphs together; split long ones by sentence.
+    let buffer = "";
+    for (const p of paragraphs) {
+      if ((buffer + "\n\n" + p).trim().length > MAX_TTS_CHARS) {
+        if (buffer) {
+          pushPacked(buffer);
+          buffer = "";
+        }
+        if (p.length > MAX_TTS_CHARS) {
+          pushPacked(p);
+        } else {
+          buffer = p;
+        }
+      } else {
+        buffer = buffer ? `${buffer}\n\n${p}` : p;
+      }
+    }
+    if (buffer) pushPacked(buffer);
   }
-  if (current) chunks.push(current.trim());
-  return chunks;
+
+  return out.filter((c) => c.length > 0);
 }
 
-async function synthesiseChunk(text: string): Promise<Uint8Array> {
-  const response = await fetch("https://api.openai.com/v1/audio/speech", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${OPENAI_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: TTS_MODEL,
-      voice: TTS_VOICE,
-      input: text,
-      response_format: "mp3",
-      speed: 1.0,
-    }),
-  });
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-  if (!response.ok) {
-    const errText = await response.text();
-    throw new Error(`OpenAI TTS failed (${response.status}): ${errText}`);
+async function synthesiseChunk(text: string, attempt = 1): Promise<Uint8Array> {
+  try {
+    const response = await fetch("https://api.openai.com/v1/audio/speech", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${OPENAI_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: TTS_MODEL,
+        voice: TTS_VOICE,
+        input: text,
+        response_format: "mp3",
+        speed: 1.0,
+      }),
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      // Retry transient errors (rate limits + 5xx). Quota/billing errors are
+      // permanent and bubble up immediately so the caller can surface them.
+      const isRetryable =
+        (response.status === 429 && !errText.toLowerCase().includes("insufficient_quota")) ||
+        response.status >= 500;
+      if (isRetryable && attempt < TTS_MAX_RETRIES) {
+        const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
+        console.warn(`[tts] chunk failed (${response.status}), retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms`);
+        await sleep(backoff);
+        return synthesiseChunk(text, attempt + 1);
+      }
+      throw new Error(`OpenAI TTS failed (${response.status}): ${errText}`);
+    }
+
+    const buf = await response.arrayBuffer();
+    const bytes = new Uint8Array(buf);
+    if (bytes.length === 0) throw new Error("OpenAI TTS returned empty audio");
+    return bytes;
+  } catch (err) {
+    // Retry network errors too.
+    const message = err instanceof Error ? err.message : String(err);
+    const isNetwork = !message.includes("OpenAI TTS");
+    if (isNetwork && attempt < TTS_MAX_RETRIES) {
+      const backoff = 500 * Math.pow(2, attempt - 1) + Math.random() * 250;
+      console.warn(`[tts] network error, retry ${attempt}/${TTS_MAX_RETRIES} in ${Math.round(backoff)}ms: ${message}`);
+      await sleep(backoff);
+      return synthesiseChunk(text, attempt + 1);
+    }
+    throw err;
   }
+}
 
-  const buf = await response.arrayBuffer();
-  return new Uint8Array(buf);
+// Run TTS chunks with bounded concurrency. Output preserves chunk order so
+// concatenated MP3 plays back in the right sequence regardless of completion order.
+async function synthesiseChunksParallel(
+  chunks: string[],
+  topicId: string,
+): Promise<Uint8Array[]> {
+  const results: Uint8Array[] = new Array(chunks.length);
+  let nextIndex = 0;
+
+  const worker = async (workerId: number) => {
+    while (true) {
+      const i = nextIndex++;
+      if (i >= chunks.length) return;
+      console.log(`[${topicId}] worker ${workerId} → chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`);
+      results[i] = await synthesiseChunk(chunks[i]);
+    }
+  };
+
+  const workerCount = Math.min(TTS_CONCURRENCY, chunks.length);
+  await Promise.all(Array.from({ length: workerCount }, (_, w) => worker(w + 1)));
+  return results;
 }
 
 // Concatenate MP3 byte arrays. MP3 frames are independent so naive concat
