@@ -32,12 +32,20 @@ interface QuestionBody {
   avoid?: string[];
 }
 
+interface TranscriptSegment {
+  /** Approximate seconds from the start of the answer. */
+  tStart: number;
+  text: string;
+}
+
 interface FeedbackBody {
   mode: "feedback";
   topicTitle: string;
   exam: Exam;
   question: string;
   transcript: string;
+  /** Optional approximate timeline of what the candidate said. */
+  segments?: TranscriptSegment[];
 }
 
 type Body = QuestionBody | FeedbackBody;
