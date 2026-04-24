@@ -4,6 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import type { ExamTag } from "@/data/curriculum";
+import VivaRubric from "@/components/VivaRubric";
 
 type Exam = Extract<ExamTag, "primary" | "final" | "fficm">;
 
@@ -404,6 +405,8 @@ const VivaSession = ({
               <RotateCcw className="h-3.5 w-3.5 mr-1.5" /> Try another question
             </Button>
           </div>
+
+          <VivaRubric exam={exam} score={feedback.score} />
         </div>
       )}
 
