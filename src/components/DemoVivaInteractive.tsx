@@ -512,47 +512,70 @@ const DemoVivaInteractive = ({
     }
   }, []);
 
-  const submit = useCallback(async () => {
+  const submitAnswer = useCallback(
+    async (answer: string) => {
+      setSubmitting(true);
+      setError(null);
+      setSubmitElapsed(0);
+      const startedAt = performance.now();
+      // Tick a live "elapsed" counter every 100ms so the user sees the request progressing.
+      const tick = window.setInterval(() => {
+        setSubmitElapsed(Math.round(performance.now() - startedAt));
+      }, 100);
+      try {
+        const { data, error: invokeError } = await supabase.functions.invoke("viva", {
+          body: {
+            mode: "feedback",
+            topicTitle,
+            exam,
+            question: currentQuestion,
+            transcript: answer,
+          },
+        });
+        if (invokeError) throw invokeError;
+        if (!data || typeof data !== "object" || !("score" in data)) {
+          throw new Error("Unexpected response from examiner.");
+        }
+        const latencyMs = Math.round(performance.now() - startedAt);
+        const fb = data as Feedback;
+        setRounds((prev) => [
+          ...prev,
+          { question: currentQuestion, kind: currentKind, answer, feedback: fb, latencyMs },
+        ]);
+        // Reset answer box for the next round.
+        setShowAnswerBox(false);
+        setTranscript("");
+        setInterim("");
+        setPendingAnswer(null);
+        finalisedRef.current = "";
+      } catch (err) {
+        console.error("Viva feedback failed:", err);
+        const msg = err instanceof Error ? err.message : "Could not generate feedback.";
+        setError(msg);
+        // Keep the answer so "Retry marking" works without losing what they said.
+        setPendingAnswer(answer);
+        toast.error(msg);
+      } finally {
+        window.clearInterval(tick);
+        setSubmitting(false);
+      }
+    },
+    [topicTitle, exam, currentQuestion, currentKind],
+  );
+
+  const submit = useCallback(() => {
     const answer = transcript.trim();
     if (!answer) {
       toast.error("Add an answer first — speak or type.");
       return;
     }
-    setSubmitting(true);
-    setError(null);
-    try {
-      const { data, error: invokeError } = await supabase.functions.invoke("viva", {
-        body: {
-          mode: "feedback",
-          topicTitle,
-          exam,
-          question: currentQuestion,
-          transcript: answer,
-        },
-      });
-      if (invokeError) throw invokeError;
-      if (!data || typeof data !== "object" || !("score" in data)) {
-        throw new Error("Unexpected response from examiner.");
-      }
-      const fb = data as Feedback;
-      setRounds((prev) => [
-        ...prev,
-        { question: currentQuestion, kind: currentKind, answer, feedback: fb },
-      ]);
-      // Reset answer box for the next round.
-      setShowAnswerBox(false);
-      setTranscript("");
-      setInterim("");
-      finalisedRef.current = "";
-    } catch (err) {
-      console.error("Viva feedback failed:", err);
-      const msg = err instanceof Error ? err.message : "Could not generate feedback.";
-      setError(msg);
-      toast.error(msg);
-    } finally {
-      setSubmitting(false);
-    }
-  }, [transcript, topicTitle, exam, currentQuestion, currentKind]);
+    void submitAnswer(answer);
+  }, [transcript, submitAnswer]);
+
+  const retryMarking = useCallback(() => {
+    if (!pendingAnswer) return;
+    void submitAnswer(pendingAnswer);
+  }, [pendingAnswer, submitAnswer]);
 
   const acceptFollowup = useCallback(() => {
     if (!lastFeedback?.nextStep) return;
