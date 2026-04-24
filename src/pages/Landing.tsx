@@ -133,7 +133,7 @@ const Landing = () => {
             </div>
           </div>
         </section>
-
+      </section>
 
       <SupportSection />
 
