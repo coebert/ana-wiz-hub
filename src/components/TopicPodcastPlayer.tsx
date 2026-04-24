@@ -3,6 +3,7 @@ import { Headphones, Loader2, Pause, Play, AlertCircle, FileText, Gauge, Downloa
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import {
+  estimatePodcastTarget,
   extractTopicContent,
   fetchPodcast,
   generatePodcast,
@@ -34,6 +35,18 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
   const [duration, setDuration] = useState(0);
   const [speed, setSpeed] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [estimate, setEstimate] = useState<{ minutes: number; words: number; sourceWords: number } | null>(null);
+
+  // Estimate target length from page content once we know there's no cached podcast.
+  useEffect(() => {
+    if (loading || (podcast && podcast.status === "ready")) return;
+    // Defer to next tick so topic DOM is fully rendered.
+    const t = setTimeout(() => {
+      const content = extractTopicContent();
+      if (content && content.length > 50) setEstimate(estimatePodcastTarget(content));
+    }, 0);
+    return () => clearTimeout(t);
+  }, [loading, podcast, topicId]);
 
   // Initial fetch — see if a cached podcast already exists.
   useEffect(() => {
@@ -165,9 +178,16 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
               Listen to this topic
             </h3>
             <p className="text-sm text-muted-foreground mt-0.5">
-              An AI-generated, exam-focused 6-minute podcast based on this topic's content.
+              An AI-generated, exam-focused podcast based on this topic's content.
               First listener waits ~30–60 seconds; everyone after gets it instantly.
             </p>
+            {estimate && (
+              <p className="text-xs text-muted-foreground mt-1.5">
+                <span className="font-medium text-foreground">Estimated: ~{estimate.minutes} min</span>{" "}
+                · ~{estimate.words.toLocaleString()} words
+                <span className="text-muted-foreground/70"> (from {estimate.sourceWords.toLocaleString()}-word source)</span>
+              </p>
+            )}
             {isFailed && podcast?.error && (
               <div className="mt-2 flex items-start gap-2 text-sm text-destructive">
                 <AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />
@@ -200,6 +220,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
 
   // Ready → player
   const totalDuration = duration || podcast.duration_seconds || 0;
+  const scriptWords = podcast.script ? podcast.script.trim().split(/\s+/).filter(Boolean).length : 0;
 
   return (
     <div className="rounded-xl border border-border bg-card p-4">
@@ -212,6 +233,7 @@ export const TopicPodcastPlayer = ({ topicId, topicTitle }: TopicPodcastPlayerPr
           </h3>
           <p className="text-xs text-muted-foreground">
             Exam-focused tutorial · ~{Math.round(totalDuration / 60)} min
+            {scriptWords > 0 && <> · {scriptWords.toLocaleString()} words</>}
           </p>
         </div>
         <Button
