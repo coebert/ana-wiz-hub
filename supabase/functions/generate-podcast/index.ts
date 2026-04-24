@@ -376,12 +376,16 @@ Deno.serve(async (req) => {
       console.log(`[${topicId}] Script length: ${script.length} chars`);
 
       const chunks = chunkScript(script);
-      console.log(`[${topicId}] Synthesising ${chunks.length} chunk(s)...`);
-      const audioParts: Uint8Array[] = [];
-      for (let i = 0; i < chunks.length; i++) {
-        console.log(`[${topicId}] Chunk ${i + 1}/${chunks.length} (${chunks[i].length} chars)`);
-        audioParts.push(await synthesiseChunk(chunks[i]));
+      const oversize = chunks.filter((c) => c.length > HARD_TTS_LIMIT).length;
+      if (oversize > 0) {
+        throw new Error(`Internal error: ${oversize} chunk(s) exceed TTS limit after splitting`);
       }
+      console.log(
+        `[${topicId}] Synthesising ${chunks.length} chunk(s) at concurrency ${Math.min(TTS_CONCURRENCY, chunks.length)}...`,
+      );
+      const tStart = Date.now();
+      const audioParts = await synthesiseChunksParallel(chunks, topicId);
+      console.log(`[${topicId}] TTS complete in ${((Date.now() - tStart) / 1000).toFixed(1)}s`);
 
       const fullAudio = concatMp3(audioParts);
       const audioPath = `${topicId}.mp3`;
