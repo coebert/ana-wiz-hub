@@ -275,6 +275,10 @@ const VivaSession = ({
     setFeedback(null);
     finalTranscriptRef.current = "";
     segmentsRef.current = [];
+    // New question → drop any previous model answer.
+    setModelAnswer(null);
+    setModelAnswerError(null);
+    setModelAnswerLoading(false);
 
     // Use a prefetched question if it matches the current difficulty.
     const cached = prefetchedRef.current;
