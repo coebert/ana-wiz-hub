@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
+import { CTDoseExplorer } from "@/components/diagrams/CTDoseExplorer";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
