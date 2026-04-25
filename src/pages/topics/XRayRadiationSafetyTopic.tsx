@@ -5,6 +5,7 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
+import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
@@ -279,6 +280,8 @@ const XRayRadiationSafetyTopic = () => {
               </div>
 
               <CTScannerDiagram />
+
+              <SinogramFBPWalkthrough />
 
               <p>
                 Modern scanners are <strong>helical (spiral) multi-detector CT (MDCT)</strong>: the table moves through the gantry continuously
