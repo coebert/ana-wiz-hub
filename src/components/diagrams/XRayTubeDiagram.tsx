@@ -120,6 +120,7 @@ export const XRayTubeDiagram = () => {
   const [showSutures, setShowSutures] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
   const [animate, setAnimate] = useState(true);
+  const [showSpectrum, setShowSpectrum] = useState(true);
   const [selected, setSelected] = useState<PartId>("electron-beam");
 
   const item = PARTS[selected];
@@ -142,6 +143,7 @@ export const XRayTubeDiagram = () => {
             { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
             { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
             { label: "Animate", active: animate, onChange: () => setAnimate((s) => !s) },
+            { label: "Spectrum", active: showSpectrum, onChange: () => setShowSpectrum((s) => !s) },
           ]}
         />
 
