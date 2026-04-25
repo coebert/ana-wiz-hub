@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
+import { GasSamplingSiteDiagram } from "@/components/diagrams/GasSamplingSiteDiagram";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -275,6 +276,15 @@ const HumidityGasSamplingTopic = () => {
                 <li><strong>Sidestream (diverting)</strong> — a fine sampling line aspirates ≈ 50–250 mL/min of gas from a
                   T-piece at the airway and delivers it to a remote analyser inside the monitor.</li>
               </ul>
+
+              <div className="my-3">
+                <GasSamplingSiteDiagram />
+                <p className="text-xs text-muted-foreground mt-2 italic">
+                  Toggle between the two configurations to see exactly where the sensing element sits in the circuit:
+                  the mainstream cuvette is in the gas stream at the catheter mount, while the sidestream T-piece feeds
+                  a remote analyser via a 2–3 m sample line and water trap.
+                </p>
+              </div>
 
               <div className="overflow-x-auto mt-2">
                 <table className="w-full text-sm border border-border rounded-lg">
