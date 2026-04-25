@@ -153,10 +153,30 @@ export const useVivaProgress = () => {
     writeActivity({});
   }, []);
 
+  /**
+   * Clear practiced state for a specific set of question ids (e.g. one topic).
+   * Leaves the daily activity log + streak untouched — those reflect study
+   * effort, not coverage.
+   */
+  const resetIds = useCallback((ids: string[]) => {
+    if (!ids || ids.length === 0) return 0;
+    let removed = 0;
+    setPracticed((prev) => {
+      const next = new Set(prev);
+      for (const id of ids) {
+        if (next.delete(id)) removed++;
+      }
+      if (removed === 0) return prev;
+      writeSet(next);
+      return next;
+    });
+    return removed;
+  }, []);
+
   const isPracticed = useCallback((id: string) => practiced.has(id), [practiced]);
 
   const todayCount = activity[todayKey()] ?? 0;
   const streak = useMemo(() => computeStreak(activity), [activity]);
 
-  return { practiced, mark, unmark, toggle, reset, isPracticed, todayCount, streak };
+  return { practiced, mark, unmark, toggle, reset, resetIds, isPracticed, todayCount, streak };
 };
