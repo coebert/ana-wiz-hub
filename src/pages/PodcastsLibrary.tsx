@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward } from "lucide-react";
+import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -25,6 +25,10 @@ interface ResolvedPodcast extends PodcastRow {
 
 const AUTOPLAY_KEY = "podcasts:autoplay";
 const COLLAPSED_KEY = "podcasts:collapsedSections";
+const ORDER_MODE_KEY = "podcasts:orderMode";
+const CUSTOM_ORDER_KEY = "podcasts:customOrder";
+
+type OrderMode = "curriculum" | "section" | "custom";
 
 const formatDuration = (s: number | null) => {
   if (!s || s <= 0) return "—";
@@ -62,6 +66,20 @@ const PodcastsLibrary = () => {
     }
   });
   const [nowPlaying, setNowPlaying] = useState<string | null>(null);
+  const [orderMode, setOrderMode] = useState<OrderMode>(() => {
+    if (typeof window === "undefined") return "section";
+    const v = localStorage.getItem(ORDER_MODE_KEY);
+    return v === "curriculum" || v === "custom" ? v : "section";
+  });
+  const [customOrder, setCustomOrder] = useState<string[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const v = JSON.parse(localStorage.getItem(CUSTOM_ORDER_KEY) || "[]");
+      return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+    } catch {
+      return [];
+    }
+  });
   const audioRefs = useRef<Map<string, HTMLAudioElement>>(new Map());
 
   useEffect(() => {
@@ -71,6 +89,14 @@ const PodcastsLibrary = () => {
   useEffect(() => {
     localStorage.setItem(COLLAPSED_KEY, JSON.stringify(collapsed));
   }, [collapsed]);
+
+  useEffect(() => {
+    localStorage.setItem(ORDER_MODE_KEY, orderMode);
+  }, [orderMode]);
+
+  useEffect(() => {
+    localStorage.setItem(CUSTOM_ORDER_KEY, JSON.stringify(customOrder));
+  }, [customOrder]);
 
   useEffect(() => {
     let cancelled = false;
@@ -138,11 +164,64 @@ const PodcastsLibrary = () => {
       }));
   }, [filtered]);
 
-  // Flat ordered playlist mirrors the grouped section order so "next" is predictable.
+  // Curriculum-canonical order: the order in which topics appear in `allTopics`.
+  const curriculumIndex = useMemo(() => {
+    const m = new Map<string, number>();
+    allTopics.forEach((t, i) => m.set(t.id, i));
+    return m;
+  }, []);
+
+  /**
+   * Flat ordered playlist used for prev/next + autoplay. Driven by `orderMode`:
+   *  - "section":    sections in SECTION_ORDER, items alpha by title (matches the visible groups)
+   *  - "curriculum": follows the canonical order topics appear in `allTopics`
+   *  - "custom":     user-defined order (unknown ids fall back to section order at the end)
+   */
   const playlist = useMemo(() => {
+    if (!filtered) return [] as ResolvedPodcast[];
+    if (orderMode === "curriculum") {
+      return [...filtered].sort((a, b) => {
+        const ai = curriculumIndex.get(a.topic_id) ?? Number.MAX_SAFE_INTEGER;
+        const bi = curriculumIndex.get(b.topic_id) ?? Number.MAX_SAFE_INTEGER;
+        if (ai !== bi) return ai - bi;
+        return a.topic_title.localeCompare(b.topic_title);
+      });
+    }
+    if (orderMode === "custom") {
+      const byId = new Map(filtered.map((p) => [p.topic_id, p]));
+      const ordered: ResolvedPodcast[] = [];
+      const seen = new Set<string>();
+      for (const id of customOrder) {
+        const p = byId.get(id);
+        if (p) {
+          ordered.push(p);
+          seen.add(id);
+        }
+      }
+      // Append any new podcasts not yet in the saved custom order.
+      for (const p of filtered) {
+        if (!seen.has(p.topic_id)) ordered.push(p);
+      }
+      return ordered;
+    }
+    // Default: section order (matches grouped UI).
     if (!grouped) return [] as ResolvedPodcast[];
     return grouped.flatMap((g) => g.items);
-  }, [grouped]);
+  }, [filtered, grouped, orderMode, customOrder, curriculumIndex]);
+
+  const moveCustom = (topicId: string, delta: number) => {
+    // Seed the saved custom order with the current playlist if empty/stale.
+    const currentIds = playlist.map((p) => p.topic_id);
+    const idx = currentIds.indexOf(topicId);
+    if (idx === -1) return;
+    const target = idx + delta;
+    if (target < 0 || target >= currentIds.length) return;
+    const next = [...currentIds];
+    [next[idx], next[target]] = [next[target], next[idx]];
+    setCustomOrder(next);
+  };
+
+  const resetCustomOrder = () => setCustomOrder([]);
 
   /**
    * Pause every audio element except the optional `keepId`.
@@ -246,7 +325,7 @@ const PodcastsLibrary = () => {
                   Autoplay next podcast
                 </Label>
                 <p className="text-xs text-muted-foreground truncate">
-                  When one finishes, the next in order starts automatically.
+                  Plays in your chosen order when one finishes.
                 </p>
               </div>
             </div>
@@ -256,6 +335,54 @@ const PodcastsLibrary = () => {
               onCheckedChange={setAutoplay}
               aria-label="Toggle autoplay"
             />
+          </div>
+
+          <div className="rounded-lg border border-border bg-card px-3 py-2 space-y-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <ListOrdered className="h-4 w-4 text-primary shrink-0" />
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-foreground">Playback order</p>
+                <p className="text-xs text-muted-foreground">
+                  Controls Previous/Next and which podcast autoplays.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {(
+                [
+                  { id: "section", label: "Section order", desc: "Match the groups shown below" },
+                  { id: "curriculum", label: "Curriculum order", desc: "Follow the topic order in the syllabus" },
+                  { id: "custom", label: "Custom playlist", desc: "Use ↑/↓ on each podcast to reorder" },
+                ] as { id: OrderMode; label: string; desc: string }[]
+              ).map((opt) => {
+                const active = orderMode === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setOrderMode(opt.id)}
+                    title={opt.desc}
+                    className={cn(
+                      "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+                      active
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card hover:border-primary/50 text-foreground"
+                    )}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
+              {orderMode === "custom" && customOrder.length > 0 && (
+                <button
+                  type="button"
+                  onClick={resetCustomOrder}
+                  className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground ml-auto"
+                >
+                  <RotateCcw className="h-3 w-3" /> Reset to section order
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}
@@ -384,9 +511,33 @@ const PodcastsLibrary = () => {
                                   <SkipBack className="h-3.5 w-3.5" />
                                   Previous
                                 </button>
-                                <span className="text-[11px] text-muted-foreground">
-                                  {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
-                                </span>
+                                <div className="flex items-center gap-1.5">
+                                  {orderMode === "custom" && (
+                                    <>
+                                      <button
+                                        type="button"
+                                        onClick={() => moveCustom(p.topic_id, -1)}
+                                        disabled={!hasPrev}
+                                        aria-label="Move earlier in playlist"
+                                        className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                      >
+                                        <ArrowUp className="h-3 w-3" />
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => moveCustom(p.topic_id, 1)}
+                                        disabled={!hasNext}
+                                        aria-label="Move later in playlist"
+                                        className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                      >
+                                        <ArrowDown className="h-3 w-3" />
+                                      </button>
+                                    </>
+                                  )}
+                                  <span className="text-[11px] text-muted-foreground">
+                                    {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
+                                  </span>
+                                </div>
                                 <button
                                   type="button"
                                   onClick={() => goToOffset(p.topic_id, 1)}
