@@ -122,7 +122,13 @@ const Landing = () => {
             <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
               AnaesthesiaCore
             </h1>
-            <p className="font-display text-2xl md:text-3xl font-semibold text-white/95 mb-4 tracking-tight [text-shadow:0_1px_6px_rgba(0,0,0,0.3)]">
+            <p className="text-base md:text-lg text-white/90 mb-4 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
+              AnaesthesiaCore is a study companion for FRCA Primary, Final and FFICM trainees — built around the official curriculum to help you revise efficiently, learn on the move, and rehearse out loud before exam day.
+            </p>
+            <p className="text-sm md:text-base text-white/85 mb-5 max-w-2xl [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
+              Three tools in one place: <strong className="font-semibold text-white">structured curriculum notes</strong> for focused revision, <strong className="font-semibold text-white">AI-generated topic podcasts</strong> for hands-free learning, and an <strong className="font-semibold text-white">AI viva examiner</strong> that listens to your spoken answers and gives rubric-based feedback.
+            </p>
+            <p className="font-display text-2xl md:text-3xl font-semibold text-white/95 mb-2 tracking-tight [text-shadow:0_1px_6px_rgba(0,0,0,0.3)]">
               How would you like to study today?
             </p>
             <p className="text-base md:text-lg text-white/90 [text-shadow:0_1px_4px_rgba(0,0,0,0.3)]">
