@@ -260,6 +260,116 @@ const HumidityGasSamplingTopic = () => {
             />
           </ExamSection>
 
+          <ExamSection id="sampling-site" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Mainstream (in-line) vs Sidestream Sampling</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Once a gas analyser exists, the next engineering question is <strong>where to put the sensor relative to the
+                breathing circuit</strong>. Two designs dominate clinical practice:
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Mainstream (in-line)</strong> — the IR sensor sits in a cuvette inserted directly between the
+                  catheter mount and the breathing circuit; expired gas flows <em>through</em> the measuring cell.</li>
+                <li><strong>Sidestream (diverting)</strong> — a fine sampling line aspirates ≈ 50–250 mL/min of gas from a
+                  T-piece at the airway and delivers it to a remote analyser inside the monitor.</li>
+              </ul>
+
+              <div className="overflow-x-auto mt-2">
+                <table className="w-full text-sm border border-border rounded-lg">
+                  <thead className="bg-secondary/40">
+                    <tr>
+                      <th className="text-left p-2 text-foreground font-semibold">Feature</th>
+                      <th className="text-left p-2 text-foreground font-semibold">Mainstream (in-line)</th>
+                      <th className="text-left p-2 text-foreground font-semibold">Sidestream</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Sensor location</td>
+                      <td className="p-2">In the airway, at the catheter mount</td>
+                      <td className="p-2">Inside the monitor; gas aspirated via 2–3 m sample line</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Response time / delay</td>
+                      <td className="p-2">Real-time (essentially zero transit delay)</td>
+                      <td className="p-2">~2–4 s transit delay + rise time</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Waveform fidelity</td>
+                      <td className="p-2">Sharp — best for detecting subtle expired CO₂ changes (e.g. ROSC)</td>
+                      <td className="p-2">Slightly damped; further degraded if sample flow is too low or tubing too long</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Gases measured</td>
+                      <td className="p-2">Usually CO₂ only (single-wavelength IR)</td>
+                      <td className="p-2">CO₂, N₂O, O₂ and all volatile agents — multi-gas analysis</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Weight at the airway</td>
+                      <td className="p-2">Heavy cuvette + cable — risk of ETT kinking, accidental extubation</td>
+                      <td className="p-2">Light T-piece adaptor only</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Dead space added</td>
+                      <td className="p-2">5–10 mL adult cuvette (significant in neonates)</td>
+                      <td className="p-2">Negligible (&lt; 1 mL adaptor)</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Water / secretions</td>
+                      <td className="p-2">Cuvette window can fog or soil → drift; heated to 39 °C to prevent condensation</td>
+                      <td className="p-2">Water trap + Nafion™ tubing remove water vapour selectively</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Gas dilution</td>
+                      <td className="p-2">None — measures actual airway gas</td>
+                      <td className="p-2">Aspiration rate (150–200 mL/min) can dilute small tidal volumes (neonates,
+                        HFOV, jet ventilation) → falsely low ETCO₂</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Scavenging</td>
+                      <td className="p-2">Not required (gas returns to circuit)</td>
+                      <td className="p-2">Sampled gas (containing volatile/N₂O) must be returned to the circuit or
+                        scavenged; otherwise increases fresh-gas requirement</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Suitability for non-intubated patients</td>
+                      <td className="p-2">Poor — needs sealed circuit</td>
+                      <td className="p-2">Good — nasal cannula sampling line works during sedation, recovery,
+                        procedural sedation</td>
+                    </tr>
+                    <tr className="border-t border-border">
+                      <td className="p-2 font-medium text-foreground">Cost / robustness</td>
+                      <td className="p-2">Higher per-use cost (disposable airway sensor or fragile reusable head)</td>
+                      <td className="p-2">Cheap consumable (sample line, water trap)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                <strong>Why modern theatre monitors are sidestream:</strong> the multi-gas requirement (O₂ paramagnetic
+                + IR for CO₂/N₂O/agent) is impossible to package into a lightweight in-airway cuvette, so the analyser
+                has to live inside the monitor and the gas must be brought to it. The 2–3 second transit delay is
+                acceptable for steady-state monitoring of a ventilated adult.
+              </p>
+              <p>
+                <strong>When mainstream wins:</strong> neonatal/paediatric ventilation (no aspiration loss, no dilution),
+                pre-hospital and transport CO₂ monitoring (no pump, lower power), and high-fidelity capnography during
+                CPR where small/early ETCO₂ changes signal ROSC.
+              </p>
+              <p>
+                <strong>Common sidestream pitfalls in vivas:</strong> kinked or water-blocked sample line → flat trace;
+                disconnection at the T-piece → <em>room-air dilution</em> of the sampled gas → falsely low ETCO₂ with
+                preserved waveform shape; long sample line in low-flow anaesthesia → loss of fresh gas if not returned to
+                the circuit.
+              </p>
+            </div>
+            <CrossReferenceCallout
+              reason="Capnography phases and the α/β angles are interpreted on the waveform produced by whichever sampling design is in use."
+              links={[{ topicId: "pulse-oximetry" }]}
+            />
+          </ExamSection>
+
           <ExamSection id="analyser-comparison" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Comparison of Gas-Concentration Analysers</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
