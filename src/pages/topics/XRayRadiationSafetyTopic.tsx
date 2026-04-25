@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
+import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
@@ -276,6 +277,8 @@ const XRayRadiationSafetyTopic = () => {
                   <li><strong>Display</strong> — voxel attenuations rescaled to <strong>Hounsfield Units</strong>: HU = 1000 × (μ<sub>tissue</sub> − μ<sub>water</sub>) / μ<sub>water</sub>. Air ≈ −1000, fat ≈ −100, water = 0, blood ≈ +40, bone +400 → +1000.</li>
                 </ol>
               </div>
+
+              <CTScannerDiagram />
 
               <p>
                 Modern scanners are <strong>helical (spiral) multi-detector CT (MDCT)</strong>: the table moves through the gantry continuously
