@@ -114,6 +114,40 @@ const UrologicalAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Propofol-Induced Penile Erection</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              An uncommon but well-recognised phenomenon: penile tumescence or full erection occurring after induction or during maintenance with propofol. Reported incidence is low (case reports and small series), but the consequences in endoscopic urology can be significant.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              {[
+                { label: "Proposed mechanism", value: "Central disinhibition of spinal erection reflex + relaxation of cavernosal smooth muscle via NO/GABAergic effects; reduced sympathetic tone" },
+                { label: "Timing", value: "Typically within minutes of induction or after a bolus; may persist or recur during TIVA maintenance" },
+                { label: "Surgical impact", value: "Prevents passage of cystoscope/resectoscope; obscures TURP/TURBT field; risks urethral trauma if instrumentation forced" },
+                { label: "Other agents implicated", value: "Thiopentone (rare), occasional reports with volatiles; benzodiazepines and opioids generally protective" },
+              ].map((item) => (
+                <div key={item.label} className="p-3 rounded-lg bg-secondary/30 border border-border">
+                  <p className="text-xs text-muted-foreground">{item.label}</p>
+                  <p className="font-semibold text-foreground text-sm">{item.value}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-sm font-semibold text-foreground mb-2">Management options (escalating)</p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>Deepen anaesthesia</strong>: additional propofol bolus paradoxically resolves it in many cases; add opioid (fentanyl/alfentanil)</li>
+              <li><strong>Switch technique</strong>: convert TIVA to volatile maintenance, or add ketamine</li>
+              <li><strong>Pharmacological detumescence</strong>: intracavernosal phenylephrine 100–200 µg (α-agonist — needs BP/ECG monitoring), or ephedrine IV; terbutaline 0.25–0.5 mg SC has been reported</li>
+              <li><strong>Mechanical</strong>: ice packs, manual compression — generally ineffective alone</li>
+              <li><strong>Last resort</strong>: abandon procedure if detumescence fails and instrumentation unsafe</li>
+            </ul>
+            <div className="p-3 rounded-lg border border-amber-500/20 bg-amber-500/5">
+              <p className="text-xs text-amber-400 font-semibold mb-1">⚠ Exam Tip</p>
+              <p className="text-xs text-muted-foreground">
+                Do not confuse with priapism — this is a transient anaesthesia-related event without ischaemia. However, if it persists &gt;4 hours post-op, treat as low-flow priapism (aspiration + intracavernosal phenylephrine, urology referral). Document and warn the patient pre-operatively if recurrence is anticipated.
+              </p>
+            </div>
+          </ExamSection>
+
           <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Extracorporeal Shock Wave Lithotripsy (ESWL)</h2>
             <p className="text-muted-foreground leading-relaxed">
