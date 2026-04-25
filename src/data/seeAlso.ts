@@ -95,7 +95,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "gynaecological-anaesthesia": ["obstetric-anaesthesia", "regional-anaesthesia", "abdominal-anatomy"],
   "hepatobiliary-transplant": ["hepatic-physiology", "acute-liver-failure", "transfusion-coagulation", "abdominal-anatomy"],
   "plastic-surgery": ["burns-plastics", "regional-anaesthesia", "pain-medicine"],
-  "interventional-radiology": ["electrical-safety", "clinical-measurement", "preoperative-assessment"],
+  "interventional-radiology": ["xray-radiation-safety", "electrical-safety", "clinical-measurement", "preoperative-assessment"],
   "elderly-anaesthesia": ["preoperative-assessment", "neurological-disease", "orthopaedic-anaesthesia", "cardiovascular-disease"],
   "cardiovascular-disease": ["cardiac-cycle", "cardiac-electrophysiology", "cardiac-anatomy", "antiarrhythmics", "vasoactive-agents", "preoperative-assessment", "defibrillation-pacing", "cardiothoracic", "vascular-anaesthesia", "starling-forces", "circulatory-failure", "pulmonary-hypertension"],
   "respiratory-disease": ["lung-mechanics", "ventilation-perfusion", "mechanical-ventilation", "bariatric-anaesthesia", "oxygen-haemoglobin", "ards", "airway-management", "preoperative-assessment", "volatile-agents"],
