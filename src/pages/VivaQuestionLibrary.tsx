@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -178,7 +178,7 @@ const VivaQuestionLibrary = () => {
   const [streamActive, setStreamActive] = useState(false);
   const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
   const [topicPickerOpen, setTopicPickerOpen] = useState(false);
-  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed } = useVivaProgress();
+  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed, todayCount, streak } = useVivaProgress();
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
@@ -564,6 +564,18 @@ const VivaQuestionLibrary = () => {
                   <RotateCcw className="h-3 w-3" /> Reset
                 </button>
               )}
+            </div>
+            <div className="mb-3 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2 py-1 text-xs text-foreground">
+                <CalendarCheck className="h-3.5 w-3.5 text-primary" />
+                <span className="font-semibold">{todayCount}</span>
+                <span className="text-muted-foreground">today</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2 py-1 text-xs text-foreground">
+                <Flame className={`h-3.5 w-3.5 ${streak > 0 ? "text-orange-500" : "text-muted-foreground"}`} />
+                <span className="font-semibold">{streak}</span>
+                <span className="text-muted-foreground">day{streak === 1 ? "" : "s"} streak</span>
+              </span>
             </div>
             <CoverageBars
               questionsPracticed={coverage.overall.questionsPracticed}
