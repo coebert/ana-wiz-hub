@@ -249,7 +249,7 @@ export const CTDoseExplorer = () => {
             unit=" kVp"
             onChange={setKvp}
             hint="Output ∝ (kVp)^≈2.5 — small changes have a big dose effect."
-            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
+            affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> by (kVp/120)<sup>2.5</sup>" }]}
           />
           <SliderRow
             label="Effective mAs"
@@ -260,7 +260,7 @@ export const CTDoseExplorer = () => {
             unit=" mAs"
             onChange={setMas}
             hint="Linear with dose; modulation lowers it for thinner anatomy."
-            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
+            affects={[{ anchor: "ctdi-vol", label: "scales CTDI<sub>vol</sub> linearly with mAs" }]}
           />
           <SliderRow
             label="Rotation time"
@@ -283,7 +283,7 @@ export const CTDoseExplorer = () => {
             onChange={setPitch}
             hint="Pitch > 1 spreads dose over more anatomy (less dose, more noise)."
             digits={2}
-            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
+            affects={[{ anchor: "ctdi-vol", label: "divides CTDI<sub>vol</sub> by pitch" }]}
           />
           <SliderRow
             label="Scan length (z)"
@@ -295,8 +295,8 @@ export const CTDoseExplorer = () => {
             onChange={setScanLength}
             hint="Linear with DLP — only scan what you need."
             affects={[
-              { anchor: "dlp", label: "DLP" },
-              { anchor: "effective-dose-ct", label: "Effective dose" },
+              { anchor: "dlp", label: "scales DLP linearly (× scan length)" },
+              { anchor: "effective-dose-ct", label: "carries through to Effective dose (DLP × k)" },
             ]}
           />
           <SliderRow
@@ -309,8 +309,8 @@ export const CTDoseExplorer = () => {
             onChange={setPhases}
             hint="Multi-phase (triple-liver, perfusion) multiplies DLP and effective dose directly."
             affects={[
-              { anchor: "dlp", label: "DLP" },
-              { anchor: "effective-dose-ct", label: "Effective dose" },
+              { anchor: "dlp", label: "multiplies DLP (× phases)" },
+              { anchor: "effective-dose-ct", label: "multiplies Effective dose proportionally" },
             ]}
           />
           <SliderRow
@@ -322,7 +322,7 @@ export const CTDoseExplorer = () => {
             unit=" cm"
             onChange={setDiameter}
             hint={`SSDE conversion factor = ${ssdeF.toFixed(2)} — bigger patients absorb less, smaller absorb more relative to phantom.`}
-            affects={[{ anchor: "ssde", label: "SSDE" }]}
+            affects={[{ anchor: "ssde", label: "sets the f(diameter) factor in SSDE = CTDI<sub>vol</sub> × f(diameter)" }]}
           />
         </div>
 
