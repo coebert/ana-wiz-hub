@@ -205,6 +205,7 @@ export const perioperativeTopics: Topic[] = [
   { id: "respiratory-disease", title: "Respiratory Co-Existing Disease", description: "Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, respiratory infections", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
   { id: "endocrine-disease", title: "Endocrine Co-Existing Disease", description: "Diabetes mellitus, thyroid disease, adrenal disorders, phaeochromocytoma, carcinoid syndrome", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
   { id: "neurological-disease", title: "Neurological Co-Existing Disease", description: "Myasthenia gravis, epilepsy, MS, Parkinson's, MND, muscular dystrophies, spinal cord injury", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
+  { id: "genetic-syndromes", title: "Genetic Syndromes & Anaesthesia", description: "MH, dystrophinopathies, myotonic dystrophy, BChE deficiency, Down, Marfan, sickle cell, porphyria", section: "perioperative", examTags: ["final", "fficm"], available: true },
 ];
 
 export const chemistryTopics: Topic[] = [
