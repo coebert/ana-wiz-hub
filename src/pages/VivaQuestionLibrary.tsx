@@ -144,27 +144,61 @@ const CoverageBars = ({
         compact ? "w-20 sm:w-24" : "w-32 sm:w-40"
       } shrink-0`}
     >
-      <div className="flex items-center gap-1.5">
-        <Progress value={qPct} className="h-1.5 flex-1 min-w-0" />
-        <span
-          className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
-            qPulse ? "text-primary scale-110" : "text-muted-foreground scale-100"
-          }`}
-        >
-          {questionsPracticed}/{questionsTotal} Q
-        </span>
-      </div>
-      {tPct !== null && (
-        <div className="flex items-center gap-1.5">
-          <Progress value={tPct} className="h-1.5 flex-1 min-w-0 [&>div]:bg-accent" />
-          <span
-            className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
-              tPulse ? "text-accent-foreground scale-110" : "text-muted-foreground scale-100"
-            }`}
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <div
+            tabIndex={0}
+            role="meter"
+            aria-valuenow={qPct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`${questionsPracticed} of ${questionsTotal} questions practiced (${qPct}%)`}
+            className="flex items-center gap-1.5 cursor-help focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
           >
-            {topicsTouched}/{topicsTotal} T
-          </span>
-        </div>
+            <Progress value={qPct} className="h-1.5 flex-1 min-w-0" />
+            <span
+              className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
+                qPulse ? "text-primary scale-110" : "text-muted-foreground scale-100"
+              }`}
+            >
+              {questionsPracticed}/{questionsTotal} Q
+            </span>
+          </div>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="text-xs">
+          <span className="font-semibold">{questionsPracticed}</span> of{" "}
+          <span className="font-semibold">{questionsTotal}</span> questions practiced
+          <span className="ml-1 text-muted-foreground">({qPct}%)</span>
+        </TooltipContent>
+      </Tooltip>
+      {tPct !== null && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              tabIndex={0}
+              role="meter"
+              aria-valuenow={tPct}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={`${topicsTouched} of ${topicsTotal} topics touched (${tPct}%)`}
+              className="flex items-center gap-1.5 cursor-help focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+            >
+              <Progress value={tPct} className="h-1.5 flex-1 min-w-0 [&>div]:bg-accent" />
+              <span
+                className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
+                  tPulse ? "text-accent-foreground scale-110" : "text-muted-foreground scale-100"
+                }`}
+              >
+                {topicsTouched}/{topicsTotal} T
+              </span>
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="top" className="text-xs">
+            <span className="font-semibold">{topicsTouched}</span> of{" "}
+            <span className="font-semibold">{topicsTotal}</span> topics touched
+            <span className="ml-1 text-muted-foreground">({tPct}%)</span>
+          </TooltipContent>
+        </Tooltip>
       )}
     </div>
   );
