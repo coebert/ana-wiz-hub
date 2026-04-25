@@ -50,6 +50,7 @@ export const physicsTopics: Topic[] = [
   // Imaging
   { id: "ultrasound-physics", title: "Ultrasound Physics", description: "Piezoelectric effect, frequency vs resolution, Doppler effect, artefacts", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   { id: "mri-physics", title: "MRI Physics", description: "Nuclear spin, precession, T1/T2 relaxation, MRI safety for anaesthetists", section: "physics", examTags: ["primary", "final"], available: true },
+  { id: "xray-radiation-safety", title: "X-rays & Radiation Safety", description: "X-ray production, photon–tissue interactions, dose units, ALARA, shielding and dosimetry for anaesthetists", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   // Anaesthetic equipment & monitoring (consolidated)
   { id: "equipment-monitoring", title: "Anaesthetic Equipment & Monitoring", description: "Unified workstation tour: machine, vaporizers, circuits, ventilators, monitoring, airway equipment and AAGBI safety checks", section: "physics", examTags: ["primary", "final", "fficm"], available: true },
   // Patient monitoring
