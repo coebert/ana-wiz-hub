@@ -381,6 +381,8 @@ const XRayRadiationSafetyTopic = () => {
                 </p>
               </div>
 
+              <CTDoseExplorer />
+
               <p>
                 <strong>Anaesthetic relevance:</strong> CT effective doses dwarf plain films — head ~2 mSv, chest ~7 mSv, CTPA 5–10 mSv,
                 abdomen/pelvis ~10 mSv (≈ 100–500 CXRs each). Justification (IR(ME)R 2017) and choice of the lowest-dose adequate
