@@ -254,7 +254,71 @@ const XRayRadiationSafetyTopic = () => {
             </div>
           </ExamSection>
 
-          <ExamSection id="units" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+          <ExamSection id="ct-scanner" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">How a CT Scanner Works</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Computed tomography takes the same X-ray tube and turns plain-film attenuation into a cross-sectional map. A high-output
+                rotating-anode tube and a curved <strong>arc of detectors</strong> sit on opposite sides of a <em>gantry</em> that
+                rotates around the patient (typically 0.25–0.5 s per revolution). At hundreds of projection angles per rotation, the
+                detectors record how much the fan beam has been attenuated along every line through the slice.<Cite refs={[{ id: "bushberg", n: 2 }, { id: "iaea-handbook", n: 1 }]} />
+              </p>
+
+              <div className="rounded-lg border border-border bg-muted/30 p-3 not-prose">
+                <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">
+                  Imaging chain
+                </p>
+                <ol className="text-xs text-foreground space-y-1 list-decimal list-inside marker:text-muted-foreground">
+                  <li><strong>Acquisition</strong> — fan-beam X-rays from a rotating tube are recorded by a multi-row solid-state detector array (typically Gd-oxysulphide or CsI scintillator + photodiode).</li>
+                  <li><strong>Pre-processing</strong> — log conversion, beam-hardening &amp; scatter correction, channel calibration. Output is a <em>sinogram</em> (raw attenuation projections).</li>
+                  <li><strong>Reconstruction</strong> — filtered back-projection or, on modern scanners, iterative / model-based reconstruction (e.g. ASIR, IMR) — lower noise → enables dose reduction.</li>
+                  <li><strong>Display</strong> — voxel attenuations rescaled to <strong>Hounsfield Units</strong>: HU = 1000 × (μ<sub>tissue</sub> − μ<sub>water</sub>) / μ<sub>water</sub>. Air ≈ −1000, fat ≈ −100, water = 0, blood ≈ +40, bone +400 → +1000.</li>
+                </ol>
+              </div>
+
+              <p>
+                Modern scanners are <strong>helical (spiral) multi-detector CT (MDCT)</strong>: the table moves through the gantry continuously
+                while the tube rotates, tracing a helix. <em>Pitch</em> = table travel per rotation ÷ total beam width along z; pitch &gt; 1
+                spreads dose over more anatomy (faster, less dose), pitch &lt; 1 oversamples (less noise, higher dose). 64-, 128- and
+                320-slice detectors allow whole-organ coverage in a single rotation, enabling cardiac and CTPA studies.<Cite refs={[{ id: "aapm-ct", n: 9 }]} />
+              </p>
+
+              <p>
+                <strong>Dose modulation</strong> is the headline patient-safety feature: the tube current (mA) is varied in real time
+                with patient diameter (angular and z-axis modulation) and the kVp can be lowered for paediatric and contrast-enhanced
+                studies — together typically halving dose for an equivalent diagnostic image.<Cite refs={[{ id: "aapm-ct", n: 9 }]} />
+              </p>
+
+              <div className="rounded-lg border border-border bg-muted/30 p-3 not-prose">
+                <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">
+                  Dose descriptors you must recognise
+                </p>
+                <ul className="text-xs text-foreground space-y-1 list-disc list-inside marker:text-muted-foreground">
+                  <li><strong>CTDI<sub>vol</sub></strong> (mGy) — average dose to a 16 cm (head) or 32 cm (body) PMMA phantom for a single rotation; reported on every scanner console.</li>
+                  <li><strong>DLP</strong> (mGy·cm) = CTDI<sub>vol</sub> × scan length — best surrogate for total patient energy deposition.</li>
+                  <li><strong>Effective dose</strong> (mSv) ≈ DLP × <em>k</em> (region-specific factor; chest k ≈ 0.014). Allows comparison with background and dose limits.</li>
+                  <li><strong>SSDE</strong> — size-specific dose estimate, corrects CTDI<sub>vol</sub> for actual patient diameter (essential in paediatrics).</li>
+                </ul>
+              </div>
+
+              <p>
+                <strong>Special CT modes</strong> exploit the same hardware: <em>CT angiography</em> (timed bolus of iodinated contrast),
+                <em> CT perfusion</em> (repeated low-dose acquisitions to track contrast wash-in for stroke), <em>dual-energy CT</em>
+                (two kVp acquisitions — separates iodine from calcium, characterises stones, reduces metal artefact), and <em>cone-beam
+                CT</em> built into IR/cath-lab C-arms for intra-procedural 3-D imaging.<Cite refs={[{ id: "rcr-ct", n: 10 }]} />
+              </p>
+
+              <p>
+                <strong>Anaesthetic relevance:</strong> CT effective doses dwarf plain films — head ~2 mSv, chest ~7 mSv, CTPA 5–10 mSv,
+                abdomen/pelvis ~10 mSv (≈ 100–500 CXRs each). Justification (IR(ME)R 2017) and choice of the lowest-dose adequate
+                protocol are clinical responsibilities, not just radiology decisions. In ICU transfers and intra-operative CT, staff
+                should leave the scanner room or stand behind lead glass during acquisition; only those clinically essential (e.g.
+                managing an unstable airway) remain, wearing a 0.5 mm Pb apron and standing as far from the bore as the case
+                permits.<Cite refs={[{ id: "irmer2017", n: 6 }, { id: "phe-doses", n: 7 }]} />
+              </p>
+            </div>
+          </ExamSection>
+
             <h2 className="text-xl font-bold text-foreground mb-2">Dose Units</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>Distinguish three quantities — the exam favourites:</p>
