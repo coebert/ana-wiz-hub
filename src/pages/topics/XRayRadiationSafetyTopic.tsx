@@ -278,6 +278,8 @@ const XRayRadiationSafetyTopic = () => {
                 </ol>
               </div>
 
+              <CTScannerDiagram />
+
               <p>
                 Modern scanners are <strong>helical (spiral) multi-detector CT (MDCT)</strong>: the table moves through the gantry continuously
                 while the tube rotates, tracing a helix. <em>Pitch</em> = table travel per rotation ÷ total beam width along z; pitch &gt; 1
