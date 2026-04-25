@@ -949,7 +949,7 @@ const VivaQuestionLibrary = () => {
                                               </Button>
                                             </div>
                                             <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
-                                              {r.model_answer}
+                                              <Highlight text={r.model_answer} query={query} />
                                             </p>
                                           </div>
 
