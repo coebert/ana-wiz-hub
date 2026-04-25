@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import { SinogramFBPWalkthrough } from "@/components/diagrams/SinogramFBPWalkthrough";
+import { CTDoseExplorer } from "@/components/diagrams/CTDoseExplorer";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
@@ -379,6 +380,8 @@ const XRayRadiationSafetyTopic = () => {
                   <Cite refs={[{ id: "rcr-ct", n: 10 }]} /> Click any descriptor or mode to jump between them.
                 </p>
               </div>
+
+              <CTDoseExplorer />
 
               <p>
                 <strong>Anaesthetic relevance:</strong> CT effective doses dwarf plain films — head ~2 mSv, chest ~7 mSv, CTPA 5–10 mSv,
