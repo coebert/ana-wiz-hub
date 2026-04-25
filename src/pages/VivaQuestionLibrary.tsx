@@ -1049,6 +1049,66 @@ const VivaQuestionLibrary = () => {
           </div>
         )}
       </div>
+
+      <AlertDialog
+        open={resetConfirm !== null}
+        onOpenChange={(open) => {
+          if (!open) setResetConfirm(null);
+        }}
+      >
+        <AlertDialogContent>
+          {resetConfirm?.scope === "all" ? (
+            <>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Reset all viva progress?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This clears every practiced question on this device, plus today's count and your day streak. This cannot be undone.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => {
+                    resetProgress();
+                    setResetConfirm(null);
+                    toast.success("All progress, today's count and streak reset");
+                  }}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  Reset everything
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </>
+          ) : resetConfirm?.scope === "topic" ? (
+            <>
+              <AlertDialogHeader>
+                <AlertDialogTitle>
+                  Reset progress for "{resetConfirm.topicTitle}"?
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  This clears practiced marks for the {resetConfirm.ids.length}{" "}
+                  question{resetConfirm.ids.length === 1 ? "" : "s"} in this topic. Your overall day streak and today's count are kept.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={() => {
+                    const removed = resetIds(resetConfirm.ids);
+                    setResetConfirm(null);
+                    toast.success(
+                      `Reset ${removed} question${removed === 1 ? "" : "s"} in "${resetConfirm.topicTitle}"`,
+                    );
+                  }}
+                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                >
+                  Reset topic
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </>
+          ) : null}
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };
