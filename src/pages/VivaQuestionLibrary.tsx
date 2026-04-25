@@ -112,7 +112,7 @@ const CoverageBars = ({
       </div>
       {tPct !== null && (
         <div className="flex items-center gap-2">
-          <Progress value={tPct} className="h-1.5 flex-1 [&>div]:bg-emerald-500/70" />
+          <Progress value={tPct} className="h-1.5 flex-1 [&>div]:bg-accent" />
           <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
             {topicsTouched}/{topicsTotal} T
           </span>
