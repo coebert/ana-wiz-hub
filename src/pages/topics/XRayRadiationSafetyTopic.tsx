@@ -319,6 +319,7 @@ const XRayRadiationSafetyTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="units" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Dose Units</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>Distinguish three quantities — the exam favourites:</p>
