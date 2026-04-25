@@ -14,6 +14,7 @@ const objectives = [
   "Describe how a pneumotachograph (Fleisch / Lilly) measures flow and what causes inaccuracy",
   "Explain the principle of paramagnetic O₂ analysis (unpaired electrons in O₂ → attraction in a magnetic field)",
   "Explain how infrared absorption measures CO₂, N₂O and volatile agents, and the role of collision broadening / agent cross-sensitivity",
+  "Compare mainstream (in-line) and sidestream gas sampling — response time, dead space, dilution, scavenging and clinical use",
   "Compare mass spectrometry, infrared absorption, paramagnetic and Raman analysers for clinical gas measurement",
 ];
 
