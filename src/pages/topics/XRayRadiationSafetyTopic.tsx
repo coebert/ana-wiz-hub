@@ -5,6 +5,7 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
+import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
@@ -347,6 +348,7 @@ const XRayRadiationSafetyTopic = () => {
                 Useful magnitudes: UK natural background ~2.7 mSv/year; CXR ~0.02 mSv; head CT ~2 mSv; chest CT ~7 mSv; CTPA ~5–10 mSv;
                 abdomen/pelvis CT ~10 mSv.
               </p>
+              <RadiationDoseComparisonTable />
             </div>
           </ExamSection>
 
