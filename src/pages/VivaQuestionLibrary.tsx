@@ -82,6 +82,46 @@ const classifyDifficulty = (row: { question: string; model_answer: string }): Di
   return "intermediate";
 };
 
+/**
+ * Two thin stacked progress bars: questions practiced and topics touched.
+ * Used for both per-section and per-topic coverage. Pure presentational.
+ */
+const CoverageBars = ({
+  questionsPracticed,
+  questionsTotal,
+  topicsTouched,
+  topicsTotal,
+  compact = false,
+}: {
+  questionsPracticed: number;
+  questionsTotal: number;
+  topicsTouched?: number;
+  topicsTotal?: number;
+  compact?: boolean;
+}) => {
+  const qPct = questionsTotal > 0 ? Math.round((questionsPracticed / questionsTotal) * 100) : 0;
+  const tPct =
+    topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
+  return (
+    <div className={`space-y-1 ${compact ? "" : "min-w-[140px]"}`}>
+      <div className="flex items-center gap-2">
+        <Progress value={qPct} className="h-1.5 flex-1" />
+        <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+          {questionsPracticed}/{questionsTotal} Q
+        </span>
+      </div>
+      {tPct !== null && (
+        <div className="flex items-center gap-2">
+          <Progress value={tPct} className="h-1.5 flex-1 [&>div]:bg-emerald-500/70" />
+          <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+            {topicsTouched}/{topicsTotal} T
+          </span>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
