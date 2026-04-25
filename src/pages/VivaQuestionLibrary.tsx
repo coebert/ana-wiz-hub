@@ -143,26 +143,77 @@ const VivaQuestionLibrary = () => {
       return next;
     });
 
-  const speak = async (row: ModelAnswerRow) => {
-    if (speakingId) return;
+  const EXAMINER_VOICE = "onyx"; // deeper — examiner
+  const CANDIDATE_VOICE = "nova"; // brighter — candidate
+
+  const stopPlayback = () => {
+    playbackRef.current.cancelled = true;
+    const a = playbackRef.current.audio;
+    if (a) {
+      try {
+        a.pause();
+        a.src = "";
+      } catch {
+        /* ignore */
+      }
+    }
+    playbackRef.current.audio = null;
+    setSpeakingId(null);
+  };
+
+  const synthesise = async (text: string, voice: string): Promise<string> => {
+    const { data, error } = await supabase.functions.invoke("tts-demo", {
+      body: { text, voice },
+    });
+    if (error) throw error;
+    const b64 = (data as { audioBase64?: string })?.audioBase64;
+    if (!b64) throw new Error("No audio returned");
+    return `data:audio/mpeg;base64,${b64}`;
+  };
+
+  const playSegment = (src: string): Promise<void> =>
+    new Promise((resolve, reject) => {
+      if (playbackRef.current.cancelled) return resolve();
+      const audio = new Audio(src);
+      playbackRef.current.audio = audio;
+      audio.onended = () => resolve();
+      audio.onerror = () => reject(new Error("Audio playback failed"));
+      audio.play().catch(reject);
+    });
+
+  /** Play examiner question + candidate model answer as a two-voice dialogue. */
+  const playDialogue = async (row: ModelAnswerRow) => {
+    if (speakingId) {
+      // If clicked on the currently-playing row, stop it.
+      stopPlayback();
+      if (speakingId === row.id) return;
+    }
+    playbackRef.current = { cancelled: false, audio: null };
     setSpeakingId(row.id);
     try {
-      const { data, error } = await supabase.functions.invoke("viva", {
-        body: { mode: "tts", text: row.model_answer, voice: "alloy" },
-      });
-      if (error) throw error;
-      const audioB64 = (data as { audio?: string })?.audio;
-      if (!audioB64) throw new Error("No audio returned");
-      const audio = new Audio(`data:audio/mpeg;base64,${audioB64}`);
-      audio.onended = () => setSpeakingId(null);
-      audio.onerror = () => setSpeakingId(null);
-      await audio.play();
+      // Generate both segments in parallel for faster start.
+      const [examinerSrc, candidateSrc] = await Promise.all([
+        synthesise(`Examiner: ${row.question}`, EXAMINER_VOICE),
+        synthesise(`Candidate: ${row.model_answer}`, CANDIDATE_VOICE),
+      ]);
+      if (playbackRef.current.cancelled) return;
+      await playSegment(examinerSrc);
+      if (playbackRef.current.cancelled) return;
+      // Brief gap between speakers for natural pacing.
+      await new Promise((r) => setTimeout(r, 350));
+      if (playbackRef.current.cancelled) return;
+      await playSegment(candidateSrc);
     } catch (e) {
       console.error(e);
-      toast.error("Could not play audio");
-      setSpeakingId(null);
+      if (!playbackRef.current.cancelled) toast.error("Could not play dialogue");
+    } finally {
+      playbackRef.current.audio = null;
+      setSpeakingId((current) => (current === row.id ? null : current));
     }
   };
+
+  // Stop any audio when the page unmounts.
+  useEffect(() => () => stopPlayback(), []);
 
   const examCounts = useMemo(() => {
     const c = { all: rows.length, primary: 0, final: 0, fficm: 0 } as Record<ExamFilter, number>;
