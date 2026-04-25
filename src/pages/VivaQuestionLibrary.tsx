@@ -574,15 +574,10 @@ const VivaQuestionLibrary = () => {
               {coverage.overall.questionsPracticed > 0 && (
                 <button
                   type="button"
-                  onClick={() => {
-                    if (window.confirm("Reset all viva practice progress on this device?")) {
-                      resetProgress();
-                      toast.success("Progress reset");
-                    }
-                  }}
+                  onClick={() => setResetConfirm({ scope: "all" })}
                   className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
                 >
-                  <RotateCcw className="h-3 w-3" /> Reset
+                  <RotateCcw className="h-3 w-3" /> Reset all
                 </button>
               )}
             </div>
