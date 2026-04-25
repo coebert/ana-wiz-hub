@@ -188,7 +188,18 @@ const VivaQuestionLibrary = () => {
   const [streamActive, setStreamActive] = useState(false);
   const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
   const [topicPickerOpen, setTopicPickerOpen] = useState(false);
-  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed, todayCount, streak } = useVivaProgress();
+  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, resetIds, isPracticed, todayCount, streak } = useVivaProgress();
+  /**
+   * Pending reset confirmation. `null` = closed.
+   *  - { scope: "all" }   confirms wiping practiced set + streak/activity.
+   *  - { scope: "topic" } confirms clearing practiced for one topic only;
+   *    leaves streak/activity intact (they reflect effort, not coverage).
+   */
+  const [resetConfirm, setResetConfirm] = useState<
+    | null
+    | { scope: "all" }
+    | { scope: "topic"; sectionKey: string; topicTitle: string; ids: string[] }
+  >(null);
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
