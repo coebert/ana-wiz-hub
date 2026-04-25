@@ -22,6 +22,8 @@ const SECTION_ORDER: (Section | "_other")[] = [
 ];
 
 type ExamFilter = "all" | "primary" | "final" | "fficm";
+type Difficulty = "basic" | "intermediate" | "exam-ready";
+type DifficultyFilter = "all" | Difficulty;
 
 interface ModelAnswerRow {
   id: string;
@@ -40,11 +42,50 @@ const examLabels: Record<string, string> = {
   fficm: "FFICM",
 };
 
+const difficultyLabels: Record<Difficulty, string> = {
+  basic: "Basic",
+  intermediate: "Intermediate",
+  "exam-ready": "Exam-ready",
+};
+
+const difficultyClasses: Record<Difficulty, string> = {
+  basic: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+  intermediate: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+  "exam-ready": "border-rose-500/40 bg-rose-500/10 text-rose-700 dark:text-rose-300",
+};
+
+/**
+ * Heuristically classify a stored viva row by inspecting the question stem
+ * and answer length. We don't store difficulty on the row (it's an ad-hoc
+ * tag chosen at session time), so this gives a stable retroactive bucket
+ * the user can filter by.
+ *
+ * Signals (in order of weight):
+ *  - "Define / List / What is" + short answer → basic
+ *  - Multi-clause stem (semicolons / "and") OR "compare/contrast/critically"
+ *    OR very long structured answer → exam-ready
+ *  - Everything else → intermediate
+ */
+const classifyDifficulty = (row: { question: string; model_answer: string }): Difficulty => {
+  const q = row.question.toLowerCase();
+  const answerLen = row.model_answer.length;
+  const examReadyCues = /(compare|contrast|critically|justify|outline your approach|critique|weigh|trade-?offs|controversies|evidence base|implications|risk[- ]benefit|differential diagnosis|complex|complications? of|management plan)/;
+  const basicCues = /^(\s*)(define|what is|name|list|state|give the (definition|formula))\b/;
+
+  if (examReadyCues.test(q) || answerLen > 1800) return "exam-ready";
+  if (basicCues.test(q) && answerLen < 700) return "basic";
+  // Long stem with several clauses tends to be exam-ready in nature.
+  const clauses = (row.question.match(/[;,]| and /g) ?? []).length;
+  if (clauses >= 3 && answerLen > 900) return "exam-ready";
+  return "intermediate";
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [examFilter, setExamFilter] = useState<ExamFilter>("all");
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
@@ -82,10 +123,18 @@ const VivaQuestionLibrary = () => {
     load();
   }, []);
 
+  // Pre-classify each row once so filter, badges and stream queue all agree.
+  const rowDifficulty = useMemo(() => {
+    const m = new Map<string, Difficulty>();
+    rows.forEach((r) => m.set(r.id, classifyDifficulty(r)));
+    return m;
+  }, [rows]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rows.filter((r) => {
       if (examFilter !== "all" && r.exam !== examFilter) return false;
+      if (difficultyFilter !== "all" && rowDifficulty.get(r.id) !== difficultyFilter) return false;
       if (!q) return true;
       return (
         r.question.toLowerCase().includes(q) ||
@@ -93,7 +142,7 @@ const VivaQuestionLibrary = () => {
         r.model_answer.toLowerCase().includes(q)
       );
     });
-  }, [rows, query, examFilter]);
+  }, [rows, query, examFilter, difficultyFilter, rowDifficulty]);
 
   // Build a topic_title -> section lookup from the curriculum.
   const topicSectionMap = useMemo(() => {
@@ -218,9 +267,12 @@ const VivaQuestionLibrary = () => {
     }
   };
 
-  /** Build the queue of rows to stream based on exam filter + selected topics. */
+  /** Build the queue of rows to stream based on exam + difficulty + selected topics. */
   const streamQueue = useMemo(() => {
     let queue = rows.filter((r) => examFilter === "all" || r.exam === examFilter);
+    if (difficultyFilter !== "all") {
+      queue = queue.filter((r) => rowDifficulty.get(r.id) === difficultyFilter);
+    }
     if (streamTopics.size > 0) {
       queue = queue.filter((r) => streamTopics.has(r.topic_title));
     }
@@ -229,7 +281,7 @@ const VivaQuestionLibrary = () => {
       const t = a.topic_title.localeCompare(b.topic_title);
       return t !== 0 ? t : a.created_at.localeCompare(b.created_at);
     });
-  }, [rows, examFilter, streamTopics]);
+  }, [rows, examFilter, difficultyFilter, rowDifficulty, streamTopics]);
 
   /** All distinct topic titles available given the current exam filter. */
   const availableTopics = useMemo(() => {
@@ -297,6 +349,23 @@ const VivaQuestionLibrary = () => {
     return c;
   }, [rows]);
 
+  // Difficulty counts respect the active exam filter so numbers stay meaningful.
+  const difficultyCounts = useMemo(() => {
+    const c: Record<DifficultyFilter, number> = {
+      all: 0,
+      basic: 0,
+      intermediate: 0,
+      "exam-ready": 0,
+    };
+    rows.forEach((r) => {
+      if (examFilter !== "all" && r.exam !== examFilter) return;
+      c.all++;
+      const d = rowDifficulty.get(r.id);
+      if (d) c[d]++;
+    });
+    return c;
+  }, [rows, examFilter, rowDifficulty]);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
@@ -333,6 +402,30 @@ const VivaQuestionLibrary = () => {
                 }`}
               >
                 {e === "all" ? "All" : examLabels[e]} ({examCounts[e] ?? 0})
+              </button>
+            );
+          })}
+        </section>
+
+        <section className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-muted-foreground mr-1">
+            Difficulty
+          </span>
+          {(["all", "basic", "intermediate", "exam-ready"] as DifficultyFilter[]).map((d) => {
+            const isActive = difficultyFilter === d;
+            const count = difficultyCounts[d] ?? 0;
+            return (
+              <button
+                key={d}
+                type="button"
+                onClick={() => setDifficultyFilter(d)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  isActive
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card hover:border-primary/50 text-foreground"
+                }`}
+              >
+                {d === "all" ? "All" : difficultyLabels[d]} ({count})
               </button>
             );
           })}
@@ -556,6 +649,17 @@ const VivaQuestionLibrary = () => {
                                               <Badge variant="outline" className="text-[10px]">
                                                 {examLabels[r.exam] ?? r.exam}
                                               </Badge>
+                                              {(() => {
+                                                const d = rowDifficulty.get(r.id);
+                                                return d ? (
+                                                  <Badge
+                                                    variant="outline"
+                                                    className={`text-[10px] ${difficultyClasses[d]}`}
+                                                  >
+                                                    {difficultyLabels[d]}
+                                                  </Badge>
+                                                ) : null;
+                                              })()}
                                             </div>
                                           </div>
                                         </div>
