@@ -2,6 +2,8 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
+import { DiagramSection } from "@/components/DiagramSection";
+import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -108,6 +110,12 @@ const XRayRadiationSafetyTopic = () => {
                   for tungsten). This appears as <em>line peaks</em> superimposed on the bremsstrahlung continuum.
                 </li>
               </ul>
+              <DiagramSection
+                title="Anatomy of an X-ray tube"
+                intro="Electrons are boiled off a heated tungsten cathode, accelerated across the kVp gap, and slam into the rotating tungsten anode — generating bremsstrahlung and characteristic photons that exit through the beryllium window."
+              >
+                <XRayTubeDiagram />
+              </DiagramSection>
               <p>
                 Two operator settings dominate the output. <strong>kVp</strong> controls the maximum photon energy and therefore beam
                 quality (penetration); raising kVp increases mean photon energy and reduces tissue contrast. <strong>mAs</strong> (tube
