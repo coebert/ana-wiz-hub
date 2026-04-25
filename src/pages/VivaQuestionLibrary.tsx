@@ -348,6 +348,106 @@ const VivaQuestionLibrary = () => {
           />
         </section>
 
+        <section className="mb-6 rounded-lg border border-border bg-card p-3 sm:p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <Headphones className="h-4 w-4 text-primary shrink-0" />
+              <h2 className="text-sm font-semibold text-foreground">Continuous viva stream</h2>
+            </div>
+            <div className="flex items-center gap-2">
+              {streamActive ? (
+                <>
+                  <Button type="button" size="sm" variant="outline" onClick={skipStream} className="h-8">
+                    <SkipForward className="h-3.5 w-3.5 mr-1.5" /> Skip
+                  </Button>
+                  <Button type="button" size="sm" variant="destructive" onClick={stopStream} className="h-8">
+                    <Square className="h-3.5 w-3.5 mr-1.5" /> Stop
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => playStream(0)}
+                  disabled={streamQueue.length === 0}
+                  className="h-8"
+                >
+                  <Play className="h-3.5 w-3.5 mr-1.5" />
+                  Play {streamQueue.length} {streamQueue.length === 1 ? "question" : "questions"}
+                </Button>
+              )}
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Listen to questions and model answers back-to-back. The next question starts automatically
+            when the previous answer ends. Filter by exam (above) and/or specific topics below.
+          </p>
+
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <button
+              type="button"
+              onClick={() => setTopicPickerOpen((v) => !v)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary"
+            >
+              <ListFilter className="h-3.5 w-3.5" />
+              Topics ({streamTopics.size === 0 ? "all" : `${streamTopics.size} selected`})
+              {topicPickerOpen ? (
+                <ChevronDown className="h-3.5 w-3.5" />
+              ) : (
+                <ChevronRight className="h-3.5 w-3.5" />
+              )}
+            </button>
+            {streamTopics.size > 0 && (
+              <button
+                type="button"
+                onClick={() => setStreamTopics(new Set())}
+                className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-3 w-3" /> Clear
+              </button>
+            )}
+          </div>
+
+          {topicPickerOpen && (
+            <div className="max-h-56 overflow-y-auto rounded-md border border-border/60 bg-background/40 p-2 flex flex-wrap gap-1.5">
+              {availableTopics.length === 0 ? (
+                <p className="text-xs text-muted-foreground p-2">
+                  No topics available for the selected exam.
+                </p>
+              ) : (
+                availableTopics.map((title) => {
+                  const active = streamTopics.has(title);
+                  return (
+                    <button
+                      key={title}
+                      type="button"
+                      onClick={() => toggleStreamTopic(title)}
+                      className={`rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+                        active
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-card hover:border-primary/50 text-foreground"
+                      }`}
+                    >
+                      {title}
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          )}
+
+          {streamActive && speakingId && (() => {
+            const idx = streamQueue.findIndex((r) => r.id === speakingId);
+            const cur = idx >= 0 ? streamQueue[idx] : null;
+            return cur ? (
+              <p className="mt-3 text-xs text-muted-foreground">
+                Now playing <span className="font-medium text-foreground">{idx + 1} / {streamQueue.length}</span> ·{" "}
+                <span className="font-medium text-foreground">{cur.topic_title}</span> — {cur.question}
+              </p>
+            ) : null;
+          })()}
+        </section>
+
         {loading ? (
           <div className="flex items-center gap-2 text-sm text-muted-foreground py-12 justify-center">
             <Loader2 className="h-4 w-4 animate-spin" /> Loading library…
