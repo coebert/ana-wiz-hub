@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
+import { CTScannerDiagram } from "@/components/diagrams/CTScannerDiagram";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { RadiationDoseComparisonTable } from "@/components/RadiationDoseComparisonTable";
 import { Cite, ReferencesList, type Reference } from "@/components/References";
