@@ -278,6 +278,34 @@ const VivaQuestionLibrary = () => {
   });
   const streamRef = useRef<{ cancelled: boolean }>({ cancelled: false });
 
+  // Playback rate (persisted). Applied to every <audio> element we create.
+  const PLAYBACK_RATES = [0.75, 1, 1.25, 1.5, 1.75, 2] as const;
+  const PLAYBACK_RATE_KEY = "viva:playbackRate";
+  const [playbackRate, setPlaybackRate] = useState<number>(() => {
+    if (typeof window === "undefined") return 1;
+    const v = parseFloat(window.localStorage.getItem(PLAYBACK_RATE_KEY) || "1");
+    return PLAYBACK_RATES.includes(v as typeof PLAYBACK_RATES[number]) ? v : 1;
+  });
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(PLAYBACK_RATE_KEY, String(playbackRate));
+    } catch {
+      /* ignore */
+    }
+    // Apply live to a currently-playing audio element.
+    const a = playbackRef.current.audio;
+    if (a) a.playbackRate = playbackRate;
+  }, [playbackRate]);
+
+  /** Skip the currently-playing audio segment by `delta` seconds (positive or negative). */
+  const seekBy = (delta: number) => {
+    const a = playbackRef.current.audio;
+    if (!a) return;
+    const dur = Number.isFinite(a.duration) ? a.duration : 0;
+    const target = Math.max(0, Math.min(dur || a.currentTime + delta, a.currentTime + delta));
+    a.currentTime = target;
+  };
+
   useEffect(() => {
     const load = async () => {
       setLoading(true);
