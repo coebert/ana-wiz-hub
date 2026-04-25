@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw, Flame, CalendarCheck, Rewind, FastForward, Gauge } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -278,6 +278,34 @@ const VivaQuestionLibrary = () => {
   });
   const streamRef = useRef<{ cancelled: boolean }>({ cancelled: false });
 
+  // Playback rate (persisted). Applied to every <audio> element we create.
+  const PLAYBACK_RATES = [0.75, 1, 1.25, 1.5, 1.75, 2] as const;
+  const PLAYBACK_RATE_KEY = "viva:playbackRate";
+  const [playbackRate, setPlaybackRate] = useState<number>(() => {
+    if (typeof window === "undefined") return 1;
+    const v = parseFloat(window.localStorage.getItem(PLAYBACK_RATE_KEY) || "1");
+    return PLAYBACK_RATES.includes(v as typeof PLAYBACK_RATES[number]) ? v : 1;
+  });
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(PLAYBACK_RATE_KEY, String(playbackRate));
+    } catch {
+      /* ignore */
+    }
+    // Apply live to a currently-playing audio element.
+    const a = playbackRef.current.audio;
+    if (a) a.playbackRate = playbackRate;
+  }, [playbackRate]);
+
+  /** Skip the currently-playing audio segment by `delta` seconds (positive or negative). */
+  const seekBy = (delta: number) => {
+    const a = playbackRef.current.audio;
+    if (!a) return;
+    const dur = Number.isFinite(a.duration) ? a.duration : 0;
+    const target = Math.max(0, Math.min(dur || a.currentTime + delta, a.currentTime + delta));
+    a.currentTime = target;
+  };
+
   useEffect(() => {
     const load = async () => {
       setLoading(true);
@@ -473,6 +501,7 @@ const VivaQuestionLibrary = () => {
     new Promise((resolve, reject) => {
       if (playbackRef.current.cancelled) return resolve();
       const audio = new Audio(src);
+      audio.playbackRate = playbackRate;
       playbackRef.current.audio = audio;
       audio.onended = () => resolve();
       audio.onerror = () => reject(new Error("Audio playback failed"));
@@ -762,6 +791,59 @@ const VivaQuestionLibrary = () => {
               )}
             </div>
           </div>
+
+          <div className="flex flex-wrap items-center gap-3 mb-3 rounded-md border border-border/60 bg-background/40 px-3 py-2">
+            <div className="flex items-center gap-1.5 text-xs text-foreground">
+              <Gauge className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="font-medium">Speed</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1">
+              {PLAYBACK_RATES.map((r) => {
+                const active = playbackRate === r;
+                return (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setPlaybackRate(r)}
+                    aria-pressed={active}
+                    title={`Play audio at ${r}× speed`}
+                    className={`rounded-md border px-2 py-0.5 text-[11px] font-medium tabular-nums transition-colors ${
+                      active
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card hover:border-primary/50 text-foreground"
+                    }`}
+                  >
+                    {r}×
+                  </button>
+                );
+              })}
+            </div>
+            <div className="ml-auto flex items-center gap-1">
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => seekBy(-15)}
+                disabled={!speakingId}
+                className="h-7 px-2 text-xs"
+                title="Skip back 15 seconds in current segment"
+              >
+                <Rewind className="h-3.5 w-3.5 mr-1" /> 15s
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => seekBy(15)}
+                disabled={!speakingId}
+                className="h-7 px-2 text-xs"
+                title="Skip forward 15 seconds in current segment"
+              >
+                <FastForward className="h-3.5 w-3.5 mr-1" /> 15s
+              </Button>
+            </div>
+          </div>
+
           <p className="text-xs text-muted-foreground mb-3">
             Listen to questions and model answers back-to-back. The next question starts automatically
             when the previous answer ends. Filter by exam (above) and/or specific topics below.
