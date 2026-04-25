@@ -176,6 +176,65 @@ const VivaQuestionLibrary = () => {
       });
   }, [filtered, topicSectionMap]);
 
+  /**
+   * Coverage stats over **all** rows (not just `filtered`) so users see absolute
+   * progress regardless of search/exam/difficulty filters. Computed per section
+   * and per topic; counts both questions and topics-touched.
+   */
+  const coverage = useMemo(() => {
+    type TopicStat = { total: number; practiced: number };
+    type SectionStat = {
+      questionsTotal: number;
+      questionsPracticed: number;
+      topicsTotal: number;
+      topicsTouched: number;
+      topics: Map<string, TopicStat>;
+    };
+    const bySection = new Map<Section | "_other", SectionStat>();
+    for (const r of rows) {
+      const sec = topicSectionMap.get(r.topic_title.toLowerCase()) ?? "_other";
+      if (!bySection.has(sec)) {
+        bySection.set(sec, {
+          questionsTotal: 0,
+          questionsPracticed: 0,
+          topicsTotal: 0,
+          topicsTouched: 0,
+          topics: new Map(),
+        });
+      }
+      const s = bySection.get(sec)!;
+      if (!s.topics.has(r.topic_title)) s.topics.set(r.topic_title, { total: 0, practiced: 0 });
+      const t = s.topics.get(r.topic_title)!;
+      t.total++;
+      s.questionsTotal++;
+      if (practiced.has(r.id)) {
+        t.practiced++;
+        s.questionsPracticed++;
+      }
+    }
+    let overallQ = 0;
+    let overallQDone = 0;
+    let overallT = 0;
+    let overallTDone = 0;
+    for (const s of bySection.values()) {
+      s.topicsTotal = s.topics.size;
+      s.topicsTouched = Array.from(s.topics.values()).filter((t) => t.practiced > 0).length;
+      overallQ += s.questionsTotal;
+      overallQDone += s.questionsPracticed;
+      overallT += s.topicsTotal;
+      overallTDone += s.topicsTouched;
+    }
+    return {
+      bySection,
+      overall: {
+        questionsTotal: overallQ,
+        questionsPracticed: overallQDone,
+        topicsTotal: overallT,
+        topicsTouched: overallTDone,
+      },
+    };
+  }, [rows, topicSectionMap, practiced]);
+
   const isSearching = query.trim().length > 0;
 
   const toggle = (id: string) =>
