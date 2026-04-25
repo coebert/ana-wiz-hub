@@ -43,6 +43,7 @@ const HumidityGasSamplingTopic = lazy(() => import("./pages/topics/HumidityGasSa
 const LaserFibreopticsTopic = lazy(() => import("./pages/topics/LaserFibreopticsTopic"));
 const UltrasoundPhysicsTopic = lazy(() => import("./pages/topics/UltrasoundPhysicsTopic"));
 const MRIPhysicsTopic = lazy(() => import("./pages/topics/MRIPhysicsTopic"));
+const XRayRadiationSafetyTopic = lazy(() => import("./pages/topics/XRayRadiationSafetyTopic"));
 const DefibrillationPacingTopic = lazy(() => import("./pages/topics/DefibrillationPacingTopic"));
 const ClinicalMeasurementTopic = lazy(() => import("./pages/topics/ClinicalMeasurementTopic"));
 const SIUnitsThermodynamicsTopic = lazy(() => import("./pages/topics/SIUnitsThermodynamicsTopic"));
@@ -213,6 +214,7 @@ const App = () => (
           <Route path="/physics/lasers-fibreoptics" element={<LaserFibreopticsTopic />} />
           <Route path="/physics/ultrasound-physics" element={<UltrasoundPhysicsTopic />} />
           <Route path="/physics/mri-physics" element={<MRIPhysicsTopic />} />
+          <Route path="/physics/xray-radiation-safety" element={<XRayRadiationSafetyTopic />} />
           <Route path="/physics/defibrillation-pacing" element={<DefibrillationPacingTopic />} />
           <Route path="/physics/clinical-measurement" element={<ClinicalMeasurementTopic />} />
           <Route path="/physics/si-units-thermodynamics" element={<SIUnitsThermodynamicsTopic />} />
