@@ -25,6 +25,10 @@ interface ResolvedPodcast extends PodcastRow {
 
 const AUTOPLAY_KEY = "podcasts:autoplay";
 const COLLAPSED_KEY = "podcasts:collapsedSections";
+const ORDER_MODE_KEY = "podcasts:orderMode";
+const CUSTOM_ORDER_KEY = "podcasts:customOrder";
+
+type OrderMode = "curriculum" | "section" | "custom";
 
 const formatDuration = (s: number | null) => {
   if (!s || s <= 0) return "—";
