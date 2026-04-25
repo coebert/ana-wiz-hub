@@ -255,6 +255,8 @@ const VivaQuestionLibrary = () => {
       playbackRef.current = { cancelled: false, audio: null };
     }
     setSpeakingId(row.id);
+    // Listening to the dialogue counts as practice (auto-mark; user can untick).
+    mark(row.id);
     try {
       // Generate both segments in parallel for faster start.
       const [examinerSrc, candidateSrc] = await Promise.all([
