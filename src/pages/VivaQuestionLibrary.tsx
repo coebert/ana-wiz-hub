@@ -349,6 +349,23 @@ const VivaQuestionLibrary = () => {
     return c;
   }, [rows]);
 
+  // Difficulty counts respect the active exam filter so numbers stay meaningful.
+  const difficultyCounts = useMemo(() => {
+    const c: Record<DifficultyFilter, number> = {
+      all: 0,
+      basic: 0,
+      intermediate: 0,
+      "exam-ready": 0,
+    };
+    rows.forEach((r) => {
+      if (examFilter !== "all" && r.exam !== examFilter) return;
+      c.all++;
+      const d = rowDifficulty.get(r.id);
+      if (d) c[d]++;
+    });
+    return c;
+  }, [rows, examFilter, rowDifficulty]);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 max-w-5xl">
