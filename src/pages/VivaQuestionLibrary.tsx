@@ -49,10 +49,14 @@ const VivaQuestionLibrary = () => {
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
   const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const [streamActive, setStreamActive] = useState(false);
+  const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
+  const [topicPickerOpen, setTopicPickerOpen] = useState(false);
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
   });
+  const streamRef = useRef<{ cancelled: boolean }>({ cancelled: false });
 
   useEffect(() => {
     const load = async () => {
