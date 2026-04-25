@@ -22,6 +22,8 @@ const SECTION_ORDER: (Section | "_other")[] = [
 ];
 
 type ExamFilter = "all" | "primary" | "final" | "fficm";
+type Difficulty = "basic" | "intermediate" | "exam-ready";
+type DifficultyFilter = "all" | Difficulty;
 
 interface ModelAnswerRow {
   id: string;
@@ -40,11 +42,50 @@ const examLabels: Record<string, string> = {
   fficm: "FFICM",
 };
 
+const difficultyLabels: Record<Difficulty, string> = {
+  basic: "Basic",
+  intermediate: "Intermediate",
+  "exam-ready": "Exam-ready",
+};
+
+const difficultyClasses: Record<Difficulty, string> = {
+  basic: "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+  intermediate: "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300",
+  "exam-ready": "border-rose-500/40 bg-rose-500/10 text-rose-700 dark:text-rose-300",
+};
+
+/**
+ * Heuristically classify a stored viva row by inspecting the question stem
+ * and answer length. We don't store difficulty on the row (it's an ad-hoc
+ * tag chosen at session time), so this gives a stable retroactive bucket
+ * the user can filter by.
+ *
+ * Signals (in order of weight):
+ *  - "Define / List / What is" + short answer → basic
+ *  - Multi-clause stem (semicolons / "and") OR "compare/contrast/critically"
+ *    OR very long structured answer → exam-ready
+ *  - Everything else → intermediate
+ */
+const classifyDifficulty = (row: { question: string; model_answer: string }): Difficulty => {
+  const q = row.question.toLowerCase();
+  const answerLen = row.model_answer.length;
+  const examReadyCues = /(compare|contrast|critically|justify|outline your approach|critique|weigh|trade-?offs|controversies|evidence base|implications|risk[- ]benefit|differential diagnosis|complex|complications? of|management plan)/;
+  const basicCues = /^(\s*)(define|what is|name|list|state|give the (definition|formula))\b/;
+
+  if (examReadyCues.test(q) || answerLen > 1800) return "exam-ready";
+  if (basicCues.test(q) && answerLen < 700) return "basic";
+  // Long stem with several clauses tends to be exam-ready in nature.
+  const clauses = (row.question.match(/[;,]| and /g) ?? []).length;
+  if (clauses >= 3 && answerLen > 900) return "exam-ready";
+  return "intermediate";
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [examFilter, setExamFilter] = useState<ExamFilter>("all");
+  const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>("all");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
