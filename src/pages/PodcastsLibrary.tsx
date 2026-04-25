@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle } from "lucide-react";
+import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -144,26 +144,57 @@ const PodcastsLibrary = () => {
     return grouped.flatMap((g) => g.items);
   }, [grouped]);
 
+  /**
+   * Pause every audio element except the optional `keepId`.
+   * Used so manual skip / autoplay can't leave two players running.
+   */
+  const pauseAllExcept = (keepId: string | null) => {
+    audioRefs.current.forEach((el, id) => {
+      if (id !== keepId) {
+        try {
+          el.pause();
+        } catch {
+          /* ignore */
+        }
+      }
+    });
+  };
+
+  /** Play a specific podcast by topic id, expanding its section + scrolling into view. */
+  const playPodcast = (topicId: string) => {
+    const target = playlist.find((p) => p.topic_id === topicId);
+    if (!target) return;
+
+    pauseAllExcept(topicId);
+
+    // Ensure the section is expanded so the player is mounted.
+    const sectionKey = (target.section ?? "_other") as string;
+    setCollapsed((prev) => (prev[sectionKey] ? { ...prev, [sectionKey]: false } : prev));
+
+    requestAnimationFrame(() => {
+      const el = audioRefs.current.get(topicId);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.play().catch(() => {
+        /* browser may block autoplay until first user interaction */
+      });
+      setNowPlaying(topicId);
+    });
+  };
+
+  const goToOffset = (currentTopicId: string, offset: number) => {
+    const idx = playlist.findIndex((p) => p.topic_id === currentTopicId);
+    if (idx === -1) return;
+    const targetIdx = idx + offset;
+    if (targetIdx < 0 || targetIdx >= playlist.length) return;
+    playPodcast(playlist[targetIdx].topic_id);
+  };
+
   const handleEnded = (topicId: string) => {
     if (!autoplay) return;
     const idx = playlist.findIndex((p) => p.topic_id === topicId);
     if (idx === -1 || idx >= playlist.length - 1) return;
-    const next = playlist[idx + 1];
-
-    // Ensure the next item's section is expanded so the player is visible.
-    const nextSectionKey = (next.section ?? "_other") as string;
-    setCollapsed((prev) => (prev[nextSectionKey] ? { ...prev, [nextSectionKey]: false } : prev));
-
-    // Defer to allow Collapsible to mount the audio element before play().
-    requestAnimationFrame(() => {
-      const el = audioRefs.current.get(next.topic_id);
-      if (!el) return;
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      el.play().catch(() => {
-        /* autoplay may be blocked by the browser if user hasn't interacted */
-      });
-      setNowPlaying(next.topic_id);
-    });
+    playPodcast(playlist[idx + 1].topic_id);
   };
 
   const setAudioRef = (topicId: string) => (el: HTMLAudioElement | null) => {
@@ -325,17 +356,51 @@ const PodcastsLibrary = () => {
                             </a>
                           </div>
                         </div>
-                        <audio
-                          ref={setAudioRef(p.topic_id)}
-                          controls
-                          preload="none"
-                          className="w-full"
-                          src={p.audio_url}
-                          onPlay={() => setNowPlaying(p.topic_id)}
-                          onEnded={() => handleEnded(p.topic_id)}
-                        >
-                          Your browser does not support audio playback.
-                        </audio>
+                        {(() => {
+                          const playlistIdx = playlist.findIndex((x) => x.topic_id === p.topic_id);
+                          const hasPrev = playlistIdx > 0;
+                          const hasNext = playlistIdx >= 0 && playlistIdx < playlist.length - 1;
+                          return (
+                            <div className="space-y-2">
+                              <audio
+                                ref={setAudioRef(p.topic_id)}
+                                controls
+                                preload="none"
+                                className="w-full"
+                                src={p.audio_url}
+                                onPlay={() => setNowPlaying(p.topic_id)}
+                                onEnded={() => handleEnded(p.topic_id)}
+                              >
+                                Your browser does not support audio playback.
+                              </audio>
+                              <div className="flex items-center justify-between gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => goToOffset(p.topic_id, -1)}
+                                  disabled={!hasPrev}
+                                  aria-label="Previous podcast"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                >
+                                  <SkipBack className="h-3.5 w-3.5" />
+                                  Previous
+                                </button>
+                                <span className="text-[11px] text-muted-foreground">
+                                  {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => goToOffset(p.topic_id, 1)}
+                                  disabled={!hasNext}
+                                  aria-label="Next podcast"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                >
+                                  Next
+                                  <SkipForward className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })()}
                       </li>
                     ))}
                   </ul>
