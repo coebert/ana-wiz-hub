@@ -5,8 +5,83 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
+import { Cite, ReferencesList, type Reference } from "@/components/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const REFERENCES: Reference[] = [
+  {
+    id: "iaea-handbook",
+    n: 1,
+    authors: "International Atomic Energy Agency (IAEA)",
+    title: "Diagnostic Radiology Physics: A Handbook for Teachers and Students (Chs 1–3: X-ray production and tubes)",
+    source: "IAEA, Vienna",
+    year: 2014,
+    url: "https://www.iaea.org/publications/8841/diagnostic-radiology-physics",
+  },
+  {
+    id: "bushberg",
+    n: 2,
+    authors: "Bushberg JT, Seibert JA, Leidholdt EM, Boone JM",
+    title: "The Essential Physics of Medical Imaging (4th ed., Ch 6 — X-ray Production, X-ray Tubes, and Generators)",
+    source: "Wolters Kluwer, Philadelphia",
+    year: 2020,
+  },
+  {
+    id: "icrp103",
+    n: 3,
+    authors: "International Commission on Radiological Protection",
+    title: "ICRP Publication 103 — The 2007 Recommendations of the ICRP (tissue weighting factors, stochastic vs deterministic effects)",
+    source: "Annals of the ICRP 37(2–4)",
+    year: 2007,
+    url: "https://www.icrp.org/publication.asp?id=ICRP%20Publication%20103",
+  },
+  {
+    id: "icrp118",
+    n: 4,
+    authors: "International Commission on Radiological Protection",
+    title: "ICRP Publication 118 — Statement on Tissue Reactions / Threshold Doses (lens of the eye reduced to 0.5 Gy)",
+    source: "Annals of the ICRP 41(1–2)",
+    year: 2012,
+    url: "https://www.icrp.org/publication.asp?id=ICRP%20Publication%20118",
+  },
+  {
+    id: "irr2017",
+    n: 5,
+    authors: "UK Government",
+    title: "The Ionising Radiations Regulations 2017 (SI 2017/1075) — dose limits, classified workers, declared-pregnant workers",
+    source: "legislation.gov.uk",
+    year: 2017,
+    url: "https://www.legislation.gov.uk/uksi/2017/1075/contents/made",
+  },
+  {
+    id: "irmer2017",
+    n: 6,
+    authors: "UK Government",
+    title: "The Ionising Radiation (Medical Exposure) Regulations 2017 (IR(ME)R) — justification, optimisation, authorisation",
+    source: "legislation.gov.uk",
+    year: 2017,
+    url: "https://www.legislation.gov.uk/uksi/2017/1322/contents/made",
+  },
+  {
+    id: "phe-doses",
+    n: 7,
+    authors: "Public Health England (now UKHSA)",
+    title: "Patient dose information: guidance — typical effective doses for common diagnostic exposures (CXR, CT, fluoroscopy)",
+    source: "GOV.UK",
+    year: 2020,
+    url: "https://www.gov.uk/government/publications/medical-radiation-patient-doses",
+  },
+  {
+    id: "rcoa-curriculum",
+    n: 8,
+    authors: "Royal College of Anaesthetists",
+    title: "2021 Curriculum for a CCT in Anaesthetics — Domain 12 Equipment (X-rays, radiation safety, contrast)",
+    source: "RCoA, London",
+    year: 2021,
+    url: "https://rcoa.ac.uk/training-careers/training-anaesthesia/2021-anaesthetics-curriculum",
+  },
+];
 
 const objectives = [
   "Describe how diagnostic X-rays are produced (bremsstrahlung and characteristic radiation) and the influence of kVp and mAs on beam quality and quantity",
@@ -97,18 +172,18 @@ const XRayRadiationSafetyTopic = () => {
                 A diagnostic X-ray tube is an evacuated glass envelope containing a heated tungsten <strong>cathode</strong> (electron
                 source by thermionic emission) and a rotating tungsten <strong>anode</strong> (the target). A high voltage —
                 conventionally <strong>50–150 kVp</strong> — accelerates electrons across the tube; they strike the anode at high
-                velocity. Two distinct mechanisms then generate X-rays:
+                velocity.<Cite refs={[{ id: "iaea-handbook", n: 1 }, { id: "bushberg", n: 2 }]} /> Two distinct mechanisms then generate X-rays:
               </p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>
                   <strong>Bremsstrahlung ('braking radiation')</strong> — the dominant contributor. As an electron is decelerated and
                   deflected by the field of a tungsten nucleus, the lost kinetic energy is emitted as a photon. This produces a
-                  <em> continuous spectrum</em> from very low energies up to a maximum equal to the tube voltage in keV.
+                  <em> continuous spectrum</em> from very low energies up to a maximum equal to the tube voltage in keV.<Cite refs={[{ id: "bushberg", n: 2 }]} />
                 </li>
                 <li>
                   <strong>Characteristic radiation</strong> — when an incident electron ejects an inner-shell (K-shell) tungsten
                   electron, an outer electron drops in to fill the vacancy and releases a photon at a discrete energy (~59 and 67 keV
-                  for tungsten). This appears as <em>line peaks</em> superimposed on the bremsstrahlung continuum.
+                  for tungsten). This appears as <em>line peaks</em> superimposed on the bremsstrahlung continuum.<Cite refs={[{ id: "iaea-handbook", n: 1 }]} />
                 </li>
               </ul>
               <DiagramSection
@@ -122,7 +197,7 @@ const XRayRadiationSafetyTopic = () => {
                 quality (penetration); raising kVp increases mean photon energy and reduces tissue contrast. <strong>mAs</strong> (tube
                 current × exposure time) controls beam quantity (photon number) and is the primary determinant of patient dose for a
                 given kVp. Less than 1% of the electron kinetic energy is converted to X-rays — the rest is heat, which is why anodes
-                rotate and are oil-cooled.
+                rotate and are oil-cooled.<Cite refs={[{ id: "bushberg", n: 2 }, { id: "iaea-handbook", n: 1 }]} />
               </p>
             </div>
           </ExamSection>
@@ -386,6 +461,13 @@ const XRayRadiationSafetyTopic = () => {
               links={[{ topicId: "interventional-radiology" }]}
               variant="inline"
             />
+          </ExamSection>
+
+          <ExamSection id="references" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <ReferencesList references={REFERENCES} />
+            <p className="text-[11px] text-muted-foreground italic mt-3">
+              Numbers correspond to inline superscripts above. Standards (ICRP, IAEA) are reviewed periodically — verify against the current edition before quoting in audit or guideline work.
+            </p>
           </ExamSection>
         </>
       }
