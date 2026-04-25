@@ -164,11 +164,64 @@ const PodcastsLibrary = () => {
       }));
   }, [filtered]);
 
-  // Flat ordered playlist mirrors the grouped section order so "next" is predictable.
+  // Curriculum-canonical order: the order in which topics appear in `allTopics`.
+  const curriculumIndex = useMemo(() => {
+    const m = new Map<string, number>();
+    allTopics.forEach((t, i) => m.set(t.id, i));
+    return m;
+  }, []);
+
+  /**
+   * Flat ordered playlist used for prev/next + autoplay. Driven by `orderMode`:
+   *  - "section":    sections in SECTION_ORDER, items alpha by title (matches the visible groups)
+   *  - "curriculum": follows the canonical order topics appear in `allTopics`
+   *  - "custom":     user-defined order (unknown ids fall back to section order at the end)
+   */
   const playlist = useMemo(() => {
+    if (!filtered) return [] as ResolvedPodcast[];
+    if (orderMode === "curriculum") {
+      return [...filtered].sort((a, b) => {
+        const ai = curriculumIndex.get(a.topic_id) ?? Number.MAX_SAFE_INTEGER;
+        const bi = curriculumIndex.get(b.topic_id) ?? Number.MAX_SAFE_INTEGER;
+        if (ai !== bi) return ai - bi;
+        return a.topic_title.localeCompare(b.topic_title);
+      });
+    }
+    if (orderMode === "custom") {
+      const byId = new Map(filtered.map((p) => [p.topic_id, p]));
+      const ordered: ResolvedPodcast[] = [];
+      const seen = new Set<string>();
+      for (const id of customOrder) {
+        const p = byId.get(id);
+        if (p) {
+          ordered.push(p);
+          seen.add(id);
+        }
+      }
+      // Append any new podcasts not yet in the saved custom order.
+      for (const p of filtered) {
+        if (!seen.has(p.topic_id)) ordered.push(p);
+      }
+      return ordered;
+    }
+    // Default: section order (matches grouped UI).
     if (!grouped) return [] as ResolvedPodcast[];
     return grouped.flatMap((g) => g.items);
-  }, [grouped]);
+  }, [filtered, grouped, orderMode, customOrder, curriculumIndex]);
+
+  const moveCustom = (topicId: string, delta: number) => {
+    // Seed the saved custom order with the current playlist if empty/stale.
+    const currentIds = playlist.map((p) => p.topic_id);
+    const idx = currentIds.indexOf(topicId);
+    if (idx === -1) return;
+    const target = idx + delta;
+    if (target < 0 || target >= currentIds.length) return;
+    const next = [...currentIds];
+    [next[idx], next[target]] = [next[target], next[idx]];
+    setCustomOrder(next);
+  };
+
+  const resetCustomOrder = () => setCustomOrder([]);
 
   /**
    * Pause every audio element except the optional `keepId`.
