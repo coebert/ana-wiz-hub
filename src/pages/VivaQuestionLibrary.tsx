@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -49,10 +49,14 @@ const VivaQuestionLibrary = () => {
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
   const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const [streamActive, setStreamActive] = useState(false);
+  const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
+  const [topicPickerOpen, setTopicPickerOpen] = useState(false);
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
   });
+  const streamRef = useRef<{ cancelled: boolean }>({ cancelled: false });
 
   useEffect(() => {
     const load = async () => {
@@ -182,13 +186,15 @@ const VivaQuestionLibrary = () => {
     });
 
   /** Play examiner question + candidate model answer as a two-voice dialogue. */
-  const playDialogue = async (row: ModelAnswerRow) => {
-    if (speakingId) {
-      // If clicked on the currently-playing row, stop it.
-      stopPlayback();
-      if (speakingId === row.id) return;
+  const playDialogue = async (row: ModelAnswerRow, opts?: { silent?: boolean }) => {
+    if (!opts?.silent) {
+      if (speakingId) {
+        // If clicked on the currently-playing row, stop it.
+        stopPlayback();
+        if (speakingId === row.id) return;
+      }
+      playbackRef.current = { cancelled: false, audio: null };
     }
-    playbackRef.current = { cancelled: false, audio: null };
     setSpeakingId(row.id);
     try {
       // Generate both segments in parallel for faster start.
@@ -212,8 +218,76 @@ const VivaQuestionLibrary = () => {
     }
   };
 
+  /** Build the queue of rows to stream based on exam filter + selected topics. */
+  const streamQueue = useMemo(() => {
+    let queue = rows.filter((r) => examFilter === "all" || r.exam === examFilter);
+    if (streamTopics.size > 0) {
+      queue = queue.filter((r) => streamTopics.has(r.topic_title));
+    }
+    // Stable order: by topic then created_at ascending (oldest first feels like a session).
+    return [...queue].sort((a, b) => {
+      const t = a.topic_title.localeCompare(b.topic_title);
+      return t !== 0 ? t : a.created_at.localeCompare(b.created_at);
+    });
+  }, [rows, examFilter, streamTopics]);
+
+  /** All distinct topic titles available given the current exam filter. */
+  const availableTopics = useMemo(() => {
+    const set = new Set<string>();
+    rows.forEach((r) => {
+      if (examFilter === "all" || r.exam === examFilter) set.add(r.topic_title);
+    });
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [rows, examFilter]);
+
+  const stopStream = () => {
+    streamRef.current.cancelled = true;
+    setStreamActive(false);
+    stopPlayback();
+  };
+
+  const playStream = async (startIndex = 0) => {
+    if (streamQueue.length === 0) {
+      toast.message("No questions match the current filters");
+      return;
+    }
+    streamRef.current = { cancelled: false };
+    playbackRef.current = { cancelled: false, audio: null };
+    setStreamActive(true);
+    for (let i = startIndex; i < streamQueue.length; i++) {
+      if (streamRef.current.cancelled) break;
+      // Reset per-row playback cancellation flag (but keep stream flag).
+      playbackRef.current = { cancelled: false, audio: null };
+      await playDialogue(streamQueue[i], { silent: true });
+      if (streamRef.current.cancelled) break;
+      // Pause between questions.
+      await new Promise((r) => setTimeout(r, 600));
+    }
+    if (!streamRef.current.cancelled) {
+      setStreamActive(false);
+      toast.success("Reached the end of the stream");
+    }
+  };
+
+  const skipStream = () => {
+    // Cancel just the current row; the stream loop will move on.
+    playbackRef.current.cancelled = true;
+    const a = playbackRef.current.audio;
+    if (a) {
+      try { a.pause(); a.src = ""; } catch { /* ignore */ }
+    }
+    playbackRef.current.audio = null;
+  };
+
+  const toggleStreamTopic = (title: string) =>
+    setStreamTopics((prev) => {
+      const next = new Set(prev);
+      next.has(title) ? next.delete(title) : next.add(title);
+      return next;
+    });
+
   // Stop any audio when the page unmounts.
-  useEffect(() => () => stopPlayback(), []);
+  useEffect(() => () => { stopStream(); }, []);
 
   const examCounts = useMemo(() => {
     const c = { all: rows.length, primary: 0, final: 0, fficm: 0 } as Record<ExamFilter, number>;
@@ -272,6 +346,106 @@ const VivaQuestionLibrary = () => {
             placeholder="Search questions, topics or model answer text…"
             className="pl-9"
           />
+        </section>
+
+        <section className="mb-6 rounded-lg border border-border bg-card p-3 sm:p-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <Headphones className="h-4 w-4 text-primary shrink-0" />
+              <h2 className="text-sm font-semibold text-foreground">Continuous viva stream</h2>
+            </div>
+            <div className="flex items-center gap-2">
+              {streamActive ? (
+                <>
+                  <Button type="button" size="sm" variant="outline" onClick={skipStream} className="h-8">
+                    <SkipForward className="h-3.5 w-3.5 mr-1.5" /> Skip
+                  </Button>
+                  <Button type="button" size="sm" variant="destructive" onClick={stopStream} className="h-8">
+                    <Square className="h-3.5 w-3.5 mr-1.5" /> Stop
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  type="button"
+                  size="sm"
+                  onClick={() => playStream(0)}
+                  disabled={streamQueue.length === 0}
+                  className="h-8"
+                >
+                  <Play className="h-3.5 w-3.5 mr-1.5" />
+                  Play {streamQueue.length} {streamQueue.length === 1 ? "question" : "questions"}
+                </Button>
+              )}
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mb-3">
+            Listen to questions and model answers back-to-back. The next question starts automatically
+            when the previous answer ends. Filter by exam (above) and/or specific topics below.
+          </p>
+
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <button
+              type="button"
+              onClick={() => setTopicPickerOpen((v) => !v)}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-foreground hover:text-primary"
+            >
+              <ListFilter className="h-3.5 w-3.5" />
+              Topics ({streamTopics.size === 0 ? "all" : `${streamTopics.size} selected`})
+              {topicPickerOpen ? (
+                <ChevronDown className="h-3.5 w-3.5" />
+              ) : (
+                <ChevronRight className="h-3.5 w-3.5" />
+              )}
+            </button>
+            {streamTopics.size > 0 && (
+              <button
+                type="button"
+                onClick={() => setStreamTopics(new Set())}
+                className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-3 w-3" /> Clear
+              </button>
+            )}
+          </div>
+
+          {topicPickerOpen && (
+            <div className="max-h-56 overflow-y-auto rounded-md border border-border/60 bg-background/40 p-2 flex flex-wrap gap-1.5">
+              {availableTopics.length === 0 ? (
+                <p className="text-xs text-muted-foreground p-2">
+                  No topics available for the selected exam.
+                </p>
+              ) : (
+                availableTopics.map((title) => {
+                  const active = streamTopics.has(title);
+                  return (
+                    <button
+                      key={title}
+                      type="button"
+                      onClick={() => toggleStreamTopic(title)}
+                      className={`rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+                        active
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-card hover:border-primary/50 text-foreground"
+                      }`}
+                    >
+                      {title}
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          )}
+
+          {streamActive && speakingId && (() => {
+            const idx = streamQueue.findIndex((r) => r.id === speakingId);
+            const cur = idx >= 0 ? streamQueue[idx] : null;
+            return cur ? (
+              <p className="mt-3 text-xs text-muted-foreground">
+                Now playing <span className="font-medium text-foreground">{idx + 1} / {streamQueue.length}</span> ·{" "}
+                <span className="font-medium text-foreground">{cur.topic_title}</span> — {cur.question}
+              </p>
+            ) : null;
+          })()}
         </section>
 
         {loading ? (
