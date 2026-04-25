@@ -5,8 +5,83 @@ import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
 import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
+import { Cite, ReferencesList, type Reference } from "@/components/References";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+
+const REFERENCES: Reference[] = [
+  {
+    id: "iaea-handbook",
+    n: 1,
+    authors: "International Atomic Energy Agency (IAEA)",
+    title: "Diagnostic Radiology Physics: A Handbook for Teachers and Students (Chs 1–3: X-ray production and tubes)",
+    source: "IAEA, Vienna",
+    year: 2014,
+    url: "https://www.iaea.org/publications/8841/diagnostic-radiology-physics",
+  },
+  {
+    id: "bushberg",
+    n: 2,
+    authors: "Bushberg JT, Seibert JA, Leidholdt EM, Boone JM",
+    title: "The Essential Physics of Medical Imaging (4th ed., Ch 6 — X-ray Production, X-ray Tubes, and Generators)",
+    source: "Wolters Kluwer, Philadelphia",
+    year: 2020,
+  },
+  {
+    id: "icrp103",
+    n: 3,
+    authors: "International Commission on Radiological Protection",
+    title: "ICRP Publication 103 — The 2007 Recommendations of the ICRP (tissue weighting factors, stochastic vs deterministic effects)",
+    source: "Annals of the ICRP 37(2–4)",
+    year: 2007,
+    url: "https://www.icrp.org/publication.asp?id=ICRP%20Publication%20103",
+  },
+  {
+    id: "icrp118",
+    n: 4,
+    authors: "International Commission on Radiological Protection",
+    title: "ICRP Publication 118 — Statement on Tissue Reactions / Threshold Doses (lens of the eye reduced to 0.5 Gy)",
+    source: "Annals of the ICRP 41(1–2)",
+    year: 2012,
+    url: "https://www.icrp.org/publication.asp?id=ICRP%20Publication%20118",
+  },
+  {
+    id: "irr2017",
+    n: 5,
+    authors: "UK Government",
+    title: "The Ionising Radiations Regulations 2017 (SI 2017/1075) — dose limits, classified workers, declared-pregnant workers",
+    source: "legislation.gov.uk",
+    year: 2017,
+    url: "https://www.legislation.gov.uk/uksi/2017/1075/contents/made",
+  },
+  {
+    id: "irmer2017",
+    n: 6,
+    authors: "UK Government",
+    title: "The Ionising Radiation (Medical Exposure) Regulations 2017 (IR(ME)R) — justification, optimisation, authorisation",
+    source: "legislation.gov.uk",
+    year: 2017,
+    url: "https://www.legislation.gov.uk/uksi/2017/1322/contents/made",
+  },
+  {
+    id: "phe-doses",
+    n: 7,
+    authors: "Public Health England (now UKHSA)",
+    title: "Patient dose information: guidance — typical effective doses for common diagnostic exposures (CXR, CT, fluoroscopy)",
+    source: "GOV.UK",
+    year: 2020,
+    url: "https://www.gov.uk/government/publications/medical-radiation-patient-doses",
+  },
+  {
+    id: "rcoa-curriculum",
+    n: 8,
+    authors: "Royal College of Anaesthetists",
+    title: "2021 Curriculum for a CCT in Anaesthetics — Domain 12 Equipment (X-rays, radiation safety, contrast)",
+    source: "RCoA, London",
+    year: 2021,
+    url: "https://rcoa.ac.uk/training-careers/training-anaesthesia/2021-anaesthetics-curriculum",
+  },
+];
 
 const objectives = [
   "Describe how diagnostic X-rays are produced (bremsstrahlung and characteristic radiation) and the influence of kVp and mAs on beam quality and quantity",
