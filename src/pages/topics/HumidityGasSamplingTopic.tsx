@@ -69,6 +69,7 @@ const HumidityGasSamplingTopic = () => {
         "Paramagnetic O₂ analyser exploits O₂'s two unpaired electrons (only O₂ and NO are paramagnetic among medical gases) — fast, accurate, no consumable",
         "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)",
         "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates",
+        "Mainstream (in-line) sampling = airway cuvette, real-time, no dilution, but heavy and CO₂-only; sidestream = remote analyser, multi-gas, ~2–3 s delay, risks dilution at low tidal volumes and needs scavenging",
         "HME filters provide 25–30 mg/L humidity passively but add dead space; heated humidifiers achieve 44 mg/L but risk condensation",
       ]}
       coreConcepts={
