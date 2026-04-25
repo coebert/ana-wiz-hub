@@ -230,94 +230,177 @@ const VivaQuestionLibrary = () => {
               : "No questions match your search."}
           </p>
         ) : (
-          <ul className="space-y-2">
-            {filtered.map((r) => {
-              const isOpen = expanded.has(r.id);
+          <div className="space-y-3">
+            {grouped.map(({ key, topics, total }) => {
+              const sectionLabel = key === "_other" ? "Other" : sectionMeta[key as Section].label;
+              const sectionKey = String(key);
+              // When searching, force-open everything so matches are visible.
+              const sectionOpen = isSearching ? true : !collapsedSections.has(sectionKey);
               return (
-                <li key={r.id} className="rounded-lg border border-border bg-card overflow-hidden">
+                <section
+                  key={sectionKey}
+                  className="rounded-lg border border-border bg-card overflow-hidden"
+                >
                   <button
                     type="button"
-                    onClick={() => toggle(r.id)}
-                    className="w-full text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                    aria-expanded={isOpen}
+                    onClick={() => !isSearching && toggleSection(sectionKey)}
+                    className="w-full flex items-center justify-between gap-3 px-4 py-3 hover:bg-muted/40 transition-colors text-left"
+                    aria-expanded={sectionOpen}
+                    disabled={isSearching}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 text-muted-foreground flex-shrink-0">
-                        {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="font-serif font-semibold text-foreground leading-snug">
-                          {r.question}
-                        </p>
-                        <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                          <Badge variant="outline" className="text-[10px]">
-                            {examLabels[r.exam] ?? r.exam}
-                          </Badge>
-                          <span className="text-[11px] text-muted-foreground">{r.topic_title}</span>
-                        </div>
-                      </div>
+                    <div className="flex items-center gap-2 min-w-0">
+                      {sectionOpen ? (
+                        <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
+                      ) : (
+                        <ChevronRight className="h-4 w-4 text-muted-foreground shrink-0" />
+                      )}
+                      <h2 className="text-base sm:text-lg font-serif font-bold text-foreground truncate">
+                        {sectionLabel}
+                      </h2>
                     </div>
+                    <span className="text-xs text-muted-foreground shrink-0">
+                      {topics.length} {topics.length === 1 ? "topic" : "topics"} · {total}{" "}
+                      {total === 1 ? "question" : "questions"}
+                    </span>
                   </button>
 
-                  {isOpen && (
-                    <div className="border-t border-border p-4 space-y-4 bg-background/40">
-                      <div>
-                        <div className="flex items-center justify-between gap-2 mb-2">
-                          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
-                            Model answer
-                          </p>
-                          <Button
-                            type="button"
-                            size="sm"
-                            variant="ghost"
-                            onClick={() => speak(r)}
-                            disabled={speakingId === r.id}
-                            className="h-7 px-2 text-xs"
+                  {sectionOpen && (
+                    <div className="border-t border-border px-2 sm:px-3 py-2 space-y-2">
+                      {topics.map(({ title, items }) => {
+                        const topicKey = `${sectionKey}::${title}`;
+                        const topicOpen = isSearching ? true : !collapsedTopics.has(topicKey);
+                        return (
+                          <div
+                            key={topicKey}
+                            className="rounded-md border border-border/60 bg-background/40 overflow-hidden"
                           >
-                            {speakingId === r.id ? (
-                              <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                            ) : (
-                              <Volume2 className="h-3.5 w-3.5" />
+                            <button
+                              type="button"
+                              onClick={() => !isSearching && toggleTopic(topicKey)}
+                              className="w-full flex items-center justify-between gap-3 px-3 py-2 hover:bg-muted/30 transition-colors text-left"
+                              aria-expanded={topicOpen}
+                              disabled={isSearching}
+                            >
+                              <div className="flex items-center gap-2 min-w-0">
+                                {topicOpen ? (
+                                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                ) : (
+                                  <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                )}
+                                <span className="text-sm font-semibold text-foreground truncate">
+                                  {title}
+                                </span>
+                              </div>
+                              <span className="text-[11px] text-muted-foreground shrink-0">
+                                {items.length}
+                              </span>
+                            </button>
+
+                            {topicOpen && (
+                              <ul className="space-y-2 px-2 pb-2">
+                                {items.map((r) => {
+                                  const isOpen = expanded.has(r.id);
+                                  return (
+                                    <li
+                                      key={r.id}
+                                      className="rounded-md border border-border bg-card overflow-hidden"
+                                    >
+                                      <button
+                                        type="button"
+                                        onClick={() => toggle(r.id)}
+                                        className="w-full text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                                        aria-expanded={isOpen}
+                                      >
+                                        <div className="flex items-start gap-3">
+                                          <div className="mt-0.5 text-muted-foreground flex-shrink-0">
+                                            {isOpen ? (
+                                              <ChevronDown className="h-4 w-4" />
+                                            ) : (
+                                              <ChevronRight className="h-4 w-4" />
+                                            )}
+                                          </div>
+                                          <div className="min-w-0 flex-1">
+                                            <p className="font-serif font-semibold text-foreground leading-snug">
+                                              {r.question}
+                                            </p>
+                                            <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                                              <Badge variant="outline" className="text-[10px]">
+                                                {examLabels[r.exam] ?? r.exam}
+                                              </Badge>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </button>
+
+                                      {isOpen && (
+                                        <div className="border-t border-border p-4 space-y-4 bg-background/40">
+                                          <div>
+                                            <div className="flex items-center justify-between gap-2 mb-2">
+                                              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+                                                Model answer
+                                              </p>
+                                              <Button
+                                                type="button"
+                                                size="sm"
+                                                variant="ghost"
+                                                onClick={() => speak(r)}
+                                                disabled={speakingId === r.id}
+                                                className="h-7 px-2 text-xs"
+                                              >
+                                                {speakingId === r.id ? (
+                                                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                                                ) : (
+                                                  <Volume2 className="h-3.5 w-3.5" />
+                                                )}
+                                                <span className="ml-1.5">Listen</span>
+                                              </Button>
+                                            </div>
+                                            <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
+                                              {r.model_answer}
+                                            </p>
+                                          </div>
+
+                                          {r.high_yield_points.length > 0 && (
+                                            <div>
+                                              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
+                                                High-yield points
+                                              </p>
+                                              <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                                                {r.high_yield_points.map((p, i) => (
+                                                  <li key={i}>{p}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                          )}
+
+                                          {r.pitfalls.length > 0 && (
+                                            <div>
+                                              <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
+                                                Common pitfalls
+                                              </p>
+                                              <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
+                                                {r.pitfalls.map((p, i) => (
+                                                  <li key={i}>{p}</li>
+                                                ))}
+                                              </ul>
+                                            </div>
+                                          )}
+                                        </div>
+                                      )}
+                                    </li>
+                                  );
+                                })}
+                              </ul>
                             )}
-                            <span className="ml-1.5">Listen</span>
-                          </Button>
-                        </div>
-                        <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
-                          {r.model_answer}
-                        </p>
-                      </div>
-
-                      {r.high_yield_points.length > 0 && (
-                        <div>
-                          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
-                            High-yield points
-                          </p>
-                          <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
-                            {r.high_yield_points.map((p, i) => (
-                              <li key={i}>{p}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {r.pitfalls.length > 0 && (
-                        <div>
-                          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
-                            Common pitfalls
-                          </p>
-                          <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
-                            {r.pitfalls.map((p, i) => (
-                              <li key={i}>{p}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
-                </li>
+                </section>
               );
             })}
-          </ul>
+          </div>
         )}
       </div>
     </div>
