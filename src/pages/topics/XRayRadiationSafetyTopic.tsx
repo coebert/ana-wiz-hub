@@ -462,6 +462,13 @@ const XRayRadiationSafetyTopic = () => {
               variant="inline"
             />
           </ExamSection>
+
+          <ExamSection id="references" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
+            <ReferencesList references={REFERENCES} />
+            <p className="text-[11px] text-muted-foreground italic mt-3">
+              Numbers correspond to inline superscripts above. Standards (ICRP, IAEA) are reviewed periodically — verify against the current edition before quoting in audit or guideline work.
+            </p>
+          </ExamSection>
         </>
       }
     />
