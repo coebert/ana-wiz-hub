@@ -66,6 +66,20 @@ const PodcastsLibrary = () => {
     }
   });
   const [nowPlaying, setNowPlaying] = useState<string | null>(null);
+  const [orderMode, setOrderMode] = useState<OrderMode>(() => {
+    if (typeof window === "undefined") return "section";
+    const v = localStorage.getItem(ORDER_MODE_KEY);
+    return v === "curriculum" || v === "custom" ? v : "section";
+  });
+  const [customOrder, setCustomOrder] = useState<string[]>(() => {
+    if (typeof window === "undefined") return [];
+    try {
+      const v = JSON.parse(localStorage.getItem(CUSTOM_ORDER_KEY) || "[]");
+      return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
+    } catch {
+      return [];
+    }
+  });
   const audioRefs = useRef<Map<string, HTMLAudioElement>>(new Map());
 
   useEffect(() => {
@@ -75,6 +89,14 @@ const PodcastsLibrary = () => {
   useEffect(() => {
     localStorage.setItem(COLLAPSED_KEY, JSON.stringify(collapsed));
   }, [collapsed]);
+
+  useEffect(() => {
+    localStorage.setItem(ORDER_MODE_KEY, orderMode);
+  }, [orderMode]);
+
+  useEffect(() => {
+    localStorage.setItem(CUSTOM_ORDER_KEY, JSON.stringify(customOrder));
+  }, [customOrder]);
 
   useEffect(() => {
     let cancelled = false;
