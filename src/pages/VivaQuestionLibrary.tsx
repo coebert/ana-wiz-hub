@@ -123,10 +123,18 @@ const VivaQuestionLibrary = () => {
     load();
   }, []);
 
+  // Pre-classify each row once so filter, badges and stream queue all agree.
+  const rowDifficulty = useMemo(() => {
+    const m = new Map<string, Difficulty>();
+    rows.forEach((r) => m.set(r.id, classifyDifficulty(r)));
+    return m;
+  }, [rows]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return rows.filter((r) => {
       if (examFilter !== "all" && r.exam !== examFilter) return false;
+      if (difficultyFilter !== "all" && rowDifficulty.get(r.id) !== difficultyFilter) return false;
       if (!q) return true;
       return (
         r.question.toLowerCase().includes(q) ||
@@ -134,7 +142,7 @@ const VivaQuestionLibrary = () => {
         r.model_answer.toLowerCase().includes(q)
       );
     });
-  }, [rows, query, examFilter]);
+  }, [rows, query, examFilter, difficultyFilter, rowDifficulty]);
 
   // Build a topic_title -> section lookup from the curriculum.
   const topicSectionMap = useMemo(() => {
