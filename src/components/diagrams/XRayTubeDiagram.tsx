@@ -507,6 +507,215 @@ export const XRayTubeDiagram = () => {
           most kinetic energy becomes heat; the anode rotates ~3000 rpm to spread it.
         </p>
 
+        {/* Spectrum overlay — bremsstrahlung continuum + tungsten K-lines */}
+        {showSpectrum && (
+          <div className="mt-4">
+            <svg
+              viewBox="0 0 600 180"
+              className="w-full max-w-2xl mx-auto"
+              role="img"
+              aria-label="X-ray emission spectrum showing the bremsstrahlung continuum from 0 keV up to the kVp peak, with two sharp tungsten K-shell characteristic lines superimposed at 59 and 67 keV."
+            >
+              <defs>
+                <linearGradient id="xrt-spectrumFill" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor={REGION_COLORS.Output} stopOpacity="0.35" />
+                  <stop offset="100%" stopColor={REGION_COLORS.Output} stopOpacity="0.04" />
+                </linearGradient>
+              </defs>
+
+              {/* Plot area: x = 60→560 (0–150 keV), y = 30→150 (intensity) */}
+              {(() => {
+                const x0 = 60;
+                const x1 = 560;
+                const y0 = 150;
+                const yTop = 30;
+                const kVp = 100; // illustrative tube voltage
+                const kVpMax = 150;
+                const xAt = (kev: number) => x0 + (kev / kVpMax) * (x1 - x0);
+                const yAt = (intensity: number) => y0 - intensity * (y0 - yTop);
+
+                // Build smooth bremsstrahlung curve: rises from low E (filtered),
+                // peaks ~⅓ kVp, falls linearly to zero at kVp.
+                const samples: Array<[number, number]> = [];
+                const stepKev = 2;
+                for (let kev = 0; kev <= kVp; kev += stepKev) {
+                  const filterRoll = Math.min(1, Math.pow(kev / 25, 2)); // low-E cut-off (Al filter)
+                  const linearFall = Math.max(0, 1 - kev / kVp);
+                  const intensity = 0.95 * filterRoll * linearFall;
+                  samples.push([xAt(kev), yAt(intensity)]);
+                }
+                samples.push([xAt(kVp), y0]);
+
+                const linePath = samples
+                  .map((p, i) => `${i === 0 ? "M" : "L"} ${p[0].toFixed(1)} ${p[1].toFixed(1)}`)
+                  .join(" ");
+                const fillPath = `M ${x0} ${y0} ${linePath
+                  .replace(/^M/, "L")} L ${xAt(kVp)} ${y0} Z`;
+
+                const bremsHot = isSel("bremsstrahlung");
+                const charHot = isSel("characteristic");
+
+                return (
+                  <>
+                    {/* axes */}
+                    <line x1={x0} y1={y0} x2={x1} y2={y0} stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.6" />
+                    <line x1={x0} y1={y0} x2={x0} y2={yTop - 8} stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.6" />
+
+                    {/* x ticks every 25 keV */}
+                    {[0, 25, 50, 75, 100, 125, 150].map((kev) => (
+                      <g key={kev}>
+                        <line
+                          x1={xAt(kev)}
+                          y1={y0}
+                          x2={xAt(kev)}
+                          y2={y0 + 4}
+                          stroke="hsl(var(--muted-foreground))"
+                          strokeWidth="0.6"
+                          opacity="0.7"
+                        />
+                        <text
+                          x={xAt(kev)}
+                          y={y0 + 14}
+                          textAnchor="middle"
+                          className="text-[8px] fill-muted-foreground select-none"
+                        >
+                          {kev}
+                        </text>
+                      </g>
+                    ))}
+                    <text
+                      x={(x0 + x1) / 2}
+                      y={y0 + 28}
+                      textAnchor="middle"
+                      className="text-[9px] fill-muted-foreground font-medium select-none"
+                    >
+                      Photon energy (keV)
+                    </text>
+                    <text
+                      x={x0 - 8}
+                      y={(y0 + yTop) / 2}
+                      textAnchor="middle"
+                      transform={`rotate(-90 ${x0 - 8} ${(y0 + yTop) / 2})`}
+                      className="text-[9px] fill-muted-foreground font-medium select-none"
+                    >
+                      Relative intensity
+                    </text>
+
+                    {/* kVp marker */}
+                    {showSutures && (
+                      <>
+                        <line
+                          x1={xAt(kVp)}
+                          y1={yTop - 4}
+                          x2={xAt(kVp)}
+                          y2={y0}
+                          stroke="hsl(var(--muted-foreground))"
+                          strokeWidth="0.6"
+                          strokeDasharray="2 3"
+                          opacity="0.7"
+                        />
+                        <text
+                          x={xAt(kVp) + 4}
+                          y={yTop + 2}
+                          className="text-[8px] fill-muted-foreground italic select-none"
+                        >
+                          kVp = {kVp} keV
+                        </text>
+                      </>
+                    )}
+
+                    {/* Bremsstrahlung continuum — filled curve */}
+                    <path
+                      d={fillPath}
+                      fill="url(#xrt-spectrumFill)"
+                      opacity={bremsHot ? 0.95 : 0.7}
+                      onClick={() => setSelected("bremsstrahlung")}
+                      className="cursor-pointer"
+                    />
+                    <path
+                      d={linePath}
+                      fill="none"
+                      stroke={REGION_COLORS.Output}
+                      strokeWidth={bremsHot ? 1.8 : 1.1}
+                      opacity={bremsHot ? 1 : 0.85}
+                      onClick={() => setSelected("bremsstrahlung")}
+                      className="cursor-pointer"
+                    />
+                    {showLabels && (
+                      <text
+                        x={xAt(kVp / 3) + 4}
+                        y={yAt(0.55)}
+                        className="text-[8px] fill-foreground select-none pointer-events-none"
+                      >
+                        Bremsstrahlung
+                      </text>
+                    )}
+
+                    {/* Characteristic K-lines — Kα ≈ 59 keV, Kβ ≈ 67 keV */}
+                    {[
+                      { kev: 59, h: 0.78, label: "Kα 59" },
+                      { kev: 67, h: 0.55, label: "Kβ 67" },
+                    ].map((peak) => {
+                      // Only meaningful when kVp exceeds K-edge (~70 keV); render dimmed otherwise.
+                      const visible = kVp >= 70 || true; // illustrative — show peaks regardless
+                      const px = xAt(peak.kev);
+                      const py = yAt(peak.h);
+                      return (
+                        <g
+                          key={peak.kev}
+                          onClick={() => setSelected("characteristic")}
+                          className="cursor-pointer"
+                        >
+                          <line
+                            x1={px}
+                            y1={y0}
+                            x2={px}
+                            y2={py}
+                            stroke="hsl(280 75% 65%)"
+                            strokeWidth={charHot ? 2.4 : 1.6}
+                            opacity={visible ? (charHot ? 1 : 0.85) : 0.35}
+                          />
+                          <circle
+                            cx={px}
+                            cy={py}
+                            r={charHot ? 3 : 2.2}
+                            fill="hsl(280 80% 70%)"
+                            stroke="hsl(280 70% 40%)"
+                            strokeWidth="0.5"
+                            opacity={visible ? 1 : 0.45}
+                          />
+                          {showLabels && (
+                            <text
+                              x={px + 5}
+                              y={py - 4}
+                              className="text-[8px] fill-foreground select-none pointer-events-none"
+                            >
+                              {peak.label}
+                            </text>
+                          )}
+                        </g>
+                      );
+                    })}
+
+                    {/* Title */}
+                    <text
+                      x={x0}
+                      y={yTop - 14}
+                      className="text-[10px] font-semibold fill-foreground select-none"
+                    >
+                      Output spectrum (W anode, illustrative @ {kVp} kVp)
+                    </text>
+                  </>
+                );
+              })()}
+            </svg>
+            <p className="text-[11px] text-center text-muted-foreground mt-1 italic">
+              Continuous bremsstrahlung up to <span className="font-semibold not-italic text-foreground">kVp</span>;
+              tungsten K-lines emerge once tube voltage exceeds the ~70 keV K-edge.
+            </p>
+          </div>
+        )}
+
         {/* Detail panel */}
         <div className="mt-4 min-h-[110px]">
           <div
