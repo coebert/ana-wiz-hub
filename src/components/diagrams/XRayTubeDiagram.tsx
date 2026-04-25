@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 
 type PartId =
@@ -82,6 +83,37 @@ const REGION_COLORS: Record<Part["region"], string> = {
   Target: "hsl(25 85% 55%)",
   Output: "hsl(280 65% 60%)",
   Housing: "hsl(var(--muted-foreground))",
+};
+
+interface SafetyLink {
+  href: string;
+  label: string;
+  why: string;
+}
+
+/** Per-part jumps into the same topic's safety sections. */
+const SAFETY_LINKS: Partial<Record<PartId, SafetyLink[]>> = {
+  "electron-beam": [
+    { href: "#alara", label: "ALARA → Distance", why: "Inverse-square law: dose-rate falls as 1/d² from this primary beam axis." },
+    { href: "#dose-limits", label: "Dose limits", why: "kVp/mAs determine patient + scatter dose against IRR 2017 limits." },
+  ],
+  bremsstrahlung: [
+    { href: "#alara", label: "ALARA → Shielding", why: "0.5 mm Pb apron attenuates ~95% of this scatter spectrum at 70 kVp." },
+    { href: "#interactions", label: "Photon interactions", why: "These photons drive Compton scatter — the dominant operator hazard." },
+  ],
+  characteristic: [
+    { href: "#interactions", label: "Photoelectric effect", why: "59 / 67 keV K-lines sit in the photoelectric-dominant range." },
+  ],
+  anode: [
+    { href: "#alara", label: "ALARA → Time", why: "Pulsed fluoroscopy + short screening times protect anode and operator alike." },
+  ],
+  window: [
+    { href: "#alara", label: "ALARA → Optimisation", why: "Added Al filtration removes low-energy photons that only add patient skin dose." },
+  ],
+  envelope: [
+    { href: "#alara", label: "ALARA → Shielding", why: "Lead-lined housing is the primary barrier; the ceiling-suspended screen is yours." },
+    { href: "#dose-limits", label: "Personal dosimetry", why: "Collar badge outside apron monitors residual scatter past the housing." },
+  ],
 };
 
 export const XRayTubeDiagram = () => {
