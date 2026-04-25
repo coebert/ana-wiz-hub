@@ -6,6 +6,20 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { allTopics, sectionMeta, Section } from "@/data/curriculum";
+import { cn } from "@/lib/utils";
+
+const SECTION_ORDER: (Section | "_other")[] = [
+  "physics",
+  "physiology",
+  "pharmacology",
+  "anatomy",
+  "clinical",
+  "intensive-care",
+  "perioperative",
+  "chemistry",
+  "_other",
+];
 
 type ExamFilter = "all" | "primary" | "final" | "fficm";
 
