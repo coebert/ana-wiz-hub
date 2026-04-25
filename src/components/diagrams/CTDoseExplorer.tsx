@@ -249,6 +249,7 @@ export const CTDoseExplorer = () => {
             unit=" kVp"
             onChange={setKvp}
             hint="Output ∝ (kVp)^≈2.5 — small changes have a big dose effect."
+            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
           />
           <SliderRow
             label="Effective mAs"
@@ -259,6 +260,7 @@ export const CTDoseExplorer = () => {
             unit=" mAs"
             onChange={setMas}
             hint="Linear with dose; modulation lowers it for thinner anatomy."
+            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
           />
           <SliderRow
             label="Rotation time"
@@ -281,6 +283,7 @@ export const CTDoseExplorer = () => {
             onChange={setPitch}
             hint="Pitch > 1 spreads dose over more anatomy (less dose, more noise)."
             digits={2}
+            affects={[{ anchor: "ctdi-vol", label: "CTDI<sub>vol</sub>" }]}
           />
           <SliderRow
             label="Scan length (z)"
@@ -291,6 +294,10 @@ export const CTDoseExplorer = () => {
             unit=" cm"
             onChange={setScanLength}
             hint="Linear with DLP — only scan what you need."
+            affects={[
+              { anchor: "dlp", label: "DLP" },
+              { anchor: "effective-dose-ct", label: "Effective dose" },
+            ]}
           />
           <SliderRow
             label="Phases / acquisitions"
@@ -301,6 +308,10 @@ export const CTDoseExplorer = () => {
             unit="×"
             onChange={setPhases}
             hint="Multi-phase (triple-liver, perfusion) multiplies DLP and effective dose directly."
+            affects={[
+              { anchor: "dlp", label: "DLP" },
+              { anchor: "effective-dose-ct", label: "Effective dose" },
+            ]}
           />
           <SliderRow
             label="Patient effective diameter"
@@ -311,6 +322,7 @@ export const CTDoseExplorer = () => {
             unit=" cm"
             onChange={setDiameter}
             hint={`SSDE conversion factor = ${ssdeF.toFixed(2)} — bigger patients absorb less, smaller absorb more relative to phantom.`}
+            affects={[{ anchor: "ssde", label: "SSDE" }]}
           />
         </div>
 
@@ -410,6 +422,11 @@ const ControlBlock = ({ label, children }: { label: string; children: React.Reac
   </div>
 );
 
+interface LinkTarget {
+  anchor: string;
+  label: string;
+}
+
 interface SliderRowProps {
   label: string;
   value: number;
@@ -420,9 +437,10 @@ interface SliderRowProps {
   onChange: (v: number) => void;
   hint?: string;
   digits?: number;
+  affects?: LinkTarget[];
 }
 
-const SliderRow = ({ label, value, min, max, step, unit, onChange, hint, digits = 0 }: SliderRowProps) => (
+const SliderRow = ({ label, value, min, max, step, unit, onChange, hint, digits = 0, affects }: SliderRowProps) => (
   <div>
     <div className="flex items-baseline justify-between text-[11px]">
       <span className="text-muted-foreground">{label}</span>
@@ -440,6 +458,21 @@ const SliderRow = ({ label, value, min, max, step, unit, onChange, hint, digits 
       className="my-1"
     />
     {hint && <p className="text-[10px] text-muted-foreground italic leading-snug">{hint}</p>}
+    {affects && affects.length > 0 && (
+      <p className="text-[9px] uppercase tracking-wide text-muted-foreground mt-1">
+        Affects:{" "}
+        {affects.map((t, i) => (
+          <span key={t.anchor}>
+            <a
+              href={`#${t.anchor}`}
+              className="underline decoration-dotted underline-offset-2 hover:text-foreground"
+              dangerouslySetInnerHTML={{ __html: t.label }}
+            />
+            {i < affects.length - 1 ? " · " : ""}
+          </span>
+        ))}
+      </p>
+    )}
   </div>
 );
 
