@@ -65,6 +65,9 @@ const HumidityGasSamplingTopic = () => {
         "Mass spectrometry ionises gas molecules and separates by m/z ratio in a magnetic field (r = mv/qB) — the only analyser to identify all gases simultaneously",
         "N₂O and CO₂ share m/z = 44 — mass spec distinguishes them by fragmentation patterns; Raman distinguishes by unique vibrational shifts",
         "Raman scattering is inelastic — frequency shift (Δν) unique to each molecule; can detect N₂ (unlike infrared absorption)",
+        "Paramagnetic O₂ analyser exploits O₂'s two unpaired electrons (only O₂ and NO are paramagnetic among medical gases) — fast, accurate, no consumable",
+        "Infrared absorption measures CO₂ (4.26 µm), N₂O (4.5 µm) and all modern volatiles (8–13 µm fingerprint region) — only molecules with a changing dipole moment absorb IR (so O₂, N₂, Ar are invisible)",
+        "Collision broadening: N₂O broadens CO₂'s IR absorption peak → falsely high CO₂ reading unless the analyser compensates",
         "HME filters provide 25–30 mg/L humidity passively but add dead space; heated humidifiers achieve 44 mg/L but risk condensation",
       ]}
       coreConcepts={
