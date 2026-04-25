@@ -178,7 +178,7 @@ const VivaQuestionLibrary = () => {
   const [streamActive, setStreamActive] = useState(false);
   const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
   const [topicPickerOpen, setTopicPickerOpen] = useState(false);
-  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed } = useVivaProgress();
+  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed, todayCount, streak } = useVivaProgress();
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
