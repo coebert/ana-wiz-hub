@@ -356,17 +356,51 @@ const PodcastsLibrary = () => {
                             </a>
                           </div>
                         </div>
-                        <audio
-                          ref={setAudioRef(p.topic_id)}
-                          controls
-                          preload="none"
-                          className="w-full"
-                          src={p.audio_url}
-                          onPlay={() => setNowPlaying(p.topic_id)}
-                          onEnded={() => handleEnded(p.topic_id)}
-                        >
-                          Your browser does not support audio playback.
-                        </audio>
+                        {(() => {
+                          const playlistIdx = playlist.findIndex((x) => x.topic_id === p.topic_id);
+                          const hasPrev = playlistIdx > 0;
+                          const hasNext = playlistIdx >= 0 && playlistIdx < playlist.length - 1;
+                          return (
+                            <div className="space-y-2">
+                              <audio
+                                ref={setAudioRef(p.topic_id)}
+                                controls
+                                preload="none"
+                                className="w-full"
+                                src={p.audio_url}
+                                onPlay={() => setNowPlaying(p.topic_id)}
+                                onEnded={() => handleEnded(p.topic_id)}
+                              >
+                                Your browser does not support audio playback.
+                              </audio>
+                              <div className="flex items-center justify-between gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => goToOffset(p.topic_id, -1)}
+                                  disabled={!hasPrev}
+                                  aria-label="Previous podcast"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                >
+                                  <SkipBack className="h-3.5 w-3.5" />
+                                  Previous
+                                </button>
+                                <span className="text-[11px] text-muted-foreground">
+                                  {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => goToOffset(p.topic_id, 1)}
+                                  disabled={!hasNext}
+                                  aria-label="Next podcast"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                >
+                                  Next
+                                  <SkipForward className="h-3.5 w-3.5" />
+                                </button>
+                              </div>
+                            </div>
+                          );
+                        })()}
                       </li>
                     ))}
                   </ul>
