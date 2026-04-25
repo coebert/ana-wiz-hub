@@ -407,6 +407,30 @@ const VivaQuestionLibrary = () => {
           })}
         </section>
 
+        <section className="mb-4 flex flex-wrap items-center gap-2">
+          <span className="text-[11px] uppercase tracking-wider font-semibold text-muted-foreground mr-1">
+            Difficulty
+          </span>
+          {(["all", "basic", "intermediate", "exam-ready"] as DifficultyFilter[]).map((d) => {
+            const isActive = difficultyFilter === d;
+            const count = difficultyCounts[d] ?? 0;
+            return (
+              <button
+                key={d}
+                type="button"
+                onClick={() => setDifficultyFilter(d)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  isActive
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border bg-card hover:border-primary/50 text-foreground"
+                }`}
+              >
+                {d === "all" ? "All" : difficultyLabels[d]} ({count})
+              </button>
+            );
+          })}
+        </section>
+
         <section className="mb-4 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
           <Input
