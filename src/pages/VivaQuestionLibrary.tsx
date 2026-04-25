@@ -87,10 +87,55 @@ const VivaQuestionLibrary = () => {
     });
   }, [rows, query, examFilter]);
 
+  // Build a topic_title -> section lookup from the curriculum.
+  const topicSectionMap = useMemo(() => {
+    const m = new Map<string, Section>();
+    for (const t of allTopics) m.set(t.title.toLowerCase(), t.section);
+    return m;
+  }, []);
+
+  // Group filtered questions: section -> topic_title -> rows[]
+  const grouped = useMemo(() => {
+    const bySection = new Map<Section | "_other", Map<string, ModelAnswerRow[]>>();
+    for (const r of filtered) {
+      const sec = topicSectionMap.get(r.topic_title.toLowerCase()) ?? "_other";
+      if (!bySection.has(sec)) bySection.set(sec, new Map());
+      const topicMap = bySection.get(sec)!;
+      if (!topicMap.has(r.topic_title)) topicMap.set(r.topic_title, []);
+      topicMap.get(r.topic_title)!.push(r);
+    }
+    return SECTION_ORDER
+      .filter((k) => bySection.has(k))
+      .map((k) => {
+        const topicMap = bySection.get(k)!;
+        const topics = Array.from(topicMap.entries())
+          .map(([title, items]) => ({ title, items }))
+          .sort((a, b) => a.title.localeCompare(b.title));
+        const total = topics.reduce((sum, t) => sum + t.items.length, 0);
+        return { key: k, topics, total };
+      });
+  }, [filtered, topicSectionMap]);
+
+  const isSearching = query.trim().length > 0;
+
   const toggle = (id: string) =>
     setExpanded((prev) => {
       const next = new Set(prev);
       next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  const toggleSection = (key: string) =>
+    setCollapsedSections((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+
+  const toggleTopic = (key: string) =>
+    setCollapsedTopics((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
       return next;
     });
 
