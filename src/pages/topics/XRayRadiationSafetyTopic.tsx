@@ -172,18 +172,18 @@ const XRayRadiationSafetyTopic = () => {
                 A diagnostic X-ray tube is an evacuated glass envelope containing a heated tungsten <strong>cathode</strong> (electron
                 source by thermionic emission) and a rotating tungsten <strong>anode</strong> (the target). A high voltage —
                 conventionally <strong>50–150 kVp</strong> — accelerates electrons across the tube; they strike the anode at high
-                velocity. Two distinct mechanisms then generate X-rays:
+                velocity.<Cite refs={[{ id: "iaea-handbook", n: 1 }, { id: "bushberg", n: 2 }]} /> Two distinct mechanisms then generate X-rays:
               </p>
               <ul className="list-disc list-inside space-y-1 ml-2">
                 <li>
                   <strong>Bremsstrahlung ('braking radiation')</strong> — the dominant contributor. As an electron is decelerated and
                   deflected by the field of a tungsten nucleus, the lost kinetic energy is emitted as a photon. This produces a
-                  <em> continuous spectrum</em> from very low energies up to a maximum equal to the tube voltage in keV.
+                  <em> continuous spectrum</em> from very low energies up to a maximum equal to the tube voltage in keV.<Cite refs={[{ id: "bushberg", n: 2 }]} />
                 </li>
                 <li>
                   <strong>Characteristic radiation</strong> — when an incident electron ejects an inner-shell (K-shell) tungsten
                   electron, an outer electron drops in to fill the vacancy and releases a photon at a discrete energy (~59 and 67 keV
-                  for tungsten). This appears as <em>line peaks</em> superimposed on the bremsstrahlung continuum.
+                  for tungsten). This appears as <em>line peaks</em> superimposed on the bremsstrahlung continuum.<Cite refs={[{ id: "iaea-handbook", n: 1 }]} />
                 </li>
               </ul>
               <DiagramSection
@@ -197,7 +197,7 @@ const XRayRadiationSafetyTopic = () => {
                 quality (penetration); raising kVp increases mean photon energy and reduces tissue contrast. <strong>mAs</strong> (tube
                 current × exposure time) controls beam quantity (photon number) and is the primary determinant of patient dose for a
                 given kVp. Less than 1% of the electron kinetic energy is converted to X-rays — the rest is heat, which is why anodes
-                rotate and are oil-cooled.
+                rotate and are oil-cooled.<Cite refs={[{ id: "bushberg", n: 2 }, { id: "iaea-handbook", n: 1 }]} />
               </p>
             </div>
           </ExamSection>
