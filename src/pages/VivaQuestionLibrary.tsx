@@ -122,6 +122,49 @@ const CoverageBars = ({
   );
 };
 
+/** Escape regex metacharacters so user input is safe inside a RegExp. */
+const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Highlights every occurrence of `query` (case-insensitive, whole substring,
+ * or any whitespace-separated token if `tokenise` is true) inside `text`.
+ * Returns a fragment with `<mark>` around matches and plain text around them.
+ */
+const Highlight = ({
+  text,
+  query,
+  tokenise = true,
+}: {
+  text: string;
+  query: string;
+  tokenise?: boolean;
+}) => {
+  const q = query.trim();
+  if (!q) return <>{text}</>;
+  const tokens = tokenise
+    ? Array.from(new Set(q.split(/\s+/).filter((t) => t.length >= 2)))
+    : [q];
+  if (tokens.length === 0) return <>{text}</>;
+  const pattern = new RegExp(`(${tokens.map(escapeRegex).join("|")})`, "gi");
+  const parts = text.split(pattern);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <mark
+            key={i}
+            className="rounded-sm bg-primary/20 text-foreground px-0.5"
+          >
+            {part}
+          </mark>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
+  );
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -817,7 +860,7 @@ const VivaQuestionLibrary = () => {
                                             </div>
                                             <div className="min-w-0 flex-1">
                                               <p className="font-serif font-semibold text-foreground leading-snug">
-                                                {r.question}
+                                                <Highlight text={r.question} query={query} />
                                               </p>
                                               <div className="flex flex-wrap items-center gap-2 mt-1.5">
                                                 <Badge variant="outline" className="text-[10px]">
@@ -906,7 +949,7 @@ const VivaQuestionLibrary = () => {
                                               </Button>
                                             </div>
                                             <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
-                                              {r.model_answer}
+                                              <Highlight text={r.model_answer} query={query} />
                                             </p>
                                           </div>
 
@@ -917,7 +960,7 @@ const VivaQuestionLibrary = () => {
                                               </p>
                                               <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
                                                 {r.high_yield_points.map((p, i) => (
-                                                  <li key={i}>{p}</li>
+                                                  <li key={i}><Highlight text={p} query={query} /></li>
                                                 ))}
                                               </ul>
                                             </div>
@@ -930,7 +973,7 @@ const VivaQuestionLibrary = () => {
                                               </p>
                                               <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
                                                 {r.pitfalls.map((p, i) => (
-                                                  <li key={i}>{p}</li>
+                                                  <li key={i}><Highlight text={p} query={query} /></li>
                                                 ))}
                                               </ul>
                                             </div>
