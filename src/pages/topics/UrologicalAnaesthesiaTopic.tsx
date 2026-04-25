@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
+import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErectionMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 
 const UrologicalAnaesthesiaTopic = () => {
