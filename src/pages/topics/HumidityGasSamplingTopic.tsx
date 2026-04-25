@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import HumidityGasSamplingDiagram from "@/components/diagrams/HumidityGasSamplingDiagram";
 import HygrometersDiagram from "@/components/diagrams/HygrometersDiagram";
+import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { humidityGasSamplingQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -11,7 +12,9 @@ const objectives = [
   "Locate the isothermic saturation boundary (ISB) and explain how intubation displaces it distally",
   "Compare HME filters and heated humidifiers in terms of efficiency, dead space and complications",
   "Describe how a pneumotachograph (Fleisch / Lilly) measures flow and what causes inaccuracy",
-  "Compare mass spectrometry, infrared absorption and Raman scattering for clinical gas analysis",
+  "Explain the principle of paramagnetic O₂ analysis (unpaired electrons in O₂ → attraction in a magnetic field)",
+  "Explain how infrared absorption measures CO₂, N₂O and volatile agents, and the role of collision broadening / agent cross-sensitivity",
+  "Compare mass spectrometry, infrared absorption, paramagnetic and Raman analysers for clinical gas measurement",
 ];
 
 const workedExamples: WorkedExample[] = [
