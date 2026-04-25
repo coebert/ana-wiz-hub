@@ -141,6 +141,7 @@ const NonTechnicalSkillsTopic = lazy(() => import("./pages/topics/NonTechnicalSk
 const PreoperativeAssessmentTopic = lazy(() => import("./pages/topics/PreoperativeAssessmentTopic"));
 const EnhancedRecoveryTopic = lazy(() => import("./pages/topics/EnhancedRecoveryTopic"));
 const PerioperativeFluidsTopic = lazy(() => import("./pages/topics/PerioperativeFluidsTopic"));
+const GeneticSyndromesTopic = lazy(() => import("./pages/topics/GeneticSyndromesTopic"));
 
 const CardiacAnatomyTopic = lazy(() => import("./pages/topics/CardiacAnatomyTopic"));
 const SpinalAnatomyTopic = lazy(() => import("./pages/topics/SpinalAnatomyTopic"));
@@ -317,6 +318,7 @@ const App = () => (
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
           <Route path="/perioperative/perioperative-fluids" element={<PerioperativeFluidsTopic />} />
+          <Route path="/perioperative/genetic-syndromes" element={<GeneticSyndromesTopic />} />
           {/* Anatomy */}
           <Route path="/anatomy/airway-anatomy" element={<Navigate to="/anatomy/head-neck-anatomy" replace />} />
           <Route path="/anatomy/cardiac-anatomy" element={<CardiacAnatomyTopic />} />
