@@ -281,9 +281,8 @@ const XRayRadiationSafetyTopic = () => {
               </p>
             </div>
             <CrossReferenceCallout
-              targetTopicId="interventional-radiology"
-              targetSection="clinical"
-              reason="Clinical-context companion to this physics topic — covers the IR-suite anaesthetic plan (remote location, contrast reactions, procedure-specific issues) where the radiation-safety principles here are applied."
+              reason="Clinical-context companion to this physics topic — the IR-suite anaesthetic plan (remote location, contrast reactions, procedure-specific issues) where these radiation-safety principles are applied."
+              links={[{ topicId: "interventional-radiology" }]}
               variant="inline"
             />
           </ExamSection>
