@@ -501,6 +501,7 @@ const VivaQuestionLibrary = () => {
     new Promise((resolve, reject) => {
       if (playbackRef.current.cancelled) return resolve();
       const audio = new Audio(src);
+      audio.playbackRate = playbackRate;
       playbackRef.current.audio = audio;
       audio.onended = () => resolve();
       audio.onerror = () => reject(new Error("Audio playback failed"));
