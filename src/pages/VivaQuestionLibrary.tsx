@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -49,6 +49,10 @@ const VivaQuestionLibrary = () => {
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
   const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
+    cancelled: false,
+    audio: null,
+  });
 
   useEffect(() => {
     const load = async () => {
@@ -139,26 +143,77 @@ const VivaQuestionLibrary = () => {
       return next;
     });
 
-  const speak = async (row: ModelAnswerRow) => {
-    if (speakingId) return;
+  const EXAMINER_VOICE = "onyx"; // deeper — examiner
+  const CANDIDATE_VOICE = "nova"; // brighter — candidate
+
+  const stopPlayback = () => {
+    playbackRef.current.cancelled = true;
+    const a = playbackRef.current.audio;
+    if (a) {
+      try {
+        a.pause();
+        a.src = "";
+      } catch {
+        /* ignore */
+      }
+    }
+    playbackRef.current.audio = null;
+    setSpeakingId(null);
+  };
+
+  const synthesise = async (text: string, voice: string): Promise<string> => {
+    const { data, error } = await supabase.functions.invoke("tts-demo", {
+      body: { text, voice },
+    });
+    if (error) throw error;
+    const b64 = (data as { audioBase64?: string })?.audioBase64;
+    if (!b64) throw new Error("No audio returned");
+    return `data:audio/mpeg;base64,${b64}`;
+  };
+
+  const playSegment = (src: string): Promise<void> =>
+    new Promise((resolve, reject) => {
+      if (playbackRef.current.cancelled) return resolve();
+      const audio = new Audio(src);
+      playbackRef.current.audio = audio;
+      audio.onended = () => resolve();
+      audio.onerror = () => reject(new Error("Audio playback failed"));
+      audio.play().catch(reject);
+    });
+
+  /** Play examiner question + candidate model answer as a two-voice dialogue. */
+  const playDialogue = async (row: ModelAnswerRow) => {
+    if (speakingId) {
+      // If clicked on the currently-playing row, stop it.
+      stopPlayback();
+      if (speakingId === row.id) return;
+    }
+    playbackRef.current = { cancelled: false, audio: null };
     setSpeakingId(row.id);
     try {
-      const { data, error } = await supabase.functions.invoke("viva", {
-        body: { mode: "tts", text: row.model_answer, voice: "alloy" },
-      });
-      if (error) throw error;
-      const audioB64 = (data as { audio?: string })?.audio;
-      if (!audioB64) throw new Error("No audio returned");
-      const audio = new Audio(`data:audio/mpeg;base64,${audioB64}`);
-      audio.onended = () => setSpeakingId(null);
-      audio.onerror = () => setSpeakingId(null);
-      await audio.play();
+      // Generate both segments in parallel for faster start.
+      const [examinerSrc, candidateSrc] = await Promise.all([
+        synthesise(`Examiner: ${row.question}`, EXAMINER_VOICE),
+        synthesise(`Candidate: ${row.model_answer}`, CANDIDATE_VOICE),
+      ]);
+      if (playbackRef.current.cancelled) return;
+      await playSegment(examinerSrc);
+      if (playbackRef.current.cancelled) return;
+      // Brief gap between speakers for natural pacing.
+      await new Promise((r) => setTimeout(r, 350));
+      if (playbackRef.current.cancelled) return;
+      await playSegment(candidateSrc);
     } catch (e) {
       console.error(e);
-      toast.error("Could not play audio");
-      setSpeakingId(null);
+      if (!playbackRef.current.cancelled) toast.error("Could not play dialogue");
+    } finally {
+      playbackRef.current.audio = null;
+      setSpeakingId((current) => (current === row.id ? null : current));
     }
   };
+
+  // Stop any audio when the page unmounts.
+  useEffect(() => () => stopPlayback(), []);
 
   const examCounts = useMemo(() => {
     const c = { all: rows.length, primary: 0, final: 0, fficm: 0 } as Record<ExamFilter, number>;
@@ -335,24 +390,33 @@ const VivaQuestionLibrary = () => {
                                       {isOpen && (
                                         <div className="border-t border-border p-4 space-y-4 bg-background/40">
                                           <div>
-                                            <div className="flex items-center justify-between gap-2 mb-2">
+                                            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                                               <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
                                                 Model answer
                                               </p>
                                               <Button
                                                 type="button"
                                                 size="sm"
-                                                variant="ghost"
-                                                onClick={() => speak(r)}
-                                                disabled={speakingId === r.id}
+                                                variant={speakingId === r.id ? "secondary" : "ghost"}
+                                                onClick={() => playDialogue(r)}
                                                 className="h-7 px-2 text-xs"
+                                                aria-label={
+                                                  speakingId === r.id
+                                                    ? "Stop dialogue playback"
+                                                    : "Listen to examiner and candidate as a two-voice dialogue"
+                                                }
                                               >
                                                 {speakingId === r.id ? (
-                                                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                                                  <>
+                                                    <Square className="h-3.5 w-3.5" />
+                                                    <span className="ml-1.5">Stop</span>
+                                                  </>
                                                 ) : (
-                                                  <Volume2 className="h-3.5 w-3.5" />
+                                                  <>
+                                                    <Headphones className="h-3.5 w-3.5" />
+                                                    <span className="ml-1.5">Listen as dialogue</span>
+                                                  </>
                                                 )}
-                                                <span className="ml-1.5">Listen</span>
                                               </Button>
                                             </div>
                                             <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
