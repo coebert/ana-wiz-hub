@@ -81,6 +81,24 @@ const REFERENCES: Reference[] = [
     year: 2021,
     url: "https://rcoa.ac.uk/training-careers/training-anaesthesia/2021-anaesthetics-curriculum",
   },
+  {
+    id: "aapm-ct",
+    n: 9,
+    authors: "American Association of Physicists in Medicine",
+    title: "AAPM Report 96 — The Measurement, Reporting, and Management of Radiation Dose in CT (CTDI, DLP, SSDE)",
+    source: "AAPM, College Park MD",
+    year: 2008,
+    url: "https://www.aapm.org/pubs/reports/RPT_96.pdf",
+  },
+  {
+    id: "rcr-ct",
+    n: 10,
+    authors: "Royal College of Radiologists",
+    title: "iRefer: Making the Best Use of Clinical Radiology (CT indications, dose context, justification)",
+    source: "RCR, London",
+    year: 2017,
+    url: "https://www.rcr.ac.uk/clinical-radiology/being-consultant/rcr-referral-guidelines/about-irefer",
+  },
 ];
 
 const objectives = [
