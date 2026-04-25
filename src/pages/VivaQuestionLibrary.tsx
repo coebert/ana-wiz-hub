@@ -791,6 +791,59 @@ const VivaQuestionLibrary = () => {
               )}
             </div>
           </div>
+
+          <div className="flex flex-wrap items-center gap-3 mb-3 rounded-md border border-border/60 bg-background/40 px-3 py-2">
+            <div className="flex items-center gap-1.5 text-xs text-foreground">
+              <Gauge className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="font-medium">Speed</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-1">
+              {PLAYBACK_RATES.map((r) => {
+                const active = playbackRate === r;
+                return (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => setPlaybackRate(r)}
+                    aria-pressed={active}
+                    title={`Play audio at ${r}× speed`}
+                    className={`rounded-md border px-2 py-0.5 text-[11px] font-medium tabular-nums transition-colors ${
+                      active
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card hover:border-primary/50 text-foreground"
+                    }`}
+                  >
+                    {r}×
+                  </button>
+                );
+              })}
+            </div>
+            <div className="ml-auto flex items-center gap-1">
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => seekBy(-15)}
+                disabled={!speakingId}
+                className="h-7 px-2 text-xs"
+                title="Skip back 15 seconds in current segment"
+              >
+                <Rewind className="h-3.5 w-3.5 mr-1" /> 15s
+              </Button>
+              <Button
+                type="button"
+                size="sm"
+                variant="outline"
+                onClick={() => seekBy(15)}
+                disabled={!speakingId}
+                className="h-7 px-2 text-xs"
+                title="Skip forward 15 seconds in current segment"
+              >
+                <FastForward className="h-3.5 w-3.5 mr-1" /> 15s
+              </Button>
+            </div>
+          </div>
+
           <p className="text-xs text-muted-foreground mb-3">
             Listen to questions and model answers back-to-back. The next question starts automatically
             when the previous answer ends. Filter by exam (above) and/or specific topics below.
