@@ -728,10 +728,23 @@ const VivaQuestionLibrary = () => {
                         {sectionLabel}
                       </h2>
                     </div>
-                    <span className="text-xs text-muted-foreground shrink-0">
-                      {topics.length} {topics.length === 1 ? "topic" : "topics"} · {total}{" "}
-                      {total === 1 ? "question" : "questions"}
-                    </span>
+                    <div className="flex items-center gap-3 shrink-0">
+                      {(() => {
+                        const stat = coverage.bySection.get(key);
+                        return stat ? (
+                          <CoverageBars
+                            questionsPracticed={stat.questionsPracticed}
+                            questionsTotal={stat.questionsTotal}
+                            topicsTouched={stat.topicsTouched}
+                            topicsTotal={stat.topicsTotal}
+                          />
+                        ) : null;
+                      })()}
+                      <span className="text-xs text-muted-foreground hidden sm:inline">
+                        {topics.length} {topics.length === 1 ? "topic" : "topics"} · {total}{" "}
+                        {total === 1 ? "question" : "questions"}
+                      </span>
+                    </div>
                   </button>
 
                   {sectionOpen && (
