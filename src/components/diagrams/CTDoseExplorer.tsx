@@ -460,7 +460,7 @@ const SliderRow = ({ label, value, min, max, step, unit, onChange, hint, digits 
     {hint && <p className="text-[10px] text-muted-foreground italic leading-snug">{hint}</p>}
     {affects && affects.length > 0 && (
       <p className="text-[9px] uppercase tracking-wide text-muted-foreground mt-1">
-        Affects:{" "}
+        In the formulas →{" "}
         {affects.map((t, i) => (
           <span key={t.anchor}>
             <a
