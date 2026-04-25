@@ -774,9 +774,21 @@ const VivaQuestionLibrary = () => {
                                   {title}
                                 </span>
                               </div>
-                              <span className="text-[11px] text-muted-foreground shrink-0">
-                                {items.length}
-                              </span>
+                              <div className="flex items-center gap-2 shrink-0">
+                                {(() => {
+                                  const tStat = coverage.bySection.get(key)?.topics.get(title);
+                                  return tStat ? (
+                                    <CoverageBars
+                                      questionsPracticed={tStat.practiced}
+                                      questionsTotal={tStat.total}
+                                      compact
+                                    />
+                                  ) : null;
+                                })()}
+                                <span className="text-[11px] text-muted-foreground">
+                                  {items.length}
+                                </span>
+                              </div>
                             </button>
 
                             {topicOpen && (
