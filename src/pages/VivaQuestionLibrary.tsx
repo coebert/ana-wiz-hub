@@ -649,6 +649,17 @@ const VivaQuestionLibrary = () => {
                                               <Badge variant="outline" className="text-[10px]">
                                                 {examLabels[r.exam] ?? r.exam}
                                               </Badge>
+                                              {(() => {
+                                                const d = rowDifficulty.get(r.id);
+                                                return d ? (
+                                                  <Badge
+                                                    variant="outline"
+                                                    className={`text-[10px] ${difficultyClasses[d]}`}
+                                                  >
+                                                    {difficultyLabels[d]}
+                                                  </Badge>
+                                                ) : null;
+                                              })()}
                                             </div>
                                           </div>
                                         </div>
