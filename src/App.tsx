@@ -43,6 +43,7 @@ const HumidityGasSamplingTopic = lazy(() => import("./pages/topics/HumidityGasSa
 const LaserFibreopticsTopic = lazy(() => import("./pages/topics/LaserFibreopticsTopic"));
 const UltrasoundPhysicsTopic = lazy(() => import("./pages/topics/UltrasoundPhysicsTopic"));
 const MRIPhysicsTopic = lazy(() => import("./pages/topics/MRIPhysicsTopic"));
+const XRayRadiationSafetyTopic = lazy(() => import("./pages/topics/XRayRadiationSafetyTopic"));
 const DefibrillationPacingTopic = lazy(() => import("./pages/topics/DefibrillationPacingTopic"));
 const ClinicalMeasurementTopic = lazy(() => import("./pages/topics/ClinicalMeasurementTopic"));
 const SIUnitsThermodynamicsTopic = lazy(() => import("./pages/topics/SIUnitsThermodynamicsTopic"));
