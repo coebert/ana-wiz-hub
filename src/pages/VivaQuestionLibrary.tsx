@@ -960,7 +960,7 @@ const VivaQuestionLibrary = () => {
                                               </p>
                                               <ul className="list-disc pl-5 space-y-1 text-sm text-foreground/90">
                                                 {r.high_yield_points.map((p, i) => (
-                                                  <li key={i}>{p}</li>
+                                                  <li key={i}><Highlight text={p} query={query} /></li>
                                                 ))}
                                               </ul>
                                             </div>
