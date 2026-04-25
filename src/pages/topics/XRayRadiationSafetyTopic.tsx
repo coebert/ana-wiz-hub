@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { CrossReferenceCallout } from "@/components/CrossReferenceCallout";
 import { DiagramSection } from "@/components/DiagramSection";
 import { XRayTubeDiagram } from "@/components/diagrams/XRayTubeDiagram";
+import { RadiationSafetyChecklist } from "@/components/RadiationSafetyChecklist";
 import { xrayRadiationSafetyQuiz } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -222,6 +223,7 @@ const XRayRadiationSafetyTopic = () => {
                 staff faces and eyes, and is preferred. Avoid standing beside the X-ray tube — scatter is highest on the entrance side
                 of the patient.
               </p>
+              <RadiationSafetyChecklist />
             </div>
           </ExamSection>
 
