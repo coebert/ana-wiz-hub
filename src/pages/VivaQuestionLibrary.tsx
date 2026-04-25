@@ -46,6 +46,8 @@ const VivaQuestionLibrary = () => {
   const [query, setQuery] = useState("");
   const [examFilter, setExamFilter] = useState<ExamFilter>("all");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
+  const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
   const [speakingId, setSpeakingId] = useState<string | null>(null);
 
   useEffect(() => {
