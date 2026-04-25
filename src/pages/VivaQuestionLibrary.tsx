@@ -112,6 +112,31 @@ const CoverageBars = ({
   const qPct = questionsTotal > 0 ? Math.round((questionsPracticed / questionsTotal) * 100) : 0;
   const tPct =
     topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
+
+  // Brief highlight pulse on the count whenever the underlying number changes,
+  // so a tick/untick is visually obvious even if the bar moves only a sliver.
+  const [qPulse, setQPulse] = useState(false);
+  const [tPulse, setTPulse] = useState(false);
+  const prevQ = useRef(questionsPracticed);
+  const prevT = useRef(topicsTouched ?? 0);
+  useEffect(() => {
+    if (prevQ.current !== questionsPracticed) {
+      prevQ.current = questionsPracticed;
+      setQPulse(true);
+      const id = window.setTimeout(() => setQPulse(false), 600);
+      return () => window.clearTimeout(id);
+    }
+  }, [questionsPracticed]);
+  useEffect(() => {
+    const t = topicsTouched ?? 0;
+    if (prevT.current !== t) {
+      prevT.current = t;
+      setTPulse(true);
+      const id = window.setTimeout(() => setTPulse(false), 600);
+      return () => window.clearTimeout(id);
+    }
+  }, [topicsTouched]);
+
   return (
     <div
       className={`space-y-1 ${
@@ -120,14 +145,22 @@ const CoverageBars = ({
     >
       <div className="flex items-center gap-1.5">
         <Progress value={qPct} className="h-1.5 flex-1 min-w-0" />
-        <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+        <span
+          className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
+            qPulse ? "text-primary scale-110" : "text-muted-foreground scale-100"
+          }`}
+        >
           {questionsPracticed}/{questionsTotal} Q
         </span>
       </div>
       {tPct !== null && (
         <div className="flex items-center gap-1.5">
           <Progress value={tPct} className="h-1.5 flex-1 min-w-0 [&>div]:bg-accent" />
-          <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+          <span
+            className={`text-[10px] tabular-nums whitespace-nowrap transition-all duration-300 ${
+              tPulse ? "text-accent-foreground scale-110" : "text-muted-foreground scale-100"
+            }`}
+          >
             {topicsTouched}/{topicsTotal} T
           </span>
         </div>
