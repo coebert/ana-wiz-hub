@@ -13,7 +13,7 @@ interface Group {
   id: GroupId;
   title: string;
   subtitle: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   /** HSL accent for the group's left border + chips. */
   accent: string;
   items: Item[];
