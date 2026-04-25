@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X } from "lucide-react";
+import { ArrowLeft, BookOpen, ChevronDown, ChevronRight, Loader2, Search, Square, Headphones, Play, SkipForward, ListFilter, X, CheckCircle2, Circle, RotateCcw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
+import { useVivaProgress } from "@/hooks/useVivaProgress";
 
 
 const SECTION_ORDER: (Section | "_other")[] = [
@@ -80,6 +82,46 @@ const classifyDifficulty = (row: { question: string; model_answer: string }): Di
   return "intermediate";
 };
 
+/**
+ * Two thin stacked progress bars: questions practiced and topics touched.
+ * Used for both per-section and per-topic coverage. Pure presentational.
+ */
+const CoverageBars = ({
+  questionsPracticed,
+  questionsTotal,
+  topicsTouched,
+  topicsTotal,
+  compact = false,
+}: {
+  questionsPracticed: number;
+  questionsTotal: number;
+  topicsTouched?: number;
+  topicsTotal?: number;
+  compact?: boolean;
+}) => {
+  const qPct = questionsTotal > 0 ? Math.round((questionsPracticed / questionsTotal) * 100) : 0;
+  const tPct =
+    topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
+  return (
+    <div className={`space-y-1 ${compact ? "" : "min-w-[140px]"}`}>
+      <div className="flex items-center gap-2">
+        <Progress value={qPct} className="h-1.5 flex-1" />
+        <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+          {questionsPracticed}/{questionsTotal} Q
+        </span>
+      </div>
+      {tPct !== null && (
+        <div className="flex items-center gap-2">
+          <Progress value={tPct} className="h-1.5 flex-1 [&>div]:bg-accent" />
+          <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
+            {topicsTouched}/{topicsTotal} T
+          </span>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
@@ -93,6 +135,7 @@ const VivaQuestionLibrary = () => {
   const [streamActive, setStreamActive] = useState(false);
   const [streamTopics, setStreamTopics] = useState<Set<string>>(new Set());
   const [topicPickerOpen, setTopicPickerOpen] = useState(false);
+  const { practiced, mark, toggle: toggleProgress, reset: resetProgress, isPracticed } = useVivaProgress();
   const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
     cancelled: false,
     audio: null,
@@ -173,12 +216,78 @@ const VivaQuestionLibrary = () => {
       });
   }, [filtered, topicSectionMap]);
 
+  /**
+   * Coverage stats over **all** rows (not just `filtered`) so users see absolute
+   * progress regardless of search/exam/difficulty filters. Computed per section
+   * and per topic; counts both questions and topics-touched.
+   */
+  const coverage = useMemo(() => {
+    type TopicStat = { total: number; practiced: number };
+    type SectionStat = {
+      questionsTotal: number;
+      questionsPracticed: number;
+      topicsTotal: number;
+      topicsTouched: number;
+      topics: Map<string, TopicStat>;
+    };
+    const bySection = new Map<Section | "_other", SectionStat>();
+    for (const r of rows) {
+      const sec = topicSectionMap.get(r.topic_title.toLowerCase()) ?? "_other";
+      if (!bySection.has(sec)) {
+        bySection.set(sec, {
+          questionsTotal: 0,
+          questionsPracticed: 0,
+          topicsTotal: 0,
+          topicsTouched: 0,
+          topics: new Map(),
+        });
+      }
+      const s = bySection.get(sec)!;
+      if (!s.topics.has(r.topic_title)) s.topics.set(r.topic_title, { total: 0, practiced: 0 });
+      const t = s.topics.get(r.topic_title)!;
+      t.total++;
+      s.questionsTotal++;
+      if (practiced.has(r.id)) {
+        t.practiced++;
+        s.questionsPracticed++;
+      }
+    }
+    let overallQ = 0;
+    let overallQDone = 0;
+    let overallT = 0;
+    let overallTDone = 0;
+    for (const s of bySection.values()) {
+      s.topicsTotal = s.topics.size;
+      s.topicsTouched = Array.from(s.topics.values()).filter((t) => t.practiced > 0).length;
+      overallQ += s.questionsTotal;
+      overallQDone += s.questionsPracticed;
+      overallT += s.topicsTotal;
+      overallTDone += s.topicsTouched;
+    }
+    return {
+      bySection,
+      overall: {
+        questionsTotal: overallQ,
+        questionsPracticed: overallQDone,
+        topicsTotal: overallT,
+        topicsTouched: overallTDone,
+      },
+    };
+  }, [rows, topicSectionMap, practiced]);
+
   const isSearching = query.trim().length > 0;
 
   const toggle = (id: string) =>
     setExpanded((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+        // Auto-mark as practiced when the user opens a question (manual override
+        // available via the tick button below).
+        mark(id);
+      }
       return next;
     });
 
@@ -245,6 +354,8 @@ const VivaQuestionLibrary = () => {
       playbackRef.current = { cancelled: false, audio: null };
     }
     setSpeakingId(row.id);
+    // Listening to the dialogue counts as practice (auto-mark; user can untick).
+    mark(row.id);
     try {
       // Generate both segments in parallel for faster start.
       const [examinerSrc, candidateSrc] = await Promise.all([
@@ -386,6 +497,43 @@ const VivaQuestionLibrary = () => {
             high-yield points and common pitfalls. Search across exams to revise efficiently.
           </p>
         </header>
+
+        {coverage.overall.questionsTotal > 0 && (
+          <section className="mb-4 rounded-lg border border-border bg-card p-3 sm:p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+              <div className="min-w-0">
+                <h2 className="text-sm font-semibold text-foreground">Practice progress</h2>
+                <p className="text-xs text-muted-foreground">
+                  Questions auto-mark when you open or listen — tap the tick to override. Stored on this device.
+                </p>
+              </div>
+              {coverage.overall.questionsPracticed > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (window.confirm("Reset all viva practice progress on this device?")) {
+                      resetProgress();
+                      toast.success("Progress reset");
+                    }
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
+                >
+                  <RotateCcw className="h-3 w-3" /> Reset
+                </button>
+              )}
+            </div>
+            <CoverageBars
+              questionsPracticed={coverage.overall.questionsPracticed}
+              questionsTotal={coverage.overall.questionsTotal}
+              topicsTouched={coverage.overall.topicsTouched}
+              topicsTotal={coverage.overall.topicsTotal}
+              compact
+            />
+            <p className="mt-2 text-[10px] uppercase tracking-wider text-muted-foreground">
+              Q = questions practiced · T = topics touched
+            </p>
+          </section>
+        )}
 
         <section className="mb-4 flex flex-wrap gap-2">
           {(["all", "primary", "final", "fficm"] as ExamFilter[]).map((e) => {
@@ -580,10 +728,23 @@ const VivaQuestionLibrary = () => {
                         {sectionLabel}
                       </h2>
                     </div>
-                    <span className="text-xs text-muted-foreground shrink-0">
-                      {topics.length} {topics.length === 1 ? "topic" : "topics"} · {total}{" "}
-                      {total === 1 ? "question" : "questions"}
-                    </span>
+                    <div className="flex items-center gap-3 shrink-0">
+                      {(() => {
+                        const stat = coverage.bySection.get(key);
+                        return stat ? (
+                          <CoverageBars
+                            questionsPracticed={stat.questionsPracticed}
+                            questionsTotal={stat.questionsTotal}
+                            topicsTouched={stat.topicsTouched}
+                            topicsTotal={stat.topicsTotal}
+                          />
+                        ) : null;
+                      })()}
+                      <span className="text-xs text-muted-foreground hidden sm:inline">
+                        {topics.length} {topics.length === 1 ? "topic" : "topics"} · {total}{" "}
+                        {total === 1 ? "question" : "questions"}
+                      </span>
+                    </div>
                   </button>
 
                   {sectionOpen && (
@@ -613,9 +774,21 @@ const VivaQuestionLibrary = () => {
                                   {title}
                                 </span>
                               </div>
-                              <span className="text-[11px] text-muted-foreground shrink-0">
-                                {items.length}
-                              </span>
+                              <div className="flex items-center gap-2 shrink-0">
+                                {(() => {
+                                  const tStat = coverage.bySection.get(key)?.topics.get(title);
+                                  return tStat ? (
+                                    <CoverageBars
+                                      questionsPracticed={tStat.practiced}
+                                      questionsTotal={tStat.total}
+                                      compact
+                                    />
+                                  ) : null;
+                                })()}
+                                <span className="text-[11px] text-muted-foreground">
+                                  {items.length}
+                                </span>
+                              </div>
                             </button>
 
                             {topicOpen && (
@@ -627,43 +800,78 @@ const VivaQuestionLibrary = () => {
                                       key={r.id}
                                       className="rounded-md border border-border bg-card overflow-hidden"
                                     >
-                                      <button
-                                        type="button"
-                                        onClick={() => toggle(r.id)}
-                                        className="w-full text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                        aria-expanded={isOpen}
-                                      >
-                                        <div className="flex items-start gap-3">
-                                          <div className="mt-0.5 text-muted-foreground flex-shrink-0">
-                                            {isOpen ? (
-                                              <ChevronDown className="h-4 w-4" />
-                                            ) : (
-                                              <ChevronRight className="h-4 w-4" />
-                                            )}
-                                          </div>
-                                          <div className="min-w-0 flex-1">
-                                            <p className="font-serif font-semibold text-foreground leading-snug">
-                                              {r.question}
-                                            </p>
-                                            <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                                              <Badge variant="outline" className="text-[10px]">
-                                                {examLabels[r.exam] ?? r.exam}
-                                              </Badge>
-                                              {(() => {
-                                                const d = rowDifficulty.get(r.id);
-                                                return d ? (
+                                      <div className="flex items-stretch">
+                                        <button
+                                          type="button"
+                                          onClick={() => toggle(r.id)}
+                                          className="flex-1 text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                                          aria-expanded={isOpen}
+                                        >
+                                          <div className="flex items-start gap-3">
+                                            <div className="mt-0.5 text-muted-foreground flex-shrink-0">
+                                              {isOpen ? (
+                                                <ChevronDown className="h-4 w-4" />
+                                              ) : (
+                                                <ChevronRight className="h-4 w-4" />
+                                              )}
+                                            </div>
+                                            <div className="min-w-0 flex-1">
+                                              <p className="font-serif font-semibold text-foreground leading-snug">
+                                                {r.question}
+                                              </p>
+                                              <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                                                <Badge variant="outline" className="text-[10px]">
+                                                  {examLabels[r.exam] ?? r.exam}
+                                                </Badge>
+                                                {(() => {
+                                                  const d = rowDifficulty.get(r.id);
+                                                  return d ? (
+                                                    <Badge
+                                                      variant="outline"
+                                                      className={`text-[10px] ${difficultyClasses[d]}`}
+                                                    >
+                                                      {difficultyLabels[d]}
+                                                    </Badge>
+                                                  ) : null;
+                                                })()}
+                                                {isPracticed(r.id) && (
                                                   <Badge
                                                     variant="outline"
-                                                    className={`text-[10px] ${difficultyClasses[d]}`}
+                                                    className="text-[10px] border-primary/40 bg-primary/10 text-primary"
                                                   >
-                                                    {difficultyLabels[d]}
+                                                    Practiced
                                                   </Badge>
-                                                ) : null;
-                                              })()}
+                                                )}
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </button>
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleProgress(r.id);
+                                          }}
+                                          aria-label={
+                                            isPracticed(r.id)
+                                              ? "Mark as not yet practiced"
+                                              : "Mark as practiced"
+                                          }
+                                          aria-pressed={isPracticed(r.id)}
+                                          title={
+                                            isPracticed(r.id)
+                                              ? "Mark as not yet practiced"
+                                              : "Mark as practiced"
+                                          }
+                                          className="px-3 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 border-l border-border transition-colors"
+                                        >
+                                          {isPracticed(r.id) ? (
+                                            <CheckCircle2 className="h-5 w-5 text-primary" />
+                                          ) : (
+                                            <Circle className="h-5 w-5" />
+                                          )}
+                                        </button>
+                                      </div>
 
                                       {isOpen && (
                                         <div className="border-t border-border p-4 space-y-4 bg-background/40">
