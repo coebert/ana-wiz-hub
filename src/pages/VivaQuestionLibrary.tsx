@@ -860,7 +860,7 @@ const VivaQuestionLibrary = () => {
                                             </div>
                                             <div className="min-w-0 flex-1">
                                               <p className="font-serif font-semibold text-foreground leading-snug">
-                                                {r.question}
+                                                <Highlight text={r.question} query={query} />
                                               </p>
                                               <div className="flex flex-wrap items-center gap-2 mt-1.5">
                                                 <Badge variant="outline" className="text-[10px]">
