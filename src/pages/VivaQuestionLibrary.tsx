@@ -186,13 +186,15 @@ const VivaQuestionLibrary = () => {
     });
 
   /** Play examiner question + candidate model answer as a two-voice dialogue. */
-  const playDialogue = async (row: ModelAnswerRow) => {
-    if (speakingId) {
-      // If clicked on the currently-playing row, stop it.
-      stopPlayback();
-      if (speakingId === row.id) return;
+  const playDialogue = async (row: ModelAnswerRow, opts?: { silent?: boolean }) => {
+    if (!opts?.silent) {
+      if (speakingId) {
+        // If clicked on the currently-playing row, stop it.
+        stopPlayback();
+        if (speakingId === row.id) return;
+      }
+      playbackRef.current = { cancelled: false, audio: null };
     }
-    playbackRef.current = { cancelled: false, audio: null };
     setSpeakingId(row.id);
     try {
       // Generate both segments in parallel for faster start.
@@ -216,8 +218,76 @@ const VivaQuestionLibrary = () => {
     }
   };
 
+  /** Build the queue of rows to stream based on exam filter + selected topics. */
+  const streamQueue = useMemo(() => {
+    let queue = rows.filter((r) => examFilter === "all" || r.exam === examFilter);
+    if (streamTopics.size > 0) {
+      queue = queue.filter((r) => streamTopics.has(r.topic_title));
+    }
+    // Stable order: by topic then created_at ascending (oldest first feels like a session).
+    return [...queue].sort((a, b) => {
+      const t = a.topic_title.localeCompare(b.topic_title);
+      return t !== 0 ? t : a.created_at.localeCompare(b.created_at);
+    });
+  }, [rows, examFilter, streamTopics]);
+
+  /** All distinct topic titles available given the current exam filter. */
+  const availableTopics = useMemo(() => {
+    const set = new Set<string>();
+    rows.forEach((r) => {
+      if (examFilter === "all" || r.exam === examFilter) set.add(r.topic_title);
+    });
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }, [rows, examFilter]);
+
+  const stopStream = () => {
+    streamRef.current.cancelled = true;
+    setStreamActive(false);
+    stopPlayback();
+  };
+
+  const playStream = async (startIndex = 0) => {
+    if (streamQueue.length === 0) {
+      toast.message("No questions match the current filters");
+      return;
+    }
+    streamRef.current = { cancelled: false };
+    playbackRef.current = { cancelled: false, audio: null };
+    setStreamActive(true);
+    for (let i = startIndex; i < streamQueue.length; i++) {
+      if (streamRef.current.cancelled) break;
+      // Reset per-row playback cancellation flag (but keep stream flag).
+      playbackRef.current = { cancelled: false, audio: null };
+      await playDialogue(streamQueue[i], { silent: true });
+      if (streamRef.current.cancelled) break;
+      // Pause between questions.
+      await new Promise((r) => setTimeout(r, 600));
+    }
+    if (!streamRef.current.cancelled) {
+      setStreamActive(false);
+      toast.success("Reached the end of the stream");
+    }
+  };
+
+  const skipStream = () => {
+    // Cancel just the current row; the stream loop will move on.
+    playbackRef.current.cancelled = true;
+    const a = playbackRef.current.audio;
+    if (a) {
+      try { a.pause(); a.src = ""; } catch { /* ignore */ }
+    }
+    playbackRef.current.audio = null;
+  };
+
+  const toggleStreamTopic = (title: string) =>
+    setStreamTopics((prev) => {
+      const next = new Set(prev);
+      next.has(title) ? next.delete(title) : next.add(title);
+      return next;
+    });
+
   // Stop any audio when the page unmounts.
-  useEffect(() => () => stopPlayback(), []);
+  useEffect(() => () => { stopStream(); }, []);
 
   const examCounts = useMemo(() => {
     const c = { all: rows.length, primary: 0, final: 0, fficm: 0 } as Record<ExamFilter, number>;
