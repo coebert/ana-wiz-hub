@@ -565,6 +565,18 @@ const VivaQuestionLibrary = () => {
                 </button>
               )}
             </div>
+            <div className="mb-3 flex flex-wrap gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2 py-1 text-xs text-foreground">
+                <CalendarCheck className="h-3.5 w-3.5 text-primary" />
+                <span className="font-semibold">{todayCount}</span>
+                <span className="text-muted-foreground">today</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-border bg-muted/40 px-2 py-1 text-xs text-foreground">
+                <Flame className={`h-3.5 w-3.5 ${streak > 0 ? "text-orange-500" : "text-muted-foreground"}`} />
+                <span className="font-semibold">{streak}</span>
+                <span className="text-muted-foreground">day{streak === 1 ? "" : "s"} streak</span>
+              </span>
+            </div>
             <CoverageBars
               questionsPracticed={coverage.overall.questionsPracticed}
               questionsTotal={coverage.overall.questionsTotal}
