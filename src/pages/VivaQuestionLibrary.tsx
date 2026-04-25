@@ -113,16 +113,20 @@ const CoverageBars = ({
   const tPct =
     topicsTotal && topicsTotal > 0 ? Math.round(((topicsTouched ?? 0) / topicsTotal) * 100) : null;
   return (
-    <div className={`space-y-1 ${compact ? "" : "min-w-[140px]"}`}>
-      <div className="flex items-center gap-2">
-        <Progress value={qPct} className="h-1.5 flex-1" />
+    <div
+      className={`space-y-1 ${
+        compact ? "w-20 sm:w-24" : "w-32 sm:w-40"
+      } shrink-0`}
+    >
+      <div className="flex items-center gap-1.5">
+        <Progress value={qPct} className="h-1.5 flex-1 min-w-0" />
         <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
           {questionsPracticed}/{questionsTotal} Q
         </span>
       </div>
       {tPct !== null && (
-        <div className="flex items-center gap-2">
-          <Progress value={tPct} className="h-1.5 flex-1 [&>div]:bg-accent" />
+        <div className="flex items-center gap-1.5">
+          <Progress value={tPct} className="h-1.5 flex-1 min-w-0 [&>div]:bg-accent" />
           <span className="text-[10px] tabular-nums text-muted-foreground whitespace-nowrap">
             {topicsTouched}/{topicsTotal} T
           </span>
