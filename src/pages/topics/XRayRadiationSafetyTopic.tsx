@@ -297,20 +297,85 @@ const XRayRadiationSafetyTopic = () => {
                 <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">
                   Dose descriptors you must recognise
                 </p>
-                <ul className="text-xs text-foreground space-y-1 list-disc list-inside marker:text-muted-foreground">
-                  <li><strong>CTDI<sub>vol</sub></strong> (mGy) — average dose to a 16 cm (head) or 32 cm (body) PMMA phantom for a single rotation; reported on every scanner console.</li>
-                  <li><strong>DLP</strong> (mGy·cm) = CTDI<sub>vol</sub> × scan length — best surrogate for total patient energy deposition.</li>
-                  <li><strong>Effective dose</strong> (mSv) ≈ DLP × <em>k</em> (region-specific factor; chest k ≈ 0.014). Allows comparison with background and dose limits.</li>
-                  <li><strong>SSDE</strong> — size-specific dose estimate, corrects CTDI<sub>vol</sub> for actual patient diameter (essential in paediatrics).</li>
+                <ul className="text-xs text-foreground space-y-1.5 list-disc list-inside marker:text-muted-foreground">
+                  <li id="ctdi-vol" className="scroll-mt-24">
+                    <strong>CTDI<sub>vol</sub></strong> (mGy) — average dose to a 16 cm (head) or 32 cm (body) PMMA phantom for a single rotation; reported on every scanner console.
+                    <span className="block mt-0.5 text-[10px] text-muted-foreground">
+                      Used by:{" "}
+                      <a href="#mode-cta" className="underline hover:text-foreground">CTA</a>{" · "}
+                      <a href="#mode-perfusion" className="underline hover:text-foreground">CT perfusion</a>{" · "}
+                      <a href="#mode-dect" className="underline hover:text-foreground">dual-energy CT</a>
+                    </span>
+                  </li>
+                  <li id="dlp" className="scroll-mt-24">
+                    <strong>DLP</strong> (mGy·cm) = CTDI<sub>vol</sub> × scan length — best surrogate for total patient energy deposition.
+                    <span className="block mt-0.5 text-[10px] text-muted-foreground">
+                      Used by:{" "}
+                      <a href="#mode-cta" className="underline hover:text-foreground">CTA</a>{" (long z-coverage)"}{" · "}
+                      <a href="#mode-perfusion" className="underline hover:text-foreground">CT perfusion</a>{" (multi-phase) · "}
+                      <a href="#mode-dect" className="underline hover:text-foreground">dual-energy</a>{" (two acquisitions)"}
+                    </span>
+                  </li>
+                  <li id="effective-dose-ct" className="scroll-mt-24">
+                    <strong>Effective dose</strong> (mSv) ≈ DLP × <em>k</em> (region-specific factor; chest k ≈ 0.014). Allows comparison with background and dose limits.
+                    <span className="block mt-0.5 text-[10px] text-muted-foreground">
+                      Drives mode choice for{" "}
+                      <a href="#mode-cta" className="underline hover:text-foreground">CTA</a>{", "}
+                      <a href="#mode-perfusion" className="underline hover:text-foreground">perfusion</a>{" and "}
+                      <a href="#mode-dect" className="underline hover:text-foreground">dual-energy</a>
+                    </span>
+                  </li>
+                  <li id="ssde" className="scroll-mt-24">
+                    <strong>SSDE</strong> — size-specific dose estimate, corrects CTDI<sub>vol</sub> for actual patient diameter (essential in paediatrics).
+                    <span className="block mt-0.5 text-[10px] text-muted-foreground">
+                      Especially relevant for{" "}
+                      <a href="#mode-perfusion" className="underline hover:text-foreground">CT perfusion</a>{" and paediatric "}
+                      <a href="#mode-cta" className="underline hover:text-foreground">CTA</a>
+                    </span>
+                  </li>
                 </ul>
               </div>
 
-              <p>
-                <strong>Special CT modes</strong> exploit the same hardware: <em>CT angiography</em> (timed bolus of iodinated contrast),
-                <em> CT perfusion</em> (repeated low-dose acquisitions to track contrast wash-in for stroke), <em>dual-energy CT</em>
-                (two kVp acquisitions — separates iodine from calcium, characterises stones, reduces metal artefact), and <em>cone-beam
-                CT</em> built into IR/cath-lab C-arms for intra-procedural 3-D imaging.<Cite refs={[{ id: "rcr-ct", n: 10 }]} />
-              </p>
+              <div className="rounded-lg border border-border bg-muted/30 p-3 not-prose">
+                <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1.5">
+                  Special CT modes
+                </p>
+                <ul className="text-xs text-foreground space-y-1.5 list-disc list-inside marker:text-muted-foreground">
+                  <li id="mode-cta" className="scroll-mt-24">
+                    <strong>CT angiography (CTA)</strong> — timed iodinated-contrast bolus; long z-coverage means high{" "}
+                    <a href="#dlp" className="underline hover:text-foreground">DLP</a>{" "}
+                    despite per-rotation{" "}
+                    <a href="#ctdi-vol" className="underline hover:text-foreground">CTDI<sub>vol</sub></a>{" "}
+                    similar to a routine CT — report{" "}
+                    <a href="#effective-dose-ct" className="underline hover:text-foreground">effective dose</a>{" "}
+                    via DLP × <em>k</em>.
+                  </li>
+                  <li id="mode-perfusion" className="scroll-mt-24">
+                    <strong>CT perfusion</strong> — repeated low-dose acquisitions over the same slab to track contrast wash-in (e.g. stroke). Cumulative{" "}
+                    <a href="#dlp" className="underline hover:text-foreground">DLP</a>{" "}
+                    can be high; in small patients use{" "}
+                    <a href="#ssde" className="underline hover:text-foreground">SSDE</a>{" "}
+                    rather than{" "}
+                    <a href="#ctdi-vol" className="underline hover:text-foreground">CTDI<sub>vol</sub></a>{" "}
+                    to judge true skin/organ dose.
+                  </li>
+                  <li id="mode-dect" className="scroll-mt-24">
+                    <strong>Dual-energy CT (DECT)</strong> — two kVp acquisitions separate iodine from calcium, characterise stones, reduce metal artefact. Two acquisitions ≈ doubles{" "}
+                    <a href="#ctdi-vol" className="underline hover:text-foreground">CTDI<sub>vol</sub></a>{" "}
+                    and{" "}
+                    <a href="#dlp" className="underline hover:text-foreground">DLP</a>{" "}
+                    unless dose-balanced — modern fast-kVp-switching/dual-source designs aim for{" "}
+                    <a href="#effective-dose-ct" className="underline hover:text-foreground">effective dose</a>{" "}
+                    parity with single-energy.
+                  </li>
+                  <li>
+                    <strong>Cone-beam CT</strong> — built into IR/cath-lab C-arms for intra-procedural 3-D imaging.
+                  </li>
+                </ul>
+                <p className="text-[10px] text-muted-foreground italic mt-2">
+                  <Cite refs={[{ id: "rcr-ct", n: 10 }]} /> Click any descriptor or mode to jump between them.
+                </p>
+              </div>
 
               <p>
                 <strong>Anaesthetic relevance:</strong> CT effective doses dwarf plain films — head ~2 mSv, chest ~7 mSv, CTPA 5–10 mSv,
