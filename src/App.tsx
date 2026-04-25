@@ -318,6 +318,7 @@ const App = () => (
           <Route path="/perioperative/preoperative-assessment" element={<PreoperativeAssessmentTopic />} />
           <Route path="/perioperative/enhanced-recovery" element={<EnhancedRecoveryTopic />} />
           <Route path="/perioperative/perioperative-fluids" element={<PerioperativeFluidsTopic />} />
+          <Route path="/perioperative/genetic-syndromes" element={<GeneticSyndromesTopic />} />
           {/* Anatomy */}
           <Route path="/anatomy/airway-anatomy" element={<Navigate to="/anatomy/head-neck-anatomy" replace />} />
           <Route path="/anatomy/cardiac-anatomy" element={<CardiacAnatomyTopic />} />
