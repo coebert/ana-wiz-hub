@@ -18,6 +18,7 @@ const PodcastsLibrary = lazy(() => import("./pages/PodcastsLibrary"));
 const GlossaryAudit = lazy(() => import("./pages/GlossaryAudit"));
 const VivaHub = lazy(() => import("./pages/VivaHub"));
 const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
+const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsResponsiveTest"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
