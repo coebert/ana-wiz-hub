@@ -58,7 +58,43 @@ const VivaHub = () => {
             <ArrowLeft className="h-4 w-4" /> Back to viva hub
           </button>
           <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+            {/* Quick exam toggle: switch standard mid-session without leaving. */}
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg border border-border bg-background/60 px-3 py-2">
+              <div className="min-w-0">
+                <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
+                  Exam standard
+                </p>
+                <p className="text-sm font-medium text-foreground truncate">
+                  {exam === "primary" ? "FRCA Primary" : exam === "final" ? "FRCA Final" : "FFICM"}
+                </p>
+              </div>
+              <div
+                role="group"
+                aria-label="Quick switch viva exam standard"
+                className="inline-flex rounded-full border border-border bg-card p-0.5"
+              >
+                {(["primary", "final"] as const).map((opt) => {
+                  const isActive = exam === opt;
+                  return (
+                    <button
+                      key={opt}
+                      type="button"
+                      onClick={() => setExam(opt)}
+                      aria-pressed={isActive}
+                      className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+                        isActive
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      {opt === "primary" ? "Primary" : "Final"}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <VivaSession
+              key={exam}
               topicId={active.id}
               topicTitle={active.title}
               topicDescription={active.description}
