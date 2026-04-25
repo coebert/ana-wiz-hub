@@ -152,6 +152,128 @@ const GeneticSyndromesTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Syndrome quick-reference grid</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              One-look matrix linking each condition to its dominant anaesthetic hazards and the agents/techniques generally regarded as safe. Use as a pre-list checklist — never as a substitute for a current porphyria/MH database lookup on the day.
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-border">
+              <table className="w-full text-xs sm:text-sm">
+                <thead className="bg-secondary/40 text-foreground">
+                  <tr>
+                    <th className="text-left p-2 font-semibold w-[22%]">Syndrome / gene</th>
+                    <th className="text-left p-2 font-semibold w-[20%]">System hit hardest</th>
+                    <th className="text-left p-2 font-semibold w-[29%]">Key hazards</th>
+                    <th className="text-left p-2 font-semibold w-[29%]">Safe / preferred options</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {[
+                    {
+                      syndrome: "Malignant hyperthermia (RYR1/CACNA1S)",
+                      system: "Skeletal muscle / metabolic",
+                      hazards: "All volatiles, suxamethonium → ↑EtCO₂, masseter spasm, hyperK⁺, rhabdo",
+                      safe: "TIVA (propofol + remi), N₂O, NMBAs (non-dep), regional, dantrolene-ready",
+                    },
+                    {
+                      syndrome: "Duchenne / Becker (DMD/BMD)",
+                      system: "Muscle, cardiac, respiratory",
+                      hazards: "Sux + volatile → AIR / hyperK⁺ arrest; dilated CM; restrictive lung disease",
+                      safe: "TIVA, sugammadex for roc, regional where feasible, postop NIV",
+                    },
+                    {
+                      syndrome: "Myotonic dystrophy (DMPK)",
+                      system: "Muscle, conduction, bulbar",
+                      hazards: "Sux, neostigmine, cold, shivering → myotonic contracture; AV block; opioid/propofol sensitivity",
+                      safe: "TIVA at reduced dose, sugammadex, active warming, intra-muscle LA for contracture, pacing pads on",
+                    },
+                    {
+                      syndrome: "Pseudocholinesterase deficiency (BCHE)",
+                      system: "Drug metabolism",
+                      hazards: "Prolonged sux/mivacurium block (up to 8 h)",
+                      safe: "Avoid sux; ventilate until resolved; rocuronium + sugammadex; send dibucaine number",
+                    },
+                    {
+                      syndrome: "Down syndrome (T21)",
+                      system: "Airway, C-spine, cardiac",
+                      hazards: "Subglottic stenosis, atlanto-axial instability, AVSD/VSD, OSA, pulmonary HTN",
+                      safe: "ETT 0.5–1 size smaller, neutral neck, focused neuro exam, premed + parent presence",
+                    },
+                    {
+                      syndrome: "Marfan / Loeys-Dietz (FBN1 / TGFBR)",
+                      system: "Aorta, lungs, dura",
+                      hazards: "Aortic dissection, MV prolapse, pneumothorax, dural ectasia → unreliable spinal",
+                      safe: "Continue β-blockade, strict BP/dP/dt control, art line, epidural > spinal, avoid hypertensive surges",
+                    },
+                    {
+                      syndrome: "Vascular Ehlers-Danlos (COL3A1)",
+                      system: "Vessels, tissues",
+                      hazards: "Vessel rupture, easy bruising, poor wound healing, pneumothorax",
+                      safe: "Gentle laryngoscopy, US-guided lines, avoid IM/nasal, controlled BP, low airway pressures",
+                    },
+                    {
+                      syndrome: "Osteogenesis imperfecta (COL1A1/2)",
+                      system: "Bones, teeth, possible MH link",
+                      hazards: "Fractures from positioning/BP cuff, dentinogenesis, kyphoscoliosis",
+                      safe: "Padded positioning, manual BP / cycle infrequently, videolaryngoscopy, regional where possible",
+                    },
+                    {
+                      syndrome: "Sickle cell (HbSS)",
+                      system: "RBC / microvasculature",
+                      hazards: "5 H's: hypoxia, hypothermia, hypotension, hypoperfusion, acidosis → vaso-occlusion",
+                      safe: "Active warming, generous fluids, supplemental O₂, top-up Hb ~100 g/L (TAPS), tourniquets cautious",
+                    },
+                    {
+                      syndrome: "G6PD deficiency",
+                      system: "Erythrocyte oxidative defence",
+                      hazards: "Methylene blue, prilocaine (large), sulphonamides, nitrofurantoin → haemolysis / metHb",
+                      safe: "Ascorbic acid for metHb, avoid prilocaine in EMLA-equivalent doses, screen ethnic groups",
+                    },
+                    {
+                      syndrome: "Acute intermittent porphyria (HMBS)",
+                      system: "Haem synthesis, autonomic, neuro",
+                      hazards: "Barbiturates, etomidate, diclofenac, phenytoin, metoclopramide, ergometrine, fasting, stress",
+                      safe: "Propofol, sevo/iso, opioids, sux, roc, atracurium, neostigmine, paracetamol, bupivacaine; haem arginate for attack",
+                    },
+                    {
+                      syndrome: "Long QT (KCNQ1/KCNH2/SCN5A)",
+                      system: "Cardiac repolarisation",
+                      hazards: "Ondansetron, droperidol, methadone, high-dose sevo, hypoK⁺/Mg²⁺ → TdP",
+                      safe: "Continue β-blocker, defib pads on, propofol TIVA, isoflurane, treat electrolytes, avoid sympathetic surges",
+                    },
+                    {
+                      syndrome: "MPS (Hunter / Hurler)",
+                      system: "Airway, cardiac valves, C-spine",
+                      hazards: "Progressive difficult airway with age, AAI, restrictive lung disease, valve disease",
+                      safe: "Awake FOI / videolaryngoscopy, ENT standby, supraglottic backup, neutral neck",
+                    },
+                    {
+                      syndrome: "Neurofibromatosis 1 (NF1)",
+                      system: "Vascular, airway, endocrine",
+                      hazards: "Phaeochromocytoma, airway neurofibromas, scoliosis, vasculopathy",
+                      safe: "Pre-op metanephrines if hypertensive, FOI ready, regional with imaging, careful BP control",
+                    },
+                  ].map((row) => (
+                    <tr key={row.syndrome} className="hover:bg-secondary/20 align-top">
+                      <td className="p-2 font-semibold text-foreground">{row.syndrome}</td>
+                      <td className="p-2 text-muted-foreground">{row.system}</td>
+                      <td className="p-2">
+                        <span className="text-destructive">{row.hazards}</span>
+                      </td>
+                      <td className="p-2">
+                        <span className="text-clinical">{row.safe}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="flex flex-wrap gap-3 mt-3 text-[11px] text-muted-foreground">
+              <span className="inline-flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-destructive" /> Hazard / avoid</span>
+              <span className="inline-flex items-center gap-1.5"><span className="inline-block h-2 w-2 rounded-full bg-clinical" /> Generally safe / preferred</span>
+            </div>
+          </ExamSection>
+
           <ExamSection exams={[Exam.FINAL]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Other syndromes worth knowing</h2>
             <div className="grid sm:grid-cols-2 gap-3">
