@@ -828,39 +828,64 @@ const VivaQuestionLibrary = () => {
                             key={topicKey}
                             className="rounded-md border border-border/60 bg-background/40 overflow-hidden"
                           >
-                            <button
-                              type="button"
-                              onClick={() => !isSearching && toggleTopic(topicKey)}
-                              className="w-full flex items-center justify-between gap-3 px-3 py-2 hover:bg-muted/30 transition-colors text-left"
-                              aria-expanded={topicOpen}
-                              disabled={isSearching}
-                            >
-                              <div className="flex items-center gap-2 min-w-0">
-                                {topicOpen ? (
-                                  <ChevronDown className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-                                ) : (
-                                  <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-                                )}
-                                <span className="text-sm font-semibold text-foreground truncate">
-                                  {title}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-2 shrink-0">
-                                {(() => {
-                                  const tStat = coverage.bySection.get(key)?.topics.get(title);
-                                  return tStat ? (
-                                    <CoverageBars
-                                      questionsPracticed={tStat.practiced}
-                                      questionsTotal={tStat.total}
-                                      compact
-                                    />
-                                  ) : null;
-                                })()}
-                                <span className="text-[11px] text-muted-foreground">
-                                  {items.length}
-                                </span>
-                              </div>
-                            </button>
+                            <div className="flex items-stretch w-full">
+                              <button
+                                type="button"
+                                onClick={() => !isSearching && toggleTopic(topicKey)}
+                                className="flex-1 flex items-center justify-between gap-3 px-3 py-2 hover:bg-muted/30 transition-colors text-left min-w-0"
+                                aria-expanded={topicOpen}
+                                disabled={isSearching}
+                              >
+                                <div className="flex items-center gap-2 min-w-0">
+                                  {topicOpen ? (
+                                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                  ) : (
+                                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                  )}
+                                  <span className="text-sm font-semibold text-foreground truncate">
+                                    {title}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-2 shrink-0">
+                                  {(() => {
+                                    const tStat = coverage.bySection.get(key)?.topics.get(title);
+                                    return tStat ? (
+                                      <CoverageBars
+                                        questionsPracticed={tStat.practiced}
+                                        questionsTotal={tStat.total}
+                                        compact
+                                      />
+                                    ) : null;
+                                  })()}
+                                  <span className="text-[11px] text-muted-foreground">
+                                    {items.length}
+                                  </span>
+                                </div>
+                              </button>
+                              {(() => {
+                                const tStat = coverage.bySection.get(key)?.topics.get(title);
+                                if (!tStat || tStat.practiced === 0) return null;
+                                return (
+                                  <button
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setResetConfirm({
+                                        scope: "topic",
+                                        sectionKey,
+                                        topicTitle: title,
+                                        ids: items.map((it) => it.id),
+                                      });
+                                    }}
+                                    title={`Reset practiced count for "${title}"`}
+                                    aria-label={`Reset practiced count for ${title}`}
+                                    className="px-2 my-1 mr-1 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/40 transition-colors flex items-center"
+                                  >
+                                    <RotateCcw className="h-3.5 w-3.5" />
+                                  </button>
+                                );
+                              })()}
+                            </div>
 
                             {topicOpen && (
                               <ul className="space-y-2 px-2 pb-2">
