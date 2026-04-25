@@ -511,9 +511,33 @@ const PodcastsLibrary = () => {
                                   <SkipBack className="h-3.5 w-3.5" />
                                   Previous
                                 </button>
-                                <span className="text-[11px] text-muted-foreground">
-                                  {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
-                                </span>
+                                <div className="flex items-center gap-1.5">
+                                  {orderMode === "custom" && (
+                                    <>
+                                      <button
+                                        type="button"
+                                        onClick={() => moveCustom(p.topic_id, -1)}
+                                        disabled={!hasPrev}
+                                        aria-label="Move earlier in playlist"
+                                        className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                      >
+                                        <ArrowUp className="h-3 w-3" />
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => moveCustom(p.topic_id, 1)}
+                                        disabled={!hasNext}
+                                        aria-label="Move later in playlist"
+                                        className="inline-flex items-center justify-center h-6 w-6 rounded-md border border-border bg-card text-foreground hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                                      >
+                                        <ArrowDown className="h-3 w-3" />
+                                      </button>
+                                    </>
+                                  )}
+                                  <span className="text-[11px] text-muted-foreground">
+                                    {playlistIdx >= 0 ? `${playlistIdx + 1} / ${playlist.length}` : ""}
+                                  </span>
+                                </div>
                                 <button
                                   type="button"
                                   onClick={() => goToOffset(p.topic_id, 1)}
