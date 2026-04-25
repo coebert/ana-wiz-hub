@@ -174,6 +174,155 @@ const HumidityGasSamplingTopic = () => {
               </p>
             </div>
           </ExamSection>
+
+          <ExamSection id="paramagnetic" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Paramagnetic Oxygen Analysis</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Most molecules are <strong>diamagnetic</strong> (all electrons paired) and are weakly repelled by a magnetic field.
+                <strong> Oxygen is unusual</strong>: its molecular orbital structure leaves <strong>two unpaired electrons</strong>,
+                making it strongly <strong>paramagnetic</strong> — attracted into a magnetic field. Among medical gases only O₂
+                and nitric oxide (NO) show this property, so the measurement is essentially specific for O₂.
+              </p>
+              <p>
+                The classic <strong>Pauling analyser</strong> suspends two nitrogen-filled glass spheres ("dumb-bell") in a
+                non-uniform magnetic field. Sample gas containing O₂ enters the chamber; the O₂ is drawn into the strongest
+                part of the field, displacing the spheres and rotating the dumb-bell. A mirror on the suspension reflects a
+                light beam onto a photocell; a feedback current is applied to hold the dumb-bell stationary, and that current
+                is proportional to the partial pressure of O₂.
+              </p>
+              <p>
+                Modern monitors use a <strong>differential pressure (fast-response) paramagnetic cell</strong>: sample gas and
+                a reference gas are alternately pulled into a chamber containing a switched electromagnet. The pressure
+                difference oscillating across a sensitive transducer is proportional to the difference in O₂ concentration
+                — giving a <strong>response time fast enough for breath-by-breath inspired/expired O₂ measurement</strong>
+                (used to track oxygen uptake and during low-flow anaesthesia).
+              </p>
+              <p>
+                Strengths: highly accurate, linear, no consumable element, fast. Weaknesses: sensitive to water vapour
+                (sample line must be dried), affected by sample-gas pressure changes, and the static Pauling type is slow
+                (only suitable for FiO₂ trending).
+              </p>
+            </div>
+            <CrossReferenceCallout
+              reason="The galvanic fuel cell and Clark electrode are the electrochemical alternatives for measuring O₂ partial pressure (in the breathing circuit and in arterial blood respectively)."
+              links={[{ topicId: "abg-analyser" }]}
+            />
+          </ExamSection>
+
+          <ExamSection id="infrared" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Infrared Absorption — CO₂, N₂O and Volatile Agents</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Polyatomic molecules with a <strong>changing dipole moment</strong> during vibration absorb infrared radiation
+                at characteristic wavelengths. A broad-spectrum IR source illuminates the sample chamber; the gas absorbs
+                specific wavelengths and the residual transmitted intensity is measured by a detector. The fractional
+                absorption follows the <strong>Beer-Lambert law</strong> (A = εcl), so the signal is proportional to the
+                partial pressure of the target gas.
+              </p>
+              <p>
+                <strong>Characteristic absorption bands:</strong>
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>CO₂</strong> — 4.26 µm (asymmetric stretch). Used in every capnograph.</li>
+                <li><strong>N₂O</strong> — 4.5 µm (and a secondary peak near 3.9 µm).</li>
+                <li><strong>Volatile agents (sevoflurane, isoflurane, desflurane, halothane, enflurane)</strong> — broad
+                  absorption in the <strong>8–13 µm "fingerprint" region</strong>. Each agent has a slightly different
+                  spectrum, so a multi-wavelength analyser (or a tunable filter / Fourier-transform IR) can both
+                  <strong> identify</strong> the agent and <strong>quantify</strong> its concentration.</li>
+                <li><strong>O₂, N₂, Ar, He</strong> — homonuclear or monoatomic → no changing dipole → <strong>not detected</strong>
+                  by IR. O₂ requires paramagnetic, electrochemical or Raman analysis.</li>
+              </ul>
+              <p>
+                <strong>Pitfalls and corrections:</strong>
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Collision (pressure) broadening:</strong> N₂O molecules collide with CO₂ and broaden its
+                  4.26 µm absorption peak, causing the analyser to <em>overestimate</em> CO₂. Modern analysers measure N₂O
+                  simultaneously and apply software correction.</li>
+                <li><strong>Agent cross-sensitivity:</strong> volatile spectra overlap. A single-wavelength agent monitor
+                  will give a wrong reading if the wrong agent is selected; modern multi-wavelength analysers identify the
+                  agent automatically and warn if a mixture is present (e.g. residual desflurane during a sevoflurane case).</li>
+                <li><strong>Water vapour and condensation</strong> in the sampling line shift readings — sample lines use
+                  Nafion™ tubing that selectively allows water vapour to equilibrate with room air.</li>
+                <li><strong>Sidestream sampling delay</strong> (≈2–3 s) and <strong>aspiration rate</strong> (typically
+                  150–200 mL/min) must be matched to tidal volume in neonates to avoid dilution.</li>
+              </ul>
+              <p>
+                <strong>Hardware variants:</strong> dispersive IR (rotating filter wheel selects wavelength), non-dispersive
+                IR (NDIR — uses a dual-chamber detector, the original Luft cell), and photoacoustic spectroscopy (pulsed IR
+                heats the gas → pressure pulse detected by a microphone — used in the Brüel & Kjær multi-gas analyser).
+              </p>
+            </div>
+            <CrossReferenceCallout
+              reason="The capnograph waveform and its mainstream vs sidestream sampling options are the bedside application of this 4.26 µm CO₂ absorption."
+              links={[{ topicId: "pulse-oximetry" }]}
+            />
+          </ExamSection>
+
+          <ExamSection id="analyser-comparison" exams={[Exam.PRIMARY, Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Comparison of Gas-Concentration Analysers</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Each technique has a niche; modern anaesthetic monitors combine <strong>paramagnetic</strong> (O₂) with
+              <strong> multi-wavelength infrared</strong> (CO₂, N₂O, volatile agent) and an <strong>electrochemical</strong> back-up
+              for inspired O₂ alarming.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border border-border rounded-lg">
+                <thead className="bg-secondary/40">
+                  <tr>
+                    <th className="text-left p-2 text-foreground font-semibold">Technique</th>
+                    <th className="text-left p-2 text-foreground font-semibold">Gases measured</th>
+                    <th className="text-left p-2 text-foreground font-semibold">Principle</th>
+                    <th className="text-left p-2 text-foreground font-semibold">Strength / Limitation</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Paramagnetic</td>
+                    <td className="p-2">O₂ (and NO)</td>
+                    <td className="p-2">Unpaired electrons attracted into magnetic field</td>
+                    <td className="p-2">Fast, accurate, no consumable / sensitive to water vapour</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Infrared absorption</td>
+                    <td className="p-2">CO₂, N₂O, volatile agents</td>
+                    <td className="p-2">Beer-Lambert at agent-specific wavelengths</td>
+                    <td className="p-2">Cheap, fast / collision broadening, agent cross-sensitivity, blind to O₂/N₂</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Galvanic fuel cell</td>
+                    <td className="p-2">O₂ (FiO₂)</td>
+                    <td className="p-2">Spontaneous redox: O₂ + lead → EMF</td>
+                    <td className="p-2">No power needed / consumable lead anode (~6–12 mo)</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Clark electrode</td>
+                    <td className="p-2">O₂ (PaO₂ in blood)</td>
+                    <td className="p-2">Polarographic — current proportional to PO₂</td>
+                    <td className="p-2">Gold standard for blood gas / needs polarising voltage, drift</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Mass spectrometry</td>
+                    <td className="p-2">All respiratory and anaesthetic gases</td>
+                    <td className="p-2">Ionise → deflect by m/z (r = mv/qB)</td>
+                    <td className="p-2">Universal, multiplexable / large, expensive, vacuum required; N₂O ≡ CO₂ at m/z 44</td>
+                  </tr>
+                  <tr className="border-t border-border">
+                    <td className="p-2 font-medium text-foreground">Raman scattering</td>
+                    <td className="p-2">All gases including N₂, O₂</td>
+                    <td className="p-2">Inelastic photon scatter — vibrational fingerprint</td>
+                    <td className="p-2">Unambiguous, fast / weak signal, expensive laser, niche use</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              <strong>Exam tip:</strong> if a question gives you a single medical gas to measure, the canonical answer is
+              usually paramagnetic for O₂, infrared for CO₂/N₂O/volatiles, fuel cell for circuit FiO₂ and Clark electrode for
+              arterial blood. Mass spectrometry and Raman appear in "which analyser identifies <em>all</em> gases?" stems.
+            </p>
+          </ExamSection>
         </>
       }
     />
