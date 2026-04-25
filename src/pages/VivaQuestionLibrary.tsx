@@ -498,6 +498,43 @@ const VivaQuestionLibrary = () => {
           </p>
         </header>
 
+        {coverage.overall.questionsTotal > 0 && (
+          <section className="mb-4 rounded-lg border border-border bg-card p-3 sm:p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+              <div className="min-w-0">
+                <h2 className="text-sm font-semibold text-foreground">Practice progress</h2>
+                <p className="text-xs text-muted-foreground">
+                  Questions auto-mark when you open or listen — tap the tick to override. Stored on this device.
+                </p>
+              </div>
+              {coverage.overall.questionsPracticed > 0 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (window.confirm("Reset all viva practice progress on this device?")) {
+                      resetProgress();
+                      toast.success("Progress reset");
+                    }
+                  }}
+                  className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground"
+                >
+                  <RotateCcw className="h-3 w-3" /> Reset
+                </button>
+              )}
+            </div>
+            <CoverageBars
+              questionsPracticed={coverage.overall.questionsPracticed}
+              questionsTotal={coverage.overall.questionsTotal}
+              topicsTouched={coverage.overall.topicsTouched}
+              topicsTotal={coverage.overall.topicsTotal}
+              compact
+            />
+            <p className="mt-2 text-[10px] uppercase tracking-wider text-muted-foreground">
+              Q = questions practiced · T = topics touched
+            </p>
+          </section>
+        )}
+
         <section className="mb-4 flex flex-wrap gap-2">
           {(["all", "primary", "final", "fficm"] as ExamFilter[]).map((e) => {
             const isActive = examFilter === e;
