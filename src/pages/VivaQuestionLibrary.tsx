@@ -122,6 +122,49 @@ const CoverageBars = ({
   );
 };
 
+/** Escape regex metacharacters so user input is safe inside a RegExp. */
+const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * Highlights every occurrence of `query` (case-insensitive, whole substring,
+ * or any whitespace-separated token if `tokenise` is true) inside `text`.
+ * Returns a fragment with `<mark>` around matches and plain text around them.
+ */
+const Highlight = ({
+  text,
+  query,
+  tokenise = true,
+}: {
+  text: string;
+  query: string;
+  tokenise?: boolean;
+}) => {
+  const q = query.trim();
+  if (!q) return <>{text}</>;
+  const tokens = tokenise
+    ? Array.from(new Set(q.split(/\s+/).filter((t) => t.length >= 2)))
+    : [q];
+  if (tokens.length === 0) return <>{text}</>;
+  const pattern = new RegExp(`(${tokens.map(escapeRegex).join("|")})`, "gi");
+  const parts = text.split(pattern);
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <mark
+            key={i}
+            className="rounded-sm bg-primary/20 text-foreground px-0.5"
+          >
+            {part}
+          </mark>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
+  );
+};
+
 const VivaQuestionLibrary = () => {
   const [rows, setRows] = useState<ModelAnswerRow[]>([]);
   const [loading, setLoading] = useState(true);
