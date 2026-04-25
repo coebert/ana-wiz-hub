@@ -325,7 +325,7 @@ const PodcastsLibrary = () => {
                   Autoplay next podcast
                 </Label>
                 <p className="text-xs text-muted-foreground truncate">
-                  When one finishes, the next in order starts automatically.
+                  Plays in your chosen order when one finishes.
                 </p>
               </div>
             </div>
@@ -335,6 +335,54 @@ const PodcastsLibrary = () => {
               onCheckedChange={setAutoplay}
               aria-label="Toggle autoplay"
             />
+          </div>
+
+          <div className="rounded-lg border border-border bg-card px-3 py-2 space-y-2">
+            <div className="flex items-center gap-2 min-w-0">
+              <ListOrdered className="h-4 w-4 text-primary shrink-0" />
+              <div className="min-w-0">
+                <p className="text-sm font-medium text-foreground">Playback order</p>
+                <p className="text-xs text-muted-foreground">
+                  Controls Previous/Next and which podcast autoplays.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {(
+                [
+                  { id: "section", label: "Section order", desc: "Match the groups shown below" },
+                  { id: "curriculum", label: "Curriculum order", desc: "Follow the topic order in the syllabus" },
+                  { id: "custom", label: "Custom playlist", desc: "Use ↑/↓ on each podcast to reorder" },
+                ] as { id: OrderMode; label: string; desc: string }[]
+              ).map((opt) => {
+                const active = orderMode === opt.id;
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setOrderMode(opt.id)}
+                    title={opt.desc}
+                    className={cn(
+                      "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
+                      active
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border bg-card hover:border-primary/50 text-foreground"
+                    )}
+                  >
+                    {opt.label}
+                  </button>
+                );
+              })}
+              {orderMode === "custom" && customOrder.length > 0 && (
+                <button
+                  type="button"
+                  onClick={resetCustomOrder}
+                  className="inline-flex items-center gap-1 text-[11px] text-muted-foreground hover:text-foreground ml-auto"
+                >
+                  <RotateCcw className="h-3 w-3" /> Reset to section order
+                </button>
+              )}
+            </div>
           </div>
         </div>
       )}
