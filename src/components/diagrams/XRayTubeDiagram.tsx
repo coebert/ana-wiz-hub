@@ -521,6 +521,28 @@ export const XRayTubeDiagram = () => {
               </span>
             </div>
             <p className="text-xs text-muted-foreground">{item.detail}</p>
+
+            {SAFETY_LINKS[selected] && (
+              <div className="pt-2 mt-1 border-t border-border/60">
+                <p className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5">
+                  Related radiation safety
+                </p>
+                <ul className="flex flex-wrap gap-1.5">
+                  {SAFETY_LINKS[selected]!.map((link) => (
+                    <li key={link.href + link.label}>
+                      <a
+                        href={link.href}
+                        title={link.why}
+                        className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded-md border border-border bg-muted/40 text-foreground hover:bg-primary/10 hover:border-primary/40 hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                        <ArrowRight className="h-3 w-3" aria-hidden />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </div>
