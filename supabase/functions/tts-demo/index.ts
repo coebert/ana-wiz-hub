@@ -15,7 +15,20 @@ const corsHeaders = {
 
 const OPENAI_API_KEY = Deno.env.get("OPENAI_API_KEY");
 const TTS_MODEL = "gpt-4o-mini-tts";
-const TTS_VOICE = "alloy"; // matches podcast voice
+const DEFAULT_VOICE = "alloy"; // matches podcast voice
+const ALLOWED_VOICES = new Set([
+  "alloy",
+  "ash",
+  "ballad",
+  "coral",
+  "echo",
+  "fable",
+  "onyx",
+  "nova",
+  "sage",
+  "shimmer",
+  "verse",
+]);
 const MAX_CHARS = 2000; // hard cap for demo segments
 
 Deno.serve(async (req) => {
@@ -31,7 +44,7 @@ Deno.serve(async (req) => {
       );
     }
 
-    const { text } = await req.json().catch(() => ({}));
+    const { text, voice } = await req.json().catch(() => ({}));
     if (!text || typeof text !== "string") {
       return new Response(
         JSON.stringify({ error: "Missing text" }),
@@ -39,6 +52,8 @@ Deno.serve(async (req) => {
       );
     }
 
+    const selectedVoice =
+      typeof voice === "string" && ALLOWED_VOICES.has(voice) ? voice : DEFAULT_VOICE;
     const input = text.slice(0, MAX_CHARS);
 
     const response = await fetch("https://api.openai.com/v1/audio/speech", {
@@ -49,7 +64,7 @@ Deno.serve(async (req) => {
       },
       body: JSON.stringify({
         model: TTS_MODEL,
-        voice: TTS_VOICE,
+        voice: selectedVoice,
         input,
         response_format: "mp3",
         speed: 1.0,
