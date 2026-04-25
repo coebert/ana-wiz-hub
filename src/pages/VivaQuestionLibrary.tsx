@@ -390,24 +390,33 @@ const VivaQuestionLibrary = () => {
                                       {isOpen && (
                                         <div className="border-t border-border p-4 space-y-4 bg-background/40">
                                           <div>
-                                            <div className="flex items-center justify-between gap-2 mb-2">
+                                            <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
                                               <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground">
                                                 Model answer
                                               </p>
                                               <Button
                                                 type="button"
                                                 size="sm"
-                                                variant="ghost"
-                                                onClick={() => speak(r)}
-                                                disabled={speakingId === r.id}
+                                                variant={speakingId === r.id ? "secondary" : "ghost"}
+                                                onClick={() => playDialogue(r)}
                                                 className="h-7 px-2 text-xs"
+                                                aria-label={
+                                                  speakingId === r.id
+                                                    ? "Stop dialogue playback"
+                                                    : "Listen to examiner and candidate as a two-voice dialogue"
+                                                }
                                               >
                                                 {speakingId === r.id ? (
-                                                  <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                                                  <>
+                                                    <Square className="h-3.5 w-3.5" />
+                                                    <span className="ml-1.5">Stop</span>
+                                                  </>
                                                 ) : (
-                                                  <Volume2 className="h-3.5 w-3.5" />
+                                                  <>
+                                                    <Headphones className="h-3.5 w-3.5" />
+                                                    <span className="ml-1.5">Listen as dialogue</span>
+                                                  </>
                                                 )}
-                                                <span className="ml-1.5">Listen</span>
                                               </Button>
                                             </div>
                                             <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-wrap">
