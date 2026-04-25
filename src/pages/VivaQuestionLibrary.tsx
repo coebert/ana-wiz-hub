@@ -267,9 +267,12 @@ const VivaQuestionLibrary = () => {
     }
   };
 
-  /** Build the queue of rows to stream based on exam filter + selected topics. */
+  /** Build the queue of rows to stream based on exam + difficulty + selected topics. */
   const streamQueue = useMemo(() => {
     let queue = rows.filter((r) => examFilter === "all" || r.exam === examFilter);
+    if (difficultyFilter !== "all") {
+      queue = queue.filter((r) => rowDifficulty.get(r.id) === difficultyFilter);
+    }
     if (streamTopics.size > 0) {
       queue = queue.filter((r) => streamTopics.has(r.topic_title));
     }
@@ -278,7 +281,7 @@ const VivaQuestionLibrary = () => {
       const t = a.topic_title.localeCompare(b.topic_title);
       return t !== 0 ? t : a.created_at.localeCompare(b.created_at);
     });
-  }, [rows, examFilter, streamTopics]);
+  }, [rows, examFilter, difficultyFilter, rowDifficulty, streamTopics]);
 
   /** All distinct topic titles available given the current exam filter. */
   const availableTopics = useMemo(() => {
