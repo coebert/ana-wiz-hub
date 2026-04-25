@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { urologicalAnaesthesiaQuestions } from "@/data/quizzes";
 import TURPSyndromeDiagram from "@/components/diagrams/TURPSyndromeDiagram";
+import PropofolErectionMechanismDiagram from "@/components/diagrams/PropofolErectionMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 
 const UrologicalAnaesthesiaTopic = () => {
@@ -33,7 +34,7 @@ const UrologicalAnaesthesiaTopic = () => {
         workedExamples: ["BJA Educ 2014 TURP", "AAGBI Lithotomy 2015"],
         keyPoints: ["BJA Educ 2014 TURP", "ERAS Cystectomy 2013", "AAGBI Lithotomy 2015"],
       }}
-      diagrams={<TURPSyndromeDiagram />}
+      diagrams={<><TURPSyndromeDiagram /><PropofolErectionMechanismDiagram /></>}
       coreConcepts={
         <>
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["CU_BK_03"]}>
