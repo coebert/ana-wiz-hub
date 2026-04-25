@@ -10,7 +10,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "pulse-oximetry": ["abg-analyser", "oxygen-haemoglobin", "optics-light", "clinical-measurement"],
   "abg-analyser": ["pulse-oximetry", "acid-base", "clinical-measurement", "renal-physiology"],
   "temperature-measurement": ["si-units-thermodynamics", "clinical-measurement"],
-  "humidity-gas-sampling": ["equipment-monitoring", "gas-laws"],
+  "humidity-gas-sampling": ["equipment-monitoring", "gas-laws", "abg-analyser", "pulse-oximetry"],
   "lasers-fibreoptics": ["optics-light", "airway-management", "ent-anaesthesia"],
   "ultrasound-physics": ["regional-anaesthesia", "cardiac-output-monitoring", "clinical-measurement"],
   "mri-physics": ["electrical-safety", "optics-light", "xray-radiation-safety"],
