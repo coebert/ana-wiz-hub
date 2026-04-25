@@ -49,6 +49,10 @@ const VivaQuestionLibrary = () => {
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
   const [collapsedTopics, setCollapsedTopics] = useState<Set<string>>(new Set());
   const [speakingId, setSpeakingId] = useState<string | null>(null);
+  const playbackRef = useRef<{ cancelled: boolean; audio: HTMLAudioElement | null }>({
+    cancelled: false,
+    audio: null,
+  });
 
   useEffect(() => {
     const load = async () => {
