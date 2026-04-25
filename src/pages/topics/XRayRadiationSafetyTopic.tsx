@@ -231,14 +231,105 @@ const XRayRadiationSafetyTopic = () => {
             <h2 className="text-xl font-bold text-foreground mb-2">Dose Limits & Personal Dosimetry</h2>
             <div className="text-muted-foreground leading-relaxed space-y-3">
               <p>UK Ionising Radiations Regulations 2017 (IRR 2017) set the following effective dose limits per calendar year:</p>
-              <ul className="list-disc list-inside space-y-1 ml-2">
-                <li><strong>Classified workers</strong>: 20 mSv (averaged over 5 years; max 50 mSv in any single year).</li>
-                <li><strong>Trainees aged 16–18</strong>: 6 mSv.</li>
-                <li><strong>Members of the public</strong>: 1 mSv.</li>
-                <li><strong>Pregnant worker</strong>: 1 mSv to the conceptus over the declared remainder of pregnancy.</li>
-                <li><strong>Lens of the eye</strong> (equivalent dose): 20 mSv/year (reduced from 150 mSv following ICRP 2011).</li>
-                <li><strong>Skin and extremities</strong> (equivalent dose): 500 mSv/year.</li>
-              </ul>
+
+              {/* Quick-reference: IRR 2017 limits at a glance */}
+              <aside
+                aria-labelledby="irr-quickref-title"
+                className="rounded-xl border border-border bg-background/80 p-4 not-prose"
+                style={{ borderLeftWidth: 4, borderLeftColor: "hsl(var(--physics))" }}
+              >
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <h3
+                    id="irr-quickref-title"
+                    className="text-sm font-semibold text-foreground tracking-tight"
+                  >
+                    IRR 2017 — dose limits at a glance
+                  </h3>
+                  <span className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md bg-physics/10 text-physics">
+                    UK · per calendar year
+                  </span>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {/* Effective (whole-body) dose limits */}
+                  <div className="rounded-lg border border-border bg-muted/30 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-2">
+                      Effective dose (whole body)
+                    </p>
+                    <ul className="space-y-1.5 text-xs">
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Classified worker</strong></span>
+                        <span className="tabular-nums font-semibold text-foreground">20 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3 text-muted-foreground">
+                        <span className="italic">5-yr average; max in any 1 yr</span>
+                        <span className="tabular-nums">50 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Trainee 16–18</strong></span>
+                        <span className="tabular-nums font-semibold text-foreground">6 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Member of the public</strong></span>
+                        <span className="tabular-nums font-semibold text-foreground">1 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Foetus</strong> (declared pregnancy)</span>
+                        <span className="tabular-nums font-semibold text-foreground">1 mSv</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Equivalent (organ) dose limits + thresholds */}
+                  <div className="rounded-lg border border-border bg-muted/30 p-3">
+                    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-2">
+                      Equivalent dose (organ)
+                    </p>
+                    <ul className="space-y-1.5 text-xs">
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Lens of eye</strong></span>
+                        <span className="tabular-nums font-semibold text-foreground">20 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3 text-muted-foreground">
+                        <span className="italic">Pre-ICRP 2011</span>
+                        <span className="tabular-nums">150 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Skin</strong> (1 cm² avg)</span>
+                        <span className="tabular-nums font-semibold text-foreground">500 mSv</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground"><strong>Extremities</strong></span>
+                        <span className="tabular-nums font-semibold text-foreground">500 mSv</span>
+                      </li>
+                    </ul>
+
+                    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mt-3 mb-2">
+                      Deterministic thresholds
+                    </p>
+                    <ul className="space-y-1.5 text-xs">
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground">Lens cataract (cumulative)</span>
+                        <span className="tabular-nums font-semibold text-foreground">0.5 Gy</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground">Skin erythema (acute)</span>
+                        <span className="tabular-nums font-semibold text-foreground">2 Gy</span>
+                      </li>
+                      <li className="flex items-baseline justify-between gap-3">
+                        <span className="text-foreground">Temporary sterility (M)</span>
+                        <span className="tabular-nums font-semibold text-foreground">0.15 Gy</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p className="text-[11px] text-muted-foreground italic mt-3 leading-snug">
+                  Effective dose (Sv) = Σ (organ equivalent dose × tissue weighting wT). Stochastic risk has
+                  <strong className="not-italic text-foreground"> no threshold</strong>; deterministic effects do.
+                </p>
+              </aside>
+
               <p>
                 <strong>Personal dosimetry</strong> uses thermoluminescent (TLD) or optically stimulated luminescence (OSL) badges,
                 read monthly. The standard configuration is a single collar badge worn outside the apron at chest level (estimates
