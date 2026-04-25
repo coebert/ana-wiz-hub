@@ -210,6 +210,94 @@ const SepsisTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Human Albumin Solution — the evidence</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Albumin (4–5% iso-oncotic or 20% hyper-oncotic) is the only colloid that retains a place in sepsis resuscitation
+            after starches and gelatins were withdrawn for harm. Its theoretical appeal is sustained intravascular expansion
+            with less interstitial oedema, plus binding/transport, antioxidant and endothelial-glycocalyx effects. The
+            randomised evidence is more nuanced.
+          </p>
+
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Trial</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Population & intervention</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Key result</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Take-home</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 align-top font-medium text-foreground">SAFE (NEJM 2004, n≈7000)</td>
+                  <td className="py-2 align-top">General ICU; 4% albumin vs 0.9% saline for resuscitation.</td>
+                  <td className="py-2 align-top">No overall mortality difference (RR 0.99). Pre-specified sepsis subgroup: trend to <em>lower</em> mortality with albumin (OR 0.87, 95% CI 0.74–1.02).</td>
+                  <td className="py-2 align-top">Albumin is <strong>safe</strong> in sepsis; signal of possible benefit (hypothesis-generating).</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 align-top font-medium text-foreground">SAFE TBI subgroup (NEJM 2007)</td>
+                  <td className="py-2 align-top">Traumatic brain injury subgroup of SAFE.</td>
+                  <td className="py-2 align-top">Increased 24-month mortality with albumin (RR 1.63).</td>
+                  <td className="py-2 align-top"><strong>Avoid albumin in TBI</strong> — even when sepsis coexists.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 align-top font-medium text-foreground">ALBIOS (NEJM 2014, n=1818)</td>
+                  <td className="py-2 align-top">Severe sepsis / septic shock; 20% albumin to keep serum albumin ≥30 g/L + crystalloid vs crystalloid alone, for 28 days.</td>
+                  <td className="py-2 align-top">No 28- or 90-day mortality difference. Better haemodynamics (higher MAP, lower fluid balance, faster vasopressor weaning). Post-hoc: ↓ mortality in the septic-shock subgroup (RR 0.87).</td>
+                  <td className="py-2 align-top">Albumin <strong>improves haemodynamics</strong> but no proven survival benefit overall; possible benefit in established septic shock.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 align-top font-medium text-foreground">CRISTAL (JAMA 2013)</td>
+                  <td className="py-2 align-top">Hypovolaemic shock (incl. sepsis); colloids (mostly albumin/HES) vs crystalloids.</td>
+                  <td className="py-2 align-top">No 28-day mortality difference; lower 90-day mortality with colloids (secondary outcome).</td>
+                  <td className="py-2 align-top">Hypothesis-generating only — heterogeneous colloid mix limits conclusions for albumin specifically.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 align-top font-medium text-foreground">Meta-analyses (Patel 2014, Xu 2014, Cochrane 2018)</td>
+                  <td className="py-2 align-top">Pooled RCTs of albumin vs other fluids in sepsis.</td>
+                  <td className="py-2 align-top">No clear all-cause mortality benefit; signal toward reduced mortality when compared specifically to <em>saline</em> rather than balanced crystalloids.</td>
+                  <td className="py-2 align-top">Effect size — if real — is small and may largely reflect avoidance of saline-related hyperchloraemia.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 align-top font-medium text-foreground">CHEST (2012) & 6S (2012)</td>
+                  <td className="py-2 align-top">Comparator trials of HES vs crystalloid in ICU/sepsis.</td>
+                  <td className="py-2 align-top">HES caused increased AKI / RRT and (6S) increased mortality.</td>
+                  <td className="py-2 align-top">Established that <strong>synthetic colloids are harmful</strong>, leaving albumin as the only colloid still considered in sepsis.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Guideline positions</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Surviving Sepsis Campaign 2021</strong> — <em>weak recommendation</em> for albumin in patients who have received <strong>large volumes of crystalloid</strong> (e.g. &gt;60–80 mL/kg) for sepsis or septic shock; balanced crystalloid remains first-line. Not recommended as the initial resuscitation fluid.</li>
+            <li><strong>NICE NG51</strong> — crystalloid first; <strong>do not use</strong> tetrastarch; albumin not routinely recommended but may be considered in ongoing large-volume resuscitation.</li>
+            <li><strong>IDSA 2024</strong> — emphasises individualised, dynamic fluid assessment over fixed volumes; reserves albumin for the same large-volume scenario, noting absence of robust mortality benefit.</li>
+            <li><strong>Avoid</strong> albumin in <strong>traumatic brain injury</strong> (SAFE TBI signal of harm) and use cautiously in decompensated heart failure (volume load).</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Mechanistic rationale & caveats</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-3">
+            <li><strong>Oncotic pressure:</strong> albumin contributes ~75–80% of plasma colloid osmotic pressure; iso-oncotic 4–5% expands plasma volume by ~80% of the volume infused vs ~20–25% for crystalloid.</li>
+            <li><strong>Glycocalyx in sepsis</strong> is shed → increased capillary leak. The classical "colloid stays intravascular" advantage is <em>attenuated</em>, which may explain why trials show smaller volume-sparing effects than predicted.</li>
+            <li><strong>Non-oncotic effects:</strong> antioxidant (binds free radicals, NO carrier), drug/bilirubin transport, possible glycocalyx-stabilising actions — biologically plausible but not proven to translate to survival.</li>
+            <li><strong>Hyperchloraemia avoidance:</strong> apparent "albumin benefit" vs saline is attenuated when balanced crystalloid (Hartmann's, Plasma-Lyte) is the comparator (SMART, BaSICS).</li>
+            <li><strong>Cost & supply:</strong> albumin is ~30–50× the cost of crystalloid — a key reason routine first-line use is not endorsed despite a favourable safety profile.</li>
+          </ul>
+
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 text-sm text-foreground">
+            <p className="font-semibold mb-1">Practical viva-ready summary</p>
+            <p className="text-muted-foreground">
+              "Balanced crystalloid is first-line in sepsis. Human albumin (4–5%) is safe (SAFE) and can be added once
+              large volumes of crystalloid have been given (SSC 2021, weak recommendation), with ALBIOS showing better
+              haemodynamics and a possible benefit in septic shock but no overall mortality reduction. Synthetic colloids
+              (HES, gelatins) are contraindicated. Avoid albumin in traumatic brain injury."
+            </p>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Corticosteroids</h2>
           <p className="text-muted-foreground leading-relaxed">
             IV hydrocortisone 200 mg/day (50 mg QDS or continuous infusion) if haemodynamic instability persists despite adequate fluid resuscitation and vasopressor therapy. ADRENAL and APROCCHSS trials support use in refractory septic shock for faster shock reversal but no mortality benefit is definitively proven.
