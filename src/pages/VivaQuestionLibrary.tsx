@@ -986,21 +986,24 @@ const VivaQuestionLibrary = () => {
                               <button
                                 type="button"
                                 onClick={() => !isSearching && toggleTopic(topicKey)}
-                                className="flex-1 flex items-center justify-between gap-3 px-3 py-2 hover:bg-muted/30 transition-colors text-left min-w-0"
+                                className="flex-1 flex items-start justify-between gap-3 px-3 py-2 hover:bg-muted/30 transition-colors text-left min-w-0"
                                 aria-expanded={topicOpen}
                                 disabled={isSearching}
                               >
-                                <div className="flex items-center gap-2 min-w-0">
+                                <div className="flex items-start gap-2 min-w-0 flex-1 pt-0.5">
                                   {topicOpen ? (
-                                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                    <ChevronDown className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-0.5" />
                                   ) : (
-                                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
+                                    <ChevronRight className="h-3.5 w-3.5 text-muted-foreground shrink-0 mt-0.5" />
                                   )}
-                                  <span className="text-sm font-semibold text-foreground truncate">
+                                  <span
+                                    className="text-sm font-semibold text-foreground leading-snug break-words line-clamp-2 sm:line-clamp-1 sm:truncate min-w-0"
+                                    title={title}
+                                  >
                                     {title}
                                   </span>
                                 </div>
-                                <div className="flex items-center gap-2 shrink-0">
+                                <div className="flex items-start gap-2 shrink-0 pt-0.5">
                                   {(() => {
                                     const tStat = coverage.bySection.get(key)?.topics.get(title);
                                     return tStat ? (
@@ -1011,7 +1014,7 @@ const VivaQuestionLibrary = () => {
                                       />
                                     ) : null;
                                   })()}
-                                  <span className="text-[11px] text-muted-foreground">
+                                  <span className="text-[11px] text-muted-foreground tabular-nums">
                                     {items.length}
                                   </span>
                                 </div>
