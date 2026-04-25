@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw } from "lucide-react";
+import { Headphones, Download, ExternalLink, Loader2, Search, X, ChevronDown, PlayCircle, SkipBack, SkipForward, ListOrdered, ArrowUp, ArrowDown, RotateCcw, Mic, ArrowRight } from "lucide-react";
 import { SectionLayout } from "@/components/SectionLayout";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta, Section } from "@/data/curriculum";
@@ -293,6 +293,26 @@ const PodcastsLibrary = () => {
       backLabel="Home"
       disableAutoTOC
     >
+      <Link
+        to="/viva/library"
+        className="group mb-6 flex items-center justify-between gap-3 rounded-lg border border-clinical/30 bg-clinical/5 p-3 sm:p-4 transition-colors hover:border-clinical/60 hover:bg-clinical/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-clinical/15 text-clinical">
+            <Mic className="h-4 w-4" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-foreground">
+              Listen to viva questions with model answers
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Open the Viva Question Library to play full questions and AI-spoken model answers as audio.
+            </p>
+          </div>
+        </div>
+        <ArrowRight className="h-4 w-4 text-clinical shrink-0 transition-transform group-hover:translate-x-1" />
+      </Link>
+
       {podcasts && podcasts.length > 0 && (
         <div className="mb-6 space-y-3">
           <div className="relative">
