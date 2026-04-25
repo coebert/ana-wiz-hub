@@ -800,43 +800,78 @@ const VivaQuestionLibrary = () => {
                                       key={r.id}
                                       className="rounded-md border border-border bg-card overflow-hidden"
                                     >
-                                      <button
-                                        type="button"
-                                        onClick={() => toggle(r.id)}
-                                        className="w-full text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-                                        aria-expanded={isOpen}
-                                      >
-                                        <div className="flex items-start gap-3">
-                                          <div className="mt-0.5 text-muted-foreground flex-shrink-0">
-                                            {isOpen ? (
-                                              <ChevronDown className="h-4 w-4" />
-                                            ) : (
-                                              <ChevronRight className="h-4 w-4" />
-                                            )}
-                                          </div>
-                                          <div className="min-w-0 flex-1">
-                                            <p className="font-serif font-semibold text-foreground leading-snug">
-                                              {r.question}
-                                            </p>
-                                            <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                                              <Badge variant="outline" className="text-[10px]">
-                                                {examLabels[r.exam] ?? r.exam}
-                                              </Badge>
-                                              {(() => {
-                                                const d = rowDifficulty.get(r.id);
-                                                return d ? (
+                                      <div className="flex items-stretch">
+                                        <button
+                                          type="button"
+                                          onClick={() => toggle(r.id)}
+                                          className="flex-1 text-left p-3 hover:bg-primary/5 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                                          aria-expanded={isOpen}
+                                        >
+                                          <div className="flex items-start gap-3">
+                                            <div className="mt-0.5 text-muted-foreground flex-shrink-0">
+                                              {isOpen ? (
+                                                <ChevronDown className="h-4 w-4" />
+                                              ) : (
+                                                <ChevronRight className="h-4 w-4" />
+                                              )}
+                                            </div>
+                                            <div className="min-w-0 flex-1">
+                                              <p className="font-serif font-semibold text-foreground leading-snug">
+                                                {r.question}
+                                              </p>
+                                              <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                                                <Badge variant="outline" className="text-[10px]">
+                                                  {examLabels[r.exam] ?? r.exam}
+                                                </Badge>
+                                                {(() => {
+                                                  const d = rowDifficulty.get(r.id);
+                                                  return d ? (
+                                                    <Badge
+                                                      variant="outline"
+                                                      className={`text-[10px] ${difficultyClasses[d]}`}
+                                                    >
+                                                      {difficultyLabels[d]}
+                                                    </Badge>
+                                                  ) : null;
+                                                })()}
+                                                {isPracticed(r.id) && (
                                                   <Badge
                                                     variant="outline"
-                                                    className={`text-[10px] ${difficultyClasses[d]}`}
+                                                    className="text-[10px] border-primary/40 bg-primary/10 text-primary"
                                                   >
-                                                    {difficultyLabels[d]}
+                                                    Practiced
                                                   </Badge>
-                                                ) : null;
-                                              })()}
+                                                )}
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </button>
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleProgress(r.id);
+                                          }}
+                                          aria-label={
+                                            isPracticed(r.id)
+                                              ? "Mark as not yet practiced"
+                                              : "Mark as practiced"
+                                          }
+                                          aria-pressed={isPracticed(r.id)}
+                                          title={
+                                            isPracticed(r.id)
+                                              ? "Mark as not yet practiced"
+                                              : "Mark as practiced"
+                                          }
+                                          className="px-3 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/5 border-l border-border transition-colors"
+                                        >
+                                          {isPracticed(r.id) ? (
+                                            <CheckCircle2 className="h-5 w-5 text-primary" />
+                                          ) : (
+                                            <Circle className="h-5 w-5" />
+                                          )}
+                                        </button>
+                                      </div>
 
                                       {isOpen && (
                                         <div className="border-t border-border p-4 space-y-4 bg-background/40">
