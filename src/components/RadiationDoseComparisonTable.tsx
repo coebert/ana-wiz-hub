@@ -238,11 +238,96 @@ export const RadiationDoseComparisonTable = () => {
           })}
         </ul>
 
-        <p className="text-[11px] text-muted-foreground italic leading-snug">
-          Values are typical adult effective doses (sources: PHE/UKHSA, RCR iRefer, AAPM Report 96).
-          Actual dose varies with scanner generation, protocol, patient size and operator technique;
-          interventional fluoroscopic doses are particularly variable. UK background = 2.7 mSv/yr.
-        </p>
+        <div className="rounded-lg border border-border bg-background/60 p-3 space-y-2 text-[11px] text-muted-foreground leading-snug">
+          <p className="text-[10px] uppercase tracking-wide text-foreground font-semibold">
+            How to read this table
+          </p>
+
+          <div>
+            <p className="text-foreground font-medium text-[11.5px]">What is "effective dose" (mSv)?</p>
+            <p>
+              Effective dose is a <strong>whole-body, risk-weighted</strong> quantity in sieverts (Sv).
+              It takes the energy absorbed by each organ in the beam (the <em>absorbed dose</em>, in grays),
+              multiplies it by a radiation weighting factor <em>w<sub>R</sub></em> (= 1 for X- and γ-rays)
+              to give an <em>equivalent dose</em>, then applies ICRP tissue weighting factors{" "}
+              <em>w<sub>T</sub></em> (e.g. lung 0.12, breast 0.12, gonads 0.08, skin 0.01) and sums across
+              all organs. The result is the uniform whole-body dose that would carry the same stochastic
+              risk (cancer, hereditary effects) as the actual non-uniform exposure. It is designed for
+              population risk comparisons, not for predicting what will happen to one specific patient.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-foreground font-medium text-[11.5px]">
+              Why effective dose ≠ skin dose ≠ absorbed dose
+            </p>
+            <ul className="list-disc list-inside space-y-0.5 marker:text-muted-foreground">
+              <li>
+                <strong>Absorbed dose (Gy)</strong> is energy per unit mass deposited in a specific
+                tissue — purely physical, no risk weighting.
+              </li>
+              <li>
+                <strong>Peak skin dose</strong> is the absorbed dose at the most-irradiated patch of
+                skin. In long fluoroscopic procedures (TIPS, complex PCI, EVAR) it can reach 2–5 Gy
+                and cause deterministic injury (erythema, ulceration, hair loss) even when the
+                effective dose is &quot;only&quot; 50–70 mSv. <em>Effective dose tells you nothing
+                about local skin injury risk.</em>
+              </li>
+              <li>
+                <strong>Effective dose (mSv)</strong> averages over the whole body weighted by tissue
+                radiosensitivity. A 7 mSv CTPA and a 7 mSv abdominal CT carry similar overall
+                stochastic risk but very different organ distributions (lungs &amp; breast vs. bowel
+                &amp; gonads).
+              </li>
+              <li>
+                Effective dose is also <strong>not measured</strong> — it is estimated from phantom
+                models. ±40% uncertainty between scanners and patients is normal.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-foreground font-medium text-[11.5px]">
+              Reading "days/years of background radiation"
+            </p>
+            <p>
+              UK natural background averages <strong>~2.7 mSv/year</strong> (radon, cosmic, terrestrial,
+              internal K-40 — varies regionally from ~2 to &gt;7 mSv/yr in granite areas like Cornwall).
+              Expressing a scan as <em>"≈ 1 year of background"</em> is a communication device, not a
+              biological equivalence:
+            </p>
+            <ul className="list-disc list-inside space-y-0.5 marker:text-muted-foreground mt-1">
+              <li>
+                Background is delivered <strong>chronically at very low rate</strong> (~7 µSv/day), which
+                allows DNA repair between hits. A CT delivers the same energy in seconds — same total
+                dose, but biologically <em>not</em> identical.
+              </li>
+              <li>
+                The comparison assumes the linear-no-threshold (LNT) model of stochastic risk
+                (≈ 5%/Sv attributable lifetime cancer risk for adults — higher in children, lower in
+                the elderly).
+              </li>
+              <li>
+                Use it to convey <em>magnitude</em> ("a CT abdomen ≈ 4 years of background") and
+                <em> relative</em> risk between alternative tests, not to imply a scan is &quot;safe
+                because we all get background anyway&quot;.
+              </li>
+            </ul>
+          </div>
+
+          <p className="italic">
+            Bottom line: effective dose is the right number for justification and comparison between
+            exams; peak skin dose is the right number for deterministic injury in interventional work;
+            background-equivalent days/years are a patient-friendly translation, not a biological law.
+          </p>
+
+          <p className="border-t border-border pt-1.5 mt-1">
+            Sources for table values: PHE/UKHSA <em>Patient dose information</em>, RCR <em>iRefer</em>,
+            AAPM Report 96. Actual dose varies with scanner generation, protocol, patient size and
+            operator technique; interventional fluoroscopic doses are particularly variable. UK
+            background = 2.7 mSv/yr.
+          </p>
+        </div>
       </div>
     </div>
   );
