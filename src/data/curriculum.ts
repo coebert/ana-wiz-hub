@@ -124,6 +124,8 @@ export const anatomyTopics: Topic[] = [
 ];
 
 export const clinicalTopics: Topic[] = [
+  // Environment & systems
+  { id: "operating-theatre-environment", title: "The Operating Theatre & Theatre Complex", description: "Layout, zoning, laminar-flow ventilation, air changes, temperature/humidity, scavenging, electrical safety, theatre team workflow", section: "clinical", examTags: ["primary", "final"], available: true },
   // Core skills
   { id: "airway-management", title: "Airway Management", description: "Difficult airway algorithms, DAS guidelines, supraglottic devices, surgical airway", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "regional-anaesthesia", title: "Regional & Neuraxial Anaesthesia", description: "Spinal, epidural, nerve blocks, ultrasound-guided techniques", section: "clinical", examTags: ["final"], available: true },
