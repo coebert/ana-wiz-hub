@@ -7,6 +7,7 @@ import SepsisHostResponseDiagram from "@/components/diagrams/SepsisHostResponseD
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
+import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
