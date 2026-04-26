@@ -286,6 +286,42 @@ const SepsisTopic = () => {
             <li><strong>Cost & supply:</strong> albumin is ~30–50× the cost of crystalloid — a key reason routine first-line use is not endorsed despite a favourable safety profile.</li>
           </ul>
 
+          <div className="rounded-lg border border-border bg-card p-4 text-sm space-y-3 mb-3">
+            <p className="font-semibold text-foreground">Practical dosing — when and how to give albumin in sepsis</p>
+            <div>
+              <p className="font-semibold text-foreground mb-1">When to consider it</p>
+              <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                <li><strong>Trigger:</strong> persistent hypotension or ongoing vasopressor requirement <em>after</em> ~30 mL/kg balanced crystalloid (SSC 2021 initial bolus), and especially once cumulative crystalloid approaches <strong>60–80 mL/kg</strong> in the first 24 h.</li>
+                <li><strong>Goal:</strong> reduce further crystalloid load (limit interstitial oedema, hyperchloraemia and abdominal pressure) while maintaining MAP ≥65 mmHg and adequate end-organ perfusion.</li>
+                <li><strong>Avoid</strong> in traumatic brain injury (SAFE TBI). Use cautiously in decompensated heart failure and oliguric AKI with established fluid overload.</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">4–5% (iso-oncotic) — for ongoing volume replacement</p>
+              <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                <li><strong>Use when</strong> the primary aim is plasma-volume expansion in a fluid-responsive patient who has already had substantial crystalloid.</li>
+                <li><strong>Dose:</strong> 250–500 mL boluses (≈ 5 mL/kg) over 15–30 min, reassessing fluid responsiveness (passive leg raise, stroke-volume variation, lactate trend) between boluses. Typical 24-h ceiling 1–2 L.</li>
+                <li><strong>Effect:</strong> ~80% of the infused volume retained intravascularly (vs ~20–25% for crystalloid).</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">20% (hyper-oncotic) — for hypoalbuminaemia / oedematous patient</p>
+              <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                <li><strong>Use when</strong> serum albumin is low (typically &lt;25–30 g/L), the patient is already fluid-overloaded/oedematous, or further large crystalloid boluses are undesirable. This is the ALBIOS strategy — top up to keep serum albumin ≥30 g/L.</li>
+                <li><strong>Dose:</strong> 100 mL of 20% (= 20 g albumin) over 30–60 min, repeated 1–2× daily as needed. Some units give up to 200 mL/day in divided doses while titrating to serum albumin ≥30 g/L.</li>
+                <li><strong>Caution:</strong> pulls fluid into the intravascular space — risk of acute pulmonary oedema if the patient is not fluid-deplete; pair with diuresis if total body fluid overload exists.</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-foreground mb-1">Monitoring & stop rules</p>
+              <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                <li>Reassess MAP, lactate, urine output and dynamic indices after each bolus; stop if no haemodynamic response (non-responder) or if signs of pulmonary oedema appear.</li>
+                <li>Do not chase serum albumin above 30–35 g/L — there is no evidence of benefit and cost/supply is significant.</li>
+                <li>Document clearly that synthetic colloids (HES, gelatins) are <strong>not</strong> to be used.</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 text-sm text-foreground">
             <p className="font-semibold mb-1">Practical viva-ready summary</p>
             <p className="text-muted-foreground">
