@@ -83,6 +83,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "tiva": ["iv-anaesthetics", "pharmacokinetics", "depth-of-anaesthesia"],
   "orthopaedic-anaesthesia": ["regional-anaesthesia", "lower-limb-anatomy", "elderly-anaesthesia", "enhanced-recovery"],
   "ophthalmic-anaesthesia": ["regional-anaesthesia", "autonomic-nervous"],
+  "operating-theatre-environment": ["clinical-incidents", "electrical-safety", "humidity-gas-sampling", "equipment-monitoring", "non-technical-skills"],
   "day-surgery": ["enhanced-recovery", "antiemetics", "preoperative-assessment", "procedural-sedation"],
   "procedural-sedation": ["tiva", "iv-anaesthetics", "icu-sedation-delirium", "day-surgery", "pain-medicine"],
   "transfer-medicine": ["trauma-emergency", "clinical-incidents", "equipment-monitoring"],
