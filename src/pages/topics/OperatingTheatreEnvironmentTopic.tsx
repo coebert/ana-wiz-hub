@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { operatingTheatreEnvironmentQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import TheatreZoningDiagram from "@/components/diagrams/TheatreZoningDiagram";
 
 const objectives = [
   "Describe the zoning of a UK operating theatre complex and the rationale for the protective → clean → sterile gradient",
@@ -93,6 +94,10 @@ const OperatingTheatreEnvironmentTopic = () => {
               Recovery is intentionally placed in the <strong>clean</strong> zone, not the sterile zone, so that patients can leave the
               complex without re-crossing the sterile area. Patient flow is one-directional: induction → theatre → recovery → discharge.
             </p>
+
+            <div className="mt-4 animate-fade-in">
+              <TheatreZoningDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="ventilation" exams={[Exam.PRIMARY, Exam.FINAL]}>
