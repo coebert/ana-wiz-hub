@@ -94,6 +94,10 @@ const OperatingTheatreEnvironmentTopic = () => {
               Recovery is intentionally placed in the <strong>clean</strong> zone, not the sterile zone, so that patients can leave the
               complex without re-crossing the sterile area. Patient flow is one-directional: induction → theatre → recovery → discharge.
             </p>
+
+            <div className="mt-4 animate-fade-in">
+              <TheatreZoningDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="ventilation" exams={[Exam.PRIMARY, Exam.FINAL]}>
