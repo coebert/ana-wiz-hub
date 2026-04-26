@@ -7,6 +7,7 @@ import SepsisHostResponseDiagram from "@/components/diagrams/SepsisHostResponseD
 import SepsisScoreCalculator from "@/components/diagrams/SepsisScoreCalculator";
 import LactateCRTTool from "@/components/diagrams/LactateCRTTool";
 import VasopressorLadderTool from "@/components/diagrams/VasopressorLadderTool";
+import AlbuminFluidShiftDiagram from "@/components/diagrams/AlbuminFluidShiftDiagram";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
@@ -285,6 +286,10 @@ const SepsisTopic = () => {
             <li><strong>Hyperchloraemia avoidance:</strong> apparent "albumin benefit" vs saline is attenuated when balanced crystalloid (Hartmann's, Plasma-Lyte) is the comparator (SMART, BaSICS).</li>
             <li><strong>Cost & supply:</strong> albumin is ~30–50× the cost of crystalloid — a key reason routine first-line use is not endorsed despite a favourable safety profile.</li>
           </ul>
+
+          <div className="mb-3 animate-fade-in">
+            <AlbuminFluidShiftDiagram />
+          </div>
 
           <div className="rounded-lg border border-border bg-card p-4 text-sm space-y-3 mb-3">
             <p className="font-semibold text-foreground">Practical dosing — when and how to give albumin in sepsis</p>
