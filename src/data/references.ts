@@ -606,6 +606,15 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "BJA Educ 2018", citation: "Kumar CM, Eid H, Dodds C. Sub-Tenon's anaesthesia: complications and their prevention. Eye. 2011;25(6):694-703.", url: "https://doi.org/10.1038/eye.2011.69" },
     { label: "RCOphth/RCoA 2012", citation: "Royal College of Ophthalmologists/RCoA. Local Anaesthesia for Ophthalmic Surgery. Joint Guidelines. 2012." },
   ],
+  "operating-theatre-environment": [
+    { label: "HTM 03-01", citation: "Department of Health. Health Technical Memorandum 03-01: Specialised ventilation for healthcare premises. Parts A & B. NHS Estates; 2021.", url: "https://www.england.nhs.uk/publication/specialised-ventilation-for-healthcare-buildings-htm-03-01/" },
+    { label: "Lidwell 1982", citation: "Lidwell OM, Lowbury EJ, Whyte W, et al. Effect of ultraclean air in operating rooms on deep sepsis in the joint after total hip or knee replacement: a randomised study. BMJ. 1982;285(6334):10-14.", url: "https://doi.org/10.1136/bmj.285.6334.10" },
+    { label: "BJA Educ 2018 — Theatre design", citation: "Wood AM, Moss C, Keenan A, et al. Operating theatre ventilation. BJA Education. 2014;14(6):318-321.", url: "https://doi.org/10.1093/bjaceaccp/mkt060" },
+    { label: "AAGBI Theatre Safety 2008", citation: "Association of Anaesthetists of Great Britain & Ireland. Theatre Efficiency: Safety, quality of care and optimal use of resources. AAGBI; 2003 (reaffirmed)." },
+    { label: "WHO Checklist 2009", citation: "Haynes AB, Weiser TG, Berry WR, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. N Engl J Med. 2009;360(5):491-499.", url: "https://doi.org/10.1056/NEJMsa0810119" },
+    { label: "COSHH WAG 2020", citation: "Health and Safety Executive. EH40/2005 Workplace exposure limits. 4th ed. HSE Books; 2020.", url: "https://www.hse.gov.uk/pubns/books/eh40.htm" },
+    { label: "IEC 60601-1", citation: "International Electrotechnical Commission. IEC 60601-1: Medical electrical equipment — Part 1: General requirements for basic safety and essential performance. 3.2 ed; 2020." },
+  ],
   "day-surgery": [
     { label: "BADS Guidelines", citation: "British Association of Day Surgery. BADS Directory of Procedures. 6th ed. 2019.", url: "https://daysurgeryuk.net/en/home/" },
     { label: "BJA Educ 2016", citation: "Verma R, Alladi R, Jackson I, et al. Day case and short stay surgery: 2. Anaesthesia. 2011;66(5):417-434.", url: "https://doi.org/10.1111/j.1365-2044.2011.06651.x" },
