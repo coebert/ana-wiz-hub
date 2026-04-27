@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
 
 type Condition = "mg" | "epilepsy" | "ms" | "pd" | "mnd" | "md" | "sci";
 
@@ -51,6 +52,7 @@ const NeuroDiseasePathophysDiagram = () => {
           {active === "sci" && <SCIDiagram />}
         </svg>
       </div>
+      <HotspotHint />
 
       <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
         <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">{meta.label}</p>
@@ -108,6 +110,7 @@ const MGDiagram = () => (
       <text x="90" y="140" textAnchor="middle" fontSize="7.5" className={subClass}>resistance to suxamethonium (↑ ED₉₅)</text>
       <text x="90" y="152" textAnchor="middle" fontSize="7.5" className={subClass}>fatigable weakness on repeated stimulation</text>
     </g>
+    <HotspotLayer hotspots={mgHotspots} />
   </g>
 );
 
@@ -155,6 +158,7 @@ const EpilepsyDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={epilepsyHotspots} />
   </g>
 );
 
@@ -201,6 +205,7 @@ const MSDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={msHotspots} />
   </g>
 );
 
@@ -239,6 +244,7 @@ const PDDiagram = () => (
       <text x="0" y="100" fontSize="8" fontWeight="600" className={labelClass}>Anaesthesia</text>
       <text x="0" y="112" fontSize="7" className={subClass}>Continue L-DOPA · avoid D2 antagonists</text>
     </g>
+    <HotspotLayer hotspots={pdHotspots} />
   </g>
 );
 
@@ -280,6 +286,7 @@ const MNDDiagram = () => (
       <text x="0" y="38" fontSize="7" className={subClass}>Bulbar weakness → aspiration</text>
       <text x="0" y="50" fontSize="7" className={subClass}>Restrictive ventilation, weak cough</text>
     </g>
+    <HotspotLayer hotspots={mndHotspots} />
   </g>
 );
 
@@ -335,6 +342,7 @@ const MDDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={mdHotspots} />
   </g>
 );
 
@@ -389,10 +397,223 @@ const SCIDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={sciHotspots} />
   </g>
 );
 
 export default NeuroDiseasePathophysDiagram;
+
+/* ---------- Hotspot definitions (one set per diagram) ---------- */
+
+const mgHotspots: HotspotDef[] = [
+  {
+    id: "nerve-terminal",
+    label: "Motor nerve terminal",
+    detail:
+      "Presynaptic bouton storing ACh vesicles. Release is intact in MG — the defect is on the muscle side of the cleft.",
+    shape: { type: "rect", x: 30, y: 50, w: 110, h: 75 },
+  },
+  {
+    id: "ach",
+    label: "Acetylcholine in cleft",
+    detail:
+      "Released normally, but with fewer functional receptors the safety margin collapses → fatigable block of transmission.",
+    shape: { type: "rect", x: 50, y: 130, w: 80, h: 20 },
+  },
+  {
+    id: "achr",
+    label: "Postsynaptic nicotinic AChR",
+    detail:
+      "Reduced in number and cross-linked / internalised by anti-AChR IgG and complement → marked sensitivity to non-depolarising NMBAs.",
+    shape: { type: "rect", x: 35, y: 162, w: 130, h: 22 },
+  },
+  {
+    id: "antibody",
+    label: "Anti-AChR autoantibodies",
+    detail:
+      "IgG to the α-subunit of the nicotinic AChR — the central immunological lesion of generalised MG.",
+    shape: { type: "rect", x: 250, y: 60, w: 180, h: 80 },
+  },
+];
+
+const epilepsyHotspots: HotspotDef[] = [
+  {
+    id: "glu",
+    label: "Glutamatergic neuron (excitation)",
+    detail:
+      "Releases glutamate onto NMDA/AMPA receptors. Excess excitation lowers seizure threshold.",
+    shape: { type: "circle", cx: 80, cy: 80, r: 26 },
+  },
+  {
+    id: "gaba",
+    label: "GABAergic interneuron (inhibition)",
+    detail:
+      "Tonic inhibition via GABA-A receptors. Loss of inhibition is the other half of the seizure equation.",
+    shape: { type: "circle", cx: 80, cy: 180, r: 26 },
+  },
+  {
+    id: "pyramidal",
+    label: "Cortical pyramidal neuron",
+    detail:
+      "When excitation > inhibition this cell fires hypersynchronously, propagating a seizure focus.",
+    shape: { type: "circle", cx: 240, cy: 145, r: 32 },
+  },
+  {
+    id: "drug-targets",
+    label: "Anaesthetic targets",
+    detail:
+      "Propofol/thiopentone potentiate GABA-A; phenytoin blocks Na⁺ channels; ketamine antagonises NMDA. Avoid pro-convulsants (enflurane, tramadol, pethidine).",
+    shape: { type: "rect", x: 360, y: 60, w: 95, h: 90 },
+  },
+];
+
+const msHotspots: HotspotDef[] = [
+  {
+    id: "myelin",
+    label: "Myelin sheath (oligodendrocyte)",
+    detail:
+      "CNS myelin formed by oligodendrocytes — the immune target in MS. Intact myelin permits fast saltatory conduction.",
+    shape: { type: "rect", x: 60, y: 70, w: 340, h: 24 },
+  },
+  {
+    id: "plaque",
+    label: "Demyelinating plaque",
+    detail:
+      "Focal loss of myelin exposes Na⁺ channels and slows or blocks conduction — heat (Uhthoff) worsens this.",
+    shape: { type: "rect", x: 130, y: 168, w: 200, h: 26 },
+  },
+  {
+    id: "immune",
+    label: "T cells, macrophages, anti-myelin Ab",
+    detail:
+      "Autoreactive CD4⁺ T cells cross the BBB and recruit macrophages and antibody-mediated demyelination.",
+    shape: { type: "rect", x: 130, y: 198, w: 200, h: 26 },
+  },
+];
+
+const pdHotspots: HotspotDef[] = [
+  {
+    id: "striatum",
+    label: "Striatum (caudate + putamen)",
+    detail:
+      "Receives the dopaminergic projection from SN. D1 (direct) facilitates movement, D2 (indirect) inhibits it.",
+    shape: { type: "ellipse", cx: 140, cy: 115, rx: 34, ry: 22 },
+  },
+  {
+    id: "snpc",
+    label: "Substantia nigra pars compacta",
+    detail:
+      "Pigmented dopaminergic neurons whose loss is the primary lesion of PD; α-synuclein aggregates form Lewy bodies.",
+    shape: { type: "ellipse", cx: 220, cy: 170, rx: 38, ry: 16 },
+  },
+  {
+    id: "pathway",
+    label: "Nigrostriatal projection",
+    detail:
+      "Dopaminergic axons from SNc → striatum. Their degeneration shifts basal-ganglia output toward thalamic inhibition → bradykinesia, rigidity, tremor.",
+    shape: { type: "rect", x: 150, y: 115, w: 60, h: 50 },
+  },
+  {
+    id: "output",
+    label: "Basal-ganglia output",
+    detail:
+      "Net effect of dopamine loss = ↓ direct + ↑ indirect pathway → ↑ thalamic inhibition. Avoid central D2 antagonists; continue L-DOPA.",
+    shape: { type: "rect", x: 335, y: 50, w: 120, h: 80 },
+  },
+];
+
+const mndHotspots: HotspotDef[] = [
+  {
+    id: "umn",
+    label: "Upper motor neuron (motor cortex)",
+    detail:
+      "Loss produces spasticity, hyperreflexia and Babinski sign. Combined with LMN loss = ALS phenotype.",
+    shape: { type: "rect", x: 40, y: 40, w: 120, h: 30 },
+  },
+  {
+    id: "lmn",
+    label: "Lower motor neuron (anterior horn)",
+    detail:
+      "Anterior horn cell loss produces flaccid weakness, fasciculations and denervation supersensitivity at the muscle.",
+    shape: { type: "ellipse", cx: 100, cy: 140, rx: 24, ry: 16 },
+  },
+  {
+    id: "muscle",
+    label: "Denervated muscle fibre",
+    detail:
+      "Extra-junctional ACh receptors spread across the membrane — suxamethonium opens them all, releasing a lethal K⁺ surge.",
+    shape: { type: "rect", x: 225, y: 115, w: 90, h: 50 },
+  },
+  {
+    id: "ej-achr",
+    label: "Extra-junctional AChRs",
+    detail:
+      "Up-regulated immature receptors that stay open longer than normal — the substrate for hyperkalaemic arrest.",
+    shape: { type: "rect", x: 230, y: 145, w: 85, h: 18 },
+  },
+];
+
+const mdHotspots: HotspotDef[] = [
+  {
+    id: "normal-membrane",
+    label: "Normal sarcolemma + dystrophin",
+    detail:
+      "Dystrophin links the actin cytoskeleton to the extracellular matrix, stabilising the membrane during contraction.",
+    shape: { type: "rect", x: 30, y: 60, w: 170, h: 40 },
+  },
+  {
+    id: "dystrophic-membrane",
+    label: "Dystrophin-deficient sarcolemma",
+    detail:
+      "Without dystrophin the membrane tears with stress and depolarisation, leaking K⁺ and CK — hence rhabdomyolysis with sux/volatiles.",
+    shape: { type: "rect", x: 30, y: 158, w: 170, h: 40 },
+  },
+  {
+    id: "triggers",
+    label: "Anaesthetic triggers / choices",
+    detail:
+      "Suxamethonium → hyperkalaemic arrest; volatiles → MH-like rhabdomyolysis. Default to TIVA + rocuronium/sugammadex.",
+    shape: { type: "rect", x: 250, y: 50, w: 200, h: 90 },
+  },
+];
+
+const sciHotspots: HotspotDef[] = [
+  {
+    id: "cord",
+    label: "Spinal cord",
+    detail:
+      "Above a T6 lesion the descending sympathetic outflow can no longer modulate splanchnic vasoconstriction below the level.",
+    shape: { type: "rect", x: 195, y: 40, w: 40, h: 180, rx: 6 },
+  },
+  {
+    id: "lesion",
+    label: "T6 lesion line",
+    detail:
+      "Critical level — at or above T6, dysreflexia becomes possible because most splanchnic outflow lies below the lesion.",
+    shape: { type: "rect", x: 188, y: 95, w: 60, h: 14 },
+  },
+  {
+    id: "above",
+    label: "Above the lesion",
+    detail:
+      "Baroreflex still active → flushing, sweating and reflex (vagal) bradycardia in response to severe hypertension.",
+    shape: { type: "rect", x: 50, y: 55, w: 100, h: 55 },
+  },
+  {
+    id: "below",
+    label: "Below the lesion (trigger zone)",
+    detail:
+      "Bladder/bowel distension, skin stimulation or uterine contraction → afferent surge → unmodulated sympathetic discharge.",
+    shape: { type: "rect", x: 50, y: 155, w: 100, h: 55 },
+  },
+  {
+    id: "crisis",
+    label: "Hypertensive crisis",
+    detail:
+      "Severe HTN, headache, bradycardia. Sit patient up, remove the trigger (usually a blocked catheter), then GTN/nifedipine/labetalol.",
+    shape: { type: "rect", x: 280, y: 40, w: 160, h: 60 },
+  },
+];
 
 /* ---------- Per-condition focused diagrams (for inline section use) ---------- */
 
@@ -404,6 +625,7 @@ const Wrap = ({ title, tagline, children }: { title: string; tagline: string; ch
         {children}
       </svg>
     </div>
+    <HotspotHint />
     <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
   </div>
 );
