@@ -706,6 +706,20 @@ export default function DrugDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [drug, setDrug] = useState<Drug | null>(null);
   const [loading, setLoading] = useState(true);
+  const [crashCardMinimised, setCrashCardMinimised] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem("drug-crash-card-minimised") === "1";
+    } catch {
+      return false;
+    }
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem("drug-crash-card-minimised", crashCardMinimised ? "1" : "0");
+    } catch {
+      // ignore
+    }
+  }, [crashCardMinimised]);
 
   useEffect(() => {
     (async () => {
