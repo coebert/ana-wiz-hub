@@ -234,78 +234,148 @@ const AdminDashboard = () => {
 
   const maxTopicViews = analytics ? Math.max(...analytics.topTopics.map(t => t.views), 1) : 1;
 
+  const tabs = [
+    { key: "overview" as const, label: "Overview", icon: BarChart3, hint: "Headline usage stats and weekly activity" },
+    { key: "topics" as const, label: "Topic Analytics", icon: BookOpen, hint: "Most and least visited topics" },
+    { key: "formulary" as const, label: "Formulary Verify", icon: Pill, hint: "Re-check drug monographs against reference sources" },
+  ];
+
+  const handleTabKey = (e: React.KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+    e.preventDefault();
+    let next = idx;
+    if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+    if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = tabs.length - 1;
+    setActiveTab(tabs[next].key);
+    const el = document.getElementById(`admin-tab-${tabs[next].key}`);
+    el?.focus();
+  };
+
   return (
     <div className="min-h-screen bg-background pt-20 px-4 pb-10">
+      <a
+        href="#admin-main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-primary"
+      >
+        Skip to dashboard content
+      </a>
       <div className="max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
+        <header className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <h1 className="text-2xl font-serif font-bold text-foreground">Admin Dashboard</h1>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+            <p className="text-sm text-muted-foreground" aria-label={`Signed in as ${user.email}`}>
+              Signed in as <span className="font-medium text-foreground">{user.email}</span>
+            </p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={fetchAnalytics} disabled={loading}>
-              <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={fetchAnalytics}
+              disabled={loading}
+              aria-label={loading ? "Refreshing analytics" : "Refresh analytics"}
+            >
+              <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
               Refresh
             </Button>
-            <Button variant="outline" size="sm" onClick={() => { signOut(); navigate("/"); }}>
-              <LogOut className="w-4 h-4 mr-1" /> Sign Out
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => { signOut(); navigate("/"); }}
+              aria-label="Sign out of admin dashboard"
+            >
+              <LogOut className="w-4 h-4 mr-1" aria-hidden="true" /> Sign Out
             </Button>
           </div>
-        </div>
+        </header>
 
         {/* Tab switcher */}
-        <div className="flex gap-1 p-1 rounded-lg bg-secondary/50 w-fit">
-          {[
-            { key: "overview" as const, label: "Overview", icon: BarChart3 },
-            { key: "topics" as const, label: "Topic Analytics", icon: BookOpen },
-            { key: "formulary" as const, label: "Formulary Verify", icon: Pill },
-          ].map(tab => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                activeTab === tab.key
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
-            </button>
-          ))}
+        <div
+          role="tablist"
+          aria-label="Admin sections"
+          className="flex gap-1 p-1 rounded-lg bg-secondary/50 w-full sm:w-fit overflow-x-auto"
+        >
+          {tabs.map((tab, idx) => {
+            const selected = activeTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                id={`admin-tab-${tab.key}`}
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`admin-panel-${tab.key}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveTab(tab.key)}
+                onKeyDown={(e) => handleTabKey(e, idx)}
+                title={tab.hint}
+                className={`flex items-center gap-1.5 px-3 py-2 min-h-[40px] rounded-md text-sm font-medium transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  selected
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                }`}
+              >
+                <tab.icon className="w-4 h-4" aria-hidden="true" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
+        <main id="admin-main" tabIndex={-1} className="space-y-6 focus:outline-none">
+
+        {!analytics && loading && (
+          <div className="p-8 rounded-xl border border-border bg-card text-center" role="status" aria-live="polite">
+            <RefreshCw className="w-5 h-5 mx-auto animate-spin text-muted-foreground mb-2" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground">Loading analytics…</p>
+          </div>
+        )}
+
         {analytics && activeTab === "overview" && (
-          <>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <section
+            id="admin-panel-overview"
+            role="tabpanel"
+            aria-labelledby="admin-tab-overview"
+            className="space-y-6"
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Headline statistics">
               {[
-                { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500" },
-                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500" },
-                { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500" },
-                { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500" },
+                { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
+                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct visitors today" },
+                { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
+                { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
               ].map(stat => (
-                <div key={stat.label} className="p-4 rounded-xl border border-border bg-card">
+                <div
+                  key={stat.label}
+                  role="listitem"
+                  className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
+                  aria-label={`${stat.label}: ${stat.value.toLocaleString()}. ${stat.help}`}
+                >
                   <div className="flex items-center gap-2 mb-2">
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
-                    <span className="text-xs text-muted-foreground">{stat.label}</span>
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
                   </div>
-                  <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+                  <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.value.toLocaleString()}</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
                 </div>
               ))}
             </div>
 
             <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-4">Unique Users — Last 7 Days</h2>
-              <div className="flex items-end gap-2 h-40">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
+              <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
+              <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
                 {analytics.last7Days.map(day => {
                   const max = Math.max(...analytics.last7Days.map(d => d.count), 1);
                   const height = (day.count / max) * 100;
                   return (
-                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                      <span className="text-xs font-medium text-foreground">{day.count}</span>
+                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1" title={`${day.date}: ${day.count} unique users`}>
+                      <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
                       <div
                         className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
                         style={{ height: `${Math.max(height, 3)}%` }}
+                        aria-hidden="true"
                       />
                       <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
                     </div>
@@ -316,32 +386,38 @@ const AdminDashboard = () => {
 
             {/* Section breakdown */}
             <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-3">Views by Section</h2>
-              <div className="space-y-2">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Views by Section</h2>
+              <p className="text-xs text-muted-foreground mb-3">Topic page views grouped by curriculum section</p>
+              <ul className="space-y-2">
                 {analytics.sectionBreakdown.map(s => {
                   const max = Math.max(...analytics.sectionBreakdown.map(x => x.views), 1);
                   const pct = (s.views / max) * 100;
                   const colorKey = Object.entries(sectionLabels).find(([, v]) => v === s.section)?.[0] || "physics";
                   return (
-                    <div key={s.section} className="flex items-center gap-3">
-                      <span className="text-xs text-muted-foreground w-28 shrink-0">{s.section}</span>
-                      <div className="flex-1 h-5 rounded bg-secondary/50 overflow-hidden">
+                    <li key={s.section} className="flex items-center gap-3" aria-label={`${s.section}: ${s.views} views`}>
+                      <span className="text-xs text-foreground w-28 shrink-0 font-medium">{s.section}</span>
+                      <div className="flex-1 h-5 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
                         <div
                           className={`h-full rounded ${sectionColors[colorKey] || "bg-primary"} transition-all duration-300`}
                           style={{ width: `${Math.max(pct, 2)}%` }}
                         />
                       </div>
-                      <span className="text-xs font-medium text-foreground w-10 text-right">{s.views}</span>
-                    </div>
+                      <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{s.views.toLocaleString()}</span>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
             </div>
-          </>
+          </section>
         )}
 
         {analytics && activeTab === "topics" && (
-          <>
+          <section
+            id="admin-panel-topics"
+            role="tabpanel"
+            aria-labelledby="admin-tab-topics"
+            className="space-y-6"
+          >
             {/* Top 20 most visited topics */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <h2 className="text-sm font-semibold text-foreground mb-1">Most Visited Topics</h2>
@@ -397,11 +473,16 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
-          </>
+          </section>
         )}
 
         {activeTab === "formulary" && (
-          <div className="space-y-4">
+          <section
+            id="admin-panel-formulary"
+            role="tabpanel"
+            aria-labelledby="admin-tab-formulary"
+            className="space-y-4"
+          >
             <div className="p-5 rounded-xl border border-border bg-card">
               <div className="flex items-start justify-between gap-3 flex-wrap">
                 <div>
@@ -494,8 +575,9 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
-          </div>
+          </section>
         )}
+        </main>
       </div>
     </div>
   );
