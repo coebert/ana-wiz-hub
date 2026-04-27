@@ -227,12 +227,12 @@ const PDDiagram = () => (
     <ellipse cx="220" cy="170" rx="35" ry="14" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <text x="220" y="173" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>SN pars compacta</text>
 
-    {/* Degenerating dopaminergic projection */}
-    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" />
+    {/* Degenerating dopaminergic projection — fades out */}
+    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="155" y="155" fontSize="7.5" className="fill-destructive">↓↓ dopamine</text>
 
-    {/* Lewy body */}
-    <circle cx="230" cy="170" r="3" fill="hsl(var(--destructive))" />
+    {/* Lewy body — grows in */}
+    <circle cx="230" cy="170" r="3" fill="hsl(var(--destructive))" className="anim-lewy" />
     <text x="240" y="168" fontSize="6.5" className={subClass}>α-synuclein (Lewy)</text>
 
     {/* Output: imbalance */}
