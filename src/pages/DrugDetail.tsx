@@ -4,6 +4,7 @@ import { AlertTriangle, ArrowLeft, Pill } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
+import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 
 interface InfusionStandard {
   amount_mg?: number;
