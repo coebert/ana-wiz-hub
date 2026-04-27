@@ -1,3 +1,5 @@
+import DiagramAnimationLegend from "./DiagramAnimationLegend";
+
 /**
  * Animated pathophysiology diagram — COPD.
  * Cigarette smoke → protease/antiprotease imbalance + chronic inflammation
@@ -125,6 +127,17 @@ const CopdPathophysDiagram = () => {
           <path d="M640 95 L 210 145" stroke="hsl(var(--clinical))" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" markerEnd="url(#arr-copd)" />
           <path d="M640 95 L 590 145" stroke="hsl(var(--clinical))" strokeWidth="1.5" strokeDasharray="4 4" opacity="0.6" markerEnd="url(#arr-copd)" />
         </svg>
+
+        <DiagramAnimationLegend
+          items={[
+            { glyph: "trigger", label: "Inhaled insult box", meaning: "smoke / pollution entering the airway" },
+            { glyph: "process", label: "Pulsing inflammation node", meaning: "neutrophil + macrophage + CD8⁺ activity driving injury" },
+            { glyph: "mediator", label: "Travelling dots", meaning: "elastases & oxidants reaching alveolar walls" },
+            { glyph: "oscillate", label: "Expanding alveoli", meaning: "loss of elastic recoil → emphysematous bullae & gas trapping" },
+            { glyph: "arrow", label: "Solid arrow", meaning: "causal step in the cascade" },
+            { glyph: "outcome", label: "Tinted outcome boxes", meaning: "V/Q mismatch → HPV → cor pulmonale" },
+          ]}
+        />
 
         <p className="text-xs text-muted-foreground mt-3 italic">
           Anaesthetic implications: avoid auto-PEEP (long expiration, low VT), titrate O₂ to SpO₂ 88–92% in CO₂ retainers, expect raised PA pressure and RV strain — minimise drugs that depress RV function or precipitate further HPV.

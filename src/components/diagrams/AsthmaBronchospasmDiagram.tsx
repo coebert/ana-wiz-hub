@@ -1,3 +1,5 @@
+import DiagramAnimationLegend from "./DiagramAnimationLegend";
+
 /**
  * Animated pathophysiology diagram — Acute Asthma / Bronchospasm.
  * Trigger → mast cell degranulation → smooth muscle contraction,
@@ -130,6 +132,17 @@ const AsthmaBronchospasmDiagram = () => {
           {/* Trigger arrow */}
           <path d="M200 60 L 290 60" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" markerEnd="url(#arr-asthma)" />
         </svg>
+
+        <DiagramAnimationLegend
+          items={[
+            { glyph: "trigger", label: "Trigger box", meaning: "stimulus entering the airway (allergen, ETT, cold gas)" },
+            { glyph: "process", label: "Pulsing mast cell", meaning: "active degranulation releasing mediators" },
+            { glyph: "mediator", label: "Travelling dots", meaning: "histamine / leukotrienes diffusing to target tissues" },
+            { glyph: "structure", label: "Narrowing lumen", meaning: "smooth-muscle contraction · oedema · mucus reducing airway calibre" },
+            { glyph: "arrow", label: "Solid arrow", meaning: "causal step in the cascade" },
+            { glyph: "outcome", label: "Tinted final box", meaning: "downstream consequence — dynamic hyperinflation & auto-PEEP" },
+          ]}
+        />
 
         <p className="text-xs text-muted-foreground mt-3 italic">
           Treatment maps onto the cascade: β₂-agonists & ipratropium reverse smooth-muscle contraction, steroids reduce mucosal oedema, magnesium relaxes airway smooth muscle, and ventilator strategy (long expiration, low VT) tolerates the hyperinflation while it resolves.

@@ -1,3 +1,5 @@
+import DiagramAnimationLegend from "./DiagramAnimationLegend";
+
 /**
  * Animated pathophysiology diagram — Pulmonary Fibrosis (restrictive disease).
  * Repeated alveolar epithelial injury → aberrant repair (TGF-β, fibroblast
@@ -122,6 +124,17 @@ const PulmonaryFibrosisDiagram = () => {
           <path d="M220 310 L 320 345" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#arr-fib)" />
           <path d="M590 310 L 480 345" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#arr-fib)" />
         </svg>
+
+        <DiagramAnimationLegend
+          items={[
+            { glyph: "trigger", label: "Injury source box", meaning: "repeated alveolar insult — smoke, GORD, drugs (amiodarone, bleomycin)" },
+            { glyph: "process", label: "Pulsing repair node", meaning: "aberrant TGF-β / PDGF signalling driving fibroblast activation" },
+            { glyph: "mediator", label: "Travelling dots", meaning: "profibrotic mediators reaching the interstitium" },
+            { glyph: "structure", label: "Thickened membrane", meaning: "alveolar-capillary wall expanded by collagen → ↓ DLCO" },
+            { glyph: "oscillate", label: "Shrinking lung outline", meaning: "↓ FVC, ↓ TLC, ↓ compliance — restrictive physiology" },
+            { glyph: "outcome", label: "Tinted outcome box", meaning: "hypoxaemia → pulmonary hypertension → cor pulmonale" },
+          ]}
+        />
 
         <p className="text-xs text-muted-foreground mt-3 italic">
           Restrictive physiology + thickened diffusion barrier + pulmonary HTN guides the anaesthetic plan: lung-protective ventilation, careful fluids (RV is preload-sensitive), and avoid agents that further increase PVR.

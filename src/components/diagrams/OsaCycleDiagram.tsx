@@ -1,3 +1,5 @@
+import DiagramAnimationLegend from "./DiagramAnimationLegend";
+
 /**
  * Animated pathophysiology diagram — Obstructive Sleep Apnoea.
  * Cyclical: sleep onset → loss of pharyngeal dilator tone → upper airway collapse
@@ -101,6 +103,16 @@ const OsaCycleDiagram = () => {
             <text x="160" y="412" textAnchor="middle" className="fill-clinical" fontSize="10" fontWeight="700">peri-op risk amplified</text>
           </g>
         </svg>
+
+        <DiagramAnimationLegend
+          items={[
+            { glyph: "structure", label: "Collapsing pharynx", meaning: "loss of dilator tone → airway closes during inspiration" },
+            { glyph: "process", label: "Apnoea/hypopnoea node", meaning: "active cessation of airflow ≥10 s" },
+            { glyph: "oscillate", label: "Shrinking SpO₂ bar", meaning: "falling oxygen saturation with rising PaCO₂" },
+            { glyph: "arrow", label: "Curved cycle arrows", meaning: "self-perpetuating loop — sympathetic surge → arousal → reopening" },
+            { glyph: "outcome", label: "Tinted consequence box", meaning: "chronic sequelae — HTN, AF, RV strain, opioid sensitivity" },
+          ]}
+        />
 
         <p className="text-xs text-muted-foreground mt-3 italic">
           The cycle explains every peri-operative concern: opioids and sedatives prolong apnoeas (↓ arousal), supine posture worsens collapse, and residual NMB delays dilator recovery. CPAP splints the airway open and breaks the cycle.
