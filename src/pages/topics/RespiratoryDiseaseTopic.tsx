@@ -1,6 +1,11 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { respiratoryDiseaseQuestions } from "@/data/quizzes";
 import RespiratoryDrugSafetyDiagram from "@/components/diagrams/RespiratoryDrugSafetyDiagram";
+import AsthmaBronchospasmDiagram from "@/components/diagrams/AsthmaBronchospasmDiagram";
+import CopdPathophysDiagram from "@/components/diagrams/CopdPathophysDiagram";
+import OsaCycleDiagram from "@/components/diagrams/OsaCycleDiagram";
+import PulmonaryFibrosisDiagram from "@/components/diagrams/PulmonaryFibrosisDiagram";
+import UrtiAirwayDiagram from "@/components/diagrams/UrtiAirwayDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -32,7 +37,16 @@ const RespiratoryDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={respiratoryDiseaseQuestions}
-      diagrams={<RespiratoryDrugSafetyDiagram />}
+      diagrams={
+        <div className="space-y-6">
+          <AsthmaBronchospasmDiagram />
+          <CopdPathophysDiagram />
+          <OsaCycleDiagram />
+          <PulmonaryFibrosisDiagram />
+          <UrtiAirwayDiagram />
+          <RespiratoryDrugSafetyDiagram />
+        </div>
+      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
         diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
