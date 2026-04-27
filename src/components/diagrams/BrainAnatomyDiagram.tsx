@@ -27,17 +27,129 @@ const references: DiagramSource[] = [
 ];
 
 
-const labelledRegions = [
-  { name: "Frontal lobe", note: "Personality, executive function, motor planning. Houses Broca's area (dominant inferior frontal gyrus) — expressive speech." },
-  { name: "Precentral gyrus (motor cortex)", note: "Primary motor cortex (Brodmann 4). Somatotopic homunculus — face/hand laterally, leg medially (toward falx)." },
-  { name: "Central sulcus", note: "Divides frontal from parietal lobe; separates motor from sensory cortex." },
-  { name: "Postcentral gyrus (sensory cortex)", note: "Primary somatosensory cortex (Brodmann 1, 2, 3). Mirrors motor homunculus." },
-  { name: "Parietal lobe", note: "Sensory integration, spatial awareness, proprioception." },
-  { name: "Lateral sulcus (Sylvian fissure)", note: "Separates temporal lobe from frontal/parietal lobes. MCA runs within it." },
-  { name: "Temporal lobe", note: "Auditory cortex, memory (hippocampus), language comprehension. Wernicke's area in dominant superior temporal gyrus." },
-  { name: "Occipital lobe", note: "Primary visual cortex (Brodmann 17) lies along the calcarine sulcus — supplied by the PCA." },
-  { name: "Cerebellum", note: "Coordination, balance, motor learning. Supplied by SCA, AICA, PICA. Tonsillar herniation through foramen magnum is fatal." },
-  { name: "Brainstem (midbrain, pons, medulla)", note: "Midbrain: CN III, IV. Pons: CN V–VIII. Medulla: CN IX–XII; cardiorespiratory centres and reticular activating system." },
+interface LabelledRegion {
+  name: string;
+  note: string;
+  primaryFRCA: string[];
+  finalFRCA: string[];
+}
+
+const labelledRegions: LabelledRegion[] = [
+  {
+    name: "Frontal lobe",
+    note: "Personality, executive function, motor planning. Houses Broca's area (dominant inferior frontal gyrus) — expressive speech.",
+    primaryFRCA: [
+      "Describe the gross anatomical organisation of the cerebral hemispheres and lobes",
+      "Outline functional localisation of the frontal lobe (motor, prefrontal, Broca's)",
+    ],
+    finalFRCA: [
+      "Recognise frontal-lobe syndromes after trauma, tumour or ACA stroke and their anaesthetic implications",
+      "Plan awake craniotomy / cortical mapping for lesions adjacent to Broca's area",
+    ],
+  },
+  {
+    name: "Precentral gyrus (motor cortex)",
+    note: "Primary motor cortex (Brodmann 4). Somatotopic homunculus — face/hand laterally, leg medially (toward falx).",
+    primaryFRCA: [
+      "Describe the motor homunculus and corticospinal tract origin",
+      "Explain the cortical generators of MEPs",
+    ],
+    finalFRCA: [
+      "Tailor anaesthesia (TIVA, avoid neuromuscular blockade) to permit motor-evoked potential monitoring",
+      "Interpret loss of MEP signal intra-operatively and respond appropriately",
+    ],
+  },
+  {
+    name: "Central sulcus",
+    note: "Divides frontal from parietal lobe; separates motor from sensory cortex.",
+    primaryFRCA: [
+      "Identify major cerebral sulci as surface landmarks",
+    ],
+    finalFRCA: [
+      "Use central sulcus localisation (phase-reversal SSEPs) during eloquent-cortex surgery",
+    ],
+  },
+  {
+    name: "Postcentral gyrus (sensory cortex)",
+    note: "Primary somatosensory cortex (Brodmann 1, 2, 3). Mirrors motor homunculus.",
+    primaryFRCA: [
+      "Describe ascending sensory pathways (DCML, spinothalamic) terminating in S1",
+      "Outline the sensory homunculus",
+    ],
+    finalFRCA: [
+      "Apply somatosensory-evoked potentials (SSEPs) for spinal cord and cortical monitoring",
+      "Recognise patterns of cortical sensory loss after MCA territory stroke",
+    ],
+  },
+  {
+    name: "Parietal lobe",
+    note: "Sensory integration, spatial awareness, proprioception.",
+    primaryFRCA: [
+      "Describe parietal association cortex function (sensory integration, proprioception)",
+    ],
+    finalFRCA: [
+      "Recognise neglect, apraxia and Gerstmann syndrome relevant to peri-operative neurological assessment",
+    ],
+  },
+  {
+    name: "Lateral sulcus (Sylvian fissure)",
+    note: "Separates temporal lobe from frontal/parietal lobes. MCA runs within it.",
+    primaryFRCA: [
+      "Describe the course of the middle cerebral artery within the Sylvian fissure",
+      "Outline the circle of Willis and cortical arterial territories",
+    ],
+    finalFRCA: [
+      "Manage anaesthesia for MCA aneurysm clipping or endovascular thrombectomy (BP targets, neuroprotection)",
+    ],
+  },
+  {
+    name: "Temporal lobe",
+    note: "Auditory cortex, memory (hippocampus), language comprehension. Wernicke's area in dominant superior temporal gyrus.",
+    primaryFRCA: [
+      "Describe the auditory and limbic anatomy of the temporal lobe",
+      "Outline the dominant-hemisphere language areas (Wernicke's)",
+    ],
+    finalFRCA: [
+      "Anaesthesia for temporal lobectomy / amygdalohippocampectomy in refractory epilepsy",
+      "Recognise post-operative dysphasia and risk of uncal herniation with temporal mass lesions",
+    ],
+  },
+  {
+    name: "Occipital lobe",
+    note: "Primary visual cortex (Brodmann 17) lies along the calcarine sulcus — supplied by the PCA.",
+    primaryFRCA: [
+      "Describe the visual pathway from retina to primary visual cortex",
+      "Identify PCA territory and its cortical supply",
+    ],
+    finalFRCA: [
+      "Recognise post-operative visual loss (POVL) — ION, cortical infarction — risk factors and prevention",
+      "Interpret homonymous visual field defects after PCA stroke",
+    ],
+  },
+  {
+    name: "Cerebellum",
+    note: "Coordination, balance, motor learning. Supplied by SCA, AICA, PICA. Tonsillar herniation through foramen magnum is fatal.",
+    primaryFRCA: [
+      "Describe cerebellar anatomy (vermis, hemispheres, peduncles) and arterial supply",
+      "Outline cerebellar functional divisions (vestibulo-, spino-, cerebrocerebellum)",
+    ],
+    finalFRCA: [
+      "Anaesthesia for posterior fossa surgery — sitting position, VAE risk, cardiovascular instability",
+      "Recognise and manage tonsillar (coning) herniation as a neurosurgical emergency",
+    ],
+  },
+  {
+    name: "Brainstem (midbrain, pons, medulla)",
+    note: "Midbrain: CN III, IV. Pons: CN V–VIII. Medulla: CN IX–XII; cardiorespiratory centres and reticular activating system.",
+    primaryFRCA: [
+      "Describe brainstem cranial nerve nuclei and their functional columns",
+      "Outline the reticular activating system and central control of respiration and cardiovascular reflexes",
+    ],
+    finalFRCA: [
+      "Perform and interpret brainstem death testing per AoMRC / FICM guidance",
+      "Manage anaesthesia for brainstem lesions and recognise Cushing's reflex",
+    ],
+  },
 ];
 
 const BrainAnatomyDiagram = () => {
@@ -65,12 +177,32 @@ const BrainAnatomyDiagram = () => {
       </figure>
 
       <div className="px-4 sm:px-6 py-4 space-y-2">
-        <p className="text-sm font-semibold text-foreground">Labelled regions — clinical relevance</p>
+        <p className="text-sm font-semibold text-foreground">Labelled regions — clinical relevance & FRCA learning objectives</p>
         <ul className="space-y-2">
           {labelledRegions.map((r) => (
-            <li key={r.name} className="p-3 rounded-lg border border-border">
-              <p className="text-sm font-semibold text-foreground">{r.name}</p>
-              <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{r.note}</p>
+            <li key={r.name} className="p-3 rounded-lg border border-border space-y-3">
+              <div>
+                <p className="text-sm font-semibold text-foreground">{r.name}</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{r.note}</p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-2">
+                <div className="rounded-md bg-physiology/10 border border-physiology/30 p-2">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-physiology mb-1">Primary FRCA</p>
+                  <ul className="list-disc pl-4 space-y-1">
+                    {r.primaryFRCA.map((o) => (
+                      <li key={o} className="text-xs text-foreground/80 leading-snug">{o}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="rounded-md bg-clinical/10 border border-clinical/30 p-2">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-clinical mb-1">Final FRCA</p>
+                  <ul className="list-disc pl-4 space-y-1">
+                    {r.finalFRCA.map((o) => (
+                      <li key={o} className="text-xs text-foreground/80 leading-snug">{o}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </li>
           ))}
         </ul>
