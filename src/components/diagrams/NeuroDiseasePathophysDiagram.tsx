@@ -84,12 +84,12 @@ const MGDiagram = () => (
     <text x="85" y="160" textAnchor="middle" fontSize="7.5" className={subClass}>ACh released normally</text>
     {/* Postsynaptic muscle membrane with reduced receptors */}
     <rect x="20" y="170" width="160" height="40" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-    {/* Few remaining receptors */}
-    <rect x="40" y="165" width="10" height="12" fill="hsl(var(--primary))" />
-    <rect x="120" y="165" width="10" height="12" fill="hsl(var(--primary))" />
-    {/* Antibody-blocked receptors */}
+    {/* Few remaining receptors — fade as Ab "blocks" them */}
+    <rect x="40" y="165" width="10" height="12" fill="hsl(var(--primary))" className="anim-receptor-fade" />
+    <rect x="120" y="165" width="10" height="12" fill="hsl(var(--primary))" className="anim-receptor-fade" />
+    {/* Antibody-blocked receptors drop in from above */}
     {[60, 80, 100, 140].map((x, i) => (
-      <g key={i}>
+      <g key={i} className="anim-receptor-block" style={{ animationDelay: `${i * 0.12}s` }}>
         <rect x={x} y={165} width="10" height="12" fill="hsl(var(--destructive) / 0.4)" stroke="hsl(var(--destructive))" />
         <path d={`M ${x - 2} 158 L ${x + 12} 158`} stroke="hsl(var(--destructive))" strokeWidth="1.4" />
       </g>
