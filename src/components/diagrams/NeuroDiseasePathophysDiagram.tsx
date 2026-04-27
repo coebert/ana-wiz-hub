@@ -315,13 +315,13 @@ const MDDiagram = () => (
     <text x="115" y="148" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">Dystrophin-deficient</text>
     <rect x="30" y="158" width="170" height="20" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <rect x="30" y="178" width="170" height="20" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-    {/* Tears in membrane */}
+    {/* Tears in membrane — animate appearing */}
     {[60, 110, 160].map((x, i) => (
-      <path key={i} d={`M ${x - 6} 158 L ${x + 6} 178`} stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+      <path key={i} d={`M ${x - 6} 158 L ${x + 6} 178`} stroke="hsl(var(--destructive))" strokeWidth="1.5" className="anim-tear" style={{ animationDelay: `${i * 0.15}s` }} />
     ))}
-    {/* K+ leaking out */}
+    {/* K+ leaking out — float upward */}
     {[55, 115, 165].map((x, i) => (
-      <g key={i}>
+      <g key={i} className="anim-k-leak" style={{ animationDelay: `${0.4 + i * 0.15}s` }}>
         <text x={x} y={150} fontSize="8" fontWeight="700" className="fill-destructive">K⁺</text>
         <path d={`M ${x} 153 L ${x} 145`} stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#k-arrow)" />
       </g>
