@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Pill, Search } from "lucide-react";
+import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -17,6 +17,26 @@ export default function DrugsLibrary() {
   const [q, setQ] = useState("");
   const [activeClass, setActiveClass] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
+    try {
+      const raw = localStorage.getItem("drugs-library-collapsed");
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("drugs-library-collapsed", JSON.stringify(collapsed));
+    } catch {
+      // ignore
+    }
+  }, [collapsed]);
+
+  const toggleCollapsed = (slug: string) => {
+    setCollapsed((prev) => ({ ...prev, [slug]: !prev[slug] }));
+  };
 
   useEffect(() => {
     (async () => {
@@ -106,26 +126,88 @@ export default function DrugsLibrary() {
         ) : filtered.length === 0 ? (
           <p className="text-sm text-muted-foreground">No drugs match your search.</p>
         ) : (
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((d) => (
-              <li key={d.slug}>
-                <Link
-                  to={`/drugs/${d.slug}`}
-                  className="block bg-card border border-border rounded-lg p-3 hover:border-drugs/50 transition-colors h-full"
+          <>
+            <div className="mb-3 flex items-center justify-between">
+              <p className="text-xs text-muted-foreground">
+                {filtered.length} drug{filtered.length === 1 ? "" : "s"}
+              </p>
+              <div className="flex gap-1.5">
+                <button
+                  onClick={() =>
+                    setCollapsed((prev) => {
+                      const next = { ...prev };
+                      filtered.forEach((d) => (next[d.slug] = true));
+                      return next;
+                    })
+                  }
+                  className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-md border border-border bg-card text-muted-foreground hover:border-drugs/50 hover:text-foreground transition-colors"
+                  aria-label="Minimise all cards"
                 >
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <h2 className="text-sm font-semibold text-foreground leading-tight">{d.name}</h2>
-                  </div>
-                  <p className="text-[10px] uppercase tracking-wide text-drugs font-medium mb-1.5">
-                    {d.drug_class}
-                  </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
-                    {d.indication_oneliner}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
+                  <Minimize2 className="h-3 w-3" /> Minimise all
+                </button>
+                <button
+                  onClick={() =>
+                    setCollapsed((prev) => {
+                      const next = { ...prev };
+                      filtered.forEach((d) => (next[d.slug] = false));
+                      return next;
+                    })
+                  }
+                  className="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-md border border-border bg-card text-muted-foreground hover:border-drugs/50 hover:text-foreground transition-colors"
+                  aria-label="Expand all cards"
+                >
+                  <Maximize2 className="h-3 w-3" /> Expand all
+                </button>
+              </div>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {filtered.map((d) => {
+                const isCollapsed = !!collapsed[d.slug];
+                return (
+                  <li key={d.slug}>
+                    <div className="bg-card border border-border rounded-lg hover:border-drugs/50 transition-colors h-full flex flex-col">
+                      <div className="flex items-start justify-between gap-2 p-3 pb-2">
+                        <Link
+                          to={`/drugs/${d.slug}`}
+                          className="min-w-0 flex-1 group"
+                        >
+                          <h2 className="text-sm font-semibold text-foreground leading-tight group-hover:text-drugs transition-colors">
+                            {d.name}
+                          </h2>
+                          <p className="text-[10px] uppercase tracking-wide text-drugs font-medium mt-1">
+                            {d.drug_class}
+                          </p>
+                        </Link>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleCollapsed(d.slug);
+                          }}
+                          className="shrink-0 h-6 w-6 grid place-items-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                          aria-label={isCollapsed ? `Expand ${d.name}` : `Minimise ${d.name}`}
+                          aria-expanded={!isCollapsed}
+                        >
+                          {isCollapsed ? (
+                            <ChevronDown className="h-4 w-4" />
+                          ) : (
+                            <ChevronUp className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
+                      {!isCollapsed && (
+                        <Link to={`/drugs/${d.slug}`} className="px-3 pb-3 block">
+                          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                            {d.indication_oneliner}
+                          </p>
+                        </Link>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </>
         )}
       </main>
     </div>
