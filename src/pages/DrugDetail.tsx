@@ -596,20 +596,48 @@ export default function DrugDetail() {
                 <div className="flex items-baseline gap-2 flex-wrap">
                   <h1 className="text-xl font-bold text-foreground">{drug.name}</h1>
                   <span className="text-[10px] uppercase tracking-wide text-drugs font-medium">{drug.drug_class}</span>
+                  {(() => {
+                    const hasBolus = isRangePresent(drug.adult_bolus_dose);
+                    const hasInfusion = isRangePresent(drug.infusion_range);
+                    return (
+                      <span className="inline-flex items-center gap-1 ml-auto">
+                        <RangeBadge present={hasBolus} label="Bolus" />
+                        <RangeBadge present={hasInfusion} label="Infusion" />
+                      </span>
+                    );
+                  })()}
                 </div>
                 {drug.synonyms?.length > 0 && (
                   <p className="text-[11px] text-muted-foreground mt-0.5">aka {drug.synonyms.join(", ")}</p>
                 )}
                 <p className="text-xs text-muted-foreground mt-1.5">{drug.indication_oneliner}</p>
                 <div className="grid sm:grid-cols-2 gap-2 mt-2.5 text-xs">
-                  <div className="bg-card border border-border rounded-md px-2.5 py-1.5">
-                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
-                    <div className="font-medium text-foreground">{drug.adult_bolus_dose || "—"}</div>
-                  </div>
-                  <div className="bg-card border border-border rounded-md px-2.5 py-1.5">
-                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
-                    <div className="font-medium text-foreground">{drug.infusion_range || "—"}</div>
-                  </div>
+                  {(() => {
+                    const hasBolus = isRangePresent(drug.adult_bolus_dose);
+                    const hasInfusion = isRangePresent(drug.infusion_range);
+                    return (
+                      <>
+                        <div className={`border rounded-md px-2.5 py-1.5 ${hasBolus ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
+                            <RangeBadge present={hasBolus} compact />
+                          </div>
+                          <div className={`font-medium ${hasBolus ? "text-foreground" : "text-muted-foreground italic"}`}>
+                            {drug.adult_bolus_dose || "Not applicable"}
+                          </div>
+                        </div>
+                        <div className={`border rounded-md px-2.5 py-1.5 ${hasInfusion ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
+                            <RangeBadge present={hasInfusion} compact />
+                          </div>
+                          <div className={`font-medium ${hasInfusion ? "text-foreground" : "text-muted-foreground italic"}`}>
+                            {drug.infusion_range || "Not applicable"}
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
                 {drug.key_warning && (
                   <div className="mt-2 flex items-start gap-1.5 text-xs text-destructive bg-destructive/5 border border-destructive/20 rounded-md px-2 py-1.5">
