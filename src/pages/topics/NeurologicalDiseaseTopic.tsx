@@ -72,6 +72,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Myasthenia Gravis</h2>
           <MGPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={mgMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Pathophysiology & Assessment</h3>
@@ -109,6 +114,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Epilepsy</h2>
           <EpilepsyPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={epilepsyMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -128,6 +138,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Multiple Sclerosis</h2>
           <MSPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={msMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -147,6 +162,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Parkinson's Disease</h2>
           <PDPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={pdMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -167,6 +187,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Motor Neuron Disease</h2>
           <MNDPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={mndMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -185,6 +210,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Muscular Dystrophies</h2>
           <MDPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={mdMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -204,6 +234,11 @@ const NeurologicalDiseaseTopic = () => {
         <section>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Injury</h2>
           <SCIPathophysDiagram />
+          <PathophysDrugMapper
+            title="Pathophysiology → anaesthetic drug effects"
+            tagline="Tap a mechanism to see the linked drug implications and key cautions."
+            mechanisms={sciMechanisms}
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
