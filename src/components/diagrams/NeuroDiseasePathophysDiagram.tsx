@@ -128,20 +128,22 @@ const EpilepsyDiagram = () => (
     <line x1="100" y1="90" x2="200" y2="135" stroke="hsl(var(--destructive))" strokeWidth="2" markerEnd="url(#exc-arrow)" />
     <text x="140" y="105" fontSize="7.5" className={subClass}>↑↑ glutamate (NMDA/AMPA)</text>
 
-    {/* Inhibitory neuron */}
-    <circle cx="80" cy="180" r="22" fill="hsl(var(--primary) / 0.18)" stroke="hsl(var(--primary))" />
-    <text x="80" y="183" textAnchor="middle" fontSize="8" className={labelClass}>GABA</text>
-    <line x1="100" y1="170" x2="200" y2="155" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="3 3" />
-    <circle cx="200" cy="155" r="3" fill="hsl(var(--primary))" />
+    {/* Inhibitory neuron — fades to show loss of inhibition */}
+    <g className="anim-gaba-fade">
+      <circle cx="80" cy="180" r="22" fill="hsl(var(--primary) / 0.18)" stroke="hsl(var(--primary))" />
+      <text x="80" y="183" textAnchor="middle" fontSize="8" className={labelClass}>GABA</text>
+      <line x1="100" y1="170" x2="200" y2="155" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="3 3" />
+      <circle cx="200" cy="155" r="3" fill="hsl(var(--primary))" />
+    </g>
     <text x="140" y="195" fontSize="7.5" className={subClass}>↓ GABAergic inhibition</text>
 
-    {/* Pyramidal target neuron */}
-    <circle cx="240" cy="145" r="28" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" />
+    {/* Pyramidal target neuron — pulses when seizure fires */}
+    <circle cx="240" cy="145" r="28" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" className="anim-pyramidal" />
     <text x="240" y="143" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Pyramidal</text>
     <text x="240" y="155" textAnchor="middle" fontSize="7" className={subClass}>cortical neuron</text>
 
-    {/* Burst output */}
-    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" />
+    {/* Burst output — flickers with seizure firing */}
+    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" className="anim-burst" />
     <text x="310" y="170" fontSize="8" fontWeight="600" className="fill-destructive">Hypersynchronous firing</text>
 
     {/* Right column: drug effects */}
