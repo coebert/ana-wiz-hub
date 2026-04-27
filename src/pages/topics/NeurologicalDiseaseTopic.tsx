@@ -1,6 +1,15 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { neurologicalDiseaseQuestions } from "@/data/quizzes";
 import MGNMBASensitivityDiagram from "@/components/diagrams/MGNMBASensitivityDiagram";
+import {
+  MGPathophysDiagram,
+  EpilepsyPathophysDiagram,
+  MSPathophysDiagram,
+  PDPathophysDiagram,
+  MNDPathophysDiagram,
+  MDPathophysDiagram,
+  SCIPathophysDiagram,
+} from "@/components/diagrams/NeuroDiseasePathophysDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
