@@ -464,11 +464,16 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
-          </>
+          </section>
         )}
 
         {activeTab === "formulary" && (
-          <div className="space-y-4">
+          <section
+            id="admin-panel-formulary"
+            role="tabpanel"
+            aria-labelledby="admin-tab-formulary"
+            className="space-y-4"
+          >
             <div className="p-5 rounded-xl border border-border bg-card">
               <div className="flex items-start justify-between gap-3 flex-wrap">
                 <div>
