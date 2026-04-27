@@ -35,6 +35,81 @@ export type Database = {
         }
         Relationships: []
       }
+      drugs: {
+        Row: {
+          adult_bolus_dose: string
+          contraindications: string
+          created_at: string
+          dosing: string
+          drug_class: string
+          id: string
+          indication_oneliner: string
+          infusion_range: string
+          infusion_standard: Json
+          interactions: string
+          key_warning: string
+          mechanism_of_action: string
+          monitoring: string
+          name: string
+          pharmacokinetics: string
+          preparation: string
+          presentation: string
+          related_topic_ids: string[]
+          side_effects: string
+          slug: string
+          synonyms: string[]
+          updated_at: string
+        }
+        Insert: {
+          adult_bolus_dose?: string
+          contraindications?: string
+          created_at?: string
+          dosing?: string
+          drug_class: string
+          id?: string
+          indication_oneliner?: string
+          infusion_range?: string
+          infusion_standard?: Json
+          interactions?: string
+          key_warning?: string
+          mechanism_of_action?: string
+          monitoring?: string
+          name: string
+          pharmacokinetics?: string
+          preparation?: string
+          presentation?: string
+          related_topic_ids?: string[]
+          side_effects?: string
+          slug: string
+          synonyms?: string[]
+          updated_at?: string
+        }
+        Update: {
+          adult_bolus_dose?: string
+          contraindications?: string
+          created_at?: string
+          dosing?: string
+          drug_class?: string
+          id?: string
+          indication_oneliner?: string
+          infusion_range?: string
+          infusion_standard?: Json
+          interactions?: string
+          key_warning?: string
+          mechanism_of_action?: string
+          monitoring?: string
+          name?: string
+          pharmacokinetics?: string
+          preparation?: string
+          presentation?: string
+          related_topic_ids?: string[]
+          side_effects?: string
+          slug?: string
+          synonyms?: string[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
       podcasts: {
         Row: {
           audio_path: string | null
