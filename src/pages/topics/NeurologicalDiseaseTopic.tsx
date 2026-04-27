@@ -11,6 +11,7 @@ import {
   SCIPathophysDiagram,
 } from "@/components/diagrams/NeuroDiseasePathophysDiagram";
 import { PathophysDrugMapper } from "@/components/diagrams/PathophysDrugMapper";
+import { FRCARelevanceCallout } from "@/components/FRCARelevanceCallout";
 import {
   mgMechanisms,
   epilepsyMechanisms,
@@ -77,6 +78,25 @@ const NeurologicalDiseaseTopic = () => {
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={mgMechanisms}
           />
+          <FRCARelevanceCallout
+            bottomLine="Reduced safety margin at the NMJ — exquisite sensitivity to non-depolarising NMBAs and resistance to suxamethonium; quantitative neuromuscular monitoring is mandatory."
+            implications={[
+              "Use 10–50% of normal non-depolarising NMBA dose; sugammadex is the preferred reversal agent.",
+              "Continue pyridostigmine (some omit on day of surgery to reduce secretions and unpredictable response).",
+              "Predictors of postoperative ventilation: disease >6 yr, pyridostigmine >750 mg/day, VC <2.9 L, bulbar symptoms.",
+              "Regional anaesthesia preferred — avoids NMBAs and respiratory depression.",
+            ]}
+            buzzwords={[
+              "Fatigable weakness",
+              "Anti-AChR antibody",
+              "Osserman class",
+              "ED₉₅ sux 2.6×",
+              "Sugammadex over neostigmine",
+              "Myasthenic vs cholinergic crisis",
+              "Edrophonium (Tensilon) test",
+            ]}
+            vivaStem="A 45-year-old with generalised myasthenia gravis presents for thymectomy — outline your anaesthetic plan and postoperative disposition."
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <h3 className="font-semibold text-foreground mb-2">Pathophysiology & Assessment</h3>
@@ -119,6 +139,25 @@ const NeurologicalDiseaseTopic = () => {
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={epilepsyMechanisms}
           />
+          <FRCARelevanceCallout
+            bottomLine="Continue all AEDs perioperatively, avoid pro-convulsant agents, and account for enzyme induction altering anaesthetic drug clearance."
+            implications={[
+              "Avoid: enflurane, pethidine, tramadol, methohexitone; use with caution: ketamine, high-dose remifentanil.",
+              "Safe: propofol (anticonvulsant), thiopentone, sevoflurane, isoflurane, fentanyl, rocuronium.",
+              "Enzyme inducers (carbamazepine, phenytoin, phenobarbital) accelerate clearance of NMBAs and opioids — anticipate higher dose needs.",
+              "Sodium valproate may impair platelet function — check FBC/coagulation before neuraxial block.",
+              "Intraop seizure: oxygenate, midazolam 2–5 mg, propofol bolus, thiopentone for refractory.",
+            ]}
+            buzzwords={[
+              "Glutamate–GABA imbalance",
+              "Pro-convulsant: enflurane/tramadol",
+              "Enzyme induction",
+              "Valproate platelet dysfunction",
+              "Status epilepticus",
+              "Continue AEDs",
+            ]}
+            vivaStem="A patient on phenytoin and sodium valproate is listed for spinal surgery — what perioperative issues do you anticipate?"
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -143,6 +182,24 @@ const NeurologicalDiseaseTopic = () => {
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={msMechanisms}
           />
+          <FRCARelevanceCallout
+            bottomLine="Document baseline deficits, maintain normothermia, and choose the lowest-risk neuraxial technique — surgery, stress, and pyrexia can precipitate relapse."
+            implications={[
+              "Epidural generally considered safe; spinal more controversial — use lowest effective LA concentration.",
+              "Avoid suxamethonium where significant motor deficit exists (denervation hyperkalaemia).",
+              "Maintain strict normothermia — Uhthoff phenomenon can unmask deficits.",
+              "Disease-modifying therapies (natalizumab, fingolimod) are immunosuppressive — heightened infection risk.",
+            ]}
+            buzzwords={[
+              "Demyelination",
+              "Saltatory conduction failure",
+              "Uhthoff phenomenon",
+              "Relapsing-remitting",
+              "Document baseline deficit",
+              "Epidural > spinal",
+            ]}
+            vivaStem="A woman with relapsing-remitting MS requests epidural analgesia in labour — how do you counsel her?"
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -166,6 +223,24 @@ const NeurologicalDiseaseTopic = () => {
             title="Pathophysiology → anaesthetic drug effects"
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={pdMechanisms}
+          />
+          <FRCARelevanceCallout
+            bottomLine="Continue levodopa up to surgery and restart ASAP; avoid all central dopamine antagonists; expect autonomic instability and gastroparesis."
+            implications={[
+              "Restart levodopa via NG tube if oral route delayed — abrupt withdrawal → NMS-like syndrome.",
+              "Absolutely avoid metoclopramide, droperidol, prochlorperazine, haloperidol — use ondansetron or domperidone.",
+              "Treat as full stomach if symptomatic gastroparesis — RSI considered.",
+              "Regional anaesthesia preferred where feasible; remifentanil + rocuronium a clean TIVA combination.",
+            ]}
+            buzzwords={[
+              "Substantia nigra dopaminergic loss",
+              "Lewy bodies",
+              "NMS-like syndrome",
+              "Avoid D₂ antagonists",
+              "Levodopa via NG",
+              "Gastroparesis",
+            ]}
+            vivaStem="A 78-year-old with advanced Parkinson's disease needs an emergency laparotomy — outline your perioperative plan."
           />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -192,6 +267,24 @@ const NeurologicalDiseaseTopic = () => {
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={mndMechanisms}
           />
+          <FRCARelevanceCallout
+            bottomLine="Suxamethonium absolutely contraindicated; non-depolarising NMBAs profoundly potentiated; bulbar/respiratory weakness dictates ventilation strategy and advance care planning."
+            implications={[
+              "Use rocuronium at reduced dose with quantitative TOF; reverse with sugammadex.",
+              "Avoid long-acting opioids/sedatives — high risk of postoperative respiratory failure.",
+              "Consider awake fibreoptic intubation if bulbar weakness or difficult airway anticipated.",
+              "Discuss DNR, NIV preferences and feeding decisions before surgery.",
+            ]}
+            buzzwords={[
+              "UMN + LMN degeneration",
+              "Extra-junctional AChRs",
+              "Denervation hyperkalaemia",
+              "Sux contraindicated",
+              "Bulbar palsy",
+              "Advance care planning",
+            ]}
+            vivaStem="A patient with ALS presents for PEG insertion — what airway and ventilation issues do you anticipate?"
+          />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
               <ul className="list-disc list-inside space-y-1 text-sm">
@@ -214,6 +307,24 @@ const NeurologicalDiseaseTopic = () => {
             title="Pathophysiology → anaesthetic drug effects"
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={mdMechanisms}
+          />
+          <FRCARelevanceCallout
+            bottomLine="Avoid suxamethonium AND volatile agents — use TIVA; assess cardiomyopathy and conduction disease preoperatively; in DM1 also prevent myotonia triggers."
+            implications={[
+              "TIVA with propofol/remifentanil is the default; reverse rocuronium with sugammadex.",
+              "Suxamethonium → rhabdomyolysis, hyperkalaemia, cardiac arrest in all dystrophies.",
+              "DM1: avoid sux, neostigmine, hypothermia, shivering, diathermy near muscle (myotonia triggers).",
+              "Pre-op echo (DMD cardiomyopathy) and ECG (DM1 conduction disease) essential.",
+            ]}
+            buzzwords={[
+              "Dystrophin deficiency",
+              "MH-like reaction (not true MH)",
+              "Rhabdomyolysis + hyperkalaemia",
+              "TIVA only",
+              "Myotonia triggers",
+              "DMD cardiomyopathy",
+            ]}
+            vivaStem="A teenage boy with Duchenne muscular dystrophy needs scoliosis surgery — what are the key anaesthetic considerations?"
           />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
@@ -238,6 +349,24 @@ const NeurologicalDiseaseTopic = () => {
             title="Pathophysiology → anaesthetic drug effects"
             tagline="Tap a mechanism to see the linked drug implications and key cautions."
             mechanisms={sciMechanisms}
+          />
+          <FRCARelevanceCallout
+            bottomLine="From 24 h post-injury sux is contraindicated; lesions ≥T6 risk autonomic dysreflexia — block the afferent limb with deep GA or dense neuraxial block."
+            implications={[
+              "Use rocuronium + sugammadex; avoid sux from 24 h post-injury indefinitely.",
+              "Dysreflexia: sit up, remove trigger (usually bladder), GTN/nifedipine/labetalol ready.",
+              "Spinal/epidural blocks the dysreflexic reflex — preferred for lower-body and obstetric surgery.",
+              "Poikilothermia and respiratory loss (high lesions): active warming and short-acting agents mandatory.",
+            ]}
+            buzzwords={[
+              "Denervation hyperkalaemia",
+              "Lesion ≥ T6",
+              "Autonomic dysreflexia",
+              "Bladder distension trigger",
+              "Reflex bradycardia + HTN",
+              "Poikilothermia",
+            ]}
+            vivaStem="A T4 paraplegic patient develops severe hypertension and headache during cystoscopy — what is happening and how do you manage it?"
           />
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <div className="bg-card border border-border rounded-lg p-4">
