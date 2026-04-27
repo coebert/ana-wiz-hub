@@ -399,11 +399,16 @@ const AdminDashboard = () => {
                 })}
               </div>
             </div>
-          </>
+          </section>
         )}
 
         {analytics && activeTab === "topics" && (
-          <>
+          <section
+            id="admin-panel-topics"
+            role="tabpanel"
+            aria-labelledby="admin-tab-topics"
+            className="space-y-6"
+          >
             {/* Top 20 most visited topics */}
             <div className="p-4 rounded-xl border border-border bg-card">
               <h2 className="text-sm font-semibold text-foreground mb-1">Most Visited Topics</h2>
