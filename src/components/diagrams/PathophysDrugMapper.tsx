@@ -3,6 +3,26 @@ import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
 
 export type MapImpact = "avoid" | "caution" | "preferred";
 
+/**
+ * Canonical meaning of each badge — used everywhere across the neuro
+ * pathophys mappers so the rule is consistent topic-to-topic.
+ *
+ * AVOID    — Contraindicated or strongly relatively contraindicated.
+ *            A safer alternative exists and should be chosen by default.
+ * CAUTION  — Can be used, but dose, monitoring, or technique must be
+ *            modified; expect altered pharmacodynamics or risk.
+ * PREFERRED— First-line choice for this mechanism; either neutralises
+ *            the pathophysiology or sidesteps it entirely.
+ */
+export const IMPACT_DEFINITIONS: Record<MapImpact, string> = {
+  avoid:
+    "Contraindicated or strongly relatively contraindicated — choose a safer alternative.",
+  caution:
+    "Use with modified dose, monitoring, or technique — expect altered pharmacodynamics.",
+  preferred:
+    "First-line choice for this mechanism — either neutralises or sidesteps the pathology.",
+};
+
 export interface DrugLink {
   /** Short anaesthetic drug or class label, e.g. "Suxamethonium" */
   drug: string;
@@ -62,10 +82,37 @@ export const PathophysDrugMapper = ({ title, tagline, mechanisms }: PathophysDru
   return (
     <div className="my-6">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="mb-3">
-          <h3 className="text-base font-semibold text-foreground">{title}</h3>
-          {tagline && <p className="text-xs text-muted-foreground mt-1">{tagline}</p>}
+        <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="text-base font-semibold text-foreground">{title}</h3>
+            {tagline && <p className="text-xs text-muted-foreground mt-1">{tagline}</p>}
+          </div>
+          {/* Standardised badge legend */}
+          <div
+            className="flex flex-wrap gap-1.5 items-center text-[10px]"
+            aria-label="Badge legend"
+          >
+            {(Object.keys(impactStyles) as MapImpact[]).map((k) => {
+              const s = impactStyles[k];
+              const Icon = s.Icon;
+              return (
+                <span
+                  key={k}
+                  title={IMPACT_DEFINITIONS[k]}
+                  className={`uppercase tracking-wide px-1.5 py-0.5 rounded border inline-flex items-center gap-1 ${s.chip}`}
+                >
+                  <Icon className="h-3 w-3" aria-hidden />
+                  {s.label}
+                </span>
+              );
+            })}
+          </div>
         </div>
+        <p className="text-[11px] text-muted-foreground mb-3 leading-relaxed">
+          <span className="font-medium text-foreground/80">Avoid</span> = contraindicated;{" "}
+          <span className="font-medium text-foreground/80">Caution</span> = use with dose/monitoring change;{" "}
+          <span className="font-medium text-foreground/80">Preferred</span> = first-line for this mechanism.
+        </p>
 
         {/* Mechanism chips */}
         <div className="flex flex-wrap gap-2 mb-4" role="tablist" aria-label={`${title} mechanisms`}>
