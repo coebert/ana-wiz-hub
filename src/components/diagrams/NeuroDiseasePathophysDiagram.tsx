@@ -260,25 +260,27 @@ const MNDDiagram = () => (
     {/* Cortex */}
     <rect x="40" y="40" width="120" height="30" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
     <text x="100" y="58" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Motor cortex (UMN)</text>
-    {/* UMN with degeneration */}
-    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" />
+    {/* UMN with degeneration — fades */}
+    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="115" y="100" fontSize="7" className="fill-destructive">UMN loss</text>
 
     {/* Anterior horn */}
     <ellipse cx="100" cy="140" rx="22" ry="14" fill="hsl(var(--destructive) / 0.2)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <text x="100" y="143" textAnchor="middle" fontSize="7.5" fontWeight="600" className={labelClass}>Anterior horn (LMN)</text>
 
-    {/* LMN axon to muscle - degenerating */}
-    <line x1="122" y1="140" x2="220" y2="140" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" />
+    {/* LMN axon to muscle - degenerating, fades */}
+    <line x1="122" y1="140" x2="220" y2="140" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="170" y="132" textAnchor="middle" fontSize="7" className="fill-destructive">LMN degeneration</text>
 
     {/* Muscle with denervation supersensitivity */}
     <rect x="225" y="115" width="90" height="50" rx="4" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" />
     <text x="270" y="132" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Muscle fibre</text>
-    {/* Extra-junctional AChRs */}
-    {[235, 250, 265, 280, 295, 305].map((x, i) => (
-      <rect key={i} x={x} y={150} width="6" height="8" fill="hsl(var(--destructive))" />
-    ))}
+    {/* Extra-junctional AChRs spread along the membrane */}
+    <g className="anim-denervation">
+      {[235, 250, 265, 280, 295, 305].map((x, i) => (
+        <rect key={i} x={x} y={150} width="6" height="8" fill="hsl(var(--destructive))" />
+      ))}
+    </g>
     <text x="270" y="178" textAnchor="middle" fontSize="7" className={subClass}>↑↑ extra-junctional AChR (denervation supersensitivity)</text>
 
     {/* Right column */}
