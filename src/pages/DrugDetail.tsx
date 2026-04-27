@@ -279,8 +279,8 @@ export default function DrugDetail() {
           <Section title="Pharmacokinetics" body={drug.pharmacokinetics} />
           <Section title="Preparation & dilution" body={drug.preparation} />
           <DosingBreakdown raw={drug.dosing} />
-          <Section title="Monitoring" body={drug.monitoring} />
-          <Section title="Side effects" body={drug.side_effects} />
+          <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" />
+          <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" />
           <Section title="Contraindications" body={drug.contraindications} />
           <Section title="Interactions" body={drug.interactions} />
         </div>
