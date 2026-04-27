@@ -133,6 +133,177 @@ function DosingBreakdown({ raw }: { raw: string }) {
   );
 }
 
+// =====================================================================
+// Standardized Avoid / Caution / Preferred badges (shared with PathophysDrugMapper convention)
+// =====================================================================
+type Impact = "avoid" | "caution" | "preferred" | "neutral";
+
+const IMPACT_DEFINITIONS: Record<Exclude<Impact, "neutral">, { label: string; tone: string; description: string }> = {
+  avoid: {
+    label: "Avoid",
+    tone: "bg-destructive/10 text-destructive border-destructive/30",
+    description: "Serious or potentially irreversible harm — do not use, or use only when no safer alternative exists.",
+  },
+  caution: {
+    label: "Caution",
+    tone: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/30",
+    description: "Predictable adverse effect or pitfall — anticipate, mitigate and monitor closely.",
+  },
+  preferred: {
+    label: "Preferred / required",
+    tone: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30",
+    description: "Mandatory or strongly recommended monitoring / target — should be in place during use.",
+  },
+};
+
+const NEUTRAL_TONE = "bg-muted text-muted-foreground border-border";
+
+// Heuristic classification of a side-effect or monitoring sentence into an Impact band.
+function classifyImpact(label: string, body: string, mode: "side_effects" | "monitoring"): Impact {
+  const text = `${label} ${body}`.toLowerCase();
+  const AVOID = [
+    "anaphylaxis", "fatal", "death", "arrest", "irreversible", "fibrosis",
+    "pris", "propofol infusion syndrome", "torsades", "vf", "vt storm",
+    "rhabdomyolysis", "agranulocytosis", "stevens-johnson", "steven-johnson",
+    "dress", "malignant hyperthermia", "hyperkalaem", "complete heart block",
+    "asystole", "anaphylactoid", "ototoxicity",
+  ];
+  const CAUTION = [
+    "hypotension", "bradycardia", "tachycardia", "qt", "qtc", "prolong",
+    "respiratory depression", "apnoea", "apnea", "rigidity", "sedation",
+    "delirium", "myoclonus", "phlebitis", "pain on injection", "ponv",
+    "nausea", "vomit", "histamine", "red man", "thrombocytopenia",
+    "neutropenia", "nephrotox", "hepatotox", "neuropathy", "tremor",
+    "ataxia", "miosis", "hyperalgesia", "thyroid", "photosensitivity",
+    "discolour", "discolor", "elevated transaminase", "lft", "tft",
+  ];
+  const PREFERRED_MON = [
+    "continuous", "mandatory", "monitor", "tdm", "trough", "peak",
+    "target", "bis", "peeg", "etco2", "ecg", "nibp", "ibp", "spo2",
+    "u&e", "fbc", "lipid", "ck", "creatine kinase", "lft", "tft", "cxr",
+    "level", "essential", "baseline", "daily", "before the", "pre-dose",
+  ];
+
+  if (AVOID.some((k) => text.includes(k))) return "avoid";
+  if (mode === "monitoring" && PREFERRED_MON.some((k) => text.includes(k))) return "preferred";
+  if (CAUTION.some((k) => text.includes(k))) return "caution";
+  if (mode === "monitoring") return "preferred"; // default monitoring entry = recommended
+  return "neutral";
+}
+
+function parseLabelled(raw: string): Array<{ label: string; body: string }> {
+  if (!raw) return [];
+  const regex = /([A-Z][A-Za-z0-9 /()\-–'’]{1,60}?):\s+/g;
+  const matches: Array<{ label: string; start: number; end: number }> = [];
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(raw)) !== null) {
+    matches.push({ label: m[1], start: m.index, end: m.index + m[0].length });
+  }
+  if (matches.length === 0) {
+    // Split on sentences as fallback so each item can be badged.
+    return raw.split(/(?<=\.)\s+(?=[A-Z])/).map((s) => ({ label: "", body: s.trim() })).filter((x) => x.body);
+  }
+  const out: Array<{ label: string; body: string }> = [];
+  const preface = raw.slice(0, matches[0].start).trim();
+  if (preface) out.push({ label: "", body: preface });
+  for (let i = 0; i < matches.length; i++) {
+    const cur = matches[i];
+    const nextStart = i + 1 < matches.length ? matches[i + 1].start : raw.length;
+    const body = raw.slice(cur.end, nextStart).trim().replace(/\s+/g, " ");
+    if (body) out.push({ label: cur.label.trim(), body });
+  }
+  return out;
+}
+
+function ImpactBadge({ impact }: { impact: Impact }) {
+  if (impact === "neutral") {
+    return (
+      <span className={`text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full border ${NEUTRAL_TONE}`}>
+        Note
+      </span>
+    );
+  }
+  const def = IMPACT_DEFINITIONS[impact];
+  return (
+    <span
+      title={def.description}
+      className={`text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full border ${def.tone}`}
+    >
+      {def.label}
+    </span>
+  );
+}
+
+function ImpactLegend() {
+  return (
+    <div className="flex flex-wrap gap-x-3 gap-y-1.5 mb-3 text-[11px] text-muted-foreground">
+      <span className="font-medium text-foreground">Legend:</span>
+      {(Object.keys(IMPACT_DEFINITIONS) as Array<Exclude<Impact, "neutral">>).map((k) => {
+        const def = IMPACT_DEFINITIONS[k];
+        return (
+          <span key={k} className="inline-flex items-center gap-1.5">
+            <span className={`text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded border ${def.tone}`}>
+              {def.label}
+            </span>
+            <span>{def.description}</span>
+          </span>
+        );
+      })}
+    </div>
+  );
+}
+
+function ClinicalSignalPanel({
+  title,
+  raw,
+  mode,
+}: {
+  title: string;
+  raw: string;
+  mode: "side_effects" | "monitoring";
+}) {
+  const items = parseLabelled(raw);
+  if (items.length === 0) {
+    return (
+      <section className="bg-card border border-border rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-foreground mb-2">{title}</h3>
+        <p className="text-sm text-muted-foreground">—</p>
+      </section>
+    );
+  }
+  const subtitle =
+    mode === "monitoring"
+      ? "Drug levels, haemodynamic targets and ECG/QTc considerations — banded by clinical priority."
+      : "Adverse effects banded by severity to guide vigilance.";
+  return (
+    <section className="bg-card border border-border rounded-lg p-4">
+      <div className="flex items-baseline justify-between gap-2 mb-1">
+        <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+      </div>
+      <p className="text-[11px] text-muted-foreground mb-2">{subtitle}</p>
+      <ImpactLegend />
+      <ul className="grid gap-2">
+        {items.map((it, i) => {
+          const impact = classifyImpact(it.label, it.body, mode);
+          return (
+            <li key={i} className="flex items-start gap-2.5 bg-background/50 border border-border rounded-md p-2.5">
+              <div className="shrink-0 pt-0.5">
+                <ImpactBadge impact={impact} />
+              </div>
+              <div className="text-sm text-foreground/90 leading-relaxed min-w-0">
+                {it.label && (
+                  <span className="font-medium text-foreground">{it.label}: </span>
+                )}
+                <span className="text-foreground/85">{it.body}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 function InfusionCalculator({ drug }: { drug: Drug }) {
   const std = drug.infusion_standard || {};
   const [weight, setWeight] = useState<number>(70);
@@ -279,8 +450,8 @@ export default function DrugDetail() {
           <Section title="Pharmacokinetics" body={drug.pharmacokinetics} />
           <Section title="Preparation & dilution" body={drug.preparation} />
           <DosingBreakdown raw={drug.dosing} />
-          <Section title="Monitoring" body={drug.monitoring} />
-          <Section title="Side effects" body={drug.side_effects} />
+          <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" />
+          <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" />
           <Section title="Contraindications" body={drug.contraindications} />
           <Section title="Interactions" body={drug.interactions} />
         </div>
