@@ -263,6 +263,143 @@ function ImpactLegend() {
   );
 }
 
+// =====================================================================
+// Quick-target panel — extracts haemodynamic / ECG / TDM thresholds
+// =====================================================================
+
+interface QuickTarget {
+  key: string;
+  label: string;
+  value: string;
+  category: "haemodynamic" | "ecg" | "tdm" | "depth" | "other";
+}
+
+const NUM = "\\d+(?:\\.\\d+)?";
+const RANGE = `(?:${NUM}\\s*[-–—]\\s*${NUM}|[<>≤≥]\\s*${NUM}|${NUM})`;
+// permissive unit list
+const UNITS = "(?:mmHg|bpm|ms|mg/L|µg/ml|mcg/ml|µg/mL|mcg/mL|ng/mL|ng/ml|mg/dL|µmol/L|/min|%)?";
+
+function tryMatch(text: string, label: string, category: QuickTarget["category"], pattern: RegExp): QuickTarget[] {
+  const out: QuickTarget[] = [];
+  let m: RegExpExecArray | null;
+  const seen = new Set<string>();
+  const re = new RegExp(pattern.source, pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g");
+  while ((m = re.exec(text)) !== null) {
+    const value = (m[1] ?? m[0]).trim().replace(/\s+/g, " ");
+    if (!value || seen.has(value)) continue;
+    seen.add(value);
+    out.push({ key: `${label}-${out.length}`, label, value, category });
+    if (out.length >= 2) break; // cap per metric
+  }
+  return out;
+}
+
+function extractQuickTargets(raw: string): QuickTarget[] {
+  if (!raw) return [];
+  const t = raw.replace(/\s+/g, " ");
+  const out: QuickTarget[] = [];
+
+  // Haemodynamic
+  out.push(...tryMatch(t, "MAP", "haemodynamic",
+    /MAP[^.]{0,40}?((?:>|<|≥|≤)?\s*\d+(?:\s*[-–—]\s*\d+)?\s*mmHg?)/i));
+  out.push(...tryMatch(t, "SBP", "haemodynamic",
+    /SBP[^.]{0,40}?((?:>|<|≥|≤)?\s*\d+(?:\s*[-–—]\s*\d+)?\s*mmHg?)/i));
+  out.push(...tryMatch(t, "DBP", "haemodynamic",
+    /DBP[^.]{0,40}?((?:>|<|≥|≤)?\s*\d+(?:\s*[-–—]\s*\d+)?\s*mmHg?)/i));
+  out.push(...tryMatch(t, "BP", "haemodynamic",
+    /\bBP[^.]{0,40}?((?:>|<|≥|≤)?\s*\d{2,3}\s*\/\s*\d{2,3}\s*mmHg?)/i));
+  out.push(...tryMatch(t, "HR", "haemodynamic",
+    /\bHR[^.]{0,40}?((?:>|<|≥|≤)?\s*\d+(?:\s*[-–—]\s*\d+)?\s*(?:bpm|\/min))/i));
+
+  // ECG / QT
+  out.push(...tryMatch(t, "QTc", "ecg",
+    /QTc[^.]{0,40}?((?:>|<|≥|≤)?\s*\d{2,4}\s*ms)/i));
+  out.push(...tryMatch(t, "QT interval", "ecg",
+    /QT (?:interval|prolong\w*)[^.]{0,40}?((?:>|<|≥|≤)?\s*\d{2,4}\s*ms)/i));
+
+  // Depth of anaesthesia / sedation
+  out.push(...tryMatch(t, "BIS", "depth",
+    /BIS[^.]{0,30}?((?:>|<|≥|≤)?\s*\d{2,3}(?:\s*[-–—]\s*\d{2,3})?)/i));
+  out.push(...tryMatch(t, "RASS", "depth",
+    /RASS[^.]{0,30}?(target\s*)?((?:[-+]?\d)(?:\s*to\s*[-+]?\d)?)/i));
+  out.push(...tryMatch(t, "MAC", "depth",
+    /(?:end-tidal\s*)?MAC[^.]{0,30}?(\d(?:\.\d+)?\s*[-–—]\s*\d(?:\.\d+)?)/i));
+  out.push(...tryMatch(t, "ETCO₂", "depth",
+    /ETCO2?[^.]{0,30}?((?:>|<|≥|≤)?\s*\d(?:\.\d+)?\s*[-–—]?\s*\d?(?:\.\d+)?\s*kPa)/i));
+
+  // TDM levels
+  out.push(...tryMatch(t, "Trough", "tdm",
+    /trough[^.]{0,60}?((?:>|<|≥|≤)?\s*\d+(?:\.\d+)?\s*[-–—]?\s*\d*(?:\.\d+)?\s*(?:mg\/L|µg\/ml|mcg\/ml|ng\/mL|ng\/ml))/i));
+  out.push(...tryMatch(t, "Peak", "tdm",
+    /peak[^.]{0,60}?((?:>|<|≥|≤)?\s*\d+(?:\.\d+)?\s*[-–—]?\s*\d*(?:\.\d+)?\s*(?:mg\/L|µg\/ml|mcg\/ml|ng\/mL|ng\/ml))/i));
+  out.push(...tryMatch(t, "AUC₂₄", "tdm",
+    /AUC[\s\d:]*[^.]{0,40}?(\d+(?:\.\d+)?\s*[-–—]\s*\d+(?:\.\d+)?\s*mg[·\.]?h\/L)/i));
+  out.push(...tryMatch(t, "Therapeutic level", "tdm",
+    /(?:therapeutic range|target level|plasma level|level[s]?)[^.]{0,60}?(\d+(?:\.\d+)?\s*[-–—]\s*\d+(?:\.\d+)?\s*(?:mg\/L|µg\/ml|mcg\/ml|ng\/mL|ng\/ml))/i));
+
+  // Other useful objective targets
+  out.push(...tryMatch(t, "SpO₂", "other",
+    /SpO2?[^.]{0,30}?((?:>|<|≥|≤)?\s*\d{2,3}\s*%)/i));
+  out.push(...tryMatch(t, "Temperature", "other",
+    /temperature[^.]{0,30}?((?:>|<|≥|≤)?\s*\d{2}(?:\.\d+)?\s*°C)/i));
+  out.push(...tryMatch(t, "TOF ratio", "other",
+    /TOF[^.]{0,30}?((?:>|<|≥|≤)?\s*0?\.\d+)/i));
+
+  return out;
+}
+
+const CATEGORY_TONES: Record<QuickTarget["category"], { label: string; tone: string }> = {
+  haemodynamic: { label: "Haemodynamic", tone: "border-clinical/40 bg-clinical/5 text-clinical" },
+  ecg: { label: "ECG / QT", tone: "border-destructive/30 bg-destructive/5 text-destructive" },
+  tdm: { label: "Drug levels", tone: "border-pharmacology/40 bg-pharmacology/5 text-pharmacology" },
+  depth: { label: "Depth / sedation", tone: "border-icu/40 bg-icu/5 text-icu" },
+  other: { label: "Other targets", tone: "border-border bg-muted/30 text-foreground" },
+};
+
+function QuickTargetPanel({ raw }: { raw: string }) {
+  const targets = extractQuickTargets(raw);
+  if (targets.length === 0) return null;
+
+  // group by category
+  const grouped = targets.reduce<Record<QuickTarget["category"], QuickTarget[]>>((acc, t) => {
+    (acc[t.category] ||= []).push(t);
+    return acc;
+  }, {} as Record<QuickTarget["category"], QuickTarget[]>);
+
+  const order: QuickTarget["category"][] = ["haemodynamic", "ecg", "depth", "tdm", "other"];
+
+  return (
+    <section className="bg-drugs/5 border border-drugs/30 rounded-lg p-4">
+      <h3 className="text-sm font-semibold text-foreground mb-1">Quick targets</h3>
+      <p className="text-[11px] text-muted-foreground mb-3">
+        Auto-extracted thresholds from the monitoring text — verify in the full notes below.
+      </p>
+      <div className="grid gap-2">
+        {order.filter((c) => grouped[c]?.length).map((cat) => {
+          const meta = CATEGORY_TONES[cat];
+          return (
+            <div key={cat} className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mr-1">
+                {meta.label}
+              </span>
+              {grouped[cat].map((tgt) => (
+                <span
+                  key={tgt.key}
+                  className={`inline-flex items-baseline gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md border ${meta.tone}`}
+                  title={`${tgt.label}: ${tgt.value}`}
+                >
+                  <span className="font-sans font-semibold not-italic">{tgt.label}</span>
+                  <span>{tgt.value}</span>
+                </span>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function ClinicalSignalPanel({
   title,
   raw,
