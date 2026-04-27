@@ -393,3 +393,54 @@ const SCIDiagram = () => (
 );
 
 export default NeuroDiseasePathophysDiagram;
+
+/* ---------- Per-condition focused diagrams (for inline section use) ---------- */
+
+const Wrap = ({ title, tagline, children }: { title: string; tagline: string; children: React.ReactNode }) => (
+  <div className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
+    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">Pathophysiology — {title}</p>
+    <div className="rounded-md border border-border bg-background p-2 overflow-x-auto">
+      <svg viewBox="0 0 460 250" className="w-full h-auto min-w-[380px]" role="img" aria-label={`${title} pathophysiology`}>
+        {children}
+      </svg>
+    </div>
+    <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
+  </div>
+);
+
+export const MGPathophysDiagram = () => (
+  <Wrap title="Myasthenia gravis" tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs.">
+    <MGDiagram />
+  </Wrap>
+);
+export const EpilepsyPathophysDiagram = () => (
+  <Wrap title="Epilepsy" tagline="Excess glutamatergic excitation with deficient GABAergic inhibition produces hypersynchronous cortical firing.">
+    <EpilepsyDiagram />
+  </Wrap>
+);
+export const MSPathophysDiagram = () => (
+  <Wrap title="Multiple sclerosis" tagline="T-cell-mediated CNS demyelination → slowed/blocked saltatory conduction; relapse triggered by pyrexia, stress, surgery.">
+    <MSDiagram />
+  </Wrap>
+);
+export const PDPathophysDiagram = () => (
+  <Wrap title="Parkinson's disease" tagline="Loss of substantia-nigra dopaminergic neurons (α-synuclein Lewy bodies) shifts basal-ganglia output toward thalamic inhibition.">
+    <PDDiagram />
+  </Wrap>
+);
+export const MNDPathophysDiagram = () => (
+  <Wrap title="Motor neuron disease" tagline="Combined UMN + LMN degeneration → denervation supersensitivity (extra-junctional AChRs) → lethal hyperkalaemia with suxamethonium.">
+    <MNDDiagram />
+  </Wrap>
+);
+export const MDPathophysDiagram = () => (
+  <Wrap title="Muscular dystrophies" tagline="Dystrophin / sarcolemmal protein deficiency → fragile membrane leaks K⁺ and CK, predisposing to rhabdomyolysis with sux/volatiles.">
+    <MDDiagram />
+  </Wrap>
+);
+export const SCIPathophysDiagram = () => (
+  <Wrap title="Spinal cord injury — autonomic dysreflexia" tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge.">
+    <SCIDiagram />
+  </Wrap>
+);
+
