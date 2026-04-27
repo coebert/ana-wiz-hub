@@ -339,16 +339,21 @@ const AdminDashboard = () => {
             aria-labelledby="admin-tab-overview"
             className="space-y-6"
           >
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4" role="list" aria-label="Headline statistics">
               {[
-                { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500" },
-                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500" },
-                { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500" },
-                { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500" },
+                { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500", help: "Distinct visitors ever recorded" },
+                { label: "Daily Active Users", value: analytics.dailyUsers, icon: CalendarDays, color: "text-green-500", help: "Distinct visitors today" },
+                { label: "Total Page Views", value: analytics.totalVisits, icon: TrendingUp, color: "text-purple-500", help: "All page visits ever recorded" },
+                { label: "Today's Page Views", value: analytics.todayVisits, icon: TrendingUp, color: "text-orange-500", help: "Page visits since midnight" },
               ].map(stat => (
-                <div key={stat.label} className="p-4 rounded-xl border border-border bg-card">
+                <div
+                  key={stat.label}
+                  role="listitem"
+                  className="p-4 rounded-xl border border-border bg-card focus-within:ring-2 focus-within:ring-primary"
+                  aria-label={`${stat.label}: ${stat.value.toLocaleString()}. ${stat.help}`}
+                >
                   <div className="flex items-center gap-2 mb-2">
-                    <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                    <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
                     <span className="text-xs text-muted-foreground">{stat.label}</span>
                   </div>
                   <p className="text-3xl font-bold text-foreground">{stat.value}</p>
