@@ -189,37 +189,17 @@ function RangeBadge({ present, label, compact = false }: { present: boolean; lab
   );
 }
 
-// Heuristic classification of a side-effect or monitoring sentence into an Impact band.
-function classifyImpact(label: string, body: string, mode: "side_effects" | "monitoring"): Impact {
-  const text = `${label} ${body}`.toLowerCase();
-  const AVOID = [
-    "anaphylaxis", "fatal", "death", "arrest", "irreversible", "fibrosis",
-    "pris", "propofol infusion syndrome", "torsades", "vf", "vt storm",
-    "rhabdomyolysis", "agranulocytosis", "stevens-johnson", "steven-johnson",
-    "dress", "malignant hyperthermia", "hyperkalaem", "complete heart block",
-    "asystole", "anaphylactoid", "ototoxicity",
-  ];
-  const CAUTION = [
-    "hypotension", "bradycardia", "tachycardia", "qt", "qtc", "prolong",
-    "respiratory depression", "apnoea", "apnea", "rigidity", "sedation",
-    "delirium", "myoclonus", "phlebitis", "pain on injection", "ponv",
-    "nausea", "vomit", "histamine", "red man", "thrombocytopenia",
-    "neutropenia", "nephrotox", "hepatotox", "neuropathy", "tremor",
-    "ataxia", "miosis", "hyperalgesia", "thyroid", "photosensitivity",
-    "discolour", "discolor", "elevated transaminase", "lft", "tft",
-  ];
-  const PREFERRED_MON = [
-    "continuous", "mandatory", "monitor", "tdm", "trough", "peak",
-    "target", "bis", "peeg", "etco2", "ecg", "nibp", "ibp", "spo2",
-    "u&e", "fbc", "lipid", "ck", "creatine kinase", "lft", "tft", "cxr",
-    "level", "essential", "baseline", "daily", "before the", "pre-dose",
-  ];
+// Classification is now delegated to a per-class keyword map; see
+// `src/lib/drug-impact-classifier.ts` for the editable rules.
+import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 
-  if (AVOID.some((k) => text.includes(k))) return "avoid";
-  if (mode === "monitoring" && PREFERRED_MON.some((k) => text.includes(k))) return "preferred";
-  if (CAUTION.some((k) => text.includes(k))) return "caution";
-  if (mode === "monitoring") return "preferred"; // default monitoring entry = recommended
-  return "neutral";
+function classifyImpact(
+  label: string,
+  body: string,
+  mode: "side_effects" | "monitoring",
+  drugClass?: string,
+): Impact {
+  return classifyImpactExternal(label, body, mode, drugClass) as Impact;
 }
 
 function parseLabelled(raw: string): Array<{ label: string; body: string }> {
