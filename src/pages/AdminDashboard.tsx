@@ -333,7 +333,12 @@ const AdminDashboard = () => {
         )}
 
         {analytics && activeTab === "overview" && (
-          <>
+          <section
+            id="admin-panel-overview"
+            role="tabpanel"
+            aria-labelledby="admin-tab-overview"
+            className="space-y-6"
+          >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { label: "Total Unique Users", value: analytics.totalUniqueUsers, icon: Users, color: "text-blue-500" },
