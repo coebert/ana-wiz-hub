@@ -1,3 +1,5 @@
+import DiagramAnimationLegend from "./DiagramAnimationLegend";
+
 /**
  * Animated pathophysiology diagram — Recent URTI and airway hyper-reactivity.
  * Viral epithelial injury → exposure of irritant C-fibres + neurogenic
@@ -135,6 +137,17 @@ const UrtiAirwayDiagram = () => {
           <path d="M124 70 L 175 70" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#arr-urti)" />
           <path d="M462 70 L 498 70" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#arr-urti)" />
         </svg>
+
+        <DiagramAnimationLegend
+          items={[
+            { glyph: "trigger", label: "Virus / epithelium box", meaning: "viral injury exposing irritant C-fibre nerve endings" },
+            { glyph: "process", label: "Pulsing reflex node", meaning: "vagally-mediated bronchoconstriction & laryngospasm" },
+            { glyph: "mediator", label: "Travelling dots", meaning: "neurogenic inflammation signalling along sensory afferents" },
+            { glyph: "structure", label: "Narrowing airway", meaning: "reflex glottic / bronchial closure on instrumentation" },
+            { glyph: "arrow", label: "Solid arrow", meaning: "causal step from trigger to airway event" },
+            { glyph: "outcome", label: "Tinted ↓SpO₂ box", meaning: "desaturation — risk amplified 2–4× in children for 6–8 weeks" },
+          ]}
+        />
 
         <p className="text-xs text-muted-foreground mt-3 italic">
           Mitigation: postpone elective surgery 2–4 weeks (severe URTI/LRTI ≥6 weeks), prefer LMA over ETT, deepen anaesthesia before instrumentation, humidify gases, avoid desflurane, and have suxamethonium + atropine immediately available for laryngospasm.
