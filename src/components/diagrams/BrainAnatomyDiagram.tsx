@@ -1,4 +1,31 @@
 import brainAnatomyImg from "@/assets/brain-anatomy-lateral.jpg";
+import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
+
+const references: DiagramSource[] = [
+  {
+    label: "Gray's Anatomy for Students (Drake, Vogl & Mitchell), 4th ed.",
+    detail: "Chapter 8: Head and Neck — surface anatomy of the cerebrum and brainstem",
+    url: "https://www.elsevier.com/books/grays-anatomy-for-students/drake/978-0-323-39304-1",
+  },
+  {
+    label: "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+    detail: "Section 4: Head and Neck — cerebral lobes, sulci and gyri",
+    url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+  },
+  {
+    label: "TeachMeAnatomy — Cerebrum: Lobes, Surfaces & Functions",
+    url: "https://teachmeanatomy.info/neuroanatomy/structures/cerebrum/",
+  },
+  {
+    label: "Kenhub — Lateral surface of the cerebrum",
+    url: "https://www.kenhub.com/en/library/anatomy/the-cerebrum",
+  },
+  {
+    label: "Brodmann K. (1909) Localisation in the Cerebral Cortex",
+    detail: "Cytoarchitectonic basis for primary motor (area 4), sensory (1–3) and visual (17) cortices",
+  },
+];
+
 
 const labelledRegions = [
   { name: "Frontal lobe", note: "Personality, executive function, motor planning. Houses Broca's area (dominant inferior frontal gyrus) — expressive speech." },
@@ -48,6 +75,12 @@ const BrainAnatomyDiagram = () => {
           ))}
         </ul>
       </div>
+
+      <DiagramSourcesPanel
+        references={references}
+        imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above."
+        note="Educational use only. Not a substitute for primary anatomical references."
+      />
     </div>
   );
 };

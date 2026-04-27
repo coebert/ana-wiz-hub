@@ -1,4 +1,35 @@
 import brainMedialImg from "@/assets/brain-anatomy-medial.jpg";
+import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
+
+const references: DiagramSource[] = [
+  {
+    label: "Gray's Anatomy for Students (Drake, Vogl & Mitchell), 4th ed.",
+    detail: "Chapter 8: Midsagittal section — corpus callosum, diencephalon, brainstem",
+    url: "https://www.elsevier.com/books/grays-anatomy-for-students/drake/978-0-323-39304-1",
+  },
+  {
+    label: "Standring S. Gray's Anatomy: The Anatomical Basis of Clinical Practice, 42nd ed.",
+    detail: "Diencephalon, ventricular system and brainstem",
+    url: "https://www.elsevier.com/books/grays-anatomy/standring/978-0-7020-7705-0",
+  },
+  {
+    label: "Snell RS. Clinical Neuroanatomy, 8th ed.",
+    detail: "Limbic system, hypothalamus and pituitary anatomy",
+  },
+  {
+    label: "TeachMeAnatomy — The Diencephalon: Thalamus & Hypothalamus",
+    url: "https://teachmeanatomy.info/neuroanatomy/structures/diencephalon/",
+  },
+  {
+    label: "Kenhub — Median sagittal section of the brain",
+    url: "https://www.kenhub.com/en/library/anatomy/midsagittal-section-of-the-brain",
+  },
+  {
+    label: "Radiopaedia — Cerebral ventricular system",
+    url: "https://radiopaedia.org/articles/ventricles-of-the-brain",
+  },
+];
+
 
 const labelledRegions = [
   {
