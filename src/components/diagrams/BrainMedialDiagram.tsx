@@ -133,6 +133,12 @@ const BrainMedialDiagram = () => {
           ))}
         </ul>
       </div>
+
+      <DiagramSourcesPanel
+        references={references}
+        imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above."
+        note="Educational use only. Not a substitute for primary anatomical references."
+      />
     </div>
   );
 };
