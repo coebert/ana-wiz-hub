@@ -40,6 +40,7 @@ const NeuroanatomyTopic = () => {
         <>
           <BrainAnatomyDiagram />
           <BrainMedialDiagram />
+          <CsfFlowDiagram />
           <CircleOfWillisDiagram />
           <SkullBaseDiagram />
         </>
