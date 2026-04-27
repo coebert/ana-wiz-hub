@@ -399,6 +399,103 @@ const AdminDashboard = () => {
             )}
           </>
         )}
+
+        {activeTab === "formulary" && (
+          <div className="space-y-4">
+            <div className="p-5 rounded-xl border border-border bg-card">
+              <div className="flex items-start justify-between gap-3 flex-wrap">
+                <div>
+                  <h2 className="text-base font-semibold text-foreground">Verify formulary against reference sources</h2>
+                  <p className="text-xs text-muted-foreground mt-1 max-w-xl">
+                    Re-checks every drug monograph for consistency with the eMC SPCs (medicines.org.uk),
+                    NICE BNF public pages, and AAGBI / ICS / RCoA guidelines. Updates are written
+                    directly to the formulary. Runs in the background — you can leave this page.
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  {(!job || ["completed", "failed", "cancelled"].includes(job.status)) && (
+                    <Button onClick={startVerification} disabled={starting} size="sm">
+                      <Play className="w-4 h-4 mr-1" />
+                      {starting ? "Starting…" : "Verify all drugs"}
+                    </Button>
+                  )}
+                  {job && ["pending", "running"].includes(job.status) && (
+                    <Button onClick={cancelVerification} variant="destructive" size="sm">
+                      <Square className="w-4 h-4 mr-1" /> Cancel
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {job && (
+                <div className="mt-4 space-y-3">
+                  <div className="flex items-center gap-3 flex-wrap text-xs">
+                    <span className={`px-2 py-1 rounded-full font-medium ${
+                      job.status === "running" ? "bg-blue-500/15 text-blue-600 dark:text-blue-400" :
+                      job.status === "completed" ? "bg-green-500/15 text-green-600 dark:text-green-400" :
+                      job.status === "failed" ? "bg-red-500/15 text-red-600 dark:text-red-400" :
+                      job.status === "cancelled" ? "bg-amber-500/15 text-amber-600 dark:text-amber-400" :
+                      "bg-secondary text-muted-foreground"
+                    }`}>{job.status.toUpperCase()}</span>
+                    <span className="text-muted-foreground">
+                      {job.processed} / {job.total} processed
+                    </span>
+                    <span className="text-green-600 dark:text-green-400">{job.succeeded} ok</span>
+                    {job.failed > 0 && (
+                      <span className="text-red-600 dark:text-red-400">{job.failed} failed</span>
+                    )}
+                    {job.current_drug && (
+                      <span className="text-muted-foreground">→ {job.current_drug}</span>
+                    )}
+                  </div>
+
+                  <div className="h-2 rounded-full bg-secondary overflow-hidden">
+                    <div
+                      className="h-full bg-primary transition-all duration-500"
+                      style={{ width: `${job.total ? (job.processed / job.total) * 100 : 0}%` }}
+                    />
+                  </div>
+
+                  {job.last_error && (
+                    <p className="text-xs text-red-600 dark:text-red-400 break-words">
+                      Last error: {job.last_error}
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {logs.length > 0 && (
+              <div className="p-4 rounded-xl border border-border bg-card">
+                <h3 className="text-sm font-semibold text-foreground mb-3">Recent activity (latest 50)</h3>
+                <div className="space-y-1.5 max-h-[480px] overflow-y-auto">
+                  {logs.map(l => (
+                    <div key={l.id} className="flex items-start gap-2 text-xs">
+                      {l.status === "updated" ? (
+                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                      ) : l.status === "unchanged" ? (
+                        <CheckCircle2 className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      ) : (
+                        <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <span className="font-medium text-foreground">{l.drug_name}</span>
+                        <span className="text-muted-foreground ml-2">
+                          {l.status === "updated" ? `updated · ${l.fields_changed.join(", ")}` :
+                           l.status === "unchanged" ? "no changes needed" :
+                           `failed: ${l.error ?? "unknown"}`}
+                        </span>
+                      </div>
+                      <span className="text-muted-foreground shrink-0">
+                        {new Date(l.created_at).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
