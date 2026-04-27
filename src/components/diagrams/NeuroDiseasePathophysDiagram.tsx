@@ -177,9 +177,9 @@ const MSDiagram = () => (
     {[80, 140, 200, 260, 320, 380].map((x, i) => (
       <ellipse key={i} cx={x} cy={80} rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
     ))}
-    {/* Saltatory conduction arrows */}
+    {/* Saltatory conduction arrows — sweep along intact axon */}
     {[110, 170, 230, 290, 350].map((x, i) => (
-      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.4" markerEnd="url(#con-arrow)" />
+      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.4" markerEnd="url(#con-arrow)" className="anim-conduction" style={{ animationDelay: `${i * 0.12}s` }} />
     ))}
     <text x="230" y="42" textAnchor="middle" fontSize="7.5" className={subClass}>Fast saltatory conduction (intact myelin)</text>
 
@@ -189,9 +189,9 @@ const MSDiagram = () => (
     {/* Some myelin intact */}
     <ellipse cx="80" cy="180" rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
     <ellipse cx="380" cy="180" rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
-    {/* Demyelinated stretch with attacking T cells */}
+    {/* Demyelinated stretch — myelin segments strip away */}
     {[160, 220, 280].map((x, i) => (
-      <ellipse key={i} cx={x} cy={180} rx="20" ry="8" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="2 2" />
+      <ellipse key={i} cx={x} cy={180} rx="20" ry="8" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" className="anim-myelin-strip" style={{ animationDelay: `${i * 0.18}s` }} />
     ))}
     {/* Immune cells */}
     {[155, 225, 285].map((x, i) => (
