@@ -304,6 +304,186 @@ function ClinicalSignalPanel({
   );
 }
 
+// =====================================================================
+// Preparation guide — step-by-step draw-up + dilution helper
+// =====================================================================
+
+const DILUENT_TONES: Array<{ match: RegExp; label: string; tone: string }> = [
+  { match: /glucose\s*5%|5%\s*glucose|d5w|dextrose\s*5%/i, label: "Glucose 5%", tone: "bg-clinical/10 text-clinical border-clinical/30" },
+  { match: /0\.9%\s*saline|normal\s*saline|sodium\s*chloride|nacl/i, label: "0.9% Saline", tone: "bg-physiology/10 text-physiology border-physiology/30" },
+  { match: /water for injection|sterile water|wfi/i, label: "Water for Injection", tone: "bg-pharmacology/10 text-pharmacology border-pharmacology/30" },
+  { match: /hartmann|compound sodium lactate|csl|ringer/i, label: "Hartmann's", tone: "bg-icu/10 text-icu border-icu/30" },
+];
+
+function detectDiluents(text: string): Array<{ label: string; tone: string }> {
+  const out: Array<{ label: string; tone: string }> = [];
+  for (const d of DILUENT_TONES) {
+    if (d.match.test(text) && !out.find((x) => x.label === d.label)) {
+      out.push({ label: d.label, tone: d.tone });
+    }
+  }
+  return out;
+}
+
+function extractDilutions(text: string): Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> {
+  const out: Array<{ raw: string; mgPerMl: number; mcgPerMl: number }> = [];
+  const seen = new Set<string>();
+  const re = /(\d+(?:\.\d+)?)\s*(mg|g|mcg|micrograms?|units?)\s*(?:in|\/)\s*(\d+(?:\.\d+)?)\s*(?:ml|mls)/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const amount = parseFloat(m[1]);
+    const unit = m[2].toLowerCase();
+    const ml = parseFloat(m[3]);
+    if (!ml) continue;
+    let mg = amount;
+    if (unit === "g") mg = amount * 1000;
+    else if (unit.startsWith("mcg") || unit.startsWith("microgram")) mg = amount / 1000;
+    const key = `${m[1]}${unit}-${ml}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const mgPerMl = mg / ml;
+    out.push({ raw: m[0], mgPerMl, mcgPerMl: mgPerMl * 1000 });
+    if (out.length >= 6) break;
+  }
+  return out;
+}
+
+function splitSteps(raw: string): string[] {
+  if (!raw) return [];
+  const numbered = raw.match(/\d+\.\s+[^]+?(?=(?:\s\d+\.\s)|$)/g);
+  if (numbered && numbered.length >= 2) {
+    return numbered.map((s) => s.replace(/^\d+\.\s+/, "").trim()).filter(Boolean);
+  }
+  return raw
+    .split(/(?<=\.)\s+(?=[A-Z(])/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+}
+
+function WorkedExample({ drug }: { drug: Drug }) {
+  const std = drug.infusion_standard || {};
+  if (!std.amount_mg || !std.diluent_ml || !std.unit) return null;
+
+  const concMgPerMl = std.amount_mg / std.diluent_ml;
+  const concMcgPerMl = concMgPerMl * 1000;
+  const weight = 70;
+  const exampleRate =
+    std.unit === "mcg/kg/min" ? 0.1
+    : std.unit === "mcg/min" ? 20
+    : std.unit === "mg/kg/hr" ? 2
+    : std.unit === "mcg/kg/hr" ? 5
+    : std.unit === "units/hr" ? 2
+    : std.unit === "mg/hr" ? 5
+    : 1;
+
+  let mlPerHr = 0;
+  let workings = "";
+  if (std.unit === "mcg/kg/min") {
+    const mcgPerMin = exampleRate * weight;
+    mlPerHr = (mcgPerMin * 60) / concMcgPerMl;
+    workings = `${exampleRate} mcg/kg/min × ${weight} kg = ${mcgPerMin.toFixed(1)} mcg/min → ×60 = ${(mcgPerMin * 60).toFixed(0)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
+  } else if (std.unit === "mcg/min") {
+    mlPerHr = (exampleRate * 60) / concMcgPerMl;
+    workings = `${exampleRate} mcg/min × 60 = ${(exampleRate * 60).toFixed(0)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
+  } else if (std.unit === "mg/kg/hr") {
+    mlPerHr = (exampleRate * weight) / concMgPerMl;
+    workings = `${exampleRate} mg/kg/hr × ${weight} kg = ${(exampleRate * weight).toFixed(1)} mg/hr ÷ ${concMgPerMl.toFixed(2)} mg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
+  } else if (std.unit === "mcg/kg/hr") {
+    mlPerHr = (exampleRate * weight) / concMcgPerMl;
+    workings = `${exampleRate} mcg/kg/hr × ${weight} kg = ${(exampleRate * weight).toFixed(1)} mcg/hr ÷ ${concMcgPerMl.toFixed(0)} mcg/mL = ${mlPerHr.toFixed(2)} mL/hr`;
+  } else if (std.unit === "units/hr" || std.unit === "mg/hr") {
+    mlPerHr = exampleRate / concMgPerMl;
+    workings = `${exampleRate} ${std.unit} ÷ ${concMgPerMl.toFixed(2)} ${std.unit.replace("/hr", "/mL")} = ${mlPerHr.toFixed(2)} mL/hr`;
+  }
+
+  return (
+    <div className="rounded-md border border-drugs/30 bg-drugs/5 p-3 mt-3">
+      <div className="text-[10px] uppercase tracking-wide font-semibold text-drugs mb-1.5">Worked example</div>
+      <div className="text-xs text-foreground/90 leading-relaxed">
+        <div className="mb-1">
+          <span className="font-medium">Mix:</span> {std.amount_mg} mg in {std.diluent_ml} mL ={" "}
+          <span className="font-mono">{concMgPerMl.toFixed(2)} mg/mL</span>
+          {concMcgPerMl >= 1 && <> (<span className="font-mono">{concMcgPerMl.toFixed(0)} mcg/mL</span>)</>}
+        </div>
+        <div className="mb-1">
+          <span className="font-medium">Target:</span> {exampleRate} {std.unit}
+          {std.weight_based && <> for a {weight} kg adult</>}
+        </div>
+        <div className="font-mono text-[11px] text-foreground/80 bg-background/60 rounded px-2 py-1 border border-border whitespace-pre-wrap">
+          {workings}
+        </div>
+        <div className="text-[11px] text-muted-foreground mt-1.5">Adjust the live calculator below for other weights and target rates.</div>
+      </div>
+    </div>
+  );
+}
+
+function PreparationGuide({ raw, drug }: { raw: string; drug: Drug }) {
+  const steps = splitSteps(raw);
+  const dilutions = extractDilutions(raw);
+  const diluents = detectDiluents(raw);
+
+  if (!raw) {
+    return (
+      <section className="bg-card border border-border rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-foreground mb-2">Preparation & dilution guide</h3>
+        <p className="text-sm text-muted-foreground">—</p>
+      </section>
+    );
+  }
+
+  return (
+    <section className="bg-card border border-border rounded-lg p-4">
+      <h3 className="text-sm font-semibold text-foreground mb-1">Preparation & dilution guide</h3>
+      <p className="text-[11px] text-muted-foreground mb-3">
+        Step-by-step draw-up, common concentrations and a worked dilution example.
+      </p>
+
+      {(diluents.length > 0 || dilutions.length > 0) && (
+        <div className="mb-3 grid gap-2">
+          {diluents.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mr-1">Diluents</span>
+              {diluents.map((d) => (
+                <span key={d.label} className={`text-[10px] uppercase tracking-wide font-semibold px-2 py-0.5 rounded-full border ${d.tone}`}>
+                  {d.label}
+                </span>
+              ))}
+            </div>
+          )}
+          {dilutions.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mr-1">Common concentrations</span>
+              {dilutions.map((d, i) => (
+                <span
+                  key={i}
+                  className="text-[11px] font-mono px-2 py-0.5 rounded-md border border-drugs/30 bg-drugs/5 text-foreground"
+                  title={`${d.mgPerMl.toFixed(3)} mg/mL = ${d.mcgPerMl.toFixed(1)} mcg/mL`}
+                >
+                  {d.raw} → {d.mgPerMl >= 1 ? `${d.mgPerMl.toFixed(2)} mg/mL` : `${d.mcgPerMl.toFixed(0)} mcg/mL`}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      <ol className="space-y-2">
+        {steps.map((s, i) => (
+          <li key={i} className="flex items-start gap-2.5">
+            <span className="shrink-0 h-5 w-5 rounded-full bg-drugs/15 text-drugs text-[11px] font-semibold grid place-items-center mt-0.5">
+              {i + 1}
+            </span>
+            <p className="text-sm text-foreground/90 leading-relaxed whitespace-pre-line">{s}</p>
+          </li>
+        ))}
+      </ol>
+
+      <WorkedExample drug={drug} />
+    </section>
+  );
+}
+
 function InfusionCalculator({ drug }: { drug: Drug }) {
   const std = drug.infusion_standard || {};
   const [weight, setWeight] = useState<number>(70);
@@ -448,7 +628,7 @@ export default function DrugDetail() {
           <Section title="Presentation" body={drug.presentation} />
           <Section title="Mechanism of action" body={drug.mechanism_of_action} />
           <Section title="Pharmacokinetics" body={drug.pharmacokinetics} />
-          <Section title="Preparation & dilution" body={drug.preparation} />
+          <PreparationGuide raw={drug.preparation} drug={drug} />
           <DosingBreakdown raw={drug.dosing} />
           <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" />
           <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" />
