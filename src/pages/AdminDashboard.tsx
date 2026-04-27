@@ -566,8 +566,9 @@ const AdminDashboard = () => {
                 </div>
               </div>
             )}
-          </div>
+          </section>
         )}
+        </main>
       </div>
     </div>
   );
