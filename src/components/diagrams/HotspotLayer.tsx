@@ -158,8 +158,6 @@ export const HotspotLayer = ({
           </text>
           <foreignObject x={8} y={18} width={TIP_W - 16} height={TIP_H - 22}>
             <div
-              // eslint-disable-next-line react/no-unknown-property
-              xmlns="http://www.w3.org/1999/xhtml"
               style={{
                 fontSize: "9px",
                 lineHeight: 1.35,
