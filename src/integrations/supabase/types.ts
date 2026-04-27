@@ -35,6 +35,92 @@ export type Database = {
         }
         Relationships: []
       }
+      drug_verification_jobs: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          current_drug: string | null
+          failed: number
+          id: string
+          last_error: string | null
+          processed: number
+          status: string
+          succeeded: number
+          total: number
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          current_drug?: string | null
+          failed?: number
+          id?: string
+          last_error?: string | null
+          processed?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          current_drug?: string | null
+          failed?: number
+          id?: string
+          last_error?: string | null
+          processed?: number
+          status?: string
+          succeeded?: number
+          total?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      drug_verification_log: {
+        Row: {
+          created_at: string
+          drug_name: string
+          drug_slug: string
+          error: string | null
+          fields_changed: string[]
+          id: string
+          job_id: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          drug_name: string
+          drug_slug: string
+          error?: string | null
+          fields_changed?: string[]
+          id?: string
+          job_id?: string | null
+          status: string
+        }
+        Update: {
+          created_at?: string
+          drug_name?: string
+          drug_slug?: string
+          error?: string | null
+          fields_changed?: string[]
+          id?: string
+          job_id?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "drug_verification_log_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "drug_verification_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       drugs: {
         Row: {
           adult_bolus_dose: string
