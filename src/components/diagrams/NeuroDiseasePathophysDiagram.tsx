@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
 
@@ -83,12 +84,12 @@ const MGDiagram = () => (
     <text x="85" y="160" textAnchor="middle" fontSize="7.5" className={subClass}>ACh released normally</text>
     {/* Postsynaptic muscle membrane with reduced receptors */}
     <rect x="20" y="170" width="160" height="40" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-    {/* Few remaining receptors */}
-    <rect x="40" y="165" width="10" height="12" fill="hsl(var(--primary))" />
-    <rect x="120" y="165" width="10" height="12" fill="hsl(var(--primary))" />
-    {/* Antibody-blocked receptors */}
+    {/* Few remaining receptors — fade as Ab "blocks" them */}
+    <rect x="40" y="165" width="10" height="12" fill="hsl(var(--primary))" className="anim-receptor-fade" />
+    <rect x="120" y="165" width="10" height="12" fill="hsl(var(--primary))" className="anim-receptor-fade" />
+    {/* Antibody-blocked receptors drop in from above */}
     {[60, 80, 100, 140].map((x, i) => (
-      <g key={i}>
+      <g key={i} className="anim-receptor-block" style={{ animationDelay: `${i * 0.12}s` }}>
         <rect x={x} y={165} width="10" height="12" fill="hsl(var(--destructive) / 0.4)" stroke="hsl(var(--destructive))" />
         <path d={`M ${x - 2} 158 L ${x + 12} 158`} stroke="hsl(var(--destructive))" strokeWidth="1.4" />
       </g>
@@ -127,20 +128,22 @@ const EpilepsyDiagram = () => (
     <line x1="100" y1="90" x2="200" y2="135" stroke="hsl(var(--destructive))" strokeWidth="2" markerEnd="url(#exc-arrow)" />
     <text x="140" y="105" fontSize="7.5" className={subClass}>↑↑ glutamate (NMDA/AMPA)</text>
 
-    {/* Inhibitory neuron */}
-    <circle cx="80" cy="180" r="22" fill="hsl(var(--primary) / 0.18)" stroke="hsl(var(--primary))" />
-    <text x="80" y="183" textAnchor="middle" fontSize="8" className={labelClass}>GABA</text>
-    <line x1="100" y1="170" x2="200" y2="155" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="3 3" />
-    <circle cx="200" cy="155" r="3" fill="hsl(var(--primary))" />
+    {/* Inhibitory neuron — fades to show loss of inhibition */}
+    <g className="anim-gaba-fade">
+      <circle cx="80" cy="180" r="22" fill="hsl(var(--primary) / 0.18)" stroke="hsl(var(--primary))" />
+      <text x="80" y="183" textAnchor="middle" fontSize="8" className={labelClass}>GABA</text>
+      <line x1="100" y1="170" x2="200" y2="155" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="3 3" />
+      <circle cx="200" cy="155" r="3" fill="hsl(var(--primary))" />
+    </g>
     <text x="140" y="195" fontSize="7.5" className={subClass}>↓ GABAergic inhibition</text>
 
-    {/* Pyramidal target neuron */}
-    <circle cx="240" cy="145" r="28" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" />
+    {/* Pyramidal target neuron — pulses when seizure fires */}
+    <circle cx="240" cy="145" r="28" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" className="anim-pyramidal" />
     <text x="240" y="143" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Pyramidal</text>
     <text x="240" y="155" textAnchor="middle" fontSize="7" className={subClass}>cortical neuron</text>
 
-    {/* Burst output */}
-    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" />
+    {/* Burst output — flickers with seizure firing */}
+    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" className="anim-burst" />
     <text x="310" y="170" fontSize="8" fontWeight="600" className="fill-destructive">Hypersynchronous firing</text>
 
     {/* Right column: drug effects */}
@@ -174,9 +177,9 @@ const MSDiagram = () => (
     {[80, 140, 200, 260, 320, 380].map((x, i) => (
       <ellipse key={i} cx={x} cy={80} rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
     ))}
-    {/* Saltatory conduction arrows */}
+    {/* Saltatory conduction arrows — sweep along intact axon */}
     {[110, 170, 230, 290, 350].map((x, i) => (
-      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.4" markerEnd="url(#con-arrow)" />
+      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.4" markerEnd="url(#con-arrow)" className="anim-conduction" style={{ animationDelay: `${i * 0.12}s` }} />
     ))}
     <text x="230" y="42" textAnchor="middle" fontSize="7.5" className={subClass}>Fast saltatory conduction (intact myelin)</text>
 
@@ -186,9 +189,9 @@ const MSDiagram = () => (
     {/* Some myelin intact */}
     <ellipse cx="80" cy="180" rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
     <ellipse cx="380" cy="180" rx="22" ry="9" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" />
-    {/* Demyelinated stretch with attacking T cells */}
+    {/* Demyelinated stretch — myelin segments strip away */}
     {[160, 220, 280].map((x, i) => (
-      <ellipse key={i} cx={x} cy={180} rx="20" ry="8" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="2 2" />
+      <ellipse key={i} cx={x} cy={180} rx="20" ry="8" fill="hsl(var(--clinical) / 0.6)" stroke="hsl(var(--clinical))" className="anim-myelin-strip" style={{ animationDelay: `${i * 0.18}s` }} />
     ))}
     {/* Immune cells */}
     {[155, 225, 285].map((x, i) => (
@@ -224,12 +227,12 @@ const PDDiagram = () => (
     <ellipse cx="220" cy="170" rx="35" ry="14" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <text x="220" y="173" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>SN pars compacta</text>
 
-    {/* Degenerating dopaminergic projection */}
-    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" />
+    {/* Degenerating dopaminergic projection — fades out */}
+    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="155" y="155" fontSize="7.5" className="fill-destructive">↓↓ dopamine</text>
 
-    {/* Lewy body */}
-    <circle cx="230" cy="170" r="3" fill="hsl(var(--destructive))" />
+    {/* Lewy body — grows in */}
+    <circle cx="230" cy="170" r="3" fill="hsl(var(--destructive))" className="anim-lewy" />
     <text x="240" y="168" fontSize="6.5" className={subClass}>α-synuclein (Lewy)</text>
 
     {/* Output: imbalance */}
@@ -257,25 +260,27 @@ const MNDDiagram = () => (
     {/* Cortex */}
     <rect x="40" y="40" width="120" height="30" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
     <text x="100" y="58" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Motor cortex (UMN)</text>
-    {/* UMN with degeneration */}
-    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" />
+    {/* UMN with degeneration — fades */}
+    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="115" y="100" fontSize="7" className="fill-destructive">UMN loss</text>
 
     {/* Anterior horn */}
     <ellipse cx="100" cy="140" rx="22" ry="14" fill="hsl(var(--destructive) / 0.2)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <text x="100" y="143" textAnchor="middle" fontSize="7.5" fontWeight="600" className={labelClass}>Anterior horn (LMN)</text>
 
-    {/* LMN axon to muscle - degenerating */}
-    <line x1="122" y1="140" x2="220" y2="140" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" />
+    {/* LMN axon to muscle - degenerating, fades */}
+    <line x1="122" y1="140" x2="220" y2="140" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="170" y="132" textAnchor="middle" fontSize="7" className="fill-destructive">LMN degeneration</text>
 
     {/* Muscle with denervation supersensitivity */}
     <rect x="225" y="115" width="90" height="50" rx="4" fill="hsl(var(--clinical) / 0.18)" stroke="hsl(var(--clinical))" />
     <text x="270" y="132" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Muscle fibre</text>
-    {/* Extra-junctional AChRs */}
-    {[235, 250, 265, 280, 295, 305].map((x, i) => (
-      <rect key={i} x={x} y={150} width="6" height="8" fill="hsl(var(--destructive))" />
-    ))}
+    {/* Extra-junctional AChRs spread along the membrane */}
+    <g className="anim-denervation">
+      {[235, 250, 265, 280, 295, 305].map((x, i) => (
+        <rect key={i} x={x} y={150} width="6" height="8" fill="hsl(var(--destructive))" />
+      ))}
+    </g>
     <text x="270" y="178" textAnchor="middle" fontSize="7" className={subClass}>↑↑ extra-junctional AChR (denervation supersensitivity)</text>
 
     {/* Right column */}
@@ -310,13 +315,13 @@ const MDDiagram = () => (
     <text x="115" y="148" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">Dystrophin-deficient</text>
     <rect x="30" y="158" width="170" height="20" fill="hsl(var(--destructive) / 0.25)" stroke="hsl(var(--destructive))" strokeDasharray="3 2" />
     <rect x="30" y="178" width="170" height="20" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-    {/* Tears in membrane */}
+    {/* Tears in membrane — animate appearing */}
     {[60, 110, 160].map((x, i) => (
-      <path key={i} d={`M ${x - 6} 158 L ${x + 6} 178`} stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+      <path key={i} d={`M ${x - 6} 158 L ${x + 6} 178`} stroke="hsl(var(--destructive))" strokeWidth="1.5" className="anim-tear" style={{ animationDelay: `${i * 0.15}s` }} />
     ))}
-    {/* K+ leaking out */}
+    {/* K+ leaking out — float upward */}
     {[55, 115, 165].map((x, i) => (
-      <g key={i}>
+      <g key={i} className="anim-k-leak" style={{ animationDelay: `${0.4 + i * 0.15}s` }}>
         <text x={x} y={150} fontSize="8" fontWeight="700" className="fill-destructive">K⁺</text>
         <path d={`M ${x} 153 L ${x} 145`} stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#k-arrow)" />
       </g>
@@ -373,17 +378,17 @@ const SCIDiagram = () => (
     <text x="100" y="174" textAnchor="middle" fontSize="7" className={subClass}>Trigger:</text>
     <text x="100" y="186" textAnchor="middle" fontSize="7" className={subClass}>bladder/bowel distension,</text>
     <text x="100" y="198" textAnchor="middle" fontSize="7" className={subClass}>skin stim, uterine contraction</text>
-    <path d="M 150 180 Q 175 180 195 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" />
+    <path d="M 150 180 Q 175 180 195 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" className="anim-surge" />
 
     {/* Sympathetic outflow below lesion */}
     <text x="335" y="155" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">Unchecked</text>
     <text x="335" y="167" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">sympathetic surge</text>
     <text x="335" y="180" textAnchor="middle" fontSize="7" className={subClass}>vasoconstriction below lesion</text>
     <text x="335" y="192" textAnchor="middle" fontSize="7" className={subClass}>pallor, piloerection</text>
-    <path d="M 235 165 Q 270 165 290 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" />
+    <path d="M 235 165 Q 270 165 290 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" className="anim-surge" style={{ animationDelay: "0.4s" }} />
 
-    {/* Result */}
-    <rect x="280" y="40" width="160" height="60" rx="4" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" />
+    {/* Result — pulses red as the crisis hits */}
+    <rect x="280" y="40" width="160" height="60" rx="4" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" className="anim-crisis" style={{ animationDelay: "0.7s" }} />
     <text x="360" y="58" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">CRISIS</text>
     <text x="360" y="72" textAnchor="middle" fontSize="7" className={subClass}>severe HTN (CVA / MI risk)</text>
     <text x="360" y="84" textAnchor="middle" fontSize="7" className={subClass}>headache, bradycardia</text>
@@ -617,51 +622,170 @@ const sciHotspots: HotspotDef[] = [
 
 /* ---------- Per-condition focused diagrams (for inline section use) ---------- */
 
-const Wrap = ({ title, tagline, children }: { title: string; tagline: string; children: React.ReactNode }) => (
-  <div className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
-    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">Pathophysiology — {title}</p>
-    <div className="rounded-md border border-border bg-background p-2 overflow-x-auto">
-      <svg viewBox="0 0 460 250" className="w-full h-auto min-w-[380px]" role="img" aria-label={`${title} pathophysiology`}>
-        {children}
-      </svg>
+const MECHANISM_DURATION_MS = 2200;
+
+const Wrap = ({
+  title,
+  tagline,
+  mechanismLabel,
+  children,
+}: {
+  title: string;
+  tagline: string;
+  /** Short label for the play button, e.g. "Play receptor blockade". */
+  mechanismLabel: string;
+  children: React.ReactNode;
+}) => {
+  const [playing, setPlaying] = useState(false);
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+
+  const trigger = useCallback(() => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    // Re-trigger by toggling off then on so CSS animations restart.
+    setPlaying(false);
+    requestAnimationFrame(() => {
+      setPlaying(true);
+      timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
+    });
+  }, []);
+
+  // Auto-play once on first scroll into view
+  useEffect(() => {
+    if (!containerRef.current || hasAutoPlayed) return;
+    const el = containerRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+            setHasAutoPlayed(true);
+            trigger();
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: [0.4] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [hasAutoPlayed, trigger]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
+      <div className="flex items-start justify-between gap-2 mb-1">
+        <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
+          Pathophysiology — {title}
+        </p>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={trigger}
+          aria-label={mechanismLabel}
+          className="h-6 px-2 text-[11px] gap-1"
+        >
+          {playing ? <RotateCcw className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+          {playing ? "Replay" : mechanismLabel}
+        </Button>
+      </div>
+      <div
+        className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
+          playing ? "is-playing" : ""
+        }`}
+        onClick={trigger}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            trigger();
+          }
+        }}
+      >
+        <svg
+          viewBox="0 0 460 250"
+          className="w-full h-auto min-w-[380px]"
+          role="img"
+          aria-label={`${title} pathophysiology`}
+        >
+          {children}
+        </svg>
+      </div>
+      <HotspotHint>
+        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+      </HotspotHint>
+      <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
     </div>
-    <HotspotHint />
-    <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
-  </div>
-);
+  );
+};
 
 export const MGPathophysDiagram = () => (
-  <Wrap title="Myasthenia gravis" tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs.">
+  <Wrap
+    title="Myasthenia gravis"
+    mechanismLabel="Animate AChR blockade"
+    tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs."
+  >
     <MGDiagram />
   </Wrap>
 );
 export const EpilepsyPathophysDiagram = () => (
-  <Wrap title="Epilepsy" tagline="Excess glutamatergic excitation with deficient GABAergic inhibition produces hypersynchronous cortical firing.">
+  <Wrap
+    title="Epilepsy"
+    mechanismLabel="Animate seizure firing"
+    tagline="Excess glutamatergic excitation with deficient GABAergic inhibition produces hypersynchronous cortical firing."
+  >
     <EpilepsyDiagram />
   </Wrap>
 );
 export const MSPathophysDiagram = () => (
-  <Wrap title="Multiple sclerosis" tagline="T-cell-mediated CNS demyelination → slowed/blocked saltatory conduction; relapse triggered by pyrexia, stress, surgery.">
+  <Wrap
+    title="Multiple sclerosis"
+    mechanismLabel="Animate demyelination"
+    tagline="T-cell-mediated CNS demyelination → slowed/blocked saltatory conduction; relapse triggered by pyrexia, stress, surgery."
+  >
     <MSDiagram />
   </Wrap>
 );
 export const PDPathophysDiagram = () => (
-  <Wrap title="Parkinson's disease" tagline="Loss of substantia-nigra dopaminergic neurons (α-synuclein Lewy bodies) shifts basal-ganglia output toward thalamic inhibition.">
+  <Wrap
+    title="Parkinson's disease"
+    mechanismLabel="Animate dopamine loss"
+    tagline="Loss of substantia-nigra dopaminergic neurons (α-synuclein Lewy bodies) shifts basal-ganglia output toward thalamic inhibition."
+  >
     <PDDiagram />
   </Wrap>
 );
 export const MNDPathophysDiagram = () => (
-  <Wrap title="Motor neuron disease" tagline="Combined UMN + LMN degeneration → denervation supersensitivity (extra-junctional AChRs) → lethal hyperkalaemia with suxamethonium.">
+  <Wrap
+    title="Motor neuron disease"
+    mechanismLabel="Animate denervation"
+    tagline="Combined UMN + LMN degeneration → denervation supersensitivity (extra-junctional AChRs) → lethal hyperkalaemia with suxamethonium."
+  >
     <MNDDiagram />
   </Wrap>
 );
 export const MDPathophysDiagram = () => (
-  <Wrap title="Muscular dystrophies" tagline="Dystrophin / sarcolemmal protein deficiency → fragile membrane leaks K⁺ and CK, predisposing to rhabdomyolysis with sux/volatiles.">
+  <Wrap
+    title="Muscular dystrophies"
+    mechanismLabel="Animate membrane leak"
+    tagline="Dystrophin / sarcolemmal protein deficiency → fragile membrane leaks K⁺ and CK, predisposing to rhabdomyolysis with sux/volatiles."
+  >
     <MDDiagram />
   </Wrap>
 );
 export const SCIPathophysDiagram = () => (
-  <Wrap title="Spinal cord injury — autonomic dysreflexia" tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge.">
+  <Wrap
+    title="Spinal cord injury — autonomic dysreflexia"
+    mechanismLabel="Animate sympathetic surge"
+    tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge."
+  >
     <SCIDiagram />
   </Wrap>
 );

@@ -210,3 +210,105 @@
     scrollbar-width: none;
   }
 }
+
+/* =====================================================================
+   Neuro pathophys diagram – mechanism animations
+   Scoped under .neuro-anim.is-playing so they only run when the user
+   presses Play (or when the diagram first scrolls into view).
+   ===================================================================== */
+@keyframes neuro-receptor-block {
+  0%   { opacity: 0; transform: translateY(-14px); }
+  60%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes neuro-receptor-fade {
+  0%, 40% { opacity: 1; }
+  100%    { opacity: 0.25; }
+}
+@keyframes neuro-vesicle-release {
+  0%   { transform: translateY(0); opacity: 1; }
+  60%  { transform: translateY(55px); opacity: 0.9; }
+  100% { transform: translateY(55px); opacity: 0; }
+}
+@keyframes neuro-burst-fire {
+  0%, 100% { opacity: 0.25; }
+  20%, 60% { opacity: 1; }
+}
+@keyframes neuro-pyramidal-pulse {
+  0%, 100% { transform: scale(1); filter: none; }
+  50%      { transform: scale(1.06); filter: drop-shadow(0 0 6px hsl(var(--destructive) / 0.7)); }
+}
+@keyframes neuro-gaba-fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+@keyframes neuro-myelin-strip {
+  0%   { opacity: 1; transform: scaleY(1); }
+  60%  { opacity: 0.15; transform: scaleY(0.4); }
+  100% { opacity: 0.1; transform: scaleY(0.3); }
+}
+@keyframes neuro-conduction-flow {
+  0%   { stroke-dashoffset: 200; opacity: 0.2; }
+  50%  { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes neuro-dopamine-deplete {
+  0%   { opacity: 1; }
+  100% { opacity: 0.15; }
+}
+@keyframes neuro-lewy-grow {
+  0%   { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 1; }
+}
+@keyframes neuro-membrane-tear {
+  0%   { stroke-dasharray: 0 40; opacity: 0; }
+  100% { stroke-dasharray: 40 0; opacity: 1; }
+}
+@keyframes neuro-k-leak {
+  0%   { transform: translateY(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-22px); opacity: 0; }
+}
+@keyframes neuro-denervation-spread {
+  0%   { transform: scaleX(0.2); opacity: 0; transform-origin: left; }
+  100% { transform: scaleX(1); opacity: 1; transform-origin: left; }
+}
+@keyframes neuro-sympathetic-surge {
+  0%   { stroke-dashoffset: 60; opacity: 0.3; stroke-width: 1.5; }
+  60%  { opacity: 1; stroke-width: 2.6; }
+  100% { stroke-dashoffset: 0; opacity: 1; stroke-width: 2.6; }
+}
+@keyframes neuro-crisis-pulse {
+  0%, 100% { filter: none; }
+  50%      { filter: drop-shadow(0 0 8px hsl(var(--destructive) / 0.85)); }
+}
+
+/* Trigger classes — only active while parent .neuro-anim has .is-playing */
+.neuro-anim.is-playing .anim-receptor-block { animation: neuro-receptor-block 1.6s ease-out both; }
+.neuro-anim.is-playing .anim-receptor-fade  { animation: neuro-receptor-fade 1.6s ease-out both; animation-delay: 0.4s; }
+.neuro-anim.is-playing .anim-vesicle        { animation: neuro-vesicle-release 1.8s ease-in both; }
+
+.neuro-anim.is-playing .anim-burst          { animation: neuro-burst-fire 1.6s ease-in-out both; }
+.neuro-anim.is-playing .anim-pyramidal      { animation: neuro-pyramidal-pulse 1.6s ease-in-out both; transform-origin: 240px 145px; transform-box: fill-box; }
+.neuro-anim.is-playing .anim-gaba-fade      { animation: neuro-gaba-fade 1.6s ease-in-out both; }
+
+.neuro-anim.is-playing .anim-myelin-strip   { animation: neuro-myelin-strip 2s ease-in-out both; transform-origin: center; transform-box: fill-box; }
+.neuro-anim.is-playing .anim-conduction     { stroke-dasharray: 200; animation: neuro-conduction-flow 2s ease-in-out both; }
+
+.neuro-anim.is-playing .anim-dopamine       { animation: neuro-dopamine-deplete 1.8s ease-in-out both; }
+.neuro-anim.is-playing .anim-lewy           { animation: neuro-lewy-grow 1.8s ease-out both; transform-origin: center; transform-box: fill-box; }
+
+.neuro-anim.is-playing .anim-tear           { animation: neuro-membrane-tear 1.6s ease-out both; }
+.neuro-anim.is-playing .anim-k-leak         { animation: neuro-k-leak 1.6s ease-out both; }
+
+.neuro-anim.is-playing .anim-denervation    { animation: neuro-denervation-spread 1.8s ease-out both; }
+
+.neuro-anim.is-playing .anim-surge          { stroke-dasharray: 60; animation: neuro-sympathetic-surge 1.8s ease-out both; }
+.neuro-anim.is-playing .anim-crisis         { animation: neuro-crisis-pulse 1.6s ease-in-out both; transform-origin: center; transform-box: fill-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  .neuro-anim.is-playing [class*="anim-"] {
+    animation: none !important;
+  }
+}
+
