@@ -42,6 +42,97 @@ const Section = ({ title, body }: { title: string; body: string }) => (
   </section>
 );
 
+// Parse a free-text dosing string into labelled buckets so adult vs paediatric
+// vs renal/hepatic/elderly considerations are visually separated.
+type DosingBucket = { key: string; label: string; tone: string; body: string };
+
+const DOSING_RULES: Array<{ key: string; label: string; tone: string; patterns: RegExp[] }> = [
+  { key: "adult-bolus", label: "Adult — bolus", tone: "border-drugs/30 bg-drugs/5",
+    patterns: [/^adult bolus/i, /^adults? bolus/i, /^bolus/i, /^induction/i, /^loading/i, /^rsi/i, /^stat/i] },
+  { key: "adult-infusion", label: "Adult — infusion / maintenance", tone: "border-drugs/30 bg-drugs/5",
+    patterns: [/^adult infusion/i, /^infusion/i, /^maintenance/i, /^tiva/i, /^icu sedation/i, /^continuous/i] },
+  { key: "adult", label: "Adult — general", tone: "border-drugs/30 bg-drugs/5",
+    patterns: [/^adults?\b/i] },
+  { key: "paediatric", label: "Paediatric", tone: "border-physiology/30 bg-physiology/5",
+    patterns: [/^paed/i, /^paediatrics?/i, /^pediatric/i, /^children/i, /^neonat/i] },
+  { key: "elderly", label: "Elderly / frail", tone: "border-perioperative/30 bg-perioperative/5",
+    patterns: [/^elderly/i, /^frail/i, /^elderly\/obese/i, /^elderly\/frail/i] },
+  { key: "renal", label: "Renal impairment / RRT", tone: "border-clinical/30 bg-clinical/5",
+    patterns: [/^renal/i, /^renal impairment/i, /^renal replacement/i, /^crcl/i, /^rrt/i, /^cvvh/i, /^renal adjustment/i] },
+  { key: "hepatic", label: "Hepatic impairment", tone: "border-pharmacology/30 bg-pharmacology/5",
+    patterns: [/^hepatic/i, /^liver/i] },
+  { key: "obese", label: "Obesity", tone: "border-perioperative/30 bg-perioperative/5",
+    patterns: [/^obese/i, /^obesity/i, /^bariatric/i] },
+  { key: "obstetric", label: "Obstetric", tone: "border-physiology/30 bg-physiology/5",
+    patterns: [/^obstetric/i, /^pregnan/i] },
+  { key: "other", label: "Other / context", tone: "border-border bg-card",
+    patterns: [/^post-operative/i, /^post operative/i, /^icu/i, /^prophylaxis/i, /^altitude/i] },
+];
+
+function classifySegment(label: string): { key: string; label: string; tone: string } {
+  for (const rule of DOSING_RULES) {
+    if (rule.patterns.some((re) => re.test(label.trim()))) {
+      // Use the original written label (more specific than the bucket label) when helpful
+      return { key: rule.key, label: rule.label, tone: rule.tone };
+    }
+  }
+  return { key: "notes", label: label.trim().replace(/[:.]$/, ""), tone: "border-border bg-card" };
+}
+
+function parseDosing(raw: string): { buckets: DosingBucket[]; preface: string } {
+  if (!raw) return { buckets: [], preface: "" };
+  // Match "Label: ..." segments. Labels may contain spaces, slashes, parentheses, hyphens.
+  const regex = /([A-Z][A-Za-z0-9 /()\-–]{1,50}?):\s+/g;
+  const matches: Array<{ label: string; start: number; end: number }> = [];
+  let m: RegExpExecArray | null;
+  while ((m = regex.exec(raw)) !== null) {
+    matches.push({ label: m[1], start: m.index, end: m.index + m[0].length });
+  }
+  if (matches.length === 0) return { buckets: [], preface: raw.trim() };
+  const preface = raw.slice(0, matches[0].start).trim();
+  const buckets: DosingBucket[] = [];
+  for (let i = 0; i < matches.length; i++) {
+    const cur = matches[i];
+    const nextStart = i + 1 < matches.length ? matches[i + 1].start : raw.length;
+    const body = raw.slice(cur.end, nextStart).trim().replace(/\s+/g, " ");
+    if (!body) continue;
+    const cls = classifySegment(cur.label);
+    buckets.push({ key: `${cls.key}-${i}`, label: cur.label.trim(), tone: cls.tone, body });
+  }
+  return { buckets, preface };
+}
+
+function DosingBreakdown({ raw }: { raw: string }) {
+  const { buckets, preface } = parseDosing(raw);
+  if (buckets.length === 0) {
+    return (
+      <section className="bg-card border border-border rounded-lg p-4">
+        <h3 className="text-sm font-semibold text-foreground mb-2">Dosing — regimen defaults & patient context</h3>
+        <p className="text-sm text-muted-foreground whitespace-pre-line leading-relaxed">{raw || "—"}</p>
+      </section>
+    );
+  }
+  return (
+    <section className="bg-card border border-border rounded-lg p-4">
+      <h3 className="text-sm font-semibold text-foreground mb-1">Dosing — regimen defaults & patient context</h3>
+      <p className="text-[11px] text-muted-foreground mb-3">
+        Bolus and infusion ranges below; paediatric, renal, hepatic and elderly adjustments are split out where relevant.
+      </p>
+      {preface && (
+        <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{preface}</p>
+      )}
+      <div className="grid sm:grid-cols-2 gap-2.5">
+        {buckets.map((b) => (
+          <div key={b.key} className={`rounded-md border ${b.tone} p-3`}>
+            <div className="text-[10px] uppercase tracking-wide font-semibold text-foreground/80 mb-1">{b.label}</div>
+            <div className="text-sm text-foreground/90 leading-relaxed">{b.body}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function InfusionCalculator({ drug }: { drug: Drug }) {
   const std = drug.infusion_standard || {};
   const [weight, setWeight] = useState<number>(70);
