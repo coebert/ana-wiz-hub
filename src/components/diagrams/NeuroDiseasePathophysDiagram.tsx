@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
 
@@ -617,18 +618,109 @@ const sciHotspots: HotspotDef[] = [
 
 /* ---------- Per-condition focused diagrams (for inline section use) ---------- */
 
-const Wrap = ({ title, tagline, children }: { title: string; tagline: string; children: React.ReactNode }) => (
-  <div className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
-    <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">Pathophysiology — {title}</p>
-    <div className="rounded-md border border-border bg-background p-2 overflow-x-auto">
-      <svg viewBox="0 0 460 250" className="w-full h-auto min-w-[380px]" role="img" aria-label={`${title} pathophysiology`}>
-        {children}
-      </svg>
+const MECHANISM_DURATION_MS = 2200;
+
+const Wrap = ({
+  title,
+  tagline,
+  mechanismLabel,
+  children,
+}: {
+  title: string;
+  tagline: string;
+  /** Short label for the play button, e.g. "Play receptor blockade". */
+  mechanismLabel: string;
+  children: React.ReactNode;
+}) => {
+  const [playing, setPlaying] = useState(false);
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+
+  const trigger = useCallback(() => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    // Re-trigger by toggling off then on so CSS animations restart.
+    setPlaying(false);
+    requestAnimationFrame(() => {
+      setPlaying(true);
+      timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
+    });
+  }, []);
+
+  // Auto-play once on first scroll into view
+  useEffect(() => {
+    if (!containerRef.current || hasAutoPlayed) return;
+    const el = containerRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+            setHasAutoPlayed(true);
+            trigger();
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: [0.4] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [hasAutoPlayed, trigger]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
+      <div className="flex items-start justify-between gap-2 mb-1">
+        <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
+          Pathophysiology — {title}
+        </p>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={trigger}
+          aria-label={mechanismLabel}
+          className="h-6 px-2 text-[11px] gap-1"
+        >
+          {playing ? <RotateCcw className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+          {playing ? "Replay" : mechanismLabel}
+        </Button>
+      </div>
+      <div
+        className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
+          playing ? "is-playing" : ""
+        }`}
+        onClick={trigger}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            trigger();
+          }
+        }}
+      >
+        <svg
+          viewBox="0 0 460 250"
+          className="w-full h-auto min-w-[380px]"
+          role="img"
+          aria-label={`${title} pathophysiology`}
+        >
+          {children}
+        </svg>
+      </div>
+      <HotspotHint>
+        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+      </HotspotHint>
+      <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
     </div>
-    <HotspotHint />
-    <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
-  </div>
-);
+  );
+};
 
 export const MGPathophysDiagram = () => (
   <Wrap title="Myasthenia gravis" tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs.">
