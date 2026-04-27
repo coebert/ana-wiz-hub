@@ -354,25 +354,28 @@ const AdminDashboard = () => {
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <stat.icon className={`w-5 h-5 ${stat.color}`} aria-hidden="true" />
-                    <span className="text-xs text-muted-foreground">{stat.label}</span>
+                    <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{stat.label}</span>
                   </div>
-                  <p className="text-3xl font-bold text-foreground">{stat.value}</p>
+                  <p className="text-3xl font-bold text-foreground tabular-nums" aria-hidden="true">{stat.value.toLocaleString()}</p>
+                  <p className="text-[11px] text-muted-foreground mt-1">{stat.help}</p>
                 </div>
               ))}
             </div>
 
             <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-4">Unique Users — Last 7 Days</h2>
-              <div className="flex items-end gap-2 h-40">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Unique Users — Last 7 Days</h2>
+              <p className="text-xs text-muted-foreground mb-4">Distinct visitors per day</p>
+              <div className="flex items-end gap-2 h-40" role="img" aria-label={`Bar chart of unique users per day for the last 7 days. ${analytics.last7Days.map(d => `${d.date}: ${d.count}`).join(", ")}.`}>
                 {analytics.last7Days.map(day => {
                   const max = Math.max(...analytics.last7Days.map(d => d.count), 1);
                   const height = (day.count / max) * 100;
                   return (
-                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                      <span className="text-xs font-medium text-foreground">{day.count}</span>
+                    <div key={day.date} className="flex-1 flex flex-col items-center gap-1" title={`${day.date}: ${day.count} unique users`}>
+                      <span className="text-xs font-medium text-foreground tabular-nums">{day.count}</span>
                       <div
                         className="w-full rounded-t bg-primary/70 transition-all duration-300 min-h-[4px]"
                         style={{ height: `${Math.max(height, 3)}%` }}
+                        aria-hidden="true"
                       />
                       <span className="text-[10px] text-muted-foreground leading-tight text-center">{day.date}</span>
                     </div>
@@ -383,26 +386,27 @@ const AdminDashboard = () => {
 
             {/* Section breakdown */}
             <div className="p-4 rounded-xl border border-border bg-card">
-              <h2 className="text-sm font-semibold text-foreground mb-3">Views by Section</h2>
-              <div className="space-y-2">
+              <h2 className="text-sm font-semibold text-foreground mb-1">Views by Section</h2>
+              <p className="text-xs text-muted-foreground mb-3">Topic page views grouped by curriculum section</p>
+              <ul className="space-y-2">
                 {analytics.sectionBreakdown.map(s => {
                   const max = Math.max(...analytics.sectionBreakdown.map(x => x.views), 1);
                   const pct = (s.views / max) * 100;
                   const colorKey = Object.entries(sectionLabels).find(([, v]) => v === s.section)?.[0] || "physics";
                   return (
-                    <div key={s.section} className="flex items-center gap-3">
-                      <span className="text-xs text-muted-foreground w-28 shrink-0">{s.section}</span>
-                      <div className="flex-1 h-5 rounded bg-secondary/50 overflow-hidden">
+                    <li key={s.section} className="flex items-center gap-3" aria-label={`${s.section}: ${s.views} views`}>
+                      <span className="text-xs text-foreground w-28 shrink-0 font-medium">{s.section}</span>
+                      <div className="flex-1 h-5 rounded bg-secondary/50 overflow-hidden" aria-hidden="true">
                         <div
                           className={`h-full rounded ${sectionColors[colorKey] || "bg-primary"} transition-all duration-300`}
                           style={{ width: `${Math.max(pct, 2)}%` }}
                         />
                       </div>
-                      <span className="text-xs font-medium text-foreground w-10 text-right">{s.views}</span>
-                    </div>
+                      <span className="text-xs font-medium text-foreground w-12 text-right tabular-nums">{s.views.toLocaleString()}</span>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
             </div>
           </section>
         )}
