@@ -83,6 +83,10 @@ export default {
           DEFAULT: "hsl(var(--chemistry))",
           light: "hsl(var(--chemistry-light))",
         },
+        drugs: {
+          DEFAULT: "hsl(var(--drugs))",
+          light: "hsl(var(--drugs-light))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
