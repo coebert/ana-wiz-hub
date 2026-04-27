@@ -158,6 +158,37 @@ const IMPACT_DEFINITIONS: Record<Exclude<Impact, "neutral">, { label: string; to
 
 const NEUTRAL_TONE = "bg-muted text-muted-foreground border-border";
 
+// Detect whether a bolus / infusion range string actually carries usable dosing
+// (some drugs are explicitly "Not used as an infusion" etc.).
+function isRangePresent(value: string | null | undefined): boolean {
+  if (!value) return false;
+  const v = value.trim();
+  if (!v || v === "—" || v === "-" || v === "N/A" || v === "n/a") return false;
+  if (/^not\s+(used|typically|applicable|given|administered|recommended|usually)/i.test(v)) return false;
+  if (/^(none|nil)\b/i.test(v)) return false;
+  return true;
+}
+
+function RangeBadge({ present, label, compact = false }: { present: boolean; label?: string; compact?: boolean }) {
+  const tone = present
+    ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30"
+    : "bg-muted text-muted-foreground border-border";
+  const text = compact
+    ? present ? "✓" : "—"
+    : `${label ?? ""} ${present ? "✓" : "—"}`.trim();
+  const title = present
+    ? `${label ?? "Range"} dose available`
+    : `${label ?? "Range"} not applicable for this drug`;
+  return (
+    <span
+      title={title}
+      className={`text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded border ${tone}`}
+    >
+      {text}
+    </span>
+  );
+}
+
 // Heuristic classification of a side-effect or monitoring sentence into an Impact band.
 function classifyImpact(label: string, body: string, mode: "side_effects" | "monitoring"): Impact {
   const text = `${label} ${body}`.toLowerCase();
@@ -596,20 +627,48 @@ export default function DrugDetail() {
                 <div className="flex items-baseline gap-2 flex-wrap">
                   <h1 className="text-xl font-bold text-foreground">{drug.name}</h1>
                   <span className="text-[10px] uppercase tracking-wide text-drugs font-medium">{drug.drug_class}</span>
+                  {(() => {
+                    const hasBolus = isRangePresent(drug.adult_bolus_dose);
+                    const hasInfusion = isRangePresent(drug.infusion_range);
+                    return (
+                      <span className="inline-flex items-center gap-1 ml-auto">
+                        <RangeBadge present={hasBolus} label="Bolus" />
+                        <RangeBadge present={hasInfusion} label="Infusion" />
+                      </span>
+                    );
+                  })()}
                 </div>
                 {drug.synonyms?.length > 0 && (
                   <p className="text-[11px] text-muted-foreground mt-0.5">aka {drug.synonyms.join(", ")}</p>
                 )}
                 <p className="text-xs text-muted-foreground mt-1.5">{drug.indication_oneliner}</p>
                 <div className="grid sm:grid-cols-2 gap-2 mt-2.5 text-xs">
-                  <div className="bg-card border border-border rounded-md px-2.5 py-1.5">
-                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
-                    <div className="font-medium text-foreground">{drug.adult_bolus_dose || "—"}</div>
-                  </div>
-                  <div className="bg-card border border-border rounded-md px-2.5 py-1.5">
-                    <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
-                    <div className="font-medium text-foreground">{drug.infusion_range || "—"}</div>
-                  </div>
+                  {(() => {
+                    const hasBolus = isRangePresent(drug.adult_bolus_dose);
+                    const hasInfusion = isRangePresent(drug.infusion_range);
+                    return (
+                      <>
+                        <div className={`border rounded-md px-2.5 py-1.5 ${hasBolus ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
+                            <RangeBadge present={hasBolus} compact />
+                          </div>
+                          <div className={`font-medium ${hasBolus ? "text-foreground" : "text-muted-foreground italic"}`}>
+                            {drug.adult_bolus_dose || "Not applicable"}
+                          </div>
+                        </div>
+                        <div className={`border rounded-md px-2.5 py-1.5 ${hasInfusion ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
+                            <RangeBadge present={hasInfusion} compact />
+                          </div>
+                          <div className={`font-medium ${hasInfusion ? "text-foreground" : "text-muted-foreground italic"}`}>
+                            {drug.infusion_range || "Not applicable"}
+                          </div>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
                 {drug.key_warning && (
                   <div className="mt-2 flex items-start gap-1.5 text-xs text-destructive bg-destructive/5 border border-destructive/20 rounded-md px-2 py-1.5">
