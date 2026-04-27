@@ -15,9 +15,9 @@ export const mgMechanisms: MechanismNode[] = [
       },
       {
         drug: "Suxamethonium",
-        effect: "Resistance — fewer functional receptors raise ED₉₅ ≈ 2.6× normal.",
-        caution: "Higher dose may be needed; phase II block possible — avoid where feasible.",
-        impact: "caution",
+        effect: "Resistance — fewer functional receptors raise ED₉₅ ≈ 2.6× normal; phase II block possible.",
+        caution: "Avoid where feasible — use rocuronium + sugammadex; reserve sux for true RSI need.",
+        impact: "avoid",
       },
       {
         drug: "Sugammadex",
@@ -172,10 +172,10 @@ export const msMechanisms: MechanismNode[] = [
     detail: "Even small rises in core temperature can unmask or worsen neurological deficits.",
     links: [
       {
-        drug: "Active warming / pyrexia",
-        effect: "Perioperative hyperthermia may precipitate relapse.",
-        caution: "Maintain normothermia; treat fever aggressively.",
-        impact: "caution",
+        drug: "Strict normothermia / active cooling",
+        effect: "Even small core-temperature rises can unmask deficits (Uhthoff phenomenon).",
+        caution: "Forced-air warming titrated to normothermia; treat fever aggressively (paracetamol, cooling).",
+        impact: "preferred",
       },
     ],
   },
@@ -215,10 +215,10 @@ export const pdMechanisms: MechanismNode[] = [
         impact: "caution",
       },
       {
-        drug: "Aspiration prophylaxis",
-        effect: "Gastroparesis raises aspiration risk; metoclopramide contraindicated.",
-        caution: "Use ranitidine/PPI ± RSI; treat as full stomach if symptomatic.",
-        impact: "caution",
+        drug: "Aspiration prophylaxis (ranitidine/PPI ± RSI)",
+        effect: "Counters gastroparesis-related aspiration risk without D₂ blockade.",
+        caution: "Preferred prophylactic strategy; treat as full stomach if symptomatic. Avoid metoclopramide.",
+        impact: "preferred",
       },
     ],
   },
