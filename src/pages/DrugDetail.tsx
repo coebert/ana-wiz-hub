@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AlertTriangle, ArrowLeft, Pill } from "lucide-react";
+import { AlertTriangle, ArrowLeft, Pill, ChevronDown, ChevronUp } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
@@ -706,6 +706,20 @@ export default function DrugDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [drug, setDrug] = useState<Drug | null>(null);
   const [loading, setLoading] = useState(true);
+  const [crashCardMinimised, setCrashCardMinimised] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem("drug-crash-card-minimised") === "1";
+    } catch {
+      return false;
+    }
+  });
+  useEffect(() => {
+    try {
+      localStorage.setItem("drug-crash-card-minimised", crashCardMinimised ? "1" : "0");
+    } catch {
+      // ignore
+    }
+  }, [crashCardMinimised]);
 
   useEffect(() => {
     (async () => {
@@ -757,47 +771,59 @@ export default function DrugDetail() {
                       <span className="inline-flex items-center gap-1 ml-auto">
                         <RangeBadge present={hasBolus} label="Bolus" />
                         <RangeBadge present={hasInfusion} label="Infusion" />
+                        <button
+                          onClick={() => setCrashCardMinimised((v) => !v)}
+                          className="ml-1 h-6 w-6 grid place-items-center rounded-md text-muted-foreground hover:bg-drugs/10 hover:text-drugs transition-colors"
+                          aria-label={crashCardMinimised ? "Expand drug card" : "Minimise drug card"}
+                          aria-expanded={!crashCardMinimised}
+                        >
+                          {crashCardMinimised ? <ChevronDown className="h-4 w-4" /> : <ChevronUp className="h-4 w-4" />}
+                        </button>
                       </span>
                     );
                   })()}
                 </div>
-                {drug.synonyms?.length > 0 && (
-                  <p className="text-[11px] text-muted-foreground mt-0.5">aka {drug.synonyms.join(", ")}</p>
-                )}
-                <p className="text-xs text-muted-foreground mt-1.5">{drug.indication_oneliner}</p>
-                <div className="grid sm:grid-cols-2 gap-2 mt-2.5 text-xs">
-                  {(() => {
-                    const hasBolus = isRangePresent(drug.adult_bolus_dose);
-                    const hasInfusion = isRangePresent(drug.infusion_range);
-                    return (
-                      <>
-                        <div className={`border rounded-md px-2.5 py-1.5 ${hasBolus ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
-                          <div className="flex items-center justify-between gap-2">
-                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
-                            <RangeBadge present={hasBolus} compact />
-                          </div>
-                          <div className={`font-medium ${hasBolus ? "text-foreground" : "text-muted-foreground italic"}`}>
-                            {drug.adult_bolus_dose || "Not applicable"}
-                          </div>
-                        </div>
-                        <div className={`border rounded-md px-2.5 py-1.5 ${hasInfusion ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
-                          <div className="flex items-center justify-between gap-2">
-                            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
-                            <RangeBadge present={hasInfusion} compact />
-                          </div>
-                          <div className={`font-medium ${hasInfusion ? "text-foreground" : "text-muted-foreground italic"}`}>
-                            {drug.infusion_range || "Not applicable"}
-                          </div>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </div>
-                {drug.key_warning && (
-                  <div className="mt-2 flex items-start gap-1.5 text-xs text-destructive bg-destructive/5 border border-destructive/20 rounded-md px-2 py-1.5">
-                    <AlertTriangle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
-                    <span>{drug.key_warning}</span>
-                  </div>
+                {!crashCardMinimised && (
+                  <>
+                    {drug.synonyms?.length > 0 && (
+                      <p className="text-[11px] text-muted-foreground mt-0.5">aka {drug.synonyms.join(", ")}</p>
+                    )}
+                    <p className="text-xs text-muted-foreground mt-1.5">{drug.indication_oneliner}</p>
+                    <div className="grid sm:grid-cols-2 gap-2 mt-2.5 text-xs">
+                      {(() => {
+                        const hasBolus = isRangePresent(drug.adult_bolus_dose);
+                        const hasInfusion = isRangePresent(drug.infusion_range);
+                        return (
+                          <>
+                            <div className={`border rounded-md px-2.5 py-1.5 ${hasBolus ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Adult bolus</span>
+                                <RangeBadge present={hasBolus} compact />
+                              </div>
+                              <div className={`font-medium ${hasBolus ? "text-foreground" : "text-muted-foreground italic"}`}>
+                                {drug.adult_bolus_dose || "Not applicable"}
+                              </div>
+                            </div>
+                            <div className={`border rounded-md px-2.5 py-1.5 ${hasInfusion ? "bg-card border-border" : "bg-muted/30 border-border/60"}`}>
+                              <div className="flex items-center justify-between gap-2">
+                                <span className="text-[10px] uppercase tracking-wide text-muted-foreground">Infusion</span>
+                                <RangeBadge present={hasInfusion} compact />
+                              </div>
+                              <div className={`font-medium ${hasInfusion ? "text-foreground" : "text-muted-foreground italic"}`}>
+                                {drug.infusion_range || "Not applicable"}
+                              </div>
+                            </div>
+                          </>
+                        );
+                      })()}
+                    </div>
+                    {drug.key_warning && (
+                      <div className="mt-2 flex items-start gap-1.5 text-xs text-destructive bg-destructive/5 border border-destructive/20 rounded-md px-2 py-1.5">
+                        <AlertTriangle className="h-3.5 w-3.5 shrink-0 mt-0.5" />
+                        <span>{drug.key_warning}</span>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </div>
