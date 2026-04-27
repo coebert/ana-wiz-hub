@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Pill, Search } from "lucide-react";
+import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2 } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
 
