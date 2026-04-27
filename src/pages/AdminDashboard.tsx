@@ -258,6 +258,7 @@ const AdminDashboard = () => {
           {[
             { key: "overview" as const, label: "Overview", icon: BarChart3 },
             { key: "topics" as const, label: "Topic Analytics", icon: BookOpen },
+            { key: "formulary" as const, label: "Formulary Verify", icon: Pill },
           ].map(tab => (
             <button
               key={tab.key}
