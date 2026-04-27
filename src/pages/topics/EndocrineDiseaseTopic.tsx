@@ -1,6 +1,10 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { endocrineDiseaseQuestions } from "@/data/quizzes";
 import PerioperativeDiabetesDiagram from "@/components/diagrams/PerioperativeDiabetesDiagram";
+import ThyroidStormDiagram from "@/components/diagrams/ThyroidStormDiagram";
+import PhaeochromocytomaDiagram from "@/components/diagrams/PhaeochromocytomaDiagram";
+import AddisonianCrisisDiagram from "@/components/diagrams/AddisonianCrisisDiagram";
+import CarcinoidSyndromeDiagram from "@/components/diagrams/CarcinoidSyndromeDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -32,7 +36,15 @@ const EndocrineDiseaseTopic = () => {
       objectives={objectives}
       keyPoints={keyPoints}
       quizQuestions={endocrineDiseaseQuestions}
-      diagrams={<PerioperativeDiabetesDiagram />}
+      diagrams={
+        <div className="space-y-6">
+          <PerioperativeDiabetesDiagram />
+          <ThyroidStormDiagram />
+          <PhaeochromocytomaDiagram />
+          <AddisonianCrisisDiagram />
+          <CarcinoidSyndromeDiagram />
+        </div>
+      }
       sectionExamMapping={{
         objectives: { exams: [Exam.FINAL, Exam.FFICM] },
         diagrams: { exams: [Exam.FINAL, Exam.FFICM] },
