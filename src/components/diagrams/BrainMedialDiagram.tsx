@@ -240,6 +240,133 @@ const BrainMedialDiagram = () => {
         </ul>
       </div>
 
+      <div className="px-4 sm:px-6 py-5 border-t border-border bg-muted/20 space-y-4">
+        <div>
+          <p className="text-sm font-bold text-foreground">Exam-style clinical vignettes — midline structure → lesion</p>
+          <p className="text-xs text-muted-foreground mt-1">Each scenario maps a labelled midline structure on the plate above to a classic FRCA / FFICM presentation.</p>
+        </div>
+
+        <ol className="space-y-3 list-none counter-reset-vignette">
+          {[
+            {
+              structure: "Optic chiasm",
+              stem: "A 48-year-old man presents with progressive headaches, reduced libido and worsening peripheral vision. Visual fields show loss of both temporal hemifields. MRI shows a sellar mass elevating the chiasm.",
+              answer: "Bitemporal hemianopia from a pituitary macroadenoma compressing crossing nasal retinal fibres in the optic chiasm.",
+              pearl: "Document fields pre-op; trans-sphenoidal hypophysectomy — anticipate diabetes insipidus, CSF leak and steroid cover.",
+            },
+            {
+              structure: "Hypothalamus / posterior pituitary",
+              stem: "Day 2 after trans-sphenoidal surgery a patient develops polyuria (350 mL/h), Na⁺ 152 mmol/L, plasma osmolality 312 mOsm/kg with dilute urine (osm 110).",
+              answer: "Cranial diabetes insipidus from disruption of the supraoptic-hypophyseal tract / posterior pituitary.",
+              pearl: "Match urine output mL-for-mL with hypotonic fluid + IV/IN desmopressin; correct Na⁺ slowly (≤10 mmol/L/24 h).",
+            },
+            {
+              structure: "Thalamus (VPL nucleus)",
+              stem: "Three months after a right-sided lacunar stroke, a 72-year-old develops burning, allodynic pain in the left arm and leg, worsened by light touch. MRI shows an old infarct in the right thalamus.",
+              answer: "Déjerine–Roussy (central post-stroke) thalamic pain syndrome.",
+              pearl: "First-line: amitriptyline / gabapentinoids; refractory cases — DBS or motor cortex stimulation. Opioids are typically ineffective.",
+            },
+            {
+              structure: "Mammillary bodies & fornix",
+              stem: "An alcohol-dependent patient is admitted for emergency laparotomy. After IV dextrose he becomes confused with horizontal nystagmus and a wide-based gait; later he confabulates and cannot retain new information.",
+              answer: "Wernicke encephalopathy progressing to Korsakoff syndrome — thiamine deficiency causing mammillary body and dorsomedial thalamic atrophy (Papez circuit).",
+              pearl: "Always give IV thiamine (Pabrinex) BEFORE glucose in at-risk patients; high-risk groups need prophylactic peri-operative thiamine.",
+            },
+            {
+              structure: "Corpus callosum",
+              stem: "A child with refractory drop-attack epilepsy undergoes anterior callosotomy. Post-operatively she can name objects placed in her right hand but not her left (eyes closed).",
+              answer: "Disconnection syndrome (alien-hand / tactile anomia) from interruption of interhemispheric transfer through the corpus callosum.",
+              pearl: "Anaesthetic plan: TIVA-friendly, neuro-protective, anticipate cerebral oedema and post-op seizures.",
+            },
+            {
+              structure: "Cerebral aqueduct (of Sylvius)",
+              stem: "A young adult presents with morning headache, vomiting and papilloedema. CT shows dilated lateral and third ventricles with a normal-sized fourth ventricle and a tectal-plate lesion.",
+              answer: "Obstructive (non-communicating) hydrocephalus from aqueductal stenosis.",
+              pearl: "Endoscopic third ventriculostomy bypasses the block. Avoid hypercapnia and head-down tilt — both raise ICP precipitously.",
+            },
+            {
+              structure: "Midbrain (CN III nucleus / uncus)",
+              stem: "After head injury, a patient's GCS falls from 13 to 7 with a unilateral fixed dilated pupil and contralateral hemiparesis. CT shows a temporal extradural haematoma.",
+              answer: "Uncal (transtentorial) herniation compressing the ipsilateral oculomotor nerve and cerebral peduncle.",
+              pearl: "Immediate ICP-lowering bundle — head-up 30°, sedation, mannitol/hypertonic saline, normocapnia, urgent neurosurgical decompression.",
+            },
+            {
+              structure: "Pons (central pontine myelinolysis)",
+              stem: "A malnourished patient with Na⁺ 108 mmol/L is corrected to 132 over 18 h. Forty-eight hours later she develops dysarthria, dysphagia and a flaccid quadriparesis but remains awake.",
+              answer: "Osmotic demyelination syndrome (central pontine myelinolysis) — locked-in pattern.",
+              pearl: "Correct chronic hyponatraemia ≤10 mmol/L in 24 h (≤6 mmol/L if very high risk). Re-lower with desmopressin + 5% dextrose if overshoot.",
+            },
+            {
+              structure: "Medulla oblongata",
+              stem: "A devastating intracerebral haemorrhage patient meets pre-conditions for brainstem death testing. The team plans pupillary, corneal, oculovestibular, gag and cough reflex testing followed by an apnoea test.",
+              answer: "Brainstem death — confirms loss of medullary cardiorespiratory drive and cranial nerve reflexes.",
+              pearl: "Apnoea test: pre-oxygenate, target PaCO₂ rise ≥0.5 kPa above 6.0 kPa with no respiratory effort. Two doctors, two sets of tests.",
+            },
+            {
+              structure: "Cerebellum / cerebellar tonsils",
+              stem: "Following a posterior fossa craniotomy in the sitting position, a patient develops bradycardia, hypertension and an irregular breathing pattern with a sudden fall in end-tidal CO₂.",
+              answer: "Tonsillar (foramen magnum) herniation with the Cushing reflex — and concurrent venous air embolism reducing pulmonary blood flow.",
+              pearl: "Flood the field with saline, jugular compression, 100% O₂, head-down, aspirate from CVC, vasopressors. Survey for VAE with precordial Doppler / TOE.",
+            },
+            {
+              structure: "Cingulate gyrus",
+              stem: "A large frontal glioma causes the contralateral leg to weaken. CT shows the cingulate gyrus pushed under the falx with effacement of the ipsilateral lateral ventricle.",
+              answer: "Subfalcine herniation compressing the anterior cerebral artery → contralateral leg weakness.",
+              pearl: "Marker of dangerous mass effect; manage as raised ICP and refer urgently for decompression.",
+            },
+            {
+              structure: "Calcarine cortex (occipital pole)",
+              stem: "An elderly patient wakes from cardiac surgery unable to see, but denies any visual problem and confabulates descriptions of the ward. Pupils react normally; fundi are normal.",
+              answer: "Cortical blindness (Anton syndrome) from bilateral PCA / watershed infarction of the calcarine cortex.",
+              pearl: "Maintain MAP, avoid prolonged hypotension and venous obstruction; image early — POVL is a recognised peri-operative complication.",
+            },
+          ].map((v, i) => (
+            <li
+              key={v.structure}
+              className="rounded-lg border border-clinical/30 bg-clinical/5 p-3 sm:p-4 space-y-2"
+            >
+              <div className="flex items-start gap-3">
+                <span className="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full bg-clinical text-clinical-foreground text-xs font-bold">
+                  {i + 1}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] font-bold uppercase tracking-wide text-clinical">{v.structure}</p>
+                  <p className="text-sm text-foreground mt-1 leading-relaxed">
+                    <span className="font-semibold">Vignette: </span>{v.stem}
+                  </p>
+                </div>
+              </div>
+              <div className="ml-10 space-y-1.5">
+                <p className="text-xs text-foreground leading-relaxed">
+                  <span className="font-bold text-clinical">Diagnosis: </span>{v.answer}
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  <span className="font-bold text-foreground">Anaesthetic / management pearl: </span>{v.pearl}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div className="rounded-lg border-2 border-clinical/40 bg-clinical/10 p-4 mt-2">
+          <p className="text-sm font-bold text-foreground mb-2">📌 Take-home summary — midline structures &amp; their classic lesions</p>
+          <ul className="space-y-1 text-xs text-foreground/90 leading-relaxed">
+            <li>• <span className="font-semibold">Optic chiasm</span> → bitemporal hemianopia (pituitary macroadenoma)</li>
+            <li>• <span className="font-semibold">Posterior pituitary / hypothalamus</span> → diabetes insipidus / SIADH</li>
+            <li>• <span className="font-semibold">Thalamus</span> → contralateral sensory loss · Déjerine–Roussy central pain</li>
+            <li>• <span className="font-semibold">Mammillary bodies + fornix</span> → Wernicke–Korsakoff (give thiamine before glucose)</li>
+            <li>• <span className="font-semibold">Corpus callosum</span> → disconnection / alien-hand syndrome</li>
+            <li>• <span className="font-semibold">Cerebral aqueduct</span> → obstructive hydrocephalus (commonest narrow-point block)</li>
+            <li>• <span className="font-semibold">Midbrain (CN III)</span> → uncal herniation: blown pupil + contralateral hemiparesis</li>
+            <li>• <span className="font-semibold">Pons</span> → osmotic demyelination after rapid Na⁺ correction (locked-in)</li>
+            <li>• <span className="font-semibold">Medulla</span> → loss of cardiorespiratory drive — brainstem death testing</li>
+            <li>• <span className="font-semibold">Cerebellar tonsils</span> → coning + Cushing reflex; sitting-position VAE risk</li>
+            <li>• <span className="font-semibold">Cingulate gyrus</span> → subfalcine herniation → contralateral leg weakness (ACA)</li>
+            <li>• <span className="font-semibold">Calcarine cortex</span> → cortical blindness / Anton syndrome (PCA / POVL)</li>
+          </ul>
+        </div>
+      </div>
+
       <DiagramSourcesPanel
         references={references}
         imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above."
