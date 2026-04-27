@@ -4,6 +4,7 @@ import { AlertTriangle, ArrowLeft, Pill } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
+import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
 
 interface InfusionStandard {
   amount_mg?: number;
@@ -189,37 +190,15 @@ function RangeBadge({ present, label, compact = false }: { present: boolean; lab
   );
 }
 
-// Heuristic classification of a side-effect or monitoring sentence into an Impact band.
-function classifyImpact(label: string, body: string, mode: "side_effects" | "monitoring"): Impact {
-  const text = `${label} ${body}`.toLowerCase();
-  const AVOID = [
-    "anaphylaxis", "fatal", "death", "arrest", "irreversible", "fibrosis",
-    "pris", "propofol infusion syndrome", "torsades", "vf", "vt storm",
-    "rhabdomyolysis", "agranulocytosis", "stevens-johnson", "steven-johnson",
-    "dress", "malignant hyperthermia", "hyperkalaem", "complete heart block",
-    "asystole", "anaphylactoid", "ototoxicity",
-  ];
-  const CAUTION = [
-    "hypotension", "bradycardia", "tachycardia", "qt", "qtc", "prolong",
-    "respiratory depression", "apnoea", "apnea", "rigidity", "sedation",
-    "delirium", "myoclonus", "phlebitis", "pain on injection", "ponv",
-    "nausea", "vomit", "histamine", "red man", "thrombocytopenia",
-    "neutropenia", "nephrotox", "hepatotox", "neuropathy", "tremor",
-    "ataxia", "miosis", "hyperalgesia", "thyroid", "photosensitivity",
-    "discolour", "discolor", "elevated transaminase", "lft", "tft",
-  ];
-  const PREFERRED_MON = [
-    "continuous", "mandatory", "monitor", "tdm", "trough", "peak",
-    "target", "bis", "peeg", "etco2", "ecg", "nibp", "ibp", "spo2",
-    "u&e", "fbc", "lipid", "ck", "creatine kinase", "lft", "tft", "cxr",
-    "level", "essential", "baseline", "daily", "before the", "pre-dose",
-  ];
-
-  if (AVOID.some((k) => text.includes(k))) return "avoid";
-  if (mode === "monitoring" && PREFERRED_MON.some((k) => text.includes(k))) return "preferred";
-  if (CAUTION.some((k) => text.includes(k))) return "caution";
-  if (mode === "monitoring") return "preferred"; // default monitoring entry = recommended
-  return "neutral";
+// Classification is delegated to a per-class keyword map; see
+// `src/lib/drug-impact-classifier.ts` for the editable rules.
+function classifyImpact(
+  label: string,
+  body: string,
+  mode: "side_effects" | "monitoring",
+  drugClass?: string,
+): Impact {
+  return classifyImpactExternal(label, body, mode, drugClass) as Impact;
 }
 
 function parseLabelled(raw: string): Array<{ label: string; body: string }> {
@@ -288,10 +267,12 @@ function ClinicalSignalPanel({
   title,
   raw,
   mode,
+  drugClass,
 }: {
   title: string;
   raw: string;
   mode: "side_effects" | "monitoring";
+  drugClass?: string;
 }) {
   const items = parseLabelled(raw);
   if (items.length === 0) {
@@ -310,12 +291,17 @@ function ClinicalSignalPanel({
     <section className="bg-card border border-border rounded-lg p-4">
       <div className="flex items-baseline justify-between gap-2 mb-1">
         <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+        {drugClass && (
+          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+            class rules: {drugClass}
+          </span>
+        )}
       </div>
       <p className="text-[11px] text-muted-foreground mb-2">{subtitle}</p>
       <ImpactLegend />
       <ul className="grid gap-2">
         {items.map((it, i) => {
-          const impact = classifyImpact(it.label, it.body, mode);
+          const impact = classifyImpact(it.label, it.body, mode, drugClass);
           return (
             <li key={i} className="flex items-start gap-2.5 bg-background/50 border border-border rounded-md p-2.5">
               <div className="shrink-0 pt-0.5">
@@ -689,8 +675,8 @@ export default function DrugDetail() {
           <Section title="Pharmacokinetics" body={drug.pharmacokinetics} />
           <PreparationGuide raw={drug.preparation} drug={drug} />
           <DosingBreakdown raw={drug.dosing} />
-          <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" />
-          <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" />
+          <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" drugClass={drug.drug_class} />
+          <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" drugClass={drug.drug_class} />
           <Section title="Contraindications" body={drug.contraindications} />
           <Section title="Interactions" body={drug.interactions} />
         </div>
