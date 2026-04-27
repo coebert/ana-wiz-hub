@@ -10,6 +10,16 @@ import {
   MDPathophysDiagram,
   SCIPathophysDiagram,
 } from "@/components/diagrams/NeuroDiseasePathophysDiagram";
+import { PathophysDrugMapper } from "@/components/diagrams/PathophysDrugMapper";
+import {
+  mgMechanisms,
+  epilepsyMechanisms,
+  msMechanisms,
+  pdMechanisms,
+  mndMechanisms,
+  mdMechanisms,
+  sciMechanisms,
+} from "@/components/diagrams/neuroDiseaseDrugMappings";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
