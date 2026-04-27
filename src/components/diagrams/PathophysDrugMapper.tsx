@@ -162,6 +162,8 @@ export const PathophysDrugMapper = ({ title, tagline, mechanisms }: PathophysDru
                         <span className="text-sm font-semibold text-foreground">{link.drug}</span>
                         <span
                           className={`text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border inline-flex items-center gap-1 ${s.chip}`}
+                          title={IMPACT_DEFINITIONS[link.impact]}
+                          aria-label={`${s.label}: ${IMPACT_DEFINITIONS[link.impact]}`}
                         >
                           <Icon className="h-3 w-3" aria-hidden />
                           {s.label}
