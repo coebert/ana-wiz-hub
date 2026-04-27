@@ -144,6 +144,36 @@ const TheatreZoningDiagram = () => {
   const visibleFlows = flow === "all" ? flows : flows.filter((f) => f.type === flow);
   const room = rooms.find((r) => r.id === activeRoom) ?? null;
 
+  // Pressure gauge: parse target Pa from selected room and animate needle towards it
+  const targetPa = room ? parseFloat(room.pressure.replace("−", "-").replace(" Pa", "")) || 0 : 0;
+  const [displayPa, setDisplayPa] = useState(0);
+  useEffect(() => {
+    let raf: number;
+    const animate = () => {
+      setDisplayPa((prev) => {
+        const diff = targetPa - prev;
+        if (Math.abs(diff) < 0.05) return targetPa;
+        return prev + diff * 0.12;
+      });
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [targetPa]);
+
+  // Map -10..+30 Pa to needle angle -90..+90 deg
+  const paMin = -10;
+  const paMax = 30;
+  const needleAngle = ((displayPa - paMin) / (paMax - paMin)) * 180 - 90;
+  const gaugeTone =
+    displayPa >= 20
+      ? "text-clinical"
+      : displayPa >= 5
+      ? "text-primary"
+      : displayPa <= -1
+      ? "text-destructive"
+      : "text-muted-foreground";
+
   // Build SVG polyline path string + helper to interpolate position along it
   const pointsAt = (path: { x: number; y: number }[], frac: number) => {
     // total length
@@ -300,6 +330,35 @@ const TheatreZoningDiagram = () => {
             );
           })}
         </svg>
+      </div>
+
+      {/* Animated pressure gauge */}
+      <div className="rounded-md border border-border bg-muted/40 p-3 flex items-center gap-4">
+        <svg viewBox="0 0 120 70" className="w-32 h-20 flex-shrink-0" role="img" aria-label="Pressure gauge">
+          {/* Arc background segments */}
+          <path d="M 10 60 A 50 50 0 0 1 36 17" fill="none" stroke="hsl(var(--destructive) / 0.5)" strokeWidth="6" strokeLinecap="round" />
+          <path d="M 36 17 A 50 50 0 0 1 84 17" fill="none" stroke="hsl(var(--muted-foreground) / 0.3)" strokeWidth="6" strokeLinecap="round" />
+          <path d="M 84 17 A 50 50 0 0 1 110 60" fill="none" stroke="hsl(var(--clinical) / 0.6)" strokeWidth="6" strokeLinecap="round" />
+          {/* Tick labels */}
+          <text x="10" y="68" fontSize="6" textAnchor="middle" className="fill-muted-foreground">−10</text>
+          <text x="60" y="14" fontSize="6" textAnchor="middle" className="fill-muted-foreground">+10</text>
+          <text x="110" y="68" fontSize="6" textAnchor="middle" className="fill-muted-foreground">+30</text>
+          {/* Needle */}
+          <g transform={`translate(60 60) rotate(${needleAngle})`}>
+            <line x1="0" y1="0" x2="0" y2="-44" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="0" cy="0" r="4" fill="hsl(var(--foreground))" />
+          </g>
+        </svg>
+        <div className="flex-1 min-w-0">
+          <p className="text-[11px] uppercase tracking-wide text-muted-foreground">Relative pressure</p>
+          <p className={`text-2xl font-bold tabular-nums ${gaugeTone}`}>
+            {displayPa >= 0 ? "+" : ""}
+            {displayPa.toFixed(1)} Pa
+          </p>
+          <p className="text-xs text-muted-foreground truncate">
+            {room ? `${room.label} — vs corridor (0 Pa)` : "Select a room"}
+          </p>
+        </div>
       </div>
 
       {/* Room detail / flow detail */}
