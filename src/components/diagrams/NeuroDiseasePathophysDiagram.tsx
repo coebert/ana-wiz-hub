@@ -52,6 +52,7 @@ const NeuroDiseasePathophysDiagram = () => {
           {active === "sci" && <SCIDiagram />}
         </svg>
       </div>
+      <HotspotHint />
 
       <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
         <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">{meta.label}</p>
