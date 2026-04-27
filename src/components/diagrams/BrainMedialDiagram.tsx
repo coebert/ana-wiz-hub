@@ -1,5 +1,6 @@
 import brainMedialImg from "@/assets/brain-anatomy-medial.jpg";
 import { DiagramSourcesPanel, DiagramSource } from "./DiagramSourcesPanel";
+import { BrainRegionsList } from "./BrainRegionsList";
 
 const references: DiagramSource[] = [
   {
