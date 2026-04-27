@@ -144,6 +144,36 @@ const TheatreZoningDiagram = () => {
   const visibleFlows = flow === "all" ? flows : flows.filter((f) => f.type === flow);
   const room = rooms.find((r) => r.id === activeRoom) ?? null;
 
+  // Pressure gauge: parse target Pa from selected room and animate needle towards it
+  const targetPa = room ? parseFloat(room.pressure.replace("−", "-").replace(" Pa", "")) || 0 : 0;
+  const [displayPa, setDisplayPa] = useState(0);
+  useEffect(() => {
+    let raf: number;
+    const animate = () => {
+      setDisplayPa((prev) => {
+        const diff = targetPa - prev;
+        if (Math.abs(diff) < 0.05) return targetPa;
+        return prev + diff * 0.12;
+      });
+      raf = requestAnimationFrame(animate);
+    };
+    raf = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(raf);
+  }, [targetPa]);
+
+  // Map -10..+30 Pa to needle angle -90..+90 deg
+  const paMin = -10;
+  const paMax = 30;
+  const needleAngle = ((displayPa - paMin) / (paMax - paMin)) * 180 - 90;
+  const gaugeTone =
+    displayPa >= 20
+      ? "text-clinical"
+      : displayPa >= 5
+      ? "text-primary"
+      : displayPa <= -1
+      ? "text-destructive"
+      : "text-muted-foreground";
+
   // Build SVG polyline path string + helper to interpolate position along it
   const pointsAt = (path: { x: number; y: number }[], frac: number) => {
     // total length
