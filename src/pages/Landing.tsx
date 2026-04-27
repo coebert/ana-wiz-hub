@@ -192,10 +192,16 @@ const Landing = () => {
 
       <SupportSection />
 
-      <footer className="container mx-auto px-4 pb-8 text-center">
+      <footer className="container mx-auto px-4 pb-8 text-center space-y-2">
         <p className="text-sm text-muted-foreground/70">
           App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM
         </p>
+        <a
+          href="/admin"
+          className="inline-block text-xs text-muted-foreground/50 hover:text-muted-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+        >
+          Admin
+        </a>
       </footer>
     </main>
   );
