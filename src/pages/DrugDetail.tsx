@@ -190,10 +190,8 @@ function RangeBadge({ present, label, compact = false }: { present: boolean; lab
   );
 }
 
-// Classification is now delegated to a per-class keyword map; see
+// Classification is delegated to a per-class keyword map; see
 // `src/lib/drug-impact-classifier.ts` for the editable rules.
-import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
-
 function classifyImpact(
   label: string,
   body: string,
