@@ -723,37 +723,65 @@ const Wrap = ({
 };
 
 export const MGPathophysDiagram = () => (
-  <Wrap title="Myasthenia gravis" tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs.">
+  <Wrap
+    title="Myasthenia gravis"
+    mechanismLabel="Animate AChR blockade"
+    tagline="Anti-AChR antibodies block / cross-link postsynaptic nicotinic receptors → fatigable weakness, ↑ sensitivity to non-depolarising NMBAs."
+  >
     <MGDiagram />
   </Wrap>
 );
 export const EpilepsyPathophysDiagram = () => (
-  <Wrap title="Epilepsy" tagline="Excess glutamatergic excitation with deficient GABAergic inhibition produces hypersynchronous cortical firing.">
+  <Wrap
+    title="Epilepsy"
+    mechanismLabel="Animate seizure firing"
+    tagline="Excess glutamatergic excitation with deficient GABAergic inhibition produces hypersynchronous cortical firing."
+  >
     <EpilepsyDiagram />
   </Wrap>
 );
 export const MSPathophysDiagram = () => (
-  <Wrap title="Multiple sclerosis" tagline="T-cell-mediated CNS demyelination → slowed/blocked saltatory conduction; relapse triggered by pyrexia, stress, surgery.">
+  <Wrap
+    title="Multiple sclerosis"
+    mechanismLabel="Animate demyelination"
+    tagline="T-cell-mediated CNS demyelination → slowed/blocked saltatory conduction; relapse triggered by pyrexia, stress, surgery."
+  >
     <MSDiagram />
   </Wrap>
 );
 export const PDPathophysDiagram = () => (
-  <Wrap title="Parkinson's disease" tagline="Loss of substantia-nigra dopaminergic neurons (α-synuclein Lewy bodies) shifts basal-ganglia output toward thalamic inhibition.">
+  <Wrap
+    title="Parkinson's disease"
+    mechanismLabel="Animate dopamine loss"
+    tagline="Loss of substantia-nigra dopaminergic neurons (α-synuclein Lewy bodies) shifts basal-ganglia output toward thalamic inhibition."
+  >
     <PDDiagram />
   </Wrap>
 );
 export const MNDPathophysDiagram = () => (
-  <Wrap title="Motor neuron disease" tagline="Combined UMN + LMN degeneration → denervation supersensitivity (extra-junctional AChRs) → lethal hyperkalaemia with suxamethonium.">
+  <Wrap
+    title="Motor neuron disease"
+    mechanismLabel="Animate denervation"
+    tagline="Combined UMN + LMN degeneration → denervation supersensitivity (extra-junctional AChRs) → lethal hyperkalaemia with suxamethonium."
+  >
     <MNDDiagram />
   </Wrap>
 );
 export const MDPathophysDiagram = () => (
-  <Wrap title="Muscular dystrophies" tagline="Dystrophin / sarcolemmal protein deficiency → fragile membrane leaks K⁺ and CK, predisposing to rhabdomyolysis with sux/volatiles.">
+  <Wrap
+    title="Muscular dystrophies"
+    mechanismLabel="Animate membrane leak"
+    tagline="Dystrophin / sarcolemmal protein deficiency → fragile membrane leaks K⁺ and CK, predisposing to rhabdomyolysis with sux/volatiles."
+  >
     <MDDiagram />
   </Wrap>
 );
 export const SCIPathophysDiagram = () => (
-  <Wrap title="Spinal cord injury — autonomic dysreflexia" tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge.">
+  <Wrap
+    title="Spinal cord injury — autonomic dysreflexia"
+    mechanismLabel="Animate sympathetic surge"
+    tagline="Loss of supraspinal inhibition above a T6+ lesion lets noxious stimuli below trigger massive unmodulated sympathetic discharge."
+  >
     <SCIDiagram />
   </Wrap>
 );
