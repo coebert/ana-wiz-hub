@@ -267,10 +267,12 @@ function ClinicalSignalPanel({
   title,
   raw,
   mode,
+  drugClass,
 }: {
   title: string;
   raw: string;
   mode: "side_effects" | "monitoring";
+  drugClass?: string;
 }) {
   const items = parseLabelled(raw);
   if (items.length === 0) {
@@ -289,12 +291,17 @@ function ClinicalSignalPanel({
     <section className="bg-card border border-border rounded-lg p-4">
       <div className="flex items-baseline justify-between gap-2 mb-1">
         <h3 className="text-sm font-semibold text-foreground">{title}</h3>
+        {drugClass && (
+          <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+            class rules: {drugClass}
+          </span>
+        )}
       </div>
       <p className="text-[11px] text-muted-foreground mb-2">{subtitle}</p>
       <ImpactLegend />
       <ul className="grid gap-2">
         {items.map((it, i) => {
-          const impact = classifyImpact(it.label, it.body, mode);
+          const impact = classifyImpact(it.label, it.body, mode, drugClass);
           return (
             <li key={i} className="flex items-start gap-2.5 bg-background/50 border border-border rounded-md p-2.5">
               <div className="shrink-0 pt-0.5">
