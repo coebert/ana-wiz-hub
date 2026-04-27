@@ -378,17 +378,17 @@ const SCIDiagram = () => (
     <text x="100" y="174" textAnchor="middle" fontSize="7" className={subClass}>Trigger:</text>
     <text x="100" y="186" textAnchor="middle" fontSize="7" className={subClass}>bladder/bowel distension,</text>
     <text x="100" y="198" textAnchor="middle" fontSize="7" className={subClass}>skin stim, uterine contraction</text>
-    <path d="M 150 180 Q 175 180 195 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" />
+    <path d="M 150 180 Q 175 180 195 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" className="anim-surge" />
 
     {/* Sympathetic outflow below lesion */}
     <text x="335" y="155" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">Unchecked</text>
     <text x="335" y="167" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">sympathetic surge</text>
     <text x="335" y="180" textAnchor="middle" fontSize="7" className={subClass}>vasoconstriction below lesion</text>
     <text x="335" y="192" textAnchor="middle" fontSize="7" className={subClass}>pallor, piloerection</text>
-    <path d="M 235 165 Q 270 165 290 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" />
+    <path d="M 235 165 Q 270 165 290 165" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#sci-arrow-d)" className="anim-surge" style={{ animationDelay: "0.4s" }} />
 
-    {/* Result */}
-    <rect x="280" y="40" width="160" height="60" rx="4" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" />
+    {/* Result — pulses red as the crisis hits */}
+    <rect x="280" y="40" width="160" height="60" rx="4" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" className="anim-crisis" style={{ animationDelay: "0.7s" }} />
     <text x="360" y="58" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">CRISIS</text>
     <text x="360" y="72" textAnchor="middle" fontSize="7" className={subClass}>severe HTN (CVA / MI risk)</text>
     <text x="360" y="84" textAnchor="middle" fontSize="7" className={subClass}>headache, bradycardia</text>
