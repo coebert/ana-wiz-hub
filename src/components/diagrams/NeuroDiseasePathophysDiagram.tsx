@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
 
 type Condition = "mg" | "epilepsy" | "ms" | "pd" | "mnd" | "md" | "sci";
 
