@@ -158,6 +158,37 @@ const IMPACT_DEFINITIONS: Record<Exclude<Impact, "neutral">, { label: string; to
 
 const NEUTRAL_TONE = "bg-muted text-muted-foreground border-border";
 
+// Detect whether a bolus / infusion range string actually carries usable dosing
+// (some drugs are explicitly "Not used as an infusion" etc.).
+function isRangePresent(value: string | null | undefined): boolean {
+  if (!value) return false;
+  const v = value.trim();
+  if (!v || v === "—" || v === "-" || v === "N/A" || v === "n/a") return false;
+  if (/^not\s+(used|typically|applicable|given|administered|recommended|usually)/i.test(v)) return false;
+  if (/^(none|nil)\b/i.test(v)) return false;
+  return true;
+}
+
+function RangeBadge({ present, label, compact = false }: { present: boolean; label?: string; compact?: boolean }) {
+  const tone = present
+    ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/30"
+    : "bg-muted text-muted-foreground border-border";
+  const text = compact
+    ? present ? "✓" : "—"
+    : `${label ?? ""} ${present ? "✓" : "—"}`.trim();
+  const title = present
+    ? `${label ?? "Range"} dose available`
+    : `${label ?? "Range"} not applicable for this drug`;
+  return (
+    <span
+      title={title}
+      className={`text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded border ${tone}`}
+    >
+      {text}
+    </span>
+  );
+}
+
 // Heuristic classification of a side-effect or monitoring sentence into an Impact band.
 function classifyImpact(label: string, body: string, mode: "side_effects" | "monitoring"): Impact {
   const text = `${label} ${body}`.toLowerCase();
