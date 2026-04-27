@@ -234,46 +234,103 @@ const AdminDashboard = () => {
 
   const maxTopicViews = analytics ? Math.max(...analytics.topTopics.map(t => t.views), 1) : 1;
 
+  const tabs = [
+    { key: "overview" as const, label: "Overview", icon: BarChart3, hint: "Headline usage stats and weekly activity" },
+    { key: "topics" as const, label: "Topic Analytics", icon: BookOpen, hint: "Most and least visited topics" },
+    { key: "formulary" as const, label: "Formulary Verify", icon: Pill, hint: "Re-check drug monographs against reference sources" },
+  ];
+
+  const handleTabKey = (e: React.KeyboardEvent<HTMLButtonElement>, idx: number) => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
+    e.preventDefault();
+    let next = idx;
+    if (e.key === "ArrowRight") next = (idx + 1) % tabs.length;
+    if (e.key === "ArrowLeft") next = (idx - 1 + tabs.length) % tabs.length;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = tabs.length - 1;
+    setActiveTab(tabs[next].key);
+    const el = document.getElementById(`admin-tab-${tabs[next].key}`);
+    el?.focus();
+  };
+
   return (
     <div className="min-h-screen bg-background pt-20 px-4 pb-10">
+      <a
+        href="#admin-main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-background focus:text-foreground focus:px-3 focus:py-2 focus:rounded-md focus:ring-2 focus:ring-primary"
+      >
+        Skip to dashboard content
+      </a>
       <div className="max-w-4xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
+        <header className="flex items-center justify-between flex-wrap gap-3">
           <div>
             <h1 className="text-2xl font-serif font-bold text-foreground">Admin Dashboard</h1>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+            <p className="text-sm text-muted-foreground" aria-label={`Signed in as ${user.email}`}>
+              Signed in as <span className="font-medium text-foreground">{user.email}</span>
+            </p>
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={fetchAnalytics} disabled={loading}>
-              <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} />
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={fetchAnalytics}
+              disabled={loading}
+              aria-label={loading ? "Refreshing analytics" : "Refresh analytics"}
+            >
+              <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} aria-hidden="true" />
               Refresh
             </Button>
-            <Button variant="outline" size="sm" onClick={() => { signOut(); navigate("/"); }}>
-              <LogOut className="w-4 h-4 mr-1" /> Sign Out
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => { signOut(); navigate("/"); }}
+              aria-label="Sign out of admin dashboard"
+            >
+              <LogOut className="w-4 h-4 mr-1" aria-hidden="true" /> Sign Out
             </Button>
           </div>
-        </div>
+        </header>
 
         {/* Tab switcher */}
-        <div className="flex gap-1 p-1 rounded-lg bg-secondary/50 w-fit">
-          {[
-            { key: "overview" as const, label: "Overview", icon: BarChart3 },
-            { key: "topics" as const, label: "Topic Analytics", icon: BookOpen },
-            { key: "formulary" as const, label: "Formulary Verify", icon: Pill },
-          ].map(tab => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                activeTab === tab.key
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
-            </button>
-          ))}
+        <div
+          role="tablist"
+          aria-label="Admin sections"
+          className="flex gap-1 p-1 rounded-lg bg-secondary/50 w-full sm:w-fit overflow-x-auto"
+        >
+          {tabs.map((tab, idx) => {
+            const selected = activeTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                id={`admin-tab-${tab.key}`}
+                role="tab"
+                aria-selected={selected}
+                aria-controls={`admin-panel-${tab.key}`}
+                tabIndex={selected ? 0 : -1}
+                onClick={() => setActiveTab(tab.key)}
+                onKeyDown={(e) => handleTabKey(e, idx)}
+                title={tab.hint}
+                className={`flex items-center gap-1.5 px-3 py-2 min-h-[40px] rounded-md text-sm font-medium transition-colors whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                  selected
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                }`}
+              >
+                <tab.icon className="w-4 h-4" aria-hidden="true" />
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
+
+        <main id="admin-main" tabIndex={-1} className="space-y-6 focus:outline-none">
+
+        {!analytics && loading && (
+          <div className="p-8 rounded-xl border border-border bg-card text-center" role="status" aria-live="polite">
+            <RefreshCw className="w-5 h-5 mx-auto animate-spin text-muted-foreground mb-2" aria-hidden="true" />
+            <p className="text-sm text-muted-foreground">Loading analytics…</p>
+          </div>
+        )}
 
         {analytics && activeTab === "overview" && (
           <>
