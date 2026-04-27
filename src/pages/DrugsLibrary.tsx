@@ -17,6 +17,26 @@ export default function DrugsLibrary() {
   const [q, setQ] = useState("");
   const [activeClass, setActiveClass] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
+    try {
+      const raw = localStorage.getItem("drugs-library-collapsed");
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("drugs-library-collapsed", JSON.stringify(collapsed));
+    } catch {
+      // ignore
+    }
+  }, [collapsed]);
+
+  const toggleCollapsed = (slug: string) => {
+    setCollapsed((prev) => ({ ...prev, [slug]: !prev[slug] }));
+  };
 
   useEffect(() => {
     (async () => {
