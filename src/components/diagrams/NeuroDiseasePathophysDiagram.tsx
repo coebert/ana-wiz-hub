@@ -109,6 +109,7 @@ const MGDiagram = () => (
       <text x="90" y="140" textAnchor="middle" fontSize="7.5" className={subClass}>resistance to suxamethonium (↑ ED₉₅)</text>
       <text x="90" y="152" textAnchor="middle" fontSize="7.5" className={subClass}>fatigable weakness on repeated stimulation</text>
     </g>
+    <HotspotLayer hotspots={mgHotspots} />
   </g>
 );
 
@@ -156,6 +157,7 @@ const EpilepsyDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={epilepsyHotspots} />
   </g>
 );
 
@@ -202,6 +204,7 @@ const MSDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={msHotspots} />
   </g>
 );
 
@@ -240,6 +243,7 @@ const PDDiagram = () => (
       <text x="0" y="100" fontSize="8" fontWeight="600" className={labelClass}>Anaesthesia</text>
       <text x="0" y="112" fontSize="7" className={subClass}>Continue L-DOPA · avoid D2 antagonists</text>
     </g>
+    <HotspotLayer hotspots={pdHotspots} />
   </g>
 );
 
@@ -281,6 +285,7 @@ const MNDDiagram = () => (
       <text x="0" y="38" fontSize="7" className={subClass}>Bulbar weakness → aspiration</text>
       <text x="0" y="50" fontSize="7" className={subClass}>Restrictive ventilation, weak cough</text>
     </g>
+    <HotspotLayer hotspots={mndHotspots} />
   </g>
 );
 
@@ -336,6 +341,7 @@ const MDDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={mdHotspots} />
   </g>
 );
 
@@ -390,6 +396,7 @@ const SCIDiagram = () => (
         <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--destructive))" />
       </marker>
     </defs>
+    <HotspotLayer hotspots={sciHotspots} />
   </g>
 );
 
