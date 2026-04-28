@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2 } from "lucide-react";
+import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2, Info } from "lucide-react";
 import { Header } from "@/components/Header";
 import { supabase } from "@/integrations/supabase/client";
+import { getDrugLabelInlineStyles, DRUG_LABEL_LEGEND } from "@/lib/drug-label-colours";
 
 interface DrugRow {
   slug: string;
@@ -17,6 +18,7 @@ export default function DrugsLibrary() {
   const [q, setQ] = useState("");
   const [activeClass, setActiveClass] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showLegend, setShowLegend] = useState(false);
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
     try {
       const raw = localStorage.getItem("drugs-library-collapsed");
@@ -76,13 +78,41 @@ export default function DrugsLibrary() {
           <div className="h-10 w-10 rounded-lg bg-drugs/10 text-drugs grid place-items-center shrink-0">
             <Pill className="h-5 w-5" />
           </div>
-          <div>
+          <div className="flex-1">
             <h1 className="text-3xl font-bold text-foreground">Drug Formulary</h1>
             <p className="text-sm text-muted-foreground mt-1">
               Searchable monographs across anaesthesia and critical care — presentation, MoA, PK, preparation, dosing, monitoring, side effects.
             </p>
+            <p className="text-xs text-muted-foreground mt-2">
+              Class colours follow the international user-applied syringe-label standard (ISO 26825 / ASTM D4774) where possible.
+            </p>
           </div>
+          <button
+            onClick={() => setShowLegend((v) => !v)}
+            className="shrink-0 inline-flex items-center gap-1 text-xs px-2.5 py-1.5 rounded-md border border-border bg-card text-muted-foreground hover:border-drugs/50 hover:text-foreground transition-colors"
+            aria-expanded={showLegend}
+          >
+            <Info className="h-3.5 w-3.5" /> Colour key
+          </button>
         </div>
+
+        {showLegend && (
+          <div className="mb-5 p-3 rounded-lg border border-border bg-card">
+            <p className="text-xs font-semibold text-foreground mb-2">Anaesthetic label colour key</p>
+            <ul className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+              {DRUG_LABEL_LEGEND.map((entry) => (
+                <li key={entry.example} className="flex items-center gap-2">
+                  <span
+                    className="inline-block h-3.5 w-6 rounded-sm border border-border"
+                    style={entry.style}
+                    aria-hidden="true"
+                  />
+                  <span className="text-[11px] text-muted-foreground">{entry.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mb-4 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -106,19 +136,21 @@ export default function DrugsLibrary() {
           >
             All ({rows.length})
           </button>
-          {classes.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActiveClass(c === activeClass ? null : c)}
-              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
-                activeClass === c
-                  ? "bg-drugs text-white border-drugs"
-                  : "bg-card text-muted-foreground border-border hover:border-drugs/50"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
+          {classes.map((c) => {
+            const styles = getDrugLabelInlineStyles(c);
+            const isActive = activeClass === c;
+            return (
+              <button
+                key={c}
+                onClick={() => setActiveClass(c === activeClass ? null : c)}
+                style={isActive ? styles.solid : styles.tint}
+                title={styles.standardName}
+                className="text-xs px-3 py-1 rounded-full border transition-colors font-medium"
+              >
+                {c}
+              </button>
+            );
+          })}
         </div>
 
         {loading ? (
@@ -163,9 +195,13 @@ export default function DrugsLibrary() {
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((d) => {
                 const isCollapsed = !!collapsed[d.slug];
+                const styles = getDrugLabelInlineStyles(d.drug_class);
                 return (
                   <li key={d.slug}>
-                    <div className="bg-card border border-border rounded-lg hover:border-drugs/50 transition-colors h-full flex flex-col">
+                    <div
+                      className="bg-card border border-border rounded-lg hover:border-drugs/50 transition-colors h-full flex flex-col overflow-hidden"
+                      style={{ borderLeft: `4px solid ${styles.railColor}` }}
+                    >
                       <div className="flex items-start justify-between gap-2 p-3 pb-2">
                         <Link
                           to={`/drugs/${d.slug}`}
@@ -174,9 +210,13 @@ export default function DrugsLibrary() {
                           <h2 className="text-sm font-semibold text-foreground leading-tight group-hover:text-drugs transition-colors">
                             {d.name}
                           </h2>
-                          <p className="text-[10px] uppercase tracking-wide text-drugs font-medium mt-1">
+                          <span
+                            className="inline-block mt-1.5 text-[10px] uppercase tracking-wide font-semibold px-1.5 py-0.5 rounded border"
+                            style={styles.tint}
+                            title={styles.standardName}
+                          >
                             {d.drug_class}
-                          </p>
+                          </span>
                         </Link>
                         <button
                           onClick={(e) => {
