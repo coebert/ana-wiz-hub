@@ -4,27 +4,28 @@ import { BrainRegionsList } from "./BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "./BrainPlateLabels";
 
 const plateLabels: PlateLabel[] = [
-  // Anterior (top of plate)
-  { text: "Frontal lobe", dot: { x: 38, y: 12 }, label: { x: 4, y: 8 }, anchor: "start" },
-  { text: "Longitudinal fissure", dot: { x: 50, y: 18 }, label: { x: 96, y: 6 }, anchor: "end" },
-  { text: "Genu of corpus callosum", dot: { x: 50, y: 30 }, label: { x: 4, y: 22 }, anchor: "start" },
-  { text: "Frontal horn (lateral ventricle)", dot: { x: 45, y: 38 }, label: { x: 96, y: 22 }, anchor: "end" },
-  { text: "Septum pellucidum", dot: { x: 50, y: 38 }, label: { x: 4, y: 34 }, anchor: "start" },
-  // Mid plate — basal ganglia + capsule
-  { text: "Caudate (head)", dot: { x: 42, y: 40 }, label: { x: 4, y: 46 }, anchor: "start" },
-  { text: "Internal capsule", dot: { x: 38, y: 47 }, label: { x: 96, y: 36 }, anchor: "end" },
-  { text: "Putamen", dot: { x: 33, y: 48 }, label: { x: 4, y: 56 }, anchor: "start" },
-  { text: "Globus pallidus", dot: { x: 40, y: 50 }, label: { x: 96, y: 48 }, anchor: "end" },
-  { text: "External capsule · claustrum · insula", dot: { x: 27, y: 50 }, label: { x: 4, y: 66 }, anchor: "start" },
-  { text: "Sylvian fissure", dot: { x: 22, y: 52 }, label: { x: 4, y: 76 }, anchor: "start" },
+  // Anterior pole
+  { text: "Frontal lobe", dot: { x: 32, y: 14 }, label: { x: 3, y: 8 }, anchor: "start" },
+  { text: "Longitudinal fissure", dot: { x: 50, y: 12 }, label: { x: 97, y: 8 }, anchor: "end" },
+  // Anterior midline
+  { text: "Genu of corpus callosum", dot: { x: 50, y: 28 }, label: { x: 3, y: 22 }, anchor: "start" },
+  { text: "Frontal horn (lateral ventricle)", dot: { x: 46, y: 34 }, label: { x: 97, y: 22 }, anchor: "end" },
+  { text: "Septum pellucidum", dot: { x: 50, y: 35 }, label: { x: 3, y: 35 }, anchor: "start" },
+  // Basal ganglia + capsule (left hemisphere)
+  { text: "Caudate (head)", dot: { x: 42, y: 36 }, label: { x: 3, y: 47 }, anchor: "start" },
+  { text: "Internal capsule", dot: { x: 39, y: 45 }, label: { x: 97, y: 36 }, anchor: "end" },
+  { text: "Putamen", dot: { x: 33, y: 44 }, label: { x: 3, y: 58 }, anchor: "start" },
+  { text: "Globus pallidus", dot: { x: 38, y: 47 }, label: { x: 97, y: 48 }, anchor: "end" },
+  { text: "External capsule · claustrum · insula", dot: { x: 27, y: 45 }, label: { x: 3, y: 70 }, anchor: "start" },
+  { text: "Sylvian fissure", dot: { x: 23, y: 43 }, label: { x: 3, y: 81 }, anchor: "start" },
   // Diencephalon midline
-  { text: "Third ventricle", dot: { x: 50, y: 52 }, label: { x: 96, y: 60 }, anchor: "end" },
-  { text: "Thalamus", dot: { x: 56, y: 54 }, label: { x: 96, y: 72 }, anchor: "end" },
-  { text: "Pineal gland", dot: { x: 50, y: 64 }, label: { x: 96, y: 82 }, anchor: "end" },
+  { text: "Third ventricle", dot: { x: 50, y: 49 }, label: { x: 97, y: 60 }, anchor: "end" },
+  { text: "Thalamus", dot: { x: 56, y: 51 }, label: { x: 97, y: 72 }, anchor: "end" },
+  { text: "Pineal gland", dot: { x: 50, y: 58 }, label: { x: 97, y: 84 }, anchor: "end" },
   // Posterior
-  { text: "Choroid plexus (atrium)", dot: { x: 38, y: 70 }, label: { x: 4, y: 86 }, anchor: "start" },
-  { text: "Occipital horn", dot: { x: 50, y: 78 }, label: { x: 96, y: 90 }, anchor: "end" },
-  { text: "Occipital lobe", dot: { x: 40, y: 90 }, label: { x: 4, y: 95 }, anchor: "start" },
+  { text: "Choroid plexus (atrium)", dot: { x: 38, y: 63 }, label: { x: 3, y: 92 }, anchor: "start" },
+  { text: "Occipital horn", dot: { x: 50, y: 70 }, label: { x: 97, y: 95 }, anchor: "end" },
+  { text: "Occipital lobe", dot: { x: 40, y: 88 }, label: { x: 3, y: 96 }, anchor: "start" },
 ];
 
 
