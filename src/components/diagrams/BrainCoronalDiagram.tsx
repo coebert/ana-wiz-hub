@@ -4,24 +4,24 @@ import { BrainRegionsList } from "./BrainRegionsList";
 import BrainPlateLabels, { type PlateLabel } from "./BrainPlateLabels";
 
 const plateLabels: PlateLabel[] = [
-  // Top — cortex & corpus callosum
-  { text: "Cerebral cortex", dot: { x: 22, y: 14 }, label: { x: 4, y: 10 }, anchor: "start" },
-  { text: "Subcortical white matter", dot: { x: 30, y: 30 }, label: { x: 4, y: 24 }, anchor: "start" },
-  { text: "Corpus callosum (body)", dot: { x: 50, y: 33 }, label: { x: 96, y: 10 }, anchor: "end" },
-  // Midline ventricular complex
-  { text: "Lateral ventricle (body)", dot: { x: 44, y: 44 }, label: { x: 4, y: 38 }, anchor: "start" },
-  { text: "Septum pellucidum", dot: { x: 50, y: 42 }, label: { x: 96, y: 24 }, anchor: "end" },
-  { text: "Fornix", dot: { x: 50, y: 49 }, label: { x: 96, y: 38 }, anchor: "end" },
-  // Deep grey / capsule
-  { text: "Caudate (head)", dot: { x: 40, y: 47 }, label: { x: 4, y: 50 }, anchor: "start" },
-  { text: "Internal capsule", dot: { x: 36, y: 56 }, label: { x: 4, y: 62 }, anchor: "start" },
-  { text: "Lentiform nucleus\n(putamen + pallidus)", dot: { x: 28, y: 58 }, label: { x: 4, y: 74 }, anchor: "start" },
-  { text: "External capsule · claustrum · insula", dot: { x: 18, y: 60 }, label: { x: 4, y: 86 }, anchor: "start" },
-  // Diencephalon
-  { text: "Thalamus", dot: { x: 56, y: 58 }, label: { x: 96, y: 52 }, anchor: "end" },
-  { text: "Hypothalamus", dot: { x: 50, y: 70 }, label: { x: 96, y: 66 }, anchor: "end" },
-  { text: "Optic tract / mammillary bodies", dot: { x: 54, y: 78 }, label: { x: 96, y: 78 }, anchor: "end" },
-  { text: "Hippocampus (inferior horn)", dot: { x: 70, y: 80 }, label: { x: 96, y: 90 }, anchor: "end" },
+  // Cortex & deep white matter (left hemisphere)
+  { text: "Cerebral cortex", dot: { x: 18, y: 22 }, label: { x: 3, y: 8 }, anchor: "start" },
+  { text: "Subcortical white matter", dot: { x: 28, y: 32 }, label: { x: 3, y: 22 }, anchor: "start" },
+  // Midline white-matter / ventricular complex
+  { text: "Corpus callosum (body)", dot: { x: 50, y: 36 }, label: { x: 97, y: 8 }, anchor: "end" },
+  { text: "Lateral ventricle (body)", dot: { x: 44, y: 42 }, label: { x: 3, y: 36 }, anchor: "start" },
+  { text: "Septum pellucidum", dot: { x: 50, y: 41 }, label: { x: 97, y: 22 }, anchor: "end" },
+  { text: "Fornix", dot: { x: 50, y: 46 }, label: { x: 97, y: 36 }, anchor: "end" },
+  // Deep grey nuclei & capsules (left hemisphere)
+  { text: "Caudate (head)", dot: { x: 42, y: 43 }, label: { x: 3, y: 50 }, anchor: "start" },
+  { text: "Internal capsule", dot: { x: 38, y: 53 }, label: { x: 3, y: 64 }, anchor: "start" },
+  { text: "Lentiform nucleus\n(putamen + pallidus)", dot: { x: 32, y: 53 }, label: { x: 3, y: 78 }, anchor: "start" },
+  { text: "External capsule · claustrum · insula", dot: { x: 24, y: 54 }, label: { x: 3, y: 92 }, anchor: "start" },
+  // Diencephalon (right hemisphere)
+  { text: "Thalamus", dot: { x: 56, y: 52 }, label: { x: 97, y: 50 }, anchor: "end" },
+  { text: "Hypothalamus", dot: { x: 50, y: 64 }, label: { x: 97, y: 64 }, anchor: "end" },
+  { text: "Optic tract / mammillary bodies", dot: { x: 50, y: 70 }, label: { x: 97, y: 78 }, anchor: "end" },
+  { text: "Hippocampus (inferior horn)", dot: { x: 72, y: 70 }, label: { x: 97, y: 92 }, anchor: "end" },
 ];
 
 
