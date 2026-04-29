@@ -144,43 +144,50 @@ const labelledRegions: LabelledRegion[] = [
   },
 ];
 
-const BrainCoronalDiagram = () => {
-  return (
-    <div className="rounded-2xl border border-border bg-card overflow-hidden">
-      <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
-        <h3 className="text-lg font-serif font-bold text-foreground">Mid-Coronal View of the Brain</h3>
-        <p className="text-xs text-muted-foreground mt-1">
-          Frontal section through the thalamus and basal ganglia — internal capsule, ventricles and limbic structures
-        </p>
-      </div>
-
-      <figure className="bg-[hsl(var(--background))]">
-        <div className="relative">
-          <img
-            src={brainCoronalImg}
-            alt="Detailed anatomical mid-coronal section of the human brain through the thalamus and basal ganglia, showing cerebral cortex, white matter, corpus callosum, lateral ventricles, septum pellucidum, fornix, caudate nucleus, putamen and globus pallidus (lentiform nucleus), internal capsule, external capsule, claustrum, insula, thalamus, hypothalamus, mammillary bodies, optic tract and hippocampus."
-            loading="lazy"
-            width={1200}
-            height={896}
-            className="w-full h-auto block"
-          />
-          <BrainPlateLabels labels={plateLabels} />
-        </div>
-        <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-          Anatomical reference plate with overlay labels. Right hemisphere on viewer's left (anatomical convention).
-        </figcaption>
-      </figure>
-
-
-      <BrainRegionsList regions={labelledRegions} />
-
-      <DiagramSourcesPanel
-        references={references}
-        imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above."
-        note="Educational use only. Not a substitute for primary anatomical references."
-      />
+/**
+ * Inner plate content (no outer card chrome) — used by BrainPlatesViewer
+ * so multiple views can share a single panel shell.
+ */
+export const BrainCoronalPlate = () => (
+  <>
+    <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
+      <h3 className="text-lg font-serif font-bold text-foreground">Mid-Coronal View of the Brain</h3>
+      <p className="text-xs text-muted-foreground mt-1">
+        Frontal section through the thalamus and basal ganglia — internal capsule, ventricles and limbic structures
+      </p>
     </div>
-  );
-};
+
+    <figure className="bg-[hsl(var(--background))]">
+      <div className="relative">
+        <img
+          src={brainCoronalImg}
+          alt="Detailed anatomical mid-coronal section of the human brain through the thalamus and basal ganglia, showing cerebral cortex, white matter, corpus callosum, lateral ventricles, septum pellucidum, fornix, caudate nucleus, putamen and globus pallidus (lentiform nucleus), internal capsule, external capsule, claustrum, insula, thalamus, hypothalamus, mammillary bodies, optic tract and hippocampus."
+          loading="lazy"
+          width={1200}
+          height={896}
+          className="w-full h-auto block"
+        />
+        <BrainPlateLabels labels={plateLabels} />
+      </div>
+      <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
+        Anatomical reference plate with overlay labels. Right hemisphere on viewer's left (anatomical convention).
+      </figcaption>
+    </figure>
+
+    <BrainRegionsList regions={labelledRegions} />
+
+    <DiagramSourcesPanel
+      references={references}
+      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy coronal cerebral plates. Anatomical labelling cross-checked against the references above."
+      note="Educational use only. Not a substitute for primary anatomical references."
+    />
+  </>
+);
+
+const BrainCoronalDiagram = () => (
+  <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <BrainCoronalPlate />
+  </div>
+);
 
 export default BrainCoronalDiagram;
