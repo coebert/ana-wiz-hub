@@ -92,18 +92,48 @@ const NeuroDiseasePathophysDiagram = () => {
   const mechanismLabel = MECHANISM_LABELS[active];
 
   const [playing, setPlaying] = useState(false);
+  const [scrubMs, setScrubMs] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const autoPlayedFor = useRef<Set<Condition>>(new Set());
 
   const trigger = useCallback(() => {
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
     setPlaying(false);
     requestAnimationFrame(() => {
       setPlaying(true);
       timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
     });
   }, []);
+
+  const handleScrub = useCallback((ms: number) => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setPlaying(true); // ensure .is-playing class so animations are applied
+    setScrubMs(ms);
+    // Apply seek after the class is on the DOM
+    requestAnimationFrame(() => seekContainerAnimations(sceneRef.current, ms));
+  }, []);
+
+  const handleTogglePlay = useCallback(() => {
+    if (scrubMs !== null) {
+      // Resume from scrub position: clear overrides and re-trigger from start
+      trigger();
+    } else if (playing) {
+      setPlaying(false);
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    } else {
+      trigger();
+    }
+  }, [scrubMs, playing, trigger]);
+
+  // Reset scrub overrides whenever the active condition changes (DOM swaps)
+  useEffect(() => {
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
+  }, [active]);
 
   // Auto-play when scrolled into view, and again whenever a new condition is selected.
   useEffect(() => {
