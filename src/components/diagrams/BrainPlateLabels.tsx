@@ -231,7 +231,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
           const anchor = l.resolvedAnchor;
           const padX = anchor === "end" ? -0.6 : anchor === "start" ? 0.6 : 0;
           const lines = l.text.split("\n");
-          const lineHeight = 2.1;
+          const lineHeight = 1.95;
           const totalH = lines.length * lineHeight;
           const pillX =
             anchor === "end"
