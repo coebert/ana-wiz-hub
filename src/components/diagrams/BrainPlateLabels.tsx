@@ -198,8 +198,11 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
   const [showAlign, setShowAlign] = useState(false);
 
   const estimateHalfWidth = (text: string) => {
+    // Inter @ fontSize 1.7, weight 600 → ~0.85 viewBox units per character.
+    // Cap conservatively so long labels stay inside the side gutter and
+    // never overhang into the brain illustration.
     const longest = text.split("\n").reduce((m, l) => Math.max(m, l.length), 0);
-    return Math.min(28, (longest * 0.95) / 2 + 1.2);
+    return Math.min(18, (longest * 0.85) / 2 + 0.8);
   };
 
   const resolved: ResolvedLabel[] = labels.map((l) => ({
