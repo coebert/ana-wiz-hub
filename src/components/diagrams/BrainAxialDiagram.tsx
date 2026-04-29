@@ -9,7 +9,7 @@ const plateLabels: PlateLabel[] = [
   { text: "Longitudinal fissure", dot: { x: 50, y: 12 }, label: { x: 97, y: 8 }, anchor: "end" },
   // Anterior midline
   { text: "Genu of corpus callosum", dot: { x: 50, y: 28 }, label: { x: 3, y: 22 }, anchor: "start" },
-  { text: "Frontal horn (lateral ventricle)", dot: { x: 46, y: 34 }, label: { x: 97, y: 22 }, anchor: "end" },
+  { text: "Frontal horn\n(lateral ventricle)", dot: { x: 46, y: 34 }, label: { x: 97, y: 22 }, anchor: "end" },
   { text: "Septum pellucidum", dot: { x: 50, y: 35 }, label: { x: 3, y: 35 }, anchor: "start" },
   // Basal ganglia + capsule (left hemisphere)
   { text: "Caudate (head)", dot: { x: 42, y: 36 }, label: { x: 3, y: 47 }, anchor: "start" },
