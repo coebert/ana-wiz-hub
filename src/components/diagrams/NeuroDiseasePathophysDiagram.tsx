@@ -815,12 +815,16 @@ const Wrap = ({
   children: React.ReactNode;
 }) => {
   const [playing, setPlaying] = useState(false);
+  const [scrubMs, setScrubMs] = useState<number | null>(null);
   const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
 
   const trigger = useCallback(() => {
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
     // Re-trigger by toggling off then on so CSS animations restart.
     setPlaying(false);
     requestAnimationFrame(() => {
@@ -828,6 +832,24 @@ const Wrap = ({
       timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
     });
   }, []);
+
+  const handleScrub = useCallback((ms: number) => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setPlaying(true);
+    setScrubMs(ms);
+    requestAnimationFrame(() => seekContainerAnimations(sceneRef.current, ms));
+  }, []);
+
+  const handleTogglePlay = useCallback(() => {
+    if (scrubMs !== null) {
+      trigger();
+    } else if (playing) {
+      setPlaying(false);
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    } else {
+      trigger();
+    }
+  }, [scrubMs, playing, trigger]);
 
   // Auto-play once on first scroll into view
   useEffect(() => {
@@ -874,6 +896,7 @@ const Wrap = ({
         </Button>
       </div>
       <div
+        ref={sceneRef}
         className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
           playing ? "is-playing" : ""
         }`}
@@ -896,8 +919,15 @@ const Wrap = ({
           {children}
         </svg>
       </div>
+      <TimelineScrubber
+        durationMs={MECHANISM_DURATION_MS}
+        value={scrubMs ?? 0}
+        onChange={handleScrub}
+        onTogglePlay={handleTogglePlay}
+        isPlaying={playing && scrubMs === null}
+      />
       <HotspotHint>
-        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+        Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
       </HotspotHint>
       <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
     </div>
