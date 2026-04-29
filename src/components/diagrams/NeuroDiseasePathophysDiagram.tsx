@@ -1,7 +1,68 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Play, RotateCcw } from "lucide-react";
+import { Play, RotateCcw, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
+
+/**
+ * Apply a "seek" to every CSS animation under the container so the user can
+ * scrub frames manually. We pause each `.anim-*` element and use a negative
+ * `animation-delay` to position it at the requested time. Restoring clears
+ * the inline overrides so the original staggered timings resume.
+ */
+const seekContainerAnimations = (root: HTMLElement | null, ms: number | null) => {
+  if (!root) return;
+  const nodes = root.querySelectorAll<HTMLElement | SVGElement>('[class*="anim-"]');
+  nodes.forEach((node) => {
+    const el = node as unknown as { style: CSSStyleDeclaration };
+    if (ms === null) {
+      el.style.removeProperty("animation-play-state");
+      el.style.removeProperty("animation-delay");
+    } else {
+      el.style.setProperty("animation-play-state", "paused", "important");
+      el.style.setProperty("animation-delay", `-${ms}ms`, "important");
+    }
+  });
+};
+
+const TimelineScrubber = ({
+  durationMs,
+  value,
+  onChange,
+  onTogglePlay,
+  isPlaying,
+}: {
+  durationMs: number;
+  value: number;
+  onChange: (ms: number) => void;
+  onTogglePlay: () => void;
+  isPlaying: boolean;
+}) => {
+  const pct = Math.round((value / durationMs) * 100);
+  return (
+    <div className="flex items-center gap-2 mt-2 px-1">
+      <Button
+        size="sm"
+        variant="ghost"
+        onClick={onTogglePlay}
+        className="h-6 w-6 p-0 shrink-0"
+        aria-label={isPlaying ? "Pause animation" : "Play animation"}
+      >
+        {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+      </Button>
+      <Slider
+        value={[value]}
+        min={0}
+        max={durationMs}
+        step={20}
+        onValueChange={(v) => onChange(v[0])}
+        aria-label="Mechanism animation timeline"
+        className="flex-1"
+      />
+      <span className="text-[10px] tabular-nums text-muted-foreground w-9 text-right">{pct}%</span>
+    </div>
+  );
+};
 
 type Condition = "mg" | "epilepsy" | "ms" | "pd" | "mnd" | "md" | "sci";
 
@@ -31,18 +92,48 @@ const NeuroDiseasePathophysDiagram = () => {
   const mechanismLabel = MECHANISM_LABELS[active];
 
   const [playing, setPlaying] = useState(false);
+  const [scrubMs, setScrubMs] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const autoPlayedFor = useRef<Set<Condition>>(new Set());
 
   const trigger = useCallback(() => {
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
     setPlaying(false);
     requestAnimationFrame(() => {
       setPlaying(true);
       timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
     });
   }, []);
+
+  const handleScrub = useCallback((ms: number) => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setPlaying(true); // ensure .is-playing class so animations are applied
+    setScrubMs(ms);
+    // Apply seek after the class is on the DOM
+    requestAnimationFrame(() => seekContainerAnimations(sceneRef.current, ms));
+  }, []);
+
+  const handleTogglePlay = useCallback(() => {
+    if (scrubMs !== null) {
+      // Resume from scrub position: clear overrides and re-trigger from start
+      trigger();
+    } else if (playing) {
+      setPlaying(false);
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    } else {
+      trigger();
+    }
+  }, [scrubMs, playing, trigger]);
+
+  // Reset scrub overrides whenever the active condition changes (DOM swaps)
+  useEffect(() => {
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
+  }, [active]);
 
   // Auto-play when scrolled into view, and again whenever a new condition is selected.
   useEffect(() => {
@@ -107,6 +198,7 @@ const NeuroDiseasePathophysDiagram = () => {
       </div>
 
       <div
+        ref={sceneRef}
         className={`neuro-anim rounded-md border border-border bg-background p-3 overflow-x-auto cursor-pointer ${
           playing ? "is-playing" : ""
         }`}
@@ -130,8 +222,15 @@ const NeuroDiseasePathophysDiagram = () => {
           {active === "sci" && <SCIDiagram />}
         </svg>
       </div>
+      <TimelineScrubber
+        durationMs={MECHANISM_DURATION_MS}
+        value={scrubMs ?? 0}
+        onChange={handleScrub}
+        onTogglePlay={handleTogglePlay}
+        isPlaying={playing && scrubMs === null}
+      />
       <HotspotHint>
-        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+        Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
       </HotspotHint>
 
       <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
@@ -716,12 +815,16 @@ const Wrap = ({
   children: React.ReactNode;
 }) => {
   const [playing, setPlaying] = useState(false);
+  const [scrubMs, setScrubMs] = useState<number | null>(null);
   const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const sceneRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<number | null>(null);
 
   const trigger = useCallback(() => {
     if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setScrubMs(null);
+    seekContainerAnimations(sceneRef.current, null);
     // Re-trigger by toggling off then on so CSS animations restart.
     setPlaying(false);
     requestAnimationFrame(() => {
@@ -729,6 +832,24 @@ const Wrap = ({
       timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
     });
   }, []);
+
+  const handleScrub = useCallback((ms: number) => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setPlaying(true);
+    setScrubMs(ms);
+    requestAnimationFrame(() => seekContainerAnimations(sceneRef.current, ms));
+  }, []);
+
+  const handleTogglePlay = useCallback(() => {
+    if (scrubMs !== null) {
+      trigger();
+    } else if (playing) {
+      setPlaying(false);
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    } else {
+      trigger();
+    }
+  }, [scrubMs, playing, trigger]);
 
   // Auto-play once on first scroll into view
   useEffect(() => {
@@ -775,6 +896,7 @@ const Wrap = ({
         </Button>
       </div>
       <div
+        ref={sceneRef}
         className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
           playing ? "is-playing" : ""
         }`}
@@ -797,8 +919,15 @@ const Wrap = ({
           {children}
         </svg>
       </div>
+      <TimelineScrubber
+        durationMs={MECHANISM_DURATION_MS}
+        value={scrubMs ?? 0}
+        onChange={handleScrub}
+        onTogglePlay={handleTogglePlay}
+        isPlaying={playing && scrubMs === null}
+      />
       <HotspotHint>
-        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+        Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
       </HotspotHint>
       <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
     </div>
