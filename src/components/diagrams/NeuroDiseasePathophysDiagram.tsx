@@ -1,7 +1,68 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Play, RotateCcw } from "lucide-react";
+import { Play, RotateCcw, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Slider } from "@/components/ui/slider";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
+
+/**
+ * Apply a "seek" to every CSS animation under the container so the user can
+ * scrub frames manually. We pause each `.anim-*` element and use a negative
+ * `animation-delay` to position it at the requested time. Restoring clears
+ * the inline overrides so the original staggered timings resume.
+ */
+const seekContainerAnimations = (root: HTMLElement | null, ms: number | null) => {
+  if (!root) return;
+  const nodes = root.querySelectorAll<HTMLElement | SVGElement>('[class*="anim-"]');
+  nodes.forEach((node) => {
+    const el = node as unknown as { style: CSSStyleDeclaration };
+    if (ms === null) {
+      el.style.removeProperty("animation-play-state");
+      el.style.removeProperty("animation-delay");
+    } else {
+      el.style.setProperty("animation-play-state", "paused", "important");
+      el.style.setProperty("animation-delay", `-${ms}ms`, "important");
+    }
+  });
+};
+
+const TimelineScrubber = ({
+  durationMs,
+  value,
+  onChange,
+  onTogglePlay,
+  isPlaying,
+}: {
+  durationMs: number;
+  value: number;
+  onChange: (ms: number) => void;
+  onTogglePlay: () => void;
+  isPlaying: boolean;
+}) => {
+  const pct = Math.round((value / durationMs) * 100);
+  return (
+    <div className="flex items-center gap-2 mt-2 px-1">
+      <Button
+        size="sm"
+        variant="ghost"
+        onClick={onTogglePlay}
+        className="h-6 w-6 p-0 shrink-0"
+        aria-label={isPlaying ? "Pause animation" : "Play animation"}
+      >
+        {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+      </Button>
+      <Slider
+        value={[value]}
+        min={0}
+        max={durationMs}
+        step={20}
+        onValueChange={(v) => onChange(v[0])}
+        aria-label="Mechanism animation timeline"
+        className="flex-1"
+      />
+      <span className="text-[10px] tabular-nums text-muted-foreground w-9 text-right">{pct}%</span>
+    </div>
+  );
+};
 
 type Condition = "mg" | "epilepsy" | "ms" | "pd" | "mnd" | "md" | "sci";
 
