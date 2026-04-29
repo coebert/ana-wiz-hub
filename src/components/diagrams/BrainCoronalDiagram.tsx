@@ -16,7 +16,7 @@ const plateLabels: PlateLabel[] = [
   { text: "Caudate (head)", dot: { x: 42, y: 43 }, label: { x: 3, y: 50 }, anchor: "start" },
   { text: "Internal capsule", dot: { x: 38, y: 53 }, label: { x: 3, y: 64 }, anchor: "start" },
   { text: "Lentiform nucleus\n(putamen + pallidus)", dot: { x: 32, y: 53 }, label: { x: 3, y: 78 }, anchor: "start" },
-  { text: "External capsule · claustrum · insula", dot: { x: 24, y: 54 }, label: { x: 3, y: 92 }, anchor: "start" },
+  { text: "External capsule ·\nclaustrum · insula", dot: { x: 24, y: 54 }, label: { x: 3, y: 92 }, anchor: "start" },
   // Diencephalon (right hemisphere)
   { text: "Thalamus", dot: { x: 56, y: 52 }, label: { x: 97, y: 50 }, anchor: "end" },
   { text: "Hypothalamus", dot: { x: 50, y: 64 }, label: { x: 97, y: 64 }, anchor: "end" },
