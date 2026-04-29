@@ -37,10 +37,7 @@ const NeuroanatomyTopic = () => {
       }}
       diagrams={
         <>
-          <BrainAnatomyDiagram />
-          <BrainMedialDiagram />
-          <BrainCoronalDiagram />
-          <BrainAxialDiagram />
+          <BrainPlatesViewer />
           <CsfFlowDiagram />
           <CircleOfWillisDiagram />
           <SkullBaseDiagram />
