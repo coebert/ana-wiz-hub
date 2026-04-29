@@ -23,7 +23,7 @@ const plateLabels: PlateLabel[] = [
   { text: "Thalamus", dot: { x: 56, y: 51 }, label: { x: 97, y: 72 }, anchor: "end" },
   { text: "Pineal gland", dot: { x: 50, y: 58 }, label: { x: 97, y: 84 }, anchor: "end" },
   // Posterior
-  { text: "Choroid plexus (atrium)", dot: { x: 38, y: 63 }, label: { x: 3, y: 92 }, anchor: "start" },
+  { text: "Choroid plexus\n(atrium)", dot: { x: 38, y: 63 }, label: { x: 3, y: 92 }, anchor: "start" },
   { text: "Occipital horn", dot: { x: 50, y: 70 }, label: { x: 97, y: 95 }, anchor: "end" },
   { text: "Occipital lobe", dot: { x: 40, y: 88 }, label: { x: 3, y: 96 }, anchor: "start" },
 ];
