@@ -185,9 +185,12 @@ const labelledRegions: LabelledRegion[] = [
   },
 ];
 
-const BrainMedialDiagram = () => {
+/**
+ * Inner plate content (no outer card chrome) — used by BrainPlatesViewer.
+ */
+export const BrainMedialPlate = () => {
   return (
-    <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <>
       <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
         <h3 className="text-lg font-serif font-bold text-foreground">Midsagittal (Medial) View of the Brain</h3>
         <p className="text-xs text-muted-foreground mt-1">
@@ -343,8 +346,14 @@ const BrainMedialDiagram = () => {
         imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy midsagittal cerebral plates. Anatomical labelling cross-checked against the references above."
         note="Educational use only. Not a substitute for primary anatomical references."
       />
-    </div>
+    </>
   );
 };
+
+const BrainMedialDiagram = () => (
+  <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <BrainMedialPlate />
+  </div>
+);
 
 export default BrainMedialDiagram;

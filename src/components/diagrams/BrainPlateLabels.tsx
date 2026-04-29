@@ -198,8 +198,11 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
   const [showAlign, setShowAlign] = useState(false);
 
   const estimateHalfWidth = (text: string) => {
+    // Inter @ fontSize 1.7, weight 600 → ~0.85 viewBox units per character.
+    // Cap conservatively so long labels stay inside the side gutter and
+    // never overhang into the brain illustration.
     const longest = text.split("\n").reduce((m, l) => Math.max(m, l.length), 0);
-    return Math.min(28, (longest * 0.95) / 2 + 1.2);
+    return Math.min(18, (longest * 0.85) / 2 + 0.8);
   };
 
   const resolved: ResolvedLabel[] = labels.map((l) => ({
@@ -228,7 +231,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
           const anchor = l.resolvedAnchor;
           const padX = anchor === "end" ? -0.6 : anchor === "start" ? 0.6 : 0;
           const lines = l.text.split("\n");
-          const lineHeight = 2.1;
+          const lineHeight = 1.95;
           const totalH = lines.length * lineHeight;
           const pillX =
             anchor === "end"
@@ -276,7 +279,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
                 y={l.y - (lines.length - 1) * (lineHeight / 2)}
                 textAnchor={anchor}
                 dominantBaseline="middle"
-                fontSize="1.9"
+                fontSize="1.7"
                 fontWeight="600"
                 fill="hsl(var(--foreground))"
                 stroke="hsl(var(--background))"

@@ -153,39 +153,46 @@ const labelledRegions: LabelledRegion[] = [
   },
 ];
 
-const BrainAnatomyDiagram = () => {
-  return (
-    <div className="rounded-2xl border border-border bg-card overflow-hidden">
-      <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
-        <h3 className="text-lg font-serif font-bold text-foreground">Lateral View of the Brain</h3>
-        <p className="text-xs text-muted-foreground mt-1">
-          Left hemisphere — colour-coded lobes with key cortical landmarks, brainstem and cerebellum
-        </p>
-      </div>
-
-      <figure className="bg-[hsl(var(--background))]">
-        <img
-          src={brainAnatomyImg}
-          alt="Detailed anatomical illustration of the human brain in lateral view, showing colour-coded frontal, parietal, temporal and occipital lobes, with labels for the precentral and postcentral gyri, central sulcus, lateral (Sylvian) fissure, Broca's and Wernicke's areas, primary visual cortex, cerebellum, midbrain, pons, medulla oblongata and spinal cord."
-          loading="lazy"
-          width={1200}
-          height={896}
-          className="w-full h-auto block"
-        />
-        <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
-          Anatomical reference plate. Anterior to the left, posterior to the right.
-        </figcaption>
-      </figure>
-
-      <BrainRegionsList regions={labelledRegions} />
-
-      <DiagramSourcesPanel
-        references={references}
-        imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above."
-        note="Educational use only. Not a substitute for primary anatomical references."
-      />
+/**
+ * Inner plate content (no outer card chrome) — used by BrainPlatesViewer.
+ */
+export const BrainLateralPlate = () => (
+  <>
+    <div className="px-4 sm:px-6 py-4 border-b border-border bg-muted/30">
+      <h3 className="text-lg font-serif font-bold text-foreground">Lateral View of the Brain</h3>
+      <p className="text-xs text-muted-foreground mt-1">
+        Left hemisphere — colour-coded lobes with key cortical landmarks, brainstem and cerebellum
+      </p>
     </div>
-  );
-};
+
+    <figure className="bg-[hsl(var(--background))]">
+      <img
+        src={brainAnatomyImg}
+        alt="Detailed anatomical illustration of the human brain in lateral view, showing colour-coded frontal, parietal, temporal and occipital lobes, with labels for the precentral and postcentral gyri, central sulcus, lateral (Sylvian) fissure, Broca's and Wernicke's areas, primary visual cortex, cerebellum, midbrain, pons, medulla oblongata and spinal cord."
+        loading="lazy"
+        width={1200}
+        height={896}
+        className="w-full h-auto block"
+      />
+      <figcaption className="px-4 sm:px-6 py-3 text-xs text-muted-foreground italic border-t border-border">
+        Anatomical reference plate. Anterior to the left, posterior to the right.
+      </figcaption>
+    </figure>
+
+    <BrainRegionsList regions={labelledRegions} />
+
+    <DiagramSourcesPanel
+      references={references}
+      imageCredit="Custom illustration generated for this resource (Gemini image model, premium tier), styled after Frank H. Netter / Gray's Anatomy lateral cerebral plates. Anatomical labelling cross-checked against the references above."
+      note="Educational use only. Not a substitute for primary anatomical references."
+    />
+  </>
+);
+
+const BrainAnatomyDiagram = () => (
+  <div className="rounded-2xl border border-border bg-card overflow-hidden">
+    <BrainLateralPlate />
+  </div>
+);
 
 export default BrainAnatomyDiagram;
