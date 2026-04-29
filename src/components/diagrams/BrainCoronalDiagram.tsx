@@ -21,7 +21,7 @@ const plateLabels: PlateLabel[] = [
   { text: "Thalamus", dot: { x: 56, y: 52 }, label: { x: 97, y: 50 }, anchor: "end" },
   { text: "Hypothalamus", dot: { x: 50, y: 64 }, label: { x: 97, y: 64 }, anchor: "end" },
   { text: "Optic tract /\nmammillary bodies", dot: { x: 50, y: 70 }, label: { x: 97, y: 78 }, anchor: "end" },
-  { text: "Hippocampus (inferior horn)", dot: { x: 72, y: 70 }, label: { x: 97, y: 92 }, anchor: "end" },
+  { text: "Hippocampus\n(inferior horn)", dot: { x: 72, y: 70 }, label: { x: 97, y: 92 }, anchor: "end" },
 ];
 
 
