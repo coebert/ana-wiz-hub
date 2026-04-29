@@ -198,6 +198,7 @@ const NeuroDiseasePathophysDiagram = () => {
       </div>
 
       <div
+        ref={sceneRef}
         className={`neuro-anim rounded-md border border-border bg-background p-3 overflow-x-auto cursor-pointer ${
           playing ? "is-playing" : ""
         }`}
@@ -221,8 +222,15 @@ const NeuroDiseasePathophysDiagram = () => {
           {active === "sci" && <SCIDiagram />}
         </svg>
       </div>
+      <TimelineScrubber
+        durationMs={MECHANISM_DURATION_MS}
+        value={scrubMs ?? 0}
+        onChange={handleScrub}
+        onTogglePlay={handleTogglePlay}
+        isPlaying={playing && scrubMs === null}
+      />
       <HotspotHint>
-        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+        Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
       </HotspotHint>
 
       <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
