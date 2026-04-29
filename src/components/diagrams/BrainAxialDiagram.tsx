@@ -16,7 +16,7 @@ const plateLabels: PlateLabel[] = [
   { text: "Internal capsule", dot: { x: 39, y: 45 }, label: { x: 97, y: 36 }, anchor: "end" },
   { text: "Putamen", dot: { x: 33, y: 44 }, label: { x: 3, y: 58 }, anchor: "start" },
   { text: "Globus pallidus", dot: { x: 38, y: 47 }, label: { x: 97, y: 48 }, anchor: "end" },
-  { text: "External capsule · claustrum · insula", dot: { x: 27, y: 45 }, label: { x: 3, y: 70 }, anchor: "start" },
+  { text: "External capsule ·\nclaustrum · insula", dot: { x: 27, y: 45 }, label: { x: 3, y: 70 }, anchor: "start" },
   { text: "Sylvian fissure", dot: { x: 23, y: 43 }, label: { x: 3, y: 81 }, anchor: "start" },
   // Diencephalon midline
   { text: "Third ventricle", dot: { x: 50, y: 49 }, label: { x: 97, y: 60 }, anchor: "end" },
