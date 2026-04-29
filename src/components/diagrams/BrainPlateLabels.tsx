@@ -279,7 +279,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
                 y={l.y - (lines.length - 1) * (lineHeight / 2)}
                 textAnchor={anchor}
                 dominantBaseline="middle"
-                fontSize="1.9"
+                fontSize="1.7"
                 fontWeight="600"
                 fill="hsl(var(--foreground))"
                 stroke="hsl(var(--background))"
