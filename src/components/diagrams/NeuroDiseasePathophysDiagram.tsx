@@ -15,12 +15,63 @@ const conditions: { id: Condition; label: string; tagline: string }[] = [
   { id: "sci", label: "Spinal cord injury", tagline: "Loss of supraspinal inhibition → unmodulated reflex arcs below lesion" },
 ];
 
+const MECHANISM_LABELS: Record<Condition, string> = {
+  mg: "Animate AChR blockade",
+  epilepsy: "Animate seizure firing",
+  ms: "Animate demyelination",
+  pd: "Animate dopamine depletion",
+  mnd: "Animate denervation spread",
+  md: "Animate sarcolemmal tearing",
+  sci: "Animate sympathetic surge",
+};
+
 const NeuroDiseasePathophysDiagram = () => {
   const [active, setActive] = useState<Condition>("mg");
   const meta = conditions.find((c) => c.id === active)!;
+  const mechanismLabel = MECHANISM_LABELS[active];
+
+  const [playing, setPlaying] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+  const autoPlayedFor = useRef<Set<Condition>>(new Set());
+
+  const trigger = useCallback(() => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    setPlaying(false);
+    requestAnimationFrame(() => {
+      setPlaying(true);
+      timeoutRef.current = window.setTimeout(() => setPlaying(false), MECHANISM_DURATION_MS);
+    });
+  }, []);
+
+  // Auto-play when scrolled into view, and again whenever a new condition is selected.
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const el = containerRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
+            if (!autoPlayedFor.current.has(active)) {
+              autoPlayedFor.current.add(active);
+              trigger();
+            }
+            break;
+          }
+        }
+      },
+      { threshold: [0.35] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [active, trigger]);
+
+  useEffect(() => () => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+  }, []);
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4 space-y-3">
+    <div ref={containerRef} className="rounded-lg border border-border bg-card p-4 space-y-3">
       <div>
         <h3 className="font-semibold text-foreground mb-1">Pathophysiology of neurological co-existing disease</h3>
         <p className="text-xs text-muted-foreground">
@@ -42,7 +93,33 @@ const NeuroDiseasePathophysDiagram = () => {
         ))}
       </div>
 
-      <div className="rounded-md border border-border bg-background p-3 overflow-x-auto">
+      <div className="flex justify-end">
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={trigger}
+          aria-label={mechanismLabel}
+          className="h-7 px-2 text-[11px] gap-1"
+        >
+          {playing ? <RotateCcw className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+          {playing ? "Replay" : mechanismLabel}
+        </Button>
+      </div>
+
+      <div
+        className={`neuro-anim rounded-md border border-border bg-background p-3 overflow-x-auto cursor-pointer ${
+          playing ? "is-playing" : ""
+        }`}
+        onClick={trigger}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            trigger();
+          }
+        }}
+      >
         <svg viewBox="0 0 460 250" className="w-full h-auto min-w-[420px]" role="img" aria-label={`${meta.label} pathophysiology`}>
           {active === "mg" && <MGDiagram />}
           {active === "epilepsy" && <EpilepsyDiagram />}
@@ -53,7 +130,9 @@ const NeuroDiseasePathophysDiagram = () => {
           {active === "sci" && <SCIDiagram />}
         </svg>
       </div>
-      <HotspotHint />
+      <HotspotHint>
+        Hover or tap the dashed regions for explanations · click the diagram or press “{mechanismLabel}” to animate the mechanism.
+      </HotspotHint>
 
       <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
         <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1">{meta.label}</p>
