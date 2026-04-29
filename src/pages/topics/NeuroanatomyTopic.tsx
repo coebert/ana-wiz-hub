@@ -3,10 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { neuroanatomyQuestions } from "@/data/quizzes";
 import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
-import BrainAnatomyDiagram from "@/components/diagrams/BrainAnatomyDiagram";
-import BrainMedialDiagram from "@/components/diagrams/BrainMedialDiagram";
-import BrainCoronalDiagram from "@/components/diagrams/BrainCoronalDiagram";
-import BrainAxialDiagram from "@/components/diagrams/BrainAxialDiagram";
+import BrainPlatesViewer from "@/components/diagrams/BrainPlatesViewer";
 import CsfFlowDiagram from "@/components/diagrams/CsfFlowDiagram";
 import { Exam } from "@/data/curriculum";
 
