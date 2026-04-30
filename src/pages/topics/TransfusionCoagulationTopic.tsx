@@ -116,6 +116,41 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="lifespans" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Component Lifespans & In-vivo Survival</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Each component has both a <em>shelf-life</em> (how long it can be stored before issue) and an <em>in-vivo survival</em> (how long the transfused component continues to function in the recipient). The two are not the same — a unit of red cells can be stored for 35 days but typical post-transfusion 24-h recovery is ~75% with a circulating half-life close to that of native RBCs.
+            </p>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Component</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Storage</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Shelf-life</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Once issued / thawed</th>
+                    <th className="text-left py-2 text-foreground font-semibold">In-vivo survival</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Packed red cells (SAG-M)</td><td>2–6°C</td><td>35 days</td><td>Use within 4 h of leaving fridge</td><td>~75% recovery at 24 h; mean survival ≈ 58 d</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Platelets (pooled / apheresis)</td><td>20–24°C with continuous agitation</td><td>5–7 days</td><td>Transfuse over 30 min</td><td>Functional 3–5 days; CCI at 1 h is the best functional measure</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fresh frozen plasma (FFP)</td><td>−25°C or colder</td><td>2 years</td><td>Thaw 20–30 min; use within 24 h (4°C)</td><td>Factor levels rise ~10–20% per 15 mL/kg; FVII (t½ ~6 h) limits duration</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cryoprecipitate</td><td>−25°C or colder</td><td>2 years</td><td>Thaw 20 min; use within 4 h at room T</td><td>Fibrinogen t½ ~3–5 days; FVIII t½ ~12 h</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Granulocytes</td><td>20–24°C, no agitation</td><td>24 h (must be irradiated)</td><td>Transfuse ASAP</td><td>Hours — no functional persistence beyond ~24 h</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCC (4-factor)</td><td>2–25°C lyophilised</td><td>~3 years</td><td>Reconstitute, use immediately</td><td>FIX t½ ~24 h dictates redosing; recheck INR at 30 min and 6–8 h</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Fibrinogen concentrate</td><td>2–25°C lyophilised</td><td>5 years</td><td>~10 min reconstitution</td><td>Fibrinogen t½ ~3–5 days</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Storage lesion (red cells)</p>
+              <p className="text-sm text-muted-foreground">
+                Progressive ↓2,3-DPG (left-shifts the OHDC for ~24 h post-transfusion until regenerated), ↑extracellular K⁺ (up to 30–40 mmol/L by day 35 — clinically relevant in massive/neonatal/cardiac transfusion), ↑lactate, ↓pH (~6.5), microaggregate formation, and accumulation of bioactive lipids implicated in TRALI. The ABLE and INFORM RCTs found no clinical benefit from preferentially using "fresh" red cells.
+              </p>
+            </div>
+          </ExamSection>
+
           <ExamSection id="cryo-vs-fib" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cryoprecipitate vs Fibrinogen Concentrate</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
