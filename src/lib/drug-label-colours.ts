@@ -238,28 +238,56 @@ function brandedText(entry: PaletteEntry, bg: RGB, surfaceIsDark: boolean): stri
 
 /**
  * Compute readable styles for a single palette entry against the current
- * surface. Memoised per (key, surfaceLuminance) so we don't recompute on
- * every render.
+ * surface. Memoised per surface signature in a nested map so each lookup is
+ * an O(1) `Map.get` keyed directly by the `PaletteKey` enum (no per-call
+ * string concatenation, no per-entry `getComputedStyle` reads).
  */
-const styleCache = new Map<string, { tint: { backgroundColor: string; color: string; borderColor: string }; solid: { backgroundColor: string; color: string; borderColor: string }; railColor: string; standardName: string }>();
+type ComputedStyle = {
+  tint: { backgroundColor: string; color: string; borderColor: string };
+  solid: { backgroundColor: string; color: string; borderColor: string };
+  railColor: string;
+  standardName: string;
+};
 
-function computeStyles(key: PaletteKey) {
+const styleCache = new Map<string, Map<PaletteKey, ComputedStyle>>();
+let cachedSurfaceKey: string | null = null;
+let cachedSurfaceStyles: Map<PaletteKey, ComputedStyle> | null = null;
+let cachedSurfaceCard: RGB | null = null;
+let cachedSurfaceIsDark = false;
+
+function resolveSurface(): { key: string; styles: Map<PaletteKey, ComputedStyle>; card: RGB; isDark: boolean } {
   const card = getSurfaceRgb("--card", SURFACE_FALLBACK);
-  const cacheKey = `${key}|${Math.round(card.r)}|${Math.round(card.g)}|${Math.round(card.b)}`;
-  const cached = styleCache.get(cacheKey);
+  const key = `${Math.round(card.r)}|${Math.round(card.g)}|${Math.round(card.b)}`;
+  if (cachedSurfaceKey === key && cachedSurfaceStyles && cachedSurfaceCard) {
+    return { key, styles: cachedSurfaceStyles, card: cachedSurfaceCard, isDark: cachedSurfaceIsDark };
+  }
+  let styles = styleCache.get(key);
+  if (!styles) {
+    styles = new Map();
+    styleCache.set(key, styles);
+  }
+  cachedSurfaceKey = key;
+  cachedSurfaceStyles = styles;
+  cachedSurfaceCard = card;
+  cachedSurfaceIsDark = luminance(card) < 0.5;
+  return { key, styles, card, isDark: cachedSurfaceIsDark };
+}
+
+function computeStyles(paletteKey: PaletteKey): ComputedStyle {
+  const { styles, card, isDark } = resolveSurface();
+  const cached = styles.get(paletteKey);
   if (cached) return cached;
 
-  const entry = PALETTE[key];
-  const surfaceIsDark = luminance(card) < 0.5;
+  const entry = PALETTE[paletteKey];
 
   // Tint composited over the card so we measure real contrast.
   const tintBg = composite(toRgb(entry.tint), card);
   const tintText = pickReadableText(
     tintBg,
     [
-      brandedText(entry, tintBg, surfaceIsDark),
-      surfaceIsDark ? FOREGROUND_LIGHT : FOREGROUND_DARK,
-      surfaceIsDark ? FOREGROUND_DARK : FOREGROUND_LIGHT,
+      brandedText(entry, tintBg, isDark),
+      isDark ? FOREGROUND_LIGHT : FOREGROUND_DARK,
+      isDark ? FOREGROUND_DARK : FOREGROUND_LIGHT,
     ],
   );
 
@@ -267,14 +295,14 @@ function computeStyles(key: PaletteKey) {
   const solidBg = toRgb(entry.solid);
   const solidText = pickReadableText(solidBg, [FOREGROUND_DARK, FOREGROUND_LIGHT], 4.5);
 
-  const styles = {
+  const computed: ComputedStyle = {
     tint:  { backgroundColor: entry.tint,  color: tintText,  borderColor: entry.border },
     solid: { backgroundColor: entry.solid, color: solidText, borderColor: entry.solid },
     railColor: entry.solid,
-    standardName: STANDARD_NAME[key],
+    standardName: STANDARD_NAME[paletteKey],
   };
-  styleCache.set(cacheKey, styles);
-  return styles;
+  styles.set(paletteKey, computed);
+  return computed;
 }
 
 export function getDrugLabelInlineStyles(drugClass: string) {
