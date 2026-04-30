@@ -28,13 +28,13 @@ const workedExamples: WorkedExample[] = [
       "Activate MHP, TXA within 3 h, 1:1:1 ratio, calcium replacement, active warming, permissive hypotension, urgent damage-control surgery/IR. Transition to ROTEM-guided once available.",
   },
   {
-    title: "ISTH DIC scoring in septic shock",
+    title: "Setting up cell salvage for a redo aortic case",
     scenario:
-      "Septic shock from urosepsis, day 2 ICU. Platelets 42 ×10⁹/L, PT prolonged 8 s above control, fibrinogen 0.9 g/L, D-dimer strongly raised, oozing from cannulae.",
+      "A 68-year-old Jehovah's Witness is listed for redo open AAA repair. She declines allogeneic blood but accepts intra-operative cell salvage if the circuit remains in continuity with her body. How do you set up and run cell salvage for this case?",
     working:
-      "ISTH points: platelets 42 → 2; PT prolongation >6 s → 2; fibrinogen <1 g/L → 1; D-dimer strong increase → 3. Total = 8 (≥5 = overt DIC). Confirm clinical bleeding + microvascular thrombosis suspicion. Differentiate from TTP (normal coag screen + ADAMTS13 <10%) and from hepatic coagulopathy (FVIII low in liver disease, preserved in DIC).",
+      "Confirm consent and document the agreed components (red cells via continuous circuit). Two suction lines: a low-vacuum (≤−150 mmHg) salvage suction kept on the surgical field below blood level, and a separate standard high-vacuum sucker for irrigation/contaminants. Anticoagulate the collection reservoir — heparinised saline (30,000 IU in 1 L 0.9% NaCl) primed at 60 mL per 100 mL anticipated blood, dripping into the suction tubing tip; citrate (ACD-A) is the alternative when systemic heparin is contraindicated. When the reservoir holds ~500–1000 mL, the wash cycle starts: blood is centrifuged in a spinning bell, plasma + heparin + free Hb + cytokines are decanted to waste, and packed RBCs are washed with 1–1.5 L saline before being suspended in 0.9% saline at Hct ~50–70%. The processed unit is returned through a standard blood-giving set with a 40 µm filter; in obstetrics or malignancy add a leucodepletion filter to remove amniotic/tumour debris. Returned blood has no platelets, fibrinogen or clotting factors — anticipate dilutional coagulopathy after 1500–2000 mL salvaged volume and replace with FFP/cryo/platelets guided by ROTEM.",
     answer:
-      "Overt DIC (score 8). Treat the cause (source control + appropriate antimicrobials). Replace to clinical targets: platelets >50, fibrinogen >1.5 g/L (cryo or fibrinogen concentrate), FFP if PT ratio >1.5 + bleeding. Avoid TXA unless ROTEM confirms hyperfibrinolysis (ML >15%).",
+      "Document continuous-circuit consent. Prime reservoir with heparinised saline, use dual-suction technique at low vacuum, process when ≥500 mL collected, return washed RBCs through a 40 µm (± leucodepletion) filter, and supplement with FFP/cryo/platelets once >1500 mL has been re-infused or ROTEM signals coagulopathy. Avoid topical haemostats, betadine and unlicensed irrigants in the salvage field.",
   },
 ];
 
