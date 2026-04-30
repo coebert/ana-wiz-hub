@@ -58,7 +58,13 @@ const TransfusionCoagulationTopic = () => {
       }}
       keyPoints={[
         "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS",
-        "TRALI: non-cardiogenic pulmonary oedema within 6h — do NOT give diuretics (unlike TACO)",
+        "Red cells: 35-day shelf life at 2–6°C; storage lesion (↓2,3-DPG, ↑K⁺, ↓pH) reverses over 24 h in the recipient",
+        "Platelets: only 5–7 days at 20–24°C with agitation — bacterial contamination is the leading infectious risk",
+        "FFP/cryo: 2 years at −30°C; once thawed, use within 24 h (FFP) or 4 h (cryo, room temperature)",
+        "TRALI: leading cause of transfusion-related death; strongly associated with FFP and apheresis platelets from multiparous donors (anti-HLA/HNA antibodies). UK male-donor FFP policy has reduced incidence ~10-fold",
+        "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis",
+        "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets",
+        "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)",
         "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets",
         "TXA within 3 hours of trauma reduces mortality (CRASH-2)",
         "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early",
