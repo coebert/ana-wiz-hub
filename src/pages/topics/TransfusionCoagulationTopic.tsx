@@ -6,9 +6,12 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
-  "Describe the composition, dose, and storage of red cells, FFP, cryoprecipitate, platelets, fibrinogen concentrate and PCC",
-  "Recognise and manage the major transfusion reactions (acute haemolytic, FNHTR, TRALI, TACO, anaphylaxis)",
-  "Apply the Massive Transfusion Protocol — triggers, ratios, targets and complications (lethal triad, hypocalcaemia)",
+  "Describe the composition, shelf-life, donor-to-recipient survival and storage requirements of each blood component",
+  "Recognise and manage the major transfusion reactions (acute haemolytic, FNHTR, TRALI, TACO, anaphylaxis, TA-GvHD, TTI)",
+  "Map product-specific risks (e.g. TRALI with FFP/platelets, TACO with red cells in elderly) to their mechanisms and prevention",
+  "Apply the Massive Haemorrhage Protocol — triggers, ratios, targets and complications (lethal triad, hypocalcaemia)",
+  "Explain the principles of intra-operative cell salvage (ICS), the wash cycle, and the practical steps to set it up and run it safely",
+  "List the absolute and relative contraindications to cell salvage and the situations where leucodepletion filters extend its use (obstetrics, malignancy)",
   "Interpret viscoelastic (ROTEM/TEG) tracings to direct goal-directed product replacement",
   "Diagnose DIC using the ISTH score and distinguish it from TTP/HUS and hepatic coagulopathy",
   "Quote the major trial evidence shaping practice (TRICC, TRISS, PROPPR, CRASH-2, CRYOSTAT-2, FIBRES)",
