@@ -262,6 +262,71 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="cell-salvage" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-operative Cell Salvage (ICS)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              ICS collects shed surgical blood, washes the red cells, and returns them to the patient — reducing or avoiding allogeneic transfusion. AAGBI/ATACCC, NICE and the Obstetric Anaesthetists' Association now recommend its use in any procedure where blood loss is expected to exceed 500–1000 mL (or 20% of estimated blood volume), and explicitly support its use in obstetrics and oncology with a leucodepletion filter.
+            </p>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Principles — what the machine actually does</h3>
+            <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground mb-4">
+              <li><strong>Collection</strong> — surgical blood is aspirated through a dual-lumen suction tip with anticoagulant (heparinised saline or ACD-A citrate) dripping at the tip. Vacuum is kept low (≤−150 mmHg, ideally −100 mmHg) to minimise mechanical haemolysis. The collected blood enters a filtered reservoir.</li>
+              <li><strong>Centrifugation</strong> — once ~500–1000 mL is in the reservoir, blood is pumped into a spinning centrifuge bowl (Latham bowl 125–225 mL, or continuous-flow disc). Red cells, being densest, layer outwards; plasma, platelets, anticoagulant, free Hb, activated complement and inflammatory cytokines layer centrally.</li>
+              <li><strong>Wash</strong> — 1–1.5 L of 0.9% saline is passed through the spinning bowl to elute the unwanted layer to a waste bag. Wash quality is the single most important determinant of returned product safety.</li>
+              <li><strong>Re-suspension & return</strong> — washed RBCs are pumped into a re-infusion bag at Hct ~50–70% suspended in saline. They are returned through a standard blood-giving set with a 40 µm screen filter; in obstetrics or malignancy a leucodepletion (LDF, ~40 nm) filter is added in series.</li>
+            </ol>
+
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">What you get back</p>
+                <p className="text-sm text-muted-foreground">Washed packed red cells, Hct 50–70%, ~225 mL per processed bowl. Functionally equivalent to (or better than) stored allogeneic RBCs — fresh, normal 2,3-DPG, normal K⁺.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">What you do NOT get back</p>
+                <p className="text-sm text-muted-foreground">No platelets, no fibrinogen, no clotting factors, no plasma proteins. After 1500–2000 mL of returned salvaged blood expect dilutional coagulopathy — replace FFP/cryo/platelets guided by ROTEM.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Setting it up — practical checklist</h3>
+            <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground mb-4">
+              <li>Trained operator present and a recent competency check (AAGBI 2018: ICS should not be run by an untrained user).</li>
+              <li>Patient consent — discuss with Jehovah's Witness patients pre-operatively and document which components of the circuit are acceptable (continuous-circuit ICS is usually accepted).</li>
+              <li>Disposables: collection reservoir, processing set (bowl size matched to anticipated loss), wash saline (1–3 L 0.9% NaCl), heparinised saline (30,000 IU UFH in 1 L 0.9% NaCl) or ACD-A, dual-lumen suction tubing, re-infusion bag, 40 µm filter ± leucodepletion filter.</li>
+              <li>Prime the reservoir with ~200 mL anticoagulant and run anticoagulant at ~60 mL per 100 mL anticipated blood loss (≈1 drop per second initially).</li>
+              <li>Use two suckers: <em>salvage</em> sucker (low vacuum, kept beneath blood level, no skimming of air) and a separate <em>standard</em> high-vacuum sucker for irrigation, contaminated fluid, or anything below.</li>
+              <li>Label the re-infusion bag with patient identifiers, time of processing, and a 4-hour expiry.</li>
+              <li>Document salvaged volume returned in the anaesthetic record; many trusts require a SHOT-style traceability entry equivalent to allogeneic transfusion.</li>
+            </ol>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Contraindications & cautions</h3>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Category</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Examples</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Workaround</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Topical agents not licensed for IV use</td><td>Betadine, chlorhexidine, hydrogen peroxide, topical thrombin, gelatin/collagen haemostats, bone cement, distilled water</td><td>Switch to standard sucker until field is irrigated and dry; avoid salvaging blood in contact with these agents</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bowel contents / pus</td><td>Faecal contamination, frank infection</td><td>Standard sucker only; resume ICS after washout if surgical field clean</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Malignancy</td><td>Tumour-bearing surgical field</td><td>Acceptable with leucodepletion filter (NICE IPG 144); also consider irradiation of salvaged blood</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetrics</td><td>Caesarean delivery, PPH</td><td>Acceptable with separate suction of amniotic fluid before salvage and a leucodepletion filter (OAA-AAGBI 2018)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sickle cell disease</td><td>HbSS</td><td>Avoid — washing/centrifugation may precipitate sickling. HbAS / trait is acceptable</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Other</td><td>Catecholamine-secreting tumours (phaeochromocytoma — wash adequately), thalassaemia (use shorter-stored cells)</td><td>Case-by-case discussion with haematology</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
+              <p className="text-sm font-semibold text-foreground mb-1">⚠️ Salvaged blood syndrome</p>
+              <p className="text-sm text-muted-foreground">
+                Re-infusion of inadequately washed salvaged blood can cause non-cardiogenic pulmonary oedema, coagulopathy, hypotension and DIC — driven by activated leucocytes, complement, free Hb and bioactive lipids. Mitigation: always complete the wash cycle, never bypass to deliver "raw" reservoir contents, and limit a single salvaged unit to ≤4 h once in the re-infusion bag.
+              </p>
+            </div>
+          </ExamSection>
+
           <ExamSection id="rotem" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Viscoelastic Testing (ROTEM/TEG)</h2>
             <div className="grid sm:grid-cols-2 gap-3">
