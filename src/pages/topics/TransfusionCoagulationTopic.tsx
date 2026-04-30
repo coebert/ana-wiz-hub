@@ -36,6 +36,15 @@ const workedExamples: WorkedExample[] = [
     answer:
       "Document continuous-circuit consent. Prime reservoir with heparinised saline, use dual-suction technique at low vacuum, process when ≥500 mL collected, return washed RBCs through a 40 µm (± leucodepletion) filter, and supplement with FFP/cryo/platelets once >1500 mL has been re-infused or ROTEM signals coagulopathy. Avoid topical haemostats, betadine and unlicensed irrigants in the salvage field.",
   },
+  {
+    title: "ISTH DIC scoring in septic shock",
+    scenario:
+      "Septic shock from urosepsis, day 2 ICU. Platelets 42 ×10⁹/L, PT prolonged 8 s above control, fibrinogen 0.9 g/L, D-dimer strongly raised, oozing from cannulae.",
+    working:
+      "ISTH points: platelets 42 → 2; PT prolongation >6 s → 2; fibrinogen <1 g/L → 1; D-dimer strong increase → 3. Total = 8 (≥5 = overt DIC). Confirm clinical bleeding + microvascular thrombosis suspicion. Differentiate from TTP (normal coag screen + ADAMTS13 <10%) and from hepatic coagulopathy (FVIII low in liver disease, preserved in DIC).",
+    answer:
+      "Overt DIC (score 8). Treat the cause (source control + appropriate antimicrobials). Replace to clinical targets: platelets >50, fibrinogen >1.5 g/L (cryo or fibrinogen concentrate), FFP if PT ratio >1.5 + bleeding. Avoid TXA unless ROTEM confirms hyperfibrinolysis (ML >15%).",
+  },
 ];
 
 const TransfusionCoagulationTopic = () => {
