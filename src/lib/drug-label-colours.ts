@@ -148,14 +148,45 @@ function pickReadableText(bg: RGB, candidates: string[], threshold = 4.5): strin
  * Resolve the page's `--card` and `--background` tokens at runtime so the
  * compositing maths matches what the user actually sees in light or dark mode.
  * Falls back to plausible defaults during SSR / first paint.
+ *
+ * The resolved RGB is memoised per CSS-variable raw-value string so we only
+ * call `getComputedStyle` (a forced layout read) once per theme change rather
+ * than once per palette entry per render. A `MutationObserver` on the root
+ * element's `class` / `style` attributes invalidates the memo when the theme
+ * toggles (e.g. `dark` class flip).
  */
+const surfaceRawCache = new Map<string, RGB>();
+let surfaceObserverInstalled = false;
+
+function installSurfaceObserver() {
+  if (surfaceObserverInstalled || typeof window === "undefined" || typeof MutationObserver === "undefined") return;
+  surfaceObserverInstalled = true;
+  try {
+    const obs = new MutationObserver(() => {
+      surfaceRawCache.clear();
+      styleCache.clear();
+      cachedSurfaceKey = null;
+      cachedSurfaceStyles = null;
+    });
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "style", "data-theme"] });
+  } catch {
+    /* ignore */
+  }
+}
+
 function getSurfaceRgb(varName: "--card" | "--background", fallback: RGB): RGB {
   if (typeof window === "undefined") return fallback;
   try {
+    installSurfaceObserver();
     const raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
     if (!raw) return fallback;
+    const cacheKey = `${varName}:${raw}`;
+    const hit = surfaceRawCache.get(cacheKey);
+    if (hit) return hit;
     const hsl = parseHsl(raw);
-    return hsl ? hslToRgb(hsl.h, hsl.s, hsl.l, 1) : fallback;
+    const rgb = hsl ? hslToRgb(hsl.h, hsl.s, hsl.l, 1) : fallback;
+    surfaceRawCache.set(cacheKey, rgb);
+    return rgb;
   } catch {
     return fallback;
   }
