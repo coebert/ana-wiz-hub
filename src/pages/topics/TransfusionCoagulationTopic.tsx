@@ -172,19 +172,51 @@ const TransfusionCoagulationTopic = () => {
 
           <ExamSection id="reactions" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transfusion Reactions</h2>
-            <div className="space-y-2">
+            <div className="space-y-2 mb-4">
               {[
-                { reaction: "Acute Haemolytic", incidence: "1:40,000", features: "ABO incompatibility. Fever, pain, haemoglobinuria, DIC, AKI. STOP transfusion immediately." },
-                { reaction: "Febrile Non-Haemolytic", incidence: "1:300", features: "Cytokine accumulation. Temp ↑ >1°C. Slow/stop, paracetamol, exclude haemolysis." },
-                { reaction: "TRALI", incidence: "1:5,000", features: "Non-cardiogenic pulmonary oedema within 6 h. Donor anti-HLA antibodies. Supportive — no diuretics." },
-                { reaction: "TACO", incidence: "1:100 (elderly/cardiac)", features: "Volume overload. Raised BNP/JVP. Diuretics, slow rate." },
-                { reaction: "Allergic/Anaphylactic", incidence: "Urticaria 1:100, anaphylaxis 1:40,000", features: "IgA deficiency → anaphylaxis with IgA-containing products. Adrenaline, washed products in future." },
+                { reaction: "Acute Haemolytic (AHTR)", incidence: "1:40,000", features: "ABO incompatibility (IgM). Fever, loin/cannula-site pain, haemoglobinuria, DIC, AKI, hypotension. STOP transfusion, send unit + post-transfusion bloods to lab, supportive ITU care, treat DIC and AKI." },
+                { reaction: "Delayed Haemolytic (DHTR)", incidence: "1:5,000", features: "Anamnestic IgG response to non-ABO antigens (Kidd, Duffy, Rh) 5–14 d post-transfusion. Falling Hb, jaundice, ↑LDH, +DAT. Supportive; flag for future cross-match." },
+                { reaction: "Febrile Non-Haemolytic (FNHTR)", incidence: "1:300", features: "Cytokine accumulation in stored unit / recipient leucocyte antibodies. Temp ↑ >1°C without other features. Slow or stop, paracetamol, exclude haemolysis." },
+                { reaction: "TRALI", incidence: "1:5,000–1:12,000", features: "Non-cardiogenic pulmonary oedema within 6 h of transfusion. Donor anti-HLA / anti-HNA antibodies (commonly multiparous female plasma) activate recipient neutrophils → capillary leak. Bilateral infiltrates, normal CVP/JVP, PaO₂/FiO₂ ≤300. Supportive; lung-protective ventilation. NO diuretics." },
+                { reaction: "TACO", incidence: "1:100 (elderly / cardiac)", features: "Volume overload within 6 h. Raised BNP/JVP, S3, response to diuresis. Slow rate, sit up, furosemide, oxygen. Now the most commonly reported transfusion-related death in SHOT." },
+                { reaction: "Allergic / Anaphylactic", incidence: "Urticaria 1:100, anaphylaxis 1:40,000", features: "Donor plasma proteins; severe in IgA-deficient recipients with anti-IgA. Adrenaline; washed or IgA-deficient products thereafter." },
+                { reaction: "TA-GvHD", incidence: "Rare but ≈100% fatal", features: "Donor T-cells engraft in immunosuppressed recipient (or shared HLA haplotype). Pancytopenia, rash, deranged LFTs 1–4 wk post-transfusion. Prevent by gamma-irradiating cellular components for at-risk patients (Hodgkin's, neonates, intra-uterine, fludarabine, congenital T-cell defects)." },
+                { reaction: "Transfusion-Transmitted Infection (TTI)", incidence: "HIV ~1:6.5M, HBV ~1:1.3M, HCV ~1:28M (UK)", features: "Bacterial sepsis remains the highest infectious risk and is highest in platelets (room-temperature storage). Variant CJD risk → UK leucodepletion + male-donor FFP/imported plasma." },
+                { reaction: "Post-Transfusion Purpura", incidence: "Rare", features: "Sudden severe thrombocytopenia 5–12 d post-transfusion, usually HPA-1a negative women. Treat with IVIG; avoid platelet transfusion (ineffective)." },
               ].map((r) => (
                 <div key={r.reaction} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{r.reaction} <span className="font-normal text-xs text-muted-foreground">({r.incidence})</span></p>
                   <p className="text-sm text-muted-foreground mt-1">{r.features}</p>
                 </div>
               ))}
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Product-Specific Risks</h3>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Product</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Highest-risk reactions</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Why</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Packed red cells</td><td>TACO, AHTR, DHTR, hyperkalaemia, iron overload (chronic)</td><td>Largest volume per unit; ABO/Rh antigen exposure; storage-lesion K⁺; 250 mg Fe per unit</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">FFP</td><td><strong>TRALI</strong>, anaphylaxis, TACO, citrate toxicity</td><td>High plasma volume rich in donor anti-HLA/HNA antibodies; IgA content; citrate anticoagulant chelates Ca²⁺. UK uses male-donor or solvent-detergent (Octaplas®) FFP to mitigate TRALI</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cryoprecipitate</td><td>Allergic, TRALI (lower than FFP), TTI</td><td>Pooled from 5 donors → higher cumulative exposure. No solvent-detergent equivalent in UK adult use</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Platelets</td><td><strong>Bacterial sepsis</strong>, TRALI, FNHTR, allergic, refractoriness</td><td>Stored at 22°C → bacterial growth (leading infectious transfusion risk). Apheresis plasma carrier shares TRALI risk</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCC</td><td>Thrombosis (DVT/PE/MI), DIC, heparin-induced thrombocytopenia (heparin in some preparations)</td><td>Concentrated procoagulant load; risk rises with repeated dosing</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Fibrinogen concentrate</td><td>Thrombosis (low), allergic (very low)</td><td>Pasteurised, virally inactivated; no ABO matching needed</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
+              <p className="text-sm font-semibold text-foreground mb-1">⚠️ TRALI vs TACO at the bedside</p>
+              <p className="text-sm text-muted-foreground">
+                Both present with hypoxia and bilateral infiltrates within 6 h of transfusion. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy.
+              </p>
             </div>
           </ExamSection>
 
