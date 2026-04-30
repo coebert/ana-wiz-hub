@@ -187,7 +187,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "acute-pancreatitis", title: "Acute Severe Pancreatitis", description: "Atlanta classification, Glasgow score, fluid resuscitation, step-up necrosectomy, tertiary referral", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "toxicology", title: "Toxicology & Poisoning", description: "Paracetamol, opioid, TCA overdose, LAST, antidotes, toxidromes, lipid emulsion", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Haematology
-  { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive transfusion protocols, DIC, TEG/ROTEM, blood products", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
+  { id: "transfusion-coagulation", title: "Transfusion & Coagulation", description: "Massive haemorrhage protocols, blood components & lifespans, transfusion reactions (TRALI/TACO), cell salvage, DIC, TEG/ROTEM", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   // Special Populations
   { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },

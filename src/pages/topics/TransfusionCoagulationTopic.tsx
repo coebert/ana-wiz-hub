@@ -6,9 +6,12 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
-  "Describe the composition, dose, and storage of red cells, FFP, cryoprecipitate, platelets, fibrinogen concentrate and PCC",
-  "Recognise and manage the major transfusion reactions (acute haemolytic, FNHTR, TRALI, TACO, anaphylaxis)",
-  "Apply the Massive Transfusion Protocol — triggers, ratios, targets and complications (lethal triad, hypocalcaemia)",
+  "Describe the composition, shelf-life, donor-to-recipient survival and storage requirements of each blood component",
+  "Recognise and manage the major transfusion reactions (acute haemolytic, FNHTR, TRALI, TACO, anaphylaxis, TA-GvHD, TTI)",
+  "Map product-specific risks (e.g. TRALI with FFP/platelets, TACO with red cells in elderly) to their mechanisms and prevention",
+  "Apply the Massive Haemorrhage Protocol — triggers, ratios, targets and complications (lethal triad, hypocalcaemia)",
+  "Explain the principles of intra-operative cell salvage (ICS), the wash cycle, and the practical steps to set it up and run it safely",
+  "List the absolute and relative contraindications to cell salvage and the situations where leucodepletion filters extend its use (obstetrics, malignancy)",
   "Interpret viscoelastic (ROTEM/TEG) tracings to direct goal-directed product replacement",
   "Diagnose DIC using the ISTH score and distinguish it from TTP/HUS and hepatic coagulopathy",
   "Quote the major trial evidence shaping practice (TRICC, TRISS, PROPPR, CRASH-2, CRYOSTAT-2, FIBRES)",
@@ -23,6 +26,15 @@ const workedExamples: WorkedExample[] = [
       "Activate MHP: 1:1:1 (PRBC:FFP:platelets) packs. Give TXA 1 g IV bolus + 1 g over 8 h (CRASH-2: within 3 h reduces mortality). Address lethal triad: warm fluids/forced-air warming → temperature; correct acidosis by source control + perfusion; coagulopathy by 1:1:1 + cryo or fibrinogen concentrate to keep fibrinogen >1.5–2 g/L. Citrate-induced hypocalcaemia: 10 mL CaCl₂ 10% per 4 units PRBC and whenever iCa²⁺ <1.0. Damage control resuscitation — permissive hypotension (SBP 80–90) until surgical/IR control. Send ROTEM to switch from empiric ratios to goal-directed.",
     answer:
       "Activate MHP, TXA within 3 h, 1:1:1 ratio, calcium replacement, active warming, permissive hypotension, urgent damage-control surgery/IR. Transition to ROTEM-guided once available.",
+  },
+  {
+    title: "Setting up cell salvage for a redo aortic case",
+    scenario:
+      "A 68-year-old Jehovah's Witness is listed for redo open AAA repair. She declines allogeneic blood but accepts intra-operative cell salvage if the circuit remains in continuity with her body. How do you set up and run cell salvage for this case?",
+    working:
+      "Confirm consent and document the agreed components (red cells via continuous circuit). Two suction lines: a low-vacuum (≤−150 mmHg) salvage suction kept on the surgical field below blood level, and a separate standard high-vacuum sucker for irrigation/contaminants. Anticoagulate the collection reservoir — heparinised saline (30,000 IU in 1 L 0.9% NaCl) primed at 60 mL per 100 mL anticipated blood, dripping into the suction tubing tip; citrate (ACD-A) is the alternative when systemic heparin is contraindicated. When the reservoir holds ~500–1000 mL, the wash cycle starts: blood is centrifuged in a spinning bell, plasma + heparin + free Hb + cytokines are decanted to waste, and packed RBCs are washed with 1–1.5 L saline before being suspended in 0.9% saline at Hct ~50–70%. The processed unit is returned through a standard blood-giving set with a 40 µm filter; in obstetrics or malignancy add a leucodepletion filter to remove amniotic/tumour debris. Returned blood has no platelets, fibrinogen or clotting factors — anticipate dilutional coagulopathy after 1500–2000 mL salvaged volume and replace with FFP/cryo/platelets guided by ROTEM.",
+    answer:
+      "Document continuous-circuit consent. Prime reservoir with heparinised saline, use dual-suction technique at low vacuum, process when ≥500 mL collected, return washed RBCs through a 40 µm (± leucodepletion) filter, and supplement with FFP/cryo/platelets once >1500 mL has been re-infused or ROTEM signals coagulopathy. Avoid topical haemostats, betadine and unlicensed irrigants in the salvage field.",
   },
   {
     title: "ISTH DIC scoring in septic shock",
@@ -55,7 +67,13 @@ const TransfusionCoagulationTopic = () => {
       }}
       keyPoints={[
         "Restrictive transfusion (Hb 70 g/L trigger) is safe in most ICU patients — TRICC, TRISS",
-        "TRALI: non-cardiogenic pulmonary oedema within 6h — do NOT give diuretics (unlike TACO)",
+        "Red cells: 35-day shelf life at 2–6°C; storage lesion (↓2,3-DPG, ↑K⁺, ↓pH) reverses over 24 h in the recipient",
+        "Platelets: only 5–7 days at 20–24°C with agitation — bacterial contamination is the leading infectious risk",
+        "FFP/cryo: 2 years at −30°C; once thawed, use within 24 h (FFP) or 4 h (cryo, room temperature)",
+        "TRALI: leading cause of transfusion-related death; strongly associated with FFP and apheresis platelets from multiparous donors (anti-HLA/HNA antibodies). UK male-donor FFP policy has reduced incidence ~10-fold",
+        "TRALI vs TACO: both cause pulmonary oedema within 6 h — TRALI has normal CVP/JVP and worsens with diuretics; TACO improves with diuresis",
+        "Cell salvage washes shed blood, suspends RBCs in saline (Hct ~50–70%), and removes plasma, platelets, heparin, free Hb and most cytokines — returned blood has NO clotting factors or platelets",
+        "ICS contraindications are largely relative — sickle cell disease, contamination with iodine/topical haemostats, and pharmacological agents not licensed for IV use; obstetric and oncological use is now supported with a leucodepletion filter (NICE TA/OAA-AAGBI)",
         "ROTEM/TEG enables goal-directed transfusion — FIBTEM guides fibrinogen, EXTEM guides FFP/platelets",
         "TXA within 3 hours of trauma reduces mortality (CRASH-2)",
         "Massive transfusion: hypocalcaemia is the most dangerous metabolic complication — give CaCl₂ early",
@@ -98,6 +116,41 @@ const TransfusionCoagulationTopic = () => {
             </div>
           </ExamSection>
 
+          <ExamSection id="lifespans" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Component Lifespans & In-vivo Survival</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Each component has both a <em>shelf-life</em> (how long it can be stored before issue) and an <em>in-vivo survival</em> (how long the transfused component continues to function in the recipient). The two are not the same — a unit of red cells can be stored for 35 days but typical post-transfusion 24-h recovery is ~75% with a circulating half-life close to that of native RBCs.
+            </p>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Component</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Storage</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Shelf-life</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Once issued / thawed</th>
+                    <th className="text-left py-2 text-foreground font-semibold">In-vivo survival</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Packed red cells (SAG-M)</td><td>2–6°C</td><td>35 days</td><td>Use within 4 h of leaving fridge</td><td>~75% recovery at 24 h; mean survival ≈ 58 d</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Platelets (pooled / apheresis)</td><td>20–24°C with continuous agitation</td><td>5–7 days</td><td>Transfuse over 30 min</td><td>Functional 3–5 days; CCI at 1 h is the best functional measure</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fresh frozen plasma (FFP)</td><td>−25°C or colder</td><td>2 years</td><td>Thaw 20–30 min; use within 24 h (4°C)</td><td>Factor levels rise ~10–20% per 15 mL/kg; FVII (t½ ~6 h) limits duration</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cryoprecipitate</td><td>−25°C or colder</td><td>2 years</td><td>Thaw 20 min; use within 4 h at room T</td><td>Fibrinogen t½ ~3–5 days; FVIII t½ ~12 h</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Granulocytes</td><td>20–24°C, no agitation</td><td>24 h (must be irradiated)</td><td>Transfuse ASAP</td><td>Hours — no functional persistence beyond ~24 h</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCC (4-factor)</td><td>2–25°C lyophilised</td><td>~3 years</td><td>Reconstitute, use immediately</td><td>FIX t½ ~24 h dictates redosing; recheck INR at 30 min and 6–8 h</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Fibrinogen concentrate</td><td>2–25°C lyophilised</td><td>5 years</td><td>~10 min reconstitution</td><td>Fibrinogen t½ ~3–5 days</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="p-3 rounded-lg border border-border bg-secondary/30">
+              <p className="text-sm font-semibold text-foreground mb-1">Storage lesion (red cells)</p>
+              <p className="text-sm text-muted-foreground">
+                Progressive ↓2,3-DPG (left-shifts the OHDC for ~24 h post-transfusion until regenerated), ↑extracellular K⁺ (up to 30–40 mmol/L by day 35 — clinically relevant in massive/neonatal/cardiac transfusion), ↑lactate, ↓pH (~6.5), microaggregate formation, and accumulation of bioactive lipids implicated in TRALI. The ABLE and INFORM RCTs found no clinical benefit from preferentially using "fresh" red cells.
+              </p>
+            </div>
+          </ExamSection>
+
           <ExamSection id="cryo-vs-fib" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Cryoprecipitate vs Fibrinogen Concentrate</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -119,19 +172,51 @@ const TransfusionCoagulationTopic = () => {
 
           <ExamSection id="reactions" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Transfusion Reactions</h2>
-            <div className="space-y-2">
+            <div className="space-y-2 mb-4">
               {[
-                { reaction: "Acute Haemolytic", incidence: "1:40,000", features: "ABO incompatibility. Fever, pain, haemoglobinuria, DIC, AKI. STOP transfusion immediately." },
-                { reaction: "Febrile Non-Haemolytic", incidence: "1:300", features: "Cytokine accumulation. Temp ↑ >1°C. Slow/stop, paracetamol, exclude haemolysis." },
-                { reaction: "TRALI", incidence: "1:5,000", features: "Non-cardiogenic pulmonary oedema within 6 h. Donor anti-HLA antibodies. Supportive — no diuretics." },
-                { reaction: "TACO", incidence: "1:100 (elderly/cardiac)", features: "Volume overload. Raised BNP/JVP. Diuretics, slow rate." },
-                { reaction: "Allergic/Anaphylactic", incidence: "Urticaria 1:100, anaphylaxis 1:40,000", features: "IgA deficiency → anaphylaxis with IgA-containing products. Adrenaline, washed products in future." },
+                { reaction: "Acute Haemolytic (AHTR)", incidence: "1:40,000", features: "ABO incompatibility (IgM). Fever, loin/cannula-site pain, haemoglobinuria, DIC, AKI, hypotension. STOP transfusion, send unit + post-transfusion bloods to lab, supportive ITU care, treat DIC and AKI." },
+                { reaction: "Delayed Haemolytic (DHTR)", incidence: "1:5,000", features: "Anamnestic IgG response to non-ABO antigens (Kidd, Duffy, Rh) 5–14 d post-transfusion. Falling Hb, jaundice, ↑LDH, +DAT. Supportive; flag for future cross-match." },
+                { reaction: "Febrile Non-Haemolytic (FNHTR)", incidence: "1:300", features: "Cytokine accumulation in stored unit / recipient leucocyte antibodies. Temp ↑ >1°C without other features. Slow or stop, paracetamol, exclude haemolysis." },
+                { reaction: "TRALI", incidence: "1:5,000–1:12,000", features: "Non-cardiogenic pulmonary oedema within 6 h of transfusion. Donor anti-HLA / anti-HNA antibodies (commonly multiparous female plasma) activate recipient neutrophils → capillary leak. Bilateral infiltrates, normal CVP/JVP, PaO₂/FiO₂ ≤300. Supportive; lung-protective ventilation. NO diuretics." },
+                { reaction: "TACO", incidence: "1:100 (elderly / cardiac)", features: "Volume overload within 6 h. Raised BNP/JVP, S3, response to diuresis. Slow rate, sit up, furosemide, oxygen. Now the most commonly reported transfusion-related death in SHOT." },
+                { reaction: "Allergic / Anaphylactic", incidence: "Urticaria 1:100, anaphylaxis 1:40,000", features: "Donor plasma proteins; severe in IgA-deficient recipients with anti-IgA. Adrenaline; washed or IgA-deficient products thereafter." },
+                { reaction: "TA-GvHD", incidence: "Rare but ≈100% fatal", features: "Donor T-cells engraft in immunosuppressed recipient (or shared HLA haplotype). Pancytopenia, rash, deranged LFTs 1–4 wk post-transfusion. Prevent by gamma-irradiating cellular components for at-risk patients (Hodgkin's, neonates, intra-uterine, fludarabine, congenital T-cell defects)." },
+                { reaction: "Transfusion-Transmitted Infection (TTI)", incidence: "HIV ~1:6.5M, HBV ~1:1.3M, HCV ~1:28M (UK)", features: "Bacterial sepsis remains the highest infectious risk and is highest in platelets (room-temperature storage). Variant CJD risk → UK leucodepletion + male-donor FFP/imported plasma." },
+                { reaction: "Post-Transfusion Purpura", incidence: "Rare", features: "Sudden severe thrombocytopenia 5–12 d post-transfusion, usually HPA-1a negative women. Treat with IVIG; avoid platelet transfusion (ineffective)." },
               ].map((r) => (
                 <div key={r.reaction} className="p-3 rounded-lg border border-border">
                   <p className="font-semibold text-foreground text-sm">{r.reaction} <span className="font-normal text-xs text-muted-foreground">({r.incidence})</span></p>
                   <p className="text-sm text-muted-foreground mt-1">{r.features}</p>
                 </div>
               ))}
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Product-Specific Risks</h3>
+            <div className="overflow-x-auto mb-3">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Product</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Highest-risk reactions</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Why</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Packed red cells</td><td>TACO, AHTR, DHTR, hyperkalaemia, iron overload (chronic)</td><td>Largest volume per unit; ABO/Rh antigen exposure; storage-lesion K⁺; 250 mg Fe per unit</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">FFP</td><td><strong>TRALI</strong>, anaphylaxis, TACO, citrate toxicity</td><td>High plasma volume rich in donor anti-HLA/HNA antibodies; IgA content; citrate anticoagulant chelates Ca²⁺. UK uses male-donor or solvent-detergent (Octaplas®) FFP to mitigate TRALI</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cryoprecipitate</td><td>Allergic, TRALI (lower than FFP), TTI</td><td>Pooled from 5 donors → higher cumulative exposure. No solvent-detergent equivalent in UK adult use</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Platelets</td><td><strong>Bacterial sepsis</strong>, TRALI, FNHTR, allergic, refractoriness</td><td>Stored at 22°C → bacterial growth (leading infectious transfusion risk). Apheresis plasma carrier shares TRALI risk</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">PCC</td><td>Thrombosis (DVT/PE/MI), DIC, heparin-induced thrombocytopenia (heparin in some preparations)</td><td>Concentrated procoagulant load; risk rises with repeated dosing</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Fibrinogen concentrate</td><td>Thrombosis (low), allergic (very low)</td><td>Pasteurised, virally inactivated; no ABO matching needed</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
+              <p className="text-sm font-semibold text-foreground mb-1">⚠️ TRALI vs TACO at the bedside</p>
+              <p className="text-sm text-muted-foreground">
+                Both present with hypoxia and bilateral infiltrates within 6 h of transfusion. <strong>TRALI</strong>: normal CVP, no S3, BNP normal, fever common, transient leucopenia, worsens with fluid challenge — supportive ventilation only. <strong>TACO</strong>: raised CVP/JVP, S3, BNP &gt;1.5× baseline, hypertension, responds to diuresis. SHOT consistently reports TACO as the leading cause of transfusion-related death in the UK; TRALI incidence has fallen ~10-fold since the male-donor FFP policy.
+              </p>
             </div>
           </ExamSection>
 
@@ -173,6 +258,71 @@ const TransfusionCoagulationTopic = () => {
               <p className="text-sm font-semibold text-foreground mb-1">⚠️ The Lethal Triad</p>
               <p className="text-sm text-muted-foreground">
                 Hypothermia + acidosis + coagulopathy form a self-perpetuating cycle. Damage control resuscitation: permissive hypotension (SBP 80–90), minimise crystalloid, early blood products, TXA &lt;3 h, correct hypothermia and Ca²⁺, expedite definitive haemorrhage control.
+              </p>
+            </div>
+          </ExamSection>
+
+          <ExamSection id="cell-salvage" exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 4.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-operative Cell Salvage (ICS)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              ICS collects shed surgical blood, washes the red cells, and returns them to the patient — reducing or avoiding allogeneic transfusion. AAGBI/ATACCC, NICE and the Obstetric Anaesthetists' Association now recommend its use in any procedure where blood loss is expected to exceed 500–1000 mL (or 20% of estimated blood volume), and explicitly support its use in obstetrics and oncology with a leucodepletion filter.
+            </p>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Principles — what the machine actually does</h3>
+            <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground mb-4">
+              <li><strong>Collection</strong> — surgical blood is aspirated through a dual-lumen suction tip with anticoagulant (heparinised saline or ACD-A citrate) dripping at the tip. Vacuum is kept low (≤−150 mmHg, ideally −100 mmHg) to minimise mechanical haemolysis. The collected blood enters a filtered reservoir.</li>
+              <li><strong>Centrifugation</strong> — once ~500–1000 mL is in the reservoir, blood is pumped into a spinning centrifuge bowl (Latham bowl 125–225 mL, or continuous-flow disc). Red cells, being densest, layer outwards; plasma, platelets, anticoagulant, free Hb, activated complement and inflammatory cytokines layer centrally.</li>
+              <li><strong>Wash</strong> — 1–1.5 L of 0.9% saline is passed through the spinning bowl to elute the unwanted layer to a waste bag. Wash quality is the single most important determinant of returned product safety.</li>
+              <li><strong>Re-suspension & return</strong> — washed RBCs are pumped into a re-infusion bag at Hct ~50–70% suspended in saline. They are returned through a standard blood-giving set with a 40 µm screen filter; in obstetrics or malignancy a leucodepletion (LDF, ~40 nm) filter is added in series.</li>
+            </ol>
+
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">What you get back</p>
+                <p className="text-sm text-muted-foreground">Washed packed red cells, Hct 50–70%, ~225 mL per processed bowl. Functionally equivalent to (or better than) stored allogeneic RBCs — fresh, normal 2,3-DPG, normal K⁺.</p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">What you do NOT get back</p>
+                <p className="text-sm text-muted-foreground">No platelets, no fibrinogen, no clotting factors, no plasma proteins. After 1500–2000 mL of returned salvaged blood expect dilutional coagulopathy — replace FFP/cryo/platelets guided by ROTEM.</p>
+              </div>
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Setting it up — practical checklist</h3>
+            <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground mb-4">
+              <li>Trained operator present and a recent competency check (AAGBI 2018: ICS should not be run by an untrained user).</li>
+              <li>Patient consent — discuss with Jehovah's Witness patients pre-operatively and document which components of the circuit are acceptable (continuous-circuit ICS is usually accepted).</li>
+              <li>Disposables: collection reservoir, processing set (bowl size matched to anticipated loss), wash saline (1–3 L 0.9% NaCl), heparinised saline (30,000 IU UFH in 1 L 0.9% NaCl) or ACD-A, dual-lumen suction tubing, re-infusion bag, 40 µm filter ± leucodepletion filter.</li>
+              <li>Prime the reservoir with ~200 mL anticoagulant and run anticoagulant at ~60 mL per 100 mL anticipated blood loss (≈1 drop per second initially).</li>
+              <li>Use two suckers: <em>salvage</em> sucker (low vacuum, kept beneath blood level, no skimming of air) and a separate <em>standard</em> high-vacuum sucker for irrigation, contaminated fluid, or anything below.</li>
+              <li>Label the re-infusion bag with patient identifiers, time of processing, and a 4-hour expiry.</li>
+              <li>Document salvaged volume returned in the anaesthetic record; many trusts require a SHOT-style traceability entry equivalent to allogeneic transfusion.</li>
+            </ol>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mb-2">Contraindications & cautions</h3>
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Category</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Examples</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Workaround</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Topical agents not licensed for IV use</td><td>Betadine, chlorhexidine, hydrogen peroxide, topical thrombin, gelatin/collagen haemostats, bone cement, distilled water</td><td>Switch to standard sucker until field is irrigated and dry; avoid salvaging blood in contact with these agents</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Bowel contents / pus</td><td>Faecal contamination, frank infection</td><td>Standard sucker only; resume ICS after washout if surgical field clean</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Malignancy</td><td>Tumour-bearing surgical field</td><td>Acceptable with leucodepletion filter (NICE IPG 144); also consider irradiation of salvaged blood</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetrics</td><td>Caesarean delivery, PPH</td><td>Acceptable with separate suction of amniotic fluid before salvage and a leucodepletion filter (OAA-AAGBI 2018)</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Sickle cell disease</td><td>HbSS</td><td>Avoid — washing/centrifugation may precipitate sickling. HbAS / trait is acceptable</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Other</td><td>Catecholamine-secreting tumours (phaeochromocytoma — wash adequately), thalassaemia (use shorter-stored cells)</td><td>Case-by-case discussion with haematology</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="p-3 rounded-lg bg-secondary/50 border border-destructive/30">
+              <p className="text-sm font-semibold text-foreground mb-1">⚠️ Salvaged blood syndrome</p>
+              <p className="text-sm text-muted-foreground">
+                Re-infusion of inadequately washed salvaged blood can cause non-cardiogenic pulmonary oedema, coagulopathy, hypotension and DIC — driven by activated leucocytes, complement, free Hb and bioactive lipids. Mitigation: always complete the wash cycle, never bypass to deliver "raw" reservoir contents, and limit a single salvaged unit to ≤4 h once in the re-infusion bag.
               </p>
             </div>
           </ExamSection>
