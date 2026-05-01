@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, Suspense, useCallback, useEffect } from "react";
+import { useState, useRef, useMemo, Suspense, useCallback, useEffect, type ReactNode } from "react";
 import { Canvas, useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -426,6 +426,98 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
   return null;
 }
 
+// ── Animated peel wrapper ─────────────────────────────────────────────────────
+
+/**
+ * Wraps a layer's meshes and animates them in/out as the dissect stepper moves.
+ *
+ *  - When `visible` flips false the group stays mounted for `duration` ms while
+ *    its material opacity tweens to 0 and it scales outward (`peelScale`),
+ *    giving the impression of the layer being lifted off.
+ *  - When `visible` flips true the group fades up from 0 → original opacity and
+ *    settles back to scale 1.
+ *
+ * Original per-material opacity is captured on first sight so we don't clobber
+ * intentionally translucent layers (e.g. pericardium at opacity 0.18).
+ */
+const PEEL_DURATION = 0.55; // seconds
+
+function FadeGroup({
+  visible,
+  children,
+  peelScale = 1.06,
+  duration = PEEL_DURATION,
+}: {
+  visible: boolean;
+  children: ReactNode;
+  peelScale?: number;
+  duration?: number;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+  const [mounted, setMounted] = useState(visible);
+  const progress = useRef(visible ? 1 : 0); // 0 = fully hidden, 1 = fully visible
+  const baseOpacity = useRef<WeakMap<THREE.Material, number>>(new WeakMap());
+  const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (visible) {
+      if (unmountTimer.current) {
+        clearTimeout(unmountTimer.current);
+        unmountTimer.current = null;
+      }
+      setMounted(true);
+    } else if (mounted) {
+      // Defer unmount until the fade-out completes.
+      unmountTimer.current = setTimeout(() => setMounted(false), duration * 1000 + 30);
+    }
+    return () => {
+      if (unmountTimer.current && visible) {
+        clearTimeout(unmountTimer.current);
+        unmountTimer.current = null;
+      }
+    };
+  }, [visible, mounted, duration]);
+
+  useFrame((_, dt) => {
+    const g = groupRef.current;
+    if (!g) return;
+    const target = visible ? 1 : 0;
+    // Ease toward target. Rate chosen so 0→1 completes in ~`duration` seconds.
+    const rate = Math.min(1, dt / duration) * 4;
+    progress.current = THREE.MathUtils.lerp(progress.current, target, rate);
+    if (Math.abs(progress.current - target) < 0.002) progress.current = target;
+
+    // Peel: hidden layers float outward slightly as they fade.
+    const s = THREE.MathUtils.lerp(peelScale, 1, progress.current);
+    g.scale.setScalar(s);
+
+    // Apply opacity multiplier across every material in the subtree.
+    g.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      for (const m of mats) {
+        const mat = m as THREE.Material & { opacity: number; transparent: boolean };
+        if (!mat) continue;
+        let base = baseOpacity.current.get(mat);
+        if (base === undefined) {
+          base = mat.opacity ?? 1;
+          baseOpacity.current.set(mat, base);
+        }
+        mat.transparent = true;
+        mat.opacity = base * progress.current;
+        // Fully hide depthWrite while transparent so we don't punch holes.
+        if ("depthWrite" in mat && progress.current < 0.99) {
+          (mat as THREE.Material & { depthWrite: boolean }).depthWrite = false;
+        }
+      }
+    });
+  });
+
+  if (!mounted) return null;
+  return <group ref={groupRef}>{children}</group>;
+}
+
 // ── Dissect-mode layers ───────────────────────────────────────────────────────
 
 export type DissectLayer =
@@ -518,7 +610,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <ClipController active={cutaway} />
 
       {/* ── Pericardial sac (translucent outer shell) ── */}
-      {layers.pericardium && (
+      <FadeGroup visible={layers.pericardium} peelScale={1.12}>
         <mesh scale={[1.18, 1.12, 1.18]}>
           <sphereGeometry args={[1.1, 24, 24]} />
           <meshPhysicalMaterial
@@ -527,7 +619,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             depthWrite={false} clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {useGltf && layers.epicardium && (
         <Suspense fallback={null}>
@@ -537,7 +629,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      {layers.epicardium && (
+      <FadeGroup visible={layers.epicardium} peelScale={1.08}>
         <mesh geometry={heartGeo}>
           <meshPhysicalMaterial
             color={myoColor} roughness={0.7} metalness={0.02}
@@ -547,10 +639,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clearcoat={0.15} clearcoatRoughness={0.6}
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
-      {layers.myocardium && (
+      <FadeGroup visible={layers.myocardium} peelScale={1.05}>
         <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
           <meshPhysicalMaterial
             color="#7a2828" roughness={0.78}
@@ -559,10 +651,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Endocardium (inner surface) ── */}
-      {layers.chambers && (
+      <FadeGroup visible={layers.chambers} peelScale={1.03}>
         <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
           <meshPhysicalMaterial
             color={endoColor} roughness={0.8}
@@ -571,16 +663,16 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      {layers.epicardium && <>
+      <FadeGroup visible={layers.epicardium} peelScale={1.06}>
         <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
         <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
-      </>}
+      </FadeGroup>
 
       {/* ── Chambers ── */}
-      {layers.chambers && <>
+      <FadeGroup visible={layers.chambers} peelScale={1.04}>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -635,7 +727,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
           side={THREE.DoubleSide} />
       </mesh>
-      </>}
+      </FadeGroup>
 
       </>}
 
@@ -670,7 +762,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
-      {layers.coronaries && <>
+      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5}>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
@@ -721,10 +813,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel
         points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
         color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
-      </>}
+      </FadeGroup>
 
       {/* ── Valves ── */}
-      {layers.valves && <>
+      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5}>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
@@ -733,10 +825,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         color={structures.aortic.color} active={on("aortic")} onClick={pick("aortic")} clip={clip} innerR={0.08} />
       <Valve position={[0.12, 0.85, 0.32]} rotation={[0.35, 0.15, 0]}
         color={structures.pulmonary.color} active={on("pulmonary")} onClick={pick("pulmonary")} clip={clip} innerR={0.08} />
-      </>}
+      </FadeGroup>
 
       {/* ── Conduction System ── */}
-      {layers.conduction && <>
+      <FadeGroup visible={layers.conduction} peelScale={1.02} duration={0.5}>
       <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
@@ -760,7 +852,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
           ))}
         </>
       )}
-      </>}
+      </FadeGroup>
 
       {/* ── Cutaway interior details ── */}
       {(cutaway || layers.internals) && (
