@@ -112,7 +112,7 @@ function preparePayload(scene: THREE.Group, isMobile: boolean) {
         // Halve max anisotropy on mobile to ease texture sampling cost
         const maps: (keyof THREE.MeshStandardMaterial)[] = ["map", "normalMap", "roughnessMap", "metalnessMap"];
         for (const k of maps) {
-          const tex = (m as Record<string, unknown>)[k as string] as THREE.Texture | undefined;
+          const tex = (m as unknown as Record<string, unknown>)[k as string] as THREE.Texture | undefined;
           if (tex && "anisotropy" in tex) tex.anisotropy = Math.min(tex.anisotropy ?? 1, 4);
         }
       }
