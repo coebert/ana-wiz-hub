@@ -3,6 +3,7 @@ import { Canvas, useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { GltfHeartModel, useHeartAssetAvailable, probeHeartAsset } from "./GltfHeartModel";
 
 // ── Structure data ────────────────────────────────────────────────────────────
 
