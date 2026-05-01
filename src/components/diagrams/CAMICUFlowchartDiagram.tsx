@@ -323,14 +323,18 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               <defs>
-                <marker id="cam-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="hsl(var(--muted-foreground))" />
+                {/* markerUnits=strokeWidth → arrowheads scale with the path's stroke width,
+                    which in turn scales with the SVG when it's resized. This keeps markers
+                    visually proportional at every viewport. */}
+                <marker id="cam-arr" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--muted-foreground))" />
                 </marker>
-                <marker id="cam-arr-danger" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="hsl(var(--destructive))" />
+                <marker id="cam-arr-danger" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--destructive))" />
                 </marker>
               </defs>
-            </svg>
+              </svg>
+            </div>
           </div>
 
           <div className="rounded-md p-3 bg-secondary/30 border border-border text-xs">
