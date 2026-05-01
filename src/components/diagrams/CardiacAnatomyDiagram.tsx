@@ -449,7 +449,7 @@ function FadeGroup({
   duration = PEEL_DURATION,
 }: {
   visible: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   peelScale?: number;
   duration?: number;
 }) {
