@@ -921,7 +921,7 @@ const CardiacAnatomyDiagram = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
-            className="flex-shrink-0 w-full sm:w-[380px] h-[420px] rounded-lg border border-border overflow-hidden"
+            className="flex-shrink-0 w-full sm:w-[380px] h-[300px] sm:h-[420px] rounded-lg border border-border overflow-hidden touch-none"
             style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
             <Canvas
