@@ -189,7 +189,7 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               {/* If F3 yes → POSITIVE */}
-              <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" markerEnd="url(#cam-arr-danger)" />
               <text x="475" y="262" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
 
               {/* If F3 no → check F4 */}
