@@ -887,8 +887,13 @@ const CardiacAnatomyDiagram = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [autoFocus, setAutoFocus] = useState(true);
   const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
+  const isMobile = useIsMobile();
+  const heartGlbAvailable = useHeartAssetAvailable();
   const info = structures[selected];
   const categoryLabel = info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve";
+
+  // Kick off the HEAD probe once on mount
+  useEffect(() => { void probeHeartAsset(); }, []);
 
   // When the user picks a structure, surface its category and pause auto-rotate
   // so the camera fly-to lands on a stable view.
