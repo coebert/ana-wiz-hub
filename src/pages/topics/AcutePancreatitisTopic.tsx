@@ -168,6 +168,20 @@ const AcutePancreatitisTopic = () => {
           <SeverePancreatitisCTDiagram />
         </DiagramSection>
 
+        <DiagramSection
+          title="Evolution of Necrosis & Fluid Collections Over Time"
+          intro={
+            <>
+              The same anatomy looks radically different on day 1 versus week 6. The Atlanta 2012 classification
+              names each morphological stage and dictates when intervention is safe — the cardinal rule is{" "}
+              <em>hands-off in the first 4 weeks</em> until a wall has formed. Step through the timeline to see how
+              interstitial oedema evolves to necrosis, then to walled-off necrosis amenable to step-up drainage.
+            </>
+          }
+        >
+          <PancreatitisEvolutionTimeline />
+        </DiagramSection>
+
         {/* Causes */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Causes — "I GET SMASHED"</h2>
