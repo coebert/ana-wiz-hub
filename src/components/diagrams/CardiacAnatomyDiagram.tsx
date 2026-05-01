@@ -589,7 +589,7 @@ export const DISSECT_STEPS: { id: DissectLayer; label: string; teaching: string;
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers, emphasis }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
@@ -598,7 +598,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
   focusCategory: "all" | "coronary" | "conduction" | "valve";
   useGltf: boolean;
   layers: LayerVisibility;
+  /** Active highlighted layer from the dissect stepper (null = no emphasis). */
+  emphasis: DissectLayer | null;
 }) {
+  /** True when this layer is the highlighted one. */
+  const isEmph = (k: DissectLayer) => emphasis === k;
+  /** True when this layer should be dimmed (i.e. an emphasis exists and it isn't us). */
+  const isDim = (k: DissectLayer) => emphasis !== null && emphasis !== k;
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
   const clip = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
