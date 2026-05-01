@@ -420,7 +420,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
   return (
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
-      <ClipController plane={clipPlane} active={cutaway} />
+      <ClipController active={cutaway} />
 
       {/* ── Epicardium (outer surface) ── */}
       <mesh geometry={heartGeo}>
