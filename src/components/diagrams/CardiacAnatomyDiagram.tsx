@@ -944,6 +944,7 @@ const CardiacAnatomyDiagram = () => {
                   autoRotate={autoRotate}
                   rotationSpeed={0.18}
                   focusCategory={focusCategory}
+                  useGltf={heartGlbAvailable}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
