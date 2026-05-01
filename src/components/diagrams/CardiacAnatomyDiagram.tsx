@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo, Suspense, useCallback } from "react";
+import { useState, useRef, useMemo, Suspense, useCallback, useEffect } from "react";
 import { Canvas, useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -94,6 +94,35 @@ const categories = [
   { key: "conduction" as const, label: "Conduction", keys: ["sa-node", "av-node", "bundle-his", "left-bundle", "left-anterior-fascicle", "left-posterior-fascicle", "right-bundle", "purkinje"] as StructureKey[] },
   { key: "valve" as const, label: "Valves", keys: ["mitral", "aortic", "tricuspid", "pulmonary"] as StructureKey[] },
 ];
+
+/** World-space focal points (in the unrotated heart frame) for camera fly-to. */
+const focalPoints: Record<StructureKey, [number, number, number]> = {
+  lca: [-0.05, 0.85, 0.25],
+  lad: [-0.35, 0.15, 0.32],
+  diagonal: [-0.55, 0.0, 0.18],
+  "septal-perf": [-0.05, 0.0, 0.18],
+  lcx: [-0.55, 0.55, -0.05],
+  om: [-0.7, 0.2, -0.05],
+  rca: [0.55, 0.45, 0.15],
+  am: [0.55, 0.05, 0.3],
+  pda: [0.15, -0.5, -0.35],
+  "coronary-sinus": [-0.1, 0.45, -0.4],
+  "sa-node": [0.48, 1.0, -0.05],
+  "av-node": [0.22, 0.48, -0.12],
+  "bundle-his": [0.12, 0.35, -0.05],
+  "left-bundle": [-0.04, 0.1, -0.02],
+  "left-anterior-fascicle": [-0.22, -0.25, 0.04],
+  "left-posterior-fascicle": [-0.12, -0.3, -0.1],
+  "right-bundle": [0.12, -0.1, 0.03],
+  purkinje: [0, -0.6, 0.05],
+  mitral: [-0.22, 0.48, 0],
+  aortic: [-0.12, 0.92, 0.15],
+  tricuspid: [0.18, 0.5, 0.08],
+  pulmonary: [0.12, 0.85, 0.32],
+};
+
+/** Map a structure to its category for focus-mode dimming. */
+const structureCategory = (k: StructureKey): "coronary" | "conduction" | "valve" => structures[k].category;
 
 // ── Geometry helpers ──────────────────────────────────────────────────────────
 
@@ -319,29 +348,65 @@ function PapillaryMuscle({ pos, color, height = 0.14, radius = 0.04, clip }: {
 
 // ── Clipping plane controller ─────────────────────────────────────────────────
 
-function ClipController({ plane, active }: { plane: THREE.Plane; active: boolean }) {
+function ClipController({ active }: { active: boolean }) {
   const { gl } = useThree();
-  gl.localClippingEnabled = active;
+  useEffect(() => {
+    const prev = gl.localClippingEnabled;
+    gl.localClippingEnabled = active;
+    return () => { gl.localClippingEnabled = prev; };
+  }, [gl, active]);
+  return null;
+}
+
+/** Smoothly fly the OrbitControls target & camera position toward the selected structure. */
+function CameraFocus({ target, enabled }: { target: [number, number, number]; enabled: boolean }) {
+  const { camera, controls } = useThree() as { camera: THREE.PerspectiveCamera; controls: any };
+  const desired = useRef(new THREE.Vector3(...target));
+  const desiredCam = useRef(new THREE.Vector3());
+
+  useEffect(() => {
+    if (!enabled) return;
+    desired.current.set(target[0], target[1] - 0.1, target[2]);
+    // Position camera along the current view direction at a comfortable distance from the new target.
+    const dir = new THREE.Vector3().subVectors(camera.position, controls?.target ?? new THREE.Vector3()).normalize();
+    desiredCam.current.copy(desired.current).addScaledVector(dir, 2.4);
+  }, [target, enabled, camera, controls]);
+
+  useFrame(() => {
+    if (!enabled || !controls) return;
+    controls.target.lerp(desired.current, 0.08);
+    camera.position.lerp(desiredCam.current, 0.08);
+    controls.update();
+  });
   return null;
 }
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway }: {
-  selected: StructureKey; onSelect: (k: StructureKey) => void; cutaway: boolean;
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory }: {
+  selected: StructureKey;
+  onSelect: (k: StructureKey) => void;
+  cutaway: boolean;
+  autoRotate: boolean;
+  rotationSpeed: number;
+  focusCategory: "all" | "coronary" | "conduction" | "valve";
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
   const clip = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
 
   useFrame((_, dt) => {
-    if (groupRef.current) groupRef.current.rotation.y += dt * 0.06;
+    if (autoRotate && groupRef.current) groupRef.current.rotation.y += dt * rotationSpeed;
   });
 
   const heartGeo = useMemo(() => deformHeartGeo(createAnatomicalHeartGeo()), []);
 
   const pick = useCallback((k: StructureKey) => () => onSelect(k), [onSelect]);
   const on = useCallback((k: StructureKey) => selected === k, [selected]);
+  // Dim structures whose category isn't in focus. Currently used by the chip UI;
+  // selected structure is always full-bright via `on()` checks downstream.
+  // (Kept available for future per-vessel opacity wiring.)
+  void focusCategory;
 
   // Colors
   const myoColor = "#8B3A3A";
@@ -355,7 +420,7 @@ function HeartModel({ selected, onSelect, cutaway }: {
 
   return (
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
-      <ClipController plane={clipPlane} active={cutaway} />
+      <ClipController active={cutaway} />
 
       {/* ── Epicardium (outer surface) ── */}
       <mesh geometry={heartGeo}>
@@ -808,8 +873,20 @@ const CardiacAnatomyDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("lad");
   const [cutaway, setCutaway] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const [autoFocus, setAutoFocus] = useState(true);
+  const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
   const info = structures[selected];
   const categoryLabel = info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve";
+
+  // When the user picks a structure, surface its category and pause auto-rotate
+  // so the camera fly-to lands on a stable view.
+  const handleSelect = useCallback((k: StructureKey) => {
+    setSelected(k);
+    setAutoRotate(false);
+    const cat = structureCategory(k);
+    setFocusCategory((current) => (current === "all" || current === cat ? current : cat));
+  }, []);
 
   return (
     <div className="my-6 space-y-4">
@@ -819,6 +896,8 @@ const CardiacAnatomyDiagram = () => {
           subtitle="Drag to rotate · scroll to zoom · tap a structure for clinical detail"
           toggles={[
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
+            { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
+            { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
             { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
           ]}
         />
@@ -826,40 +905,86 @@ const CardiacAnatomyDiagram = () => {
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
             className="flex-shrink-0 w-full sm:w-[380px] h-[420px] rounded-lg border border-border overflow-hidden"
-            style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(220 10% 14%))" }}
+            style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
-            <Canvas camera={{ position: [0, 0.3, 3.2], fov: 38 }} dpr={[1, 2]}>
-              <ambientLight intensity={0.4} />
-              <directionalLight position={[4, 6, 5]} intensity={0.9} color="#fff5ee" />
-              <directionalLight position={[-3, -2, -4]} intensity={0.25} color="#aabbdd" />
-              <pointLight position={[0, 0, 3]} intensity={0.3} color="#ffccbb" />
-              <pointLight position={[0, 2, -1]} intensity={0.2} color="#bbccff" />
+            <Canvas
+              camera={{ position: [0, 0.3, 3.2], fov: 38 }}
+              dpr={[1, 2]}
+              gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05 }}
+            >
+              <ambientLight intensity={0.45} />
+              <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
+              <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
+              <directionalLight position={[-3, -2, -4]} intensity={0.3} color="#aabbdd" />
+              <pointLight position={[0, 0, 3]} intensity={0.35} color="#ffccbb" />
+              <pointLight position={[0, 2, -1]} intensity={0.22} color="#bbccff" />
               <Suspense fallback={null}>
-                <HeartModel selected={selected} onSelect={setSelected} cutaway={cutaway} />
+                <HeartModel
+                  selected={selected}
+                  onSelect={handleSelect}
+                  cutaway={cutaway}
+                  autoRotate={autoRotate}
+                  rotationSpeed={0.18}
+                  focusCategory={focusCategory}
+                />
+                <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
-              <OrbitControls enablePan={false} minDistance={1.8} maxDistance={5.5} />
+              <OrbitControls
+                makeDefault
+                enablePan={false}
+                minDistance={1.6}
+                maxDistance={5.5}
+                onStart={() => setAutoRotate(false)}
+              />
             </Canvas>
           </div>
 
           <div className="flex-1 min-w-0 space-y-3">
+            {/* Category focus chips */}
+            <div className="flex flex-wrap gap-1.5 text-[11px]">
+              <span className="text-muted-foreground mr-1 self-center">Focus:</span>
+              {([
+                { id: "all" as const, label: "All systems" },
+                { id: "coronary" as const, label: "Coronary" },
+                { id: "conduction" as const, label: "Conduction" },
+                { id: "valve" as const, label: "Valves" },
+              ]).map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => setFocusCategory(opt.id)}
+                  aria-pressed={focusCategory === opt.id}
+                  className={`px-2 py-0.5 rounded-full border transition-colors ${
+                    focusCategory === opt.id
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+
             {showLabels && (
               <div className="flex flex-wrap gap-1">
-                {categories.map((cat) => (
-                  <div key={cat.key} className="flex flex-wrap gap-1">
-                    {cat.keys.map((k) => (
-                      <button
-                        key={k}
-                        onClick={() => setSelected(k)}
-                        className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
-                          selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
-                        }`}
-                        style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
-                      >
-                        {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
-                      </button>
-                    ))}
-                  </div>
-                ))}
+                {categories
+                  .filter((cat) => focusCategory === "all" || focusCategory === cat.key)
+                  .map((cat) => (
+                    <div key={cat.key} className="flex flex-wrap gap-1">
+                      {cat.keys.map((k) => (
+                        <button
+                          key={k}
+                          onClick={() => handleSelect(k)}
+                          className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
+                            selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
+                          }`}
+                          style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
+                        >
+                          {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
               </div>
             )}
 
