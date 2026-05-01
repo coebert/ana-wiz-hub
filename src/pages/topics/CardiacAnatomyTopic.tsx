@@ -7,12 +7,8 @@ import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
-import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
-import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
-import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
-import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
-import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
+import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
