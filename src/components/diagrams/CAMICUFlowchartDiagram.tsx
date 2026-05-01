@@ -209,7 +209,15 @@ export const CAMICUFlowchartDiagram = () => {
                 : "bg-secondary/20"
             }`}
           >
-            <svg viewBox="0 0 640 460" className="w-full h-auto">
+            <div className={isMobile ? "overflow-x-auto -mx-1 px-1" : ""}>
+              <svg
+                viewBox="0 0 640 460"
+                preserveAspectRatio="xMidYMid meet"
+                className="w-full h-auto block"
+                style={isMobile ? { minWidth: "520px" } : undefined}
+                role="img"
+                aria-label="CAM-ICU delirium screening flowchart"
+              >
               {/* Step 0: RASS */}
               <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
               <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
