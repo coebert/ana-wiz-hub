@@ -813,7 +813,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel
         points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
         color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
-      </>}
+      </FadeGroup>
 
       {/* ── Valves ── */}
       {layers.valves && <>
