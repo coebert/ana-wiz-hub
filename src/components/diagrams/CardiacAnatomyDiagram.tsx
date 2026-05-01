@@ -637,7 +637,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <ClipController active={cutaway} />
 
       {/* ── Pericardial sac (translucent outer shell) ── */}
-      <FadeGroup visible={layers.pericardium} peelScale={1.12}>
+      <FadeGroup visible={layers.pericardium} peelScale={1.12} dim={isDim("pericardium")} emphasised={isEmph("pericardium")}>
         <mesh scale={[1.18, 1.12, 1.18]}>
           <sphereGeometry args={[1.1, 24, 24]} />
           <meshPhysicalMaterial
@@ -656,7 +656,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      <FadeGroup visible={layers.epicardium} peelScale={1.08}>
+      <FadeGroup visible={layers.epicardium} peelScale={1.08} dim={isDim("epicardium")} emphasised={isEmph("epicardium")}>
         <mesh geometry={heartGeo}>
           <meshPhysicalMaterial
             color={myoColor} roughness={0.7} metalness={0.02}
@@ -669,7 +669,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
-      <FadeGroup visible={layers.myocardium} peelScale={1.05}>
+      <FadeGroup visible={layers.myocardium} peelScale={1.05} dim={isDim("myocardium")} emphasised={isEmph("myocardium")}>
         <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
           <meshPhysicalMaterial
             color="#7a2828" roughness={0.78}
@@ -681,7 +681,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Endocardium (inner surface) ── */}
-      <FadeGroup visible={layers.chambers} peelScale={1.03}>
+      <FadeGroup visible={layers.chambers} peelScale={1.03} dim={isDim("chambers")} emphasised={isEmph("chambers")}>
         <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
           <meshPhysicalMaterial
             color={endoColor} roughness={0.8}
@@ -693,13 +693,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      <FadeGroup visible={layers.epicardium} peelScale={1.06}>
+      <FadeGroup visible={layers.epicardium} peelScale={1.06} dim={isDim("epicardium")} emphasised={isEmph("epicardium")}>
         <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
         <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
       </FadeGroup>
 
       {/* ── Chambers ── */}
-      <FadeGroup visible={layers.chambers} peelScale={1.04}>
+      <FadeGroup visible={layers.chambers} peelScale={1.04} dim={isDim("chambers")} emphasised={isEmph("chambers")}>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -789,7 +789,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
-      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5}>
+      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5} dim={isDim("coronaries")} emphasised={isEmph("coronaries")}>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
@@ -843,7 +843,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Valves ── */}
-      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5}>
+      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5} dim={isDim("valves")} emphasised={isEmph("valves")}>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
@@ -855,7 +855,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Conduction System ── */}
-      <FadeGroup visible={layers.conduction} peelScale={1.02} duration={0.5}>
+      <FadeGroup visible={layers.conduction} peelScale={1.02} duration={0.5} dim={isDim("conduction")} emphasised={isEmph("conduction")}>
       <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
