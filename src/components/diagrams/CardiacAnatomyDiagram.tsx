@@ -360,6 +360,49 @@ function ClipController({ active }: { active: boolean }) {
   return null;
 }
 
+/**
+ * Continuously frames the heart so it fits the canvas across screen sizes.
+ *
+ * The heart's working diameter is ~TARGET_DIAMETER (2.6 world units, set in
+ * GltfHeartModel). We compute the camera distance needed for that sphere to
+ * fit both vertically AND horizontally given the live canvas aspect ratio,
+ * then nudge fov on very narrow viewports so portrait phones don't crop the
+ * apex/base. Re-runs whenever the canvas resizes (rotation, split-screen,
+ * responsive container collapse, etc.).
+ */
+function ResponsiveHeartRig({ paddingFactor = 1.18 }: { paddingFactor?: number }) {
+  const { camera, size } = useThree() as { camera: THREE.PerspectiveCamera; size: { width: number; height: number } };
+  const HEART_RADIUS = 1.55; // a touch larger than TARGET_DIAMETER/2 for safety
+
+  useEffect(() => {
+    if (!camera.isPerspectiveCamera) return;
+    const aspect = size.width / Math.max(1, size.height);
+
+    // On narrow portrait viewports, widen fov so the heart doesn't feel cramped.
+    // On very wide displays, tighten fov for a more cinematic frame.
+    const baseFov = aspect < 0.75 ? 46 : aspect < 1 ? 42 : aspect < 1.4 ? 38 : 34;
+    camera.fov = baseFov;
+
+    // Distance such that the heart sphere fits both axes.
+    const vFov = (baseFov * Math.PI) / 180;
+    const distV = HEART_RADIUS / Math.tan(vFov / 2);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+    const distH = HEART_RADIUS / Math.tan(hFov / 2);
+    const dist = Math.max(distV, distH) * paddingFactor;
+
+    // Preserve current view direction; just rescale distance from origin.
+    const dir = camera.position.clone();
+    if (dir.lengthSq() < 1e-4) dir.set(0, 0.3, 1);
+    dir.normalize();
+    camera.position.copy(dir.multiplyScalar(dist));
+    camera.near = Math.max(0.05, dist * 0.02);
+    camera.far = Math.max(50, dist * 20);
+    camera.updateProjectionMatrix();
+  }, [camera, size.width, size.height, paddingFactor]);
+
+  return null;
+}
+
 /** Smoothly fly the OrbitControls target & camera position toward the selected structure. */
 function CameraFocus({ target, enabled }: { target: [number, number, number]; enabled: boolean }) {
   const { camera, controls } = useThree() as { camera: THREE.PerspectiveCamera; controls: any };
@@ -1016,15 +1059,16 @@ const CardiacAnatomyDiagram = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
-            className="flex-shrink-0 w-full sm:w-[380px] h-[300px] sm:h-[420px] rounded-lg border border-border overflow-hidden touch-none"
+            className="flex-shrink-0 w-full sm:w-[380px] md:w-[420px] lg:w-[460px] h-[280px] xs:h-[320px] sm:h-[400px] md:h-[440px] lg:h-[480px] rounded-lg border border-border overflow-hidden touch-none"
             style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
             <Canvas
-              camera={{ position: [0, 0.3, isMobile ? 3.6 : 3.2], fov: isMobile ? 42 : 38 }}
+              camera={{ position: [0, 0.3, 4], fov: 40 }}
               dpr={isMobile ? [1, 1.5] : [1, 2]}
               performance={{ min: 0.5 }}
               gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
             >
+              <ResponsiveHeartRig paddingFactor={isMobile ? 1.24 : 1.18} />
               <ambientLight intensity={0.45} />
               <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
               <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
@@ -1047,8 +1091,8 @@ const CardiacAnatomyDiagram = () => {
               <OrbitControls
                 makeDefault
                 enablePan={false}
-                minDistance={1.6}
-                maxDistance={5.5}
+                minDistance={isMobile ? 1.8 : 1.6}
+                maxDistance={isMobile ? 7 : 5.5}
                 onStart={() => setAutoRotate(false)}
               />
             </Canvas>
