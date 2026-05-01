@@ -447,17 +447,30 @@ function FadeGroup({
   children,
   peelScale = 1.06,
   duration = PEEL_DURATION,
+  dim = false,
+  emphasised = false,
 }: {
   visible: boolean;
   children: ReactNode;
   peelScale?: number;
   duration?: number;
+  /** When true (and still visible), fade this layer to a recessed opacity so
+   *  the emphasised layer reads through. */
+  dim?: boolean;
+  /** When true, hold the layer at full opacity and add a subtle scale lift
+   *  so it pops against the dimmed surroundings. */
+  emphasised?: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const [mounted, setMounted] = useState(visible);
   const progress = useRef(visible ? 1 : 0); // 0 = fully hidden, 1 = fully visible
+  const dimProgress = useRef(dim ? 1 : 0); // 0 = full opacity, 1 = recessed
+  const emphProgress = useRef(emphasised ? 1 : 0);
   const baseOpacity = useRef<WeakMap<THREE.Material, number>>(new WeakMap());
   const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const DIM_FLOOR = 0.28; // recessed layers fade to ~28% of their base opacity
+  const EMPH_LIFT = 1.025; // emphasised layers nudge outward ~2.5% for pop
 
   useEffect(() => {
     if (visible) {
@@ -482,16 +495,23 @@ function FadeGroup({
     const g = groupRef.current;
     if (!g) return;
     const target = visible ? 1 : 0;
-    // Ease toward target. Rate chosen so 0→1 completes in ~`duration` seconds.
     const rate = Math.min(1, dt / duration) * 4;
     progress.current = THREE.MathUtils.lerp(progress.current, target, rate);
     if (Math.abs(progress.current - target) < 0.002) progress.current = target;
 
-    // Peel: hidden layers float outward slightly as they fade.
-    const s = THREE.MathUtils.lerp(peelScale, 1, progress.current);
-    g.scale.setScalar(s);
+    // Tween dim/emphasis at a similar rate so highlight changes feel snappy.
+    dimProgress.current = THREE.MathUtils.lerp(dimProgress.current, dim ? 1 : 0, rate);
+    emphProgress.current = THREE.MathUtils.lerp(emphProgress.current, emphasised ? 1 : 0, rate);
 
-    // Apply opacity multiplier across every material in the subtree.
+    // Peel-out scale when hiding + emphasis lift when in focus.
+    const peel = THREE.MathUtils.lerp(peelScale, 1, progress.current);
+    const lift = THREE.MathUtils.lerp(1, EMPH_LIFT, emphProgress.current);
+    g.scale.setScalar(peel * lift);
+
+    // Effective opacity multiplier for this frame.
+    const dimMul = THREE.MathUtils.lerp(1, DIM_FLOOR, dimProgress.current);
+    const opacityMul = progress.current * dimMul;
+
     g.traverse((obj) => {
       const mesh = obj as THREE.Mesh;
       if (!mesh.isMesh) return;
@@ -505,9 +525,8 @@ function FadeGroup({
           baseOpacity.current.set(mat, base);
         }
         mat.transparent = true;
-        mat.opacity = base * progress.current;
-        // Fully hide depthWrite while transparent so we don't punch holes.
-        if ("depthWrite" in mat && progress.current < 0.99) {
+        mat.opacity = base * opacityMul;
+        if ("depthWrite" in mat && opacityMul < 0.99) {
           (mat as THREE.Material & { depthWrite: boolean }).depthWrite = false;
         }
       }
@@ -546,29 +565,31 @@ const ALL_VISIBLE: LayerVisibility = {
   internals: false, valves: true, conduction: true, coronaries: true,
 };
 
-/** 8 ordered dissection steps — each peels one layer further inward / reveals the next. */
-export const DISSECT_STEPS: { id: DissectLayer; label: string; teaching: string; visible: LayerVisibility }[] = [
+/** 8 ordered dissection steps — each peels one layer further inward / reveals the next.
+ *  `emphasis` marks the layer the learner should focus on at this step;
+ *  the renderer dims sibling layers so the emphasised one reads cleanly. */
+export const DISSECT_STEPS: { id: DissectLayer; label: string; teaching: string; visible: LayerVisibility; emphasis: DissectLayer }[] = [
   { id: "pericardium", label: "1. Pericardium intact", teaching: "Fibrous + serous (parietal & visceral) sac. ~15–50 mL pericardial fluid in the cavity. Reflects onto great vessels at the base. Phrenic nerves run on its lateral surface — protect during cardiac surgery.",
-    visible: { ...ALL_VISIBLE, internals: false, conduction: false, coronaries: false } },
+    visible: { ...ALL_VISIBLE, internals: false, conduction: false, coronaries: false }, emphasis: "pericardium" },
   { id: "epicardium", label: "2. Reflect pericardium → epicardium & fat", teaching: "Visceral pericardium = epicardium. Epicardial fat sits along the AV and interventricular grooves, marking the path of the coronary arteries and coronary sinus.",
-    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false, coronaries: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false, coronaries: false }, emphasis: "epicardium" },
   { id: "coronaries", label: "3. Expose coronary tree", teaching: "Left main → LAD + LCx; RCA from right sinus. Diagonals over anterolateral LV, OMs over lateral LV, septals into IVS. PDA defines dominance (right in 85%). Coronary sinus drains into RA in posterior AV groove.",
-    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false }, emphasis: "coronaries" },
   { id: "myocardium", label: "4. Peel myocardium", teaching: "LV wall 12–15 mm (high-pressure systemic pump); RV wall 3–5 mm (crescent, low-pressure pulmonary pump). Spiral myofibre orientation — endocardium injures first in subendocardial ischaemia.",
-    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, internals: false, conduction: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, internals: false, conduction: false }, emphasis: "myocardium" },
   { id: "chambers", label: "5. Open chambers", teaching: "RA/RV anterior-right, LA/LV posterior-left. Atria thin-walled with appendages (LAA = thrombus risk in AF). Interventricular septum: muscular below, membranous above (close to AV node and bundle of His).",
-    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, internals: false, conduction: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, internals: false, conduction: false }, emphasis: "chambers" },
   { id: "internals", label: "6. Internal anatomy & papillary muscles", teaching: "Trabeculae carneae line ventricles. Moderator band carries right bundle to anterior papillary muscle. Mitral has 2 papillaries (AL dual supply, PM single — vulnerable). Tricuspid has 3. Crista terminalis & pectinates in RA; fossa ovalis on interatrial septum.",
-    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false }, emphasis: "internals" },
   { id: "valves", label: "7. Valvular skeleton", teaching: "Fibrous skeleton anchors all 4 valves and electrically isolates atria from ventricles (only the bundle of His crosses). AV valves (mitral, tricuspid) have chordae + papillaries; semilunar valves (aortic, pulmonary) have 3 cusps and sinuses of Valsalva (origin of coronaries from R + L cusps).",
-    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false, coronaries: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false, coronaries: false }, emphasis: "valves" },
   { id: "conduction", label: "8. Conduction system", teaching: "SA node (RA, near SVC) → internodal tracts → AV node (Koch's triangle) → bundle of His → L (anterior + posterior fascicles) and R bundle branches → Purkinje network. AV node delay (~0.1 s) allows atrial kick before ventricular systole.",
-    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, valves: false, coronaries: false } },
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, valves: false, coronaries: false }, emphasis: "conduction" },
 ];
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers, emphasis }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
@@ -577,7 +598,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
   focusCategory: "all" | "coronary" | "conduction" | "valve";
   useGltf: boolean;
   layers: LayerVisibility;
+  /** Active highlighted layer from the dissect stepper (null = no emphasis). */
+  emphasis: DissectLayer | null;
 }) {
+  /** True when this layer is the highlighted one. */
+  const isEmph = (k: DissectLayer) => emphasis === k;
+  /** True when this layer should be dimmed (i.e. an emphasis exists and it isn't us). */
+  const isDim = (k: DissectLayer) => emphasis !== null && emphasis !== k;
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
   const clip = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
@@ -610,7 +637,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <ClipController active={cutaway} />
 
       {/* ── Pericardial sac (translucent outer shell) ── */}
-      <FadeGroup visible={layers.pericardium} peelScale={1.12}>
+      <FadeGroup visible={layers.pericardium} peelScale={1.12} dim={isDim("pericardium")} emphasised={isEmph("pericardium")}>
         <mesh scale={[1.18, 1.12, 1.18]}>
           <sphereGeometry args={[1.1, 24, 24]} />
           <meshPhysicalMaterial
@@ -629,7 +656,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      <FadeGroup visible={layers.epicardium} peelScale={1.08}>
+      <FadeGroup visible={layers.epicardium} peelScale={1.08} dim={isDim("epicardium")} emphasised={isEmph("epicardium")}>
         <mesh geometry={heartGeo}>
           <meshPhysicalMaterial
             color={myoColor} roughness={0.7} metalness={0.02}
@@ -642,7 +669,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
-      <FadeGroup visible={layers.myocardium} peelScale={1.05}>
+      <FadeGroup visible={layers.myocardium} peelScale={1.05} dim={isDim("myocardium")} emphasised={isEmph("myocardium")}>
         <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
           <meshPhysicalMaterial
             color="#7a2828" roughness={0.78}
@@ -654,7 +681,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Endocardium (inner surface) ── */}
-      <FadeGroup visible={layers.chambers} peelScale={1.03}>
+      <FadeGroup visible={layers.chambers} peelScale={1.03} dim={isDim("chambers")} emphasised={isEmph("chambers")}>
         <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
           <meshPhysicalMaterial
             color={endoColor} roughness={0.8}
@@ -666,13 +693,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      <FadeGroup visible={layers.epicardium} peelScale={1.06}>
+      <FadeGroup visible={layers.epicardium} peelScale={1.06} dim={isDim("epicardium")} emphasised={isEmph("epicardium")}>
         <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
         <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
       </FadeGroup>
 
       {/* ── Chambers ── */}
-      <FadeGroup visible={layers.chambers} peelScale={1.04}>
+      <FadeGroup visible={layers.chambers} peelScale={1.04} dim={isDim("chambers")} emphasised={isEmph("chambers")}>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -762,7 +789,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
-      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5}>
+      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5} dim={isDim("coronaries")} emphasised={isEmph("coronaries")}>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
@@ -816,7 +843,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Valves ── */}
-      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5}>
+      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5} dim={isDim("valves")} emphasised={isEmph("valves")}>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
@@ -828,7 +855,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Conduction System ── */}
-      <FadeGroup visible={layers.conduction} peelScale={1.02} duration={0.5}>
+      <FadeGroup visible={layers.conduction} peelScale={1.02} duration={0.5} dim={isDim("conduction")} emphasised={isEmph("conduction")}>
       <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
@@ -1177,6 +1204,7 @@ const CardiacAnatomyDiagram = () => {
                   focusCategory={focusCategory}
                   useGltf={heartGlbAvailable && !dissectMode}
                   layers={activeLayers}
+                  emphasis={dissectMode ? DISSECT_STEPS[dissectStep].emphasis : null}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
