@@ -627,6 +627,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
+      {layers.coronaries && <>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
@@ -677,8 +678,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel
         points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
         color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
+      </>}
 
       {/* ── Valves ── */}
+      {layers.valves && <>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
@@ -687,30 +690,22 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         color={structures.aortic.color} active={on("aortic")} onClick={pick("aortic")} clip={clip} innerR={0.08} />
       <Valve position={[0.12, 0.85, 0.32]} rotation={[0.35, 0.15, 0]}
         color={structures.pulmonary.color} active={on("pulmonary")} onClick={pick("pulmonary")} clip={clip} innerR={0.08} />
+      </>}
 
       {/* ── Conduction System ── */}
+      {layers.conduction && <>
       <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
         color={structures["bundle-his"].color} radius={0.018} active={on("bundle-his")} onClick={pick("bundle-his")} clip={clip} />
-
-      {/* Left bundle branch — broad sheet, then splits */}
       <Vessel points={[[0.04, 0.22, 0], [-0.02, 0.12, -0.02], [-0.06, 0.0, -0.02]]}
         color={structures["left-bundle"].color} radius={0.016} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
-
-      {/* Left anterior fascicle — thin, to anterolateral papillary muscle */}
       <Vessel points={[[-0.06, 0.0, -0.02], [-0.12, -0.15, 0.02], [-0.22, -0.3, 0.05], [-0.38, -0.42, 0.06]]}
         color={structures["left-anterior-fascicle"].color} radius={0.012} active={on("left-anterior-fascicle")} onClick={pick("left-anterior-fascicle")} clip={clip} />
-
-      {/* Left posterior fascicle — thick, to posteromedial papillary muscle */}
       <Vessel points={[[-0.06, 0.0, -0.02], [-0.08, -0.18, -0.06], [-0.12, -0.35, -0.1], [-0.18, -0.45, -0.14]]}
         color={structures["left-posterior-fascicle"].color} radius={0.014} active={on("left-posterior-fascicle")} onClick={pick("left-posterior-fascicle")} clip={clip} />
-
-      {/* Right bundle branch */}
       <Vessel points={[[0.04, 0.22, 0], [0.1, 0.05, 0.02], [0.14, -0.2, 0.04], [0.14, -0.6, 0.03]]}
         color={structures["right-bundle"].color} radius={0.015} active={on("right-bundle")} onClick={pick("right-bundle")} clip={clip} />
-
-      {/* Purkinje terminal nodes */}
       <Node position={[-0.38, -0.44, 0.06]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
       <Node position={[-0.18, -0.47, -0.14]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
       <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
@@ -722,9 +717,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
           ))}
         </>
       )}
+      </>}
 
       {/* ── Cutaway interior details ── */}
-      {cutaway && (
+      {(cutaway || layers.internals) && (
         <group>
           {/* Fossa ovalis */}
           <mesh position={[0, 0.75, -0.05]} rotation={[0.15, 0, 0.1]}>
