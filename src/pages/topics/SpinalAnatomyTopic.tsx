@@ -7,6 +7,8 @@ import SpinalCordSagittalDiagram from "@/components/diagrams/SpinalCordSagittalD
 import DermatomeMyotomeDiagram from "@/components/diagrams/DermatomeMyotomeDiagram";
 import InteractiveDermatomeMap from "@/components/diagrams/InteractiveDermatomeMap";
 import EpiduralSpaceDiagram from "@/components/diagrams/EpiduralSpaceDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { spinalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const SpinalAnatomyTopic = () => {
@@ -44,6 +46,7 @@ const SpinalAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
+        <CorPictumFolio {...spinalFolio} />
         <div id="vertebral-column" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vertebral Column</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
