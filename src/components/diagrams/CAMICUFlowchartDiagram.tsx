@@ -236,8 +236,8 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               <defs>
-                <marker id="cam-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="hsl(var(--foreground))" />
+                <marker id="cam-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L8,4 L0,8 Z" fill="context-stroke" />
                 </marker>
               </defs>
             </svg>
