@@ -4,6 +4,7 @@ import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { GltfHeartModel, useHeartAssetAvailable, probeHeartAsset } from "./GltfHeartModel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // ── Structure data ────────────────────────────────────────────────────────────
 
