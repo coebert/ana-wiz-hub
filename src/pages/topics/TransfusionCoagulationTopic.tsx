@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import TraliVsTacoDecisionTool from "@/components/diagrams/TraliVsTacoDecisionTool";
+import CellSalvageAnimatedDiagram from "@/components/diagrams/CellSalvageAnimatedDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
@@ -272,6 +273,10 @@ const TransfusionCoagulationTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               ICS collects shed surgical blood, washes the red cells, and returns them to the patient — reducing or avoiding allogeneic transfusion. AAGBI/ATACCC, NICE and the Obstetric Anaesthetists' Association now recommend its use in any procedure where blood loss is expected to exceed 500–1000 mL (or 20% of estimated blood volume), and explicitly support its use in obstetrics and oncology with a leucodepletion filter.
             </p>
+
+            <div className="my-4">
+              <CellSalvageAnimatedDiagram />
+            </div>
 
             <h3 className="text-lg font-serif font-bold text-foreground mb-2">Principles — what the machine actually does</h3>
             <ol className="list-decimal pl-5 space-y-1.5 text-sm text-muted-foreground mb-4">
