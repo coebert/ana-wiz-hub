@@ -3,6 +3,8 @@ import { Canvas, useFrame, useThree, ThreeEvent } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { GltfHeartModel, useHeartAssetAvailable, probeHeartAsset } from "./GltfHeartModel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // ── Structure data ────────────────────────────────────────────────────────────
 
@@ -383,13 +385,14 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
   autoRotate: boolean;
   rotationSpeed: number;
   focusCategory: "all" | "coronary" | "conduction" | "valve";
+  useGltf: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
@@ -422,6 +425,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
       <ClipController active={cutaway} />
 
+      {useGltf && (
+        <Suspense fallback={null}>
+          <GltfHeartModel autoRotate={false} opacity={cutaway ? 0.55 : 1} />
+        </Suspense>
+      )}
+
+      {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
       <mesh geometry={heartGeo}>
         <meshPhysicalMaterial
@@ -502,6 +512,8 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
           side={THREE.DoubleSide} />
       </mesh>
+
+      </>}
 
       {/* ── Great Vessels ── */}
       {/* Ascending aorta → arch → descending */}
@@ -876,8 +888,13 @@ const CardiacAnatomyDiagram = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [autoFocus, setAutoFocus] = useState(true);
   const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
+  const isMobile = useIsMobile();
+  const heartGlbAvailable = useHeartAssetAvailable();
   const info = structures[selected];
   const categoryLabel = info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve";
+
+  // Kick off the HEAD probe once on mount
+  useEffect(() => { void probeHeartAsset(); }, []);
 
   // When the user picks a structure, surface its category and pause auto-rotate
   // so the camera fly-to lands on a stable view.
@@ -893,7 +910,11 @@ const CardiacAnatomyDiagram = () => {
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
           title="Interactive 3D cardiac anatomy"
-          subtitle="Drag to rotate · scroll to zoom · tap a structure for clinical detail"
+          subtitle={
+            heartGlbAvailable
+              ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
+              : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
+          }
           toggles={[
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
             { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
@@ -904,13 +925,14 @@ const CardiacAnatomyDiagram = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
-            className="flex-shrink-0 w-full sm:w-[380px] h-[420px] rounded-lg border border-border overflow-hidden"
+            className="flex-shrink-0 w-full sm:w-[380px] h-[300px] sm:h-[420px] rounded-lg border border-border overflow-hidden touch-none"
             style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
             <Canvas
-              camera={{ position: [0, 0.3, 3.2], fov: 38 }}
-              dpr={[1, 2]}
-              gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05 }}
+              camera={{ position: [0, 0.3, isMobile ? 3.6 : 3.2], fov: isMobile ? 42 : 38 }}
+              dpr={isMobile ? [1, 1.5] : [1, 2]}
+              performance={{ min: 0.5 }}
+              gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
             >
               <ambientLight intensity={0.45} />
               <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
@@ -926,6 +948,7 @@ const CardiacAnatomyDiagram = () => {
                   autoRotate={autoRotate}
                   rotationSpeed={0.18}
                   focusCategory={focusCategory}
+                  useGltf={heartGlbAvailable}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
