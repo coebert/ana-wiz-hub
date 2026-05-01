@@ -762,7 +762,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
-      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5}><>
+      <FadeGroup visible={layers.coronaries} peelScale={1.0} duration={0.5}>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
