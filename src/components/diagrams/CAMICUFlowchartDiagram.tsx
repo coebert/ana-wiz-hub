@@ -1,10 +1,54 @@
-import { useState } from "react";
+import { useState, type CSSProperties } from "react";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { CheckCircle2, XCircle, AlertTriangle, Sun, Moon } from "lucide-react";
 
 type Answer = "yes" | "no" | null;
+
+// Local token overrides so the flowchart can be previewed in either theme
+// independently of the page theme. Values mirror :root and .dark in index.css.
+const LIGHT_TOKENS: CSSProperties = {
+  ["--background" as any]: "210 20% 98%",
+  ["--foreground" as any]: "215 25% 15%",
+  ["--card" as any]: "0 0% 100%",
+  ["--card-foreground" as any]: "215 25% 15%",
+  ["--primary" as any]: "210 70% 35%",
+  ["--primary-foreground" as any]: "0 0% 100%",
+  ["--secondary" as any]: "180 30% 94%",
+  ["--secondary-foreground" as any]: "210 70% 35%",
+  ["--muted" as any]: "210 15% 93%",
+  ["--muted-foreground" as any]: "215 15% 50%",
+  ["--destructive" as any]: "0 84.2% 60.2%",
+  ["--destructive-foreground" as any]: "210 40% 98%",
+  ["--border" as any]: "210 20% 90%",
+  ["--clinical" as any]: "25 80% 50%",
+  ["--icu" as any]: "260 50% 50%",
+  ["--pharmacology" as any]: "170 50% 40%",
+  ["--physiology" as any]: "340 60% 45%",
+  colorScheme: "light",
+};
+
+const DARK_TOKENS: CSSProperties = {
+  ["--background" as any]: "215 25% 10%",
+  ["--foreground" as any]: "210 20% 95%",
+  ["--card" as any]: "215 25% 13%",
+  ["--card-foreground" as any]: "210 20% 95%",
+  ["--primary" as any]: "210 60% 55%",
+  ["--primary-foreground" as any]: "0 0% 100%",
+  ["--secondary" as any]: "215 20% 18%",
+  ["--secondary-foreground" as any]: "210 20% 90%",
+  ["--muted" as any]: "215 20% 18%",
+  ["--muted-foreground" as any]: "215 15% 60%",
+  ["--destructive" as any]: "0 62.8% 30.6%",
+  ["--destructive-foreground" as any]: "210 40% 98%",
+  ["--border" as any]: "215 20% 20%",
+  ["--clinical" as any]: "25 80% 55%",
+  ["--icu" as any]: "260 55% 65%",
+  ["--pharmacology" as any]: "170 50% 50%",
+  ["--physiology" as any]: "340 60% 60%",
+  colorScheme: "dark",
+};
 
 interface Case {
   id: string;
