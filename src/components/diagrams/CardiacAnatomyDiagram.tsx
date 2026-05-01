@@ -1055,6 +1055,68 @@ const CardiacAnatomyDiagram = () => {
           </div>
 
           <div className="flex-1 min-w-0 space-y-3">
+            {/* Dissect-mode stepper */}
+            {dissectMode && (
+              <div className="rounded-lg border border-primary/40 bg-primary/5 p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-semibold text-foreground">
+                    Layer {dissectStep + 1} of {DISSECT_STEPS.length}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={stepPrev}
+                      disabled={dissectStep === 0}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label="Previous layer"
+                    >‹ Prev</button>
+                    <button
+                      type="button"
+                      onClick={stepNext}
+                      disabled={dissectStep === DISSECT_STEPS.length - 1}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-primary bg-primary/15 text-foreground hover:bg-primary/25 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label="Peel next layer"
+                    >Peel ›</button>
+                    <button
+                      type="button"
+                      onClick={() => setDissectStep(0)}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50"
+                      aria-label="Reset dissection"
+                    >↺</button>
+                  </div>
+                </div>
+
+                {/* Step rail */}
+                <div className="flex flex-wrap gap-1">
+                  {DISSECT_STEPS.map((s, i) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setDissectStep(i)}
+                      aria-pressed={dissectStep === i}
+                      title={s.label}
+                      className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-colors ${
+                        dissectStep === i
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : i < dissectStep
+                          ? "border-primary/40 bg-primary/10 text-foreground"
+                          : "border-border bg-background text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+
+                <p className="text-xs font-medium text-foreground">
+                  {DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}
+                </p>
+                <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  {DISSECT_STEPS[dissectStep].teaching}
+                </p>
+              </div>
+            )}
+
             {/* Category focus chips */}
             <div className="flex flex-wrap gap-1.5 text-[11px]">
               <span className="text-muted-foreground mr-1 self-center">Focus:</span>
