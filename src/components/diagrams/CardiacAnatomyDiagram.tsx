@@ -925,9 +925,10 @@ const CardiacAnatomyDiagram = () => {
             style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
             <Canvas
-              camera={{ position: [0, 0.3, 3.2], fov: 38 }}
-              dpr={[1, 2]}
-              gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05 }}
+              camera={{ position: [0, 0.3, isMobile ? 3.6 : 3.2], fov: isMobile ? 42 : 38 }}
+              dpr={isMobile ? [1, 1.5] : [1, 2]}
+              performance={{ min: 0.5 }}
+              gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
             >
               <ambientLight intensity={0.45} />
               <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
