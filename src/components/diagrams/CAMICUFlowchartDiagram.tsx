@@ -211,7 +211,7 @@ export const CAMICUFlowchartDiagram = () => {
               <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.2" markerEnd="url(#cam-arr)" />
               <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
 
-              <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" markerEnd="url(#cam-arr)" />
+              <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" markerEnd="url(#cam-arr-danger)" />
               <text x="475" y="333" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
 
               {/* Outcome — Negative */}
