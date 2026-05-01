@@ -10,6 +10,8 @@ import OrbitAnatomyDiagram from "@/components/diagrams/OrbitAnatomyDiagram";
 import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagram";
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { headNeckFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const HeadNeckAnatomyTopic = () => {
@@ -47,6 +49,7 @@ const HeadNeckAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
+          <CorPictumFolio {...headNeckFolio} />
           <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
             This page follows a top-down anatomical journey: cranial nerve overview → bony cranial framework (skull base, orbit) → soft tissue neck (triangles, cross-section, plexus, vascular access) → airway descent from the nose down to the carina and lobar bronchi.
           </p>

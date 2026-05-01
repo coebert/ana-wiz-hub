@@ -5,6 +5,8 @@ import CircleOfWillisDiagram from "@/components/diagrams/CircleOfWillisDiagram";
 import SkullBaseDiagram from "@/components/diagrams/SkullBaseDiagram";
 import BrainPlatesViewer from "@/components/diagrams/BrainPlatesViewer";
 import CsfFlowDiagram from "@/components/diagrams/CsfFlowDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { neuroFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const NeuroanatomyTopic = () => {
@@ -37,6 +39,7 @@ const NeuroanatomyTopic = () => {
       }}
       diagrams={
         <>
+          <CorPictumFolio {...neuroFolio} />
           <BrainPlatesViewer />
           <CsfFlowDiagram />
           <CircleOfWillisDiagram />

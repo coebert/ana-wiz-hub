@@ -12,6 +12,8 @@ import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDia
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { airwayFolio } from "@/components/diagrams/anatomyFolios";
 
 const objectives = [
   "Describe a structured airway assessment (LEMON, Mallampati, Wilson) and list red-flag predictors of difficulty.",
@@ -105,6 +107,7 @@ const AirwayManagementTopic = () => {
       }}
       diagrams={
         <>
+          <CorPictumFolio {...airwayFolio} />
           <CICODrillAnimation />
           <div className="bg-card rounded-xl border border-border p-6">
             <DASAlgorithmDiagram />
