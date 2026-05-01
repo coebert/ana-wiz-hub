@@ -825,7 +825,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         color={structures.aortic.color} active={on("aortic")} onClick={pick("aortic")} clip={clip} innerR={0.08} />
       <Valve position={[0.12, 0.85, 0.32]} rotation={[0.35, 0.15, 0]}
         color={structures.pulmonary.color} active={on("pulmonary")} onClick={pick("pulmonary")} clip={clip} innerR={0.08} />
-      </>}
+      </FadeGroup>
 
       {/* ── Conduction System ── */}
       {layers.conduction && <>
