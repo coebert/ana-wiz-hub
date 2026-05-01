@@ -511,6 +511,8 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
           side={THREE.DoubleSide} />
       </mesh>
 
+      </>}
+
       {/* ── Great Vessels ── */}
       {/* Ascending aorta → arch → descending */}
       <Vessel
