@@ -348,29 +348,65 @@ function PapillaryMuscle({ pos, color, height = 0.14, radius = 0.04, clip }: {
 
 // ── Clipping plane controller ─────────────────────────────────────────────────
 
-function ClipController({ plane, active }: { plane: THREE.Plane; active: boolean }) {
+function ClipController({ active }: { active: boolean }) {
   const { gl } = useThree();
-  gl.localClippingEnabled = active;
+  useEffect(() => {
+    const prev = gl.localClippingEnabled;
+    gl.localClippingEnabled = active;
+    return () => { gl.localClippingEnabled = prev; };
+  }, [gl, active]);
+  return null;
+}
+
+/** Smoothly fly the OrbitControls target & camera position toward the selected structure. */
+function CameraFocus({ target, enabled }: { target: [number, number, number]; enabled: boolean }) {
+  const { camera, controls } = useThree() as { camera: THREE.PerspectiveCamera; controls: any };
+  const desired = useRef(new THREE.Vector3(...target));
+  const desiredCam = useRef(new THREE.Vector3());
+
+  useEffect(() => {
+    if (!enabled) return;
+    desired.current.set(target[0], target[1] - 0.1, target[2]);
+    // Position camera along the current view direction at a comfortable distance from the new target.
+    const dir = new THREE.Vector3().subVectors(camera.position, controls?.target ?? new THREE.Vector3()).normalize();
+    desiredCam.current.copy(desired.current).addScaledVector(dir, 2.4);
+  }, [target, enabled, camera, controls]);
+
+  useFrame(() => {
+    if (!enabled || !controls) return;
+    controls.target.lerp(desired.current, 0.08);
+    camera.position.lerp(desiredCam.current, 0.08);
+    controls.update();
+  });
   return null;
 }
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway }: {
-  selected: StructureKey; onSelect: (k: StructureKey) => void; cutaway: boolean;
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory }: {
+  selected: StructureKey;
+  onSelect: (k: StructureKey) => void;
+  cutaway: boolean;
+  autoRotate: boolean;
+  rotationSpeed: number;
+  focusCategory: "all" | "coronary" | "conduction" | "valve";
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
   const clip = useMemo(() => cutaway ? [clipPlane] : [], [cutaway, clipPlane]);
 
   useFrame((_, dt) => {
-    if (groupRef.current) groupRef.current.rotation.y += dt * 0.06;
+    if (autoRotate && groupRef.current) groupRef.current.rotation.y += dt * rotationSpeed;
   });
 
   const heartGeo = useMemo(() => deformHeartGeo(createAnatomicalHeartGeo()), []);
 
   const pick = useCallback((k: StructureKey) => () => onSelect(k), [onSelect]);
   const on = useCallback((k: StructureKey) => selected === k, [selected]);
+  // Dim structures whose category isn't in focus. Currently used by the chip UI;
+  // selected structure is always full-bright via `on()` checks downstream.
+  // (Kept available for future per-vessel opacity wiring.)
+  void focusCategory;
 
   // Colors
   const myoColor = "#8B3A3A";
