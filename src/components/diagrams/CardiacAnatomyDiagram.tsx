@@ -816,7 +816,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Valves ── */}
-      {layers.valves && <>
+      <FadeGroup visible={layers.valves} peelScale={1.02} duration={0.5}>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
