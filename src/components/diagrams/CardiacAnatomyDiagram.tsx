@@ -1059,15 +1059,16 @@ const CardiacAnatomyDiagram = () => {
 
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
-            className="flex-shrink-0 w-full sm:w-[380px] h-[300px] sm:h-[420px] rounded-lg border border-border overflow-hidden touch-none"
+            className="flex-shrink-0 w-full sm:w-[380px] md:w-[420px] lg:w-[460px] h-[280px] xs:h-[320px] sm:h-[400px] md:h-[440px] lg:h-[480px] rounded-lg border border-border overflow-hidden touch-none"
             style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
             <Canvas
-              camera={{ position: [0, 0.3, isMobile ? 3.6 : 3.2], fov: isMobile ? 42 : 38 }}
+              camera={{ position: [0, 0.3, 4], fov: 40 }}
               dpr={isMobile ? [1, 1.5] : [1, 2]}
               performance={{ min: 0.5 }}
               gl={{ antialias: !isMobile, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05, powerPreference: "high-performance" }}
             >
+              <ResponsiveHeartRig paddingFactor={isMobile ? 1.24 : 1.18} />
               <ambientLight intensity={0.45} />
               <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
               <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
@@ -1090,8 +1091,8 @@ const CardiacAnatomyDiagram = () => {
               <OrbitControls
                 makeDefault
                 enablePan={false}
-                minDistance={1.6}
-                maxDistance={5.5}
+                minDistance={isMobile ? 1.8 : 1.6}
+                maxDistance={isMobile ? 7 : 5.5}
                 onStart={() => setAutoRotate(false)}
               />
             </Canvas>
