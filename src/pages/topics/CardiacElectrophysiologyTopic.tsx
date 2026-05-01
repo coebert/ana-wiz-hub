@@ -6,6 +6,12 @@ import CardiacActionPotentialDiagram from "@/components/diagrams/CardiacActionPo
 import LongQTTorsadesDiagram from "@/components/diagrams/LongQTTorsadesDiagram";
 import IonChannelTimelineDiagram from "@/components/diagrams/IonChannelTimelineDiagram";
 import BPControlLoopDiagram from "@/components/diagrams/BPControlLoopDiagram";
+import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
+import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
+import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
+import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
+import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
+import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
