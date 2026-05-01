@@ -474,7 +474,19 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
       <ClipController active={cutaway} />
 
-      {useGltf && (
+      {/* ── Pericardial sac (translucent outer shell) ── */}
+      {layers.pericardium && (
+        <mesh scale={[1.18, 1.12, 1.18]}>
+          <sphereGeometry args={[1.1, 24, 24]} />
+          <meshPhysicalMaterial
+            color="#d8c8b0" roughness={0.85} metalness={0}
+            transparent opacity={0.18} side={THREE.DoubleSide}
+            depthWrite={false} clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
+
+      {useGltf && layers.epicardium && (
         <Suspense fallback={null}>
           <GltfHeartModel autoRotate={false} opacity={cutaway ? 0.55 : 1} />
         </Suspense>
@@ -482,31 +494,50 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      <mesh geometry={heartGeo}>
-        <meshPhysicalMaterial
-          color={myoColor} roughness={0.7} metalness={0.02}
-          transparent opacity={cutaway ? 0.45 : 0.55}
-          side={THREE.DoubleSide} depthWrite={!cutaway}
-          clippingPlanes={clip} clipShadows
-          clearcoat={0.15} clearcoatRoughness={0.6}
-        />
-      </mesh>
+      {layers.epicardium && (
+        <mesh geometry={heartGeo}>
+          <meshPhysicalMaterial
+            color={myoColor} roughness={0.7} metalness={0.02}
+            transparent opacity={cutaway ? 0.45 : 0.55}
+            side={THREE.DoubleSide} depthWrite={!cutaway}
+            clippingPlanes={clip} clipShadows
+            clearcoat={0.15} clearcoatRoughness={0.6}
+          />
+        </mesh>
+      )}
+
+      {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
+      {layers.myocardium && (
+        <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
+          <meshPhysicalMaterial
+            color="#7a2828" roughness={0.78}
+            transparent opacity={layers.epicardium ? 0.4 : 0.7}
+            side={THREE.DoubleSide}
+            clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
 
       {/* ── Endocardium (inner surface) ── */}
-      <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
-        <meshPhysicalMaterial
-          color={endoColor} roughness={0.8}
-          transparent opacity={cutaway ? 0.5 : 0.15}
-          side={THREE.DoubleSide}
-          clippingPlanes={clip} clipShadows
-        />
-      </mesh>
+      {layers.chambers && (
+        <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
+          <meshPhysicalMaterial
+            color={endoColor} roughness={0.8}
+            transparent opacity={cutaway ? 0.5 : 0.15}
+            side={THREE.DoubleSide}
+            clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
-      <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
+      {layers.epicardium && <>
+        <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
+        <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
+      </>}
 
       {/* ── Chambers ── */}
+      {layers.chambers && <>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -561,6 +592,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
           side={THREE.DoubleSide} />
       </mesh>
+      </>}
 
       </>}
 
