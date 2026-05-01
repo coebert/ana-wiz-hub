@@ -965,6 +965,8 @@ const CardiacAnatomyDiagram = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [autoFocus, setAutoFocus] = useState(true);
   const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
+  const [dissectMode, setDissectMode] = useState(false);
+  const [dissectStep, setDissectStep] = useState(0);
   const isMobile = useIsMobile();
   const heartGlbAvailable = useHeartAssetAvailable();
   const info = structures[selected];
@@ -972,6 +974,12 @@ const CardiacAnatomyDiagram = () => {
 
   // Kick off the HEAD probe once on mount
   useEffect(() => { void probeHeartAsset(); }, []);
+
+  // Active layer visibility — dissect mode drives it from the current step,
+  // otherwise everything is visible (legacy behaviour preserved).
+  const activeLayers: LayerVisibility = dissectMode
+    ? DISSECT_STEPS[dissectStep].visible
+    : { ...ALL_VISIBLE, internals: cutaway };
 
   // When the user picks a structure, surface its category and pause auto-rotate
   // so the camera fly-to lands on a stable view.
@@ -982,17 +990,23 @@ const CardiacAnatomyDiagram = () => {
     setFocusCategory((current) => (current === "all" || current === cat ? current : cat));
   }, []);
 
+  const stepNext = useCallback(() => setDissectStep((s) => Math.min(DISSECT_STEPS.length - 1, s + 1)), []);
+  const stepPrev = useCallback(() => setDissectStep((s) => Math.max(0, s - 1)), []);
+
   return (
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
           title="Interactive 3D cardiac anatomy"
           subtitle={
-            heartGlbAvailable
+            dissectMode
+              ? `Dissect mode · step ${dissectStep + 1}/${DISSECT_STEPS.length} · ${DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}`
+              : heartGlbAvailable
               ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
               : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
           }
           toggles={[
+            { label: "Dissect mode", active: dissectMode, onChange: () => { setDissectMode((d) => !d); setAutoRotate(false); } },
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
             { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
             { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
@@ -1021,11 +1035,12 @@ const CardiacAnatomyDiagram = () => {
                 <HeartModel
                   selected={selected}
                   onSelect={handleSelect}
-                  cutaway={cutaway}
+                  cutaway={cutaway || (dissectMode && activeLayers.internals)}
                   autoRotate={autoRotate}
                   rotationSpeed={0.18}
                   focusCategory={focusCategory}
-                  useGltf={heartGlbAvailable}
+                  useGltf={heartGlbAvailable && !dissectMode}
+                  layers={activeLayers}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
