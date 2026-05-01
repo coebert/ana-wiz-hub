@@ -153,6 +153,20 @@ const AcutePancreatitisTopic = () => {
           <PancreatitisAutodigestionDiagram />
         </div>
 
+        <DiagramSection
+          title="Axial CT Features of Severe Acute Pancreatitis"
+          intro={
+            <>
+              Contrast-enhanced CT (CECT) at 72–96 h after symptom onset is the imaging gold standard for assessing
+              severity, necrosis and local complications. Earlier scans systematically under-call necrosis. Use this
+              schematic to recognise the cardinal findings — and the ones that change management (gas in necrosis,
+              splanchnic vein thrombosis, pleural effusion as a Glasgow criterion).
+            </>
+          }
+        >
+          <SeverePancreatitisCTDiagram />
+        </DiagramSection>
+
         {/* Causes */}
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Causes — "I GET SMASHED"</h2>
