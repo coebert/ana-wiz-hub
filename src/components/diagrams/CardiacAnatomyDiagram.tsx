@@ -852,7 +852,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
           ))}
         </>
       )}
-      </>}
+      </FadeGroup>
 
       {/* ── Cutaway interior details ── */}
       {(cutaway || layers.internals) && (
