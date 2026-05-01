@@ -1,5 +1,6 @@
 import { useState, type CSSProperties } from "react";
 import { Card } from "@/components/ui/card";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, AlertTriangle, Sun, Moon } from "lucide-react";
@@ -137,6 +138,7 @@ export const CAMICUFlowchartDiagram = () => {
   const [caseId, setCaseId] = useState(CASES[0].id);
   const [step, setStep] = useState(0);
   const [previewTheme, setPreviewTheme] = useState<"auto" | "light" | "dark">("auto");
+  const isMobile = useIsMobile();
   const c = CASES.find((x) => x.id === caseId)!;
 
   // Determine outcome based on CAM-ICU rules:
@@ -207,7 +209,15 @@ export const CAMICUFlowchartDiagram = () => {
                 : "bg-secondary/20"
             }`}
           >
-            <svg viewBox="0 0 640 460" className="w-full h-auto">
+            <div className={isMobile ? "overflow-x-auto -mx-1 px-1" : ""}>
+              <svg
+                viewBox="0 0 640 460"
+                preserveAspectRatio="xMidYMid meet"
+                className="w-full h-auto block"
+                style={isMobile ? { minWidth: "520px" } : undefined}
+                role="img"
+                aria-label="CAM-ICU delirium screening flowchart"
+              >
               {/* Step 0: RASS */}
               <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
               <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -313,14 +323,18 @@ export const CAMICUFlowchartDiagram = () => {
               </text>
 
               <defs>
-                <marker id="cam-arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="hsl(var(--muted-foreground))" />
+                {/* markerUnits=strokeWidth → arrowheads scale with the path's stroke width,
+                    which in turn scales with the SVG when it's resized. This keeps markers
+                    visually proportional at every viewport. */}
+                <marker id="cam-arr" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--muted-foreground))" />
                 </marker>
-                <marker id="cam-arr-danger" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-                  <path d="M0,0 L8,4 L0,8 Z" fill="hsl(var(--destructive))" />
+                <marker id="cam-arr-danger" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
+                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--destructive))" />
                 </marker>
               </defs>
-            </svg>
+              </svg>
+            </div>
           </div>
 
           <div className="rounded-md p-3 bg-secondary/30 border border-border text-xs">
