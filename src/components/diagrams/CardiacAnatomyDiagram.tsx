@@ -672,7 +672,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       </FadeGroup>
 
       {/* ── Chambers ── */}
-      {layers.chambers && <>
+      <FadeGroup visible={layers.chambers} peelScale={1.04}>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -727,7 +727,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
           side={THREE.DoubleSide} />
       </mesh>
-      </>}
+      </FadeGroup>
 
       </>}
 
