@@ -426,6 +426,98 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
   return null;
 }
 
+// ── Animated peel wrapper ─────────────────────────────────────────────────────
+
+/**
+ * Wraps a layer's meshes and animates them in/out as the dissect stepper moves.
+ *
+ *  - When `visible` flips false the group stays mounted for `duration` ms while
+ *    its material opacity tweens to 0 and it scales outward (`peelScale`),
+ *    giving the impression of the layer being lifted off.
+ *  - When `visible` flips true the group fades up from 0 → original opacity and
+ *    settles back to scale 1.
+ *
+ * Original per-material opacity is captured on first sight so we don't clobber
+ * intentionally translucent layers (e.g. pericardium at opacity 0.18).
+ */
+const PEEL_DURATION = 0.55; // seconds
+
+function FadeGroup({
+  visible,
+  children,
+  peelScale = 1.06,
+  duration = PEEL_DURATION,
+}: {
+  visible: boolean;
+  children: React.ReactNode;
+  peelScale?: number;
+  duration?: number;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+  const [mounted, setMounted] = useState(visible);
+  const progress = useRef(visible ? 1 : 0); // 0 = fully hidden, 1 = fully visible
+  const baseOpacity = useRef<WeakMap<THREE.Material, number>>(new WeakMap());
+  const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (visible) {
+      if (unmountTimer.current) {
+        clearTimeout(unmountTimer.current);
+        unmountTimer.current = null;
+      }
+      setMounted(true);
+    } else if (mounted) {
+      // Defer unmount until the fade-out completes.
+      unmountTimer.current = setTimeout(() => setMounted(false), duration * 1000 + 30);
+    }
+    return () => {
+      if (unmountTimer.current && visible) {
+        clearTimeout(unmountTimer.current);
+        unmountTimer.current = null;
+      }
+    };
+  }, [visible, mounted, duration]);
+
+  useFrame((_, dt) => {
+    const g = groupRef.current;
+    if (!g) return;
+    const target = visible ? 1 : 0;
+    // Ease toward target. Rate chosen so 0→1 completes in ~`duration` seconds.
+    const rate = Math.min(1, dt / duration) * 4;
+    progress.current = THREE.MathUtils.lerp(progress.current, target, rate);
+    if (Math.abs(progress.current - target) < 0.002) progress.current = target;
+
+    // Peel: hidden layers float outward slightly as they fade.
+    const s = THREE.MathUtils.lerp(peelScale, 1, progress.current);
+    g.scale.setScalar(s);
+
+    // Apply opacity multiplier across every material in the subtree.
+    g.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (!mesh.isMesh) return;
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      for (const m of mats) {
+        const mat = m as THREE.Material & { opacity: number; transparent: boolean };
+        if (!mat) continue;
+        let base = baseOpacity.current.get(mat);
+        if (base === undefined) {
+          base = mat.opacity ?? 1;
+          baseOpacity.current.set(mat, base);
+        }
+        mat.transparent = true;
+        mat.opacity = base * progress.current;
+        // Fully hide depthWrite while transparent so we don't punch holes.
+        if ("depthWrite" in mat && progress.current < 0.99) {
+          (mat as THREE.Material & { depthWrite: boolean }).depthWrite = false;
+        }
+      }
+    });
+  });
+
+  if (!mounted) return null;
+  return <group ref={groupRef}>{children}</group>;
+}
+
 // ── Dissect-mode layers ───────────────────────────────────────────────────────
 
 export type DissectLayer =
