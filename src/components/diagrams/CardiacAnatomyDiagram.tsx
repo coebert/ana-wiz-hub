@@ -873,8 +873,20 @@ const CardiacAnatomyDiagram = () => {
   const [selected, setSelected] = useState<StructureKey>("lad");
   const [cutaway, setCutaway] = useState(false);
   const [showLabels, setShowLabels] = useState(true);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const [autoFocus, setAutoFocus] = useState(true);
+  const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
   const info = structures[selected];
   const categoryLabel = info.category === "coronary" ? "Coronary Artery" : info.category === "conduction" ? "Conducting System" : "Heart Valve";
+
+  // When the user picks a structure, surface its category and pause auto-rotate
+  // so the camera fly-to lands on a stable view.
+  const handleSelect = useCallback((k: StructureKey) => {
+    setSelected(k);
+    setAutoRotate(false);
+    const cat = structureCategory(k);
+    setFocusCategory((current) => (current === "all" || current === cat ? current : cat));
+  }, []);
 
   return (
     <div className="my-6 space-y-4">
@@ -884,6 +896,8 @@ const CardiacAnatomyDiagram = () => {
           subtitle="Drag to rotate · scroll to zoom · tap a structure for clinical detail"
           toggles={[
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
+            { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
+            { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
             { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
           ]}
         />
@@ -891,40 +905,86 @@ const CardiacAnatomyDiagram = () => {
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <div
             className="flex-shrink-0 w-full sm:w-[380px] h-[420px] rounded-lg border border-border overflow-hidden"
-            style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(220 10% 14%))" }}
+            style={{ background: "linear-gradient(135deg, hsl(var(--muted)), hsl(var(--background)))" }}
           >
-            <Canvas camera={{ position: [0, 0.3, 3.2], fov: 38 }} dpr={[1, 2]}>
-              <ambientLight intensity={0.4} />
-              <directionalLight position={[4, 6, 5]} intensity={0.9} color="#fff5ee" />
-              <directionalLight position={[-3, -2, -4]} intensity={0.25} color="#aabbdd" />
-              <pointLight position={[0, 0, 3]} intensity={0.3} color="#ffccbb" />
-              <pointLight position={[0, 2, -1]} intensity={0.2} color="#bbccff" />
+            <Canvas
+              camera={{ position: [0, 0.3, 3.2], fov: 38 }}
+              dpr={[1, 2]}
+              gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.05 }}
+            >
+              <ambientLight intensity={0.45} />
+              <hemisphereLight color="#ffd9c8" groundColor="#1a2540" intensity={0.35} />
+              <directionalLight position={[4, 6, 5]} intensity={0.95} color="#fff5ee" castShadow />
+              <directionalLight position={[-3, -2, -4]} intensity={0.3} color="#aabbdd" />
+              <pointLight position={[0, 0, 3]} intensity={0.35} color="#ffccbb" />
+              <pointLight position={[0, 2, -1]} intensity={0.22} color="#bbccff" />
               <Suspense fallback={null}>
-                <HeartModel selected={selected} onSelect={setSelected} cutaway={cutaway} />
+                <HeartModel
+                  selected={selected}
+                  onSelect={handleSelect}
+                  cutaway={cutaway}
+                  autoRotate={autoRotate}
+                  rotationSpeed={0.18}
+                  focusCategory={focusCategory}
+                />
+                <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
-              <OrbitControls enablePan={false} minDistance={1.8} maxDistance={5.5} />
+              <OrbitControls
+                makeDefault
+                enablePan={false}
+                minDistance={1.6}
+                maxDistance={5.5}
+                onStart={() => setAutoRotate(false)}
+              />
             </Canvas>
           </div>
 
           <div className="flex-1 min-w-0 space-y-3">
+            {/* Category focus chips */}
+            <div className="flex flex-wrap gap-1.5 text-[11px]">
+              <span className="text-muted-foreground mr-1 self-center">Focus:</span>
+              {([
+                { id: "all" as const, label: "All systems" },
+                { id: "coronary" as const, label: "Coronary" },
+                { id: "conduction" as const, label: "Conduction" },
+                { id: "valve" as const, label: "Valves" },
+              ]).map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  onClick={() => setFocusCategory(opt.id)}
+                  aria-pressed={focusCategory === opt.id}
+                  className={`px-2 py-0.5 rounded-full border transition-colors ${
+                    focusCategory === opt.id
+                      ? "border-primary bg-primary/10 text-foreground"
+                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+
             {showLabels && (
               <div className="flex flex-wrap gap-1">
-                {categories.map((cat) => (
-                  <div key={cat.key} className="flex flex-wrap gap-1">
-                    {cat.keys.map((k) => (
-                      <button
-                        key={k}
-                        onClick={() => setSelected(k)}
-                        className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
-                          selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
-                        }`}
-                        style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
-                      >
-                        {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
-                      </button>
-                    ))}
-                  </div>
-                ))}
+                {categories
+                  .filter((cat) => focusCategory === "all" || focusCategory === cat.key)
+                  .map((cat) => (
+                    <div key={cat.key} className="flex flex-wrap gap-1">
+                      {cat.keys.map((k) => (
+                        <button
+                          key={k}
+                          onClick={() => handleSelect(k)}
+                          className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
+                            selected === k ? "border-current font-bold" : "border-border text-muted-foreground hover:text-foreground"
+                          }`}
+                          style={selected === k ? { color: structures[k].color, borderColor: structures[k].color } : {}}
+                        >
+                          {structures[k].label.split("(")[0].replace("Left ", "L ").replace("Right ", "R ").trim()}
+                        </button>
+                      ))}
+                    </div>
+                  ))}
               </div>
             )}
 
