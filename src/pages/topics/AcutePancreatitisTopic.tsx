@@ -3,6 +3,8 @@ import { acutePancreatitisQuestions } from "@/data/quizzes";
 import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDiagram";
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
 import PancreatitisAutodigestionDiagram from "@/components/diagrams/PancreatitisAutodigestionDiagram";
+import SeverePancreatitisCTDiagram from "@/components/diagrams/SeverePancreatitisCTDiagram";
+import { DiagramSection } from "@/components/DiagramSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
 const objectives = [
