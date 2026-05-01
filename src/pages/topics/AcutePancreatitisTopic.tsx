@@ -4,6 +4,7 @@ import GlasgowImrieScoreDiagram from "@/components/diagrams/GlasgowImrieScoreDia
 import WaterfallFluidDiagram from "@/components/diagrams/WaterfallFluidDiagram";
 import PancreatitisAutodigestionDiagram from "@/components/diagrams/PancreatitisAutodigestionDiagram";
 import SeverePancreatitisCTDiagram from "@/components/diagrams/SeverePancreatitisCTDiagram";
+import PancreatitisEvolutionTimeline from "@/components/diagrams/PancreatitisEvolutionTimeline";
 import { DiagramSection } from "@/components/DiagramSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 
