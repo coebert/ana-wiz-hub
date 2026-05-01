@@ -7,12 +7,8 @@ import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
-import HeartBlockDiagram from "@/components/diagrams/HeartBlockDiagram";
-import BundleBranchBlockDiagram from "@/components/diagrams/BundleBranchBlockDiagram";
-import TachyarrhythmiaDiagram from "@/components/diagrams/TachyarrhythmiaDiagram";
-import BradyarrhythmiaDiagram from "@/components/diagrams/BradyarrhythmiaDiagram";
-import PacingDevicesDiagram from "@/components/diagrams/PacingDevicesDiagram";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
+import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
@@ -46,18 +42,41 @@ const CardiacAnatomyTopic = () => {
       diagrams={
         <>
           <CardiacAnatomyDiagram />
+
           <CoronarySelectionProvider initial="anterior">
-            <CoronaryTerritoryMapDiagram />
-            <CoronaryTreeDiagram />
-            <LVBullseyeDiagram />
-            <TwelveLeadEcgDiagram />
+            <DiagramTabs
+              title="Coronary territory mapping"
+              description="Pick a territory or coronary branch on any panel — the others stay in sync, so you can move between the anatomical tree, the LV bullseye and the 12-lead correlation."
+              tabs={[
+                {
+                  value: "territory",
+                  label: "Territory map",
+                  caption: "Anatomical projection of LAD, LCx and RCA territories on the heart silhouette.",
+                  content: <CoronaryTerritoryMapDiagram />,
+                },
+                {
+                  value: "tree",
+                  label: "Coronary tree",
+                  caption: "Branching diagram from the aortic root to PDA — toggle dominance and named branches.",
+                  content: <CoronaryTreeDiagram />,
+                },
+                {
+                  value: "bullseye",
+                  label: "LV bullseye",
+                  caption: "AHA 17-segment bullseye coloured by supplying coronary artery.",
+                  content: <LVBullseyeDiagram />,
+                },
+                {
+                  value: "ecg",
+                  label: "12-lead correlation",
+                  caption: "Which leads see each territory — predict the culprit vessel from ST changes.",
+                  content: <TwelveLeadEcgDiagram />,
+                },
+              ]}
+            />
           </CoronarySelectionProvider>
+
           <CardiacConductionDiagram />
-          <HeartBlockDiagram />
-          <BundleBranchBlockDiagram />
-          <TachyarrhythmiaDiagram />
-          <BradyarrhythmiaDiagram />
-          <PacingDevicesDiagram />
         </>
       }
       coreConcepts={
