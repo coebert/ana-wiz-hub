@@ -360,6 +360,49 @@ function ClipController({ active }: { active: boolean }) {
   return null;
 }
 
+/**
+ * Continuously frames the heart so it fits the canvas across screen sizes.
+ *
+ * The heart's working diameter is ~TARGET_DIAMETER (2.6 world units, set in
+ * GltfHeartModel). We compute the camera distance needed for that sphere to
+ * fit both vertically AND horizontally given the live canvas aspect ratio,
+ * then nudge fov on very narrow viewports so portrait phones don't crop the
+ * apex/base. Re-runs whenever the canvas resizes (rotation, split-screen,
+ * responsive container collapse, etc.).
+ */
+function ResponsiveHeartRig({ paddingFactor = 1.18 }: { paddingFactor?: number }) {
+  const { camera, size } = useThree() as { camera: THREE.PerspectiveCamera; size: { width: number; height: number } };
+  const HEART_RADIUS = 1.55; // a touch larger than TARGET_DIAMETER/2 for safety
+
+  useEffect(() => {
+    if (!camera.isPerspectiveCamera) return;
+    const aspect = size.width / Math.max(1, size.height);
+
+    // On narrow portrait viewports, widen fov so the heart doesn't feel cramped.
+    // On very wide displays, tighten fov for a more cinematic frame.
+    const baseFov = aspect < 0.75 ? 46 : aspect < 1 ? 42 : aspect < 1.4 ? 38 : 34;
+    camera.fov = baseFov;
+
+    // Distance such that the heart sphere fits both axes.
+    const vFov = (baseFov * Math.PI) / 180;
+    const distV = HEART_RADIUS / Math.tan(vFov / 2);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * aspect);
+    const distH = HEART_RADIUS / Math.tan(hFov / 2);
+    const dist = Math.max(distV, distH) * paddingFactor;
+
+    // Preserve current view direction; just rescale distance from origin.
+    const dir = camera.position.clone();
+    if (dir.lengthSq() < 1e-4) dir.set(0, 0.3, 1);
+    dir.normalize();
+    camera.position.copy(dir.multiplyScalar(dist));
+    camera.near = Math.max(0.05, dist * 0.02);
+    camera.far = Math.max(50, dist * 20);
+    camera.updateProjectionMatrix();
+  }, [camera, size.width, size.height, paddingFactor]);
+
+  return null;
+}
+
 /** Smoothly fly the OrbitControls target & camera position toward the selected structure. */
 function CameraFocus({ target, enabled }: { target: [number, number, number]; enabled: boolean }) {
   const { camera, controls } = useThree() as { camera: THREE.PerspectiveCamera; controls: any };
