@@ -423,6 +423,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
       <ClipController active={cutaway} />
 
+      {useGltf && (
+        <Suspense fallback={null}>
+          <GltfHeartModel autoRotate={false} opacity={cutaway ? 0.55 : 1} />
+        </Suspense>
+      )}
+
+      {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
       <mesh geometry={heartGeo}>
         <meshPhysicalMaterial
