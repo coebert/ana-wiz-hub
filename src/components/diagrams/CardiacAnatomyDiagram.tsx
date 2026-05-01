@@ -1204,6 +1204,7 @@ const CardiacAnatomyDiagram = () => {
                   focusCategory={focusCategory}
                   useGltf={heartGlbAvailable && !dissectMode}
                   layers={activeLayers}
+                  emphasis={dissectMode ? DISSECT_STEPS[dissectStep].emphasis : null}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
