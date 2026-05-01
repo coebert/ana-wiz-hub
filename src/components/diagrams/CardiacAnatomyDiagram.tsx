@@ -383,9 +383,57 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
   return null;
 }
 
+// ── Dissect-mode layers ───────────────────────────────────────────────────────
+
+export type DissectLayer =
+  | "pericardium"
+  | "epicardium"
+  | "myocardium"
+  | "chambers"
+  | "internals"
+  | "valves"
+  | "conduction"
+  | "coronaries";
+
+export interface LayerVisibility {
+  pericardium: boolean;
+  epicardium: boolean;
+  myocardium: boolean;
+  chambers: boolean;
+  internals: boolean;
+  valves: boolean;
+  conduction: boolean;
+  coronaries: boolean;
+}
+
+const ALL_VISIBLE: LayerVisibility = {
+  pericardium: true, epicardium: true, myocardium: true, chambers: true,
+  internals: false, valves: true, conduction: true, coronaries: true,
+};
+
+/** 8 ordered dissection steps — each peels one layer further inward / reveals the next. */
+export const DISSECT_STEPS: { id: DissectLayer; label: string; teaching: string; visible: LayerVisibility }[] = [
+  { id: "pericardium", label: "1. Pericardium intact", teaching: "Fibrous + serous (parietal & visceral) sac. ~15–50 mL pericardial fluid in the cavity. Reflects onto great vessels at the base. Phrenic nerves run on its lateral surface — protect during cardiac surgery.",
+    visible: { ...ALL_VISIBLE, internals: false, conduction: false, coronaries: false } },
+  { id: "epicardium", label: "2. Reflect pericardium → epicardium & fat", teaching: "Visceral pericardium = epicardium. Epicardial fat sits along the AV and interventricular grooves, marking the path of the coronary arteries and coronary sinus.",
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false, coronaries: false } },
+  { id: "coronaries", label: "3. Expose coronary tree", teaching: "Left main → LAD + LCx; RCA from right sinus. Diagonals over anterolateral LV, OMs over lateral LV, septals into IVS. PDA defines dominance (right in 85%). Coronary sinus drains into RA in posterior AV groove.",
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false } },
+  { id: "myocardium", label: "4. Peel myocardium", teaching: "LV wall 12–15 mm (high-pressure systemic pump); RV wall 3–5 mm (crescent, low-pressure pulmonary pump). Spiral myofibre orientation — endocardium injures first in subendocardial ischaemia.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, internals: false, conduction: false } },
+  { id: "chambers", label: "5. Open chambers", teaching: "RA/RV anterior-right, LA/LV posterior-left. Atria thin-walled with appendages (LAA = thrombus risk in AF). Interventricular septum: muscular below, membranous above (close to AV node and bundle of His).",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, internals: false, conduction: false } },
+  { id: "internals", label: "6. Internal anatomy & papillary muscles", teaching: "Trabeculae carneae line ventricles. Moderator band carries right bundle to anterior papillary muscle. Mitral has 2 papillaries (AL dual supply, PM single — vulnerable). Tricuspid has 3. Crista terminalis & pectinates in RA; fossa ovalis on interatrial septum.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false } },
+  { id: "valves", label: "7. Valvular skeleton", teaching: "Fibrous skeleton anchors all 4 valves and electrically isolates atria from ventricles (only the bundle of His crosses). AV valves (mitral, tricuspid) have chordae + papillaries; semilunar valves (aortic, pulmonary) have 3 cusps and sinuses of Valsalva (origin of coronaries from R + L cusps).",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false, coronaries: false } },
+  { id: "conduction", label: "8. Conduction system", teaching: "SA node (RA, near SVC) → internodal tracts → AV node (Koch's triangle) → bundle of His → L (anterior + posterior fascicles) and R bundle branches → Purkinje network. AV node delay (~0.1 s) allows atrial kick before ventricular systole.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, valves: false, coronaries: false } },
+];
+
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
@@ -393,6 +441,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
   rotationSpeed: number;
   focusCategory: "all" | "coronary" | "conduction" | "valve";
   useGltf: boolean;
+  layers: LayerVisibility;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
