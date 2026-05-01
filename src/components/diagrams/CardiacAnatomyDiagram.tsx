@@ -447,17 +447,30 @@ function FadeGroup({
   children,
   peelScale = 1.06,
   duration = PEEL_DURATION,
+  dim = false,
+  emphasised = false,
 }: {
   visible: boolean;
   children: ReactNode;
   peelScale?: number;
   duration?: number;
+  /** When true (and still visible), fade this layer to a recessed opacity so
+   *  the emphasised layer reads through. */
+  dim?: boolean;
+  /** When true, hold the layer at full opacity and add a subtle scale lift
+   *  so it pops against the dimmed surroundings. */
+  emphasised?: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const [mounted, setMounted] = useState(visible);
   const progress = useRef(visible ? 1 : 0); // 0 = fully hidden, 1 = fully visible
+  const dimProgress = useRef(dim ? 1 : 0); // 0 = full opacity, 1 = recessed
+  const emphProgress = useRef(emphasised ? 1 : 0);
   const baseOpacity = useRef<WeakMap<THREE.Material, number>>(new WeakMap());
   const unmountTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const DIM_FLOOR = 0.28; // recessed layers fade to ~28% of their base opacity
+  const EMPH_LIFT = 1.025; // emphasised layers nudge outward ~2.5% for pop
 
   useEffect(() => {
     if (visible) {
@@ -482,16 +495,23 @@ function FadeGroup({
     const g = groupRef.current;
     if (!g) return;
     const target = visible ? 1 : 0;
-    // Ease toward target. Rate chosen so 0→1 completes in ~`duration` seconds.
     const rate = Math.min(1, dt / duration) * 4;
     progress.current = THREE.MathUtils.lerp(progress.current, target, rate);
     if (Math.abs(progress.current - target) < 0.002) progress.current = target;
 
-    // Peel: hidden layers float outward slightly as they fade.
-    const s = THREE.MathUtils.lerp(peelScale, 1, progress.current);
-    g.scale.setScalar(s);
+    // Tween dim/emphasis at a similar rate so highlight changes feel snappy.
+    dimProgress.current = THREE.MathUtils.lerp(dimProgress.current, dim ? 1 : 0, rate);
+    emphProgress.current = THREE.MathUtils.lerp(emphProgress.current, emphasised ? 1 : 0, rate);
 
-    // Apply opacity multiplier across every material in the subtree.
+    // Peel-out scale when hiding + emphasis lift when in focus.
+    const peel = THREE.MathUtils.lerp(peelScale, 1, progress.current);
+    const lift = THREE.MathUtils.lerp(1, EMPH_LIFT, emphProgress.current);
+    g.scale.setScalar(peel * lift);
+
+    // Effective opacity multiplier for this frame.
+    const dimMul = THREE.MathUtils.lerp(1, DIM_FLOOR, dimProgress.current);
+    const opacityMul = progress.current * dimMul;
+
     g.traverse((obj) => {
       const mesh = obj as THREE.Mesh;
       if (!mesh.isMesh) return;
@@ -505,9 +525,8 @@ function FadeGroup({
           baseOpacity.current.set(mat, base);
         }
         mat.transparent = true;
-        mat.opacity = base * progress.current;
-        // Fully hide depthWrite while transparent so we don't punch holes.
-        if ("depthWrite" in mat && progress.current < 0.99) {
+        mat.opacity = base * opacityMul;
+        if ("depthWrite" in mat && opacityMul < 0.99) {
           (mat as THREE.Material & { depthWrite: boolean }).depthWrite = false;
         }
       }
