@@ -629,7 +629,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      {layers.epicardium && (
+      <FadeGroup visible={layers.epicardium} peelScale={1.08}>
         <mesh geometry={heartGeo}>
           <meshPhysicalMaterial
             color={myoColor} roughness={0.7} metalness={0.02}
@@ -639,10 +639,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clearcoat={0.15} clearcoatRoughness={0.6}
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
-      {layers.myocardium && (
+      <FadeGroup visible={layers.myocardium} peelScale={1.05}>
         <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
           <meshPhysicalMaterial
             color="#7a2828" roughness={0.78}
@@ -651,10 +651,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Endocardium (inner surface) ── */}
-      {layers.chambers && (
+      <FadeGroup visible={layers.chambers} peelScale={1.03}>
         <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
           <meshPhysicalMaterial
             color={endoColor} roughness={0.8}
@@ -663,13 +663,13 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      {layers.epicardium && <>
+      <FadeGroup visible={layers.epicardium} peelScale={1.06}>
         <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
         <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
-      </>}
+      </FadeGroup>
 
       {/* ── Chambers ── */}
       {layers.chambers && <>
