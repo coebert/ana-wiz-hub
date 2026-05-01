@@ -910,7 +910,11 @@ const CardiacAnatomyDiagram = () => {
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
           title="Interactive 3D cardiac anatomy"
-          subtitle="Drag to rotate · scroll to zoom · tap a structure for clinical detail"
+          subtitle={
+            heartGlbAvailable
+              ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
+              : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
+          }
           toggles={[
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
             { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
