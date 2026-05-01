@@ -174,7 +174,39 @@ export const CAMICUFlowchartDiagram = () => {
 
         {/* === FLOWCHART === */}
         <TabsContent value="flow" className="space-y-3">
-          <div className="rounded-lg border border-border bg-secondary/20 p-3">
+          <div className="flex flex-wrap items-center justify-end gap-1.5 text-[11px]">
+            <span className="text-muted-foreground mr-1">Theme preview:</span>
+            {([
+              { id: "auto", label: "Auto", icon: null },
+              { id: "light", label: "Light", icon: <Sun className="h-3 w-3" /> },
+              { id: "dark", label: "Dark", icon: <Moon className="h-3 w-3" /> },
+            ] as const).map((opt) => (
+              <button
+                key={opt.id}
+                type="button"
+                onClick={() => setPreviewTheme(opt.id)}
+                aria-pressed={previewTheme === opt.id}
+                className={`inline-flex items-center gap-1 px-2 py-1 rounded border transition-colors ${
+                  previewTheme === opt.id
+                    ? "border-primary bg-primary/10 text-foreground"
+                    : "border-border text-muted-foreground hover:bg-muted/50"
+                }`}
+              >
+                {opt.icon}
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          <div
+            style={previewTheme === "light" ? LIGHT_TOKENS : previewTheme === "dark" ? DARK_TOKENS : undefined}
+            className={`rounded-lg border border-border p-3 ${
+              previewTheme === "dark"
+                ? "bg-background"
+                : previewTheme === "light"
+                ? "bg-background"
+                : "bg-secondary/20"
+            }`}
+          >
             <svg viewBox="0 0 640 460" className="w-full h-auto">
               {/* Step 0: RASS */}
               <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.85" />
