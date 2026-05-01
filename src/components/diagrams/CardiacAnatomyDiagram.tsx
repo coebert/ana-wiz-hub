@@ -95,7 +95,34 @@ const categories = [
   { key: "valve" as const, label: "Valves", keys: ["mitral", "aortic", "tricuspid", "pulmonary"] as StructureKey[] },
 ];
 
-// ── Geometry helpers ──────────────────────────────────────────────────────────
+/** World-space focal points (in the unrotated heart frame) for camera fly-to. */
+const focalPoints: Record<StructureKey, [number, number, number]> = {
+  lca: [-0.05, 0.85, 0.25],
+  lad: [-0.35, 0.15, 0.32],
+  diagonal: [-0.55, 0.0, 0.18],
+  "septal-perf": [-0.05, 0.0, 0.18],
+  lcx: [-0.55, 0.55, -0.05],
+  om: [-0.7, 0.2, -0.05],
+  rca: [0.55, 0.45, 0.15],
+  am: [0.55, 0.05, 0.3],
+  pda: [0.15, -0.5, -0.35],
+  "coronary-sinus": [-0.1, 0.45, -0.4],
+  "sa-node": [0.48, 1.0, -0.05],
+  "av-node": [0.22, 0.48, -0.12],
+  "bundle-his": [0.12, 0.35, -0.05],
+  "left-bundle": [-0.04, 0.1, -0.02],
+  "left-anterior-fascicle": [-0.22, -0.25, 0.04],
+  "left-posterior-fascicle": [-0.12, -0.3, -0.1],
+  "right-bundle": [0.12, -0.1, 0.03],
+  purkinje: [0, -0.6, 0.05],
+  mitral: [-0.22, 0.48, 0],
+  aortic: [-0.12, 0.92, 0.15],
+  tricuspid: [0.18, 0.5, 0.08],
+  pulmonary: [0.12, 0.85, 0.32],
+};
+
+/** Map a structure to its category for focus-mode dimming. */
+const structureCategory = (k: StructureKey): "coronary" | "conduction" | "valve" => structures[k].category;
 
 /** Create anatomical heart shape using lathe geometry with asymmetric profile */
 function createAnatomicalHeartGeo() {
