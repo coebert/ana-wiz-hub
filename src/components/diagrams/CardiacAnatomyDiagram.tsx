@@ -383,13 +383,14 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
 
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
   autoRotate: boolean;
   rotationSpeed: number;
   focusCategory: "all" | "coronary" | "conduction" | "valve";
+  useGltf: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
