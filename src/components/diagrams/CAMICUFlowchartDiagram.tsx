@@ -136,6 +136,7 @@ const CASES: Case[] = [
 export const CAMICUFlowchartDiagram = () => {
   const [caseId, setCaseId] = useState(CASES[0].id);
   const [step, setStep] = useState(0);
+  const [previewTheme, setPreviewTheme] = useState<"auto" | "light" | "dark">("auto");
   const c = CASES.find((x) => x.id === caseId)!;
 
   // Determine outcome based on CAM-ICU rules:
