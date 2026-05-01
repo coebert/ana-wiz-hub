@@ -383,9 +383,57 @@ function CameraFocus({ target, enabled }: { target: [number, number, number]; en
   return null;
 }
 
+// ── Dissect-mode layers ───────────────────────────────────────────────────────
+
+export type DissectLayer =
+  | "pericardium"
+  | "epicardium"
+  | "myocardium"
+  | "chambers"
+  | "internals"
+  | "valves"
+  | "conduction"
+  | "coronaries";
+
+export interface LayerVisibility {
+  pericardium: boolean;
+  epicardium: boolean;
+  myocardium: boolean;
+  chambers: boolean;
+  internals: boolean;
+  valves: boolean;
+  conduction: boolean;
+  coronaries: boolean;
+}
+
+const ALL_VISIBLE: LayerVisibility = {
+  pericardium: true, epicardium: true, myocardium: true, chambers: true,
+  internals: false, valves: true, conduction: true, coronaries: true,
+};
+
+/** 8 ordered dissection steps — each peels one layer further inward / reveals the next. */
+export const DISSECT_STEPS: { id: DissectLayer; label: string; teaching: string; visible: LayerVisibility }[] = [
+  { id: "pericardium", label: "1. Pericardium intact", teaching: "Fibrous + serous (parietal & visceral) sac. ~15–50 mL pericardial fluid in the cavity. Reflects onto great vessels at the base. Phrenic nerves run on its lateral surface — protect during cardiac surgery.",
+    visible: { ...ALL_VISIBLE, internals: false, conduction: false, coronaries: false } },
+  { id: "epicardium", label: "2. Reflect pericardium → epicardium & fat", teaching: "Visceral pericardium = epicardium. Epicardial fat sits along the AV and interventricular grooves, marking the path of the coronary arteries and coronary sinus.",
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false, coronaries: false } },
+  { id: "coronaries", label: "3. Expose coronary tree", teaching: "Left main → LAD + LCx; RCA from right sinus. Diagonals over anterolateral LV, OMs over lateral LV, septals into IVS. PDA defines dominance (right in 85%). Coronary sinus drains into RA in posterior AV groove.",
+    visible: { ...ALL_VISIBLE, pericardium: false, internals: false, conduction: false } },
+  { id: "myocardium", label: "4. Peel myocardium", teaching: "LV wall 12–15 mm (high-pressure systemic pump); RV wall 3–5 mm (crescent, low-pressure pulmonary pump). Spiral myofibre orientation — endocardium injures first in subendocardial ischaemia.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, internals: false, conduction: false } },
+  { id: "chambers", label: "5. Open chambers", teaching: "RA/RV anterior-right, LA/LV posterior-left. Atria thin-walled with appendages (LAA = thrombus risk in AF). Interventricular septum: muscular below, membranous above (close to AV node and bundle of His).",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, internals: false, conduction: false } },
+  { id: "internals", label: "6. Internal anatomy & papillary muscles", teaching: "Trabeculae carneae line ventricles. Moderator band carries right bundle to anterior papillary muscle. Mitral has 2 papillaries (AL dual supply, PM single — vulnerable). Tricuspid has 3. Crista terminalis & pectinates in RA; fossa ovalis on interatrial septum.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false } },
+  { id: "valves", label: "7. Valvular skeleton", teaching: "Fibrous skeleton anchors all 4 valves and electrically isolates atria from ventricles (only the bundle of His crosses). AV valves (mitral, tricuspid) have chordae + papillaries; semilunar valves (aortic, pulmonary) have 3 cusps and sinuses of Valsalva (origin of coronaries from R + L cusps).",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, conduction: false, coronaries: false } },
+  { id: "conduction", label: "8. Conduction system", teaching: "SA node (RA, near SVC) → internodal tracts → AV node (Koch's triangle) → bundle of His → L (anterior + posterior fascicles) and R bundle branches → Purkinje network. AV node delay (~0.1 s) allows atrial kick before ventricular systole.",
+    visible: { ...ALL_VISIBLE, pericardium: false, epicardium: false, myocardium: false, chambers: false, internals: true, valves: false, coronaries: false } },
+];
+
 // ── Main heart model ──────────────────────────────────────────────────────────
 
-function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf }: {
+function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, focusCategory, useGltf, layers }: {
   selected: StructureKey;
   onSelect: (k: StructureKey) => void;
   cutaway: boolean;
@@ -393,6 +441,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
   rotationSpeed: number;
   focusCategory: "all" | "coronary" | "conduction" | "valve";
   useGltf: boolean;
+  layers: LayerVisibility;
 }) {
   const groupRef = useRef<THREE.Group>(null);
   const clipPlane = useMemo(() => new THREE.Plane(new THREE.Vector3(0, 0, -1), 0.02), []);
@@ -425,7 +474,19 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
     <group ref={groupRef} position={[0, -0.1, 0]} rotation={[0, 0, -0.2]}>
       <ClipController active={cutaway} />
 
-      {useGltf && (
+      {/* ── Pericardial sac (translucent outer shell) ── */}
+      {layers.pericardium && (
+        <mesh scale={[1.18, 1.12, 1.18]}>
+          <sphereGeometry args={[1.1, 24, 24]} />
+          <meshPhysicalMaterial
+            color="#d8c8b0" roughness={0.85} metalness={0}
+            transparent opacity={0.18} side={THREE.DoubleSide}
+            depthWrite={false} clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
+
+      {useGltf && layers.epicardium && (
         <Suspense fallback={null}>
           <GltfHeartModel autoRotate={false} opacity={cutaway ? 0.55 : 1} />
         </Suspense>
@@ -433,31 +494,50 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
 
       {!useGltf && <>
       {/* ── Epicardium (outer surface) ── */}
-      <mesh geometry={heartGeo}>
-        <meshPhysicalMaterial
-          color={myoColor} roughness={0.7} metalness={0.02}
-          transparent opacity={cutaway ? 0.45 : 0.55}
-          side={THREE.DoubleSide} depthWrite={!cutaway}
-          clippingPlanes={clip} clipShadows
-          clearcoat={0.15} clearcoatRoughness={0.6}
-        />
-      </mesh>
+      {layers.epicardium && (
+        <mesh geometry={heartGeo}>
+          <meshPhysicalMaterial
+            color={myoColor} roughness={0.7} metalness={0.02}
+            transparent opacity={cutaway ? 0.45 : 0.55}
+            side={THREE.DoubleSide} depthWrite={!cutaway}
+            clippingPlanes={clip} clipShadows
+            clearcoat={0.15} clearcoatRoughness={0.6}
+          />
+        </mesh>
+      )}
+
+      {/* ── Myocardium (deeper muscular layer, slightly inset) ── */}
+      {layers.myocardium && (
+        <mesh geometry={heartGeo} scale={[0.93, 0.94, 0.93]}>
+          <meshPhysicalMaterial
+            color="#7a2828" roughness={0.78}
+            transparent opacity={layers.epicardium ? 0.4 : 0.7}
+            side={THREE.DoubleSide}
+            clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
 
       {/* ── Endocardium (inner surface) ── */}
-      <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
-        <meshPhysicalMaterial
-          color={endoColor} roughness={0.8}
-          transparent opacity={cutaway ? 0.5 : 0.15}
-          side={THREE.DoubleSide}
-          clippingPlanes={clip} clipShadows
-        />
-      </mesh>
+      {layers.chambers && (
+        <mesh geometry={heartGeo} scale={[0.85, 0.87, 0.85]}>
+          <meshPhysicalMaterial
+            color={endoColor} roughness={0.8}
+            transparent opacity={cutaway ? 0.5 : 0.15}
+            side={THREE.DoubleSide}
+            clippingPlanes={clip} clipShadows
+          />
+        </mesh>
+      )}
 
       {/* ── Epicardial fat (along AV groove and anterior surface) ── */}
-      <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
-      <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
+      {layers.epicardium && <>
+        <Vessel points={[[-0.7, 0.5, 0.3], [0, 0.55, 0.65], [0.6, 0.45, 0.3]]} color={fatColor} radius={0.04} />
+        <Vessel points={[[-0.5, 0.5, -0.2], [0, 0.55, -0.45], [0.5, 0.45, -0.2]]} color={fatColor} radius={0.03} />
+      </>}
 
       {/* ── Chambers ── */}
+      {layers.chambers && <>
       {/* Right atrium — posterior-right, thin-walled */}
       <mesh position={[0.42, 0.75, -0.08]}>
         <sphereGeometry args={[0.38, 20, 20]} />
@@ -512,6 +592,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         <meshPhysicalMaterial color={septumColor} transparent opacity={cutaway ? 0.5 : 0.2} roughness={0.7}
           side={THREE.DoubleSide} />
       </mesh>
+      </>}
 
       </>}
 
@@ -546,6 +627,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel points={[[-0.35, 0.62, -0.45], [-0.38, 0.68, -0.25]]} color="#8A3040" radius={0.035} clip={clip} />
 
       {/* ── Coronary Arteries ── */}
+      {layers.coronaries && <>
       {/* LMCA — short trunk from left aortic sinus */}
       <Vessel points={[[-0.15, 0.9, 0.3], [-0.28, 0.72, 0.45], [-0.4, 0.55, 0.5]]}
         color={structures.lca.color} radius={0.032} active={on("lca")} onClick={pick("lca")} clip={clip} />
@@ -596,8 +678,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <Vessel
         points={[[-0.5, 0.35, -0.38], [-0.3, 0.42, -0.42], [0, 0.48, -0.4], [0.25, 0.52, -0.35], [0.38, 0.58, -0.25]]}
         color={structures["coronary-sinus"].color} radius={0.035} active={on("coronary-sinus")} onClick={pick("coronary-sinus")} clip={clip} />
+      </>}
 
       {/* ── Valves ── */}
+      {layers.valves && <>
       <Valve position={[-0.22, 0.48, 0]} rotation={[0.35, 0, 0.1]}
         color={structures.mitral.color} active={on("mitral")} onClick={pick("mitral")} clip={clip} innerR={0.12} />
       <Valve position={[0.18, 0.5, 0.08]} rotation={[0.3, 0, -0.1]}
@@ -606,30 +690,22 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
         color={structures.aortic.color} active={on("aortic")} onClick={pick("aortic")} clip={clip} innerR={0.08} />
       <Valve position={[0.12, 0.85, 0.32]} rotation={[0.35, 0.15, 0]}
         color={structures.pulmonary.color} active={on("pulmonary")} onClick={pick("pulmonary")} clip={clip} innerR={0.08} />
+      </>}
 
       {/* ── Conduction System ── */}
+      {layers.conduction && <>
       <Node position={[0.48, 1.0, -0.05]} color={structures["sa-node"].color} active={on("sa-node")} onClick={pick("sa-node")} size={0.07} clip={clip} />
       <Node position={[0.22, 0.48, -0.12]} color={structures["av-node"].color} active={on("av-node")} onClick={pick("av-node")} size={0.06} clip={clip} />
       <Vessel points={[[0.22, 0.48, -0.12], [0.12, 0.35, -0.05], [0.04, 0.22, 0]]}
         color={structures["bundle-his"].color} radius={0.018} active={on("bundle-his")} onClick={pick("bundle-his")} clip={clip} />
-
-      {/* Left bundle branch — broad sheet, then splits */}
       <Vessel points={[[0.04, 0.22, 0], [-0.02, 0.12, -0.02], [-0.06, 0.0, -0.02]]}
         color={structures["left-bundle"].color} radius={0.016} active={on("left-bundle")} onClick={pick("left-bundle")} clip={clip} />
-
-      {/* Left anterior fascicle — thin, to anterolateral papillary muscle */}
       <Vessel points={[[-0.06, 0.0, -0.02], [-0.12, -0.15, 0.02], [-0.22, -0.3, 0.05], [-0.38, -0.42, 0.06]]}
         color={structures["left-anterior-fascicle"].color} radius={0.012} active={on("left-anterior-fascicle")} onClick={pick("left-anterior-fascicle")} clip={clip} />
-
-      {/* Left posterior fascicle — thick, to posteromedial papillary muscle */}
       <Vessel points={[[-0.06, 0.0, -0.02], [-0.08, -0.18, -0.06], [-0.12, -0.35, -0.1], [-0.18, -0.45, -0.14]]}
         color={structures["left-posterior-fascicle"].color} radius={0.014} active={on("left-posterior-fascicle")} onClick={pick("left-posterior-fascicle")} clip={clip} />
-
-      {/* Right bundle branch */}
       <Vessel points={[[0.04, 0.22, 0], [0.1, 0.05, 0.02], [0.14, -0.2, 0.04], [0.14, -0.6, 0.03]]}
         color={structures["right-bundle"].color} radius={0.015} active={on("right-bundle")} onClick={pick("right-bundle")} clip={clip} />
-
-      {/* Purkinje terminal nodes */}
       <Node position={[-0.38, -0.44, 0.06]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
       <Node position={[-0.18, -0.47, -0.14]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
       <Node position={[0.14, -0.62, 0.03]} color={structures.purkinje.color} active={on("purkinje")} onClick={pick("purkinje")} size={0.035} clip={clip} />
@@ -641,9 +717,10 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
           ))}
         </>
       )}
+      </>}
 
       {/* ── Cutaway interior details ── */}
-      {cutaway && (
+      {(cutaway || layers.internals) && (
         <group>
           {/* Fossa ovalis */}
           <mesh position={[0, 0.75, -0.05]} rotation={[0.15, 0, 0.1]}>
@@ -888,6 +965,8 @@ const CardiacAnatomyDiagram = () => {
   const [autoRotate, setAutoRotate] = useState(true);
   const [autoFocus, setAutoFocus] = useState(true);
   const [focusCategory, setFocusCategory] = useState<"all" | "coronary" | "conduction" | "valve">("all");
+  const [dissectMode, setDissectMode] = useState(false);
+  const [dissectStep, setDissectStep] = useState(0);
   const isMobile = useIsMobile();
   const heartGlbAvailable = useHeartAssetAvailable();
   const info = structures[selected];
@@ -895,6 +974,12 @@ const CardiacAnatomyDiagram = () => {
 
   // Kick off the HEAD probe once on mount
   useEffect(() => { void probeHeartAsset(); }, []);
+
+  // Active layer visibility — dissect mode drives it from the current step,
+  // otherwise everything is visible (legacy behaviour preserved).
+  const activeLayers: LayerVisibility = dissectMode
+    ? DISSECT_STEPS[dissectStep].visible
+    : { ...ALL_VISIBLE, internals: cutaway };
 
   // When the user picks a structure, surface its category and pause auto-rotate
   // so the camera fly-to lands on a stable view.
@@ -905,17 +990,23 @@ const CardiacAnatomyDiagram = () => {
     setFocusCategory((current) => (current === "all" || current === cat ? current : cat));
   }, []);
 
+  const stepNext = useCallback(() => setDissectStep((s) => Math.min(DISSECT_STEPS.length - 1, s + 1)), []);
+  const stepPrev = useCallback(() => setDissectStep((s) => Math.max(0, s - 1)), []);
+
   return (
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
           title="Interactive 3D cardiac anatomy"
           subtitle={
-            heartGlbAvailable
+            dissectMode
+              ? `Dissect mode · step ${dissectStep + 1}/${DISSECT_STEPS.length} · ${DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}`
+              : heartGlbAvailable
               ? "Realistic GLB heart loaded · drag to rotate · scroll to zoom · tap a chip"
               : "Drag to rotate · scroll to zoom · tap a structure for clinical detail"
           }
           toggles={[
+            { label: "Dissect mode", active: dissectMode, onChange: () => { setDissectMode((d) => !d); setAutoRotate(false); } },
             { label: "Cross-section", active: cutaway, onChange: () => setCutaway((c) => !c) },
             { label: "Auto-rotate", active: autoRotate, onChange: () => setAutoRotate((s) => !s) },
             { label: "Camera fly-to", active: autoFocus, onChange: () => setAutoFocus((s) => !s) },
@@ -944,11 +1035,12 @@ const CardiacAnatomyDiagram = () => {
                 <HeartModel
                   selected={selected}
                   onSelect={handleSelect}
-                  cutaway={cutaway}
+                  cutaway={cutaway || (dissectMode && activeLayers.internals)}
                   autoRotate={autoRotate}
                   rotationSpeed={0.18}
                   focusCategory={focusCategory}
-                  useGltf={heartGlbAvailable}
+                  useGltf={heartGlbAvailable && !dissectMode}
+                  layers={activeLayers}
                 />
                 <CameraFocus target={focalPoints[selected]} enabled={autoFocus} />
               </Suspense>
@@ -963,6 +1055,68 @@ const CardiacAnatomyDiagram = () => {
           </div>
 
           <div className="flex-1 min-w-0 space-y-3">
+            {/* Dissect-mode stepper */}
+            {dissectMode && (
+              <div className="rounded-lg border border-primary/40 bg-primary/5 p-3 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-semibold text-foreground">
+                    Layer {dissectStep + 1} of {DISSECT_STEPS.length}
+                  </p>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={stepPrev}
+                      disabled={dissectStep === 0}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label="Previous layer"
+                    >‹ Prev</button>
+                    <button
+                      type="button"
+                      onClick={stepNext}
+                      disabled={dissectStep === DISSECT_STEPS.length - 1}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-primary bg-primary/15 text-foreground hover:bg-primary/25 disabled:opacity-40 disabled:cursor-not-allowed"
+                      aria-label="Peel next layer"
+                    >Peel ›</button>
+                    <button
+                      type="button"
+                      onClick={() => setDissectStep(0)}
+                      className="text-[11px] px-2 py-0.5 rounded-md border border-border bg-background hover:bg-muted/50"
+                      aria-label="Reset dissection"
+                    >↺</button>
+                  </div>
+                </div>
+
+                {/* Step rail */}
+                <div className="flex flex-wrap gap-1">
+                  {DISSECT_STEPS.map((s, i) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setDissectStep(i)}
+                      aria-pressed={dissectStep === i}
+                      title={s.label}
+                      className={`text-[10px] px-1.5 py-0.5 rounded-md border transition-colors ${
+                        dissectStep === i
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : i < dissectStep
+                          ? "border-primary/40 bg-primary/10 text-foreground"
+                          : "border-border bg-background text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+
+                <p className="text-xs font-medium text-foreground">
+                  {DISSECT_STEPS[dissectStep].label.replace(/^\d+\.\s*/, "")}
+                </p>
+                <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  {DISSECT_STEPS[dissectStep].teaching}
+                </p>
+              </div>
+            )}
+
             {/* Category focus chips */}
             <div className="flex flex-wrap gap-1.5 text-[11px]">
               <span className="text-muted-foreground mr-1 self-center">Focus:</span>
