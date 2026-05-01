@@ -12,6 +12,7 @@
     "format:check": "prettier --check .",
     "preview": "vite preview",
     "check:diagrams": "node scripts/check-duplicate-diagrams.mjs",
+    "optimize:heart": "node scripts/optimize-heart.mjs",
     "check:sources": "node scripts/check-section-sources.mjs",
     "check:exam-tags": "node scripts/check-exam-tags.mjs",
     "check:exam-tags:fix": "node scripts/check-exam-tags.mjs --fix",
