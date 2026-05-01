@@ -610,7 +610,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
       <ClipController active={cutaway} />
 
       {/* ── Pericardial sac (translucent outer shell) ── */}
-      {layers.pericardium && (
+      <FadeGroup visible={layers.pericardium} peelScale={1.12}>
         <mesh scale={[1.18, 1.12, 1.18]}>
           <sphereGeometry args={[1.1, 24, 24]} />
           <meshPhysicalMaterial
@@ -619,7 +619,7 @@ function HeartModel({ selected, onSelect, cutaway, autoRotate, rotationSpeed, fo
             depthWrite={false} clippingPlanes={clip} clipShadows
           />
         </mesh>
-      )}
+      </FadeGroup>
 
       {useGltf && layers.epicardium && (
         <Suspense fallback={null}>
