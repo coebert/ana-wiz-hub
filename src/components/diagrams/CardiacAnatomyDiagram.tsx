@@ -124,6 +124,8 @@ const focalPoints: Record<StructureKey, [number, number, number]> = {
 /** Map a structure to its category for focus-mode dimming. */
 const structureCategory = (k: StructureKey): "coronary" | "conduction" | "valve" => structures[k].category;
 
+// ── Geometry helpers ──────────────────────────────────────────────────────────
+
 /** Create anatomical heart shape using lathe geometry with asymmetric profile */
 function createAnatomicalHeartGeo() {
   // Anatomical heart profile: wider at base (atria), tapers to apex
