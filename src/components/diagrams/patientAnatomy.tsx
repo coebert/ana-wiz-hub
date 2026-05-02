@@ -1016,7 +1016,7 @@ export const SupinePatient = ({
         shoulderW={shoulderW} waistW={waistW} hipW={hipW}
         idPrefix={r.idPrefix} showGown={r.showGown} />
       {showHead && (
-        <HeadFront cx={headCx} cy={cy} r={shoulderW * 0.42} idPrefix={r.idPrefix} />
+        <HeadProfile cx={headCx} cy={cy} r={shoulderW * 0.42} idPrefix={r.idPrefix} facing="left" />
       )}
       {/* Near arm — at side or folded */}
       {armsFolded ? (
