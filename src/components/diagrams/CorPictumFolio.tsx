@@ -830,6 +830,10 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                       {idx + 1}
                     </span>
                   ) : null}
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "mt-[0.55rem] flex-none flex items-center transition-all",
                       isActive ? "w-7" : "w-5",
                     )}
                   >
