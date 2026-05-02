@@ -520,73 +520,171 @@ const FrameCard = ({
 export const ProneFrameComparisonDiagram = () => (
   <div className="my-4 rounded-xl border border-border bg-card">
     <div className="px-4 py-3 border-b border-border bg-muted/30">
-      <p className="text-sm font-semibold text-foreground">Operating tables / frames for the prone position</p>
-      <p className="text-xs text-muted-foreground mt-0.5">Each frame supports the chest and pelvis differently. The choice trades off lordosis, abdominal decompression, fluoroscopy access and turning logistics.</p>
+      <p className="text-sm font-semibold text-foreground">
+        Prone-position frames at a glance — Wilson · Jackson · Relton-Hall · bolsters
+      </p>
+      <p className="text-xs text-muted-foreground mt-0.5">
+        Side-on schematics (head left, feet right). Each frame supports the chest and pelvis
+        differently — the choice trades off lumbar lordosis, abdominal decompression, fluoroscopy
+        access and turning logistics. Each card lists the frame-specific positioning issues
+        beneath the diagram.
+      </p>
     </div>
     <div className="p-3 grid gap-3 md:grid-cols-2">
       <FrameCard
         name="Wilson frame"
         hue={210}
-        caption="Adjustable convex pad on a standard table — flexes the lumbar spine."
-        pros="Quick set-up on any standard table; opens posterior interlaminar space (good for microdiscectomy)."
-        cons="Increases intra-abdominal pressure (↑ epidural bleeding); reverses lumbar lordosis (avoid in fusion surgery where lordosis must be preserved)."
-        uses="Lumbar microdiscectomy, single-level decompression."
+        caption="Adjustable convex (banana-shaped) pad on a standard table — flexes the lumbar spine, opens posterior interlaminar windows."
+        pros="Quick set-up on any standard table; opens the posterior interlaminar space (good for microdiscectomy); height/curvature adjustable mid-case."
+        cons="REVERSES lumbar lordosis (avoid in instrumented fusion); pad presses on the abdomen → ↑ intra-abdominal pressure → epidural venous engorgement → ↑ blood loss."
+        uses="Lumbar microdiscectomy, single-level lumbar decompression, short non-instrumented cases."
+        issues={[
+          "Loss of lumbar lordosis — DO NOT use for instrumented fusion (fixes spine in flexion).",
+          "Abdominal pad raises IAP → IVC compression, epidural venous bleeding, ↓ venous return.",
+          "Single curved pad concentrates weight on lower ribs / costal margin → rib fracture in elderly.",
+          "Femoral nerve stretch over the distal edge if hip flexion is excessive.",
+          "Limited lateral fluoroscopy access (frame in the C-arm beam path).",
+        ]}
+        spinePath="M 35 60 Q 80 72 120 76 Q 165 72 205 62"
         draw={
           <>
-            {/* convex arch */}
-            <path d="M 50 80 Q 110 35 170 80" fill="none" stroke="currentColor" strokeWidth={6} />
-            <line x1={50} y1={80} x2={50} y2={86} stroke="currentColor" strokeWidth={3} />
-            <line x1={170} y1={80} x2={170} y2={86} stroke="currentColor" strokeWidth={3} />
+            <path
+              d="M 60 92 Q 120 50 180 92 Z"
+              fill="currentColor"
+              opacity={0.25}
+              stroke="currentColor"
+              strokeWidth={1.2}
+            />
+            <path d="M 60 92 Q 120 50 180 92" fill="none" stroke="currentColor" strokeWidth={2} />
+            <line x1={120} y1={92} x2={120} y2={108} stroke="currentColor" strokeWidth={1.2} />
+            <circle cx={120} cy={108} r={2} fill="currentColor" />
           </>
         }
       />
       <FrameCard
         name="Jackson (open / spinal) table"
         hue={280}
-        caption="Dedicated cantilever spinal table with chest, pelvis, thigh and shin pads."
-        pros="Abdomen completely free → ↓ epidural venous engorgement → ↓ blood loss; preserves natural lordosis; allows AP and lateral fluoroscopy."
-        cons="Dedicated, expensive table; requires specific transfer (sandwich-flip from a flat top); not for emergency airway prone access."
-        uses="Multi-level posterior spinal fusion / instrumentation, scoliosis correction."
+        caption="Dedicated cantilever spinal table — discrete chest, hip, thigh and shin pads with the abdomen completely free."
+        pros="Abdomen totally free → ↓ epidural venous engorgement → ↓ blood loss; preserves natural lordosis (essential for fusion); permits AP and lateral fluoroscopy through the radiolucent gap."
+        cons="Dedicated, expensive, theatre-occupying table; needs the 'sandwich-flip' transfer (supine top + Jackson top, then 180° rotation); not available for emergency airway prone."
+        uses="Multi-level posterior spinal fusion / instrumentation, scoliosis correction, complex thoraco-lumbar surgery."
+        issues={[
+          "Sandwich-flip transfer — high-risk moment: ETT, lines, eyes and pin fixation can all dislodge.",
+          "Chest pad too high → axillary plexus compression; too low → ↑ peak airway pressures.",
+          "Hip pads must sit on iliac crests (NOT abdomen) — wrong placement re-creates IAP problem.",
+          "Knees flexed over thigh pad — protect patella & common peroneal nerve at fibular head.",
+          "Eye care critical: head usually in horseshoe / ProneView mirror — recheck free eyes every 15 min.",
+        ]}
         draw={
           <>
-            <rect x={50} y={70} width={30} height={10} fill="currentColor" opacity={0.6} />
-            <rect x={140} y={70} width={30} height={10} fill="currentColor" opacity={0.6} />
-            <rect x={170} y={70} width={30} height={10} fill="currentColor" opacity={0.4} />
-            {/* free abdomen gap */}
-            <rect x={80} y={60} width={60} height={20} fill="none" stroke="currentColor" strokeDasharray="3 3" />
+            <rect x={55} y={72} width={28} height={20} rx={3} fill="currentColor" opacity={0.55} />
+            <rect x={150} y={72} width={28} height={20} rx={3} fill="currentColor" opacity={0.55} />
+            <rect x={186} y={78} width={22} height={14} rx={3} fill="currentColor" opacity={0.4} />
+            <rect
+              x={85}
+              y={68}
+              width={62}
+              height={26}
+              fill="none"
+              stroke="currentColor"
+              strokeDasharray="3 3"
+            />
+            <text x={116} y={104} fontSize={6} textAnchor="middle" fill="currentColor" opacity={0.85}>
+              ABDOMEN FREE
+            </text>
           </>
         }
       />
       <FrameCard
-        name="Montreal (Relton-Hall 4-poster)"
+        name="Relton-Hall (Montreal 4-poster)"
         hue={150}
-        caption="Four pads — two iliac crests + two lateral chest — on a frame attached to the table."
-        pros="Excellent abdominal decompression; preserves lordosis; classic paediatric scoliosis frame."
-        cons="Pad placement critical (iliac crests and chest only — not abdomen, not breasts); requires careful sizing."
-        uses="Paediatric and adolescent posterior spinal surgery (scoliosis, AIS)."
+        caption="Four discrete pads — two on the lateral chest wall, two on the iliac crests — mounted on a frame fixed to a standard table."
+        pros="Excellent abdominal decompression; preserves lordosis; lightweight and portable; the classic paediatric scoliosis frame."
+        cons="Pad placement is critical (chest wall + iliac crests ONLY — never abdomen, breasts or pectoralis); needs sizing for paediatric vs adult patients."
+        uses="Paediatric / adolescent posterior spinal surgery (AIS, scoliosis, kyphosis correction); selected adult fusion."
+        issues={[
+          "Chest pads must sit on lateral ribs — too medial compresses pectoralis & breast tissue (women).",
+          "Iliac-crest pads must NOT slip onto the lateral femoral cutaneous nerve → meralgia paraesthetica.",
+          "If pads too far apart in small children → abdomen sags between them, defeating the design.",
+          "Genital compression in males — check penis and scrotum free between iliac pads.",
+          "Frame is rigid — no mid-case lordosis adjustment; check lordosis BEFORE draping.",
+        ]}
         draw={
           <>
-            <rect x={60} y={68} width={14} height={12} fill="currentColor" />
-            <rect x={146} y={68} width={14} height={12} fill="currentColor" />
-            <rect x={86} y={68} width={14} height={12} fill="currentColor" />
-            <rect x={120} y={68} width={14} height={12} fill="currentColor" />
+            <rect x={62} y={78} width={14} height={14} rx={2} fill="currentColor" opacity={0.7} />
+            <rect x={80} y={78} width={14} height={14} rx={2} fill="currentColor" opacity={0.45} />
+            <rect x={150} y={78} width={14} height={14} rx={2} fill="currentColor" opacity={0.7} />
+            <rect x={168} y={78} width={14} height={14} rx={2} fill="currentColor" opacity={0.45} />
+            <line
+              x1={96}
+              y1={84}
+              x2={148}
+              y2={84}
+              stroke="currentColor"
+              strokeDasharray="2 2"
+              opacity={0.6}
+            />
           </>
         }
       />
       <FrameCard
         name="Standard table + bolsters / gel rolls"
         hue={35}
-        caption="Two longitudinal bolsters along chest and pelvis on a standard operating table."
-        pros="Universally available; cheap; suits short cases or non-spinal prone work."
-        cons="Less effective abdominal decompression; greater pressure-injury risk; lordosis less controllable."
-        uses="Posterior fossa craniotomy, PCNL, posterior fistula / pilonidal surgery, ICU prone ventilation."
+        caption="Two longitudinal foam or gel bolsters running chest-to-pelvis on a standard operating table."
+        pros="Universally available; cheap; rapid set-up; suits short cases, non-spinal prone work and ICU prone ventilation."
+        cons="Less effective abdominal decompression than dedicated frames; greater pressure-injury risk over a longer surface area; lordosis poorly controllable."
+        uses="Posterior fossa craniotomy, PCNL, posterior fistula / pilonidal surgery, ENT (posterior pharynx), ICU prone ventilation."
+        issues={[
+          "Bolsters can migrate intra-operatively → abdomen drops onto the table; recheck after every position change.",
+          "Pressure spread along a long surface → higher risk over iliac crests, ASIS and knees.",
+          "Less abdominal decompression than Jackson / Relton — significant epidural bleeding in long spinal cases.",
+          "Breast / genital entrapment between bolsters — actively check before draping.",
+          "ICU prone ventilation: rotate head every 2 h, check ETT and lines, watch for facial pressure injury.",
+        ]}
         draw={
           <>
-            <rect x={40} y={72} width={140} height={8} rx={3} fill="currentColor" opacity={0.4} />
-            <rect x={40} y={62} width={140} height={6} rx={3} fill="currentColor" />
+            <rect x={45} y={78} width={150} height={14} rx={6} fill="currentColor" opacity={0.55} />
+            <rect x={45} y={92} width={150} height={6} rx={3} fill="currentColor" opacity={0.3} />
           </>
         }
       />
+    </div>
+
+    {/* Quick comparison reference table */}
+    <div className="border-t border-border p-3 overflow-x-auto">
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+        Quick comparison
+      </p>
+      <table className="w-full text-[11px] border-collapse">
+        <thead>
+          <tr className="text-left text-muted-foreground">
+            <th className="py-1 pr-2 font-semibold">Feature</th>
+            <th className="py-1 px-2 font-semibold">Wilson</th>
+            <th className="py-1 px-2 font-semibold">Jackson</th>
+            <th className="py-1 px-2 font-semibold">Relton-Hall</th>
+            <th className="py-1 px-2 font-semibold">Bolsters</th>
+          </tr>
+        </thead>
+        <tbody className="text-foreground">
+          {[
+            ["Lumbar lordosis", "Lost (kyphosis)", "Preserved", "Preserved", "Variable"],
+            ["Abdomen free?", "No", "Yes ✓", "Yes ✓", "Partial"],
+            ["IAP / blood loss", "↑↑", "↓↓", "↓", "↑"],
+            ["Fluoroscopy access", "Limited", "AP + lateral", "AP only", "AP only"],
+            ["Set-up cost / time", "Low", "High", "Medium", "Lowest"],
+            ["Best for", "Microdiscectomy", "Long fusion", "Paediatric scoliosis", "Short / ICU"],
+          ].map((row) => (
+            <tr key={row[0]} className="border-t border-border/60">
+              <td className="py-1 pr-2 font-medium text-muted-foreground">{row[0]}</td>
+              {row.slice(1).map((cell, i) => (
+                <td key={i} className="py-1 px-2">
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </div>
 );
