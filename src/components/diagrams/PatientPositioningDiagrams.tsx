@@ -97,6 +97,138 @@ const POS_GREEN = "hsl(150 55% 40%)";
 const POS_AMBER = "hsl(35 95% 50%)";
 const POS_RED = "hsl(0 70% 50%)";
 
+/** Render landmark labels + measurement annotations on top of the diagram. */
+const ValidationOverlay = ({
+  landmarks = [],
+  measurements = [],
+}: {
+  landmarks?: Landmark[];
+  measurements?: Measurement[];
+}) => {
+  const ACCENT = "hsl(190 90% 45%)";
+  const ACCENT_SOFT = "hsl(190 90% 45% / 0.18)";
+  return (
+    <g pointerEvents="none">
+      {/* Measurements first so labels overlay them. */}
+      {measurements.map((m) => {
+        if (m.kind === "distance") {
+          const dx = m.to.x - m.from.x;
+          const dy = m.to.y - m.from.y;
+          const len = Math.hypot(dx, dy);
+          const mx = (m.from.x + m.to.x) / 2;
+          const my = (m.from.y + m.to.y) / 2;
+          // Normal vector for label offset
+          const nx = -dy / (len || 1);
+          const ny = dx / (len || 1);
+          const readout =
+            m.label ??
+            (m.pxPerUnit
+              ? `${(len / m.pxPerUnit).toFixed(1)} ${m.unit ?? ""}`.trim()
+              : `${len.toFixed(0)} px`);
+          return (
+            <g key={m.id}>
+              {/* End ticks perpendicular to the segment */}
+              <line
+                x1={m.from.x + nx * 4} y1={m.from.y + ny * 4}
+                x2={m.from.x - nx * 4} y2={m.from.y - ny * 4}
+                stroke={ACCENT} strokeWidth={1.2}
+              />
+              <line
+                x1={m.to.x + nx * 4} y1={m.to.y + ny * 4}
+                x2={m.to.x - nx * 4} y2={m.to.y - ny * 4}
+                stroke={ACCENT} strokeWidth={1.2}
+              />
+              <line
+                x1={m.from.x} y1={m.from.y}
+                x2={m.to.x} y2={m.to.y}
+                stroke={ACCENT} strokeWidth={1.2} strokeDasharray="3 3"
+              />
+              <rect
+                x={mx + nx * 9 - 18} y={my + ny * 9 - 7}
+                width={36} height={14} rx={3}
+                fill="hsl(var(--background))" stroke={ACCENT} strokeWidth={0.8}
+              />
+              <text
+                x={mx + nx * 9} y={my + ny * 9 + 4}
+                textAnchor="middle" fontSize={10} fontWeight={600}
+                fill={ACCENT}
+              >
+                {readout}
+              </text>
+            </g>
+          );
+        }
+        // Angle measurement
+        const va = Math.atan2(m.a.y - m.vertex.y, m.a.x - m.vertex.x);
+        const vb = Math.atan2(m.b.y - m.vertex.y, m.b.x - m.vertex.x);
+        let delta = vb - va;
+        // Normalise to (-π, π] then take absolute value for the inner angle
+        while (delta > Math.PI) delta -= 2 * Math.PI;
+        while (delta <= -Math.PI) delta += 2 * Math.PI;
+        const sweep = delta > 0 ? 1 : 0;
+        const deg = Math.abs((delta * 180) / Math.PI);
+        const r = m.radius ?? 22;
+        const ax = m.vertex.x + Math.cos(va) * r;
+        const ay = m.vertex.y + Math.sin(va) * r;
+        const bx = m.vertex.x + Math.cos(vb) * r;
+        const by = m.vertex.y + Math.sin(vb) * r;
+        const largeArc = Math.abs(delta) > Math.PI ? 1 : 0;
+        // Label position — bisector midway through the arc
+        const mid = va + delta / 2;
+        const lx = m.vertex.x + Math.cos(mid) * (r + 12);
+        const ly = m.vertex.y + Math.sin(mid) * (r + 12);
+        const readout = m.label ?? `${deg.toFixed(0)}°`;
+        return (
+          <g key={m.id}>
+            {/* Reference rays */}
+            <line x1={m.vertex.x} y1={m.vertex.y} x2={ax} y2={ay}
+              stroke={ACCENT} strokeWidth={1} strokeDasharray="2 2" />
+            <line x1={m.vertex.x} y1={m.vertex.y} x2={bx} y2={by}
+              stroke={ACCENT} strokeWidth={1} strokeDasharray="2 2" />
+            {/* Filled arc */}
+            <path
+              d={`M ${ax},${ay} A ${r},${r} 0 ${largeArc} ${sweep} ${bx},${by} L ${m.vertex.x},${m.vertex.y} Z`}
+              fill={ACCENT_SOFT} stroke={ACCENT} strokeWidth={1}
+            />
+            <text
+              x={lx} y={ly + 3}
+              textAnchor="middle" fontSize={10} fontWeight={700}
+              fill={ACCENT}
+              stroke="hsl(var(--background))" strokeWidth={3} paintOrder="stroke"
+            >
+              {readout}
+            </text>
+          </g>
+        );
+      })}
+      {/* Landmark crosshairs + labels */}
+      {landmarks.map((l) => {
+        const dx = l.dx ?? 8;
+        const dy = l.dy ?? -8;
+        const anchor = l.anchor ?? "start";
+        return (
+          <g key={l.id}>
+            <circle cx={l.x} cy={l.y} r={3} fill="hsl(var(--background))"
+              stroke={ACCENT} strokeWidth={1.4} />
+            <line x1={l.x} y1={l.y} x2={l.x + dx} y2={l.y + dy}
+              stroke={ACCENT} strokeWidth={0.8} />
+            <text
+              x={l.x + dx + (anchor === "end" ? -2 : 2)}
+              y={l.y + dy - 1}
+              textAnchor={anchor}
+              fontSize={9.5} fontWeight={600}
+              fill="hsl(var(--foreground))"
+              stroke="hsl(var(--background))" strokeWidth={3} paintOrder="stroke"
+            >
+              {l.label}
+            </text>
+          </g>
+        );
+      })}
+    </g>
+  );
+};
+
 const PositionFrame = ({
   title,
   caption,
@@ -105,15 +237,37 @@ const PositionFrame = ({
   height = 280,
   children,
   legend,
+  landmarks,
+  measurements,
 }: PositionDiagramProps) => {
   const [activeId, setActiveId] = useState<string | null>(hotspots[0]?.id ?? null);
+  const [overlayOn, setOverlayOn] = useState(false);
   const active = hotspots.find((h) => h.id === activeId);
+  const hasOverlay = (landmarks?.length ?? 0) + (measurements?.length ?? 0) > 0;
 
   return (
     <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
-      <div className="px-4 py-3 border-b border-border bg-muted/30">
-        <p className="text-sm font-semibold text-foreground">{title}</p>
-        <p className="text-xs text-muted-foreground mt-0.5">{caption}</p>
+      <div className="px-4 py-3 border-b border-border bg-muted/30 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-foreground">{title}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{caption}</p>
+        </div>
+        {hasOverlay && (
+          <button
+            type="button"
+            onClick={() => setOverlayOn((v) => !v)}
+            aria-pressed={overlayOn}
+            className={cn(
+              "flex-none text-[10px] uppercase tracking-wide font-semibold rounded-md border px-2 py-1 transition-colors",
+              overlayOn
+                ? "bg-[hsl(190_90%_45%)] text-white border-[hsl(190_90%_45%)]"
+                : "bg-background text-muted-foreground border-border hover:text-foreground",
+            )}
+            title="Toggle landmark labels & measurements"
+          >
+            {overlayOn ? "Anatomy ✓" : "Anatomy overlay"}
+          </button>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
@@ -128,6 +282,11 @@ const PositionFrame = ({
             >
               <AnatomyDefs idPrefix="pf" />
               {children}
+
+              {/* Validation overlay */}
+              {overlayOn && hasOverlay && (
+                <ValidationOverlay landmarks={landmarks} measurements={measurements} />
+              )}
 
               {/* Hotspots */}
               {hotspots.map((h, i) => {
