@@ -254,9 +254,9 @@ export const brachialFolio: CorPictumFolioData = {
     },
     {
       id: "interscalene", tabLabel: "Interscalene", folio: "II",
-      title: "Sulcus Interscalenicus", subtitle: "Cross-section at C6 for interscalene block",
+      title: "Interscalene Groove", subtitle: "Cross-section at C6 for interscalene block",
       image: brachialInterscalene, alt: "Painted cross-section of the interscalene groove at C6",
-      caption: "Sectio transversa colli ad C6 — sulcus interscalenicus",
+      caption: "Cross-section of the neck at C6 — interscalene groove",
       labels: [
         { latin: "musculus scalenus anterior", english: "Anterior scalene", note: "Anterior border of the groove; phrenic nerve on its surface." },
         { latin: "musculus scalenus medius", english: "Middle scalene", note: "Posterior border of the groove." },
