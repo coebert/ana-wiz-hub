@@ -845,6 +845,8 @@ export interface SupinePatientProps extends RealismProps {
   showHead?: boolean;
   /** Render arms folded across the abdomen instead of at the side. */
   armsFolded?: boolean;
+  /** Render the legs (set false when the caller draws bespoke legs, e.g. lithotomy stirrups). */
+  showLegs?: boolean;
 }
 
 export const SupinePatient = ({
@@ -854,6 +856,7 @@ export const SupinePatient = ({
   showFarArm = true,
   showHead = true,
   armsFolded = false,
+  showLegs = true,
   ...realism
 }: SupinePatientProps) => {
   const r = useRealism(realism);
