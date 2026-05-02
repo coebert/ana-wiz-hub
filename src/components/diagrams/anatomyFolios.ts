@@ -757,11 +757,11 @@ export const cardiacFolio: CorPictumFolioData = {
       id: "conduction",
       tabLabel: "Conduction",
       folio: "III",
-      title: "Systema Conducens",
+      title: "Conducting System",
       subtitle: "Long-axis view of the conducting system",
       image: cardiacConduction,
       alt: "Painted long-axis view of the cardiac conduction system",
-      caption: "Sectio longitudinalis systematis conducentis cordis",
+      caption: "Long-axis view of the cardiac conducting system",
       labels: [
         {
           latin: "nodus sinuatrialis",
