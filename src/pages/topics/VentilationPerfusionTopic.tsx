@@ -6,6 +6,7 @@ import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
+import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 
 const objectives = [
   "Describe the regional V/Q distribution from apex to base in the upright lung.",
