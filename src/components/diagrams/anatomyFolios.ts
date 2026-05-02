@@ -304,9 +304,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     },
     {
       id: "forearm", tabLabel: "Forearm & wrist", folio: "II",
-      title: "Antebrachium et Carpus", subtitle: "Anterior forearm with carpal tunnel",
+      title: "Forearm and Wrist", subtitle: "Anterior forearm with carpal tunnel",
       image: upperlimbForearm, alt: "Painted anterior view of the forearm and hand",
-      caption: "Aspectus anterior antebrachii et manus",
+      caption: "Anterior view of the forearm and hand",
       labels: [
         { latin: "musculus flexor carpi radialis", english: "Flexor carpi radialis", note: "Tendon medial to radial artery at the wrist." },
         { latin: "musculus palmaris longus", english: "Palmaris longus", note: "Absent in ~15%; landmark for median nerve." },
