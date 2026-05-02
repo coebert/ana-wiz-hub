@@ -91,7 +91,7 @@ const HeadNeckAnatomyTopic = () => {
 
           {/* ============== CRANIAL FRAMEWORK ============== */}
           <div id="skull-base">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">2. Skull Base Foramina</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A2. Skull Base Foramina</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The internal surface of the skull base is divided into anterior, middle, and posterior cranial fossae. Each foramen transmits specific cranial nerves and vessels — knowledge of these is essential for understanding cranial nerve palsies, skull base fractures, and neurosurgical approaches.
             </p>
@@ -99,7 +99,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="orbit-muscles">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Orbit & Extraocular Muscles</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A3. Orbit — Extraocular Muscles</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The orbit contains seven extraocular muscles controlling eye movement and eyelid elevation. The classic mnemonic "LR6 SO4, all the Rest III" summarises their innervation — essential for interpreting cranial nerve palsies and understanding ophthalmic regional anaesthesia.
             </p>
@@ -107,16 +107,24 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="orbit-bony">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Bony Orbit — Foramina & Fissures</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A4. Orbit — Bony Anatomy, Foramina & Fissures</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The orbit is a four-walled pyramidal cavity formed by seven bones, with its apex at the optic canal. Knowledge of which structures pass through each foramen and fissure underpins the interpretation of orbital fractures, the planning of regional blocks of the eye and face (supra-orbital, infra-orbital, peribulbar/retrobulbar), and the localisation of cranial nerve lesions causing ophthalmoplegia or sensory loss.
             </p>
             <OrbitBonyAnatomyDiagram />
           </div>
 
-          {/* ============== NECK ============== */}
+          {/* ==================================================================== */}
+          {/* PART B — NECK: SURFACE, SPACES & VASCULAR ACCESS                      */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part B</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Neck — Surface, Spaces & Vascular Access</h2>
+            <p className="text-sm text-muted-foreground mt-1">Surface anatomy of the neck triangles, the cross-sectional fascial planes at C6, the cervical plexus, and internal jugular vein cannulation.</p>
+          </div>
+
           <div id="neck-triangles">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">5. Triangles of the Neck</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B1. Triangles of the Neck</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The neck is divided by the sternocleidomastoid into anterior and posterior triangles — key landmarks for vascular access, nerve blocks, and surgical approaches.
             </p>
