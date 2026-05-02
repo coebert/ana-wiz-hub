@@ -194,13 +194,14 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
     const el = stageRef.current;
     if (!el) return;
     const handler = (e: WheelEvent) => {
+      if (reviewMode) return; // let page scroll while reviewing polygons
       e.preventDefault();
       const factor = Math.exp(-e.deltaY * 0.0015);
       zoomAt(factor, e.clientX, e.clientY);
     };
     el.addEventListener("wheel", handler, { passive: false });
     return () => el.removeEventListener("wheel", handler);
-  }, [zoomAt]);
+  }, [zoomAt, reviewMode]);
 
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     (e.target as Element).setPointerCapture?.(e.pointerId);
