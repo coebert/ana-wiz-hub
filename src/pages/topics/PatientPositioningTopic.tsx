@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
+import { cn } from "@/lib/utils";
 import {
   SupinePositionDiagram,
   TrendelenburgPositionDiagram,
