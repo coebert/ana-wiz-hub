@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   AnatomyDefs,
@@ -1513,7 +1513,6 @@ export const SittingPositionDiagram = () => (
 
 // ── 8. BEACH CHAIR (shoulder) ──────────────────────────────────────────
 
-export const BeachChairPositionDiagram = () => (
 export const BeachChairPositionDiagram = () => {
   // Step-through animation: 0 = neutral, 1 = 30° abduction,
   // 2 = 70° abduction + scapular protraction, 3 = traction loaded.
