@@ -24,8 +24,14 @@ import brachialPlexus from "@/assets/plates/brachial-plexus.jpg";
 import brachialInterscalene from "@/assets/plates/brachial-interscalene.jpg";
 import upperlimbForearm from "@/assets/plates/upperlimb-forearm.jpg";
 import upperlimbAxilla from "@/assets/plates/upperlimb-axilla.jpg";
+import upperlimbArteries from "@/assets/plates/upperlimb-arteries.jpg";
+import upperlimbVeins from "@/assets/plates/upperlimb-veins.jpg";
+import upperlimbNerves from "@/assets/plates/upperlimb-nerves.jpg";
 import lowerlimbFemoral from "@/assets/plates/lowerlimb-femoral.jpg";
 import lowerlimbPopliteal from "@/assets/plates/lowerlimb-popliteal.jpg";
+import lowerlimbArteries from "@/assets/plates/lowerlimb-arteries.jpg";
+import lowerlimbVeins from "@/assets/plates/lowerlimb-veins.jpg";
+import lowerlimbNerves from "@/assets/plates/lowerlimb-nerves.jpg";
 import thoracicAnterior from "@/assets/plates/thoracic-anterior.jpg";
 import thoracicMediastinum from "@/assets/plates/thoracic-mediastinum.jpg";
 import abdominalAnterior from "@/assets/plates/abdominal-anterior.jpg";
@@ -559,6 +565,64 @@ export const upperLimbFolio: CorPictumFolioData = {
         { code: "RU_BK_01", exams: [Exam.FINAL], title: "Forearm & wrist blocks (median, ulnar, radial)", anchor: "terminal-nerves" },
       ],
     },
+    {
+      id: "upper-arteries", tabLabel: "Arterial supply", folio: "III",
+      title: "Arterial Supply of the Upper Limb", subtitle: "Subclavian → axillary → brachial → radial / ulnar",
+      image: upperlimbArteries, alt: "Painted anterior view of the arterial tree of the upper limb",
+      caption: "Arterial supply of the upper limb — anterior view",
+      labels: [
+        { latin: "arteria subclavia", english: "Subclavian artery", note: "Becomes axillary at the lateral border of the first rib." },
+        { latin: "arteria axillaris", english: "Axillary artery", note: "Three parts defined by pectoralis minor; landmark for axillary block." },
+        { latin: "arteria brachialis", english: "Brachial artery", note: "Medial bicipital groove; NIBP cuff occlusion site; brachial pulse for CPR in infants." },
+        { latin: "arteria profunda brachii", english: "Profunda brachii", note: "Spirals posteriorly with the radial nerve in the radial groove." },
+        { latin: "arteria radialis", english: "Radial artery", note: "Standard arterial line site; perform Allen's test before cannulation." },
+        { latin: "arteria ulnaris", english: "Ulnar artery", note: "Dominant supply to superficial palmar arch; alternative arterial line." },
+        { latin: "arteria interossea communis", english: "Common interosseous", note: "Branch of ulnar; supplies the deep forearm compartment." },
+        { latin: "arcus palmaris superficialis", english: "Superficial palmar arch", note: "Mainly ulnar; assess collateral flow before radial cannulation." },
+        { latin: "arcus palmaris profundus", english: "Deep palmar arch", note: "Mainly radial continuation; completes the dual hand supply." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Arterial supply of the upper limb", anchor: "arterial-supply" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Arterial cannulation — radial / brachial", anchor: "arterial-supply" },
+      ],
+    },
+    {
+      id: "upper-veins", tabLabel: "Venous drainage", folio: "IV",
+      title: "Venous Drainage of the Upper Limb", subtitle: "Superficial (cephalic, basilic) + deep system",
+      image: upperlimbVeins, alt: "Painted anterior view of the venous network of the upper limb",
+      caption: "Superficial and deep venous drainage — anterior view",
+      labels: [
+        { latin: "vena cephalica", english: "Cephalic vein", note: "Lateral; ascends in deltopectoral groove to drain into axillary vein." },
+        { latin: "vena basilica", english: "Basilic vein", note: "Medial; PICC line target; pierces deep fascia to join brachial venae comitantes." },
+        { latin: "vena mediana cubiti", english: "Median cubital vein", note: "Antecubital connection between cephalic and basilic — standard venepuncture site." },
+        { latin: "rete venosum dorsale manus", english: "Dorsal venous network of hand", note: "Common IV cannulation site." },
+        { latin: "venae brachiales", english: "Brachial venae comitantes", note: "Paired deep veins with brachial artery; coalesce to form axillary vein." },
+        { latin: "vena axillaris", english: "Axillary vein", note: "Continuation of basilic + brachial veins; CVC target via infraclavicular approach." },
+        { latin: "vena subclavia", english: "Subclavian vein", note: "Posterior to clavicle; classic CVC site (low infection risk, pneumothorax risk)." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Venous drainage of the upper limb", anchor: "venous-drainage" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Peripheral & central venous access — upper limb", anchor: "venous-drainage" },
+      ],
+    },
+    {
+      id: "upper-nerves", tabLabel: "Innervation", folio: "V",
+      title: "Innervation of the Upper Limb", subtitle: "Five terminal branches of the brachial plexus",
+      image: upperlimbNerves, alt: "Painted anterior view of the nerves of the upper limb",
+      caption: "Innervation of the upper limb — anterior view",
+      labels: [
+        { latin: "plexus brachialis", english: "Brachial plexus (C5–T1)", note: "Roots, trunks, divisions, cords, branches — \"Real Texans Drink Cold Beer\"." },
+        { latin: "nervus musculocutaneus", english: "Musculocutaneous nerve", note: "Pierces coracobrachialis; BBC muscles (biceps, brachialis, coracobrachialis); becomes lateral cutaneous nerve of forearm." },
+        { latin: "nervus medianus", english: "Median nerve", note: "Crosses brachial artery in the arm; through carpal tunnel; thenar wasting + LOAF muscles when compressed." },
+        { latin: "nervus ulnaris", english: "Ulnar nerve", note: "Behind medial epicondyle (\"funny bone\"); Guyon's canal at wrist; intrinsic hand muscles + medial 1½ digits." },
+        { latin: "nervus radialis", english: "Radial nerve", note: "Spirals in radial groove of humerus — vulnerable in mid-shaft fractures (wrist drop)." },
+        { latin: "nervus axillaris", english: "Axillary nerve", note: "Around surgical neck of humerus; deltoid + regimental badge sensation; risk in shoulder dislocation." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Brachial plexus & terminal nerves", anchor: "terminal-nerves" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Upper limb regional anaesthesia — block selection", anchor: "block-approaches" },
+      ],
+    },
   ],
 };
 
@@ -606,6 +670,68 @@ export const lowerLimbFolio: CorPictumFolioData = {
       curriculumLinks: [
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Popliteal fossa & sciatic nerve anatomy", anchor: "sacral-plexus" },
         { code: "RU_BK_02", exams: [Exam.FINAL], title: "Popliteal sciatic nerve block — landmarks & sonoanatomy", anchor: "sacral-plexus" },
+      ],
+    },
+    {
+      id: "lower-arteries", tabLabel: "Arterial supply", folio: "III",
+      title: "Arterial Supply of the Lower Limb", subtitle: "External iliac → femoral → popliteal → tibials",
+      image: lowerlimbArteries, alt: "Painted anterior view of the arterial tree of the lower limb",
+      caption: "Arterial supply of the lower limb — anterior view",
+      labels: [
+        { latin: "arteria iliaca externa", english: "External iliac artery", note: "Becomes common femoral artery beneath the inguinal ligament." },
+        { latin: "arteria femoralis communis", english: "Common femoral artery", note: "Mid-inguinal point; arterial line + IABP access; femoral pulse." },
+        { latin: "arteria profunda femoris", english: "Profunda femoris", note: "Main supply to thigh musculature; gives medial + lateral circumflex (femoral head supply)." },
+        { latin: "arteria femoralis superficialis", english: "Superficial femoral artery", note: "Through adductor canal; becomes popliteal at adductor hiatus." },
+        { latin: "arteria poplitea", english: "Popliteal artery", note: "Deepest structure in popliteal fossa; aneurysm site; popliteal pulse with knee flexed." },
+        { latin: "arteria tibialis anterior", english: "Anterior tibial artery", note: "Anterior compartment; becomes dorsalis pedis (lateral to EHL tendon)." },
+        { latin: "arteria tibialis posterior", english: "Posterior tibial artery", note: "Behind medial malleolus — palpable pulse; supplies plantar arch." },
+        { latin: "arteria fibularis", english: "Peroneal (fibular) artery", note: "Lateral leg; collateral supply, often spared in PVD." },
+        { latin: "arteria dorsalis pedis", english: "Dorsalis pedis", note: "Pulse lateral to EHL tendon — absent congenitally in 5–12%." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Arterial supply of the lower limb", anchor: "arterial-supply" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Femoral arterial cannulation & vascular access", anchor: "arterial-supply" },
+      ],
+    },
+    {
+      id: "lower-veins", tabLabel: "Venous drainage", folio: "IV",
+      title: "Venous Drainage of the Lower Limb", subtitle: "Superficial (saphenous) + deep system",
+      image: lowerlimbVeins, alt: "Painted anterior view of the venous network of the lower limb",
+      caption: "Superficial and deep venous drainage — anterior view",
+      labels: [
+        { latin: "vena saphena magna", english: "Great saphenous vein", note: "Longest vein in the body; medial leg + thigh; SFJ in groin; cutdown 1 cm anterior + superior to medial malleolus." },
+        { latin: "vena saphena parva", english: "Small saphenous vein", note: "Posterior calf; drains into popliteal vein." },
+        { latin: "arcus venosus dorsalis pedis", english: "Dorsal venous arch of foot", note: "Origin of great + small saphenous veins; useful IV cannulation site." },
+        { latin: "venae perforantes", english: "Perforating veins", note: "Connect superficial → deep system; valvular incompetence underlies varicose veins." },
+        { latin: "vena femoralis", english: "Femoral vein", note: "Medial to femoral artery in the femoral sheath; emergency CVC site." },
+        { latin: "vena poplitea", english: "Popliteal vein", note: "Superficial to popliteal artery; common DVT site." },
+        { latin: "venae tibiales posteriores", english: "Posterior tibial veins", note: "Calf-pump driven; another common DVT origin." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Venous drainage of the lower limb", anchor: "venous-drainage" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "VTE risk assessment & prophylaxis (NICE CG89)", anchor: "venous-drainage" },
+      ],
+    },
+    {
+      id: "lower-nerves", tabLabel: "Innervation", folio: "V",
+      title: "Innervation of the Lower Limb", subtitle: "Lumbar + sacral plexus terminal branches",
+      image: lowerlimbNerves, alt: "Painted view of nerves of the lower limb",
+      caption: "Innervation of the lower limb",
+      labels: [
+        { latin: "plexus lumbalis", english: "Lumbar plexus (L1–L4)", note: "Forms within psoas major; gives femoral, obturator, LCNT, ilioinguinal, iliohypogastric." },
+        { latin: "nervus femoralis", english: "Femoral nerve (L2–L4)", note: "Lateral to femoral artery under inguinal ligament; quadriceps + saphenous; femoral / fascia iliaca block." },
+        { latin: "nervus saphenus", english: "Saphenous nerve", note: "Terminal sensory branch of femoral; medial leg to medial malleolus; adductor canal block target." },
+        { latin: "nervus obturatorius", english: "Obturator nerve (L2–L4)", note: "Through obturator foramen; adductors of thigh; often missed by femoral block alone." },
+        { latin: "nervus cutaneus femoris lateralis", english: "Lateral cutaneous nerve of thigh", note: "Under ASIS; pure sensory; entrapment = meralgia paraesthetica." },
+        { latin: "nervus ischiadicus", english: "Sciatic nerve (L4–S3)", note: "Largest nerve in the body; tibial + common peroneal divisions; subgluteal / popliteal blocks." },
+        { latin: "nervus tibialis", english: "Tibial nerve", note: "Posterior compartment + sole; behind medial malleolus; main popliteal block target." },
+        { latin: "nervus peroneus communis", english: "Common peroneal nerve", note: "Wraps around fibular neck — vulnerable to compression → foot drop." },
+        { latin: "nervus peroneus superficialis", english: "Superficial peroneal nerve", note: "Lateral leg + dorsum of foot (except first webspace)." },
+        { latin: "nervus peroneus profundus", english: "Deep peroneal nerve", note: "Anterior compartment (dorsiflexion); first webspace sensation." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Lumbosacral plexus & terminal nerves", anchor: "sacral-plexus" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Lower limb regional anaesthesia — block selection", anchor: "lower-limb-blocks" },
       ],
     },
   ],
