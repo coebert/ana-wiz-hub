@@ -810,14 +810,6 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
               );
             })()}
 
-            {/* Click-away catcher when a panel is pinned (display mode) */}
-            {!reviewMode && pinnedLabelIdx !== null ? (
-              <div
-                aria-hidden
-                className="absolute inset-0 z-[5]"
-                onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
-              />
-            ) : null}
           </div>
 
           {/* English caption strip beneath the plate-mark */}
