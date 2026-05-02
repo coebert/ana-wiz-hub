@@ -736,6 +736,8 @@ export const lowerLimbFolio: CorPictumFolioData = {
     },
   ],
 };
+
+export const thoracicFolio: CorPictumFolioData = {
   atlasTitle: "Atlas of Anatomy — Thorax",
   atlasSubtitle: "Painted plates of the thoracic cavity",
   plates: [
