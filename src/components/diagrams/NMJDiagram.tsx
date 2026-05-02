@@ -48,7 +48,7 @@ export const NMJDiagram = () => {
     { cx: 320, cy: 115 },
   ];
 
-  const showCaArrows = currentPhase.id === "ca" || currentPhase.id === "vesicle";
+  const showCaArrows = currentPhase.id === "ca" || currentPhase.id === "syt" || currentPhase.id === "vesicle";
   const showAChDots = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
   const vesiclesFusing = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
   const receptorsActive = currentPhase.id === "bind" || currentPhase.id === "depol";
@@ -56,12 +56,14 @@ export const NMJDiagram = () => {
   const showAP = currentPhase.id === "ap" || currentPhase.id === "ca";
 
   // ─── Synchronised Ca²⁺ sub-animation timing ─────────────────────────────
-  // Single normalised timeline t spanning "ca" → "vesicle" phases (0 → 2).
+  // Single normalised timeline t spanning "ca" → "syt" → "vesicle" phases (0 → 3).
   //   t in [0, 1)  = within "ca" phase
-  //   t in [1, 2)  = within "vesicle" phase
+  //   t in [1, 2)  = within "syt" phase (Ca²⁺ binding to synaptotagmin)
+  //   t in [2, 3)  = within "vesicle" phase
   const caT =
     currentPhase.id === "ca" ? phaseProgress
-      : currentPhase.id === "vesicle" ? 1 + phaseProgress
+      : currentPhase.id === "syt" ? 1 + phaseProgress
+      : currentPhase.id === "vesicle" ? 2 + phaseProgress
       : -1;
 
   // Helper: smooth ramp 0→1 between two timeline points
@@ -71,16 +73,19 @@ export const NMJDiagram = () => {
     return (t - start) / (end - start);
   };
 
-  // VGCC opening: opens fast (0 → 0.15 of "ca"), stays open, closes late in "vesicle" (1.7 → 1.95)
-  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 1.7, 1.95)) : 0;
+  // VGCC opening: opens fast (0 → 0.15), stays open, closes late in "vesicle" (2.7 → 2.95)
+  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 2.7, 2.95)) : 0;
 
-  // Ca²⁺ ions stream: starts 0.1 of "ca", fully on by 0.3, fades out 1.4 → 1.7 (mid-vesicle)
-  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 1.4, 1.7)) : 0;
+  // Ca²⁺ ions stream: starts 0.1, fully on by 0.3, fades out 2.0 → 2.3 (early vesicle)
+  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 2.0, 2.3)) : 0;
 
-  // Cloud builds through "ca" (0.2 → 1.0), holds early "vesicle", dissipates 1.5 → 2.0
-  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 1.5, 2.0)) : 0;
+  // Cloud builds through "ca" (0.2 → 1.0), holds through "syt", dissipates 2.3 → 3.0
+  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 2.3, 3.0)) : 0;
 
-  // Vesicle fusion progress: only during "vesicle" phase (caT 1 → 2)
+  // Synaptotagmin Ca²⁺ binding: ramps up over the "syt" phase (1.0 → 1.8), saturates, then released as fusion proceeds (2.5 → 3.0)
+  const sytBinding = caT >= 0 ? ramp(caT, 1.0, 1.8) * (1 - ramp(caT, 2.5, 3.0)) : 0;
+
+  // Vesicle fusion progress: only during "vesicle" phase (caT 2 → 3)
   const fusionProgress = currentPhase.id === "vesicle" ? phaseProgress
     : currentPhase.id === "bind" || currentPhase.id === "depol" ? 1
     : 0;
