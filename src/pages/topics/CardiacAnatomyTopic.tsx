@@ -7,8 +7,11 @@ import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { cardiacFolio } from "@/components/diagrams/anatomyFolios";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
+import { DiagramSection } from "@/components/DiagramSection";
 import { Exam } from "@/data/curriculum";
 
 const CardiacAnatomyTopic = () => {
