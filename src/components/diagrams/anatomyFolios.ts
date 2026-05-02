@@ -31,14 +31,14 @@ export interface CorPictumFolioData {
 }
 
 export const airwayFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Vias Aerias Superiores",
+  atlasTitle: "Atlas of Anatomy — Upper Airway",
   atlasSubtitle: "Painted plates of the upper airway and larynx",
   plates: [
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "I",
-      title: "Oropharynx et Larynx", subtitle: "Sagittal view of the airway",
+      title: "Oropharynx and Larynx", subtitle: "Sagittal view of the airway",
       image: airwaySagittal, alt: "Painted sagittal section of the upper airway",
-      caption: "Sectio sagittalis viarum aeriarum superiorum",
+      caption: "Sagittal section of the upper airway",
       labels: [
         { latin: "lingua", english: "Tongue", note: "Falls posteriorly under sedation — first cause of obstruction." },
         { latin: "palatum molle", english: "Soft palate", note: "Velopharyngeal seal; relaxes in deep anaesthesia." },
