@@ -1208,8 +1208,8 @@ export const PronePatient = ({
         shoulderW={shoulderW} hipW={hipW}
         idPrefix={r.idPrefix} showGown={r.showGown} />
       {showHead && (
-        <HeadFront cx={headCx} cy={cy} r={shoulderW * 0.38}
-          closedEyes={false} idPrefix={r.idPrefix} />
+        <HeadProfile cx={headCx} cy={cy} r={shoulderW * 0.38}
+          closedEyes idPrefix={r.idPrefix} facing="left" />
       )}
       {showHorseshoe && (
         <path
