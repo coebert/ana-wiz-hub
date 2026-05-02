@@ -176,14 +176,14 @@ export const neuroFolio: CorPictumFolioData = {
 };
 
 export const spinalFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Columna Vertebralis",
+  atlasTitle: "Atlas of Anatomy — Vertebral Column",
   atlasSubtitle: "Painted plates of the spinal cord and neuraxial spaces",
   plates: [
     {
       id: "posterior", tabLabel: "Posterior", folio: "I",
-      title: "Medulla Spinalis", subtitle: "Posterior view of the cord and cauda equina",
+      title: "Spinal Cord", subtitle: "Posterior view of the cord and cauda equina",
       image: spinalPosterior, alt: "Painted posterior view of the lumbar spinal cord",
-      caption: "Aspectus posterior medullae spinalis et caudae equinae",
+      caption: "Posterior view of the spinal cord and cauda equina",
       labels: [
         { latin: "lamina vertebrae", english: "Vertebral lamina", note: "Removed in laminectomy to access the cord." },
         { latin: "processus spinosus", english: "Spinous process", note: "Surface midline landmark for neuraxial blocks." },
