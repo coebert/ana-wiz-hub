@@ -454,9 +454,9 @@ export const abdominalFolio: CorPictumFolioData = {
     },
     {
       id: "retroperitoneum", tabLabel: "Retroperitoneum", folio: "II",
-      title: "Spatium Retroperitoneale", subtitle: "Posterior view of the great vessels and kidneys",
+      title: "Retroperitoneum", subtitle: "Posterior view of the great vessels and kidneys",
       image: abdominalRetroperitoneum, alt: "Painted view of the retroperitoneum",
-      caption: "Aspectus posterior spatii retroperitonealis",
+      caption: "Posterior view of the retroperitoneal space",
       labels: [
         { latin: "ren dexter", english: "Right kidney", note: "Slightly lower due to the liver above." },
         { latin: "ren sinister", english: "Left kidney", note: "Hilum at L1; renal vein crosses anterior to aorta." },
