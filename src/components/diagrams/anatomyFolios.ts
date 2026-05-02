@@ -11,6 +11,7 @@ import airwayAxial from "@/assets/plates/airway-axial.jpg";
 import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
 import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
+import headneckOrbitFrontal from "@/assets/plates/headneck-orbit-frontal.jpg";
 import neuroMidsagittal from "@/assets/plates/neuro-midsagittal.jpg";
 import neuroCircleWillis from "@/assets/plates/neuro-circle-willis.jpg";
 import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
@@ -208,6 +209,35 @@ export const headNeckFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Orbital anatomy — extraocular muscles & cranial nerves", anchor: "ophthalmic-anatomy" },
         { code: "RU_BK_01", exams: [Exam.FINAL], title: "Ophthalmic regional blocks — peribulbar & sub-Tenon's", anchor: "ophthalmic-anatomy" },
         { code: "OP_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for ophthalmic surgery", anchor: "ophthalmic-anatomy" },
+      ],
+    },
+    {
+      id: "orbit-frontal", tabLabel: "Bony orbit", folio: "IV",
+      title: "Bony Orbit — Frontal View", subtitle: "Bones, foramina and fissures of the right orbit",
+      image: headneckOrbitFrontal, alt: "Painted frontal view of the bony orbit showing the seven contributing bones and orbital foramina",
+      caption: "Anterior view of the bony orbit — seven bones, three openings at the apex",
+      labels: [
+        { latin: "", english: "Frontal bone", note: "Forms the orbital roof; supraorbital nerve (V1) emerges through the notch/foramen on its rim." },
+        { latin: "", english: "Supraorbital notch", note: "Surface landmark for supraorbital nerve block (V1) — supraorbital nerve and vessels exit here." },
+        { latin: "", english: "Orbital plate of frontal bone", note: "Thin roof separating the orbit from the anterior cranial fossa — risk of CSF leak in roof fractures." },
+        { latin: "", english: "Zygomatic bone", note: "Forms the lateral wall and inferolateral rim — strongest part of the orbital margin." },
+        { latin: "", english: "Maxilla", note: "Forms most of the orbital floor; thin floor fractures into the maxillary sinus (blowout fracture → entrapped inferior rectus, V2 numbness)." },
+        { latin: "", english: "Infraorbital foramen", note: "Infraorbital nerve (V2) exits ~1 cm below the orbital rim — landmark for infraorbital nerve block." },
+        { latin: "", english: "Lacrimal bone", note: "Smallest, most fragile bone of the face; medial wall." },
+        { latin: "", english: "Lacrimal fossa", note: "Houses the lacrimal sac, which drains into the nasolacrimal duct." },
+        { latin: "", english: "Ethmoid bone (lamina papyracea)", note: "Paper-thin medial wall — fractures readily; route for orbital cellulitis from ethmoid sinusitis." },
+        { latin: "", english: "Sphenoid (lesser wing)", note: "Forms the optic canal and the upper border of the superior orbital fissure." },
+        { latin: "", english: "Sphenoid (greater wing)", note: "Forms the posterior lateral wall and the lower border of the superior orbital fissure." },
+        { latin: "", english: "Palatine bone", note: "Tiny orbital process contributes to the posterior floor." },
+        { latin: "", english: "Optic canal", note: "Within the lesser wing of sphenoid; transmits CN II and the ophthalmic artery." },
+        { latin: "", english: "Superior orbital fissure", note: "Between greater and lesser wings of sphenoid; transmits CN III, IV, V1 (frontal, lacrimal, nasociliary), VI and superior ophthalmic vein." },
+        { latin: "", english: "Inferior orbital fissure", note: "Between greater wing of sphenoid and maxilla; transmits V2, infraorbital vessels and inferior ophthalmic vein." },
+        { latin: "", english: "Zygomaticofacial foramen", note: "Zygomaticofacial nerve (V2) — sensation to skin over the cheek prominence." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Bony orbit — bones, foramina & fissures", anchor: "ophthalmic-anatomy" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Trigeminal branch blocks (supraorbital & infraorbital)", anchor: "ophthalmic-anatomy" },
+        { code: "OP_BK_01", exams: [Exam.FINAL], title: "Orbital fractures & ophthalmic surgical anatomy", anchor: "ophthalmic-anatomy" },
       ],
     },
   ],
