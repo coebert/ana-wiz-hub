@@ -528,7 +528,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
 
         {/* Hairline plate-mark with zoom/pan stage */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
-          <div className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
+          <div ref={stageWrapRef} className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
             <div
               ref={stageRef}
               role="application"
