@@ -449,6 +449,76 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
           </p>
         </div>
 
+        {/* Review-mode toolbar */}
+        {reviewAllowed ? (
+          <div className="px-4 sm:px-6 pt-3 -mb-2 flex flex-wrap items-center gap-2 text-[11px]">
+            <button
+              type="button"
+              onClick={() => { setReviewMode((v) => !v); setSelectedEditIdx(null); }}
+              className={cn(
+                "px-2.5 py-1 rounded-md border font-semibold tracking-wide uppercase",
+                reviewMode
+                  ? "bg-[hsl(8_70%_50%)] text-white border-[hsl(8_55%_38%)]"
+                  : "bg-background text-foreground border-border hover:bg-accent",
+              )}
+              title="Toggle polygon-accuracy review mode"
+            >
+              {reviewMode ? "● Reviewing polygons" : "Review polygons"}
+            </button>
+            {reviewMode ? (
+              <>
+                <span className="text-muted-foreground">Tool:</span>
+                <div className="inline-flex rounded-md border border-border overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setTool("select")}
+                    className={cn("px-2 py-1", tool === "select" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                  >Select / drag</button>
+                  <button
+                    type="button"
+                    onClick={() => setTool("add")}
+                    className={cn("px-2 py-1 border-l border-border", tool === "add" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                    disabled={selectedEditIdx === null}
+                    title={selectedEditIdx === null ? "Select a label first" : "Click on plate to append vertex"}
+                  >+ Add vertex</button>
+                </div>
+                <label className="inline-flex items-center gap-1 ml-1">
+                  <input
+                    type="checkbox"
+                    checked={showAllOutlines}
+                    onChange={(e) => setShowAllOutlines(e.target.checked)}
+                    className="accent-[hsl(8_70%_50%)]"
+                  />
+                  Show all outlines
+                </label>
+                <span className="text-muted-foreground ml-auto">
+                  {selectedEditIdx !== null
+                    ? <>Editing: <strong className="text-foreground">{selectedEditIdx + 1}. {active.labels[selectedEditIdx]?.english}</strong></>
+                    : <>Click a polygon, badge, or label below to select.</>}
+                </span>
+                <button
+                  type="button"
+                  onClick={copyExport}
+                  className="px-2.5 py-1 rounded-md border border-border bg-background hover:bg-accent font-semibold"
+                  title="Copy this plate's polygons as JSON for paste-back into anatomyFolios.ts"
+                >
+                  {copyFlash ? "✓ Copied!" : "Copy JSON"}
+                </button>
+                {selectedEditIdx !== null ? (
+                  <button
+                    type="button"
+                    onClick={() => setPolyFor(selectedEditIdx, active.labels[selectedEditIdx]?.polygon ? [...active.labels[selectedEditIdx].polygon!] as Array<[number, number]> : undefined)}
+                    className="px-2 py-1 rounded-md border border-border bg-background hover:bg-accent"
+                    title="Reset selected polygon to its original coordinates"
+                  >Reset</button>
+                ) : null}
+              </>
+            ) : (
+              <span className="text-muted-foreground">Visualise & nudge hotspot polygons, then copy the corrected JSON back into <code className="font-mono text-[10.5px]">anatomyFolios.ts</code>.</span>
+            )}
+          </div>
+        ) : null}
+
         {/* Hairline plate-mark with zoom/pan stage */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
           <div className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
