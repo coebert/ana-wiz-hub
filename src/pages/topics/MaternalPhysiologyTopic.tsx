@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { maternalPhysiologyQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import PregnancyTimelineDiagram from "@/components/diagrams/PregnancyTimelineDiagram";
 
 const objectives = [
   "Describe the major cardiovascular changes of pregnancy and explain aortocaval compression.",
@@ -112,6 +113,16 @@ const MaternalPhysiologyTopic = () => {
               demands of the growing fetus and prepare for delivery. These changes have major implications for
               anaesthetic management, drug pharmacokinetics, and perioperative risk.
             </p>
+          </ExamSection>
+
+          <ExamSection id="timeline" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Physiological Change Timeline</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4 text-sm">
+              Scrub or play through gestation to see when each adaptation appears, peaks, and resolves. Bars span the
+              gestational window during which a change is clinically appreciable; ringed dots mark the typical peak.
+              Filter by organ system to focus your revision.
+            </p>
+            <PregnancyTimelineDiagram />
           </ExamSection>
 
           <ExamSection id="cardiovascular" exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["OB_BK_01"]}>
