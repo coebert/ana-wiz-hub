@@ -246,7 +246,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="laryngeal-innervation">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Innervation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Laryngeal Innervation</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
             </p>
