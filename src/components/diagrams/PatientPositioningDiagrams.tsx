@@ -513,6 +513,339 @@ export const ParkBenchPositionDiagram = () => (
   </PositionFrame>
 );
 
+// ── 6b. PARK BENCH — DEDICATED DETAILED VIEW ───────────────────────────
+
+interface ParkBenchHotspot {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  risk: string;
+  /** Ordered mitigation steps */
+  mitigation: string[];
+  severity: "high" | "moderate" | "low";
+}
+
+const PB_PROCEDURES: { name: string; why: string }[] = [
+  { name: "Vestibular schwannoma / acoustic neuroma (CPA)", why: "Excellent retrosigmoid access without the VAE risk of full sitting." },
+  { name: "Microvascular decompression (Jannetta) for trigeminal neuralgia / hemifacial spasm", why: "Lateral retromastoid trajectory to the root entry zone of CN V or CN VII." },
+  { name: "Posterior fossa tumour resection (cerebellar, 4th-ventricle)", why: "Gravity-assisted retraction of the cerebellum; surgeon stands comfortably." },
+  { name: "Foramen magnum / craniocervical decompression (Chiari)", why: "Allows midline suboccipital + upper-cervical exposure with neutral airway access." },
+  { name: "Translabyrinthine / retrolabyrinthine skull-base approaches", why: "Joint ENT–neurosurgical CPA work; head pinned and rotated to floor." },
+  { name: "Posterior cervical spine (selected upper-cervical cases)", why: "When prone is contraindicated (e.g. morbid obesity, severe cardio-respiratory disease)." },
+];
+
+const PB_HOTSPOTS: ParkBenchHotspot[] = [
+  {
+    id: "pb-pin",
+    x: 130,
+    y: 95,
+    label: "Mayfield 3-pin head fixation",
+    severity: "high",
+    risk: "Hypertensive surge on pin application; pin-site bleeding, CSF leak, or depressed skull fracture (children, elderly, steroid-treated).",
+    mitigation: [
+      "Pre-treat: remifentanil 0.5–1 µg/kg bolus or alfentanil 10 µg/kg, ± lidocaine 1.5 mg/kg IV.",
+      "Infiltrate pin sites with LA + adrenaline (e.g. 0.5% bupivacaine with 1:200,000 adrenaline).",
+      "Avoid temporalis muscle, frontal sinus and superficial temporal artery.",
+      "Torque 60–80 N in adults; reduce in children / thin skull.",
+      "Eyes taped + padded BEFORE pinning; confirm no traction on ETT after pinning.",
+    ],
+  },
+  {
+    id: "pb-neck",
+    x: 165,
+    y: 115,
+    label: "Cervical flexion / rotation",
+    severity: "high",
+    risk: "Excessive flexion → ETT kinking, jugular venous obstruction (raised ICP, venous bleeding), cervical cord ischaemia / quadriplegia.",
+    mitigation: [
+      "Maintain ≥ two finger-breadths between chin and sternum.",
+      "Use an armoured (reinforced) ETT — taped, not tied around the neck.",
+      "Limit head rotation to ≤ 45°; if more access needed, tilt the table laterally instead of rotating the neck further.",
+      "Avoid intra-operative hypotension (cord watershed).",
+    ],
+  },
+  {
+    id: "pb-axilla",
+    x: 205,
+    y: 155,
+    label: "Dependent arm — sling, NOT roll-in-axilla",
+    severity: "high",
+    risk: "Brachial plexus stretch / compression; axillary artery occlusion; rhabdomyolysis of the dependent arm.",
+    mitigation: [
+      "Allow the dependent arm to hang free in a padded sling off the table edge — this is the defining feature of park bench.",
+      "Place the axillary roll on the chest wall 2–3 finger-breadths CAUDAL to (NOT IN) the axilla.",
+      "Confirm dependent radial pulse ± pulse oximeter on the dependent hand after positioning.",
+      "Recheck pulse and SpO₂ trace every 15 min during the case.",
+    ],
+  },
+  {
+    id: "pb-vae",
+    x: 305,
+    y: 130,
+    label: "Venous air embolism (VAE)",
+    severity: "moderate",
+    risk: "Surgical site (posterior fossa dural sinuses) often above heart level — air entrainment. Lower risk than full sitting but still ~10–15%.",
+    mitigation: [
+      "Precordial Doppler (most sensitive non-invasive) over the right 2nd–3rd ICS, ± TOE for high-risk cases.",
+      "Continuous EtCO₂ + EtN₂; sudden ↓ EtCO₂, ↓ SpO₂, ↑ PA pressure, mill-wheel murmur = VAE.",
+      "Multi-orifice CVC tip at SVC–RA junction for air aspiration.",
+      "Avoid N₂O (expands intravascular air).",
+      "Crisis: alert surgeon (flood field with saline, bone wax exposed bone), jugular compression, FiO₂ 1.0, aspirate from CVC, fluid + vasopressors, left lateral / head-down if able.",
+    ],
+  },
+  {
+    id: "pb-uparm",
+    x: 270,
+    y: 105,
+    label: "Non-dependent (upper) arm",
+    severity: "moderate",
+    risk: "Suspended forwards on a padded support → suprascapular nerve traction, shoulder dislocation, ulnar / radial nerve compression.",
+    mitigation: [
+      "Pad upper arm at < 90° abduction; forearm pronated and supported on a gel pad.",
+      "Avoid traction by tying the arm across the chest rather than abducting.",
+      "Pad the medial epicondyle; keep IV lines and ECG leads off pressure points.",
+    ],
+  },
+  {
+    id: "pb-fibhead",
+    x: 410,
+    y: 158,
+    label: "Dependent fibular head — common peroneal n.",
+    severity: "moderate",
+    risk: "Pressure on the dependent fibular head → common peroneal palsy / foot drop.",
+    mitigation: [
+      "Pillow / gel pad between the knees and a second pad under the dependent fibular head.",
+      "Slight hip and knee flexion to drop centre of gravity (stops the patient rolling forwards).",
+      "Heels floated on gel pads.",
+    ],
+  },
+  {
+    id: "pb-tape",
+    x: 360,
+    y: 175,
+    label: "Strapping & table-edge security",
+    severity: "moderate",
+    risk: "Patient is on the EDGE of the table to allow the dependent arm to hang — risk of falling, especially during head-up tilt.",
+    mitigation: [
+      "Wide cloth tape across the iliac crests and across the upper thighs to the table.",
+      "Beanbag or vacuum mattress moulded to the patient before pinning.",
+      "Brief the team: any table tilt requires a 5-person team and explicit call-out.",
+    ],
+  },
+  {
+    id: "pb-eye",
+    x: 110,
+    y: 105,
+    label: "Eye and dependent ear",
+    severity: "low",
+    risk: "Globe pressure (dependent eye), corneal abrasion, pinna pressure necrosis on the dependent ear.",
+    mitigation: [
+      "Lubricate and tape both eyes BEFORE pinning; horseshoe head-rest cut-out clear of the globe.",
+      "Pinna folded forwards and padded; no cables or tubing under the head.",
+      "Inspect dependent eye and ear after every position adjustment.",
+    ],
+  },
+];
+
+const SEVERITY_COLOUR: Record<ParkBenchHotspot["severity"], string> = {
+  high: POS_RED,
+  moderate: POS_AMBER,
+  low: POS_GREEN,
+};
+
+export const ParkBenchDetailedDiagram = () => {
+  const [activeId, setActiveId] = useState<string>(PB_HOTSPOTS[0].id);
+  const active = PB_HOTSPOTS.find((h) => h.id === activeId) ?? PB_HOTSPOTS[0];
+  const accent = SEVERITY_COLOUR[active.severity];
+
+  return (
+    <div className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Park-bench position — dedicated review
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Modified lateral with the patient at the table edge, head pinned in 3-point fixation and rotated towards the
+          floor; dependent arm hangs in a padded sling. Workhorse position for posterior-fossa and CPA surgery — most of
+          the VAE benefit of avoiding sitting, with simpler set-up and safer haemodynamics.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px]">
+        {/* Diagram column */}
+        <div className="p-3 bg-[hsl(var(--background))]">
+          <svg viewBox="0 0 560 320" className="w-full h-auto" role="img" aria-label="Park-bench position with pressure-risk hotspots">
+            {/* Floor line */}
+            <line x1={20} y1={285} x2={540} y2={285} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
+            <text x={20} y={300} fontSize={9} fill="hsl(var(--muted-foreground))">FLOOR</text>
+
+            {/* Operating table */}
+            <Table x={70} y={185} w={420} />
+
+            {/* Beanbag / vacuum mattress */}
+            <ellipse cx={290} cy={170} rx={185} ry={18} fill="hsl(45 35% 75%)" opacity={0.55} />
+            <text x={490} y={170} fontSize={9} fill="hsl(var(--muted-foreground))">vacuum mattress</text>
+
+            {/* Patient body — lateral */}
+            <ellipse cx={290} cy={150} rx={140} ry={26} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
+
+            {/* Head — pinned, slightly rotated towards the floor */}
+            <g>
+              <circle cx={140} cy={110} r={22} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
+              {/* Mayfield horseshoe pins */}
+              <line x1={125} y1={92} x2={117} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <line x1={155} y1={92} x2={163} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <line x1={140} y1={88} x2={140} y2={75} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <text x={140} y={68} fontSize={9} fontWeight={600} fill="hsl(280 60% 40%)" textAnchor="middle">Mayfield 3-pin</text>
+              {/* ETT armoured */}
+              <path d="M 150 118 Q 175 130 195 130" fill="none" stroke="hsl(var(--foreground))" strokeWidth={2} />
+              <text x={195} y={123} fontSize={9} fill="hsl(var(--muted-foreground))">armoured ETT</text>
+            </g>
+
+            {/* Axillary roll caudal to axilla */}
+            <ellipse cx={200} cy={155} rx={14} ry={7} fill={POS_GREEN} opacity={0.85} />
+            <text x={200} y={134} fontSize={9} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>axillary roll (NOT in axilla)</text>
+
+            {/* Dependent arm — hanging off table edge in sling */}
+            <line x1={215} y1={158} x2={225} y2={235} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
+            <path d="M 200 235 Q 230 260 255 230" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
+            <text x={235} y={273} fontSize={9} fill="hsl(280 50% 45%)" fontWeight={600}>padded sling</text>
+
+            {/* Upper arm — supported forwards on padded gutter */}
+            <line x1={245} y1={140} x2={295} y2={108} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
+            <rect x={285} y={100} width={45} height={14} rx={4} fill={POS_GREEN} opacity={0.6} />
+            <text x={307} y={94} fontSize={9} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>arm gutter</text>
+
+            {/* Legs — flexed, pillow between knees */}
+            <line x1={400} y1={155} x2={455} y2={135} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+            <line x1={400} y1={155} x2={465} y2={172} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+            <ellipse cx={445} cy={150} rx={9} ry={5} fill={POS_GREEN} opacity={0.85} />
+            <text x={478} y={150} fontSize={9} fill={POS_GREEN} fontWeight={600}>knee pad</text>
+
+            {/* Hip + thigh tape */}
+            <line x1={310} y1={130} x2={310} y2={195} stroke="hsl(0 0% 25%)" strokeWidth={3} />
+            <line x1={370} y1={132} x2={370} y2={195} stroke="hsl(0 0% 25%)" strokeWidth={3} />
+            <text x={340} y={125} fontSize={9} textAnchor="middle" fill="hsl(var(--muted-foreground))">strapping</text>
+
+            {/* Surgical access arrow — surgeon comes from behind the head */}
+            <path d="M 70 60 Q 110 50 145 75" fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} strokeDasharray="3 3" />
+            <text x={75} y={48} fontSize={9} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
+
+            {/* Heart-to-craniotomy hydrostatic gradient */}
+            <line x1={290} y1={150} x2={140} y2={90} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1} />
+            <text x={210} y={108} fontSize={9} fill={POS_AMBER} fontWeight={600}>~10–15 cm gradient (VAE)</text>
+
+            {/* Hotspots */}
+            {PB_HOTSPOTS.map((h, i) => {
+              const isActive = h.id === activeId;
+              const colour = SEVERITY_COLOUR[h.severity];
+              return (
+                <g
+                  key={h.id}
+                  onPointerEnter={() => setActiveId(h.id)}
+                  onClick={() => setActiveId(h.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <circle
+                    cx={h.x}
+                    cy={h.y}
+                    r={isActive ? 13 : 11}
+                    fill={colour}
+                    fillOpacity={isActive ? 0.95 : 0.85}
+                    stroke="hsl(var(--background))"
+                    strokeWidth={2}
+                  />
+                  <text
+                    x={h.x}
+                    y={h.y + 3.5}
+                    textAnchor="middle"
+                    fontSize={10}
+                    fontWeight={700}
+                    fill="hsl(var(--background))"
+                  >
+                    {i + 1}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* Severity legend */}
+          <div className="mt-2 flex items-center gap-4 text-[11px] text-muted-foreground px-1">
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_RED }} /> High risk</span>
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_AMBER }} /> Moderate</span>
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_GREEN }} /> Low / supportive</span>
+          </div>
+        </div>
+
+        {/* Side panel: chip list + active detail */}
+        <div className="border-t lg:border-t-0 lg:border-l border-border bg-muted/20 p-3 text-xs">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+            Pressure-risk hotspots
+          </p>
+          <ol className="space-y-1.5 mb-3">
+            {PB_HOTSPOTS.map((h, i) => {
+              const isActive = h.id === activeId;
+              const colour = SEVERITY_COLOUR[h.severity];
+              return (
+                <li key={h.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveId(h.id)}
+                    className={cn(
+                      "w-full text-left flex items-start gap-2 rounded-md px-2 py-1.5 transition",
+                      isActive ? "bg-background border border-border shadow-sm" : "hover:bg-background/60"
+                    )}
+                  >
+                    <span
+                      className="mt-0.5 inline-flex items-center justify-center w-4 h-4 rounded-full text-[9px] font-bold shrink-0"
+                      style={{ background: colour, color: "hsl(var(--background))" }}
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="text-foreground leading-tight">{h.label}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+
+          <div
+            className="rounded-md border border-border bg-background p-2.5"
+            style={{ borderLeft: `4px solid ${accent}` }}
+          >
+            <p className="text-[11px] font-semibold text-foreground mb-1">{active.label}</p>
+            <p className="text-[11px] text-muted-foreground mb-2">
+              <span className="font-medium text-foreground">Risk: </span>{active.risk}
+            </p>
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-1">
+              Mitigation
+            </p>
+            <ol className="list-decimal list-inside space-y-1 text-[11px] text-muted-foreground">
+              {active.mitigation.map((m, i) => <li key={i}>{m}</li>)}
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* Procedures footer */}
+      <div className="border-t border-border bg-muted/10 p-4">
+        <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+          Typical neuro-anaesthesia procedures performed in park-bench
+        </p>
+        <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+          {PB_PROCEDURES.map((p) => (
+            <li key={p.name} className="leading-snug">
+              <span className="text-foreground font-medium">{p.name}.</span> {p.why}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 // ── 7. SITTING (neurosurgical) ─────────────────────────────────────────
 
 export const SittingPositionDiagram = () => (
