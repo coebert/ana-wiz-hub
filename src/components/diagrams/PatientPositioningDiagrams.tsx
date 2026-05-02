@@ -625,6 +625,21 @@ export const PronePositionDiagram = () => (
       { id: "knees", x: 410, y: 145, label: "Knees, anterior superior iliac spine, breasts/genitalia", detail: "Pad the knees, ASIS and male genitalia (avoid penile compression). Female breasts displaced laterally or supported." },
       { id: "arms", x: 220, y: 100, label: "Arms — 'superman' or tucked", detail: "Either tucked at the side (preferred for spinal fusion) or abducted <90° + flexed at elbow with neutral wrist (superman). Excessive abduction stretches the plexus; the humerus rotates anteriorly when prone." },
     ]}
+    landmarks={[
+      { id: "head", x: 120, y: 95, label: "Head (horseshoe)", dx: -6, dy: -16, anchor: "end" },
+      { id: "chest", x: 200, y: 130, label: "Chest support", dx: 0, dy: -18, anchor: "middle" },
+      { id: "asis", x: 360, y: 145, label: "ASIS / pelvis support", dx: 0, dy: 22, anchor: "middle" },
+      { id: "knee", x: 410, y: 145, label: "Knee", dx: 8, dy: 22 },
+    ]}
+    measurements={[
+      // Free abdominal span between chest and pelvis supports — must remain free
+      {
+        kind: "distance", id: "freeBelly",
+        from: { x: 220, y: 145 }, to: { x: 340, y: 150 },
+        unit: "cm", pxPerUnit: 5,
+        label: "free belly",
+      },
+    ]}
     legend={<>Common procedures: posterior spinal surgery, posterior fossa craniotomy, nephrolithotomy (PCNL), severe ARDS proning in ICU.</>}
   >
     <Table x={70} y={180} w={420} />
