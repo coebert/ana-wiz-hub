@@ -103,14 +103,14 @@ const SecondGasEffectDiagram = () => {
 
   const stepLabels = isSecondGas
     ? [
-        "1. High-volume N₂O fills the alveolus (≈70%) alongside a small fraction of volatile.",
-        "2. N₂O is rapidly absorbed by blood — alveolar gas volume shrinks.",
-        "3. The remaining volatile is concentrated in less gas → FA/FI of volatile rises faster.",
+        "1. A high inspired fraction of N₂O (≈70%) is delivered with a small fraction of volatile (the 'second gas').",
+        "2. N₂O is taken up rapidly by pulmonary blood (≈1 L·min⁻¹ early on); the lost alveolar volume is replenished by augmented tracheal inflow of the same fresh-gas mixture.",
+        "3. Two mechanisms act together — a concentrating effect (volatile concentrated in a smaller residual gas volume) plus the extra inspired volatile drawn in — so FA/FI of the second gas rises faster than it would alone.",
       ]
     : [
-        "1. End of case: N₂O is switched off; high alveolar N₂O still saturates blood.",
-        "2. N₂O floods OUT of blood into the alveolus down its partial-pressure gradient.",
-        "3. Alveolar O₂ is diluted by the wave of N₂O → SpO₂ falls unless 100% O₂ is given.",
+        "1. N₂O is switched off at emergence while blood remains saturated with N₂O from the case.",
+        "2. N₂O moves down its partial-pressure gradient from blood into the alveolus in large volumes (the reverse of uptake).",
+        "3. This wave of N₂O dilutes alveolar O₂ and CO₂, lowering PAO₂ and depressing ventilation — a transient fall in SpO₂ may occur in the first 5–10 min unless 100% O₂ is given.",
       ];
 
   return (
@@ -178,8 +178,8 @@ const SecondGasEffectDiagram = () => {
         </h3>
         <p className="text-xs text-muted-foreground mb-3">
           {isSecondGas
-            ? "Rapid absorption of nitrous oxide concentrates a co-administered volatile in the shrinking alveolar gas."
-            : "On waking, large volumes of N₂O leave the blood and dilute alveolar oxygen — give 100% O₂ for 3–5 min."}
+            ? "Rapid uptake of nitrous oxide concentrates a co-administered volatile and augments tracheal inflow, accelerating the rise of FA/FI of the 'second gas'."
+            : "At emergence, large volumes of N₂O leave the blood and dilute alveolar O₂ and CO₂ — give 100% O₂ for the first 5–10 min."}
         </p>
 
         <svg
@@ -393,8 +393,8 @@ const SecondGasEffectDiagram = () => {
           <p className="text-xs text-foreground">
             <span className="font-semibold">Clinical:</span>{" "}
             {isSecondGas
-              ? "Co-administering 70% N₂O speeds the rise of FA/FI of the second (volatile) agent — accelerated induction, especially with high-BGPC agents."
-              : "After turning off N₂O, deliver 100% O₂ for 3–5 minutes to prevent transient SpO₂ drop, particularly in the elderly or those with limited reserve."}
+              ? "Using ≈70% N₂O speeds the rise of FA/FI of the co-administered volatile (concentrating effect + augmented inflow) — clinically modest with modern low-solubility agents (sevoflurane, desflurane) but more pronounced with higher-BGPC agents."
+              : "After stopping N₂O, deliver 100% O₂ for the first 5–10 minutes of emergence to offset diffusion hypoxia, particularly in the elderly or patients with limited respiratory reserve."}
           </p>
         </div>
       </div>
