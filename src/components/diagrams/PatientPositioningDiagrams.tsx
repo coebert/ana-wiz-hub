@@ -1286,6 +1286,7 @@ export const SittingPositionDetailedDiagram = () => {
         <div className="p-3 bg-[hsl(var(--background))]">
           <div className="overflow-x-auto -mx-1 px-1">
             <svg viewBox="0 0 420 320" className="w-full h-auto min-w-[420px]" role="img" aria-label="Sitting position with circulation, airway and pressure-risk hotspots">
+            <AnatomyDefs idPrefix="st" />
             {/* Floor line */}
             <line x1={20} y1={295} x2={400} y2={295} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
             <text x={20} y={310} fontSize={11} fill="hsl(var(--muted-foreground))">FLOOR</text>
@@ -1305,24 +1306,18 @@ export const SittingPositionDetailedDiagram = () => {
 
             {/* Patient torso along backrest */}
             <g transform="rotate(-60 260 232)">
-              <rect x={155} y={180} width={110} height={45} rx={16} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-              {/* Neck */}
-              <rect x={138} y={195} width={20} height={16} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.2} />
-              {/* Head — flexed onto chest */}
-              <circle cx={130} cy={200} r={20} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-              {/* Mayfield pins */}
-              <line x1={117} y1={184} x2={111} y2={176} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
-              <line x1={143} y1={184} x2={149} y2={176} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
-              <line x1={130} y1={181} x2={130} y2={172} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <TorsoLateral cx={210} cy={202} length={120} height={52} idPrefix="st" facing="left" />
+              {/* Head profile — flexed onto chest, pinned */}
+              <HeadProfile cx={130} cy={200} r={20} idPrefix="st" facing="left" />
+              <MayfieldPins cx={130} cy={200} r={20} />
             </g>
 
             {/* Arms folded across lap */}
-            <line x1={235} y1={155} x2={285} y2={170} stroke="hsl(35 80% 80%)" strokeWidth={11} strokeLinecap="round" />
-            <line x1={285} y1={170} x2={250} y2={185} stroke="hsl(35 80% 80%)" strokeWidth={11} strokeLinecap="round" />
+            <Arm sx={235} sy={155} ex={272} ey={168} wx={258} wy={186} idPrefix="st" upperW={11} foreW={9} handLen={10} gownSleeve />
+            <Arm sx={250} sy={162} ex={278} ey={178} wx={250} wy={192} idPrefix="st" upperW={11} foreW={9} handLen={10} gownSleeve />
 
             {/* Legs — knees flexed and elevated to heart level */}
-            <line x1={285} y1={205} x2={345} y2={185} stroke="hsl(35 80% 80%)" strokeWidth={18} strokeLinecap="round" />
-            <line x1={345} y1={185} x2={325} y2={235} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+            <Leg hx={285} hy={205} kx={342} ky={188} ax={328} ay={232} idPrefix="st" thighW={20} calfW={16} footLen={16} draped />
             {/* Knee gutter pad */}
             <ellipse cx={345} cy={185} rx={9} ry={5} fill={POS_GREEN} opacity={0.85} />
 
