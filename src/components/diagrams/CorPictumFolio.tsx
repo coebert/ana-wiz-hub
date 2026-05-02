@@ -126,6 +126,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
 
+  // Floating hover/click panel for polygon → label info
+  const [pinnedLabelIdx, setPinnedLabelIdx] = useState<number | null>(null);
+  const [hoverPanel, setHoverPanel] = useState<{ idx: number; x: number; y: number } | null>(null);
+  const stageWrapRef = useRef<HTMLDivElement>(null);
+
   // ── Polygon review mode (developer/editor) ─────────────────────────────
   // URL `?review=polygons` also enables this without a code change.
   const urlReview = typeof window !== "undefined" && window.location.search.includes("review=polygons");
@@ -166,6 +171,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   useEffect(() => {
     reset();
     setActiveLabelIdx(null);
+    setPinnedLabelIdx(null);
+    setHoverPanel(null);
     // Keep the active tab visible inside the scroll-snap rail
     const rail = tabRailRef.current;
     if (rail) {
@@ -521,7 +528,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
 
         {/* Hairline plate-mark with zoom/pan stage */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
-          <div className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
+          <div ref={stageWrapRef} className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
             <div
               ref={stageRef}
               role="application"
@@ -560,7 +567,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   >
                     {active.labels.map((label, idx) => {
                       if (!label.polygon || label.polygon.length < 3) return null;
-                      const isActive = activeLabelIdx === idx;
+                      const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
+                      const updatePanelPos = (clientX: number, clientY: number, i: number) => {
+                        const wrap = stageWrapRef.current;
+                        if (!wrap) return;
+                        const rect = wrap.getBoundingClientRect();
+                        setHoverPanel({ idx: i, x: clientX - rect.left, y: clientY - rect.top });
+                      };
                       return (
                         <polygon
                           key={`${label.latin}-${idx}`}
@@ -569,7 +582,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                             "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
                             isActive
                               ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
-                              : activeLabelIdx === null
+                              : activeLabelIdx === null && pinnedLabelIdx === null
                                 ? "fill-transparent stroke-transparent hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/60"
                                 : "fill-transparent stroke-transparent",
                           )}
@@ -578,11 +591,21 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                             vectorEffect: "non-scaling-stroke",
                             pointerEvents: "auto",
                           }}
-                          onPointerEnter={() => setActiveLabelIdx(idx)}
-                          onPointerLeave={() => setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                          onClick={() => {
-                            const node = document.getElementById(`${reactId}-label-${idx}`);
-                            node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                          onPointerEnter={(e) => {
+                            setActiveLabelIdx(idx);
+                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                          }}
+                          onPointerMove={(e) => {
+                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                          }}
+                          onPointerLeave={() => {
+                            setActiveLabelIdx((prev) => (prev === idx ? null : prev));
+                            if (pinnedLabelIdx === null) setHoverPanel(null);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPinnedLabelIdx((prev) => (prev === idx ? null : idx));
+                            updatePanelPos(e.clientX, e.clientY, idx);
                           }}
                         >
                           <title>{label.english}</title>
@@ -702,9 +725,91 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
             {!isZoomed ? (
               <p className="absolute bottom-2 left-3 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
                 Scroll / pinch to zoom · drag to pan
-                {hasAnyPolygons ? " · hover labels to highlight" : ""}
+                {hasAnyPolygons ? " · hover or click a structure for details" : ""}
               </p>
             ) : null}
+
+            {/* Floating polygon info panel (hover/click) */}
+            {!reviewMode && hoverPanel && (() => {
+              const idx = pinnedLabelIdx ?? hoverPanel.idx;
+              const label = active.labels[idx];
+              if (!label) return null;
+              const wrap = stageWrapRef.current;
+              const wrapW = wrap?.clientWidth ?? 0;
+              const wrapH = wrap?.clientHeight ?? 0;
+              const PANEL_W = 280;
+              // flip to the left if the cursor is in the right half
+              const flipX = hoverPanel.x + PANEL_W + 18 > wrapW;
+              const left = flipX ? Math.max(8, hoverPanel.x - PANEL_W - 14) : hoverPanel.x + 14;
+              // clamp vertically — assume a generous max height
+              const top = Math.max(8, Math.min(wrapH - 40, hoverPanel.y + 14));
+              const isPinned = pinnedLabelIdx === idx;
+              return (
+                <div
+                  role="dialog"
+                  aria-label={`${label.english} — details`}
+                  className={cn(
+                    "absolute z-20 pointer-events-auto rounded-lg border bg-background/95 backdrop-blur-sm shadow-lg p-3 text-left animate-fade-in",
+                    isPinned ? "border-[hsl(8_55%_38%)]" : "border-border",
+                  )}
+                  style={{ left, top, width: PANEL_W }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="min-w-0">
+                      <p className="font-serif text-[13.5px] leading-snug text-foreground truncate">
+                        {label.english}
+                      </p>
+                      <p className="font-serif italic text-[11px] text-muted-foreground/90 leading-snug">
+                        {label.latin}
+                      </p>
+                    </div>
+                    {isPinned ? (
+                      <button
+                        type="button"
+                        aria-label="Close details"
+                        onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
+                        className="-mr-1 -mt-1 h-5 w-5 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground flex items-center justify-center text-sm leading-none"
+                      >×</button>
+                    ) : null}
+                  </div>
+
+                  {label.examTags && label.examTags.length > 0 ? (
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {label.examTags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[9px] uppercase tracking-wide rounded-sm border border-[hsl(8_55%_38%)]/40 bg-[hsl(8_70%_50%)]/10 px-1.5 py-0.5 font-semibold text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {label.note ? (
+                    <p className="text-[11.5px] text-muted-foreground leading-snug mb-1.5">
+                      {label.note}
+                    </p>
+                  ) : null}
+
+                  {label.learningPoint ? (
+                    <p className="text-[11.5px] text-foreground/90 leading-relaxed border-l-2 border-[hsl(8_55%_38%)]/60 pl-2 mt-1">
+                      <span className="font-semibold uppercase tracking-wide text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                        FRCA learning point
+                      </span>
+                      {label.learningPoint}
+                    </p>
+                  ) : null}
+
+                  <p className="text-[9.5px] text-muted-foreground/70 mt-2">
+                    {isPinned ? "Pinned · click × or another structure to dismiss" : "Click polygon to pin · scroll to read"}
+                  </p>
+                </div>
+              );
+            })()}
+
           </div>
 
           {/* English caption strip beneath the plate-mark */}
