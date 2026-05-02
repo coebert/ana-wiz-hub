@@ -144,6 +144,12 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
   useEffect(() => {
     reset();
     setActiveLabelIdx(null);
+    // Keep the active tab visible inside the scroll-snap rail
+    const rail = tabRailRef.current;
+    if (rail) {
+      const activeTab = rail.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+      activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
   }, [activeId, reset]);
 
   const zoomAt = useCallback((factor: number, originX?: number, originY?: number) => {
