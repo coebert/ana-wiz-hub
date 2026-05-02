@@ -675,9 +675,9 @@ export const TorsoSupine = ({
       {/* Neck */}
       <rect x={x - 6} y={cy - 14} width={20} height={28} rx={4}
         fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} />
-      {/* Body silhouette */}
-      <path
-        d={`M ${xShoulder},${cy - shoulderW / 2}
+      {/* Body silhouette + sheen overlay (computed once) */}
+      {(() => {
+        const d = `M ${xShoulder},${cy - shoulderW / 2}
             Q ${xChest},${cy - shoulderW / 2 - 4} ${xChest + 8},${cy - shoulderW / 2 + 2}
             L ${xWaist},${cy - waistW / 2}
             Q ${xWaist + 30},${cy - waistW / 2 - 1} ${xHip},${cy - hipW / 2}
@@ -687,11 +687,27 @@ export const TorsoSupine = ({
             Q ${xWaist + 30},${cy + waistW / 2 + 1} ${xWaist},${cy + waistW / 2}
             L ${xChest + 8},${cy + shoulderW / 2 - 2}
             Q ${xChest},${cy + shoulderW / 2 + 4} ${xShoulder},${cy + shoulderW / 2}
-            Z`}
-        fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
-        stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
-        strokeWidth={1.2}
-      />
+            Z`;
+        return (
+          <>
+            <path d={d}
+              fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
+              stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
+              strokeWidth={1.2}
+            />
+            <path d={d}
+              fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
+              pointerEvents="none"
+            />
+            {/* Soft occlusion at the waist tuck */}
+            <ellipse
+              cx={xWaist + 4} cy={cy + waistW / 2 - 1}
+              rx={length * 0.22} ry={4}
+              fill={`url(#${idPrefix}-ao)`} opacity={0.55} pointerEvents="none"
+            />
+          </>
+        );
+      })()}
       {showGown && (
         <>
           {/* Centre seam */}
