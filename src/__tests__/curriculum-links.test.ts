@@ -16,8 +16,11 @@ import { describe, it, expect } from "vitest";
 
 import * as folios from "@/components/diagrams/anatomyFolios";
 import type { CorPictumFolioData } from "@/components/diagrams/anatomyFolios";
-
-const CODE_RE = /^[A-Z]{2}_BK_\d{2}$/;
+import {
+  isCurriculumCodeFormat,
+  isCurriculumCode,
+  ALL_CURRICULUM_CODES,
+} from "@/data/curriculumCodes";
 
 /** folio export name → topic page that renders it */
 const FOLIO_TO_PAGE: Record<string, string> = {
@@ -100,8 +103,16 @@ describe("CorPictum curriculumLinks", () => {
             (_i, link) => {
               // 1. Format
               expect(
-                CODE_RE.test(link.code),
+                isCurriculumCodeFormat(link.code),
                 `code "${link.code}" must match XX_BK_NN`,
+              ).toBe(true);
+
+              // 1b. Registry membership — code must be in src/data/curriculumCodes.ts
+              expect(
+                isCurriculumCode(link.code),
+                `code "${link.code}" (referenced by ${folioName} → ${plate.id}) ` +
+                  `is not registered in src/data/curriculumCodes.ts. ` +
+                  `Add it to CURRICULUM_CODES with title + exams, then re-run.`,
               ).toBe(true);
 
               // 2. Sanity
@@ -132,4 +143,15 @@ describe("CorPictum curriculumLinks", () => {
       }
     });
   }
+});
+
+describe("CurriculumCode registry", () => {
+  it("every registered code is well-formed", () => {
+    const bad = ALL_CURRICULUM_CODES.filter((c) => !isCurriculumCodeFormat(c));
+    expect(bad, `malformed registry keys: ${bad.join(", ")}`).toEqual([]);
+  });
+
+  it("contains no duplicate codes", () => {
+    expect(new Set(ALL_CURRICULUM_CODES).size).toBe(ALL_CURRICULUM_CODES.length);
+  });
 });
