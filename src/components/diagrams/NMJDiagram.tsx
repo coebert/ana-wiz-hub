@@ -430,15 +430,45 @@ export const NMJDiagram = () => {
         )}
       </div>
 
-      {/* Phase timeline */}
+      {/* Cross-links: jump between molecular sub-stages */}
+      <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3 text-xs">
+        <span className="text-muted-foreground mr-1">Jump to:</span>
+        {[
+          { id: "rest", label: "Docking", hint: "Vesicles tethered at active zone" },
+          { id: "ca", label: "Ca²⁺ influx", hint: "VGCCs open, [Ca²⁺]ᵢ rises" },
+          { id: "syt", label: "Priming (Syt-1 binding)", hint: "Ca²⁺ binds Syt-1 → complexin displaced" },
+          { id: "vesicle", label: "Fusion", hint: "SNARE zippers → ACh release" },
+        ].map((link) => {
+          const isActive = currentPhase.id === link.id;
+          return (
+            <button
+              key={link.id}
+              onClick={() => jumpToPhase(link.id)}
+              title={link.hint}
+              className={`px-2.5 py-1 rounded-full border transition-colors ${
+                isActive
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-background text-foreground border-border hover:bg-muted hover:border-primary/50"
+              }`}
+            >
+              {link.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Phase timeline (clickable) */}
       <div className="flex gap-0.5 mb-4">
         {PHASES.map((p, i) => {
           const start = PHASES.slice(0, i).reduce((s, pp) => s + pp.duration, 0);
           const isCurrent = currentPhase.id === p.id;
           return (
-            <div
+            <button
               key={p.id}
-              className={`h-1.5 rounded-full transition-colors ${isCurrent ? "bg-primary" : frame > start ? "bg-primary/30" : "bg-muted"}`}
+              onClick={() => jumpToPhase(p.id)}
+              title={p.label}
+              aria-label={`Jump to ${p.label}`}
+              className={`h-1.5 rounded-full transition-colors cursor-pointer hover:brightness-110 ${isCurrent ? "bg-primary" : frame > start ? "bg-primary/30" : "bg-muted"}`}
               style={{ flex: p.duration }}
             />
           );
