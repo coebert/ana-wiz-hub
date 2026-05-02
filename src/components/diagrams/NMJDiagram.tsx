@@ -169,22 +169,59 @@ export const NMJDiagram = () => {
             fill="hsl(35 95% 55%)" opacity={0.1 + cloudIntensity * 0.3} />
         )}
 
-        {/* Vesicles — fusion gated by fusionProgress (begins only in "vesicle" phase) */}
+        {/* Vesicles — Syt-1 sensors visible at base; Ca²⁺ binds them before SNARE-mediated fusion */}
         {vesicles.map((v, i) => {
-          // Stagger fusion across vesicles using fusionProgress
           const localFusion = Math.max(0, Math.min(1, fusionProgress * 1.6 - i * 0.12));
           const fusing = localFusion > 0;
           const vy = v.cy + (140 - v.cy) * localFusion;
           const opacity = showDegradation ? 0.3 : fusing ? 1 - 0.4 * localFusion : 1;
+
+          const sytY = vy + 12;
+          const sytPositions = [-5, 0, 5];
+          const showSyt = caT >= 0 && localFusion < 0.6;
+          const sytGlow = sytBinding * (1 - localFusion);
+
           return (
             <g key={i}>
               <circle cx={v.cx} cy={vy} r={12} fill="hsl(170 50% 70%)" stroke="hsl(170 50% 40%)" strokeWidth="1.5" opacity={opacity} />
-              {/* ACh dots inside */}
               {localFusion < 0.5 && (
                 <>
                   <circle cx={v.cx - 3} cy={vy - 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
                   <circle cx={v.cx + 3} cy={vy + 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
                 </>
+              )}
+
+              {/* Synaptotagmin-1 sensors (3 C2 domains) */}
+              {showSyt && sytPositions.map((dx, k) => {
+                const bound = sytGlow > 0.1;
+                return (
+                  <g key={k}>
+                    {bound && (
+                      <circle cx={v.cx + dx} cy={sytY} r={4 + sytGlow * 2}
+                        fill="hsl(35 95% 55%)" opacity={0.35 * sytGlow}>
+                        <animate attributeName="opacity"
+                          values={`${0.2 * sytGlow};${0.5 * sytGlow};${0.2 * sytGlow}`}
+                          dur="0.6s" repeatCount="indefinite" />
+                      </circle>
+                    )}
+                    <circle cx={v.cx + dx} cy={sytY} r={2.5}
+                      fill={bound ? "hsl(35 95% 55%)" : "hsl(280 30% 65%)"}
+                      stroke={bound ? "hsl(25 90% 35%)" : "hsl(280 30% 40%)"}
+                      strokeWidth="0.8"
+                      opacity={opacity} />
+                    {bound && (
+                      <circle cx={v.cx + dx} cy={sytY - 1} r={1.2}
+                        fill="hsl(45 100% 95%)" opacity={sytGlow} />
+                    )}
+                  </g>
+                );
+              })}
+
+              {i === 0 && showSyt && sytGlow > 0.2 && (
+                <text x={v.cx - 22} y={sytY + 3} fontSize="7"
+                  fill="hsl(280 40% 35%)" className="font-semibold" opacity={sytGlow}>
+                  Syt-1
+                </text>
               )}
             </g>
           );
