@@ -6,6 +6,7 @@ import { ventilationPerfusionQuestions } from "@/data/quizzes";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 import { Exam } from "@/data/curriculum";
+import { WestZonesDiagram } from "@/components/diagrams/WestZonesDiagram";
 
 const objectives = [
   "Describe the regional V/Q distribution from apex to base in the upright lung.",
@@ -136,6 +137,9 @@ const VentilationPerfusionTopic = () => {
           <ExamSection id="west-zones" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["RC_BK_02"]}>
             <div>
               <h2 className="text-2xl font-serif font-bold text-foreground mb-3">West's Zones</h2>
+              <div className="mb-4 p-4 rounded-lg border border-border bg-muted/30">
+                <WestZonesDiagram />
+              </div>
               <div className="space-y-3">
                 {[
                   { zone: "Zone 1", eq: "PA > Pa > Pv", desc: "Alveolar pressure exceeds arterial. No flow in diastole. Normally absent in health but occurs with ↓ CO, ↑ PEEP, haemorrhage. Dead space ventilation." },
