@@ -458,8 +458,9 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                 Mapped to FRCA curriculum
               </p>
-              <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl">
-                {visibleCurriculumLinks.map((link) => {
+              <div className="relative w-full max-w-2xl mx-auto">
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-1.5 px-1 pb-1 [scrollbar-width:thin] [-ms-overflow-style:none]">
+                  {/* fade edges hint */}
                   const examLabel = link.exams
                     .map((e) =>
                       e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
