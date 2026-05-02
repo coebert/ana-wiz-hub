@@ -137,6 +137,7 @@ const PatientPositioningTopic = () => {
               access and turning logistics.
             </p>
             <PronePositionDiagram />
+            <ProneFaceProtectionDiagram />
             <ProneFrameComparisonDiagram />
             <ProneIVCFreeAbdomenAnimation />
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
