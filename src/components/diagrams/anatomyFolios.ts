@@ -6,6 +6,8 @@ import cardiacAnterior from "@/assets/plates/cardiac-anterior.jpg";
 import cardiacShortAxis from "@/assets/plates/cardiac-short-axis.jpg";
 import cardiacConduction from "@/assets/plates/cardiac-conduction.jpg";
 import airwayLaryngoscopic from "@/assets/plates/airway-laryngoscopic.jpg";
+import airwayCoronal from "@/assets/plates/airway-coronal.jpg";
+import airwayAxial from "@/assets/plates/airway-axial.jpg";
 import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
 import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
@@ -77,6 +79,57 @@ export const airwayFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Laryngeal inlet anatomy & cord identification", anchor: "das-2015-algorithm-four-sequential-plans" },
         { code: "CL_BK_03", exams: [Exam.FINAL], title: "Difficult airway — Cormack–Lehane grading", anchor: "das-2015-algorithm-four-sequential-plans" },
         { code: "IC_BK_03", exams: [Exam.FFICM], title: "ICU airway management & emergency intubation", anchor: "das-2015-algorithm-four-sequential-plans" },
+      ],
+    },
+    {
+      id: "coronal", tabLabel: "Coronal", folio: "III",
+      title: "Larynx — Coronal Section", subtitle: "The three laryngeal tiers",
+      image: airwayCoronal, alt: "Painted coronal section of the larynx showing supraglottis, glottis and subglottis",
+      caption: "Coronal section of the larynx — supraglottis, glottis and subglottis",
+      labels: [
+        { latin: "", english: "Epiglottis", note: "Leaf-shaped fibroelastic cartilage; closes the inlet during swallowing." },
+        { latin: "", english: "Hyoid bone", note: "Suspends the larynx; surface landmark for superior laryngeal nerve block." },
+        { latin: "", english: "Thyrohyoid membrane", note: "Pierced by internal branch of superior laryngeal nerve — supraglottic sensory supply." },
+        { latin: "", english: "Vestibule (supraglottis)", note: "Above false cords; sensory supply from internal branch of superior laryngeal nerve (CN X)." },
+        { latin: "", english: "False vocal cord", note: "Vestibular fold; pink mucosa above the ventricle." },
+        { latin: "", english: "Ventricle (of Morgagni)", note: "Lateral recess between false and true cords." },
+        { latin: "", english: "True vocal cord", note: "Pearl-white; defines the glottis — narrowest adult airway point." },
+        { latin: "", english: "Glottis", note: "Cord level; narrowest adult airway. Adult subglottis is widest, paediatric subglottis (cricoid) is narrowest." },
+        { latin: "", english: "Subglottis", note: "Below cords to lower border of cricoid; narrowest part in children — fixed-diameter cricoid ring." },
+        { latin: "", english: "Thyroid cartilage", note: "Largest laryngeal cartilage; surface landmark for cricothyroid puncture." },
+        { latin: "", english: "Cricothyroid membrane", note: "Front-of-neck access (FONA) site — emergency surgical airway." },
+        { latin: "", english: "Cricoid cartilage", note: "Only complete ring; site for cricoid pressure (Sellick's manoeuvre) and paediatric airway sizing." },
+        { latin: "", english: "First tracheal ring", note: "Below cricoid; level of standard surgical tracheostomy entry between 2nd–3rd rings." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Laryngeal anatomy — coronal tiers", anchor: "pre-operative-airway-assessment" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Front-of-neck access & emergency cricothyroidotomy", anchor: "das-2015-algorithm-four-sequential-plans" },
+        { code: "IC_BK_03", exams: [Exam.FFICM], title: "Percutaneous tracheostomy in ICU", anchor: "das-2015-algorithm-four-sequential-plans" },
+      ],
+    },
+    {
+      id: "axial", tabLabel: "Axial", folio: "IV",
+      title: "Larynx — Axial Section", subtitle: "Vocal cord level, superior view",
+      image: airwayAxial, alt: "Painted axial section of the larynx at the vocal cord level",
+      caption: "Axial section of the larynx at the level of the true vocal cords",
+      labels: [
+        { latin: "", english: "Thyroid cartilage", note: "Anterior wing-shape; angle is more acute in males (Adam's apple)." },
+        { latin: "", english: "Anterior commissure", note: "Where true cords meet anteriorly on the thyroid cartilage." },
+        { latin: "", english: "True vocal cord", note: "Stretched between vocal process and anterior commissure; vibration produces voice." },
+        { latin: "", english: "Vocal process", note: "Anterior projection of arytenoid where the vocal ligament attaches." },
+        { latin: "", english: "Arytenoid cartilage", note: "Pyramidal; sits on the cricoid; rotation opens/closes the glottis." },
+        { latin: "", english: "Posterior commissure", note: "Mucosa between arytenoids; reference point for Cormack–Lehane grading." },
+        { latin: "", english: "Glottis (rima glottidis)", note: "Triangular opening between cords — narrowest adult airway." },
+        { latin: "", english: "Thyroarytenoid muscle (vocalis)", note: "Tenses and shortens cord; fine-tunes pitch." },
+        { latin: "", english: "Lateral cricoarytenoid muscle", note: "Adducts cords (closes glottis); recurrent laryngeal nerve (CN X)." },
+        { latin: "", english: "Posterior cricoarytenoid muscle (sole abductor)", note: "Only abductor — paralysis closes the cord; bilateral RLN palsy = stridor." },
+        { latin: "", english: "Transverse arytenoid muscle", note: "Adducts arytenoids; closes posterior commissure during swallowing/phonation." },
+        { latin: "", english: "Cricoarytenoid joint", note: "Synovial joint allowing arytenoid rotation and gliding." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Intrinsic laryngeal muscles & cord movement", anchor: "pre-operative-airway-assessment" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Recurrent laryngeal nerve — supply & lesions", anchor: "pre-operative-airway-assessment" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Vocal cord paralysis & post-thyroidectomy stridor", anchor: "das-2015-algorithm-four-sequential-plans" },
       ],
     },
   ],
