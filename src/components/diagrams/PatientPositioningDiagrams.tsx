@@ -576,6 +576,30 @@ export const LateralPositionDiagram = () => (
       { id: "vq", x: 285, y: 150, label: "V/Q mismatch", detail: "Awake spontaneously breathing lateral: ventilation matches perfusion (both favour dependent lung). Anaesthetised + paralysed + open chest: ventilation goes to the upper (compliant) lung but perfusion stays dependent → significant V/Q mismatch and shunt." },
       { id: "perlat", x: 360, y: 140, label: "Common peroneal & lateral malleolus", detail: "Dependent fibular neck compresses the common peroneal nerve. Place a pillow between the legs and pad the dependent fibular neck and lateral malleolus." },
     ]}
+    landmarks={[
+      { id: "head", x: 110, y: 120, label: "Head (dependent)", dx: -8, dy: -16, anchor: "end" },
+      { id: "axroll", x: 145, y: 145, label: "Axillary roll (caudal to axilla)", dx: -8, dy: -22, anchor: "end" },
+      { id: "shUp", x: 230, y: 100, label: "Up shoulder", dx: 0, dy: -16, anchor: "middle" },
+      { id: "ilum", x: 320, y: 150, label: "Iliac crest", dx: 0, dy: 22, anchor: "middle" },
+      { id: "kneeUp", x: 360, y: 110, label: "Up knee (straight on pillow)", dx: 14, dy: -8 },
+      { id: "kneeDep", x: 365, y: 165, label: "Dependent knee (flexed)", dx: 14, dy: 16 },
+    ]}
+    measurements={[
+      // Head-to-pelvis trunk length
+      {
+        kind: "distance", id: "trunk",
+        from: { x: 145, y: 130 }, to: { x: 345, y: 150 },
+        unit: "cm", pxPerUnit: 5,
+      },
+      // Up-arm shoulder abduction reference
+      {
+        kind: "angle", id: "shUpAbd",
+        vertex: { x: 230, y: 110 },
+        a: { x: 320, y: 150 },   // along trunk
+        b: { x: 230, y: 70 },    // up-arm direction (≈ vertical)
+        radius: 26,
+      },
+    ]}
     legend={<>Common procedures: thoracotomy, oesophagectomy, nephrectomy, hip surgery, retroperitoneal procedures.</>}
   >
     <Table x={70} y={170} w={420} />
