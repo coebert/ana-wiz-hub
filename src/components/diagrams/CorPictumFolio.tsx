@@ -808,8 +808,9 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   id={`${reactId}-label-${idx}`}
                   className={cn(
                     "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
-                    interactive && "cursor-pointer",
+                    (interactive || reviewMode) && "cursor-pointer",
                     isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
+                    reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
                   )}
                   onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
                   onPointerLeave={() =>
@@ -817,12 +818,18 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   }
                   onFocus={() => interactive && setActiveLabelIdx(idx)}
                   onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                  tabIndex={interactive ? 0 : -1}
+                  onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
+                  tabIndex={interactive || reviewMode ? 0 : -1}
                 >
-                  <span
-                    aria-hidden
-                    className={cn(
-                      "mt-[0.55rem] flex-none flex items-center transition-all",
+                  {reviewMode ? (
+                    <span
+                      aria-hidden
+                      className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                      style={{ background: reviewColor(idx) }}
+                    >
+                      {idx + 1}
+                    </span>
+                  ) : null}
                       isActive ? "w-7" : "w-5",
                     )}
                   >
