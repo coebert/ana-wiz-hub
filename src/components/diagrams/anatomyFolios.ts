@@ -57,9 +57,9 @@ export const airwayFolio: CorPictumFolioData = {
     },
     {
       id: "laryngoscopic", tabLabel: "Laryngoscopic", folio: "II",
-      title: "Aditus Laryngis", subtitle: "View through the laryngoscope",
+      title: "Laryngeal Inlet", subtitle: "View through the laryngoscope",
       image: airwayLaryngoscopic, alt: "Painted superior view of the laryngeal inlet",
-      caption: "Aspectus superior aditus laryngis",
+      caption: "Superior view of the laryngeal inlet",
       labels: [
         { latin: "epiglottis", english: "Epiglottis", note: "Anterior boundary of the inlet." },
         { latin: "plica aryepiglottica", english: "Aryepiglottic fold", note: "Lateral wall of the inlet; landmark for SAD seating." },
