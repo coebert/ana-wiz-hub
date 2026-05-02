@@ -228,6 +228,32 @@ export const JGADiagram = () => {
             stroke="hsl(45 55% 45%)" strokeWidth="1.2" />
           <text x="55" y="248" fontSize="6" fill="hsl(45 55% 45%)" fontWeight="600" textAnchor="end">DCT</text>
           <polygon points="55,260 60,252 62,263" fill="hsl(45 55% 45%)" opacity="0.5" />
+
+          {/* Animated NaCl particles flowing past macula densa when TGF is selected */}
+          {(isMech("tgf-low") || isMech("tgf-high")) && (
+            <g>
+              {[0, 0.25, 0.5, 0.75].map((delay, i) => {
+                const isHigh = isMech("tgf-high");
+                const colour = isHigh ? "hsl(0 70% 50%)" : "hsl(150 55% 45%)";
+                return (
+                  <circle key={i} r={isHigh ? 2.6 : 1.6} fill={colour}
+                    opacity={isHigh ? 0.95 : 0.55}>
+                    <animateMotion
+                      dur={isHigh ? "2.2s" : "3.4s"}
+                      begin={`${-delay * (isHigh ? 2.2 : 3.4)}s`}
+                      repeatCount="indefinite"
+                      path="M 470 348 Q 440 318 400 287 Q 360 257 320 237 Q 280 222 220 217" />
+                  </circle>
+                );
+              })}
+              <text
+                x="370" y="270" fontSize="5.5" fontWeight="700"
+                fill={isMech("tgf-high") ? "hsl(0 60% 50%)" : "hsl(150 55% 45%)"}
+                opacity="0.8">
+                {isMech("tgf-high") ? "↑↑ NaCl flow" : "↓ NaCl flow"}
+              </text>
+            </g>
+          )}
         </g>
 
         {/* ========== MACULA DENSA ========== */}
