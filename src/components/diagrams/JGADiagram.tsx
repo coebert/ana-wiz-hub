@@ -154,18 +154,29 @@ export const JGADiagram = () => {
 
         {/* ========== JG CELLS (on afferent wall near glomerulus) ========== */}
         <g className="cursor-pointer" onClick={toggle("jg-cells")} opacity={active && active !== "jg-cells" && active !== "raas" && active !== "tgf-low" && active !== "tgf-high" ? 0.3 : 1}>
-          {[120, 132, 144].map((x, i) => (
-            <g key={`jg-${i}`}>
-              <circle cx={x} cy={138 - i * 2} r={7}
-                fill={isActive("jg-cells") ? "hsl(260 55% 55%/0.25)" : "hsl(260 55% 55%/0.12)"}
-                stroke="hsl(260 55% 55%)" strokeWidth={isActive("jg-cells") ? 1.5 : 0.8} />
-              {/* Renin granules */}
-              {[-2, 0, 2].map((dx, j) => (
-                <circle key={`rg-${i}-${j}`} cx={x + dx} cy={138 - i * 2 + (j - 1) * 2} r={1.2}
-                  fill="hsl(260 55% 55%)" fillOpacity={isActive("jg-cells") ? 0.7 : 0.4} />
-              ))}
-            </g>
-          ))}
+          {[120, 132, 144].map((x, i) => {
+            const reninActive = isMech("tgf-low") || isMech("raas");
+            return (
+              <g key={`jg-${i}`}>
+                <circle cx={x} cy={138 - i * 2} r={7}
+                  fill={isActive("jg-cells") ? "hsl(260 55% 55%/0.25)" : "hsl(260 55% 55%/0.12)"}
+                  stroke="hsl(260 55% 55%)" strokeWidth={isActive("jg-cells") ? 1.5 : 0.8} />
+                {/* Renin granules — pulse when actively releasing */}
+                {[-2, 0, 2].map((dx, j) => (
+                  <circle key={`rg-${i}-${j}`} cx={x + dx} cy={138 - i * 2 + (j - 1) * 2} r={1.2}
+                    fill="hsl(260 55% 55%)" fillOpacity={isActive("jg-cells") ? 0.7 : 0.4}>
+                    {reninActive && (
+                      <animate attributeName="r"
+                        values="1.2;2.2;1.2"
+                        dur="1.4s"
+                        begin={`${(i * 0.15 + j * 0.2)}s`}
+                        repeatCount="indefinite" />
+                    )}
+                  </circle>
+                ))}
+              </g>
+            );
+          })}
           <text x="132" y="118" fontSize="6.5" fill="hsl(260 55% 55%)" textAnchor="middle" fontWeight="600">JG Cells</text>
           <text x="132" y="126" fontSize="5" fill="hsl(260 55% 55%)" textAnchor="middle" opacity="0.6">(renin granules)</text>
           {/* β₁ receptor */}
@@ -228,6 +239,32 @@ export const JGADiagram = () => {
             stroke="hsl(45 55% 45%)" strokeWidth="1.2" />
           <text x="55" y="248" fontSize="6" fill="hsl(45 55% 45%)" fontWeight="600" textAnchor="end">DCT</text>
           <polygon points="55,260 60,252 62,263" fill="hsl(45 55% 45%)" opacity="0.5" />
+
+          {/* Animated NaCl particles flowing past macula densa when TGF is selected */}
+          {(isMech("tgf-low") || isMech("tgf-high")) && (
+            <g>
+              {[0, 0.25, 0.5, 0.75].map((delay, i) => {
+                const isHigh = isMech("tgf-high");
+                const colour = isHigh ? "hsl(0 70% 50%)" : "hsl(150 55% 45%)";
+                return (
+                  <circle key={i} r={isHigh ? 2.6 : 1.6} fill={colour}
+                    opacity={isHigh ? 0.95 : 0.55}>
+                    <animateMotion
+                      dur={isHigh ? "2.2s" : "3.4s"}
+                      begin={`${-delay * (isHigh ? 2.2 : 3.4)}s`}
+                      repeatCount="indefinite"
+                      path="M 470 348 Q 440 318 400 287 Q 360 257 320 237 Q 280 222 220 217" />
+                  </circle>
+                );
+              })}
+              <text
+                x="370" y="270" fontSize="5.5" fontWeight="700"
+                fill={isMech("tgf-high") ? "hsl(0 60% 50%)" : "hsl(150 55% 45%)"}
+                opacity="0.8">
+                {isMech("tgf-high") ? "↑↑ NaCl flow" : "↓ NaCl flow"}
+              </text>
+            </g>
+          )}
         </g>
 
         {/* ========== MACULA DENSA ========== */}

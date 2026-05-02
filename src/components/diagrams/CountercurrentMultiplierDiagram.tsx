@@ -195,10 +195,17 @@ export const CountercurrentMultiplierDiagram = () => {
               <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0.15" />
               <stop offset="100%" stopColor="hsl(30 40% 40%)" stopOpacity="0.08" />
             </linearGradient>
+            {/* Medullary osmotic gradient — intensifies toward the papilla as the gradient builds */}
+            <linearGradient id="ccmGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="hsl(150 60% 55%)" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="hsl(15 75% 50%)" stopOpacity={0.05 + (currentStep / (steps.length - 1)) * 0.22} />
+            </linearGradient>
           </defs>
 
           {/* Background zones */}
           <rect x="0" y="0" width="520" height="380" fill="url(#ccmBg)" rx="6" />
+          {/* Medullary tonicity overlay (cortex → papilla) */}
+          <rect x="0" y="0" width="520" height="380" fill="url(#ccmGradient)" rx="6" />
           {[0, 1, 2, 3].map(i => (
             <g key={`zone-${i}`}>
               <line x1="0" y1={i * 90} x2="520" y2={i * 90}
@@ -211,14 +218,15 @@ export const CountercurrentMultiplierDiagram = () => {
 
           {/* Column headers */}
           <text x="130" y="14" fontSize="8" fill={descColor} textAnchor="middle" fontWeight="700">Descending</text>
-          <text x="130" y="24" fontSize="6" fill={descColor} textAnchor="middle" opacity="0.6">(H₂O permeable)</text>
+          <text x="130" y="24" fontSize="6" fill={descColor} textAnchor="middle" opacity="0.7">AQP1 · H₂O permeable</text>
           <text x="260" y="14" fontSize="8" fill={intColor} textAnchor="middle" fontWeight="700">Interstitium</text>
-          <text x="390" y="14" fontSize="8" fill={ascColor} textAnchor="middle" fontWeight="700">Ascending</text>
-          <text x="390" y="24" fontSize="6" fill={ascColor} textAnchor="middle" opacity="0.6">(H₂O impermeable)</text>
+          <text x="260" y="24" fontSize="6" fill={intColor} textAnchor="middle" opacity="0.7">NaCl + urea pool</text>
+          <text x="390" y="14" fontSize="8" fill={ascColor} textAnchor="middle" fontWeight="700">Thick Ascending</text>
+          <text x="390" y="24" fontSize="6" fill={ascColor} textAnchor="middle" opacity="0.7">NKCC2 · H₂O impermeable</text>
           {step.collectingDuct && (
             <>
-              <text x="480" y="14" fontSize="8" fill={cdColor} textAnchor="middle" fontWeight="700">CD</text>
-              <text x="480" y="24" fontSize="6" fill={cdColor} textAnchor="middle" opacity="0.6">(ADH)</text>
+              <text x="478" y="14" fontSize="8" fill={cdColor} textAnchor="middle" fontWeight="700">CD</text>
+              <text x="478" y="24" fontSize="6" fill={cdColor} textAnchor="middle" opacity="0.7">AQP2 · ADH</text>
             </>
           )}
 
@@ -319,6 +327,32 @@ export const CountercurrentMultiplierDiagram = () => {
             <polygon points="440,45 437,55 443,55" fill={ascColor} />
             <text x="443" y="42" fontSize="5" fill={ascColor} textAnchor="middle">↑ flow</text>
           </g>
+
+          {/* Urea recycling annotation — appears once gradient is established (steps 6 & 7) */}
+          {step.collectingDuct && (
+            <g>
+              <path
+                d="M 460 305 C 430 290, 360 285, 320 297"
+                fill="none"
+                stroke="hsl(280 60% 55%)"
+                strokeWidth="1.2"
+                strokeDasharray="3 2"
+                markerEnd="url(#ureaArrow)"
+                opacity="0.85"
+              />
+              <defs>
+                <marker id="ureaArrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="hsl(280 60% 55%)" />
+                </marker>
+              </defs>
+              <text x="380" y="282" fontSize="7" fill="hsl(280 60% 55%)" fontWeight="700" textAnchor="middle">
+                Urea recycling (UT-A1)
+              </text>
+              <text x="380" y="291" fontSize="5.5" fill="hsl(280 60% 55%)" opacity="0.75" textAnchor="middle">
+                ADH ↑ permeability → ~50% inner-medullary osmolality
+              </text>
+            </g>
+          )}
 
           {/* Osmolality scale */}
           <text x="515" y="38" fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.4">mOsm/kg</text>
