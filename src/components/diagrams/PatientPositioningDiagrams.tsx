@@ -10,6 +10,10 @@ import {
   TorsoLateral,
   TorsoProne,
   MayfieldPins,
+  SupinePatient,
+  LateralPatient,
+  PronePatient,
+  SittingPatient,
 } from "./patientAnatomy";
 
 /**
@@ -214,17 +218,7 @@ export const SupinePositionDiagram = () => (
     <Table x={70} y={170} w={420} />
 
     {/* Patient — supine, head left, feet right */}
-    <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
-    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-    {/* Right arm tucked at side, palm supinated */}
-    <Arm idPrefix="pf" sx={170} sy={158} ex={235} ey={155} wx={295} wy={150} upperW={14} foreW={12} gownSleeve />
-    {/* Left arm symmetric (lighter — partly behind body) */}
-    <g opacity={0.55}>
-      <Arm idPrefix="pf" sx={170} sy={122} ex={235} ey={125} wx={295} wy={130} upperW={13} foreW={11} gownSleeve />
-    </g>
-    {/* Legs slightly apart */}
-    <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
-    <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+    <SupinePatient idPrefix="pf" x={120} y={120} length={250} />
 
     {/* Anatomical labels */}
     <text x={108} y={108} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">head</text>
@@ -252,10 +246,7 @@ export const TrendelenburgPositionDiagram = () => (
     <g transform="rotate(-15 280 170)">
       <Table x={70} y={170} w={420} />
       {/* Patient — supine on tilted table */}
-      <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
-      <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-      <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
-      <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+      <SupinePatient idPrefix="pf" x={120} y={120} length={250} showFarArm={false} />
       {/* Shoulder brace (over lateral clavicle) */}
       <rect x={130} y={113} width={7} height={22} rx={2} fill={POS_RED} opacity={0.7} />
     </g>
@@ -283,12 +274,11 @@ export const LithotomyPositionDiagram = () => (
   >
     <Table x={70} y={170} w={300} />
 
-    {/* Patient — supine, hips at the break of the table */}
-    <TorsoSupine idPrefix="pf" x={120} y={120} length={225} shoulderW={50} waistW={42} hipW={48} />
-    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-    {/* Arms folded across abdomen */}
-    <Arm idPrefix="pf" sx={170} sy={158} ex={220} ey={170} wx={260} wy={155} upperW={13} foreW={11} gownSleeve />
-    <Arm idPrefix="pf" sx={170} sy={122} ex={220} ey={132} wx={260} wy={150} upperW={13} foreW={11} gownSleeve />
+    {/* Patient — supine trunk + arms folded; legs drawn bespoke in stirrups */}
+    <SupinePatient
+      idPrefix="pf" x={120} y={120} length={225}
+      armsFolded showLegs={false} showFarArm={false}
+    />
 
     {/* RIGHT leg in Allen-style stirrup (upper view) */}
     <Leg idPrefix="pf" hx={345} hy={132} kx={395} ky={92} ax={460} ay={120} thighW={22} calfW={17} footLen={20} />
@@ -326,22 +316,9 @@ export const LateralPositionDiagram = () => (
   >
     <Table x={70} y={170} w={420} />
 
-    {/* Lateral patient — torso side-on, head left */}
-    <TorsoLateral idPrefix="pf" cx={245} cy={150} length={220} height={60} facing="left" />
-    <HeadProfile idPrefix="pf" cx={120} cy={130} r={20} facing="left" />
-    {/* Axillary roll — caudal to axilla, on chest wall */}
-    <ellipse cx={158} cy={158} rx={14} ry={8} fill={POS_GREEN} opacity={0.85} />
-    {/* Up arm — supported on padded arm-rest */}
-    <Arm idPrefix="pf" sx={185} sy={130} ex={225} ey={108} wx={262} wy={92} upperW={13} foreW={11} />
-    <rect x={258} y={86} width={32} height={10} rx={3} fill="hsl(210 25% 35%)" />
-    {/* Dependent arm — slightly forward */}
-    <Arm idPrefix="pf" sx={170} sy={156} ex={208} ey={170} wx={246} wy={172} upperW={12} foreW={10} />
-    {/* Pillow between knees */}
-    <ellipse cx={400} cy={150} rx={22} ry={7} fill="hsl(45 50% 82%)" stroke="hsl(45 40% 55%)" strokeWidth={0.8} />
-    {/* Up leg — straight on pillow */}
-    <Leg idPrefix="pf" hx={355} hy={140} kx={405} ky={138} ax={460} ay={140} thighW={20} calfW={16} footLen={18} />
-    {/* Dependent leg — flexed at hip and knee */}
-    <Leg idPrefix="pf" hx={355} hy={162} kx={400} ky={172} ax={445} ay={188} thighW={20} calfW={16} footLen={18} />
+    {/* Lateral patient — composite handles head, torso, axillary roll, both arms, knee pillow, legs */}
+    <LateralPatient idPrefix="pf" cx={245} cy={150} length={220} height={60} facing="left" />
+
     <text x={250} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">left lateral shown — kidney rest under flank if renal surgery</text>
   </PositionFrame>
 );
@@ -363,24 +340,8 @@ export const PronePositionDiagram = () => (
     legend={<>Common procedures: posterior spinal surgery, posterior fossa craniotomy, nephrolithotomy (PCNL), severe ARDS proning in ICU.</>}
   >
     <Table x={70} y={180} w={420} />
-    {/* Prone patient — face-down on chest + pelvis supports */}
-    {/* Chest support */}
-    <rect x={170} y={150} width={50} height={20} rx={4} fill="hsl(280 50% 45%)" opacity={0.85} />
-    {/* Pelvis support */}
-    <rect x={330} y={150} width={50} height={20} rx={4} fill="hsl(280 50% 45%)" opacity={0.85} />
-    {/* Body — gowned back */}
-    <TorsoProne idPrefix="pf" x={140} y={114} length={250} shoulderW={48} hipW={44} />
-    {/* Head — face-down in horseshoe (top of head visible) */}
-    <HeadFront idPrefix="pf" cx={120} cy={132} r={18} closedEyes={false} />
-    {/* horseshoe / Mayfield mirror cradle */}
-    <path d="M 95 142 Q 120 154 145 142 L 145 132 L 95 132 Z"
-      fill="hsl(280 50% 45%)" opacity={0.85} stroke="hsl(280 60% 30%)" strokeWidth={0.8} />
-    {/* Arms — superman position */}
-    <Arm idPrefix="pf" sx={170} sy={120} ex={210} ey={100} wx={235} wy={88} upperW={12} foreW={10} gownSleeve />
-    <Arm idPrefix="pf" sx={170} sy={158} ex={210} ey={178} wx={235} wy={190} upperW={12} foreW={10} gownSleeve />
-    {/* Legs */}
-    <Leg idPrefix="pf" hx={390} hy={128} kx={430} ky={130} ax={478} ay={132} thighW={20} calfW={16} footLen={18} />
-    <Leg idPrefix="pf" hx={390} hy={150} kx={430} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+    {/* Prone patient — composite handles chest+pelvis supports, torso, head, horseshoe, superman arms, legs */}
+    <PronePatient idPrefix="pf" x={140} y={114} length={250} />
     <text x={280} y={172} textAnchor="middle" fontSize={10} fill={POS_GREEN} fontWeight={700}>abdomen hangs free</text>
     <text x={280} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">prone — chest & pelvis supported, abdomen free</text>
   </PositionFrame>

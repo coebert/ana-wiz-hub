@@ -777,3 +777,431 @@ export const OperatingTable = ({
 export const AnatomyLayer = ({ children }: { children: ReactNode }) => (
   <g>{children}</g>
 );
+
+/* ================================================================== */
+/*  COMPOSITE PATIENT PRIMITIVES                                       */
+/*                                                                     */
+/*  These wrap the per-body-part primitives above into named whole-    */
+/*  patient compositions, one per posture. Every position diagram      */
+/*  consumes one of these — so a single edit here propagates the       */
+/*  realism upgrade (better hands, malleoli, drape folds, gown seam,   */
+/*  etc.) to ALL diagrams uniformly.                                   */
+/* ================================================================== */
+
+/**
+ * Shared "realism dial" applied uniformly across every patient.
+ *
+ * idPrefix    — namespace for the shared <defs> in the parent SVG.
+ *               Each parent SVG renders its own <AnatomyDefs idPrefix=...>
+ *               and passes the same prefix here.
+ * showGown    — render a hospital gown (true) vs bare skin silhouette.
+ * draped      — render a surgical drape colour over the legs.
+ * gownSleeve  — render gown sleeves over the upper arm.
+ * detail      — overall surface-detail level. "minimal" hides creases /
+ *               extra folds for compact diagrams; "rich" enables every
+ *               available shading layer.
+ */
+export interface RealismProps {
+  idPrefix?: string;
+  showGown?: boolean;
+  draped?: boolean;
+  gownSleeve?: boolean;
+  detail?: "minimal" | "standard" | "rich";
+}
+
+const DEFAULT_REALISM: Required<RealismProps> = {
+  idPrefix: "anat",
+  showGown: true,
+  draped: false,
+  gownSleeve: true,
+  detail: "standard",
+};
+
+const useRealism = (r: RealismProps = {}): Required<RealismProps> => ({
+  ...DEFAULT_REALISM,
+  ...r,
+});
+
+/* ------------------------------------------------------------------ */
+/*  SUPINE PATIENT — face-up on the table                              */
+/*                                                                     */
+/*  Anchor (x, y) = top-left of the torso bounding box at the          */
+/*  shoulder line. Length scales the whole patient horizontally;       */
+/*  legSpread controls how far apart the two legs sit vertically.      */
+/* ------------------------------------------------------------------ */
+
+export interface SupinePatientProps extends RealismProps {
+  x: number;
+  y: number;
+  length?: number;
+  shoulderW?: number;
+  waistW?: number;
+  hipW?: number;
+  /** Vertical separation between the two legs (default 20). */
+  legSpread?: number;
+  /** Show the second (far-side) arm as a faint silhouette behind the body. */
+  showFarArm?: boolean;
+  /** Show the head — set false when patient is a "torso only" inset. */
+  showHead?: boolean;
+  /** Render arms folded across the abdomen instead of at the side. */
+  armsFolded?: boolean;
+  /** Render the legs (set false when the caller draws bespoke legs, e.g. lithotomy stirrups). */
+  showLegs?: boolean;
+}
+
+export const SupinePatient = ({
+  x, y, length = 250,
+  shoulderW = 50, waistW = 42, hipW = 48,
+  legSpread = 20,
+  showFarArm = true,
+  showHead = true,
+  armsFolded = false,
+  showLegs = true,
+  ...realism
+}: SupinePatientProps) => {
+  const r = useRealism(realism);
+  const cy = y + shoulderW / 2;
+  const headCx = x - 12;
+  const hipX = x + length;
+  return (
+    <>
+      <TorsoSupine x={x} y={y} length={length}
+        shoulderW={shoulderW} waistW={waistW} hipW={hipW}
+        idPrefix={r.idPrefix} showGown={r.showGown} />
+      {showHead && (
+        <HeadFront cx={headCx} cy={cy} r={shoulderW * 0.42} idPrefix={r.idPrefix} />
+      )}
+      {/* Near arm — at side or folded */}
+      {armsFolded ? (
+        <Arm
+          sx={x + 50} sy={cy + shoulderW * 0.32}
+          ex={x + length * 0.4} ey={cy + shoulderW * 0.5}
+          wx={x + length * 0.6} wy={cy + shoulderW * 0.1}
+          idPrefix={r.idPrefix} upperW={13} foreW={11} gownSleeve={r.gownSleeve}
+        />
+      ) : (
+        <Arm
+          sx={x + 50} sy={cy + shoulderW * 0.32}
+          ex={x + length * 0.45} ey={cy + shoulderW * 0.18}
+          wx={x + length * 0.7} wy={cy + shoulderW * 0.05}
+          idPrefix={r.idPrefix} upperW={14} foreW={12} gownSleeve={r.gownSleeve}
+        />
+      )}
+      {/* Far arm (faint, behind body) */}
+      {showFarArm && (
+        <g opacity={0.55}>
+          <Arm
+            sx={x + 50} sy={cy - shoulderW * 0.32}
+            ex={armsFolded ? x + length * 0.4 : x + length * 0.45}
+            ey={armsFolded ? cy - shoulderW * 0.5 : cy - shoulderW * 0.18}
+            wx={armsFolded ? x + length * 0.6 : x + length * 0.7}
+            wy={armsFolded ? cy - shoulderW * 0.1 : cy - shoulderW * 0.05}
+            idPrefix={r.idPrefix} upperW={13} foreW={11} gownSleeve={r.gownSleeve}
+          />
+        </g>
+      )}
+      {/* Two legs symmetric about the body centreline */}
+      {showLegs && (
+        <>
+          <Leg hx={hipX + 2} hy={cy - legSpread / 2}
+            kx={hipX + 50} ky={cy - legSpread / 2 + 2}
+            ax={hipX + 108} ay={cy - legSpread / 2 + 4}
+            thighW={20} calfW={16} footLen={18}
+            idPrefix={r.idPrefix} draped={r.draped} />
+          <Leg hx={hipX + 2} hy={cy + legSpread / 2}
+            kx={hipX + 50} ky={cy + legSpread / 2 + 2}
+            ax={hipX + 108} ay={cy + legSpread / 2 + 4}
+            thighW={20} calfW={16} footLen={18}
+            idPrefix={r.idPrefix} draped={r.draped} />
+        </>
+      )}
+    </>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  LATERAL PATIENT — side-on with axillary roll, dependent leg flexed */
+/* ------------------------------------------------------------------ */
+
+export interface LateralPatientProps extends RealismProps {
+  /** Centre of torso */
+  cx: number;
+  cy: number;
+  length?: number;
+  height?: number;
+  facing?: "left" | "right";
+  /** Show axillary roll on chest wall, caudal to the axilla. */
+  showAxillaryRoll?: boolean;
+  /** Show pillow between the knees (lateral surgery). */
+  showKneePillow?: boolean;
+  /** Up-arm rest pad colour (drawn beneath the up-arm). */
+  showArmRest?: boolean;
+  /** Hide the up arm (used by park-bench where arm goes in a sling instead). */
+  hideUpArm?: boolean;
+  showHead?: boolean;
+}
+
+export const LateralPatient = ({
+  cx, cy, length = 220, height = 60,
+  facing = "left",
+  showAxillaryRoll = true,
+  showKneePillow = true,
+  showArmRest = true,
+  hideUpArm = false,
+  showHead = true,
+  ...realism
+}: LateralPatientProps) => {
+  const r = useRealism(realism);
+  const headCx = cx - length / 2 - 25;
+  const headCy = cy - height * 0.32;
+  const shoulderX = cx - length / 2 + 38;
+  const hipX = cx + length / 2 - 18;
+  return (
+    <>
+      <TorsoLateral cx={cx} cy={cy} length={length} height={height}
+        facing={facing} idPrefix={r.idPrefix} showGown={r.showGown} />
+      {showHead && (
+        <HeadProfile cx={headCx} cy={headCy} r={height * 0.34}
+          facing={facing} idPrefix={r.idPrefix} />
+      )}
+      {showAxillaryRoll && (
+        <ellipse cx={shoulderX + 14} cy={cy + height * 0.13}
+          rx={14} ry={8}
+          fill="hsl(150 55% 40%)" opacity={0.85} />
+      )}
+      {/* Up arm — supported on padded arm-rest, abducted forwards */}
+      {!hideUpArm && (
+        <>
+          {showArmRest && (
+            <rect x={shoulderX + 65} y={cy - height * 0.85}
+              width={32} height={10} rx={3} fill="hsl(210 25% 35%)" />
+          )}
+          <Arm
+            sx={shoulderX + 12} sy={cy - height * 0.32}
+            ex={shoulderX + 50} ey={cy - height * 0.65}
+            wx={shoulderX + 88} wy={cy - height * 0.85}
+            idPrefix={r.idPrefix} upperW={13} foreW={11} gownSleeve={r.gownSleeve}
+          />
+        </>
+      )}
+      {/* Dependent arm — slightly forward */}
+      <Arm
+        sx={shoulderX} sy={cy + height * 0.1}
+        ex={shoulderX + 38} ey={cy + height * 0.32}
+        wx={shoulderX + 76} wy={cy + height * 0.36}
+        idPrefix={r.idPrefix} upperW={12} foreW={10} gownSleeve={r.gownSleeve}
+      />
+      {/* Pillow between knees */}
+      {showKneePillow && (
+        <ellipse cx={hipX + 50} cy={cy} rx={22} ry={7}
+          fill="hsl(45 50% 82%)" stroke="hsl(45 40% 55%)" strokeWidth={0.8} />
+      )}
+      {/* Up leg — straight on pillow */}
+      <Leg hx={hipX} hy={cy - height * 0.16}
+        kx={hipX + 50} ky={cy - height * 0.2}
+        ax={hipX + 108} ay={cy - height * 0.16}
+        thighW={20} calfW={16} footLen={18}
+        idPrefix={r.idPrefix} draped={r.draped} />
+      {/* Dependent leg — flexed at hip and knee */}
+      <Leg hx={hipX} hy={cy + height * 0.2}
+        kx={hipX + 45} ky={cy + height * 0.36}
+        ax={hipX + 90} ay={cy + height * 0.62}
+        thighW={20} calfW={16} footLen={18}
+        idPrefix={r.idPrefix} draped={r.draped} />
+    </>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  PRONE PATIENT — face-down on chest + pelvis supports               */
+/* ------------------------------------------------------------------ */
+
+export interface PronePatientProps extends RealismProps {
+  x: number;
+  y: number;
+  length?: number;
+  shoulderW?: number;
+  hipW?: number;
+  /** Render purple chest + pelvis bolster supports under the body. */
+  showSupports?: boolean;
+  /** Render a horseshoe / Mayfield cradle around the head. */
+  showHorseshoe?: boolean;
+  /** "superman" = arms abducted forward; "tucked" = arms by the side. */
+  arms?: "superman" | "tucked";
+  showHead?: boolean;
+}
+
+export const PronePatient = ({
+  x, y, length = 250,
+  shoulderW = 48, hipW = 44,
+  showSupports = true,
+  showHorseshoe = true,
+  arms = "superman",
+  showHead = true,
+  ...realism
+}: PronePatientProps) => {
+  const r = useRealism(realism);
+  const cy = y + shoulderW / 2;
+  const headCx = x - 20;
+  return (
+    <>
+      {showSupports && (
+        <>
+          {/* Chest support */}
+          <rect x={x + length * 0.12} y={cy - shoulderW * 0.4 - 6}
+            width={50} height={20} rx={4}
+            fill="hsl(280 50% 45%)" opacity={0.85} />
+          {/* Pelvis support */}
+          <rect x={x + length * 0.76} y={cy - hipW * 0.4 - 6}
+            width={50} height={20} rx={4}
+            fill="hsl(280 50% 45%)" opacity={0.85} />
+        </>
+      )}
+      <TorsoProne x={x} y={y} length={length}
+        shoulderW={shoulderW} hipW={hipW}
+        idPrefix={r.idPrefix} showGown={r.showGown} />
+      {showHead && (
+        <HeadFront cx={headCx} cy={cy} r={shoulderW * 0.38}
+          closedEyes={false} idPrefix={r.idPrefix} />
+      )}
+      {showHorseshoe && (
+        <path
+          d={`M ${headCx - 25} ${cy + 10}
+              Q ${headCx} ${cy + 22} ${headCx + 25} ${cy + 10}
+              L ${headCx + 25} ${cy}
+              L ${headCx - 25} ${cy} Z`}
+          fill="hsl(280 50% 45%)" opacity={0.85}
+          stroke="hsl(280 60% 30%)" strokeWidth={0.8}
+        />
+      )}
+      {/* Arms */}
+      {arms === "superman" ? (
+        <>
+          <Arm
+            sx={x + 30} sy={cy - shoulderW * 0.42}
+            ex={x + 70} ey={cy - shoulderW * 0.85}
+            wx={x + 95} wy={cy - shoulderW * 1.08}
+            idPrefix={r.idPrefix} upperW={12} foreW={10} gownSleeve={r.gownSleeve}
+          />
+          <Arm
+            sx={x + 30} sy={cy + shoulderW * 0.42}
+            ex={x + 70} ey={cy + shoulderW * 0.85}
+            wx={x + 95} wy={cy + shoulderW * 1.08}
+            idPrefix={r.idPrefix} upperW={12} foreW={10} gownSleeve={r.gownSleeve}
+          />
+        </>
+      ) : (
+        <>
+          <Arm
+            sx={x + 30} sy={cy - shoulderW * 0.42}
+            ex={x + length * 0.4} ey={cy - shoulderW * 0.5}
+            wx={x + length * 0.7} wy={cy - shoulderW * 0.55}
+            idPrefix={r.idPrefix} upperW={12} foreW={10} gownSleeve={r.gownSleeve}
+          />
+          <Arm
+            sx={x + 30} sy={cy + shoulderW * 0.42}
+            ex={x + length * 0.4} ey={cy + shoulderW * 0.5}
+            wx={x + length * 0.7} wy={cy + shoulderW * 0.55}
+            idPrefix={r.idPrefix} upperW={12} foreW={10} gownSleeve={r.gownSleeve}
+          />
+        </>
+      )}
+      {/* Legs */}
+      <Leg hx={x + length} hy={cy - hipW * 0.32}
+        kx={x + length + 50} ky={cy - hipW * 0.28}
+        ax={x + length + 108} ay={cy - hipW * 0.24}
+        thighW={20} calfW={16} footLen={18}
+        idPrefix={r.idPrefix} draped={r.draped} />
+      <Leg hx={x + length} hy={cy + hipW * 0.32}
+        kx={x + length + 50} ky={cy + hipW * 0.28}
+        ax={x + length + 108} ay={cy + hipW * 0.24}
+        thighW={20} calfW={16} footLen={18}
+        idPrefix={r.idPrefix} draped={r.draped} />
+    </>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/*  SITTING PATIENT — semi-Fowler / beach-chair                        */
+/*                                                                     */
+/*  Renders the patient along a backrest tilted by `tiltDeg` about     */
+/*  the seat anchor (sx, sy). The torso lies on the backrest with the  */
+/*  legs extending forward. Use for sitting (Fowler), beach-chair and  */
+/*  modified Fowler positions.                                         */
+/* ------------------------------------------------------------------ */
+
+export interface SittingPatientProps extends RealismProps {
+  /** Seat anchor (where backrest pivots) */
+  sx: number;
+  sy: number;
+  /** Backrest tilt from horizontal in degrees (60 = full Fowler, 35 = beach chair). */
+  tiltDeg?: number;
+  /** Torso length along backrest. */
+  torsoLength?: number;
+  /** Torso "thickness". */
+  torsoHeight?: number;
+  /** Show Mayfield 3-pin head fixation (full sitting only). */
+  showMayfield?: boolean;
+  /** Show legs extending forward off the seat. */
+  showLegs?: boolean;
+  /** Show the (operative) arm abducted upward — for beach-chair shoulder cases. */
+  showOperativeArm?: boolean;
+}
+
+export const SittingPatient = ({
+  sx, sy,
+  tiltDeg = 60,
+  torsoLength = 110,
+  torsoHeight = 42,
+  showMayfield = false,
+  showLegs = true,
+  showOperativeArm = false,
+  ...realism
+}: SittingPatientProps) => {
+  const r = useRealism(realism);
+  // Torso centre placed up the backrest from the seat anchor
+  const torsoCx = sx - torsoLength * 0.5 + 50;
+  const torsoCy = sy - 30;
+  return (
+    <>
+      <g transform={`rotate(${-tiltDeg} ${sx} ${sy})`}>
+        <TorsoLateral
+          cx={torsoCx} cy={torsoCy}
+          length={torsoLength} height={torsoHeight}
+          facing="left" idPrefix={r.idPrefix} showGown={r.showGown}
+        />
+        <HeadProfile
+          cx={torsoCx - torsoLength * 0.55}
+          cy={torsoCy + torsoHeight * 0.05}
+          r={torsoHeight * 0.42}
+          facing="left" idPrefix={r.idPrefix}
+        />
+        {showMayfield && (
+          <MayfieldPins
+            cx={torsoCx - torsoLength * 0.55}
+            cy={torsoCy + torsoHeight * 0.05}
+            r={torsoHeight * 0.42}
+          />
+        )}
+      </g>
+      {showLegs && (
+        <Leg
+          hx={sx + 40} hy={sy - 12}
+          kx={sx + 100} ky={sy - 40}
+          ax={sx + 165} ay={sy - 12}
+          thighW={22} calfW={18} footLen={18}
+          idPrefix={r.idPrefix} draped={r.draped}
+        />
+      )}
+      {showOperativeArm && (
+        <Arm
+          sx={sx - 35} sy={sy - 75}
+          ex={sx - 5} ey={sy - 105}
+          wx={sx + 25} wy={sy - 130}
+          idPrefix={r.idPrefix} upperW={13} foreW={11} gownSleeve={r.gownSleeve}
+        />
+      )}
+    </>
+  );
+};
+
