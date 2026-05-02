@@ -299,6 +299,55 @@ const TransfusionCoagulationTopic = () => {
             <AcdCitrateChelationDiagram />
             <CitrateWashSeparationDiagram />
 
+            <aside
+              aria-label="Hypocalcaemia risk and monitoring during ACD-A cell salvage"
+              className="mb-4 grid md:grid-cols-[auto_1fr] gap-0 rounded-lg border-l-4 border-amber-500 bg-amber-500/5 overflow-hidden"
+            >
+              <div className="bg-amber-500/15 px-4 py-3 md:py-4 flex md:flex-col items-center md:items-start gap-2 md:min-w-[160px]">
+                <span className="text-xs uppercase tracking-widest font-bold text-amber-700 dark:text-amber-400">Safety</span>
+                <span className="text-sm font-serif font-bold text-foreground leading-tight">Hypocalcaemia risk &amp; monitoring</span>
+              </div>
+              <div className="p-4 space-y-3 text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  Properly washed salvaged blood is essentially citrate-free. Risk of <strong className="text-foreground">ionised hypocalcaemia</strong> arises when the wash cycle is shortened or bypassed (emergency unwashed return), when very large volumes are reinfused rapidly, or when concurrent allogeneic FFP/platelets (also citrated) are given to a patient with impaired hepatic citrate clearance (liver failure, neonates, hypothermia, transplant anhepatic phase).
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="p-3 rounded-md border border-border bg-card">
+                    <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-1">Watch for</p>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      <li>Perioral &amp; digital paraesthesiae (awake patient)</li>
+                      <li>Prolonged QT, T-wave flattening, ↓ contractility</li>
+                      <li>Hypotension unresponsive to fluid</li>
+                      <li>Metabolic alkalosis (citrate → HCO₃⁻ in liver)</li>
+                      <li>Chvostek / Trousseau signs (rare, late)</li>
+                    </ul>
+                  </div>
+                  <div className="p-3 rounded-md border border-border bg-card">
+                    <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-1">Monitor</p>
+                    <ul className="list-disc pl-4 space-y-0.5">
+                      <li><strong className="text-foreground">iCa²⁺ on ABG</strong> — every 30 min during high-volume salvage; target &gt; 1.0 mmol/L</li>
+                      <li>Continuous ECG (QTc trend)</li>
+                      <li>Invasive BP if &gt; 1500 mL salvaged or rapid return</li>
+                      <li>Lactate, pH, base excess (alkalosis trend)</li>
+                      <li>Total transfused citrate load (salvage + FFP + platelets)</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-md border border-amber-500/40 bg-amber-500/10">
+                  <p className="font-semibold text-foreground text-xs uppercase tracking-wider mb-1">Treatment</p>
+                  <p>
+                    <strong className="text-foreground">Calcium chloride 10% — 5–10 mL IV</strong> via a central line (provides ~3× the elemental Ca²⁺ of equivalent gluconate) <em>or</em> <strong className="text-foreground">calcium gluconate 10% — 10–20 mL IV</strong> peripherally. Repeat to iCa²⁺ &gt; 1.0 mmol/L. Slow the rate of unwashed return where possible; never co-administer with bicarbonate (precipitates CaCO₃).
+                  </p>
+                </div>
+
+                <p className="text-xs italic">
+                  <strong>High-risk scenarios:</strong> liver transplant (anhepatic phase), massive obstetric haemorrhage, paediatric salvage with low circulating volume, ECMO/CRRT regional citrate anticoagulation running concurrently, hypothermic cardiac surgery.
+                </p>
+              </div>
+            </aside>
+
             <div className="mb-4">
               <p className="font-semibold text-foreground text-sm mb-2">ACD-A vs heparinised saline — anticoagulant choice for cell salvage</p>
               <div className="overflow-x-auto">
