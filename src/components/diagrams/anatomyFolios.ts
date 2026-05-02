@@ -103,9 +103,9 @@ export const headNeckFolio: CorPictumFolioData = {
     },
     {
       id: "carotid", tabLabel: "Carotid sheath", folio: "II",
-      title: "Vagina Carotica", subtitle: "Deep dissection of the carotid sheath",
+      title: "Carotid Sheath", subtitle: "Deep dissection of the carotid sheath",
       image: headneckCarotid, alt: "Painted deep dissection of the carotid sheath",
-      caption: "Dissectio profunda vaginae caroticae",
+      caption: "Deep dissection of the carotid sheath",
       labels: [
         { latin: "arteria carotis communis", english: "Common carotid artery", note: "Bifurcates at C4 (upper border of thyroid cartilage)." },
         { latin: "arteria carotis interna", english: "Internal carotid", note: "No branches in the neck — supplies brain via Circle of Willis." },
