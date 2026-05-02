@@ -276,6 +276,99 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   const hasAnyExamTags = active.labels.some((l) => l.examTags && l.examTags.length > 0);
   const isZoomed = scale !== 1 || tx !== 0 || ty !== 0;
 
+  // ── Review-mode helpers ───────────────────────────────────────────────
+  // Resolve the current (possibly edited) polygon for a label index.
+  const polyFor = (labelIdx: number): Array<[number, number]> | undefined => {
+    const overrides = editedPolys[active.id];
+    const overridden = overrides?.[labelIdx];
+    if (overridden) return overridden;
+    return active.labels[labelIdx]?.polygon;
+  };
+
+  const setPolyFor = (labelIdx: number, next: Array<[number, number]> | undefined) => {
+    setEditedPolys((prev) => {
+      const plate = [...(prev[active.id] ?? active.labels.map((l) => l.polygon ? [...l.polygon] as Array<[number, number]> : undefined))];
+      plate[labelIdx] = next;
+      return { ...prev, [active.id]: plate };
+    });
+  };
+
+  // Convert an SVG client point → normalised 0..1 plate coords
+  const eventToNormalised = (e: ReactPointerEvent<SVGElement> | ReactMouseEvent<SVGElement>): [number, number] | null => {
+    const svg = overlaySvgRef.current;
+    if (!svg) return null;
+    const rect = svg.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    return [Math.max(0, Math.min(1, x)), Math.max(0, Math.min(1, y))];
+  };
+
+  const beginVertexDrag = (labelIdx: number, vertIdx: number) => (e: ReactPointerEvent<SVGCircleElement>) => {
+    e.stopPropagation();
+    (e.target as Element).setPointerCapture?.(e.pointerId);
+    dragVertexRef.current = { labelIdx, vertIdx };
+  };
+  const moveVertexDrag = (e: ReactPointerEvent<SVGSVGElement>) => {
+    const drag = dragVertexRef.current;
+    if (!drag) return;
+    const pt = eventToNormalised(e);
+    if (!pt) return;
+    const current = polyFor(drag.labelIdx);
+    if (!current) return;
+    const next = current.map((p, i) => (i === drag.vertIdx ? pt : p)) as Array<[number, number]>;
+    setPolyFor(drag.labelIdx, next);
+  };
+  const endVertexDrag = () => {
+    dragVertexRef.current = null;
+  };
+
+  const handleOverlayClick = (e: ReactMouseEvent<SVGSVGElement>) => {
+    if (!reviewMode || tool !== "add" || selectedEditIdx === null) return;
+    const pt = eventToNormalised(e);
+    if (!pt) return;
+    const current = polyFor(selectedEditIdx) ?? [];
+    setPolyFor(selectedEditIdx, [...current, pt] as Array<[number, number]>);
+  };
+
+  const removeVertex = (labelIdx: number, vertIdx: number) => (e: ReactMouseEvent<SVGCircleElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const current = polyFor(labelIdx);
+    if (!current || current.length <= 3) return; // keep ≥3
+    setPolyFor(labelIdx, current.filter((_, i) => i !== vertIdx) as Array<[number, number]>);
+  };
+
+  // Deterministic colour per label index
+  const reviewColor = (idx: number) => {
+    const hue = (idx * 53) % 360;
+    return `hsl(${hue} 75% 45%)`;
+  };
+
+  const buildExportJson = () => {
+    const lines: string[] = [];
+    lines.push(`// ${active.id} — ${active.tabLabel}`);
+    active.labels.forEach((label, i) => {
+      const poly = polyFor(i);
+      if (!poly || poly.length < 3) return;
+      const pts = poly
+        .map(([x, y]) => `[${x.toFixed(3)}, ${y.toFixed(3)}]`)
+        .join(", ");
+      lines.push(`  // ${label.english}`);
+      lines.push(`  polygon: [${pts}],`);
+    });
+    return lines.join("\n");
+  };
+
+  const copyExport = async () => {
+    try {
+      await navigator.clipboard.writeText(buildExportJson());
+      setCopyFlash(true);
+      window.setTimeout(() => setCopyFlash(false), 1400);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
   return (
     <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
       {/* Atlas header strip */}
