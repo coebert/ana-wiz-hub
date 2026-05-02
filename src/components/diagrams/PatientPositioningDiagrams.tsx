@@ -316,22 +316,9 @@ export const LateralPositionDiagram = () => (
   >
     <Table x={70} y={170} w={420} />
 
-    {/* Lateral patient — torso side-on, head left */}
-    <TorsoLateral idPrefix="pf" cx={245} cy={150} length={220} height={60} facing="left" />
-    <HeadProfile idPrefix="pf" cx={120} cy={130} r={20} facing="left" />
-    {/* Axillary roll — caudal to axilla, on chest wall */}
-    <ellipse cx={158} cy={158} rx={14} ry={8} fill={POS_GREEN} opacity={0.85} />
-    {/* Up arm — supported on padded arm-rest */}
-    <Arm idPrefix="pf" sx={185} sy={130} ex={225} ey={108} wx={262} wy={92} upperW={13} foreW={11} />
-    <rect x={258} y={86} width={32} height={10} rx={3} fill="hsl(210 25% 35%)" />
-    {/* Dependent arm — slightly forward */}
-    <Arm idPrefix="pf" sx={170} sy={156} ex={208} ey={170} wx={246} wy={172} upperW={12} foreW={10} />
-    {/* Pillow between knees */}
-    <ellipse cx={400} cy={150} rx={22} ry={7} fill="hsl(45 50% 82%)" stroke="hsl(45 40% 55%)" strokeWidth={0.8} />
-    {/* Up leg — straight on pillow */}
-    <Leg idPrefix="pf" hx={355} hy={140} kx={405} ky={138} ax={460} ay={140} thighW={20} calfW={16} footLen={18} />
-    {/* Dependent leg — flexed at hip and knee */}
-    <Leg idPrefix="pf" hx={355} hy={162} kx={400} ky={172} ax={445} ay={188} thighW={20} calfW={16} footLen={18} />
+    {/* Lateral patient — composite handles head, torso, axillary roll, both arms, knee pillow, legs */}
+    <LateralPatient idPrefix="pf" cx={245} cy={150} length={220} height={60} facing="left" />
+
     <text x={250} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">left lateral shown — kidney rest under flank if renal surgery</text>
   </PositionFrame>
 );
