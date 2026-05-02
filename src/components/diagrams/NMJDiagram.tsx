@@ -54,6 +54,36 @@ export const NMJDiagram = () => {
   const showDegradation = currentPhase.id === "degrade";
   const showAP = currentPhase.id === "ap" || currentPhase.id === "ca";
 
+  // ─── Synchronised Ca²⁺ sub-animation timing ─────────────────────────────
+  // Single normalised timeline t spanning "ca" → "vesicle" phases (0 → 2).
+  //   t in [0, 1)  = within "ca" phase
+  //   t in [1, 2)  = within "vesicle" phase
+  const caT =
+    currentPhase.id === "ca" ? phaseProgress
+      : currentPhase.id === "vesicle" ? 1 + phaseProgress
+      : -1;
+
+  // Helper: smooth ramp 0→1 between two timeline points
+  const ramp = (t: number, start: number, end: number) => {
+    if (t <= start) return 0;
+    if (t >= end) return 1;
+    return (t - start) / (end - start);
+  };
+
+  // VGCC opening: opens fast (0 → 0.15 of "ca"), stays open, closes late in "vesicle" (1.7 → 1.95)
+  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 1.7, 1.95)) : 0;
+
+  // Ca²⁺ ions stream: starts 0.1 of "ca", fully on by 0.3, fades out 1.4 → 1.7 (mid-vesicle)
+  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 1.4, 1.7)) : 0;
+
+  // Cloud builds through "ca" (0.2 → 1.0), holds early "vesicle", dissipates 1.5 → 2.0
+  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 1.5, 2.0)) : 0;
+
+  // Vesicle fusion progress: only during "vesicle" phase (caT 1 → 2)
+  const fusionProgress = currentPhase.id === "vesicle" ? phaseProgress
+    : currentPhase.id === "bind" || currentPhase.id === "depol" ? 1
+    : 0;
+
   // ACh dot animation
   const achY = showAChDots
     ? 140 + phaseProgress * 50
@@ -78,48 +108,48 @@ export const NMJDiagram = () => {
 
         {/* Voltage-gated Ca²⁺ channels — labelled VGCC, glow when open */}
         {[140, 200, 260, 320, 360].map((x, i) => {
-          const open = showCaArrows;
+          const open = vgccOpen > 0.05;
           return (
             <g key={i}>
               {open && (
-                <circle cx={x} cy={140} r={14} fill="hsl(35 95% 55%)" opacity={0.25}>
+                <circle cx={x} cy={140} r={14} fill="hsl(35 95% 55%)" opacity={0.25 * vgccOpen}>
                   <animate attributeName="r" values="10;16;10" dur="0.8s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="0.15;0.4;0.15" dur="0.8s" repeatCount="indefinite" />
                 </circle>
               )}
               <rect x={x - 7} y={130} width={14} height={20} rx="2"
-                fill={open ? "hsl(35 95% 55%)" : "hsl(210 20% 80%)"}
+                fill={open ? `hsl(35 95% ${55 + (1 - vgccOpen) * 25}%)` : "hsl(210 20% 80%)"}
                 stroke={open ? "hsl(25 90% 40%)" : "hsl(210 20% 60%)"}
                 strokeWidth={open ? 1.5 : 1}
               />
               {open && (
-                <line x1={x} y1={132} x2={x} y2={148} stroke="hsl(45 100% 95%)" strokeWidth="2.5" />
+                <line x1={x} y1={132} x2={x} y2={148}
+                  stroke="hsl(45 100% 95%)" strokeWidth={2.5 * vgccOpen} opacity={vgccOpen} />
               )}
             </g>
           );
         })}
         {/* VGCC label */}
-        {showCaArrows && (
-          <text x={100} y={128} fontSize="9" className="fill-foreground font-semibold" fill="hsl(25 90% 40%)">VGCC open</text>
+        {vgccOpen > 0.3 && (
+          <text x={100} y={128} fontSize="9" className="font-semibold" fill="hsl(25 90% 40%)" opacity={vgccOpen}>VGCC open</text>
         )}
 
         {/* Ca²⁺ ions streaming UP through channels into terminal */}
-        {showCaArrows && [140, 200, 260, 320, 360].flatMap((x, ci) =>
+        {caStreamIntensity > 0.02 && [140, 200, 260, 320, 360].flatMap((x, ci) =>
           [0, 0.4, 0.75].map((delay, di) => {
-            const cycle = ((phaseProgress * 4) + delay + ci * 0.13) % 1;
-            // Start below membrane, travel up into terminal toward vesicles
+            const cycle = ((frame * 0.025) + delay + ci * 0.13) % 1;
             const startY = 175;
             const endY = 110;
             const y = startY + (endY - startY) * cycle;
-            const opacity = cycle < 0.1 ? cycle * 10 : cycle > 0.85 ? (1 - cycle) * 6.5 : 1;
+            const baseOpacity = cycle < 0.1 ? cycle * 10 : cycle > 0.85 ? (1 - cycle) * 6.5 : 1;
+            const opacity = Math.min(1, baseOpacity) * caStreamIntensity;
             return (
               <g key={`${ci}-${di}`}>
                 <circle cx={x} cy={y} r={5}
                   fill="hsl(35 95% 55%)" stroke="hsl(25 90% 35%)" strokeWidth="1"
-                  opacity={Math.min(1, opacity)} />
+                  opacity={opacity} />
                 <text x={x} y={y + 2} textAnchor="middle" fontSize="5"
                   className="font-bold" fill="hsl(0 0% 100%)"
-                  opacity={Math.min(1, opacity)}>
+                  opacity={opacity}>
                   Ca
                 </text>
               </g>
@@ -128,26 +158,26 @@ export const NMJDiagram = () => {
         )}
 
         {/* Intracellular Ca²⁺ cloud building under active zone */}
-        {showCaArrows && (
+        {cloudIntensity > 0.02 && (
           <ellipse cx={250} cy={120} rx={130} ry={18}
-            fill="hsl(35 95% 55%)" opacity={0.12 + phaseProgress * 0.18}>
-            <animate attributeName="opacity" values="0.15;0.3;0.15" dur="1.2s" repeatCount="indefinite" />
-          </ellipse>
+            fill="hsl(35 95% 55%)" opacity={0.1 + cloudIntensity * 0.3} />
         )}
 
-        {/* Vesicles */}
+        {/* Vesicles — fusion gated by fusionProgress (begins only in "vesicle" phase) */}
         {vesicles.map((v, i) => {
-          const fusing = vesiclesFusing && i < Math.floor(phaseProgress * 5 + 1);
-          const vy = fusing ? v.cy + (140 - v.cy) * Math.min(phaseProgress * 1.5, 1) : v.cy;
-          const opacity = showDegradation ? 0.3 : fusing ? 0.6 : 1;
+          // Stagger fusion across vesicles using fusionProgress
+          const localFusion = Math.max(0, Math.min(1, fusionProgress * 1.6 - i * 0.12));
+          const fusing = localFusion > 0;
+          const vy = v.cy + (140 - v.cy) * localFusion;
+          const opacity = showDegradation ? 0.3 : fusing ? 1 - 0.4 * localFusion : 1;
           return (
             <g key={i}>
               <circle cx={v.cx} cy={vy} r={12} fill="hsl(170 50% 70%)" stroke="hsl(170 50% 40%)" strokeWidth="1.5" opacity={opacity} />
               {/* ACh dots inside */}
-              {!fusing && (
+              {localFusion < 0.5 && (
                 <>
-                  <circle cx={v.cx - 3} cy={vy - 2} r={2} fill="hsl(170 50% 40%)" />
-                  <circle cx={v.cx + 3} cy={vy + 2} r={2} fill="hsl(170 50% 40%)" />
+                  <circle cx={v.cx - 3} cy={vy - 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
+                  <circle cx={v.cx + 3} cy={vy + 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
                 </>
               )}
             </g>
