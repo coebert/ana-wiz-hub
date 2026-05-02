@@ -846,6 +846,387 @@ export const ParkBenchDetailedDiagram = () => {
   );
 };
 
+// ── 6c. SITTING — DEDICATED DETAILED VIEW ──────────────────────────────
+
+interface SittingHotspot {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  category: "circulation" | "airway" | "pressure" | "neuro";
+  risk: string;
+  mitigation: string[];
+  severity: "high" | "moderate" | "low";
+}
+
+const ST_PROCEDURES: { name: string; why: string }[] = [
+  { name: "Posterior fossa tumour resection (cerebellar, brainstem, 4th-ventricle)", why: "Gravity drains blood and CSF from the field — bloodless midline exposure unmatched by lateral approaches." },
+  { name: "Vestibular schwannoma / acoustic neuroma (CPA)", why: "Excellent retrosigmoid trajectory with the cerebellum falling away from the petrous bone." },
+  { name: "Pineal-region & 3rd-ventricle tumours (supracerebellar infratentorial)", why: "Gravity retraction of the cerebellum gives a midline corridor without fixed retractors." },
+  { name: "Microvascular decompression (Jannetta) — trigeminal neuralgia / hemifacial spasm", why: "Direct view of the cranial-nerve root entry zone with minimal cerebellar retraction." },
+  { name: "Foramen magnum / craniocervical decompression (Chiari I)", why: "Midline suboccipital + upper-cervical exposure; excellent venous drainage of the field." },
+  { name: "Posterior cervical spine (laminectomy, cervical fusion C1–C2)", why: "Reduces venous engorgement and intra-operative bleeding compared with prone." },
+  { name: "Deep brain stimulator (DBS) electrode insertion (selected centres)", why: "Awake, semi-sitting position assists clinical testing during electrode placement." },
+];
+
+const ST_HOTSPOTS: SittingHotspot[] = [
+  {
+    id: "st-vae",
+    x: 175,
+    y: 95,
+    label: "Venous air embolism (VAE) — highest-risk position",
+    severity: "high",
+    category: "circulation",
+    risk: "Operative site sits ~25 cm above the right atrium → open dural sinuses entrain air. Reported VAE 25–45 %; paradoxical air embolism via PFO 5–10 %.",
+    mitigation: [
+      "Pre-op bubble echocardiogram to screen for PFO — positive PFO is a relative contraindication.",
+      "Multi-orifice CVC tip at the SVC–RA junction for air aspiration; confirm position with intracardiac ECG or TOE.",
+      "Precordial Doppler over the right 2nd–3rd ICS (most sensitive non-invasive monitor) ± TOE for high-risk cases.",
+      "Continuous EtCO₂ + EtN₂; sudden ↓ EtCO₂, ↓ SpO₂, ↑ PA pressure, mill-wheel murmur = VAE.",
+      "Avoid N₂O (expands intravascular air).",
+      "Crisis: alert surgeon (flood field with saline, bone wax exposed bone), bilateral jugular compression, FiO₂ 1.0, aspirate CVC, fluid + vasopressors, recline patient if possible.",
+    ],
+  },
+  {
+    id: "st-cpp",
+    x: 145,
+    y: 80,
+    label: "Cerebral perfusion pressure — zero at the EAM",
+    severity: "high",
+    category: "circulation",
+    risk: "MAP measured at the heart overestimates cerebral pressure by ~15–20 mmHg (1 cmH₂O ≈ 0.74 mmHg). Cerebral hypoperfusion → watershed stroke / POVL.",
+    mitigation: [
+      "Zero the arterial line transducer at the EXTERNAL AUDITORY MEATUS (Circle of Willis level), NOT at the heart.",
+      "Maintain cerebral MAP ≥ 70 mmHg (or within 20 % of pre-induction baseline).",
+      "Anticipate hypotension on positioning — graded sit-up, fluid load, vasopressor (metaraminol / noradrenaline) infusion ready.",
+      "Graduated compression stockings ± pneumatic calf compression to support venous return.",
+    ],
+  },
+  {
+    id: "st-pneumo",
+    x: 165,
+    y: 65,
+    label: "Tension pneumocephalus",
+    severity: "moderate",
+    category: "neuro",
+    risk: "CSF drains caudally during surgery; intracranial air rises and accumulates → tension pneumocephalus on emergence (delayed awakening, focal neurology, seizures).",
+    mitigation: [
+      "Strictly avoid N₂O for the entire case.",
+      "Surgeon fills resection cavity with warm saline before dural closure.",
+      "CT head if delayed awakening or new focal neurology post-op.",
+      "Treat tension pneumocephalus with burr-hole release; supportive care with FiO₂ 1.0 to encourage nitrogen washout.",
+    ],
+  },
+  {
+    id: "st-neckflex",
+    x: 215,
+    y: 110,
+    label: "Cervical flexion — cord ischaemia & quadriplegia",
+    severity: "high",
+    category: "neuro",
+    risk: "Excessive cervical flexion combined with intra-operative hypotension and pin-fixation has caused mid-cervical cord infarction with permanent quadriplegia.",
+    mitigation: [
+      "Maintain ≥ two finger-breadths between chin and sternum at all times.",
+      "Avoid intra-operative hypotension (cord watershed perfusion is pressure-dependent).",
+      "Document neurology pre-op; consider somatosensory / motor evoked potentials in long cases.",
+      "Use an armoured (reinforced) ETT taped — never tied — around the neck.",
+    ],
+  },
+  {
+    id: "st-airway",
+    x: 235,
+    y: 125,
+    label: "Macroglossia & supraglottic airway oedema",
+    severity: "moderate",
+    category: "airway",
+    risk: "Prolonged neck flexion + ETT/oral airway → venous and lymphatic obstruction → tongue, pharyngeal and supraglottic oedema → airway obstruction at extubation.",
+    mitigation: [
+      "Remove oral airways and bite-blocks once ETT is taped; keep the tongue inside the dental arches.",
+      "Cuff-leak test before extubation; if absent, leave intubated and re-assess at 12–24 h.",
+      "Consider tube-exchange catheter for at-risk extubation.",
+      "Sit head up post-extubation; have re-intubation kit and surgical airway equipment immediately available.",
+    ],
+  },
+  {
+    id: "st-pin",
+    x: 130,
+    y: 95,
+    label: "Mayfield 3-pin head fixation",
+    severity: "high",
+    category: "pressure",
+    risk: "Hypertensive surge on pin application → ICP spikes, intracranial bleeding. Pin-site bleeding, CSF leak or depressed skull fracture in children / steroid-treated patients.",
+    mitigation: [
+      "Pre-treat with remifentanil 0.5–1 µg/kg or alfentanil 10 µg/kg ± lidocaine 1.5 mg/kg IV.",
+      "Infiltrate pin sites with LA + adrenaline (0.5 % bupivacaine with 1:200,000 adrenaline).",
+      "Avoid temporalis muscle, frontal sinus and superficial temporal artery.",
+      "Torque 60–80 N in adults; reduce in children / thin skull. Tape eyes BEFORE pinning.",
+    ],
+  },
+  {
+    id: "st-sciatic",
+    x: 305,
+    y: 215,
+    label: "Sciatic stretch & lower-limb compartment syndrome",
+    severity: "moderate",
+    category: "pressure",
+    risk: "Sustained hip flexion stretches the sciatic nerve; dependent calves at heart level can develop well-leg compartment syndrome in long cases.",
+    mitigation: [
+      "Knees flexed and supported on padded gutters; legs elevated to heart level to encourage venous return.",
+      "Keep hip flexion < 90°; avoid simultaneous hip flexion and knee extension (sciatic stretch).",
+      "Pneumatic calf compression; document calf softness regularly in cases > 4 h.",
+      "Heels floated on gel pads — no pressure on the Achilles tendon.",
+    ],
+  },
+  {
+    id: "st-buttock",
+    x: 285,
+    y: 200,
+    label: "Sacrum & ischial tuberosities",
+    severity: "moderate",
+    category: "pressure",
+    risk: "Whole body weight transmitted through the sacrum and ischial tuberosities → pressure necrosis, particularly in long (>4 h) cases or low cardiac-output states.",
+    mitigation: [
+      "Gel or visco-elastic seat cushion moulded under the buttocks before sit-up.",
+      "Reposition / re-pad every 2 h if surgically possible; document inspection in the chart.",
+      "Maintain normothermia and adequate cardiac output to preserve skin perfusion.",
+    ],
+  },
+  {
+    id: "st-arms",
+    x: 250,
+    y: 150,
+    label: "Arms across the abdomen / lap",
+    severity: "low",
+    category: "pressure",
+    risk: "Arms folded across the lap can compress the ulnar nerve at the elbow and obstruct venous access to the cubital fossa.",
+    mitigation: [
+      "Pad the medial epicondyle of both elbows; keep forearms supinated where possible.",
+      "Site IV access pre-positioning; secure lines so they are not pulled when the patient is sat up.",
+      "Confirm radial pulse and SpO₂ trace on both hands after positioning.",
+    ],
+  },
+];
+
+const ST_CATEGORY_LABEL: Record<SittingHotspot["category"], string> = {
+  circulation: "Circulation",
+  airway: "Airway",
+  neuro: "Neurology",
+  pressure: "Pressure / nerve",
+};
+
+const ST_SEVERITY_COLOUR: Record<SittingHotspot["severity"], string> = {
+  high: POS_RED,
+  moderate: POS_AMBER,
+  low: POS_GREEN,
+};
+
+export const SittingPositionDetailedDiagram = () => {
+  const [activeId, setActiveId] = useState<string>(ST_HOTSPOTS[0].id);
+  const active = ST_HOTSPOTS.find((h) => h.id === activeId) ?? ST_HOTSPOTS[0];
+  const accent = ST_SEVERITY_COLOUR[active.severity];
+
+  return (
+    <div className="my-6 rounded-xl border border-border bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Sitting (Fowler's) position — dedicated review
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Trunk semi-upright (~60°), head flexed and pinned in 3-point fixation, knees flexed and elevated to heart
+          level. Highest VAE-risk neurosurgical position but unmatched midline exposure of the posterior fossa,
+          pineal region and craniocervical junction. Demands a coordinated package of cardiovascular, airway and
+          neuromonitoring strategies.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px]">
+        {/* Diagram column */}
+        <div className="p-3 bg-[hsl(var(--background))]">
+          <svg viewBox="0 0 420 320" className="w-full h-auto" role="img" aria-label="Sitting position with circulation, airway and pressure-risk hotspots">
+            {/* Floor line */}
+            <line x1={20} y1={295} x2={400} y2={295} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
+            <text x={20} y={310} fontSize={9} fill="hsl(var(--muted-foreground))">FLOOR</text>
+
+            {/* Chair / table base */}
+            <rect x={240} y={250} width={140} height={8} fill="hsl(210 25% 35%)" />
+            <rect x={295} y={258} width={30} height={32} fill="hsl(210 20% 45%)" />
+
+            {/* Seat pad */}
+            <rect x={245} y={232} width={130} height={18} rx={4} fill="hsl(45 35% 75%)" opacity={0.8} />
+            <text x={385} y={245} fontSize={9} fill="hsl(var(--muted-foreground))">gel cushion</text>
+
+            {/* Backrest tilted ~60° from horizontal */}
+            <g transform="rotate(-60 260 232)">
+              <rect x={155} y={225} width={110} height={14} rx={3} fill="hsl(210 25% 35%)" />
+            </g>
+
+            {/* Patient torso along backrest */}
+            <g transform="rotate(-60 260 232)">
+              <rect x={155} y={180} width={110} height={45} rx={16} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
+              {/* Neck */}
+              <rect x={138} y={195} width={20} height={16} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.2} />
+              {/* Head — flexed onto chest */}
+              <circle cx={130} cy={200} r={20} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
+              {/* Mayfield pins */}
+              <line x1={117} y1={184} x2={111} y2={176} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <line x1={143} y1={184} x2={149} y2={176} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <line x1={130} y1={181} x2={130} y2={172} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+            </g>
+
+            {/* Arms folded across lap */}
+            <line x1={235} y1={155} x2={285} y2={170} stroke="hsl(35 80% 80%)" strokeWidth={11} strokeLinecap="round" />
+            <line x1={285} y1={170} x2={250} y2={185} stroke="hsl(35 80% 80%)" strokeWidth={11} strokeLinecap="round" />
+
+            {/* Legs — knees flexed and elevated to heart level */}
+            <line x1={285} y1={205} x2={345} y2={185} stroke="hsl(35 80% 80%)" strokeWidth={18} strokeLinecap="round" />
+            <line x1={345} y1={185} x2={325} y2={235} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+            {/* Knee gutter pad */}
+            <ellipse cx={345} cy={185} rx={9} ry={5} fill={POS_GREEN} opacity={0.85} />
+
+            {/* Pneumatic calf compression cuff */}
+            <rect x={315} y={215} width={22} height={12} rx={3} fill={POS_GREEN} opacity={0.6} />
+            <text x={355} y={224} fontSize={9} fill={POS_GREEN} fontWeight={600}>calf SCDs</text>
+
+            {/* External auditory meatus reference line — TRUE cerebral MAP */}
+            <line x1={150} y1={80} x2={400} y2={80} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
+            <text x={400} y={73} fontSize={9} textAnchor="end" fill={POS_GREEN} fontWeight={700}>zero MAP at external auditory meatus</text>
+
+            {/* Heart-level reference line */}
+            <line x1={195} y1={170} x2={400} y2={170} stroke="hsl(var(--muted-foreground))" strokeDasharray="2 3" strokeWidth={0.8} />
+            <text x={400} y={163} fontSize={9} textAnchor="end" fill="hsl(var(--muted-foreground))">heart level (RA)</text>
+
+            {/* Hydrostatic gradient annotation */}
+            <line x1={170} y1={80} x2={170} y2={170} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1.2} />
+            <text x={108} y={130} fontSize={10} fill={POS_AMBER} fontWeight={700}>~ 25 cm</text>
+            <text x={108} y={142} fontSize={9} fill={POS_AMBER}>hydrostatic gradient</text>
+
+            {/* Surgical access — surgeon stands behind */}
+            <path d="M 70 50 Q 105 45 145 65" fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} strokeDasharray="3 3" />
+            <text x={70} y={42} fontSize={9} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
+
+            {/* CVC at SVC-RA junction */}
+            <line x1={210} y1={155} x2={195} y2={170} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
+            <circle cx={195} cy={170} r={2.5} fill="hsl(var(--foreground))" />
+            <text x={205} y={150} fontSize={9} fill="hsl(var(--muted-foreground))">multi-orifice CVC tip @ SVC–RA</text>
+
+            {/* Hotspots */}
+            {ST_HOTSPOTS.map((h, i) => {
+              const isActive = h.id === activeId;
+              const colour = ST_SEVERITY_COLOUR[h.severity];
+              return (
+                <g
+                  key={h.id}
+                  onPointerEnter={() => setActiveId(h.id)}
+                  onClick={() => setActiveId(h.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <circle
+                    cx={h.x}
+                    cy={h.y}
+                    r={isActive ? 13 : 11}
+                    fill={colour}
+                    fillOpacity={isActive ? 0.95 : 0.85}
+                    stroke="hsl(var(--background))"
+                    strokeWidth={2}
+                  />
+                  <text
+                    x={h.x}
+                    y={h.y + 3.5}
+                    textAnchor="middle"
+                    fontSize={10}
+                    fontWeight={700}
+                    fill="hsl(var(--background))"
+                  >
+                    {i + 1}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
+
+          {/* Severity legend */}
+          <div className="mt-2 flex items-center gap-4 text-[11px] text-muted-foreground px-1 flex-wrap">
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_RED }} /> High risk</span>
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_AMBER }} /> Moderate</span>
+            <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_GREEN }} /> Low / supportive</span>
+          </div>
+        </div>
+
+        {/* Side panel: chip list + active detail */}
+        <div className="border-t lg:border-t-0 lg:border-l border-border bg-muted/20 p-3 text-xs">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+            Pressure / circulation / airway hotspots
+          </p>
+          <ol className="space-y-1.5 mb-3">
+            {ST_HOTSPOTS.map((h, i) => {
+              const isActive = h.id === activeId;
+              const colour = ST_SEVERITY_COLOUR[h.severity];
+              return (
+                <li key={h.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveId(h.id)}
+                    className={cn(
+                      "w-full text-left flex items-start gap-2 rounded-md px-2 py-1.5 transition",
+                      isActive ? "bg-background border border-border shadow-sm" : "hover:bg-background/60"
+                    )}
+                  >
+                    <span
+                      className="mt-0.5 inline-flex items-center justify-center w-4 h-4 rounded-full text-[9px] font-bold shrink-0"
+                      style={{ background: colour, color: "hsl(var(--background))" }}
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="text-foreground leading-tight">{h.label}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+
+          <div
+            className="rounded-md border border-border bg-background p-2.5"
+            style={{ borderLeft: `4px solid ${accent}` }}
+          >
+            <div className="flex items-center justify-between gap-2 mb-1">
+              <p className="text-[11px] font-semibold text-foreground">{active.label}</p>
+              <span
+                className="text-[9px] uppercase tracking-wide px-1.5 py-0.5 rounded-md font-semibold shrink-0"
+                style={{ background: `${accent}26`, color: accent }}
+              >
+                {ST_CATEGORY_LABEL[active.category]}
+              </span>
+            </div>
+            <p className="text-[11px] text-muted-foreground mb-2">
+              <span className="font-medium text-foreground">Risk: </span>{active.risk}
+            </p>
+            <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-1">
+              Mitigation
+            </p>
+            <ol className="list-decimal list-inside space-y-1 text-[11px] text-muted-foreground">
+              {active.mitigation.map((m, i) => <li key={i}>{m}</li>)}
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      {/* Procedures footer */}
+      <div className="border-t border-border bg-muted/10 p-4">
+        <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+          Typical neurosurgical procedures performed in the sitting position
+        </p>
+        <ul className="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+          {ST_PROCEDURES.map((p) => (
+            <li key={p.name} className="leading-snug">
+              <span className="text-foreground font-medium">{p.name}.</span> {p.why}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 // ── 7. SITTING (neurosurgical) ─────────────────────────────────────────
 
 export const SittingPositionDiagram = () => (
