@@ -404,9 +404,9 @@ export const thoracicFolio: CorPictumFolioData = {
     },
     {
       id: "mediastinum", tabLabel: "Mediastinum", folio: "II",
-      title: "Mediastinum Dextrum", subtitle: "Right lateral view after lung removal",
+      title: "Right Mediastinum", subtitle: "Right lateral view after lung removal",
       image: thoracicMediastinum, alt: "Painted lateral view of the right mediastinum",
-      caption: "Aspectus lateralis mediastini dextri",
+      caption: "Right lateral view of the mediastinum",
       labels: [
         { latin: "vena cava superior", english: "Superior vena cava", note: "Receives azygos vein before entering right atrium." },
         { latin: "vena azygos", english: "Azygos vein", note: "Arches over right main bronchus." },
