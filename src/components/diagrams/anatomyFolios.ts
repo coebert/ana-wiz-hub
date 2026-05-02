@@ -12,6 +12,7 @@ import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
 import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
 import headneckOrbitFrontal from "@/assets/plates/headneck-orbit-frontal.jpg";
+import neckC6Axial from "@/assets/plates/neck-c6-axial.jpg";
 import neuroMidsagittal from "@/assets/plates/neuro-midsagittal.jpg";
 import neuroCircleWillis from "@/assets/plates/neuro-circle-willis.jpg";
 import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
