@@ -401,7 +401,7 @@ export const Arm = ({
       <path
         d={taperedLimb(sx, sy, ex, ey, upperW * 1.05, upperW * 0.78)}
         fill={`url(#${idPrefix}-${gownSleeve ? "gown-sheen" : "skin-sheen"})`}
-        pointerEvents="none"
+        className="anat-sheen" pointerEvents="none"
       />
       {gownSleeve && (
         <>
@@ -435,7 +435,7 @@ export const Arm = ({
       />
       <path
         d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
-        fill={`url(#${idPrefix}-skin-sheen)`} pointerEvents="none"
+        fill={`url(#${idPrefix}-skin-sheen)`} className="anat-sheen" pointerEvents="none"
       />
       {/* Faint flexor crease along the inside of the forearm */}
       <path
@@ -556,7 +556,7 @@ export const Leg = ({
       <path
         d={taperedLimb(hx, hy, kx, ky, thighW * 1.05, thighW * 0.78)}
         fill={`url(#${idPrefix}-${draped ? "gown-sheen" : "skin-sheen"})`}
-        pointerEvents="none"
+        className="anat-sheen" pointerEvents="none"
       />
       {draped && (
         <>
@@ -604,7 +604,7 @@ export const Leg = ({
       />
       <path
         d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
-        fill={`url(#${idPrefix}-skin-sheen)`} pointerEvents="none"
+        fill={`url(#${idPrefix}-skin-sheen)`} className="anat-sheen" pointerEvents="none"
       />
       {/* Tibial ridge hint (front of calf) */}
       <path
@@ -716,13 +716,13 @@ export const TorsoSupine = ({
             />
             <path d={d}
               fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
-              pointerEvents="none"
+              className="anat-sheen" pointerEvents="none"
             />
             {/* Soft occlusion at the waist tuck */}
             <ellipse
               cx={xWaist + 4} cy={cy + waistW / 2 - 1}
               rx={length * 0.22} ry={4}
-              fill={`url(#${idPrefix}-ao)`} opacity={0.55} pointerEvents="none"
+              fill={`url(#${idPrefix}-ao)`} opacity={0.55} className="anat-sheen" pointerEvents="none"
             />
           </>
         );
@@ -793,13 +793,13 @@ export const TorsoLateral = ({
       {/* Sheen overlay */}
       <path d={path}
         fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
-        pointerEvents="none"
+        className="anat-sheen" pointerEvents="none"
       />
       {/* Underside contact-occlusion along the back */}
       <path
         d={`M ${x0 + 18},${bot - 2} Q ${cx},${bot + 8} ${x1 - 14},${bot - 2}`}
         fill="none" stroke="hsl(220 30% 12%)" strokeWidth={3.5}
-        opacity={0.18} strokeLinecap="round" pointerEvents="none"
+        opacity={0.18} strokeLinecap="round" className="anat-sheen" pointerEvents="none"
       />
       {/* Spine reference (back) */}
       <path
@@ -845,7 +845,7 @@ export const TorsoProne = ({
             />
             <path d={d}
               fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
-              pointerEvents="none"
+              className="anat-sheen" pointerEvents="none"
             />
           </>
         );
