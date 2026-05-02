@@ -214,17 +214,7 @@ export const SupinePositionDiagram = () => (
     <Table x={70} y={170} w={420} />
 
     {/* Patient — supine, head left, feet right */}
-    <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
-    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-    {/* Right arm tucked at side, palm supinated */}
-    <Arm idPrefix="pf" sx={170} sy={158} ex={235} ey={155} wx={295} wy={150} upperW={14} foreW={12} gownSleeve />
-    {/* Left arm symmetric (lighter — partly behind body) */}
-    <g opacity={0.55}>
-      <Arm idPrefix="pf" sx={170} sy={122} ex={235} ey={125} wx={295} wy={130} upperW={13} foreW={11} gownSleeve />
-    </g>
-    {/* Legs slightly apart */}
-    <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
-    <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+    <SupinePatient idPrefix="pf" x={120} y={120} length={250} />
 
     {/* Anatomical labels */}
     <text x={108} y={108} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">head</text>
