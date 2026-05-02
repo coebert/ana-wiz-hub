@@ -427,14 +427,14 @@ export const thoracicFolio: CorPictumFolioData = {
 };
 
 export const abdominalFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Abdomen",
+  atlasTitle: "Atlas of Anatomy — Abdomen",
   atlasSubtitle: "Painted plates of the abdominal cavity",
   plates: [
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
-      title: "Cavitas Abdominis", subtitle: "Anterior view with greater omentum removed",
+      title: "Abdominal Cavity", subtitle: "Anterior view with greater omentum removed",
       image: abdominalAnterior, alt: "Painted anterior view of the abdominal viscera",
-      caption: "Aspectus anterior viscerum abdominis",
+      caption: "Anterior view of the abdominal viscera",
       labels: [
         { latin: "hepar", english: "Liver", note: "Right upper quadrant; eight Couinaud segments." },
         { latin: "vesica fellea", english: "Gallbladder", note: "Inferior surface of liver; Murphy's sign on palpation." },
