@@ -15,6 +15,7 @@ import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
 import skullbaseInferior from "@/assets/plates/skullbase-inferior.jpg";
 import spinalPosterior from "@/assets/plates/spinal-posterior.jpg";
 import spinalSagittal from "@/assets/plates/spinal-sagittal.jpg";
+import spinalCaudal from "@/assets/plates/spinal-caudal.jpg";
 import brachialPlexus from "@/assets/plates/brachial-plexus.jpg";
 import brachialInterscalene from "@/assets/plates/brachial-interscalene.jpg";
 import upperlimbForearm from "@/assets/plates/upperlimb-forearm.jpg";
@@ -307,6 +308,30 @@ export const spinalFolio: CorPictumFolioData = {
         { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-layers" },
         { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-layers" },
         { code: "OB_BK_01", exams: [Exam.FINAL], title: "Neuraxial anaesthesia in obstetrics", anchor: "neuraxial-layers" },
+      ],
+    },
+    {
+      id: "caudal", tabLabel: "Caudal block", folio: "III",
+      title: "Caudal Block Landmarks", subtitle: "Sacral hiatus and the equilateral triangle",
+      image: spinalCaudal, alt: "Painted posterior view of the sacrum showing landmarks for caudal epidural block",
+      caption: "Surface and bony landmarks for caudal epidural block",
+      labels: [
+        { latin: "", english: "Posterior superior iliac spine", note: "Forms the two upper points of an equilateral triangle with the sacral hiatus." },
+        { latin: "", english: "Equilateral triangle", note: "PSIS bilaterally + sacral hiatus = equilateral triangle; useful when cornua are impalpable." },
+        { latin: "", english: "Sacral cornu", note: "Paired bony prominences flanking the sacral hiatus — the primary palpation landmark." },
+        { latin: "", english: "Sacral hiatus", note: "Defect from failed fusion of S5 laminae; entry point into the sacral canal." },
+        { latin: "", english: "Sacrococcygeal membrane", note: "Continuation of ligamentum flavum across the hiatus — distinct 'pop' as needle pierces it." },
+        { latin: "", english: "Coccyx", note: "Inferior landmark; needle is directed cephalad away from the coccyx." },
+        { latin: "", english: "Sacral canal", note: "Continuation of the epidural space; volume ~30–35 ml in adults; contains fat, venous plexus, sacral nerve roots." },
+        { latin: "", english: "Dural sac (ends at S2)", note: "Adult dural sac terminates at S2 — needle advanced too far risks dural puncture and total spinal." },
+        { latin: "", english: "Cauda equina", note: "Sacral roots within the canal — anaesthetised by caudal LA spread." },
+        { latin: "", english: "Needle", note: "Insert at 45° to skin through the membrane, then drop the hub to ~15° (parallel to skin) before advancing 1–2 cm into the canal." },
+        { latin: "", english: "Skin", note: "Aseptic prep; lateral or prone position; common paediatric technique for sub-umbilical surgery." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Sacrum & sacral canal anatomy", anchor: "neuraxial-layers" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Caudal epidural block — landmarks & technique", anchor: "neuraxial-layers" },
+        { code: "PA_BK_03", exams: [Exam.FINAL], title: "Paediatric regional anaesthesia — caudal block", anchor: "neuraxial-layers" },
       ],
     },
   ],
