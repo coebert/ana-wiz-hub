@@ -231,6 +231,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
       );
   }, [active, matchesFilter]);
 
+  const visibleCurriculumLinks = useMemo(() => {
+    if (!active?.curriculumLinks) return [];
+    return active.curriculumLinks.filter((link) =>
+      link.exams && link.exams.length > 0 ? matchesFilter(link.exams) : true,
+    );
+  }, [active, matchesFilter]);
+
   if (!active) return null;
 
   const hasAnyPolygons = active.labels.some((l) => l.polygon && l.polygon.length >= 3);
