@@ -8,6 +8,7 @@ import cardiacConduction from "@/assets/plates/cardiac-conduction.jpg";
 import airwayLaryngoscopic from "@/assets/plates/airway-laryngoscopic.jpg";
 import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
+import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
 import neuroMidsagittal from "@/assets/plates/neuro-midsagittal.jpg";
 import neuroCircleWillis from "@/assets/plates/neuro-circle-willis.jpg";
 import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
@@ -122,6 +123,37 @@ export const headNeckFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Carotid sheath & deep cervical anatomy", anchor: "ijv" },
         { code: "RU_BK_01", exams: [Exam.FINAL], title: "Cervical plexus & superficial cervical block", anchor: "ijv" },
         { code: "CR_BK_07", exams: [Exam.FINAL], title: "Anaesthesia for carotid endarterectomy", anchor: "ijv" },
+      ],
+    },
+    {
+      id: "orbit", tabLabel: "Orbit", folio: "III",
+      title: "The Orbit", subtitle: "Extraocular muscles and orbital contents",
+      image: headneckOrbit, alt: "Painted lateral cutaway view of the orbit showing extraocular muscles and the optic nerve",
+      caption: "Lateral cutaway of the orbit — extraocular muscles, optic nerve and orbital contents",
+      labels: [
+        { latin: "", english: "Globe (eyeball)", note: "Axial length ~24 mm; risk of perforation with peribulbar/sub-Tenon's needles in long eyes." },
+        { latin: "", english: "Cornea", note: "Densely innervated by V1 — corneal reflex tests CN V/VII arc." },
+        { latin: "", english: "Sclera", note: "Tough outer coat; pierced by sub-Tenon's cannula in the inferonasal quadrant." },
+        { latin: "", english: "Optic nerve (CN II)", note: "Surrounded by dura and CSF — direct injury causes blindness; sub-arachnoid LA spread possible with retrobulbar block." },
+        { latin: "", english: "Optic canal", note: "Transmits CN II and ophthalmic artery into the cranial cavity." },
+        { latin: "", english: "Superior rectus", note: "Elevation; supplied by CN III (superior division)." },
+        { latin: "", english: "Inferior rectus", note: "Depression; CN III. Trapped in orbital floor (blowout) fractures → restricted upgaze." },
+        { latin: "", english: "Lateral rectus", note: "Abduction; supplied by CN VI (abducens) — long intracranial course, vulnerable in raised ICP." },
+        { latin: "", english: "Medial rectus", note: "Adduction; CN III." },
+        { latin: "", english: "Superior oblique", note: "Intorsion and depression in adduction; supplied by CN IV (trochlear)." },
+        { latin: "", english: "Trochlea", note: "Cartilaginous pulley on the frontal bone redirecting superior oblique tendon." },
+        { latin: "", english: "Inferior oblique", note: "Extorsion and elevation in adduction; CN III." },
+        { latin: "", english: "Levator palpebrae superioris", note: "Lifts upper eyelid; CN III. Ptosis with III palsy or Horner's (sympathetic to Müller's)." },
+        { latin: "", english: "Ciliary ganglion", note: "Parasympathetic relay for pupillary constriction (CN III) and accommodation." },
+        { latin: "", english: "Ophthalmic artery", note: "First branch of internal carotid; supplies retina via central retinal artery." },
+        { latin: "", english: "Annulus of Zinn", note: "Common tendinous ring — origin of the four recti; CN II, III, VI and nasociliary pass through it." },
+        { latin: "", english: "Orbital fat", note: "Cushions globe; relevant volume for retro-/peribulbar block spread." },
+        { latin: "", english: "Periorbita", note: "Periosteum lining the bony orbit; cleavage plane for sub-periosteal collections." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Orbital anatomy — extraocular muscles & cranial nerves", anchor: "ophthalmic-anatomy" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Ophthalmic regional blocks — peribulbar & sub-Tenon's", anchor: "ophthalmic-anatomy" },
+        { code: "OP_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for ophthalmic surgery", anchor: "ophthalmic-anatomy" },
       ],
     },
   ],
