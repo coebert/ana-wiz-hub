@@ -1933,13 +1933,14 @@ export const SittingPositionDetailedDiagram = () => {
               <rect x={155} y={225} width={110} height={14} rx={3} fill="hsl(210 25% 35%)" />
             </g>
 
-            {/* Patient torso along backrest */}
-            <g transform="rotate(-60 260 232)">
-              <TorsoLateral cx={210} cy={202} length={120} height={52} idPrefix="st" facing="left" />
-              {/* Head profile — flexed onto chest, pinned */}
-              <HeadProfile cx={130} cy={200} r={20} idPrefix="st" facing="left" />
-              <MayfieldPins cx={130} cy={200} r={20} />
-            </g>
+            {/* Patient torso + head + Mayfield via composite (60° backrest tilt) */}
+            <SittingPatient
+              sx={260} sy={232}
+              tiltDeg={60}
+              torsoLength={120} torsoHeight={52}
+              showMayfield showLegs={false}
+              idPrefix="st"
+            />
 
             {/* Arms folded across lap */}
             <Arm sx={235} sy={155} ex={272} ey={168} wx={258} wy={186} idPrefix="st" upperW={11} foreW={9} handLen={10} gownSleeve />
