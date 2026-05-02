@@ -433,6 +433,10 @@ export const Arm = ({
         d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
         fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
       />
+      <path
+        d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
+        fill={`url(#${idPrefix}-skin-sheen)`} pointerEvents="none"
+      />
       {/* Faint flexor crease along the inside of the forearm */}
       <path
         d={`M ${ex - fnx * foreW * 0.18},${ey - fny * foreW * 0.18}
