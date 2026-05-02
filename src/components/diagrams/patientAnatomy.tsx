@@ -602,6 +602,10 @@ export const Leg = ({
         d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
         fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
       />
+      <path
+        d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
+        fill={`url(#${idPrefix}-skin-sheen)`} pointerEvents="none"
+      />
       {/* Tibial ridge hint (front of calf) */}
       <path
         d={`M ${kx + cux * calfW * 0.4},${ky + cuy * calfW * 0.4}
