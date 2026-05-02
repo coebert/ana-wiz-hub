@@ -1494,17 +1494,14 @@ export const SittingPositionDiagram = () => (
 
     {/* Patient torso along backrest */}
     <g transform="rotate(-60 270 195)">
-      <rect x={170} y={150} width={100} height={38} rx={14} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-      {/* Head + Mayfield */}
-      <circle cx={155} cy={170} r={18} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-      <line x1={143} y1={155} x2={138} y2={148} stroke="hsl(280 60% 40%)" strokeWidth={3} />
-      <line x1={167} y1={155} x2={172} y2={148} stroke="hsl(280 60% 40%)" strokeWidth={3} />
-      <line x1={155} y1={152} x2={155} y2={144} stroke="hsl(280 60% 40%)" strokeWidth={3} />
+      <TorsoLateral cx={220} cy={170} length={110} height={42} idPrefix="pf" facing="left" />
+      {/* Head profile + Mayfield */}
+      <HeadProfile cx={155} cy={170} r={18} idPrefix="pf" facing="left" />
+      <MayfieldPins cx={155} cy={170} r={18} />
     </g>
 
     {/* Legs flexed forward */}
-    <line x1={300} y1={195} x2={360} y2={170} stroke="hsl(35 80% 80%)" strokeWidth={20} strokeLinecap="round" />
-    <line x1={360} y1={170} x2={400} y2={205} stroke="hsl(35 80% 80%)" strokeWidth={18} strokeLinecap="round" />
+    <Leg hx={300} hy={195} kx={360} ky={170} ax={400} ay={205} idPrefix="pf" thighW={20} calfW={17} footLen={18} draped />
 
     {/* Arterial transducer line */}
     <line x1={245} y1={115} x2={50} y2={115} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
