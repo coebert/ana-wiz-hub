@@ -10,6 +10,10 @@ import {
   TorsoLateral,
   TorsoProne,
   MayfieldPins,
+  SupinePatient,
+  LateralPatient,
+  PronePatient,
+  SittingPatient,
 } from "./patientAnatomy";
 
 /**
