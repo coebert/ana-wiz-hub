@@ -213,21 +213,22 @@ export const SupinePositionDiagram = () => (
     {/* Table */}
     <Table x={70} y={170} w={420} />
 
-    {/* Patient — head left, feet right */}
-    {/* Head */}
-    <circle cx={100} cy={120} r={20} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-    {/* Body */}
-    <rect x={120} y={130} width={250} height={40} rx={18} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-    {/* Arm tucked at side */}
-    <rect x={210} y={140} width={90} height={14} rx={6} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.2} />
-    {/* Legs */}
-    <rect x={370} y={140} width={110} height={18} rx={8} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-    {/* Heels marker */}
-    <circle cx={478} cy={160} r={6} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.2} />
+    {/* Patient — supine, head left, feet right */}
+    <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
+    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
+    {/* Right arm tucked at side, palm supinated */}
+    <Arm idPrefix="pf" sx={170} sy={158} ex={235} ey={155} wx={295} wy={150} upperW={14} foreW={12} gownSleeve />
+    {/* Left arm symmetric (lighter — partly behind body) */}
+    <g opacity={0.55}>
+      <Arm idPrefix="pf" sx={170} sy={122} ex={235} ey={125} wx={295} wy={130} upperW={13} foreW={11} gownSleeve />
+    </g>
+    {/* Legs slightly apart */}
+    <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
+    <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
 
     {/* Anatomical labels */}
-    <text x={100} y={95} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">head</text>
-    <text x={485} y={140} fontSize={10} fill="hsl(var(--muted-foreground))">feet</text>
+    <text x={108} y={108} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">head</text>
+    <text x={500} y={144} fontSize={10} fill="hsl(var(--muted-foreground))">feet</text>
     {/* horizon */}
     <line x1={70} y1={170} x2={490} y2={170} stroke="hsl(210 25% 25%)" strokeWidth={1.2} />
   </PositionFrame>
