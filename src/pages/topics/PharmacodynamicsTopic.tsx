@@ -102,6 +102,7 @@ const PharmacodynamicsTopic = () => {
       quizQuestions={pharmacodynamicsQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -110,6 +111,10 @@ const PharmacodynamicsTopic = () => {
           "Peck & Hill Ch.2",
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
+        ],
+        diagrams: [
+          "Peck & Hill Ch.2",
+          "Rang & Dale Ch.2",
         ],
         workedExamples: [
           "BJA Educ 2016",
