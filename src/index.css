@@ -314,3 +314,8 @@
   }
 }
 
+
+/* ── Patient-positioning realism control ──────────────────────────── */
+/* Sheen / occlusion overlays painted by patientAnatomy primitives.    */
+[data-realism="minimal"] .anat-sheen { display: none; }
+[data-realism="rich"]    .anat-sheen { opacity: 1; }

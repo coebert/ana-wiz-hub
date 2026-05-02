@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { patientPositioningQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
+import { cn } from "@/lib/utils";
 import {
   SupinePositionDiagram,
   TrendelenburgPositionDiagram,
@@ -34,7 +37,48 @@ const objectives = [
   "Manage cardiovascular, respiratory, ophthalmic and airway complications related to patient positioning",
 ];
 
+const REALISM_OPTIONS: { value: RealismLevel; label: string; hint: string }[] = [
+  { value: "minimal",  label: "Minimal",  hint: "Flat silhouettes, no surface shading — fast, schematic." },
+  { value: "standard", label: "Standard", hint: "Balanced gown + drapes + lighting (default)." },
+  { value: "rich",     label: "Rich",     hint: "Full sheen, drapes and surface detail." },
+];
+
+const RealismToggle = ({
+  level, onChange,
+}: { level: RealismLevel; onChange: (l: RealismLevel) => void }) => (
+  <div className="my-4 rounded-xl border border-border bg-card px-3 py-2.5 flex flex-wrap items-center gap-3">
+    <div className="min-w-0">
+      <p className="text-[11px] uppercase tracking-wide font-semibold text-muted-foreground">
+        Diagram realism
+      </p>
+      <p className="text-[11px] text-muted-foreground/80 leading-tight">
+        {REALISM_OPTIONS.find((o) => o.value === level)?.hint}
+      </p>
+    </div>
+    <div role="radiogroup" aria-label="Diagram realism" className="ml-auto inline-flex rounded-lg border border-border overflow-hidden">
+      {REALISM_OPTIONS.map((o) => {
+        const active = o.value === level;
+        return (
+          <button
+            key={o.value} type="button" role="radio" aria-checked={active}
+            onClick={() => onChange(o.value)}
+            className={cn(
+              "px-3 py-1.5 text-xs font-semibold transition-colors",
+              active
+                ? "bg-clinical text-white"
+                : "bg-background text-muted-foreground hover:text-foreground hover:bg-muted",
+            )}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  </div>
+);
+
 const PatientPositioningTopic = () => {
+  const [realism, setRealism] = useState<RealismLevel>("standard");
   return (
     <TopicTemplate
       title="Patient Positioning in Anaesthesia"
@@ -63,7 +107,9 @@ const PatientPositioningTopic = () => {
         "ETT migrates ~2 cm caudally on prone repositioning — re-confirm position and bilateral air entry after every turn; use a reinforced (armoured) tube.",
       ]}
       coreConcepts={
-        <>
+        <RealismProvider level={realism}>
+        <div data-realism={realism}>
+        <RealismToggle level={realism} onChange={setRealism} />
           <ExamSection id="principles" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Positioning</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
@@ -252,7 +298,8 @@ const PatientPositioningTopic = () => {
               ))}
             </div>
           </ExamSection>
-        </>
+        </div>
+        </RealismProvider>
       }
     />
   );
