@@ -2219,9 +2219,15 @@ export const BeachChairPositionDiagram = () => {
         {/* Backrest 35° */}
         <g transform="rotate(-35 280 200)">
           <rect x={195} y={155} width={170} height={45} rx={10} fill="hsl(210 25% 35%)" />
-          <TorsoLateral cx={280} cy={138} length={170} height={42} idPrefix="pf" facing="left" />
-          <HeadProfile cx={195} cy={138} r={18} idPrefix="pf" facing="left" />
         </g>
+        {/* Patient torso + head via composite (35° backrest tilt for beach-chair) */}
+        <SittingPatient
+          sx={280} sy={200}
+          tiltDeg={35}
+          torsoLength={170} torsoHeight={42}
+          showLegs={false}
+          idPrefix="pf"
+        />
         {/* Legs */}
         <Leg hx={310} hy={195} kx={370} ky={195} ax={435} ay={195} idPrefix="pf" thighW={22} calfW={18} footLen={18} draped />
 
