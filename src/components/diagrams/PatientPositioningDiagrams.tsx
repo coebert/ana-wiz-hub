@@ -462,6 +462,24 @@ export const TrendelenburgPositionDiagram = () => (
       { id: "preload", x: 320, y: 150, label: "↑ preload (Trendelenburg) / ↓ preload (reverse)", detail: "Head-down auto-transfuses the central circulation — preload rises, useful in hypovolaemia but can decompensate failing ventricles. Reverse Trendelenburg drops venous return and can cause hypotension on induction." },
       { id: "slip", x: 410, y: 110, label: "Patient sliding", detail: "Steep tilt risks the patient sliding cephalad. Use anti-slip gel mattress, shoulder braces (NOT on the brachial plexus!), or the bean-bag/vacuum mattress. Shoulder braces on the AC joint cause brachial plexopathy — place over the lateral clavicle only." },
     ]}
+    landmarks={[
+      { id: "head", x: 130, y: 95, label: "Head (down)", dx: -6, dy: -14, anchor: "end" },
+      { id: "feet", x: 410, y: 170, label: "Feet (up)", dx: 12, dy: 0 },
+      { id: "pivot", x: 280, y: 210, label: "Table pivot", dx: 0, dy: 18, anchor: "middle" },
+    ]}
+    measurements={[
+      // Tilt angle: between horizontal (pivot→right) and tilted bed long axis (pivot→head end)
+      {
+        kind: "angle", id: "tilt",
+        vertex: { x: 280, y: 210 },
+        a: { x: 510, y: 210 },                  // horizontal reference
+        // Rotated -15° about (280, 170): point originally (70, 210) maps to ~ (130, 90) on the head side
+        b: { x: 280 + Math.cos((-195 * Math.PI) / 180) * 210,
+             y: 210 + Math.sin((-195 * Math.PI) / 180) * 210 },
+        radius: 60,
+        label: "tilt 15°",
+      },
+    ]}
     legend={<>Common procedures: robotic/laparoscopic pelvic surgery, gynaecology, lower colorectal, central-line insertion (Trendelenburg); laparoscopic upper GI / bariatric (reverse).</>}
   >
     {/* Tilted table — head down */}
