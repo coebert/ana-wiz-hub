@@ -79,14 +79,14 @@ export const airwayFolio: CorPictumFolioData = {
 };
 
 export const headNeckFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Caput et Collum",
+  atlasTitle: "Atlas of Anatomy — Head and Neck",
   atlasSubtitle: "Painted plates of the head and neck",
   plates: [
     {
       id: "superficial", tabLabel: "Superficial", folio: "I",
-      title: "Regio Parotidea et Cervicalis", subtitle: "Superficial dissection",
+      title: "Parotid and Cervical Region", subtitle: "Superficial dissection",
       image: headneckSuperficial, alt: "Painted superficial dissection of the head and neck",
-      caption: "Dissectio superficialis regionis parotideae et cervicalis",
+      caption: "Superficial dissection of the parotid and cervical region",
       labels: [
         { latin: "glandula parotidea", english: "Parotid gland", note: "Facial nerve traverses it — surgically perilous." },
         { latin: "nervus facialis", english: "Facial nerve (CN VII)", note: "Five terminal branches: temporal, zygomatic, buccal, marginal mandibular, cervical." },
