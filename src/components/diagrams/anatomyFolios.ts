@@ -242,6 +242,8 @@ export const headNeckFolio: CorPictumFolioData = {
     },
   ],
 };
+
+export const neuroFolio: CorPictumFolioData = {
   atlasTitle: "Atlas of Anatomy — Brain",
   atlasSubtitle: "Painted plates of the brain and its arteries",
   plates: [
