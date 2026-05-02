@@ -43,6 +43,40 @@ interface Hotspot {
   detail: string;
 }
 
+/** Named anatomical landmark — rendered in the validation overlay. */
+export interface Landmark {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  /** Optional offset for the label text (default 8, -8). */
+  dx?: number;
+  dy?: number;
+  /** Anchor side; default "start". */
+  anchor?: "start" | "middle" | "end";
+}
+
+/** A measurement primitive — either an angle at a vertex or a distance segment. */
+export type Measurement =
+  | {
+      kind: "angle";
+      id: string;
+      vertex: { x: number; y: number };
+      a: { x: number; y: number };
+      b: { x: number; y: number };
+      label?: string;
+      radius?: number;
+    }
+  | {
+      kind: "distance";
+      id: string;
+      from: { x: number; y: number };
+      to: { x: number; y: number };
+      unit?: string;
+      pxPerUnit?: number;
+      label?: string;
+    };
+
 interface PositionDiagramProps {
   title: string;
   caption: string;
@@ -53,11 +87,147 @@ interface PositionDiagramProps {
   children: React.ReactNode;
   /** Optional small legend rendered below the SVG */
   legend?: React.ReactNode;
+  /** Optional anatomy-validation overlay. When present, a toggle in the
+   *  frame header shows landmark labels and angle/distance readouts. */
+  landmarks?: Landmark[];
+  measurements?: Measurement[];
 }
 
 const POS_GREEN = "hsl(150 55% 40%)";
 const POS_AMBER = "hsl(35 95% 50%)";
 const POS_RED = "hsl(0 70% 50%)";
+
+/** Render landmark labels + measurement annotations on top of the diagram. */
+const ValidationOverlay = ({
+  landmarks = [],
+  measurements = [],
+}: {
+  landmarks?: Landmark[];
+  measurements?: Measurement[];
+}) => {
+  const ACCENT = "hsl(190 90% 45%)";
+  const ACCENT_SOFT = "hsl(190 90% 45% / 0.18)";
+  return (
+    <g pointerEvents="none">
+      {/* Measurements first so labels overlay them. */}
+      {measurements.map((m) => {
+        if (m.kind === "distance") {
+          const dx = m.to.x - m.from.x;
+          const dy = m.to.y - m.from.y;
+          const len = Math.hypot(dx, dy);
+          const mx = (m.from.x + m.to.x) / 2;
+          const my = (m.from.y + m.to.y) / 2;
+          // Normal vector for label offset
+          const nx = -dy / (len || 1);
+          const ny = dx / (len || 1);
+          const readout =
+            m.label ??
+            (m.pxPerUnit
+              ? `${(len / m.pxPerUnit).toFixed(1)} ${m.unit ?? ""}`.trim()
+              : `${len.toFixed(0)} px`);
+          return (
+            <g key={m.id}>
+              {/* End ticks perpendicular to the segment */}
+              <line
+                x1={m.from.x + nx * 4} y1={m.from.y + ny * 4}
+                x2={m.from.x - nx * 4} y2={m.from.y - ny * 4}
+                stroke={ACCENT} strokeWidth={1.2}
+              />
+              <line
+                x1={m.to.x + nx * 4} y1={m.to.y + ny * 4}
+                x2={m.to.x - nx * 4} y2={m.to.y - ny * 4}
+                stroke={ACCENT} strokeWidth={1.2}
+              />
+              <line
+                x1={m.from.x} y1={m.from.y}
+                x2={m.to.x} y2={m.to.y}
+                stroke={ACCENT} strokeWidth={1.2} strokeDasharray="3 3"
+              />
+              <rect
+                x={mx + nx * 9 - 18} y={my + ny * 9 - 7}
+                width={36} height={14} rx={3}
+                fill="hsl(var(--background))" stroke={ACCENT} strokeWidth={0.8}
+              />
+              <text
+                x={mx + nx * 9} y={my + ny * 9 + 4}
+                textAnchor="middle" fontSize={10} fontWeight={600}
+                fill={ACCENT}
+              >
+                {readout}
+              </text>
+            </g>
+          );
+        }
+        // Angle measurement
+        const va = Math.atan2(m.a.y - m.vertex.y, m.a.x - m.vertex.x);
+        const vb = Math.atan2(m.b.y - m.vertex.y, m.b.x - m.vertex.x);
+        let delta = vb - va;
+        // Normalise to (-π, π] then take absolute value for the inner angle
+        while (delta > Math.PI) delta -= 2 * Math.PI;
+        while (delta <= -Math.PI) delta += 2 * Math.PI;
+        const sweep = delta > 0 ? 1 : 0;
+        const deg = Math.abs((delta * 180) / Math.PI);
+        const r = m.radius ?? 22;
+        const ax = m.vertex.x + Math.cos(va) * r;
+        const ay = m.vertex.y + Math.sin(va) * r;
+        const bx = m.vertex.x + Math.cos(vb) * r;
+        const by = m.vertex.y + Math.sin(vb) * r;
+        const largeArc = Math.abs(delta) > Math.PI ? 1 : 0;
+        // Label position — bisector midway through the arc
+        const mid = va + delta / 2;
+        const lx = m.vertex.x + Math.cos(mid) * (r + 12);
+        const ly = m.vertex.y + Math.sin(mid) * (r + 12);
+        const readout = m.label ?? `${deg.toFixed(0)}°`;
+        return (
+          <g key={m.id}>
+            {/* Reference rays */}
+            <line x1={m.vertex.x} y1={m.vertex.y} x2={ax} y2={ay}
+              stroke={ACCENT} strokeWidth={1} strokeDasharray="2 2" />
+            <line x1={m.vertex.x} y1={m.vertex.y} x2={bx} y2={by}
+              stroke={ACCENT} strokeWidth={1} strokeDasharray="2 2" />
+            {/* Filled arc */}
+            <path
+              d={`M ${ax},${ay} A ${r},${r} 0 ${largeArc} ${sweep} ${bx},${by} L ${m.vertex.x},${m.vertex.y} Z`}
+              fill={ACCENT_SOFT} stroke={ACCENT} strokeWidth={1}
+            />
+            <text
+              x={lx} y={ly + 3}
+              textAnchor="middle" fontSize={10} fontWeight={700}
+              fill={ACCENT}
+              stroke="hsl(var(--background))" strokeWidth={3} paintOrder="stroke"
+            >
+              {readout}
+            </text>
+          </g>
+        );
+      })}
+      {/* Landmark crosshairs + labels */}
+      {landmarks.map((l) => {
+        const dx = l.dx ?? 8;
+        const dy = l.dy ?? -8;
+        const anchor = l.anchor ?? "start";
+        return (
+          <g key={l.id}>
+            <circle cx={l.x} cy={l.y} r={3} fill="hsl(var(--background))"
+              stroke={ACCENT} strokeWidth={1.4} />
+            <line x1={l.x} y1={l.y} x2={l.x + dx} y2={l.y + dy}
+              stroke={ACCENT} strokeWidth={0.8} />
+            <text
+              x={l.x + dx + (anchor === "end" ? -2 : 2)}
+              y={l.y + dy - 1}
+              textAnchor={anchor}
+              fontSize={9.5} fontWeight={600}
+              fill="hsl(var(--foreground))"
+              stroke="hsl(var(--background))" strokeWidth={3} paintOrder="stroke"
+            >
+              {l.label}
+            </text>
+          </g>
+        );
+      })}
+    </g>
+  );
+};
 
 const PositionFrame = ({
   title,
@@ -67,15 +237,37 @@ const PositionFrame = ({
   height = 280,
   children,
   legend,
+  landmarks,
+  measurements,
 }: PositionDiagramProps) => {
   const [activeId, setActiveId] = useState<string | null>(hotspots[0]?.id ?? null);
+  const [overlayOn, setOverlayOn] = useState(false);
   const active = hotspots.find((h) => h.id === activeId);
+  const hasOverlay = (landmarks?.length ?? 0) + (measurements?.length ?? 0) > 0;
 
   return (
     <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
-      <div className="px-4 py-3 border-b border-border bg-muted/30">
-        <p className="text-sm font-semibold text-foreground">{title}</p>
-        <p className="text-xs text-muted-foreground mt-0.5">{caption}</p>
+      <div className="px-4 py-3 border-b border-border bg-muted/30 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-foreground">{title}</p>
+          <p className="text-xs text-muted-foreground mt-0.5">{caption}</p>
+        </div>
+        {hasOverlay && (
+          <button
+            type="button"
+            onClick={() => setOverlayOn((v) => !v)}
+            aria-pressed={overlayOn}
+            className={cn(
+              "flex-none text-[10px] uppercase tracking-wide font-semibold rounded-md border px-2 py-1 transition-colors",
+              overlayOn
+                ? "bg-[hsl(190_90%_45%)] text-white border-[hsl(190_90%_45%)]"
+                : "bg-background text-muted-foreground border-border hover:text-foreground",
+            )}
+            title="Toggle landmark labels & measurements"
+          >
+            {overlayOn ? "Anatomy ✓" : "Anatomy overlay"}
+          </button>
+        )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
@@ -90,6 +282,11 @@ const PositionFrame = ({
             >
               <AnatomyDefs idPrefix="pf" />
               {children}
+
+              {/* Validation overlay */}
+              {overlayOn && hasOverlay && (
+                <ValidationOverlay landmarks={landmarks} measurements={measurements} />
+              )}
 
               {/* Hotspots */}
               {hotspots.map((h, i) => {
@@ -212,6 +409,31 @@ export const SupinePositionDiagram = () => (
       { id: "sacrum", x: 290, y: 155, label: "Sacrum & heels", detail: "Supine pressure ulcers cluster over the sacrum, scapulae and heels. Float the heels off the mattress and use a pressure-redistributing surface for cases >2 h." },
       { id: "brachial", x: 200, y: 130, label: "Brachial plexus (arm-board)", detail: "Abduction of the arm >90° on an arm-board stretches the plexus over the head of the humerus. Keep abduction <90°, externally rotate, and avoid extension." },
     ]}
+    landmarks={[
+      { id: "occ", x: 108, y: 120, label: "Occiput", dx: -6, dy: -14, anchor: "end" },
+      { id: "sh", x: 130, y: 146, label: "Shoulder (acromion)", dx: -10, dy: -22, anchor: "end" },
+      { id: "elb", x: 230, y: 145, label: "Elbow (med. epicondyle)", dx: 10, dy: 22 },
+      { id: "wr", x: 280, y: 138, label: "Wrist", dx: 8, dy: 18 },
+      { id: "asis", x: 360, y: 150, label: "ASIS", dx: 8, dy: 18 },
+      { id: "knee", x: 430, y: 150, label: "Knee", dx: 0, dy: 22, anchor: "middle" },
+      { id: "heel", x: 482, y: 158, label: "Heel", dx: 8, dy: 14 },
+    ]}
+    measurements={[
+      // Shoulder abduction = angle between trunk axis (shoulder→hip) and humerus (shoulder→elbow)
+      {
+        kind: "angle", id: "abd",
+        vertex: { x: 130, y: 146 },
+        a: { x: 360, y: 146 },   // along trunk → hip (lateral arm-board)
+        b: { x: 230, y: 145 },   // along upper arm → elbow
+        radius: 28,
+      },
+      // Shoulder-to-wrist span (arm-board reach) — useful sanity check
+      {
+        kind: "distance", id: "armReach",
+        from: { x: 130, y: 146 }, to: { x: 280, y: 138 },
+        unit: "cm", pxPerUnit: 5,
+      },
+    ]}
     legend={<>Common procedures: most general, vascular, urological, breast and orthopaedic upper-limb surgery.</>}
   >
     {/* Table */}
@@ -239,6 +461,24 @@ export const TrendelenburgPositionDiagram = () => (
       { id: "frc", x: 270, y: 130, label: "↓ FRC, atelectasis", detail: "Abdominal contents push the diaphragm cephalad → ↓ FRC, ↑ shunt, ↓ compliance. Use lung-protective ventilation, recruitment manoeuvres and PEEP. Reverse Trendelenburg has the opposite (favourable) respiratory effect." },
       { id: "preload", x: 320, y: 150, label: "↑ preload (Trendelenburg) / ↓ preload (reverse)", detail: "Head-down auto-transfuses the central circulation — preload rises, useful in hypovolaemia but can decompensate failing ventricles. Reverse Trendelenburg drops venous return and can cause hypotension on induction." },
       { id: "slip", x: 410, y: 110, label: "Patient sliding", detail: "Steep tilt risks the patient sliding cephalad. Use anti-slip gel mattress, shoulder braces (NOT on the brachial plexus!), or the bean-bag/vacuum mattress. Shoulder braces on the AC joint cause brachial plexopathy — place over the lateral clavicle only." },
+    ]}
+    landmarks={[
+      { id: "head", x: 130, y: 95, label: "Head (down)", dx: -6, dy: -14, anchor: "end" },
+      { id: "feet", x: 410, y: 170, label: "Feet (up)", dx: 12, dy: 0 },
+      { id: "pivot", x: 280, y: 210, label: "Table pivot", dx: 0, dy: 18, anchor: "middle" },
+    ]}
+    measurements={[
+      // Tilt angle: between horizontal (pivot→right) and tilted bed long axis (pivot→head end)
+      {
+        kind: "angle", id: "tilt",
+        vertex: { x: 280, y: 210 },
+        a: { x: 510, y: 210 },                  // horizontal reference
+        // Rotated -15° about (280, 170): point originally (70, 210) maps to ~ (130, 90) on the head side
+        b: { x: 280 + Math.cos((-195 * Math.PI) / 180) * 210,
+             y: 210 + Math.sin((-195 * Math.PI) / 180) * 210 },
+        radius: 60,
+        label: "tilt 15°",
+      },
     ]}
     legend={<>Common procedures: robotic/laparoscopic pelvic surgery, gynaecology, lower colorectal, central-line insertion (Trendelenburg); laparoscopic upper GI / bariatric (reverse).</>}
   >
@@ -269,6 +509,30 @@ export const LithotomyPositionDiagram = () => (
       { id: "compart", x: 380, y: 145, label: "Well-leg compartment syndrome", detail: "Risk rises sharply when stirrup time exceeds 4 h (some quote 2 h). Elevation ↓ perfusion pressure, calf compression by the stirrup ↑ tissue pressure. Mitigations: lower the legs every 2 h, use boot-style supports, avoid hypotension, document calf perfusion post-op." },
       { id: "hip", x: 320, y: 90, label: "Hip & femoral nerve stretch", detail: "Excessive hip flexion / abduction / external rotation stretches the femoral and obturator nerves and can dislocate prosthetic hips. Limit hip flexion to <90° if possible; both legs MUST be raised and lowered simultaneously to avoid pelvic torsion / lumbar strain." },
       { id: "back", x: 200, y: 150, label: "Lumbar lordosis loss", detail: "Flat positioning + pelvic tilt cause low-back pain post-op, especially in the elderly. Pad the lumbar spine and avoid prolonged extreme flexion." },
+    ]}
+    landmarks={[
+      { id: "hip", x: 345, y: 132, label: "Hip", dx: -10, dy: -8, anchor: "end" },
+      { id: "knee", x: 395, y: 92, label: "Knee", dx: 0, dy: -14, anchor: "middle" },
+      { id: "fib", x: 405, y: 100, label: "Fibular head (CPN risk)", dx: 14, dy: -2 },
+      { id: "ankle", x: 460, y: 120, label: "Ankle", dx: 12, dy: 6 },
+    ]}
+    measurements={[
+      // Hip flexion: trunk axis (hip → shoulder) vs femur (hip → knee)
+      {
+        kind: "angle", id: "hipFlex",
+        vertex: { x: 345, y: 132 },
+        a: { x: 130, y: 146 },   // along trunk toward shoulder
+        b: { x: 395, y: 92 },    // along femur toward knee
+        radius: 32,
+      },
+      // Knee flexion: femur (knee → hip) vs tibia (knee → ankle)
+      {
+        kind: "angle", id: "kneeFlex",
+        vertex: { x: 395, y: 92 },
+        a: { x: 345, y: 132 },
+        b: { x: 460, y: 120 },
+        radius: 24,
+      },
     ]}
     legend={<>Common procedures: cystoscopy, TURP, gynaecological surgery, anorectal surgery, vaginal hysterectomy; Lloyd-Davies for anterior resection / APR.</>}
   >
@@ -312,6 +576,30 @@ export const LateralPositionDiagram = () => (
       { id: "vq", x: 285, y: 150, label: "V/Q mismatch", detail: "Awake spontaneously breathing lateral: ventilation matches perfusion (both favour dependent lung). Anaesthetised + paralysed + open chest: ventilation goes to the upper (compliant) lung but perfusion stays dependent → significant V/Q mismatch and shunt." },
       { id: "perlat", x: 360, y: 140, label: "Common peroneal & lateral malleolus", detail: "Dependent fibular neck compresses the common peroneal nerve. Place a pillow between the legs and pad the dependent fibular neck and lateral malleolus." },
     ]}
+    landmarks={[
+      { id: "head", x: 110, y: 120, label: "Head (dependent)", dx: -8, dy: -16, anchor: "end" },
+      { id: "axroll", x: 145, y: 145, label: "Axillary roll (caudal to axilla)", dx: -8, dy: -22, anchor: "end" },
+      { id: "shUp", x: 230, y: 100, label: "Up shoulder", dx: 0, dy: -16, anchor: "middle" },
+      { id: "ilum", x: 320, y: 150, label: "Iliac crest", dx: 0, dy: 22, anchor: "middle" },
+      { id: "kneeUp", x: 360, y: 110, label: "Up knee (straight on pillow)", dx: 14, dy: -8 },
+      { id: "kneeDep", x: 365, y: 165, label: "Dependent knee (flexed)", dx: 14, dy: 16 },
+    ]}
+    measurements={[
+      // Head-to-pelvis trunk length
+      {
+        kind: "distance", id: "trunk",
+        from: { x: 145, y: 130 }, to: { x: 345, y: 150 },
+        unit: "cm", pxPerUnit: 5,
+      },
+      // Up-arm shoulder abduction reference
+      {
+        kind: "angle", id: "shUpAbd",
+        vertex: { x: 230, y: 110 },
+        a: { x: 320, y: 150 },   // along trunk
+        b: { x: 230, y: 70 },    // up-arm direction (≈ vertical)
+        radius: 26,
+      },
+    ]}
     legend={<>Common procedures: thoracotomy, oesophagectomy, nephrectomy, hip surgery, retroperitoneal procedures.</>}
   >
     <Table x={70} y={170} w={420} />
@@ -336,6 +624,21 @@ export const PronePositionDiagram = () => (
       { id: "abdo", x: 280, y: 145, label: "Abdomen MUST hang free", detail: "Abdominal compression raises intra-abdominal pressure → IVC obstruction → ↓ venous return → ↓ CO and engorged epidural veins (↑ surgical bleeding). All prone frames lift the chest and pelvis to keep the belly free." },
       { id: "knees", x: 410, y: 145, label: "Knees, anterior superior iliac spine, breasts/genitalia", detail: "Pad the knees, ASIS and male genitalia (avoid penile compression). Female breasts displaced laterally or supported." },
       { id: "arms", x: 220, y: 100, label: "Arms — 'superman' or tucked", detail: "Either tucked at the side (preferred for spinal fusion) or abducted <90° + flexed at elbow with neutral wrist (superman). Excessive abduction stretches the plexus; the humerus rotates anteriorly when prone." },
+    ]}
+    landmarks={[
+      { id: "head", x: 120, y: 95, label: "Head (horseshoe)", dx: -6, dy: -16, anchor: "end" },
+      { id: "chest", x: 200, y: 130, label: "Chest support", dx: 0, dy: -18, anchor: "middle" },
+      { id: "asis", x: 360, y: 145, label: "ASIS / pelvis support", dx: 0, dy: 22, anchor: "middle" },
+      { id: "knee", x: 410, y: 145, label: "Knee", dx: 8, dy: 22 },
+    ]}
+    measurements={[
+      // Free abdominal span between chest and pelvis supports — must remain free
+      {
+        kind: "distance", id: "freeBelly",
+        from: { x: 220, y: 145 }, to: { x: 340, y: 150 },
+        unit: "cm", pxPerUnit: 5,
+        label: "free belly",
+      },
     ]}
     legend={<>Common procedures: posterior spinal surgery, posterior fossa craniotomy, nephrolithotomy (PCNL), severe ARDS proning in ICU.</>}
   >
