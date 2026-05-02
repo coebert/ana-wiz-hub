@@ -105,6 +105,7 @@ const VascularAnaesthesiaTopic = lazy(() => import("./pages/topics/VascularAnaes
 const ENTAnaesthesiaTopic = lazy(() => import("./pages/topics/ENTAnaesthesiaTopic"));
 const BurnsPlasticsTopic = lazy(() => import("./pages/topics/BurnsPlasticsTopic"));
 const EmergencySurgeryTopic = lazy(() => import("./pages/topics/EmergencySurgeryTopic"));
+const PatientPositioningTopic = lazy(() => import("./pages/topics/PatientPositioningTopic"));
 const UrologicalAnaesthesiaTopic = lazy(() => import("./pages/topics/UrologicalAnaesthesiaTopic"));
 const GynaecologicalAnaesthesiaTopic = lazy(() => import("./pages/topics/GynaecologicalAnaesthesiaTopic"));
 const HepatobiliaryTransplantTopic = lazy(() => import("./pages/topics/HepatobiliaryTransplantTopic"));
