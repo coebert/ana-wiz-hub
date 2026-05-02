@@ -228,8 +228,24 @@ export const NMJDiagram = () => {
         })}
 
         {/* ── Mechanism callout: Ca²⁺ → Syt-1 → complexin displacement → SNARE zippering ── */}
-        {(currentPhase.id === "syt" || (currentPhase.id === "vesicle" && phaseProgress < 0.4)) && (
-          <g opacity={Math.max(sytBinding, currentPhase.id === "vesicle" ? 1 - phaseProgress * 2 : 0)}>
+        {(currentPhase.id === "syt" || (currentPhase.id === "vesicle" && phaseProgress < 0.4)) && (() => {
+          // Sub-step progress along caT (1.0 → 2.4 covers syt phase + early vesicle)
+          // Step 1 (Ca²⁺ → Syt-1):       caT 1.00 → 1.45
+          // Step 2 (displaces complexin): caT 1.45 → 1.90
+          // Step 3 (SNARE zippers):       caT 1.90 → 2.40
+          const stepActive = (start: number, end: number) => {
+            if (caT < start) return 0;
+            if (caT > end + 0.25) return 0.35; // dim "completed" tail
+            if (caT > end) return 1;            // fully on, holding
+            return ramp(caT, start, start + 0.15) * 1; // fade in
+          };
+          const s1 = stepActive(1.00, 1.45);
+          const s2 = stepActive(1.45, 1.90);
+          const s3 = stepActive(1.90, 2.40);
+          const containerOpacity = Math.max(sytBinding, currentPhase.id === "vesicle" ? 1 - phaseProgress * 2 : 0);
+
+          return (
+          <g opacity={containerOpacity}>
             {/* Pointer line from callout down to a docked vesicle base */}
             <line x1={295} y1={88} x2={355} y2={132} stroke="hsl(280 50% 55%)" strokeWidth="1" strokeDasharray="2,2" opacity="0.6" />
             {/* Callout card */}
@@ -238,14 +254,56 @@ export const NMJDiagram = () => {
             <text x={160} y={62} fontSize="9" fontWeight="700" fill="hsl(280 55% 35%)">
               Molecular trigger
             </text>
-            {/* Three-step inline equation */}
-            <g fontSize="8.5" fontWeight="600">
-              <text x={160} y={78} fill="hsl(35 90% 40%)">4 Ca²⁺ → Syt-1 C2</text>
-              <text x={258} y={78} fill="hsl(280 50% 45%)">→ displaces complexin</text>
-              <text x={160} y={88} fill="hsl(160 60% 35%)">→ SNARE (Syb · Stx · SNAP-25) zippers → fusion</text>
+
+            {/* Step 1 — Ca²⁺ binds Syt-1 */}
+            <g opacity={0.25 + s1 * 0.75}>
+              {s1 > 0.5 && (
+                <rect x={157} y={70} width={98} height={11} rx={2}
+                  fill="hsl(35 90% 88%)" opacity={s1 * 0.7}>
+                  <animate attributeName="opacity" values={`${s1 * 0.4};${s1 * 0.8};${s1 * 0.4}`} dur="0.7s" repeatCount="indefinite" />
+                </rect>
+              )}
+              <text x={160} y={78} fontSize="8.5" fontWeight={s1 > 0.5 ? 800 : 600} fill="hsl(35 90% 40%)">
+                4 Ca²⁺ → Syt-1 C2
+              </text>
+            </g>
+
+            {/* Step 2 — displaces complexin */}
+            <g opacity={0.25 + s2 * 0.75}>
+              {s2 > 0.5 && (
+                <rect x={255} y={70} width={130} height={11} rx={2}
+                  fill="hsl(280 60% 92%)" opacity={s2 * 0.7}>
+                  <animate attributeName="opacity" values={`${s2 * 0.4};${s2 * 0.8};${s2 * 0.4}`} dur="0.7s" repeatCount="indefinite" />
+                </rect>
+              )}
+              <text x={258} y={78} fontSize="8.5" fontWeight={s2 > 0.5 ? 800 : 600} fill="hsl(280 50% 45%)">
+                → displaces complexin
+              </text>
+            </g>
+
+            {/* Step 3 — SNARE zippers */}
+            <g opacity={0.25 + s3 * 0.75}>
+              {s3 > 0.5 && (
+                <rect x={157} y={80} width={270} height={11} rx={2}
+                  fill="hsl(160 55% 90%)" opacity={s3 * 0.7}>
+                  <animate attributeName="opacity" values={`${s3 * 0.4};${s3 * 0.8};${s3 * 0.4}`} dur="0.7s" repeatCount="indefinite" />
+                </rect>
+              )}
+              <text x={160} y={88} fontSize="8.5" fontWeight={s3 > 0.5 ? 800 : 600} fill="hsl(160 60% 35%)">
+                → SNARE (Syb · Stx · SNAP-25) zippers → fusion
+              </text>
+            </g>
+
+            {/* Sub-step progress dots */}
+            <g transform="translate(410, 56)">
+              {[s1, s2, s3].map((s, i) => (
+                <circle key={i} cx={i * 8} cy={0} r={2.5}
+                  fill={s > 0.5 ? "hsl(280 55% 45%)" : "hsl(280 30% 80%)"} />
+              ))}
             </g>
           </g>
-        )}
+          );
+        })()}
 
         {/* Label vesicles */}
         <text x={380} y={95} fontSize="9" className="fill-muted-foreground">ACh vesicles</text>
