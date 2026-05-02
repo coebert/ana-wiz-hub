@@ -76,21 +76,64 @@ export const NMJDiagram = () => {
           </g>
         )}
 
-        {/* Voltage-gated Ca²⁺ channels */}
-        {[140, 200, 260, 320, 360].map((x, i) => (
-          <rect key={i} x={x - 6} y={132} width={12} height={16} rx="2"
-            fill={showCaArrows ? "hsl(30 80% 50%)" : "hsl(210 20% 80%)"}
-            stroke="hsl(210 20% 60%)" strokeWidth="1"
-          />
-        ))}
+        {/* Voltage-gated Ca²⁺ channels — labelled VGCC, glow when open */}
+        {[140, 200, 260, 320, 360].map((x, i) => {
+          const open = showCaArrows;
+          return (
+            <g key={i}>
+              {open && (
+                <circle cx={x} cy={140} r={14} fill="hsl(35 95% 55%)" opacity={0.25}>
+                  <animate attributeName="r" values="10;16;10" dur="0.8s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.15;0.4;0.15" dur="0.8s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <rect x={x - 7} y={130} width={14} height={20} rx="2"
+                fill={open ? "hsl(35 95% 55%)" : "hsl(210 20% 80%)"}
+                stroke={open ? "hsl(25 90% 40%)" : "hsl(210 20% 60%)"}
+                strokeWidth={open ? 1.5 : 1}
+              />
+              {open && (
+                <line x1={x} y1={132} x2={x} y2={148} stroke="hsl(45 100% 95%)" strokeWidth="2.5" />
+              )}
+            </g>
+          );
+        })}
+        {/* VGCC label */}
+        {showCaArrows && (
+          <text x={100} y={128} fontSize="9" className="fill-foreground font-semibold" fill="hsl(25 90% 40%)">VGCC open</text>
+        )}
 
-        {/* Ca²⁺ arrows entering */}
-        {showCaArrows && [160, 260, 340].map((x, i) => (
-          <g key={i} opacity={0.8 + phaseProgress * 0.2}>
-            <line x1={x} y1={160} x2={x} y2={130} stroke="hsl(30 80% 50%)" strokeWidth="1.5" markerEnd="url(#arrowCa)" />
-            <text x={x + 4} y={158} fontSize="8" className="fill-muted-foreground">Ca²⁺</text>
-          </g>
-        ))}
+        {/* Ca²⁺ ions streaming UP through channels into terminal */}
+        {showCaArrows && [140, 200, 260, 320, 360].flatMap((x, ci) =>
+          [0, 0.4, 0.75].map((delay, di) => {
+            const cycle = ((phaseProgress * 4) + delay + ci * 0.13) % 1;
+            // Start below membrane, travel up into terminal toward vesicles
+            const startY = 175;
+            const endY = 110;
+            const y = startY + (endY - startY) * cycle;
+            const opacity = cycle < 0.1 ? cycle * 10 : cycle > 0.85 ? (1 - cycle) * 6.5 : 1;
+            return (
+              <g key={`${ci}-${di}`}>
+                <circle cx={x} cy={y} r={5}
+                  fill="hsl(35 95% 55%)" stroke="hsl(25 90% 35%)" strokeWidth="1"
+                  opacity={Math.min(1, opacity)} />
+                <text x={x} y={y + 2} textAnchor="middle" fontSize="5"
+                  className="font-bold" fill="hsl(0 0% 100%)"
+                  opacity={Math.min(1, opacity)}>
+                  Ca
+                </text>
+              </g>
+            );
+          })
+        )}
+
+        {/* Intracellular Ca²⁺ cloud building under active zone */}
+        {showCaArrows && (
+          <ellipse cx={250} cy={120} rx={130} ry={18}
+            fill="hsl(35 95% 55%)" opacity={0.12 + phaseProgress * 0.18}>
+            <animate attributeName="opacity" values="0.15;0.3;0.15" dur="1.2s" repeatCount="indefinite" />
+          </ellipse>
+        )}
 
         {/* Vesicles */}
         {vesicles.map((v, i) => {
