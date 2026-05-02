@@ -23,6 +23,19 @@ export const NMJDiagram = () => {
     return () => clearInterval(interval);
   }, [playing]);
 
+  // Jump playhead to the start of a named phase
+  const jumpToPhase = (id: string) => {
+    let acc = 0;
+    for (const p of PHASES) {
+      if (p.id === id) {
+        setFrame(acc);
+        setPlaying(false);
+        return;
+      }
+      acc += p.duration;
+    }
+  };
+
   // Determine current phase
   let accumulated = 0;
   let currentPhase = PHASES[0];
