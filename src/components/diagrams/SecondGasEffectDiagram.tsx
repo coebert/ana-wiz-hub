@@ -178,8 +178,8 @@ const SecondGasEffectDiagram = () => {
         </h3>
         <p className="text-xs text-muted-foreground mb-3">
           {isSecondGas
-            ? "Rapid absorption of nitrous oxide concentrates a co-administered volatile in the shrinking alveolar gas."
-            : "On waking, large volumes of N₂O leave the blood and dilute alveolar oxygen — give 100% O₂ for 3–5 min."}
+            ? "Rapid uptake of nitrous oxide concentrates a co-administered volatile and augments tracheal inflow, accelerating the rise of FA/FI of the 'second gas'."
+            : "At emergence, large volumes of N₂O leave the blood and dilute alveolar O₂ and CO₂ — give 100% O₂ for the first 5–10 min."}
         </p>
 
         <svg
