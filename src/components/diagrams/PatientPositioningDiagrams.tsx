@@ -43,6 +43,40 @@ interface Hotspot {
   detail: string;
 }
 
+/** Named anatomical landmark — rendered in the validation overlay. */
+export interface Landmark {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  /** Optional offset for the label text (default 8, -8). */
+  dx?: number;
+  dy?: number;
+  /** Anchor side; default "start". */
+  anchor?: "start" | "middle" | "end";
+}
+
+/** A measurement primitive — either an angle at a vertex or a distance segment. */
+export type Measurement =
+  | {
+      kind: "angle";
+      id: string;
+      vertex: { x: number; y: number };
+      a: { x: number; y: number };
+      b: { x: number; y: number };
+      label?: string;
+      radius?: number;
+    }
+  | {
+      kind: "distance";
+      id: string;
+      from: { x: number; y: number };
+      to: { x: number; y: number };
+      unit?: string;
+      pxPerUnit?: number;
+      label?: string;
+    };
+
 interface PositionDiagramProps {
   title: string;
   caption: string;
@@ -53,6 +87,10 @@ interface PositionDiagramProps {
   children: React.ReactNode;
   /** Optional small legend rendered below the SVG */
   legend?: React.ReactNode;
+  /** Optional anatomy-validation overlay. When present, a toggle in the
+   *  frame header shows landmark labels and angle/distance readouts. */
+  landmarks?: Landmark[];
+  measurements?: Measurement[];
 }
 
 const POS_GREEN = "hsl(150 55% 40%)";
