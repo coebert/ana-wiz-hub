@@ -201,9 +201,9 @@ export const spinalFolio: CorPictumFolioData = {
     },
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
-      title: "Spatium Epidurale et Subarachnoideum", subtitle: "Sagittal view for neuraxial anaesthesia",
+      title: "Epidural and Subarachnoid Spaces", subtitle: "Sagittal view for neuraxial anaesthesia",
       image: spinalSagittal, alt: "Painted midsagittal section of the lumbar spine showing neuraxial spaces",
-      caption: "Sectio sagittalis columnae lumbalis — accessus neuraxialis",
+      caption: "Sagittal section of the lumbar spine — neuraxial access",
       labels: [
         { latin: "corpus vertebrae", english: "Vertebral body", note: "Anterior weight-bearing column." },
         { latin: "discus intervertebralis", english: "Intervertebral disc", note: "Annulus fibrosus + nucleus pulposus." },
