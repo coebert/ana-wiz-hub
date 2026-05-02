@@ -534,7 +534,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             No structures match the current exam filter.
           </p>
         ) : (
-          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+          <div
+            className="relative max-h-[26rem] overflow-y-auto pr-1 -mr-1 [scrollbar-width:thin]"
+            aria-label="Scroll to browse all labelled structures"
+          >
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
             {visibleLabels.map(({ label, idx }) => {
               const isActive = activeLabelIdx === idx;
               const interactive = !!(label.polygon && label.polygon.length >= 3);
