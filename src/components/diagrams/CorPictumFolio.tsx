@@ -566,8 +566,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-sm leading-snug">
-                      <span className="font-serif italic text-foreground">{label.latin}</span>
-                      <span className="text-muted-foreground"> — {label.english}</span>
+                      <span className="font-semibold text-foreground">{label.english}</span>
                     </p>
                     <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{label.note}</p>
                     {label.learningPoint ? (
