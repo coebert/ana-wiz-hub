@@ -297,6 +297,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
 
             <AcdCitrateChelationDiagram />
+            <CitrateWashSeparationDiagram />
 
             <div className="mb-4">
               <p className="font-semibold text-foreground text-sm mb-2">ACD-A vs heparinised saline — anticoagulant choice for cell salvage</p>
