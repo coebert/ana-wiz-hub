@@ -1,4 +1,5 @@
 import {
+  MouseEvent as ReactMouseEvent,
   PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
@@ -48,6 +49,25 @@ export interface CorPictumLabel {
   polygon?: Array<[number, number]>;
 }
 
+/**
+ * A single FRCA curriculum learning-point this plate is mapped to.
+ * Rendered as a clickable chip beneath the plate; honours the global
+ * exam-filter chips in the header.
+ */
+export interface CorPictumCurriculumLink {
+  /** RCoA curriculum code, e.g. "CR_BK_01" */
+  code: string;
+  /** Which FRCA exam(s) this learning point belongs to */
+  exams: ExamTag[];
+  /** Short human title for the learning point (shown in the chip + tooltip) */
+  title: string;
+  /**
+   * Optional in-page anchor id to scroll to when the chip is clicked
+   * (e.g. "coronary-supply"). If omitted the chip is informational only.
+   */
+  anchor?: string;
+}
+
 export interface CorPictumPlate {
   /** Stable id for tab state (e.g. "fauces", "trachea") */
   id: string;
@@ -67,6 +87,11 @@ export interface CorPictumPlate {
   caption: string;
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
+  /**
+   * Optional FRCA / FFICM curriculum learning-points this plate maps to.
+   * Rendered as clickable chips that scroll to the matching topic anchor.
+   */
+  curriculumLinks?: CorPictumCurriculumLink[];
 }
 
 interface CorPictumFolioProps {
@@ -205,6 +230,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
       .filter(({ label }) =>
         label.examTags && label.examTags.length > 0 ? matchesFilter(label.examTags) : true,
       );
+  }, [active, matchesFilter]);
+
+  const visibleCurriculumLinks = useMemo(() => {
+    if (!active?.curriculumLinks) return [];
+    return active.curriculumLinks.filter((link) =>
+      link.exams && link.exams.length > 0 ? matchesFilter(link.exams) : true,
+    );
   }, [active, matchesFilter]);
 
   if (!active) return null;
@@ -391,6 +423,61 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
           <p className="mt-3 text-center font-serif italic text-xs sm:text-sm text-muted-foreground">
             {active.caption}
           </p>
+
+          {/* FRCA curriculum mapping chips — filtered by the exam header */}
+          {visibleCurriculumLinks.length > 0 ? (
+            <div className="mt-4 flex flex-col items-center gap-2">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                Mapped to FRCA curriculum
+              </p>
+              <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl">
+                {visibleCurriculumLinks.map((link) => {
+                  const examLabel = link.exams
+                    .map((e) =>
+                      e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
+                    )
+                    .join(" · ");
+                  const Tag = link.anchor ? "a" : "span";
+                  const onClick = link.anchor
+                    ? (ev: ReactMouseEvent) => {
+                        const node = document.getElementById(link.anchor!);
+                        if (node) {
+                          ev.preventDefault();
+                          node.scrollIntoView({ behavior: "smooth", block: "start" });
+                          node.classList.add("ring-2", "ring-primary/60", "rounded-md");
+                          window.setTimeout(
+                            () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
+                            1600,
+                          );
+                        }
+                      }
+                    : undefined;
+                  return (
+                    <Tag
+                      key={`${link.code}-${link.title}`}
+                      href={link.anchor ? `#${link.anchor}` : undefined}
+                      onClick={onClick}
+                      title={`${link.code} — ${link.title} (${examLabel})`}
+                      className={cn(
+                        "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium",
+                        "border-border bg-background/80 text-foreground/85",
+                        link.anchor
+                          ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
+                          : "cursor-default",
+                      )}
+                    >
+                      <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]">
+                        {link.code}
+                      </span>
+                      <span className="opacity-70">·</span>
+                      <span className="truncate max-w-[16rem]">{link.title}</span>
+                      <span className="text-[9px] uppercase tracking-wider opacity-60">{examLabel}</span>
+                    </Tag>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
         </div>
       </div>
 

@@ -49,6 +49,11 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "cartilago thyroidea", english: "Thyroid cartilage", note: "Surface landmark for cricothyroid puncture." },
         { latin: "trachea", english: "Trachea", note: "C-shaped cartilage rings, ~10–12 cm long in adults." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Upper airway anatomy — sagittal", anchor: "airway-anatomy" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Airway assessment & difficult airway management", anchor: "airway-anatomy" },
+        { code: "IC_BK_03", exams: [Exam.FFICM], title: "Tracheal intubation in critical care", anchor: "airway-anatomy" },
+      ],
     },
     {
       id: "laryngoscopic", tabLabel: "Laryngoscopic", folio: "II",
@@ -63,6 +68,11 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "plica vestibularis", english: "False cord", note: "Pink, above the true cords — do not mistake for them." },
         { latin: "recessus piriformis", english: "Piriform recess", note: "Lateral pooling site for secretions and foreign bodies." },
         { latin: "commissura posterior", english: "Posterior commissure", note: "Cormack–Lehane grading reference point." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Laryngeal inlet anatomy & cord identification", anchor: "laryngoscopy-view" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Difficult airway — Cormack–Lehane grading", anchor: "laryngoscopy-view" },
+        { code: "IC_BK_03", exams: [Exam.FFICM], title: "ICU airway management & emergency intubation", anchor: "laryngoscopy-view" },
       ],
     },
   ],
@@ -86,6 +96,10 @@ export const headNeckFolio: CorPictumFolioData = {
         { latin: "trigonum cervicale anterius", english: "Anterior triangle", note: "Contains carotid sheath, larynx, thyroid." },
         { latin: "trigonum cervicale posterius", english: "Posterior triangle", note: "Contains accessory nerve, brachial plexus roots." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Surface anatomy of the head & neck", anchor: "surface-landmarks" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Superficial cervical plexus block", anchor: "surface-landmarks" },
+      ],
     },
     {
       id: "carotid", tabLabel: "Carotid sheath", folio: "II",
@@ -101,6 +115,11 @@ export const headNeckFolio: CorPictumFolioData = {
         { latin: "nervus hypoglossus", english: "Hypoglossal nerve (CN XII)", note: "Crosses the bifurcation superficially." },
         { latin: "sinus caroticus", english: "Carotid sinus", note: "Baroreceptor — bradycardia with manipulation." },
         { latin: "glomus caroticum", english: "Carotid body", note: "Peripheral chemoreceptor — senses PaO₂, PaCO₂, pH." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Carotid sheath & deep cervical anatomy", anchor: "deep-neck" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Cervical plexus & superficial cervical block", anchor: "deep-neck" },
+        { code: "CR_BK_07", exams: [Exam.FINAL], title: "Anaesthesia for carotid endarterectomy", anchor: "deep-neck" },
       ],
     },
   ],
@@ -126,6 +145,10 @@ export const neuroFolio: CorPictumFolioData = {
         { latin: "cerebellum", english: "Cerebellum", note: "Coordination, balance; arbor vitae of white matter." },
         { latin: "hypophysis", english: "Pituitary gland", note: "In the sella turcica — endocrine master gland." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Brain anatomy & ventricular system", anchor: "brain-anatomy" },
+        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Neuroanaesthesia — ICP, CPP & supratentorial surgery", anchor: "brain-anatomy" },
+      ],
     },
     {
       id: "willis", tabLabel: "Circle of Willis", folio: "II",
@@ -143,6 +166,10 @@ export const neuroFolio: CorPictumFolioData = {
         { latin: "arteria vertebralis", english: "Vertebral artery", note: "Through transverse foramina C6–C1; into the foramen magnum." },
         { latin: "chiasma opticum", english: "Optic chiasm", note: "Anatomical anchor; nasal fibres decussate here." },
         { latin: "corpora mamillaria", english: "Mamillary bodies", note: "Hypothalamic landmark; affected in Wernicke's encephalopathy." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Cerebral arterial supply — circle of Willis", anchor: "cerebral-circulation" },
+        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for neurovascular procedures", anchor: "cerebral-circulation" },
       ],
     },
   ],
@@ -167,6 +194,10 @@ export const spinalFolio: CorPictumFolioData = {
         { latin: "filum terminale", english: "Filum terminale", note: "Pial extension anchoring cord to coccyx." },
         { latin: "radix nervi spinalis", english: "Spinal nerve root", note: "Exits through the intervertebral foramen." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Spinal cord & cauda equina — surface landmarks", anchor: "cord-anatomy" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Surface anatomy for neuraxial procedures", anchor: "cord-anatomy" },
+      ],
     },
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
@@ -183,6 +214,11 @@ export const spinalFolio: CorPictumFolioData = {
         { latin: "spatium subarachnoideum", english: "Subarachnoid space", note: "Contains CSF and the cauda equina; target for spinal anaesthesia." },
         { latin: "cauda equina", english: "Cauda equina", note: "Free-floating roots — needle deflects rather than transfixes." },
         { latin: "conus medullaris", english: "Conus medullaris", note: "Avoid puncture above L2." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-anatomy" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-anatomy" },
+        { code: "OB_BK_01", exams: [Exam.FINAL], title: "Neuraxial anaesthesia in obstetrics", anchor: "neuraxial-anatomy" },
       ],
     },
   ],
@@ -211,6 +247,10 @@ export const brachialFolio: CorPictumFolioData = {
         { latin: "nervus ulnaris", english: "Ulnar nerve", note: "Cubital tunnel; intrinsic hand muscles." },
         { latin: "arteria subclavia", english: "Subclavian artery", note: "Anterior to inferior trunk — pneumothorax / vascular puncture risk." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Brachial plexus — roots, trunks, divisions, cords, branches", anchor: "plexus-overview" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Choosing the level of brachial plexus block", anchor: "plexus-overview" },
+      ],
     },
     {
       id: "interscalene", tabLabel: "Interscalene", folio: "II",
@@ -227,6 +267,10 @@ export const brachialFolio: CorPictumFolioData = {
         { latin: "trachea", english: "Trachea", note: "Midline landmark." },
         { latin: "oesophagus", english: "Oesophagus", note: "Posterior to the trachea, slightly left." },
         { latin: "arteria vertebralis", english: "Vertebral artery", note: "In the transverse foramen — catastrophic if injected." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Interscalene groove & C5–C7 root anatomy", anchor: "interscalene-block" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Interscalene block — indications, complications", anchor: "interscalene-block" },
       ],
     },
   ],
@@ -253,6 +297,10 @@ export const upperLimbFolio: CorPictumFolioData = {
         { latin: "musculus biceps brachii", english: "Biceps brachii", note: "Long and short heads; supplied by musculocutaneous." },
         { latin: "musculus coracobrachialis", english: "Coracobrachialis", note: "Pierced by musculocutaneous — surgical landmark." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Axillary anatomy & cords of the brachial plexus", anchor: "axillary-block" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Axillary brachial plexus block", anchor: "axillary-block" },
+      ],
     },
     {
       id: "forearm", tabLabel: "Forearm & wrist", folio: "II",
@@ -271,6 +319,10 @@ export const upperLimbFolio: CorPictumFolioData = {
         { latin: "arteria ulnaris", english: "Ulnar artery", note: "Dominant supply to the superficial palmar arch." },
         { latin: "vena cephalica", english: "Cephalic vein", note: "Lateral; standard IV cannulation site." },
         { latin: "vena basilica", english: "Basilic vein", note: "Medial; PICC line target." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Forearm & wrist nerve anatomy", anchor: "wrist-block" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Forearm & wrist blocks (median, ulnar, radial)", anchor: "wrist-block" },
       ],
     },
   ],
@@ -296,6 +348,10 @@ export const lowerLimbFolio: CorPictumFolioData = {
         { latin: "musculus iliopsoas", english: "Iliopsoas", note: "Floor of the triangle laterally." },
         { latin: "musculus pectineus", english: "Pectineus", note: "Floor of the triangle medially." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Femoral triangle & lumbar plexus anatomy", anchor: "femoral-block" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Femoral & fascia iliaca blocks", anchor: "femoral-block" },
+      ],
     },
     {
       id: "popliteal", tabLabel: "Popliteal fossa", folio: "II",
@@ -312,6 +368,10 @@ export const lowerLimbFolio: CorPictumFolioData = {
         { latin: "vena poplitea", english: "Popliteal vein", note: "Superficial to the artery." },
         { latin: "arteria poplitea", english: "Popliteal artery", note: "Deepest structure; aneurysm site." },
         { latin: "vena saphena parva", english: "Small saphenous vein", note: "Pierces popliteal fascia to drain into popliteal vein." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Popliteal fossa & sciatic nerve anatomy", anchor: "popliteal-block" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Popliteal sciatic nerve block — landmarks & sonoanatomy", anchor: "popliteal-block" },
       ],
     },
   ],
@@ -336,6 +396,11 @@ export const thoracicFolio: CorPictumFolioData = {
         { latin: "arteria thoracica interna", english: "Internal thoracic artery", note: "Lateral to sternum; CABG conduit." },
         { latin: "nervus phrenicus", english: "Phrenic nerve", note: "On the lateral pericardium; sole motor to diaphragm." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Thoracic cavity & lung anatomy", anchor: "thoracic-anatomy" },
+        { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery", anchor: "thoracic-anatomy" },
+        { code: "RC_BK_02", exams: [Exam.FINAL], title: "One-lung ventilation & DLT placement", anchor: "thoracic-anatomy" },
+      ],
     },
     {
       id: "mediastinum", tabLabel: "Mediastinum", folio: "II",
@@ -351,6 +416,11 @@ export const thoracicFolio: CorPictumFolioData = {
         { latin: "trachea", english: "Trachea", note: "Bifurcates at the carina (T4/T5)." },
         { latin: "bronchus principalis dexter", english: "Right main bronchus", note: "Wider, shorter, more vertical — common aspiration site." },
         { latin: "truncus sympathicus", english: "Sympathetic chain", note: "On heads of ribs; thoracic ganglia for sympathectomy." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Mediastinal contents & relations", anchor: "mediastinum" },
+        { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery — mediastinal masses", anchor: "mediastinum" },
+        { code: "CR_BK_01", exams: [Exam.FINAL], title: "Cardiothoracic anatomy for the anaesthetist", anchor: "mediastinum" },
       ],
     },
   ],
@@ -376,6 +446,11 @@ export const abdominalFolio: CorPictumFolioData = {
         { latin: "intestinum tenue", english: "Small intestine", note: "Jejunum upper-left, ileum lower-right; ~6 m." },
         { latin: "ligamentum falciforme", english: "Falciform ligament", note: "Contains the round ligament (obliterated umbilical vein)." },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Abdominal viscera & peritoneal anatomy", anchor: "abdominal-anatomy" },
+        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for general & upper-GI surgery", anchor: "abdominal-anatomy" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Abdominal field blocks (TAP, rectus sheath)", anchor: "abdominal-anatomy" },
+      ],
     },
     {
       id: "retroperitoneum", tabLabel: "Retroperitoneum", folio: "II",
@@ -394,6 +469,11 @@ export const abdominalFolio: CorPictumFolioData = {
         { latin: "ureter", english: "Ureter", note: "Crosses pelvic brim at the bifurcation of common iliac." },
         { latin: "musculus psoas major", english: "Psoas major", note: "Flanks the lumbar spine; landmark for lumbar plexus block." },
         { latin: "diaphragma", english: "Diaphragm", note: "Crura attach to L1–L3 vertebral bodies." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Retroperitoneal anatomy — kidneys & great vessels", anchor: "retroperitoneum" },
+        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for renal & retroperitoneal surgery", anchor: "retroperitoneum" },
+        { code: "OA_BK_05", exams: [Exam.FINAL], title: "Vascular anaesthesia — aorta & iliac vessels", anchor: "retroperitoneum" },
       ],
     },
   ],
@@ -538,6 +618,11 @@ export const cardiacFolio: CorPictumFolioData = {
           ],
         },
       ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart & great vessels", anchor: "surface-anatomy" },
+        { code: "CR_BK_01", exams: [Exam.FINAL], title: "Coronary circulation & ischaemic heart disease", anchor: "coronary-supply" },
+        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Cardiac chambers & great-vessel relationships", anchor: "surface-anatomy" },
+      ],
     },
     {
       id: "short-axis",
@@ -662,6 +747,11 @@ export const cardiacFolio: CorPictumFolioData = {
           ],
         },
       ],
+      curriculumLinks: [
+        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Valvular heart disease — anatomy & assessment", anchor: "valves-and-chambers" },
+        { code: "CR_BK_05", exams: [Exam.FINAL], title: "Peri-operative echocardiography of the LV/RV", anchor: "valves-and-chambers" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Chambers, walls & ventricular geometry", anchor: "valves-and-chambers" },
+      ],
     },
     {
       id: "conduction",
@@ -757,6 +847,11 @@ export const cardiacFolio: CorPictumFolioData = {
             [0.34, 0.92],
           ],
         },
+      ],
+      curriculumLinks: [
+        { code: "CR_BK_03", exams: [Exam.FINAL], title: "Cardiac conduction system & arrhythmogenesis", anchor: "conduction-system" },
+        { code: "CR_BK_06", exams: [Exam.FINAL], title: "Pacemakers, ICDs & peri-operative arrhythmia management", anchor: "conduction-system" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart — conducting tissue", anchor: "conduction-system" },
       ],
     },
   ],
