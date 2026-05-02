@@ -126,14 +126,14 @@ export const headNeckFolio: CorPictumFolioData = {
 };
 
 export const neuroFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Encephalon",
+  atlasTitle: "Atlas of Anatomy — Brain",
   atlasSubtitle: "Painted plates of the brain and its arteries",
   plates: [
     {
       id: "midsagittal", tabLabel: "Midsagittal", folio: "I",
-      title: "Sectio Mediana Encephali", subtitle: "Midline section of the brain",
+      title: "Midsagittal Section of the Brain", subtitle: "Midline section of the brain",
       image: neuroMidsagittal, alt: "Painted midsagittal section of the brain",
-      caption: "Sectio sagittalis mediana encephali",
+      caption: "Midsagittal section of the brain",
       labels: [
         { latin: "corpus callosum", english: "Corpus callosum", note: "Largest commissure; interhemispheric communication." },
         { latin: "fornix", english: "Fornix", note: "Output tract of the hippocampus to the mamillary bodies." },
