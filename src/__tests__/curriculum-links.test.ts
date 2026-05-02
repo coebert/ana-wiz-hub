@@ -33,14 +33,48 @@ const FOLIO_TO_PAGE: Record<string, string> = {
   cardiacFolio: "src/pages/topics/CardiacAnatomyTopic.tsx",
 };
 
-/** Extract every `id="..."` attribute from a TSX source file. */
-function extractIds(filePath: string): Set<string> {
+/** Mirror of `slugify` in src/components/SectionLayout.tsx. */
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+/**
+ * Collect every anchor that the topic page makes available at runtime:
+ *   • literal `id="..."` / `id={"..."}` attributes
+ *   • slugified `<h2>` text content (auto-injected by SectionLayout as
+ *     `toc-<slug>` — we accept both the raw slug and the `toc-` form so
+ *     authors can use either in folio data)
+ *   • literal string props like `sectionId="…"` and JSX prop ids
+ */
+function extractAnchorIds(filePath: string): Set<string> {
   const src = readFileSync(resolve(process.cwd(), filePath), "utf8");
   const ids = new Set<string>();
-  // Match id="..." and id={"..."}; ignore dynamic id={someVar}.
-  const re = /\bid=(?:"([^"]+)"|\{\s*"([^"]+)"\s*\})/g;
+
+  // 1. Literal id="..." / id={"..."}
+  const idRe = /\bid=(?:"([^"]+)"|\{\s*"([^"]+)"\s*\})/g;
   let m: RegExpExecArray | null;
-  while ((m = re.exec(src))) ids.add(m[1] ?? m[2]);
+  while ((m = idRe.exec(src))) ids.add(m[1] ?? m[2]);
+
+  // 2. <h2> literal text → slug + toc-slug
+  const h2Re = /<h2[^>]*>([\s\S]*?)<\/h2>/g;
+  while ((m = h2Re.exec(src))) {
+    // strip nested JSX expressions and tags to keep only literal text
+    const text = m[1]
+      .replace(/\{[^{}]*\}/g, " ")
+      .replace(/<[^>]+>/g, " ")
+      .trim();
+    if (!text) continue;
+    const slug = slugify(text);
+    if (slug) {
+      ids.add(slug);
+      ids.add(`toc-${slug}`);
+    }
+  }
+
   return ids;
 }
 
