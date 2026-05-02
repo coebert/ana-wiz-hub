@@ -16,8 +16,11 @@ import { describe, it, expect } from "vitest";
 
 import * as folios from "@/components/diagrams/anatomyFolios";
 import type { CorPictumFolioData } from "@/components/diagrams/anatomyFolios";
-
-const CODE_RE = /^[A-Z]{2}_BK_\d{2}$/;
+import {
+  isCurriculumCodeFormat,
+  isCurriculumCode,
+  ALL_CURRICULUM_CODES,
+} from "@/data/curriculumCodes";
 
 /** folio export name → topic page that renders it */
 const FOLIO_TO_PAGE: Record<string, string> = {
