@@ -144,3 +144,14 @@ describe("CorPictum curriculumLinks", () => {
     });
   }
 });
+
+describe("CurriculumCode registry", () => {
+  it("every registered code is well-formed", () => {
+    const bad = ALL_CURRICULUM_CODES.filter((c) => !isCurriculumCodeFormat(c));
+    expect(bad, `malformed registry keys: ${bad.join(", ")}`).toEqual([]);
+  });
+
+  it("contains no duplicate codes", () => {
+    expect(new Set(ALL_CURRICULUM_CODES).size).toBe(ALL_CURRICULUM_CODES.length);
+  });
+});
