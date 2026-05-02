@@ -607,6 +607,35 @@ export const NephronDiagram = () => {
           );
         })}
 
+        {/* ===== ANIMATED FILTRATE FLOW =====
+            Yellow particles travel sequentially through PCT → desc → thin asc → thick asc → DCT → CCD → MCD,
+            visualising the direction of tubular flow. Hidden when a non-tubular segment is filtered. */}
+        {(!filter || filter === "reabsorption" || filter === "secretion") && (
+          <g opacity="0.85">
+            {/* Each particle group covers one segment with staggered begin times */}
+            {[
+              { path: tubePaths.pctLumen,       dur: "3.2s", begin: "0s" },
+              { path: tubePaths.descLumen,      dur: "2.8s", begin: "0.4s" },
+              { path: tubePaths.thinAscLumen,   dur: "1.6s", begin: "0.7s" },
+              { path: tubePaths.thickAscLumen, dur: "2.4s", begin: "1.0s" },
+              { path: tubePaths.dctLumen,       dur: "1.8s", begin: "1.4s" },
+              { path: tubePaths.ccdLumen,       dur: "1.2s", begin: "1.7s" },
+              { path: tubePaths.mcdLumen,       dur: "3.0s", begin: "2.0s" },
+            ].map((seg, idx) => (
+              [0, 1, 2].map(i => (
+                <circle key={`flt-${idx}-${i}`} r="2.4"
+                  fill="hsl(45 90% 55%)" stroke="hsl(35 80% 40%)" strokeWidth="0.4">
+                  <animateMotion dur={seg.dur} begin={`${seg.begin} -${i * (parseFloat(seg.dur) / 3)}s`}
+                    repeatCount="indefinite" path={seg.path} />
+                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1"
+                    dur={seg.dur} begin={`${seg.begin} -${i * (parseFloat(seg.dur) / 3)}s`}
+                    repeatCount="indefinite" />
+                </circle>
+              ))
+            ))}
+          </g>
+        )}
+
         {/* "Juxtamedullary nephron" caption */}
         <text x="270" y="618" fontSize="6.5" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.5" fontStyle="italic">
           Juxtamedullary nephron — long loop of Henle reaches papilla, paired with vasa recta
