@@ -10,6 +10,7 @@ import {
   PronePositionDiagram,
   ProneFrameComparisonDiagram,
   ParkBenchPositionDiagram,
+  ParkBenchDetailedDiagram,
   SittingPositionDiagram,
   BeachChairPositionDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
@@ -153,6 +154,7 @@ const PatientPositioningTopic = () => {
               limited surgical exposure than sitting.
             </p>
             <ParkBenchPositionDiagram />
+            <ParkBenchDetailedDiagram />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Sitting position</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
