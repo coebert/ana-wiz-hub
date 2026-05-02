@@ -812,6 +812,371 @@ const FrameCard = ({
   );
 };
 
+// ── 5c. PRONE FACE PROTECTION (close-up) ───────────────────────────────
+
+/**
+ * Detailed close-up of how the face is protected when prone:
+ *  • Three-mirror "ProneView" / horseshoe foam contour, with the eyes,
+ *    nose and mouth suspended in the central cut-out (NO globe pressure).
+ *  • Reinforced (armoured) ETT routed through the mirror gap, secured
+ *    away from the lower lip.
+ *  • Annotated checks: free eyes, ear flat, ETT free, chin off chest,
+ *    forehead/malar bone bears the load.
+ */
+export const ProneFaceProtectionDiagram = () => {
+  const W = 560;
+  const H = 360;
+  const ORANGE = "hsl(28 80% 55%)";
+  const PURPLE = "hsl(280 50% 45%)";
+  const CYAN = "hsl(190 90% 45%)";
+  return (
+    <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Face protection in prone — horseshoe foam, mirror, free globes
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Lateral close-up. Load borne on forehead and malar (zygoma); orbits, nose, lips and ETT hang free in the central cut-out.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
+        <div className="p-3">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto min-w-[460px]" role="img" aria-label="Prone face protection">
+            <AnatomyDefs idPrefix="pfp" />
+
+            {/* Headrest column / mirror housing */}
+            <rect x={70} y={300} width={420} height={14} rx={3} fill="hsl(210 25% 35%)" />
+            <rect x={250} y={314} width={60} height={36} fill="hsl(210 20% 45%)" />
+
+            {/* Foam horseshoe — drawn as a U-shape with a deep central well.
+                The patient's face rests on the upper rim. */}
+            <path
+              d={`M 130,250
+                  Q 130,180 200,170
+                  L 360,170
+                  Q 430,180 430,250
+                  L 410,250
+                  Q 410,210 360,200
+                  L 200,200
+                  Q 150,210 150,250 Z`}
+              fill={PURPLE} opacity={0.92}
+              stroke="hsl(280 60% 28%)" strokeWidth={1.2}
+            />
+            {/* Foam contour highlight */}
+            <path
+              d={`M 138,235 Q 145,205 195,195 L 365,195 Q 415,205 422,235`}
+              fill="none" stroke="hsl(280 80% 80%)" strokeWidth={1.2} opacity={0.6}
+            />
+            {/* Mirror inside the housing — angled glass face */}
+            <g>
+              <polygon points="220,300 360,300 348,270 232,270"
+                fill="hsl(190 60% 25%)" stroke="hsl(190 50% 12%)" strokeWidth={0.8} />
+              <polygon points="232,270 348,270 344,265 236,265"
+                fill={CYAN} opacity={0.55} />
+              <text x={290} y={291} textAnchor="middle" fontSize={9}
+                fill="hsl(190 90% 92%)" fontWeight={700} letterSpacing="0.05em">MIRROR</text>
+            </g>
+
+            {/* Patient profile lying face-down on the foam.
+                Drawn rotated 180° so the chin points down into the cut-out. */}
+            <g transform="rotate(180 280 165)">
+              <HeadProfile cx={280} cy={165} r={70} idPrefix="pfp" facing="left" closedEyes />
+            </g>
+
+            {/* Reinforced ETT — runs from inside the mouth, through the
+                mirror cut-out, then sweeps caudally to the ventilator. */}
+            <g>
+              <path
+                d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
+                fill="none" stroke="hsl(0 0% 12%)" strokeWidth={9} strokeLinecap="round" />
+              <path
+                d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
+                fill="none" stroke="hsl(0 0% 92%)" strokeWidth={4.5} strokeLinecap="round"
+                strokeDasharray="5 5" opacity={0.55} />
+              <text x={245} y={353} fontSize={10} fontWeight={700}
+                fill="hsl(0 0% 25%)">reinforced ETT</text>
+            </g>
+
+            {/* Annotated landmarks — color-coded by status */}
+            {/* Forehead pressure point (LOAD-BEARING — green/safe) */}
+            <g>
+              <circle cx={230} cy={172} r={6} fill={POS_GREEN} stroke="white" strokeWidth={1.5} />
+              <line x1={230} y1={172} x2={170} y2={130} stroke={POS_GREEN} strokeWidth={1} />
+              <text x={166} y={126} textAnchor="end" fontSize={10} fontWeight={700} fill={POS_GREEN}>
+                FOREHEAD
+              </text>
+              <text x={166} y={138} textAnchor="end" fontSize={9} fill="hsl(var(--muted-foreground))">
+                load-bearing rim
+              </text>
+            </g>
+            {/* Malar / zygoma (also load-bearing) */}
+            <g>
+              <circle cx={260} cy={188} r={5} fill={POS_GREEN} stroke="white" strokeWidth={1.5} />
+              <line x1={260} y1={188} x2={250} y2={235} stroke={POS_GREEN} strokeWidth={1} strokeDasharray="2 2" />
+              <text x={240} y={250} textAnchor="end" fontSize={10} fontWeight={700} fill={POS_GREEN}>
+                MALAR (zygoma)
+              </text>
+            </g>
+            {/* Eye — must be FREE */}
+            <g>
+              <circle cx={302} cy={200} r={6} fill={POS_RED} stroke="white" strokeWidth={1.5} />
+              <line x1={302} y1={200} x2={400} y2={120} stroke={POS_RED} strokeWidth={1} />
+              <text x={404} y={116} fontSize={10} fontWeight={800} fill={POS_RED}>EYE — FREE</text>
+              <text x={404} y={128} fontSize={9} fill="hsl(var(--muted-foreground))">
+                no globe contact · check q15 min
+              </text>
+            </g>
+            {/* Ear — flat, no fold */}
+            <g>
+              <circle cx={245} cy={156} r={5} fill={POS_AMBER} stroke="white" strokeWidth={1.5} />
+              <line x1={245} y1={156} x2={300} y2={70} stroke={POS_AMBER} strokeWidth={1} />
+              <text x={300} y={66} fontSize={10} fontWeight={700} fill={POS_AMBER}>EAR — flat, unfolded</text>
+            </g>
+            {/* Nose — free in cut-out */}
+            <g>
+              <circle cx={310} cy={216} r={5} fill={POS_RED} stroke="white" strokeWidth={1.5} />
+              <line x1={310} y1={216} x2={420} y2={240} stroke={POS_RED} strokeWidth={1} />
+              <text x={424} y={236} fontSize={10} fontWeight={700} fill={POS_RED}>NOSE — suspended</text>
+              <text x={424} y={248} fontSize={9} fill="hsl(var(--muted-foreground))">
+                no nasal tip pressure
+              </text>
+            </g>
+            {/* Lips / ETT */}
+            <g>
+              <circle cx={296} cy={228} r={5} fill={POS_AMBER} stroke="white" strokeWidth={1.5} />
+              <line x1={296} y1={228} x2={420} y2={285} stroke={POS_AMBER} strokeWidth={1} />
+              <text x={424} y={282} fontSize={10} fontWeight={700} fill={POS_AMBER}>
+                LIPS · ETT clear of skin
+              </text>
+              <text x={424} y={294} fontSize={9} fill="hsl(var(--muted-foreground))">
+                tape away from lower lip
+              </text>
+            </g>
+            {/* Cervical neutrality arrow */}
+            <g>
+              <path d="M 130,210 Q 100,210 100,260" fill="none" stroke={CYAN} strokeWidth={1.4} markerEnd="url(#pfp-arrow)" />
+              <text x={92} y={278} fontSize={10} fontWeight={700} fill={CYAN}>C-spine</text>
+              <text x={92} y={290} fontSize={9} fill="hsl(var(--muted-foreground))">neutral · no rotation</text>
+            </g>
+
+            <defs>
+              <marker id="pfp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill={CYAN} />
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Side checklist */}
+        <div className="border-t md:border-t-0 md:border-l border-border bg-muted/20 p-3 text-xs">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+            Five face checks before the drape goes on
+          </p>
+          <ol className="space-y-1.5">
+            {[
+              { c: POS_GREEN, t: "Load on forehead + malar bone — never on globes." },
+              { c: POS_RED, t: "Both eyes free in the central cut-out; lubricate + tape closed." },
+              { c: POS_AMBER, t: "Pinna flat, no folding under the foam rim." },
+              { c: POS_RED, t: "Nasal tip suspended — no contact with mirror frame." },
+              { c: POS_AMBER, t: "Reinforced ETT exits via the cut-out, secured away from the lower lip." },
+            ].map((row, i) => (
+              <li key={i} className="flex items-start gap-2">
+                <span className="mt-0.5 flex-none w-4 h-4 rounded-full text-[9px] font-bold flex items-center justify-center text-white"
+                  style={{ background: row.c }}>{i + 1}</span>
+                <span className="leading-snug text-foreground/90">{row.t}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-3 text-[11px] text-muted-foreground leading-relaxed">
+            Re-check eyes every 15 min. Document free orbits at start, after every position change, and at the end of the case.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ── 5d. MAYFIELD 3-PIN HEAD HOLDER — correct pin siting ───────────────
+
+/**
+ * Bird's-eye / lateral hybrid view of the Mayfield clamp on a skull,
+ * showing the safe corridor for pin placement and the structures that
+ * must be avoided on each side.
+ */
+export const MayfieldPinSitingDiagram = () => {
+  const W = 560;
+  const H = 360;
+  const STEEL = "hsl(220 15% 55%)";
+  const STEEL_DARK = "hsl(220 18% 32%)";
+  const PIN = "hsl(0 70% 50%)";
+  const SAFE = "hsl(150 55% 40%)";
+  const DANGER = POS_RED;
+
+  // Skull viewed from above (vertex). Centre of cranium:
+  const cx = 260, cy = 200;
+  const a = 85;  // half AP length
+  const b = 70;  // half lateral width
+  // Pin coordinates around the equator of the skull.
+  // Single-pin (rocker) on patient's RIGHT (viewer's left) above the ear.
+  const p1 = { x: cx - b - 6, y: cy - 10 };
+  // Two opposing pins on the patient's LEFT (viewer's right).
+  const p2 = { x: cx + b * 0.55, y: cy - 55 };  // postero-temporal (above mastoid, behind hairline)
+  const p3 = { x: cx + b * 0.55, y: cy + 35 };  // antero-temporal (above pinna, behind eye)
+
+  return (
+    <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Mayfield 3-pin head holder — correct pin siting (vertex view)
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Single rocker pin on one side, two opposing pins on the other. Pins sit in the safe equatorial belt above the ear and behind the hairline — clear of temporal bone, frontal sinus, temporal artery and orbits.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
+        <div className="p-3">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto min-w-[460px]" role="img" aria-label="Mayfield pin siting">
+            <AnatomyDefs idPrefix="myf" />
+
+            {/* Cranium from above */}
+            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin)`}
+              stroke="hsl(28 50% 35%)" strokeWidth={1.2} />
+            {/* Subtle sheen */}
+            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" />
+
+            {/* Nose marker (anterior) */}
+            <path d={`M ${cx - a - 2},${cy - 6} L ${cx - a - 14},${cy} L ${cx - a - 2},${cy + 6} Z`}
+              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={1} />
+            <text x={cx - a - 18} y={cy + 3} textAnchor="end" fontSize={10}
+              fill="hsl(var(--muted-foreground))" fontWeight={600}>anterior</text>
+            <text x={cx + a + 8} y={cy + 3} fontSize={10}
+              fill="hsl(var(--muted-foreground))" fontWeight={600}>posterior</text>
+
+            {/* Ear pinnae — landmarks */}
+            <ellipse cx={cx - 18} cy={cy - b - 4} rx={9} ry={5}
+              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={0.9} />
+            <ellipse cx={cx - 18} cy={cy + b + 4} rx={9} ry={5}
+              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={0.9} />
+            <text x={cx - 18} y={cy - b - 12} textAnchor="middle" fontSize={9}
+              fill="hsl(var(--muted-foreground))">L pinna</text>
+            <text x={cx - 18} y={cy + b + 22} textAnchor="middle" fontSize={9}
+              fill="hsl(var(--muted-foreground))">R pinna</text>
+
+            {/* Sutures (decorative — coronal + sagittal hint) */}
+            <path d={`M ${cx - 30},${cy - b + 6} Q ${cx - 30},${cy} ${cx - 30},${cy + b - 6}`}
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+            <path d={`M ${cx - 30},${cy} L ${cx + a - 10},${cy}`}
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+
+            {/* SAFE BELT — translucent green ring around the equator */}
+            <ellipse cx={cx} cy={cy} rx={a - 6} ry={b - 4}
+              fill="none" stroke={SAFE} strokeWidth={14} opacity={0.18} />
+            <text x={cx + 18} y={cy - b + 6} fontSize={9} fontWeight={700} fill={SAFE}>
+              safe equator
+            </text>
+
+            {/* DANGER ZONES */}
+            {/* Frontal sinus (anterior midline) */}
+            <ellipse cx={cx - a + 14} cy={cy} rx={14} ry={9}
+              fill={DANGER} opacity={0.18} stroke={DANGER} strokeWidth={1} strokeDasharray="3 2" />
+            <text x={cx - a + 14} y={cy + 26} textAnchor="middle" fontSize={9} fontWeight={700} fill={DANGER}>
+              frontal sinus
+            </text>
+            {/* Temporal squame — thin bone, both sides */}
+            <ellipse cx={cx - 30} cy={cy - b + 14} rx={26} ry={8}
+              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={0.9} strokeDasharray="3 2" />
+            <text x={cx - 30} y={cy - b + 1} textAnchor="middle" fontSize={9} fontWeight={700} fill={DANGER}>
+              temporal squame
+            </text>
+            <ellipse cx={cx - 30} cy={cy + b - 14} rx={26} ry={8}
+              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={0.9} strokeDasharray="3 2" />
+            <text x={cx - 30} y={cy + b + 0} textAnchor="middle" fontSize={9} fontWeight={700} fill={DANGER}>
+              temporal squame
+            </text>
+            {/* Superficial temporal artery course (just anterior to tragus) */}
+            <path d={`M ${cx - 28},${cy - b - 1} Q ${cx - 38},${cy - b * 0.5} ${cx - 42},${cy}`}
+              fill="none" stroke={DANGER} strokeWidth={1.2} opacity={0.7} />
+            <text x={cx - 60} y={cy + 4} fontSize={9} fontWeight={700} fill={DANGER}>STA</text>
+
+            {/* C-shaped Mayfield clamp */}
+            <path
+              d={`M ${cx - b - 30},${cy - 30}
+                  Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
+                  L ${cx + b + 30},${cy + 70}
+                  Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
+              fill="none" stroke={STEEL_DARK} strokeWidth={5} strokeLinecap="round" opacity={0.85}
+            />
+            <path
+              d={`M ${cx - b - 30},${cy - 30}
+                  Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
+                  L ${cx + b + 30},${cy + 70}
+                  Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
+              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round"
+            />
+
+            {/* PINS */}
+            {[p1, p2, p3].map((p, i) => {
+              const isRocker = i === 0;
+              return (
+                <g key={i}>
+                  {/* Pin shaft */}
+                  <line x1={p.x + (i === 0 ? -22 : 22) * (i === 0 ? 1 : 1)}
+                    y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
+                    x2={p.x} y2={p.y}
+                    stroke={STEEL_DARK} strokeWidth={4.5} strokeLinecap="round" />
+                  <line x1={p.x + (i === 0 ? -22 : 22)}
+                    y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
+                    x2={p.x} y2={p.y}
+                    stroke={STEEL} strokeWidth={2} strokeLinecap="round" />
+                  {/* Pin tip + entry circle */}
+                  <circle cx={p.x} cy={p.y} r={5} fill={PIN} stroke="white" strokeWidth={1.5} />
+                  <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} />
+                  {/* Label */}
+                  <text x={p.x + (i === 0 ? -32 : 32)}
+                    y={p.y + (i === 0 ? -10 : (i === 1 ? -14 : 18))}
+                    textAnchor={i === 0 ? "end" : "start"}
+                    fontSize={10} fontWeight={800} fill={PIN}>
+                    {isRocker ? "rocker pin ×1" : i === 1 ? "pin 2" : "pin 3"}
+                  </text>
+                </g>
+              );
+            })}
+
+            {/* Caption strip */}
+            <rect x={70} y={310} width={420} height={36} rx={4}
+              fill="hsl(var(--muted))" opacity={0.5} />
+            <text x={280} y={326} textAnchor="middle" fontSize={10.5} fontWeight={700}
+              fill="hsl(var(--foreground))">
+              Torque 60–80 lb-in (adult) · 40 lb-in paeds · re-check after positioning
+            </text>
+            <text x={280} y={340} textAnchor="middle" fontSize={9.5}
+              fill="hsl(var(--muted-foreground))">
+              Pins sit ABOVE the equator, BEHIND the hairline, AVOID temporal squame · STA · frontal sinus · orbits
+            </text>
+          </svg>
+        </div>
+
+        {/* Rules panel */}
+        <div className="border-t md:border-t-0 md:border-l border-border bg-muted/20 p-3 text-xs">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
+            Rules of safe pinning
+          </p>
+          <ul className="space-y-2 text-foreground/90 leading-snug">
+            <li><span className="font-semibold text-foreground">Geometry —</span> 1 rocker pin opposite 2 pins; the three pins must be coplanar and roughly equatorial.</li>
+            <li><span className="font-semibold text-foreground">Site —</span> in the thick parietal/occipital bone, above the superior temporal line, behind the hairline.</li>
+            <li><span className="font-semibold text-foreground">Avoid —</span> frontal sinus (CSF leak), temporal squame (thin → fracture), superficial temporal artery, orbits, mastoid air cells.</li>
+            <li><span className="font-semibold text-foreground">Torque —</span> 60–80 lb-in adult · 40 lb-in &lt;10 yr · &lt;30 lb-in infant (or use a paediatric horseshoe instead).</li>
+            <li><span className="font-semibold text-foreground">Anaesthesia —</span> deepen / give remifentanil bolus + scalp infiltration with LA before pinning to blunt the hypertensive response.</li>
+            <li><span className="font-semibold text-foreground">After —</span> re-check pin sites and torque after final positioning; document.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const ProneFrameComparisonDiagram = () => (
   <div className="my-4 rounded-xl border border-border bg-card">
     <div className="px-4 py-3 border-b border-border bg-muted/30">
