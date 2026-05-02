@@ -919,6 +919,7 @@ export const ParkBenchDetailedDiagram = () => {
         <div className="p-3 bg-[hsl(var(--background))]">
           <div className="overflow-x-auto -mx-1 px-1">
             <svg viewBox="0 0 560 320" className="w-full h-auto min-w-[520px]" role="img" aria-label="Park-bench position with pressure-risk hotspots">
+            <AnatomyDefs idPrefix="pb" />
             {/* Floor line */}
             <line x1={20} y1={285} x2={540} y2={285} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
             <text x={20} y={300} fontSize={11} fill="hsl(var(--muted-foreground))">FLOOR</text>
@@ -931,19 +932,16 @@ export const ParkBenchDetailedDiagram = () => {
             <text x={490} y={170} fontSize={11} fill="hsl(var(--muted-foreground))">vacuum mattress</text>
 
             {/* Patient body — lateral */}
-            <ellipse cx={290} cy={150} rx={140} ry={26} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
+            <TorsoLateral cx={300} cy={150} length={260} height={54} idPrefix="pb" facing="left" />
 
             {/* Head — pinned, slightly rotated towards the floor */}
             <g>
-              <circle cx={140} cy={110} r={22} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-              {/* Mayfield horseshoe pins */}
-              <line x1={125} y1={92} x2={117} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
-              <line x1={155} y1={92} x2={163} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
-              <line x1={140} y1={88} x2={140} y2={75} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
+              <HeadProfile cx={140} cy={110} r={22} idPrefix="pb" facing="left" />
+              <MayfieldPins cx={140} cy={110} r={22} />
               <text x={140} y={68} fontSize={11} fontWeight={600} fill="hsl(280 60% 40%)" textAnchor="middle">Mayfield 3-pin</text>
               {/* ETT armoured */}
-              <path d="M 150 118 Q 175 130 195 130" fill="none" stroke="hsl(var(--foreground))" strokeWidth={2} />
-              <text x={195} y={123} fontSize={11} fill="hsl(var(--muted-foreground))">armoured ETT</text>
+              <path d="M 158 122 Q 180 132 200 132" fill="none" stroke="hsl(var(--foreground))" strokeWidth={2} />
+              <text x={200} y={125} fontSize={11} fill="hsl(var(--muted-foreground))">armoured ETT</text>
             </g>
 
             {/* Axillary roll caudal to axilla */}
@@ -951,20 +949,20 @@ export const ParkBenchDetailedDiagram = () => {
             <text x={200} y={132} fontSize={11} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>axillary roll (NOT in axilla)</text>
 
             {/* Dependent arm — hanging off table edge in sling */}
-            <line x1={215} y1={158} x2={225} y2={235} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
-            <path d="M 200 235 Q 230 260 255 230" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
+            <Arm sx={215} sy={158} ex={222} ey={200} wx={228} wy={232} idPrefix="pb" upperW={13} foreW={11} handLen={12} />
+            <path d="M 198 232 Q 230 258 258 228" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
             <text x={235} y={275} fontSize={11} fill="hsl(280 50% 45%)" fontWeight={600}>padded sling</text>
 
             {/* Upper arm — supported forwards on padded gutter */}
-            <line x1={245} y1={140} x2={295} y2={108} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
-            <rect x={285} y={100} width={45} height={14} rx={4} fill={POS_GREEN} opacity={0.6} />
-            <text x={307} y={92} fontSize={11} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>arm gutter</text>
+            <Arm sx={250} sy={140} ex={278} ey={120} wx={310} wy={108} idPrefix="pb" upperW={13} foreW={11} handLen={12} gownSleeve />
+            <rect x={295} y={100} width={45} height={14} rx={4} fill={POS_GREEN} opacity={0.6} />
+            <text x={317} y={92} fontSize={11} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>arm gutter</text>
 
             {/* Legs — flexed, pillow between knees */}
-            <line x1={400} y1={155} x2={455} y2={135} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
-            <line x1={400} y1={155} x2={465} y2={172} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+            <Leg hx={400} hy={150} kx={445} ky={132} ax={472} ay={120} idPrefix="pb" thighW={22} calfW={17} footLen={18} draped />
+            <Leg hx={400} hy={162} kx={450} ky={170} ax={478} ay={178} idPrefix="pb" thighW={22} calfW={17} footLen={18} draped />
             <ellipse cx={445} cy={150} rx={9} ry={5} fill={POS_GREEN} opacity={0.85} />
-            <text x={478} y={150} fontSize={11} fill={POS_GREEN} fontWeight={600}>knee pad</text>
+            <text x={490} y={150} fontSize={11} fill={POS_GREEN} fontWeight={600}>knee pad</text>
 
             {/* Hip + thigh tape */}
             <line x1={310} y1={130} x2={310} y2={195} stroke="hsl(0 0% 25%)" strokeWidth={3} />
