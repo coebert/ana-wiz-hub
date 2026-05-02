@@ -50,9 +50,9 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "trachea", english: "Trachea", note: "C-shaped cartilage rings, ~10–12 cm long in adults." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Upper airway anatomy — sagittal", anchor: "airway-anatomy" },
-        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Airway assessment & difficult airway management", anchor: "airway-anatomy" },
-        { code: "IC_BK_03", exams: [Exam.FFICM], title: "Tracheal intubation in critical care", anchor: "airway-anatomy" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Upper airway anatomy — sagittal", anchor: "pre-operative-airway-assessment" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Airway assessment & difficult airway management", anchor: "pre-operative-airway-assessment" },
+        { code: "IC_BK_03", exams: [Exam.FFICM], title: "Tracheal intubation in critical care", anchor: "pre-operative-airway-assessment" },
       ],
     },
     {
@@ -70,9 +70,9 @@ export const airwayFolio: CorPictumFolioData = {
         { latin: "commissura posterior", english: "Posterior commissure", note: "Cormack–Lehane grading reference point." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Laryngeal inlet anatomy & cord identification", anchor: "laryngoscopy-view" },
-        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Difficult airway — Cormack–Lehane grading", anchor: "laryngoscopy-view" },
-        { code: "IC_BK_03", exams: [Exam.FFICM], title: "ICU airway management & emergency intubation", anchor: "laryngoscopy-view" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Laryngeal inlet anatomy & cord identification", anchor: "das-2015-algorithm-four-sequential-plans" },
+        { code: "CL_BK_03", exams: [Exam.FINAL], title: "Difficult airway — Cormack–Lehane grading", anchor: "das-2015-algorithm-four-sequential-plans" },
+        { code: "IC_BK_03", exams: [Exam.FFICM], title: "ICU airway management & emergency intubation", anchor: "das-2015-algorithm-four-sequential-plans" },
       ],
     },
   ],
@@ -97,8 +97,8 @@ export const headNeckFolio: CorPictumFolioData = {
         { latin: "trigonum cervicale posterius", english: "Posterior triangle", note: "Contains accessory nerve, brachial plexus roots." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Surface anatomy of the head & neck", anchor: "surface-landmarks" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Superficial cervical plexus block", anchor: "surface-landmarks" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Surface anatomy of the head & neck", anchor: "neck-triangles" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Superficial cervical plexus block", anchor: "neck-triangles" },
       ],
     },
     {
@@ -117,9 +117,9 @@ export const headNeckFolio: CorPictumFolioData = {
         { latin: "glomus caroticum", english: "Carotid body", note: "Peripheral chemoreceptor — senses PaO₂, PaCO₂, pH." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Carotid sheath & deep cervical anatomy", anchor: "deep-neck" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Cervical plexus & superficial cervical block", anchor: "deep-neck" },
-        { code: "CR_BK_07", exams: [Exam.FINAL], title: "Anaesthesia for carotid endarterectomy", anchor: "deep-neck" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Carotid sheath & deep cervical anatomy", anchor: "ijv" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Cervical plexus & superficial cervical block", anchor: "ijv" },
+        { code: "CR_BK_07", exams: [Exam.FINAL], title: "Anaesthesia for carotid endarterectomy", anchor: "ijv" },
       ],
     },
   ],
@@ -146,8 +146,8 @@ export const neuroFolio: CorPictumFolioData = {
         { latin: "hypophysis", english: "Pituitary gland", note: "In the sella turcica — endocrine master gland." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Brain anatomy & ventricular system", anchor: "brain-anatomy" },
-        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Neuroanaesthesia — ICP, CPP & supratentorial surgery", anchor: "brain-anatomy" },
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Brain anatomy & ventricular system", anchor: "intracranial-pressure-meninges" },
+        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Neuroanaesthesia — ICP, CPP & supratentorial surgery", anchor: "intracranial-pressure-meninges" },
       ],
     },
     {
@@ -168,8 +168,8 @@ export const neuroFolio: CorPictumFolioData = {
         { latin: "corpora mamillaria", english: "Mamillary bodies", note: "Hypothalamic landmark; affected in Wernicke's encephalopathy." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Cerebral arterial supply — circle of Willis", anchor: "cerebral-circulation" },
-        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for neurovascular procedures", anchor: "cerebral-circulation" },
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Cerebral arterial supply — circle of Willis", anchor: "cerebral-blood-supply-circle-of-willis" },
+        { code: "CN_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for neurovascular procedures", anchor: "cerebral-blood-supply-circle-of-willis" },
       ],
     },
   ],
@@ -195,8 +195,8 @@ export const spinalFolio: CorPictumFolioData = {
         { latin: "radix nervi spinalis", english: "Spinal nerve root", note: "Exits through the intervertebral foramen." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Spinal cord & cauda equina — surface landmarks", anchor: "cord-anatomy" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Surface anatomy for neuraxial procedures", anchor: "cord-anatomy" },
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Spinal cord & cauda equina — surface landmarks", anchor: "spinal-cord" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Surface anatomy for neuraxial procedures", anchor: "spinal-cord" },
       ],
     },
     {
@@ -216,9 +216,9 @@ export const spinalFolio: CorPictumFolioData = {
         { latin: "conus medullaris", english: "Conus medullaris", note: "Avoid puncture above L2." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-anatomy" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-anatomy" },
-        { code: "OB_BK_01", exams: [Exam.FINAL], title: "Neuraxial anaesthesia in obstetrics", anchor: "neuraxial-anatomy" },
+        { code: "AN_BK_07", exams: [Exam.PRIMARY], title: "Vertebral column & neuraxial spaces", anchor: "neuraxial-layers" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Spinal & epidural anaesthesia — technique & complications", anchor: "neuraxial-layers" },
+        { code: "OB_BK_01", exams: [Exam.FINAL], title: "Neuraxial anaesthesia in obstetrics", anchor: "neuraxial-layers" },
       ],
     },
   ],
@@ -248,8 +248,8 @@ export const brachialFolio: CorPictumFolioData = {
         { latin: "arteria subclavia", english: "Subclavian artery", note: "Anterior to inferior trunk — pneumothorax / vascular puncture risk." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Brachial plexus — roots, trunks, divisions, cords, branches", anchor: "plexus-overview" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Choosing the level of brachial plexus block", anchor: "plexus-overview" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Brachial plexus — roots, trunks, divisions, cords, branches", anchor: "organisation" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Choosing the level of brachial plexus block", anchor: "organisation" },
       ],
     },
     {
@@ -269,8 +269,8 @@ export const brachialFolio: CorPictumFolioData = {
         { latin: "arteria vertebralis", english: "Vertebral artery", note: "In the transverse foramen — catastrophic if injected." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Interscalene groove & C5–C7 root anatomy", anchor: "interscalene-block" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Interscalene block — indications, complications", anchor: "interscalene-block" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Interscalene groove & C5–C7 root anatomy", anchor: "approaches" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Interscalene block — indications, complications", anchor: "approaches" },
       ],
     },
   ],
@@ -298,8 +298,8 @@ export const upperLimbFolio: CorPictumFolioData = {
         { latin: "musculus coracobrachialis", english: "Coracobrachialis", note: "Pierced by musculocutaneous — surgical landmark." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Axillary anatomy & cords of the brachial plexus", anchor: "axillary-block" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Axillary brachial plexus block", anchor: "axillary-block" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Axillary anatomy & cords of the brachial plexus", anchor: "block-approaches" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Axillary brachial plexus block", anchor: "block-approaches" },
       ],
     },
     {
@@ -321,8 +321,8 @@ export const upperLimbFolio: CorPictumFolioData = {
         { latin: "vena basilica", english: "Basilic vein", note: "Medial; PICC line target." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Forearm & wrist nerve anatomy", anchor: "wrist-block" },
-        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Forearm & wrist blocks (median, ulnar, radial)", anchor: "wrist-block" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Forearm & wrist nerve anatomy", anchor: "terminal-nerves" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Forearm & wrist blocks (median, ulnar, radial)", anchor: "terminal-nerves" },
       ],
     },
   ],
@@ -349,8 +349,8 @@ export const lowerLimbFolio: CorPictumFolioData = {
         { latin: "musculus pectineus", english: "Pectineus", note: "Floor of the triangle medially." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Femoral triangle & lumbar plexus anatomy", anchor: "femoral-block" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Femoral & fascia iliaca blocks", anchor: "femoral-block" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Femoral triangle & lumbar plexus anatomy", anchor: "lumbar-plexus" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Femoral & fascia iliaca blocks", anchor: "lumbar-plexus" },
       ],
     },
     {
@@ -370,8 +370,8 @@ export const lowerLimbFolio: CorPictumFolioData = {
         { latin: "vena saphena parva", english: "Small saphenous vein", note: "Pierces popliteal fascia to drain into popliteal vein." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Popliteal fossa & sciatic nerve anatomy", anchor: "popliteal-block" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Popliteal sciatic nerve block — landmarks & sonoanatomy", anchor: "popliteal-block" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Popliteal fossa & sciatic nerve anatomy", anchor: "sacral-plexus" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Popliteal sciatic nerve block — landmarks & sonoanatomy", anchor: "sacral-plexus" },
       ],
     },
   ],
@@ -397,9 +397,9 @@ export const thoracicFolio: CorPictumFolioData = {
         { latin: "nervus phrenicus", english: "Phrenic nerve", note: "On the lateral pericardium; sole motor to diaphragm." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Thoracic cavity & lung anatomy", anchor: "thoracic-anatomy" },
-        { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery", anchor: "thoracic-anatomy" },
-        { code: "RC_BK_02", exams: [Exam.FINAL], title: "One-lung ventilation & DLT placement", anchor: "thoracic-anatomy" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Thoracic cavity & lung anatomy", anchor: "lung-anatomy" },
+        { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery", anchor: "lung-anatomy" },
+        { code: "RC_BK_02", exams: [Exam.FINAL], title: "One-lung ventilation & DLT placement", anchor: "lung-anatomy" },
       ],
     },
     {
@@ -447,9 +447,9 @@ export const abdominalFolio: CorPictumFolioData = {
         { latin: "ligamentum falciforme", english: "Falciform ligament", note: "Contains the round ligament (obliterated umbilical vein)." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Abdominal viscera & peritoneal anatomy", anchor: "abdominal-anatomy" },
-        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for general & upper-GI surgery", anchor: "abdominal-anatomy" },
-        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Abdominal field blocks (TAP, rectus sheath)", anchor: "abdominal-anatomy" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Abdominal viscera & peritoneal anatomy", anchor: "anterior-abdominal-wall-layers" },
+        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for general & upper-GI surgery", anchor: "anterior-abdominal-wall-layers" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Abdominal field blocks (TAP, rectus sheath)", anchor: "anterior-abdominal-wall-layers" },
       ],
     },
     {
@@ -471,9 +471,9 @@ export const abdominalFolio: CorPictumFolioData = {
         { latin: "diaphragma", english: "Diaphragm", note: "Crura attach to L1–L3 vertebral bodies." },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Retroperitoneal anatomy — kidneys & great vessels", anchor: "retroperitoneum" },
-        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for renal & retroperitoneal surgery", anchor: "retroperitoneum" },
-        { code: "OA_BK_05", exams: [Exam.FINAL], title: "Vascular anaesthesia — aorta & iliac vessels", anchor: "retroperitoneum" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Retroperitoneal anatomy — kidneys & great vessels", anchor: "key-abdominal-organs-anaesthetic-relevance" },
+        { code: "OA_BK_03", exams: [Exam.FINAL], title: "Anaesthesia for renal & retroperitoneal surgery", anchor: "key-abdominal-organs-anaesthetic-relevance" },
+        { code: "OA_BK_05", exams: [Exam.FINAL], title: "Vascular anaesthesia — aorta & iliac vessels", anchor: "key-abdominal-organs-anaesthetic-relevance" },
       ],
     },
   ],
@@ -619,9 +619,9 @@ export const cardiacFolio: CorPictumFolioData = {
         },
       ],
       curriculumLinks: [
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart & great vessels", anchor: "surface-anatomy" },
-        { code: "CR_BK_01", exams: [Exam.FINAL], title: "Coronary circulation & ischaemic heart disease", anchor: "coronary-supply" },
-        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Cardiac chambers & great-vessel relationships", anchor: "surface-anatomy" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart & great vessels", anchor: "heart-chambers-valves" },
+        { code: "CR_BK_01", exams: [Exam.FINAL], title: "Coronary circulation & ischaemic heart disease", anchor: "coronary-arteries" },
+        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Cardiac chambers & great-vessel relationships", anchor: "heart-chambers-valves" },
       ],
     },
     {
@@ -748,9 +748,9 @@ export const cardiacFolio: CorPictumFolioData = {
         },
       ],
       curriculumLinks: [
-        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Valvular heart disease — anatomy & assessment", anchor: "valves-and-chambers" },
-        { code: "CR_BK_05", exams: [Exam.FINAL], title: "Peri-operative echocardiography of the LV/RV", anchor: "valves-and-chambers" },
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Chambers, walls & ventricular geometry", anchor: "valves-and-chambers" },
+        { code: "CR_BK_02", exams: [Exam.FINAL], title: "Valvular heart disease — anatomy & assessment", anchor: "heart-chambers-valves" },
+        { code: "CR_BK_05", exams: [Exam.FINAL], title: "Peri-operative echocardiography of the LV/RV", anchor: "heart-chambers-valves" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Chambers, walls & ventricular geometry", anchor: "heart-chambers-valves" },
       ],
     },
     {
@@ -849,9 +849,9 @@ export const cardiacFolio: CorPictumFolioData = {
         },
       ],
       curriculumLinks: [
-        { code: "CR_BK_03", exams: [Exam.FINAL], title: "Cardiac conduction system & arrhythmogenesis", anchor: "conduction-system" },
-        { code: "CR_BK_06", exams: [Exam.FINAL], title: "Pacemakers, ICDs & peri-operative arrhythmia management", anchor: "conduction-system" },
-        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart — conducting tissue", anchor: "conduction-system" },
+        { code: "CR_BK_03", exams: [Exam.FINAL], title: "Cardiac conduction system & arrhythmogenesis", anchor: "conducting-system" },
+        { code: "CR_BK_06", exams: [Exam.FINAL], title: "Pacemakers, ICDs & peri-operative arrhythmia management", anchor: "conducting-system" },
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Anatomy of the heart — conducting tissue", anchor: "conducting-system" },
       ],
     },
   ],
