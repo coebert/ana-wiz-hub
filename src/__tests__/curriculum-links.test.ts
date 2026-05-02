@@ -88,7 +88,7 @@ describe("CorPictum curriculumLinks", () => {
         expect(folio.plates.length).toBeGreaterThan(0);
       });
 
-      const pageIds = extractIds(pagePath);
+      const pageIds = extractAnchorIds(pagePath);
 
       for (const plate of folio.plates) {
         const links = plate.curriculumLinks ?? [];
