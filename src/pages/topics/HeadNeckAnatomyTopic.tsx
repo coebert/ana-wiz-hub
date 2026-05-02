@@ -267,7 +267,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="front-of-neck">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Cricothyroidotomy & Tracheostomy Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D4. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
               <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
