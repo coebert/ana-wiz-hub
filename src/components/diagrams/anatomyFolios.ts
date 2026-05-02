@@ -378,14 +378,14 @@ export const lowerLimbFolio: CorPictumFolioData = {
 };
 
 export const thoracicFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Thorax",
+  atlasTitle: "Atlas of Anatomy — Thorax",
   atlasSubtitle: "Painted plates of the thoracic cavity",
   plates: [
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
-      title: "Cavitas Thoracis", subtitle: "Anterior view with chest wall removed",
+      title: "Thoracic Cavity", subtitle: "Anterior view with chest wall removed",
       image: thoracicAnterior, alt: "Painted anterior view of the thoracic cavity",
-      caption: "Aspectus anterior cavitatis thoracis",
+      caption: "Anterior view of the thoracic cavity",
       labels: [
         { latin: "pulmo dexter", english: "Right lung", note: "Three lobes; horizontal and oblique fissures." },
         { latin: "pulmo sinister", english: "Left lung", note: "Two lobes; cardiac notch and lingula." },
