@@ -152,9 +152,9 @@ export const neuroFolio: CorPictumFolioData = {
     },
     {
       id: "willis", tabLabel: "Circle of Willis", folio: "II",
-      title: "Circulus Arteriosus Willisii", subtitle: "Arterial circle at the base of the brain",
+      title: "Circle of Willis", subtitle: "Arterial circle at the base of the brain",
       image: neuroCircleWillis, alt: "Painted inferior view of the Circle of Willis",
-      caption: "Circulus arteriosus cerebri — aspectus inferior",
+      caption: "Cerebral arterial circle — inferior view",
       labels: [
         { latin: "arteria cerebri anterior", english: "Anterior cerebral artery", note: "Medial frontal and parietal lobes; leg homunculus." },
         { latin: "arteria communicans anterior", english: "Anterior communicating artery", note: "Common aneurysm site — bitemporal field defects, SAH." },
