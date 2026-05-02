@@ -124,20 +124,41 @@ const WestZonesDiagram = () => {
                   : `Pa(${z.pa}) > Pv(${z.pv}) > PA(${z.pA})`}
               </text>
 
-              {/* Capillary representation */}
+              {/* Capillary representation with animated flow */}
               {(() => {
                 const capY = y1 + 65;
                 const eff = getEffectiveZone(z);
                 const capOpacity = eff === 1 ? 0.2 : eff === 2 ? 0.5 : 0.8;
                 const capH = eff === 1 ? 4 : eff === 2 ? 8 : 12;
+                const capX = cx - 10;
+                const capW = 80;
+                // Animation: zone 1 = none, zone 2 = pulsatile (1.2s), zone 3 = continuous (0.9s)
+                const animDur = eff === 1 ? 0 : eff === 2 ? 1.2 : 0.9;
+                // Pulsatile = flow only during ~40% of cycle (systolic burst)
+                const keyTimes = eff === 2 ? "0;0.4;0.5;1" : undefined;
+                const xValues = eff === 2
+                  ? `${capX - 10};${capX + capW};${capX + capW};${capX - 10}`
+                  : `${capX - 10};${capX + capW}`;
                 return (
                   <>
                     {/* Alveolus */}
                     <circle cx={cx - 40} cy={capY} r={14} fill="none" stroke={zoneColor} strokeWidth="1" opacity={0.5} />
                     <text x={cx - 40} y={capY + 3} textAnchor="middle" className="text-[7px] fill-muted-foreground">Alv</text>
-                    {/* Capillary */}
-                    <rect x={cx - 10} y={capY - capH / 2} width={80} height={capH} rx={capH / 2}
-                      fill="hsl(0, 70%, 55%)" opacity={capOpacity} />
+                    {/* Capillary lumen */}
+                    <rect x={capX} y={capY - capH / 2} width={capW} height={capH} rx={capH / 2}
+                      fill="hsl(0, 70%, 55%)" opacity={capOpacity * 0.35} />
+                    {/* Animated RBC pulses (only zones 2 and 3) */}
+                    {eff > 1 && [0, 0.33, 0.66].map((delay, idx) => (
+                      <circle key={idx} cy={capY} r={capH / 2 - 1}
+                        fill="hsl(0, 75%, 45%)" opacity={capOpacity}>
+                        <animate attributeName="cx"
+                          values={xValues}
+                          {...(keyTimes ? { keyTimes } : {})}
+                          dur={`${animDur}s`}
+                          begin={`${-delay * animDur}s`}
+                          repeatCount="indefinite" />
+                      </circle>
+                    ))}
                     {/* Flow arrow */}
                     {eff > 1 && (
                       <polygon
