@@ -257,25 +257,44 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             <p className="text-xs text-muted-foreground mt-0.5 italic">{atlasSubtitle}</p>
           </div>
           {plates.length > 1 ? (
-            <div
-              role="tablist"
-              aria-label={atlasTitle}
-              className="inline-flex flex-wrap rounded-md border border-border bg-background p-0.5 gap-0.5"
-            >
-              {plates.map((p) => (
-                <Button
-                  key={p.id}
-                  role="tab"
-                  aria-selected={activeId === p.id}
-                  size="sm"
-                  variant={activeId === p.id ? "default" : "ghost"}
-                  className="h-8 px-3 text-xs flex flex-col items-start leading-tight"
-                  onClick={() => setActiveId(p.id)}
-                >
-                  <span className="font-semibold">{p.tabLabel}</span>
-                  <span className="text-[9px] opacity-70 -mt-0.5 italic">Plate {p.folio}</span>
-                </Button>
-              ))}
+            <div className="relative flex items-center gap-1 max-w-full sm:max-w-[34rem]">
+              <button
+                type="button"
+                aria-label="Scroll plates left"
+                onClick={() => tabRailRef.current?.scrollBy({ left: -160, behavior: "smooth" })}
+                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+              <div
+                ref={tabRailRef}
+                role="tablist"
+                aria-label={atlasTitle}
+                className="flex flex-1 overflow-x-auto snap-x snap-mandatory rounded-md border border-border bg-background p-0.5 gap-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {plates.map((p) => (
+                  <Button
+                    key={p.id}
+                    role="tab"
+                    aria-selected={activeId === p.id}
+                    size="sm"
+                    variant={activeId === p.id ? "default" : "ghost"}
+                    className="h-8 px-3 text-xs flex flex-col items-start leading-tight flex-none snap-start"
+                    onClick={() => setActiveId(p.id)}
+                  >
+                    <span className="font-semibold whitespace-nowrap">{p.tabLabel}</span>
+                    <span className="text-[9px] opacity-70 -mt-0.5 italic whitespace-nowrap">Plate {p.folio}</span>
+                  </Button>
+                ))}
+              </div>
+              <button
+                type="button"
+                aria-label="Scroll plates right"
+                onClick={() => tabRailRef.current?.scrollBy({ left: 160, behavior: "smooth" })}
+                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
+              >
+                <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
             </div>
           ) : null}
         </div>
