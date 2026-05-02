@@ -286,6 +286,13 @@ const TransfusionCoagulationTopic = () => {
               <li><strong>Re-suspension & return</strong> — washed RBCs are pumped into a re-infusion bag at Hct ~50–70% suspended in saline. They are returned through a standard blood-giving set with a 40 µm screen filter; in obstetrics or malignancy a leucodepletion (LDF, ~40 nm) filter is added in series.</li>
             </ol>
 
+
+            <div className="p-4 rounded-lg border border-border bg-muted/30 mb-4">
+              <p className="font-semibold text-foreground text-sm mb-1">What is ACD (ACD-A)?</p>
+              <p className="text-sm text-muted-foreground">
+                <strong>Acid–Citrate–Dextrose, formula A</strong> — a sterile anticoagulant solution containing <em>citric acid</em> (anhydrous 0.73 g/100 mL), <em>sodium citrate</em> (2.20 g/100 mL) and <em>dextrose</em> (2.45 g/100 mL), pH ~5. The citrate <strong>chelates ionised calcium</strong>, blocking the coagulation cascade at multiple Ca²⁺-dependent steps; the dextrose preserves red-cell metabolism (ATP and 2,3-DPG). In cell salvage, ACD-A is dripped into the suction tubing at the operative tip at roughly <strong>15 mL per 100 mL of shed blood</strong> (≈1 drop per second) and is washed out during the centrifuge wash cycle, so systemic citrate toxicity is rare. ACD-A is preferred over heparinised saline whenever <strong>systemic heparin must be avoided</strong> (e.g. HIT, recent neurosurgery, active intracranial bleeding) and is the standard anticoagulant for apheresis circuits.
+              </p>
+            </div>
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm mb-1">What you get back</p>
