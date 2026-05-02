@@ -27,42 +27,133 @@ import { ReactNode } from "react";
 
 export const AnatomyDefs = ({ idPrefix = "anat" }: { idPrefix?: string }) => (
   <defs>
-    {/* Skin gradient — warm tan with subtle highlight */}
-    <radialGradient id={`${idPrefix}-skin`} cx="35%" cy="30%" r="80%">
-      <stop offset="0%" stopColor="hsl(34 75% 86%)" />
-      <stop offset="60%" stopColor="hsl(32 60% 76%)" />
-      <stop offset="100%" stopColor="hsl(28 45% 62%)" />
+    {/*
+     * Lighting model (shared across all primitives):
+     *   • Key light from upper-left (≈ 35% / 25%) — diffuse warm.
+     *   • Fill light bottom-right — cool, low intensity.
+     *   • Soft contact-occlusion under each limb via dropshadow filter.
+     * Gradients are intentionally low-saturation so themes stay calm.
+     */}
+
+    {/* SKIN — warm tan, three-stop radial with rim shadow.
+        Highlight at upper-left, mid-tone wrap, deep terminator at lower-right. */}
+    <radialGradient id={`${idPrefix}-skin`} cx="32%" cy="26%" r="85%">
+      <stop offset="0%" stopColor="hsl(34 78% 90%)" />
+      <stop offset="35%" stopColor="hsl(33 68% 82%)" />
+      <stop offset="72%" stopColor="hsl(30 55% 72%)" />
+      <stop offset="100%" stopColor="hsl(24 42% 56%)" />
     </radialGradient>
 
-    {/* Hair gradient */}
-    <linearGradient id={`${idPrefix}-hair`} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="hsl(28 35% 28%)" />
-      <stop offset="100%" stopColor="hsl(24 30% 20%)" />
+    {/* SKIN sheen overlay — narrow specular band, painted over limbs at low alpha. */}
+    <linearGradient id={`${idPrefix}-skin-sheen`} x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stopColor="hsl(40 100% 98%)" stopOpacity="0.55" />
+      <stop offset="22%" stopColor="hsl(40 100% 98%)" stopOpacity="0.18" />
+      <stop offset="55%" stopColor="hsl(40 100% 98%)" stopOpacity="0" />
+      <stop offset="100%" stopColor="hsl(20 40% 30%)" stopOpacity="0.18" />
     </linearGradient>
 
-    {/* Hospital gown — soft blue with cooler shadow */}
-    <linearGradient id={`${idPrefix}-gown`} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="hsl(210 60% 78%)" />
-      <stop offset="100%" stopColor="hsl(210 55% 64%)" />
+    {/* Hair gradient — slightly more contrast for depth */}
+    <linearGradient id={`${idPrefix}-hair`} x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%" stopColor="hsl(28 38% 32%)" />
+      <stop offset="55%" stopColor="hsl(26 34% 24%)" />
+      <stop offset="100%" stopColor="hsl(22 30% 16%)" />
     </linearGradient>
 
-    {/* Drape / sheet — pale neutral */}
-    <linearGradient id={`${idPrefix}-drape`} x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stopColor="hsl(210 25% 92%)" />
-      <stop offset="100%" stopColor="hsl(210 20% 80%)" />
+    {/* GOWN — soft blue, four-stop with subtle shadow on the underside */}
+    <linearGradient id={`${idPrefix}-gown`} x1="0.25" y1="0" x2="0.75" y2="1">
+      <stop offset="0%" stopColor="hsl(210 65% 84%)" />
+      <stop offset="40%" stopColor="hsl(210 60% 75%)" />
+      <stop offset="78%" stopColor="hsl(212 52% 62%)" />
+      <stop offset="100%" stopColor="hsl(214 48% 50%)" />
     </linearGradient>
 
-    {/* Soft shadow under the body */}
-    <filter id={`${idPrefix}-shadow`} x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.6" />
-      <feOffset dx="0" dy="0.7" result="o" />
-      <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+    {/* GOWN sheen — narrow off-axis highlight to imply pressed cotton */}
+    <linearGradient id={`${idPrefix}-gown-sheen`} x1="0" y1="0" x2="1" y2="1.2">
+      <stop offset="0%" stopColor="hsl(210 100% 98%)" stopOpacity="0.45" />
+      <stop offset="30%" stopColor="hsl(210 100% 98%)" stopOpacity="0.12" />
+      <stop offset="70%" stopColor="hsl(214 60% 30%)" stopOpacity="0" />
+      <stop offset="100%" stopColor="hsl(216 60% 25%)" stopOpacity="0.22" />
+    </linearGradient>
+
+    {/* DRAPE — paper-warm neutral, top-lit */}
+    <linearGradient id={`${idPrefix}-drape`} x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0%" stopColor="hsl(210 28% 95%)" />
+      <stop offset="55%" stopColor="hsl(210 22% 86%)" />
+      <stop offset="100%" stopColor="hsl(212 20% 72%)" />
+    </linearGradient>
+
+    {/* DRAPE fold-shadow — applied as an overlay along seam lines */}
+    <linearGradient id={`${idPrefix}-drape-fold`} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(212 25% 30%)" stopOpacity="0" />
+      <stop offset="50%" stopColor="hsl(212 25% 30%)" stopOpacity="0.18" />
+      <stop offset="100%" stopColor="hsl(212 25% 30%)" stopOpacity="0" />
+    </linearGradient>
+
+    {/* Ambient-occlusion gradient — a soft dark vignette painted under joints */}
+    <radialGradient id={`${idPrefix}-ao`} cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="hsl(220 30% 12%)" stopOpacity="0.35" />
+      <stop offset="60%" stopColor="hsl(220 30% 12%)" stopOpacity="0.12" />
+      <stop offset="100%" stopColor="hsl(220 30% 12%)" stopOpacity="0" />
+    </radialGradient>
+
+    {/* Soft drop shadow — replaces the old single-blur version with a
+        two-pass shadow (tight contact + wider ambient) for depth. */}
+    <filter id={`${idPrefix}-shadow`} x="-20%" y="-20%" width="140%" height="140%">
+      {/* Tight contact shadow */}
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="contact" />
+      <feOffset in="contact" dx="0" dy="0.6" result="contactOff" />
+      <feComponentTransfer in="contactOff" result="contactA">
+        <feFuncA type="linear" slope="0.45" />
+      </feComponentTransfer>
+      {/* Wider ambient shadow */}
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="ambient" />
+      <feOffset in="ambient" dx="0.6" dy="2.4" result="ambientOff" />
+      <feComponentTransfer in="ambientOff" result="ambientA">
+        <feFuncA type="linear" slope="0.22" />
+      </feComponentTransfer>
       <feMerge>
-        <feMergeNode />
+        <feMergeNode in="ambientA" />
+        <feMergeNode in="contactA" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+
+    {/* Inner-shadow filter — used by gown/drape to imply concavity at neck/folds */}
+    <filter id={`${idPrefix}-inner`} x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="blur" />
+      <feOffset in="blur" dx="0" dy="1.2" result="off" />
+      <feComposite in="off" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="inner" />
+      <feColorMatrix in="inner" type="matrix"
+        values="0 0 0 0 0.08
+                0 0 0 0 0.10
+                0 0 0 0 0.18
+                0 0 0 0.45 0" result="innerC" />
+      <feComposite in="innerC" in2="SourceGraphic" operator="in" result="innerMasked" />
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="innerMasked" />
+      </feMerge>
+    </filter>
   </defs>
+);
+
+/** Reusable soft contact-shadow blob — drop under a limb/torso for grounding. */
+export const ContactShadow = ({
+  cx,
+  cy,
+  rx,
+  ry,
+  idPrefix = "anat",
+  opacity = 0.35,
+}: {
+  cx: number;
+  cy: number;
+  rx: number;
+  ry: number;
+  idPrefix?: string;
+  opacity?: number;
+}) => (
+  <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill={`url(#${idPrefix}-ao)`} opacity={opacity} />
 );
 
 const SKIN = (p: string) => `url(#${p}-skin)`;
