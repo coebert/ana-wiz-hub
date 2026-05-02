@@ -553,6 +553,11 @@ export const Leg = ({
         d={taperedLimb(hx, hy, kx, ky, thighW * 1.05, thighW * 0.78)}
         fill={fillColor} stroke={strokeColor} strokeWidth={1} strokeLinejoin="round"
       />
+      <path
+        d={taperedLimb(hx, hy, kx, ky, thighW * 1.05, thighW * 0.78)}
+        fill={`url(#${idPrefix}-${draped ? "gown-sheen" : "skin-sheen"})`}
+        pointerEvents="none"
+      />
       {draped && (
         <>
           {/* Drape folds along the thigh */}
