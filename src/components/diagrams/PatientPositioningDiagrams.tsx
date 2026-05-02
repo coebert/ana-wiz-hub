@@ -888,20 +888,21 @@ export const ParkBenchDetailedDiagram = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px]">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px]">
         {/* Diagram column */}
         <div className="p-3 bg-[hsl(var(--background))]">
-          <svg viewBox="0 0 560 320" className="w-full h-auto" role="img" aria-label="Park-bench position with pressure-risk hotspots">
+          <div className="overflow-x-auto -mx-1 px-1">
+            <svg viewBox="0 0 560 320" className="w-full h-auto min-w-[520px]" role="img" aria-label="Park-bench position with pressure-risk hotspots">
             {/* Floor line */}
             <line x1={20} y1={285} x2={540} y2={285} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
-            <text x={20} y={300} fontSize={9} fill="hsl(var(--muted-foreground))">FLOOR</text>
+            <text x={20} y={300} fontSize={11} fill="hsl(var(--muted-foreground))">FLOOR</text>
 
             {/* Operating table */}
             <Table x={70} y={185} w={420} />
 
             {/* Beanbag / vacuum mattress */}
             <ellipse cx={290} cy={170} rx={185} ry={18} fill="hsl(45 35% 75%)" opacity={0.55} />
-            <text x={490} y={170} fontSize={9} fill="hsl(var(--muted-foreground))">vacuum mattress</text>
+            <text x={490} y={170} fontSize={11} fill="hsl(var(--muted-foreground))">vacuum mattress</text>
 
             {/* Patient body — lateral */}
             <ellipse cx={290} cy={150} rx={140} ry={26} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
@@ -913,44 +914,44 @@ export const ParkBenchDetailedDiagram = () => {
               <line x1={125} y1={92} x2={117} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
               <line x1={155} y1={92} x2={163} y2={80} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
               <line x1={140} y1={88} x2={140} y2={75} stroke="hsl(280 60% 40%)" strokeWidth={3.2} />
-              <text x={140} y={68} fontSize={9} fontWeight={600} fill="hsl(280 60% 40%)" textAnchor="middle">Mayfield 3-pin</text>
+              <text x={140} y={68} fontSize={11} fontWeight={600} fill="hsl(280 60% 40%)" textAnchor="middle">Mayfield 3-pin</text>
               {/* ETT armoured */}
               <path d="M 150 118 Q 175 130 195 130" fill="none" stroke="hsl(var(--foreground))" strokeWidth={2} />
-              <text x={195} y={123} fontSize={9} fill="hsl(var(--muted-foreground))">armoured ETT</text>
+              <text x={195} y={123} fontSize={11} fill="hsl(var(--muted-foreground))">armoured ETT</text>
             </g>
 
             {/* Axillary roll caudal to axilla */}
             <ellipse cx={200} cy={155} rx={14} ry={7} fill={POS_GREEN} opacity={0.85} />
-            <text x={200} y={134} fontSize={9} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>axillary roll (NOT in axilla)</text>
+            <text x={200} y={132} fontSize={11} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>axillary roll (NOT in axilla)</text>
 
             {/* Dependent arm — hanging off table edge in sling */}
             <line x1={215} y1={158} x2={225} y2={235} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
             <path d="M 200 235 Q 230 260 255 230" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
-            <text x={235} y={273} fontSize={9} fill="hsl(280 50% 45%)" fontWeight={600}>padded sling</text>
+            <text x={235} y={275} fontSize={11} fill="hsl(280 50% 45%)" fontWeight={600}>padded sling</text>
 
             {/* Upper arm — supported forwards on padded gutter */}
             <line x1={245} y1={140} x2={295} y2={108} stroke="hsl(35 80% 80%)" strokeWidth={13} strokeLinecap="round" />
             <rect x={285} y={100} width={45} height={14} rx={4} fill={POS_GREEN} opacity={0.6} />
-            <text x={307} y={94} fontSize={9} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>arm gutter</text>
+            <text x={307} y={92} fontSize={11} textAnchor="middle" fill={POS_GREEN} fontWeight={600}>arm gutter</text>
 
             {/* Legs — flexed, pillow between knees */}
             <line x1={400} y1={155} x2={455} y2={135} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
             <line x1={400} y1={155} x2={465} y2={172} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
             <ellipse cx={445} cy={150} rx={9} ry={5} fill={POS_GREEN} opacity={0.85} />
-            <text x={478} y={150} fontSize={9} fill={POS_GREEN} fontWeight={600}>knee pad</text>
+            <text x={478} y={150} fontSize={11} fill={POS_GREEN} fontWeight={600}>knee pad</text>
 
             {/* Hip + thigh tape */}
             <line x1={310} y1={130} x2={310} y2={195} stroke="hsl(0 0% 25%)" strokeWidth={3} />
             <line x1={370} y1={132} x2={370} y2={195} stroke="hsl(0 0% 25%)" strokeWidth={3} />
-            <text x={340} y={125} fontSize={9} textAnchor="middle" fill="hsl(var(--muted-foreground))">strapping</text>
+            <text x={340} y={123} fontSize={11} textAnchor="middle" fill="hsl(var(--muted-foreground))">strapping</text>
 
             {/* Surgical access arrow — surgeon comes from behind the head */}
             <path d="M 70 60 Q 110 50 145 75" fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} strokeDasharray="3 3" />
-            <text x={75} y={48} fontSize={9} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
+            <text x={75} y={46} fontSize={11} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
 
             {/* Heart-to-craniotomy hydrostatic gradient */}
             <line x1={290} y1={150} x2={140} y2={90} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1} />
-            <text x={210} y={108} fontSize={9} fill={POS_AMBER} fontWeight={600}>~10–15 cm gradient (VAE)</text>
+            <text x={210} y={106} fontSize={11} fill={POS_AMBER} fontWeight={600}>~10–15 cm gradient (VAE)</text>
 
             {/* Hotspots */}
             {PB_HOTSPOTS.map((h, i) => {
@@ -966,7 +967,7 @@ export const ParkBenchDetailedDiagram = () => {
                   <circle
                     cx={h.x}
                     cy={h.y}
-                    r={isActive ? 13 : 11}
+                    r={isActive ? 14 : 12}
                     fill={colour}
                     fillOpacity={isActive ? 0.95 : 0.85}
                     stroke="hsl(var(--background))"
@@ -974,9 +975,9 @@ export const ParkBenchDetailedDiagram = () => {
                   />
                   <text
                     x={h.x}
-                    y={h.y + 3.5}
+                    y={h.y + 4}
                     textAnchor="middle"
-                    fontSize={10}
+                    fontSize={12}
                     fontWeight={700}
                     fill="hsl(var(--background))"
                   >
@@ -985,10 +986,11 @@ export const ParkBenchDetailedDiagram = () => {
                 </g>
               );
             })}
-          </svg>
+            </svg>
+          </div>
 
           {/* Severity legend */}
-          <div className="mt-2 flex items-center gap-4 text-[11px] text-muted-foreground px-1">
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground px-1">
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_RED }} /> High risk</span>
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_AMBER }} /> Moderate</span>
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_GREEN }} /> Low / supportive</span>
