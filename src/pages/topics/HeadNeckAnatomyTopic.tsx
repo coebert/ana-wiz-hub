@@ -142,7 +142,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="neck-cross-section">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6. Cross-Section at C6 Level</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B2. Cross-Section at C6 Level</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Understanding the fascial planes and spatial relationships at C6 (cricoid level) is essential for central venous access, stellate ganglion block, and understanding the spread of deep neck infections.
             </p>
@@ -150,7 +150,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="cervical-plexus">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Cervical Plexus</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B3. Cervical Plexus</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Formed by C1–C4 ventral rami. Superficial cervical plexus emerges at the posterior border of SCM (Erb's point). Provides sensory innervation to neck, ear, and shoulder. Deep cervical plexus block targets C2–C4 transverse processes — used for carotid endarterectomy. Phrenic nerve (C3,4,5) arises from cervical plexus — risk of paralysis with deep block.
             </p>
@@ -158,7 +158,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="ijv">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">8. Internal Jugular Vein Cannulation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B4. Internal Jugular Vein Cannulation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The IJV runs within the carotid sheath, lateral to the ICA/CCA, deep to SCM. It joins the subclavian vein behind the sternoclavicular joint to form the brachiocephalic vein.
             </p>
@@ -174,9 +174,17 @@ const HeadNeckAnatomyTopic = () => {
             </div>
           </div>
 
-          {/* ============== AIRWAY DESCENT ============== */}
+          {/* ==================================================================== */}
+          {/* PART C — UPPER AIRWAY (NOSE & PHARYNX)                                */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part C</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Upper Airway — Nose & Pharynx</h2>
+            <p className="text-sm text-muted-foreground mt-1">The conducting passages above the larynx — relevant to nasal intubation, awake fibreoptic technique, and topical anaesthesia of the upper airway.</p>
+          </div>
+
           <div id="nasal-pharynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">9. Nasal Cavity & Pharynx</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">C1. Nasal Cavity & Pharynx</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The nasal cavity is divided by the septum. Three turbinates (superior, middle, inferior) increase surface area for warming and humidification. Kiesselbach's plexus (Little's area) on the anterior septum is the commonest site of epistaxis.
             </p>
@@ -192,8 +200,17 @@ const HeadNeckAnatomyTopic = () => {
             </div>
           </div>
 
+          {/* ==================================================================== */}
+          {/* PART D — LARYNX & FRONT-OF-NECK ACCESS                                */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part D</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Larynx & Front-of-Neck Access</h2>
+            <p className="text-sm text-muted-foreground mt-1">Cartilaginous skeleton and cross-sectional anatomy, vagal innervation (SLN/RLN) and palsy patterns, and the surface landmarks for emergency cricothyroidotomy and elective tracheostomy.</p>
+          </div>
+
           <div id="larynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">10. Laryngeal Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Laryngeal Skeleton & Cross-Section</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The larynx extends from C3–C6. It comprises a cartilaginous skeleton, intrinsic and extrinsic muscles, and mucosal lining.
             </p>
