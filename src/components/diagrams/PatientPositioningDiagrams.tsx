@@ -340,24 +340,8 @@ export const PronePositionDiagram = () => (
     legend={<>Common procedures: posterior spinal surgery, posterior fossa craniotomy, nephrolithotomy (PCNL), severe ARDS proning in ICU.</>}
   >
     <Table x={70} y={180} w={420} />
-    {/* Prone patient — face-down on chest + pelvis supports */}
-    {/* Chest support */}
-    <rect x={170} y={150} width={50} height={20} rx={4} fill="hsl(280 50% 45%)" opacity={0.85} />
-    {/* Pelvis support */}
-    <rect x={330} y={150} width={50} height={20} rx={4} fill="hsl(280 50% 45%)" opacity={0.85} />
-    {/* Body — gowned back */}
-    <TorsoProne idPrefix="pf" x={140} y={114} length={250} shoulderW={48} hipW={44} />
-    {/* Head — face-down in horseshoe (top of head visible) */}
-    <HeadFront idPrefix="pf" cx={120} cy={132} r={18} closedEyes={false} />
-    {/* horseshoe / Mayfield mirror cradle */}
-    <path d="M 95 142 Q 120 154 145 142 L 145 132 L 95 132 Z"
-      fill="hsl(280 50% 45%)" opacity={0.85} stroke="hsl(280 60% 30%)" strokeWidth={0.8} />
-    {/* Arms — superman position */}
-    <Arm idPrefix="pf" sx={170} sy={120} ex={210} ey={100} wx={235} wy={88} upperW={12} foreW={10} gownSleeve />
-    <Arm idPrefix="pf" sx={170} sy={158} ex={210} ey={178} wx={235} wy={190} upperW={12} foreW={10} gownSleeve />
-    {/* Legs */}
-    <Leg idPrefix="pf" hx={390} hy={128} kx={430} ky={130} ax={478} ay={132} thighW={20} calfW={16} footLen={18} />
-    <Leg idPrefix="pf" hx={390} hy={150} kx={430} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+    {/* Prone patient — composite handles chest+pelvis supports, torso, head, horseshoe, superman arms, legs */}
+    <PronePatient idPrefix="pf" x={140} y={114} length={250} />
     <text x={280} y={172} textAnchor="middle" fontSize={10} fill={POS_GREEN} fontWeight={700}>abdomen hangs free</text>
     <text x={280} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">prone — chest & pelvis supported, abdomen free</text>
   </PositionFrame>
