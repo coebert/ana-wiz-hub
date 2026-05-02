@@ -298,7 +298,6 @@ const PatientPositioningTopic = () => {
               ))}
             </div>
           </ExamSection>
-        </>
         </div>
         </RealismProvider>
       }
