@@ -628,11 +628,11 @@ export const cardiacFolio: CorPictumFolioData = {
       id: "short-axis",
       tabLabel: "Short axis",
       folio: "II",
-      title: "Sectio Transversalis",
+      title: "Short-Axis Cross-Section",
       subtitle: "Mid-ventricular short-axis cross-section",
       image: cardiacShortAxis,
       alt: "Painted short-axis cross-section of the heart at mid-ventricular level",
-      caption: "Sectio brevis-axialis ventriculorum mediorum",
+      caption: "Short-axis cross-section at the mid-ventricular level",
       labels: [
         {
           latin: "ventriculus sinister",
