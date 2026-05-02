@@ -491,18 +491,18 @@ export const abdominalFolio: CorPictumFolioData = {
  * give a recognisable highlight without claiming pixel-perfect alignment.
  */
 export const cardiacFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Cor et Vasa Magna",
+  atlasTitle: "Atlas of Anatomy — Heart and Great Vessels",
   atlasSubtitle: "Painted plates of the heart and great vessels",
   plates: [
     {
       id: "anterior",
       tabLabel: "Anterior",
       folio: "I",
-      title: "Cor in Situ",
+      title: "Heart in Situ",
       subtitle: "Anterior view, pericardium opened",
       image: cardiacAnterior,
       alt: "Painted anterior view of the heart and great vessels with coronary arteries",
-      caption: "Aspectus anterior cordis et vasorum magnorum",
+      caption: "Anterior view of the heart and great vessels",
       labels: [
         {
           latin: "aorta ascendens",
