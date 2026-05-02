@@ -31,14 +31,14 @@ export interface CorPictumFolioData {
 }
 
 export const airwayFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Vias Aerias Superiores",
+  atlasTitle: "Atlas of Anatomy — Upper Airway",
   atlasSubtitle: "Painted plates of the upper airway and larynx",
   plates: [
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "I",
-      title: "Oropharynx et Larynx", subtitle: "Sagittal view of the airway",
+      title: "Oropharynx and Larynx", subtitle: "Sagittal view of the airway",
       image: airwaySagittal, alt: "Painted sagittal section of the upper airway",
-      caption: "Sectio sagittalis viarum aeriarum superiorum",
+      caption: "Sagittal section of the upper airway",
       labels: [
         { latin: "lingua", english: "Tongue", note: "Falls posteriorly under sedation — first cause of obstruction." },
         { latin: "palatum molle", english: "Soft palate", note: "Velopharyngeal seal; relaxes in deep anaesthesia." },
@@ -57,9 +57,9 @@ export const airwayFolio: CorPictumFolioData = {
     },
     {
       id: "laryngoscopic", tabLabel: "Laryngoscopic", folio: "II",
-      title: "Aditus Laryngis", subtitle: "View through the laryngoscope",
+      title: "Laryngeal Inlet", subtitle: "View through the laryngoscope",
       image: airwayLaryngoscopic, alt: "Painted superior view of the laryngeal inlet",
-      caption: "Aspectus superior aditus laryngis",
+      caption: "Superior view of the laryngeal inlet",
       labels: [
         { latin: "epiglottis", english: "Epiglottis", note: "Anterior boundary of the inlet." },
         { latin: "plica aryepiglottica", english: "Aryepiglottic fold", note: "Lateral wall of the inlet; landmark for SAD seating." },
@@ -79,14 +79,14 @@ export const airwayFolio: CorPictumFolioData = {
 };
 
 export const headNeckFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Caput et Collum",
+  atlasTitle: "Atlas of Anatomy — Head and Neck",
   atlasSubtitle: "Painted plates of the head and neck",
   plates: [
     {
       id: "superficial", tabLabel: "Superficial", folio: "I",
-      title: "Regio Parotidea et Cervicalis", subtitle: "Superficial dissection",
+      title: "Parotid and Cervical Region", subtitle: "Superficial dissection",
       image: headneckSuperficial, alt: "Painted superficial dissection of the head and neck",
-      caption: "Dissectio superficialis regionis parotideae et cervicalis",
+      caption: "Superficial dissection of the parotid and cervical region",
       labels: [
         { latin: "glandula parotidea", english: "Parotid gland", note: "Facial nerve traverses it — surgically perilous." },
         { latin: "nervus facialis", english: "Facial nerve (CN VII)", note: "Five terminal branches: temporal, zygomatic, buccal, marginal mandibular, cervical." },
@@ -103,9 +103,9 @@ export const headNeckFolio: CorPictumFolioData = {
     },
     {
       id: "carotid", tabLabel: "Carotid sheath", folio: "II",
-      title: "Vagina Carotica", subtitle: "Deep dissection of the carotid sheath",
+      title: "Carotid Sheath", subtitle: "Deep dissection of the carotid sheath",
       image: headneckCarotid, alt: "Painted deep dissection of the carotid sheath",
-      caption: "Dissectio profunda vaginae caroticae",
+      caption: "Deep dissection of the carotid sheath",
       labels: [
         { latin: "arteria carotis communis", english: "Common carotid artery", note: "Bifurcates at C4 (upper border of thyroid cartilage)." },
         { latin: "arteria carotis interna", english: "Internal carotid", note: "No branches in the neck — supplies brain via Circle of Willis." },
@@ -126,14 +126,14 @@ export const headNeckFolio: CorPictumFolioData = {
 };
 
 export const neuroFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Encephalon",
+  atlasTitle: "Atlas of Anatomy — Brain",
   atlasSubtitle: "Painted plates of the brain and its arteries",
   plates: [
     {
       id: "midsagittal", tabLabel: "Midsagittal", folio: "I",
-      title: "Sectio Mediana Encephali", subtitle: "Midline section of the brain",
+      title: "Midsagittal Section of the Brain", subtitle: "Midline section of the brain",
       image: neuroMidsagittal, alt: "Painted midsagittal section of the brain",
-      caption: "Sectio sagittalis mediana encephali",
+      caption: "Midsagittal section of the brain",
       labels: [
         { latin: "corpus callosum", english: "Corpus callosum", note: "Largest commissure; interhemispheric communication." },
         { latin: "fornix", english: "Fornix", note: "Output tract of the hippocampus to the mamillary bodies." },
@@ -152,9 +152,9 @@ export const neuroFolio: CorPictumFolioData = {
     },
     {
       id: "willis", tabLabel: "Circle of Willis", folio: "II",
-      title: "Circulus Arteriosus Willisii", subtitle: "Arterial circle at the base of the brain",
+      title: "Circle of Willis", subtitle: "Arterial circle at the base of the brain",
       image: neuroCircleWillis, alt: "Painted inferior view of the Circle of Willis",
-      caption: "Circulus arteriosus cerebri — aspectus inferior",
+      caption: "Cerebral arterial circle — inferior view",
       labels: [
         { latin: "arteria cerebri anterior", english: "Anterior cerebral artery", note: "Medial frontal and parietal lobes; leg homunculus." },
         { latin: "arteria communicans anterior", english: "Anterior communicating artery", note: "Common aneurysm site — bitemporal field defects, SAH." },
@@ -176,14 +176,14 @@ export const neuroFolio: CorPictumFolioData = {
 };
 
 export const spinalFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Columna Vertebralis",
+  atlasTitle: "Atlas of Anatomy — Vertebral Column",
   atlasSubtitle: "Painted plates of the spinal cord and neuraxial spaces",
   plates: [
     {
       id: "posterior", tabLabel: "Posterior", folio: "I",
-      title: "Medulla Spinalis", subtitle: "Posterior view of the cord and cauda equina",
+      title: "Spinal Cord", subtitle: "Posterior view of the cord and cauda equina",
       image: spinalPosterior, alt: "Painted posterior view of the lumbar spinal cord",
-      caption: "Aspectus posterior medullae spinalis et caudae equinae",
+      caption: "Posterior view of the spinal cord and cauda equina",
       labels: [
         { latin: "lamina vertebrae", english: "Vertebral lamina", note: "Removed in laminectomy to access the cord." },
         { latin: "processus spinosus", english: "Spinous process", note: "Surface midline landmark for neuraxial blocks." },
@@ -201,9 +201,9 @@ export const spinalFolio: CorPictumFolioData = {
     },
     {
       id: "sagittal", tabLabel: "Sagittal", folio: "II",
-      title: "Spatium Epidurale et Subarachnoideum", subtitle: "Sagittal view for neuraxial anaesthesia",
+      title: "Epidural and Subarachnoid Spaces", subtitle: "Sagittal view for neuraxial anaesthesia",
       image: spinalSagittal, alt: "Painted midsagittal section of the lumbar spine showing neuraxial spaces",
-      caption: "Sectio sagittalis columnae lumbalis — accessus neuraxialis",
+      caption: "Sagittal section of the lumbar spine — neuraxial access",
       labels: [
         { latin: "corpus vertebrae", english: "Vertebral body", note: "Anterior weight-bearing column." },
         { latin: "discus intervertebralis", english: "Intervertebral disc", note: "Annulus fibrosus + nucleus pulposus." },
@@ -225,14 +225,14 @@ export const spinalFolio: CorPictumFolioData = {
 };
 
 export const brachialFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Plexus Brachialis",
+  atlasTitle: "Atlas of Anatomy — Brachial Plexus",
   atlasSubtitle: "Painted plates of the brachial plexus",
   plates: [
     {
       id: "plexus", tabLabel: "Whole plexus", folio: "I",
-      title: "Plexus Brachialis", subtitle: "Roots, trunks, divisions, cords, branches",
+      title: "Brachial Plexus", subtitle: "Roots, trunks, divisions, cords, branches",
       image: brachialPlexus, alt: "Painted view of the brachial plexus",
-      caption: "Plexus brachialis — regiones supraclavicularis et infraclavicularis",
+      caption: "Brachial plexus — supraclavicular and infraclavicular regions",
       labels: [
         { latin: "truncus superior", english: "Superior trunk (C5–C6)", note: "Target of interscalene block; spares C8/T1." },
         { latin: "truncus medius", english: "Middle trunk (C7)", note: "Continues as posterior division contribution." },
@@ -254,9 +254,9 @@ export const brachialFolio: CorPictumFolioData = {
     },
     {
       id: "interscalene", tabLabel: "Interscalene", folio: "II",
-      title: "Sulcus Interscalenicus", subtitle: "Cross-section at C6 for interscalene block",
+      title: "Interscalene Groove", subtitle: "Cross-section at C6 for interscalene block",
       image: brachialInterscalene, alt: "Painted cross-section of the interscalene groove at C6",
-      caption: "Sectio transversa colli ad C6 — sulcus interscalenicus",
+      caption: "Cross-section of the neck at C6 — interscalene groove",
       labels: [
         { latin: "musculus scalenus anterior", english: "Anterior scalene", note: "Anterior border of the groove; phrenic nerve on its surface." },
         { latin: "musculus scalenus medius", english: "Middle scalene", note: "Posterior border of the groove." },
@@ -277,14 +277,14 @@ export const brachialFolio: CorPictumFolioData = {
 };
 
 export const upperLimbFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Membrum Superius",
+  atlasTitle: "Atlas of Anatomy — Upper Limb",
   atlasSubtitle: "Painted plates of the upper limb",
   plates: [
     {
       id: "axilla", tabLabel: "Axilla", folio: "I",
-      title: "Regio Axillaris", subtitle: "Cords of the plexus around the axillary artery",
+      title: "Axillary Region", subtitle: "Cords of the plexus around the axillary artery",
       image: upperlimbAxilla, alt: "Painted view of the axilla and proximal upper arm",
-      caption: "Dissectio regionis axillaris et brachii proximalis",
+      caption: "Dissection of the axilla and proximal arm",
       labels: [
         { latin: "musculus pectoralis major (reflexus)", english: "Pectoralis major (reflected)", note: "Reflected to expose the axillary contents." },
         { latin: "arteria axillaris", english: "Axillary artery", note: "Three parts defined by pectoralis minor; landmark for axillary block." },
@@ -304,9 +304,9 @@ export const upperLimbFolio: CorPictumFolioData = {
     },
     {
       id: "forearm", tabLabel: "Forearm & wrist", folio: "II",
-      title: "Antebrachium et Carpus", subtitle: "Anterior forearm with carpal tunnel",
+      title: "Forearm and Wrist", subtitle: "Anterior forearm with carpal tunnel",
       image: upperlimbForearm, alt: "Painted anterior view of the forearm and hand",
-      caption: "Aspectus anterior antebrachii et manus",
+      caption: "Anterior view of the forearm and hand",
       labels: [
         { latin: "musculus flexor carpi radialis", english: "Flexor carpi radialis", note: "Tendon medial to radial artery at the wrist." },
         { latin: "musculus palmaris longus", english: "Palmaris longus", note: "Absent in ~15%; landmark for median nerve." },
@@ -329,14 +329,14 @@ export const upperLimbFolio: CorPictumFolioData = {
 };
 
 export const lowerLimbFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Membrum Inferius",
+  atlasTitle: "Atlas of Anatomy — Lower Limb",
   atlasSubtitle: "Painted plates of the lower limb",
   plates: [
     {
       id: "femoral", tabLabel: "Femoral triangle", folio: "I",
-      title: "Trigonum Femorale", subtitle: "Anterior thigh and femoral sheath",
+      title: "Femoral Triangle", subtitle: "Anterior thigh and femoral sheath",
       image: lowerlimbFemoral, alt: "Painted anterior view of the femoral triangle",
-      caption: "Trigonum femorale — aspectus anterior",
+      caption: "Femoral triangle — anterior view",
       labels: [
         { latin: "ligamentum inguinale", english: "Inguinal ligament", note: "Superior border of the triangle." },
         { latin: "musculus sartorius", english: "Sartorius", note: "Lateral border of the triangle." },
@@ -355,9 +355,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     },
     {
       id: "popliteal", tabLabel: "Popliteal fossa", folio: "II",
-      title: "Fossa Poplitea", subtitle: "Posterior knee for sciatic block",
+      title: "Popliteal Fossa", subtitle: "Posterior knee for sciatic block",
       image: lowerlimbPopliteal, alt: "Painted posterior view of the popliteal fossa",
-      caption: "Fossa poplitea — aspectus posterior",
+      caption: "Popliteal fossa — posterior view",
       labels: [
         { latin: "musculus biceps femoris", english: "Biceps femoris", note: "Superolateral border; common peroneal nerve hugs its medial edge." },
         { latin: "musculus semitendinosus", english: "Semitendinosus", note: "Superomedial border." },
@@ -378,14 +378,14 @@ export const lowerLimbFolio: CorPictumFolioData = {
 };
 
 export const thoracicFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Thorax",
+  atlasTitle: "Atlas of Anatomy — Thorax",
   atlasSubtitle: "Painted plates of the thoracic cavity",
   plates: [
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
-      title: "Cavitas Thoracis", subtitle: "Anterior view with chest wall removed",
+      title: "Thoracic Cavity", subtitle: "Anterior view with chest wall removed",
       image: thoracicAnterior, alt: "Painted anterior view of the thoracic cavity",
-      caption: "Aspectus anterior cavitatis thoracis",
+      caption: "Anterior view of the thoracic cavity",
       labels: [
         { latin: "pulmo dexter", english: "Right lung", note: "Three lobes; horizontal and oblique fissures." },
         { latin: "pulmo sinister", english: "Left lung", note: "Two lobes; cardiac notch and lingula." },
@@ -404,9 +404,9 @@ export const thoracicFolio: CorPictumFolioData = {
     },
     {
       id: "mediastinum", tabLabel: "Mediastinum", folio: "II",
-      title: "Mediastinum Dextrum", subtitle: "Right lateral view after lung removal",
+      title: "Right Mediastinum", subtitle: "Right lateral view after lung removal",
       image: thoracicMediastinum, alt: "Painted lateral view of the right mediastinum",
-      caption: "Aspectus lateralis mediastini dextri",
+      caption: "Right lateral view of the mediastinum",
       labels: [
         { latin: "vena cava superior", english: "Superior vena cava", note: "Receives azygos vein before entering right atrium." },
         { latin: "vena azygos", english: "Azygos vein", note: "Arches over right main bronchus." },
@@ -427,14 +427,14 @@ export const thoracicFolio: CorPictumFolioData = {
 };
 
 export const abdominalFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Abdomen",
+  atlasTitle: "Atlas of Anatomy — Abdomen",
   atlasSubtitle: "Painted plates of the abdominal cavity",
   plates: [
     {
       id: "anterior", tabLabel: "Anterior", folio: "I",
-      title: "Cavitas Abdominis", subtitle: "Anterior view with greater omentum removed",
+      title: "Abdominal Cavity", subtitle: "Anterior view with greater omentum removed",
       image: abdominalAnterior, alt: "Painted anterior view of the abdominal viscera",
-      caption: "Aspectus anterior viscerum abdominis",
+      caption: "Anterior view of the abdominal viscera",
       labels: [
         { latin: "hepar", english: "Liver", note: "Right upper quadrant; eight Couinaud segments." },
         { latin: "vesica fellea", english: "Gallbladder", note: "Inferior surface of liver; Murphy's sign on palpation." },
@@ -454,9 +454,9 @@ export const abdominalFolio: CorPictumFolioData = {
     },
     {
       id: "retroperitoneum", tabLabel: "Retroperitoneum", folio: "II",
-      title: "Spatium Retroperitoneale", subtitle: "Posterior view of the great vessels and kidneys",
+      title: "Retroperitoneum", subtitle: "Posterior view of the great vessels and kidneys",
       image: abdominalRetroperitoneum, alt: "Painted view of the retroperitoneum",
-      caption: "Aspectus posterior spatii retroperitonealis",
+      caption: "Posterior view of the retroperitoneal space",
       labels: [
         { latin: "ren dexter", english: "Right kidney", note: "Slightly lower due to the liver above." },
         { latin: "ren sinister", english: "Left kidney", note: "Hilum at L1; renal vein crosses anterior to aorta." },
@@ -491,18 +491,18 @@ export const abdominalFolio: CorPictumFolioData = {
  * give a recognisable highlight without claiming pixel-perfect alignment.
  */
 export const cardiacFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Cor et Vasa Magna",
+  atlasTitle: "Atlas of Anatomy — Heart and Great Vessels",
   atlasSubtitle: "Painted plates of the heart and great vessels",
   plates: [
     {
       id: "anterior",
       tabLabel: "Anterior",
       folio: "I",
-      title: "Cor in Situ",
+      title: "Heart in Situ",
       subtitle: "Anterior view, pericardium opened",
       image: cardiacAnterior,
       alt: "Painted anterior view of the heart and great vessels with coronary arteries",
-      caption: "Aspectus anterior cordis et vasorum magnorum",
+      caption: "Anterior view of the heart and great vessels",
       labels: [
         {
           latin: "aorta ascendens",
@@ -628,11 +628,11 @@ export const cardiacFolio: CorPictumFolioData = {
       id: "short-axis",
       tabLabel: "Short axis",
       folio: "II",
-      title: "Sectio Transversalis",
+      title: "Short-Axis Cross-Section",
       subtitle: "Mid-ventricular short-axis cross-section",
       image: cardiacShortAxis,
       alt: "Painted short-axis cross-section of the heart at mid-ventricular level",
-      caption: "Sectio brevis-axialis ventriculorum mediorum",
+      caption: "Short-axis cross-section at the mid-ventricular level",
       labels: [
         {
           latin: "ventriculus sinister",
@@ -757,11 +757,11 @@ export const cardiacFolio: CorPictumFolioData = {
       id: "conduction",
       tabLabel: "Conduction",
       folio: "III",
-      title: "Systema Conducens",
+      title: "Conducting System",
       subtitle: "Long-axis view of the conducting system",
       image: cardiacConduction,
       alt: "Painted long-axis view of the cardiac conduction system",
-      caption: "Sectio longitudinalis systematis conducentis cordis",
+      caption: "Long-axis view of the cardiac conducting system",
       labels: [
         {
           latin: "nodus sinuatrialis",

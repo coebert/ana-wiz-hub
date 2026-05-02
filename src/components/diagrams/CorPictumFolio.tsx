@@ -399,9 +399,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                             node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
                           }}
                         >
-                          <title>
-                            {label.latin} — {label.english}
-                          </title>
+                          <title>{label.english}</title>
                         </polygon>
                       );
                     })}
@@ -447,8 +445,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             ) : null}
           </div>
 
-          {/* Italic Latin caption strip beneath the plate-mark */}
-          <p className="mt-3 text-center font-serif italic text-xs sm:text-sm text-muted-foreground">
+          {/* English caption strip beneath the plate-mark */}
+          <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
             {active.caption}
           </p>
 
@@ -568,8 +566,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-sm leading-snug">
-                      <span className="font-serif italic text-foreground">{label.latin}</span>
-                      <span className="text-muted-foreground"> — {label.english}</span>
+                      <span className="font-semibold text-foreground">{label.english}</span>
                     </p>
                     <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{label.note}</p>
                     {label.learningPoint ? (
