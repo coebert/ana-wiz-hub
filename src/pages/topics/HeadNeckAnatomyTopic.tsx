@@ -11,7 +11,7 @@ import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagr
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
-import { headNeckFolio } from "@/components/diagrams/anatomyFolios";
+import { headNeckFolio, airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const HeadNeckAnatomyTopic = () => {
@@ -209,8 +209,16 @@ const HeadNeckAnatomyTopic = () => {
             <p className="text-sm text-muted-foreground mt-1">Cartilaginous skeleton and cross-sectional anatomy, vagal innervation (SLN/RLN) and palsy patterns, and the surface landmarks for emergency cricothyroidotomy and elective tracheostomy.</p>
           </div>
 
+          <div id="larynx-plates">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Larynx — Painted Atlas Plates</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Netter-style plates of the larynx in the four standard planes — sagittal, laryngoscopic, coronal, and axial — with anaesthetic and clinical labels. Use the tabs to switch between views.
+            </p>
+            <CorPictumFolio {...airwayFolio} />
+          </div>
+
           <div id="larynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Laryngeal Skeleton & Cross-Section</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Skeleton & Cross-Section</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The larynx extends from C3–C6. It comprises a cartilaginous skeleton, intrinsic and extrinsic muscles, and mucosal lining.
             </p>
@@ -238,7 +246,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="laryngeal-innervation">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Innervation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Laryngeal Innervation</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
             </p>
@@ -259,7 +267,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="front-of-neck">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Cricothyroidotomy & Tracheostomy Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D4. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
               <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
