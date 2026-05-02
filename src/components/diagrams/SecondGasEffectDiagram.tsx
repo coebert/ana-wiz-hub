@@ -393,8 +393,8 @@ const SecondGasEffectDiagram = () => {
           <p className="text-xs text-foreground">
             <span className="font-semibold">Clinical:</span>{" "}
             {isSecondGas
-              ? "Co-administering 70% N₂O speeds the rise of FA/FI of the second (volatile) agent — accelerated induction, especially with high-BGPC agents."
-              : "After turning off N₂O, deliver 100% O₂ for 3–5 minutes to prevent transient SpO₂ drop, particularly in the elderly or those with limited reserve."}
+              ? "Using ≈70% N₂O speeds the rise of FA/FI of the co-administered volatile (concentrating effect + augmented inflow) — clinically modest with modern low-solubility agents (sevoflurane, desflurane) but more pronounced with higher-BGPC agents."
+              : "After stopping N₂O, deliver 100% O₂ for the first 5–10 minutes of emergence to offset diffusion hypoxia, particularly in the elderly or patients with limited respiratory reserve."}
           </p>
         </div>
       </div>
