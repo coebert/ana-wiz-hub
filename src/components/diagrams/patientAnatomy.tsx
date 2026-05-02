@@ -1003,6 +1003,10 @@ export const RealismProvider = ({
 export const useRealismLevel = (): RealismLevel =>
   useContext(RealismContext) ?? "standard";
 
+/** Internal — primitives read this to know if they should paint sheens/creases. */
+const DetailContext = createContext<RealismLevel>("standard");
+const useDetail = () => useContext(DetailContext);
+
 const useRealism = (r: RealismProps = {}): Required<RealismProps> => {
   const ctxLevel = useContext(RealismContext);
   const fromCtx = ctxLevel ? realismPresetFor(ctxLevel) : {};
