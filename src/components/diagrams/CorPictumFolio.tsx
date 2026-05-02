@@ -1,16 +1,32 @@
-import { useState } from "react";
+import {
+  PointerEvent as ReactPointerEvent,
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useExamFilter } from "@/contexts/ExamFilterContext";
+import { ExamTag } from "@/data/curriculum";
 
 /**
- * Cor Pictum folio — a unified, in-app anatomical plate viewer rendered in the
+ * Cor Pictum folio — unified, in-app anatomical plate viewer in the
  * "painted heart" idiom: cream linen stock, hairline plate-mark, italic Latin
- * labels, oxidized-red Roman folio numerals, and whisper-quiet typography.
+ * labels, oxidized-red Roman folio numerals.
  *
- * Each topic supplies an array of `CorPictumPlate` entries. The viewer hosts
- * them in a single card with a quiet plate selector, a painted figure, the
- * italic Latin caption beneath the plate-mark, and the labelled-regions list
- * the rest of the atlas pages already use.
+ * Capabilities:
+ *  • Zoom (wheel / pinch / +/−) and pan (drag) anchored to the painted plate.
+ *  • Optional polygon hotspots that two-way-link with the labels list:
+ *    hover/focus a label → its polygon glows on the plate, and vice versa.
+ *  • Optional per-label exam tags (primary/final/fficm/edic) that respect the
+ *    global ExamFilterContext, mirroring BrainRegionsList behaviour.
+ *
+ * All new fields are optional, so existing folios that supply only
+ * { latin, english, note } continue to render unchanged.
  */
 
 export interface CorPictumLabel {
@@ -20,6 +36,16 @@ export interface CorPictumLabel {
   english: string;
   /** Short anatomical / clinical note */
   note: string;
+  /** Optional FRCA / FFICM exam tags — filtered by the global ExamFilterContext */
+  examTags?: ExamTag[];
+  /** Optional FRCA learning-point line surfaced beneath the note */
+  learningPoint?: string;
+  /**
+   * Optional polygon overlay in normalised plate coordinates (0..1, top-left
+   * origin). When supplied, hovering/focusing the label highlights this
+   * polygon, and hovering the polygon highlights this label.
+   */
+  polygon?: Array<[number, number]>;
 }
 
 export interface CorPictumPlate {
@@ -53,18 +79,142 @@ interface CorPictumFolioProps {
   className?: string;
 }
 
+const MIN_SCALE = 1;
+const MAX_SCALE = 5;
+
+const polygonToPoints = (polygon: Array<[number, number]>) =>
+  polygon.map(([x, y]) => `${x * 100},${y * 100}`).join(" ");
+
 const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPictumFolioProps) => {
   const [activeId, setActiveId] = useState(plates[0]?.id);
   const active = plates.find((p) => p.id === activeId) ?? plates[0];
+  const reactId = useId();
+
+  // Two-way label ↔ polygon highlight (index into active.labels)
+  const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
+
+  // Zoom/pan state — local to the painted plate area
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
+  const [tx, setTx] = useState(0);
+  const [ty, setTy] = useState(0);
+  const pointers = useRef<Map<number, { x: number; y: number }>>(new Map());
+  const pinchStart = useRef<{ dist: number; scale: number; cx: number; cy: number; tx: number; ty: number } | null>(
+    null,
+  );
+  const panStart = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
+
+  const clampScale = (s: number) => Math.min(MAX_SCALE, Math.max(MIN_SCALE, s));
+
+  const reset = useCallback(() => {
+    setScale(1);
+    setTx(0);
+    setTy(0);
+  }, []);
+
+  // Reset zoom/pan and any active label when the user switches plates
+  useEffect(() => {
+    reset();
+    setActiveLabelIdx(null);
+  }, [activeId, reset]);
+
+  const zoomAt = useCallback((factor: number, originX?: number, originY?: number) => {
+    setScale((prev) => {
+      const next = clampScale(prev * factor);
+      if (next === prev) return prev;
+      const rect = stageRef.current?.getBoundingClientRect();
+      if (rect && originX !== undefined && originY !== undefined) {
+        const ox = originX - rect.left - rect.width / 2;
+        const oy = originY - rect.top - rect.height / 2;
+        setTx((t) => ox - ((ox - t) * next) / prev);
+        setTy((t) => oy - ((oy - t) * next) / prev);
+      }
+      return next;
+    });
+  }, []);
+
+  // Wheel zoom (non-passive so we can preventDefault inside the plate)
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const handler = (e: WheelEvent) => {
+      e.preventDefault();
+      const factor = Math.exp(-e.deltaY * 0.0015);
+      zoomAt(factor, e.clientX, e.clientY);
+    };
+    el.addEventListener("wheel", handler, { passive: false });
+    return () => el.removeEventListener("wheel", handler);
+  }, [zoomAt]);
+
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    (e.target as Element).setPointerCapture?.(e.pointerId);
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.current.size === 2) {
+      const [a, b] = Array.from(pointers.current.values());
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      pinchStart.current = {
+        dist,
+        scale,
+        cx: (a.x + b.x) / 2,
+        cy: (a.y + b.y) / 2,
+        tx,
+        ty,
+      };
+      panStart.current = null;
+    } else if (pointers.current.size === 1 && scale > 1) {
+      panStart.current = { x: e.clientX, y: e.clientY, tx, ty };
+    }
+  };
+
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!pointers.current.has(e.pointerId)) return;
+    pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    if (pointers.current.size === 2 && pinchStart.current) {
+      const [a, b] = Array.from(pointers.current.values());
+      const dist = Math.hypot(a.x - b.x, a.y - b.y);
+      const ratio = dist / pinchStart.current.dist;
+      const next = clampScale(pinchStart.current.scale * ratio);
+      setScale(next);
+      const rect = stageRef.current?.getBoundingClientRect();
+      if (rect) {
+        const ox = pinchStart.current.cx - rect.left - rect.width / 2;
+        const oy = pinchStart.current.cy - rect.top - rect.height / 2;
+        const k = next / pinchStart.current.scale;
+        setTx(ox - (ox - pinchStart.current.tx) * k);
+        setTy(oy - (oy - pinchStart.current.ty) * k);
+      }
+    } else if (pointers.current.size === 1 && panStart.current) {
+      setTx(panStart.current.tx + (e.clientX - panStart.current.x));
+      setTy(panStart.current.ty + (e.clientY - panStart.current.y));
+    }
+  };
+
+  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    pointers.current.delete(e.pointerId);
+    if (pointers.current.size < 2) pinchStart.current = null;
+    if (pointers.current.size === 0) panStart.current = null;
+  };
+
+  // Exam-filter integration — if labels carry examTags, filter; else show all.
+  const { matchesFilter } = useExamFilter();
+  const visibleLabels = useMemo(() => {
+    if (!active) return [];
+    return active.labels
+      .map((label, idx) => ({ label, idx }))
+      .filter(({ label }) =>
+        label.examTags && label.examTags.length > 0 ? matchesFilter(label.examTags) : true,
+      );
+  }, [active, matchesFilter]);
+
   if (!active) return null;
 
+  const hasAnyPolygons = active.labels.some((l) => l.polygon && l.polygon.length >= 3);
+  const hasAnyExamTags = active.labels.some((l) => l.examTags && l.examTags.length > 0);
+  const isZoomed = scale !== 1 || tx !== 0 || ty !== 0;
+
   return (
-    <div
-      className={cn(
-        "rounded-2xl border border-border bg-card overflow-hidden",
-        className,
-      )}
-    >
+    <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
       {/* Atlas header strip */}
       <div className="px-4 sm:px-6 pt-4 pb-3 border-b border-border bg-muted/20">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
@@ -108,13 +258,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
         {/* Folio numeral, oxidized red, top-right */}
         <span
           aria-hidden
-          className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif italic text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] text-sm sm:text-base tracking-wider select-none"
+          className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif italic text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] text-sm sm:text-base tracking-wider select-none z-10"
         >
           {active.folio}
         </span>
 
         {/* Plate title, top-left */}
-        <div className="absolute top-3 left-4 sm:top-4 sm:left-6 max-w-[70%]">
+        <div className="absolute top-3 left-4 sm:top-4 sm:left-6 max-w-[70%] z-10">
           <p className="font-serif text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/80">
             {active.title}
           </p>
@@ -123,15 +273,118 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
           </p>
         </div>
 
-        {/* Hairline plate-mark */}
+        {/* Hairline plate-mark with zoom/pan stage */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
-          <div className="border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
-            <img
-              src={active.image}
-              alt={active.alt}
-              loading="lazy"
-              className="w-full h-auto block"
-            />
+          <div className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
+            <div
+              ref={stageRef}
+              role="application"
+              aria-label="Zoomable painted plate. Use scroll or pinch to zoom, drag to pan."
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onPointerCancel={onPointerUp}
+              className="relative overflow-hidden touch-none select-none"
+              style={{ cursor: scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
+            >
+              <div
+                style={{
+                  transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
+                  transformOrigin: "center center",
+                  transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
+                  willChange: "transform",
+                }}
+                className="relative"
+              >
+                <img
+                  src={active.image}
+                  alt={active.alt}
+                  loading="lazy"
+                  draggable={false}
+                  className="w-full h-auto block"
+                />
+
+                {/* Polygon hotspot overlay */}
+                {hasAnyPolygons ? (
+                  <svg
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="none"
+                    aria-hidden
+                    className="absolute inset-0 w-full h-full pointer-events-none"
+                  >
+                    {active.labels.map((label, idx) => {
+                      if (!label.polygon || label.polygon.length < 3) return null;
+                      const isActive = activeLabelIdx === idx;
+                      return (
+                        <polygon
+                          key={`${label.latin}-${idx}`}
+                          points={polygonToPoints(label.polygon)}
+                          className={cn(
+                            "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
+                            isActive
+                              ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
+                              : activeLabelIdx === null
+                                ? "fill-transparent stroke-transparent hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/60"
+                                : "fill-transparent stroke-transparent",
+                          )}
+                          style={{
+                            strokeWidth: isActive ? 0.5 : 0.35,
+                            vectorEffect: "non-scaling-stroke",
+                            pointerEvents: "auto",
+                          }}
+                          onPointerEnter={() => setActiveLabelIdx(idx)}
+                          onPointerLeave={() => setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
+                          onClick={() => {
+                            const node = document.getElementById(`${reactId}-label-${idx}`);
+                            node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                          }}
+                        >
+                          <title>
+                            {label.latin} — {label.english}
+                          </title>
+                        </polygon>
+                      );
+                    })}
+                  </svg>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Zoom controls */}
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 flex flex-col gap-1 opacity-80 hover:opacity-100 focus-within:opacity-100 transition-opacity">
+              <button
+                type="button"
+                onClick={() => zoomAt(1.4)}
+                aria-label="Zoom in"
+                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+              >
+                <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => zoomAt(1 / 1.4)}
+                aria-label="Zoom out"
+                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+              >
+                <ZoomOut className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={reset}
+                aria-label="Reset zoom and pan"
+                disabled={!isZoomed}
+                className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+            </div>
+
+            {!isZoomed ? (
+              <p className="absolute bottom-2 left-3 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
+                Scroll / pinch to zoom · drag to pan
+                {hasAnyPolygons ? " · hover labels to highlight" : ""}
+              </p>
+            ) : null}
           </div>
 
           {/* Italic Latin caption strip beneath the plate-mark */}
@@ -141,28 +394,84 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
         </div>
       </div>
 
-      {/* Labelled regions list (kept consistent with BrainRegionsList aesthetic) */}
+      {/* Labelled regions list */}
       <div className="border-t border-border bg-card px-4 sm:px-6 py-4">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold mb-3">
-          Index nominum — labelled structures
-        </p>
-        <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
-          {active.labels.map((l) => (
-            <li key={l.latin} className="flex gap-3">
-              <span
-                aria-hidden
-                className="mt-1 h-px w-4 flex-none bg-[hsl(8_55%_38%)] dark:bg-[hsl(8_60%_60%)]"
-              />
-              <div className="min-w-0">
-                <p className="text-sm leading-snug">
-                  <span className="font-serif italic text-foreground">{l.latin}</span>
-                  <span className="text-muted-foreground"> — {l.english}</span>
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{l.note}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-baseline justify-between gap-3 mb-3">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground font-semibold">
+            Index nominum — labelled structures
+          </p>
+          {hasAnyExamTags ? (
+            <p className="text-[10px] text-muted-foreground italic">
+              Filtered by the exam chips in the header
+            </p>
+          ) : null}
+        </div>
+
+        {visibleLabels.length === 0 ? (
+          <p className="text-sm text-muted-foreground italic">
+            No structures match the current exam filter.
+          </p>
+        ) : (
+          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            {visibleLabels.map(({ label, idx }) => {
+              const isActive = activeLabelIdx === idx;
+              const interactive = !!(label.polygon && label.polygon.length >= 3);
+              return (
+                <li
+                  key={`${label.latin}-${idx}`}
+                  id={`${reactId}-label-${idx}`}
+                  className={cn(
+                    "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
+                    interactive && "cursor-pointer",
+                    isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
+                  )}
+                  onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
+                  onPointerLeave={() =>
+                    interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))
+                  }
+                  onFocus={() => interactive && setActiveLabelIdx(idx)}
+                  onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
+                  tabIndex={interactive ? 0 : -1}
+                >
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "mt-1 h-px flex-none transition-all",
+                      isActive ? "w-6 bg-[hsl(8_55%_38%)] dark:bg-[hsl(8_60%_60%)]" : "w-4 bg-[hsl(8_55%_38%)]/70 dark:bg-[hsl(8_60%_60%)]/70",
+                    )}
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm leading-snug">
+                      <span className="font-serif italic text-foreground">{label.latin}</span>
+                      <span className="text-muted-foreground"> — {label.english}</span>
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{label.note}</p>
+                    {label.learningPoint ? (
+                      <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
+                        <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                          FRCA
+                        </span>
+                        {label.learningPoint}
+                      </p>
+                    ) : null}
+                    {label.examTags && label.examTags.length > 0 ? (
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {label.examTags.map((t) => (
+                          <span
+                            key={t}
+                            className="text-[9px] uppercase tracking-wide rounded-sm border border-border bg-muted/40 px-1.5 py-0.5 text-muted-foreground"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
     </div>
   );
