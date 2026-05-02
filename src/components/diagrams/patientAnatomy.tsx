@@ -964,10 +964,50 @@ const DEFAULT_REALISM: Required<RealismProps> = {
   detail: "standard",
 };
 
-const useRealism = (r: RealismProps = {}): Required<RealismProps> => ({
-  ...DEFAULT_REALISM,
-  ...r,
-});
+/** Three-step global realism level. */
+export type RealismLevel = "minimal" | "standard" | "rich";
+
+/**
+ * Maps a single global realism level to a concrete set of RealismProps.
+ * • minimal  — flat silhouettes, no gown sleeve, no surface creases.
+ * • standard — gown + sleeves + drapes, balanced surface detail.
+ * • rich     — every available shading layer (default sheen, drapes, creases).
+ */
+export const realismPresetFor = (level: RealismLevel): Partial<RealismProps> => {
+  switch (level) {
+    case "minimal":
+      return { showGown: false, draped: false, gownSleeve: false, detail: "minimal" };
+    case "rich":
+      return { showGown: true, draped: true, gownSleeve: true, detail: "rich" };
+    case "standard":
+    default:
+      return { showGown: true, draped: false, gownSleeve: true, detail: "standard" };
+  }
+};
+
+/**
+ * Global realism context. Wrap a tree in <RealismProvider level="rich">
+ * to override the default for every patient composite below it. Per-call
+ * RealismProps still take precedence over the context.
+ */
+const RealismContext = createContext<RealismLevel | null>(null);
+
+export const RealismProvider = ({
+  level,
+  children,
+}: {
+  level: RealismLevel;
+  children: ReactNode;
+}) => <RealismContext.Provider value={level}>{children}</RealismContext.Provider>;
+
+export const useRealismLevel = (): RealismLevel =>
+  useContext(RealismContext) ?? "standard";
+
+const useRealism = (r: RealismProps = {}): Required<RealismProps> => {
+  const ctxLevel = useContext(RealismContext);
+  const fromCtx = ctxLevel ? realismPresetFor(ctxLevel) : {};
+  return { ...DEFAULT_REALISM, ...fromCtx, ...r };
+};
 
 /* ------------------------------------------------------------------ */
 /*  SUPINE PATIENT — face-up on the table                              */
