@@ -225,14 +225,14 @@ export const spinalFolio: CorPictumFolioData = {
 };
 
 export const brachialFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Plexus Brachialis",
+  atlasTitle: "Atlas of Anatomy — Brachial Plexus",
   atlasSubtitle: "Painted plates of the brachial plexus",
   plates: [
     {
       id: "plexus", tabLabel: "Whole plexus", folio: "I",
-      title: "Plexus Brachialis", subtitle: "Roots, trunks, divisions, cords, branches",
+      title: "Brachial Plexus", subtitle: "Roots, trunks, divisions, cords, branches",
       image: brachialPlexus, alt: "Painted view of the brachial plexus",
-      caption: "Plexus brachialis — regiones supraclavicularis et infraclavicularis",
+      caption: "Brachial plexus — supraclavicular and infraclavicular regions",
       labels: [
         { latin: "truncus superior", english: "Superior trunk (C5–C6)", note: "Target of interscalene block; spares C8/T1." },
         { latin: "truncus medius", english: "Middle trunk (C7)", note: "Continues as posterior division contribution." },
