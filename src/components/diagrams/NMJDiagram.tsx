@@ -54,6 +54,36 @@ export const NMJDiagram = () => {
   const showDegradation = currentPhase.id === "degrade";
   const showAP = currentPhase.id === "ap" || currentPhase.id === "ca";
 
+  // ─── Synchronised Ca²⁺ sub-animation timing ─────────────────────────────
+  // Single normalised timeline t spanning "ca" → "vesicle" phases (0 → 2).
+  //   t in [0, 1)  = within "ca" phase
+  //   t in [1, 2)  = within "vesicle" phase
+  const caT =
+    currentPhase.id === "ca" ? phaseProgress
+      : currentPhase.id === "vesicle" ? 1 + phaseProgress
+      : -1;
+
+  // Helper: smooth ramp 0→1 between two timeline points
+  const ramp = (t: number, start: number, end: number) => {
+    if (t <= start) return 0;
+    if (t >= end) return 1;
+    return (t - start) / (end - start);
+  };
+
+  // VGCC opening: opens fast (0 → 0.15 of "ca"), stays open, closes late in "vesicle" (1.7 → 1.95)
+  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 1.7, 1.95)) : 0;
+
+  // Ca²⁺ ions stream: starts 0.1 of "ca", fully on by 0.3, fades out 1.4 → 1.7 (mid-vesicle)
+  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 1.4, 1.7)) : 0;
+
+  // Cloud builds through "ca" (0.2 → 1.0), holds early "vesicle", dissipates 1.5 → 2.0
+  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 1.5, 2.0)) : 0;
+
+  // Vesicle fusion progress: only during "vesicle" phase (caT 1 → 2)
+  const fusionProgress = currentPhase.id === "vesicle" ? phaseProgress
+    : currentPhase.id === "bind" || currentPhase.id === "depol" ? 1
+    : 0;
+
   // ACh dot animation
   const achY = showAChDots
     ? 140 + phaseProgress * 50
