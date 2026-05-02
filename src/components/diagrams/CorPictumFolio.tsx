@@ -455,12 +455,12 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
               ref={stageRef}
               role="application"
               aria-label="Zoomable painted plate. Use scroll or pinch to zoom, drag to pan."
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
+              onPointerDown={reviewMode ? undefined : onPointerDown}
+              onPointerMove={reviewMode ? undefined : onPointerMove}
+              onPointerUp={reviewMode ? undefined : onPointerUp}
+              onPointerCancel={reviewMode ? undefined : onPointerUp}
               className="relative overflow-hidden touch-none select-none"
-              style={{ cursor: scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
+              style={{ cursor: reviewMode ? "default" : scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
             >
               <div
                 style={{
