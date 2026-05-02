@@ -511,6 +511,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                 <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
                 <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
               </div>
+            </div>
           ) : null}
         </div>
       </div>
