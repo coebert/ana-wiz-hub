@@ -238,7 +238,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="laryngeal-innervation">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">11. Laryngeal Innervation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Innervation</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
             </p>
@@ -259,7 +259,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="front-of-neck">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12. Cricothyroidotomy & Tracheostomy Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
               <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
@@ -268,9 +268,18 @@ const HeadNeckAnatomyTopic = () => {
             </p>
           </div>
 
+          {/* ==================================================================== */}
+          {/* PART E — LOWER AIRWAY (TRACHEA & BRONCHIAL TREE)                      */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part E</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Lower Airway — Trachea & Bronchial Tree</h2>
+            <p className="text-sm text-muted-foreground mt-1">From the cricoid down to the lobar bronchi — the anatomy underpinning DLT placement, fibreoptic bronchoscopy, and the recognition of endobronchial intubation.</p>
+          </div>
+
           <div id="tracheobronchial">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">13. Trachea & Bronchial Tree</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">E1. Trachea & Bronchial Tree</h2>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Trachea</p>
                 <p className="text-sm text-muted-foreground mt-1">C6–T4/5 (carina). 10–12 cm long, 16–20 C-shaped cartilaginous rings. Posterior membranous wall (trachealis muscle). Blood supply: inferior thyroid artery.</p>
@@ -281,6 +290,13 @@ const HeadNeckAnatomyTopic = () => {
               </div>
             </div>
             <TracheobronchialTreeDiagram />
+          </div>
+
+          <div id="bronchoscopic-view">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">E2. Bronchoscopic View — Carina & Lobar Bronchi</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              The view down the trachea identifies the carina and the orientation of the right and left main bronchi — orienting landmarks for fibreoptic bronchoscopy, double-lumen tube placement, and confirming correct ETT position.
+            </p>
             <BronchoscopicViewDiagram />
           </div>
         </section>
