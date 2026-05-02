@@ -736,24 +736,21 @@ export const ParkBenchPositionDiagram = () => (
     legend={<>Common procedures: posterior-fossa tumours, vestibular schwannoma / CPA, microvascular decompression, foramen magnum decompression.</>}
   >
     <Table x={70} y={180} w={420} />
-    {/* Patient lateral but at table edge */}
-    <circle cx={120} cy={110} r={18} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-    {/* Mayfield pins */}
-    <line x1={108} y1={92} x2={102} y2={82} stroke="hsl(280 60% 40%)" strokeWidth={3} />
-    <line x1={132} y1={92} x2={138} y2={82} stroke="hsl(280 60% 40%)" strokeWidth={3} />
-    <line x1={120} y1={94} x2={120} y2={84} stroke="hsl(280 60% 40%)" strokeWidth={3} />
-    {/* body lateral */}
-    <ellipse cx={250} cy={150} rx={120} ry={25} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-    {/* axillary roll */}
-    <ellipse cx={160} cy={155} rx={12} ry={6} fill={POS_GREEN} opacity={0.85} />
-    {/* Dependent arm hanging off table in sling */}
-    <line x1={175} y1={155} x2={185} y2={195} stroke="hsl(35 80% 80%)" strokeWidth={12} strokeLinecap="round" />
-    <path d="M 165 195 Q 195 215 215 190" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
-    {/* Up arm forward on pad */}
-    <line x1={210} y1={140} x2={260} y2={108} stroke="hsl(35 80% 80%)" strokeWidth={12} strokeLinecap="round" />
-    {/* Legs — dependent flexed */}
-    <line x1={370} y1={155} x2={420} y2={130} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
-    <line x1={370} y1={155} x2={430} y2={170} stroke="hsl(35 80% 80%)" strokeWidth={16} strokeLinecap="round" />
+    {/* Patient lateral, head pinned at the table edge (facing left = head on viewer-left) */}
+    <TorsoLateral cx={260} cy={150} length={230} height={50} idPrefix="pf" facing="left" />
+    {/* Head profile + Mayfield 3-pin */}
+    <HeadProfile cx={120} cy={112} r={20} idPrefix="pf" facing="left" />
+    <MayfieldPins cx={120} cy={112} r={20} />
+    {/* Axillary roll caudal to axilla */}
+    <ellipse cx={170} cy={158} rx={12} ry={6} fill={POS_GREEN} opacity={0.85} />
+    {/* Dependent arm hanging in padded sling off table edge */}
+    <Arm sx={178} sy={150} ex={188} ey={185} wx={196} wy={210} idPrefix="pf" upperW={12} foreW={10} handLen={11} />
+    <path d="M 168 198 Q 196 220 220 195" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
+    {/* Non-dependent (upper) arm supported forwards on padded gutter */}
+    <Arm sx={215} sy={138} ex={245} ey={120} wx={275} wy={108} idPrefix="pf" upperW={12} foreW={10} handLen={11} gownSleeve />
+    {/* Legs — flexed, slight roll */}
+    <Leg hx={370} hy={148} kx={420} ky={130} ax={448} ay={120} idPrefix="pf" thighW={20} calfW={15} footLen={16} draped />
+    <Leg hx={370} hy={162} kx={425} ky={172} ax={455} ay={178} idPrefix="pf" thighW={20} calfW={15} footLen={16} draped />
     <text x={250} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">dependent arm in sling — avoids axillary compression</text>
   </PositionFrame>
 );
