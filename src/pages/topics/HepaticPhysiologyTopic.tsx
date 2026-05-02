@@ -106,8 +106,13 @@ const HepaticPhysiologyTopic = () => {
         keyPoints: ["Peck & Hill Ch.13", "BJA Educ 2014"],
       }}
       diagrams={
-        <div className="bg-card rounded-xl border border-border p-4 md:p-6">
-          <HepaticAcinusDiagram />
+        <div className="space-y-4">
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <HepaticAcinusDiagram />
+          </div>
+          <div className="bg-card rounded-xl border border-border p-4 md:p-6">
+            <PortalFirstPassDiagram />
+          </div>
         </div>
       }
       keyPoints={[
