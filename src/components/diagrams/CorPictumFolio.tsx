@@ -102,6 +102,14 @@ interface CorPictumFolioProps {
   plates: CorPictumPlate[];
   /** Optional className passthrough for the outer card */
   className?: string;
+  /**
+   * Enable the in-app polygon-accuracy review mode (off by default). When true
+   * a developer/editor toolbar is shown that allows visualising every hotspot
+   * with an index number, dragging vertices to fine-tune coordinates,
+   * adding/removing points, and exporting the resulting `[[x,y],…]` array
+   * for paste-back into `anatomyFolios.ts`.
+   */
+  enableReviewMode?: boolean;
 }
 
 const MIN_SCALE = 1;
