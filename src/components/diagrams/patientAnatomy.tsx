@@ -901,19 +901,20 @@ export const SupinePatient = ({
         </g>
       )}
       {/* Two legs symmetric about the body centreline */}
-      <Leg hx={hipX + 2} hy={cy - legSpread / 2}
-        kx={hipX + 50} ky={cy - legSpread / 2 + 2}
-        ax={hipX + 108} ay={cy - legSpread / 2 + 4}
-        thighW={20} calfW={16} footLen={18}
-        idPrefix={r.idPrefix} draped={r.draped} />
-      <Leg hx={hipX + 2} hy={cy + legSpread / 2}
-        kx={hipX + 50} ky={cy + legSpread / 2 + 2}
-        ax={hipX + 108} ay={cy + legSpread / 2 + 4}
-        thighW={20} calfW={16} footLen={18}
-        idPrefix={r.idPrefix} draped={r.draped} />
-    </>
-  );
-};
+      {showLegs && (
+        <>
+          <Leg hx={hipX + 2} hy={cy - legSpread / 2}
+            kx={hipX + 50} ky={cy - legSpread / 2 + 2}
+            ax={hipX + 108} ay={cy - legSpread / 2 + 4}
+            thighW={20} calfW={16} footLen={18}
+            idPrefix={r.idPrefix} draped={r.draped} />
+          <Leg hx={hipX + 2} hy={cy + legSpread / 2}
+            kx={hipX + 50} ky={cy + legSpread / 2 + 2}
+            ax={hipX + 108} ay={cy + legSpread / 2 + 4}
+            thighW={20} calfW={16} footLen={18}
+            idPrefix={r.idPrefix} draped={r.draped} />
+        </>
+      )}
 
 /* ------------------------------------------------------------------ */
 /*  LATERAL PATIENT — side-on with axillary roll, dependent leg flexed */
