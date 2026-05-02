@@ -51,11 +51,20 @@ const HeadNeckAnatomyTopic = () => {
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
           <CorPictumFolio {...headNeckFolio} />
           <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
-            This page follows a top-down anatomical journey: cranial nerve overview → bony cranial framework (skull base, orbit) → soft tissue neck (triangles, cross-section, plexus, vascular access) → airway descent from the nose down to the carina and lobar bronchi.
+            This page is organised into five parts following a top-down anatomical journey: <strong>(A)</strong> cranial nerves and bony framework, <strong>(B)</strong> the soft-tissue neck and vascular access, <strong>(C)</strong> the upper airway (nose and pharynx), <strong>(D)</strong> the larynx and front-of-neck access, and <strong>(E)</strong> the lower airway (trachea and bronchial tree).
           </p>
-          {/* ============== FOUNDATIONS ============== */}
+
+          {/* ==================================================================== */}
+          {/* PART A — CRANIAL NERVES & BONY FRAMEWORK                              */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part A</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Cranial Nerves & Bony Framework</h2>
+            <p className="text-sm text-muted-foreground mt-1">Cranial nerves of anaesthetic relevance, the skull base foramina that transmit them, and the orbit (soft-tissue and bony anatomy) for ophthalmic regional anaesthesia.</p>
+          </div>
+
           <div id="cranial-nerves">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Cranial Nerves — Anaesthetic Relevance</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A1. Cranial Nerves — Anaesthetic Relevance</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Six cranial nerves carry particular significance for the anaesthetist — they provide the sensory targets for airway and regional blocks, supply motor function vulnerable to surgical injury, and mediate reflexes (oculocardiac, gag) that have direct intra-operative consequences.
             </p>
@@ -82,7 +91,7 @@ const HeadNeckAnatomyTopic = () => {
 
           {/* ============== CRANIAL FRAMEWORK ============== */}
           <div id="skull-base">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">2. Skull Base Foramina</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A2. Skull Base Foramina</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The internal surface of the skull base is divided into anterior, middle, and posterior cranial fossae. Each foramen transmits specific cranial nerves and vessels — knowledge of these is essential for understanding cranial nerve palsies, skull base fractures, and neurosurgical approaches.
             </p>
@@ -90,7 +99,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="orbit-muscles">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">3. Orbit & Extraocular Muscles</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A3. Orbit — Extraocular Muscles</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The orbit contains seven extraocular muscles controlling eye movement and eyelid elevation. The classic mnemonic "LR6 SO4, all the Rest III" summarises their innervation — essential for interpreting cranial nerve palsies and understanding ophthalmic regional anaesthesia.
             </p>
@@ -98,16 +107,24 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="orbit-bony">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">4. Bony Orbit — Foramina & Fissures</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A4. Orbit — Bony Anatomy, Foramina & Fissures</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The orbit is a four-walled pyramidal cavity formed by seven bones, with its apex at the optic canal. Knowledge of which structures pass through each foramen and fissure underpins the interpretation of orbital fractures, the planning of regional blocks of the eye and face (supra-orbital, infra-orbital, peribulbar/retrobulbar), and the localisation of cranial nerve lesions causing ophthalmoplegia or sensory loss.
             </p>
             <OrbitBonyAnatomyDiagram />
           </div>
 
-          {/* ============== NECK ============== */}
+          {/* ==================================================================== */}
+          {/* PART B — NECK: SURFACE, SPACES & VASCULAR ACCESS                      */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part B</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Neck — Surface, Spaces & Vascular Access</h2>
+            <p className="text-sm text-muted-foreground mt-1">Surface anatomy of the neck triangles, the cross-sectional fascial planes at C6, the cervical plexus, and internal jugular vein cannulation.</p>
+          </div>
+
           <div id="neck-triangles">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">5. Triangles of the Neck</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B1. Triangles of the Neck</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The neck is divided by the sternocleidomastoid into anterior and posterior triangles — key landmarks for vascular access, nerve blocks, and surgical approaches.
             </p>
@@ -125,7 +142,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="neck-cross-section">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">6. Cross-Section at C6 Level</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B2. Cross-Section at C6 Level</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Understanding the fascial planes and spatial relationships at C6 (cricoid level) is essential for central venous access, stellate ganglion block, and understanding the spread of deep neck infections.
             </p>
@@ -133,7 +150,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="cervical-plexus">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">7. Cervical Plexus</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B3. Cervical Plexus</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               Formed by C1–C4 ventral rami. Superficial cervical plexus emerges at the posterior border of SCM (Erb's point). Provides sensory innervation to neck, ear, and shoulder. Deep cervical plexus block targets C2–C4 transverse processes — used for carotid endarterectomy. Phrenic nerve (C3,4,5) arises from cervical plexus — risk of paralysis with deep block.
             </p>
@@ -141,7 +158,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="ijv">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">8. Internal Jugular Vein Cannulation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">B4. Internal Jugular Vein Cannulation</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The IJV runs within the carotid sheath, lateral to the ICA/CCA, deep to SCM. It joins the subclavian vein behind the sternoclavicular joint to form the brachiocephalic vein.
             </p>
@@ -157,9 +174,17 @@ const HeadNeckAnatomyTopic = () => {
             </div>
           </div>
 
-          {/* ============== AIRWAY DESCENT ============== */}
+          {/* ==================================================================== */}
+          {/* PART C — UPPER AIRWAY (NOSE & PHARYNX)                                */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part C</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Upper Airway — Nose & Pharynx</h2>
+            <p className="text-sm text-muted-foreground mt-1">The conducting passages above the larynx — relevant to nasal intubation, awake fibreoptic technique, and topical anaesthesia of the upper airway.</p>
+          </div>
+
           <div id="nasal-pharynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">9. Nasal Cavity & Pharynx</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">C1. Nasal Cavity & Pharynx</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The nasal cavity is divided by the septum. Three turbinates (superior, middle, inferior) increase surface area for warming and humidification. Kiesselbach's plexus (Little's area) on the anterior septum is the commonest site of epistaxis.
             </p>
@@ -175,8 +200,17 @@ const HeadNeckAnatomyTopic = () => {
             </div>
           </div>
 
+          {/* ==================================================================== */}
+          {/* PART D — LARYNX & FRONT-OF-NECK ACCESS                                */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part D</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Larynx & Front-of-Neck Access</h2>
+            <p className="text-sm text-muted-foreground mt-1">Cartilaginous skeleton and cross-sectional anatomy, vagal innervation (SLN/RLN) and palsy patterns, and the surface landmarks for emergency cricothyroidotomy and elective tracheostomy.</p>
+          </div>
+
           <div id="larynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">10. Laryngeal Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Laryngeal Skeleton & Cross-Section</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The larynx extends from C3–C6. It comprises a cartilaginous skeleton, intrinsic and extrinsic muscles, and mucosal lining.
             </p>
@@ -204,7 +238,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="laryngeal-innervation">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">11. Laryngeal Innervation</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Innervation</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               The vagus nerve provides all motor and sensory innervation to the larynx via its superior and recurrent laryngeal branches. Understanding their courses is critical for thyroid surgery, airway management, and awake intubation techniques.
             </p>
@@ -225,7 +259,7 @@ const HeadNeckAnatomyTopic = () => {
           </div>
 
           <div id="front-of-neck">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">12. Cricothyroidotomy & Tracheostomy Anatomy</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D3. Cricothyroidotomy & Tracheostomy Anatomy</h2>
             <p className="text-muted-foreground leading-relaxed">
               <strong className="text-foreground">Cricothyroid membrane:</strong> Avascular midline between thyroid and cricoid cartilages. 9 × 30 mm. Used for emergency surgical airway. Structures at risk: superior cricothyroid artery (runs transversely across upper membrane).
             </p>
@@ -234,9 +268,18 @@ const HeadNeckAnatomyTopic = () => {
             </p>
           </div>
 
+          {/* ==================================================================== */}
+          {/* PART E — LOWER AIRWAY (TRACHEA & BRONCHIAL TREE)                      */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part E</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Lower Airway — Trachea & Bronchial Tree</h2>
+            <p className="text-sm text-muted-foreground mt-1">From the cricoid down to the lobar bronchi — the anatomy underpinning DLT placement, fibreoptic bronchoscopy, and the recognition of endobronchial intubation.</p>
+          </div>
+
           <div id="tracheobronchial">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">13. Trachea & Bronchial Tree</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">E1. Trachea & Bronchial Tree</h2>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Trachea</p>
                 <p className="text-sm text-muted-foreground mt-1">C6–T4/5 (carina). 10–12 cm long, 16–20 C-shaped cartilaginous rings. Posterior membranous wall (trachealis muscle). Blood supply: inferior thyroid artery.</p>
@@ -247,6 +290,13 @@ const HeadNeckAnatomyTopic = () => {
               </div>
             </div>
             <TracheobronchialTreeDiagram />
+          </div>
+
+          <div id="bronchoscopic-view">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">E2. Bronchoscopic View — Carina & Lobar Bronchi</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              The view down the trachea identifies the carina and the orientation of the right and left main bronchi — orienting landmarks for fibreoptic bronchoscopy, double-lumen tube placement, and confirming correct ETT position.
+            </p>
             <BronchoscopicViewDiagram />
           </div>
         </section>
