@@ -809,18 +809,28 @@ export const TorsoProne = ({
   const cy = y + shoulderW / 2;
   return (
     <g filter={`url(#${idPrefix}-shadow)`}>
-      <path
-        d={`M ${x + 6},${cy - shoulderW / 2}
+      {(() => {
+        const d = `M ${x + 6},${cy - shoulderW / 2}
             Q ${x + length * 0.45},${cy - shoulderW / 2 - 2} ${x + length},${cy - hipW / 2}
             L ${x + length + 4},${cy - hipW / 2 + 2}
             L ${x + length + 4},${cy + hipW / 2 - 2}
             L ${x + length},${cy + hipW / 2}
             Q ${x + length * 0.45},${cy + shoulderW / 2 + 2} ${x + 6},${cy + shoulderW / 2}
-            Z`}
-        fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
-        stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
-        strokeWidth={1.2}
-      />
+            Z`;
+        return (
+          <>
+            <path d={d}
+              fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
+              stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
+              strokeWidth={1.2}
+            />
+            <path d={d}
+              fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
+              pointerEvents="none"
+            />
+          </>
+        );
+      })()}
       {/* Spine line (visible on prone gown back) */}
       <line x1={x + 12} y1={cy} x2={x + length - 4} y2={cy}
         stroke={STROKE_GOWN} strokeWidth={0.7} opacity={0.45} strokeDasharray="3 2" />
