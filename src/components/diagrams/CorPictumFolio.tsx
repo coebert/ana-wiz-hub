@@ -48,6 +48,25 @@ export interface CorPictumLabel {
   polygon?: Array<[number, number]>;
 }
 
+/**
+ * A single FRCA curriculum learning-point this plate is mapped to.
+ * Rendered as a clickable chip beneath the plate; honours the global
+ * exam-filter chips in the header.
+ */
+export interface CorPictumCurriculumLink {
+  /** RCoA curriculum code, e.g. "CR_BK_01" */
+  code: string;
+  /** Which FRCA exam(s) this learning point belongs to */
+  exams: ExamTag[];
+  /** Short human title for the learning point (shown in the chip + tooltip) */
+  title: string;
+  /**
+   * Optional in-page anchor id to scroll to when the chip is clicked
+   * (e.g. "coronary-supply"). If omitted the chip is informational only.
+   */
+  anchor?: string;
+}
+
 export interface CorPictumPlate {
   /** Stable id for tab state (e.g. "fauces", "trachea") */
   id: string;
@@ -67,6 +86,11 @@ export interface CorPictumPlate {
   caption: string;
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
+  /**
+   * Optional FRCA / FFICM curriculum learning-points this plate maps to.
+   * Rendered as clickable chips that scroll to the matching topic anchor.
+   */
+  curriculumLinks?: CorPictumCurriculumLink[];
 }
 
 interface CorPictumFolioProps {
