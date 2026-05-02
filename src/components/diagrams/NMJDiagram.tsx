@@ -227,6 +227,26 @@ export const NMJDiagram = () => {
           );
         })}
 
+        {/* ── Mechanism callout: Ca²⁺ → Syt-1 → complexin displacement → SNARE zippering ── */}
+        {(currentPhase.id === "syt" || (currentPhase.id === "vesicle" && phaseProgress < 0.4)) && (
+          <g opacity={Math.max(sytBinding, currentPhase.id === "vesicle" ? 1 - phaseProgress * 2 : 0)}>
+            {/* Pointer line from callout down to a docked vesicle base */}
+            <line x1={295} y1={88} x2={355} y2={132} stroke="hsl(280 50% 55%)" strokeWidth="1" strokeDasharray="2,2" opacity="0.6" />
+            {/* Callout card */}
+            <rect x={150} y={48} width={295} height={42} rx={6}
+              fill="hsl(280 60% 97%)" stroke="hsl(280 50% 55%)" strokeWidth="1.2" />
+            <text x={160} y={62} fontSize="9" fontWeight="700" fill="hsl(280 55% 35%)">
+              Molecular trigger
+            </text>
+            {/* Three-step inline equation */}
+            <g fontSize="8.5" fontWeight="600">
+              <text x={160} y={78} fill="hsl(35 90% 40%)">4 Ca²⁺ → Syt-1 C2</text>
+              <text x={258} y={78} fill="hsl(280 50% 45%)">→ displaces complexin</text>
+              <text x={160} y={88} fill="hsl(160 60% 35%)">→ SNARE (Syb · Stx · SNAP-25) zippers → fusion</text>
+            </g>
+          </g>
+        )}
+
         {/* Label vesicles */}
         <text x={380} y={95} fontSize="9" className="fill-muted-foreground">ACh vesicles</text>
 
