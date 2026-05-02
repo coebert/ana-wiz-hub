@@ -19,7 +19,7 @@
  *     looking "plastic".
  */
 
-import { ReactNode } from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 /* ------------------------------------------------------------------ */
 /*  Shared <defs> — call <AnatomyDefs/> ONCE per parent <svg>.         */
