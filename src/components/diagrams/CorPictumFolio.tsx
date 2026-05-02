@@ -171,6 +171,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   useEffect(() => {
     reset();
     setActiveLabelIdx(null);
+    setPinnedLabelIdx(null);
+    setHoverPanel(null);
     // Keep the active tab visible inside the scroll-snap rail
     const rail = tabRailRef.current;
     if (rail) {
