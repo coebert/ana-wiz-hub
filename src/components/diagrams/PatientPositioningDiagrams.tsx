@@ -251,12 +251,13 @@ export const TrendelenburgPositionDiagram = () => (
     {/* Tilted table — head down */}
     <g transform="rotate(-15 280 170)">
       <Table x={70} y={170} w={420} />
-      {/* Head */}
-      <circle cx={100} cy={120} r={20} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-      <rect x={120} y={130} width={250} height={40} rx={18} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-      <rect x={370} y={140} width={110} height={18} rx={8} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-      {/* Shoulder brace */}
-      <rect x={118} y={120} width={6} height={20} fill={POS_RED} opacity={0.6} />
+      {/* Patient — supine on tilted table */}
+      <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
+      <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
+      <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
+      <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+      {/* Shoulder brace (over lateral clavicle) */}
+      <rect x={130} y={113} width={7} height={22} rx={2} fill={POS_RED} opacity={0.7} />
     </g>
     {/* Tilt-angle indicator */}
     <line x1={40} y1={210} x2={510} y2={210} stroke="hsl(var(--muted-foreground))" strokeDasharray="3 3" />
