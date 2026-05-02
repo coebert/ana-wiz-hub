@@ -915,6 +915,9 @@ export const SupinePatient = ({
             idPrefix={r.idPrefix} draped={r.draped} />
         </>
       )}
+    </>
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /*  LATERAL PATIENT — side-on with axillary roll, dependent leg flexed */
