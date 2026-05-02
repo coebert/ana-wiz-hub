@@ -315,20 +315,20 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
         aria-label={`${active.title} plate`}
         className="relative bg-[hsl(38_38%_94%)] dark:bg-[hsl(38_18%_14%)]"
       >
-        {/* Folio numeral, oxidized red, top-right */}
+        {/* Plate numeral, top-right (Netter-style small caps roman) */}
         <span
           aria-hidden
-          className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif italic text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] text-sm sm:text-base tracking-wider select-none z-10"
+          className="absolute top-3 right-4 sm:top-4 sm:right-6 font-serif text-foreground/55 text-[11px] sm:text-xs tracking-[0.25em] select-none z-10"
         >
-          {active.folio}
+          PLATE&nbsp;{active.folio}
         </span>
 
         {/* Plate title, top-left */}
         <div className="absolute top-3 left-4 sm:top-4 sm:left-6 max-w-[70%] z-10">
-          <p className="font-serif text-[10px] sm:text-xs uppercase tracking-[0.22em] text-foreground/80">
+          <p className="font-serif text-[12px] sm:text-[13px] tracking-[0.04em] text-foreground">
             {active.title}
           </p>
-          <p className="font-serif italic text-[10px] sm:text-xs text-muted-foreground mt-0.5">
+          <p className="font-serif text-[10.5px] sm:text-[11px] text-muted-foreground/90 mt-0.5 tracking-[0.01em]">
             {active.subtitle}
           </p>
         </div>
