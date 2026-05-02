@@ -102,6 +102,14 @@ interface CorPictumFolioProps {
   plates: CorPictumPlate[];
   /** Optional className passthrough for the outer card */
   className?: string;
+  /**
+   * Enable the in-app polygon-accuracy review mode (off by default). When true
+   * a developer/editor toolbar is shown that allows visualising every hotspot
+   * with an index number, dragging vertices to fine-tune coordinates,
+   * adding/removing points, and exporting the resulting `[[x,y],…]` array
+   * for paste-back into `anatomyFolios.ts`.
+   */
+  enableReviewMode?: boolean;
 }
 
 const MIN_SCALE = 1;
@@ -110,13 +118,27 @@ const MAX_SCALE = 5;
 const polygonToPoints = (polygon: Array<[number, number]>) =>
   polygon.map(([x, y]) => `${x * 100},${y * 100}`).join(" ");
 
-const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPictumFolioProps) => {
+const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableReviewMode = false }: CorPictumFolioProps) => {
   const [activeId, setActiveId] = useState(plates[0]?.id);
   const active = plates.find((p) => p.id === activeId) ?? plates[0];
   const reactId = useId();
 
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
+
+  // ── Polygon review mode (developer/editor) ─────────────────────────────
+  // URL `?review=polygons` also enables this without a code change.
+  const urlReview = typeof window !== "undefined" && window.location.search.includes("review=polygons");
+  const reviewAllowed = enableReviewMode || urlReview;
+  const [reviewMode, setReviewMode] = useState<boolean>(false);
+  // Per-plate working copy of polygons (overrides label.polygon when set)
+  const [editedPolys, setEditedPolys] = useState<Record<string, Array<Array<[number, number]> | undefined>>>({});
+  const [selectedEditIdx, setSelectedEditIdx] = useState<number | null>(null);
+  const [tool, setTool] = useState<"select" | "add">("select");
+  const [showAllOutlines, setShowAllOutlines] = useState(true);
+  const [copyFlash, setCopyFlash] = useState(false);
+  const dragVertexRef = useRef<{ labelIdx: number; vertIdx: number } | null>(null);
+  const overlaySvgRef = useRef<SVGSVGElement>(null);
 
   // Horizontal scroll-snap rail for plate tabs (used when many plates)
   const tabRailRef = useRef<HTMLDivElement>(null);
@@ -172,13 +194,14 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
     const el = stageRef.current;
     if (!el) return;
     const handler = (e: WheelEvent) => {
+      if (reviewMode) return; // let page scroll while reviewing polygons
       e.preventDefault();
       const factor = Math.exp(-e.deltaY * 0.0015);
       zoomAt(factor, e.clientX, e.clientY);
     };
     el.addEventListener("wheel", handler, { passive: false });
     return () => el.removeEventListener("wheel", handler);
-  }, [zoomAt]);
+  }, [zoomAt, reviewMode]);
 
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     (e.target as Element).setPointerCapture?.(e.pointerId);
@@ -253,6 +276,99 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
   const hasAnyPolygons = active.labels.some((l) => l.polygon && l.polygon.length >= 3);
   const hasAnyExamTags = active.labels.some((l) => l.examTags && l.examTags.length > 0);
   const isZoomed = scale !== 1 || tx !== 0 || ty !== 0;
+
+  // ── Review-mode helpers ───────────────────────────────────────────────
+  // Resolve the current (possibly edited) polygon for a label index.
+  const polyFor = (labelIdx: number): Array<[number, number]> | undefined => {
+    const overrides = editedPolys[active.id];
+    const overridden = overrides?.[labelIdx];
+    if (overridden) return overridden;
+    return active.labels[labelIdx]?.polygon;
+  };
+
+  const setPolyFor = (labelIdx: number, next: Array<[number, number]> | undefined) => {
+    setEditedPolys((prev) => {
+      const plate = [...(prev[active.id] ?? active.labels.map((l) => l.polygon ? [...l.polygon] as Array<[number, number]> : undefined))];
+      plate[labelIdx] = next;
+      return { ...prev, [active.id]: plate };
+    });
+  };
+
+  // Convert an SVG client point → normalised 0..1 plate coords
+  const eventToNormalised = (e: ReactPointerEvent<SVGElement> | ReactMouseEvent<SVGElement>): [number, number] | null => {
+    const svg = overlaySvgRef.current;
+    if (!svg) return null;
+    const rect = svg.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    return [Math.max(0, Math.min(1, x)), Math.max(0, Math.min(1, y))];
+  };
+
+  const beginVertexDrag = (labelIdx: number, vertIdx: number) => (e: ReactPointerEvent<SVGCircleElement>) => {
+    e.stopPropagation();
+    (e.target as Element).setPointerCapture?.(e.pointerId);
+    dragVertexRef.current = { labelIdx, vertIdx };
+  };
+  const moveVertexDrag = (e: ReactPointerEvent<SVGSVGElement>) => {
+    const drag = dragVertexRef.current;
+    if (!drag) return;
+    const pt = eventToNormalised(e);
+    if (!pt) return;
+    const current = polyFor(drag.labelIdx);
+    if (!current) return;
+    const next = current.map((p, i) => (i === drag.vertIdx ? pt : p)) as Array<[number, number]>;
+    setPolyFor(drag.labelIdx, next);
+  };
+  const endVertexDrag = () => {
+    dragVertexRef.current = null;
+  };
+
+  const handleOverlayClick = (e: ReactMouseEvent<SVGSVGElement>) => {
+    if (!reviewMode || tool !== "add" || selectedEditIdx === null) return;
+    const pt = eventToNormalised(e);
+    if (!pt) return;
+    const current = polyFor(selectedEditIdx) ?? [];
+    setPolyFor(selectedEditIdx, [...current, pt] as Array<[number, number]>);
+  };
+
+  const removeVertex = (labelIdx: number, vertIdx: number) => (e: ReactMouseEvent<SVGCircleElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const current = polyFor(labelIdx);
+    if (!current || current.length <= 3) return; // keep ≥3
+    setPolyFor(labelIdx, current.filter((_, i) => i !== vertIdx) as Array<[number, number]>);
+  };
+
+  // Deterministic colour per label index
+  const reviewColor = (idx: number) => {
+    const hue = (idx * 53) % 360;
+    return `hsl(${hue} 75% 45%)`;
+  };
+
+  const buildExportJson = () => {
+    const lines: string[] = [];
+    lines.push(`// ${active.id} — ${active.tabLabel}`);
+    active.labels.forEach((label, i) => {
+      const poly = polyFor(i);
+      if (!poly || poly.length < 3) return;
+      const pts = poly
+        .map(([x, y]) => `[${x.toFixed(3)}, ${y.toFixed(3)}]`)
+        .join(", ");
+      lines.push(`  // ${label.english}`);
+      lines.push(`  polygon: [${pts}],`);
+    });
+    return lines.join("\n");
+  };
+
+  const copyExport = async () => {
+    try {
+      await navigator.clipboard.writeText(buildExportJson());
+      setCopyFlash(true);
+      window.setTimeout(() => setCopyFlash(false), 1400);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
 
   return (
     <div className={cn("rounded-2xl border border-border bg-card overflow-hidden", className)}>
@@ -333,6 +449,76 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
           </p>
         </div>
 
+        {/* Review-mode toolbar */}
+        {reviewAllowed ? (
+          <div className="px-4 sm:px-6 pt-3 -mb-2 flex flex-wrap items-center gap-2 text-[11px]">
+            <button
+              type="button"
+              onClick={() => { setReviewMode((v) => !v); setSelectedEditIdx(null); }}
+              className={cn(
+                "px-2.5 py-1 rounded-md border font-semibold tracking-wide uppercase",
+                reviewMode
+                  ? "bg-[hsl(8_70%_50%)] text-white border-[hsl(8_55%_38%)]"
+                  : "bg-background text-foreground border-border hover:bg-accent",
+              )}
+              title="Toggle polygon-accuracy review mode"
+            >
+              {reviewMode ? "● Reviewing polygons" : "Review polygons"}
+            </button>
+            {reviewMode ? (
+              <>
+                <span className="text-muted-foreground">Tool:</span>
+                <div className="inline-flex rounded-md border border-border overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setTool("select")}
+                    className={cn("px-2 py-1", tool === "select" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                  >Select / drag</button>
+                  <button
+                    type="button"
+                    onClick={() => setTool("add")}
+                    className={cn("px-2 py-1 border-l border-border", tool === "add" ? "bg-accent text-accent-foreground" : "bg-background hover:bg-muted")}
+                    disabled={selectedEditIdx === null}
+                    title={selectedEditIdx === null ? "Select a label first" : "Click on plate to append vertex"}
+                  >+ Add vertex</button>
+                </div>
+                <label className="inline-flex items-center gap-1 ml-1">
+                  <input
+                    type="checkbox"
+                    checked={showAllOutlines}
+                    onChange={(e) => setShowAllOutlines(e.target.checked)}
+                    className="accent-[hsl(8_70%_50%)]"
+                  />
+                  Show all outlines
+                </label>
+                <span className="text-muted-foreground ml-auto">
+                  {selectedEditIdx !== null
+                    ? <>Editing: <strong className="text-foreground">{selectedEditIdx + 1}. {active.labels[selectedEditIdx]?.english}</strong></>
+                    : <>Click a polygon, badge, or label below to select.</>}
+                </span>
+                <button
+                  type="button"
+                  onClick={copyExport}
+                  className="px-2.5 py-1 rounded-md border border-border bg-background hover:bg-accent font-semibold"
+                  title="Copy this plate's polygons as JSON for paste-back into anatomyFolios.ts"
+                >
+                  {copyFlash ? "✓ Copied!" : "Copy JSON"}
+                </button>
+                {selectedEditIdx !== null ? (
+                  <button
+                    type="button"
+                    onClick={() => setPolyFor(selectedEditIdx, active.labels[selectedEditIdx]?.polygon ? [...active.labels[selectedEditIdx].polygon!] as Array<[number, number]> : undefined)}
+                    className="px-2 py-1 rounded-md border border-border bg-background hover:bg-accent"
+                    title="Reset selected polygon to its original coordinates"
+                  >Reset</button>
+                ) : null}
+              </>
+            ) : (
+              <span className="text-muted-foreground">Visualise & nudge hotspot polygons, then copy the corrected JSON back into <code className="font-mono text-[10.5px]">anatomyFolios.ts</code>.</span>
+            )}
+          </div>
+        ) : null}
+
         {/* Hairline plate-mark with zoom/pan stage */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
           <div className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
@@ -340,12 +526,12 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
               ref={stageRef}
               role="application"
               aria-label="Zoomable painted plate. Use scroll or pinch to zoom, drag to pan."
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
+              onPointerDown={reviewMode ? undefined : onPointerDown}
+              onPointerMove={reviewMode ? undefined : onPointerMove}
+              onPointerUp={reviewMode ? undefined : onPointerUp}
+              onPointerCancel={reviewMode ? undefined : onPointerUp}
               className="relative overflow-hidden touch-none select-none"
-              style={{ cursor: scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
+              style={{ cursor: reviewMode ? "default" : scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
             >
               <div
                 style={{
@@ -364,8 +550,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   className="w-full h-auto block"
                 />
 
-                {/* Polygon hotspot overlay */}
-                {hasAnyPolygons ? (
+                {/* Polygon hotspot overlay (display) */}
+                {hasAnyPolygons && !reviewMode ? (
                   <svg
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
@@ -401,6 +587,82 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                         >
                           <title>{label.english}</title>
                         </polygon>
+                      );
+                    })}
+                  </svg>
+                ) : null}
+
+                {/* Polygon REVIEW overlay (editor) */}
+                {reviewMode ? (
+                  <svg
+                    ref={overlaySvgRef}
+                    viewBox="0 0 1 1"
+                    preserveAspectRatio="none"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ cursor: tool === "add" && selectedEditIdx !== null ? "crosshair" : "default" }}
+                    onPointerMove={moveVertexDrag}
+                    onPointerUp={endVertexDrag}
+                    onPointerCancel={endVertexDrag}
+                    onClick={handleOverlayClick}
+                  >
+                    {active.labels.map((label, idx) => {
+                      const poly = polyFor(idx);
+                      if (!poly || poly.length < 3) return null;
+                      const isSelected = selectedEditIdx === idx;
+                      const visible = isSelected || showAllOutlines;
+                      if (!visible) return null;
+                      const colour = reviewColor(idx);
+                      const pts = poly.map(([x, y]) => `${x},${y}`).join(" ");
+                      const cx = poly.reduce((s, p) => s + p[0], 0) / poly.length;
+                      const cy = poly.reduce((s, p) => s + p[1], 0) / poly.length;
+                      return (
+                        <g key={`${label.latin}-${idx}`}>
+                          <polygon
+                            points={pts}
+                            fill={colour}
+                            fillOpacity={isSelected ? 0.22 : 0.05}
+                            stroke={colour}
+                            strokeOpacity={isSelected ? 1 : 0.7}
+                            strokeWidth={isSelected ? 0.005 : 0.0025}
+                            style={{ vectorEffect: "non-scaling-stroke", cursor: "pointer" }}
+                            onClick={(ev) => {
+                              ev.stopPropagation();
+                              setSelectedEditIdx(idx);
+                              setActiveLabelIdx(idx);
+                            }}
+                          >
+                            <title>{`${idx + 1}. ${label.english}`}</title>
+                          </polygon>
+                          {/* index badge at centroid */}
+                          <g transform={`translate(${cx} ${cy})`}>
+                            <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.003}
+                              style={{ vectorEffect: "non-scaling-stroke" }} />
+                            <text textAnchor="middle" dominantBaseline="central"
+                              fontSize="0.022" fontWeight={700} fill={colour}>
+                              {idx + 1}
+                            </text>
+                          </g>
+                          {/* draggable vertices when selected */}
+                          {isSelected
+                            ? poly.map(([x, y], vi) => (
+                                <circle
+                                  key={vi}
+                                  cx={x}
+                                  cy={y}
+                                  r={0.012}
+                                  fill="hsl(0 0% 100%)"
+                                  stroke={colour}
+                                  strokeWidth={0.004}
+                                  style={{ vectorEffect: "non-scaling-stroke", cursor: "grab", touchAction: "none" }}
+                                  onPointerDown={beginVertexDrag(idx, vi)}
+                                  onDoubleClick={removeVertex(idx, vi)}
+                                  onContextMenu={removeVertex(idx, vi)}
+                                >
+                                  <title>{`vertex ${vi + 1} — drag to move, double-click or right-click to delete`}</title>
+                                </circle>
+                              ))
+                            : null}
+                        </g>
                       );
                     })}
                   </svg>
@@ -546,8 +808,9 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   id={`${reactId}-label-${idx}`}
                   className={cn(
                     "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
-                    interactive && "cursor-pointer",
+                    (interactive || reviewMode) && "cursor-pointer",
                     isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
+                    reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
                   )}
                   onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
                   onPointerLeave={() =>
@@ -555,8 +818,18 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   }
                   onFocus={() => interactive && setActiveLabelIdx(idx)}
                   onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                  tabIndex={interactive ? 0 : -1}
+                  onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
+                  tabIndex={interactive || reviewMode ? 0 : -1}
                 >
+                  {reviewMode ? (
+                    <span
+                      aria-hidden
+                      className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                      style={{ background: reviewColor(idx) }}
+                    >
+                      {idx + 1}
+                    </span>
+                  ) : null}
                   <span
                     aria-hidden
                     className={cn(
