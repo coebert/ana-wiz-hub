@@ -728,6 +728,96 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                 {hasAnyPolygons ? " · hover labels to highlight" : ""}
               </p>
             ) : null}
+
+            {/* Floating polygon info panel (hover/click) */}
+            {!reviewMode && hoverPanel && (() => {
+              const idx = pinnedLabelIdx ?? hoverPanel.idx;
+              const label = active.labels[idx];
+              if (!label) return null;
+              const wrap = stageWrapRef.current;
+              const wrapW = wrap?.clientWidth ?? 0;
+              const wrapH = wrap?.clientHeight ?? 0;
+              const PANEL_W = 280;
+              // flip to the left if the cursor is in the right half
+              const flipX = hoverPanel.x + PANEL_W + 18 > wrapW;
+              const left = flipX ? Math.max(8, hoverPanel.x - PANEL_W - 14) : hoverPanel.x + 14;
+              // clamp vertically — assume a generous max height
+              const top = Math.max(8, Math.min(wrapH - 40, hoverPanel.y + 14));
+              const isPinned = pinnedLabelIdx === idx;
+              return (
+                <div
+                  role="dialog"
+                  aria-label={`${label.english} — details`}
+                  className={cn(
+                    "absolute z-20 pointer-events-auto rounded-lg border bg-background/95 backdrop-blur-sm shadow-lg p-3 text-left animate-fade-in",
+                    isPinned ? "border-[hsl(8_55%_38%)]" : "border-border",
+                  )}
+                  style={{ left, top, width: PANEL_W }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="min-w-0">
+                      <p className="font-serif text-[13.5px] leading-snug text-foreground truncate">
+                        {label.english}
+                      </p>
+                      <p className="font-serif italic text-[11px] text-muted-foreground/90 leading-snug">
+                        {label.latin}
+                      </p>
+                    </div>
+                    {isPinned ? (
+                      <button
+                        type="button"
+                        aria-label="Close details"
+                        onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
+                        className="-mr-1 -mt-1 h-5 w-5 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground flex items-center justify-center text-sm leading-none"
+                      >×</button>
+                    ) : null}
+                  </div>
+
+                  {label.examTags && label.examTags.length > 0 ? (
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {label.examTags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[9px] uppercase tracking-wide rounded-sm border border-[hsl(8_55%_38%)]/40 bg-[hsl(8_70%_50%)]/10 px-1.5 py-0.5 font-semibold text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {label.note ? (
+                    <p className="text-[11.5px] text-muted-foreground leading-snug mb-1.5">
+                      {label.note}
+                    </p>
+                  ) : null}
+
+                  {label.learningPoint ? (
+                    <p className="text-[11.5px] text-foreground/90 leading-relaxed border-l-2 border-[hsl(8_55%_38%)]/60 pl-2 mt-1">
+                      <span className="font-semibold uppercase tracking-wide text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                        FRCA learning point
+                      </span>
+                      {label.learningPoint}
+                    </p>
+                  ) : null}
+
+                  <p className="text-[9.5px] text-muted-foreground/70 mt-2">
+                    {isPinned ? "Pinned · click × or another structure to dismiss" : "Click polygon to pin · scroll to read"}
+                  </p>
+                </div>
+              );
+            })()}
+
+            {/* Click-away catcher when a panel is pinned (display mode) */}
+            {!reviewMode && pinnedLabelIdx !== null ? (
+              <div
+                aria-hidden
+                className="absolute inset-0 z-[5]"
+                onClick={() => { setPinnedLabelIdx(null); setHoverPanel(null); }}
+              />
+            ) : null}
           </div>
 
           {/* English caption strip beneath the plate-mark */}
