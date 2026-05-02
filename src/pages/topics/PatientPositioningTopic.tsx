@@ -136,6 +136,7 @@ const PatientPositioningTopic = () => {
             </p>
             <PronePositionDiagram />
             <ProneFrameComparisonDiagram />
+            <ProneIVCFreeAbdomenAnimation />
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
               <strong>Turning to prone</strong> is a high-risk moment: a minimum of five trained staff, anaesthetist at
               the head controlling the airway, all monitoring disconnected from the patient side and reconnected once
