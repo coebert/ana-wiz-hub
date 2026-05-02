@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
@@ -118,6 +118,9 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
 
+  // Horizontal scroll-snap rail for plate tabs (used when many plates)
+  const tabRailRef = useRef<HTMLDivElement>(null);
+
   // Zoom/pan state — local to the painted plate area
   const stageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
@@ -141,6 +144,12 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
   useEffect(() => {
     reset();
     setActiveLabelIdx(null);
+    // Keep the active tab visible inside the scroll-snap rail
+    const rail = tabRailRef.current;
+    if (rail) {
+      const activeTab = rail.querySelector<HTMLElement>('[role="tab"][aria-selected="true"]');
+      activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
   }, [activeId, reset]);
 
   const zoomAt = useCallback((factor: number, originX?: number, originY?: number) => {
@@ -257,25 +266,44 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             <p className="text-xs text-muted-foreground mt-0.5 italic">{atlasSubtitle}</p>
           </div>
           {plates.length > 1 ? (
-            <div
-              role="tablist"
-              aria-label={atlasTitle}
-              className="inline-flex flex-wrap rounded-md border border-border bg-background p-0.5 gap-0.5"
-            >
-              {plates.map((p) => (
-                <Button
-                  key={p.id}
-                  role="tab"
-                  aria-selected={activeId === p.id}
-                  size="sm"
-                  variant={activeId === p.id ? "default" : "ghost"}
-                  className="h-8 px-3 text-xs flex flex-col items-start leading-tight"
-                  onClick={() => setActiveId(p.id)}
-                >
-                  <span className="font-semibold">{p.tabLabel}</span>
-                  <span className="text-[9px] opacity-70 -mt-0.5 italic">Plate {p.folio}</span>
-                </Button>
-              ))}
+            <div className="relative flex items-center gap-1 max-w-full sm:max-w-[34rem]">
+              <button
+                type="button"
+                aria-label="Scroll plates left"
+                onClick={() => tabRailRef.current?.scrollBy({ left: -160, behavior: "smooth" })}
+                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
+              >
+                <ChevronLeft className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
+              <div
+                ref={tabRailRef}
+                role="tablist"
+                aria-label={atlasTitle}
+                className="flex flex-1 overflow-x-auto snap-x snap-mandatory rounded-md border border-border bg-background p-0.5 gap-0.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {plates.map((p) => (
+                  <Button
+                    key={p.id}
+                    role="tab"
+                    aria-selected={activeId === p.id}
+                    size="sm"
+                    variant={activeId === p.id ? "default" : "ghost"}
+                    className="h-8 px-3 text-xs flex flex-col items-start leading-tight flex-none snap-start"
+                    onClick={() => setActiveId(p.id)}
+                  >
+                    <span className="font-semibold whitespace-nowrap">{p.tabLabel}</span>
+                    <span className="text-[9px] opacity-70 -mt-0.5 italic whitespace-nowrap">Plate {p.folio}</span>
+                  </Button>
+                ))}
+              </div>
+              <button
+                type="button"
+                aria-label="Scroll plates right"
+                onClick={() => tabRailRef.current?.scrollBy({ left: 160, behavior: "smooth" })}
+                className="hidden sm:flex h-7 w-7 flex-none items-center justify-center rounded-md border border-border bg-background hover:bg-accent text-foreground/70"
+              >
+                <ChevronRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </button>
             </div>
           ) : null}
         </div>
@@ -430,51 +458,58 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                 Mapped to FRCA curriculum
               </p>
-              <div className="flex flex-wrap justify-center gap-1.5 max-w-2xl">
-                {visibleCurriculumLinks.map((link) => {
-                  const examLabel = link.exams
-                    .map((e) =>
-                      e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
-                    )
-                    .join(" · ");
-                  const Tag = link.anchor ? "a" : "span";
-                  const onClick = link.anchor
-                    ? (ev: ReactMouseEvent) => {
-                        const node = document.getElementById(link.anchor!);
-                        if (node) {
-                          ev.preventDefault();
-                          node.scrollIntoView({ behavior: "smooth", block: "start" });
-                          node.classList.add("ring-2", "ring-primary/60", "rounded-md");
-                          window.setTimeout(
-                            () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
-                            1600,
-                          );
+              <div className="relative w-full max-w-2xl">
+                <div
+                  className="flex overflow-x-auto snap-x gap-1.5 px-1 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {visibleCurriculumLinks.map((link) => {
+                    const examLabel = link.exams
+                      .map((e) =>
+                        e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
+                      )
+                      .join(" · ");
+                    const Tag = link.anchor ? "a" : "span";
+                    const onClick = link.anchor
+                      ? (ev: ReactMouseEvent) => {
+                          const node = document.getElementById(link.anchor!);
+                          if (node) {
+                            ev.preventDefault();
+                            node.scrollIntoView({ behavior: "smooth", block: "start" });
+                            node.classList.add("ring-2", "ring-primary/60", "rounded-md");
+                            window.setTimeout(
+                              () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
+                              1600,
+                            );
+                          }
                         }
-                      }
-                    : undefined;
-                  return (
-                    <Tag
-                      key={`${link.code}-${link.title}`}
-                      href={link.anchor ? `#${link.anchor}` : undefined}
-                      onClick={onClick}
-                      title={`${link.code} — ${link.title} (${examLabel})`}
-                      className={cn(
-                        "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium",
-                        "border-border bg-background/80 text-foreground/85",
-                        link.anchor
-                          ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
-                          : "cursor-default",
-                      )}
-                    >
-                      <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]">
-                        {link.code}
-                      </span>
-                      <span className="opacity-70">·</span>
-                      <span className="truncate max-w-[16rem]">{link.title}</span>
-                      <span className="text-[9px] uppercase tracking-wider opacity-60">{examLabel}</span>
-                    </Tag>
-                  );
-                })}
+                      : undefined;
+                    return (
+                      <Tag
+                        key={`${link.code}-${link.title}`}
+                        href={link.anchor ? `#${link.anchor}` : undefined}
+                        onClick={onClick}
+                        title={`${link.code} — ${link.title} (${examLabel})`}
+                        className={cn(
+                          "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium flex-none snap-start",
+                          "border-border bg-background/80 text-foreground/85",
+                          link.anchor
+                            ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
+                            : "cursor-default",
+                        )}
+                      >
+                        <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] whitespace-nowrap">
+                          {link.code}
+                        </span>
+                        <span className="opacity-70">·</span>
+                        <span className="whitespace-nowrap">{link.title}</span>
+                        <span className="text-[9px] uppercase tracking-wider opacity-60 whitespace-nowrap">{examLabel}</span>
+                      </Tag>
+                    );
+                  })}
+                </div>
+                {/* edge fades */}
+                <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
+                <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
               </div>
             </div>
           ) : null}
@@ -499,7 +534,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             No structures match the current exam filter.
           </p>
         ) : (
-          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+          <div
+            className="relative max-h-[26rem] overflow-y-auto pr-1 -mr-1 [scrollbar-width:thin]"
+            aria-label="Scroll to browse all labelled structures"
+          >
+            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-3">
             {visibleLabels.map(({ label, idx }) => {
               const isActive = activeLabelIdx === idx;
               const interactive = !!(label.polygon && label.polygon.length >= 3);
@@ -557,7 +596,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                 </li>
               );
             })}
-          </ul>
+            </ul>
+          </div>
         )}
       </div>
     </div>
