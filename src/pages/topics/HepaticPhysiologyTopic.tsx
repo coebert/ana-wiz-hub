@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { hepaticPhysiologyQuestions } from "@/data/quizzes";
 import HepaticAcinusDiagram from "@/components/diagrams/HepaticAcinusDiagram";
+import PortalFirstPassDiagram from "@/components/diagrams/PortalFirstPassDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
