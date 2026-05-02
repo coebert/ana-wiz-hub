@@ -15,6 +15,13 @@ import {
   SittingPositionDetailedDiagram,
   BeachChairPositionDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
+import {
+  SittingHydrostaticAnimation,
+  VAEDetectionLadderAnimation,
+  ParkBenchArmTractionAnimation,
+  ProneIVCFreeAbdomenAnimation,
+  PeronealNerveLithotomyAnimation,
+} from "@/components/diagrams/PatientPositioningMechanisms";
 
 const objectives = [
   "Describe the principal surgical positions (supine, Trendelenburg, lithotomy, lateral, prone, park bench, sitting, beach chair) and their physiological consequences",
@@ -105,6 +112,7 @@ const PatientPositioningTopic = () => {
               and lowered simultaneously to avoid pelvic torsion and lumbar strain.
             </p>
             <LithotomyPositionDiagram />
+            <PeronealNerveLithotomyAnimation />
           </ExamSection>
 
           <ExamSection id="lateral" exams={[Exam.PRIMARY, Exam.FINAL]}>
@@ -128,6 +136,7 @@ const PatientPositioningTopic = () => {
             </p>
             <PronePositionDiagram />
             <ProneFrameComparisonDiagram />
+            <ProneIVCFreeAbdomenAnimation />
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
               <strong>Turning to prone</strong> is a high-risk moment: a minimum of five trained staff, anaesthetist at
               the head controlling the airway, all monitoring disconnected from the patient side and reconnected once
@@ -156,6 +165,7 @@ const PatientPositioningTopic = () => {
             </p>
             <ParkBenchPositionDiagram />
             <ParkBenchDetailedDiagram />
+            <ParkBenchArmTractionAnimation />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Sitting position</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
@@ -171,6 +181,8 @@ const PatientPositioningTopic = () => {
             </ul>
             <SittingPositionDiagram />
             <SittingPositionDetailedDiagram />
+            <SittingHydrostaticAnimation />
+            <VAEDetectionLadderAnimation />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Beach-chair position (shoulder surgery)</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
