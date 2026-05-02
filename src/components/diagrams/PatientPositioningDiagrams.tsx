@@ -84,6 +84,7 @@ const PositionFrame = ({
               role="img"
               aria-label={title}
             >
+              <AnatomyDefs idPrefix="pf" />
               {children}
 
               {/* Hotspots */}
