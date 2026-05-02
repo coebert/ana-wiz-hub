@@ -293,6 +293,31 @@ const TransfusionCoagulationTopic = () => {
                 <strong>Acid–Citrate–Dextrose, formula A</strong> — a sterile anticoagulant solution containing <em>citric acid</em> (anhydrous 0.73 g/100 mL), <em>sodium citrate</em> (2.20 g/100 mL) and <em>dextrose</em> (2.45 g/100 mL), pH ~5. The citrate <strong>chelates ionised calcium</strong>, blocking the coagulation cascade at multiple Ca²⁺-dependent steps; the dextrose preserves red-cell metabolism (ATP and 2,3-DPG). In cell salvage, ACD-A is dripped into the suction tubing at the operative tip at roughly <strong>15 mL per 100 mL of shed blood</strong> (≈1 drop per second) and is washed out during the centrifuge wash cycle, so systemic citrate toxicity is rare. ACD-A is preferred over heparinised saline whenever <strong>systemic heparin must be avoided</strong> (e.g. HIT, recent neurosurgery, active intracranial bleeding) and is the standard anticoagulant for apheresis circuits.
               </p>
             </div>
+
+            <div className="mb-4">
+              <p className="font-semibold text-foreground text-sm mb-2">ACD-A vs heparinised saline — anticoagulant choice for cell salvage</p>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                      <th className="text-left py-2 text-foreground font-semibold">ACD-A (citrate)</th>
+                      <th className="text-left py-2 text-foreground font-semibold">Heparinised saline</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-muted-foreground">
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Mechanism</td><td>Chelates ionised Ca²⁺ — blocks Ca²⁺-dependent steps of cascade</td><td>Potentiates antithrombin → inhibits thrombin (IIa) and Xa</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Typical preparation</td><td>ACD-A solution, ready-made (citric acid + Na citrate + dextrose, pH ~5)</td><td>30,000 IU UFH in 1 L 0.9% NaCl (30 IU/mL)</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Dose to suction tip</td><td>~15 mL per 100 mL shed blood (≈1 drop/sec)</td><td>~60 mL per 100 mL anticipated blood (prime + drip)</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Systemic effect after wash</td><td>Negligible — citrate washed out; dextrose preserves 2,3-DPG/ATP</td><td>Negligible — heparin washed out; trace residual possible if wash inadequate</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Preferred when</td><td>Systemic heparin contraindicated: HIT, recent neurosurgery, active intracranial bleed; standard for apheresis</td><td>Default choice in most UK theatres — cheap, familiar, widely stocked</td></tr>
+                    <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Risks / caveats</td><td>Citrate toxicity (hypocalcaemia, metabolic alkalosis) only if wash bypassed or massive unwashed return</td><td>Heparin rebound if washing inadequate; contraindicated in HIT</td></tr>
+                    <tr><td className="py-2 font-medium text-foreground">Reversal</td><td>IV calcium (chloride or gluconate) if symptomatic</td><td>Protamine 1 mg per 100 IU residual heparin</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm mb-1">What you get back</p>
