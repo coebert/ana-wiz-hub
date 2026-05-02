@@ -218,14 +218,15 @@ export const CountercurrentMultiplierDiagram = () => {
 
           {/* Column headers */}
           <text x="130" y="14" fontSize="8" fill={descColor} textAnchor="middle" fontWeight="700">Descending</text>
-          <text x="130" y="24" fontSize="6" fill={descColor} textAnchor="middle" opacity="0.6">(H₂O permeable)</text>
+          <text x="130" y="24" fontSize="6" fill={descColor} textAnchor="middle" opacity="0.7">AQP1 · H₂O permeable</text>
           <text x="260" y="14" fontSize="8" fill={intColor} textAnchor="middle" fontWeight="700">Interstitium</text>
-          <text x="390" y="14" fontSize="8" fill={ascColor} textAnchor="middle" fontWeight="700">Ascending</text>
-          <text x="390" y="24" fontSize="6" fill={ascColor} textAnchor="middle" opacity="0.6">(H₂O impermeable)</text>
+          <text x="260" y="24" fontSize="6" fill={intColor} textAnchor="middle" opacity="0.7">NaCl + urea pool</text>
+          <text x="390" y="14" fontSize="8" fill={ascColor} textAnchor="middle" fontWeight="700">Thick Ascending</text>
+          <text x="390" y="24" fontSize="6" fill={ascColor} textAnchor="middle" opacity="0.7">NKCC2 · H₂O impermeable</text>
           {step.collectingDuct && (
             <>
-              <text x="480" y="14" fontSize="8" fill={cdColor} textAnchor="middle" fontWeight="700">CD</text>
-              <text x="480" y="24" fontSize="6" fill={cdColor} textAnchor="middle" opacity="0.6">(ADH)</text>
+              <text x="478" y="14" fontSize="8" fill={cdColor} textAnchor="middle" fontWeight="700">CD</text>
+              <text x="478" y="24" fontSize="6" fill={cdColor} textAnchor="middle" opacity="0.7">AQP2 · ADH</text>
             </>
           )}
 
