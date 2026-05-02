@@ -282,6 +282,7 @@ const App = () => (
           <Route path="/clinical/operating-theatre-environment" element={<OperatingTheatreEnvironmentTopic />} />
           <Route path="/clinical/procedural-sedation" element={<ProceduralSedationTopic />} />
           <Route path="/clinical/transfer-medicine" element={<TransferMedicineTopic />} />
+          <Route path="/clinical/patient-positioning" element={<PatientPositioningTopic />} />
           <Route path="/clinical/bariatric-anaesthesia" element={<BariatricAnaesthesiaTopic />} />
           <Route path="/clinical/vascular-anaesthesia" element={<VascularAnaesthesiaTopic />} />
           <Route path="/clinical/ent-anaesthesia" element={<ENTAnaesthesiaTopic />} />
