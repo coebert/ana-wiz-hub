@@ -12,6 +12,7 @@ import {
   ParkBenchPositionDiagram,
   ParkBenchDetailedDiagram,
   SittingPositionDiagram,
+  SittingPositionDetailedDiagram,
   BeachChairPositionDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
 
@@ -169,6 +170,7 @@ const PatientPositioningTopic = () => {
               <li>VAE management: alert surgeon to flood field with saline + apply bone wax, jugular venous compression, aspirate from CVC, FiO₂ 1.0, position patient left lateral / head-down if able, supportive haemodynamics.</li>
             </ul>
             <SittingPositionDiagram />
+            <SittingPositionDetailedDiagram />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Beach-chair position (shoulder surgery)</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
