@@ -283,18 +283,26 @@ export const LithotomyPositionDiagram = () => (
   >
     <Table x={70} y={170} w={300} />
 
-    {/* Head + body */}
-    <circle cx={100} cy={120} r={20} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
-    <rect x={120} y={130} width={230} height={40} rx={18} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
+    {/* Patient — supine, hips at the break of the table */}
+    <TorsoSupine idPrefix="pf" x={120} y={120} length={225} shoulderW={50} waistW={42} hipW={48} />
+    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
+    {/* Arms folded across abdomen */}
+    <Arm idPrefix="pf" sx={170} sy={158} ex={220} ey={170} wx={260} wy={155} upperW={13} foreW={11} gownSleeve />
+    <Arm idPrefix="pf" sx={170} sy={122} ex={220} ey={132} wx={260} wy={150} upperW={13} foreW={11} gownSleeve />
 
-    {/* Thigh raised */}
-    <line x1={345} y1={150} x2={395} y2={95} stroke="hsl(35 80% 80%)" strokeWidth={20} strokeLinecap="round" />
-    <line x1={345} y1={150} x2={395} y2={95} stroke="hsl(35 60% 40%)" strokeWidth={1.2} fill="none" />
-    {/* Calf */}
-    <line x1={395} y1={95} x2={460} y2={130} stroke="hsl(35 80% 80%)" strokeWidth={18} strokeLinecap="round" />
-    {/* Stirrup */}
-    <path d="M 455 120 Q 480 105 470 145" fill="none" stroke="hsl(210 25% 35%)" strokeWidth={4} />
-    <circle cx={465} cy={140} r={8} fill="hsl(210 25% 35%)" />
+    {/* RIGHT leg in Allen-style stirrup (upper view) */}
+    <Leg idPrefix="pf" hx={345} hy={132} kx={395} ky={92} ax={460} ay={120} thighW={22} calfW={17} footLen={20} />
+    {/* LEFT leg in stirrup (slightly behind) */}
+    <g opacity={0.85}>
+      <Leg idPrefix="pf" hx={345} hy={150} kx={400} ky={108} ax={462} ay={138} thighW={22} calfW={17} footLen={20} />
+    </g>
+
+    {/* Stirrup boot — Allen-style (cradles calf, NOT lateral fibular head) */}
+    <g>
+      <path d="M 452 110 Q 478 100 472 140 L 462 145 Q 466 118 448 118 Z"
+        fill="hsl(210 25% 35%)" stroke="hsl(210 25% 20%)" strokeWidth={1} />
+      <line x1={465} y1={138} x2={478} y2={158} stroke="hsl(210 25% 25%)" strokeWidth={3} />
+    </g>
 
     <text x={250} y={235} fontSize={11} fontWeight={600} fill="hsl(var(--foreground))">hips & knees flexed in stirrups</text>
   </PositionFrame>
