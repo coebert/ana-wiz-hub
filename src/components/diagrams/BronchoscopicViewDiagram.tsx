@@ -115,7 +115,7 @@ interface ViewConfig {
 const views: Record<ViewKey, ViewConfig> = {
   carina: {
     title: "View 1 — Distal trachea & carina",
-    subtitle: "Tracheal rings anterior (12 o'clock), membranous wall posterior (6). Carina divides RMB (right of screen) from LMB (left).",
+    subtitle: "Tracheal rings anterior (12 o'clock), membranous wall posterior (6). Carina divides RMB (left of screen) from LMB (right) — standard bronchoscopic orientation, patient supine.",
     defaultSelected: "carina",
     visible: ["carina", "rmb", "lmb", "rings", "membranous"],
   },
@@ -179,10 +179,10 @@ const BronchoscopicViewDiagram = () => {
   };
 
   // Common bronchoscopic field-of-view: dark mucosal background, vignette,
-  // anterior=top (rings), posterior=bottom (membranous). Right side of patient
-  // appears on LEFT of screen because scope view is mirror image — but
-  // by anaesthetic convention bronchoscopy images are shown anatomically:
-  // RMB on right of screen, LMB on left. We follow that convention.
+  // anterior=top (rings), posterior=bottom (membranous). Standard bronchoscopic
+  // orientation (patient supine, scope advanced from above): patient's RIGHT
+  // appears on the LEFT of the screen and patient's LEFT on the RIGHT — i.e.
+  // RMB on left of screen, LMB on right. R/L compass labels match.
 
   return (
     <div className="my-6 space-y-4">
