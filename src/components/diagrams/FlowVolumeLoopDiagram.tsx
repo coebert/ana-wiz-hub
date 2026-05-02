@@ -182,7 +182,7 @@ export const FlowVolumeLoopDiagram = () => {
             )}
             style={
               overlays.has(key)
-                ? { borderColor: patterns[key].color, background: `${patterns[key].color}15`, color: patterns[key].color }
+                ? { borderColor: patterns[key].color, color: patterns[key].color }
                 : undefined
             }
           >
