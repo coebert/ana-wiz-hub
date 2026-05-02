@@ -4,6 +4,8 @@ import IntercostalAnatomyDiagram from "@/components/diagrams/IntercostalAnatomyD
 import ParavertebralSpaceDiagram from "@/components/diagrams/ParavertebralSpaceDiagram";
 import FirstRibDiagram from "@/components/diagrams/FirstRibDiagram";
 import DiaphragmDiagram from "@/components/diagrams/DiaphragmDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { thoracicFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const ThoracicAnatomyTopic = () => {
@@ -39,6 +41,7 @@ const ThoracicAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
+        <CorPictumFolio {...thoracicFolio} />
         <div id="thoracic-wall" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Wall & Intercostal Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">

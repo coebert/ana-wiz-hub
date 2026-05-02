@@ -6,6 +6,8 @@ import UpperLimbArteriesDiagram from "@/components/diagrams/UpperLimbArteriesDia
 import UpperLimbBranchesDiagram from "@/components/diagrams/UpperLimbBranchesDiagram";
 import AntecubitalFossaDiagram from "@/components/diagrams/AntecubitalFossaDiagram";
 import UpperLimbVeinsDiagram from "@/components/diagrams/UpperLimbVeinsDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { upperLimbFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const UpperLimbAnatomyTopic = () => {
@@ -62,6 +64,8 @@ const UpperLimbAnatomyTopic = () => {
             ))}
           </div>
         </div>
+
+        <CorPictumFolio {...upperLimbFolio} />
 
         <BrachialPlexusDiagram />
 

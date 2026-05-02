@@ -2,6 +2,8 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { abdominalAnatomyQuestions } from "@/data/quizzes";
 import AbdominalWallDiagram from "@/components/diagrams/AbdominalWallDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { abdominalFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const AbdominalAnatomyTopic = () => {
@@ -32,7 +34,12 @@ const AbdominalAnatomyTopic = () => {
         workedExamples: ["BJA Educ 2015", "Miller Ch.47"],
         keyPoints: ["Ellis & Feldman Ch.4", "BJA Educ 2015", "Miller Ch.47"],
       }}
-      diagrams={<AbdominalWallDiagram />}
+      diagrams={
+        <>
+          <CorPictumFolio {...abdominalFolio} />
+          <AbdominalWallDiagram />
+        </>
+      }
       coreConcepts={
         <>
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL]} curriculumCodes={["AN_BK_03"]}>

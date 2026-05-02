@@ -4,6 +4,8 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { brachialPlexusQuestions } from "@/data/quizzes";
 import BrachialPlexusDiagram from "@/components/diagrams/BrachialPlexusDiagram";
 import BrachialPlexusUltrasoundDiagram from "@/components/diagrams/BrachialPlexusUltrasoundDiagram";
+import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
+import { brachialFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -149,7 +151,10 @@ const BrachialPlexusTopic = () => {
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <BrachialPlexusDiagram />
+            <CorPictumFolio {...brachialFolio} />
+            <div className="mt-6">
+              <BrachialPlexusDiagram />
+            </div>
           </ExamSection>
 
           <ExamSection id="approaches" exams={[Exam.FINAL]} curriculumCodes={["RCoA Final — Regional Anaesthesia"]}>
