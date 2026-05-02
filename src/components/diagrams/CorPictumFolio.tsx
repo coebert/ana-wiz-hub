@@ -126,6 +126,11 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
 
+  // Floating hover/click panel for polygon → label info
+  const [pinnedLabelIdx, setPinnedLabelIdx] = useState<number | null>(null);
+  const [hoverPanel, setHoverPanel] = useState<{ idx: number; x: number; y: number } | null>(null);
+  const stageWrapRef = useRef<HTMLDivElement>(null);
+
   // ── Polygon review mode (developer/editor) ─────────────────────────────
   // URL `?review=polygons` also enables this without a code change.
   const urlReview = typeof window !== "undefined" && window.location.search.includes("review=polygons");
