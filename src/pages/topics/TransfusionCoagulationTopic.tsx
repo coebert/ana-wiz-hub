@@ -4,6 +4,7 @@ import { transfusionCoagulationQuestions } from "@/data/quizzes";
 import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeDiagram";
 import TraliVsTacoDecisionTool from "@/components/diagrams/TraliVsTacoDecisionTool";
 import CellSalvageAnimatedDiagram from "@/components/diagrams/CellSalvageAnimatedDiagram";
+import AcdCitrateChelationDiagram from "@/components/diagrams/AcdCitrateChelationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
@@ -293,6 +294,8 @@ const TransfusionCoagulationTopic = () => {
                 <strong>Acid–Citrate–Dextrose, formula A</strong> — a sterile anticoagulant solution containing <em>citric acid</em> (anhydrous 0.73 g/100 mL), <em>sodium citrate</em> (2.20 g/100 mL) and <em>dextrose</em> (2.45 g/100 mL), pH ~5. The citrate <strong>chelates ionised calcium</strong>, blocking the coagulation cascade at multiple Ca²⁺-dependent steps; the dextrose preserves red-cell metabolism (ATP and 2,3-DPG). In cell salvage, ACD-A is dripped into the suction tubing at the operative tip at roughly <strong>15 mL per 100 mL of shed blood</strong> (≈1 drop per second) and is washed out during the centrifuge wash cycle, so systemic citrate toxicity is rare. ACD-A is preferred over heparinised saline whenever <strong>systemic heparin must be avoided</strong> (e.g. HIT, recent neurosurgery, active intracranial bleeding) and is the standard anticoagulant for apheresis circuits.
               </p>
             </div>
+
+            <AcdCitrateChelationDiagram />
 
             <div className="mb-4">
               <p className="font-semibold text-foreground text-sm mb-2">ACD-A vs heparinised saline — anticoagulant choice for cell salvage</p>
