@@ -51,11 +51,20 @@ const HeadNeckAnatomyTopic = () => {
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
           <CorPictumFolio {...headNeckFolio} />
           <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
-            This page follows a top-down anatomical journey: cranial nerve overview → bony cranial framework (skull base, orbit) → soft tissue neck (triangles, cross-section, plexus, vascular access) → airway descent from the nose down to the carina and lobar bronchi.
+            This page is organised into five parts following a top-down anatomical journey: <strong>(A)</strong> cranial nerves and bony framework, <strong>(B)</strong> the soft-tissue neck and vascular access, <strong>(C)</strong> the upper airway (nose and pharynx), <strong>(D)</strong> the larynx and front-of-neck access, and <strong>(E)</strong> the lower airway (trachea and bronchial tree).
           </p>
-          {/* ============== FOUNDATIONS ============== */}
+
+          {/* ==================================================================== */}
+          {/* PART A — CRANIAL NERVES & BONY FRAMEWORK                              */}
+          {/* ==================================================================== */}
+          <div className="border-l-4 border-anatomy/40 pl-4 py-1">
+            <p className="text-xs uppercase tracking-widest text-anatomy/80 font-semibold">Part A</p>
+            <h2 className="text-3xl font-serif font-bold text-foreground">Cranial Nerves & Bony Framework</h2>
+            <p className="text-sm text-muted-foreground mt-1">Cranial nerves of anaesthetic relevance, the skull base foramina that transmit them, and the orbit (soft-tissue and bony anatomy) for ophthalmic regional anaesthesia.</p>
+          </div>
+
           <div id="cranial-nerves">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">1. Cranial Nerves — Anaesthetic Relevance</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">A1. Cranial Nerves — Anaesthetic Relevance</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Six cranial nerves carry particular significance for the anaesthetist — they provide the sensory targets for airway and regional blocks, supply motor function vulnerable to surgical injury, and mediate reflexes (oculocardiac, gag) that have direct intra-operative consequences.
             </p>
