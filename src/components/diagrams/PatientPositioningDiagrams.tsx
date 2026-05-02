@@ -274,12 +274,11 @@ export const LithotomyPositionDiagram = () => (
   >
     <Table x={70} y={170} w={300} />
 
-    {/* Patient — supine, hips at the break of the table */}
-    <TorsoSupine idPrefix="pf" x={120} y={120} length={225} shoulderW={50} waistW={42} hipW={48} />
-    <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-    {/* Arms folded across abdomen */}
-    <Arm idPrefix="pf" sx={170} sy={158} ex={220} ey={170} wx={260} wy={155} upperW={13} foreW={11} gownSleeve />
-    <Arm idPrefix="pf" sx={170} sy={122} ex={220} ey={132} wx={260} wy={150} upperW={13} foreW={11} gownSleeve />
+    {/* Patient — supine trunk + arms folded; legs drawn bespoke in stirrups */}
+    <SupinePatient
+      idPrefix="pf" x={120} y={120} length={225}
+      armsFolded showLegs={false} showFarArm={false}
+    />
 
     {/* RIGHT leg in Allen-style stirrup (upper view) */}
     <Leg idPrefix="pf" hx={345} hy={132} kx={395} ky={92} ax={460} ay={120} thighW={22} calfW={17} footLen={20} />
