@@ -458,54 +458,59 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                 Mapped to FRCA curriculum
               </p>
-              <div className="relative w-full max-w-2xl mx-auto">
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-1.5 px-1 pb-1 [scrollbar-width:thin] [-ms-overflow-style:none]">
-                  {/* fade edges hint */}
-                  const examLabel = link.exams
-                    .map((e) =>
-                      e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
-                    )
-                    .join(" · ");
-                  const Tag = link.anchor ? "a" : "span";
-                  const onClick = link.anchor
-                    ? (ev: ReactMouseEvent) => {
-                        const node = document.getElementById(link.anchor!);
-                        if (node) {
-                          ev.preventDefault();
-                          node.scrollIntoView({ behavior: "smooth", block: "start" });
-                          node.classList.add("ring-2", "ring-primary/60", "rounded-md");
-                          window.setTimeout(
-                            () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
-                            1600,
-                          );
+              <div className="relative w-full max-w-2xl">
+                <div
+                  className="flex overflow-x-auto snap-x gap-1.5 px-1 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  {visibleCurriculumLinks.map((link) => {
+                    const examLabel = link.exams
+                      .map((e) =>
+                        e === "primary" ? "Primary" : e === "final" ? "Final" : e === "fficm" ? "FFICM" : "EDIC",
+                      )
+                      .join(" · ");
+                    const Tag = link.anchor ? "a" : "span";
+                    const onClick = link.anchor
+                      ? (ev: ReactMouseEvent) => {
+                          const node = document.getElementById(link.anchor!);
+                          if (node) {
+                            ev.preventDefault();
+                            node.scrollIntoView({ behavior: "smooth", block: "start" });
+                            node.classList.add("ring-2", "ring-primary/60", "rounded-md");
+                            window.setTimeout(
+                              () => node.classList.remove("ring-2", "ring-primary/60", "rounded-md"),
+                              1600,
+                            );
+                          }
                         }
-                      }
-                    : undefined;
-                  return (
-                    <Tag
-                      key={`${link.code}-${link.title}`}
-                      href={link.anchor ? `#${link.anchor}` : undefined}
-                      onClick={onClick}
-                      title={`${link.code} — ${link.title} (${examLabel})`}
-                      className={cn(
-                        "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium",
-                        "border-border bg-background/80 text-foreground/85",
-                        link.anchor
-                          ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
-                          : "cursor-default",
-                      )}
-                    >
-                      <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)]">
-                        {link.code}
-                      </span>
-                      <span className="opacity-70">·</span>
-                      <span className="truncate max-w-[16rem]">{link.title}</span>
-                      <span className="text-[9px] uppercase tracking-wider opacity-60">{examLabel}</span>
-                    </Tag>
-                  );
-                })}
+                      : undefined;
+                    return (
+                      <Tag
+                        key={`${link.code}-${link.title}`}
+                        href={link.anchor ? `#${link.anchor}` : undefined}
+                        onClick={onClick}
+                        title={`${link.code} — ${link.title} (${examLabel})`}
+                        className={cn(
+                          "inline-flex items-center gap-1.5 px-2 py-1 rounded-full border text-[10.5px] font-medium flex-none snap-start",
+                          "border-border bg-background/80 text-foreground/85",
+                          link.anchor
+                            ? "hover:bg-accent hover:text-accent-foreground hover:border-primary/40 cursor-pointer transition-colors"
+                            : "cursor-default",
+                        )}
+                      >
+                        <span className="font-mono text-[9.5px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] whitespace-nowrap">
+                          {link.code}
+                        </span>
+                        <span className="opacity-70">·</span>
+                        <span className="whitespace-nowrap">{link.title}</span>
+                        <span className="text-[9px] uppercase tracking-wider opacity-60 whitespace-nowrap">{examLabel}</span>
+                      </Tag>
+                    );
+                  })}
+                </div>
+                {/* edge fades */}
+                <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
+                <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(38_38%_94%)] dark:from-[hsl(38_18%_14%)] to-transparent" />
               </div>
-            </div>
           ) : null}
         </div>
       </div>
