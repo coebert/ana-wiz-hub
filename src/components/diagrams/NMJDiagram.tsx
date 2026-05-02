@@ -4,7 +4,8 @@ const PHASES = [
   { id: "rest", label: "Resting State", duration: 70 },
   { id: "ap", label: "Action Potential Arrives", duration: 40 },
   { id: "ca", label: "Ca²⁺ Influx through VGCCs", duration: 80 },
-  { id: "vesicle", label: "Ca²⁺-Triggered Vesicle Fusion & ACh Release", duration: 60 },
+  { id: "syt", label: "Ca²⁺ Binds Synaptotagmin-1", duration: 50 },
+  { id: "vesicle", label: "SNARE Zippering → Vesicle Fusion & ACh Release", duration: 60 },
   { id: "bind", label: "ACh Binds nAChR", duration: 50 },
   { id: "depol", label: "End-Plate Depolarisation", duration: 50 },
   { id: "degrade", label: "ACh Hydrolysis by AChE", duration: 50 },
@@ -47,7 +48,7 @@ export const NMJDiagram = () => {
     { cx: 320, cy: 115 },
   ];
 
-  const showCaArrows = currentPhase.id === "ca" || currentPhase.id === "vesicle";
+  const showCaArrows = currentPhase.id === "ca" || currentPhase.id === "syt" || currentPhase.id === "vesicle";
   const showAChDots = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
   const vesiclesFusing = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
   const receptorsActive = currentPhase.id === "bind" || currentPhase.id === "depol";
@@ -55,12 +56,14 @@ export const NMJDiagram = () => {
   const showAP = currentPhase.id === "ap" || currentPhase.id === "ca";
 
   // ─── Synchronised Ca²⁺ sub-animation timing ─────────────────────────────
-  // Single normalised timeline t spanning "ca" → "vesicle" phases (0 → 2).
+  // Single normalised timeline t spanning "ca" → "syt" → "vesicle" phases (0 → 3).
   //   t in [0, 1)  = within "ca" phase
-  //   t in [1, 2)  = within "vesicle" phase
+  //   t in [1, 2)  = within "syt" phase (Ca²⁺ binding to synaptotagmin)
+  //   t in [2, 3)  = within "vesicle" phase
   const caT =
     currentPhase.id === "ca" ? phaseProgress
-      : currentPhase.id === "vesicle" ? 1 + phaseProgress
+      : currentPhase.id === "syt" ? 1 + phaseProgress
+      : currentPhase.id === "vesicle" ? 2 + phaseProgress
       : -1;
 
   // Helper: smooth ramp 0→1 between two timeline points
@@ -70,16 +73,19 @@ export const NMJDiagram = () => {
     return (t - start) / (end - start);
   };
 
-  // VGCC opening: opens fast (0 → 0.15 of "ca"), stays open, closes late in "vesicle" (1.7 → 1.95)
-  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 1.7, 1.95)) : 0;
+  // VGCC opening: opens fast (0 → 0.15), stays open, closes late in "vesicle" (2.7 → 2.95)
+  const vgccOpen = caT >= 0 ? ramp(caT, 0, 0.15) * (1 - ramp(caT, 2.7, 2.95)) : 0;
 
-  // Ca²⁺ ions stream: starts 0.1 of "ca", fully on by 0.3, fades out 1.4 → 1.7 (mid-vesicle)
-  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 1.4, 1.7)) : 0;
+  // Ca²⁺ ions stream: starts 0.1, fully on by 0.3, fades out 2.0 → 2.3 (early vesicle)
+  const caStreamIntensity = caT >= 0 ? ramp(caT, 0.1, 0.3) * (1 - ramp(caT, 2.0, 2.3)) : 0;
 
-  // Cloud builds through "ca" (0.2 → 1.0), holds early "vesicle", dissipates 1.5 → 2.0
-  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 1.5, 2.0)) : 0;
+  // Cloud builds through "ca" (0.2 → 1.0), holds through "syt", dissipates 2.3 → 3.0
+  const cloudIntensity = caT >= 0 ? ramp(caT, 0.2, 1.0) * (1 - ramp(caT, 2.3, 3.0)) : 0;
 
-  // Vesicle fusion progress: only during "vesicle" phase (caT 1 → 2)
+  // Synaptotagmin Ca²⁺ binding: ramps up over the "syt" phase (1.0 → 1.8), saturates, then released as fusion proceeds (2.5 → 3.0)
+  const sytBinding = caT >= 0 ? ramp(caT, 1.0, 1.8) * (1 - ramp(caT, 2.5, 3.0)) : 0;
+
+  // Vesicle fusion progress: only during "vesicle" phase (caT 2 → 3)
   const fusionProgress = currentPhase.id === "vesicle" ? phaseProgress
     : currentPhase.id === "bind" || currentPhase.id === "depol" ? 1
     : 0;
@@ -163,22 +169,59 @@ export const NMJDiagram = () => {
             fill="hsl(35 95% 55%)" opacity={0.1 + cloudIntensity * 0.3} />
         )}
 
-        {/* Vesicles — fusion gated by fusionProgress (begins only in "vesicle" phase) */}
+        {/* Vesicles — Syt-1 sensors visible at base; Ca²⁺ binds them before SNARE-mediated fusion */}
         {vesicles.map((v, i) => {
-          // Stagger fusion across vesicles using fusionProgress
           const localFusion = Math.max(0, Math.min(1, fusionProgress * 1.6 - i * 0.12));
           const fusing = localFusion > 0;
           const vy = v.cy + (140 - v.cy) * localFusion;
           const opacity = showDegradation ? 0.3 : fusing ? 1 - 0.4 * localFusion : 1;
+
+          const sytY = vy + 12;
+          const sytPositions = [-5, 0, 5];
+          const showSyt = caT >= 0 && localFusion < 0.6;
+          const sytGlow = sytBinding * (1 - localFusion);
+
           return (
             <g key={i}>
               <circle cx={v.cx} cy={vy} r={12} fill="hsl(170 50% 70%)" stroke="hsl(170 50% 40%)" strokeWidth="1.5" opacity={opacity} />
-              {/* ACh dots inside */}
               {localFusion < 0.5 && (
                 <>
                   <circle cx={v.cx - 3} cy={vy - 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
                   <circle cx={v.cx + 3} cy={vy + 2} r={2} fill="hsl(170 50% 40%)" opacity={1 - localFusion * 2} />
                 </>
+              )}
+
+              {/* Synaptotagmin-1 sensors (3 C2 domains) */}
+              {showSyt && sytPositions.map((dx, k) => {
+                const bound = sytGlow > 0.1;
+                return (
+                  <g key={k}>
+                    {bound && (
+                      <circle cx={v.cx + dx} cy={sytY} r={4 + sytGlow * 2}
+                        fill="hsl(35 95% 55%)" opacity={0.35 * sytGlow}>
+                        <animate attributeName="opacity"
+                          values={`${0.2 * sytGlow};${0.5 * sytGlow};${0.2 * sytGlow}`}
+                          dur="0.6s" repeatCount="indefinite" />
+                      </circle>
+                    )}
+                    <circle cx={v.cx + dx} cy={sytY} r={2.5}
+                      fill={bound ? "hsl(35 95% 55%)" : "hsl(280 30% 65%)"}
+                      stroke={bound ? "hsl(25 90% 35%)" : "hsl(280 30% 40%)"}
+                      strokeWidth="0.8"
+                      opacity={opacity} />
+                    {bound && (
+                      <circle cx={v.cx + dx} cy={sytY - 1} r={1.2}
+                        fill="hsl(45 100% 95%)" opacity={sytGlow} />
+                    )}
+                  </g>
+                );
+              })}
+
+              {i === 0 && showSyt && sytGlow > 0.2 && (
+                <text x={v.cx - 22} y={sytY + 3} fontSize="7"
+                  fill="hsl(280 40% 35%)" className="font-semibold" opacity={sytGlow}>
+                  Syt-1
+                </text>
               )}
             </g>
           );
@@ -274,11 +317,24 @@ export const NMJDiagram = () => {
         <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/10 text-primary">
           {currentPhase.label}
         </span>
-        {(currentPhase.id === "ca" || currentPhase.id === "vesicle") && (
+        {currentPhase.id === "ca" && (
           <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
             Depolarisation opens <span className="font-semibold" style={{ color: "hsl(25 90% 40%)" }}>P/Q-type voltage-gated Ca²⁺ channels</span>.
-            Extracellular Ca²⁺ flows down its gradient into the nerve terminal, raising local [Ca²⁺]ᵢ
-            from ~100 nM to &gt;100 µM at the active zone — the trigger for synaptotagmin-mediated vesicle fusion.
+            Extracellular Ca²⁺ flows down its gradient into the nerve terminal, raising local
+            [Ca²⁺]ᵢ from ~100 nM to &gt;100 µM at the active zone.
+          </p>
+        )}
+        {currentPhase.id === "syt" && (
+          <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+            Ca²⁺ binds the C2A/C2B domains of <span className="font-semibold" style={{ color: "hsl(280 40% 35%)" }}>synaptotagmin-1</span> on
+            the docked vesicle. Cooperative binding (~5 Ca²⁺ ions) triggers a conformational change that
+            displaces complexin and releases the SNARE complex to zipper.
+          </p>
+        )}
+        {currentPhase.id === "vesicle" && (
+          <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+            SNARE zippering (synaptobrevin · syntaxin · SNAP-25) drives membrane fusion. The vesicle
+            collapses into the active zone and releases a quantum (~10 000 ACh molecules) into the cleft.
           </p>
         )}
       </div>
