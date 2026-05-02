@@ -112,6 +112,7 @@ const PatientPositioningTopic = () => {
               and lowered simultaneously to avoid pelvic torsion and lumbar strain.
             </p>
             <LithotomyPositionDiagram />
+            <PeronealNerveLithotomyAnimation />
           </ExamSection>
 
           <ExamSection id="lateral" exams={[Exam.PRIMARY, Exam.FINAL]}>
