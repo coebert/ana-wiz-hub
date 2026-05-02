@@ -672,10 +672,70 @@ export const lowerLimbFolio: CorPictumFolioData = {
         { code: "RU_BK_02", exams: [Exam.FINAL], title: "Popliteal sciatic nerve block — landmarks & sonoanatomy", anchor: "sacral-plexus" },
       ],
     },
+    {
+      id: "lower-arteries", tabLabel: "Arterial supply", folio: "III",
+      title: "Arterial Supply of the Lower Limb", subtitle: "External iliac → femoral → popliteal → tibials",
+      image: lowerlimbArteries, alt: "Painted anterior view of the arterial tree of the lower limb",
+      caption: "Arterial supply of the lower limb — anterior view",
+      labels: [
+        { latin: "arteria iliaca externa", english: "External iliac artery", note: "Becomes common femoral artery beneath the inguinal ligament." },
+        { latin: "arteria femoralis communis", english: "Common femoral artery", note: "Mid-inguinal point; arterial line + IABP access; femoral pulse." },
+        { latin: "arteria profunda femoris", english: "Profunda femoris", note: "Main supply to thigh musculature; gives medial + lateral circumflex (femoral head supply)." },
+        { latin: "arteria femoralis superficialis", english: "Superficial femoral artery", note: "Through adductor canal; becomes popliteal at adductor hiatus." },
+        { latin: "arteria poplitea", english: "Popliteal artery", note: "Deepest structure in popliteal fossa; aneurysm site; popliteal pulse with knee flexed." },
+        { latin: "arteria tibialis anterior", english: "Anterior tibial artery", note: "Anterior compartment; becomes dorsalis pedis (lateral to EHL tendon)." },
+        { latin: "arteria tibialis posterior", english: "Posterior tibial artery", note: "Behind medial malleolus — palpable pulse; supplies plantar arch." },
+        { latin: "arteria fibularis", english: "Peroneal (fibular) artery", note: "Lateral leg; collateral supply, often spared in PVD." },
+        { latin: "arteria dorsalis pedis", english: "Dorsalis pedis", note: "Pulse lateral to EHL tendon — absent congenitally in 5–12%." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Arterial supply of the lower limb", anchor: "arterial-supply" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Femoral arterial cannulation & vascular access", anchor: "arterial-supply" },
+      ],
+    },
+    {
+      id: "lower-veins", tabLabel: "Venous drainage", folio: "IV",
+      title: "Venous Drainage of the Lower Limb", subtitle: "Superficial (saphenous) + deep system",
+      image: lowerlimbVeins, alt: "Painted anterior view of the venous network of the lower limb",
+      caption: "Superficial and deep venous drainage — anterior view",
+      labels: [
+        { latin: "vena saphena magna", english: "Great saphenous vein", note: "Longest vein in the body; medial leg + thigh; SFJ in groin; cutdown 1 cm anterior + superior to medial malleolus." },
+        { latin: "vena saphena parva", english: "Small saphenous vein", note: "Posterior calf; drains into popliteal vein." },
+        { latin: "arcus venosus dorsalis pedis", english: "Dorsal venous arch of foot", note: "Origin of great + small saphenous veins; useful IV cannulation site." },
+        { latin: "venae perforantes", english: "Perforating veins", note: "Connect superficial → deep system; valvular incompetence underlies varicose veins." },
+        { latin: "vena femoralis", english: "Femoral vein", note: "Medial to femoral artery in the femoral sheath; emergency CVC site." },
+        { latin: "vena poplitea", english: "Popliteal vein", note: "Superficial to popliteal artery; common DVT site." },
+        { latin: "venae tibiales posteriores", english: "Posterior tibial veins", note: "Calf-pump driven; another common DVT origin." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Venous drainage of the lower limb", anchor: "venous-drainage" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "VTE risk assessment & prophylaxis (NICE CG89)", anchor: "venous-drainage" },
+      ],
+    },
+    {
+      id: "lower-nerves", tabLabel: "Innervation", folio: "V",
+      title: "Innervation of the Lower Limb", subtitle: "Lumbar + sacral plexus terminal branches",
+      image: lowerlimbNerves, alt: "Painted view of nerves of the lower limb",
+      caption: "Innervation of the lower limb",
+      labels: [
+        { latin: "plexus lumbalis", english: "Lumbar plexus (L1–L4)", note: "Forms within psoas major; gives femoral, obturator, LCNT, ilioinguinal, iliohypogastric." },
+        { latin: "nervus femoralis", english: "Femoral nerve (L2–L4)", note: "Lateral to femoral artery under inguinal ligament; quadriceps + saphenous; femoral / fascia iliaca block." },
+        { latin: "nervus saphenus", english: "Saphenous nerve", note: "Terminal sensory branch of femoral; medial leg to medial malleolus; adductor canal block target." },
+        { latin: "nervus obturatorius", english: "Obturator nerve (L2–L4)", note: "Through obturator foramen; adductors of thigh; often missed by femoral block alone." },
+        { latin: "nervus cutaneus femoris lateralis", english: "Lateral cutaneous nerve of thigh", note: "Under ASIS; pure sensory; entrapment = meralgia paraesthetica." },
+        { latin: "nervus ischiadicus", english: "Sciatic nerve (L4–S3)", note: "Largest nerve in the body; tibial + common peroneal divisions; subgluteal / popliteal blocks." },
+        { latin: "nervus tibialis", english: "Tibial nerve", note: "Posterior compartment + sole; behind medial malleolus; main popliteal block target." },
+        { latin: "nervus peroneus communis", english: "Common peroneal nerve", note: "Wraps around fibular neck — vulnerable to compression → foot drop." },
+        { latin: "nervus peroneus superficialis", english: "Superficial peroneal nerve", note: "Lateral leg + dorsum of foot (except first webspace)." },
+        { latin: "nervus peroneus profundus", english: "Deep peroneal nerve", note: "Anterior compartment (dorsiflexion); first webspace sensation." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Lumbosacral plexus & terminal nerves", anchor: "sacral-plexus" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Lower limb regional anaesthesia — block selection", anchor: "lower-limb-blocks" },
+      ],
+    },
   ],
 };
-
-export const thoracicFolio: CorPictumFolioData = {
   atlasTitle: "Atlas of Anatomy — Thorax",
   atlasSubtitle: "Painted plates of the thoracic cavity",
   plates: [
