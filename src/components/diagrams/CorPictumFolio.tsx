@@ -445,8 +445,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
             ) : null}
           </div>
 
-          {/* Italic Latin caption strip beneath the plate-mark */}
-          <p className="mt-3 text-center font-serif italic text-xs sm:text-sm text-muted-foreground">
+          {/* English caption strip beneath the plate-mark */}
+          <p className="mt-3 text-center font-serif text-xs sm:text-sm text-muted-foreground">
             {active.caption}
           </p>
 
