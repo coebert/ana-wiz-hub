@@ -244,6 +244,13 @@ export const NMJDiagram = () => {
         <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/10 text-primary">
           {currentPhase.label}
         </span>
+        {(currentPhase.id === "ca" || currentPhase.id === "vesicle") && (
+          <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+            Depolarisation opens <span className="font-semibold" style={{ color: "hsl(25 90% 40%)" }}>P/Q-type voltage-gated Ca²⁺ channels</span>.
+            Extracellular Ca²⁺ flows down its gradient into the nerve terminal, raising local [Ca²⁺]ᵢ
+            from ~100 nM to &gt;100 µM at the active zone — the trigger for synaptotagmin-mediated vesicle fusion.
+          </p>
+        )}
       </div>
 
       {/* Phase timeline */}
