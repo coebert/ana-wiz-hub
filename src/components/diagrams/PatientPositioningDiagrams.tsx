@@ -364,42 +364,158 @@ interface FrameCardProps {
   pros: string;
   cons: string;
   uses: string;
+  /** Specific positioning issues / pitfalls unique to this frame. */
+  issues: string[];
+  /** Frame-specific supports drawn UNDER the patient silhouette (in viewBox 240×130). */
   draw: React.ReactNode;
+  /** Optional spine curve override (path d). Defaults to a gentle natural lordosis. */
+  spinePath?: string;
 }
 
-const FrameCard = ({ name, hue, caption, pros, cons, uses, draw }: FrameCardProps) => (
-  <div className="rounded-lg border border-border overflow-hidden bg-card">
-    <div className="p-2 border-b border-border bg-muted/30">
-      <p className="text-sm font-semibold text-foreground">{name}</p>
-      <p className="text-[11px] text-muted-foreground">{caption}</p>
+const FrameCard = ({
+  name,
+  hue,
+  caption,
+  pros,
+  cons,
+  uses,
+  issues,
+  draw,
+  spinePath,
+}: FrameCardProps) => {
+  const accent = `hsl(${hue} 60% 50%)`;
+  // Default spine: natural prone lordosis, head LEFT, feet RIGHT
+  const spine = spinePath ?? "M 35 60 Q 80 56 120 60 Q 165 64 205 62";
+
+  return (
+    <div className="rounded-lg border border-border overflow-hidden bg-card flex flex-col">
+      <div
+        className="p-2 border-b border-border"
+        style={{ background: `hsl(${hue} 60% 50% / 0.08)` }}
+      >
+        <div className="flex items-center gap-2">
+          <span
+            className="inline-block w-2 h-2 rounded-full"
+            style={{ background: accent }}
+            aria-hidden
+          />
+          <p className="text-sm font-semibold text-foreground">{name}</p>
+        </div>
+        <p className="text-[11px] text-muted-foreground mt-0.5">{caption}</p>
+      </div>
+
+      <div className="p-2">
+        <svg
+          viewBox="0 0 240 130"
+          className="w-full h-auto"
+          role="img"
+          aria-label={`${name} — side-on schematic of patient on frame`}
+        >
+          {/* Theatre table base + legs */}
+          <rect x={10} y={108} width={220} height={6} rx={2} fill="hsl(210 25% 35%)" />
+          <rect x={20} y={114} width={6} height={14} fill="hsl(210 25% 30%)" />
+          <rect x={214} y={114} width={6} height={14} fill="hsl(210 25% 30%)" />
+
+          {/* Floor reference line */}
+          <line
+            x1={0}
+            y1={128}
+            x2={240}
+            y2={128}
+            stroke="hsl(var(--muted-foreground))"
+            strokeWidth={0.4}
+            strokeDasharray="2 3"
+            opacity={0.5}
+          />
+
+          {/* Frame-specific supports (drawn UNDER patient) */}
+          <g style={{ color: accent }}>{draw}</g>
+
+          {/* Patient — prone, side-on. Head LEFT, feet RIGHT. */}
+          {/* Torso */}
+          <path
+            d="M 55 56 Q 90 50 130 54 Q 170 58 200 60 L 200 70 Q 170 68 130 64 Q 90 60 55 66 Z"
+            fill="hsl(35 70% 82%)"
+            stroke="hsl(35 50% 40%)"
+            strokeWidth={0.8}
+          />
+          {/* Spine curve indicator */}
+          <path
+            d={spine}
+            fill="none"
+            stroke="hsl(0 0% 25%)"
+            strokeWidth={1}
+            strokeDasharray="2 2"
+            opacity={0.7}
+          />
+          {/* Head + neck */}
+          <circle
+            cx={42}
+            cy={58}
+            r={9}
+            fill="hsl(35 70% 82%)"
+            stroke="hsl(35 50% 40%)"
+            strokeWidth={0.8}
+          />
+          <line x1={50} y1={60} x2={58} y2={60} stroke="hsl(35 50% 40%)" strokeWidth={2} />
+          {/* Buttock + leg taper */}
+          <path
+            d="M 200 60 Q 215 62 222 66 L 222 70 Q 215 70 200 70 Z"
+            fill="hsl(35 70% 82%)"
+            stroke="hsl(35 50% 40%)"
+            strokeWidth={0.8}
+          />
+
+          {/* Head + foot direction labels */}
+          <text x={32} y={48} fontSize={6} fill="hsl(var(--muted-foreground))" textAnchor="middle">
+            HEAD
+          </text>
+          <text
+            x={218}
+            y={48}
+            fontSize={6}
+            fill="hsl(var(--muted-foreground))"
+            textAnchor="middle"
+          >
+            FEET
+          </text>
+        </svg>
+
+        <dl className="mt-2 text-[11px] grid grid-cols-1 gap-1.5">
+          <div>
+            <dt className="font-semibold text-[hsl(150_55%_35%)] dark:text-[hsl(150_55%_55%)]">
+              Pros
+            </dt>
+            <dd className="text-muted-foreground">{pros}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-[hsl(0_70%_45%)] dark:text-[hsl(0_70%_60%)]">Cons</dt>
+            <dd className="text-muted-foreground">{cons}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-foreground">Used for</dt>
+            <dd className="text-muted-foreground">{uses}</dd>
+          </div>
+          <div>
+            <dt
+              className="font-semibold"
+              style={{ color: accent }}
+            >
+              Specific positioning issues
+            </dt>
+            <dd>
+              <ul className="list-disc pl-4 space-y-0.5 text-muted-foreground marker:text-muted-foreground/50">
+                {issues.map((it) => (
+                  <li key={it}>{it}</li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </div>
     </div>
-    <div className="p-2">
-      <svg viewBox="0 0 220 110" className="w-full h-auto" role="img" aria-label={`${name} frame`}>
-        {/* Table base */}
-        <rect x={10} y={80} width={200} height={6} rx={2} fill="hsl(210 25% 35%)" />
-        {/* Frame-specific drawing */}
-        <g style={{ color: `hsl(${hue} 60% 50%)` }}>{draw}</g>
-        {/* Patient silhouette overlay */}
-        <ellipse cx={110} cy={50} rx={70} ry={10} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1} opacity={0.8} />
-        <circle cx={42} cy={50} r={9} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1} opacity={0.85} />
-      </svg>
-      <dl className="mt-2 text-[11px] grid grid-cols-1 gap-1">
-        <div>
-          <dt className="font-semibold text-[hsl(150_55%_35%)] dark:text-[hsl(150_55%_55%)]">Pros</dt>
-          <dd className="text-muted-foreground">{pros}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold text-[hsl(0_70%_45%)] dark:text-[hsl(0_70%_60%)]">Cons</dt>
-          <dd className="text-muted-foreground">{cons}</dd>
-        </div>
-        <div>
-          <dt className="font-semibold text-foreground">Used for</dt>
-          <dd className="text-muted-foreground">{uses}</dd>
-        </div>
-      </dl>
-    </div>
-  </div>
-);
+  );
+};
 
 export const ProneFrameComparisonDiagram = () => (
   <div className="my-4 rounded-xl border border-border bg-card">
