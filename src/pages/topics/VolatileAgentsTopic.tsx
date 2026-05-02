@@ -3,6 +3,7 @@ import { MACDiagram } from "@/components/diagrams/MACDiagram";
 import { SynthesisBlock } from "@/components/SynthesisBlock";
 import { volatileAgentsQuiz } from "@/data/quizzes";
 import VolatileAgentStructures from "@/components/diagrams/VolatileAgentStructures";
+import SecondGasEffectDiagram from "@/components/diagrams/SecondGasEffectDiagram";
 import { Exam } from "@/data/curriculum";
 
 const VolatileAgentsTopic = () => {
@@ -263,6 +264,48 @@ const VolatileAgentsTopic = () => {
               <li>• <strong>Low cardiac output</strong> (less blood to carry agent away)</li>
               <li>• <strong>Second gas effect</strong> (N₂O uptake concentrates companion agent)</li>
             </ul>
+          </section>
+
+          <section className="mb-10">
+            <h2 className="text-2xl font-serif font-bold text-foreground">N₂O — Second Gas Effect & Diffusion Hypoxia</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Two phenomena are unique to high-volume gases like nitrous oxide. They are flip-sides of the same large-volume
+              uptake (during induction) and washout (during emergence) across the alveolar–capillary membrane.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <h3 className="font-semibold text-foreground text-sm mb-1">Second gas effect (induction)</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  When N₂O (≈70%) is given with a volatile, the very large volume of N₂O dissolves rapidly in pulmonary
+                  capillary blood. The alveolar gas pool shrinks, <em>concentrating</em> the remaining volatile and
+                  drawing more inspired gas down the airway. The companion volatile's F<sub>A</sub>/F<sub>I</sub> rises
+                  faster than it would alone — a clinically useful accelerator at induction.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border p-4 bg-card">
+                <h3 className="font-semibold text-foreground text-sm mb-1">Diffusion hypoxia (emergence)</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  When N₂O is switched off at the end of the case, the partial-pressure gradient reverses. Huge volumes
+                  of N₂O leave the blood and flood the alveoli, <em>diluting</em> alveolar O₂ and CO₂. The result is a
+                  transient fall in alveolar PO₂ and a respiratory drive blunted by reduced PaCO₂ — hypoxia unless the
+                  patient is given <strong>100% O₂ for 3–5 minutes</strong> at emergence.
+                </p>
+              </div>
+            </div>
+
+            <SecondGasEffectDiagram />
+
+            <div className="bg-secondary/30 rounded-lg p-4 mt-3 border border-border">
+              <p className="text-sm font-medium text-foreground mb-1">Why N₂O specifically?</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Both phenomena require a gas that is delivered in <strong>very high inspired concentration</strong> and
+                that <strong>moves rapidly between blood and alveolus</strong>. N₂O fits both criteria — its blood:gas
+                partition coefficient (0.47) is low, but it is given at ~70%, so the absolute volumes shifting across
+                the membrane are vast. Volatile agents are given at 1–6%, far too low to produce the same alveolar
+                volume changes.
+              </p>
+            </div>
           </section>
 
           <section className="mb-10">
