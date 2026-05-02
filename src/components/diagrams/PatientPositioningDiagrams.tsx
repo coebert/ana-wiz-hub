@@ -1,5 +1,16 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import {
+  AnatomyDefs,
+  HeadFront,
+  HeadProfile,
+  Arm,
+  Leg,
+  TorsoSupine,
+  TorsoLateral,
+  TorsoProne,
+  MayfieldPins,
+} from "./patientAnatomy";
 
 /**
  * Patient-positioning diagrams — labelled SVG illustrations used by the
