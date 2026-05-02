@@ -1514,36 +1514,194 @@ export const SittingPositionDiagram = () => (
 // ── 8. BEACH CHAIR (shoulder) ──────────────────────────────────────────
 
 export const BeachChairPositionDiagram = () => (
-  <PositionFrame
-    title="Beach-chair position"
-    caption="Modified Fowler's at ~30–45° for shoulder arthroscopy and open shoulder surgery. Lower VAE risk than full sitting but cerebral perfusion remains a concern."
-    hotspots={[
-      { id: "cere", x: 250, y: 85, label: "Cerebral hypoperfusion (CIDS)", detail: "Cerebral ischaemic desaturation events: hypotension at the brain (MAP measured at heart overestimates cerebral pressure by 12–20 mmHg) has caused stroke and visual loss after shoulder surgery. Zero arterial line at tragus / external auditory meatus; treat hypotension promptly with pressors; maintain cerebral MAP ≥ 70 mmHg." },
-      { id: "neck", x: 230, y: 115, label: "Cervical alignment", detail: "Head and neck must be in neutral alignment with both ears visible. Lateral flexion stretches the contralateral brachial plexus and compromises vertebral artery flow." },
-      { id: "ettmove", x: 215, y: 100, label: "ETT migration", detail: "Sitting up moves the carina cephalad relative to the ETT — risk of accidental extubation. Re-confirm bilateral air entry after positioning." },
-      { id: "psd", x: 320, y: 130, label: "Padded support / no shoulder slip", detail: "Hip and head straps prevent slipping; padded foot-board supports body weight. Avoid hyperextension of the operative shoulder traction." },
-    ]}
-    legend={<>Common procedures: shoulder arthroscopy, rotator-cuff repair, open shoulder reconstruction, awake fibreoptic intubation.</>}
-  >
-    {/* Chair base */}
-    <rect x={130} y={210} width={300} height={6} fill="hsl(210 25% 35%)" />
-    <rect x={250} y={216} width={60} height={10} fill="hsl(210 20% 45%)" />
-    {/* Backrest 35° */}
-    <g transform="rotate(-35 280 200)">
-      <rect x={195} y={155} width={170} height={45} rx={10} fill="hsl(210 25% 35%)" />
-      {/* Body — lateral torso along the backrest */}
-      <TorsoLateral cx={280} cy={138} length={170} height={42} idPrefix="pf" facing="left" />
-      {/* Head profile (eyes forward — facing camera-right at viewer) */}
-      <HeadProfile cx={195} cy={138} r={18} idPrefix="pf" facing="left" />
-    </g>
-    {/* Legs — extended along leg-rest with light drape */}
-    <Leg hx={310} hy={195} kx={370} ky={195} ax={435} ay={195} idPrefix="pf" thighW={22} calfW={18} footLen={18} draped />
-    {/* Operative arm — abducted up into traction */}
-    <Arm sx={235} sy={120} ex={268} ey={92} wx={295} wy={72} idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />
-    <line x1={295} y1={72} x2={315} y2={52} stroke={POS_AMBER} strokeWidth={2} strokeDasharray="3 2" />
-    <text x={320} y={50} fontSize={10} fill={POS_AMBER} fontWeight={700}>traction</text>
+export const BeachChairPositionDiagram = () => {
+  // Step-through animation: 0 = neutral, 1 = 30° abduction,
+  // 2 = 70° abduction + scapular protraction, 3 = traction loaded.
+  const STEPS = [
+    {
+      label: "1. Neutral",
+      caption: "Operative arm rests adducted on the body. Glenohumeral joint relaxed; scapula in resting position on the chest wall.",
+      // shoulder, elbow, wrist
+      arm: { sx: 235, sy: 120, ex: 248, ey: 150, wx: 260, wy: 178 },
+      scapulaDx: 0,
+      tractionOpacity: 0,
+      forceOpacity: 0,
+    },
+    {
+      label: "2. 30° abduction",
+      caption: "Arm lifted from the side. Deltoid initiates the first 30°; scapula still largely static (glenohumeral rhythm 2:1 begins after this).",
+      arm: { sx: 235, sy: 120, ex: 258, ey: 132, wx: 282, wy: 138 },
+      scapulaDx: 1,
+      tractionOpacity: 0,
+      forceOpacity: 0,
+    },
+    {
+      label: "3. 70° abduction + scapular protraction",
+      caption: "Beyond ~30°, the scapula rotates upward and protracts forward to keep the glenoid under the humeral head — exposing the brachial plexus to stretch.",
+      arm: { sx: 232, sy: 118, ex: 263, ey: 110, wx: 292, wy: 88 },
+      scapulaDx: 5,
+      tractionOpacity: 0,
+      forceOpacity: 0,
+    },
+    {
+      label: "4. Traction applied",
+      caption: "Distal traction (typically 4–7 lb / 1.8–3 kg) pulls the humerus longitudinally to open the joint space — risk of brachial plexus / axillary nerve stretch and cerebral hypoperfusion if BP not maintained.",
+      arm: { sx: 230, sy: 117, ex: 265, ey: 100, wx: 298, wy: 70 },
+      scapulaDx: 7,
+      tractionOpacity: 1,
+      forceOpacity: 1,
+    },
+  ];
 
-    <line x1={210} y1={108} x2={50} y2={108} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
-    <text x={50} y={101} fontSize={10} fill={POS_GREEN} fontWeight={700}>zero MAP at tragus</text>
-  </PositionFrame>
-);
+  const [step, setStep] = useState(0);
+
+  // Auto-advance every 1.8s, pause on user interaction for 6s.
+  const [paused, setPaused] = useState(false);
+  React.useEffect(() => {
+    if (paused) return;
+    const t = setTimeout(() => setStep((s) => (s + 1) % STEPS.length), 1800);
+    return () => clearTimeout(t);
+  }, [step, paused]);
+  React.useEffect(() => {
+    if (!paused) return;
+    const t = setTimeout(() => setPaused(false), 6000);
+    return () => clearTimeout(t);
+  }, [paused]);
+
+  const active = STEPS[step];
+
+  return (
+    <div className="space-y-2">
+      <PositionFrame
+        title="Beach-chair position"
+        caption="Modified Fowler's at ~30–45° for shoulder arthroscopy and open shoulder surgery. Lower VAE risk than full sitting but cerebral perfusion remains a concern."
+        hotspots={[
+          { id: "cere", x: 250, y: 85, label: "Cerebral hypoperfusion (CIDS)", detail: "Cerebral ischaemic desaturation events: hypotension at the brain (MAP measured at heart overestimates cerebral pressure by 12–20 mmHg) has caused stroke and visual loss after shoulder surgery. Zero arterial line at tragus / external auditory meatus; treat hypotension promptly with pressors; maintain cerebral MAP ≥ 70 mmHg." },
+          { id: "neck", x: 230, y: 115, label: "Cervical alignment", detail: "Head and neck must be in neutral alignment with both ears visible. Lateral flexion stretches the contralateral brachial plexus and compromises vertebral artery flow." },
+          { id: "ettmove", x: 215, y: 100, label: "ETT migration", detail: "Sitting up moves the carina cephalad relative to the ETT — risk of accidental extubation. Re-confirm bilateral air entry after positioning." },
+          { id: "psd", x: 320, y: 130, label: "Padded support / no shoulder slip", detail: "Hip and head straps prevent slipping; padded foot-board supports body weight. Avoid hyperextension of the operative shoulder traction." },
+        ]}
+        legend={<>Common procedures: shoulder arthroscopy, rotator-cuff repair, open shoulder reconstruction, awake fibreoptic intubation.</>}
+      >
+        {/* Chair base */}
+        <rect x={130} y={210} width={300} height={6} fill="hsl(210 25% 35%)" />
+        <rect x={250} y={216} width={60} height={10} fill="hsl(210 20% 45%)" />
+        {/* Backrest 35° */}
+        <g transform="rotate(-35 280 200)">
+          <rect x={195} y={155} width={170} height={45} rx={10} fill="hsl(210 25% 35%)" />
+          <TorsoLateral cx={280} cy={138} length={170} height={42} idPrefix="pf" facing="left" />
+          <HeadProfile cx={195} cy={138} r={18} idPrefix="pf" facing="left" />
+        </g>
+        {/* Legs */}
+        <Leg hx={310} hy={195} kx={370} ky={195} ax={435} ay={195} idPrefix="pf" thighW={22} calfW={18} footLen={18} draped />
+
+        {/* Animated scapula marker — slides forward / protracts with abduction */}
+        <g style={{ transition: "transform 700ms ease-out" }} transform={`translate(${active.scapulaDx} ${-active.scapulaDx * 0.3})`}>
+          <ellipse cx={222} cy={118} rx={9} ry={5} fill="hsl(35 50% 60%)" opacity={0.55} />
+          <text x={222} y={108} fontSize={9} textAnchor="middle" fill="hsl(var(--muted-foreground))" fontWeight={600}>scapula</text>
+        </g>
+
+        {/* Animated operative arm — interpolates between steps */}
+        <g style={{ transition: "opacity 400ms ease-out" }}>
+          <AnimatedArm
+            sx={active.arm.sx} sy={active.arm.sy}
+            ex={active.arm.ex} ey={active.arm.ey}
+            wx={active.arm.wx} wy={active.arm.wy}
+          />
+        </g>
+
+        {/* Traction line + force arrow — only appear on step 4 */}
+        <g style={{ opacity: active.tractionOpacity, transition: "opacity 500ms ease-out" }}>
+          <line x1={active.arm.wx} y1={active.arm.wy} x2={active.arm.wx + 22} y2={active.arm.wy - 22}
+            stroke={POS_AMBER} strokeWidth={2} strokeDasharray="3 2" />
+          <text x={active.arm.wx + 27} y={active.arm.wy - 24} fontSize={10} fill={POS_AMBER} fontWeight={700}>traction</text>
+          {/* Force arrow */}
+          <g style={{ opacity: active.forceOpacity, transition: "opacity 500ms ease-out 200ms" }}>
+            <path
+              d={`M ${active.arm.wx + 24} ${active.arm.wy - 24} l 8 -8 m 0 0 l -1 6 m 1 -6 l -6 1`}
+              stroke={POS_AMBER} strokeWidth={1.5} fill="none" strokeLinecap="round"
+            />
+            <text x={active.arm.wx + 35} y={active.arm.wy - 38} fontSize={9} fill={POS_AMBER} fontWeight={600}>4–7 lb</text>
+          </g>
+        </g>
+
+        <line x1={210} y1={108} x2={50} y2={108} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
+        <text x={50} y={101} fontSize={10} fill={POS_GREEN} fontWeight={700}>zero MAP at tragus</text>
+      </PositionFrame>
+
+      {/* Step controller */}
+      <div className="rounded-xl border border-border bg-card p-3">
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground">
+            Operative arm — abduction & traction sequence
+          </p>
+          <button
+            type="button"
+            onClick={() => setPaused((p) => !p)}
+            className="text-[10px] font-semibold px-2 py-1 rounded-md border border-border bg-background hover:bg-muted transition"
+          >
+            {paused ? "▶ Resume" : "❚❚ Pause"}
+          </button>
+        </div>
+        <div className="flex gap-1.5 mb-2">
+          {STEPS.map((s, i) => (
+            <button
+              key={s.label}
+              type="button"
+              onClick={() => { setStep(i); setPaused(true); }}
+              className={cn(
+                "flex-1 h-1.5 rounded-full transition-colors",
+                i === step ? "bg-primary" : i < step ? "bg-primary/40" : "bg-muted"
+              )}
+              aria-label={s.label}
+            />
+          ))}
+        </div>
+        <p className="text-xs font-semibold text-foreground">{active.label}</p>
+        <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">{active.caption}</p>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Wrapper around <Arm> that animates shoulder/elbow/wrist coordinates
+ * between steps. Achieves the effect by tweening with React state on a
+ * requestAnimationFrame loop so the limb re-tessellates each frame
+ * (the underlying SVG is path-based, not a CSS-transformable shape).
+ */
+const AnimatedArm = ({
+  sx, sy, ex, ey, wx, wy,
+}: { sx: number; sy: number; ex: number; ey: number; wx: number; wy: number }) => {
+  const target = { sx, sy, ex, ey, wx, wy };
+  const [coords, setCoords] = useState(target);
+  const rafRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    const start = { ...coords };
+    const t0 = performance.now();
+    const dur = 700;
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - t0) / dur);
+      // ease-in-out cubic
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      setCoords({
+        sx: start.sx + (target.sx - start.sx) * e,
+        sy: start.sy + (target.sy - start.sy) * e,
+        ex: start.ex + (target.ex - start.ex) * e,
+        ey: start.ey + (target.ey - start.ey) * e,
+        wx: start.wx + (target.wx - start.wx) * e,
+        wy: start.wy + (target.wy - start.wy) * e,
+      });
+      if (t < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sx, sy, ex, ey, wx, wy]);
+
+  return (
+    <Arm sx={coords.sx} sy={coords.sy} ex={coords.ex} ey={coords.ey} wx={coords.wx} wy={coords.wy}
+      idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />
+  );
+};
