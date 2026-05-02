@@ -129,7 +129,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   // ── Polygon review mode (developer/editor) ─────────────────────────────
   // URL `?review=polygons` also enables this without a code change.
   const urlReview = typeof window !== "undefined" && window.location.search.includes("review=polygons");
-  const [reviewMode, setReviewMode] = useState<boolean>(enableReviewMode && urlReview);
+  const reviewAllowed = enableReviewMode || urlReview;
+  const [reviewMode, setReviewMode] = useState<boolean>(false);
   // Per-plate working copy of polygons (overrides label.polygon when set)
   const [editedPolys, setEditedPolys] = useState<Record<string, Array<Array<[number, number]> | undefined>>>({});
   const [selectedEditIdx, setSelectedEditIdx] = useState<number | null>(null);
