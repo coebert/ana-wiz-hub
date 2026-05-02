@@ -2121,13 +2121,14 @@ export const SittingPositionDiagram = () => (
       <rect x={170} y={188} width={100} height={10} fill="hsl(210 25% 35%)" />
     </g>
 
-    {/* Patient torso along backrest */}
-    <g transform="rotate(-60 270 195)">
-      <TorsoLateral cx={220} cy={170} length={110} height={42} idPrefix="pf" facing="left" />
-      {/* Head profile + Mayfield */}
-      <HeadProfile cx={155} cy={170} r={18} idPrefix="pf" facing="left" />
-      <MayfieldPins cx={155} cy={170} r={18} />
-    </g>
+    {/* Patient torso + head + Mayfield via composite (rotates internally) */}
+    <SittingPatient
+      sx={270} sy={195}
+      tiltDeg={60}
+      torsoLength={110} torsoHeight={42}
+      showMayfield showLegs={false}
+      idPrefix="pf"
+    />
 
     {/* Legs flexed forward */}
     <Leg hx={300} hy={195} kx={360} ky={170} ax={400} ay={205} idPrefix="pf" thighW={20} calfW={17} footLen={18} draped />
