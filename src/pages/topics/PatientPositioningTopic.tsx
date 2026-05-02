@@ -159,6 +159,8 @@ const PatientPositioningTopic = () => {
               with remifentanil bolus, lidocaine or LA infiltration).
             </p>
 
+            <MayfieldPinSitingDiagram />
+
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Park-bench position</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
               A modified lateral with the patient at the edge of the table and the dependent arm allowed to hang in a
