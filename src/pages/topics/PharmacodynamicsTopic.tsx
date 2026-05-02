@@ -1,8 +1,12 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { pharmacodynamicsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { DoseResponseCurveDiagram } from "@/components/diagrams/DoseResponseCurveDiagram";
+import { AgonismSpectrumDiagram } from "@/components/diagrams/AgonismSpectrumDiagram";
+import { ReceptorTimescaleDiagram } from "@/components/diagrams/ReceptorTimescaleDiagram";
 
 const objectives = [
   "Distinguish potency (EC₅₀) from efficacy (Emax) and read sigmoid log dose-response curves",
