@@ -5,6 +5,7 @@ import CoagulationCascadeDiagram from "@/components/diagrams/CoagulationCascadeD
 import TraliVsTacoDecisionTool from "@/components/diagrams/TraliVsTacoDecisionTool";
 import CellSalvageAnimatedDiagram from "@/components/diagrams/CellSalvageAnimatedDiagram";
 import AcdCitrateChelationDiagram from "@/components/diagrams/AcdCitrateChelationDiagram";
+import CitrateWashSeparationDiagram from "@/components/diagrams/CitrateWashSeparationDiagram";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { Exam } from "@/data/curriculum";
 
@@ -296,6 +297,7 @@ const TransfusionCoagulationTopic = () => {
             </div>
 
             <AcdCitrateChelationDiagram />
+            <CitrateWashSeparationDiagram />
 
             <div className="mb-4">
               <p className="font-semibold text-foreground text-sm mb-2">ACD-A vs heparinised saline — anticoagulant choice for cell salvage</p>
