@@ -12,6 +12,7 @@ import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
 import headneckOrbit from "@/assets/plates/headneck-orbit.jpg";
 import headneckOrbitFrontal from "@/assets/plates/headneck-orbit-frontal.jpg";
+import neckC6Axial from "@/assets/plates/neck-c6-axial.jpg";
 import neuroMidsagittal from "@/assets/plates/neuro-midsagittal.jpg";
 import neuroCircleWillis from "@/assets/plates/neuro-circle-willis.jpg";
 import skullbaseSuperior from "@/assets/plates/skullbase-superior.jpg";
@@ -238,6 +239,43 @@ export const headNeckFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Bony orbit — bones, foramina & fissures", anchor: "ophthalmic-anatomy" },
         { code: "RU_BK_01", exams: [Exam.FINAL], title: "Trigeminal branch blocks (supraorbital & infraorbital)", anchor: "ophthalmic-anatomy" },
         { code: "OP_BK_01", exams: [Exam.FINAL], title: "Orbital fractures & ophthalmic surgical anatomy", anchor: "ophthalmic-anatomy" },
+      ],
+    },
+    {
+      id: "neck-c6-axial", tabLabel: "Neck axial (C6)", folio: "V",
+      title: "Axial Section — C6 (Cricoid Level)", subtitle: "Transverse cross-section of the neck at the cricoid",
+      image: neckC6Axial, alt: "Painted axial cross-section of the neck at the level of the C6 vertebra (cricoid)",
+      caption: "Axial section at C6 — the anaesthetist's reference plane for central venous access, stellate ganglion block and tracheal landmarks",
+      labels: [
+        { latin: "", english: "Cricoid cartilage", note: "Only complete cartilaginous ring; landmark for cricoid pressure (Sellick) and front-of-neck access." },
+        { latin: "", english: "Trachea", note: "Begins at cricoid (C6); C-shaped rings anteriorly, membranous trachealis posteriorly." },
+        { latin: "", english: "Oesophagus", note: "Posterior to trachea, deviated slightly left at C6 — collapsed in the cadaver, distensible in life." },
+        { latin: "", english: "Thyroid gland", note: "Two lobes wrap antero-laterally around trachea; isthmus crosses rings 2–4 (encountered in tracheostomy)." },
+        { latin: "", english: "Recurrent laryngeal nerve", note: "Lies in the tracheo-oesophageal groove — vulnerable in thyroid surgery; bilateral palsy → stridor." },
+        { latin: "", english: "Common carotid artery", note: "Bifurcates higher (C4); pulsation lateral to cricoid is the landmark for posterior IJV approach." },
+        { latin: "", english: "Internal jugular vein", note: "Lateral and slightly anterior to carotid within the carotid sheath — target for central venous access." },
+        { latin: "", english: "Vagus nerve (CN X)", note: "Posterior to and between IJV and carotid within the sheath — at risk during deep cervical block." },
+        { latin: "", english: "Carotid sheath", note: "Investing fascia enclosing carotid, IJV and vagus; defines the safe US-guided needling plane for IJV CVC." },
+        { latin: "", english: "Sternocleidomastoid", note: "Two heads (sternal, clavicular) — apex of triangle is the surface landmark for landmark IJV cannulation." },
+        { latin: "", english: "Strap muscles (sternohyoid/sternothyroid/omohyoid)", note: "Anterior to thyroid; retracted during tracheostomy and thyroid surgery." },
+        { latin: "", english: "Anterior scalene", note: "Phrenic nerve descends on its anterior surface; brachial plexus emerges between anterior and middle scalene." },
+        { latin: "", english: "Middle and posterior scalene", note: "Form the lateral wall of the interscalene groove — target for interscalene brachial plexus block." },
+        { latin: "", english: "Phrenic nerve (C3,4,5)", note: "On anterior surface of anterior scalene — paralysed in ~100% of interscalene blocks; avoid bilateral block." },
+        { latin: "", english: "Brachial plexus trunks", note: "Between anterior and middle scalene — superior, middle, inferior trunks visible at C5/6/7 level." },
+        { latin: "", english: "Vertebral artery", note: "Ascends through the transverse foramen of C6 (and above); inadvertent injection during stellate block → seizure." },
+        { latin: "", english: "Chassaignac's tubercle (anterior tubercle of C6)", note: "Most prominent anterior cervical tubercle — bony landmark for stellate ganglion block (anterior paratracheal approach)." },
+        { latin: "", english: "C6 vertebral body", note: "Cricoid lies anterior to the C6 body — the surface-to-skeletal correlation that defines this section." },
+        { latin: "", english: "Spinal cord", note: "Cervical enlargement at C5–T1; injury here → tetraplegia, diaphragmatic sparing depends on lesion above C3." },
+        { latin: "", english: "Prevertebral muscles (longus colli/capitis)", note: "Lie on the anterior vertebral body — covered by prevertebral fascia; plane for retropharyngeal abscess spread." },
+        { latin: "", english: "Investing layer of deep cervical fascia", note: "Encircles the neck deep to platysma; splits to enclose SCM and trapezius." },
+        { latin: "", english: "Pretracheal fascia", note: "Encloses thyroid, trachea, oesophagus; continuous inferiorly with the fibrous pericardium." },
+        { latin: "", english: "Prevertebral fascia", note: "Covers prevertebral muscles and scalenes; extends laterally as the axillary sheath around the brachial plexus." },
+        { latin: "", english: "Trapezius", note: "Posterolateral; forms the posterior border of the posterior triangle. Accessory nerve (CN XI) runs on its deep surface." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Cross-sectional anatomy of the neck at C6", anchor: "neck-cross-section" },
+        { code: "RU_BK_01", exams: [Exam.FINAL], title: "Central venous access & cervical regional anatomy", anchor: "ijv" },
+        { code: "RU_BK_02", exams: [Exam.FINAL], title: "Stellate ganglion block — anterior paratracheal approach", anchor: "neck-cross-section" },
       ],
     },
   ],
