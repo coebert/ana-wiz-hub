@@ -725,7 +725,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
             {!isZoomed ? (
               <p className="absolute bottom-2 left-3 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
                 Scroll / pinch to zoom · drag to pan
-                {hasAnyPolygons ? " · hover labels to highlight" : ""}
+                {hasAnyPolygons ? " · hover or click a structure for details" : ""}
               </p>
             ) : null}
 
