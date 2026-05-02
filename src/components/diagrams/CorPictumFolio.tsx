@@ -126,6 +126,19 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
 
+  // ── Polygon review mode (developer/editor) ─────────────────────────────
+  // URL `?review=polygons` also enables this without a code change.
+  const urlReview = typeof window !== "undefined" && window.location.search.includes("review=polygons");
+  const [reviewMode, setReviewMode] = useState<boolean>(enableReviewMode && urlReview);
+  // Per-plate working copy of polygons (overrides label.polygon when set)
+  const [editedPolys, setEditedPolys] = useState<Record<string, Array<Array<[number, number]> | undefined>>>({});
+  const [selectedEditIdx, setSelectedEditIdx] = useState<number | null>(null);
+  const [tool, setTool] = useState<"select" | "add">("select");
+  const [showAllOutlines, setShowAllOutlines] = useState(true);
+  const [copyFlash, setCopyFlash] = useState(false);
+  const dragVertexRef = useRef<{ labelIdx: number; vertIdx: number } | null>(null);
+  const overlaySvgRef = useRef<SVGSVGElement>(null);
+
   // Horizontal scroll-snap rail for plate tabs (used when many plates)
   const tabRailRef = useRef<HTMLDivElement>(null);
 
