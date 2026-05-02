@@ -11,7 +11,7 @@ import OrbitBonyAnatomyDiagram from "@/components/diagrams/OrbitBonyAnatomyDiagr
 import TracheobronchialTreeDiagram from "@/components/diagrams/TracheobronchialTreeDiagram";
 import BronchoscopicViewDiagram from "@/components/diagrams/BronchoscopicViewDiagram";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
-import { headNeckFolio } from "@/components/diagrams/anatomyFolios";
+import { headNeckFolio, airwayFolio } from "@/components/diagrams/anatomyFolios";
 import { Exam } from "@/data/curriculum";
 
 const HeadNeckAnatomyTopic = () => {
