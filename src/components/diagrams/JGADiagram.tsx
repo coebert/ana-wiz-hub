@@ -154,18 +154,29 @@ export const JGADiagram = () => {
 
         {/* ========== JG CELLS (on afferent wall near glomerulus) ========== */}
         <g className="cursor-pointer" onClick={toggle("jg-cells")} opacity={active && active !== "jg-cells" && active !== "raas" && active !== "tgf-low" && active !== "tgf-high" ? 0.3 : 1}>
-          {[120, 132, 144].map((x, i) => (
-            <g key={`jg-${i}`}>
-              <circle cx={x} cy={138 - i * 2} r={7}
-                fill={isActive("jg-cells") ? "hsl(260 55% 55%/0.25)" : "hsl(260 55% 55%/0.12)"}
-                stroke="hsl(260 55% 55%)" strokeWidth={isActive("jg-cells") ? 1.5 : 0.8} />
-              {/* Renin granules */}
-              {[-2, 0, 2].map((dx, j) => (
-                <circle key={`rg-${i}-${j}`} cx={x + dx} cy={138 - i * 2 + (j - 1) * 2} r={1.2}
-                  fill="hsl(260 55% 55%)" fillOpacity={isActive("jg-cells") ? 0.7 : 0.4} />
-              ))}
-            </g>
-          ))}
+          {[120, 132, 144].map((x, i) => {
+            const reninActive = isMech("tgf-low") || isMech("raas");
+            return (
+              <g key={`jg-${i}`}>
+                <circle cx={x} cy={138 - i * 2} r={7}
+                  fill={isActive("jg-cells") ? "hsl(260 55% 55%/0.25)" : "hsl(260 55% 55%/0.12)"}
+                  stroke="hsl(260 55% 55%)" strokeWidth={isActive("jg-cells") ? 1.5 : 0.8} />
+                {/* Renin granules — pulse when actively releasing */}
+                {[-2, 0, 2].map((dx, j) => (
+                  <circle key={`rg-${i}-${j}`} cx={x + dx} cy={138 - i * 2 + (j - 1) * 2} r={1.2}
+                    fill="hsl(260 55% 55%)" fillOpacity={isActive("jg-cells") ? 0.7 : 0.4}>
+                    {reninActive && (
+                      <animate attributeName="r"
+                        values="1.2;2.2;1.2"
+                        dur="1.4s"
+                        begin={`${(i * 0.15 + j * 0.2)}s`}
+                        repeatCount="indefinite" />
+                    )}
+                  </circle>
+                ))}
+              </g>
+            );
+          })}
           <text x="132" y="118" fontSize="6.5" fill="hsl(260 55% 55%)" textAnchor="middle" fontWeight="600">JG Cells</text>
           <text x="132" y="126" fontSize="5" fill="hsl(260 55% 55%)" textAnchor="middle" opacity="0.6">(renin granules)</text>
           {/* β₁ receptor */}
