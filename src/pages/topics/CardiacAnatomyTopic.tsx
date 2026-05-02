@@ -46,6 +46,13 @@ const CardiacAnatomyTopic = () => {
         <>
           <CardiacAnatomyDiagram />
 
+          <DiagramSection
+            title="Painted plates — heart, valves & conduction"
+            intro="Interactive Cor Pictum folio: scroll or pinch to zoom, drag to pan, and hover a label or region to highlight the matching structure on the plate. Labels are tagged for Primary, Final and FFICM and respect the global exam filter."
+          >
+            <CorPictumFolio {...cardiacFolio} />
+          </DiagramSection>
+
           <CoronarySelectionProvider initial="anterior">
             <DiagramTabs
               title="Coronary territory mapping"
