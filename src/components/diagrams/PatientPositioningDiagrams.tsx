@@ -1531,16 +1531,17 @@ export const BeachChairPositionDiagram = () => (
     {/* Backrest 35° */}
     <g transform="rotate(-35 280 200)">
       <rect x={195} y={155} width={170} height={45} rx={10} fill="hsl(210 25% 35%)" />
-      {/* Body */}
-      <rect x={200} y={120} width={160} height={35} rx={14} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-      <circle cx={195} cy={138} r={18} fill="hsl(35 80% 80%)" stroke="hsl(35 60% 40%)" strokeWidth={1.5} />
+      {/* Body — lateral torso along the backrest */}
+      <TorsoLateral cx={280} cy={138} length={170} height={42} idPrefix="pf" facing="left" />
+      {/* Head profile (eyes forward — facing camera-right at viewer) */}
+      <HeadProfile cx={195} cy={138} r={18} idPrefix="pf" facing="left" />
     </g>
-    {/* Legs */}
-    <rect x={310} y={185} width={130} height={20} rx={8} fill="hsl(210 60% 70%)" stroke="hsl(210 60% 35%)" strokeWidth={1.5} />
-    {/* Arm — operative shoulder traction */}
-    <line x1={235} y1={120} x2={290} y2={70} stroke="hsl(35 80% 80%)" strokeWidth={14} strokeLinecap="round" />
-    <line x1={290} y1={70} x2={310} y2={50} stroke={POS_AMBER} strokeWidth={2} strokeDasharray="3 2" />
-    <text x={315} y={48} fontSize={10} fill={POS_AMBER} fontWeight={700}>traction</text>
+    {/* Legs — extended along leg-rest with light drape */}
+    <Leg hx={310} hy={195} kx={370} ky={195} ax={435} ay={195} idPrefix="pf" thighW={22} calfW={18} footLen={18} draped />
+    {/* Operative arm — abducted up into traction */}
+    <Arm sx={235} sy={120} ex={268} ey={92} wx={295} wy={72} idPrefix="pf" upperW={13} foreW={11} handLen={12} gownSleeve />
+    <line x1={295} y1={72} x2={315} y2={52} stroke={POS_AMBER} strokeWidth={2} strokeDasharray="3 2" />
+    <text x={320} y={50} fontSize={10} fill={POS_AMBER} fontWeight={700}>traction</text>
 
     <line x1={210} y1={108} x2={50} y2={108} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
     <text x={50} y={101} fontSize={10} fill={POS_GREEN} fontWeight={700}>zero MAP at tragus</text>
