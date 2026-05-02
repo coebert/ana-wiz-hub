@@ -317,11 +317,24 @@ export const NMJDiagram = () => {
         <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-primary/10 text-primary">
           {currentPhase.label}
         </span>
-        {(currentPhase.id === "ca" || currentPhase.id === "vesicle") && (
+        {currentPhase.id === "ca" && (
           <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
             Depolarisation opens <span className="font-semibold" style={{ color: "hsl(25 90% 40%)" }}>P/Q-type voltage-gated Ca²⁺ channels</span>.
-            Extracellular Ca²⁺ flows down its gradient into the nerve terminal, raising local [Ca²⁺]ᵢ
-            from ~100 nM to &gt;100 µM at the active zone — the trigger for synaptotagmin-mediated vesicle fusion.
+            Extracellular Ca²⁺ flows down its gradient into the nerve terminal, raising local
+            [Ca²⁺]ᵢ from ~100 nM to &gt;100 µM at the active zone.
+          </p>
+        )}
+        {currentPhase.id === "syt" && (
+          <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+            Ca²⁺ binds the C2A/C2B domains of <span className="font-semibold" style={{ color: "hsl(280 40% 35%)" }}>synaptotagmin-1</span> on
+            the docked vesicle. Cooperative binding (~5 Ca²⁺ ions) triggers a conformational change that
+            displaces complexin and releases the SNARE complex to zipper.
+          </p>
+        )}
+        {currentPhase.id === "vesicle" && (
+          <p className="text-xs text-muted-foreground mt-2 max-w-md mx-auto leading-relaxed">
+            SNARE zippering (synaptobrevin · syntaxin · SNAP-25) drives membrane fusion. The vesicle
+            collapses into the active zone and releases a quantum (~10 000 ACh molecules) into the cleft.
           </p>
         )}
       </div>
