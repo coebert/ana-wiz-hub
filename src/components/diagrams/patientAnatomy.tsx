@@ -397,6 +397,12 @@ export const Arm = ({
         d={taperedLimb(sx, sy, ex, ey, upperW * 1.05, upperW * 0.78)}
         fill={upperFill} stroke={upperStroke} strokeWidth={1} strokeLinejoin="round"
       />
+      {/* Sheen overlay on upper arm */}
+      <path
+        d={taperedLimb(sx, sy, ex, ey, upperW * 1.05, upperW * 0.78)}
+        fill={`url(#${idPrefix}-${gownSleeve ? "gown-sheen" : "skin-sheen"})`}
+        pointerEvents="none"
+      />
       {gownSleeve && (
         <>
           {/* Sleeve cuff just above the elbow */}
