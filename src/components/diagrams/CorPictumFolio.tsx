@@ -1,4 +1,5 @@
 import {
+  MouseEvent as ReactMouseEvent,
   PointerEvent as ReactPointerEvent,
   useCallback,
   useEffect,
@@ -438,7 +439,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                     .join(" · ");
                   const Tag = link.anchor ? "a" : "span";
                   const onClick = link.anchor
-                    ? (ev: React.MouseEvent) => {
+                    ? (ev: ReactMouseEvent) => {
                         const node = document.getElementById(link.anchor!);
                         if (node) {
                           ev.preventDefault();
