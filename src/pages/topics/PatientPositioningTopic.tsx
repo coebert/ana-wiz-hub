@@ -8,7 +8,9 @@ import {
   LithotomyPositionDiagram,
   LateralPositionDiagram,
   PronePositionDiagram,
+  ProneFaceProtectionDiagram,
   ProneFrameComparisonDiagram,
+  MayfieldPinSitingDiagram,
   ParkBenchPositionDiagram,
   ParkBenchDetailedDiagram,
   SittingPositionDiagram,
@@ -135,6 +137,7 @@ const PatientPositioningTopic = () => {
               access and turning logistics.
             </p>
             <PronePositionDiagram />
+            <ProneFaceProtectionDiagram />
             <ProneFrameComparisonDiagram />
             <ProneIVCFreeAbdomenAnimation />
             <p className="text-sm text-muted-foreground leading-relaxed mt-3">
@@ -155,6 +158,8 @@ const PatientPositioningTopic = () => {
               All of these typically use 3-pin Mayfield head fixation — anticipate the hypertensive response (treat
               with remifentanil bolus, lidocaine or LA infiltration).
             </p>
+
+            <MayfieldPinSitingDiagram />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Park-bench position</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
