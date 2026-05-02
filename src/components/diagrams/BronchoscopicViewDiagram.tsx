@@ -115,7 +115,7 @@ interface ViewConfig {
 const views: Record<ViewKey, ViewConfig> = {
   carina: {
     title: "View 1 — Distal trachea & carina",
-    subtitle: "Tracheal rings anterior (12 o'clock), membranous wall posterior (6). Carina divides RMB (right of screen) from LMB (left).",
+    subtitle: "Tracheal rings anterior (12 o'clock), membranous wall posterior (6). Carina divides RMB (left of screen) from LMB (right) — standard bronchoscopic orientation, patient supine.",
     defaultSelected: "carina",
     visible: ["carina", "rmb", "lmb", "rings", "membranous"],
   },
