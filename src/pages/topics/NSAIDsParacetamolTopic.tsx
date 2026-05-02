@@ -1,8 +1,10 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { nsaidsParacetamolQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { NSAIDMechanismDiagram } from "@/components/diagrams/NSAIDMechanismDiagram";
 
 const objectives = [
   "Compare COX-1 vs COX-2 selectivity and predict the GI / CV / renal trade-offs of common NSAIDs",
@@ -93,11 +95,16 @@ const NSAIDsParacetamolTopic = () => {
       quizQuestions={nsaidsParacetamolQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology", "RCoA Final — Pain Medicine"] },
+        diagrams: { exams: [Exam.PRIMARY, Exam.FINAL], curriculumCodes: ["RCoA Primary — Pharmacology"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
       sectionSources={{
         objectives: [
+          "Peck & Hill Ch.15",
+          "BJA Educ 2018",
+        ],
+        diagrams: [
           "Peck & Hill Ch.15",
           "BJA Educ 2018",
         ],
@@ -169,6 +176,22 @@ const NSAIDsParacetamolTopic = () => {
             </ul>
           </ExamSection>
         </>
+      }
+      diagrams={
+        <DiagramSection
+          title="NSAID mechanism — therapeutic &amp; adverse effects"
+          intro={
+            <p>
+              Trace arachidonic acid through COX-1, COX-2 and the lipoxygenase
+              shunt. Switch between non-selective NSAID, aspirin and a coxib to
+              see which prostanoids are blocked and which therapeutic and
+              adverse effects follow. Tap any effect chip for the underlying
+              mediator.
+            </p>
+          }
+        >
+          <NSAIDMechanismDiagram />
+        </DiagramSection>
       }
     />
   );
