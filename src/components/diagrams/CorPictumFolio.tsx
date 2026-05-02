@@ -118,6 +118,9 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
   // Two-way label ↔ polygon highlight (index into active.labels)
   const [activeLabelIdx, setActiveLabelIdx] = useState<number | null>(null);
 
+  // Horizontal scroll-snap rail for plate tabs (used when many plates)
+  const tabRailRef = useRef<HTMLDivElement>(null);
+
   // Zoom/pan state — local to the painted plate area
   const stageRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
