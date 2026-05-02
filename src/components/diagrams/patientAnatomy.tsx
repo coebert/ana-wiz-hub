@@ -249,50 +249,142 @@ interface ArmProps {
 }
 
 /**
- * Articulated arm rendered as a thick rounded segment with a small "elbow"
- * disc and a tapered hand at the end.
+ * Articulated arm with tapered upper-arm + forearm, a proper elbow joint,
+ * a hand silhouette with a thumb, and an optional gown sleeve with cuff
+ * + crease folds. The elbow is offset slightly toward the joint axis to
+ * give the limb a credible bend rather than a kinked stick.
  */
 export const Arm = ({
   sx, sy, ex, ey, wx, wy,
   handLen = 12, upperW = 13, foreW = 11,
   idPrefix = "anat", gownSleeve = false,
 }: ArmProps) => {
-  // hand vector
-  const dx = wx - ex;
-  const dy = wy - ey;
-  const len = Math.hypot(dx, dy) || 1;
-  const ux = dx / len;
-  const uy = dy / len;
-  const hx = wx + ux * handLen;
-  const hy = wy + uy * handLen;
+  // Build a tapered "rounded rectangle" along an arbitrary axis.
+  const taperedLimb = (
+    x1: number, y1: number, x2: number, y2: number,
+    w1: number, w2: number,
+  ) => {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len; // unit normal
+    const ny = dx / len;
+    const a1x = x1 + nx * w1 / 2, a1y = y1 + ny * w1 / 2;
+    const a2x = x1 - nx * w1 / 2, a2y = y1 - ny * w1 / 2;
+    const b1x = x2 + nx * w2 / 2, b1y = y2 + ny * w2 / 2;
+    const b2x = x2 - nx * w2 / 2, b2y = y2 - ny * w2 / 2;
+    // Round both ends with a small arc tangent to the limb axis.
+    const cap1 = `A ${w1 / 2} ${w1 / 2} 0 0 1 ${a2x} ${a2y}`;
+    const cap2 = `A ${w2 / 2} ${w2 / 2} 0 0 1 ${b1x} ${b1y}`;
+    return `M ${a1x},${a1y} L ${b1x},${b1y} ${cap2} L ${a2x},${a2y} ${cap1} Z`;
+  };
+
+  // Forearm vector + hand placement
+  const fdx = wx - ex, fdy = wy - ey;
+  const flen = Math.hypot(fdx, fdy) || 1;
+  const fux = fdx / flen, fuy = fdy / flen;
+  const fnx = -fuy, fny = fux; // normal to forearm
+  // Hand (palm) centre and tip
+  const palmX = wx + fux * handLen * 0.45;
+  const palmY = wy + fuy * handLen * 0.45;
+  const tipX = wx + fux * handLen;
+  const tipY = wy + fuy * handLen;
+  // Thumb anchor (radial side, ~45° off the palm)
+  const thumbBaseX = palmX + fnx * foreW * 0.4;
+  const thumbBaseY = palmY + fny * foreW * 0.4;
+  const thumbTipX = thumbBaseX + (fux + fnx) * 0.5 * handLen * 0.55;
+  const thumbTipY = thumbBaseY + (fuy + fny) * 0.5 * handLen * 0.55;
+  const armRot = (Math.atan2(fuy, fux) * 180) / Math.PI;
+
+  const upperFill = gownSleeve ? GOWN(idPrefix) : SKIN(idPrefix);
+  const upperStroke = gownSleeve ? STROKE_GOWN : STROKE_SKIN;
+
   return (
     <g filter={`url(#${idPrefix}-shadow)`}>
-      {/* Upper arm (sleeve or skin) */}
-      <line
-        x1={sx} y1={sy} x2={ex} y2={ey}
-        stroke={gownSleeve ? GOWN(idPrefix) : SKIN(idPrefix)}
-        strokeWidth={upperW} strokeLinecap="round"
+      {/* Upper arm — tapered (deltoid → biceps narrows toward elbow) */}
+      <path
+        d={taperedLimb(sx, sy, ex, ey, upperW * 1.05, upperW * 0.78)}
+        fill={upperFill} stroke={upperStroke} strokeWidth={1} strokeLinejoin="round"
       />
-      <line
-        x1={sx} y1={sy} x2={ex} y2={ey}
-        stroke={gownSleeve ? STROKE_GOWN : STROKE_SKIN}
-        strokeWidth={0.9} strokeLinecap="round" fill="none" opacity={0.6}
-      />
-      {/* Elbow joint */}
-      <circle cx={ex} cy={ey} r={upperW * 0.42} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} />
-      {/* Forearm */}
-      <line x1={ex} y1={ey} x2={wx} y2={wy} stroke={SKIN(idPrefix)} strokeWidth={foreW} strokeLinecap="round" />
-      <line x1={ex} y1={ey} x2={wx} y2={wy} stroke={STROKE_SKIN} strokeWidth={0.7} opacity={0.5} />
-      {/* Hand */}
+      {gownSleeve && (
+        <>
+          {/* Sleeve cuff just above the elbow */}
+          <line
+            x1={ex - (sx - ex) * 0.18 - fnx * upperW * 0.45}
+            y1={ey - (sy - ey) * 0.18 - fny * upperW * 0.45}
+            x2={ex - (sx - ex) * 0.18 + fnx * upperW * 0.45}
+            y2={ey - (sy - ey) * 0.18 + fny * upperW * 0.45}
+            stroke={STROKE_GOWN} strokeWidth={0.9} opacity={0.55}
+          />
+          {/* Two short shoulder folds */}
+          <path
+            d={`M ${sx + (ex - sx) * 0.15},${sy + (ey - sy) * 0.15}
+                L ${sx + (ex - sx) * 0.45},${sy + (ey - sy) * 0.45}`}
+            stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.4} fill="none"
+          />
+        </>
+      )}
+      {/* Elbow joint — slightly oval to read as a real joint */}
       <ellipse
-        cx={(wx + hx) / 2}
-        cy={(wy + hy) / 2}
-        rx={handLen * 0.55}
-        ry={foreW * 0.55}
-        fill={SKIN(idPrefix)}
-        stroke={STROKE_SKIN}
-        strokeWidth={0.8}
-        transform={`rotate(${(Math.atan2(uy, ux) * 180) / Math.PI} ${(wx + hx) / 2} ${(wy + hy) / 2})`}
+        cx={ex} cy={ey}
+        rx={upperW * 0.46} ry={upperW * 0.4}
+        transform={`rotate(${armRot} ${ex} ${ey})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+      />
+      {/* Forearm — tapers from elbow toward the wrist */}
+      <path
+        d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+      />
+      {/* Faint flexor crease along the inside of the forearm */}
+      <path
+        d={`M ${ex - fnx * foreW * 0.18},${ey - fny * foreW * 0.18}
+            L ${wx - fnx * foreW * 0.18},${wy - fny * foreW * 0.18}`}
+        stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.35} fill="none"
+      />
+      {/* Wrist */}
+      <ellipse
+        cx={wx} cy={wy}
+        rx={foreW * 0.42} ry={foreW * 0.3}
+        transform={`rotate(${armRot} ${wx} ${wy})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.7}
+      />
+      {/* Hand — palm + thumb */}
+      <g transform={`rotate(${armRot} ${palmX} ${palmY})`}>
+        <ellipse
+          cx={palmX} cy={palmY}
+          rx={handLen * 0.6} ry={foreW * 0.5}
+          fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8}
+        />
+        {/* Knuckle hint */}
+        <path
+          d={`M ${palmX + handLen * 0.2},${palmY - foreW * 0.32}
+              Q ${palmX + handLen * 0.45},${palmY - foreW * 0.15}
+                ${palmX + handLen * 0.55},${palmY + foreW * 0.05}`}
+          stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.4} fill="none"
+        />
+      </g>
+      {/* Finger tip taper */}
+      <ellipse
+        cx={(palmX + tipX) / 2}
+        cy={(palmY + tipY) / 2}
+        rx={handLen * 0.32}
+        ry={foreW * 0.36}
+        transform={`rotate(${armRot} ${(palmX + tipX) / 2} ${(palmY + tipY) / 2})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.6}
+      />
+      {/* Thumb */}
+      <path
+        d={`M ${thumbBaseX},${thumbBaseY}
+            Q ${(thumbBaseX + thumbTipX) / 2 + fnx * 1.5},${(thumbBaseY + thumbTipY) / 2 + fny * 1.5}
+              ${thumbTipX},${thumbTipY}`}
+        stroke={SKIN(idPrefix)} strokeWidth={foreW * 0.42} strokeLinecap="round" fill="none"
+      />
+      <path
+        d={`M ${thumbBaseX},${thumbBaseY}
+            Q ${(thumbBaseX + thumbTipX) / 2 + fnx * 1.5},${(thumbBaseY + thumbTipY) / 2 + fny * 1.5}
+              ${thumbTipX},${thumbTipY}`}
+        stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.5} fill="none"
       />
     </g>
   );
@@ -323,34 +415,128 @@ export const Leg = ({
 }: LegProps) => {
   const fillColor = draped ? `url(#${idPrefix}-drape)` : SKIN(idPrefix);
   const strokeColor = draped ? "hsl(210 20% 50%)" : STROKE_SKIN;
-  // default foot direction: continue calf vector but bend toward toes
-  const calfDx = ax - kx;
-  const calfDy = ay - ky;
-  const calfAngle = Math.atan2(calfDy, calfDx) * 180 / Math.PI;
-  const footRot = footAngle ?? calfAngle + 90; // foot perpendicular to calf
+
+  // Tapered limb path helper (also used by Arm).
+  const taperedLimb = (
+    x1: number, y1: number, x2: number, y2: number,
+    w1: number, w2: number,
+  ) => {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len;
+    const ny = dx / len;
+    const a1x = x1 + nx * w1 / 2, a1y = y1 + ny * w1 / 2;
+    const a2x = x1 - nx * w1 / 2, a2y = y1 - ny * w1 / 2;
+    const b1x = x2 + nx * w2 / 2, b1y = y2 + ny * w2 / 2;
+    const b2x = x2 - nx * w2 / 2, b2y = y2 - ny * w2 / 2;
+    const cap1 = `A ${w1 / 2} ${w1 / 2} 0 0 1 ${a2x} ${a2y}`;
+    const cap2 = `A ${w2 / 2} ${w2 / 2} 0 0 1 ${b1x} ${b1y}`;
+    return `M ${a1x},${a1y} L ${b1x},${b1y} ${cap2} L ${a2x},${a2y} ${cap1} Z`;
+  };
+
+  // Thigh & calf vectors
+  const tdx = kx - hx, tdy = ky - hy;
+  const tlen = Math.hypot(tdx, tdy) || 1;
+  const tnx = -tdy / tlen, tny = tdx / tlen;
+  const cdx = ax - kx, cdy = ay - ky;
+  const clen = Math.hypot(cdx, cdy) || 1;
+  const cux = cdx / clen, cuy = cdy / clen;
+  const calfAngleDeg = (Math.atan2(cdy, cdx) * 180) / Math.PI;
+  const footRot = footAngle ?? calfAngleDeg + 90;
+
   return (
     <g filter={`url(#${idPrefix}-shadow)`}>
-      {/* Thigh */}
-      <line x1={hx} y1={hy} x2={kx} y2={ky}
-        stroke={fillColor} strokeWidth={thighW} strokeLinecap="round" />
-      <line x1={hx} y1={hy} x2={kx} y2={ky}
-        stroke={strokeColor} strokeWidth={0.8} opacity={0.5} />
-      {/* Knee */}
-      <circle cx={kx} cy={ky} r={thighW * 0.4} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} />
-      {/* Calf */}
-      <line x1={kx} y1={ky} x2={ax} y2={ay} stroke={SKIN(idPrefix)} strokeWidth={calfW} strokeLinecap="round" />
-      <line x1={kx} y1={ky} x2={ax} y2={ay} stroke={STROKE_SKIN} strokeWidth={0.7} opacity={0.5} />
-      {/* Ankle */}
-      <circle cx={ax} cy={ay} r={calfW * 0.32} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.7} />
-      {/* Foot */}
+      {/* Thigh — tapers from hip (wide) to knee (narrower) */}
+      <path
+        d={taperedLimb(hx, hy, kx, ky, thighW * 1.05, thighW * 0.78)}
+        fill={fillColor} stroke={strokeColor} strokeWidth={1} strokeLinejoin="round"
+      />
+      {draped && (
+        <>
+          {/* Drape folds along the thigh */}
+          <path
+            d={`M ${hx + tnx * thighW * 0.25},${hy + tny * thighW * 0.25}
+                Q ${(hx + kx) / 2 + tnx * thighW * 0.18},${(hy + ky) / 2 + tny * thighW * 0.18}
+                  ${kx + tnx * thighW * 0.05},${ky + tny * thighW * 0.05}`}
+            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+          />
+          <path
+            d={`M ${hx - tnx * thighW * 0.2},${hy - tny * thighW * 0.2}
+                Q ${(hx + kx) / 2 - tnx * thighW * 0.28},${(hy + ky) / 2 - tny * thighW * 0.28}
+                  ${kx - tnx * thighW * 0.1},${ky - tny * thighW * 0.1}`}
+            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+          />
+          {/* Drape hem just above the knee */}
+          <path
+            d={`M ${kx + tnx * thighW * 0.5},${ky + tny * thighW * 0.5}
+                Q ${kx},${ky + 1}
+                  ${kx - tnx * thighW * 0.5},${ky - tny * thighW * 0.5}`}
+            stroke={strokeColor} strokeWidth={0.9} opacity={0.55} fill="none"
+          />
+        </>
+      )}
+      {/* Knee — patella (skin even when thigh is draped) */}
+      <ellipse
+        cx={kx} cy={ky}
+        rx={thighW * 0.42} ry={thighW * 0.36}
+        transform={`rotate(${calfAngleDeg} ${kx} ${ky})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+      />
+      {/* Patellar dimple */}
+      <ellipse
+        cx={kx + cux * thighW * 0.05}
+        cy={ky + cuy * thighW * 0.05}
+        rx={thighW * 0.18} ry={thighW * 0.12}
+        transform={`rotate(${calfAngleDeg} ${kx} ${ky})`}
+        fill="none" stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.35}
+      />
+      {/* Calf — bulges proximally, tapers to ankle */}
+      <path
+        d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+      />
+      {/* Tibial ridge hint (front of calf) */}
+      <path
+        d={`M ${kx + cux * calfW * 0.4},${ky + cuy * calfW * 0.4}
+            L ${ax - cux * calfW * 0.3},${ay - cuy * calfW * 0.3}`}
+        stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.3} fill="none"
+      />
+      {/* Ankle (malleolus) */}
+      <ellipse
+        cx={ax} cy={ay}
+        rx={calfW * 0.36} ry={calfW * 0.28}
+        transform={`rotate(${calfAngleDeg} ${ax} ${ay})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8}
+      />
+      {/* Foot — heel pad → arch → ball → toes */}
       <g transform={`rotate(${footRot} ${ax} ${ay})`}>
         <path
-          d={`M ${ax - footLen * 0.1},${ay - calfW * 0.3}
-              Q ${ax + footLen * 0.5},${ay - calfW * 0.45} ${ax + footLen * 0.95},${ay - calfW * 0.05}
-              Q ${ax + footLen * 0.95},${ay + calfW * 0.3} ${ax + footLen * 0.4},${ay + calfW * 0.4}
-              L ${ax - footLen * 0.1},${ay + calfW * 0.35} Z`}
+          d={`M ${ax - footLen * 0.18},${ay - calfW * 0.05}
+              Q ${ax - footLen * 0.22},${ay + calfW * 0.45}
+                ${ax + footLen * 0.05},${ay + calfW * 0.5}
+              L ${ax + footLen * 0.55},${ay + calfW * 0.5}
+              Q ${ax + footLen * 1.02},${ay + calfW * 0.42}
+                ${ax + footLen * 1.02},${ay + calfW * 0.05}
+              Q ${ax + footLen * 0.98},${ay - calfW * 0.18}
+                ${ax + footLen * 0.55},${ay - calfW * 0.32}
+              Q ${ax + footLen * 0.2},${ay - calfW * 0.42}
+                ${ax - footLen * 0.05},${ay - calfW * 0.32}
+              Z`}
           fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
         />
+        {/* Arch crease (medial longitudinal arch) */}
+        <path
+          d={`M ${ax + footLen * 0.05},${ay + calfW * 0.5}
+              Q ${ax + footLen * 0.4},${ay + calfW * 0.32}
+                ${ax + footLen * 0.85},${ay + calfW * 0.4}`}
+          stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.4} fill="none"
+        />
+        {/* Toe separators */}
+        <line x1={ax + footLen * 0.85} y1={ay - calfW * 0.18} x2={ax + footLen * 0.95} y2={ay + calfW * 0.05}
+          stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.4} />
+        <line x1={ax + footLen * 0.78} y1={ay - calfW * 0.25} x2={ax + footLen * 0.86} y2={ay - calfW * 0.05}
+          stroke={STROKE_SKIN} strokeWidth={0.35} opacity={0.35} />
       </g>
     </g>
   );
