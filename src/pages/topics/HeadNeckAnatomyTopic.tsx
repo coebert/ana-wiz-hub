@@ -209,8 +209,16 @@ const HeadNeckAnatomyTopic = () => {
             <p className="text-sm text-muted-foreground mt-1">Cartilaginous skeleton and cross-sectional anatomy, vagal innervation (SLN/RLN) and palsy patterns, and the surface landmarks for emergency cricothyroidotomy and elective tracheostomy.</p>
           </div>
 
+          <div id="larynx-plates">
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Larynx — Painted Atlas Plates</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Netter-style plates of the larynx in the four standard planes — sagittal, laryngoscopic, coronal, and axial — with anaesthetic and clinical labels. Use the tabs to switch between views.
+            </p>
+            <CorPictumFolio {...airwayFolio} />
+          </div>
+
           <div id="larynx">
-            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D1. Laryngeal Skeleton & Cross-Section</h2>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">D2. Laryngeal Skeleton & Cross-Section</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               The larynx extends from C3–C6. It comprises a cartilaginous skeleton, intrinsic and extrinsic muscles, and mucosal lining.
             </p>
