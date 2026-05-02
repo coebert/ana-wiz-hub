@@ -181,6 +181,8 @@ const PatientPositioningTopic = () => {
             </ul>
             <SittingPositionDiagram />
             <SittingPositionDetailedDiagram />
+            <SittingHydrostaticAnimation />
+            <VAEDetectionLadderAnimation />
 
             <h3 className="text-lg font-bold text-foreground mt-4 mb-2">Beach-chair position (shoulder surgery)</h3>
             <p className="text-sm text-muted-foreground leading-relaxed mb-2">
