@@ -409,6 +409,31 @@ export const SupinePositionDiagram = () => (
       { id: "sacrum", x: 290, y: 155, label: "Sacrum & heels", detail: "Supine pressure ulcers cluster over the sacrum, scapulae and heels. Float the heels off the mattress and use a pressure-redistributing surface for cases >2 h." },
       { id: "brachial", x: 200, y: 130, label: "Brachial plexus (arm-board)", detail: "Abduction of the arm >90° on an arm-board stretches the plexus over the head of the humerus. Keep abduction <90°, externally rotate, and avoid extension." },
     ]}
+    landmarks={[
+      { id: "occ", x: 108, y: 120, label: "Occiput", dx: -6, dy: -14, anchor: "end" },
+      { id: "sh", x: 130, y: 146, label: "Shoulder (acromion)", dx: -10, dy: -22, anchor: "end" },
+      { id: "elb", x: 230, y: 145, label: "Elbow (med. epicondyle)", dx: 10, dy: 22 },
+      { id: "wr", x: 280, y: 138, label: "Wrist", dx: 8, dy: 18 },
+      { id: "asis", x: 360, y: 150, label: "ASIS", dx: 8, dy: 18 },
+      { id: "knee", x: 430, y: 150, label: "Knee", dx: 0, dy: 22, anchor: "middle" },
+      { id: "heel", x: 482, y: 158, label: "Heel", dx: 8, dy: 14 },
+    ]}
+    measurements={[
+      // Shoulder abduction = angle between trunk axis (shoulder→hip) and humerus (shoulder→elbow)
+      {
+        kind: "angle", id: "abd",
+        vertex: { x: 130, y: 146 },
+        a: { x: 360, y: 146 },   // along trunk → hip (lateral arm-board)
+        b: { x: 230, y: 145 },   // along upper arm → elbow
+        radius: 28,
+      },
+      // Shoulder-to-wrist span (arm-board reach) — useful sanity check
+      {
+        kind: "distance", id: "armReach",
+        from: { x: 130, y: 146 }, to: { x: 280, y: 138 },
+        unit: "cm", pxPerUnit: 5,
+      },
+    ]}
     legend={<>Common procedures: most general, vascular, urological, breast and orthopaedic upper-limb surgery.</>}
   >
     {/* Table */}
