@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { ZoomIn, ZoomOut, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
