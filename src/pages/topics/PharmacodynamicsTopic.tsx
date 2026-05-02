@@ -1,8 +1,12 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { pharmacodynamicsQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import { DoseResponseCurveDiagram } from "@/components/diagrams/DoseResponseCurveDiagram";
+import { AgonismSpectrumDiagram } from "@/components/diagrams/AgonismSpectrumDiagram";
+import { ReceptorTimescaleDiagram } from "@/components/diagrams/ReceptorTimescaleDiagram";
 
 const objectives = [
   "Distinguish potency (EC₅₀) from efficacy (Emax) and read sigmoid log dose-response curves",
@@ -98,6 +102,7 @@ const PharmacodynamicsTopic = () => {
       quizQuestions={pharmacodynamicsQuestions}
       sectionExamMapping={{
         objectives: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
+        diagrams: { exams: [Exam.PRIMARY], curriculumCodes: ["RCoA Primary — Pharmacology"] },
         workedExamples: { exams: [Exam.PRIMARY, Exam.FINAL] },
         keyPoints: { exams: [Exam.PRIMARY, Exam.FINAL] },
       }}
@@ -106,6 +111,10 @@ const PharmacodynamicsTopic = () => {
           "Peck & Hill Ch.2",
           "Rang & Dale Ch.2",
           "Peck & Hill Ch.2",
+        ],
+        diagrams: [
+          "Peck & Hill Ch.2",
+          "Rang & Dale Ch.2",
         ],
         workedExamples: [
           "BJA Educ 2016",
@@ -186,6 +195,48 @@ const PharmacodynamicsTopic = () => {
               <li><strong>Enzyme inhibition</strong>: ↓ CYP450 activity (erythromycin, ciprofloxacin, grapefruit) → ↑ drug effect. Rapid onset</li>
             </ul>
           </ExamSection>
+        </>
+      }
+      diagrams={
+        <>
+          <DiagramSection
+            title="Log dose–response curves"
+            intro={
+              <p>
+                Compare a control agonist against a partial agonist and the two
+                classic antagonist patterns. Toggle each overlay to see how the
+                EC₅₀ marker shifts and how Emax responds.
+              </p>
+            }
+          >
+            <DoseResponseCurveDiagram />
+          </DiagramSection>
+
+          <DiagramSection
+            title="The agonism spectrum"
+            intro={
+              <p>
+                Intrinsic activity (α) places every receptor ligand on a single
+                spectrum from full agonist (α = 1) through partial agonist and
+                antagonist (α = 0) to inverse agonist (α &lt; 0).
+              </p>
+            }
+          >
+            <AgonismSpectrumDiagram />
+          </DiagramSection>
+
+          <DiagramSection
+            title="Receptor types &amp; signal-transduction timescales"
+            intro={
+              <p>
+                A single log-time axis (1 ms → 24 h) makes the order-of-magnitude
+                differences between ion channels, GPCRs, kinase-linked, and
+                nuclear receptors immediately visible.
+              </p>
+            }
+          >
+            <ReceptorTimescaleDiagram />
+          </DiagramSection>
         </>
       }
     />
