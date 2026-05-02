@@ -329,14 +329,14 @@ export const upperLimbFolio: CorPictumFolioData = {
 };
 
 export const lowerLimbFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Membrum Inferius",
+  atlasTitle: "Atlas of Anatomy — Lower Limb",
   atlasSubtitle: "Painted plates of the lower limb",
   plates: [
     {
       id: "femoral", tabLabel: "Femoral triangle", folio: "I",
-      title: "Trigonum Femorale", subtitle: "Anterior thigh and femoral sheath",
+      title: "Femoral Triangle", subtitle: "Anterior thigh and femoral sheath",
       image: lowerlimbFemoral, alt: "Painted anterior view of the femoral triangle",
-      caption: "Trigonum femorale — aspectus anterior",
+      caption: "Femoral triangle — anterior view",
       labels: [
         { latin: "ligamentum inguinale", english: "Inguinal ligament", note: "Superior border of the triangle." },
         { latin: "musculus sartorius", english: "Sartorius", note: "Lateral border of the triangle." },
