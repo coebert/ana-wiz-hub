@@ -399,9 +399,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                             node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
                           }}
                         >
-                          <title>
-                            {label.latin} — {label.english}
-                          </title>
+                          <title>{label.english}</title>
                         </polygon>
                       );
                     })}
