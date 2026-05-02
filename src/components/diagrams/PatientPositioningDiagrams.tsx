@@ -510,6 +510,30 @@ export const LithotomyPositionDiagram = () => (
       { id: "hip", x: 320, y: 90, label: "Hip & femoral nerve stretch", detail: "Excessive hip flexion / abduction / external rotation stretches the femoral and obturator nerves and can dislocate prosthetic hips. Limit hip flexion to <90° if possible; both legs MUST be raised and lowered simultaneously to avoid pelvic torsion / lumbar strain." },
       { id: "back", x: 200, y: 150, label: "Lumbar lordosis loss", detail: "Flat positioning + pelvic tilt cause low-back pain post-op, especially in the elderly. Pad the lumbar spine and avoid prolonged extreme flexion." },
     ]}
+    landmarks={[
+      { id: "hip", x: 345, y: 132, label: "Hip", dx: -10, dy: -8, anchor: "end" },
+      { id: "knee", x: 395, y: 92, label: "Knee", dx: 0, dy: -14, anchor: "middle" },
+      { id: "fib", x: 405, y: 100, label: "Fibular head (CPN risk)", dx: 14, dy: -2 },
+      { id: "ankle", x: 460, y: 120, label: "Ankle", dx: 12, dy: 6 },
+    ]}
+    measurements={[
+      // Hip flexion: trunk axis (hip → shoulder) vs femur (hip → knee)
+      {
+        kind: "angle", id: "hipFlex",
+        vertex: { x: 345, y: 132 },
+        a: { x: 130, y: 146 },   // along trunk toward shoulder
+        b: { x: 395, y: 92 },    // along femur toward knee
+        radius: 32,
+      },
+      // Knee flexion: femur (knee → hip) vs tibia (knee → ankle)
+      {
+        kind: "angle", id: "kneeFlex",
+        vertex: { x: 395, y: 92 },
+        a: { x: 345, y: 132 },
+        b: { x: 460, y: 120 },
+        radius: 24,
+      },
+    ]}
     legend={<>Common procedures: cystoscopy, TURP, gynaecological surgery, anorectal surgery, vaginal hysterectomy; Lloyd-Davies for anterior resection / APR.</>}
   >
     <Table x={70} y={170} w={300} />
