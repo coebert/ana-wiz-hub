@@ -177,6 +177,22 @@ const NSAIDsParacetamolTopic = () => {
           </ExamSection>
         </>
       }
+      diagrams={
+        <DiagramSection
+          title="NSAID mechanism — therapeutic &amp; adverse effects"
+          intro={
+            <p>
+              Trace arachidonic acid through COX-1, COX-2 and the lipoxygenase
+              shunt. Switch between non-selective NSAID, aspirin and a coxib to
+              see which prostanoids are blocked and which therapeutic and
+              adverse effects follow. Tap any effect chip for the underlying
+              mediator.
+            </p>
+          }
+        >
+          <NSAIDMechanismDiagram />
+        </DiagramSection>
+      }
     />
   );
 };
