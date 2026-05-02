@@ -107,7 +107,9 @@ const PatientPositioningTopic = () => {
         "ETT migrates ~2 cm caudally on prone repositioning — re-confirm position and bilateral air entry after every turn; use a reinforced (armoured) tube.",
       ]}
       coreConcepts={
-        <>
+        <RealismProvider level={realism}>
+        <div data-realism={realism}>
+        <RealismToggle level={realism} onChange={setRealism} />
           <ExamSection id="principles" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Positioning</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
