@@ -246,10 +246,7 @@ export const TrendelenburgPositionDiagram = () => (
     <g transform="rotate(-15 280 170)">
       <Table x={70} y={170} w={420} />
       {/* Patient — supine on tilted table */}
-      <TorsoSupine idPrefix="pf" x={120} y={120} length={250} shoulderW={50} waistW={42} hipW={48} />
-      <HeadFront idPrefix="pf" cx={108} cy={140} r={22} />
-      <Leg idPrefix="pf" hx={372} hy={130} kx={420} ky={132} ax={478} ay={134} thighW={20} calfW={16} footLen={18} />
-      <Leg idPrefix="pf" hx={372} hy={150} kx={420} ky={152} ax={478} ay={154} thighW={20} calfW={16} footLen={18} />
+      <SupinePatient idPrefix="pf" x={120} y={120} length={250} showFarArm={false} />
       {/* Shoulder brace (over lateral clavicle) */}
       <rect x={130} y={113} width={7} height={22} rx={2} fill={POS_RED} opacity={0.7} />
     </g>
