@@ -12,6 +12,7 @@ import {
   ParkBenchPositionDiagram,
   ParkBenchDetailedDiagram,
   SittingPositionDiagram,
+  SittingPositionDetailedDiagram,
   BeachChairPositionDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
 
