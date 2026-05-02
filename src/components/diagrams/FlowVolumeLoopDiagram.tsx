@@ -278,7 +278,8 @@ export const FlowVolumeLoopDiagram = () => {
             <path
               key={pattern}
               d={path}
-              fill={`${pInfo.color}08`}
+              fill={pInfo.color}
+              fillOpacity={activeInfo === pattern ? 0.12 : 0.06}
               stroke={pInfo.color}
               strokeWidth={activeInfo === pattern ? "2.5" : "1.8"}
               strokeLinecap="round"
