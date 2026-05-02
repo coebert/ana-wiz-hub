@@ -596,7 +596,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                 </li>
               );
             })}
-          </ul>
+            </ul>
+          </div>
         )}
       </div>
     </div>
