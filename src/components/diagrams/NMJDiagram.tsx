@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const PHASES = [
-  { id: "rest", label: "Resting State", duration: 80 },
+  { id: "rest", label: "Resting State", duration: 70 },
   { id: "ap", label: "Action Potential Arrives", duration: 40 },
-  { id: "ca", label: "Ca²⁺ Influx", duration: 40 },
-  { id: "vesicle", label: "Vesicle Fusion & ACh Release", duration: 60 },
+  { id: "ca", label: "Ca²⁺ Influx through VGCCs", duration: 80 },
+  { id: "vesicle", label: "Ca²⁺-Triggered Vesicle Fusion & ACh Release", duration: 60 },
   { id: "bind", label: "ACh Binds nAChR", duration: 50 },
   { id: "depol", label: "End-Plate Depolarisation", duration: 50 },
   { id: "degrade", label: "ACh Hydrolysis by AChE", duration: 50 },
