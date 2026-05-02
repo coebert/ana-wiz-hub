@@ -195,10 +195,17 @@ export const CountercurrentMultiplierDiagram = () => {
               <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0.15" />
               <stop offset="100%" stopColor="hsl(30 40% 40%)" stopOpacity="0.08" />
             </linearGradient>
+            {/* Medullary osmotic gradient — intensifies toward the papilla as the gradient builds */}
+            <linearGradient id="ccmGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="hsl(150 60% 55%)" stopOpacity="0.04" />
+              <stop offset="100%" stopColor="hsl(15 75% 50%)" stopOpacity={0.05 + (currentStep / (steps.length - 1)) * 0.22} />
+            </linearGradient>
           </defs>
 
           {/* Background zones */}
           <rect x="0" y="0" width="520" height="380" fill="url(#ccmBg)" rx="6" />
+          {/* Medullary tonicity overlay (cortex → papilla) */}
+          <rect x="0" y="0" width="520" height="380" fill="url(#ccmGradient)" rx="6" />
           {[0, 1, 2, 3].map(i => (
             <g key={`zone-${i}`}>
               <line x1="0" y1={i * 90} x2="520" y2={i * 90}
