@@ -118,7 +118,7 @@ const MAX_SCALE = 5;
 const polygonToPoints = (polygon: Array<[number, number]>) =>
   polygon.map(([x, y]) => `${x * 100},${y * 100}`).join(" ");
 
-const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPictumFolioProps) => {
+const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableReviewMode = false }: CorPictumFolioProps) => {
   const [activeId, setActiveId] = useState(plates[0]?.id);
   const active = plates.find((p) => p.id === activeId) ?? plates[0];
   const reactId = useId();
