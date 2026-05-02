@@ -63,50 +63,52 @@ const PositionFrame = ({
         <p className="text-xs text-muted-foreground mt-0.5">{caption}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_220px]">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
         {/* Diagram */}
         <div className="p-3 bg-[hsl(var(--background))]">
-          <svg
-            viewBox={`0 0 ${width} ${height}`}
-            className="w-full h-auto"
-            role="img"
-            aria-label={title}
-          >
-            {children}
+          <div className="overflow-x-auto -mx-1 px-1">
+            <svg
+              viewBox={`0 0 ${width} ${height}`}
+              className="w-full h-auto min-w-[460px]"
+              role="img"
+              aria-label={title}
+            >
+              {children}
 
-            {/* Hotspots */}
-            {hotspots.map((h, i) => {
-              const isActive = h.id === activeId;
-              return (
-                <g
-                  key={h.id}
-                  onPointerEnter={() => setActiveId(h.id)}
-                  onClick={() => setActiveId(h.id)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <circle
-                    cx={h.x}
-                    cy={h.y}
-                    r={isActive ? 12 : 10}
-                    fill={isActive ? POS_RED : POS_AMBER}
-                    fillOpacity={isActive ? 0.95 : 0.85}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={2}
-                  />
-                  <text
-                    x={h.x}
-                    y={h.y + 3.5}
-                    textAnchor="middle"
-                    fontSize={10}
-                    fontWeight={700}
-                    fill="hsl(var(--background))"
+              {/* Hotspots */}
+              {hotspots.map((h, i) => {
+                const isActive = h.id === activeId;
+                return (
+                  <g
+                    key={h.id}
+                    onPointerEnter={() => setActiveId(h.id)}
+                    onClick={() => setActiveId(h.id)}
+                    style={{ cursor: "pointer" }}
                   >
-                    {i + 1}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
+                    <circle
+                      cx={h.x}
+                      cy={h.y}
+                      r={isActive ? 13 : 11}
+                      fill={isActive ? POS_RED : POS_AMBER}
+                      fillOpacity={isActive ? 0.95 : 0.85}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={2}
+                    />
+                    <text
+                      x={h.x}
+                      y={h.y + 4}
+                      textAnchor="middle"
+                      fontSize={12}
+                      fontWeight={700}
+                      fill="hsl(var(--background))"
+                    >
+                      {i + 1}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
           {legend ? (
             <div className="mt-2 px-1 text-[11px] text-muted-foreground">{legend}</div>
           ) : null}
