@@ -1,6 +1,10 @@
 import type { CorPictumPlate } from "@/components/diagrams/CorPictumFolio";
+import { Exam } from "@/data/curriculum";
 
 import airwaySagittal from "@/assets/plates/airway-sagittal.jpg";
+import cardiacAnterior from "@/assets/plates/cardiac-anterior.jpg";
+import cardiacShortAxis from "@/assets/plates/cardiac-short-axis.jpg";
+import cardiacConduction from "@/assets/plates/cardiac-conduction.jpg";
 import airwayLaryngoscopic from "@/assets/plates/airway-laryngoscopic.jpg";
 import headneckSuperficial from "@/assets/plates/headneck-superficial.jpg";
 import headneckCarotid from "@/assets/plates/headneck-carotid.jpg";
