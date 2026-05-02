@@ -1257,13 +1257,14 @@ export const SittingPositionDetailedDiagram = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px]">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px]">
         {/* Diagram column */}
         <div className="p-3 bg-[hsl(var(--background))]">
-          <svg viewBox="0 0 420 320" className="w-full h-auto" role="img" aria-label="Sitting position with circulation, airway and pressure-risk hotspots">
+          <div className="overflow-x-auto -mx-1 px-1">
+            <svg viewBox="0 0 420 320" className="w-full h-auto min-w-[420px]" role="img" aria-label="Sitting position with circulation, airway and pressure-risk hotspots">
             {/* Floor line */}
             <line x1={20} y1={295} x2={400} y2={295} stroke="hsl(var(--border))" strokeWidth={1} strokeDasharray="2 4" />
-            <text x={20} y={310} fontSize={9} fill="hsl(var(--muted-foreground))">FLOOR</text>
+            <text x={20} y={310} fontSize={11} fill="hsl(var(--muted-foreground))">FLOOR</text>
 
             {/* Chair / table base */}
             <rect x={240} y={250} width={140} height={8} fill="hsl(210 25% 35%)" />
@@ -1271,7 +1272,7 @@ export const SittingPositionDetailedDiagram = () => {
 
             {/* Seat pad */}
             <rect x={245} y={232} width={130} height={18} rx={4} fill="hsl(45 35% 75%)" opacity={0.8} />
-            <text x={385} y={245} fontSize={9} fill="hsl(var(--muted-foreground))">gel cushion</text>
+            <text x={385} y={245} fontSize={11} fill="hsl(var(--muted-foreground))">gel cushion</text>
 
             {/* Backrest tilted ~60° from horizontal */}
             <g transform="rotate(-60 260 232)">
@@ -1303,29 +1304,29 @@ export const SittingPositionDetailedDiagram = () => {
 
             {/* Pneumatic calf compression cuff */}
             <rect x={315} y={215} width={22} height={12} rx={3} fill={POS_GREEN} opacity={0.6} />
-            <text x={355} y={224} fontSize={9} fill={POS_GREEN} fontWeight={600}>calf SCDs</text>
+            <text x={355} y={224} fontSize={11} fill={POS_GREEN} fontWeight={600}>calf SCDs</text>
 
             {/* External auditory meatus reference line — TRUE cerebral MAP */}
             <line x1={150} y1={80} x2={400} y2={80} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
-            <text x={400} y={73} fontSize={9} textAnchor="end" fill={POS_GREEN} fontWeight={700}>zero MAP at external auditory meatus</text>
+            <text x={400} y={72} fontSize={11} textAnchor="end" fill={POS_GREEN} fontWeight={700}>zero MAP at EAM</text>
 
             {/* Heart-level reference line */}
             <line x1={195} y1={170} x2={400} y2={170} stroke="hsl(var(--muted-foreground))" strokeDasharray="2 3" strokeWidth={0.8} />
-            <text x={400} y={163} fontSize={9} textAnchor="end" fill="hsl(var(--muted-foreground))">heart level (RA)</text>
+            <text x={400} y={162} fontSize={11} textAnchor="end" fill="hsl(var(--muted-foreground))">heart level (RA)</text>
 
             {/* Hydrostatic gradient annotation */}
             <line x1={170} y1={80} x2={170} y2={170} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1.2} />
-            <text x={108} y={130} fontSize={10} fill={POS_AMBER} fontWeight={700}>~ 25 cm</text>
-            <text x={108} y={142} fontSize={9} fill={POS_AMBER}>hydrostatic gradient</text>
+            <text x={108} y={128} fontSize={12} fill={POS_AMBER} fontWeight={700}>~ 25 cm</text>
+            <text x={108} y={142} fontSize={11} fill={POS_AMBER}>hydrostatic gradient</text>
 
             {/* Surgical access — surgeon stands behind */}
             <path d="M 70 50 Q 105 45 145 65" fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} strokeDasharray="3 3" />
-            <text x={70} y={42} fontSize={9} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
+            <text x={70} y={42} fontSize={11} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
 
             {/* CVC at SVC-RA junction */}
             <line x1={210} y1={155} x2={195} y2={170} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
             <circle cx={195} cy={170} r={2.5} fill="hsl(var(--foreground))" />
-            <text x={205} y={150} fontSize={9} fill="hsl(var(--muted-foreground))">multi-orifice CVC tip @ SVC–RA</text>
+            <text x={205} y={148} fontSize={11} fill="hsl(var(--muted-foreground))">multi-orifice CVC @ SVC–RA</text>
 
             {/* Hotspots */}
             {ST_HOTSPOTS.map((h, i) => {
@@ -1341,7 +1342,7 @@ export const SittingPositionDetailedDiagram = () => {
                   <circle
                     cx={h.x}
                     cy={h.y}
-                    r={isActive ? 13 : 11}
+                    r={isActive ? 14 : 12}
                     fill={colour}
                     fillOpacity={isActive ? 0.95 : 0.85}
                     stroke="hsl(var(--background))"
@@ -1349,9 +1350,9 @@ export const SittingPositionDetailedDiagram = () => {
                   />
                   <text
                     x={h.x}
-                    y={h.y + 3.5}
+                    y={h.y + 4}
                     textAnchor="middle"
-                    fontSize={10}
+                    fontSize={12}
                     fontWeight={700}
                     fill="hsl(var(--background))"
                   >
@@ -1360,10 +1361,11 @@ export const SittingPositionDetailedDiagram = () => {
                 </g>
               );
             })}
-          </svg>
+            </svg>
+          </div>
 
           {/* Severity legend */}
-          <div className="mt-2 flex items-center gap-4 text-[11px] text-muted-foreground px-1 flex-wrap">
+          <div className="mt-2 flex items-center gap-x-4 gap-y-1 text-[11px] text-muted-foreground px-1 flex-wrap">
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_RED }} /> High risk</span>
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_AMBER }} /> Moderate</span>
             <span className="flex items-center gap-1.5"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: POS_GREEN }} /> Low / supportive</span>
@@ -1371,7 +1373,7 @@ export const SittingPositionDetailedDiagram = () => {
         </div>
 
         {/* Side panel: chip list + active detail */}
-        <div className="border-t lg:border-t-0 lg:border-l border-border bg-muted/20 p-3 text-xs">
+        <div className="border-t md:border-t-0 md:border-l border-border bg-muted/20 p-3 text-xs">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
             Pressure / circulation / airway hotspots
           </p>
