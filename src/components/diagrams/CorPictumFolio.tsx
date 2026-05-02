@@ -567,7 +567,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   >
                     {active.labels.map((label, idx) => {
                       if (!label.polygon || label.polygon.length < 3) return null;
-                      const isActive = activeLabelIdx === idx;
+                      const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
+                      const updatePanelPos = (clientX: number, clientY: number, i: number) => {
+                        const wrap = stageWrapRef.current;
+                        if (!wrap) return;
+                        const rect = wrap.getBoundingClientRect();
+                        setHoverPanel({ idx: i, x: clientX - rect.left, y: clientY - rect.top });
+                      };
                       return (
                         <polygon
                           key={`${label.latin}-${idx}`}
@@ -576,7 +582,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                             "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
                             isActive
                               ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
-                              : activeLabelIdx === null
+                              : activeLabelIdx === null && pinnedLabelIdx === null
                                 ? "fill-transparent stroke-transparent hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/60"
                                 : "fill-transparent stroke-transparent",
                           )}
@@ -585,11 +591,21 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                             vectorEffect: "non-scaling-stroke",
                             pointerEvents: "auto",
                           }}
-                          onPointerEnter={() => setActiveLabelIdx(idx)}
-                          onPointerLeave={() => setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                          onClick={() => {
-                            const node = document.getElementById(`${reactId}-label-${idx}`);
-                            node?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+                          onPointerEnter={(e) => {
+                            setActiveLabelIdx(idx);
+                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                          }}
+                          onPointerMove={(e) => {
+                            if (pinnedLabelIdx === null) updatePanelPos(e.clientX, e.clientY, idx);
+                          }}
+                          onPointerLeave={() => {
+                            setActiveLabelIdx((prev) => (prev === idx ? null : prev));
+                            if (pinnedLabelIdx === null) setHoverPanel(null);
+                          }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setPinnedLabelIdx((prev) => (prev === idx ? null : idx));
+                            updatePanelPos(e.clientX, e.clientY, idx);
                           }}
                         >
                           <title>{label.english}</title>
