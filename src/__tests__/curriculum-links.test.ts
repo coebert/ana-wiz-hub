@@ -103,8 +103,16 @@ describe("CorPictum curriculumLinks", () => {
             (_i, link) => {
               // 1. Format
               expect(
-                CODE_RE.test(link.code),
+                isCurriculumCodeFormat(link.code),
                 `code "${link.code}" must match XX_BK_NN`,
+              ).toBe(true);
+
+              // 1b. Registry membership — code must be in src/data/curriculumCodes.ts
+              expect(
+                isCurriculumCode(link.code),
+                `code "${link.code}" (referenced by ${folioName} → ${plate.id}) ` +
+                  `is not registered in src/data/curriculumCodes.ts. ` +
+                  `Add it to CURRICULUM_CODES with title + exams, then re-run.`,
               ).toBe(true);
 
               // 2. Sanity
