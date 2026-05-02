@@ -771,6 +771,17 @@ export const TorsoLateral = ({
         fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
         stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
         strokeWidth={1.2} strokeLinejoin="round" />
+      {/* Sheen overlay */}
+      <path d={path}
+        fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
+        pointerEvents="none"
+      />
+      {/* Underside contact-occlusion along the back */}
+      <path
+        d={`M ${x0 + 18},${bot - 2} Q ${cx},${bot + 8} ${x1 - 14},${bot - 2}`}
+        fill="none" stroke="hsl(220 30% 12%)" strokeWidth={3.5}
+        opacity={0.18} strokeLinecap="round" pointerEvents="none"
+      />
       {/* Spine reference (back) */}
       <path
         d={`M ${x0 + 18},${top + 4} Q ${cx},${top - 2} ${x1 - 14},${top + 8}`}
