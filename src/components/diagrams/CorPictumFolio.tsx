@@ -479,8 +479,8 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   className="w-full h-auto block"
                 />
 
-                {/* Polygon hotspot overlay */}
-                {hasAnyPolygons ? (
+                {/* Polygon hotspot overlay (display) */}
+                {hasAnyPolygons && !reviewMode ? (
                   <svg
                     viewBox="0 0 100 100"
                     preserveAspectRatio="none"
@@ -516,6 +516,82 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         >
                           <title>{label.english}</title>
                         </polygon>
+                      );
+                    })}
+                  </svg>
+                ) : null}
+
+                {/* Polygon REVIEW overlay (editor) */}
+                {reviewMode ? (
+                  <svg
+                    ref={overlaySvgRef}
+                    viewBox="0 0 1 1"
+                    preserveAspectRatio="none"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ cursor: tool === "add" && selectedEditIdx !== null ? "crosshair" : "default" }}
+                    onPointerMove={moveVertexDrag}
+                    onPointerUp={endVertexDrag}
+                    onPointerCancel={endVertexDrag}
+                    onClick={handleOverlayClick}
+                  >
+                    {active.labels.map((label, idx) => {
+                      const poly = polyFor(idx);
+                      if (!poly || poly.length < 3) return null;
+                      const isSelected = selectedEditIdx === idx;
+                      const visible = isSelected || showAllOutlines;
+                      if (!visible) return null;
+                      const colour = reviewColor(idx);
+                      const pts = poly.map(([x, y]) => `${x},${y}`).join(" ");
+                      const cx = poly.reduce((s, p) => s + p[0], 0) / poly.length;
+                      const cy = poly.reduce((s, p) => s + p[1], 0) / poly.length;
+                      return (
+                        <g key={`${label.latin}-${idx}`}>
+                          <polygon
+                            points={pts}
+                            fill={colour}
+                            fillOpacity={isSelected ? 0.22 : 0.05}
+                            stroke={colour}
+                            strokeOpacity={isSelected ? 1 : 0.7}
+                            strokeWidth={isSelected ? 0.005 : 0.0025}
+                            style={{ vectorEffect: "non-scaling-stroke", cursor: "pointer" }}
+                            onClick={(ev) => {
+                              ev.stopPropagation();
+                              setSelectedEditIdx(idx);
+                              setActiveLabelIdx(idx);
+                            }}
+                          >
+                            <title>{`${idx + 1}. ${label.english}`}</title>
+                          </polygon>
+                          {/* index badge at centroid */}
+                          <g transform={`translate(${cx} ${cy})`}>
+                            <circle r={0.018} fill="hsl(0 0% 100%)" stroke={colour} strokeWidth={0.003}
+                              style={{ vectorEffect: "non-scaling-stroke" }} />
+                            <text textAnchor="middle" dominantBaseline="central"
+                              fontSize="0.022" fontWeight={700} fill={colour}>
+                              {idx + 1}
+                            </text>
+                          </g>
+                          {/* draggable vertices when selected */}
+                          {isSelected
+                            ? poly.map(([x, y], vi) => (
+                                <circle
+                                  key={vi}
+                                  cx={x}
+                                  cy={y}
+                                  r={0.012}
+                                  fill="hsl(0 0% 100%)"
+                                  stroke={colour}
+                                  strokeWidth={0.004}
+                                  style={{ vectorEffect: "non-scaling-stroke", cursor: "grab", touchAction: "none" }}
+                                  onPointerDown={beginVertexDrag(idx, vi)}
+                                  onDoubleClick={removeVertex(idx, vi)}
+                                  onContextMenu={removeVertex(idx, vi)}
+                                >
+                                  <title>{`vertex ${vi + 1} — drag to move, double-click or right-click to delete`}</title>
+                                </circle>
+                              ))
+                            : null}
+                        </g>
                       );
                     })}
                   </svg>
