@@ -355,9 +355,9 @@ export const lowerLimbFolio: CorPictumFolioData = {
     },
     {
       id: "popliteal", tabLabel: "Popliteal fossa", folio: "II",
-      title: "Fossa Poplitea", subtitle: "Posterior knee for sciatic block",
+      title: "Popliteal Fossa", subtitle: "Posterior knee for sciatic block",
       image: lowerlimbPopliteal, alt: "Painted posterior view of the popliteal fossa",
-      caption: "Fossa poplitea — aspectus posterior",
+      caption: "Popliteal fossa — posterior view",
       labels: [
         { latin: "musculus biceps femoris", english: "Biceps femoris", note: "Superolateral border; common peroneal nerve hugs its medial edge." },
         { latin: "musculus semitendinosus", english: "Semitendinosus", note: "Superomedial border." },
