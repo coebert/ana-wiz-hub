@@ -328,6 +328,32 @@ export const CountercurrentMultiplierDiagram = () => {
             <text x="443" y="42" fontSize="5" fill={ascColor} textAnchor="middle">↑ flow</text>
           </g>
 
+          {/* Urea recycling annotation — appears once gradient is established (steps 6 & 7) */}
+          {step.collectingDuct && (
+            <g>
+              <path
+                d="M 460 305 C 430 290, 360 285, 320 297"
+                fill="none"
+                stroke="hsl(280 60% 55%)"
+                strokeWidth="1.2"
+                strokeDasharray="3 2"
+                markerEnd="url(#ureaArrow)"
+                opacity="0.85"
+              />
+              <defs>
+                <marker id="ureaArrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="hsl(280 60% 55%)" />
+                </marker>
+              </defs>
+              <text x="380" y="282" fontSize="7" fill="hsl(280 60% 55%)" fontWeight="700" textAnchor="middle">
+                Urea recycling (UT-A1)
+              </text>
+              <text x="380" y="291" fontSize="5.5" fill="hsl(280 60% 55%)" opacity="0.75" textAnchor="middle">
+                ADH ↑ permeability → ~50% inner-medullary osmolality
+              </text>
+            </g>
+          )}
+
           {/* Osmolality scale */}
           <text x="515" y="38" fontSize="5" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.4">mOsm/kg</text>
         </svg>
