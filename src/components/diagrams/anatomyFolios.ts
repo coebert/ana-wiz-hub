@@ -277,14 +277,14 @@ export const brachialFolio: CorPictumFolioData = {
 };
 
 export const upperLimbFolio: CorPictumFolioData = {
-  atlasTitle: "Atlas Anatomicus — Membrum Superius",
+  atlasTitle: "Atlas of Anatomy — Upper Limb",
   atlasSubtitle: "Painted plates of the upper limb",
   plates: [
     {
       id: "axilla", tabLabel: "Axilla", folio: "I",
-      title: "Regio Axillaris", subtitle: "Cords of the plexus around the axillary artery",
+      title: "Axillary Region", subtitle: "Cords of the plexus around the axillary artery",
       image: upperlimbAxilla, alt: "Painted view of the axilla and proximal upper arm",
-      caption: "Dissectio regionis axillaris et brachii proximalis",
+      caption: "Dissection of the axilla and proximal arm",
       labels: [
         { latin: "musculus pectoralis major (reflexus)", english: "Pectoralis major (reflected)", note: "Reflected to expose the axillary contents." },
         { latin: "arteria axillaris", english: "Axillary artery", note: "Three parts defined by pectoralis minor; landmark for axillary block." },
