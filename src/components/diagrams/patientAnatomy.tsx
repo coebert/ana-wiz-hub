@@ -415,34 +415,128 @@ export const Leg = ({
 }: LegProps) => {
   const fillColor = draped ? `url(#${idPrefix}-drape)` : SKIN(idPrefix);
   const strokeColor = draped ? "hsl(210 20% 50%)" : STROKE_SKIN;
-  // default foot direction: continue calf vector but bend toward toes
-  const calfDx = ax - kx;
-  const calfDy = ay - ky;
-  const calfAngle = Math.atan2(calfDy, calfDx) * 180 / Math.PI;
-  const footRot = footAngle ?? calfAngle + 90; // foot perpendicular to calf
+
+  // Tapered limb path helper (also used by Arm).
+  const taperedLimb = (
+    x1: number, y1: number, x2: number, y2: number,
+    w1: number, w2: number,
+  ) => {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.hypot(dx, dy) || 1;
+    const nx = -dy / len;
+    const ny = dx / len;
+    const a1x = x1 + nx * w1 / 2, a1y = y1 + ny * w1 / 2;
+    const a2x = x1 - nx * w1 / 2, a2y = y1 - ny * w1 / 2;
+    const b1x = x2 + nx * w2 / 2, b1y = y2 + ny * w2 / 2;
+    const b2x = x2 - nx * w2 / 2, b2y = y2 - ny * w2 / 2;
+    const cap1 = `A ${w1 / 2} ${w1 / 2} 0 0 1 ${a2x} ${a2y}`;
+    const cap2 = `A ${w2 / 2} ${w2 / 2} 0 0 1 ${b1x} ${b1y}`;
+    return `M ${a1x},${a1y} L ${b1x},${b1y} ${cap2} L ${a2x},${a2y} ${cap1} Z`;
+  };
+
+  // Thigh & calf vectors
+  const tdx = kx - hx, tdy = ky - hy;
+  const tlen = Math.hypot(tdx, tdy) || 1;
+  const tnx = -tdy / tlen, tny = tdx / tlen;
+  const cdx = ax - kx, cdy = ay - ky;
+  const clen = Math.hypot(cdx, cdy) || 1;
+  const cux = cdx / clen, cuy = cdy / clen;
+  const calfAngleDeg = (Math.atan2(cdy, cdx) * 180) / Math.PI;
+  const footRot = footAngle ?? calfAngleDeg + 90;
+
   return (
     <g filter={`url(#${idPrefix}-shadow)`}>
-      {/* Thigh */}
-      <line x1={hx} y1={hy} x2={kx} y2={ky}
-        stroke={fillColor} strokeWidth={thighW} strokeLinecap="round" />
-      <line x1={hx} y1={hy} x2={kx} y2={ky}
-        stroke={strokeColor} strokeWidth={0.8} opacity={0.5} />
-      {/* Knee */}
-      <circle cx={kx} cy={ky} r={thighW * 0.4} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} />
-      {/* Calf */}
-      <line x1={kx} y1={ky} x2={ax} y2={ay} stroke={SKIN(idPrefix)} strokeWidth={calfW} strokeLinecap="round" />
-      <line x1={kx} y1={ky} x2={ax} y2={ay} stroke={STROKE_SKIN} strokeWidth={0.7} opacity={0.5} />
-      {/* Ankle */}
-      <circle cx={ax} cy={ay} r={calfW * 0.32} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.7} />
-      {/* Foot */}
+      {/* Thigh — tapers from hip (wide) to knee (narrower) */}
+      <path
+        d={taperedLimb(hx, hy, kx, ky, thighW * 1.05, thighW * 0.78)}
+        fill={fillColor} stroke={strokeColor} strokeWidth={1} strokeLinejoin="round"
+      />
+      {draped && (
+        <>
+          {/* Drape folds along the thigh */}
+          <path
+            d={`M ${hx + tnx * thighW * 0.25},${hy + tny * thighW * 0.25}
+                Q ${(hx + kx) / 2 + tnx * thighW * 0.18},${(hy + ky) / 2 + tny * thighW * 0.18}
+                  ${kx + tnx * thighW * 0.05},${ky + tny * thighW * 0.05}`}
+            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+          />
+          <path
+            d={`M ${hx - tnx * thighW * 0.2},${hy - tny * thighW * 0.2}
+                Q ${(hx + kx) / 2 - tnx * thighW * 0.28},${(hy + ky) / 2 - tny * thighW * 0.28}
+                  ${kx - tnx * thighW * 0.1},${ky - tny * thighW * 0.1}`}
+            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+          />
+          {/* Drape hem just above the knee */}
+          <path
+            d={`M ${kx + tnx * thighW * 0.5},${ky + tny * thighW * 0.5}
+                Q ${kx},${ky + 1}
+                  ${kx - tnx * thighW * 0.5},${ky - tny * thighW * 0.5}`}
+            stroke={strokeColor} strokeWidth={0.9} opacity={0.55} fill="none"
+          />
+        </>
+      )}
+      {/* Knee — patella (skin even when thigh is draped) */}
+      <ellipse
+        cx={kx} cy={ky}
+        rx={thighW * 0.42} ry={thighW * 0.36}
+        transform={`rotate(${calfAngleDeg} ${kx} ${ky})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+      />
+      {/* Patellar dimple */}
+      <ellipse
+        cx={kx + cux * thighW * 0.05}
+        cy={ky + cuy * thighW * 0.05}
+        rx={thighW * 0.18} ry={thighW * 0.12}
+        transform={`rotate(${calfAngleDeg} ${kx} ${ky})`}
+        fill="none" stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.35}
+      />
+      {/* Calf — bulges proximally, tapers to ankle */}
+      <path
+        d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+      />
+      {/* Tibial ridge hint (front of calf) */}
+      <path
+        d={`M ${kx + cux * calfW * 0.4},${ky + cuy * calfW * 0.4}
+            L ${ax - cux * calfW * 0.3},${ay - cuy * calfW * 0.3}`}
+        stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.3} fill="none"
+      />
+      {/* Ankle (malleolus) */}
+      <ellipse
+        cx={ax} cy={ay}
+        rx={calfW * 0.36} ry={calfW * 0.28}
+        transform={`rotate(${calfAngleDeg} ${ax} ${ay})`}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8}
+      />
+      {/* Foot — heel pad → arch → ball → toes */}
       <g transform={`rotate(${footRot} ${ax} ${ay})`}>
         <path
-          d={`M ${ax - footLen * 0.1},${ay - calfW * 0.3}
-              Q ${ax + footLen * 0.5},${ay - calfW * 0.45} ${ax + footLen * 0.95},${ay - calfW * 0.05}
-              Q ${ax + footLen * 0.95},${ay + calfW * 0.3} ${ax + footLen * 0.4},${ay + calfW * 0.4}
-              L ${ax - footLen * 0.1},${ay + calfW * 0.35} Z`}
+          d={`M ${ax - footLen * 0.18},${ay - calfW * 0.05}
+              Q ${ax - footLen * 0.22},${ay + calfW * 0.45}
+                ${ax + footLen * 0.05},${ay + calfW * 0.5}
+              L ${ax + footLen * 0.55},${ay + calfW * 0.5}
+              Q ${ax + footLen * 1.02},${ay + calfW * 0.42}
+                ${ax + footLen * 1.02},${ay + calfW * 0.05}
+              Q ${ax + footLen * 0.98},${ay - calfW * 0.18}
+                ${ax + footLen * 0.55},${ay - calfW * 0.32}
+              Q ${ax + footLen * 0.2},${ay - calfW * 0.42}
+                ${ax - footLen * 0.05},${ay - calfW * 0.32}
+              Z`}
           fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
         />
+        {/* Arch crease (medial longitudinal arch) */}
+        <path
+          d={`M ${ax + footLen * 0.05},${ay + calfW * 0.5}
+              Q ${ax + footLen * 0.4},${ay + calfW * 0.32}
+                ${ax + footLen * 0.85},${ay + calfW * 0.4}`}
+          stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.4} fill="none"
+        />
+        {/* Toe separators */}
+        <line x1={ax + footLen * 0.85} y1={ay - calfW * 0.18} x2={ax + footLen * 0.95} y2={ay + calfW * 0.05}
+          stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.4} />
+        <line x1={ax + footLen * 0.78} y1={ay - calfW * 0.25} x2={ax + footLen * 0.86} y2={ay - calfW * 0.05}
+          stroke={STROKE_SKIN} strokeWidth={0.35} opacity={0.35} />
       </g>
     </g>
   );
