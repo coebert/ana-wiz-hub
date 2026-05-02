@@ -1933,13 +1933,14 @@ export const SittingPositionDetailedDiagram = () => {
               <rect x={155} y={225} width={110} height={14} rx={3} fill="hsl(210 25% 35%)" />
             </g>
 
-            {/* Patient torso along backrest */}
-            <g transform="rotate(-60 260 232)">
-              <TorsoLateral cx={210} cy={202} length={120} height={52} idPrefix="st" facing="left" />
-              {/* Head profile — flexed onto chest, pinned */}
-              <HeadProfile cx={130} cy={200} r={20} idPrefix="st" facing="left" />
-              <MayfieldPins cx={130} cy={200} r={20} />
-            </g>
+            {/* Patient torso + head + Mayfield via composite (60° backrest tilt) */}
+            <SittingPatient
+              sx={260} sy={232}
+              tiltDeg={60}
+              torsoLength={120} torsoHeight={52}
+              showMayfield showLegs={false}
+              idPrefix="st"
+            />
 
             {/* Arms folded across lap */}
             <Arm sx={235} sy={155} ex={272} ey={168} wx={258} wy={186} idPrefix="st" upperW={11} foreW={9} handLen={10} gownSleeve />
@@ -2121,13 +2122,14 @@ export const SittingPositionDiagram = () => (
       <rect x={170} y={188} width={100} height={10} fill="hsl(210 25% 35%)" />
     </g>
 
-    {/* Patient torso along backrest */}
-    <g transform="rotate(-60 270 195)">
-      <TorsoLateral cx={220} cy={170} length={110} height={42} idPrefix="pf" facing="left" />
-      {/* Head profile + Mayfield */}
-      <HeadProfile cx={155} cy={170} r={18} idPrefix="pf" facing="left" />
-      <MayfieldPins cx={155} cy={170} r={18} />
-    </g>
+    {/* Patient torso + head + Mayfield via composite (rotates internally) */}
+    <SittingPatient
+      sx={270} sy={195}
+      tiltDeg={60}
+      torsoLength={110} torsoHeight={42}
+      showMayfield showLegs={false}
+      idPrefix="pf"
+    />
 
     {/* Legs flexed forward */}
     <Leg hx={300} hy={195} kx={360} ky={170} ax={400} ay={205} idPrefix="pf" thighW={20} calfW={17} footLen={18} draped />
@@ -2217,9 +2219,15 @@ export const BeachChairPositionDiagram = () => {
         {/* Backrest 35° */}
         <g transform="rotate(-35 280 200)">
           <rect x={195} y={155} width={170} height={45} rx={10} fill="hsl(210 25% 35%)" />
-          <TorsoLateral cx={280} cy={138} length={170} height={42} idPrefix="pf" facing="left" />
-          <HeadProfile cx={195} cy={138} r={18} idPrefix="pf" facing="left" />
         </g>
+        {/* Patient torso + head via composite (35° backrest tilt for beach-chair) */}
+        <SittingPatient
+          sx={280} sy={200}
+          tiltDeg={35}
+          torsoLength={170} torsoHeight={42}
+          showLegs={false}
+          idPrefix="pf"
+        />
         {/* Legs */}
         <Leg hx={310} hy={195} kx={370} ky={195} ax={435} ay={195} idPrefix="pf" thighW={22} calfW={18} footLen={18} draped />
 
