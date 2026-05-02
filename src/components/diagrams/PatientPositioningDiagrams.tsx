@@ -998,7 +998,7 @@ export const ParkBenchDetailedDiagram = () => {
         </div>
 
         {/* Side panel: chip list + active detail */}
-        <div className="border-t lg:border-t-0 lg:border-l border-border bg-muted/20 p-3 text-xs">
+        <div className="border-t md:border-t-0 md:border-l border-border bg-muted/20 p-3 text-xs">
           <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
             Pressure-risk hotspots
           </p>
