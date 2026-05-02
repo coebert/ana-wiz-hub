@@ -560,15 +560,32 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className }: CorPic
                   <span
                     aria-hidden
                     className={cn(
-                      "mt-1 h-px flex-none transition-all",
-                      isActive ? "w-6 bg-[hsl(8_55%_38%)] dark:bg-[hsl(8_60%_60%)]" : "w-4 bg-[hsl(8_55%_38%)]/70 dark:bg-[hsl(8_60%_60%)]/70",
+                      "mt-[0.55rem] flex-none flex items-center transition-all",
+                      isActive ? "w-7" : "w-5",
                     )}
-                  />
+                  >
+                    <span
+                      className={cn(
+                        "h-px flex-1 transition-colors",
+                        isActive
+                          ? "bg-foreground/70 dark:bg-foreground/80"
+                          : "bg-foreground/35 dark:bg-foreground/40",
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        "h-1 w-1 rounded-full transition-colors",
+                        isActive
+                          ? "bg-foreground/80 dark:bg-foreground/90"
+                          : "bg-foreground/45 dark:bg-foreground/50",
+                      )}
+                    />
+                  </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm leading-snug">
-                      <span className="font-semibold text-foreground">{label.english}</span>
+                    <p className="font-serif text-[13px] sm:text-[13.5px] leading-snug tracking-[0.005em] text-foreground">
+                      {label.english}
                     </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">{label.note}</p>
+                    <p className="font-serif italic text-[11.5px] text-muted-foreground/90 leading-snug mt-0.5">{label.note}</p>
                     {label.learningPoint ? (
                       <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
                         <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
