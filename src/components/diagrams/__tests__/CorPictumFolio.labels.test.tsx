@@ -39,7 +39,7 @@ const plate: CorPictumPlate = {
 
 describe("CorPictumFolio overlay labels", () => {
   it("renders auto labels by default", () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} />,
     );
     // SVG <text> for the auto label should appear once.
@@ -50,7 +50,7 @@ describe("CorPictumFolio overlay labels", () => {
   });
 
   it("suppresses auto labels when suppressOverlayLabels is set", () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} suppressOverlayLabels />,
     );
     const texts = Array.from(container.querySelectorAll("svg text")).filter(
