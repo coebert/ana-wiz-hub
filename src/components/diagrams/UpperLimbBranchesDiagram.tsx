@@ -229,15 +229,20 @@ const UpperLimbBranchesDiagram = () => {
         if (!path) return null;
         const isActive = activeNerves.has(k);
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
+        const labelPos = view === "ant" ? n.labelAnt : n.labelPost;
         return (
           <g key={`nerve-${k}`}>
             <path d={path} stroke={c} strokeWidth={isActive ? 2.2 : 1}
               fill="none" opacity={isActive ? 1 : 0.18}
               strokeLinecap="round" strokeDasharray={view === "post" && (k === "median" || k === "ulnar") ? "4 3" : undefined} />
-            {isActive && showLabels && (
-              <text x={view === "ant" ? 6 : 6} y={view === "ant" ? 14 : 14}
-                fontSize="6" fill={c} fontWeight="700">
-                {/* label drawn once inside renderLimb header below to avoid clutter */}
+            {showLabels && labelPos && (
+              <text x={labelPos[0]} y={labelPos[1]} textAnchor={labelPos[2]}
+                fontSize={isActive ? 6.5 : 5.5} fill={c}
+                fontWeight={isActive ? 700 : 500}
+                opacity={isActive ? 1 : 0.55}
+                style={{ paintOrder: "stroke" }}
+                stroke="hsl(var(--background))" strokeWidth="0.4">
+                {n.short}
               </text>
             )}
           </g>
