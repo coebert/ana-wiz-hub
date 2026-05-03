@@ -97,23 +97,25 @@ describe("VascularAccessTypesDiagram — venous tree anchor points", () => {
   }
 });
 
-// Ribs must use 18 px vertical spacing and span the same horizontal range
-// (≈ 70/100 → 200/230) so the thoracic cage scale is consistent.
+// Ribs must use exactly 18 px intercostal spacing and share the same
+// lateral span (M100 → 200) so the thoracic cage scale is uniform.
 describe("VascularAccessTypesDiagram — rib cage spacing", () => {
   // Tunnelled plate omits ribs because the chest is shown as a subcutaneous
   // cut-away window — that is a deliberate exception, not a drift.
   const RIB_PLATES = ["PICC", "CVC", "Port"] as const;
   for (const name of RIB_PLATES) {
-    it(`${name} ribs are evenly spaced (18 ± 2 px)`, () => {
+    it(`${name} ribs use 18 px spacing and span 100→200`, () => {
       const m = PLATES[name].match(/\[(\d+(?:,\s*\d+)+)\]\.map\(\(y/);
       expect(m, `${name} should declare a rib y-coordinate array`).toBeTruthy();
       const ys = m![1].split(",").map((s) => +s.trim());
-      expect(ys.length).toBeGreaterThanOrEqual(4);
+      expect(ys.length).toBe(4);
       const gaps = ys.slice(1).map((y, i) => y - ys[i]);
-      for (const g of gaps) {
-        expect(g).toBeGreaterThanOrEqual(15);
-        expect(g).toBeLessThanOrEqual(20);
-      }
+      for (const g of gaps) expect(g).toBe(18);
+
+      // Shared lateral span: M100,${y} Q150,${y + 8} 200,${y}
+      expect(PLATES[name]).toMatch(
+        /M100,\$\{y\} Q150,\$\{y \+ 8\} 200,\$\{y\}/,
+      );
     });
   }
 });
