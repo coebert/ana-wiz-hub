@@ -6,6 +6,7 @@ import {
   VascularAccessCrossSectionDiagram,
 } from "@/components/diagrams/VascularAccessDevicesDiagram";
 import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccessTypesDiagram";
+import { DwellTimeInfographic } from "@/components/diagrams/DwellTimeInfographic";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
