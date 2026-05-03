@@ -504,14 +504,16 @@ const TunnelledLine: React.FC = () => (
       return <circle key={i} cx={x} cy={y} r={1.2} fill="hsl(45 45% 70%)" opacity={0.7}/>;
     })}
 
-    {/* Clavicles */}
-    <path d="M50,75 C100,68 150,65 160,65" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    <path d="M160,65 C190,65 240,72 260,80" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Clavicles — terminate at AC joint over deltoid (not off-shoulder) */}
+    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Sternum (manubrium) */}
+    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
 
     {/* Subclavian vein (under clavicle) */}
-    <path d="M90,78 C140,75 175,72 200,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
     {/* Brachiocephalic + SVC */}
-    <path d="M200,68 C202,90 195,115 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
 
     {/* Heart */}
     <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
