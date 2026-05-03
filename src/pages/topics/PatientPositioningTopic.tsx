@@ -139,7 +139,7 @@ const PatientPositioningTopic = () => {
               ulnar and brachial plexus injuries by sheer volume. Variants include arms abducted on arm-boards
               (&lt; 90°), arms tucked at the sides, and the “cross-over” / “crucifix” for cardiac surgery.
             </p>
-            <SupinePositionDiagram />
+            <SupineIllustration />
           </ExamSection>
 
           <ExamSection id="trendelenburg" exams={[Exam.FINAL]}>
@@ -150,7 +150,7 @@ const PatientPositioningTopic = () => {
               concerns are raised IOP/ICP, post-operative visual loss, facial / laryngeal oedema and patient slipping.
               Reverse Trendelenburg (head-up) is used for upper-abdominal and laparoscopic gastric / bariatric work.
             </p>
-            <TrendelenburgPositionDiagram />
+            <TrendelenburgIllustration />
           </ExamSection>
 
           <ExamSection id="lithotomy" exams={[Exam.PRIMARY, Exam.FINAL]}>
@@ -161,7 +161,7 @@ const PatientPositioningTopic = () => {
               abdominal and perineal access (anterior resection, abdomino-perineal excision). Both legs MUST be raised
               and lowered simultaneously to avoid pelvic torsion and lumbar strain.
             </p>
-            <LithotomyPositionDiagram />
+            <LithotomyIllustration />
             <PeronealNerveLithotomyAnimation />
           </ExamSection>
 
@@ -173,7 +173,7 @@ const PatientPositioningTopic = () => {
               opens the costo-iliac space for renal surgery. Anaesthetised + paralysed + open chest creates
               significant V/Q mismatch (ventilation to non-dependent compliant lung; perfusion to dependent lung).
             </p>
-            <LateralPositionDiagram />
+            <LateralIllustration />
           </ExamSection>
 
           <ExamSection id="prone" exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
@@ -184,7 +184,7 @@ const PatientPositioningTopic = () => {
               Several dedicated frames exist; the choice trades off lordosis, abdominal decompression, fluoroscopy
               access and turning logistics.
             </p>
-            <PronePositionDiagram />
+            <ProneIllustration />
             <ProneFaceProtectionDiagram />
             <ProneFrameComparisonDiagram />
             <ProneIVCFreeAbdomenAnimation />
@@ -216,7 +216,7 @@ const PatientPositioningTopic = () => {
               floor for posterior-fossa / CPA access. Less VAE risk than full sitting and easier to set up; more
               limited surgical exposure than sitting.
             </p>
-            <ParkBenchPositionDiagram />
+            <ParkBenchIllustration />
             <ParkBenchDetailedDiagram />
             <ParkBenchArmTractionAnimation />
 
@@ -232,7 +232,7 @@ const PatientPositioningTopic = () => {
               <li>Avoid N₂O (expands intracranial air; converts micro-emboli into clinically significant VAE).</li>
               <li>VAE management: alert surgeon to flood field with saline + apply bone wax, jugular venous compression, aspirate from CVC, FiO₂ 1.0, position patient left lateral / head-down if able, supportive haemodynamics.</li>
             </ul>
-            <SittingPositionDiagram />
+            <SittingIllustration />
             <SittingPositionDetailedDiagram />
             <SittingHydrostaticAnimation />
             <VAEDetectionLadderAnimation />
@@ -243,7 +243,7 @@ const PatientPositioningTopic = () => {
               lower than full sitting but cerebral perfusion is the headline concern: the anaesthetist's transducer
               must be zeroed at the tragus, not at the heart, and intra-operative hypotension must be treated promptly.
             </p>
-            <BeachChairPositionDiagram />
+            <BeachChairIllustration />
           </ExamSection>
 
           <ExamSection id="complications" exams={[Exam.FINAL, Exam.FFICM]}>
