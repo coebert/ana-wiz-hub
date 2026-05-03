@@ -619,10 +619,15 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         x: number; y: number;
                         hw: number; hh: number;
                       };
-                      const FS = 2.1;
+                      // Counter-scale font/stroke against the zoom transform so
+                      // labels stay at roughly constant screen size as users zoom.
+                      // Floor at scale=1, gentle taper above (sqrt) so labels still
+                      // shrink relative to the plate but never become microscopic.
+                      const zoomComp = 1 / Math.sqrt(Math.max(1, scale));
+                      const FS = 2.1 * zoomComp;
                       const charW = FS * 0.55;
-                      const padX = 0.6;
-                      const padY = 0.5;
+                      const padX = 0.6 * zoomComp;
+                      const padY = 0.5 * zoomComp;
                       const boxes: Box[] = [];
                       active.labels.forEach((label, idx) => {
                         if (!label.polygon || label.polygon.length < 3) return;
@@ -683,7 +688,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               <line
                                 x1={b.ax} y1={b.ay} x2={b.x} y2={b.y}
                                 stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 30%)"}
-                                strokeWidth={0.18}
+                                strokeWidth={0.18 * zoomComp}
                                 strokeOpacity={isActive ? 0.9 : 0.55}
                                 style={{ vectorEffect: "non-scaling-stroke" }}
                               />
@@ -697,7 +702,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               fontWeight={isActive ? 800 : 700}
                               fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
                               stroke="hsl(40 50% 96%)"
-                              strokeWidth={0.7}
+                              strokeWidth={0.7 * zoomComp}
                               paintOrder="stroke"
                               style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
                             >
