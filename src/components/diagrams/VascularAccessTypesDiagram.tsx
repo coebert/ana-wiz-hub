@@ -504,14 +504,16 @@ const TunnelledLine: React.FC = () => (
       return <circle key={i} cx={x} cy={y} r={1.2} fill="hsl(45 45% 70%)" opacity={0.7}/>;
     })}
 
-    {/* Clavicles */}
-    <path d="M50,75 C100,68 150,65 160,65" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    <path d="M160,65 C190,65 240,72 260,80" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Clavicles — terminate at AC joint over deltoid (not off-shoulder) */}
+    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Sternum (manubrium) */}
+    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
 
     {/* Subclavian vein (under clavicle) */}
-    <path d="M90,78 C140,75 175,72 200,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
     {/* Brachiocephalic + SVC */}
-    <path d="M200,68 C202,90 195,115 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
 
     {/* Heart */}
     <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
@@ -522,9 +524,9 @@ const TunnelledLine: React.FC = () => (
     <circle cx="100" cy="170" r="4" fill="hsl(0 50% 55%)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.5}/>
     <circle cx="100" cy="170" r="1.5" fill="hsl(45 30% 30%)" />
     {/* Subcutaneous tunnel — solid (visible in cut-away) */}
-    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+    <path d="M100,170 C120,160 150,130 175,100 L200,72"
           stroke={Catheter} strokeWidth={3.2} fill="none" strokeLinecap="round"/>
-    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+    <path d="M100,170 C120,160 150,130 175,100 L200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Dacron cuff — tissue ingrowth zone */}
     <g>
@@ -540,9 +542,9 @@ const TunnelledLine: React.FC = () => (
     </g>
 
     {/* Intravascular segment (entering subclavian → SVC) */}
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={Catheter} strokeWidth={2.8} fill="none"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
@@ -615,18 +617,20 @@ const Portacath: React.FC = () => (
     <ellipse cx="100" cy="140" rx="55" ry="38" fill="hsl(35 50% 78%)" opacity={0.5}
              stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.5}/>
 
-    {/* Clavicles */}
-    <path d="M50,75 C100,68 150,65 160,65" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    <path d="M160,65 C190,65 240,72 260,80" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
-    {/* Ribs */}
-    {[110, 130, 150, 170].map((y, i) => (
-      <path key={i} d={`M50,${y} Q150,${y + 10} 260,${y - 5}`}
+    {/* Clavicles — terminate at AC joint over deltoid */}
+    <path d="M78,88 C108,78 138,72 150,72" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Sternum */}
+    <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    {/* Ribs (within thoracic cage) */}
+    {[120, 138, 156, 174].map((y, i) => (
+      <path key={i} d={`M70,${y} Q150,${y + 10} 230,${y - 4}`}
             stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.3}/>
     ))}
 
     {/* Subclavian + SVC */}
-    <path d="M90,78 C140,75 175,72 200,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
-    <path d="M200,68 C202,90 195,115 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M100,90 C140,84 175,78 200,72" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    <path d="M200,72 C202,92 195,116 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
 
     {/* Heart */}
     <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
@@ -652,13 +656,13 @@ const Portacath: React.FC = () => (
     <circle cx={122} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
 
     {/* Catheter from port → subclavian → SVC */}
-    <path d="M120,140 C150,128 175,100 195,75"
+    <path d="M120,140 C150,128 175,100 200,72"
           stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
-    <path d="M120,140 C150,128 175,100 195,75"
+    <path d="M120,140 C150,128 175,100 200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={Catheter} strokeWidth={2.8} fill="none"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
