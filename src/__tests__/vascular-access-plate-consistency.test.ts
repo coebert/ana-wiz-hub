@@ -100,7 +100,9 @@ describe("VascularAccessTypesDiagram — venous tree anchor points", () => {
 // Ribs must use 18 px vertical spacing and span the same horizontal range
 // (≈ 70/100 → 200/230) so the thoracic cage scale is consistent.
 describe("VascularAccessTypesDiagram — rib cage spacing", () => {
-  const RIB_PLATES = ["PICC", "CVC", "Tunnelled", "Port"] as const;
+  // Tunnelled plate omits ribs because the chest is shown as a subcutaneous
+  // cut-away window — that is a deliberate exception, not a drift.
+  const RIB_PLATES = ["PICC", "CVC", "Port"] as const;
   for (const name of RIB_PLATES) {
     it(`${name} ribs are evenly spaced (18 ± 2 px)`, () => {
       const m = PLATES[name].match(/\[(\d+(?:,\s*\d+)+)\]\.map\(\(y/);
