@@ -229,14 +229,47 @@ const PICC: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Torso */}
-    <path d="M95,30 L195,30 C200,55 215,70 220,90 L220,240 L80,240 L80,90 C85,70 92,55 95,30 Z"
+    {/* Torso — sloped shoulders, costal margin, waist */}
+    <path d="M105,32
+             C100,46 96,55 90,62
+             C82,68 70,72 62,80
+             C52,92 45,108 42,128
+             L52,235
+             L100,242
+             C108,180 110,140 112,100
+             L112,62
+             C108,52 106,42 105,32 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    <path d="M105,32
+             C110,46 114,55 120,62
+             C150,66 175,70 195,78
+             C210,86 220,100 222,120
+             L222,240
+             L120,240
+             L120,100
+             C115,80 110,55 105,32 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Deltoid contour on right shoulder */}
+    <path d="M62,80 C58,98 55,118 56,138" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    {/* Pectoral fold */}
+    <path d="M118,75 C140,80 165,85 188,92" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
     {/* Neck */}
-    <rect x="125" y="10" width="40" height="25" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} />
-    {/* Right arm (patient's right = viewer's left), abducted */}
-    <path d="M80,90 C55,95 35,115 25,150 C18,180 22,210 30,235 L60,238 C58,210 60,180 65,155 C70,130 75,110 80,100 Z"
+    <path d="M122,10 C124,22 126,28 130,32 L155,32 C159,28 161,22 163,10 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Sternocleidomastoid hint */}
+    <path d="M132,12 C134,22 138,28 142,32" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    {/* Right arm (viewer's left), abducted — shoulder, biceps, antecubital, forearm */}
+    <path d="M62,80
+             C50,90 38,108 30,130
+             C24,160 22,200 28,238
+             L60,240
+             C58,212 60,180 65,155
+             C68,140 72,118 78,102 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Antecubital crease */}
+    <path d="M30,168 C40,170 48,170 56,167" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.6}/>
+    {/* Biceps shading */}
+    <ellipse cx={48} cy={140} rx={10} ry={18} fill={SkinShade} opacity={0.25}/>
 
     {/* Clavicles */}
     <path d="M95,55 C115,52 135,50 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
