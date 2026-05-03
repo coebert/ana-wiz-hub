@@ -1045,7 +1045,7 @@ export const MayfieldPinSitingDiagram = () => {
             <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin)`}
               stroke="hsl(28 50% 35%)" strokeWidth={1.2} />
             {/* Subtle sheen */}
-            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" />
+            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" className="anat-sheen" />
 
             {/* Nose marker (anterior) */}
             <path d={`M ${cx - a - 2},${cy - 6} L ${cx - a - 14},${cy} L ${cx - a - 2},${cy + 6} Z`}
