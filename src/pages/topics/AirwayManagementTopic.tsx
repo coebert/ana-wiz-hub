@@ -107,7 +107,7 @@ const AirwayManagementTopic = () => {
       }}
       diagrams={
         <>
-          <CorPictumFolio {...airwayFolio} />
+          <CorPictumFolio {...airwayFolio} suppressOverlayLabels />
           <CICODrillAnimation />
           <div className="bg-card rounded-xl border border-border p-6">
             <DASAlgorithmDiagram />

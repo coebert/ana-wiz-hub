@@ -46,7 +46,7 @@ const SpinalAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
-        <CorPictumFolio {...spinalFolio} />
+        <CorPictumFolio {...spinalFolio} suppressOverlayLabels />
         <div id="vertebral-column" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Vertebral Column</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">

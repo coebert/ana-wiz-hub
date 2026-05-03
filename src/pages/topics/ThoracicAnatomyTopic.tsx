@@ -41,7 +41,7 @@ const ThoracicAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-6 mb-10">
-        <CorPictumFolio {...thoracicFolio} />
+        <CorPictumFolio {...thoracicFolio} suppressOverlayLabels />
         <div id="thoracic-wall" className="scroll-mt-24">
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Thoracic Wall & Intercostal Space</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">

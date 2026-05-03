@@ -36,7 +36,7 @@ const AbdominalAnatomyTopic = () => {
       }}
       diagrams={
         <>
-          <CorPictumFolio {...abdominalFolio} />
+          <CorPictumFolio {...abdominalFolio} suppressOverlayLabels />
           <AbdominalWallDiagram />
         </>
       }
