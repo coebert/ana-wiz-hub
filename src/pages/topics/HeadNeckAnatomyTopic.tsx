@@ -49,7 +49,7 @@ const HeadNeckAnatomyTopic = () => {
       }}
       coreConcepts={
         <section className="space-y-10 mb-10 [&>div]:scroll-mt-24">
-          <CorPictumFolio {...headNeckFolio} />
+          <CorPictumFolio {...headNeckFolio} suppressOverlayLabels />
           <p className="text-muted-foreground leading-relaxed mb-2 text-sm italic">
             This page is organised into five parts following a top-down anatomical journey: <strong>(A)</strong> cranial nerves and bony framework, <strong>(B)</strong> the soft-tissue neck and vascular access, <strong>(C)</strong> the upper airway (nose and pharynx), <strong>(D)</strong> the larynx and front-of-neck access, and <strong>(E)</strong> the lower airway (trachea and bronchial tree).
           </p>
@@ -214,7 +214,7 @@ const HeadNeckAnatomyTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-4">
               Netter-style plates of the larynx in the four standard planes — sagittal, laryngoscopic, coronal, and axial — with anaesthetic and clinical labels. Use the tabs to switch between views.
             </p>
-            <CorPictumFolio {...airwayFolio} />
+            <CorPictumFolio {...airwayFolio} suppressOverlayLabels />
           </div>
 
           <div id="larynx">

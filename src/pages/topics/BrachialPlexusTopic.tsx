@@ -151,7 +151,7 @@ const BrachialPlexusTopic = () => {
           </ExamSection>
 
           <ExamSection id="diagram" exams={[Exam.PRIMARY, Exam.FINAL]}>
-            <CorPictumFolio {...brachialFolio} />
+            <CorPictumFolio {...brachialFolio} suppressOverlayLabels />
             <div className="mt-6">
               <BrachialPlexusDiagram />
             </div>

@@ -39,7 +39,7 @@ const NeuroanatomyTopic = () => {
       }}
       diagrams={
         <>
-          <CorPictumFolio {...neuroFolio} />
+          <CorPictumFolio {...neuroFolio} suppressOverlayLabels />
           <BrainPlatesViewer />
           <CsfFlowDiagram />
           <CircleOfWillisDiagram />
