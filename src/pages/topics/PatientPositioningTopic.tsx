@@ -6,20 +6,22 @@ import { Exam } from "@/data/curriculum";
 import { RealismProvider, type RealismLevel } from "@/components/diagrams/patientAnatomy";
 import { cn } from "@/lib/utils";
 import {
-  SupinePositionDiagram,
-  TrendelenburgPositionDiagram,
-  LithotomyPositionDiagram,
-  LateralPositionDiagram,
-  PronePositionDiagram,
   ProneFaceProtectionDiagram,
   ProneFrameComparisonDiagram,
   MayfieldPinSitingDiagram,
-  ParkBenchPositionDiagram,
   ParkBenchDetailedDiagram,
-  SittingPositionDiagram,
   SittingPositionDetailedDiagram,
-  BeachChairPositionDiagram,
 } from "@/components/diagrams/PatientPositioningDiagrams";
+import {
+  SupineIllustration,
+  TrendelenburgIllustration,
+  LithotomyIllustration,
+  LateralIllustration,
+  ProneIllustration,
+  ParkBenchIllustration,
+  SittingIllustration,
+  BeachChairIllustration,
+} from "@/components/diagrams/PatientPositioningIllustrations";
 import {
   SittingHydrostaticAnimation,
   VAEDetectionLadderAnimation,
