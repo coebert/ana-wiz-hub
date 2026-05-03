@@ -823,276 +823,43 @@ const FrameCard = ({
  *  • Annotated checks: free eyes, ear flat, ETT free, chin off chest,
  *    forehead/malar bone bears the load.
  */
+import proneFaceProtectorImg from "@/assets/positioning/prone-face-protector.jpg";
+
 export const ProneFaceProtectionDiagram = () => {
-  const W = 560;
-  const H = 360;
-  const ORANGE = "hsl(28 80% 55%)";
-  const PURPLE = "hsl(280 50% 45%)";
-  const CYAN = "hsl(190 90% 45%)";
-  const [overlayOn, setOverlayOn] = useState(false);
-
-  // Anatomical landmarks — coordinates match the painted face below.
-  // (HeadProfile is drawn rotated 180° about (280, 165), so the chin
-  // points down into the foam cut-out.)
-  const LANDMARKS: Landmark[] = [
-    { id: "glabella",   x: 230, y: 172, label: "glabella / forehead",        dx:  0, dy: -28, anchor: "middle" },
-    { id: "supraorbit", x: 248, y: 182, label: "supra-orbital ridge",        dx: -40, dy: -14, anchor: "end" },
-    { id: "malar",      x: 260, y: 188, label: "malar (zygoma)",             dx:  46, dy: -10, anchor: "start" },
-    { id: "lateral-canthus", x: 285, y: 196, label: "lateral canthus",       dx:  44, dy:  -2, anchor: "start" },
-    { id: "globe",      x: 302, y: 200, label: "globe — must hang free",     dx:  60, dy:  10, anchor: "start" },
-    { id: "nasal-tip",  x: 312, y: 218, label: "nasal tip",                  dx:  62, dy:  10, anchor: "start" },
-    { id: "philtrum",   x: 304, y: 224, label: "philtrum",                   dx:  60, dy:  18, anchor: "start" },
-    { id: "lip",        x: 296, y: 230, label: "lower lip · ETT exit",       dx:  58, dy:  26, anchor: "start" },
-    { id: "tragus",     x: 245, y: 156, label: "tragus / EAM",               dx: -40, dy: -22, anchor: "end" },
-    { id: "mentum",     x: 295, y: 240, label: "mentum (chin)",              dx:  46, dy:  34, anchor: "start" },
-    { id: "foam-rim",   x: 200, y: 200, label: "foam rim — load-bearing",    dx: -50, dy:  20, anchor: "end" },
-    { id: "mirror",     x: 290, y: 270, label: "mirror surface",             dx:   0, dy:  40, anchor: "middle" },
-  ];
-
-  // Measurements:
-  //  • Cervical flexion angle at C7 — table baseline vs cervical axis.
-  //  • Globe-to-foam clearance (must be > 0).
-  //  • Forehead-to-malar load span (rim-to-rim distance).
-  //  • Nasal-tip clearance to mirror frame.
-  //  • Chin-to-sternum surrogate ("two-finger" rule reminder).
-  // Scale: the horseshoe outer diameter is ~300 px wide and represents
-  // an adult forehead-to-occiput distance of ~210 mm, so 1 mm ≈ 1.43 px.
-  const PX_PER_MM = 1.43;
-  const MEASUREMENTS: Measurement[] = [
-    {
-      kind: "angle",
-      id: "cspine-angle",
-      vertex: { x: 130, y: 215 },
-      a: { x: 80, y: 215 },           // table-plane reference (horizontal)
-      b: { x: 200, y: 200 },           // cervical axis up to mid-occiput
-      label: "C-spine ≈ neutral",
-      radius: 28,
-    },
-    {
-      kind: "distance",
-      id: "globe-clearance",
-      from: { x: 302, y: 200 },        // globe
-      to:   { x: 302, y: 232 },        // central well floor below globe
-      pxPerUnit: PX_PER_MM,
-      unit: "mm",
-      label: "globe → well > 20 mm",
-    },
-    {
-      kind: "distance",
-      id: "load-span",
-      from: { x: 230, y: 172 },        // forehead pressure point
-      to:   { x: 260, y: 188 },        // malar pressure point
-      pxPerUnit: PX_PER_MM,
-      unit: "mm",
-      label: "load rim",
-    },
-    {
-      kind: "distance",
-      id: "nose-mirror",
-      from: { x: 312, y: 218 },        // nasal tip
-      to:   { x: 312, y: 270 },        // mirror glass
-      pxPerUnit: PX_PER_MM,
-      unit: "mm",
-      label: "nose → mirror",
-    },
-    {
-      kind: "distance",
-      id: "ett-skin",
-      from: { x: 296, y: 232 },        // ETT exit at lip
-      to:   { x: 282, y: 248 },        // skin contact reference below lip
-      pxPerUnit: PX_PER_MM,
-      unit: "mm",
-      label: "ETT off skin",
-    },
-  ];
-
   return (
-    <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
-      <div className="px-4 py-3 border-b border-border bg-muted/30 flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-sm font-semibold text-foreground">
-            Face protection in prone — horseshoe foam, mirror, free globes
-          </p>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Lateral close-up. Load borne on forehead and malar (zygoma); orbits, nose, lips and ETT hang free in the central cut-out.
-          </p>
-        </div>
-        <button
-          type="button"
-          onClick={() => setOverlayOn((v) => !v)}
-          aria-pressed={overlayOn}
-          className={cn(
-            "flex-none text-[10px] uppercase tracking-wide font-semibold rounded-md border px-2 py-1 transition-colors",
-            overlayOn
-              ? "bg-[hsl(190_90%_45%)] text-white border-[hsl(190_90%_45%)]"
-              : "bg-background text-muted-foreground border-border hover:text-foreground",
-          )}
-          title="Toggle anatomy validation overlay (landmarks + measurements)"
-        >
-          {overlayOn ? "Anatomy ✓" : "Anatomy overlay"}
-        </button>
+    <figure className="my-4 rounded-xl border border-border bg-card overflow-hidden">
+      <div className="px-4 py-3 border-b border-border bg-muted/30">
+        <p className="text-sm font-semibold text-foreground">
+          Face protection in prone — Proneview-style foam face protector
+        </p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          Side and from-below views. Load is borne on the forehead and malar (zygomatic) bone; the
+          globes, nose, lips and ETT hang free in the central cut-out — eyes are NOT compressed.
+        </p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
-        <div className="p-3">
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto min-w-[460px]" role="img" aria-label="Prone face protection">
-            <AnatomyDefs idPrefix="pfp" />
-
-            {/* Headrest column / mirror housing */}
-            <rect x={70} y={300} width={420} height={14} rx={3} fill="hsl(210 25% 35%)" />
-            <rect x={250} y={314} width={60} height={36} fill="hsl(210 20% 45%)" />
-
-            {/* Foam horseshoe — drawn as a U-shape with a deep central well.
-                The patient's face rests on the upper rim. */}
-            <path
-              d={`M 130,250
-                  Q 130,180 200,170
-                  L 360,170
-                  Q 430,180 430,250
-                  L 410,250
-                  Q 410,210 360,200
-                  L 200,200
-                  Q 150,210 150,250 Z`}
-              fill={PURPLE} opacity={0.92}
-              stroke="hsl(280 60% 28%)" strokeWidth={1.2}
-            />
-            {/* Foam contour highlight */}
-            <path
-              d={`M 138,235 Q 145,205 195,195 L 365,195 Q 415,205 422,235`}
-              fill="none" stroke="hsl(280 80% 80%)" strokeWidth={1.2} opacity={0.6}
-              className="anat-sheen"
-            />
-            {/* Mirror inside the housing — angled glass face */}
-            <g>
-              <polygon points="220,300 360,300 348,270 232,270"
-                fill="hsl(190 60% 25%)" stroke="hsl(190 50% 12%)" strokeWidth={0.8} />
-              <polygon points="232,270 348,270 344,265 236,265"
-                fill={CYAN} opacity={0.55} className="anat-sheen" />
-              <text x={290} y={291} textAnchor="middle" fontSize={9}
-                fill="hsl(190 90% 92%)" fontWeight={700} letterSpacing="0.05em">MIRROR</text>
-            </g>
-
-            {/* Patient profile lying face-down on the foam.
-                Drawn rotated 180° so the chin points down into the cut-out. */}
-            <g transform="rotate(180 280 165)">
-              <HeadProfile cx={280} cy={165} r={70} idPrefix="pfp" facing="left" closedEyes />
-            </g>
-
-            {/* Reinforced ETT — runs from inside the mouth, through the
-                mirror cut-out, then sweeps caudally to the ventilator. */}
-            <g>
-              <path
-                d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
-                fill="none" stroke="hsl(0 0% 12%)" strokeWidth={9} strokeLinecap="round" />
-              <path
-                d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
-                fill="none" stroke="hsl(0 0% 92%)" strokeWidth={4.5} strokeLinecap="round"
-                strokeDasharray="5 5" opacity={0.55} className="anat-sheen" />
-              <text x={245} y={353} fontSize={10} fontWeight={700}
-                fill="hsl(0 0% 25%)">reinforced ETT</text>
-            </g>
-
-            {/* Annotated landmarks — color-coded by status */}
-            {/* Forehead pressure point (LOAD-BEARING — green/safe) */}
-            <g>
-              <circle cx={230} cy={172} r={6} fill={POS_GREEN} stroke="white" strokeWidth={1.5} />
-              <line x1={230} y1={172} x2={170} y2={130} stroke={POS_GREEN} strokeWidth={1} />
-              <text x={166} y={126} textAnchor="end" fontSize={10} fontWeight={700} fill={POS_GREEN}>
-                FOREHEAD
-              </text>
-              <text x={166} y={138} textAnchor="end" fontSize={9} fill="hsl(var(--muted-foreground))">
-                load-bearing rim
-              </text>
-            </g>
-            {/* Malar / zygoma (also load-bearing) */}
-            <g>
-              <circle cx={260} cy={188} r={5} fill={POS_GREEN} stroke="white" strokeWidth={1.5} />
-              <line x1={260} y1={188} x2={250} y2={235} stroke={POS_GREEN} strokeWidth={1} strokeDasharray="2 2" />
-              <text x={240} y={250} textAnchor="end" fontSize={10} fontWeight={700} fill={POS_GREEN}>
-                MALAR (zygoma)
-              </text>
-            </g>
-            {/* Eye — must be FREE */}
-            <g>
-              <circle cx={302} cy={200} r={6} fill={POS_RED} stroke="white" strokeWidth={1.5} />
-              <line x1={302} y1={200} x2={400} y2={120} stroke={POS_RED} strokeWidth={1} />
-              <text x={404} y={116} fontSize={10} fontWeight={800} fill={POS_RED}>EYE — FREE</text>
-              <text x={404} y={128} fontSize={9} fill="hsl(var(--muted-foreground))">
-                no globe contact · check q15 min
-              </text>
-            </g>
-            {/* Ear — flat, no fold */}
-            <g>
-              <circle cx={245} cy={156} r={5} fill={POS_AMBER} stroke="white" strokeWidth={1.5} />
-              <line x1={245} y1={156} x2={300} y2={70} stroke={POS_AMBER} strokeWidth={1} />
-              <text x={300} y={66} fontSize={10} fontWeight={700} fill={POS_AMBER}>EAR — flat, unfolded</text>
-            </g>
-            {/* Nose — free in cut-out */}
-            <g>
-              <circle cx={310} cy={216} r={5} fill={POS_RED} stroke="white" strokeWidth={1.5} />
-              <line x1={310} y1={216} x2={420} y2={240} stroke={POS_RED} strokeWidth={1} />
-              <text x={424} y={236} fontSize={10} fontWeight={700} fill={POS_RED}>NOSE — suspended</text>
-              <text x={424} y={248} fontSize={9} fill="hsl(var(--muted-foreground))">
-                no nasal tip pressure
-              </text>
-            </g>
-            {/* Lips / ETT */}
-            <g>
-              <circle cx={296} cy={228} r={5} fill={POS_AMBER} stroke="white" strokeWidth={1.5} />
-              <line x1={296} y1={228} x2={420} y2={285} stroke={POS_AMBER} strokeWidth={1} />
-              <text x={424} y={282} fontSize={10} fontWeight={700} fill={POS_AMBER}>
-                LIPS · ETT clear of skin
-              </text>
-              <text x={424} y={294} fontSize={9} fill="hsl(var(--muted-foreground))">
-                tape away from lower lip
-              </text>
-            </g>
-            {/* Cervical neutrality arrow */}
-            <g>
-              <path d="M 130,210 Q 100,210 100,260" fill="none" stroke={CYAN} strokeWidth={1.4} markerEnd="url(#pfp-arrow)" />
-              <text x={92} y={278} fontSize={10} fontWeight={700} fill={CYAN}>C-spine</text>
-              <text x={92} y={290} fontSize={9} fill="hsl(var(--muted-foreground))">neutral · no rotation</text>
-            </g>
-
-            <defs>
-              <marker id="pfp-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill={CYAN} />
-              </marker>
-            </defs>
-
-            {/* Anatomy validation overlay */}
-            {overlayOn && (
-              <ValidationOverlay landmarks={LANDMARKS} measurements={MEASUREMENTS} />
-            )}
-          </svg>
-        </div>
-
-        {/* Side checklist */}
-        <div className="border-t md:border-t-0 md:border-l border-border bg-muted/20 p-3 text-xs">
-          <p className="text-[10px] uppercase tracking-wide font-semibold text-muted-foreground mb-2">
-            Five face checks before the drape goes on
-          </p>
-          <ol className="space-y-1.5">
-            {[
-              { c: POS_GREEN, t: "Load on forehead + malar bone — never on globes." },
-              { c: POS_RED, t: "Both eyes free in the central cut-out; lubricate + tape closed." },
-              { c: POS_AMBER, t: "Pinna flat, no folding under the foam rim." },
-              { c: POS_RED, t: "Nasal tip suspended — no contact with mirror frame." },
-              { c: POS_AMBER, t: "Reinforced ETT exits via the cut-out, secured away from the lower lip." },
-            ].map((row, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="mt-0.5 flex-none w-4 h-4 rounded-full text-[9px] font-bold flex items-center justify-center text-white"
-                  style={{ background: row.c }}>{i + 1}</span>
-                <span className="leading-snug text-foreground/90">{row.t}</span>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-3 text-[11px] text-muted-foreground leading-relaxed">
-            Re-check eyes every 15 min. Document free orbits at start, after every position change, and at the end of the case.
-          </p>
-        </div>
+      <div className="bg-muted/10 p-3">
+        <img
+          src={proneFaceProtectorImg}
+          alt="Two-panel illustration: side view and view-from-below of a patient's face resting in a Proneview-style foam face protector, showing eyes free of compression in the central cut-out"
+          loading="lazy"
+          width={1280}
+          height={768}
+          className="w-full h-auto object-contain max-h-[460px] mx-auto"
+        />
       </div>
-    </div>
+      <figcaption className="px-4 py-3 border-t border-border">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+          Five face checks before the drape goes on
+        </p>
+        <ol className="mt-1.5 grid gap-1 sm:grid-cols-2 text-xs text-muted-foreground list-decimal list-inside">
+          <li>Load on forehead + malar bone — never on the globes.</li>
+          <li>Both eyes free in the central cut-out; lubricate + tape closed.</li>
+          <li>Pinna flat, no folding under the foam rim.</li>
+          <li>Nasal tip and lips suspended free; ETT taped away from skin.</li>
+          <li>C-spine neutral — no rotation; chin off chest (two-finger rule).</li>
+        </ol>
+      </figcaption>
+    </figure>
   );
 };
 
