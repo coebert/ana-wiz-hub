@@ -79,6 +79,22 @@ const VascularAccessDevicesTopic = () => {
           >
             <VascularAccessTypesDiagram />
           </DiagramSection>
+
+          <DiagramSection
+            title="Dwell-time approach — clinically indicated vs scheduled"
+            intro={
+              <p>
+                Animated comparison of recommended dwell-time strategy
+                across peripheral, arterial, central, PICC and dialysis
+                access. Bar length is a visual proxy for the maximum
+                recommended dwell time; the coloured tag indicates whether
+                removal is clinically indicated, site-dependent or under
+                scheduled review.
+              </p>
+            }
+          >
+            <DwellTimeInfographic />
+          </DiagramSection>
         </>
       }
       coreConcepts={
