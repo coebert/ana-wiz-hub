@@ -355,15 +355,33 @@ const NonTunnelledCVC: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Head + neck + torso */}
-    <ellipse cx="150" cy="35" rx="32" ry="28" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Chin */}
-    <path d="M130,55 C140,68 160,68 170,55" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Neck */}
-    <path d="M125,60 L125,100 L175,100 L175,60 Z" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Torso */}
-    <path d="M85,100 L215,100 L225,140 L225,250 L75,250 L75,140 Z"
+    {/* Head — head-down, turned away (chin up, contralateral rotation as positioned for IJV) */}
+    <path d="M118,40 C112,22 130,8 150,8 C172,8 188,22 184,42
+             C183,52 180,58 175,62
+             L172,68 C170,72 165,74 160,74
+             L140,74 C135,74 130,72 128,68
+             L125,62 C121,58 119,52 118,40 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Mandible/jawline shading */}
+    <path d="M128,60 C140,72 160,72 172,60" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    {/* Ear (right side, exposed by head turn) */}
+    <path d="M180,38 C186,38 188,46 184,52 L180,52 Z" fill={SkinShade} stroke={SkinEdge} strokeWidth={0.5} opacity={0.85}/>
+    {/* Neck — extended */}
+    <path d="M132,72 C128,84 126,94 128,104 L172,104 C174,94 172,84 168,72 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Suprasternal notch */}
+    <ellipse cx={150} cy={108} rx={5} ry={2.5} fill={SkinShade} opacity={0.55}/>
+    {/* Torso — sloped trapezius into shoulders */}
+    <path d="M128,104
+             C108,108 90,114 78,124
+             C70,132 68,142 70,152
+             L75,250 L225,250 L230,152
+             C232,142 230,132 222,124
+             C210,114 192,108 172,104 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Pectoral fold and shoulder slope */}
+    <path d="M85,128 C90,138 95,148 102,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    <path d="M215,128 C210,138 205,148 198,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
 
     {/* Sternocleidomastoid (right side, viewer's left) */}
     <path d="M138,60 C130,75 122,90 118,100 L130,100 C135,88 142,75 145,62 Z"
