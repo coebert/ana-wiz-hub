@@ -596,9 +596,20 @@ const Portacath: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Chest skin */}
-    <path d="M40,40 L260,40 L260,250 L40,250 Z"
+    {/* Anterior chest — neck base, sloped shoulders, deltoids, costal margin */}
+    <path d="M120,30 C122,42 124,50 128,56
+             L172,56 C176,50 178,42 180,30
+             L182,30 L182,40
+             C200,46 218,54 236,68
+             C252,82 260,98 262,118
+             L262,250 L38,250 L38,118
+             C40,98 48,82 64,68
+             C82,54 100,46 118,40 L118,30 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.45}/>
+    <ellipse cx={150} cy={58} rx={5} ry={2} fill={SkinShade} opacity={0.55}/>
 
     {/* Cut-away showing subcutaneous pocket */}
     <ellipse cx="100" cy="140" rx="55" ry="38" fill="hsl(35 50% 78%)" opacity={0.5}
