@@ -17,15 +17,15 @@ type NerveKey = "musculocutaneous" | "axillary" | "median" | "radial" | "ulnar" 
 
 interface NerveData {
   label: string;
+  short: string;
   roots: string;
-  /** SVG path on the ANTERIOR limb. Empty string = nerve not seen anteriorly. */
   pathAnt: string;
-  /** SVG path on the POSTERIOR limb. */
   pathPost: string;
-  /** Optional cutaneous patch (anterior). */
   patchAnt?: string;
-  /** Optional cutaneous patch (posterior). */
   patchPost?: string;
+  /** Anchor [x,y, anchor] for the inline nerve name on the anterior view. */
+  labelAnt?: [number, number, "start" | "middle" | "end"];
+  labelPost?: [number, number, "start" | "middle" | "end"];
   motor: string;
   sensory: string;
   injury: string;
