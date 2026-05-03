@@ -1059,6 +1059,11 @@ export const ProneFaceProtectionDiagram = () => {
                 <path d="M 0 0 L 10 5 L 0 10 z" fill={CYAN} />
               </marker>
             </defs>
+
+            {/* Anatomy validation overlay */}
+            {overlayOn && (
+              <ValidationOverlay landmarks={LANDMARKS} measurements={MEASUREMENTS} />
+            )}
           </svg>
         </div>
 
