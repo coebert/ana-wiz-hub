@@ -86,9 +86,35 @@ const PortalFirstPassDiagram = () => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">
-        Portal Circulation & First-Pass Metabolism
-      </h3>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-lg font-semibold text-foreground">
+          Portal Circulation & First-Pass Metabolism
+        </h3>
+        <div className="flex flex-wrap gap-1.5 text-xs" role="group" aria-label="Mechanism layer toggles">
+          <span className="text-muted-foreground self-center mr-1">
+            {anyMechanism ? "Mechanism layers:" : "Anatomy only — add layers:"}
+          </span>
+          {([
+            { k: "hepatocyte" as Layer, label: "Hepatocyte uptake" },
+            { k: "kupffer" as Layer, label: "Kupffer cells" },
+            { k: "bile" as Layer, label: "Bile canaliculi" },
+          ]).map(({ k, label }) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => toggleLayer(k)}
+              aria-pressed={layers[k]}
+              className={`px-2 py-1 rounded border transition-colors ${
+                layers[k]
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border text-muted-foreground hover:bg-muted/50"
+              }`}
+            >
+              {label} {layers[k] ? "✓" : "○"}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="bg-card rounded-xl border border-border p-3">
         <svg
