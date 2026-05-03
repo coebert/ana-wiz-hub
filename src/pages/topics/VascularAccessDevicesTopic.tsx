@@ -5,6 +5,7 @@ import {
   VascularAccessDevicesDiagram,
   VascularAccessCrossSectionDiagram,
 } from "@/components/diagrams/VascularAccessDevicesDiagram";
+import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccessTypesDiagram";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
@@ -60,6 +61,22 @@ const VascularAccessDevicesTopic = () => {
             }
           >
             <VascularAccessCrossSectionDiagram />
+          </DiagramSection>
+
+          <DiagramSection
+            title="Device archetypes — labelled anatomy & dwell times"
+            intro={
+              <p>
+                Five labelled schematics covering peripheral cannula, PICC,
+                non-tunnelled CVC, tunnelled line (Hickman / Groshong /
+                Permcath) and implanted port (Portacath). Each plate
+                annotates skin entry, intravascular course and tip
+                position, and is paired with the supporting dwell-time and
+                site evidence.
+              </p>
+            }
+          >
+            <VascularAccessTypesDiagram />
           </DiagramSection>
         </>
       }
