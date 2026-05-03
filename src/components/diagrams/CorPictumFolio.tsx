@@ -110,6 +110,13 @@ interface CorPictumFolioProps {
    * for paste-back into `anatomyFolios.ts`.
    */
   enableReviewMode?: boolean;
+  /**
+   * If true, suppress the auto-rendered overlay labels at polygon centroids.
+   * Use for plates whose painted artwork already carries baked-in labels
+   * (e.g. the upper- and lower-limb folios) to avoid double labelling.
+   * Polygons remain interactive (hover/click).
+   */
+  suppressOverlayLabels?: boolean;
 }
 
 const MIN_SCALE = 1;
@@ -118,7 +125,7 @@ const MAX_SCALE = 5;
 const polygonToPoints = (polygon: Array<[number, number]>) =>
   polygon.map(([x, y]) => `${x * 100},${y * 100}`).join(" ");
 
-const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableReviewMode = false }: CorPictumFolioProps) => {
+const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableReviewMode = false, suppressOverlayLabels = false }: CorPictumFolioProps) => {
   const [activeId, setActiveId] = useState(plates[0]?.id);
   const active = plates.find((p) => p.id === activeId) ?? plates[0];
   const reactId = useId();
@@ -611,7 +618,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                       );
                     })}
                     {/* Always-on direct labels with overlap-avoidance + leaders */}
-                    {(() => {
+                    {!suppressOverlayLabels && (() => {
                       type Box = {
                         idx: number;
                         text: string;
