@@ -23,11 +23,14 @@ type NerveKey =
 
 interface NerveData {
   label: string;
+  short: string;
   roots: string;
   pathAnt: string;
   pathPost: string;
   patchAnt?: string;
   patchPost?: string;
+  labelAnt?: [number, number, "start" | "middle" | "end"];
+  labelPost?: [number, number, "start" | "middle" | "end"];
   motor: string;
   sensory: string;
   injury: string;
@@ -36,81 +39,98 @@ interface NerveData {
 const NERVES: Record<NerveKey, NerveData> = {
   femoral: {
     label: "Femoral",
+    short: "Femoral",
     roots: "L2, L3, L4",
     pathAnt: "M88,28 C90,60 96,90 100,118 C102,140 100,158 96,178",
     pathPost: "",
     patchAnt: "M70,90 Q72,150 80,200 L108,200 Q108,150 102,90 Z",
+    labelAnt: [104, 110, "start"],
     motor: "Quadriceps femoris (knee extension), sartorius, pectineus, iliacus",
     sensory: "Anterior thigh; via saphenous branch — medial leg/ankle/foot",
     injury: "Hip replacement, retractor injury, psoas haematoma. Loss of knee extension + absent knee jerk.",
   },
   saphenous: {
     label: "Saphenous",
+    short: "Saphenous",
     roots: "L3, L4 (terminal sensory branch of femoral)",
     pathAnt: "M96,180 C100,220 104,250 108,280 C110,310 110,330 110,350",
     pathPost: "",
     patchAnt: "M104,250 Q108,310 112,348 L122,348 Q120,310 116,250 Z",
+    labelAnt: [124, 285, "start"],
     motor: "None — pure sensory (terminal branch of femoral)",
     sensory: "Medial leg below knee, medial malleolus, medial foot to base of great toe",
     injury: "Adductor canal block target — motor-sparing knee analgesia. Vulnerable in saphenous vein harvest for CABG.",
   },
   obturator: {
     label: "Obturator",
+    short: "Obturator",
     roots: "L2, L3, L4",
     pathAnt: "M82,28 C78,55 74,80 76,108 C80,135 90,155 100,168",
     pathPost: "",
     patchAnt: "M82,140 Q86,170 96,190 L116,190 Q112,170 108,140 Z",
+    labelAnt: [70, 100, "end"],
     motor: "Adductor longus / brevis / magnus, gracilis, obturator externus (hip adduction)",
     sensory: "Small patch of medial thigh (variable, often clinically silent)",
     injury: "TURBT 'obturator kick' (electrical stimulation → adductor jerk → bladder perforation). Often missed by femoral block.",
   },
   lcnt: {
     label: "Lateral cutaneous of thigh",
+    short: "LCNT",
     roots: "L2, L3",
     pathAnt: "M62,30 C58,55 56,80 58,108 C62,135 68,155 72,170",
     pathPost: "",
     patchAnt: "M40,80 Q40,150 50,210 L72,210 Q70,150 66,80 Z",
+    labelAnt: [38, 70, "end"],
     motor: "None — pure sensory",
     sensory: "Lateral thigh from greater trochanter to knee",
     injury: "Meralgia paraesthetica — entrapment under inguinal ligament (tight belts, obesity, pregnancy). Burning lateral thigh.",
   },
   sciatic: {
     label: "Sciatic",
+    short: "Sciatic",
     roots: "L4, L5, S1, S2, S3",
     pathAnt: "",
     pathPost: "M85,30 C82,60 84,90 88,120 C92,150 96,180 100,210",
     patchPost: "M68,170 Q68,220 80,260 L120,260 Q118,220 110,170 Z",
+    labelPost: [70, 80, "end"],
     motor: "Hamstrings (semitendinosus, semimembranosus, biceps femoris) + ALL muscles below knee via tibial / common peroneal divisions",
     sensory: "Posterior thigh; via tibial + common peroneal — almost all of leg and foot below knee",
     injury: "IM gluteal injection (avoid — use upper outer quadrant). Posterior hip dislocation. Piriformis syndrome.",
   },
   tibial: {
     label: "Tibial",
+    short: "Tibial",
     roots: "L4–S3 (medial division of sciatic)",
     pathAnt: "",
     pathPost: "M100,210 C102,240 104,270 106,300 C108,325 110,345 112,355",
     patchPost: "M88,260 Q92,320 102,355 L130,355 Q124,320 116,260 Z",
+    labelPost: [82, 285, "end"],
     motor: "Gastrocnemius, soleus, tibialis posterior, FDL, FHL, intrinsic foot muscles (via medial + lateral plantar nerves)",
     sensory: "Sole of foot (medial + lateral plantar branches) — heel and toes",
     injury: "Tarsal tunnel syndrome (medial malleolus). Loss of plantarflexion / inversion. Loss of ankle jerk.",
   },
   commonperoneal: {
     label: "Common peroneal",
+    short: "Common peroneal",
     roots: "L4–S2 (lateral division of sciatic)",
     pathAnt: "M112,200 C118,225 124,250 130,275 C134,295 138,315 140,335",
     pathPost: "M100,210 C108,235 116,260 124,285 C130,305 134,325 136,345",
     patchAnt: "M125,280 Q130,330 140,355 L156,355 Q150,330 144,280 Z",
     patchPost: "M120,300 Q126,340 138,358 L154,358 Q146,330 138,300 Z",
+    labelAnt: [144, 250, "start"],
+    labelPost: [142, 270, "start"],
     motor: "Tibialis anterior, EHL, EDL, peronei (dorsiflexion, eversion). Splits into deep + superficial peroneal.",
     sensory: "Lateral leg + dorsum of foot (deep peroneal: 1st web space; superficial peroneal: rest of dorsum)",
     injury: "Wraps around fibular neck — vulnerable to lithotomy / leg cross / plaster casts. → FOOT DROP + sensory loss dorsum.",
   },
   sural: {
     label: "Sural",
+    short: "Sural",
     roots: "S1, S2 (tibial + common peroneal contributions)",
     pathAnt: "",
     pathPost: "M108,260 C116,290 122,320 130,350",
     patchPost: "M118,310 Q126,345 138,358 L150,358 Q142,335 132,310 Z",
+    labelPost: [128, 305, "start"],
     motor: "None — pure sensory",
     sensory: "Lateral aspect of foot and lateral malleolus, posterolateral lower leg",
     injury: "Used as donor for nerve grafts (long, expendable, pure sensory). Component of ankle block.",
@@ -247,9 +267,22 @@ const LowerLimbBranchesDiagram = () => {
         if (!path) return null;
         const isActive = activeNerves.has(k);
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
+        const labelPos = view === "ant" ? n.labelAnt : n.labelPost;
         return (
-          <path key={`nerve-${k}`} d={path} stroke={c} strokeWidth={isActive ? 2.2 : 1}
-            fill="none" opacity={isActive ? 1 : 0.18} strokeLinecap="round" />
+          <g key={`nerve-${k}`}>
+            <path d={path} stroke={c} strokeWidth={isActive ? 2.2 : 1}
+              fill="none" opacity={isActive ? 1 : 0.18} strokeLinecap="round" />
+            {showLabels && labelPos && (
+              <text x={labelPos[0]} y={labelPos[1]} textAnchor={labelPos[2]}
+                fontSize={isActive ? 6 : 5}
+                fill={c} fontWeight={isActive ? 700 : 500}
+                opacity={isActive ? 1 : 0.55}
+                style={{ paintOrder: "stroke" }}
+                stroke="hsl(var(--background))" strokeWidth="0.4">
+                {n.short}
+              </text>
+            )}
+          </g>
         );
       })}
 

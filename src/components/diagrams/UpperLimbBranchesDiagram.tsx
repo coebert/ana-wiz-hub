@@ -17,15 +17,15 @@ type NerveKey = "musculocutaneous" | "axillary" | "median" | "radial" | "ulnar" 
 
 interface NerveData {
   label: string;
+  short: string;
   roots: string;
-  /** SVG path on the ANTERIOR limb. Empty string = nerve not seen anteriorly. */
   pathAnt: string;
-  /** SVG path on the POSTERIOR limb. */
   pathPost: string;
-  /** Optional cutaneous patch (anterior). */
   patchAnt?: string;
-  /** Optional cutaneous patch (posterior). */
   patchPost?: string;
+  /** Anchor [x,y, anchor] for the inline nerve name on the anterior view. */
+  labelAnt?: [number, number, "start" | "middle" | "end"];
+  labelPost?: [number, number, "start" | "middle" | "end"];
   motor: string;
   sensory: string;
   injury: string;
@@ -34,64 +34,80 @@ interface NerveData {
 const NERVES: Record<NerveKey, NerveData> = {
   musculocutaneous: {
     label: "Musculocutaneous",
+    short: "Musculocut.",
     roots: "C5, C6, C7",
     pathAnt: "M88,52 C92,72 96,98 100,118 C104,138 108,160 112,178",
     pathPost: "",
     patchAnt: "M105,170 Q112,210 122,238 L132,238 Q124,205 116,170 Z",
+    labelAnt: [114, 110, "start"],
     motor: "Coracobrachialis, biceps brachii, brachialis (anterior arm flexors)",
     sensory: "Lateral cutaneous nerve of forearm — lateral forearm to wrist",
     injury: "Pierces coracobrachialis (key landmark). Often missed by axillary block — block separately.",
   },
   axillary: {
     label: "Axillary",
+    short: "Axillary",
     roots: "C5, C6",
     pathAnt: "M82,48 C76,58 72,72 70,90",
     pathPost: "M82,48 C72,60 64,76 60,98",
     patchPost: "M48,80 Q42,108 50,128 L70,128 Q72,108 70,80 Z",
     patchAnt: "M58,82 Q56,108 64,124 L78,124 Q78,108 78,82 Z",
+    labelAnt: [62, 76, "end"],
+    labelPost: [54, 74, "end"],
     motor: "Deltoid (abduction 15–90°), teres minor",
     sensory: "Regimental badge area — lateral shoulder",
     injury: "Quadrangular space. Damaged in surgical-neck humeral fractures and shoulder dislocation.",
   },
   median: {
     label: "Median",
+    short: "Median",
     roots: "C5–T1",
     pathAnt: "M92,52 C96,80 100,108 104,134 C108,160 110,184 112,210 C114,232 116,254 118,272",
     pathPost: "",
     patchAnt: "M100,288 Q105,308 112,322 L122,322 Q118,305 113,288 Z",
+    labelAnt: [108, 170, "start"],
     motor: "Pronators, most forearm flexors (not FCU/medial FDP), thenar (LOAF), lateral 2 lumbricals",
     sensory: "Lateral 3½ digits, palmar aspect; nail beds dorsally",
     injury: "Carpal tunnel syndrome; supracondylar fracture (anterior interosseous branch).",
   },
   radial: {
     label: "Radial",
+    short: "Radial",
     roots: "C5–T1",
     pathAnt: "M82,52 C84,82 86,108 92,134 C100,160 110,180 122,200 C130,214 138,228 144,244",
     pathPost: "M84,52 C82,80 82,108 88,134 C98,162 112,182 126,200 C136,214 144,230 150,248",
     patchPost: "M88,180 Q92,222 110,250 L130,248 Q120,210 108,180 Z",
     patchAnt: "M118,250 Q126,278 138,298 L148,298 Q140,275 130,250 Z",
+    labelAnt: [76, 110, "end"],
+    labelPost: [78, 110, "end"],
     motor: "ALL extensors of arm + forearm (triceps, brachioradialis, supinator, wrist/finger extensors)",
     sensory: "Posterior arm + forearm; dorsal lateral 3½ digits (proximal phalanges only)",
     injury: "Spiral groove of humerus → 'Saturday-night palsy' (wrist drop). PIN compression at supinator.",
   },
   ulnar: {
     label: "Ulnar",
+    short: "Ulnar",
     roots: "C8, T1",
     pathAnt: "M98,52 C102,82 106,112 112,140 C118,168 124,196 130,222 C134,244 138,264 140,280",
     pathPost: "M100,52 C104,82 110,112 116,142 C122,170 130,196 136,222 C140,244 144,264 146,280",
     patchAnt: "M120,300 Q126,318 134,330 L144,330 Q140,315 132,300 Z",
     patchPost: "M126,300 Q134,320 144,332 L154,332 Q146,315 138,300 Z",
+    labelAnt: [144, 200, "start"],
+    labelPost: [148, 200, "start"],
     motor: "Most intrinsic hand muscles, FCU, medial half FDP, hypothenar, all interossei, medial 2 lumbricals, adductor pollicis",
     sensory: "Medial 1½ digits (palmar + dorsal)",
     injury: "Cubital tunnel at elbow; Guyon's canal at wrist. 'Hand of benediction' / claw hand.",
   },
   intercostobrachial: {
     label: "Intercostobrachial",
+    short: "ICB (T2)",
     roots: "T2",
     pathAnt: "M76,70 C70,76 64,80 58,84",
     pathPost: "M76,70 C70,76 64,80 58,84",
     patchAnt: "M40,82 Q38,98 46,112 L60,112 Q56,98 56,82 Z",
     patchPost: "M40,82 Q38,98 46,112 L60,112 Q56,98 56,82 Z",
+    labelAnt: [38, 78, "end"],
+    labelPost: [38, 78, "end"],
     motor: "None — pure sensory",
     sensory: "Medial / posterior upper arm (axilla)",
     injury: "Not part of brachial plexus. Often missed by axillary, supraclavicular and infraclavicular blocks → tourniquet pain.",
@@ -213,15 +229,20 @@ const UpperLimbBranchesDiagram = () => {
         if (!path) return null;
         const isActive = activeNerves.has(k);
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
+        const labelPos = view === "ant" ? n.labelAnt : n.labelPost;
         return (
           <g key={`nerve-${k}`}>
             <path d={path} stroke={c} strokeWidth={isActive ? 2.2 : 1}
               fill="none" opacity={isActive ? 1 : 0.18}
               strokeLinecap="round" strokeDasharray={view === "post" && (k === "median" || k === "ulnar") ? "4 3" : undefined} />
-            {isActive && showLabels && (
-              <text x={view === "ant" ? 6 : 6} y={view === "ant" ? 14 : 14}
-                fontSize="6" fill={c} fontWeight="700">
-                {/* label drawn once inside renderLimb header below to avoid clutter */}
+            {showLabels && labelPos && (
+              <text x={labelPos[0]} y={labelPos[1]} textAnchor={labelPos[2]}
+                fontSize={isActive ? 6.5 : 5.5} fill={c}
+                fontWeight={isActive ? 700 : 500}
+                opacity={isActive ? 1 : 0.55}
+                style={{ paintOrder: "stroke" }}
+                stroke="hsl(var(--background))" strokeWidth="0.4">
+                {n.short}
               </text>
             )}
           </g>
