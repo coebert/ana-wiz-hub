@@ -88,6 +88,13 @@ export interface CorPictumPlate {
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
   /**
+   * Optional rectangular exclusion zones (normalised 0..1, top-left origin)
+   * that the auto overlay-label layout must NOT overlap — typically used to
+   * mask out painted/baked-in labels already on the plate. Each entry is
+   * [x, y, w, h] in normalised plate coordinates.
+   */
+  labelExclusionZones?: Array<[number, number, number, number]>;
+  /**
    * Optional FRCA / FFICM curriculum learning-points this plate maps to.
    * Rendered as clickable chips that scroll to the matching topic anchor.
    */
