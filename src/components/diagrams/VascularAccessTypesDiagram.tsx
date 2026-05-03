@@ -524,9 +524,9 @@ const TunnelledLine: React.FC = () => (
     <circle cx="100" cy="170" r="4" fill="hsl(0 50% 55%)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.5}/>
     <circle cx="100" cy="170" r="1.5" fill="hsl(45 30% 30%)" />
     {/* Subcutaneous tunnel — solid (visible in cut-away) */}
-    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+    <path d="M100,170 C120,160 150,130 175,100 L200,72"
           stroke={Catheter} strokeWidth={3.2} fill="none" strokeLinecap="round"/>
-    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+    <path d="M100,170 C120,160 150,130 175,100 L200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Dacron cuff — tissue ingrowth zone */}
     <g>
@@ -542,9 +542,9 @@ const TunnelledLine: React.FC = () => (
     </g>
 
     {/* Intravascular segment (entering subclavian → SVC) */}
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={Catheter} strokeWidth={2.8} fill="none"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
