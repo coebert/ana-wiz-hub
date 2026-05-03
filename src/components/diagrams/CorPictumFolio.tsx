@@ -88,6 +88,13 @@ export interface CorPictumPlate {
   /** Italic Latin labels with English translations and notes */
   labels: CorPictumLabel[];
   /**
+   * Optional rectangular exclusion zones (normalised 0..1, top-left origin)
+   * that the auto overlay-label layout must NOT overlap — typically used to
+   * mask out painted/baked-in labels already on the plate. Each entry is
+   * [x, y, w, h] in normalised plate coordinates.
+   */
+  labelExclusionZones?: Array<[number, number, number, number]>;
+  /**
    * Optional FRCA / FFICM curriculum learning-points this plate maps to.
    * Rendered as clickable chips that scroll to the matching topic anchor.
    */
@@ -622,19 +629,20 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                       type Box = {
                         idx: number;
                         text: string;
-                        ax: number; ay: number;
-                        x: number; y: number;
-                        hw: number; hh: number;
+                        ax: number; ay: number;   // anchor (centroid)
+                        x: number; y: number;     // current centre
+                        hw: number; hh: number;   // half-width / half-height in viewBox units (0..100)
                       };
                       // Counter-scale font/stroke against the zoom transform so
                       // labels stay at roughly constant screen size as users zoom.
-                      // Floor at scale=1, gentle taper above (sqrt) so labels still
-                      // shrink relative to the plate but never become microscopic.
                       const zoomComp = 1 / Math.sqrt(Math.max(1, scale));
-                      const FS = 2.1 * zoomComp;
-                      const charW = FS * 0.55;
-                      const padX = 0.6 * zoomComp;
-                      const padY = 0.5 * zoomComp;
+                      // Slightly smaller, lighter face — easier to layer over busy art.
+                      const FS = 1.85 * zoomComp;
+                      const charW = FS * 0.52;
+                      const padX = 0.7 * zoomComp;
+                      const padY = 0.55 * zoomComp;
+                      const exclusions = active.labelExclusionZones ?? [];
+
                       const boxes: Box[] = [];
                       active.labels.forEach((label, idx) => {
                         if (!label.polygon || label.polygon.length < 3) return;
@@ -650,13 +658,17 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                       });
 
                       // Iterative repulsion to separate overlapping label boxes,
-                      // with a soft pull back toward each anchor (centroid).
-                      const ITERS = 80;
+                      // with a soft pull back toward each anchor (centroid) and
+                      // hard-push away from baked-in label exclusion zones.
+                      const ITERS = 120;
                       for (let it = 0; it < ITERS; it++) {
                         let moved = false;
                         for (let i = 0; i < boxes.length; i++) {
+                          const a = boxes[i];
+
+                          // 1. label vs label
                           for (let j = i + 1; j < boxes.length; j++) {
-                            const a = boxes[i], b = boxes[j];
+                            const b = boxes[j];
                             const dx = b.x - a.x;
                             const dy = b.y - a.y;
                             const ox = a.hw + b.hw - Math.abs(dx);
@@ -676,9 +688,35 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               }
                             }
                           }
-                          const a = boxes[i];
+
+                          // 2. label vs baked-in exclusion zones
+                          for (const [zx, zy, zw, zh] of exclusions) {
+                            const ex = zx * 100;
+                            const ey = zy * 100;
+                            const ehw = (zw * 100) / 2;
+                            const ehh = (zh * 100) / 2;
+                            const ecx = ex + ehw;
+                            const ecy = ey + ehh;
+                            const dx = a.x - ecx;
+                            const dy = a.y - ecy;
+                            const ox = a.hw + ehw - Math.abs(dx);
+                            const oy = a.hh + ehh - Math.abs(dy);
+                            if (ox > 0 && oy > 0) {
+                              moved = true;
+                              if (oy <= ox) {
+                                const sgn = dy === 0 ? -1 : Math.sign(dy);
+                                a.y += sgn * (oy + 0.1);
+                              } else {
+                                const sgn = dx === 0 ? -1 : Math.sign(dx);
+                                a.x += sgn * (ox + 0.1);
+                              }
+                            }
+                          }
+
+                          // Soft pull back toward anchor so labels stay near their structure
                           a.x += (a.ax - a.x) * 0.04;
                           a.y += (a.ay - a.y) * 0.04;
+                          // Clamp inside plate
                           a.x = Math.max(a.hw + 0.5, Math.min(100 - a.hw - 0.5, a.x));
                           a.y = Math.max(a.hh + 0.5, Math.min(100 - a.hh - 0.5, a.y));
                         }
@@ -689,16 +727,52 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         const isActive = activeLabelIdx === b.idx || pinnedLabelIdx === b.idx;
                         const dist = Math.hypot(b.x - b.ax, b.y - b.ay);
                         const showLeader = dist > b.hh + 0.8;
+
+                        // Where the leader meets the box edge — clip to the
+                        // bounding rectangle so it never crosses the text.
+                        let edgeX = b.x;
+                        let edgeY = b.y;
+                        if (showLeader) {
+                          const dx = b.ax - b.x;
+                          const dy = b.ay - b.y;
+                          const ax = Math.abs(dx) || 1e-6;
+                          const ay = Math.abs(dy) || 1e-6;
+                          const t = Math.min(b.hw / ax, b.hh / ay);
+                          edgeX = b.x + dx * t;
+                          edgeY = b.y + dy * t;
+                        }
+
                         return (
                           <g key={`lbl-${b.idx}`}>
                             {showLeader && (
-                              <line
-                                x1={b.ax} y1={b.ay} x2={b.x} y2={b.y}
-                                stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 30%)"}
-                                strokeWidth={0.18 * zoomComp}
-                                strokeOpacity={isActive ? 0.9 : 0.55}
-                                style={{ vectorEffect: "non-scaling-stroke" }}
-                              />
+                              <>
+                                {/* Subtle white halo so the leader reads over busy art */}
+                                <line
+                                  x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
+                                  stroke="hsl(40 50% 96%)"
+                                  strokeWidth={0.55 * zoomComp}
+                                  strokeOpacity={0.85}
+                                  strokeLinecap="round"
+                                  style={{ vectorEffect: "non-scaling-stroke" }}
+                                />
+                                <line
+                                  x1={b.ax} y1={b.ay} x2={edgeX} y2={edgeY}
+                                  stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
+                                  strokeWidth={0.22 * zoomComp}
+                                  strokeOpacity={isActive ? 0.95 : 0.7}
+                                  strokeLinecap="round"
+                                  style={{ vectorEffect: "non-scaling-stroke" }}
+                                />
+                                {/* Endpoint dot at the anatomical anchor */}
+                                <circle
+                                  cx={b.ax} cy={b.ay}
+                                  r={0.35 * zoomComp}
+                                  fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 25%)"}
+                                  stroke="hsl(40 50% 96%)"
+                                  strokeWidth={0.18 * zoomComp}
+                                  style={{ vectorEffect: "non-scaling-stroke" }}
+                                />
+                              </>
                             )}
                             <text
                               x={b.x}
@@ -706,12 +780,13 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               textAnchor="middle"
                               dominantBaseline="central"
                               fontSize={FS}
-                              fontWeight={isActive ? 800 : 700}
+                              fontWeight={isActive ? 700 : 600}
                               fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
                               stroke="hsl(40 50% 96%)"
-                              strokeWidth={0.7 * zoomComp}
+                              strokeWidth={0.85 * zoomComp}
+                              strokeLinejoin="round"
                               paintOrder="stroke"
-                              style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
+                              style={{ pointerEvents: "none", letterSpacing: "0.015em" }}
                             >
                               {b.text}
                             </text>
