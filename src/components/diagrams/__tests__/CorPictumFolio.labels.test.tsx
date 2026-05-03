@@ -38,25 +38,24 @@ const plate: CorPictumPlate = {
 };
 
 describe("CorPictumFolio overlay labels", () => {
-  it("renders auto labels by default", () => {
+  it("suppresses auto labels by default", () => {
     const { container } = renderWithProviders(
       <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} />,
-    );
-    // SVG <text> for the auto label should appear once.
-    const texts = Array.from(container.querySelectorAll("svg text")).filter(
-      (t) => t.textContent === "Sentinel Label",
-    );
-    expect(texts.length).toBe(1);
-  });
-
-  it("suppresses auto labels when suppressOverlayLabels is set", () => {
-    const { container } = renderWithProviders(
-      <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} suppressOverlayLabels />,
     );
     const texts = Array.from(container.querySelectorAll("svg text")).filter(
       (t) => t.textContent === "Sentinel Label",
     );
     expect(texts.length).toBe(0);
+  });
+
+  it("renders auto labels when suppressOverlayLabels is explicitly false", () => {
+    const { container } = renderWithProviders(
+      <CorPictumFolio atlasTitle="A" atlasSubtitle="" plates={[plate]} suppressOverlayLabels={false} />,
+    );
+    const texts = Array.from(container.querySelectorAll("svg text")).filter(
+      (t) => t.textContent === "Sentinel Label",
+    );
+    expect(texts.length).toBe(1);
   });
 
   it("upper- and lower-limb folios contain polygon labels (so suppression matters)", () => {
