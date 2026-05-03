@@ -656,13 +656,13 @@ const Portacath: React.FC = () => (
     <circle cx={122} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
 
     {/* Catheter from port → subclavian → SVC */}
-    <path d="M120,140 C150,128 175,100 195,75"
+    <path d="M120,140 C150,128 175,100 200,72"
           stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
-    <path d="M120,140 C150,128 175,100 195,75"
+    <path d="M120,140 C150,128 175,100 200,72"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={Catheter} strokeWidth={2.8} fill="none"/>
-    <path d="M195,75 C198,95 195,115 190,140"
+    <path d="M200,72 C202,94 196,116 190,140"
           stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
     <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
 
