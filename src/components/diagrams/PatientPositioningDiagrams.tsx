@@ -867,13 +867,14 @@ export const ProneFaceProtectionDiagram = () => {
             <path
               d={`M 138,235 Q 145,205 195,195 L 365,195 Q 415,205 422,235`}
               fill="none" stroke="hsl(280 80% 80%)" strokeWidth={1.2} opacity={0.6}
+              className="anat-sheen"
             />
             {/* Mirror inside the housing — angled glass face */}
             <g>
               <polygon points="220,300 360,300 348,270 232,270"
                 fill="hsl(190 60% 25%)" stroke="hsl(190 50% 12%)" strokeWidth={0.8} />
               <polygon points="232,270 348,270 344,265 236,265"
-                fill={CYAN} opacity={0.55} />
+                fill={CYAN} opacity={0.55} className="anat-sheen" />
               <text x={290} y={291} textAnchor="middle" fontSize={9}
                 fill="hsl(190 90% 92%)" fontWeight={700} letterSpacing="0.05em">MIRROR</text>
             </g>
