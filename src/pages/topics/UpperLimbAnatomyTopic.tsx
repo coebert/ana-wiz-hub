@@ -65,7 +65,7 @@ const UpperLimbAnatomyTopic = () => {
           </div>
         </div>
 
-        <CorPictumFolio {...upperLimbFolio} />
+        <CorPictumFolio {...upperLimbFolio} suppressOverlayLabels />
 
         <BrachialPlexusDiagram />
 
