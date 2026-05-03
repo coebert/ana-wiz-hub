@@ -829,15 +829,108 @@ export const ProneFaceProtectionDiagram = () => {
   const ORANGE = "hsl(28 80% 55%)";
   const PURPLE = "hsl(280 50% 45%)";
   const CYAN = "hsl(190 90% 45%)";
+  const [overlayOn, setOverlayOn] = useState(false);
+
+  // Anatomical landmarks — coordinates match the painted face below.
+  // (HeadProfile is drawn rotated 180° about (280, 165), so the chin
+  // points down into the foam cut-out.)
+  const LANDMARKS: Landmark[] = [
+    { id: "glabella",   x: 230, y: 172, label: "glabella / forehead",        dx:  0, dy: -28, anchor: "middle" },
+    { id: "supraorbit", x: 248, y: 182, label: "supra-orbital ridge",        dx: -40, dy: -14, anchor: "end" },
+    { id: "malar",      x: 260, y: 188, label: "malar (zygoma)",             dx:  46, dy: -10, anchor: "start" },
+    { id: "lateral-canthus", x: 285, y: 196, label: "lateral canthus",       dx:  44, dy:  -2, anchor: "start" },
+    { id: "globe",      x: 302, y: 200, label: "globe — must hang free",     dx:  60, dy:  10, anchor: "start" },
+    { id: "nasal-tip",  x: 312, y: 218, label: "nasal tip",                  dx:  62, dy:  10, anchor: "start" },
+    { id: "philtrum",   x: 304, y: 224, label: "philtrum",                   dx:  60, dy:  18, anchor: "start" },
+    { id: "lip",        x: 296, y: 230, label: "lower lip · ETT exit",       dx:  58, dy:  26, anchor: "start" },
+    { id: "tragus",     x: 245, y: 156, label: "tragus / EAM",               dx: -40, dy: -22, anchor: "end" },
+    { id: "mentum",     x: 295, y: 240, label: "mentum (chin)",              dx:  46, dy:  34, anchor: "start" },
+    { id: "foam-rim",   x: 200, y: 200, label: "foam rim — load-bearing",    dx: -50, dy:  20, anchor: "end" },
+    { id: "mirror",     x: 290, y: 270, label: "mirror surface",             dx:   0, dy:  40, anchor: "middle" },
+  ];
+
+  // Measurements:
+  //  • Cervical flexion angle at C7 — table baseline vs cervical axis.
+  //  • Globe-to-foam clearance (must be > 0).
+  //  • Forehead-to-malar load span (rim-to-rim distance).
+  //  • Nasal-tip clearance to mirror frame.
+  //  • Chin-to-sternum surrogate ("two-finger" rule reminder).
+  // Scale: the horseshoe outer diameter is ~300 px wide and represents
+  // an adult forehead-to-occiput distance of ~210 mm, so 1 mm ≈ 1.43 px.
+  const PX_PER_MM = 1.43;
+  const MEASUREMENTS: Measurement[] = [
+    {
+      kind: "angle",
+      id: "cspine-angle",
+      vertex: { x: 130, y: 215 },
+      a: { x: 80, y: 215 },           // table-plane reference (horizontal)
+      b: { x: 200, y: 200 },           // cervical axis up to mid-occiput
+      label: "C-spine ≈ neutral",
+      radius: 28,
+    },
+    {
+      kind: "distance",
+      id: "globe-clearance",
+      from: { x: 302, y: 200 },        // globe
+      to:   { x: 302, y: 232 },        // central well floor below globe
+      pxPerUnit: PX_PER_MM,
+      unit: "mm",
+      label: "globe → well > 20 mm",
+    },
+    {
+      kind: "distance",
+      id: "load-span",
+      from: { x: 230, y: 172 },        // forehead pressure point
+      to:   { x: 260, y: 188 },        // malar pressure point
+      pxPerUnit: PX_PER_MM,
+      unit: "mm",
+      label: "load rim",
+    },
+    {
+      kind: "distance",
+      id: "nose-mirror",
+      from: { x: 312, y: 218 },        // nasal tip
+      to:   { x: 312, y: 270 },        // mirror glass
+      pxPerUnit: PX_PER_MM,
+      unit: "mm",
+      label: "nose → mirror",
+    },
+    {
+      kind: "distance",
+      id: "ett-skin",
+      from: { x: 296, y: 232 },        // ETT exit at lip
+      to:   { x: 282, y: 248 },        // skin contact reference below lip
+      pxPerUnit: PX_PER_MM,
+      unit: "mm",
+      label: "ETT off skin",
+    },
+  ];
+
   return (
     <div className="my-4 rounded-xl border border-border bg-card overflow-hidden">
-      <div className="px-4 py-3 border-b border-border bg-muted/30">
-        <p className="text-sm font-semibold text-foreground">
-          Face protection in prone — horseshoe foam, mirror, free globes
-        </p>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Lateral close-up. Load borne on forehead and malar (zygoma); orbits, nose, lips and ETT hang free in the central cut-out.
-        </p>
+      <div className="px-4 py-3 border-b border-border bg-muted/30 flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="text-sm font-semibold text-foreground">
+            Face protection in prone — horseshoe foam, mirror, free globes
+          </p>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Lateral close-up. Load borne on forehead and malar (zygoma); orbits, nose, lips and ETT hang free in the central cut-out.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setOverlayOn((v) => !v)}
+          aria-pressed={overlayOn}
+          className={cn(
+            "flex-none text-[10px] uppercase tracking-wide font-semibold rounded-md border px-2 py-1 transition-colors",
+            overlayOn
+              ? "bg-[hsl(190_90%_45%)] text-white border-[hsl(190_90%_45%)]"
+              : "bg-background text-muted-foreground border-border hover:text-foreground",
+          )}
+          title="Toggle anatomy validation overlay (landmarks + measurements)"
+        >
+          {overlayOn ? "Anatomy ✓" : "Anatomy overlay"}
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_240px]">
