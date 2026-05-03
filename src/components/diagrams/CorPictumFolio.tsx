@@ -610,31 +610,103 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         </polygon>
                       );
                     })}
-                    {/* Always-on direct labels at polygon centroids */}
-                    {active.labels.map((label, idx) => {
-                      if (!label.polygon || label.polygon.length < 3) return null;
-                      const cx = (label.polygon.reduce((s, p) => s + p[0], 0) / label.polygon.length) * 100;
-                      const cy = (label.polygon.reduce((s, p) => s + p[1], 0) / label.polygon.length) * 100;
-                      const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
-                      return (
-                        <text
-                          key={`lbl-${label.latin}-${idx}`}
-                          x={cx}
-                          y={cy}
-                          textAnchor="middle"
-                          dominantBaseline="central"
-                          fontSize={2.1}
-                          fontWeight={isActive ? 800 : 700}
-                          fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
-                          stroke="hsl(40 50% 96%)"
-                          strokeWidth={0.7}
-                          paintOrder="stroke"
-                          style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
-                        >
-                          {label.english}
-                        </text>
-                      );
-                    })}
+                    {/* Always-on direct labels with overlap-avoidance + leaders */}
+                    {(() => {
+                      type Box = {
+                        idx: number;
+                        text: string;
+                        ax: number; ay: number;
+                        x: number; y: number;
+                        hw: number; hh: number;
+                      };
+                      const FS = 2.1;
+                      const charW = FS * 0.55;
+                      const padX = 0.6;
+                      const padY = 0.5;
+                      const boxes: Box[] = [];
+                      active.labels.forEach((label, idx) => {
+                        if (!label.polygon || label.polygon.length < 3) return;
+                        const cx = (label.polygon.reduce((s, p) => s + p[0], 0) / label.polygon.length) * 100;
+                        const cy = (label.polygon.reduce((s, p) => s + p[1], 0) / label.polygon.length) * 100;
+                        boxes.push({
+                          idx,
+                          text: label.english,
+                          ax: cx, ay: cy, x: cx, y: cy,
+                          hw: (label.english.length * charW) / 2 + padX,
+                          hh: FS / 2 + padY,
+                        });
+                      });
+
+                      // Iterative repulsion to separate overlapping label boxes,
+                      // with a soft pull back toward each anchor (centroid).
+                      const ITERS = 80;
+                      for (let it = 0; it < ITERS; it++) {
+                        let moved = false;
+                        for (let i = 0; i < boxes.length; i++) {
+                          for (let j = i + 1; j < boxes.length; j++) {
+                            const a = boxes[i], b = boxes[j];
+                            const dx = b.x - a.x;
+                            const dy = b.y - a.y;
+                            const ox = a.hw + b.hw - Math.abs(dx);
+                            const oy = a.hh + b.hh - Math.abs(dy);
+                            if (ox > 0 && oy > 0) {
+                              moved = true;
+                              if (oy <= ox * 0.9) {
+                                const push = (oy / 2) + 0.05;
+                                const sgn = dy === 0 ? (i % 2 ? 1 : -1) : Math.sign(dy);
+                                a.y -= sgn * push;
+                                b.y += sgn * push;
+                              } else {
+                                const push = (ox / 2) + 0.05;
+                                const sgn = dx === 0 ? (i % 2 ? 1 : -1) : Math.sign(dx);
+                                a.x -= sgn * push;
+                                b.x += sgn * push;
+                              }
+                            }
+                          }
+                          const a = boxes[i];
+                          a.x += (a.ax - a.x) * 0.04;
+                          a.y += (a.ay - a.y) * 0.04;
+                          a.x = Math.max(a.hw + 0.5, Math.min(100 - a.hw - 0.5, a.x));
+                          a.y = Math.max(a.hh + 0.5, Math.min(100 - a.hh - 0.5, a.y));
+                        }
+                        if (!moved) break;
+                      }
+
+                      return boxes.map((b) => {
+                        const isActive = activeLabelIdx === b.idx || pinnedLabelIdx === b.idx;
+                        const dist = Math.hypot(b.x - b.ax, b.y - b.ay);
+                        const showLeader = dist > b.hh + 0.8;
+                        return (
+                          <g key={`lbl-${b.idx}`}>
+                            {showLeader && (
+                              <line
+                                x1={b.ax} y1={b.ay} x2={b.x} y2={b.y}
+                                stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 30%)"}
+                                strokeWidth={0.18}
+                                strokeOpacity={isActive ? 0.9 : 0.55}
+                                style={{ vectorEffect: "non-scaling-stroke" }}
+                              />
+                            )}
+                            <text
+                              x={b.x}
+                              y={b.y}
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                              fontSize={FS}
+                              fontWeight={isActive ? 800 : 700}
+                              fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
+                              stroke="hsl(40 50% 96%)"
+                              strokeWidth={0.7}
+                              paintOrder="stroke"
+                              style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
+                            >
+                              {b.text}
+                            </text>
+                          </g>
+                        );
+                      });
+                    })()}
                   </svg>
                 ) : null}
 
