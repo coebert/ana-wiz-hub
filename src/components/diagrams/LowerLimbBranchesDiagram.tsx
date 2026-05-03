@@ -23,11 +23,14 @@ type NerveKey =
 
 interface NerveData {
   label: string;
+  short: string;
   roots: string;
   pathAnt: string;
   pathPost: string;
   patchAnt?: string;
   patchPost?: string;
+  labelAnt?: [number, number, "start" | "middle" | "end"];
+  labelPost?: [number, number, "start" | "middle" | "end"];
   motor: string;
   sensory: string;
   injury: string;
