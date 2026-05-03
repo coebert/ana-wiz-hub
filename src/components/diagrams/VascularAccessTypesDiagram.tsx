@@ -110,30 +110,58 @@ const PeripheralCannula: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Forearm cuff fading in */}
-    <path d="M0,200 L0,150 C20,140 35,130 55,125 L55,205 Z"
-          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={0.8} />
+    {/* Forearm — tapering distally with ulnar styloid bulge */}
+    <path d="M0,200 C5,180 8,160 12,148 C20,140 35,134 50,130
+             C58,128 64,128 70,130 L70,205 L0,205 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Wrist crease */}
+    <path d="M50,131 C58,134 64,135 70,134" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.7}/>
+    <path d="M52,138 C60,141 66,142 70,141" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
+    {/* Ulnar styloid prominence */}
+    <ellipse cx={58} cy={132} rx={5} ry={3} fill={SkinShade} opacity={0.5}/>
 
-    {/* Hand silhouette — palmar/dorsal view */}
+    {/* Hand — dorsal view, anatomically tapered */}
     <path d="
-      M55,125
-      C70,118 95,112 120,108
-      L130,55  C131,48 138,45 142,52 L142,100
-      L150,40  C151,33 159,32 162,40 L160,100
-      L170,38  C172,31 180,32 181,40 L173,102
-      L188,48  C190,42 197,43 197,50 L185,108
-      C210,115 230,128 240,150
-      C248,170 245,195 232,210
-      L55,210 Z"
+      M70,130
+      C82,128 96,124 108,120
+      C118,118 126,116 132,114
+      L134,68  C134,60 140,57 144,62 L146,108
+      L152,55  C153,47 161,47 162,55 L160,106
+      L171,53  C172,45 180,46 180,54 L172,108
+      L188,62  C190,55 197,56 196,63 L184,114
+      C200,118 215,124 228,134
+      C244,148 248,170 240,190
+      C234,202 222,210 208,210
+      L70,210 Z"
       fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} strokeLinejoin="round"
     />
-    {/* Knuckle creases */}
-    {[140, 158, 173, 188].map((x, i) => (
-      <ellipse key={i} cx={x} cy={108 + (i === 1 || i === 2 ? -1 : 0)}
-               rx={5} ry={2} fill={SkinShade} opacity={0.6} />
+    {/* Thumb (radial side, abducted) */}
+    <path d="M70,142 C58,144 50,150 46,160 C44,168 48,176 56,178
+             C66,178 74,170 78,158 L72,150 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Thenar eminence */}
+    <ellipse cx={75} cy={165} rx={9} ry={6} fill={SkinShade} opacity={0.35}/>
+    {/* Knuckles (MCP joint creases) */}
+    {[
+      [144, 116], [158, 113], [173, 114], [188, 118]
+    ].map(([x, y], i) => (
+      <ellipse key={i} cx={x} cy={y} rx={4.5} ry={2} fill={SkinShade} opacity={0.55}/>
     ))}
-    {/* Skin shading on dorsum */}
-    <ellipse cx={150} cy={170} rx={70} ry={28} fill={SkinShade} opacity={0.25} />
+    {/* PIP creases on extended fingers */}
+    {[[143, 90],[157, 82],[172, 80],[188, 88]].map(([x,y],i)=>(
+      <ellipse key={`p-${i}`} cx={x} cy={y} rx={3.2} ry={1.2} fill={SkinShade} opacity={0.45}/>
+    ))}
+    {/* Finger nails */}
+    {[[143, 60],[157, 50],[172, 48],[188, 58]].map(([x,y],i)=>(
+      <ellipse key={`n-${i}`} cx={x} cy={y} rx={2.4} ry={2.8} fill="hsl(28 35% 86%)" stroke={SkinEdge} strokeWidth={0.3} opacity={0.85}/>
+    ))}
+    {/* Extensor tendon shading on dorsum */}
+    {[[100,165,140,118],[112,170,156,116],[124,172,170,118],[140,170,186,122]].map(([x1,y1,x2,y2],i)=>(
+      <line key={`et-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke={SkinShade} strokeWidth={1.2} opacity={0.35} strokeLinecap="round"/>
+    ))}
+    {/* Metacarpal shadow */}
+    <ellipse cx={140} cy={170} rx={55} ry={20} fill={SkinShade} opacity={0.18}/>
 
     {/* Dorsal venous network — superficial veins */}
     {/* Cephalic-leading metacarpal */}
@@ -201,14 +229,47 @@ const PICC: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Torso */}
-    <path d="M95,30 L195,30 C200,55 215,70 220,90 L220,240 L80,240 L80,90 C85,70 92,55 95,30 Z"
+    {/* Torso — sloped shoulders, costal margin, waist */}
+    <path d="M105,32
+             C100,46 96,55 90,62
+             C82,68 70,72 62,80
+             C52,92 45,108 42,128
+             L52,235
+             L100,242
+             C108,180 110,140 112,100
+             L112,62
+             C108,52 106,42 105,32 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    <path d="M105,32
+             C110,46 114,55 120,62
+             C150,66 175,70 195,78
+             C210,86 220,100 222,120
+             L222,240
+             L120,240
+             L120,100
+             C115,80 110,55 105,32 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Deltoid contour on right shoulder */}
+    <path d="M62,80 C58,98 55,118 56,138" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    {/* Pectoral fold */}
+    <path d="M118,75 C140,80 165,85 188,92" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
     {/* Neck */}
-    <rect x="125" y="10" width="40" height="25" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} />
-    {/* Right arm (patient's right = viewer's left), abducted */}
-    <path d="M80,90 C55,95 35,115 25,150 C18,180 22,210 30,235 L60,238 C58,210 60,180 65,155 C70,130 75,110 80,100 Z"
+    <path d="M122,10 C124,22 126,28 130,32 L155,32 C159,28 161,22 163,10 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Sternocleidomastoid hint */}
+    <path d="M132,12 C134,22 138,28 142,32" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    {/* Right arm (viewer's left), abducted — shoulder, biceps, antecubital, forearm */}
+    <path d="M62,80
+             C50,90 38,108 30,130
+             C24,160 22,200 28,238
+             L60,240
+             C58,212 60,180 65,155
+             C68,140 72,118 78,102 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Antecubital crease */}
+    <path d="M30,168 C40,170 48,170 56,167" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.6}/>
+    {/* Biceps shading */}
+    <ellipse cx={48} cy={140} rx={10} ry={18} fill={SkinShade} opacity={0.25}/>
 
     {/* Clavicles */}
     <path d="M95,55 C115,52 135,50 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
@@ -294,15 +355,33 @@ const NonTunnelledCVC: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Head + neck + torso */}
-    <ellipse cx="150" cy="35" rx="32" ry="28" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Chin */}
-    <path d="M130,55 C140,68 160,68 170,55" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Neck */}
-    <path d="M125,60 L125,100 L175,100 L175,60 Z" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
-    {/* Torso */}
-    <path d="M85,100 L215,100 L225,140 L225,250 L75,250 L75,140 Z"
+    {/* Head — head-down, turned away (chin up, contralateral rotation as positioned for IJV) */}
+    <path d="M118,40 C112,22 130,8 150,8 C172,8 188,22 184,42
+             C183,52 180,58 175,62
+             L172,68 C170,72 165,74 160,74
+             L140,74 C135,74 130,72 128,68
+             L125,62 C121,58 119,52 118,40 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Mandible/jawline shading */}
+    <path d="M128,60 C140,72 160,72 172,60" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.6}/>
+    {/* Ear (right side, exposed by head turn) */}
+    <path d="M180,38 C186,38 188,46 184,52 L180,52 Z" fill={SkinShade} stroke={SkinEdge} strokeWidth={0.5} opacity={0.85}/>
+    {/* Neck — extended */}
+    <path d="M132,72 C128,84 126,94 128,104 L172,104 C174,94 172,84 168,72 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Suprasternal notch */}
+    <ellipse cx={150} cy={108} rx={5} ry={2.5} fill={SkinShade} opacity={0.55}/>
+    {/* Torso — sloped trapezius into shoulders */}
+    <path d="M128,104
+             C108,108 90,114 78,124
+             C70,132 68,142 70,152
+             L75,250 L225,250 L230,152
+             C232,142 230,132 222,124
+             C210,114 192,108 172,104 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Pectoral fold and shoulder slope */}
+    <path d="M85,128 C90,138 95,148 102,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
+    <path d="M215,128 C210,138 205,148 198,154" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.55}/>
 
     {/* Sternocleidomastoid (right side, viewer's left) */}
     <path d="M138,60 C130,75 122,90 118,100 L130,100 C135,88 142,75 145,62 Z"
@@ -396,9 +475,23 @@ const TunnelledLine: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Torso (chest) */}
-    <path d="M40,40 L260,40 L260,250 L40,250 Z"
+    {/* Anterior chest — neck base, sloped shoulders, deltoids, costal margin */}
+    <path d="M120,30 C122,42 124,50 128,56
+             L172,56 C176,50 178,42 180,30
+             L182,30 L182,40
+             C200,46 218,54 236,68
+             C252,82 260,98 262,118
+             L262,250 L38,250 L38,118
+             C40,98 48,82 64,68
+             C82,54 100,46 118,40 L118,30 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Deltoid contours */}
+    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    {/* Pectoral fold */}
+    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.45}/>
+    {/* Suprasternal notch */}
+    <ellipse cx={150} cy={58} rx={5} ry={2} fill={SkinShade} opacity={0.55}/>
 
     {/* Skin "cut-away" window showing subcutaneous tissue + tunnel */}
     <path d="M70,95 C90,80 200,80 220,95 L220,180 C200,195 90,195 70,180 Z"
@@ -503,9 +596,20 @@ const Portacath: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Chest skin */}
-    <path d="M40,40 L260,40 L260,250 L40,250 Z"
+    {/* Anterior chest — neck base, sloped shoulders, deltoids, costal margin */}
+    <path d="M120,30 C122,42 124,50 128,56
+             L172,56 C176,50 178,42 180,30
+             L182,30 L182,40
+             C200,46 218,54 236,68
+             C252,82 260,98 262,118
+             L262,250 L38,250 L38,118
+             C40,98 48,82 64,68
+             C82,54 100,46 118,40 L118,30 Z"
           fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    <path d="M64,72 C58,90 54,108 56,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M236,72 C242,90 246,108 244,128" stroke={SkinShade} strokeWidth={0.7} fill="none" opacity={0.55}/>
+    <path d="M80,100 C120,108 180,108 220,100" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.45}/>
+    <ellipse cx={150} cy={58} rx={5} ry={2} fill={SkinShade} opacity={0.55}/>
 
     {/* Cut-away showing subcutaneous pocket */}
     <ellipse cx="100" cy="140" rx="55" ry="38" fill="hsl(35 50% 78%)" opacity={0.5}
