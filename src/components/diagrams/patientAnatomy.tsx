@@ -1355,7 +1355,7 @@ export const SittingPatient = ({
   const torsoCy = sy - 30;
   return (
     <>
-      <g transform={`rotate(${-tiltDeg} ${sx} ${sy})`}>
+      <g transform={`rotate(${tiltDeg} ${sx} ${sy})`}>
         <TorsoLateral
           cx={torsoCx} cy={torsoCy}
           length={torsoLength} height={torsoHeight}
