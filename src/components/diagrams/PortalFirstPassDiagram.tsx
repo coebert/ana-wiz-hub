@@ -6,10 +6,20 @@ import { useState, useEffect } from "react";
  * systemic circulation. First-pass extraction visualised in the sinusoid
  * window with hepatocytes, Kupffer cells and bile canaliculi for realism.
  */
+type Layer = "hepatocyte" | "kupffer" | "bile";
+
 const PortalFirstPassDiagram = () => {
   const [er, setEr] = useState(0.7);
   const [playing, setPlaying] = useState(true);
   const [tick, setTick] = useState(0);
+  const [layers, setLayers] = useState<Record<Layer, boolean>>({
+    hepatocyte: false,
+    kupffer: false,
+    bile: false,
+  });
+  const toggleLayer = (k: Layer) =>
+    setLayers((s) => ({ ...s, [k]: !s[k] }));
+  const anyMechanism = layers.hepatocyte || layers.kupffer || layers.bile;
 
   useEffect(() => {
     if (!playing) return;
@@ -76,9 +86,35 @@ const PortalFirstPassDiagram = () => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">
-        Portal Circulation & First-Pass Metabolism
-      </h3>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-lg font-semibold text-foreground">
+          Portal Circulation & First-Pass Metabolism
+        </h3>
+        <div className="flex flex-wrap gap-1.5 text-xs" role="group" aria-label="Mechanism layer toggles">
+          <span className="text-muted-foreground self-center mr-1">
+            {anyMechanism ? "Mechanism layers:" : "Anatomy only — add layers:"}
+          </span>
+          {([
+            { k: "hepatocyte" as Layer, label: "Hepatocyte uptake" },
+            { k: "kupffer" as Layer, label: "Kupffer cells" },
+            { k: "bile" as Layer, label: "Bile canaliculi" },
+          ]).map(({ k, label }) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => toggleLayer(k)}
+              aria-pressed={layers[k]}
+              className={`px-2 py-1 rounded border transition-colors ${
+                layers[k]
+                  ? "border-primary bg-primary/10 text-foreground"
+                  : "border-border text-muted-foreground hover:bg-muted/50"
+              }`}
+            >
+              {label} {layers[k] ? "✓" : "○"}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="bg-card rounded-xl border border-border p-3">
         <svg
@@ -234,33 +270,55 @@ const PortalFirstPassDiagram = () => {
             fill="hsl(45, 100%, 96%)" opacity={0.9}>sinusoidal extraction · CYP450 · UGT</text>
 
           {/* Sinusoid lattice — hepatocyte plates */}
-          <g opacity={0.55}>
-            {Array.from({ length: 6 }).map((_, row) =>
-              Array.from({ length: 12 }).map((_, col) => (
-                <rect key={`${row}-${col}`}
-                  x={365 + col * 19}
-                  y={235 + row * 9}
-                  width={14} height={5} rx={1.5}
-                  fill="hsl(45, 100%, 92%)" opacity={0.18} />
-              ))
-            )}
-            {/* sinusoid channels */}
-            {Array.from({ length: 5 }).map((_, i) => (
-              <line key={i} x1={360} y1={241 + i * 9} x2={595} y2={241 + i * 9}
-                stroke="hsl(265, 50%, 80%)" strokeWidth="0.6" opacity={0.5} />
-            ))}
-            {/* Kupffer cells */}
-            {[
-              [395, 248], [445, 257], [490, 248], [535, 266], [575, 257],
-            ].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r={1.6} fill="hsl(50, 80%, 70%)" opacity={0.85} />
-            ))}
-            {/* bile canaliculi (yellow-green threads counter-flow) */}
-            <line x1={595} y1={285} x2={365} y2={285}
-              stroke="hsl(80, 70%, 55%)" strokeWidth="0.8" strokeDasharray="2 2" opacity={0.7} />
-            <text x={595} y={282} fontSize="7" textAnchor="end"
-              fill="hsl(80, 70%, 55%)" opacity={0.9}>bile canaliculi →</text>
-          </g>
+          {layers.hepatocyte && (
+            <g opacity={0.7}>
+              {Array.from({ length: 6 }).map((_, row) =>
+                Array.from({ length: 12 }).map((_, col) => (
+                  <rect key={`${row}-${col}`}
+                    x={365 + col * 19}
+                    y={235 + row * 9}
+                    width={14} height={5} rx={1.5}
+                    fill="hsl(45, 100%, 92%)" opacity={0.28} />
+                ))
+              )}
+              {Array.from({ length: 5 }).map((_, i) => (
+                <line key={i} x1={360} y1={241 + i * 9} x2={595} y2={241 + i * 9}
+                  stroke="hsl(265, 50%, 80%)" strokeWidth="0.6" opacity={0.6} />
+              ))}
+              <text x={365} y={232} fontSize="7" className="fill-muted-foreground italic">hepatocyte plates · CYP450/UGT uptake</text>
+            </g>
+          )}
+          {layers.kupffer && (
+            <g>
+              {[
+                [395, 248], [445, 257], [490, 248], [535, 266], [575, 257],
+              ].map(([x, y], i) => (
+                <g key={i}>
+                  <circle cx={x} cy={y} r={2.6} fill="hsl(50, 90%, 65%)"
+                    stroke="hsl(40, 80%, 40%)" strokeWidth="0.5" />
+                  <circle cx={x} cy={y} r={5} fill="none"
+                    stroke="hsl(50, 90%, 65%)" strokeWidth="0.5" opacity={0.5}>
+                    <animate attributeName="r" values="3;7;3" dur="2.4s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.6;0;0.6" dur="2.4s" repeatCount="indefinite" />
+                  </circle>
+                </g>
+              ))}
+              <text x={595} y={232} fontSize="7" textAnchor="end"
+                fill="hsl(40, 80%, 45%)" className="italic">Kupffer cells · phagocytosis</text>
+            </g>
+          )}
+          {layers.bile && (
+            <g>
+              <line x1={595} y1={285} x2={365} y2={285}
+                stroke="hsl(80, 70%, 50%)" strokeWidth="1.2" strokeDasharray="3 2" opacity={0.85}>
+                <animate attributeName="stroke-dashoffset" from="0" to="-10" dur="1.2s" repeatCount="indefinite" />
+              </line>
+              <line x1={595} y1={278} x2={365} y2={278}
+                stroke="hsl(80, 70%, 60%)" strokeWidth="0.6" strokeDasharray="2 3" opacity={0.6} />
+              <text x={595} y={275} fontSize="7" textAnchor="end"
+                fill="hsl(80, 60%, 35%)" className="italic">bile canaliculi · counter-flow to portal blood →</text>
+            </g>
+          )}
 
           {/* ===== Hepatic vein → IVC ===== */}
           <path d="M 555 230 Q 540 180 525 145"
