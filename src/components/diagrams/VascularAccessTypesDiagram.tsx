@@ -271,14 +271,13 @@ const PICC: React.FC = () => (
     {/* Biceps shading */}
     <ellipse cx={48} cy={140} rx={10} ry={18} fill={SkinShade} opacity={0.25}/>
 
-    {/* Clavicles */}
-    <path d="M95,55 C115,52 135,50 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
-    <path d="M150,52 C168,50 185,52 200,58" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
-    <line x1="95" y1="55" x2="200" y2="58" stroke={BoneEdge} strokeWidth={0.4} fill="none"/>
-    {/* Sternum */}
+    {/* Clavicles — terminate at AC joint over deltoid (matches CVC/tunnelled/port plates) */}
+    <path d="M85,62 C115,55 138,52 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
+    <path d="M150,52 C162,52 185,55 215,62" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
+    {/* Sternum (manubrium → body) */}
     <rect x="146" y="55" width="8" height="55" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
-    {/* Ribs (faint) */}
-    {[70, 85, 100, 115, 130].map((y, i) => (
+    {/* Ribs — 18 px spacing to match other plates */}
+    {[80, 98, 116, 134].map((y, i) => (
       <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
             stroke={BoneEdge} strokeWidth={0.6} fill="none" opacity={0.4}/>
     ))}
