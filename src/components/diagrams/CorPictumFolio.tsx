@@ -688,7 +688,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               <line
                                 x1={b.ax} y1={b.ay} x2={b.x} y2={b.y}
                                 stroke={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 30%)"}
-                                strokeWidth={0.18}
+                                strokeWidth={0.18 * zoomComp}
                                 strokeOpacity={isActive ? 0.9 : 0.55}
                                 style={{ vectorEffect: "non-scaling-stroke" }}
                               />
@@ -702,7 +702,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                               fontWeight={isActive ? 800 : 700}
                               fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
                               stroke="hsl(40 50% 96%)"
-                              strokeWidth={0.7}
+                              strokeWidth={0.7 * zoomComp}
                               paintOrder="stroke"
                               style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
                             >
