@@ -1114,7 +1114,7 @@ export const MayfieldPinSitingDiagram = () => {
                   Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
                   L ${cx + b + 30},${cy + 70}
                   Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
-              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round"
+              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round" className="anat-sheen"
             />
 
             {/* PINS */}
