@@ -1130,10 +1130,10 @@ export const MayfieldPinSitingDiagram = () => {
                   <line x1={p.x + (i === 0 ? -22 : 22)}
                     y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
                     x2={p.x} y2={p.y}
-                    stroke={STEEL} strokeWidth={2} strokeLinecap="round" />
+                    stroke={STEEL} strokeWidth={2} strokeLinecap="round" className="anat-sheen" />
                   {/* Pin tip + entry circle */}
                   <circle cx={p.x} cy={p.y} r={5} fill={PIN} stroke="white" strokeWidth={1.5} />
-                  <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} />
+                  <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} className="anat-sheen" />
                   {/* Label */}
                   <text x={p.x + (i === 0 ? -32 : 32)}
                     y={p.y + (i === 0 ? -10 : (i === 1 ? -14 : 18))}
