@@ -110,6 +110,13 @@ interface CorPictumFolioProps {
    * for paste-back into `anatomyFolios.ts`.
    */
   enableReviewMode?: boolean;
+  /**
+   * If true, suppress the auto-rendered overlay labels at polygon centroids.
+   * Use for plates whose painted artwork already carries baked-in labels
+   * (e.g. the upper- and lower-limb folios) to avoid double labelling.
+   * Polygons remain interactive (hover/click).
+   */
+  suppressOverlayLabels?: boolean;
 }
 
 const MIN_SCALE = 1;
