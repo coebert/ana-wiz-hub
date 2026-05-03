@@ -1,7 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { render, within } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import CorPictumFolio, { type CorPictumPlate } from "../CorPictumFolio";
 import { upperLimbFolio, lowerLimbFolio } from "../anatomyFolios";
+import { ExamFilterProvider } from "@/contexts/ExamFilterContext";
+
+const renderWithProviders = (ui: React.ReactElement) =>
+  render(<ExamFilterProvider>{ui}</ExamFilterProvider>);
 
 /**
  * Visual-regression guard — ensures the limb anatomy plates do NOT render
