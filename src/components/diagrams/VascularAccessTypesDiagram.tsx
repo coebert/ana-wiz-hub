@@ -417,10 +417,11 @@ const NonTunnelledCVC: React.FC = () => (
     <path d="M85,118 C90,135 100,155 105,175 L75,175 L75,118 Z" fill="hsl(200 30% 80%)" opacity={0.3}/>
     <path d="M215,118 C210,135 200,155 195,175 L225,175 L225,118 Z" fill="hsl(200 30% 80%)" opacity={0.3}/>
 
-    {/* Catheter — skin entry at apex of SCM triangle, threading down IJV→SVC */}
-    <path d="M168,90 L155,100 L154,118 L150,150 L150,200"
+    {/* Catheter — skin entry at apex of SCM triangle, threading IJV (146,100)
+        → SCV junction (152,118) → brachiocephalic/SVC (150,150) → tip (150,200) */}
+    <path d="M168,90 L146,100 L152,118 L150,150 L150,200"
           stroke={Catheter} strokeWidth={2.8} fill="none" strokeLinecap="round"/>
-    <path d="M168,90 L155,100 L154,118 L150,150 L150,200"
+    <path d="M168,90 L146,100 L152,118 L150,150 L150,200"
           stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
     {/* Tip */}
     <circle cx="150" cy="200" r="2.2" fill={FgEdge}/>
