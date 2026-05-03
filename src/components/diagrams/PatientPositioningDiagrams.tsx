@@ -894,7 +894,7 @@ export const ProneFaceProtectionDiagram = () => {
               <path
                 d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
                 fill="none" stroke="hsl(0 0% 92%)" strokeWidth={4.5} strokeLinecap="round"
-                strokeDasharray="5 5" opacity={0.55} />
+                strokeDasharray="5 5" opacity={0.55} className="anat-sheen" />
               <text x={245} y={353} fontSize={10} fontWeight={700}
                 fill="hsl(0 0% 25%)">reinforced ETT</text>
             </g>
