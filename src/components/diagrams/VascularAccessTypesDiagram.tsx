@@ -624,10 +624,10 @@ const Portacath: React.FC = () => (
     <path d="M150,72 C162,72 192,78 222,88" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
     {/* Sternum */}
     <rect x="146" y="74" width="8" height="40" rx="2.5" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
-    {/* Ribs (within thoracic cage) */}
+    {/* Ribs — 18 px intercostal spacing, span 100→200 (shared scale) */}
     {[120, 138, 156, 174].map((y, i) => (
-      <path key={i} d={`M70,${y} Q150,${y + 10} 230,${y - 4}`}
-            stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.3}/>
+      <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
+            stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.35}/>
     ))}
 
     {/* Subclavian + SVC */}
