@@ -582,12 +582,10 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                             "transition-[fill,stroke,stroke-width,opacity] duration-150 cursor-pointer",
                             isActive
                               ? "fill-[hsl(8_70%_50%)]/25 stroke-[hsl(8_55%_38%)]"
-                              : activeLabelIdx === null && pinnedLabelIdx === null
-                                ? "fill-transparent stroke-transparent hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/60"
-                                : "fill-transparent stroke-transparent",
+                              : "fill-transparent stroke-[hsl(8_55%_38%)]/45 hover:fill-[hsl(8_70%_50%)]/12 hover:stroke-[hsl(8_55%_38%)]/80",
                           )}
                           style={{
-                            strokeWidth: isActive ? 0.5 : 0.35,
+                            strokeWidth: isActive ? 0.5 : 0.3,
                             vectorEffect: "non-scaling-stroke",
                             pointerEvents: "auto",
                           }}
@@ -610,6 +608,31 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         >
                           <title>{label.english}</title>
                         </polygon>
+                      );
+                    })}
+                    {/* Always-on direct labels at polygon centroids */}
+                    {active.labels.map((label, idx) => {
+                      if (!label.polygon || label.polygon.length < 3) return null;
+                      const cx = (label.polygon.reduce((s, p) => s + p[0], 0) / label.polygon.length) * 100;
+                      const cy = (label.polygon.reduce((s, p) => s + p[1], 0) / label.polygon.length) * 100;
+                      const isActive = activeLabelIdx === idx || pinnedLabelIdx === idx;
+                      return (
+                        <text
+                          key={`lbl-${label.latin}-${idx}`}
+                          x={cx}
+                          y={cy}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fontSize={2.1}
+                          fontWeight={isActive ? 800 : 700}
+                          fill={isActive ? "hsl(8 60% 32%)" : "hsl(20 25% 18%)"}
+                          stroke="hsl(40 50% 96%)"
+                          strokeWidth={0.7}
+                          paintOrder="stroke"
+                          style={{ pointerEvents: "none", letterSpacing: "0.02em" }}
+                        >
+                          {label.english}
+                        </text>
                       );
                     })}
                   </svg>
