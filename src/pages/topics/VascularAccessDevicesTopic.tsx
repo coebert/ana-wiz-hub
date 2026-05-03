@@ -312,6 +312,174 @@ const VascularAccessDevicesTopic = () => {
             </p>
           </ExamSection>
 
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Long-term (tunnelled & implanted) vascular access devices
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              When central access is needed for months to years (chemotherapy,
+              long-term parenteral nutrition, chronic haemodialysis, cystic
+              fibrosis antibiotics), tunnelled or fully implanted devices
+              dramatically reduce CRBSI rates compared with non-tunnelled CVCs
+              by separating the skin entry site from the venotomy with a
+              subcutaneous tunnel and a Dacron cuff that fibroses to anchor
+              the line and form a mechanical bacterial barrier.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-3">
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Hickman / Broviac line</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Tunnelled cuffed silicone catheter (Broviac = paediatric,
+                  smaller calibre). Open-ended lumen with an external clamp;
+                  requires regular heparinised saline locks and meticulous
+                  dressing care. 1–3 lumens. Used for chemotherapy, long-term
+                  TPN and stem-cell transplantation. Tip at the cavo-atrial
+                  junction, skin exit on the anterior chest wall.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Groshong line</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Tunnelled silicone catheter with a closed, rounded tip and
+                  a three-way slit valve just proximal to it. The valve opens
+                  outwards on infusion, inwards on aspiration, and stays
+                  closed at rest — eliminating the need for heparin locks
+                  and reducing air-embolus and reflux-thrombosis risk. Saline
+                  flush only. Otherwise managed like a Hickman.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Portacath (totally implanted port)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Silicone catheter attached to a titanium / plastic reservoir
+                  with a self-sealing silicone septum, implanted in a
+                  subcutaneous infraclavicular pocket. Accessed transcutaneously
+                  with a non-coring (Huber) needle. Lowest CRBSI of any CVAD
+                  (≈ 0.1 per 1000 catheter-days), best cosmesis, no external
+                  components, can be left in situ for years and flushed only
+                  4–6 weekly when not in use. Best choice for intermittent
+                  long-term chemotherapy.
+                </p>
+              </div>
+              <div className="p-4 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm">Tunnelled haemodialysis catheter (Permcath)</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Cuffed twin-lumen 13–14.5 Fr silicone catheter (e.g.
+                  Permcath, Tesio) tunnelled to the anterior chest wall with
+                  the tip in the right atrium. Bridge to AV-fistula maturation
+                  or definitive access where a fistula is impossible. Lower
+                  infection and dysfunction rates than non-tunnelled
+                  vascaths beyond ~1–3 weeks of use.
+                </p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              <strong className="text-foreground">Anaesthetic relevance:</strong>{" "}
+              ports and tunnelled lines may be accessed intra-operatively if
+              strict aseptic technique (Huber needle, chlorhexidine, sterile
+              field) is observed and the device has been flushed and
+              aspirates blood freely; document use in the notes so the
+              oncology / nutrition team can re-lock it post-op.
+            </p>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
+              Evidence on safe dwell times by device & site
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Historical practice was to resite peripheral cannulae every
+              72–96 h. The landmark Rickard <em>et al.</em> (Lancet 2012,
+              n = 3283) RCT and the subsequent Cochrane review (Webster 2019)
+              showed no difference in phlebitis or CRBSI between routine
+              replacement and clinically-indicated removal — current{" "}
+              <strong className="text-foreground">epic3 / RCN / INS guidance</strong>{" "}
+              is therefore to leave peripheral cannulae <em>in situ</em> until
+              clinically indicated, inspecting at least every shift (VIP score).
+              For all central devices the evidence supports removing the line
+              <em> only </em> when no longer needed; routine elective change
+              does not reduce CRBSI and exposes the patient to mechanical
+              complications.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Device</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Typical site</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Recommended dwell</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Evidence base</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Peripheral cannula</td>
+                    <td>Forearm / hand</td>
+                    <td>Clinically indicated (no fixed maximum)</td>
+                    <td>Rickard 2012 (Lancet); Cochrane 2019; epic3 2014; RCN 2016</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Arterial line</td>
+                    <td>Radial &gt; femoral &gt; brachial</td>
+                    <td>~7 days; remove when not needed (no scheduled change)</td>
+                    <td>CDC 2011; O'Horo 2014 meta-analysis (CRBSI ≈ 1.7/1000 d)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Midline</td>
+                    <td>Basilic / brachial → axillary v.</td>
+                    <td>1–4 weeks (manufacturer ≤ 29 days)</td>
+                    <td>INS 2021; Adams 2016 (low CRBSI ≈ 0.2/1000 d)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Non-tunnelled CVC</td>
+                    <td>RIJ &gt; subclavian &gt; femoral</td>
+                    <td>Clinically indicated; ideally ≤ 7–14 days</td>
+                    <td>3SITES (Parienti NEJM 2015): subclavian lowest CRBSI &amp; thrombosis, highest pneumothorax; femoral highest infection</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">PICC</td>
+                    <td>Basilic / brachial → SVC</td>
+                    <td>Weeks–months; clinically indicated</td>
+                    <td>MAGIC criteria 2015; Chopra 2013 (PICC DVT &gt; CVC)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Non-tunnelled vascath</td>
+                    <td>RIJ &gt; femoral &gt; LIJ &gt; subclavian</td>
+                    <td>Days–weeks; tunnel if &gt; 1–3 weeks</td>
+                    <td>KDIGO 2012; Parienti Cathedia 2008 (femoral non-inferior in BMI &lt; 28)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Tunnelled CVC (Hickman / Broviac / Groshong)</td>
+                    <td>RIJ → tunnel to chest wall</td>
+                    <td>Months–years; remove for infection / dysfunction</td>
+                    <td>IDSA 2009; epic3 2014; CDC 2011</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Implanted port (Portacath)</td>
+                    <td>Subclavian → infraclavicular pocket</td>
+                    <td>Years; lowest CRBSI of any CVAD</td>
+                    <td>Maki 2006 meta-analysis (≈ 0.1/1000 d vs 2.7 for non-tunnelled CVC)</td>
+                  </tr>
+                  <tr className="border-b border-border">
+                    <td className="py-2 font-medium text-foreground">Tunnelled vascath (Permcath / Tesio)</td>
+                    <td>RIJ → chest wall, tip in RA</td>
+                    <td>Months; bridge or definitive HD access</td>
+                    <td>KDOQI 2019; KDIGO 2012</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+              Site effects: femoral CVCs carry the highest CRBSI and DVT
+              risk and should be avoided where possible (3SITES); subclavian
+              has the lowest infection and thrombosis but the highest
+              mechanical (pneumothorax) risk; the right internal jugular
+              remains the default compromise. For arterial lines the femoral
+              site has comparable CRBSI to radial in modern data but higher
+              local-haematoma risk.
+            </p>
+          </ExamSection>
+
           <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">
               Choosing a device — clinical scenarios
