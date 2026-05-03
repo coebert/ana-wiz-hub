@@ -292,10 +292,10 @@ const PICC: React.FC = () => (
           stroke="url(#veinGrad)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.55}/>
     {/* Axillary vein */}
     <path d="M105,85 C115,82 125,80 135,78" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
-    {/* Subclavian */}
+    {/* Subclavian — joins at (158,68) */}
     <path d="M135,78 C145,75 152,72 158,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
-    {/* Brachiocephalic + SVC */}
-    <path d="M158,68 C160,90 158,110 156,130" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none" opacity={0.55}/>
+    {/* Brachiocephalic + SVC — runs from (158,68) to cavoatrial junction (156,142) */}
+    <path d="M158,68 C160,90 158,115 156,142" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none" opacity={0.55}/>
 
     {/* Cephalic vein (lateral, alternative) */}
     <path d="M30,180 C35,150 50,120 70,100" stroke={VeinLight} strokeWidth={2.2} fill="none" opacity={0.5}/>
@@ -303,11 +303,11 @@ const PICC: React.FC = () => (
     {/* Brachial artery (deep) */}
     <path d="M58,235 C62,200 70,170 80,140 C88,115 95,98 108,85" stroke={ArteryLight} strokeWidth={1.8} fill="none" opacity={0.6} strokeDasharray="3 2"/>
 
-    {/* PICC catheter (purple) — entering basilic, tip at cavoatrial */}
-    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,80 156,90 L156,142"
+    {/* PICC catheter (purple) — basilic → axillary → SCV junction (158,68) → SVC tip (156,142) */}
+    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,72 158,68 C160,90 158,115 156,142"
           stroke="hsl(280 50% 45%)" strokeWidth={2.5} fill="none" strokeLinecap="round"/>
     {/* Catheter highlight */}
-    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,80 156,90 L156,142"
+    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,72 158,68 C160,90 158,115 156,142"
           stroke="hsl(280 60% 70%)" strokeWidth={0.8} fill="none" strokeLinecap="round" opacity={0.7}/>
     {/* External hub bifurcation */}
     <rect x="32" y="228" width="14" height="5" rx="1.2" fill="hsl(280 50% 45%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
