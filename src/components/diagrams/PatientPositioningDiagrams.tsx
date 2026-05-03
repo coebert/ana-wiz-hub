@@ -1067,9 +1067,9 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Sutures (decorative — coronal + sagittal hint) */}
             <path d={`M ${cx - 30},${cy - b + 6} Q ${cx - 30},${cy} ${cx - 30},${cy + b - 6}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
             <path d={`M ${cx - 30},${cy} L ${cx + a - 10},${cy}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
 
             {/* SAFE BELT — translucent green ring around the equator */}
             <ellipse cx={cx} cy={cy} rx={a - 6} ry={b - 4}
