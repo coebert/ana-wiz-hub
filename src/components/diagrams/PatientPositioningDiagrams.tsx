@@ -867,13 +867,14 @@ export const ProneFaceProtectionDiagram = () => {
             <path
               d={`M 138,235 Q 145,205 195,195 L 365,195 Q 415,205 422,235`}
               fill="none" stroke="hsl(280 80% 80%)" strokeWidth={1.2} opacity={0.6}
+              className="anat-sheen"
             />
             {/* Mirror inside the housing — angled glass face */}
             <g>
               <polygon points="220,300 360,300 348,270 232,270"
                 fill="hsl(190 60% 25%)" stroke="hsl(190 50% 12%)" strokeWidth={0.8} />
               <polygon points="232,270 348,270 344,265 236,265"
-                fill={CYAN} opacity={0.55} />
+                fill={CYAN} opacity={0.55} className="anat-sheen" />
               <text x={290} y={291} textAnchor="middle" fontSize={9}
                 fill="hsl(190 90% 92%)" fontWeight={700} letterSpacing="0.05em">MIRROR</text>
             </g>
@@ -893,7 +894,7 @@ export const ProneFaceProtectionDiagram = () => {
               <path
                 d="M 295,232 C 300,260 310,275 305,305 C 300,325 280,335 250,338"
                 fill="none" stroke="hsl(0 0% 92%)" strokeWidth={4.5} strokeLinecap="round"
-                strokeDasharray="5 5" opacity={0.55} />
+                strokeDasharray="5 5" opacity={0.55} className="anat-sheen" />
               <text x={245} y={353} fontSize={10} fontWeight={700}
                 fill="hsl(0 0% 25%)">reinforced ETT</text>
             </g>
@@ -1044,7 +1045,7 @@ export const MayfieldPinSitingDiagram = () => {
             <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin)`}
               stroke="hsl(28 50% 35%)" strokeWidth={1.2} />
             {/* Subtle sheen */}
-            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" />
+            <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" className="anat-sheen" />
 
             {/* Nose marker (anterior) */}
             <path d={`M ${cx - a - 2},${cy - 6} L ${cx - a - 14},${cy} L ${cx - a - 2},${cy + 6} Z`}
@@ -1066,9 +1067,9 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Sutures (decorative — coronal + sagittal hint) */}
             <path d={`M ${cx - 30},${cy - b + 6} Q ${cx - 30},${cy} ${cx - 30},${cy + b - 6}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
             <path d={`M ${cx - 30},${cy} L ${cx + a - 10},${cy}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
 
             {/* SAFE BELT — translucent green ring around the equator */}
             <ellipse cx={cx} cy={cy} rx={a - 6} ry={b - 4}
@@ -1113,7 +1114,7 @@ export const MayfieldPinSitingDiagram = () => {
                   Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
                   L ${cx + b + 30},${cy + 70}
                   Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
-              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round"
+              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round" className="anat-sheen"
             />
 
             {/* PINS */}
@@ -1129,10 +1130,10 @@ export const MayfieldPinSitingDiagram = () => {
                   <line x1={p.x + (i === 0 ? -22 : 22)}
                     y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
                     x2={p.x} y2={p.y}
-                    stroke={STEEL} strokeWidth={2} strokeLinecap="round" />
+                    stroke={STEEL} strokeWidth={2} strokeLinecap="round" className="anat-sheen" />
                   {/* Pin tip + entry circle */}
                   <circle cx={p.x} cy={p.y} r={5} fill={PIN} stroke="white" strokeWidth={1.5} />
-                  <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} />
+                  <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} className="anat-sheen" />
                   {/* Label */}
                   <text x={p.x + (i === 0 ? -32 : 32)}
                     y={p.y + (i === 0 ? -10 : (i === 1 ? -14 : 18))}
