@@ -204,6 +204,7 @@ export const perioperativeTopics: Topic[] = [
   { id: "preoperative-assessment", title: "Preoperative Assessment", description: "Risk stratification, CPET, cardiac risk indices, optimisation", section: "perioperative", examTags: ["final"], available: true },
   { id: "enhanced-recovery", title: "Enhanced Recovery (ERAS)", description: "Perioperative care pathways, prehabilitation, goal-directed therapy", section: "perioperative", examTags: ["final"], available: true },
   { id: "perioperative-fluids", title: "Perioperative Fluid Therapy", description: "Crystalloids vs colloids, goal-directed, fluid responsiveness", section: "perioperative", examTags: ["final", "fficm"], available: true },
+  { id: "vascular-access-devices", title: "Vascular Access Devices", description: "Cannulae, midlines, PICCs, CVCs, vascaths, trauma lines (RIC/MAC) and Swan-Ganz introducer sheaths", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
   // Co-existing disease
   { id: "cardiovascular-disease", title: "Cardiovascular Co-Existing Disease", description: "IHD, valvular disease, heart failure, arrhythmias, pacemakers/ICDs, pulmonary hypertension, ACHD", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },
   { id: "respiratory-disease", title: "Respiratory Co-Existing Disease", description: "Asthma, COPD, OSA, restrictive lung disease, pulmonary fibrosis, respiratory infections", section: "perioperative", examTags: ["primary", "final", "fficm"], available: true },

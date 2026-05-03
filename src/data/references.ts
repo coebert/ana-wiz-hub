@@ -432,7 +432,12 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "Cross & Plunkett Ch.15-16", citation: "Cross ME, Plunkett EVE. Physics, Pharmacology and Physiology for Anaesthetists. 2nd ed. Chapters 15-16: Electrode Systems and Gas Analysis." },
     { label: "Middleton Ch.18", citation: "Middleton B, Phillips J, Thomas R. Physics in Anaesthesia. 2nd ed. Chapter 18: Electrodes and Gas Measurement." },
   ],
-
+  "vascular-access-devices": [
+    { label: "NICE TA49", citation: "NICE. Guidance on the use of ultrasound locating devices for placing central venous catheters (TA49). 2002.", url: "https://www.nice.org.uk/guidance/ta49" },
+    { label: "BJA Educ 2016", citation: "Bodenham A, Babu S, Bennett J et al. AAGBI Safe vascular access 2016. Anaesthesia. 2016;71(5):573-585.", url: "https://doi.org/10.1111/anae.13360" },
+    { label: "KDIGO 2012", citation: "Kidney Disease: Improving Global Outcomes (KDIGO) Acute Kidney Injury Work Group. KDIGO clinical practice guideline for acute kidney injury. Kidney Int Suppl. 2012;2(1):1-138." },
+    { label: "epic3 2014", citation: "Loveday HP et al. epic3: National evidence-based guidelines for preventing healthcare-associated infections in NHS hospitals in England. J Hosp Infect. 2014;86(Suppl 1):S1-70.", url: "https://doi.org/10.1016/S0195-6701(13)60012-2" },
+  ],
   // ──────── INTENSIVE CARE ────────
   "ards": [
     { label: "ARDS Definition 2012", citation: "ARDS Definition Task Force. Acute respiratory distress syndrome: the Berlin definition. JAMA. 2012;307(23):2526-2533.", url: "https://doi.org/10.1001/jama.2012.5669" },
