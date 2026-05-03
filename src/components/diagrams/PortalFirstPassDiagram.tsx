@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 
 /**
- * Animated diagram: gut → hepatic portal vein → liver → systemic circulation.
- * Visualises first-pass metabolism by showing drug particles being extracted
- * as they traverse hepatic sinusoids. Extraction ratio (ER) is user-adjustable.
+ * Animated diagram: gut (stomach, small bowel, colon, spleen) → SMV/splenic
+ * vein → hepatic portal vein → liver sinusoids → hepatic vein → IVC → heart →
+ * systemic circulation. First-pass extraction visualised in the sinusoid
+ * window with hepatocytes, Kupffer cells and bile canaliculi for realism.
  */
 const PortalFirstPassDiagram = () => {
-  const [er, setEr] = useState(0.7); // extraction ratio 0–1
+  const [er, setEr] = useState(0.7);
   const [playing, setPlaying] = useState(true);
   const [tick, setTick] = useState(0);
 
@@ -16,56 +17,58 @@ const PortalFirstPassDiagram = () => {
     return () => clearInterval(id);
   }, [playing]);
 
-  const W = 560;
-  const H = 360;
+  const W = 720;
+  const H = 480;
 
-  // Particle pool: each has an offset along the journey (0..1)
-  const N_PARTICLES = 18;
+  const N_PARTICLES = 22;
   const particles = Array.from({ length: N_PARTICLES }, (_, i) => {
-    const phase = (tick * 0.012 + i / N_PARTICLES) % 1;
+    const phase = (tick * 0.010 + i / N_PARTICLES) % 1;
     return { id: i, p: phase };
   });
 
-  // Path waypoints along the journey:
-  //   0.00 → 0.20  gut capillary bed (oral drug enters)
-  //   0.20 → 0.40  portal vein
-  //   0.40 → 0.70  hepatic sinusoids (extraction window)
-  //   0.70 → 0.85  hepatic vein → IVC
-  //   0.85 → 1.00  systemic arterial circulation
+  // Journey waypoints (matched to redrawn anatomy):
+  //   0.00–0.18  gut capillary bed → mesenteric tributaries
+  //   0.18–0.38  SMV/splenic confluence → hepatic portal vein
+  //   0.38–0.68  hepatic sinusoids (extraction window, L→R sweep)
+  //   0.68–0.82  hepatic vein → IVC ascending
+  //   0.82–0.92  right heart → pulmonary loop → left heart
+  //   0.92–1.00  systemic arterial arc returning to gut
   const positionAt = (p: number): { x: number; y: number } => {
-    if (p < 0.2) {
-      // through gut wall
-      const t = p / 0.2;
-      return { x: 80 + t * 80, y: 280 };
+    if (p < 0.18) {
+      const t = p / 0.18;
+      // travels through small-bowel coils up toward SMV
+      return { x: 130 + t * 90, y: 380 - Math.sin(t * Math.PI * 2) * 8 };
     }
-    if (p < 0.4) {
-      // portal vein: rises diagonally up to liver inferior border
-      const t = (p - 0.2) / 0.2;
-      return { x: 160 + t * 120, y: 280 - t * 100 };
+    if (p < 0.38) {
+      const t = (p - 0.18) / 0.20;
+      // SMV confluence, then up the portal vein toward porta hepatis
+      return { x: 220 + t * 130, y: 380 - t * 150 };
     }
-    if (p < 0.7) {
-      // through liver sinusoids (horizontal sweep)
-      const t = (p - 0.4) / 0.3;
-      return { x: 280 + t * 140, y: 180 - Math.sin(t * Math.PI) * 8 };
+    if (p < 0.68) {
+      const t = (p - 0.38) / 0.30;
+      // sinusoid sweep across the right lobe with gentle wave
+      return { x: 350 + t * 200, y: 230 + Math.sin(t * Math.PI * 3) * 6 };
     }
-    if (p < 0.85) {
-      // hepatic vein → IVC ascending
-      const t = (p - 0.7) / 0.15;
-      return { x: 420 + t * 30, y: 180 - t * 60 };
+    if (p < 0.82) {
+      const t = (p - 0.68) / 0.14;
+      // hepatic vein joining IVC, ascending to right atrium
+      return { x: 550 - t * 30, y: 230 - t * 90 };
     }
-    // systemic circulation (top loop)
-    const t = (p - 0.85) / 0.15;
-    return { x: 450 - t * 380, y: 120 + Math.sin(t * Math.PI) * -10 };
+    if (p < 0.92) {
+      const t = (p - 0.82) / 0.10;
+      // through heart and aortic arch
+      return { x: 520 - t * 90, y: 140 - Math.sin(t * Math.PI) * 25 };
+    }
+    const t = (p - 0.92) / 0.08;
+    // systemic arc returning down to gut on the left
+    return { x: 430 - t * 300, y: 115 + t * 240 };
   };
 
-  // Whether a particle has been extracted by the liver
   const isExtracted = (i: number, p: number) => {
-    if (p < 0.4) return false;
-    // Deterministic pseudo-random per particle id
+    if (p < 0.38) return false;
     const r = ((i * 9301 + 49297) % 233280) / 233280;
-    // Extraction occurs progressively across the sinusoid window
-    if (p < 0.7) {
-      const through = (p - 0.4) / 0.3;
+    if (p < 0.68) {
+      const through = (p - 0.38) / 0.30;
       return r < er * through;
     }
     return r < er;
@@ -78,112 +81,245 @@ const PortalFirstPassDiagram = () => {
       </h3>
 
       <div className="bg-card rounded-xl border border-border p-3">
-        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img"
-          aria-label="Animated diagram of oral drug travelling through gut, portal vein, liver sinusoids and into systemic circulation, showing first-pass extraction.">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          className="w-full h-auto"
+          role="img"
+          aria-label="Anatomical animated diagram of oral drug absorption from gut, transit through superior mesenteric and portal veins, hepatic sinusoid extraction, hepatic vein to IVC, right and left heart, then systemic arterial return."
+        >
           <defs>
             <marker id="pf-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
               <path d="M0,0 L6,3 L0,6 Z" fill="hsl(var(--muted-foreground))" />
             </marker>
-            <radialGradient id="pf-liver" cx="50%" cy="40%" r="60%">
-              <stop offset="0%" stopColor="hsl(15, 55%, 55%)" />
-              <stop offset="100%" stopColor="hsl(10, 60%, 35%)" />
+            <radialGradient id="pf-liver" cx="45%" cy="35%" r="75%">
+              <stop offset="0%" stopColor="hsl(15, 60%, 58%)" />
+              <stop offset="60%" stopColor="hsl(12, 58%, 45%)" />
+              <stop offset="100%" stopColor="hsl(8, 55%, 30%)" />
+            </radialGradient>
+            <radialGradient id="pf-liver-sheen" cx="35%" cy="25%" r="40%">
+              <stop offset="0%" stopColor="hsl(25, 80%, 75%)" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="hsl(25, 80%, 75%)" stopOpacity="0" />
             </radialGradient>
             <linearGradient id="pf-portal" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="hsl(260, 50%, 55%)" />
-              <stop offset="100%" stopColor="hsl(260, 50%, 40%)" />
+              <stop offset="0%" stopColor="hsl(265, 55%, 58%)" />
+              <stop offset="100%" stopColor="hsl(255, 55%, 38%)" />
             </linearGradient>
-            <linearGradient id="pf-hepvein" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="hsl(210, 65%, 50%)" />
-              <stop offset="100%" stopColor="hsl(210, 65%, 35%)" />
+            <linearGradient id="pf-vein" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stopColor="hsl(215, 65%, 50%)" />
+              <stop offset="100%" stopColor="hsl(215, 65%, 32%)" />
             </linearGradient>
+            <linearGradient id="pf-artery" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(0, 75%, 58%)" />
+              <stop offset="100%" stopColor="hsl(8, 75%, 48%)" />
+            </linearGradient>
+            <radialGradient id="pf-stomach" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="hsl(30, 55%, 78%)" />
+              <stop offset="100%" stopColor="hsl(25, 50%, 55%)" />
+            </radialGradient>
+            <radialGradient id="pf-spleen" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="hsl(340, 45%, 50%)" />
+              <stop offset="100%" stopColor="hsl(340, 50%, 30%)" />
+            </radialGradient>
+            <radialGradient id="pf-heart" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="hsl(355, 70%, 58%)" />
+              <stop offset="100%" stopColor="hsl(350, 70%, 35%)" />
+            </radialGradient>
+            <pattern id="pf-mucosa" width="6" height="6" patternUnits="userSpaceOnUse">
+              <path d="M0 6 Q1.5 0 3 6 T6 6" stroke="hsl(20, 50%, 35%)" strokeWidth="0.4" fill="none" opacity="0.5" />
+            </pattern>
           </defs>
 
-          {/* Systemic arterial circulation arc (top) */}
-          <path d="M 70 120 Q 260 60 450 120" fill="none"
-            stroke="hsl(0, 70%, 55%)" strokeWidth="14" strokeLinecap="round" opacity={0.18} />
-          <path d="M 70 120 Q 260 60 450 120" fill="none"
-            stroke="hsl(0, 70%, 55%)" strokeWidth="3" strokeLinecap="round" />
-          <text x={260} y={70} textAnchor="middle" fontSize="11"
-            className="fill-foreground font-semibold">Systemic circulation</text>
+          {/* ===== Background body silhouette hint ===== */}
+          <rect x={20} y={20} width={W - 40} height={H - 40} rx={20}
+            fill="hsl(var(--muted))" opacity={0.08} />
 
-          {/* Gut */}
-          <rect x={40} y={250} width={130} height={70} rx={14}
-            fill="hsl(35, 55%, 70%)" stroke="hsl(30, 50%, 40%)" strokeWidth="1.5" opacity={0.85} />
-          <text x={105} y={295} textAnchor="middle" fontSize="11"
-            className="fill-foreground font-semibold">Gut</text>
-          <text x={105} y={310} textAnchor="middle" fontSize="9"
-            className="fill-muted-foreground">(oral drug absorbed)</text>
+          {/* ===== Systemic arterial arc (top) ===== */}
+          <path d="M 110 130 Q 290 50 520 140" fill="none"
+            stroke="url(#pf-artery)" strokeWidth="16" strokeLinecap="round" opacity={0.18} />
+          <path d="M 110 130 Q 290 50 520 140" fill="none"
+            stroke="url(#pf-artery)" strokeWidth="3.5" strokeLinecap="round" />
+          <text x={310} y={70} textAnchor="middle" fontSize="11"
+            className="fill-foreground font-semibold tracking-wide">SYSTEMIC ARTERIAL CIRCULATION</text>
 
-          {/* Portal vein */}
-          <path d="M 160 280 Q 220 260 280 180" stroke="url(#pf-portal)"
-            strokeWidth="14" fill="none" strokeLinecap="round" />
-          <text x={195} y={245} fontSize="10" className="fill-foreground font-semibold"
-            transform="rotate(-35, 195, 245)">Hepatic portal vein</text>
-
-          {/* Liver */}
-          <path d="M 280 130 Q 340 110 430 125 Q 470 145 460 200 Q 420 235 340 230 Q 285 220 270 180 Z"
-            fill="url(#pf-liver)" stroke="hsl(10, 60%, 25%)" strokeWidth="1.5" />
-          <text x={365} y={155} textAnchor="middle" fontSize="12"
-            className="font-semibold" fill="hsl(45, 100%, 95%)">Liver</text>
-          <text x={365} y={170} textAnchor="middle" fontSize="9"
-            fill="hsl(45, 100%, 95%)" opacity={0.9}>sinusoids · CYP450</text>
-
-          {/* Sinusoid cross-hatch hint */}
-          {[0, 1, 2, 3].map((i) => (
-            <line key={i} x1={295 + i * 35} y1={195} x2={295 + i * 35} y2={215}
-              stroke="hsl(45, 100%, 95%)" strokeWidth="0.8" opacity={0.4} />
+          {/* aortic branches feathering down to gut */}
+          {[140, 200, 260].map((x, i) => (
+            <path key={i} d={`M ${x} 100 Q ${x - 5} 200 ${130 + i * 30} 360`}
+              stroke="hsl(0, 70%, 55%)" strokeWidth="1" fill="none" opacity={0.35} strokeDasharray="2 3" />
           ))}
 
-          {/* Hepatic vein → IVC */}
-          <path d="M 430 180 Q 450 150 450 120" stroke="url(#pf-hepvein)"
-            strokeWidth="10" fill="none" strokeLinecap="round" />
-          <text x={465} y={155} fontSize="9" className="fill-muted-foreground">Hepatic v.</text>
+          {/* ===== Heart ===== */}
+          <g transform="translate(485,110)">
+            <path d="M 0 12 C -14 -8 14 -22 22 -4 C 30 -22 58 -8 44 12 C 36 28 22 38 22 38 C 22 38 8 28 0 12 Z"
+              fill="url(#pf-heart)" stroke="hsl(350, 70%, 25%)" strokeWidth="1" />
+            <text x={22} y={20} textAnchor="middle" fontSize="9"
+              fill="hsl(45, 100%, 96%)" className="font-semibold">Heart</text>
+          </g>
 
-          {/* Direction arrows on vessels */}
-          <line x1={210} y1={262} x2={235} y2={235} stroke="hsl(var(--foreground))"
-            strokeWidth="1" markerEnd="url(#pf-arrow)" opacity={0.6} />
-          <line x1={440} y1={155} x2={448} y2={135} stroke="hsl(var(--foreground))"
-            strokeWidth="1" markerEnd="url(#pf-arrow)" opacity={0.6} />
+          {/* ===== Stomach ===== */}
+          <path d="M 70 250 Q 60 230 85 220 Q 130 210 160 230 Q 175 245 168 270 Q 150 295 110 290 Q 80 285 70 270 Z"
+            fill="url(#pf-stomach)" stroke="hsl(20, 50%, 35%)" strokeWidth="1.2" />
+          <text x={120} y={258} textAnchor="middle" fontSize="9"
+            className="fill-foreground font-medium">Stomach</text>
+
+          {/* ===== Spleen ===== */}
+          <path d="M 60 320 Q 45 330 50 360 Q 60 385 85 380 Q 95 365 92 340 Q 85 322 60 320 Z"
+            fill="url(#pf-spleen)" stroke="hsl(340, 50%, 22%)" strokeWidth="1" />
+          <text x={70} y={355} textAnchor="middle" fontSize="8"
+            fill="hsl(45, 100%, 95%)" className="font-medium">Spleen</text>
+
+          {/* ===== Small bowel coils ===== */}
+          <g>
+            <path d="M 110 360 Q 140 340 170 360 T 230 360 T 290 360"
+              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="14" strokeLinecap="round" />
+            <path d="M 110 360 Q 140 340 170 360 T 230 360 T 290 360"
+              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.6" opacity={0.6} />
+            <path d="M 120 395 Q 155 380 195 395 T 270 395"
+              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="14" strokeLinecap="round" />
+            <path d="M 120 395 Q 155 380 195 395 T 270 395"
+              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.6" opacity={0.6} />
+            <text x={195} y={425} textAnchor="middle" fontSize="9"
+              className="fill-foreground font-medium">Small bowel · enterocyte CYP3A4</text>
+          </g>
+
+          {/* ===== Mesenteric tributaries → SMV ===== */}
+          {[150, 200, 250].map((x, i) => (
+            <path key={i} d={`M ${x} 370 Q ${x + 10} 340 ${230 + i * 5} 320`}
+              stroke="url(#pf-portal)" strokeWidth="2.4" fill="none" opacity={0.85} strokeLinecap="round" />
+          ))}
+          <text x={170} y={335} fontSize="8" className="fill-muted-foreground italic">SMV tributaries</text>
+
+          {/* Splenic vein joining */}
+          <path d="M 90 350 Q 150 330 230 320"
+            stroke="url(#pf-portal)" strokeWidth="3" fill="none" strokeLinecap="round" opacity={0.9} />
+          <text x={130} y={318} fontSize="8" className="fill-muted-foreground italic">Splenic v.</text>
+
+          {/* ===== Hepatic portal vein ===== */}
+          <path d="M 230 320 Q 280 290 350 230"
+            stroke="url(#pf-portal)" strokeWidth="16" fill="none" strokeLinecap="round" />
+          <path d="M 230 320 Q 280 290 350 230"
+            stroke="hsl(265, 60%, 70%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity={0.4} />
+          <text x={270} y={295} fontSize="11"
+            transform="rotate(-38, 270, 295)"
+            className="fill-foreground font-semibold">Hepatic portal v.</text>
+          <text x={295} y={310} fontSize="8"
+            transform="rotate(-38, 295, 310)"
+            className="fill-muted-foreground italic">~75% liver inflow · deoxygenated, nutrient-rich</text>
+
+          {/* ===== Hepatic artery (proper) — companion to portal triad ===== */}
+          <path d="M 470 130 Q 430 170 360 220"
+            stroke="url(#pf-artery)" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity={0.85} />
+          <text x={420} y={188} fontSize="8" className="fill-muted-foreground italic"
+            transform="rotate(-30, 420, 188)">Hepatic a. (~25%, oxygen)</text>
+
+          {/* ===== Liver lobes ===== */}
+          {/* Right lobe */}
+          <path d="M 350 175 Q 430 150 580 170 Q 630 200 615 270 Q 555 305 460 300 Q 380 285 350 240 Z"
+            fill="url(#pf-liver)" stroke="hsl(8, 55%, 22%)" strokeWidth="1.4" />
+          {/* Falciform ligament */}
+          <path d="M 470 165 L 470 295" stroke="hsl(8, 55%, 22%)" strokeWidth="1" opacity={0.55} />
+          {/* Left lobe (smaller, to the left of falciform) */}
+          <path d="M 355 200 Q 410 175 470 175 L 470 280 Q 410 290 360 270 Q 340 240 355 200 Z"
+            fill="url(#pf-liver)" stroke="hsl(8, 55%, 22%)" strokeWidth="1" opacity={0.92} />
+          {/* Sheen */}
+          <path d="M 360 180 Q 460 160 580 180 Q 600 220 560 250 Q 470 240 380 230 Z"
+            fill="url(#pf-liver-sheen)" />
+          {/* Gallbladder */}
+          <path d="M 455 295 Q 450 320 460 332 Q 472 332 478 318 Q 478 300 470 293 Z"
+            fill="hsl(80, 55%, 45%)" stroke="hsl(80, 55%, 25%)" strokeWidth="0.8" />
+          <text x={490} y={328} fontSize="8" className="fill-muted-foreground">GB</text>
+
+          <text x={500} y={205} textAnchor="middle" fontSize="14"
+            fill="hsl(45, 100%, 96%)" className="font-bold tracking-wide">LIVER</text>
+          <text x={500} y={220} textAnchor="middle" fontSize="9"
+            fill="hsl(45, 100%, 96%)" opacity={0.9}>sinusoidal extraction · CYP450 · UGT</text>
+
+          {/* Sinusoid lattice — hepatocyte plates */}
+          <g opacity={0.55}>
+            {Array.from({ length: 6 }).map((_, row) =>
+              Array.from({ length: 12 }).map((_, col) => (
+                <rect key={`${row}-${col}`}
+                  x={365 + col * 19}
+                  y={235 + row * 9}
+                  width={14} height={5} rx={1.5}
+                  fill="hsl(45, 100%, 92%)" opacity={0.18} />
+              ))
+            )}
+            {/* sinusoid channels */}
+            {Array.from({ length: 5 }).map((_, i) => (
+              <line key={i} x1={360} y1={241 + i * 9} x2={595} y2={241 + i * 9}
+                stroke="hsl(265, 50%, 80%)" strokeWidth="0.6" opacity={0.5} />
+            ))}
+            {/* Kupffer cells */}
+            {[
+              [395, 248], [445, 257], [490, 248], [535, 266], [575, 257],
+            ].map(([x, y], i) => (
+              <circle key={i} cx={x} cy={y} r={1.6} fill="hsl(50, 80%, 70%)" opacity={0.85} />
+            ))}
+            {/* bile canaliculi (yellow-green threads counter-flow) */}
+            <line x1={595} y1={285} x2={365} y2={285}
+              stroke="hsl(80, 70%, 55%)" strokeWidth="0.8" strokeDasharray="2 2" opacity={0.7} />
+            <text x={595} y={282} fontSize="7" textAnchor="end"
+              fill="hsl(80, 70%, 55%)" opacity={0.9}>bile canaliculi →</text>
+          </g>
+
+          {/* ===== Hepatic vein → IVC ===== */}
+          <path d="M 555 230 Q 540 180 525 145"
+            stroke="url(#pf-vein)" strokeWidth="11" fill="none" strokeLinecap="round" />
+          <path d="M 555 230 Q 540 180 525 145"
+            stroke="hsl(215, 65%, 75%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity={0.4} />
+          <text x={566} y={185} fontSize="9" className="fill-muted-foreground">Hepatic v. → IVC</text>
+
+          {/* Direction arrows */}
+          <line x1={260} y1={300} x2={285} y2={272}
+            stroke="hsl(var(--foreground))" strokeWidth="1" markerEnd="url(#pf-arrow)" opacity={0.55} />
+          <line x1={540} y1={185} x2={530} y2={160}
+            stroke="hsl(var(--foreground))" strokeWidth="1" markerEnd="url(#pf-arrow)" opacity={0.55} />
+          <line x1={300} y1={88} x2={250} y2={92}
+            stroke="hsl(var(--foreground))" strokeWidth="1" markerEnd="url(#pf-arrow)" opacity={0.55} />
+
+          {/* Sinusoid extraction overlay */}
+          <rect x={358} y={230} width={240} height={62} rx={6}
+            fill="hsl(15, 70%, 50%)" opacity={0.05 + er * 0.16} />
+          <text x={478} y={307} textAnchor="middle" fontSize="9"
+            className="fill-muted-foreground italic">
+            Extraction window — periportal (zone 1) → centrilobular (zone 3)
+          </text>
 
           {/* Animated drug particles */}
           {particles.map(({ id, p }) => {
-            // Hide particles that haven't entered yet (rest at gut)
             const { x, y } = positionAt(p);
             const extracted = isExtracted(id, p);
-            // If extracted, fade as it crosses the sinusoid then disappear
-            if (extracted && p > 0.4) {
-              if (p > 0.7) return null; // removed by liver
-              const fade = 1 - (p - 0.4) / 0.3;
+            if (extracted && p > 0.38) {
+              if (p > 0.68) return null;
+              const fade = 1 - (p - 0.38) / 0.30;
               return (
                 <g key={id} opacity={fade}>
                   <circle cx={x} cy={y} r={4} fill="hsl(280, 70%, 55%)"
                     stroke="hsl(280, 80%, 30%)" strokeWidth="0.8" />
+                  <circle cx={x} cy={y} r={7} fill="none"
+                    stroke="hsl(280, 70%, 55%)" strokeWidth="0.6" opacity={0.4} />
                 </g>
               );
             }
-            // Active drug
             return (
               <g key={id}>
-                <circle cx={x} cy={y} r={4.5} fill="hsl(280, 75%, 60%)"
-                  stroke="hsl(280, 80%, 30%)" strokeWidth="1" />
+                <circle cx={x} cy={y} r={5} fill="hsl(280, 75%, 62%)"
+                  stroke="hsl(280, 80%, 28%)" strokeWidth="1" />
+                <circle cx={x - 1.3} cy={y - 1.3} r={1.4} fill="hsl(280, 90%, 90%)" opacity={0.85} />
               </g>
             );
           })}
 
-          {/* Sinusoid extraction overlay */}
-          <rect x={285} y={170} width={140} height={28} rx={6}
-            fill="hsl(15, 70%, 50%)" opacity={0.08 + er * 0.18} />
-          <text x={355} y={250} textAnchor="middle" fontSize="9"
-            className="fill-muted-foreground">
-            Extraction window
-          </text>
-
           {/* Legend */}
-          <g transform="translate(40, 30)">
-            <circle cx={6} cy={6} r={4.5} fill="hsl(280, 75%, 60%)" stroke="hsl(280, 80%, 30%)" strokeWidth="1" />
-            <text x={16} y={10} fontSize="10" className="fill-foreground">Drug molecule</text>
+          <g transform="translate(40, 40)">
+            <rect x={-6} y={-10} width={210} height={66} rx={6}
+              fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" opacity={0.92} />
+            <circle cx={6} cy={6} r={5} fill="hsl(280, 75%, 62%)" stroke="hsl(280, 80%, 28%)" strokeWidth="1" />
+            <text x={18} y={10} fontSize="10" className="fill-foreground">Drug molecule (active)</text>
             <circle cx={6} cy={24} r={4} fill="hsl(280, 70%, 55%)" opacity={0.4} />
-            <text x={16} y={28} fontSize="10" className="fill-muted-foreground">Extracted (metabolised)</text>
+            <text x={18} y={28} fontSize="10" className="fill-muted-foreground">Extracted / metabolised</text>
+            <circle cx={6} cy={42} r={2} fill="hsl(50, 80%, 70%)" />
+            <text x={18} y={46} fontSize="10" className="fill-muted-foreground">Kupffer cell</text>
           </g>
         </svg>
       </div>
