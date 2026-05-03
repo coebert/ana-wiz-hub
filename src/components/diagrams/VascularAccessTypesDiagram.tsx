@@ -1,10 +1,13 @@
 import React from "react";
 
 /**
- * Labelled schematic plates of the five archetypal vascular access devices.
- * Each plate annotates skin entry site, course, tip position, dwell time
- * and key complication — to be read alongside the dwell-time / site
- * evidence tables in the Vascular Access Devices topic.
+ * Detailed anatomical schematics of the five archetypal vascular access
+ * devices. Each plate shows realistic surface anatomy, the venous/arterial
+ * tree relevant to insertion, the catheter course and tip position, and
+ * is fully annotated with bony, vascular and device landmarks.
+ *
+ * Read alongside the dwell-time / site evidence (Rickard 2012, epic3,
+ * 3SITES, Maki 2006) summarised in the Vascular Access Devices topic.
  */
 
 interface PlateProps {
@@ -29,216 +32,572 @@ const Plate: React.FC<PlateProps> = ({ title, dwell, evidence, children }) => (
   </div>
 );
 
-// ─── Shared body silhouette helper ────────────────────────────────────
-const SkinTone = "hsl(28 35% 88%)";
-const SkinEdge = "hsl(28 25% 60%)";
-const VeinColor = "hsl(220 60% 45%)";
-const ArteryColor = "hsl(0 60% 50%)";
-const CatheterColor = "hsl(45 25% 92%)";
+// ─── Shared palette ───────────────────────────────────────────────────
+const SkinFill = "hsl(28 45% 90%)";
+const SkinShade = "hsl(22 35% 78%)";
+const SkinEdge = "hsl(22 30% 55%)";
+const Bone = "hsl(45 30% 82%)";
+const BoneEdge = "hsl(38 25% 55%)";
+const Muscle = "hsl(0 25% 62%)";
+const VeinFill = "hsl(220 65% 42%)";
+const VeinLight = "hsl(220 60% 60%)";
+const ArteryFill = "hsl(0 70% 48%)";
+const ArteryLight = "hsl(0 65% 65%)";
+const Catheter = "hsl(45 30% 96%)";
+const CatheterEdge = "hsl(35 20% 55%)";
 const FgEdge = "hsl(var(--foreground))";
+const MutedFg = "hsl(var(--muted-foreground))";
 
 const labelStyle: React.CSSProperties = {
-  fontSize: 9,
+  fontSize: 8.5,
   fill: "hsl(var(--foreground))",
+  fontFamily: "ui-sans-serif, system-ui, sans-serif",
+};
+
+const tinyLabel: React.CSSProperties = {
+  fontSize: 7.5,
+  fill: "hsl(var(--muted-foreground))",
+  fontStyle: "italic",
 };
 
 const leader = (
-  x1: number, y1: number, x2: number, y2: number,
+  x1: number, y1: number, x2: number, y2: number, dashed = false,
 ) => (
   <line
     x1={x1} y1={y1} x2={x2} y2={y2}
-    stroke="hsl(var(--muted-foreground))"
-    strokeWidth={0.6}
+    stroke={MutedFg}
+    strokeWidth={0.5}
+    strokeDasharray={dashed ? "2 1.5" : undefined}
   />
 );
 
-// ─── 1. Peripheral cannula ────────────────────────────────────────────
-const PeripheralCannula: React.FC = () => (
-  <svg viewBox="0 0 280 200" role="img" aria-label="Peripheral cannula in dorsal hand vein"
-       className="w-full h-auto">
-    {/* Hand silhouette */}
-    <path
-      d="M30,150 C25,110 35,70 70,55 L100,40 L130,38 L160,42 L185,55 C215,70 230,110 220,150 L220,180 L30,180 Z"
-      fill={SkinTone} stroke={SkinEdge} strokeWidth={1}
-    />
-    {/* Dorsal veins */}
-    <path d="M70,160 C90,130 110,110 130,90 L150,60" stroke={VeinColor} strokeWidth={3} fill="none" />
-    <path d="M180,160 C170,130 160,115 150,95" stroke={VeinColor} strokeWidth={3} fill="none" />
-    <path d="M120,170 C125,150 130,130 135,110" stroke={VeinColor} strokeWidth={2.5} fill="none" />
+// SVG defs shared across plates
+const SharedDefs: React.FC = () => (
+  <defs>
+    <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor={SkinFill} />
+      <stop offset="100%" stopColor={SkinShade} />
+    </linearGradient>
+    <linearGradient id="veinGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor={VeinFill} />
+      <stop offset="50%" stopColor={VeinLight} />
+      <stop offset="100%" stopColor={VeinFill} />
+    </linearGradient>
+    <linearGradient id="arteryGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor={ArteryFill} />
+      <stop offset="50%" stopColor={ArteryLight} />
+      <stop offset="100%" stopColor={ArteryFill} />
+    </linearGradient>
+    <radialGradient id="heartGrad" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0%" stopColor="hsl(0 55% 70%)" />
+      <stop offset="100%" stopColor="hsl(0 55% 42%)" />
+    </radialGradient>
+    <radialGradient id="portGrad" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stopColor="hsl(210 25% 70%)" />
+      <stop offset="100%" stopColor="hsl(210 30% 38%)" />
+    </radialGradient>
+    <linearGradient id="catheterGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stopColor="hsl(40 25% 98%)" />
+      <stop offset="100%" stopColor="hsl(35 20% 82%)" />
+    </linearGradient>
+  </defs>
+);
 
-    {/* Cannula entering vein */}
-    <rect x="95" y="118" width="32" height="10" rx="2" fill="hsl(200 70% 55%)" stroke={FgEdge} strokeOpacity={0.5} />
-    <line x1="127" y1="123" x2="148" y2="103" stroke="hsl(45 30% 75%)" strokeWidth={3} strokeLinecap="round" />
-    <circle cx="148" cy="103" r="2" fill={FgEdge} />
+// ─── 1. Peripheral cannula in dorsum of hand ──────────────────────────
+const PeripheralCannula: React.FC = () => (
+  <svg viewBox="0 0 280 220" role="img"
+       aria-label="20G peripheral cannula in dorsal venous network of hand"
+       className="w-full h-auto">
+    <SharedDefs />
+
+    {/* Forearm cuff fading in */}
+    <path d="M0,200 L0,150 C20,140 35,130 55,125 L55,205 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={0.8} />
+
+    {/* Hand silhouette — palmar/dorsal view */}
+    <path d="
+      M55,125
+      C70,118 95,112 120,108
+      L130,55  C131,48 138,45 142,52 L142,100
+      L150,40  C151,33 159,32 162,40 L160,100
+      L170,38  C172,31 180,32 181,40 L173,102
+      L188,48  C190,42 197,43 197,50 L185,108
+      C210,115 230,128 240,150
+      C248,170 245,195 232,210
+      L55,210 Z"
+      fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} strokeLinejoin="round"
+    />
+    {/* Knuckle creases */}
+    {[140, 158, 173, 188].map((x, i) => (
+      <ellipse key={i} cx={x} cy={108 + (i === 1 || i === 2 ? -1 : 0)}
+               rx={5} ry={2} fill={SkinShade} opacity={0.6} />
+    ))}
+    {/* Skin shading on dorsum */}
+    <ellipse cx={150} cy={170} rx={70} ry={28} fill={SkinShade} opacity={0.25} />
+
+    {/* Dorsal venous network — superficial veins */}
+    {/* Cephalic-leading metacarpal */}
+    <path d="M210,205 C200,180 185,155 170,135 L165,115"
+          stroke="url(#veinGrad)" strokeWidth={3.2} fill="none" strokeLinecap="round" opacity={0.85}/>
+    {/* Dorsal metacarpal vein (target) */}
+    <path d="M85,205 C95,175 110,150 130,130 L140,112"
+          stroke="url(#veinGrad)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.9}/>
+    {/* Connecting arch */}
+    <path d="M130,130 C150,128 165,128 170,135"
+          stroke="url(#veinGrad)" strokeWidth={2.8} fill="none" opacity={0.8}/>
+    {/* Smaller branches */}
+    <path d="M120,160 C130,150 140,140 150,128" stroke={VeinLight} strokeWidth={1.5} fill="none" opacity={0.7}/>
+    <path d="M155,200 C155,180 160,160 165,140" stroke={VeinLight} strokeWidth={1.5} fill="none" opacity={0.7}/>
+
+    {/* Cannula assembly */}
+    {/* Wings (taped) */}
+    <path d="M88,158 L82,150 L82,166 Z" fill="hsl(200 60% 70%)" stroke={CatheterEdge} strokeWidth={0.5}/>
+    <path d="M88,158 L94,150 L94,166 Z" fill="hsl(200 60% 70%)" stroke={CatheterEdge} strokeWidth={0.5}/>
+    {/* Hub — colour coded pink (20G) */}
+    <rect x="92" y="153" width="34" height="10" rx="2.5"
+          fill="hsl(335 70% 65%)" stroke={CatheterEdge} strokeWidth={0.6}/>
+    <rect x="92" y="153" width="34" height="3" rx="1" fill="hsl(335 70% 78%)" />
+    {/* Injection port (cap) */}
+    <circle cx="115" cy="148" r="3" fill="hsl(335 70% 55%)" stroke={CatheterEdge} strokeWidth={0.5}/>
+    {/* Flashback chamber */}
+    <rect x="124" y="156" width="6" height="4" rx="1" fill="hsl(0 60% 55%)" opacity={0.7}/>
+    {/* Catheter — entering vein */}
+    <line x1="126" y1="158" x2="148" y2="138" stroke={Catheter} strokeWidth={2.8} strokeLinecap="round" />
+    <line x1="126" y1="158" x2="148" y2="138" stroke={CatheterEdge} strokeWidth={0.4} strokeLinecap="round" />
+    {/* Tip inside vein (slightly darker) */}
+    <circle cx="148" cy="138" r="1.8" fill={FgEdge} />
+
+    {/* Transparent dressing outline */}
+    <rect x="78" y="138" width="60" height="42" rx="3"
+          fill="hsl(200 30% 90%)" opacity={0.18}
+          stroke={MutedFg} strokeWidth={0.4} strokeDasharray="2 1.5"/>
 
     {/* Labels */}
-    <text x="92" y="113" textAnchor="end" {...labelStyle as object}>Hub (colour-coded gauge)</text>
-    {leader(95, 117, 92, 113)}
-    <text x="200" y="80" {...labelStyle as object}>Tip in dorsal hand vein</text>
-    {leader(200, 84, 152, 102)}
-    <text x="240" y="160" textAnchor="end" {...labelStyle as object}>Forearm / dorsum hand</text>
+    <text x="86" y="135" textAnchor="end" {...labelStyle as object}>Pink hub = 20G (≈ 60 mL/min)</text>
+    {leader(88, 138, 92, 154)}
+
+    <text x="125" y="195" textAnchor="middle" {...labelStyle as object}>Transparent semi-occlusive dressing</text>
+    {leader(108, 182, 115, 192)}
+
+    <text x="240" y="125" textAnchor="end" {...labelStyle as object}>Dorsal metacarpal vv.</text>
+    {leader(195, 128, 168, 132)}
+
+    <text x="270" y="160" textAnchor="end" {...labelStyle as object}>Catheter tip in vein</text>
+    {leader(218, 156, 152, 140)}
+
+    <text x="20" y="55" {...labelStyle as object}>Hand —</text>
+    <text x="20" y="66" {...labelStyle as object}>dorsum (preferred:</text>
+    <text x="20" y="77" {...labelStyle as object}>preserves forearm</text>
+    <text x="20" y="88" {...labelStyle as object}>for future access)</text>
+
+    <text x="20" y="208" {...tinyLabel as object}>Avoid: AC fossa for &gt;24 h, palmar surface, joints</text>
   </svg>
 );
 
 // ─── 2. PICC ──────────────────────────────────────────────────────────
 const PICC: React.FC = () => (
-  <svg viewBox="0 0 280 240" role="img" aria-label="PICC inserted at basilic vein with tip at cavoatrial junction"
+  <svg viewBox="0 0 300 260" role="img"
+       aria-label="PICC inserted in basilic vein, course to cavoatrial junction"
        className="w-full h-auto">
-    {/* Torso outline */}
-    <path d="M90,30 L190,30 L210,80 L210,210 L70,210 L70,80 Z"
-          fill={SkinTone} stroke={SkinEdge} strokeWidth={1}/>
-    {/* Right arm */}
-    <path d="M210,80 C245,90 260,140 250,200 L235,225 L210,200 L210,80 Z"
-          fill={SkinTone} stroke={SkinEdge} strokeWidth={1}/>
+    <SharedDefs />
+
+    {/* Torso */}
+    <path d="M95,30 L195,30 C200,55 215,70 220,90 L220,240 L80,240 L80,90 C85,70 92,55 95,30 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Neck */}
+    <rect x="125" y="10" width="40" height="25" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} />
+    {/* Right arm (patient's right = viewer's left), abducted */}
+    <path d="M80,90 C55,95 35,115 25,150 C18,180 22,210 30,235 L60,238 C58,210 60,180 65,155 C70,130 75,110 80,100 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+
+    {/* Clavicles */}
+    <path d="M95,55 C115,52 135,50 150,52" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
+    <path d="M150,52 C168,50 185,52 200,58" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
+    <line x1="95" y1="55" x2="200" y2="58" stroke={BoneEdge} strokeWidth={0.4} fill="none"/>
+    {/* Sternum */}
+    <rect x="146" y="55" width="8" height="55" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    {/* Ribs (faint) */}
+    {[70, 85, 100, 115, 130].map((y, i) => (
+      <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
+            stroke={BoneEdge} strokeWidth={0.6} fill="none" opacity={0.4}/>
+    ))}
+
     {/* Heart silhouette */}
-    <ellipse cx="135" cy="120" rx="22" ry="28" fill="hsl(0 40% 80%)" stroke={FgEdge} strokeOpacity={0.4}/>
-    {/* SVC */}
-    <path d="M140,75 L140,110" stroke={VeinColor} strokeWidth={4} fill="none" />
-    {/* Subclavian + axillary + basilic vein course */}
-    <path d="M240,210 C240,180 235,150 220,130 C200,115 175,95 140,90"
-          stroke={VeinColor} strokeWidth={3.5} fill="none" />
-    {/* Catheter (overlying vein) */}
-    <path d="M240,210 C240,180 235,150 220,130 C200,115 175,95 140,108"
-          stroke={CatheterColor} strokeWidth={2.5} fill="none" strokeDasharray="3 2" />
-    <circle cx="140" cy="108" r="2.5" fill={FgEdge} />
-    {/* External hub */}
-    <rect x="232" y="208" width="14" height="6" rx="1.5" fill="hsl(280 50% 50%)" stroke={FgEdge} strokeOpacity={0.5}/>
+    <path d="M130,135 C115,135 110,160 130,180 L155,200 L180,180 C195,160 185,135 170,135 C162,135 155,142 150,148 C145,142 138,135 130,135 Z"
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+
+    {/* Venous tree on patient's right */}
+    {/* Basilic vein (medial arm) */}
+    <path d="M55,235 C58,200 65,170 75,140 C82,115 90,98 105,85"
+          stroke="url(#veinGrad)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.55}/>
+    {/* Axillary vein */}
+    <path d="M105,85 C115,82 125,80 135,78" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
+    {/* Subclavian */}
+    <path d="M135,78 C145,75 152,72 158,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none" opacity={0.55}/>
+    {/* Brachiocephalic + SVC */}
+    <path d="M158,68 C160,90 158,110 156,130" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none" opacity={0.55}/>
+
+    {/* Cephalic vein (lateral, alternative) */}
+    <path d="M30,180 C35,150 50,120 70,100" stroke={VeinLight} strokeWidth={2.2} fill="none" opacity={0.5}/>
+
+    {/* Brachial artery (deep) */}
+    <path d="M58,235 C62,200 70,170 80,140 C88,115 95,98 108,85" stroke={ArteryLight} strokeWidth={1.8} fill="none" opacity={0.6} strokeDasharray="3 2"/>
+
+    {/* PICC catheter (purple) — entering basilic, tip at cavoatrial */}
+    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,80 156,90 L156,142"
+          stroke="hsl(280 50% 45%)" strokeWidth={2.5} fill="none" strokeLinecap="round"/>
+    {/* Catheter highlight */}
+    <path d="M40,232 C50,225 56,215 60,200 C66,170 75,140 88,118 C98,100 110,88 130,82 C145,78 152,80 156,90 L156,142"
+          stroke="hsl(280 60% 70%)" strokeWidth={0.8} fill="none" strokeLinecap="round" opacity={0.7}/>
+    {/* External hub bifurcation */}
+    <rect x="32" y="228" width="14" height="5" rx="1.2" fill="hsl(280 50% 45%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <rect x="32" y="234" width="14" height="5" rx="1.2" fill="hsl(0 60% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    {/* Securement device */}
+    <rect x="48" y="218" width="20" height="12" rx="1.5" fill="hsl(200 30% 92%)" opacity={0.6}
+          stroke={MutedFg} strokeWidth={0.4} strokeDasharray="1.5 1"/>
+    {/* Tip marker */}
+    <circle cx="156" cy="142" r="2" fill={FgEdge}/>
+    <line x1="153" y1="142" x2="159" y2="142" stroke={Catheter} strokeWidth={1}/>
+
+    {/* Ultrasound transducer footprint at insertion */}
+    <rect x="46" y="236" width="20" height="3" rx="1" fill="hsl(200 50% 50%)" opacity={0.5}/>
 
     {/* Labels */}
-    <text x="265" y="200" textAnchor="end" {...labelStyle as object}>Skin entry: basilic v.</text>
-    {leader(240, 212, 230, 200)}
-    <text x="20" y="105" {...labelStyle as object}>Tip at cavoatrial</text>
-    <text x="20" y="116" {...labelStyle as object}>junction (SVC/RA)</text>
-    {leader(75, 110, 138, 110)}
-    <text x="20" y="55" {...labelStyle as object}>Single/double-lumen,</text>
-    <text x="20" y="66" {...labelStyle as object}>4–6 Fr, weeks–months</text>
+    <text x="245" y="65" textAnchor="end" {...labelStyle as object}>R subclavian v.</text>
+    {leader(195, 68, 162, 70)}
+
+    <text x="245" y="135" textAnchor="end" {...labelStyle as object}>SVC</text>
+    {leader(232, 132, 160, 132)}
+
+    <text x="245" y="148" textAnchor="end" {...labelStyle as object}>Tip: cavoatrial junction</text>
+    {leader(232, 145, 158, 142)}
+
+    <text x="78" y="200" textAnchor="end" {...labelStyle as object}>Basilic v. (target)</text>
+    {leader(80, 203, 70, 175)}
+
+    <text x="20" y="155" {...labelStyle as object}>Cephalic v.</text>
+    {leader(20, 158, 35, 165)}
+
+    <text x="20" y="245" {...labelStyle as object}>US-guided</text>
+    <text x="20" y="256" {...labelStyle as object}>insertion above AC</text>
+    {leader(48, 248, 56, 232)}
+
+    <text x="245" y="220" textAnchor="end" {...labelStyle as object}>4–6 Fr, single/double</text>
+    <text x="245" y="231" textAnchor="end" {...labelStyle as object}>lumen, weeks–months</text>
   </svg>
 );
 
 // ─── 3. Non-tunnelled CVC ─────────────────────────────────────────────
 const NonTunnelledCVC: React.FC = () => (
-  <svg viewBox="0 0 280 240" role="img" aria-label="Non-tunnelled triple-lumen CVC in right internal jugular vein"
+  <svg viewBox="0 0 300 260" role="img"
+       aria-label="Triple-lumen non-tunnelled CVC in right internal jugular vein"
        className="w-full h-auto">
-    {/* Head + torso */}
-    <circle cx="140" cy="40" r="26" fill={SkinTone} stroke={SkinEdge} />
-    <path d="M90,70 L190,70 L210,110 L210,220 L70,220 L70,110 Z"
-          fill={SkinTone} stroke={SkinEdge}/>
-    {/* Clavicle */}
-    <line x1="80" y1="100" x2="200" y2="100" stroke="hsl(45 30% 70%)" strokeWidth={3} />
-    {/* IJV */}
-    <path d="M155,55 L155,105" stroke={VeinColor} strokeWidth={4} fill="none" />
-    {/* Carotid */}
-    <path d="M145,55 L145,105" stroke={ArteryColor} strokeWidth={3} fill="none" />
-    {/* SVC */}
-    <path d="M155,105 L155,160" stroke={VeinColor} strokeWidth={4} fill="none" />
-    {/* Heart */}
-    <ellipse cx="150" cy="180" rx="24" ry="22" fill="hsl(0 40% 80%)" stroke={FgEdge} strokeOpacity={0.4}/>
-    {/* Catheter — skin entry then descending */}
-    <path d="M170,90 L160,100 L160,165" stroke={CatheterColor} strokeWidth={3} fill="none" />
-    <circle cx="160" cy="165" r="2.5" fill={FgEdge} />
-    {/* External 3-lumen hub */}
-    {[0, 6, 12].map((dy, i) => (
-      <rect key={i} x="172" y={82 + dy} width="20" height="4" rx="1"
-            fill={["hsl(0 70% 50%)","hsl(220 60% 50%)","hsl(150 60% 45%)"][i]}
-            stroke={FgEdge} strokeOpacity={0.4} />
+    <SharedDefs />
+
+    {/* Head + neck + torso */}
+    <ellipse cx="150" cy="35" rx="32" ry="28" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Chin */}
+    <path d="M130,55 C140,68 160,68 170,55" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Neck */}
+    <path d="M125,60 L125,100 L175,100 L175,60 Z" fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Torso */}
+    <path d="M85,100 L215,100 L225,140 L225,250 L75,250 L75,140 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+
+    {/* Sternocleidomastoid (right side, viewer's left) */}
+    <path d="M138,60 C130,75 122,90 118,100 L130,100 C135,88 142,75 145,62 Z"
+          fill={Muscle} opacity={0.35} stroke={SkinEdge} strokeWidth={0.4}/>
+    {/* Two heads of SCM */}
+    <line x1="135" y1="100" x2="142" y2="62" stroke={SkinEdge} strokeWidth={0.4} opacity={0.5}/>
+
+    {/* Clavicles */}
+    <path d="M85,118 C115,112 145,108 155,108" stroke={Bone} strokeWidth={5.5} strokeLinecap="round" fill="none"/>
+    <path d="M155,108 C170,108 195,112 215,118" stroke={Bone} strokeWidth={5.5} strokeLinecap="round" fill="none"/>
+    {/* Sternum */}
+    <rect x="146" y="115" width="8" height="50" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
+    {/* Ribs */}
+    {[130, 145, 160, 175].map((y, i) => (
+      <path key={i} d={`M95,${y} Q150,${y + 8} 205,${y}`}
+            stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.35}/>
     ))}
 
+    {/* Carotid (deep, dashed) */}
+    <path d="M135,60 L132,100 L138,118" stroke="url(#arteryGrad)" strokeWidth={3.5} fill="none" strokeDasharray="3 2" opacity={0.85}/>
+
+    {/* Right IJV — running lateral to carotid in carotid sheath */}
+    <path d="M148,60 L146,100 L152,118" stroke="url(#veinGrad)" strokeWidth={4.2} fill="none"/>
+
+    {/* Subclavian + brachiocephalic + SVC */}
+    <path d="M152,118 C150,130 148,140 150,150" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+    <path d="M150,150 L150,200" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+
+    {/* Heart */}
+    <path d="M135,205 C120,210 115,235 140,250 L165,260 L185,250 C205,235 195,210 175,205 C167,205 160,212 155,218 C150,212 142,205 135,205 Z"
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+
+    {/* Pleural apex (lung) */}
+    <path d="M85,118 C90,135 100,155 105,175 L75,175 L75,118 Z" fill="hsl(200 30% 80%)" opacity={0.3}/>
+    <path d="M215,118 C210,135 200,155 195,175 L225,175 L225,118 Z" fill="hsl(200 30% 80%)" opacity={0.3}/>
+
+    {/* Catheter — skin entry at apex of SCM triangle, threading down IJV→SVC */}
+    <path d="M168,90 L155,100 L154,118 L150,150 L150,200"
+          stroke={Catheter} strokeWidth={2.8} fill="none" strokeLinecap="round"/>
+    <path d="M168,90 L155,100 L154,118 L150,150 L150,200"
+          stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
+    {/* Tip */}
+    <circle cx="150" cy="200" r="2.2" fill={FgEdge}/>
+
+    {/* Skin entry suture wings */}
+    <rect x="162" y="86" width="12" height="6" rx="1.5" fill="hsl(0 0% 95%)" stroke={MutedFg} strokeWidth={0.5}/>
+
+    {/* External 3-lumen hub assembly */}
+    <rect x="172" y="80" width="22" height="4" rx="1" fill="hsl(0 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <text x="183" y="83.2" textAnchor="middle" fontSize={3.5} fill="white">D</text>
+    <rect x="172" y="74" width="22" height="4" rx="1" fill="hsl(220 70% 50%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <text x="183" y="77.2" textAnchor="middle" fontSize={3.5} fill="white">M</text>
+    <rect x="172" y="68" width="22" height="4" rx="1" fill="hsl(150 60% 40%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+    <text x="183" y="71.2" textAnchor="middle" fontSize={3.5} fill="white">P</text>
+
+    {/* Transparent dressing */}
+    <rect x="155" y="82" width="22" height="22" rx="2" fill="hsl(200 30% 90%)" opacity={0.18}
+          stroke={MutedFg} strokeDasharray="1.5 1" strokeWidth={0.4}/>
+
     {/* Labels */}
-    <text x="225" y="92" {...labelStyle as object}>3 colour-coded</text>
-    <text x="225" y="103" {...labelStyle as object}>lumens (distal,</text>
-    <text x="225" y="114" {...labelStyle as object}>medial, proximal)</text>
-    {leader(220, 90, 195, 90)}
-    <text x="20" y="60" {...labelStyle as object}>Right IJV</text>
-    {leader(60, 62, 153, 65)}
-    <text x="20" y="80" fill={ArteryColor} fontSize={9}>Carotid (avoid)</text>
-    {leader(75, 82, 145, 75)}
-    <text x="20" y="170" {...labelStyle as object}>Tip: lower SVC,</text>
-    <text x="20" y="181" {...labelStyle as object}>above pericardium</text>
-    {leader(75, 170, 158, 165)}
+    <text x="105" y="78" textAnchor="end" {...labelStyle as object}>SCM (sternocleidomastoid)</text>
+    {leader(108, 80, 128, 80)}
+
+    <text x="270" y="68" textAnchor="end" {...labelStyle as object}>Distal · Medial · Proximal</text>
+    <text x="270" y="79" textAnchor="end" {...tinyLabel as object}>(D = CVP, vasoactives)</text>
+    {leader(220, 73, 196, 75)}
+
+    <text x="270" y="105" textAnchor="end" {...labelStyle as object}>Apex of SCM triangle</text>
+    {leader(220, 102, 168, 92)}
+
+    <text x="20" y="92" {...labelStyle as object}>R IJV</text>
+    {leader(35, 90, 142, 80)}
+
+    <text x="20" y="105" fill={ArteryFill} fontSize={8.5}>Carotid (avoid)</text>
+    {leader(60, 102, 132, 90)}
+
+    <text x="270" y="195" textAnchor="end" {...labelStyle as object}>Tip: lower SVC,</text>
+    <text x="270" y="206" textAnchor="end" {...labelStyle as object}>above pericardial</text>
+    <text x="270" y="217" textAnchor="end" {...labelStyle as object}>reflection</text>
+    {leader(220, 200, 152, 200)}
+
+    <text x="20" y="170" {...tinyLabel as object}>Pleural apex</text>
+    {leader(50, 168, 80, 145)}
   </svg>
 );
 
-// ─── 4. Tunnelled line (Hickman) ──────────────────────────────────────
+// ─── 4. Tunnelled line (Hickman / Groshong / Permcath) ───────────────
 const TunnelledLine: React.FC = () => (
-  <svg viewBox="0 0 280 240" role="img" aria-label="Tunnelled Hickman line with subcutaneous Dacron cuff"
+  <svg viewBox="0 0 300 260" role="img"
+       aria-label="Tunnelled Hickman line: subcutaneous tunnel with Dacron cuff"
        className="w-full h-auto">
-    {/* Torso */}
-    <path d="M50,40 L230,40 L230,220 L50,220 Z"
-          fill={SkinTone} stroke={SkinEdge}/>
-    {/* Subclavian vein */}
-    <path d="M70,80 C110,80 140,75 165,70" stroke={VeinColor} strokeWidth={4} fill="none"/>
-    {/* SVC */}
-    <path d="M165,70 L165,140" stroke={VeinColor} strokeWidth={4} fill="none"/>
+    <SharedDefs />
+
+    {/* Torso (chest) */}
+    <path d="M40,40 L260,40 L260,250 L40,250 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+
+    {/* Skin "cut-away" window showing subcutaneous tissue + tunnel */}
+    <path d="M70,95 C90,80 200,80 220,95 L220,180 C200,195 90,195 70,180 Z"
+          fill="hsl(35 50% 78%)" opacity={0.5}
+          stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.6}/>
+    {/* Subcutaneous fat texture (stippled) */}
+    {Array.from({ length: 30 }).map((_, i) => {
+      const x = 75 + (i * 4.7) % 140;
+      const y = 95 + Math.floor((i * 4.7) / 140) * 12 + (i % 2) * 6;
+      return <circle key={i} cx={x} cy={y} r={1.2} fill="hsl(45 45% 70%)" opacity={0.7}/>;
+    })}
+
+    {/* Clavicles */}
+    <path d="M50,75 C100,68 150,65 160,65" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M160,65 C190,65 240,72 260,80" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+
+    {/* Subclavian vein (under clavicle) */}
+    <path d="M90,78 C140,75 175,72 200,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    {/* Brachiocephalic + SVC */}
+    <path d="M200,68 C202,90 195,115 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+
     {/* Heart */}
-    <ellipse cx="160" cy="160" rx="22" ry="20" fill="hsl(0 40% 80%)" stroke={FgEdge} strokeOpacity={0.4}/>
+    <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
 
-    {/* Tunnel — from chest exit site, subcutaneously to venotomy */}
-    {/* Exit site on chest wall */}
-    <circle cx="120" cy="160" r="4" fill="hsl(28 50% 70%)" stroke={FgEdge} strokeOpacity={0.6} />
-    {/* Subcutaneous tunnel (dashed under skin) */}
-    <path d="M120,160 L150,100 L165,82" stroke={CatheterColor} strokeWidth={3} fill="none" strokeDasharray="3 2"/>
-    {/* Cuff in tunnel */}
-    <rect x="135" y="125" width="10" height="6" rx="1.5" fill="hsl(35 40% 55%)" stroke={FgEdge} strokeOpacity={0.6}/>
-    {/* Intravascular segment */}
-    <path d="M165,82 L165,145" stroke={CatheterColor} strokeWidth={3} fill="none"/>
-    <circle cx="165" cy="145" r="2.5" fill={FgEdge}/>
+    {/* Tunnel — exit site (chest wall) → subcutaneous course → venotomy */}
+    {/* Exit site */}
+    <circle cx="100" cy="170" r="4" fill="hsl(0 50% 55%)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.5}/>
+    <circle cx="100" cy="170" r="1.5" fill="hsl(45 30% 30%)" />
+    {/* Subcutaneous tunnel — solid (visible in cut-away) */}
+    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+          stroke={Catheter} strokeWidth={3.2} fill="none" strokeLinecap="round"/>
+    <path d="M100,170 C120,160 150,130 175,100 L195,75"
+          stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
+    {/* Dacron cuff — tissue ingrowth zone */}
+    <g>
+      <rect x="135" y="138" width="14" height="7" rx="2"
+            fill="hsl(35 30% 55%)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.5}
+            transform="rotate(-32 142 141.5)"/>
+      {/* Cuff texture lines */}
+      {[0,1,2,3].map(i => (
+        <line key={i} x1={137 + i*3} y1={140} x2={140 + i*3} y2={146}
+              stroke="hsl(35 30% 35%)" strokeWidth={0.4}
+              transform="rotate(-32 142 141.5)"/>
+      ))}
+    </g>
 
-    {/* External catheter + bifurcated hub */}
-    <path d="M120,160 L100,180" stroke={CatheterColor} strokeWidth={3} fill="none"/>
-    <rect x="88" y="178" width="14" height="5" rx="1" fill="hsl(0 70% 50%)" stroke={FgEdge} strokeOpacity={0.4}/>
-    <rect x="88" y="184" width="14" height="5" rx="1" fill="hsl(220 60% 50%)" stroke={FgEdge} strokeOpacity={0.4}/>
+    {/* Intravascular segment (entering subclavian → SVC) */}
+    <path d="M195,75 C198,95 195,115 190,140"
+          stroke={Catheter} strokeWidth={2.8} fill="none"/>
+    <path d="M195,75 C198,95 195,115 190,140"
+          stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
+    <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
+
+    {/* External catheter & bifurcated hub */}
+    <path d="M100,170 L75,200" stroke={Catheter} strokeWidth={2.8} fill="none" strokeLinecap="round"/>
+    <path d="M100,170 L75,200" stroke={CatheterEdge} strokeWidth={0.4} fill="none" strokeLinecap="round"/>
+    {/* Y connector */}
+    <path d="M75,200 L60,212 L60,225" stroke={Catheter} strokeWidth={2.4} fill="none" strokeLinecap="round"/>
+    <path d="M75,200 L90,212 L90,225" stroke={Catheter} strokeWidth={2.4} fill="none" strokeLinecap="round"/>
+    {/* Clamps */}
+    <rect x="56" y="216" width="8" height="4" rx="1" fill="hsl(0 0% 25%)"/>
+    <rect x="86" y="216" width="8" height="4" rx="1" fill="hsl(0 0% 25%)"/>
+    {/* Coloured caps */}
+    <circle cx="60" cy="228" r="3.5" fill="hsl(0 70% 50%)" stroke={FgEdge} strokeOpacity={0.4}/>
+    <circle cx="90" cy="228" r="3.5" fill="hsl(220 65% 50%)" stroke={FgEdge} strokeOpacity={0.4}/>
+
+    {/* Skin layer indicator on cut-away */}
+    <line x1="70" y1="95" x2="220" y2="95" stroke={SkinEdge} strokeWidth={0.6}/>
+    <text x="68" y="93" textAnchor="end" {...tinyLabel as object}>Skin</text>
+    <text x="68" y="115" textAnchor="end" {...tinyLabel as object}>Subcutis</text>
 
     {/* Labels */}
-    <text x="80" y="155" textAnchor="end" {...labelStyle as object}>Skin exit site</text>
-    {leader(82, 158, 116, 160)}
-    <text x="220" y="125" textAnchor="end" {...labelStyle as object}>Dacron cuff —</text>
-    <text x="220" y="136" textAnchor="end" {...labelStyle as object}>tissue ingrowth, infection barrier</text>
-    {leader(180, 128, 145, 128)}
-    <text x="220" y="80" {...labelStyle as object}>Venotomy:</text>
-    <text x="220" y="91" {...labelStyle as object}>subclavian v.</text>
-    {leader(218, 80, 168, 78)}
-    <text x="20" y="195" {...labelStyle as object}>External hub</text>
-    {leader(60, 192, 90, 184)}
+    <text x="280" y="58" textAnchor="end" {...labelStyle as object}>Venotomy: subclavian v.</text>
+    {leader(225, 62, 196, 72)}
+
+    <text x="280" y="95" textAnchor="end" {...labelStyle as object}>Intravascular segment</text>
+    {leader(225, 100, 195, 100)}
+
+    <text x="280" y="140" textAnchor="end" {...labelStyle as object}>Tip: cavoatrial</text>
+    <text x="280" y="151" textAnchor="end" {...labelStyle as object}>junction</text>
+    {leader(232, 142, 192, 140)}
+
+    <text x="20" y="135" {...labelStyle as object}>Dacron cuff</text>
+    <text x="20" y="146" {...tinyLabel as object}>(fibroblast ingrowth →</text>
+    <text x="20" y="156" {...tinyLabel as object}>infection barrier &amp; anchor)</text>
+    {leader(60, 138, 138, 142)}
+
+    <text x="20" y="175" {...labelStyle as object}>Skin exit site</text>
+    {leader(60, 172, 96, 170)}
+
+    <text x="20" y="245" {...labelStyle as object}>Bifurcated hub +</text>
+    <text x="20" y="256" {...labelStyle as object}>clamps + caps</text>
+    {leader(75, 240, 75, 218)}
   </svg>
 );
 
 // ─── 5. Implanted port (Portacath) ────────────────────────────────────
 const Portacath: React.FC = () => (
-  <svg viewBox="0 0 280 240" role="img" aria-label="Implanted subcutaneous port with Huber needle"
+  <svg viewBox="0 0 300 260" role="img"
+       aria-label="Implanted subcutaneous port with non-coring Huber needle"
        className="w-full h-auto">
-    {/* Torso */}
-    <path d="M50,40 L230,40 L230,220 L50,220 Z" fill={SkinTone} stroke={SkinEdge}/>
-    {/* Subclavian vein */}
-    <path d="M70,80 C110,80 140,75 165,70" stroke={VeinColor} strokeWidth={4} fill="none"/>
-    <path d="M165,70 L165,140" stroke={VeinColor} strokeWidth={4} fill="none"/>
-    <ellipse cx="160" cy="160" rx="22" ry="20" fill="hsl(0 40% 80%)" stroke={FgEdge} strokeOpacity={0.4}/>
+    <SharedDefs />
 
-    {/* Port reservoir under skin */}
-    <ellipse cx="110" cy="130" rx="18" ry="12" fill="hsl(210 25% 55%)" stroke={FgEdge} strokeOpacity={0.6}/>
-    {/* Septum */}
-    <ellipse cx="110" cy="130" rx="9" ry="6" fill="hsl(280 30% 35%)" />
-    {/* Catheter from port to SVC */}
-    <path d="M125,125 C145,110 158,90 165,82" stroke={CatheterColor} strokeWidth={3} fill="none"/>
-    <path d="M165,82 L165,145" stroke={CatheterColor} strokeWidth={3} fill="none"/>
-    <circle cx="165" cy="145" r="2.5" fill={FgEdge}/>
+    {/* Chest skin */}
+    <path d="M40,40 L260,40 L260,250 L40,250 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
 
-    {/* Huber needle — non-coring, accessing through skin */}
-    <line x1="110" y1="95" x2="110" y2="124" stroke="hsl(0 0% 30%)" strokeWidth={1.5}/>
-    <path d="M105,90 L115,90 L113,98 L107,98 Z" fill="hsl(0 0% 50%)" stroke={FgEdge} strokeOpacity={0.5}/>
+    {/* Cut-away showing subcutaneous pocket */}
+    <ellipse cx="100" cy="140" rx="55" ry="38" fill="hsl(35 50% 78%)" opacity={0.5}
+             stroke={SkinEdge} strokeDasharray="3 2" strokeWidth={0.5}/>
 
-    {/* Skin line indicator over port */}
-    <path d="M75,118 C90,115 130,115 145,118" stroke={SkinEdge} strokeDasharray="2 2" fill="none"/>
+    {/* Clavicles */}
+    <path d="M50,75 C100,68 150,65 160,65" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    <path d="M160,65 C190,65 240,72 260,80" stroke={Bone} strokeWidth={6} strokeLinecap="round" fill="none"/>
+    {/* Ribs */}
+    {[110, 130, 150, 170].map((y, i) => (
+      <path key={i} d={`M50,${y} Q150,${y + 10} 260,${y - 5}`}
+            stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.3}/>
+    ))}
+
+    {/* Subclavian + SVC */}
+    <path d="M90,78 C140,75 175,72 200,68" stroke="url(#veinGrad)" strokeWidth={4} fill="none"/>
+    <path d="M200,68 C202,90 195,115 190,140" stroke="url(#veinGrad)" strokeWidth={4.5} fill="none"/>
+
+    {/* Heart */}
+    <path d="M170,150 C155,155 150,180 175,195 L195,205 L215,195 C232,180 220,155 205,150 C198,150 192,158 187,164 C182,158 176,150 170,150 Z"
+          fill="url(#heartGrad)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.6}/>
+
+    {/* Port reservoir — titanium body */}
+    <ellipse cx="100" cy="145" rx="22" ry="14" fill="url(#portGrad)" stroke={FgEdge} strokeOpacity={0.6} strokeWidth={0.6}/>
+    {/* Reservoir base highlight */}
+    <ellipse cx="100" cy="142" rx="20" ry="11" fill="none" stroke="hsl(210 30% 85%)" strokeWidth={0.4} opacity={0.7}/>
+    {/* Septum (silicone) — palpable triangular markers */}
+    <ellipse cx="100" cy="142" rx="11" ry="7" fill="hsl(280 35% 32%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <ellipse cx="100" cy="141" rx="9" ry="5" fill="hsl(280 30% 40%)" opacity={0.7}/>
+    {/* Three palpation bumps */}
+    {[0, 120, 240].map(deg => {
+      const r = 14;
+      const rad = (deg * Math.PI) / 180;
+      const cx = 100 + r * Math.cos(rad);
+      const cy = 142 + r * 0.55 * Math.sin(rad);
+      return <circle key={deg} cx={cx} cy={cy} r={1.4} fill="hsl(210 20% 80%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.3}/>;
+    })}
+    {/* Suture eyelets at base */}
+    <circle cx={78} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <circle cx={122} cy={155} r={1.5} fill="none" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+
+    {/* Catheter from port → subclavian → SVC */}
+    <path d="M120,140 C150,128 175,100 195,75"
+          stroke={Catheter} strokeWidth={3} fill="none" strokeLinecap="round"/>
+    <path d="M120,140 C150,128 175,100 195,75"
+          stroke={CatheterEdge} strokeWidth={0.5} fill="none" strokeLinecap="round"/>
+    <path d="M195,75 C198,95 195,115 190,140"
+          stroke={Catheter} strokeWidth={2.8} fill="none"/>
+    <path d="M195,75 C198,95 195,115 190,140"
+          stroke={CatheterEdge} strokeWidth={0.4} fill="none"/>
+    <circle cx="190" cy="140" r="2.2" fill={FgEdge}/>
+
+    {/* Huber non-coring needle — angled 90° through skin into septum */}
+    {/* Needle shaft */}
+    <line x1="100" y1="100" x2="100" y2="140" stroke="hsl(0 0% 35%)" strokeWidth={1.6}/>
+    {/* Bevel detail at tip */}
+    <path d="M100,140 L98,138 L102,138 Z" fill="hsl(0 0% 55%)"/>
+    {/* Right-angle hub of Huber needle */}
+    <path d="M100,100 L100,93 L120,93" stroke="hsl(0 0% 35%)" strokeWidth={1.6} fill="none" strokeLinecap="round"/>
+    {/* Wings */}
+    <path d="M95,98 L90,92 L90,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    <path d="M105,98 L110,92 L110,108 Z" fill="hsl(220 50% 65%)" stroke={FgEdge} strokeOpacity={0.5} strokeWidth={0.4}/>
+    {/* Connecting tubing */}
+    <path d="M120,93 C140,90 155,88 170,90" stroke={Catheter} strokeWidth={1.8} fill="none"/>
+    {/* Luer */}
+    <rect x="168" y="86" width="10" height="8" rx="1.5" fill="hsl(0 0% 92%)" stroke={FgEdge} strokeOpacity={0.4} strokeWidth={0.4}/>
+
+    {/* Skin surface line on cut-away */}
+    <path d="M50,108 C90,103 110,103 150,108" stroke={SkinEdge} strokeWidth={0.7}/>
+    <text x="48" y="106" textAnchor="end" {...tinyLabel as object}>Skin</text>
 
     {/* Labels */}
-    <text x="20" y="100" {...labelStyle as object}>Huber (non-coring)</text>
-    <text x="20" y="111" {...labelStyle as object}>needle through skin</text>
-    {leader(75, 98, 108, 92)}
-    <text x="220" y="135" textAnchor="end" {...labelStyle as object}>Self-sealing silicone septum</text>
-    {leader(160, 132, 120, 130)}
-    <text x="220" y="170" textAnchor="end" {...labelStyle as object}>Reservoir in subcutaneous pocket</text>
-    {leader(180, 167, 125, 138)}
-    <text x="220" y="80" {...labelStyle as object}>Tip at cavoatrial junction</text>
-    {leader(218, 83, 168, 145)}
+    <text x="20" y="80" {...labelStyle as object}>Huber (non-coring)</text>
+    <text x="20" y="91" {...labelStyle as object}>needle — 90° hub</text>
+    {leader(60, 84, 92, 95)}
+
+    <text x="280" y="115" textAnchor="end" {...labelStyle as object}>Self-sealing</text>
+    <text x="280" y="126" textAnchor="end" {...labelStyle as object}>silicone septum</text>
+    {leader(220, 122, 112, 140)}
+
+    <text x="280" y="170" textAnchor="end" {...labelStyle as object}>Titanium reservoir in</text>
+    <text x="280" y="181" textAnchor="end" {...labelStyle as object}>subcutaneous pocket</text>
+    {leader(218, 173, 122, 152)}
+
+    <text x="280" y="200" textAnchor="end" {...labelStyle as object}>Suture eyelets</text>
+    {leader(225, 197, 124, 156)}
+
+    <text x="20" y="200" {...labelStyle as object}>Catheter → subclavian v.</text>
+    {leader(75, 197, 145, 130)}
+
+    <text x="280" y="240" textAnchor="end" {...labelStyle as object}>Tip: cavoatrial junction</text>
+    {leader(232, 237, 192, 142)}
   </svg>
 );
 
@@ -250,11 +609,10 @@ export const VascularAccessTypesDiagram: React.FC = () => (
         Device archetypes — anatomy, dwell time and supporting evidence
       </p>
       <p className="text-xs text-muted-foreground mt-0.5">
-        Five labelled schematics matching the dwell-time and site evidence
-        tables. Each plate shows the skin entry site, intravascular course,
-        tip position and the device-defining feature (cuff, septum,
-        multi-lumen hub). Read alongside the Rickard 2012 / epic3 / 3SITES
-        evidence summarised in the Key Learning Points.
+        Five anatomically detailed schematics with surface anatomy, bony
+        landmarks (clavicle, sternum, ribs), the relevant venous tree and
+        the catheter course from skin entry to tip position. Read alongside
+        the Rickard 2012 / epic3 / 3SITES evidence in the Key Learning Points.
       </p>
     </figcaption>
     <div className="p-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
