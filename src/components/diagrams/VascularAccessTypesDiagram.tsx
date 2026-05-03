@@ -276,10 +276,12 @@ const PICC: React.FC = () => (
     <path d="M150,52 C162,52 185,55 215,62" stroke={Bone} strokeWidth={5} strokeLinecap="round" fill="none"/>
     {/* Sternum (manubrium → body) */}
     <rect x="146" y="55" width="8" height="55" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
-    {/* Ribs — 18 px spacing to match other plates */}
-    {[80, 98, 116, 134].map((y, i) => (
+    {/* Ribs — 18 px spacing, span 100→200 (matches CVC/Port plates).
+        First rib is one intercostal below the clavicle (y=52) so the cage
+        scales proportionally to the other chest plates. */}
+    {[100, 118, 136, 154].map((y, i) => (
       <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
-            stroke={BoneEdge} strokeWidth={0.6} fill="none" opacity={0.4}/>
+            stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.35}/>
     ))}
 
     {/* Heart silhouette */}
