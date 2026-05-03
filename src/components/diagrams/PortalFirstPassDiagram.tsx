@@ -6,10 +6,20 @@ import { useState, useEffect } from "react";
  * systemic circulation. First-pass extraction visualised in the sinusoid
  * window with hepatocytes, Kupffer cells and bile canaliculi for realism.
  */
+type Layer = "hepatocyte" | "kupffer" | "bile";
+
 const PortalFirstPassDiagram = () => {
   const [er, setEr] = useState(0.7);
   const [playing, setPlaying] = useState(true);
   const [tick, setTick] = useState(0);
+  const [layers, setLayers] = useState<Record<Layer, boolean>>({
+    hepatocyte: false,
+    kupffer: false,
+    bile: false,
+  });
+  const toggleLayer = (k: Layer) =>
+    setLayers((s) => ({ ...s, [k]: !s[k] }));
+  const anyMechanism = layers.hepatocyte || layers.kupffer || layers.bile;
 
   useEffect(() => {
     if (!playing) return;
