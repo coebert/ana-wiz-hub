@@ -619,10 +619,15 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                         x: number; y: number;
                         hw: number; hh: number;
                       };
-                      const FS = 2.1;
+                      // Counter-scale font/stroke against the zoom transform so
+                      // labels stay at roughly constant screen size as users zoom.
+                      // Floor at scale=1, gentle taper above (sqrt) so labels still
+                      // shrink relative to the plate but never become microscopic.
+                      const zoomComp = 1 / Math.sqrt(Math.max(1, scale));
+                      const FS = 2.1 * zoomComp;
                       const charW = FS * 0.55;
-                      const padX = 0.6;
-                      const padY = 0.5;
+                      const padX = 0.6 * zoomComp;
+                      const padY = 0.5 * zoomComp;
                       const boxes: Box[] = [];
                       active.labels.forEach((label, idx) => {
                         if (!label.polygon || label.polygon.length < 3) return;
