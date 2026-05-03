@@ -5,6 +5,7 @@ import {
   VascularAccessDevicesDiagram,
   VascularAccessCrossSectionDiagram,
 } from "@/components/diagrams/VascularAccessDevicesDiagram";
+import { VascularAccessTypesDiagram } from "@/components/diagrams/VascularAccessTypesDiagram";
 import { vascularAccessDevicesQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
