@@ -110,30 +110,58 @@ const PeripheralCannula: React.FC = () => (
        className="w-full h-auto">
     <SharedDefs />
 
-    {/* Forearm cuff fading in */}
-    <path d="M0,200 L0,150 C20,140 35,130 55,125 L55,205 Z"
-          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={0.8} />
+    {/* Forearm — tapering distally with ulnar styloid bulge */}
+    <path d="M0,200 C5,180 8,160 12,148 C20,140 35,134 50,130
+             C58,128 64,128 70,130 L70,205 L0,205 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Wrist crease */}
+    <path d="M50,131 C58,134 64,135 70,134" stroke={SkinShade} strokeWidth={0.6} fill="none" opacity={0.7}/>
+    <path d="M52,138 C60,141 66,142 70,141" stroke={SkinShade} strokeWidth={0.5} fill="none" opacity={0.55}/>
+    {/* Ulnar styloid prominence */}
+    <ellipse cx={58} cy={132} rx={5} ry={3} fill={SkinShade} opacity={0.5}/>
 
-    {/* Hand silhouette — palmar/dorsal view */}
+    {/* Hand — dorsal view, anatomically tapered */}
     <path d="
-      M55,125
-      C70,118 95,112 120,108
-      L130,55  C131,48 138,45 142,52 L142,100
-      L150,40  C151,33 159,32 162,40 L160,100
-      L170,38  C172,31 180,32 181,40 L173,102
-      L188,48  C190,42 197,43 197,50 L185,108
-      C210,115 230,128 240,150
-      C248,170 245,195 232,210
-      L55,210 Z"
+      M70,130
+      C82,128 96,124 108,120
+      C118,118 126,116 132,114
+      L134,68  C134,60 140,57 144,62 L146,108
+      L152,55  C153,47 161,47 162,55 L160,106
+      L171,53  C172,45 180,46 180,54 L172,108
+      L188,62  C190,55 197,56 196,63 L184,114
+      C200,118 215,124 228,134
+      C244,148 248,170 240,190
+      C234,202 222,210 208,210
+      L70,210 Z"
       fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1} strokeLinejoin="round"
     />
-    {/* Knuckle creases */}
-    {[140, 158, 173, 188].map((x, i) => (
-      <ellipse key={i} cx={x} cy={108 + (i === 1 || i === 2 ? -1 : 0)}
-               rx={5} ry={2} fill={SkinShade} opacity={0.6} />
+    {/* Thumb (radial side, abducted) */}
+    <path d="M70,142 C58,144 50,150 46,160 C44,168 48,176 56,178
+             C66,178 74,170 78,158 L72,150 Z"
+          fill="url(#skinGrad)" stroke={SkinEdge} strokeWidth={1}/>
+    {/* Thenar eminence */}
+    <ellipse cx={75} cy={165} rx={9} ry={6} fill={SkinShade} opacity={0.35}/>
+    {/* Knuckles (MCP joint creases) */}
+    {[
+      [144, 116], [158, 113], [173, 114], [188, 118]
+    ].map(([x, y], i) => (
+      <ellipse key={i} cx={x} cy={y} rx={4.5} ry={2} fill={SkinShade} opacity={0.55}/>
     ))}
-    {/* Skin shading on dorsum */}
-    <ellipse cx={150} cy={170} rx={70} ry={28} fill={SkinShade} opacity={0.25} />
+    {/* PIP creases on extended fingers */}
+    {[[143, 90],[157, 82],[172, 80],[188, 88]].map(([x,y],i)=>(
+      <ellipse key={`p-${i}`} cx={x} cy={y} rx={3.2} ry={1.2} fill={SkinShade} opacity={0.45}/>
+    ))}
+    {/* Finger nails */}
+    {[[143, 60],[157, 50],[172, 48],[188, 58]].map(([x,y],i)=>(
+      <ellipse key={`n-${i}`} cx={x} cy={y} rx={2.4} ry={2.8} fill="hsl(28 35% 86%)" stroke={SkinEdge} strokeWidth={0.3} opacity={0.85}/>
+    ))}
+    {/* Extensor tendon shading on dorsum */}
+    {[[100,165,140,118],[112,170,156,116],[124,172,170,118],[140,170,186,122]].map(([x1,y1,x2,y2],i)=>(
+      <line key={`et-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
+            stroke={SkinShade} strokeWidth={1.2} opacity={0.35} strokeLinecap="round"/>
+    ))}
+    {/* Metacarpal shadow */}
+    <ellipse cx={140} cy={170} rx={55} ry={20} fill={SkinShade} opacity={0.18}/>
 
     {/* Dorsal venous network — superficial veins */}
     {/* Cephalic-leading metacarpal */}
