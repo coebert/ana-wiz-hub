@@ -395,9 +395,9 @@ const NonTunnelledCVC: React.FC = () => (
     <path d="M155,108 C170,108 195,112 215,118" stroke={Bone} strokeWidth={5.5} strokeLinecap="round" fill="none"/>
     {/* Sternum */}
     <rect x="146" y="115" width="8" height="50" rx="3" fill={Bone} stroke={BoneEdge} strokeWidth={0.4}/>
-    {/* Ribs */}
-    {[130, 145, 160, 175].map((y, i) => (
-      <path key={i} d={`M95,${y} Q150,${y + 8} 205,${y}`}
+    {/* Ribs — 18 px intercostal spacing, span 100→200 (shared scale) */}
+    {[130, 148, 166, 184].map((y, i) => (
+      <path key={i} d={`M100,${y} Q150,${y + 8} 200,${y}`}
             stroke={BoneEdge} strokeWidth={0.5} fill="none" opacity={0.35}/>
     ))}
 
