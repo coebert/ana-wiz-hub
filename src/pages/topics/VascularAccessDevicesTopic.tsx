@@ -541,6 +541,9 @@ const VascularAccessDevicesTopic = () => {
         "RIC converts a peripheral cannula to a wide-bore line; MAC introducer combines a side-port for rapid volume with a central lumen for vasopressors / PAC.",
         "Swan-Ganz sheath = introducer, not the PAC. Wide bore doubles as a high-flow resus line; specific complication is PA rupture if a PAC is wedged for too long.",
         "All CVC insertions use the NICE TA49 ultrasound-guidance bundle, maximum barrier precautions and 2% chlorhexidine; CXR confirmation of tip position before elective use.",
+        "Long-term access: Hickman (open-ended, heparin lock), Groshong (slit valve, saline only), Portacath (fully implanted, lowest CRBSI ≈ 0.1/1000 catheter-days), Permcath (tunnelled HD).",
+        "Dwell times: peripheral cannulae are now removed when clinically indicated (Rickard 2012, Cochrane 2019, epic3) — routine 72–96 h replacement no longer recommended.",
+        "Site evidence (3SITES, NEJM 2015): subclavian lowest CRBSI & DVT but highest pneumothorax; femoral highest infection & DVT; right IJ is the default compromise. Avoid femoral when possible.",
       ]}
     />
   );
