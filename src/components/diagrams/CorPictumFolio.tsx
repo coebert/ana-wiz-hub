@@ -618,7 +618,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                       );
                     })}
                     {/* Always-on direct labels with overlap-avoidance + leaders */}
-                    {(() => {
+                    {!suppressOverlayLabels && (() => {
                       type Box = {
                         idx: number;
                         text: string;
