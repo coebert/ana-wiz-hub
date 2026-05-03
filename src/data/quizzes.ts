@@ -1507,3 +1507,60 @@ export const patientPositioningQuestions: QuizQuestion[] = [
   { question: "The peripheral nerve MOST commonly injured in the lithotomy position is the:", options: ["Sciatic nerve", "Common peroneal nerve at the fibular head", "Femoral nerve at the inguinal ligament", "Obturator nerve"], correctIndex: 1, explanation: "Common peroneal palsy from compression against the lithotomy stirrup at the fibular head is the commonest position-related neuropathy in lithotomy. Femoral and sciatic stretch injuries also occur but less often. Adequate padding and limiting hip flexion to <90° are key preventative measures." },
 ];
 
+export const vascularAccessDevicesQuestions: QuizQuestion[] = [
+  {
+    question: "A 70-year-old needs noradrenaline and parenteral nutrition for ICU admission. Which device is most appropriate?",
+    options: [
+      "16 G peripheral cannula in the antecubital fossa",
+      "20 cm midline catheter in the basilic vein",
+      "7 Fr triple-lumen central venous catheter, right internal jugular",
+      "4 Fr single-lumen PICC, basilic vein",
+    ],
+    correctIndex: 2,
+    explanation: "Vasopressors and TPN are vesicant/hyperosmolar and require a central tip in the SVC. A peripheral cannula or midline ends in a peripheral vein and risks extravasation injury. A PICC has a central tip but the narrow single lumen cannot run multiple incompatible infusions plus CVP transduction; a 7 Fr triple-lumen CVC is the standard answer.",
+  },
+  {
+    question: "Two devices have the same internal radius but the second is twice the length. By what factor does the maximum flow rate change for a Newtonian fluid?",
+    options: [
+      "Halved",
+      "Quartered",
+      "Reduced 8-fold",
+      "Reduced 16-fold",
+    ],
+    correctIndex: 0,
+    explanation: "Hagen–Poiseuille: flow ∝ r⁴ / length. Doubling length halves the flow. This is why a short, wide RIC or MAC introducer outperforms a long, narrow triple-lumen CVC for resuscitation despite the CVC having a central tip.",
+  },
+  {
+    question: "Which statement about midline catheters is TRUE?",
+    options: [
+      "They are central venous access devices because the tip lies in the SVC",
+      "They are suitable for vasopressor infusion",
+      "Their tip lies in the axillary vein and they are NOT central lines",
+      "They are inserted using the femoral approach",
+    ],
+    correctIndex: 2,
+    explanation: "Midlines are 8–20 cm catheters inserted into a deep arm vein with the tip terminating in the axillary vein. They are peripheral devices — vesicants, vasopressors, TPN and pH-extreme drugs are contraindicated. Suitable for ≤4 weeks of standard IV therapy.",
+  },
+  {
+    question: "Which site is LEAST preferred for a tunnelled or vascath insertion in a patient with end-stage renal disease likely to need an AV-fistula?",
+    options: [
+      "Right internal jugular vein",
+      "Femoral vein",
+      "Left internal jugular vein",
+      "Subclavian vein",
+    ],
+    correctIndex: 3,
+    explanation: "KDIGO 2012 recommends avoiding the subclavian route in patients who may need future AV-fistula formation, because subclavian catheter use carries the highest rate of central venous stenosis, which compromises ipsilateral upper-limb fistula function. Order of preference for acute RRT access: right IJ > femoral > left IJ > subclavian.",
+  },
+  {
+    question: "A Swan-Ganz introducer sheath:",
+    options: [
+      "Is the same device as the pulmonary artery catheter",
+      "Is typically 4 Fr and used only for CVP measurement",
+      "Has a haemostatic valve and side-port allowing PAC passage with simultaneous fluid administration",
+      "Should never be used for fluid resuscitation",
+    ],
+    correctIndex: 2,
+    explanation: "The introducer (sometimes called the 'Swan sheath') is an 8.5–9 Fr percutaneous central sheath with a haemostatic valve through which a 7.5 Fr PAC, pacing wire or other device may be passed. The integrated side-port allows rapid fluid administration concurrently. Because the lumen is wide and short, the sheath itself doubles as an excellent resus line.",
+  },
+];
