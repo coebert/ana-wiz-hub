@@ -319,12 +319,17 @@ const SceneHandCannula: React.FC = () => {
       <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-vein)`} strokeWidth={3.5} fill="none" opacity={0.6}/>
       <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-veinLumen)`} strokeWidth={1.4} fill="none" opacity={0.85}/>
 
-      {/* Cannula — entering from right, lying along vein */}
-      <g filter={`url(#${id}-shadow)`}>
-        {/* shaft inside vein */}
-        <line x1={155} y1={56} x2={125} y2={59} stroke="hsl(45 25% 92%)" strokeWidth={3} strokeLinecap="round" />
-        <line x1={155} y1={56} x2={125} y2={59} stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3} strokeLinecap="round" opacity={0.3}/>
-      </g>
+      {/* Cannula — entering from right, advancing into vein */}
+      <AnimatedAdvance
+        d="M155,56 L125,59"
+        stroke="hsl(45 25% 92%)"
+        strokeWidth={3}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="3.6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2}
+      />
       <CannulaHub x={155} y={52} color="hsl(330 70% 55%)" id={id} />
       {/* Insertion site */}
       <circle cx={155} cy={56} r={2.2} fill="hsl(0 60% 35%)" opacity={0.7}/>
