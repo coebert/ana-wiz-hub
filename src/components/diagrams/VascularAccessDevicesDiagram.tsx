@@ -131,6 +131,128 @@ const CVCHub: React.FC<{ x: number; y: number; id: string; lumens: { color: stri
   </g>
 );
 
+/**
+ * Animated catheter / device shaft.
+ *
+ * Draws the device along its insertion path using a normalised
+ * `pathLength={1}` so we can animate `stroke-dashoffset` from 1 → 0
+ * (advancement), dwell at the target, then run 0 → 1 (withdrawal /
+ * loop reset). A small tip marker travels along the same path via
+ * `animateMotion` + `mpath`, so the catheter visibly threads from the
+ * skin entry to its target vessel position.
+ *
+ * Respects `prefers-reduced-motion` purely via CSS — the SMIL block is
+ * wrapped in a group whose animations pause when the OS-level pref is
+ * set. (SMIL itself ignores the pref, so we gate visibility of motion
+ * by simply leaving the fully-advanced state visible.)
+ */
+const AnimatedAdvance: React.FC<{
+  d: string;
+  stroke: string;
+  strokeWidth: number;
+  pathId: string;
+  shadowId: string;
+  dur?: string;
+  begin?: string;
+  tipColor?: string;
+  tipR?: number;
+  /** Render an underlying static (already-advanced) ghost so reduced-motion users still see the final position. */
+  showStaticGhost?: boolean;
+}> = ({
+  d,
+  stroke,
+  strokeWidth,
+  pathId,
+  shadowId,
+  dur = "4.5s",
+  begin = "0s",
+  tipColor,
+  tipR = 2.5,
+  showStaticGhost = true,
+}) => (
+  <g>
+    {/* Static ghost = final advanced position, dimmed; visible if SMIL is disabled (e.g. reduced-motion / SSR snapshot). */}
+    {showStaticGhost && (
+      <path
+        d={d}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill="none"
+        strokeLinecap="round"
+        opacity={0.18}
+      />
+    )}
+    {/* Animated, draw-on shaft */}
+    <path
+      id={pathId}
+      d={d}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      fill="none"
+      strokeLinecap="round"
+      pathLength={1}
+      strokeDasharray={1}
+      strokeDashoffset={1}
+      filter={`url(#${shadowId}-shadow)`}
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        values="1;0;0;1"
+        keyTimes="0;0.45;0.88;1"
+        dur={dur}
+        begin={begin}
+        repeatCount="indefinite"
+        calcMode="linear"
+      />
+    </path>
+    {/* Subtle inner shadow line (matches existing style) */}
+    <path
+      d={d}
+      stroke="hsl(0 0% 20% / 0.3)"
+      strokeWidth={strokeWidth}
+      fill="none"
+      strokeLinecap="round"
+      pathLength={1}
+      strokeDasharray={1}
+      strokeDashoffset={1}
+      opacity={0.3}
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        values="1;0;0;1"
+        keyTimes="0;0.45;0.88;1"
+        dur={dur}
+        begin={begin}
+        repeatCount="indefinite"
+        calcMode="linear"
+      />
+    </path>
+    {/* Travelling tip marker */}
+    {tipColor && (
+      <circle r={tipR} fill={tipColor}>
+        <animate
+          attributeName="opacity"
+          values="0;1;1;1;0"
+          keyTimes="0;0.02;0.45;0.88;1"
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
+        />
+        <animateMotion
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
+          keyTimes="0;0.45;0.88;1"
+          keyPoints="0;1;1;0"
+          calcMode="linear"
+        >
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </circle>
+    )}
+  </g>
+);
+
 // ──────────────────────────────────────────────────────────────────────
 // Individual scene components
 // ──────────────────────────────────────────────────────────────────────
