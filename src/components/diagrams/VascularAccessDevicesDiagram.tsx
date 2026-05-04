@@ -502,17 +502,17 @@ const ScenePICC: React.FC = () => {
         stroke={`url(#${id}-veinLumen)`} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.85}
       />
 
-      {/* PICC catheter inside vein */}
-      <path
+      {/* PICC catheter advancing basilic → axillary → subclavian → SVC */}
+      <AnimatedAdvance
         d="M400,90 L 280,90 C 252,90 232,82 217,72 C 202,62 180,62 160,68 C 140,74 126,82 116,94 C 109,103 102,114 96,126"
-        stroke={`url(#${id}-cath)`} strokeWidth={3} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2.5}
       />
-      <path
-        d="M400,90 L 280,90 C 252,90 232,82 217,72 C 202,62 180,62 160,68 C 140,74 126,82 116,94 C 109,103 102,114 96,126"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.25}
-      />
-      {/* Tip marker at SVC/CAJ */}
-      <circle cx={96} cy={126} r={2.5} fill="hsl(0 70% 50%)" />
       <text x={88} y={148} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>SVC / CAJ</text>
 
       {/* Hub with two pigtails (dual-lumen PICC) */}
