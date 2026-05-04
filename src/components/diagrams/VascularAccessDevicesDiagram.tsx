@@ -757,8 +757,10 @@ export const VascularAccessDevicesDiagram: React.FC = () => {
           Each device is illustrated <em>in situ</em> on its true insertion
           site — peripheral cannulae in hand and antecubital fossa veins,
           central devices in the right internal jugular descending to the
-          SVC. Shaft thickness reflects relative French sizes; lumen count
-          and hub colour follow ISO conventions.
+          SVC. Watch each catheter advance from skin entry to its target
+          vessel position, dwell, then retract on loop. Shaft thickness
+          reflects relative French sizes; lumen count and hub colour follow
+          ISO conventions.
         </p>
       </figcaption>
 
