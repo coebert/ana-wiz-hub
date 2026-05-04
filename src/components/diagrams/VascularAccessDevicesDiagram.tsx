@@ -376,10 +376,17 @@ const SceneACF14G: React.FC = () => {
       <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-vein)`} strokeWidth={5} fill="none" opacity={0.6}/>
       <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-veinLumen)`} strokeWidth={2} fill="none" opacity={0.85}/>
 
-      {/* 14G cannula — wide bore */}
-      <g filter={`url(#${id}-shadow)`}>
-        <line x1={170} y1={75} x2={130} y2={70} stroke="hsl(45 25% 92%)" strokeWidth={4.5} strokeLinecap="round" />
-      </g>
+      {/* 14G cannula — wide bore, advancing into median cubital v. */}
+      <AnimatedAdvance
+        d="M170,75 L130,70"
+        stroke="hsl(45 25% 92%)"
+        strokeWidth={4.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="3.6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2.4}
+      />
       <CannulaHub x={170} y={70} color="hsl(28 85% 55%)" width={26} id={id} />
       <circle cx={170} cy={73} r={2.5} fill="hsl(0 60% 35%)" opacity={0.7}/>
 
