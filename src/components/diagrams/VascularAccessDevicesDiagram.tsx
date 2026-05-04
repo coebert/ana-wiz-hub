@@ -426,11 +426,17 @@ const SceneMidline: React.FC = () => {
       <line x1={20} y1={55.5} x2={310} y2={55.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
       <line x1={20} y1={64.5} x2={310} y2={64.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
 
-      {/* Catheter inside vein from right (entry) toward left (axilla) */}
-      <line x1={245} y1={60} x2={50} y2={60} stroke={`url(#${id}-cath)`} strokeWidth={3.5} strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <line x1={245} y1={60} x2={50} y2={60} stroke="hsl(0 0% 20% / 0.25)" strokeWidth={3.5} strokeLinecap="round" opacity={0.3}/>
-      {/* Tip taper */}
-      <circle cx={50} cy={60} r={2} fill="hsl(45 25% 80%)" />
+      {/* Catheter advancing from entry (right) to axilla (left) */}
+      <AnimatedAdvance
+        d="M245,60 L50,60"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(45 25% 80%)"
+        tipR={2}
+      />
 
       {/* Hub at insertion */}
       <CannulaHub x={245} y={56} color="hsl(210 35% 45%)" width={24} id={id} />
