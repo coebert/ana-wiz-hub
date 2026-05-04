@@ -572,13 +572,17 @@ const SceneCVC: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* CVC catheter — entering right neck, descending into SVC */}
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
-        stroke={`url(#${id}-cath)`} strokeWidth={3.5} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.3}/>
-      {/* Tip */}
-      <circle cx={174} cy={178} r={2.5} fill="hsl(0 70% 45%)"/>
+      {/* CVC catheter — advancing from neck entry down into SVC */}
+      <AnimatedAdvance
+        d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(0 70% 45%)"
+        tipR={2.5}
+      />
       <text x={180} y={196} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>tip — lower SVC</text>
 
       {/* Suture wings */}
