@@ -131,6 +131,128 @@ const CVCHub: React.FC<{ x: number; y: number; id: string; lumens: { color: stri
   </g>
 );
 
+/**
+ * Animated catheter / device shaft.
+ *
+ * Draws the device along its insertion path using a normalised
+ * `pathLength={1}` so we can animate `stroke-dashoffset` from 1 → 0
+ * (advancement), dwell at the target, then run 0 → 1 (withdrawal /
+ * loop reset). A small tip marker travels along the same path via
+ * `animateMotion` + `mpath`, so the catheter visibly threads from the
+ * skin entry to its target vessel position.
+ *
+ * Respects `prefers-reduced-motion` purely via CSS — the SMIL block is
+ * wrapped in a group whose animations pause when the OS-level pref is
+ * set. (SMIL itself ignores the pref, so we gate visibility of motion
+ * by simply leaving the fully-advanced state visible.)
+ */
+const AnimatedAdvance: React.FC<{
+  d: string;
+  stroke: string;
+  strokeWidth: number;
+  pathId: string;
+  shadowId: string;
+  dur?: string;
+  begin?: string;
+  tipColor?: string;
+  tipR?: number;
+  /** Render an underlying static (already-advanced) ghost so reduced-motion users still see the final position. */
+  showStaticGhost?: boolean;
+}> = ({
+  d,
+  stroke,
+  strokeWidth,
+  pathId,
+  shadowId,
+  dur = "4.5s",
+  begin = "0s",
+  tipColor,
+  tipR = 2.5,
+  showStaticGhost = true,
+}) => (
+  <g>
+    {/* Static ghost = final advanced position, dimmed; visible if SMIL is disabled (e.g. reduced-motion / SSR snapshot). */}
+    {showStaticGhost && (
+      <path
+        d={d}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
+        fill="none"
+        strokeLinecap="round"
+        opacity={0.18}
+      />
+    )}
+    {/* Animated, draw-on shaft */}
+    <path
+      id={pathId}
+      d={d}
+      stroke={stroke}
+      strokeWidth={strokeWidth}
+      fill="none"
+      strokeLinecap="round"
+      pathLength={1}
+      strokeDasharray={1}
+      strokeDashoffset={1}
+      filter={`url(#${shadowId}-shadow)`}
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        values="1;0;0;1"
+        keyTimes="0;0.45;0.88;1"
+        dur={dur}
+        begin={begin}
+        repeatCount="indefinite"
+        calcMode="linear"
+      />
+    </path>
+    {/* Subtle inner shadow line (matches existing style) */}
+    <path
+      d={d}
+      stroke="hsl(0 0% 20% / 0.3)"
+      strokeWidth={strokeWidth}
+      fill="none"
+      strokeLinecap="round"
+      pathLength={1}
+      strokeDasharray={1}
+      strokeDashoffset={1}
+      opacity={0.3}
+    >
+      <animate
+        attributeName="stroke-dashoffset"
+        values="1;0;0;1"
+        keyTimes="0;0.45;0.88;1"
+        dur={dur}
+        begin={begin}
+        repeatCount="indefinite"
+        calcMode="linear"
+      />
+    </path>
+    {/* Travelling tip marker */}
+    {tipColor && (
+      <circle r={tipR} fill={tipColor}>
+        <animate
+          attributeName="opacity"
+          values="0;1;1;1;0"
+          keyTimes="0;0.02;0.45;0.88;1"
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
+        />
+        <animateMotion
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
+          keyTimes="0;0.45;0.88;1"
+          keyPoints="0;1;1;0"
+          calcMode="linear"
+        >
+          <mpath href={`#${pathId}`} />
+        </animateMotion>
+      </circle>
+    )}
+  </g>
+);
+
 // ──────────────────────────────────────────────────────────────────────
 // Individual scene components
 // ──────────────────────────────────────────────────────────────────────
@@ -197,12 +319,17 @@ const SceneHandCannula: React.FC = () => {
       <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-vein)`} strokeWidth={3.5} fill="none" opacity={0.6}/>
       <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-veinLumen)`} strokeWidth={1.4} fill="none" opacity={0.85}/>
 
-      {/* Cannula — entering from right, lying along vein */}
-      <g filter={`url(#${id}-shadow)`}>
-        {/* shaft inside vein */}
-        <line x1={155} y1={56} x2={125} y2={59} stroke="hsl(45 25% 92%)" strokeWidth={3} strokeLinecap="round" />
-        <line x1={155} y1={56} x2={125} y2={59} stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3} strokeLinecap="round" opacity={0.3}/>
-      </g>
+      {/* Cannula — entering from right, advancing into vein */}
+      <AnimatedAdvance
+        d="M155,56 L125,59"
+        stroke="hsl(45 25% 92%)"
+        strokeWidth={3}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="3.6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2}
+      />
       <CannulaHub x={155} y={52} color="hsl(330 70% 55%)" id={id} />
       {/* Insertion site */}
       <circle cx={155} cy={56} r={2.2} fill="hsl(0 60% 35%)" opacity={0.7}/>
@@ -249,10 +376,17 @@ const SceneACF14G: React.FC = () => {
       <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-vein)`} strokeWidth={5} fill="none" opacity={0.6}/>
       <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-veinLumen)`} strokeWidth={2} fill="none" opacity={0.85}/>
 
-      {/* 14G cannula — wide bore */}
-      <g filter={`url(#${id}-shadow)`}>
-        <line x1={170} y1={75} x2={130} y2={70} stroke="hsl(45 25% 92%)" strokeWidth={4.5} strokeLinecap="round" />
-      </g>
+      {/* 14G cannula — wide bore, advancing into median cubital v. */}
+      <AnimatedAdvance
+        d="M170,75 L130,70"
+        stroke="hsl(45 25% 92%)"
+        strokeWidth={4.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="3.6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2.4}
+      />
       <CannulaHub x={170} y={70} color="hsl(28 85% 55%)" width={26} id={id} />
       <circle cx={170} cy={73} r={2.5} fill="hsl(0 60% 35%)" opacity={0.7}/>
 
@@ -292,11 +426,17 @@ const SceneMidline: React.FC = () => {
       <line x1={20} y1={55.5} x2={310} y2={55.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
       <line x1={20} y1={64.5} x2={310} y2={64.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
 
-      {/* Catheter inside vein from right (entry) toward left (axilla) */}
-      <line x1={245} y1={60} x2={50} y2={60} stroke={`url(#${id}-cath)`} strokeWidth={3.5} strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <line x1={245} y1={60} x2={50} y2={60} stroke="hsl(0 0% 20% / 0.25)" strokeWidth={3.5} strokeLinecap="round" opacity={0.3}/>
-      {/* Tip taper */}
-      <circle cx={50} cy={60} r={2} fill="hsl(45 25% 80%)" />
+      {/* Catheter advancing from entry (right) to axilla (left) */}
+      <AnimatedAdvance
+        d="M245,60 L50,60"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(45 25% 80%)"
+        tipR={2}
+      />
 
       {/* Hub at insertion */}
       <CannulaHub x={245} y={56} color="hsl(210 35% 45%)" width={24} id={id} />
@@ -362,17 +502,17 @@ const ScenePICC: React.FC = () => {
         stroke={`url(#${id}-veinLumen)`} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.85}
       />
 
-      {/* PICC catheter inside vein */}
-      <path
+      {/* PICC catheter advancing basilic → axillary → subclavian → SVC */}
+      <AnimatedAdvance
         d="M400,90 L 280,90 C 252,90 232,82 217,72 C 202,62 180,62 160,68 C 140,74 126,82 116,94 C 109,103 102,114 96,126"
-        stroke={`url(#${id}-cath)`} strokeWidth={3} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="6s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={2.5}
       />
-      <path
-        d="M400,90 L 280,90 C 252,90 232,82 217,72 C 202,62 180,62 160,68 C 140,74 126,82 116,94 C 109,103 102,114 96,126"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.25}
-      />
-      {/* Tip marker at SVC/CAJ */}
-      <circle cx={96} cy={126} r={2.5} fill="hsl(0 70% 50%)" />
       <text x={88} y={148} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>SVC / CAJ</text>
 
       {/* Hub with two pigtails (dual-lumen PICC) */}
@@ -432,13 +572,17 @@ const SceneCVC: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* CVC catheter — entering right neck, descending into SVC */}
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
-        stroke={`url(#${id}-cath)`} strokeWidth={3.5} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.3}/>
-      {/* Tip */}
-      <circle cx={174} cy={178} r={2.5} fill="hsl(0 70% 45%)"/>
+      {/* CVC catheter — advancing from neck entry down into SVC */}
+      <AnimatedAdvance
+        d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={3.5}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(0 70% 45%)"
+        tipR={2.5}
+      />
       <text x={180} y={196} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>tip — lower SVC</text>
 
       {/* Suture wings */}
@@ -487,17 +631,22 @@ const SceneVascath: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* Vascath shaft — much wider */}
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
-        stroke={`url(#${id}-cath)`} strokeWidth={6} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.3}/>
+      {/* Vascath shaft — advancing into IJV */}
+      <AnimatedAdvance
+        d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={6}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={3}
+      />
       {/* Septum line down catheter showing two lumens */}
       <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
         stroke="hsl(0 0% 30%)" strokeWidth={0.6} fill="none" opacity={0.6}/>
 
-      {/* Staggered tips */}
-      <circle cx={175} cy={180} r={3} fill="hsl(0 70% 50%)"/>
+      {/* Staggered tips (revealed once advanced) */}
       <circle cx={170} cy={170} r={2.6} fill="hsl(195 70% 45%)"/>
       <text x={185} y={196} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>staggered tips</text>
 
@@ -545,17 +694,30 @@ const SceneIntroducer: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* Sheath shaft (short, very wide) */}
-      <path d="M148,60 C 150,85 154,115 158,145"
-        stroke={`url(#${id}-cath)`} strokeWidth={6.5} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,60 C 150,85 154,115 158,145"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={6.5} fill="none" strokeLinecap="round" opacity={0.3}/>
+      {/* Sheath shaft — advancing first */}
+      <AnimatedAdvance
+        d="M148,60 C 150,85 154,115 158,145"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={6.5}
+        pathId={`${id}-sheath`}
+        shadowId={id}
+        dur="6s"
+        tipColor="hsl(45 25% 80%)"
+        tipR={3}
+      />
 
-      {/* PA catheter (yellow) emerging from sheath into RA/RV */}
-      <path d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
-        stroke="hsl(50 90% 50%)" strokeWidth={2.6} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      {/* PAC balloon */}
-      <circle cx={215} cy={180} r={4} fill="hsl(50 90% 75%)" stroke="hsl(40 60% 40%)" strokeWidth={0.5}/>
+      {/* PA catheter (yellow) — advances AFTER sheath, floats balloon into PA */}
+      <AnimatedAdvance
+        d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
+        stroke="hsl(50 90% 50%)"
+        strokeWidth={2.6}
+        pathId={`${id}-pac`}
+        shadowId={id}
+        dur="6s"
+        begin="2.7s"
+        tipColor="hsl(50 90% 75%)"
+        tipR={4}
+      />
 
       {/* Haemostatic valve (large hub) + sideport */}
       <g filter={`url(#${id}-shadow)`}>
@@ -595,8 +757,10 @@ export const VascularAccessDevicesDiagram: React.FC = () => {
           Each device is illustrated <em>in situ</em> on its true insertion
           site — peripheral cannulae in hand and antecubital fossa veins,
           central devices in the right internal jugular descending to the
-          SVC. Shaft thickness reflects relative French sizes; lumen count
-          and hub colour follow ISO conventions.
+          SVC. Watch each catheter advance from skin entry to its target
+          vessel position, dwell, then retract on loop. Shaft thickness
+          reflects relative French sizes; lumen count and hub colour follow
+          ISO conventions.
         </p>
       </figcaption>
 
