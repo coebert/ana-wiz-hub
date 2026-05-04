@@ -631,17 +631,22 @@ const SceneVascath: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* Vascath shaft — much wider */}
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
-        stroke={`url(#${id}-cath)`} strokeWidth={6} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.3}/>
+      {/* Vascath shaft — advancing into IJV */}
+      <AnimatedAdvance
+        d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={6}
+        pathId={`${id}-shaft`}
+        shadowId={id}
+        dur="5s"
+        tipColor="hsl(0 70% 50%)"
+        tipR={3}
+      />
       {/* Septum line down catheter showing two lumens */}
       <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
         stroke="hsl(0 0% 30%)" strokeWidth={0.6} fill="none" opacity={0.6}/>
 
-      {/* Staggered tips */}
-      <circle cx={175} cy={180} r={3} fill="hsl(0 70% 50%)"/>
+      {/* Staggered tips (revealed once advanced) */}
       <circle cx={170} cy={170} r={2.6} fill="hsl(195 70% 45%)"/>
       <text x={185} y={196} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>staggered tips</text>
 
