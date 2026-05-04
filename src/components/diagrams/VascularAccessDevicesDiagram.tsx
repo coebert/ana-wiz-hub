@@ -694,17 +694,30 @@ const SceneIntroducer: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* Sheath shaft (short, very wide) */}
-      <path d="M148,60 C 150,85 154,115 158,145"
-        stroke={`url(#${id}-cath)`} strokeWidth={6.5} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      <path d="M148,60 C 150,85 154,115 158,145"
-        stroke="hsl(0 0% 20% / 0.3)" strokeWidth={6.5} fill="none" strokeLinecap="round" opacity={0.3}/>
+      {/* Sheath shaft — advancing first */}
+      <AnimatedAdvance
+        d="M148,60 C 150,85 154,115 158,145"
+        stroke={`url(#${id}-cath)`}
+        strokeWidth={6.5}
+        pathId={`${id}-sheath`}
+        shadowId={id}
+        dur="6s"
+        tipColor="hsl(45 25% 80%)"
+        tipR={3}
+      />
 
-      {/* PA catheter (yellow) emerging from sheath into RA/RV */}
-      <path d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
-        stroke="hsl(50 90% 50%)" strokeWidth={2.6} fill="none" strokeLinecap="round" filter={`url(#${id}-shadow)`}/>
-      {/* PAC balloon */}
-      <circle cx={215} cy={180} r={4} fill="hsl(50 90% 75%)" stroke="hsl(40 60% 40%)" strokeWidth={0.5}/>
+      {/* PA catheter (yellow) — advances AFTER sheath, floats balloon into PA */}
+      <AnimatedAdvance
+        d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
+        stroke="hsl(50 90% 50%)"
+        strokeWidth={2.6}
+        pathId={`${id}-pac`}
+        shadowId={id}
+        dur="6s"
+        begin="2.7s"
+        tipColor="hsl(50 90% 75%)"
+        tipR={4}
+      />
 
       {/* Haemostatic valve (large hub) + sideport */}
       <g filter={`url(#${id}-shadow)`}>
