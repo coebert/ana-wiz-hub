@@ -763,27 +763,49 @@ const SceneIntroducer: React.FC = () => {
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
-      {/* Sheath shaft — advancing first */}
+      {/*
+        Sheath + PA stagger — both share a single 9 s loop so the PA
+        catheter begins ADVANCING at the exact moment the sheath tip
+        reaches its final IJV position, and the sheath stays in place
+        (dwell) for the entire duration that the PA is in motion.
+
+        Timeline (one cycle, 9 s):
+          t = 0.0 s  → sheath starts advancing
+          t = 2.0 s  → sheath tip at SVC junction (advance ends)  ◀── PA begins HERE
+          t = 2.0 s  → PA starts advancing through the sheath
+          t = 4.0 s  → PA balloon floats into PA (advance ends)
+          t = 7.5 s  → PA withdraws (dwell ends)
+          t = 8.0 s  → PA fully out
+          t = 8.0 s  → sheath withdraws (dwell ends)
+          t = 9.0 s  → sheath fully out, loop restarts
+
+        Sheath advance fraction: 2/9 ≈ 0.222
+        Sheath dwell-end fraction: 8/9 ≈ 0.889
+        PA begin offset = sheath advance duration = 2 s exactly.
+      */}
+      {/* Sheath shaft — advancing first, then dwelling while PA is threaded */}
       <AnimatedAdvance
         d="M148,60 C 150,85 154,115 158,145"
         stroke={`url(#${id}-cath)`}
         strokeWidth={6.5}
         pathId={`${id}-sheath`}
         shadowId={id}
-        dur="6s"
+        dur="9s"
+        keyTimes="0;0.222;0.889;1"
         tipColor="hsl(45 25% 80%)"
         tipR={3}
       />
 
-      {/* PA catheter (yellow) — advances AFTER sheath, floats balloon into PA */}
+      {/* PA catheter (yellow) — begins exactly when sheath tip lands */}
       <AnimatedAdvance
         d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
         stroke="hsl(50 90% 50%)"
         strokeWidth={2.6}
         pathId={`${id}-pac`}
         shadowId={id}
-        dur="6s"
-        begin="2.7s"
+        dur="9s"
+        begin="2s"
+        keyTimes="0;0.222;0.611;0.667"
         tipColor="hsl(50 90% 75%)"
         tipR={4}
       />
