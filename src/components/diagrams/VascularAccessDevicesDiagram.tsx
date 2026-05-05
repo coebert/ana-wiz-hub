@@ -837,10 +837,9 @@ const SceneIntroducer: React.FC = () => {
         pathId={`${id}-pac`}
         shadowId={id}
         dur="12s"
-        // 5-point: pre-delay end (0.15 = 1.8s) → advance end (0.30 = 3.6s) →
-        // dwell end (0.717 = 8.6s) → withdraw end (0.80 = 9.6s).
-        // PA stays "withdrawn" (hidden) from 9.6s → 12s while sheath withdraws.
-        keyTimes="0;0.15;0.30;0.717;0.80"
+        // 6-point: pre-delay (0→0.15 = sheath advancing) → advance (0.15→0.30) →
+        // dwell (0.30→0.717) → withdraw (0.717→0.80) → post-hold (0.80→1, sheath withdrawing).
+        keyTimes="0;0.15;0.30;0.717;0.80;1"
         tipColor="hsl(50 90% 75%)"
         tipR={4}
       />
