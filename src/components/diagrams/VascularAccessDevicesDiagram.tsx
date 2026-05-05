@@ -257,77 +257,92 @@ const AnimatedAdvance: React.FC<{
           opacity={0.18}
         />
       )}
-      {/* Animated, draw-on shaft */}
-      <path
-        id={pathId}
-        d={d}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-        fill="none"
-        strokeLinecap="round"
-        pathLength={1}
-        strokeDasharray={1}
-        strokeDashoffset={1}
-        filter={`url(#${shadowId}-shadow)`}
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          values="1;0;0;1"
-          keyTimes={keyTimes}
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
-          calcMode="linear"
-        />
-      </path>
-      {/* Subtle inner shadow line (matches existing style) */}
-      <path
-        d={d}
-        stroke="hsl(0 0% 20% / 0.3)"
-        strokeWidth={strokeWidth}
-        fill="none"
-        strokeLinecap="round"
-        pathLength={1}
-        strokeDasharray={1}
-        strokeDashoffset={1}
-        opacity={0.3}
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          values="1;0;0;1"
-          keyTimes={keyTimes}
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
-          calcMode="linear"
-        />
-      </path>
-      {/* Travelling tip marker — opacity ramps in just after advance starts,
-          fades out as withdrawal completes. Synced to the same keyTimes. */}
-      {tipColor && (() => {
-        const kt = keyTimes.split(";").map(Number); // [start, advanceEnd, dwellEnd, end]
-        const tipOpacityKeyTimes = `0;${(kt[0] + 0.02).toFixed(3)};${kt[1]};${kt[2]};${kt[3]}`;
+      {/* Animated, draw-on shaft.
+          keyTimes may be 4-point (advance → dwell → withdraw → end)
+          or 5-point (pre-delay → advance → dwell → withdraw → end),
+          which lets staggered devices share a single loop period. */}
+      {(() => {
+        const kt = keyTimes.split(";").map(Number);
+        const isFivePoint = kt.length === 5;
+        // Shaft dash schedule: 1 = hidden, 0 = fully drawn.
+        const shaftValues = isFivePoint ? "1;1;0;0;1" : "1;0;0;1";
+        // Tip motion along the path (0 → tip at start, 1 → tip at end).
+        const motionKeyPoints = isFivePoint ? "0;0;1;1;0" : "0;1;1;0";
+        // Tip opacity: invisible during pre-delay, on during advance + dwell, fades on withdraw.
+        const tipOpacityKeyTimes = isFivePoint
+          ? `0;${kt[1].toFixed(3)};${(kt[1] + 0.02).toFixed(3)};${kt[2]};${kt[3]};1`
+          : `0;${(kt[0] + 0.02).toFixed(3)};${kt[1]};${kt[2]};${kt[3]}`;
+        const tipOpacityValues = isFivePoint ? "0;0;1;1;1;0" : "0;1;1;1;0";
         return (
-          <circle r={tipR} fill={tipColor}>
-            <animate
-              attributeName="opacity"
-              values="0;1;1;1;0"
-              keyTimes={tipOpacityKeyTimes}
-              dur={dur}
-              begin={begin}
-              repeatCount="indefinite"
-            />
-            <animateMotion
-              dur={dur}
-              begin={begin}
-              repeatCount="indefinite"
-              keyTimes={keyTimes}
-              keyPoints="0;1;1;0"
-              calcMode="linear"
+          <>
+            <path
+              id={pathId}
+              d={d}
+              stroke={stroke}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1}
+              filter={`url(#${shadowId}-shadow)`}
             >
-              <mpath href={`#${pathId}`} />
-            </animateMotion>
-          </circle>
+              <animate
+                attributeName="stroke-dashoffset"
+                values={shaftValues}
+                keyTimes={keyTimes}
+                dur={dur}
+                begin={begin}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+            {/* Subtle inner shadow line */}
+            <path
+              d={d}
+              stroke="hsl(0 0% 20% / 0.3)"
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1}
+              opacity={0.3}
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                values={shaftValues}
+                keyTimes={keyTimes}
+                dur={dur}
+                begin={begin}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+            {/* Travelling tip marker */}
+            {tipColor && (
+              <circle r={tipR} fill={tipColor}>
+                <animate
+                  attributeName="opacity"
+                  values={tipOpacityValues}
+                  keyTimes={tipOpacityKeyTimes}
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                />
+                <animateMotion
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                  keyTimes={keyTimes}
+                  keyPoints={motionKeyPoints}
+                  calcMode="linear"
+                >
+                  <mpath href={`#${pathId}`} />
+                </animateMotion>
+              </circle>
+            )}
+          </>
         );
       })()}
     </g>
