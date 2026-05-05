@@ -175,6 +175,12 @@ const AnimatedAdvance: React.FC<{
   tipR?: number;
   /** Render an underlying static (already-advanced) ghost so reduced-motion users still see the final position. */
   showStaticGhost?: boolean;
+  /**
+   * Override the 4-keyframe schedule (advance → dwell → withdraw → reset).
+   * Defaults to "0;0.45;0.88;1". Use to coordinate staggered devices on a
+   * shared loop (e.g. PA catheter must wait until sheath dwell starts).
+   */
+  keyTimes?: string;
 }> = ({
   d,
   stroke,
@@ -186,6 +192,7 @@ const AnimatedAdvance: React.FC<{
   tipColor,
   tipR = 2.5,
   showStaticGhost = true,
+  keyTimes = "0;0.45;0.88;1",
 }) => {
   const reduced = usePrefersReducedMotion();
 
