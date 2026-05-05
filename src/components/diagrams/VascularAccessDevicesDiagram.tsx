@@ -257,77 +257,98 @@ const AnimatedAdvance: React.FC<{
           opacity={0.18}
         />
       )}
-      {/* Animated, draw-on shaft */}
-      <path
-        id={pathId}
-        d={d}
-        stroke={stroke}
-        strokeWidth={strokeWidth}
-        fill="none"
-        strokeLinecap="round"
-        pathLength={1}
-        strokeDasharray={1}
-        strokeDashoffset={1}
-        filter={`url(#${shadowId}-shadow)`}
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          values="1;0;0;1"
-          keyTimes={keyTimes}
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
-          calcMode="linear"
-        />
-      </path>
-      {/* Subtle inner shadow line (matches existing style) */}
-      <path
-        d={d}
-        stroke="hsl(0 0% 20% / 0.3)"
-        strokeWidth={strokeWidth}
-        fill="none"
-        strokeLinecap="round"
-        pathLength={1}
-        strokeDasharray={1}
-        strokeDashoffset={1}
-        opacity={0.3}
-      >
-        <animate
-          attributeName="stroke-dashoffset"
-          values="1;0;0;1"
-          keyTimes={keyTimes}
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
-          calcMode="linear"
-        />
-      </path>
-      {/* Travelling tip marker — opacity ramps in just after advance starts,
-          fades out as withdrawal completes. Synced to the same keyTimes. */}
-      {tipColor && (() => {
-        const kt = keyTimes.split(";").map(Number); // [start, advanceEnd, dwellEnd, end]
-        const tipOpacityKeyTimes = `0;${(kt[0] + 0.02).toFixed(3)};${kt[1]};${kt[2]};${kt[3]}`;
+      {/* Animated, draw-on shaft.
+          keyTimes may be 4-point (advance → dwell → withdraw → end)
+          or 5-point (pre-delay → advance → dwell → withdraw → end),
+          which lets staggered devices share a single loop period. */}
+      {(() => {
+        const kt = keyTimes.split(";").map(Number);
+        const n = kt.length;
+        // Supported schedules (all share the same loop dur so multiple
+        // staggered devices can be choreographed against each other):
+        //   4-point: advance → dwell → withdraw → end
+        //   5-point: pre-delay → advance → dwell → withdraw → end
+        //   6-point: pre-delay → advance → dwell → withdraw → post-hold → end
+        //            (device stays hidden during post-hold while another
+        //             device finishes its own withdrawal)
+        const shaftValues =
+          n === 6 ? "1;1;0;0;1;1" : n === 5 ? "1;1;0;0;1" : "1;0;0;1";
+        const motionKeyPoints =
+          n === 6 ? "0;0;1;1;0;0" : n === 5 ? "0;0;1;1;0" : "0;1;1;0";
+        // Tip opacity reuses the same keyTimes for simplicity.
+        const tipOpacityValues =
+          n === 6 ? "0;0;1;1;0;0" : n === 5 ? "0;0;1;1;0" : "0;1;1;0";
+        const tipOpacityKeyTimes = keyTimes;
         return (
-          <circle r={tipR} fill={tipColor}>
-            <animate
-              attributeName="opacity"
-              values="0;1;1;1;0"
-              keyTimes={tipOpacityKeyTimes}
-              dur={dur}
-              begin={begin}
-              repeatCount="indefinite"
-            />
-            <animateMotion
-              dur={dur}
-              begin={begin}
-              repeatCount="indefinite"
-              keyTimes={keyTimes}
-              keyPoints="0;1;1;0"
-              calcMode="linear"
+          <>
+            <path
+              id={pathId}
+              d={d}
+              stroke={stroke}
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1}
+              filter={`url(#${shadowId}-shadow)`}
             >
-              <mpath href={`#${pathId}`} />
-            </animateMotion>
-          </circle>
+              <animate
+                attributeName="stroke-dashoffset"
+                values={shaftValues}
+                keyTimes={keyTimes}
+                dur={dur}
+                begin={begin}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+            {/* Subtle inner shadow line */}
+            <path
+              d={d}
+              stroke="hsl(0 0% 20% / 0.3)"
+              strokeWidth={strokeWidth}
+              fill="none"
+              strokeLinecap="round"
+              pathLength={1}
+              strokeDasharray={1}
+              strokeDashoffset={1}
+              opacity={0.3}
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                values={shaftValues}
+                keyTimes={keyTimes}
+                dur={dur}
+                begin={begin}
+                repeatCount="indefinite"
+                calcMode="linear"
+              />
+            </path>
+            {/* Travelling tip marker */}
+            {tipColor && (
+              <circle r={tipR} fill={tipColor}>
+                <animate
+                  attributeName="opacity"
+                  values={tipOpacityValues}
+                  keyTimes={tipOpacityKeyTimes}
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                />
+                <animateMotion
+                  dur={dur}
+                  begin={begin}
+                  repeatCount="indefinite"
+                  keyTimes={keyTimes}
+                  keyPoints={motionKeyPoints}
+                  calcMode="linear"
+                >
+                  <mpath href={`#${pathId}`} />
+                </animateMotion>
+              </circle>
+            )}
+          </>
         );
       })()}
     </g>
@@ -776,48 +797,49 @@ const SceneIntroducer: React.FC = () => {
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
       {/*
-        Sheath + PA stagger — both share a single 9 s loop so the PA
-        catheter begins ADVANCING at the exact moment the sheath tip
-        reaches its final IJV position, and the sheath stays in place
-        (dwell) for the entire duration that the PA is in motion.
+        Sheath + PA choreography — both share a single 12 s loop so the
+        SHEATH only begins withdrawing AFTER the PA catheter is fully
+        clear, with anatomically plausible dwell for each segment:
 
-        Timeline (one cycle, 9 s):
-          t = 0.0 s  → sheath starts advancing
-          t = 2.0 s  → sheath tip at SVC junction (advance ends)  ◀── PA begins HERE
-          t = 2.0 s  → PA starts advancing through the sheath
-          t = 4.0 s  → PA balloon floats into PA (advance ends)
-          t = 7.5 s  → PA withdraws (dwell ends)
-          t = 8.0 s  → PA fully out
-          t = 8.0 s  → sheath withdraws (dwell ends)
-          t = 9.0 s  → sheath fully out, loop restarts
+          0.0 s  sheath advancing through skin → SVC                 (1.8 s)
+          1.8 s  sheath tip lands at SVC junction
+          1.8 s  PA pre-delay ends; PA balloon floated out of sheath (1.8 s)
+          3.6 s  PA balloon wedged in PA (advance complete)
+          3.6 → 8.6 s  PA dwells in wedge position                    (5.0 s)
+          8.6 → 9.6 s  PA withdrawn back through sheath               (1.0 s)
+          9.6 s  PA fully clear of sheath
+          9.6 → 10.6 s  sheath dwells empty (operator removes PA)     (1.0 s)
+         10.6 → 12.0 s  sheath withdrawn from IJV                     (1.4 s)
 
-        Sheath advance fraction: 2/9 ≈ 0.222
-        Sheath dwell-end fraction: 8/9 ≈ 0.889
-        PA begin offset = sheath advance duration = 2 s exactly.
+        Both devices use a SHARED 12 s loop with five-point keyTimes
+        (pre-delay → advance → dwell → withdraw → end) so the timing is
+        guaranteed in lock-step on every repeat.
       */}
-      {/* Sheath shaft — advancing first, then dwelling while PA is threaded */}
+      {/* Sheath — advances first, dwells through entire PA cycle, withdraws last */}
       <AnimatedAdvance
         d="M148,60 C 150,85 154,115 158,145"
         stroke={`url(#${id}-cath)`}
         strokeWidth={6.5}
         pathId={`${id}-sheath`}
         shadowId={id}
-        dur="9s"
-        keyTimes="0;0.222;0.889;1"
+        dur="12s"
+        // 0 → 0 (no pre-delay), 0.15 (advance 0-1.8s), 0.883 (dwell ends 10.6s), 1 (withdraw ends 12s)
+        keyTimes="0;0;0.15;0.883;1"
         tipColor="hsl(45 25% 80%)"
         tipR={3}
       />
 
-      {/* PA catheter (yellow) — begins exactly when sheath tip lands */}
+      {/* PA catheter — pre-delays while sheath advances, then advances/dwells/withdraws fully inside that window */}
       <AnimatedAdvance
         d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
         stroke="hsl(50 90% 50%)"
         strokeWidth={2.6}
         pathId={`${id}-pac`}
         shadowId={id}
-        dur="9s"
-        begin="2s"
-        keyTimes="0;0.222;0.611;0.667"
+        dur="12s"
+        // 6-point: pre-delay (0→0.15 = sheath advancing) → advance (0.15→0.30) →
+        // dwell (0.30→0.717) → withdraw (0.717→0.80) → post-hold (0.80→1, sheath withdrawing).
+        keyTimes="0;0.15;0.30;0.717;0.80;1"
         tipColor="hsl(50 90% 75%)"
         tipR={4}
       />
