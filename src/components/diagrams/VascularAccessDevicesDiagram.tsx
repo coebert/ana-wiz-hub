@@ -273,7 +273,7 @@ const AnimatedAdvance: React.FC<{
         <animate
           attributeName="stroke-dashoffset"
           values="1;0;0;1"
-          keyTimes="0;0.45;0.88;1"
+          keyTimes={keyTimes}
           dur={dur}
           begin={begin}
           repeatCount="indefinite"
@@ -295,36 +295,41 @@ const AnimatedAdvance: React.FC<{
         <animate
           attributeName="stroke-dashoffset"
           values="1;0;0;1"
-          keyTimes="0;0.45;0.88;1"
+          keyTimes={keyTimes}
           dur={dur}
           begin={begin}
           repeatCount="indefinite"
           calcMode="linear"
         />
       </path>
-      {/* Travelling tip marker */}
-      {tipColor && (
-        <circle r={tipR} fill={tipColor}>
-          <animate
-            attributeName="opacity"
-            values="0;1;1;1;0"
-            keyTimes="0;0.02;0.45;0.88;1"
-            dur={dur}
-            begin={begin}
-            repeatCount="indefinite"
-          />
-          <animateMotion
-            dur={dur}
-            begin={begin}
-            repeatCount="indefinite"
-            keyTimes="0;0.45;0.88;1"
-            keyPoints="0;1;1;0"
-            calcMode="linear"
-          >
-            <mpath href={`#${pathId}`} />
-          </animateMotion>
-        </circle>
-      )}
+      {/* Travelling tip marker — opacity ramps in just after advance starts,
+          fades out as withdrawal completes. Synced to the same keyTimes. */}
+      {tipColor && (() => {
+        const kt = keyTimes.split(";").map(Number); // [start, advanceEnd, dwellEnd, end]
+        const tipOpacityKeyTimes = `0;${(kt[0] + 0.02).toFixed(3)};${kt[1]};${kt[2]};${kt[3]}`;
+        return (
+          <circle r={tipR} fill={tipColor}>
+            <animate
+              attributeName="opacity"
+              values="0;1;1;1;0"
+              keyTimes={tipOpacityKeyTimes}
+              dur={dur}
+              begin={begin}
+              repeatCount="indefinite"
+            />
+            <animateMotion
+              dur={dur}
+              begin={begin}
+              repeatCount="indefinite"
+              keyTimes={keyTimes}
+              keyPoints="0;1;1;0"
+              calcMode="linear"
+            >
+              <mpath href={`#${pathId}`} />
+            </animateMotion>
+          </circle>
+        );
+      })()}
     </g>
   );
 };
