@@ -1,4 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+/**
+ * Hook: returns true if the user has requested reduced motion at the OS level.
+ * Updates live if the preference changes. SSR-safe (returns false on server).
+ */
+const usePrefersReducedMotion = (): boolean => {
+  const [reduced, setReduced] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener?.("change", onChange);
+    return () => mq.removeEventListener?.("change", onChange);
+  }, []);
+  return reduced;
+};
 
 /**
  * Vascular access devices — anatomically illustrated.
