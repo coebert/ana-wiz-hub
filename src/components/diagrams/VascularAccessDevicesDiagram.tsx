@@ -791,48 +791,49 @@ const SceneIntroducer: React.FC = () => {
         fill="hsl(0 45% 55%)" opacity={0.3}/>
 
       {/*
-        Sheath + PA stagger — both share a single 9 s loop so the PA
-        catheter begins ADVANCING at the exact moment the sheath tip
-        reaches its final IJV position, and the sheath stays in place
-        (dwell) for the entire duration that the PA is in motion.
+        Sheath + PA choreography — both share a single 12 s loop so the
+        SHEATH only begins withdrawing AFTER the PA catheter is fully
+        clear, with anatomically plausible dwell for each segment:
 
-        Timeline (one cycle, 9 s):
-          t = 0.0 s  → sheath starts advancing
-          t = 2.0 s  → sheath tip at SVC junction (advance ends)  ◀── PA begins HERE
-          t = 2.0 s  → PA starts advancing through the sheath
-          t = 4.0 s  → PA balloon floats into PA (advance ends)
-          t = 7.5 s  → PA withdraws (dwell ends)
-          t = 8.0 s  → PA fully out
-          t = 8.0 s  → sheath withdraws (dwell ends)
-          t = 9.0 s  → sheath fully out, loop restarts
+          0.0 s  sheath advancing through skin → SVC                 (1.8 s)
+          1.8 s  sheath tip lands at SVC junction
+          1.8 s  PA pre-delay ends; PA balloon floated out of sheath (1.8 s)
+          3.6 s  PA balloon wedged in PA (advance complete)
+          3.6 → 8.6 s  PA dwells in wedge position                    (5.0 s)
+          8.6 → 9.6 s  PA withdrawn back through sheath               (1.0 s)
+          9.6 s  PA fully clear of sheath
+          9.6 → 10.6 s  sheath dwells empty (operator removes PA)     (1.0 s)
+         10.6 → 12.0 s  sheath withdrawn from IJV                     (1.4 s)
 
-        Sheath advance fraction: 2/9 ≈ 0.222
-        Sheath dwell-end fraction: 8/9 ≈ 0.889
-        PA begin offset = sheath advance duration = 2 s exactly.
+        Both devices use a SHARED 12 s loop with five-point keyTimes
+        (pre-delay → advance → dwell → withdraw → end) so the timing is
+        guaranteed in lock-step on every repeat.
       */}
-      {/* Sheath shaft — advancing first, then dwelling while PA is threaded */}
+      {/* Sheath — advances first, dwells through entire PA cycle, withdraws last */}
       <AnimatedAdvance
         d="M148,60 C 150,85 154,115 158,145"
         stroke={`url(#${id}-cath)`}
         strokeWidth={6.5}
         pathId={`${id}-sheath`}
         shadowId={id}
-        dur="9s"
-        keyTimes="0;0.222;0.889;1"
+        dur="12s"
+        // 0 → 0 (no pre-delay), 0.15 (advance 0-1.8s), 0.883 (dwell ends 10.6s), 1 (withdraw ends 12s)
+        keyTimes="0;0;0.15;0.883;1"
         tipColor="hsl(45 25% 80%)"
         tipR={3}
       />
 
-      {/* PA catheter (yellow) — begins exactly when sheath tip lands */}
+      {/* PA catheter — pre-delays while sheath advances, then advances/dwells/withdraws fully inside that window */}
       <AnimatedAdvance
         d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
         stroke="hsl(50 90% 50%)"
         strokeWidth={2.6}
         pathId={`${id}-pac`}
         shadowId={id}
-        dur="9s"
-        begin="2s"
-        keyTimes="0;0.222;0.611;0.667"
+        dur="12s"
+        // 0 → 0.15 (PA invisible while sheath advances), 0.30 (PA advance ends 3.6s),
+        // 0.717 (PA dwell ends 8.6s), 0.80 (PA fully withdrawn 9.6s), 1 (loop end)
+        keyTimes="0;0.15;0.30;0.717;0.80;1"
         tipColor="hsl(50 90% 75%)"
         tipR={4}
       />
