@@ -1,4 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+/**
+ * Hook: returns true if the user has requested reduced motion at the OS level.
+ * Updates live if the preference changes. SSR-safe (returns false on server).
+ */
+const usePrefersReducedMotion = (): boolean => {
+  const [reduced, setReduced] = useState<boolean>(false);
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener?.("change", onChange);
+    return () => mq.removeEventListener?.("change", onChange);
+  }, []);
+  return reduced;
+};
 
 /**
  * Vascular access devices — anatomically illustrated.
@@ -169,89 +186,141 @@ const AnimatedAdvance: React.FC<{
   tipColor,
   tipR = 2.5,
   showStaticGhost = true,
-}) => (
-  <g>
-    {/* Static ghost = final advanced position, dimmed; visible if SMIL is disabled (e.g. reduced-motion / SSR snapshot). */}
-    {showStaticGhost && (
+}) => {
+  const reduced = usePrefersReducedMotion();
+
+  // Reduced-motion: render only the final advanced position — no SMIL,
+  // no travelling tip, no draw-on. Catheter is shown solid at its target.
+  if (reduced) {
+    return (
+      <g aria-label="Device shown in final advanced position (animations disabled — reduced motion)">
+        <path
+          d={d}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          fill="none"
+          strokeLinecap="round"
+          filter={`url(#${shadowId}-shadow)`}
+        />
+        <path
+          d={d}
+          stroke="hsl(0 0% 20% / 0.3)"
+          strokeWidth={strokeWidth}
+          fill="none"
+          strokeLinecap="round"
+          opacity={0.3}
+        />
+        {tipColor && (
+          // Tip rendered at end of path using a marker-end so it sits at the target vessel.
+          <>
+            <defs>
+              <marker
+                id={`${pathId}-tip`}
+                viewBox="0 0 10 10"
+                refX="5"
+                refY="5"
+                markerWidth={tipR * 2}
+                markerHeight={tipR * 2}
+              >
+                <circle cx="5" cy="5" r="5" fill={tipColor} />
+              </marker>
+            </defs>
+            <path
+              d={d}
+              stroke="transparent"
+              fill="none"
+              markerEnd={`url(#${pathId}-tip)`}
+            />
+          </>
+        )}
+      </g>
+    );
+  }
+
+  return (
+    <g>
+      {/* Static ghost = final advanced position, dimmed; visible if SMIL is disabled (e.g. SSR snapshot). */}
+      {showStaticGhost && (
+        <path
+          d={d}
+          stroke={stroke}
+          strokeWidth={strokeWidth}
+          fill="none"
+          strokeLinecap="round"
+          opacity={0.18}
+        />
+      )}
+      {/* Animated, draw-on shaft */}
       <path
+        id={pathId}
         d={d}
         stroke={stroke}
         strokeWidth={strokeWidth}
         fill="none"
         strokeLinecap="round"
-        opacity={0.18}
-      />
-    )}
-    {/* Animated, draw-on shaft */}
-    <path
-      id={pathId}
-      d={d}
-      stroke={stroke}
-      strokeWidth={strokeWidth}
-      fill="none"
-      strokeLinecap="round"
-      pathLength={1}
-      strokeDasharray={1}
-      strokeDashoffset={1}
-      filter={`url(#${shadowId}-shadow)`}
-    >
-      <animate
-        attributeName="stroke-dashoffset"
-        values="1;0;0;1"
-        keyTimes="0;0.45;0.88;1"
-        dur={dur}
-        begin={begin}
-        repeatCount="indefinite"
-        calcMode="linear"
-      />
-    </path>
-    {/* Subtle inner shadow line (matches existing style) */}
-    <path
-      d={d}
-      stroke="hsl(0 0% 20% / 0.3)"
-      strokeWidth={strokeWidth}
-      fill="none"
-      strokeLinecap="round"
-      pathLength={1}
-      strokeDasharray={1}
-      strokeDashoffset={1}
-      opacity={0.3}
-    >
-      <animate
-        attributeName="stroke-dashoffset"
-        values="1;0;0;1"
-        keyTimes="0;0.45;0.88;1"
-        dur={dur}
-        begin={begin}
-        repeatCount="indefinite"
-        calcMode="linear"
-      />
-    </path>
-    {/* Travelling tip marker */}
-    {tipColor && (
-      <circle r={tipR} fill={tipColor}>
+        pathLength={1}
+        strokeDasharray={1}
+        strokeDashoffset={1}
+        filter={`url(#${shadowId}-shadow)`}
+      >
         <animate
-          attributeName="opacity"
-          values="0;1;1;1;0"
-          keyTimes="0;0.02;0.45;0.88;1"
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
-        />
-        <animateMotion
-          dur={dur}
-          begin={begin}
-          repeatCount="indefinite"
+          attributeName="stroke-dashoffset"
+          values="1;0;0;1"
           keyTimes="0;0.45;0.88;1"
-          keyPoints="0;1;1;0"
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
           calcMode="linear"
-        >
-          <mpath href={`#${pathId}`} />
-        </animateMotion>
-      </circle>
-    )}
-  </g>
-);
+        />
+      </path>
+      {/* Subtle inner shadow line (matches existing style) */}
+      <path
+        d={d}
+        stroke="hsl(0 0% 20% / 0.3)"
+        strokeWidth={strokeWidth}
+        fill="none"
+        strokeLinecap="round"
+        pathLength={1}
+        strokeDasharray={1}
+        strokeDashoffset={1}
+        opacity={0.3}
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values="1;0;0;1"
+          keyTimes="0;0.45;0.88;1"
+          dur={dur}
+          begin={begin}
+          repeatCount="indefinite"
+          calcMode="linear"
+        />
+      </path>
+      {/* Travelling tip marker */}
+      {tipColor && (
+        <circle r={tipR} fill={tipColor}>
+          <animate
+            attributeName="opacity"
+            values="0;1;1;1;0"
+            keyTimes="0;0.02;0.45;0.88;1"
+            dur={dur}
+            begin={begin}
+            repeatCount="indefinite"
+          />
+          <animateMotion
+            dur={dur}
+            begin={begin}
+            repeatCount="indefinite"
+            keyTimes="0;0.45;0.88;1"
+            keyPoints="0;1;1;0"
+            calcMode="linear"
+          >
+            <mpath href={`#${pathId}`} />
+          </animateMotion>
+        </circle>
+      )}
+    </g>
+  );
+};
 
 // ──────────────────────────────────────────────────────────────────────
 // Individual scene components
