@@ -263,16 +263,22 @@ const AnimatedAdvance: React.FC<{
           which lets staggered devices share a single loop period. */}
       {(() => {
         const kt = keyTimes.split(";").map(Number);
-        const isFivePoint = kt.length === 5;
-        // Shaft dash schedule: 1 = hidden, 0 = fully drawn.
-        const shaftValues = isFivePoint ? "1;1;0;0;1" : "1;0;0;1";
-        // Tip motion along the path (0 → tip at start, 1 → tip at end).
-        const motionKeyPoints = isFivePoint ? "0;0;1;1;0" : "0;1;1;0";
-        // Tip opacity: invisible during pre-delay, on during advance + dwell, fades on withdraw.
-        const tipOpacityKeyTimes = isFivePoint
-          ? `0;${kt[1].toFixed(3)};${(kt[1] + 0.02).toFixed(3)};${kt[2]};${kt[3]};1`
-          : `0;${(kt[0] + 0.02).toFixed(3)};${kt[1]};${kt[2]};${kt[3]}`;
-        const tipOpacityValues = isFivePoint ? "0;0;1;1;1;0" : "0;1;1;1;0";
+        const n = kt.length;
+        // Supported schedules (all share the same loop dur so multiple
+        // staggered devices can be choreographed against each other):
+        //   4-point: advance → dwell → withdraw → end
+        //   5-point: pre-delay → advance → dwell → withdraw → end
+        //   6-point: pre-delay → advance → dwell → withdraw → post-hold → end
+        //            (device stays hidden during post-hold while another
+        //             device finishes its own withdrawal)
+        const shaftValues =
+          n === 6 ? "1;1;0;0;1;1" : n === 5 ? "1;1;0;0;1" : "1;0;0;1";
+        const motionKeyPoints =
+          n === 6 ? "0;0;1;1;0;0" : n === 5 ? "0;0;1;1;0" : "0;1;1;0";
+        // Tip opacity reuses the same keyTimes for simplicity.
+        const tipOpacityValues =
+          n === 6 ? "0;0;1;1;0;0" : n === 5 ? "0;0;1;1;0" : "0;1;1;0";
+        const tipOpacityKeyTimes = keyTimes;
         return (
           <>
             <path
