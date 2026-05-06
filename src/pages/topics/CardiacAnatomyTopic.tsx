@@ -48,6 +48,24 @@ const CardiacAnatomyTopic = () => {
           <CardiacAnatomyDiagram />
 
           <DiagramSection
+            title="Systemic circulation overview"
+            intro="Whole-body map of the major systemic arteries with the great vessels and pulmonary circulation labelled around an enlarged heart inset. Useful for orientating regional anatomy (upper limb, thoracic/abdominal aorta, pelvic, lower limb) against the central cardiac plumbing."
+          >
+            <figure className="rounded-xl border border-border bg-card overflow-hidden">
+              <img
+                src={systemicCirculationOverview}
+                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
+                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
+              </figcaption>
+            </figure>
+          </DiagramSection>
+
+
+          <DiagramSection
             title="Painted plates — heart, valves & conduction"
             intro="Interactive Cor Pictum folio: scroll or pinch to zoom, drag to pan, and hover a label or region to highlight the matching structure on the plate. Labels are tagged for Primary, Final and FFICM and respect the global exam filter."
           >
