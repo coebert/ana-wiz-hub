@@ -2,6 +2,7 @@ import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { cardiacAnatomyQuestions } from "@/data/quizzes";
 import CardiacAnatomyDiagram from "@/components/diagrams/CardiacAnatomyDiagram";
+import systemicCirculationOverview from "@/assets/plates/systemic-circulation-overview.jpg";
 import CoronaryTerritoryMapDiagram from "@/components/diagrams/CoronaryTerritoryMapDiagram";
 import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
@@ -45,6 +46,24 @@ const CardiacAnatomyTopic = () => {
       diagrams={
         <>
           <CardiacAnatomyDiagram />
+
+          <DiagramSection
+            title="Systemic circulation overview"
+            intro="Whole-body map of the major systemic arteries with the great vessels and pulmonary circulation labelled around an enlarged heart inset. Useful for orientating regional anatomy (upper limb, thoracic/abdominal aorta, pelvic, lower limb) against the central cardiac plumbing."
+          >
+            <figure className="rounded-xl border border-border bg-card overflow-hidden">
+              <img
+                src={systemicCirculationOverview}
+                alt="Annotated diagram of the systemic arterial circulation, great vessels, and an enlarged heart showing chambers and coronary arteries"
+                className="w-full h-auto"
+                loading="lazy"
+              />
+              <figcaption className="text-xs text-muted-foreground p-3 border-t border-border">
+                Major arteries of the systemic circulation with great vessels of the heart and pulmonary circulation.
+              </figcaption>
+            </figure>
+          </DiagramSection>
+
 
           <DiagramSection
             title="Painted plates — heart, valves & conduction"
