@@ -160,6 +160,7 @@ const BurnsIcuTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Get the denominator right — over- or underestimating %TBSA both kill. Exclude erythema-only (superficial epidermal) burns.
             </p>
+            <BurnResuscitationDiagram />
             <div className="space-y-3">
               {[
                 { tool: "Wallace’s Rule of Nines (adult)", detail: "Head 9 · each arm 9 · each leg 18 · anterior trunk 18 · posterior trunk 18 · perineum 1. Patient’s palm + fingers ≈ 1 % TBSA — useful for patchy burns." },
