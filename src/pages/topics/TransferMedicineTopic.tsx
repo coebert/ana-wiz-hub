@@ -129,6 +129,16 @@ const TransferMedicineTopic = () => {
       ]}
       coreConcepts={
         <>
+          <ExamSection id="checklist" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">End-to-End Transfer Checklist</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              An interactive proforma covering the five sequential phases of a critically-ill transfer:
+              decision &amp; team, ABCDE stabilisation, equipment / drugs / oxygen, ISBAR handover, and
+              post-transfer documentation. Tick each item before departing the referring unit.
+            </p>
+            <CriticalTransferChecklist />
+          </ExamSection>
+
           <ExamSection id="principles" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Principles of Safe Transfer</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
