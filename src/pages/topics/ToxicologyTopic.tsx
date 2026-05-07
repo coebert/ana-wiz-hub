@@ -288,6 +288,88 @@ const ToxicologyTopic = () => {
               </table>
             </div>
           </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Ricin</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Ricin is a 64-kDa lectin toxin (A + B chain) extracted from <em>Ricinus communis</em> (castor bean). The B-chain
+              binds galactose residues on cell surfaces; the A-chain is internalised and depurinates 28S rRNA, irreversibly
+              halting protein synthesis and causing apoptosis. It is a Schedule 1 chemical weapon and a CDC Category B
+              bioterror agent (1978 Markov "umbrella" assassination, 2013 US ricin letters).
+            </p>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Routes &amp; clinical syndromes</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>Inhalation</strong> (lethal dose ~1–10 µg/kg): 4–8 h latency → fever, cough, dyspnoea, ARDS, refractory hypoxaemia, shock; death within 36–72 h.</li>
+                  <li><strong>Ingestion</strong> (lethal dose ~1–20 mg/kg, requires chewing seeds): haemorrhagic gastroenteritis, hepatic and renal failure, multi-organ failure over days.</li>
+                  <li><strong>Injection / dart</strong> (Markov, 0.5 mg pellet): local pain and induration → fever, hypotension, vascular collapse, MOF in 24–72 h.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Diagnosis</p>
+                <p className="text-sm text-muted-foreground">Clinical (cluster of casualties + epidemiology). Confirmation by ELISA, PCR for castor-bean DNA, mass spectrometry on serum/nasal swabs/environmental samples — via the UK Health Security Agency (UKHSA, formerly PHE Porton Down).</p>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Management</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>No specific antidote.</strong> Vaccines (RiVax, RVEc) are in trials only.</li>
+                  <li><strong>Decontamination</strong>: remove and double-bag clothing; wash skin with soap and water (not for primary protection — toxin is not dermally active in intact skin); standard PPE protects staff (not volatile, not contagious).</li>
+                  <li><strong>Supportive ICU care</strong>: protective lung ventilation for ARDS, vasopressors, RRT for AKI, blood products for haemorrhagic colitis, nutritional support, NAC and antioxidants empirically.</li>
+                  <li><strong>Notify</strong> UKHSA, police (CT-SFO), HART team, HAZMAT; secure scene; counsel staff (no person-to-person spread).</li>
+                </ul>
+              </div>
+            </div>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FFICM, Exam.EDIC]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Novichok &amp; Organophosphate Nerve Agents</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Novichok ("newcomer") agents are fourth-generation organophosphate (OP) nerve agents developed by the Soviet Foviet-1 programme
+              (A-230, A-232, A-234). They are 5–8× more potent than VX, can be delivered as a binary (two relatively safe precursors mixed
+              on use), and persist as oily liquids at room temperature (Salisbury 2018; Navalny 2020). Mechanism is identical to other OPs —
+              irreversible inhibition of acetylcholinesterase causing cholinergic crisis — but ageing of the enzyme–OP bond is rapid, making
+              early oxime therapy critical.
+            </p>
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Toxidrome — DUMBELS &amp; killer Bs</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>Muscarinic (DUMBELS)</strong>: Diarrhoea, Urination, Miosis, Bronchorrhoea/Bronchospasm, Emesis, Lacrimation, Salivation.</li>
+                  <li><strong>Killer Bs</strong>: <em>B</em>radycardia, <em>B</em>ronchorrhoea, <em>B</em>ronchospasm — the proximate causes of death.</li>
+                  <li><strong>Nicotinic</strong>: muscle fasciculation → flaccid paralysis, tachycardia, hypertension.</li>
+                  <li><strong>Central</strong>: agitation → coma, seizures, central apnoea.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Decontamination &amp; staff protection</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>PPE</strong>: full Powered Respirator Protective Suit (PRPS / Level A) for primary responders; standard contact + droplet precautions in resus once decontaminated. <em>Off-gassing</em> is a real risk for healthcare staff.</li>
+                  <li><strong>Disrobe + dry decontamination</strong> removes ~90 % of agent; then wet decontamination with soap and water, eyes irrigated; secure clothing as evidence.</li>
+                  <li>Trigger HART, HAZMAT, UKHSA CBRN team; declare a CBRN major incident; police lead crime scene.</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Resuscitation &amp; antidotes</p>
+                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                  <li><strong>Atropine</strong> 1.2–2 mg IV doubling every 3–5 min until secretions dry and bronchospasm resolves (mydriasis and tachycardia are <em>not</em> end-points). Doses of 50–100+ mg in 24 h are not unusual; run as infusion (0.02–0.08 mg/kg/h).</li>
+                  <li><strong>Pralidoxime (2-PAM)</strong> 30 mg/kg IV bolus then 8 mg/kg/h infusion — must be given <em>before</em> ageing of the AChE–OP complex. Novichok ages within minutes to hours; benefit may be limited and is debated, but give it.</li>
+                  <li><strong>Benzodiazepines</strong> (midazolam 10 mg IM / IV, repeat) — first-line anticonvulsant and reduces central toxicity; give empirically with severe exposure.</li>
+                  <li><strong>Airway</strong>: RSI for secretions, bronchospasm or coma. <em>Avoid suxamethonium</em> — metabolised by plasma cholinesterase (also inhibited) → prolonged paralysis (hours). Use rocuronium with sugammadex on standby.</li>
+                  <li><strong>Ventilation</strong>: lung-protective; suction copious secretions; expect prolonged mechanical ventilation (Skripals: weeks; Navalny: weeks).</li>
+                  <li><strong>Adjuncts</strong>: glycopyrronium for ongoing secretions; magnesium for bronchospasm and reduced ACh release; consider intralipid for refractory cardiotoxicity (case reports only).</li>
+                </ul>
+              </div>
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-1">Confirmation &amp; reporting</p>
+                <p className="text-sm text-muted-foreground">Plasma and red-cell cholinesterase activity (suppressed; RBC AChE more reliable for chronic monitoring). Definitive identification by mass spectrometry at the OPCW-designated laboratory (Defence Science and Technology Laboratory, Porton Down). Report immediately to UKHSA and police; OPCW notification through the Foreign, Commonwealth and Development Office.</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Both ricin and novichok are Schedule 1 agents under the Chemical Weapons Convention. Suspected intentional exposure is a
+              counter-terrorism event — preserve scene, documentation and clinical samples for the chain of evidence.
+            </p>
+          </ExamSection>
         </>
       }
     />
