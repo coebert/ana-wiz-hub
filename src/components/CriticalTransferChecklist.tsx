@@ -172,7 +172,7 @@ const PhaseBlock = ({
               : "bg-primary/15 text-primary",
           )}
         >
-          <Icon className="h-4 w-4" aria-hidden={true} />
+          <Icon className="h-4 w-4" />
         </span>
         <div className="flex-1 min-w-0">
           <div className="flex items-baseline justify-between gap-2">
