@@ -1,5 +1,6 @@
 import React, { useId, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useVerifyMode } from "./anatomyVerifyMode";
 
 /**
  * AnatomyPlate — single SVG primitive for hand-coded anatomy diagrams.
