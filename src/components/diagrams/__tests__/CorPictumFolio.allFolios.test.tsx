@@ -38,7 +38,7 @@ const folios = [
   ["lowerLimb", lowerLimbFolio],
   ["thoracic", thoracicFolio],
   ["abdominal", abdominalFolio],
-  ["cardiac", cardiacFolio],
+  
 ] as const;
 
 const collectLabelTexts = (folio: typeof airwayFolio) =>
