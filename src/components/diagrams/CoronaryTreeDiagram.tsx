@@ -85,32 +85,34 @@ type Branch = {
 };
 
 const branches: Branch[] = [
-  // Left coronary system
-  { d: "M 200 60 L 200 95 L 165 110", territory: "anterior", width: 4.5, labelX: 158, labelY: 105, label: "LMS", labelAnchor: "end" },
-  // LAD trunk down anterior IV groove
-  { d: "M 165 110 L 150 145 L 138 185 L 130 225", territory: "anterior", width: 4, labelX: 116, labelY: 175, label: "LAD", labelAnchor: "end" },
-  // Septal perforators (small branches off LAD)
-  { d: "M 148 150 L 168 162", territory: "septal", width: 2.2, labelX: 174, labelY: 162, label: "S1", labelAnchor: "start" },
-  { d: "M 142 175 L 162 188", territory: "septal", width: 2, labelX: 168, labelY: 190, label: "S2", labelAnchor: "start" },
-  // Diagonal branches off LAD (lateral upper)
-  { d: "M 150 145 L 118 158", territory: "lateral", width: 2.4, labelX: 110, labelY: 156, label: "D1", labelAnchor: "end" },
-  { d: "M 138 185 L 108 200", territory: "lateral", width: 2, labelX: 100, labelY: 200, label: "D2", labelAnchor: "end" },
-  // Circumflex around left AV groove (lateral lower)
-  { d: "M 165 110 Q 130 130 115 175 Q 110 215 135 245", territory: "lateral", width: 3.8, labelX: 92, labelY: 140, label: "LCx", labelAnchor: "end" },
-  // Obtuse marginal off LCx
-  { d: "M 116 195 L 92 215", territory: "lateral", width: 2.2, labelX: 84, labelY: 220, label: "OM", labelAnchor: "end" },
+  // ── LEFT coronary system — drawn on viewer-RIGHT (patient's LEFT) ──
+  // LMS: short stub from aorta (x=200) to bifurcation point at (235,110)
+  { d: "M 200 60 L 200 95 L 235 110", territory: "anterior", width: 4.5, labelX: 242, labelY: 105, label: "LMS", labelAnchor: "start" },
+  // LAD trunk down anterior IV groove on viewer-RIGHT side, ending near apex
+  { d: "M 235 110 L 250 145 L 262 185 L 270 225", territory: "anterior", width: 4, labelX: 284, labelY: 175, label: "LAD", labelAnchor: "start" },
+  // Septal perforators (small branches off LAD, pointing toward midline septum)
+  { d: "M 252 150 L 232 162", territory: "septal", width: 2.2, labelX: 226, labelY: 162, label: "S1", labelAnchor: "end" },
+  { d: "M 258 175 L 238 188", territory: "septal", width: 2, labelX: 232, labelY: 190, label: "S2", labelAnchor: "end" },
+  // Diagonal branches off LAD (lateral upper, off to viewer-RIGHT)
+  { d: "M 250 145 L 282 158", territory: "lateral", width: 2.4, labelX: 290, labelY: 156, label: "D1", labelAnchor: "start" },
+  { d: "M 262 185 L 292 200", territory: "lateral", width: 2, labelX: 300, labelY: 200, label: "D2", labelAnchor: "start" },
+  // Circumflex around left AV groove (curves from LMS bifurcation around viewer-RIGHT)
+  { d: "M 235 110 Q 270 130 285 175 Q 290 215 265 245", territory: "lateral", width: 3.8, labelX: 308, labelY: 140, label: "LCx", labelAnchor: "start" },
+  // Obtuse marginal off LCx (off to viewer-RIGHT)
+  { d: "M 284 195 L 308 215", territory: "lateral", width: 2.2, labelX: 316, labelY: 220, label: "OM", labelAnchor: "start" },
 
-  // Right coronary system
-  { d: "M 200 60 L 200 95 L 235 110", territory: "inferior", width: 4.5, labelX: 244, labelY: 105, label: "RCA ostium", labelAnchor: "start" },
+  // ── RIGHT coronary system — drawn on viewer-LEFT (patient's RIGHT) ──
+  // RCA ostium: from aorta to right AV groove
+  { d: "M 200 60 L 200 95 L 165 110", territory: "inferior", width: 4.5, labelX: 156, labelY: 105, label: "RCA ostium", labelAnchor: "end" },
   // RCA down right AV groove
-  { d: "M 235 110 Q 270 130 285 175 Q 290 220 265 248", territory: "inferior", width: 4, labelX: 296, labelY: 180, label: "RCA", labelAnchor: "start" },
-  // RV branches (acute marginal) — proximal
-  { d: "M 260 130 L 290 138", territory: "rv", width: 2.4, labelX: 296, labelY: 138, label: "Acute marginal (RV)", labelAnchor: "start" },
-  { d: "M 277 160 L 305 168", territory: "rv", width: 2, labelX: 312, labelY: 170, label: "RV branch", labelAnchor: "start" },
-  // PDA — posterior descending from RCA crux (inferior + posterior territories)
-  { d: "M 265 248 L 240 268 L 218 282", territory: "posterior", width: 3.2, labelX: 230, labelY: 296, label: "PDA", labelAnchor: "middle" },
+  { d: "M 165 110 Q 130 130 115 175 Q 110 220 135 248", territory: "inferior", width: 4, labelX: 104, labelY: 180, label: "RCA", labelAnchor: "end" },
+  // RV branches (acute marginal) — proximal, off to viewer-LEFT
+  { d: "M 140 130 L 110 138", territory: "rv", width: 2.4, labelX: 104, labelY: 138, label: "Acute marginal (RV)", labelAnchor: "end" },
+  { d: "M 123 160 L 95 168", territory: "rv", width: 2, labelX: 88, labelY: 170, label: "RV branch", labelAnchor: "end" },
+  // PDA — posterior descending from RCA crux toward midline (crux now at viewer-LEFT)
+  { d: "M 135 248 L 160 268 L 182 282", territory: "posterior", width: 3.2, labelX: 170, labelY: 296, label: "PDA", labelAnchor: "middle" },
   // PL branch (posterolateral)
-  { d: "M 265 248 L 248 274", territory: "posterior", width: 2.2, labelX: 258, labelY: 282, label: "PL", labelAnchor: "start" },
+  { d: "M 135 248 L 152 274", territory: "posterior", width: 2.2, labelX: 142, labelY: 282, label: "PL", labelAnchor: "end" },
 ];
 
 const CoronaryTreeDiagram = () => {
