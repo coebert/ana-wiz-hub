@@ -58,7 +58,11 @@ interface RequestBody {
 
 // Shared secret that authorises bypassing the cached podcast and regenerating
 // from scratch. Owner-only — surfaced via a hidden UI control.
-const REGENERATE_PASSWORD = "555368";
+// Stored in edge-function secrets as PODCAST_REGEN_SECRET.
+const REGENERATE_PASSWORD = Deno.env.get("PODCAST_REGEN_SECRET") ?? "";
+
+// Hard cap on incoming content length to bound AI/TTS cost per request.
+const MAX_CONTENT_CHARS = 50_000;
 
 interface FailurePayload {
   status: "failed";
@@ -355,10 +359,16 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
     }
 
+    if (typeof content !== "string" || content.length > MAX_CONTENT_CHARS) {
+      return jsonResponse({ error: `content must be a string under ${MAX_CONTENT_CHARS} characters` }, 400);
+    }
+
     // Validate force-regenerate password before doing anything else.
     const forceRegenerate = force === true;
-    if (forceRegenerate && regeneratePassword !== REGENERATE_PASSWORD) {
-      return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
+    if (forceRegenerate) {
+      if (!REGENERATE_PASSWORD || regeneratePassword !== REGENERATE_PASSWORD) {
+        return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
+      }
     }
 
     const { data: existing } = await supabase

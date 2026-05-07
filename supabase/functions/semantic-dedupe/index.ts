@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 /**
  * Semantic dedupe check for the curriculum placement flow.
@@ -101,7 +102,39 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Auth: require an authenticated admin user. This is an internal authoring aid.
   try {
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader?.startsWith("Bearer ")) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_ANON_KEY")!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+    const token = authHeader.replace("Bearer ", "");
+    const { data: claims, error: authErr } = await supabase.auth.getClaims(token);
+    if (authErr || !claims?.claims?.sub) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const { data: isAdmin } = await supabase.rpc("has_role", {
+      _user_id: claims.claims.sub,
+      _role: "admin",
+    });
+    if (!isAdmin) {
+      return new Response(JSON.stringify({ error: "Forbidden" }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const body = (await req.json()) as RequestBody;
     if (!body?.candidate?.intent || !Array.isArray(body?.snippets)) {
       return new Response(
@@ -178,7 +211,7 @@ serve(async (req) => {
     if (!resp.ok) {
       const errText = await resp.text();
       console.error("AI gateway error", resp.status, errText);
-      return new Response(JSON.stringify({ error: "AI gateway error", detail: errText }), {
+      return new Response(JSON.stringify({ error: "AI gateway error" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -188,8 +221,9 @@ serve(async (req) => {
     const toolCall = data?.choices?.[0]?.message?.tool_calls?.[0];
     const argsRaw = toolCall?.function?.arguments;
     if (!argsRaw) {
+      console.error("Model did not return a tool call", data);
       return new Response(
-        JSON.stringify({ error: "Model did not return a tool call", raw: data }),
+        JSON.stringify({ error: "Model did not return a tool call" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -198,8 +232,9 @@ serve(async (req) => {
     try {
       parsed = JSON.parse(argsRaw);
     } catch (e) {
+      console.error("Failed to parse tool arguments", argsRaw);
       return new Response(
-        JSON.stringify({ error: "Failed to parse tool arguments", raw: argsRaw }),
+        JSON.stringify({ error: "Failed to parse tool arguments" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
