@@ -303,6 +303,10 @@ const TransferMedicineTopic = () => {
               Spinal cord injury: maintain MAP ≥85–90 mmHg for 7 days; full spinal precautions (collar, blocks, log-roll); avoid suxamethonium &gt;48 h after injury (hyperkalaemia).
             </p>
           </ExamSection>
+
+          <ExamSection id="in-transit" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">In-Transit Emergencies</h2>
+            <div className="space-y-3">
               {[
                 { problem: "Sudden desaturation", action: "DOPES — Displaced tube? Obstruction (suction)? Pneumothorax (re-examine, needle decompression if tension)? Equipment (disconnect, hand-ventilate with self-inflating bag on 100% O₂)? Stacking (disconnect, allow exhalation)." },
                 { problem: "Hypotension", action: "Stop the vehicle if safe (transducer artefact from acceleration). Re-zero arterial line, fluid bolus, push-dose pressor, exclude tension pneumothorax, occult bleeding, sedation overdose." },
