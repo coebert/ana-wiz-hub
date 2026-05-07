@@ -159,6 +159,7 @@ export const clinicalTopics: Topic[] = [
   { id: "trauma-emergency", title: "Trauma & Emergency Anaesthesia", description: "RSI, damage control resuscitation, massive transfusion, ATLS", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "resource-poor-anaesthesia", title: "Anaesthesia in Resource-Poor Settings", description: "WHO–WFSA standards, draw-over vaporisers, ketamine, spinal-first practice, Lifebox, SAFE courses, global surgery", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "mass-casualty-military", title: "Mass Casualty, CRM & Military Anaesthesia", description: "Major-incident planning (METHANE), triage (Sieve/Sort/MPTT-24), crisis resource management, damage-control resuscitation & surgery, deployed military Roles 1–4, CBRN and blast injury", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
