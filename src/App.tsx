@@ -136,6 +136,7 @@ const IcuSedationDeliriumTopic = lazy(() => import("./pages/topics/IcuSedationDe
 const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"));
 const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
 const PaediatricIcuTopic = lazy(() => import("./pages/topics/PaediatricIcuTopic"));
+const BurnsIcuTopic = lazy(() => import("./pages/topics/BurnsIcuTopic"));
 const HaematologyIcuTopic = lazy(() => import("./pages/topics/HaematologyIcuTopic"));
 
 const ToxicologyTopic = lazy(() => import("./pages/topics/ToxicologyTopic"));
