@@ -136,6 +136,7 @@ const IcuSedationDeliriumTopic = lazy(() => import("./pages/topics/IcuSedationDe
 const OrganDonationTopic = lazy(() => import("./pages/topics/OrganDonationTopic"));
 const AntimicrobialsIcuTopic = lazy(() => import("./pages/topics/AntimicrobialsIcuTopic"));
 const PaediatricIcuTopic = lazy(() => import("./pages/topics/PaediatricIcuTopic"));
+const BurnsIcuTopic = lazy(() => import("./pages/topics/BurnsIcuTopic"));
 const HaematologyIcuTopic = lazy(() => import("./pages/topics/HaematologyIcuTopic"));
 
 const ToxicologyTopic = lazy(() => import("./pages/topics/ToxicologyTopic"));
@@ -323,6 +324,7 @@ const App = () => (
           <Route path="/intensive-care/organ-donation" element={<OrganDonationTopic />} />
           <Route path="/intensive-care/antimicrobials-icu" element={<AntimicrobialsIcuTopic />} />
           <Route path="/intensive-care/paediatric-icu" element={<PaediatricIcuTopic />} />
+          <Route path="/intensive-care/burns-icu" element={<BurnsIcuTopic />} />
           <Route path="/intensive-care/haematology-icu" element={<HaematologyIcuTopic />} />
           <Route path="/intensive-care/ecmo" element={<Navigate to="/intensive-care/circulatory-failure" replace />} />
           <Route path="/intensive-care/toxicology" element={<ToxicologyTopic />} />

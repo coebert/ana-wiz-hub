@@ -194,6 +194,7 @@ export const intensiveCareTopics: Topic[] = [
   { id: "haematology-icu", title: "Haematological & Immunological Disorders", description: "TTP, HLH/MAS, thrombotic microangiopathies, PLASMIC score, HScore, plasma exchange, and immunosuppression in ICU", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   // Special Populations
   { id: "paediatric-icu", title: "Paediatric Intensive Care", description: "Age-specific physiology, paediatric sepsis, congenital heart disease, neurocritical care, sedation, and resuscitation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
+  { id: "burns-icu", title: "Burns Intensive Care", description: "Major-burn pathophysiology, airway/inhalation injury, fluid resuscitation (Parkland/modified Brooke), escharotomy, sepsis, nutrition, AKI, and ICU referral criteria", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
   // Ethics, Communication & Outcomes
   { id: "organ-donation", title: "Organ Donation", description: "Brainstem death testing, DCD, DBD, donor optimisation", section: "intensive-care", examTags: ["fficm", "edic"], available: true },
   { id: "prognostication-ethics-icu", title: "Prognostication, Ethics & Outcomes", description: "Prognostic scoring, treatment escalation plans, medical ethics, withdrawal of treatment, PICS, long-term outcomes", section: "intensive-care", examTags: ["final", "fficm", "edic"], available: true },
