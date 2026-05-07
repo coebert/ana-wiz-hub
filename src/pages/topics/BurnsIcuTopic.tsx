@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
 
 const objectives = [
   "Recognise major-burn pathophysiology — early shock, SIRS, hypermetabolism and immune dysfunction",
