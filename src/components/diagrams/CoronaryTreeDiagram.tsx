@@ -1,7 +1,17 @@
+/**
+ * Coronary artery tree — ANTERIOR view (viewer faces patient).
+ * Convention: patient RIGHT = viewer LEFT.
+ *   - Right coronary system (RCA, acute marginal, PDA) on viewer-LEFT half (x < 200).
+ *   - Left coronary system (LMS, LAD, LCx, diagonals, OM) on viewer-RIGHT half (x > 200).
+ *   - Aorta + heart silhouette centred on x=200; viewBox 0 0 400 340.
+ * Every label coordinate below is annotated with the structure it lands on
+ * so leader-line accuracy is one-read verifiable.
+ */
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
+
 
 type Territory = CoronaryTerritory;
 
