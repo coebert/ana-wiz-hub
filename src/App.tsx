@@ -94,6 +94,7 @@ const CardiothoracicTopic = lazy(() => import("./pages/topics/CardiothoracicTopi
 const TraumaEmergencyTopic = lazy(() => import("./pages/topics/TraumaEmergencyTopic"));
 const ClinicalIncidentsTopic = lazy(() => import("./pages/topics/ClinicalIncidentsTopic"));
 const ResourcePoorAnaesthesiaTopic = lazy(() => import("./pages/topics/ResourcePoorAnaesthesiaTopic"));
+const MassCasualtyMilitaryTopic = lazy(() => import("./pages/topics/MassCasualtyMilitaryTopic"));
 const PainMedicineTopic = lazy(() => import("./pages/topics/PainMedicineTopic"));
 const TIVATopic = lazy(() => import("./pages/topics/TIVATopic"));
 const OrthopaedicAnaesthesiaTopic = lazy(() => import("./pages/topics/OrthopaedicAnaesthesiaTopic"));
