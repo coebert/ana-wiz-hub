@@ -4,6 +4,7 @@ import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHass
 import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
 import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
+import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 
 const LocalAnaestheticsTopic = () => {
@@ -254,6 +255,7 @@ const LocalAnaestheticsTopic = () => {
               tourniquet for 30–60 s — is the most widely used and effective
               prophylaxis.
             </p>
+            <PropofolLidocaineMechanismDiagram />
             <h3 className="mt-5 text-lg font-semibold text-foreground">
               Why it works (mechanisms)
             </h3>
