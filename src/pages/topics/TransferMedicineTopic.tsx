@@ -222,6 +222,7 @@ const TransferMedicineTopic = () => {
 
           <ExamSection id="ventilation-sedation" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Ventilation &amp; Sedation in Transit</h2>
+            <TransportVentilationDiagram />
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
               <li><strong>Transport ventilator</strong>: must replicate the patient's ICU settings (PEEP, FiO₂, mode). Confirm it triggers, alarms (disconnect, high pressure, low gas) and has a self-inflating bag as backup</li>
               <li><strong>Lung-protective ventilation</strong>: TV 6 mL/kg IBW, plateau ≤30 cmH₂O, PEEP titrated to oxygenation. Recruit before disconnecting from ICU ventilator to avoid de-recruitment</li>
