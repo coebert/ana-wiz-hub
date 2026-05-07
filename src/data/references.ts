@@ -630,6 +630,14 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ICS Transfer 2019", citation: "Intensive Care Society. Guidelines for the Transport of the Critically Ill Adult. 4th ed. 2019.", url: "https://www.ics.ac.uk/Society/Policy_and_Guidelines" },
     { label: "BJA Educ 2018", citation: "Droogh JM, et al. Inter-hospital transport of critically ill patients. Crit Care. 2015;19(1):143.", url: "https://doi.org/10.1186/s13054-015-0879-1" },
   ],
+  "resource-poor-anaesthesia": [
+    { label: "WHO-WFSA Standards 2018", citation: "Gelb AW, Morriss WW, Johnson W, Merry AF, et al. World Health Organization–World Federation of Societies of Anaesthesiologists (WHO–WFSA) International Standards for a Safe Practice of Anesthesia. Anesth Analg. 2018;126(6):2047-2055.", url: "https://doi.org/10.1213/ANE.0000000000002927" },
+    { label: "WFSA Update Anaesth", citation: "World Federation of Societies of Anaesthesiologists. Update in Anaesthesia & Anaesthesia Tutorial of the Week — global anaesthesia education series.", url: "https://wfsahq.org/resources/" },
+    { label: "Lifebox", citation: "Lifebox Foundation. Pulse oximetry and the WHO Surgical Safety Checklist in low-resource settings.", url: "https://www.lifebox.org" },
+    { label: "AAGBI Global 2009", citation: "Association of Anaesthetists of Great Britain & Ireland. International Working Party — Anaesthesia in Resource-Poor Settings (Update on the Anaesthetist Working Overseas). 2009.", url: "https://anaesthetists.org/Home/Resources-publications/Guidelines" },
+    { label: "Lancet Commission GS 2015", citation: "Meara JG, Leather AJM, Hagander L, et al. Global Surgery 2030: evidence and solutions for achieving health, welfare and economic development. Lancet. 2015;386(9993):569-624.", url: "https://doi.org/10.1016/S0140-6736(15)60160-X" },
+    { label: "WHO Checklist 2009", citation: "Haynes AB, Weiser TG, Berry WR, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. N Engl J Med. 2009;360(5):491-499.", url: "https://doi.org/10.1056/NEJMsa0810119" },
+  ],
   "toxicology": [
     { label: "NPIS Toxbase", citation: "National Poisons Information Service. TOXBASE Clinical Toxicology Database.", url: "https://www.toxbase.org" },
     { label: "BJA Educ 2016", citation: "Bradberry SM, et al. Management of the acutely poisoned patient. BJA Education. 2016;16(7):218-225.", url: "https://doi.org/10.1093/bjaed/mkv054" },
