@@ -4,6 +4,7 @@ import { WorkedExample } from "@/components/WorkedExamples";
 import { massCasualtyMilitaryQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import { MajorIncidentTriageDiagram } from "@/components/diagrams/MajorIncidentTriageDiagram";
+import { MilitaryRolesFlowDiagram } from "@/components/diagrams/MilitaryRolesFlowDiagram";
 
 const objectives = [
   "Apply the principles of major-incident command (MIMMS / NHS EPRR) to a mass-casualty event involving multiple critically injured patients",
