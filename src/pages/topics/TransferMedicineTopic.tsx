@@ -86,13 +86,13 @@ const workedExamples: WorkedExample[] = [
 const TransferMedicineTopic = () => {
   return (
     <TopicTemplate
-      title="Transfer Medicine"
-      subtitle="Pre-departure stabilisation, equipment, and the physiology of transport"
+      title="Transfer of the Critically Ill Patient"
+      subtitle="Pre-departure stabilisation, packaging, in-transit care and the physiology of transport"
       backPath="/clinical"
       backLabel="Clinical"
       accentColor="text-clinical"
       topicId="transfer-medicine"
-      topicTitle="Transfer Medicine"
+      topicTitle="Transfer of the Critically Ill Patient"
       objectives={objectives}
       workedExamples={workedExamples}
       quizQuestions={transferMedicineQuestions}
