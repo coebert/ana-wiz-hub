@@ -33,7 +33,7 @@ const FOLIO_TO_PAGE: Record<string, string> = {
   lowerLimbFolio: "src/pages/topics/LowerLimbAnatomyTopic.tsx",
   thoracicFolio: "src/pages/topics/ThoracicAnatomyTopic.tsx",
   abdominalFolio: "src/pages/topics/AbdominalAnatomyTopic.tsx",
-  cardiacFolio: "src/pages/topics/CardiacAnatomyTopic.tsx",
+  
 };
 
 /** Mirror of `slugify` in src/components/SectionLayout.tsx. */
