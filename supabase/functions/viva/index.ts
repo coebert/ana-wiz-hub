@@ -831,6 +831,7 @@ Deno.serve(async (req) => {
     if (body.mode === "feedback") {
       if (
         !body.topicTitle ||
+        body.topicTitle.length > 200 ||
         !validExams.includes(body.exam) ||
         !body.question ||
         !body.transcript ||
@@ -848,6 +849,7 @@ Deno.serve(async (req) => {
     if (body.mode === "annotate") {
       if (
         !body.topicTitle ||
+        body.topicTitle.length > 200 ||
         !validExams.includes(body.exam) ||
         !body.question ||
         !body.modelAnswer ||
@@ -864,6 +866,7 @@ Deno.serve(async (req) => {
     if (body.mode === "model-answer") {
       if (
         !body.topicTitle ||
+        body.topicTitle.length > 200 ||
         !validExams.includes(body.exam) ||
         !body.question ||
         body.question.length > 1000
