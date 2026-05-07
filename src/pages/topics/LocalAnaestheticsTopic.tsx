@@ -4,6 +4,7 @@ import { HendersonHasselbalchDiagram } from "@/components/diagrams/HendersonHass
 import IonTrappingDiagram from "@/components/diagrams/IonTrappingDiagram";
 import { localAnaestheticsQuiz } from "@/data/quizzes";
 import LocalAnaestheticStructures from "@/components/diagrams/LocalAnaestheticStructures";
+import PropofolLidocaineMechanismDiagram from "@/components/diagrams/PropofolLidocaineMechanismDiagram";
 import { Exam } from "@/data/curriculum";
 
 const LocalAnaestheticsTopic = () => {
