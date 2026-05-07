@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
+import { CriticalTransferChecklist } from "@/components/CriticalTransferChecklist";
 import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
