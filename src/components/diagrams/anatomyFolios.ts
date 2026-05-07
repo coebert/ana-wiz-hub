@@ -31,6 +31,7 @@ import lowerlimbVeins from "@/assets/plates/lowerlimb-veins.jpg";
 import lowerlimbNerves from "@/assets/plates/lowerlimb-nerves.jpg";
 import thoracicAnterior from "@/assets/plates/thoracic-anterior.jpg";
 import thoracicMediastinum from "@/assets/plates/thoracic-mediastinum.jpg";
+import thoracicFirstRib from "@/assets/plates/thoracic-first-rib.jpg";
 import abdominalAnterior from "@/assets/plates/abdominal-anterior.jpg";
 import abdominalRetroperitoneum from "@/assets/plates/abdominal-retroperitoneum.jpg";
 
@@ -1300,6 +1301,27 @@ export const thoracicFolio: CorPictumFolioData = {
         { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "Mediastinal contents & relations", anchor: "mediastinum" },
         { code: "RC_BK_01", exams: [Exam.FINAL], title: "Anaesthesia for thoracic surgery — mediastinal masses", anchor: "mediastinum" },
         { code: "CR_BK_01", exams: [Exam.FINAL], title: "Cardiothoracic anatomy for the anaesthetist", anchor: "mediastinum" },
+      ],
+    },
+    {
+      id: "first-rib", tabLabel: "First Rib", folio: "III",
+      title: "First Rib", subtitle: "Superior view — structures crossing the rib",
+      image: thoracicFirstRib, alt: "Painted superior view of the right first rib with overlying structures",
+      caption: "Superior view of the right first rib",
+      labels: [
+        { latin: "vena subclavia", english: "Subclavian vein", note: "Anterior groove; anterior to scalenus anterior — target for infraclavicular access." },
+        { latin: "musculus scalenus anterior", english: "Scalenus anterior", note: "Inserts on scalene tubercle of Lister; separates subclavian vein from artery." },
+        { latin: "arteria subclavia", english: "Subclavian artery", note: "Posterior groove; posterior to scalenus anterior — landmark for supraclavicular block." },
+        { latin: "truncus inferior plexus brachialis", english: "Lower trunk of brachial plexus (C8–T1)", note: "Crosses rib just posterior to subclavian artery; vulnerable in thoracic outlet syndrome." },
+        { latin: "musculus scalenus medius", english: "Scalenus medius", note: "Inserts posterior to the groove for the subclavian artery." },
+        { latin: "truncus sympathicus / ganglion stellatum", english: "Sympathetic trunk / stellate ganglion", note: "Lies medially over the neck of the rib." },
+        { latin: "membrana suprapleuralis", english: "Suprapleural membrane (Sibson's fascia)", note: "Tents the cervical pleura over the lung apex." },
+        { latin: "ligamentum costoclaviculare", english: "Costoclavicular ligament", note: "Anchors clavicle to anterior superior surface of first rib." },
+      ],
+      curriculumLinks: [
+        { code: "AN_BK_03", exams: [Exam.PRIMARY], title: "First rib & thoracic outlet anatomy", anchor: "first-rib" },
+        { code: "RA_BK_02", exams: [Exam.PRIMARY, Exam.FINAL], title: "Supraclavicular brachial plexus block landmarks", anchor: "supraclavicular-block" },
+        { code: "CV_BK_04", exams: [Exam.PRIMARY], title: "Subclavian central venous access", anchor: "subclavian-cvc" },
       ],
     },
   ],
