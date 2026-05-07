@@ -255,6 +255,7 @@ const LocalAnaestheticsTopic = () => {
               tourniquet for 30–60 s — is the most widely used and effective
               prophylaxis.
             </p>
+            <PropofolLidocaineMechanismDiagram />
             <h3 className="mt-5 text-lg font-semibold text-foreground">
               Why it works (mechanisms)
             </h3>
