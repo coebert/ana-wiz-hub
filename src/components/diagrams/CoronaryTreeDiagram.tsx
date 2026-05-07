@@ -238,8 +238,8 @@ const CoronaryTreeDiagram = () => {
               {/* Crux marker */}
               {showLabels && (
                 <>
-                  <circle cx="265" cy="248" r="2.2" fill="hsl(var(--foreground))" opacity="0.6" />
-                  <text x="270" y="244" fontSize="6.5" fill="hsl(var(--muted-foreground))" opacity="0.7">crux</text>
+                  <circle cx="135" cy="248" r="2.2" fill="hsl(var(--foreground))" opacity="0.6" />
+                  <text x="130" y="244" textAnchor="end" fontSize="6.5" fill="hsl(var(--muted-foreground))" opacity="0.7">crux</text>
                 </>
               )}
             </svg>
