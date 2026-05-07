@@ -70,6 +70,7 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
 }) => {
   const uid = useId();
   const [hovered, setHovered] = useState<string | null>(null);
+  const verify = useVerifyMode();
 
   const labelMetrics = useMemo(
     () =>
