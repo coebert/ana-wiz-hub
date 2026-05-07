@@ -235,6 +235,75 @@ const TransferMedicineTopic = () => {
             </ul>
           </ExamSection>
 
+          <ExamSection id="sedation-analgesia" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Sedation &amp; Analgesia in Transit</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The transport environment (noise, vibration, acceleration, repeated handling, cold) is highly stimulating.
+              Sedation and analgesia must be deeper and more reliable than in the ICU bed-space, but titrated to avoid
+              cardiovascular collapse in a moving vehicle where assessment is difficult.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>General principle</strong>: continue the patient's existing ICU regimen if effective; do not start a new agent immediately before departure. Aim RASS −4 to −5 for ventilated TBI/ARDS transfers, RASS −2 to −3 for stable ventilated patients</li>
+              <li><strong>Hypnotic — propofol</strong>: 1–4 mg/kg/h infusion; predictable, short context-sensitive half-time, antiepileptic, ↓CMRO₂ and ICP. Watch for hypotension on acceleration/deceleration; reduce dose or add noradrenaline rather than under-sedate</li>
+              <li><strong>Hypnotic — midazolam</strong>: 0.03–0.2 mg/kg/h preferred when haemodynamically unstable or for prolonged transfers; accumulates, slower wake-up at destination — flag in handover</li>
+              <li><strong>Hypnotic — ketamine</strong>: 1–3 mg/kg/h; sympathomimetic, bronchodilator, analgesic — useful in shocked/asthmatic patients. Modern evidence does not support an absolute contraindication in TBI when CO₂ is controlled</li>
+              <li><strong>Analgesia — opioid</strong>: fentanyl 1–5 µg/kg/h or alfentanil 30–100 µg/kg/h (rapid offset, useful when neuro reassessment planned at destination); morphine acceptable but slower-offset</li>
+              <li><strong>Analgesia — adjuncts</strong>: paracetamol 1 g IV for pyrexia/analgesia (also helps neuroprotective normothermia); regional blocks placed before transfer (e.g. fascia iliaca for # NOF) reduce opioid requirement</li>
+              <li><strong>Neuromuscular blockade</strong>: routinely consider rocuronium 0.3–0.6 mg/kg/h (or boluses) for ventilated transfers — abolishes coughing, dys-synchrony, ↑ICP and prevents tube/line displacement. Always combine with adequate hypnosis to avoid awareness; ensure sugammadex available</li>
+              <li><strong>Bolus / push-dose drugs ready</strong>: pre-drawn fentanyl 50 µg, propofol 20 mg, rocuronium 50 mg, plus push-dose vasopressor (e.g. metaraminol 0.5 mg/mL or adrenaline 10 µg/mL) for surges in stimulation (suctioning, road handover, lift transfers)</li>
+              <li><strong>Awareness risk</strong>: paralysed + under-sedated in a noisy moving vehicle is a high-risk scenario. If unsure, deepen sedation; document depth at every set of obs</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="neuromonitoring" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Neuromonitoring Considerations</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Clinical neurological assessment is virtually impossible during transit (sedation, paralysis, vibration, noise).
+              The clinician must therefore rely on surrogate physiological and device-based monitoring, and protect the brain
+              by maintaining tight homeostasis.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Pre-departure neuro exam</strong>: document GCS, pupils (size, symmetry, reactivity), focal signs, sedation hold result if safe — this is the baseline the receiving team will use</li>
+              <li><strong>Pupillary assessment</strong>: the single most useful in-transit neuro sign. Check every 15 min and on any deterioration. New unilateral dilated unreactive pupil = uncal herniation until proven otherwise → osmotherapy, hyperventilate transiently to PaCO₂ 4.0–4.5 kPa, alert neurosurgeons. Quantitative pupillometry (NPi) increasingly used where available</li>
+              <li><strong>Invasive ICP / EVD</strong>: if monitor in situ, transduce continuously, zero at the tragus, target ICP &lt;22 mmHg and CPP 60–70 mmHg. EVD: clamp before any change in patient height (lift, ramp) to avoid over-drainage; document open/closed status, drainage volume and CSF appearance</li>
+              <li><strong>Arterial line</strong>: mandatory for any neuro transfer — beat-to-beat MAP for CPP calculation, repeated ABGs for PaCO₂/PaO₂. Re-zero at the tragus after every position change</li>
+              <li><strong>Continuous capnography</strong>: surrogate for PaCO₂; remember the ETCO₂–PaCO₂ gradient widens with shock, PE, and altitude. Cross-check with ABG at 30 min intervals or after any major event</li>
+              <li><strong>Brain tissue oxygen / NIRS / jugular bulb</strong>: not routine in transit, but if already in place continue and document trends. Falling PbtO₂ or SjvO₂ &lt;55% suggests inadequate cerebral oxygen delivery</li>
+              <li><strong>Processed EEG / BIS</strong>: useful when paralysed to titrate sedation depth and detect non-convulsive seizures; vibration and electrical noise produce frequent artefact — interpret with caution</li>
+              <li><strong>Glucose, sodium, temperature</strong>: hourly point-of-care glucose, Na (i-STAT or equivalent), continuous core temperature — all act as 'metabolic neuromonitors'</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="neuroprotection-strategies" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Neuroprotection Strategies in Transit</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Neuroprotection is the active prevention of secondary brain injury. The mantra is
+              <em> avoid hypoxia, hypotension, hypercarbia, hyperthermia, hyperglycaemia and hyponatraemia</em>.
+              Every parameter that drifts in transit costs neurones.
+            </p>
+            <div className="space-y-3">
+              {[
+                { goal: "Oxygenation", target: "SpO₂ ≥96%, PaO₂ >13 kPa", strategy: "Pre-oxygenate before any disconnection; FiO₂ titrated to target; recruit before move; PEEP maintained" },
+                { goal: "Ventilation", target: "PaCO₂ 4.5–5.0 kPa (35–38 mmHg)", strategy: "Continuous capnography with PaCO₂ cross-check; avoid prophylactic hyperventilation; transient hyperventilation to 4.0–4.5 kPa only as a bridge to definitive treatment of herniation" },
+                { goal: "Cerebral perfusion", target: "MAP ≥80 mmHg, CPP 60–70 mmHg", strategy: "Arterial line zeroed at tragus; noradrenaline infusion ready; treat hypotension early with fluid + vasopressor; avoid CPP >70 mmHg (ARDS risk)" },
+                { goal: "ICP control", target: "ICP <22 mmHg", strategy: "Head-up 30°, neutral neck, loose tube ties, deep sedation ± paralysis, osmotherapy (mannitol 0.5–1 g/kg or 3% saline 250 mL) for surges" },
+                { goal: "Temperature", target: "36.0–37.0 °C (avoid >37.5 °C)", strategy: "Active surface warming or cooling; paracetamol 1 g for pyrexia; document core temp; targeted temperature management continued if started" },
+                { goal: "Glucose", target: "6–10 mmol/L", strategy: "Hourly capillary glucose; insulin infusion if >10; treat hypoglycaemia immediately with 10% dextrose bolus" },
+                { goal: "Sodium / osmolality", target: "Na 140–145 mmol/L", strategy: "Avoid hypotonic fluids and 5% dextrose; 0.9% saline as default crystalloid; hypertonic saline if Na <135 with cerebral oedema" },
+                { goal: "Seizure control", target: "No clinical or electrographic seizures", strategy: "Continue loading dose of levetiracetam/phenytoin pre-departure if at risk; benzodiazepine + propofol bolus for breakthrough seizures" },
+                { goal: "Venous drainage", target: "Unobstructed cerebral venous outflow", strategy: "Loosen ETT ties, avoid neck flexion/rotation, head-up tilt; cervical collar opened to allow venous return once spine cleared" },
+              ].map(item => (
+                <div key={item.goal} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.goal} <span className="font-normal text-muted-foreground">— target: {item.target}</span></p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.strategy}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground italic mt-3">
+              Spinal cord injury: maintain MAP ≥85–90 mmHg for 7 days; full spinal precautions (collar, blocks, log-roll); avoid suxamethonium &gt;48 h after injury (hyperkalaemia).
+            </p>
+          </ExamSection>
+
           <ExamSection id="in-transit" exams={[Exam.FINAL, Exam.FFICM]}>
             <h2 className="text-xl font-bold text-foreground mb-2">In-Transit Emergencies</h2>
             <div className="space-y-3">
