@@ -66,6 +66,17 @@
     --drugs: 285 55% 45%;
     --drugs-light: 285 45% 96%;
 
+    /* Anatomy plate palette (used by AnatomyPlate SVG primitive) */
+    --anatomy-artery: 0 70% 50%;
+    --anatomy-vein: 217 70% 45%;
+    --anatomy-nerve: 45 90% 50%;
+    --anatomy-muscle: 15 35% 75%;
+    --anatomy-bone: 40 15% 88%;
+    --anatomy-organ: 350 35% 78%;
+    --anatomy-fat: 50 60% 88%;
+    --anatomy-stroke: 215 25% 20%;
+    --anatomy-paper: 40 30% 97%;
+
     --gradient-hero: linear-gradient(135deg, hsl(210 70% 35%), hsl(200 60% 45%), hsl(170 50% 40%));
     --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%), hsl(210 15% 96%));
   }

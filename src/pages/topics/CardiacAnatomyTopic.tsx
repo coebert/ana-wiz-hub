@@ -8,8 +8,7 @@ import CoronaryTreeDiagram from "@/components/diagrams/CoronaryTreeDiagram";
 import LVBullseyeDiagram from "@/components/diagrams/LVBullseyeDiagram";
 import TwelveLeadEcgDiagram from "@/components/diagrams/TwelveLeadEcgDiagram";
 import CardiacConductionDiagram from "@/components/diagrams/CardiacConductionDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
-import { cardiacFolio } from "@/components/diagrams/anatomyFolios";
+import AnteriorCardiacPlate from "@/components/diagrams/anatomy/AnteriorCardiacPlate";
 import { CoronarySelectionProvider } from "@/components/diagrams/coronarySelectionContext";
 import { DiagramTabs } from "@/components/diagrams/DiagramTabs";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -67,9 +66,9 @@ const CardiacAnatomyTopic = () => {
 
           <DiagramSection
             title="Painted plates — heart, valves & conduction"
-            intro="Interactive Cor Pictum folio: scroll or pinch to zoom, drag to pan, and hover a label or region to highlight the matching structure on the plate. Labels are tagged for Primary, Final and FFICM and respect the global exam filter."
+            intro="Hand-coded SVG plates with code-defined labels and leader lines — every label is auditable in source, not baked into pixels."
           >
-            <CorPictumFolio {...cardiacFolio} suppressOverlayLabels />
+            <AnteriorCardiacPlate />
           </DiagramSection>
 
           <CoronarySelectionProvider initial="anterior">
