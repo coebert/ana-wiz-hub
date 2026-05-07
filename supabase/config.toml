@@ -2,6 +2,3 @@ project_id = "aqkusdwwhlqqttvnxuwu"
 
 [functions.verify-drugs]
 verify_jwt = false
-
-[functions.bootstrap-admin]
-verify_jwt = false
