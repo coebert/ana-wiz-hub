@@ -33,7 +33,7 @@ type Phase = {
   id: string;
   title: string;
   blurb: string;
-  icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  icon: React.ComponentType<{ className?: string }>;
   items: Item[];
 };
 
