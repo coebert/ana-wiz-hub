@@ -205,6 +205,7 @@ const MassCasualtyMilitaryTopic = () => {
               Defence Medical Services deliver care along a graded chain. The same Roles framework underpins NATO doctrine and informs civilian
               regional trauma networks and pre-hospital emergency medicine.
             </p>
+            <MilitaryRolesFlowDiagram />
             <div className="space-y-3">
               {[
                 { role: "Role 1", detail: "Point of wounding / unit aid post. CABC, tourniquets, haemostatic dressings, decompression, IV/IO access, TXA, ketamine analgesia, basic airway. Combat Application Tourniquet, chest seals." },
