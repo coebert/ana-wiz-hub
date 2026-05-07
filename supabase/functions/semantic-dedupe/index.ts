@@ -211,7 +211,7 @@ serve(async (req) => {
     if (!resp.ok) {
       const errText = await resp.text();
       console.error("AI gateway error", resp.status, errText);
-      return new Response(JSON.stringify({ error: "AI gateway error", detail: errText }), {
+      return new Response(JSON.stringify({ error: "AI gateway error" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -221,8 +221,9 @@ serve(async (req) => {
     const toolCall = data?.choices?.[0]?.message?.tool_calls?.[0];
     const argsRaw = toolCall?.function?.arguments;
     if (!argsRaw) {
+      console.error("Model did not return a tool call", data);
       return new Response(
-        JSON.stringify({ error: "Model did not return a tool call", raw: data }),
+        JSON.stringify({ error: "Model did not return a tool call" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -231,8 +232,9 @@ serve(async (req) => {
     try {
       parsed = JSON.parse(argsRaw);
     } catch (e) {
+      console.error("Failed to parse tool arguments", argsRaw);
       return new Response(
-        JSON.stringify({ error: "Failed to parse tool arguments", raw: argsRaw }),
+        JSON.stringify({ error: "Failed to parse tool arguments" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
