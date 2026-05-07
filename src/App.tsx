@@ -93,6 +93,7 @@ const NeuroanaesthesiaTopic = lazy(() => import("./pages/topics/Neuroanaesthesia
 const CardiothoracicTopic = lazy(() => import("./pages/topics/CardiothoracicTopic"));
 const TraumaEmergencyTopic = lazy(() => import("./pages/topics/TraumaEmergencyTopic"));
 const ClinicalIncidentsTopic = lazy(() => import("./pages/topics/ClinicalIncidentsTopic"));
+const ResourcePoorAnaesthesiaTopic = lazy(() => import("./pages/topics/ResourcePoorAnaesthesiaTopic"));
 const PainMedicineTopic = lazy(() => import("./pages/topics/PainMedicineTopic"));
 const TIVATopic = lazy(() => import("./pages/topics/TIVATopic"));
 const OrthopaedicAnaesthesiaTopic = lazy(() => import("./pages/topics/OrthopaedicAnaesthesiaTopic"));
@@ -277,6 +278,7 @@ const App = () => (
           <Route path="/clinical/cardiothoracic" element={<CardiothoracicTopic />} />
           <Route path="/clinical/trauma-emergency" element={<TraumaEmergencyTopic />} />
           <Route path="/clinical/clinical-incidents" element={<ClinicalIncidentsTopic />} />
+          <Route path="/clinical/resource-poor-anaesthesia" element={<ResourcePoorAnaesthesiaTopic />} />
           <Route path="/clinical/pain-medicine" element={<PainMedicineTopic />} />
           <Route path="/clinical/tiva" element={<TIVATopic />} />
           <Route path="/clinical/orthopaedic-anaesthesia" element={<OrthopaedicAnaesthesiaTopic />} />

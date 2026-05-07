@@ -158,6 +158,7 @@ export const clinicalTopics: Topic[] = [
   { id: "emergency-surgery", title: "Anaesthesia for Emergency Surgery", description: "Emergency laparotomy, appendicectomy, ruptured ectopic, NCEPOD classification, NELA standards", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "trauma-emergency", title: "Trauma & Emergency Anaesthesia", description: "RSI, damage control resuscitation, massive transfusion, ATLS", section: "clinical", examTags: ["final", "fficm"], available: true },
   { id: "clinical-incidents", title: "Critical Incidents", description: "Anaphylaxis, malignant hyperthermia, LA toxicity, awareness, can't intubate", section: "clinical", examTags: ["final", "fficm"], available: true },
+  { id: "resource-poor-anaesthesia", title: "Anaesthesia in Resource-Poor Settings", description: "WHO–WFSA standards, draw-over vaporisers, ketamine, spinal-first practice, Lifebox, SAFE courses, global surgery", section: "clinical", examTags: ["final", "fficm"], available: true },
 ];
 
 export const intensiveCareTopics: Topic[] = [
