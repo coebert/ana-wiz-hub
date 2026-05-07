@@ -20,3 +20,4 @@ For EVERY "add to topic" request: auto-run placement flow (read → 3-layer dedu
 - [Semantic dedupe](mem://reference/semantic-dedupe) — semantic-dedupe edge function + src/lib/semantic-dedupe.ts
 - [Cross-reference recommender](mem://reference/cross-reference-recommender) — src/lib/cross-reference-recommender.ts + CrossReferenceCallout.tsx
 - [Source library](mem://reference/source-library) — src/data/sources.ts canonical bibliographic sources + resolveReference helper
+- [Anatomy orientation](mem://design/anatomy-orientation) — Standard anatomical convention (patient R = viewer L) for all anatomy SVGs + leader audit rule
