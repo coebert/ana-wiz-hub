@@ -5,11 +5,14 @@ import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
-  "Apply ICS / AAGBI standards to plan a safe inter-hospital transfer (decision, personnel, equipment)",
-  "Stabilise a critically ill patient using an ABCDE-led pre-departure checklist",
+  "Apply ICS / AAGBI / FICM standards to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
+  "Stabilise a critically ill patient using an ABCDE-led pre-departure checklist and a 'package the patient' approach",
   "Calculate oxygen reserve required for transfer and identify when supplies are inadequate",
+  "Set up a portable ventilator and infusion pumps for safe transfer, anticipating ventilation, sedation and haemodynamic challenges in transit",
+  "Apply neuroprotective transfer principles to the patient with traumatic brain injury or raised ICP",
   "Predict the physiological effects of acceleration, altitude and vibration on the transferred patient",
-  "Hand over effectively at the receiving unit (SBAR/ISBAR) with complete documentation",
+  "Recognise and manage in-transit emergencies (hypoxia, hypotension, accidental extubation, equipment failure)",
+  "Hand over effectively at the receiving unit (SBAR/ISBAR) with complete documentation, and audit/learn from each transfer",
 ];
 
 const workedExamples: WorkedExample[] = [
