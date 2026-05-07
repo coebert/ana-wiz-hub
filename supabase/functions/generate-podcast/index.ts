@@ -359,10 +359,16 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "topicId, topicTitle and content are required" }, 400);
     }
 
+    if (typeof content !== "string" || content.length > MAX_CONTENT_CHARS) {
+      return jsonResponse({ error: `content must be a string under ${MAX_CONTENT_CHARS} characters` }, 400);
+    }
+
     // Validate force-regenerate password before doing anything else.
     const forceRegenerate = force === true;
-    if (forceRegenerate && regeneratePassword !== REGENERATE_PASSWORD) {
-      return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
+    if (forceRegenerate) {
+      if (!REGENERATE_PASSWORD || regeneratePassword !== REGENERATE_PASSWORD) {
+        return jsonResponse({ status: "failed", error: "Invalid regeneration password." }, 403);
+      }
     }
 
     const { data: existing } = await supabase
