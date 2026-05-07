@@ -144,6 +144,7 @@ const MassCasualtyMilitaryTopic = () => {
             <p className="text-muted-foreground leading-relaxed mb-3">
               Triage is dynamic — every casualty is re-triaged at each stage of the chain.
             </p>
+            <MajorIncidentTriageDiagram />
             <div className="space-y-3">
               {[
                 { tool: "Triage Sieve", detail: "Pre-hospital, &lt;30 s. Walking → P3 (delayed). Not breathing despite airway opening → Dead. Then RR &lt;10 or &gt;30 → P1; CRT &gt;2 s or HR &gt;120 → P1; otherwise P2." },
