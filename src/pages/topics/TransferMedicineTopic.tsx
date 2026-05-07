@@ -5,11 +5,14 @@ import { transferMedicineQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
-  "Apply ICS / AAGBI standards to plan a safe inter-hospital transfer (decision, personnel, equipment)",
-  "Stabilise a critically ill patient using an ABCDE-led pre-departure checklist",
+  "Apply ICS / AAGBI / FICM standards to plan a safe inter-hospital transfer of the critically ill patient (decision, personnel, equipment)",
+  "Stabilise a critically ill patient using an ABCDE-led pre-departure checklist and a 'package the patient' approach",
   "Calculate oxygen reserve required for transfer and identify when supplies are inadequate",
+  "Set up a portable ventilator and infusion pumps for safe transfer, anticipating ventilation, sedation and haemodynamic challenges in transit",
+  "Apply neuroprotective transfer principles to the patient with traumatic brain injury or raised ICP",
   "Predict the physiological effects of acceleration, altitude and vibration on the transferred patient",
-  "Hand over effectively at the receiving unit (SBAR/ISBAR) with complete documentation",
+  "Recognise and manage in-transit emergencies (hypoxia, hypotension, accidental extubation, equipment failure)",
+  "Hand over effectively at the receiving unit (SBAR/ISBAR) with complete documentation, and audit/learn from each transfer",
 ];
 
 const workedExamples: WorkedExample[] = [
@@ -83,13 +86,13 @@ const workedExamples: WorkedExample[] = [
 const TransferMedicineTopic = () => {
   return (
     <TopicTemplate
-      title="Transfer Medicine"
-      subtitle="Pre-departure stabilisation, equipment, and the physiology of transport"
+      title="Transfer of the Critically Ill Patient"
+      subtitle="Pre-departure stabilisation, packaging, in-transit care and the physiology of transport"
       backPath="/clinical"
       backLabel="Clinical"
       accentColor="text-clinical"
       topicId="transfer-medicine"
-      topicTitle="Transfer Medicine"
+      topicTitle="Transfer of the Critically Ill Patient"
       objectives={objectives}
       workedExamples={workedExamples}
       quizQuestions={transferMedicineQuestions}
@@ -173,6 +176,103 @@ const TransferMedicineTopic = () => {
               <li><strong>Altitude (air transfer)</strong>: ↓ barometric pressure → gas expansion (Boyle's law). ETT cuff, pneumothorax, bowel gas all expand. ↓ PaO₂ (cabin altitude ~6,000-8,000 ft)</li>
               <li><strong>Vibration</strong>: artefact on monitoring, patient discomfort, equipment damage</li>
               <li><strong>Noise</strong>: makes auscultation impossible — rely on capnography and SpO₂. Communication difficult</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="classification" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Classification of Transfers</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Categorising the transfer informs urgency, team composition and risk acceptance.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>By geography</strong>: intra-hospital (e.g. ICU → CT/MRI/IR), inter-hospital (district general → tertiary), international/repatriation</li>
+              <li><strong>By urgency</strong>: time-critical (rupturing AAA, extradural haematoma, STEMI for PCI) vs clinically urgent vs elective/repatriation</li>
+              <li><strong>By mode</strong>: road ambulance (default in UK; cheap, flexible), rotary-wing (helicopter; faster &gt;50 miles, weather-limited), fixed-wing (long distance &gt;150 miles, cabin altitude effects)</li>
+              <li><strong>By team</strong>: parent team, regional retrieval service (e.g. neonatal/paediatric — STRS, NTS; adult ECMO retrieval), critical care transfer service (e.g. ACCTS in England)</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="packaging" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Packaging the Critically Ill Patient</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              "Package the patient" — every line, tube and monitor must be secured, labelled and accessible before the trolley moves.
+              Resist the urge to leave at speed: most in-transit emergencies stem from inadequate pre-departure preparation.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Airway</strong>: ETT position confirmed (CXR + cm at teeth), tube tied not taped, bite block, suction immediately available, spare ETT and difficult airway kit</li>
+              <li><strong>Breathing</strong>: ventilator settings replicated and observed for ≥15 min before departure; ETCO₂ trace visible; chest auscultated; CXR reviewed; chest drain on Heimlich/underwater seal kept upright and below patient</li>
+              <li><strong>Circulation</strong>: 2 × secured large-bore IV access plus a dedicated central or large peripheral line for vasopressors; arterial line zeroed at tragus (TBI) or phlebostatic axis; cross-matched blood if bleeding</li>
+              <li><strong>Drugs &amp; pumps</strong>: all infusions on battery-powered pumps with adequate charge and labelled; spare syringes drawn up (sedation, paralysis, vasopressor); push-dose pressors ready</li>
+              <li><strong>Patient</strong>: secured to trolley with straps; eyes taped; pressure points padded; NG tube on free drainage (gas expansion at altitude); urinary catheter; temperature probe; warming blanket</li>
+              <li><strong>Notes &amp; imaging</strong>: copy of notes, drug chart, imaging on disc/PACS link, blood results, consent/best-interests documentation, next-of-kin contact</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="ventilation-sedation" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Ventilation &amp; Sedation in Transit</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Transport ventilator</strong>: must replicate the patient's ICU settings (PEEP, FiO₂, mode). Confirm it triggers, alarms (disconnect, high pressure, low gas) and has a self-inflating bag as backup</li>
+              <li><strong>Lung-protective ventilation</strong>: TV 6 mL/kg IBW, plateau ≤30 cmH₂O, PEEP titrated to oxygenation. Recruit before disconnecting from ICU ventilator to avoid de-recruitment</li>
+              <li><strong>Oxygenation target</strong>: SpO₂ 94–98% (≥96% if TBI). Pre-oxygenate with FiO₂ 1.0 for moves between ventilators</li>
+              <li><strong>Capnography is mandatory</strong>: sudden ↓ETCO₂ = disconnection, cardiac arrest or massive PE; sudden ↑ETCO₂ = hypoventilation or rising metabolic rate</li>
+              <li><strong>Sedation</strong>: continue propofol + opioid (or midazolam if cardiovascularly unstable). Light sedation in a noisy, vibrating ambulance risks awareness, cough, ↑ICP and accidental extubation</li>
+              <li><strong>Neuromuscular blockade</strong>: routinely consider for ventilated patients during transfer to prevent dys-synchrony, coughing and line/tube displacement</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="neuroprotection" exams={[Exam.FINAL, Exam.FFICM]} curriculumCodes={["FFICM 2.6"]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Neuroprotective Transfer (TBI / Raised ICP)</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              The TBI patient is the archetypal critically-ill transfer. Secondary injury from hypoxia,
+              hypotension, hypercarbia or hyperthermia is preventable and dramatically worsens outcome.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Airway</strong>: intubate before transfer if GCS ≤8, falling GCS, loss of airway reflexes, seizures, or for any agitated TBI patient requiring CT</li>
+              <li><strong>Targets</strong>: SpO₂ ≥96%, PaO₂ &gt;13 kPa, PaCO₂ 4.5–5.0 kPa, MAP ≥80 mmHg (CPP &gt;60 mmHg), temperature 36–37°C, glucose 6–10 mmol/L, Na 140–145 mmol/L</li>
+              <li><strong>Position</strong>: head-up 30°, neutral neck, tube ties not too tight (avoid jugular venous obstruction)</li>
+              <li><strong>Osmotherapy ready</strong>: mannitol 0.5–1 g/kg or hypertonic saline (e.g. 3% 250 mL) for acute deterioration (blown pupil, Cushing response)</li>
+              <li><strong>Avoid</strong>: prophylactic hyperventilation (vasoconstriction → ischaemia), hypotonic fluids, dextrose-containing solutions</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="in-transit" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">In-Transit Emergencies</h2>
+            <div className="space-y-3">
+              {[
+                { problem: "Sudden desaturation", action: "DOPES — Displaced tube? Obstruction (suction)? Pneumothorax (re-examine, needle decompression if tension)? Equipment (disconnect, hand-ventilate with self-inflating bag on 100% O₂)? Stacking (disconnect, allow exhalation)." },
+                { problem: "Hypotension", action: "Stop the vehicle if safe (transducer artefact from acceleration). Re-zero arterial line, fluid bolus, push-dose pressor, exclude tension pneumothorax, occult bleeding, sedation overdose." },
+                { problem: "Loss of ETCO₂ trace", action: "Treat as cardiac arrest until proven otherwise — pulse check, hand-ventilate, exclude disconnection, extubation or circuit obstruction." },
+                { problem: "Accidental extubation", action: "Bag-mask ventilate, stop the vehicle, re-intubate using video laryngoscope from prepared difficult airway kit. Confirm with ETCO₂." },
+                { problem: "Seizure / rising ICP", action: "Secure airway, deepen sedation, paralyse, transient hyperventilation to PaCO₂ 4.0–4.5 kPa, give osmotherapy, alert receiving neurosurgical team." },
+                { problem: "Equipment / power failure", action: "Self-inflating bag with reservoir + cylinder O₂; manual BP cuff; spare battery / 12 V vehicle inverter; printed drug doses." },
+              ].map(item => (
+                <div key={item.problem} className="p-3 rounded-lg border border-border">
+                  <p className="font-semibold text-foreground text-sm">{item.problem}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{item.action}</p>
+                </div>
+              ))}
+            </div>
+          </ExamSection>
+
+          <ExamSection id="specialist" exams={[Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Specialist Transfers</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>ECMO retrieval</strong>: undertaken by regional centres (e.g. UK adult severe respiratory failure service). Cannulation at the referring hospital, then transfer on VV/VA-ECMO. Risks: cannula displacement, circuit air, anticoagulation bleeding</li>
+              <li><strong>IABP / mechanical circulatory support</strong>: continue counterpulsation; secure femoral cannula; trigger from ECG/arterial waveform robust to vibration; check battery life and helium reserve</li>
+              <li><strong>Burns</strong>: warmed environment, accurate fluid resuscitation (Parkland), consider escharotomy before flight if circumferential</li>
+              <li><strong>Obstetric</strong>: left lateral tilt, anticipate delivery en route (pack delivery kit), liaise with receiving obstetric and neonatal teams</li>
+              <li><strong>Paediatric</strong>: regional retrieval team (e.g. STRS, NWTS, KIDS); weight-based equipment; thermoregulation paramount</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection id="human-factors" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Human Factors, Safety &amp; Governance</h2>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Team safety</strong>: high-visibility clothing, seat belts, safe driving (no 'blue lights' for stable patients — most ambulance crashes occur on emergency response)</li>
+              <li><strong>Fatigue &amp; communication</strong>: long transfers degrade vigilance; brief receiving unit before departure and en route; use closed-loop communication</li>
+              <li><strong>Cognitive aids</strong>: pre-departure checklist (ICS proforma), drug calculation cards, escalation phone numbers</li>
+              <li><strong>Documentation &amp; audit</strong>: every transfer audited for adverse events (hypoxia, hypotension, equipment failure, time delays); feedback to referring and retrieval teams</li>
+              <li><strong>Consent &amp; indemnity</strong>: best-interests documentation when patient lacks capacity; medical indemnity for transfers including air/international</li>
             </ul>
           </ExamSection>
         </>
