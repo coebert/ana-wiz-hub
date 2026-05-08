@@ -50,7 +50,7 @@ interface Abg {
   fiO2?: string;
 }
 
-interface Vent?: {
+interface Vent {
   mode?: string;
   vt?: string;
   rr?: string;
