@@ -5,6 +5,7 @@ import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
+import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 
 const objectives = [
   "Recognise major-burn pathophysiology — early shock, SIRS, hypermetabolism and immune dysfunction",
