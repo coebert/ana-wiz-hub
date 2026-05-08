@@ -143,6 +143,7 @@ const BurnsIcuTopic = () => {
               Three distinct injuries can co-exist: <strong>supraglottic thermal injury</strong>, <strong>chemical tracheobronchitis</strong> and <strong>systemic toxin inhalation</strong> (CO, cyanide).
             </p>
             <InhalationInjuryFlowchart />
+            <BurnsIcuCaseStepper />
             <div className="space-y-3">
               {[
                 { tool: "Indications for early intubation", detail: "Stridor / hoarse voice, deep facial or oropharyngeal burns, soot in posterior pharynx, ↓GCS, hypoxia not responsive to O₂, planned long transfer, &gt;30 % TBSA. Use a large-bore (≥ 8.0 mm) uncut tube and secure with tape, not ties (face oedema)." },
