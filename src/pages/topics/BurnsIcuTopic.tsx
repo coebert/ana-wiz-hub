@@ -5,6 +5,7 @@ import { burnsIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import BurnResuscitationDiagram from "@/components/diagrams/BurnResuscitationDiagram";
 import InhalationInjuryFlowchart from "@/components/diagrams/InhalationInjuryFlowchart";
+import ParklandCalculator from "@/components/diagrams/ParklandCalculator";
 
 const objectives = [
   "Recognise major-burn pathophysiology — early shock, SIRS, hypermetabolism and immune dysfunction",
@@ -163,6 +164,7 @@ const BurnsIcuTopic = () => {
               Get the denominator right — over- or underestimating %TBSA both kill. Exclude erythema-only (superficial epidermal) burns.
             </p>
             <BurnResuscitationDiagram />
+            <ParklandCalculator />
             <div className="space-y-3">
               {[
                 { tool: "Wallace’s Rule of Nines (adult)", detail: "Head 9 · each arm 9 · each leg 18 · anterior trunk 18 · posterior trunk 18 · perineum 1. Patient’s palm + fingers ≈ 1 % TBSA — useful for patchy burns." },
