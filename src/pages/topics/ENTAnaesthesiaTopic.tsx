@@ -5,6 +5,7 @@ import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/Laryngectom
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
 import LaserAirwayDiagram from "@/components/diagrams/LaserAirwayDiagram";
 import JetVentilationDiagram from "@/components/diagrams/JetVentilationDiagram";
+import JetVentilationCycleAnimation from "@/components/diagrams/JetVentilationCycleAnimation";
 import { Exam } from "@/data/curriculum";
 
 const ENTAnaesthesiaTopic = () => {
