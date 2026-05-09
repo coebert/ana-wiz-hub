@@ -175,60 +175,23 @@ const DermatomeMyotomeDiagram = ({ selectedLevel, onLevelChange }: DermatomeMyot
                     <path d="M134,418 C136,420 134,422 126,422 C118,422 116,420 116,418" fill="none" />
                   </g>
 
-                  {/* Anatomical surface detail */}
-                  <g stroke="hsl(var(--muted-foreground))" fill="none" opacity="0.12" strokeWidth="0.5">
+                  {/* Faint anatomical surface detail (under territories) */}
+                  <g stroke="hsl(var(--muted-foreground))" fill="none" opacity="0.18" strokeWidth="0.5">
                     {/* Clavicles */}
                     <path d="M82,72 C78,74 72,76 66,78" />
                     <path d="M118,72 C122,74 128,76 134,78" />
                     {/* Pectoralis outline */}
                     <path d="M82,80 C84,88 90,96 96,98 C98,98 100,98 100,96" />
                     <path d="M118,80 C116,88 110,96 104,98 C102,98 100,98 100,96" />
-                    {/* Abdominal midline */}
-                    <line x1="100" y1="100" x2="100" y2="232" strokeDasharray="2 4" opacity="0.6" />
-                    {/* Rectus segments */}
-                    <path d="M92,118 L108,118" opacity="0.4" />
-                    <path d="M92,140 L108,140" opacity="0.4" />
-                    <path d="M92,164 L108,164" opacity="0.4" />
-                    {/* Iliac crests */}
-                    <path d="M72,224 C76,222 82,222 88,224" opacity="0.5" />
-                    <path d="M128,224 C124,222 118,222 112,224" opacity="0.5" />
-                    {/* Patellae */}
-                    <ellipse cx="86" cy="324" rx="5" ry="6" opacity="0.3" />
-                    <ellipse cx="114" cy="324" rx="5" ry="6" opacity="0.3" />
                     {/* Deltoid bulk */}
-                    <path d="M64,80 C58,88 54,98 52,108" opacity="0.3" />
-                    <path d="M136,80 C142,88 146,98 148,108" opacity="0.3" />
+                    <path d="M64,80 C58,88 54,98 52,108" />
+                    <path d="M136,80 C142,88 146,98 148,108" />
                   </g>
 
                   {/* Midline */}
                   <line x1="100" y1="56" x2="100" y2="244" stroke="hsl(var(--muted-foreground))" strokeWidth="0.25" strokeDasharray="2 4" opacity="0.15" />
 
-                  {/* Landmark annotations — toggle via showLandmarks */}
-                  {showLandmarks && (
-                    <g opacity="0.45" fontSize="4" fill="hsl(var(--muted-foreground))">
-                      {/* Nipples T4 */}
-                      <circle cx="90" cy="126" r="1.2" />
-                      <circle cx="110" cy="126" r="1.2" />
-                      <line x1="114" y1="126" x2="136" y2="126" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
-                      {showLabels && <text x="138" y="128" fontSize="3.5" fontWeight="600">T4 nipple</text>}
-                      {/* Xiphisternum T6 */}
-                      <circle cx="100" cy="148" r="0.8" />
-                      <line x1="104" y1="148" x2="136" y2="148" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                      {showLabels && <text x="138" y="150" fontSize="3.5">T6 xiphoid</text>}
-                      {/* Umbilicus T10 */}
-                      <circle cx="100" cy="196" r="1.8" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-                      <line x1="104" y1="196" x2="136" y2="196" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
-                      {showLabels && <text x="138" y="198" fontSize="3.5" fontWeight="600">T10 umbilicus</text>}
-                      {/* Inguinal L1 */}
-                      <line x1="110" y1="234" x2="136" y2="234" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                      {showLabels && <text x="138" y="236" fontSize="3.5">L1 groin</text>}
-                      {/* Knee L3 */}
-                      <line x1="118" y1="320" x2="136" y2="320" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.4" />
-                      {showLabels && <text x="138" y="322" fontSize="3.5">L3 knee</text>}
-                    </g>
-                  )}
-
-                  {/* Dermatome regions */}
+                  {/* Dermatome regions — translucent so anatomy reads through */}
                   {levels.map(l => (
                     <g key={l.id}>
                       {l.paths.map((p, i) => (
@@ -236,15 +199,65 @@ const DermatomeMyotomeDiagram = ({ selectedLevel, onLevelChange }: DermatomeMyot
                           key={i}
                           d={p}
                           fill={l.color}
-                          fillOpacity={selected === l.id ? 0.55 : 0.15}
-                          stroke={selected === l.id ? l.color : "transparent"}
-                          strokeWidth={selected === l.id ? 1.2 : 0}
+                          fillOpacity={selected === l.id ? 0.55 : 0.28}
+                          stroke={l.color}
+                          strokeWidth={selected === l.id ? 1.2 : 0.5}
+                          strokeOpacity={selected === l.id ? 0.95 : 0.5}
+                          strokeDasharray={selected === l.id ? undefined : "3 2"}
                           className="cursor-pointer transition-all duration-200"
                           onClick={() => setSelected(selected === l.id ? null : l.id)}
                         />
                       ))}
                     </g>
                   ))}
+
+                  {/* Surface anatomy plate (bones + landmarks) ON TOP of territories */}
+                  <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.6" opacity="0.6"
+                    style={{ pointerEvents: "none" }}>
+                    {/* Sternum */}
+                    <path d="M100,80 L100,150" strokeWidth="0.8" />
+                    <line x1="95" y1="90" x2="105" y2="90" strokeWidth="0.4" />
+                    {/* Costal margin */}
+                    <path d="M76,150 C90,176 110,184 100,184 C90,184 110,184 124,150" strokeDasharray="2 2" />
+                    {/* Ribs subtle */}
+                    <path d="M78,108 C90,114 100,116 100,116" strokeWidth="0.35" opacity="0.55" />
+                    <path d="M122,108 C110,114 100,116 100,116" strokeWidth="0.35" opacity="0.55" />
+                    <path d="M76,128 C90,134 100,136 100,136" strokeWidth="0.35" opacity="0.55" />
+                    <path d="M124,128 C110,134 100,136 100,136" strokeWidth="0.35" opacity="0.55" />
+                    {/* Nipples (T4) */}
+                    <circle cx="90" cy="126" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+                    <circle cx="110" cy="126" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+                    {/* Xiphoid (T6) */}
+                    <circle cx="100" cy="150" r="1.2" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+                    {/* Umbilicus (T10) */}
+                    <circle cx="100" cy="196" r="2.0" strokeWidth="0.7" />
+                    {/* ASIS + inguinal ligament */}
+                    <circle cx="78" cy="232" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.9" />
+                    <circle cx="122" cy="232" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.9" />
+                    <path d="M78,232 L100,250 L122,232" strokeDasharray="2 2" opacity="0.7" />
+                    {/* Patellae */}
+                    <ellipse cx="86" cy="324" rx="5" ry="6" />
+                    <ellipse cx="114" cy="324" rx="5" ry="6" />
+                    {/* Medial malleoli */}
+                    <circle cx="84" cy="412" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+                    <circle cx="116" cy="412" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+                  </g>
+
+                  {/* Landmark annotations — toggle via showLandmarks */}
+                  {showLandmarks && (
+                    <g opacity="0.6" fontSize="4" fill="hsl(var(--muted-foreground))" style={{ pointerEvents: "none" }}>
+                      <line x1="114" y1="126" x2="136" y2="126" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.6" />
+                      {showLabels && <text x="138" y="128" fontSize="3.5" fontWeight="600">T4 nipple</text>}
+                      <line x1="104" y1="150" x2="136" y2="150" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                      {showLabels && <text x="138" y="152" fontSize="3.5">T6 xiphoid</text>}
+                      <line x1="104" y1="196" x2="136" y2="196" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.6" />
+                      {showLabels && <text x="138" y="198" fontSize="3.5" fontWeight="600">T10 umbilicus</text>}
+                      <line x1="124" y1="232" x2="136" y2="232" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                      {showLabels && <text x="138" y="234" fontSize="3.5">L1 groin / ASIS</text>}
+                      <line x1="118" y1="320" x2="136" y2="320" strokeWidth="0.3" stroke="hsl(var(--muted-foreground))" opacity="0.5" />
+                      {showLabels && <text x="138" y="322" fontSize="3.5">L3 patella</text>}
+                    </g>
+                  )}
                 </svg>
               </div>
 
