@@ -846,18 +846,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
                 </g>
               )}
 
-              {/* "via mouth" route arrow — orange highlight pointing at the lips */}
-              <g style={{ pointerEvents: "none" }}>
-                <path d={`M ${handleAnchor.x + 26} ${handleAnchor.y + 22}
-                          q 18 6 60 -2`}
-                  fill="none" stroke="hsl(var(--primary) / 0.85)"
-                  strokeWidth="1.2" strokeDasharray="3 2" markerEnd="url(#bf-arrow)" />
-                <text x={handleAnchor.x + 30} y={handleAnchor.y + 38}
-                  fontSize="9" fontWeight="600" fill="hsl(var(--primary))"
-                  style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
-                  via mouth (oral route)
-                </text>
-              </g>
             </g>
 
             {/* === INTRA-ORAL shaft — curves through airway, never crosses face === */}
