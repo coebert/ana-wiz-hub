@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
+import LaserAirwayDiagram from "@/components/diagrams/LaserAirwayDiagram";
 import { Exam } from "@/data/curriculum";
 
 const ENTAnaesthesiaTopic = () => {
@@ -37,6 +38,7 @@ const ENTAnaesthesiaTopic = () => {
       diagrams={
         <>
           <LaryngectomyAirwayHandoverDiagram />
+          <LaserAirwayDiagram />
           <LeFortFractureDiagram />
         </>
       }
@@ -68,11 +70,39 @@ const ENTAnaesthesiaTopic = () => {
 
           <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Microlaryngoscopy & Laser Surgery</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Laser airway work is the highest-risk shared-airway scenario in anaesthesia: the surgeon's energy source sits millimetres from the ETT, the cuff and the patient's eyes, and the gas mixture flowing through the tube is itself a potential oxidiser. Safety relies on three parallel disciplines — a <strong>laser-resistant tube</strong> matched to the wavelength in use, an <strong>oxygen strategy</strong> that denies the fire its oxidiser, and <strong>ocular protection</strong> for both patient and theatre team.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Laser physics in the airway</h3>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-              <li><strong>Microlaryngoscopy tube (MLT)</strong>: small ID (5.0–6.0 mm) to maximise surgical view. Increased airway resistance — monitor closely</li>
-              <li><strong>Jet ventilation</strong>: supraglottic (Sanders injector) or subglottic/transtracheal. Provides ventilation without tube in surgical field. Risks: barotrauma, air trapping, gastric insufflation, pneumothorax</li>
-              <li><strong>Laser safety</strong>: CO₂ laser most common for airway. Laser-resistant tubes (e.g., Laser-Flex, Bivona). FiO₂ ≤0.3 (avoid &gt;0.4), avoid N₂O (supports combustion). Use air/O₂ mixture</li>
-              <li><strong>Airway fire</strong>: stop ventilation, remove tube, flood field with saline, re-intubate, bronchoscopy to assess damage. Prevention: laser-safe tube, saline-soaked pledgets, minimal FiO₂, eye protection for all</li>
+              <li><strong>CO₂ laser (10 600 nm)</strong> — workhorse for laryngeal lesions; absorbed by water in surface tissue, so injury is shallow but precise. Reflects off polished metal — the principle exploited by stainless-steel ETT wraps.</li>
+              <li><strong>Nd:YAG (1064 nm)</strong> — deep tissue penetration (3–5 mm), used for tracheobronchial debulking. Invisible near-IR — particularly dangerous to the unprotected retina.</li>
+              <li><strong>KTP / Argon (532 / 488–514 nm)</strong> — selectively absorbed by haemoglobin (vascular lesions, papillomata). Visible green/blue, but bright reflections still cause photochemical retinal injury.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Tube selection</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Microlaryngoscopy tube (MLT)</strong>: small ID (5.0–6.0 mm) to maximise surgical view. Increased airway resistance — monitor closely. Standard PVC MLTs are <em>not</em> laser-safe.</li>
+              <li><strong>Mallinckrodt Laser-Flex</strong>: corrugated stainless-steel shaft with twin distal saline-filled cuffs. Approved for CO₂ and KTP only.</li>
+              <li><strong>Bivona Fome-Cuf (laser variant)</strong>: aluminium-foil-wrapped silicone with a self-inflating foam cuff vented to atmosphere. The only widely available tube approved for both CO₂ and Nd:YAG.</li>
+              <li><strong>Sheridan Laser-Trach</strong>: copper-foil-wrapped red rubber inside a saline-soakable Merocel sponge envelope. Twin methylene-blue saline cuffs.</li>
+              <li><strong>Jet ventilation</strong>: supraglottic (Sanders injector) or subglottic/transtracheal — eliminates the tube from the surgical field altogether but introduces barotrauma, air trapping, gastric insufflation and pneumothorax risk.</li>
+              <li><strong>Cuff inflation</strong>: saline + methylene blue dye. A laser strike causes a visible blue leak, simultaneously alerting the surgeon and self-quenching the burn.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Eye protection — patient and staff</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Why the patient is at greatest risk</strong>: an anaesthetised patient cannot blink, avert their gaze or report pain. The eyes lie in the direct line of fire of any reflected beam from instruments, retractors or wet mucosa, and the protective blink reflex (~200 ms) is abolished. Lids must be <strong>taped closed</strong>, lubricated, covered with <strong>saline-soaked gauze</strong>, and overlaid with a <strong>wet-cloth-wrapped metal eye shield</strong>. The face is then draped with damp surgical drapes that absorb stray photons before they reach skin or eye.</li>
+              <li><strong>Why staff are at risk</strong>: invisible CO₂ and Nd:YAG beams give no visual cue; a single stray reflection from a polished instrument can deliver focal retinal energy faster than the blink reflex can react. KTP/Argon beams are visible but the resulting glare itself is disabling.</li>
+              <li><strong>Wavelength-specific eyewear</strong>: protective filters are matched to the laser in use and are <em>not</em> interchangeable. CO₂ → clear polycarbonate/glass safety spectacles with side shields (OD ≥ 5 @ 10 600 nm — ordinary glass blocks CO₂). Nd:YAG → green/blue-green tinted goggles (OD ≥ 5 @ 1064 nm). KTP → orange/amber wavelength-specific goggles (OD ≥ 4 @ 532 nm). CO₂ glasses give <em>zero</em> protection from Nd:YAG.</li>
+              <li><strong>Theatre controls</strong>: designated Laser Protection Supervisor, door warning signage, windows covered, matt-finish instruments where possible, key-switch interlock, and verbal "laser on / laser off" call-outs by the surgeon.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Fire prevention & airway-fire drill</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Prevention (the fire triangle)</strong>: ignition (laser) is unavoidable, so eliminate fuel and oxidiser. FiO₂ ≤ 0.30 with air/O₂ mix, <strong>never N₂O</strong> (supports combustion); saline-soaked pledgets at the glottis; saline syringe primed on the airway trolley; wet drapes around the face; surgeon and anaesthetist agree the laser-fire drill before draping.</li>
+              <li><strong>If a fire occurs</strong>: call out "Airway fire" → <strong>stop ventilation, disconnect circuit, remove the tube</strong> simultaneously → flood the field with saline → surgeon turns the laser off and removes any burning material → mask-ventilate with 100% O₂ once the fire is out → re-intubate with a fresh laser-safe tube → <strong>rigid bronchoscopy</strong> to assess airway burns → ICU admission, humidified O₂, dexamethasone, low threshold for tracheostomy.</li>
             </ul>
           </ExamSection>
 
