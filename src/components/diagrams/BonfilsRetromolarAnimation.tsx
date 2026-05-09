@@ -347,6 +347,10 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <clipPath id="bf-eye-clip">
           <circle cx="42" cy="42" r="38" />
         </clipPath>
+        <marker id="bf-arrow" viewBox="0 0 10 10" refX="9" refY="5"
+          markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="hsl(var(--primary))" />
+        </marker>
       </defs>
 
       {/* ==================================================================
@@ -569,23 +573,20 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           ================================================================== */}
 
       {step !== 5 && (() => {
-        // External (extra-oral) shaft: from handle exit straight to mouth entry.
-        // The handle sits up & to the left of the patient's face — well clear of
-        // the head outline. We also tilt the whole external assembly slightly
-        // around ENTRY as the operator rotates the scope to midline.
-        const handleAnchor = { x: -10, y: 70 }; // proximal end of external shaft
+        // External (extra-oral) shaft: enters horizontally at LIP LEVEL — the
+        // Bonfils is an ORAL device. The handle/battery/eyepiece project
+        // upward from the proximal end (the way the operator actually holds
+        // it), well clear of the nose.
+        const handleAnchor = { x: 12, y: 174 }; // proximal shaft end, mouth-level
         // Intra-oral shaft path (Q curve through cp, ending at the tip).
         const innerPath = `M ${ENTRY.x} ${ENTRY.y} Q ${sp.cpX} ${sp.cpY} ${sp.tipX} ${sp.tipY}`;
         // Direction at the tip (derivative of quadratic at t=1) for the light cone.
         const dxTip = sp.tipX - sp.cpX;
         const dyTip = sp.tipY - sp.cpY;
         const tipAngleDeg = (Math.atan2(dyTip, dxTip) * 180) / Math.PI;
-        // ETT proximal length sits over the EXTERNAL shaft only (it never
-        // disappears into the airway until step 4 advances it to ENTRY).
         const ettEndT = sp.ettOnShaft;
         const ettX = handleAnchor.x + (ENTRY.x - handleAnchor.x) * ettEndT;
         const ettY = handleAnchor.y + (ENTRY.y - handleAnchor.y) * ettEndT;
-        // Small operator-rotation of the external assembly around ENTRY.
         const extRot = sp.rot * 0.12;
 
         return (
@@ -593,26 +594,27 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
             {/* === EXTERNAL assembly (rotates slightly around mouth entry) === */}
             <g transform={`rotate(${extRot} ${ENTRY.x} ${ENTRY.y})`}
                style={{ transition }}>
-              {/* Battery handle */}
-              <g transform={`translate(${handleAnchor.x - 36}, ${handleAnchor.y - 44})`}>
-                <rect x="0" y="0" width="42" height="36" rx="5"
+              {/* Vertical battery handle — projects UP from proximal end */}
+              <g transform={`translate(${handleAnchor.x - 18}, ${handleAnchor.y - 118})`}>
+                <rect x="0" y="0" width="36" height="78" rx="6"
                   fill="hsl(220 10% 30%)" stroke="hsl(220 10% 15%)" />
-                <rect x="6" y="6" width="30" height="6" rx="1" fill="hsl(220 10% 45%)" />
-                <circle cx="36" cy="32" r="3" fill="hsl(120 60% 50%)" />
+                <rect x="6" y="8" width="24" height="6" rx="1" fill="hsl(220 10% 45%)" />
+                <rect x="6" y="20" width="24" height="6" rx="1" fill="hsl(220 10% 45%)" />
+                <circle cx="29" cy="70" r="3" fill="hsl(120 60% 50%)" />
               </g>
-              {/* Eyepiece */}
-              <circle cx={handleAnchor.x - 16} cy={handleAnchor.y - 6} r="11"
+              {/* Eyepiece on top of handle */}
+              <circle cx={handleAnchor.x} cy={handleAnchor.y - 124} r="11"
                 fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.4" />
-              <circle cx={handleAnchor.x - 16} cy={handleAnchor.y - 6} r="5"
+              <circle cx={handleAnchor.x} cy={handleAnchor.y - 124} r="5"
                 fill="hsl(var(--primary) / 0.45)" />
-              {/* O₂ side-port */}
-              <circle cx={handleAnchor.x - 26} cy={handleAnchor.y + 14} r="3.4"
+              {/* O₂ side-port on lateral aspect of handle */}
+              <circle cx={handleAnchor.x - 22} cy={handleAnchor.y - 80} r="3.4"
                 fill="hsl(var(--accent))" />
-              <line x1={handleAnchor.x - 29} y1={handleAnchor.y + 14}
-                x2={handleAnchor.x - 42} y2={handleAnchor.y + 20}
+              <line x1={handleAnchor.x - 25} y1={handleAnchor.y - 80}
+                x2={handleAnchor.x - 42} y2={handleAnchor.y - 86}
                 stroke="hsl(var(--accent))" strokeWidth="1.4" />
 
-              {/* External shaft (handle → mouth entry) */}
+              {/* External shaft — HORIZONTAL at lip level */}
               <line x1={handleAnchor.x} y1={handleAnchor.y}
                 x2={ENTRY.x} y2={ENTRY.y}
                 stroke="url(#bf-shaft)" strokeWidth="6.5" strokeLinecap="round" />
@@ -626,16 +628,29 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
                   <line x1={handleAnchor.x} y1={handleAnchor.y}
                     x2={ettX} y2={ettY}
                     stroke="url(#bf-ett)" strokeWidth="14" strokeLinecap="round" />
-                  {/* Pilot tubing + balloon */}
-                  <path d={`M ${handleAnchor.x + 4} ${handleAnchor.y - 6}
-                            q -10 -10 -22 -4`}
+                  {/* Pilot tubing + balloon — drape DOWNWARD from proximal end */}
+                  <path d={`M ${handleAnchor.x + 4} ${handleAnchor.y + 6}
+                            q -8 14 -22 16`}
                     fill="none" stroke="hsl(var(--primary) / 0.6)" strokeWidth="1.2" />
-                  <ellipse cx={handleAnchor.x - 22} cy={handleAnchor.y - 14}
+                  <ellipse cx={handleAnchor.x - 22} cy={handleAnchor.y + 26}
                     rx="6" ry="3.6"
                     fill="hsl(var(--primary) / 0.35)"
                     stroke="hsl(var(--primary))" strokeWidth="0.8" />
                 </g>
               )}
+
+              {/* "via mouth" route arrow — orange highlight pointing at the lips */}
+              <g style={{ pointerEvents: "none" }}>
+                <path d={`M ${handleAnchor.x + 26} ${handleAnchor.y + 22}
+                          q 18 6 60 -2`}
+                  fill="none" stroke="hsl(var(--primary) / 0.85)"
+                  strokeWidth="1.2" strokeDasharray="3 2" markerEnd="url(#bf-arrow)" />
+                <text x={handleAnchor.x + 30} y={handleAnchor.y + 38}
+                  fontSize="9" fontWeight="600" fill="hsl(var(--primary))"
+                  style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
+                  via mouth (oral route)
+                </text>
+              </g>
             </g>
 
             {/* === INTRA-ORAL shaft — curves through airway, never crosses face === */}
