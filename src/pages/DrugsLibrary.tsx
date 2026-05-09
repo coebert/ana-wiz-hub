@@ -146,6 +146,54 @@ export default function DrugsLibrary() {
           />
         </div>
 
+        {/* Broad-category browser — collapses the granular drug_class strings
+            into the high-level buckets a trainee would actually scan by. */}
+        <div className="mb-2">
+          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
+            Browse by class
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              onClick={() => {
+                setActiveBroad(null);
+                setActiveClass(null);
+              }}
+              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                activeBroad === null
+                  ? "bg-drugs text-white border-drugs"
+                  : "bg-card text-muted-foreground border-border hover:border-drugs/50"
+              }`}
+            >
+              All classes
+            </button>
+            {BROAD_DRUG_CATEGORIES.filter((c) => (broadCounts.get(c.key) ?? 0) > 0).map((c) => {
+              const isActive = activeBroad === c.key;
+              const count = broadCounts.get(c.key) ?? 0;
+              return (
+                <button
+                  key={c.key}
+                  onClick={() => {
+                    const next = isActive ? null : c.key;
+                    setActiveBroad(next);
+                    // Clear granular sub-filter when broad bucket changes.
+                    setActiveClass(null);
+                  }}
+                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                    isActive
+                      ? "bg-drugs text-white border-drugs"
+                      : "bg-card text-foreground border-border hover:border-drugs/50"
+                  }`}
+                >
+                  {c.label}{" "}
+                  <span className={isActive ? "opacity-80" : "text-muted-foreground"}>({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Granular sub-class chips — narrow within the active broad bucket
+            (or across the full library when no bucket is active). */}
         <div className="mb-4 flex flex-wrap gap-1.5">
           <button
             onClick={() => setActiveClass(null)}
