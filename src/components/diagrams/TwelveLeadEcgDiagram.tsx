@@ -123,7 +123,7 @@ const TwelveLeadEcgDiagram = () => {
   };
 
   const renderLead = (lead: LeadDef, x: number, y: number, w = BOX_W, h = BOX_H) => {
-    const { st, _primary } = leadState(lead);
+    const { st, primary: _primary } = leadState(lead);
     const elevated = st > 0;
     const depressed = st < 0;
     const isLeadActiveTerritory = lead.primary === selected;

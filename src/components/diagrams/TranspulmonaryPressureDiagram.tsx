@@ -1,4 +1,4 @@
-import { useState, _useMemo } from "react";
+import { useState } from "react";
 
 const TranspulmonaryPressureDiagram = () => {
   const [peep, setPeep] = useState(10);

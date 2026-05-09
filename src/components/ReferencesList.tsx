@@ -1,5 +1,5 @@
 import { ExternalLink, BookOpen, ChevronRight } from "lucide-react";
-import { topicReferences, _Reference } from "@/data/references";
+import { topicReferences } from "@/data/references";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { useEffect, useState } from "react";
 

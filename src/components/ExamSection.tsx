@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { EyeOff } from "lucide-react";
-import { ExamTag, _Exam } from "@/data/curriculum";
+import { ExamTag } from "@/data/curriculum";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamMappingBadges } from "@/components/ExamMappingBadges";
 
