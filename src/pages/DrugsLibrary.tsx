@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2, Info } from "lucide-react";
-import { Header } from "@/components/Header";
+
 import { supabase } from "@/integrations/supabase/client";
 import { getDrugLabelInlineStyles, DRUG_LABEL_LEGEND } from "@/lib/drug-label-colours";
 
