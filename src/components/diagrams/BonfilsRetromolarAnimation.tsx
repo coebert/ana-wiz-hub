@@ -248,7 +248,11 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
     4: -1.8,  // peak optimisation during rail-road
     5:  0,    // neutral after secure
   };
-  const HEAD_PIVOT = { x: 290, y: 145 }; // atlanto-occipital
+  // Pivot at the OCCIPUT–PILLOW contact, not the A-O joint: when a supine
+  // patient extends the head the occiput stays planted and the chin lifts.
+  // Anchoring rotation here keeps the posterior contour from sliding during
+  // posture changes — only the chin/face arc visibly through the motion.
+  const HEAD_PIVOT = { x: 372, y: 296 }; // occipital contact on pillow
   const [headRot, setHeadRot] = useState(0);
   useEffect(() => {
     if (step === 0) {
