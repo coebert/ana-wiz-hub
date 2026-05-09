@@ -5,8 +5,7 @@ import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDia
 import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
 import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
-import { lowerLimbFolio } from "@/components/diagrams/anatomyFolios";
+import LowerLimbInnervationDiagram from "@/components/diagrams/LowerLimbInnervationDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
