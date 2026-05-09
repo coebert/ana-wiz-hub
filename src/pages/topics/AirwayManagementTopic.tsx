@@ -243,6 +243,41 @@ const AirwayManagementTopic = () => {
               <li><strong>Avoid</strong> muscle relaxants until oxygenation is proven — relaxation removes pharyngeal tone and may collapse a borderline airway completely.</li>
             </ul>
 
+            <h4 className="text-base font-serif font-semibold text-foreground mt-4 mb-2">Bonfils retromolar rigid intubation fibrescope</h4>
+            <div className="grid grid-cols-1 md:grid-cols-[1fr,260px] gap-4 mb-3">
+              <div className="text-sm text-foreground/90 leading-relaxed space-y-2">
+                <p>
+                  The Bonfils (Karl Storz, 1983) is a slim <strong>rigid stainless-steel fibrescope with a fixed 40°
+                  distal curve</strong>, an eyepiece (or video adaptor), a battery handle and a side-port for oxygen
+                  insufflation. It is particularly useful in supraglottic obstruction because it can be advanced through
+                  a <strong>retromolar</strong> approach behind the molars, hugging the lateral pharyngeal wall and
+                  rotating around the obstructing tongue base or epiglottis without requiring full mouth opening or
+                  laryngoscopic displacement of soft tissue.
+                </p>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  <li><strong>Indications:</strong> limited mouth opening (≥1.2 cm interincisor gap), restricted neck movement, large tongue, supraglottic mass/abscess, predicted Cormack–Lehane III–IV, failed direct or video laryngoscopy, awake or asleep.</li>
+                  <li><strong>Technique:</strong> ETT pre-loaded onto the shaft, jaw thrust by an assistant, scope inserted in the midline or retromolar gutter, advanced under <em>continuous</em> visualisation until the cords appear; ETT railroaded over the scope. O₂ at 2–6 L · min⁻¹ via the side-port keeps the lens clear and provides apnoeic oxygenation.</li>
+                  <li><strong>Advantages over flexible fibreoptic:</strong> rigid shaft is unaffected by pharyngeal collapse, robust in blood/secretions, fast, single-handed; useful when soft tissue would close around a flexible scope.</li>
+                  <li><strong>Limitations:</strong> steep learning curve, fixed curvature does not negotiate distal airway pathology, requires some mouth opening, lens fogging if O₂ flow inadequate, expensive single-use camera couplers.</li>
+                  <li><strong>Pitfalls in supraglottic obstruction:</strong> bleeding obscures the eyepiece — use suction and side-port O₂; never force past resistance — convert to plan B (awake tracheostomy or scalpel-bougie-tube).</li>
+                </ul>
+              </div>
+              <figure className="m-0">
+                <img
+                  src={bonfilsImage}
+                  alt="Bonfils retromolar rigid intubation fibrescope with fixed 40° distal curvature, eyepiece, and oxygen insufflation port"
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="w-full h-auto rounded-md border border-border bg-card"
+                />
+                <figcaption className="text-[11px] text-muted-foreground mt-1 leading-snug">
+                  Bonfils fibrescope: rigid shaft with fixed 40° distal curve, proximal eyepiece/camera port,
+                  battery handle and side O₂ insufflation. Pre-loaded with an ETT for retromolar intubation.
+                </figcaption>
+              </figure>
+            </div>
+
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Glottic obstruction</h3>
             <p className="text-foreground/90 leading-relaxed mb-2">
               Lesion is at the cords or immediate peri-glottic region — laryngeal tumour, papillomatosis, vocal cord
