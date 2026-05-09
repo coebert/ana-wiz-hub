@@ -1001,47 +1001,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           );
         })()}
 
-        {/* ---- Dynamic scope-tip callout (follows the tip every step) ----
-            Mirrors the head/scope rotation transform + easing so the leader
-            line stays anchored to the moving tip during the eased rotation,
-            then counter-rotates the label so the text remains upright. */}
-        {step !== 5 && (() => {
-          const lx = sp.tipX > 200 ? sp.tipX - 90 : sp.tipX + 30;
-          const ly = sp.tipY + 50;
-          const labelCx = lx + 42;
-          const labelCy = ly - 3;
-          return (
-            <g
-              style={{
-                transform: `translateZ(0) rotate(${headRot}deg)`,
-                transformOrigin: `${HEAD_PIVOT.x}px ${HEAD_PIVOT.y}px`,
-                transformBox: "view-box",
-                willChange: "transform",
-                transition:
-                  "transform 1400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease",
-              }}
-            >
-              <line x1={sp.tipX} y1={sp.tipY} x2={lx + 40} y2={ly - 3}
-                stroke="hsl(50 100% 45%)" strokeWidth="0.7" />
-              <g
-                style={{
-                  transform: `rotate(${-headRot}deg)`,
-                  transformOrigin: `${labelCx}px ${labelCy}px`,
-                  transformBox: "view-box",
-                  transition:
-                    "transform 1400ms cubic-bezier(0.22, 1, 0.36, 1)",
-                }}
-              >
-                <rect x={lx - 4} y={ly - 11} width="92" height="15" rx="3"
-                  fill="hsl(50 100% 92%)" stroke="hsl(50 100% 40%)" strokeWidth="0.7" />
-                <text x={lx} y={ly} fontSize="9" fontWeight="600"
-                  fill="hsl(40 80% 22%)">
-                  scope tip — LED + lens
-                </text>
-              </g>
-            </g>
-          );
-        })()}
+        {/* Scope tip is self-evident from the glowing yellow LED — no callout needed. */}
       </g>
 
       {/* ==================================================================
