@@ -12,6 +12,7 @@ import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDia
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import PartialAirwayObstructionDiagram from "@/components/diagrams/PartialAirwayObstructionDiagram";
 import bonfilsImage from "@/assets/bonfils-fibrescope.jpg";
+import BonfilsRetromolarAnimation from "@/components/diagrams/BonfilsRetromolarAnimation";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
