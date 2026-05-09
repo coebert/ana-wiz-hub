@@ -11,8 +11,8 @@ import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalc
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import PartialAirwayObstructionDiagram from "@/components/diagrams/PartialAirwayObstructionDiagram";
-import bonfilsImage from "@/assets/bonfils-fibrescope.jpg";
 import BonfilsRetromolarAnimation from "@/components/diagrams/BonfilsRetromolarAnimation";
+import BonfilsDeviceDiagram from "@/components/diagrams/BonfilsDeviceDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
@@ -264,20 +264,7 @@ const AirwayManagementTopic = () => {
                   <li><strong>Pitfalls in supraglottic obstruction:</strong> bleeding obscures the eyepiece — use suction and side-port O₂; never force past resistance — convert to plan B (awake tracheostomy or scalpel-bougie-tube).</li>
                 </ul>
               </div>
-              <figure className="m-0">
-                <img
-                  src={bonfilsImage}
-                  alt="Bonfils retromolar rigid intubation fibrescope with fixed 40° distal curvature, eyepiece, and oxygen insufflation port"
-                  loading="lazy"
-                  width={1024}
-                  height={768}
-                  className="w-full h-auto rounded-md border border-border bg-card"
-                />
-                <figcaption className="text-[11px] text-muted-foreground mt-1 leading-snug">
-                  Bonfils fibrescope: rigid shaft with fixed 40° distal curve, proximal eyepiece/camera port,
-                  battery handle and side O₂ insufflation. Pre-loaded with an ETT for retromolar intubation.
-                </figcaption>
-              </figure>
+              <BonfilsDeviceDiagram />
             </div>
 
             <div className="my-4">
