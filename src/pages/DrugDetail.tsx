@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AlertTriangle, ArrowLeft, Pill, ChevronDown, ChevronUp } from "lucide-react";
-import { Header } from "@/components/Header";
+
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
@@ -736,10 +736,10 @@ export default function DrugDetail() {
   }, [drug]);
 
   if (loading) return (
-    <div className="min-h-screen bg-background"><Header /><main className="container mx-auto px-4 py-8"><p className="text-sm text-muted-foreground">Loading…</p></main></div>
+    <div className="min-h-screen bg-background"><main className="container mx-auto px-4 py-8"><p className="text-sm text-muted-foreground">Loading…</p></main></div>
   );
   if (!drug) return (
-    <div className="min-h-screen bg-background"><Header /><main className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="min-h-screen bg-background"><main className="container mx-auto px-4 py-8 max-w-4xl">
       <Link to="/drugs" className="text-sm text-drugs inline-flex items-center gap-1 mb-4"><ArrowLeft className="h-3.5 w-3.5"/>Back to formulary</Link>
       <p className="text-sm text-muted-foreground">Drug not found.</p>
     </main></div>
@@ -747,7 +747,7 @@ export default function DrugDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
       <main className="container mx-auto px-4 py-6 max-w-4xl">
         <Link to="/drugs" className="text-sm text-muted-foreground hover:text-drugs inline-flex items-center gap-1 mb-3">
           <ArrowLeft className="h-3.5 w-3.5" /> Back to formulary
