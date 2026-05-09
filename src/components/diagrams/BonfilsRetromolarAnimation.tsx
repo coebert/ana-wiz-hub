@@ -235,6 +235,30 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
+  // ----- Head / neck posture -----
+  // Rotation (deg) about the atlanto-occipital joint. Negative = extension
+  // (chin lifts, occiput drops, in this left-facing view). Bonfils is done
+  // in essentially NEUTRAL position, so changes are deliberately small
+  // (≤ 2°) — just enough to read as the operator optimising the axis.
+  const headRotTargets: Record<Step, number> = {
+    0:  0,    // neutral sniff while jaw thrust applied
+    1: -0.8,  // very slight extension as scope enters
+    2: -1.2,
+    3: -1.4,  // optimised view of glottis
+    4: -1.8,  // peak optimisation during rail-road
+    5:  0,    // neutral after secure
+  };
+  const HEAD_PIVOT = { x: 290, y: 145 }; // atlanto-occipital
+  const [headRot, setHeadRot] = useState(0);
+  useEffect(() => {
+    if (step === 0) {
+      setHeadRot(0);
+      return;
+    }
+    setHeadRot(headRotTargets[step]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
 
   // Per-step intra-airway tip positions and a bezier control point that
   // shapes the shaft so it always hugs anatomy (retromolar → tongue base →
@@ -333,6 +357,14 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       <rect x="0" y="305" width="720" height="55" fill="hsl(var(--muted) / 0.5)" />
       <path d="M 200 308 Q 320 290 460 308 L 460 320 L 200 320 Z" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
 
+      {/* ============ HEAD + AIRWAY + SCOPE — rotates with posture ============ */}
+      <g
+        style={{
+          transform: `rotate(${headRot}deg)`,
+          transformOrigin: `${HEAD_PIVOT.x}px ${HEAD_PIVOT.y}px`,
+          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+      >
       {/* HEAD outline — clearly recognisable profile facing left.
           Path traced clockwise from forehead → brow → nose → philtrum →
           upper lip → MOUTH OPENING (gap) → lower lip → chin →
@@ -649,6 +681,8 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           </g>
         </g>
       )}
+      </g>
+      {/* ============ END head/anatomy/scope rotation group ============ */}
 
       {/* ==================================================================
           LABELS & CALLOUTS — consistent leader-line style
