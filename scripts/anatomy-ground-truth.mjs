@@ -26,23 +26,22 @@ const range = (a, b) => {
   return out;
 };
 
-/** L4-S2 type ranges crossing regions */
+/** Cross-region range: "L4-S2", "C5-T1", "T12-L1". */
+const REGION_MAX = { C: 8, T: 12, L: 5, S: 5 };
+const REGION_ORDER = ["C", "T", "L", "S"];
 const lsRange = (rangeStr) => {
-  // e.g. "L4-S2"
   const [a, b] = rangeStr.split("-");
   if (a[0] === b[0]) return range(a, b);
-  // crosses lumbar→sacral
-  const lumbarMax = 5;
-  const sacralMax = 5;
   const aN = parseInt(a.slice(1), 10);
   const bN = parseInt(b.slice(1), 10);
+  const aIdx = REGION_ORDER.indexOf(a[0]);
+  const bIdx = REGION_ORDER.indexOf(b[0]);
   const out = [];
-  if (a[0] === "L") {
-    for (let i = aN; i <= lumbarMax; i++) out.push(`L${i}`);
-    for (let i = 1; i <= bN; i++) out.push(`S${i}`);
-  } else {
-    // S→? unusual
-    for (let i = aN; i <= sacralMax; i++) out.push(`S${i}`);
+  for (let r = aIdx; r <= bIdx; r++) {
+    const region = REGION_ORDER[r];
+    const start = r === aIdx ? aN : 1;
+    const end = r === bIdx ? bN : REGION_MAX[region];
+    for (let i = start; i <= end; i++) out.push(`${region}${i}`);
   }
   return out;
 };
