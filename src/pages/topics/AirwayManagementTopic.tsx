@@ -279,6 +279,10 @@ const AirwayManagementTopic = () => {
               </figure>
             </div>
 
+            <div className="my-4">
+              <BonfilsRetromolarAnimation />
+            </div>
+
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Glottic obstruction</h3>
             <p className="text-foreground/90 leading-relaxed mb-2">
               Lesion is at the cords or immediate peri-glottic region — laryngeal tumour, papillomatosis, vocal cord
