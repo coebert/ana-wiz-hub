@@ -833,19 +833,57 @@ export default function DrugDetail() {
           </div>
         </div>
 
-        <InfusionCalculator drug={drug} />
+        {(() => {
+          const sectionLinks: Array<{ id: string; label: string }> = [
+            { id: "infusion", label: "Infusion calc" },
+            { id: "presentation", label: "Presentation" },
+            { id: "moa", label: "MoA" },
+            { id: "pk", label: "PK" },
+            { id: "preparation", label: "Preparation" },
+            { id: "dosing", label: "Dosing" },
+            { id: "monitoring", label: "Monitoring" },
+            { id: "side-effects", label: "Side effects" },
+            { id: "contraindications", label: "Contraindications" },
+            { id: "interactions", label: "Interactions" },
+          ];
+          return (
+            <nav
+              aria-label="Drug sections"
+              className="mt-3 -mx-4 px-4 py-2 border-b border-border bg-background/95 backdrop-blur-sm overflow-x-auto"
+            >
+              <ul className="flex items-center gap-1.5 min-w-max">
+                {sectionLinks.map((s) => (
+                  <li key={s.id}>
+                    <a
+                      href={`#${s.id}`}
+                      className="inline-block text-[11px] font-medium px-2.5 py-1 rounded-full border border-border bg-card text-muted-foreground hover:border-drugs/50 hover:text-drugs transition-colors whitespace-nowrap"
+                    >
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          );
+        })()}
+
+        <div id="infusion" className="scroll-mt-32">
+          <InfusionCalculator drug={drug} />
+        </div>
 
         <div className="mt-4 grid gap-3">
-          <Section title="Presentation" body={drug.presentation} />
-          <Section title="Mechanism of action" body={drug.mechanism_of_action} />
-          <Section title="Pharmacokinetics" body={drug.pharmacokinetics} />
-          <PreparationGuide raw={drug.preparation} drug={drug} />
-          <DosingBreakdown raw={drug.dosing} />
-          <QuickTargetPanel raw={drug.monitoring} />
-          <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" drugClass={drug.drug_class} />
-          <ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" drugClass={drug.drug_class} />
-          <Section title="Contraindications" body={drug.contraindications} />
-          <Section title="Interactions" body={drug.interactions} />
+          <div id="presentation" className="scroll-mt-32"><Section title="Presentation" body={drug.presentation} /></div>
+          <div id="moa" className="scroll-mt-32"><Section title="Mechanism of action" body={drug.mechanism_of_action} /></div>
+          <div id="pk" className="scroll-mt-32"><Section title="Pharmacokinetics" body={drug.pharmacokinetics} /></div>
+          <div id="preparation" className="scroll-mt-32"><PreparationGuide raw={drug.preparation} drug={drug} /></div>
+          <div id="dosing" className="scroll-mt-32"><DosingBreakdown raw={drug.dosing} /></div>
+          <div id="monitoring" className="scroll-mt-32 grid gap-3">
+            <QuickTargetPanel raw={drug.monitoring} />
+            <ClinicalSignalPanel title="Monitoring requirements" raw={drug.monitoring} mode="monitoring" drugClass={drug.drug_class} />
+          </div>
+          <div id="side-effects" className="scroll-mt-32"><ClinicalSignalPanel title="Side effects" raw={drug.side_effects} mode="side_effects" drugClass={drug.drug_class} /></div>
+          <div id="contraindications" className="scroll-mt-32"><Section title="Contraindications" body={drug.contraindications} /></div>
+          <div id="interactions" className="scroll-mt-32"><Section title="Interactions" body={drug.interactions} /></div>
         </div>
 
         {relatedTopics.length > 0 && (
