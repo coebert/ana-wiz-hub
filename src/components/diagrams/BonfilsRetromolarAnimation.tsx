@@ -424,6 +424,30 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {/* Thyroid prominence (Adam's apple) */}
       <path d="M 168 246 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.9" strokeLinecap="round" />
 
+      {/* ===== Sternocleidomastoid (SCM) — mastoid → sternoclavicular ===== */}
+      <g style={{ pointerEvents: "none" }}>
+        <path d="M 292 138 Q 270 200 232 292 L 248 296 Q 286 208 304 142 Z"
+          fill="hsl(20 45% 60% / 0.10)" />
+        <path d="M 292 138 Q 270 200 232 292"
+          fill="none" stroke="hsl(20 40% 38% / 0.55)" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M 304 142 Q 286 208 248 296"
+          fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="1" strokeLinecap="round" />
+        <path d="M 258 232 q 6 -2 10 4"
+          fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="0.7" />
+      </g>
+
+      {/* ===== Platysma — fan of fine fibres tensed by jaw thrust ===== */}
+      <g style={{ pointerEvents: "none" }} stroke="hsl(20 40% 45% / 0.28)" strokeWidth="0.5" fill="none" strokeLinecap="round">
+        <path d="M 88 220 Q 130 260 200 300" />
+        <path d="M 102 222 Q 145 262 215 302" />
+        <path d="M 118 226 Q 158 266 228 304" />
+        <path d="M 134 230 Q 172 268 240 304" />
+        <path d="M 152 236 Q 188 270 252 304" />
+        {/* Faint anterior jugular vein over platysma */}
+        <path d="M 132 232 Q 156 260 188 296"
+          stroke="hsl(220 45% 45% / 0.35)" strokeWidth="0.7" />
+      </g>
+
       {/* Hairline + ear */}
       <path d="M 215 50 Q 260 48 300 70" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" />
       <path d="M 295 100 q 14 4 14 22 q 0 16 -16 18" fill="hsl(20 45% 70%)" stroke="hsl(20 40% 45%)" strokeWidth="1" />
