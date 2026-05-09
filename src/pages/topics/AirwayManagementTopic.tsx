@@ -10,6 +10,7 @@ import MallampatiDiagram from "@/components/diagrams/MallampatiDiagram";
 import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalculator";
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
+import PartialAirwayObstructionDiagram from "@/components/diagrams/PartialAirwayObstructionDiagram";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
@@ -221,6 +222,10 @@ const AirwayManagementTopic = () => {
               <em> inspiratory stridor = extrathoracic, expiratory wheeze = intrathoracic, biphasic noise = fixed lesion
               at or near the cords</em>.
             </p>
+
+            <div className="my-4">
+              <PartialAirwayObstructionDiagram />
+            </div>
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Supraglottic obstruction</h3>
             <p className="text-foreground/90 leading-relaxed mb-2">
