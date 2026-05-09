@@ -67,12 +67,20 @@ export const Header = () => {
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-sm">
         <div className="container mx-auto flex h-14 items-center justify-between px-4">
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src={brainLogo} alt="AnaesthesiaCore" className="h-6 w-6" />
-            <span className="text-base font-semibold text-foreground hidden lg:inline">
-              AnaesthesiaCore
-            </span>
-          </Link>
+          {(() => {
+            // From inside the app (any route other than the marketing landing
+            // page) the logo should return users to the core disciplines hub
+            // at /revise rather than the public landing page.
+            const homeTarget = location.pathname === "/" ? "/" : "/revise";
+            return (
+              <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
+                <img src={brainLogo} alt="AnaesthesiaCore" className="h-6 w-6" />
+                <span className="text-base font-semibold text-foreground hidden lg:inline">
+                  AnaesthesiaCore
+                </span>
+              </Link>
+            );
+          })()}
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-0.5">
