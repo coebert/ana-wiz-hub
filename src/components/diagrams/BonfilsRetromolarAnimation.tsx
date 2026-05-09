@@ -241,14 +241,18 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
   // in essentially NEUTRAL position, so changes are deliberately small
   // (≤ 2°) — just enough to read as the operator optimising the axis.
   const headRotTargets: Record<Step, number> = {
-    0:  0,    // neutral sniff while jaw thrust applied
-    1: -0.8,  // very slight extension as scope enters
-    2: -1.2,
-    3: -1.4,  // optimised view of glottis
-    4: -1.8,  // peak optimisation during rail-road
-    5:  0,    // neutral after secure
+    0:  0,     // neutral sniff while jaw thrust applied
+    1: -0.30,  // very slight extension as scope enters
+    2: -0.45,
+    3: -0.55,  // optimised view of glottis
+    4: -0.70,  // peak optimisation during rail-road
+    5:  0,     // neutral after secure
   };
-  const HEAD_PIVOT = { x: 290, y: 145 }; // atlanto-occipital
+  // Pivot at the OCCIPUT–PILLOW contact, not the A-O joint: when a supine
+  // patient extends the head the occiput stays planted and the chin lifts.
+  // Anchoring rotation here keeps the posterior contour from sliding during
+  // posture changes — only the chin/face arc visibly through the motion.
+  const HEAD_PIVOT = { x: 372, y: 296 }; // occipital contact on pillow
   const [headRot, setHeadRot] = useState(0);
   useEffect(() => {
     if (step === 0) {
