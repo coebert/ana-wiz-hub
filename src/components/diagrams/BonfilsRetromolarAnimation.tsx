@@ -203,12 +203,38 @@ export default function BonfilsRetromolarAnimation() {
 function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
   // Sagittal head, facing LEFT. Scope enters from the left (out of mouth)
   // and advances rightward through retromolar → posterior tongue → vallecula → glottis.
-  // Coordinates within viewBox 0 0 560 340.
   // Mouth-entry pivot (between the upper & lower teeth, just inside the lips).
-  // The external part of the scope is anchored here; the intra-oral part
-  // curves from this point through a control point in the retromolar gutter
-  // to the moving tip — guaranteeing the shaft never leaves the airway.
   const ENTRY = { x: 112, y: 170 };
+
+  // ----- Jaw-thrust animation -----
+  // The lower-jaw group (mandible, lower lip, lower teeth, chin shadow,
+  // tongue, hyoid) translates down + slightly forward (left) on step 0 to
+  // visibly open the mouth. It stays open through steps 1-4 and closes again
+  // on step 5 (after extubation/withdrawal).
+  // Target offsets per step:
+  const jawTargets: Record<Step, { x: number; y: number }> = {
+    0: { x: -3, y: 9 }, // jaw thrust performed
+    1: { x: -3, y: 9 },
+    2: { x: -3, y: 9 },
+    3: { x: -3, y: 9 },
+    4: { x: -3, y: 9 },
+    5: { x: 0,  y: 0 }, // mouth closes after tube secured
+  };
+  const target = jawTargets[step];
+
+  // Animate jaw motion *within* step 0 by deferring the open offset by 120ms
+  // after entering step 0 — the CSS transition then plays the visible thrust.
+  const [jaw, setJaw] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    if (step === 0) {
+      setJaw({ x: 0, y: 0 });
+      const t = setTimeout(() => setJaw(jawTargets[0]), 140);
+      return () => clearTimeout(t);
+    }
+    setJaw(target);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
 
   // Per-step intra-airway tip positions and a bezier control point that
   // shapes the shaft so it always hugs anatomy (retromolar → tongue base →
