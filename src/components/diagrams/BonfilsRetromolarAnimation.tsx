@@ -331,6 +331,23 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           <stop offset="0%" stopColor="hsl(var(--primary) / 0.65)" />
           <stop offset="100%" stopColor="hsl(var(--primary) / 0.30)" />
         </linearGradient>
+        {/* Occipital inion depth shadow — darker centre at the inion bulge,
+            fading outward to give the back of the skull volume. */}
+        <radialGradient id="bf-occiput-shade" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(20 40% 30% / 0.55)" />
+          <stop offset="55%" stopColor="hsl(20 40% 30% / 0.20)" />
+          <stop offset="100%" stopColor="hsl(20 40% 30% / 0)" />
+        </radialGradient>
+        {/* Cast shadow tucked behind the pinna for ear depth. */}
+        <radialGradient id="bf-ear-shade" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(20 40% 22% / 0.55)" />
+          <stop offset="100%" stopColor="hsl(20 40% 22% / 0)" />
+        </radialGradient>
+        {/* Soft inner-concha shadow for the ear bowl. */}
+        <radialGradient id="bf-ear-concha" cx="40%" cy="55%" r="55%">
+          <stop offset="0%" stopColor="hsl(20 45% 30% / 0.65)" />
+          <stop offset="100%" stopColor="hsl(20 45% 50% / 0)" />
+        </radialGradient>
         <radialGradient id="bf-light" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="hsl(50 100% 75%)" stopOpacity="0.95" />
           <stop offset="60%" stopColor="hsl(50 100% 65% / 0.35)" />
@@ -414,12 +431,23 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         d="M 240 48 Q 295 56 332 80 Q 354 100 366 130 Q 374 148 376 168 Q 380 198 380 232 Q 382 268 380 305 L 248 305"
         fill="url(#bf-skin-shade)"
       />
-      {/* Occipital contour highlight (subtle inion bulge) */}
+      {/* Occipital inion shadow — radial darkening over the back of the
+          skull to suggest the inion bulge and give depth to the curve. */}
+      <ellipse cx="372" cy="200" rx="18" ry="40" fill="url(#bf-occiput-shade)" />
+      {/* Inion contour line (slightly stronger near the bulge apex). */}
       <path
-        d="M 376 168 Q 384 200 380 232"
+        d="M 376 168 Q 386 200 380 232"
         fill="none"
-        stroke="hsl(20 40% 38% / 0.55)"
-        strokeWidth="0.8"
+        stroke="hsl(20 40% 32% / 0.7)"
+        strokeWidth="1"
+        strokeLinecap="round"
+      />
+      {/* Inion crest highlight (thin lit edge above the shadow). */}
+      <path
+        d="M 374 178 Q 380 192 378 206"
+        fill="none"
+        stroke="hsl(28 60% 92% / 0.55)"
+        strokeWidth="0.6"
       />
       {/* Labiomental sulcus (chin/lip groove) */}
       <path d="M 60 184 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.8" strokeLinecap="round" />
@@ -466,8 +494,26 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
       {/* Hairline + ear */}
       <path d="M 215 50 Q 260 48 300 70" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" />
-      <path d="M 295 100 q 14 4 14 22 q 0 16 -16 18" fill="hsl(20 45% 70%)" stroke="hsl(20 40% 45%)" strokeWidth="1" />
+      {/* Cast shadow behind the pinna — slightly offset back/down so the ear
+          appears to lift off the skin. */}
+      <ellipse cx="312" cy="124" rx="14" ry="18" fill="url(#bf-ear-shade)" />
+      {/* Pinna (helix) */}
+      <path
+        d="M 295 100 q 14 4 14 22 q 0 16 -16 18"
+        fill="hsl(20 45% 70%)"
+        stroke="hsl(20 40% 45%)"
+        strokeWidth="1"
+      />
+      {/* Concha bowl shadow (inner ear depth) */}
+      <path
+        d="M 298 108 q 10 4 10 16 q 0 10 -10 12 z"
+        fill="url(#bf-ear-concha)"
+      />
+      {/* Antihelix ridge */}
       <path d="M 300 116 q 6 2 6 12" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.8" />
+      {/* Tragus + lobule highlight */}
+      <path d="M 296 122 q 3 1 3 5" fill="none" stroke="hsl(20 40% 38%)" strokeWidth="0.7" />
+      <path d="M 294 138 q 3 2 5 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.7" />
 
       {/* Eye */}
       <g>
