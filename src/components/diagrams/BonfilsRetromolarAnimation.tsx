@@ -589,11 +589,105 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       )}
 
       {/* ==================================================================
+          LABELS & CALLOUTS — consistent leader-line style
+          ================================================================== */}
+      <g style={{ pointerEvents: "none" }}>
+        {/* ---- Anatomy labels (neutral) ---- */}
+        {[
+          { tx: 170, ty: 158, lx: 170, ly: 22,  text: "hard palate",            align: "middle" as const },
+          { tx: 245, ty: 174, lx: 250, ly: 38,  text: "soft palate",            align: "middle" as const },
+          { tx: 244, ty: 198, lx: 304, ly: 56,  text: "uvula",                  align: "start"  as const },
+          { tx: 60,  ty: 132, lx: 8,   ly: 110, text: "nose / nostril",         align: "start"  as const },
+          { tx: 95,  ty: 162, lx: 6,   ly: 220, text: "upper teeth",            align: "start"  as const },
+          { tx: 98,  ty: 175, lx: 6,   ly: 234, text: "lower teeth",            align: "start"  as const },
+          { tx: 155, ty: 200, lx: 90,  ly: 280, text: "tongue",                 align: "start"  as const },
+          { tx: 200, ty: 222, lx: 90,  ly: 296, text: "mandible",               align: "start"  as const },
+          { tx: 245, ty: 232, lx: 335, ly: 130, text: "hyoid bone",             align: "start"  as const },
+          { tx: 252, ty: 226, lx: 335, ly: 150, text: "vallecula",              align: "start"  as const },
+          { tx: 252, ty: 242, lx: 335, ly: 170, text: "epiglottis",             align: "start"  as const },
+          { tx: 252, ty: 270, lx: 335, ly: 195, text: "vocal cords (glottis)",  align: "start"  as const },
+          { tx: 260, ty: 270, lx: 335, ly: 218, text: "thyroid cartilage",      align: "start"  as const },
+          { tx: 276, ty: 245, lx: 335, ly: 240, text: "post. pharyngeal wall",  align: "start"  as const },
+          { tx: 253, ty: 295, lx: 335, ly: 280, text: "trachea",                align: "start"  as const },
+          { tx: 281, ty: 305, lx: 335, ly: 304, text: "oesophagus",             align: "start"  as const },
+        ].map((l, i) => (
+          <g key={`a-${i}`}>
+            <line x1={l.tx} y1={l.ty} x2={l.lx} y2={l.ly}
+              stroke="hsl(var(--muted-foreground) / 0.55)" strokeWidth="0.6" />
+            <circle cx={l.tx} cy={l.ty} r="1.6" fill="hsl(var(--foreground) / 0.7)" />
+            <text x={l.lx + (l.align === "start" ? 4 : 0)} y={l.ly} fontSize="9"
+              fill="hsl(var(--foreground))" textAnchor={l.align}
+              style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
+              {l.text}
+            </text>
+          </g>
+        ))}
+
+        {/* ---- KEY: retromolar channel — highlighted Bonfils path ---- */}
+        <g>
+          <line x1="170" y1="178" x2="92" y2="62"
+            stroke="hsl(var(--primary) / 0.7)" strokeWidth="0.8" />
+          <circle cx="170" cy="178" r="2.4" fill="hsl(var(--primary))" />
+          <rect x="6" y="50" width="142" height="22" rx="3"
+            fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+          <text x="14" y="64" fontSize="10" fontWeight="700" fill="hsl(var(--primary))">
+            retromolar channel
+          </text>
+          <text x="14" y="74" fontSize="8" fill="hsl(var(--primary))">
+            (Bonfils insertion path)
+          </text>
+        </g>
+
+        {/* ---- Scope component labels — shown at step 0 (orientation view) ---- */}
+        {step === 0 && (
+          <g>
+            {[
+              { tx: -12, ty: 108, lx: 60, ly: 92,  text: "battery handle / LED light source" },
+              { tx: 0,   ty: 78,  lx: 50, ly: 56,  text: "eyepiece / camera port" },
+              { tx: -12, ty: 100, lx: 50, ly: 134, text: "O₂ side-port (defog + apnoeic O₂)" },
+              { tx: 30,  ty: 116, lx: 80, ly: 152, text: "rigid stainless-steel shaft" },
+              { tx: 50,  ty: 122, lx: 80, ly: 168, text: "ETT pre-loaded over shaft" },
+              { tx: -12, ty: 92,  lx: 50, ly: 184, text: "pilot balloon" },
+            ].map((l, i) => (
+              <g key={`s-${i}`}>
+                <line x1={l.tx} y1={l.ty} x2={l.lx} y2={l.ly}
+                  stroke="hsl(var(--accent) / 0.8)" strokeWidth="0.6" />
+                <circle cx={l.tx} cy={l.ty} r="1.6" fill="hsl(var(--accent))" />
+                <text x={l.lx + 4} y={l.ly} fontSize="9"
+                  fill="hsl(var(--accent-foreground))" textAnchor="start"
+                  style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
+                  {l.text}
+                </text>
+              </g>
+            ))}
+          </g>
+        )}
+
+        {/* ---- Dynamic scope-tip callout (follows the tip every step) ---- */}
+        {step !== 5 && (() => {
+          const lx = sp.tipX > 200 ? sp.tipX - 90 : sp.tipX + 30;
+          const ly = sp.tipY + 50;
+          return (
+            <g style={{ transition: `opacity 400ms ease` }}>
+              <line x1={sp.tipX} y1={sp.tipY} x2={lx + 40} y2={ly - 3}
+                stroke="hsl(50 100% 45%)" strokeWidth="0.7" />
+              <rect x={lx - 4} y={ly - 11} width="92" height="15" rx="3"
+                fill="hsl(50 100% 92%)" stroke="hsl(50 100% 40%)" strokeWidth="0.7" />
+              <text x={lx} y={ly} fontSize="9" fontWeight="600"
+                fill="hsl(40 80% 22%)">
+                scope tip — LED + lens
+              </text>
+            </g>
+          );
+        })()}
+      </g>
+
+      {/* ==================================================================
           UI overlays — caption, eyepiece, indicator
           ================================================================== */}
       <g>
-        <rect x="10" y="312" width="230" height="22" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-        <text x="125" y="327" fontSize="11" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
+        <rect x="10" y="338" width="260" height="20" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
+        <text x="140" y="352" fontSize="11" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
           Step {step + 1}: {STEPS[step].title}
         </text>
       </g>
