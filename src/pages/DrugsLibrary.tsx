@@ -72,7 +72,7 @@ export default function DrugsLibrary() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="mb-6 flex items-start gap-3">
           <div className="h-10 w-10 rounded-lg bg-drugs/10 text-drugs grid place-items-center shrink-0">
