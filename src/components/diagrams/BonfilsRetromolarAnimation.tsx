@@ -364,10 +364,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <path d="M 134 110 q 14 -6 30 0" fill="none" stroke="hsl(20 40% 30%)" strokeWidth="1" />
       </g>
 
-      {/* Nostril */}
-      <path d="M 60 142 q 8 4 16 0" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" strokeLinecap="round" />
-      <ellipse cx="68" cy="143" rx="3" ry="1.6" fill="hsl(20 40% 25%)" />
-
       {/* Eyebrow */}
       <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2.2" strokeLinecap="round" />
 
