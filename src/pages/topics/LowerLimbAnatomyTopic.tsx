@@ -5,8 +5,7 @@ import LumbosacralPlexusDiagram from "@/components/diagrams/LumbosacralPlexusDia
 import LowerLimbBranchesDiagram from "@/components/diagrams/LowerLimbBranchesDiagram";
 import LowerLimbArteriesDiagram from "@/components/diagrams/LowerLimbArteriesDiagram";
 import LowerLimbVeinsDiagram from "@/components/diagrams/LowerLimbVeinsDiagram";
-import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
-import { lowerLimbFolio } from "@/components/diagrams/anatomyFolios";
+import LowerLimbInnervationDiagram from "@/components/diagrams/LowerLimbInnervationDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -48,7 +47,7 @@ const LowerLimbAnatomyTopic = () => {
           <ExamSection id="lumbar-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Lumbar Plexus (L1-L4)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
-            <CorPictumFolio {...lowerLimbFolio} enableReviewMode suppressOverlayLabels />
+            <LowerLimbInnervationDiagram />
             <LumbosacralPlexusDiagram />
             <LowerLimbBranchesDiagram />
             <div className="space-y-3 mt-3">
