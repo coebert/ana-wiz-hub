@@ -401,16 +401,11 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {/* Cheek contour */}
       <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.8" />
 
-      {/* LIPS — open mouth (jaw thrust) */}
-      {/* Upper lip */}
+      {/* LIPS */}
+      {/* Upper lip (fixed — moves with maxilla) */}
       <path d="M 80 158 Q 95 152 112 158 Q 120 162 110 166 L 84 164 Q 78 162 80 158 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
-      {/* Lower lip */}
-      <path d="M 60 168 Q 85 174 116 168 Q 120 172 110 178 Q 90 184 70 180 Q 56 178 60 168 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
       {/* Philtrum */}
       <path d="M 90 148 L 92 156" stroke="hsl(20 40% 45%)" strokeWidth="0.6" />
-
-      {/* Chin shadow */}
-      <path d="M 86 198 Q 100 210 116 218" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
 
       {/* ==================================================================
           ORAL CAVITY + AIRWAY (inside head, opens to the left at the lips)
@@ -431,6 +426,21 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         stroke="hsl(355 55% 30%)"
         strokeWidth="0.9"
       />
+
+      {/* Maxilla (upper jaw bone reference) */}
+      <path d="M 86 156 Q 130 152 220 160" fill="none" stroke="hsl(30 30% 55%)" strokeWidth="0.6" strokeDasharray="2 2" />
+
+      {/* TEETH — upper arcade (fixed) */}
+      <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
+        <rect x="84" y="158" width="6" height="9" rx="1" />
+        <rect x="91" y="158" width="6" height="9" rx="1" />
+        <rect x="98" y="159" width="7" height="8" rx="1" />
+        <rect x="106" y="160" width="8" height="7" rx="1.5" />
+        <rect x="115" y="161" width="9" height="6" rx="1.5" />
+        <rect x="125" y="161" width="9" height="6" rx="1.5" />
+        <rect x="135" y="162" width="9" height="6" rx="1.5" />
+        <rect x="145" y="162" width="9" height="6" rx="1.5" />
+      </g>
 
       {/* ============ LOWER JAW GROUP — animated by jaw thrust ============ */}
       <g
@@ -456,7 +466,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           <rect x="135" y="172" width="9" height="6" rx="1.5" />
           <rect x="145" y="172" width="9" height="6" rx="1.5" />
         </g>
-        {/* TONGUE — moves with mandible (floor of mouth) */}
+        {/* TONGUE — moves with mandible */}
         <path
           d="M 90 178
              Q 130 158 180 162
@@ -470,28 +480,10 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         />
         {/* Median sulcus */}
         <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
-        {/* HYOID (suspended from mandible by mylohyoid — translates too) */}
+        {/* HYOID (suspended from mandible) */}
         <ellipse cx="245" cy="232" rx="6" ry="2.4" fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
       </g>
       {/* ============ END lower-jaw group ============ */}
-        <rect x="98" y="159" width="7" height="8" rx="1" />
-        <rect x="106" y="160" width="8" height="7" rx="1.5" />
-        <rect x="115" y="161" width="9" height="6" rx="1.5" />
-        <rect x="125" y="161" width="9" height="6" rx="1.5" />
-        <rect x="135" y="162" width="9" height="6" rx="1.5" />
-        <rect x="145" y="162" width="9" height="6" rx="1.5" />
-      </g>
-      {/* TEETH — lower arcade */}
-      <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
-        <rect x="84" y="170" width="6" height="9" rx="1" />
-        <rect x="91" y="170" width="6" height="9" rx="1" />
-        <rect x="98" y="171" width="7" height="8" rx="1" />
-        <rect x="106" y="171" width="8" height="7" rx="1.5" />
-        <rect x="115" y="171" width="9" height="6" rx="1.5" />
-        <rect x="125" y="171" width="9" height="6" rx="1.5" />
-        <rect x="135" y="172" width="9" height="6" rx="1.5" />
-        <rect x="145" y="172" width="9" height="6" rx="1.5" />
-      </g>
 
       {/* RETROMOLAR GUTTER — behind last molar, this is the Bonfils' path */}
       <path
@@ -502,24 +494,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         strokeDasharray="3 2"
         strokeLinecap="round"
       />
-
-      {/* TONGUE — bulky, fills lower oral cavity */}
-      <path
-        d="M 90 178
-           Q 130 158 180 162
-           Q 220 168 228 190
-           Q 222 212 195 216
-           Q 150 220 115 212
-           Q 92 206 90 178 Z"
-        fill="url(#bf-tongue)"
-        stroke="hsl(355 55% 28%)"
-        strokeWidth="1"
-      />
-      {/* Median sulcus */}
-      <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
-
-      {/* HYOID */}
-      <ellipse cx="245" cy="232" rx="6" ry="2.4" fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
 
       {/* VALLECULA + EPIGLOTTIS */}
       <path
