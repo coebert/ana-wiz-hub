@@ -204,16 +204,25 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
   // Sagittal head, facing LEFT. Scope enters from the left (out of mouth)
   // and advances rightward through retromolar → posterior tongue → vallecula → glottis.
   // Coordinates within viewBox 0 0 560 340.
+  // Mouth-entry pivot (between the upper & lower teeth, just inside the lips).
+  // The external part of the scope is anchored here; the intra-oral part
+  // curves from this point through a control point in the retromolar gutter
+  // to the moving tip — guaranteeing the shaft never leaves the airway.
+  const ENTRY = { x: 112, y: 170 };
+
+  // Per-step intra-airway tip positions and a bezier control point that
+  // shapes the shaft so it always hugs anatomy (retromolar → tongue base →
+  // vallecula → glottis → trachea).
   const scopePositions: Record<
     Step,
-    { tipX: number; tipY: number; rot: number; ettOnShaft: number }
+    { tipX: number; tipY: number; cpX: number; cpY: number; rot: number; ettOnShaft: number }
   > = {
-    0: { tipX: 70,  tipY: 178, rot: 0,  ettOnShaft: 0.35 }, // outside lips
-    1: { tipX: 175, tipY: 188, rot: 12, ettOnShaft: 0.4 },  // retromolar entry
-    2: { tipX: 235, tipY: 202, rot: 38, ettOnShaft: 0.5 },  // sweeping to midline
-    3: { tipX: 270, tipY: 222, rot: 62, ettOnShaft: 0.55 }, // glottic view
-    4: { tipX: 285, tipY: 248, rot: 80, ettOnShaft: 0.95 }, // ETT railroaded
-    5: { tipX: 70,  tipY: 178, rot: 0,  ettOnShaft: 1 },    // scope withdrawn
+    0: { tipX:  72, tipY: 172, cpX:  92, cpY: 172, rot:   0, ettOnShaft: 0.35 }, // tip just outside lips
+    1: { tipX: 172, tipY: 184, cpX: 145, cpY: 174, rot:  20, ettOnShaft: 0.40 }, // retromolar entry
+    2: { tipX: 215, tipY: 212, cpX: 178, cpY: 188, rot:  45, ettOnShaft: 0.50 }, // sweeping to midline
+    3: { tipX: 246, tipY: 246, cpX: 198, cpY: 200, rot:  70, ettOnShaft: 0.55 }, // hovering above glottis
+    4: { tipX: 252, tipY: 278, cpX: 210, cpY: 218, rot:  85, ettOnShaft: 0.92 }, // ETT railroaded through cords
+    5: { tipX:  72, tipY: 172, cpX:  92, cpY: 172, rot:   0, ettOnShaft: 1    }, // scope withdrawn
   };
   const sp = scopePositions[step];
 
