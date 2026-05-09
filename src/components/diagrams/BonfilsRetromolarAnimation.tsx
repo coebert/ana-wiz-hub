@@ -204,16 +204,25 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
   // Sagittal head, facing LEFT. Scope enters from the left (out of mouth)
   // and advances rightward through retromolar → posterior tongue → vallecula → glottis.
   // Coordinates within viewBox 0 0 560 340.
+  // Mouth-entry pivot (between the upper & lower teeth, just inside the lips).
+  // The external part of the scope is anchored here; the intra-oral part
+  // curves from this point through a control point in the retromolar gutter
+  // to the moving tip — guaranteeing the shaft never leaves the airway.
+  const ENTRY = { x: 112, y: 170 };
+
+  // Per-step intra-airway tip positions and a bezier control point that
+  // shapes the shaft so it always hugs anatomy (retromolar → tongue base →
+  // vallecula → glottis → trachea).
   const scopePositions: Record<
     Step,
-    { tipX: number; tipY: number; rot: number; ettOnShaft: number }
+    { tipX: number; tipY: number; cpX: number; cpY: number; rot: number; ettOnShaft: number }
   > = {
-    0: { tipX: 70,  tipY: 178, rot: 0,  ettOnShaft: 0.35 }, // outside lips
-    1: { tipX: 175, tipY: 188, rot: 12, ettOnShaft: 0.4 },  // retromolar entry
-    2: { tipX: 235, tipY: 202, rot: 38, ettOnShaft: 0.5 },  // sweeping to midline
-    3: { tipX: 270, tipY: 222, rot: 62, ettOnShaft: 0.55 }, // glottic view
-    4: { tipX: 285, tipY: 248, rot: 80, ettOnShaft: 0.95 }, // ETT railroaded
-    5: { tipX: 70,  tipY: 178, rot: 0,  ettOnShaft: 1 },    // scope withdrawn
+    0: { tipX:  72, tipY: 172, cpX:  92, cpY: 172, rot:   0, ettOnShaft: 0.35 }, // tip just outside lips
+    1: { tipX: 172, tipY: 184, cpX: 145, cpY: 174, rot:  20, ettOnShaft: 0.40 }, // retromolar entry
+    2: { tipX: 215, tipY: 212, cpX: 178, cpY: 188, rot:  45, ettOnShaft: 0.50 }, // sweeping to midline
+    3: { tipX: 246, tipY: 246, cpX: 198, cpY: 200, rot:  70, ettOnShaft: 0.55 }, // hovering above glottis
+    4: { tipX: 252, tipY: 278, cpX: 210, cpY: 218, rot:  85, ettOnShaft: 0.92 }, // ETT railroaded through cords
+    5: { tipX:  72, tipY: 172, cpX:  92, cpY: 172, rot:   0, ettOnShaft: 1    }, // scope withdrawn
   };
   const sp = scopePositions[step];
 
@@ -355,9 +364,16 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         <path d="M 134 110 q 14 -6 30 0" fill="none" stroke="hsl(20 40% 30%)" strokeWidth="1" />
       </g>
 
+      {/* Eyebrow */}
+      <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2.2" strokeLinecap="round" />
+
       {/* Nostril */}
       <path d="M 60 142 q 8 4 16 0" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" strokeLinecap="round" />
       <ellipse cx="68" cy="143" rx="3" ry="1.6" fill="hsl(20 40% 25%)" />
+      <path d="M 76 132 q 6 4 6 12" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
+
+      {/* Cheek contour */}
+      <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.8" />
 
       {/* LIPS — open mouth (jaw thrust) */}
       {/* Upper lip */}
@@ -478,94 +494,108 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           BONFILS SCOPE
           ================================================================== */}
 
-      {step !== 5 && (
-        <g style={{ transition, transformOrigin: `${sp.tipX}px ${sp.tipY}px` }}
-           transform={`rotate(${sp.rot * 0.18} ${sp.tipX} ${sp.tipY})`}>
-          {/* Battery handle (held by anaesthetist, well outside the mouth, top-left) */}
-          <g transform="translate(-30, 90)">
-            <rect x="0" y="0" width="42" height="36" rx="5" fill="hsl(220 10% 30%)" stroke="hsl(220 10% 15%)" />
-            <rect x="6" y="6" width="30" height="6" rx="1" fill="hsl(220 10% 45%)" />
-            <circle cx="36" cy="32" r="3" fill="hsl(120 60% 50%)" />
-          </g>
-          {/* Eyepiece on top of handle */}
-          <circle cx="0" cy="78" r="11" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.4" />
-          <circle cx="0" cy="78" r="5" fill="hsl(var(--primary) / 0.45)" />
-          {/* O2 side-port */}
-          <circle cx="-12" cy="100" r="3.4" fill="hsl(var(--accent))" />
-          <line x1="-15" y1="100" x2="-28" y2="106" stroke="hsl(var(--accent))" strokeWidth="1.4" />
+      {step !== 5 && (() => {
+        // External (extra-oral) shaft: from handle exit straight to mouth entry.
+        // The handle sits up & to the left of the patient's face — well clear of
+        // the head outline. We also tilt the whole external assembly slightly
+        // around ENTRY as the operator rotates the scope to midline.
+        const handleAnchor = { x: -10, y: 70 }; // proximal end of external shaft
+        // Intra-oral shaft path (Q curve through cp, ending at the tip).
+        const innerPath = `M ${ENTRY.x} ${ENTRY.y} Q ${sp.cpX} ${sp.cpY} ${sp.tipX} ${sp.tipY}`;
+        // Direction at the tip (derivative of quadratic at t=1) for the light cone.
+        const dxTip = sp.tipX - sp.cpX;
+        const dyTip = sp.tipY - sp.cpY;
+        const tipAngleDeg = (Math.atan2(dyTip, dxTip) * 180) / Math.PI;
+        // ETT proximal length sits over the EXTERNAL shaft only (it never
+        // disappears into the airway until step 4 advances it to ENTRY).
+        const ettEndT = sp.ettOnShaft;
+        const ettX = handleAnchor.x + (ENTRY.x - handleAnchor.x) * ettEndT;
+        const ettY = handleAnchor.y + (ENTRY.y - handleAnchor.y) * ettEndT;
+        // Small operator-rotation of the external assembly around ENTRY.
+        const extRot = sp.rot * 0.12;
 
-          {/* Rigid straight shaft from handle exit (~20, 110) → just before tip curve */}
-          <line
-            x1="20"
-            y1="112"
-            x2={sp.tipX - 22}
-            y2={sp.tipY - 14}
-            stroke="url(#bf-shaft)"
-            strokeWidth="6.5"
-            strokeLinecap="round"
-          />
-          {/* Metallic specular highlight */}
-          <line
-            x1="22"
-            y1="110"
-            x2={sp.tipX - 22}
-            y2={sp.tipY - 16}
-            stroke="hsl(0 0% 100% / 0.55)"
-            strokeWidth="1.2"
-            strokeLinecap="round"
-          />
-
-          {/* Curved distal 40° tip */}
-          <path
-            d={`M ${sp.tipX - 22} ${sp.tipY - 14}
-                Q ${sp.tipX - 6} ${sp.tipY - 8} ${sp.tipX} ${sp.tipY}`}
-            stroke="url(#bf-shaft)"
-            strokeWidth="6.5"
-            strokeLinecap="round"
-            fill="none"
-          />
-
-          {/* Tip light glow */}
-          <circle cx={sp.tipX} cy={sp.tipY} r="16" fill="url(#bf-light)">
-            <animate attributeName="r" values="14;18;14" dur="1.8s" repeatCount="indefinite" />
-          </circle>
-          <circle cx={sp.tipX} cy={sp.tipY} r="3.2" fill="hsl(50 100% 75%)" />
-
-          {/* Light cone in viewing direction */}
-          <path
-            d={`M ${sp.tipX} ${sp.tipY}
-                L ${sp.tipX + 42 * Math.cos(((sp.rot - 18) * Math.PI) / 180)} ${sp.tipY + 42 * Math.sin(((sp.rot - 18) * Math.PI) / 180)}
-                L ${sp.tipX + 42 * Math.cos(((sp.rot + 18) * Math.PI) / 180)} ${sp.tipY + 42 * Math.sin(((sp.rot + 18) * Math.PI) / 180)} Z`}
-            fill="hsl(50 100% 70% / 0.18)"
-          />
-
-          {/* ETT pre-loaded over shaft */}
-          {sp.ettOnShaft > 0 && (() => {
-            const x1 = 20;
-            const y1 = 112;
-            const x2 = sp.tipX - 22;
-            const y2 = sp.tipY - 14;
-            const ex = x1 + (x2 - x1) * sp.ettOnShaft;
-            const ey = y1 + (y2 - y1) * sp.ettOnShaft;
-            return (
-              <g>
-                <line x1={x1} y1={y1} x2={ex} y2={ey}
-                  stroke="url(#bf-ett)" strokeWidth="14" strokeLinecap="round" />
-                {sp.ettOnShaft > 0.7 && (
-                  <ellipse cx={ex} cy={ey} rx="9" ry="6"
-                    fill="hsl(var(--primary) / 0.4)"
-                    stroke="hsl(var(--primary))" strokeWidth="1" />
-                )}
-                {/* Pilot tubing exiting proximally */}
-                <path d={`M ${x1 + 6} ${y1 - 4} q -10 -10 -22 -4`}
-                  fill="none" stroke="hsl(var(--primary) / 0.6)" strokeWidth="1.2" />
-                <ellipse cx={x1 - 18} cy={y1 - 12} rx="6" ry="3.6"
-                  fill="hsl(var(--primary) / 0.35)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+        return (
+          <g style={{ transition }}>
+            {/* === EXTERNAL assembly (rotates slightly around mouth entry) === */}
+            <g transform={`rotate(${extRot} ${ENTRY.x} ${ENTRY.y})`}
+               style={{ transition }}>
+              {/* Battery handle */}
+              <g transform={`translate(${handleAnchor.x - 36}, ${handleAnchor.y - 44})`}>
+                <rect x="0" y="0" width="42" height="36" rx="5"
+                  fill="hsl(220 10% 30%)" stroke="hsl(220 10% 15%)" />
+                <rect x="6" y="6" width="30" height="6" rx="1" fill="hsl(220 10% 45%)" />
+                <circle cx="36" cy="32" r="3" fill="hsl(120 60% 50%)" />
               </g>
-            );
-          })()}
-        </g>
-      )}
+              {/* Eyepiece */}
+              <circle cx={handleAnchor.x - 16} cy={handleAnchor.y - 6} r="11"
+                fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.4" />
+              <circle cx={handleAnchor.x - 16} cy={handleAnchor.y - 6} r="5"
+                fill="hsl(var(--primary) / 0.45)" />
+              {/* O₂ side-port */}
+              <circle cx={handleAnchor.x - 26} cy={handleAnchor.y + 14} r="3.4"
+                fill="hsl(var(--accent))" />
+              <line x1={handleAnchor.x - 29} y1={handleAnchor.y + 14}
+                x2={handleAnchor.x - 42} y2={handleAnchor.y + 20}
+                stroke="hsl(var(--accent))" strokeWidth="1.4" />
+
+              {/* External shaft (handle → mouth entry) */}
+              <line x1={handleAnchor.x} y1={handleAnchor.y}
+                x2={ENTRY.x} y2={ENTRY.y}
+                stroke="url(#bf-shaft)" strokeWidth="6.5" strokeLinecap="round" />
+              <line x1={handleAnchor.x + 1} y1={handleAnchor.y - 1}
+                x2={ENTRY.x - 2} y2={ENTRY.y - 2}
+                stroke="hsl(0 0% 100% / 0.55)" strokeWidth="1.2" strokeLinecap="round" />
+
+              {/* ETT pre-loaded over external shaft */}
+              {ettEndT > 0 && (
+                <g>
+                  <line x1={handleAnchor.x} y1={handleAnchor.y}
+                    x2={ettX} y2={ettY}
+                    stroke="url(#bf-ett)" strokeWidth="14" strokeLinecap="round" />
+                  {/* Pilot tubing + balloon */}
+                  <path d={`M ${handleAnchor.x + 4} ${handleAnchor.y - 6}
+                            q -10 -10 -22 -4`}
+                    fill="none" stroke="hsl(var(--primary) / 0.6)" strokeWidth="1.2" />
+                  <ellipse cx={handleAnchor.x - 22} cy={handleAnchor.y - 14}
+                    rx="6" ry="3.6"
+                    fill="hsl(var(--primary) / 0.35)"
+                    stroke="hsl(var(--primary))" strokeWidth="0.8" />
+                </g>
+              )}
+            </g>
+
+            {/* === INTRA-ORAL shaft — curves through airway, never crosses face === */}
+            <path d={innerPath}
+              stroke="url(#bf-shaft)" strokeWidth="6.5"
+              strokeLinecap="round" fill="none"
+              style={{ transition: `d 900ms ${ease}` }} />
+            <path d={innerPath}
+              stroke="hsl(0 0% 100% / 0.4)" strokeWidth="1.1"
+              strokeLinecap="round" fill="none" />
+
+            {/* ETT railroaded into the airway (only late, step 4) */}
+            {step === 4 && (
+              <path d={innerPath}
+                stroke="hsl(var(--primary) / 0.55)" strokeWidth="13"
+                strokeLinecap="round" fill="none" />
+            )}
+
+            {/* Tip light glow */}
+            <circle cx={sp.tipX} cy={sp.tipY} r="14" fill="url(#bf-light)">
+              <animate attributeName="r" values="12;16;12" dur="1.8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx={sp.tipX} cy={sp.tipY} r="3" fill="hsl(50 100% 75%)" />
+
+            {/* Light cone in viewing direction */}
+            <path
+              d={`M ${sp.tipX} ${sp.tipY}
+                  L ${sp.tipX + 38 * Math.cos(((tipAngleDeg - 18) * Math.PI) / 180)} ${sp.tipY + 38 * Math.sin(((tipAngleDeg - 18) * Math.PI) / 180)}
+                  L ${sp.tipX + 38 * Math.cos(((tipAngleDeg + 18) * Math.PI) / 180)} ${sp.tipY + 38 * Math.sin(((tipAngleDeg + 18) * Math.PI) / 180)} Z`}
+              fill="hsl(50 100% 70% / 0.18)"
+            />
+          </g>
+        );
+      })()}
 
       {/* ETT in place after withdrawal (step 5) */}
       {step === 5 && (
