@@ -113,6 +113,36 @@ const OphthalmicAnaesthesiaTopic = () => {
             </ul>
           </ExamSection>
 
+          <ExamSection id="strabismus" exams={[Exam.FINAL]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Anaesthesia for Strabismus Surgery</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Strabismus (squint) correction is the commonest paediatric ophthalmic procedure. It is short (20–60 min), extra-ocular,
+              day-case in most children, and shared-airway with the surgeon working at the head. Three features dominate the
+              anaesthetic plan: a secured but unobtrusive airway, a high incidence of the oculocardiac reflex (OCR), and one of the
+              highest baseline rates of post-operative nausea and vomiting (PONV) of any paediatric operation (up to 60–80% without
+              prophylaxis).
+            </p>
+            <p className="font-semibold text-foreground text-sm mb-1">Anaesthetic conduct</p>
+            <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong className="text-foreground">Airway</strong>: LMA is standard for most children; reinforced/flexible LMA preferred so the surgeon can drape and rotate the head without kinking. Tracheal tube reserved for very young infants, syndromic children with difficult airways, or prone/long cases</li>
+              <li><strong className="text-foreground">Maintenance</strong>: TIVA with propofol ± remifentanil ("Remi 5") is increasingly favoured — markedly lower PONV than volatile, smooth emergence, ideal for shared-airway work. Sevoflurane maintenance is acceptable but mandates aggressive antiemetic prophylaxis</li>
+              <li><strong className="text-foreground">Analgesia</strong>: paracetamol + NSAID (ibuprofen/diclofenac) usually sufficient. Avoid long-acting opioids (worsen PONV); short-acting fentanyl 1 µg/kg or remifentanil infusion preferred. Topical local anaesthetic drops (proxymetacaine/tetracaine) and sub-Tenon's block by the surgeon reduce opioid requirement and OCR</li>
+              <li><strong className="text-foreground">PONV prophylaxis</strong>: dual therapy is the standard of care — ondansetron 0.15 mg/kg + dexamethasone 0.15 mg/kg. Add a third agent (cyclizine, droperidol) for high-risk children or repeat surgery</li>
+              <li><strong className="text-foreground">Emergence</strong>: smooth extubation/LMA removal in lateral position; avoid coughing</li>
+            </ul>
+            <p className="font-semibold text-foreground text-sm mb-1">Complications & things to watch out for</p>
+            <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside leading-relaxed mb-3">
+              <li><strong className="text-foreground">Oculocardiac reflex</strong> — incidence 30–90% in strabismus surgery, highest with medial rectus traction. Trigeminovagal arc (V₁ afferent → vagal efferent) → bradycardia, junctional rhythm, occasionally asystole. <em>Management:</em> ask surgeon to release traction immediately; ensure adequate ventilation and depth; if persistent or profound, atropine 20 µg/kg IV (or glycopyrrolate 10 µg/kg). The reflex usually fatigues with repeat traction. Routine prophylactic anticholinergic is not recommended (risk of tachyarrhythmia, masks subsequent events) but may be considered in infants or after repeated severe episodes</li>
+              <li><strong className="text-foreground">PONV</strong> — without prophylaxis, vomiting rates approach those of middle-ear surgery. Always give dual antiemetics; consider TIVA; avoid N₂O and long-acting opioids; ensure good hydration</li>
+              <li><strong className="text-foreground">Malignant hyperthermia association</strong> — strabismus (especially in children with congenital myopathies, ptosis or other ocular muscle anomalies) has a historical association with MH susceptibility. Take a careful family/personal history; have a low threshold for trigger-free TIVA technique</li>
+              <li><strong className="text-foreground">Masseter spasm / suxamethonium</strong> — suxamethonium is best avoided in strabismus surgery: it raises IOP, causes extraocular muscle contracture that can confuse the surgical "forced duction" test for ≥20 min, and carries the historical MH-trigger concern</li>
+              <li><strong className="text-foreground">Oculo-respiratory and oculo-emetic reflexes</strong> — same trigeminal afferent pathway can produce shallow breathing/apnoea or intra-operative retching; respond as for OCR (release traction)</li>
+              <li><strong className="text-foreground">Globe perforation</strong> — rare but reported with sub-Tenon's or peribulbar block, especially in myopic eyes (long axial length) or in re-do strabismus where scarring distorts anatomy. Surgeon-performed sub-Tenon's under direct vision is safest</li>
+              <li><strong className="text-foreground">Postoperative diplopia and disorientation</strong> — common after eye-muscle realignment; warn parents and nurse the child in a calm, dimly lit recovery bay</li>
+              <li><strong className="text-foreground">Co-existing conditions</strong> — strabismus is over-represented in cerebral palsy, craniofacial syndromes (Crouzon, Apert), trisomy 21 and prematurity (ROP). Tailor airway plan, drug doses and post-operative apnoea monitoring (ex-prems &lt; 60 weeks PCA) accordingly</li>
+            </ul>
+          </ExamSection>
+
           <ExamSection id="brainstem-anaesthesia" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Brainstem Anaesthesia</h2>
             <p className="text-muted-foreground leading-relaxed">
