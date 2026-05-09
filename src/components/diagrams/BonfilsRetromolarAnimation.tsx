@@ -357,6 +357,14 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       <rect x="0" y="305" width="720" height="55" fill="hsl(var(--muted) / 0.5)" />
       <path d="M 200 308 Q 320 290 460 308 L 460 320 L 200 320 Z" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
 
+      {/* ============ HEAD + AIRWAY + SCOPE — rotates with posture ============ */}
+      <g
+        style={{
+          transform: `rotate(${headRot}deg)`,
+          transformOrigin: `${HEAD_PIVOT.x}px ${HEAD_PIVOT.y}px`,
+          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+      >
       {/* HEAD outline — clearly recognisable profile facing left.
           Path traced clockwise from forehead → brow → nose → philtrum →
           upper lip → MOUTH OPENING (gap) → lower lip → chin →
