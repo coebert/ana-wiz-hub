@@ -363,9 +363,12 @@ const surgicalLevels = [
   { procedure: "Perineal surgery", level: "S2–S4 (saddle)", color: "hsl(320,42%,50%)" },
 ];
 
-// Anatomically proportional body outline — 240x520 viewbox
-const BodyOutline = ({ view }: { view: "anterior" | "posterior" }) => (
-  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" opacity="0.4">
+// Anatomically proportional body outline — 240x520 viewbox.
+// Two layers: a faint silhouette stroke (drawn UNDER the territories)
+// and a stronger surface-anatomy overlay (drawn ON TOP of territories so
+// bony landmarks remain readable through the translucent dermatome fills).
+const BodySilhouette = ({ view }: { view: "anterior" | "posterior" }) => (
+  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" opacity="0.45">
     {/* Head — oval with slight jaw */}
     <path d="M104,8 C96,8 88,14 86,24 C84,34 86,42 92,48 C96,52 102,54 108,56 C112,58 118,58 124,56 C130,54 136,52 140,48 C146,42 148,34 146,24 C144,14 136,8 128,8 C120,6 112,6 104,8 Z" />
     {/* Neck */}
@@ -407,41 +410,76 @@ const BodyOutline = ({ view }: { view: "anterior" | "posterior" }) => (
     <path d="M72,508 C70,510 68,512 72,514 C78,516 86,514 90,510 C90,508 88,506 86,506" />
     {/* Right foot */}
     <path d="M160,508 C162,510 164,512 160,514 C154,516 146,514 142,510 C142,508 144,506 146,506" />
+  </g>
+);
 
-    {/* View-specific details */}
-    {view === "anterior" && (
+// Surface-anatomy overlay (bones + landmarks) — drawn ON TOP of dermatome
+// fills so the underlying anatomy is always visible through the territories.
+const SurfaceAnatomy = ({ view }: { view: "anterior" | "posterior" }) => (
+  <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55"
+    style={{ pointerEvents: "none" }}>
+    {view === "anterior" ? (
       <>
         {/* Clavicles */}
-        <path d="M98,82 C88,84 80,86 74,90" opacity="0.3" />
-        <path d="M134,82 C144,84 152,86 158,90" opacity="0.3" />
-        {/* Nipples */}
-        <circle cx="92" cy="140" r="1.5" opacity="0.35" />
-        <circle cx="140" cy="140" r="1.5" opacity="0.35" />
-        {/* Umbilicus */}
-        <circle cx="116" cy="238" r="2" strokeWidth="0.5" opacity="0.35" />
-        {/* Anterior midline */}
-        <line x1="116" y1="82" x2="116" y2="306" strokeWidth="0.3" strokeDasharray="2 4" opacity="0.15" />
+        <path d="M98,82 C88,84 80,86 74,90" />
+        <path d="M134,82 C144,84 152,86 158,90" />
+        {/* Sternum (manubrium → body → xiphoid) */}
+        <path d="M116,90 L116,170" strokeWidth="0.9" />
+        <line x1="110" y1="100" x2="122" y2="100" strokeWidth="0.5" opacity="0.7" />
+        <circle cx="116" cy="170" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
+        {/* Costal margin (rib cage) */}
+        <path d="M78,168 C92,200 112,210 116,210 C120,210 140,200 154,168" strokeDasharray="2 2" />
+        {/* Ribs — subtle hint */}
+        <path d="M82,118 C95,124 116,126 116,126" strokeWidth="0.4" opacity="0.45" />
+        <path d="M150,118 C137,124 116,126 116,126" strokeWidth="0.4" opacity="0.45" />
+        <path d="M80,138 C95,144 116,146 116,146" strokeWidth="0.4" opacity="0.45" />
+        <path d="M152,138 C137,144 116,146 116,146" strokeWidth="0.4" opacity="0.45" />
+        {/* Nipples (T4) */}
+        <circle cx="92" cy="140" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
+        <circle cx="140" cy="140" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
+        {/* Umbilicus (T10) */}
+        <circle cx="116" cy="238" r="2.4" strokeWidth="0.7" />
+        {/* ASIS markers + inguinal ligament */}
+        <circle cx="92" cy="298" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+        <circle cx="140" cy="298" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+        <path d="M92,298 L116,316 L140,298" strokeDasharray="2 2" opacity="0.6" />
         {/* Patellae */}
-        <ellipse cx="82" cy="400" rx="5" ry="6" opacity="0.2" strokeWidth="0.4" />
-        <ellipse cx="150" cy="400" rx="5" ry="6" opacity="0.2" strokeWidth="0.4" />
+        <ellipse cx="82" cy="400" rx="5" ry="6" />
+        <ellipse cx="150" cy="400" rx="5" ry="6" />
+        {/* Medial malleoli */}
+        <circle cx="90" cy="500" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
+        <circle cx="142" cy="500" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
       </>
-    )}
-    {view === "posterior" && (
+    ) : (
       <>
         {/* Spine */}
-        <line x1="120" y1="58" x2="120" y2="290" strokeWidth="0.5" strokeDasharray="1.5 3" opacity="0.25" />
-        {/* Scapulae */}
-        <path d="M96,110 C92,120 90,136 94,148 C98,152 104,148 106,140 C108,130 106,118 102,110 Z" opacity="0.2" strokeWidth="0.4" />
-        <path d="M144,110 C148,120 150,136 146,148 C142,152 136,148 134,140 C132,130 134,118 138,110 Z" opacity="0.2" strokeWidth="0.4" />
-        {/* Iliac crests */}
-        <path d="M86,268 C92,276 100,280 110,282" opacity="0.25" strokeWidth="0.5" />
-        <path d="M154,268 C148,276 140,280 130,282" opacity="0.25" strokeWidth="0.5" />
+        <line x1="116" y1="58" x2="116" y2="290" strokeWidth="0.8" strokeDasharray="2 3" />
+        {/* Vertebra prominens (C7) */}
+        <circle cx="116" cy="80" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+        {/* Scapulae — spine + medial border */}
+        <path d="M96,110 C92,120 90,136 94,148 C98,152 104,148 106,140 C108,130 106,118 102,110 Z" />
+        <path d="M144,110 C148,120 150,136 146,148 C142,152 136,148 134,140 C132,130 134,118 138,110 Z" />
+        <path d="M96,118 L106,118" strokeWidth="0.5" opacity="0.7" />
+        <path d="M144,118 L134,118" strokeWidth="0.5" opacity="0.7" />
+        {/* Inferior angle of scapula (T7) */}
+        <circle cx="100" cy="152" r="1.5" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+        <circle cx="140" cy="152" r="1.5" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
+        {/* Iliac crests (L4) */}
+        <path d="M86,268 C92,276 100,280 110,282" strokeWidth="0.9" />
+        <path d="M154,268 C148,276 140,280 130,282" strokeWidth="0.9" />
+        {/* PSIS dimples */}
+        <circle cx="106" cy="290" r="1.4" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
+        <circle cx="130" cy="290" r="1.4" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
         {/* Gluteal fold */}
-        <path d="M92,308 C100,314 108,316 116,316 C124,316 132,314 140,308" opacity="0.2" strokeWidth="0.4" />
+        <path d="M92,308 C100,314 108,316 116,316 C124,316 132,314 140,308" strokeDasharray="2 2" />
+        {/* Popliteal creases */}
+        <path d="M76,408 C80,412 86,412 90,408" strokeWidth="0.5" />
+        <path d="M142,408 C146,412 152,412 156,408" strokeWidth="0.5" />
       </>
     )}
   </g>
 );
+
 
 const DermatomeMapDiagram = () => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -455,9 +493,10 @@ const DermatomeMapDiagram = () => {
 
   const renderBodySVG = (view: "anterior" | "posterior") => (
     <svg viewBox="0 0 240 520" width="220" className="max-w-full">
-      <BodyOutline view={view} />
+      {/* 1. Faint silhouette underneath everything */}
+      <BodySilhouette view={view} />
 
-      {/* Dermatome regions */}
+      {/* 2. Dermatome regions — translucent so anatomy reads through */}
       {filteredDermatomes.map(d => {
         const paths = view === "anterior" ? d.anteriorPaths : d.posteriorPaths;
         const isActive = selected === d.id;
@@ -468,10 +507,11 @@ const DermatomeMapDiagram = () => {
                 key={i}
                 d={path}
                 fill={d.color}
-                fillOpacity={isActive ? 0.55 : 0.16}
-                stroke={isActive ? d.color : d.color}
-                strokeWidth={isActive ? 1.5 : 0.3}
-                strokeOpacity={isActive ? 1 : 0.3}
+                fillOpacity={isActive ? 0.55 : 0.30}
+                stroke={d.color}
+                strokeWidth={isActive ? 1.4 : 0.6}
+                strokeOpacity={isActive ? 0.95 : 0.55}
+                strokeDasharray={isActive ? undefined : "3 2"}
                 className="cursor-pointer transition-all duration-200"
                 onClick={() => setSelected(selected === d.id ? null : d.id)}
               />
@@ -480,8 +520,11 @@ const DermatomeMapDiagram = () => {
         );
       })}
 
+      {/* 3. Surface anatomy plate (bones + landmarks) ON TOP of territories */}
+      <SurfaceAnatomy view={view} />
+
       {/* Landmark annotations */}
-      <g opacity="0.4" fontSize="4" fill="hsl(var(--muted-foreground))" fontWeight="500">
+      <g opacity="0.55" fontSize="4" fill="hsl(var(--muted-foreground))" fontWeight="500">
         {view === "anterior" ? (
           <>
             <text x="150" y="142">← T4 nipple</text>
@@ -497,7 +540,7 @@ const DermatomeMapDiagram = () => {
       </g>
 
       {/* View label */}
-      <text x="120" y="516" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.45" fontWeight="600" letterSpacing="1.5">
+      <text x="120" y="516" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600" letterSpacing="1.5">
         {view === "anterior" ? "ANTERIOR" : "POSTERIOR"}
       </text>
     </svg>

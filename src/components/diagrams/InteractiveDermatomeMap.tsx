@@ -126,7 +126,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
 
   const renderBody = (side: "anterior" | "posterior") => (
     <svg viewBox="0 0 200 500" className="w-full h-auto max-w-[220px] mx-auto" role="img" aria-label={`${side} dermatome map`}>
-      {/* Body silhouette */}
+      {/* 1. Body silhouette (under territories) */}
       <path
         d="M 100 15 C 85 15 78 28 80 42 C 75 50 75 62 82 68 L 75 78 C 65 80 55 88 50 100 L 30 130 C 22 145 15 175 8 215 C 4 240 2 260 0 280 L 8 282 C 12 260 18 235 25 215 L 35 180 L 50 175 L 60 240 C 62 280 68 350 70 420 L 75 490 L 88 495 L 95 420 L 100 360 L 105 420 L 112 495 L 125 490 L 130 420 C 132 350 138 280 140 240 L 150 175 L 165 180 L 175 215 C 182 235 188 260 192 282 L 200 280 C 198 260 196 240 192 215 C 185 175 178 145 170 130 L 150 100 C 145 88 135 80 125 78 L 118 68 C 125 62 125 50 120 42 C 122 28 115 15 100 15 Z"
         fill="hsl(var(--muted))"
@@ -135,7 +135,7 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
         strokeWidth="0.8"
       />
 
-      {/* Dermatome polygons (mirrored: drawn on left half, mirrored to right) */}
+      {/* 2. Dermatome polygons — translucent so anatomy reads through */}
       {DERMATOMES.filter((d) => d[side]).map((d) => {
         const isSel = d.level === selected;
         const fill = REGION_COLOR[d.region];
@@ -144,30 +144,30 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
             <polygon
               points={d[side]}
               fill={fill}
-              opacity={isSel ? 0.85 : 0.25}
+              opacity={isSel ? 0.65 : 0.30}
               stroke={isSel ? "hsl(var(--foreground))" : fill}
-              strokeWidth={isSel ? 1.5 : 0.5}
+              strokeWidth={isSel ? 1.5 : 0.6}
+              strokeDasharray={isSel ? undefined : "3 2"}
               style={{ cursor: "pointer", transition: "all 0.15s" }}
               onClick={() => setSelected(d.level)}
             >
               <title>{`${d.level} — ${d.landmark}`}</title>
             </polygon>
-            {/* Mirror to opposite side */}
             <polygon
               points={d[side]!.split(" ").map((p) => {
                 const [x, y] = p.split(",").map(Number);
                 return `${200 - x},${y}`;
               }).join(" ")}
               fill={fill}
-              opacity={isSel ? 0.85 : 0.25}
+              opacity={isSel ? 0.65 : 0.30}
               stroke={isSel ? "hsl(var(--foreground))" : fill}
-              strokeWidth={isSel ? 1.5 : 0.5}
+              strokeWidth={isSel ? 1.5 : 0.6}
+              strokeDasharray={isSel ? undefined : "3 2"}
               style={{ cursor: "pointer", transition: "all 0.15s" }}
               onClick={() => setSelected(d.level)}
             >
               <title>{`${d.level} — ${d.landmark}`}</title>
             </polygon>
-            {/* Level label on selected */}
             {isSel && showLabels && d[side] && (() => {
               const pts = d[side]!.split(" ").map((p) => p.split(",").map(Number));
               const cx = pts.reduce((s, [x]) => s + x, 0) / pts.length;
@@ -181,6 +181,59 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
           </g>
         );
       })}
+
+      {/* 3. Surface anatomy plate (on top of territories) */}
+      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55"
+        style={{ pointerEvents: "none" }}>
+        {side === "anterior" ? (
+          <>
+            {/* Clavicles */}
+            <path d="M82,82 C72,84 64,86 58,90" />
+            <path d="M118,82 C128,84 136,86 142,90" />
+            {/* Sternum */}
+            <path d="M100,90 L100,165" strokeWidth="0.9" />
+            <line x1="94" y1="100" x2="106" y2="100" strokeWidth="0.5" />
+            {/* Costal margin */}
+            <path d="M65,165 C82,200 100,210 100,210 C100,210 118,200 135,165" strokeDasharray="2 2" />
+            {/* Nipples (T4) */}
+            <circle cx="78" cy="148" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
+            <circle cx="122" cy="148" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
+            {/* Umbilicus (T10) */}
+            <circle cx="100" cy="248" r="2.2" strokeWidth="0.7" />
+            {/* ASIS + inguinal */}
+            <circle cx="78" cy="302" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
+            <circle cx="122" cy="302" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
+            <path d="M78,302 L100,318 L122,302" strokeDasharray="2 2" opacity="0.7" />
+            {/* Patellae */}
+            <ellipse cx="88" cy="395" rx="5" ry="6" />
+            <ellipse cx="112" cy="395" rx="5" ry="6" />
+            {/* Medial malleoli */}
+            <circle cx="88" cy="485" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
+            <circle cx="112" cy="485" r="1.6" fill="hsl(var(--foreground))" stroke="none" />
+          </>
+        ) : (
+          <>
+            {/* Spine */}
+            <line x1="100" y1="60" x2="100" y2="290" strokeWidth="0.8" strokeDasharray="2 3" />
+            {/* C7 vertebra prominens */}
+            <circle cx="100" cy="80" r="1.8" fill="hsl(var(--foreground))" stroke="none" />
+            {/* Scapulae */}
+            <path d="M78,115 C72,128 72,148 80,158 C88,162 92,152 92,142 C92,128 88,118 84,115 Z" />
+            <path d="M122,115 C128,128 128,148 120,158 C112,162 108,152 108,142 C108,128 112,118 116,115 Z" />
+            {/* Inferior scapular angle (T7) */}
+            <circle cx="84" cy="160" r="1.5" fill="hsl(var(--foreground))" stroke="none" />
+            <circle cx="116" cy="160" r="1.5" fill="hsl(var(--foreground))" stroke="none" />
+            {/* Iliac crests (L4) */}
+            <path d="M68,272 C76,282 88,288 100,290" strokeWidth="0.9" />
+            <path d="M132,272 C124,282 112,288 100,290" strokeWidth="0.9" />
+            {/* PSIS dimples */}
+            <circle cx="92" cy="295" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+            <circle cx="108" cy="295" r="1.4" fill="hsl(var(--foreground))" stroke="none" />
+            {/* Gluteal fold */}
+            <path d="M75,318 C85,326 100,328 115,326 C120,326 125,322 125,318" strokeDasharray="2 2" />
+          </>
+        )}
+      </g>
 
       {showLabels && (
         <text x="100" y="10" textAnchor="middle" fontSize="9" fontWeight="700" fill="hsl(var(--foreground))">
