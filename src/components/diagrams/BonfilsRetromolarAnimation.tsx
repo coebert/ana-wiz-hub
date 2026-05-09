@@ -693,7 +693,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       </g>
 
       {/* Eyepiece preview (top-right) */}
-      <g transform="translate(460, 18)">
+      <g transform="translate(615, 22)">
         <text x="42" y="-4" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">
           eyepiece view
         </text>
@@ -781,7 +781,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       </g>
 
       {/* Live indicators */}
-      <g transform="translate(265, 316)">
+      <g transform="translate(290, 342)">
         <circle cx="0" cy="6" r="3" fill="hsl(var(--accent))">
           {!lostView && <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite" />}
         </circle>
