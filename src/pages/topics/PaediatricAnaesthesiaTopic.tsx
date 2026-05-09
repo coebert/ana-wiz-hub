@@ -1,6 +1,7 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import PaediatricSurgicalProceduresDiagram from "@/components/diagrams/PaediatricSurgicalProceduresDiagram";
 import CaudalBlockDiagram from "@/components/diagrams/CaudalBlockDiagram";
+import CaudalSurfaceAnatomyDiagram from "@/components/diagrams/CaudalSurfaceAnatomyDiagram";
 import { PaediatricPhysiologyDiagram } from "@/components/diagrams/PaediatricPhysiologyDiagram";
 import PaediatricEquipmentSizer from "@/components/diagrams/PaediatricEquipmentSizer";
 import { DiagramSection } from "@/components/DiagramSection";
@@ -279,6 +280,7 @@ const PaediatricAnaesthesiaTopic = () => {
             </>
           }
         >
+          <CaudalSurfaceAnatomyDiagram />
           <CaudalBlockDiagram />
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
