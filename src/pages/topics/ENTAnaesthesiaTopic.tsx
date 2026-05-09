@@ -42,6 +42,7 @@ const ENTAnaesthesiaTopic = () => {
           <LaryngectomyAirwayHandoverDiagram />
           <LaserAirwayDiagram />
           <JetVentilationDiagram />
+          <JetVentilationCycleAnimation />
           <LeFortFractureDiagram />
         </>
       }
