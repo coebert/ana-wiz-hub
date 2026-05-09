@@ -194,6 +194,17 @@ const PatientPositioningTopic = () => {
               prone, eye care reapplied, ETT taped securely (consider switching to an armoured tube before turning),
               and bilateral air entry / EtCO₂ / SpO₂ confirmed before the surgeon scrubs.
             </p>
+
+            <div className="mt-4 rounded-lg border border-border bg-muted/40 p-4">
+              <h3 className="text-base font-bold text-foreground mb-2">Prone positioning checklist — key visual cues</h3>
+              <ul className="text-sm text-muted-foreground leading-relaxed space-y-1.5 list-disc pl-5">
+                <li><strong>Neutral head &amp; neck</strong> — ear, shoulder and greater trochanter in one straight line; no rotation, flexion or extension; chin 2 finger-breadths off the chest.</li>
+                <li><strong>Face cut-out fit</strong> — forehead, malar eminences and chin take the load; <em>eyes and nose suspended in the cut-out with zero contact</em>; ETT and circuit exit cleanly through the slot, retape and re-confirm depth after turning.</li>
+                <li><strong>Foam support contact points</strong> — chest rolls / bolsters from clavicle to iliac crest leaving the <em>abdomen hanging free</em> (check by passing a hand under it); ASIS padded, breasts and genitalia free of compression.</li>
+                <li><strong>Arms</strong> — &lt; 90° abduction at shoulder, elbows flexed, palms down, axillae free; or tucked at sides with neutral wrists.</li>
+                <li><strong>Legs</strong> — pillow under shins so toes hang free, knees slightly flexed and padded, heels offloaded.</li>
+              </ul>
+            </div>
           </ExamSection>
 
           <ExamSection id="neuro-positioning" exams={[Exam.FINAL]}>
