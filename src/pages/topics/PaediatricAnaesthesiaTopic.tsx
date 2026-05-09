@@ -215,6 +215,52 @@ const PaediatricAnaesthesiaTopic = () => {
             </div>
           </div>
 
+          <div className="p-3 rounded-lg border border-border bg-background/60 mb-3">
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Key references — Remi-mix technique</p>
+            <ol className="text-xs text-muted-foreground list-decimal list-inside space-y-1">
+              <li>
+                Nimmo AF, Absalom AR, Bagshaw O, et&nbsp;al. <em>Guidelines for the safe practice of total intravenous anaesthesia (TIVA)</em>. Joint AAGBI/SIVA guidelines. <strong className="text-foreground">Anaesthesia 2019;74:211–24.</strong>{" "}
+                <a href="https://associationofanaesthetists-publications.onlinelibrary.wiley.com/doi/full/10.1111/anae.14428" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1111/anae.14428</a>{" "}
+                — defines safe practice for TIVA, including admixed propofol-remifentanil where local SOPs exist.
+              </li>
+              <li>
+                Bagshaw O, Stack S, Wolf AR. <em>The safety profile and effectiveness of propofol-remifentanil mixtures for total intravenous anesthesia in children</em>. <strong className="text-foreground">Pediatr Anaesth 2020;30:1331–9.</strong>{" "}
+                <a href="https://onlinelibrary.wiley.com/doi/10.1111/pan.14018" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1111/pan.14018</a>{" "}
+                — large UK paediatric series supporting Remi 2 / Remi 5 / Remi 10 / Remi 20 mixtures and their typical clinical use.
+              </li>
+              <li>
+                Shankey-Smith G, Lönnqvist P-A, Bagshaw O, et&nbsp;al. <em>The use of propofol-remifentanil mixture for TIVA in pediatric anesthesia — an opinion from a group of pediatric anesthetists</em>. <strong className="text-foreground">Pediatr Anaesth 2021;31:262–4.</strong>{" "}
+                <a href="https://onlinelibrary.wiley.com/doi/10.1111/pan.14135" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1111/pan.14135</a>{" "}
+                — concentration-rationale rationale for naming the mixtures by remi µg/ml.
+              </li>
+              <li>
+                Donnelly RF. <em>The effect of concentration, reconstitution solution and pH on the stability of a remifentanil hydrochloride and propofol admixture for simultaneous co-infusion</em>. <strong className="text-foreground">BMC Anesthesiol 2020;20:284.</strong>{" "}
+                <a href="https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-020-01194-5" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1186/s12871-020-01194-5</a>{" "}
+                — chemical/physical stability data: remifentanil + propofol admixtures are stable for ≥24&nbsp;hr at room temperature when reconstituted in water for injection (NOT 0.9% saline at high pH).
+              </li>
+              <li>
+                O'Connor S, Zhang Y-L, Lynch MJ, et&nbsp;al. <em>Remifentanil and propofol undergo separation and layering when mixed in the same syringe for total intravenous anesthesia</em>. <strong className="text-foreground">Pediatr Anaesth 2016;26:703–9.</strong>{" "}
+                <a href="https://onlinelibrary.wiley.com/doi/10.1111/pan.12917" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1111/pan.12917</a>{" "}
+                — drawback: visible separation/layering if syringes left static; agitate before use and re-mix periodically.
+              </li>
+              <li>
+                Anderson BJ, Bagshaw O. <em>Practicalities of total intravenous anesthesia and target-controlled infusion in children</em>. <strong className="text-foreground">Anesthesiology 2019;131:164–85.</strong>{" "}
+                <a href="https://pubs.asahq.org/anesthesiology/article/131/1/164/18717" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">doi:10.1097/ALN.0000000000002657</a>{" "}
+                — paediatric TIVA review: TCI models, manual regimens and the rationale for fixed remi:propofol ratios.
+              </li>
+              <li>
+                Coppens MJ, Eleveld DJ, Proost JH, et&nbsp;al. <em>Principles of total intravenous anaesthesia: basic pharmacokinetics and model descriptions</em>. <strong className="text-foreground">BJA Education 2018;18(3):92–7.</strong>{" "}
+                <a href="https://www.bjaed.org/article/S2058-5349(17)30085-9/fulltext" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">bjaed.org</a>{" "}
+                — BJA Education primer on TIVA pharmacokinetics underpinning fixed-ratio admixture rates.
+              </li>
+              <li>
+                NHS Greater Glasgow &amp; Clyde Paediatric Anaesthesia. <em>Total Intravenous Anaesthesia (TIVA): a guide to using propofol and remifentanil mixed in the same syringe</em>. NHSGGC Clinical Guideline.{" "}
+                <a href="https://clinicalguidelines.scot.nhs.uk/ggc-paediatric-guidelines/ggc-paediatric-guidelines/anaesthetics/total-intravenous-anaesthesia-tiva-a-guide-to-using-propofol-and-remifentanil-mixed-in-the-same-syringe/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">clinicalguidelines.scot.nhs.uk</a>{" "}
+                — worked preparation instructions for Remi 2 / Remi 5 / Remi 10 in 50 ml of 1% propofol with two-person check.
+              </li>
+            </ol>
+          </div>
+
           <div className="p-4 rounded-lg bg-secondary/30 border border-border mb-3">
             <p className="font-semibold text-foreground text-sm mb-1">Indications & advantages</p>
             <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
