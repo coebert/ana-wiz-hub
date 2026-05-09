@@ -30,7 +30,22 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
-      "@typescript-eslint/no-unused-vars": "off",
+      // Surface unused imports / locals / parameters during development.
+      // Underscore-prefixed names are intentionally ignored as the conventional
+      // "I know this is unused" opt-out (e.g. `_props`, `_event`).
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          args: "after-used",
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrors: "all",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+          ignoreRestSiblings: true,
+        },
+      ],
+      "no-unused-vars": "off",
       "lovable-local/no-hex-alpha-concat": "error",
       "lovable-local/diagram-needs-heading": "error",
       "lovable-local/valid-exam-tag": "error",
