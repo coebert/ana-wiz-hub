@@ -5,7 +5,7 @@ type Mode = "normal" | "fault" | "tripped";
 export const RCDDiagram = () => {
   const [mode, setMode] = useState<Mode>("normal");
   const [t, setT] = useState(0);
-  const [tripFrame, setTripFrame] = useState<number | null>(null);
+  const [_tripFrame, setTripFrame] = useState<number | null>(null);
 
   useEffect(() => {
     const id = setInterval(() => setT((x) => x + 1), 33);

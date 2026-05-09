@@ -64,7 +64,7 @@ const WrightRespirometerDiagram = () => {
   // Cumulative displayed volume across breath
   const trueVT = TRUE_VT[regime];
   const dispVT = displayedVT(trueVT, regime);
-  const accumulating = inspiring;
+  const _accumulating = inspiring;
   const cycleProgress = inspiring ? breath / 0.4 : 1;
   const liveDisplayedVolume = dispVT * cycleProgress;
   const error = ((dispVT - trueVT) / trueVT) * 100;
@@ -83,7 +83,7 @@ const WrightRespirometerDiagram = () => {
     const startX = 60;
     const startY = 130;
     const cx = 200;
-    const cy = 130;
+    const _cy = 130;
     const x = startX + (cx - startX) * t;
     const y = startY - Math.sin(t * Math.PI) * 20;
     return { x, y, t };

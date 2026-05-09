@@ -181,8 +181,8 @@ export const NSAIDMechanismDiagram = () => {
   const profile = PROFILES[profileId];
 
   // Visual helpers
-  const arrowOpacity = (mag: number) => 0.25 + mag * 0.55;
-  const flowOpacity = (mag: number) => 1 - mag * 0.85; // higher inhibition → less flow
+  const _arrowOpacity = (mag: number) => 0.25 + mag * 0.55;
+  const _flowOpacity = (mag: number) => 1 - mag * 0.85; // higher inhibition → less flow
 
   // Layout coordinates
   const aaX = 280;
@@ -459,7 +459,7 @@ export const NSAIDMechanismDiagram = () => {
           </text>
 
           {/* Effect chips */}
-          {EFFECTS.map((e, i) => {
+          {EFFECTS.map((e, _i) => {
             const therapeuticList = EFFECTS.filter((x) => x.kind === "therapeutic");
             const adverseList = EFFECTS.filter((x) => x.kind === "adverse");
             const isThera = e.kind === "therapeutic";

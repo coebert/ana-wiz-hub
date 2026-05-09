@@ -39,7 +39,7 @@ const ClosingVolumeDiagram = () => {
   // Dynamic y-axis: round the actual peak up with headroom, never below 40%
   const yMax = autoScale ? niceAxisMax(rawPhase4Peak, { step: 10, headroom: 1.05, floor: 40 }) : 60;
   const tickStep = yMax <= 80 ? 10 : 20;
-  const yTicks = makeTicks(yMax, tickStep);
+  const _yTicks = makeTicks(yMax, tickStep);
 
   // Single shared scale — every curve control point goes through this so it
   // can never escape the plot rectangle [0 → 190px (bottom), yMax → 20px (top)].

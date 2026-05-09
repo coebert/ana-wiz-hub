@@ -204,7 +204,7 @@ const ANTERIOR_BODY = "M 155 30 Q 130 30, 128 70 Q 127 100, 145 115 L 75 130 Q 5
 const POSTERIOR_BODY = "M 435 30 Q 410 30, 408 70 Q 407 100, 425 115 L 355 130 Q 330 140, 330 175 L 330 280 Q 330 320, 370 325 L 380 360 L 380 395 Q 380 410, 395 410 L 370 415 L 365 460 L 375 580 L 380 660 L 410 670 L 445 660 L 445 580 L 455 460 L 450 415 L 425 410 Q 440 410, 440 395 L 440 360 L 450 325 Q 490 320, 490 280 L 490 175 Q 490 140, 465 130 L 395 115 Q 413 100, 412 70 Q 410 30, 435 30 Z";
 
 // Mirror anterior region paths to posterior coordinate space (offset +280) for posterior versions of trunk dermatomes
-const mirrorToPost = (d: string) => d.replace(/(\d+(?:\.\d+)?)/g, (m, _g, offset, full) => {
+const _mirrorToPost = (d: string) => d.replace(/(\d+(?:\.\d+)?)/g, (m, _g, _offset, _full) => {
   // crude: alternate numbers x,y,x,y... shift x by +280
   // Use regex with index parity within each command — simpler: process tokens
   return m;

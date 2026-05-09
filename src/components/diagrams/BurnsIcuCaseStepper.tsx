@@ -267,7 +267,7 @@ export const BurnsIcuCaseStepper = () => {
   const scene = SCENES[step];
   const pick = picked[step];
   const verdict = pick !== undefined ? scene.choices[pick].verdict : null;
-  const tone: Tone | null = verdict ? verdictTone[verdict] : null;
+  const _tone: Tone | null = verdict ? verdictTone[verdict] : null;
 
   const score = useMemo(() => {
     let best = 0;

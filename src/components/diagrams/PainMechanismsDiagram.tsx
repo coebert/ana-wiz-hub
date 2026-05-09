@@ -250,7 +250,7 @@ export const PainMechanismsDiagram = () => {
           <line x1="70" y1="100" x2="650" y2="100" stroke="hsl(var(--border))" strokeWidth="2" markerEnd="url(#pmd-arrow)" />
 
           {/* Stages */}
-          {stages.map((s, i) => {
+          {stages.map((s, _i) => {
             const lesion = isLesion(s.key);
             const r = lesion ? 38 : 28;
             const fill = lesion ? info.color : "hsl(var(--background))";

@@ -21,7 +21,7 @@ import {
   ExamTag,
   Exam,
   topicsBySection,
-  allTopics,
+  _allTopics,
 } from "@/data/curriculum";
 
 type ExamFilter = "all" | ExamTag;

@@ -228,7 +228,7 @@ function evaluate(i: Inputs) {
   const clear2 = ((i.l0 - i.l2) / i.l0) * 100;
   const clear6 = ((i.l0 - i.l6) / i.l0) * 100;
   const crtNorm = i.crtNow <= 3;
-  const crtImproving = (i.crt0 - i.crtNow) >= 1;
+  const _crtImproving = (i.crt0 - i.crtNow) >= 1;
   const goodLactate = clear2 >= 10 || clear6 >= 20 || i.l6 <= 2;
   const persistentShock = i.map < 65 && i.onVaso;
   const risingLactate = i.l2 > i.l0 || i.l6 > i.l2;

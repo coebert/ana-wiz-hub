@@ -61,9 +61,9 @@ export const NMJDiagram = () => {
     { cx: 320, cy: 115 },
   ];
 
-  const showCaArrows = currentPhase.id === "ca" || currentPhase.id === "syt" || currentPhase.id === "vesicle";
+  const _showCaArrows = currentPhase.id === "ca" || currentPhase.id === "syt" || currentPhase.id === "vesicle";
   const showAChDots = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
-  const vesiclesFusing = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
+  const _vesiclesFusing = currentPhase.id === "vesicle" || currentPhase.id === "bind" || currentPhase.id === "depol";
   const receptorsActive = currentPhase.id === "bind" || currentPhase.id === "depol";
   const showDegradation = currentPhase.id === "degrade";
   const showAP = currentPhase.id === "ap" || currentPhase.id === "ca";

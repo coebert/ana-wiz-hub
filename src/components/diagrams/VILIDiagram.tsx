@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, _useMemo } from "react";
 
 const VILIDiagram = () => {
   const [vt, setVt] = useState(6);
@@ -6,14 +6,14 @@ const VILIDiagram = () => {
   const [peep, setPeep] = useState(10);
   const [plateau, setPlateau] = useState(28);
   const [ibw, setIbw] = useState(70);
-  const [flow, setFlow] = useState(30); // L/min
+  const [flow, _setFlow] = useState(30); // L/min
 
   // Calculations
   const vtMl = vt * ibw;
   const drivingP = plateau - peep;
   const compliance = drivingP > 0 ? vtMl / drivingP : 0;
   const strain = vtMl / (ibw * 20); // FRC ≈ 20ml/kg (simplified baby lung in ARDS)
-  const stress = plateau; // simplified: stress ≈ transpulmonary plateau
+  const _stress = plateau; // simplified: stress ≈ transpulmonary plateau
 
   // Mechanical power (simplified Gattinoni formula) in J/min
   const mp = 0.098 * rr * vtMl / 1000 * (plateau - drivingP / 2);

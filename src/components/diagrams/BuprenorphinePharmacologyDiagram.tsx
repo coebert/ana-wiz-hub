@@ -119,7 +119,7 @@ export const BuprenorphinePharmacologyDiagram = () => {
               <text x="25" y="180" textAnchor="middle" className="fill-foreground" fontSize="11" fontWeight="600" transform="rotate(-90 25 180)">Effect (%)</text>
 
               {/* X-axis ticks */}
-              {[0, 4, 8, 16, 24, 32].map((d, i) => (
+              {[0, 4, 8, 16, 24, 32].map((d, _i) => (
                 <g key={d}>
                   <line x1={80 + (d / 32) * 640} y1="320" x2={80 + (d / 32) * 640} y2="325" stroke="hsl(var(--foreground))" strokeWidth="1" />
                   <text x={80 + (d / 32) * 640} y="338" textAnchor="middle" className="fill-muted-foreground" fontSize="9">{d}</text>

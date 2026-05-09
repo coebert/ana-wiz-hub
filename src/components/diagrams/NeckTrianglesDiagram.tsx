@@ -94,7 +94,7 @@ const fascialLayers = [
    All coordinates in SVG viewBox units (0-280 x, 0-260 y)
    ════════════════════════════════════════════════════════════ */
 
-const pts = {
+const _pts = {
   // Skull / mandible
   chin: [118, 82] as const,           // mental protuberance
   mandBody: [106, 78] as const,       // body of mandible mid-point
@@ -141,9 +141,9 @@ const NeckTrianglesDiagram = () => {
 
   // ── SCM centreline path (curved) for triangle boundaries ──
   // SCM anterior edge from mastoid → sternal head
-  const scmAntEdge = `M72,62 C82,90 100,135 114,172 C122,195 128,215 134,232`;
+  const _scmAntEdge = `M72,62 C82,90 100,135 114,172 C122,195 128,215 134,232`;
   // SCM posterior edge from mastoid → clavicular head
-  const scmPostEdge = `M72,62 C88,95 108,148 124,180 C136,205 142,220 148,228`;
+  const _scmPostEdge = `M72,62 C88,95 108,148 124,180 C136,205 142,220 148,228`;
 
   // ── Triangle paths with curved SCM borders ──
   const paths: Record<TriangleKey, string> = {

@@ -6,7 +6,7 @@ import "./index.css";
 const isInIframe = (() => {
   try {
     return window.self !== window.top;
-  } catch (e) {
+  } catch (_e) {
     return true;
   }
 })();

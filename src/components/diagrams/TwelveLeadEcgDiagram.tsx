@@ -94,7 +94,7 @@ const beatPath = (originX: number, baseline: number, st: number, scale = 1) => {
   d += `l ${3 * sx} ${24 * sx} `;
   // J point
   const jX = originX + 12 * sx + 6.5 * sx;
-  const jY = baseline + 7 * sx;
+  const _jY = baseline + 7 * sx;
   // ST segment — offset above/below baseline by `st` * 5
   const stOffset = -st * 5 * sx;
   d += `L ${jX + 4 * sx} ${baseline + stOffset} `;
@@ -105,7 +105,7 @@ const beatPath = (originX: number, baseline: number, st: number, scale = 1) => {
   return d;
 };
 
-const HORIZONTAL_PRECORDIAL: Territory[] = ["septal", "anterior", "lateral"];
+const _HORIZONTAL_PRECORDIAL: Territory[] = ["septal", "anterior", "lateral"];
 
 const TwelveLeadEcgDiagram = () => {
   const [selected, setSelected] = useCoronarySelection("anterior");
@@ -123,7 +123,7 @@ const TwelveLeadEcgDiagram = () => {
   };
 
   const renderLead = (lead: LeadDef, x: number, y: number, w = BOX_W, h = BOX_H) => {
-    const { st, primary } = leadState(lead);
+    const { st, _primary } = leadState(lead);
     const elevated = st > 0;
     const depressed = st < 0;
     const isLeadActiveTerritory = lead.primary === selected;

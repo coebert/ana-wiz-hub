@@ -47,7 +47,7 @@ const xScale = (v: number) => PAD_L + (v / TOTAL_EXHALED_ML) * PLOT_W;
 const yScale = (n2: number) => PAD_T + PLOT_H - (n2 / 100) * PLOT_H;
 
 const points = generatePoints();
-const pathD = points
+const _pathD = points
   .map((p, i) => `${i === 0 ? "M" : "L"} ${xScale(p.v).toFixed(2)} ${yScale(p.n2).toFixed(2)}`)
   .join(" ");
 

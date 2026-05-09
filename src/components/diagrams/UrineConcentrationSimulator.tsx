@@ -171,7 +171,7 @@ export const UrineConcentrationSimulator = () => {
   }, [adh]);
 
   // Interstitial gradient shading on the right axis
-  const gradientStops = useMemo(() => {
+  const _gradientStops = useMemo(() => {
     return [
       { y: yForOsm(300), osm: 300 },
       { y: yForOsm(600), osm: 600 },

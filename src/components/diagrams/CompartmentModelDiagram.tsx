@@ -14,10 +14,10 @@ export const CompartmentModelDiagram = () => {
   const t = animFrame / 30; // seconds elapsed
 
   // Concentration decay curves
-  const oneComp = Math.exp(-0.3 * t) * 100;
+  const _oneComp = Math.exp(-0.3 * t) * 100;
   const twoCompAlpha = 60 * Math.exp(-0.8 * t);
   const twoCompBeta = 40 * Math.exp(-0.1 * t);
-  const twoComp = twoCompAlpha + twoCompBeta;
+  const _twoComp = twoCompAlpha + twoCompBeta;
 
   const width = 500;
   const height = 300;

@@ -17,7 +17,7 @@ export const QuizSection = ({ questions }: QuizSectionProps) => {
   const [selected, setSelected] = useState<number | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [score, setScore] = useState(0);
-  const [answered, setAnswered] = useState(0);
+  const [_answered, setAnswered] = useState(0);
   const [finished, setFinished] = useState(false);
 
   const q = questions[currentQ];

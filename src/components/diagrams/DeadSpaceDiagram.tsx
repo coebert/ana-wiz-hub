@@ -187,7 +187,7 @@ function OverviewView({ highlightType, setHighlightType }: {
   );
 }
 
-const types = [
+const _types = [
   { key: "anatomical" as const, label: "Anatomical", volume: "~150 ml", color: "hsl(210, 70%, 55%)", desc: "Conducting airways (nose → terminal bronchioles). No gas exchange. Measured by Fowler's method (N₂ washout)." },
   { key: "alveolar" as const, label: "Alveolar", volume: "~5 ml (normal)", color: "hsl(35, 80%, 50%)", desc: "Ventilated alveoli with no perfusion (V/Q = ∞). Minimal in health but increases with PE, high PEEP, or low cardiac output." },
   { key: "physiological" as const, label: "Physiological", volume: "~155 ml", color: "hsl(var(--physiology))", desc: "Anatomical + Alveolar dead space. Measured by the Bohr equation. Equals anatomical dead space in a healthy lung." },

@@ -54,7 +54,7 @@ const phaseInfo: Record<Phase, PhaseInfo> = {
   },
 };
 
-const phaseOrder: Phase[] = ["preinduction", "induction", "maintenance", "emergence", "recovery"];
+const _phaseOrder: Phase[] = ["preinduction", "induction", "maintenance", "emergence", "recovery"];
 
 /**
  * Generate DSA spectrogram pixel data as a 2D array [time][freq] → power (0–1).
