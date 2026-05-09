@@ -372,43 +372,53 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       */}
       <path
         d="
-          M 215 50
-          Q 165 36 120 60
-          Q 85 80 78 110
-          Q 76 122 72 130
-          L 50 138
-          Q 38 144 50 152
-          L 78 154
-          Q 80 160 84 164
-          L 110 166
-          L 110 168
-
-          L 60 168
-          Q 50 170 56 178
-          L 76 184
-          Q 80 192 86 198
-          L 96 210
-          L 110 222
-          Q 130 238 168 246
-          L 200 252
-          Q 220 256 232 270
-          L 240 305
-          L 360 305
-          Q 360 240 350 200
-          Q 340 150 320 110
-          Q 295 65 240 50
+          M 240 48
+          Q 175 34 122 56
+          Q 88 74 80 108
+          Q 78 122 74 130
+          L 52 138
+          Q 38 144 52 152
+          L 76 154
+          Q 74 160 70 166
+          Q 64 174 60 182
+          Q 56 190 54 198
+          Q 52 206 56 212
+          Q 64 218 76 222
+          Q 96 228 118 234
+          Q 142 240 168 248
+          Q 196 256 218 268
+          Q 238 280 248 305
+          L 380 305
+          Q 382 268 380 232
+          Q 380 198 376 168
+          Q 374 148 366 130
+          Q 354 100 332 80
+          Q 295 56 240 48
           Z
         "
         fill="url(#bf-skin)"
-        stroke="hsl(20 40% 45%)"
+        stroke="hsl(20 40% 42%)"
         strokeWidth="1.4"
         strokeLinejoin="round"
       />
       {/* Subtle face shading on the right (away from light) */}
       <path
-        d="M 215 50 Q 295 65 320 110 Q 340 150 350 200 Q 360 240 360 305 L 240 305"
+        d="M 240 48 Q 295 56 332 80 Q 354 100 366 130 Q 374 148 376 168 Q 380 198 380 232 Q 382 268 380 305 L 248 305"
         fill="url(#bf-skin-shade)"
       />
+      {/* Occipital contour highlight (subtle inion bulge) */}
+      <path
+        d="M 376 168 Q 384 200 380 232"
+        fill="none"
+        stroke="hsl(20 40% 38% / 0.55)"
+        strokeWidth="0.8"
+      />
+      {/* Labiomental sulcus (chin/lip groove) */}
+      <path d="M 60 184 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.8" strokeLinecap="round" />
+      {/* Mental protuberance highlight */}
+      <path d="M 50 200 q 4 -2 8 4" fill="none" stroke="hsl(20 40% 38% / 0.5)" strokeWidth="0.8" />
+      {/* Thyroid prominence (Adam's apple) */}
+      <path d="M 168 246 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.9" strokeLinecap="round" />
 
       {/* Hairline + ear */}
       <path d="M 215 50 Q 260 48 300 70" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" />
