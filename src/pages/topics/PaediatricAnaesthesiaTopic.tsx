@@ -160,6 +160,60 @@ const PaediatricAnaesthesiaTopic = () => {
               </p>
             </div>
           </div>
+
+          <div className="p-4 rounded-lg border border-border mb-3">
+            <p className="font-semibold text-foreground text-sm mb-1">Single-syringe propofol + remifentanil ("Remi-mix")</p>
+            <p className="text-sm text-muted-foreground mt-1 mb-2">
+              A practical paediatric variant in which remifentanil is reconstituted directly into the propofol vial/syringe so both drugs are delivered through one pump and one cannula. Widely used in UK paediatric centres (Bristol, GOSH, Alder Hey) for short-to-medium cases — particularly MRI, dental, ophthalmic and shared-airway lists where a second pump and second line are awkward. The mixture is named for the remifentanil concentration in micrograms per millilitre of 1% propofol: <strong className="text-foreground">Remi&nbsp;5</strong> = 5&nbsp;µg remifentanil per ml of 10&nbsp;mg/ml propofol (i.e. 5&nbsp;mg remi reconstituted into 1&nbsp;ml water and added to a 50&nbsp;ml propofol syringe → 5&nbsp;µg/ml remi + 10&nbsp;mg/ml propofol). Stable physico-chemically for at least 6&nbsp;hr at room temperature.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-1.5 text-foreground font-semibold">Mix</th>
+                    <th className="text-left py-1.5 text-foreground font-semibold">Remi (µg/ml)</th>
+                    <th className="text-left py-1.5 text-foreground font-semibold">Propofol (mg/ml)</th>
+                    <th className="text-left py-1.5 text-foreground font-semibold">Typical use</th>
+                    <th className="text-left py-1.5 text-foreground font-semibold">Effective ratio</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-1.5 font-medium text-foreground">Remi 2</td><td>2</td><td>10</td><td>Sedation / non-stimulating MRI, sedated cardiac cath, infants where a lower opioid load is wanted</td><td>1 µg remi : 5 mg propofol</td></tr>
+                  <tr className="border-b border-border"><td className="py-1.5 font-medium text-foreground">Remi 5</td><td>5</td><td>10</td><td><strong className="text-foreground">Default workhorse mix</strong> — dental, strabismus, MRI under GA, tonsillectomy, day-case general surgery</td><td>1 µg remi : 2 mg propofol</td></tr>
+                  <tr className="border-b border-border"><td className="py-1.5 font-medium text-foreground">Remi 10</td><td>10</td><td>10</td><td>Stimulating shared-airway work — microlaryngoscopy, rigid bronchoscopy, adenotonsillectomy with OSA</td><td>1 µg remi : 1 mg propofol</td></tr>
+                  <tr><td className="py-1.5 font-medium text-foreground">Remi 20</td><td>20</td><td>10</td><td>Brief, very stimulating procedures (laser airway, rigid oesophagoscopy) where opioid demand exceeds propofol demand</td><td>2 µg remi : 1 mg propofol</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2 italic">
+              Practical dosing: after induction, a maintenance rate of <strong className="text-foreground">10&nbsp;ml/hr per 10&nbsp;kg</strong> of Remi&nbsp;5 delivers ~10&nbsp;mg/kg/hr propofol + ~0.08&nbsp;µg/kg/min remifentanil — a sensible starting point, then titrated to clinical effect (movement, HR, RR, BIS if used).
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3 mb-3">
+            <div className="p-4 rounded-lg border border-border bg-secondary/20">
+              <p className="font-semibold text-foreground text-sm mb-1">Advantages of the single-syringe technique</p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
+                <li><strong className="text-foreground">One pump, one line</strong> — simpler in MRI bores, on transfers and on small children with limited venous access</li>
+                <li><strong className="text-foreground">No risk of differential disconnection</strong> — propofol and remifentanil cannot become uncoupled mid-case, so the child cannot inadvertently receive opioid without hypnotic (or vice versa)</li>
+                <li>No dead-space or back-flow problems from a Y-connector — both drugs travel together in the same lumen at the same rate</li>
+                <li>Faster set-up and lower kit cost — useful on remote-site and emergency lists</li>
+                <li>Reduced drug-error opportunity at programming (a single rate, single drug-name field)</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border-l-4 border-amber-500 bg-amber-500/5">
+              <p className="font-semibold text-foreground text-sm mb-1">Drawbacks & cautions</p>
+              <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
+                <li><strong className="text-foreground">Loss of independent titration</strong> — cannot increase opioid for a stimulating moment without also increasing hypnotic (and vice versa). Choose the mix to match the expected stimulus profile <em>before</em> starting</li>
+                <li><strong className="text-foreground">Unlicensed / off-label</strong> mixing — must be prepared by the anaesthetist with a clear local SOP, two-person check and bold syringe labelling stating both drugs and their concentrations</li>
+                <li>TCI models cannot be used — the pump only "knows" propofol, so manual rate-based dosing is mandatory; depth-of-anaesthesia monitoring (BIS/Entropy) is therefore strongly recommended</li>
+                <li>Bolus doses give a paired remifentanil bolus — risk of <strong className="text-foreground">bradycardia, chest-wall rigidity and hypotension</strong>, especially in neonates and small infants. Avoid rescue boluses from the running syringe; give separate small propofol boluses instead</li>
+                <li>Wastage if the case is shorter than expected; the mixed syringe cannot be re-used for another patient</li>
+                <li>Not suitable for prolonged ICU sedation or for cases where opioid requirement is likely to fall sharply (e.g. once a regional block is sited)</li>
+              </ul>
+            </div>
+          </div>
+
           <div className="p-4 rounded-lg bg-secondary/30 border border-border mb-3">
             <p className="font-semibold text-foreground text-sm mb-1">Indications & advantages</p>
             <ul className="text-sm text-muted-foreground list-disc list-inside space-y-0.5">
