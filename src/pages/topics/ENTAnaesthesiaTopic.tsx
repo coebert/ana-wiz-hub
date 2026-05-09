@@ -4,6 +4,7 @@ import { entAnaesthesiaQuestions } from "@/data/quizzes";
 import LaryngectomyAirwayHandoverDiagram from "@/components/diagrams/LaryngectomyAirwayHandoverDiagram";
 import LeFortFractureDiagram from "@/components/diagrams/LeFortFractureDiagram";
 import LaserAirwayDiagram from "@/components/diagrams/LaserAirwayDiagram";
+import JetVentilationDiagram from "@/components/diagrams/JetVentilationDiagram";
 import { Exam } from "@/data/curriculum";
 
 const ENTAnaesthesiaTopic = () => {
@@ -39,6 +40,7 @@ const ENTAnaesthesiaTopic = () => {
         <>
           <LaryngectomyAirwayHandoverDiagram />
           <LaserAirwayDiagram />
+          <JetVentilationDiagram />
           <LeFortFractureDiagram />
         </>
       }
@@ -88,7 +90,20 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Bivona Fome-Cuf (laser variant)</strong>: aluminium-foil-wrapped silicone with a self-inflating foam cuff vented to atmosphere. The only widely available tube approved for both CO₂ and Nd:YAG.</li>
               <li><strong>Sheridan Laser-Trach</strong>: copper-foil-wrapped red rubber inside a saline-soakable Merocel sponge envelope. Twin methylene-blue saline cuffs.</li>
               <li><strong>Jet ventilation</strong>: supraglottic (Sanders injector) or subglottic/transtracheal — eliminates the tube from the surgical field altogether but introduces barotrauma, air trapping, gastric insufflation and pneumothorax risk.</li>
-              <li><strong>Cuff inflation</strong>: saline + methylene blue dye. A laser strike causes a visible blue leak, simultaneously alerting the surgeon and self-quenching the burn.</li>
+              <li><strong>Cuff inflation</strong>: saline + methylene blue dye (see below). A laser strike causes a visible blue leak, simultaneously alerting the surgeon and self-quenching the burn.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Jet ventilation — set-up & safety</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              When the surgeon needs an unobstructed view of the glottis, jet ventilation lets the anaesthetist remove the ETT from the surgical field altogether. All forms work the same way: a small bore cannula or catheter delivers a pulse of high-pressure O₂ that entrains room air (Venturi effect) and inflates the lungs, with passive elastic recoil providing exhalation. The price of that small cross-section is the loss of two safety nets — a sealed cuff and a defined expiratory pathway — so technique discipline is everything.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+              <li><strong>Modalities</strong>: <em>supraglottic</em> (Sanders injector through the operating laryngoscope, low-frequency 10–20 min⁻¹); <em>subglottic</em> (Hunsaker or laser-jet catheter sited below the cords with distal pressure & CO₂ monitoring, high-frequency 100–150 min⁻¹, HFJV); <em>transtracheal</em> (14 G cannula through the cricothyroid membrane in CICO — bridge to a definitive airway).</li>
+              <li><strong>Set-up checklist</strong>: dedicated jet ventilator with <strong>upper pressure-limit alarm</strong>; pressure regulator on the wall O₂ outlet (start at 1 bar, titrate up); pre-jet shared briefing of "rate / pressure / I:E / who calls stop"; TIVA running (no scavenging in the open airway); SpO₂, ECG and capnography (where the catheter allows distal sampling); stethoscope on the chest for every set; rescue ETT pre-loaded.</li>
+              <li><strong>Driving pressure & rate</strong>: lowest pressure that produces visible chest rise (typically 1–3 bar adult, 0.5–1 bar paediatric). Rate slow enough to allow full exhalation — I:E ≥ 1:2 for low-frequency, ≥ 1:3 for HFJV. The longer the inspiratory time and the higher the rate, the greater the risk of breath stacking.</li>
+              <li><strong>Minimising barotrauma & pneumothorax</strong>: <em>verify</em> the expiratory pathway is patent <em>before</em> every series of jet breaths — chest must fall fully between insufflations. Auto-PEEP develops silently in obstructive lung disease, fixed glottic stenoses, foreign bodies and intratracheal lesions; if expiration is incomplete, stop, allow passive exhalation, lower the rate and reduce the driving pressure. Use a jet ventilator that interlocks on overpressure rather than a manual Sanders for prolonged work. Auscultate both sides between sets — a unilateral pneumothorax presents as silent ipsilateral chest with hypoxia and rising peak inspiratory pressures, and tensions within minutes if jetting continues.</li>
+              <li><strong>Other hazards & how to mitigate</strong>: <em>gastric insufflation</em> (mis-aimed supraglottic jet) — confirm jet axis, use a subglottic catheter when in doubt; <em>mucosal drying / cold-gas tracheitis</em> — humidify when feasible, limit total jet time; <em>aspiration</em> — anti-sialogogue and gentle suction, no positive-pressure mask seal during apnoeic intervals; <em>haemodynamic instability</em> — high intrathoracic pressure during stacking reduces venous return and causes hypotension that resolves within seconds of stopping the jet; <em>awareness</em> — TIVA depth must be maintained, no volatile delivery is possible.</li>
+              <li><strong>Stop the jet immediately if</strong>: chest fails to fall between breaths, peak airway pressure rises, SpO₂ drops, surgical emphysema appears in the neck, or the patient becomes unstable. Disconnect, allow passive exhalation, decompress any suspected pneumothorax (needle thoracocentesis → chest drain), and convert to an ETT.</li>
             </ul>
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Eye protection — patient and staff</h3>
