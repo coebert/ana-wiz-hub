@@ -404,9 +404,19 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {/* ============ HEAD + AIRWAY + SCOPE — rotates with posture ============ */}
       <g
         style={{
-          transform: `rotate(${headRot}deg)`,
+          // Use translate(0,0) before rotate to force GPU compositing on a
+          // single transform layer — eliminates sub-pixel jitter at the
+          // pivot during the eased rotation.
+          transform: `translateZ(0) rotate(${headRot}deg)`,
           transformOrigin: `${HEAD_PIVOT.x}px ${HEAD_PIVOT.y}px`,
-          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+          transformBox: "view-box",
+          willChange: "transform",
+          // Critically-damped ease-out: gentle acceleration, long settle,
+          // no overshoot — keeps the occipital contact rock-stable while
+          // the chin arcs through the motion.
+          transition: "transform 1400ms cubic-bezier(0.22, 1, 0.36, 1)",
+          transformStyle: "preserve-3d",
+          backfaceVisibility: "hidden",
         }}
       >
       {/* HEAD outline — clearly recognisable profile facing left.
