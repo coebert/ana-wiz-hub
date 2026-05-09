@@ -49,6 +49,7 @@ const LowerLimbAnatomyTopic = () => {
           <ExamSection id="lumbar-plexus" exams={[Exam.PRIMARY, Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Lumbar Plexus (L1-L4)</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">Formed within psoas major from anterior rami of L1-L4. Main branches:</p>
+            <CorPictumFolio {...lowerLimbFolio} enableReviewMode suppressOverlayLabels />
             <LowerLimbInnervationDiagram />
             <LumbosacralPlexusDiagram />
             <LowerLimbBranchesDiagram />
