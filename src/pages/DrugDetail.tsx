@@ -5,6 +5,7 @@ import { AlertTriangle, ArrowLeft, Pill, ChevronDown, ChevronUp } from "lucide-r
 import { supabase } from "@/integrations/supabase/client";
 import { allTopics, sectionMeta } from "@/data/curriculum";
 import { classifyImpact as classifyImpactExternal } from "@/lib/drug-impact-classifier";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 interface InfusionStandard {
   amount_mg?: number;
@@ -740,6 +741,7 @@ export default function DrugDetail() {
   );
   if (!drug) return (
     <div className="min-h-screen bg-background"><main className="container mx-auto px-4 py-8 max-w-4xl">
+      <Breadcrumbs items={[{ label: "Drug Formulary", to: "/drugs" }, { label: "Not found" }]} />
       <Link to="/drugs" className="text-sm text-drugs inline-flex items-center gap-1 mb-4"><ArrowLeft className="h-3.5 w-3.5"/>Back to formulary</Link>
       <p className="text-sm text-muted-foreground">Drug not found.</p>
     </main></div>
@@ -749,6 +751,7 @@ export default function DrugDetail() {
     <div className="min-h-screen bg-background">
       
       <main className="container mx-auto px-4 py-6 max-w-4xl">
+        <Breadcrumbs items={[{ label: "Drug Formulary", to: "/drugs" }, { label: drug.name }]} />
         <Link to="/drugs" className="text-sm text-muted-foreground hover:text-drugs inline-flex items-center gap-1 mb-3">
           <ArrowLeft className="h-3.5 w-3.5" /> Back to formulary
         </Link>
