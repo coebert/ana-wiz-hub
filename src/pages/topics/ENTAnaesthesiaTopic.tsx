@@ -177,6 +177,95 @@ const ENTAnaesthesiaTopic = () => {
               <li><strong>Free flap surgery</strong>: long procedures (8–12h). Avoid α-agonist boluses (flap vasospasm); use noradrenaline by infusion, MAP ≥70 mmHg, normothermia, Hb 80–100 g/L</li>
             </ul>
           </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Intra-operative Nerve Monitoring</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Several head and neck procedures rely on intra-operative nerve monitoring (IONM) to identify motor nerves
+              at risk and to prognosticate function. The anaesthetic technique must preserve the motor response that the
+              surgeon needs to elicit — this fundamentally constrains the choice and timing of neuromuscular blockade and
+              the position of any surface or endotracheal-tube electrodes.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Recurrent laryngeal nerve (thyroid, parathyroid, anterior cervical spine, mediastinal)</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li><strong>Why monitor?</strong> RLN injury rate ≈1–2% in primary thyroid surgery, up to 20% in re-do or malignant cases. Bilateral palsy → adducted cords and immediate post-extubation airway obstruction; unilateral → hoarseness and aspiration risk.</li>
+              <li><strong>Technique:</strong> EMG endotracheal tube (NIM, Medtronic / Dräger) with paired surface electrodes contacting both vocal cords. The surgeon stimulates vagus and RLN with a hand-held probe (1–2 mA); evoked EMG is displayed on a screen with audible feedback.</li>
+              <li><strong>Tube placement is critical:</strong> mid-electrode at the level of the cords on direct/video laryngoscopy. Confirm contact <em>after</em> final neck positioning (extension rotates the tube). Lubricants and sprays insulate the electrodes — use saline only.</li>
+              <li><strong>NMB strategy:</strong> a single intubating dose of <strong>suxamethonium 1 mg·kg⁻¹</strong> or low-dose <strong>rocuronium 0.3 mg·kg⁻¹</strong> with sugammadex reversal before nerve dissection. Avoid maintenance non-depolarisers. If paralysis is required, target TOF count ≥2 (some centres ≥4) before stimulation; sugammadex 2 mg·kg⁻¹ is the rescue.</li>
+              <li><strong>Maintenance:</strong> TIVA or volatile both acceptable — neither abolishes EMG. Avoid topical lidocaine to the cords (blocks the response).</li>
+              <li><strong>Loss of signal protocol:</strong> check tube position (rotation/depth), confirm not paralysed (TOF), troubleshoot equipment <em>before</em> attributing to nerve injury. Persistent loss of signal on the first side may prompt the surgeon to <strong>stage</strong> the contralateral lobectomy to avoid bilateral palsy.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Facial nerve (parotidectomy, mastoid/middle ear, vestibular schwannoma, parotid abscess)</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li><strong>Why monitor?</strong> CN VII runs through the parotid and the temporal bone; identification preserves facial symmetry, eye closure and quality of life. Permanent palsy ≈1–3% with monitoring vs &gt;5% without in parotid surgery.</li>
+              <li><strong>Technique:</strong> needle electrodes in orbicularis oculi and orbicularis oris (and frontalis/mentalis depending on system); surgeon-held monopolar stimulator. Visible twitch at low currents (0.05–0.5 mA) confirms proximity.</li>
+              <li><strong>NMB strategy:</strong> intubate with sux or low-dose rocuronium and then run <strong>relaxant-free</strong> — TIVA with remifentanil ± deep volatile is ideal to keep the patient still without abolishing the EMG. If movement is unacceptable, use a remifentanil infusion to deepen rather than re-paralyse.</li>
+              <li><strong>Other considerations:</strong> avoid long-acting opioids that cloud post-op cranial nerve assessment in posterior fossa surgery; head-up tilt and controlled normocapnia reduce venous bleeding in the surgical field; eye protection on the contralateral side because the monitored side is open for stimulation.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Other nerves frequently monitored in head and neck</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li><strong>Spinal accessory (CN XI)</strong> — neck dissection: trapezius EMG.</li>
+              <li><strong>Hypoglossal (CN XII)</strong> — submandibular and skull-base surgery: tongue EMG.</li>
+              <li><strong>Glossopharyngeal & vagus (CN IX, X)</strong> — skull-base / jugular foramen tumours: pharyngeal and vocal-cord electrodes.</li>
+              <li><strong>Brachial plexus / phrenic</strong> — extensive neck dissection or thoracic outlet surgery: free-running EMG.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">General anaesthetic principles for IONM</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+              <li><strong>Communicate early</strong> — confirm with the surgeon which nerves will be monitored and when stimulation will occur, before drawing up paralysis.</li>
+              <li><strong>Quantitative neuromuscular monitoring</strong> (acceleromyography) is mandatory whenever IONM is in use — clinical signs are unreliable at low TOF counts.</li>
+              <li><strong>Avoid:</strong> long-acting non-depolarisers, magnesium boluses, repeated lidocaine spray to the cords, oily lubricants on EMG electrodes, and unnecessary head-of-bed turns after tube positioning.</li>
+              <li><strong>Plan for sugammadex availability</strong> if rocuronium is used — rapid restoration of EMG transmission allows surgery to continue without delay.</li>
+              <li><strong>Document</strong> baseline and final stimulation thresholds and any loss-of-signal events; these influence the plan for staging, extubation and post-op cord/facial assessment.</li>
+            </ul>
+          </ExamSection>
+
+          <ExamSection exams={[Exam.FINAL]} curriculumCodes={["EN_BK_03"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Post-thyroidectomy Bleeding & Neck Swelling — Emergency Management</h2>
+            <p className="text-foreground/90 leading-relaxed mb-3">
+              Post-thyroidectomy haemorrhage is a time-critical airway emergency occurring in 1–2% of cases, most often
+              within the first 6 hours but described up to 24 hours postoperatively. The key insight is that the airway
+              compromise is <strong>not relieved by simply re-opening the wound to drain the haematoma</strong>:
+              expanding blood under the strap muscles obstructs venous and lymphatic return, producing supraglottic
+              and laryngeal oedema that <em>persists</em> after evacuation. Definitive management requires both wound
+              decompression and a secured airway.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Recognition</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Tense, swollen neck with overlying bruising; rapidly filling drain (or a drain that has stopped because it is clotted — falsely reassuring).</li>
+              <li>Stridor, dyspnoea, agitation, dysphagia, voice change, "I can't breathe lying flat".</li>
+              <li>Falling SpO₂ and rising respiratory rate are <strong>late</strong> signs — act before they appear.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Immediate bedside management — the SCOOP sequence</h3>
+            <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground mb-3">
+              <li><strong>S — Steri-strips off, Sit up:</strong> sit the patient upright (improves venous drainage, reduces work of breathing) and call for senior anaesthetic, ENT/general surgical and theatre help simultaneously. 100% O₂ via non-rebreathe; large-bore IV access; bloods including crossmatch, coagulation.</li>
+              <li><strong>C — Cut sutures / Clips out:</strong> at the bedside, open <em>both</em> skin and the deeper strap-muscle layer using a stitch cutter or the suture-removal scissors kept on every post-thyroidectomy patient ('thyroid emergency box': scissors, clip-remover, gloves). Evacuate clot manually. This is a nursing/medical bedside skill — do not wait for the surgeon.</li>
+              <li><strong>O — Oxygenate:</strong> continue 100% O₂; consider nebulised adrenaline 1 mg in 5 mL and IV dexamethasone 8 mg for laryngeal oedema as a temporising bridge.</li>
+              <li><strong>O — Operating theatre:</strong> transfer immediately for definitive haemostasis and airway control. Take the suture-removal kit and a senior with the patient.</li>
+              <li><strong>P — Plan the airway:</strong> see below.</li>
+            </ol>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Securing the airway in theatre</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li><strong>Anticipate a difficult airway</strong> regardless of the original intubation grade — distorted anatomy, oedema, blood and a frightened patient. Have ENT scrubbed and a tracheostomy set open before induction.</li>
+              <li><strong>Patient awake and cooperative, time available:</strong> awake fibreoptic intubation (sitting up, topicalised) or awake videolaryngoscopy is the safest plan.</li>
+              <li><strong>Patient deteriorating, not safe to wait:</strong> evacuate the haematoma at the bedside or on transfer, then perform a careful inhalational induction in the sitting/semi-recumbent position with sevoflurane in 100% O₂, maintaining spontaneous ventilation. Direct or video laryngoscopy when deep, with a smaller-than-predicted ETT (6.0 / 5.5 / 5.0) and bougie ready.</li>
+              <li><strong>Avoid</strong> a standard supine RSI with rocuronium-only paralysis: paralysis abolishes the small remaining airway tone, supine position worsens venous engorgement, and a failed first-pass intubation in a bloody, oedematous neck is rapidly catastrophic.</li>
+              <li><strong>Have a surgical airway plan:</strong> tracheostomy in theatre is the rescue; cricothyroidotomy may be very difficult through a swollen, distorted neck — surgeon should be scrubbed and ready.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">After haemostasis</h3>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Continue intubated and ventilated until laryngeal oedema settles — typically 24–48 h. Cuff-leak test, fibreoptic look at the cords, and dexamethasone before any extubation attempt.</li>
+              <li><strong>Check calcium</strong> (parathyroid disturbance) and <strong>vocal cord function</strong> (RLN injury) postoperatively — both can compound airway risk after extubation.</li>
+              <li>Critical incident review and bedside emergency-box restock; ensure all post-thyroidectomy patients are nursed in an area trained and equipped to perform bedside wound decompression.</li>
+            </ul>
+          </ExamSection>
         </>
       }
       workedExamples={[
