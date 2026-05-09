@@ -529,27 +529,28 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       </g>
 
       {/* Hairline + ear */}
-      <path d="M 215 50 Q 260 48 300 70" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" />
+      <path d="M 215 38 Q 264 36 304 60" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" />
       {/* Cast shadow behind the pinna — slightly offset back/down so the ear
           appears to lift off the skin. */}
-      <ellipse cx="312" cy="124" rx="14" ry="18" fill="url(#bf-ear-shade)" />
-      {/* Pinna (helix) */}
+      <ellipse cx="316" cy="140" rx="14" ry="20" fill="url(#bf-ear-shade)" />
+      {/* Pinna (helix) — lowered so the top of the ear sits at brow level
+          (eye y≈116) and the lobule near the ala of the nose (y≈150). */}
       <path
-        d="M 295 100 q 14 4 14 22 q 0 16 -16 18"
+        d="M 297 114 q 16 4 16 24 q 0 18 -18 20"
         fill="hsl(20 45% 70%)"
         stroke="hsl(20 40% 45%)"
         strokeWidth="1"
       />
       {/* Concha bowl shadow (inner ear depth) */}
       <path
-        d="M 298 108 q 10 4 10 16 q 0 10 -10 12 z"
+        d="M 300 122 q 11 4 11 18 q 0 11 -11 13 z"
         fill="url(#bf-ear-concha)"
       />
       {/* Antihelix ridge */}
-      <path d="M 300 116 q 6 2 6 12" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.8" />
+      <path d="M 302 130 q 6 2 6 14" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.8" />
       {/* Tragus + lobule highlight */}
-      <path d="M 296 122 q 3 1 3 5" fill="none" stroke="hsl(20 40% 38%)" strokeWidth="0.7" />
-      <path d="M 294 138 q 3 2 5 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.7" />
+      <path d="M 298 138 q 3 1 3 5" fill="none" stroke="hsl(20 40% 38%)" strokeWidth="0.7" />
+      <path d="M 296 154 q 3 2 5 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.7" />
 
       {/* Eye */}
       <g>
