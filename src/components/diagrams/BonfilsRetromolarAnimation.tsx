@@ -894,10 +894,10 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
             { n: 5, mx: 90,  my: 178, text: "ETT pre-loaded over shaft" },
             { n: 6, mx: -22, my: 200, text: "Pilot balloon" },
           ];
-          const panelX = 470;
-          const panelY = 18;
-          const rowH = 16;
-          const panelW = 232;
+          const panelX = 432;
+          const panelY = 196;
+          const rowH = 15;
+          const panelW = 244;
           const panelH = items.length * rowH + 14;
           return (
             <g>
