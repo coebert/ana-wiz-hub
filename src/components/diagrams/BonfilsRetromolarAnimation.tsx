@@ -432,16 +432,48 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         strokeWidth="0.9"
       />
 
-      {/* Maxilla (upper jaw bone reference) */}
-      <path d="M 86 156 Q 130 152 220 160" fill="none" stroke="hsl(30 30% 55%)" strokeWidth="0.6" strokeDasharray="2 2" />
-      {/* Mandible body + ramus */}
-      <path d="M 86 188 Q 140 220 230 218 Q 280 216 295 196 Q 305 175 290 150" fill="none" stroke="hsl(30 30% 50%)" strokeWidth="1.4" />
-
-      {/* TEETH — upper arcade */}
-      <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
-        {/* incisors / canines / premolars / molars (left → right inside mouth) */}
-        <rect x="84" y="158" width="6" height="9" rx="1" />
-        <rect x="91" y="158" width="6" height="9" rx="1" />
+      {/* ============ LOWER JAW GROUP — animated by jaw thrust ============ */}
+      <g
+        style={{
+          transform: `translate(${jaw.x}px, ${jaw.y}px)`,
+          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+      >
+        {/* Lower lip */}
+        <path d="M 60 168 Q 85 174 116 168 Q 120 172 110 178 Q 90 184 70 180 Q 56 178 60 168 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
+        {/* Chin shadow */}
+        <path d="M 86 198 Q 100 210 116 218" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
+        {/* Mandible body + ramus */}
+        <path d="M 86 188 Q 140 220 230 218 Q 280 216 295 196 Q 305 175 290 150" fill="none" stroke="hsl(30 30% 50%)" strokeWidth="1.4" />
+        {/* TEETH — lower arcade */}
+        <g fill="hsl(0 0% 98%)" stroke="hsl(30 25% 55%)" strokeWidth="0.5">
+          <rect x="84" y="170" width="6" height="9" rx="1" />
+          <rect x="91" y="170" width="6" height="9" rx="1" />
+          <rect x="98" y="171" width="7" height="8" rx="1" />
+          <rect x="106" y="171" width="8" height="7" rx="1.5" />
+          <rect x="115" y="171" width="9" height="6" rx="1.5" />
+          <rect x="125" y="171" width="9" height="6" rx="1.5" />
+          <rect x="135" y="172" width="9" height="6" rx="1.5" />
+          <rect x="145" y="172" width="9" height="6" rx="1.5" />
+        </g>
+        {/* TONGUE — moves with mandible (floor of mouth) */}
+        <path
+          d="M 90 178
+             Q 130 158 180 162
+             Q 220 168 228 190
+             Q 222 212 195 216
+             Q 150 220 115 212
+             Q 92 206 90 178 Z"
+          fill="url(#bf-tongue)"
+          stroke="hsl(355 55% 28%)"
+          strokeWidth="1"
+        />
+        {/* Median sulcus */}
+        <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
+        {/* HYOID (suspended from mandible by mylohyoid — translates too) */}
+        <ellipse cx="245" cy="232" rx="6" ry="2.4" fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
+      </g>
+      {/* ============ END lower-jaw group ============ */}
         <rect x="98" y="159" width="7" height="8" rx="1" />
         <rect x="106" y="160" width="8" height="7" rx="1.5" />
         <rect x="115" y="161" width="9" height="6" rx="1.5" />
