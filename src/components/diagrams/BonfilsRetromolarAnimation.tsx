@@ -301,14 +301,33 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       aria-label="Animated, fully labelled sagittal view of Bonfils retromolar intubation"
     >
       <defs>
-        <linearGradient id="bf-skin" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="hsl(28 55% 88%)" />
-          <stop offset="60%" stopColor="hsl(22 50% 78%)" />
-          <stop offset="100%" stopColor="hsl(20 45% 68%)" />
+        {/* Main skin tone — light from upper-left, so the top + front
+            (anterior, low-x) are warm and lit, while the underside reads
+            cooler and a touch deeper. */}
+        <linearGradient id="bf-skin" x1="0.15" x2="0.85" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(30 60% 90%)" />
+          <stop offset="45%" stopColor="hsl(24 52% 80%)" />
+          <stop offset="100%" stopColor="hsl(18 42% 64%)" />
         </linearGradient>
+        {/* Posterior/occipital shading — darkens the back of the skull and
+            posterior neck so the occipital curve reads against the pillow.
+            Gradient runs left → right with the dark stop on the RIGHT. */}
         <linearGradient id="bf-skin-shade" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="hsl(20 40% 55% / 0.35)" />
-          <stop offset="40%" stopColor="hsl(20 40% 55% / 0)" />
+          <stop offset="0%" stopColor="hsl(20 40% 50% / 0)" />
+          <stop offset="55%" stopColor="hsl(20 40% 45% / 0.18)" />
+          <stop offset="100%" stopColor="hsl(20 40% 32% / 0.50)" />
+        </linearGradient>
+        {/* Anterior rim light — thin warm highlight along forehead, nose,
+            lips and chin to crisply define the front contour. */}
+        <linearGradient id="bf-skin-rim" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="hsl(40 90% 96% / 0.75)" />
+          <stop offset="35%" stopColor="hsl(40 90% 96% / 0)" />
+        </linearGradient>
+        {/* Soft submandibular shadow — darkens under the jaw to separate
+            the mandible from the anterior neck across postures. */}
+        <linearGradient id="bf-submand-shade" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(20 40% 30% / 0.45)" />
+          <stop offset="100%" stopColor="hsl(20 40% 30% / 0)" />
         </linearGradient>
         <linearGradient id="bf-tongue" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="hsl(355 55% 60%)" />
