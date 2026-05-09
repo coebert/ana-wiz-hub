@@ -65,7 +65,7 @@ const NephronSchematic = ({ variant, highlight }: NephronProps) => {
 
   // Loop bottom y
   const loopBottom = isJuxta ? 430 : 200;
-  const loopTop = glomY + 20;
+  const _loopTop = glomY + 20;
 
   // Vascular highlight
   const vascHighlight = highlight === "vasculature";

@@ -363,7 +363,7 @@ export const Arm = ({
     const a1x = x1 + nx * w1 / 2, a1y = y1 + ny * w1 / 2;
     const a2x = x1 - nx * w1 / 2, a2y = y1 - ny * w1 / 2;
     const b1x = x2 + nx * w2 / 2, b1y = y2 + ny * w2 / 2;
-    const b2x = x2 - nx * w2 / 2, b2y = y2 - ny * w2 / 2;
+    const _b2x = x2 - nx * w2 / 2, _b2y = y2 - ny * w2 / 2;
     // Round both ends with a small arc tangent to the limb axis.
     const cap1 = `A ${w1 / 2} ${w1 / 2} 0 0 1 ${a2x} ${a2y}`;
     const cap2 = `A ${w2 / 2} ${w2 / 2} 0 0 1 ${b1x} ${b1y}`;
@@ -530,7 +530,7 @@ export const Leg = ({
     const a1x = x1 + nx * w1 / 2, a1y = y1 + ny * w1 / 2;
     const a2x = x1 - nx * w1 / 2, a2y = y1 - ny * w1 / 2;
     const b1x = x2 + nx * w2 / 2, b1y = y2 + ny * w2 / 2;
-    const b2x = x2 - nx * w2 / 2, b2y = y2 - ny * w2 / 2;
+    const _b2x = x2 - nx * w2 / 2, _b2y = y2 - ny * w2 / 2;
     const cap1 = `A ${w1 / 2} ${w1 / 2} 0 0 1 ${a2x} ${a2y}`;
     const cap2 = `A ${w2 / 2} ${w2 / 2} 0 0 1 ${b1x} ${b1y}`;
     return `M ${a1x},${a1y} L ${b1x},${b1y} ${cap2} L ${a2x},${a2y} ${cap1} Z`;
@@ -1005,7 +1005,7 @@ export const useRealismLevel = (): RealismLevel =>
 
 /** Internal — primitives read this to know if they should paint sheens/creases. */
 const DetailContext = createContext<RealismLevel>("standard");
-const useDetail = () => useContext(DetailContext);
+const _useDetail = () => useContext(DetailContext);
 
 const useRealism = (r: RealismProps = {}): Required<RealismProps> => {
   const ctxLevel = useContext(RealismContext);

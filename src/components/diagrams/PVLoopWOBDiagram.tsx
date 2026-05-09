@@ -111,7 +111,7 @@ function generatePVLoop(p: PatternInfo): {
   // Build SVG area paths
   const inspSvg = inspiratory.map(([pr, v]) => toSvg(pr, v));
   const expSvg = expiratory.map(([pr, v]) => toSvg(pr, v));
-  const compSvg = complianceLine.map(([pr, v]) => toSvg(pr, v));
+  const _compSvg = complianceLine.map(([pr, v]) => toSvg(pr, v));
 
   // Elastic area: triangle under compliance line
   const origin = toSvg(0, 0);

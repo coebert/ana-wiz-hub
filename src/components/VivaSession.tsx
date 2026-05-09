@@ -337,7 +337,7 @@ const VivaSession = ({
         if (signal?.aborted) return null;
         if (error || !data?.question) return null;
         return data.question as string;
-      } catch (e) {
+      } catch (_e) {
         // AbortError shows up here when the caller cancels.
         return null;
       }

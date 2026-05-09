@@ -231,7 +231,7 @@ serve(async (req) => {
     let parsed: unknown;
     try {
       parsed = JSON.parse(argsRaw);
-    } catch (e) {
+    } catch (_e) {
       console.error("Failed to parse tool arguments", argsRaw);
       return new Response(
         JSON.stringify({ error: "Failed to parse tool arguments" }),

@@ -33,7 +33,7 @@ const CorrugatedTube = ({ x1, y1, x2, y2, colour = "hsl(var(--foreground))", wid
   const outerBot = buildEdge(-halfW, 2.5);
 
   // Fill area between the two edges
-  const fillPath = outerTop + ` L ${x2 - nx * halfW} ${y2 - ny * halfW}` +
+  const _fillPath = outerTop + ` L ${x2 - nx * halfW} ${y2 - ny * halfW}` +
     buildEdge(-halfW, 2.5).replace('M', ' L').split('').reverse().join('') ; // we'll just use a rect fill
 
   // Corrugation ribs (cross-lines)
@@ -528,9 +528,9 @@ const CircleTab = () => {
   const expCol = "hsl(var(--destructive))";
 
   // SVG paths for animated dots following the circle
-  const inspPath = "M 260 320 L 175 370 Q 60 360 60 200 Q 60 65 175 65 L 215 52 L 260 38";
-  const expPath = "M 260 38 L 305 52 L 345 65 Q 460 65 460 200 Q 460 360 345 370 L 260 370 L 260 340";
-  const aplExhaustPath = "M 430 270 L 430 235";
+  const _inspPath = "M 260 320 L 175 370 Q 60 360 60 200 Q 60 65 175 65 L 215 52 L 260 38";
+  const _expPath = "M 260 38 L 305 52 L 345 65 Q 460 65 460 200 Q 460 360 345 370 L 260 370 L 260 340";
+  const _aplExhaustPath = "M 430 270 L 430 235";
 
   return (
     <div className="space-y-4">

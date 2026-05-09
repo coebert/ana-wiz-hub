@@ -66,8 +66,8 @@ const SpinalBlockHeightAssessmentTool = () => {
   const targetTopLevel = targetLevel.split("-")[0];
   const target = DERMATOMES.find((d) => d.level === targetTopLevel) ?? DERMATOMES.find((d) => d.level === "T4")!;
 
-  const blocked = DERMATOMES.filter((d) => d.rank <= target.rank);
-  const notBlocked = DERMATOMES.filter((d) => d.rank > target.rank);
+  const _blocked = DERMATOMES.filter((d) => d.rank <= target.rank);
+  const _notBlocked = DERMATOMES.filter((d) => d.rank > target.rank);
 
   return (
     <div className="my-6 rounded-lg border border-border bg-card p-4">

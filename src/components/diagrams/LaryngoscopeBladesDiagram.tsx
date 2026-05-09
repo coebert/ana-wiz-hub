@@ -226,7 +226,7 @@ const tipTrajectory: Record<BladeKey, { path: string; target: { x: number; y: nu
 
 /* ---------- Shared visual primitives ---------- */
 
-const Defs = ({ bladeKey, color }: { bladeKey: BladeKey; color: string }) => (
+const Defs = ({ bladeKey, _color }: { bladeKey: BladeKey; color: string }) => (
   <defs>
     <linearGradient id={`steel-${bladeKey}`} x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stopColor="hsl(210, 12%, 88%)" />

@@ -19,7 +19,7 @@ const agents: LAAgent[] = [
 export const PKaDiagram = () => {
   const [pH, setPH] = useState(7.4);
   const [selectedAgent, setSelectedAgent] = useState(0);
-  const [animFrame, setAnimFrame] = useState(0);
+  const [_animFrame, setAnimFrame] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => setAnimFrame((f) => f + 1), 50);

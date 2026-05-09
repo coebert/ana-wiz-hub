@@ -42,7 +42,7 @@ const levels: SpinalLevel[] = [
   { id: "s2-4", level: "S2–4", region: "sacral", dermatome: "Perineum, perianal (saddle area)", myotome: "Pelvic floor, bladder/bowel sphincters", blockRelevance: "Saddle spinal; pudendal nerve block", color: "hsl(310,42%,50%)", paths: ["M90,228 C88,234 88,240 92,242 C96,244 104,244 108,242 C112,240 112,234 110,228 Z"], labelY: 236 },
 ];
 
-const regionColors: Record<string, string> = {
+const _regionColors: Record<string, string> = {
   cervical: "text-red-400",
   thoracic: "text-green-400",
   lumbar: "text-blue-400",

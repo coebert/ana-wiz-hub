@@ -276,9 +276,9 @@ interface QuickTarget {
 }
 
 const NUM = "\\d+(?:\\.\\d+)?";
-const RANGE = `(?:${NUM}\\s*[-–—]\\s*${NUM}|[<>≤≥]\\s*${NUM}|${NUM})`;
+const _RANGE = `(?:${NUM}\\s*[-–—]\\s*${NUM}|[<>≤≥]\\s*${NUM}|${NUM})`;
 // permissive unit list
-const UNITS = "(?:mmHg|bpm|ms|mg/L|µg/ml|mcg/ml|µg/mL|mcg/mL|ng/mL|ng/ml|mg/dL|µmol/L|/min|%)?";
+const _UNITS = "(?:mmHg|bpm|ms|mg/L|µg/ml|mcg/ml|µg/mL|mcg/mL|ng/mL|ng/ml|mg/dL|µmol/L|/min|%)?";
 
 function tryMatch(text: string, label: string, category: QuickTarget["category"], pattern: RegExp): QuickTarget[] {
   const out: QuickTarget[] = [];

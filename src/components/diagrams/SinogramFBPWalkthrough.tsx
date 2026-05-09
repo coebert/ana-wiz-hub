@@ -152,7 +152,7 @@ const drawImage = (
   ctx.putImageData(id, 0, 0);
 };
 
-const drawSinogram = (
+const _drawSinogram = (
   ctx: CanvasRenderingContext2D,
   sino: Float32Array, // shape [MAX_ANGLES * N_DET]
   filledRows: number
@@ -229,7 +229,7 @@ export const SinogramFBPWalkthrough = () => {
   }, []);
 
   // ─── Reconstructions for the current nAngles (sub-sampled across [0, π)) ──
-  const { bp, fbp, vminBP, vmaxBP, vminFBP, vmaxFBP, sinoFilledRows } = useMemo(() => {
+  const { bp, fbp, vminBP, vmaxBP, vminFBP, vmaxFBP, _sinoFilledRows } = useMemo(() => {
     const bp = new Float32Array(N * N);
     const fbp = new Float32Array(N * N);
     if (nAngles > 0) {

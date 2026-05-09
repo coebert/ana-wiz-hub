@@ -231,7 +231,7 @@ export const BenzodiazepineComparisonDiagram = () => {
                 const y = 30 + i * 38;
                 const onsetMid = (d.onsetIVMin[0] + d.onsetIVMin[1]) / 2 / 60; // h
                 const x0 = 100 + (durPct(onsetMid) / 100) * 520;
-                const x1 = 100 + (durPct(onsetMid + d.durationH[0]) / 100) * 520;
+                const _x1 = 100 + (durPct(onsetMid + d.durationH[0]) / 100) * 520;
                 const x2 = 100 + (durPct(onsetMid + d.durationH[1]) / 100) * 520;
                 const x3 = 100 + (durPct(onsetMid + d.halfLifeH[1]) / 100) * 520;
                 return (

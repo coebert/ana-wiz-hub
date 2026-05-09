@@ -82,7 +82,7 @@ const ICPVolumeCurveDiagram = () => {
         <text x="18" y="125" textAnchor="middle" className="fill-muted-foreground" fontSize="11" transform="rotate(-90,18,125)">ICP (mmHg) →</text>
 
         {/* ICP scale */}
-        {[0, 15, 25, 40, 60].map((v, i) => {
+        {[0, 15, 25, 40, 60].map((v, _i) => {
           const y = 220 - (v / 60) * 185;
           return (
             <g key={v}>

@@ -61,7 +61,7 @@ const PVRecruitmentDiagram = () => {
   const deflationPath = deflationPts.map((pt, i) => `${i === 0 ? "M" : "L"} ${pt.x.toFixed(1)},${pt.y.toFixed(1)}`).join(" ");
 
   // Hysteresis fill
-  const hysteresisPath = inflationPath + " " + deflationPts.slice().reverse().map((pt, i) => `L ${pt.x.toFixed(1)},${pt.y.toFixed(1)}`).join(" ") + " Z";
+  const hysteresisPath = inflationPath + " " + deflationPts.slice().reverse().map((pt, _i) => `L ${pt.x.toFixed(1)},${pt.y.toFixed(1)}`).join(" ") + " Z";
 
   // Optimal PEEP zone
   const optPeepLow = prof.lip + 2;

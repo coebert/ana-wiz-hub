@@ -803,7 +803,7 @@ export const ProneIVCFreeAbdomenAnimation = () => (
     accentClass="border-clinical/50"
     renderScene={(active) => {
       const isWilson = active >= 1 && active <= 3;
-      const isJackson = active >= 4;
+      const _isJackson = active >= 4;
       return (
         <div className="flex items-center justify-center h-full">
           <svg

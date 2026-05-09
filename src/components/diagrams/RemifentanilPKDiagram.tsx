@@ -10,7 +10,7 @@ const tabs: { id: TabId; label: string; color: string }[] = [
 export const RemifentanilPKDiagram = () => {
   const [tab, setTab] = useState<TabId>("metabolism");
 
-  const active = tabs.find((t) => t.id === tab) ?? tabs[0];
+  const _active = tabs.find((t) => t.id === tab) ?? tabs[0];
 
   return (
     <div className="w-full bg-card border border-border rounded-lg p-4 sm:p-6 my-6">

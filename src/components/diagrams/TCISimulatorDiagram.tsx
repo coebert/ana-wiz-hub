@@ -14,8 +14,8 @@ interface SimParams {
 function simulateTCI(
   model: Model,
   params: SimParams,
-  weight: number = 70,
-  age: number = 50
+  _weight: number = 70,
+  _age: number = 50
 ): { t: number; cp: number; ce: number }[] {
   const { targetCe } = params;
 

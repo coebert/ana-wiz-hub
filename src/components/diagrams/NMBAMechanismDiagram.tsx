@@ -70,7 +70,7 @@ export const NMBAMechanismDiagram = () => {
   const fasciculations = scenario === "sux" && progress < 0.35;
   const desensitised = scenario === "sux" && progress >= 0.35;
   // Sugammadex: rocuronium molecules being pulled off receptors
-  const sugEncapsulating = sugammadexActive && progress > 0.15 && progress < 0.55;
+  const _sugEncapsulating = sugammadexActive && progress > 0.15 && progress < 0.55;
   const sugComplete = sugammadexActive && progress >= 0.55;
 
   return (

@@ -70,7 +70,7 @@ const grades: Record<Grade, GradeInfo> = {
 const gradeOrder: Grade[] = ["I", "II", "IIa", "IIb", "III", "IV"];
 
 const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => {
-  const half = size / 2;
+  const _half = size / 2;
   // All views are a circular laryngoscopic "port" view
   return (
     <svg viewBox="0 0 140 140" width={size} height={size}>

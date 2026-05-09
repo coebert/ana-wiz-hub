@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, CheckCircle2 } from "lucide-react";
 import { useProgress } from "@/contexts/ProgressContext";
 import { ExamTag, Section } from "@/data/curriculum";
-import { Badge } from "@/components/ui/badge";
+import { _Badge } from "@/components/ui/badge";
 
 interface TopicCardProps {
   title: string;

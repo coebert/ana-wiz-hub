@@ -75,7 +75,7 @@ const steps: StepData[] = [
 const LEVELS = ["Cortex", "Outer Medulla", "Inner Medulla", "Papilla"];
 
 // Animated bar that transitions smoothly
-const AnimatedBar = ({ value, maxValue, color, delay = 0 }: {
+const _AnimatedBar = ({ value, maxValue, color, delay = 0 }: {
   value: number; maxValue: number; color: string; delay?: number;
 }) => {
   const [displayWidth, setDisplayWidth] = useState(0);

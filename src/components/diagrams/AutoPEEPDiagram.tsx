@@ -24,7 +24,7 @@ const AutoPEEPDiagram = () => {
   const waveforms = useMemo(() => {
     const dt = 0.02;
     const cycles = 6;
-    const totalT = breathT * cycles;
+    const _totalT = breathT * cycles;
     const out = { volume: [] as { t: number; v: number }[], flow: [] as { t: number; v: number }[], pressure: [] as { t: number; v: number }[] };
 
     let baseVol = 0; // accumulates with air trapping
@@ -45,7 +45,7 @@ const AutoPEEPDiagram = () => {
       }
 
       // Expiration
-      const peakVol = baseVol + vtDelivered;
+      const _peakVol = baseVol + vtDelivered;
       for (let dt2 = 0; dt2 < te; dt2 += dt) {
         const t = cycleStart + ti + dt2;
         const vol = baseVol + vtDelivered * Math.exp(-dt2 / tau);

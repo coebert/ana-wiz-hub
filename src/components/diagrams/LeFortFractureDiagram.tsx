@@ -59,8 +59,8 @@ const LeFortFractureDiagram = () => {
   const t = TYPES[type];
 
   // Colours
-  const skin = "hsl(25 40% 88%)";
-  const skinStroke = "hsl(25 30% 50%)";
+  const _skin = "hsl(25 40% 88%)";
+  const _skinStroke = "hsl(25 30% 50%)";
   const bone = "hsl(40 30% 92%)";
   const boneStroke = "hsl(30 25% 45%)";
   const cavity = "hsl(0 0% 25%)";

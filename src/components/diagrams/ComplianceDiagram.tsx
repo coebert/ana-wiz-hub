@@ -47,7 +47,7 @@ function generateCurvePoints(curveFn: (p: number) => number, pMin: number, pMax:
 }
 
 // Total system: at each volume, total pressure = Plung + Pcw needed
-function totalSystemPoints(vMin: number, vMax: number, steps: number = 80): Point[] {
+function _totalSystemPoints(vMin: number, vMax: number, steps: number = 80): Point[] {
   const pts: Point[] = [];
   for (let i = 0; i <= steps; i++) {
     const v = vMin + (i / steps) * (vMax - vMin);
@@ -56,7 +56,7 @@ function totalSystemPoints(vMin: number, vMax: number, steps: number = 80): Poin
     // Total transmural pressure = lung elastic recoil pressure + chest wall elastic recoil
     // Lung recoil = +Plung (positive, inward)
     // CW recoil at volume > resting CW vol is positive (inward), below is negative (outward)
-    const pTotal = pLung - pCW; // net pressure needed
+    const _pTotal = pLung - pCW; // net pressure needed
     // Actually: total system pressure = pressure to overcome lung recoil + pressure to overcome CW recoil
     // In standard Rahn diagram: total P = Plung_recoil + Pcw_recoil
     // At FRC these cancel: Plung_recoil = -Pcw_recoil

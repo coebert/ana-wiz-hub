@@ -145,7 +145,7 @@ const regions: Record<RegionKey, Region> = {
   },
 };
 
-const regionOrder: RegionKey[] = [
+const _regionOrder: RegionKey[] = [
   "pvs-contents", "vertebral-body", "disc-foramen", "transverse-process",
   "costotransverse-joint", "superior-costotransverse", "internal-intercostal-membrane",
   "endothoracic-fascia", "parietal-pleura", "spinal-nerve", "dorsal-ramus",
