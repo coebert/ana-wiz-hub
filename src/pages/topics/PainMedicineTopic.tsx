@@ -6,6 +6,7 @@ import { DiagramSection } from "@/components/DiagramSection";
 import { PainMechanismsDiagram } from "@/components/diagrams/PainMechanismsDiagram";
 import OpioidConversionCalculator from "@/components/diagrams/OpioidConversionCalculator";
 import PcaEpiduralCalculator from "@/components/diagrams/PcaEpiduralCalculator";
+import { SpinalCordStimulatorDiagram } from "@/components/diagrams/SpinalCordStimulatorDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -567,6 +568,213 @@ const PainMedicineTopic = () => {
                 <li><strong>Anaesthetic / pain interventional clinics</strong> — coeliac plexus, IDD, neuromodulation.</li>
                 <li><strong>Advance care planning</strong>: ReSPECT process, DNACPR discussions, lasting power of attorney, preferred place of care.</li>
                 <li>End-of-life care guided by individualised care plans (replaced the discredited Liverpool Care Pathway after Neuberger 2013).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Spinal Cord Stimulation (SCS) — Neuromodulation</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            SCS delivers low-voltage electrical pulses to the dorsal columns via an epidural electrode array, modulating the gate (Melzack &amp; Wall) and supraspinal pain networks. NICE TA159 (2008, reaffirmed) recommends SCS for chronic neuropathic pain &gt; 6 months despite conventional therapy after a successful percutaneous trial. Strongest evidence: <strong>failed back surgery syndrome (FBSS)</strong> with predominant radicular leg pain (PROCESS trial, Kumar 2007), <strong>complex regional pain syndrome (CRPS)</strong>, refractory angina, and painful diabetic neuropathy (SENZA-PDN, Petersen 2021). Newer waveforms — 10 kHz high-frequency (SENZA-RCT, Kapural 2015), burst (DeRidder), and closed-loop ECAP-controlled (Mekhail 2020) — provide sub-perception analgesia without paraesthesia.
+          </p>
+          <SpinalCordStimulatorDiagram />
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">System components</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Epidural lead</strong> — 8 or 16 cylindrical contacts (percutaneous) or paddle (surgical laminotomy, lower migration risk)</li>
+                <li><strong>Anchor</strong> sutured to supraspinous fascia at the entry level</li>
+                <li><strong>Tunnelled extension</strong> wires running subcutaneously to the IPG pocket</li>
+                <li><strong>Implantable pulse generator (IPG)</strong> — primary-cell or rechargeable Li-ion, sited in upper buttock, flank, or lower abdomen</li>
+                <li><strong>Patient and clinician programmers</strong> via wireless telemetry</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Indications &amp; level of evidence</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>FBSS with neuropathic leg pain (Level I)</li>
+                <li>CRPS type I/II (Level I — Kemler NEJM 2000)</li>
+                <li>Painful diabetic peripheral neuropathy (Level I — SENZA-PDN)</li>
+                <li>Refractory angina pectoris (Level II)</li>
+                <li>Critical limb ischaemia (selected, Level II)</li>
+                <li>Post-amputation / post-herpetic neuralgia (Level III)</li>
+                <li><strong>Mandatory trial:</strong> 5–10 day percutaneous trial — &gt;50 % pain reduction <em>and</em> functional improvement before permanent implant</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Lead targets</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Low back / lower limb:</strong> tip at T8–T10 (T9 sweet spot for FBSS)</li>
+                <li><strong>Upper limb:</strong> C2–C4</li>
+                <li><strong>Angina:</strong> T1–T2 left-sided</li>
+                <li><strong>Pelvic / perineal pain:</strong> conus or DRG (T12–S1)</li>
+                <li>Tuohy puncture two levels below the target; loss-of-resistance to <em>saline</em> (air risks pneumocephalus and patchy stimulation)</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Contraindications &amp; risks</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Absolute:</strong> active sepsis, untreated coagulopathy, inability to consent or operate device, untreated psychological comorbidity (mandatory pre-implant psychology assessment)</li>
+                <li><strong>Relative:</strong> immunosuppression, anticipated whole-body MRI need (most modern systems are MR-conditional), demand pacemaker / ICD (programmer interaction)</li>
+                <li><strong>Complications:</strong> lead migration (most common, 13–22 %), infection (3–6 %), epidural haematoma, dural puncture &amp; CSF leak, lead fracture, IPG pocket pain, loss of efficacy, hardware failure</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Anaesthesia for SCS Implantation</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            The trial and the percutaneous lead placement of the permanent system are typically performed under <strong>local anaesthesia with conscious sedation</strong>, because intra-operative paraesthesia mapping requires a co-operative, communicating patient (paraesthesia–pain overlap is the historical predictor of long-term success, although high-frequency systems may be placed asleep with anatomical landmarks alone). The IPG pocket and tunnelling are usually performed under deeper sedation or short GA after lead position is confirmed.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Pre-operative assessment</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Confirm successful trial (≥ 50 % pain reduction, functional gain) and psychology sign-off</li>
+                <li>Chronic-pain medication review — long-term opioids, gabapentinoids, antidepressants; <strong>do not stop</strong> on day of surgery (withdrawal, opioid-induced hyperalgesia)</li>
+                <li>Anticoagulants per <strong>ASRA / AAGBI neuraxial guidelines</strong> — SCS is a high-bleeding-risk procedure: stop clopidogrel 7 d, ticagrelor 5 d, DOAC 48–72 h, warfarin → INR &lt; 1.4, LMWH prophylactic 12 h, treatment 24 h</li>
+                <li>Screen for active infection (skin, urinary, dental); MRSA decolonisation per local policy</li>
+                <li>Latex / chlorhexidine / nickel (lead) allergy</li>
+                <li>Cardiac devices — liaise with cardiology re cross-talk; usually safe but reprogramme/monitor</li>
+                <li>MRI-conditional status of any previously implanted device</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Intra-operative conduct</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Prone position with chest/pelvis bolsters, abdomen free; pillows to optimise lumbar flexion and open inter-laminar space</li>
+                <li>Full AAGBI monitoring + capnography (sedated prone patient is high-risk for airway obstruction); supplemental O₂ via nasal specs</li>
+                <li>Wide-bore IV access; fluid-warmer and forced-air warming (long fluoroscopy-guided procedure)</li>
+                <li><strong>Sedation goal:</strong> rousable, communicative, comfortable. Target-controlled propofol (effect-site 0.8–1.5 µg·mL⁻¹) ± remifentanil 0.02–0.05 µg·kg⁻¹·min⁻¹, or low-dose dexmedetomidine 0.2–0.6 µg·kg⁻¹·h⁻¹ (preserves co-operation, no respiratory depression)</li>
+                <li>Avoid <strong>boluses of opioid or benzodiazepine</strong> during paraesthesia mapping — abolishes patient feedback</li>
+                <li>Generous local infiltration of skin, fascia and IPG pocket with lidocaine + adrenaline; ropivacaine for longer cover</li>
+                <li>Prophylactic IV antibiotic (cefuroxime / teicoplanin) within 60 min of incision — infection is a device-loss event</li>
+                <li>Strict asepsis: full surgical scrub, double gloves, plastic adhesive drape, antibiotic-impregnated pocket lavage</li>
+                <li>Fluoroscopy: lead-protective garments for staff; minimise screening time</li>
+                <li>Communicate with the implanting team during stimulation testing — keep the patient awake enough to localise paraesthesia to the painful area</li>
+              </ul>
+            </div>
+          </div>
+          <div className="p-4 rounded-lg border border-border mt-3">
+            <p className="font-semibold text-foreground text-sm">Post-operative care &amp; pitfalls</p>
+            <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+              <li>Recovery in lateral position to protect IPG pocket; observe for new neurological deficit (epidural haematoma — urgent MRI and decompression within 8 h)</li>
+              <li>Restrict trunk flexion / lifting / driving for 6 weeks to reduce lead migration</li>
+              <li>Resume anticoagulants when haemostasis secure (typically &gt; 24 h)</li>
+              <li>Multimodal post-op analgesia (paracetamol + low-dose opioid + local infiltration); the procedure is more painful than expected — do not under-treat</li>
+              <li>Diathermy in any future surgery: <strong>bipolar only</strong>, short bursts, away from device; turn IPG off pre-op</li>
+              <li>MRI: only with explicit MR-conditional certification — full-body 1.5 T or 3 T per manufacturer's instructions; device interrogation before and after</li>
+              <li>Document device make, model, serial number, programming parameters in the anaesthetic record</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Nerve Root Injections (Selective Nerve Root Block &amp; Transforaminal Epidural Steroid Injection)</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A nerve root injection deposits local anaesthetic ± corticosteroid around a specific spinal nerve as it traverses the intervertebral foramen. It is used <strong>diagnostically</strong> (to confirm a single radicular pain generator before surgery or radiofrequency) and <strong>therapeutically</strong> (to relieve radicular pain from disc prolapse, foraminal stenosis, or post-surgical scarring). Evidence is strongest for short- to medium-term relief of acute lumbosacral radiculopathy (NICE NG59 — consider for severe sciatica when surgery is being weighed); chronic and axial low back pain respond less reliably (FDA black-box on particulate steroids in cervical injections, 2014).
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Approaches</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Lumbar transforaminal:</strong> "safe triangle" (Bogduk) — inferior to pedicle, lateral to nerve root, in upper-anterior part of the foramen, viewed in oblique fluoroscopy with the "Scotty dog" silhouette</li>
+                <li><strong>Cervical transforaminal:</strong> oblique fluoroscopy 45°; needle in posterior aspect of foramen to avoid the vertebral and radicular arteries — <strong>non-particulate steroid only</strong></li>
+                <li><strong>Thoracic transforaminal:</strong> rare; superior costotransverse approach, beware pneumothorax</li>
+                <li><strong>Sacral (S1) transforaminal:</strong> through the dorsal S1 foramen, AP and lateral views</li>
+                <li><strong>Selective nerve root block (SNRB)</strong>: small volume (0.5–1 mL) of LA only, deliberately limited to one root for diagnostic specificity</li>
+                <li><strong>Image guidance:</strong> fluoroscopy with iodinated contrast is standard; CT-guided for difficult anatomy or thoracic levels; ultrasound for cervical roots in experienced hands</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Technique &amp; safety</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Awake, lightly sedated patient (deep sedation masks intravascular or intrathecal injection — avoid)</li>
+                <li>Prone (lumbar/thoracic) or supine with head turned (cervical); skin preparation, sterile drape, local infiltration</li>
+                <li>22–25 G spinal/Quincke or blunt-tip needle; advance under intermittent fluoroscopy</li>
+                <li><strong>Confirm position with contrast (1–2 mL iohexol):</strong> neurogram outlines the nerve root sleeve — exclude vascular uptake (rapid washout) or intrathecal spread (myelogram pattern)</li>
+                <li>Inject slowly, pause if reproduces concordant radicular pain, stop for any new neurological symptom</li>
+                <li>Continuous verbal contact, ECG/SpO₂/NIBP; resus drugs and Intralipid 20 % immediately available for LAST</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-semibold text-foreground mt-5 mb-2">Drugs Injected</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Drug</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Typical dose / volume</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Lidocaine 1–2 %</td>
+                  <td>0.5–1 mL per root</td>
+                  <td>Diagnostic SNRB — short-acting, rapid feedback within 15 min</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Bupivacaine 0.25 % / Levobupivacaine 0.25 %</td>
+                  <td>0.5–2 mL per root</td>
+                  <td>Therapeutic block; longer duration. Maximum total dose 2 mg·kg⁻¹</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Ropivacaine 0.2 %</td>
+                  <td>0.5–2 mL per root</td>
+                  <td>Lower cardiotoxicity; favoured by some centres</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Iohexol (Omnipaque 240/300)</td>
+                  <td>1–2 mL</td>
+                  <td>Non-ionic, low-osmolar contrast — confirm neurogram, exclude vascular / intrathecal</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Dexamethasone <em>(non-particulate)</em></td>
+                  <td>4–8 mg</td>
+                  <td><strong>Mandatory</strong> for cervical and thoracic transforaminal injections; preferred at all sites (FDA 2014 safety alert)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Methylprednisolone acetate (Depo-Medrone) <em>particulate</em></td>
+                  <td>40–80 mg</td>
+                  <td>Lumbar/sacral therapeutic injection only; <strong>contraindicated cervical</strong> (vertebral artery embolic infarct, paraplegia)</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Triamcinolone acetonide <em>particulate</em></td>
+                  <td>20–40 mg</td>
+                  <td>Same caveats as methylprednisolone</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">Hyaluronidase</td>
+                  <td>1500 IU</td>
+                  <td>Adjunct for adhesiolysis (Racz procedure) — not routine SNRB</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-3 mt-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Complications</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li><strong>Catastrophic but rare:</strong> spinal cord infarction from particulate steroid embolus into a radiculomedullary artery (artery of Adamkiewicz at L1–L2 typically), vertebral artery injection at cervical levels, epidural haematoma</li>
+                <li><strong>Nerve injury / dural puncture / post-dural-puncture headache</strong></li>
+                <li><strong>LAST</strong> (intravascular injection) — treat with 20 % Intralipid bolus 1.5 mL·kg⁻¹ then 0.25 mL·kg⁻¹·min⁻¹ per AAGBI 2010</li>
+                <li><strong>Vasovagal syncope</strong> — common; pre-warn the patient</li>
+                <li><strong>Steroid effects:</strong> facial flushing, transient hyperglycaemia (warn diabetics), HPA-axis suppression with repeat doses (limit to 3–4 per year), avascular necrosis of the femoral head (rare)</li>
+                <li><strong>Infection:</strong> superficial 0.1–0.5 %, epidural abscess and meningitis are rare but devastating</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Key safety rules</p>
+              <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc list-inside">
+                <li>Always use real-time imaging and live (or digital subtraction) contrast injection — blind injection is no longer acceptable</li>
+                <li>Use <strong>non-particulate steroid (dexamethasone)</strong> for all cervical and thoracic transforaminal injections, and consider for all levels</li>
+                <li>Test dose principle: small LA dose first; abandon if any new neurological symptom</li>
+                <li>Stop antiplatelets / anticoagulants per ASRA neuraxial guidance — these are <strong>high-bleed-risk</strong> interventional pain procedures</li>
+                <li>Maximum 3–4 epidural / transforaminal steroid injections per anatomical region per year</li>
+                <li>Document concordant pain reproduction, contrast spread, drugs and doses, and immediate post-procedure neurology</li>
               </ul>
             </div>
           </div>
