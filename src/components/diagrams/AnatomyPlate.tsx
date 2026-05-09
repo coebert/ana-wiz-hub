@@ -1,6 +1,6 @@
 import React, { useId, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
-import { useVerifyMode } from "./anatomyVerifyMode";
+
 
 /**
  * AnatomyPlate — single SVG primitive for hand-coded anatomy diagrams.
@@ -70,7 +70,7 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
 }) => {
   const uid = useId();
   const [hovered, setHovered] = useState<string | null>(null);
-  const verify = useVerifyMode();
+  
 
   const labelMetrics = useMemo(
     () =>
@@ -208,56 +208,6 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
             </g>
           )}
 
-          {/* Dev verification overlay — target/label endpoints + ids */}
-          {verify && (
-            <g className="anatomy-verify" pointerEvents="none" fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace">
-              {labelMetrics.map(({ label, side, w, h }) => {
-                const [tx, ty] = label.target;
-                const [lx, ly] = label.label;
-                const labelX = side === "left" ? lx : lx - w;
-                const labelY = ly - h / 2;
-                const cross = 8;
-                const RED = "hsl(0, 85%, 55%)";
-                const BLUE = "hsl(210, 90%, 55%)";
-                return (
-                  <g key={`v-${label.id}`}>
-                    {/* Target crosshair (red) */}
-                    <circle cx={tx} cy={ty} r={9} fill="none" stroke={RED} strokeWidth={1.2} opacity={0.95} />
-                    <line x1={tx - cross} y1={ty} x2={tx + cross} y2={ty} stroke={RED} strokeWidth={1} />
-                    <line x1={tx} y1={ty - cross} x2={tx} y2={ty + cross} stroke={RED} strokeWidth={1} />
-                    {/* Label anchor crosshair (blue) */}
-                    <circle cx={lx} cy={ly} r={3} fill={BLUE} opacity={0.9} />
-                    {/* Label rect bbox (dashed) */}
-                    <rect
-                      x={labelX}
-                      y={labelY}
-                      width={w}
-                      height={h}
-                      rx={4}
-                      fill="none"
-                      stroke={BLUE}
-                      strokeWidth={0.8}
-                      strokeDasharray="3 3"
-                      opacity={0.8}
-                    />
-                    {/* id badge near target */}
-                    <text
-                      x={tx + 11}
-                      y={ty - 11}
-                      fontSize={9}
-                      fontWeight={700}
-                      fill={RED}
-                      stroke="hsl(var(--card))"
-                      strokeWidth={2}
-                      paintOrder="stroke"
-                    >
-                      {label.id}
-                    </text>
-                  </g>
-                );
-              })}
-            </g>
-          )}
         </svg>
       </div>
       {(caption || (checkpoints && checkpoints.length > 0)) && (
