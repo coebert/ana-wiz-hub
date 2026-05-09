@@ -4,6 +4,7 @@ import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2, Info } from
 
 import { supabase } from "@/integrations/supabase/client";
 import { getDrugLabelInlineStyles, DRUG_LABEL_LEGEND } from "@/lib/drug-label-colours";
+import { BROAD_DRUG_CATEGORIES, getBroadCategory } from "@/lib/drug-categories";
 
 interface DrugRow {
   slug: string;
