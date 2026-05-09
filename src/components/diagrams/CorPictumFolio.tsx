@@ -540,9 +540,12 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
           </div>
         ) : null}
 
-        {/* Hairline plate-mark with zoom/pan stage */}
+        {/* Hairline plate-mark with zoom/pan stage.
+            On desktop we cap the stage width so the painted plate stays at
+            a comfortable reading size and constrain image height so portrait
+            plates never overflow the viewport. */}
         <div className="px-4 sm:px-8 pt-14 sm:pt-16 pb-6">
-          <div ref={stageWrapRef} className="relative border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
+          <div ref={stageWrapRef} className="relative mx-auto w-full max-w-2xl lg:max-w-3xl border border-foreground/15 dark:border-foreground/25 p-2 sm:p-3 bg-[hsl(38_42%_96%)] dark:bg-[hsl(38_14%_18%)]">
             <div
               ref={stageRef}
               role="application"
@@ -551,7 +554,7 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
               onPointerMove={reviewMode ? undefined : onPointerMove}
               onPointerUp={reviewMode ? undefined : onPointerUp}
               onPointerCancel={reviewMode ? undefined : onPointerUp}
-              className="relative overflow-hidden touch-none select-none"
+              className="relative overflow-hidden touch-none select-none max-h-[78vh]"
               style={{ cursor: reviewMode ? "default" : scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
             >
               <div
@@ -561,14 +564,14 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
                   transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
                   willChange: "transform",
                 }}
-                className="relative"
+                className="relative flex justify-center"
               >
                 <img
                   src={active.image}
                   alt={active.alt}
                   loading="lazy"
                   draggable={false}
-                  className="w-full h-auto block"
+                  className="w-full h-auto max-h-[78vh] object-contain block"
                 />
 
                 {/* Polygon hotspot overlay (display) */}

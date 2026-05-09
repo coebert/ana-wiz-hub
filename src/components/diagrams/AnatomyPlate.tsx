@@ -90,7 +90,10 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
   return (
     <figure
       className={cn(
-        "my-4 rounded-xl border border-border bg-card overflow-hidden",
+        // Cap plate width on desktop so the SVG stays at a comfortable
+        // reading size (~720–880px) rather than stretching to the full
+        // 4xl topic column. Centred so labels remain near the body text.
+        "my-4 mx-auto w-full max-w-2xl lg:max-w-3xl rounded-xl border border-border bg-card overflow-hidden",
         className,
       )}
     >
@@ -103,10 +106,13 @@ const AnatomyPlate: React.FC<AnatomyPlateProps> = ({
           <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>
         )}
       </div>
-      <div className="bg-[hsl(var(--anatomy-paper))]">
+      {/* Constrain portrait plates by viewport height so a tall figure
+          never pushes the labels and caption below the fold. */}
+      <div className="bg-[hsl(var(--anatomy-paper))] flex justify-center max-h-[78vh] overflow-hidden">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="block w-full h-auto"
+          preserveAspectRatio="xMidYMid meet"
+          className="block w-full h-auto max-h-[78vh]"
           role="img"
           aria-label={title}
         >
