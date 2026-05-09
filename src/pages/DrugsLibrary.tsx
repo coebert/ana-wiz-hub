@@ -18,6 +18,7 @@ export default function DrugsLibrary() {
   const [rows, setRows] = useState<DrugRow[]>([]);
   const [q, setQ] = useState("");
   const [activeClass, setActiveClass] = useState<string | null>(null);
+  const [activeBroad, setActiveBroad] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [showLegend, setShowLegend] = useState(false);
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
