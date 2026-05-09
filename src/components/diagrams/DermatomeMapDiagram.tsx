@@ -493,9 +493,10 @@ const DermatomeMapDiagram = () => {
 
   const renderBodySVG = (view: "anterior" | "posterior") => (
     <svg viewBox="0 0 240 520" width="220" className="max-w-full">
-      <BodyOutline view={view} />
+      {/* 1. Faint silhouette underneath everything */}
+      <BodySilhouette view={view} />
 
-      {/* Dermatome regions */}
+      {/* 2. Dermatome regions — translucent so anatomy reads through */}
       {filteredDermatomes.map(d => {
         const paths = view === "anterior" ? d.anteriorPaths : d.posteriorPaths;
         const isActive = selected === d.id;
@@ -506,10 +507,11 @@ const DermatomeMapDiagram = () => {
                 key={i}
                 d={path}
                 fill={d.color}
-                fillOpacity={isActive ? 0.55 : 0.16}
-                stroke={isActive ? d.color : d.color}
-                strokeWidth={isActive ? 1.5 : 0.3}
-                strokeOpacity={isActive ? 1 : 0.3}
+                fillOpacity={isActive ? 0.55 : 0.30}
+                stroke={d.color}
+                strokeWidth={isActive ? 1.4 : 0.6}
+                strokeOpacity={isActive ? 0.95 : 0.55}
+                strokeDasharray={isActive ? undefined : "3 2"}
                 className="cursor-pointer transition-all duration-200"
                 onClick={() => setSelected(selected === d.id ? null : d.id)}
               />
@@ -518,8 +520,11 @@ const DermatomeMapDiagram = () => {
         );
       })}
 
+      {/* 3. Surface anatomy plate (bones + landmarks) ON TOP of territories */}
+      <SurfaceAnatomy view={view} />
+
       {/* Landmark annotations */}
-      <g opacity="0.4" fontSize="4" fill="hsl(var(--muted-foreground))" fontWeight="500">
+      <g opacity="0.55" fontSize="4" fill="hsl(var(--muted-foreground))" fontWeight="500">
         {view === "anterior" ? (
           <>
             <text x="150" y="142">← T4 nipple</text>
@@ -535,7 +540,7 @@ const DermatomeMapDiagram = () => {
       </g>
 
       {/* View label */}
-      <text x="120" y="516" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.45" fontWeight="600" letterSpacing="1.5">
+      <text x="120" y="516" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.55" fontWeight="600" letterSpacing="1.5">
         {view === "anterior" ? "ANTERIOR" : "POSTERIOR"}
       </text>
     </svg>
