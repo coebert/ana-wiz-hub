@@ -222,6 +222,10 @@ const AirwayManagementTopic = () => {
               at or near the cords</em>.
             </p>
 
+            <div className="my-4">
+              <PartialAirwayObstructionDiagram />
+            </div>
+
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Supraglottic obstruction</h3>
             <p className="text-foreground/90 leading-relaxed mb-2">
               Pathology lies above the cords — tongue base, soft palate, pharyngeal wall, epiglottis, vallecula, or
