@@ -235,6 +235,30 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
+  // ----- Head / neck posture -----
+  // Rotation (deg) about the atlanto-occipital joint. Negative = extension
+  // (chin lifts, occiput drops, in this left-facing view). Bonfils is done
+  // in essentially NEUTRAL position, so changes are deliberately small
+  // (≤ 2°) — just enough to read as the operator optimising the axis.
+  const headRotTargets: Record<Step, number> = {
+    0:  0,    // neutral sniff while jaw thrust applied
+    1: -0.8,  // very slight extension as scope enters
+    2: -1.2,
+    3: -1.4,  // optimised view of glottis
+    4: -1.8,  // peak optimisation during rail-road
+    5:  0,    // neutral after secure
+  };
+  const HEAD_PIVOT = { x: 290, y: 145 }; // atlanto-occipital
+  const [headRot, setHeadRot] = useState(0);
+  useEffect(() => {
+    if (step === 0) {
+      setHeadRot(0);
+      return;
+    }
+    setHeadRot(headRotTargets[step]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
 
   // Per-step intra-airway tip positions and a bezier control point that
   // shapes the shaft so it always hugs anatomy (retromolar → tongue base →
