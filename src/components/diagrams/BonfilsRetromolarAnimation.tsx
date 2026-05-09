@@ -232,10 +232,10 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
   return (
     <svg
-      viewBox="0 0 560 340"
+      viewBox="0 0 720 360"
       className="w-full h-auto"
       role="img"
-      aria-label="Animated sagittal view of Bonfils retromolar intubation in a recognisable left-facing head"
+      aria-label="Animated, fully labelled sagittal view of Bonfils retromolar intubation"
     >
       <defs>
         <linearGradient id="bf-skin" x1="0" x2="0" y1="0" y2="1">
@@ -295,7 +295,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           ================================================================== */}
 
       {/* Pillow / table */}
-      <rect x="0" y="305" width="560" height="35" fill="hsl(var(--muted) / 0.5)" />
+      <rect x="0" y="305" width="720" height="55" fill="hsl(var(--muted) / 0.5)" />
       <path d="M 200 308 Q 320 290 460 308 L 460 320 L 200 320 Z" fill="hsl(var(--card))" stroke="hsl(var(--border))" />
 
       {/* HEAD outline — clearly recognisable profile facing left.
@@ -428,8 +428,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         strokeDasharray="3 2"
         strokeLinecap="round"
       />
-      <text x="155" y="148" fontSize="9" fill="hsl(var(--primary))" fontWeight="600">retromolar</text>
-      <text x="155" y="158" fontSize="8" fill="hsl(var(--primary))">channel</text>
 
       {/* TONGUE — bulky, fills lower oral cavity */}
       <path
@@ -445,7 +443,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       />
       {/* Median sulcus */}
       <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
-      <text x="160" y="200" fontSize="9" fill="hsl(0 0% 100% / 0.85)" textAnchor="middle" fontStyle="italic">tongue</text>
 
       {/* HYOID */}
       <ellipse cx="245" cy="232" rx="6" ry="2.4" fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
@@ -457,7 +454,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         stroke="hsl(350 55% 30%)"
         strokeWidth="0.9"
       />
-      <text x="265" y="244" fontSize="8" fill="hsl(var(--muted-foreground))">epiglottis</text>
 
       {/* THYROID & CRICOID cartilage */}
       <path d="M 240 252 L 240 282 Q 252 290 264 282 L 264 250" fill="hsl(0 0% 96% / 0.6)" stroke="hsl(30 25% 50%)" strokeWidth="1" />
@@ -474,7 +470,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
       {/* Oesophagus (posterior, dashed) */}
       <path d="M 280 268 Q 282 295 280 320" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="2 3" />
-      <text x="286" y="298" fontSize="8" fill="hsl(var(--muted-foreground))">oesophagus</text>
 
       {/* Posterior pharyngeal wall mucosa shading */}
       <path d="M 270 200 Q 282 240 278 285" fill="none" stroke="hsl(350 50% 35%)" strokeWidth="1.4" />
