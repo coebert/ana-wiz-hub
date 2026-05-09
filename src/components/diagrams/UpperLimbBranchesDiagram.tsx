@@ -210,15 +210,15 @@ const UpperLimbBranchesDiagram = () => {
           strokeWidth="0.5" strokeDasharray="3 3" opacity="0.3" />
       )}
 
-      {/* Cutaneous patches */}
+      {/* Cutaneous patches (translucent + dotted boundary) */}
       {(Object.keys(NERVES) as NerveKey[]).map((k) => {
         const n = NERVES[k];
         const patch = view === "ant" ? n.patchAnt : n.patchPost;
         if (!patch || !activeNerves.has(k)) return null;
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
         return (
-          <path key={`patch-${k}`} d={patch} fill={c} fillOpacity="0.18"
-            stroke={c} strokeWidth="0.6" strokeDasharray="2 2" />
+          <path key={`patch-${k}`} d={patch} fill={c} fillOpacity="0.32"
+            stroke={c} strokeWidth="0.6" strokeDasharray="1.5 2" />
         );
       })}
 
@@ -248,6 +248,43 @@ const UpperLimbBranchesDiagram = () => {
           </g>
         );
       })}
+
+      {/* Surface anatomy overlay — bony landmarks ON TOP so anatomy stays visible */}
+      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55" strokeLinecap="round">
+        {view === "ant" ? (
+          <>
+            {/* Clavicle */}
+            <path d="M 58 32 Q 90 26 122 32" />
+            {/* Acromion / shoulder tip */}
+            <circle cx="56" cy="40" r="1.6" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="124" cy="40" r="1.6" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Sternal notch */}
+            <circle cx="90" cy="30" r="1.3" fill="none" />
+            {/* Cubital fossa crease */}
+            <path d="M 78 175 Q 90 182 102 175" strokeDasharray="2 2" />
+            {/* Medial + lateral epicondyle dots */}
+            <circle cx="78" cy="178" r="1.2" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="102" cy="178" r="1.2" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Wrist crease */}
+            <path d="M 60 308 Q 75 312 88 310" strokeDasharray="2 2" />
+            <path d="M 110 310 Q 125 312 138 308" strokeDasharray="2 2" />
+          </>
+        ) : (
+          <>
+            {/* Scapular spine */}
+            <path d="M 58 50 Q 80 55 100 60" />
+            <path d="M 100 60 Q 120 55 140 50" />
+            {/* Inferior angle */}
+            <circle cx="68" cy="105" r="1.3" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="130" cy="105" r="1.3" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Olecranon */}
+            <circle cx="90" cy="180" r="2" fill="none" />
+            {/* Wrist crease (post) */}
+            <path d="M 60 308 Q 75 312 88 310" strokeDasharray="2 2" />
+            <path d="M 110 310 Q 125 312 138 308" strokeDasharray="2 2" />
+          </>
+        )}
+      </g>
 
       {/* View label */}
       <text x="100" y="14" textAnchor="middle" fontSize="7"
