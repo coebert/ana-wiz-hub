@@ -201,233 +201,472 @@ export default function BonfilsRetromolarAnimation() {
 /* -------------------- SVG anatomy + scope -------------------- */
 
 function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
-  // Scope tip path positions for each step (sagittal mouth view)
-  // Coordinates within 0..420 / 0..280 viewBox
-  const scopePositions: Record<Step, { tipX: number; tipY: number; rot: number; ettOnShaft: number }> = {
-    0: { tipX: 50, tipY: 60, rot: -10, ettOnShaft: 0 }, // outside mouth, jaw thrust scene
-    1: { tipX: 170, tipY: 100, rot: 5, ettOnShaft: 0.3 }, // entering retromolar
-    2: { tipX: 230, tipY: 130, rot: 35, ettOnShaft: 0.45 }, // rotating to midline
-    3: { tipX: 270, tipY: 150, rot: 55, ettOnShaft: 0.55 }, // glottic view
-    4: { tipX: 290, tipY: 170, rot: 70, ettOnShaft: 0.95 }, // ETT railroaded through cords
-    5: { tipX: 90, tipY: 80, rot: -5, ettOnShaft: 1 }, // scope withdrawn, ETT in place
+  // Sagittal viewBox 0..520 / 0..320. Tip coordinates chosen to follow a
+  // realistic retromolar → posterior tongue → vallecula → glottis arc.
+  // ettOnShaft = fraction of shaft length covered by the ETT (0..1).
+  const scopePositions: Record<
+    Step,
+    { tipX: number; tipY: number; rot: number; ettOnShaft: number; shaftIn: number }
+  > = {
+    0: { tipX: 110, tipY: 150, rot: -8, ettOnShaft: 0.35, shaftIn: 0 },   // outside mouth
+    1: { tipX: 235, tipY: 178, rot: 10, ettOnShaft: 0.4, shaftIn: 0.35 }, // retromolar entry
+    2: { tipX: 295, tipY: 198, rot: 38, ettOnShaft: 0.5, shaftIn: 0.6 },  // rotate to midline
+    3: { tipX: 330, tipY: 218, rot: 62, ettOnShaft: 0.55, shaftIn: 0.78 }, // glottic view
+    4: { tipX: 345, tipY: 240, rot: 78, ettOnShaft: 0.95, shaftIn: 0.92 }, // ETT railroaded
+    5: { tipX: 110, tipY: 150, rot: -8, ettOnShaft: 1, shaftIn: 0 },      // scope withdrawn
   };
   const sp = scopePositions[step];
 
-  // Eyepiece view content
+  // Eyepiece content per step
   const eyepieceContent = (() => {
     if (lostView) return "noview";
-    if (step <= 1) return "wall";
+    if (step === 0) return "dark";
+    if (step === 1) return "wall";
     if (step === 2) return "epiglottis";
-    if (step === 3 || step === 4) return "cords";
+    if (step === 3) return "cords";
+    if (step === 4) return "tube";
     return "carina";
   })();
 
+  // Smooth transition style applied to animated groups
+  const ease = "cubic-bezier(0.65, 0, 0.35, 1)";
+  const transition = `transform 900ms ${ease}`;
+
   return (
     <svg
-      viewBox="0 0 420 280"
+      viewBox="0 0 520 320"
       className="w-full h-auto"
       role="img"
-      aria-label="Animated Bonfils retromolar intubation"
+      aria-label="Animated sagittal view of Bonfils retromolar intubation"
     >
       <defs>
-        <linearGradient id="bonf-tissue" x1="0" x2="0" y1="0" y2="1">
+        <linearGradient id="bf-skin" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="hsl(var(--clinical) / 0.18)" />
-          <stop offset="100%" stopColor="hsl(var(--clinical) / 0.05)" />
+          <stop offset="100%" stopColor="hsl(var(--clinical) / 0.04)" />
         </linearGradient>
-        <radialGradient id="bonf-eye" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="hsl(var(--background))" />
+        <linearGradient id="bf-tongue" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(var(--clinical) / 0.55)" />
+          <stop offset="100%" stopColor="hsl(var(--clinical) / 0.25)" />
+        </linearGradient>
+        <linearGradient id="bf-mucosa" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="hsl(var(--clinical) / 0.45)" />
+          <stop offset="100%" stopColor="hsl(var(--clinical) / 0.2)" />
+        </linearGradient>
+        <linearGradient id="bf-shaft" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(var(--muted-foreground))" />
+          <stop offset="45%" stopColor="hsl(var(--foreground))" />
+          <stop offset="100%" stopColor="hsl(var(--muted-foreground))" />
+        </linearGradient>
+        <linearGradient id="bf-ett" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(var(--primary) / 0.55)" />
+          <stop offset="100%" stopColor="hsl(var(--primary) / 0.25)" />
+        </linearGradient>
+        <radialGradient id="bf-light" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.85" />
+          <stop offset="60%" stopColor="hsl(var(--primary) / 0.35)" />
+          <stop offset="100%" stopColor="hsl(var(--primary) / 0)" />
+        </radialGradient>
+        <radialGradient id="bf-eye" cx="50%" cy="50%" r="55%">
+          <stop offset="60%" stopColor="hsl(var(--background))" />
           <stop offset="100%" stopColor="hsl(var(--muted))" />
+        </radialGradient>
+        <radialGradient id="bf-eye-vignette" cx="50%" cy="50%" r="55%">
+          <stop offset="60%" stopColor="hsl(0 0% 0% / 0)" />
+          <stop offset="100%" stopColor="hsl(0 0% 0% / 0.55)" />
+        </radialGradient>
+        <radialGradient id="bf-mucosa-rad" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stopColor="hsl(350 65% 55% / 0.85)" />
+          <stop offset="100%" stopColor="hsl(350 55% 30% / 0.95)" />
         </radialGradient>
       </defs>
 
-      {/* Sagittal head outline */}
+      {/* ---- HEAD: sagittal silhouette ---- */}
       <path
-        d="M 60 50 Q 110 22 200 28 Q 300 36 340 80 Q 350 130 320 170 Q 290 210 260 220 L 230 230 Q 180 240 140 230 L 110 220 Q 70 200 55 160 Q 45 100 60 50 Z"
-        fill="url(#bonf-tissue)"
-        stroke="hsl(var(--clinical))"
+        d="M 70 60
+           Q 130 22 235 30
+           Q 330 36 380 70
+           Q 410 95 405 140
+           Q 400 180 380 205
+           L 360 215
+           Q 340 220 330 232
+           L 320 250
+           L 295 268
+           Q 270 280 230 278
+           L 180 275
+           Q 130 268 100 248
+           Q 70 220 60 175
+           Q 50 110 70 60 Z"
+        fill="url(#bf-skin)"
+        stroke="hsl(var(--clinical) / 0.7)"
         strokeWidth="1.4"
       />
 
-      {/* Mandible / teeth */}
-      <path d="M 110 175 Q 200 200 290 175" stroke="hsl(var(--foreground))" strokeWidth="1.2" fill="none" />
-      {/* Molars marker */}
-      <g fill="hsl(var(--foreground))">
-        {[120, 135, 270, 285].map((x, i) => (
-          <rect key={i} x={x} y={168} width={6} height={8} rx={1} />
-        ))}
-      </g>
-      <text x="278" y="166" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-        molars
-      </text>
+      {/* Nose hint */}
+      <path d="M 388 100 Q 405 112 388 130" fill="none" stroke="hsl(var(--clinical) / 0.5)" strokeWidth="1.2" />
 
-      {/* Tongue base */}
+      {/* Hard palate */}
       <path
-        d="M 130 175 Q 200 130 270 175 L 260 195 Q 200 180 140 195 Z"
-        fill="hsl(var(--clinical) / 0.25)"
-        stroke="hsl(var(--clinical) / 0.5)"
+        d="M 215 158 Q 290 152 350 162"
+        fill="none"
+        stroke="hsl(var(--foreground) / 0.55)"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      {/* Soft palate + uvula */}
+      <path
+        d="M 350 162 Q 365 178 358 196 Q 354 206 348 196 Q 344 188 348 178"
+        fill="hsl(var(--clinical) / 0.35)"
+        stroke="hsl(var(--clinical) / 0.7)"
         strokeWidth="1"
       />
-      <text x="200" y="160" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-        tongue base
-      </text>
 
-      {/* Pharynx + epiglottis */}
+      {/* Mandible body */}
       <path
-        d="M 270 175 Q 295 175 305 195 L 305 215"
-        stroke="hsl(var(--clinical))"
-        strokeWidth="1.2"
+        d="M 195 195 Q 250 232 320 232 Q 360 232 372 218"
         fill="none"
+        stroke="hsl(var(--foreground) / 0.7)"
+        strokeWidth="1.6"
+      />
+      {/* Mandibular ramus */}
+      <path
+        d="M 372 218 Q 380 200 378 175"
+        fill="none"
+        stroke="hsl(var(--foreground) / 0.5)"
+        strokeWidth="1.4"
+      />
+
+      {/* Dental arcade — incisors + canines + molars (lateral profile) */}
+      <g fill="hsl(var(--background))" stroke="hsl(var(--foreground) / 0.7)" strokeWidth="0.7">
+        {/* upper teeth */}
+        {[200, 212, 225, 240, 258, 278].map((x, i) => (
+          <rect key={`u${i}`} x={x} y={158} width={i < 3 ? 9 : 11} height={i < 3 ? 12 : 9} rx={1.5} />
+        ))}
+        {/* lower teeth */}
+        {[200, 212, 225, 240, 258, 278].map((x, i) => (
+          <rect key={`l${i}`} x={x} y={i < 3 ? 178 : 181} width={i < 3 ? 9 : 11} height={i < 3 ? 12 : 9} rx={1.5} />
+        ))}
+      </g>
+      {/* Retromolar gutter highlight */}
+      <path
+        d="M 290 173 Q 300 178 308 188"
+        fill="none"
+        stroke="hsl(var(--primary) / 0.55)"
+        strokeWidth="1.8"
+        strokeDasharray="2 2"
+      />
+      <text x="312" y="172" fontSize="8" fill="hsl(var(--muted-foreground))">retromolar gutter</text>
+
+      {/* Tongue — bulky, with dorsum and base */}
+      <path
+        d="M 200 192
+           Q 240 162 290 168
+           Q 330 174 335 200
+           Q 333 220 305 224
+           Q 260 230 220 222
+           Q 200 218 200 192 Z"
+        fill="url(#bf-tongue)"
+        stroke="hsl(var(--clinical) / 0.6)"
+        strokeWidth="1"
       />
       <path
-        d="M 280 200 Q 290 195 300 200 L 296 218 Q 290 220 284 218 Z"
+        d="M 220 198 Q 270 182 320 200"
+        fill="none"
+        stroke="hsl(var(--clinical) / 0.5)"
+        strokeWidth="0.7"
+      />
+      <text x="265" y="208" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">
+        tongue
+      </text>
+
+      {/* Posterior pharyngeal wall */}
+      <path
+        d="M 360 200 Q 372 230 365 270 L 360 282"
+        fill="url(#bf-mucosa)"
+        stroke="hsl(var(--clinical) / 0.55)"
+        strokeWidth="1"
+      />
+
+      {/* Hyoid */}
+      <ellipse cx="335" cy="232" rx="6" ry="2.4" fill="hsl(var(--background))" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+
+      {/* Vallecula + epiglottis (leaf) */}
+      <path
+        d="M 333 230 Q 345 226 352 232 L 350 256 Q 344 262 338 256 Z"
         fill="hsl(var(--clinical) / 0.35)"
         stroke="hsl(var(--clinical))"
         strokeWidth="1"
       />
-      <text x="306" y="200" fontSize="8" fill="hsl(var(--muted-foreground))">
-        epiglottis
-      </text>
+      <text x="354" y="246" fontSize="8" fill="hsl(var(--muted-foreground))">epiglottis</text>
 
-      {/* Glottis / cords */}
-      <ellipse cx="295" cy="225" rx="6" ry="3" fill="hsl(var(--primary) / 0.3)" stroke="hsl(var(--primary))" strokeWidth="1" />
-      {/* Trachea */}
-      <rect x="289" y="225" width="12" height="40" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
+      {/* Thyroid cartilage outline */}
+      <path
+        d="M 332 256 L 332 284 Q 340 290 348 284 L 348 254"
+        fill="none"
+        stroke="hsl(var(--foreground) / 0.55)"
+        strokeWidth="1"
+      />
 
-      {/* Bonfils scope shaft + curved tip */}
+      {/* Vocal cords (V seen end-on within sagittal — represented as small slit) */}
+      <ellipse cx="340" cy="270" rx="6" ry="2.2" fill="hsl(var(--background))" stroke="hsl(var(--primary))" strokeWidth="1" />
+
+      {/* Trachea with cartilage rings */}
+      <rect x="334" y="274" width="14" height="38" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
+      {[280, 287, 294, 301, 308].map((y) => (
+        <line key={y} x1="335" y1={y} x2="347" y2={y} stroke="hsl(var(--foreground) / 0.35)" strokeWidth="0.6" />
+      ))}
+
+      {/* Oesophagus (posterior, dashed) */}
+      <path d="M 358 270 Q 358 295 355 315" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="2 3" />
+
+      {/* ---- BONFILS SCOPE ---- */}
       {step !== 5 && (
-        <g>
-          {/* Straight rigid shaft */}
+        <g style={{ transition, transformOrigin: `${sp.tipX}px ${sp.tipY}px` }}
+           transform={`rotate(${sp.rot * 0.15} ${sp.tipX} ${sp.tipY})`}>
+          {/* Battery handle (origin, outside mouth) */}
+          <g transform="translate(20, 70)">
+            <rect x="-6" y="-8" width="38" height="34" rx="4" fill="hsl(var(--secondary))" stroke="hsl(var(--border))" />
+            <circle cx="32" cy="9" r="4" fill="hsl(var(--accent))" />
+          </g>
+          {/* Eyepiece */}
+          <circle cx="62" cy="62" r="10" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1.2" />
+          <circle cx="62" cy="62" r="4" fill="hsl(var(--primary) / 0.4)" />
+          {/* Side-port O2 */}
+          <circle cx="44" cy="76" r="3" fill="hsl(var(--accent))" />
+
+          {/* Rigid straight shaft from handle (~70,80) toward tip approach */}
           <line
-            x1="-20"
-            y1="40"
-            x2={sp.tipX - 20}
-            y2={sp.tipY - 20}
-            stroke="hsl(var(--foreground))"
-            strokeWidth="3"
+            x1="70"
+            y1="84"
+            x2={sp.tipX - 22}
+            y2={sp.tipY - 16}
+            stroke="url(#bf-shaft)"
+            strokeWidth="6"
             strokeLinecap="round"
           />
-          {/* Curved distal tip — short arc */}
+          {/* Metallic highlight */}
+          <line
+            x1="70"
+            y1="82"
+            x2={sp.tipX - 22}
+            y2={sp.tipY - 18}
+            stroke="hsl(var(--background) / 0.55)"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          />
+
+          {/* Curved distal 40° tip */}
           <path
-            d={`M ${sp.tipX - 20} ${sp.tipY - 20} Q ${sp.tipX - 4} ${sp.tipY - 12} ${sp.tipX} ${sp.tipY}`}
-            stroke="hsl(var(--foreground))"
-            strokeWidth="3"
+            d={`M ${sp.tipX - 22} ${sp.tipY - 16}
+                Q ${sp.tipX - 6} ${sp.tipY - 10} ${sp.tipX} ${sp.tipY}`}
+            stroke="url(#bf-shaft)"
+            strokeWidth="6"
             strokeLinecap="round"
             fill="none"
           />
-          {/* Tip light */}
-          <circle cx={sp.tipX} cy={sp.tipY} r="3.5" fill="hsl(var(--primary))" />
-          {/* Light cone */}
-          <path
-            d={`M ${sp.tipX} ${sp.tipY} L ${sp.tipX + 30 * Math.cos((sp.rot * Math.PI) / 180)} ${sp.tipY + 30 * Math.sin((sp.rot * Math.PI) / 180)} L ${sp.tipX + 30 * Math.cos(((sp.rot + 30) * Math.PI) / 180)} ${sp.tipY + 30 * Math.sin(((sp.rot + 30) * Math.PI) / 180)} Z`}
-            fill="hsl(var(--primary) / 0.18)"
-          />
-        </g>
-      )}
 
-      {/* ETT loaded on the shaft (ribbed cylinder) */}
-      {step !== 5 && sp.ettOnShaft > 0 && (
-        <g>
-          <rect
-            x={-15}
-            y={32}
-            width={(sp.tipX - 5 + 15) * sp.ettOnShaft}
-            height={16}
-            rx={6}
-            fill="hsl(var(--accent-foreground) / 0.25)"
-            stroke="hsl(var(--accent-foreground))"
-            strokeWidth="1"
+          {/* Tip light glow */}
+          <circle cx={sp.tipX} cy={sp.tipY} r="14" fill="url(#bf-light)" />
+          <circle cx={sp.tipX} cy={sp.tipY} r="3.2" fill="hsl(var(--primary))" />
+
+          {/* Light cone toward viewing direction */}
+          <path
+            d={`M ${sp.tipX} ${sp.tipY}
+                L ${sp.tipX + 38 * Math.cos(((sp.rot - 18) * Math.PI) / 180)} ${sp.tipY + 38 * Math.sin(((sp.rot - 18) * Math.PI) / 180)}
+                L ${sp.tipX + 38 * Math.cos(((sp.rot + 18) * Math.PI) / 180)} ${sp.tipY + 38 * Math.sin(((sp.rot + 18) * Math.PI) / 180)} Z`}
+            fill="hsl(var(--primary) / 0.14)"
           />
+
+          {/* ETT pre-loaded over shaft (rendered as parallel sleeve) */}
+          {sp.ettOnShaft > 0 && (
+            <g>
+              {/* Compute the shaft midline endpoints for the ETT segment */}
+              {(() => {
+                const x1 = 70;
+                const y1 = 84;
+                const x2 = sp.tipX - 22;
+                const y2 = sp.tipY - 16;
+                // ETT covers the proximal portion 0..ettOnShaft of the shaft
+                const ex = x1 + (x2 - x1) * sp.ettOnShaft;
+                const ey = y1 + (y2 - y1) * sp.ettOnShaft;
+                return (
+                  <>
+                    <line x1={x1} y1={y1} x2={ex} y2={ey}
+                      stroke="url(#bf-ett)" strokeWidth="14" strokeLinecap="round" />
+                    {/* Cuff at distal end of ETT (only visible when ETT is well advanced) */}
+                    {sp.ettOnShaft > 0.7 && (
+                      <ellipse cx={ex} cy={ey} rx="9" ry="6"
+                        fill="hsl(var(--primary) / 0.35)"
+                        stroke="hsl(var(--primary))" strokeWidth="1" />
+                    )}
+                    {/* Pilot tubing */}
+                    <path d={`M ${x1 + 14} ${y1 + 4} q -8 14 -22 6`}
+                      fill="none" stroke="hsl(var(--primary) / 0.5)" strokeWidth="1" />
+                  </>
+                );
+              })()}
+            </g>
+          )}
         </g>
       )}
 
       {/* ETT in place after withdrawal (step 5) */}
       {step === 5 && (
-        <g>
-          {/* ETT entering mouth, curving down to trachea */}
+        <g style={{ transition: `opacity 600ms ease` }}>
+          {/* Outer tube shadow */}
           <path
-            d="M 60 60 Q 200 110 295 220 L 295 260"
-            stroke="hsl(var(--accent-foreground))"
-            strokeWidth="9"
-            strokeLinecap="round"
-            fill="none"
-            opacity="0.6"
-          />
-          <path
-            d="M 60 60 Q 200 110 295 220 L 295 260"
-            stroke="hsl(var(--accent-foreground) / 0.35)"
-            strokeWidth="14"
+            d="M 70 110 Q 200 150 305 240 L 340 270"
+            stroke="hsl(var(--primary) / 0.25)"
+            strokeWidth="20"
             strokeLinecap="round"
             fill="none"
           />
-          {/* Cuff */}
-          <ellipse cx="295" cy="245" rx="9" ry="6" fill="hsl(var(--accent-foreground) / 0.5)" stroke="hsl(var(--accent-foreground))" />
-          <text x="305" y="248" fontSize="9" fill="hsl(var(--muted-foreground))">cuff</text>
+          {/* Tube body */}
+          <path
+            d="M 70 110 Q 200 150 305 240 L 340 270"
+            stroke="url(#bf-ett)"
+            strokeWidth="13"
+            strokeLinecap="round"
+            fill="none"
+          />
+          {/* Inner highlight */}
+          <path
+            d="M 72 108 Q 200 148 305 238"
+            stroke="hsl(var(--background) / 0.4)"
+            strokeWidth="2"
+            fill="none"
+          />
+          {/* Cuff inflated below cords */}
+          <ellipse cx="342" cy="288" rx="11" ry="7"
+            fill="hsl(var(--primary) / 0.45)" stroke="hsl(var(--primary))" strokeWidth="1.2" />
+          <text x="356" y="291" fontSize="9" fill="hsl(var(--muted-foreground))">cuff inflated</text>
+          {/* Pilot balloon */}
+          <g transform="translate(58, 96)">
+            <path d="M 0 0 q -10 -8 -22 0" fill="none" stroke="hsl(var(--primary))" strokeWidth="1" />
+            <ellipse cx="-26" cy="-2" rx="7" ry="4" fill="hsl(var(--primary) / 0.4)" stroke="hsl(var(--primary))" />
+          </g>
         </g>
       )}
 
-      {/* Step caption strip */}
+      {/* ---- Step caption strip ---- */}
       <g>
-        <rect x="8" y="252" width="180" height="22" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
-        <text x="98" y="267" fontSize="11" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
+        <rect x="10" y="288" width="220" height="24" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
+        <text x="120" y="304" fontSize="11" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">
           Step {step + 1}: {STEPS[step].title}
         </text>
       </g>
 
-      {/* Eyepiece preview circle (top-right) */}
-      <g transform="translate(330, 30)">
-        <circle cx="35" cy="35" r="36" fill="url(#bonf-eye)" stroke="hsl(var(--border))" strokeWidth="1.4" />
-        <circle cx="35" cy="35" r="32" fill="none" stroke="hsl(var(--foreground) / 0.3)" strokeWidth="0.8" strokeDasharray="2 3" />
-        {/* Crosshair */}
-        <line x1="35" y1="10" x2="35" y2="60" stroke="hsl(var(--foreground) / 0.2)" strokeWidth="0.6" />
-        <line x1="10" y1="35" x2="60" y2="35" stroke="hsl(var(--foreground) / 0.2)" strokeWidth="0.6" />
+      {/* ---- Eyepiece preview (top-right) ---- */}
+      <g transform="translate(420, 20)">
+        <text x="42" y="-4" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">
+          eyepiece view
+        </text>
+        <circle cx="42" cy="42" r="40" fill="url(#bf-eye)" stroke="hsl(var(--border))" strokeWidth="1.4" />
+        <clipPath id="bf-eye-clip">
+          <circle cx="42" cy="42" r="38" />
+        </clipPath>
+        <g clipPath="url(#bf-eye-clip)">
+          {/* Background mucosa for in-airway views */}
+          {(eyepieceContent === "wall" || eyepieceContent === "epiglottis" ||
+            eyepieceContent === "cords" || eyepieceContent === "carina" ||
+            eyepieceContent === "tube") && (
+            <rect x="0" y="0" width="84" height="84" fill="url(#bf-mucosa-rad)" />
+          )}
 
-        {/* Content per step */}
-        {eyepieceContent === "wall" && (
-          <text x="35" y="38" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-            pharyngeal wall
-          </text>
-        )}
-        {eyepieceContent === "epiglottis" && (
-          <g>
-            <path
-              d="M 22 38 Q 35 26 48 38 L 46 50 Q 35 53 24 50 Z"
-              fill="hsl(var(--clinical) / 0.5)"
-              stroke="hsl(var(--clinical))"
-              strokeWidth="0.8"
-            />
-            <text x="35" y="64" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-              epiglottis
-            </text>
-          </g>
-        )}
-        {eyepieceContent === "cords" && (
-          <g>
-            <ellipse cx="35" cy="38" rx="14" ry="6" fill="hsl(var(--primary) / 0.25)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
-            <line x1="22" y1="38" x2="48" y2="38" stroke="hsl(var(--primary))" strokeWidth="1.2" />
-            <text x="35" y="64" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-              cords centred
-            </text>
-          </g>
-        )}
-        {eyepieceContent === "carina" && (
-          <g>
-            <line x1="35" y1="22" x2="22" y2="50" stroke="hsl(var(--clinical))" strokeWidth="1.2" />
-            <line x1="35" y1="22" x2="48" y2="50" stroke="hsl(var(--clinical))" strokeWidth="1.2" />
-            <text x="35" y="64" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-              carina (post-confirm)
-            </text>
-          </g>
-        )}
-        {eyepieceContent === "noview" && (
-          <g>
-            <rect x="6" y="6" width="58" height="58" fill="hsl(var(--destructive) / 0.4)" />
-            <text x="35" y="40" fontSize="9" fontWeight="700" fill="hsl(var(--destructive-foreground))" textAnchor="middle">
-              NO VIEW
-            </text>
-          </g>
-        )}
-        <text x="35" y="-2" fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">
-          eyepiece
+          {eyepieceContent === "dark" && (
+            <rect x="0" y="0" width="84" height="84" fill="hsl(0 0% 5%)" />
+          )}
+
+          {eyepieceContent === "wall" && (
+            <g>
+              {/* Pharyngeal mucosa with vessels */}
+              <path d="M 6 60 Q 30 40 78 56" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.8" />
+              <path d="M 10 70 Q 40 52 80 66" fill="none" stroke="hsl(350 80% 35%)" strokeWidth="0.6" />
+              <text x="42" y="76" fontSize="7" fill="hsl(var(--background))" textAnchor="middle">pharyngeal wall</text>
+            </g>
+          )}
+
+          {eyepieceContent === "epiglottis" && (
+            <g>
+              {/* Curled epiglottis leaf with median vallecula */}
+              <path
+                d="M 16 50 Q 42 24 68 50 Q 64 68 42 70 Q 20 68 16 50 Z"
+                fill="hsl(350 60% 50% / 0.95)"
+                stroke="hsl(350 60% 30%)"
+                strokeWidth="0.8"
+              />
+              <path d="M 42 30 Q 42 50 42 66" stroke="hsl(350 60% 30%)" strokeWidth="0.6" fill="none" />
+              <text x="42" y="80" fontSize="7" fill="hsl(var(--background))" textAnchor="middle">epiglottis</text>
+            </g>
+          )}
+
+          {eyepieceContent === "cords" && (
+            <g>
+              {/* Vocal cord V — pearly white triangles meeting anteriorly */}
+              <path d="M 42 22 L 24 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.6" />
+              <path d="M 42 22 L 60 64 Q 42 60 42 56 Z" fill="hsl(0 0% 95%)" stroke="hsl(0 0% 60%)" strokeWidth="0.6" />
+              {/* Arytenoids */}
+              <ellipse cx="28" cy="66" rx="4" ry="3" fill="hsl(350 50% 50%)" />
+              <ellipse cx="56" cy="66" rx="4" ry="3" fill="hsl(350 50% 50%)" />
+              {/* Glottic chink */}
+              <path d="M 42 24 L 42 60" stroke="hsl(0 0% 15%)" strokeWidth="0.8" />
+              <text x="42" y="80" fontSize="7" fill="hsl(var(--background))" textAnchor="middle">cords centred</text>
+            </g>
+          )}
+
+          {eyepieceContent === "tube" && (
+            <g>
+              {/* ETT advancing through cords */}
+              <path d="M 42 22 L 24 64" stroke="hsl(0 0% 70%)" strokeWidth="0.6" fill="none" />
+              <path d="M 42 22 L 60 64" stroke="hsl(0 0% 70%)" strokeWidth="0.6" fill="none" />
+              <ellipse cx="42" cy="48" rx="14" ry="10" fill="hsl(var(--primary) / 0.55)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+              <ellipse cx="42" cy="48" rx="9" ry="6" fill="hsl(0 0% 8%)" />
+              <text x="42" y="80" fontSize="7" fill="hsl(var(--background))" textAnchor="middle">ETT through cords</text>
+            </g>
+          )}
+
+          {eyepieceContent === "carina" && (
+            <g>
+              <path d="M 42 18 L 22 70" stroke="hsl(350 50% 30%)" strokeWidth="2" />
+              <path d="M 42 18 L 62 70" stroke="hsl(350 50% 30%)" strokeWidth="2" />
+              {/* Cartilage rings on both bronchi */}
+              {[28, 36, 44, 52].map((y, i) => (
+                <g key={i}>
+                  <path d={`M ${42 - (y - 20) * 0.4} ${y} q -2 -1 -4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.6" />
+                  <path d={`M ${42 + (y - 20) * 0.4} ${y} q 2 -1 4 0`} fill="none" stroke="hsl(0 0% 90% / 0.6)" strokeWidth="0.6" />
+                </g>
+              ))}
+              <text x="42" y="80" fontSize="7" fill="hsl(var(--background))" textAnchor="middle">carina</text>
+            </g>
+          )}
+
+          {eyepieceContent === "noview" && (
+            <g>
+              <rect x="0" y="0" width="84" height="84" fill="hsl(var(--destructive) / 0.55)" />
+              {/* Smear / blood */}
+              <path d="M 0 30 Q 42 50 84 28" fill="hsl(350 80% 25%)" opacity="0.8" />
+              <path d="M 0 60 Q 42 78 84 56" fill="hsl(350 80% 20%)" opacity="0.7" />
+              <text x="42" y="48" fontSize="11" fontWeight="800" fill="hsl(var(--destructive-foreground))" textAnchor="middle">
+                NO VIEW
+              </text>
+            </g>
+          )}
+
+          {/* Vignette */}
+          <rect x="0" y="0" width="84" height="84" fill="url(#bf-eye-vignette)" />
+        </g>
+        {/* Reticle */}
+        <line x1="42" y1="6" x2="42" y2="78" stroke="hsl(var(--foreground) / 0.18)" strokeWidth="0.5" />
+        <line x1="6" y1="42" x2="78" y2="42" stroke="hsl(var(--foreground) / 0.18)" strokeWidth="0.5" />
+        <circle cx="42" cy="42" r="40" fill="none" stroke="hsl(var(--border))" strokeWidth="1.4" />
+      </g>
+
+      {/* ---- Live indicators ---- */}
+      <g transform="translate(260, 292)">
+        <circle cx="0" cy="6" r="3" fill="hsl(var(--accent))">
+          {!lostView && <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite" />}
+        </circle>
+        <text x="8" y="9" fontSize="9" fill="hsl(var(--muted-foreground))">
+          O₂ side-port flowing
         </text>
       </g>
     </svg>
