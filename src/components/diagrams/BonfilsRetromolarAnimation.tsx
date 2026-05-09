@@ -562,10 +562,25 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       {/* Eyebrow */}
       <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2.2" strokeLinecap="round" />
 
-      {/* Nostril */}
-      <path d="M 60 142 q 8 4 16 0" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" strokeLinecap="round" />
-      <ellipse cx="68" cy="143" rx="3" ry="1.6" fill="hsl(20 40% 25%)" />
-      <path d="M 76 132 q 6 4 6 12" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
+      {/* Nose — nostril sits on the INFERIOR (under) surface of the nose,
+          between the tip (~x 36, y 148) and the subnasal point (x 76, y 158).
+          Ala (nostril rim), columella, and a soft dorsum highlight. */}
+      {/* Ala curve — outlines the fleshy nostril wing on the underside */}
+      <path d="M 52 156 Q 62 162 74 158" fill="none"
+        stroke="hsl(20 40% 38%)" strokeWidth="0.9" strokeLinecap="round" />
+      {/* Nostril opening — elongated, slightly tilted, on the underside */}
+      <ellipse cx="62" cy="156" rx="4.2" ry="1.4"
+        transform="rotate(-12 62 156)"
+        fill="hsl(20 45% 18%)" />
+      {/* Columella shadow at the medial base of the nose */}
+      <path d="M 70 156 q 3 2 5 2" fill="none"
+        stroke="hsl(20 40% 35% / 0.7)" strokeWidth="0.7" strokeLinecap="round" />
+      {/* Subtle alar groove (where nostril wing meets cheek) */}
+      <path d="M 74 154 q 4 4 6 8" fill="none"
+        stroke="hsl(20 40% 42% / 0.5)" strokeWidth="0.6" />
+      {/* Nasal dorsum highlight — thin lit ridge along the bridge */}
+      <path d="M 78 130 Q 70 138 60 146" fill="none"
+        stroke="hsl(40 80% 94% / 0.55)" strokeWidth="0.6" strokeLinecap="round" />
 
       {/* Cheek contour */}
       <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.8" />
