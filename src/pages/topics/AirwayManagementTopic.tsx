@@ -210,10 +210,150 @@ const AirwayManagementTopic = () => {
               <li>Inflate cuff, ventilate, confirm with capnography</li>
             </ol>
           </ExamSection>
+
+          <ExamSection exams={[Exam.PRIMARY, Exam.FINAL, Exam.FFICM]} curriculumCodes={["CL_BK_03"]}>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Partial airway obstruction — level-specific management</h2>
+            <p className="text-foreground/90 leading-relaxed mb-4">
+              Partial obstruction is a dynamic problem: the noise, timing in the respiratory cycle and response to
+              positioning all localise the lesion before any instrumentation. Mis-localising the level is the commonest
+              reason a planned induction tips into can't-intubate–can't-oxygenate, because each anatomical zone responds
+              very differently to muscle relaxation, positive pressure, and rescue devices. The bedside rule is simple:
+              <em> inspiratory stridor = extrathoracic, expiratory wheeze = intrathoracic, biphasic noise = fixed lesion
+              at or near the cords</em>.
+            </p>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Supraglottic obstruction</h3>
+            <p className="text-foreground/90 leading-relaxed mb-2">
+              Pathology lies above the cords — tongue base, soft palate, pharyngeal wall, epiglottis, vallecula, or
+              peri-tonsillar tissues. Typical causes include obtunded patients, OSA, Ludwig's angina, peritonsillar/
+              retropharyngeal abscess, post-tonsillectomy bleeding, supraglottitis, angio-oedema and supraglottic tumour.
+              Noise is a low-pitched <strong>snore or stertor</strong>, worse on inspiration and dramatically improved by
+              jaw thrust, lateral position or an oro-/nasopharyngeal airway.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Simple manoeuvres first: head-tilt/chin-lift, jaw thrust, NPA in conscious patients, OPA when tolerated.</li>
+              <li>CPAP/HFNO splints the pharynx; useful as a temporising bridge or for OSA-pattern obstruction.</li>
+              <li>Most supraglottic problems are <strong>relieved</strong> by an LMA/i-gel because the seal sits below the lesion — but avoid blind SAD insertion in abscess or distorted anatomy (rupture risk).</li>
+              <li>Definitive plan in infection, haematoma or angio-oedema: awake assessment, sit upright, anaesthetist + ENT in theatre, consider awake fibreoptic or gas induction with the surgeon scrubbed for tracheostomy.</li>
+              <li><strong>Avoid</strong> muscle relaxants until oxygenation is proven — relaxation removes pharyngeal tone and may collapse a borderline airway completely.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Glottic obstruction</h3>
+            <p className="text-foreground/90 leading-relaxed mb-2">
+              Lesion is at the cords or immediate peri-glottic region — laryngeal tumour, papillomatosis, vocal cord
+              palsy/paradoxical motion, post-extubation laryngospasm, glottic oedema, foreign body lodged at the cords,
+              or laryngeal trauma. Noise is classically <strong>high-pitched inspiratory (or biphasic) stridor</strong>,
+              voice change or aphonia, and the patient often adopts a sniffing position. Unlike supraglottic obstruction,
+              SADs sit <em>above</em> the lesion and provide little benefit.
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Maintain spontaneous ventilation: inhalational induction (sevoflurane in 100% O₂) or remifentanil-based TIVA preserving respiratory drive.</li>
+              <li>Heliox (70:30 or 79:21) reduces turbulent flow resistance and buys time while definitive plan is mobilised.</li>
+              <li>Plan for a <strong>smaller-than-predicted ETT</strong> (range of sizes opened: typically 6.0, 5.5, 5.0, microlaryngeal 5.0/4.0). Videolaryngoscopy or flexible scope through an SAD may be required.</li>
+              <li>Avoid muscle relaxants and PPV until the cords are visualised — paralysis can convert a partial to a complete obstruction with no rescue.</li>
+              <li>Surgical airway must be immediately available; for fixed glottic tumours, awake tracheostomy under local is often the safest primary plan.</li>
+              <li>Post-extubation laryngospasm: jaw thrust + Larson's point pressure, CPAP with 100% O₂, deepen anaesthesia (propofol bolus); if persisting, low-dose suxamethonium 0.1–0.5 mg·kg⁻¹.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Subglottic & tracheal obstruction</h3>
+            <p className="text-foreground/90 leading-relaxed mb-2">
+              The lesion sits below the cords: subglottic stenosis (post-intubation, GPA, idiopathic), tracheal tumour,
+              tracheomalacia, anterior mediastinal mass, retrosternal goitre, distal foreign body, or external compression
+              by haematoma/abscess. The cords look normal on laryngoscopy — a dangerous trap, because passing an ETT past
+              the cords does not relieve the obstruction and may impact the lesion. Imaging (CT neck/chest, flow–volume
+              loop) before induction is invaluable when symptoms allow.
+            </p>
+            <p className="text-foreground/90 leading-relaxed mb-2">
+              <strong>Extrathoracic vs intrathoracic compression</strong> behave like opposite physiological mirrors,
+              driven by the difference between intraluminal airway pressure and the surrounding pressure (atmospheric in
+              the neck, pleural in the chest):
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>
+                <strong>Extrathoracic (cervical trachea, subglottis):</strong> during spontaneous <em>inspiration</em>,
+                intratracheal pressure falls below atmospheric and a variable lesion collapses → <strong>inspiratory
+                stridor</strong>, flattened inspiratory limb of the flow–volume loop. Expiration generates positive
+                intratracheal pressure that splints the airway open. PPV and CPAP help by stenting the lumen; awake
+                fibreoptic intubation with the patient sitting up and breathing spontaneously is often the safest plan,
+                with the ETT advanced beyond the lesion under direct vision.
+              </li>
+              <li>
+                <strong>Intrathoracic (lower trachea, carina, mediastinal mass):</strong> during <em>expiration</em>,
+                pleural pressure exceeds intraluminal pressure and the airway collapses → <strong>expiratory stridor or
+                wheeze</strong>, flattened expiratory limb. Inspiration (negative pleural pressure) holds the airway
+                open. Loss of spontaneous ventilation, IPPV, or supine positioning can be catastrophic — the mass
+                falls posteriorly and pleural pressure rises around a now-passive airway, producing complete
+                obstruction unrelievable by ETT or FONA above the lesion.
+              </li>
+              <li>
+                <strong>Fixed lesion</strong> (circumferential stenosis, fixed tumour): both limbs of the flow–volume
+                loop are flattened, biphasic stridor, behaviour independent of intra- vs extrathoracic location.
+              </li>
+            </ul>
+            <p className="text-foreground/90 leading-relaxed mb-2">
+              Practical implications for the anaesthetist:
+            </p>
+            <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground mb-3">
+              <li>Maintain spontaneous ventilation in <strong>any</strong> dynamic obstruction until the airway is secured beyond the lesion.</li>
+              <li>Anterior mediastinal mass: assess in supine and upright positions, have the ability to roll lateral or prone, and consider femoro-femoral cardiopulmonary bypass standby for high-risk lesions (&gt;50% tracheal narrowing, pericardial effusion, SVC obstruction, stridor at rest).</li>
+              <li>Choose a long, reinforced or microlaryngeal ETT able to bridge the lesion; have a rigid bronchoscope and ENT/cardiothoracic surgeon present.</li>
+              <li>FONA above an intrathoracic obstruction <strong>does not rescue</strong> the patient — distal rescue requires rigid bronchoscopy, tracheal stenting, or extracorporeal oxygenation. Plan accordingly before induction.</li>
+              <li>Heliox and HFNO are useful temporising measures; nebulised adrenaline and dexamethasone reduce mucosal oedema in inflammatory subglottic narrowing.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Comparison summary</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 pr-3 font-semibold">Level</th>
+                    <th className="text-left py-2 pr-3 font-semibold">Typical noise</th>
+                    <th className="text-left py-2 pr-3 font-semibold">Helpful</th>
+                    <th className="text-left py-2 pr-3 font-semibold">Avoid</th>
+                    <th className="text-left py-2 pr-3 font-semibold">Definitive plan</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-3">Supraglottic</td>
+                    <td className="py-2 pr-3">Snore / stertor (insp.)</td>
+                    <td className="py-2 pr-3">Jaw thrust, NPA/OPA, CPAP, lateral position, SAD</td>
+                    <td className="py-2 pr-3">Early paralysis, blind SAD in distorted anatomy</td>
+                    <td className="py-2 pr-3">SAD or ETT past the lesion; surgical drainage where indicated</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-3">Glottic</td>
+                    <td className="py-2 pr-3">High-pitched inspiratory stridor, voice change</td>
+                    <td className="py-2 pr-3">Spontaneous ventilation, gas induction, heliox, smaller ETT, awake techniques</td>
+                    <td className="py-2 pr-3">Muscle relaxants before cord view, SAD as definitive airway</td>
+                    <td className="py-2 pr-3">Awake tracheostomy or FOI past cords with surgeon scrubbed</td>
+                  </tr>
+                  <tr className="border-b border-border/50">
+                    <td className="py-2 pr-3">Extrathoracic subglottic / cervical trachea</td>
+                    <td className="py-2 pr-3">Inspiratory stridor (variable lesion collapses on inspiration)</td>
+                    <td className="py-2 pr-3">Sit upright, CPAP/PPV stents lumen, AFOI past lesion</td>
+                    <td className="py-2 pr-3">Apnoea without distal control, blind dilatation</td>
+                    <td className="py-2 pr-3">ETT or tracheostomy <em>below</em> the lesion under vision</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-3">Intrathoracic trachea / mediastinal mass</td>
+                    <td className="py-2 pr-3">Expiratory stridor/wheeze; positional symptoms</td>
+                    <td className="py-2 pr-3">Spontaneous ventilation, semi-recumbent/lateral, rigid bronchoscope ready, ECMO standby</td>
+                    <td className="py-2 pr-3">Supine paralysis + IPPV, FONA expecting rescue</td>
+                    <td className="py-2 pr-3">Rigid bronchoscopy, tracheal stent, debulk, or proceed on bypass</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </ExamSection>
         </>
       }
       keyPoints={[
         "DAS 2015 — 4 sequential plans: intubation → SAD → facemask → FONA. Maximum 3+1 intubation attempts.",
+        "Localise partial obstruction by noise: stertor = supraglottic, inspiratory stridor = glottic/extrathoracic, expiratory stridor = intrathoracic, biphasic = fixed.",
+        "Maintain spontaneous ventilation and avoid muscle relaxants in dynamic obstruction until the airway is secured beyond the lesion.",
+        "Extrathoracic lesions collapse on inspiration and are splinted by PPV/CPAP; intrathoracic lesions collapse on expiration and are catastrophically worsened by IPPV in the supine position.",
+        "FONA does not rescue an intrathoracic obstruction — plan rigid bronchoscopy, stenting or femoro-femoral bypass before induction in high-risk mediastinal masses.",
         "2nd-generation SADs have gastric drain ports and seal pressures 25–35 cmH₂O.",
         "Videolaryngoscopy reduces failed intubation rates (Cochrane 2022) and is now the recommended default in predicted difficulty.",
         "AFOI: block V₁/V₂, IX, internal SLN and recurrent laryngeal — sensory map drives the topicalisation plan.",
