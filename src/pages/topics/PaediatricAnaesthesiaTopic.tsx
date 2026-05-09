@@ -280,6 +280,7 @@ const PaediatricAnaesthesiaTopic = () => {
             </>
           }
         >
+          <CaudalSurfaceAnatomyDiagram />
           <CaudalBlockDiagram />
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
