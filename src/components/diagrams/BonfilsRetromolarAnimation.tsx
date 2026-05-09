@@ -492,12 +492,31 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           thyromental distance is anatomically realistic. */}
       <path d="M 122 240 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.9" strokeLinecap="round" />
 
-      {/* ===== Sternocleidomastoid (SCM) — mastoid → sternoclavicular ===== */}
-      <g style={{ pointerEvents: "none" }}>
+      {/* ===== Sternocleidomastoid (SCM) — mastoid → sternoclavicular =====
+          Coupled to jaw thrust: the lower (sternoclavicular) end is fixed,
+          so we apply a small anisotropic stretch + lateral pull anchored at
+          the sternal insertion. CSS transition on transform makes the
+          deformation track the jaw smoothly between steps. */}
+      <g
+        style={{
+          pointerEvents: "none",
+          transformOrigin: "240px 294px",
+          transform:
+            `translate(${jaw.x * 0.25}px, ${jaw.y * 0.15}px) ` +
+            `scaleY(${1 + jaw.y * 0.004}) ` +
+            `rotate(${jaw.x * 0.25}deg)`,
+          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+      >
         <path d="M 292 138 Q 270 200 232 292 L 248 296 Q 286 208 304 142 Z"
           fill="hsl(20 45% 60% / 0.10)" />
         <path d="M 292 138 Q 270 200 232 292"
-          fill="none" stroke="hsl(20 40% 38% / 0.55)" strokeWidth="1.2" strokeLinecap="round" />
+          fill="none"
+          stroke={`hsl(20 40% 38% / ${0.55 + Math.min(0.25, jaw.y * 0.03)})`}
+          strokeWidth={1.2 + Math.min(0.5, jaw.y * 0.05)}
+          strokeLinecap="round"
+          style={{ transition: "stroke 1100ms ease, stroke-width 1100ms ease" }}
+        />
         <path d="M 304 142 Q 286 208 248 296"
           fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="1" strokeLinecap="round" />
         <path d="M 258 232 q 6 -2 10 4"
@@ -506,15 +525,20 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
 
       {/* ===== Platysma — fan of fine fibres tensed by jaw thrust =====
           Upper attachment is on the mandible (moves with jaw); lower
-          attachment is on the chest fascia (fixed). We approximate the
-          stretch by translating the WHOLE fan by half the jaw offset, so
-          the upper ends follow the mandible while the lower ends stay near
-          the chest. */}
+          attachment is on the chest fascia (fixed). The fan translates by
+          a fraction of the jaw offset AND a tiny vertical scale tightens
+          the fibres — so the bowing eases with the same cubic-bezier the
+          mandible uses, keeping the deformation visually coupled. */}
       <g
         style={{
           pointerEvents: "none",
-          transform: `translate(${jaw.x * 0.5}px, ${jaw.y * 0.5}px)`,
-          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+          transformOrigin: "170px 304px",
+          transform:
+            `translate(${jaw.x * 0.5}px, ${jaw.y * 0.5}px) ` +
+            `scaleY(${1 - jaw.y * 0.006})`,
+          opacity: 0.85 + Math.min(0.15, jaw.y * 0.015),
+          transition:
+            "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1), opacity 1100ms ease",
         }}
         stroke="hsl(20 40% 45% / 0.28)" strokeWidth="0.5" fill="none" strokeLinecap="round"
       >
