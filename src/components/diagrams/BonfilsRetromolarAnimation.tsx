@@ -301,14 +301,33 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       aria-label="Animated, fully labelled sagittal view of Bonfils retromolar intubation"
     >
       <defs>
-        <linearGradient id="bf-skin" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0%" stopColor="hsl(28 55% 88%)" />
-          <stop offset="60%" stopColor="hsl(22 50% 78%)" />
-          <stop offset="100%" stopColor="hsl(20 45% 68%)" />
+        {/* Main skin tone — light from upper-left, so the top + front
+            (anterior, low-x) are warm and lit, while the underside reads
+            cooler and a touch deeper. */}
+        <linearGradient id="bf-skin" x1="0.15" x2="0.85" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(30 60% 90%)" />
+          <stop offset="45%" stopColor="hsl(24 52% 80%)" />
+          <stop offset="100%" stopColor="hsl(18 42% 64%)" />
         </linearGradient>
+        {/* Posterior/occipital shading — darkens the back of the skull and
+            posterior neck so the occipital curve reads against the pillow.
+            Gradient runs left → right with the dark stop on the RIGHT. */}
         <linearGradient id="bf-skin-shade" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="hsl(20 40% 55% / 0.35)" />
-          <stop offset="40%" stopColor="hsl(20 40% 55% / 0)" />
+          <stop offset="0%" stopColor="hsl(20 40% 50% / 0)" />
+          <stop offset="55%" stopColor="hsl(20 40% 45% / 0.18)" />
+          <stop offset="100%" stopColor="hsl(20 40% 32% / 0.50)" />
+        </linearGradient>
+        {/* Anterior rim light — thin warm highlight along forehead, nose,
+            lips and chin to crisply define the front contour. */}
+        <linearGradient id="bf-skin-rim" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="hsl(40 90% 96% / 0.75)" />
+          <stop offset="35%" stopColor="hsl(40 90% 96% / 0)" />
+        </linearGradient>
+        {/* Soft submandibular shadow — darkens under the jaw to separate
+            the mandible from the anterior neck across postures. */}
+        <linearGradient id="bf-submand-shade" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="hsl(20 40% 30% / 0.45)" />
+          <stop offset="100%" stopColor="hsl(20 40% 30% / 0)" />
         </linearGradient>
         <linearGradient id="bf-tongue" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="hsl(355 55% 60%)" />
@@ -426,10 +445,27 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         strokeWidth="1.4"
         strokeLinejoin="round"
       />
-      {/* Subtle face shading on the right (away from light) */}
+      {/* Posterior skin shading — wraps from vertex around the occiput
+          down the back of the neck. The bf-skin-shade gradient is darkest
+          on the RIGHT, so the occiput reads deeper than the crown. */}
       <path
-        d="M 240 48 Q 295 56 332 80 Q 354 100 366 130 Q 374 148 376 168 Q 380 198 380 232 Q 382 268 380 305 L 248 305"
+        d="M 240 48 Q 295 56 332 80 Q 354 100 366 130 Q 374 148 376 168 Q 380 198 380 232 Q 382 268 380 305 L 248 305 Q 238 280 218 268 Q 196 256 168 248 Z"
         fill="url(#bf-skin-shade)"
+      />
+      {/* Anterior rim light — warm highlight along forehead → nose →
+          philtrum → lips → chin. Bbox-anchored gradient with the bright
+          stop on the LEFT so it always hugs the front contour. */}
+      <path
+        d="M 122 56 Q 88 74 80 108 Q 78 122 74 130 L 52 138 Q 38 144 52 152 L 76 154 Q 74 160 70 166 Q 64 174 60 182 Q 56 190 54 198 Q 52 206 56 212 Q 64 218 76 222 L 84 224 L 78 210 Q 76 196 84 184 Q 92 168 100 158 L 108 138 Q 110 110 130 80 Q 150 62 180 56 Z"
+        fill="url(#bf-skin-rim)"
+        opacity="0.9"
+      />
+      {/* Submandibular shadow — sits under the mandible / above the
+          anterior neck so the chin line stays crisp during jaw thrust. */}
+      <path
+        d="M 84 222 Q 110 232 140 240 Q 174 248 210 260 Q 232 268 244 290 L 104 290 Q 90 260 82 232 Z"
+        fill="url(#bf-submand-shade)"
+        opacity="0.85"
       />
       {/* Occipital inion shadow — radial darkening over the back of the
           skull to suggest the inion bulge and give depth to the curve. */}
