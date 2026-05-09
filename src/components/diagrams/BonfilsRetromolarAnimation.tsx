@@ -681,6 +681,8 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           </g>
         </g>
       )}
+      </g>
+      {/* ============ END head/anatomy/scope rotation group ============ */}
 
       {/* ==================================================================
           LABELS & CALLOUTS — consistent leader-line style
