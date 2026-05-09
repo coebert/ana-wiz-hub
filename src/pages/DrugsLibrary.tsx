@@ -4,6 +4,7 @@ import { Pill, Search, ChevronDown, ChevronUp, Minimize2, Maximize2, Info } from
 
 import { supabase } from "@/integrations/supabase/client";
 import { getDrugLabelInlineStyles, DRUG_LABEL_LEGEND } from "@/lib/drug-label-colours";
+import { BROAD_DRUG_CATEGORIES, getBroadCategory } from "@/lib/drug-categories";
 
 interface DrugRow {
   slug: string;
@@ -17,6 +18,7 @@ export default function DrugsLibrary() {
   const [rows, setRows] = useState<DrugRow[]>([]);
   const [q, setQ] = useState("");
   const [activeClass, setActiveClass] = useState<string | null>(null);
+  const [activeBroad, setActiveBroad] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [showLegend, setShowLegend] = useState(false);
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>(() => {
@@ -52,13 +54,32 @@ export default function DrugsLibrary() {
   }, []);
 
   const classes = useMemo(() => {
-    const s = new Set(rows.map((r) => r.drug_class));
-    return Array.from(s).sort();
+    // When a broad category is active, only show its granular sub-classes.
+    const bucket = activeBroad
+      ? BROAD_DRUG_CATEGORIES.find((b) => b.key === activeBroad) ?? null
+      : null;
+    const pool = bucket ? rows.filter((r) => bucket.match(r.drug_class)) : rows;
+    return Array.from(new Set(pool.map((r) => r.drug_class))).sort();
+  }, [rows, activeBroad]);
+
+  /** Counts per broad bucket — drives chip badges and lets us hide empties. */
+  const broadCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const r of rows) {
+      const cat = getBroadCategory(r.drug_class);
+      if (!cat) continue;
+      counts.set(cat.key, (counts.get(cat.key) ?? 0) + 1);
+    }
+    return counts;
   }, [rows]);
 
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
+    const bucket = activeBroad
+      ? BROAD_DRUG_CATEGORIES.find((b) => b.key === activeBroad) ?? null
+      : null;
     return rows.filter((r) => {
+      if (bucket && !bucket.match(r.drug_class)) return false;
       if (activeClass && r.drug_class !== activeClass) return false;
       if (!needle) return true;
       return (
@@ -68,7 +89,7 @@ export default function DrugsLibrary() {
         (r.synonyms || []).some((s) => s.toLowerCase().includes(needle))
       );
     });
-  }, [rows, q, activeClass]);
+  }, [rows, q, activeClass, activeBroad]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,6 +146,54 @@ export default function DrugsLibrary() {
           />
         </div>
 
+        {/* Broad-category browser — collapses the granular drug_class strings
+            into the high-level buckets a trainee would actually scan by. */}
+        <div className="mb-2">
+          <p className="text-[10px] uppercase tracking-wider font-semibold text-muted-foreground mb-1.5">
+            Browse by class
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              onClick={() => {
+                setActiveBroad(null);
+                setActiveClass(null);
+              }}
+              className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                activeBroad === null
+                  ? "bg-drugs text-white border-drugs"
+                  : "bg-card text-muted-foreground border-border hover:border-drugs/50"
+              }`}
+            >
+              All classes
+            </button>
+            {BROAD_DRUG_CATEGORIES.filter((c) => (broadCounts.get(c.key) ?? 0) > 0).map((c) => {
+              const isActive = activeBroad === c.key;
+              const count = broadCounts.get(c.key) ?? 0;
+              return (
+                <button
+                  key={c.key}
+                  onClick={() => {
+                    const next = isActive ? null : c.key;
+                    setActiveBroad(next);
+                    // Clear granular sub-filter when broad bucket changes.
+                    setActiveClass(null);
+                  }}
+                  className={`text-xs px-3 py-1 rounded-full border transition-colors ${
+                    isActive
+                      ? "bg-drugs text-white border-drugs"
+                      : "bg-card text-foreground border-border hover:border-drugs/50"
+                  }`}
+                >
+                  {c.label}{" "}
+                  <span className={isActive ? "opacity-80" : "text-muted-foreground"}>({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Granular sub-class chips — narrow within the active broad bucket
+            (or across the full library when no bucket is active). */}
         <div className="mb-4 flex flex-wrap gap-1.5">
           <button
             onClick={() => setActiveClass(null)}
