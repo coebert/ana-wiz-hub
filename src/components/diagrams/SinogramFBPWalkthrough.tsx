@@ -229,7 +229,7 @@ export const SinogramFBPWalkthrough = () => {
   }, []);
 
   // ─── Reconstructions for the current nAngles (sub-sampled across [0, π)) ──
-  const { bp, fbp, vminBP, vmaxBP, vminFBP, vmaxFBP, _sinoFilledRows } = useMemo(() => {
+  const { bp, fbp, vminBP, vmaxBP, vminFBP, vmaxFBP, sinoFilledRows: _sinoFilledRows } = useMemo(() => {
     const bp = new Float32Array(N * N);
     const fbp = new Float32Array(N * N);
     if (nAngles > 0) {

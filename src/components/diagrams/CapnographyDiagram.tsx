@@ -202,7 +202,7 @@ const phaseLabels = [
 ];
 
 function AngleArc({
-  cx, cy, startDeg, endDeg, radius, label, color, _info, isActive, onClick,
+  cx, cy, startDeg, endDeg, radius, label, color, info: _info, isActive, onClick,
 }: {
   cx: number; cy: number; startDeg: number; endDeg: number; radius: number;
   label: string; color: string; info: string; isActive: boolean; onClick: () => void;

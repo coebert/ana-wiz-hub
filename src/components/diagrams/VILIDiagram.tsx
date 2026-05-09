@@ -1,4 +1,4 @@
-import { useState, _useMemo } from "react";
+import { useState } from "react";
 
 const VILIDiagram = () => {
   const [vt, setVt] = useState(6);

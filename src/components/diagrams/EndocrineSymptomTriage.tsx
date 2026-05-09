@@ -2,9 +2,7 @@ import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { RotateCcw, Stethoscope, FlaskConical, AlertTriangle, _Info } from "lucide-react";
-import _LabGlossaryPopover from "@/components/LabGlossaryPopover";
-import type { _LabKey } from "@/lib/lab-glossary";
+import { RotateCcw, Stethoscope, FlaskConical, AlertTriangle } from "lucide-react";
 
 /**
  * Interactive symptom-to-diagnosis flowchart for endocrine emergencies.

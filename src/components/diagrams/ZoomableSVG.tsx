@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useRef, useState, _WheelEvent, PointerEvent } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState, PointerEvent } from "react";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
 
 interface ZoomableSVGProps {

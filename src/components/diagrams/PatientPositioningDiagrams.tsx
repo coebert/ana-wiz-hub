@@ -2,13 +2,10 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
   AnatomyDefs,
-  _HeadFront,
   HeadProfile,
   Arm,
   Leg,
-  _TorsoSupine,
   TorsoLateral,
-  _TorsoProne,
   MayfieldPins,
   SupinePatient,
   LateralPatient,

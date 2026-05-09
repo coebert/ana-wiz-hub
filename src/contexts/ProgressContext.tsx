@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
-import { allTopics, topicsBySection, _Topic, Section, ExamTag } from "@/data/curriculum";
+import { allTopics, topicsBySection, Section, ExamTag } from "@/data/curriculum";
 
 interface ProgressContextType {
   completedTopics: Set<string>;
