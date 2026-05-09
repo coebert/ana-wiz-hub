@@ -368,6 +368,17 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       <path d="M 60 142 q 8 4 16 0" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" strokeLinecap="round" />
       <ellipse cx="68" cy="143" rx="3" ry="1.6" fill="hsl(20 40% 25%)" />
 
+      {/* Eyebrow */}
+      <path d="M 132 104 q 16 -6 34 -1" fill="none" stroke="hsl(20 45% 25%)" strokeWidth="2.2" strokeLinecap="round" />
+
+      {/* Nostril */}
+      <path d="M 60 142 q 8 4 16 0" fill="none" stroke="hsl(20 40% 35%)" strokeWidth="1" strokeLinecap="round" />
+      <ellipse cx="68" cy="143" rx="3" ry="1.6" fill="hsl(20 40% 25%)" />
+      <path d="M 76 132 q 6 4 6 12" fill="none" stroke="hsl(20 40% 45%)" strokeWidth="0.7" />
+
+      {/* Cheek contour */}
+      <path d="M 120 150 Q 150 162 178 158" fill="none" stroke="hsl(20 40% 55% / 0.5)" strokeWidth="0.8" />
+
       {/* LIPS — open mouth (jaw thrust) */}
       {/* Upper lip */}
       <path d="M 80 158 Q 95 152 112 158 Q 120 162 110 166 L 84 164 Q 78 162 80 158 Z" fill="url(#bf-lip)" stroke="hsl(355 55% 30%)" strokeWidth="0.8" />
