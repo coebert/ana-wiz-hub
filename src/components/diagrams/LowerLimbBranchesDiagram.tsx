@@ -248,15 +248,15 @@ const LowerLimbBranchesDiagram = () => {
           strokeWidth="0.5" strokeDasharray="3 3" opacity="0.3" />
       )}
 
-      {/* Cutaneous patches */}
+      {/* Cutaneous patches (translucent + dotted boundary) */}
       {(Object.keys(NERVES) as NerveKey[]).map((k) => {
         const n = NERVES[k];
         const patch = view === "ant" ? n.patchAnt : n.patchPost;
         if (!patch || !activeNerves.has(k)) return null;
         const c = mode === "branches" ? NERVE_COLOR[k] : palette;
         return (
-          <path key={`patch-${k}`} d={patch} fill={c} fillOpacity="0.18"
-            stroke={c} strokeWidth="0.6" strokeDasharray="2 2" />
+          <path key={`patch-${k}`} d={patch} fill={c} fillOpacity="0.32"
+            stroke={c} strokeWidth="0.6" strokeDasharray="1.5 2" />
         );
       })}
 
@@ -285,6 +285,50 @@ const LowerLimbBranchesDiagram = () => {
           </g>
         );
       })}
+
+      {/* Surface anatomy overlay — bony landmarks ON TOP */}
+      <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55" strokeLinecap="round">
+        {view === "ant" ? (
+          <>
+            {/* Iliac crest + ASIS */}
+            <path d="M 52 30 Q 100 22 148 30" />
+            <circle cx="60" cy="38" r="1.6" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="140" cy="38" r="1.6" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Inguinal ligament hint */}
+            <path d="M 60 38 Q 100 58 140 38" strokeDasharray="2 2" />
+            {/* Pubic symphysis */}
+            <circle cx="100" cy="62" r="1.3" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Patellae */}
+            <ellipse cx="92" cy="222" rx="7" ry="9" />
+            <ellipse cx="108" cy="222" rx="7" ry="9" />
+            {/* Tibial tuberosity */}
+            <circle cx="92" cy="240" r="1.2" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="108" cy="240" r="1.2" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Medial + lateral malleoli */}
+            <circle cx="80" cy="350" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="88" cy="352" r="1.2" fill="hsl(var(--foreground))" opacity="0.5" />
+            <circle cx="112" cy="352" r="1.2" fill="hsl(var(--foreground))" opacity="0.5" />
+            <circle cx="120" cy="350" r="1.5" fill="hsl(var(--foreground))" opacity="0.6" />
+          </>
+        ) : (
+          <>
+            {/* PSIS dimples + iliac crest */}
+            <path d="M 52 30 Q 100 22 148 30" />
+            <circle cx="86" cy="40" r="1.4" fill="hsl(var(--foreground))" opacity="0.6" />
+            <circle cx="114" cy="40" r="1.4" fill="hsl(var(--foreground))" opacity="0.6" />
+            {/* Sacrum midline */}
+            <line x1="100" y1="32" x2="100" y2="80" strokeDasharray="2 2" />
+            {/* Gluteal fold */}
+            <path d="M 60 130 Q 100 142 140 130" strokeDasharray="2 2" />
+            {/* Popliteal crease */}
+            <path d="M 78 232 Q 92 238 106 232" strokeDasharray="2 2" />
+            <path d="M 96 232 Q 110 238 124 232" strokeDasharray="2 2" />
+            {/* Achilles + heel */}
+            <path d="M 86 340 L 90 360" />
+            <path d="M 114 340 L 110 360" />
+          </>
+        )}
+      </g>
 
       {/* View label */}
       <text x="100" y="14" textAnchor="middle" fontSize="7"
