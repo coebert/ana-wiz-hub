@@ -54,13 +54,32 @@ export default function DrugsLibrary() {
   }, []);
 
   const classes = useMemo(() => {
-    const s = new Set(rows.map((r) => r.drug_class));
-    return Array.from(s).sort();
+    // When a broad category is active, only show its granular sub-classes.
+    const bucket = activeBroad
+      ? BROAD_DRUG_CATEGORIES.find((b) => b.key === activeBroad) ?? null
+      : null;
+    const pool = bucket ? rows.filter((r) => bucket.match(r.drug_class)) : rows;
+    return Array.from(new Set(pool.map((r) => r.drug_class))).sort();
+  }, [rows, activeBroad]);
+
+  /** Counts per broad bucket — drives chip badges and lets us hide empties. */
+  const broadCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const r of rows) {
+      const cat = getBroadCategory(r.drug_class);
+      if (!cat) continue;
+      counts.set(cat.key, (counts.get(cat.key) ?? 0) + 1);
+    }
+    return counts;
   }, [rows]);
 
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
+    const bucket = activeBroad
+      ? BROAD_DRUG_CATEGORIES.find((b) => b.key === activeBroad) ?? null
+      : null;
     return rows.filter((r) => {
+      if (bucket && !bucket.match(r.drug_class)) return false;
       if (activeClass && r.drug_class !== activeClass) return false;
       if (!needle) return true;
       return (
@@ -70,7 +89,7 @@ export default function DrugsLibrary() {
         (r.synonyms || []).some((s) => s.toLowerCase().includes(needle))
       );
     });
-  }, [rows, q, activeClass]);
+  }, [rows, q, activeClass, activeBroad]);
 
   return (
     <div className="min-h-screen bg-background">
