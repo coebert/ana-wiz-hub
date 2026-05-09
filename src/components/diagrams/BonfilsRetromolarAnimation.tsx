@@ -881,30 +881,63 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           </text>
         </g>
 
-        {/* ---- Scope component labels — shown at step 0 (orientation view) ---- */}
-        {step === 0 && (
-          <g>
-            {[
-              { tx: -12, ty: 108, lx: 60, ly: 92,  text: "battery handle / LED light source" },
-              { tx: 0,   ty: 78,  lx: 50, ly: 56,  text: "eyepiece / camera port" },
-              { tx: -12, ty: 100, lx: 50, ly: 134, text: "O₂ side-port (defog + apnoeic O₂)" },
-              { tx: 30,  ty: 116, lx: 80, ly: 152, text: "rigid stainless-steel shaft" },
-              { tx: 50,  ty: 122, lx: 80, ly: 168, text: "ETT pre-loaded over shaft" },
-              { tx: -12, ty: 92,  lx: 50, ly: 184, text: "pilot balloon" },
-            ].map((l, i) => (
-              <g key={`s-${i}`}>
-                <line x1={l.tx} y1={l.ty} x2={l.lx} y2={l.ly}
-                  stroke="hsl(var(--accent) / 0.8)" strokeWidth="0.6" />
-                <circle cx={l.tx} cy={l.ty} r="1.6" fill="hsl(var(--accent))" />
-                <text x={l.lx + 4} y={l.ly} fontSize="9"
-                  fill="hsl(var(--accent-foreground))" textAnchor="start"
-                  style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
-                  {l.text}
+        {/* ---- Scope component labels — shown at step 0 (orientation view).
+            Numbered markers sit on the actual scope parts; the legend lives
+            in a clean panel on the right so the patient/diagram is never
+            obscured. */}
+        {step === 0 && (() => {
+          const items = [
+            { n: 1, mx: 12,  my: 56,  text: "Eyepiece / camera port" },
+            { n: 2, mx: 12,  my: 90,  text: "Battery handle / LED light source" },
+            { n: 3, mx: -10, my: 94,  text: "O₂ side-port (defog + apnoeic O₂)" },
+            { n: 4, mx: 60,  my: 174, text: "Rigid stainless-steel shaft" },
+            { n: 5, mx: 90,  my: 178, text: "ETT pre-loaded over shaft" },
+            { n: 6, mx: -22, my: 200, text: "Pilot balloon" },
+          ];
+          const panelX = 470;
+          const panelY = 18;
+          const rowH = 16;
+          const panelW = 232;
+          const panelH = items.length * rowH + 14;
+          return (
+            <g>
+              {/* Markers on the scope */}
+              {items.map((l) => (
+                <g key={`m-${l.n}`}>
+                  <circle cx={l.mx} cy={l.my} r="7"
+                    fill="hsl(var(--accent))" stroke="hsl(var(--background))" strokeWidth="1.4" />
+                  <text x={l.mx} y={l.my + 3} fontSize="9" fontWeight="700"
+                    textAnchor="middle" fill="hsl(var(--accent-foreground))">
+                    {l.n}
+                  </text>
+                </g>
+              ))}
+              {/* Legend panel (top-right, clear of patient and eyepiece preview) */}
+              <g transform={`translate(${panelX}, ${panelY})`}>
+                <rect x="0" y="0" width={panelW} height={panelH} rx="6"
+                  fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
+                <text x="8" y="12" fontSize="9" fontWeight="700"
+                  fill="hsl(var(--foreground))">
+                  Bonfils components
                 </text>
+                {items.map((l, i) => (
+                  <g key={`lg-${l.n}`} transform={`translate(8, ${18 + i * rowH})`}>
+                    <circle cx="6" cy="6" r="5.5"
+                      fill="hsl(var(--accent))" stroke="hsl(var(--background))" strokeWidth="1" />
+                    <text x="6" y="9" fontSize="8" fontWeight="700"
+                      textAnchor="middle" fill="hsl(var(--accent-foreground))">
+                      {l.n}
+                    </text>
+                    <text x="18" y="9" fontSize="9"
+                      fill="hsl(var(--foreground))">
+                      {l.text}
+                    </text>
+                  </g>
+                ))}
               </g>
-            ))}
-          </g>
-        )}
+            </g>
+          );
+        })()}
 
         {/* ---- Dynamic scope-tip callout (follows the tip every step) ---- */}
         {step !== 5 && (() => {
