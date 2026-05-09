@@ -440,8 +440,20 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           fill="none" stroke="hsl(20 40% 40% / 0.4)" strokeWidth="0.7" />
       </g>
 
-      {/* ===== Platysma — fan of fine fibres tensed by jaw thrust ===== */}
-      <g style={{ pointerEvents: "none" }} stroke="hsl(20 40% 45% / 0.28)" strokeWidth="0.5" fill="none" strokeLinecap="round">
+      {/* ===== Platysma — fan of fine fibres tensed by jaw thrust =====
+          Upper attachment is on the mandible (moves with jaw); lower
+          attachment is on the chest fascia (fixed). We approximate the
+          stretch by translating the WHOLE fan by half the jaw offset, so
+          the upper ends follow the mandible while the lower ends stay near
+          the chest. */}
+      <g
+        style={{
+          pointerEvents: "none",
+          transform: `translate(${jaw.x * 0.5}px, ${jaw.y * 0.5}px)`,
+          transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+        }}
+        stroke="hsl(20 40% 45% / 0.28)" strokeWidth="0.5" fill="none" strokeLinecap="round"
+      >
         <path d="M 88 220 Q 130 260 200 300" />
         <path d="M 102 222 Q 145 262 215 302" />
         <path d="M 118 226 Q 158 266 228 304" />
