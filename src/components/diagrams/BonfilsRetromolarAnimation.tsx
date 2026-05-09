@@ -664,8 +664,43 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
         />
         {/* Median sulcus */}
         <path d="M 110 180 Q 160 168 210 188" fill="none" stroke="hsl(355 55% 28% / 0.6)" strokeWidth="0.7" />
+        {/* Tongue-base lift — extra subtle anterior/superior shift of the
+            posterior tongue + vallecula contour during jaw thrust, showing
+            the tongue base pulled OFF the posterior pharyngeal wall (the
+            therapeutic effect of the manoeuvre, consistent with SCM /
+            platysma tension elsewhere). */}
+        <g
+          style={{
+            transform: `translate(${jaw.x * 0.4}px, ${jaw.y * 0.45}px)`,
+            transition: "transform 1100ms cubic-bezier(0.65, 0, 0.35, 1)",
+          }}
+        >
+          {/* Posterior tongue / base outline */}
+          <path d="M 200 196 Q 222 204 230 220"
+            fill="none" stroke="hsl(355 55% 28% / 0.55)" strokeWidth="0.8" strokeLinecap="round" />
+          {/* Vallecular dip just above the epiglottis */}
+          <path d="M 224 218 q 4 -3 8 0"
+            fill="none" stroke="hsl(355 55% 28% / 0.45)" strokeWidth="0.7" strokeLinecap="round" />
+        </g>
+        {/* Genioglossus / geniohyoid muscle line — runs from the mental
+            spine of the mandible back to the hyoid; it tenses with jaw
+            thrust to pull the tongue and hyoid forward. */}
+        <path d="M 96 196 Q 170 218 240 230"
+          fill="none" stroke="hsl(20 40% 38% / 0.5)" strokeWidth="0.7" strokeLinecap="round" />
+        {/* Mylohyoid sling — thin floor-of-mouth contour */}
+        <path d="M 100 204 Q 170 226 238 236"
+          fill="none" stroke="hsl(20 40% 42% / 0.35)" strokeWidth="0.6" strokeLinecap="round" />
         {/* HYOID (suspended from mandible) */}
-        <ellipse cx="245" cy="232" rx="6" ry="2.4" fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
+        <ellipse cx="245" cy="232" rx="6" ry="2.4"
+          fill="hsl(0 0% 96%)" stroke="hsl(30 25% 50%)" strokeWidth="0.8" />
+        {/* Thyrohyoid membrane — short line dropping from the hyoid toward
+            the thyroid prominence, visibly stretched in jaw thrust. */}
+        <path d="M 245 235 Q 240 244 232 252"
+          fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.7" strokeLinecap="round" />
+        {/* Hyoid shadow — gives the bone a sense of lift off the soft
+            tissue when the jaw is thrust. */}
+        <ellipse cx="246" cy="236" rx="7" ry="1.2"
+          fill="hsl(20 40% 25% / 0.25)" />
       </g>
       {/* ============ END lower-jaw group ============ */}
 
