@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/Header";
 import { VisitTrackerWrapper } from "@/components/VisitTrackerWrapper";
-import { VerifyModeToggle } from "@/components/diagrams/anatomyVerifyMode";
+
 import Landing from "./pages/Landing";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -189,7 +189,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <VerifyModeToggle />
+      
       <BrowserRouter>
         <Header />
         <VisitTrackerWrapper>
