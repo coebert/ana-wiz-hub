@@ -846,18 +846,6 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
                 </g>
               )}
 
-              {/* "via mouth" route arrow — orange highlight pointing at the lips */}
-              <g style={{ pointerEvents: "none" }}>
-                <path d={`M ${handleAnchor.x + 26} ${handleAnchor.y + 22}
-                          q 18 6 60 -2`}
-                  fill="none" stroke="hsl(var(--primary) / 0.85)"
-                  strokeWidth="1.2" strokeDasharray="3 2" markerEnd="url(#bf-arrow)" />
-                <text x={handleAnchor.x + 30} y={handleAnchor.y + 38}
-                  fontSize="9" fontWeight="600" fill="hsl(var(--primary))"
-                  style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
-                  via mouth (oral route)
-                </text>
-              </g>
             </g>
 
             {/* === INTRA-ORAL shaft — curves through airway, never crosses face === */}
@@ -922,14 +910,18 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       <g style={{ pointerEvents: "none" }}>
         {/* ---- Anatomy labels (neutral) ---- */}
         {[
+          // Top of head — upper-airway roof structures
           { tx: 170, ty: 158, lx: 170, ly: 22,  text: "hard palate",            align: "middle" as const },
           { tx: 245, ty: 174, lx: 250, ly: 38,  text: "soft palate",            align: "middle" as const },
           { tx: 244, ty: 198, lx: 304, ly: 56,  text: "uvula",                  align: "start"  as const },
-          { tx: 60,  ty: 132, lx: 8,   ly: 110, text: "nose / nostril",         align: "start"  as const },
-          { tx: 95,  ty: 162, lx: 6,   ly: 220, text: "upper teeth",            align: "start"  as const },
-          { tx: 98,  ty: 175, lx: 6,   ly: 234, text: "lower teeth",            align: "start"  as const },
-          { tx: 155, ty: 200, lx: 90,  ly: 280, text: "tongue",                 align: "start"  as const },
-          { tx: 200, ty: 222, lx: 90,  ly: 296, text: "mandible",               align: "start"  as const },
+          // Left edge — face landmarks (tight stack, no crossing leaders)
+          { tx: 60,  ty: 132, lx: 70,  ly: 100, text: "nose / nostril",         align: "end"    as const },
+          { tx: 100, ty: 162, lx: 70,  ly: 118, text: "upper teeth",            align: "end"    as const },
+          { tx: 100, ty: 180, lx: 70,  ly: 132, text: "lower teeth",            align: "end"    as const },
+          // Bottom — jaw / floor of mouth (leaders go DOWN, clear of scope)
+          { tx: 175, ty: 215, lx: 150, ly: 328, text: "tongue",                 align: "middle" as const },
+          { tx: 215, ty: 248, lx: 215, ly: 328, text: "mandible",               align: "middle" as const },
+          // Right side — pharyngo-laryngeal column
           { tx: 245, ty: 232, lx: 335, ly: 130, text: "hyoid bone",             align: "start"  as const },
           { tx: 252, ty: 226, lx: 335, ly: 150, text: "vallecula",              align: "start"  as const },
           { tx: 252, ty: 242, lx: 335, ly: 170, text: "epiglottis",             align: "start"  as const },
@@ -943,28 +935,13 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
             <line x1={l.tx} y1={l.ty} x2={l.lx} y2={l.ly}
               stroke="hsl(var(--muted-foreground) / 0.55)" strokeWidth="0.6" />
             <circle cx={l.tx} cy={l.ty} r="1.6" fill="hsl(var(--foreground) / 0.7)" />
-            <text x={l.lx + (l.align === "start" ? 4 : 0)} y={l.ly} fontSize="9"
+            <text x={l.lx + (l.align === "start" ? 4 : l.align === "end" ? -4 : 0)} y={l.ly} fontSize="9"
               fill="hsl(var(--foreground))" textAnchor={l.align}
               style={{ paintOrder: "stroke", stroke: "hsl(var(--background))", strokeWidth: 3 }}>
               {l.text}
             </text>
           </g>
         ))}
-
-        {/* ---- KEY: retromolar channel — highlighted Bonfils path ---- */}
-        <g>
-          <line x1="170" y1="178" x2="92" y2="62"
-            stroke="hsl(var(--primary) / 0.7)" strokeWidth="0.8" />
-          <circle cx="170" cy="178" r="2.4" fill="hsl(var(--primary))" />
-          <rect x="6" y="50" width="142" height="22" rx="3"
-            fill="hsl(var(--primary) / 0.12)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
-          <text x="14" y="64" fontSize="10" fontWeight="700" fill="hsl(var(--primary))">
-            retromolar channel
-          </text>
-          <text x="14" y="74" fontSize="8" fill="hsl(var(--primary))">
-            (Bonfils insertion path)
-          </text>
-        </g>
 
         {/* ---- Scope component labels — shown at step 0 (orientation view).
             Numbered markers sit on the actual scope parts; the legend lives
@@ -1024,47 +1001,7 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           );
         })()}
 
-        {/* ---- Dynamic scope-tip callout (follows the tip every step) ----
-            Mirrors the head/scope rotation transform + easing so the leader
-            line stays anchored to the moving tip during the eased rotation,
-            then counter-rotates the label so the text remains upright. */}
-        {step !== 5 && (() => {
-          const lx = sp.tipX > 200 ? sp.tipX - 90 : sp.tipX + 30;
-          const ly = sp.tipY + 50;
-          const labelCx = lx + 42;
-          const labelCy = ly - 3;
-          return (
-            <g
-              style={{
-                transform: `translateZ(0) rotate(${headRot}deg)`,
-                transformOrigin: `${HEAD_PIVOT.x}px ${HEAD_PIVOT.y}px`,
-                transformBox: "view-box",
-                willChange: "transform",
-                transition:
-                  "transform 1400ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease",
-              }}
-            >
-              <line x1={sp.tipX} y1={sp.tipY} x2={lx + 40} y2={ly - 3}
-                stroke="hsl(50 100% 45%)" strokeWidth="0.7" />
-              <g
-                style={{
-                  transform: `rotate(${-headRot}deg)`,
-                  transformOrigin: `${labelCx}px ${labelCy}px`,
-                  transformBox: "view-box",
-                  transition:
-                    "transform 1400ms cubic-bezier(0.22, 1, 0.36, 1)",
-                }}
-              >
-                <rect x={lx - 4} y={ly - 11} width="92" height="15" rx="3"
-                  fill="hsl(50 100% 92%)" stroke="hsl(50 100% 40%)" strokeWidth="0.7" />
-                <text x={lx} y={ly} fontSize="9" fontWeight="600"
-                  fill="hsl(40 80% 22%)">
-                  scope tip — LED + lens
-                </text>
-              </g>
-            </g>
-          );
-        })()}
+        {/* Scope tip is self-evident from the glowing yellow LED — no callout needed. */}
       </g>
 
       {/* ==================================================================
