@@ -416,28 +416,27 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
       */}
       <path
         d="
-          M 240 48
-          Q 175 34 122 56
-          Q 88 74 80 108
-          Q 78 122 74 130
-          L 52 138
-          Q 38 144 52 152
-          L 76 154
-          Q 74 160 70 166
-          Q 64 174 60 182
-          Q 56 190 54 198
-          Q 52 206 56 212
-          Q 64 218 76 222
-          Q 96 228 118 234
-          Q 142 240 168 248
-          Q 196 256 218 268
-          Q 238 280 248 305
+          M 240 32
+          Q 170 14 118 52
+          Q 86 72 80 112
+          Q 78 124 74 132
+          L 50 142
+          Q 36 148 50 156
+          L 76 158
+          Q 74 164 70 170
+          Q 64 178 60 188
+          Q 56 198 52 208
+          Q 50 216 58 222
+          Q 70 228 86 230
+          Q 104 232 122 232
+          Q 150 234 188 248
+          Q 222 264 248 305
           L 380 305
-          Q 382 268 380 232
-          Q 380 198 376 168
-          Q 374 148 366 130
-          Q 354 100 332 80
-          Q 295 56 240 48
+          Q 388 282 394 244
+          Q 398 210 392 178
+          Q 386 152 378 132
+          Q 366 96 332 72
+          Q 295 40 240 32
           Z
         "
         fill="url(#bf-skin)"
@@ -449,48 +448,49 @@ function BonfilsSvg({ step, lostView }: { step: Step; lostView: boolean }) {
           down the back of the neck. The bf-skin-shade gradient is darkest
           on the RIGHT, so the occiput reads deeper than the crown. */}
       <path
-        d="M 240 48 Q 295 56 332 80 Q 354 100 366 130 Q 374 148 376 168 Q 380 198 380 232 Q 382 268 380 305 L 248 305 Q 238 280 218 268 Q 196 256 168 248 Z"
+        d="M 240 32 Q 295 40 332 72 Q 366 96 378 132 Q 386 152 392 178 Q 398 210 394 244 Q 388 282 380 305 L 248 305 Q 222 264 188 248 Q 150 234 122 232 Z"
         fill="url(#bf-skin-shade)"
       />
       {/* Anterior rim light — warm highlight along forehead → nose →
-          philtrum → lips → chin. Bbox-anchored gradient with the bright
-          stop on the LEFT so it always hugs the front contour. */}
+          philtrum → lips → chin. */}
       <path
-        d="M 122 56 Q 88 74 80 108 Q 78 122 74 130 L 52 138 Q 38 144 52 152 L 76 154 Q 74 160 70 166 Q 64 174 60 182 Q 56 190 54 198 Q 52 206 56 212 Q 64 218 76 222 L 84 224 L 78 210 Q 76 196 84 184 Q 92 168 100 158 L 108 138 Q 110 110 130 80 Q 150 62 180 56 Z"
+        d="M 118 52 Q 86 72 80 112 Q 78 124 74 132 L 50 142 Q 36 148 50 156 L 76 158 Q 74 164 70 170 Q 64 178 60 188 Q 56 198 52 208 Q 50 216 58 222 Q 70 228 86 230 L 92 226 L 84 214 Q 82 200 90 186 Q 96 168 104 158 L 112 138 Q 114 108 134 80 Q 154 60 184 52 Z"
         fill="url(#bf-skin-rim)"
         opacity="0.9"
       />
-      {/* Submandibular shadow — sits under the mandible / above the
-          anterior neck so the chin line stays crisp during jaw thrust. */}
+      {/* Submandibular shadow — sits under the (now shorter) mandible /
+          above the anterior neck so the chin line stays crisp during jaw
+          thrust and the thyromental distance reads correctly. */}
       <path
-        d="M 84 222 Q 110 232 140 240 Q 174 248 210 260 Q 232 268 244 290 L 104 290 Q 90 260 82 232 Z"
+        d="M 86 230 Q 104 234 122 234 Q 150 238 188 252 L 188 268 Q 150 252 122 248 Q 100 246 86 244 Z"
         fill="url(#bf-submand-shade)"
         opacity="0.85"
       />
-      {/* Occipital inion shadow — radial darkening over the back of the
-          skull to suggest the inion bulge and give depth to the curve. */}
-      <ellipse cx="372" cy="200" rx="18" ry="40" fill="url(#bf-occiput-shade)" />
-      {/* Inion contour line (slightly stronger near the bulge apex). */}
+      {/* Occipital (external) protuberance — radial darkening centred on
+          the inion bulge to give the back of the skull real volume. */}
+      <ellipse cx="388" cy="208" rx="22" ry="46" fill="url(#bf-occiput-shade)" />
+      {/* Inion contour line — distinct posterior bulge curve */}
       <path
-        d="M 376 168 Q 386 200 380 232"
+        d="M 384 162 Q 402 208 392 252"
         fill="none"
-        stroke="hsl(20 40% 32% / 0.7)"
-        strokeWidth="1"
+        stroke="hsl(20 40% 30% / 0.75)"
+        strokeWidth="1.1"
         strokeLinecap="round"
       />
       {/* Inion crest highlight (thin lit edge above the shadow). */}
       <path
-        d="M 374 178 Q 380 192 378 206"
+        d="M 380 178 Q 392 208 388 240"
         fill="none"
         stroke="hsl(28 60% 92% / 0.55)"
         strokeWidth="0.6"
       />
       {/* Labiomental sulcus (chin/lip groove) */}
-      <path d="M 60 184 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.8" strokeLinecap="round" />
-      {/* Mental protuberance highlight */}
-      <path d="M 50 200 q 4 -2 8 4" fill="none" stroke="hsl(20 40% 38% / 0.5)" strokeWidth="0.8" />
-      {/* Thyroid prominence (Adam's apple) */}
-      <path d="M 168 246 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.55)" strokeWidth="0.9" strokeLinecap="round" />
+      <path d="M 56 196 q 4 4 0 8" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.8" strokeLinecap="round" />
+      {/* Mental protuberance highlight (more prominent chin) */}
+      <path d="M 50 210 q 4 -2 8 6" fill="none" stroke="hsl(20 40% 38% / 0.55)" strokeWidth="0.9" />
+      {/* Thyroid prominence (Adam's apple) — moved closer to chin so the
+          thyromental distance is anatomically realistic. */}
+      <path d="M 122 240 q 4 -3 10 0" fill="none" stroke="hsl(20 40% 40% / 0.6)" strokeWidth="0.9" strokeLinecap="round" />
 
       {/* ===== Sternocleidomastoid (SCM) — mastoid → sternoclavicular ===== */}
       <g style={{ pointerEvents: "none" }}>
