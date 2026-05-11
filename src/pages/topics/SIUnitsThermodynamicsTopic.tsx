@@ -202,6 +202,7 @@ const SIUnitsThermodynamicsTopic = () => {
                 In vaporisers, the latent heat of vaporisation of volatile agents cools the liquid, reducing its saturated vapour pressure and output concentration.
                 Temperature-compensating mechanisms (bimetallic strip, wick, copper heat sink) counteract this cooling effect to maintain stable output.
               </p>
+              <LatentHeatDiagram />
             </div>
           </ExamSection>
 
