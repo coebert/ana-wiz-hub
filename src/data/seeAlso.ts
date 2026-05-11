@@ -121,6 +121,7 @@ export const seeAlsoMap: Record<string, string[]> = {
   "arrhythmias-ecg-icu": ["cardiac-electrophysiology", "cardiac-anatomy", "antiarrhythmics", "defibrillation-pacing", "circulatory-failure", "cardiovascular-disease", "toxicology", "acid-base", "cardiac-arrest-post-resus"],
   "cardiac-arrest-post-resus": ["arrhythmias-ecg-icu", "neurointensive-care", "circulatory-failure", "defibrillation-pacing", "prognostication-ethics-icu", "organ-donation", "cardiovascular-disease", "icu-sedation-delirium"],
   "icu-nutrition": ["gi-physiology", "aki-rrt", "sepsis"],
+  "postop-high-risk-icu": ["preoperative-assessment", "enhanced-recovery", "perioperative-fluids", "cardiovascular-disease", "aki-rrt", "icu-sedation-delirium", "prognostication-ethics-icu", "circulatory-failure"],
   "icu-endocrine-emergencies": ["endocrine-disease", "endocrine-physiology", "acid-base", "corticosteroids", "icu-nutrition", "sepsis"],
   "transfusion-coagulation": ["haematology-immunity", "anticoagulants", "haematology-icu", "trauma-emergency"],
   "icu-sedation-delirium": ["neurointensive-care", "elderly-anaesthesia", "opioids", "prognostication-ethics-icu"],
