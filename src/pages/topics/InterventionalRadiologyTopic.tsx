@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
 import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
+import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
@@ -124,6 +125,19 @@ const InterventionalRadiologyTopic = () => {
             <h2 className="text-xl font-bold text-foreground mb-2">Procedure-Specific Considerations</h2>
             <div className="bg-card border border-border rounded-lg p-4 mb-3">
               <h3 className="font-semibold text-foreground mb-2">TIPSS</h3>
+              <figure className="my-3">
+                <img
+                  src={tipssIllustration}
+                  alt="Anatomical illustration of a TIPSS procedure: catheter via right internal jugular vein → SVC → right atrium → IVC → right hepatic vein, with a covered metallic stent traversing the cirrhotic liver to the right portal vein, diverting portal blood into the systemic circulation. Splenomegaly and oesophageal varices shown as features of portal hypertension."
+                  width={1536}
+                  height={1024}
+                  loading="lazy"
+                  className="w-full h-auto rounded-lg border border-border"
+                />
+                <figcaption className="text-xs text-muted-foreground mt-2 text-center">
+                  TIPSS — a covered stent is placed transjugularly between a hepatic vein and the portal vein, decompressing the portal system and bypassing the cirrhotic liver.
+                </figcaption>
+              </figure>
               <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
                 <li>Patients often have decompensated cirrhosis — coagulopathy, thrombocytopaenia, ascites, encephalopathy</li>
                 <li>Usually GA or deep sedation with invasive monitoring</li>
