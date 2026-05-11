@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { interventionalRadiologyQuestions } from "@/data/quizzes";
 import ContrastReactionDiagram from "@/components/diagrams/ContrastReactionDiagram";
+import tipssIllustration from "@/assets/ir/tipss-procedure.jpg";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
