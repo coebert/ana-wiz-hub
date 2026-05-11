@@ -481,6 +481,101 @@ const ObstetricAnaesthesiaTopic = () => {
           <p className="text-xs text-muted-foreground mt-2">Evidence: <em>RESPITE</em> (Wilson, Lancet 2018) — remifentanil PCA halved epidural conversion vs pethidine but did not match epidural for pain relief; RemiPCA SAFE Network reports rare but real maternal apnoea events, all preventable with strict monitoring (Stocki 2014; Van de Velde 2016).</p>
         </div>
 
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Labour &amp; Delivery After Intra-Uterine Fetal Death</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Intra-uterine fetal death (IUFD) is defined as fetal death in utero from ≥24 weeks' gestation (UK; WHO ≥28 weeks). It complicates ~1 in 200 UK pregnancies (MBRRACE). Vaginal delivery — usually after mifepristone priming and misoprostol induction — is preferred wherever maternally safe; caesarean is reserved for maternal indications (placenta praevia, prior classical CS, severe pre-eclampsia, sepsis with failed induction). The anaesthetist's priorities are <strong>compassionate analgesia</strong>, screening for the maternal complications that an in-utero death may herald (sepsis, DIC, pre-eclampsia, abruption), and safe neuraxial decision-making despite a possibly evolving coagulopathy.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Why IUFD is a high-risk anaesthetic encounter</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Sepsis</strong> — chorioamnionitis may be the cause or the consequence of IUFD; risk rises sharply with retained fetus &gt; 48 h and with prolonged ruptured membranes</li>
+                <li><strong>Coagulopathy / DIC</strong> — release of fetal thromboplastins from a retained dead fetus; risk ≈ 10% at 4 weeks, &gt;30% at 5 weeks of retention; accelerated by abruption or sepsis</li>
+                <li><strong>Pre-eclampsia / HELLP</strong> — may be the precipitant of fetal demise; reassess BP, urinalysis, platelets, LFTs, urate on admission</li>
+                <li><strong>Placental abruption / antepartum haemorrhage</strong> — concealed bleeding may be substantial; couvelaire uterus and DIC</li>
+                <li><strong>Amniotic fluid embolism</strong> — rare but reported during induction of labour for IUFD</li>
+                <li><strong>Psychological distress</strong> — bereaved, exhausted, often declining intervention; affects consent and cooperation</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mandatory work-up on admission</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>FBC, coagulation screen (PT/APTT/<strong>fibrinogen</strong>), U&amp;E, LFTs, urate, group &amp; save (cross-match if bleeding/sepsis)</li>
+                <li>CRP, lactate, blood cultures, MSU, HVS if any sepsis features; ViEWS/MEOWS observations</li>
+                <li><strong>ROTEM/TEG</strong> if available — earliest detector of evolving DIC</li>
+                <li>Repeat coag &amp; fibrinogen <strong>every 6–12 h</strong> while awaiting delivery (sooner if bleeding, sepsis, abruption, or retention &gt; 48 h)</li>
+                <li>BP, urinalysis, platelets, LFTs to exclude pre-eclampsia/HELLP</li>
+                <li>Anti-D if Rh-negative; VTE risk assessment (IUFD itself confers high VTE risk — LMWH unless imminent delivery / coagulopathy)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Coagulopathy of Retained Dead Fetus</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A consumptive coagulopathy driven by tissue thromboplastin release from the dead fetus and placenta. Clinically silent in the first days, then progressive: ↓ fibrinogen, ↓ platelets, ↑ PT/APTT, ↑ D-dimer, micro-angiopathic film. <strong>Fibrinogen is the most sensitive single marker</strong> — in pregnancy "normal" fibrinogen is 4–6 g/L; a value of 2 g/L is already significantly low. Sepsis or abruption can collapse the timeline from weeks to hours. Correct with cryoprecipitate or fibrinogen concentrate (target &gt; 2 g/L), FFP for prolonged PT/APTT, platelets if &lt; 50 ×10⁹/L (or &lt; 75 prior to neuraxial), and tranexamic acid 1 g if active bleeding.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Sepsis Considerations</h3>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Maternal sepsis remains a leading direct cause of UK maternal death (MBRRACE). In IUFD, suspect sepsis with maternal pyrexia, tachycardia, uterine tenderness, offensive liquor or rising CRP/lactate. Apply the <strong>Sepsis Six</strong> within 1 h, take cultures (including HVS and placental swabs at delivery), and give broad-spectrum antibiotics covering Group A Streptococcus, anaerobes and Gram-negatives (e.g. piperacillin–tazobactam ± gentamicin; add clindamycin if streptococcal toxic-shock features). Sepsis worsens DIC and is a relative contraindication to neuraxial blockade until source control and resuscitation are achieved.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Analgesia &amp; Anaesthesia</h3>
+          <div className="overflow-x-auto mb-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Modality</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Considerations in IUFD</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Epidural / CSE</td>
+                  <td>Preferred if coagulation, platelets and clinical picture permit. <strong>Check coag &amp; platelets within ~6 h before siting</strong> and again before catheter removal. Conventional thresholds: platelets ≥ 75–80 ×10⁹/L (and stable/rising), normal PT/APTT, fibrinogen ≥ 2 g/L, no clinical bleeding, no untreated bacteraemia.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Remifentanil PCA</td>
+                  <td>Excellent fall-back when neuraxial is contraindicated by coagulopathy or sepsis — no fetal-compromise concerns now constrain dosing. Standard 1:1 midwifery + SpO₂/capnography monitoring still mandatory.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Systemic opioids (morphine, diamorphine, pethidine)</td>
+                  <td>Useful — concerns about neonatal respiratory depression no longer apply. Combine with antiemetic; avoid pethidine in renal impairment.</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-medium text-foreground">Paracetamol ± NSAID</td>
+                  <td>Paracetamol routinely. NSAID only if no bleeding, pre-eclampsia, renal impairment or coagulopathy.</td>
+                </tr>
+                <tr>
+                  <td className="py-2 font-medium text-foreground">General anaesthesia (for CS)</td>
+                  <td>Default if coagulopathic or septic. Standard obstetric RSI, but pre-induction opioid for haemodynamic stability is now appropriate (no viable fetus). Anticipate uterine atony, transfusion and DIC; activate the major-haemorrhage pathway early.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Conduct of Induced Labour</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mb-4 leading-relaxed">
+            <li><strong>Mifepristone 200 mg PO</strong> (priming, 24–48 h before) followed by <strong>misoprostol</strong> per RCOG Green-top 55 (dose tapers with gestation: 100 µg 6-hourly &gt; 27 wk; 25–50 µg 4-hourly at term)</li>
+            <li>Reduce misoprostol dose and use mechanical methods (Foley) cautiously in women with previous CS — uterine rupture risk</li>
+            <li>Continuous maternal observations; <strong>do not</strong> use routine CTG; bedside maternal monitoring (MEOWS), temperature 4-hourly</li>
+            <li>Active third-stage management; have <strong>oxytocin, ergometrine, carboprost, tranexamic acid and a major-haemorrhage pathway primed</strong> — atony and PPH risk are high after prolonged induction and with coagulopathy</li>
+            <li>Send placenta for histology and microbiology; cord blood, fetal samples and post-mortem per local bereavement pathway</li>
+            <li>Bereavement care: dedicated midwife, quiet room, memory-making, chaplaincy as wished; clear documentation of consents</li>
+          </ul>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Postnatal Anaesthetic Issues</h3>
+          <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 leading-relaxed">
+            <li><strong>VTE prophylaxis</strong>: IUFD is an independent VTE risk factor — restart LMWH as soon as coagulation permits and continue for at least 6 weeks post-partum (RCOG Green-top 37a)</li>
+            <li>Ongoing surveillance for delayed PPH, endometritis, retained products and secondary DIC</li>
+            <li>Lactation suppression (cabergoline 1 mg PO single dose) discussed sensitively</li>
+            <li><strong>Psychological follow-up</strong>: bereavement midwife, perinatal mental-health team; document for future pregnancy planning</li>
+            <li>Anaesthetic debrief and a clear plan for any subsequent pregnancy (high-risk clinic referral)</li>
+          </ul>
+          <p className="text-xs text-muted-foreground mt-3">Sources: RCOG Green-top Guideline 55 (Late Intrauterine Fetal Death and Stillbirth); MBRRACE-UK Saving Lives, Improving Mothers' Care; OAA guidance on anaesthesia for the obstetric patient with coagulopathy.</p>
+        </div>
 
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Placental Drug Transfer</h2>
