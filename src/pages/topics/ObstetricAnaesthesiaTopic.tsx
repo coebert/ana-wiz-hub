@@ -358,6 +358,76 @@ const ObstetricAnaesthesiaTopic = () => {
         </div>
 
         <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Obstetric Medicine &amp; Labour Management for the Anaesthetist</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            A working knowledge of antenatal medicine and the obstetric conduct of labour underpins safe anaesthetic decision-making — it dictates timing of neuraxial blockade, choice of induction agent, vasopressor strategy, transfusion thresholds and post-partum disposition. The summary below is curated from MBRRACE-UK reports, NICE NG121/NG133/NG3, RCOG Green-top guidelines and the OAA/AAGBI guidance.
+          </p>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Antenatal conditions with anaesthetic implications</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Condition</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Obstetric management</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Anaesthetic relevance</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-eclampsia / HELLP</td><td>Labetalol/nifedipine/hydralazine; MgSO₄ 4 g load + 1 g/h for severe PET or eclampsia; aim BP &lt;140/90; deliver by 37 wk (earlier if severe).</td><td>Early epidural (improves placental flow, avoids GA airway); platelets ≥75 ×10⁹/L &amp; normal coag for neuraxial; obtund pressor response at GA induction (remi/alfentanil); MgSO₄ potentiates NMBs; avoid ergometrine (severe HTN).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Gestational / pre-existing diabetes</td><td>Insulin infusion in labour to maintain CBG 4–7 mmol/L; planned delivery 37–38⁺⁶ wk if on therapy.</td><td>Avoid glucose-containing co-load; continue VRIII intra-op; macrosomia → shoulder dystocia / instrumental risk; neonatal hypoglycaemia.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Cardiac disease (mWHO II–IV)</td><td>MDT planning, joint cardiac-obstetric clinic, controlled vaginal delivery usually preferred over CS; assisted second stage to avoid Valsalva.</td><td>Slow-titrated epidural (avoid spinal hypotension); invasive monitoring for severe lesions; avoid ergometrine (pulmonary HTN, HOCM); careful fluid balance — cardiac output peaks immediately post-partum from auto-transfusion.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">VTE / thromboprophylaxis</td><td>RCOG GTG-37a risk-score; LMWH antenatal &amp; for 6 wk post-partum if intermediate/high risk.</td><td>Neuraxial timing: 12 h after prophylactic, 24 h after therapeutic LMWH; remove catheter ≥12 h after last dose, next dose ≥4 h post-removal.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetric sepsis</td><td>Sepsis-6 within 1 h; broad-spectrum antibiotics (e.g. piperacillin-tazobactam ± gentamicin); deliver if intrauterine source.</td><td>Coagulopathy &amp; bacteraemia may preclude neuraxial; consider GA or remifentanil PCA; vasopressor + invasive monitoring; leading direct cause of maternal death (MBRRACE).</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Obstetric cholestasis / AFLP</td><td>UDCA; deliver 37–38 wk for ICP; immediate delivery for AFLP.</td><td>Coagulopathy in AFLP — check INR/fibrinogen before neuraxial; hypoglycaemia.</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Placenta praevia / accreta spectrum</td><td>Elective CS 36–37 wk; MDT with interventional radiology; cell salvage available.</td><td>Large-bore access × 2, group-and-save / cross-match 4 units, activate MHP pathway; regional feasible but convert to GA early if massive haemorrhage.</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Mental health / substance misuse</td><td>Perinatal mental health team; opioid substitution continued through labour.</td><td>Leading <strong>indirect</strong> cause of maternal death (MBRRACE); higher analgesic requirements; naloxone caution in opioid-dependent women.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Conduct &amp; stages of labour</h3>
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">First stage (latent → active)</p>
+              <p className="text-sm text-muted-foreground mt-1">Latent: irregular contractions, cervix &lt;4 cm. Active: regular contractions, ≥4 cm dilatation, expected ~0.5 cm/h (nullip) / 1 cm/h (multip). Intermittent auscultation for low-risk; continuous CTG for high-risk. Anaesthetic: site epidural early once active labour established and woman requests; review any high-risk plan.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Second stage</p>
+              <p className="text-sm text-muted-foreground mt-1">Full dilatation → delivery. Passive (descent) then active (pushing). Prolonged: &gt;2 h nullip / &gt;1 h multip with epidural add 1 h. Anaesthetic: top-up for instrumental delivery (lidocaine 2% + adrenaline ± bicarbonate, or low-dose CSE); avoid dense motor block early.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Third stage &amp; active management</p>
+              <p className="text-sm text-muted-foreground mt-1">Delivery of placenta. <strong>Active management</strong> (oxytocin 10 IU IM / 5 IU slow IV at delivery, controlled cord traction, uterine massage) reduces PPH by ~60%. Ergometrine 500 µg IM <strong>contraindicated</strong> in HTN/PET/cardiac disease. Carboprost (250 µg IM, max 8) avoid in asthma; misoprostol 800 µg PR adjunct.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Induction &amp; augmentation</p>
+              <p className="text-sm text-muted-foreground mt-1">Indications: post-dates ≥41 wk, PROM, diabetes, IUGR, IUD. Methods: membrane sweep → vaginal prostaglandin (dinoprostone) or oral misoprostol → ARM → oxytocin infusion (start 1–4 mU/min, titrate). Anaesthetic: oxytocin causes vasodilatation and tachycardia; <strong>bolus &gt;5 IU</strong> can precipitate severe hypotension — give 3 IU slow IV at CS (NICE).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Fetal monitoring</p>
+              <p className="text-sm text-muted-foreground mt-1">CTG (DR-C-BRA-VADO): Baseline 110–160, variability 5–25, accelerations reassuring, decelerations classified (early/variable/late). Pathological CTG → fetal blood sampling (pH ≥7.25 normal; ≤7.20 deliver). Anaesthetic should anticipate Cat-1 CS when CTG deteriorates.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Categories of caesarean (RCOG)</p>
+              <p className="text-sm text-muted-foreground mt-1"><strong>Cat 1</strong>: immediate threat to life — DDI &lt;30 min (audit standard); GA or rapid spinal/epidural top-up. <strong>Cat 2</strong>: maternal/fetal compromise not immediately life-threatening — DDI &lt;75 min. <strong>Cat 3</strong>: needs early delivery, no compromise. <strong>Cat 4</strong>: elective.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Instrumental delivery</p>
+              <p className="text-sm text-muted-foreground mt-1">Ventouse / forceps in theatre if mid-cavity or rotational ("trial"). Anaesthetic provides regional top-up to T10 (perineal block) — failed instrumental converts to CS, so plan for higher block.</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Post-partum haemorrhage (PPH)</p>
+              <p className="text-sm text-muted-foreground mt-1">≥500 ml vaginal / ≥1000 ml CS; major ≥1000 ml or ongoing. <strong>4 Ts</strong>: Tone (80%), Trauma, Tissue, Thrombin. Bundle: uterotonics ladder (oxytocin → ergometrine → carboprost → misoprostol), TXA 1 g within 3 h (WOMAN trial), bimanual compression, balloon tamponade, B-Lynch, IR embolisation, hysterectomy. Activate MHP; aim fibrinogen &gt;2 g/L (ROTEM-guided).</p>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Immediate post-natal period</p>
+              <p className="text-sm text-muted-foreground mt-1">Auto-transfusion ↑CO ~60–80% in first 10 min — risk of pulmonary oedema in cardiac/PET. Continue MgSO₄ 24 h post-delivery in severe PET. Restart LMWH 6–12 h post-delivery (later after PPH or epidural removal). Early mobilisation; analgesia ladder paracetamol + NSAID (avoid in severe PET / renal impairment) + opioid PRN.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Labour Analgesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
             Epidural analgesia is the gold standard for labour pain. Low-dose combined spinal-epidural (CSE) provides rapid onset with minimal motor block. Remifentanil PCA is the principal IV alternative when neuraxial analgesia is contraindicated, declined or has failed.
