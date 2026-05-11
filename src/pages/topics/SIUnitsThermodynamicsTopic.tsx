@@ -3,6 +3,7 @@ import { ExamSection } from "@/components/ExamSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { siUnitsThermodynamicsQuiz } from "@/data/quizzes";
 import SIUnitsThermodynamicsDiagram from "@/components/diagrams/SIUnitsThermodynamicsDiagram";
+import LatentHeatDiagram from "@/components/diagrams/LatentHeatDiagram";
 import { Exam } from "@/data/curriculum";
 
 const objectives = [
