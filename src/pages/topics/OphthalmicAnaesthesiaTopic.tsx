@@ -1,8 +1,15 @@
 import { TopicTemplate } from "@/components/TopicTemplate";
 import { ExamSection } from "@/components/ExamSection";
+import { DiagramSection } from "@/components/DiagramSection";
 import { WorkedExample } from "@/components/WorkedExamples";
 import { ophthalmicAnaesthesiaQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import {
+  SubTenonsBlockIllustration,
+  PeribulbarBlockIllustration,
+  RetrobulbarBlockIllustration,
+  TopicalIntracameralIllustration,
+} from "@/components/diagrams/EyeBlockIllustrations";
 
 const objectives = [
   "Outline the determinants of intra-ocular pressure and the drugs/manoeuvres that raise or lower it",
@@ -102,6 +109,22 @@ const OphthalmicAnaesthesiaTopic = () => {
               </table>
             </div>
           </ExamSection>
+
+          <DiagramSection
+            id="block-illustrations"
+            title="Eye Block Procedures — Illustrated"
+            intro={
+              <p>
+                Procedural plates for the four ophthalmic regional techniques. Note the relationship of the needle / cannula tip
+                to the muscle cone — the single most important determinant of safety and efficacy.
+              </p>
+            }
+          >
+            <SubTenonsBlockIllustration />
+            <PeribulbarBlockIllustration />
+            <RetrobulbarBlockIllustration />
+            <TopicalIntracameralIllustration />
+          </DiagramSection>
 
           <ExamSection id="open-globe" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Open Globe Injury</h2>
