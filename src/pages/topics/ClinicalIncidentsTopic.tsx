@@ -196,6 +196,61 @@ const ClinicalIncidentsTopic = () => {
               NAP5 (2014): incidence ~1:19,000. Risk factors: TIVA without BIS, RSI, cardiac surgery, CS under GA, junior anaesthetist, failure to check equipment. Prevention: processed EEG monitoring (BIS 40–60), end-tidal agent monitoring for volatiles, avoid paralysis unless necessary. Management: immediate acknowledgement, psychological support, formal follow-up.
             </p>
           </ExamSection>
+
+          <ExamSection id="death-on-table" exams={[Exam.FINAL, Exam.FFICM]}>
+            <h2 className="text-xl font-bold text-foreground mb-2">Death on the Table</h2>
+            <div className="text-muted-foreground leading-relaxed space-y-3">
+              <p>
+                Intra-operative cardiac arrest occurs in ~5–7 per 10,000 anaesthetics; mortality of intra-operative arrest remains ~30–70% (NAP7, 2023). Most are anticipated in high-risk emergency surgery, but a minority are sudden and unexpected. Management has three parallel strands — <strong>resuscitation</strong>, <strong>communication / governance</strong>, and <strong>aftercare of staff and family</strong>.
+              </p>
+
+              <h3 className="text-base font-semibold text-foreground mt-2">1. Immediate clinical management</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Call for help early</strong> — declare "cardiac arrest" out loud; activate theatre arrest call; second anaesthetist + ODP/anaesthetic assistant to the head; runner for drugs/blood.</li>
+                <li><strong>ALS algorithm adapted to theatre</strong>: turn off volatile/TIVA, FiO₂ 1.0, confirm ETT position with ETCO₂ (a sudden ETCO₂ drop is often the first sign), high-quality CPR — surgeons stop and step back from the field; consider open chest cardiac massage in cardiothoracic / abdominal surgery already opened.</li>
+                <li><strong>Reversible causes (4 Hs &amp; 4 Ts) with anaesthesia-specific add-ons</strong>: anaphylaxis (give IM/IV adrenaline early), LAST (Intralipid 20% 1.5 mL/kg bolus + 0.25 mL/kg/min), MH (stop trigger, dantrolene), high spinal, gas embolism, haemorrhage, vagal reflex (e.g. peritoneal traction), tension pneumothorax (especially after CVC, brachial plexus, intercostal block), tamponade.</li>
+                <li><strong>Surgical control of haemorrhage</strong> takes priority alongside resuscitation — activate major haemorrhage protocol, give TXA, use cell salvage, accept permissive hypotension until source controlled.</li>
+                <li><strong>Decision to stop</strong>: by consensus of the senior anaesthetist and senior surgeon, after exclusion of reversible causes and an adequate ALS effort. Document time of death, rhythm, and last interventions.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">2. Immediately after death is declared</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Preserve the scene</strong>: leave all lines, tubes, drains, drug ampoules and infusion syringes in situ — do not discard. Photograph the drug tray. The Coroner / Medical Examiner may require this.</li>
+                <li><strong>Document contemporaneously</strong>: anaesthetic chart, drugs given (with batch numbers), times, vital signs trend, interventions, who attended and when, decision-making.</li>
+                <li><strong>Bloods at the time of arrest</strong> if anaphylaxis is possible — mast-cell tryptase at 0, 1–2 h and 24 h.</li>
+                <li><strong>Stop the next case</strong> on that list. The remaining theatre list should usually be cancelled or transferred to another team.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">3. Communication</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Family</strong>: a senior surgeon and senior anaesthetist together, in a private quiet room, as soon as possible. Use the patient's name; be honest about what happened and what is not yet known. Offer to view the body. Provide written follow-up contact. Apply the statutory <strong>Duty of Candour</strong> (CQC Regulation 20).</li>
+                <li><strong>Theatre team</strong>: brief "hot debrief" once safe — what happened, immediate welfare, who is following up. Avoid blame. Identify staff who should not drive home alone or continue clinical work that day.</li>
+                <li><strong>Hospital chain</strong>: inform clinical director, on-call manager, bed manager, mortuary, bereavement office, GP, and (if relevant) transplant coordinator.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">4. Statutory &amp; governance reporting</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li><strong>Coroner / Procurator Fiscal</strong>: any death within 24 h of an anaesthetic, any unexpected death, death from a procedure, or death where the cause is uncertain — referral is mandatory. The body becomes the property of the Coroner and a post-mortem is likely.</li>
+                <li><strong>Datix / local incident reporting</strong> within 24 h. Serious Incident (SI) declaration via the trust governance team; trigger a Patient Safety Incident Investigation (PSII) under the NHS PSIRF.</li>
+                <li><strong>Medical Examiner</strong> scrutiny of the death certificate.</li>
+                <li><strong>External reporting where applicable</strong>: MHRA Yellow Card (suspected drug reaction), NRLS / LFPSE, MHRA medical device incident, NAP7 contribution, Specialist society registries (e.g. UK MH Investigation Unit, NIAA Anaphylaxis pathway).</li>
+                <li><strong>Mortality &amp; Morbidity meeting</strong> in the department; anonymised case discussion within 4–6 weeks.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">5. Staff welfare &amp; second-victim support</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Recognise the <strong>"second victim"</strong> phenomenon — anaesthetists, ODPs, scrub teams and surgeons commonly suffer acute stress, sleep disturbance, intrusive recollection and loss of confidence.</li>
+                <li>Offer <strong>structured peer support</strong> (e.g. AAGBI/Royal College mentor, TRiM, occupational health). Avoid mandatory single-session psychological debriefing — evidence suggests it does not reduce PTSD.</li>
+                <li>Consider time off from clinical duties; do not allow the involved anaesthetist to be the sole clinician for the next case.</li>
+                <li>Provide ongoing follow-up — anniversary of the event, inquest preparation, Coroner's hearing support, GMC/legal advice via the medical defence organisation.</li>
+              </ul>
+
+              <h3 className="text-base font-semibold text-foreground mt-3">Key references</h3>
+              <p className="text-sm">
+                NAP7 (RCoA, 2023) — Peri-operative Cardiac Arrest; AAGBI Quick Reference Handbook (QRH 3-1 cardiac arrest, 3-2 anaphylaxis, 3-10 LAST); CQC Duty of Candour (Reg 20, 2014); Coroners and Justice Act 2009; NHS Patient Safety Incident Response Framework (2022); RCoA Wellbeing Resource Pack.
+              </p>
+            </div>
+          </ExamSection>
         </>
       }
     />
