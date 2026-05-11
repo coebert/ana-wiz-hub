@@ -509,6 +509,7 @@ export const topicReferences: Record<string, Reference[]> = {
     { label: "ABCDEF 2019", citation: "Pun BT et al. Caring for critically ill patients with the ABCDEF bundle: results of the ICU Liberation Collaborative. Crit Care Med. 2019;47(1):3-14.", url: "https://doi.org/10.1097/CCM.0000000000003482" },
     { label: "SORT", citation: "Protopapa KL, Simpson JC, Smith NCE, Moonesinghe SR. Development and validation of the Surgical Outcome Risk Tool (SORT). Br J Surg. 2014;101(13):1774-1783.", url: "https://doi.org/10.1002/bjs.9638" },
   ],
+  "icu-sedation-delirium": [
     { label: "BJA Educ 2019", citation: "Barr J et al. Clinical practice guidelines for the management of pain, agitation, and delirium (PAD) in adult patients in the ICU. Crit Care Med. 2013;41(1):263-306.", url: "https://doi.org/10.1097/CCM.0b013e3182783b72" },
     { label: "DAS-Delirium", citation: "Ely EW. Delirium in mechanically ventilated patients: ICU-CAM. JAMA. 2001;286(21):2703-2710.", url: "https://doi.org/10.1001/jama.286.21.2703" },
     { label: "BJA Educ 2017", citation: "Reade MC, Finfer S. Sedation and delirium in the intensive care unit. N Engl J Med. 2014;370:444-454.", url: "https://doi.org/10.1056/NEJMra1208705" },
