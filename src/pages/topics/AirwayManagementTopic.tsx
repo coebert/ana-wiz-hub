@@ -11,8 +11,8 @@ import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalc
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import PartialAirwayObstructionDiagram from "@/components/diagrams/PartialAirwayObstructionDiagram";
-import BonfilsRetromolarAnimation from "@/components/diagrams/BonfilsRetromolarAnimation";
 import BonfilsDeviceDiagram from "@/components/diagrams/BonfilsDeviceDiagram";
+import bonfilsRetromolarIllustration from "@/assets/airway/bonfils-retromolar.jpg";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
