@@ -110,6 +110,22 @@ const OphthalmicAnaesthesiaTopic = () => {
             </div>
           </ExamSection>
 
+          <DiagramSection
+            id="block-illustrations"
+            title="Eye Block Procedures — Illustrated"
+            intro={
+              <p>
+                Procedural plates for the four ophthalmic regional techniques. Note the relationship of the needle / cannula tip
+                to the muscle cone — the single most important determinant of safety and efficacy.
+              </p>
+            }
+          >
+            <SubTenonsBlockIllustration />
+            <PeribulbarBlockIllustration />
+            <RetrobulbarBlockIllustration />
+            <TopicalIntracameralIllustration />
+          </DiagramSection>
+
           <ExamSection id="open-globe" exams={[Exam.FINAL]}>
             <h2 className="text-xl font-bold text-foreground mb-2">Open Globe Injury</h2>
             <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
