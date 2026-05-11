@@ -360,7 +360,7 @@ const ObstetricAnaesthesiaTopic = () => {
         <div>
           <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Labour Analgesia</h2>
           <p className="text-muted-foreground leading-relaxed mb-3">
-            Epidural analgesia is the gold standard for labour pain. Low-dose combined spinal-epidural (CSE) provides rapid onset with minimal motor block.
+            Epidural analgesia is the gold standard for labour pain. Low-dose combined spinal-epidural (CSE) provides rapid onset with minimal motor block. Remifentanil PCA is the principal IV alternative when neuraxial analgesia is contraindicated, declined or has failed.
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="p-4 rounded-lg border border-border">
@@ -369,9 +369,116 @@ const ObstetricAnaesthesiaTopic = () => {
             </div>
             <div className="p-4 rounded-lg border border-border">
               <p className="font-semibold text-foreground text-sm">Remifentanil PCA</p>
-              <p className="text-sm text-muted-foreground mt-1">Alternative when epidural contraindicated. Bolus 30–40 µg, lockout 2 min. Requires 1:1 midwifery, continuous SpO₂ monitoring. Risk of respiratory depression.</p>
+              <p className="text-sm text-muted-foreground mt-1">Bolus 30–40 µg, lockout 2 min, no background infusion. Requires 1:1 midwifery, continuous SpO₂ + capnography (or apnoea alarm), supplemental O₂ available, and naloxone at the bedside.</p>
             </div>
           </div>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Remifentanil PCA for Labour Analgesia</h2>
+          <p className="text-muted-foreground leading-relaxed mb-3">
+            Remifentanil is an ultra-short-acting μ-opioid agonist metabolised by non-specific plasma and tissue esterases (context-sensitive half-time ~3–4 min, independent of duration). Its rapid onset (≈30–60 s) and offset match the temporal profile of a uterine contraction better than any other systemic opioid, making it the preferred IV labour analgesic when an epidural is not possible. The RemiPCA SAFE Network registry and the UK <em>RESPITE</em> RCT (Wilson 2018) have defined contemporary practice.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Standard regimen</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Bolus 30–40 µg</strong> on demand (some units titrate 20 → 40 µg)</li>
+                <li><strong>Lockout 2 min</strong>; <strong>no background infusion</strong></li>
+                <li>Dedicated IV cannula with anti-reflux/one-way valve</li>
+                <li>Press button at start of contraction (peak effect ≈ peak pain)</li>
+                <li>Stop ≥10 min before delivery if possible (neonatal safety)</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Mandatory monitoring (RCoA / OAA)</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>1:1 midwifery</strong> for the entire duration</li>
+                <li>Continuous <strong>SpO₂</strong> ± <strong>capnography / apnoea alarm</strong></li>
+                <li>Supplemental O₂ and suction immediately available</li>
+                <li><strong>Naloxone</strong> drawn up at the bedside</li>
+                <li>Anaesthetist immediately contactable; sedation score, RR, pain score every 30 min</li>
+                <li>CTG (remifentanil reduces fetal heart-rate variability)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Indications</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Maternal refusal of epidural / needle phobia</li>
+                <li>Coagulopathy or therapeutic anticoagulation (e.g. LMWH within window)</li>
+                <li>Thrombocytopenia below local epidural threshold (typically platelets &lt; 70–80 ×10⁹/L)</li>
+                <li>Severe spinal pathology, previous spinal surgery, or anatomy precluding neuraxial</li>
+                <li>Failed or inadequate epidural where re-siting is not feasible</li>
+                <li>Local sepsis at the back, raised ICP, or other neuraxial contraindication</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Advantages</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Rapid onset/offset matched to contraction cycle</li>
+                <li>No motor block — woman remains mobile, can push effectively</li>
+                <li>No risk of dural puncture, epidural haematoma/abscess or maternal hypotension</li>
+                <li>Esterase metabolism — safe in renal and hepatic failure</li>
+                <li>Useful when neuraxial declined, contraindicated or has failed</li>
+                <li>Superior to pethidine (RESPITE trial: ~halves conversion to epidural)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-3 mb-4">
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Contraindications &amp; cautions</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li>Inability to provide 1:1 midwifery and continuous SpO₂/capnography</li>
+                <li>Recent long-acting opioid (e.g. pethidine, morphine, diamorphine within 4 h) — additive respiratory depression</li>
+                <li>Maternal opioid sensitivity, severe OSA or respiratory compromise</li>
+                <li>Inability to understand and operate the PCA handset</li>
+                <li>Known remifentanil allergy</li>
+                <li><strong>Caution:</strong> magnesium therapy (potentiates sedation), morbid obesity, pre-existing fetal compromise</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border">
+              <p className="font-semibold text-foreground text-sm">Adverse effects &amp; complications</p>
+              <ul className="list-disc list-inside text-sm text-muted-foreground mt-2 space-y-1">
+                <li><strong>Maternal respiratory depression / apnoea</strong> and desaturation — most serious risk; case reports of cardiac arrest</li>
+                <li>Sedation, nausea, vomiting, pruritus</li>
+                <li>Reduced fetal heart-rate variability (usually transient, no Apgar effect)</li>
+                <li>Transient neonatal respiratory depression if given close to delivery</li>
+                <li>Often supplementary epidural still required (~30–40% conversion)</li>
+                <li>Analgesic efficacy inferior to a working epidural</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-serif font-bold text-foreground mb-2">Remifentanil PCA vs Epidural Analgesia</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-2 text-foreground font-semibold">Feature</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Remifentanil PCA</th>
+                  <th className="text-left py-2 text-foreground font-semibold">Epidural / CSE</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted-foreground">
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Analgesic efficacy</td><td>Moderate; pain scores ~30–40% reduction; declines in late first stage</td><td>Superior — gold standard, near-complete pain relief possible</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Onset / titration</td><td>30–60 s; self-titrated to each contraction</td><td>10–20 min for surgical block; PIEB maintenance</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Motor block / mobility</td><td>None — fully mobile, effective pushing</td><td>Low-dose mix preserves most motor function but mobility reduced</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Maternal haemodynamics</td><td>Minimal hypotension</td><td>Sympathetic block → hypotension; needs IV access + vasopressor</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Maternal respiratory risk</td><td><strong>Significant</strong> — apnoea/desaturation; needs 1:1 + SpO₂/capnography</td><td>Negligible respiratory depression at labour doses</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Neuraxial complications</td><td>None</td><td>PDPH (~1%), haematoma/abscess (rare), high block, LA toxicity</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Fetal/neonatal effects</td><td>↓ FHR variability; transient neonatal respiratory depression near delivery</td><td>Minimal direct fetal effect; secondary effects of maternal hypotension</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Use for instrumental / CS</td><td>Cannot be converted — requires separate spinal/GA</td><td>Top-up provides surgical anaesthesia for instrumental delivery or CS</td></tr>
+                <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Use in coagulopathy / anticoagulation</td><td>Safe</td><td>Contraindicated</td></tr>
+                <tr><td className="py-2 font-medium text-foreground">Staffing / resource</td><td>Dedicated 1:1 midwife, anaesthetic oversight</td><td>Anaesthetist required for siting and top-ups</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground mt-2">Evidence: <em>RESPITE</em> (Wilson, Lancet 2018) — remifentanil PCA halved epidural conversion vs pethidine but did not match epidural for pain relief; RemiPCA SAFE Network reports rare but real maternal apnoea events, all preventable with strict monitoring (Stocki 2014; Van de Velde 2016).</p>
         </div>
 
 
