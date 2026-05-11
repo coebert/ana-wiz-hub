@@ -58,8 +58,8 @@ const ETTS: Record<ETTKey, {
         {/* Twin distal cuffs */}
         <ellipse cx="285" cy="95" rx="14" ry="22" fill="hsl(200 70% 60%)" opacity="0.55" stroke="hsl(200 60% 35%)" />
         <ellipse cx="315" cy="95" rx="14" ry="22" fill="hsl(200 70% 60%)" opacity="0.55" stroke="hsl(200 60% 35%)" />
-        <text x="285" y="140" fontSize="9" textAnchor="middle" fill="hsl(var(--foreground))">prox cuff</text>
-        <text x="315" y="140" fontSize="9" textAnchor="middle" fill="hsl(var(--foreground))">distal cuff</text>
+        <text x="270" y="140" fontSize="9" textAnchor="middle" fill="hsl(var(--foreground))">prox cuff</text>
+        <text x="330" y="140" fontSize="9" textAnchor="middle" fill="hsl(var(--foreground))">distal cuff</text>
         {/* Pilot lines */}
         <path d="M 285 73 Q 285 50 250 45" fill="none" stroke="hsl(200 60% 40%)" strokeWidth="1" />
         <path d="M 315 73 Q 315 35 270 30" fill="none" stroke="hsl(200 60% 40%)" strokeWidth="1" />
