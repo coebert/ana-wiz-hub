@@ -95,6 +95,67 @@ const EmergencySurgeryTopic = () => {
           </div>
 
           <div>
+            <h2 className="text-2xl font-serif font-bold text-foreground mb-3">RSI &amp; Cricoid Pressure — The Evidence</h2>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Classical RSI (pre-oxygenation, predetermined dose of induction agent + suxamethonium 1.5 mg/kg, no bag-mask ventilation, cricoid pressure 10 N awake → 30 N asleep) was described by Sellick in 1961 from cadaveric and small case-series data. More than six decades later almost every component has been challenged by higher-quality evidence, and contemporary "modified" RSI is now standard UK/European practice.
+            </p>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Aspiration — the risk being mitigated</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li>Aspiration incidence under GA is ~1:2,000–10,000 elective and ~1:600–800 emergency anaesthesia (NAP4, 2011); mortality from clinically significant aspiration is ~5%.</li>
+              <li>NAP4 found <strong>aspiration was the single commonest cause of anaesthesia-related death</strong>, but in most cases either RSI was omitted when indicated or basics (pre-oxygenation, suction, head-up tilt) were poorly applied — not failure of cricoid pressure itself.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Evidence for individual RSI components</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-foreground font-semibold">Component</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Evidence</th>
+                    <th className="text-left py-2 text-foreground font-semibold">Current practice</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Pre-oxygenation</td><td>3 min tidal-volume or 8 vital-capacity breaths achieves ETO₂ &gt;90%; head-up 20–25° + HFNO/THRIVE prolongs apnoea time, especially in obese/obstetric patients (Patel &amp; Nouraei, <em>Anaesthesia</em> 2015).</td><td>Mandatory; aim ETO₂ ≥85–90%; routine apnoeic oxygenation in high-risk patients.</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Suxamethonium 1.5 mg/kg</td><td>Faster onset and superior intubating conditions vs rocuronium 0.6 mg/kg, but rocuronium 1.0–1.2 mg/kg is non-inferior (Cochrane 2015 — Tran et al.) and reversible by sugammadex 16 mg/kg.</td><td>Either acceptable; rocuronium-sugammadex preferred when sux contraindicated (hyperkalaemia, burns &gt;24 h, denervation, MH risk).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">"No ventilation" rule</td><td>Gentle facemask ventilation at peak pressure &lt;15–20 cmH₂O does not distend the stomach and reduces desaturation, particularly in critically ill ICU patients (<strong>PreVent</strong>, Casey <em>NEJM</em> 2019).</td><td>Permitted in obese, ICU, paediatric and obstetric RSI (controlled gentle ventilation).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Opioid co-induction</td><td>Sole-agent induction worsens haemodynamics; alfentanil/fentanyl/remifentanil obtund the pressor response and improve intubating conditions without measurable aspiration risk.</td><td>Routine inclusion of a short-acting opioid (alfentanil 10–20 µg/kg or fentanyl 1–3 µg/kg).</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 font-medium text-foreground">Choice of induction agent</td><td>Etomidate causes adrenal suppression and increases mortality in septic shock (KETASED, Jabre <em>Lancet</em> 2009; <strong>EvK</strong>, Matchett <em>Intensive Care Med</em> 2022 — higher 7-day mortality vs ketamine in critically ill).</td><td>Ketamine 1–2 mg/kg first-line in shock; reduced-dose propofol/thiopentone if cardiovascularly stable.</td></tr>
+                  <tr><td className="py-2 font-medium text-foreground">Videolaryngoscopy</td><td><strong>DEVICE</strong> trial (Prekker <em>NEJM</em> 2023, n=1417 critically ill): VL improved first-pass success 85% vs 71% DL with no increase in adverse events.</td><td>VL recommended as first-choice device for emergency intubation (DAS 2018; UK ICS).</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-5 mb-2">Cricoid pressure — the evidence</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              Cricoid pressure (Sellick's manoeuvre) compresses the post-cricoid hypopharynx against the C6 vertebral body, theoretically occluding the upper oesophagus and preventing regurgitation of gastric contents. Despite &gt;60 years of practice, no RCT has ever shown a reduction in clinically apparent aspiration.
+            </p>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>IRIS trial</strong> (Birenbaum, <em>JAMA Surgery</em> 2019, n≈3,500) — multicentre RCT of cricoid vs sham during RSI. Aspiration 0.6% vs 0.5% (non-inferiority not formally met but no significant difference); cricoid prolonged intubation time and worsened laryngoscopic view in ~10%. The largest RCT to date — <strong>does not support routine use</strong>.</li>
+              <li>MRI/imaging studies (Smith 2003; Zeidan 2014) show the oesophagus lies lateral to the cricoid in &gt;50% of adults, so compression often distorts rather than occludes it.</li>
+              <li>Cricoid pressure can worsen the laryngoscopic view, displace the larynx, impede face-mask ventilation, and obstruct insertion of supraglottic airways — a particular concern in CICO.</li>
+              <li>Force is poorly calibrated in practice — most assistants apply &lt;20 N or &gt;40 N unless specifically trained on a weighing scale.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Current UK/European guidance</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside mb-3">
+              <li><strong>DAS 2015</strong> (unanticipated difficult intubation) &amp; <strong>DAS 2018</strong> (critically ill adult): cricoid pressure remains recommended for RSI but should be <strong>reduced or removed</strong> if it impairs laryngoscopy, mask ventilation, or SGA placement.</li>
+              <li><strong>OAA/DAS obstetric guideline 2015</strong>: cricoid pressure retained given high aspiration risk and short pre-oxygenation reserve.</li>
+              <li>Scandinavian SSAI 2010 and several French/German societies have <strong>downgraded or abandoned</strong> routine cricoid following IRIS.</li>
+              <li>NAP4 explicitly stated cricoid pressure should not be considered a substitute for good RSI technique.</li>
+            </ul>
+
+            <h3 className="text-lg font-serif font-bold text-foreground mt-4 mb-2">Practical synthesis for the FRCA/FFICM viva</h3>
+            <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
+              <li>Perform a <strong>modified RSI</strong>: ramped/head-up position, pre-oxygenation to ETO₂ &gt;85% ± apnoeic O₂, opioid co-induction, ketamine if shocked, rocuronium 1.2 mg/kg or sux 1.5 mg/kg, videolaryngoscope first-line.</li>
+              <li>Apply cricoid 10 N awake → 30 N asleep, but be <strong>prepared to release</strong> immediately if view is poor, mask ventilation difficult, or an SGA is required as rescue.</li>
+              <li>Use gentle (peak &lt;15 cmH₂O) facemask ventilation between induction and intubation in patients at high risk of desaturation (obese, septic, ICU, paediatric).</li>
+              <li>Document the rationale for any deviation from classical RSI — defensible because it reflects current best evidence (NAP4, DAS, IRIS, DEVICE, EvK).</li>
+            </ul>
+          </div>
+
+          <div>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Emergency Laparotomy</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
               Emergency laparotomy carries 10–15% overall mortality (NELA data), rising to &gt;25% in high-risk patients. The National Emergency Laparotomy Audit (NELA) has driven quality improvement through standardised care bundles.
