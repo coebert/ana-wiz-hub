@@ -11,8 +11,8 @@ import WilsonRiskScoreCalculator from "@/components/diagrams/WilsonRiskScoreCalc
 import AirwayInnervationDiagram from "@/components/diagrams/AirwayInnervationDiagram";
 import { CICODrillAnimation } from "@/components/diagrams/CICODrillAnimation";
 import PartialAirwayObstructionDiagram from "@/components/diagrams/PartialAirwayObstructionDiagram";
-import BonfilsRetromolarAnimation from "@/components/diagrams/BonfilsRetromolarAnimation";
 import BonfilsDeviceDiagram from "@/components/diagrams/BonfilsDeviceDiagram";
+import bonfilsRetromolarIllustration from "@/assets/airway/bonfils-retromolar.jpg";
 import { airwayManagementQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import CorPictumFolio from "@/components/diagrams/CorPictumFolio";
@@ -267,9 +267,19 @@ const AirwayManagementTopic = () => {
               <BonfilsDeviceDiagram />
             </div>
 
-            <div className="my-4">
-              <BonfilsRetromolarAnimation />
-            </div>
+            <figure className="my-4">
+              <img
+                src={bonfilsRetromolarIllustration}
+                alt="Sagittal anatomical illustration of Bonfils rigid retromolar fibrescope passing along the retromolar gutter, around the tongue base, beneath the epiglottis and into the trachea, with anatomical labels for the hard and soft palate, tongue, retromolar space, epiglottis, vocal cords and trachea."
+                width={1536}
+                height={1024}
+                loading="lazy"
+                className="w-full h-auto rounded-lg border border-border"
+              />
+              <figcaption className="text-xs text-muted-foreground mt-2 text-center">
+                Bonfils retromolar intubation — the rigid scope is introduced lateral to the tongue through the retromolar gutter, rotated to bring the 40° tip beneath the epiglottis and railroad the loaded ETT through the cords. Mouth opening is by jaw thrust; no laryngoscope is used.
+              </figcaption>
+            </figure>
 
             <h3 className="text-lg font-serif font-semibold text-foreground mt-4 mb-2">Glottic obstruction</h3>
             <p className="text-foreground/90 leading-relaxed mb-2">
