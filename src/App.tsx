@@ -130,6 +130,7 @@ const CardiacOutputMonitoringTopic = lazy(() => import("./pages/topics/CardiacOu
 const AcidBaseTopic = lazy(() => import("./pages/topics/AcidBaseTopic"));
 const ARDSTopic = lazy(() => import("./pages/topics/ARDSTopic"));
 const IcuNutritionTopic = lazy(() => import("./pages/topics/IcuNutritionTopic"));
+const PostopHighRiskIcuTopic = lazy(() => import("./pages/topics/PostopHighRiskIcuTopic"));
 const IcuEndocrineEmergenciesTopic = lazy(() => import("./pages/topics/IcuEndocrineEmergenciesTopic"));
 const TransfusionCoagulationTopic = lazy(() => import("./pages/topics/TransfusionCoagulationTopic"));
 const IcuSedationDeliriumTopic = lazy(() => import("./pages/topics/IcuSedationDeliriumTopic"));
