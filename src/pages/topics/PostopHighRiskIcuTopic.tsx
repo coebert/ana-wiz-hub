@@ -159,6 +159,7 @@ const PostopHighRiskIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            <PostopRiskCalculators />
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
