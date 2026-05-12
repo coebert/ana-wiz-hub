@@ -231,7 +231,8 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Recognising &amp; Pre-empting Complications</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <ComplicationBundlesAnimation />
+            <div className="grid sm:grid-cols-2 gap-3 mt-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Cardiovascular</p>
                 <p className="text-sm text-muted-foreground mt-1">
