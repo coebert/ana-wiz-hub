@@ -5,6 +5,7 @@ import { postopHighRiskIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
 import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTherapyAnimation";
 import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
+import PostopRiskCalculators from "@/components/diagrams/PostopRiskCalculators";
 
 const objectives = [
   "Define the 'high-risk surgical patient' using validated risk scores (P-POSSUM, SORT, RCRI) and CPET-derived thresholds",
@@ -159,6 +160,7 @@ const PostopHighRiskIcuTopic = () => {
                 </tbody>
               </table>
             </div>
+            <PostopRiskCalculators />
           </ExamSection>
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
