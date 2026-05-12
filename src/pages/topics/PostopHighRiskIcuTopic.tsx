@@ -209,7 +209,8 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Goal-Directed Therapy</h2>
-            <div className="space-y-2">
+            <GoalDirectedTherapyAnimation />
+            <div className="space-y-2 mt-4">
               {[
                 { target: "Haemodynamics", detail: "SV-guided fluid challenges (250 mL crystalloid, response = ΔSV ≥10%); early low-dose noradrenaline rather than chasing fluid. Individualised MAP target — within 10–20% of pre-operative baseline (INPRESS 2017)." },
                 { target: "Oxygenation & ventilation", detail: "Lung-protective ventilation (Vt 6–8 mL/kg PBW, PEEP 5–8, plateau <30) with periodic recruitment in obese / abdominal patients (IMPROVE, PROVHILO). Wean FiO₂ to maintain SpO₂ 94–98%; avoid hyperoxia." },
