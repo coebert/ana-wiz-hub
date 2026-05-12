@@ -3,6 +3,8 @@ import { ExamSection } from "@/components/ExamSection";
 import type { WorkedExample } from "@/components/WorkedExamples";
 import { postopHighRiskIcuQuestions } from "@/data/quizzes";
 import { Exam } from "@/data/curriculum";
+import GoalDirectedTherapyAnimation from "@/components/diagrams/GoalDirectedTherapyAnimation";
+import ComplicationBundlesAnimation from "@/components/diagrams/ComplicationBundlesAnimation";
 
 const objectives = [
   "Define the 'high-risk surgical patient' using validated risk scores (P-POSSUM, SORT, RCRI) and CPET-derived thresholds",
@@ -207,7 +209,8 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Postoperative Goal-Directed Therapy</h2>
-            <div className="space-y-2">
+            <GoalDirectedTherapyAnimation />
+            <div className="space-y-2 mt-4">
               {[
                 { target: "Haemodynamics", detail: "SV-guided fluid challenges (250 mL crystalloid, response = ΔSV ≥10%); early low-dose noradrenaline rather than chasing fluid. Individualised MAP target — within 10–20% of pre-operative baseline (INPRESS 2017)." },
                 { target: "Oxygenation & ventilation", detail: "Lung-protective ventilation (Vt 6–8 mL/kg PBW, PEEP 5–8, plateau <30) with periodic recruitment in obese / abdominal patients (IMPROVE, PROVHILO). Wean FiO₂ to maintain SpO₂ 94–98%; avoid hyperoxia." },
@@ -228,7 +231,8 @@ const PostopHighRiskIcuTopic = () => {
 
           <ExamSection exams={[Exam.FINAL, Exam.FFICM, Exam.EDIC]}>
             <h2 className="text-2xl font-serif font-bold text-foreground mb-3">Recognising &amp; Pre-empting Complications</h2>
-            <div className="grid sm:grid-cols-2 gap-3">
+            <ComplicationBundlesAnimation />
+            <div className="grid sm:grid-cols-2 gap-3 mt-4">
               <div className="p-4 rounded-lg border border-border">
                 <p className="font-semibold text-foreground text-sm">Cardiovascular</p>
                 <p className="text-sm text-muted-foreground mt-1">
