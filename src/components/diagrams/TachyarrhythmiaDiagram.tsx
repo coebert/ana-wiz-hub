@@ -809,7 +809,7 @@ const TachyarrhythmiaDiagram = () => {
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
+                  <div className="flex flex-col gap-3">
                     <TreeMini tachy={t} color={t.color} />
                     <div className="min-w-0">
                       {showLabels && (
