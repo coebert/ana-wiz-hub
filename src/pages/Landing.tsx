@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BookOpen, Headphones, Mic, ArrowRight, ChevronDown } from "lucide-react";
-import brainLogo from "/brain-logo.png";
+import brainLogo from "/brain-logo.webp";
 import { SupportSection } from "@/components/SupportSection";
 import DemoVivaStepper, { type DemoVivaQuestion } from "@/components/DemoVivaStepper";
 

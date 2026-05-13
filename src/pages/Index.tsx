@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
-import brainLogo from "/brain-logo.png";
+import brainLogo from "/brain-logo.webp";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
