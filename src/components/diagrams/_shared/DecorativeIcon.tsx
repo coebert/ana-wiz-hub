@@ -212,6 +212,7 @@ export const DecorativeIcon: React.FC<DecorativeIconProps> = ({
   iconProps,
   className,
 }) => {
+  assertLucideLike(Icon);
   const iconElement = (
     <Icon
       {...iconProps}
