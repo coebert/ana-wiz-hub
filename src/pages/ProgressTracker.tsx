@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   Atom,
   Heart,
@@ -100,6 +101,17 @@ const ProgressTracker = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
+      <Helmet>
+        <title>Your Topic Progress – AnaesthesiaCore</title>
+        <meta name="description" content="Track your FRCA Primary, Final and FFICM revision progress topic-by-topic. Completion saves locally across every section of AnaesthesiaCore." />
+        <link rel="canonical" href="https://anaesthesiacore.app/progress" />
+        <meta property="og:title" content="Your Topic Progress – AnaesthesiaCore" />
+        <meta property="og:description" content="Track FRCA Primary, Final and FFICM revision progress topic-by-topic across anaesthesia and intensive care." />
+        <meta property="og:url" content="https://anaesthesiacore.app/progress" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Your Topic Progress – AnaesthesiaCore" />
+        <meta name="twitter:description" content="Track FRCA & FFICM revision progress topic-by-topic." />
+      </Helmet>
       {/* Page header */}
       <div className="mb-8">
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">

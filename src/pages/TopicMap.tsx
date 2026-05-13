@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Search, Network, ArrowRight, Sparkles } from "lucide-react";
 import {
   allTopics,
@@ -109,6 +110,17 @@ const TopicMap = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Curriculum Topic Map – AnaesthesiaCore</title>
+        <meta name="description" content="Browse every FRCA Primary, Final and FFICM topic in one searchable map with cross-references between anaesthesia and intensive care." />
+        <link rel="canonical" href="https://anaesthesiacore.app/map" />
+        <meta property="og:title" content="Curriculum Topic Map – AnaesthesiaCore" />
+        <meta property="og:description" content="Searchable map of every FRCA & FFICM revision topic with cross-references between sections." />
+        <meta property="og:url" content="https://anaesthesiacore.app/map" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Curriculum Topic Map – AnaesthesiaCore" />
+        <meta name="twitter:description" content="Searchable map of every FRCA & FFICM revision topic with cross-references." />
+      </Helmet>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="mb-6">

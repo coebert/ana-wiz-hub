@@ -55,7 +55,7 @@ export const SectionLayout = ({
     ? metaDescription.trim()
     : `${title} — ${subtitle} — exam-focused revision notes, diagrams and viva practice on AnaesthesiaCore for FRCA and FFICM trainees.`;
   const truncatedDescription =
-    rawDescription.length > 200 ? `${rawDescription.slice(0, 197).trimEnd()}…` : rawDescription;
+    rawDescription.length > 160 ? `${rawDescription.slice(0, 157).trimEnd()}…` : rawDescription;
 
   // Build BreadcrumbList JSON-LD from the current path. Segment 1 is the
   // section (e.g. /physics), segment 2 is the topic — we use the page's
