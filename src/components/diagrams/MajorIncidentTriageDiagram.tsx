@@ -133,7 +133,7 @@ export const MajorIncidentTriageDiagram = () => {
       <div className="rounded-lg border border-border bg-background p-3">
         <svg viewBox="0 0 800 360" className="w-full h-auto" role="img" aria-label="Triage flow">
           {/* ===== Phase 0: METHANE radio bubble ===== */}
-          <g opacity={phase === 0 ? 1 : 0.18} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Phase 1 — METHANE alert: structured radio message from scene")} opacity={phase === 0 ? 1 : 0.18} style={{ transition: "opacity 300ms" }}>
             <rect x="20" y="20" width="220" height="120" rx="10" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="1.5" />
             <text x="32" y="42" fontSize="13" fontWeight="700" fill="hsl(var(--primary))">METHANE</text>
             <text x="32" y="60" fontSize="10" fill="hsl(var(--foreground))"><tspan fontWeight="700">M</tspan>ajor incident declared</text>
