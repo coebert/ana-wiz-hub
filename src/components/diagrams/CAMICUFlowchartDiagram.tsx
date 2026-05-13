@@ -322,17 +322,8 @@ export const CAMICUFlowchartDiagram = () => {
                 Apply ABCDEF bundle
               </text>
 
-              <defs>
-                {/* markerUnits=strokeWidth → arrowheads scale with the path's stroke width,
-                    which in turn scales with the SVG when it's resized. This keeps markers
-                    visually proportional at every viewport. */}
-                <marker id="cam-arr" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
-                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--muted-foreground))" />
-                </marker>
-                <marker id="cam-arr-danger" markerWidth="5" markerHeight="5" refX="4.5" refY="2.5" orient="auto" markerUnits="strokeWidth">
-                  <path d="M0,0 L5,2.5 L0,5 Z" fill="hsl(var(--destructive))" />
-                </marker>
-              </defs>
+              <defs />
+
               </svg>
             </div>
           </div>
