@@ -40,6 +40,11 @@ export const SectionLayout = ({
 }: SectionLayoutProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [autoItems, setAutoItems] = useState<TOCItem[]>([]);
+  const location = useLocation();
+  const canonicalUrl = `${SITE_URL}${location.pathname}`;
+  const pageTitle = `${title} – ${SITE_NAME}`;
+  const truncatedDescription =
+    subtitle.length > 200 ? `${subtitle.slice(0, 197).trimEnd()}…` : subtitle;
 
   useEffect(() => {
     if (disableAutoTOC) return;
@@ -80,6 +85,18 @@ export const SectionLayout = ({
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={truncatedDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={truncatedDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={truncatedDescription} />
+      </Helmet>
       {backPath && (
         <Link
           to={backPath}
