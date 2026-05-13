@@ -4,6 +4,10 @@ name: JSON-LD structured data
 # Failures are surfaced as inline annotations on the exact source line
 # (the test prints `::error file=...,line=...,col=...,title=...::message`
 # workflow commands when GITHUB_ACTIONS=true).
+#
+# Additionally, generates a route-to-URL coverage report (Markdown + HTML +
+# JSON), uploads it as an artifact, and posts a concise PR comment with
+# pass/fail counts when JSONLD_COVERAGE_STRICT fails.
 
 on:
   push:
@@ -39,3 +43,111 @@ jobs:
         env:
           SKIP_LIVE_SITEMAP_CHECK: "1"
         run: bunx vitest run src/test/jsonld-structured-data.test.ts --reporter=default
+
+      - name: Generate route-to-URL coverage report (strict)
+        id: coverage
+        env:
+          JSONLD_COVERAGE_STRICT: "1"
+        # Never let the report step short-circuit subsequent steps — we want
+        # to upload the artifact and post the PR comment even on failure.
+        run: |
+          mkdir -p reports
+          set +e
+          bunx tsx scripts/jsonld-route-coverage-report.ts \
+            --out reports/jsonld-route-coverage.md \
+            > reports/jsonld-route-coverage.log 2>&1
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          set -e
+          # Surface counts for downstream steps (read from the JSON sidecar).
+          node -e '
+            const r = JSON.parse(require("fs").readFileSync("reports/jsonld-route-coverage.json","utf8"));
+            const s = r.summary || {};
+            const out = process.env.GITHUB_OUTPUT;
+            require("fs").appendFileSync(out, [
+              `total=${s.total ?? 0}`,
+              `passing=${s.passing ?? 0}`,
+              `missing_types=${s.missingTypes ?? 0}`,
+              `bad_blocks=${s.badBlocks ?? 0}`,
+              `unresolved=${s.unresolved ?? 0}`,
+            ].join("\n") + "\n");
+          '
+          tail -n 40 reports/jsonld-route-coverage.log || true
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jsonld-route-coverage
+          path: reports/
+          if-no-files-found: warn
+
+      - name: Comment on PR with coverage summary
+        if: >
+          always()
+          && github.event_name == 'pull_request'
+          && steps.coverage.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        env:
+          TOTAL: ${{ steps.coverage.outputs.total }}
+          PASSING: ${{ steps.coverage.outputs.passing }}
+          MISSING_TYPES: ${{ steps.coverage.outputs.missing_types }}
+          BAD_BLOCKS: ${{ steps.coverage.outputs.bad_blocks }}
+          UNRESOLVED: ${{ steps.coverage.outputs.unresolved }}
+        with:
+          script: |
+            const { TOTAL, PASSING, MISSING_TYPES, BAD_BLOCKS, UNRESOLVED } = process.env;
+            const total = Number(TOTAL || 0);
+            const passing = Number(PASSING || 0);
+            const failing = total - passing;
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const artifactUrl = `${runUrl}#artifacts`;
+            const marker = '<!-- jsonld-coverage-comment -->';
+            const body = [
+              marker,
+              '### ❌ JSON-LD route coverage failed',
+              '',
+              '| Metric | Count |',
+              '| --- | ---: |',
+              `| URLs evaluated | ${total} |`,
+              `| ✅ Passing | ${passing} |`,
+              `| ❌ Failing | ${failing} |`,
+              `| ❌ Missing required @type | ${MISSING_TYPES} |`,
+              `| ❌ Bad blocks | ${BAD_BLOCKS} |`,
+              `| ⚠️ Unresolved routes | ${UNRESOLVED} |`,
+              '',
+              `**Reports** (download from the [\`jsonld-route-coverage\` artifact](${artifactUrl}) on [this run](${runUrl})):`,
+              '- `reports/jsonld-route-coverage.md` — Markdown summary',
+              '- `reports/jsonld-route-coverage.html` — Browsable HTML report',
+              '- `reports/jsonld-route-coverage.json` — Machine-readable data',
+              '- `reports/jsonld-route-coverage.log` — Run log with per-URL detail',
+              '',
+              '_Re-runs of this workflow update this comment in place._',
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find((c) => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Fail job if coverage was not clean
+        if: steps.coverage.outputs.exit_code != '0'
+        run: |
+          echo "JSON-LD route coverage failed (exit ${{ steps.coverage.outputs.exit_code }})."
+          exit 1
