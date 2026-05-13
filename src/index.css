@@ -97,7 +97,9 @@
     --secondary: 215 20% 18%;
     --secondary-foreground: 210 20% 90%;
     --muted: 215 20% 18%;
-    --muted-foreground: 215 18% 72%;
+    /* Bumped from 72% → 80% L so muted text clears 4.5:1 on dark surfaces
+       even when used with /70–/80 opacity utilities. */
+    --muted-foreground: 215 18% 80%;
     --accent: 170 45% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
