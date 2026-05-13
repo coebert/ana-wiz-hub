@@ -1,0 +1,41 @@
+name: JSON-LD structured data
+
+# Runs the JSON-LD CI guard on every push and pull request.
+# Failures are surfaced as inline annotations on the exact source line
+# (the test prints `::error file=...,line=...,col=...,title=...::message`
+# workflow commands when GITHUB_ACTIONS=true).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  jsonld:
+    name: JSON-LD lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Run JSON-LD test (annotations on failure)
+        # GITHUB_ACTIONS is set to "true" automatically in the runner, which
+        # toggles the test's annotation output. Skip the live-sitemap suite
+        # so this job stays self-contained.
+        env:
+          SKIP_LIVE_SITEMAP_CHECK: "1"
+        run: bunx vitest run src/test/jsonld-structured-data.test.ts --reporter=default
