@@ -189,6 +189,7 @@ const PROP_REQUIRED: Record<string, string> = {
   AnatomyPlate: "requires { plate, view } props",
   BrainPlateLabels: "requires { region } prop",
   BrainPlatesViewer: "requires { plate } prop",
+  BrainRegionsList: "requires { regions } prop",
   DiagramTabs: "requires { tabs } prop",
   DiagramToggleBar: "requires { options, value, onChange } props",
   DiagramSourcesPanel: "requires { sources } prop",
@@ -200,7 +201,81 @@ const PROP_REQUIRED: Record<string, string> = {
   GuidedWalkthroughOverlay: "requires { steps } prop",
   AnimatedMechanism: "requires { steps } prop",
   CorPictumFolio: "requires content props",
+  MechanismCascadeDiagram: "requires { steps } prop",
+  PathophysDrugMapper: "requires { drugs } prop",
+  plexusShared: "shared helper module — not a renderable component",
 };
+
+/**
+ * Components that currently render lucide icons without applying the
+ * `aria-hidden` decoration. Tracked here as a regression baseline — any
+ * NEW component that joins this list will fail the suite.
+ *
+ * To clear an entry: wrap the bare lucide icons in `<DecorativeIcon>`
+ * (or pass `aria-hidden="true" focusable={false}`) and remove the name
+ * from this set.
+ */
+const KNOWN_LUCIDE_LEAKS = new Set<string>([
+  "ADMECascadeDiagram",
+  "ALFCerebralOedemaDiagram",
+  "AdrenalCrisisAnimation",
+  "AlbuminFluidShiftDiagram",
+  "AnaphylaxisCascadeDiagram",
+  "AorticDicroticNotchDiagram",
+  "ArrestTimeWindowWidget",
+  "BradyarrhythmiaDiagram",
+  "BurnResuscitationDiagram",
+  "BurnsIcuCaseStepper",
+  "CICODrillAnimation",
+  "CPPSpiralDiagram",
+  "CTScannerDiagram",
+  "Cat1RSIAnimation",
+  "CellSalvageAnimatedDiagram",
+  "ComplicationBundlesAnimation",
+  "CssdWasteFlowSubMap",
+  "DKAAnimation",
+  "DLTInsertionDiagram",
+  "EmergencyLaparotomyBundleDiagram",
+  "EmergencyRSIDiagram",
+  "EndocrineSymptomTriage",
+  "GlycocalyxSheddingCascadeDiagram",
+  "GoalDirectedTherapyAnimation",
+  "HPAAxisSuppressionDiagram",
+  "HeartBlockDiagram",
+  "HygrometersDiagram",
+  "HyponatraemiaWorkupDiagram",
+  "InhalationInjuryFlowchart",
+  "MModePathologyDiagram",
+  "MajorIncidentTriageDiagram",
+  "MilitaryRolesFlowDiagram",
+  "MyastheniaCrisisFlowchart",
+  "MyasthenicVsCholinergicComparison",
+  "NCEPODClassificationDiagram",
+  "OLVTroubleshootingDiagram",
+  "OpioidSignallingCascadeAnimation",
+  "PHPathophysiologyDiagram",
+  "PancreatitisAutodigestionDiagram",
+  "PancreatitisEvolutionTimeline",
+  "ParacetamolNomogramDiagram",
+  "ParklandCalculator",
+  "PatientPositioningMechanisms",
+  "PneumotachographDiagram",
+  "PostCardiacArrestSyndromeDiagram",
+  "RRTCircuitFlowDiagram",
+  "RaisedICPCascadeDiagram",
+  "RefeedingSyndromeAnimation",
+  "SedationDeliveryProfilesDiagram",
+  "SepsisHostResponseDiagram",
+  "TachyarrhythmiaDiagram",
+  "TheatreZoningDiagram",
+  "ThermodilutionDiagram",
+  "ThyroidStormAnimation",
+  "ToxidromeComparatorDiagram",
+  "TraliVsTacoDecisionTool",
+  "TransportVentilationDiagram",
+  "VaughanWilliamsAPDiagram",
+  "WrightRespirometerDiagram",
+]);
 
 const renderableEntries = discovered.filter((d) => d.Component);
 
