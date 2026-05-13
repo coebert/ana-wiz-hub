@@ -518,10 +518,63 @@ md += `| URLs evaluated${FILTER_DESCRIPTION ? " (filtered)" : ""} | ${total}${FI
 md += `| ✅ Passing | ${passing.length} |\n`;
 md += `| ❌ Missing required @type | ${failingTypes.length} |\n`;
 md += `| ❌ Bad / incomplete blocks | ${failingBlocks.length} |\n`;
-md += `| ⚠️ Unresolved route | ${unresolved.length} |\n\n`;
+md += `| ⚠️ Unresolved route | ${unresolved.length} |\n`;
+if (DIFF) {
+  md += `| 🔻 Regressions vs baseline | ${DIFF.regressions.length} |\n`;
+  md += `| 🟢 Fixes vs baseline | ${DIFF.fixes.length} |\n`;
+  md += `| ➕ Added URLs | ${DIFF.added.length} |\n`;
+  md += `| ➖ Removed URLs | ${DIFF.removed.length} |\n`;
+}
+md += "\n";
 md += `Sitewide @types inherited from \`index.html\`: ${[...SITEWIDE].map((t) => `\`${t}\``).join(", ")}.\n\n`;
 
-for (const k of groupOrder) {
+if (DIFF) {
+  md += "## Diff vs baseline\n\n";
+  md += `Baseline: \`${BASELINE_PATH}\`${BASELINE_META?.generatedAt ? ` (generated ${BASELINE_META.generatedAt})` : ""} — ${BASELINE_META?.rowCount ?? 0} rows.\n\n`;
+
+  const renderEntry = (e: DiffEntry): string => {
+    const bits: string[] = [`\`${e.url}\` _(${e.kind})_ — \`${e.before}\` → \`${e.after}\``];
+    if (e.newMissingTypes.length) bits.push(`new missing @type: ${e.newMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
+    if (e.fixedMissingTypes.length) bits.push(`fixed @type: ${e.fixedMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
+    if (e.newBadBlocks.length) {
+      bits.push(`new bad blocks: ${e.newBadBlocks.map((b) => `\`${b.file}:${b.line}\` (\`${b.type ?? "?"}\`${b.missing.length ? ` missing ${b.missing.map((p) => `\`${p}\``).join(",")}` : ""})`).join("; ")}`);
+    }
+    if (e.fixedBadBlocks.length) {
+      bits.push(`fixed bad blocks: ${e.fixedBadBlocks.map((b) => `\`${b.file}:${b.line}\` (\`${b.type ?? "?"}\`)`).join("; ")}`);
+    }
+    return `- ${bits.join(" — ")}`;
+  };
+
+  md += `### 🔻 Regressions (${DIFF.regressions.length})\n\n`;
+  if (!DIFF.regressions.length) md += "_None — no URL newly started failing._\n\n";
+  else { for (const e of DIFF.regressions) md += renderEntry(e) + "\n"; md += "\n"; }
+
+  md += `### 🟢 Fixes (${DIFF.fixes.length})\n\n`;
+  if (!DIFF.fixes.length) md += "_None._\n\n";
+  else { for (const e of DIFF.fixes) md += renderEntry(e) + "\n"; md += "\n"; }
+
+  if (DIFF.changedSameStatus.length) {
+    md += `### 🔄 Changed (same status, different details) (${DIFF.changedSameStatus.length})\n\n`;
+    for (const e of DIFF.changedSameStatus) md += renderEntry(e) + "\n";
+    md += "\n";
+  }
+
+  if (DIFF.added.length) {
+    md += `### ➕ Added URLs (${DIFF.added.length})\n\n`;
+    for (const r of DIFF.added) md += `- \`${r.url}\` _(${r.kind})_ — status \`${rowStatus(r)}\`\n`;
+    md += "\n";
+  }
+  if (DIFF.removed.length) {
+    md += `### ➖ Removed URLs (${DIFF.removed.length})\n\n`;
+    for (const r of DIFF.removed) md += `- \`${r.url}\`\n`;
+    md += "\n";
+  }
+}
+
+if (DIFF_ONLY) {
+  // Skip the per-group tables and bad-block / unresolved sections when the
+  // user only wants the diff.
+} else for (const k of groupOrder) {
   const group = ROWS.filter((r) => r.kind === k);
   if (!group.length) continue;
   md += `## ${groupLabels[k]} (${group.length})\n\n`;
