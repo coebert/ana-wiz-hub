@@ -77,8 +77,9 @@ async function main(): Promise<void> {
   }
   if (!serviceKey) {
     console.warn(
-      "⚠  SUPABASE_SERVICE_ROLE_KEY not set — falling back to anon key. The edge function now requires admin auth and this call will likely fail with 401/403.",
+      "⏭  SUPABASE_SERVICE_ROLE_KEY not set — skipping Google Search Console sitemap submission. Set the secret in CI to enable it.",
     );
+    return;
   }
 
   const url = `${baseUrl.replace(/\/+$/, "")}/functions/v1/${FUNCTION_NAME}`;
