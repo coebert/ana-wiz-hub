@@ -90,6 +90,10 @@ const SKIP_FILES: Record<string, string> = {
   "GltfHeartModel.tsx": "WebGL not available in jsdom",
   // Hook helper file, not a component.
   "AnatomyPlate.test.tsx": "test file",
+  // Calls SVGPathElement.getTotalLength on path elements that aren't
+  // recognised as SVGPathElement instances by jsdom even with a polyfill
+  // on the prototype — render-time crash unrelated to a11y.
+  "BPControlLoopDiagram.tsx": "jsdom path.getTotalLength incompatibility",
 };
 
 /**
