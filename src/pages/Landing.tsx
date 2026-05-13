@@ -200,12 +200,20 @@ const Landing = () => {
         <p className="text-sm text-muted-foreground/70">
           App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM
         </p>
-        <a
-          href="/admin"
-          className="inline-block text-xs text-muted-foreground/50 hover:text-muted-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-        >
-          Admin
-        </a>
+        <div className="flex items-center justify-center gap-4">
+          <a
+            href="/sitemap.xml"
+            className="inline-block text-xs text-muted-foreground/50 hover:text-muted-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          >
+            Sitemap
+          </a>
+          <a
+            href="/admin"
+            className="inline-block text-xs text-muted-foreground/50 hover:text-muted-foreground underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+          >
+            Admin
+          </a>
+        </div>
       </footer>
     </main>
   );

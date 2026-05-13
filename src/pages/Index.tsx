@@ -194,6 +194,14 @@ const Index = () => {
           <p>Content sourced from BJA Education, Miller's Anesthesia, Oh's Intensive Care Manual, and established literature.</p>
           <p className="mt-1">Designed for FRCA & FFICM exam preparation. Not a substitute for clinical judgement.</p>
           <p className="mt-3 text-muted-foreground/60">App created by Dr Rob Coe BA MA OXON MBBS FRCA FFICM</p>
+          <p className="mt-3">
+            <a
+              href="/sitemap.xml"
+              className="text-muted-foreground/70 hover:text-foreground underline-offset-4 hover:underline"
+            >
+              Sitemap
+            </a>
+          </p>
         </div>
       </footer>
     </div>
