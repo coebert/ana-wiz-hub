@@ -212,7 +212,7 @@ export const MajorIncidentTriageDiagram = () => {
           </g>
 
           {/* ===== Phase 3: Casualty stream ===== */}
-          <g opacity={phase === 3 ? 1 : 0.2} style={{ transition: "opacity 300ms" }}>
+          <g {...svgNodeProps("Phase 4 — Stream casualties to geographic priority areas, re-triage every 15 minutes")} opacity={phase === 3 ? 1 : 0.2} style={{ transition: "opacity 300ms" }}>
             <text x="20" y="245" fontSize="12" fontWeight="700" fill="hsl(var(--foreground))">Stream to area · re-triage every 15 min</text>
 
             {/* Lanes */}
