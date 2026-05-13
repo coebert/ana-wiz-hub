@@ -76,6 +76,9 @@ Options:
                           rows match if ANY pattern matches).
   --url-prefix <prefix>   Only include URLs starting with this prefix (repeatable).
   --invert                Invert the kind/URL filter (exclude matches instead).
+  --baseline <path>       Compare against a previous JSON sidecar and emit a
+                          diff section (regressions / fixes / unchanged).
+  --diff-only             Only print the diff vs --baseline (skip group tables).
   --help, -h              Show this help.
 
 Env:
