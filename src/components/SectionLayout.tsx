@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft } from "lucide-react";
 import { StickyTOC, TOCItem } from "@/components/StickyTOC";
+import { sectionMeta, topicsBySection, type Section } from "@/data/curriculum";
 
 const SITE_URL = "https://anaesthesiacore.app";
 const SITE_NAME = "AnaesthesiaCore";
