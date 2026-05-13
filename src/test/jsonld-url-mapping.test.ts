@@ -97,6 +97,17 @@ function parseRoutes(): RouteDecl[] {
   for (let m: RegExpExecArray | null; (m = staticRe.exec(src)) !== null; ) {
     if (!importMap.has(m[1])) importMap.set(m[1], m[2]);
   }
+  // import { Foo, Bar as Baz } from "./x";
+  const namedRe = /import\s*\{([^}]+)\}\s*from\s+["']([^"']+)["']/g;
+  for (let m: RegExpExecArray | null; (m = namedRe.exec(src)) !== null; ) {
+    const spec = m[2];
+    for (const part of m[1].split(",")) {
+      const local = part.trim().split(/\s+as\s+/).pop()?.trim();
+      if (local && /^[A-Za-z_$][\w$]*$/.test(local) && !importMap.has(local)) {
+        importMap.set(local, spec);
+      }
+    }
+  }
 
   const routes: RouteDecl[] = [];
   const routeRe = /<Route\s+path=["']([^"']+)["'][^>]*element=\{\s*<\s*([A-Za-z_$][\w$]*)\b/g;
