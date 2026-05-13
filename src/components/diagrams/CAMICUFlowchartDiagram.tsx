@@ -229,7 +229,7 @@ export const CAMICUFlowchartDiagram = () => {
               </desc>
 
               {/* Step 0: RASS */}
-              <g {...svgNodeProps("Step 1 of 5: Assess RASS — if RASS less than or equal to minus 4, patient is unassessable, stop screening")}>
+              <g {...svgNodeProps("Step 1/5: Assess RASS (stop if RASS ≤ −4)")}>
                 <title>Step 1 — Assess RASS</title>
                 <rect x="220" y="10" width="200" height="44" rx="6" fill="hsl(var(--primary))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="30" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -245,7 +245,7 @@ export const CAMICUFlowchartDiagram = () => {
               </path>
 
               {/* Feature 1 */}
-              <g {...svgNodeProps("Step 2 of 5 (Feature 1): Acute onset or fluctuating course — change from baseline in last 24 hours, or mental status fluctuated in past 24 hours")}>
+              <g {...svgNodeProps("Step 2/5 — Feature 1: Acute onset or fluctuating course")}>
                 <title>Feature 1 — Acute onset OR fluctuating course</title>
                 <rect x="180" y="80" width="280" height="58" rx="6" fill="hsl(var(--clinical))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -260,20 +260,20 @@ export const CAMICUFlowchartDiagram = () => {
               </g>
 
               {/* No → CAM-ICU negative */}
-              <g {...svgNodeProps("Branch (no): Feature 1 negative — route to CAM-ICU negative outcome")}>
+              <g {...svgNodeProps("Branch no: Feature 1 → CAM-ICU negative")}>
                 <title>Feature 1 NO → CAM-ICU negative</title>
                 <path d="M 180 109 L 60 109 L 60 200" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="100" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
-              <g {...svgNodeProps("Branch (yes): Feature 1 positive — proceed to Feature 2")}>
+              <g {...svgNodeProps("Branch yes: Feature 1 → Feature 2")}>
                 <title>Feature 1 YES → Feature 2</title>
                 <path d="M 320 138 L 320 162" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
                 <text x="328" y="155" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
               </g>
 
               {/* Feature 2 */}
-              <g {...svgNodeProps("Step 3 of 5 (Feature 2): Inattention — SAVEAHAART letters or pictures, greater than 2 errors is positive")}>
+              <g {...svgNodeProps("Step 3/5 — Feature 2: Inattention (SAVEAHAART, >2 errors positive)")}>
                 <title>Feature 2 — Inattention</title>
                 <rect x="180" y="164" width="280" height="56" rx="6" fill="hsl(var(--icu))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="184" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -287,20 +287,20 @@ export const CAMICUFlowchartDiagram = () => {
                 </text>
               </g>
 
-              <g {...svgNodeProps("Branch (no): Feature 2 negative — route to CAM-ICU negative outcome")}>
+              <g {...svgNodeProps("Branch no: Feature 2 → CAM-ICU negative")}>
                 <title>Feature 2 NO → CAM-ICU negative</title>
                 <path d="M 180 192 L 60 192 L 60 230" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="183" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
-              <g {...svgNodeProps("Branch (yes): Feature 2 positive — proceed to Feature 3")}>
+              <g {...svgNodeProps("Branch yes: Feature 2 → Feature 3")}>
                 <title>Feature 2 YES → Feature 3</title>
                 <path d="M 320 220 L 320 244" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
                 <text x="328" y="237" fontSize="9" className="fill-foreground" fontWeight="600">YES</text>
               </g>
 
               {/* Feature 3 */}
-              <g {...svgNodeProps("Step 4 of 5 (Feature 3): Altered consciousness — current RASS not equal to zero")}>
+              <g {...svgNodeProps("Step 4/5 — Feature 3: Altered consciousness (RASS ≠ 0)")}>
                 <title>Feature 3 — Altered consciousness</title>
                 <rect x="180" y="246" width="280" height="44" rx="6" fill="hsl(var(--pharmacology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="266" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -312,21 +312,21 @@ export const CAMICUFlowchartDiagram = () => {
               </g>
 
               {/* If F3 yes → POSITIVE */}
-              <g {...svgNodeProps("Branch (yes): Feature 3 positive — route to CAM-ICU positive outcome")}>
+              <g {...svgNodeProps("Branch yes: Feature 3 → CAM-ICU positive")}>
                 <title>Feature 3 YES → CAM-ICU positive</title>
                 <path d="M 460 268 L 540 268 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
                 <text x="475" y="262" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
               </g>
 
               {/* If F3 no → check F4 */}
-              <g {...svgNodeProps("Branch (no): Feature 3 negative — proceed to Feature 4")}>
+              <g {...svgNodeProps("Branch no: Feature 3 → Feature 4")}>
                 <title>Feature 3 NO → Feature 4</title>
                 <path d="M 320 290 L 320 312" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
                 <text x="328" y="305" fontSize="9" className="fill-foreground" fontWeight="600">NO</text>
               </g>
 
               {/* Feature 4 */}
-              <g {...svgNodeProps("Step 5 of 5 (Feature 4): Disorganised thinking — four yes/no questions plus a two-step command, greater than 1 error is positive")}>
+              <g {...svgNodeProps("Step 5/5 — Feature 4: Disorganised thinking (>1 error positive)")}>
                 <title>Feature 4 — Disorganised thinking</title>
                 <rect x="180" y="314" width="280" height="56" rx="6" fill="hsl(var(--physiology))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="320" y="334" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
@@ -340,20 +340,20 @@ export const CAMICUFlowchartDiagram = () => {
                 </text>
               </g>
 
-              <g {...svgNodeProps("Branch (no): Feature 4 negative — route to CAM-ICU negative outcome")}>
+              <g {...svgNodeProps("Branch no: Feature 4 → CAM-ICU negative")}>
                 <title>Feature 4 NO → CAM-ICU negative</title>
                 <path d="M 180 342 L 60 342 L 60 392" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
                 <text x="100" y="333" fontSize="9" className="fill-muted-foreground" fontWeight="600">NO</text>
               </g>
 
-              <g {...svgNodeProps("Branch (yes): Feature 4 positive — route to CAM-ICU positive outcome")}>
+              <g {...svgNodeProps("Branch yes: Feature 4 → CAM-ICU positive")}>
                 <title>Feature 4 YES → CAM-ICU positive</title>
                 <path d="M 460 342 L 540 342 L 540 380" stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" />
                 <text x="475" y="333" fontSize="9" className="fill-destructive" fontWeight="600">YES</text>
               </g>
 
               {/* Outcome — Negative */}
-              <g {...svgNodeProps("Outcome: CAM-ICU negative — no delirium")}>
+              <g {...svgNodeProps("Outcome: CAM-ICU negative (no delirium)")}>
                 <title>CAM-ICU NEGATIVE — no delirium</title>
                 <rect x="10" y="392" width="180" height="48" rx="6" fill="hsl(var(--muted))" opacity="0.6" stroke="hsl(var(--border))" />
                 <text x="100" y="413" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-foreground">
@@ -365,7 +365,7 @@ export const CAMICUFlowchartDiagram = () => {
               </g>
 
               {/* Outcome — Positive */}
-              <g {...svgNodeProps("Outcome: CAM-ICU positive — delirium present, apply the ABCDEF bundle")}>
+              <g {...svgNodeProps("Outcome: CAM-ICU positive (delirium — apply ABCDEF bundle)")}>
                 <title>CAM-ICU POSITIVE — delirium present, apply ABCDEF bundle</title>
                 <rect x="450" y="382" width="180" height="58" rx="6" fill="hsl(var(--destructive))" opacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="540" y="404" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">
