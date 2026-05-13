@@ -748,9 +748,51 @@ export default function DrugDetail() {
     </main></div>
   );
 
+  const canonicalUrl = `https://anaesthesiacore.app/drugs/${drug.slug}`;
+  const metaDescription = (
+    drug.indication_oneliner ||
+    `${drug.name} (${drug.drug_class}) monograph: presentation, mechanism, pharmacokinetics, dosing, monitoring and side effects.`
+  ).slice(0, 300);
+  const drugJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Drug",
+    name: drug.name,
+    alternateName: drug.synonyms,
+    drugClass: drug.drug_class,
+    description: drug.indication_oneliner,
+    mechanismOfAction: drug.mechanism_of_action || undefined,
+    clinicalPharmacology: drug.pharmacokinetics || undefined,
+    dosageForm: drug.presentation || undefined,
+    warning: drug.key_warning || undefined,
+    url: canonicalUrl,
+  };
+  const medicalPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: `${drug.name} — drug monograph | AnaesthesiaCore`,
+    url: canonicalUrl,
+    inLanguage: "en-GB",
+    audience: { "@type": "MedicalAudience", audienceType: "Anaesthetists and intensive care clinicians" },
+    about: { "@type": "Drug", name: drug.name, drugClass: drug.drug_class },
+    description: metaDescription,
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      
+      <Helmet>
+        <title>{`${drug.name} — ${drug.drug_class} monograph | AnaesthesiaCore`}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:title" content={`${drug.name} — drug monograph`} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:title" content={`${drug.name} — drug monograph`} />
+        <meta name="twitter:description" content={metaDescription} />
+        <script type="application/ld+json">{JSON.stringify(drugJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(medicalPageJsonLd)}</script>
+      </Helmet>
+
       <main className="container mx-auto px-4 py-6 max-w-4xl">
         <Breadcrumbs items={[{ label: "Drug Formulary", to: "/drugs" }, { label: drug.name }]} />
         <Link to="/drugs" className="text-sm text-muted-foreground hover:text-drugs inline-flex items-center gap-1 mb-3">
