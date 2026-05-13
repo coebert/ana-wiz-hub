@@ -117,6 +117,10 @@ const Landing = () => {
             <img
               src={brainLogo}
               alt="AnaesthesiaCore logo"
+              width={288}
+              height={288}
+              fetchPriority="high"
+              decoding="async"
               className="h-52 w-52 md:h-72 md:w-72 mb-6 invert brightness-200 [filter:invert(1)_brightness(2)_drop-shadow(0_4px_12px_rgba(0,0,0,0.35))]"
             />
             <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-3 tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
