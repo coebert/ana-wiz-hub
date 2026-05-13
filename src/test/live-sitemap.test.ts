@@ -68,6 +68,7 @@ describeOrSkip("live sitemap & robots.txt", () => {
   let sitemapStatus = 0;
 
   beforeAll(async () => {
+    const [r, s] = await Promise.all([
       fetchWithRetry(`${SITE_URL}/robots.txt`),
       fetchWithRetry(`${SITE_URL}/sitemap.xml`),
     ]);
