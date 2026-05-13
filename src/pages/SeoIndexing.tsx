@@ -126,34 +126,35 @@ export default function SeoIndexing() {
           <CardContent>
             {isLoading ? (
               <Skeleton className="h-8 w-32" />
-            ) : sitemap && hasError(sitemap) ? (
+            ) : !sitemap || hasError(sitemap) ? (
               <Badge variant="destructive">Error</Badge>
-            ) : sitemap ? (
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Badge variant={sitemap.errors && sitemap.errors !== "0" ? "destructive" : "default"}>
-                    {sitemap.errors && sitemap.errors !== "0" ? `${sitemap.errors} errors` : "Submitted"}
-                  </Badge>
-                  {sitemap.warnings && sitemap.warnings !== "0" ? (
-                    <Badge variant="secondary">{sitemap.warnings} warnings</Badge>
-                  ) : null}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Submitted: {fmtDateTime(sitemap.lastSubmitted)}
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Downloaded: {fmtDateTime(sitemap.lastDownloaded)}
-                </p>
-                <a
-                  href={data?.sitemapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
-                >
-                  View sitemap.xml <ExternalLink className="h-3 w-3" />
-                </a>
-              </div>
-            ) : null}
+            ) : (
+              (() => {
+                const s = sitemap as SitemapInfo;
+                const hasErrs = s.errors && s.errors !== "0";
+                const hasWarns = s.warnings && s.warnings !== "0";
+                return (
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Badge variant={hasErrs ? "destructive" : "default"}>
+                        {hasErrs ? `${s.errors} errors` : "Submitted"}
+                      </Badge>
+                      {hasWarns ? <Badge variant="secondary">{s.warnings} warnings</Badge> : null}
+                    </div>
+                    <p className="text-xs text-muted-foreground">Submitted: {fmtDateTime(s.lastSubmitted)}</p>
+                    <p className="text-xs text-muted-foreground">Downloaded: {fmtDateTime(s.lastDownloaded)}</p>
+                    <a
+                      href={data?.sitemapUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                    >
+                      View sitemap.xml <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                );
+              })()
+            )}
           </CardContent>
         </Card>
 
