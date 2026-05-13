@@ -53,11 +53,7 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
     name: "Myasthenic crisis flowchart",
     route: "/pharmacology/muscle-relaxants",
     expectedGroups: 8, // 6 steps + 1 decision + steroid follow-on
-    component: lazy(() =>
-      import("@/components/diagrams/MyastheniaCrisisFlowchart").then((m) => ({
-        default: m.MyastheniaCrisisFlowchart,
-      })),
-    ),
+    component: lazy(() => import("@/components/diagrams/MyastheniaCrisisFlowchart")),
   },
   {
     id: "ans-pathway",
