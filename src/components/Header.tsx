@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FlaskConical, Heart, Atom, Search, Stethoscope, Activity, ClipboardList, HandHeart, Network, BarChart3, Headphones, Mic, Pill } from "lucide-react";
-import brainLogo from "/brain-logo.png";
+import brainLogo from "/brain-logo.webp";
 import { SearchDialog } from "@/components/SearchDialog";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { Exam, ExamTag } from "@/data/curriculum";
@@ -74,7 +74,7 @@ export const Header = () => {
             const homeTarget = location.pathname === "/" ? "/" : "/revise";
             return (
               <Link to={homeTarget} className="flex items-center gap-2 shrink-0">
-                <img src={brainLogo} alt="AnaesthesiaCore" className="h-6 w-6" />
+                <img src={brainLogo} alt="AnaesthesiaCore" width={24} height={24} decoding="async" className="h-6 w-6" />
                 <span className="text-base font-semibold text-foreground hidden lg:inline">
                   AnaesthesiaCore
                 </span>

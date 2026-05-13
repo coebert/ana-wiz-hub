@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Atom, Heart, FlaskConical, GraduationCap, ArrowRight, Stethoscope, Activity, ClipboardList, Bone, Beaker } from "lucide-react";
-import brainLogo from "/brain-logo.png";
+import brainLogo from "/brain-logo.webp";
 import { useProgress } from "@/contexts/ProgressContext";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ProgressRing } from "@/components/ProgressRing";
@@ -133,7 +133,15 @@ const Index = () => {
         />
         <div className="relative container mx-auto px-4 py-16 md:py-24 text-center">
           <div className="relative flex flex-col items-center justify-center mb-4">
-            <img src={brainLogo} alt="" className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none" />
+            <img
+              src={brainLogo}
+              alt=""
+              width={224}
+              height={224}
+              fetchPriority="high"
+              decoding="async"
+              className="absolute h-40 w-40 md:h-56 md:w-56 invert brightness-200 opacity-15 pointer-events-none"
+            />
             <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground">
               AnaesthesiaCore
             </h1>

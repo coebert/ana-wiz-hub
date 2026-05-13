@@ -12,9 +12,32 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="AnaesthesiaCore" />
     <link rel="apple-touch-icon" href="/brain-logo.png" />
-    <link rel="preload" as="image" href="/brain-logo.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/brain-logo.webp" type="image/webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Load the Google Fonts stylesheet asynchronously so it doesn't block
+      first paint, with a <noscript> fallback for crawlers/no-JS clients.
+      `display=swap` is in the URL so the page paints with system fonts
+      first and swaps to Inter/Playfair when ready.
+    -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      />
+    </noscript>
     <meta name="author" content="Lovable" />
 
     
