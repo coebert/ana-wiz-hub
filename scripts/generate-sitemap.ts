@@ -1,5 +1,6 @@
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync, statSync, existsSync } from "fs";
 import { resolve } from "path";
+import { execSync } from "child_process";
 
 const BASE_URL = "https://anaesthesiacore.app";
 
