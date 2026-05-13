@@ -363,7 +363,7 @@ const BundleBranchBlockDiagram = () => {
 
         {/* Cards grid */}
         {showAll ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
             {ORDER.map((k) => {
               const b = BLOCKS[k];
               const active = selected === k;
@@ -389,7 +389,7 @@ const BundleBranchBlockDiagram = () => {
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
+                  <div className="flex flex-col gap-3">
                     <TreeMini block={b} color={b.color} />
                     <div className="min-w-0 space-y-1.5">
                       <div className="flex gap-2">

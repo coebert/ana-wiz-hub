@@ -467,7 +467,7 @@ const BradyarrhythmiaDiagram = () => {
 
         {/* Cards grid */}
         {showAll ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
             {ORDER.map((k) => {
               const b = BRADYS[k];
               const active = selected === k;
@@ -493,7 +493,7 @@ const BradyarrhythmiaDiagram = () => {
                     </span>
                   </div>
 
-                  <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
+                  <div className="flex flex-col gap-3">
                     <TreeMini brady={b} color={b.color} />
                     <div className="min-w-0">
                       {showLabels && (
@@ -520,7 +520,7 @@ const BradyarrhythmiaDiagram = () => {
         ) : (
           <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
             <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
-            <div className="flex flex-col sm:grid sm:grid-cols-[auto_1fr] gap-3 sm:items-center">
+            <div className="flex flex-col gap-3">
               <TreeMini brady={info} color={info.color} />
               <div className="min-w-0">
                 <p className="text-[11px] text-muted-foreground mb-1.5">
