@@ -42,7 +42,7 @@ class IntersectionObserverStub {
   }
 }
 if (typeof globalThis.IntersectionObserver === "undefined") {
-  // @ts-expect-error — minimal stub for jsdom
+  // Minimal stub for jsdom (no need to match the full DOM type).
   globalThis.IntersectionObserver = IntersectionObserverStub;
 }
 
