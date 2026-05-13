@@ -436,35 +436,133 @@ function StratCell({ run, label, icon: Icon }: { run?: LighthouseRun; label: str
   );
 }
 
+function avgScore(r?: LighthouseRun): number | null {
+  if (!r) return null;
+  const xs = [r.score_performance, r.score_accessibility, r.score_best_practices, r.score_seo].filter(
+    (n): n is number => typeof n === "number",
+  );
+  if (xs.length === 0) return null;
+  return xs.reduce((a, b) => a + b, 0) / xs.length;
+}
+
+function WinnerBadge({ row }: { row: ComparisonRow }) {
+  if (!row.mobile || !row.desktop) {
+    return (
+      <Badge variant="outline" className="text-xs">
+        {row.mobile ? "Mobile only" : row.desktop ? "Desktop only" : "No data"}
+      </Badge>
+    );
+  }
+  const m = avgScore(row.mobile) ?? 0;
+  const d = avgScore(row.desktop) ?? 0;
+  const diff = Math.round((d - m) * 10) / 10;
+  if (Math.abs(diff) < 0.5) {
+    return (
+      <Badge className="border-border bg-muted text-foreground text-xs">Tied · avg {m.toFixed(0)}</Badge>
+    );
+  }
+  const desktopWins = diff > 0;
+  const Icon = desktopWins ? Monitor : Smartphone;
+  const label = desktopWins ? "Desktop leads" : "Mobile leads";
+  return (
+    <Badge
+      className={`text-xs border ${
+        desktopWins
+          ? "bg-violet-500/15 text-violet-700 dark:text-violet-300 border-violet-500/30"
+          : "bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30"
+      }`}
+    >
+      <Icon className="mr-1 h-3 w-3" />
+      {label} · +{Math.abs(diff).toFixed(1)}
+    </Badge>
+  );
+}
+
+function metricDeltas(row: ComparisonRow) {
+  if (!row.mobile || !row.desktop) return null;
+  return [
+    { key: "Perf", m: row.mobile.score_performance, d: row.desktop.score_performance },
+    { key: "A11y", m: row.mobile.score_accessibility, d: row.desktop.score_accessibility },
+    { key: "BP", m: row.mobile.score_best_practices, d: row.desktop.score_best_practices },
+    { key: "SEO", m: row.mobile.score_seo, d: row.desktop.score_seo },
+  ];
+}
+
 function ComparisonView({ rows }: { rows: ComparisonRow[] }) {
   if (rows.length === 0) {
-    return (
-      <p className="text-sm text-muted-foreground">No runs to compare yet.</p>
-    );
+    return <p className="text-sm text-muted-foreground">No runs to compare yet.</p>;
   }
   return (
     <div className="space-y-4">
-      {rows.map((row) => (
-        <div key={row.url} className="rounded-lg border border-border p-3">
-          <div className="mb-3 flex items-center justify-between gap-2">
-            <p className="truncate text-sm font-medium" title={row.url}>{row.url}</p>
-            {row.mobile && row.desktop ? (
-              <div className="flex shrink-0 items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1">
-                  Perf <Delta mobile={row.mobile.score_performance} desktop={row.desktop.score_performance} />
-                </span>
-                <span className="inline-flex items-center gap-1">
-                  SEO <Delta mobile={row.mobile.score_seo} desktop={row.desktop.score_seo} />
-                </span>
+      {rows.map((row) => {
+        const m = avgScore(row.mobile);
+        const d = avgScore(row.desktop);
+        const desktopWins = m != null && d != null && d - m >= 0.5;
+        const mobileWins = m != null && d != null && m - d >= 0.5;
+        const deltas = metricDeltas(row);
+        return (
+          <div key={row.url} className="rounded-lg border border-border p-3">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <p className="truncate text-sm font-medium" title={row.url}>{row.url}</p>
+              <WinnerBadge row={row} />
+            </div>
+            {deltas ? (
+              <div className="mb-3 flex flex-wrap gap-1.5">
+                {deltas.map((x) => (
+                  <DeltaBadge key={x.key} label={x.key} mobile={x.m} desktop={x.d} />
+                ))}
               </div>
             ) : null}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className={mobileWins ? "ring-2 ring-sky-500/40 rounded-md" : ""}>
+                <StratCell run={row.mobile} label="Mobile" icon={Smartphone} />
+              </div>
+              <div className={desktopWins ? "ring-2 ring-violet-500/40 rounded-md" : ""}>
+                <StratCell run={row.desktop} label="Desktop" icon={Monitor} />
+              </div>
+            </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <StratCell run={row.mobile} label="Mobile" icon={Smartphone} />
-            <StratCell run={row.desktop} label="Desktop" icon={Monitor} />
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
+  );
+}
+
+function DeltaBadge({
+  label,
+  mobile,
+  desktop,
+}: {
+  label: string;
+  mobile: number | null;
+  desktop: number | null;
+}) {
+  if (mobile == null || desktop == null) {
+    return (
+      <Badge variant="outline" className="text-xs font-normal">
+        {label} —
+      </Badge>
+    );
+  }
+  const diff = desktop - mobile;
+  if (diff === 0) {
+    return (
+      <Badge variant="outline" className="text-xs font-normal text-muted-foreground">
+        {label} ±0
+      </Badge>
+    );
+  }
+  const desktopBetter = diff > 0;
+  const Icon = desktopBetter ? ArrowUpRight : ArrowDownRight;
+  const winner = desktopBetter ? "Desktop" : "Mobile";
+  const cls = desktopBetter
+    ? "bg-violet-500/15 text-violet-700 dark:text-violet-300 border-violet-500/30"
+    : "bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30";
+  return (
+    <Badge className={`text-xs font-normal border ${cls}`} title={`${winner} +${Math.abs(diff)}`}>
+      {label}
+      <Icon className="mx-0.5 h-3 w-3" />
+      {Math.abs(diff)} {winner === "Desktop" ? "D" : "M"}
+    </Badge>
   );
 }
