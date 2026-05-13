@@ -510,10 +510,23 @@ if (BASELINE_PATH) {
       routePath: prev.routePath ?? "x",
     });
     const after = rowStatus(cur);
+    const beforeRoute: RouteSnapshot = {
+      routePath: prev.routePath ?? null,
+      component: prev.component ?? null,
+      componentFile: prev.componentFile ?? null,
+    };
+    const afterRoute: RouteSnapshot = {
+      routePath: cur.routePath, component: cur.component, componentFile: cur.componentFile,
+    };
+    const routeChanged =
+      beforeRoute.routePath !== afterRoute.routePath ||
+      beforeRoute.component !== afterRoute.component ||
+      beforeRoute.componentFile !== afterRoute.componentFile;
     const entry: DiffEntry = {
       url: cur.url, kind: cur.kind,
       before, after,
       newMissingTypes, fixedMissingTypes, newBadBlocks, fixedBadBlocks,
+      route: { before: beforeRoute, after: afterRoute, changed: routeChanged },
     };
     const worse = (before === "ok" && after !== "ok") || newMissingTypes.length > 0 || newBadBlocks.length > 0;
     const better = (before !== "ok" && after === "ok") || (fixedMissingTypes.length > 0 && newMissingTypes.length === 0 && newBadBlocks.length === 0) || (fixedBadBlocks.length > 0 && newBadBlocks.length === 0 && newMissingTypes.length === 0);
