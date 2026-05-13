@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ChevronLeft } from "lucide-react";
 import { StickyTOC, TOCItem } from "@/components/StickyTOC";
+import { sectionMeta, topicsBySection, type Section } from "@/data/curriculum";
 
 const SITE_URL = "https://anaesthesiacore.app";
 const SITE_NAME = "AnaesthesiaCore";
@@ -90,6 +91,46 @@ export const SectionLayout = ({
     })),
   };
 
+  // Course JSON-LD on section landing pages (e.g. /physics, /intensive-care).
+  // Each section landing maps to a Course whose hasPart lists its topic pages
+  // as LearningResource entries, so Google can model the curriculum hierarchy.
+  const sectionEntry = (Object.entries(sectionMeta) as [Section, { label: string; path: string }][])
+    .find(([, meta]) => meta.path === location.pathname);
+  const courseJsonLd = sectionEntry
+    ? (() => {
+        const [sectionKey, meta] = sectionEntry;
+        const topics = topicsBySection[sectionKey].filter((t) => t.available);
+        return {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: `${meta.label} — AnaesthesiaCore`,
+          description: subtitle,
+          url: `${SITE_URL}${meta.path}`,
+          inLanguage: "en-GB",
+          educationalLevel: "Postgraduate",
+          provider: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            sameAs: `${SITE_URL}/`,
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "online",
+            inLanguage: "en-GB",
+          },
+          hasPart: topics.map((t) => ({
+            "@type": "LearningResource",
+            name: t.title,
+            description: t.description,
+            url: `${SITE_URL}${meta.path}/${t.id}`,
+            learningResourceType: "Topic",
+            educationalLevel: "Postgraduate",
+            teaches: t.title,
+          })),
+        };
+      })()
+    : null;
+
   useEffect(() => {
     if (disableAutoTOC) return;
     const root = contentRef.current;
@@ -141,6 +182,9 @@ export const SectionLayout = ({
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={truncatedDescription} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        {courseJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(courseJsonLd)}</script>
+        )}
       </Helmet>
       {backPath && (
         <Link
