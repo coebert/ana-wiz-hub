@@ -81,6 +81,9 @@ Options:
   --invert                Invert the kind/URL filter (exclude matches instead).
   --baseline <path>       Compare against a previous JSON sidecar and emit a
                            diff section (regressions / fixes / unchanged).
+  --baseline-url <url>    Fetch the baseline JSON sidecar from a URL (raw
+                           .json, or a GitHub Actions artifact .zip — pass a
+                           token via GITHUB_TOKEN/GH_TOKEN if needed).
   --diff-only             Only print the diff vs --baseline (skip group tables).
   --diff-group-by-kind    Inside the diff section, group regressions / fixes /
                            changed by page kind (home, section, topic, …).
@@ -89,6 +92,7 @@ Options:
 Env:
   JSONLD_COVERAGE_STRICT=1   Exit non-zero if any failure remains in the
                              *filtered* set.
+  GITHUB_TOKEN / GH_TOKEN    Bearer token for --baseline-url (artifact downloads).
 `);
   process.exit(0);
 }
