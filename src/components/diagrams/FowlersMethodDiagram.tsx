@@ -157,8 +157,8 @@ export const FowlersMethodDiagram = () => {
           )}
 
           {/* Axes */}
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + PLOT_H} stroke="hsl(var(--foreground))" strokeWidth="1.2" />
-          <line x1={PAD_L} y1={PAD_T + PLOT_H} x2={PAD_L + PLOT_W} y2={PAD_T + PLOT_H} stroke="hsl(var(--foreground))" strokeWidth="1.2" />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + PLOT_H} stroke="hsl(var(--foreground))" strokeWidth="1" />
+          <line x1={PAD_L} y1={PAD_T + PLOT_H} x2={PAD_L + PLOT_W} y2={PAD_T + PLOT_H} stroke="hsl(var(--foreground))" strokeWidth="1" />
 
           {/* Y ticks */}
           {[0, 20, 40, 60, 80, 100].map((v) => (
@@ -191,7 +191,7 @@ export const FowlersMethodDiagram = () => {
           {/* Equal-area vertical at V_D */}
           {showConstruction && currentVolume > ANATOMICAL_DEAD_SPACE_ML && (
             <>
-              <line x1={vdX} y1={PAD_T} x2={vdX} y2={PAD_T + PLOT_H} stroke="hsl(0 70% 55%)" strokeWidth="1.4" strokeDasharray="6 3" />
+              <line x1={vdX} y1={PAD_T} x2={vdX} y2={PAD_T + PLOT_H} stroke="hsl(0 70% 55%)" strokeWidth="1.5" strokeDasharray="6 3" />
               <text x={vdX} y={PAD_T + PLOT_H + 32} textAnchor="middle" fontSize="10" fill="hsl(0 70% 55%)" fontWeight="600">
                 V<tspan baselineShift="sub" fontSize="7">D</tspan> = {ANATOMICAL_DEAD_SPACE_ML} mL
               </text>
@@ -211,7 +211,7 @@ export const FowlersMethodDiagram = () => {
 
           {/* The actual N2 curve — animated */}
           {visiblePathD && (
-            <path d={visiblePathD} fill="none" stroke="hsl(var(--primary))" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            <path d={visiblePathD} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           )}
 
           {/* Leading edge marker */}

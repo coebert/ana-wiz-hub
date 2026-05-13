@@ -142,11 +142,11 @@ export const PneumoperitoneumTrendelenburgDiagram = () => {
             {/* Table */}
             <rect x="80" y="180" width="440" height="14" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
             {/* Patient body silhouette */}
-            <ellipse cx="300" cy="160" rx="180" ry="28" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="1.2" />
+            <ellipse cx="300" cy="160" rx="180" ry="28" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="1" />
             {/* Head */}
-            <circle cx="120" cy="158" r="18" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="1.2" />
+            <circle cx="120" cy="158" r="18" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="1" />
             {/* Insufflated abdomen */}
-            <ellipse cx="320" cy="148" rx="55" ry="22" fill="url(#ppt-belly)" stroke="hsl(var(--clinical))" strokeWidth="1.2" />
+            <ellipse cx="320" cy="148" rx="55" ry="22" fill="url(#ppt-belly)" stroke="hsl(var(--clinical))" strokeWidth="1" />
             <text x="320" y="151" textAnchor="middle" className="fill-foreground" fontSize="9" fontWeight="600">CO₂ 12–15 mmHg</text>
           </g>
 

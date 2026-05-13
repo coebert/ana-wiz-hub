@@ -90,14 +90,14 @@ export const RemifentanilPKDiagram = () => {
                 <rect x="80" y="265" width="200" height="50" rx="8" fill="hsl(var(--background))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
                 <text x="180" y="290" textAnchor="middle" className="fill-muted-foreground" fontSize="11" fontWeight="600">Hepatic CYP450</text>
                 <text x="180" y="305" textAnchor="middle" className="fill-muted-foreground" fontSize="9">NOT involved in clearance</text>
-                <line x1="95" y1="270" x2="265" y2="310" stroke="hsl(0 70% 55%)" strokeWidth="2.5" />
+                <line x1="95" y1="270" x2="265" y2="310" stroke="hsl(0 70% 55%)" strokeWidth="2" />
               </g>
 
               <g>
                 <rect x="320" y="265" width="200" height="50" rx="8" fill="hsl(var(--background))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="3 3" />
                 <text x="420" y="290" textAnchor="middle" className="fill-muted-foreground" fontSize="11" fontWeight="600">Renal clearance (parent)</text>
                 <text x="420" y="305" textAnchor="middle" className="fill-muted-foreground" fontSize="9">NOT required (only metabolite)</text>
-                <line x1="335" y1="270" x2="505" y2="310" stroke="hsl(0 70% 55%)" strokeWidth="2.5" />
+                <line x1="335" y1="270" x2="505" y2="310" stroke="hsl(0 70% 55%)" strokeWidth="2" />
               </g>
 
               <g>

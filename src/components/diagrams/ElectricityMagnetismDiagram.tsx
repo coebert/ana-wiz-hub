@@ -138,7 +138,7 @@ const InductanceDiagram = () => (
 
         {/* Inductor symbol - coil */}
         <line x1="120" y1="65" x2="200" y2="65" stroke="hsl(var(--foreground))" strokeWidth="2" />
-        <path d="M 200 65 Q 215 45, 230 65 Q 245 45, 260 65 Q 275 45, 290 65 Q 305 45, 320 65 Q 335 45, 350 65" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <path d="M 200 65 Q 215 45, 230 65 Q 245 45, 260 65 Q 275 45, 290 65 Q 305 45, 320 65 Q 335 45, 350 65" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <line x1="350" y1="65" x2="440" y2="65" stroke="hsl(var(--foreground))" strokeWidth="2" />
 
         {/* Equation */}
@@ -161,7 +161,7 @@ const InductanceDiagram = () => (
         {/* Comparison table */}
         <text x="300" y="295" textAnchor="middle" className="fill-foreground text-[12px] font-bold">Capacitor vs Inductor Comparison</text>
         {/* Headers */}
-        <rect x="60" y="302" width="480" height="22" rx="4" fill="hsl(var(--primary)/0.1)" />
+        <rect x="60" y="302" width="480" height="22" rx="4" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="180" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Property</text>
         <text x="340" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Capacitor</text>
         <text x="480" y="317" textAnchor="middle" className="fill-foreground text-[9px] font-bold">Inductor</text>
@@ -191,7 +191,7 @@ const TransformersDiagram = () => (
         <text x="300" y="22" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Transformer: Changes AC Voltage via Electromagnetic Induction</text>
 
         {/* Primary coil */}
-        <path d="M 100 80 Q 115 60, 130 80 Q 145 60, 160 80 Q 175 60, 190 80 Q 205 60, 220 80" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <path d="M 100 80 Q 115 60, 130 80 Q 145 60, 160 80 Q 175 60, 190 80 Q 205 60, 220 80" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="160" y="100" textAnchor="middle" className="fill-primary text-[10px] font-bold">Primary (N₁)</text>
         <line x1="100" y1="80" x2="100" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
         <line x1="220" y1="80" x2="220" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
@@ -202,7 +202,7 @@ const TransformersDiagram = () => (
         <rect x="285" y="55" width="10" height="75" rx="2" fill="hsl(var(--foreground)/0.3)" />
 
         {/* Secondary coil */}
-        <path d="M 340 80 Q 355 60, 370 80 Q 385 60, 400 80 Q 415 60, 430 80 Q 445 60, 460 80 Q 475 60, 490 80" fill="none" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+        <path d="M 340 80 Q 355 60, 370 80 Q 385 60, 400 80 Q 415 60, 430 80 Q 445 60, 460 80 Q 475 60, 490 80" fill="none" stroke="hsl(var(--accent))" strokeWidth="2" />
         <text x="415" y="100" textAnchor="middle" className="fill-accent text-[10px] font-bold">Secondary (N₂)</text>
         <line x1="340" y1="80" x2="340" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
         <line x1="490" y1="80" x2="490" y2="120" stroke="hsl(var(--foreground))" strokeWidth="1.5" />

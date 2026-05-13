@@ -177,7 +177,7 @@ const CardiacConductionDiagram = () => {
 
               {/* Atrial myocardium — fine fibre pattern */}
               <pattern id="ccd-atrialFibre" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(40)">
-                <line x1="0" y1="3" x2="6" y2="3" stroke="hsl(0, 30%, 50%)" strokeWidth="0.4" opacity="0.30" />
+                <line x1="0" y1="3" x2="6" y2="3" stroke="hsl(0, 30%, 50%)" strokeWidth="0.5" opacity="0.30" />
               </pattern>
 
               {/* Ventricular myocardium — denser muscle fibre */}
@@ -239,7 +239,7 @@ const CardiacConductionDiagram = () => {
             <path
               d="M300,75 C235,75 165,95 145,150 C140,170 145,195 165,205 L300,205 Z"
               fill="hsl(0, 35%, 65%)" fillOpacity="0.18"
-              stroke="hsl(0, 30%, 45%)" strokeWidth="0.8" opacity="0.85"
+              stroke="hsl(0, 30%, 45%)" strokeWidth="0.75" opacity="0.85"
             />
             <path d="M300,75 C235,75 165,95 145,150 C140,170 145,195 165,205 L300,205 Z"
               fill="url(#ccd-atrialFibre)" pointerEvents="none" />
@@ -248,7 +248,7 @@ const CardiacConductionDiagram = () => {
             <path
               d="M300,75 C365,75 435,95 455,150 C460,170 455,195 435,205 L300,205 Z"
               fill="hsl(0, 35%, 65%)" fillOpacity="0.22"
-              stroke="hsl(0, 30%, 45%)" strokeWidth="0.8" opacity="0.85"
+              stroke="hsl(0, 30%, 45%)" strokeWidth="0.75" opacity="0.85"
             />
             <path d="M300,75 C365,75 435,95 455,150 C460,170 455,195 435,205 L300,205 Z"
               fill="url(#ccd-atrialFibre)" pointerEvents="none" />
@@ -258,7 +258,7 @@ const CardiacConductionDiagram = () => {
               <>
                 <path d="M210,40 L210,80 L240,90 L240,40 Z"
                   fill="hsl(220, 45%, 55%)" opacity="0.25"
-                  stroke="hsl(220, 40%, 45%)" strokeWidth="0.8" />
+                  stroke="hsl(220, 40%, 45%)" strokeWidth="0.75" />
                 {showLabels && (
                   <text x="225" y="36" textAnchor="middle"
                     className="text-[8px] fill-muted-foreground italic pointer-events-none">SVC</text>
@@ -270,7 +270,7 @@ const CardiacConductionDiagram = () => {
             <path
               d="M165,205 L300,205 L300,420 C260,425 220,400 195,365 C170,330 158,275 165,205 Z"
               fill="hsl(0, 40%, 55%)" fillOpacity="0.20"
-              stroke="hsl(0, 35%, 40%)" strokeWidth="0.8"
+              stroke="hsl(0, 35%, 40%)" strokeWidth="0.75"
             />
             <path d="M165,205 L300,205 L300,420 C260,425 220,400 195,365 C170,330 158,275 165,205 Z"
               fill="url(#ccd-ventFibre)" pointerEvents="none" />
@@ -279,7 +279,7 @@ const CardiacConductionDiagram = () => {
             <path
               d="M435,205 L300,205 L300,420 C340,425 380,400 405,365 C430,330 442,275 435,205 Z"
               fill="hsl(0, 45%, 50%)" fillOpacity="0.26"
-              stroke="hsl(0, 40%, 35%)" strokeWidth="0.8"
+              stroke="hsl(0, 40%, 35%)" strokeWidth="0.75"
             />
             <path d="M435,205 L300,205 L300,420 C340,425 380,400 405,365 C430,330 442,275 435,205 Z"
               fill="url(#ccd-ventFibre)" pointerEvents="none" />

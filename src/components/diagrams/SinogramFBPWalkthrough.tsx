@@ -465,7 +465,7 @@ export const SinogramFBPWalkthrough = () => {
               style={{ imageRendering: "pixelated" }}
             />
             <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
-              <circle cx={overlayCx} cy={overlayCy} r={overlayR} fill="none" stroke="hsl(var(--border))" strokeWidth={0.4} strokeDasharray="2 2" />
+              <circle cx={overlayCx} cy={overlayCy} r={overlayR} fill="none" stroke="hsl(var(--border))" strokeWidth={0.5} strokeDasharray="2 2" />
               {/* Beam line */}
               <line
                 x1={tubeX + dirX * 50}
@@ -473,7 +473,7 @@ export const SinogramFBPWalkthrough = () => {
                 x2={tubeX - dirX * 50}
                 y2={tubeY - dirY * 50}
                 stroke="hsl(45 95% 60%)"
-                strokeWidth={0.6}
+                strokeWidth={0.5}
                 opacity={0.6}
               />
               <line
@@ -482,7 +482,7 @@ export const SinogramFBPWalkthrough = () => {
                 x2={detX - dirX * 50}
                 y2={detY - dirY * 50}
                 stroke="hsl(45 95% 60%)"
-                strokeWidth={0.6}
+                strokeWidth={0.5}
                 opacity={0.6}
               />
               {/* Tube */}

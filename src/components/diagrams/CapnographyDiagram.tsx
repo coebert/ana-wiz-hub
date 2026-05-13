@@ -439,7 +439,7 @@ export const CapnographyDiagram = () => {
             d={path}
             fill="none"
             stroke={info.color}
-            strokeWidth="2.5"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           />

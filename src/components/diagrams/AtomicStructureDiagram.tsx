@@ -61,7 +61,7 @@ export const AtomicStructureDiagram = () => {
               <text x={100} y={20} textAnchor="middle" fontSize="12" className="fill-foreground font-semibold">Sodium (Na) — Z = 11</text>
               {/* Nucleus */}
               <circle cx={100} cy={120} r={14} fill="hsl(95 55% 38%)" opacity="0.9" />
-              <text x={100} y={124} textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">11p⁺</text>
+              <text x={100} y={124} textAnchor="middle" fontSize="8" fill="hsl(var(--background))" fontWeight="bold">11p⁺</text>
               {/* Shell 1: 2e */}
               <circle cx={100} cy={120} r={30} fill="none" stroke="hsl(95 55% 38%)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
               <text x={100} y={85} textAnchor="middle" fontSize="8" className="fill-muted-foreground">n=1 (2e⁻)</text>
@@ -85,7 +85,7 @@ export const AtomicStructureDiagram = () => {
             <g>
               <text x={300} y={20} textAnchor="middle" fontSize="12" className="fill-foreground font-semibold">Chlorine (Cl) — Z = 17</text>
               <circle cx={300} cy={120} r={14} fill="hsl(170 50% 40%)" opacity="0.9" />
-              <text x={300} y={124} textAnchor="middle" fontSize="8" fill="white" fontWeight="bold">17p⁺</text>
+              <text x={300} y={124} textAnchor="middle" fontSize="8" fill="hsl(var(--background))" fontWeight="bold">17p⁺</text>
               {/* Shell 1 */}
               <circle cx={300} cy={120} r={28} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="1" strokeDasharray="3 3" opacity="0.5" />
               {[0, Math.PI].map((angle, i) => (
@@ -180,8 +180,8 @@ export const AtomicStructureDiagram = () => {
             <circle cx={205 + Math.sin(t * Math.PI * 4 + 3) * 5} cy={98} r={3.5} fill="hsl(95 55% 38%)" />
 
             {/* Bond lines */}
-            <line x1={178} y1={82} x2={222} y2={82} stroke="hsl(210 70% 50%)" strokeWidth="2.5" />
-            <line x1={178} y1={98} x2={222} y2={98} stroke="hsl(210 70% 50%)" strokeWidth="2.5" />
+            <line x1={178} y1={82} x2={222} y2={82} stroke="hsl(210 70% 50%)" strokeWidth="2" />
+            <line x1={178} y1={98} x2={222} y2={98} stroke="hsl(210 70% 50%)" strokeWidth="2" />
 
             <text x={200} y={50} textAnchor="middle" fontSize="10" className="fill-muted-foreground">Double bond: 2 shared pairs</text>
             <text x={200} y={145} textAnchor="middle" fontSize="10" className="fill-foreground font-medium">O=O — shared electrons sit between nuclei</text>

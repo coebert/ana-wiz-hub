@@ -115,7 +115,7 @@ const StructuralPanel = () => (
     <text x="115" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Enflurane</text>
     <text x="115" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">CHF₂–O–CF₂–CHFCl</text>
     {/* Enflurane skeletal */}
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.4" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="40" y1="100" x2="80" y2="80" />
       <line x1="80" y1="80" x2="120" y2="100" />
       <line x1="120" y1="100" x2="160" y2="80" />
@@ -133,7 +133,7 @@ const StructuralPanel = () => (
 
     <text x="345" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">Isoflurane</text>
     <text x="345" y="32" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">CHF₂–O–CHCl–CF₃</text>
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.4" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="270" y1="100" x2="310" y2="80" />
       <line x1="310" y1="80" x2="350" y2="100" />
       <line x1="350" y1="100" x2="390" y2="80" />
@@ -156,7 +156,7 @@ const StructuralPanel = () => (
 const GeometricPanel = () => (
   <svg viewBox="0 0 460 220" className="w-full h-auto">
     <text x="115" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">cis (Z)</text>
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.6" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="65" y1="110" x2="165" y2="110" />
       <line x1="65" y1="113" x2="165" y2="113" />
       <line x1="65" y1="110" x2="40" y2="80" />
@@ -175,7 +175,7 @@ const GeometricPanel = () => (
     <line x1="230" y1="40" x2="230" y2="200" stroke="hsl(var(--border))" strokeDasharray="3 3" />
 
     <text x="345" y="18" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">trans (E)</text>
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.6" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="295" y1="110" x2="395" y2="110" />
       <line x1="295" y1="113" x2="395" y2="113" />
       <line x1="295" y1="110" x2="270" y2="80" />
@@ -216,7 +216,7 @@ const OpticalPanel = ({ mirrorHover, setMirrorHover }: OpticalProps) => (
     {/* Left enantiomer S(+) */}
     <text x="115" y="30" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">S(+)-Ketamine</text>
     {/* Tetrahedral chiral C */}
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.4" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="115" y1="120" x2="115" y2="65" />
       <line x1="115" y1="120" x2="60" y2="155" />
       <line x1="115" y1="120" x2="115" y2="180" strokeDasharray="2 2" />
@@ -235,7 +235,7 @@ const OpticalPanel = ({ mirrorHover, setMirrorHover }: OpticalProps) => (
 
     {/* Right enantiomer R(−) — mirrored */}
     <text x="345" y="30" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--chemistry))">R(−)-Ketamine</text>
-    <g stroke="hsl(var(--foreground))" strokeWidth="1.4" fill="none">
+    <g stroke="hsl(var(--foreground))" strokeWidth="1.5" fill="none">
       <line x1="345" y1="120" x2="345" y2="65" />
       <line x1="345" y1="120" x2="400" y2="155" />
       <line x1="345" y1="120" x2="345" y2="180" strokeDasharray="2 2" />

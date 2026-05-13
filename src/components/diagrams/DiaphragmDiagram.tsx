@@ -35,11 +35,11 @@ export const DiaphragmDiagram = () => {
           </radialGradient>
           {/* muscle fibre pattern */}
           <pattern id="diaFibre" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(0)">
-            <line x1="3" y1="0" x2="3" y2="6" stroke="hsl(0, 25%, 50%)" strokeWidth="0.4" opacity="0.18" />
+            <line x1="3" y1="0" x2="3" y2="6" stroke="hsl(0, 25%, 50%)" strokeWidth="0.5" opacity="0.18" />
           </pattern>
           {/* radial fibre pattern */}
           <pattern id="radFibre" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
-            <line x1="4" y1="0" x2="4" y2="8" stroke="hsl(0, 20%, 48%)" strokeWidth="0.3" opacity="0.12" />
+            <line x1="4" y1="0" x2="4" y2="8" stroke="hsl(0, 20%, 48%)" strokeWidth="0.5" opacity="0.12" />
           </pattern>
           <filter id="diaShadow" x="-10%" y="-10%" width="120%" height="120%">
             <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
@@ -63,7 +63,7 @@ export const DiaphragmDiagram = () => {
         {/* ===== CENTRAL TENDON — trefoil shape ===== */}
         <path
           d="M 200,185 Q 210,160 230,150 Q 250,145 270,150 Q 290,160 300,185 Q 310,210 295,230 Q 280,245 250,248 Q 220,245 205,230 Q 190,210 200,185 Z"
-          fill="hsl(40, 25%, 75%)" fillOpacity="0.2" stroke="hsl(40, 20%, 55%)" strokeWidth="1.2" strokeDasharray="4 2"
+          fill="hsl(40, 25%, 75%)" fillOpacity="0.2" stroke="hsl(40, 20%, 55%)" strokeWidth="1" strokeDasharray="4 2"
         />
         <text x="250" y="200" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">Central tendon</text>
         <text x="250" y="212" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">(trefoil)</text>
@@ -72,7 +72,7 @@ export const DiaphragmDiagram = () => {
         {/* Right crus — larger, wraps around oesophagus */}
         <path
           d="M 220,280 Q 215,300 218,330 Q 222,355 230,375 Q 235,385 240,390"
-          fill="none" stroke="hsl(0, 30%, 50%)" strokeWidth="4" opacity="0.25" strokeLinecap="round"
+          fill="none" stroke="hsl(0, 30%, 50%)" strokeWidth="3" opacity="0.25" strokeLinecap="round"
         />
         <path
           d="M 220,280 Q 215,300 218,330 Q 222,355 230,375 Q 235,385 240,390"
@@ -96,19 +96,19 @@ export const DiaphragmDiagram = () => {
         <text x="250" y="268" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.6">median arcuate lig.</text>
 
         {/* ===== MEDIAL ARCUATE LIGAMENTS (over psoas) ===== */}
-        <path d="M 195,290 Q 175,305 160,330" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.25" />
+        <path d="M 195,290 Q 175,305 160,330" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.25" />
         <text x="155" y="345" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">Medial arcuate lig.</text>
         <text x="155" y="355" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">(over psoas)</text>
 
-        <path d="M 305,290 Q 325,305 340,330" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.25" />
+        <path d="M 305,290 Q 325,305 340,330" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.25" />
         <text x="345" y="345" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.5">Medial arcuate lig.</text>
 
         {/* ===== LATERAL ARCUATE LIGAMENTS (over QL) ===== */}
-        <path d="M 130,290 Q 110,310 95,340" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.2" />
+        <path d="M 130,290 Q 110,310 95,340" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
         <text x="75" y="340" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.45">Lateral arcuate lig.</text>
         <text x="75" y="350" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">(over QL)</text>
 
-        <path d="M 370,290 Q 390,310 405,340" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.2" />
+        <path d="M 370,290 Q 390,310 405,340" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.2" />
         <text x="395" y="355" fontSize="6" fill="hsl(var(--muted-foreground))" opacity="0.45">Lateral arcuate lig.</text>
 
         {/* ===== COSTAL SLIPS — muscular origins from ribs ===== */}
@@ -180,7 +180,7 @@ export const DiaphragmDiagram = () => {
         <text x="250" y="410" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5">Motor: phrenic nerve (C3,4,5) — "keeps the diaphragm alive"</text>
 
         {/* ===== SPLANCHNIC NERVES ===== */}
-        <path d="M 200,310 Q 195,330 192,350" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.2" strokeDasharray="2 2" />
+        <path d="M 200,310 Q 195,330 192,350" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" strokeDasharray="2 2" />
         <text x="175" y="365" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">Splanchnic nn.</text>
         <text x="175" y="374" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.3">(pierce crura)</text>
 

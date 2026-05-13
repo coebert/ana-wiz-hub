@@ -127,7 +127,7 @@ const ClosingVolumeDiagram = () => {
           ].join(" ");
 
           return (
-            <path d={pathD} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round" />
+            <path d={pathD} fill="none" stroke="hsl(var(--foreground))" strokeWidth="2" strokeLinecap="round" />
           );
         })()}
 

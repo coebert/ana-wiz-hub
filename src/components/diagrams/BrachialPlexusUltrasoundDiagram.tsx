@@ -65,7 +65,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
       {/* Scan lines for US texture */}
       {Array.from({ length: 20 }).map((_, i) => (
         <line key={i} x1={i * (s / 20)} y1="0" x2={i * (s / 20)} y2={s}
-          stroke="hsl(0,0%,100%)" strokeWidth="0.3" opacity="0.03" />
+          stroke="hsl(0,0%,100%)" strokeWidth="0.5" opacity="0.03" />
       ))}
 
       {/* Speckle noise */}
@@ -97,7 +97,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
           {[0.28, 0.48, 0.68].map((yFrac, i) => (
             <g key={i}>
               <circle cx={cx} cy={s * yFrac} r={s * 0.06}
-                fill="hsl(0,0%,15%)" stroke="hsl(0,0%,55%)" strokeWidth="1.2" />
+                fill="hsl(0,0%,15%)" stroke="hsl(0,0%,55%)" strokeWidth="1" />
               <text x={cx + s * 0.1} y={s * yFrac + 2} fontSize="6" fill="hsl(180,50%,60%)" fontWeight="bold">
                 C{5 + i}
               </text>
@@ -118,7 +118,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
         <>
           {/* First rib - bright hyperechoic line with shadow */}
           <line x1={s * 0.05} y1={s * 0.78} x2={s * 0.95} y2={s * 0.72}
-            stroke="hsl(0,0%,80%)" strokeWidth="2.5" />
+            stroke="hsl(0,0%,80%)" strokeWidth="2" />
           <rect x={s * 0.05} y={s * 0.78} width={s * 0.9} height={s * 0.18}
             fill="hsl(0,0%,5%)" opacity="0.7" />
           <text x={s * 0.5} y={s * 0.88} textAnchor="middle" fontSize="6" fill="hsl(0,0%,35%)" opacity="0.6">1st Rib (shadow)</text>
@@ -134,7 +134,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
             { x: 0.62, y: 0.44 }, { x: 0.78, y: 0.46 }, { x: 0.74, y: 0.66 },
           ].map((p, i) => (
             <circle key={i} cx={s * p.x} cy={s * p.y} r={s * 0.035}
-              fill="hsl(0,0%,18%)" stroke="hsl(0,0%,55%)" strokeWidth="0.8" />
+              fill="hsl(0,0%,18%)" stroke="hsl(0,0%,55%)" strokeWidth="0.75" />
           ))}
           <text x={s * 0.72} y={s * 0.38} textAnchor="middle" fontSize="6" fill="hsl(180,50%,60%)" fontWeight="bold">Nerves</text>
 
@@ -171,7 +171,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
 
           {/* Axillary vein */}
           <ellipse cx={s * 0.32} cy={s * 0.6} rx={s * 0.06} ry={s * 0.045}
-            fill="hsl(220,30%,15%)" stroke="hsl(0,0%,45%)" strokeWidth="0.8" />
+            fill="hsl(220,30%,15%)" stroke="hsl(0,0%,45%)" strokeWidth="0.75" />
           <text x={s * 0.32} y={s * 0.62} textAnchor="middle" fontSize="4.5" fill="hsl(220,40%,55%)" opacity="0.7">AV</text>
 
           {/* Cords at clock positions */}
@@ -214,36 +214,36 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
 
           {/* Axillary vein (medial) */}
           <ellipse cx={s * 0.3} cy={s * 0.55} rx={s * 0.08} ry={s * 0.06}
-            fill="hsl(220,30%,12%)" stroke="hsl(0,0%,45%)" strokeWidth="0.8" />
+            fill="hsl(220,30%,12%)" stroke="hsl(0,0%,45%)" strokeWidth="0.75" />
           <text x={s * 0.3} y={s * 0.57} textAnchor="middle" fontSize="5" fill="hsl(220,40%,55%)" opacity="0.7">AV</text>
 
           {/* Median nerve ~12 o'clock */}
           <ellipse cx={s * 0.45} cy={s * 0.32} rx={s * 0.04} ry={s * 0.03}
-            fill="hsl(0,0%,40%)" stroke="hsl(45,60%,55%)" strokeWidth="1.2" />
+            fill="hsl(0,0%,40%)" stroke="hsl(45,60%,55%)" strokeWidth="1" />
           <text x={s * 0.45} y={s * 0.26} textAnchor="middle" fontSize="6" fill="hsl(45,60%,60%)" fontWeight="bold">Median</text>
 
           {/* Ulnar nerve ~2 o'clock */}
           <ellipse cx={s * 0.63} cy={s * 0.38} rx={s * 0.035} ry={s * 0.025}
-            fill="hsl(0,0%,40%)" stroke="hsl(270,40%,55%)" strokeWidth="1.2" />
+            fill="hsl(0,0%,40%)" stroke="hsl(270,40%,55%)" strokeWidth="1" />
           <text x={s * 0.75} y={s * 0.38} fontSize="6" fill="hsl(270,40%,60%)" fontWeight="bold">Ulnar</text>
 
           {/* Radial nerve ~6 o'clock */}
           <ellipse cx={s * 0.52} cy={s * 0.66} rx={s * 0.04} ry={s * 0.03}
-            fill="hsl(0,0%,40%)" stroke="hsl(120,50%,50%)" strokeWidth="1.2" />
+            fill="hsl(0,0%,40%)" stroke="hsl(120,50%,50%)" strokeWidth="1" />
           <text x={s * 0.52} y={s * 0.75} textAnchor="middle" fontSize="6" fill="hsl(120,50%,55%)" fontWeight="bold">Radial</text>
 
           {/* Musculocutaneous nerve in coracobrachialis */}
           <ellipse cx={s * 0.78} cy={s * 0.52} rx={s * 0.035} ry={s * 0.025}
-            fill="hsl(0,0%,45%)" stroke="hsl(0,60%,55%)" strokeWidth="1.2" />
+            fill="hsl(0,0%,45%)" stroke="hsl(0,60%,55%)" strokeWidth="1" />
           {/* Coracobrachialis muscle */}
           <ellipse cx={s * 0.78} cy={s * 0.52} rx={s * 0.09} ry={s * 0.07}
-            fill="none" stroke="hsl(0,0%,35%)" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+            fill="none" stroke="hsl(0,0%,35%)" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
           <text x={s * 0.78} y={s * 0.43} textAnchor="middle" fontSize="5" fill="hsl(0,60%,60%)" fontWeight="bold">MCN</text>
           <text x={s * 0.78} y={s * 0.63} textAnchor="middle" fontSize="4.5" fill="hsl(0,0%,45%)" opacity="0.6">Coracobrachialis</text>
 
           {/* Biceps superficial */}
           <path d={`M${s * 0.55},${s * 0.08} Q${s * 0.7},${s * 0.15} ${s * 0.9},${s * 0.12}`}
-            fill="hsl(0,0%,20%)" fillOpacity="0.3" stroke="hsl(0,0%,35%)" strokeWidth="0.6" />
+            fill="hsl(0,0%,20%)" fillOpacity="0.3" stroke="hsl(0,0%,35%)" strokeWidth="0.5" />
           <text x={s * 0.72} y={s * 0.14} fontSize="4.5" fill="hsl(0,0%,45%)" opacity="0.5">Biceps</text>
 
           <text x={cx} y={s * 0.94} textAnchor="middle" fontSize="7" fill="hsl(180,50%,65%)" fontWeight="bold">"Axillary Cross-Section"</text>
@@ -271,7 +271,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
           <line
             x1={s * nd.entry[0]} y1={s * nd.entry[1]}
             x2={s * nd.target[0]} y2={s * nd.target[1]}
-            stroke="hsl(0, 0%, 85%)" strokeWidth="1.8"
+            stroke="hsl(0, 0%, 85%)" strokeWidth="2"
             strokeDasharray="300"
             style={{ animation: "needleDraw 1s ease-out forwards" }}
           />
@@ -279,7 +279,7 @@ const SonoView = ({ level, size = 200, showNeedle = false }: { level: BlockLevel
           <line
             x1={s * nd.entry[0]} y1={s * nd.entry[1]}
             x2={s * nd.target[0]} y2={s * nd.target[1]}
-            stroke="hsl(0, 0%, 100%)" strokeWidth="0.6" opacity="0.4"
+            stroke="hsl(0, 0%, 100%)" strokeWidth="0.5" opacity="0.4"
             strokeDasharray="2 3"
             style={{ animation: "needleDraw 1s ease-out forwards" }}
           />

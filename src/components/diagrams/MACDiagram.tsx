@@ -186,7 +186,7 @@ export const MACDiagram = () => {
               }
               return (
                 <g key={agent.name}>
-                  <path d={pts.join(" ")} fill="none" stroke={agent.color} strokeWidth="2.5" strokeLinecap="round" />
+                  <path d={pts.join(" ")} fill="none" stroke={agent.color} strokeWidth="2" strokeLinecap="round" />
                   {progress >= 0.9 && (
                     <text
                       x={pad.left + plotW + 4}

@@ -271,7 +271,7 @@ export const AgonismSpectrumDiagram = () => {
               rx={5}
               fill="hsl(var(--muted))"
               stroke="hsl(var(--border))"
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
             {/* Activation fill */}
             {displayValue > 0 && (
@@ -316,7 +316,7 @@ export const AgonismSpectrumDiagram = () => {
                   x2={70 + i * 20}
                   y2={92 + i * 2}
                   stroke={active.color}
-                  strokeWidth={1.4}
+                  strokeWidth={1.5}
                   markerEnd="url(#agon-arrow)"
                 />
               ))}

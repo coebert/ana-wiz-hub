@@ -89,11 +89,11 @@ const SuxamethoniumSVG = () => (
     <line x1="338" y1="76" x2="360" y2="76" stroke="hsl(var(--foreground))" strokeWidth="2" />
     <text x="395" y="80" textAnchor="middle" className="fill-primary text-[11px] font-bold">N⁺(CH₃)₃</text>
     {/* Bracket annotations */}
-    <rect x="25" y="90" width="120" height="18" rx="3" fill="hsl(var(--accent)/0.1)" />
+    <rect x="25" y="90" width="120" height="18" rx="3" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="85" y="103" textAnchor="middle" className="fill-accent text-[8px]">ACh moiety 1</text>
-    <rect x="290" y="90" width="120" height="18" rx="3" fill="hsl(var(--accent)/0.1)" />
+    <rect x="290" y="90" width="120" height="18" rx="3" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="350" y="103" textAnchor="middle" className="fill-accent text-[8px]">ACh moiety 2</text>
-    <rect x="155" y="90" width="130" height="18" rx="3" fill="hsl(var(--primary)/0.1)" />
+    <rect x="155" y="90" width="130" height="18" rx="3" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="220" y="103" textAnchor="middle" className="fill-primary text-[8px]">Succinate bridge</text>
     {/* Ester hydrolysis annotation */}
     <text x="167" y="38" textAnchor="middle" className="fill-muted-foreground text-[7px]">Plasma ChE</text>

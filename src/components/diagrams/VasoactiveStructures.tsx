@@ -155,7 +155,7 @@ const AdrenalineSVG = () => (
     <rect x={265} y={62} width={80} height={32} rx={5} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 2" />
     <text x={305} y={108} textAnchor="middle" className="fill-primary text-[8px] font-bold">N-methyl → β₂ selectivity</text>
     {/* Catechol label */}
-    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" />
+    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={80} y={122} textAnchor="middle" className="fill-accent text-[8px] font-bold">Catechol ring</text>
   </g>
 );
@@ -177,7 +177,7 @@ const NoradrenalineSVG = () => (
     {/* Highlight: no N-methyl */}
     <rect x={265} y={62} width={36} height={32} rx={5} fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" strokeDasharray="4 2" />
     <text x={283} y={108} textAnchor="middle" className="fill-destructive text-[8px] font-bold">No N-methyl → minimal β₂</text>
-    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" />
+    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={80} y={122} textAnchor="middle" className="fill-accent text-[8px] font-bold">Catechol ring</text>
   </g>
 );
@@ -198,7 +198,7 @@ const DopamineSVG = () => (
     <text x={180} y={42} textAnchor="middle" className="fill-muted-foreground text-[10px]">✗</text>
     <text x={180} y={33} textAnchor="middle" className="fill-destructive text-[7px] font-bold">No β-OH</text>
     <text x={180} y={24} textAnchor="middle" className="fill-destructive text-[6px]">→ ↓ α/β affinity</text>
-    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" />
+    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={80} y={122} textAnchor="middle" className="fill-accent text-[8px] font-bold">Catechol ring</text>
   </g>
 );
@@ -239,7 +239,7 @@ const DobutamineSVG = () => (
     <rect x={237} y={56} width={200} height={34} rx={5} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 2" />
     <text x={337} y={105} textAnchor="middle" className="fill-primary text-[7px] font-bold">Bulky N-substituent → strong β₁ selectivity</text>
     <text x={337} y={116} textAnchor="middle" className="fill-primary text-[6.5px]">(4-hydroxyphenyl)-methyl-propyl group</text>
-    <rect x={22} y={105} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" />
+    <rect x={22} y={105} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={60} y={117} textAnchor="middle" className="fill-accent text-[8px] font-bold">Catechol ring</text>
   </g>
 );
@@ -264,7 +264,7 @@ const PhenylephrieneSVG = () => (
     <text x={43} y={111} textAnchor="middle" className="fill-muted-foreground text-[10px]">✗</text>
     <text x={43} y={124} textAnchor="middle" className="fill-destructive text-[7px] font-bold">No 4-OH</text>
     {/* Not a catechol annotation */}
-    <rect x={22} y={130} width={95} height={16} rx={3} fill="hsl(var(--destructive)/0.1)" />
+    <rect x={22} y={130} width={95} height={16} rx={3} fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={70} y={142} textAnchor="middle" className="fill-destructive text-[7px] font-bold">NOT a catechol → resists COMT</text>
     {/* Side chain */}
     <line x1={140} y1={78} x2={170} y2={78} stroke="hsl(var(--foreground))" strokeWidth="2" />
@@ -307,7 +307,7 @@ const IsoprenalineSVG = () => (
     {/* Highlight */}
     <rect x={270} y={55} width={110} height={55} rx={5} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4 2" />
     <text x={325} y={125} textAnchor="middle" className="fill-primary text-[8px] font-bold">N-isopropyl → max β, zero α</text>
-    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" />
+    <rect x={42} y={110} width={75} height={16} rx={3} fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={80} y={122} textAnchor="middle" className="fill-accent text-[8px] font-bold">Catechol ring</text>
   </g>
 );
@@ -328,7 +328,7 @@ const EphedrineSVG = () => (
     <text x={43} y={52} textAnchor="middle" className="fill-muted-foreground text-[10px]">✗</text>
     <line x1={80} y1={95} x2={58} y2={107} stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="3 2" />
     <text x={43} y={111} textAnchor="middle" className="fill-muted-foreground text-[10px]">✗</text>
-    <rect x={22} y={120} width={95} height={24} rx={3} fill="hsl(var(--destructive)/0.1)" />
+    <rect x={22} y={120} width={95} height={24} rx={3} fill="hsl(var(--destructive)/0.1)" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x={70} y={132} textAnchor="middle" className="fill-destructive text-[7px] font-bold">No ring OH → not catecholamine</text>
     <text x={70} y={142} textAnchor="middle" className="fill-destructive text-[6.5px]">Resists COMT + MAO → oral bioavailability</text>
     {/* Side chain */}

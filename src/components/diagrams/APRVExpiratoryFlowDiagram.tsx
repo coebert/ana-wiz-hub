@@ -136,7 +136,7 @@ const APRVExpiratoryFlowDiagram = () => {
         ))}
 
         {/* Flow curve */}
-        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
+        <path d={pathD} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
 
         {/* Correct termination point (green) */}
         <line x1={xScale(tLowCorrect)} y1={yZero} x2={xScale(tLowCorrect)} y2={yScale(flowAtCorrect)}
@@ -172,7 +172,7 @@ const APRVExpiratoryFlowDiagram = () => {
 
         {/* Target zone label */}
         <rect x={ml + plotW * 0.55} y={zoneY2 + 2} width={120} height={18} rx={3}
-          fill="hsl(var(--accent))" opacity={0.15} />
+          fill="hsl(var(--accent))" opacity={0.15} stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x={ml + plotW * 0.55 + 60} y={zoneY2 + 14} textAnchor="middle" fontSize={9} fontWeight="bold" fill="hsl(var(--accent))">
           Target zone (50–75%)
         </text>

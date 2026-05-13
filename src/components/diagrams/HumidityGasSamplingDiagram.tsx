@@ -177,7 +177,7 @@ const MassSpecTab = () => (
       <text x="135" y="85" textAnchor="middle" fontSize="7" fill="hsl(var(--destructive))">Chamber</text>
       <text x="135" y="48" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Electron bombardment</text>
       {/* Electron beam zigzag */}
-      <path d="M 110 58 L 115 62 L 120 58 L 125 62 L 130 58 L 135 62 L 140 58 L 145 62 L 150 58 L 155 62 L 160 58" stroke="#FBBF24" strokeWidth="1" fill="none">
+      <path d="M 110 58 L 115 62 L 120 58 L 125 62 L 130 58 L 135 62 L 140 58 L 145 62 L 150 58 L 155 62 L 160 58" stroke="hsl(var(--accent))" strokeWidth="1" fill="none">
         <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" />
       </path>
       
@@ -196,28 +196,28 @@ const MassSpecTab = () => (
       
       {/* Ion paths - different radii for different masses */}
       {/* Light ion (e.g., He, m/z=4) - tighter curve */}
-      <path d="M 235 78 Q 270 78, 285 110 Q 300 142, 285 174 Q 270 200, 245 210" stroke="#10B981" strokeWidth="2" fill="none">
+      <path d="M 235 78 Q 270 78, 285 110 Q 300 142, 285 174 Q 270 200, 245 210" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none">
         <animate attributeName="stroke-dashoffset" values="40;0" dur="2s" repeatCount="indefinite" />
       </path>
-      <circle cx="245" cy="212" r="6" fill="#10B981" opacity="0.3" stroke="#10B981" strokeWidth="1" />
-      <text x="245" y="230" textAnchor="middle" fontSize="7" fill="#10B981" fontWeight="bold">m/z = 4</text>
-      <text x="245" y="240" textAnchor="middle" fontSize="6" fill="#10B981">He⁺</text>
+      <circle cx="245" cy="212" r="6" fill="hsl(var(--clinical))" opacity="0.3" stroke="hsl(var(--clinical))" strokeWidth="1" />
+      <text x="245" y="230" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))" fontWeight="bold">m/z = 4</text>
+      <text x="245" y="240" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">He⁺</text>
       
       {/* Medium ion (N₂O, m/z=44) */}
-      <path d="M 235 80 Q 280 80, 300 120 Q 320 160, 300 200 Q 280 240, 260 250" stroke="#6366F1" strokeWidth="2" fill="none">
+      <path d="M 235 80 Q 280 80, 300 120 Q 320 160, 300 200 Q 280 240, 260 250" stroke="hsl(var(--primary))" strokeWidth="2" fill="none">
         <animate attributeName="stroke-dashoffset" values="40;0" dur="2s" repeatCount="indefinite" />
       </path>
-      <circle cx="260" cy="252" r="6" fill="#6366F1" opacity="0.3" stroke="#6366F1" strokeWidth="1" />
-      <text x="265" y="268" textAnchor="middle" fontSize="7" fill="#6366F1" fontWeight="bold">m/z = 44</text>
-      <text x="265" y="278" textAnchor="middle" fontSize="6" fill="#6366F1">CO₂/N₂O</text>
+      <circle cx="260" cy="252" r="6" fill="hsl(var(--primary))" opacity="0.3" stroke="hsl(var(--primary))" strokeWidth="1" />
+      <text x="265" y="268" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">m/z = 44</text>
+      <text x="265" y="278" textAnchor="middle" fontSize="6" fill="hsl(var(--primary))">CO₂/N₂O</text>
       
       {/* Heavy ion - wider curve */}
-      <path d="M 235 82 Q 295 82, 320 135 Q 345 188, 315 240 Q 290 275, 275 280" stroke="#F59E0B" strokeWidth="2" fill="none">
+      <path d="M 235 82 Q 295 82, 320 135 Q 345 188, 315 240 Q 290 275, 275 280" stroke="hsl(var(--accent))" strokeWidth="2" fill="none">
         <animate attributeName="stroke-dashoffset" values="40;0" dur="2s" repeatCount="indefinite" />
       </path>
-      <circle cx="275" cy="282" r="6" fill="#F59E0B" opacity="0.3" stroke="#F59E0B" strokeWidth="1" />
-      <text x="290" y="292" textAnchor="middle" fontSize="7" fill="#F59E0B" fontWeight="bold">m/z = 131</text>
-      <text x="290" y="302" textAnchor="middle" fontSize="6" fill="#F59E0B">Xe⁺</text>
+      <circle cx="275" cy="282" r="6" fill="hsl(var(--accent))" opacity="0.3" stroke="hsl(var(--accent))" strokeWidth="1" />
+      <text x="290" y="292" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="bold">m/z = 131</text>
+      <text x="290" y="302" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))">Xe⁺</text>
       
       {/* Detectors */}
       <text x="180" y="215" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Detectors</text>
@@ -290,16 +290,16 @@ const RamanTab = () => (
       <text x="310" y="140" fontSize="6" fill="hsl(var(--muted-foreground))">(elastic — most light)</text>
       
       {/* Stokes scattering (downshift) */}
-      <line x1="220" y1="140" x2="300" y2="200" stroke="#10B981" strokeWidth="2.5" />
-      <text x="310" y="195" fontSize="8" fill="#10B981" fontWeight="bold">Stokes</text>
-      <text x="310" y="208" fontSize="7" fill="#10B981">ν₀ − Δν</text>
+      <line x1="220" y1="140" x2="300" y2="200" stroke="hsl(var(--clinical))" strokeWidth="2" />
+      <text x="310" y="195" fontSize="8" fill="hsl(var(--clinical))" fontWeight="bold">Stokes</text>
+      <text x="310" y="208" fontSize="7" fill="hsl(var(--clinical))">ν₀ − Δν</text>
       <text x="310" y="220" fontSize="6" fill="hsl(var(--muted-foreground))">Lower energy</text>
       <text x="310" y="230" fontSize="6" fill="hsl(var(--muted-foreground))">(molecule gains energy)</text>
       
       {/* Anti-Stokes scattering (upshift) */}
-      <line x1="220" y1="90" x2="300" y2="40" stroke="#F59E0B" strokeWidth="2" />
-      <text x="310" y="40" fontSize="8" fill="#F59E0B" fontWeight="bold">Anti-Stokes</text>
-      <text x="310" y="53" fontSize="7" fill="#F59E0B">ν₀ + Δν</text>
+      <line x1="220" y1="90" x2="300" y2="40" stroke="hsl(var(--accent))" strokeWidth="2" />
+      <text x="310" y="40" fontSize="8" fill="hsl(var(--accent))" fontWeight="bold">Anti-Stokes</text>
+      <text x="310" y="53" fontSize="7" fill="hsl(var(--accent))">ν₀ + Δν</text>
       <text x="310" y="65" fontSize="6" fill="hsl(var(--muted-foreground))">Higher energy</text>
       
       {/* Energy level diagram */}
@@ -319,9 +319,9 @@ const RamanTab = () => (
       <text x="105" y="202" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Virtual state</text>
       
       {/* Stokes transition */}
-      <line x1="55" y1="270" x2="55" y2="205" stroke="#10B981" strokeWidth="1.5" />
-      <line x1="75" y1="205" x2="75" y2="240" stroke="#10B981" strokeWidth="1.5" />
-      <text x="65" y="218" textAnchor="middle" fontSize="6" fill="#10B981">Stokes</text>
+      <line x1="55" y1="270" x2="55" y2="205" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
+      <line x1="75" y1="205" x2="75" y2="240" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
+      <text x="65" y="218" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">Stokes</text>
       
       {/* Rayleigh transition */}
       <line x1="115" y1="270" x2="115" y2="205" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
@@ -329,9 +329,9 @@ const RamanTab = () => (
       <text x="125" y="250" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Rayleigh</text>
       
       {/* Anti-Stokes */}
-      <line x1="155" y1="240" x2="155" y2="205" stroke="#F59E0B" strokeWidth="1.5" />
-      <line x1="165" y1="205" x2="165" y2="270" stroke="#F59E0B" strokeWidth="1.5" />
-      <text x="160" y="256" textAnchor="middle" fontSize="5" fill="#F59E0B">Anti-S</text>
+      <line x1="155" y1="240" x2="155" y2="205" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+      <line x1="165" y1="205" x2="165" y2="270" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+      <text x="160" y="256" textAnchor="middle" fontSize="5" fill="hsl(var(--accent))">Anti-S</text>
     </svg>
     
     <div className="bg-card border border-border rounded-lg p-4 space-y-2">

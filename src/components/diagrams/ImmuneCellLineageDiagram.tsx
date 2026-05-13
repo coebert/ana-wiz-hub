@@ -475,7 +475,7 @@ const ImmuneCellLineageDiagram = () => {
                   const my = (a.y + b.y) / 2 - 30;
                   return (
                     <g key={`tok-${stepIdx}-${pathway}-${speed}`}>
-                      <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1.2">
+                      <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1">
                         <animateMotion
                           dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
                           repeatCount="1"

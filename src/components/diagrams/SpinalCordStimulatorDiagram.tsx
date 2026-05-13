@@ -40,7 +40,7 @@ export function SpinalCordStimulatorDiagram() {
             d="M 90 30 Q 60 30 60 70 L 70 200 Q 75 270 95 320 L 130 360 L 230 360 L 265 320 Q 285 270 290 200 L 300 70 Q 300 30 270 30 Z"
             fill="url(#scs-body)"
             stroke="hsl(20 40% 45%)"
-            strokeWidth="1.4"
+            strokeWidth="1.5"
           />
           {/* Spine label band */}
           <text x="180" y="22" textAnchor="middle" fontSize="11"
@@ -57,11 +57,11 @@ export function SpinalCordStimulatorDiagram() {
                 <rect
                   x="170" y={y} width="20" height="11" rx="2"
                   fill="url(#scs-vert)"
-                  stroke="hsl(30 25% 45%)" strokeWidth="0.6"
+                  stroke="hsl(30 25% 45%)" strokeWidth="0.5"
                 />
                 {/* spinous process tips */}
                 <path d={`M 180 ${y + 11} l -3 4 l 6 0 z`}
-                  fill="hsl(30 25% 60%)" stroke="hsl(30 25% 40%)" strokeWidth="0.4" />
+                  fill="hsl(30 25% 60%)" stroke="hsl(30 25% 40%)" strokeWidth="0.5" />
                 {isThoracic && (
                   <text x="196" y={y + 8} fontSize="7" fill="hsl(var(--muted-foreground))">
                     T{i - 3}
@@ -80,13 +80,13 @@ export function SpinalCordStimulatorDiagram() {
               <g>
                 {/* lead body */}
                 <line x1={leadX} y1={top} x2={leadX} y2={bot}
-                  stroke="url(#scs-lead)" strokeWidth="3.2" strokeLinecap="round" />
+                  stroke="url(#scs-lead)" strokeWidth="3" strokeLinecap="round" />
                 {/* 8 cylindrical contacts */}
                 {Array.from({ length: 8 }).map((_, i) => {
                   const cy = bot - i * 7 - 4;
                   return (
                     <rect key={i} x={leadX - 2.4} y={cy} width="4.8" height="4" rx="1"
-                      fill="hsl(45 90% 60%)" stroke="hsl(45 70% 35%)" strokeWidth="0.4">
+                      fill="hsl(45 90% 60%)" stroke="hsl(45 70% 35%)" strokeWidth="0.5">
                       <animate attributeName="opacity"
                         values="1;0.4;1" dur="1.6s" begin={`${i * 0.08}s`} repeatCount="indefinite" />
                     </rect>
@@ -109,12 +109,12 @@ export function SpinalCordStimulatorDiagram() {
           {/* Tunnelled extension wire — from lead anchor down/out to buttock IPG */}
           <path
             d="M 180 268 Q 210 285 250 305 Q 270 318 252 340"
-            fill="none" stroke="url(#scs-lead)" strokeWidth="2.2" strokeLinecap="round"
+            fill="none" stroke="url(#scs-lead)" strokeWidth="2" strokeLinecap="round"
             strokeDasharray="0"
           />
           {/* Anchor at fascia */}
           <rect x="174" y="266" width="12" height="6" rx="1.5"
-            fill="hsl(0 0% 60%)" stroke="hsl(0 0% 30%)" strokeWidth="0.6" />
+            fill="hsl(0 0% 60%)" stroke="hsl(0 0% 30%)" strokeWidth="0.5" />
           <text x="120" y="275" fontSize="9" fill="hsl(var(--muted-foreground))">anchor (supraspinous fascia)</text>
 
           {/* IPG in upper buttock pocket */}
@@ -161,7 +161,7 @@ export function SpinalCordStimulatorDiagram() {
 
             {/* outer body ring */}
             <circle cx="160" cy="160" r="150"
-              fill="hsl(28 45% 90%)" stroke="hsl(20 40% 50%)" strokeWidth="1.2" />
+              fill="hsl(28 45% 90%)" stroke="hsl(20 40% 50%)" strokeWidth="1" />
 
             {/* Vertebral body (anterior) */}
             <path d="M 90 220 Q 160 250 230 220 L 230 170 Q 160 145 90 170 Z"
@@ -185,16 +185,16 @@ export function SpinalCordStimulatorDiagram() {
             {/* Spinal canal contents */}
             {/* Dura */}
             <ellipse cx="160" cy="150" rx="42" ry="36"
-              fill="hsl(var(--muted))" stroke="hsl(220 15% 40%)" strokeWidth="1.2" />
+              fill="hsl(var(--muted))" stroke="hsl(220 15% 40%)" strokeWidth="1" />
             <text x="118" y="180" fontSize="8" fill="hsl(var(--muted-foreground))">dura</text>
 
             {/* CSF */}
             <ellipse cx="160" cy="152" rx="34" ry="30"
-              fill="hsl(200 70% 88%)" stroke="hsl(200 50% 60%)" strokeWidth="0.8" />
+              fill="hsl(200 70% 88%)" stroke="hsl(200 50% 60%)" strokeWidth="0.75" />
 
             {/* Spinal cord with butterfly grey matter */}
             <ellipse cx="160" cy="156" rx="22" ry="18"
-              fill="hsl(0 0% 92%)" stroke="hsl(0 0% 50%)" strokeWidth="0.8" />
+              fill="hsl(0 0% 92%)" stroke="hsl(0 0% 50%)" strokeWidth="0.75" />
             <path
               d="M 160 142 Q 152 150 154 162 Q 158 170 160 168 Q 162 170 166 162 Q 168 150 160 142 Z
                  M 145 152 Q 152 156 152 160 Q 145 162 142 158 Z
@@ -203,7 +203,7 @@ export function SpinalCordStimulatorDiagram() {
             />
             {/* Dorsal columns highlighted */}
             <ellipse cx="160" cy="146" rx="9" ry="3.5"
-              fill="hsl(var(--primary) / 0.45)" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+              fill="hsl(var(--primary) / 0.45)" stroke="hsl(var(--primary))" strokeWidth="0.75" />
             <text x="180" y="142" fontSize="8" fill="hsl(var(--primary))" fontWeight="600">
               dorsal columns
             </text>
@@ -214,9 +214,9 @@ export function SpinalCordStimulatorDiagram() {
                 fill="hsl(220 10% 18%)" stroke="hsl(45 90% 55%)" strokeWidth="1" />
               {/* radiating stim field */}
               <path d="M 160 118 Q 154 130 158 144" fill="none"
-                stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="2 2" />
+                stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="2 2" />
               <path d="M 160 118 Q 166 130 162 144" fill="none"
-                stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="2 2" />
+                stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="2 2" />
               <text x="100" y="112" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">
                 epidural lead
               </text>
@@ -226,8 +226,8 @@ export function SpinalCordStimulatorDiagram() {
             </g>
 
             {/* Nerve roots exiting */}
-            <path d="M 132 158 Q 110 168 90 175" stroke="hsl(50 80% 45%)" strokeWidth="1.4" fill="none" />
-            <path d="M 188 158 Q 210 168 230 175" stroke="hsl(50 80% 45%)" strokeWidth="1.4" fill="none" />
+            <path d="M 132 158 Q 110 168 90 175" stroke="hsl(50 80% 45%)" strokeWidth="1.5" fill="none" />
+            <path d="M 188 158 Q 210 168 230 175" stroke="hsl(50 80% 45%)" strokeWidth="1.5" fill="none" />
             <text x="60" y="190" fontSize="8" fill="hsl(var(--muted-foreground))">nerve root</text>
           </g>
 

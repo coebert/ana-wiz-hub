@@ -20,12 +20,12 @@ const ThermocoupleTab = () => (
       <text x="80" y="186" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Junction</text>
       
       {/* Wire A (top) - Copper */}
-      <path d="M 100 120 L 280 120" stroke="#D97706" strokeWidth="3" fill="none" />
-      <text x="190" y="112" textAnchor="middle" fontSize="9" fill="#D97706" fontWeight="bold">Metal A (Copper)</text>
+      <path d="M 100 120 L 280 120" stroke="hsl(var(--accent))" strokeWidth="3" fill="none" />
+      <text x="190" y="112" textAnchor="middle" fontSize="9" fill="hsl(var(--accent))" fontWeight="bold">Metal A (Copper)</text>
       
       {/* Wire B (bottom) - Constantan */}
-      <path d="M 100 140 L 280 140" stroke="#6366F1" strokeWidth="3" fill="none" />
-      <text x="190" y="158" textAnchor="middle" fontSize="9" fill="#6366F1" fontWeight="bold">Metal B (Constantan)</text>
+      <path d="M 100 140 L 280 140" stroke="hsl(var(--primary))" strokeWidth="3" fill="none" />
+      <text x="190" y="158" textAnchor="middle" fontSize="9" fill="hsl(var(--primary))" fontWeight="bold">Metal B (Constantan)</text>
       
       {/* Reference junction */}
       <circle cx="300" cy="130" r="20" fill="hsl(var(--muted)/0.3)" stroke="hsl(var(--muted-foreground))" strokeWidth="2" />
@@ -175,8 +175,8 @@ const RTDTab = () => (
       <text x="325" y="150" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">T (°C)</text>
       
       {/* Linear line */}
-      <line x1="280" y1="130" x2="365" y2="65" stroke="#10B981" strokeWidth="2.5" />
-      <text x="340" y="80" fontSize="8" fill="#10B981" fontWeight="bold">Linear!</text>
+      <line x1="280" y1="130" x2="365" y2="65" stroke="hsl(var(--clinical))" strokeWidth="2" />
+      <text x="340" y="80" fontSize="8" fill="hsl(var(--clinical))" fontWeight="bold">Linear!</text>
       
       {/* R₀ label */}
       <text x="280" y="138" fontSize="7" fill="hsl(var(--muted-foreground))">R₀</text>

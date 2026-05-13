@@ -26,7 +26,7 @@ const WaveformsDiagram = () => (
         <text x="35" y="50" textAnchor="end" className="fill-muted-foreground text-[8px]">+</text>
         <text x="270" y="152" className="fill-muted-foreground text-[8px]">ms</text>
         {/* Monophasic damped sinusoidal — animated draw-on */}
-        <path d="M 40 140 Q 60 40, 100 60 Q 140 80, 180 120 Q 210 135, 250 140" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="400" strokeDashoffset="400">
+        <path d="M 40 140 Q 60 40, 100 60 Q 140 80, 180 120 Q 210 135, 250 140" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="400" strokeDashoffset="400">
           <animate attributeName="stroke-dashoffset" from="400" to="0" dur="1.6s" repeatCount="indefinite" />
         </path>
         <text x="150" y="55" textAnchor="middle" className="fill-destructive text-[9px] font-medium">Single polarity</text>
@@ -40,10 +40,10 @@ const WaveformsDiagram = () => (
         <text x="335" y="50" textAnchor="end" className="fill-muted-foreground text-[8px]">+</text>
         <text x="335" y="155" textAnchor="end" className="fill-muted-foreground text-[8px]">−</text>
         {/* Biphasic truncated exponential — animated draw-on */}
-        <path d="M 340 100 L 345 55 Q 380 58, 430 70 L 430 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeDasharray="200" strokeDashoffset="200">
+        <path d="M 340 100 L 345 55 Q 380 58, 430 70 L 430 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="200" strokeDashoffset="200">
           <animate attributeName="stroke-dashoffset" from="200" to="0" dur="0.8s" begin="0s;reanim.end+0.8s" id="phase1" repeatCount="1" fill="freeze" />
         </path>
-        <path d="M 430 100 L 430 130 Q 470 128, 520 118 L 520 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeDasharray="200" strokeDashoffset="200">
+        <path d="M 430 100 L 430 130 Q 470 128, 520 118 L 520 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeDasharray="200" strokeDashoffset="200">
           <animate attributeName="stroke-dashoffset" from="200" to="0" dur="0.8s" begin="phase1.end" id="reanim" repeatCount="1" fill="freeze" />
         </path>
         <text x="385" y="53" textAnchor="middle" className="fill-primary text-[9px] font-medium">Phase 1 (+)</text>
@@ -92,10 +92,10 @@ const ImpedanceDiagram = () => (
         <text x="300" y="134" textAnchor="middle" className="fill-destructive text-[10px] font-bold">Heart</text>
 
         {/* Pads */}
-        <rect x="155" y="80" width="40" height="20" rx="4" fill="hsl(var(--primary))" />
-        <text x="175" y="94" textAnchor="middle" fill="#fff" className="text-[8px] font-bold">PAD</text>
-        <rect x="405" y="130" width="40" height="20" rx="4" fill="hsl(var(--primary))" />
-        <text x="425" y="144" textAnchor="middle" fill="#fff" className="text-[8px] font-bold">PAD</text>
+        <rect x="155" y="80" width="40" height="20" rx="4" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <text x="175" y="94" textAnchor="middle" fill="hsl(var(--background))" className="text-[8px] font-bold">PAD</text>
+        <rect x="405" y="130" width="40" height="20" rx="4" fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <text x="425" y="144" textAnchor="middle" fill="hsl(var(--background))" className="text-[8px] font-bold">PAD</text>
 
         {/* Current path with travelling pulse */}
         <path id="def-currentPath" d="M 195 90 Q 250 100, 265 120 L 335 140 Q 370 145, 405 140" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4" />

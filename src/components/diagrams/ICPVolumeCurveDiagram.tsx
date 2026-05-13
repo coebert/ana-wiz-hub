@@ -88,7 +88,7 @@ const ICPVolumeCurveDiagram = () => {
             <g key={v}>
               <line x1="55" y1={y} x2="60" y2={y} stroke="hsl(var(--border))" />
               <text x="50" y={y + 3} textAnchor="end" className="fill-muted-foreground" fontSize="8">{v}</text>
-              {v > 0 && <line x1="60" y1={y} x2="430" y2={y} stroke="hsl(var(--border))" strokeWidth="0.3" strokeDasharray="3,3" />}
+              {v > 0 && <line x1="60" y1={y} x2="430" y2={y} stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3,3" />}
             </g>
           );
         })}

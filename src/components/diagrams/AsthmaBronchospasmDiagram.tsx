@@ -68,7 +68,7 @@ const AsthmaBronchospasmDiagram = () => {
             {/* Airway lumen */}
             <rect x="40" y="50" width="140" height="50" rx="6" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
             <rect x="40" y="50" width="140" height="50" rx="6" fill="hsl(var(--clinical) / 0.4)">
-              <animate attributeName="height" values="10;30;10" dur="2.2s" repeatCount="indefinite" />
+              <animate attributeName="height" values="10;30;10" dur="2.2s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <animate attributeName="y" values="70;60;70" dur="2.2s" repeatCount="indefinite" />
             </rect>
             <rect x="40" y="50" width="140" height="50" rx="6" fill="none" stroke="hsl(var(--clinical))" strokeWidth="1.5">

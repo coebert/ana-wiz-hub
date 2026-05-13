@@ -63,8 +63,8 @@ const LatentHeatDiagram = () => {
         className="w-full h-auto"
       >
         {/* Axes */}
-        <line x1={padL} y1={padT} x2={padL} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
-        <line x1={padL} y1={H - padB} x2={W - padR} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
+        <line x1={padL} y1={padT} x2={padL} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth={1} />
+        <line x1={padL} y1={H - padB} x2={W - padR} y2={H - padB} stroke="hsl(var(--foreground))" strokeWidth={1} />
 
         {/* Gridlines + ticks */}
         {yTicks.map((t) => (
@@ -139,7 +139,7 @@ const LatentHeatDiagram = () => {
         ))}
 
         {/* The heating curve */}
-        <path d={path} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.4} />
+        <path d={path} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} />
 
         {/* Plateau highlight rectangles */}
         <rect

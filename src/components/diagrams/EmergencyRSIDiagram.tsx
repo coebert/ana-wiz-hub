@@ -150,7 +150,7 @@ export const EmergencyRSIDiagram = () => {
             {!hasTube && (
               <g>
                 <ellipse cx="62" cy="148" rx="14" ry="10" fill="hsl(var(--accent))" fillOpacity={0.6} stroke="hsl(var(--accent))" />
-                <line x1="48" y1="148" x2="20" y2="140" stroke="hsl(var(--accent))" strokeWidth={2.5} strokeLinecap="round" />
+                <line x1="48" y1="148" x2="20" y2="140" stroke="hsl(var(--accent))" strokeWidth={2} strokeLinecap="round" />
                 <text x="22" y="132" fontSize="9" fill="hsl(var(--muted-foreground))">100% O₂</text>
               </g>
             )}

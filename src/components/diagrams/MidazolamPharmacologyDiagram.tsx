@@ -150,7 +150,7 @@ export const MidazolamPharmacologyDiagram = () => {
 
             {/* CSHT bar */}
             <svg viewBox="0 0 600 80" className="w-full h-auto">
-              <rect x="20" y="20" width="560" height="22" rx="3" fill="hsl(var(--muted))" opacity="0.3" />
+              <rect x="20" y="20" width="560" height="22" rx="3" fill="hsl(var(--muted))" opacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <rect x="20" y="20" width={Math.min(560, (effectiveCSHT / 720) * 560)} height="22" rx="3"
                 fill={effectiveCSHT > 240 ? "hsl(var(--destructive))" : effectiveCSHT > 120 ? "hsl(var(--clinical))" : "hsl(var(--primary))"}>
                 <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
@@ -192,7 +192,7 @@ export const MidazolamPharmacologyDiagram = () => {
           <div className="rounded-lg border border-border bg-secondary/20 p-3">
             <svg viewBox="0 0 620 220" className="w-full h-auto">
               {/* Midazolam */}
-              <rect x="20" y="80" width="120" height="50" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" />
+              <rect x="20" y="80" width="120" height="50" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="80" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">Midazolam</text>
               <text x="80" y="115" textAnchor="middle" fontSize="8" className="fill-primary-foreground">parent (active)</text>
 
@@ -202,7 +202,7 @@ export const MidazolamPharmacologyDiagram = () => {
               <path d="M 145 105 L 220 105" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#arrow-mid)" />
 
               {/* α-OH-midazolam */}
-              <rect x="225" y="80" width="160" height="50" rx="4" fill="hsl(var(--clinical))" opacity="0.85" />
+              <rect x="225" y="80" width="160" height="50" rx="4" fill="hsl(var(--clinical))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="305" y="100" textAnchor="middle" fontSize="11" fontWeight="700" className="fill-primary-foreground">α-OH-midazolam</text>
               <text x="305" y="115" textAnchor="middle" fontSize="8" className="fill-primary-foreground">~10% of parent activity</text>
 
@@ -213,7 +213,7 @@ export const MidazolamPharmacologyDiagram = () => {
 
               {/* α-OH-midazolam glucuronide */}
               <rect x="455" y="65" width="150" height="80" rx="4" fill="hsl(var(--destructive))" opacity="0.8">
-                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               </rect>
               <text x="530" y="90" textAnchor="middle" fontSize="10" fontWeight="700" className="fill-primary-foreground">α-OH-midazolam-</text>
               <text x="530" y="103" textAnchor="middle" fontSize="10" fontWeight="700" className="fill-primary-foreground">glucuronide</text>
@@ -295,7 +295,7 @@ export const MidazolamPharmacologyDiagram = () => {
               <path
                 d="M 40 50 Q 120 55 200 70 Q 320 90 480 115 Q 540 130 580 138"
                 stroke="hsl(var(--pharmacology))"
-                strokeWidth="2.5"
+                strokeWidth="2"
                 fill="none"
               />
               <text x="500" y="105" fontSize="9" className="fill-pharmacology" fontWeight="600">midazolam effect</text>
@@ -305,7 +305,7 @@ export const MidazolamPharmacologyDiagram = () => {
                 d={`M 40 50 L 70 ${50} L 70 30 Q ${70 + reversalMin * 2} 30 ${70 + reversalMin * 2.2} ${30 + reversalMin * 0.5}
                    Q ${100 + reversalMin * 3} 90 580 138`}
                 stroke="hsl(var(--destructive))"
-                strokeWidth="2.5"
+                strokeWidth="2"
                 fill="none"
                 strokeDasharray="4 3"
               />

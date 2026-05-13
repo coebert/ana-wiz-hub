@@ -274,7 +274,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
           <text x="0" y="30" className="text-[9px]" fill="hsl(var(--muted-foreground))">
             Serum
           </text>
-          <rect x="0" y="34" width="110" height="14" rx="2" fill="hsl(var(--muted))" />
+          <rect x="0" y="34" width="110" height="14" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <rect
             x="0"
             y="34"
@@ -282,8 +282,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
             height="14"
             rx="2"
             fill="hsl(var(--clinical))"
-            className="transition-all duration-700 ease-out"
-          />
+            className="transition-all duration-700 ease-out" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text
             x={(110 * extraPct) / 100 + 4}
             y="44"
@@ -298,7 +297,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
           <text x="0" y="68" className="text-[9px]" fill="hsl(var(--muted-foreground))">
             Intracellular
           </text>
-          <rect x="0" y="72" width="110" height="14" rx="2" fill="hsl(var(--muted))" />
+          <rect x="0" y="72" width="110" height="14" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <rect
             x="0"
             y="72"
@@ -306,8 +305,7 @@ const RefeedingScene = ({ active }: { active: number }) => {
             height="14"
             rx="2"
             fill="hsl(var(--pharmacology))"
-            className="transition-all duration-700 ease-out"
-          />
+            className="transition-all duration-700 ease-out" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text
             x={(110 * intraPct) / 100 + 4}
             y="82"

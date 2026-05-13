@@ -111,7 +111,7 @@ const HeatCapacityDiagram = () => (
         <line x1="70" y1="50" x2="70" y2="210" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
         <text x="305" y="225" textAnchor="middle" className="fill-muted-foreground text-[9px]">Heat energy added →</text>
         <text x="40" y="130" textAnchor="middle" className="fill-muted-foreground text-[9px]" transform="rotate(-90 40 130)">Temperature →</text>
-        <path d="M 70 200 L 150 160 L 250 160 L 330 100 L 430 100 L 530 55" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <path d="M 70 200 L 150 160 L 250 160 L 330 100 L 430 100 L 530 55" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="110" y="195" textAnchor="middle" className="fill-foreground text-[9px] font-medium">Solid</text>
         <text x="200" y="152" textAnchor="middle" className="fill-destructive text-[9px] font-bold">Melting</text>
         <text x="200" y="175" textAnchor="middle" className="fill-muted-foreground text-[7px]">(Latent heat of fusion)</text>
@@ -224,7 +224,7 @@ const PhaseChangeDiagram = () => {
           <text x="48" y="170" textAnchor="middle" className="fill-muted-foreground text-[9px]" transform="rotate(-90 48 170)">Temperature →</text>
 
           {/* Heating curve with animation */}
-          <path d={s.points} fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d={s.points} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 
           {/* Phase labels */}
           <text x={s.meltX} y={s.meltY - 12} textAnchor="middle" className="fill-destructive text-[9px] font-bold">Melting</text>
@@ -300,7 +300,7 @@ const SpecificHeatDiagram = () => {
                 className="cursor-pointer"
               >
                 <text x="130" y={y + 18} textAnchor="end" className="fill-foreground text-[10px] font-medium">{m.name}</text>
-                <rect x="138" y={y + 3} width={barAreaWidth} height={barH} rx="4" fill="hsl(var(--secondary)/0.15)" />
+                <rect x="138" y={y + 3} width={barAreaWidth} height={barH} rx="4" fill="hsl(var(--secondary)/0.15)" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <rect
                   x="138" y={y + 3}
                   width={barW} height={barH} rx="4"

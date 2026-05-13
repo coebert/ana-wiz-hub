@@ -136,7 +136,7 @@ const BariatricProceduresDiagram = () => {
 const RYGBImage = ({ color }: { color: string }) => (
   <g>
     {/* Oesophagus */}
-    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="6" fill="none" strokeLinecap="round" />
+    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
     {/* Excluded stomach (greyed) */}
     <path d="M90 50 Q60 50 50 80 Q35 130 55 170 Q70 195 100 190 Q130 185 135 150 Q140 120 130 90 Q120 60 90 50Z" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.5" />
     <text x="90" y="130" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" opacity="0.6">excluded</text>
@@ -144,7 +144,7 @@ const RYGBImage = ({ color }: { color: string }) => (
     <rect x="78" y="48" width="24" height="18" rx="4" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
     <text x="90" y="60" textAnchor="middle" fontSize="6" fill={color} fontWeight="bold">pouch</text>
     {/* Roux limb */}
-    <path d="M90 66 L90 100 Q90 110 100 115 L140 130 Q155 135 155 150 L155 260" stroke={color} strokeWidth="4" fill="none" strokeLinecap="round" />
+    <path d="M90 66 L90 100 Q90 110 100 115 L140 130 Q155 135 155 150 L155 260" stroke={color} strokeWidth="3" fill="none" strokeLinecap="round" />
     <text x="160" y="200" fontSize="7" fill={color}>Roux limb</text>
     {/* Biliopancreatic limb */}
     <path d="M100 190 L100 220 Q100 230 110 235 L155 250" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="4 3" />
@@ -155,7 +155,7 @@ const RYGBImage = ({ color }: { color: string }) => (
 const SleeveImage = ({ color }: { color: string }) => (
   <g>
     {/* Oesophagus */}
-    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="6" fill="none" strokeLinecap="round" />
+    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
     {/* Resected portion (dashed) */}
     <path d="M80 55 Q55 60 45 90 Q35 130 50 170 Q60 195 80 190" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4 3" opacity="0.4" />
     <text x="40" y="130" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))" opacity="0.5" transform="rotate(-15,40,130)">resected</text>
@@ -173,7 +173,7 @@ const SleeveImage = ({ color }: { color: string }) => (
 const BandImage = ({ color }: { color: string }) => (
   <g>
     {/* Oesophagus */}
-    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="6" fill="none" strokeLinecap="round" />
+    <path d="M90 10 L90 50" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
     {/* Full stomach */}
     <path d="M90 50 Q60 50 50 80 Q35 130 55 180 Q70 210 100 205 Q130 200 140 160 Q150 120 130 80 Q120 55 90 50Z" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" />
     {/* Band */}
@@ -185,7 +185,7 @@ const BandImage = ({ color }: { color: string }) => (
     <rect x="163" y="30" width="20" height="14" rx="3" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
     <text x="173" y="39" textAnchor="middle" fontSize="5" fill={color}>port</text>
     {/* Duodenum */}
-    <path d="M100 205 Q110 220 105 240 L100 260" stroke="hsl(var(--muted-foreground))" strokeWidth="4" fill="none" strokeLinecap="round" />
+    <path d="M100 205 Q110 220 105 240 L100 260" stroke="hsl(var(--muted-foreground))" strokeWidth="3" fill="none" strokeLinecap="round" />
   </g>
 );
 

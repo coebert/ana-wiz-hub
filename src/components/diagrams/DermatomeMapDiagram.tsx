@@ -368,7 +368,7 @@ const surgicalLevels = [
 // and a stronger surface-anatomy overlay (drawn ON TOP of territories so
 // bony landmarks remain readable through the translucent dermatome fills).
 const BodySilhouette = ({ view }: { view: "anterior" | "posterior" }) => (
-  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" fill="none" opacity="0.45">
+  <g stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" fill="none" opacity="0.45">
     {/* Head — oval with slight jaw */}
     <path d="M104,8 C96,8 88,14 86,24 C84,34 86,42 92,48 C96,52 102,54 108,56 C112,58 118,58 124,56 C130,54 136,52 140,48 C146,42 148,34 146,24 C144,14 136,8 128,8 C120,6 112,6 104,8 Z" />
     {/* Neck */}
@@ -416,7 +416,7 @@ const BodySilhouette = ({ view }: { view: "anterior" | "posterior" }) => (
 // Surface-anatomy overlay (bones + landmarks) — drawn ON TOP of dermatome
 // fills so the underlying anatomy is always visible through the territories.
 const SurfaceAnatomy = ({ view }: { view: "anterior" | "posterior" }) => (
-  <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.7" opacity="0.55"
+  <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55"
     style={{ pointerEvents: "none" }}>
     {view === "anterior" ? (
       <>
@@ -424,21 +424,21 @@ const SurfaceAnatomy = ({ view }: { view: "anterior" | "posterior" }) => (
         <path d="M98,82 C88,84 80,86 74,90" />
         <path d="M134,82 C144,84 152,86 158,90" />
         {/* Sternum (manubrium → body → xiphoid) */}
-        <path d="M116,90 L116,170" strokeWidth="0.9" />
+        <path d="M116,90 L116,170" strokeWidth="1" />
         <line x1="110" y1="100" x2="122" y2="100" strokeWidth="0.5" opacity="0.7" />
         <circle cx="116" cy="170" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
         {/* Costal margin (rib cage) */}
         <path d="M78,168 C92,200 112,210 116,210 C120,210 140,200 154,168" strokeDasharray="2 2" />
         {/* Ribs — subtle hint */}
-        <path d="M82,118 C95,124 116,126 116,126" strokeWidth="0.4" opacity="0.45" />
-        <path d="M150,118 C137,124 116,126 116,126" strokeWidth="0.4" opacity="0.45" />
-        <path d="M80,138 C95,144 116,146 116,146" strokeWidth="0.4" opacity="0.45" />
-        <path d="M152,138 C137,144 116,146 116,146" strokeWidth="0.4" opacity="0.45" />
+        <path d="M82,118 C95,124 116,126 116,126" strokeWidth="0.5" opacity="0.45" />
+        <path d="M150,118 C137,124 116,126 116,126" strokeWidth="0.5" opacity="0.45" />
+        <path d="M80,138 C95,144 116,146 116,146" strokeWidth="0.5" opacity="0.45" />
+        <path d="M152,138 C137,144 116,146 116,146" strokeWidth="0.5" opacity="0.45" />
         {/* Nipples (T4) */}
         <circle cx="92" cy="140" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
         <circle cx="140" cy="140" r="1.6" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
         {/* Umbilicus (T10) */}
-        <circle cx="116" cy="238" r="2.4" strokeWidth="0.7" />
+        <circle cx="116" cy="238" r="2.4" strokeWidth="0.75" />
         {/* ASIS markers + inguinal ligament */}
         <circle cx="92" cy="298" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
         <circle cx="140" cy="298" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
@@ -453,7 +453,7 @@ const SurfaceAnatomy = ({ view }: { view: "anterior" | "posterior" }) => (
     ) : (
       <>
         {/* Spine */}
-        <line x1="116" y1="58" x2="116" y2="290" strokeWidth="0.8" strokeDasharray="2 3" />
+        <line x1="116" y1="58" x2="116" y2="290" strokeWidth="0.75" strokeDasharray="2 3" />
         {/* Vertebra prominens (C7) */}
         <circle cx="116" cy="80" r="1.8" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
         {/* Scapulae — spine + medial border */}
@@ -465,8 +465,8 @@ const SurfaceAnatomy = ({ view }: { view: "anterior" | "posterior" }) => (
         <circle cx="100" cy="152" r="1.5" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
         <circle cx="140" cy="152" r="1.5" fill="hsl(var(--foreground))" stroke="none" opacity="0.85" />
         {/* Iliac crests (L4) */}
-        <path d="M86,268 C92,276 100,280 110,282" strokeWidth="0.9" />
-        <path d="M154,268 C148,276 140,280 130,282" strokeWidth="0.9" />
+        <path d="M86,268 C92,276 100,280 110,282" strokeWidth="1" />
+        <path d="M154,268 C148,276 140,280 130,282" strokeWidth="1" />
         {/* PSIS dimples */}
         <circle cx="106" cy="290" r="1.4" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />
         <circle cx="130" cy="290" r="1.4" fill="hsl(var(--foreground))" stroke="none" opacity="0.8" />

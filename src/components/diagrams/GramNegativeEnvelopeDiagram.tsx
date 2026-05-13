@@ -109,10 +109,10 @@ const GramNegativeEnvelopeDiagram = () => {
               </pattern>
               <pattern id="phospholipid" patternUnits="userSpaceOnUse" width="12" height="32">
                 <circle cx="6" cy="3" r="2.2" fill="hsl(280 50% 60%)" />
-                <line x1="5" y1="5" x2="4" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <line x1="7" y1="5" x2="8" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <line x1="5" y1="18" x2="4" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
-                <line x1="7" y1="18" x2="8" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.8" />
+                <line x1="5" y1="5" x2="4" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.75" />
+                <line x1="7" y1="5" x2="8" y2="14" stroke="hsl(280 30% 40%)" strokeWidth="0.75" />
+                <line x1="5" y1="18" x2="4" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.75" />
+                <line x1="7" y1="18" x2="8" y2="27" stroke="hsl(280 30% 40%)" strokeWidth="0.75" />
                 <circle cx="6" cy="29" r="2.2" fill="hsl(280 50% 60%)" />
               </pattern>
               <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="5" markerHeight="5" orient="auto">
@@ -188,7 +188,7 @@ const GramNegativeEnvelopeDiagram = () => {
                   <ellipse cx={p.x} cy={p.y} rx="22" ry="13"
                     fill={active === "periplasm" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.7)"}
                     stroke="hsl(330 70% 40%)" strokeWidth="1" />
-                  <text x={p.x} y={p.y + 3.5} fontSize="9" fill="white" textAnchor="middle" fontWeight="600">β-lactamase</text>
+                  <text x={p.x} y={p.y + 3.5} fontSize="9" fill="hsl(var(--background))" textAnchor="middle" fontWeight="600">β-lactamase</text>
                 </g>
               ))}
               {/* β-lactam emerging from porin, being hydrolysed */}
@@ -210,7 +210,7 @@ const GramNegativeEnvelopeDiagram = () => {
               />
               <text x="50" y="197" fontSize="10" fill="hsl(var(--foreground))" fontWeight="600">Peptidoglycan</text>
               {[100, 175, 250, 380, 450, 510].map((x) => (
-                <line key={x} x1={x} y1={188} x2={x} y2={200} stroke="hsl(160 70% 40%)" strokeWidth="0.8" />
+                <line key={x} x1={x} y1={188} x2={x} y2={200} stroke="hsl(160 70% 40%)" strokeWidth="0.75" />
               ))}
             </g>
 
@@ -229,8 +229,8 @@ const GramNegativeEnvelopeDiagram = () => {
             {[140, 220, 360, 480].map((x) => (
               <g key={x}>
                 <rect x={x - 8} y={196} width={16} height={12} rx={2}
-                  fill="hsl(160 70% 30%)" stroke="hsl(160 70% 20%)" strokeWidth="0.8" />
-                <text x={x} y={205} fontSize="8" fill="white" textAnchor="middle" fontWeight="600">PBP</text>
+                  fill="hsl(160 70% 30%)" stroke="hsl(160 70% 20%)" strokeWidth="0.75" />
+                <text x={x} y={205} fontSize="8" fill="hsl(var(--background))" textAnchor="middle" fontWeight="600">PBP</text>
               </g>
             ))}
 

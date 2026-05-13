@@ -96,7 +96,7 @@ const NMBATimelineDiagram = () => {
               <g key={a.name}>
                 {/* Row bg */}
                 {i % 2 === 0 && (
-                  <rect x={CHART_X} y={y - 2} width={CHART_W} height={ROW_H} fill="hsl(var(--muted))" opacity={0.15} rx={2} />
+                  <rect x={CHART_X} y={y - 2} width={CHART_W} height={ROW_H} fill="hsl(var(--muted))" opacity={0.15} rx={2} stroke="hsl(var(--border))" strokeWidth="0.75" />
                 )}
 
                 {/* Label */}
@@ -139,8 +139,8 @@ const NMBATimelineDiagram = () => {
                 strokeWidth={1.5}
                 strokeDasharray="4,2"
               />
-              <rect x={minToX(cursorMin) - 16} y={TOP_PAD - 24} width={32} height={14} rx={3} fill="hsl(var(--destructive))" />
-              <text x={minToX(cursorMin)} y={TOP_PAD - 14} textAnchor="middle" fontSize={8} fill="white" fontWeight={600}>
+              <rect x={minToX(cursorMin) - 16} y={TOP_PAD - 24} width={32} height={14} rx={3} fill="hsl(var(--destructive))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+              <text x={minToX(cursorMin)} y={TOP_PAD - 14} textAnchor="middle" fontSize={8} fill="hsl(var(--background))" fontWeight={600}>
                 {cursorMin.toFixed(0)}m
               </text>
             </g>
@@ -152,7 +152,7 @@ const NMBATimelineDiagram = () => {
             <circle cx={0} cy={8} r={2.5} fill="hsl(var(--muted-foreground))" />
             <text x={6} y={16} fontSize={9} fill="hsl(var(--muted-foreground))">Intubation conditions</text>
 
-            <rect x={130} y={7} width={20} height={10} rx={2} fill="hsl(var(--muted-foreground))" opacity={0.5} />
+            <rect x={130} y={7} width={20} height={10} rx={2} fill="hsl(var(--muted-foreground))" opacity={0.5} stroke="hsl(var(--border))" strokeWidth="0.75" />
             <text x={155} y={16} fontSize={9} fill="hsl(var(--muted-foreground))">Clinical duration</text>
 
             <polygon points="290,17 300,7 300,17" fill="hsl(var(--muted-foreground))" opacity={0.25} />

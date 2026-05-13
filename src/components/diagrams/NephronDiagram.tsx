@@ -138,7 +138,7 @@ export const NephronDiagram = () => {
             stroke={lumenColor || strokeColor} strokeWidth={act ? 5 : 3.5}
             strokeLinecap="round" opacity={0.1} />
         )}
-        <path d={lumenPath || outerPath} fill="none" stroke="transparent" strokeWidth="14" onClick={onClick} />
+        <path d={lumenPath || outerPath} fill="none" stroke="transparent" strokeWidth="3" onClick={onClick} />
       </g>
     );
   };
@@ -219,7 +219,7 @@ export const NephronDiagram = () => {
             <text x="540" y="197" fontSize="6.5" fill="hsl(15 50% 40%)" textAnchor="end" opacity="0.6" fontStyle="italic">corticomedullary junction</text>
 
             {/* Outer / inner medulla boundary — dashed */}
-            <line x1="0" y1="380" x2="540" y2="380" stroke="hsl(15 50% 35%)" strokeWidth="0.7" strokeDasharray="4 3" opacity="0.45" />
+            <line x1="0" y1="380" x2="540" y2="380" stroke="hsl(15 50% 35%)" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.45" />
 
             {/* Zone labels (left margin) */}
             <text x="10" y="22" fontSize="11" fill="hsl(35 55% 45%)" fontWeight="700" opacity="0.75">CORTEX</text>
@@ -236,13 +236,13 @@ export const NephronDiagram = () => {
         )}
 
         {/* Faint capsule outline at top */}
-        <path d="M 0 4 Q 270 -4 540 4" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+        <path d="M 0 4 Q 270 -4 540 4" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
 
         {/* ============= INTERLOBULAR ARTERY (left) ============= */}
         <g opacity="0.55">
-          <path d="M 30 30 L 32 100 L 35 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2.2" strokeLinecap="round" />
-          <path d="M 36 30 L 38 100 L 41 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2.2" strokeLinecap="round" />
-          <path d="M 33 30 L 35 100 L 38 175" fill="none" stroke="hsl(0 65% 55%)" strokeWidth="3.5" opacity="0.18" strokeLinecap="round" />
+          <path d="M 30 30 L 32 100 L 35 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M 36 30 L 38 100 L 41 175" fill="none" stroke="hsl(0 60% 50%)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M 33 30 L 35 100 L 38 175" fill="none" stroke="hsl(0 65% 55%)" strokeWidth="3" opacity="0.18" strokeLinecap="round" />
           <text x="14" y="100" fontSize="6.5" fill="hsl(0 50% 50%)" opacity="0.7" fontWeight="600" transform="rotate(-90 14 100)">interlobular a.</text>
         </g>
 
@@ -304,7 +304,7 @@ export const NephronDiagram = () => {
             { y: 500, label: "← urea" },
           ].map((m, i) => (
             <g key={`exch-${i}`} opacity="0.7">
-              <line x1={258} y1={m.y} x2={264} y2={m.y} stroke="hsl(200 55% 55%)" strokeWidth="0.8" />
+              <line x1={258} y1={m.y} x2={264} y2={m.y} stroke="hsl(200 55% 55%)" strokeWidth="0.75" />
               <text x={261} y={m.y - 4} fontSize="4.5" fill="hsl(200 60% 55%)" textAnchor="middle">{m.label}</text>
             </g>
           ))}
@@ -316,7 +316,7 @@ export const NephronDiagram = () => {
         {/* Vasa recta legend */}
         {isActive("vasa-recta") && (
           <g opacity="0.85">
-            <rect x="380" y="565" width="150" height="42" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.6" />
+            <rect x="380" y="565" width="150" height="42" rx="3" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.5" />
             <line x1="386" y1="574" x2="396" y2="574" stroke="hsl(0 65% 50%)" strokeWidth="2" />
             <text x="400" y="576" fontSize="6" fill="hsl(0 60% 50%)">DVR ↓ (arterial, continuous)</text>
             <line x1="386" y1="586" x2="396" y2="586" stroke="hsl(220 55% 50%)" strokeWidth="2" />
@@ -346,14 +346,14 @@ export const NephronDiagram = () => {
             stroke={isActive("afferent") ? "hsl(0 70% 55%)" : "hsl(0 60% 50%)"}
             strokeWidth={isActive("afferent") ? 2 : 1.4} />
           <path d="M 41 106 Q 65 108 90 111 Q 110 114 122 116" fill="none"
-            stroke="hsl(0 65% 55%)" strokeWidth="6" opacity="0.10" strokeLinecap="round" />
+            stroke="hsl(0 65% 55%)" strokeWidth="3" opacity="0.10" strokeLinecap="round" />
           {[60, 78, 96, 114].map((x, i) => (
             <ellipse key={`aff-sm-${i}`} cx={x} cy={107 + i * 0.5} rx={3} ry={2}
               fill="hsl(0 55% 55%)" fillOpacity={isActive("afferent") ? 0.35 : 0.18}
               stroke="hsl(0 60% 50%)" strokeWidth="0.5" />
           ))}
           <polygon points="44,103 44,109 36,106" fill="hsl(0 60% 50%)" opacity="0.7" />
-          <path d="M 41 106 Q 65 108 90 111 Q 110 114 122 116" fill="none" stroke="transparent" strokeWidth="16" />
+          <path d="M 41 106 Q 65 108 90 111 Q 110 114 122 116" fill="none" stroke="transparent" strokeWidth="3" />
         </g>
         <text x="78" y="92" fontSize="6.5" fill="hsl(0 50% 50%)" opacity={isVisible(seg("afferent")) ? 0.7 : 0.1} fontStyle="italic">afferent arteriole</text>
 
@@ -361,7 +361,7 @@ export const NephronDiagram = () => {
         {[115, 122].map((x, i) => (
           <g key={`jg-${i}`} opacity={isVisible(seg("afferent")) ? 0.7 : 0.1}>
             <circle cx={x} cy={111 - i * 0.5} r={3.5} fill="hsl(260 50% 55%)" fillOpacity="0.22"
-              stroke="hsl(260 50% 55%)" strokeWidth="0.7" />
+              stroke="hsl(260 50% 55%)" strokeWidth="0.75" />
           </g>
         ))}
 
@@ -375,8 +375,8 @@ export const NephronDiagram = () => {
             stroke={isActive("efferent") ? "hsl(0 50% 50%)" : "hsl(0 40% 42%)"}
             strokeWidth={isActive("efferent") ? 1.7 : 1.1} />
           <path d="M 195 95 Q 217 95 233 109 Q 248 128 251 151 Q 253 165 253 175" fill="none"
-            stroke="hsl(0 45% 45%)" strokeWidth="5" opacity="0.08" strokeLinecap="round" />
-          <path d="M 195 95 Q 217 95 233 109 Q 248 128 251 151 Q 253 165 253 175" fill="none" stroke="transparent" strokeWidth="14" />
+            stroke="hsl(0 45% 45%)" strokeWidth="3" opacity="0.08" strokeLinecap="round" />
+          <path d="M 195 95 Q 217 95 233 109 Q 248 128 251 151 Q 253 165 253 175" fill="none" stroke="transparent" strokeWidth="3" />
           <text x="200" y="135" fontSize="5.5" fill="hsl(0 45% 45%)" opacity={isVisible(seg("efferent")) ? 0.65 : 0.1} fontStyle="italic">efferent → vasa recta</text>
         </g>
 
@@ -401,7 +401,7 @@ export const NephronDiagram = () => {
             "M 148 100 Q 158 96 168 99 Q 175 103 168 109",
           ].map((d, i) => (
             <path key={`glom-loop-${i}`} d={d} fill="none"
-              stroke="hsl(0 60% 50%)" strokeWidth="2.4" strokeLinecap="round"
+              stroke="hsl(0 60% 50%)" strokeWidth="2" strokeLinecap="round"
               opacity={isActive("glomerulus") ? 0.75 : 0.55} />
           ))}
           {/* Mesangial cells when active */}
@@ -421,7 +421,7 @@ export const NephronDiagram = () => {
                 const x2 = 160 + r2 * Math.cos(angle);
                 const y2 = 100 + r2 * 0.78 * Math.sin(angle);
                 return <line key={`pod-${i}`} x1={x1} y1={y1} x2={x2} y2={y2}
-                  stroke="hsl(var(--primary))" strokeWidth="0.8" />;
+                  stroke="hsl(var(--primary))" strokeWidth="0.75" />;
               })}
               <text x="200" y="130" fontSize="4.5" fill="hsl(var(--primary))">Podocyte foot processes</text>
             </g>
@@ -443,7 +443,7 @@ export const NephronDiagram = () => {
             <g key={`bb-${i}`} opacity={isVisible(seg("pct")) ? (isActive("pct") ? 0.6 : 0.32) : 0.06}>
               {[-1.5, -0.5, 0.5, 1.5].map((dx, j) => (
                 <line key={j} x1={x + dx} y1={yBase} x2={x + dx} y2={yBase - 4}
-                  stroke="hsl(150 50% 40%)" strokeWidth="0.45" />
+                  stroke="hsl(150 50% 40%)" strokeWidth="0.5" />
               ))}
             </g>
           );
@@ -451,7 +451,7 @@ export const NephronDiagram = () => {
         {/* Reabsorption arrows up (into peritubular cap) */}
         {[225, 270, 315].map((x, i) => (
           <g key={`pct-arr-${i}`} opacity={isVisible(seg("pct")) ? 0.55 : 0.1}>
-            <line x1={x} y1={75} x2={x} y2={62} stroke="hsl(150 50% 55%)" strokeWidth="1.3" markerEnd="url(#arrowGreen)" />
+            <line x1={x} y1={75} x2={x} y2={62} stroke="hsl(150 50% 55%)" strokeWidth="1.5" markerEnd="url(#arrowGreen)" />
             <text x={x} y={58} fontSize="6.5" fill="hsl(150 50% 55%)" textAnchor="middle">{["Na⁺ H₂O", "Glucose", "HCO₃⁻"][i]}</text>
           </g>
         ))}
@@ -464,16 +464,16 @@ export const NephronDiagram = () => {
         {/* Water arrows — out of descending limb into medullary interstitium */}
         {[260, 350, 440, 510].map((y, i) => (
           <g key={`dloh-${i}`} opacity={isVisible(seg("desc-loh")) ? 0.55 : 0.1}>
-            <line x1={283} y1={y} x2={272} y2={y} stroke="hsl(200 55% 55%)" strokeWidth="1.2" markerEnd="url(#arrowBlue)" />
+            <line x1={283} y1={y} x2={272} y2={y} stroke="hsl(200 55% 55%)" strokeWidth="1" markerEnd="url(#arrowBlue)" />
             <text x={268} y={y + 2.5} fontSize="6" fill="hsl(200 55% 55%)" textAnchor="end">H₂O</text>
           </g>
         ))}
 
         {/* ============= HAIRPIN (deep inner medulla) ============= */}
         <path d="M 285 540 Q 295 568 305 568 Q 315 568 322 540" fill="none"
-          stroke="hsl(var(--muted-foreground))" strokeWidth="1.4" opacity="0.45" />
+          stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" opacity="0.45" />
         <path d="M 282 540 Q 295 575 305 575 Q 320 575 326 540" fill="none"
-          stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" opacity="0.25" />
+          stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" opacity="0.25" />
 
         {/* ============= THIN ASCENDING (inner medulla) ============= */}
         <HollowTube id="thin-asc" outerPath={tubePaths.thinAscOuter} innerPath={tubePaths.thinAscInner}
@@ -495,7 +495,7 @@ export const NephronDiagram = () => {
           );
         })}
         <g opacity={isVisible(seg("thick-asc")) ? 0.6 : 0.1}>
-          <line x1={350} y1={290} x2={395} y2={290} stroke="hsl(30 60% 55%)" strokeWidth="1.2" markerEnd="url(#arrowOrange)" />
+          <line x1={350} y1={290} x2={395} y2={290} stroke="hsl(30 60% 55%)" strokeWidth="1" markerEnd="url(#arrowOrange)" />
           <text x={400} y={288} fontSize="7" fill="hsl(30 60% 55%)">Na⁺/K⁺/2Cl⁻</text>
           <text x={400} y={297} fontSize="6" fill="hsl(30 50% 55%)" fontStyle="italic">(furosemide ✕)</text>
         </g>
@@ -504,7 +504,7 @@ export const NephronDiagram = () => {
         <g className="cursor-pointer" onClick={toggle("macula")} opacity={isVisible(seg("macula")) ? 1 : 0.12}>
           <rect x="328" y="148" width="22" height="12" rx="3"
             fill={isActive("macula") ? "hsl(260 60% 55%/0.32)" : "hsl(260 50% 50%/0.16)"}
-            stroke="hsl(260 50% 55%)" strokeWidth="1.3" />
+            stroke="hsl(260 50% 55%)" strokeWidth="1.5" />
           {[333, 339, 345].map((x, i) => (
             <circle key={`md-${i}`} cx={x} cy={154} r={1.8}
               fill="hsl(260 55% 55%)" fillOpacity={isActive("macula") ? 0.55 : 0.32} />
@@ -513,7 +513,7 @@ export const NephronDiagram = () => {
         <text x="339" y="144" fontSize="6.5" fill="hsl(260 55% 55%)" textAnchor="middle"
           opacity={isVisible(seg("macula")) ? 0.85 : 0.12} fontWeight="600">MD</text>
         <path d="M 332 148 Q 250 130 195 105" fill="none"
-          stroke="hsl(260 55% 55%)" strokeWidth="0.6" strokeDasharray="3 3"
+          stroke="hsl(260 55% 55%)" strokeWidth="0.5" strokeDasharray="3 3"
           opacity={isActive("macula") ? 0.55 : 0.1} />
         {isActive("macula") && (
           <text x="270" y="120" fontSize="5" fill="hsl(260 55% 55%)" textAnchor="middle" opacity="0.7">TGF → afferent arteriole</text>
@@ -525,7 +525,7 @@ export const NephronDiagram = () => {
           color="hsl(45 60% 42%)" activeColor="hsl(45 70% 52%)" wallWidth={1.3}
           lumenColor="hsl(45 60% 48%)" onClick={toggle("dct")} />
         <g opacity={isVisible(seg("dct")) ? 0.6 : 0.1}>
-          <line x1={420} y1={148} x2={448} y2={140} stroke="hsl(45 60% 50%)" strokeWidth="1.4" markerEnd="url(#arrowYellow)" />
+          <line x1={420} y1={148} x2={448} y2={140} stroke="hsl(45 60% 50%)" strokeWidth="1.5" markerEnd="url(#arrowYellow)" />
           <text x={452} y={138} fontSize="7" fill="hsl(45 60% 50%)">Na⁺/Cl⁻</text>
           <text x={452} y={148} fontSize="6" fill="hsl(45 50% 50%)" fontStyle="italic">(thiazide ✕)</text>
         </g>
@@ -537,7 +537,7 @@ export const NephronDiagram = () => {
           lumenColor="hsl(270 50% 52%)" dashed
           onClick={toggle("ccd")} />
         <g opacity={isVisible(seg("ccd")) ? 0.6 : 0.1}>
-          <line x1={400} y1={170} x2={440} y2={168} stroke="hsl(270 50% 55%)" strokeWidth="1.2" />
+          <line x1={400} y1={170} x2={440} y2={168} stroke="hsl(270 50% 55%)" strokeWidth="1" />
           <text x={444} y={167} fontSize="6.5" fill="hsl(270 50% 55%)">ENaC (aldo)</text>
           <text x={444} y={177} fontSize="6.5" fill="hsl(270 50% 55%)">AQP2 (ADH)</text>
         </g>
@@ -624,7 +624,7 @@ export const NephronDiagram = () => {
             ].map((seg, idx) => (
               [0, 1, 2].map(i => (
                 <circle key={`flt-${idx}-${i}`} r="2.4"
-                  fill="hsl(45 90% 55%)" stroke="hsl(35 80% 40%)" strokeWidth="0.4">
+                  fill="hsl(45 90% 55%)" stroke="hsl(35 80% 40%)" strokeWidth="0.5">
                   <animateMotion dur={seg.dur} begin={`${seg.begin} -${i * (parseFloat(seg.dur) / 3)}s`}
                     repeatCount="indefinite" path={seg.path} />
                   <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1"

@@ -398,7 +398,7 @@ export const ThermodilutionDiagram = () => {
               d={curvePath}
               fill="none"
               stroke="hsl(var(--icu))"
-              strokeWidth="2.2"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />

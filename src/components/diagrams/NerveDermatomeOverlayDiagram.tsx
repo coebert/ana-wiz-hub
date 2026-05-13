@@ -258,7 +258,7 @@ const NerveDermatomeOverlayDiagram = () => {
             <text x="410" y="20" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--foreground))">POSTERIOR</text>
 
             {/* Midline */}
-            <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.6" strokeDasharray="3 4" />
+            <line x1="300" y1="10" x2="300" y2="690" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3 4" />
 
             {/* Region overlays (translucent + dotted boundary) */}
             {REGIONS.map((r) => {
@@ -286,7 +286,7 @@ const NerveDermatomeOverlayDiagram = () => {
             })}
 
             {/* Surface anatomy overlay — bony landmarks rendered ON TOP so anatomy stays visible through territories */}
-            <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.8" opacity="0.55" strokeLinecap="round">
+            <g fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.55" strokeLinecap="round">
               {/* ── ANTERIOR (centered ~x=130) ── */}
               {/* Clavicles */}
               <path d="M 78 135 Q 105 128 130 138" />
@@ -359,7 +359,7 @@ const NerveDermatomeOverlayDiagram = () => {
             <g transform="translate(20 680)">
               <rect x="0" y="-12" width="14" height="10" fill="hsl(var(--foreground))" opacity="0.5" />
               <text x="20" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">solid = dermatome</text>
-              <line x1="155" y1="-7" x2="175" y2="-7" stroke="hsl(var(--foreground))" strokeWidth="1.8" strokeDasharray="5 3" />
+              <line x1="155" y1="-7" x2="175" y2="-7" stroke="hsl(var(--foreground))" strokeWidth="2" strokeDasharray="5 3" />
               <text x="180" y="-3" fontSize="9" fill="hsl(var(--muted-foreground))">dashed = peripheral nerve</text>
             </g>
           </svg>

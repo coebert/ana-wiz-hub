@@ -250,8 +250,8 @@ export const BlockAnalgesiaProfileDiagram = () => {
           <path d={`${cathPath} L ${PAD.left + plotW} ${PAD.top + plotH} L ${PAD.left} ${PAD.top + plotH} Z`} fill="url(#bapd-cath-fill)" />
 
           {/* Curves */}
-          <path d={singlePath} fill="none" stroke="hsl(0, 75%, 55%)" strokeWidth={2.2} filter="url(#bapd-shadow)" />
-          <path d={cathPath} fill="none" stroke="hsl(170, 55%, 45%)" strokeWidth={2.2} filter="url(#bapd-shadow)" />
+          <path d={singlePath} fill="none" stroke="hsl(0, 75%, 55%)" strokeWidth={2} filter="url(#bapd-shadow)" />
+          <path d={cathPath} fill="none" stroke="hsl(170, 55%, 45%)" strokeWidth={2} filter="url(#bapd-shadow)" />
 
           {/* Rebound annotation */}
           {showRebound && (
@@ -259,7 +259,7 @@ export const BlockAnalgesiaProfileDiagram = () => {
               <circle cx={xForHour(22)} cy={yForScore(singleShot(22))} r={4} fill="hsl(0, 75%, 55%)" />
               <line x1={xForHour(22)} y1={yForScore(singleShot(22))} x2={xForHour(22) + 50} y2={yForScore(singleShot(22)) - 18} stroke="hsl(0, 75%, 55%)" strokeWidth={1} />
               <rect x={xForHour(22) + 48} y={yForScore(singleShot(22)) - 32} width={108} height={18} rx={3} fill="hsl(0, 75%, 55%)" />
-              <text x={xForHour(22) + 102} y={yForScore(singleShot(22)) - 19} textAnchor="middle" fontSize={9} fill="white" fontWeight={600}>
+              <text x={xForHour(22) + 102} y={yForScore(singleShot(22)) - 19} textAnchor="middle" fontSize={9} fill="hsl(var(--background))" fontWeight={600}>
                 Rebound peak ~22 h
               </text>
             </g>
@@ -269,8 +269,8 @@ export const BlockAnalgesiaProfileDiagram = () => {
           {hoverHour != null && hoverSingle != null && hoverCath != null && (
             <g>
               <line x1={xForHour(hoverHour)} y1={PAD.top} x2={xForHour(hoverHour)} y2={PAD.top + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} strokeDasharray="3,3" opacity={0.5} />
-              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverSingle)} r={3.5} fill="hsl(0, 75%, 55%)" stroke="white" strokeWidth={1} />
-              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverCath)} r={3.5} fill="hsl(170, 55%, 45%)" stroke="white" strokeWidth={1} />
+              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverSingle)} r={3.5} fill="hsl(0, 75%, 55%)" stroke="hsl(var(--background))" strokeWidth={1} />
+              <circle cx={xForHour(hoverHour)} cy={yForScore(hoverCath)} r={3.5} fill="hsl(170, 55%, 45%)" stroke="hsl(var(--background))" strokeWidth={1} />
               <rect x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 108 : xForHour(hoverHour) + 6} y={PAD.top + 4} width={102} height={42} rx={4} fill="hsl(var(--background))" stroke="hsl(var(--border))" />
               <text x={xForHour(hoverHour) > W - 110 ? xForHour(hoverHour) - 102 : xForHour(hoverHour) + 12} y={PAD.top + 17} fontSize={10} fill="hsl(var(--foreground))" fontWeight={600}>
                 t = {hoverHour.toFixed(0)} h

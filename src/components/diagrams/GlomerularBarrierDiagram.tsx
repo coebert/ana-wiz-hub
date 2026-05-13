@@ -182,7 +182,7 @@ export const GlomerularBarrierDiagram = () => {
         {[100, 200, 340, 420].map((x, i) => (
           <g key={`alb-${i}`} opacity="0.2">
             <circle cx={x} cy={55 + (i % 3) * 5} r={5} fill="hsl(270 40% 55%)" />
-            <text x={x} y={58 + (i % 3) * 5} fontSize="3.5" fill="white" textAnchor="middle" fontWeight="700">Alb</text>
+            <text x={x} y={58 + (i % 3) * 5} fontSize="3.5" fill="hsl(var(--background))" textAnchor="middle" fontWeight="700">Alb</text>
           </g>
         ))}
 
@@ -198,7 +198,7 @@ export const GlomerularBarrierDiagram = () => {
               <g key={`fen-${i}`}>
                 <rect x={x} y={85} width={12} height={30} rx={2}
                   fill="hsl(var(--background))" fillOpacity="0.5"
-                  stroke="hsl(0 55% 50%)" strokeWidth="0.6" />
+                  stroke="hsl(0 55% 50%)" strokeWidth="0.5" />
                 {/* Glycocalyx hairs on top */}
                 {[x + 3, x + 6, x + 9].map((gx, j) => (
                   <line key={j} x1={gx} y1={85} x2={gx} y2={80} stroke="hsl(0 40% 55%)" strokeWidth="0.5" opacity="0.4" />
@@ -219,8 +219,8 @@ export const GlomerularBarrierDiagram = () => {
           <rect x="0" y="120" width="480" height="60" fill="url(#gbmGrad)"
             stroke="hsl(45 60% 48%)" strokeWidth={activeLayer === "gbm" ? 1.5 : 0.5} />
           {/* Sublayer labels */}
-          <line x1="0" y1="135" x2="480" y2="135" stroke="hsl(45 50% 50%)" strokeWidth="0.3" strokeDasharray="2 2" opacity="0.4" />
-          <line x1="0" y1="165" x2="480" y2="165" stroke="hsl(45 50% 50%)" strokeWidth="0.3" strokeDasharray="2 2" opacity="0.4" />
+          <line x1="0" y1="135" x2="480" y2="135" stroke="hsl(45 50% 50%)" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.4" />
+          <line x1="0" y1="165" x2="480" y2="165" stroke="hsl(45 50% 50%)" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.4" />
           <text x="8" y="132" fontSize="4.5" fill="hsl(45 55% 50%)" opacity="0.6">Lamina rara interna</text>
           <text x="8" y="153" fontSize="5" fill="hsl(45 60% 48%)" fontWeight="600" opacity="0.7">Lamina densa</text>
           <text x="8" y="175" fontSize="4.5" fill="hsl(45 55% 50%)" opacity="0.6">Lamina rara externa</text>
@@ -232,7 +232,7 @@ export const GlomerularBarrierDiagram = () => {
           {/* Collagen IV network lines */}
           {Array.from({ length: 8 }).map((_, i) => (
             <path key={`col-${i}`} d={`M ${i * 60} 140 Q ${i * 60 + 30} 148 ${(i + 1) * 60} 140`}
-              fill="none" stroke="hsl(45 50% 45%)" strokeWidth="0.6" opacity="0.25" />
+              fill="none" stroke="hsl(45 50% 45%)" strokeWidth="0.5" opacity="0.25" />
           ))}
           <text x="475" y="140" fontSize="6" fill="hsl(45 60% 48%)" textAnchor="end" fontWeight="600" opacity="0.8">
             GBM
@@ -316,7 +316,7 @@ export const GlomerularBarrierDiagram = () => {
         <FiltrationParticle delay={3000} speed={5500} size={5.5} color="hsl(270 45% 50%)" blocked={true} label="IgG" />
 
         {/* === SIZE/CHARGE SELECTIVITY LEGEND === */}
-        <rect x="0" y="335" width="480" height="45" rx="4" fill="hsl(var(--secondary))" fillOpacity="0.3" />
+        <rect x="0" y="335" width="480" height="45" rx="4" fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="14" y="350" fontSize="6" fill="hsl(var(--foreground))" fontWeight="700" opacity="0.7">Size &amp; Charge Selectivity:</text>
         {/* Freely filtered */}
         <circle cx="14" cy="365" r="2" fill="hsl(150 50% 50%)" />

@@ -185,13 +185,13 @@ const CoronaryTreeDiagram = () => {
                   d="M 200 95 C 130 95 90 145 105 215 C 120 275 175 305 200 320 C 225 305 280 275 295 215 C 310 145 270 95 200 95 Z"
                   fill="url(#ct-heart)"
                   stroke="hsl(var(--border))"
-                  strokeWidth="0.8"
+                  strokeWidth="0.75"
                   opacity="0.6"
                 />
               )}
 
               {/* Aorta stub */}
-              <rect x="190" y="20" width="20" height="50" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.6" />
+              <rect x="190" y="20" width="20" height="50" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.5" />
               {showLabels && (
                 <text x="200" y="40" textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))" fontWeight="bold">Aorta</text>
               )}

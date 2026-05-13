@@ -406,7 +406,7 @@ const SkullBaseDiagram = () => {
               fill="hsl(var(--muted))"
               fillOpacity={0.45}
               stroke="hsl(var(--border))"
-              strokeWidth={0.7}
+              strokeWidth={0.75}
             />
             <text x={300} y={228} textAnchor="middle" className="text-[7.5px] fill-muted-foreground italic">
               sella turcica
@@ -432,9 +432,9 @@ const SkullBaseDiagram = () => {
 
             {/* Sutures + bony landmarks */}
             {showSutures && (
-              <g stroke="hsl(var(--foreground))" strokeWidth={0.6} opacity={0.45} fill="none" pointerEvents="none">
+              <g stroke="hsl(var(--foreground))" strokeWidth={0.5} opacity={0.45} fill="none" pointerEvents="none">
                 {/* Crista galli */}
-                <line x1={300} y1={70} x2={300} y2={120} strokeDasharray="0" strokeWidth={1.4} opacity={0.55} />
+                <line x1={300} y1={70} x2={300} y2={120} strokeDasharray="0" strokeWidth={1.5} opacity={0.55} />
                 {/* Petrous ridges (curved, sloping medially towards dorsum sellae) */}
                 <path d="M150,278 Q220,265 280,255" strokeDasharray="3 2" />
                 <path d="M450,278 Q380,265 320,255" strokeDasharray="3 2" />
@@ -451,7 +451,7 @@ const SkullBaseDiagram = () => {
             )}
 
             {/* Midline reference */}
-            <line x1={300} y1={50} x2={300} y2={440} stroke="hsl(var(--foreground))" strokeWidth={0.4} strokeDasharray="2 4" opacity={0.25} pointerEvents="none" />
+            <line x1={300} y1={50} x2={300} y2={440} stroke="hsl(var(--foreground))" strokeWidth={0.5} strokeDasharray="2 4" opacity={0.25} pointerEvents="none" />
           </g>
 
           {/* Crista galli label outside clip */}

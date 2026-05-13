@@ -31,13 +31,13 @@ const LaserPrinciplesTab = () => (
       <text x="48" y="95" fontSize="7" fill="hsl(var(--destructive))" transform="rotate(-90,48,95)">Pumping</text>
 
       {/* Fast decay */}
-      <path d="M 80 52 Q 85 70, 80 75 Q 75 80, 80 85 Q 85 90, 80 98" stroke="#F59E0B" strokeWidth="1.5" fill="none" markerEnd="url(#lArrowY)" />
-      <text x="92" y="76" fontSize="6" fill="#F59E0B">Fast decay</text>
+      <path d="M 80 52 Q 85 70, 80 75 Q 75 80, 80 85 Q 85 90, 80 98" stroke="hsl(var(--accent))" strokeWidth="1.5" fill="none" markerEnd="url(#lArrowY)" />
+      <text x="92" y="76" fontSize="6" fill="hsl(var(--accent))">Fast decay</text>
 
       {/* Stimulated emission */}
-      <line x1="115" y1="98" x2="115" y2="148" stroke="#10B981" strokeWidth="2" markerEnd="url(#lArrowG)" />
-      <text x="128" y="130" fontSize="6" fill="#10B981" fontWeight="bold">Stimulated</text>
-      <text x="128" y="139" fontSize="6" fill="#10B981">emission</text>
+      <line x1="115" y1="98" x2="115" y2="148" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#lArrowG)" />
+      <text x="128" y="130" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">Stimulated</text>
+      <text x="128" y="139" fontSize="6" fill="hsl(var(--clinical))">emission</text>
 
       {/* Population inversion note */}
       <text x="90" y="88" fontSize="6" fill="hsl(var(--primary))" fontWeight="bold">N₂ &gt; N₁</text>
@@ -61,13 +61,13 @@ const LaserPrinciplesTab = () => (
 
       {/* Bouncing photons */}
       {[0, 1, 2].map((i) => (
-        <line key={i} x1="228" y1={80 + i * 15} x2="392" y2={80 + i * 15} stroke="#10B981" strokeWidth="1.5" opacity={0.5 + i * 0.15}>
+        <line key={i} x1="228" y1={80 + i * 15} x2="392" y2={80 + i * 15} stroke="hsl(var(--clinical))" strokeWidth="1.5" opacity={0.5 + i * 0.15}>
           <animate attributeName="x1" values="228;232;228" dur={`${0.8 + i * 0.2}s`} repeatCount="indefinite" />
         </line>
       ))}
 
       {/* Output beam */}
-      <line x1="400" y1="95" x2="420" y2="95" stroke="#10B981" strokeWidth="3">
+      <line x1="400" y1="95" x2="420" y2="95" stroke="hsl(var(--clinical))" strokeWidth="3">
         <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="1s" repeatCount="indefinite" />
       </line>
 
@@ -85,9 +85,9 @@ const LaserPrinciplesTab = () => (
       <text x="200" y="260" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="bold">Clinical Lasers</text>
       <text x="80" y="278" textAnchor="middle" fontSize="7" fill="hsl(var(--destructive))" fontWeight="bold">CO₂ (10,600 nm)</text>
       <text x="80" y="290" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Airway surgery, cutting</text>
-      <text x="200" y="278" textAnchor="middle" fontSize="7" fill="#10B981" fontWeight="bold">Nd:YAG (1,064 nm)</text>
+      <text x="200" y="278" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))" fontWeight="bold">Nd:YAG (1,064 nm)</text>
       <text x="200" y="290" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Deep coagulation</text>
-      <text x="320" y="278" textAnchor="middle" fontSize="7" fill="#6366F1" fontWeight="bold">KTP (532 nm)</text>
+      <text x="320" y="278" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">KTP (532 nm)</text>
       <text x="320" y="290" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Superficial, vocal cord</text>
 
       <text x="200" y="312" textAnchor="middle" fontSize="8" fill="hsl(var(--destructive))" fontWeight="bold">⚠ CO₂ laser ignites PVC ETTs — use metal or laser-safe tubes</text>
@@ -97,10 +97,10 @@ const LaserPrinciplesTab = () => (
           <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(var(--destructive))" />
         </marker>
         <marker id="lArrowY" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M 0 0 L 5 10 L 10 0 z" fill="#F59E0B" />
+          <path d="M 0 0 L 5 10 L 10 0 z" fill="hsl(var(--accent))" />
         </marker>
         <marker id="lArrowG" viewBox="0 0 10 10" refX="5" refY="10" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M 0 0 L 5 10 L 10 0 z" fill="#10B981" />
+          <path d="M 0 0 L 5 10 L 10 0 z" fill="hsl(var(--clinical))" />
         </marker>
       </defs>
     </svg>
@@ -138,18 +138,18 @@ const FibreopticTab = () => (
       <text x="370" y="80" fontSize="6" fill="hsl(var(--primary))">(n₁, higher RI)</text>
 
       {/* Light ray bouncing */}
-      <path d="M 40 75 L 100 55 L 160 95 L 220 55 L 280 95 L 340 55 L 370 70" stroke="#F59E0B" strokeWidth="2" fill="none">
+      <path d="M 40 75 L 100 55 L 160 95 L 220 55 L 280 95 L 340 55 L 370 70" stroke="hsl(var(--accent))" strokeWidth="2" fill="none">
         <animate attributeName="stroke-dashoffset" values="60;0" dur="2s" repeatCount="indefinite" />
       </path>
 
       {/* Reflection points */}
       {[100, 220, 340].map((x) => (
-        <circle key={x} cx={x} cy={55} r="3" fill="#F59E0B" opacity="0.6">
+        <circle key={x} cx={x} cy={55} r="3" fill="hsl(var(--accent))" opacity="0.6">
           <animate attributeName="r" values="2;4;2" dur="1s" repeatCount="indefinite" />
         </circle>
       ))}
       {[160, 280].map((x) => (
-        <circle key={x} cx={x} cy={95} r="3" fill="#F59E0B" opacity="0.6">
+        <circle key={x} cx={x} cy={95} r="3" fill="hsl(var(--accent))" opacity="0.6">
           <animate attributeName="r" values="2;4;2" dur="1s" repeatCount="indefinite" />
         </circle>
       ))}
@@ -169,23 +169,23 @@ const FibreopticTab = () => (
       <text x="135" y="170" fontSize="6" fill="hsl(var(--muted-foreground))">Normal</text>
 
       {/* Sub-critical ray — refracted */}
-      <line x1="80" y1="265" x2="130" y2="220" stroke="#6366F1" strokeWidth="1.5" />
-      <line x1="130" y1="220" x2="160" y2="180" stroke="#6366F1" strokeWidth="1.5" strokeDasharray="4,2" />
-      <text x="160" y="175" fontSize="6" fill="#6366F1">Refracted</text>
+      <line x1="80" y1="265" x2="130" y2="220" stroke="hsl(var(--primary))" strokeWidth="1.5" />
+      <line x1="130" y1="220" x2="160" y2="180" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4,2" />
+      <text x="160" y="175" fontSize="6" fill="hsl(var(--primary))">Refracted</text>
 
       {/* Critical ray */}
-      <line x1="95" y1="265" x2="130" y2="220" stroke="#F59E0B" strokeWidth="2" />
-      <line x1="130" y1="220" x2="230" y2="220" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4,2" />
-      <text x="190" y="215" fontSize="6" fill="#F59E0B" fontWeight="bold">θc (critical)</text>
+      <line x1="95" y1="265" x2="130" y2="220" stroke="hsl(var(--accent))" strokeWidth="2" />
+      <line x1="130" y1="220" x2="230" y2="220" stroke="hsl(var(--accent))" strokeWidth="1.5" strokeDasharray="4,2" />
+      <text x="190" y="215" fontSize="6" fill="hsl(var(--accent))" fontWeight="bold">θc (critical)</text>
 
       {/* TIR ray */}
-      <line x1="110" y1="265" x2="130" y2="220" stroke="#10B981" strokeWidth="2" />
-      <line x1="130" y1="220" x2="170" y2="265" stroke="#10B981" strokeWidth="2" />
-      <text x="175" y="260" fontSize="6" fill="#10B981" fontWeight="bold">TIR (θ &gt; θc)</text>
+      <line x1="110" y1="265" x2="130" y2="220" stroke="hsl(var(--clinical))" strokeWidth="2" />
+      <line x1="130" y1="220" x2="170" y2="265" stroke="hsl(var(--clinical))" strokeWidth="2" />
+      <text x="175" y="260" fontSize="6" fill="hsl(var(--clinical))" fontWeight="bold">TIR (θ &gt; θc)</text>
 
       {/* Angle arc */}
-      <path d="M 130 240 Q 120 235, 115 245" stroke="#10B981" strokeWidth="1" fill="none" />
-      <text x="112" y="250" fontSize="6" fill="#10B981">θ</text>
+      <path d="M 130 240 Q 120 235, 115 245" stroke="hsl(var(--clinical))" strokeWidth="1" fill="none" />
+      <text x="112" y="250" fontSize="6" fill="hsl(var(--clinical))">θ</text>
 
       {/* Formula */}
       <rect x="260" y="155" width="130" height="50" rx="8" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary)/0.3)" strokeWidth="1" />
@@ -234,21 +234,21 @@ const ClinicalTab = () => (
       <text x="115" y="108" fontSize="6" fill="hsl(var(--muted-foreground))">Tip control</text>
 
       {/* Flexible insertion tube */}
-      <path d="M 50 180 Q 50 220, 80 240 Q 130 270, 180 260 Q 230 250, 280 240 Q 330 230, 360 210" stroke="hsl(var(--primary))" strokeWidth="6" fill="none" strokeLinecap="round" />
-      <path d="M 50 180 Q 50 220, 80 240 Q 130 270, 180 260 Q 230 250, 280 240 Q 330 230, 360 210" stroke="hsl(var(--primary)/0.2)" strokeWidth="10" fill="none" strokeLinecap="round" />
+      <path d="M 50 180 Q 50 220, 80 240 Q 130 270, 180 260 Q 230 250, 280 240 Q 330 230, 360 210" stroke="hsl(var(--primary))" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <path d="M 50 180 Q 50 220, 80 240 Q 130 270, 180 260 Q 230 250, 280 240 Q 330 230, 360 210" stroke="hsl(var(--primary)/0.2)" strokeWidth="3" fill="none" strokeLinecap="round" />
 
       {/* Tip detail */}
       <circle cx="362" cy="208" r="12" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="2" />
 
       {/* Channels at tip */}
-      <circle cx="358" cy="204" r="2" fill="#F59E0B" />
-      <circle cx="366" cy="204" r="2" fill="#F59E0B" />
+      <circle cx="358" cy="204" r="2" fill="hsl(var(--accent))" />
+      <circle cx="366" cy="204" r="2" fill="hsl(var(--accent))" />
       <circle cx="362" cy="212" r="3" fill="hsl(var(--muted-foreground))" />
 
       {/* Labels */}
-      <line x1="358" y1="204" x2="340" y2="190" stroke="#F59E0B" strokeWidth="0.5" />
-      <text x="310" y="188" fontSize="6" fill="#F59E0B">Light fibres</text>
-      <text x="310" y="196" fontSize="6" fill="#F59E0B">(incoherent)</text>
+      <line x1="358" y1="204" x2="340" y2="190" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+      <text x="310" y="188" fontSize="6" fill="hsl(var(--accent))">Light fibres</text>
+      <text x="310" y="196" fontSize="6" fill="hsl(var(--accent))">(incoherent)</text>
 
       <line x1="366" y1="204" x2="390" y2="188" stroke="hsl(var(--primary))" strokeWidth="0.5" />
       <text x="380" y="185" fontSize="6" fill="hsl(var(--primary))">Image fibre</text>
@@ -270,7 +270,7 @@ const ClinicalTab = () => (
         const angle = (i * 60 + 15) * Math.PI / 180;
         const cx = 250 + Math.cos(angle) * 22;
         const cy = 105 + Math.sin(angle) * 22;
-        return <circle key={i} cx={cx} cy={cy} r="4" fill="#F59E0B" opacity="0.5" />;
+        return <circle key={i} cx={cx} cy={cy} r="4" fill="hsl(var(--accent))" opacity="0.5" />;
       })}
 
       {/* Image bundle (coherent) */}
@@ -282,7 +282,7 @@ const ClinicalTab = () => (
       <text x="260" y="115" textAnchor="middle" fontSize="5" fill="hsl(var(--muted-foreground))">W/C</text>
 
       {/* Legend */}
-      <circle cx="320" cy="70" r="4" fill="#F59E0B" opacity="0.5" />
+      <circle cx="320" cy="70" r="4" fill="hsl(var(--accent))" opacity="0.5" />
       <text x="330" y="73" fontSize="6" fill="hsl(var(--muted-foreground))">Light (incoherent)</text>
       <circle cx="320" cy="85" r="4" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="0.5" />
       <text x="330" y="88" fontSize="6" fill="hsl(var(--muted-foreground))">Image (coherent)</text>

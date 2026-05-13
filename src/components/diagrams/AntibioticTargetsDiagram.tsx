@@ -114,7 +114,7 @@ const AntibioticTargetsDiagram = () => {
               </radialGradient>
               <pattern id="peptidoglycan" patternUnits="userSpaceOnUse" width="14" height="14">
                 <rect width="14" height="14" fill="hsl(15 90% 55% / 0.12)" />
-                <path d="M0 7 L14 7 M7 0 L7 14" stroke="hsl(15 90% 55%)" strokeWidth="1.2" />
+                <path d="M0 7 L14 7 M7 0 L7 14" stroke="hsl(15 90% 55%)" strokeWidth="1" />
               </pattern>
             </defs>
 
@@ -219,7 +219,7 @@ const AntibioticTargetsDiagram = () => {
             >
               <rect x="240" y="345" width="48" height="20" rx="4"
                 fill={active === "folate" ? "hsl(330 70% 55%)" : "hsl(330 70% 55% / 0.7)"} />
-              <text x="264" y="358" fontSize="10" fill="white" fontFamily="monospace" textAnchor="middle" fontWeight="600">DHPS/DHFR</text>
+              <text x="264" y="358" fontSize="10" fill="hsl(var(--background))" fontFamily="monospace" textAnchor="middle" fontWeight="600">DHPS/DHFR</text>
             </g>
 
             {/* Annotation lines and labels — placed in left/right gutters */}

@@ -169,7 +169,7 @@ function CSHTDiagram() {
             {yTicks.map(v => (
               <g key={v}>
                 <line x1={plotX} y1={yScale(v)} x2={plotX + plotW} y2={yScale(v)}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.15" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.15" />
                 <text x={plotX - 5} y={yScale(v) + 3} textAnchor="end" fontSize="6"
                   fill="hsl(var(--muted-foreground))" opacity="0.5">{v}</text>
               </g>
@@ -177,7 +177,7 @@ function CSHTDiagram() {
             {xTicks.map(d => (
               <g key={d}>
                 <line x1={xScale(d)} y1={plotY} x2={xScale(d)} y2={plotY + plotH}
-                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.1" />
+                  stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" opacity="0.1" />
                 <text x={xScale(d)} y={plotY + plotH + 14} textAnchor="middle" fontSize="6"
                   fill="hsl(var(--muted-foreground))" opacity="0.5">{d / 60}h</text>
               </g>

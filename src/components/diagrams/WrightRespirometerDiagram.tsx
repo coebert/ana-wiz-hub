@@ -267,7 +267,7 @@ const WrightRespirometerDiagram = () => {
               x2={Math.cos((liveDisplayedVolume / 1500) * Math.PI * 2 - Math.PI / 2) * 20}
               y2={Math.sin((liveDisplayedVolume / 1500) * Math.PI * 2 - Math.PI / 2) * 20}
               stroke="hsl(0 70% 55%)"
-              strokeWidth="1.8"
+              strokeWidth="2"
               strokeLinecap="round"
             />
             <circle r="2.5" fill="hsl(var(--foreground))" />

@@ -210,8 +210,8 @@ const IonTrappingDiagram = () => {
 
           {/* Membrane */}
           <rect x="220" y="50" width="60" height="240" fill="hsl(var(--muted))" opacity="0.6" />
-          <line x1="220" y1="50" x2="220" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.8" strokeDasharray="3 2" />
-          <line x1="280" y1="50" x2="280" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.8" strokeDasharray="3 2" />
+          <line x1="220" y1="50" x2="220" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
+          <line x1="280" y1="50" x2="280" y2="290" stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="3 2" />
           <text x="250" y="45" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
             MEMBRANE
           </text>
@@ -229,11 +229,11 @@ const IonTrappingDiagram = () => {
 
           {/* pH badges */}
           <rect x="80" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.leftPH)} opacity="0.85" />
-          <text x="120" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="white">
+          <text x="120" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
             pH {scenario.leftPH.toFixed(1)}
           </text>
           <rect x="340" y="55" width="80" height="20" rx="10" fill={pHColor(scenario.rightPH)} opacity="0.85" />
-          <text x="380" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="white">
+          <text x="380" y="69" textAnchor="middle" fontSize="11" fontWeight="700" fill="hsl(var(--background))">
             pH {scenario.rightPH.toFixed(1)}
           </text>
 
@@ -250,7 +250,7 @@ const IonTrappingDiagram = () => {
                 strokeWidth="0.5"
               />
               {m.ionised && (
-                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="white" fontWeight="700" pointerEvents="none">
+                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
                   {scenario.drugType === "base" ? "+" : "−"}
                 </text>
               )}
@@ -269,7 +269,7 @@ const IonTrappingDiagram = () => {
                 strokeWidth="0.5"
               />
               {m.ionised && (
-                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="white" fontWeight="700" pointerEvents="none">
+                <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
                   {scenario.drugType === "base" ? "+" : "−"}
                 </text>
               )}

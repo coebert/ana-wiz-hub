@@ -262,7 +262,7 @@ const FirstRibDiagram = () => {
               <text x="72" y="210" fontSize="4.5" fill={structures.rib.color} opacity="0.6">Neck</text>
               {/* Tubercle */}
               <circle cx="95" cy="145" r="4" fill={structures.rib.color} fillOpacity="0.3"
-                stroke={structures.rib.color} strokeWidth="0.8" />
+                stroke={structures.rib.color} strokeWidth="0.75" />
               <text x="80" y="150" fontSize="4.5" fill={structures.rib.color} opacity="0.6" textAnchor="end">Tubercle</text>
             </g>
 
@@ -319,8 +319,8 @@ const FirstRibDiagram = () => {
                 stroke={structures["anterior-scalene"].color}
                 strokeWidth={isActive("anterior-scalene") ? 1.5 : 0.8} />
               {/* Muscle fibre lines */}
-              <line x1="230" y1="70" x2="215" y2="120" stroke={structures["anterior-scalene"].color} strokeWidth="0.3" opacity="0.3" />
-              <line x1="240" y1="68" x2="230" y2="118" stroke={structures["anterior-scalene"].color} strokeWidth="0.3" opacity="0.3" />
+              <line x1="230" y1="70" x2="215" y2="120" stroke={structures["anterior-scalene"].color} strokeWidth="0.5" opacity="0.3" />
+              <line x1="240" y1="68" x2="230" y2="118" stroke={structures["anterior-scalene"].color} strokeWidth="0.5" opacity="0.3" />
               <text x="218" y="148" fontSize="5.5" fill={structures["anterior-scalene"].color} fontWeight="bold">Scalenus</text>
               <text x="218" y="156" fontSize="5.5" fill={structures["anterior-scalene"].color}>Anterior</text>
             </g>
@@ -332,8 +332,8 @@ const FirstRibDiagram = () => {
                 fillOpacity={isActive("middle-scalene") ? 0.3 : 0.08}
                 stroke={structures["middle-scalene"].color}
                 strokeWidth={isActive("middle-scalene") ? 1.5 : 0.8} />
-              <line x1="190" y1="85" x2="168" y2="140" stroke={structures["middle-scalene"].color} strokeWidth="0.3" opacity="0.3" />
-              <line x1="197" y1="82" x2="180" y2="138" stroke={structures["middle-scalene"].color} strokeWidth="0.3" opacity="0.3" />
+              <line x1="190" y1="85" x2="168" y2="140" stroke={structures["middle-scalene"].color} strokeWidth="0.5" opacity="0.3" />
+              <line x1="197" y1="82" x2="180" y2="138" stroke={structures["middle-scalene"].color} strokeWidth="0.5" opacity="0.3" />
               <text x="148" y="165" fontSize="5.5" fill={structures["middle-scalene"].color} fontWeight="bold">Scalenus</text>
               <text x="148" y="173" fontSize="5.5" fill={structures["middle-scalene"].color}>Medius</text>
             </g>

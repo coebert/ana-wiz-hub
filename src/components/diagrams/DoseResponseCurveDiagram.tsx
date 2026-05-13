@@ -308,7 +308,7 @@ export const DoseResponseCurveDiagram = () => {
                 d={buildPath(c)}
                 fill="none"
                 stroke={c.color}
-                strokeWidth={2.2}
+                strokeWidth={2}
                 strokeDasharray={c.dash}
                 strokeLinecap="round"
               />
@@ -319,7 +319,7 @@ export const DoseResponseCurveDiagram = () => {
                 r={3.5}
                 fill={c.color}
                 stroke="hsl(var(--background))"
-                strokeWidth={1.2}
+                strokeWidth={1}
               />
             </g>
           ))}
@@ -333,7 +333,7 @@ export const DoseResponseCurveDiagram = () => {
                 y1={yToPx(0.5)}
                 y2={yToPx(0.5)}
                 stroke="hsl(210 70% 50%)"
-                strokeWidth={1.2}
+                strokeWidth={1}
                 markerEnd="url(#drc-arrow-blue)"
               />
               <text
@@ -356,7 +356,7 @@ export const DoseResponseCurveDiagram = () => {
                 y1={yToPx(1) + 2}
                 y2={yToPx(0.45) - 2}
                 stroke="hsl(0 65% 50%)"
-                strokeWidth={1.2}
+                strokeWidth={1}
                 markerEnd="url(#drc-arrow-red)"
               />
               <text

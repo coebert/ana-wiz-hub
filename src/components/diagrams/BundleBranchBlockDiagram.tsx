@@ -156,18 +156,18 @@ const TreeMini = ({ block, color, hero = false }: { block: BlockInfo; color: str
         fill="hsl(0, 30%, 88%)"
         fillOpacity="0.22"
         stroke="hsl(var(--border))"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
 
       {/* Septum */}
-      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.45" />
+      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.45" />
 
       {/* SA node */}
       <circle cx="118" cy="42" r="3.5" fill={ok} />
       <text x="124" y="44" fontSize="6" fill={dim}>SA</text>
 
       {/* Atrial conduction */}
-      <path d="M 118 46 Q 100 70 90 92" fill="none" stroke={ok} strokeWidth="1.3" />
+      <path d="M 118 46 Q 100 70 90 92" fill="none" stroke={ok} strokeWidth="1.5" />
 
       {/* AV node */}
       <circle
@@ -176,7 +176,7 @@ const TreeMini = ({ block, color, hero = false }: { block: BlockInfo; color: str
         r="4.5"
         fill={avDelay ? color : ok}
         stroke={avDelay ? color : "none"}
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       <text x="68" y="98" fontSize="6" fill={dim} textAnchor="end">AV</text>
       {avDelay && (
@@ -198,8 +198,8 @@ const TreeMini = ({ block, color, hero = false }: { block: BlockInfo; color: str
       />
       {rbbBlocked && (
         <g>
-          <line x1="100" y1="128" x2="118" y2="128" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
-          <line x1="100" y1="132" x2="118" y2="132" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          <line x1="100" y1="128" x2="118" y2="128" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          <line x1="100" y1="132" x2="118" y2="132" stroke={color} strokeWidth="2" strokeLinecap="round" />
         </g>
       )}
       <text x="128" y="170" fontSize="6" fill={rbbBlocked ? color : dim} fontWeight={rbbBlocked ? "bold" : "normal"}>RBB</text>
@@ -215,8 +215,8 @@ const TreeMini = ({ block, color, hero = false }: { block: BlockInfo; color: str
       />
       {lbbWhole && (
         <g>
-          <line x1="68" y1="124" x2="86" y2="124" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
-          <line x1="68" y1="128" x2="86" y2="128" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          <line x1="68" y1="124" x2="86" y2="124" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          <line x1="68" y1="128" x2="86" y2="128" stroke={color} strokeWidth="2" strokeLinecap="round" />
         </g>
       )}
 
@@ -295,12 +295,12 @@ const Waveform = ({ label, kind, color, wide }: { label: string; kind: BlockInfo
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full max-w-[80px]" role="img" aria-label={`Lead ${label} morphology: ${kind}`}>
       <defs>
         <pattern id={`bbb-grid-${label}-${kind}`} width="6" height="6" patternUnits="userSpaceOnUse">
-          <path d="M 6 0 L 0 0 0 6" fill="none" stroke={color} strokeOpacity="0.15" strokeWidth="0.3" />
+          <path d="M 6 0 L 0 0 0 6" fill="none" stroke={color} strokeOpacity="0.15" strokeWidth="0.5" />
         </pattern>
       </defs>
-      <rect x="0" y="0" width={W} height={H} rx="3" fill={withAlpha(color, isAbnormal ? 0.06 : 0.03)} stroke={withAlpha(color, 0.35)} strokeWidth="0.6" />
+      <rect x="0" y="0" width={W} height={H} rx="3" fill={withAlpha(color, isAbnormal ? 0.06 : 0.03)} stroke={withAlpha(color, 0.35)} strokeWidth="0.5" />
       <rect x="0" y="0" width={W} height={H} rx="3" fill={`url(#bbb-grid-${label}-${kind})`} pointerEvents="none" />
-      <line x1="4" y1={baseline} x2={W - 4} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.3" strokeWidth="0.4" />
+      <line x1="4" y1={baseline} x2={W - 4} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.3" strokeWidth="0.5" />
       <path
         d={morphologyPath(kind, 22, baseline)}
         fill="none"

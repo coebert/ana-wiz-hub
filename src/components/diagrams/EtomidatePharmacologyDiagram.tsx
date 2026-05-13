@@ -78,7 +78,7 @@ export const EtomidatePharmacologyDiagram = () => {
                       x={140} y={n.y - 16} width={220} height={32} rx={4}
                       fill={isFinal ? "hsl(45 60% 90%)" : isBlock ? "hsl(25 50% 92%)" : "hsl(210 30% 96%)"}
                       stroke={isFinal ? "hsl(45 80% 45%)" : isBlock ? "hsl(25 80% 50%)" : "hsl(215 25% 60%)"}
-                      strokeWidth="1.2"
+                      strokeWidth="1"
                     />
                     <text x={250} y={n.y - 1} textAnchor="middle" fontSize="11" className="fill-foreground font-semibold">{n.name}</text>
                     {n.sub && (
@@ -114,15 +114,15 @@ export const EtomidatePharmacologyDiagram = () => {
               </g>
 
               {/* Cross over arrow */}
-              <line x1={232} y1={278} x2={268} y2={297} stroke="hsl(0 70% 50%)" strokeWidth="2.5" />
-              <line x1={268} y1={278} x2={232} y2={297} stroke="hsl(0 70% 50%)" strokeWidth="2.5" />
+              <line x1={232} y1={278} x2={268} y2={297} stroke="hsl(0 70% 50%)" strokeWidth="2" />
+              <line x1={268} y1={278} x2={232} y2={297} stroke="hsl(0 70% 50%)" strokeWidth="2" />
             </g>
 
             {/* Aldosterone arm */}
             <g>
               <text x={520} y={205} textAnchor="middle" fontSize="9" className="fill-muted-foreground">(via 18-OH steps)</text>
               <line x1={360} y1={205} x2={490} y2={250} stroke="hsl(215 25% 50%)" strokeWidth="1" markerEnd="url(#arrEt)" strokeDasharray="3 3" />
-              <rect x={460} y={255} width={120} height={32} rx={4} fill="hsl(140 30% 92%)" stroke="hsl(140 50% 45%)" strokeWidth="1.2" />
+              <rect x={460} y={255} width={120} height={32} rx={4} fill="hsl(140 30% 92%)" stroke="hsl(140 50% 45%)" strokeWidth="1" />
               <text x={520} y={270} textAnchor="middle" fontSize="10" className="fill-foreground font-semibold">Aldosterone</text>
               <text x={520} y={283} textAnchor="middle" fontSize="8" className="fill-muted-foreground">(also ↓ — same step)</text>
             </g>
@@ -176,7 +176,7 @@ export const EtomidatePharmacologyDiagram = () => {
               const y = 250 - (p / 100) * 190;
               return (
                 <g key={p}>
-                  <line x1={50} y1={y} x2={620} y2={y} stroke="hsl(215 25% 80%)" strokeWidth="0.6" strokeDasharray="2 3" />
+                  <line x1={50} y1={y} x2={620} y2={y} stroke="hsl(215 25% 80%)" strokeWidth="0.5" strokeDasharray="2 3" />
                   <text x={42} y={y + 3} textAnchor="end" fontSize="9" className="fill-muted-foreground">{p}%</text>
                 </g>
               );
@@ -194,7 +194,7 @@ export const EtomidatePharmacologyDiagram = () => {
             })}
 
             {/* Critical illness threshold */}
-            <line x1={50} y1={250 - (50 / 100) * 190} x2={620} y2={250 - (50 / 100) * 190} stroke="hsl(0 70% 50%)" strokeWidth="0.8" strokeDasharray="4 4" />
+            <line x1={50} y1={250 - (50 / 100) * 190} x2={620} y2={250 - (50 / 100) * 190} stroke="hsl(0 70% 50%)" strokeWidth="0.75" strokeDasharray="4 4" />
             <text x={620} y={250 - (50 / 100) * 190 - 3} textAnchor="end" fontSize="9" className="fill-[hsl(0_70%_45%)]">~50%: critical-illness threshold</text>
 
             {/* Curve */}
@@ -212,7 +212,7 @@ export const EtomidatePharmacologyDiagram = () => {
                 const y = 250 - (pct / 100) * 190;
                 path += h === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`;
               }
-              return <path d={path} fill="none" stroke="hsl(220 60% 50%)" strokeWidth="2.5" />;
+              return <path d={path} fill="none" stroke="hsl(220 60% 50%)" strokeWidth="2" />;
             })()}
 
             {/* Cursor */}

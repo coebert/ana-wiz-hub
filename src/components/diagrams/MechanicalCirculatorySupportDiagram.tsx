@@ -52,35 +52,35 @@ const HeartAndAorta = ({
         fill="hsl(0 60% 88%)"
         opacity="0.55"
         stroke="hsl(0 50% 40%)"
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       {/* RA */}
       <path d="M 175 110 C 155 115, 140 135, 145 165 C 148 185, 165 195, 185 192 L 195 165 L 195 130 Z"
-        fill="hsl(220 70% 70%)" opacity="0.45" stroke="hsl(220 60% 35%)" strokeWidth="0.9" />
+        fill="hsl(220 70% 70%)" opacity="0.45" stroke="hsl(220 60% 35%)" strokeWidth="1" />
       <text x="167" y="155" fontSize="9" className="fill-foreground" fontWeight="600">RA</text>
       {/* LA */}
       <path d="M 245 115 C 270 120, 285 140, 280 170 C 275 188, 258 195, 240 192 L 230 165 L 230 130 Z"
-        fill="hsl(0 65% 70%)" opacity="0.45" stroke="hsl(0 55% 35%)" strokeWidth="0.9" />
+        fill="hsl(0 65% 70%)" opacity="0.45" stroke="hsl(0 55% 35%)" strokeWidth="1" />
       <text x="258" y="155" fontSize="9" className="fill-foreground" fontWeight="600">LA</text>
       {/* AV valves (mitral + tricuspid) */}
       <line x1="155" y1="195" x2="200" y2="195" stroke="hsl(215 30% 30%)" strokeWidth="1" />
       <line x1="225" y1="195" x2="270" y2="195" stroke="hsl(215 30% 30%)" strokeWidth="1" />
       {/* RV */}
       <path d="M 145 200 C 135 230, 145 265, 175 280 L 200 250 L 200 200 Z"
-        fill="hsl(220 70% 60%)" opacity="0.35" stroke="hsl(220 60% 35%)" strokeWidth="0.9" />
+        fill="hsl(220 70% 60%)" opacity="0.35" stroke="hsl(220 60% 35%)" strokeWidth="1" />
       <text x="160" y="240" fontSize="9" className="fill-foreground" fontWeight="600">RV</text>
       {/* LV cavity — shrinks in systole */}
       {showLVChamber && (
         <g transform={`translate(225 245) scale(${lvScale}) translate(-225 -245)`}>
           <ellipse cx="225" cy="245" rx="32" ry="48" fill="hsl(0 70% 50%)" opacity="0.18"
-            stroke="hsl(0 65% 35%)" strokeWidth="1.2" />
+            stroke="hsl(0 65% 35%)" strokeWidth="1" />
           <ellipse cx="225" cy="245" rx="38" ry="55" fill="none"
-            stroke="hsl(0 50% 35%)" strokeWidth="1.4" opacity="0.7" />
+            stroke="hsl(0 50% 35%)" strokeWidth="1.5" opacity="0.7" />
         </g>
       )}
       <text x="225" y="248" textAnchor="middle" fontSize="10" className="fill-foreground" fontWeight="700">LV</text>
       {/* Interventricular septum */}
-      <path d="M 200 200 C 205 230, 208 260, 213 290" stroke="hsl(215 30% 25%)" strokeWidth="1.2" fill="none" opacity="0.5" />
+      <path d="M 200 200 C 205 230, 208 260, 213 290" stroke="hsl(215 30% 25%)" strokeWidth="1" fill="none" opacity="0.5" />
 
       {/* Aortic root + valve cusps */}
       <ellipse cx="218" cy="125" rx="14" ry="10" fill="hsl(0 60% 80%)" opacity="0.55"
@@ -88,15 +88,15 @@ const HeartAndAorta = ({
       {/* Three cusps schematic */}
       {avOpen ? (
         <>
-          <line x1="207" y1="125" x2="212" y2="118" stroke="hsl(0 60% 30%)" strokeWidth="1.2" />
-          <line x1="218" y1="115" x2="218" y2="120" stroke="hsl(0 60% 30%)" strokeWidth="1.2" />
-          <line x1="229" y1="125" x2="224" y2="118" stroke="hsl(0 60% 30%)" strokeWidth="1.2" />
+          <line x1="207" y1="125" x2="212" y2="118" stroke="hsl(0 60% 30%)" strokeWidth="1" />
+          <line x1="218" y1="115" x2="218" y2="120" stroke="hsl(0 60% 30%)" strokeWidth="1" />
+          <line x1="229" y1="125" x2="224" y2="118" stroke="hsl(0 60% 30%)" strokeWidth="1" />
         </>
       ) : (
         <>
-          <line x1="207" y1="125" x2="218" y2="125" stroke="hsl(0 60% 30%)" strokeWidth="1.4" />
-          <line x1="218" y1="125" x2="229" y2="125" stroke="hsl(0 60% 30%)" strokeWidth="1.4" />
-          <line x1="218" y1="118" x2="218" y2="132" stroke="hsl(0 60% 30%)" strokeWidth="1.4" />
+          <line x1="207" y1="125" x2="218" y2="125" stroke="hsl(0 60% 30%)" strokeWidth="1.5" />
+          <line x1="218" y1="125" x2="229" y2="125" stroke="hsl(0 60% 30%)" strokeWidth="1.5" />
+          <line x1="218" y1="118" x2="218" y2="132" stroke="hsl(0 60% 30%)" strokeWidth="1.5" />
         </>
       )}
       <text x="244" y="123" fontSize="8" className="fill-muted-foreground">AV</text>
@@ -108,7 +108,7 @@ const HeartAndAorta = ({
            C 380 80, 380 110, 380 140
            L 380 360"
         stroke="hsl(0 65% 50%)"
-        strokeWidth="20"
+        strokeWidth="3"
         fill="none"
         strokeLinecap="round"
         opacity="0.18"
@@ -126,18 +126,18 @@ const HeartAndAorta = ({
       {/* Brachiocephalic / L common carotid / L subclavian branches */}
       <path d="M 245 50 L 250 25" stroke="hsl(0 65% 40%)" strokeWidth="3" fill="none" />
       <text x="244" y="20" fontSize="7" textAnchor="middle" className="fill-muted-foreground">brachioceph</text>
-      <path d="M 290 35 L 295 12" stroke="hsl(0 65% 40%)" strokeWidth="2.5" fill="none" />
+      <path d="M 290 35 L 295 12" stroke="hsl(0 65% 40%)" strokeWidth="2" fill="none" />
       <text x="295" y="9" fontSize="7" textAnchor="middle" className="fill-muted-foreground">L CCA</text>
-      <path d="M 325 40 L 340 20" stroke="hsl(0 65% 40%)" strokeWidth="2.5" fill="none" />
+      <path d="M 325 40 L 340 20" stroke="hsl(0 65% 40%)" strokeWidth="2" fill="none" />
       <text x="350" y="18" fontSize="7" className="fill-muted-foreground">L SCA</text>
       <text x="385" y="200" fontSize="9" className="fill-muted-foreground">Aorta</text>
 
       {/* Coronary arteries — LMCA → LAD + LCx, RCA */}
-      <path d="M 215 130 Q 200 145, 195 175" stroke="hsl(15 85% 45%)" strokeWidth="2.2" fill="none" />
+      <path d="M 215 130 Q 200 145, 195 175" stroke="hsl(15 85% 45%)" strokeWidth="2" fill="none" />
       <text x="172" y="178" fontSize="7" className="fill-[hsl(15_85%_40%)]" fontWeight="600">LAD</text>
-      <path d="M 222 130 Q 245 145, 260 175" stroke="hsl(15 85% 45%)" strokeWidth="2.2" fill="none" />
+      <path d="M 222 130 Q 245 145, 260 175" stroke="hsl(15 85% 45%)" strokeWidth="2" fill="none" />
       <text x="262" y="178" fontSize="7" className="fill-[hsl(15_85%_40%)]" fontWeight="600">RCA</text>
-      <path d="M 218 132 Q 230 155, 250 195" stroke="hsl(15 85% 45%)" strokeWidth="1.8" fill="none" opacity="0.85" />
+      <path d="M 218 132 Q 230 155, 250 195" stroke="hsl(15 85% 45%)" strokeWidth="2" fill="none" opacity="0.85" />
       <text x="252" y="208" fontSize="7" className="fill-[hsl(15_85%_40%)]" fontWeight="600">LCx</text>
     </g>
   );
@@ -199,18 +199,18 @@ const IABPDiagram = ({ running }: { running: boolean }) => {
 
       {/* Body cavity outline */}
       <rect x="40" y="20" width="380" height="320" rx="30" fill="hsl(var(--clinical))" opacity="0.04"
-        stroke="hsl(var(--clinical))" strokeDasharray="3 3" strokeWidth="0.8" />
+        stroke="hsl(var(--clinical))" strokeDasharray="3 3" strokeWidth="0.75" />
 
       {/* Heart + aorta */}
       <HeartAndAorta systoleFrac={systoleFrac} avOpen={inSystole && systoleFrac > 0.2} />
 
       {/* IABP catheter — entering at femoral, ascending up descending aorta to position 1–2 cm distal to L SCA */}
-      <line x1="380" y1="350" x2="380" y2="160" stroke="hsl(215 25% 25%)" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="380" y1="350" x2="380" y2="160" stroke="hsl(215 25% 25%)" strokeWidth="2" strokeLinecap="round" />
       <text x="395" y="350" fontSize="8" className="fill-muted-foreground">8 Fr catheter</text>
       <text x="395" y="360" fontSize="8" className="fill-muted-foreground">via fem. artery</text>
 
       {/* Helium drive line */}
-      <line x1="380" y1="350" x2="50" y2="430" stroke="hsl(45 80% 50%)" strokeWidth="1.2" strokeDasharray="3 2" />
+      <line x1="380" y1="350" x2="50" y2="430" stroke="hsl(45 80% 50%)" strokeWidth="1" strokeDasharray="3 2" />
       <text x="55" y="445" fontSize="8" className="fill-[hsl(45_80%_45%)]">→ He shuttle pump (console)</text>
 
       {/* Balloon — sausage-shaped, in descending aorta just distal to L subclavian */}
@@ -225,7 +225,7 @@ const IABPDiagram = ({ running }: { running: boolean }) => {
         strokeWidth="1.5"
       />
       {/* Balloon position marker (radio-opaque tip) */}
-      <circle cx="380" cy="160" r="3" fill="hsl(45 90% 50%)" stroke="hsl(45 80% 30%)" strokeWidth="0.6" />
+      <circle cx="380" cy="160" r="3" fill="hsl(45 90% 50%)" stroke="hsl(45 80% 30%)" strokeWidth="0.5" />
       <text x="395" y="163" fontSize="8" className="fill-muted-foreground">tip — distal to L SCA</text>
 
       {/* Status badge */}
@@ -253,7 +253,7 @@ const IABPDiagram = ({ running }: { running: boolean }) => {
             const y = 130 + p * 50;
             return <circle key={`cp${i}`} cx={x} cy={y} r="2.5" fill="hsl(15 85% 45%)" opacity={0.8} />;
           })}
-          <path d="M 280 75 Q 250 90, 218 115" stroke="hsl(15 85% 45%)" strokeWidth="1.6"
+          <path d="M 280 75 Q 250 90, 218 115" stroke="hsl(15 85% 45%)" strokeWidth="1.5"
             fill="none" markerEnd="url(#iabp-arrow-r)" opacity="0.85" />
           <text x="290" y="73" fontSize="9" className="fill-[hsl(15_85%_40%)]" fontWeight="600">↑ retrograde aortic flow</text>
           <text x="290" y="85" fontSize="9" className="fill-[hsl(15_85%_40%)]" fontWeight="600">→ ↑ coronary perfusion</text>
@@ -271,7 +271,7 @@ const IABPDiagram = ({ running }: { running: boolean }) => {
         <text x="300" y="447" textAnchor="middle" fontSize="9" className="fill-foreground" fontWeight="600">
           Aortic pressure (mmHg) — augmented (1:1 IABP timing)
         </text>
-        <path d={buildAortic()} stroke="hsl(0 70% 50%)" strokeWidth="1.8" fill="none" />
+        <path d={buildAortic()} stroke="hsl(0 70% 50%)" strokeWidth="2" fill="none" />
         <line x1={traceX(phase)} y1="355" x2={traceX(phase)} y2="430" stroke="hsl(215 25% 30%)" strokeWidth="1" strokeDasharray="3 3" />
         <text x={traceX(0.15)} y="352" textAnchor="middle" fontSize="8" className="fill-muted-foreground">native systolic peak</text>
         <text x={traceX(0.65)} y="352" textAnchor="middle" fontSize="8" className="fill-[hsl(220_80%_50%)]" fontWeight="600">diastolic augmentation</text>
@@ -306,7 +306,7 @@ const ImpellaDiagram = ({ running }: { running: boolean }) => {
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full bg-card rounded">
       {/* Body cavity */}
       <rect x="40" y="20" width="380" height="380" rx="30" fill="hsl(var(--clinical))" opacity="0.04"
-        stroke="hsl(var(--clinical))" strokeDasharray="3 3" strokeWidth="0.8" />
+        stroke="hsl(var(--clinical))" strokeDasharray="3 3" strokeWidth="0.75" />
 
       <HeartAndAorta systoleFrac={systoleFrac} avOpen={false} />
 
@@ -319,19 +319,19 @@ const ImpellaDiagram = ({ running }: { running: boolean }) => {
            L 220 110
            L 218 250"
         stroke="hsl(215 25% 22%)"
-        strokeWidth="3.2"
+        strokeWidth="3"
         fill="none"
         strokeLinecap="round"
       />
 
       {/* Inlet (pigtail loop in LV) */}
-      <circle cx={inlet.x} cy={inlet.y + 12} r="5" fill="none" stroke="hsl(215 25% 22%)" strokeWidth="1.4" />
+      <circle cx={inlet.x} cy={inlet.y + 12} r="5" fill="none" stroke="hsl(215 25% 22%)" strokeWidth="1.5" />
       <circle cx={inlet.x} cy={inlet.y} r="6" fill="hsl(220 70% 50%)" opacity="0.8" />
       <text x={inlet.x - 25} y={inlet.y + 28} fontSize="8" className="fill-foreground" fontWeight="600">Inlet (LV)</text>
 
       {/* Pump housing — sits across AV */}
       <g transform="translate(218 130) rotate(2)">
-        <rect x="-9" y="-22" width="18" height="44" rx="3" fill="hsl(215 25% 35%)" stroke="hsl(215 25% 15%)" strokeWidth="0.8" />
+        <rect x="-9" y="-22" width="18" height="44" rx="3" fill="hsl(215 25% 35%)" stroke="hsl(215 25% 15%)" strokeWidth="0.75" />
         {/* Outlet ports (side holes) */}
         <circle cx="-9" cy="-12" r="1.4" fill="hsl(0 75% 55%)" />
         <circle cx="9" cy="-12" r="1.4" fill="hsl(0 75% 55%)" />
@@ -390,7 +390,7 @@ const ImpellaDiagram = ({ running }: { running: boolean }) => {
       })}
 
       {/* Purge fluid line (dextrose + heparin) */}
-      <path d="M 380 350 L 600 350" stroke="hsl(195 70% 50%)" strokeWidth="1.2" strokeDasharray="3 2" />
+      <path d="M 380 350 L 600 350" stroke="hsl(195 70% 50%)" strokeWidth="1" strokeDasharray="3 2" />
       <text x="430" y="343" fontSize="8" className="fill-[hsl(195_70%_45%)]">purge: 5–30% dextrose + heparin</text>
 
       {/* Drive console */}
@@ -433,10 +433,10 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
       <path
         d="M 50 30 Q 240 20, 430 30 L 430 380 Q 240 400, 50 380 Z"
         fill="hsl(var(--clinical))" opacity="0.04"
-        stroke="hsl(var(--clinical))" strokeDasharray="4 3" strokeWidth="0.8"
+        stroke="hsl(var(--clinical))" strokeDasharray="4 3" strokeWidth="0.75"
       />
       {/* Diaphragm */}
-      <path d="M 60 320 Q 240 295, 420 320" stroke="hsl(215 30% 50%)" strokeWidth="1.2" fill="none" strokeDasharray="3 2" opacity="0.5" />
+      <path d="M 60 320 Q 240 295, 420 320" stroke="hsl(215 30% 50%)" strokeWidth="1" fill="none" strokeDasharray="3 2" opacity="0.5" />
       <text x="68" y="316" fontSize="8" className="fill-muted-foreground">diaphragm</text>
 
       {/* Heart + aorta — LV apex points down-left toward pump */}
@@ -449,7 +449,7 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
       {/* Inflow cannula — sewn into LV apex */}
       <rect x="208" y="295" width="20" height="30" fill="hsl(215 25% 30%)" stroke="hsl(215 25% 12%)" strokeWidth="1" />
       {/* Sewing ring */}
-      <ellipse cx="218" cy="298" rx="14" ry="3" fill="hsl(45 30% 60%)" stroke="hsl(45 25% 40%)" strokeWidth="0.6" />
+      <ellipse cx="218" cy="298" rx="14" ry="3" fill="hsl(45 30% 60%)" stroke="hsl(45 25% 40%)" strokeWidth="0.5" />
       <text x="153" y="312" fontSize="8" className="fill-foreground" fontWeight="600">Inflow cannula</text>
       <text x="153" y="322" fontSize="8" className="fill-muted-foreground">(LV apex sewing ring)</text>
 
@@ -475,12 +475,12 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
               transform={`rotate(${a})`}
             />
           ))}
-          <circle r="5" fill="hsl(45 90% 70%)" stroke="hsl(45 80% 35%)" strokeWidth="0.6" />
+          <circle r="5" fill="hsl(45 90% 70%)" stroke="hsl(45 80% 35%)" strokeWidth="0.5" />
         </g>
         {/* Inflow port (top) */}
-        <rect x="-11" y="-46" width="22" height="14" rx="2" fill="hsl(215 30% 35%)" stroke="hsl(215 30% 12%)" strokeWidth="0.8" />
+        <rect x="-11" y="-46" width="22" height="14" rx="2" fill="hsl(215 30% 35%)" stroke="hsl(215 30% 12%)" strokeWidth="0.75" />
         {/* Outflow port (right) — angled toward aorta */}
-        <rect x="32" y="-9" width="20" height="14" rx="2" fill="hsl(215 30% 35%)" stroke="hsl(215 30% 12%)" strokeWidth="0.8" />
+        <rect x="32" y="-9" width="20" height="14" rx="2" fill="hsl(215 30% 35%)" stroke="hsl(215 30% 12%)" strokeWidth="0.75" />
       </g>
       <text x="218" y="408" textAnchor="middle" fontSize="9" className="fill-foreground" fontWeight="700">Centrifugal pump</text>
       <text x="218" y="420" textAnchor="middle" fontSize="8" className="fill-muted-foreground">(HeartMate 3 — fully levitated)</text>
@@ -493,7 +493,7 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
            Q 380 160, 340 130
            L 240 100"
         stroke="hsl(0 65% 50%)"
-        strokeWidth="14"
+        strokeWidth="3"
         fill="none"
         strokeLinecap="round"
         opacity="0.55"
@@ -512,7 +512,7 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
       <text x="395" y="240" fontSize="9" className="fill-foreground" fontWeight="600">Outflow graft</text>
       <text x="395" y="252" fontSize="8" className="fill-muted-foreground">→ asc. aorta</text>
       {/* Anastomosis at aorta */}
-      <circle cx="240" cy="100" r="4" fill="none" stroke="hsl(0 65% 35%)" strokeWidth="1.4" />
+      <circle cx="240" cy="100" r="4" fill="none" stroke="hsl(0 65% 35%)" strokeWidth="1.5" />
 
       {/* Flow particles: LV apex → inflow → pump → outflow → aorta */}
       {particles.map((p, i) => {
@@ -547,8 +547,8 @@ const LVADDiagram = ({ running }: { running: boolean }) => {
         <text x="85" y="18" textAnchor="middle" fontSize="10" className="fill-foreground" fontWeight="700">External controller</text>
         <rect x="10" y="28" width="40" height="22" rx="2" fill="hsl(140 50% 40%)" />
         <rect x="60" y="28" width="40" height="22" rx="2" fill="hsl(140 50% 40%)" />
-        <text x="30" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="700">14h</text>
-        <text x="80" y="43" textAnchor="middle" fontSize="8" fill="white" fontWeight="700">14h</text>
+        <text x="30" y="43" textAnchor="middle" fontSize="8" fill="hsl(var(--background))" fontWeight="700">14h</text>
+        <text x="80" y="43" textAnchor="middle" fontSize="8" fill="hsl(var(--background))" fontWeight="700">14h</text>
         <text x="110" y="43" fontSize="8" className="fill-muted-foreground">2× Li-ion</text>
       </g>
 

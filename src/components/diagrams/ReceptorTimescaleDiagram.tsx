@@ -181,7 +181,7 @@ export const ReceptorTimescaleDiagram = () => {
                   height={trackH - 8}
                   fill="hsl(var(--background))"
                   stroke="hsl(var(--border))"
-                  strokeWidth={0.6}
+                  strokeWidth={0.5}
                   opacity={0.6}
                 />
                 {/* Effect window */}
@@ -201,7 +201,7 @@ export const ReceptorTimescaleDiagram = () => {
                   r={active ? 4.5 : 3}
                   fill={b.color}
                   stroke="hsl(var(--background))"
-                  strokeWidth={1.2}
+                  strokeWidth={1}
                 />
 
                 {/* Left-side schematic */}
@@ -277,7 +277,7 @@ export const ReceptorTimescaleDiagram = () => {
             y1={trackTop - 4}
             y2={H - PAD_B + 6}
             stroke="hsl(var(--primary))"
-            strokeWidth={1.6}
+            strokeWidth={1.5}
             strokeDasharray="3 3"
           />
           <circle
@@ -408,8 +408,8 @@ const ReceptorIcon = ({ id, active, color, x, y }: IconProps) => {
         <g transform={`translate(${x}, ${y})`}>
           <rect x={0} y={14} width={120} height={18} fill="hsl(45 30% 92%)" stroke="hsl(var(--border))" />
           {/* Two single-TM receptors dimerising */}
-          <line x1={36} y1={14} x2={36} y2={32} stroke={fg} strokeWidth={2.5} opacity={wash} />
-          <line x1={48} y1={14} x2={48} y2={32} stroke={fg} strokeWidth={2.5} opacity={wash} />
+          <line x1={36} y1={14} x2={36} y2={32} stroke={fg} strokeWidth={2} opacity={wash} />
+          <line x1={48} y1={14} x2={48} y2={32} stroke={fg} strokeWidth={2} opacity={wash} />
           {/* P phosphate dots */}
           {active && [0, 1].map((i) => (
             <circle key={i} cx={36 + i * 12} cy={36} r={2.5} fill={color}>
@@ -425,7 +425,7 @@ const ReceptorIcon = ({ id, active, color, x, y }: IconProps) => {
           {/* Membrane (broken — ligand crosses) */}
           <line x1={0} y1={20} x2={120} y2={20} stroke="hsl(var(--border))" strokeDasharray="2 2" />
           {/* Nucleus */}
-          <ellipse cx={62} cy={36} rx={26} ry={10} fill="hsl(45 30% 92%)" stroke={fg} strokeWidth={1.2} opacity={wash} />
+          <ellipse cx={62} cy={36} rx={26} ry={10} fill="hsl(45 30% 92%)" stroke={fg} strokeWidth={1} opacity={wash} />
           {/* Ligand-receptor entering */}
           {active && (
             <circle cx={20} cy={10} r={3.5} fill={color}>

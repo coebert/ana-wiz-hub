@@ -8,7 +8,7 @@ const VomitingControlDiagram = () => {
         <svg viewBox="0 0 760 620" className="w-full h-auto min-w-[620px]" style={{ maxHeight: 620 }}>
           <defs>
             <marker id="vom-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-              <path d="M0,0 L8,3 L0,6" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2" />
+              <path d="M0,0 L8,3 L0,6" fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" />
             </marker>
             <marker id="vom-arrow-muted" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
               <path d="M0,0 L8,3 L0,6" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1" />
@@ -43,9 +43,9 @@ const VomitingControlDiagram = () => {
           <text x="630" y="57" textAnchor="middle" className="fill-muted-foreground" fontSize="9">(Labyrinth, CN VIII)</text>
           <text x="630" y="75" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Motion sickness, opioids</text>
           {/* Receptor badges */}
-          <rect x="565" y="83" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="565" y="83" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="580" y="93" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">H₁</text>
-          <rect x="602" y="83" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="602" y="83" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="617" y="93" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">M₁</text>
 
           {/* Drug annotation — Vestibular: cyclizine, hyoscine */}
@@ -61,13 +61,13 @@ const VomitingControlDiagram = () => {
           <text x="125" y="221" textAnchor="middle" className="fill-muted-foreground" fontSize="9">(Area postrema — outside BBB)</text>
           <text x="125" y="236" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Detects circulating emetogens</text>
           {/* Receptor badges */}
-          <rect x="42" y="248" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="42" y="248" width="30" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="57" y="258" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">D₂</text>
-          <rect x="78" y="248" width="36" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="78" y="248" width="36" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="96" y="258" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">5-HT₃</text>
-          <rect x="120" y="248" width="32" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="120" y="248" width="32" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="136" y="258" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">NK₁</text>
-          <rect x="158" y="248" width="38" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="158" y="248" width="38" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="177" y="258" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">μ-opioid</text>
 
           {/* Drug annotation — CTZ */}
@@ -85,9 +85,9 @@ const VomitingControlDiagram = () => {
           <text x="375" y="485" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Enterochromaffin cells → 5-HT release</text>
           <text x="375" y="500" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Distension, irritation, cytotoxics</text>
           {/* Receptor badges */}
-          <rect x="308" y="508" width="36" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="308" y="508" width="36" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="326" y="518" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">5-HT₃</text>
-          <rect x="350" y="508" width="45" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="350" y="508" width="45" height="14" rx="3" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="372" y="518" textAnchor="middle" fontSize="8" fontWeight="600" className="fill-destructive">Mechano</text>
 
           {/* Drug annotation — GI tract */}
@@ -133,7 +133,7 @@ const VomitingControlDiagram = () => {
 
           {/* Legend */}
           <rect x="20" y="560" width="720" height="45" rx="6" fill="hsl(var(--muted) / 0.3)" stroke="hsl(var(--border))" strokeWidth="1" />
-          <rect x="35" y="571" width="10" height="10" rx="2" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.8" />
+          <rect x="35" y="571" width="10" height="10" rx="2" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive) / 0.4)" strokeWidth="0.75" />
           <text x="50" y="580" className="fill-muted-foreground" fontSize="8">Receptor subtype</text>
           <rect x="150" y="571" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.1)" stroke="hsl(var(--primary) / 0.5)" strokeWidth="1" />
           <text x="165" y="580" className="fill-muted-foreground" fontSize="8">Antiemetic drug (site of action)</text>

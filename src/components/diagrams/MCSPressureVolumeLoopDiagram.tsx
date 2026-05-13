@@ -346,8 +346,8 @@ export const MCSPressureVolumeLoopDiagram = () => {
                   </g>
                 ))}
                 {/* axes */}
-                <line x1={BPAD.left} y1={BPAD.top} x2={BPAD.left} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1.2" />
-                <line x1={BPAD.left} y1={BPAD.top + PH} x2={BW - BPAD.right} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1.2" />
+                <line x1={BPAD.left} y1={BPAD.top} x2={BPAD.left} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1" />
+                <line x1={BPAD.left} y1={BPAD.top + PH} x2={BW - BPAD.right} y2={BPAD.top + PH} stroke="hsl(215 25% 15%)" strokeWidth="1" />
                 <text x={12} y={BPAD.top + PH / 2} textAnchor="middle" transform={`rotate(-90 12 ${BPAD.top + PH / 2})`} fontSize="10" className="fill-foreground font-medium">mmHg·mL</text>
 
                 {/* Baseline reference line */}
@@ -360,7 +360,7 @@ export const MCSPressureVolumeLoopDiagram = () => {
                       y2={yScale(loops.baseline.area + loops.baseline.pe)}
                       stroke="hsl(215 25% 40%)"
                       strokeDasharray="3 3"
-                      strokeWidth="0.8"
+                      strokeWidth="0.75"
                       opacity="0.7"
                     />
                     <text x={BW - BPAD.right - 2} y={yScale(loops.baseline.area + loops.baseline.pe) - 3} textAnchor="end" fontSize="8" className="fill-muted-foreground">baseline PVA</text>

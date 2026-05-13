@@ -134,8 +134,8 @@ const LowerLimbArteriesDiagram = () => {
             {showSutures && <rect x="2" y="2" width="196" height="576" rx="10" fill="url(#lla-tissue)" pointerEvents="none" />}
 
             {/* Leg outline */}
-            <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
-            <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M65,15 Q55,80 55,150 Q52,220 50,280 Q48,340 45,400 Q42,440 38,480 Q35,510 30,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M135,15 Q145,80 145,150 Q148,220 150,280 Q152,340 148,400 Q145,440 140,480 Q135,510 125,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
 
             {showSutures && (
               <g pointerEvents="none">
@@ -174,7 +174,7 @@ const LowerLimbArteriesDiagram = () => {
               {/* Perforating branches */}
               {[100, 140, 180, 220].map((y, i) => (
                 <line key={i} x1={105 + i * 3} y1={y} x2={120 + i * 2} y2={y + 10}
-                  stroke={arteries["profunda-femoris"].color} strokeWidth="0.8" opacity="0.25" />
+                  stroke={arteries["profunda-femoris"].color} strokeWidth="0.75" opacity="0.25" />
               ))}
               <text x="125" y="150" fontSize="4.5" fill={arteries["profunda-femoris"].color}>Profunda</text>
               <text x="125" y="157" fontSize="4.5" fill={arteries["profunda-femoris"].color}>femoris</text>
@@ -253,7 +253,7 @@ const LowerLimbArteriesDiagram = () => {
                 strokeWidth={isActive("lateral-plantar") ? 2 : 1} opacity={isActive("lateral-plantar") ? 0.6 : 0.2} strokeLinecap="round" />
               {/* Plantar arch */}
               <path d="M105,550 Q90,555 70,552 Q55,550 50,548" fill="none" stroke={arteries["lateral-plantar"].color}
-                strokeWidth="0.8" opacity="0.2" strokeDasharray="3 2" />
+                strokeWidth="0.75" opacity="0.2" strokeDasharray="3 2" />
               <text x="108" y="548" fontSize="3.5" fill={arteries["lateral-plantar"].color}>Lat. plantar</text>
               <text x="80" y="565" fontSize="3.5" fill={arteries["lateral-plantar"].color} textAnchor="middle" opacity="0.5">plantar arch</text>
             </g>

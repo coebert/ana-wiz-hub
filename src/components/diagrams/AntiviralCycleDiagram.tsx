@@ -195,7 +195,7 @@ const AntiviralCycleDiagram = () => {
                     strokeOpacity="0.35"
                   />
                   <text x={s.cx} y={s.cy + 5} textAnchor="middle"
-                    fontSize="14" fontWeight="700" fill="white">
+                    fontSize="14" fontWeight="700" fill="hsl(var(--background))">
                     {num}
                   </text>
                   <text x={lx} y={ly} textAnchor={anchor}

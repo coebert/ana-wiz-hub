@@ -117,22 +117,22 @@ const JetVentilationDiagram = () => {
               d="M 120 20 Q 200 10 240 50 Q 260 90 245 130 L 230 145 L 230 175 Q 230 195 240 200 L 330 220 L 330 260 L 230 260 L 230 305 L 130 305 L 130 260 L 30 260 L 30 220 L 120 200 Q 130 195 130 175 L 130 145 L 115 130 Q 100 90 120 50 Z"
               fill="hsl(25 35% 90%)"
               stroke="hsl(25 25% 50%)"
-              strokeWidth="1.2"
+              strokeWidth="1"
             />
             {/* Mouth */}
             <ellipse cx="180" cy="115" rx="22" ry="5" fill="hsl(0 50% 35%)" />
             {/* Larynx + trachea outline */}
             <path d="M 165 130 L 165 220 Q 165 245 175 245 L 185 245 Q 195 245 195 220 L 195 130 Z"
-              fill="hsl(0 0% 98%)" stroke="hsl(0 0% 30%)" strokeWidth="1.2" />
+              fill="hsl(0 0% 98%)" stroke="hsl(0 0% 30%)" strokeWidth="1" />
             {/* Vocal cords */}
-            <line x1="165" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.4" />
-            <line x1="195" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.4" />
+            <line x1="165" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.5" />
+            <line x1="195" y1="148" x2="180" y2="155" stroke="hsl(0 0% 30%)" strokeWidth="1.5" />
             {/* Cricothyroid membrane marker */}
             <line x1="165" y1="170" x2="195" y2="170" stroke="hsl(280 40% 50%)" strokeWidth="1" strokeDasharray="2 2" />
             <text x="200" y="173" fontSize="8" fill="hsl(280 40% 45%)">cricothyroid m.</text>
             {/* Carina */}
-            <line x1="180" y1="245" x2="155" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1.2" />
-            <line x1="180" y1="245" x2="205" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1.2" />
+            <line x1="180" y1="245" x2="155" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1" />
+            <line x1="180" y1="245" x2="205" y2="280" stroke="hsl(0 0% 30%)" strokeWidth="1" />
 
             {/* Mode-specific overlay */}
             {mode === "supraglottic" && (
@@ -146,7 +146,7 @@ const JetVentilationDiagram = () => {
                 <text x="55" y="92" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">4 bar O₂</text>
                 <text x="40" y="155" fontSize="9" fill="hsl(140 50% 35%)">+ entrained air</text>
                 {/* Expiratory pathway up through glottis */}
-                <path d="M 175 220 Q 175 180 180 130 Q 180 120 200 115" stroke="hsl(0 70% 50%)" strokeWidth="1.6" fill="none" strokeDasharray="3 3" />
+                <path d="M 175 220 Q 175 180 180 130 Q 180 120 200 115" stroke="hsl(0 70% 50%)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
                 <text x="208" y="115" fontSize="9" fill="hsl(0 70% 45%)">expiration ↑</text>
               </g>
             )}
@@ -159,11 +159,11 @@ const JetVentilationDiagram = () => {
                 <polygon points="180,210 172,225 188,225" fill="hsl(220 70% 55%)" opacity="0.85" />
                 {/* Pressure-monitoring lumen tag */}
                 <circle cx="180" cy="115" r="5" fill="hsl(220 60% 35%)" />
-                <line x1="185" y1="115" x2="240" y2="80" stroke="hsl(220 60% 35%)" strokeWidth="0.8" />
+                <line x1="185" y1="115" x2="240" y2="80" stroke="hsl(220 60% 35%)" strokeWidth="0.75" />
                 <text x="245" y="80" fontSize="9" fill="hsl(220 60% 35%)" fontWeight="600">distal P + ETCO₂</text>
                 {/* Expiratory annular flow around catheter */}
-                <path d="M 168 220 Q 165 180 168 145 Q 170 130 185 120" stroke="hsl(0 70% 50%)" strokeWidth="1.4" fill="none" strokeDasharray="3 3" />
-                <path d="M 192 220 Q 195 180 192 145" stroke="hsl(0 70% 50%)" strokeWidth="1.4" fill="none" strokeDasharray="3 3" />
+                <path d="M 168 220 Q 165 180 168 145 Q 170 130 185 120" stroke="hsl(0 70% 50%)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
+                <path d="M 192 220 Q 195 180 192 145" stroke="hsl(0 70% 50%)" strokeWidth="1.5" fill="none" strokeDasharray="3 3" />
                 <text x="120" y="200" fontSize="9" fill="hsl(0 70% 45%)">annular expiration</text>
                 <text x="35" y="260" fontSize="9" fill="hsl(220 60% 35%)" fontWeight="600">100–150 min⁻¹ HFJV</text>
               </g>

@@ -215,7 +215,7 @@ const InotropeSignallingDiagram = () => {
                 {/* Phospholamban/SERCA */}
                 <text x={cellX + 60} y={cellY + 95} fontSize="5" fill={info.color}>PLB → SERCA ↑</text>
                 <text x={cellX + 60} y={cellY + 103} fontSize="4.5" fill={info.color} opacity="0.7">(↑ lusitropy)</text>
-                <line x1={cellX + 115} y1={cellY + 97} x2={cellX + 95} y2={cellY + 92} stroke={info.color} strokeWidth="0.8" markerEnd="url(#arrowInotrope)" />
+                <line x1={cellX + 115} y1={cellY + 97} x2={cellX + 95} y2={cellY + 92} stroke={info.color} strokeWidth="0.75" markerEnd="url(#arrowInotrope)" />
               </g>
             )}
 

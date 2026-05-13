@@ -153,11 +153,11 @@ function OverviewView({ highlightType, setHighlightType }: {
         <text x="320" y="185" textAnchor="middle" className="text-[7px] fill-foreground font-medium">Shunt</text>
         <text x="320" y="195" textAnchor="middle" className="text-[7px] fill-foreground font-medium">(no ventilation)</text>
         <text x="320" y="205" textAnchor="middle" className="text-[7px] fill-muted-foreground">V/Q = 0</text>
-        <line x1="305" y1="214" x2="305" y2="250" stroke="hsl(0, 70%, 55%)" strokeWidth="2.5" />
-        <line x1="335" y1="214" x2="335" y2="250" stroke="hsl(210, 70%, 55%)" strokeWidth="2.5" />
+        <line x1="305" y1="214" x2="305" y2="250" stroke="hsl(0, 70%, 55%)" strokeWidth="2" />
+        <line x1="335" y1="214" x2="335" y2="250" stroke="hsl(210, 70%, 55%)" strokeWidth="2" />
 
         {/* Legend */}
-        <rect x="10" y="260" width="380" height="35" rx="4" fill="hsl(var(--muted))" opacity="0.4" />
+        <rect x="10" y="260" width="380" height="35" rx="4" fill="hsl(var(--muted))" opacity="0.4" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <circle cx="30" cy="278" r="5" fill="hsl(0, 70%, 55%)" opacity="0.6" />
         <text x="40" y="281" className="text-[8px] fill-muted-foreground">Deoxygenated blood</text>
         <circle cx="150" cy="278" r="5" fill="hsl(210, 70%, 55%)" opacity="0.6" />

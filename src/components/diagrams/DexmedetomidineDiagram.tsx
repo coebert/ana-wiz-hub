@@ -51,7 +51,7 @@ export const DexmedetomidineDiagram = () => {
 
             {/* Brainstem outline */}
             <g transform="translate(50, 50)">
-              <ellipse cx={130} cy={140} rx={130} ry={100} fill="hsl(20 30% 94%)" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+              <ellipse cx={130} cy={140} rx={130} ry={100} fill="hsl(20 30% 94%)" stroke="hsl(215 25% 35%)" strokeWidth="1" />
               <text x={130} y={50} textAnchor="middle" fontSize="9" className="fill-muted-foreground">pons</text>
 
               {/* LC nucleus */}
@@ -81,7 +81,7 @@ export const DexmedetomidineDiagram = () => {
 
               {/* Terminal */}
               <path d="M 30 30 L 250 30 L 250 90 Q 140 110 30 90 Z"
-                fill="hsl(220 30% 96%)" stroke="hsl(220 60% 40%)" strokeWidth="1.2" />
+                fill="hsl(220 30% 96%)" stroke="hsl(220 60% 40%)" strokeWidth="1" />
 
               {/* α2A autoreceptor */}
               <rect x={120} y={88} width={40} height={12} fill="hsl(220 60% 60%)" stroke="hsl(220 60% 30%)" strokeWidth="1" />
@@ -102,13 +102,13 @@ export const DexmedetomidineDiagram = () => {
               {/* Vesicle suppression */}
               <g opacity={0.4}>
                 {[60, 100, 200, 230].map((cx, i) => (
-                  <circle key={i} cx={cx} cy={50} r={6} fill="hsl(45 90% 55%)" stroke="hsl(45 70% 40%)" strokeWidth="0.8" />
+                  <circle key={i} cx={cx} cy={50} r={6} fill="hsl(45 90% 55%)" stroke="hsl(45 70% 40%)" strokeWidth="0.75" />
                 ))}
               </g>
               <text x={140} y={210} textAnchor="middle" fontSize="9" className="fill-[hsl(0_70%_45%)] font-medium">↓ NA release</text>
 
               {/* Synaptic cleft */}
-              <line x1={30} y1={230} x2={250} y2={230} stroke="hsl(215 25% 50%)" strokeWidth="0.8" strokeDasharray="2 2" />
+              <line x1={30} y1={230} x2={250} y2={230} stroke="hsl(215 25% 50%)" strokeWidth="0.75" strokeDasharray="2 2" />
               <text x={140} y={245} textAnchor="middle" fontSize="9" className="fill-muted-foreground">cleft</text>
 
               {/* Post-synaptic */}
@@ -193,7 +193,7 @@ export const DexmedetomidineDiagram = () => {
                 }
                 return (
                   <g key={ln.label}>
-                    <path d={path} fill="none" stroke={ln.color} strokeWidth="1.4" />
+                    <path d={path} fill="none" stroke={ln.color} strokeWidth="1.5" />
                     <text x={350} y={ln.y + 4} fontSize="10" className="fill-foreground">{ln.label}</text>
                   </g>
                 );
@@ -238,7 +238,7 @@ export const DexmedetomidineDiagram = () => {
             <text x={20} y={160} textAnchor="middle" fontSize="10" transform="rotate(-90, 20, 160)" className="fill-muted-foreground">MAP (mmHg)</text>
 
             {/* Baseline marker */}
-            <line x1={50} y1={170} x2={620} y2={170} stroke="hsl(215 25% 70%)" strokeWidth="0.8" strokeDasharray="3 3" />
+            <line x1={50} y1={170} x2={620} y2={170} stroke="hsl(215 25% 70%)" strokeWidth="0.75" strokeDasharray="3 3" />
             <text x={620} y={167} textAnchor="end" fontSize="9" className="fill-muted-foreground">baseline 90</text>
 
             {/* X labels */}
@@ -273,7 +273,7 @@ export const DexmedetomidineDiagram = () => {
                 const y = 250 - ((map - 40) / 100) * 180;
                 path += min === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`;
               }
-              return <path d={path} fill="none" stroke="hsl(0 70% 50%)" strokeWidth="2.2" />;
+              return <path d={path} fill="none" stroke="hsl(0 70% 50%)" strokeWidth="2" />;
             })()}
 
             {/* Phase annotations */}
@@ -336,7 +336,7 @@ export const DexmedetomidineDiagram = () => {
               ];
               return bands.map((b, i) => (
                 <g key={i}>
-                  <rect x={b.x} y={70} width={b.w} height={50} fill={b.color} stroke="hsl(215 25% 30%)" strokeWidth="0.6" />
+                  <rect x={b.x} y={70} width={b.w} height={50} fill={b.color} stroke="hsl(215 25% 30%)" strokeWidth="0.5" />
                   <text x={b.x + b.w / 2} y={92} textAnchor="middle" fontSize="11" className="fill-foreground font-bold">{b.label}</text>
                   <text x={b.x + b.w / 2} y={108} textAnchor="middle" fontSize="9" className="fill-foreground">{b.sub}</text>
                 </g>

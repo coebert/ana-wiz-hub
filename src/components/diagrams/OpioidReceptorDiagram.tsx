@@ -249,15 +249,15 @@ const OpioidReceptorDiagram = () => {
             <h4 className="text-xs font-semibold text-foreground mb-2">Receptor Distribution — Anatomical Overview</h4>
             <svg viewBox="0 0 600 320" className="w-full">
               {/* Brain outline */}
-              <ellipse cx={300} cy={70} rx={140} ry={55} fill="#8b5cf620" stroke="#8b5cf6" strokeWidth={1.5} />
-              <text x={300} y={40} textAnchor="middle" fontSize={11} fontWeight={600} fill="#8b5cf6">Supraspinal</text>
+              <ellipse cx={300} cy={70} rx={140} ry={55} fill="hsl(var(--primary))" stroke="hsl(var(--primary))" strokeWidth={1.5} />
+              <text x={300} y={40} textAnchor="middle" fontSize={11} fontWeight={600} fill="hsl(var(--primary))">Supraspinal</text>
               <text x={300} y={58} textAnchor="middle" fontSize={8} className="fill-muted-foreground">PAG · RVM · Thalamus · Limbic · Cortex · CTZ</text>
               <text x={300} y={72} textAnchor="middle" fontSize={8} className="fill-muted-foreground">µ &gt; κ &gt; δ — analgesia, resp depression, euphoria</text>
               <text x={300} y={86} textAnchor="middle" fontSize={7} className="fill-muted-foreground">Edinger-Westphal (µ → miosis) · pre-Bötzinger (µ → resp dep)</text>
 
               {/* Spinal cord */}
-              <rect x={270} y={130} width={60} height={80} rx={10} fill="#3b82f620" stroke="#3b82f6" strokeWidth={1.5} />
-              <text x={300} y={148} textAnchor="middle" fontSize={11} fontWeight={600} fill="#3b82f6">Spinal</text>
+              <rect x={270} y={130} width={60} height={80} rx={10} fill="hsl(var(--primary))" stroke="hsl(var(--primary))" strokeWidth={1.5} />
+              <text x={300} y={148} textAnchor="middle" fontSize={11} fontWeight={600} fill="hsl(var(--primary))">Spinal</text>
               <text x={300} y={163} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">Dorsal horn</text>
               <text x={300} y={176} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">Lamina II (SG)</text>
               <text x={300} y={189} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">µ 70%, δ, κ</text>
@@ -267,22 +267,22 @@ const OpioidReceptorDiagram = () => {
               <line x1={300} y1={125} x2={300} y2={130} stroke="hsl(var(--border))" strokeWidth={1.5} />
 
               {/* Peripheral - left */}
-              <rect x={40} y={230} width={200} height={70} rx={10} fill="#10b98120" stroke="#10b981" strokeWidth={1.5} />
-              <text x={140} y={250} textAnchor="middle" fontSize={11} fontWeight={600} fill="#10b981">Peripheral</text>
+              <rect x={40} y={230} width={200} height={70} rx={10} fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth={1.5} />
+              <text x={140} y={250} textAnchor="middle" fontSize={11} fontWeight={600} fill="hsl(var(--clinical))">Peripheral</text>
               <text x={140} y={266} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">Nociceptor terminals (DRG)</text>
               <text x={140} y={279} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">Inflamed tissue: ↑ receptor expression</text>
               <text x={140} y={292} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">µ, δ, κ — peripheral analgesia</text>
 
               {/* GI - right */}
-              <rect x={360} y={230} width={200} height={70} rx={10} fill="#10b98120" stroke="#10b981" strokeWidth={1.5} />
-              <text x={460} y={250} textAnchor="middle" fontSize={11} fontWeight={600} fill="#10b981">GI Tract</text>
+              <rect x={360} y={230} width={200} height={70} rx={10} fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth={1.5} />
+              <text x={460} y={250} textAnchor="middle" fontSize={11} fontWeight={600} fill="hsl(var(--clinical))">GI Tract</text>
               <text x={460} y={266} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">Myenteric & submucosal plexus</text>
               <text x={460} y={279} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">µ (primary) — ↓ peristalsis</text>
               <text x={460} y={292} textAnchor="middle" fontSize={7.5} className="fill-muted-foreground">↑ sphincter tone, ↓ secretions</text>
 
               {/* Connection lines */}
-              <path d="M280,210 Q200,220 200,230" stroke="hsl(var(--border))" strokeWidth={1.2} fill="none" />
-              <path d="M320,210 Q400,220 400,230" stroke="hsl(var(--border))" strokeWidth={1.2} fill="none" />
+              <path d="M280,210 Q200,220 200,230" stroke="hsl(var(--border))" strokeWidth={1} fill="none" />
+              <path d="M320,210 Q400,220 400,230" stroke="hsl(var(--border))" strokeWidth={1} fill="none" />
             </svg>
           </div>
         </div>

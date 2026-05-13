@@ -21,7 +21,7 @@ const NuclearSpinTab = () => (
       <ellipse cx="200" cy="100" rx="60" ry="18" fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="4,3" />
 
       {/* Proton spinning */}
-      <line x1="200" y1="200" x2="230" y2="90" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+      <line x1="200" y1="200" x2="230" y2="90" stroke="hsl(var(--primary))" strokeWidth="2" />
       <circle cx="232" cy="86" r="8" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="2">
         <animate attributeName="r" values="7;9;7" dur="1s" repeatCount="indefinite" />
       </circle>
@@ -47,9 +47,9 @@ const NuclearSpinTab = () => (
       <text x="60" y="48" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="bold">Alignment</text>
       {/* Parallel arrows (more) */}
       {[0, 1, 2, 3].map((i) => (
-        <line key={`p${i}`} x1={35 + i * 15} y1="78" x2={35 + i * 15} y2="58" stroke="#10B981" strokeWidth="2" markerEnd="url(#mriUpG)" />
+        <line key={`p${i}`} x1={35 + i * 15} y1="78" x2={35 + i * 15} y2="58" stroke="hsl(var(--clinical))" strokeWidth="2" markerEnd="url(#mriUpG)" />
       ))}
-      <text x="60" y="90" textAnchor="middle" fontSize="6" fill="#10B981">↑ Parallel (low E)</text>
+      <text x="60" y="90" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">↑ Parallel (low E)</text>
       {/* Antiparallel arrows (fewer) */}
       {[0, 1, 2].map((i) => (
         <line key={`a${i}`} x1={38 + i * 15} y1="98" x2={38 + i * 15} y2="115" stroke="hsl(var(--destructive))" strokeWidth="2" markerEnd="url(#mriDnR)" />
@@ -68,7 +68,7 @@ const NuclearSpinTab = () => (
           <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(var(--muted-foreground))" />
         </marker>
         <marker id="mriUpG" viewBox="0 0 10 10" refX="5" refY="0" markerWidth="5" markerHeight="5" orient="auto">
-          <path d="M 0 10 L 5 0 L 10 10 z" fill="#10B981" />
+          <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(var(--clinical))" />
         </marker>
         <marker id="mriUpP" viewBox="0 0 10 10" refX="5" refY="0" markerWidth="6" markerHeight="6" orient="auto">
           <path d="M 0 10 L 5 0 L 10 10 z" fill="hsl(var(--primary))" />
@@ -114,21 +114,21 @@ const RelaxationTab = () => (
       <text x="110" y="156" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Time</text>
 
       {/* T1 curve - exponential recovery, animated draw-on */}
-      <path d="M 42 142 Q 70 140, 90 115 Q 110 95, 130 82 Q 150 74, 175 72" stroke="#10B981" strokeWidth="2.5" fill="none" strokeDasharray="180" strokeDashoffset="180">
+      <path d="M 42 142 Q 70 140, 90 115 Q 110 95, 130 82 Q 150 74, 175 72" stroke="hsl(var(--clinical))" strokeWidth="2" fill="none" strokeDasharray="180" strokeDashoffset="180">
         <animate attributeName="stroke-dashoffset" from="180" to="0" dur="2.4s" repeatCount="indefinite" />
       </path>
-      <text x="170" y="68" fontSize="7" fill="#10B981" fontWeight="bold">M₀</text>
+      <text x="170" y="68" fontSize="7" fill="hsl(var(--clinical))" fontWeight="bold">M₀</text>
 
       {/* T1 marker */}
-      <line x1="95" y1="145" x2="95" y2="110" stroke="#10B981" strokeWidth="1" strokeDasharray="3,2" />
-      <text x="95" y="155" textAnchor="middle" fontSize="6" fill="#10B981">T1</text>
-      <text x="130" y="130" fontSize="6" fill="#10B981">63% recovery</text>
+      <line x1="95" y1="145" x2="95" y2="110" stroke="hsl(var(--clinical))" strokeWidth="1" strokeDasharray="3,2" />
+      <text x="95" y="155" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">T1</text>
+      <text x="130" y="130" fontSize="6" fill="hsl(var(--clinical))">63% recovery</text>
 
       {/* Fat vs water labels */}
-      <path d="M 42 142 Q 55 135, 65 110 Q 75 90, 85 80 Q 100 72, 120 70" stroke="#F59E0B" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
-      <text x="125" y="68" fontSize="6" fill="#F59E0B">Fat (short T1)</text>
-      <path d="M 42 142 Q 80 140, 110 125 Q 140 108, 160 95 Q 172 88, 178 85" stroke="#6366F1" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
-      <text x="175" y="95" fontSize="6" fill="#6366F1">Water (long T1)</text>
+      <path d="M 42 142 Q 55 135, 65 110 Q 75 90, 85 80 Q 100 72, 120 70" stroke="hsl(var(--accent))" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
+      <text x="125" y="68" fontSize="6" fill="hsl(var(--accent))">Fat (short T1)</text>
+      <path d="M 42 142 Q 80 140, 110 125 Q 140 108, 160 95 Q 172 88, 178 85" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
+      <text x="175" y="95" fontSize="6" fill="hsl(var(--primary))">Water (long T1)</text>
 
       {/* T2 Decay graph */}
       <rect x="205" y="30" width="180" height="130" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
@@ -142,7 +142,7 @@ const RelaxationTab = () => (
       <text x="300" y="156" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Time</text>
 
       {/* T2 curve - exponential decay, animated draw-on */}
-      <path d="M 232 72 Q 260 78, 280 100 Q 300 120, 320 132 Q 340 140, 365 143" stroke="hsl(var(--destructive))" strokeWidth="2.5" fill="none" strokeDasharray="180" strokeDashoffset="180">
+      <path d="M 232 72 Q 260 78, 280 100 Q 300 120, 320 132 Q 340 140, 365 143" stroke="hsl(var(--destructive))" strokeWidth="2" fill="none" strokeDasharray="180" strokeDashoffset="180">
         <animate attributeName="stroke-dashoffset" from="180" to="0" dur="2.4s" repeatCount="indefinite" />
       </path>
 
@@ -156,25 +156,25 @@ const RelaxationTab = () => (
       <text x="300" y="135" fontSize="6" fill="hsl(var(--destructive))" opacity="0.7">T2* (faster)</text>
 
       {/* Water vs fat */}
-      <path d="M 232 72 Q 270 78, 310 105 Q 340 125, 365 140" stroke="#6366F1" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
-      <text x="360" y="133" fontSize="6" fill="#6366F1">Water (long T2)</text>
-      <path d="M 232 72 Q 248 88, 258 115 Q 268 135, 280 142" stroke="#F59E0B" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
-      <text x="285" y="110" fontSize="6" fill="#F59E0B">Fat (short T2)</text>
+      <path d="M 232 72 Q 270 78, 310 105 Q 340 125, 365 140" stroke="hsl(var(--primary))" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
+      <text x="360" y="133" fontSize="6" fill="hsl(var(--primary))">Water (long T2)</text>
+      <path d="M 232 72 Q 248 88, 258 115 Q 268 135, 280 142" stroke="hsl(var(--accent))" strokeWidth="1.5" fill="none" strokeDasharray="4,2" />
+      <text x="285" y="110" fontSize="6" fill="hsl(var(--accent))">Fat (short T2)</text>
 
       {/* Tissue contrast table */}
       <text x="200" y="185" textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))" fontWeight="bold">Image Weighting & Tissue Appearance</text>
 
       <rect x="20" y="195" width="360" height="65" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="1" />
       <text x="90" y="212" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">T1-weighted</text>
-      <text x="90" y="226" textAnchor="middle" fontSize="7" fill="#F59E0B">Fat = BRIGHT</text>
-      <text x="90" y="238" textAnchor="middle" fontSize="7" fill="#6366F1">Water = DARK</text>
+      <text x="90" y="226" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))">Fat = BRIGHT</text>
+      <text x="90" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">Water = DARK</text>
       <text x="90" y="250" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Short TR, short TE</text>
 
       <line x1="200" y1="200" x2="200" y2="255" stroke="hsl(var(--border))" strokeWidth="1" />
 
       <text x="310" y="212" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="bold">T2-weighted</text>
-      <text x="310" y="226" textAnchor="middle" fontSize="7" fill="#6366F1">Water = BRIGHT</text>
-      <text x="310" y="238" textAnchor="middle" fontSize="7" fill="#F59E0B">Fat = DARK</text>
+      <text x="310" y="226" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">Water = BRIGHT</text>
+      <text x="310" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))">Fat = DARK</text>
       <text x="310" y="250" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Long TR, long TE</text>
 
       {/* Mnemonic */}
@@ -232,13 +232,13 @@ const SafetyTab = () => (
       <text x="75" y="210" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))" fontWeight="bold">scissors, IV poles</text>
 
       {/* Thermal */}
-      <rect x="145" y="130" width="110" height="85" rx="8" fill="hsl(var(--card))" stroke="#F59E0B" strokeWidth="1.5" />
-      <text x="200" y="148" textAnchor="middle" fontSize="8" fill="#F59E0B" fontWeight="bold">⚠ Thermal/Burns</text>
+      <rect x="145" y="130" width="110" height="85" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+      <text x="200" y="148" textAnchor="middle" fontSize="8" fill="hsl(var(--accent))" fontWeight="bold">⚠ Thermal/Burns</text>
       <text x="200" y="162" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">RF energy → tissue heating</text>
       <text x="200" y="174" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Measured as SAR (W/kg)</text>
       <text x="200" y="186" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Loops of wire/ECG leads</text>
       <text x="200" y="198" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">act as antennae</text>
-      <text x="200" y="210" textAnchor="middle" fontSize="6" fill="#F59E0B" fontWeight="bold">→ focal skin burns</text>
+      <text x="200" y="210" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))" fontWeight="bold">→ focal skin burns</text>
 
       {/* Device interference */}
       <rect x="265" y="130" width="120" height="85" rx="8" fill="hsl(var(--card))" stroke="hsl(var(--primary))" strokeWidth="1.5" />
@@ -252,12 +252,12 @@ const SafetyTab = () => (
       {/* Equipment classification */}
       <text x="200" y="235" textAnchor="middle" fontSize="10" fill="hsl(var(--foreground))" fontWeight="bold">Equipment Labels</text>
 
-      <rect x="20" y="245" width="110" height="40" rx="6" fill="#10B981" fillOpacity="0.1" stroke="#10B981" strokeWidth="1.5" />
-      <text x="75" y="262" textAnchor="middle" fontSize="8" fill="#10B981" fontWeight="bold">MR Safe</text>
+      <rect x="20" y="245" width="110" height="40" rx="6" fill="hsl(var(--clinical))" fillOpacity="0.1" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
+      <text x="75" y="262" textAnchor="middle" fontSize="8" fill="hsl(var(--clinical))" fontWeight="bold">MR Safe</text>
       <text x="75" y="278" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">No hazard in any MR</text>
 
-      <rect x="145" y="245" width="110" height="40" rx="6" fill="#F59E0B" fillOpacity="0.1" stroke="#F59E0B" strokeWidth="1.5" />
-      <text x="200" y="262" textAnchor="middle" fontSize="8" fill="#F59E0B" fontWeight="bold">MR Conditional</text>
+      <rect x="145" y="245" width="110" height="40" rx="6" fill="hsl(var(--accent))" fillOpacity="0.1" stroke="hsl(var(--accent))" strokeWidth="1.5" />
+      <text x="200" y="262" textAnchor="middle" fontSize="8" fill="hsl(var(--accent))" fontWeight="bold">MR Conditional</text>
       <text x="200" y="278" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Safe under specific conditions</text>
 
       <rect x="270" y="245" width="110" height="40" rx="6" fill="hsl(var(--destructive))" fillOpacity="0.1" stroke="hsl(var(--destructive))" strokeWidth="1.5" />

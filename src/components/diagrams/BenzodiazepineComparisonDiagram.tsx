@@ -280,19 +280,19 @@ export const BenzodiazepineComparisonDiagram = () => {
             <svg viewBox="0 0 640 280" className="w-full h-auto">
               {/* Diazepam chain */}
               <text x="10" y="20" fontSize="10" fontWeight="700" className="fill-foreground">Diazepam — Phase I + II, multi-step active chain</text>
-              <rect x="10" y="30" width="100" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" />
+              <rect x="10" y="30" width="100" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="60" y="51" textAnchor="middle" fontSize="10" fontWeight="600" className="fill-primary-foreground">Diazepam</text>
 
               <path d="M 110 46 L 140 46" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#bzd-arr)" />
               <text x="125" y="40" fontSize="8" textAnchor="middle" className="fill-muted-foreground">CYP2C19/3A4</text>
 
-              <rect x="140" y="30" width="160" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" />
+              <rect x="140" y="30" width="160" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="220" y="48" textAnchor="middle" fontSize="9" fontWeight="700" className="fill-primary-foreground">desmethyldiazepam</text>
               <text x="220" y="58" textAnchor="middle" fontSize="8" className="fill-primary-foreground">t½ 36–200 h · active</text>
 
               <path d="M 300 46 L 330 46" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#bzd-arr)" />
 
-              <rect x="330" y="30" width="120" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.7" />
+              <rect x="330" y="30" width="120" height="32" rx="4" fill="hsl(var(--pharmacology))" opacity="0.7" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="390" y="48" textAnchor="middle" fontSize="10" fontWeight="600" className="fill-primary-foreground">oxazepam</text>
               <text x="390" y="58" textAnchor="middle" fontSize="8" className="fill-primary-foreground">active</text>
 
@@ -304,13 +304,13 @@ export const BenzodiazepineComparisonDiagram = () => {
 
               {/* Midazolam chain */}
               <text x="10" y="92" fontSize="10" fontWeight="700" className="fill-foreground">Midazolam — Phase I + II, active glucuronide</text>
-              <rect x="10" y="102" width="100" height="32" rx="4" fill="hsl(var(--icu))" opacity="0.85" />
+              <rect x="10" y="102" width="100" height="32" rx="4" fill="hsl(var(--icu))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="60" y="123" textAnchor="middle" fontSize="10" fontWeight="600" className="fill-primary-foreground">Midazolam</text>
 
               <path d="M 110 118 L 140 118" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#bzd-arr)" />
               <text x="125" y="112" fontSize="8" textAnchor="middle" className="fill-muted-foreground">CYP3A4</text>
 
-              <rect x="140" y="102" width="160" height="32" rx="4" fill="hsl(var(--icu))" opacity="0.85" />
+              <rect x="140" y="102" width="160" height="32" rx="4" fill="hsl(var(--icu))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="220" y="120" textAnchor="middle" fontSize="9" fontWeight="700" className="fill-primary-foreground">α-OH-midazolam</text>
               <text x="220" y="130" textAnchor="middle" fontSize="8" className="fill-primary-foreground">active (~10%)</text>
 
@@ -318,7 +318,7 @@ export const BenzodiazepineComparisonDiagram = () => {
               <text x="315" y="112" fontSize="8" textAnchor="middle" className="fill-muted-foreground">UGT</text>
 
               <rect x="330" y="102" width="180" height="32" rx="4" fill="hsl(var(--destructive))" opacity="0.85">
-                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" stroke="hsl(var(--border))" strokeWidth="0.75" />
               </rect>
               <text x="420" y="118" textAnchor="middle" fontSize="9" fontWeight="700" className="fill-primary-foreground">α-OH-midaz-glucuronide</text>
               <text x="420" y="128" textAnchor="middle" fontSize="8" className="fill-primary-foreground">ACTIVE · renally cleared</text>
@@ -330,7 +330,7 @@ export const BenzodiazepineComparisonDiagram = () => {
 
               {/* Lorazepam */}
               <text x="10" y="170" fontSize="10" fontWeight="700" className="fill-foreground">Lorazepam &amp; Temazepam — Phase II only (LOT)</text>
-              <rect x="10" y="180" width="100" height="32" rx="4" fill="hsl(var(--clinical))" opacity="0.85" />
+              <rect x="10" y="180" width="100" height="32" rx="4" fill="hsl(var(--clinical))" opacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.75" />
               <text x="60" y="201" textAnchor="middle" fontSize="10" fontWeight="600" className="fill-primary-foreground">Lorazepam</text>
 
               <path d="M 110 196 L 200 196" stroke="hsl(var(--foreground))" strokeWidth="1.5" markerEnd="url(#bzd-arr)" />

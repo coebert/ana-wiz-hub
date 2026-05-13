@@ -121,8 +121,8 @@ const LowerLimbVeinsDiagram = () => {
             {showSutures && <rect x="2" y="2" width="216" height="576" rx="10" fill="url(#llv-tissue)" pointerEvents="none" />}
 
             {/* Leg outline */}
-            <path d="M70,15 Q60,80 58,150 Q55,220 52,280 Q50,340 48,400 Q45,440 40,480 Q37,510 32,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
-            <path d="M150,15 Q160,80 162,150 Q165,220 168,280 Q168,340 165,400 Q160,440 155,480 Q150,510 140,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M70,15 Q60,80 58,150 Q55,220 52,280 Q50,340 48,400 Q45,440 40,480 Q37,510 32,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M150,15 Q160,80 162,150 Q165,220 168,280 Q168,340 165,400 Q160,440 155,480 Q150,510 140,550" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
 
             {showSutures && (
               <g pointerEvents="none">

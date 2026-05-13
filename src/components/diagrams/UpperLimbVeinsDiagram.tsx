@@ -121,8 +121,8 @@ const UpperLimbVeinsDiagram = () => {
             {showSutures && <rect x="2" y="2" width="216" height="496" rx="10" fill="url(#ulv-tissue)" pointerEvents="none" />}
 
             {/* Arm outline */}
-            <path d="M60,20 Q50,80 50,140 Q48,200 45,250 Q40,300 35,350 Q30,400 25,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
-            <path d="M160,20 Q170,80 170,140 Q172,200 175,250 Q178,300 180,350 Q182,400 185,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.8" opacity="0.4" />
+            <path d="M60,20 Q50,80 50,140 Q48,200 45,250 Q40,300 35,350 Q30,400 25,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
+            <path d="M160,20 Q170,80 170,140 Q172,200 175,250 Q178,300 180,350 Q182,400 185,440" fill="none" stroke="hsl(var(--border))" strokeWidth="0.75" opacity="0.4" />
 
             {showSutures && (
               <g pointerEvents="none">

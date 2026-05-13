@@ -197,7 +197,7 @@ const DLTInsertionDiagram = () => {
       return (
         <svg viewBox="0 0 400 340" className="w-full max-w-xs mx-auto">
           {/* Background */}
-          <rect width="400" height="340" fill="hsl(var(--card))" rx="8" />
+          <rect width="400" height="340" fill="hsl(var(--card))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
           {/* Larynx / vocal cords */}
           <g opacity="0.5">
@@ -281,21 +281,21 @@ const DLTInsertionDiagram = () => {
                 <g>
                   {/* Tracheal lumen — stays in trachea */}
                   <path d={`M${cx - 6},${tracheaTop} L${cx - 6},${carinaY - 15}`}
-                    stroke="hsl(210 60% 55%)" strokeWidth="7" strokeLinecap="round" opacity="0.3" />
+                    stroke="hsl(210 60% 55%)" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
                   <path d={`M${cx - 6},${tracheaTop} L${cx - 6},${carinaY - 15}`}
                     stroke="hsl(210 60% 55%)" strokeWidth="1" fill="none" />
                   {/* Tracheal opening */}
                   <ellipse cx={cx - 6} cy={carinaY - 12} rx="3" ry="2"
-                    fill="hsl(var(--card))" stroke="hsl(210 60% 55%)" strokeWidth="0.8" />
+                    fill="hsl(var(--card))" stroke="hsl(210 60% 55%)" strokeWidth="0.75" />
                   <text x={cx - 6} y={carinaY - 22} textAnchor="middle" fontSize="6" fill="hsl(210 60% 55%)" fontWeight="600">Tracheal lumen</text>
 
                   {/* Bronchial lumen — curves into target bronchus */}
                   {isLeft ? (
                     <path d={`M${cx + 6},${tracheaTop} L${cx + 6},${carinaY - 5} Q${cx},${carinaY + 5} ${lbx + 5},${lby - 15}`}
-                      stroke="hsl(0 60% 55%)" strokeWidth="7" strokeLinecap="round" opacity="0.3" />
+                      stroke="hsl(0 60% 55%)" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
                   ) : (
                     <path d={`M${cx + 6},${tracheaTop} L${cx + 6},${carinaY - 5} Q${cx + 8},${carinaY + 5} ${rbx - 5},${rby - 15}`}
-                      stroke="hsl(0 60% 55%)" strokeWidth="7" strokeLinecap="round" opacity="0.3" />
+                      stroke="hsl(0 60% 55%)" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
                   )}
                   {isLeft ? (
                     <path d={`M${cx + 6},${tracheaTop} L${cx + 6},${carinaY - 5} Q${cx},${carinaY + 5} ${lbx + 5},${lby - 15}`}

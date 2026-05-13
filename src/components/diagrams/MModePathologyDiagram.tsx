@@ -435,10 +435,10 @@ const MModePathologyDiagram = () => {
               <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 w-full h-full pointer-events-none">
                 {/* Side scale */}
                 <g fontFamily="system-ui, sans-serif">
-                  <text x="6" y="14" fontSize="9" fill="#d8d8a8" opacity="0.7">RV/IVS</text>
-                  <text x="6" y={H - 6} fontSize="9" fill="#d8d8a8" opacity="0.7">PW/posterior</text>
-                  <text x={W - 6} y="14" fontSize="9" fill="rgba(255,107,107,0.85)" textAnchor="end">{def.short}</text>
-                  <text x={W - 6} y={H - 6} fontSize="8" fill="#d8d8a8" opacity="0.6" textAnchor="end">sweep ≈ 4 s · 75 bpm</text>
+                  <text x="6" y="14" fontSize="9" fill="hsl(var(--accent))" opacity="0.7">RV/IVS</text>
+                  <text x="6" y={H - 6} fontSize="9" fill="hsl(var(--accent))" opacity="0.7">PW/posterior</text>
+                  <text x={W - 6} y="14" fontSize="9" fill="hsl(var(--destructive))" textAnchor="end">{def.short}</text>
+                  <text x={W - 6} y={H - 6} fontSize="8" fill="hsl(var(--accent))" opacity="0.6" textAnchor="end">sweep ≈ 4 s · 75 bpm</text>
                 </g>
                 {annotations[selected].map((a, i) => (
                   <g key={i}>

@@ -119,7 +119,7 @@ const ContractileAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: num
       ))}
 
       {/* AP waveform — thicker with gradient feel */}
-      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
+      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
       
       {/* Phase duration indicators */}
       <g opacity={0.4} fontSize="6" fill="currentColor">
@@ -194,7 +194,7 @@ const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: numbe
         />
       ))}
 
-      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2.5} strokeLinejoin="round" />
+      <path d={fullPath} fill="none" stroke="hsl(var(--primary))" strokeWidth={2} strokeLinejoin="round" />
 
       {phaseRegions.map(r => (
         <text key={r.id} x={r.lx} y={r.ly} fontSize="11" fill="currentColor" fontWeight="bold" className="cursor-pointer" onClick={() => onSelectPhase(r.id)}>{r.label}</text>
@@ -210,7 +210,7 @@ const PacemakerAPSvg = ({ selectedPhase, onSelectPhase }: { selectedPhase: numbe
 
       {/* Slope annotation for Phase 4 */}
       <g opacity={0.3}>
-        <line x1={40} y1={176} x2={130} y2={145} stroke="currentColor" strokeWidth={0.8} strokeDasharray="3,3" />
+        <line x1={40} y1={176} x2={130} y2={145} stroke="currentColor" strokeWidth={0.75} strokeDasharray="3,3" />
         <text x={65} y={155} fontSize="6" fill="currentColor">slope = rate</text>
       </g>
     </svg>

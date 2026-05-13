@@ -159,7 +159,7 @@ const devices: Record<DeviceCategory, DeviceInfo> = {
         {/* Blade */}
         <path d="M 30 50 Q 30 60 35 65 L 35 130 Q 35 145 50 150 L 140 155 Q 155 155 155 140 L 155 65 Q 155 50 140 45 L 45 42 Q 30 42 30 50 Z" fill="hsl(var(--primary)/0.1)" stroke="hsl(var(--primary))" strokeWidth="2" />
         {/* Mac-like curved blade profile */}
-        <path d="M 45 145 Q 80 130 120 140 Q 140 148 148 150" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M 45 145 Q 80 130 120 140 Q 140 148 148 150" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
         <text x="95" y="132" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Curved blade tip</text>
         {/* Camera */}
         <circle cx="140" cy="147" r="5" fill="hsl(var(--primary)/0.3)" stroke="hsl(var(--primary))" strokeWidth="1.5" />

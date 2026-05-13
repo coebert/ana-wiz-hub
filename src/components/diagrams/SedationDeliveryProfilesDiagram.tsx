@@ -191,7 +191,7 @@ const Panel = ({
           y2={PAD_T + (1 - WINDOW_HIGH) * INNER_H}
           stroke="hsl(var(--primary) / 0.35)"
           strokeDasharray="3 3"
-          strokeWidth={0.8}
+          strokeWidth={0.75}
         />
         <line
           x1={PAD_L}
@@ -200,7 +200,7 @@ const Panel = ({
           y2={PAD_T + (1 - WINDOW_LOW) * INNER_H}
           stroke="hsl(var(--primary) / 0.35)"
           strokeDasharray="3 3"
-          strokeWidth={0.8}
+          strokeWidth={0.75}
         />
 
         {/* Axes */}
@@ -261,7 +261,7 @@ const Panel = ({
               y1={PAD_T + INNER_H}
               y2={PAD_T + INNER_H + 4}
               stroke={`hsl(var(${colorVar}))`}
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
           </g>
         ))}
@@ -291,7 +291,7 @@ const Panel = ({
           y1={PAD_T}
           y2={PAD_T + INNER_H}
           stroke="hsl(var(--foreground) / 0.25)"
-          strokeWidth={0.8}
+          strokeWidth={0.75}
         />
         <circle
           cx={cursorX}
@@ -338,7 +338,7 @@ const Panel = ({
                 x2={tx}
                 y2={ty + 1}
                 stroke={`hsl(var(${colorVar}))`}
-                strokeWidth={0.7}
+                strokeWidth={0.75}
                 strokeDasharray="2 2"
               />
               <rect
@@ -349,7 +349,7 @@ const Panel = ({
                 rx={2}
                 fill="hsl(var(--background))"
                 stroke={`hsl(var(${colorVar}) / 0.55)`}
-                strokeWidth={0.6}
+                strokeWidth={0.5}
               />
               <text
                 x={tx}

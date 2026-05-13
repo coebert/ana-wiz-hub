@@ -128,22 +128,22 @@ const ValidationOverlay = ({
               <line
                 x1={m.from.x + nx * 4} y1={m.from.y + ny * 4}
                 x2={m.from.x - nx * 4} y2={m.from.y - ny * 4}
-                stroke={ACCENT} strokeWidth={1.2}
+                stroke={ACCENT} strokeWidth={1}
               />
               <line
                 x1={m.to.x + nx * 4} y1={m.to.y + ny * 4}
                 x2={m.to.x - nx * 4} y2={m.to.y - ny * 4}
-                stroke={ACCENT} strokeWidth={1.2}
+                stroke={ACCENT} strokeWidth={1}
               />
               <line
                 x1={m.from.x} y1={m.from.y}
                 x2={m.to.x} y2={m.to.y}
-                stroke={ACCENT} strokeWidth={1.2} strokeDasharray="3 3"
+                stroke={ACCENT} strokeWidth={1} strokeDasharray="3 3"
               />
               <rect
                 x={mx + nx * 9 - 18} y={my + ny * 9 - 7}
                 width={36} height={14} rx={3}
-                fill="hsl(var(--background))" stroke={ACCENT} strokeWidth={0.8}
+                fill="hsl(var(--background))" stroke={ACCENT} strokeWidth={0.75}
               />
               <text
                 x={mx + nx * 9} y={my + ny * 9 + 4}
@@ -206,9 +206,9 @@ const ValidationOverlay = ({
         return (
           <g key={l.id}>
             <circle cx={l.x} cy={l.y} r={3} fill="hsl(var(--background))"
-              stroke={ACCENT} strokeWidth={1.4} />
+              stroke={ACCENT} strokeWidth={1.5} />
             <line x1={l.x} y1={l.y} x2={l.x + dx} y2={l.y + dy}
-              stroke={ACCENT} strokeWidth={0.8} />
+              stroke={ACCENT} strokeWidth={0.75} />
             <text
               x={l.x + dx + (anchor === "end" ? -2 : 2)}
               y={l.y + dy - 1}
@@ -443,7 +443,7 @@ export const SupinePositionDiagram = () => (
     <text x={108} y={108} textAnchor="middle" fontSize={10} fill="hsl(var(--muted-foreground))">head</text>
     <text x={500} y={144} fontSize={10} fill="hsl(var(--muted-foreground))">feet</text>
     {/* horizon */}
-    <line x1={70} y1={170} x2={490} y2={170} stroke="hsl(210 25% 25%)" strokeWidth={1.2} />
+    <line x1={70} y1={170} x2={490} y2={170} stroke="hsl(210 25% 25%)" strokeWidth={1} />
   </PositionFrame>
 );
 
@@ -715,7 +715,7 @@ const FrameCard = ({
             x2={240}
             y2={128}
             stroke="hsl(var(--muted-foreground))"
-            strokeWidth={0.4}
+            strokeWidth={0.5}
             strokeDasharray="2 3"
             opacity={0.5}
           />
@@ -729,7 +729,7 @@ const FrameCard = ({
             d="M 55 56 Q 90 50 130 54 Q 170 58 200 60 L 200 70 Q 170 68 130 64 Q 90 60 55 66 Z"
             fill="hsl(35 70% 82%)"
             stroke="hsl(35 50% 40%)"
-            strokeWidth={0.8}
+            strokeWidth={0.75}
           />
           {/* Spine curve indicator */}
           <path
@@ -747,7 +747,7 @@ const FrameCard = ({
             r={9}
             fill="hsl(35 70% 82%)"
             stroke="hsl(35 50% 40%)"
-            strokeWidth={0.8}
+            strokeWidth={0.75}
           />
           <line x1={50} y1={60} x2={58} y2={60} stroke="hsl(35 50% 40%)" strokeWidth={2} />
           {/* Buttock + leg taper */}
@@ -755,7 +755,7 @@ const FrameCard = ({
             d="M 200 60 Q 215 62 222 66 L 222 70 Q 215 70 200 70 Z"
             fill="hsl(35 70% 82%)"
             stroke="hsl(35 50% 40%)"
-            strokeWidth={0.8}
+            strokeWidth={0.75}
           />
 
           {/* Head + foot direction labels */}
@@ -905,7 +905,7 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Cranium from above */}
             <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin)`}
-              stroke="hsl(28 50% 35%)" strokeWidth={1.2} />
+              stroke="hsl(28 50% 35%)" strokeWidth={1} />
             {/* Subtle sheen */}
             <ellipse cx={cx} cy={cy} rx={a} ry={b} fill={`url(#myf-skin-sheen)`} pointerEvents="none" className="anat-sheen" />
 
@@ -919,9 +919,9 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Ear pinnae — landmarks */}
             <ellipse cx={cx - 18} cy={cy - b - 4} rx={9} ry={5}
-              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={0.9} />
+              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={1} />
             <ellipse cx={cx - 18} cy={cy + b + 4} rx={9} ry={5}
-              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={0.9} />
+              fill={`url(#myf-skin)`} stroke="hsl(28 50% 35%)" strokeWidth={1} />
             <text x={cx - 18} y={cy - b - 12} textAnchor="middle" fontSize={9}
               fill="hsl(var(--muted-foreground))">L pinna</text>
             <text x={cx - 18} y={cy + b + 22} textAnchor="middle" fontSize={9}
@@ -929,13 +929,13 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Sutures (decorative — coronal + sagittal hint) */}
             <path d={`M ${cx - 30},${cy - b + 6} Q ${cx - 30},${cy} ${cx - 30},${cy + b - 6}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.5} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
             <path d={`M ${cx - 30},${cy} L ${cx + a - 10},${cy}`}
-              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.6} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
+              fill="none" stroke="hsl(28 50% 35%)" strokeWidth={0.5} strokeDasharray="2 2" opacity={0.5} className="anat-sheen" />
 
             {/* SAFE BELT — translucent green ring around the equator */}
             <ellipse cx={cx} cy={cy} rx={a - 6} ry={b - 4}
-              fill="none" stroke={SAFE} strokeWidth={14} opacity={0.18} />
+              fill="none" stroke={SAFE} strokeWidth={3} opacity={0.18} />
             <text x={cx + 18} y={cy - b + 6} fontSize={9} fontWeight={700} fill={SAFE}>
               safe equator
             </text>
@@ -949,18 +949,18 @@ export const MayfieldPinSitingDiagram = () => {
             </text>
             {/* Temporal squame — thin bone, both sides */}
             <ellipse cx={cx - 30} cy={cy - b + 14} rx={26} ry={8}
-              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={0.9} strokeDasharray="3 2" />
+              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={1} strokeDasharray="3 2" />
             <text x={cx - 30} y={cy - b + 1} textAnchor="middle" fontSize={9} fontWeight={700} fill={DANGER}>
               temporal squame
             </text>
             <ellipse cx={cx - 30} cy={cy + b - 14} rx={26} ry={8}
-              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={0.9} strokeDasharray="3 2" />
+              fill={DANGER} opacity={0.14} stroke={DANGER} strokeWidth={1} strokeDasharray="3 2" />
             <text x={cx - 30} y={cy + b + 0} textAnchor="middle" fontSize={9} fontWeight={700} fill={DANGER}>
               temporal squame
             </text>
             {/* Superficial temporal artery course (just anterior to tragus) */}
             <path d={`M ${cx - 28},${cy - b - 1} Q ${cx - 38},${cy - b * 0.5} ${cx - 42},${cy}`}
-              fill="none" stroke={DANGER} strokeWidth={1.2} opacity={0.7} />
+              fill="none" stroke={DANGER} strokeWidth={1} opacity={0.7} />
             <text x={cx - 60} y={cy + 4} fontSize={9} fontWeight={700} fill={DANGER}>STA</text>
 
             {/* C-shaped Mayfield clamp */}
@@ -969,14 +969,14 @@ export const MayfieldPinSitingDiagram = () => {
                   Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
                   L ${cx + b + 30},${cy + 70}
                   Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
-              fill="none" stroke={STEEL_DARK} strokeWidth={5} strokeLinecap="round" opacity={0.85}
+              fill="none" stroke={STEEL_DARK} strokeWidth={3} strokeLinecap="round" opacity={0.85}
             />
             <path
               d={`M ${cx - b - 30},${cy - 30}
                   Q ${cx + a + 50},${cy - 60} ${cx + b + 30},${cy - 70}
                   L ${cx + b + 30},${cy + 70}
                   Q ${cx + a + 50},${cy + 60} ${cx - b - 30},${cy + 30}`}
-              fill="none" stroke={STEEL} strokeWidth={2.4} strokeLinecap="round" className="anat-sheen"
+              fill="none" stroke={STEEL} strokeWidth={2} strokeLinecap="round" className="anat-sheen"
             />
 
             {/* PINS */}
@@ -988,13 +988,13 @@ export const MayfieldPinSitingDiagram = () => {
                   <line x1={p.x + (i === 0 ? -22 : 22) * (i === 0 ? 1 : 1)}
                     y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
                     x2={p.x} y2={p.y}
-                    stroke={STEEL_DARK} strokeWidth={4.5} strokeLinecap="round" />
+                    stroke={STEEL_DARK} strokeWidth={3} strokeLinecap="round" />
                   <line x1={p.x + (i === 0 ? -22 : 22)}
                     y1={p.y + (i === 0 ? 0 : (i === 1 ? -8 : 8))}
                     x2={p.x} y2={p.y}
                     stroke={STEEL} strokeWidth={2} strokeLinecap="round" className="anat-sheen" />
                   {/* Pin tip + entry circle */}
-                  <circle cx={p.x} cy={p.y} r={5} fill={PIN} stroke="white" strokeWidth={1.5} />
+                  <circle cx={p.x} cy={p.y} r={5} fill={PIN} stroke="hsl(var(--background))" strokeWidth={1.5} />
                   <circle cx={p.x} cy={p.y} r={9} fill="none" stroke={PIN} strokeWidth={1} opacity={0.5} className="anat-sheen" />
                   {/* Label */}
                   <text x={p.x + (i === 0 ? -32 : 32)}
@@ -1009,7 +1009,7 @@ export const MayfieldPinSitingDiagram = () => {
 
             {/* Caption strip */}
             <rect x={70} y={310} width={420} height={36} rx={4}
-              fill="hsl(var(--muted))" opacity={0.5} />
+              fill="hsl(var(--muted))" opacity={0.5} stroke="hsl(var(--border))" strokeWidth="0.75" />
             <text x={280} y={326} textAnchor="middle" fontSize={10.5} fontWeight={700}
               fill="hsl(var(--foreground))">
               Torque 60–80 lb-in (adult) · 40 lb-in paeds · re-check after positioning
@@ -1076,10 +1076,10 @@ export const ProneFrameComparisonDiagram = () => (
               fill="currentColor"
               opacity={0.25}
               stroke="currentColor"
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
             <path d="M 60 92 Q 120 50 180 92" fill="none" stroke="currentColor" strokeWidth={2} />
-            <line x1={120} y1={92} x2={120} y2={108} stroke="currentColor" strokeWidth={1.2} />
+            <line x1={120} y1={92} x2={120} y2={108} stroke="currentColor" strokeWidth={1} />
             <circle cx={120} cy={108} r={2} fill="currentColor" />
           </>
         }
@@ -1237,7 +1237,7 @@ export const ParkBenchPositionDiagram = () => (
     <ellipse cx={170} cy={158} rx={12} ry={6} fill={POS_GREEN} opacity={0.85} />
     {/* Dependent arm hanging in padded sling off table edge */}
     <Arm sx={178} sy={150} ex={188} ey={185} wx={196} wy={210} idPrefix="pf" upperW={12} foreW={10} handLen={11} />
-    <path d="M 168 198 Q 196 220 220 195" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
+    <path d="M 168 198 Q 196 220 220 195" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2} />
     {/* Non-dependent (upper) arm supported forwards on padded gutter */}
     <Arm sx={215} sy={138} ex={245} ey={120} wx={275} wy={108} idPrefix="pf" upperW={12} foreW={10} handLen={11} gownSleeve />
     {/* Legs — flexed, slight roll */}
@@ -1442,7 +1442,7 @@ export const ParkBenchDetailedDiagram = () => {
 
             {/* Dependent arm — hanging off table edge in sling */}
             <Arm sx={215} sy={158} ex={222} ey={200} wx={228} wy={232} idPrefix="pb" upperW={13} foreW={11} handLen={12} />
-            <path d="M 198 232 Q 230 258 258 228" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2.5} />
+            <path d="M 198 232 Q 230 258 258 228" fill="none" stroke="hsl(280 50% 45%)" strokeWidth={2} />
             <text x={235} y={275} fontSize={11} fill="hsl(280 50% 45%)" fontWeight={600}>padded sling</text>
 
             {/* Upper arm — supported forwards on padded gutter */}
@@ -1819,15 +1819,15 @@ export const SittingPositionDetailedDiagram = () => {
             <text x={355} y={224} fontSize={11} fill={POS_GREEN} fontWeight={600}>calf SCDs</text>
 
             {/* External auditory meatus reference line — TRUE cerebral MAP */}
-            <line x1={150} y1={80} x2={400} y2={80} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
+            <line x1={150} y1={80} x2={400} y2={80} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1} />
             <text x={400} y={72} fontSize={11} textAnchor="end" fill={POS_GREEN} fontWeight={700}>zero MAP at EAM</text>
 
             {/* Heart-level reference line */}
-            <line x1={195} y1={170} x2={400} y2={170} stroke="hsl(var(--muted-foreground))" strokeDasharray="2 3" strokeWidth={0.8} />
+            <line x1={195} y1={170} x2={400} y2={170} stroke="hsl(var(--muted-foreground))" strokeDasharray="2 3" strokeWidth={0.75} />
             <text x={400} y={162} fontSize={11} textAnchor="end" fill="hsl(var(--muted-foreground))">heart level (RA)</text>
 
             {/* Hydrostatic gradient annotation */}
-            <line x1={170} y1={80} x2={170} y2={170} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1.2} />
+            <line x1={170} y1={80} x2={170} y2={170} stroke={POS_AMBER} strokeDasharray="3 3" strokeWidth={1} />
             <text x={108} y={128} fontSize={12} fill={POS_AMBER} fontWeight={700}>~ 25 cm</text>
             <text x={108} y={142} fontSize={11} fill={POS_AMBER}>hydrostatic gradient</text>
 
@@ -1836,7 +1836,7 @@ export const SittingPositionDetailedDiagram = () => {
             <text x={70} y={42} fontSize={11} fill="hsl(var(--primary))" fontWeight={600}>surgeon</text>
 
             {/* CVC at SVC-RA junction */}
-            <line x1={210} y1={155} x2={195} y2={170} stroke="hsl(var(--foreground))" strokeWidth={1.2} />
+            <line x1={210} y1={155} x2={195} y2={170} stroke="hsl(var(--foreground))" strokeWidth={1} />
             <circle cx={195} cy={170} r={2.5} fill="hsl(var(--foreground))" />
             <text x={205} y={148} fontSize={11} fill="hsl(var(--muted-foreground))">multi-orifice CVC @ SVC–RA</text>
 
@@ -1998,7 +1998,7 @@ export const SittingPositionDiagram = () => (
     <Leg hx={300} hy={195} kx={360} ky={170} ax={400} ay={205} idPrefix="pf" thighW={20} calfW={17} footLen={18} draped />
 
     {/* Arterial transducer line */}
-    <line x1={245} y1={115} x2={50} y2={115} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
+    <line x1={245} y1={115} x2={50} y2={115} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1} />
     <text x={50} y={108} fontSize={10} fill={POS_GREEN} fontWeight={700}>zero MAP at the external auditory meatus</text>
     <line x1={245} y1={115} x2={245} y2={195} stroke={POS_AMBER} strokeDasharray="2 2" />
     <text x={250} y={160} fontSize={10} fill={POS_AMBER} fontWeight={600}>~ 25 cm hydrostatic gradient</text>
@@ -2124,7 +2124,7 @@ export const BeachChairPositionDiagram = () => {
           </g>
         </g>
 
-        <line x1={210} y1={108} x2={50} y2={108} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1.2} />
+        <line x1={210} y1={108} x2={50} y2={108} stroke={POS_GREEN} strokeDasharray="4 3" strokeWidth={1} />
         <text x={50} y={101} fontSize={10} fill={POS_GREEN} fontWeight={700}>zero MAP at tragus</text>
       </PositionFrame>
 

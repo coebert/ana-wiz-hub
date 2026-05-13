@@ -34,7 +34,7 @@ const blocks: BlockData[] = [
     pitfalls: ["100% ipsilateral phrenic nerve palsy — avoid bilateral/contralateral lung pathology", "Horner's syndrome", "Recurrent laryngeal nerve block", "Vertebral artery injection (catastrophic)"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Interscalene — Transverse View at C6</text>
         {/* SCM */}
         <path d="M60,30 Q150,25 240,30 L240,55 Q150,60 60,55 Z" fill="hsl(var(--primary)/0.2)" stroke="hsl(var(--primary))" strokeWidth="1" />
@@ -65,7 +65,7 @@ const blocks: BlockData[] = [
         <polygon points="172,98 168,104 175,102" fill="hsl(var(--foreground))" />
         <text x="255" y="45" fontSize="7" fill="hsl(var(--foreground))">Needle</text>
         {/* Probe */}
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Depth markers */}
         <text x="25" y="65" fontSize="6" fill="hsl(var(--muted-foreground))">1 cm</text>
         <text x="25" y="105" fontSize="6" fill="hsl(var(--muted-foreground))">2 cm</text>
@@ -97,9 +97,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Pneumothorax (0.5–1% blind, rare with US)", "Phrenic nerve palsy (50–67%)", "Subclavian artery puncture"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Supraclavicular — Coronal Oblique View</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* First rib */}
         <path d="M30,150 Q150,140 270,150 L270,165 Q150,155 30,165 Z" fill="hsl(var(--foreground)/0.3)" stroke="hsl(var(--foreground)/0.6)" strokeWidth="1.5" />
         <text x="150" y="162" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground)/0.8)">First Rib</text>
@@ -145,9 +145,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Incomplete radial nerve block (deepest, hardest to reach)", "Vascular puncture", "Must block musculocutaneous nerve separately for complete arm block"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Axillary — Transverse View</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Biceps */}
         <path d="M40,35 L160,35 L160,75 L40,75 Z" fill="hsl(var(--accent)/0.2)" stroke="hsl(var(--accent-foreground)/0.3)" strokeWidth="1" />
         <text x="100" y="58" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground)/0.6)">Biceps</text>
@@ -202,9 +202,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Quadriceps weakness — high fall risk postoperatively", "Femoral artery puncture", "Consider adductor canal block as motor-sparing alternative for knee surgery"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Femoral — Transverse View at Inguinal Crease</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Fascia lata */}
         <line x1="30" y1="50" x2="270" y2="50" stroke="hsl(var(--foreground)/0.5)" strokeWidth="1.5" />
         <text x="280" y="50" fontSize="6" fill="hsl(var(--muted-foreground))">FL</text>
@@ -256,9 +256,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Too proximal injection → femoral nerve block (with quadriceps weakness)", "SFA puncture", "Block may miss posterior knee innervation — consider adding iPACK or sciatic"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Adductor Canal — Transverse View, Mid-Thigh</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Sartorius — roof */}
         <path d="M80,45 Q150,40 220,45 L220,70 Q150,65 80,70 Z" fill="hsl(var(--accent)/0.3)" stroke="hsl(var(--accent-foreground)/0.4)" strokeWidth="1" />
         <text x="150" y="60" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground)/0.7)">Sartorius (roof)</text>
@@ -307,9 +307,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Foot drop risk with excessive volume or intraneural injection", "Missed common peroneal if blocked too distally (after bifurcation)", "Popliteal vessel puncture"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Popliteal Sciatic — Transverse View</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Biceps femoris - lateral */}
         <path d="M190,35 L270,35 L270,130 L190,100 Z" fill="hsl(var(--accent)/0.2)" stroke="hsl(var(--accent-foreground)/0.3)" strokeWidth="1" />
         <text x="235" y="70" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.5)">Biceps</text>
@@ -368,9 +368,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Visceral injury (bowel perforation) if needle too deep", "LA toxicity with bilateral blocks (large volumes)", "Only covers somatic abdominal wall pain — not visceral", "Superficial injection (between EO and IO) = ineffective block"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">TAP Block — Transverse View, Mid-Axillary Line</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Skin/subcut */}
         <rect x="30" y="30" width="240" height="15" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.2)" strokeWidth="0.5" />
         <text x="150" y="41" textAnchor="middle" fontSize="6" fill="hsl(var(--foreground)/0.4)">Subcutaneous</text>
@@ -434,9 +434,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Pneumothorax (very rare — transverse process is your backstop)", "Inconsistent paravertebral spread — may not reliably block ventral rami", "Large LA volumes — beware systemic toxicity with bilateral blocks", "Evidence base still emerging — mechanism debated"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">ESP Block — Parasagittal View</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Skin/subcut */}
         <rect x="30" y="30" width="240" height="10" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.15)" strokeWidth="0.5" />
         {/* Trapezius */}
@@ -513,9 +513,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Peritoneal puncture and bowel injury — especially below arcuate line", "Only covers midline (T9-T11) — not lateral abdominal wall", "Haematoma within rectus sheath (inferior epigastric artery)", "Short duration compared to TAP — consider catheter"],
     svgContent: (
       <svg viewBox="0 0 300 200" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="200" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Rectus Sheath Block — Transverse View</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Skin */}
         <rect x="30" y="30" width="240" height="10" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.15)" strokeWidth="0.5" />
         {/* Anterior rectus sheath */}
@@ -582,9 +582,9 @@ const blocks: BlockData[] = [
     pitfalls: ["Renal injury (kidney lies anterior to QL)", "LA systemic toxicity with bilateral blocks", "Variable and unpredictable spread between approaches", "Deep block — poor needle visibility in obese patients", "Lumbar plexus injury with transmuscular approach (rare)"],
     svgContent: (
       <svg viewBox="0 0 300 220" className="w-full h-auto">
-        <rect x="0" y="0" width="300" height="220" fill="hsl(var(--muted))" rx="8" />
+        <rect x="0" y="0" width="300" height="220" fill="hsl(var(--muted))" rx="8" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x="150" y="16" textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))">Quadratus Lumborum — Transverse View ('Shamrock Sign')</text>
-        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" />
+        <rect x="50" y="22" width="200" height="5" fill="hsl(var(--foreground))" rx="2" stroke="hsl(var(--border))" strokeWidth="0.75" />
         {/* Skin/subcut */}
         <rect x="30" y="30" width="240" height="10" fill="hsl(var(--accent)/0.1)" stroke="hsl(var(--accent-foreground)/0.15)" strokeWidth="0.5" />
         {/* Erector spinae — posterior */}

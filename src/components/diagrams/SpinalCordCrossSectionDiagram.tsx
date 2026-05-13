@@ -69,7 +69,7 @@ const SpinalCordCrossSectionDiagram = () => {
               </pattern>
               {/* Fat globules */}
               <pattern id="sc-fatTex" patternUnits="userSpaceOnUse" width="12" height="10">
-                <ellipse cx="6" cy="5" rx="4" ry="3" fill="hsl(40, 50%, 70%)" opacity="0.25" stroke="hsl(38, 40%, 58%)" strokeWidth="0.3" />
+                <ellipse cx="6" cy="5" rx="4" ry="3" fill="hsl(40, 50%, 70%)" opacity="0.25" stroke="hsl(38, 40%, 58%)" strokeWidth="0.5" />
               </pattern>
               {/* Ligament collagen fibres */}
               <pattern id="sc-collagen" patternUnits="userSpaceOnUse" width="4" height="14" patternTransform="rotate(10)">
@@ -77,7 +77,7 @@ const SpinalCordCrossSectionDiagram = () => {
               </pattern>
               {/* Elastic fibres (flavum) */}
               <pattern id="sc-elastic" patternUnits="userSpaceOnUse" width="8" height="20">
-                <path d="M4,0 Q6,5 4,10 Q2,15 4,20" fill="none" stroke="hsl(55, 50%, 48%)" strokeWidth="0.6" opacity="0.3" />
+                <path d="M4,0 Q6,5 4,10 Q2,15 4,20" fill="none" stroke="hsl(55, 50%, 48%)" strokeWidth="0.5" opacity="0.3" />
               </pattern>
               {/* CSF shimmer */}
               <linearGradient id="sc-csfGrad" x1="0" y1="0" x2="1" y2="0">
@@ -87,7 +87,7 @@ const SpinalCordCrossSectionDiagram = () => {
               </linearGradient>
               {/* Dura texture */}
               <pattern id="sc-duraTex" patternUnits="userSpaceOnUse" width="6" height="3">
-                <line x1="0" y1="1.5" x2="6" y2="1.5" stroke="hsl(270, 35%, 50%)" strokeWidth="0.4" opacity="0.3" />
+                <line x1="0" y1="1.5" x2="6" y2="1.5" stroke="hsl(270, 35%, 50%)" strokeWidth="0.5" opacity="0.3" />
               </pattern>
               {/* Vessel glow */}
               <filter id="sc-glow">
@@ -134,7 +134,7 @@ const SpinalCordCrossSectionDiagram = () => {
               {/* Epidural catheter threading through Tuohy */}
               <path
                 d={`M${xOffset + 25},${yPositions.epidural + layers.epidural.h / 2} C${xOffset + 35},${yPositions.epidural + layers.epidural.h / 2 - 3} ${xOffset + 50},${yPositions.epidural + layers.epidural.h / 2 + 2} ${xOffset + 70},${yPositions.epidural + layers.epidural.h / 2 - 1}`}
-                stroke="hsl(140, 45%, 50%)" strokeWidth="0.8" fill="none" strokeDasharray="2 1.5" opacity="0.4"
+                stroke="hsl(140, 45%, 50%)" strokeWidth="0.75" fill="none" strokeDasharray="2 1.5" opacity="0.4"
               />
               <text x={xOffset + 72} y={yPositions.epidural + layers.epidural.h / 2 - 3} fontSize="3" fill="hsl(140, 45%, 50%)" opacity="0.5">catheter (3–5 cm in space)</text>
             </g>
@@ -143,7 +143,7 @@ const SpinalCordCrossSectionDiagram = () => {
             <g opacity="0.3">
               <path
                 d={`M${xOffset - 10},4 C${xOffset + 2},${yPositions.subarachnoid / 2} ${xOffset + 24},${yPositions.subarachnoid - 12} ${xOffset + 32},${yPositions.subarachnoid + layers.subarachnoid.h / 2}`}
-                stroke="hsl(195, 60%, 55%)" strokeWidth="1.2" strokeDasharray="3 3" fill="none"
+                stroke="hsl(195, 60%, 55%)" strokeWidth="1" strokeDasharray="3 3" fill="none"
               />
               <circle cx={xOffset + 32} cy={yPositions.subarachnoid + layers.subarachnoid.h / 2} r="2" fill="hsl(195, 60%, 55%)" opacity="0.7" />
             </g>
@@ -152,7 +152,7 @@ const SpinalCordCrossSectionDiagram = () => {
             <g opacity="0.25">
               <path
                 d={`M${xOffset + 25},${yPositions.epidural + layers.epidural.h / 2} L${xOffset + 28},${yPositions.subarachnoid + 4}`}
-                stroke="hsl(280, 45%, 55%)" strokeWidth="0.8" fill="none" strokeDasharray="2 2"
+                stroke="hsl(280, 45%, 55%)" strokeWidth="0.75" fill="none" strokeDasharray="2 2"
               />
               <circle cx={xOffset + 28} cy={yPositions.subarachnoid + 4} r="1.5" fill="hsl(280, 45%, 55%)" opacity="0.6" />
               <text x={xOffset + 32} y={yPositions.subarachnoid + 3} fontSize="3" fill="hsl(280, 45%, 55%)" opacity="0.6">CSE: spinal needle through Tuohy</text>
@@ -260,11 +260,11 @@ const SpinalCordCrossSectionDiagram = () => {
                           Z
                         `}
                           fill="hsl(0, 0%, 52%)" fillOpacity="0.7"
-                          stroke="hsl(0, 0%, 40%)" strokeWidth="0.6"
+                          stroke="hsl(0, 0%, 40%)" strokeWidth="0.5"
                         />
 
                         {/* Central canal */}
-                        <circle cx={cx} cy={cy} r="1.8" fill="hsl(200, 50%, 65%)" stroke="hsl(200, 40%, 50%)" strokeWidth="0.4" />
+                        <circle cx={cx} cy={cy} r="1.8" fill="hsl(200, 50%, 65%)" stroke="hsl(200, 40%, 50%)" strokeWidth="0.5" />
 
                         {/* Substantia gelatinosa caps (Rexed lamina II) on posterior horns */}
                         <ellipse cx={cx - 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
@@ -293,7 +293,7 @@ const SpinalCordCrossSectionDiagram = () => {
 
                       {/* Anterior median fissure */}
                       <line x1={cx} y1={cy + rY} x2={cx} y2={cy + 5}
-                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.8" opacity={isActive ? 0.4 : 0.1} />
+                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.75" opacity={isActive ? 0.4 : 0.1} />
                       {isActive && <text x={cx + 3} y={cy + rY - 1} fontSize="2.8" fill="hsl(0, 0%, 50%)" opacity="0.5">Ant. median fissure</text>}
 
                       {/* Posterior median sulcus */}
@@ -307,7 +307,7 @@ const SpinalCordCrossSectionDiagram = () => {
                         <text x={cx + 5} y={cy + rY + 5} fontSize="4" fill="hsl(0, 60%, 55%)" fontWeight="bold">ASA</text>
                         {/* ASA territory shading */}
                         {isActive && <path d={`M${cx - rX},${cy} A${rX},${rY} 0 0,0 ${cx + rX},${cy} L${cx + rX - 5},${cy + 2} C${cx + 30},${cy + rY - 8} ${cx - 30},${cy + rY - 8} ${cx - rX + 5},${cy + 2} Z`}
-                          fill="hsl(0, 60%, 55%)" fillOpacity="0.04" stroke="hsl(0, 60%, 55%)" strokeWidth="0.3" strokeDasharray="3 2" />}
+                          fill="hsl(0, 60%, 55%)" fillOpacity="0.04" stroke="hsl(0, 60%, 55%)" strokeWidth="0.5" strokeDasharray="3 2" />}
                         {/* Posterior spinal arteries */}
                         <circle cx={cx - 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
                         <circle cx={cx + 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
@@ -319,7 +319,7 @@ const SpinalCordCrossSectionDiagram = () => {
                       <g opacity={isActive ? 0.45 : 0.1}>
                         {/* Dorsal root + DRG (left side) */}
                         <path d={`M${cx - 14},${cy - 15} C${cx - 30},${cy - 20} ${cx - 55},${cy - 18} ${cx - 65},${cy - 10}`}
-                          stroke="hsl(45, 55%, 50%)" strokeWidth="1.2" fill="none" />
+                          stroke="hsl(45, 55%, 50%)" strokeWidth="1" fill="none" />
                         <ellipse cx={cx - 67} cy={cy - 8} rx="4.5" ry="2.8" fill="hsl(45, 55%, 50%)" opacity="0.35" stroke="hsl(45, 45%, 42%)" strokeWidth="0.5" />
                         <text x={cx - 76} y={cy - 6} fontSize="3.5" fill="hsl(45, 55%, 50%)" textAnchor="end">DRG</text>
                         {/* Dorsal root label */}
@@ -372,7 +372,7 @@ const SpinalCordCrossSectionDiagram = () => {
                             {Array.from({ length: Math.floor(layerWidth / 12) }).map((_, i) => (
                               <path key={i}
                                 d={`M${xOffset + 6 + i * 12},${y + 2} Q${xOffset + 12 + i * 12},${y + l.h / 2} ${xOffset + 6 + i * 12},${y + l.h - 2}`}
-                                stroke={l.color} strokeWidth="0.6" fill="none" />
+                                stroke={l.color} strokeWidth="0.5" fill="none" />
                             ))}
                           </g>
                         </g>
@@ -387,7 +387,7 @@ const SpinalCordCrossSectionDiagram = () => {
                             {Array.from({ length: 16 }).map((_, i) => (
                               <path key={i}
                                 d={`M${xOffset + 8 + i * 12},${y + 2} Q${xOffset + 14 + i * 12},${y + l.h / 2} ${xOffset + 8 + i * 12},${y + l.h - 2}`}
-                                stroke={l.color} strokeWidth="0.8" fill="none" />
+                                stroke={l.color} strokeWidth="0.75" fill="none" />
                             ))}
                           </g>
                           {/* LOR annotation */}
@@ -409,9 +409,9 @@ const SpinalCordCrossSectionDiagram = () => {
                           {/* Epidural veins (Batson's plexus) */}
                           <g opacity={isActive ? 0.4 : 0.1}>
                             <path d={`M${xOffset + 20},${y + l.h - 3} C${xOffset + 40},${y + l.h - 6} ${xOffset + 60},${y + l.h - 8} ${xOffset + 85},${y + l.h - 5}`}
-                              stroke="hsl(220, 50%, 52%)" strokeWidth="1.2" fill="none" />
+                              stroke="hsl(220, 50%, 52%)" strokeWidth="1" fill="none" />
                             <path d={`M${xOffset + 100},${y + l.h - 4} C${xOffset + 130},${y + l.h - 7} ${xOffset + 150},${y + l.h - 5} ${xOffset + 170},${y + l.h - 6}`}
-                              stroke="hsl(220, 50%, 52%)" strokeWidth="0.8" fill="none" />
+                              stroke="hsl(220, 50%, 52%)" strokeWidth="0.75" fill="none" />
                             <text x={xOffset + layerWidth - 20} y={y + l.h - 1} fontSize="3" fill="hsl(220, 50%, 52%)" textAnchor="end">Batson's plexus</text>
                           </g>
                           {/* Nerve root traversing */}
@@ -430,7 +430,7 @@ const SpinalCordCrossSectionDiagram = () => {
                           <g opacity={isActive ? 0.3 : 0.08}>
                             {[0, 1, 2].map(i => (
                               <line key={i} x1={xOffset + 2} y1={y + 3 + i * 3} x2={xOffset + layerWidth - 2} y2={y + 3 + i * 3}
-                                stroke="hsl(270, 35%, 48%)" strokeWidth="0.6" />
+                                stroke="hsl(270, 35%, 48%)" strokeWidth="0.5" />
                             ))}
                           </g>
                           {isActive && (
@@ -449,12 +449,12 @@ const SpinalCordCrossSectionDiagram = () => {
                               <g key={i}>
                                 <path
                                   d={`M${xOffset + 5 + i * 14},${y + 1} Q${xOffset + 12 + i * 14},${y + l.h / 2 + (i % 3 - 1)} ${xOffset + 5 + i * 14},${y + l.h - 1}`}
-                                  stroke="hsl(290, 30%, 58%)" strokeWidth="0.3" fill="none" />
+                                  stroke="hsl(290, 30%, 58%)" strokeWidth="0.5" fill="none" />
                                 {/* Cross-links between trabeculae */}
                                 {i > 0 && (
                                   <path
                                     d={`M${xOffset + 5 + (i - 1) * 14},${y + l.h / 2} L${xOffset + 5 + i * 14},${y + l.h / 2 + (i % 2 ? 1 : -1)}`}
-                                    stroke="hsl(290, 28%, 55%)" strokeWidth="0.2" fill="none" opacity="0.5" />
+                                    stroke="hsl(290, 28%, 55%)" strokeWidth="0.5" fill="none" opacity="0.5" />
                                 )}
                               </g>
                             ))}
@@ -475,7 +475,7 @@ const SpinalCordCrossSectionDiagram = () => {
                             {[0, 1, 2, 3].map(i => (
                               <path key={i}
                                 d={`M${xOffset + 5},${y + 5 + i * 6} Q${xOffset + layerWidth / 4},${y + 3 + i * 6} ${xOffset + layerWidth / 2},${y + 5 + i * 6} Q${xOffset + 3 * layerWidth / 4},${y + 7 + i * 6} ${xOffset + layerWidth - 5},${y + 5 + i * 6}`}
-                                stroke="hsl(195, 55%, 60%)" strokeWidth="0.4" fill="none" />
+                                stroke="hsl(195, 55%, 60%)" strokeWidth="0.5" fill="none" />
                             ))}
                           </g>
                           {/* Cauda equina filaments — more realistic */}
@@ -483,7 +483,7 @@ const SpinalCordCrossSectionDiagram = () => {
                             {[0, 1, 2, 3, 4, 5, 6].map(i => (
                               <path key={i}
                                 d={`M${xOffset + 40 + i * 18},${y + 2} C${xOffset + 38 + i * 18},${y + l.h / 3} ${xOffset + 36 + i * 17},${y + 2 * l.h / 3} ${xOffset + 34 + i * 17},${y + l.h - 2}`}
-                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.6" fill="none" />
+                                stroke="hsl(50, 50%, 55%)" strokeWidth="0.5" fill="none" />
                             ))}
                             <text x={xOffset + layerWidth / 2} y={y + l.h - 2} fontSize="3" textAnchor="middle" fill="hsl(50, 50%, 55%)" fontStyle="italic">cauda equina</text>
                           </g>
@@ -491,7 +491,7 @@ const SpinalCordCrossSectionDiagram = () => {
                           <g opacity={isActive ? 0.12 : 0.03}>
                             {[0, 1, 2, 3, 4, 5].map(i => (
                               <line key={i} x1={xOffset + 15 + i * 32} y1={y + 1} x2={xOffset + 20 + i * 32} y2={y + l.h - 1}
-                                stroke="hsl(290, 25%, 55%)" strokeWidth="0.3" />
+                                stroke="hsl(290, 25%, 55%)" strokeWidth="0.5" />
                             ))}
                           </g>
                         </g>
@@ -503,16 +503,16 @@ const SpinalCordCrossSectionDiagram = () => {
                           {/* Pia vessels — branching pattern */}
                           <g opacity={isActive ? 0.45 : 0.12}>
                             <path d={`M${xOffset + 8},${y + l.h / 2} C${xOffset + 20},${y + 1} ${xOffset + 40},${y + l.h - 1} ${xOffset + 60},${y + l.h / 2}`}
-                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.6" fill="none" />
+                              stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
                             <path d={`M${xOffset + 60},${y + l.h / 2} C${xOffset + 75},${y + 2} ${xOffset + 95},${y + l.h - 1} ${xOffset + 110},${y + l.h / 2}`}
                               stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
                             <path d={`M${xOffset + 110},${y + l.h / 2} C${xOffset + 130},${y + 1} ${xOffset + 150},${y + l.h - 1} ${xOffset + 170},${y + l.h / 2}`}
                               stroke="hsl(0, 50%, 52%)" strokeWidth="0.5" fill="none" />
                             {/* Vasocorona (circumferential vessels) */}
                             <path d={`M${xOffset + 30},${y + 2} C${xOffset + 35},${y + l.h / 2} ${xOffset + 28},${y + l.h - 1} ${xOffset + 32},${y + l.h}`}
-                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.5" fill="none" opacity="0.5" />
                             <path d={`M${xOffset + 140},${y + 2} C${xOffset + 145},${y + l.h / 2} ${xOffset + 138},${y + l.h - 1} ${xOffset + 142},${y + l.h}`}
-                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.3" fill="none" opacity="0.5" />
+                              stroke="hsl(0, 45%, 55%)" strokeWidth="0.5" fill="none" opacity="0.5" />
                           </g>
                           {/* Dentate ligaments — extending laterally */}
                           <g opacity={isActive ? 0.55 : 0.15}>
@@ -573,7 +573,7 @@ const SpinalCordCrossSectionDiagram = () => {
                           {/* Basivertebral vein */}
                           <g opacity={isActive ? 0.35 : 0.05}>
                             <path d={`M${xOffset + layerWidth / 2},${y + l.h - 2} L${xOffset + layerWidth / 2},${y - 2}`}
-                              stroke="hsl(220, 50%, 55%)" strokeWidth="0.8" fill="none" />
+                              stroke="hsl(220, 50%, 55%)" strokeWidth="0.75" fill="none" />
                             <text x={xOffset + layerWidth / 2 + 4} y={y + l.h / 2} fontSize="2.5" fill="hsl(220, 50%, 55%)">Basivertebral v.</text>
                           </g>
                         </g>
@@ -603,7 +603,7 @@ const SpinalCordCrossSectionDiagram = () => {
             {/* Depth scale */}
             <g opacity="0.25">
               <line x1={svgWidth - 8} y1={yPositions.skin} x2={svgWidth - 8} y2={yPositions.cord + layers.cord.h}
-                stroke="hsl(var(--muted-foreground))" strokeWidth="0.6" />
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
               <text x={svgWidth - 6} y={(yPositions.skin + yPositions.cord + layers.cord.h) / 2} fontSize="4" fill="hsl(var(--muted-foreground))" transform={`rotate(90, ${svgWidth - 6}, ${(yPositions.skin + yPositions.cord + layers.cord.h) / 2})`} textAnchor="middle">Deep →</text>
             </g>
           </svg>

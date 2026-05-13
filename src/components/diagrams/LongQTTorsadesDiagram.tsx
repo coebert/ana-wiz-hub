@@ -191,7 +191,7 @@ export const LongQTTorsadesDiagram = () => {
               {/* EAD label */}
               {data.ead && (
                 <g>
-                  <circle cx={(data.qtMs / 700) * ap.plotW * 0.85} cy={ap.plotH - ((10 + 90) / 130) * ap.plotH} r="4" fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1.2" className="animate-pulse" />
+                  <circle cx={(data.qtMs / 700) * ap.plotW * 0.85} cy={ap.plotH - ((10 + 90) / 130) * ap.plotH} r="4" fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1" className="animate-pulse" />
                   <text x={(data.qtMs / 700) * ap.plotW * 0.85 + 8} y={ap.plotH - ((10 + 90) / 130) * ap.plotH - 4} fontSize="8" fill="hsl(0 70% 55%)" fontWeight="700">EAD</text>
                 </g>
               )}
@@ -221,7 +221,7 @@ export const LongQTTorsadesDiagram = () => {
             <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-3 animate-fade-in">
               <p className="text-[10px] uppercase tracking-wide text-red-500 font-bold mb-1">⚡ Torsades de pointes</p>
               <svg viewBox={`0 0 ${torsades.w} ${torsades.h}`} className="w-full">
-                <path d={torsades.path} fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1.4" />
+                <path d={torsades.path} fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1.5" />
               </svg>
               <p className="text-[10px] text-muted-foreground mt-1">Polymorphic VT with continuously rotating QRS axis ("twisting of points") — usually pause-dependent, may degenerate to VF.</p>
             </div>

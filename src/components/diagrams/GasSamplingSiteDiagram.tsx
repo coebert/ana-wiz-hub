@@ -121,10 +121,10 @@ export const GasSamplingSiteDiagram = () => {
           <text x="165" y="100" fontSize="6" textAnchor="middle" fill="hsl(var(--muted-foreground))">Y-piece</text>
 
           {/* Inspiratory limb (top) */}
-          <line x1="175" y1="110" x2="340" y2="110" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+          <line x1="175" y1="110" x2="340" y2="110" stroke="hsl(var(--primary))" strokeWidth="2" />
           <text x="255" y="103" fontSize="7" textAnchor="middle" fill="hsl(var(--primary))">Inspiratory limb →</text>
           {/* Expiratory limb (bottom) */}
-          <line x1="175" y1="140" x2="340" y2="140" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+          <line x1="175" y1="140" x2="340" y2="140" stroke="hsl(var(--accent))" strokeWidth="2" />
           <text x="255" y="156" fontSize="7" textAnchor="middle" fill="hsl(var(--accent))">← Expiratory limb</text>
 
           {/* Anaesthetic machine block */}

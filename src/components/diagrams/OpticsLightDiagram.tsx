@@ -32,7 +32,7 @@ const ReflectionDiagram = () => (
         <text x="310" y="55" className="fill-muted-foreground text-[10px]">Normal</text>
 
         {/* Incident ray with travelling-photon pulse */}
-        <line x1="150" y1="60" x2="300" y2="200" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <line x1="150" y1="60" x2="300" y2="200" stroke="hsl(var(--primary))" strokeWidth="2" />
         <polygon points="240,155 248,145 255,158" fill="hsl(var(--primary))" />
         <circle r="3" fill="hsl(var(--primary))">
           <animateMotion dur="2.4s" repeatCount="indefinite" path="M 150 60 L 300 200 L 450 60" />
@@ -40,7 +40,7 @@ const ReflectionDiagram = () => (
         <text x="180" y="100" className="fill-primary text-[10px] font-medium">Incident ray</text>
 
         {/* Reflected ray */}
-        <line x1="300" y1="200" x2="450" y2="60" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+        <line x1="300" y1="200" x2="450" y2="60" stroke="hsl(var(--destructive))" strokeWidth="2" />
         <polygon points="390,118 400,110 395,125" fill="hsl(var(--destructive))" />
         <text x="400" y="100" className="fill-destructive text-[10px] font-medium">Reflected ray</text>
 
@@ -72,8 +72,8 @@ const RefractionDiagram = () => (
         <text x="300" y="20" textAnchor="middle" className="fill-foreground text-[13px] font-bold">Snell's Law: n₁ sin θ₁ = n₂ sin θ₂</text>
 
         {/* Media boundary */}
-        <rect x="60" y="40" width="480" height="100" rx="0" fill="hsl(var(--primary)/0.03)" />
-        <rect x="60" y="140" width="480" height="100" rx="0" fill="hsl(var(--primary)/0.12)" />
+        <rect x="60" y="40" width="480" height="100" rx="0" fill="hsl(var(--primary)/0.03)" stroke="hsl(var(--border))" strokeWidth="0.75" />
+        <rect x="60" y="140" width="480" height="100" rx="0" fill="hsl(var(--primary)/0.12)" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <line x1="60" y1="140" x2="540" y2="140" stroke="hsl(var(--foreground))" strokeWidth="1.5" />
         <text x="80" y="90" className="fill-muted-foreground text-[10px]">n₁ (low density, e.g. air)</text>
         <text x="80" y="190" className="fill-muted-foreground text-[10px]">n₂ (high density, e.g. glass)</text>
@@ -82,11 +82,11 @@ const RefractionDiagram = () => (
         <line x1="300" y1="40" x2="300" y2="240" stroke="hsl(var(--muted-foreground))" strokeWidth="1" strokeDasharray="5" />
 
         {/* Incident */}
-        <line x1="180" y1="40" x2="300" y2="140" stroke="hsl(var(--primary))" strokeWidth="2.5" />
+        <line x1="180" y1="40" x2="300" y2="140" stroke="hsl(var(--primary))" strokeWidth="2" />
         <text x="210" y="70" className="fill-primary text-[10px] font-bold">θ₁</text>
 
         {/* Refracted — bends toward normal */}
-        <line x1="300" y1="140" x2="370" y2="240" stroke="hsl(var(--accent))" strokeWidth="2.5" />
+        <line x1="300" y1="140" x2="370" y2="240" stroke="hsl(var(--accent))" strokeWidth="2" />
         <text x="345" y="210" className="fill-accent text-[10px] font-bold">θ₂</text>
 
         {/* Critical angle */}

@@ -232,7 +232,7 @@ export const PaediatricPhysiologyDiagram = () => {
             {/* Infant silhouette — larger head:body ratio, prominent occiput */}
             <g filter="url(#pdp-shadow)">
               {/* Head — proportionally large */}
-              <ellipse cx="200" cy="70" rx="48" ry="50" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1.2" />
+              <ellipse cx="200" cy="70" rx="48" ry="50" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               {/* Prominent occiput hint */}
               <path d="M 152 70 Q 145 80 152 95" fill="none" stroke="hsl(var(--border))" strokeWidth="1" opacity="0.5" />
               {/* Short neck */}
@@ -242,10 +242,10 @@ export const PaediatricPhysiologyDiagram = () => {
                 d="M 160 138 Q 148 175 152 220 Q 158 265 175 290 Q 200 300 225 290 Q 245 265 250 220 Q 252 175 240 138 Q 220 130 200 130 Q 180 130 160 138 Z"
                 fill="url(#pdp-skin)"
                 stroke="hsl(var(--border))"
-                strokeWidth="1.2"
+                strokeWidth="1"
               />
               {/* Hips */}
-              <path d="M 170 290 Q 162 315 170 340 Q 200 348 230 340 Q 238 315 230 290 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1.2" />
+              <path d="M 170 290 Q 162 315 170 340 Q 200 348 230 340 Q 238 315 230 290 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               {/* Short, chubby legs */}
               <path d="M 178 340 L 175 430 L 195 432 L 198 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               <path d="M 202 340 L 205 432 L 225 430 L 222 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />

@@ -171,13 +171,13 @@ export const RRTCircuitDiagram = () => {
 
           {/* Blood flow arrows inside filter (downward) */}
           <line x1={bloodChannelX} y1={filterTop + 35} x2={bloodChannelX} y2={filterBot - 15}
-            stroke="hsl(0 70% 50% / 0.25)" strokeWidth="18" strokeLinecap="round" />
+            stroke="hsl(0 70% 50% / 0.25)" strokeWidth="3" strokeLinecap="round" />
           <line x1={bloodChannelX} y1={filterTop + 40} x2={bloodChannelX} y2={filterBot - 20}
             stroke="hsl(0 70% 50%)" strokeWidth="1.5" markerEnd="url(#arrowRed)" />
 
           {/* Dialysate flow arrows inside filter (upward) */}
           <line x1={dialysateChannelX} y1={filterTop + 35} x2={dialysateChannelX} y2={filterBot - 15}
-            stroke="hsl(200 60% 50% / 0.15)" strokeWidth="18" strokeLinecap="round" />
+            stroke="hsl(200 60% 50% / 0.15)" strokeWidth="3" strokeLinecap="round" />
           <line x1={dialysateChannelX} y1={filterBot - 20} x2={dialysateChannelX} y2={filterTop + 40}
             stroke="hsl(200 60% 50%)" strokeWidth="1.5" markerEnd="url(#arrowBlue)" />
 
@@ -221,14 +221,14 @@ export const RRTCircuitDiagram = () => {
 
           {/* ─── Dialysate IN: from right → filter bottom-right ─── */}
           <path d={`M 400 ${filterBot - 20} L ${filterRight} ${filterBot - 20}`}
-            fill="none" stroke="hsl(200 60% 50%)" strokeWidth="2.5" markerEnd="url(#arrowBlue)" />
+            fill="none" stroke="hsl(200 60% 50%)" strokeWidth="2" markerEnd="url(#arrowBlue)" />
           <rect x="400" y={filterBot - 35} width="45" height="25" rx="5" fill="hsl(200 60% 50% / 0.1)" stroke="hsl(200 60% 50%)" strokeWidth="1" />
           <text x="422" y={filterBot - 20} fontSize="6" fill="hsl(200 60% 50%)" textAnchor="middle">Fresh</text>
           <text x="422" y={filterBot - 12} fontSize="6" fill="hsl(200 60% 50%)" textAnchor="middle">dialysate</text>
 
           {/* ─── Effluent OUT: filter top-right → waste bag ─── */}
           <path d={`M ${filterRight} ${filterTop + 20} L 400 ${filterTop + 20}`}
-            fill="none" stroke="hsl(45 70% 45%)" strokeWidth="2.5" markerEnd="url(#arrowYellow)" />
+            fill="none" stroke="hsl(45 70% 45%)" strokeWidth="2" markerEnd="url(#arrowYellow)" />
           <rect x="400" y={filterTop + 8} width="45" height="25" rx="5" fill="hsl(45 70% 45% / 0.1)" stroke="hsl(45 70% 45%)" strokeWidth="1" />
           <text x="422" y={filterTop + 18} fontSize="6" fill="hsl(45 70% 45%)" textAnchor="middle">Effluent</text>
           <text x="422" y={filterTop + 28} fontSize="6" fill="hsl(45 70% 45%)" textAnchor="middle">(waste)</text>

@@ -36,7 +36,7 @@ const Molecule = ({ cx, cy, fill, label, delay, direction }: MoleculeProps) => {
       : "";
   return (
     <g style={{ animationDelay: `${delay}ms` }} className={animClass}>
-      <circle cx={cx} cy={cy} r={6} fill={fill} stroke="hsl(var(--background))" strokeWidth={0.8} />
+      <circle cx={cx} cy={cy} r={6} fill={fill} stroke="hsl(var(--background))" strokeWidth={0.75} />
       {label && (
         <text
           x={cx}
@@ -207,7 +207,7 @@ const SecondGasEffectDiagram = () => {
               x2={ALVEOLUS_CX}
               y2={ALVEOLUS_CY - ALVEOLUS_R - 4}
               stroke="hsl(var(--muted-foreground))"
-              strokeWidth={1.2}
+              strokeWidth={1}
               strokeDasharray="3 3"
               opacity={0.55}
             />
@@ -321,7 +321,7 @@ const SecondGasEffectDiagram = () => {
               r={3.5}
               fill="hsl(220 70% 55%)"
               stroke="hsl(var(--background))"
-              strokeWidth={0.6}
+              strokeWidth={0.5}
             />
           ))}
 
@@ -335,7 +335,7 @@ const SecondGasEffectDiagram = () => {
                   x2={ALVEOLUS_CX}
                   y2={ALVEOLUS_CY + ALVEOLUS_R + 22}
                   stroke="hsl(220 70% 55%)"
-                  strokeWidth={1.4}
+                  strokeWidth={1.5}
                 />
                 <polygon
                   points={`${ALVEOLUS_CX - 4},${ALVEOLUS_CY + ALVEOLUS_R + 18} ${ALVEOLUS_CX + 4},${ALVEOLUS_CY + ALVEOLUS_R + 18} ${ALVEOLUS_CX},${ALVEOLUS_CY + ALVEOLUS_R + 26}`}
@@ -353,7 +353,7 @@ const SecondGasEffectDiagram = () => {
                   x2={ALVEOLUS_CX}
                   y2={ALVEOLUS_CY + ALVEOLUS_R - 4}
                   stroke="hsl(220 70% 55%)"
-                  strokeWidth={1.4}
+                  strokeWidth={1.5}
                 />
                 <polygon
                   points={`${ALVEOLUS_CX - 4},${ALVEOLUS_CY + ALVEOLUS_R + 2} ${ALVEOLUS_CX + 4},${ALVEOLUS_CY + ALVEOLUS_R + 2} ${ALVEOLUS_CX},${ALVEOLUS_CY + ALVEOLUS_R - 6}`}

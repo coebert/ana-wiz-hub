@@ -263,7 +263,7 @@ const SeverePancreatitisCTDiagram = () => {
               </pattern>
               <pattern id="spct-stranding" width="3" height="3" patternUnits="userSpaceOnUse">
                 <rect width="3" height="3" fill="hsl(220 14% 28%)" />
-                <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.25" />
+                <path d="M0 0 L3 3 M0 3 L3 0" stroke="hsl(220 8% 14%)" strokeWidth="0.5" />
               </pattern>
               <filter id="spct-shadow" x="-20%" y="-20%" width="140%" height="140%">
                 <feGaussianBlur stdDeviation="0.4" />
@@ -291,7 +291,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="34"
               fill="hsl(220 14% 32%)"
               stroke="hsl(220 8% 10%)"
-              strokeWidth="0.3"
+              strokeWidth="0.5"
             />
 
             {/* Left pleural effusion (top right corner — patient's left) */}
@@ -315,7 +315,7 @@ const SeverePancreatitisCTDiagram = () => {
               d="M8 24 Q12 16 28 18 Q40 20 42 36 Q40 48 28 50 Q14 48 8 38 Z"
               fill="hsl(20 28% 38%)"
               stroke="hsl(20 30% 22%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
               filter="url(#spct-shadow)"
             />
 
@@ -327,7 +327,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="5"
               fill="hsl(50 55% 45%)"
               stroke="hsl(45 40% 25%)"
-              strokeWidth="0.35"
+              strokeWidth="0.5"
             />
             {/* Gallstone */}
             {showFindings && (
@@ -341,7 +341,7 @@ const SeverePancreatitisCTDiagram = () => {
                   r={selected === "gallstone" ? 1.4 : 1.1}
                   fill="hsl(45 75% 78%)"
                   stroke="hsl(30 40% 20%)"
-                  strokeWidth="0.3"
+                  strokeWidth="0.5"
                 />
               </g>
             )}
@@ -351,7 +351,7 @@ const SeverePancreatitisCTDiagram = () => {
               d="M92 30 Q86 22 76 28 Q72 36 78 44 Q86 46 92 38 Z"
               fill="hsl(0 35% 38%)"
               stroke="hsl(0 40% 22%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
               filter="url(#spct-shadow)"
             />
 
@@ -363,7 +363,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="5"
               fill="hsl(220 18% 22%)"
               stroke="hsl(220 12% 10%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
 
             {/* Vertebral body (midline posterior) */}
@@ -383,7 +383,7 @@ const SeverePancreatitisCTDiagram = () => {
               d="M43 72 L36 70 L36 74 Z M57 72 L64 70 L64 74 Z"
               fill="hsl(40 18% 78%)"
               stroke="hsl(220 8% 14%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
 
             {/* Aorta */}
@@ -393,7 +393,7 @@ const SeverePancreatitisCTDiagram = () => {
               r="3"
               fill="hsl(0 75% 50%)"
               stroke="hsl(0 60% 25%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
             {/* IVC */}
             <ellipse
@@ -403,7 +403,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="2.4"
               fill="hsl(220 70% 45%)"
               stroke="hsl(220 60% 22%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
 
             {/* Kidneys (paired, posterior lateral) */}
@@ -414,7 +414,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="6"
               fill="hsl(20 35% 42%)"
               stroke="hsl(20 30% 22%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
             <ellipse
               cx="78"
@@ -423,7 +423,7 @@ const SeverePancreatitisCTDiagram = () => {
               ry="6"
               fill="hsl(20 35% 42%)"
               stroke="hsl(20 30% 22%)"
-              strokeWidth="0.4"
+              strokeWidth="0.5"
             />
 
             {/* Perinephric stranding (right kidney) */}
@@ -464,7 +464,7 @@ const SeverePancreatitisCTDiagram = () => {
                   d="M40 52 Q50 48 58 52 Q56 58 48 58 Q42 58 40 54 Z"
                   fill="hsl(220 18% 20%)"
                   stroke="hsl(220 8% 8%)"
-                  strokeWidth="0.3"
+                  strokeWidth="0.5"
                 />
                 {/* Gas bubbles within necrotic collection */}
                 <g onClick={(e) => { e.stopPropagation(); setSelected("gas"); }}>
@@ -532,7 +532,7 @@ const SeverePancreatitisCTDiagram = () => {
                   d="M54 50 Q60 50 66 50 Q72 50 76 48"
                   fill="none"
                   stroke="hsl(220 60% 32%)"
-                  strokeWidth="2.2"
+                  strokeWidth="2"
                   strokeLinecap="round"
                 />
                 {/* Filling defect (thrombus) */}
@@ -588,7 +588,7 @@ const SeverePancreatitisCTDiagram = () => {
                   d="M28 78 Q50 73.5 72 78"
                   fill="none"
                   stroke="hsl(220 14% 32%)"
-                  strokeWidth="1.2"
+                  strokeWidth="1"
                   strokeLinecap="round"
                 />
               </g>
@@ -612,7 +612,7 @@ const SeverePancreatitisCTDiagram = () => {
                     x2={labelX}
                     y2={a.labelY}
                     stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="0.15"
+                    strokeWidth="0.5"
                     strokeDasharray="0.6 0.6"
                   />
                   <text
@@ -661,7 +661,7 @@ const SeverePancreatitisCTDiagram = () => {
                     r={isSel ? 0.9 : 0.7}
                     fill={isSel ? "hsl(45 90% 65%)" : "hsl(var(--clinical))"}
                     stroke="hsl(var(--background))"
-                    strokeWidth="0.2"
+                    strokeWidth="0.5"
                   />
                   <text
                     x={labelX}
@@ -672,7 +672,7 @@ const SeverePancreatitisCTDiagram = () => {
                     dominantBaseline="middle"
                     fill={isSel ? "hsl(45 90% 70%)" : "hsl(var(--foreground))"}
                     stroke="hsl(var(--background))"
-                    strokeWidth="0.55"
+                    strokeWidth="0.5"
                     paintOrder="stroke"
                     style={{ fontFamily: "Inter, system-ui, sans-serif" }}
                   >

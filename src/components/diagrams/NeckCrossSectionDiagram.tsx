@@ -136,11 +136,11 @@ const NeckCrossSectionDiagram = () => {
             </radialGradient>
             <pattern id="ncx-grain" patternUnits="userSpaceOnUse" width="6" height="6">
               <rect width="6" height="6" fill="transparent" />
-              <circle cx="1.5" cy="1.5" r="0.4" fill="#7a5a3a" opacity="0.18" />
-              <circle cx="4.5" cy="4.5" r="0.4" fill="#7a5a3a" opacity="0.12" />
+              <circle cx="1.5" cy="1.5" r="0.4" fill="hsl(var(--accent))" opacity="0.18" />
+              <circle cx="4.5" cy="4.5" r="0.4" fill="hsl(var(--accent))" opacity="0.12" />
             </pattern>
             <pattern id="ncx-muscleFibre" patternUnits="userSpaceOnUse" width="4" height="4">
-              <path d="M0,2 L4,2" stroke="#7f1d1d" strokeWidth="0.3" opacity="0.35" />
+              <path d="M0,2 L4,2" stroke="hsl(var(--destructive))" strokeWidth="0.5" opacity="0.35" />
             </pattern>
             <filter id="ncx-shadow" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
@@ -165,11 +165,11 @@ const NeckCrossSectionDiagram = () => {
           <ellipse cx="250" cy="250" rx="218" ry="198" fill="url(#ncx-grain)" opacity="0.55" pointerEvents="none" />
           {/* Platysma demarcation */}
           {showSutures && (
-            <ellipse cx="250" cy="250" rx="208" ry="188" fill="none" stroke="#a0886a" strokeWidth="0.6" strokeDasharray="2 3" opacity="0.55" pointerEvents="none" />
+            <ellipse cx="250" cy="250" rx="208" ry="188" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.55" pointerEvents="none" />
           )}
           {/* Alar fascia (danger space) */}
           {showSutures && (
-            <path d="M170,300 Q200,290 250,288 Q300,290 330,300" fill="none" stroke="#7c3aed" strokeWidth="0.6" strokeDasharray="1.5 2" opacity="0.5" pointerEvents="none" />
+            <path d="M170,300 Q200,290 250,288 Q300,290 330,300" fill="none" stroke="hsl(var(--pharmacology))" strokeWidth="0.5" strokeDasharray="1.5 2" opacity="0.5" pointerEvents="none" />
           )}
 
           {/* Investing layer */}
@@ -184,7 +184,7 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {showLabels && (!selected || selected === "investing") ? (
-            <text x="250" y="82" textAnchor="middle" fontSize="9" fill="#16a34a" fontWeight="600">Investing Layer</text>
+            <text x="250" y="82" textAnchor="middle" fontSize="9" fill="hsl(var(--clinical))" fontWeight="600">Investing Layer</text>
           ) : null}
 
           {/* Pretracheal layer — inner ellipse around viscera */}
@@ -199,7 +199,7 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {showLabels && (!selected || selected === "pretracheal") ? (
-            <text x="250" y="155" textAnchor="middle" fontSize="8" fill="#3b82f6" fontWeight="600">Pretracheal Layer</text>
+            <text x="250" y="155" textAnchor="middle" fontSize="8" fill="hsl(var(--primary))" fontWeight="600">Pretracheal Layer</text>
           ) : null}
 
           {/* Prevertebral layer */}
@@ -214,7 +214,7 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {showLabels && (!selected || selected === "prevertebral") ? (
-            <text x="250" y="375" textAnchor="middle" fontSize="8" fill="#7c3aed" fontWeight="600">Prevertebral Layer</text>
+            <text x="250" y="375" textAnchor="middle" fontSize="8" fill="hsl(var(--pharmacology))" fontWeight="600">Prevertebral Layer</text>
           ) : null}
 
           {/* Vertebral body */}
@@ -227,27 +227,27 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "vertebral" ? null : "vertebral")}
             className="cursor-pointer"
           />
-          <text x="250" y="332" textAnchor="middle" fontSize="11" fill="#333" fontWeight="700" opacity={opacity("vertebral")}>C6</text>
+          <text x="250" y="332" textAnchor="middle" fontSize="11" fill="hsl(var(--foreground))" fontWeight="700" opacity={opacity("vertebral")}>C6</text>
           {/* Transverse processes / carotid tubercle */}
-          <rect x="175" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
-          <rect x="285" y="310" width="40" height="12" rx="3" fill="#d4d4d8" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
+          <rect x="175" y="310" width="40" height="12" rx="3" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity={opacity("vertebral")} />
+          <rect x="285" y="310" width="40" height="12" rx="3" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity={opacity("vertebral")} />
           {showLabels && (!selected || selected === "vertebral") ? (
             <>
-              <text x="165" y="308" textAnchor="middle" fontSize="7" fill="#666">Carotid</text>
-              <text x="165" y="316" textAnchor="middle" fontSize="7" fill="#666">tubercle</text>
+              <text x="165" y="308" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">Carotid</text>
+              <text x="165" y="316" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">tubercle</text>
             </>
           ) : null}
           {/* Spinous process */}
-          <path d="M245,355 L250,390 L255,355" fill="#c4c4c4" stroke="#888" strokeWidth="1" opacity={opacity("vertebral")} />
+          <path d="M245,355 L250,390 L255,355" fill="hsl(var(--muted))" stroke="hsl(var(--muted-foreground))" strokeWidth="1" opacity={opacity("vertebral")} />
           {/* Spinal cord */}
-          <ellipse cx="250" cy="300" rx="12" ry="10" fill="#fef9c3" stroke="#a16207" strokeWidth="1" opacity={opacity("vertebral")} />
-          <text x="250" y="295" textAnchor="middle" fontSize="6" fill="#92400e" opacity={opacity("vertebral")}>Cord</text>
+          <ellipse cx="250" cy="300" rx="12" ry="10" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="1" opacity={opacity("vertebral")} />
+          <text x="250" y="295" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))" opacity={opacity("vertebral")}>Cord</text>
 
           {/* Longus colli muscles */}
-          <ellipse cx="220" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
-          <ellipse cx="280" cy="290" rx="15" ry="10" fill="#e8b4b4" stroke="#c06060" strokeWidth="1" opacity={opacity("vertebral")} />
+          <ellipse cx="220" cy="290" rx="15" ry="10" fill="hsl(var(--destructive))" stroke="hsl(var(--destructive))" strokeWidth="1" opacity={opacity("vertebral")} />
+          <ellipse cx="280" cy="290" rx="15" ry="10" fill="hsl(var(--destructive))" stroke="hsl(var(--destructive))" strokeWidth="1" opacity={opacity("vertebral")} />
           {showLabels && (!selected || selected === "vertebral") ? (
-            <text x="250" y="280" textAnchor="middle" fontSize="7" fill="#9b2c2c">Longus colli</text>
+            <text x="250" y="280" textAnchor="middle" fontSize="7" fill="hsl(var(--destructive))">Longus colli</text>
           ) : null}
 
           {/* Trachea */}
@@ -260,7 +260,7 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "trachea" ? null : "trachea")}
             className="cursor-pointer"
           />
-          <text x="250" y="223" textAnchor="middle" fontSize="9" fill="#92400e" fontWeight="600" opacity={opacity("trachea")}>Trachea</text>
+          <text x="250" y="223" textAnchor="middle" fontSize="9" fill="hsl(var(--accent))" fontWeight="600" opacity={opacity("trachea")}>Trachea</text>
 
           {/* Oesophagus — posterior to trachea, slightly left */}
           <ellipse
@@ -272,13 +272,13 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "trachea" ? null : "trachea")}
             className="cursor-pointer"
           />
-          <text x="245" y="258" textAnchor="middle" fontSize="7" fill="#92400e" opacity={opacity("trachea")}>Oesoph</text>
+          <text x="245" y="258" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" opacity={opacity("trachea")}>Oesoph</text>
 
           {/* RLN dots in T-O groove */}
-          <circle cx="228" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
-          <circle cx="268" cy="240" r="3" fill="#22c55e" stroke="#166534" strokeWidth="0.5" opacity={opacity("trachea")} />
+          <circle cx="228" cy="240" r="3" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="0.5" opacity={opacity("trachea")} />
+          <circle cx="268" cy="240" r="3" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="0.5" opacity={opacity("trachea")} />
           {showLabels && (!selected || selected === "trachea") ? (
-            <text x="228" y="235" textAnchor="middle" fontSize="6" fill="#166534">RLN</text>
+            <text x="228" y="235" textAnchor="middle" fontSize="6" fill="hsl(var(--clinical))">RLN</text>
           ) : null}
 
           {/* Thyroid lobes */}
@@ -302,13 +302,13 @@ const NeckCrossSectionDiagram = () => {
           />
           {showLabels && (!selected || selected === "thyroid") ? (
             <>
-              <text x="210" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
-              <text x="290" y="210" textAnchor="middle" fontSize="7" fill="#9d174d" fontWeight="600">Thyroid</text>
+              <text x="210" y="210" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="600">Thyroid</text>
+              <text x="290" y="210" textAnchor="middle" fontSize="7" fill="hsl(var(--accent))" fontWeight="600">Thyroid</text>
             </>
           ) : null}
 
           {/* Isthmus */}
-          <rect x="232" y="193" width="36" height="8" rx="3" fill="#fce7f3" stroke="#db2777" strokeWidth="1" opacity={opacity("thyroid")} />
+          <rect x="232" y="193" width="36" height="8" rx="3" fill="hsl(var(--background))" stroke="hsl(var(--accent))" strokeWidth="1" opacity={opacity("thyroid")} />
 
           {/* LEFT Carotid sheath */}
           <ellipse
@@ -322,15 +322,15 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {/* CCA */}
-          <circle cx="162" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
-          <text x="162" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
+          <circle cx="162" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="hsl(var(--destructive))" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="162" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--background))" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
           {/* IJV */}
-          <ellipse cx="145" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
-          <text x="145" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
+          <ellipse cx="145" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="145" y="225" textAnchor="middle" fontSize="7" fill="hsl(var(--background))" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
           {/* Vagus */}
-          <circle cx="155" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
+          <circle cx="155" cy="248" r="4" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="1" opacity={opacity("carotid")} />
           {showLabels && (!selected || selected === "carotid") ? (
-            <text x="155" y="260" textAnchor="middle" fontSize="6" fill="#92400e">X (vagus)</text>
+            <text x="155" y="260" textAnchor="middle" fontSize="6" fill="hsl(var(--accent))">X (vagus)</text>
           ) : null}
 
           {/* RIGHT Carotid sheath */}
@@ -344,11 +344,11 @@ const NeckCrossSectionDiagram = () => {
             onClick={() => setSelected(selected === "carotid" ? null : "carotid")}
             className="cursor-pointer"
           />
-          <circle cx="338" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="#991b1b" strokeWidth="1.5" opacity={opacity("carotid")} />
-          <text x="338" y="238" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
-          <ellipse cx="355" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="#1e3a5f" strokeWidth="1.5" opacity={opacity("carotid")} />
-          <text x="355" y="225" textAnchor="middle" fontSize="7" fill="white" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
-          <circle cx="345" cy="248" r="4" fill="#fbbf24" stroke="#92400e" strokeWidth="1" opacity={opacity("carotid")} />
+          <circle cx="338" cy="235" r="10" fill="url(#ncx-vesselGrad)" stroke="hsl(var(--destructive))" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="338" y="238" textAnchor="middle" fontSize="7" fill="hsl(var(--background))" fontWeight="700" opacity={opacity("carotid")}>CCA</text>
+          <ellipse cx="355" cy="222" rx="12" ry="14" fill="url(#ncx-veinGrad)" stroke="hsl(var(--primary))" strokeWidth="1.5" opacity={opacity("carotid")} />
+          <text x="355" y="225" textAnchor="middle" fontSize="7" fill="hsl(var(--background))" fontWeight="700" opacity={opacity("carotid")}>IJV</text>
+          <circle cx="345" cy="248" r="4" fill="hsl(var(--accent))" stroke="hsl(var(--accent))" strokeWidth="1" opacity={opacity("carotid")} />
 
           {/* SCM muscles */}
           <ellipse
@@ -362,7 +362,7 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {showLabels && (!selected || selected === "scm") ? (
-            <text x="115" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(-30 115 180)">SCM</text>
+            <text x="115" y="180" textAnchor="middle" fontSize="8" fill="hsl(var(--destructive))" fontWeight="600" transform="rotate(-30 115 180)">SCM</text>
           ) : null}
           <ellipse
             cx="370" cy="195" rx="28" ry="14"
@@ -375,7 +375,7 @@ const NeckCrossSectionDiagram = () => {
             className="cursor-pointer"
           />
           {showLabels && (!selected || selected === "scm") ? (
-            <text x="385" y="180" textAnchor="middle" fontSize="8" fill="#dc2626" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
+            <text x="385" y="180" textAnchor="middle" fontSize="8" fill="hsl(var(--destructive))" fontWeight="600" transform="rotate(30 385 180)">SCM</text>
           ) : null}
           {/* SCM fibre overlay */}
           {showSutures && (
@@ -386,20 +386,20 @@ const NeckCrossSectionDiagram = () => {
           )}
 
           {/* Trapezius (posterior) */}
-          <ellipse cx="145" cy="340" rx="30" ry="12" transform="rotate(40 145 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
-          <ellipse cx="355" cy="340" rx="30" ry="12" transform="rotate(-40 355 340)" fill="#d1d5db" stroke="#6b7280" strokeWidth="1" opacity={0.5} />
+          <ellipse cx="145" cy="340" rx="30" ry="12" transform="rotate(40 145 340)" fill="hsl(var(--muted))" stroke="hsl(var(--primary))" strokeWidth="1" opacity={0.5} />
+          <ellipse cx="355" cy="340" rx="30" ry="12" transform="rotate(-40 355 340)" fill="hsl(var(--muted))" stroke="hsl(var(--primary))" strokeWidth="1" opacity={0.5} />
           {showLabels && (
             <>
-              <text x="130" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
-              <text x="370" y="355" textAnchor="middle" fontSize="7" fill="#6b7280">Trapezius</text>
+              <text x="130" y="355" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">Trapezius</text>
+              <text x="370" y="355" textAnchor="middle" fontSize="7" fill="hsl(var(--primary))">Trapezius</text>
             </>
           )}
 
           {/* Vertebral artery in transverse foramen */}
-          <circle cx="195" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
-          <circle cx="305" cy="318" r="5" fill="#ef4444" stroke="#991b1b" strokeWidth="1" opacity={opacity("vertebral")} />
+          <circle cx="195" cy="318" r="5" fill="hsl(var(--destructive))" stroke="hsl(var(--destructive))" strokeWidth="1" opacity={opacity("vertebral")} />
+          <circle cx="305" cy="318" r="5" fill="hsl(var(--destructive))" stroke="hsl(var(--destructive))" strokeWidth="1" opacity={opacity("vertebral")} />
           {showLabels && (!selected || selected === "vertebral") ? (
-            <text x="195" y="340" textAnchor="middle" fontSize="6" fill="#991b1b">VA</text>
+            <text x="195" y="340" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">VA</text>
           ) : null}
 
           {/* Anterior label */}
@@ -407,10 +407,10 @@ const NeckCrossSectionDiagram = () => {
           <text x="250" y="410" textAnchor="middle" fontSize="10" fill="hsl(var(--muted-foreground))" fontStyle="italic">Posterior</text>
 
           {/* Strap muscles */}
-          <ellipse cx="230" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
-          <ellipse cx="270" cy="180" rx="12" ry="8" fill="#d1fae5" stroke="#059669" strokeWidth="1" opacity={opacity("pretracheal")} />
+          <ellipse cx="230" cy="180" rx="12" ry="8" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="1" opacity={opacity("pretracheal")} />
+          <ellipse cx="270" cy="180" rx="12" ry="8" fill="hsl(var(--clinical))" stroke="hsl(var(--clinical))" strokeWidth="1" opacity={opacity("pretracheal")} />
           {showLabels && (!selected || selected === "pretracheal") ? (
-            <text x="250" y="172" textAnchor="middle" fontSize="7" fill="#059669">Strap mm.</text>
+            <text x="250" y="172" textAnchor="middle" fontSize="7" fill="hsl(var(--clinical))">Strap mm.</text>
           ) : null}
         </svg>
 

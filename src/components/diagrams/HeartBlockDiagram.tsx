@@ -120,20 +120,20 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
         fill="hsl(0, 30%, 88%)"
         fillOpacity="0.25"
         stroke="hsl(var(--border))"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
 
       {/* Atrial septum line */}
-      <line x1="80" y1="35" x2="80" y2="95" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+      <line x1="80" y1="35" x2="80" y2="95" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
       {/* Interventricular septum */}
-      <line x1="80" y1="100" x2="80" y2="160" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+      <line x1="80" y1="100" x2="80" y2="160" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
 
       {/* SA node — always firing */}
       <circle cx="105" cy="42" r="4" fill={ok} />
       <text x="112" y="44" fontSize="6" fill={dim}>SA</text>
 
       {/* Internodal tract → AV node */}
-      <path d="M 105 46 Q 90 70 80 92" fill="none" stroke={ok} strokeWidth="1.4" />
+      <path d="M 105 46 Q 90 70 80 92" fill="none" stroke={ok} strokeWidth="1.5" />
 
       {/* AV node */}
       <circle
@@ -142,7 +142,7 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
         r="5"
         fill={blocked.avNode ? color : blocked.avDelay ? color : ok}
         stroke={blocked.avDelay || blocked.avNode ? color : "none"}
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       <text x="60" y="98" fontSize="6" fill={dim} textAnchor="end">AV</text>
 
@@ -167,8 +167,8 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
       {/* Block bar across His for Mobitz II / complete */}
       {(block.site === "his-purkinje" || block.site === "complete") && (
         <g>
-          <line x1="68" y1="112" x2="92" y2="112" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="68" y1="116" x2="92" y2="116" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="68" y1="112" x2="92" y2="112" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          <line x1="68" y1="116" x2="92" y2="116" stroke={color} strokeWidth="2" strokeLinecap="round" />
           <text x="95" y="116" fontSize="6.5" fill={color} fontWeight="bold">✕</text>
         </g>
       )}
@@ -178,14 +178,14 @@ const TreeMini = ({ block, color }: { block: BlockInfo; color: string }) => {
         d="M 80 115 Q 95 130 105 155"
         fill="none"
         stroke={blocked.his || blocked.avNode ? dim : ok}
-        strokeWidth="1.4"
+        strokeWidth="1.5"
         opacity={blocked.his || blocked.avNode ? 0.3 : 1}
       />
       <path
         d="M 80 115 Q 65 130 55 155"
         fill="none"
         stroke={blocked.his || blocked.avNode ? dim : ok}
-        strokeWidth="1.4"
+        strokeWidth="1.5"
         opacity={blocked.his || blocked.avNode ? 0.3 : 1}
       />
       <text x="108" y="158" fontSize="5.5" fill={dim}>RBB</text>
@@ -289,20 +289,20 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${block.label}`}>
       <defs>
         <pattern id={`rs-grid-${block.shortLabel}`} width="10" height="10" patternUnits="userSpaceOnUse">
-          <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.4" />
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.5" />
         </pattern>
       </defs>
-      <rect x="0" y="0" width={W} height={H} fill={withAlpha(color, 0.04)} stroke={withAlpha(color, 0.3)} strokeWidth="0.6" rx="4" />
+      <rect x="0" y="0" width={W} height={H} fill={withAlpha(color, 0.04)} stroke={withAlpha(color, 0.3)} strokeWidth="0.5" rx="4" />
       <rect x="0" y="0" width={W} height={H} fill={`url(#rs-grid-${block.shortLabel})`} pointerEvents="none" />
       {/* Baseline */}
-      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.4" />
+      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.5" />
 
       {beats.map((b, i) => {
         // Draw P alone for dropped beats
         if (b.pOnly) {
           return (
             <g key={i}>
-              <path d={`M ${b.cx - 3} ${baseline} q 3 -5 6 0`} fill="none" stroke={color} strokeWidth="1.4" />
+              <path d={`M ${b.cx - 3} ${baseline} q 3 -5 6 0`} fill="none" stroke={color} strokeWidth="1.5" />
               {!b.qrs && (
                 <text x={b.cx + 3} y={baseline - 8} fontSize="6" fill={color} fontWeight="bold" textAnchor="middle">✕</text>
               )}
@@ -315,7 +315,7 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
             d={drawBeat(b.cx, baseline, { p: b.p, qrs: b.qrs, t: b.t, pr: b.pr, wide: b.wide })}
             fill="none"
             stroke="hsl(var(--foreground))"
-            strokeWidth="1.3"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -354,12 +354,12 @@ const PaceOverlay = ({ block }: { block: BlockInfo }) => {
         fill="hsl(0, 30%, 88%)"
         fillOpacity="0.18"
         stroke="hsl(var(--border))"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
       {/* IV septum */}
-      <line x1="55" y1="55" x2="55" y2="125" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+      <line x1="55" y1="55" x2="55" y2="125" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
       {/* Atrial / ventricular divider */}
-      <line x1="22" y1="58" x2="88" y2="58" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.5" />
+      <line x1="22" y1="58" x2="88" y2="58" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.5" />
 
       {/* Chamber labels */}
       <text x="38" y="42" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle" opacity="0.7">RA</text>
@@ -377,9 +377,9 @@ const PaceOverlay = ({ block }: { block: BlockInfo }) => {
       {/* RA lead — curls into right atrial appendage */}
       {ra && (
         <g>
-          <path d="M 16 11 Q 28 14 40 22 Q 42 32 38 42" fill="none" stroke={RA} strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M 16 11 Q 28 14 40 22 Q 42 32 38 42" fill="none" stroke={RA} strokeWidth="1.5" strokeLinecap="round" />
           {/* Tip — J-shaped */}
-          <path d="M 38 42 q -3 4 1 6 q 4 1 4 -3" fill="none" stroke={RA} strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M 38 42 q -3 4 1 6 q 4 1 4 -3" fill="none" stroke={RA} strokeWidth="1.5" strokeLinecap="round" />
           <circle cx="42" cy="44" r="1.6" fill={RA} />
           <text x="20" y="22" fontSize="5.5" fill={RA} fontWeight="bold">RA</text>
         </g>
@@ -388,7 +388,7 @@ const PaceOverlay = ({ block }: { block: BlockInfo }) => {
       {/* RV lead — through tricuspid to RV apex */}
       {rv && (
         <g>
-          <path d="M 16 13 Q 30 16 40 22 Q 50 38 46 60 Q 40 80 36 92" fill="none" stroke={RV} strokeWidth="1.4" strokeLinecap="round" />
+          <path d="M 16 13 Q 30 16 40 22 Q 50 38 46 60 Q 40 80 36 92" fill="none" stroke={RV} strokeWidth="1.5" strokeLinecap="round" />
           <circle cx="36" cy="92" r="1.8" fill={RV} />
           <text x="28" y="115" fontSize="5.5" fill={RV} fontWeight="bold" textAnchor="middle">RV apex</text>
         </g>
@@ -401,7 +401,7 @@ const PaceOverlay = ({ block }: { block: BlockInfo }) => {
             d="M 16 14 Q 30 18 40 22 Q 56 30 64 50 Q 78 70 80 92"
             fill="none"
             stroke={LV}
-            strokeWidth="1.4"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeDasharray="4 1.5"
           />

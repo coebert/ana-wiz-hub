@@ -253,7 +253,7 @@ const TracheobronchialTreeDiagram = () => {
                 />
               ))}
               {/* Posterior membranous wall hint */}
-              <line x1="270" y1="248" x2="330" y2="248" stroke="hsl(0, 40%, 50%)" strokeWidth={0.6} strokeDasharray="3 2" opacity={0.5} />
+              <line x1="270" y1="248" x2="330" y2="248" stroke="hsl(0, 40%, 50%)" strokeWidth={0.5} strokeDasharray="3 2" opacity={0.5} />
             </g>
           )}
 

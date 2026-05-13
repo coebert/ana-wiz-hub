@@ -198,7 +198,7 @@ export const HeadFront = ({
   return (
     <g transform={transform} filter={`url(#${idPrefix}-shadow)`}>
       {/* Cranium */}
-      <circle cx={cx} cy={cy} r={r} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1.2} />
+      <circle cx={cx} cy={cy} r={r} fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} />
       {/* Hair cap (top half) */}
       {!bald && (
         <path
@@ -212,26 +212,26 @@ export const HeadFront = ({
       )}
       {/* Ears (just visible at the temples) */}
       <ellipse cx={cx - r * 0.95} cy={cy + r * 0.05} rx={r * 0.12} ry={r * 0.22}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8} />
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.75} />
       <ellipse cx={cx + r * 0.95} cy={cy + r * 0.05} rx={r * 0.12} ry={r * 0.22}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8} />
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.75} />
       {/* Nose ridge */}
       <path
         d={`M ${cx},${cy - r * 0.15} Q ${cx + r * 0.08},${cy + r * 0.05} ${cx},${cy + r * 0.18}`}
-        fill="none" stroke={STROKE_SKIN} strokeWidth={0.7} opacity={0.5}
+        fill="none" stroke={STROKE_SKIN} strokeWidth={0.75} opacity={0.5}
       />
       {/* Closed eyes */}
       {closedEyes && (
         <>
           <path d={`M ${cx - r * 0.45},${cy - r * 0.05} Q ${cx - r * 0.3},${cy} ${cx - r * 0.15},${cy - r * 0.05}`}
-            fill="none" stroke={STROKE_SKIN} strokeWidth={0.9} />
+            fill="none" stroke={STROKE_SKIN} strokeWidth={1} />
           <path d={`M ${cx + r * 0.15},${cy - r * 0.05} Q ${cx + r * 0.3},${cy} ${cx + r * 0.45},${cy - r * 0.05}`}
-            fill="none" stroke={STROKE_SKIN} strokeWidth={0.9} />
+            fill="none" stroke={STROKE_SKIN} strokeWidth={1} />
         </>
       )}
       {/* Mouth (relaxed, slightly parted) */}
       <line x1={cx - r * 0.18} y1={cy + r * 0.45} x2={cx + r * 0.18} y2={cy + r * 0.45}
-        stroke={STROKE_SKIN} strokeWidth={0.8} opacity={0.55} />
+        stroke={STROKE_SKIN} strokeWidth={0.75} opacity={0.55} />
     </g>
   );
 };
@@ -276,7 +276,7 @@ export const HeadProfile = ({
             L ${cx + r * 0.6},${cy - r * 0.4}
             L ${cx + r * 0.7},${cy - r * 0.55}
             Z`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1.2} strokeLinejoin="round"
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} strokeLinejoin="round"
       />
       {/* Hair cap */}
       {!bald && (
@@ -295,13 +295,13 @@ export const HeadProfile = ({
             Q ${cx - r * 0.4},${cy - r * 0.15} ${cx - r * 0.4},${cy + r * 0.2}
             Q ${cx - r * 0.4},${cy + r * 0.45} ${cx - r * 0.15},${cy + r * 0.4}
             Q ${cx - r * 0.22},${cy + r * 0.18} ${cx - r * 0.15},${cy - r * 0.05} Z`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1}
       />
       {/* Closed eye */}
       {closedEyes && (
         <path
           d={`M ${cx + r * 0.18},${cy - r * 0.1} Q ${cx + r * 0.32},${cy - r * 0.02} ${cx + r * 0.45},${cy - r * 0.08}`}
-          fill="none" stroke={STROKE_SKIN} strokeWidth={0.9}
+          fill="none" stroke={STROKE_SKIN} strokeWidth={1}
         />
       )}
       {/* Nostril hint */}
@@ -309,7 +309,7 @@ export const HeadProfile = ({
       {/* Lips */}
       <path
         d={`M ${cx + r * 0.32},${cy + r * 0.55} Q ${cx + r * 0.45},${cy + r * 0.62} ${cx + r * 0.55},${cy + r * 0.5}`}
-        fill="none" stroke={STROKE_SKIN} strokeWidth={0.8} opacity={0.6}
+        fill="none" stroke={STROKE_SKIN} strokeWidth={0.75} opacity={0.6}
       />
     </g>
   );
@@ -411,7 +411,7 @@ export const Arm = ({
             y1={ey - (sy - ey) * 0.18 - fny * upperW * 0.45}
             x2={ex - (sx - ex) * 0.18 + fnx * upperW * 0.45}
             y2={ey - (sy - ey) * 0.18 + fny * upperW * 0.45}
-            stroke={STROKE_GOWN} strokeWidth={0.9} opacity={0.55}
+            stroke={STROKE_GOWN} strokeWidth={1} opacity={0.55}
           />
           {/* Two short shoulder folds */}
           <path
@@ -426,12 +426,12 @@ export const Arm = ({
         cx={ex} cy={ey}
         rx={upperW * 0.46} ry={upperW * 0.4}
         transform={`rotate(${armRot} ${ex} ${ey})`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1}
       />
       {/* Forearm — tapers from elbow toward the wrist */}
       <path
         d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} strokeLinejoin="round"
       />
       <path
         d={taperedLimb(ex, ey, wx, wy, foreW * 1.02, foreW * 0.78)}
@@ -441,21 +441,21 @@ export const Arm = ({
       <path
         d={`M ${ex - fnx * foreW * 0.18},${ey - fny * foreW * 0.18}
             L ${wx - fnx * foreW * 0.18},${wy - fny * foreW * 0.18}`}
-        stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.35} fill="none"
+        stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.35} fill="none"
       />
       {/* Wrist */}
       <ellipse
         cx={wx} cy={wy}
         rx={foreW * 0.42} ry={foreW * 0.3}
         transform={`rotate(${armRot} ${wx} ${wy})`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.7}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.75}
       />
       {/* Hand — palm + thumb */}
       <g transform={`rotate(${armRot} ${palmX} ${palmY})`}>
         <ellipse
           cx={palmX} cy={palmY}
           rx={handLen * 0.6} ry={foreW * 0.5}
-          fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8}
+          fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.75}
         />
         {/* Knuckle hint */}
         <path
@@ -472,7 +472,7 @@ export const Arm = ({
         rx={handLen * 0.32}
         ry={foreW * 0.36}
         transform={`rotate(${armRot} ${(palmX + tipX) / 2} ${(palmY + tipY) / 2})`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.6}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.5}
       />
       {/* Thumb */}
       <path
@@ -565,20 +565,20 @@ export const Leg = ({
             d={`M ${hx + tnx * thighW * 0.25},${hy + tny * thighW * 0.25}
                 Q ${(hx + kx) / 2 + tnx * thighW * 0.18},${(hy + ky) / 2 + tny * thighW * 0.18}
                   ${kx + tnx * thighW * 0.05},${ky + tny * thighW * 0.05}`}
-            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+            stroke={strokeColor} strokeWidth={0.5} opacity={0.45} fill="none"
           />
           <path
             d={`M ${hx - tnx * thighW * 0.2},${hy - tny * thighW * 0.2}
                 Q ${(hx + kx) / 2 - tnx * thighW * 0.28},${(hy + ky) / 2 - tny * thighW * 0.28}
                   ${kx - tnx * thighW * 0.1},${ky - tny * thighW * 0.1}`}
-            stroke={strokeColor} strokeWidth={0.6} opacity={0.45} fill="none"
+            stroke={strokeColor} strokeWidth={0.5} opacity={0.45} fill="none"
           />
           {/* Drape hem just above the knee */}
           <path
             d={`M ${kx + tnx * thighW * 0.5},${ky + tny * thighW * 0.5}
                 Q ${kx},${ky + 1}
                   ${kx - tnx * thighW * 0.5},${ky - tny * thighW * 0.5}`}
-            stroke={strokeColor} strokeWidth={0.9} opacity={0.55} fill="none"
+            stroke={strokeColor} strokeWidth={1} opacity={0.55} fill="none"
           />
         </>
       )}
@@ -587,7 +587,7 @@ export const Leg = ({
         cx={kx} cy={ky}
         rx={thighW * 0.42} ry={thighW * 0.36}
         transform={`rotate(${calfAngleDeg} ${kx} ${ky})`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1}
       />
       {/* Patellar dimple */}
       <ellipse
@@ -600,7 +600,7 @@ export const Leg = ({
       {/* Calf — bulges proximally, tapers to ankle */}
       <path
         d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} strokeLinejoin="round"
       />
       <path
         d={taperedLimb(kx, ky, ax, ay, calfW * 1.05, calfW * 0.7)}
@@ -610,14 +610,14 @@ export const Leg = ({
       <path
         d={`M ${kx + cux * calfW * 0.4},${ky + cuy * calfW * 0.4}
             L ${ax - cux * calfW * 0.3},${ay - cuy * calfW * 0.3}`}
-        stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.3} fill="none"
+        stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.3} fill="none"
       />
       {/* Ankle (malleolus) */}
       <ellipse
         cx={ax} cy={ay}
         rx={calfW * 0.36} ry={calfW * 0.28}
         transform={`rotate(${calfAngleDeg} ${ax} ${ay})`}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.8}
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.75}
       />
       {/* Foot — heel pad → arch → ball → toes */}
       <g transform={`rotate(${footRot} ${ax} ${ay})`}>
@@ -633,7 +633,7 @@ export const Leg = ({
               Q ${ax + footLen * 0.2},${ay - calfW * 0.42}
                 ${ax - footLen * 0.05},${ay - calfW * 0.32}
               Z`}
-          fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} strokeLinejoin="round"
+          fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} strokeLinejoin="round"
         />
         {/* Arch crease (medial longitudinal arch) */}
         <path
@@ -644,9 +644,9 @@ export const Leg = ({
         />
         {/* Toe separators */}
         <line x1={ax + footLen * 0.85} y1={ay - calfW * 0.18} x2={ax + footLen * 0.95} y2={ay + calfW * 0.05}
-          stroke={STROKE_SKIN} strokeWidth={0.4} opacity={0.4} />
+          stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.4} />
         <line x1={ax + footLen * 0.78} y1={ay - calfW * 0.25} x2={ax + footLen * 0.86} y2={ay - calfW * 0.05}
-          stroke={STROKE_SKIN} strokeWidth={0.35} opacity={0.35} />
+          stroke={STROKE_SKIN} strokeWidth={0.5} opacity={0.35} />
       </g>
     </g>
   );
@@ -693,7 +693,7 @@ export const TorsoSupine = ({
     <g filter={`url(#${idPrefix}-shadow)`}>
       {/* Neck */}
       <rect x={x - 6} y={cy - 14} width={20} height={28} rx={4}
-        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={0.9} />
+        fill={SKIN(idPrefix)} stroke={STROKE_SKIN} strokeWidth={1} />
       {/* Body silhouette + sheen overlay (computed once) */}
       {(() => {
         const d = `M ${xShoulder},${cy - shoulderW / 2}
@@ -712,7 +712,7 @@ export const TorsoSupine = ({
             <path d={d}
               fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
               stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
             <path d={d}
               fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
@@ -731,7 +731,7 @@ export const TorsoSupine = ({
         <>
           {/* Centre seam */}
           <line x1={xShoulder + 4} y1={cy} x2={xHip} y2={cy}
-            stroke={STROKE_GOWN} strokeWidth={0.6} opacity={0.5} strokeDasharray="2 2" />
+            stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.5} strokeDasharray="2 2" />
           {/* Sternum hint */}
           <line x1={xChest + 8} y1={cy - shoulderW * 0.18} x2={xChest + 30} y2={cy - shoulderW * 0.1}
             stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.4} />
@@ -789,7 +789,7 @@ export const TorsoLateral = ({
       <path d={path}
         fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
         stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
-        strokeWidth={1.2} strokeLinejoin="round" />
+        strokeWidth={1} strokeLinejoin="round" />
       {/* Sheen overlay */}
       <path d={path}
         fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
@@ -798,18 +798,18 @@ export const TorsoLateral = ({
       {/* Underside contact-occlusion along the back */}
       <path
         d={`M ${x0 + 18},${bot - 2} Q ${cx},${bot + 8} ${x1 - 14},${bot - 2}`}
-        fill="none" stroke="hsl(220 30% 12%)" strokeWidth={3.5}
+        fill="none" stroke="hsl(220 30% 12%)" strokeWidth={3}
         opacity={0.18} strokeLinecap="round" className="anat-sheen" pointerEvents="none"
       />
       {/* Spine reference (back) */}
       <path
         d={`M ${x0 + 18},${top + 4} Q ${cx},${top - 2} ${x1 - 14},${top + 8}`}
-        fill="none" stroke={STROKE_GOWN} strokeWidth={0.6} opacity={0.45} strokeDasharray="2 2"
+        fill="none" stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.45} strokeDasharray="2 2"
       />
       {/* Chest swell */}
       <path
         d={`M ${x0 + length * 0.22},${cy + 2} Q ${x0 + length * 0.32},${cy - height * 0.18} ${x0 + length * 0.4},${cy - 4}`}
-        fill="none" stroke={STROKE_GOWN} strokeWidth={0.6} opacity={0.4}
+        fill="none" stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.4}
       />
     </g>
   );
@@ -841,7 +841,7 @@ export const TorsoProne = ({
             <path d={d}
               fill={showGown ? GOWN(idPrefix) : SKIN(idPrefix)}
               stroke={showGown ? STROKE_GOWN : STROKE_SKIN}
-              strokeWidth={1.2}
+              strokeWidth={1}
             />
             <path d={d}
               fill={`url(#${idPrefix}-${showGown ? "gown-sheen" : "skin-sheen"})`}
@@ -852,7 +852,7 @@ export const TorsoProne = ({
       })()}
       {/* Spine line (visible on prone gown back) */}
       <line x1={x + 12} y1={cy} x2={x + length - 4} y2={cy}
-        stroke={STROKE_GOWN} strokeWidth={0.7} opacity={0.45} strokeDasharray="3 2" />
+        stroke={STROKE_GOWN} strokeWidth={0.75} opacity={0.45} strokeDasharray="3 2" />
       {/* Scapulae hints */}
       <ellipse cx={x + length * 0.18} cy={cy - shoulderW * 0.22} rx={10} ry={6}
         fill="none" stroke={STROKE_GOWN} strokeWidth={0.5} opacity={0.35} />
@@ -881,7 +881,7 @@ export const MayfieldPins = ({
     <path
       d={`M ${cx - r * 1.15},${cy + r * 0.1}
           Q ${cx},${cy - r * 1.45} ${cx + r * 1.15},${cy + r * 0.1}`}
-      fill="none" stroke={color} strokeWidth={2.4} strokeLinecap="round" opacity={0.85}
+      fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" opacity={0.85}
     />
     {/* Three pins */}
     {[
@@ -890,7 +890,7 @@ export const MayfieldPins = ({
       { x1: cx, y1: cy - r * 0.95, x2: cx, y2: cy - r * 1.35 },
     ].map((p, i) => (
       <g key={i}>
-        <line {...p} stroke={color} strokeWidth={3.2} strokeLinecap="round" />
+        <line {...p} stroke={color} strokeWidth={3} strokeLinecap="round" />
         <circle cx={p.x1} cy={p.y1} r={2} fill={color} />
       </g>
     ))}
@@ -1185,7 +1185,7 @@ export const LateralPatient = ({
       {/* Pillow between knees */}
       {showKneePillow && (
         <ellipse cx={hipX + 50} cy={cy} rx={22} ry={7}
-          fill="hsl(45 50% 82%)" stroke="hsl(45 40% 55%)" strokeWidth={0.8} />
+          fill="hsl(45 50% 82%)" stroke="hsl(45 40% 55%)" strokeWidth={0.75} />
       )}
       {/* Up leg — straight on pillow */}
       <Leg hx={hipX} hy={cy - height * 0.16}
@@ -1262,7 +1262,7 @@ export const PronePatient = ({
               L ${headCx + 25} ${cy}
               L ${headCx - 25} ${cy} Z`}
           fill="hsl(280 50% 45%)" opacity={0.85}
-          stroke="hsl(280 60% 30%)" strokeWidth={0.8}
+          stroke="hsl(280 60% 30%)" strokeWidth={0.75}
         />
       )}
       {/* Arms */}

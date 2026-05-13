@@ -232,7 +232,7 @@ const SharedAxes = ({ curves }: { curves: GraphData[] }) => (
     {/* Curves */}
     {curves.map((g) => (
       <polyline key={g.id} points={toSVG(g.points)} fill="none" stroke={g.color}
-        strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+        strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     ))}
     {/* Equation labels */}
     {curves.map((g, i) => (

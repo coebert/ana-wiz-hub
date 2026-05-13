@@ -74,16 +74,16 @@ export const MicroshockDiagram = () => {
           {/* Patient body */}
           <g>
             {/* Head */}
-            <circle cx={400} cy={75} r={22} fill="hsl(20 50% 88%)" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+            <circle cx={400} cy={75} r={22} fill="hsl(20 50% 88%)" stroke="hsl(215 25% 35%)" strokeWidth="1" />
             {/* Torso */}
-            <path d="M 360 100 Q 400 95 440 100 L 450 240 Q 400 250 350 240 Z" fill="hsl(210 60% 94%)" stroke="hsl(215 25% 35%)" strokeWidth="1.2" />
+            <path d="M 360 100 Q 400 95 440 100 L 450 240 Q 400 250 350 240 Z" fill="hsl(210 60% 94%)" stroke="hsl(215 25% 35%)" strokeWidth="1" />
             {/* Heart */}
             <g transform="translate(395, 165)">
               <path
                 d="M 0 8 C -10 -2 -22 -2 -22 10 C -22 22 0 32 0 32 C 0 32 22 22 22 10 C 22 -2 10 -2 0 8 Z"
                 fill={vfRisk ? `hsl(0 ${70 + vfPulse * 20}% ${50 + vfPulse * 10}%)` : "hsl(0 60% 60%)"}
                 stroke="hsl(0 50% 35%)"
-                strokeWidth="1.2"
+                strokeWidth="1"
                 style={{ transform: `scale(${vfRisk ? 1 + vfPulse * 0.1 : 1})`, transformOrigin: "center", transition: "fill 0.1s" }}
               />
               <text x={0} y={50} textAnchor="middle" fontSize="9" className="fill-muted-foreground">heart</text>
@@ -112,7 +112,7 @@ export const MicroshockDiagram = () => {
                   d="M 380 60 Q 385 100 395 165"
                   fill="none"
                   stroke="hsl(45 90% 70%)"
-                  strokeWidth="1.2"
+                  strokeWidth="1"
                   strokeLinecap="round"
                 />
                 <text x={345} y={55} textAnchor="middle" fontSize="9" className="fill-muted-foreground">CVP / PA tip</text>
@@ -142,7 +142,7 @@ export const MicroshockDiagram = () => {
             }
             fill="none"
             stroke="hsl(45 100% 55%)"
-            strokeWidth="2.5"
+            strokeWidth="2"
             strokeDasharray="5 10"
             strokeDashoffset={-offset}
             opacity="0.95"
@@ -173,7 +173,7 @@ export const MicroshockDiagram = () => {
             <text x="10" y="20" fontSize="10" className="fill-muted-foreground font-medium">Source leakage</text>
             <text x="10" y="36" fontSize="14" className="fill-foreground font-bold">{leakageUA} µA</text>
 
-            <line x1="10" y1="46" x2="145" y2="46" stroke="hsl(215 25% 85%)" strokeWidth="0.8" />
+            <line x1="10" y1="46" x2="145" y2="46" stroke="hsl(215 25% 85%)" strokeWidth="0.75" />
 
             <text x="10" y="64" fontSize="10" className="fill-muted-foreground font-medium">At myocardium</text>
             <text x="10" y="82" fontSize="14"
@@ -183,7 +183,7 @@ export const MicroshockDiagram = () => {
                 : `${myocardialCurrent.toFixed(0)} µA`}
             </text>
 
-            <line x1="10" y1="92" x2="145" y2="92" stroke="hsl(215 25% 85%)" strokeWidth="0.8" />
+            <line x1="10" y1="92" x2="145" y2="92" stroke="hsl(215 25% 85%)" strokeWidth="0.75" />
 
             <text x="10" y="110" fontSize="10" className="fill-muted-foreground font-medium">VF threshold</text>
             <text x="10" y="126" fontSize="11" className="fill-foreground">100 µA (intracardiac)</text>

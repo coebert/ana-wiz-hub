@@ -50,23 +50,23 @@ const MouthView = ({ grade, size = 120 }: { grade: MallampatiClass; size?: numbe
       {showSoftPalate && (
         <path
           d={`M${cx - lipRx * 0.75},${cy - lipRy * 0.45} Q${cx},${cy - lipRy * 0.15} ${cx + lipRx * 0.75},${cy - lipRy * 0.45}`}
-          fill="hsl(0, 40%, 55%)" fillOpacity="0.5" stroke="hsl(0, 35%, 45%)" strokeWidth="0.8"
+          fill="hsl(0, 40%, 55%)" fillOpacity="0.5" stroke="hsl(0, 35%, 45%)" strokeWidth="0.75"
         />
       )}
 
       {/* Hard palate (always visible) */}
       <path
         d={`M${cx - lipRx * 0.85},${cy - lipRy * 0.55} Q${cx},${cy - lipRy * 0.85} ${cx + lipRx * 0.85},${cy - lipRy * 0.55}`}
-        fill="hsl(0, 35%, 60%)" fillOpacity="0.35" stroke="hsl(0, 30%, 50%)" strokeWidth="0.6"
+        fill="hsl(0, 35%, 60%)" fillOpacity="0.35" stroke="hsl(0, 30%, 50%)" strokeWidth="0.5"
       />
 
       {/* Pillars (Class I only) */}
       {showPillars && (
         <>
           <line x1={cx - s * 0.12} y1={cy - s * 0.12} x2={cx - s * 0.1} y2={cy + s * 0.05}
-            stroke="hsl(0, 40%, 50%)" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+            stroke="hsl(0, 40%, 50%)" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
           <line x1={cx + s * 0.12} y1={cy - s * 0.12} x2={cx + s * 0.1} y2={cy + s * 0.05}
-            stroke="hsl(0, 40%, 50%)" strokeWidth="2.5" strokeLinecap="round" opacity="0.6" />
+            stroke="hsl(0, 40%, 50%)" strokeWidth="2" strokeLinecap="round" opacity="0.6" />
         </>
       )}
 
@@ -82,14 +82,14 @@ const MouthView = ({ grade, size = 120 }: { grade: MallampatiClass; size?: numbe
 
       {/* Tongue */}
       <ellipse cx={cx} cy={tY + s * 0.18} rx={lipRx * 0.8} ry={s * 0.22}
-        fill="hsl(0, 35%, 52%)" stroke="hsl(0, 30%, 42%)" strokeWidth="0.8" />
+        fill="hsl(0, 35%, 52%)" stroke="hsl(0, 30%, 42%)" strokeWidth="0.75" />
 
       {/* Teeth (upper) */}
       {[-3, -2, -1, 0, 1, 2, 3].map(i => (
         <rect key={`u${i}`}
           x={cx + i * s * 0.055 - s * 0.025} y={cy - lipRy + s * 0.02}
           width={s * 0.05} height={s * 0.05} rx="2"
-          fill="hsl(40, 20%, 90%)" stroke="hsl(40, 10%, 75%)" strokeWidth="0.4"
+          fill="hsl(40, 20%, 90%)" stroke="hsl(40, 10%, 75%)" strokeWidth="0.5"
         />
       ))}
       {/* Teeth (lower) */}
@@ -97,13 +97,13 @@ const MouthView = ({ grade, size = 120 }: { grade: MallampatiClass; size?: numbe
         <rect key={`l${i}`}
           x={cx + i * s * 0.055 - s * 0.025} y={cy + lipRy - s * 0.07}
           width={s * 0.05} height={s * 0.05} rx="2"
-          fill="hsl(40, 20%, 90%)" stroke="hsl(40, 10%, 75%)" strokeWidth="0.4"
+          fill="hsl(40, 20%, 90%)" stroke="hsl(40, 10%, 75%)" strokeWidth="0.5"
         />
       ))}
 
       {/* Lip outline */}
       <ellipse cx={cx} cy={cy} rx={lipRx} ry={lipRy}
-        fill="none" stroke="hsl(0, 30%, 50%)" strokeWidth="2.5" />
+        fill="none" stroke="hsl(0, 30%, 50%)" strokeWidth="2" />
     </svg>
   );
 };

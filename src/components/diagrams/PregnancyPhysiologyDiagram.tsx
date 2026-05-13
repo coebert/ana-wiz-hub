@@ -220,7 +220,7 @@ export const PregnancyPhysiologyDiagram = () => {
             {/* Silhouette of pregnant woman (lateral, gravid abdomen) */}
             <g filter="url(#ppd-shadow)">
               {/* Head */}
-              <ellipse cx="200" cy="60" rx="32" ry="38" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1.2" />
+              <ellipse cx="200" cy="60" rx="32" ry="38" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               {/* Neck */}
               <path d="M 185 95 Q 200 110 215 95 L 215 120 Q 200 125 185 120 Z" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               {/* Torso (with breast curve and gravid abdomen) */}
@@ -228,10 +228,10 @@ export const PregnancyPhysiologyDiagram = () => {
                 d="M 155 125 Q 145 160 150 200 Q 158 250 175 285 Q 200 305 230 295 Q 270 270 275 220 Q 275 165 250 135 Q 230 122 200 122 Q 175 122 155 125 Z"
                 fill="url(#ppd-skin)"
                 stroke="hsl(var(--border))"
-                strokeWidth="1.2"
+                strokeWidth="1"
               />
               {/* Hips */}
-              <path d="M 165 285 Q 155 320 165 350 Q 200 360 235 350 Q 245 320 235 290 Z" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1.2" />
+              <path d="M 165 285 Q 155 320 165 350 Q 200 360 235 350 Q 245 320 235 290 Z" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               {/* Legs */}
               <path d="M 175 350 L 170 470 L 190 475 L 195 350 Z" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
               <path d="M 205 350 L 215 475 L 235 470 L 225 350 Z" fill="url(#ppd-skin)" stroke="hsl(var(--border))" strokeWidth="1" />

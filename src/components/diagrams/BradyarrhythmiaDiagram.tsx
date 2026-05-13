@@ -133,10 +133,10 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
         fill="hsl(0, 30%, 88%)"
         fillOpacity="0.22"
         stroke="hsl(var(--border))"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
-      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.45" />
-      <line x1="35" y1="105" x2="145" y2="105" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.45" />
+      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.45" />
+      <line x1="35" y1="105" x2="145" y2="105" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.45" />
 
       {/* SA node */}
       <g>
@@ -146,7 +146,7 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
           r={saActive || alternating ? 5 : saSilent ? 3.5 : 4}
           fill={saSilent ? "hsl(var(--muted))" : saActive || alternating ? color : ok}
           stroke={saSilent ? color : "none"}
-          strokeWidth="1.2"
+          strokeWidth="1"
           strokeDasharray={saSilent ? "2 1.5" : undefined}
         >
           {saActive && (
@@ -159,8 +159,8 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
         <text x="124" y="44" fontSize="6" fill={dim}>SA</text>
         {saSilent && (
           <g>
-            <line x1="113" y1="37" x2="123" y2="47" stroke={color} strokeWidth="1.4" />
-            <line x1="123" y1="37" x2="113" y2="47" stroke={color} strokeWidth="1.4" />
+            <line x1="113" y1="37" x2="123" y2="47" stroke={color} strokeWidth="1.5" />
+            <line x1="123" y1="37" x2="113" y2="47" stroke={color} strokeWidth="1.5" />
           </g>
         )}
       </g>
@@ -172,7 +172,7 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
         r={juncActive ? 6 : 4.5}
         fill={juncActive ? color : ok}
         stroke={juncActive ? color : "none"}
-        strokeWidth="1.4"
+        strokeWidth="1.5"
       >
         {juncActive && (
           <animate attributeName="r" values="5;7;5" dur="1.5s" repeatCount="indefinite" />
@@ -182,8 +182,8 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
 
       {/* His + bundle branches */}
       <line x1="90" y1="110" x2="90" y2="125" stroke={ok} strokeWidth="2" />
-      <path d="M 90 125 Q 110 140 125 168" fill="none" stroke={ok} strokeWidth="1.4" />
-      <path d="M 90 125 Q 70 140 55 168" fill="none" stroke={ok} strokeWidth="1.4" />
+      <path d="M 90 125 Q 110 140 125 168" fill="none" stroke={ok} strokeWidth="1.5" />
+      <path d="M 90 125 Q 70 140 55 168" fill="none" stroke={ok} strokeWidth="1.5" />
 
       {/* Ventricular escape focus */}
       {ventActive && (
@@ -192,7 +192,7 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
             <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
           </circle>
           {[8, 13].map((r, i) => (
-            <circle key={i} cx="125" cy="168" r={r} fill="none" stroke={color} strokeWidth="0.7" opacity="0.4">
+            <circle key={i} cx="125" cy="168" r={r} fill="none" stroke={color} strokeWidth="0.75" opacity="0.4">
               <animate attributeName="opacity" values="0;0.5;0" dur="2.4s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
             </circle>
           ))}
@@ -205,7 +205,7 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
       {/* Junctional retrograde P waves */}
       {juncActive && (
         <g>
-          <path d="M 90 100 Q 100 80 118 50" fill="none" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" />
+          <path d="M 90 100 Q 100 80 118 50" fill="none" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
           <polygon points="118,50 115,55 121,53" fill={color} />
           <text x="40" y="138" fontSize="5.5" fill={color} fontWeight="bold">retro P</text>
         </g>
@@ -222,7 +222,7 @@ const TreeMini = ({ brady, color }: { brady: BradyInfo; color: string }) => {
       {saActive && (
         <g>
           {[10, 15].map((r, i) => (
-            <circle key={i} cx="118" cy="42" r={r} fill="none" stroke={color} strokeWidth="0.7" opacity="0.4">
+            <circle key={i} cx="118" cy="42" r={r} fill="none" stroke={color} strokeWidth="0.75" opacity="0.4">
               <animate attributeName="opacity" values="0;0.5;0" dur="1.8s" begin={`${i * 0.6}s`} repeatCount="indefinite" />
             </circle>
           ))}
@@ -331,7 +331,7 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
               d={`M ${cx + 14} ${baseline} q 3 5 6 0`}
               fill="none"
               stroke={color}
-              strokeWidth="1.1"
+              strokeWidth="1"
               opacity="0.85"
             />
           ))}
@@ -388,7 +388,7 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
             }).join(" ")}`}
             fill="none"
             stroke={color}
-            strokeWidth="0.7"
+            strokeWidth="0.75"
             opacity="0.5"
           />
           <text x="180" y="14" fontSize="7" fill={color} fontWeight="bold" textAnchor="middle">
@@ -409,13 +409,13 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
       <rect x="0" y="0" width={W} height={H} fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="4" />
       {/* Faint grid */}
       {Array.from({ length: 9 }, (_, i) => (
-        <line key={`v${i}`} x1={i * 40} y1="0" x2={i * 40} y2={H} stroke="hsl(var(--border))" strokeWidth="0.3" opacity="0.5" />
+        <line key={`v${i}`} x1={i * 40} y1="0" x2={i * 40} y2={H} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.5" />
       ))}
-      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--border))" strokeWidth="0.3" opacity="0.5" />
+      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.5" />
 
       {custom}
       {beatPaths.map((d, i) => (
-        <path key={i} d={d} fill="none" stroke={color} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+        <path key={i} d={d} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       ))}
 
       <text x={6} y={11} fontSize="7" fill={color} fontWeight="bold">{brady.shortLabel}</text>

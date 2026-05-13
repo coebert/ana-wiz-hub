@@ -194,7 +194,7 @@ const DynamicHyperinflationDiagram = () => {
                     d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
                     fill="none"
                     stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="1.2"
+                    strokeWidth="1"
                     opacity="0.4"
                   />
                 </g>
@@ -210,7 +210,7 @@ const DynamicHyperinflationDiagram = () => {
                     d="M8 -100 Q55 -80 60 -10 Q65 55 30 75 Q15 82 10 70 L10 -100 Z"
                     fill="none"
                     stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="1.2"
+                    strokeWidth="1"
                     opacity="0.4"
                   />
                 </g>

@@ -178,7 +178,7 @@ const POSTERIOR_LABELS: { key: NerveKey; side: "L" | "R"; y: number }[] = [
 const LimbOutline = ({ id }: { id: string }) => (
   <>
     <path d="M70,55 Q60,80 60,100 Q60,125 75,140 L125,140 Q140,125 140,100 Q140,80 130,55 Z"
-      fill="hsl(var(--muted))" fillOpacity="0.18" stroke="hsl(var(--border))" strokeWidth="0.6" />
+      fill="hsl(var(--muted))" fillOpacity="0.18" stroke="hsl(var(--border))" strokeWidth="0.5" />
     <path d="M75,140 Q70,200 75,260 Q80,300 85,330 L100,330 Q102,300 102,260 Q100,200 100,140 Z"
       fill={`url(#${id}-tissue)`} fillOpacity="0.9" stroke="hsl(var(--border))" strokeWidth="0.5" />
     <path d="M100,140 Q100,200 102,260 Q102,300 100,330 L115,330 Q120,300 125,260 Q130,200 125,140 Z"
@@ -189,9 +189,9 @@ const LimbOutline = ({ id }: { id: string }) => (
       fill={`url(#${id}-tissue)`} fillOpacity="0.85" stroke="hsl(var(--border))" strokeWidth="0.5" />
     <ellipse cx="86" cy="560" rx="14" ry="6" fill={`url(#${id}-tissue)`} stroke="hsl(var(--border))" strokeWidth="0.5" />
     <ellipse cx="114" cy="560" rx="14" ry="6" fill={`url(#${id}-tissue)`} stroke="hsl(var(--border))" strokeWidth="0.5" />
-    <circle cx="91" cy="333" r="6" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.6" />
-    <circle cx="113" cy="333" r="6" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.6" />
-    <line x1="100" y1="40" x2="100" y2="135" stroke="hsl(var(--border))" strokeWidth="0.6" strokeDasharray="2 2" />
+    <circle cx="91" cy="333" r="6" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" />
+    <circle cx="113" cy="333" r="6" fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" />
+    <line x1="100" y1="40" x2="100" y2="135" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" />
   </>
 );
 

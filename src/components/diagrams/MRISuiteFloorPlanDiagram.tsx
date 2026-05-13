@@ -240,7 +240,7 @@ export const MRISuiteFloorPlanDiagram = () => {
               <path
                 d="M 14 0 L 0 0 0 14"
                 stroke="hsl(var(--border))"
-                strokeWidth="0.4"
+                strokeWidth="0.5"
                 opacity="0.45"
                 fill="none"
               />
@@ -491,7 +491,7 @@ export const MRISuiteFloorPlanDiagram = () => {
               rx="3"
               fill="none"
               stroke="url(#mri-fp-faraday)"
-              strokeWidth="6"
+              strokeWidth="3"
             />
             <rect
               x="424"
@@ -522,7 +522,7 @@ export const MRISuiteFloorPlanDiagram = () => {
                 ry="160"
                 fill="none"
                 stroke="hsl(var(--physics))"
-                strokeWidth="1.2"
+                strokeWidth="1"
                 strokeDasharray="2 4"
                 opacity="0.7"
               />
@@ -534,7 +534,7 @@ export const MRISuiteFloorPlanDiagram = () => {
                 ry="105"
                 fill="none"
                 stroke="hsl(var(--pharmacology))"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 strokeDasharray="6 4"
               />
               {/* 100 G */}
@@ -545,7 +545,7 @@ export const MRISuiteFloorPlanDiagram = () => {
                 ry="72"
                 fill="none"
                 stroke="hsl(var(--clinical))"
-                strokeWidth="1.8"
+                strokeWidth="2"
                 strokeDasharray="10 3"
               />
               {/* Soft fringe field wash */}
@@ -620,7 +620,7 @@ export const MRISuiteFloorPlanDiagram = () => {
             />
             {/* Patient silhouette */}
             <ellipse cx="700" cy="260" rx="6" ry="5" fill="hsl(var(--foreground))" opacity="0.55" />
-            <rect x="640" y="256" width="60" height="8" rx="3" fill="hsl(var(--foreground))" opacity="0.35" />
+            <rect x="640" y="256" width="60" height="8" rx="3" fill="hsl(var(--foreground))" opacity="0.35" stroke="hsl(var(--border))" strokeWidth="0.75" />
             {showLabels && (
               <text x="664" y="282" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">
                 Patient table
@@ -649,7 +649,7 @@ export const MRISuiteFloorPlanDiagram = () => {
             <path
               d="M 700 372 C 680 372 670 268 700 264"
               stroke="hsl(var(--pharmacology))"
-              strokeWidth="1.4"
+              strokeWidth="1.5"
               fill="none"
               strokeDasharray="3 3"
               opacity="0.7"
@@ -679,7 +679,7 @@ export const MRISuiteFloorPlanDiagram = () => {
             <path
               d="M 700 150 C 700 200 700 230 706 252"
               stroke="hsl(var(--pharmacology))"
-              strokeWidth="1.2"
+              strokeWidth="1"
               fill="none"
               strokeDasharray="2 3"
               opacity="0.7"
@@ -711,7 +711,7 @@ export const MRISuiteFloorPlanDiagram = () => {
             <path
               d="M 472 372 C 540 372 600 320 660 268"
               stroke="hsl(var(--pharmacology))"
-              strokeWidth="1.2"
+              strokeWidth="1"
               fill="none"
               strokeDasharray="3 3"
               opacity="0.7"
@@ -781,9 +781,9 @@ export const MRISuiteFloorPlanDiagram = () => {
               strokeWidth={isSel("waveguide") ? 2.5 : 1.5}
             />
             {/* Lines representing piped gases passing through */}
-            <line x1="470" y1="470" x2="504" y2="470" stroke="hsl(var(--physiology))" strokeWidth="1.4" />
-            <line x1="470" y1="477" x2="504" y2="477" stroke="hsl(var(--pharmacology))" strokeWidth="1.4" />
-            <line x1="470" y1="484" x2="504" y2="484" stroke="hsl(var(--clinical))" strokeWidth="1.4" />
+            <line x1="470" y1="470" x2="504" y2="470" stroke="hsl(var(--physiology))" strokeWidth="1.5" />
+            <line x1="470" y1="477" x2="504" y2="477" stroke="hsl(var(--pharmacology))" strokeWidth="1.5" />
+            <line x1="470" y1="484" x2="504" y2="484" stroke="hsl(var(--clinical))" strokeWidth="1.5" />
             {/* Annotation arrow */}
             <line
               x1="487"
@@ -815,12 +815,12 @@ export const MRISuiteFloorPlanDiagram = () => {
 
           {/* RF-shielded door between Zone III and Zone IV */}
           <g style={{ pointerEvents: "none" }}>
-            <line x1="420" y1="320" x2="420" y2="380" stroke="hsl(var(--background))" strokeWidth="6" />
+            <line x1="420" y1="320" x2="420" y2="380" stroke="hsl(var(--background))" strokeWidth="3" />
             <path
               d="M 420 320 A 60 60 0 0 1 460 360"
               fill="none"
               stroke="hsl(var(--accent))"
-              strokeWidth="1.2"
+              strokeWidth="1"
               strokeDasharray="3 3"
             />
             {showLabels && (

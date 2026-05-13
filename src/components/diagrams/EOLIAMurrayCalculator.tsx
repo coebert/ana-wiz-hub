@@ -322,7 +322,7 @@ function TrendChart({ history, onReset }: { history: TrendPoint[]; onReset: () =
         ))}
 
         <rect x={PL} y={yL(14)} width={plotW} height={yL(0) - yL(14)} fill="hsl(var(--icu))" opacity={0.06} />
-        <line x1={PL} x2={W - PR} y1={yL(14)} y2={yL(14)} stroke="hsl(var(--destructive))" strokeWidth={0.8} strokeDasharray="4 3" opacity={0.6} />
+        <line x1={PL} x2={W - PR} y1={yL(14)} y2={yL(14)} stroke="hsl(var(--destructive))" strokeWidth={0.75} strokeDasharray="4 3" opacity={0.6} />
         <text x={W - PR - 2} y={yL(14) - 2} textAnchor="end" fontSize={8} fill="hsl(var(--destructive))">ΔP 14</text>
 
         <line x1={PL} y1={PT} x2={PL} y2={PT + plotH} stroke="hsl(var(--foreground))" strokeWidth={1} />
@@ -333,7 +333,7 @@ function TrendChart({ history, onReset }: { history: TrendPoint[]; onReset: () =
         <text x={PL + plotW / 2} y={H - 4} textAnchor="middle" fontSize={9} fill="hsl(var(--muted-foreground))">adjustments →</text>
 
         <path d={linePath("pplat", yL)} fill="none" stroke="hsl(var(--accent))" strokeWidth={1.5} strokeDasharray="4 2" />
-        <path d={linePath("dp", yL)} fill="none" stroke={dpColor} strokeWidth={2.2} />
+        <path d={linePath("dp", yL)} fill="none" stroke={dpColor} strokeWidth={2} />
         <path d={linePath("compliance", yR)} fill="none" stroke="hsl(var(--primary))" strokeWidth={1.5} />
 
         {history.length > 0 && (

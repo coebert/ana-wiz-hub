@@ -137,7 +137,7 @@ const AntibioticPKPDPrimer = () => {
                 fill="none" stroke="hsl(210 75% 50% / 0.5)" strokeWidth="2" strokeDasharray="4 2" />
               {/* Extended-infusion solid curve — sustained above MIC */}
               <path d="M 50 180 Q 80 100 130 90 L 200 88 Q 230 88 260 100 L 280 130 Q 310 95 360 90 L 430 88 Q 460 90 490 110 L 510 130 L 530 145"
-                fill="none" stroke="hsl(210 75% 50%)" strokeWidth="2.5" />
+                fill="none" stroke="hsl(210 75% 50%)" strokeWidth="2" />
               {/* Shaded T>MIC region */}
               <path d="M 50 135 L 580 135 L 580 88 Q 360 85 130 90 L 50 100 Z"
                 fill="hsl(210 75% 50% / 0.15)" />
@@ -153,7 +153,7 @@ const AntibioticPKPDPrimer = () => {
             <>
               {/* Once-daily large peak */}
               <path d="M 50 180 L 90 30 Q 130 40 180 110 Q 230 150 280 170 L 530 178"
-                fill="none" stroke="hsl(15 90% 55%)" strokeWidth="2.5" />
+                fill="none" stroke="hsl(15 90% 55%)" strokeWidth="2" />
               {/* Cmax marker */}
               <line x1="90" y1="30" x2="90" y2="180" stroke="hsl(15 90% 55% / 0.4)" strokeWidth="1" strokeDasharray="2 2" />
               <text x="100" y="35" fontSize="11" fontWeight="700" fill="hsl(15 90% 55%)">Cmax</text>
@@ -177,7 +177,7 @@ const AntibioticPKPDPrimer = () => {
             <>
               {/* Two moderate peaks (q12h) */}
               <path d="M 50 180 L 100 60 Q 150 70 200 100 Q 250 125 290 145 L 320 145 L 370 60 Q 420 70 470 100 Q 520 125 560 145"
-                fill="none" stroke="hsl(280 70% 55%)" strokeWidth="2.5" />
+                fill="none" stroke="hsl(280 70% 55%)" strokeWidth="2" />
               {/* AUC shaded area under entire curve */}
               <path d="M 50 180 L 100 60 Q 150 70 200 100 Q 250 125 290 145 L 320 145 L 370 60 Q 420 70 470 100 Q 520 125 560 145 L 560 180 Z"
                 fill="hsl(280 70% 55% / 0.18)" />

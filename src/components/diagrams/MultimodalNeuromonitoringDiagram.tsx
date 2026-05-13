@@ -262,7 +262,7 @@ const MultimodalNeuromonitoringDiagram = () => {
                 fill="hsl(var(--muted))"
                 opacity="0.4"
                 stroke="hsl(var(--foreground))"
-                strokeWidth="1.2"
+                strokeWidth="1"
               />
               {/* Brain */}
               <path
@@ -270,10 +270,10 @@ const MultimodalNeuromonitoringDiagram = () => {
                 fill="hsl(var(--anatomy))"
                 opacity="0.18"
                 stroke="hsl(var(--anatomy))"
-                strokeWidth="0.8"
+                strokeWidth="0.75"
               />
               {/* Sulci */}
-              <g stroke="hsl(var(--anatomy))" strokeWidth="0.6" fill="none" opacity="0.45">
+              <g stroke="hsl(var(--anatomy))" strokeWidth="0.5" fill="none" opacity="0.45">
                 <path d="M 110 130 Q 130 125, 150 135" />
                 <path d="M 105 175 Q 135 170, 160 180" />
                 <path d="M 110 220 Q 140 215, 165 225" />
@@ -282,8 +282,8 @@ const MultimodalNeuromonitoringDiagram = () => {
                 <path d="M 250 220 Q 220 215, 195 225" />
               </g>
               {/* Ventricles */}
-              <ellipse cx="160" cy="170" rx="10" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.6" opacity="0.85" />
-              <ellipse cx="200" cy="170" rx="10" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.6" opacity="0.85" />
+              <ellipse cx="160" cy="170" rx="10" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.5" opacity="0.85" />
+              <ellipse cx="200" cy="170" rx="10" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.5" opacity="0.85" />
               {/* IJV / jugular bulb hint at base */}
               <path d="M 130 290 Q 125 310, 120 325" stroke="hsl(280 55% 55%)" strokeWidth="3" fill="none" opacity="0.5" />
               <text x="100" y="335" fontSize="7" fill="hsl(var(--muted-foreground))" fontStyle="italic">
@@ -315,7 +315,7 @@ const MultimodalNeuromonitoringDiagram = () => {
                     )}
                     {/* Anchor label */}
                     <circle cx={m.x} cy={m.y} r={isSel ? 7 : 4} fill={m.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                    <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fontWeight="700" fill="white" pointerEvents="none">
+                    <text x={m.x} y={m.y + 2} textAnchor="middle" fontSize="6" fontWeight="700" fill="hsl(var(--background))" pointerEvents="none">
                       {isSel ? "●" : ""}
                     </text>
                   </g>
@@ -369,8 +369,8 @@ const MultimodalNeuromonitoringDiagram = () => {
               {/* Grid */}
               {[1, 2, 3, 4, 5].map((i) => (
                 <g key={`grid-${i}`} opacity="0.2">
-                  <line x1={50 + i * 58} y1="20" x2={50 + i * 58} y2="280" stroke="hsl(var(--foreground))" strokeWidth="0.4" strokeDasharray="2 3" />
-                  <line x1="50" y1={280 - i * 52} x2="340" y2={280 - i * 52} stroke="hsl(var(--foreground))" strokeWidth="0.4" strokeDasharray="2 3" />
+                  <line x1={50 + i * 58} y1="20" x2={50 + i * 58} y2="280" stroke="hsl(var(--foreground))" strokeWidth="0.5" strokeDasharray="2 3" />
+                  <line x1="50" y1={280 - i * 52} x2="340" y2={280 - i * 52} stroke="hsl(var(--foreground))" strokeWidth="0.5" strokeDasharray="2 3" />
                 </g>
               ))}
 
@@ -403,7 +403,7 @@ const MultimodalNeuromonitoringDiagram = () => {
                 return (
                   <g key={`dot-${m.id}`} style={{ cursor: "pointer" }} onClick={() => setSelectedId(m.id)}>
                     <circle cx={cx} cy={cy} r={isSel ? 14 : 10} fill={m.color} opacity={isSel ? 0.95 : 0.6} stroke={m.color} strokeWidth={isSel ? 2 : 1} />
-                    <text x={cx} y={cy + 3} textAnchor="middle" fontSize={isSel ? 9 : 8} fontWeight="700" fill="white" pointerEvents="none">
+                    <text x={cx} y={cy + 3} textAnchor="middle" fontSize={isSel ? 9 : 8} fontWeight="700" fill="hsl(var(--background))" pointerEvents="none">
                       {m.abbreviation.replace(" (rSO₂)", "")}
                     </text>
                   </g>

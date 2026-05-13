@@ -202,7 +202,7 @@ export const SittingHydrostaticAnimation = () => (
                 x2="270"
                 y2="170"
                 stroke="url(#ppm-col)"
-                strokeWidth="14"
+                strokeWidth="3"
                 strokeLinecap="round"
               />
               {/* Tick marks */}
@@ -666,7 +666,7 @@ export const ParkBenchArmTractionAnimation = () => (
                   d="M105,155 Q120,175 145,180 L165,184"
                   fill="none"
                   stroke="hsl(var(--destructive))"
-                  strokeWidth="6"
+                  strokeWidth="3"
                   strokeLinecap="round"
                   opacity="0.6"
                 />
@@ -684,7 +684,7 @@ export const ParkBenchArmTractionAnimation = () => (
                     d="M105,158 L80,200 L60,225"
                     fill="none"
                     stroke="hsl(var(--muted-foreground))"
-                    strokeWidth="6"
+                    strokeWidth="3"
                     strokeLinecap="round"
                   />
                   {/* Sling */}
@@ -697,7 +697,7 @@ export const ParkBenchArmTractionAnimation = () => (
                   <path
                     d="M50,222 L40,180"
                     stroke="hsl(var(--accent))"
-                    strokeWidth="1.2"
+                    strokeWidth="1"
                     strokeDasharray="2 2"
                   />
                   <text x="20" y="178" className="text-[8px] font-semibold" fill="hsl(var(--accent))">
@@ -823,7 +823,7 @@ export const ProneIVCFreeAbdomenAnimation = () => (
                   d="M60,180 Q170,100 280,180"
                   fill="none"
                   stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="6"
+                  strokeWidth="3"
                   strokeLinecap="round"
                 />
                 <text x="170" y="195" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--muted-foreground))">
@@ -833,8 +833,8 @@ export const ProneIVCFreeAbdomenAnimation = () => (
             ) : (
               <g>
                 {/* Jackson — chest + pelvic posts only */}
-                <rect x="70" y="130" width="40" height="60" rx="4" fill="hsl(var(--muted-foreground))" />
-                <rect x="230" y="130" width="40" height="60" rx="4" fill="hsl(var(--muted-foreground))" />
+                <rect x="70" y="130" width="40" height="60" rx="4" fill="hsl(var(--muted-foreground))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+                <rect x="230" y="130" width="40" height="60" rx="4" fill="hsl(var(--muted-foreground))" stroke="hsl(var(--border))" strokeWidth="0.75" />
                 <text x="170" y="195" textAnchor="middle" className="text-[9px] font-semibold" fill="hsl(var(--muted-foreground))">
                   Jackson (open) table
                 </text>
@@ -1102,7 +1102,7 @@ export const PeronealNerveLithotomyAnimation = () => (
             <text x="160" y="58" className="text-[8px]" fill="hsl(var(--muted-foreground))">femur</text>
 
             {/* Patella (subtle, anterior) */}
-            <ellipse cx="118" cy="105" rx="6" ry="9" fill="hsl(var(--muted-foreground) / 0.5)" stroke="hsl(var(--border))" strokeWidth="0.7" />
+            <ellipse cx="118" cy="105" rx="6" ry="9" fill="hsl(var(--muted-foreground) / 0.5)" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
             {/* ── Tibia (medial, anterior) ──────────────────────────── */}
             <path
@@ -1132,7 +1132,7 @@ export const PeronealNerveLithotomyAnimation = () => (
             />
             {active >= 1 && (
               <g className="animate-fade-in">
-                <line x1={fibHead.x + 8} y1={fibHead.y} x2="240" y2="118" stroke="hsl(var(--foreground))" strokeWidth="0.6" />
+                <line x1={fibHead.x + 8} y1={fibHead.y} x2="240" y2="118" stroke="hsl(var(--foreground))" strokeWidth="0.5" />
                 <text x="244" y="116" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
                   fibular head
                 </text>
@@ -1167,14 +1167,14 @@ export const PeronealNerveLithotomyAnimation = () => (
                   L 152,225`}
               fill="none"
               stroke="hsl(45 95% 50% / 0.25)"
-              strokeWidth="8"
+              strokeWidth="3"
               strokeLinecap="round"
               opacity={showSqueeze ? 0.15 : 0.6}
               className="transition-opacity duration-500"
             />
             {active >= 1 && (
               <g className="animate-fade-in">
-                <line x1="152" y1="78" x2="100" y2="68" stroke="hsl(45 80% 35%)" strokeWidth="0.6" />
+                <line x1="152" y1="78" x2="100" y2="68" stroke="hsl(45 80% 35%)" strokeWidth="0.5" />
                 <text x="62" y="65" className="text-[9px] font-semibold" fill={showSqueeze ? "hsl(var(--destructive))" : "hsl(45 80% 35%)"}>
                   common peroneal n.
                 </text>
@@ -1191,7 +1191,7 @@ export const PeronealNerveLithotomyAnimation = () => (
                 <line
                   x1="194" y1={fibNeck.y}
                   x2={fibHead.x + 8} y2={fibNeck.y}
-                  stroke="hsl(var(--destructive))" strokeWidth="2.2"
+                  stroke="hsl(var(--destructive))" strokeWidth="2"
                   markerEnd="url(#ppm-pn-arr)"
                 />
                 {/* Arrow from medial side → fibular neck (counter-pressure from tibia) */}
@@ -1229,7 +1229,7 @@ export const PeronealNerveLithotomyAnimation = () => (
             {showFootDrop && (
               <path
                 d={`M ${ankle.x - 4},${ankle.y} L ${ankle.x + 32},${ankle.y} L ${ankle.x + 32},${ankle.y + 8} L ${ankle.x - 4},${ankle.y + 8} Z`}
-                fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.7" strokeDasharray="2 2" opacity="0.6"
+                fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6"
               />
             )}
             <g

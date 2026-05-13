@@ -291,20 +291,20 @@ const MModeDiagram = () => {
                   </defs>
                   <path d="M 100,5 L 30,130 A 100,100 0 0 0 170,130 Z" fill="url(#mm-bg)" stroke="hsl(var(--border))" strokeWidth="0.5" />
                   {/* Simplified anatomy — RV, IVS, LV, PW, MV, Ao, LA */}
-                  <path d="M 60,30 Q 100,28 140,32 L 145,52 Q 100,50 65,52 Z" fill="#1a1a1a" stroke="#d8d8a8" strokeWidth="0.6" />
-                  <text x="100" y="44" fontSize="6" fill="#fff8d0" textAnchor="middle">RV</text>
-                  <path d="M 65,52 Q 100,55 145,57 L 145,63 Q 100,60 65,58 Z" fill="#c8c098" opacity="0.85" />
-                  <path d="M 65,58 Q 100,62 145,67 L 160,100 Q 100,108 70,100 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.6" />
-                  <text x="105" y="90" fontSize="8" fill="#fff8d0" fontWeight="700" textAnchor="middle">LV</text>
-                  <path d="M 70,100 Q 100,108 160,100 L 162,108 Q 100,116 70,108 Z" fill="#c8c098" opacity="0.85" />
+                  <path d="M 60,30 Q 100,28 140,32 L 145,52 Q 100,50 65,52 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+                  <text x="100" y="44" fontSize="6" fill="hsl(var(--accent))" textAnchor="middle">RV</text>
+                  <path d="M 65,52 Q 100,55 145,57 L 145,63 Q 100,60 65,58 Z" fill="hsl(var(--accent))" opacity="0.85" />
+                  <path d="M 65,58 Q 100,62 145,67 L 160,100 Q 100,108 70,100 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+                  <text x="105" y="90" fontSize="8" fill="hsl(var(--accent))" fontWeight="700" textAnchor="middle">LV</text>
+                  <path d="M 70,100 Q 100,108 160,100 L 162,108 Q 100,116 70,108 Z" fill="hsl(var(--accent))" opacity="0.85" />
                   {/* MV */}
-                  <path d="M 145,67 Q 150,82 148,95" fill="none" stroke="#fff8d0" strokeWidth="0.7" />
-                  <path d="M 160,73 Q 155,87 150,95" fill="none" stroke="#fff8d0" strokeWidth="0.7" />
+                  <path d="M 145,67 Q 150,82 148,95" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.75" />
+                  <path d="M 160,73 Q 155,87 150,95" fill="none" stroke="hsl(var(--accent))" strokeWidth="0.75" />
                   {/* Ao + LA */}
-                  <path d="M 145,57 L 170,42 L 178,58 L 175,82 L 160,90 L 145,67 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.6" />
-                  <text x="162" y="68" fontSize="5" fill="#fff8d0" textAnchor="middle">Ao</text>
-                  <path d="M 160,90 Q 178,98 178,118 L 165,128 Q 145,128 142,108 Z" fill="#0a0a0a" stroke="#d8d8a8" strokeWidth="0.6" />
-                  <text x="160" y="115" fontSize="6" fill="#fff8d0" textAnchor="middle" fontWeight="700">LA</text>
+                  <path d="M 145,57 L 170,42 L 178,58 L 175,82 L 160,90 L 145,67 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+                  <text x="162" y="68" fontSize="5" fill="hsl(var(--accent))" textAnchor="middle">Ao</text>
+                  <path d="M 160,90 Q 178,98 178,118 L 165,128 Q 145,128 142,108 Z" fill="hsl(var(--foreground))" stroke="hsl(var(--accent))" strokeWidth="0.5" />
+                  <text x="160" y="115" fontSize="6" fill="hsl(var(--accent))" textAnchor="middle" fontWeight="700">LA</text>
                   {/* Cursor line — varies by track */}
                   {(() => {
                     const cursors: Record<Track, { x: number; label: string }> = {
@@ -315,7 +315,7 @@ const MModeDiagram = () => {
                     const c = cursors[track];
                     return (
                       <g>
-                        <line x1={c.x} y1="5" x2={c.x} y2="135" stroke="hsl(var(--primary))" strokeWidth="0.8" strokeDasharray="3 2" opacity="0.95" />
+                        <line x1={c.x} y1="5" x2={c.x} y2="135" stroke="hsl(var(--primary))" strokeWidth="0.75" strokeDasharray="3 2" opacity="0.95" />
                         <circle cx={c.x} cy="5" r="2" fill="hsl(var(--primary))" />
                         <text x={c.x + 3} y="14" fontSize="6" fill="hsl(var(--primary))" fontWeight="700">{c.label}</text>
                       </g>

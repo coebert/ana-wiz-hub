@@ -129,16 +129,16 @@ const HandDermatomeMap = () => (
     <path d="M 70 145 Q 30 140 20 110 Q 15 90 20 70 L 10 30 L 20 15 L 30 30 L 30 55 L 35 20 L 45 5 L 55 20 L 50 55 L 55 15 L 65 2 L 75 15 L 70 55 L 80 18 L 90 5 L 95 22 L 85 55 L 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 Q 125 105 120 110 Q 100 140 70 145 Z"
       fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5" opacity="0.6" />
     <path d="M 100 35 L 110 30 L 105 50 L 90 65 Q 95 90 120 100 L 120 110 Q 105 120 90 125 L 85 100 L 85 55 L 100 35 Z"
-      fill={ROOT_COLORS.C6} fillOpacity="0.25" stroke={ROOT_COLORS.C6} strokeWidth="0.8" />
+      fill={ROOT_COLORS.C6} fillOpacity="0.25" stroke={ROOT_COLORS.C6} strokeWidth="0.75" />
     <text x="105" y="80" fontSize="8" fill={ROOT_COLORS.C6} fontWeight="bold">C6</text>
     <path d="M 55 15 L 65 2 L 75 15 L 70 55 L 50 55 L 55 15 Z"
-      fill={ROOT_COLORS.C7} fillOpacity="0.25" stroke={ROOT_COLORS.C7} strokeWidth="0.8" />
+      fill={ROOT_COLORS.C7} fillOpacity="0.25" stroke={ROOT_COLORS.C7} strokeWidth="0.75" />
     <text x="60" y="38" fontSize="7" fill={ROOT_COLORS.C7} fontWeight="bold">C7</text>
     <path d="M 10 30 L 20 15 L 30 30 L 30 55 L 20 70 Q 15 90 20 110 Q 30 140 50 143 L 50 55 L 35 20 L 45 5 L 50 10 L 50 55"
-      fill={ROOT_COLORS.C8} fillOpacity="0.2" stroke={ROOT_COLORS.C8} strokeWidth="0.8" />
+      fill={ROOT_COLORS.C8} fillOpacity="0.2" stroke={ROOT_COLORS.C8} strokeWidth="0.75" />
     <text x="22" y="80" fontSize="8" fill={ROOT_COLORS.C8} fontWeight="bold">C8</text>
     <path d="M 20 110 Q 30 140 50 143 L 70 145 L 70 130 L 40 125 L 25 112 Z"
-      fill={ROOT_COLORS.T1} fillOpacity="0.2" stroke={ROOT_COLORS.T1} strokeWidth="0.8" />
+      fill={ROOT_COLORS.T1} fillOpacity="0.2" stroke={ROOT_COLORS.T1} strokeWidth="0.75" />
     <text x="45" y="140" fontSize="7" fill={ROOT_COLORS.T1} fontWeight="bold">T1</text>
     <text x="70" y="115" textAnchor="middle" fontSize="6" fill="hsl(var(--muted-foreground))">Palmar</text>
   </svg>
@@ -203,7 +203,7 @@ const BrachialPlexusDiagram = () => {
             </defs>
 
             {/* ===== VERTEBRAL BODIES (C4–T2 hint) ===== */}
-            <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.8">
+            <g opacity="0.08" fill="url(#boneGrad)" stroke="hsl(40, 25%, 50%)" strokeWidth="0.75">
               {[0, 28, 56, 84, 112, 140].map((dy, i) => (
                 <rect key={i} x="410" y={-2 + dy} width="22" height="22" rx="3" />
               ))}
@@ -219,13 +219,13 @@ const BrachialPlexusDiagram = () => {
 
             {/* ===== ANTERIOR SCALENE — triangular anatomical shape ===== */}
             <path d="M 65,0 C 62,15 58,40 55,70 C 52,100 50,130 48,160 C 47,175 48,185 52,195 L 75,195 C 72,180 70,160 68,130 C 66,100 68,65 72,30 C 74,15 75,5 75,0 Z"
-              fill="url(#scaleneGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.6" opacity="0.5" />
+              fill="url(#scaleneGrad)" stroke="hsl(0, 20%, 50%)" strokeWidth="0.5" opacity="0.5" />
             <rect x="48" y="0" width="27" height="195" fill="url(#muscleFibre)" opacity="0.3" />
             <text x="38" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(-85, 38, 100)" fontStyle="italic">Anterior scalene</text>
 
             {/* ===== MIDDLE SCALENE — wider, more posterior ===== */}
             <path d="M 345,0 C 348,15 352,40 355,70 C 358,100 360,130 362,160 C 363,175 362,185 358,195 L 335,195 C 338,180 340,160 342,130 C 344,100 342,65 338,30 C 336,15 335,5 335,0 Z"
-              fill="url(#scalenemidGrad)" stroke="hsl(0, 15%, 48%)" strokeWidth="0.6" opacity="0.5" />
+              fill="url(#scalenemidGrad)" stroke="hsl(0, 15%, 48%)" strokeWidth="0.5" opacity="0.5" />
             <rect x="335" y="0" width="28" height="195" fill="url(#muscleFibre)" opacity="0.25" />
             <text x="372" y="100" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.45" transform="rotate(85, 372, 100)" fontStyle="italic">Middle scalene</text>
 
@@ -236,9 +236,9 @@ const BrachialPlexusDiagram = () => {
 
             {/* ===== FIRST RIB — curved anatomical shape ===== */}
             <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
-              fill="none" stroke="hsl(40, 30%, 55%)" strokeWidth="5" opacity="0.12" strokeLinecap="round" />
+              fill="none" stroke="hsl(40, 30%, 55%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
             <path d="M 20,170 Q 50,162 100,158 Q 160,155 210,154 Q 260,155 320,158 Q 370,162 400,170"
-              fill="none" stroke="hsl(40, 25%, 50%)" strokeWidth="1.2" opacity="0.18" />
+              fill="none" stroke="hsl(40, 25%, 50%)" strokeWidth="1" opacity="0.18" />
             {/* Scalene tubercle on first rib */}
             <circle cx="100" cy="158" r="3" fill="hsl(40, 30%, 60%)" opacity="0.12" />
             <text x="100" y="172" fontSize="4" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.25" fontStyle="italic">scalene tubercle</text>
@@ -246,7 +246,7 @@ const BrachialPlexusDiagram = () => {
 
             {/* ===== CLAVICLE — realistic S-shape ===== */}
             <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
-              fill="none" stroke="hsl(40, 25%, 60%)" strokeWidth="7" opacity="0.13" strokeLinecap="round" />
+              fill="none" stroke="hsl(40, 25%, 60%)" strokeWidth="3" opacity="0.13" strokeLinecap="round" />
             <path d="M 0,192 Q 40,186 80,184 Q 120,182 170,181 Q 220,180 270,181 Q 320,183 370,187 Q 400,190 420,195"
               fill="none" stroke="hsl(40, 20%, 50%)" strokeWidth="1.5" opacity="0.2" />
             {/* Sternal end */}
@@ -259,15 +259,15 @@ const BrachialPlexusDiagram = () => {
             <text x="70" y="245" fontSize="5" fill="hsl(var(--muted-foreground))" opacity="0.2" fontStyle="italic">Pec major</text>
             {/* Pectoralis minor */}
             <path d="M 80,225 Q 150,218 220,215 Q 250,218 270,225 L 265,270 Q 200,262 160,262 Q 120,265 85,270 Z"
-              fill="hsl(0, 25%, 48%)" fillOpacity="0.04" stroke="hsl(0, 20%, 48%)" strokeWidth="0.4" opacity="0.3" strokeDasharray="3 2" />
+              fill="hsl(0, 25%, 48%)" fillOpacity="0.04" stroke="hsl(0, 20%, 48%)" strokeWidth="0.5" opacity="0.3" strokeDasharray="3 2" />
             <text x="180" y="250" fontSize="4.5" fill="hsl(var(--muted-foreground))" opacity="0.18" fontStyle="italic">Pec minor</text>
 
             {/* ===== SUBCLAVIAN → AXILLARY ARTERY — red, pulsating ===== */}
             <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
-              fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3.5" opacity="0.12" strokeLinecap="round" />
+              fill="none" stroke="hsl(0, 55%, 50%)" strokeWidth="3" opacity="0.12" strokeLinecap="round" />
             {/* Arterial wall shimmer */}
             <path d="M 210,158 Q 210,170 210,185 Q 209,200 208,220 Q 206,250 204,280 Q 202,320 200,360 Q 199,385 198,415"
-              fill="none" stroke="hsl(0, 60%, 60%)" strokeWidth="0.8" opacity="0.15" strokeDasharray="1 3" />
+              fill="none" stroke="hsl(0, 60%, 60%)" strokeWidth="0.75" opacity="0.15" strokeDasharray="1 3" />
             {/* Companion vein (slightly lateral) */}
             <path d="M 215,165 Q 215,185 214,210 Q 213,240 212,270 Q 210,310 208,350 Q 206,385 205,415"
               fill="none" stroke="hsl(220, 45%, 50%)" strokeWidth="2" opacity="0.06" strokeLinecap="round" />
@@ -332,7 +332,7 @@ const BrachialPlexusDiagram = () => {
                 <g key={i} opacity={isParentSelected ? 0.85 : 0.4} className="transition-opacity duration-200">
                   <path
                     d={`M${source.x},${source.y} Q${(source.x + ann.target.x) / 2},${(source.y + ann.target.y) / 2 - 10} ${ann.target.x},${ann.target.y}`}
-                    fill="none" stroke={source.color} strokeWidth="0.8" strokeDasharray="3 2" />
+                    fill="none" stroke={source.color} strokeWidth="0.75" strokeDasharray="3 2" />
                   <text x={ann.target.x - 2} y={ann.target.y - 3} fontSize="5" fill={source.color} fontWeight="600">
                     {ann.label}
                   </text>

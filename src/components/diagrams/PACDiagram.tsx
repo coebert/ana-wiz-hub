@@ -63,7 +63,7 @@ const PACDiagram = () => {
       svg: (
         <svg viewBox="0 0 360 100" className="w-full h-auto">
           <line x1="30" y1="75" x2="340" y2="75" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="3,2" />
-          <line x1="30" y1="55" x2="340" y2="55" stroke="hsl(var(--border))" strokeWidth="0.3" strokeDasharray="2,3" />
+          <line x1="30" y1="55" x2="340" y2="55" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2,3" />
           <text x="15" y="78" fontSize="7" className="fill-muted-foreground">0</text>
           <text x="345" y="58" fontSize="6" className="fill-muted-foreground">8–15</text>
           {/* PA waveform — same systolic, higher diastolic, dicrotic notch */}
@@ -158,7 +158,7 @@ const PACDiagram = () => {
               <text x="335" y="95" textAnchor="middle" className="fill-muted-foreground" fontSize="7">6–12</text>
               <text x="200" y="112" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Pressures in mmHg — tap a chamber for waveform detail</text>
               {/* Balloon annotation */}
-              <circle cx="335" cy="32" r="5" fill="hsl(142,60%,45%)" opacity="0.3" stroke="hsl(142,60%,45%)" strokeWidth="0.8" />
+              <circle cx="335" cy="32" r="5" fill="hsl(142,60%,45%)" opacity="0.3" stroke="hsl(142,60%,45%)" strokeWidth="0.75" />
               <text x="365" y="28" fontSize="5" fill="hsl(142,60%,45%)" fontWeight="600">Balloon</text>
               <text x="365" y="36" fontSize="5" fill="hsl(142,60%,45%)">inflated</text>
             </svg>

@@ -257,8 +257,7 @@ const PregnancyTimelineDiagram = () => {
             width={44}
             height={16}
             rx={3}
-            fill="hsl(var(--primary))"
-          />
+            fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x={playheadX} y={40} textAnchor="middle" className="fill-primary-foreground" fontSize="10" fontWeight={700}>
             {week >= 41 ? "PP" : `wk ${Math.round(week)}`}
           </text>

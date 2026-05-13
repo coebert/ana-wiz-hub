@@ -268,7 +268,7 @@ function AnatomySvg({
         d="M 130 20 Q 180 6 230 20 Q 240 60 230 95 L 200 110 L 160 110 L 130 95 Q 120 60 130 20 Z"
         fill="hsl(var(--muted))"
         stroke="hsl(var(--border))"
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       {/* Tongue base / pharynx (supraglottic level) */}
       <ellipse
@@ -302,13 +302,13 @@ function AnatomySvg({
         d={`M 80 ${chestTopY} Q 100 ${chestTopY - 8} 180 ${chestTopY - 8} Q 260 ${chestTopY - 8} 280 ${chestTopY} L 270 ${diaphragmY - 10} Q 180 ${diaphragmY + 4} 90 ${diaphragmY - 10} Z`}
         fill="url(#pao-chest)"
         stroke="hsl(var(--clinical))"
-        strokeWidth="1.4"
+        strokeWidth="1.5"
       />
       {/* Diaphragm */}
       <path
         d={`M 90 ${diaphragmY - 10} Q 180 ${diaphragmY + 14} 270 ${diaphragmY - 10}`}
         stroke="hsl(var(--clinical))"
-        strokeWidth="1.6"
+        strokeWidth="1.5"
         fill="none"
         strokeDasharray="3 3"
       />
@@ -332,7 +332,7 @@ function AnatomySvg({
         y2={chestTopY}
         stroke="hsl(var(--muted-foreground))"
         strokeDasharray="2 3"
-        strokeWidth="0.8"
+        strokeWidth="0.75"
       />
       <text x="148" y={chestTopY + 3} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="end">
         sternal notch
@@ -352,13 +352,13 @@ function AnatomySvg({
       <path
         d={`M ${180 - wIntra / 2} ${diaphragmY - 30} L 150 ${diaphragmY - 10} M ${180 + wIntra / 2} ${diaphragmY - 30} L 210 ${diaphragmY - 10}`}
         stroke="hsl(var(--border))"
-        strokeWidth="1.4"
+        strokeWidth="1.5"
         fill="none"
       />
 
       {/* Pleural pressure arrows around intrathoracic trachea */}
       {level === "intrathoracic" && pleuralP > 0.1 && (
-        <g stroke="hsl(var(--destructive))" strokeWidth="1.4" fill="none" opacity={pleuralP}>
+        <g stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" opacity={pleuralP}>
           <path d="M 130 230 L 168 230" markerEnd="url(#pao-arrow-r)" />
           <path d="M 230 230 L 192 230" markerEnd="url(#pao-arrow-r)" />
           <text x="115" y="222" fontSize="9" fill="hsl(var(--destructive))" textAnchor="end" stroke="none">
@@ -368,7 +368,7 @@ function AnatomySvg({
       )}
       {/* Atmospheric arrows around extrathoracic trachea */}
       {level === "extrathoracic" && pleuralP < -0.1 && (
-        <g stroke="hsl(var(--destructive))" strokeWidth="1.4" fill="none" opacity={Math.abs(pleuralP)}>
+        <g stroke="hsl(var(--destructive))" strokeWidth="1.5" fill="none" opacity={Math.abs(pleuralP)}>
           <path d="M 130 145 L 168 145" markerEnd="url(#pao-arrow-r)" />
           <path d="M 230 145 L 192 145" markerEnd="url(#pao-arrow-r)" />
           <text x="115" y="138" fontSize="9" fill="hsl(var(--destructive))" textAnchor="end" stroke="none">
@@ -481,7 +481,7 @@ function FlowLoop({
       </text>
 
       {/* Loop envelope */}
-      <path d={pathD} stroke="hsl(var(--clinical))" strokeWidth="1.6" fill="none" />
+      <path d={pathD} stroke="hsl(var(--clinical))" strokeWidth="1.5" fill="none" />
 
       {/* Animated marker */}
       <circle cx={x(vol)} cy={y(displayFlow)} r="4" fill="hsl(var(--primary))" />

@@ -102,7 +102,7 @@ const ETTS: Record<ETTKey, {
         {/* Foil wrap */}
         <rect x="40" y="78" width="240" height="34" rx="6" fill="url(#foilWrap)" opacity="0.85" stroke="hsl(40 15% 45%)" strokeWidth="1" />
         {/* Foam cuff */}
-        <ellipse cx="270" cy="95" rx="38" ry="26" fill="hsl(30 60% 78%)" stroke="hsl(30 50% 45%)" strokeWidth="1.2" />
+        <ellipse cx="270" cy="95" rx="38" ry="26" fill="hsl(30 60% 78%)" stroke="hsl(30 50% 45%)" strokeWidth="1" />
         <text x="270" y="140" fontSize="9" textAnchor="middle" fill="hsl(var(--foreground))">foam cuff (vented)</text>
         {/* Pilot vent open to air */}
         <path d="M 270 70 Q 270 40 230 35" fill="none" stroke="hsl(30 50% 45%)" strokeWidth="1" />
@@ -347,10 +347,10 @@ const LaserAirwayDiagram = () => {
             <div className="rounded-lg border border-border bg-background p-2">
               <svg viewBox="0 0 360 240" className="w-full h-auto" role="img" aria-label={`Eye cross-section showing ${wave.laser} target`}>
                 {/* Globe */}
-                <ellipse cx="180" cy="120" rx="120" ry="90" fill="hsl(0 0% 99%)" stroke="hsl(0 0% 35%)" strokeWidth="1.4" />
+                <ellipse cx="180" cy="120" rx="120" ry="90" fill="hsl(0 0% 99%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
                 {/* Cornea bulge */}
-                <path d="M 60 120 Q 30 120 60 90 Q 70 80 75 90" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.4" />
-                <path d="M 60 120 Q 30 120 60 150 Q 70 160 75 150" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.4" />
+                <path d="M 60 120 Q 30 120 60 90 Q 70 80 75 90" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
+                <path d="M 60 120 Q 30 120 60 150 Q 70 160 75 150" fill="hsl(195 50% 92%)" stroke="hsl(0 0% 35%)" strokeWidth="1.5" />
                 {/* Iris + pupil */}
                 <ellipse cx="78" cy="120" rx="6" ry="22" fill="hsl(28 55% 35%)" />
                 <ellipse cx="78" cy="120" rx="3" ry="11" fill="hsl(0 0% 5%)" />
@@ -383,7 +383,7 @@ const LaserAirwayDiagram = () => {
                 {(wave.laser === "Nd:YAG" || wave.laser === "KTP / Argon") && (
                   <>
                     {/* Beam through cornea, lens → focused on fovea */}
-                    <line x1="0" y1="120" x2="297" y2="120" stroke={wave.colour} strokeWidth="2.5" />
+                    <line x1="0" y1="120" x2="297" y2="120" stroke={wave.colour} strokeWidth="2" />
                     <line x1="0" y1="116" x2="297" y2="118" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
                     <line x1="0" y1="124" x2="297" y2="122" stroke={wave.colour} strokeWidth="1" opacity="0.5" />
                     {/* Focal burn at fovea */}

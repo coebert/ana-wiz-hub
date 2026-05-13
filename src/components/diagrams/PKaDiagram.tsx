@@ -153,8 +153,8 @@ export const PKaDiagram = () => {
         </text>
 
         {/* Curves */}
-        <path d={unionisedPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="2.5" />
-        <path d={ionisedPath} fill="none" stroke="hsl(340 60% 50%)" strokeWidth="2.5" />
+        <path d={unionisedPath} fill="none" stroke="hsl(170 50% 40%)" strokeWidth="2" />
+        <path d={ionisedPath} fill="none" stroke="hsl(340 60% 50%)" strokeWidth="2" />
 
         {/* Current pH cursor */}
         <line x1={currentX} y1={padT} x2={currentX} y2={padT + plotH} stroke="hsl(210 70% 45%)" strokeWidth="1.5" opacity="0.6" />

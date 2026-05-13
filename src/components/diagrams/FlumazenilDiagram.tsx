@@ -160,10 +160,10 @@ export const FlumazenilDiagram = () => {
               </g>
 
               {/* Cl- channel state arrows */}
-              <path d="M 220 50 L 240 70" stroke="hsl(var(--foreground))" strokeWidth="1.2" markerEnd="url(#fz-arr)" />
+              <path d="M 220 50 L 240 70" stroke="hsl(var(--foreground))" strokeWidth="1" markerEnd="url(#fz-arr)" />
               <text x="180" y="46" fontSize="9" className="fill-foreground" fontWeight="600">Agonist → ↑ Cl⁻ → sedation</text>
 
-              <path d="M 460 50 L 440 70" stroke="hsl(var(--destructive))" strokeWidth="1.2" markerEnd="url(#fz-arr-r)" />
+              <path d="M 460 50 L 440 70" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#fz-arr-r)" />
               <text x="440" y="46" fontSize="9" className="fill-destructive" fontWeight="600">Antagonist → no Cl⁻ shift</text>
 
               <defs>
@@ -247,9 +247,9 @@ export const FlumazenilDiagram = () => {
               </text>
 
               {/* Parent BZD */}
-              <path d={parentCurve.d} fill="none" stroke={parentCurve.color} strokeWidth="2.4" />
+              <path d={parentCurve.d} fill="none" stroke={parentCurve.color} strokeWidth="2" />
               {/* Flumazenil */}
-              <path d={flumCurve.d} fill="none" stroke={flumCurve.color} strokeWidth="2.4" />
+              <path d={flumCurve.d} fill="none" stroke={flumCurve.color} strokeWidth="2" />
 
               {/* Marker: flumazenil clinically gone */}
               {flumGoneAt < X_MAX && (

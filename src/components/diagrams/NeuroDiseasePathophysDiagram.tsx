@@ -269,7 +269,7 @@ const MGDiagram = () => (
     {[60, 80, 100, 140].map((x, i) => (
       <g key={i} className="anim-receptor-block" style={{ animationDelay: `${i * 0.12}s` }}>
         <rect x={x} y={165} width="10" height="12" fill="hsl(var(--destructive) / 0.4)" stroke="hsl(var(--destructive))" />
-        <path d={`M ${x - 2} 158 L ${x + 12} 158`} stroke="hsl(var(--destructive))" strokeWidth="1.4" />
+        <path d={`M ${x - 2} 158 L ${x + 12} 158`} stroke="hsl(var(--destructive))" strokeWidth="1.5" />
       </g>
     ))}
     <text x="100" y="225" textAnchor="middle" fontSize="8" className={labelClass}>Postsynaptic muscle membrane</text>
@@ -321,7 +321,7 @@ const EpilepsyDiagram = () => (
     <text x="240" y="155" textAnchor="middle" fontSize="7" className={subClass}>cortical neuron</text>
 
     {/* Burst output — flickers with seizure firing */}
-    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.8" className="anim-burst" />
+    <path d="M 270 130 L 290 120 L 295 140 L 310 125 L 320 145 L 340 130 L 350 150" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" className="anim-burst" />
     <text x="310" y="170" fontSize="8" fontWeight="600" className="fill-destructive">Hypersynchronous firing</text>
 
     {/* Right column: drug effects */}
@@ -357,7 +357,7 @@ const MSDiagram = () => (
     ))}
     {/* Saltatory conduction arrows — sweep along intact axon */}
     {[110, 170, 230, 290, 350].map((x, i) => (
-      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.4" markerEnd="url(#con-arrow)" className="anim-conduction" style={{ animationDelay: `${i * 0.12}s` }} />
+      <path key={i} d={`M ${x - 8} 65 Q ${x} 50 ${x + 8} 65`} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.5" markerEnd="url(#con-arrow)" className="anim-conduction" style={{ animationDelay: `${i * 0.12}s` }} />
     ))}
     <text x="230" y="42" textAnchor="middle" fontSize="7.5" className={subClass}>Fast saltatory conduction (intact myelin)</text>
 
@@ -406,7 +406,7 @@ const PDDiagram = () => (
     <text x="220" y="173" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>SN pars compacta</text>
 
     {/* Degenerating dopaminergic projection — fades out */}
-    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
+    <path d="M 200 158 Q 180 140 155 122" fill="none" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="155" y="155" fontSize="7.5" className="fill-destructive">↓↓ dopamine</text>
 
     {/* Lewy body — grows in */}
@@ -439,7 +439,7 @@ const MNDDiagram = () => (
     <rect x="40" y="40" width="120" height="30" rx="4" fill="hsl(var(--muted))" stroke="hsl(var(--border))" />
     <text x="100" y="58" textAnchor="middle" fontSize="8" fontWeight="600" className={labelClass}>Motor cortex (UMN)</text>
     {/* UMN with degeneration — fades */}
-    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2.5" strokeDasharray="4 3" className="anim-dopamine" />
+    <line x1="100" y1="70" x2="100" y2="120" stroke="hsl(var(--destructive))" strokeWidth="2" strokeDasharray="4 3" className="anim-dopamine" />
     <text x="115" y="100" fontSize="7" className="fill-destructive">UMN loss</text>
 
     {/* Anterior horn */}

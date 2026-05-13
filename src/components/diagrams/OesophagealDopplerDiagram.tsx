@@ -36,11 +36,11 @@ const AxialView = () => (
     <text x="260" y="288" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">SC</text>
 
     {/* Descending Aorta */}
-    <circle cx="200" cy="260" r="28" fill="hsl(0 65% 50% / 0.12)" stroke="hsl(0 65% 50%)" strokeWidth="2.5" />
+    <circle cx="200" cy="260" r="28" fill="hsl(0 65% 50% / 0.12)" stroke="hsl(0 65% 50%)" strokeWidth="2" />
     <circle cx="200" cy="272" r="3" fill="hsl(0 65% 50%)" />
 
     {/* Aorta label — positioned to the left, outside the circle */}
-    <line x1="175" y1="250" x2="120" y2="230" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <line x1="175" y1="250" x2="120" y2="230" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="118" y="225" fontSize="8" fill="hsl(0 65% 50%)" textAnchor="end" fontWeight="bold">Descending</text>
     <text x="118" y="236" fontSize="8" fill="hsl(0 65% 50%)" textAnchor="end" fontWeight="bold">Aorta</text>
     <text x="118" y="248" fontSize="6.5" fill="hsl(0 65% 50%)" textAnchor="end">Blood flow ⊙ (out of page)</text>
@@ -49,14 +49,14 @@ const AxialView = () => (
     <ellipse cx="260" cy="215" rx="16" ry="13" fill="hsl(var(--primary)/0.08)" stroke="hsl(var(--primary))" strokeWidth="2" />
 
     {/* Oesophagus label — positioned to the right */}
-    <line x1="276" y1="210" x2="310" y2="195" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <line x1="276" y1="210" x2="310" y2="195" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="315" y="192" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">Oesophagus</text>
 
     {/* Doppler probe inside oesophagus */}
     <rect x="253" y="207" width="14" height="16" rx="5" fill="hsl(var(--primary)/0.35)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
 
     {/* Probe label */}
-    <line x1="267" y1="220" x2="315" y2="230" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <line x1="267" y1="220" x2="315" y2="230" stroke="hsl(var(--border))" strokeWidth="0.75" />
     <text x="318" y="228" fontSize="7" fill="hsl(var(--primary))" fontWeight="bold">Doppler probe</text>
     <text x="318" y="238" fontSize="6" fill="hsl(var(--muted-foreground))">4 MHz CW Doppler</text>
 
@@ -66,7 +66,7 @@ const AxialView = () => (
     <text x="222" y="243" fontSize="6.5" fill="hsl(var(--primary))" fontWeight="600" transform="rotate(-30, 222, 243)">Doppler beam</text>
 
     {/* 45° angle arc */}
-    <path d="M 257,210 A 12,12 0 0,0 248,222" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+    <path d="M 257,210 A 12,12 0 0,0 248,222" fill="none" stroke="hsl(var(--primary))" strokeWidth="0.75" />
     <text x="240" y="210" fontSize="5.5" fill="hsl(var(--primary))">45°</text>
 
     {/* Callout: probe insertion */}
@@ -74,7 +74,7 @@ const AxialView = () => (
     <text x="423" y="110" fontSize="7" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">Probe at 35-40 cm from teeth</text>
     <text x="423" y="121" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Rotated to face aorta (max signal)</text>
     <text x="423" y="131" fontSize="6" fill="hsl(var(--muted-foreground))" textAnchor="middle">Measures descending aortic velocity</text>
-    <line x1="348" y1="120" x2="276" y2="205" stroke="hsl(var(--border))" strokeWidth="0.8" />
+    <line x1="348" y1="120" x2="276" y2="205" stroke="hsl(var(--border))" strokeWidth="0.75" />
 
     {/* Callout: Doppler equation */}
     <rect x="55" y="310" width="148" height="52" rx="5" fill="hsl(0 65% 50% / 0.05)" stroke="hsl(0 65% 50% / 0.3)" strokeWidth="1" />
@@ -117,7 +117,7 @@ const SagittalView = () => (
         <polygon points="0 0, 6 2, 0 4" fill="hsl(0 65% 50%)" />
       </marker>
     </defs>
-    <line x1="342" y1="65" x2="342" y2="325" stroke="hsl(0 65% 50%)" strokeWidth="1.2" markerEnd="url(#sagArrowRed)" />
+    <line x1="342" y1="65" x2="342" y2="325" stroke="hsl(0 65% 50%)" strokeWidth="1" markerEnd="url(#sagArrowRed)" />
     {/* Aorta label — outside the tube */}
     <text x="342" y="355" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Descending</text>
     <text x="342" y="365" fontSize="7" fill="hsl(0 65% 50%)" textAnchor="middle" fontWeight="bold">Aorta ↓</text>
@@ -126,13 +126,13 @@ const SagittalView = () => (
     <rect x="275" y="50" width="20" height="290" rx="9" fill="hsl(var(--primary)/0.06)" stroke="hsl(var(--primary))" strokeWidth="1.5" />
     {/* Oesophagus label — outside, to the left */}
     <text x="268" y="100" fontSize="7" fill="hsl(var(--primary))" textAnchor="end" fontWeight="bold">Oesophagus</text>
-    <line x1="270" y1="98" x2="275" y2="98" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+    <line x1="270" y1="98" x2="275" y2="98" stroke="hsl(var(--primary))" strokeWidth="0.75" />
 
     {/* ─── Doppler probe inside oesophagus ─── */}
     <rect x="278" y="175" width="14" height="50" rx="6" fill="hsl(var(--primary)/0.35)" stroke="hsl(var(--primary))" strokeWidth="2" />
     {/* Probe label */}
     <text x="268" y="203" fontSize="7" fill="hsl(var(--primary))" textAnchor="end" fontWeight="bold">Probe</text>
-    <line x1="270" y1="201" x2="278" y2="201" stroke="hsl(var(--primary))" strokeWidth="0.8" />
+    <line x1="270" y1="201" x2="278" y2="201" stroke="hsl(var(--primary))" strokeWidth="0.75" />
 
     {/* Probe cable going up */}
     <line x1="285" y1="175" x2="285" y2="50" stroke="hsl(var(--primary))" strokeWidth="1.5" strokeDasharray="3 2" />
@@ -148,7 +148,7 @@ const SagittalView = () => (
     {/* ─── Trachea (anterior, upper portion) ─── */}
     <rect x="215" y="50" width="28" height="115" rx="12" fill="hsl(200 40% 90% / 0.25)" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
     <text x="208" y="115" fontSize="7" fill="hsl(200 40% 50%)" textAnchor="end">Trachea</text>
-    <line x1="210" y1="113" x2="215" y2="113" stroke="hsl(200 40% 50%)" strokeWidth="0.8" />
+    <line x1="210" y1="113" x2="215" y2="113" stroke="hsl(200 40% 50%)" strokeWidth="0.75" />
     {/* Carina / bifurcation */}
     <line x1="226" y1="165" x2="210" y2="188" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
     <line x1="234" y1="165" x2="245" y2="188" stroke="hsl(200 40% 50%)" strokeWidth="1.5" />
@@ -172,7 +172,7 @@ const SagittalView = () => (
     ))}
 
     {/* T5-T6 level indicator */}
-    <line x1="75" y1="197" x2="420" y2="197" stroke="hsl(var(--foreground)/0.12)" strokeWidth="0.8" strokeDasharray="6 3" />
+    <line x1="75" y1="197" x2="420" y2="197" stroke="hsl(var(--foreground)/0.12)" strokeWidth="0.75" strokeDasharray="6 3" />
     <text x="78" y="193" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">T5-T6</text>
     <text x="78" y="204" fontSize="5.5" fill="hsl(var(--muted-foreground))">optimal level</text>
 
@@ -223,9 +223,9 @@ const OesophagealDopplerDiagram = () => {
             fill="hsl(var(--primary)/0.15)" stroke="hsl(var(--primary))" strokeWidth="2" />
 
           {/* FTc */}
-          <line x1="70" y1="88" x2="70" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
-          <line x1="210" y1="88" x2="210" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
-          <line x1="70" y1="92" x2="210" y2="92" stroke="hsl(var(--foreground))" strokeWidth="0.8" />
+          <line x1="70" y1="88" x2="70" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+          <line x1="210" y1="88" x2="210" y2="94" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+          <line x1="70" y1="92" x2="210" y2="92" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
           <text x="140" y="100" fontSize="6" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">FTc (corrected flow time)</text>
 
           {/* PV */}
@@ -233,7 +233,7 @@ const OesophagealDopplerDiagram = () => {
           <text x="144" y="22" fontSize="6" fill="hsl(var(--foreground))" fontWeight="600">PV</text>
 
           {/* CO box */}
-          <rect x="380" y="20" width="110" height="42" rx="4" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--primary)/0.2)" strokeWidth="0.8" />
+          <rect x="380" y="20" width="110" height="42" rx="4" fill="hsl(var(--primary)/0.05)" stroke="hsl(var(--primary)/0.2)" strokeWidth="0.75" />
           <text x="435" y="34" fontSize="6.5" fill="hsl(var(--foreground))" textAnchor="middle" fontWeight="600">CO = SV × HR</text>
           <text x="435" y="45" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">SV = VTI × CSA (aorta)</text>
           <text x="435" y="55" fontSize="5.5" fill="hsl(var(--muted-foreground))" textAnchor="middle">VTI = area under curve</text>

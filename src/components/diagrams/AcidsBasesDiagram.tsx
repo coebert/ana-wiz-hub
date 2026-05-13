@@ -82,7 +82,7 @@ export const AcidsBasesDiagram = () => {
               const x = 30 + (m.ph / 14) * 380;
               return (
                 <g key={i}>
-                  <line x1={x} y1={60} x2={x} y2={m.y - 8} stroke="hsl(var(--foreground))" strokeWidth="0.8" strokeDasharray="2 2" opacity="0.6" />
+                  <line x1={x} y1={60} x2={x} y2={m.y - 8} stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
                   <circle cx={x} cy={45} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
                   {m.label.split("\n").map((line, j) => (
                     <text key={j} x={x} y={m.y + j * 10} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{line}</text>

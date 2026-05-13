@@ -98,8 +98,8 @@ const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => 
           <circle cx="95" cy="55" r="5" fill="hsl(350, 25%, 55%)" opacity="0.7" />
           {/* Tracheal rings visible through opening */}
           <g opacity="0.3">
-            <ellipse cx="70" cy="78" rx="12" ry="2" fill="none" stroke="hsl(0, 0%, 50%)" strokeWidth="0.8" />
-            <ellipse cx="70" cy="84" rx="10" ry="1.5" fill="none" stroke="hsl(0, 0%, 50%)" strokeWidth="0.7" />
+            <ellipse cx="70" cy="78" rx="12" ry="2" fill="none" stroke="hsl(0, 0%, 50%)" strokeWidth="0.75" />
+            <ellipse cx="70" cy="84" rx="10" ry="1.5" fill="none" stroke="hsl(0, 0%, 50%)" strokeWidth="0.75" />
           </g>
           {/* Posterior commissure */}
           <path d="M45,55 C55,48 65,46 70,46 C75,46 85,48 95,55" fill="none" stroke="hsl(350, 20%, 55%)" strokeWidth="1.5" opacity="0.5" />
@@ -118,7 +118,7 @@ const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => 
           <circle cx="50" cy="60" r="6" fill="hsl(350, 25%, 55%)" opacity="0.7" />
           <circle cx="90" cy="60" r="6" fill="hsl(350, 25%, 55%)" opacity="0.7" />
           {/* Posterior part of cords only */}
-          <path d="M50,60 L70,85 L90,60" fill="none" stroke="hsl(0, 10%, 75%)" strokeWidth="2.5" />
+          <path d="M50,60 L70,85 L90,60" fill="none" stroke="hsl(0, 10%, 75%)" strokeWidth="2" />
           {/* Partial glottic opening */}
           <path d="M55,62 L70,80 L85,62 Z" fill="hsl(0, 0%, 8%)" opacity="0.8" />
           {/* Anterior cords obscured by epiglottis */}
@@ -134,7 +134,7 @@ const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => 
           <path d="M25,38 C40,25 60,20 70,19 C80,20 100,25 115,38 C105,45 85,48 70,49 C55,48 35,45 25,38Z"
             fill="hsl(350, 30%, 50%)" stroke="hsl(350, 25%, 40%)" strokeWidth="1" opacity="0.7" />
           {/* Posterior cords visible */}
-          <path d="M50,60 L70,82 L90,60" fill="none" stroke="hsl(0, 10%, 75%)" strokeWidth="2.5" />
+          <path d="M50,60 L70,82 L90,60" fill="none" stroke="hsl(0, 10%, 75%)" strokeWidth="2" />
           <path d="M55,62 L70,78 L85,62 Z" fill="hsl(0, 0%, 8%)" opacity="0.8" />
           <circle cx="50" cy="60" r="5" fill="hsl(350, 25%, 55%)" opacity="0.7" />
           <circle cx="90" cy="60" r="5" fill="hsl(350, 25%, 55%)" opacity="0.7" />
@@ -168,8 +168,8 @@ const GlottisView = ({ grade, size = 140 }: { grade: Grade; size?: number }) => 
           <path d="M25,35 C40,25 55,20 70,18 C85,20 100,25 115,35 C112,55 100,72 85,82 C75,88 65,88 55,82 C40,72 28,55 25,35Z"
             fill="hsl(350, 30%, 48%)" stroke="hsl(350, 25%, 38%)" strokeWidth="1.5" opacity="0.8" />
           {/* Epiglottis surface detail */}
-          <path d="M50,40 C55,50 60,58 65,62" fill="none" stroke="hsl(350, 20%, 42%)" strokeWidth="0.8" opacity="0.5" />
-          <path d="M90,40 C85,50 80,58 75,62" fill="none" stroke="hsl(350, 20%, 42%)" strokeWidth="0.8" opacity="0.5" />
+          <path d="M50,40 C55,50 60,58 65,62" fill="none" stroke="hsl(350, 20%, 42%)" strokeWidth="0.75" opacity="0.5" />
+          <path d="M90,40 C85,50 80,58 75,62" fill="none" stroke="hsl(350, 20%, 42%)" strokeWidth="0.75" opacity="0.5" />
           <text x="70" y="55" fontSize="7" fill="hsl(0, 0%, 75%)" textAnchor="middle" opacity="0.8">epiglottis</text>
           <text x="70" y="66" fontSize="5" fill="hsl(0, 0%, 65%)" textAnchor="middle" opacity="0.6">only</text>
           {/* Surrounding mucosa */}

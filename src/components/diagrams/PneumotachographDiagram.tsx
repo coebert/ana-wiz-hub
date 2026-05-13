@@ -156,7 +156,7 @@ const PneumotachographDiagram = () => {
                   y1={106 + i * 4}
                   y2={106 + i * 4}
                   stroke="hsl(210 60% 55%)"
-                  strokeWidth="1.2"
+                  strokeWidth="1"
                   opacity="0.6"
                 />
               ))}
@@ -199,10 +199,10 @@ const PneumotachographDiagram = () => {
           )}
 
           {/* Pressure tap left */}
-          <line x1="140" y1="100" x2="140" y2="60" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.6" />
+          <line x1="140" y1="100" x2="140" y2="60" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.6" />
           <circle cx="140" cy="100" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
           {/* Pressure tap right */}
-          <line x1="260" y1="100" x2="260" y2="60" stroke="hsl(var(--foreground))" strokeWidth="1.2" opacity="0.6" />
+          <line x1="260" y1="100" x2="260" y2="60" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.6" />
           <circle cx="260" cy="100" r="2" fill="hsl(var(--foreground))" opacity="0.7" />
 
           {/* Differential pressure transducer */}

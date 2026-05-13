@@ -136,7 +136,7 @@ export const JGADiagram = () => {
             stroke={isActive("afferent") ? "hsl(0 70% 55%)" : "hsl(0 60% 50%)"} strokeWidth={isActive("afferent") ? 2 : 1.2} />
           {/* Lumen fill */}
           <path d="M 30 167 Q 60 160 90 154 Q 120 148 150 144" fill="none"
-            stroke="hsl(0 55% 50%)" strokeWidth="16" opacity="0.06" strokeLinecap="round" />
+            stroke="hsl(0 55% 50%)" strokeWidth="3" opacity="0.06" strokeLinecap="round" />
           {/* Smooth muscle cells */}
           {[50, 72, 95].map((x, i) => (
             <ellipse key={`aff-sm-${i}`} cx={x} cy={153 - i * 3} rx={4} ry={2.5}
@@ -182,7 +182,7 @@ export const JGADiagram = () => {
           {/* β₁ receptor */}
           {isActive("jg-cells") && (
             <g opacity="0.5">
-              <rect x="98" y="108" width="24" height="10" rx="3" fill="hsl(260 40% 50%)" fillOpacity="0.15" stroke="hsl(260 40% 50%)" strokeWidth="0.6" />
+              <rect x="98" y="108" width="24" height="10" rx="3" fill="hsl(260 40% 50%)" fillOpacity="0.15" stroke="hsl(260 40% 50%)" strokeWidth="0.5" />
               <text x="110" y="115" fontSize="4.5" fill="hsl(260 40% 50%)" textAnchor="middle">β₁-R</text>
             </g>
           )}
@@ -201,7 +201,7 @@ export const JGADiagram = () => {
             "M 228 110 Q 222 125 230 130 Q 238 138 232 148",
             "M 242 115 Q 237 128 245 133 Q 250 140 245 150",
           ].map((d, i) => (
-            <path key={`cap-${i}`} d={d} fill="none" stroke="hsl(0 55% 50%)" strokeWidth="2.5" strokeLinecap="round" opacity="0.4" />
+            <path key={`cap-${i}`} d={d} fill="none" stroke="hsl(0 55% 50%)" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
           ))}
           <text x="220" y="170" fontSize="7" fill="hsl(0 50% 50%)" textAnchor="middle" fontWeight="600" opacity="0.7">Glomerulus</text>
         </g>
@@ -213,7 +213,7 @@ export const JGADiagram = () => {
           <path d="M 280 155 Q 310 148 340 143 Q 370 138 400 141" fill="none"
             stroke={isActive("efferent") ? "hsl(0 50% 48%)" : "hsl(0 40% 42%)"} strokeWidth={isActive("efferent") ? 2 : 1} />
           <path d="M 280 143 Q 310 136 340 131 Q 370 126 400 129" fill="none"
-            stroke="hsl(0 40% 42%)" strokeWidth="14" opacity="0.04" strokeLinecap="round" />
+            stroke="hsl(0 40% 42%)" strokeWidth="3" opacity="0.04" strokeLinecap="round" />
           <polygon points="400,126 400,135 410,130" fill="hsl(0 40% 42%)" opacity="0.5" />
           <text x="410" y="125" fontSize="7" fill="hsl(0 40% 42%)" fontWeight="600">Efferent</text>
           <text x="410" y="134" fontSize="6" fill="hsl(0 40% 42%)" opacity="0.5">arteriole</text>
@@ -226,17 +226,17 @@ export const JGADiagram = () => {
         <g opacity={active && active !== "macula-densa" && active !== "tgf-low" && active !== "tgf-high" ? 0.3 : 1}>
           {/* TAL approaching */}
           <path d="M 470 340 Q 440 310 400 280 Q 360 250 320 230 Q 280 215 250 210" fill="none"
-            stroke="hsl(30 55% 45%)" strokeWidth="1.2" />
+            stroke="hsl(30 55% 45%)" strokeWidth="1" />
           <path d="M 470 355 Q 440 325 400 295 Q 360 265 320 245 Q 280 230 250 225" fill="none"
-            stroke="hsl(30 55% 45%)" strokeWidth="1.2" />
+            stroke="hsl(30 55% 45%)" strokeWidth="1" />
           <text x="450" y="338" fontSize="6" fill="hsl(30 55% 45%)" fontWeight="600">TAL</text>
           <polygon points="465,345 470,338 472,348" fill="hsl(30 55% 45%)" opacity="0.5" />
 
           {/* DCT departing */}
           <path d="M 190 225 Q 150 230 120 240 Q 90 250 60 265" fill="none"
-            stroke="hsl(45 55% 45%)" strokeWidth="1.2" />
+            stroke="hsl(45 55% 45%)" strokeWidth="1" />
           <path d="M 190 210 Q 150 215 120 225 Q 90 235 60 250" fill="none"
-            stroke="hsl(45 55% 45%)" strokeWidth="1.2" />
+            stroke="hsl(45 55% 45%)" strokeWidth="1" />
           <text x="55" y="248" fontSize="6" fill="hsl(45 55% 45%)" fontWeight="600" textAnchor="end">DCT</text>
           <polygon points="55,260 60,252 62,263" fill="hsl(45 55% 45%)" opacity="0.5" />
 
@@ -300,9 +300,9 @@ export const JGADiagram = () => {
           {/* Gap junctions */}
           {isActive("egm-cells") && (
             <g opacity="0.4">
-              <line x1={203} y1={176} x2={217} y2={183} stroke="hsl(30 50% 50%)" strokeWidth="0.6" strokeDasharray="1.5 1" />
-              <line x1={222} y1={181} x2={233} y2={186} stroke="hsl(30 50% 50%)" strokeWidth="0.6" strokeDasharray="1.5 1" />
-              <line x1={240} y1={176} x2={230} y2={185} stroke="hsl(30 50% 50%)" strokeWidth="0.6" strokeDasharray="1.5 1" />
+              <line x1={203} y1={176} x2={217} y2={183} stroke="hsl(30 50% 50%)" strokeWidth="0.5" strokeDasharray="1.5 1" />
+              <line x1={222} y1={181} x2={233} y2={186} stroke="hsl(30 50% 50%)" strokeWidth="0.5" strokeDasharray="1.5 1" />
+              <line x1={240} y1={176} x2={230} y2={185} stroke="hsl(30 50% 50%)" strokeWidth="0.5" strokeDasharray="1.5 1" />
               <text x="220" y="168" fontSize="4.5" fill="hsl(30 50% 50%)" textAnchor="middle">gap junctions</text>
             </g>
           )}
@@ -372,7 +372,7 @@ export const JGADiagram = () => {
               { x: 260, y: 285, w: 65, label: "ANG II", sub: "(octapeptide)", color: "hsl(270 55% 55%)" },
             ].map((b, i) => (
               <g key={`raas-${i}`}>
-                <rect x={b.x} y={b.y} width={b.w} height={28} rx="4" fill={b.color} fillOpacity="0.1" stroke={b.color} strokeWidth="0.8" />
+                <rect x={b.x} y={b.y} width={b.w} height={28} rx="4" fill={b.color} fillOpacity="0.1" stroke={b.color} strokeWidth="0.75" />
                 <text x={b.x + b.w / 2} y={b.y + 12} fontSize="6" fill={b.color} textAnchor="middle" fontWeight="600">{b.label}</text>
                 <text x={b.x + b.w / 2} y={b.y + 22} fontSize="4.5" fill={b.color} textAnchor="middle" opacity="0.6">{b.sub}</text>
               </g>
@@ -395,7 +395,7 @@ export const JGADiagram = () => {
             ))}
             {/* Drug targets */}
             <g opacity="0.6">
-              <rect x="340" y="330" width="100" height="55" rx="4" fill="hsl(0 50% 50%)" fillOpacity="0.05" stroke="hsl(0 50% 50%)" strokeWidth="0.6" />
+              <rect x="340" y="330" width="100" height="55" rx="4" fill="hsl(0 50% 50%)" fillOpacity="0.05" stroke="hsl(0 50% 50%)" strokeWidth="0.5" />
               <text x="390" y="342" fontSize="5" fill="hsl(0 50% 50%)" textAnchor="middle" fontWeight="600">Drug Targets ✕</text>
               <text x="390" y="353" fontSize="4.5" fill="hsl(0 45% 50%)" textAnchor="middle">ACEi (ramipril)</text>
               <text x="390" y="363" fontSize="4.5" fill="hsl(0 45% 50%)" textAnchor="middle">ARBs (losartan)</text>
@@ -409,12 +409,12 @@ export const JGADiagram = () => {
         {!isMech("tgf-low") && !isMech("tgf-high") && !isMech("raas") && (
           <g opacity="0.3">
             {/* MD → JG cells */}
-            <path d="M 220 200 Q 190 180 150 155" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="3 2" markerEnd="url(#arrJGA)" />
+            <path d="M 220 200 Q 190 180 150 155" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="3 2" markerEnd="url(#arrJGA)" />
             <text x="178" y="183" fontSize="4.5" fill="hsl(var(--muted-foreground))" transform="rotate(-25, 178, 183)">signal</text>
             {/* MD → afferent */}
-            <path d="M 210 200 Q 170 185 130 165" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="3 2" markerEnd="url(#arrJGA)" />
+            <path d="M 210 200 Q 170 185 130 165" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="3 2" markerEnd="url(#arrJGA)" />
             {/* EGM relay */}
-            <path d="M 220 195 Q 220 185 220 175" fill="none" stroke="hsl(30 50% 50%)" strokeWidth="0.6" strokeDasharray="2 1" />
+            <path d="M 220 195 Q 220 185 220 175" fill="none" stroke="hsl(30 50% 50%)" strokeWidth="0.5" strokeDasharray="2 1" />
           </g>
         )}
 

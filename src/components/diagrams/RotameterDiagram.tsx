@@ -250,7 +250,7 @@ export const RotameterDiagram = () => {
                 ry={BOBBIN_HEIGHT / 2}
                 fill="url(#bobbinGrad)"
                 stroke="hsl(var(--foreground))"
-                strokeWidth="0.8"
+                strokeWidth="0.75"
               />
               {/* Slot for rotation indicator */}
               <line

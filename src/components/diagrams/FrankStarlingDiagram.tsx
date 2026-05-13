@@ -205,7 +205,7 @@ const FrankStarlingDiagram = () => {
           <g opacity="0.35">
             <line x1={toX(0)} y1={toY(120)} x2={toX(200)} y2={toY(40)} stroke="hsl(280 50% 55%)" strokeWidth="1" strokeDasharray="6 3" />
             <text x={toX(180)} y={toY(52)} fontSize="7" fill="hsl(280 50% 55%)" fontWeight="600">ESPVR (Ees)</text>
-            <line x1={toX(20)} y1={toY(0)} x2={toX(220)} y2={toY(15)} stroke="hsl(280 50% 55%)" strokeWidth="0.8" strokeDasharray="3 3" />
+            <line x1={toX(20)} y1={toY(0)} x2={toX(220)} y2={toY(15)} stroke="hsl(280 50% 55%)" strokeWidth="0.75" strokeDasharray="3 3" />
             <text x={toX(200)} y={toY(17)} fontSize="6" fill="hsl(280 50% 55%)">EDPVR</text>
           </g>
         )}
@@ -240,9 +240,9 @@ const FrankStarlingDiagram = () => {
           return (
             <g key={`op-${key}`}>
               <line x1={toX(lvedv)} y1={toY(sv)} x2={toX(lvedv)} y2={toY(0)}
-                stroke={CURVES[key].color} strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4" />
+                stroke={CURVES[key].color} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.4" />
               <line x1={toX(lvedv)} y1={toY(sv)} x2={toX(0)} y2={toY(sv)}
-                stroke={CURVES[key].color} strokeWidth="0.8" strokeDasharray="3 3" opacity="0.4" />
+                stroke={CURVES[key].color} strokeWidth="0.75" strokeDasharray="3 3" opacity="0.4" />
               <circle cx={toX(lvedv)} cy={toY(sv)} r="4" fill={CURVES[key].color} stroke="hsl(var(--background))" strokeWidth="1.5" />
               <text x={padL + 4} y={toY(sv) - 4} fontSize="7" fill={CURVES[key].color} fontWeight="600">
                 {Math.round(sv)}
@@ -253,7 +253,7 @@ const FrankStarlingDiagram = () => {
 
         {/* Preload line */}
         <line x1={toX(lvedv)} y1={padT} x2={toX(lvedv)} y2={svgH - padB}
-          stroke="hsl(var(--foreground))" strokeWidth="0.8" strokeDasharray="4 3" opacity="0.2" />
+          stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="4 3" opacity="0.2" />
         <text x={toX(lvedv)} y={svgH - padB + 24} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
           {Math.round(lvedv)} ml
         </text>

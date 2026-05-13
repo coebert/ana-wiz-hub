@@ -297,7 +297,7 @@ const PropofolErectionMechanismDiagram = () => {
                 x2="220"
                 y2="255"
                 stroke="hsl(var(--clinical))"
-                strokeWidth="2.5"
+                strokeWidth="2"
                 markerEnd="url(#arrow-facil)"
               >
                 <animate
@@ -358,7 +358,7 @@ const PropofolErectionMechanismDiagram = () => {
                   r="6"
                   fill="hsl(var(--clinical) / 0.35)"
                   stroke="hsl(var(--clinical))"
-                  strokeWidth="0.8"
+                  strokeWidth="0.75"
                 >
                   <animate
                     attributeName="r"

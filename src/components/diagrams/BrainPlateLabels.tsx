@@ -107,8 +107,8 @@ const AlignmentOverlay = ({ labels }: { labels: PlateLabel[] }) => {
         );
       })}
       {/* Centre cross */}
-      <line x1={50} y1={0} x2={50} y2={100} stroke="hsl(var(--destructive))" strokeWidth={0.18} vectorEffect="non-scaling-stroke" opacity={0.7} />
-      <line x1={0} y1={50} x2={100} y2={50} stroke="hsl(var(--destructive))" strokeWidth={0.18} vectorEffect="non-scaling-stroke" opacity={0.7} />
+      <line x1={50} y1={0} x2={50} y2={100} stroke="hsl(var(--destructive))" strokeWidth={0.5} vectorEffect="non-scaling-stroke" opacity={0.7} />
+      <line x1={0} y1={50} x2={100} y2={50} stroke="hsl(var(--destructive))" strokeWidth={0.5} vectorEffect="non-scaling-stroke" opacity={0.7} />
 
       {/* Axis numbers — every 10% on top + left edge */}
       {ticks
@@ -148,16 +148,16 @@ const AlignmentOverlay = ({ labels }: { labels: PlateLabel[] }) => {
       {labels.map((l, i) => (
         <g key={`m-${i}`}>
           {/* Dot crosshair (anatomical site) */}
-          <line x1={l.dot.x - 1.6} y1={l.dot.y} x2={l.dot.x + 1.6} y2={l.dot.y} stroke="hsl(var(--destructive))" strokeWidth={0.2} vectorEffect="non-scaling-stroke" />
-          <line x1={l.dot.x} y1={l.dot.y - 1.6} x2={l.dot.x} y2={l.dot.y + 1.6} stroke="hsl(var(--destructive))" strokeWidth={0.2} vectorEffect="non-scaling-stroke" />
-          <circle cx={l.dot.x} cy={l.dot.y} r={0.9} fill="none" stroke="hsl(var(--destructive))" strokeWidth={0.18} vectorEffect="non-scaling-stroke" />
+          <line x1={l.dot.x - 1.6} y1={l.dot.y} x2={l.dot.x + 1.6} y2={l.dot.y} stroke="hsl(var(--destructive))" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
+          <line x1={l.dot.x} y1={l.dot.y - 1.6} x2={l.dot.x} y2={l.dot.y + 1.6} stroke="hsl(var(--destructive))" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
+          <circle cx={l.dot.x} cy={l.dot.y} r={0.9} fill="none" stroke="hsl(var(--destructive))" strokeWidth={0.5} vectorEffect="non-scaling-stroke" />
           <text
             x={l.dot.x + 1.2}
             y={l.dot.y - 1.2}
             fontSize={1.4}
             fill="hsl(var(--destructive))"
             stroke="hsl(var(--background))"
-            strokeWidth={0.45}
+            strokeWidth={0.5}
             paintOrder="stroke"
             style={{ fontFamily: "JetBrains Mono, ui-monospace, monospace" }}
           >
@@ -172,7 +172,7 @@ const AlignmentOverlay = ({ labels }: { labels: PlateLabel[] }) => {
             height={2}
             fill="none"
             stroke="hsl(var(--primary))"
-            strokeWidth={0.18}
+            strokeWidth={0.5}
             vectorEffect="non-scaling-stroke"
           />
           <text
@@ -182,7 +182,7 @@ const AlignmentOverlay = ({ labels }: { labels: PlateLabel[] }) => {
             textAnchor={l.label.x > 50 ? "end" : "start"}
             fill="hsl(var(--primary))"
             stroke="hsl(var(--background))"
-            strokeWidth={0.45}
+            strokeWidth={0.5}
             paintOrder="stroke"
             style={{ fontFamily: "JetBrains Mono, ui-monospace, monospace" }}
           >
@@ -251,7 +251,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
                 x2={l.label.x}
                 y2={l.y}
                 stroke="hsl(var(--clinical))"
-                strokeWidth="0.18"
+                strokeWidth="0.5"
                 vectorEffect="non-scaling-stroke"
                 opacity="0.85"
               />
@@ -261,7 +261,7 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
                 r="0.6"
                 fill="hsl(var(--clinical))"
                 stroke="hsl(var(--background))"
-                strokeWidth="0.15"
+                strokeWidth="0.5"
                 vectorEffect="non-scaling-stroke"
               />
               <rect

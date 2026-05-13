@@ -77,7 +77,7 @@ const OrbitAnatomyDiagram = () => {
 
         <svg viewBox="0 0 600 500" className="w-full max-w-lg mx-auto">
           {/* Orbital rim */}
-          <ellipse cx={300} cy={250} rx={150} ry={130} fill="none" stroke="hsl(var(--border))" strokeWidth={2.5} />
+          <ellipse cx={300} cy={250} rx={150} ry={130} fill="none" stroke="hsl(var(--border))" strokeWidth={2} />
           {showLabels && (
             <>
               <text x={300} y={30} textAnchor="middle" className="text-[10px] fill-muted-foreground font-medium">SUPERIOR</text>

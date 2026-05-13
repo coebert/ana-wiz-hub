@@ -188,11 +188,11 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
         fill="hsl(0, 30%, 88%)"
         fillOpacity="0.22"
         stroke="hsl(var(--border))"
-        strokeWidth="0.6"
+        strokeWidth="0.5"
       />
       {/* Septum + atrioventricular line */}
-      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.45" />
-      <line x1="35" y1="105" x2="145" y2="105" stroke="hsl(var(--border))" strokeWidth="0.4" strokeDasharray="2 2" opacity="0.45" />
+      <line x1="90" y1="35" x2="90" y2="180" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.45" />
+      <line x1="35" y1="105" x2="145" y2="105" stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 2" opacity="0.45" />
 
       {/* SA node */}
       <circle
@@ -214,14 +214,14 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
         r="4.5"
         fill={tachy.focus === "av-reentry" ? color : tachy.focus === "accessory" ? ok : ok}
         stroke={tachy.focus === "av-reentry" ? color : "none"}
-        strokeWidth="1.2"
+        strokeWidth="1"
       />
       <text x="68" y="108" fontSize="6" fill={dim} textAnchor="end">AV</text>
 
       {/* His + bundle branches (faded for V chaos / VF / torsades) */}
       <line x1="90" y1="110" x2="90" y2="125" stroke={ok} strokeWidth="2" opacity={tachy.focus === "v-chaos" ? 0.35 : 1} />
-      <path d="M 90 125 Q 110 140 125 168" fill="none" stroke={ok} strokeWidth="1.4" opacity={tachy.focus === "v-chaos" ? 0.3 : 1} />
-      <path d="M 90 125 Q 70 140 55 168" fill="none" stroke={ok} strokeWidth="1.4" opacity={tachy.focus === "v-chaos" ? 0.3 : 1} />
+      <path d="M 90 125 Q 110 140 125 168" fill="none" stroke={ok} strokeWidth="1.5" opacity={tachy.focus === "v-chaos" ? 0.3 : 1} />
+      <path d="M 90 125 Q 70 140 55 168" fill="none" stroke={ok} strokeWidth="1.5" opacity={tachy.focus === "v-chaos" ? 0.3 : 1} />
 
       {/* ─── Focus / circuit overlays ─── */}
 
@@ -229,7 +229,7 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
       {tachy.focus === "sa-fast" && (
         <g>
           {[10, 16, 22].map((r, i) => (
-            <circle key={i} cx="118" cy="42" r={r} fill="none" stroke={color} strokeWidth="0.8" opacity="0.4">
+            <circle key={i} cx="118" cy="42" r={r} fill="none" stroke={color} strokeWidth="0.75" opacity="0.4">
               <animate attributeName="opacity" values="0;0.5;0" dur="1s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
             </circle>
           ))}
@@ -283,7 +283,7 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
             ry="8"
             fill="none"
             stroke={color}
-            strokeWidth="1.8"
+            strokeWidth="2"
             strokeDasharray="3 2"
           />
           {/* Slow + fast pathway labels */}
@@ -303,7 +303,7 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
             d="M 60 102 Q 50 108 55 118"
             fill="none"
             stroke={color}
-            strokeWidth="2.2"
+            strokeWidth="2"
             strokeLinecap="round"
           />
           <text x="36" y="115" fontSize="5.5" fill={color} fontWeight="bold">Kent</text>
@@ -321,7 +321,7 @@ const TreeMini = ({ tachy, color }: { tachy: TachyInfo; color: string }) => {
             <animate attributeName="opacity" values="0.4;1;0.4" dur="0.5s" repeatCount="indefinite" />
           </circle>
           {[8, 14].map((r, i) => (
-            <circle key={i} cx="60" cy="155" r={r} fill="none" stroke={color} strokeWidth="0.8" opacity="0.4">
+            <circle key={i} cx="60" cy="155" r={r} fill="none" stroke={color} strokeWidth="0.75" opacity="0.4">
               <animate attributeName="opacity" values="0;0.6;0" dur="0.8s" begin={`${i * 0.25}s`} repeatCount="indefinite" />
             </circle>
           ))}
@@ -418,7 +418,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
         // AVNRT / orthodromic AVRT — abrupt termination → sinus rhythm with normal P-QRS-T
         beats = [40, 130, 220, 310].map((cx) => ({ cx, p: true, qrs: true, t: true, pr: 12 }));
         custom = (
-          <line x1="20" y1="6" x2="20" y2={H - 6} stroke={color} strokeWidth="1.2" strokeDasharray="3 2" opacity="0.7" />
+          <line x1="20" y1="6" x2="20" y2={H - 6} stroke={color} strokeWidth="1" strokeDasharray="3 2" opacity="0.7" />
         );
         break;
 
@@ -446,7 +446,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
               const y = baseline + (i % 2 === 0 ? -8 : 6);
               return `L ${x} ${y}`;
             }).join(" ")}`}
-            fill="none" stroke={color} strokeWidth="1.4" opacity="0.95"
+            fill="none" stroke={color} strokeWidth="1.5" opacity="0.95"
           />
         );
         break;
@@ -469,7 +469,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
                 const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
                 return `L ${x} ${baseline + noise}`;
               }).join(" ")}`}
-              fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+              fill="none" stroke="hsl(var(--foreground))" strokeWidth="1"
             />
           );
         }
@@ -485,7 +485,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
               const wave = Math.sin(i * 0.85) * envelope;
               return `L ${x} ${baseline + wave}`;
             }).join(" ")}`}
-            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5"
           />
         );
         break;
@@ -510,7 +510,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
         custom = (
           <path
             d={`M 0 ${baseline} ${Array.from({ length: 90 }, (_, i) => `L ${i * 4} ${baseline + (Math.sin(i * 0.9) + Math.sin(i * 2.1)) * 1.2}`).join(" ")}`}
-            fill="none" stroke={color} strokeWidth="0.8" opacity="0.55"
+            fill="none" stroke={color} strokeWidth="0.75" opacity="0.55"
           />
         );
         break;
@@ -556,7 +556,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
               const noise = (Math.sin(i * 0.4) + Math.sin(i * 1.3) + Math.sin(i * 2.7) + Math.sin(i * 0.13) * 1.5) * 7;
               return `L ${x} ${baseline + noise}`;
             }).join(" ")}`}
-            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.2"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1"
           />
         );
         break;
@@ -571,7 +571,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
               const wave = Math.sin(i * 0.85) * envelope;
               return `L ${x} ${baseline + wave}`;
             }).join(" ")}`}
-            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.3"
+            fill="none" stroke="hsl(var(--foreground))" strokeWidth="1.5"
           />
         );
         break;
@@ -583,12 +583,12 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${tachy.label}`}>
       <defs>
         <pattern id={`tachy-grid-${uid}`} width="10" height="10" patternUnits="userSpaceOnUse">
-          <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.4" />
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke={color} strokeOpacity="0.18" strokeWidth="0.5" />
         </pattern>
       </defs>
-      <rect x="0" y="0" width={W} height={H} fill={withAlpha(color, 0.04)} stroke={withAlpha(color, 0.3)} strokeWidth="0.6" rx="4" />
+      <rect x="0" y="0" width={W} height={H} fill={withAlpha(color, 0.04)} stroke={withAlpha(color, 0.3)} strokeWidth="0.5" rx="4" />
       <rect x="0" y="0" width={W} height={H} fill={`url(#tachy-grid-${uid})`} pointerEvents="none" />
-      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.4" />
+      <line x1="0" y1={baseline} x2={W} y2={baseline} stroke="hsl(var(--muted-foreground))" strokeOpacity="0.25" strokeWidth="0.5" />
 
       {custom}
 
@@ -598,7 +598,7 @@ const RhythmStrip = ({ tachy, color, mode = "baseline" }: { tachy: TachyInfo; co
           d={drawBeat(b.cx, baseline, { p: b.p, qrs: b.qrs, t: b.t, pr: b.pr ?? 12, wide: b.wide, invertedP: b.invertedP })}
           fill="none"
           stroke="hsl(var(--foreground))"
-          strokeWidth="1.3"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

@@ -69,11 +69,11 @@ export const ANSPathwayDiagram = () => {
 
             {/* Origin */}
             <rect x={80} y={55} width={80} height={22} rx={4}
-              fill="hsl(0 55% 50%/0.08)" stroke="hsl(0 55% 50%)" strokeWidth="0.8" />
+              fill="hsl(0 55% 50%/0.08)" stroke="hsl(0 55% 50%)" strokeWidth="0.75" />
             <text x={120} y={70} textAnchor="middle" fontSize="6.5" fill="hsl(0 55% 50%)" fontWeight="600">IML Column</text>
 
             {/* PREGANGLIONIC — SHORT, myelinated */}
-            <line x1={120} y1={77} x2={120} y2={155} stroke="hsl(0 55% 50%)" strokeWidth="2.5" markerEnd="url(#ansArrRed)" />
+            <line x1={120} y1={77} x2={120} y2={155} stroke="hsl(0 55% 50%)" strokeWidth="2" markerEnd="url(#ansArrRed)" />
             {/* Length label */}
             <rect x={38} y={95} width={55} height={40} rx={4}
               fill="hsl(0 55% 50%/0.06)" stroke="hsl(0 55% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
@@ -83,7 +83,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* NT label: ACh → nAChR */}
             <rect x={128} y={100} width={60} height={28} rx={4}
-              fill="hsl(170 50% 45%/0.1)" stroke="hsl(170 50% 45%)" strokeWidth="0.6" />
+              fill="hsl(170 50% 45%/0.1)" stroke="hsl(170 50% 45%)" strokeWidth="0.5" />
             <text x={158} y={112} textAnchor="middle" fontSize="6" fill="hsl(170 50% 45%)" fontWeight="700">ACh</text>
             <text x={158} y={122} textAnchor="middle" fontSize="5" fill="hsl(170 50% 45%)">→ nAChR</text>
 
@@ -97,7 +97,7 @@ export const ANSPathwayDiagram = () => {
             )}
 
             {/* POSTGANGLIONIC — LONG, unmyelinated */}
-            <line x1={120} y1={185} x2={120} y2={340} stroke="hsl(0 55% 50%)" strokeWidth="2.5" strokeDasharray="6 2" markerEnd="url(#ansArrRed)" />
+            <line x1={120} y1={185} x2={120} y2={340} stroke="hsl(0 55% 50%)" strokeWidth="2" strokeDasharray="6 2" markerEnd="url(#ansArrRed)" />
             <rect x={38} y={230} width={55} height={40} rx={4}
               fill="hsl(0 55% 50%/0.06)" stroke="hsl(0 55% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
             <text x={65} y={243} textAnchor="middle" fontSize="6" fill="hsl(0 55% 50%)" fontWeight="600">LONG</text>
@@ -106,7 +106,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* NT label: NA → adrenoceptors */}
             <rect x={128} y={260} width={72} height={28} rx={4}
-              fill="hsl(0 55% 50%/0.1)" stroke="hsl(0 55% 50%)" strokeWidth="0.6" />
+              fill="hsl(0 55% 50%/0.1)" stroke="hsl(0 55% 50%)" strokeWidth="0.5" />
             <text x={164} y={272} textAnchor="middle" fontSize="6" fill="hsl(0 55% 50%)" fontWeight="700">Noradrenaline</text>
             <text x={164} y={282} textAnchor="middle" fontSize="5" fill="hsl(0 40% 50%)">→ α₁ α₂ β₁ β₂ β₃</text>
 
@@ -118,7 +118,7 @@ export const ANSPathwayDiagram = () => {
             {/* Exception: sweat glands */}
             <g opacity={view === "sympathetic" ? 0.8 : 0.5}>
               <rect x={30} y={310} width={68} height={28} rx={4}
-                fill="hsl(170 50% 45%/0.08)" stroke="hsl(170 50% 45%)" strokeWidth="0.6" />
+                fill="hsl(170 50% 45%/0.08)" stroke="hsl(170 50% 45%)" strokeWidth="0.5" />
               <text x={64} y={322} textAnchor="middle" fontSize="5" fill="hsl(170 50% 45%)" fontWeight="600">Exception:</text>
               <text x={64} y={332} textAnchor="middle" fontSize="4.5" fill="hsl(170 50% 45%)">Sweat glands = ACh</text>
             </g>
@@ -133,11 +133,11 @@ export const ANSPathwayDiagram = () => {
 
             {/* Origin */}
             <rect x={400} y={55} width={80} height={22} rx={4}
-              fill="hsl(210 60% 50%/0.08)" stroke="hsl(210 60% 50%)" strokeWidth="0.8" />
+              fill="hsl(210 60% 50%/0.08)" stroke="hsl(210 60% 50%)" strokeWidth="0.75" />
             <text x={440} y={70} textAnchor="middle" fontSize="6.5" fill="hsl(210 60% 50%)" fontWeight="600">Brainstem / S2-4</text>
 
             {/* PREGANGLIONIC — LONG, myelinated */}
-            <line x1={440} y1={77} x2={440} y2={275} stroke="hsl(210 60% 50%)" strokeWidth="2.5" markerEnd="url(#ansArrBlue)" />
+            <line x1={440} y1={77} x2={440} y2={275} stroke="hsl(210 60% 50%)" strokeWidth="2" markerEnd="url(#ansArrBlue)" />
             <rect x={467} y={130} width={55} height={40} rx={4}
               fill="hsl(210 60% 50%/0.06)" stroke="hsl(210 60% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
             <text x={494} y={143} textAnchor="middle" fontSize="6" fill="hsl(210 60% 50%)" fontWeight="600">LONG</text>
@@ -146,7 +146,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* NT: ACh → nAChR */}
             <rect x={370} y={155} width={60} height={28} rx={4}
-              fill="hsl(170 50% 45%/0.1)" stroke="hsl(170 50% 45%)" strokeWidth="0.6" />
+              fill="hsl(170 50% 45%/0.1)" stroke="hsl(170 50% 45%)" strokeWidth="0.5" />
             <text x={400} y={167} textAnchor="middle" fontSize="6" fill="hsl(170 50% 45%)" fontWeight="700">ACh</text>
             <text x={400} y={177} textAnchor="middle" fontSize="5" fill="hsl(170 50% 45%)">→ nAChR</text>
 
@@ -160,7 +160,7 @@ export const ANSPathwayDiagram = () => {
             )}
 
             {/* POSTGANGLIONIC — SHORT, unmyelinated */}
-            <line x1={440} y1={305} x2={440} y2={340} stroke="hsl(210 60% 50%)" strokeWidth="2.5" strokeDasharray="4 2" markerEnd="url(#ansArrBlue)" />
+            <line x1={440} y1={305} x2={440} y2={340} stroke="hsl(210 60% 50%)" strokeWidth="2" strokeDasharray="4 2" markerEnd="url(#ansArrBlue)" />
             <rect x={467} y={310} width={55} height={30} rx={4}
               fill="hsl(210 60% 50%/0.06)" stroke="hsl(210 60% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
             <text x={494} y={323} textAnchor="middle" fontSize="6" fill="hsl(210 60% 50%)" fontWeight="600">SHORT</text>
@@ -168,7 +168,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* NT: ACh → mAChR */}
             <rect x={370} y={320} width={60} height={28} rx={4}
-              fill="hsl(210 60% 50%/0.1)" stroke="hsl(210 60% 50%)" strokeWidth="0.6" />
+              fill="hsl(210 60% 50%/0.1)" stroke="hsl(210 60% 50%)" strokeWidth="0.5" />
             <text x={400} y={332} textAnchor="middle" fontSize="6" fill="hsl(210 60% 50%)" fontWeight="700">ACh</text>
             <text x={400} y={342} textAnchor="middle" fontSize="5" fill="hsl(210 45% 50%)">→ mAChR</text>
 
@@ -202,11 +202,11 @@ export const ANSPathwayDiagram = () => {
             <text x={370} y={72} textAnchor="middle" fontSize="6" fill="hsl(30 50% 50%)">Modified sympathetic ganglion</text>
 
             <rect x={330} y={80} width={80} height={22} rx={4}
-              fill="hsl(30 60% 50%/0.08)" stroke="hsl(30 60% 50%)" strokeWidth="0.8" />
+              fill="hsl(30 60% 50%/0.08)" stroke="hsl(30 60% 50%)" strokeWidth="0.75" />
             <text x={370} y={95} textAnchor="middle" fontSize="6" fill="hsl(30 60% 50%)" fontWeight="600">T5–T9 (IML)</text>
 
             {/* Long preganglionic (splanchnic nerve) */}
-            <line x1={370} y1={102} x2={370} y2={210} stroke="hsl(30 60% 50%)" strokeWidth="2.5" markerEnd="url(#ansArrOrange)" />
+            <line x1={370} y1={102} x2={370} y2={210} stroke="hsl(30 60% 50%)" strokeWidth="2" markerEnd="url(#ansArrOrange)" />
             <rect x={385} y={130} width={80} height={35} rx={4}
               fill="hsl(30 60% 50%/0.06)" stroke="hsl(30 60% 50%)" strokeWidth="0.5" strokeDasharray="3 2" />
             <text x={425} y={143} textAnchor="middle" fontSize="6" fill="hsl(30 60% 50%)" fontWeight="600">Preganglionic</text>
@@ -221,7 +221,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* No postganglionic! */}
             <rect x={430} y={220} width={90} height={30} rx={4}
-              fill="hsl(0 55% 50%/0.08)" stroke="hsl(0 55% 50%)" strokeWidth="0.8" />
+              fill="hsl(0 55% 50%/0.08)" stroke="hsl(0 55% 50%)" strokeWidth="0.75" />
             <text x={475} y={234} textAnchor="middle" fontSize="6" fill="hsl(0 55% 50%)" fontWeight="700">NO postganglionic</text>
             <text x={475} y={244} textAnchor="middle" fontSize="5" fill="hsl(0 40% 50%)">neurone!</text>
 
@@ -250,14 +250,14 @@ export const ANSPathwayDiagram = () => {
               fill="hsl(150 45% 45%/0.06)" stroke="hsl(150 45% 45%)" strokeWidth="1" />
             {/* Auerbach */}
             <rect x={310} y={100} width={85} height={55} rx={5}
-              fill="hsl(150 45% 45%/0.1)" stroke="hsl(150 45% 45%)" strokeWidth="0.8" />
+              fill="hsl(150 45% 45%/0.1)" stroke="hsl(150 45% 45%)" strokeWidth="0.75" />
             <text x={352} y={115} textAnchor="middle" fontSize="6.5" fill="hsl(150 45% 45%)" fontWeight="700">Auerbach's</text>
             <text x={352} y={125} textAnchor="middle" fontSize="5.5" fill="hsl(150 35% 45%)">(Myenteric)</text>
             <text x={352} y={138} textAnchor="middle" fontSize="5" fill="hsl(150 35% 45%)">→ Motility</text>
             <text x={352} y={148} textAnchor="middle" fontSize="4.5" fill="hsl(150 35% 45%)" opacity="0.7">Between muscle layers</text>
             {/* Meissner */}
             <rect x={405} y={100} width={85} height={55} rx={5}
-              fill="hsl(150 45% 45%/0.1)" stroke="hsl(150 45% 45%)" strokeWidth="0.8" />
+              fill="hsl(150 45% 45%/0.1)" stroke="hsl(150 45% 45%)" strokeWidth="0.75" />
             <text x={447} y={115} textAnchor="middle" fontSize="6.5" fill="hsl(150 45% 45%)" fontWeight="700">Meissner's</text>
             <text x={447} y={125} textAnchor="middle" fontSize="5.5" fill="hsl(150 35% 45%)">(Submucosal)</text>
             <text x={447} y={138} textAnchor="middle" fontSize="5" fill="hsl(150 35% 45%)">→ Secretion</text>
@@ -270,7 +270,7 @@ export const ANSPathwayDiagram = () => {
 
             {/* NTs */}
             <rect x={310} y={225} width={180} height={45} rx={5}
-              fill="hsl(150 45% 45%/0.06)" stroke="hsl(150 45% 45%)" strokeWidth="0.6" />
+              fill="hsl(150 45% 45%/0.06)" stroke="hsl(150 45% 45%)" strokeWidth="0.5" />
             <text x={400} y={238} textAnchor="middle" fontSize="5.5" fill="hsl(150 45% 45%)" fontWeight="600">Neurotransmitters:</text>
             <text x={400} y={250} textAnchor="middle" fontSize="5" fill="hsl(150 35% 45%)">ACh, Substance P, VIP, NO, Serotonin (5-HT),</text>
             <text x={400} y={260} textAnchor="middle" fontSize="5" fill="hsl(150 35% 45%)">ATP, CGRP, Enkephalins, Somatostatin</text>
@@ -282,13 +282,13 @@ export const ANSPathwayDiagram = () => {
           <g>
             {/* Legend */}
             <rect x={170} y={390} width={220} height={80} rx={6}
-              fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.8" />
+              fill="hsl(var(--secondary))" fillOpacity="0.3" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <text x={280} y={405} textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="700">Key Comparison</text>
-            <line x1={185} y1={415} x2={210} y2={415} stroke="hsl(var(--foreground))" strokeWidth="2.5" />
+            <line x1={185} y1={415} x2={210} y2={415} stroke="hsl(var(--foreground))" strokeWidth="2" />
             <text x={220} y={418} fontSize="5.5" fill="hsl(var(--muted-foreground))">Preganglionic (myelinated, B fibres)</text>
-            <line x1={185} y1={430} x2={210} y2={430} stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeDasharray="6 2" />
+            <line x1={185} y1={430} x2={210} y2={430} stroke="hsl(var(--foreground))" strokeWidth="2" strokeDasharray="6 2" />
             <text x={220} y={433} fontSize="5.5" fill="hsl(var(--muted-foreground))">Postganglionic (unmyelinated, C fibres)</text>
-            <circle cx={192} cy={445} r={4} fill="hsl(170 50% 45%/0.3)" stroke="hsl(170 50% 45%)" strokeWidth="0.8" />
+            <circle cx={192} cy={445} r={4} fill="hsl(170 50% 45%/0.3)" stroke="hsl(170 50% 45%)" strokeWidth="0.75" />
             <text x={220} y={448} fontSize="5.5" fill="hsl(170 50% 45%)" fontWeight="600">ACh (both ganglia)</text>
             <text x={220} y={460} fontSize="5.5" fill="hsl(var(--muted-foreground))">All preganglionic fibres release ACh → nAChR</text>
 

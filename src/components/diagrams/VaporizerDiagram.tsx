@@ -116,7 +116,7 @@ export const VaporizerDiagram = () => {
           <polygon points="125,70 135,70 130,78" fill="hsl(var(--primary))" opacity="0.4" />
 
           {/* ── BYPASS CHANNEL (upper) ── */}
-          <line x1="150" y1="72" x2="395" y2="72" stroke="hsl(var(--muted-foreground))" strokeWidth="2.5" strokeDasharray="8 4" />
+          <line x1="150" y1="72" x2="395" y2="72" stroke="hsl(var(--muted-foreground))" strokeWidth="2" strokeDasharray="8 4" />
           <text x="270" y="63" fontSize="9" fill="hsl(var(--muted-foreground))" textAnchor="middle" fontWeight="600">Bypass Channel ({bypassFlow}%)</text>
           <text x="270" y="88" fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">No agent — fresh gas only</text>
 

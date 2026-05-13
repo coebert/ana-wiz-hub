@@ -148,7 +148,7 @@ const VentilatorWaveformsGuideDiagram = () => {
           <path d="M 55,100 L 55,40 L 120,40 L 120,100" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4,3" />
           <text x="87" y="33" fontSize="7" className="fill-muted-foreground">Normal</text>
           {/* Bronchospasm VCV — high PIP, normal Pplat */}
-          <path d="M 160,100 L 175,25 L 195,55 L 225,55 L 225,100" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2.5" />
+          <path d="M 160,100 L 175,25 L 195,55 L 225,55 L 225,100" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2" />
           <text x="175" y="20" fontSize="7" fill="hsl(0,70%,55%)" fontWeight="600">↑PIP</text>
           <text x="210" y="50" fontSize="7" fill="hsl(142,60%,45%)" fontWeight="600">Normal Pplat</text>
           <path d="M 175,27 L 175,33 L 195,33" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
@@ -201,13 +201,13 @@ const VentilatorWaveformsGuideDiagram = () => {
           {/* First breath */}
           <path d="M 55,100 L 100,45 L 115,100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
           {/* Immediate second breath (stacked) */}
-          <path d="M 115,100 L 160,30 L 180,100" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2.5" />
+          <path d="M 115,100 L 160,30 L 180,100" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2" />
           <text x="160" y="23" fontSize="7" fill="hsl(0,70%,55%)" fontWeight="600">Stacked VT!</text>
           {/* Gap then normal */}
           <path d="M 240,100 L 285,50 L 310,100" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
           <text x="285" y="43" fontSize="7" className="fill-primary">Normal</text>
           {/* Bracket */}
-          <path d="M 55,108 L 55,115 L 180,115 L 180,108" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="0.8" />
+          <path d="M 55,108 L 55,115 L 180,115 L 180,108" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="0.75" />
           <text x="117" y="125" fontSize="7" fill="hsl(0,70%,55%)" textAnchor="middle">Double trigger</text>
         </svg>
       ),
@@ -230,7 +230,7 @@ const VentilatorWaveformsGuideDiagram = () => {
           <path d="M 55,110 L 75,55 L 95,65 L 120,65 L 120,110" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" strokeDasharray="4,3" />
           <text x="97" y="50" fontSize="7" className="fill-muted-foreground">Normal</text>
           {/* Low compliance — both PIP and Pplat high */}
-          <path d="M 180,110 L 200,20 L 220,35 L 250,35 L 250,110" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2.5" />
+          <path d="M 180,110 L 200,20 L 220,35 L 250,35 L 250,110" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="2" />
           <text x="200" y="15" fontSize="7" fill="hsl(0,70%,55%)" fontWeight="600">↑PIP</text>
           <text x="235" y="30" fontSize="7" fill="hsl(0,70%,55%)" fontWeight="600">↑Pplat</text>
           <text x="320" y="40" fontSize="8" fill="hsl(0,70%,55%)" fontWeight="600">Both rise</text>

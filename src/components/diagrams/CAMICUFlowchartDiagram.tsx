@@ -544,7 +544,7 @@ export const CAMICUFlowchartDiagram = () => {
                   aria-hidden="true"
                   className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-destructive/15 text-destructive ring-1 ring-destructive/30 shrink-0"
                 >
-                  <AlertTriangle className="w-3 h-3" strokeWidth={2.25} />
+                  <AlertTriangle className="w-3 h-3" strokeWidth={2} />
                 </span>
                 Why screen?
               </p>

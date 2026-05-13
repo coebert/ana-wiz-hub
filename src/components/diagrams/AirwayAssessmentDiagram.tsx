@@ -252,7 +252,7 @@ const FONAAnatomyDiagram = () => (
         <line x1={184} y1={105} x2={285} y2={107} stroke="hsl(var(--primary)/0.4)" strokeWidth="0.5" strokeDasharray="2 2" />
 
         {/* ★ CRICOTHYROID MEMBRANE — the target */}
-        <rect x={135} y={170} width={90} height={20} rx={3} fill="hsl(var(--destructive)/0.25)" stroke="hsl(var(--destructive))" strokeWidth="2.5" />
+        <rect x={135} y={170} width={90} height={20} rx={3} fill="hsl(var(--destructive)/0.25)" stroke="hsl(var(--destructive))" strokeWidth="2" />
         <text x={180} y={184} textAnchor="middle" className="fill-destructive text-[9px] font-bold">CTM</text>
         {/* Label with arrow */}
         <line x1={225} y1={180} x2={280} y2={180} stroke="hsl(var(--destructive))" strokeWidth="1.5" />

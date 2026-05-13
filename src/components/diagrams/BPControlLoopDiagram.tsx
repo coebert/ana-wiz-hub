@@ -94,7 +94,7 @@ const Node = ({
   textClass?: string;
 }) => (
   <g>
-    <rect x={x} y={y} width={w} height={h} rx={8} fill={fill} stroke={stroke} strokeWidth={1.2} />
+    <rect x={x} y={y} width={w} height={h} rx={8} fill={fill} stroke={stroke} strokeWidth={1} />
     <text x={x + w / 2} y={y + (sub ? h / 2 - 2 : h / 2 + 4)} textAnchor="middle" className={`${textClass} text-[11px] font-semibold`}>
       {title}
     </text>
@@ -151,9 +151,9 @@ export const BPControlLoopDiagram = () => {
       <div className="bg-card rounded-lg border border-border overflow-hidden">
         <svg viewBox="0 0 880 470" className="w-full h-auto" role="img" aria-label="MAP control loop diagram">
           {/* Backdrop bands for the three time domains */}
-          <rect x={20} y={80} width={840} height={75} fill="hsl(var(--physiology) / 0.05)" rx={6} />
-          <rect x={20} y={185} width={840} height={75} fill="hsl(var(--pharmacology) / 0.05)" rx={6} />
-          <rect x={20} y={285} width={840} height={75} fill="hsl(var(--clinical) / 0.05)" rx={6} />
+          <rect x={20} y={80} width={840} height={75} fill="hsl(var(--physiology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
+          <rect x={20} y={185} width={840} height={75} fill="hsl(var(--pharmacology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
+          <rect x={20} y={285} width={840} height={75} fill="hsl(var(--clinical) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
 
           <text x={30} y={75} className="fill-physiology text-[10px] font-semibold uppercase tracking-wide">
             Neural — seconds
@@ -225,7 +225,7 @@ export const BPControlLoopDiagram = () => {
                   fill="none"
                   stroke={colour}
                   strokeOpacity={isActive ? 0.55 : 0.15}
-                  strokeWidth={1.6}
+                  strokeWidth={1.5}
                   strokeDasharray={isActive ? undefined : "4 4"}
                   markerEnd={isActive ? `url(#arrow-${arc.domain})` : undefined}
                 />

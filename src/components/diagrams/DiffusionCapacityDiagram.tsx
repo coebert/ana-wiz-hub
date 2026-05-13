@@ -109,7 +109,7 @@ function FickView({ thickness, setThickness, area, setArea, gradient, setGradien
         {/* RBCs */}
         {[60, 85, 110].map((y, i) => (
           <ellipse key={i} cx={320 + thickness * 5} cy={y} rx="12" ry="7"
-            fill="hsl(0, 70%, 55%)" opacity={0.2} stroke="hsl(0, 70%, 55%)" strokeWidth="0.8" />
+            fill="hsl(0, 70%, 55%)" opacity={0.2} stroke="hsl(0, 70%, 55%)" strokeWidth="0.75" />
         ))}
 
         {/* CO2 going back */}

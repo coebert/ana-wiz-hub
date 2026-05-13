@@ -161,19 +161,19 @@ const PortalFirstPassDiagram = () => {
               <stop offset="100%" stopColor="hsl(350, 70%, 35%)" />
             </radialGradient>
             <pattern id="pf-mucosa" width="6" height="6" patternUnits="userSpaceOnUse">
-              <path d="M0 6 Q1.5 0 3 6 T6 6" stroke="hsl(20, 50%, 35%)" strokeWidth="0.4" fill="none" opacity="0.5" />
+              <path d="M0 6 Q1.5 0 3 6 T6 6" stroke="hsl(20, 50%, 35%)" strokeWidth="0.5" fill="none" opacity="0.5" />
             </pattern>
           </defs>
 
           {/* ===== Background body silhouette hint ===== */}
           <rect x={20} y={20} width={W - 40} height={H - 40} rx={20}
-            fill="hsl(var(--muted))" opacity={0.08} />
+            fill="hsl(var(--muted))" opacity={0.08} stroke="hsl(var(--border))" strokeWidth="0.75" />
 
           {/* ===== Systemic arterial arc (top) ===== */}
           <path d="M 110 130 Q 290 50 520 140" fill="none"
-            stroke="url(#pf-artery)" strokeWidth="16" strokeLinecap="round" opacity={0.18} />
+            stroke="url(#pf-artery)" strokeWidth="3" strokeLinecap="round" opacity={0.18} />
           <path d="M 110 130 Q 290 50 520 140" fill="none"
-            stroke="url(#pf-artery)" strokeWidth="3.5" strokeLinecap="round" />
+            stroke="url(#pf-artery)" strokeWidth="3" strokeLinecap="round" />
           <text x={310} y={70} textAnchor="middle" fontSize="11"
             className="fill-foreground font-semibold tracking-wide">SYSTEMIC ARTERIAL CIRCULATION</text>
 
@@ -193,7 +193,7 @@ const PortalFirstPassDiagram = () => {
 
           {/* ===== Stomach ===== */}
           <path d="M 70 250 Q 60 230 85 220 Q 130 210 160 230 Q 175 245 168 270 Q 150 295 110 290 Q 80 285 70 270 Z"
-            fill="url(#pf-stomach)" stroke="hsl(20, 50%, 35%)" strokeWidth="1.2" />
+            fill="url(#pf-stomach)" stroke="hsl(20, 50%, 35%)" strokeWidth="1" />
           <text x={120} y={258} textAnchor="middle" fontSize="9"
             className="fill-foreground font-medium">Stomach</text>
 
@@ -206,13 +206,13 @@ const PortalFirstPassDiagram = () => {
           {/* ===== Small bowel coils ===== */}
           <g>
             <path d="M 110 360 Q 140 340 170 360 T 230 360 T 290 360"
-              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="14" strokeLinecap="round" />
+              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="3" strokeLinecap="round" />
             <path d="M 110 360 Q 140 340 170 360 T 230 360 T 290 360"
-              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.6" opacity={0.6} />
+              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.5" opacity={0.6} />
             <path d="M 120 395 Q 155 380 195 395 T 270 395"
-              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="14" strokeLinecap="round" />
+              fill="none" stroke="hsl(25, 50%, 55%)" strokeWidth="3" strokeLinecap="round" />
             <path d="M 120 395 Q 155 380 195 395 T 270 395"
-              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.6" opacity={0.6} />
+              fill="url(#pf-mucosa)" stroke="hsl(20, 50%, 35%)" strokeWidth="0.5" opacity={0.6} />
             <text x={195} y={425} textAnchor="middle" fontSize="9"
               className="fill-foreground font-medium">Small bowel · enterocyte CYP3A4</text>
           </g>
@@ -220,7 +220,7 @@ const PortalFirstPassDiagram = () => {
           {/* ===== Mesenteric tributaries → SMV ===== */}
           {[150, 200, 250].map((x, i) => (
             <path key={i} d={`M ${x} 370 Q ${x + 10} 340 ${230 + i * 5} 320`}
-              stroke="url(#pf-portal)" strokeWidth="2.4" fill="none" opacity={0.85} strokeLinecap="round" />
+              stroke="url(#pf-portal)" strokeWidth="2" fill="none" opacity={0.85} strokeLinecap="round" />
           ))}
           <text x={170} y={335} fontSize="8" className="fill-muted-foreground italic">SMV tributaries</text>
 
@@ -231,7 +231,7 @@ const PortalFirstPassDiagram = () => {
 
           {/* ===== Hepatic portal vein ===== */}
           <path d="M 230 320 Q 280 290 350 230"
-            stroke="url(#pf-portal)" strokeWidth="16" fill="none" strokeLinecap="round" />
+            stroke="url(#pf-portal)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d="M 230 320 Q 280 290 350 230"
             stroke="hsl(265, 60%, 70%)" strokeWidth="2" fill="none" strokeLinecap="round" opacity={0.4} />
           <text x={270} y={295} fontSize="11"
@@ -243,14 +243,14 @@ const PortalFirstPassDiagram = () => {
 
           {/* ===== Hepatic artery (proper) — companion to portal triad ===== */}
           <path d="M 470 130 Q 430 170 360 220"
-            stroke="url(#pf-artery)" strokeWidth="3.5" fill="none" strokeLinecap="round" opacity={0.85} />
+            stroke="url(#pf-artery)" strokeWidth="3" fill="none" strokeLinecap="round" opacity={0.85} />
           <text x={420} y={188} fontSize="8" className="fill-muted-foreground italic"
             transform="rotate(-30, 420, 188)">Hepatic a. (~25%, oxygen)</text>
 
           {/* ===== Liver lobes ===== */}
           {/* Right lobe */}
           <path d="M 350 175 Q 430 150 580 170 Q 630 200 615 270 Q 555 305 460 300 Q 380 285 350 240 Z"
-            fill="url(#pf-liver)" stroke="hsl(8, 55%, 22%)" strokeWidth="1.4" />
+            fill="url(#pf-liver)" stroke="hsl(8, 55%, 22%)" strokeWidth="1.5" />
           {/* Falciform ligament */}
           <path d="M 470 165 L 470 295" stroke="hsl(8, 55%, 22%)" strokeWidth="1" opacity={0.55} />
           {/* Left lobe (smaller, to the left of falciform) */}
@@ -261,7 +261,7 @@ const PortalFirstPassDiagram = () => {
             fill="url(#pf-liver-sheen)" />
           {/* Gallbladder */}
           <path d="M 455 295 Q 450 320 460 332 Q 472 332 478 318 Q 478 300 470 293 Z"
-            fill="hsl(80, 55%, 45%)" stroke="hsl(80, 55%, 25%)" strokeWidth="0.8" />
+            fill="hsl(80, 55%, 45%)" stroke="hsl(80, 55%, 25%)" strokeWidth="0.75" />
           <text x={490} y={328} fontSize="8" className="fill-muted-foreground">GB</text>
 
           <text x={500} y={205} textAnchor="middle" fontSize="14"
@@ -283,7 +283,7 @@ const PortalFirstPassDiagram = () => {
               )}
               {Array.from({ length: 5 }).map((_, i) => (
                 <line key={i} x1={360} y1={241 + i * 9} x2={595} y2={241 + i * 9}
-                  stroke="hsl(265, 50%, 80%)" strokeWidth="0.6" opacity={0.6} />
+                  stroke="hsl(265, 50%, 80%)" strokeWidth="0.5" opacity={0.6} />
               ))}
               <text x={365} y={232} fontSize="7" className="fill-muted-foreground italic">hepatocyte plates · CYP450/UGT uptake</text>
             </g>
@@ -310,11 +310,11 @@ const PortalFirstPassDiagram = () => {
           {layers.bile && (
             <g>
               <line x1={595} y1={285} x2={365} y2={285}
-                stroke="hsl(80, 70%, 50%)" strokeWidth="1.2" strokeDasharray="3 2" opacity={0.85}>
+                stroke="hsl(80, 70%, 50%)" strokeWidth="1" strokeDasharray="3 2" opacity={0.85}>
                 <animate attributeName="stroke-dashoffset" from="0" to="-10" dur="1.2s" repeatCount="indefinite" />
               </line>
               <line x1={595} y1={278} x2={365} y2={278}
-                stroke="hsl(80, 70%, 60%)" strokeWidth="0.6" strokeDasharray="2 3" opacity={0.6} />
+                stroke="hsl(80, 70%, 60%)" strokeWidth="0.5" strokeDasharray="2 3" opacity={0.6} />
               <text x={595} y={275} fontSize="7" textAnchor="end"
                 fill="hsl(80, 60%, 35%)" className="italic">bile canaliculi · counter-flow to portal blood →</text>
             </g>
@@ -322,7 +322,7 @@ const PortalFirstPassDiagram = () => {
 
           {/* ===== Hepatic vein → IVC ===== */}
           <path d="M 555 230 Q 540 180 525 145"
-            stroke="url(#pf-vein)" strokeWidth="11" fill="none" strokeLinecap="round" />
+            stroke="url(#pf-vein)" strokeWidth="3" fill="none" strokeLinecap="round" />
           <path d="M 555 230 Q 540 180 525 145"
             stroke="hsl(215, 65%, 75%)" strokeWidth="1.5" fill="none" strokeLinecap="round" opacity={0.4} />
           <text x={566} y={185} fontSize="9" className="fill-muted-foreground">Hepatic v. → IVC</text>
@@ -353,9 +353,9 @@ const PortalFirstPassDiagram = () => {
               return (
                 <g key={id} opacity={fade}>
                   <circle cx={x} cy={y} r={4} fill="hsl(280, 70%, 55%)"
-                    stroke="hsl(280, 80%, 30%)" strokeWidth="0.8" />
+                    stroke="hsl(280, 80%, 30%)" strokeWidth="0.75" />
                   <circle cx={x} cy={y} r={7} fill="none"
-                    stroke="hsl(280, 70%, 55%)" strokeWidth="0.6" opacity={0.4} />
+                    stroke="hsl(280, 70%, 55%)" strokeWidth="0.5" opacity={0.4} />
                 </g>
               );
             }
@@ -371,7 +371,7 @@ const PortalFirstPassDiagram = () => {
           {/* Legend */}
           <g transform="translate(40, 40)">
             <rect x={-6} y={-10} width={210} height={66} rx={6}
-              fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.8" opacity={0.92} />
+              fill="hsl(var(--card))" stroke="hsl(var(--border))" strokeWidth="0.75" opacity={0.92} />
             <circle cx={6} cy={6} r={5} fill="hsl(280, 75%, 62%)" stroke="hsl(280, 80%, 28%)" strokeWidth="1" />
             <text x={18} y={10} fontSize="10" className="fill-foreground">Drug molecule (active)</text>
             <circle cx={6} cy={24} r={4} fill="hsl(280, 70%, 55%)" opacity={0.4} />

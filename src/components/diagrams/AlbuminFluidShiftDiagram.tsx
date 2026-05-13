@@ -193,8 +193,7 @@ const AlbuminFluidShiftDiagram = () => {
             height="180"
             rx="8"
             fill="hsl(var(--muted))"
-            opacity={interstitialFill}
-          />
+            opacity={interstitialFill} stroke="hsl(var(--border))" strokeWidth="0.75" />
           <text x="30" y="58" className="fill-muted-foreground" fontSize="10">
             Interstitial space
           </text>
@@ -254,7 +253,7 @@ const AlbuminFluidShiftDiagram = () => {
             <text x="0" y="0" className="fill-muted-foreground" fontSize="9">
               Plasma π (mmHg)
             </text>
-            <rect x="0" y="6" width="80" height="8" rx="2" fill="hsl(var(--muted))" />
+            <rect x="0" y="6" width="80" height="8" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <rect
               x="0"
               y="6"
@@ -275,15 +274,14 @@ const AlbuminFluidShiftDiagram = () => {
             <text x="0" y="0" className="fill-muted-foreground" fontSize="9">
               Plasma volume Δ
             </text>
-            <rect x="0" y="6" width="80" height="8" rx="2" fill="hsl(var(--muted))" />
+            <rect x="0" y="6" width="80" height="8" rx="2" fill="hsl(var(--muted))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <rect
               x="0"
               y="6"
               width={Math.max(0, Math.min(80, scenario.retained * 32 * Math.min(1, t * 1.2)))}
               height="8"
               rx="2"
-              fill="hsl(var(--primary))"
-            />
+              fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <text x="0" y="26" className="fill-foreground" fontSize="10" fontWeight="600">
               {(scenario.retained * 100).toFixed(0)}% retained
             </text>

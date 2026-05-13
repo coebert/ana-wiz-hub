@@ -203,7 +203,7 @@ export const HPAAxisDiagram = () => {
                 d="M 100 388 Q 30 320 30 230 Q 30 195 100 195"
                 fill="none"
                 stroke="hsl(220 60% 55%)"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 strokeDasharray="5 3"
                 markerEnd="url(#arrow-inhib)"
               />
@@ -216,7 +216,7 @@ export const HPAAxisDiagram = () => {
                 d="M 260 388 Q 340 320 340 130 Q 340 70 285 60"
                 fill="none"
                 stroke="hsl(220 60% 55%)"
-                strokeWidth="1.6"
+                strokeWidth="1.5"
                 strokeDasharray="5 3"
                 markerEnd="url(#arrow-inhib)"
               />
@@ -227,7 +227,7 @@ export const HPAAxisDiagram = () => {
             {/* Stress inputs */}
             {scenario === "stress" && (
               <g className="animate-pulse">
-                <line x1="40" y1="50" x2="75" y2="50" stroke="hsl(0 75% 55%)" strokeWidth="2.2" markerEnd="url(#arrow-stim)" />
+                <line x1="40" y1="50" x2="75" y2="50" stroke="hsl(0 75% 55%)" strokeWidth="2" markerEnd="url(#arrow-stim)" />
                 <text x="40" y="38" fontSize="8" fill="hsl(0 75% 55%)" fontWeight="700">surgery, IL-6, TNF-α, sympathetic</text>
               </g>
             )}
@@ -236,7 +236,7 @@ export const HPAAxisDiagram = () => {
             <g transform="translate(8, 448)">
               <line x1="0" y1="6" x2="22" y2="6" stroke="hsl(25 85% 55%)" strokeWidth="2" markerEnd="url(#arrow-stim)" />
               <text x="28" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">stimulation</text>
-              <line x1="100" y1="6" x2="122" y2="6" stroke="hsl(220 60% 55%)" strokeWidth="1.6" strokeDasharray="4 2" markerEnd="url(#arrow-inhib)" />
+              <line x1="100" y1="6" x2="122" y2="6" stroke="hsl(220 60% 55%)" strokeWidth="1.5" strokeDasharray="4 2" markerEnd="url(#arrow-inhib)" />
               <text x="128" y="9" fontSize="8" fill="hsl(var(--muted-foreground))">negative feedback</text>
             </g>
           </svg>

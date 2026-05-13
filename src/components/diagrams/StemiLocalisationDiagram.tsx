@@ -314,7 +314,7 @@ const StemiLocalisationDiagram = () => {
                 d="M 100 25 Q 50 25 35 75 Q 25 130 60 175 Q 90 205 100 205 Q 110 205 140 175 Q 175 130 165 75 Q 150 25 100 25 Z"
                 fill="url(#stemi-heart-bg)"
                 stroke="hsl(var(--border))"
-                strokeWidth="0.8"
+                strokeWidth="0.75"
               />
 
               {/* Aorta stub */}
@@ -343,7 +343,7 @@ const StemiLocalisationDiagram = () => {
                       d={a.path}
                       fill="none"
                       stroke={a.color}
-                      strokeWidth="7"
+                      strokeWidth="3"
                       strokeOpacity="0.18"
                       strokeLinecap="round"
                     />
@@ -371,7 +371,7 @@ const StemiLocalisationDiagram = () => {
                     d="M 60 185 Q 80 195 100 195"
                     fill="none"
                     stroke={territories.inferior.color}
-                    strokeWidth="2.5"
+                    strokeWidth="2"
                     strokeLinecap="round"
                     opacity="0.9"
                   />
@@ -402,7 +402,7 @@ const StemiLocalisationDiagram = () => {
                 return (
                   <g>
                     <circle cx={marker.x} cy={marker.y} r="5" fill={info.color} stroke="hsl(var(--background))" strokeWidth="1.5" />
-                    <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="white" textAnchor="middle" dominantBaseline="middle">×</text>
+                    <text x={marker.x} y={marker.y + 1.5} fontSize="7" fontWeight="bold" fill="hsl(var(--background))" textAnchor="middle" dominantBaseline="middle">×</text>
                   </g>
                 );
               })()}

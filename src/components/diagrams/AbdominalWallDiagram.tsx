@@ -81,21 +81,21 @@ const AbdominalWallDiagram = () => {
               </pattern>
               {/* Fat globule pattern */}
               <pattern id="fatTex" patternUnits="userSpaceOnUse" width="10" height="8">
-                <ellipse cx="5" cy="4" rx="3.2" ry="2.4" fill="hsl(40, 55%, 72%)" opacity="0.3" stroke="hsl(35, 40%, 60%)" strokeWidth="0.3" />
+                <ellipse cx="5" cy="4" rx="3.2" ry="2.4" fill="hsl(40, 55%, 72%)" opacity="0.3" stroke="hsl(35, 40%, 60%)" strokeWidth="0.5" />
               </pattern>
               {/* Fascia striation */}
               <pattern id="fasciaTex" patternUnits="userSpaceOnUse" width="16" height="3">
-                <line x1="0" y1="1.5" x2="16" y2="1.5" stroke="hsl(40, 35%, 50%)" strokeWidth="0.4" opacity="0.35" />
+                <line x1="0" y1="1.5" x2="16" y2="1.5" stroke="hsl(40, 35%, 50%)" strokeWidth="0.5" opacity="0.35" />
               </pattern>
               {/* Muscle fibre diagonal down-medial (EO) */}
               <pattern id="eoFibre" patternUnits="userSpaceOnUse" width="8" height="12" patternTransform="rotate(-30)">
-                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.6" opacity="0.25" />
-                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.4" opacity="0.15" />
+                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.5" opacity="0.25" />
+                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(0, 45%, 50%)" strokeWidth="0.5" opacity="0.15" />
               </pattern>
               {/* Muscle fibre diagonal up-medial (IO) */}
               <pattern id="ioFibre" patternUnits="userSpaceOnUse" width="8" height="12" patternTransform="rotate(30)">
-                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.6" opacity="0.25" />
-                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.4" opacity="0.15" />
+                <line x1="0" y1="0" x2="0" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.5" opacity="0.25" />
+                <line x1="4" y1="0" x2="4" y2="12" stroke="hsl(210, 45%, 48%)" strokeWidth="0.5" opacity="0.15" />
               </pattern>
               {/* Transverse muscle fibres (TA) */}
               <pattern id="taFibre" patternUnits="userSpaceOnUse" width="12" height="5">
@@ -114,8 +114,8 @@ const AbdominalWallDiagram = () => {
             </defs>
 
             {/* US probe with realistic shape */}
-            <rect x={xOff + 50} y={0} width="80" height="9" rx="4.5" fill="hsl(var(--muted-foreground))" opacity="0.25" />
-            <rect x={xOff + 55} y={7} width="70" height="3" rx="1" fill="hsl(var(--muted-foreground))" opacity="0.15" />
+            <rect x={xOff + 50} y={0} width="80" height="9" rx="4.5" fill="hsl(var(--muted-foreground))" opacity="0.25" stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <rect x={xOff + 55} y={7} width="70" height="3" rx="1" fill="hsl(var(--muted-foreground))" opacity="0.15" stroke="hsl(var(--border))" strokeWidth="0.75" />
             <text x={xOff + 90} y={7} fontSize="5" textAnchor="middle" fill="hsl(var(--foreground))" opacity="0.55" fontWeight="600">US Probe</text>
 
             {/* US beam cone */}
@@ -127,7 +127,7 @@ const AbdominalWallDiagram = () => {
 
             {/* Needle trajectory with realistic bevel */}
             <path d={`M${xOff + layerW + 15},18 C${xOff + layerW + 5},50 ${xOff + layerW - 15},90 ${xOff + layerW / 2 + 20},${layerGeom["tap-plane"].y + 6}`}
-              stroke="hsl(var(--muted-foreground))" strokeWidth="1.8" strokeDasharray="5 2" opacity="0.35" fill="none" />
+              stroke="hsl(var(--muted-foreground))" strokeWidth="2" strokeDasharray="5 2" opacity="0.35" fill="none" />
             {/* Needle shaft sheen */}
             <path d={`M${xOff + layerW + 15},18 C${xOff + layerW + 5},50 ${xOff + layerW - 15},90 ${xOff + layerW / 2 + 20},${layerGeom["tap-plane"].y + 6}`}
               stroke="hsl(0, 0%, 80%)" strokeWidth="0.5" opacity="0.2" fill="none" />
@@ -174,7 +174,7 @@ const AbdominalWallDiagram = () => {
                       <g opacity={isActive ? 0.35 : 0.12}>
                         {[30, 65, 100, 135, 165].map((hx, i) => (
                           <g key={i}>
-                            <line x1={xOff + hx} y1={g.y + 2} x2={xOff + hx - 1} y2={g.y + g.h - 2} stroke="hsl(25, 35%, 45%)" strokeWidth="0.6" />
+                            <line x1={xOff + hx} y1={g.y + 2} x2={xOff + hx - 1} y2={g.y + g.h - 2} stroke="hsl(25, 35%, 45%)" strokeWidth="0.5" />
                             <ellipse cx={xOff + hx} cy={g.y + g.h - 1} rx="1.5" ry="1" fill="hsl(25, 40%, 50%)" opacity="0.3" />
                           </g>
                         ))}
@@ -188,9 +188,9 @@ const AbdominalWallDiagram = () => {
                       <rect x={xOff} y={g.y} width={layerW} height={g.h} fill="url(#fatTex)" />
                       {/* Superficial vessels */}
                       <path d={`M${xOff + 40},${g.y + 4} C${xOff + 55},${g.y + 8} ${xOff + 70},${g.y + 10} ${xOff + 90},${g.y + 7}`}
-                        stroke="hsl(0, 50%, 55%)" strokeWidth="0.8" fill="none" opacity="0.4" />
+                        stroke="hsl(0, 50%, 55%)" strokeWidth="0.75" fill="none" opacity="0.4" />
                       <path d={`M${xOff + 120},${g.y + 6} C${xOff + 140},${g.y + 10} ${xOff + 155},${g.y + 12} ${xOff + 170},${g.y + 9}`}
-                        stroke="hsl(220, 45%, 55%)" strokeWidth="0.7" fill="none" opacity="0.3" />
+                        stroke="hsl(220, 45%, 55%)" strokeWidth="0.75" fill="none" opacity="0.3" />
                     </g>
                   )}
 
@@ -207,7 +207,7 @@ const AbdominalWallDiagram = () => {
                       <g opacity={isActive ? 0.2 : 0.06}>
                         {[0, 1, 2].map(i => (
                           <line key={i} x1={xOff + 5} y1={g.y + 8 + i * 10} x2={xOff + layerW - 5} y2={g.y + 8 + i * 10}
-                            stroke="hsl(0, 0%, 70%)" strokeWidth="0.3" strokeDasharray="2 4" />
+                            stroke="hsl(0, 0%, 70%)" strokeWidth="0.5" strokeDasharray="2 4" />
                         ))}
                       </g>
                       {/* Fibre direction arrow */}
@@ -225,7 +225,7 @@ const AbdominalWallDiagram = () => {
                       {/* Nerve running between IO and TA */}
                       <g opacity={isActive ? 0.45 : 0.12}>
                         <path d={`M${xOff + 10},${g.y + g.h - 3} C${xOff + 50},${g.y + g.h - 5} ${xOff + 100},${g.y + g.h - 2} ${xOff + 150},${g.y + g.h - 4}`}
-                          stroke="hsl(50, 70%, 55%)" strokeWidth="1.2" fill="none" />
+                          stroke="hsl(50, 70%, 55%)" strokeWidth="1" fill="none" />
                         <text x={xOff + 80} y={g.y + g.h - 7} fontSize="3.5" fill="hsl(50, 70%, 55%)" textAnchor="middle">Ilioinguinal n. (L1)</text>
                       </g>
                       {/* Fibre direction */}
@@ -241,7 +241,7 @@ const AbdominalWallDiagram = () => {
                       {/* Nerve cross-sections - realistic circles with myelin */}
                       {[18, 40, 62, 84, 106, 128, 150, 172].map((nx, i) => (
                         <g key={i} opacity={isActive ? 0.9 : 0.45}>
-                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="3.5" fill="hsl(45, 80%, 85%)" stroke="hsl(45, 70%, 45%)" strokeWidth="0.8" />
+                          <circle cx={xOff + nx} cy={g.y + g.h / 2} r="3.5" fill="hsl(45, 80%, 85%)" stroke="hsl(45, 70%, 45%)" strokeWidth="0.75" />
                           <circle cx={xOff + nx} cy={g.y + g.h / 2} r="1.8" fill="hsl(45, 90%, 50%)" opacity="0.6" />
                           <circle cx={xOff + nx} cy={g.y + g.h / 2} r="0.8" fill="hsl(0, 0%, 30%)" opacity="0.5" />
                         </g>
@@ -275,7 +275,7 @@ const AbdominalWallDiagram = () => {
                       <text x={xOff + 85} y={g.y + 7} fontSize="3" fill="hsl(0, 60%, 50%)" opacity="0.5">IEA</text>
                       {/* Companion vein */}
                       <path d={`M${xOff + 47},${g.y + 4} C${xOff + 57},${g.y + 8} ${xOff + 67},${g.y + 10} ${xOff + 82},${g.y + 7}`}
-                        stroke="hsl(220, 50%, 50%)" strokeWidth="0.6" fill="none" opacity="0.4" />
+                        stroke="hsl(220, 50%, 50%)" strokeWidth="0.5" fill="none" opacity="0.4" />
                     </g>
                   )}
 
@@ -314,7 +314,7 @@ const AbdominalWallDiagram = () => {
             {/* Depth scale bar */}
             <g opacity="0.3">
               <line x1={xOff - 6} y1={layerGeom.skin.y} x2={xOff - 6} y2={layerGeom.peritoneum.y + layerGeom.peritoneum.h}
-                stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" />
+                stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" />
               <line x1={xOff - 9} y1={layerGeom.skin.y} x2={xOff - 3} y2={layerGeom.skin.y}
                 stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
               <line x1={xOff - 9} y1={layerGeom.peritoneum.y + layerGeom.peritoneum.h} x2={xOff - 3} y2={layerGeom.peritoneum.y + layerGeom.peritoneum.h}

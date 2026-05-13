@@ -111,7 +111,7 @@ const CannulaHub: React.FC<{
     {withPort && (
       <>
         <rect x={x + width - 4} y={y - 9} width={5} height={8} rx={1.5} fill={color} opacity={0.9} />
-        <circle cx={x + width - 1.5} cy={y - 9} r={2.2} fill="hsl(330 55% 60%)" stroke="hsl(0 0% 0% / 0.3)" strokeWidth={0.4} />
+        <circle cx={x + width - 1.5} cy={y - 9} r={2.2} fill="hsl(330 55% 60%)" stroke="hsl(0 0% 0% / 0.3)" strokeWidth={0.5} />
       </>
     )}
     {/* luer tip */}
@@ -123,8 +123,8 @@ const CannulaHub: React.FC<{
 const CVCHub: React.FC<{ x: number; y: number; id: string; lumens: { color: string; label: string }[] }> = ({ x, y, id, lumens }) => (
   <g filter={`url(#${id}-shadow)`}>
     {/* Bifurcation manifold */}
-    <path d={`M${x},${y} l8,-2 l0,4 z`} fill="hsl(45 25% 88%)" stroke="hsl(0 0% 20% / 0.4)" strokeWidth={0.4} />
-    <rect x={x + 8} y={y - 6} width={6} height={12} rx={1.5} fill="hsl(45 25% 88%)" stroke="hsl(0 0% 20% / 0.4)" strokeWidth={0.4} />
+    <path d={`M${x},${y} l8,-2 l0,4 z`} fill="hsl(45 25% 88%)" stroke="hsl(0 0% 20% / 0.4)" strokeWidth={0.5} />
+    <rect x={x + 8} y={y - 6} width={6} height={12} rx={1.5} fill="hsl(45 25% 88%)" stroke="hsl(0 0% 20% / 0.4)" strokeWidth={0.5} />
     {/* Pigtails */}
     {lumens.map((l, i) => {
       const yOff = (i - (lumens.length - 1) / 2) * 7;
@@ -133,14 +133,14 @@ const CVCHub: React.FC<{ x: number; y: number; id: string; lumens: { color: stri
           <path
             d={`M${x + 14},${y} C ${x + 22},${y} ${x + 26},${y + yOff * 1.3} ${x + 38},${y + yOff * 1.5}`}
             stroke={l.color}
-            strokeWidth={2.6}
+            strokeWidth={3}
             fill="none"
             strokeLinecap="round"
           />
           {/* clamp */}
           <rect x={x + 28} y={y + yOff * 1.4 - 1.5} width={4} height={3} rx={0.5} fill="hsl(0 0% 25%)" />
           {/* luer */}
-          <circle cx={x + 39} cy={y + yOff * 1.5} r={1.6} fill={l.color} stroke="hsl(0 0% 100% / 0.4)" strokeWidth={0.4} />
+          <circle cx={x + 39} cy={y + yOff * 1.5} r={1.6} fill={l.color} stroke="hsl(0 0% 100% / 0.4)" strokeWidth={0.5} />
           <text x={x + 43} y={y + yOff * 1.5 + 2.5} fontSize={7} fill="hsl(var(--muted-foreground))">{l.label}</text>
         </g>
       );
@@ -401,7 +401,7 @@ const SceneHandCannula: React.FC = () => {
         d="M30,95 C 25,75 30,55 45,42 C 60,30 80,28 100,30 L 120,28 C 140,28 160,32 175,42 C 200,58 215,80 215,100 L 215,118 L 30,118 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       {/* Knuckles hint */}
       {[60, 90, 120, 150].map((x) => (
@@ -414,12 +414,12 @@ const SceneHandCannula: React.FC = () => {
       />
       {/* Dorsal venous network */}
       <path d="M50,95 C 70,80 90,70 115,60 C 140,52 165,50 195,55"
-        stroke={`url(#${id}-vein)`} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.7}/>
+        stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.7}/>
       <path d="M50,95 C 70,80 90,70 115,60 C 140,52 165,50 195,55"
-        stroke={`url(#${id}-veinLumen)`} strokeWidth={2.2} fill="none" strokeLinecap="round" opacity={0.9}/>
+        stroke={`url(#${id}-veinLumen)`} strokeWidth={2} fill="none" strokeLinecap="round" opacity={0.9}/>
       {/* tributary */}
-      <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-vein)`} strokeWidth={3.5} fill="none" opacity={0.6}/>
-      <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-veinLumen)`} strokeWidth={1.4} fill="none" opacity={0.85}/>
+      <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" opacity={0.6}/>
+      <path d="M115,60 C 110,75 105,90 100,108" stroke={`url(#${id}-veinLumen)`} strokeWidth={1.5} fill="none" opacity={0.85}/>
 
       {/* Cannula — entering from right, advancing into vein */}
       <AnimatedAdvance
@@ -460,10 +460,10 @@ const SceneACF14G: React.FC = () => {
         d="M10,40 C 30,30 70,28 100,38 C 115,42 125,50 130,62 C 138,80 165,90 200,92 L 230,92 L 230,118 L 10,118 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       {/* Antecubital crease */}
-      <path d="M115,55 C 125,62 130,72 128,82" stroke="hsl(20 40% 45%)" strokeWidth={0.6} fill="none" opacity={0.5}/>
+      <path d="M115,55 C 125,62 130,72 128,82" stroke="hsl(20 40% 45%)" strokeWidth={0.5} fill="none" opacity={0.5}/>
       {/* Stipple */}
       <path
         d="M10,40 C 30,30 70,28 100,38 C 115,42 125,50 130,62 C 138,80 165,90 200,92 L 230,92 L 230,118 L 10,118 Z"
@@ -471,18 +471,18 @@ const SceneACF14G: React.FC = () => {
       />
       {/* Median cubital vein — Y shape */}
       <path d="M30,55 C 60,58 90,62 115,68 C 140,75 175,80 220,80"
-        stroke={`url(#${id}-vein)`} strokeWidth={7} fill="none" strokeLinecap="round" opacity={0.75}/>
+        stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.75}/>
       <path d="M30,55 C 60,58 90,62 115,68 C 140,75 175,80 220,80"
-        stroke={`url(#${id}-veinLumen)`} strokeWidth={3.5} fill="none" strokeLinecap="round" opacity={0.9}/>
+        stroke={`url(#${id}-veinLumen)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.9}/>
       {/* basilic branch */}
-      <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-vein)`} strokeWidth={5} fill="none" opacity={0.6}/>
+      <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" opacity={0.6}/>
       <path d="M115,68 C 130,82 150,95 180,105" stroke={`url(#${id}-veinLumen)`} strokeWidth={2} fill="none" opacity={0.85}/>
 
       {/* 14G cannula — wide bore, advancing into median cubital v. */}
       <AnimatedAdvance
         d="M170,75 L130,70"
         stroke="hsl(45 25% 92%)"
-        strokeWidth={4.5}
+        strokeWidth={3}
         pathId={`${id}-shaft`}
         shadowId={id}
         dur="3.6s"
@@ -515,24 +515,24 @@ const SceneMidline: React.FC = () => {
         d="M5,30 L 305,30 C 312,30 315,35 315,45 L 315,75 C 315,85 312,90 305,90 L 5,90 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       <path
         d="M5,30 L 305,30 C 312,30 315,35 315,45 L 315,75 C 315,85 312,90 305,90 L 5,90 Z"
         fill={`url(#${id}-stipple)`}
       />
       {/* Basilic vein running medial */}
-      <path d="M20,60 L 310,60" stroke={`url(#${id}-vein)`} strokeWidth={9} strokeLinecap="round" opacity={0.75}/>
-      <path d="M20,60 L 310,60" stroke={`url(#${id}-veinLumen)`} strokeWidth={5} strokeLinecap="round" opacity={0.95}/>
+      <path d="M20,60 L 310,60" stroke={`url(#${id}-vein)`} strokeWidth={3} strokeLinecap="round" opacity={0.75}/>
+      <path d="M20,60 L 310,60" stroke={`url(#${id}-veinLumen)`} strokeWidth={3} strokeLinecap="round" opacity={0.95}/>
       {/* Vein wall edges */}
-      <line x1={20} y1={55.5} x2={310} y2={55.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
-      <line x1={20} y1={64.5} x2={310} y2={64.5} stroke="hsl(220 50% 25%)" strokeWidth={0.4} opacity={0.6}/>
+      <line x1={20} y1={55.5} x2={310} y2={55.5} stroke="hsl(220 50% 25%)" strokeWidth={0.5} opacity={0.6}/>
+      <line x1={20} y1={64.5} x2={310} y2={64.5} stroke="hsl(220 50% 25%)" strokeWidth={0.5} opacity={0.6}/>
 
       {/* Catheter advancing from entry (right) to axilla (left) */}
       <AnimatedAdvance
         d="M245,60 L50,60"
         stroke={`url(#${id}-cath)`}
-        strokeWidth={3.5}
+        strokeWidth={3}
         pathId={`${id}-shaft`}
         shadowId={id}
         dur="5s"
@@ -546,7 +546,7 @@ const SceneMidline: React.FC = () => {
 
       {/* Tick markings on catheter */}
       {[80, 110, 140, 170, 200, 230].map((x) => (
-        <line key={x} x1={x} y1={57} x2={x} y2={63} stroke="hsl(0 0% 30%)" strokeWidth={0.4} />
+        <line key={x} x1={x} y1={57} x2={x} y2={63} stroke="hsl(0 0% 30%)" strokeWidth={0.5} />
       ))}
 
       <text x={30} y={22} fontSize={8.5} fill="hsl(var(--foreground))" fontWeight={600}>tip — axillary v.</text>
@@ -573,14 +573,14 @@ const ScenePICC: React.FC = () => {
         d="M455,55 L 230,55 C 215,55 200,65 195,80 L 190,95 C 188,108 195,118 210,120 L 455,120 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       {/* Chest/torso (left) */}
       <path
         d="M5,40 L 200,40 C 215,40 225,55 225,75 L 225,160 L 5,160 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       {/* Stipple overlay */}
       <path d="M5,40 L 200,40 C 215,40 225,55 225,75 L 225,160 L 5,160 Z" fill={`url(#${id}-stipple)`}/>
@@ -597,11 +597,11 @@ const ScenePICC: React.FC = () => {
       {/* Venous route: basilic → axillary → subclavian → SVC → RA */}
       <path
         d="M440,90 L 280,90 C 250,90 230,82 215,72 C 200,62 180,62 160,68 C 140,74 125,82 115,95 C 108,105 100,115 95,128"
-        stroke={`url(#${id}-vein)`} strokeWidth={9} fill="none" strokeLinecap="round" opacity={0.7}
+        stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.7}
       />
       <path
         d="M440,90 L 280,90 C 250,90 230,82 215,72 C 200,62 180,62 160,68 C 140,74 125,82 115,95 C 108,105 100,115 95,128"
-        stroke={`url(#${id}-veinLumen)`} strokeWidth={5} fill="none" strokeLinecap="round" opacity={0.85}
+        stroke={`url(#${id}-veinLumen)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.85}
       />
 
       {/* PICC catheter advancing basilic → axillary → subclavian → SVC */}
@@ -624,7 +624,7 @@ const ScenePICC: React.FC = () => {
       ]}/>
 
       {/* StatLock anchor pad */}
-      <rect x={395} y={84} width={14} height={12} rx={2} fill="hsl(45 35% 90%)" stroke="hsl(0 0% 30%)" strokeWidth={0.4} opacity={0.85}/>
+      <rect x={395} y={84} width={14} height={12} rx={2} fill="hsl(45 35% 90%)" stroke="hsl(0 0% 30%)" strokeWidth={0.5} opacity={0.85}/>
 
       {/* Labels */}
       <text x={420} y={75} fontSize={8} fill="hsl(var(--foreground))" fontWeight={600}>basilic v.</text>
@@ -652,22 +652,22 @@ const SceneCVC: React.FC = () => {
         d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       <path d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z" fill={`url(#${id}-stipple)`}/>
 
       {/* SCM muscle hint */}
-      <path d="M120,25 Q 135,55 158,90" stroke="hsl(20 35% 55%)" strokeWidth={6} fill="none" opacity={0.3}/>
+      <path d="M120,25 Q 135,55 158,90" stroke="hsl(20 35% 55%)" strokeWidth={3} fill="none" opacity={0.3}/>
       {/* Clavicle */}
-      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={5} fill="none" opacity={0.6}/>
+      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={3} fill="none" opacity={0.6}/>
       <text x={205} y={102} fontSize={7.5} fill="hsl(var(--muted-foreground))" textAnchor="middle">clavicle</text>
 
       {/* IJV */}
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={11} fill="none" strokeLinecap="round" opacity={0.7}/>
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.9}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.7}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.9}/>
 
       {/* Carotid (sibling artery) */}
-      <path d="M95,25 C 100,55 108,85 118,115" stroke="hsl(0 60% 50%)" strokeWidth={5} fill="none" opacity={0.5}/>
+      <path d="M95,25 C 100,55 108,85 118,115" stroke="hsl(0 60% 50%)" strokeWidth={3} fill="none" opacity={0.5}/>
       <text x={80} y={45} fontSize={7} fill="hsl(0 60% 45%)" fontWeight={600}>CCA</text>
 
       {/* Heart silhouette */}
@@ -678,7 +678,7 @@ const SceneCVC: React.FC = () => {
       <AnimatedAdvance
         d="M148,55 C 150,75 152,95 154,115 L 162,148 L 174,178"
         stroke={`url(#${id}-cath)`}
-        strokeWidth={3.5}
+        strokeWidth={3}
         pathId={`${id}-shaft`}
         shadowId={id}
         dur="5s"
@@ -688,7 +688,7 @@ const SceneCVC: React.FC = () => {
       <text x={180} y={196} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>tip — lower SVC</text>
 
       {/* Suture wings */}
-      <rect x={142} y={50} width={12} height={8} rx={1.5} fill="hsl(45 35% 88%)" stroke="hsl(0 0% 25%)" strokeWidth={0.4}/>
+      <rect x={142} y={50} width={12} height={8} rx={1.5} fill="hsl(45 35% 88%)" stroke="hsl(0 0% 25%)" strokeWidth={0.5}/>
 
       {/* Triple manifold + pigtails — emerging laterally */}
       <CVCHub x={148} y={48} id={id} lumens={[
@@ -719,15 +719,15 @@ const SceneVascath: React.FC = () => {
         d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       <path d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z" fill={`url(#${id}-stipple)`}/>
 
-      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={5} fill="none" opacity={0.6}/>
+      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={3} fill="none" opacity={0.6}/>
 
       {/* IJV — wider to accommodate large catheter */}
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={13} fill="none" strokeLinecap="round" opacity={0.7}/>
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={7.5} fill="none" strokeLinecap="round" opacity={0.9}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.7}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.9}/>
 
       {/* Heart */}
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
@@ -737,7 +737,7 @@ const SceneVascath: React.FC = () => {
       <AnimatedAdvance
         d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
         stroke={`url(#${id}-cath)`}
-        strokeWidth={6}
+        strokeWidth={3}
         pathId={`${id}-shaft`}
         shadowId={id}
         dur="5s"
@@ -746,7 +746,7 @@ const SceneVascath: React.FC = () => {
       />
       {/* Septum line down catheter showing two lumens */}
       <path d="M148,55 C 150,75 152,95 154,115 L 162,150 L 175,180"
-        stroke="hsl(0 0% 30%)" strokeWidth={0.6} fill="none" opacity={0.6}/>
+        stroke="hsl(0 0% 30%)" strokeWidth={0.5} fill="none" opacity={0.6}/>
 
       {/* Staggered tips (revealed once advanced) */}
       <circle cx={170} cy={170} r={2.6} fill="hsl(195 70% 45%)"/>
@@ -759,7 +759,7 @@ const SceneVascath: React.FC = () => {
       ]}/>
 
       {/* Suture wings - bigger */}
-      <rect x={140} y={50} width={16} height={9} rx={1.5} fill="hsl(45 35% 88%)" stroke="hsl(0 0% 25%)" strokeWidth={0.4}/>
+      <rect x={140} y={50} width={16} height={9} rx={1.5} fill="hsl(45 35% 88%)" stroke="hsl(0 0% 25%)" strokeWidth={0.5}/>
 
       <text x={130} y={95} fontSize={8} fill="hsl(var(--foreground))" fontWeight={600}>R IJV</text>
     </SceneFrame>
@@ -782,15 +782,15 @@ const SceneIntroducer: React.FC = () => {
         d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z"
         fill={`url(#${id}-skin)`}
         stroke="hsl(20 35% 50%)"
-        strokeWidth={0.6}
+        strokeWidth={0.5}
       />
       <path d="M5,20 L 130,20 C 140,20 145,30 148,45 L 152,75 C 155,90 165,100 180,105 L 315,105 L 315,215 L 5,215 Z" fill={`url(#${id}-stipple)`}/>
 
-      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={5} fill="none" opacity={0.6}/>
+      <path d="M130,108 Q 200,98 285,108" stroke="hsl(45 30% 80%)" strokeWidth={3} fill="none" opacity={0.6}/>
 
       {/* IJV */}
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={12} fill="none" strokeLinecap="round" opacity={0.7}/>
-      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={7} fill="none" strokeLinecap="round" opacity={0.9}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-vein)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.7}/>
+      <path d="M118,25 C 125,55 135,85 148,115 L 160,150 L 175,180" stroke={`url(#${id}-veinLumen)`} strokeWidth={3} fill="none" strokeLinecap="round" opacity={0.9}/>
 
       {/* Heart */}
       <path d="M155,170 C 145,160 165,148 180,158 C 195,148 215,160 205,170 C 200,188 180,200 180,200 C 180,200 160,188 155,170 Z"
@@ -819,7 +819,7 @@ const SceneIntroducer: React.FC = () => {
       <AnimatedAdvance
         d="M148,60 C 150,85 154,115 158,145"
         stroke={`url(#${id}-cath)`}
-        strokeWidth={6.5}
+        strokeWidth={3}
         pathId={`${id}-sheath`}
         shadowId={id}
         dur="12s"
@@ -833,7 +833,7 @@ const SceneIntroducer: React.FC = () => {
       <AnimatedAdvance
         d="M158,145 C 162,160 175,170 188,178 C 200,184 210,186 215,180"
         stroke="hsl(50 90% 50%)"
-        strokeWidth={2.6}
+        strokeWidth={3}
         pathId={`${id}-pac`}
         shadowId={id}
         dur="12s"
@@ -852,11 +852,11 @@ const SceneIntroducer: React.FC = () => {
         {/* diaphragm */}
         <circle cx={148} cy={42} r={3.5} fill="hsl(0 0% 25%)"/>
         {/* sideport tube */}
-        <path d="M158,52 C 175,52 185,42 195,30" stroke="hsl(40 75% 50%)" strokeWidth={3.5} fill="none" strokeLinecap="round"/>
+        <path d="M158,52 C 175,52 185,42 195,30" stroke="hsl(40 75% 50%)" strokeWidth={3} fill="none" strokeLinecap="round"/>
         {/* 3-way tap */}
         <circle cx={195} cy={30} r={4} fill="hsl(40 75% 50%)" stroke="hsl(0 0% 20% / 0.4)" strokeWidth={0.5}/>
-        <line x1={195} y1={26} x2={195} y2={34} stroke="hsl(0 0% 20%)" strokeWidth={0.6}/>
-        <line x1={191} y1={30} x2={199} y2={30} stroke="hsl(0 0% 20%)" strokeWidth={0.6}/>
+        <line x1={195} y1={26} x2={195} y2={34} stroke="hsl(0 0% 20%)" strokeWidth={0.5}/>
+        <line x1={191} y1={30} x2={199} y2={30} stroke="hsl(0 0% 20%)" strokeWidth={0.5}/>
       </g>
 
       <text x={205} y={28} fontSize={7.5} fill="hsl(var(--foreground))" fontWeight={600}>side-port</text>
@@ -1003,7 +1003,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                   fill={wallColor}
                   stroke="hsl(var(--foreground))"
                   strokeOpacity={0.4}
-                  strokeWidth={0.8}
+                  strokeWidth={0.75}
                 />
                 {/* Lumens */}
                 {c.layout === "single" && (
@@ -1029,7 +1029,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                       x2={cx}
                       y2={cy + r * 0.85}
                       stroke={wallColor}
-                      strokeWidth={1.2}
+                      strokeWidth={1}
                     />
                   </>
                 )}
@@ -1048,7 +1048,7 @@ export const VascularAccessCrossSectionDiagram: React.FC = () => {
                           r={r * sizes[idx]}
                           fill={lumenFill}
                           stroke={wallColor}
-                          strokeWidth={0.6}
+                          strokeWidth={0.5}
                         />
                       );
                     })}

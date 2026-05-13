@@ -21,8 +21,8 @@ const FluidResponsivenessDiagram = () => {
           <text x="210" y="145" textAnchor="middle" className="fill-muted-foreground" fontSize="8">Time →</text>
           <text x="12" y="65" textAnchor="middle" className="fill-muted-foreground" fontSize="8" transform="rotate(-90,12,65)">Arterial Pressure</text>
           {/* Respiratory cycle envelope */}
-          <path d="M 50,55 Q 100,35 150,55 Q 200,75 250,55 Q 300,35 350,55" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="4,3" />
-          <path d="M 50,95 Q 100,80 150,95 Q 200,110 250,95 Q 300,80 350,95" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.8" strokeDasharray="4,3" />
+          <path d="M 50,55 Q 100,35 150,55 Q 200,75 250,55 Q 300,35 350,55" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="4,3" />
+          <path d="M 50,95 Q 100,80 150,95 Q 200,110 250,95 Q 300,80 350,95" fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="4,3" />
           {/* Arterial waveforms with varying PP */}
           {[0,30,60,90,120,150,180,210,240,270,300].map((x, i) => {
             const phase = Math.sin((i / 11) * Math.PI * 2);
@@ -82,7 +82,7 @@ const FluidResponsivenessDiagram = () => {
           {/* Patient body */}
           <ellipse cx="110" cy="68" rx="30" ry="8" fill="hsl(var(--primary))" opacity="0.3" />
           {/* Raised legs */}
-          <line x1="160" y1="72" x2="220" y2="35" stroke="hsl(var(--primary))" strokeWidth="6" strokeLinecap="round" opacity="0.4" />
+          <line x1="160" y1="72" x2="220" y2="35" stroke="hsl(var(--primary))" strokeWidth="3" strokeLinecap="round" opacity="0.4" />
           <text x="230" y="32" fontSize="8" className="fill-primary" fontWeight="600">45°</text>
           {/* Arrow showing blood return */}
           <path d="M 200,45 Q 170,55 130,60" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="1.5" markerEnd="url(#arrowRed)" />
@@ -115,7 +115,7 @@ const FluidResponsivenessDiagram = () => {
           ))}
           {/* Occlusion hold */}
           <rect x="200" y="25" width="80" height="60" fill="hsl(25,80%,50%)" opacity="0.1" rx="3" />
-          <line x1="200" y1="80" x2="280" y2="80" stroke="hsl(25,80%,50%)" strokeWidth="2.5" />
+          <line x1="200" y1="80" x2="280" y2="80" stroke="hsl(25,80%,50%)" strokeWidth="2" />
           <text x="240" y="20" fontSize="8" fill="hsl(25,80%,50%)" fontWeight="600" textAnchor="middle">15s EEO hold</text>
           <text x="240" y="55" fontSize="7" fill="hsl(25,80%,50%)" textAnchor="middle">↑Venous return</text>
           {/* Resume */}
@@ -272,7 +272,7 @@ const FluidResponsivenessDiagram = () => {
                 <text x="215" y="160" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Preload →</text>
                 <text x="15" y="78" textAnchor="middle" className="fill-muted-foreground" fontSize="9" transform="rotate(-90,15,78)">Stroke Volume →</text>
                 {/* Starling curve */}
-                <path d="M 55,135 Q 120,80 180,45 Q 250,20 350,18" fill="none" stroke="hsl(var(--primary))" strokeWidth="2.5" strokeLinecap="round" />
+                <path d="M 55,135 Q 120,80 180,45 Q 250,20 350,18" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
                 {/* Steep part */}
                 <circle cx="110" cy="95" r="6" fill="hsl(142,60%,45%)" opacity="0.4" />
                 <text x="110" y="115" fontSize="8" fill="hsl(142,60%,45%)" fontWeight="600" textAnchor="middle">Responsive</text>

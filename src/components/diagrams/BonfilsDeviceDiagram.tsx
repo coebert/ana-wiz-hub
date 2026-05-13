@@ -64,7 +64,7 @@ const BonfilsDeviceDiagram = () => {
 
           {/* Distal 40° curve */}
           <path d="M490 142 Q545 142 565 178 Q575 198 562 215"
-            fill="none" stroke="url(#bf-shaft)" strokeWidth="14" strokeLinecap="round" />
+            fill="none" stroke="url(#bf-shaft)" strokeWidth="3" strokeLinecap="round" />
           {/* Distal tip light */}
           <circle cx="562" cy="215" r="5" fill="hsl(var(--accent))" />
           <circle cx="562" cy="215" r="9" fill="hsl(var(--accent))" opacity="0.25" />

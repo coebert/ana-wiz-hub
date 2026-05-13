@@ -135,7 +135,7 @@ export const TOFPatternDiagram = () => {
 
         {/* TOF ratio display */}
         <rect x={360} y={10} width={130} height={50} rx={6}
-          fill="hsl(var(--secondary))" fillOpacity="0.5" stroke="hsl(var(--border))" strokeWidth="0.8" />
+          fill="hsl(var(--secondary))" fillOpacity="0.5" stroke="hsl(var(--border))" strokeWidth="0.75" />
         <text x={425} y={28} textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="700">TOF Ratio (T4/T1)</text>
         <text x={425} y={48} textAnchor="middle" fontSize="16" fill={info.color} fontWeight="800">{info.tofRatio}</text>
 
@@ -143,7 +143,7 @@ export const TOFPatternDiagram = () => {
         <g>
           <rect x={60} y={250} width={55} height={20} rx={4}
             fill={info.fade ? "hsl(0 55% 50%/0.1)" : "hsl(150 50% 45%/0.1)"}
-            stroke={info.fade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.7" />
+            stroke={info.fade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.75" />
           <text x={87} y={263} textAnchor="middle" fontSize="6.5"
             fill={info.fade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} fontWeight="600">
             Fade: {info.fade ? "YES" : "NO"}
@@ -151,7 +151,7 @@ export const TOFPatternDiagram = () => {
 
           <rect x={125} y={250} width={55} height={20} rx={4}
             fill={info.ptp ? "hsl(0 55% 50%/0.1)" : "hsl(150 50% 45%/0.1)"}
-            stroke={info.ptp ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.7" />
+            stroke={info.ptp ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.75" />
           <text x={152} y={263} textAnchor="middle" fontSize="6.5"
             fill={info.ptp ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} fontWeight="600">
             PTP: {info.ptp ? "YES" : "NO"}
@@ -159,7 +159,7 @@ export const TOFPatternDiagram = () => {
 
           <rect x={190} y={250} width={80} height={20} rx={4}
             fill={info.tetanusFade ? "hsl(0 55% 50%/0.1)" : "hsl(150 50% 45%/0.1)"}
-            stroke={info.tetanusFade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.7" />
+            stroke={info.tetanusFade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} strokeWidth="0.75" />
           <text x={230} y={263} textAnchor="middle" fontSize="6.5"
             fill={info.tetanusFade ? "hsl(0 55% 50%)" : "hsl(150 50% 45%)"} fontWeight="600">
             Tetanus Fade: {info.tetanusFade ? "YES" : "NO"}

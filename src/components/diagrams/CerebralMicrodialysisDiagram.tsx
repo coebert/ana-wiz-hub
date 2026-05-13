@@ -175,7 +175,7 @@ const CerebralMicrodialysisDiagram = () => {
               d="M 75 115 Q 75 60, 180 52 Q 285 60, 285 115 L 285 225 Q 285 268, 260 278 L 240 282 L 120 282 L 100 278 Q 75 268, 75 225 Z"
               fill="hsl(var(--background))"
               stroke="hsl(var(--border))"
-              strokeWidth="0.8"
+              strokeWidth="0.75"
             />
 
             {/* Brain (cortex) - tinted by pattern */}
@@ -192,7 +192,7 @@ const CerebralMicrodialysisDiagram = () => {
             <line x1="180" y1="62" x2="180" y2="275" stroke="hsl(var(--anatomy))" strokeWidth="1.5" opacity="0.6" />
 
             {/* Sulci (decorative gyral pattern) */}
-            <g stroke="hsl(var(--anatomy))" strokeWidth="0.6" fill="none" opacity="0.45">
+            <g stroke="hsl(var(--anatomy))" strokeWidth="0.5" fill="none" opacity="0.45">
               <path d="M 95 140 Q 110 135, 130 145" />
               <path d="M 100 175 Q 130 170, 155 180" />
               <path d="M 95 210 Q 125 205, 150 215" />
@@ -204,8 +204,8 @@ const CerebralMicrodialysisDiagram = () => {
             </g>
 
             {/* Lateral ventricles */}
-            <ellipse cx="155" cy="170" rx="14" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.7" opacity="0.85" />
-            <ellipse cx="205" cy="170" rx="14" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.7" opacity="0.85" />
+            <ellipse cx="155" cy="170" rx="14" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.75" opacity="0.85" />
+            <ellipse cx="205" cy="170" rx="14" ry="22" fill="hsl(var(--background))" stroke="hsl(var(--anatomy))" strokeWidth="0.75" opacity="0.85" />
 
             {/* Cranial bolt — penetrating skull on right frontal (clinical convention: right frontal for diffuse TBI) */}
             <g>
@@ -213,10 +213,10 @@ const CerebralMicrodialysisDiagram = () => {
               <rect x="225" y="15" width="22" height="40" rx="3" fill="hsl(var(--foreground))" />
               {/* Bolt threads */}
               {[0, 1, 2, 3].map((i) => (
-                <line key={i} x1="225" y1={20 + i * 8} x2="247" y2={24 + i * 8} stroke="hsl(var(--background))" strokeWidth="0.6" opacity="0.7" />
+                <line key={i} x1="225" y1={20 + i * 8} x2="247" y2={24 + i * 8} stroke="hsl(var(--background))" strokeWidth="0.5" opacity="0.7" />
               ))}
               {/* Bolt flange (sits on skull) */}
-              <rect x="218" y="55" width="36" height="6" rx="2" fill="hsl(var(--foreground))" />
+              <rect x="218" y="55" width="36" height="6" rx="2" fill="hsl(var(--foreground))" stroke="hsl(var(--border))" strokeWidth="0.75" />
               {/* Bolt port labels */}
               <text x="236" y="12" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="700">
                 Triple-lumen bolt
@@ -226,30 +226,30 @@ const CerebralMicrodialysisDiagram = () => {
               <text x="260" y="53" fontSize="7" fill="hsl(var(--muted-foreground))">CMD</text>
 
               {/* Coaxial catheter — descending into white matter */}
-              <line x1="236" y1="61" x2="236" y2="195" stroke="hsl(var(--anatomy))" strokeWidth="2.5" />
-              <line x1="236" y1="61" x2="236" y2="195" stroke="hsl(var(--background))" strokeWidth="0.8" />
+              <line x1="236" y1="61" x2="236" y2="195" stroke="hsl(var(--anatomy))" strokeWidth="2" />
+              <line x1="236" y1="61" x2="236" y2="195" stroke="hsl(var(--background))" strokeWidth="0.75" />
 
               {/* Membrane segment at tip (10 mm) */}
               <g>
                 <rect x="232" y="195" width="8" height="35" fill="hsl(var(--primary))" opacity="0.6" stroke="hsl(var(--primary))" strokeWidth="1" />
                 {/* Membrane perforations */}
                 {[0, 1, 2, 3, 4, 5].map((i) => (
-                  <line key={i} x1="232" y1={199 + i * 5.5} x2="240" y2={199 + i * 5.5} stroke="hsl(var(--primary))" strokeWidth="0.4" />
+                  <line key={i} x1="232" y1={199 + i * 5.5} x2="240" y2={199 + i * 5.5} stroke="hsl(var(--primary))" strokeWidth="0.5" />
                 ))}
               </g>
 
               {/* Diffusion arrows across membrane (pulse on alarm) */}
               <g opacity={data.catheterAlarm ? 1 : 0.5}>
-                <path d="M 220 210 L 230 210" stroke="hsl(var(--destructive))" strokeWidth="1.2" markerEnd="url(#arrow-in)" />
-                <path d="M 220 220 L 230 220" stroke="hsl(var(--destructive))" strokeWidth="1.2" markerEnd="url(#arrow-in)" />
-                <path d="M 252 215 L 242 215" stroke="hsl(var(--primary))" strokeWidth="1.2" markerEnd="url(#arrow-out)" />
+                <path d="M 220 210 L 230 210" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#arrow-in)" />
+                <path d="M 220 220 L 230 220" stroke="hsl(var(--destructive))" strokeWidth="1" markerEnd="url(#arrow-in)" />
+                <path d="M 252 215 L 242 215" stroke="hsl(var(--primary))" strokeWidth="1" markerEnd="url(#arrow-out)" />
                 {data.catheterAlarm && (
                   <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite" />
                 )}
               </g>
 
               {/* Catheter tip label */}
-              <line x1="240" y1="212" x2="335" y2="195" stroke="hsl(var(--foreground))" strokeWidth="0.6" />
+              <line x1="240" y1="212" x2="335" y2="195" stroke="hsl(var(--foreground))" strokeWidth="0.5" />
               <text x="335" y="192" fontSize="8" fill="hsl(var(--foreground))" fontWeight="700">
                 Semipermeable
               </text>
