@@ -361,12 +361,70 @@ const FILTER_DESCRIPTION = (() => {
 })();
 
 // ── baseline / diff ───────────────────────────────────────────────────────
-const BASELINE_PATH = arg("--baseline", "");
+let BASELINE_PATH = arg("--baseline", "");
+const BASELINE_URL = arg("--baseline-url", "");
 const DIFF_ONLY = hasFlag("--diff-only");
-if (DIFF_ONLY && !BASELINE_PATH) {
-  console.error(`✖ --diff-only requires --baseline <path>`);
+if (DIFF_ONLY && !BASELINE_PATH && !BASELINE_URL) {
+  console.error(`✖ --diff-only requires --baseline <path> or --baseline-url <url>`);
   process.exit(2);
 }
+if (BASELINE_PATH && BASELINE_URL) {
+  console.error(`✖ pass either --baseline or --baseline-url, not both`);
+  process.exit(2);
+}
+
+async function fetchBaselineUrl(url: string): Promise<string> {
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
+  const headers: Record<string, string> = { "User-Agent": "jsonld-coverage-report" };
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+  // GitHub artifact downloads are protected; the API returns a 302 to a
+  // pre-signed URL. fetch() follows redirects by default.
+  if (/api\.github\.com\//.test(url)) headers["Accept"] = "application/vnd.github+json";
+
+  const res = await fetch(url, { headers, redirect: "follow" });
+  if (!res.ok) {
+    console.error(`✖ baseline-url ${res.status} ${res.statusText} for ${url}`);
+    process.exit(2);
+  }
+  const buf = Buffer.from(await res.arrayBuffer());
+  const ct = res.headers.get("content-type") ?? "";
+  const isZip =
+    /zip/i.test(ct) || url.endsWith(".zip") ||
+    (buf.length >= 2 && buf[0] === 0x50 && buf[1] === 0x4b); // PK\003\004
+
+  const tmp = mkdtempSync(join(tmpdir(), "jsonld-baseline-"));
+  if (!isZip) {
+    const out = join(tmp, "baseline.json");
+    writeFileSync(out, buf);
+    return out;
+  }
+  // Extract zip and find the first JSON sidecar that looks like a coverage report.
+  const zipPath = join(tmp, "artifact.zip");
+  writeFileSync(zipPath, buf);
+  try {
+    execSync(`unzip -o -q ${JSON.stringify(zipPath)} -d ${JSON.stringify(tmp)}`, { stdio: "pipe" });
+  } catch (e) {
+    console.error(`✖ failed to unzip artifact: ${(e as Error).message}. Is \`unzip\` installed?`);
+    process.exit(2);
+  }
+  const candidates = execSync(`find ${JSON.stringify(tmp)} -type f -name "*.json"`, { encoding: "utf8" })
+    .split("\n").filter(Boolean);
+  for (const f of candidates) {
+    try {
+      const j = JSON.parse(readFileSync(f, "utf8"));
+      if (Array.isArray(j?.rows)) return f;
+    } catch { /* skip */ }
+  }
+  console.error(`✖ no coverage JSON sidecar (with "rows" array) found inside artifact ${url}`);
+  process.exit(2);
+}
+
+if (BASELINE_URL) {
+  console.log(`Fetching baseline from ${BASELINE_URL} …`);
+  BASELINE_PATH = await fetchBaselineUrl(BASELINE_URL);
+  console.log(`Baseline resolved to ${BASELINE_PATH}`);
+}
+
 
 type StatusKind = "ok" | "missing-types" | "bad-blocks" | "unresolved";
 function rowStatus(r: Pick<Row, "missingTypes" | "badBlocks" | "routePath">): StatusKind {
