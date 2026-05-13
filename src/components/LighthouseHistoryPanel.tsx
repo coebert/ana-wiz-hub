@@ -175,15 +175,23 @@ export default function LighthouseHistoryPanel() {
             Scores across published builds · {data?.length ?? 0} run{data?.length === 1 ? "" : "s"} tracked
           </p>
         </div>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={() => seedRun.mutate()}
-          disabled={seedRun.isPending}
-        >
-          <RefreshCw className={`mr-2 h-4 w-4 ${seedRun.isPending ? "animate-spin" : ""}`} />
-          Seed Lighthouse data
-        </Button>
+        <div className="flex items-center gap-2">
+          <Tabs value={seedStrategy} onValueChange={(v) => setSeedStrategy(v as "mobile" | "desktop")}>
+            <TabsList className="h-8">
+              <TabsTrigger value="mobile" className="h-6 text-xs">Mobile</TabsTrigger>
+              <TabsTrigger value="desktop" className="h-6 text-xs">Desktop</TabsTrigger>
+            </TabsList>
+          </Tabs>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => seedRun.mutate(seedStrategy)}
+            disabled={seedRun.isPending}
+          >
+            <RefreshCw className={`mr-2 h-4 w-4 ${seedRun.isPending ? "animate-spin" : ""}`} />
+            Seed {seedStrategy}
+          </Button>
+        </div>
       </CardHeader>
       <CardContent className="space-y-6">
         {error ? (
