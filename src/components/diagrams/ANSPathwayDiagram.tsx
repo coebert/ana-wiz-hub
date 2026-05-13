@@ -63,7 +63,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== SYMPATHETIC (LEFT) ==================== */}
         {(view === "overview" || view === "sympathetic" || view === "adrenal") && (
-          <g opacity={view === "overview" ? 1 : view === "sympathetic" ? 1 : view === "adrenal" ? 1 : 0.2} {...svgNodeProps("Sympathetic pathway: thoracolumbar T1 to L2 outflow — short myelinated preganglionic to chain or prevertebral ganglion, long unmyelinated postganglionic releasing noradrenaline onto adrenoceptors")}>
+          <g opacity={view === "overview" ? 1 : view === "sympathetic" ? 1 : view === "adrenal" ? 1 : 0.2} {...svgNodeProps("Pathway: Sympathetic (T1–L2; short pre-, long post-ganglionic; noradrenaline)")}>
             {/* Title */}
             <text x={120} y={22} textAnchor="middle" fontSize="10" fill="hsl(0 55% 50%)" fontWeight="700">SYMPATHETIC</text>
             <text x={120} y={34} textAnchor="middle" fontSize="7" fill="hsl(0 40% 50%)">Thoracolumbar T1–L2</text>
@@ -128,7 +128,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== PARASYMPATHETIC (RIGHT) ==================== */}
         {(view === "overview" || view === "parasympathetic") && (
-          <g opacity={1} {...svgNodeProps("Parasympathetic pathway: craniosacral outflow via cranial nerves III, VII, IX and X plus sacral S2 to S4 — long preganglionic to ganglion near or in target organ, short postganglionic releasing acetylcholine onto muscarinic receptors")}>
+          <g opacity={1} {...svgNodeProps("Pathway: Parasympathetic (CN III, VII, IX, X + S2–S4; long pre-, short post-ganglionic; acetylcholine)")}>
             <text x={440} y={22} textAnchor="middle" fontSize="10" fill="hsl(210 60% 50%)" fontWeight="700">PARASYMPATHETIC</text>
             <text x={440} y={34} textAnchor="middle" fontSize="7" fill="hsl(210 45% 50%)">Craniosacral (III,VII,IX,X + S2-4)</text>
 
@@ -197,7 +197,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== ADRENAL MEDULLA ==================== */}
         {view === "adrenal" && (
-          <g {...svgNodeProps("Adrenal medulla pathway: modified sympathetic ganglion — preganglionic greater splanchnic nerve from T5 to T9 synapses directly onto chromaffin cells with no postganglionic neurone, releasing 80 percent adrenaline and 20 percent noradrenaline into the bloodstream")}>
+          <g {...svgNodeProps("Pathway: Adrenal medulla (T5–T9 splanchnic → chromaffin cells; 80% adrenaline, 20% noradrenaline)")}>
             {/* Preganglionic direct to adrenal */}
             <text x={370} y={60} textAnchor="middle" fontSize="9" fill="hsl(30 60% 50%)" fontWeight="700">ADRENAL MEDULLA</text>
             <text x={370} y={72} textAnchor="middle" fontSize="6" fill="hsl(30 50% 50%)">Modified sympathetic ganglion</text>
@@ -242,7 +242,7 @@ export const ANSPathwayDiagram = () => {
 
         {/* ==================== ENTERIC ==================== */}
         {view === "enteric" && (
-          <g {...svgNodeProps("Enteric nervous system: the third division — around 100 million neurones organised into Auerbach myenteric plexus (motility) and Meissner submucosal plexus (secretion and blood flow)")}>
+          <g {...svgNodeProps("Pathway: Enteric (Auerbach myenteric — motility; Meissner submucosal — secretion)")}>
             <text x={400} y={60} textAnchor="middle" fontSize="9" fill="hsl(150 45% 45%)" fontWeight="700">ENTERIC NERVOUS SYSTEM</text>
             <text x={400} y={72} textAnchor="middle" fontSize="6" fill="hsl(150 35% 45%)">"The Third Division" — ~100 million neurones</text>
 
