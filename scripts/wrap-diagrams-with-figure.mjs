@@ -231,7 +231,7 @@ function wrapFile(filePath) {
 // ---------- run ----------
 
 const files = readdirSync(DIAG_DIR)
-  .filter((f) => f.endsWith(".tsx"))
+  .filter((f) => f.endsWith(".tsx") && !f.endsWith(".test.tsx"))
   .map((f) => join(DIAG_DIR, f));
 
 const results = { wrapped: [], manual: [], already: [] };
