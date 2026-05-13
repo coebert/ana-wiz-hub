@@ -144,6 +144,28 @@ export default function LighthouseHistoryPanel() {
   // Charts use chronological order (oldest -> newest).
   const chronological = useMemo(() => (data ? [...data].reverse() : []), [data]);
 
+  // Build latest mobile/desktop per URL for the comparison view.
+  const stratOf = (r: LighthouseRun): "mobile" | "desktop" => {
+    const b = (r.branch ?? "").toLowerCase();
+    if (b === "psi-desktop") return "desktop";
+    if (b === "psi-mobile") return "mobile";
+    // CI/Lighthouse default form factor is mobile.
+    return "mobile";
+  };
+  const comparison = useMemo(() => {
+    const map = new Map<string, { url: string; mobile?: LighthouseRun; desktop?: LighthouseRun }>();
+    for (const r of data ?? []) {
+      const key = r.url;
+      const entry = map.get(key) ?? { url: r.url };
+      const s = stratOf(r);
+      // data is sorted desc, so first seen is latest.
+      if (s === "mobile" && !entry.mobile) entry.mobile = r;
+      if (s === "desktop" && !entry.desktop) entry.desktop = r;
+      map.set(key, entry);
+    }
+    return [...map.values()];
+  }, [data]);
+
   const categoryData = chronological.map((r) => ({
     label: new Date(r.created_at).toLocaleDateString(undefined, {
       month: "short",
