@@ -22,6 +22,7 @@ const VivaQuestionLibrary = lazy(() => import("./pages/VivaQuestionLibrary"));
 const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsResponsiveTest"));
 const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
+const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
