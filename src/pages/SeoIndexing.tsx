@@ -274,6 +274,7 @@ export default function SeoIndexing() {
         </CardContent>
       </Card>
 
+      <SeoScanPanel />
       <LighthouseHistoryPanel />
     </main>
   );
