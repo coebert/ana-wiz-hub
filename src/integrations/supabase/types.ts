@@ -295,6 +295,45 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_scans: {
+        Row: {
+          base_url: string
+          commit_sha: string | null
+          created_at: string
+          duration_ms: number | null
+          findings_count: number
+          id: string
+          pages_failed: number
+          pages_ok: number
+          pages_total: number
+          results: Json
+        }
+        Insert: {
+          base_url: string
+          commit_sha?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          findings_count?: number
+          id?: string
+          pages_failed?: number
+          pages_ok?: number
+          pages_total?: number
+          results?: Json
+        }
+        Update: {
+          base_url?: string
+          commit_sha?: string | null
+          created_at?: string
+          duration_ms?: number | null
+          findings_count?: number
+          id?: string
+          pages_failed?: number
+          pages_ok?: number
+          pages_total?: number
+          results?: Json
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

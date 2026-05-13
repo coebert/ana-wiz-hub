@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { RefreshCw, ExternalLink } from "lucide-react";
 import LighthouseHistoryPanel from "@/components/LighthouseHistoryPanel";
+import SeoScanPanel from "@/components/SeoScanPanel";
 
 interface SitemapInfo {
   path?: string;
@@ -273,6 +274,7 @@ export default function SeoIndexing() {
         </CardContent>
       </Card>
 
+      <SeoScanPanel />
       <LighthouseHistoryPanel />
     </main>
   );
