@@ -1,7 +1,11 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ChevronLeft } from "lucide-react";
 import { StickyTOC, TOCItem } from "@/components/StickyTOC";
+
+const SITE_URL = "https://anaesthesiacore.app";
+const SITE_NAME = "AnaesthesiaCore";
 
 interface SectionLayoutProps {
   title: string;
