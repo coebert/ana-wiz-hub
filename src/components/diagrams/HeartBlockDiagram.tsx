@@ -485,7 +485,7 @@ const HeartBlockDiagram = () => {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <TreeMini block={b} color={b.color} />
+                    <div className="w-full max-w-[200px] mx-auto"><TreeMini block={b} color={b.color} /></div>
                     <div className="min-w-0">
                       {showLabels && (
                         <p className="text-[11px] text-muted-foreground mb-1.5 leading-snug">{b.siteDescription}</p>
@@ -525,7 +525,7 @@ const HeartBlockDiagram = () => {
           <div className="p-3 rounded-lg border bg-background/60" style={{ borderColor: info.color, borderWidth: 2 }}>
             <p className="font-semibold text-sm text-foreground mb-2">{info.label}</p>
             <div className="flex flex-col gap-3">
-              <TreeMini block={info} color={info.color} />
+              <div className="w-full max-w-[200px] mx-auto"><TreeMini block={info} color={info.color} /></div>
               <div className="min-w-0">
                 <p className="text-[11px] text-muted-foreground mb-1.5">{info.siteDescription}</p>
                 <RhythmStrip block={info} color={info.color} />

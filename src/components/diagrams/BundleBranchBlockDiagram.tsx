@@ -390,7 +390,7 @@ const BundleBranchBlockDiagram = () => {
                   </div>
 
                   <div className="flex flex-col gap-3">
-                    <TreeMini block={b} color={b.color} />
+                    <div className="w-full max-w-[220px] mx-auto"><TreeMini block={b} color={b.color} /></div>
                     <div className="min-w-0 space-y-1.5">
                       <div className="flex gap-2">
                         <Waveform label="V1" kind={b.v1} color={b.color} wide={b.qrsWide} />
