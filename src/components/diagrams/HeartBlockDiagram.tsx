@@ -325,6 +325,7 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
       {/* Annotation */}
       <text x={6} y={11} fontSize="7" fill={color} fontWeight="bold">{block.shortLabel}</text>
     </svg>
+    </EcgStripFrame>
   );
 };
 
