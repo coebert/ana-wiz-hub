@@ -161,7 +161,12 @@ function assertLucideLike(icon: unknown): void {
   }
 
   // Already-warned components — bail out to avoid log spam.
-  if (typeof icon === "object" && warnedIcons.has(icon as object)) return;
+  if (
+    (typeof icon === "object" || typeof icon === "function") &&
+    warnedIcons.has(icon as object)
+  ) {
+    return;
+  }
 
   const isForwardRef =
     typeof icon === "object" &&
@@ -186,7 +191,9 @@ function assertLucideLike(icon: unknown): void {
 
   if (isForwardRef || isMemoOfForwardRef || isPascalCaseFnComponent) return;
 
-  if (typeof icon === "object") warnedIcons.add(icon as object);
+  if (typeof icon === "object" || typeof icon === "function") {
+    warnedIcons.add(icon as object);
+  }
 
   const description =
     typeof icon === "string"
