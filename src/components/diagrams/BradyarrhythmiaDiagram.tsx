@@ -506,7 +506,7 @@ const BradyarrhythmiaDiagram = () => {
                         <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
                       )}
                       <p
-                        className="text-[10px] mt-1.5 px-2 py-1 rounded font-medium"
+                        className="text-[11px] mt-2 px-2.5 py-1 rounded font-semibold leading-relaxed"
                         style={{ background: withAlpha(b.color, 0.1), color: b.color }}
                       >
                         Device: {b.device}
