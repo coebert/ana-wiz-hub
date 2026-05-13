@@ -240,7 +240,7 @@ function wrapFile(filePath) {
     `Auto-generated wrapper for the ${title} ${kind}. ` +
     `Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure.`;
 
-  const block = findComponentReturnBlock(src);
+  const block = findComponentReturnBlock(src, name);
   if (!block) return { status: "manual", reason: "no balanced return-block found", title, id };
 
   const inner = block.innerRaw;
