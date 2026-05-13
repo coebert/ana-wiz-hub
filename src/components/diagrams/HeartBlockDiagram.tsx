@@ -458,7 +458,7 @@ const HeartBlockDiagram = () => {
 
         {/* Cards grid */}
         {showAll ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
             {ORDER.map((k) => {
               const b = BLOCKS[k];
               const active = selected === k;
