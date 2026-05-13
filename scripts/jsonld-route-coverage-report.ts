@@ -402,9 +402,12 @@ const groupLabels: Record<UrlExpectation["kind"], string> = {
 let md = "";
 md += "# JSON-LD Route-to-URL Coverage Report\n\n";
 md += `Generated: ${new Date().toISOString()}\n\n`;
+if (FILTER_DESCRIPTION) {
+  md += `> **Filtered view** — ${FILTER_DESCRIPTION} _(${ROWS.length} of ${ALL_ROWS.length} URLs)_\n\n`;
+}
 md += "## Summary\n\n";
 md += `| Metric | Count |\n|---|---:|\n`;
-md += `| URLs evaluated | ${total} |\n`;
+md += `| URLs evaluated${FILTER_DESCRIPTION ? " (filtered)" : ""} | ${total}${FILTER_DESCRIPTION ? ` / ${ALL_ROWS.length}` : ""} |\n`;
 md += `| ✅ Passing | ${passing.length} |\n`;
 md += `| ❌ Missing required @type | ${failingTypes.length} |\n`;
 md += `| ❌ Bad / incomplete blocks | ${failingBlocks.length} |\n`;
