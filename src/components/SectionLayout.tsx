@@ -182,6 +182,9 @@ export const SectionLayout = ({
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={truncatedDescription} />
         <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        {courseJsonLd && (
+          <script type="application/ld+json">{JSON.stringify(courseJsonLd)}</script>
+        )}
       </Helmet>
       {backPath && (
         <Link
