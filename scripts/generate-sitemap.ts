@@ -337,3 +337,16 @@ console.log(
   `sitemap.xml index written (${indexGroups.length} sub-sitemaps, ${entries.length} URLs total, ${matched} routes mapped to files for lastmod)`,
 );
 
+// Warn about any sitemap entries we couldn't map to a backing source file —
+// these will ship without a <lastmod>, which hurts crawl efficiency.
+const unmapped = entries.map((e) => e.path).filter((p) => !pathToFile[p]);
+if (unmapped.length > 0) {
+  console.warn(
+    `[sitemap] ${unmapped.length} path(s) have no source-file mapping (lastmod omitted):`,
+  );
+  for (const p of unmapped) console.warn(`  - ${p}`);
+  console.warn(
+    `[sitemap] Add a <Route path="${unmapped[0]}" .../> in src/App.tsx, or remove stale entries from scripts/generate-sitemap.ts.`,
+  );
+}
+
