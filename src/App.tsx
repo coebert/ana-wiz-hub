@@ -206,7 +206,7 @@ const App = () => (
           <Route path="/viva" element={<VivaHub />} />
           <Route path="/viva/library" element={<VivaQuestionLibrary />} />
           <Route path="/dev/coverage-bars" element={<CoverageBarsResponsiveTest />} />
-          <Route path="/dev/seo-indexing" element={<SeoIndexing />} />
+          <Route path="/dev/seo-indexing" element={<RequireAdmin><SeoIndexing /></RequireAdmin>} />
           <Route path="/drugs" element={<DrugsLibrary />} />
           <Route path="/drugs/:slug" element={<DrugDetail />} />
           <Route path="/physics" element={<PhysicsSection />} />

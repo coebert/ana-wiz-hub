@@ -39,8 +39,56 @@ async function gsc(path: string, init?: RequestInit) {
   return body
 }
 
+import { createClient } from 'npm:@supabase/supabase-js@2'
+
+/**
+ * Authorize callers as either:
+ *   - an authenticated admin user (dashboard usage), OR
+ *   - a service-role JWT (CI deploy hook using SUPABASE_SERVICE_ROLE_KEY).
+ */
+async function authorize(req: Request): Promise<Response | null> {
+  const authHeader = req.headers.get('Authorization')
+  if (!authHeader?.startsWith('Bearer ')) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+  const token = authHeader.replace('Bearer ', '')
+  const supabase = createClient(
+    Deno.env.get('SUPABASE_URL')!,
+    Deno.env.get('SUPABASE_ANON_KEY')!,
+    { global: { headers: { Authorization: authHeader } } },
+  )
+  const { data, error } = await supabase.auth.getClaims(token)
+  if (error || !data?.claims) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+  const role = data.claims.role
+  if (role === 'service_role') return null
+  const sub = data.claims.sub as string | undefined
+  if (!sub) {
+    return new Response(JSON.stringify({ error: 'Forbidden' }), {
+      status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+  const { data: isAdmin, error: roleErr } = await supabase.rpc('has_role', {
+    _user_id: sub, _role: 'admin',
+  })
+  if (roleErr || !isAdmin) {
+    return new Response(JSON.stringify({ error: 'Forbidden — admin role required' }), {
+      status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+  }
+  return null
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
+
+  const denied = await authorize(req)
+  if (denied) return denied
 
   const siteEnc = encodeURIComponent(SITE_URL)
   const sitemapEnc = encodeURIComponent(SITEMAP_URL)
