@@ -242,7 +242,17 @@ Deno.serve(async (req) => {
       { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
   }
-  const { base_url, commit_sha, max_pages } = parsed.data;
+  const { base_url, commit_sha, max_pages, rendered } = parsed.data;
+
+  if (rendered && !firecrawlKey) {
+    return new Response(
+      JSON.stringify({
+        error:
+          "Rendered scan requested but FIRECRAWL_API_KEY is not configured. Connect Firecrawl in Connectors and retry.",
+      }),
+      { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    );
+  }
 
   const t0 = performance.now();
   let urls: string[];
@@ -265,10 +275,11 @@ Deno.serve(async (req) => {
 
   // Cross-page checks: duplicate titles / descriptions / canonicals
   const audits: PageAudit[] = [];
-  const concurrency = 6;
+  // Headless rendering is much slower and uses Firecrawl credits, so cap at 3.
+  const concurrency = rendered ? 3 : 6;
   for (let i = 0; i < limited.length; i += concurrency) {
     const batch = limited.slice(i, i + concurrency);
-    const results = await Promise.all(batch.map(auditPage));
+    const results = await Promise.all(batch.map((u) => auditPage(u, rendered)));
     audits.push(...results);
   }
 
