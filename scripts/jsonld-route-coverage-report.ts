@@ -108,6 +108,7 @@ const URL_PATTERNS: RegExp[] = argAll("--url-pattern").map((p) => {
 });
 const URL_PREFIXES = argAll("--url-prefix");
 const INVERT = hasFlag("--invert");
+const DIFF_GROUP_BY_KIND = hasFlag("--diff-group-by-kind");
 const FILTERS_ACTIVE = KIND_FILTER.size > 0 || URL_PATTERNS.length > 0 || URL_PREFIXES.length > 0;
 
 function passesFilter(url: string, kind: Kind): boolean {
