@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const AnaphylaxisPathophysiologyDiagram = () => {
   return (
         <div className="w-full overflow-x-auto">

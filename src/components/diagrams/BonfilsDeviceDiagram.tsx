@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 /**
  * Annotated schematic of the Bonfils retromolar rigid intubation fibrescope.
  * Pure SVG, themed with semantic tokens.

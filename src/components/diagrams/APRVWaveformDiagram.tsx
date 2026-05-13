@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const APRVWaveformDiagram = () => {
   // Layout constants
   const W = 700;

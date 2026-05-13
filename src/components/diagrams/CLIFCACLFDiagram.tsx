@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const CLIFCACLFDiagram = () => {
   const organFailures = [
     { organ: "Liver", criterion: "Bilirubin ≥12 mg/dL\n(≥204 µmol/L)", color: "#f59e0b" },

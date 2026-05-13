@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const FinapresDiagram = () => {
   return (
         <div className="my-8">

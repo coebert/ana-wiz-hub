@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 interface ToggleConfig {
   label: string;
   active: boolean;

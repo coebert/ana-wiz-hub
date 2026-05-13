@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 /**
  * Animated SVG — CSF flow through the ventricular system.
  * Particles trace the physiological path:

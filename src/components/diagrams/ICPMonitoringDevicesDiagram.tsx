@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const BrainBase = ({ children, label }: { children: React.ReactNode; label: string }) => (
   <svg viewBox="0 0 300 280" className="w-full max-w-xs mx-auto" aria-label={label}>
     {/* Skull outer table */}

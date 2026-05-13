@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const AxialView = () => (
   <svg viewBox="0 0 520 420" className="w-full">
     {/* Background body outline — thoracic cross-section */}

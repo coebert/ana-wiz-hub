@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const MHPathophysiologyDiagram = () => {
   return (
         <div className="w-full overflow-x-auto">

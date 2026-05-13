@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const RitchieWhistleDiagram = () => {
   return (
         <div className="rounded-xl border border-border bg-card p-2 overflow-x-auto">

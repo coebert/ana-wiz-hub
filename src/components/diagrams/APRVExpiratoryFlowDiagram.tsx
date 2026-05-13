@@ -1,4 +1,3 @@
-import { DiagramFigure } from "./_shared/DiagramFigure";
 const APRVExpiratoryFlowDiagram = () => {
   const W = 700;
   const H = 320;
