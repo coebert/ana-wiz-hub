@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* =====================================================================
  * Patient-Positioning step-by-step mechanism animations.
@@ -1007,282 +1008,288 @@ const PERONEAL_STEPS: AnimatedMechanismStep[] = [
 ];
 
 export const PeronealNerveLithotomyAnimation = () => (
-      <AnimatedMechanism
-    title="Lithotomy — common peroneal nerve at the fibular head"
-    subtitle="Lateral view of the right knee in a stirrup. Watch the foam pad disappear, the nerve get pinched between the post and the fibular neck, then ischaemia and foot drop develop."
-    stepMs={2600}
-    steps={PERONEAL_STEPS}
-    accentClass="border-clinical/50"
-    renderScene={(active) => {
-      // Key anatomic anchors — defined once so labels and arrows align.
-      const fibHead = { x: 168, y: 118 }; // fibular head (lateral, just below joint line)
-      const fibNeck = { x: 170, y: 130 };
-      const ankle = { x: 150, y: 232 };
-      const padVisible = active < 2; // pad squashes from step 2 onward
-      const showSqueeze = active >= 2;
-      const showIschaemia = active === 3;
-      const showFootDrop = active === 4;
-      const showPrevention = active === 5;
-
-      return (
-            <div className="flex items-center justify-center h-full">
-          <svg
-            viewBox="0 0 380 260"
-            className="w-full max-w-[420px] h-auto"
-            role="img"
-            aria-label="Lateral view of a knee in a lithotomy stirrup showing the common peroneal nerve compressed at the fibular neck"
-          >
-            <defs>
-              <marker id="ppm-pn-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--destructive))" />
-              </marker>
-              <marker id="ppm-pn-arr-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
-                <path d="M0,0 L10,5 L0,10 z" fill="hsl(45 95% 50%)" />
-              </marker>
-              <linearGradient id="ppm-pn-skin" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="hsl(34 70% 84%)" />
-                <stop offset="100%" stopColor="hsl(28 50% 70%)" />
-              </linearGradient>
-            </defs>
-
-            {/* Joint-line reference (faint dashed) */}
-            <line x1="100" y1="105" x2="220" y2="105" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
-            <text x="225" y="108" className="text-[8px]" fill="hsl(var(--muted-foreground))">joint line</text>
-
-            {/* ── Stirrup post + foam pad ───────────────────────────── */}
-            <rect
-              x="195" y="40" width="16" height="180" rx="3"
-              fill={showSqueeze ? "hsl(var(--destructive) / 0.75)" : "hsl(var(--muted-foreground))"}
-              stroke="hsl(var(--border))"
-              className="transition-colors duration-500"
-            />
-            <text x="203" y="34" textAnchor="middle" className="text-[8px] font-semibold" fill="hsl(var(--muted-foreground))">
-              stirrup post
-            </text>
-
-            {/* Foam pad between post and leg — present early, squashed/gone with compression */}
-            <rect
-              x={padVisible ? 182 : 192}
-              y="100"
-              width={padVisible ? 14 : 4}
-              height="50"
-              rx="3"
-              fill={padVisible ? "hsl(120 35% 65%)" : "hsl(0 60% 55% / 0.4)"}
-              stroke={padVisible ? "hsl(120 35% 35%)" : "hsl(var(--destructive))"}
-              strokeDasharray={padVisible ? "0" : "2 2"}
-              className="transition-all duration-500"
-            />
-            {padVisible && (
-              <text x="170" y="98" textAnchor="middle" className="text-[8px] font-semibold" fill="hsl(120 35% 35%)">
-                foam pad
-              </text>
-            )}
-            {!padVisible && active >= 2 && (
-              <text x="172" y="96" textAnchor="middle" className="text-[8px] font-semibold animate-fade-in" fill="hsl(var(--destructive))">
-                pad inadequate
-              </text>
-            )}
-
-            {/* ── Skin envelope of the calf (lateral profile) ───────── */}
-            <path
-              d="M 110,90 Q 100,140 105,210 Q 110,235 145,238 Q 170,236 175,215 Q 178,160 180,118 Q 178,98 160,88 Z"
-              fill="url(#ppm-pn-skin)"
-              stroke="hsl(28 45% 50%)"
-              strokeWidth="1"
-              opacity="0.55"
-            />
-
-            {/* ── Femur (distal, going up-right) with rounded condyle ── */}
-            <path
-              d="M 115,98 L 165,40 L 178,46 L 132,108 Q 122,110 115,98 Z"
-              fill="hsl(var(--muted-foreground) / 0.28)"
-              stroke="hsl(var(--border))"
-            />
-            <ellipse cx="135" cy="100" rx="14" ry="10" fill="hsl(var(--muted-foreground) / 0.4)" stroke="hsl(var(--border))" />
-            <text x="160" y="58" className="text-[8px]" fill="hsl(var(--muted-foreground))">femur</text>
-
-            {/* Patella (subtle, anterior) */}
-            <ellipse cx="118" cy="105" rx="6" ry="9" fill="hsl(var(--muted-foreground) / 0.5)" stroke="hsl(var(--border))" strokeWidth="0.75" />
-
-            {/* ── Tibia (medial, anterior) ──────────────────────────── */}
-            <path
-              d="M 130,110 L 144,228 L 158,228 L 152,110 Z"
-              fill="hsl(var(--muted-foreground) / 0.3)"
-              stroke="hsl(var(--border))"
-            />
-            <text x="120" y="170" className="text-[8px]" fill="hsl(var(--muted-foreground))">tibia</text>
-
-            {/* ── Fibula (lateral, posterior — the key bone) ────────── */}
-            <path
-              d="M 162,118 L 172,228 L 180,228 L 175,118 Z"
-              fill="hsl(var(--muted-foreground) / 0.4)"
-              stroke="hsl(var(--border))"
-            />
-            <text x="184" y="180" className="text-[8px]" fill="hsl(var(--muted-foreground))">fibula</text>
-
-            {/* Fibular head — highlighted node at correct anatomic site */}
-            <circle
-              cx={fibHead.x}
-              cy={fibHead.y}
-              r={active >= 1 ? 7 : 4}
-              fill={showSqueeze ? "hsl(var(--destructive))" : "hsl(var(--clinical))"}
-              stroke="hsl(var(--foreground))"
-              strokeWidth="1"
-              className="transition-all duration-500"
-            />
-            {active >= 1 && (
-              <g className="animate-fade-in">
-                <line x1={fibHead.x + 8} y1={fibHead.y} x2="240" y2="118" stroke="hsl(var(--foreground))" strokeWidth="0.5" />
-                <text x="244" y="116" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
-                  fibular head
-                </text>
-                <text x="244" y="127" className="text-[8px]" fill="hsl(var(--muted-foreground))">
-                  + neck (compression site)
-                </text>
-              </g>
-            )}
-
-            {/* ── Common peroneal nerve — wraps around fibular neck ─── */}
-            {/* Path: comes from popliteal fossa, around the back of the fibular head,
-                wraps over the neck, then dives anteriorly into the leg. */}
-            <path
-              d={`M 150,75
-                  Q 175,90 ${fibHead.x + 4},${fibHead.y - 4}
-                  Q ${fibNeck.x + 5},${fibNeck.y} ${fibNeck.x - 4},${fibNeck.y + 6}
-                  Q ${fibNeck.x - 8},${fibNeck.y + 22} 158,180
-                  L 152,225`}
-              fill="none"
-              stroke={showSqueeze ? "hsl(var(--destructive))" : "hsl(45 95% 50%)"}
-              strokeWidth={showSqueeze ? 4 : 3}
-              strokeLinecap="round"
-              className="transition-all duration-500"
-              markerEnd={showSqueeze ? "url(#ppm-pn-arr)" : "url(#ppm-pn-arr-yellow)"}
-            />
-            {/* Nerve halo (helps distinguish from bone outline) */}
-            <path
-              d={`M 150,75
-                  Q 175,90 ${fibHead.x + 4},${fibHead.y - 4}
-                  Q ${fibNeck.x + 5},${fibNeck.y} ${fibNeck.x - 4},${fibNeck.y + 6}
-                  Q ${fibNeck.x - 8},${fibNeck.y + 22} 158,180
-                  L 152,225`}
-              fill="none"
-              stroke="hsl(45 95% 50% / 0.25)"
-              strokeWidth="3"
-              strokeLinecap="round"
-              opacity={showSqueeze ? 0.15 : 0.6}
-              className="transition-opacity duration-500"
-            />
-            {active >= 1 && (
-              <g className="animate-fade-in">
-                <line x1="152" y1="78" x2="100" y2="68" stroke="hsl(45 80% 35%)" strokeWidth="0.5" />
-                <text x="62" y="65" className="text-[9px] font-semibold" fill={showSqueeze ? "hsl(var(--destructive))" : "hsl(45 80% 35%)"}>
-                  common peroneal n.
-                </text>
-                <text x="62" y="76" className="text-[7.5px]" fill="hsl(var(--muted-foreground))">
-                  (most superficial nerve)
-                </text>
-              </g>
-            )}
-
-            {/* ── Compression arrows pointing AT the pinch point ───── */}
-            {showSqueeze && (
-              <g className="animate-fade-in">
-                {/* Arrow from post → fibular neck */}
-                <line
-                  x1="194" y1={fibNeck.y}
-                  x2={fibHead.x + 8} y2={fibNeck.y}
-                  stroke="hsl(var(--destructive))" strokeWidth="2"
-                  markerEnd="url(#ppm-pn-arr)"
-                />
-                {/* Arrow from medial side → fibular neck (counter-pressure from tibia) */}
-                <line
-                  x1="140" y1={fibNeck.y + 4}
-                  x2={fibHead.x - 8} y2={fibNeck.y + 4}
-                  stroke="hsl(var(--destructive))" strokeWidth="1.5"
-                  markerEnd="url(#ppm-pn-arr)"
-                  opacity="0.65"
-                />
-                <text x="194" y={fibNeck.y - 12} textAnchor="middle" className="text-[9px] font-bold" fill="hsl(var(--destructive))">
-                  PINCH
-                </text>
-              </g>
-            )}
-
-            {/* ── Ischaemia ring (step 3) ──────────────────────────── */}
-            {showIschaemia && (
-              <g>
-                <circle cx={fibNeck.x} cy={fibNeck.y} r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" strokeDasharray="3 2">
-                  <animate attributeName="r" values="10;20;10" dur="1.4s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="1;0.2;1" dur="1.4s" repeatCount="indefinite" />
-                </circle>
-                <text x={fibNeck.x + 28} y={fibNeck.y + 28} className="text-[9px] font-bold animate-fade-in" fill="hsl(var(--destructive))">
-                  ↓ blood flow
-                </text>
-                <text x={fibNeck.x + 28} y={fibNeck.y + 39} className="text-[8px] animate-fade-in" fill="hsl(var(--destructive))">
-                  endoneurial ischaemia
-                </text>
-              </g>
-            )}
-
-            {/* ── Foot — neutral vs dropped ─────────────────────────── */}
-            {/* Ghost (neutral) outline always shown when foot drops, for comparison */}
-            {showFootDrop && (
-              <path
-                d={`M ${ankle.x - 4},${ankle.y} L ${ankle.x + 32},${ankle.y} L ${ankle.x + 32},${ankle.y + 8} L ${ankle.x - 4},${ankle.y + 8} Z`}
-                fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6"
-              />
-            )}
-            <g
-              className="transition-transform duration-700"
-              style={{
-                transformOrigin: `${ankle.x}px ${ankle.y}px`,
-                transform: showFootDrop ? "rotate(55deg)" : "rotate(0deg)",
-              }}
+    <DiagramFigure
+      id="patient-positioning-mechanisms"
+      title="Patient positioning mechanisms"
+      description="Auto-generated wrapper for the Patient positioning mechanisms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <AnimatedMechanism
+      title="Lithotomy — common peroneal nerve at the fibular head"
+      subtitle="Lateral view of the right knee in a stirrup. Watch the foam pad disappear, the nerve get pinched between the post and the fibular neck, then ischaemia and foot drop develop."
+      stepMs={2600}
+      steps={PERONEAL_STEPS}
+      accentClass="border-clinical/50"
+      renderScene={(active) => {
+        // Key anatomic anchors — defined once so labels and arrows align.
+        const fibHead = { x: 168, y: 118 }; // fibular head (lateral, just below joint line)
+        const fibNeck = { x: 170, y: 130 };
+        const ankle = { x: 150, y: 232 };
+        const padVisible = active < 2; // pad squashes from step 2 onward
+        const showSqueeze = active >= 2;
+        const showIschaemia = active === 3;
+        const showFootDrop = active === 4;
+        const showPrevention = active === 5;
+  
+        return (
+              <div className="flex items-center justify-center h-full">
+            <svg
+              viewBox="0 0 380 260"
+              className="w-full max-w-[420px] h-auto"
+              role="img"
+              aria-label="Lateral view of a knee in a lithotomy stirrup showing the common peroneal nerve compressed at the fibular neck"
             >
-              <path
-                d={`M ${ankle.x - 4},${ankle.y}
-                    Q ${ankle.x + 16},${ankle.y - 3} ${ankle.x + 32},${ankle.y + 1}
-                    Q ${ankle.x + 36},${ankle.y + 6} ${ankle.x + 32},${ankle.y + 9}
-                    L ${ankle.x - 4},${ankle.y + 9} Z`}
-                fill={showFootDrop ? "hsl(var(--destructive) / 0.45)" : "url(#ppm-pn-skin)"}
-                stroke={showFootDrop ? "hsl(var(--destructive))" : "hsl(28 45% 50%)"}
-                strokeWidth="1"
+              <defs>
+                <marker id="ppm-pn-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                  <path d="M0,0 L10,5 L0,10 z" fill="hsl(var(--destructive))" />
+                </marker>
+                <marker id="ppm-pn-arr-yellow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                  <path d="M0,0 L10,5 L0,10 z" fill="hsl(45 95% 50%)" />
+                </marker>
+                <linearGradient id="ppm-pn-skin" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="hsl(34 70% 84%)" />
+                  <stop offset="100%" stopColor="hsl(28 50% 70%)" />
+                </linearGradient>
+              </defs>
+  
+              {/* Joint-line reference (faint dashed) */}
+              <line x1="100" y1="105" x2="220" y2="105" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.5" />
+              <text x="225" y="108" className="text-[8px]" fill="hsl(var(--muted-foreground))">joint line</text>
+  
+              {/* ── Stirrup post + foam pad ───────────────────────────── */}
+              <rect
+                x="195" y="40" width="16" height="180" rx="3"
+                fill={showSqueeze ? "hsl(var(--destructive) / 0.75)" : "hsl(var(--muted-foreground))"}
+                stroke="hsl(var(--border))"
                 className="transition-colors duration-500"
               />
-            </g>
-            {/* Ankle joint dot */}
-            <circle cx={ankle.x} cy={ankle.y} r="2.2" fill="hsl(var(--foreground))" opacity="0.5" />
-            {showFootDrop && (
-              <g className="animate-fade-in">
-                <text x={ankle.x + 50} y={ankle.y + 30} className="text-[10px] font-bold" fill="hsl(var(--destructive))">
-                  foot drop
+              <text x="203" y="34" textAnchor="middle" className="text-[8px] font-semibold" fill="hsl(var(--muted-foreground))">
+                stirrup post
+              </text>
+  
+              {/* Foam pad between post and leg — present early, squashed/gone with compression */}
+              <rect
+                x={padVisible ? 182 : 192}
+                y="100"
+                width={padVisible ? 14 : 4}
+                height="50"
+                rx="3"
+                fill={padVisible ? "hsl(120 35% 65%)" : "hsl(0 60% 55% / 0.4)"}
+                stroke={padVisible ? "hsl(120 35% 35%)" : "hsl(var(--destructive))"}
+                strokeDasharray={padVisible ? "0" : "2 2"}
+                className="transition-all duration-500"
+              />
+              {padVisible && (
+                <text x="170" y="98" textAnchor="middle" className="text-[8px] font-semibold" fill="hsl(120 35% 35%)">
+                  foam pad
                 </text>
-                <text x={ankle.x + 50} y={ankle.y + 42} className="text-[8px]" fill="hsl(var(--destructive))">
-                  loss of dorsiflexion
+              )}
+              {!padVisible && active >= 2 && (
+                <text x="172" y="96" textAnchor="middle" className="text-[8px] font-semibold animate-fade-in" fill="hsl(var(--destructive))">
+                  pad inadequate
                 </text>
-                <text x={ankle.x + 50} y={ankle.y + 52} className="text-[8px]" fill="hsl(var(--destructive))">
-                  + eversion
-                </text>
+              )}
+  
+              {/* ── Skin envelope of the calf (lateral profile) ───────── */}
+              <path
+                d="M 110,90 Q 100,140 105,210 Q 110,235 145,238 Q 170,236 175,215 Q 178,160 180,118 Q 178,98 160,88 Z"
+                fill="url(#ppm-pn-skin)"
+                stroke="hsl(28 45% 50%)"
+                strokeWidth="1"
+                opacity="0.55"
+              />
+  
+              {/* ── Femur (distal, going up-right) with rounded condyle ── */}
+              <path
+                d="M 115,98 L 165,40 L 178,46 L 132,108 Q 122,110 115,98 Z"
+                fill="hsl(var(--muted-foreground) / 0.28)"
+                stroke="hsl(var(--border))"
+              />
+              <ellipse cx="135" cy="100" rx="14" ry="10" fill="hsl(var(--muted-foreground) / 0.4)" stroke="hsl(var(--border))" />
+              <text x="160" y="58" className="text-[8px]" fill="hsl(var(--muted-foreground))">femur</text>
+  
+              {/* Patella (subtle, anterior) */}
+              <ellipse cx="118" cy="105" rx="6" ry="9" fill="hsl(var(--muted-foreground) / 0.5)" stroke="hsl(var(--border))" strokeWidth="0.75" />
+  
+              {/* ── Tibia (medial, anterior) ──────────────────────────── */}
+              <path
+                d="M 130,110 L 144,228 L 158,228 L 152,110 Z"
+                fill="hsl(var(--muted-foreground) / 0.3)"
+                stroke="hsl(var(--border))"
+              />
+              <text x="120" y="170" className="text-[8px]" fill="hsl(var(--muted-foreground))">tibia</text>
+  
+              {/* ── Fibula (lateral, posterior — the key bone) ────────── */}
+              <path
+                d="M 162,118 L 172,228 L 180,228 L 175,118 Z"
+                fill="hsl(var(--muted-foreground) / 0.4)"
+                stroke="hsl(var(--border))"
+              />
+              <text x="184" y="180" className="text-[8px]" fill="hsl(var(--muted-foreground))">fibula</text>
+  
+              {/* Fibular head — highlighted node at correct anatomic site */}
+              <circle
+                cx={fibHead.x}
+                cy={fibHead.y}
+                r={active >= 1 ? 7 : 4}
+                fill={showSqueeze ? "hsl(var(--destructive))" : "hsl(var(--clinical))"}
+                stroke="hsl(var(--foreground))"
+                strokeWidth="1"
+                className="transition-all duration-500"
+              />
+              {active >= 1 && (
+                <g className="animate-fade-in">
+                  <line x1={fibHead.x + 8} y1={fibHead.y} x2="240" y2="118" stroke="hsl(var(--foreground))" strokeWidth="0.5" />
+                  <text x="244" y="116" className="text-[9px] font-semibold" fill="hsl(var(--foreground))">
+                    fibular head
+                  </text>
+                  <text x="244" y="127" className="text-[8px]" fill="hsl(var(--muted-foreground))">
+                    + neck (compression site)
+                  </text>
+                </g>
+              )}
+  
+              {/* ── Common peroneal nerve — wraps around fibular neck ─── */}
+              {/* Path: comes from popliteal fossa, around the back of the fibular head,
+                  wraps over the neck, then dives anteriorly into the leg. */}
+              <path
+                d={`M 150,75
+                    Q 175,90 ${fibHead.x + 4},${fibHead.y - 4}
+                    Q ${fibNeck.x + 5},${fibNeck.y} ${fibNeck.x - 4},${fibNeck.y + 6}
+                    Q ${fibNeck.x - 8},${fibNeck.y + 22} 158,180
+                    L 152,225`}
+                fill="none"
+                stroke={showSqueeze ? "hsl(var(--destructive))" : "hsl(45 95% 50%)"}
+                strokeWidth={showSqueeze ? 4 : 3}
+                strokeLinecap="round"
+                className="transition-all duration-500"
+                markerEnd={showSqueeze ? "url(#ppm-pn-arr)" : "url(#ppm-pn-arr-yellow)"}
+              />
+              {/* Nerve halo (helps distinguish from bone outline) */}
+              <path
+                d={`M 150,75
+                    Q 175,90 ${fibHead.x + 4},${fibHead.y - 4}
+                    Q ${fibNeck.x + 5},${fibNeck.y} ${fibNeck.x - 4},${fibNeck.y + 6}
+                    Q ${fibNeck.x - 8},${fibNeck.y + 22} 158,180
+                    L 152,225`}
+                fill="none"
+                stroke="hsl(45 95% 50% / 0.25)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                opacity={showSqueeze ? 0.15 : 0.6}
+                className="transition-opacity duration-500"
+              />
+              {active >= 1 && (
+                <g className="animate-fade-in">
+                  <line x1="152" y1="78" x2="100" y2="68" stroke="hsl(45 80% 35%)" strokeWidth="0.5" />
+                  <text x="62" y="65" className="text-[9px] font-semibold" fill={showSqueeze ? "hsl(var(--destructive))" : "hsl(45 80% 35%)"}>
+                    common peroneal n.
+                  </text>
+                  <text x="62" y="76" className="text-[7.5px]" fill="hsl(var(--muted-foreground))">
+                    (most superficial nerve)
+                  </text>
+                </g>
+              )}
+  
+              {/* ── Compression arrows pointing AT the pinch point ───── */}
+              {showSqueeze && (
+                <g className="animate-fade-in">
+                  {/* Arrow from post → fibular neck */}
+                  <line
+                    x1="194" y1={fibNeck.y}
+                    x2={fibHead.x + 8} y2={fibNeck.y}
+                    stroke="hsl(var(--destructive))" strokeWidth="2"
+                    markerEnd="url(#ppm-pn-arr)"
+                  />
+                  {/* Arrow from medial side → fibular neck (counter-pressure from tibia) */}
+                  <line
+                    x1="140" y1={fibNeck.y + 4}
+                    x2={fibHead.x - 8} y2={fibNeck.y + 4}
+                    stroke="hsl(var(--destructive))" strokeWidth="1.5"
+                    markerEnd="url(#ppm-pn-arr)"
+                    opacity="0.65"
+                  />
+                  <text x="194" y={fibNeck.y - 12} textAnchor="middle" className="text-[9px] font-bold" fill="hsl(var(--destructive))">
+                    PINCH
+                  </text>
+                </g>
+              )}
+  
+              {/* ── Ischaemia ring (step 3) ──────────────────────────── */}
+              {showIschaemia && (
+                <g>
+                  <circle cx={fibNeck.x} cy={fibNeck.y} r="14" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" strokeDasharray="3 2">
+                    <animate attributeName="r" values="10;20;10" dur="1.4s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0.2;1" dur="1.4s" repeatCount="indefinite" />
+                  </circle>
+                  <text x={fibNeck.x + 28} y={fibNeck.y + 28} className="text-[9px] font-bold animate-fade-in" fill="hsl(var(--destructive))">
+                    ↓ blood flow
+                  </text>
+                  <text x={fibNeck.x + 28} y={fibNeck.y + 39} className="text-[8px] animate-fade-in" fill="hsl(var(--destructive))">
+                    endoneurial ischaemia
+                  </text>
+                </g>
+              )}
+  
+              {/* ── Foot — neutral vs dropped ─────────────────────────── */}
+              {/* Ghost (neutral) outline always shown when foot drops, for comparison */}
+              {showFootDrop && (
+                <path
+                  d={`M ${ankle.x - 4},${ankle.y} L ${ankle.x + 32},${ankle.y} L ${ankle.x + 32},${ankle.y + 8} L ${ankle.x - 4},${ankle.y + 8} Z`}
+                  fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6"
+                />
+              )}
+              <g
+                className="transition-transform duration-700"
+                style={{
+                  transformOrigin: `${ankle.x}px ${ankle.y}px`,
+                  transform: showFootDrop ? "rotate(55deg)" : "rotate(0deg)",
+                }}
+              >
+                <path
+                  d={`M ${ankle.x - 4},${ankle.y}
+                      Q ${ankle.x + 16},${ankle.y - 3} ${ankle.x + 32},${ankle.y + 1}
+                      Q ${ankle.x + 36},${ankle.y + 6} ${ankle.x + 32},${ankle.y + 9}
+                      L ${ankle.x - 4},${ankle.y + 9} Z`}
+                  fill={showFootDrop ? "hsl(var(--destructive) / 0.45)" : "url(#ppm-pn-skin)"}
+                  stroke={showFootDrop ? "hsl(var(--destructive))" : "hsl(28 45% 50%)"}
+                  strokeWidth="1"
+                  className="transition-colors duration-500"
+                />
               </g>
-            )}
-
-            {/* ── Prevention overlay (step 5) — docked top-right, no overlap ─ */}
-            {showPrevention && (
-              <g className="animate-fade-in">
-                <rect x="245" y="148" width="125" height="92" rx="6" fill="hsl(var(--accent) / 0.12)" stroke="hsl(var(--accent))" />
-                <text x="307" y="164" textAnchor="middle" className="text-[9px] font-bold" fill="hsl(var(--accent))">
-                  PREVENTION
-                </text>
-                <text x="252" y="180" className="text-[8px]" fill="hsl(var(--foreground))">• Allen-style boot stirrup</text>
-                <text x="252" y="192" className="text-[8px]" fill="hsl(var(--foreground))">• pad the fibular head</text>
-                <text x="252" y="204" className="text-[8px]" fill="hsl(var(--foreground))">• hip flexion &lt; 90°</text>
-                <text x="252" y="216" className="text-[8px]" fill="hsl(var(--foreground))">• down-time every 2 h</text>
-                <text x="252" y="228" className="text-[8px]" fill="hsl(var(--foreground))">• check pulse + sensation</text>
-              </g>
-            )}
-          </svg>
-        </div>
-  );
-    }}
-  />
+              {/* Ankle joint dot */}
+              <circle cx={ankle.x} cy={ankle.y} r="2.2" fill="hsl(var(--foreground))" opacity="0.5" />
+              {showFootDrop && (
+                <g className="animate-fade-in">
+                  <text x={ankle.x + 50} y={ankle.y + 30} className="text-[10px] font-bold" fill="hsl(var(--destructive))">
+                    foot drop
+                  </text>
+                  <text x={ankle.x + 50} y={ankle.y + 42} className="text-[8px]" fill="hsl(var(--destructive))">
+                    loss of dorsiflexion
+                  </text>
+                  <text x={ankle.x + 50} y={ankle.y + 52} className="text-[8px]" fill="hsl(var(--destructive))">
+                    + eversion
+                  </text>
+                </g>
+              )}
+  
+              {/* ── Prevention overlay (step 5) — docked top-right, no overlap ─ */}
+              {showPrevention && (
+                <g className="animate-fade-in">
+                  <rect x="245" y="148" width="125" height="92" rx="6" fill="hsl(var(--accent) / 0.12)" stroke="hsl(var(--accent))" />
+                  <text x="307" y="164" textAnchor="middle" className="text-[9px] font-bold" fill="hsl(var(--accent))">
+                    PREVENTION
+                  </text>
+                  <text x="252" y="180" className="text-[8px]" fill="hsl(var(--foreground))">• Allen-style boot stirrup</text>
+                  <text x="252" y="192" className="text-[8px]" fill="hsl(var(--foreground))">• pad the fibular head</text>
+                  <text x="252" y="204" className="text-[8px]" fill="hsl(var(--foreground))">• hip flexion &lt; 90°</text>
+                  <text x="252" y="216" className="text-[8px]" fill="hsl(var(--foreground))">• down-time every 2 h</text>
+                  <text x="252" y="228" className="text-[8px]" fill="hsl(var(--foreground))">• check pulse + sensation</text>
+                </g>
+              )}
+            </svg>
+          </div>
+    );
+      }}
+    />
+    </DiagramFigure>
   );

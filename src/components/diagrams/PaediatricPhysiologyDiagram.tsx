@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison of paediatric physiology vs adult, by age band.
@@ -200,196 +201,202 @@ export const PaediatricPhysiologyDiagram = () => {
   };
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          toggles={[
-            { label: "Hotspots", active: showHotspots, onChange: () => setShowHotspots((v) => !v) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
-          ]}
-        />
-
-        <div className="grid md:grid-cols-[280px_1fr] gap-4 items-start">
-          <svg
-            viewBox="0 0 400 540"
-            className="w-full h-auto max-w-[280px] mx-auto"
-            role="img"
-            aria-label="Infant silhouette with clickable systems comparing neonate, infant and child physiology to adult"
-          >
-            <defs>
-              <radialGradient id="pdp-depth" cx="50%" cy="50%" r="65%">
-                <stop offset="0%" stopColor="hsl(var(--background))" stopOpacity="0" />
-                <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0.3" />
-              </radialGradient>
-              <pattern id="pdp-skin" patternUnits="userSpaceOnUse" width="6" height="6">
-                <circle cx="3" cy="3" r="0.5" fill="hsl(30, 40%, 40%)" opacity="0.25" />
-              </pattern>
-              <filter id="pdp-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodOpacity="0.25" />
-              </filter>
-            </defs>
-
-            {/* Infant silhouette — larger head:body ratio, prominent occiput */}
-            <g filter="url(#pdp-shadow)">
-              {/* Head — proportionally large */}
-              <ellipse cx="200" cy="70" rx="48" ry="50" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              {/* Prominent occiput hint */}
-              <path d="M 152 70 Q 145 80 152 95" fill="none" stroke="hsl(var(--border))" strokeWidth="1" opacity="0.5" />
-              {/* Short neck */}
-              <path d="M 185 115 Q 200 122 215 115 L 218 132 Q 200 138 182 132 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              {/* Torso — short, rounded, prominent abdomen */}
-              <path
-                d="M 160 138 Q 148 175 152 220 Q 158 265 175 290 Q 200 300 225 290 Q 245 265 250 220 Q 252 175 240 138 Q 220 130 200 130 Q 180 130 160 138 Z"
-                fill="url(#pdp-skin)"
-                stroke="hsl(var(--border))"
-                strokeWidth="1"
-              />
-              {/* Hips */}
-              <path d="M 170 290 Q 162 315 170 340 Q 200 348 230 340 Q 238 315 230 290 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              {/* Short, chubby legs */}
-              <path d="M 178 340 L 175 430 L 195 432 L 198 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              <path d="M 202 340 L 205 432 L 225 430 L 222 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              {/* Arms */}
-              <path d="M 152 145 Q 130 175 130 220 L 145 222 Q 152 180 165 155 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              <path d="M 248 145 Q 270 175 270 220 L 255 222 Q 248 180 235 155 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
-              {/* Spine */}
-              <path d="M 200 138 Q 198 200 200 285 Q 200 320 200 340" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-            </g>
-
-            {/* Hotspots */}
-            {showHotspots && (
-              <g>
-                {ORDER.map((k) => {
-                  const h = HOTSPOTS[k];
-                  return (
-                        <g key={k} onClick={() => setSelected(k)} style={{ cursor: "pointer" }}>
-                      <circle
-                        cx={h.cx}
-                        cy={h.cy}
-                        r={h.r}
-                        fill={REGION_COLOR[k]}
-                        opacity={isSel(k) ? 0.55 : 0.22}
-                        stroke={REGION_COLOR[k]}
-                        strokeWidth={isSel(k) ? 2.5 : 1.2}
-                      />
-                      {isSel(k) && (
+    <DiagramFigure
+      id="paediatric-physiology-diagram"
+      title="Paediatric physiology"
+      description="Auto-generated wrapper for the Paediatric physiology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            toggles={[
+              { label: "Hotspots", active: showHotspots, onChange: () => setShowHotspots((v) => !v) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((v) => !v) },
+            ]}
+          />
+  
+          <div className="grid md:grid-cols-[280px_1fr] gap-4 items-start">
+            <svg
+              viewBox="0 0 400 540"
+              className="w-full h-auto max-w-[280px] mx-auto"
+              role="img"
+              aria-label="Infant silhouette with clickable systems comparing neonate, infant and child physiology to adult"
+            >
+              <defs>
+                <radialGradient id="pdp-depth" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stopColor="hsl(var(--background))" stopOpacity="0" />
+                  <stop offset="100%" stopColor="hsl(var(--background))" stopOpacity="0.3" />
+                </radialGradient>
+                <pattern id="pdp-skin" patternUnits="userSpaceOnUse" width="6" height="6">
+                  <circle cx="3" cy="3" r="0.5" fill="hsl(30, 40%, 40%)" opacity="0.25" />
+                </pattern>
+                <filter id="pdp-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="2.5" floodOpacity="0.25" />
+                </filter>
+              </defs>
+  
+              {/* Infant silhouette — larger head:body ratio, prominent occiput */}
+              <g filter="url(#pdp-shadow)">
+                {/* Head — proportionally large */}
+                <ellipse cx="200" cy="70" rx="48" ry="50" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                {/* Prominent occiput hint */}
+                <path d="M 152 70 Q 145 80 152 95" fill="none" stroke="hsl(var(--border))" strokeWidth="1" opacity="0.5" />
+                {/* Short neck */}
+                <path d="M 185 115 Q 200 122 215 115 L 218 132 Q 200 138 182 132 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                {/* Torso — short, rounded, prominent abdomen */}
+                <path
+                  d="M 160 138 Q 148 175 152 220 Q 158 265 175 290 Q 200 300 225 290 Q 245 265 250 220 Q 252 175 240 138 Q 220 130 200 130 Q 180 130 160 138 Z"
+                  fill="url(#pdp-skin)"
+                  stroke="hsl(var(--border))"
+                  strokeWidth="1"
+                />
+                {/* Hips */}
+                <path d="M 170 290 Q 162 315 170 340 Q 200 348 230 340 Q 238 315 230 290 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                {/* Short, chubby legs */}
+                <path d="M 178 340 L 175 430 L 195 432 L 198 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                <path d="M 202 340 L 205 432 L 225 430 L 222 340 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                {/* Arms */}
+                <path d="M 152 145 Q 130 175 130 220 L 145 222 Q 152 180 165 155 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                <path d="M 248 145 Q 270 175 270 220 L 255 222 Q 248 180 235 155 Z" fill="url(#pdp-skin)" stroke="hsl(var(--border))" strokeWidth="1" />
+                {/* Spine */}
+                <path d="M 200 138 Q 198 200 200 285 Q 200 320 200 340" fill="none" stroke="hsl(var(--border))" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
+              </g>
+  
+              {/* Hotspots */}
+              {showHotspots && (
+                <g>
+                  {ORDER.map((k) => {
+                    const h = HOTSPOTS[k];
+                    return (
+                          <g key={k} onClick={() => setSelected(k)} style={{ cursor: "pointer" }}>
                         <circle
                           cx={h.cx}
                           cy={h.cy}
-                          r={h.r + 5}
-                          fill="none"
+                          r={h.r}
+                          fill={REGION_COLOR[k]}
+                          opacity={isSel(k) ? 0.55 : 0.22}
                           stroke={REGION_COLOR[k]}
-                          strokeWidth="1"
-                          opacity="0.6"
-                        >
-                          <animate attributeName="r" from={h.r + 3} to={h.r + 10} dur="1.5s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite" />
-                        </circle>
-                      )}
-                    </g>
-  );
-                })}
-              </g>
-            )}
-
-            {/* Labels */}
-            {showLabels && (
-              <g fontSize="10" fill="hsl(var(--foreground))" fontFamily="sans-serif">
-                <text x="245" y="55" opacity={opacity("neuro")}>Neuro</text>
-                <text x="245" y="100" opacity={opacity("airway")}>Airway</text>
-                <text x="280" y="180" opacity={opacity("resp")}>Resp</text>
-                <text x="115" y="180" textAnchor="end" opacity={opacity("cvs")}>CVS</text>
-                <text x="295" y="205" opacity={opacity("haem")}>Haem</text>
-                <text x="105" y="225" textAnchor="end" opacity={opacity("thermo")}>Thermo</text>
-                <text x="245" y="255" opacity={opacity("renal")}>Renal/GI</text>
-                <text x="305" y="255" opacity={opacity("pharma")}>Pharma</text>
-              </g>
-            )}
-
-            <rect x="0" y="0" width="400" height="540" fill="url(#pdp-depth)" pointerEvents="none" />
-          </svg>
-
-          {/* Detail panel */}
-          <div
-            className="rounded-lg border border-border bg-background p-4 min-h-[260px] border-l-4"
-            style={{ borderLeftColor: REGION_COLOR[info.region] }}
-          >
-            <div className="flex items-baseline justify-between gap-3 flex-wrap">
-              <h4 className="font-serif font-bold text-foreground text-lg">{info.label}</h4>
-              <span
-                className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border"
-                style={{ borderColor: REGION_COLOR[info.region], color: REGION_COLOR[info.region] }}
-              >
-                {info.region}
-              </span>
-            </div>
-
-            <div className="mt-3 overflow-x-auto">
-              <table className="w-full text-xs border-collapse">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-1.5 pr-2 text-muted-foreground font-medium">Variable</th>
-                    {AGE_ORDER.map((a) => (
-                      <th
-                        key={a}
-                        className="text-left py-1.5 pr-2 font-semibold text-foreground whitespace-nowrap"
-                        title={AGE_DETAIL[a]}
-                      >
-                        {AGE_LABEL[a]}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {info.rows.map((r) => (
-                    <tr key={r.name} className="border-b border-border/60 align-top">
-                      <td className="py-1.5 pr-2 text-muted-foreground">{r.name}</td>
+                          strokeWidth={isSel(k) ? 2.5 : 1.2}
+                        />
+                        {isSel(k) && (
+                          <circle
+                            cx={h.cx}
+                            cy={h.cy}
+                            r={h.r + 5}
+                            fill="none"
+                            stroke={REGION_COLOR[k]}
+                            strokeWidth="1"
+                            opacity="0.6"
+                          >
+                            <animate attributeName="r" from={h.r + 3} to={h.r + 10} dur="1.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite" />
+                          </circle>
+                        )}
+                      </g>
+    );
+                  })}
+                </g>
+              )}
+  
+              {/* Labels */}
+              {showLabels && (
+                <g fontSize="10" fill="hsl(var(--foreground))" fontFamily="sans-serif">
+                  <text x="245" y="55" opacity={opacity("neuro")}>Neuro</text>
+                  <text x="245" y="100" opacity={opacity("airway")}>Airway</text>
+                  <text x="280" y="180" opacity={opacity("resp")}>Resp</text>
+                  <text x="115" y="180" textAnchor="end" opacity={opacity("cvs")}>CVS</text>
+                  <text x="295" y="205" opacity={opacity("haem")}>Haem</text>
+                  <text x="105" y="225" textAnchor="end" opacity={opacity("thermo")}>Thermo</text>
+                  <text x="245" y="255" opacity={opacity("renal")}>Renal/GI</text>
+                  <text x="305" y="255" opacity={opacity("pharma")}>Pharma</text>
+                </g>
+              )}
+  
+              <rect x="0" y="0" width="400" height="540" fill="url(#pdp-depth)" pointerEvents="none" />
+            </svg>
+  
+            {/* Detail panel */}
+            <div
+              className="rounded-lg border border-border bg-background p-4 min-h-[260px] border-l-4"
+              style={{ borderLeftColor: REGION_COLOR[info.region] }}
+            >
+              <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                <h4 className="font-serif font-bold text-foreground text-lg">{info.label}</h4>
+                <span
+                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border"
+                  style={{ borderColor: REGION_COLOR[info.region], color: REGION_COLOR[info.region] }}
+                >
+                  {info.region}
+                </span>
+              </div>
+  
+              <div className="mt-3 overflow-x-auto">
+                <table className="w-full text-xs border-collapse">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-1.5 pr-2 text-muted-foreground font-medium">Variable</th>
                       {AGE_ORDER.map((a) => (
-                        <td
+                        <th
                           key={a}
-                          className={`py-1.5 pr-2 ${a === "adult" ? "text-muted-foreground italic" : "text-foreground"}`}
+                          className="text-left py-1.5 pr-2 font-semibold text-foreground whitespace-nowrap"
+                          title={AGE_DETAIL[a]}
                         >
-                          {r.values[a]}
-                        </td>
+                          {AGE_LABEL[a]}
+                        </th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="mt-3 pt-3 border-t border-border">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-1">
-                Anaesthetic implication
-              </p>
-              <p className="text-sm text-foreground">{info.implication}</p>
+                  </thead>
+                  <tbody>
+                    {info.rows.map((r) => (
+                      <tr key={r.name} className="border-b border-border/60 align-top">
+                        <td className="py-1.5 pr-2 text-muted-foreground">{r.name}</td>
+                        {AGE_ORDER.map((a) => (
+                          <td
+                            key={a}
+                            className={`py-1.5 pr-2 ${a === "adult" ? "text-muted-foreground italic" : "text-foreground"}`}
+                          >
+                            {r.values[a]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+  
+              <div className="mt-3 pt-3 border-t border-border">
+                <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-1">
+                  Anaesthetic implication
+                </p>
+                <p className="text-sm text-foreground">{info.implication}</p>
+              </div>
             </div>
           </div>
+  
+          {/* Chip row */}
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {ORDER.map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setSelected(k)}
+                className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
+                  selected === k
+                    ? "bg-primary/10 border-primary text-foreground"
+                    : "border-border text-muted-foreground hover:bg-muted/50"
+                }`}
+              >
+                {SYSTEMS[k].label}
+              </button>
+            ))}
+          </div>
+  
+          <p className="mt-3 text-[11px] text-muted-foreground">
+            Adult column shown <span className="italic">in italics</span> as the reference. Hover an age header for the age band definition.
+          </p>
         </div>
-
-        {/* Chip row */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {ORDER.map((k) => (
-            <button
-              key={k}
-              type="button"
-              onClick={() => setSelected(k)}
-              className={`text-xs px-2.5 py-1 rounded-full border transition-colors ${
-                selected === k
-                  ? "bg-primary/10 border-primary text-foreground"
-                  : "border-border text-muted-foreground hover:bg-muted/50"
-              }`}
-            >
-              {SYSTEMS[k].label}
-            </button>
-          ))}
-        </div>
-
-        <p className="mt-3 text-[11px] text-muted-foreground">
-          Adult column shown <span className="italic">in italics</span> as the reference. Hover an age header for the age band definition.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

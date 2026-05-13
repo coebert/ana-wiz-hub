@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type View = "overview" | "co2" | "o2" | "ph";
 
@@ -9,30 +10,36 @@ const ControlOfBreathingDiagram = () => {
   const [pH, setPH] = useState(7.40);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">Control of Breathing & Chemoreceptors</h3>
-
-      <div className="flex flex-wrap gap-2">
-        {([
-          { key: "overview" as View, label: "Neural Overview" },
-          { key: "co2" as View, label: "CO₂ Response" },
-          { key: "o2" as View, label: "O₂ Response" },
-          { key: "ph" as View, label: "pH Response" },
-        ]).map(v => (
-          <button key={v.key} onClick={() => setView(v.key)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              view === v.key ? "bg-primary text-primary-foreground shadow-sm" : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
-            }`}>
-            {v.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="control-of-breathing-diagram"
+      title="Control of breathing"
+      description="Auto-generated wrapper for the Control of breathing anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-foreground">Control of Breathing & Chemoreceptors</h3>
+  
+        <div className="flex flex-wrap gap-2">
+          {([
+            { key: "overview" as View, label: "Neural Overview" },
+            { key: "co2" as View, label: "CO₂ Response" },
+            { key: "o2" as View, label: "O₂ Response" },
+            { key: "ph" as View, label: "pH Response" },
+          ]).map(v => (
+            <button key={v.key} onClick={() => setView(v.key)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                view === v.key ? "bg-primary text-primary-foreground shadow-sm" : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+              }`}>
+              {v.label}
+            </button>
+          ))}
+        </div>
+  
+        {view === "overview" && <OverviewDiagram />}
+        {view === "co2" && <CO2ResponseCurve paCO2={paCO2} setPaCO2={setPaCO2} paO2={paO2} />}
+        {view === "o2" && <O2ResponseCurve paO2={paO2} setPaO2={setPaO2} paCO2={paCO2} />}
+        {view === "ph" && <PHResponseCurve pH={pH} setPH={setPH} />}
       </div>
-
-      {view === "overview" && <OverviewDiagram />}
-      {view === "co2" && <CO2ResponseCurve paCO2={paCO2} setPaCO2={setPaCO2} paO2={paO2} />}
-      {view === "o2" && <O2ResponseCurve paO2={paO2} setPaO2={setPaO2} paCO2={paCO2} />}
-      {view === "ph" && <PHResponseCurve pH={pH} setPH={setPH} />}
-    </div>
+    </DiagramFigure>
   );
 };
 

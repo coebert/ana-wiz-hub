@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated MAP = CO × SVR control-loop diagram.
@@ -134,154 +135,160 @@ export const BPControlLoopDiagram = () => {
   const mapValue = Math.round(90 + mapDelta);
 
   return (
-    <div className="space-y-3">
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs font-medium text-muted-foreground mr-1">Perturbation:</span>
-        <PerturbationButton active={perturbation === "steady"} onClick={() => setPerturbation("steady")}>
-          Steady state
-        </PerturbationButton>
-        <PerturbationButton active={perturbation === "hypotension"} onClick={() => setPerturbation("hypotension")}>
-          ↓ MAP (haemorrhage)
-        </PerturbationButton>
-        <PerturbationButton active={perturbation === "hypertension"} onClick={() => setPerturbation("hypertension")}>
-          ↑ MAP (acute rise)
-        </PerturbationButton>
-      </div>
-
-      <div className="bg-card rounded-lg border border-border overflow-hidden">
-        <svg viewBox="0 0 880 470" className="w-full h-auto" role="img" aria-label="MAP control loop diagram">
-          {/* Backdrop bands for the three time domains */}
-          <rect x={20} y={80} width={840} height={75} fill="hsl(var(--physiology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
-          <rect x={20} y={185} width={840} height={75} fill="hsl(var(--pharmacology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
-          <rect x={20} y={285} width={840} height={75} fill="hsl(var(--clinical) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
-
-          <text x={30} y={75} className="fill-physiology text-[10px] font-semibold uppercase tracking-wide">
-            Neural — seconds
-          </text>
-          <text x={30} y={180} className="fill-pharmacology text-[10px] font-semibold uppercase tracking-wide">
-            Neurohormonal — minutes to hours
-          </text>
-          <text x={30} y={280} className="fill-clinical text-[10px] font-semibold uppercase tracking-wide">
-            Renal–volume — hours to days
-          </text>
-
-          {/* Sensors column */}
-          <text x={100} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
-            Sensors
-          </text>
-          <Node x={40} y={90} w={130} h={42} title="Baroreceptors" sub="Carotid sinus IX · Arch X" />
-          <Node x={40} y={155} w={130} h={42} title="Chemoreceptors" sub="Carotid/aortic bodies" />
-          <Node x={40} y={220} w={130} h={42} title="Cardiopulmonary" sub="Atrial stretch" />
-
-          {/* CNS integrator */}
-          <text x={355} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
-            CNS integrator
-          </text>
-          <Node
-            x={305}
-            y={110}
-            w={100}
-            h={100}
-            title="Medulla"
-            sub="NTS · RVLM · NA"
-            fill="hsl(var(--secondary))"
-          />
-          <text x={355} y={185} textAnchor="middle" className="fill-foreground text-[9px]">
-            ↑ vagal · ↓ sympathetic
-          </text>
-
-          {/* Effectors column */}
-          <text x={595} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
-            Effectors
-          </text>
-          <Node x={540} y={90} w={105} h={42} title="Heart" sub="HR · contractility (β₁/M₂)" />
-          <Node x={540} y={155} w={105} h={42} title="Vessels" sub="α₁ tone · venous return" />
-          <Node x={540} y={220} w={105} h={42} title="Adrenal medulla" sub="Adr / NAdr · ADH" />
-          <Node x={540} y={285} w={105} h={42} title="Kidney" sub="RAAS · pressure-natriuresis" />
-
-          {/* MAP output */}
-          <Node
-            x={685}
-            y={265}
-            w={130}
-            h={75}
-            title={`MAP ≈ ${mapValue} mmHg`}
-            sub="MAP = CO × SVR"
-            fill="hsl(var(--primary) / 0.12)"
-            stroke="hsl(var(--primary))"
-          />
-          <text x={750} y={358} textAnchor="middle" className="fill-muted-foreground text-[9px]">
-            CO = HR × SV
-          </text>
-
-          {/* Arcs */}
-          {ARCS.map((arc) => {
-            const isActive = arc.active.includes(perturbation);
-            const colour = DOMAIN_COLOR[arc.domain];
-            return (
-              <g key={arc.id}>
-                <path
-                  d={arc.d}
-                  fill="none"
-                  stroke={colour}
-                  strokeOpacity={isActive ? 0.55 : 0.15}
-                  strokeWidth={1.5}
-                  strokeDasharray={isActive ? undefined : "4 4"}
-                  markerEnd={isActive ? `url(#arrow-${arc.domain})` : undefined}
-                />
-                {isActive && (
-                  <ParticleOnPath pathD={arc.d} colour={colour} period={arc.speed} t={t} />
-                )}
-              </g>
-            );
-          })}
-
-          {/* Feedback loop label */}
-          <text x={420} y={425} textAnchor="middle" className="fill-muted-foreground text-[10px] italic">
-            Negative feedback: changes in MAP modulate sensor firing
-          </text>
-
-          {/* Arrow markers per domain */}
-          <defs>
-            {(["input", "neural", "neurohormonal", "renal"] as const).map((d) => (
-              <marker
-                key={d}
-                id={`arrow-${d}`}
-                viewBox="0 0 10 10"
-                refX={9}
-                refY={5}
-                markerWidth={6}
-                markerHeight={6}
-                orient="auto-start-reverse"
-              >
-                <path d="M 0 0 L 10 5 L 0 10 Z" fill={DOMAIN_COLOR[d]} />
-              </marker>
-            ))}
-          </defs>
-        </svg>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
-        <div className="p-3 rounded-md border border-border bg-physiology/5">
-          <p className="font-semibold text-foreground">Neural (seconds)</p>
-          <p className="text-muted-foreground mt-1 leading-relaxed">
-            Baroreceptors → NTS → RVLM. Adjusts HR, contractility, arteriolar tone, venous capacitance beat-to-beat.
-          </p>
+    <DiagramFigure
+      id="bp-control-loop-diagram"
+      title="BP control loop"
+      description="Auto-generated wrapper for the BP control loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-medium text-muted-foreground mr-1">Perturbation:</span>
+          <PerturbationButton active={perturbation === "steady"} onClick={() => setPerturbation("steady")}>
+            Steady state
+          </PerturbationButton>
+          <PerturbationButton active={perturbation === "hypotension"} onClick={() => setPerturbation("hypotension")}>
+            ↓ MAP (haemorrhage)
+          </PerturbationButton>
+          <PerturbationButton active={perturbation === "hypertension"} onClick={() => setPerturbation("hypertension")}>
+            ↑ MAP (acute rise)
+          </PerturbationButton>
         </div>
-        <div className="p-3 rounded-md border border-border bg-pharmacology/5">
-          <p className="font-semibold text-foreground">Neurohormonal (min–h)</p>
-          <p className="text-muted-foreground mt-1 leading-relaxed">
-            Adrenal catecholamines, RAAS, vasopressin, ANP/BNP, capillary fluid shift restore filling and tone.
-          </p>
+  
+        <div className="bg-card rounded-lg border border-border overflow-hidden">
+          <svg viewBox="0 0 880 470" className="w-full h-auto" role="img" aria-label="MAP control loop diagram">
+            {/* Backdrop bands for the three time domains */}
+            <rect x={20} y={80} width={840} height={75} fill="hsl(var(--physiology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <rect x={20} y={185} width={840} height={75} fill="hsl(var(--pharmacology) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <rect x={20} y={285} width={840} height={75} fill="hsl(var(--clinical) / 0.05)" rx={6} stroke="hsl(var(--border))" strokeWidth="0.75" />
+  
+            <text x={30} y={75} className="fill-physiology text-[10px] font-semibold uppercase tracking-wide">
+              Neural — seconds
+            </text>
+            <text x={30} y={180} className="fill-pharmacology text-[10px] font-semibold uppercase tracking-wide">
+              Neurohormonal — minutes to hours
+            </text>
+            <text x={30} y={280} className="fill-clinical text-[10px] font-semibold uppercase tracking-wide">
+              Renal–volume — hours to days
+            </text>
+  
+            {/* Sensors column */}
+            <text x={100} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
+              Sensors
+            </text>
+            <Node x={40} y={90} w={130} h={42} title="Baroreceptors" sub="Carotid sinus IX · Arch X" />
+            <Node x={40} y={155} w={130} h={42} title="Chemoreceptors" sub="Carotid/aortic bodies" />
+            <Node x={40} y={220} w={130} h={42} title="Cardiopulmonary" sub="Atrial stretch" />
+  
+            {/* CNS integrator */}
+            <text x={355} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
+              CNS integrator
+            </text>
+            <Node
+              x={305}
+              y={110}
+              w={100}
+              h={100}
+              title="Medulla"
+              sub="NTS · RVLM · NA"
+              fill="hsl(var(--secondary))"
+            />
+            <text x={355} y={185} textAnchor="middle" className="fill-foreground text-[9px]">
+              ↑ vagal · ↓ sympathetic
+            </text>
+  
+            {/* Effectors column */}
+            <text x={595} y={62} textAnchor="middle" className="fill-muted-foreground text-[10px] font-semibold uppercase tracking-wide">
+              Effectors
+            </text>
+            <Node x={540} y={90} w={105} h={42} title="Heart" sub="HR · contractility (β₁/M₂)" />
+            <Node x={540} y={155} w={105} h={42} title="Vessels" sub="α₁ tone · venous return" />
+            <Node x={540} y={220} w={105} h={42} title="Adrenal medulla" sub="Adr / NAdr · ADH" />
+            <Node x={540} y={285} w={105} h={42} title="Kidney" sub="RAAS · pressure-natriuresis" />
+  
+            {/* MAP output */}
+            <Node
+              x={685}
+              y={265}
+              w={130}
+              h={75}
+              title={`MAP ≈ ${mapValue} mmHg`}
+              sub="MAP = CO × SVR"
+              fill="hsl(var(--primary) / 0.12)"
+              stroke="hsl(var(--primary))"
+            />
+            <text x={750} y={358} textAnchor="middle" className="fill-muted-foreground text-[9px]">
+              CO = HR × SV
+            </text>
+  
+            {/* Arcs */}
+            {ARCS.map((arc) => {
+              const isActive = arc.active.includes(perturbation);
+              const colour = DOMAIN_COLOR[arc.domain];
+              return (
+                <g key={arc.id}>
+                  <path
+                    d={arc.d}
+                    fill="none"
+                    stroke={colour}
+                    strokeOpacity={isActive ? 0.55 : 0.15}
+                    strokeWidth={1.5}
+                    strokeDasharray={isActive ? undefined : "4 4"}
+                    markerEnd={isActive ? `url(#arrow-${arc.domain})` : undefined}
+                  />
+                  {isActive && (
+                    <ParticleOnPath pathD={arc.d} colour={colour} period={arc.speed} t={t} />
+                  )}
+                </g>
+              );
+            })}
+  
+            {/* Feedback loop label */}
+            <text x={420} y={425} textAnchor="middle" className="fill-muted-foreground text-[10px] italic">
+              Negative feedback: changes in MAP modulate sensor firing
+            </text>
+  
+            {/* Arrow markers per domain */}
+            <defs>
+              {(["input", "neural", "neurohormonal", "renal"] as const).map((d) => (
+                <marker
+                  key={d}
+                  id={`arrow-${d}`}
+                  viewBox="0 0 10 10"
+                  refX={9}
+                  refY={5}
+                  markerWidth={6}
+                  markerHeight={6}
+                  orient="auto-start-reverse"
+                >
+                  <path d="M 0 0 L 10 5 L 0 10 Z" fill={DOMAIN_COLOR[d]} />
+                </marker>
+              ))}
+            </defs>
+          </svg>
         </div>
-        <div className="p-3 rounded-md border border-border bg-clinical/5">
-          <p className="font-semibold text-foreground">Renal–volume (h–days)</p>
-          <p className="text-muted-foreground mt-1 leading-relaxed">
-            Pressure-natriuresis sets the long-term operating point: ↑MAP → ↑Na⁺/H₂O excretion → ↓volume → ↓MAP.
-          </p>
+  
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs">
+          <div className="p-3 rounded-md border border-border bg-physiology/5">
+            <p className="font-semibold text-foreground">Neural (seconds)</p>
+            <p className="text-muted-foreground mt-1 leading-relaxed">
+              Baroreceptors → NTS → RVLM. Adjusts HR, contractility, arteriolar tone, venous capacitance beat-to-beat.
+            </p>
+          </div>
+          <div className="p-3 rounded-md border border-border bg-pharmacology/5">
+            <p className="font-semibold text-foreground">Neurohormonal (min–h)</p>
+            <p className="text-muted-foreground mt-1 leading-relaxed">
+              Adrenal catecholamines, RAAS, vasopressin, ANP/BNP, capillary fluid shift restore filling and tone.
+            </p>
+          </div>
+          <div className="p-3 rounded-md border border-border bg-clinical/5">
+            <p className="font-semibold text-foreground">Renal–volume (h–days)</p>
+            <p className="text-muted-foreground mt-1 leading-relaxed">
+              Pressure-natriuresis sets the long-term operating point: ↑MAP → ↑Na⁺/H₂O excretion → ↓volume → ↓MAP.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

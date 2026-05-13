@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface EffectGroup {
   id: string;
@@ -134,101 +135,107 @@ export const CorticosteroidPharmacodynamicsDiagram = () => {
   const active = groups.find((g) => g.id === selected) ?? groups[0];
 
   return (
-        <div className="rounded-lg border border-border bg-card p-4 md:p-6 space-y-6">
-      <div className="space-y-1">
-        <h3 className="font-serif text-lg font-bold text-foreground">
-          Corticosteroid Pharmacodynamics
-        </h3>
-        <p className="text-xs text-muted-foreground">
-          Tap a system to explore the downstream effects. Most actions are mediated by the
-          cytoplasmic glucocorticoid receptor (GR) altering gene transcription; a small subset
-          is non-genomic.
-        </p>
-      </div>
-
-      {/* Mechanism strip */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-2 text-[11px] md:text-xs">
-        {[
-          { t: "Lipophilic steroid", s: "Diffuses across membrane" },
-          { t: "Binds cytoplasmic GR", s: "HSP90 dissociates" },
-          { t: "Nuclear translocation", s: "GR dimer enters nucleus" },
-          { t: "Transactivation", s: "↑ anti-inflammatory & metabolic genes (lipocortin, PEPCK, β₂-R)" },
-          { t: "Transrepression", s: "↓ NF-κB, AP-1 → ↓ cytokines, COX-2, iNOS" },
-        ].map((step, i) => (
-          <div
-            key={step.t}
-            className="relative rounded-md border border-border bg-background/60 px-3 py-2"
-          >
-            <div className="absolute -top-2 left-2 rounded-full bg-pharmacology px-1.5 text-[10px] font-bold text-pharmacology-foreground">
-              {i + 1}
-            </div>
-            <div className="font-semibold text-foreground leading-tight">{step.t}</div>
-            <div className="text-muted-foreground leading-snug mt-0.5">{step.s}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* System selector grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        {groups.map((g) => {
-          const isActive = g.id === selected;
-          return (
-                <button
-              key={g.id}
-              onClick={() => setSelected(g.id)}
-              className={`text-left rounded-md border px-3 py-2 transition-all ${
-                isActive
-                  ? "border-pharmacology bg-pharmacology/10 shadow-sm"
-                  : "border-border bg-background/60 hover:border-pharmacology/40"
-              }`}
-              style={isActive ? { borderColor: g.color } : undefined}
-            >
-              <div className="flex items-center gap-1.5 mb-1">
-                <span
-                  className="h-2 w-2 rounded-full shrink-0"
-                  style={{ backgroundColor: g.color }}
-                />
-                <span className="text-xs font-semibold text-foreground leading-tight">
-                  {g.system}
-                </span>
-              </div>
-              <div className="text-[11px] text-muted-foreground leading-snug">{g.short}</div>
-            </button>
-  );
-        })}
-      </div>
-
-      {/* Detail panel */}
-      <div
-        className="rounded-md border bg-background/60 p-4"
-        style={{ borderColor: active.color }}
-      >
-        <div className="flex flex-wrap items-center gap-2 mb-3">
-          <span
-            className="h-3 w-3 rounded-full"
-            style={{ backgroundColor: active.color }}
-          />
-          <h4 className="font-semibold text-foreground">{active.system} effects</h4>
-          <span
-            className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold text-white"
-            style={{ backgroundColor: pathwayBadge(active.pathway).color }}
-          >
-            {pathwayBadge(active.pathway).label}
-          </span>
+    <DiagramFigure
+      id="corticosteroid-pharmacodynamics-diagram"
+      title="Corticosteroid pharmacodynamics"
+      description="Auto-generated wrapper for the Corticosteroid pharmacodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-lg border border-border bg-card p-4 md:p-6 space-y-6">
+        <div className="space-y-1">
+          <h3 className="font-serif text-lg font-bold text-foreground">
+            Corticosteroid Pharmacodynamics
+          </h3>
+          <p className="text-xs text-muted-foreground">
+            Tap a system to explore the downstream effects. Most actions are mediated by the
+            cytoplasmic glucocorticoid receptor (GR) altering gene transcription; a small subset
+            is non-genomic.
+          </p>
         </div>
-        <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
-          {active.details.map((d, i) => (
-            <li key={i}>{d}</li>
+  
+        {/* Mechanism strip */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-2 text-[11px] md:text-xs">
+          {[
+            { t: "Lipophilic steroid", s: "Diffuses across membrane" },
+            { t: "Binds cytoplasmic GR", s: "HSP90 dissociates" },
+            { t: "Nuclear translocation", s: "GR dimer enters nucleus" },
+            { t: "Transactivation", s: "↑ anti-inflammatory & metabolic genes (lipocortin, PEPCK, β₂-R)" },
+            { t: "Transrepression", s: "↓ NF-κB, AP-1 → ↓ cytokines, COX-2, iNOS" },
+          ].map((step, i) => (
+            <div
+              key={step.t}
+              className="relative rounded-md border border-border bg-background/60 px-3 py-2"
+            >
+              <div className="absolute -top-2 left-2 rounded-full bg-pharmacology px-1.5 text-[10px] font-bold text-pharmacology-foreground">
+                {i + 1}
+              </div>
+              <div className="font-semibold text-foreground leading-tight">{step.t}</div>
+              <div className="text-muted-foreground leading-snug mt-0.5">{step.s}</div>
+            </div>
           ))}
-        </ul>
+        </div>
+  
+        {/* System selector grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {groups.map((g) => {
+            const isActive = g.id === selected;
+            return (
+                  <button
+                key={g.id}
+                onClick={() => setSelected(g.id)}
+                className={`text-left rounded-md border px-3 py-2 transition-all ${
+                  isActive
+                    ? "border-pharmacology bg-pharmacology/10 shadow-sm"
+                    : "border-border bg-background/60 hover:border-pharmacology/40"
+                }`}
+                style={isActive ? { borderColor: g.color } : undefined}
+              >
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span
+                    className="h-2 w-2 rounded-full shrink-0"
+                    style={{ backgroundColor: g.color }}
+                  />
+                  <span className="text-xs font-semibold text-foreground leading-tight">
+                    {g.system}
+                  </span>
+                </div>
+                <div className="text-[11px] text-muted-foreground leading-snug">{g.short}</div>
+              </button>
+    );
+          })}
+        </div>
+  
+        {/* Detail panel */}
+        <div
+          className="rounded-md border bg-background/60 p-4"
+          style={{ borderColor: active.color }}
+        >
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span
+              className="h-3 w-3 rounded-full"
+              style={{ backgroundColor: active.color }}
+            />
+            <h4 className="font-semibold text-foreground">{active.system} effects</h4>
+            <span
+              className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold text-white"
+              style={{ backgroundColor: pathwayBadge(active.pathway).color }}
+            >
+              {pathwayBadge(active.pathway).label}
+            </span>
+          </div>
+          <ul className="space-y-1.5 text-sm text-muted-foreground list-disc list-inside leading-relaxed">
+            {active.details.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}
+          </ul>
+        </div>
+  
+        <div className="text-[11px] text-muted-foreground italic border-t border-border pt-3">
+          Therapeutic effects are largely <strong>transrepressive</strong>; many side effects are{" "}
+          <strong>transactivation</strong>-mediated — the rationale behind selective GR agonists
+          (SEGRAs) under investigation.
+        </div>
       </div>
-
-      <div className="text-[11px] text-muted-foreground italic border-t border-border pt-3">
-        Therapeutic effects are largely <strong>transrepressive</strong>; many side effects are{" "}
-        <strong>transactivation</strong>-mediated — the rationale behind selective GR agonists
-        (SEGRAs) under investigation.
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

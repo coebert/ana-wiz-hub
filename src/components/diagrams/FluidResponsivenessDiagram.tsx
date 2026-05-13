@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const FluidResponsivenessDiagram = () => {
   const [selectedPredictor, setSelectedPredictor] = useState<string | null>(null);
@@ -143,162 +144,168 @@ const FluidResponsivenessDiagram = () => {
   };
 
   return (
-        <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Fluid Responsiveness & Haemodynamic Monitoring</h3>
-      <p className="text-sm text-muted-foreground mb-4">Dynamic predictors, passive leg raise, and fluid challenge interpretation</p>
-
-      <Tabs defaultValue="dynamic" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="dynamic" className="text-xs">Dynamic Tests</TabsTrigger>
-          <TabsTrigger value="compare" className="text-xs">Static vs Dynamic</TabsTrigger>
-          <TabsTrigger value="challenge" className="text-xs">Fluid Challenge</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="dynamic">
-          <div className="grid grid-cols-2 gap-2 mb-3">
-            {dynamicPredictors.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => setSelectedDynamic(selectedDynamic === p.id ? null : p.id)}
-                className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedDynamic === p.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <span className="font-bold text-foreground">{p.name}</span>
-                <p className="text-muted-foreground mt-0.5">{p.threshold}</p>
-              </button>
-            ))}
-          </div>
-
-          {selectedDynamic && (() => {
-            const p = dynamicPredictors.find((x) => x.id === selectedDynamic)!;
-            return (
-                  <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-3">{p.svg}</div>
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                  <p className="font-bold text-foreground text-sm">{p.name}</p>
-                  <p className="text-xs text-primary font-semibold mt-1">{p.threshold}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{p.mechanism}</p>
-                  <div className="grid gap-2 mt-2 text-xs">
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Requirements: </span>
-                      <span className="text-muted-foreground">{p.requirements}</span>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Limitations: </span>
-                      <span className="text-muted-foreground">{p.limitations}</span>
-                    </div>
-                    <div className="p-2 rounded bg-background border border-border">
-                      <span className="font-semibold text-foreground">Evidence: </span>
-                      <span className="text-muted-foreground">{p.evidence}</span>
+    <DiagramFigure
+      id="fluid-responsiveness-diagram"
+      title="Fluid responsiveness"
+      description="Auto-generated wrapper for the Fluid responsiveness anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Fluid Responsiveness & Haemodynamic Monitoring</h3>
+        <p className="text-sm text-muted-foreground mb-4">Dynamic predictors, passive leg raise, and fluid challenge interpretation</p>
+  
+        <Tabs defaultValue="dynamic" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="dynamic" className="text-xs">Dynamic Tests</TabsTrigger>
+            <TabsTrigger value="compare" className="text-xs">Static vs Dynamic</TabsTrigger>
+            <TabsTrigger value="challenge" className="text-xs">Fluid Challenge</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="dynamic">
+            <div className="grid grid-cols-2 gap-2 mb-3">
+              {dynamicPredictors.map((p) => (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedDynamic(selectedDynamic === p.id ? null : p.id)}
+                  className={`p-2 rounded-lg border text-left transition-all text-xs ${selectedDynamic === p.id ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <span className="font-bold text-foreground">{p.name}</span>
+                  <p className="text-muted-foreground mt-0.5">{p.threshold}</p>
+                </button>
+              ))}
+            </div>
+  
+            {selectedDynamic && (() => {
+              const p = dynamicPredictors.find((x) => x.id === selectedDynamic)!;
+              return (
+                    <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-3">{p.svg}</div>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                    <p className="font-bold text-foreground text-sm">{p.name}</p>
+                    <p className="text-xs text-primary font-semibold mt-1">{p.threshold}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{p.mechanism}</p>
+                    <div className="grid gap-2 mt-2 text-xs">
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Requirements: </span>
+                        <span className="text-muted-foreground">{p.requirements}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Limitations: </span>
+                        <span className="text-muted-foreground">{p.limitations}</span>
+                      </div>
+                      <div className="p-2 rounded bg-background border border-border">
+                        <span className="font-semibold text-foreground">Evidence: </span>
+                        <span className="text-muted-foreground">{p.evidence}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+    );
+            })()}
+  
+            {!selectedDynamic && (
+              <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">Frank-Starling principle: </strong>
+                Fluid responsiveness means the patient is on the steep part of the Starling curve — ↑preload will ↑SV. On the flat part, fluid causes harm (oedema) without benefit. ~50% of ICU patients are NOT fluid responsive. Tap a test above.
               </div>
-  );
-          })()}
-
-          {!selectedDynamic && (
-            <div className="p-3 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">Frank-Starling principle: </strong>
-              Fluid responsiveness means the patient is on the steep part of the Starling curve — ↑preload will ↑SV. On the flat part, fluid causes harm (oedema) without benefit. ~50% of ICU patients are NOT fluid responsive. Tap a test above.
-            </div>
-          )}
-        </TabsContent>
-
-        <TabsContent value="compare">
-          <p className="text-xs text-muted-foreground mb-3">Static parameters (CVP, PAOP) cannot reliably predict fluid responsiveness</p>
-          <div className="space-y-1.5">
-            {staticVsDynamic.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedPredictor(selectedPredictor === s.parameter ? null : s.parameter)}
-                className={`w-full p-2.5 rounded-lg border text-left transition-all text-xs ${selectedPredictor === s.parameter ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-foreground">{s.parameter}</span>
-                  <div className="flex gap-2">
-                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${s.type === "Dynamic" ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground"}`}>
-                      {s.type}
-                    </span>
-                    <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
-                      s.predicts === "Excellent" ? "bg-green-500/15 text-green-600" :
-                      s.predicts === "Good" ? "bg-blue-500/15 text-blue-600" :
-                      s.predicts === "Moderate" ? "bg-yellow-500/15 text-yellow-600" :
-                      "bg-red-500/15 text-red-600"
-                    }`}>
-                      {s.predicts}
-                    </span>
+            )}
+          </TabsContent>
+  
+          <TabsContent value="compare">
+            <p className="text-xs text-muted-foreground mb-3">Static parameters (CVP, PAOP) cannot reliably predict fluid responsiveness</p>
+            <div className="space-y-1.5">
+              {staticVsDynamic.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedPredictor(selectedPredictor === s.parameter ? null : s.parameter)}
+                  className={`w-full p-2.5 rounded-lg border text-left transition-all text-xs ${selectedPredictor === s.parameter ? "border-primary bg-primary/10 ring-1 ring-primary" : "border-border hover:border-primary/50"}`}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-foreground">{s.parameter}</span>
+                    <div className="flex gap-2">
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${s.type === "Dynamic" ? "bg-primary/15 text-primary" : "bg-muted text-muted-foreground"}`}>
+                        {s.type}
+                      </span>
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
+                        s.predicts === "Excellent" ? "bg-green-500/15 text-green-600" :
+                        s.predicts === "Good" ? "bg-blue-500/15 text-blue-600" :
+                        s.predicts === "Moderate" ? "bg-yellow-500/15 text-yellow-600" :
+                        "bg-red-500/15 text-red-600"
+                      }`}>
+                        {s.predicts}
+                      </span>
+                    </div>
                   </div>
+                  {selectedPredictor === s.parameter && (
+                    <p className="text-muted-foreground mt-1.5 animate-fade-in">{s.notes}</p>
+                  )}
+                </button>
+              ))}
+            </div>
+  
+            <div className="mt-3 p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">⚠ CVP myth: </strong>
+              Marik & Cavallazzi (2013): CVP cannot predict fluid responsiveness (AUC 0.56). A CVP of 2 or 12 gives no useful information about whether fluids will increase CO. Stop using CVP to guide fluid therapy.
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="challenge">
+            <div className="space-y-3">
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-bold text-foreground text-sm">Traditional Fluid Challenge</p>
+                <div className="grid grid-cols-2 gap-2 mt-2 text-xs">
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Volume:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.volume}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rate:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.time}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Target:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.target}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rule:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.monitor}</span></div>
                 </div>
-                {selectedPredictor === s.parameter && (
-                  <p className="text-muted-foreground mt-1.5 animate-fade-in">{s.notes}</p>
-                )}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-3 p-2 rounded bg-destructive/5 border border-destructive/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">⚠ CVP myth: </strong>
-            Marik & Cavallazzi (2013): CVP cannot predict fluid responsiveness (AUC 0.56). A CVP of 2 or 12 gives no useful information about whether fluids will increase CO. Stop using CVP to guide fluid therapy.
-          </div>
-        </TabsContent>
-
-        <TabsContent value="challenge">
-          <div className="space-y-3">
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-bold text-foreground text-sm">Traditional Fluid Challenge</p>
-              <div className="grid grid-cols-2 gap-2 mt-2 text-xs">
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Volume:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.volume}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rate:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.time}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Target:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.target}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rule:</span> <span className="font-semibold text-foreground">{fluidChallenge.traditional.monitor}</span></div>
+              </div>
+  
+              <div className="p-3 rounded-lg border border-border">
+                <p className="font-bold text-foreground text-sm">Mini Fluid Challenge</p>
+                <div className="grid grid-cols-2 gap-2 mt-2 text-xs">
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Volume:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.volume}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rate:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.time}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Target:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.target}</span></div>
+                  <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Note:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.monitor}</span></div>
+                </div>
+              </div>
+  
+              {/* Frank-Starling SVG */}
+              <div className="bg-background rounded-lg border border-border p-3">
+                <svg viewBox="0 0 400 170" className="w-full h-auto">
+                  <line x1="50" y1="140" x2="380" y2="140" stroke="hsl(var(--border))" strokeWidth="1" />
+                  <line x1="50" y1="15" x2="50" y2="140" stroke="hsl(var(--border))" strokeWidth="1" />
+                  <text x="215" y="160" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Preload →</text>
+                  <text x="15" y="78" textAnchor="middle" className="fill-muted-foreground" fontSize="9" transform="rotate(-90,15,78)">Stroke Volume →</text>
+                  {/* Starling curve */}
+                  <path d="M 55,135 Q 120,80 180,45 Q 250,20 350,18" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
+                  {/* Steep part */}
+                  <circle cx="110" cy="95" r="6" fill="hsl(142,60%,45%)" opacity="0.4" />
+                  <text x="110" y="115" fontSize="8" fill="hsl(142,60%,45%)" fontWeight="600" textAnchor="middle">Responsive</text>
+                  <text x="110" y="125" fontSize="7" fill="hsl(142,60%,45%)" textAnchor="middle">(steep curve)</text>
+                  {/* Flat part */}
+                  <circle cx="300" cy="20" r="6" fill="hsl(0,70%,55%)" opacity="0.4" />
+                  <text x="300" y="40" fontSize="8" fill="hsl(0,70%,55%)" fontWeight="600" textAnchor="middle">Not responsive</text>
+                  <text x="300" y="50" fontSize="7" fill="hsl(0,70%,55%)" textAnchor="middle">(flat plateau)</text>
+                  {/* Arrows */}
+                  <path d="M 95,100 L 125,85" fill="none" stroke="hsl(142,60%,45%)" strokeWidth="1.5" markerEnd="url(#arrowG)" />
+                  <defs><marker id="arrowG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(142,60%,45%)" /></marker></defs>
+                  <text x="130" y="80" fontSize="7" fill="hsl(142,60%,45%)">↑SV</text>
+                  <path d="M 285,22 L 315,20" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="1.5" markerEnd="url(#arrowR)" />
+                  <defs><marker id="arrowR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(0,70%,55%)" /></marker></defs>
+                  <text x="330" y="15" fontSize="7" fill="hsl(0,70%,55%)">No ↑SV, ↑oedema</text>
+                </svg>
+              </div>
+  
+              <div className="p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+                <strong className="text-foreground">CLASSIC trial approach: </strong>
+                Restrict fluids in septic shock after initial resuscitation. After first bolus, use dynamic assessment before each subsequent fluid bolus. Four signs of fluid intolerance: ↑CVP, ↑EVLW, ↑lactate despite fluids, ↓PaO₂/FiO₂.
               </div>
             </div>
-
-            <div className="p-3 rounded-lg border border-border">
-              <p className="font-bold text-foreground text-sm">Mini Fluid Challenge</p>
-              <div className="grid grid-cols-2 gap-2 mt-2 text-xs">
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Volume:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.volume}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Rate:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.time}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Target:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.target}</span></div>
-                <div className="p-2 rounded bg-muted/50"><span className="text-muted-foreground">Note:</span> <span className="font-semibold text-foreground">{fluidChallenge.mini.monitor}</span></div>
-              </div>
-            </div>
-
-            {/* Frank-Starling SVG */}
-            <div className="bg-background rounded-lg border border-border p-3">
-              <svg viewBox="0 0 400 170" className="w-full h-auto">
-                <line x1="50" y1="140" x2="380" y2="140" stroke="hsl(var(--border))" strokeWidth="1" />
-                <line x1="50" y1="15" x2="50" y2="140" stroke="hsl(var(--border))" strokeWidth="1" />
-                <text x="215" y="160" textAnchor="middle" className="fill-muted-foreground" fontSize="9">Preload →</text>
-                <text x="15" y="78" textAnchor="middle" className="fill-muted-foreground" fontSize="9" transform="rotate(-90,15,78)">Stroke Volume →</text>
-                {/* Starling curve */}
-                <path d="M 55,135 Q 120,80 180,45 Q 250,20 350,18" fill="none" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" />
-                {/* Steep part */}
-                <circle cx="110" cy="95" r="6" fill="hsl(142,60%,45%)" opacity="0.4" />
-                <text x="110" y="115" fontSize="8" fill="hsl(142,60%,45%)" fontWeight="600" textAnchor="middle">Responsive</text>
-                <text x="110" y="125" fontSize="7" fill="hsl(142,60%,45%)" textAnchor="middle">(steep curve)</text>
-                {/* Flat part */}
-                <circle cx="300" cy="20" r="6" fill="hsl(0,70%,55%)" opacity="0.4" />
-                <text x="300" y="40" fontSize="8" fill="hsl(0,70%,55%)" fontWeight="600" textAnchor="middle">Not responsive</text>
-                <text x="300" y="50" fontSize="7" fill="hsl(0,70%,55%)" textAnchor="middle">(flat plateau)</text>
-                {/* Arrows */}
-                <path d="M 95,100 L 125,85" fill="none" stroke="hsl(142,60%,45%)" strokeWidth="1.5" markerEnd="url(#arrowG)" />
-                <defs><marker id="arrowG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(142,60%,45%)" /></marker></defs>
-                <text x="130" y="80" fontSize="7" fill="hsl(142,60%,45%)">↑SV</text>
-                <path d="M 285,22 L 315,20" fill="none" stroke="hsl(0,70%,55%)" strokeWidth="1.5" markerEnd="url(#arrowR)" />
-                <defs><marker id="arrowR" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="hsl(0,70%,55%)" /></marker></defs>
-                <text x="330" y="15" fontSize="7" fill="hsl(0,70%,55%)">No ↑SV, ↑oedema</text>
-              </svg>
-            </div>
-
-            <div className="p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-              <strong className="text-foreground">CLASSIC trial approach: </strong>
-              Restrict fluids in septic shock after initial resuscitation. After first bolus, use dynamic assessment before each subsequent fluid bolus. Four signs of fluid intolerance: ↑CVP, ↑EVLW, ↑lactate despite fluids, ↓PaO₂/FiO₂.
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

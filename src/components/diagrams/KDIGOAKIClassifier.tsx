@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Stage = 0 | 1 | 2 | 3;
 
@@ -126,92 +127,98 @@ export const KDIGOAKIClassifier = () => {
   };
 
   return (
-            <div className="space-y-6">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="baseline-cr">Baseline creatinine (µmol/L)</Label>
-          <Input
-            id="baseline-cr"
-            type="number"
-            inputMode="decimal"
-            value={baselineCr}
-            onChange={(e) => setBaselineCr(e.target.value)}
-            placeholder="e.g. 80"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="current-cr">Current creatinine (µmol/L)</Label>
-          <Input
-            id="current-cr"
-            type="number"
-            inputMode="decimal"
-            value={currentCr}
-            onChange={(e) => setCurrentCr(e.target.value)}
-            placeholder="e.g. 150"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="uo">Urine output (ml/kg/hr)</Label>
-          <Input
-            id="uo"
-            type="number"
-            inputMode="decimal"
-            step="0.1"
-            value={uo}
-            onChange={(e) => setUo(e.target.value)}
-            placeholder="e.g. 0.4"
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="duration">Duration of oliguria (hours)</Label>
-          <Input
-            id="duration"
-            type="number"
-            inputMode="decimal"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-            placeholder="e.g. 8"
-          />
-        </div>
-      </div>
-
-      <label className="flex items-center gap-2 text-sm text-foreground/90 cursor-pointer">
-        <input
-          type="checkbox"
-          checked={onRRT}
-          onChange={(e) => setOnRRT(e.target.checked)}
-          className="h-4 w-4 rounded border-border accent-primary"
-        />
-        Patient initiated on renal replacement therapy (auto-stage 3)
-      </label>
-
-      <div className="flex gap-2">
-        <Button onClick={() => setSubmitted(true)}>Classify</Button>
-        <Button variant="outline" onClick={reset}>Reset</Button>
-      </div>
-
-      {submitted && (
-        <div className={cn("rounded-xl border p-5 space-y-3", result.band)}>
-          <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <h3 className="text-xl font-serif font-bold">{result.label}</h3>
-            <span className="text-sm font-medium opacity-90">{result.mortality}</span>
+    <DiagramFigure
+      id="kdigoaki-classifier"
+      title="KDIGOAKI classifier"
+      description="Auto-generated wrapper for the KDIGOAKI classifier anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-6">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label htmlFor="baseline-cr">Baseline creatinine (µmol/L)</Label>
+            <Input
+              id="baseline-cr"
+              type="number"
+              inputMode="decimal"
+              value={baselineCr}
+              onChange={(e) => setBaselineCr(e.target.value)}
+              placeholder="e.g. 80"
+            />
           </div>
-          <div className="text-sm space-y-1 text-foreground/90">
-            <p><strong>Creatinine criterion:</strong> {result.creatReason}</p>
-            <p><strong>Urine output criterion:</strong> {result.uoReason}</p>
-            {onRRT && <p><strong>RRT:</strong> Patient on renal replacement therapy → Stage 3</p>}
+          <div className="space-y-2">
+            <Label htmlFor="current-cr">Current creatinine (µmol/L)</Label>
+            <Input
+              id="current-cr"
+              type="number"
+              inputMode="decimal"
+              value={currentCr}
+              onChange={(e) => setCurrentCr(e.target.value)}
+              placeholder="e.g. 150"
+            />
           </div>
-          <p className="text-sm text-foreground/90 leading-relaxed border-t border-current/20 pt-3">
-            <strong>Management:</strong> {result.advice}
-          </p>
+          <div className="space-y-2">
+            <Label htmlFor="uo">Urine output (ml/kg/hr)</Label>
+            <Input
+              id="uo"
+              type="number"
+              inputMode="decimal"
+              step="0.1"
+              value={uo}
+              onChange={(e) => setUo(e.target.value)}
+              placeholder="e.g. 0.4"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="duration">Duration of oliguria (hours)</Label>
+            <Input
+              id="duration"
+              type="number"
+              inputMode="decimal"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              placeholder="e.g. 8"
+            />
+          </div>
         </div>
-      )}
-
-      <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
-        <p className="font-semibold text-foreground">KDIGO 2012 AKI definition</p>
-        <p>AKI is diagnosed by <strong>any</strong> of: ↑ Cr ≥26.5 µmol/L within 48 h, ↑ Cr ≥1.5× baseline within 7 days, or UO &lt;0.5 ml/kg/hr for ≥6 h.</p>
-        <p>The <strong>highest</strong> stage from creatinine or urine output criteria is used. Conversion: 1 mg/dL ≈ 88.4 µmol/L.</p>
+  
+        <label className="flex items-center gap-2 text-sm text-foreground/90 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={onRRT}
+            onChange={(e) => setOnRRT(e.target.checked)}
+            className="h-4 w-4 rounded border-border accent-primary"
+          />
+          Patient initiated on renal replacement therapy (auto-stage 3)
+        </label>
+  
+        <div className="flex gap-2">
+          <Button onClick={() => setSubmitted(true)}>Classify</Button>
+          <Button variant="outline" onClick={reset}>Reset</Button>
+        </div>
+  
+        {submitted && (
+          <div className={cn("rounded-xl border p-5 space-y-3", result.band)}>
+            <div className="flex items-baseline justify-between gap-3 flex-wrap">
+              <h3 className="text-xl font-serif font-bold">{result.label}</h3>
+              <span className="text-sm font-medium opacity-90">{result.mortality}</span>
+            </div>
+            <div className="text-sm space-y-1 text-foreground/90">
+              <p><strong>Creatinine criterion:</strong> {result.creatReason}</p>
+              <p><strong>Urine output criterion:</strong> {result.uoReason}</p>
+              {onRRT && <p><strong>RRT:</strong> Patient on renal replacement therapy → Stage 3</p>}
+            </div>
+            <p className="text-sm text-foreground/90 leading-relaxed border-t border-current/20 pt-3">
+              <strong>Management:</strong> {result.advice}
+            </p>
+          </div>
+        )}
+  
+        <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
+          <p className="font-semibold text-foreground">KDIGO 2012 AKI definition</p>
+          <p>AKI is diagnosed by <strong>any</strong> of: ↑ Cr ≥26.5 µmol/L within 48 h, ↑ Cr ≥1.5× baseline within 7 days, or UO &lt;0.5 ml/kg/hr for ≥6 h.</p>
+          <p>The <strong>highest</strong> stage from creatinine or urine output criteria is used. Conversion: 1 mg/dL ≈ 88.4 µmol/L.</p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TypeKey = "I" | "II" | "III" | "IV";
 
@@ -191,96 +192,102 @@ export const HypersensitivityComparisonDiagram = () => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
-      {/* Type selector */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-3 bg-secondary/30 border-b border-border">
-        {TYPES.map(t => {
-          const isActive = t.key === selected;
-          return (
-            <button
-              key={t.key}
-              type="button"
-              onClick={() => setSelected(t.key)}
-              aria-pressed={isActive}
-              className="px-3 py-2 rounded-lg border-2 text-left transition-all"
-              style={{
-                borderColor: isActive ? t.color : "hsl(var(--border))",
-                backgroundColor: isActive ? withAlpha(t.color, 0.1) : "transparent",
-              }}
-            >
-              <div className="text-xs font-bold" style={{ color: isActive ? t.color : "hsl(var(--foreground))" }}>
-                {t.shortName}
-              </div>
-              <div className="text-[10px] text-muted-foreground leading-tight mt-0.5">{t.mediator}</div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Timeline strip */}
-      <div className="px-3 py-3 border-b border-border bg-background">
-        <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
-          Time course (log scale)
-        </div>
-        <div className="relative h-8 rounded-md bg-secondary/40 overflow-hidden">
+    <DiagramFigure
+      id="hypersensitivity-comparison-diagram"
+      title="Hypersensitivity comparison"
+      description="Auto-generated wrapper for the Hypersensitivity comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card overflow-hidden">
+        {/* Type selector */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-3 bg-secondary/30 border-b border-border">
           {TYPES.map(t => {
-            const left = logScale(t.timingBand.startHr) * 100;
-            const right = logScale(t.timingBand.endHr) * 100;
-            const peak = logScale(t.timingBand.peakHr) * 100;
             const isActive = t.key === selected;
             return (
-                  <div
+              <button
                 key={t.key}
-                className="absolute top-0 bottom-0 transition-opacity"
+                type="button"
+                onClick={() => setSelected(t.key)}
+                aria-pressed={isActive}
+                className="px-3 py-2 rounded-lg border-2 text-left transition-all"
                 style={{
-                  left: `${left}%`,
-                  width: `${Math.max(2, right - left)}%`,
-                  backgroundColor: withAlpha(t.color, isActive ? 0.4 : 0.12),
-                  borderLeft: `2px solid ${withAlpha(t.color, isActive ? 1 : 0.3)}`,
-                  opacity: isActive ? 1 : 0.6,
+                  borderColor: isActive ? t.color : "hsl(var(--border))",
+                  backgroundColor: isActive ? withAlpha(t.color, 0.1) : "transparent",
                 }}
-                title={`${t.shortName}: ${t.timing}`}
               >
-                <div
-                  className="absolute top-0 bottom-0 w-0.5"
-                  style={{ left: `${((peak - left) / Math.max(0.5, right - left)) * 100}%`, backgroundColor: t.color }}
-                />
-              </div>
-  );
+                <div className="text-xs font-bold" style={{ color: isActive ? t.color : "hsl(var(--foreground))" }}>
+                  {t.shortName}
+                </div>
+                <div className="text-[10px] text-muted-foreground leading-tight mt-0.5">{t.mediator}</div>
+              </button>
+            );
           })}
         </div>
-        <div className="flex justify-between text-[9px] text-muted-foreground mt-1 font-mono">
-          <span>6 min</span>
-          <span>1 h</span>
-          <span>1 day</span>
-          <span>1 wk</span>
-          <span>3 wk</span>
+  
+        {/* Timeline strip */}
+        <div className="px-3 py-3 border-b border-border bg-background">
+          <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
+            Time course (log scale)
+          </div>
+          <div className="relative h-8 rounded-md bg-secondary/40 overflow-hidden">
+            {TYPES.map(t => {
+              const left = logScale(t.timingBand.startHr) * 100;
+              const right = logScale(t.timingBand.endHr) * 100;
+              const peak = logScale(t.timingBand.peakHr) * 100;
+              const isActive = t.key === selected;
+              return (
+                    <div
+                  key={t.key}
+                  className="absolute top-0 bottom-0 transition-opacity"
+                  style={{
+                    left: `${left}%`,
+                    width: `${Math.max(2, right - left)}%`,
+                    backgroundColor: withAlpha(t.color, isActive ? 0.4 : 0.12),
+                    borderLeft: `2px solid ${withAlpha(t.color, isActive ? 1 : 0.3)}`,
+                    opacity: isActive ? 1 : 0.6,
+                  }}
+                  title={`${t.shortName}: ${t.timing}`}
+                >
+                  <div
+                    className="absolute top-0 bottom-0 w-0.5"
+                    style={{ left: `${((peak - left) / Math.max(0.5, right - left)) * 100}%`, backgroundColor: t.color }}
+                  />
+                </div>
+    );
+            })}
+          </div>
+          <div className="flex justify-between text-[9px] text-muted-foreground mt-1 font-mono">
+            <span>6 min</span>
+            <span>1 h</span>
+            <span>1 day</span>
+            <span>1 wk</span>
+            <span>3 wk</span>
+          </div>
+          <div className="text-xs mt-2" style={{ color: active.color }}>
+            <strong>{active.shortName}:</strong> {active.timing}
+          </div>
         </div>
-        <div className="text-xs mt-2" style={{ color: active.color }}>
-          <strong>{active.shortName}:</strong> {active.timing}
-        </div>
-      </div>
-
-      {/* Detail panels */}
-      <div className="p-4 space-y-3">
-        <div>
-          <h4 className="text-base font-serif font-bold mb-1" style={{ color: active.color }}>
-            {active.name}
-          </h4>
-          <p className="text-xs text-muted-foreground">Mediator: <strong className="text-foreground">{active.mediator}</strong></p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-          <DetailBlock title="Mechanism" items={active.mechanism} color={active.color} mono />
-          <DetailBlock title="Classic Examples" items={active.examples} color={active.color} />
-          <DetailBlock title="Anaesthetic Relevance" items={active.anaesthetic} color={active.color} highlight />
-          <div className="space-y-3">
-            <DetailBlock title="Diagnosis" items={active.diagnosis} color={active.color} />
-            <DetailBlock title="Management" items={active.management} color={active.color} />
+  
+        {/* Detail panels */}
+        <div className="p-4 space-y-3">
+          <div>
+            <h4 className="text-base font-serif font-bold mb-1" style={{ color: active.color }}>
+              {active.name}
+            </h4>
+            <p className="text-xs text-muted-foreground">Mediator: <strong className="text-foreground">{active.mediator}</strong></p>
+          </div>
+  
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+            <DetailBlock title="Mechanism" items={active.mechanism} color={active.color} mono />
+            <DetailBlock title="Classic Examples" items={active.examples} color={active.color} />
+            <DetailBlock title="Anaesthetic Relevance" items={active.anaesthetic} color={active.color} highlight />
+            <div className="space-y-3">
+              <DetailBlock title="Diagnosis" items={active.diagnosis} color={active.color} />
+              <DetailBlock title="Management" items={active.management} color={active.color} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

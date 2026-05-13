@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VesselKey = "ica-l" | "ica-r" | "aca-l" | "aca-r" | "acomm" | "mca-l" | "mca-r" | "pcomm-l" | "pcomm-r" | "pca-l" | "pca-r" | "basilar" | "vert-l" | "vert-r" | "sca-l" | "sca-r" | "aica-l" | "aica-r" | "pica-l" | "pica-r" | "ophthalmic-l" | "ophthalmic-r";
 
@@ -253,266 +254,272 @@ const CircleOfWillisDiagram = () => {
     groupFilter === "all" || vessels[key].group === groupFilter;
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Circle of Willis — Vascular Map"
-          subtitle="Tap any vessel to see territory, clinical significance, and stroke syndromes"
-          toggles={[
-            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
-            { label: "Aneurysms", active: showAneurysms, onChange: () => setShowAneurysms(s => !s) },
-            { label: "Cranial nerves", active: showCNs, onChange: () => setShowCNs(s => !s) },
-          ]}
-        />
-
-      {/* Group filter */}
-      <div className="flex flex-wrap gap-1.5 mb-3">
-        {(["all", "anterior", "posterior", "communicating", "cerebellar", "branch"] as GroupFilter[]).map(g => (
-          <Badge
-            key={g}
-            variant={groupFilter === g ? "default" : "outline"}
-            className="cursor-pointer text-xs capitalize"
-            onClick={() => setGroupFilter(g)}
-          >
-            {g === "all" ? "All Vessels" : g}
-          </Badge>
-        ))}
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-4 items-start">
-        <div className="flex-shrink-0 mx-auto">
-          <svg viewBox="20 35 320 305" width="320" height="300" className="border border-border rounded">
-            {/* Brain outline — inferior (basal) view with anatomical detail */}
-            <g opacity="0.14" stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none">
-              {/* Frontal lobes — wider anteriorly with gyral folding */}
-              <path d="M180,42 C155,42 125,48 100,62 C78,76 62,95 55,118 C48,142 50,165 58,182 C62,190 65,193 65,193" />
-              <path d="M180,42 C205,42 235,48 260,62 C282,76 298,95 305,118 C312,142 310,165 302,182 C298,190 295,193 295,193" />
-              {/* Frontal pole detail — olfactory sulcus */}
-              <path d="M160,50 C165,55 170,62 172,72" strokeDasharray="2 2" opacity="0.6" />
-              <path d="M200,50 C195,55 190,62 188,72" strokeDasharray="2 2" opacity="0.6" />
-              {/* Longitudinal fissure */}
-              <line x1="180" y1="42" x2="180" y2="92" strokeDasharray="3 3" />
-              {/* Orbital surfaces (frontal lobe gyri) */}
-              <path d="M120,70 C130,75 140,78 150,78" strokeWidth="0.5" opacity="0.4" />
-              <path d="M240,70 C230,75 220,78 210,78" strokeWidth="0.5" opacity="0.4" />
-
-              {/* Temporal lobes — curved inferiorly with uncus */}
-              <path d="M65,193 C58,205 52,222 50,240 C48,258 52,275 62,288 C72,300 88,308 110,314 C125,318 140,320 155,318" />
-              <path d="M295,193 C302,205 308,222 310,240 C312,258 308,275 298,288 C288,300 272,308 250,314 C235,318 220,320 205,318" />
-              {/* Temporal uncus (medial temporal lobe — tentorial notch) */}
-              <path d="M125,175 C118,182 112,188 110,195" strokeWidth="1" opacity="0.5" />
-              <path d="M235,175 C242,182 248,188 250,195" strokeWidth="1" opacity="0.5" />
-              <text x="100" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
-              <text x="256" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
-
-              {/* Sylvian fissures — more anatomically correct lateral sulcus */}
-              <path d="M145,148 C130,143 112,140 95,140 C82,142 72,146 65,152" strokeDasharray="2 2" strokeWidth="0.75" />
-              <path d="M215,148 C230,143 248,140 265,140 C278,142 288,146 295,152" strokeDasharray="2 2" strokeWidth="0.75" />
-
-              {/* Occipital lobes */}
-              <path d="M155,318 C165,322 175,324 180,324 C185,324 195,322 205,318" />
-              <path d="M110,314 C120,320 140,326 160,328 C175,329 185,329 200,328 C220,326 240,320 250,314" strokeDasharray="3 2" opacity="0.5" />
-
-              {/* ===== BRAINSTEM — anatomically detailed ===== */}
-              {/* Midbrain (cerebral peduncles) */}
-              <ellipse cx="180" cy="210" rx="18" ry="10" strokeWidth="1" />
-              <text x="180" y="213" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">midbrain</text>
-              {/* Pons — wider, rectangular with basilar sulcus */}
-              <path d="M160,220 L160,255 Q165,260 180,262 Q195,260 200,255 L200,220 Q195,218 180,217 Q165,218 160,220 Z" strokeWidth="1" />
-              <line x1="180" y1="220" x2="180" y2="258" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.4" />
-              <text x="180" y="242" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">pons</text>
-              {/* Medulla oblongata — tapered */}
-              <path d="M165,258 L168,285 Q175,292 180,293 Q185,292 192,285 L195,258" strokeWidth="1" />
-              {/* Pyramids */}
-              <line x1="177" y1="262" x2="177" y2="288" strokeWidth="0.5" opacity="0.4" />
-              <line x1="183" y1="262" x2="183" y2="288" strokeWidth="0.5" opacity="0.4" />
-              <text x="180" y="278" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">medulla</text>
-
-              {/* Cerebellum — more detailed inferior view */}
-              <path d="M115,250 C105,258 95,272 90,288 C86,302 88,314 98,320 C108,326 122,326 138,322 C152,318 162,312 168,305" strokeWidth="1" />
-              <path d="M245,250 C255,258 265,272 270,288 C274,302 272,314 262,320 C252,326 238,326 222,322 C208,318 198,312 192,305" strokeWidth="1" />
-              {/* Cerebellar folia (surface folds) */}
-              <path d="M100,275 C110,278 125,280 135,278" strokeWidth="0.5" opacity="0.4" />
-              <path d="M95,290 C108,294 125,296 140,294" strokeWidth="0.5" opacity="0.4" />
-              <path d="M260,275 C250,278 235,280 225,278" strokeWidth="0.5" opacity="0.4" />
-              <path d="M265,290 C252,294 235,296 220,294" strokeWidth="0.5" opacity="0.4" />
-              {/* Vermis */}
-              <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.5" opacity="0.5" />
-              <text x="180" y="318" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">vermis</text>
-
-              {/* Optic chiasm — more anatomical */}
-              <path d="M152,138 L168,148 L180,150 L192,148 L208,138" strokeWidth="2" opacity="0.7" />
-              <path d="M168,148 L180,142 L192,148" strokeWidth="1.5" opacity="0.5" />
-              <text x="180" y="136" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))">Optic chiasm</text>
-              {/* Optic nerves */}
-              <path d="M152,138 C140,128 128,118 115,112" strokeWidth="1.5" opacity="0.5" />
-              <path d="M208,138 C220,128 232,118 245,112" strokeWidth="1.5" opacity="0.5" />
-              {/* Optic tracts */}
-              <path d="M168,148 C158,158 145,168 135,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
-              <path d="M192,148 C202,158 215,168 225,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
-
-              {/* Tentorium cerebelli — dural fold */}
-              <path d="M65,200 C95,192 135,188 180,188 C225,188 265,192 295,200" strokeDasharray="5 3" opacity="0.5" strokeWidth="1" />
-              <text x="310" y="195" fontSize="4" fill="hsl(var(--muted-foreground))">Tentorium</text>
-
-              {/* Sella turcica / pituitary fossa hint */}
-              <path d="M170,155 Q175,162 180,164 Q185,162 190,155" strokeWidth="0.75" opacity="0.4" />
-              <text x="180" y="170" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">sella</text>
-
-              {/* Cranial nerve exit points */}
-              <g opacity="0.3" fill="hsl(var(--muted-foreground))">
-                <circle cx="168" cy="218" r="1.2" />
-                <text x="155" y="220" fontSize="3">CN III</text>
-                <circle cx="192" cy="218" r="1.2" />
-                <circle cx="155" cy="238" r="1.2" />
-                <text x="142" y="240" fontSize="3">CN V</text>
-                <circle cx="205" cy="238" r="1.2" />
-              </g>
-            </g>
-
-            {/* Vessel paths */}
-            {vesselOrder.map((key) => {
-              const v = vessels[key];
-              const isActive = selected === key;
-              const visible = isVisible(key);
-              if (!visible && !isActive) return null;
-              return (
-                <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-                  {v.paths.map((p, i) => (
-                    <g key={i}>
-                      <path
-                        d={p}
-                        fill="none"
-                        stroke={v.color}
-                        strokeWidth={isActive ? 4.5 : 3}
-                        strokeLinecap="round"
-                        opacity={isActive ? 1 : visible ? 0.45 : 0.1}
-                        className="transition-all duration-200"
-                      />
-                      <path d={p} fill="none" stroke="transparent" strokeWidth="3" />
-                    </g>
-                  ))}
+    <DiagramFigure
+      id="circle-of-willis-diagram"
+      title="Circle of willis"
+      description="Auto-generated wrapper for the Circle of willis anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Circle of Willis — Vascular Map"
+            subtitle="Tap any vessel to see territory, clinical significance, and stroke syndromes"
+            toggles={[
+              { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+              { label: "Aneurysms", active: showAneurysms, onChange: () => setShowAneurysms(s => !s) },
+              { label: "Cranial nerves", active: showCNs, onChange: () => setShowCNs(s => !s) },
+            ]}
+          />
+  
+        {/* Group filter */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {(["all", "anterior", "posterior", "communicating", "cerebellar", "branch"] as GroupFilter[]).map(g => (
+            <Badge
+              key={g}
+              variant={groupFilter === g ? "default" : "outline"}
+              className="cursor-pointer text-xs capitalize"
+              onClick={() => setGroupFilter(g)}
+            >
+              {g === "all" ? "All Vessels" : g}
+            </Badge>
+          ))}
+        </div>
+  
+        <div className="flex flex-col sm:flex-row gap-4 items-start">
+          <div className="flex-shrink-0 mx-auto">
+            <svg viewBox="20 35 320 305" width="320" height="300" className="border border-border rounded">
+              {/* Brain outline — inferior (basal) view with anatomical detail */}
+              <g opacity="0.14" stroke="hsl(var(--muted-foreground))" strokeWidth="1" fill="none">
+                {/* Frontal lobes — wider anteriorly with gyral folding */}
+                <path d="M180,42 C155,42 125,48 100,62 C78,76 62,95 55,118 C48,142 50,165 58,182 C62,190 65,193 65,193" />
+                <path d="M180,42 C205,42 235,48 260,62 C282,76 298,95 305,118 C312,142 310,165 302,182 C298,190 295,193 295,193" />
+                {/* Frontal pole detail — olfactory sulcus */}
+                <path d="M160,50 C165,55 170,62 172,72" strokeDasharray="2 2" opacity="0.6" />
+                <path d="M200,50 C195,55 190,62 188,72" strokeDasharray="2 2" opacity="0.6" />
+                {/* Longitudinal fissure */}
+                <line x1="180" y1="42" x2="180" y2="92" strokeDasharray="3 3" />
+                {/* Orbital surfaces (frontal lobe gyri) */}
+                <path d="M120,70 C130,75 140,78 150,78" strokeWidth="0.5" opacity="0.4" />
+                <path d="M240,70 C230,75 220,78 210,78" strokeWidth="0.5" opacity="0.4" />
+  
+                {/* Temporal lobes — curved inferiorly with uncus */}
+                <path d="M65,193 C58,205 52,222 50,240 C48,258 52,275 62,288 C72,300 88,308 110,314 C125,318 140,320 155,318" />
+                <path d="M295,193 C302,205 308,222 310,240 C312,258 308,275 298,288 C288,300 272,308 250,314 C235,318 220,320 205,318" />
+                {/* Temporal uncus (medial temporal lobe — tentorial notch) */}
+                <path d="M125,175 C118,182 112,188 110,195" strokeWidth="1" opacity="0.5" />
+                <path d="M235,175 C242,182 248,188 250,195" strokeWidth="1" opacity="0.5" />
+                <text x="100" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
+                <text x="256" y="200" fontSize="3.5" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">uncus</text>
+  
+                {/* Sylvian fissures — more anatomically correct lateral sulcus */}
+                <path d="M145,148 C130,143 112,140 95,140 C82,142 72,146 65,152" strokeDasharray="2 2" strokeWidth="0.75" />
+                <path d="M215,148 C230,143 248,140 265,140 C278,142 288,146 295,152" strokeDasharray="2 2" strokeWidth="0.75" />
+  
+                {/* Occipital lobes */}
+                <path d="M155,318 C165,322 175,324 180,324 C185,324 195,322 205,318" />
+                <path d="M110,314 C120,320 140,326 160,328 C175,329 185,329 200,328 C220,326 240,320 250,314" strokeDasharray="3 2" opacity="0.5" />
+  
+                {/* ===== BRAINSTEM — anatomically detailed ===== */}
+                {/* Midbrain (cerebral peduncles) */}
+                <ellipse cx="180" cy="210" rx="18" ry="10" strokeWidth="1" />
+                <text x="180" y="213" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">midbrain</text>
+                {/* Pons — wider, rectangular with basilar sulcus */}
+                <path d="M160,220 L160,255 Q165,260 180,262 Q195,260 200,255 L200,220 Q195,218 180,217 Q165,218 160,220 Z" strokeWidth="1" />
+                <line x1="180" y1="220" x2="180" y2="258" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.4" />
+                <text x="180" y="242" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.5">pons</text>
+                {/* Medulla oblongata — tapered */}
+                <path d="M165,258 L168,285 Q175,292 180,293 Q185,292 192,285 L195,258" strokeWidth="1" />
+                {/* Pyramids */}
+                <line x1="177" y1="262" x2="177" y2="288" strokeWidth="0.5" opacity="0.4" />
+                <line x1="183" y1="262" x2="183" y2="288" strokeWidth="0.5" opacity="0.4" />
+                <text x="180" y="278" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4">medulla</text>
+  
+                {/* Cerebellum — more detailed inferior view */}
+                <path d="M115,250 C105,258 95,272 90,288 C86,302 88,314 98,320 C108,326 122,326 138,322 C152,318 162,312 168,305" strokeWidth="1" />
+                <path d="M245,250 C255,258 265,272 270,288 C274,302 272,314 262,320 C252,326 238,326 222,322 C208,318 198,312 192,305" strokeWidth="1" />
+                {/* Cerebellar folia (surface folds) */}
+                <path d="M100,275 C110,278 125,280 135,278" strokeWidth="0.5" opacity="0.4" />
+                <path d="M95,290 C108,294 125,296 140,294" strokeWidth="0.5" opacity="0.4" />
+                <path d="M260,275 C250,278 235,280 225,278" strokeWidth="0.5" opacity="0.4" />
+                <path d="M265,290 C252,294 235,296 220,294" strokeWidth="0.5" opacity="0.4" />
+                {/* Vermis */}
+                <path d="M168,305 C174,310 180,312 186,312 C190,310 192,305" strokeWidth="0.5" opacity="0.5" />
+                <text x="180" y="318" fontSize="3.5" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.4" fontStyle="italic">vermis</text>
+  
+                {/* Optic chiasm — more anatomical */}
+                <path d="M152,138 L168,148 L180,150 L192,148 L208,138" strokeWidth="2" opacity="0.7" />
+                <path d="M168,148 L180,142 L192,148" strokeWidth="1.5" opacity="0.5" />
+                <text x="180" y="136" fontSize="4.5" textAnchor="middle" fill="hsl(var(--muted-foreground))">Optic chiasm</text>
+                {/* Optic nerves */}
+                <path d="M152,138 C140,128 128,118 115,112" strokeWidth="1.5" opacity="0.5" />
+                <path d="M208,138 C220,128 232,118 245,112" strokeWidth="1.5" opacity="0.5" />
+                {/* Optic tracts */}
+                <path d="M168,148 C158,158 145,168 135,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
+                <path d="M192,148 C202,158 215,168 225,175" strokeWidth="1" opacity="0.4" strokeDasharray="2 2" />
+  
+                {/* Tentorium cerebelli — dural fold */}
+                <path d="M65,200 C95,192 135,188 180,188 C225,188 265,192 295,200" strokeDasharray="5 3" opacity="0.5" strokeWidth="1" />
+                <text x="310" y="195" fontSize="4" fill="hsl(var(--muted-foreground))">Tentorium</text>
+  
+                {/* Sella turcica / pituitary fossa hint */}
+                <path d="M170,155 Q175,162 180,164 Q185,162 190,155" strokeWidth="0.75" opacity="0.4" />
+                <text x="180" y="170" fontSize="3" textAnchor="middle" fill="hsl(var(--muted-foreground))" opacity="0.35" fontStyle="italic">sella</text>
+  
+                {/* Cranial nerve exit points */}
+                <g opacity="0.3" fill="hsl(var(--muted-foreground))">
+                  <circle cx="168" cy="218" r="1.2" />
+                  <text x="155" y="220" fontSize="3">CN III</text>
+                  <circle cx="192" cy="218" r="1.2" />
+                  <circle cx="155" cy="238" r="1.2" />
+                  <text x="142" y="240" fontSize="3">CN V</text>
+                  <circle cx="205" cy="238" r="1.2" />
                 </g>
-              );
-            })}
-
-            {/* Basilar tip */}
-            <circle cx="180" cy="210" r="3" fill="hsl(220, 55%, 50%)" opacity="0.5" />
-
-            {/* Aneurysm markers */}
-            {showAneurysms && aneurysmSites.map((site, i) => (
-              <g key={i} className="cursor-pointer" onClick={() => setSelected(site.vessel)}>
-                <circle cx={site.x} cy={site.y} r="5" fill="none" stroke="hsl(45, 80%, 50%)" strokeWidth="1.5" opacity={selected === site.vessel ? 0.9 : 0.35} strokeDasharray="2 1" />
-                <circle cx={site.x} cy={site.y} r="1.8" fill="hsl(45, 80%, 50%)" opacity={selected === site.vessel ? 0.9 : 0.35} />
               </g>
-            ))}
-
-            {/* Cranial nerves */}
-            {showCNs && cranialNerves.map((cn, i) => (
-              <g key={i} opacity="0.6">
-                <circle cx={cn.x} cy={cn.y} r="3.5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
-                <text x={cn.x} y={cn.y + 1.5} fontSize="4.5" textAnchor="middle" fill="hsl(var(--foreground))" fontWeight="bold">{cn.label}</text>
-              </g>
-            ))}
-
-            {/* Vessel labels */}
-            {vesselOrder.map((key) => {
-              const v = vessels[key];
-              const isActive = selected === key;
-              const visible = isVisible(key);
-              if (!visible && !isActive) return null;
-              return (
-                    <text
-                  key={key + "-label"}
-                  x={v.labelPos.x}
-                  y={v.labelPos.y}
-                  fontSize="6"
-                  fill={isActive ? v.color : "hsl(var(--muted-foreground))"}
-                  fontWeight={isActive ? "bold" : "normal"}
-                  textAnchor={v.labelAnchor || "middle"}
-                  className="cursor-pointer select-none"
-                  onClick={() => setSelected(key)}
-                  opacity={isActive ? 1 : 0.6}
-                >
-                  {v.abbr}
-                </text>
-  );
-            })}
-
-            {/* Territory shading when vessel selected */}
-            {selected === "mca-l" && (
-              <path d="M55,118 C65,105 80,95 100,90 C120,85 138,88 145,95 C140,125 135,155 140,175 C120,170 90,160 65,155 C50,148 48,135 55,118 Z"
-                fill={vessels["mca-l"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
-            )}
-            {selected === "mca-r" && (
-              <path d="M305,118 C295,105 280,95 260,90 C240,85 222,88 215,95 C220,125 225,155 220,175 C240,170 270,160 295,155 C310,148 312,135 305,118 Z"
-                fill={vessels["mca-r"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
-            )}
-            {(selected === "aca-l" || selected === "aca-r") && (
-              <path d="M160,42 C168,48 175,60 178,75 C180,90 180,100 178,112 C175,100 170,88 164,78 C158,68 155,55 160,42 Z"
-                fill={vessels["aca-l"].color} fillOpacity="0.1" stroke="none" className="animate-fade-in" />
-            )}
-            {(selected === "pca-l" || selected === "pca-r") && (
-              <path d="M120,308 C140,295 160,290 180,290 C200,290 220,295 240,308 C220,318 200,322 180,322 C160,322 140,318 120,308 Z"
-                fill={vessels["pca-l"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
-            )}
-          </svg>
-
-          <div className="flex gap-1.5 mt-2 flex-wrap">
-            <button
-              onClick={() => setShowAneurysms(!showAneurysms)}
-              className={`text-xs px-2 py-1 rounded border transition-colors ${showAneurysms ? "border-amber-500/50 bg-amber-500/10 text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}
-            >
-              {showAneurysms ? "⊕" : "⊖"} Aneurysm sites
-            </button>
-            <button
-              onClick={() => setShowCNs(!showCNs)}
-              className={`text-xs px-2 py-1 rounded border transition-colors ${showCNs ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}
-            >
-              {showCNs ? "⊕" : "⊖"} Cranial nerves
-            </button>
+  
+              {/* Vessel paths */}
+              {vesselOrder.map((key) => {
+                const v = vessels[key];
+                const isActive = selected === key;
+                const visible = isVisible(key);
+                if (!visible && !isActive) return null;
+                return (
+                  <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                    {v.paths.map((p, i) => (
+                      <g key={i}>
+                        <path
+                          d={p}
+                          fill="none"
+                          stroke={v.color}
+                          strokeWidth={isActive ? 4.5 : 3}
+                          strokeLinecap="round"
+                          opacity={isActive ? 1 : visible ? 0.45 : 0.1}
+                          className="transition-all duration-200"
+                        />
+                        <path d={p} fill="none" stroke="transparent" strokeWidth="3" />
+                      </g>
+                    ))}
+                  </g>
+                );
+              })}
+  
+              {/* Basilar tip */}
+              <circle cx="180" cy="210" r="3" fill="hsl(220, 55%, 50%)" opacity="0.5" />
+  
+              {/* Aneurysm markers */}
+              {showAneurysms && aneurysmSites.map((site, i) => (
+                <g key={i} className="cursor-pointer" onClick={() => setSelected(site.vessel)}>
+                  <circle cx={site.x} cy={site.y} r="5" fill="none" stroke="hsl(45, 80%, 50%)" strokeWidth="1.5" opacity={selected === site.vessel ? 0.9 : 0.35} strokeDasharray="2 1" />
+                  <circle cx={site.x} cy={site.y} r="1.8" fill="hsl(45, 80%, 50%)" opacity={selected === site.vessel ? 0.9 : 0.35} />
+                </g>
+              ))}
+  
+              {/* Cranial nerves */}
+              {showCNs && cranialNerves.map((cn, i) => (
+                <g key={i} opacity="0.6">
+                  <circle cx={cn.x} cy={cn.y} r="3.5" fill="none" stroke="hsl(var(--foreground))" strokeWidth="0.75" />
+                  <text x={cn.x} y={cn.y + 1.5} fontSize="4.5" textAnchor="middle" fill="hsl(var(--foreground))" fontWeight="bold">{cn.label}</text>
+                </g>
+              ))}
+  
+              {/* Vessel labels */}
+              {vesselOrder.map((key) => {
+                const v = vessels[key];
+                const isActive = selected === key;
+                const visible = isVisible(key);
+                if (!visible && !isActive) return null;
+                return (
+                      <text
+                    key={key + "-label"}
+                    x={v.labelPos.x}
+                    y={v.labelPos.y}
+                    fontSize="6"
+                    fill={isActive ? v.color : "hsl(var(--muted-foreground))"}
+                    fontWeight={isActive ? "bold" : "normal"}
+                    textAnchor={v.labelAnchor || "middle"}
+                    className="cursor-pointer select-none"
+                    onClick={() => setSelected(key)}
+                    opacity={isActive ? 1 : 0.6}
+                  >
+                    {v.abbr}
+                  </text>
+    );
+              })}
+  
+              {/* Territory shading when vessel selected */}
+              {selected === "mca-l" && (
+                <path d="M55,118 C65,105 80,95 100,90 C120,85 138,88 145,95 C140,125 135,155 140,175 C120,170 90,160 65,155 C50,148 48,135 55,118 Z"
+                  fill={vessels["mca-l"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
+              )}
+              {selected === "mca-r" && (
+                <path d="M305,118 C295,105 280,95 260,90 C240,85 222,88 215,95 C220,125 225,155 220,175 C240,170 270,160 295,155 C310,148 312,135 305,118 Z"
+                  fill={vessels["mca-r"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
+              )}
+              {(selected === "aca-l" || selected === "aca-r") && (
+                <path d="M160,42 C168,48 175,60 178,75 C180,90 180,100 178,112 C175,100 170,88 164,78 C158,68 155,55 160,42 Z"
+                  fill={vessels["aca-l"].color} fillOpacity="0.1" stroke="none" className="animate-fade-in" />
+              )}
+              {(selected === "pca-l" || selected === "pca-r") && (
+                <path d="M120,308 C140,295 160,290 180,290 C200,290 220,295 240,308 C220,318 200,322 180,322 C160,322 140,318 120,308 Z"
+                  fill={vessels["pca-l"].color} fillOpacity="0.08" stroke="none" className="animate-fade-in" />
+              )}
+            </svg>
+  
+            <div className="flex gap-1.5 mt-2 flex-wrap">
+              <button
+                onClick={() => setShowAneurysms(!showAneurysms)}
+                className={`text-xs px-2 py-1 rounded border transition-colors ${showAneurysms ? "border-amber-500/50 bg-amber-500/10 text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}
+              >
+                {showAneurysms ? "⊕" : "⊖"} Aneurysm sites
+              </button>
+              <button
+                onClick={() => setShowCNs(!showCNs)}
+                className={`text-xs px-2 py-1 rounded border transition-colors ${showCNs ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}
+              >
+                {showCNs ? "⊕" : "⊖"} Cranial nerves
+              </button>
+            </div>
           </div>
-        </div>
-
-        {/* Info panel */}
-        <div className="flex-1 min-w-0 space-y-3">
-          <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
-            <div className="flex items-center gap-2 mb-2">
-              <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
-              <Badge variant="outline" className="text-xs capitalize">{info.group}</Badge>
+  
+          {/* Info panel */}
+          <div className="flex-1 min-w-0 space-y-3">
+            <div className="p-4 rounded-lg border border-border animate-fade-in" key={selected}>
+              <div className="flex items-center gap-2 mb-2">
+                <p className="font-bold text-sm" style={{ color: info.color }}>{info.label}</p>
+                <Badge variant="outline" className="text-xs capitalize">{info.group}</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">{info.detail}</p>
+              <div className="mt-2 pt-2 border-t border-border/50">
+                <p className="text-xs text-muted-foreground">
+                  <strong className="text-foreground">Territory / Stroke syndrome:</strong> {info.territory}
+                </p>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground">{info.detail}</p>
-            <div className="mt-2 pt-2 border-t border-border/50">
-              <p className="text-xs text-muted-foreground">
-                <strong className="text-foreground">Territory / Stroke syndrome:</strong> {info.territory}
-              </p>
-            </div>
-          </div>
-
-          {/* Aneurysm info when relevant */}
-          {showAneurysms && aneurysmSites.find(a => a.vessel === selected) && (
-            <div className="p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 animate-fade-in">
-              <p className="text-xs font-semibold text-amber-400 mb-1">⚠ Aneurysm Site</p>
-              <p className="text-xs text-muted-foreground">{aneurysmSites.find(a => a.vessel === selected)?.note}</p>
-            </div>
-          )}
-
-          {/* Circle completeness note */}
-          <div className="p-3 rounded-lg border border-border/60 bg-muted/20">
-            <p className="text-xs font-semibold text-foreground mb-1">Exam Key Facts</p>
-            <div className="space-y-0.5 text-xs text-muted-foreground">
-              <p>• Complete circle present in only ~25–50% of population</p>
-              <p>• Anterior circulation (ICA) = 80% of cerebral blood flow</p>
-              <p>• Posterior circulation (vertebrobasilar) = 20%</p>
-              <p>• Berry aneurysms at branch points — rupture → SAH</p>
-              <p>• CN III runs between SCA & PCA at tentorial edge</p>
+  
+            {/* Aneurysm info when relevant */}
+            {showAneurysms && aneurysmSites.find(a => a.vessel === selected) && (
+              <div className="p-3 rounded-lg border border-amber-500/30 bg-amber-500/5 animate-fade-in">
+                <p className="text-xs font-semibold text-amber-400 mb-1">⚠ Aneurysm Site</p>
+                <p className="text-xs text-muted-foreground">{aneurysmSites.find(a => a.vessel === selected)?.note}</p>
+              </div>
+            )}
+  
+            {/* Circle completeness note */}
+            <div className="p-3 rounded-lg border border-border/60 bg-muted/20">
+              <p className="text-xs font-semibold text-foreground mb-1">Exam Key Facts</p>
+              <div className="space-y-0.5 text-xs text-muted-foreground">
+                <p>• Complete circle present in only ~25–50% of population</p>
+                <p>• Anterior circulation (ICA) = 80% of cerebral blood flow</p>
+                <p>• Posterior circulation (vertebrobasilar) = 20%</p>
+                <p>• Berry aneurysms at branch points — rupture → SAH</p>
+                <p>• CN III runs between SCA & PCA at tentorial edge</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-      </div>
+        </div>
+    </DiagramFigure>
   );
 };
 

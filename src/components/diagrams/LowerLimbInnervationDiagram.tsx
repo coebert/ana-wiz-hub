@@ -5,6 +5,7 @@
 // uses the same convention.
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NerveKey =
   | "lumbar-plexus"
@@ -281,66 +282,72 @@ const LowerLimbInnervationDiagram = () => {
   const info = NERVES[selected];
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Innervation of the lower limb"
-          subtitle="Anterior + posterior schematic — tap any nerve for course and clinical relevance"
-          toggles={[
-            { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        <div className="flex flex-col sm:flex-row gap-2">
-          <Panel title="Anterior view" paths={ANTERIOR_PATHS} labels={ANTERIOR_LABELS}
-            selected={selected} setSelected={setSelected} showLabels={showLabels} idPrefix="lln-ant" />
-          <Panel title="Posterior view" paths={POSTERIOR_PATHS} labels={POSTERIOR_LABELS}
-            selected={selected} setSelected={setSelected} showLabels={showLabels} idPrefix="lln-pos" />
-        </div>
-
-        <div className="mt-4 rounded-lg border-l-4 bg-card p-4 min-h-[120px]"
-          style={{ borderLeftColor: info.color }}>
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <p className="font-semibold text-foreground text-sm">{info.label}</p>
-            <span className="text-xs px-2 py-0.5 rounded-full font-mono"
-              style={{ backgroundColor: `${info.color}22`, color: info.color }}>
-              {info.roots}
-            </span>
-            <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
-              {info.view === "both" ? "Anterior + Posterior" : info.view}
-            </span>
+    <DiagramFigure
+      id="lower-limb-innervation-diagram"
+      title="Lower limb innervation"
+      description="Auto-generated wrapper for the Lower limb innervation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Innervation of the lower limb"
+            subtitle="Anterior + posterior schematic — tap any nerve for course and clinical relevance"
+            toggles={[
+              { label: "Sutures", active: showSutures, onChange: () => setShowSutures((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Panel title="Anterior view" paths={ANTERIOR_PATHS} labels={ANTERIOR_LABELS}
+              selected={selected} setSelected={setSelected} showLabels={showLabels} idPrefix="lln-ant" />
+            <Panel title="Posterior view" paths={POSTERIOR_PATHS} labels={POSTERIOR_LABELS}
+              selected={selected} setSelected={setSelected} showLabels={showLabels} idPrefix="lln-pos" />
           </div>
-          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{info.detail}</p>
-          <p className="text-xs text-foreground/80 mt-2 leading-relaxed">
-            <span className="font-semibold">Clinical: </span>{info.clinical}
+  
+          <div className="mt-4 rounded-lg border-l-4 bg-card p-4 min-h-[120px]"
+            style={{ borderLeftColor: info.color }}>
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <p className="font-semibold text-foreground text-sm">{info.label}</p>
+              <span className="text-xs px-2 py-0.5 rounded-full font-mono"
+                style={{ backgroundColor: `${info.color}22`, color: info.color }}>
+                {info.roots}
+              </span>
+              <span className="text-[10px] uppercase tracking-wide text-muted-foreground">
+                {info.view === "both" ? "Anterior + Posterior" : info.view}
+              </span>
+            </div>
+            <p className="text-sm text-muted-foreground mt-2 leading-relaxed">{info.detail}</p>
+            <p className="text-xs text-foreground/80 mt-2 leading-relaxed">
+              <span className="font-semibold">Clinical: </span>{info.clinical}
+            </p>
+          </div>
+  
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {(Object.keys(NERVES) as NerveKey[]).map((k) => {
+              const n = NERVES[k];
+              const active = selected === k;
+              return (
+                    <button key={k} type="button" onClick={() => setSelected(k)}
+                  className="text-[11px] px-2 py-1 rounded-full border transition-colors"
+                  style={{
+                    borderColor: active ? n.color : "hsl(var(--border))",
+                    backgroundColor: active ? `${n.color}1f` : "transparent",
+                    color: active ? n.color : "hsl(var(--foreground))",
+                    fontWeight: active ? 600 : 400,
+                  }}>
+                  {n.label}
+                </button>
+    );
+            })}
+          </div>
+  
+          <p className="mt-3 text-[11px] text-muted-foreground italic">
+            Schematic; nerve courses simplified for label clarity. Cutaneous nerves are shown along the surface where they become superficial.
           </p>
         </div>
-
-        <div className="mt-3 flex flex-wrap gap-1.5">
-          {(Object.keys(NERVES) as NerveKey[]).map((k) => {
-            const n = NERVES[k];
-            const active = selected === k;
-            return (
-                  <button key={k} type="button" onClick={() => setSelected(k)}
-                className="text-[11px] px-2 py-1 rounded-full border transition-colors"
-                style={{
-                  borderColor: active ? n.color : "hsl(var(--border))",
-                  backgroundColor: active ? `${n.color}1f` : "transparent",
-                  color: active ? n.color : "hsl(var(--foreground))",
-                  fontWeight: active ? 600 : 400,
-                }}>
-                {n.label}
-              </button>
-  );
-          })}
-        </div>
-
-        <p className="mt-3 text-[11px] text-muted-foreground italic">
-          Schematic; nerve courses simplified for label clarity. Cutaneous nerves are shown along the surface where they become superficial.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Re-usable animated mechanism cascade.
@@ -99,151 +100,157 @@ export const MechanismCascadeDiagram = ({
     .filter((n): n is number => typeof n === "number");
 
   return (
-    <div className="rounded-xl border border-border bg-card/40 p-4">
-      <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
-        <div>
-          <h3 className="text-base font-semibold text-foreground">{title}</h3>
-          {subtitle && <p className="text-xs text-muted-foreground">{subtitle}</p>}
+    <DiagramFigure
+      id="mechanism-cascade-diagram"
+      title="Mechanism cascade"
+      description="Auto-generated wrapper for the Mechanism cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card/40 p-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+          <div>
+            <h3 className="text-base font-semibold text-foreground">{title}</h3>
+            {subtitle && <p className="text-xs text-muted-foreground">{subtitle}</p>}
+          </div>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setPlaying((p) => !p)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              aria-label={playing ? "Pause animation" : "Play animation"}
+            >
+              {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              {playing ? "Pause" : "Play"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setStep(0);
+                setPlaying(true);
+              }}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              aria-label="Restart animation"
+            >
+              <RotateCcw className="h-3 w-3" /> Restart
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => setPlaying((p) => !p)}
-            className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-            aria-label={playing ? "Pause animation" : "Play animation"}
-          >
-            {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
-            {playing ? "Pause" : "Play"}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setStep(0);
-              setPlaying(true);
-            }}
-            className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-            aria-label="Restart animation"
-          >
-            <RotateCcw className="h-3 w-3" /> Restart
-          </button>
+  
+        {/* Step pills */}
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {steps.map((s, i) => (
+            <button
+              key={s.node}
+              type="button"
+              onClick={() => {
+                setStep(i);
+                setPlaying(false);
+              }}
+              data-active={step === i}
+              className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
+            >
+              {i + 1}. {s.node}
+            </button>
+          ))}
         </div>
-      </div>
-
-      {/* Step pills */}
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {steps.map((s, i) => (
-          <button
-            key={s.node}
-            type="button"
-            onClick={() => {
-              setStep(i);
-              setPlaying(false);
-            }}
-            data-active={step === i}
-            className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
-          >
-            {i + 1}. {s.node}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
-        <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
-          {layout === "chain" ? (
-            <ChainSvg steps={steps} active={step} accentVar={accentVar} />
-          ) : (
-            <RadialSvg
-              steps={steps}
-              active={step}
-              accentVar={accentVar}
-              centerLabel={centerLabel ?? ""}
-            />
-          )}
-        </div>
-
-        <div
-          className="rounded-lg border p-3 flex flex-col justify-center"
-          style={{
-            borderColor: `hsl(var(--${accent}) / 0.35)`,
-            backgroundColor: `hsl(var(--${accent}) / 0.06)`,
-          }}
-        >
-          <p
-            className="text-[11px] font-bold uppercase tracking-wide mb-1"
-            style={{ color: accentVar }}
-          >
-            Step {step + 1} · {current.title}
-          </p>
-          <p className="text-sm text-foreground leading-relaxed">
-            {current.body}
-            {currentSourceIndexes.length > 0 && (
-              <span className="ml-1 inline-flex items-baseline gap-0.5 align-baseline">
-                {currentSourceIndexes.map((n, i) => {
-                  const src = bibliography.list[n - 1];
-                  return (
-                    <a
-                      key={src.url}
-                      href={src.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title={`${src.label} — ${src.citation}`}
-                      className="text-[10px] font-bold align-super rounded-sm px-1 transition-colors hover:underline"
-                      style={{
-                        color: accentVar,
-                        backgroundColor: `hsl(var(--${accent}) / 0.12)`,
-                      }}
-                    >
-                      [{n}]{i < currentSourceIndexes.length - 1 ? "" : ""}
-                    </a>
-                  );
-                })}
-              </span>
+  
+        <div className="grid lg:grid-cols-[1fr,1fr] gap-4">
+          <div className="rounded-lg border border-border bg-background p-3 flex items-center justify-center">
+            {layout === "chain" ? (
+              <ChainSvg steps={steps} active={step} accentVar={accentVar} />
+            ) : (
+              <RadialSvg
+                steps={steps}
+                active={step}
+                accentVar={accentVar}
+                centerLabel={centerLabel ?? ""}
+              />
             )}
-          </p>
-        </div>
-      </div>
-
-      {/* Consolidated bibliography */}
-      {bibliography.list.length > 0 && (
-        <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
-          <div className="flex items-center gap-1.5 mb-2">
-            <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
-            <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
-              Sources for this cascade
+          </div>
+  
+          <div
+            className="rounded-lg border p-3 flex flex-col justify-center"
+            style={{
+              borderColor: `hsl(var(--${accent}) / 0.35)`,
+              backgroundColor: `hsl(var(--${accent}) / 0.06)`,
+            }}
+          >
+            <p
+              className="text-[11px] font-bold uppercase tracking-wide mb-1"
+              style={{ color: accentVar }}
+            >
+              Step {step + 1} · {current.title}
+            </p>
+            <p className="text-sm text-foreground leading-relaxed">
+              {current.body}
+              {currentSourceIndexes.length > 0 && (
+                <span className="ml-1 inline-flex items-baseline gap-0.5 align-baseline">
+                  {currentSourceIndexes.map((n, i) => {
+                    const src = bibliography.list[n - 1];
+                    return (
+                      <a
+                        key={src.url}
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`${src.label} — ${src.citation}`}
+                        className="text-[10px] font-bold align-super rounded-sm px-1 transition-colors hover:underline"
+                        style={{
+                          color: accentVar,
+                          backgroundColor: `hsl(var(--${accent}) / 0.12)`,
+                        }}
+                      >
+                        [{n}]{i < currentSourceIndexes.length - 1 ? "" : ""}
+                      </a>
+                    );
+                  })}
+                </span>
+              )}
             </p>
           </div>
-          <ol className="space-y-1.5 list-none">
-            {bibliography.list.map((src, i) => (
-              <li
-                key={src.url}
-                className="text-[11px] text-muted-foreground leading-relaxed flex gap-1.5"
-              >
-                <span
-                  className="font-bold shrink-0"
-                  style={{ color: accentVar }}
-                >
-                  [{i + 1}]
-                </span>
-                <a
-                  href={src.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline group/cite"
-                >
-                  <span className="font-semibold text-foreground">{src.label}</span>
-                  {" — "}
-                  <span className="group-hover/cite:text-foreground">{src.citation}</span>
-                  <ExternalLink
-                    className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
-                    style={{ color: accentVar }}
-                  />
-                </a>
-              </li>
-            ))}
-          </ol>
         </div>
-      )}
-    </div>
+  
+        {/* Consolidated bibliography */}
+        {bibliography.list.length > 0 && (
+          <div className="mt-3 rounded-lg border border-border bg-background/60 p-3">
+            <div className="flex items-center gap-1.5 mb-2">
+              <BookOpen className="h-3.5 w-3.5 text-muted-foreground" />
+              <p className="text-[11px] font-bold uppercase tracking-wide text-muted-foreground">
+                Sources for this cascade
+              </p>
+            </div>
+            <ol className="space-y-1.5 list-none">
+              {bibliography.list.map((src, i) => (
+                <li
+                  key={src.url}
+                  className="text-[11px] text-muted-foreground leading-relaxed flex gap-1.5"
+                >
+                  <span
+                    className="font-bold shrink-0"
+                    style={{ color: accentVar }}
+                  >
+                    [{i + 1}]
+                  </span>
+                  <a
+                    href={src.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline group/cite"
+                  >
+                    <span className="font-semibold text-foreground">{src.label}</span>
+                    {" — "}
+                    <span className="group-hover/cite:text-foreground">{src.citation}</span>
+                    <ExternalLink
+                      className="inline h-2.5 w-2.5 ml-0.5 align-baseline"
+                      style={{ color: accentVar }}
+                    />
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };
 

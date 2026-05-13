@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 import InlineRef from "@/components/InlineRef";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type BladeKey = "macintosh" | "miller" | "mccoy" | "polio" | "wisconsin" | "videolaryngoscope";
 
@@ -540,157 +541,163 @@ export const LaryngoscopeBladesDiagram = () => {
   const traj = tipTrajectory[selected];
 
   return (
-        <div className="border border-border rounded-lg p-4 mb-2 space-y-4">
-      <div>
-        <h3 className="text-lg font-serif font-bold text-foreground">Laryngoscope Blades</h3>
-        <p className="text-xs text-muted-foreground">
-          Tap a blade to compare shape, tip placement, mechanism of laryngeal exposure, and clinical indication.
-        </p>
-      </div>
-
-      {/* Blade selector */}
-      <div className="flex flex-wrap gap-1.5">
-        {bladeOrder.map(key => {
-          const b = blades[key];
-          const isActive = selected === key;
-          return (
-                <button
-              key={key}
-              onClick={() => setSelected(key)}
-              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-              }`}
-              style={isActive ? { borderColor: b.color, backgroundColor: withAlpha(b.color, 0.09), color: b.color } : {}}
-            >
-              {b.label}
-            </button>
-  );
-        })}
-      </div>
-
-      <Tabs defaultValue="diagram">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="diagram" className="text-xs">Shape & Mechanism</TabsTrigger>
-          <TabsTrigger value="details" className="text-xs">Clinical Use</TabsTrigger>
-          <TabsTrigger value="comparison" className="text-xs">Profile Comparison</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="diagram" className="mt-3">
-          <div className="grid sm:grid-cols-[1fr_1.2fr] gap-4 items-start">
-            <div className="rounded-lg bg-secondary/20 border border-border p-2 space-y-2">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-[11px] text-muted-foreground">
-                  Target: <span className="font-semibold" style={{ color: info.color }}>{traj.target.label}</span>
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setAnimate(a => !a)}
-                  aria-pressed={animate}
-                  className={`px-2 py-0.5 rounded text-[11px] border transition-colors ${
-                    animate
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border text-muted-foreground hover:bg-muted/50"
-                  }`}
-                >
-                  {animate ? "⏸ Pause" : "▶ Animate tip"}
-                </button>
+    <DiagramFigure
+      id="laryngoscope-blades-diagram"
+      title="Laryngoscope blades"
+      description="Auto-generated wrapper for the Laryngoscope blades anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="border border-border rounded-lg p-4 mb-2 space-y-4">
+        <div>
+          <h3 className="text-lg font-serif font-bold text-foreground">Laryngoscope Blades</h3>
+          <p className="text-xs text-muted-foreground">
+            Tap a blade to compare shape, tip placement, mechanism of laryngeal exposure, and clinical indication.
+          </p>
+        </div>
+  
+        {/* Blade selector */}
+        <div className="flex flex-wrap gap-1.5">
+          {bladeOrder.map(key => {
+            const b = blades[key];
+            const isActive = selected === key;
+            return (
+                  <button
+                key={key}
+                onClick={() => setSelected(key)}
+                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                  isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                }`}
+                style={isActive ? { borderColor: b.color, backgroundColor: withAlpha(b.color, 0.09), color: b.color } : {}}
+              >
+                {b.label}
+              </button>
+    );
+          })}
+        </div>
+  
+        <Tabs defaultValue="diagram">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="diagram" className="text-xs">Shape & Mechanism</TabsTrigger>
+            <TabsTrigger value="details" className="text-xs">Clinical Use</TabsTrigger>
+            <TabsTrigger value="comparison" className="text-xs">Profile Comparison</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="diagram" className="mt-3">
+            <div className="grid sm:grid-cols-[1fr_1.2fr] gap-4 items-start">
+              <div className="rounded-lg bg-secondary/20 border border-border p-2 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] text-muted-foreground">
+                    Target: <span className="font-semibold" style={{ color: info.color }}>{traj.target.label}</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setAnimate(a => !a)}
+                    aria-pressed={animate}
+                    className={`px-2 py-0.5 rounded text-[11px] border transition-colors ${
+                      animate
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
+                    }`}
+                  >
+                    {animate ? "⏸ Pause" : "▶ Animate tip"}
+                  </button>
+                </div>
+                <BladeShape bladeKey={selected} animate={animate} />
               </div>
-              <BladeShape bladeKey={selected} animate={animate} />
+              <div className="space-y-2 text-xs">
+                <div>
+                  <p className="font-semibold text-foreground">Tip placement</p>
+                  <p className="text-muted-foreground">{info.tipPlacement}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Mechanism of exposure</p>
+                  <p className="text-muted-foreground">
+                    {info.mechanism}
+                    {info.refs.map((r) => (
+                      <InlineRef
+                        key={r}
+                        topicId="equipment-monitoring"
+                        refLabel={r}
+                        contextTitle={`${info.label} — FRCA key points`}
+                        keyPoints={info.keyPoints}
+                        accentColor={info.color}
+                      />
+                    ))}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Sizes available</p>
+                  <p className="text-muted-foreground">{info.sizes}</p>
+                </div>
+                <div className="pt-1 border-t border-border">
+                  <p className="text-[11px] italic text-muted-foreground">{info.historicalNote}</p>
+                </div>
+              </div>
             </div>
-            <div className="space-y-2 text-xs">
-              <div>
-                <p className="font-semibold text-foreground">Tip placement</p>
-                <p className="text-muted-foreground">{info.tipPlacement}</p>
+          </TabsContent>
+  
+          <TabsContent value="details" className="mt-3">
+            <div className="grid sm:grid-cols-2 gap-3 text-xs">
+              <div className="rounded-lg border border-border p-3 bg-secondary/20">
+                <p className="font-semibold text-foreground mb-1.5" style={{ color: info.color }}>Best for</p>
+                <ul className="space-y-1 list-disc list-inside text-muted-foreground">
+                  {info.bestFor.map((b, i) => <li key={i}>{b}</li>)}
+                </ul>
               </div>
-              <div>
-                <p className="font-semibold text-foreground">Mechanism of exposure</p>
-                <p className="text-muted-foreground">
-                  {info.mechanism}
-                  {info.refs.map((r) => (
+              <div className="rounded-lg border border-border p-3 bg-secondary/20">
+                <p className="font-semibold text-foreground mb-1.5">Limitations</p>
+                <ul className="space-y-1 list-disc list-inside text-muted-foreground">
+                  {info.limitations.map((l, i) => <li key={i}>{l}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-xs">
+              <p className="font-semibold text-foreground mb-1">Indications</p>
+              <p className="text-muted-foreground">{info.indications}</p>
+            </div>
+  
+            <div
+              className="rounded-lg border-l-4 border border-border p-3 mt-3 text-xs"
+              style={{ borderLeftColor: info.color, backgroundColor: withAlpha(info.color, 0.06) }}
+            >
+              <p className="font-semibold text-foreground mb-1.5">FRCA Key Learning Points</p>
+              <ul className="space-y-1 list-disc list-inside text-muted-foreground">
+                {info.keyPoints.map((kp, i) => <li key={i}>{kp}</li>)}
+              </ul>
+            </div>
+  
+            <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-[11px]">
+              <p className="font-semibold text-foreground mb-1">Sources</p>
+              <p className="text-muted-foreground">
+                {info.refs.map((r, i) => (
+                  <span key={r}>
+                    {i > 0 && " · "}
+                    {r}
                     <InlineRef
-                      key={r}
                       topicId="equipment-monitoring"
                       refLabel={r}
                       contextTitle={`${info.label} — FRCA key points`}
                       keyPoints={info.keyPoints}
                       accentColor={info.color}
                     />
-                  ))}
-                </p>
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">Sizes available</p>
-                <p className="text-muted-foreground">{info.sizes}</p>
-              </div>
-              <div className="pt-1 border-t border-border">
-                <p className="text-[11px] italic text-muted-foreground">{info.historicalNote}</p>
-              </div>
+                  </span>
+                ))}
+              </p>
             </div>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="details" className="mt-3">
-          <div className="grid sm:grid-cols-2 gap-3 text-xs">
-            <div className="rounded-lg border border-border p-3 bg-secondary/20">
-              <p className="font-semibold text-foreground mb-1.5" style={{ color: info.color }}>Best for</p>
-              <ul className="space-y-1 list-disc list-inside text-muted-foreground">
-                {info.bestFor.map((b, i) => <li key={i}>{b}</li>)}
-              </ul>
-            </div>
-            <div className="rounded-lg border border-border p-3 bg-secondary/20">
-              <p className="font-semibold text-foreground mb-1.5">Limitations</p>
-              <ul className="space-y-1 list-disc list-inside text-muted-foreground">
-                {info.limitations.map((l, i) => <li key={i}>{l}</li>)}
-              </ul>
-            </div>
-          </div>
-          <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-xs">
-            <p className="font-semibold text-foreground mb-1">Indications</p>
-            <p className="text-muted-foreground">{info.indications}</p>
-          </div>
-
-          <div
-            className="rounded-lg border-l-4 border border-border p-3 mt-3 text-xs"
-            style={{ borderLeftColor: info.color, backgroundColor: withAlpha(info.color, 0.06) }}
-          >
-            <p className="font-semibold text-foreground mb-1.5">FRCA Key Learning Points</p>
-            <ul className="space-y-1 list-disc list-inside text-muted-foreground">
-              {info.keyPoints.map((kp, i) => <li key={i}>{kp}</li>)}
-            </ul>
-          </div>
-
-          <div className="rounded-lg border border-border p-3 bg-secondary/20 mt-3 text-[11px]">
-            <p className="font-semibold text-foreground mb-1">Sources</p>
-            <p className="text-muted-foreground">
-              {info.refs.map((r, i) => (
-                <span key={r}>
-                  {i > 0 && " · "}
-                  {r}
-                  <InlineRef
-                    topicId="equipment-monitoring"
-                    refLabel={r}
-                    contextTitle={`${info.label} — FRCA key points`}
-                    keyPoints={info.keyPoints}
-                    accentColor={info.color}
-                  />
-                </span>
-              ))}
+          </TabsContent>
+  
+          <TabsContent value="comparison" className="mt-3">
+            <ShapeComparison />
+            <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
+              <span className="font-semibold text-foreground">Choosing a blade:</span> Macintosh remains the default for
+              adult direct laryngoscopy. Use a straight (Miller / Wis-Hipple) blade in neonates and infants where the
+              epiglottis is large and floppy. Reach for a McCoy when an unexpected grade 2b/3 view is encountered.
+              Videolaryngoscopy (Mac-shaped or hyperangulated) is now first-line for any anticipated difficult airway and
+              increasingly used for routine cases per DAS 2015 guidelines.
             </p>
-          </div>
-        </TabsContent>
-
-        <TabsContent value="comparison" className="mt-3">
-          <ShapeComparison />
-          <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">
-            <span className="font-semibold text-foreground">Choosing a blade:</span> Macintosh remains the default for
-            adult direct laryngoscopy. Use a straight (Miller / Wis-Hipple) blade in neonates and infants where the
-            epiglottis is large and floppy. Reach for a McCoy when an unexpected grade 2b/3 view is encountered.
-            Videolaryngoscopy (Mac-shaped or hyperangulated) is now first-line for any anticipated difficult airway and
-            increasingly used for routine cases per DAS 2015 guidelines.
-          </p>
-        </TabsContent>
-      </Tabs>
-    </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

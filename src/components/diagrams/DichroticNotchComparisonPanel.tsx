@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side comparison of aortic pressure waveform morphology — focusing on
@@ -248,79 +249,85 @@ const DichroticNotchComparisonPanel = () => {
   const active = CONDITIONS.find((c) => c.id === activeId) ?? CONDITIONS[0];
 
   return (
-        <div className="space-y-4">
-      <div className="flex flex-wrap gap-1.5">
-        {CONDITIONS.map((c) => (
-          <button
-            key={c.id}
-            onClick={() => setActiveId(c.id)}
-            className={cn(
-              "px-2.5 py-1 text-xs rounded-md border transition-colors",
-              activeId === c.id
-                ? "bg-primary text-primary-foreground border-primary"
-                : "bg-card text-foreground border-border hover:bg-muted"
-            )}
-          >
-            {c.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {CONDITIONS.map((c) => {
-          const isActive = c.id === activeId;
-          return (
-                <button
+    <DiagramFigure
+      id="dichrotic-notch-comparison-panel"
+      title="Dichrotic notch comparison panel"
+      description="Auto-generated wrapper for the Dichrotic notch comparison panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        <div className="flex flex-wrap gap-1.5">
+          {CONDITIONS.map((c) => (
+            <button
               key={c.id}
-              type="button"
               onClick={() => setActiveId(c.id)}
               className={cn(
-                "text-left rounded-xl border bg-card p-3 transition-all",
-                isActive
-                  ? "border-primary shadow-md ring-2 ring-primary/30"
-                  : "border-border hover:border-primary/40 hover:shadow-sm"
+                "px-2.5 py-1 text-xs rounded-md border transition-colors",
+                activeId === c.id
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "bg-card text-foreground border-border hover:bg-muted"
               )}
             >
-              <div className="flex items-baseline justify-between gap-2 mb-1">
-                <h4 className="text-sm font-semibold text-foreground">{c.label}</h4>
-                {c.id !== "normal" && (
-                  <span className="text-[10px] text-muted-foreground">vs normal —</span>
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground mb-2">{c.oneLiner}</p>
-              <MiniWaveform c={c} isNormal={c.id === "normal"} />
+              {c.label}
             </button>
-  );
-        })}
-      </div>
-
-      <div className="rounded-xl border border-border bg-muted/30 p-4 space-y-2">
-        <div className="flex items-baseline justify-between gap-2">
-          <h4 className="text-sm font-semibold text-foreground">{active.label}</h4>
-          <span className="text-[11px] text-muted-foreground">
-            SBP {active.sbp} / DBP {active.dbp} mmHg
-          </span>
+          ))}
         </div>
-        <dl className="grid sm:grid-cols-3 gap-3 text-xs">
-          <div>
-            <dt className="font-semibold text-foreground mb-0.5">Notch change</dt>
-            <dd className="text-muted-foreground">{active.notchChange}</dd>
+  
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {CONDITIONS.map((c) => {
+            const isActive = c.id === activeId;
+            return (
+                  <button
+                key={c.id}
+                type="button"
+                onClick={() => setActiveId(c.id)}
+                className={cn(
+                  "text-left rounded-xl border bg-card p-3 transition-all",
+                  isActive
+                    ? "border-primary shadow-md ring-2 ring-primary/30"
+                    : "border-border hover:border-primary/40 hover:shadow-sm"
+                )}
+              >
+                <div className="flex items-baseline justify-between gap-2 mb-1">
+                  <h4 className="text-sm font-semibold text-foreground">{c.label}</h4>
+                  {c.id !== "normal" && (
+                    <span className="text-[10px] text-muted-foreground">vs normal —</span>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground mb-2">{c.oneLiner}</p>
+                <MiniWaveform c={c} isNormal={c.id === "normal"} />
+              </button>
+    );
+          })}
+        </div>
+  
+        <div className="rounded-xl border border-border bg-muted/30 p-4 space-y-2">
+          <div className="flex items-baseline justify-between gap-2">
+            <h4 className="text-sm font-semibold text-foreground">{active.label}</h4>
+            <span className="text-[11px] text-muted-foreground">
+              SBP {active.sbp} / DBP {active.dbp} mmHg
+            </span>
           </div>
-          <div>
-            <dt className="font-semibold text-foreground mb-0.5">Mechanism</dt>
-            <dd className="text-muted-foreground">{active.mechanism}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-foreground mb-0.5">Exam pearl</dt>
-            <dd className="text-muted-foreground">{active.examPearl}</dd>
-          </div>
-        </dl>
+          <dl className="grid sm:grid-cols-3 gap-3 text-xs">
+            <div>
+              <dt className="font-semibold text-foreground mb-0.5">Notch change</dt>
+              <dd className="text-muted-foreground">{active.notchChange}</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-foreground mb-0.5">Mechanism</dt>
+              <dd className="text-muted-foreground">{active.mechanism}</dd>
+            </div>
+            <div>
+              <dt className="font-semibold text-foreground mb-0.5">Exam pearl</dt>
+              <dd className="text-muted-foreground">{active.examPearl}</dd>
+            </div>
+          </dl>
+        </div>
+  
+        <p className="text-[11px] text-muted-foreground leading-relaxed">
+          Dashed grey line on each card = normal reference waveform for direct shape comparison. The primary-coloured dot marks where the dichrotic notch sits in time; its <em>amplitude</em> and <em>sharpness</em> are what change across these pathologies.
+        </p>
       </div>
-
-      <p className="text-[11px] text-muted-foreground leading-relaxed">
-        Dashed grey line on each card = normal reference waveform for direct shape comparison. The primary-coloured dot marks where the dichrotic notch sits in time; its <em>amplitude</em> and <em>sharpness</em> are what change across these pathologies.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const LaserPrinciplesTab = () => (
   <div className="space-y-4">
@@ -319,18 +320,24 @@ const LaserFibreopticsDiagram = () => {
   const [activeTab, setActiveTab] = useState("laser");
 
   return (
-            <div className="space-y-4">
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-3 w-full">
-          <TabsTrigger value="laser" className="text-xs">LASER Principles</TabsTrigger>
-          <TabsTrigger value="fibreoptic" className="text-xs">Fibreoptics & TIR</TabsTrigger>
-          <TabsTrigger value="clinical" className="text-xs">Clinical Use</TabsTrigger>
-        </TabsList>
-        <TabsContent value="laser"><LaserPrinciplesTab /></TabsContent>
-        <TabsContent value="fibreoptic"><FibreopticTab /></TabsContent>
-        <TabsContent value="clinical"><ClinicalTab /></TabsContent>
-      </Tabs>
-    </div>
+    <DiagramFigure
+      id="laser-fibreoptics-diagram"
+      title="Laser fibreoptics"
+      description="Auto-generated wrapper for the Laser fibreoptics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="grid grid-cols-3 w-full">
+            <TabsTrigger value="laser" className="text-xs">LASER Principles</TabsTrigger>
+            <TabsTrigger value="fibreoptic" className="text-xs">Fibreoptics & TIR</TabsTrigger>
+            <TabsTrigger value="clinical" className="text-xs">Clinical Use</TabsTrigger>
+          </TabsList>
+          <TabsContent value="laser"><LaserPrinciplesTab /></TabsContent>
+          <TabsContent value="fibreoptic"><FibreopticTab /></TabsContent>
+          <TabsContent value="clinical"><ClinicalTab /></TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

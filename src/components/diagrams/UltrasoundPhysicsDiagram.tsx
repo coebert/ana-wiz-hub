@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const PiezoelectricTab = () => (
   <div className="space-y-4">
@@ -361,20 +362,26 @@ const UltrasoundPhysicsDiagram = () => {
   const [activeTab, setActiveTab] = useState("piezo");
 
   return (
-            <div className="space-y-4">
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-4 w-full">
-          <TabsTrigger value="piezo" className="text-xs">Piezoelectric</TabsTrigger>
-          <TabsTrigger value="resolution" className="text-xs">Resolution</TabsTrigger>
-          <TabsTrigger value="doppler" className="text-xs">Doppler</TabsTrigger>
-          <TabsTrigger value="artefacts" className="text-xs">Artefacts</TabsTrigger>
-        </TabsList>
-        <TabsContent value="piezo"><PiezoelectricTab /></TabsContent>
-        <TabsContent value="resolution"><FrequencyResolutionTab /></TabsContent>
-        <TabsContent value="doppler"><DopplerTab /></TabsContent>
-        <TabsContent value="artefacts"><ArtefactsTab /></TabsContent>
-      </Tabs>
-    </div>
+    <DiagramFigure
+      id="ultrasound-physics-diagram"
+      title="Ultrasound physics"
+      description="Auto-generated wrapper for the Ultrasound physics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="piezo" className="text-xs">Piezoelectric</TabsTrigger>
+            <TabsTrigger value="resolution" className="text-xs">Resolution</TabsTrigger>
+            <TabsTrigger value="doppler" className="text-xs">Doppler</TabsTrigger>
+            <TabsTrigger value="artefacts" className="text-xs">Artefacts</TabsTrigger>
+          </TabsList>
+          <TabsContent value="piezo"><PiezoelectricTab /></TabsContent>
+          <TabsContent value="resolution"><FrequencyResolutionTab /></TabsContent>
+          <TabsContent value="doppler"><DopplerTab /></TabsContent>
+          <TabsContent value="artefacts"><ArtefactsTab /></TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

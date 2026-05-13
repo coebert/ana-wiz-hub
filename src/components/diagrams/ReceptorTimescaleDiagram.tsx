@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Receptor types & signal-transduction timescales.
@@ -137,209 +138,215 @@ export const ReceptorTimescaleDiagram = () => {
   const trackH = (H - PAD_T - PAD_B - 6) / BANDS.length;
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="flex items-center justify-between gap-3 mb-3">
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">
-              Receptor types &amp; signal-transduction timescales
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              Watch the playhead sweep a log-time axis from 1 ms to 24 h.
-            </p>
+    <DiagramFigure
+      id="receptor-timescale-diagram"
+      title="Receptor timescale"
+      description="Auto-generated wrapper for the Receptor timescale anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <div className="flex items-center justify-between gap-3 mb-3">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Receptor types &amp; signal-transduction timescales
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Watch the playhead sweep a log-time axis from 1 ms to 24 h.
+              </p>
+            </div>
+            <button
+              onClick={() => setPlaying((p) => !p)}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-foreground hover:bg-muted transition-colors"
+            >
+              {playing ? "⏸ Pause" : "▶ Play"}
+            </button>
           </div>
-          <button
-            onClick={() => setPlaying((p) => !p)}
-            className="px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-foreground hover:bg-muted transition-colors"
+  
+          <svg
+            viewBox={`0 0 ${W} ${H}`}
+            className="w-full max-w-2xl mx-auto"
+            role="img"
+            aria-label="Animated comparison of receptor types and the timescale of their cellular effects"
           >
-            {playing ? "⏸ Pause" : "▶ Play"}
-          </button>
-        </div>
-
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full max-w-2xl mx-auto"
-          role="img"
-          aria-label="Animated comparison of receptor types and the timescale of their cellular effects"
-        >
-          {/* Tracks */}
-          {BANDS.map((b, i) => {
-            const yTop = trackTop + i * trackH;
-            const yMid = yTop + trackH / 2;
-            const x0 = tToX(b.start);
-            const x1 = tToX(b.end);
-            const xPeak = tToX(b.peak);
-            const active = isActive(b);
-
-            return (
-              <g key={b.id}>
-                {/* Track background */}
-                <rect
-                  x={PAD_L}
-                  y={yTop + 4}
-                  width={W - PAD_L - PAD_R}
-                  height={trackH - 8}
-                  fill="hsl(var(--background))"
-                  stroke="hsl(var(--border))"
-                  strokeWidth={0.5}
-                  opacity={0.6}
-                />
-                {/* Effect window */}
-                <rect
-                  x={x0}
-                  y={yTop + 8}
-                  width={Math.max(2, x1 - x0)}
-                  height={trackH - 16}
-                  rx={4}
-                  fill={b.color}
-                  opacity={active ? 0.55 : 0.22}
-                />
-                {/* Peak marker */}
-                <circle
-                  cx={xPeak}
-                  cy={yMid}
-                  r={active ? 4.5 : 3}
-                  fill={b.color}
-                  stroke="hsl(var(--background))"
-                  strokeWidth={1}
-                />
-
-                {/* Left-side schematic */}
-                <g transform={`translate(8, ${yTop + 6})`}>
+            {/* Tracks */}
+            {BANDS.map((b, i) => {
+              const yTop = trackTop + i * trackH;
+              const yMid = yTop + trackH / 2;
+              const x0 = tToX(b.start);
+              const x1 = tToX(b.end);
+              const xPeak = tToX(b.peak);
+              const active = isActive(b);
+  
+              return (
+                <g key={b.id}>
+                  {/* Track background */}
                   <rect
-                    x={0}
-                    y={0}
-                    width={PAD_L - 16}
-                    height={trackH - 12}
-                    rx={6}
-                    fill={active ? `${b.color}1f` : "hsl(var(--muted) / 0.4)"}
-                    stroke={active ? b.color : "hsl(var(--border))"}
-                    strokeWidth={active ? 1.4 : 0.8}
+                    x={PAD_L}
+                    y={yTop + 4}
+                    width={W - PAD_L - PAD_R}
+                    height={trackH - 8}
+                    fill="hsl(var(--background))"
+                    stroke="hsl(var(--border))"
+                    strokeWidth={0.5}
+                    opacity={0.6}
                   />
-                  <text
-                    x={8}
-                    y={14}
-                    fontSize="9.5"
-                    fontWeight={700}
-                    fill={active ? b.color : "hsl(var(--foreground))"}
-                  >
-                    {b.label}
-                  </text>
-                  {/* Mini icon per receptor type */}
-                  <ReceptorIcon id={b.id} active={active} color={b.color} x={8} y={22} />
+                  {/* Effect window */}
+                  <rect
+                    x={x0}
+                    y={yTop + 8}
+                    width={Math.max(2, x1 - x0)}
+                    height={trackH - 16}
+                    rx={4}
+                    fill={b.color}
+                    opacity={active ? 0.55 : 0.22}
+                  />
+                  {/* Peak marker */}
+                  <circle
+                    cx={xPeak}
+                    cy={yMid}
+                    r={active ? 4.5 : 3}
+                    fill={b.color}
+                    stroke="hsl(var(--background))"
+                    strokeWidth={1}
+                  />
+  
+                  {/* Left-side schematic */}
+                  <g transform={`translate(8, ${yTop + 6})`}>
+                    <rect
+                      x={0}
+                      y={0}
+                      width={PAD_L - 16}
+                      height={trackH - 12}
+                      rx={6}
+                      fill={active ? `${b.color}1f` : "hsl(var(--muted) / 0.4)"}
+                      stroke={active ? b.color : "hsl(var(--border))"}
+                      strokeWidth={active ? 1.4 : 0.8}
+                    />
+                    <text
+                      x={8}
+                      y={14}
+                      fontSize="9.5"
+                      fontWeight={700}
+                      fill={active ? b.color : "hsl(var(--foreground))"}
+                    >
+                      {b.label}
+                    </text>
+                    {/* Mini icon per receptor type */}
+                    <ReceptorIcon id={b.id} active={active} color={b.color} x={8} y={22} />
+                  </g>
                 </g>
-              </g>
-            );
-          })}
-
-          {/* Time axis */}
-          <line
-            x1={PAD_L}
-            x2={W - PAD_R}
-            y1={H - PAD_B + 4}
-            y2={H - PAD_B + 4}
-            stroke="hsl(var(--muted-foreground))"
-          />
-          {TICKS.map((tk) => (
-            <g key={tk.t}>
-              <line
-                x1={tToX(tk.t)}
-                x2={tToX(tk.t)}
-                y1={H - PAD_B + 4}
-                y2={H - PAD_B + 8}
-                stroke="hsl(var(--muted-foreground))"
-              />
-              <text
-                x={tToX(tk.t)}
-                y={H - PAD_B + 18}
-                textAnchor="middle"
-                fontSize="8"
-                className="fill-muted-foreground"
-              >
-                {tk.label}
-              </text>
-            </g>
-          ))}
-          <text
-            x={(PAD_L + W - PAD_R) / 2}
-            y={H - 6}
-            textAnchor="middle"
-            fontSize="9.5"
-            className="fill-foreground font-semibold"
-          >
-            time after ligand binding (log scale)
-          </text>
-
-          {/* Playhead */}
-          <line
-            x1={playheadX}
-            x2={playheadX}
-            y1={trackTop - 4}
-            y2={H - PAD_B + 6}
-            stroke="hsl(var(--primary))"
-            strokeWidth={1.5}
-            strokeDasharray="3 3"
-          />
-          <circle
-            cx={playheadX}
-            cy={trackTop - 6}
-            r={4}
-            fill="hsl(var(--primary))"
-          />
-        </svg>
-
-        {/* Active panel */}
-        <div
-          className="mt-3 p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
-          style={
-            activeBand
-              ? { borderLeftWidth: 4, borderLeftColor: activeBand.color }
-              : undefined
-          }
-        >
-          {activeBand ? (
-            <>
-              <div className="flex items-center justify-between gap-2">
-                <p className="font-semibold text-foreground text-sm">
-                  {activeBand.label}
-                </p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{
-                    background: `${activeBand.color}26`,
-                    color: activeBand.color,
-                  }}
+              );
+            })}
+  
+            {/* Time axis */}
+            <line
+              x1={PAD_L}
+              x2={W - PAD_R}
+              y1={H - PAD_B + 4}
+              y2={H - PAD_B + 4}
+              stroke="hsl(var(--muted-foreground))"
+            />
+            {TICKS.map((tk) => (
+              <g key={tk.t}>
+                <line
+                  x1={tToX(tk.t)}
+                  x2={tToX(tk.t)}
+                  y1={H - PAD_B + 4}
+                  y2={H - PAD_B + 8}
+                  stroke="hsl(var(--muted-foreground))"
+                />
+                <text
+                  x={tToX(tk.t)}
+                  y={H - PAD_B + 18}
+                  textAnchor="middle"
+                  fontSize="8"
+                  className="fill-muted-foreground"
                 >
-                  active at {formatTime(playheadT)}
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Mechanism:</span>{" "}
-                {activeBand.mechanism}
+                  {tk.label}
+                </text>
+              </g>
+            ))}
+            <text
+              x={(PAD_L + W - PAD_R) / 2}
+              y={H - 6}
+              textAnchor="middle"
+              fontSize="9.5"
+              className="fill-foreground font-semibold"
+            >
+              time after ligand binding (log scale)
+            </text>
+  
+            {/* Playhead */}
+            <line
+              x1={playheadX}
+              x2={playheadX}
+              y1={trackTop - 4}
+              y2={H - PAD_B + 6}
+              stroke="hsl(var(--primary))"
+              strokeWidth={1.5}
+              strokeDasharray="3 3"
+            />
+            <circle
+              cx={playheadX}
+              cy={trackTop - 6}
+              r={4}
+              fill="hsl(var(--primary))"
+            />
+          </svg>
+  
+          {/* Active panel */}
+          <div
+            className="mt-3 p-3 rounded-lg border border-border bg-background/80 space-y-1.5 min-h-[110px]"
+            style={
+              activeBand
+                ? { borderLeftWidth: 4, borderLeftColor: activeBand.color }
+                : undefined
+            }
+          >
+            {activeBand ? (
+              <>
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-semibold text-foreground text-sm">
+                    {activeBand.label}
+                  </p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{
+                      background: `${activeBand.color}26`,
+                      color: activeBand.color,
+                    }}
+                  >
+                    active at {formatTime(playheadT)}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Mechanism:</span>{" "}
+                  {activeBand.mechanism}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Effect:</span>{" "}
+                  {activeBand.effect}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Examples:</span>{" "}
+                  {activeBand.examples}
+                </p>
+              </>
+            ) : (
+              <p className="text-xs text-muted-foreground italic text-center">
+                Between effect windows — no receptor class is currently signalling.
               </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Effect:</span>{" "}
-                {activeBand.effect}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Examples:</span>{" "}
-                {activeBand.examples}
-              </p>
-            </>
-          ) : (
-            <p className="text-xs text-muted-foreground italic text-center">
-              Between effect windows — no receptor class is currently signalling.
-            </p>
-          )}
+            )}
+          </div>
+  
+          <p className="text-xs text-center text-muted-foreground mt-3 italic">
+            <span className="font-semibold not-italic text-foreground">
+              Channels in milliseconds, GPCRs in seconds, kinases in minutes, nuclear receptors in hours.
+            </span>
+          </p>
         </div>
-
-        <p className="text-xs text-center text-muted-foreground mt-3 italic">
-          <span className="font-semibold not-italic text-foreground">
-            Channels in milliseconds, GPCRs in seconds, kinases in minutes, nuclear receptors in hours.
-          </span>
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

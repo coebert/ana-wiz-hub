@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NSAID Mechanism Diagram
@@ -214,417 +215,423 @@ export const NSAIDMechanismDiagram = () => {
   const shuntMag = profile.shunt;
 
   return (
-    <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">
-              NSAID mechanism — therapeutic &amp; adverse pathway map
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              Pick a drug class to see which COX isoform is blocked and which
-              effects follow.
-            </p>
+    <DiagramFigure
+      id="nsaid-mechanism-diagram"
+      title="NSAID mechanism"
+      description="Auto-generated wrapper for the NSAID mechanism anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">
+                NSAID mechanism — therapeutic &amp; adverse pathway map
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                Pick a drug class to see which COX isoform is blocked and which
+                effects follow.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {(Object.values(PROFILES) as Profile[]).map((p) => {
+                const active = p.id === profileId;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => setProfileId(p.id)}
+                    className={`px-2.5 py-1 rounded-full text-xs border transition-colors ${
+                      active
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-background text-foreground border-border hover:bg-muted"
+                    }`}
+                    aria-pressed={active}
+                  >
+                    {p.short}
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {(Object.values(PROFILES) as Profile[]).map((p) => {
-              const active = p.id === profileId;
+  
+          <svg
+            viewBox={`0 0 ${W} ${H}`}
+            className="w-full max-w-2xl mx-auto"
+            role="img"
+            aria-label="Arachidonic acid pathway showing COX-1, COX-2 and lipoxygenase branches with NSAID inhibition effects"
+          >
+            <defs>
+              <marker
+                id="nsaid-arrow"
+                markerWidth="6"
+                markerHeight="6"
+                refX="5"
+                refY="3"
+                orient="auto"
+              >
+                <path d="M0,0 L6,3 L0,6 Z" fill="hsl(var(--muted-foreground))" />
+              </marker>
+              <marker
+                id="nsaid-arrow-shunt"
+                markerWidth="6"
+                markerHeight="6"
+                refX="5"
+                refY="3"
+                orient="auto"
+              >
+                <path d="M0,0 L6,3 L0,6 Z" fill="hsl(0 65% 50%)" />
+              </marker>
+              <pattern
+                id="nsaid-block-hatch"
+                patternUnits="userSpaceOnUse"
+                width="6"
+                height="6"
+                patternTransform="rotate(45)"
+              >
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="6"
+                  stroke="hsl(0 65% 50%)"
+                  strokeWidth="2"
+                  opacity="0.55"
+                />
+              </pattern>
+            </defs>
+  
+            {/* ── Membrane phospholipids ── */}
+            <rect
+              x={50}
+              y={20}
+              width={W - 100}
+              height={22}
+              rx={3}
+              fill="hsl(45 30% 92%)"
+              stroke="hsl(var(--border))"
+            />
+            <text
+              x={W / 2}
+              y={35}
+              textAnchor="middle"
+              fontSize="9.5"
+              className="fill-foreground font-semibold"
+            >
+              Membrane phospholipids
+            </text>
+  
+            {/* PLA2 step */}
+            <line
+              x1={W / 2}
+              x2={W / 2}
+              y1={42}
+              y2={aaY - 12}
+              stroke="hsl(var(--muted-foreground))"
+              strokeWidth={1.5}
+              markerEnd="url(#nsaid-arrow)"
+            />
+            <text
+              x={W / 2 + 8}
+              y={55}
+              fontSize="8.5"
+              className="fill-muted-foreground italic"
+            >
+              phospholipase A₂
+            </text>
+  
+            {/* Arachidonic acid pool */}
+            <rect
+              x={aaX - 80}
+              y={aaY - 12}
+              width={160}
+              height={26}
+              rx={6}
+              fill="hsl(var(--background))"
+              stroke="hsl(var(--muted-foreground))"
+              strokeWidth={1}
+            />
+            <text
+              x={aaX}
+              y={aaY + 5}
+              textAnchor="middle"
+              fontSize="10.5"
+              className="fill-foreground font-bold"
+            >
+              Arachidonic acid
+            </text>
+  
+            {/* ── Three branches ── */}
+            {/* COX-1 branch */}
+            <Branch
+              x={cox1X}
+              startY={aaY + 14}
+              enzymeY={enzymeY}
+              label="COX-1"
+              sublabel="constitutive"
+              color="hsl(210 70% 50%)"
+              inhibition={cox1Mag}
+              startX={aaX - 30}
+            />
+            {/* COX-2 branch */}
+            <Branch
+              x={cox2X}
+              startY={aaY + 14}
+              enzymeY={enzymeY}
+              label="COX-2"
+              sublabel="inducible"
+              color="hsl(280 55% 55%)"
+              inhibition={cox2Mag}
+              startX={aaX + 30}
+            />
+            {/* Lipoxygenase shunt — increases when COX is blocked */}
+            <Branch
+              x={loxX}
+              startY={aaY + 14}
+              enzymeY={enzymeY}
+              label="5-LOX"
+              sublabel="shunt"
+              color="hsl(0 65% 50%)"
+              inhibition={0}
+              shuntMagnitude={shuntMag}
+              startX={aaX - 70}
+              isShunt
+            />
+  
+            {/* ── Products row ── */}
+            {/* COX-1 products */}
+            <ProductBox
+              x={cox1ProductX}
+              y={productY}
+              color="hsl(210 70% 50%)"
+              inhibition={cox1Mag}
+              title="TXA₂ · PGE₂ · PGI₂"
+              sub="(platelet · gastric · renal)"
+            />
+            {/* COX-2 products */}
+            <ProductBox
+              x={cox2ProductX}
+              y={productY}
+              color="hsl(280 55% 55%)"
+              inhibition={cox2Mag}
+              title="PGE₂ · PGI₂"
+              sub="(inflammation · pain · fever · endothelium · macula densa)"
+            />
+            {/* LOX products */}
+            <ProductBox
+              x={loxProductX}
+              y={productY}
+              color="hsl(0 65% 50%)"
+              inhibition={-shuntMag} // negative inhibition → boosted
+              title="LTB₄ · LTC₄/D₄/E₄"
+              sub="(bronchospasm)"
+            />
+  
+            {/* ── Outcome rows ── */}
+            {/* Therapeutic outcomes (green band) */}
+            <rect
+              x={20}
+              y={295}
+              width={W - 40}
+              height={70}
+              rx={8}
+              fill={`${therapeuticColor}10`}
+              stroke={therapeuticColor}
+              strokeOpacity={0.4}
+              strokeDasharray="4 3"
+            />
+            <text
+              x={28}
+              y={310}
+              fontSize="9"
+              fontWeight={700}
+              fill={therapeuticColor}
+            >
+              THERAPEUTIC EFFECTS
+            </text>
+  
+            {/* Adverse outcomes (red band) */}
+            <rect
+              x={20}
+              y={375}
+              width={W - 40}
+              height={92}
+              rx={8}
+              fill={`${adverseColor}10`}
+              stroke={adverseColor}
+              strokeOpacity={0.4}
+              strokeDasharray="4 3"
+            />
+            <text x={28} y={390} fontSize="9" fontWeight={700} fill={adverseColor}>
+              ADVERSE EFFECTS
+            </text>
+  
+            {/* Effect chips */}
+            {EFFECTS.map((e, _i) => {
+              const therapeuticList = EFFECTS.filter((x) => x.kind === "therapeutic");
+              const adverseList = EFFECTS.filter((x) => x.kind === "adverse");
+              const isThera = e.kind === "therapeutic";
+              const list = isThera ? therapeuticList : adverseList;
+              const idx = list.findIndex((x) => x.id === e.id);
+              const cols = isThera ? therapeuticList.length : Math.ceil(adverseList.length / 2);
+              const colW = (W - 60) / cols;
+              const col = idx % cols;
+              const row = Math.floor(idx / cols);
+              const cx = 30 + col * colW + colW / 2;
+              const cy = isThera ? 340 : 410 + row * 28;
+  
+              const driverMag =
+                e.driver === "cox1"
+                  ? cox1Mag
+                  : e.driver === "cox2"
+                  ? cox2Mag
+                  : shuntMag;
+              const active = driverMag > 0.25;
+              const dColor = driverColor(e.driver);
+              const isSelected = selectedEffect === e.id;
               return (
-                <button
-                  key={p.id}
-                  onClick={() => setProfileId(p.id)}
-                  className={`px-2.5 py-1 rounded-full text-xs border transition-colors ${
-                    active
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-foreground border-border hover:bg-muted"
-                  }`}
-                  aria-pressed={active}
+                <g
+                  key={e.id}
+                  onClick={() => setSelectedEffect(e.id)}
+                  style={{ cursor: "pointer" }}
+                  opacity={active ? 1 : 0.35}
                 >
-                  {p.short}
-                </button>
+                  <rect
+                    x={cx - colW / 2 + 4}
+                    y={cy - 11}
+                    width={colW - 8}
+                    height={22}
+                    rx={11}
+                    fill={isSelected ? dColor : "hsl(var(--background))"}
+                    stroke={dColor}
+                    strokeWidth={isSelected ? 1.8 : 1.1}
+                    opacity={isSelected ? 0.9 : active ? 1 : 0.6}
+                  />
+                  <text
+                    x={cx}
+                    y={cy + 3.5}
+                    textAnchor="middle"
+                    fontSize="8.5"
+                    fontWeight={isSelected ? 700 : 600}
+                    fill={isSelected ? "hsl(var(--background))" : dColor}
+                  >
+                    {e.label}
+                  </text>
+                </g>
               );
             })}
-          </div>
-        </div>
-
-        <svg
-          viewBox={`0 0 ${W} ${H}`}
-          className="w-full max-w-2xl mx-auto"
-          role="img"
-          aria-label="Arachidonic acid pathway showing COX-1, COX-2 and lipoxygenase branches with NSAID inhibition effects"
-        >
-          <defs>
-            <marker
-              id="nsaid-arrow"
-              markerWidth="6"
-              markerHeight="6"
-              refX="5"
-              refY="3"
-              orient="auto"
-            >
-              <path d="M0,0 L6,3 L0,6 Z" fill="hsl(var(--muted-foreground))" />
-            </marker>
-            <marker
-              id="nsaid-arrow-shunt"
-              markerWidth="6"
-              markerHeight="6"
-              refX="5"
-              refY="3"
-              orient="auto"
-            >
-              <path d="M0,0 L6,3 L0,6 Z" fill="hsl(0 65% 50%)" />
-            </marker>
-            <pattern
-              id="nsaid-block-hatch"
-              patternUnits="userSpaceOnUse"
-              width="6"
-              height="6"
-              patternTransform="rotate(45)"
-            >
-              <line
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="6"
-                stroke="hsl(0 65% 50%)"
-                strokeWidth="2"
-                opacity="0.55"
-              />
-            </pattern>
-          </defs>
-
-          {/* ── Membrane phospholipids ── */}
-          <rect
-            x={50}
-            y={20}
-            width={W - 100}
-            height={22}
-            rx={3}
-            fill="hsl(45 30% 92%)"
-            stroke="hsl(var(--border))"
-          />
-          <text
-            x={W / 2}
-            y={35}
-            textAnchor="middle"
-            fontSize="9.5"
-            className="fill-foreground font-semibold"
-          >
-            Membrane phospholipids
-          </text>
-
-          {/* PLA2 step */}
-          <line
-            x1={W / 2}
-            x2={W / 2}
-            y1={42}
-            y2={aaY - 12}
-            stroke="hsl(var(--muted-foreground))"
-            strokeWidth={1.5}
-            markerEnd="url(#nsaid-arrow)"
-          />
-          <text
-            x={W / 2 + 8}
-            y={55}
-            fontSize="8.5"
-            className="fill-muted-foreground italic"
-          >
-            phospholipase A₂
-          </text>
-
-          {/* Arachidonic acid pool */}
-          <rect
-            x={aaX - 80}
-            y={aaY - 12}
-            width={160}
-            height={26}
-            rx={6}
-            fill="hsl(var(--background))"
-            stroke="hsl(var(--muted-foreground))"
-            strokeWidth={1}
-          />
-          <text
-            x={aaX}
-            y={aaY + 5}
-            textAnchor="middle"
-            fontSize="10.5"
-            className="fill-foreground font-bold"
-          >
-            Arachidonic acid
-          </text>
-
-          {/* ── Three branches ── */}
-          {/* COX-1 branch */}
-          <Branch
-            x={cox1X}
-            startY={aaY + 14}
-            enzymeY={enzymeY}
-            label="COX-1"
-            sublabel="constitutive"
-            color="hsl(210 70% 50%)"
-            inhibition={cox1Mag}
-            startX={aaX - 30}
-          />
-          {/* COX-2 branch */}
-          <Branch
-            x={cox2X}
-            startY={aaY + 14}
-            enzymeY={enzymeY}
-            label="COX-2"
-            sublabel="inducible"
-            color="hsl(280 55% 55%)"
-            inhibition={cox2Mag}
-            startX={aaX + 30}
-          />
-          {/* Lipoxygenase shunt — increases when COX is blocked */}
-          <Branch
-            x={loxX}
-            startY={aaY + 14}
-            enzymeY={enzymeY}
-            label="5-LOX"
-            sublabel="shunt"
-            color="hsl(0 65% 50%)"
-            inhibition={0}
-            shuntMagnitude={shuntMag}
-            startX={aaX - 70}
-            isShunt
-          />
-
-          {/* ── Products row ── */}
-          {/* COX-1 products */}
-          <ProductBox
-            x={cox1ProductX}
-            y={productY}
-            color="hsl(210 70% 50%)"
-            inhibition={cox1Mag}
-            title="TXA₂ · PGE₂ · PGI₂"
-            sub="(platelet · gastric · renal)"
-          />
-          {/* COX-2 products */}
-          <ProductBox
-            x={cox2ProductX}
-            y={productY}
-            color="hsl(280 55% 55%)"
-            inhibition={cox2Mag}
-            title="PGE₂ · PGI₂"
-            sub="(inflammation · pain · fever · endothelium · macula densa)"
-          />
-          {/* LOX products */}
-          <ProductBox
-            x={loxProductX}
-            y={productY}
-            color="hsl(0 65% 50%)"
-            inhibition={-shuntMag} // negative inhibition → boosted
-            title="LTB₄ · LTC₄/D₄/E₄"
-            sub="(bronchospasm)"
-          />
-
-          {/* ── Outcome rows ── */}
-          {/* Therapeutic outcomes (green band) */}
-          <rect
-            x={20}
-            y={295}
-            width={W - 40}
-            height={70}
-            rx={8}
-            fill={`${therapeuticColor}10`}
-            stroke={therapeuticColor}
-            strokeOpacity={0.4}
-            strokeDasharray="4 3"
-          />
-          <text
-            x={28}
-            y={310}
-            fontSize="9"
-            fontWeight={700}
-            fill={therapeuticColor}
-          >
-            THERAPEUTIC EFFECTS
-          </text>
-
-          {/* Adverse outcomes (red band) */}
-          <rect
-            x={20}
-            y={375}
-            width={W - 40}
-            height={92}
-            rx={8}
-            fill={`${adverseColor}10`}
-            stroke={adverseColor}
-            strokeOpacity={0.4}
-            strokeDasharray="4 3"
-          />
-          <text x={28} y={390} fontSize="9" fontWeight={700} fill={adverseColor}>
-            ADVERSE EFFECTS
-          </text>
-
-          {/* Effect chips */}
-          {EFFECTS.map((e, _i) => {
-            const therapeuticList = EFFECTS.filter((x) => x.kind === "therapeutic");
-            const adverseList = EFFECTS.filter((x) => x.kind === "adverse");
-            const isThera = e.kind === "therapeutic";
-            const list = isThera ? therapeuticList : adverseList;
-            const idx = list.findIndex((x) => x.id === e.id);
-            const cols = isThera ? therapeuticList.length : Math.ceil(adverseList.length / 2);
-            const colW = (W - 60) / cols;
-            const col = idx % cols;
-            const row = Math.floor(idx / cols);
-            const cx = 30 + col * colW + colW / 2;
-            const cy = isThera ? 340 : 410 + row * 28;
-
-            const driverMag =
-              e.driver === "cox1"
-                ? cox1Mag
-                : e.driver === "cox2"
-                ? cox2Mag
-                : shuntMag;
-            const active = driverMag > 0.25;
-            const dColor = driverColor(e.driver);
-            const isSelected = selectedEffect === e.id;
-            return (
-              <g
-                key={e.id}
-                onClick={() => setSelectedEffect(e.id)}
-                style={{ cursor: "pointer" }}
-                opacity={active ? 1 : 0.35}
-              >
-                <rect
-                  x={cx - colW / 2 + 4}
-                  y={cy - 11}
-                  width={colW - 8}
-                  height={22}
-                  rx={11}
-                  fill={isSelected ? dColor : "hsl(var(--background))"}
+  
+            {/* Connector lines from products to selected effect */}
+            {(() => {
+              const sel = EFFECTS.find((e) => e.id === selectedEffect);
+              if (!sel) return null;
+              const sourceX =
+                sel.driver === "cox1"
+                  ? cox1ProductX
+                  : sel.driver === "cox2"
+                  ? cox2ProductX
+                  : loxProductX;
+              const sourceY = productY + 30;
+              const therapeuticList = EFFECTS.filter((x) => x.kind === "therapeutic");
+              const adverseList = EFFECTS.filter((x) => x.kind === "adverse");
+              const list = sel.kind === "therapeutic" ? therapeuticList : adverseList;
+              const idx = list.findIndex((x) => x.id === sel.id);
+              const cols = sel.kind === "therapeutic" ? therapeuticList.length : Math.ceil(adverseList.length / 2);
+              const colW = (W - 60) / cols;
+              const col = idx % cols;
+              const row = Math.floor(idx / cols);
+              const targetX = 30 + col * colW + colW / 2;
+              const targetY = sel.kind === "therapeutic" ? 340 - 11 : 410 + row * 28 - 11;
+              const dColor = driverColor(sel.driver);
+              return (
+                <path
+                  d={`M ${sourceX} ${sourceY} C ${sourceX} ${(sourceY + targetY) / 2}, ${targetX} ${(sourceY + targetY) / 2}, ${targetX} ${targetY}`}
+                  fill="none"
                   stroke={dColor}
-                  strokeWidth={isSelected ? 1.8 : 1.1}
-                  opacity={isSelected ? 0.9 : active ? 1 : 0.6}
+                  strokeWidth={1.5}
+                  strokeDasharray="4 3"
+                  opacity={0.85}
                 />
-                <text
-                  x={cx}
-                  y={cy + 3.5}
-                  textAnchor="middle"
-                  fontSize="8.5"
-                  fontWeight={isSelected ? 700 : 600}
-                  fill={isSelected ? "hsl(var(--background))" : dColor}
-                >
-                  {e.label}
-                </text>
-              </g>
-            );
-          })}
-
-          {/* Connector lines from products to selected effect */}
+              );
+            })()}
+          </svg>
+  
+          {/* Selected effect detail panel */}
           {(() => {
             const sel = EFFECTS.find((e) => e.id === selectedEffect);
             if (!sel) return null;
-            const sourceX =
-              sel.driver === "cox1"
-                ? cox1ProductX
-                : sel.driver === "cox2"
-                ? cox2ProductX
-                : loxProductX;
-            const sourceY = productY + 30;
-            const therapeuticList = EFFECTS.filter((x) => x.kind === "therapeutic");
-            const adverseList = EFFECTS.filter((x) => x.kind === "adverse");
-            const list = sel.kind === "therapeutic" ? therapeuticList : adverseList;
-            const idx = list.findIndex((x) => x.id === sel.id);
-            const cols = sel.kind === "therapeutic" ? therapeuticList.length : Math.ceil(adverseList.length / 2);
-            const colW = (W - 60) / cols;
-            const col = idx % cols;
-            const row = Math.floor(idx / cols);
-            const targetX = 30 + col * colW + colW / 2;
-            const targetY = sel.kind === "therapeutic" ? 340 - 11 : 410 + row * 28 - 11;
             const dColor = driverColor(sel.driver);
+            const driverMag =
+              sel.driver === "cox1"
+                ? cox1Mag
+                : sel.driver === "cox2"
+                ? cox2Mag
+                : shuntMag;
+            const driverLabel =
+              sel.driver === "cox1"
+                ? "COX-1 inhibition"
+                : sel.driver === "cox2"
+                ? "COX-2 inhibition"
+                : "Lipoxygenase shunt";
             return (
-              <path
-                d={`M ${sourceX} ${sourceY} C ${sourceX} ${(sourceY + targetY) / 2}, ${targetX} ${(sourceY + targetY) / 2}, ${targetX} ${targetY}`}
-                fill="none"
-                stroke={dColor}
-                strokeWidth={1.5}
-                strokeDasharray="4 3"
-                opacity={0.85}
-              />
+              <div
+                className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: dColor }}
+              >
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <p className="font-semibold text-foreground text-sm">{sel.label}</p>
+                  <div className="flex items-center gap-1.5">
+                    <span
+                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                      style={{
+                        background: `${
+                          sel.kind === "therapeutic"
+                            ? "hsl(150 55% 40%)"
+                            : "hsl(0 65% 50%)"
+                        }26`,
+                        color:
+                          sel.kind === "therapeutic"
+                            ? "hsl(150 55% 30%)"
+                            : "hsl(0 65% 40%)",
+                      }}
+                    >
+                      {sel.kind}
+                    </span>
+                    <span
+                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                      style={{ background: `${dColor}26`, color: dColor }}
+                    >
+                      {driverLabel} · {Math.round(driverMag * 100)}%
+                    </span>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Mediator:</span>{" "}
+                  {sel.mediator}
+                </p>
+                <p className="text-xs text-muted-foreground">{sel.detail}</p>
+              </div>
             );
           })()}
-        </svg>
-
-        {/* Selected effect detail panel */}
-        {(() => {
-          const sel = EFFECTS.find((e) => e.id === selectedEffect);
-          if (!sel) return null;
-          const dColor = driverColor(sel.driver);
-          const driverMag =
-            sel.driver === "cox1"
-              ? cox1Mag
-              : sel.driver === "cox2"
-              ? cox2Mag
-              : shuntMag;
-          const driverLabel =
-            sel.driver === "cox1"
-              ? "COX-1 inhibition"
-              : sel.driver === "cox2"
-              ? "COX-2 inhibition"
-              : "Lipoxygenase shunt";
-          return (
-            <div
-              className="mt-4 p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: dColor }}
-            >
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">{sel.label}</p>
-                <div className="flex items-center gap-1.5">
-                  <span
-                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                    style={{
-                      background: `${
-                        sel.kind === "therapeutic"
-                          ? "hsl(150 55% 40%)"
-                          : "hsl(0 65% 50%)"
-                      }26`,
-                      color:
-                        sel.kind === "therapeutic"
-                          ? "hsl(150 55% 30%)"
-                          : "hsl(0 65% 40%)",
-                    }}
-                  >
-                    {sel.kind}
-                  </span>
-                  <span
-                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                    style={{ background: `${dColor}26`, color: dColor }}
-                  >
-                    {driverLabel} · {Math.round(driverMag * 100)}%
-                  </span>
-                </div>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Mediator:</span>{" "}
-                {sel.mediator}
-              </p>
-              <p className="text-xs text-muted-foreground">{sel.detail}</p>
-            </div>
-          );
-        })()}
-
-        {/* Profile description */}
-        <div className="mt-3 text-xs text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-          <p>
-            <span className="font-semibold text-foreground">{profile.label}:</span>{" "}
-            {profile.description}
-          </p>
-          <p className="mt-1">
-            <span className="font-medium text-foreground">Examples:</span>{" "}
-            {profile.examples}
+  
+          {/* Profile description */}
+          <div className="mt-3 text-xs text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+            <p>
+              <span className="font-semibold text-foreground">{profile.label}:</span>{" "}
+              {profile.description}
+            </p>
+            <p className="mt-1">
+              <span className="font-medium text-foreground">Examples:</span>{" "}
+              {profile.examples}
+            </p>
+          </div>
+  
+          <p className="text-xs text-center text-muted-foreground mt-3 italic">
+            <span className="font-semibold not-italic text-foreground">
+              COX-1 = housekeeping (gastric, platelet, renal). COX-2 = inflammation, fever, pain — and endothelial PGI₂.
+            </span>
           </p>
         </div>
-
-        <p className="text-xs text-center text-muted-foreground mt-3 italic">
-          <span className="font-semibold not-italic text-foreground">
-            COX-1 = housekeeping (gastric, platelet, renal). COX-2 = inflammation, fever, pain — and endothelial PGI₂.
-          </span>
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ViewMode = "overview" | "bohr" | "vq";
 
@@ -26,34 +27,40 @@ const DeadSpaceDiagram = () => {
   const [highlightType, setHighlightType] = useState<"anatomical" | "alveolar" | "physiological" | null>(null);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-foreground">Dead Space & V/Q Mismatch</h3>
-
-      {/* View selector */}
-      <div className="flex flex-wrap gap-2">
-        {([
-          { key: "overview" as ViewMode, label: "Dead Space Types" },
-          { key: "bohr" as ViewMode, label: "Bohr Equation" },
-          { key: "vq" as ViewMode, label: "V/Q Spectrum" },
-        ]).map(({ key, label }) => (
-          <button
-            key={key}
-            onClick={() => { setView(key); setHighlightType(null); setSelectedUnit(null); }}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              view === key
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="dead-space-diagram"
+      title="Dead space"
+      description="Auto-generated wrapper for the Dead space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <h3 className="text-lg font-semibold text-foreground">Dead Space & V/Q Mismatch</h3>
+  
+        {/* View selector */}
+        <div className="flex flex-wrap gap-2">
+          {([
+            { key: "overview" as ViewMode, label: "Dead Space Types" },
+            { key: "bohr" as ViewMode, label: "Bohr Equation" },
+            { key: "vq" as ViewMode, label: "V/Q Spectrum" },
+          ]).map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => { setView(key); setHighlightType(null); setSelectedUnit(null); }}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                view === key
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-secondary/50 text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+  
+        {view === "overview" && <OverviewView highlightType={highlightType} setHighlightType={setHighlightType} />}
+        {view === "bohr" && <BohrView />}
+        {view === "vq" && <VQView selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />}
       </div>
-
-      {view === "overview" && <OverviewView highlightType={highlightType} setHighlightType={setHighlightType} />}
-      {view === "bohr" && <BohrView />}
-      {view === "vq" && <VQView selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />}
-    </div>
+    </DiagramFigure>
   );
 };
 

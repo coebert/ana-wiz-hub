@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Play, Pause, RotateCcw } from "lucide-react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* Channel activity windows as fraction of cycle (0..1) for each view */
 const contractileChannels: { id: string; label: string; start: number; end: number; color: string }[] = [
@@ -154,203 +155,209 @@ const VaughanWilliamsAPDiagram = () => {
   const activeChannels = channels.filter((c) => time >= c.start && time <= c.end);
 
   return (
-    <div className="space-y-4">
-      <p className="text-sm text-muted-foreground text-center">
-        Click a drug class to see where it acts — or press play to sweep the timeline and see which channels are open
-      </p>
-
-      {/* View toggle */}
-      <div className="flex justify-center gap-1 bg-muted/50 rounded-lg p-1 max-w-xs mx-auto">
-        <button
-          onClick={() => setView("contractile")}
-          className={`flex-1 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-            view === "contractile"
-              ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Contractile Cell
-        </button>
-        <button
-          onClick={() => setView("pacemaker")}
-          className={`flex-1 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-            view === "pacemaker"
-              ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Pacemaker (SA Node)
-        </button>
-      </div>
-
-      {/* Drug class selector pills */}
-      <div className="flex flex-wrap gap-2 justify-center">
-        {drugClasses.map((dc) => {
-          const relevantInView =
-            view === "pacemaker"
-              ? dc.pacemakerPhases && dc.pacemakerPhases.length > 0
-              : true;
-          return (
-            <button
-              key={dc.id}
-              onClick={() => setSelectedClass(selectedClass === dc.id ? null : dc.id)}
-              className="px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all duration-200"
-              style={{
-                borderColor: dc.color,
-                backgroundColor: selectedClass === dc.id ? dc.color : "transparent",
-                color: selectedClass === dc.id ? "white" : dc.color,
-                opacity: relevantInView ? 1 : 0.35,
-              }}
-            >
-              Class {dc.label}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Playhead controls */}
-      <div className="flex items-center gap-3 max-w-xl mx-auto px-1">
-        <button
-          onClick={() => setPlaying((p) => !p)}
-          className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
-          aria-label={playing ? "Pause" : "Play"}
-        >
-          {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
-        </button>
-        <button
-          onClick={() => { setTime(0); setPlaying(false); }}
-          className="flex items-center justify-center w-9 h-9 rounded-full bg-muted text-foreground hover:bg-muted/70 transition-colors shrink-0"
-          aria-label="Reset"
-        >
-          <RotateCcw className="w-4 h-4" />
-        </button>
-        <input
-          type="range"
-          min={0}
-          max={1000}
-          value={Math.round(time * 1000)}
-          onChange={(e) => { setTime(Number(e.target.value) / 1000); setPlaying(false); }}
-          className="flex-1 accent-primary"
-          aria-label="Scrub timeline"
-        />
-        <span className="text-xs font-mono text-muted-foreground w-14 text-right tabular-nums">
-          {(time * cycleMs / 1000).toFixed(2)}s
-        </span>
-      </div>
-
-      {/* Active channels readout — blocked currents appear suppressed (greyed) */}
-      <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
-        {channels.map((c) => {
-          const active = activeChannels.some((a) => a.id === c.id);
-          const blocked = !!selected && selected.blocks.includes(c.id);
-          const greyBorder = "hsl(var(--muted-foreground))";
-          return (
-            <span
-              key={c.id}
-              className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150 relative inline-flex items-center gap-1"
-              style={{
-                borderColor: blocked ? greyBorder : c.color,
-                borderWidth: 1,
-                borderStyle: blocked ? "dashed" : "solid",
-                backgroundColor: blocked
-                  ? (active ? "hsl(var(--muted))" : "transparent")
-                  : (active ? c.color : "transparent"),
-                color: blocked
-                  ? "hsl(var(--muted-foreground))"
-                  : (active ? "white" : c.color),
-                opacity: blocked ? (active ? 0.55 : 0.35) : (active ? 1 : 0.4),
-                textDecoration: blocked ? "line-through" : "none",
-                filter: blocked ? "grayscale(1)" : "none",
-              }}
-              title={blocked ? `Blocked by Class ${selected!.id} — current suppressed` : undefined}
-            >
-              {blocked && <span aria-hidden className="text-[9px]">⛔</span>}
-              {c.label}
-            </span>
-          );
-        })}
-      </div>
-
-      {/* Blocking legend */}
-      {selected && selected.blocks.length > 0 && (
-        <p className="text-center text-[11px] text-muted-foreground -mt-2">
-          <span className="font-semibold" style={{ color: selected.color }}>Class {selected.id}</span> blocks{" "}
-          <span className="font-semibold">{selected.blocks.join(", ")}</span> — watch the badge light up red as the playhead enters its window
+    <DiagramFigure
+      id="vaughan-williams-ap-diagram"
+      title="Vaughan williams AP"
+      description="Auto-generated wrapper for the Vaughan williams AP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <p className="text-sm text-muted-foreground text-center">
+          Click a drug class to see where it acts — or press play to sweep the timeline and see which channels are open
         </p>
-      )}
-
-      {/* SVG Diagrams + ECG strip side-by-side */}
-      <div className="grid lg:grid-cols-2 gap-3">
-        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
-          {view === "contractile" ? (
-            <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-          ) : (
-            <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
-          )}
+  
+        {/* View toggle */}
+        <div className="flex justify-center gap-1 bg-muted/50 rounded-lg p-1 max-w-xs mx-auto">
+          <button
+            onClick={() => setView("contractile")}
+            className={`flex-1 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+              view === "contractile"
+                ? "bg-background text-foreground shadow-sm"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Contractile Cell
+          </button>
+          <button
+            onClick={() => setView("pacemaker")}
+            className={`flex-1 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+              view === "pacemaker"
+                ? "bg-background text-foreground shadow-sm"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Pacemaker (SA Node)
+          </button>
         </div>
-        <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
-          <ECGStrip selected={selected} time={time} />
+  
+        {/* Drug class selector pills */}
+        <div className="flex flex-wrap gap-2 justify-center">
+          {drugClasses.map((dc) => {
+            const relevantInView =
+              view === "pacemaker"
+                ? dc.pacemakerPhases && dc.pacemakerPhases.length > 0
+                : true;
+            return (
+              <button
+                key={dc.id}
+                onClick={() => setSelectedClass(selectedClass === dc.id ? null : dc.id)}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold border-2 transition-all duration-200"
+                style={{
+                  borderColor: dc.color,
+                  backgroundColor: selectedClass === dc.id ? dc.color : "transparent",
+                  color: selectedClass === dc.id ? "white" : dc.color,
+                  opacity: relevantInView ? 1 : 0.35,
+                }}
+              >
+                Class {dc.label}
+              </button>
+            );
+          })}
         </div>
-      </div>
-
-      {/* Detail panel */}
-      {selected && (
-        <div
-          className="border rounded-lg p-4 space-y-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
-          style={{ borderColor: withAlpha(selected.color, 0.4) }}
-        >
-          <div className="flex items-center gap-2 flex-wrap">
-            <Badge className="text-xs font-bold text-white" style={{ backgroundColor: selected.color }}>
-              Class {selected.id}
-            </Badge>
-            <span className="text-sm font-semibold text-foreground">{selected.fullName}</span>
-            {view === "contractile" && (
-              <Badge variant="outline" className="text-[10px]">
-                Phase {selected.phases.join(" & ")}
-              </Badge>
-            )}
-            {view === "pacemaker" && selected.pacemakerPhases && (
-              <Badge variant="outline" className="text-[10px]">
-                Pacemaker Phase {selected.pacemakerPhases.join(" & ")}
-              </Badge>
+  
+        {/* Playhead controls */}
+        <div className="flex items-center gap-3 max-w-xl mx-auto px-1">
+          <button
+            onClick={() => setPlaying((p) => !p)}
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity shrink-0"
+            aria-label={playing ? "Pause" : "Play"}
+          >
+            {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 ml-0.5" />}
+          </button>
+          <button
+            onClick={() => { setTime(0); setPlaying(false); }}
+            className="flex items-center justify-center w-9 h-9 rounded-full bg-muted text-foreground hover:bg-muted/70 transition-colors shrink-0"
+            aria-label="Reset"
+          >
+            <RotateCcw className="w-4 h-4" />
+          </button>
+          <input
+            type="range"
+            min={0}
+            max={1000}
+            value={Math.round(time * 1000)}
+            onChange={(e) => { setTime(Number(e.target.value) / 1000); setPlaying(false); }}
+            className="flex-1 accent-primary"
+            aria-label="Scrub timeline"
+          />
+          <span className="text-xs font-mono text-muted-foreground w-14 text-right tabular-nums">
+            {(time * cycleMs / 1000).toFixed(2)}s
+          </span>
+        </div>
+  
+        {/* Active channels readout — blocked currents appear suppressed (greyed) */}
+        <div className="flex flex-wrap gap-1.5 justify-center min-h-[28px]">
+          {channels.map((c) => {
+            const active = activeChannels.some((a) => a.id === c.id);
+            const blocked = !!selected && selected.blocks.includes(c.id);
+            const greyBorder = "hsl(var(--muted-foreground))";
+            return (
+              <span
+                key={c.id}
+                className="px-2 py-0.5 rounded text-[10px] font-semibold border transition-all duration-150 relative inline-flex items-center gap-1"
+                style={{
+                  borderColor: blocked ? greyBorder : c.color,
+                  borderWidth: 1,
+                  borderStyle: blocked ? "dashed" : "solid",
+                  backgroundColor: blocked
+                    ? (active ? "hsl(var(--muted))" : "transparent")
+                    : (active ? c.color : "transparent"),
+                  color: blocked
+                    ? "hsl(var(--muted-foreground))"
+                    : (active ? "white" : c.color),
+                  opacity: blocked ? (active ? 0.55 : 0.35) : (active ? 1 : 0.4),
+                  textDecoration: blocked ? "line-through" : "none",
+                  filter: blocked ? "grayscale(1)" : "none",
+                }}
+                title={blocked ? `Blocked by Class ${selected!.id} — current suppressed` : undefined}
+              >
+                {blocked && <span aria-hidden className="text-[9px]">⛔</span>}
+                {c.label}
+              </span>
+            );
+          })}
+        </div>
+  
+        {/* Blocking legend */}
+        {selected && selected.blocks.length > 0 && (
+          <p className="text-center text-[11px] text-muted-foreground -mt-2">
+            <span className="font-semibold" style={{ color: selected.color }}>Class {selected.id}</span> blocks{" "}
+            <span className="font-semibold">{selected.blocks.join(", ")}</span> — watch the badge light up red as the playhead enters its window
+          </p>
+        )}
+  
+        {/* SVG Diagrams + ECG strip side-by-side */}
+        <div className="grid lg:grid-cols-2 gap-3">
+          <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+            {view === "contractile" ? (
+              <ContractileView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
+            ) : (
+              <PacemakerView selectedClass={selectedClass} setSelectedClass={setSelectedClass} selected={selected} time={time} />
             )}
           </div>
-          <div className="grid gap-2 text-sm">
-            <div>
-              <span className="text-muted-foreground font-medium">Target phases: </span>
-              {(view === "pacemaker" && selected.pacemakerPhases ? selected.pacemakerPhases : selected.phases).map((p, i, arr) => (
-                <span key={p} className="text-foreground">
-                  Phase {p} ({phaseInfo[p].name} — {phaseInfo[p].ion})
-                  {i < arr.length - 1 ? " + " : ""}
-                </span>
-              ))}
-            </div>
-            <div>
-              <span className="text-muted-foreground font-medium">Mechanism: </span>
-              <span className="text-foreground">{selected.mechanism}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground font-medium">Effect: </span>
-              <span className="text-foreground">{selected.effect}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground font-medium">Examples: </span>
-              <span className="text-foreground">{selected.examples}</span>
-            </div>
-            <div>
-              <span className="text-muted-foreground font-medium">ECG changes: </span>
-              <span className="text-foreground">{selected.ecg}</span>
-            </div>
+          <div className="bg-muted/30 rounded-lg p-2 overflow-x-auto">
+            <ECGStrip selected={selected} time={time} />
           </div>
         </div>
-      )}
-
-      {!selected && (
-        <p className="text-xs text-muted-foreground text-center italic">
-          Select a drug class above to see its mechanism, target phase, and clinical effects
-        </p>
-      )}
-    </div>
+  
+        {/* Detail panel */}
+        {selected && (
+          <div
+            className="border rounded-lg p-4 space-y-2 animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+            style={{ borderColor: withAlpha(selected.color, 0.4) }}
+          >
+            <div className="flex items-center gap-2 flex-wrap">
+              <Badge className="text-xs font-bold text-white" style={{ backgroundColor: selected.color }}>
+                Class {selected.id}
+              </Badge>
+              <span className="text-sm font-semibold text-foreground">{selected.fullName}</span>
+              {view === "contractile" && (
+                <Badge variant="outline" className="text-[10px]">
+                  Phase {selected.phases.join(" & ")}
+                </Badge>
+              )}
+              {view === "pacemaker" && selected.pacemakerPhases && (
+                <Badge variant="outline" className="text-[10px]">
+                  Pacemaker Phase {selected.pacemakerPhases.join(" & ")}
+                </Badge>
+              )}
+            </div>
+            <div className="grid gap-2 text-sm">
+              <div>
+                <span className="text-muted-foreground font-medium">Target phases: </span>
+                {(view === "pacemaker" && selected.pacemakerPhases ? selected.pacemakerPhases : selected.phases).map((p, i, arr) => (
+                  <span key={p} className="text-foreground">
+                    Phase {p} ({phaseInfo[p].name} — {phaseInfo[p].ion})
+                    {i < arr.length - 1 ? " + " : ""}
+                  </span>
+                ))}
+              </div>
+              <div>
+                <span className="text-muted-foreground font-medium">Mechanism: </span>
+                <span className="text-foreground">{selected.mechanism}</span>
+              </div>
+              <div>
+                <span className="text-muted-foreground font-medium">Effect: </span>
+                <span className="text-foreground">{selected.effect}</span>
+              </div>
+              <div>
+                <span className="text-muted-foreground font-medium">Examples: </span>
+                <span className="text-foreground">{selected.examples}</span>
+              </div>
+              <div>
+                <span className="text-muted-foreground font-medium">ECG changes: </span>
+                <span className="text-foreground">{selected.ecg}</span>
+              </div>
+            </div>
+          </div>
+        )}
+  
+        {!selected && (
+          <p className="text-xs text-muted-foreground text-center italic">
+            Select a drug class above to see its mechanism, target phase, and clinical effects
+          </p>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };
 

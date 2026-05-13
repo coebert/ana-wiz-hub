@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated maternal physiology timeline.
@@ -120,196 +121,202 @@ const PregnancyTimelineDiagram = () => {
   );
 
   return (
-        <div className="rounded-xl border border-border bg-card/50 p-4 space-y-4">
-      <div className="flex flex-wrap items-center gap-3 justify-between">
-        <div>
-          <h3 className="font-serif font-bold text-foreground text-lg">Pregnancy Physiology Timeline</h3>
-          <p className="text-xs text-muted-foreground">
-            Week <span className="font-mono text-foreground">{week >= 41 ? "PP" : week.toFixed(1)}</span> · {trimester}
-          </p>
+    <DiagramFigure
+      id="pregnancy-timeline-diagram"
+      title="Pregnancy timeline"
+      description="Auto-generated wrapper for the Pregnancy timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-xl border border-border bg-card/50 p-4 space-y-4">
+        <div className="flex flex-wrap items-center gap-3 justify-between">
+          <div>
+            <h3 className="font-serif font-bold text-foreground text-lg">Pregnancy Physiology Timeline</h3>
+            <p className="text-xs text-muted-foreground">
+              Week <span className="font-mono text-foreground">{week >= 41 ? "PP" : week.toFixed(1)}</span> · {trimester}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setPlaying((p) => !p)}
+              className="px-3 py-1.5 text-xs rounded-md bg-primary text-primary-foreground hover:opacity-90"
+            >
+              {playing ? "Pause" : "Play"}
+            </button>
+            <button
+              onClick={() => setWeek(0)}
+              className="px-3 py-1.5 text-xs rounded-md bg-secondary text-foreground hover:bg-secondary/80"
+            >
+              Reset
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
+  
+        {/* Track filter */}
+        <div className="flex flex-wrap gap-1.5">
           <button
-            onClick={() => setPlaying((p) => !p)}
-            className="px-3 py-1.5 text-xs rounded-md bg-primary text-primary-foreground hover:opacity-90"
-          >
-            {playing ? "Pause" : "Play"}
-          </button>
-          <button
-            onClick={() => setWeek(0)}
-            className="px-3 py-1.5 text-xs rounded-md bg-secondary text-foreground hover:bg-secondary/80"
-          >
-            Reset
-          </button>
-        </div>
-      </div>
-
-      {/* Track filter */}
-      <div className="flex flex-wrap gap-1.5">
-        <button
-          onClick={() => setActiveTrack("all")}
-          className={`px-2.5 py-1 text-xs rounded-full border transition-colors ${
-            activeTrack === "all"
-              ? "bg-foreground text-background border-foreground"
-              : "bg-transparent text-muted-foreground border-border hover:text-foreground"
-          }`}
-        >
-          All systems
-        </button>
-        {TRACKS.map((t) => (
-          <button
-            key={t.id}
-            onClick={() => setActiveTrack(t.id)}
+            onClick={() => setActiveTrack("all")}
             className={`px-2.5 py-1 text-xs rounded-full border transition-colors ${
-              activeTrack === t.id ? "text-background border-transparent" : "bg-transparent text-muted-foreground border-border hover:text-foreground"
+              activeTrack === "all"
+                ? "bg-foreground text-background border-foreground"
+                : "bg-transparent text-muted-foreground border-border hover:text-foreground"
             }`}
-            style={activeTrack === t.id ? { backgroundColor: t.color } : undefined}
           >
-            {t.label}
+            All systems
           </button>
-        ))}
-      </div>
-
-      <div className="overflow-x-auto">
-        <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" style={{ minWidth: 640 }}>
-          {/* Trimester bands */}
-          {[
-            { from: 0, to: 13, label: "1st trimester", fill: "hsl(var(--secondary) / 0.25)" },
-            { from: 13, to: 27, label: "2nd trimester", fill: "hsl(var(--secondary) / 0.45)" },
-            { from: 27, to: 40, label: "3rd trimester", fill: "hsl(var(--secondary) / 0.65)" },
-            { from: 40, to: 41, label: "Labour / PP", fill: "hsl(0 60% 50% / 0.18)" },
-          ].map((b) => (
-            <g key={b.label}>
-              <rect x={weekToX(b.from)} y={50} width={weekToX(b.to) - weekToX(b.from)} height={H - 90} fill={b.fill} />
-              <text x={(weekToX(b.from) + weekToX(b.to)) / 2} y={42} textAnchor="middle"
-                className="fill-muted-foreground" fontSize="10">{b.label}</text>
-            </g>
+          {TRACKS.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setActiveTrack(t.id)}
+              className={`px-2.5 py-1 text-xs rounded-full border transition-colors ${
+                activeTrack === t.id ? "text-background border-transparent" : "bg-transparent text-muted-foreground border-border hover:text-foreground"
+              }`}
+              style={activeTrack === t.id ? { backgroundColor: t.color } : undefined}
+            >
+              {t.label}
+            </button>
           ))}
-
-          {/* Week axis */}
-          {[0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40].map((w) => (
-            <g key={w}>
-              <line x1={weekToX(w)} y1={H - 40} x2={weekToX(w)} y2={H - 35} stroke="hsl(var(--muted-foreground))" strokeWidth={1} />
-              <text x={weekToX(w)} y={H - 22} textAnchor="middle" className="fill-muted-foreground" fontSize="10">{w}</text>
-            </g>
-          ))}
-          <text x={weekToX(41)} y={H - 22} textAnchor="middle" className="fill-muted-foreground" fontSize="10">PP</text>
-          <text x={(X0 + X1) / 2} y={H - 6} textAnchor="middle" className="fill-muted-foreground" fontSize="11">
-            Gestational age (weeks)
-          </text>
-
-          {/* Track rows */}
-          {TRACKS.map((t) => {
-            const dim = activeTrack !== "all" && activeTrack !== t.id;
-            return (
-              <g key={t.id} opacity={dim ? 0.2 : 1}>
-                <line x1={X0} y1={t.y} x2={X1} y2={t.y} stroke="hsl(var(--border))" strokeDasharray="2 4" />
-                <text x={X0 - 10} y={t.y + 4} textAnchor="end" className="fill-foreground" fontSize="11" fontWeight={600}>
-                  {t.label}
-                </text>
-                <circle cx={X0 - 122} cy={t.y - 1} r={4} fill={t.color} />
+        </div>
+  
+        <div className="overflow-x-auto">
+          <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" style={{ minWidth: 640 }}>
+            {/* Trimester bands */}
+            {[
+              { from: 0, to: 13, label: "1st trimester", fill: "hsl(var(--secondary) / 0.25)" },
+              { from: 13, to: 27, label: "2nd trimester", fill: "hsl(var(--secondary) / 0.45)" },
+              { from: 27, to: 40, label: "3rd trimester", fill: "hsl(var(--secondary) / 0.65)" },
+              { from: 40, to: 41, label: "Labour / PP", fill: "hsl(0 60% 50% / 0.18)" },
+            ].map((b) => (
+              <g key={b.label}>
+                <rect x={weekToX(b.from)} y={50} width={weekToX(b.to) - weekToX(b.from)} height={H - 90} fill={b.fill} />
+                <text x={(weekToX(b.from) + weekToX(b.to)) / 2} y={42} textAnchor="middle"
+                  className="fill-muted-foreground" fontSize="10">{b.label}</text>
               </g>
-            );
-          })}
-
-          {/* Events */}
-          {visibleEvents.map((e) => {
-            const track = TRACKS.find((t) => t.id === e.track)!;
-            const x1 = weekToX(e.start);
-            const x2 = weekToX(e.end ?? e.start + 0.5);
-            const isActive = week >= e.start && week <= (e.end ?? e.start + 0.5);
-            return (
-              <g key={e.id}>
-                {/* span bar */}
-                <rect
-                  x={x1}
-                  y={track.y - 7}
-                  width={Math.max(6, x2 - x1)}
-                  height={14}
-                  rx={7}
-                  fill={track.color}
-                  opacity={isActive ? 0.95 : 0.45}
-                  stroke={isActive ? track.color : "transparent"}
-                  strokeWidth={isActive ? 2 : 0}
-                  style={{ filter: isActive ? `drop-shadow(0 0 6px ${track.color})` : "none" }}
-                >
-                  <title>{e.label} (weeks {e.start}{e.end ? `–${e.end === 41 ? "PP" : e.end}` : ""})</title>
-                </rect>
-                {/* peak marker */}
-                {e.peak !== undefined && (
-                  <circle cx={weekToX(e.peak)} cy={track.y} r={3.5} fill="hsl(var(--background))" stroke={track.color} strokeWidth={2} />
-                )}
-                {/* start tick */}
-                <line x1={x1} y1={track.y - 10} x2={x1} y2={track.y + 10} stroke={track.color} strokeWidth={1} opacity={0.6} />
+            ))}
+  
+            {/* Week axis */}
+            {[0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40].map((w) => (
+              <g key={w}>
+                <line x1={weekToX(w)} y1={H - 40} x2={weekToX(w)} y2={H - 35} stroke="hsl(var(--muted-foreground))" strokeWidth={1} />
+                <text x={weekToX(w)} y={H - 22} textAnchor="middle" className="fill-muted-foreground" fontSize="10">{w}</text>
               </g>
-            );
-          })}
-
-          {/* Playhead */}
-          <line x1={playheadX} y1={50} x2={playheadX} y2={H - 40} stroke="hsl(var(--primary))" strokeWidth={2} />
-          <polygon
-            points={`${playheadX - 6},46 ${playheadX + 6},46 ${playheadX},56`}
-            fill="hsl(var(--primary))"
-          />
-          <rect
-            x={playheadX - 22}
-            y={28}
-            width={44}
-            height={16}
-            rx={3}
-            fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
-          <text x={playheadX} y={40} textAnchor="middle" className="fill-primary-foreground" fontSize="10" fontWeight={700}>
-            {week >= 41 ? "PP" : `wk ${Math.round(week)}`}
-          </text>
-        </svg>
-      </div>
-
-      {/* Scrubber */}
-      <div className="flex items-center gap-3">
-        <span className="text-xs text-muted-foreground w-8">0</span>
-        <input
-          type="range"
-          min={0}
-          max={41}
-          step={0.1}
-          value={week}
-          onChange={(e) => {
-            setPlaying(false);
-            setWeek(parseFloat(e.target.value));
-          }}
-          className="flex-1 accent-primary"
-        />
-        <span className="text-xs text-muted-foreground w-8 text-right">PP</span>
-      </div>
-
-      {/* Active changes panel */}
-      <div className="rounded-lg border border-border bg-secondary/30 p-3">
-        <p className="text-xs font-semibold text-foreground mb-2">
-          Active at week {week >= 41 ? "PP" : week.toFixed(0)} — {activeEvents.length} change{activeEvents.length === 1 ? "" : "s"}
-        </p>
-        {activeEvents.length === 0 ? (
-          <p className="text-xs text-muted-foreground italic">No specific changes flagged at this gestational age.</p>
-        ) : (
-          <ul className="space-y-1.5">
-            {activeEvents.map((e) => {
-              const track = TRACKS.find((t) => t.id === e.track)!;
+            ))}
+            <text x={weekToX(41)} y={H - 22} textAnchor="middle" className="fill-muted-foreground" fontSize="10">PP</text>
+            <text x={(X0 + X1) / 2} y={H - 6} textAnchor="middle" className="fill-muted-foreground" fontSize="11">
+              Gestational age (weeks)
+            </text>
+  
+            {/* Track rows */}
+            {TRACKS.map((t) => {
+              const dim = activeTrack !== "all" && activeTrack !== t.id;
               return (
-                    <li key={e.id} className="flex gap-2 text-xs">
-                  <span
-                    className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: track.color }}
-                  />
-                  <div>
-                    <span className="font-semibold text-foreground">{e.label}</span>
-                    <span className="text-muted-foreground"> — {e.detail}</span>
-                  </div>
-                </li>
-  );
+                <g key={t.id} opacity={dim ? 0.2 : 1}>
+                  <line x1={X0} y1={t.y} x2={X1} y2={t.y} stroke="hsl(var(--border))" strokeDasharray="2 4" />
+                  <text x={X0 - 10} y={t.y + 4} textAnchor="end" className="fill-foreground" fontSize="11" fontWeight={600}>
+                    {t.label}
+                  </text>
+                  <circle cx={X0 - 122} cy={t.y - 1} r={4} fill={t.color} />
+                </g>
+              );
             })}
-          </ul>
-        )}
+  
+            {/* Events */}
+            {visibleEvents.map((e) => {
+              const track = TRACKS.find((t) => t.id === e.track)!;
+              const x1 = weekToX(e.start);
+              const x2 = weekToX(e.end ?? e.start + 0.5);
+              const isActive = week >= e.start && week <= (e.end ?? e.start + 0.5);
+              return (
+                <g key={e.id}>
+                  {/* span bar */}
+                  <rect
+                    x={x1}
+                    y={track.y - 7}
+                    width={Math.max(6, x2 - x1)}
+                    height={14}
+                    rx={7}
+                    fill={track.color}
+                    opacity={isActive ? 0.95 : 0.45}
+                    stroke={isActive ? track.color : "transparent"}
+                    strokeWidth={isActive ? 2 : 0}
+                    style={{ filter: isActive ? `drop-shadow(0 0 6px ${track.color})` : "none" }}
+                  >
+                    <title>{e.label} (weeks {e.start}{e.end ? `–${e.end === 41 ? "PP" : e.end}` : ""})</title>
+                  </rect>
+                  {/* peak marker */}
+                  {e.peak !== undefined && (
+                    <circle cx={weekToX(e.peak)} cy={track.y} r={3.5} fill="hsl(var(--background))" stroke={track.color} strokeWidth={2} />
+                  )}
+                  {/* start tick */}
+                  <line x1={x1} y1={track.y - 10} x2={x1} y2={track.y + 10} stroke={track.color} strokeWidth={1} opacity={0.6} />
+                </g>
+              );
+            })}
+  
+            {/* Playhead */}
+            <line x1={playheadX} y1={50} x2={playheadX} y2={H - 40} stroke="hsl(var(--primary))" strokeWidth={2} />
+            <polygon
+              points={`${playheadX - 6},46 ${playheadX + 6},46 ${playheadX},56`}
+              fill="hsl(var(--primary))"
+            />
+            <rect
+              x={playheadX - 22}
+              y={28}
+              width={44}
+              height={16}
+              rx={3}
+              fill="hsl(var(--primary))" stroke="hsl(var(--border))" strokeWidth="0.75" />
+            <text x={playheadX} y={40} textAnchor="middle" className="fill-primary-foreground" fontSize="10" fontWeight={700}>
+              {week >= 41 ? "PP" : `wk ${Math.round(week)}`}
+            </text>
+          </svg>
+        </div>
+  
+        {/* Scrubber */}
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-muted-foreground w-8">0</span>
+          <input
+            type="range"
+            min={0}
+            max={41}
+            step={0.1}
+            value={week}
+            onChange={(e) => {
+              setPlaying(false);
+              setWeek(parseFloat(e.target.value));
+            }}
+            className="flex-1 accent-primary"
+          />
+          <span className="text-xs text-muted-foreground w-8 text-right">PP</span>
+        </div>
+  
+        {/* Active changes panel */}
+        <div className="rounded-lg border border-border bg-secondary/30 p-3">
+          <p className="text-xs font-semibold text-foreground mb-2">
+            Active at week {week >= 41 ? "PP" : week.toFixed(0)} — {activeEvents.length} change{activeEvents.length === 1 ? "" : "s"}
+          </p>
+          {activeEvents.length === 0 ? (
+            <p className="text-xs text-muted-foreground italic">No specific changes flagged at this gestational age.</p>
+          ) : (
+            <ul className="space-y-1.5">
+              {activeEvents.map((e) => {
+                const track = TRACKS.find((t) => t.id === e.track)!;
+                return (
+                      <li key={e.id} className="flex gap-2 text-xs">
+                    <span
+                      className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: track.color }}
+                    />
+                    <div>
+                      <span className="font-semibold text-foreground">{e.label}</span>
+                      <span className="text-muted-foreground"> — {e.detail}</span>
+                    </div>
+                  </li>
+    );
+              })}
+            </ul>
+          )}
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

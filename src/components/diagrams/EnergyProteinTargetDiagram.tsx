@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = "acute-early" | "acute-late" | "recovery";
 
@@ -45,93 +46,99 @@ export const EnergyProteinTargetDiagram = () => {
   }, [weight, phase]);
 
   return (
-        <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
-      <div className="mb-4">
-        <h3 className="text-lg font-serif font-bold text-foreground">
-          Energy &amp; Protein Target Estimator (ESPEN 2019)
-        </h3>
-        <p className="text-xs text-muted-foreground mt-1">
-          Non-obese adult ICU patient. Targets are predictive — indirect calorimetry remains gold standard.
-        </p>
-      </div>
-
-      <div className="space-y-5">
-        <div>
-          <div className="flex items-center justify-between mb-1.5">
-            <Label className="text-sm">Patient weight</Label>
-            <span className="text-sm font-mono font-semibold text-foreground">{weight} kg</span>
-          </div>
-          <Slider
-            value={[weight]}
-            min={40}
-            max={130}
-            step={1}
-            onValueChange={([v]) => setWeight(v)}
-          />
-        </div>
-
-        <div>
-          <Label className="text-sm mb-2 block">Phase of critical illness</Label>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            {(Object.keys(PHASE_COPY) as Phase[]).map((p) => {
-              const active = phase === p;
-              return (
-                    <button
-                  key={p}
-                  type="button"
-                  onClick={() => setPhase(p)}
-                  className={`text-left rounded-lg border p-3 transition-colors ${
-                    active
-                      ? "border-icu/60 bg-icu/10"
-                      : "border-border bg-background hover:bg-muted/40"
-                  }`}
-                >
-                  <p className={`text-xs font-semibold ${active ? "text-icu" : "text-foreground"}`}>
-                    {PHASE_COPY[p].title}
-                  </p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                    {PHASE_COPY[p].subtitle}
-                  </p>
-                </button>
-  );
-            })}
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-3">
-          <div className="rounded-lg border border-icu/30 bg-icu/5 p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-icu">Energy target</p>
-            <p className="text-2xl font-bold text-foreground mt-1">
-              {targets.kcalLow === targets.kcalHigh
-                ? `${targets.kcalLow}`
-                : `${targets.kcalLow}–${targets.kcalHigh}`}{" "}
-              <span className="text-sm font-normal text-muted-foreground">kcal/day</span>
-            </p>
-            <p className="text-[11px] text-muted-foreground mt-1">
-              ≈ {Math.round((targets.kcalLow / weight) * 10) / 10}–
-              {Math.round((targets.kcalHigh / weight) * 10) / 10} kcal/kg/day
-            </p>
-          </div>
-          <div className="rounded-lg border border-clinical/30 bg-clinical/5 p-4">
-            <p className="text-[11px] font-semibold uppercase tracking-wide text-clinical">Protein target</p>
-            <p className="text-2xl font-bold text-foreground mt-1">
-              {targets.proteinLow}–{targets.proteinHigh}{" "}
-              <span className="text-sm font-normal text-muted-foreground">g/day</span>
-            </p>
-            <p className="text-[11px] text-muted-foreground mt-1">
-              ≈ {PHASE_COPY[phase].protein[0]}–{PHASE_COPY[phase].protein[1]} g/kg/day
-            </p>
-          </div>
-        </div>
-
-        <div className="rounded-lg border border-border bg-muted/30 p-3">
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-1">
-            Phase guidance
+    <DiagramFigure
+      id="energy-protein-target-diagram"
+      title="Energy protein target"
+      description="Auto-generated wrapper for the Energy protein target anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-xl border border-border bg-card p-5 shadow-sm">
+        <div className="mb-4">
+          <h3 className="text-lg font-serif font-bold text-foreground">
+            Energy &amp; Protein Target Estimator (ESPEN 2019)
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Non-obese adult ICU patient. Targets are predictive — indirect calorimetry remains gold standard.
           </p>
-          <p className="text-xs text-foreground leading-relaxed">{PHASE_COPY[phase].note}</p>
+        </div>
+  
+        <div className="space-y-5">
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <Label className="text-sm">Patient weight</Label>
+              <span className="text-sm font-mono font-semibold text-foreground">{weight} kg</span>
+            </div>
+            <Slider
+              value={[weight]}
+              min={40}
+              max={130}
+              step={1}
+              onValueChange={([v]) => setWeight(v)}
+            />
+          </div>
+  
+          <div>
+            <Label className="text-sm mb-2 block">Phase of critical illness</Label>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              {(Object.keys(PHASE_COPY) as Phase[]).map((p) => {
+                const active = phase === p;
+                return (
+                      <button
+                    key={p}
+                    type="button"
+                    onClick={() => setPhase(p)}
+                    className={`text-left rounded-lg border p-3 transition-colors ${
+                      active
+                        ? "border-icu/60 bg-icu/10"
+                        : "border-border bg-background hover:bg-muted/40"
+                    }`}
+                  >
+                    <p className={`text-xs font-semibold ${active ? "text-icu" : "text-foreground"}`}>
+                      {PHASE_COPY[p].title}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                      {PHASE_COPY[p].subtitle}
+                    </p>
+                  </button>
+    );
+              })}
+            </div>
+          </div>
+  
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="rounded-lg border border-icu/30 bg-icu/5 p-4">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-icu">Energy target</p>
+              <p className="text-2xl font-bold text-foreground mt-1">
+                {targets.kcalLow === targets.kcalHigh
+                  ? `${targets.kcalLow}`
+                  : `${targets.kcalLow}–${targets.kcalHigh}`}{" "}
+                <span className="text-sm font-normal text-muted-foreground">kcal/day</span>
+              </p>
+              <p className="text-[11px] text-muted-foreground mt-1">
+                ≈ {Math.round((targets.kcalLow / weight) * 10) / 10}–
+                {Math.round((targets.kcalHigh / weight) * 10) / 10} kcal/kg/day
+              </p>
+            </div>
+            <div className="rounded-lg border border-clinical/30 bg-clinical/5 p-4">
+              <p className="text-[11px] font-semibold uppercase tracking-wide text-clinical">Protein target</p>
+              <p className="text-2xl font-bold text-foreground mt-1">
+                {targets.proteinLow}–{targets.proteinHigh}{" "}
+                <span className="text-sm font-normal text-muted-foreground">g/day</span>
+              </p>
+              <p className="text-[11px] text-muted-foreground mt-1">
+                ≈ {PHASE_COPY[phase].protein[0]}–{PHASE_COPY[phase].protein[1]} g/kg/day
+              </p>
+            </div>
+          </div>
+  
+          <div className="rounded-lg border border-border bg-muted/30 p-3">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+              Phase guidance
+            </p>
+            <p className="text-xs text-foreground leading-relaxed">{PHASE_COPY[phase].note}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

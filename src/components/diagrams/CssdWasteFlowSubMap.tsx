@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pause, Play, Ban } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Node {
   id: string;
@@ -134,147 +135,153 @@ const CssdWasteFlowSubMap = () => {
   }, [playing]);
 
   return (
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-      <div>
-        <h3 className="font-semibold text-foreground mb-1">CSSD & waste-side sub-map</h3>
-        <p className="text-xs text-muted-foreground">
-          Dirty instruments and clinical waste exit theatre via the sluice on a strictly one-way path. Reprocessed
-          instruments only re-enter through the separate CLEAN supply route — never back through the dirty corridor.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap gap-2 items-center">
-        <div className="flex gap-1 flex-wrap">
-          {(Object.keys(pathMeta) as Path["type"][]).map((p) => (
-            <Button
-              key={p}
-              size="sm"
-              variant={active === p ? "default" : "outline"}
-              onClick={() => setActive(p)}
-            >
-              {pathMeta[p].label}
-            </Button>
-          ))}
+    <DiagramFigure
+      id="cssd-waste-flow-sub-map"
+      title="Cssd waste flow sub MAP"
+      description="Auto-generated wrapper for the Cssd waste flow sub MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="rounded-lg border border-border bg-card p-4 space-y-3">
+        <div>
+          <h3 className="font-semibold text-foreground mb-1">CSSD & waste-side sub-map</h3>
+          <p className="text-xs text-muted-foreground">
+            Dirty instruments and clinical waste exit theatre via the sluice on a strictly one-way path. Reprocessed
+            instruments only re-enter through the separate CLEAN supply route — never back through the dirty corridor.
+          </p>
         </div>
-        <Button size="sm" variant="outline" className="ml-auto" onClick={() => setPlaying((p) => !p)}>
-          {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-        </Button>
-      </div>
-
-      <div className="rounded-md border border-border bg-background p-2 overflow-x-auto">
-        <svg viewBox="0 0 480 235" className="w-full h-auto min-w-[420px]" role="img" aria-label="CSSD and waste flow sub-map">
-          <defs>
-            {paths.map((p) => (
-              <marker
-                key={p.id}
-                id={`sub-arrow-${p.id}`}
-                viewBox="0 0 10 10"
-                refX="8"
-                refY="5"
-                markerWidth="6"
-                markerHeight="6"
-                orient="auto-start-reverse"
+  
+        <div className="flex flex-wrap gap-2 items-center">
+          <div className="flex gap-1 flex-wrap">
+            {(Object.keys(pathMeta) as Path["type"][]).map((p) => (
+              <Button
+                key={p}
+                size="sm"
+                variant={active === p ? "default" : "outline"}
+                onClick={() => setActive(p)}
               >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill={p.color} />
-              </marker>
+                {pathMeta[p].label}
+              </Button>
             ))}
-          </defs>
-
-          {/* Barrier line: visualise the physical separation between dirty corridor and clean return */}
-          <line
-            x1="10"
-            y1="87"
-            x2="470"
-            y2="87"
-            stroke="hsl(var(--border))"
-            strokeWidth="1"
-            strokeDasharray="2 3"
-          />
-          <text x="14" y="83" fontSize="6.5" className="fill-muted-foreground" fontStyle="italic">
-            DIRTY side ↑ · CLEAN side ↓ — physical barrier (no back-flow)
-          </text>
-
-          {/* Nodes */}
-          {nodes.map((n) => (
-            <g key={n.id}>
-              <rect
-                x={n.x}
-                y={n.y}
-                width={n.w}
-                height={n.h}
-                rx="4"
-                fill={toneStyles[n.tone]}
-                stroke="hsl(var(--border))"
-                strokeWidth="1"
-              />
-              <text
-                x={n.x + n.w / 2}
-                y={n.y + n.h / 2 - 2}
-                textAnchor="middle"
-                className="fill-foreground"
-                fontSize="9"
-                fontWeight="600"
-              >
-                {n.label}
-              </text>
-              <text
-                x={n.x + n.w / 2}
-                y={n.y + n.h / 2 + 10}
-                textAnchor="middle"
-                className="fill-muted-foreground"
-                fontSize="7"
-              >
-                {n.sub}
+          </div>
+          <Button size="sm" variant="outline" className="ml-auto" onClick={() => setPlaying((p) => !p)}>
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+          </Button>
+        </div>
+  
+        <div className="rounded-md border border-border bg-background p-2 overflow-x-auto">
+          <svg viewBox="0 0 480 235" className="w-full h-auto min-w-[420px]" role="img" aria-label="CSSD and waste flow sub-map">
+            <defs>
+              {paths.map((p) => (
+                <marker
+                  key={p.id}
+                  id={`sub-arrow-${p.id}`}
+                  viewBox="0 0 10 10"
+                  refX="8"
+                  refY="5"
+                  markerWidth="6"
+                  markerHeight="6"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill={p.color} />
+                </marker>
+              ))}
+            </defs>
+  
+            {/* Barrier line: visualise the physical separation between dirty corridor and clean return */}
+            <line
+              x1="10"
+              y1="87"
+              x2="470"
+              y2="87"
+              stroke="hsl(var(--border))"
+              strokeWidth="1"
+              strokeDasharray="2 3"
+            />
+            <text x="14" y="83" fontSize="6.5" className="fill-muted-foreground" fontStyle="italic">
+              DIRTY side ↑ · CLEAN side ↓ — physical barrier (no back-flow)
+            </text>
+  
+            {/* Nodes */}
+            {nodes.map((n) => (
+              <g key={n.id}>
+                <rect
+                  x={n.x}
+                  y={n.y}
+                  width={n.w}
+                  height={n.h}
+                  rx="4"
+                  fill={toneStyles[n.tone]}
+                  stroke="hsl(var(--border))"
+                  strokeWidth="1"
+                />
+                <text
+                  x={n.x + n.w / 2}
+                  y={n.y + n.h / 2 - 2}
+                  textAnchor="middle"
+                  className="fill-foreground"
+                  fontSize="9"
+                  fontWeight="600"
+                >
+                  {n.label}
+                </text>
+                <text
+                  x={n.x + n.w / 2}
+                  y={n.y + n.h / 2 + 10}
+                  textAnchor="middle"
+                  className="fill-muted-foreground"
+                  fontSize="7"
+                >
+                  {n.sub}
+                </text>
+              </g>
+            ))}
+  
+            {/* Paths */}
+            {paths
+              .filter((p) => p.type === active)
+              .map((p) => {
+                const d = p.points.map((pt, i) => `${i === 0 ? "M" : "L"} ${pt.x} ${pt.y}`).join(" ");
+                const dot = interp(p.points, t);
+                return (
+                      <g key={p.id}>
+                    <path
+                      d={d}
+                      fill="none"
+                      stroke={p.color}
+                      strokeWidth="2"
+                      strokeDasharray="4 3"
+                      opacity="0.75"
+                      markerEnd={`url(#sub-arrow-${p.id})`}
+                    />
+                    <circle cx={dot.x} cy={dot.y} r="4.5" fill={p.color} />
+                    <circle cx={dot.x} cy={dot.y} r="8" fill={p.color} opacity="0.22" />
+                  </g>
+    );
+              })}
+  
+            {/* No-entry symbol on the boundary back into theatre from dirty side */}
+            <g transform="translate(115 92)">
+              <circle r="7" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" strokeWidth="1" />
+              <line x1="-4.5" y1="-4.5" x2="4.5" y2="4.5" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+              <text x="11" y="3" fontSize="6.5" className="fill-destructive" fontWeight="600">
+                No back-flow from dirty corridor
               </text>
             </g>
-          ))}
-
-          {/* Paths */}
-          {paths
-            .filter((p) => p.type === active)
-            .map((p) => {
-              const d = p.points.map((pt, i) => `${i === 0 ? "M" : "L"} ${pt.x} ${pt.y}`).join(" ");
-              const dot = interp(p.points, t);
-              return (
-                    <g key={p.id}>
-                  <path
-                    d={d}
-                    fill="none"
-                    stroke={p.color}
-                    strokeWidth="2"
-                    strokeDasharray="4 3"
-                    opacity="0.75"
-                    markerEnd={`url(#sub-arrow-${p.id})`}
-                  />
-                  <circle cx={dot.x} cy={dot.y} r="4.5" fill={p.color} />
-                  <circle cx={dot.x} cy={dot.y} r="8" fill={p.color} opacity="0.22" />
-                </g>
-  );
-            })}
-
-          {/* No-entry symbol on the boundary back into theatre from dirty side */}
-          <g transform="translate(115 92)">
-            <circle r="7" fill="hsl(var(--destructive) / 0.15)" stroke="hsl(var(--destructive))" strokeWidth="1" />
-            <line x1="-4.5" y1="-4.5" x2="4.5" y2="4.5" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
-            <text x="11" y="3" fontSize="6.5" className="fill-destructive" fontWeight="600">
-              No back-flow from dirty corridor
-            </text>
-          </g>
-        </svg>
-      </div>
-
-      <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
-        <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1 flex items-center gap-1">
-          <Ban className="h-3 w-3" /> Active pathway
+          </svg>
+        </div>
+  
+        <div className="rounded-md border border-border bg-muted/40 p-3 text-sm">
+          <p className="text-[11px] uppercase tracking-wide text-muted-foreground mb-1 flex items-center gap-1">
+            <Ban className="h-3 w-3" /> Active pathway
+          </p>
+          <p className="font-semibold text-foreground mb-1">{pathMeta[active].label}</p>
+          <p className="text-muted-foreground">{pathMeta[active].desc}</p>
+        </div>
+  
+        <p className="text-[11px] text-muted-foreground italic">
+          Aligned with HTM 01-01 (decontamination of medical devices) and HTM 07-01 (safe management of healthcare waste).
         </p>
-        <p className="font-semibold text-foreground mb-1">{pathMeta[active].label}</p>
-        <p className="text-muted-foreground">{pathMeta[active].desc}</p>
       </div>
-
-      <p className="text-[11px] text-muted-foreground italic">
-        Aligned with HTM 01-01 (decontamination of medical devices) and HTM 07-01 (safe management of healthcare waste).
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 

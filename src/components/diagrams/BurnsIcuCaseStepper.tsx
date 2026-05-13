@@ -13,6 +13,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive worked Burns ICU case stepper.
@@ -285,182 +286,188 @@ export const BurnsIcuCaseStepper = () => {
   const canAdvance = pick !== undefined && verdict !== "wrong";
 
   return (
-    <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
-      <figcaption className="mb-3">
-        <h3 className="flex items-center gap-2 text-base font-semibold text-foreground">
-          <Flame className="h-4 w-4 text-orange-500" /> Worked case — {PATIENT.name}, {PATIENT.age} y / {PATIENT.weight} kg
-        </h3>
-        <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{PATIENT.scenario}</p>
-      </figcaption>
-
-      {/* Step rail */}
-      <div className="mb-3 flex flex-wrap gap-1">
-        {SCENES.map((sc, i) => {
-          const done = picked[i] !== undefined && SCENES[i].choices[picked[i]].verdict !== "wrong";
-          return (
-            <button
-              key={sc.id}
-              type="button"
-              onClick={() => setStep(i)}
-              className={cn(
-                "flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-[11px] font-medium transition-colors",
-                step === i
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : done
-                  ? "border-emerald-600/40 bg-emerald-600/10 text-emerald-700 dark:text-emerald-400"
-                  : "border-border bg-background text-muted-foreground hover:bg-muted",
-              )}
-            >
-              {done && <CheckCircle2 className="h-3 w-3" />}
-              <span>{sc.node}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      <div className="grid gap-3 lg:grid-cols-[280px_1fr]">
-        {/* Vitals / ABG / Vent panel */}
-        <aside className="space-y-2 rounded-lg border border-border bg-background p-3">
-          <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-foreground">
-            <Clock className="h-3.5 w-3.5 text-primary" /> {scene.time}
-          </p>
-
-          <div>
-            <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-              <Heart className="h-3 w-3" /> Vitals
+    <DiagramFigure
+      id="burns-icu-case-stepper"
+      title="Burns ICU case stepper"
+      description="Auto-generated wrapper for the Burns ICU case stepper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
+        <figcaption className="mb-3">
+          <h3 className="flex items-center gap-2 text-base font-semibold text-foreground">
+            <Flame className="h-4 w-4 text-orange-500" /> Worked case — {PATIENT.name}, {PATIENT.age} y / {PATIENT.weight} kg
+          </h3>
+          <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{PATIENT.scenario}</p>
+        </figcaption>
+  
+        {/* Step rail */}
+        <div className="mb-3 flex flex-wrap gap-1">
+          {SCENES.map((sc, i) => {
+            const done = picked[i] !== undefined && SCENES[i].choices[picked[i]].verdict !== "wrong";
+            return (
+              <button
+                key={sc.id}
+                type="button"
+                onClick={() => setStep(i)}
+                className={cn(
+                  "flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-[11px] font-medium transition-colors",
+                  step === i
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : done
+                    ? "border-emerald-600/40 bg-emerald-600/10 text-emerald-700 dark:text-emerald-400"
+                    : "border-border bg-background text-muted-foreground hover:bg-muted",
+                )}
+              >
+                {done && <CheckCircle2 className="h-3 w-3" />}
+                <span>{sc.node}</span>
+              </button>
+            );
+          })}
+        </div>
+  
+        <div className="grid gap-3 lg:grid-cols-[280px_1fr]">
+          {/* Vitals / ABG / Vent panel */}
+          <aside className="space-y-2 rounded-lg border border-border bg-background p-3">
+            <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-foreground">
+              <Clock className="h-3.5 w-3.5 text-primary" /> {scene.time}
             </p>
-            <dl className="mt-1 grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px]">
-              <Vital label="HR" value={`${scene.vitals.hr}`} />
-              <Vital label="BP" value={scene.vitals.bp} />
-              <Vital label="RR" value={`${scene.vitals.rr}`} />
-              <Vital label="SpO₂" value={`${scene.vitals.spo2} %`} />
-              <Vital label="GCS" value={`${scene.vitals.gcs}`} />
-              <Vital label="Temp" value={`${scene.vitals.temp} °C`} />
-            </dl>
-          </div>
-
-          {scene.abg && (
+  
             <div>
               <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                <Stethoscope className="h-3 w-3" /> ABG (FiO₂ {scene.abg.fiO2})
+                <Heart className="h-3 w-3" /> Vitals
               </p>
               <dl className="mt-1 grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px]">
-                <Vital label="pH" value={scene.abg.pH} />
-                <Vital label="PaO₂" value={scene.abg.paO2} />
-                <Vital label="PaCO₂" value={scene.abg.paCO2} />
-                <Vital label="HCO₃" value={scene.abg.hco3} />
-                <Vital label="BE" value={scene.abg.be} />
-                <Vital label="Lac" value={scene.abg.lac} alert={parseFloat(scene.abg.lac) > 4} />
-                <Vital label="COHb" value={scene.abg.cohb} alert={parseFloat(scene.abg.cohb) > 10} />
+                <Vital label="HR" value={`${scene.vitals.hr}`} />
+                <Vital label="BP" value={scene.vitals.bp} />
+                <Vital label="RR" value={`${scene.vitals.rr}`} />
+                <Vital label="SpO₂" value={`${scene.vitals.spo2} %`} />
+                <Vital label="GCS" value={`${scene.vitals.gcs}`} />
+                <Vital label="Temp" value={`${scene.vitals.temp} °C`} />
               </dl>
             </div>
-          )}
-
-          {scene.vent && (
-            <div>
-              <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-                <Wind className="h-3 w-3" /> Ventilator
+  
+            {scene.abg && (
+              <div>
+                <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <Stethoscope className="h-3 w-3" /> ABG (FiO₂ {scene.abg.fiO2})
+                </p>
+                <dl className="mt-1 grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px]">
+                  <Vital label="pH" value={scene.abg.pH} />
+                  <Vital label="PaO₂" value={scene.abg.paO2} />
+                  <Vital label="PaCO₂" value={scene.abg.paCO2} />
+                  <Vital label="HCO₃" value={scene.abg.hco3} />
+                  <Vital label="BE" value={scene.abg.be} />
+                  <Vital label="Lac" value={scene.abg.lac} alert={parseFloat(scene.abg.lac) > 4} />
+                  <Vital label="COHb" value={scene.abg.cohb} alert={parseFloat(scene.abg.cohb) > 10} />
+                </dl>
+              </div>
+            )}
+  
+            {scene.vent && (
+              <div>
+                <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  <Wind className="h-3 w-3" /> Ventilator
+                </p>
+                <dl className="mt-1 grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px]">
+                  {scene.vent.mode && <Vital label="Mode" value={scene.vent.mode} />}
+                  {scene.vent.vt && <Vital label="Vt" value={scene.vent.vt} />}
+                  {scene.vent.rr && <Vital label="Rate" value={scene.vent.rr} />}
+                  {scene.vent.peep && <Vital label="PEEP" value={scene.vent.peep} />}
+                  {scene.vent.pPlat && <Vital label="P-plat" value={scene.vent.pPlat} alert={parseFloat(scene.vent.pPlat) > 30} />}
+                  {scene.vent.pf && <Vital label="P/F" value={scene.vent.pf} />}
+                </dl>
+              </div>
+            )}
+          </aside>
+  
+          {/* Scene + question */}
+          <div className="rounded-lg border border-border bg-background p-4">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-primary">{scene.node}</p>
+            <p className="mt-1 text-sm text-foreground leading-relaxed">{scene.narrative}</p>
+  
+            <p className="mt-3 text-sm font-semibold text-foreground">{scene.question}</p>
+  
+            <div className="mt-2 space-y-2">
+              {scene.choices.map((c, i) => {
+                const isPick = pick === i;
+                const showState = isPick;
+                const t = showState ? verdictTone[c.verdict] : null;
+                return (
+                      <button
+                    key={i}
+                    type="button"
+                    onClick={() => setPicked((p) => ({ ...p, [step]: i }))}
+                    className={cn(
+                      "w-full rounded-lg border p-3 text-left text-xs transition-all",
+                      showState ? TONE_BG[t!] + " ring-2 ring-primary/30" : "border-border bg-card hover:bg-muted/40",
+                    )}
+                  >
+                    <p className={cn("font-medium leading-relaxed", showState ? TONE_TEXT[t!] : "text-foreground")}>
+                      {showState && (c.verdict === "best" ? <CheckCircle2 className="inline h-3.5 w-3.5 mr-1" />
+                        : c.verdict === "ok" ? <AlertTriangle className="inline h-3.5 w-3.5 mr-1" />
+                        : <XCircle className="inline h-3.5 w-3.5 mr-1" />)}
+                      {c.label}
+                    </p>
+                    {showState && (
+                      <p className="mt-1.5 text-[11px] text-muted-foreground leading-relaxed">{c.feedback}</p>
+                    )}
+                  </button>
+    );
+              })}
+            </div>
+  
+            {/* Navigation */}
+            <div className="mt-4 flex items-center justify-between">
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={step === 0}
+                onClick={() => setStep((s) => Math.max(0, s - 1))}
+                className="h-7 px-2 text-[11px]"
+              >
+                ← Previous
+              </Button>
+              <p className="text-[10px] text-muted-foreground">
+                Scene {step + 1} of {SCENES.length}
+                {pick !== undefined && verdict === "wrong" && (
+                  <span className="ml-2 text-destructive">try again to advance</span>
+                )}
               </p>
-              <dl className="mt-1 grid grid-cols-2 gap-x-2 gap-y-0.5 text-[11px]">
-                {scene.vent.mode && <Vital label="Mode" value={scene.vent.mode} />}
-                {scene.vent.vt && <Vital label="Vt" value={scene.vent.vt} />}
-                {scene.vent.rr && <Vital label="Rate" value={scene.vent.rr} />}
-                {scene.vent.peep && <Vital label="PEEP" value={scene.vent.peep} />}
-                {scene.vent.pPlat && <Vital label="P-plat" value={scene.vent.pPlat} alert={parseFloat(scene.vent.pPlat) > 30} />}
-                {scene.vent.pf && <Vital label="P/F" value={scene.vent.pf} />}
-              </dl>
+              <Button
+                size="sm"
+                disabled={!canAdvance || step === SCENES.length - 1}
+                onClick={() => setStep((s) => Math.min(SCENES.length - 1, s + 1))}
+                className="h-7 px-2 text-[11px]"
+              >
+                Next <ChevronRight className="ml-1 h-3 w-3" />
+              </Button>
             </div>
-          )}
-        </aside>
-
-        {/* Scene + question */}
-        <div className="rounded-lg border border-border bg-background p-4">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-primary">{scene.node}</p>
-          <p className="mt-1 text-sm text-foreground leading-relaxed">{scene.narrative}</p>
-
-          <p className="mt-3 text-sm font-semibold text-foreground">{scene.question}</p>
-
-          <div className="mt-2 space-y-2">
-            {scene.choices.map((c, i) => {
-              const isPick = pick === i;
-              const showState = isPick;
-              const t = showState ? verdictTone[c.verdict] : null;
-              return (
-                    <button
-                  key={i}
-                  type="button"
-                  onClick={() => setPicked((p) => ({ ...p, [step]: i }))}
-                  className={cn(
-                    "w-full rounded-lg border p-3 text-left text-xs transition-all",
-                    showState ? TONE_BG[t!] + " ring-2 ring-primary/30" : "border-border bg-card hover:bg-muted/40",
-                  )}
-                >
-                  <p className={cn("font-medium leading-relaxed", showState ? TONE_TEXT[t!] : "text-foreground")}>
-                    {showState && (c.verdict === "best" ? <CheckCircle2 className="inline h-3.5 w-3.5 mr-1" />
-                      : c.verdict === "ok" ? <AlertTriangle className="inline h-3.5 w-3.5 mr-1" />
-                      : <XCircle className="inline h-3.5 w-3.5 mr-1" />)}
-                    {c.label}
-                  </p>
-                  {showState && (
-                    <p className="mt-1.5 text-[11px] text-muted-foreground leading-relaxed">{c.feedback}</p>
-                  )}
-                </button>
-  );
-            })}
           </div>
-
-          {/* Navigation */}
-          <div className="mt-4 flex items-center justify-between">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={step === 0}
-              onClick={() => setStep((s) => Math.max(0, s - 1))}
-              className="h-7 px-2 text-[11px]"
-            >
-              ← Previous
-            </Button>
-            <p className="text-[10px] text-muted-foreground">
-              Scene {step + 1} of {SCENES.length}
-              {pick !== undefined && verdict === "wrong" && (
-                <span className="ml-2 text-destructive">try again to advance</span>
-              )}
+        </div>
+  
+        {/* Scorecard */}
+        <div className="mt-3 grid grid-cols-4 gap-2 text-[11px]">
+          <ScoreCell label="Answered" value={`${score.answered} / ${SCENES.length}`} icon={<Activity className="h-3 w-3" />} />
+          <ScoreCell label="Best" value={`${score.best}`} tone="ok" />
+          <ScoreCell label="Acceptable" value={`${score.ok}`} tone="warn" />
+          <ScoreCell label="Wrong" value={`${score.wrong}`} tone="danger" />
+        </div>
+  
+        {step === SCENES.length - 1 && pick !== undefined && verdict !== "wrong" && (
+          <div className={cn(
+            "mt-3 rounded-md border p-3 text-xs",
+            score.wrong === 0 && score.ok === 0 ? TONE_BG.ok : score.wrong === 0 ? TONE_BG.warn : TONE_BG.danger,
+          )}>
+            <p className="font-semibold text-foreground">
+              Case complete. {score.best === SCENES.length
+                ? "Flawless run — exam-standard decision-making at every checkpoint."
+                : score.wrong === 0
+                ? "Safe management overall; revisit the acceptable-but-not-ideal answers."
+                : "Re-attempt the wrong answers to consolidate the learning points."}
             </p>
-            <Button
-              size="sm"
-              disabled={!canAdvance || step === SCENES.length - 1}
-              onClick={() => setStep((s) => Math.min(SCENES.length - 1, s + 1))}
-              className="h-7 px-2 text-[11px]"
-            >
-              Next <ChevronRight className="ml-1 h-3 w-3" />
-            </Button>
           </div>
-        </div>
-      </div>
-
-      {/* Scorecard */}
-      <div className="mt-3 grid grid-cols-4 gap-2 text-[11px]">
-        <ScoreCell label="Answered" value={`${score.answered} / ${SCENES.length}`} icon={<Activity className="h-3 w-3" />} />
-        <ScoreCell label="Best" value={`${score.best}`} tone="ok" />
-        <ScoreCell label="Acceptable" value={`${score.ok}`} tone="warn" />
-        <ScoreCell label="Wrong" value={`${score.wrong}`} tone="danger" />
-      </div>
-
-      {step === SCENES.length - 1 && pick !== undefined && verdict !== "wrong" && (
-        <div className={cn(
-          "mt-3 rounded-md border p-3 text-xs",
-          score.wrong === 0 && score.ok === 0 ? TONE_BG.ok : score.wrong === 0 ? TONE_BG.warn : TONE_BG.danger,
-        )}>
-          <p className="font-semibold text-foreground">
-            Case complete. {score.best === SCENES.length
-              ? "Flawless run — exam-standard decision-making at every checkpoint."
-              : score.wrong === 0
-              ? "Safe management overall; revisit the acceptable-but-not-ideal answers."
-              : "Re-attempt the wrong answers to consolidate the learning points."}
-          </p>
-        </div>
-      )}
-    </figure>
+        )}
+      </figure>
+    </DiagramFigure>
   );
 };
 

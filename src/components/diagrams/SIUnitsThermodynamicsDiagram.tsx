@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "si-units" | "gas-laws" | "heat" | "thermodynamics" | "phase-change" | "specific-heat" | "pv-diagrams";
 
@@ -488,31 +489,37 @@ const SIUnitsThermodynamicsDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("si-units");
 
   return (
-            <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActiveTab(t.key)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === t.key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="si-units-thermodynamics-diagram"
+      title="SI units thermodynamics"
+      description="Auto-generated wrapper for the SI units thermodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setActiveTab(t.key)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                activeTab === t.key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+  
+        {activeTab === "si-units" && <SIUnitsDiagram />}
+        {activeTab === "gas-laws" && <GasLawDerivationsDiagram />}
+        {activeTab === "heat" && <HeatCapacityDiagram />}
+        {activeTab === "thermodynamics" && <ThermodynamicsDiagram />}
+        {activeTab === "phase-change" && <PhaseChangeDiagram />}
+        {activeTab === "specific-heat" && <SpecificHeatDiagram />}
+        {activeTab === "pv-diagrams" && <PVDiagramsTab />}
       </div>
-
-      {activeTab === "si-units" && <SIUnitsDiagram />}
-      {activeTab === "gas-laws" && <GasLawDerivationsDiagram />}
-      {activeTab === "heat" && <HeatCapacityDiagram />}
-      {activeTab === "thermodynamics" && <ThermodynamicsDiagram />}
-      {activeTab === "phase-change" && <PhaseChangeDiagram />}
-      {activeTab === "specific-heat" && <SpecificHeatDiagram />}
-      {activeTab === "pv-diagrams" && <PVDiagramsTab />}
-    </div>
+    </DiagramFigure>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PlayCircle } from "lucide-react";
 import GuidedWalkthroughOverlay, { WalkthroughStep } from "./GuidedWalkthroughOverlay";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Step {
   id: number;
@@ -412,129 +413,135 @@ const DLTInsertionDiagram = () => {
   };
 
   return (
-            <div className="border border-border rounded-lg p-4 mb-6">
-      <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
-        <h3 className="text-lg font-serif font-bold text-foreground">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
-        <button
-          type="button"
-          onClick={() => setWalkthroughOpen(true)}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-        >
-          <PlayCircle className="w-3.5 h-3.5" />
-          Guided walkthrough
-        </button>
-      </div>
-      <p className="text-xs text-muted-foreground mb-4">Navigate through each step, or launch the guided walkthrough to tick off confirmation actions as you progress.</p>
-
-      {/* DLT side selector */}
-      <div className="flex items-center gap-2 mb-4">
-        <span className="text-xs text-muted-foreground">DLT side:</span>
-        <button onClick={() => setDltSide("left")}
-          className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-            dltSide === "left" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"
-          }`}>Left (standard)</button>
-        <button onClick={() => setDltSide("right")}
-          className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-            dltSide === "right" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"
-          }`}>Right</button>
-        {dltSide === "right" && (
-          <span className="text-[10px] text-amber-400">⚠ Only for left-sided pathology</span>
-        )}
-      </div>
-
-      {/* Step navigation */}
-      <div className="flex gap-1 mb-4 overflow-x-auto pb-1">
-        {STEPS.map((s, i) => (
-          <button key={s.id} onClick={() => setCurrentStep(i)}
-            className={`flex-shrink-0 w-8 h-8 rounded-full text-xs font-bold border transition-all ${
-              i === currentStep
-                ? "border-primary bg-primary/20 text-foreground"
-                : i < currentStep
-                ? "border-primary/30 bg-primary/5 text-primary"
-                : "border-border text-muted-foreground hover:bg-secondary/40"
-            }`}>
-            {s.id}
+    <DiagramFigure
+      id="dlt-insertion-diagram"
+      title="DLT insertion"
+      description="Auto-generated wrapper for the DLT insertion anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="border border-border rounded-lg p-4 mb-6">
+        <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
+          <h3 className="text-lg font-serif font-bold text-foreground">Double-Lumen Tube — Step-by-Step Insertion Guide</h3>
+          <button
+            type="button"
+            onClick={() => setWalkthroughOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border border-primary bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            <PlayCircle className="w-3.5 h-3.5" />
+            Guided walkthrough
           </button>
-        ))}
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-4">
-        {/* Diagram */}
-        <div className="lg:w-1/2 flex-shrink-0">
-          {renderStepDiagram(step.id)}
         </div>
-
-        {/* Step details */}
-        <div className="lg:w-1/2 space-y-3">
-          <div>
-            <h4 className="text-sm font-bold text-foreground mb-1">
-              <span className="text-primary mr-1.5">Step {step.id}.</span>
-              {step.title}
-            </h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">{step.instruction}</p>
-          </div>
-
-          <div className="rounded-lg border border-primary/20 bg-primary/5 p-3">
-            <p className="text-xs font-semibold text-foreground mb-1.5">💡 Tips</p>
-            {step.tips.map((t, i) => (
-              <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {t}</p>
-            ))}
-          </div>
-
-          {step.pitfalls && step.pitfalls.length > 0 && (
-            <div className="rounded-lg border border-destructive/20 bg-destructive/5 p-3">
-              <p className="text-xs font-semibold text-foreground mb-1.5">⚠ Pitfalls</p>
-              {step.pitfalls.map((p, i) => (
-                <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {p}</p>
-              ))}
-            </div>
+        <p className="text-xs text-muted-foreground mb-4">Navigate through each step, or launch the guided walkthrough to tick off confirmation actions as you progress.</p>
+  
+        {/* DLT side selector */}
+        <div className="flex items-center gap-2 mb-4">
+          <span className="text-xs text-muted-foreground">DLT side:</span>
+          <button onClick={() => setDltSide("left")}
+            className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+              dltSide === "left" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"
+            }`}>Left (standard)</button>
+          <button onClick={() => setDltSide("right")}
+            className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+              dltSide === "right" ? "border-primary/50 bg-primary/10 text-foreground" : "border-border text-muted-foreground"
+            }`}>Right</button>
+          {dltSide === "right" && (
+            <span className="text-[10px] text-amber-400">⚠ Only for left-sided pathology</span>
           )}
-
-          {/* Navigation buttons */}
-          <div className="flex gap-2 pt-2">
-            <button onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
-              disabled={currentStep === 0}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-secondary transition-all disabled:opacity-30">
-              ← Previous
-            </button>
-            <button onClick={() => setCurrentStep(Math.min(STEPS.length - 1, currentStep + 1))}
-              disabled={currentStep === STEPS.length - 1}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium border border-primary/50 bg-primary/10 text-foreground hover:bg-primary/20 transition-all disabled:opacity-30">
-              Next →
-            </button>
-          </div>
         </div>
-      </div>
-
-      {/* Quick reference sizing table */}
-      <div className="mt-6 rounded-lg border border-border p-3">
-        <p className="text-xs font-semibold text-foreground mb-2">DLT Sizing Quick Reference</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-          {[
-            { size: "35 Fr", who: "Small ♀ (<160 cm)", color: "hsl(320 50% 55%)" },
-            { size: "37 Fr", who: "Average ♀ / Small ♂", color: "hsl(280 45% 55%)" },
-            { size: "39 Fr", who: "Average ♂ (most common)", color: "hsl(210 60% 55%)" },
-            { size: "41 Fr", who: "Large ♂ (>180 cm)", color: "hsl(150 50% 50%)" },
-          ].map(s => (
-            <div key={s.size} className="rounded border border-border p-2">
-              <p className="text-sm font-bold" style={{ color: s.color }}>{s.size}</p>
-              <p className="text-[10px] text-muted-foreground">{s.who}</p>
-            </div>
+  
+        {/* Step navigation */}
+        <div className="flex gap-1 mb-4 overflow-x-auto pb-1">
+          {STEPS.map((s, i) => (
+            <button key={s.id} onClick={() => setCurrentStep(i)}
+              className={`flex-shrink-0 w-8 h-8 rounded-full text-xs font-bold border transition-all ${
+                i === currentStep
+                  ? "border-primary bg-primary/20 text-foreground"
+                  : i < currentStep
+                  ? "border-primary/30 bg-primary/5 text-primary"
+                  : "border-border text-muted-foreground hover:bg-secondary/40"
+              }`}>
+              {s.id}
+            </button>
           ))}
         </div>
-        <p className="text-[10px] text-muted-foreground mt-2 text-center">Depth at teeth ≈ height (cm) ÷ 10 + 12</p>
+  
+        <div className="flex flex-col lg:flex-row gap-4">
+          {/* Diagram */}
+          <div className="lg:w-1/2 flex-shrink-0">
+            {renderStepDiagram(step.id)}
+          </div>
+  
+          {/* Step details */}
+          <div className="lg:w-1/2 space-y-3">
+            <div>
+              <h4 className="text-sm font-bold text-foreground mb-1">
+                <span className="text-primary mr-1.5">Step {step.id}.</span>
+                {step.title}
+              </h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{step.instruction}</p>
+            </div>
+  
+            <div className="rounded-lg border border-primary/20 bg-primary/5 p-3">
+              <p className="text-xs font-semibold text-foreground mb-1.5">💡 Tips</p>
+              {step.tips.map((t, i) => (
+                <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {t}</p>
+              ))}
+            </div>
+  
+            {step.pitfalls && step.pitfalls.length > 0 && (
+              <div className="rounded-lg border border-destructive/20 bg-destructive/5 p-3">
+                <p className="text-xs font-semibold text-foreground mb-1.5">⚠ Pitfalls</p>
+                {step.pitfalls.map((p, i) => (
+                  <p key={i} className="text-xs text-muted-foreground leading-relaxed">• {p}</p>
+                ))}
+              </div>
+            )}
+  
+            {/* Navigation buttons */}
+            <div className="flex gap-2 pt-2">
+              <button onClick={() => setCurrentStep(Math.max(0, currentStep - 1))}
+                disabled={currentStep === 0}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium border border-border text-muted-foreground hover:bg-secondary transition-all disabled:opacity-30">
+                ← Previous
+              </button>
+              <button onClick={() => setCurrentStep(Math.min(STEPS.length - 1, currentStep + 1))}
+                disabled={currentStep === STEPS.length - 1}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium border border-primary/50 bg-primary/10 text-foreground hover:bg-primary/20 transition-all disabled:opacity-30">
+                Next →
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        {/* Quick reference sizing table */}
+        <div className="mt-6 rounded-lg border border-border p-3">
+          <p className="text-xs font-semibold text-foreground mb-2">DLT Sizing Quick Reference</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+            {[
+              { size: "35 Fr", who: "Small ♀ (<160 cm)", color: "hsl(320 50% 55%)" },
+              { size: "37 Fr", who: "Average ♀ / Small ♂", color: "hsl(280 45% 55%)" },
+              { size: "39 Fr", who: "Average ♂ (most common)", color: "hsl(210 60% 55%)" },
+              { size: "41 Fr", who: "Large ♂ (>180 cm)", color: "hsl(150 50% 50%)" },
+            ].map(s => (
+              <div key={s.size} className="rounded border border-border p-2">
+                <p className="text-sm font-bold" style={{ color: s.color }}>{s.size}</p>
+                <p className="text-[10px] text-muted-foreground">{s.who}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[10px] text-muted-foreground mt-2 text-center">Depth at teeth ≈ height (cm) ÷ 10 + 12</p>
+        </div>
+  
+        <GuidedWalkthroughOverlay
+          open={walkthroughOpen}
+          onClose={() => setWalkthroughOpen(false)}
+          steps={walkthroughSteps}
+          stepIndex={currentStep}
+          onStepChange={setCurrentStep}
+          title="DLT insertion — confirmation walkthrough"
+          subtitle={`${dltSide === "left" ? "Left-sided" : "Right-sided"} double-lumen tube`}
+        />
       </div>
-
-      <GuidedWalkthroughOverlay
-        open={walkthroughOpen}
-        onClose={() => setWalkthroughOpen(false)}
-        steps={walkthroughSteps}
-        stepIndex={currentStep}
-        onStepChange={setCurrentStep}
-        title="DLT insertion — confirmation walkthrough"
-        subtitle={`${dltSide === "left" ? "Left-sided" : "Right-sided"} double-lumen tube`}
-      />
-    </div>
+    </DiagramFigure>
   );
 };
 

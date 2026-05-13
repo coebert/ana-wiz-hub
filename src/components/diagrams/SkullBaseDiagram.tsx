@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Foramen {
   id: string;
@@ -269,349 +270,355 @@ const SkullBaseDiagram = () => {
   const selectedForamen = foramina.find((f) => f.id === selected) ?? null;
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title="Internal Surface of the Skull Base — Cranial Nerve Foramina"
-          toggles={[
-            { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
-          ]}
-        />
-
-        <div className="flex flex-wrap gap-3 justify-center mb-3 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.anterior, opacity: 0.55 }} /> Anterior fossa
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.middle, opacity: 0.55 }} /> Middle fossa
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.posterior, opacity: 0.55 }} /> Posterior fossa
-          </span>
-        </div>
-
-        <svg
-          viewBox="0 0 600 470"
-          className="w-full max-w-2xl mx-auto"
-          role="img"
-          aria-label="Diagram of the internal surface of the skull base showing the three cranial fossae and major foramina"
-        >
-          <defs>
-            {/* Apex/depth shading inside each fossa */}
-            <radialGradient id="anteriorShade" cx="50%" cy="40%" r="60%">
-              <stop offset="0%" stopColor={fossaColors.anterior} stopOpacity="0.18" />
-              <stop offset="100%" stopColor={fossaColors.anterior} stopOpacity="0.04" />
-            </radialGradient>
-            <radialGradient id="middleShadeL" cx="55%" cy="55%" r="65%">
-              <stop offset="0%" stopColor={fossaColors.middle} stopOpacity="0.22" />
-              <stop offset="100%" stopColor={fossaColors.middle} stopOpacity="0.04" />
-            </radialGradient>
-            <radialGradient id="middleShadeR" cx="45%" cy="55%" r="65%">
-              <stop offset="0%" stopColor={fossaColors.middle} stopOpacity="0.22" />
-              <stop offset="100%" stopColor={fossaColors.middle} stopOpacity="0.04" />
-            </radialGradient>
-            <radialGradient id="posteriorShade" cx="50%" cy="55%" r="60%">
-              <stop offset="0%" stopColor={fossaColors.posterior} stopOpacity="0.22" />
-              <stop offset="100%" stopColor={fossaColors.posterior} stopOpacity="0.04" />
-            </radialGradient>
-            {/* Subtle bone texture */}
-            <pattern id="boneGrain" patternUnits="userSpaceOnUse" width="6" height="6">
-              <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-            </pattern>
-            {/* Drop shadow for the cranial vault */}
-            <filter id="vaultShadow" x="-10%" y="-10%" width="120%" height="120%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
-              <feOffset dx="0" dy="2" result="off" />
-              <feComponentTransfer>
-                <feFuncA type="linear" slope="0.32" />
-              </feComponentTransfer>
-              <feMerge>
-                <feMergeNode />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            {/* Clip everything to the vault outline */}
-            <clipPath id="vaultClip">
-              <ellipse cx={300} cy={235} rx={220} ry={205} />
-            </clipPath>
-          </defs>
-
-          {/* Compass */}
-          <text x={300} y={14} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">ANTERIOR</text>
-          <text x={300} y={462} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">POSTERIOR</text>
-          <text x={50} y={240} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">RIGHT</text>
-          <text x={550} y={240} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">LEFT</text>
-
-          {/* Cranial vault */}
-          <ellipse
-            cx={300}
-            cy={235}
-            rx={220}
-            ry={205}
-            fill="hsl(var(--background))"
-            stroke="hsl(var(--border))"
-            strokeWidth={2}
-            filter="url(#vaultShadow)"
+    <DiagramFigure
+      id="skull-base-diagram"
+      title="Skull base"
+      description="Auto-generated wrapper for the Skull base anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title="Internal Surface of the Skull Base — Cranial Nerve Foramina"
+            toggles={[
+              { label: "Sutures", active: showSutures, onChange: () => setShowSutures(s => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels(s => !s) },
+            ]}
           />
-
-          <g clipPath="url(#vaultClip)">
-            {/* ── Anterior cranial fossa ───────────────────────── */}
-            <path
-              d="M120,180 Q200,55 300,50 Q400,55 480,180 L380,195 Q300,160 220,195 Z"
-              fill={fossaColors.anterior}
-              fillOpacity={0.08}
-              stroke={fossaColors.anterior}
-              strokeWidth={0.5}
-              strokeDasharray="4 3"
-            />
-            <path
-              d="M120,180 Q200,55 300,50 Q400,55 480,180 L380,195 Q300,160 220,195 Z"
-              fill="url(#anteriorShade)"
-              pointerEvents="none"
-            />
-
-            {/* ── Middle cranial fossa (paired wings either side of sella) ── */}
-            <path
-              d="M120,180 L220,195 Q260,210 280,255 L200,278 Q160,278 130,275 Q120,240 120,180 Z"
-              fill={fossaColors.middle}
-              fillOpacity={0.08}
-              stroke={fossaColors.middle}
-              strokeWidth={0.5}
-              strokeDasharray="4 3"
-            />
-            <path
-              d="M120,180 L220,195 Q260,210 280,255 L200,278 Q160,278 130,275 Q120,240 120,180 Z"
-              fill="url(#middleShadeL)"
-              pointerEvents="none"
-            />
-
-            <path
-              d="M480,180 L380,195 Q340,210 320,255 L400,278 Q440,278 470,275 Q480,240 480,180 Z"
-              fill={fossaColors.middle}
-              fillOpacity={0.08}
-              stroke={fossaColors.middle}
-              strokeWidth={0.5}
-              strokeDasharray="4 3"
-            />
-            <path
-              d="M480,180 L380,195 Q340,210 320,255 L400,278 Q440,278 470,275 Q480,240 480,180 Z"
-              fill="url(#middleShadeR)"
-              pointerEvents="none"
-            />
-
-            {/* Sella turcica region (central elevation) */}
-            <path
-              d="M280,195 Q300,180 320,195 L320,255 Q300,265 280,255 Z"
-              fill="hsl(var(--muted))"
-              fillOpacity={0.45}
+  
+          <div className="flex flex-wrap gap-3 justify-center mb-3 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.anterior, opacity: 0.55 }} /> Anterior fossa
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.middle, opacity: 0.55 }} /> Middle fossa
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm" style={{ background: fossaColors.posterior, opacity: 0.55 }} /> Posterior fossa
+            </span>
+          </div>
+  
+          <svg
+            viewBox="0 0 600 470"
+            className="w-full max-w-2xl mx-auto"
+            role="img"
+            aria-label="Diagram of the internal surface of the skull base showing the three cranial fossae and major foramina"
+          >
+            <defs>
+              {/* Apex/depth shading inside each fossa */}
+              <radialGradient id="anteriorShade" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stopColor={fossaColors.anterior} stopOpacity="0.18" />
+                <stop offset="100%" stopColor={fossaColors.anterior} stopOpacity="0.04" />
+              </radialGradient>
+              <radialGradient id="middleShadeL" cx="55%" cy="55%" r="65%">
+                <stop offset="0%" stopColor={fossaColors.middle} stopOpacity="0.22" />
+                <stop offset="100%" stopColor={fossaColors.middle} stopOpacity="0.04" />
+              </radialGradient>
+              <radialGradient id="middleShadeR" cx="45%" cy="55%" r="65%">
+                <stop offset="0%" stopColor={fossaColors.middle} stopOpacity="0.22" />
+                <stop offset="100%" stopColor={fossaColors.middle} stopOpacity="0.04" />
+              </radialGradient>
+              <radialGradient id="posteriorShade" cx="50%" cy="55%" r="60%">
+                <stop offset="0%" stopColor={fossaColors.posterior} stopOpacity="0.22" />
+                <stop offset="100%" stopColor={fossaColors.posterior} stopOpacity="0.04" />
+              </radialGradient>
+              {/* Subtle bone texture */}
+              <pattern id="boneGrain" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.4" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              {/* Drop shadow for the cranial vault */}
+              <filter id="vaultShadow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+                <feOffset dx="0" dy="2" result="off" />
+                <feComponentTransfer>
+                  <feFuncA type="linear" slope="0.32" />
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              {/* Clip everything to the vault outline */}
+              <clipPath id="vaultClip">
+                <ellipse cx={300} cy={235} rx={220} ry={205} />
+              </clipPath>
+            </defs>
+  
+            {/* Compass */}
+            <text x={300} y={14} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">ANTERIOR</text>
+            <text x={300} y={462} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">POSTERIOR</text>
+            <text x={50} y={240} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">RIGHT</text>
+            <text x={550} y={240} textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium">LEFT</text>
+  
+            {/* Cranial vault */}
+            <ellipse
+              cx={300}
+              cy={235}
+              rx={220}
+              ry={205}
+              fill="hsl(var(--background))"
               stroke="hsl(var(--border))"
-              strokeWidth={0.75}
+              strokeWidth={2}
+              filter="url(#vaultShadow)"
             />
-            <text x={300} y={228} textAnchor="middle" className="text-[7.5px] fill-muted-foreground italic">
-              sella turcica
-            </text>
-
-            {/* ── Posterior cranial fossa ──────────────────────── */}
-            <path
-              d="M130,275 Q160,278 200,278 L280,260 Q300,265 320,260 L400,278 Q440,278 470,275 Q470,400 300,440 Q130,400 130,275 Z"
-              fill={fossaColors.posterior}
-              fillOpacity={0.08}
-              stroke={fossaColors.posterior}
-              strokeWidth={0.5}
-              strokeDasharray="4 3"
-            />
-            <path
-              d="M130,275 Q160,278 200,278 L280,260 Q300,265 320,260 L400,278 Q440,278 470,275 Q470,400 300,440 Q130,400 130,275 Z"
-              fill="url(#posteriorShade)"
-              pointerEvents="none"
-            />
-
-            {/* Bone texture overlay */}
-            <ellipse cx={300} cy={235} rx={220} ry={205} fill="url(#boneGrain)" pointerEvents="none" />
-
-            {/* Sutures + bony landmarks */}
-            {showSutures && (
-              <g stroke="hsl(var(--foreground))" strokeWidth={0.5} opacity={0.45} fill="none" pointerEvents="none">
-                {/* Crista galli */}
-                <line x1={300} y1={70} x2={300} y2={120} strokeDasharray="0" strokeWidth={1.5} opacity={0.55} />
-                {/* Petrous ridges (curved, sloping medially towards dorsum sellae) */}
-                <path d="M150,278 Q220,265 280,255" strokeDasharray="3 2" />
-                <path d="M450,278 Q380,265 320,255" strokeDasharray="3 2" />
-                {/* Sphenoid crest / planum sphenoidale */}
-                <path d="M220,195 Q260,210 280,225 L320,225 Q340,210 380,195" strokeDasharray="3 2" />
-                {/* Frontoethmoidal sutures */}
-                <path d="M210,135 Q240,108 278,100" strokeDasharray="2 2" />
-                <path d="M390,135 Q360,108 322,100" strokeDasharray="2 2" />
-                {/* Lambdoid suture along posterior fossa */}
-                <path d="M155,360 Q220,420 300,432 Q380,420 445,360" strokeDasharray="2 2" />
-                {/* Internal occipital crest */}
-                <line x1={300} y1={420} x2={300} y2={440} strokeDasharray="0" strokeWidth={1} opacity={0.5} />
-              </g>
+  
+            <g clipPath="url(#vaultClip)">
+              {/* ── Anterior cranial fossa ───────────────────────── */}
+              <path
+                d="M120,180 Q200,55 300,50 Q400,55 480,180 L380,195 Q300,160 220,195 Z"
+                fill={fossaColors.anterior}
+                fillOpacity={0.08}
+                stroke={fossaColors.anterior}
+                strokeWidth={0.5}
+                strokeDasharray="4 3"
+              />
+              <path
+                d="M120,180 Q200,55 300,50 Q400,55 480,180 L380,195 Q300,160 220,195 Z"
+                fill="url(#anteriorShade)"
+                pointerEvents="none"
+              />
+  
+              {/* ── Middle cranial fossa (paired wings either side of sella) ── */}
+              <path
+                d="M120,180 L220,195 Q260,210 280,255 L200,278 Q160,278 130,275 Q120,240 120,180 Z"
+                fill={fossaColors.middle}
+                fillOpacity={0.08}
+                stroke={fossaColors.middle}
+                strokeWidth={0.5}
+                strokeDasharray="4 3"
+              />
+              <path
+                d="M120,180 L220,195 Q260,210 280,255 L200,278 Q160,278 130,275 Q120,240 120,180 Z"
+                fill="url(#middleShadeL)"
+                pointerEvents="none"
+              />
+  
+              <path
+                d="M480,180 L380,195 Q340,210 320,255 L400,278 Q440,278 470,275 Q480,240 480,180 Z"
+                fill={fossaColors.middle}
+                fillOpacity={0.08}
+                stroke={fossaColors.middle}
+                strokeWidth={0.5}
+                strokeDasharray="4 3"
+              />
+              <path
+                d="M480,180 L380,195 Q340,210 320,255 L400,278 Q440,278 470,275 Q480,240 480,180 Z"
+                fill="url(#middleShadeR)"
+                pointerEvents="none"
+              />
+  
+              {/* Sella turcica region (central elevation) */}
+              <path
+                d="M280,195 Q300,180 320,195 L320,255 Q300,265 280,255 Z"
+                fill="hsl(var(--muted))"
+                fillOpacity={0.45}
+                stroke="hsl(var(--border))"
+                strokeWidth={0.75}
+              />
+              <text x={300} y={228} textAnchor="middle" className="text-[7.5px] fill-muted-foreground italic">
+                sella turcica
+              </text>
+  
+              {/* ── Posterior cranial fossa ──────────────────────── */}
+              <path
+                d="M130,275 Q160,278 200,278 L280,260 Q300,265 320,260 L400,278 Q440,278 470,275 Q470,400 300,440 Q130,400 130,275 Z"
+                fill={fossaColors.posterior}
+                fillOpacity={0.08}
+                stroke={fossaColors.posterior}
+                strokeWidth={0.5}
+                strokeDasharray="4 3"
+              />
+              <path
+                d="M130,275 Q160,278 200,278 L280,260 Q300,265 320,260 L400,278 Q440,278 470,275 Q470,400 300,440 Q130,400 130,275 Z"
+                fill="url(#posteriorShade)"
+                pointerEvents="none"
+              />
+  
+              {/* Bone texture overlay */}
+              <ellipse cx={300} cy={235} rx={220} ry={205} fill="url(#boneGrain)" pointerEvents="none" />
+  
+              {/* Sutures + bony landmarks */}
+              {showSutures && (
+                <g stroke="hsl(var(--foreground))" strokeWidth={0.5} opacity={0.45} fill="none" pointerEvents="none">
+                  {/* Crista galli */}
+                  <line x1={300} y1={70} x2={300} y2={120} strokeDasharray="0" strokeWidth={1.5} opacity={0.55} />
+                  {/* Petrous ridges (curved, sloping medially towards dorsum sellae) */}
+                  <path d="M150,278 Q220,265 280,255" strokeDasharray="3 2" />
+                  <path d="M450,278 Q380,265 320,255" strokeDasharray="3 2" />
+                  {/* Sphenoid crest / planum sphenoidale */}
+                  <path d="M220,195 Q260,210 280,225 L320,225 Q340,210 380,195" strokeDasharray="3 2" />
+                  {/* Frontoethmoidal sutures */}
+                  <path d="M210,135 Q240,108 278,100" strokeDasharray="2 2" />
+                  <path d="M390,135 Q360,108 322,100" strokeDasharray="2 2" />
+                  {/* Lambdoid suture along posterior fossa */}
+                  <path d="M155,360 Q220,420 300,432 Q380,420 445,360" strokeDasharray="2 2" />
+                  {/* Internal occipital crest */}
+                  <line x1={300} y1={420} x2={300} y2={440} strokeDasharray="0" strokeWidth={1} opacity={0.5} />
+                </g>
+              )}
+  
+              {/* Midline reference */}
+              <line x1={300} y1={50} x2={300} y2={440} stroke="hsl(var(--foreground))" strokeWidth={0.5} strokeDasharray="2 4" opacity={0.25} pointerEvents="none" />
+            </g>
+  
+            {/* Crista galli label outside clip */}
+            {showLabels && (
+              <text x={300} y={132} textAnchor="middle" className="text-[7.5px] fill-muted-foreground italic">
+                crista galli
+              </text>
             )}
-
-            {/* Midline reference */}
-            <line x1={300} y1={50} x2={300} y2={440} stroke="hsl(var(--foreground))" strokeWidth={0.5} strokeDasharray="2 4" opacity={0.25} pointerEvents="none" />
-          </g>
-
-          {/* Crista galli label outside clip */}
-          {showLabels && (
-            <text x={300} y={132} textAnchor="middle" className="text-[7.5px] fill-muted-foreground italic">
-              crista galli
-            </text>
-          )}
-
-          {/* Foramina */}
-          {foramina.map((f) => {
-            const partnerSelected =
-              selectedForamen !== null &&
-              selectedForamen.label === f.label &&
-              selectedForamen.id !== f.id;
-            const isSelected = selected === f.id || partnerSelected;
-            const color = fossaColors[f.fossa];
-            const [cx, cy] =
-              f.shape.type === "ellipse" ? [f.shape.cx, f.shape.cy] : f.shape.centroid;
-
-            // Place label outside the vault on the appropriate side; centre-pole foramina go above/below
-            const isMidline = Math.abs(cx - 300) < 8;
-            let labelX: number;
-            let labelY: number;
-            let anchor: "start" | "end" | "middle";
-            if (isMidline) {
-              labelX = cx;
-              labelY = cy < 235 ? cy - 18 : cy + f.shape.type === "ellipse" ? cy + (f.shape as any).ry + 14 : cy + 18;
-              anchor = "middle";
-            } else if (cx < 300) {
-              labelX = 110;
-              labelY = cy + 3;
-              anchor = "end";
-            } else {
-              labelX = 490;
-              labelY = cy + 3;
-              anchor = "start";
-            }
-
-            // Manually adjust for crowded mid-fossa labels (left side)
-            const yOffsets: Record<string, number> = {
-              "optic-canal-l": -2,
-              "sof-l": 6,
-              "rotundum-l": 8,
-              "ovale-l": 4,
-              "spinosum-l": 4,
-              "lacerum-l": 0,
-              "carotid-l": 6,
-              "iam-l": 0,
-              "jugular-l": 6,
-              "hypoglossal-l": 4,
-              "optic-canal-r": -2,
-              "sof-r": 6,
-              "rotundum-r": 8,
-              "ovale-r": 4,
-              "spinosum-r": 4,
-              "lacerum-r": 0,
-              "carotid-r": 6,
-              "iam-r": 0,
-              "jugular-r": 6,
-              "hypoglossal-r": 4,
-            };
-            if (yOffsets[f.id] !== undefined) labelY = cy + yOffsets[f.id];
-
-            return (
-                  <g
-                key={f.id}
-                className="cursor-pointer"
-                onClick={() => setSelected(selected === f.id ? null : f.id)}
-              >
-                {f.shape.type === "ellipse" ? (
-                  <ellipse
-                    cx={f.shape.cx}
-                    cy={f.shape.cy}
-                    rx={f.shape.rx}
-                    ry={f.shape.ry}
-                    transform={f.shape.rotate ? `rotate(${f.shape.rotate} ${f.shape.cx} ${f.shape.cy})` : undefined}
-                    fill={isSelected ? color : "hsl(var(--foreground))"}
-                    fillOpacity={isSelected ? 0.85 : 0.55}
-                    stroke={isSelected ? color : "hsl(var(--foreground))"}
-                    strokeWidth={isSelected ? 1.6 : 0.8}
-                  />
-                ) : (
-                  <path
-                    d={f.shape.d}
-                    fill={isSelected ? color : "hsl(var(--foreground))"}
-                    fillOpacity={isSelected ? 0.85 : 0.55}
-                    stroke={isSelected ? color : "hsl(var(--foreground))"}
-                    strokeWidth={isSelected ? 1.4 : 0.8}
-                  />
-                )}
-
-                {/* Show label only on the "primary" side (left half) to avoid duplication;
-                    midline foramina (cribriform halves, foramen magnum) show one label centred. */}
-                {showLabels && !f.id.endsWith("-r") && (
-                  <>
-                    <line
-                      x1={cx}
-                      y1={cy}
-                      x2={labelX + (anchor === "end" ? 6 : anchor === "start" ? -6 : 0)}
-                      y2={labelY - 2}
-                      stroke={isSelected ? color : "hsl(var(--muted-foreground))"}
-                      strokeWidth={isSelected ? 0.9 : 0.5}
-                      opacity={isSelected ? 0.85 : 0.45}
-                      pointerEvents="none"
-                    />
-                    <text
-                      x={labelX}
-                      y={labelY}
-                      textAnchor={anchor}
-                      className="text-[8px] fill-foreground select-none pointer-events-none"
-                      fontWeight={isSelected ? 600 : 400}
-                      opacity={isSelected ? 1 : 0.85}
-                    >
-                      {f.label}
-                    </text>
-                  </>
-                )}
-              </g>
-  );
-          })}
-        </svg>
-
-        {/* Mnemonic */}
-        <p className="text-xs text-center text-muted-foreground mt-2 italic">
-          <span className="font-semibold not-italic text-foreground">Standing Room Only — </span>
-          CN V₁ → Superior orbital fissure, V₂ → Rotundum, V₃ → Ovale.
-        </p>
-
-        {/* Detail panel */}
-        <div className="mt-4 min-h-[110px]">
-          {selectedForamen ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: fossaColors[selectedForamen.fossa] }}
-            >
-              <div className="flex items-center justify-between gap-2">
-                <p className="font-semibold text-foreground text-sm">{selectedForamen.label}</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{ background: `${fossaColors[selectedForamen.fossa]}26`, color: fossaColors[selectedForamen.fossa] }}
+  
+            {/* Foramina */}
+            {foramina.map((f) => {
+              const partnerSelected =
+                selectedForamen !== null &&
+                selectedForamen.label === f.label &&
+                selectedForamen.id !== f.id;
+              const isSelected = selected === f.id || partnerSelected;
+              const color = fossaColors[f.fossa];
+              const [cx, cy] =
+                f.shape.type === "ellipse" ? [f.shape.cx, f.shape.cy] : f.shape.centroid;
+  
+              // Place label outside the vault on the appropriate side; centre-pole foramina go above/below
+              const isMidline = Math.abs(cx - 300) < 8;
+              let labelX: number;
+              let labelY: number;
+              let anchor: "start" | "end" | "middle";
+              if (isMidline) {
+                labelX = cx;
+                labelY = cy < 235 ? cy - 18 : cy + f.shape.type === "ellipse" ? cy + (f.shape as any).ry + 14 : cy + 18;
+                anchor = "middle";
+              } else if (cx < 300) {
+                labelX = 110;
+                labelY = cy + 3;
+                anchor = "end";
+              } else {
+                labelX = 490;
+                labelY = cy + 3;
+                anchor = "start";
+              }
+  
+              // Manually adjust for crowded mid-fossa labels (left side)
+              const yOffsets: Record<string, number> = {
+                "optic-canal-l": -2,
+                "sof-l": 6,
+                "rotundum-l": 8,
+                "ovale-l": 4,
+                "spinosum-l": 4,
+                "lacerum-l": 0,
+                "carotid-l": 6,
+                "iam-l": 0,
+                "jugular-l": 6,
+                "hypoglossal-l": 4,
+                "optic-canal-r": -2,
+                "sof-r": 6,
+                "rotundum-r": 8,
+                "ovale-r": 4,
+                "spinosum-r": 4,
+                "lacerum-r": 0,
+                "carotid-r": 6,
+                "iam-r": 0,
+                "jugular-r": 6,
+                "hypoglossal-r": 4,
+              };
+              if (yOffsets[f.id] !== undefined) labelY = cy + yOffsets[f.id];
+  
+              return (
+                    <g
+                  key={f.id}
+                  className="cursor-pointer"
+                  onClick={() => setSelected(selected === f.id ? null : f.id)}
                 >
-                  {selectedForamen.fossa} fossa
-                </span>
+                  {f.shape.type === "ellipse" ? (
+                    <ellipse
+                      cx={f.shape.cx}
+                      cy={f.shape.cy}
+                      rx={f.shape.rx}
+                      ry={f.shape.ry}
+                      transform={f.shape.rotate ? `rotate(${f.shape.rotate} ${f.shape.cx} ${f.shape.cy})` : undefined}
+                      fill={isSelected ? color : "hsl(var(--foreground))"}
+                      fillOpacity={isSelected ? 0.85 : 0.55}
+                      stroke={isSelected ? color : "hsl(var(--foreground))"}
+                      strokeWidth={isSelected ? 1.6 : 0.8}
+                    />
+                  ) : (
+                    <path
+                      d={f.shape.d}
+                      fill={isSelected ? color : "hsl(var(--foreground))"}
+                      fillOpacity={isSelected ? 0.85 : 0.55}
+                      stroke={isSelected ? color : "hsl(var(--foreground))"}
+                      strokeWidth={isSelected ? 1.4 : 0.8}
+                    />
+                  )}
+  
+                  {/* Show label only on the "primary" side (left half) to avoid duplication;
+                      midline foramina (cribriform halves, foramen magnum) show one label centred. */}
+                  {showLabels && !f.id.endsWith("-r") && (
+                    <>
+                      <line
+                        x1={cx}
+                        y1={cy}
+                        x2={labelX + (anchor === "end" ? 6 : anchor === "start" ? -6 : 0)}
+                        y2={labelY - 2}
+                        stroke={isSelected ? color : "hsl(var(--muted-foreground))"}
+                        strokeWidth={isSelected ? 0.9 : 0.5}
+                        opacity={isSelected ? 0.85 : 0.45}
+                        pointerEvents="none"
+                      />
+                      <text
+                        x={labelX}
+                        y={labelY}
+                        textAnchor={anchor}
+                        className="text-[8px] fill-foreground select-none pointer-events-none"
+                        fontWeight={isSelected ? 600 : 400}
+                        opacity={isSelected ? 1 : 0.85}
+                      >
+                        {f.label}
+                      </text>
+                    </>
+                  )}
+                </g>
+    );
+            })}
+          </svg>
+  
+          {/* Mnemonic */}
+          <p className="text-xs text-center text-muted-foreground mt-2 italic">
+            <span className="font-semibold not-italic text-foreground">Standing Room Only — </span>
+            CN V₁ → Superior orbital fissure, V₂ → Rotundum, V₃ → Ovale.
+          </p>
+  
+          {/* Detail panel */}
+          <div className="mt-4 min-h-[110px]">
+            {selectedForamen ? (
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: fossaColors[selectedForamen.fossa] }}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <p className="font-semibold text-foreground text-sm">{selectedForamen.label}</p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{ background: `${fossaColors[selectedForamen.fossa]}26`, color: fossaColors[selectedForamen.fossa] }}
+                  >
+                    {selectedForamen.fossa} fossa
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Transmits:</span> {selectedForamen.contents}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Clinical:</span> {selectedForamen.clinical}
+                </p>
               </div>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Transmits:</span> {selectedForamen.contents}
+            ) : (
+              <p className="text-xs text-muted-foreground text-center italic">
+                Tap a foramen above to see its contents and clinical relevance.
               </p>
-              <p className="text-xs text-muted-foreground">
-                <span className="font-medium text-foreground">Clinical:</span> {selectedForamen.clinical}
-              </p>
-            </div>
-          ) : (
-            <p className="text-xs text-muted-foreground text-center italic">
-              Tap a foramen above to see its contents and clinical relevance.
-            </p>
-          )}
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

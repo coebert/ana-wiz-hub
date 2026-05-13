@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Sigmoid PV curve: V = Vmax / (1 + e^(-k*(P - P_infl)))
 // Lung: needs positive (transpulmonary) pressure to inflate
@@ -141,162 +142,168 @@ export const ComplianceDiagram = () => {
   ];
 
   return (
-        <div className="space-y-4">
-      {/* Curve toggles */}
-      <div className="flex flex-wrap gap-1.5">
-        {(["lung", "chestwall", "total"] as CurveId[]).map(id => {
-          const cfg = CURVE_CONFIG[id];
-          const on = visible.has(id);
-          return (
-                <button key={id} onClick={() => toggle(id)}
-              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                on ? "border-primary/50 bg-primary/10 text-foreground" : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
-              }`}>
-              <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: cfg.color, opacity: on ? 1 : 0.3 }} />
-              {cfg.label}
-            </button>
-  );
-        })}
+    <DiagramFigure
+      id="compliance-diagram"
+      title="Compliance"
+      description="Auto-generated wrapper for the Compliance anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-4">
+        {/* Curve toggles */}
+        <div className="flex flex-wrap gap-1.5">
+          {(["lung", "chestwall", "total"] as CurveId[]).map(id => {
+            const cfg = CURVE_CONFIG[id];
+            const on = visible.has(id);
+            return (
+                  <button key={id} onClick={() => toggle(id)}
+                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                  on ? "border-primary/50 bg-primary/10 text-foreground" : "border-border bg-secondary/30 text-muted-foreground hover:bg-secondary/60"
+                }`}>
+                <span className="inline-block w-2 h-2 rounded-full mr-1" style={{ backgroundColor: cfg.color, opacity: on ? 1 : 0.3 }} />
+                {cfg.label}
+              </button>
+    );
+          })}
+        </div>
+  
+        <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full">
+          {/* Grid */}
+          {[-20, -10, 0, 10, 20, 30, 40].map(p => (
+            <g key={`pg-${p}`}>
+              <line x1={toX(p)} y1={padT} x2={toX(p)} y2={svgH - padB} stroke="hsl(var(--border))" strokeWidth={p === 0 ? 1 : 0.5} />
+              <text x={toX(p)} y={svgH - padB + 12} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">{p}</text>
+            </g>
+          ))}
+          {[0, 1, 2, 3, 4, 5, 6].map(v => (
+            <g key={`vg-${v}`}>
+              <line x1={padL} y1={toY(v)} x2={svgW - padR} y2={toY(v)} stroke="hsl(var(--border))" strokeWidth="0.5" />
+              <text x={padL - 6} y={toY(v) + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
+            </g>
+          ))}
+  
+          {/* Axis labels */}
+          <text x={padL + plotW / 2} y={svgH - 5} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
+            Pressure (cmH₂O)
+          </text>
+          <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600"
+            transform={`rotate(-90, 12, ${padT + plotH / 2})`}>Volume (L)</text>
+  
+          {/* Zero pressure line highlight */}
+          <line x1={toX(0)} y1={padT} x2={toX(0)} y2={svgH - padB} stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" />
+  
+          {/* Tidal volume shading */}
+          <rect x={padL} y={toY(frc + tv)} width={plotW} height={toY(frc) - toY(frc + tv)}
+            fill="hsl(150 50% 50%)" opacity="0.06" />
+  
+          {/* Volume level lines */}
+          {volumes.map(vol => (
+            <g key={vol.id}>
+              <line x1={padL} y1={toY(vol.value)} x2={svgW - padR} y2={toY(vol.value)}
+                stroke={activeVolume === vol.id ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
+                strokeWidth={activeVolume === vol.id ? 1 : 0.5}
+                strokeDasharray="4 3" opacity={activeVolume === vol.id ? 0.5 : 0.25}
+                className="cursor-pointer" onClick={() => setActiveVolume(activeVolume === vol.id ? null : vol.id)} />
+              <text x={svgW - padR + 3} y={toY(vol.value) + 3} fontSize="7"
+                fill={activeVolume === vol.id ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
+                fontWeight={activeVolume === vol.id ? "700" : "400"}
+                className="cursor-pointer" onClick={() => setActiveVolume(activeVolume === vol.id ? null : vol.id)}>
+                {vol.label}
+              </text>
+            </g>
+          ))}
+  
+          {/* VT bracket */}
+          <line x1={padL + 8} y1={toY(frc)} x2={padL + 8} y2={toY(frc + tv)} stroke="hsl(150 50% 50%)" strokeWidth="1.5" />
+          <line x1={padL + 4} y1={toY(frc)} x2={padL + 12} y2={toY(frc)} stroke="hsl(150 50% 50%)" strokeWidth="1" />
+          <line x1={padL + 4} y1={toY(frc + tv)} x2={padL + 12} y2={toY(frc + tv)} stroke="hsl(150 50% 50%)" strokeWidth="1" />
+          <text x={padL + 16} y={toY(frc + tv / 2) + 3} fontSize="7" fill="hsl(150 50% 50%)" fontWeight="600">VT</text>
+  
+          {/* Curves */}
+          {visible.has("lung") && (
+            <path d={toPath(lungPts)} fill="none" stroke={CURVE_CONFIG.lung.color} strokeWidth="2" />
+          )}
+          {visible.has("chestwall") && (
+            <path d={toPath(cwPts)} fill="none" stroke={CURVE_CONFIG.chestwall.color} strokeWidth="2" />
+          )}
+          {visible.has("total") && (
+            <path d={toPath(totalPts)} fill="none" stroke={CURVE_CONFIG.total.color} strokeWidth="2" strokeDasharray="8 4" />
+          )}
+  
+          {/* FRC equilibrium point — where total system P = 0 */}
+          {visible.has("total") && (
+            <g>
+              <circle cx={toX(pAtFRC)} cy={toY(frc)} r="5" fill="hsl(0 65% 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
+              <text x={toX(pAtFRC) + 8} y={toY(frc) - 6} fontSize="8" fill="hsl(0 65% 50%)" fontWeight="600">
+                FRC ({frc.toFixed(1)} L)
+              </text>
+            </g>
+          )}
+  
+          {/* Compliance annotation — slope tangent at FRC on total curve */}
+          {visible.has("total") && (
+            <g opacity="0.5">
+              <text x={toX(15)} y={toY(4.5)} fontSize="7" fill="hsl(0 65% 50%)">
+                C = ΔV/ΔP
+              </text>
+              <text x={toX(15)} y={toY(4.5) + 10} fontSize="7" fill="hsl(0 65% 50%)">
+                ≈ 100 ml/cmH₂O
+              </text>
+            </g>
+          )}
+  
+          {/* Curve labels on the curves */}
+          {visible.has("lung") && (
+            <text x={toX(30)} y={toY(lungCurve(30)) - 6} fontSize="8" fill={CURVE_CONFIG.lung.color} fontWeight="600">Lung</text>
+          )}
+          {visible.has("chestwall") && (
+            <text x={toX(-20)} y={toY(chestWallCurve(-20)) - 6} fontSize="8" fill={CURVE_CONFIG.chestwall.color} fontWeight="600">Chest Wall</text>
+          )}
+          {visible.has("total") && (
+            <text x={toX(20)} y={toY(3.8)} fontSize="8" fill={CURVE_CONFIG.total.color} fontWeight="600">Total</text>
+          )}
+        </svg>
+  
+        {/* Sliders */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="rounded-lg border border-border p-3">
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-xs font-medium text-foreground">Tidal Volume</label>
+              <span className="text-xs text-muted-foreground font-mono">{tidalVol} ml</span>
+            </div>
+            <input type="range" min={200} max={1000} step={50} value={tidalVol}
+              onChange={e => setTidalVol(Number(e.target.value))}
+              className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-emerald-500" />
+            <div className="flex justify-between mt-0.5">
+              <span className="text-[9px] text-muted-foreground">200 ml</span>
+              <span className="text-[9px] text-muted-foreground">1000 ml</span>
+            </div>
+          </div>
+          <div className="rounded-lg border border-border p-3">
+            <div className="flex items-center justify-between mb-1">
+              <label className="text-xs font-medium text-foreground">FRC</label>
+              <span className="text-xs text-muted-foreground font-mono">{frc.toFixed(1)} L</span>
+            </div>
+            <input type="range" min={1.5} max={4.0} step={0.1} value={frc}
+              onChange={e => setFrc(Number(e.target.value))}
+              className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-blue-500" />
+            <div className="flex justify-between mt-0.5">
+              <span className="text-[9px] text-muted-foreground">↓ (obesity, supine)</span>
+              <span className="text-[9px] text-muted-foreground">↑ (COPD, upright)</span>
+            </div>
+          </div>
+        </div>
+  
+        {/* Volume info panel */}
+        {activeVolume && (
+          <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 animate-fade-in">
+            <p className="text-sm font-semibold text-foreground">{volumes.find(v => v.id === activeVolume)?.label}</p>
+            <p className="text-xs text-muted-foreground mt-1">{volumes.find(v => v.id === activeVolume)?.description}</p>
+          </div>
+        )}
+  
+        <p className="text-xs text-muted-foreground text-center">
+          At FRC, lung elastic recoil (inward) = chest wall spring-out force. Transmural pressure for the total system ≈ 0.
+        </p>
       </div>
-
-      <svg viewBox={`0 0 ${svgW} ${svgH}`} className="w-full">
-        {/* Grid */}
-        {[-20, -10, 0, 10, 20, 30, 40].map(p => (
-          <g key={`pg-${p}`}>
-            <line x1={toX(p)} y1={padT} x2={toX(p)} y2={svgH - padB} stroke="hsl(var(--border))" strokeWidth={p === 0 ? 1 : 0.5} />
-            <text x={toX(p)} y={svgH - padB + 12} textAnchor="middle" fontSize="8" fill="hsl(var(--muted-foreground))">{p}</text>
-          </g>
-        ))}
-        {[0, 1, 2, 3, 4, 5, 6].map(v => (
-          <g key={`vg-${v}`}>
-            <line x1={padL} y1={toY(v)} x2={svgW - padR} y2={toY(v)} stroke="hsl(var(--border))" strokeWidth="0.5" />
-            <text x={padL - 6} y={toY(v) + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
-          </g>
-        ))}
-
-        {/* Axis labels */}
-        <text x={padL + plotW / 2} y={svgH - 5} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600">
-          Pressure (cmH₂O)
-        </text>
-        <text x={12} y={padT + plotH / 2} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600"
-          transform={`rotate(-90, 12, ${padT + plotH / 2})`}>Volume (L)</text>
-
-        {/* Zero pressure line highlight */}
-        <line x1={toX(0)} y1={padT} x2={toX(0)} y2={svgH - padB} stroke="hsl(var(--foreground))" strokeWidth="0.75" opacity="0.2" />
-
-        {/* Tidal volume shading */}
-        <rect x={padL} y={toY(frc + tv)} width={plotW} height={toY(frc) - toY(frc + tv)}
-          fill="hsl(150 50% 50%)" opacity="0.06" />
-
-        {/* Volume level lines */}
-        {volumes.map(vol => (
-          <g key={vol.id}>
-            <line x1={padL} y1={toY(vol.value)} x2={svgW - padR} y2={toY(vol.value)}
-              stroke={activeVolume === vol.id ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
-              strokeWidth={activeVolume === vol.id ? 1 : 0.5}
-              strokeDasharray="4 3" opacity={activeVolume === vol.id ? 0.5 : 0.25}
-              className="cursor-pointer" onClick={() => setActiveVolume(activeVolume === vol.id ? null : vol.id)} />
-            <text x={svgW - padR + 3} y={toY(vol.value) + 3} fontSize="7"
-              fill={activeVolume === vol.id ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
-              fontWeight={activeVolume === vol.id ? "700" : "400"}
-              className="cursor-pointer" onClick={() => setActiveVolume(activeVolume === vol.id ? null : vol.id)}>
-              {vol.label}
-            </text>
-          </g>
-        ))}
-
-        {/* VT bracket */}
-        <line x1={padL + 8} y1={toY(frc)} x2={padL + 8} y2={toY(frc + tv)} stroke="hsl(150 50% 50%)" strokeWidth="1.5" />
-        <line x1={padL + 4} y1={toY(frc)} x2={padL + 12} y2={toY(frc)} stroke="hsl(150 50% 50%)" strokeWidth="1" />
-        <line x1={padL + 4} y1={toY(frc + tv)} x2={padL + 12} y2={toY(frc + tv)} stroke="hsl(150 50% 50%)" strokeWidth="1" />
-        <text x={padL + 16} y={toY(frc + tv / 2) + 3} fontSize="7" fill="hsl(150 50% 50%)" fontWeight="600">VT</text>
-
-        {/* Curves */}
-        {visible.has("lung") && (
-          <path d={toPath(lungPts)} fill="none" stroke={CURVE_CONFIG.lung.color} strokeWidth="2" />
-        )}
-        {visible.has("chestwall") && (
-          <path d={toPath(cwPts)} fill="none" stroke={CURVE_CONFIG.chestwall.color} strokeWidth="2" />
-        )}
-        {visible.has("total") && (
-          <path d={toPath(totalPts)} fill="none" stroke={CURVE_CONFIG.total.color} strokeWidth="2" strokeDasharray="8 4" />
-        )}
-
-        {/* FRC equilibrium point — where total system P = 0 */}
-        {visible.has("total") && (
-          <g>
-            <circle cx={toX(pAtFRC)} cy={toY(frc)} r="5" fill="hsl(0 65% 50%)" stroke="hsl(var(--background))" strokeWidth="1.5" />
-            <text x={toX(pAtFRC) + 8} y={toY(frc) - 6} fontSize="8" fill="hsl(0 65% 50%)" fontWeight="600">
-              FRC ({frc.toFixed(1)} L)
-            </text>
-          </g>
-        )}
-
-        {/* Compliance annotation — slope tangent at FRC on total curve */}
-        {visible.has("total") && (
-          <g opacity="0.5">
-            <text x={toX(15)} y={toY(4.5)} fontSize="7" fill="hsl(0 65% 50%)">
-              C = ΔV/ΔP
-            </text>
-            <text x={toX(15)} y={toY(4.5) + 10} fontSize="7" fill="hsl(0 65% 50%)">
-              ≈ 100 ml/cmH₂O
-            </text>
-          </g>
-        )}
-
-        {/* Curve labels on the curves */}
-        {visible.has("lung") && (
-          <text x={toX(30)} y={toY(lungCurve(30)) - 6} fontSize="8" fill={CURVE_CONFIG.lung.color} fontWeight="600">Lung</text>
-        )}
-        {visible.has("chestwall") && (
-          <text x={toX(-20)} y={toY(chestWallCurve(-20)) - 6} fontSize="8" fill={CURVE_CONFIG.chestwall.color} fontWeight="600">Chest Wall</text>
-        )}
-        {visible.has("total") && (
-          <text x={toX(20)} y={toY(3.8)} fontSize="8" fill={CURVE_CONFIG.total.color} fontWeight="600">Total</text>
-        )}
-      </svg>
-
-      {/* Sliders */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div className="rounded-lg border border-border p-3">
-          <div className="flex items-center justify-between mb-1">
-            <label className="text-xs font-medium text-foreground">Tidal Volume</label>
-            <span className="text-xs text-muted-foreground font-mono">{tidalVol} ml</span>
-          </div>
-          <input type="range" min={200} max={1000} step={50} value={tidalVol}
-            onChange={e => setTidalVol(Number(e.target.value))}
-            className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-emerald-500" />
-          <div className="flex justify-between mt-0.5">
-            <span className="text-[9px] text-muted-foreground">200 ml</span>
-            <span className="text-[9px] text-muted-foreground">1000 ml</span>
-          </div>
-        </div>
-        <div className="rounded-lg border border-border p-3">
-          <div className="flex items-center justify-between mb-1">
-            <label className="text-xs font-medium text-foreground">FRC</label>
-            <span className="text-xs text-muted-foreground font-mono">{frc.toFixed(1)} L</span>
-          </div>
-          <input type="range" min={1.5} max={4.0} step={0.1} value={frc}
-            onChange={e => setFrc(Number(e.target.value))}
-            className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-blue-500" />
-          <div className="flex justify-between mt-0.5">
-            <span className="text-[9px] text-muted-foreground">↓ (obesity, supine)</span>
-            <span className="text-[9px] text-muted-foreground">↑ (COPD, upright)</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Volume info panel */}
-      {activeVolume && (
-        <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 animate-fade-in">
-          <p className="text-sm font-semibold text-foreground">{volumes.find(v => v.id === activeVolume)?.label}</p>
-          <p className="text-xs text-muted-foreground mt-1">{volumes.find(v => v.id === activeVolume)?.description}</p>
-        </div>
-      )}
-
-      <p className="text-xs text-muted-foreground text-center">
-        At FRC, lung elastic recoil (inward) = chest wall spring-out force. Transmural pressure for the total system ≈ 0.
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };

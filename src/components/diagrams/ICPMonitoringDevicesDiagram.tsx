@@ -1,3 +1,4 @@
+import { DiagramFigure } from "./_shared/DiagramFigure";
 const BrainBase = ({ children, label }: { children: React.ReactNode; label: string }) => (
   <svg viewBox="0 0 300 280" className="w-full max-w-xs mx-auto" aria-label={label}>
     {/* Skull outer table */}
@@ -46,40 +47,46 @@ const BrainBase = ({ children, label }: { children: React.ReactNode; label: stri
 
 const ICPMonitoringDevicesDiagram = () => {
   return (
-            <div className="space-y-6">
-      <h3 className="text-lg font-serif font-bold text-foreground">ICP Monitoring Devices — Comparative Diagram</h3>
-      <p className="text-sm text-muted-foreground">
-        Axial cross-sections at ventricular level showing catheter/sensor placement. Both lateral ventricles, third ventricle, falx cerebri, and cortical surface are shown.
-      </p>
-
-      <div className="grid sm:grid-cols-2 gap-6">
-        {/* EVD - Intraventricular */}
-        <div className="space-y-2">
-          <BrainBase label="External Ventricular Drain (EVD)">
-            {/* Burr hole — right frontal (Kocher's point) */}
-            <circle cx="165" cy="40" r="5" fill="hsl(var(--foreground))" opacity="0.3" />
-            {/* Catheter traversing parenchyma into R lateral ventricle */}
-            <line x1="165" y1="40" x2="170" y2="108" stroke="hsl(var(--destructive))" strokeWidth="2" />
-            {/* Catheter tip inside ventricle */}
-            <circle cx="170" cy="108" r="3" fill="hsl(var(--destructive))" />
-            {/* External tubing */}
-            <line x1="165" y1="40" x2="165" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
-            <line x1="165" y1="12" x2="235" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
-            {/* Collection system */}
-            <rect x="235" y="4" width="32" height="16" rx="3" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
-            <text x="251" y="15" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">CSF</text>
-            {/* Labels with leader lines */}
-            <text x="22" y="38" fontSize="8" fill="hsl(var(--muted-foreground))">Kocher's</text>
-            <text x="22" y="47" fontSize="8" fill="hsl(var(--muted-foreground))">point</text>
-            <line x1="55" y1="42" x2="160" y2="40" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-            <text x="22" y="80" fontSize="8" fill="hsl(var(--destructive))">Catheter</text>
-            <line x1="55" y1="78" x2="167" y2="70" stroke="hsl(var(--destructive))" strokeWidth="0.5" />
-            <text x="240" y="30" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">External</text>
-            <text x="240" y="38" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">transducer</text>
-          </BrainBase>
-          <div className="text-center">
-            <p className="font-semibold text-foreground text-sm">EVD (Intraventricular)</p>
-            <p className="text-xs text-muted-foreground">Gold standard. Catheter tip in lateral ventricle (usually right, via Kocher's point
+    <DiagramFigure
+      id="icp-monitoring-devices-diagram"
+      title="ICP monitoring devices"
+      description="Auto-generated wrapper for the ICP monitoring devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="space-y-6">
+        <h3 className="text-lg font-serif font-bold text-foreground">ICP Monitoring Devices — Comparative Diagram</h3>
+        <p className="text-sm text-muted-foreground">
+          Axial cross-sections at ventricular level showing catheter/sensor placement. Both lateral ventricles, third ventricle, falx cerebri, and cortical surface are shown.
+        </p>
+  
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* EVD - Intraventricular */}
+          <div className="space-y-2">
+            <BrainBase label="External Ventricular Drain (EVD)">
+              {/* Burr hole — right frontal (Kocher's point) */}
+              <circle cx="165" cy="40" r="5" fill="hsl(var(--foreground))" opacity="0.3" />
+              {/* Catheter traversing parenchyma into R lateral ventricle */}
+              <line x1="165" y1="40" x2="170" y2="108" stroke="hsl(var(--destructive))" strokeWidth="2" />
+              {/* Catheter tip inside ventricle */}
+              <circle cx="170" cy="108" r="3" fill="hsl(var(--destructive))" />
+              {/* External tubing */}
+              <line x1="165" y1="40" x2="165" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
+              <line x1="165" y1="12" x2="235" y2="12" stroke="hsl(var(--destructive))" strokeWidth="2" />
+              {/* Collection system */}
+              <rect x="235" y="4" width="32" height="16" rx="3" fill="none" stroke="hsl(var(--destructive))" strokeWidth="1.5" />
+              <text x="251" y="15" textAnchor="middle" fontSize="6" fill="hsl(var(--destructive))">CSF</text>
+              {/* Labels with leader lines */}
+              <text x="22" y="38" fontSize="8" fill="hsl(var(--muted-foreground))">Kocher's</text>
+              <text x="22" y="47" fontSize="8" fill="hsl(var(--muted-foreground))">point</text>
+              <line x1="55" y1="42" x2="160" y2="40" stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+              <text x="22" y="80" fontSize="8" fill="hsl(var(--destructive))">Catheter</text>
+              <line x1="55" y1="78" x2="167" y2="70" stroke="hsl(var(--destructive))" strokeWidth="0.5" />
+              <text x="240" y="30" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">External</text>
+              <text x="240" y="38" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">transducer</text>
+            </BrainBase>
+            <div className="text-center">
+              <p className="font-semibold text-foreground text-sm">EVD (Intraventricular)</p>
+              <p className="text-xs text-muted-foreground">Gold standard. Catheter tip in lateral ventricle (usually right, via Kocher's point
+    </DiagramFigure>
   ). Measures global ICP. Can drain CSF therapeutically. Risk: infection (5–10%), haemorrhage (1–2%).</p>
           </div>
         </div>

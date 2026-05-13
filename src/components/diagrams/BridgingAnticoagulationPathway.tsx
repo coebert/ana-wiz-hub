@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type IndicationKey = "afib" | "mhv" | "vte";
 type ValveRisk = "low" | "intermediate" | "high";
@@ -155,207 +156,213 @@ export const BridgingAnticoagulationPathway = () => {
   }, [risk, bleed]);
 
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
-      {/* Selectors */}
-      <div className="p-3 bg-secondary/30 border-b border-border space-y-3">
-        <div>
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
-            1. Indication for warfarin
+    <DiagramFigure
+      id="bridging-anticoagulation-pathway"
+      title="Bridging anticoagulation pathway"
+      description="Auto-generated wrapper for the Bridging anticoagulation pathway clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card overflow-hidden">
+        {/* Selectors */}
+        <div className="p-3 bg-secondary/30 border-b border-border space-y-3">
+          <div>
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
+              1. Indication for warfarin
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {INDICATIONS.map(i => {
+                const isActive = i.key === indication;
+                return (
+                  <button
+                    key={i.key}
+                    type="button"
+                    onClick={() => setIndication(i.key)}
+                    aria-pressed={isActive}
+                    className="px-2 py-2 rounded-lg border-2 text-left transition-all"
+                    style={{
+                      borderColor: isActive ? i.color : "hsl(var(--border))",
+                      backgroundColor: isActive ? withAlpha(i.color, 0.1) : "transparent",
+                    }}
+                  >
+                    <div className="text-xs font-bold" style={{ color: isActive ? i.color : "hsl(var(--foreground))" }}>
+                      {i.shortLabel}
+                    </div>
+                    <div className="text-[10px] text-muted-foreground leading-tight mt-0.5">{i.label}</div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid grid-cols-3 gap-1.5">
-            {INDICATIONS.map(i => {
-              const isActive = i.key === indication;
-              return (
-                <button
-                  key={i.key}
-                  type="button"
-                  onClick={() => setIndication(i.key)}
-                  aria-pressed={isActive}
-                  className="px-2 py-2 rounded-lg border-2 text-left transition-all"
-                  style={{
-                    borderColor: isActive ? i.color : "hsl(var(--border))",
-                    backgroundColor: isActive ? withAlpha(i.color, 0.1) : "transparent",
-                  }}
-                >
-                  <div className="text-xs font-bold" style={{ color: isActive ? i.color : "hsl(var(--foreground))" }}>
-                    {i.shortLabel}
-                  </div>
-                  <div className="text-[10px] text-muted-foreground leading-tight mt-0.5">{i.label}</div>
-                </button>
-              );
-            })}
+  
+          <div>
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
+              2. Thrombotic risk band
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              {RISK_TABLE.map(r => {
+                const isActive = r.band === risk;
+                return (
+                  <button
+                    key={r.band}
+                    type="button"
+                    onClick={() => setRisk(r.band)}
+                    aria-pressed={isActive}
+                    className="px-2 py-2 rounded-lg border-2 text-center transition-all"
+                    style={{
+                      borderColor: isActive ? r.badgeColor : "hsl(var(--border))",
+                      backgroundColor: isActive ? withAlpha(r.badgeColor, 0.1) : "transparent",
+                    }}
+                  >
+                    <div className="text-xs font-bold uppercase" style={{ color: isActive ? r.badgeColor : "hsl(var(--foreground))" }}>
+                      {r.band}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </div>
-
-        <div>
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
-            2. Thrombotic risk band
-          </div>
-          <div className="grid grid-cols-3 gap-1.5">
-            {RISK_TABLE.map(r => {
-              const isActive = r.band === risk;
-              return (
-                <button
-                  key={r.band}
-                  type="button"
-                  onClick={() => setRisk(r.band)}
-                  aria-pressed={isActive}
-                  className="px-2 py-2 rounded-lg border-2 text-center transition-all"
-                  style={{
-                    borderColor: isActive ? r.badgeColor : "hsl(var(--border))",
-                    backgroundColor: isActive ? withAlpha(r.badgeColor, 0.1) : "transparent",
-                  }}
-                >
-                  <div className="text-xs font-bold uppercase" style={{ color: isActive ? r.badgeColor : "hsl(var(--foreground))" }}>
-                    {r.band}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div>
-          <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
-            3. Surgical bleeding risk
-          </div>
-          <div className="grid grid-cols-2 gap-1.5">
-            {(["low", "high"] as SurgicalBleed[]).map(b => {
-              const isActive = b === bleed;
-              const c = b === "high" ? "hsl(0, 75%, 50%)" : "hsl(150, 55%, 40%)";
-              return (
-                    <button
-                  key={b}
-                  type="button"
-                  onClick={() => setBleed(b)}
-                  aria-pressed={isActive}
-                  className="px-2 py-2 rounded-lg border-2 text-center transition-all"
-                  style={{
-                    borderColor: isActive ? c : "hsl(var(--border))",
-                    backgroundColor: isActive ? withAlpha(c, 0.1) : "transparent",
-                  }}
-                >
-                  <div className="text-xs font-bold uppercase" style={{ color: isActive ? c : "hsl(var(--foreground))" }}>
-                    {b} bleeding risk
-                  </div>
-                </button>
-  );
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Decision verdict */}
-      <div
-        className="p-4 border-b border-border"
-        style={{ backgroundColor: withAlpha(decision.color, 0.08) }}
-      >
-        <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color: decision.color }}>
-          Decision
-        </div>
-        <div className="text-xl font-serif font-bold mb-2" style={{ color: decision.color }}>
-          {decision.verdict}
-        </div>
-        <p className="text-sm text-foreground/90 leading-relaxed">{decision.text}</p>
-        <p className="text-[11px] text-muted-foreground mt-2 italic">
-          {activeIndication.shortLabel} · {activeRisk.label.split(" thrombotic risk")[0]} risk · {bleed === "high" ? "high" : "low"}-bleed surgery
-        </p>
-      </div>
-
-      {/* Risk band detail */}
-      <div className="p-4 space-y-3 border-b border-border">
-        <div>
-          <h4 className="text-base font-serif font-bold mb-2" style={{ color: activeRisk.badgeColor }}>
-            {activeRisk.label}
-          </h4>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <RiskCard active={indication === "afib"} title="AF / CHA₂DS₂-VASc" body={activeRisk.afib} color={INDICATIONS[0].color} />
-            <RiskCard active={indication === "mhv"} title="Mechanical valve" body={activeRisk.mhv} color={INDICATIONS[1].color} />
-            <RiskCard active={indication === "vte"} title="Recent VTE" body={activeRisk.vte} color={INDICATIONS[2].color} />
+  
+          <div>
+            <div className="text-[10px] uppercase tracking-wide text-muted-foreground mb-1.5 font-semibold">
+              3. Surgical bleeding risk
+            </div>
+            <div className="grid grid-cols-2 gap-1.5">
+              {(["low", "high"] as SurgicalBleed[]).map(b => {
+                const isActive = b === bleed;
+                const c = b === "high" ? "hsl(0, 75%, 50%)" : "hsl(150, 55%, 40%)";
+                return (
+                      <button
+                    key={b}
+                    type="button"
+                    onClick={() => setBleed(b)}
+                    aria-pressed={isActive}
+                    className="px-2 py-2 rounded-lg border-2 text-center transition-all"
+                    style={{
+                      borderColor: isActive ? c : "hsl(var(--border))",
+                      backgroundColor: isActive ? withAlpha(c, 0.1) : "transparent",
+                    }}
+                  >
+                    <div className="text-xs font-bold uppercase" style={{ color: isActive ? c : "hsl(var(--foreground))" }}>
+                      {b} bleeding risk
+                    </div>
+                  </button>
+    );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Bridging protocol — show only if BRIDGE / individualise */}
-      {(decision.verdict === "BRIDGE" || decision.verdict === "INDIVIDUALISE") && (
-        <div className="p-4 border-b border-border">
-          <h4 className="text-base font-serif font-bold mb-2 text-foreground">LMWH bridging protocol</h4>
-          <div className="overflow-x-auto -mx-4 px-4">
-            <table className="min-w-full text-xs border border-border rounded-lg">
-              <thead>
-                <tr className="bg-secondary/50">
-                  <th className="px-2 py-1.5 text-left font-semibold border-b border-border whitespace-nowrap">Day</th>
-                  <th className="px-2 py-1.5 text-left font-semibold border-b border-border">Warfarin</th>
-                  <th className="px-2 py-1.5 text-left font-semibold border-b border-border">LMWH</th>
-                  <th className="px-2 py-1.5 text-left font-semibold border-b border-border">Monitoring</th>
-                </tr>
-              </thead>
-              <tbody>
-                {BRIDGING_PROTOCOL.map(step => (
-                  <tr key={step.day} className="border-b border-border/50 align-top">
-                    <td className="px-2 py-1.5 font-mono font-semibold whitespace-nowrap">{step.day}</td>
-                    <td className="px-2 py-1.5">{step.warfarin}</td>
-                    <td className="px-2 py-1.5">{step.lmwh}</td>
-                    <td className="px-2 py-1.5 text-muted-foreground">{step.monitoring}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+  
+        {/* Decision verdict */}
+        <div
+          className="p-4 border-b border-border"
+          style={{ backgroundColor: withAlpha(decision.color, 0.08) }}
+        >
+          <div className="text-[10px] uppercase tracking-wide font-semibold mb-1" style={{ color: decision.color }}>
+            Decision
           </div>
-          <p className="text-[11px] text-muted-foreground italic mt-2">
-            Reduce LMWH dose if CrCl 15–30 mL/min (use 50 % therapeutic dose) or switch to IV UFH if CrCl &lt; 15 mL/min.
+          <div className="text-xl font-serif font-bold mb-2" style={{ color: decision.color }}>
+            {decision.verdict}
+          </div>
+          <p className="text-sm text-foreground/90 leading-relaxed">{decision.text}</p>
+          <p className="text-[11px] text-muted-foreground mt-2 italic">
+            {activeIndication.shortLabel} · {activeRisk.label.split(" thrombotic risk")[0]} risk · {bleed === "high" ? "high" : "low"}-bleed surgery
           </p>
         </div>
-      )}
-
-      {/* Evidence + bleeding-risk reference */}
-      <div className="p-4 grid grid-cols-1 lg:grid-cols-2 gap-3">
-        <div className="rounded-lg border border-border p-3">
-          <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5 text-foreground">
-            Why most patients should NOT be bridged
-          </div>
-          <ul className="space-y-1.5 text-xs text-muted-foreground leading-relaxed">
-            {NO_BRIDGE_RATIONALE.map((r, i) => (
-              <li key={i} className="flex gap-1.5">
-                <span className="text-foreground">•</span>
-                <span className="flex-1">{r}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="text-[11px] mt-2 italic" style={{ color: activeIndication.color }}>
-            {activeIndication.shortLabel}: {activeIndication.evidence}
+  
+        {/* Risk band detail */}
+        <div className="p-4 space-y-3 border-b border-border">
+          <div>
+            <h4 className="text-base font-serif font-bold mb-2" style={{ color: activeRisk.badgeColor }}>
+              {activeRisk.label}
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <RiskCard active={indication === "afib"} title="AF / CHA₂DS₂-VASc" body={activeRisk.afib} color={INDICATIONS[0].color} />
+              <RiskCard active={indication === "mhv"} title="Mechanical valve" body={activeRisk.mhv} color={INDICATIONS[1].color} />
+              <RiskCard active={indication === "vte"} title="Recent VTE" body={activeRisk.vte} color={INDICATIONS[2].color} />
+            </div>
           </div>
         </div>
-
-        <div className="rounded-lg border border-border p-3">
-          <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5 text-foreground">
-            Surgical bleeding risk reference
-          </div>
-          <div className="grid grid-cols-1 gap-2">
-            <div>
-              <div className="text-[11px] font-semibold uppercase mb-1" style={{ color: "hsl(0, 75%, 50%)" }}>
-                High bleeding risk
-              </div>
-              <ul className="space-y-1 text-xs text-muted-foreground">
-                {SURGICAL_BLEED_RISK.high.map((s, i) => (
-                  <li key={i} className="flex gap-1.5"><span style={{ color: "hsl(0, 75%, 50%)" }}>•</span><span>{s}</span></li>
-                ))}
-              </ul>
+  
+        {/* Bridging protocol — show only if BRIDGE / individualise */}
+        {(decision.verdict === "BRIDGE" || decision.verdict === "INDIVIDUALISE") && (
+          <div className="p-4 border-b border-border">
+            <h4 className="text-base font-serif font-bold mb-2 text-foreground">LMWH bridging protocol</h4>
+            <div className="overflow-x-auto -mx-4 px-4">
+              <table className="min-w-full text-xs border border-border rounded-lg">
+                <thead>
+                  <tr className="bg-secondary/50">
+                    <th className="px-2 py-1.5 text-left font-semibold border-b border-border whitespace-nowrap">Day</th>
+                    <th className="px-2 py-1.5 text-left font-semibold border-b border-border">Warfarin</th>
+                    <th className="px-2 py-1.5 text-left font-semibold border-b border-border">LMWH</th>
+                    <th className="px-2 py-1.5 text-left font-semibold border-b border-border">Monitoring</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {BRIDGING_PROTOCOL.map(step => (
+                    <tr key={step.day} className="border-b border-border/50 align-top">
+                      <td className="px-2 py-1.5 font-mono font-semibold whitespace-nowrap">{step.day}</td>
+                      <td className="px-2 py-1.5">{step.warfarin}</td>
+                      <td className="px-2 py-1.5">{step.lmwh}</td>
+                      <td className="px-2 py-1.5 text-muted-foreground">{step.monitoring}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <div>
-              <div className="text-[11px] font-semibold uppercase mb-1" style={{ color: "hsl(150, 55%, 40%)" }}>
-                Low bleeding risk (warfarin often continued, INR ≤ 3)
+            <p className="text-[11px] text-muted-foreground italic mt-2">
+              Reduce LMWH dose if CrCl 15–30 mL/min (use 50 % therapeutic dose) or switch to IV UFH if CrCl &lt; 15 mL/min.
+            </p>
+          </div>
+        )}
+  
+        {/* Evidence + bleeding-risk reference */}
+        <div className="p-4 grid grid-cols-1 lg:grid-cols-2 gap-3">
+          <div className="rounded-lg border border-border p-3">
+            <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5 text-foreground">
+              Why most patients should NOT be bridged
+            </div>
+            <ul className="space-y-1.5 text-xs text-muted-foreground leading-relaxed">
+              {NO_BRIDGE_RATIONALE.map((r, i) => (
+                <li key={i} className="flex gap-1.5">
+                  <span className="text-foreground">•</span>
+                  <span className="flex-1">{r}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="text-[11px] mt-2 italic" style={{ color: activeIndication.color }}>
+              {activeIndication.shortLabel}: {activeIndication.evidence}
+            </div>
+          </div>
+  
+          <div className="rounded-lg border border-border p-3">
+            <div className="text-[10px] uppercase tracking-wide font-semibold mb-1.5 text-foreground">
+              Surgical bleeding risk reference
+            </div>
+            <div className="grid grid-cols-1 gap-2">
+              <div>
+                <div className="text-[11px] font-semibold uppercase mb-1" style={{ color: "hsl(0, 75%, 50%)" }}>
+                  High bleeding risk
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  {SURGICAL_BLEED_RISK.high.map((s, i) => (
+                    <li key={i} className="flex gap-1.5"><span style={{ color: "hsl(0, 75%, 50%)" }}>•</span><span>{s}</span></li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-1 text-xs text-muted-foreground">
-                {SURGICAL_BLEED_RISK.low.map((s, i) => (
-                  <li key={i} className="flex gap-1.5"><span style={{ color: "hsl(150, 55%, 40%)" }}>•</span><span>{s}</span></li>
-                ))}
-              </ul>
+              <div>
+                <div className="text-[11px] font-semibold uppercase mb-1" style={{ color: "hsl(150, 55%, 40%)" }}>
+                  Low bleeding risk (warfarin often continued, INR ≤ 3)
+                </div>
+                <ul className="space-y-1 text-xs text-muted-foreground">
+                  {SURGICAL_BLEED_RISK.low.map((s, i) => (
+                    <li key={i} className="flex gap-1.5"><span style={{ color: "hsl(150, 55%, 40%)" }}>•</span><span>{s}</span></li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

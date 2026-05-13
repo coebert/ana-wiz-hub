@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Activity, Eye, Thermometer, Droplets, HeartPulse, Brain } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ToxidromeKey = "anticholinergic" | "cholinergic" | "sympathomimetic" | "opioid" | "sedative";
 
@@ -90,62 +91,68 @@ const ToxidromeComparatorDiagram = () => {
   const t = TOXIDROMES.find((x) => x.key === active)!;
 
   return (
-            <div className="rounded-xl border border-border bg-card p-4">
-      <div className="flex items-center gap-2 mb-3">
-        <Activity className="h-4 w-4 text-icu" />
-        <h3 className="text-sm font-semibold text-foreground">Toxidrome Comparator</h3>
-      </div>
-
-      <div className="flex flex-wrap gap-1.5 mb-4">
-        {TOXIDROMES.map((tx) => (
-          <button
-            key={tx.key}
-            type="button"
-            onClick={() => setActive(tx.key)}
-            className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors border ${
-              active === tx.key
-                ? `${tx.accent} text-foreground ring-2 ring-primary/30`
-                : "border-border text-muted-foreground hover:bg-muted"
-            }`}
-          >
-            {tx.label.split(" (")[0]}
-          </button>
-        ))}
-      </div>
-
-      <div className={`rounded-lg border p-3 ${t.accent}`}>
-        <div className="flex items-baseline justify-between gap-2 mb-2 flex-wrap">
-          <h4 className="text-base font-serif font-semibold text-foreground">{t.label}</h4>
-          <span className="text-[11px] text-muted-foreground">{t.examples}</span>
+    <DiagramFigure
+      id="toxidrome-comparator-diagram"
+      title="Toxidrome comparator"
+      description="Auto-generated wrapper for the Toxidrome comparator anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="rounded-xl border border-border bg-card p-4">
+        <div className="flex items-center gap-2 mb-3">
+          <Activity className="h-4 w-4 text-icu" />
+          <h3 className="text-sm font-semibold text-foreground">Toxidrome Comparator</h3>
         </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-          {[
-            { icon: HeartPulse, label: "Heart rate", value: t.hr },
-            { icon: Activity, label: "Blood pressure", value: t.bp },
-            { icon: Thermometer, label: "Temperature", value: t.temp },
-            { icon: Eye, label: "Pupils", value: t.pupils },
-            { icon: Droplets, label: "Skin", value: t.skin },
-            { icon: Brain, label: "Mental state", value: t.mental },
-          ].map((row) => (
-            <div key={row.label} className="rounded-md border border-border/60 bg-card p-2">
-              <div className="flex items-center gap-1 text-[10px] uppercase tracking-wide text-muted-foreground">
-                <row.icon className="h-3 w-3" />
-                {row.label}
-              </div>
-              <p className="text-foreground font-medium mt-0.5 leading-snug">{row.value}</p>
-            </div>
+  
+        <div className="flex flex-wrap gap-1.5 mb-4">
+          {TOXIDROMES.map((tx) => (
+            <button
+              key={tx.key}
+              type="button"
+              onClick={() => setActive(tx.key)}
+              className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors border ${
+                active === tx.key
+                  ? `${tx.accent} text-foreground ring-2 ring-primary/30`
+                  : "border-border text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              {tx.label.split(" (")[0]}
+            </button>
           ))}
         </div>
-
-        <div className="mt-3 rounded-md bg-card border border-border/60 p-2 text-xs">
-          <p className="text-[10px] uppercase tracking-wide text-muted-foreground mb-0.5">
-            Antidote / specific therapy
-          </p>
-          <p className="text-foreground font-medium leading-snug">{t.antidote}</p>
+  
+        <div className={`rounded-lg border p-3 ${t.accent}`}>
+          <div className="flex items-baseline justify-between gap-2 mb-2 flex-wrap">
+            <h4 className="text-base font-serif font-semibold text-foreground">{t.label}</h4>
+            <span className="text-[11px] text-muted-foreground">{t.examples}</span>
+          </div>
+  
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            {[
+              { icon: HeartPulse, label: "Heart rate", value: t.hr },
+              { icon: Activity, label: "Blood pressure", value: t.bp },
+              { icon: Thermometer, label: "Temperature", value: t.temp },
+              { icon: Eye, label: "Pupils", value: t.pupils },
+              { icon: Droplets, label: "Skin", value: t.skin },
+              { icon: Brain, label: "Mental state", value: t.mental },
+            ].map((row) => (
+              <div key={row.label} className="rounded-md border border-border/60 bg-card p-2">
+                <div className="flex items-center gap-1 text-[10px] uppercase tracking-wide text-muted-foreground">
+                  <row.icon className="h-3 w-3" />
+                  {row.label}
+                </div>
+                <p className="text-foreground font-medium mt-0.5 leading-snug">{row.value}</p>
+              </div>
+            ))}
+          </div>
+  
+          <div className="mt-3 rounded-md bg-card border border-border/60 p-2 text-xs">
+            <p className="text-[10px] uppercase tracking-wide text-muted-foreground mb-0.5">
+              Antidote / specific therapy
+            </p>
+            <p className="text-foreground font-medium leading-snug">{t.antidote}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

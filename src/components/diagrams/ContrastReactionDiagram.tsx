@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const ContrastReactionDiagram = () => {
   const [selectedSeverity, setSelectedSeverity] = useState<string | null>(null);
@@ -53,106 +54,112 @@ const ContrastReactionDiagram = () => {
   ];
 
   return (
-            <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
-      <h3 className="text-lg font-bold text-foreground mb-1">Contrast Reactions & CI-AKI Management</h3>
-      <p className="text-sm text-muted-foreground mb-4">Severity grading, risk stratification, and nephroprotection protocol</p>
-
-      <Tabs defaultValue="severity" className="w-full">
-        <TabsList className="grid w-full grid-cols-3 mb-4">
-          <TabsTrigger value="severity" className="text-xs">Reaction Severity</TabsTrigger>
-          <TabsTrigger value="risk" className="text-xs">Risk Factors</TabsTrigger>
-          <TabsTrigger value="ciaki" className="text-xs">CI-AKI Protocol</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="severity">
-          <div className="space-y-3">
-            {severityLevels.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => setSelectedSeverity(selectedSeverity === s.id ? null : s.id)}
-                className="w-full text-left"
-              >
-                <div className={`p-3 rounded-lg border transition-all ${selectedSeverity === s.id ? "ring-1 ring-primary" : ""} ${s.bgClass}`}>
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: s.color }} />
-                      <p className="font-bold text-foreground text-sm">{s.label}</p>
-                    </div>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">{s.frequency}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {s.features.map((f, j) => (
-                      <span key={j} className="text-[10px] px-1.5 py-0.5 rounded-full bg-background/60 text-muted-foreground">{f}</span>
-                    ))}
-                  </div>
-                  {selectedSeverity === s.id && (
-                    <div className="mt-3 pt-2 border-t border-border/50 animate-fade-in">
-                      <p className="text-xs font-semibold text-foreground mb-1">Management:</p>
-                      <ul className="space-y-0.5">
-                        {s.management.map((m, j) => (
-                          <li key={j} className="text-xs text-muted-foreground flex items-start gap-1.5">
-                            <span className="mt-0.5" style={{ color: s.color }}>•</span>{m}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </button>
-            ))}
-          </div>
-          <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">Key point: </strong>
-            Most contrast reactions are <strong>anaphylactoid</strong> (non-IgE, direct mast cell degranulation), but are managed identically to true anaphylaxis. Always take mast cell tryptase for severe reactions.
-          </div>
-        </TabsContent>
-
-        <TabsContent value="risk">
-          <div className="space-y-2">
-            {riskFactors.map((r, i) => (
-              <button
-                key={i}
-                onClick={() => setSelectedRisk(selectedRisk === i ? null : i)}
-                className="w-full text-left"
-              >
-                <div className={`p-3 rounded-lg border transition-all ${selectedRisk === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}>
-                  <div className="flex items-center justify-between">
-                    <p className="font-bold text-foreground text-sm">{r.factor}</p>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-destructive/10 text-destructive font-semibold">{r.risk}</span>
-                  </div>
-                  {selectedRisk === i && (
-                    <p className="text-xs text-muted-foreground mt-2 leading-relaxed animate-fade-in">{r.action}</p>
-                  )}
-                </div>
-              </button>
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="ciaki">
-          <div className="relative">
-            <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border" />
+    <DiagramFigure
+      id="contrast-reaction-diagram"
+      title="Contrast reaction"
+      description="Auto-generated wrapper for the Contrast reaction anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div className="my-6 p-4 bg-muted/30 rounded-xl border border-border">
+        <h3 className="text-lg font-bold text-foreground mb-1">Contrast Reactions & CI-AKI Management</h3>
+        <p className="text-sm text-muted-foreground mb-4">Severity grading, risk stratification, and nephroprotection protocol</p>
+  
+        <Tabs defaultValue="severity" className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-4">
+            <TabsTrigger value="severity" className="text-xs">Reaction Severity</TabsTrigger>
+            <TabsTrigger value="risk" className="text-xs">Risk Factors</TabsTrigger>
+            <TabsTrigger value="ciaki" className="text-xs">CI-AKI Protocol</TabsTrigger>
+          </TabsList>
+  
+          <TabsContent value="severity">
             <div className="space-y-3">
-              {ciakiProtocol.map((step, i) => (
-                <div key={i} className="relative pl-10">
-                  <div className="absolute left-2 top-1.5 w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
-                    <span className="text-[9px] font-bold text-primary">{i + 1}</span>
+              {severityLevels.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => setSelectedSeverity(selectedSeverity === s.id ? null : s.id)}
+                  className="w-full text-left"
+                >
+                  <div className={`p-3 rounded-lg border transition-all ${selectedSeverity === s.id ? "ring-1 ring-primary" : ""} ${s.bgClass}`}>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full" style={{ backgroundColor: s.color }} />
+                        <p className="font-bold text-foreground text-sm">{s.label}</p>
+                      </div>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-medium">{s.frequency}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {s.features.map((f, j) => (
+                        <span key={j} className="text-[10px] px-1.5 py-0.5 rounded-full bg-background/60 text-muted-foreground">{f}</span>
+                      ))}
+                    </div>
+                    {selectedSeverity === s.id && (
+                      <div className="mt-3 pt-2 border-t border-border/50 animate-fade-in">
+                        <p className="text-xs font-semibold text-foreground mb-1">Management:</p>
+                        <ul className="space-y-0.5">
+                          {s.management.map((m, j) => (
+                            <li key={j} className="text-xs text-muted-foreground flex items-start gap-1.5">
+                              <span className="mt-0.5" style={{ color: s.color }}>•</span>{m}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                  <div className="p-3 rounded-lg border border-border bg-card">
-                    <p className="font-bold text-foreground text-sm mb-1">{step.step}</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{step.detail}</p>
-                  </div>
-                </div>
+                </button>
               ))}
             </div>
-          </div>
-          <div className="mt-3 p-2 rounded bg-accent/10 border border-accent/20 text-xs text-muted-foreground">
-            <strong className="text-foreground">N-acetylcysteine: </strong>
-            Previously recommended, but ACT/PRESERVE trials showed no benefit over hydration alone. No longer in guidelines. Hydration remains the cornerstone of CI-AKI prevention.
-          </div>
-        </TabsContent>
-      </Tabs>
-    </div>
+            <div className="mt-3 p-2 rounded bg-primary/5 border border-primary/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">Key point: </strong>
+              Most contrast reactions are <strong>anaphylactoid</strong> (non-IgE, direct mast cell degranulation), but are managed identically to true anaphylaxis. Always take mast cell tryptase for severe reactions.
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="risk">
+            <div className="space-y-2">
+              {riskFactors.map((r, i) => (
+                <button
+                  key={i}
+                  onClick={() => setSelectedRisk(selectedRisk === i ? null : i)}
+                  className="w-full text-left"
+                >
+                  <div className={`p-3 rounded-lg border transition-all ${selectedRisk === i ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"}`}>
+                    <div className="flex items-center justify-between">
+                      <p className="font-bold text-foreground text-sm">{r.factor}</p>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-destructive/10 text-destructive font-semibold">{r.risk}</span>
+                    </div>
+                    {selectedRisk === i && (
+                      <p className="text-xs text-muted-foreground mt-2 leading-relaxed animate-fade-in">{r.action}</p>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </TabsContent>
+  
+          <TabsContent value="ciaki">
+            <div className="relative">
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border" />
+              <div className="space-y-3">
+                {ciakiProtocol.map((step, i) => (
+                  <div key={i} className="relative pl-10">
+                    <div className="absolute left-2 top-1.5 w-5 h-5 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
+                      <span className="text-[9px] font-bold text-primary">{i + 1}</span>
+                    </div>
+                    <div className="p-3 rounded-lg border border-border bg-card">
+                      <p className="font-bold text-foreground text-sm mb-1">{step.step}</p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{step.detail}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="mt-3 p-2 rounded bg-accent/10 border border-accent/20 text-xs text-muted-foreground">
+              <strong className="text-foreground">N-acetylcysteine: </strong>
+              Previously recommended, but ACT/PRESERVE trials showed no benefit over hydration alone. No longer in guidelines. Hydration remains the cornerstone of CI-AKI prevention.
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

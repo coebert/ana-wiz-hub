@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * APACHE II calculator (Knaus 1985).
@@ -44,199 +45,205 @@ const APACHEIICalculator = () => {
   );
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 my-6">
-      <h3 className="text-lg font-semibold text-foreground">APACHE II Calculator</h3>
-      <p className="text-xs text-muted-foreground mb-4">
-        Worst values in the first 24 h of ICU admission. Outputs raw score, predicted in-hospital mortality (Knaus 1985 logistic model) and a comparison against SOFA at 24 h.
-      </p>
-
-      <p className="text-xs font-semibold text-foreground mb-2">Acute physiology (APS)</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
-        <Slider label="Temperature (rectal)" value={temp} min={30} max={42} step={0.1} unit="°C" onChange={setTemp} decimals={1} />
-        <Slider label="MAP" value={map} min={30} max={180} step={1} unit="mmHg" onChange={setMap} />
-        <Slider label="HR" value={hr} min={30} max={200} step={1} unit="/min" onChange={setHr} />
-        <Slider label="RR" value={rr} min={5} max={60} step={1} unit="/min" onChange={setRr} />
-        <Slider label="FiO₂" value={fio2} min={0.21} max={1.0} step={0.05} unit="" onChange={setFio2} decimals={2} />
-        {fio2 >= 0.5 ? (
-          <Slider label="A-a gradient" value={aaO2} min={0} max={600} step={5} unit="mmHg" onChange={setAaO2} />
-        ) : (
-          <Slider label="PaO₂" value={pao2} min={30} max={200} step={1} unit="mmHg" onChange={setPao2} />
-        )}
-        <Slider label="Arterial pH" value={phArt} min={6.9} max={7.7} step={0.01} unit="" onChange={setPhArt} decimals={2} />
-        <Slider label="Sodium" value={na} min={110} max={180} step={1} unit="mmol/L" onChange={setNa} />
-        <Slider label="Potassium" value={k} min={1.5} max={8.0} step={0.1} unit="mmol/L" onChange={setK} decimals={1} />
-        <Slider label="Creatinine" value={creat} min={40} max={600} step={5} unit="µmol/L" onChange={setCreat} />
-        <Slider label="Haematocrit" value={hct} min={15} max={60} step={0.5} unit="%" onChange={setHct} decimals={1} />
-        <Slider label="WCC" value={wcc} min={0.5} max={50} step={0.5} unit="×10⁹/L" onChange={setWcc} decimals={1} />
-        <Slider label="GCS" value={gcs} min={3} max={15} step={1} unit="" onChange={setGcs} />
-        <label className="flex items-center gap-2 text-xs cursor-pointer mt-1">
-          <input type="checkbox" checked={aki} onChange={(e) => setAki(e.target.checked)} className="accent-primary" />
-          <span className="text-muted-foreground">Acute kidney injury (doubles creatinine points)</span>
-        </label>
-      </div>
-
-      <p className="text-xs font-semibold text-foreground mb-2">Age &amp; chronic health</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-        <Slider label="Age" value={age} min={16} max={95} step={1} unit="yr" onChange={setAge} />
-        <div>
-          <p className="text-xs text-muted-foreground mb-1">Severe organ insufficiency / immunocompromise</p>
-          <select
-            value={chronic}
-            onChange={(e) => setChronic(e.target.value as ChronicHealth)}
-            className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
-          >
-            <option value="none">None</option>
-            <option value="elective">Yes — elective post-op (+2)</option>
-            <option value="emergencyOrMedical">Yes — non-op or emergency post-op (+5)</option>
-          </select>
-          <p className="text-[10px] text-muted-foreground mt-1">e.g. cirrhosis, NYHA IV, severe COPD, dialysis-dependent CKD, immunosuppression.</p>
+    <DiagramFigure
+      id="apacheii-calculator"
+      title="APACHEII"
+      description="Auto-generated wrapper for the APACHEII interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card p-4 my-6">
+        <h3 className="text-lg font-semibold text-foreground">APACHE II Calculator</h3>
+        <p className="text-xs text-muted-foreground mb-4">
+          Worst values in the first 24 h of ICU admission. Outputs raw score, predicted in-hospital mortality (Knaus 1985 logistic model) and a comparison against SOFA at 24 h.
+        </p>
+  
+        <p className="text-xs font-semibold text-foreground mb-2">Acute physiology (APS)</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 mb-4">
+          <Slider label="Temperature (rectal)" value={temp} min={30} max={42} step={0.1} unit="°C" onChange={setTemp} decimals={1} />
+          <Slider label="MAP" value={map} min={30} max={180} step={1} unit="mmHg" onChange={setMap} />
+          <Slider label="HR" value={hr} min={30} max={200} step={1} unit="/min" onChange={setHr} />
+          <Slider label="RR" value={rr} min={5} max={60} step={1} unit="/min" onChange={setRr} />
+          <Slider label="FiO₂" value={fio2} min={0.21} max={1.0} step={0.05} unit="" onChange={setFio2} decimals={2} />
+          {fio2 >= 0.5 ? (
+            <Slider label="A-a gradient" value={aaO2} min={0} max={600} step={5} unit="mmHg" onChange={setAaO2} />
+          ) : (
+            <Slider label="PaO₂" value={pao2} min={30} max={200} step={1} unit="mmHg" onChange={setPao2} />
+          )}
+          <Slider label="Arterial pH" value={phArt} min={6.9} max={7.7} step={0.01} unit="" onChange={setPhArt} decimals={2} />
+          <Slider label="Sodium" value={na} min={110} max={180} step={1} unit="mmol/L" onChange={setNa} />
+          <Slider label="Potassium" value={k} min={1.5} max={8.0} step={0.1} unit="mmol/L" onChange={setK} decimals={1} />
+          <Slider label="Creatinine" value={creat} min={40} max={600} step={5} unit="µmol/L" onChange={setCreat} />
+          <Slider label="Haematocrit" value={hct} min={15} max={60} step={0.5} unit="%" onChange={setHct} decimals={1} />
+          <Slider label="WCC" value={wcc} min={0.5} max={50} step={0.5} unit="×10⁹/L" onChange={setWcc} decimals={1} />
+          <Slider label="GCS" value={gcs} min={3} max={15} step={1} unit="" onChange={setGcs} />
+          <label className="flex items-center gap-2 text-xs cursor-pointer mt-1">
+            <input type="checkbox" checked={aki} onChange={(e) => setAki(e.target.checked)} className="accent-primary" />
+            <span className="text-muted-foreground">Acute kidney injury (doubles creatinine points)</span>
+          </label>
         </div>
-        <div>
-          <p className="text-xs text-muted-foreground mb-1">Admission category (for predicted mortality)</p>
-          <select
-            value={admission}
-            onChange={(e) => setAdmission(e.target.value as AdmissionType)}
-            className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
-          >
-            <option value="nonOp">Non-operative</option>
-            <option value="postOpElective">Post-op elective</option>
-            <option value="postOpEmergency">Post-op emergency</option>
-          </select>
-        </div>
-      </div>
-
-      <p className="text-xs font-semibold text-foreground mb-2">Clinical Frailty Scale (Rockwood) — Muscedere 2017 overlay</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 items-start">
-        <div className="md:col-span-2">
-          <Slider label={`CFS — ${cfsLabel(cfs)}`} value={cfs} min={1} max={9} step={1} unit="" onChange={setCfs} />
-          <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
-            1 Very fit · 2 Well · 3 Managing well · 4 Vulnerable · 5 Mildly frail · 6 Moderately frail · 7 Severely frail · 8 Very severely frail · 9 Terminally ill. Frail = CFS ≥ 5.
-          </p>
-        </div>
-        <div className="rounded-md border border-border bg-secondary/40 p-2">
-          <p className="text-[10px] text-muted-foreground">Frailty OR (vs CFS &lt; 5)</p>
-          <p className="text-lg font-bold font-mono text-foreground">×{result.frailtyOR.toFixed(2)}</p>
-          <p className="text-[10px] text-muted-foreground">Hospital mortality, Muscedere 2017 (n=421, ≥80 y ICU cohort)</p>
-        </div>
-      </div>
-
-      {/* Score breakdown */}
-      <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
-        <div className="flex items-baseline justify-between mb-2 flex-wrap gap-2">
-          <p className="text-sm font-semibold text-foreground">APACHE II breakdown</p>
-          <p className="text-2xl font-bold" style={{ color: result.color }}>
-            {result.total}
-            <span className="text-xs text-muted-foreground font-normal ml-1">/ 71</span>
-          </p>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="text-muted-foreground border-b border-border">
-                <th className="text-left py-1">Component</th>
-                <th className="text-right py-1">Value</th>
-                <th className="text-right py-1">Points</th>
-              </tr>
-            </thead>
-            <tbody className="text-foreground">
-              {result.breakdown.map((b) => (
-                <tr key={b.label} className="border-b border-border/50">
-                  <td className="py-1">{b.label}</td>
-                  <td className="py-1 text-right font-mono">{b.value}</td>
-                  <td className="py-1 text-right font-mono font-semibold">{b.points}</td>
-                </tr>
-              ))}
-              <tr className="border-t border-border font-semibold">
-                <td className="py-1">APS subtotal</td>
-                <td></td>
-                <td className="py-1 text-right font-mono">{result.aps}</td>
-              </tr>
-              <tr>
-                <td className="py-1">Age points</td>
-                <td className="py-1 text-right font-mono">{age} yr</td>
-                <td className="py-1 text-right font-mono">{result.agePts}</td>
-              </tr>
-              <tr>
-                <td className="py-1">Chronic health</td>
-                <td></td>
-                <td className="py-1 text-right font-mono">{result.chronicPts}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Side-by-side comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
-        <div className="rounded-lg border border-border bg-background/40 p-3">
-          <p className="text-xs font-semibold text-foreground">APACHE II — predicted mortality</p>
-          <p className="text-3xl font-bold mt-1" style={{ color: result.color }}>
-            {result.mortalityPct.toFixed(1)}<span className="text-base">%</span>
-          </p>
-          <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Knaus model · {admission === "nonOp" ? "non-op" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"}
-          </p>
-        </div>
-        <div className="rounded-lg border-2 p-3" style={{ borderColor: result.adjColor, backgroundColor: `${result.adjColor}14` }}>
-          <p className="text-xs font-semibold text-foreground">Frailty-adjusted mortality</p>
-          <p className="text-3xl font-bold mt-1" style={{ color: result.adjColor }}>
-            {result.adjMortalityPct.toFixed(1)}<span className="text-base">%</span>
-          </p>
-          <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            CFS {cfs} · OR ×{result.frailtyOR.toFixed(2)} on baseline odds (Muscedere 2017)
-          </p>
-        </div>
-        <div className="rounded-lg border border-border bg-background/40 p-3">
-          <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-foreground">SOFA at 24 h</p>
-            <input
-              type="number"
-              min={0}
-              max={24}
-              value={sofa}
-              onChange={(e) => setSofa(Math.max(0, Math.min(24, Number(e.target.value))))}
-              className="w-14 px-1.5 py-0.5 text-xs text-right rounded border border-border bg-background text-foreground font-mono"
-            />
+  
+        <p className="text-xs font-semibold text-foreground mb-2">Age &amp; chronic health</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <Slider label="Age" value={age} min={16} max={95} step={1} unit="yr" onChange={setAge} />
+          <div>
+            <p className="text-xs text-muted-foreground mb-1">Severe organ insufficiency / immunocompromise</p>
+            <select
+              value={chronic}
+              onChange={(e) => setChronic(e.target.value as ChronicHealth)}
+              className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
+            >
+              <option value="none">None</option>
+              <option value="elective">Yes — elective post-op (+2)</option>
+              <option value="emergencyOrMedical">Yes — non-op or emergency post-op (+5)</option>
+            </select>
+            <p className="text-[10px] text-muted-foreground mt-1">e.g. cirrhosis, NYHA IV, severe COPD, dialysis-dependent CKD, immunosuppression.</p>
           </div>
-          <p className="text-3xl font-bold mt-1" style={{ color: sofaColor(sofa) }}>
-            {sofaMortality(sofa).toFixed(0)}<span className="text-base">%</span>
-          </p>
-          <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
-            Ferreira 2001 · max SOFA in 24 h
-          </p>
+          <div>
+            <p className="text-xs text-muted-foreground mb-1">Admission category (for predicted mortality)</p>
+            <select
+              value={admission}
+              onChange={(e) => setAdmission(e.target.value as AdmissionType)}
+              className="w-full px-2 py-1 text-xs rounded-md border border-border bg-background text-foreground"
+            >
+              <option value="nonOp">Non-operative</option>
+              <option value="postOpElective">Post-op elective</option>
+              <option value="postOpEmergency">Post-op emergency</option>
+            </select>
+          </div>
         </div>
+  
+        <p className="text-xs font-semibold text-foreground mb-2">Clinical Frailty Scale (Rockwood) — Muscedere 2017 overlay</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4 items-start">
+          <div className="md:col-span-2">
+            <Slider label={`CFS — ${cfsLabel(cfs)}`} value={cfs} min={1} max={9} step={1} unit="" onChange={setCfs} />
+            <p className="text-[10px] text-muted-foreground mt-1 leading-snug">
+              1 Very fit · 2 Well · 3 Managing well · 4 Vulnerable · 5 Mildly frail · 6 Moderately frail · 7 Severely frail · 8 Very severely frail · 9 Terminally ill. Frail = CFS ≥ 5.
+            </p>
+          </div>
+          <div className="rounded-md border border-border bg-secondary/40 p-2">
+            <p className="text-[10px] text-muted-foreground">Frailty OR (vs CFS &lt; 5)</p>
+            <p className="text-lg font-bold font-mono text-foreground">×{result.frailtyOR.toFixed(2)}</p>
+            <p className="text-[10px] text-muted-foreground">Hospital mortality, Muscedere 2017 (n=421, ≥80 y ICU cohort)</p>
+          </div>
+        </div>
+  
+        {/* Score breakdown */}
+        <div className="rounded-lg bg-secondary/40 border border-border p-3 mb-3">
+          <div className="flex items-baseline justify-between mb-2 flex-wrap gap-2">
+            <p className="text-sm font-semibold text-foreground">APACHE II breakdown</p>
+            <p className="text-2xl font-bold" style={{ color: result.color }}>
+              {result.total}
+              <span className="text-xs text-muted-foreground font-normal ml-1">/ 71</span>
+            </p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead>
+                <tr className="text-muted-foreground border-b border-border">
+                  <th className="text-left py-1">Component</th>
+                  <th className="text-right py-1">Value</th>
+                  <th className="text-right py-1">Points</th>
+                </tr>
+              </thead>
+              <tbody className="text-foreground">
+                {result.breakdown.map((b) => (
+                  <tr key={b.label} className="border-b border-border/50">
+                    <td className="py-1">{b.label}</td>
+                    <td className="py-1 text-right font-mono">{b.value}</td>
+                    <td className="py-1 text-right font-mono font-semibold">{b.points}</td>
+                  </tr>
+                ))}
+                <tr className="border-t border-border font-semibold">
+                  <td className="py-1">APS subtotal</td>
+                  <td></td>
+                  <td className="py-1 text-right font-mono">{result.aps}</td>
+                </tr>
+                <tr>
+                  <td className="py-1">Age points</td>
+                  <td className="py-1 text-right font-mono">{age} yr</td>
+                  <td className="py-1 text-right font-mono">{result.agePts}</td>
+                </tr>
+                <tr>
+                  <td className="py-1">Chronic health</td>
+                  <td></td>
+                  <td className="py-1 text-right font-mono">{result.chronicPts}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  
+        {/* Side-by-side comparison */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+          <div className="rounded-lg border border-border bg-background/40 p-3">
+            <p className="text-xs font-semibold text-foreground">APACHE II — predicted mortality</p>
+            <p className="text-3xl font-bold mt-1" style={{ color: result.color }}>
+              {result.mortalityPct.toFixed(1)}<span className="text-base">%</span>
+            </p>
+            <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+              Knaus model · {admission === "nonOp" ? "non-op" : admission === "postOpElective" ? "post-op elective" : "post-op emergency"}
+            </p>
+          </div>
+          <div className="rounded-lg border-2 p-3" style={{ borderColor: result.adjColor, backgroundColor: `${result.adjColor}14` }}>
+            <p className="text-xs font-semibold text-foreground">Frailty-adjusted mortality</p>
+            <p className="text-3xl font-bold mt-1" style={{ color: result.adjColor }}>
+              {result.adjMortalityPct.toFixed(1)}<span className="text-base">%</span>
+            </p>
+            <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+              CFS {cfs} · OR ×{result.frailtyOR.toFixed(2)} on baseline odds (Muscedere 2017)
+            </p>
+          </div>
+          <div className="rounded-lg border border-border bg-background/40 p-3">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold text-foreground">SOFA at 24 h</p>
+              <input
+                type="number"
+                min={0}
+                max={24}
+                value={sofa}
+                onChange={(e) => setSofa(Math.max(0, Math.min(24, Number(e.target.value))))}
+                className="w-14 px-1.5 py-0.5 text-xs text-right rounded border border-border bg-background text-foreground font-mono"
+              />
+            </div>
+            <p className="text-3xl font-bold mt-1" style={{ color: sofaColor(sofa) }}>
+              {sofaMortality(sofa).toFixed(0)}<span className="text-base">%</span>
+            </p>
+            <p className="text-[11px] text-muted-foreground mt-1 leading-snug">
+              Ferreira 2001 · max SOFA in 24 h
+            </p>
+          </div>
+        </div>
+  
+        {/* Severity band */}
+        <div
+          className="rounded-lg p-3 border-l-4 mb-3"
+          style={{ borderLeftColor: result.color, backgroundColor: `${result.color}1A` }}
+        >
+          <p className="text-sm font-bold" style={{ color: result.color }}>{result.bandTitle}</p>
+          <p className="text-xs text-foreground mt-1 leading-relaxed">{result.bandDetail}</p>
+          {cfs >= 5 && (
+            <p className="text-xs text-foreground mt-2 leading-relaxed border-t border-border/50 pt-2">
+              <strong>Frailty modifier (CFS {cfs} — {cfsLabel(cfs)}):</strong> {result.frailtyMessage}
+            </p>
+          )}
+        </div>
+  
+        {/* APACHE vs SOFA explainer */}
+        <div className="rounded-lg border border-border p-3">
+          <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA vs frailty — when to use which</p>
+          <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
+            <li><strong>APACHE II</strong> — worst values in first 24 h; AUROC ~0.85 for hospital mortality. Cannot track trajectory.</li>
+            <li><strong>SOFA</strong> — daily organ-dysfunction score; Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
+            <li><strong>CFS (Muscedere 2017)</strong> — pre-morbid frailty independently predicts hospital mortality (adjusted OR 1.81 for CFS ≥5) and 1-year mortality (OR 1.71) in ≥80 y ICU patients. Frail patients have ~2× LOS and higher disability at discharge. Adds discrimination beyond APACHE II in the elderly.</li>
+            <li>SAPS II / APACHE IV outperform APACHE II in modern cohorts but are more complex.</li>
+            <li>All scores are calibrated to populations — use as a communication and audit tool, not a single-patient verdict.</li>
+          </ul>
+        </div>
+  
+        <p className="text-[10px] text-muted-foreground mt-3 italic">
+          Refs: Knaus WA et al. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. Intensive Care Med 1996;22:707. Muscedere J et al. Intensive Care Med 2017;43:1105 (CFS &amp; outcomes in critically ill elderly).
+        </p>
       </div>
-
-      {/* Severity band */}
-      <div
-        className="rounded-lg p-3 border-l-4 mb-3"
-        style={{ borderLeftColor: result.color, backgroundColor: `${result.color}1A` }}
-      >
-        <p className="text-sm font-bold" style={{ color: result.color }}>{result.bandTitle}</p>
-        <p className="text-xs text-foreground mt-1 leading-relaxed">{result.bandDetail}</p>
-        {cfs >= 5 && (
-          <p className="text-xs text-foreground mt-2 leading-relaxed border-t border-border/50 pt-2">
-            <strong>Frailty modifier (CFS {cfs} — {cfsLabel(cfs)}):</strong> {result.frailtyMessage}
-          </p>
-        )}
-      </div>
-
-      {/* APACHE vs SOFA explainer */}
-      <div className="rounded-lg border border-border p-3">
-        <p className="text-sm font-semibold text-foreground mb-1">APACHE II vs SOFA vs frailty — when to use which</p>
-        <ul className="text-xs text-muted-foreground space-y-1 list-disc list-inside">
-          <li><strong>APACHE II</strong> — worst values in first 24 h; AUROC ~0.85 for hospital mortality. Cannot track trajectory.</li>
-          <li><strong>SOFA</strong> — daily organ-dysfunction score; Δ-SOFA ≥ 2 defines sepsis. AUROC ~0.79 at 24 h.</li>
-          <li><strong>CFS (Muscedere 2017)</strong> — pre-morbid frailty independently predicts hospital mortality (adjusted OR 1.81 for CFS ≥5) and 1-year mortality (OR 1.71) in ≥80 y ICU patients. Frail patients have ~2× LOS and higher disability at discharge. Adds discrimination beyond APACHE II in the elderly.</li>
-          <li>SAPS II / APACHE IV outperform APACHE II in modern cohorts but are more complex.</li>
-          <li>All scores are calibrated to populations — use as a communication and audit tool, not a single-patient verdict.</li>
-        </ul>
-      </div>
-
-      <p className="text-[10px] text-muted-foreground mt-3 italic">
-        Refs: Knaus WA et al. Crit Care Med 1985;13:818. Ferreira FL et al. JAMA 2001;286:1754. Vincent JL et al. Intensive Care Med 1996;22:707. Muscedere J et al. Intensive Care Med 2017;43:1105 (CFS &amp; outcomes in critically ill elderly).
-      </p>
-    </div>
+    </DiagramFigure>
   );
 };
 

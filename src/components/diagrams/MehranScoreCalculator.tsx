@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface RiskFactor {
   id: string;
@@ -104,90 +105,96 @@ export const MehranScoreCalculator = () => {
   };
 
   return (
-        <div className="space-y-5">
-      <div className="space-y-2">
-        {factors.map((f) => {
-          if (f.points === "contrast" || f.points === "egfr") return null;
-          return (
-                <label
-              key={f.id}
-              className="flex items-start gap-3 p-3 rounded-lg border border-border bg-card hover:bg-muted/40 cursor-pointer transition-colors"
-            >
-              <input
-                type="checkbox"
-                checked={!!checked[f.id]}
-                onChange={() => toggle(f.id)}
-                className="mt-1 h-4 w-4 rounded border-border accent-primary"
-              />
-              <div className="flex-1">
-                <div className="flex items-baseline justify-between gap-2">
-                  <span className="font-medium text-foreground text-sm">{f.label}</span>
-                  <span className="text-xs font-semibold text-primary">+{f.points}</span>
+    <DiagramFigure
+      id="mehran-score-calculator"
+      title="Mehran score"
+      description="Auto-generated wrapper for the Mehran score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="space-y-5">
+        <div className="space-y-2">
+          {factors.map((f) => {
+            if (f.points === "contrast" || f.points === "egfr") return null;
+            return (
+                  <label
+                key={f.id}
+                className="flex items-start gap-3 p-3 rounded-lg border border-border bg-card hover:bg-muted/40 cursor-pointer transition-colors"
+              >
+                <input
+                  type="checkbox"
+                  checked={!!checked[f.id]}
+                  onChange={() => toggle(f.id)}
+                  className="mt-1 h-4 w-4 rounded border-border accent-primary"
+                />
+                <div className="flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="font-medium text-foreground text-sm">{f.label}</span>
+                    <span className="text-xs font-semibold text-primary">+{f.points}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{f.detail}</p>
                 </div>
-                <p className="text-xs text-muted-foreground">{f.detail}</p>
-              </div>
-            </label>
-  );
-        })}
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="space-y-2">
-          <Label htmlFor="mehran-contrast">Contrast volume (mL)</Label>
-          <Input
-            id="mehran-contrast"
-            type="number"
-            inputMode="decimal"
-            value={contrastMl}
-            onChange={(e) => setContrastMl(e.target.value)}
-            placeholder="e.g. 200"
-          />
-          <p className="text-xs text-muted-foreground">+1 point per 100 mL</p>
+              </label>
+    );
+          })}
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="mehran-egfr">eGFR (ml/min/1.73 m²)</Label>
-          <Input
-            id="mehran-egfr"
-            type="number"
-            inputMode="decimal"
-            value={egfr}
-            onChange={(e) => setEgfr(e.target.value)}
-            placeholder="e.g. 45"
-          />
-          <p className="text-xs text-muted-foreground">+2 (40–60), +4 (20–40), +6 (&lt;20)</p>
-        </div>
-      </div>
-
-      <div className="flex gap-2">
-        <Button onClick={() => setSubmitted(true)}>Calculate Mehran score</Button>
-        <Button variant="outline" onClick={reset}>Reset</Button>
-      </div>
-
-      {submitted && (
-        <div className={cn("rounded-xl border p-5 space-y-3", result.band)}>
-          <div className="flex items-baseline justify-between gap-3 flex-wrap">
-            <div>
-              <p className="text-xs uppercase tracking-wide opacity-80">Mehran Score</p>
-              <p className="text-3xl font-serif font-bold">
-                {result.score}
-                <span className="text-base font-normal opacity-80"> points</span>
-              </p>
-            </div>
-            <div className="text-right">
-              <p className="text-lg font-serif font-bold">{result.label}</p>
-              <p className="text-xs opacity-80">CI-AKI risk {result.ciAki} · dialysis {result.dialysis}</p>
-            </div>
+  
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div className="space-y-2">
+            <Label htmlFor="mehran-contrast">Contrast volume (mL)</Label>
+            <Input
+              id="mehran-contrast"
+              type="number"
+              inputMode="decimal"
+              value={contrastMl}
+              onChange={(e) => setContrastMl(e.target.value)}
+              placeholder="e.g. 200"
+            />
+            <p className="text-xs text-muted-foreground">+1 point per 100 mL</p>
           </div>
-          <p className="text-sm text-foreground/90 border-t border-current/20 pt-3">
-            <strong>Action:</strong> {result.advice}
-          </p>
+          <div className="space-y-2">
+            <Label htmlFor="mehran-egfr">eGFR (ml/min/1.73 m²)</Label>
+            <Input
+              id="mehran-egfr"
+              type="number"
+              inputMode="decimal"
+              value={egfr}
+              onChange={(e) => setEgfr(e.target.value)}
+              placeholder="e.g. 45"
+            />
+            <p className="text-xs text-muted-foreground">+2 (40–60), +4 (20–40), +6 (&lt;20)</p>
+          </div>
         </div>
-      )}
-
-      <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
-        <p className="font-semibold text-foreground">Mehran score (2004) — original PCI cohort</p>
-        <p>Bands: ≤5 low (~7.5% CI-AKI), 6–10 moderate (~14%), 11–16 high (~26%), ≥16 very high (~57%). Validated for percutaneous coronary intervention; extrapolation to other contrast exposures is reasonable but less precisely calibrated.</p>
+  
+        <div className="flex gap-2">
+          <Button onClick={() => setSubmitted(true)}>Calculate Mehran score</Button>
+          <Button variant="outline" onClick={reset}>Reset</Button>
+        </div>
+  
+        {submitted && (
+          <div className={cn("rounded-xl border p-5 space-y-3", result.band)}>
+            <div className="flex items-baseline justify-between gap-3 flex-wrap">
+              <div>
+                <p className="text-xs uppercase tracking-wide opacity-80">Mehran Score</p>
+                <p className="text-3xl font-serif font-bold">
+                  {result.score}
+                  <span className="text-base font-normal opacity-80"> points</span>
+                </p>
+              </div>
+              <div className="text-right">
+                <p className="text-lg font-serif font-bold">{result.label}</p>
+                <p className="text-xs opacity-80">CI-AKI risk {result.ciAki} · dialysis {result.dialysis}</p>
+              </div>
+            </div>
+            <p className="text-sm text-foreground/90 border-t border-current/20 pt-3">
+              <strong>Action:</strong> {result.advice}
+            </p>
+          </div>
+        )}
+  
+        <div className="rounded-lg bg-muted/40 border border-border p-4 text-xs text-foreground/80 space-y-1">
+          <p className="font-semibold text-foreground">Mehran score (2004) — original PCI cohort</p>
+          <p>Bands: ≤5 low (~7.5% CI-AKI), 6–10 moderate (~14%), 11–16 high (~26%), ≥16 very high (~57%). Validated for percutaneous coronary intervention; extrapolation to other contrast exposures is reasonable but less precisely calibrated.</p>
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };

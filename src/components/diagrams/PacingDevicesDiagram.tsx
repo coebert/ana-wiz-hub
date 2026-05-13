@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type DeviceId = "AAI" | "VVI" | "DDD" | "CRT-P" | "CRT-D" | "ICD" | "leadless";
 
@@ -226,138 +227,144 @@ const PacingDevicesDiagram = () => {
   const detail = active ? DEVICES[active] : null;
 
   return (
-        <div className="my-6 p-4 rounded-lg border border-border bg-card">
-      <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
-        <div>
-          <h3 className="font-serif text-lg font-semibold text-foreground">Pacing & Defibrillator Devices</h3>
-          <p className="text-xs text-muted-foreground mt-1">
-            NBG code, lead permutations, indications. Click a card for detail.
-          </p>
-        </div>
-        <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[hsl(210_90%_55%)]" />RA</span>
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[hsl(38_92%_50%)]" />RV</span>
-          <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-destructive" />LV / shock</span>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-        {ORDER.map((id) => {
-          const d = DEVICES[id];
-          const isActive = active === id;
-          return (
-                <button
-              key={id}
-              onClick={() => setActive(isActive ? null : id)}
-              className={`text-left p-2 rounded-md border transition-colors ${
-                isActive ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
-              }`}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-bold text-foreground">{d.id}</span>
-                <span className="text-[9px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
-                  {[d.leads.ra && "RA", d.leads.rv && "RV", d.leads.lv && "LV", d.leads.shock && "⚡", d.leads.leadless && "leadless"]
-                    .filter(Boolean).join(" + ") || "—"}
-                </span>
-              </div>
-              <HeartWithLeads device={d} />
-              <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{d.indication}</p>
-              <div className="mt-1.5 pt-1.5 border-t border-border/60">
-                <p className="text-[9px] font-semibold text-destructive/80 uppercase tracking-wide mb-0.5">⚠ Top complication</p>
-                <p className="text-[10px] text-muted-foreground line-clamp-2">{d.complications[0]}</p>
-              </div>
-            </button>
-  );
-        })}
-      </div>
-
-      {detail && (
-        <div className="mt-4 p-3 rounded-md border border-primary/30 bg-primary/5">
-          <div className="flex items-baseline justify-between gap-2 flex-wrap">
-            <h4 className="font-semibold text-foreground text-sm">{detail.name}</h4>
-            <span className="text-[10px] font-mono text-primary">{detail.nbg}</span>
+    <DiagramFigure
+      id="pacing-devices-diagram"
+      title="Pacing devices"
+      description="Auto-generated wrapper for the Pacing devices anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 p-4 rounded-lg border border-border bg-card">
+        <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
+          <div>
+            <h3 className="font-serif text-lg font-semibold text-foreground">Pacing & Defibrillator Devices</h3>
+            <p className="text-xs text-muted-foreground mt-1">
+              NBG code, lead permutations, indications. Click a card for detail.
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-3 mt-2 text-xs">
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Indication</p>
-              <p className="text-muted-foreground">{detail.indication}</p>
-            </div>
-            <div>
-              <p className="font-semibold text-foreground mb-0.5">Mechanism</p>
-              <p className="text-muted-foreground">{detail.pathophys}</p>
-            </div>
-            <div className="sm:col-span-2">
-              <p className="font-semibold text-foreground mb-0.5">Clinical pearl</p>
-              <p className="text-muted-foreground">{detail.pearl}</p>
-            </div>
-            <div className="sm:col-span-2 mt-1 pt-2 border-t border-primary/20">
-              <p className="font-semibold text-destructive mb-1 flex items-center gap-1">
-                <span aria-hidden>⚠</span> Complications
-              </p>
-              <ul className="space-y-0.5">
-                {detail.complications.map((c, i) => (
-                  <li key={i} className="text-muted-foreground flex gap-1.5 leading-snug">
-                    <span className="text-destructive/70 flex-shrink-0">•</span>
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {detail.leads.shock && (
-              <div
-                className="sm:col-span-2 mt-1 p-3 rounded-md border-2"
-                style={{
-                  borderColor: "hsl(38 92% 50% / 0.5)",
-                  backgroundColor: "hsl(38 92% 50% / 0.06)",
-                }}
+          <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[hsl(210_90%_55%)]" />RA</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[hsl(38_92%_50%)]" />RV</span>
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-destructive" />LV / shock</span>
+          </div>
+        </div>
+  
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          {ORDER.map((id) => {
+            const d = DEVICES[id];
+            const isActive = active === id;
+            return (
+                  <button
+                key={id}
+                onClick={() => setActive(isActive ? null : id)}
+                className={`text-left p-2 rounded-md border transition-colors ${
+                  isActive ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
+                }`}
               >
-                <p
-                  className="font-semibold mb-2 flex items-center gap-1.5 text-[13px]"
-                  style={{ color: "hsl(38 92% 40%)" }}
-                >
-                  <span aria-hidden>🩺</span> Perioperative management — anaesthetist
-                </p>
-                <div className="grid sm:grid-cols-3 gap-3 text-[11px]">
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">🧲 Magnet response</p>
-                    <ul className="space-y-1 text-muted-foreground">
-                      <li>• ICD/CRT-D: <span className="font-medium text-foreground">suspends shock therapy</span> while in place — pacing function unchanged</li>
-                      <li>• Pacemaker (no shock): magnet → asynchronous pacing (DOO/VOO) at fixed magnet rate</li>
-                      <li>• Remove magnet → therapy resumes immediately</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">⚡ Diathermy precautions</p>
-                    <ul className="space-y-1 text-muted-foreground">
-                      <li>• <span className="font-medium text-foreground">Bipolar &gt; monopolar</span> wherever possible</li>
-                      <li>• If monopolar essential: short bursts (&lt; 5 s), low power, return pad sited so current vector avoids the device</li>
-                      <li>• Surgery below umbilicus: usually no reprogramming needed; above umbilicus near generator: deactivate / magnet</li>
-                      <li>• External defib pads <span className="font-medium text-foreground">anterior–posterior</span>, ≥ 8 cm from generator</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground mb-1">⚙ Reprogramming / consent</p>
-                    <ul className="space-y-1 text-muted-foreground">
-                      <li>• Pre-op cardiac physiologist interrogation (battery, lead integrity, dependence, last therapy)</li>
-                      <li>• Document indication, model, mode, magnet rate</li>
-                      <li>• Tachy therapies <span className="font-medium text-foreground">OFF</span> for above-umbilicus surgery (or magnet on field)</li>
-                      <li>• Continuous ECG + arterial line; external pads on; reactivate before leaving recovery</li>
-                      <li>• Consent for shocks during the case + post-op interrogation</li>
-                    </ul>
-                  </div>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-bold text-foreground">{d.id}</span>
+                  <span className="text-[9px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
+                    {[d.leads.ra && "RA", d.leads.rv && "RV", d.leads.lv && "LV", d.leads.shock && "⚡", d.leads.leadless && "leadless"]
+                      .filter(Boolean).join(" + ") || "—"}
+                  </span>
                 </div>
-                <p
-                  className="mt-2 pt-2 border-t text-[10.5px] text-muted-foreground italic"
-                  style={{ borderColor: "hsl(38 92% 50% / 0.25)" }}
-                >
-                  Reference: AAGBI / MHRA / Heart Rhythm Society perioperative CIED guidelines.
-                </p>
-              </div>
-            )}
-          </div>
+                <HeartWithLeads device={d} />
+                <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{d.indication}</p>
+                <div className="mt-1.5 pt-1.5 border-t border-border/60">
+                  <p className="text-[9px] font-semibold text-destructive/80 uppercase tracking-wide mb-0.5">⚠ Top complication</p>
+                  <p className="text-[10px] text-muted-foreground line-clamp-2">{d.complications[0]}</p>
+                </div>
+              </button>
+    );
+          })}
         </div>
-      )}
-    </div>
+  
+        {detail && (
+          <div className="mt-4 p-3 rounded-md border border-primary/30 bg-primary/5">
+            <div className="flex items-baseline justify-between gap-2 flex-wrap">
+              <h4 className="font-semibold text-foreground text-sm">{detail.name}</h4>
+              <span className="text-[10px] font-mono text-primary">{detail.nbg}</span>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3 mt-2 text-xs">
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Indication</p>
+                <p className="text-muted-foreground">{detail.indication}</p>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-0.5">Mechanism</p>
+                <p className="text-muted-foreground">{detail.pathophys}</p>
+              </div>
+              <div className="sm:col-span-2">
+                <p className="font-semibold text-foreground mb-0.5">Clinical pearl</p>
+                <p className="text-muted-foreground">{detail.pearl}</p>
+              </div>
+              <div className="sm:col-span-2 mt-1 pt-2 border-t border-primary/20">
+                <p className="font-semibold text-destructive mb-1 flex items-center gap-1">
+                  <span aria-hidden>⚠</span> Complications
+                </p>
+                <ul className="space-y-0.5">
+                  {detail.complications.map((c, i) => (
+                    <li key={i} className="text-muted-foreground flex gap-1.5 leading-snug">
+                      <span className="text-destructive/70 flex-shrink-0">•</span>
+                      <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {detail.leads.shock && (
+                <div
+                  className="sm:col-span-2 mt-1 p-3 rounded-md border-2"
+                  style={{
+                    borderColor: "hsl(38 92% 50% / 0.5)",
+                    backgroundColor: "hsl(38 92% 50% / 0.06)",
+                  }}
+                >
+                  <p
+                    className="font-semibold mb-2 flex items-center gap-1.5 text-[13px]"
+                    style={{ color: "hsl(38 92% 40%)" }}
+                  >
+                    <span aria-hidden>🩺</span> Perioperative management — anaesthetist
+                  </p>
+                  <div className="grid sm:grid-cols-3 gap-3 text-[11px]">
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">🧲 Magnet response</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• ICD/CRT-D: <span className="font-medium text-foreground">suspends shock therapy</span> while in place — pacing function unchanged</li>
+                        <li>• Pacemaker (no shock): magnet → asynchronous pacing (DOO/VOO) at fixed magnet rate</li>
+                        <li>• Remove magnet → therapy resumes immediately</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">⚡ Diathermy precautions</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• <span className="font-medium text-foreground">Bipolar &gt; monopolar</span> wherever possible</li>
+                        <li>• If monopolar essential: short bursts (&lt; 5 s), low power, return pad sited so current vector avoids the device</li>
+                        <li>• Surgery below umbilicus: usually no reprogramming needed; above umbilicus near generator: deactivate / magnet</li>
+                        <li>• External defib pads <span className="font-medium text-foreground">anterior–posterior</span>, ≥ 8 cm from generator</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground mb-1">⚙ Reprogramming / consent</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Pre-op cardiac physiologist interrogation (battery, lead integrity, dependence, last therapy)</li>
+                        <li>• Document indication, model, mode, magnet rate</li>
+                        <li>• Tachy therapies <span className="font-medium text-foreground">OFF</span> for above-umbilicus surgery (or magnet on field)</li>
+                        <li>• Continuous ECG + arterial line; external pads on; reactivate before leaving recovery</li>
+                        <li>• Consent for shocks during the case + post-op interrogation</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p
+                    className="mt-2 pt-2 border-t text-[10.5px] text-muted-foreground italic"
+                    style={{ borderColor: "hsl(38 92% 50% / 0.25)" }}
+                  >
+                    Reference: AAGBI / MHRA / Heart Rhythm Society perioperative CIED guidelines.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </DiagramFigure>
   );
 };
 

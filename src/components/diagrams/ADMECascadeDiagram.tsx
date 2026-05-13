@@ -1,4 +1,5 @@
 import { MechanismCascadeDiagram, CascadeStep, CascadeSource } from "./MechanismCascadeDiagram";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const PECK: CascadeSource = {
   label: "Peck & Hill Ch.2",
@@ -65,12 +66,18 @@ const steps: CascadeStep[] = [
 ];
 
 export const ADMECascadeDiagram = () => (
-      <MechanismCascadeDiagram
-    title="ADME — Pharmacokinetic cascade"
-    subtitle="Absorption → Distribution → Metabolism → Elimination, ending in context-sensitive half-time."
-    accent="pharmacology"
-    steps={steps}
-  />
+    <DiagramFigure
+      id="adme-cascade-diagram"
+      title="ADME cascade"
+      description="Auto-generated wrapper for the ADME cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+            <MechanismCascadeDiagram
+      title="ADME — Pharmacokinetic cascade"
+      subtitle="Absorption → Distribution → Metabolism → Elimination, ending in context-sensitive half-time."
+      accent="pharmacology"
+      steps={steps}
+    />
+    </DiagramFigure>
   );
 
 export default ADMECascadeDiagram;

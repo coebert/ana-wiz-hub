@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import InlineRef from "@/components/InlineRef";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Branch = "myeloid" | "lymphoid";
 type Arm = "innate" | "adaptive" | "bridge";
@@ -222,439 +223,445 @@ const ImmuneCellLineageDiagram = () => {
   };
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          title={view === "lineage" ? "Immune cell lineages — from HSC to effector" : "Activation pathways — animated cell-to-cell signalling"}
-          subtitle={view === "lineage" ? "Tap any cell for role, function and clinical relevance" : "Watch antigen, MHC, cytokines and antibody travel between cells"}
-          toggles={[
-            { label: "Lineages", active: showLineages, onChange: () => setShowLineages((s) => !s) },
-            { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
-          ]}
-        />
-
-        {/* View mode + context controls */}
-        <div className="flex flex-wrap items-center gap-1.5 text-xs mb-3">
-          <div className="inline-flex rounded-md border border-border overflow-hidden">
-            {(["lineage", "activation"] as const).map((m) => (
-              <button
-                key={m}
-                type="button"
-                onClick={() => setView(m)}
-                className={`px-2.5 py-1 transition-colors capitalize ${
-                  view === m ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-muted/50"
-                }`}
-              >
-                {m === "lineage" ? "Lineage view" : "Activation pathways"}
-              </button>
-            ))}
-          </div>
-
-          {view === "lineage" && (
-            <>
-              {(["all", "innate", "adaptive"] as const).map((k) => (
+    <DiagramFigure
+      id="immune-cell-lineage-diagram"
+      title="Immune cell lineage"
+      description="Auto-generated wrapper for the Immune cell lineage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            title={view === "lineage" ? "Immune cell lineages — from HSC to effector" : "Activation pathways — animated cell-to-cell signalling"}
+            subtitle={view === "lineage" ? "Tap any cell for role, function and clinical relevance" : "Watch antigen, MHC, cytokines and antibody travel between cells"}
+            toggles={[
+              { label: "Lineages", active: showLineages, onChange: () => setShowLineages((s) => !s) },
+              { label: "Labels", active: showLabels, onChange: () => setShowLabels((s) => !s) },
+            ]}
+          />
+  
+          {/* View mode + context controls */}
+          <div className="flex flex-wrap items-center gap-1.5 text-xs mb-3">
+            <div className="inline-flex rounded-md border border-border overflow-hidden">
+              {(["lineage", "activation"] as const).map((m) => (
                 <button
-                  key={k}
+                  key={m}
                   type="button"
-                  onClick={() => setHighlight(k)}
-                  className={`px-2 py-1 rounded border transition-colors capitalize ${
-                    highlight === k
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border text-muted-foreground hover:bg-muted/50"
+                  onClick={() => setView(m)}
+                  className={`px-2.5 py-1 transition-colors capitalize ${
+                    view === m ? "bg-primary/10 text-foreground" : "text-muted-foreground hover:bg-muted/50"
                   }`}
                 >
-                  {k === "all" ? "Show all" : `Highlight ${k}`}
+                  {m === "lineage" ? "Lineage view" : "Activation pathways"}
                 </button>
               ))}
-            </>
-          )}
-
-          {view === "activation" && (
-            <>
-              {(Object.keys(pathways) as Pathway[]).map((p) => (
-                <button
-                  key={p}
-                  type="button"
-                  onClick={() => setPathway(p)}
-                  className={`px-2 py-1 rounded border transition-colors ${
-                    pathway === p
-                      ? "border-primary bg-primary/10 text-foreground"
-                      : "border-border text-muted-foreground hover:bg-muted/50"
-                  }`}
-                >
-                  {p === "antigen-dc-t-b" ? "Ag → DC → T → B" : "IL-5 → eosinophil"}
-                </button>
-              ))}
-              <button
-                type="button"
-                onClick={() => setPlaying((p) => !p)}
-                className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
-                aria-pressed={playing}
-              >
-                {playing ? "⏸ Pause" : "▶ Play"}
-              </button>
-              <button
-                type="button"
-                onClick={() => setStepIdx((i) => (i + 1) % activeSteps.length)}
-                className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
-              >
-                Step ›
-              </button>
-              <div className="inline-flex items-center rounded border border-border overflow-hidden" role="group" aria-label="Animation speed">
-                <span className="px-1.5 py-1 text-[10px] uppercase tracking-wide text-muted-foreground bg-muted/30">Speed</span>
-                {([0.5, 0.75, 1, 1.5, 2] as const).map((s) => (
+            </div>
+  
+            {view === "lineage" && (
+              <>
+                {(["all", "innate", "adaptive"] as const).map((k) => (
                   <button
-                    key={s}
+                    key={k}
                     type="button"
-                    onClick={() => setSpeed(s)}
-                    aria-pressed={speed === s}
-                    className={`px-2 py-1 border-l border-border transition-colors ${
-                      speed === s
-                        ? "bg-primary/10 text-foreground"
-                        : "text-muted-foreground hover:bg-muted/50"
+                    onClick={() => setHighlight(k)}
+                    className={`px-2 py-1 rounded border transition-colors capitalize ${
+                      highlight === k
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
                     }`}
                   >
-                    {s}×
+                    {k === "all" ? "Show all" : `Highlight ${k}`}
                   </button>
                 ))}
-              </div>
-            </>
-          )}
-
-          <span className="ml-auto flex items-center gap-3 text-[11px] text-muted-foreground">
-            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.innate }} /> Innate</span>
-            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.adaptive }} /> Adaptive</span>
-            <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.bridge }} /> Bridge</span>
-          </span>
-        </div>
-
-        <svg
-          viewBox="0 0 620 470"
-          className="w-full max-w-3xl mx-auto"
-          role="img"
-          aria-label="Diagram of haematopoietic cell lineages, from stem cell through myeloid and lymphoid branches to mature immune effector cells"
-        >
-          <defs>
-            <radialGradient id="icl-stemShade" cx="50%" cy="50%" r="60%">
-              <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.08" />
-            </radialGradient>
-            <radialGradient id="icl-innateShade" cx="50%" cy="40%" r="65%">
-              <stop offset="0%" stopColor={armColor.innate} stopOpacity="0.85" />
-              <stop offset="100%" stopColor={armColor.innate} stopOpacity="0.45" />
-            </radialGradient>
-            <radialGradient id="icl-adaptiveShade" cx="50%" cy="40%" r="65%">
-              <stop offset="0%" stopColor={armColor.adaptive} stopOpacity="0.85" />
-              <stop offset="100%" stopColor={armColor.adaptive} stopOpacity="0.45" />
-            </radialGradient>
-            <radialGradient id="icl-bridgeShade" cx="50%" cy="40%" r="65%">
-              <stop offset="0%" stopColor={armColor.bridge} stopOpacity="0.85" />
-              <stop offset="100%" stopColor={armColor.bridge} stopOpacity="0.45" />
-            </radialGradient>
-            <pattern id="icl-marrow" patternUnits="userSpaceOnUse" width="6" height="6">
-              <circle cx="1" cy="1" r="0.5" fill="hsl(var(--muted-foreground))" opacity="0.18" />
-            </pattern>
-            <filter id="icl-cellShadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
-              <feOffset dx="0" dy="1" result="off" />
-              <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
-              <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
-            </filter>
-          </defs>
-
-          {/* Bone marrow band */}
-          <rect x="0" y="0" width="620" height="170" fill="url(#icl-marrow)" pointerEvents="none" />
-          <text x="612" y="14" textAnchor="end" className="text-[9px] fill-muted-foreground italic">bone marrow</text>
-          <line x1="0" y1="170" x2="620" y2="170" stroke="hsl(var(--border))" strokeDasharray="3 4" opacity="0.6" />
-          <text x="612" y="184" textAnchor="end" className="text-[9px] fill-muted-foreground italic">peripheral blood / tissue / lymphoid organs</text>
-
-          {/* Midline */}
-          <line x1="310" y1="55" x2="310" y2="460" stroke="hsl(var(--border))" strokeDasharray="2 5" opacity="0.35" />
-          <text x="155" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">MYELOID</text>
-          <text x="465" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">LYMPHOID</text>
-
-          {/* Lineage links (lineage view only) */}
-          {view === "lineage" && showLineages && cells.filter((c) => c.parent).map((c) => {
-            const p = cells.find((x) => x.id === c.parent)!;
-            const dim = isDimmed(c) || isDimmed(p);
-            return (
-              <path
-                key={`l-${c.id}`}
-                d={linkPath(p, c)}
-                fill="none"
-                stroke={c.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[c.arm]}
-                strokeWidth={selected === c.id || selected === p.id ? 1.8 : 1}
-                opacity={dim ? 0.12 : selected === c.id || selected === p.id ? 0.85 : 0.45}
-              />
-            );
-          })}
-
-          {/* Cells */}
-          {cells.map((c) => {
-            const isSel = selected === c.id;
-            const dim = isDimmed(c);
-            const fill =
-              c.arm === "stem" ? "url(#icl-stemShade)"
-              : c.arm === "innate" ? "url(#icl-innateShade)"
-              : c.arm === "adaptive" ? "url(#icl-adaptiveShade)"
-              : "url(#icl-bridgeShade)";
-            const stroke = c.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[c.arm];
-
-            return (
-              <g
-                key={c.id}
-                onClick={() => {
-                  setSelected(c.id);
-                  if (view === "activation" && currentStep && c.id === currentStep.to) {
-                    setPinnedCellId(c.id);
-                  }
-                }}
-                style={{ cursor: "pointer" }}
-                opacity={dim ? 0.2 : 1}
-                filter="url(#icl-cellShadow)"
-              >
-                <CellShape c={c} fill={fill} stroke={stroke} selected={isSel || pinnedCellId === c.id} />
-                {showLabels && (
-                  <text
-                    x={c.x}
-                    y={c.y + 28}
-                    textAnchor="middle"
-                    className="text-[8.5px] fill-foreground font-medium select-none pointer-events-none"
+              </>
+            )}
+  
+            {view === "activation" && (
+              <>
+                {(Object.keys(pathways) as Pathway[]).map((p) => (
+                  <button
+                    key={p}
+                    type="button"
+                    onClick={() => setPathway(p)}
+                    className={`px-2 py-1 rounded border transition-colors ${
+                      pathway === p
+                        ? "border-primary bg-primary/10 text-foreground"
+                        : "border-border text-muted-foreground hover:bg-muted/50"
+                    }`}
                   >
-                    {c.short}
-                  </text>
-                )}
-              </g>
-            );
-          })}
-
-          {/* Activation overlay */}
-          {view === "activation" && (() => {
-            const renderArrow = (from: string, to: string, color: string, isCurrent: boolean, key: string) => {
-              const a = resolvePoint(from);
-              const b = resolvePoint(to);
-              const mx = (a.x + b.x) / 2;
-              const my = (a.y + b.y) / 2 - 30;
-              const d = `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`;
+                    {p === "antigen-dc-t-b" ? "Ag → DC → T → B" : "IL-5 → eosinophil"}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => setPlaying((p) => !p)}
+                  className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
+                  aria-pressed={playing}
+                >
+                  {playing ? "⏸ Pause" : "▶ Play"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStepIdx((i) => (i + 1) % activeSteps.length)}
+                  className="px-2 py-1 rounded border border-border text-muted-foreground hover:bg-muted/50"
+                >
+                  Step ›
+                </button>
+                <div className="inline-flex items-center rounded border border-border overflow-hidden" role="group" aria-label="Animation speed">
+                  <span className="px-1.5 py-1 text-[10px] uppercase tracking-wide text-muted-foreground bg-muted/30">Speed</span>
+                  {([0.5, 0.75, 1, 1.5, 2] as const).map((s) => (
+                    <button
+                      key={s}
+                      type="button"
+                      onClick={() => setSpeed(s)}
+                      aria-pressed={speed === s}
+                      className={`px-2 py-1 border-l border-border transition-colors ${
+                        speed === s
+                          ? "bg-primary/10 text-foreground"
+                          : "text-muted-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {s}×
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+  
+            <span className="ml-auto flex items-center gap-3 text-[11px] text-muted-foreground">
+              <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.innate }} /> Innate</span>
+              <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.adaptive }} /> Adaptive</span>
+              <span className="flex items-center gap-1"><span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: armColor.bridge }} /> Bridge</span>
+            </span>
+          </div>
+  
+          <svg
+            viewBox="0 0 620 470"
+            className="w-full max-w-3xl mx-auto"
+            role="img"
+            aria-label="Diagram of haematopoietic cell lineages, from stem cell through myeloid and lymphoid branches to mature immune effector cells"
+          >
+            <defs>
+              <radialGradient id="icl-stemShade" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="hsl(var(--muted-foreground))" stopOpacity="0.08" />
+              </radialGradient>
+              <radialGradient id="icl-innateShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor={armColor.innate} stopOpacity="0.85" />
+                <stop offset="100%" stopColor={armColor.innate} stopOpacity="0.45" />
+              </radialGradient>
+              <radialGradient id="icl-adaptiveShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor={armColor.adaptive} stopOpacity="0.85" />
+                <stop offset="100%" stopColor={armColor.adaptive} stopOpacity="0.45" />
+              </radialGradient>
+              <radialGradient id="icl-bridgeShade" cx="50%" cy="40%" r="65%">
+                <stop offset="0%" stopColor={armColor.bridge} stopOpacity="0.85" />
+                <stop offset="100%" stopColor={armColor.bridge} stopOpacity="0.45" />
+              </radialGradient>
+              <pattern id="icl-marrow" patternUnits="userSpaceOnUse" width="6" height="6">
+                <circle cx="1" cy="1" r="0.5" fill="hsl(var(--muted-foreground))" opacity="0.18" />
+              </pattern>
+              <filter id="icl-cellShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                <feOffset dx="0" dy="1" result="off" />
+                <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+                <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+  
+            {/* Bone marrow band */}
+            <rect x="0" y="0" width="620" height="170" fill="url(#icl-marrow)" pointerEvents="none" />
+            <text x="612" y="14" textAnchor="end" className="text-[9px] fill-muted-foreground italic">bone marrow</text>
+            <line x1="0" y1="170" x2="620" y2="170" stroke="hsl(var(--border))" strokeDasharray="3 4" opacity="0.6" />
+            <text x="612" y="184" textAnchor="end" className="text-[9px] fill-muted-foreground italic">peripheral blood / tissue / lymphoid organs</text>
+  
+            {/* Midline */}
+            <line x1="310" y1="55" x2="310" y2="460" stroke="hsl(var(--border))" strokeDasharray="2 5" opacity="0.35" />
+            <text x="155" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">MYELOID</text>
+            <text x="465" y="64" textAnchor="middle" className="text-[9px] fill-muted-foreground font-medium tracking-wide">LYMPHOID</text>
+  
+            {/* Lineage links (lineage view only) */}
+            {view === "lineage" && showLineages && cells.filter((c) => c.parent).map((c) => {
+              const p = cells.find((x) => x.id === c.parent)!;
+              const dim = isDimmed(c) || isDimmed(p);
               return (
                 <path
-                  key={key}
-                  id={key}
-                  d={d}
+                  key={`l-${c.id}`}
+                  d={linkPath(p, c)}
                   fill="none"
-                  stroke={color}
-                  strokeWidth={isCurrent ? 1.8 : 0.8}
-                  strokeDasharray={isCurrent ? "0" : "3 3"}
-                  opacity={isCurrent ? 0.9 : 0.35}
+                  stroke={c.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[c.arm]}
+                  strokeWidth={selected === c.id || selected === p.id ? 1.8 : 1}
+                  opacity={dim ? 0.12 : selected === c.id || selected === p.id ? 0.85 : 0.45}
                 />
               );
-            };
-            return (
-              <g>
-                {/* Antigen / pathogen anchor (off-graph) */}
-                <g>
-                  <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="14" fill="hsl(45 90% 50%)" opacity="0.25" />
-                  <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="8" fill="hsl(45 90% 50%)" opacity="0.85" stroke="hsl(45 90% 35%)" strokeWidth="1" />
-                  <text x={ANTIGEN_ANCHOR.x} y={ANTIGEN_ANCHOR.y + 26} textAnchor="middle" className="text-[8.5px] fill-foreground font-medium">
-                    {pathway === "il5-eos" ? "Allergen" : "Antigen"}
-                  </text>
+            })}
+  
+            {/* Cells */}
+            {cells.map((c) => {
+              const isSel = selected === c.id;
+              const dim = isDimmed(c);
+              const fill =
+                c.arm === "stem" ? "url(#icl-stemShade)"
+                : c.arm === "innate" ? "url(#icl-innateShade)"
+                : c.arm === "adaptive" ? "url(#icl-adaptiveShade)"
+                : "url(#icl-bridgeShade)";
+              const stroke = c.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[c.arm];
+  
+              return (
+                <g
+                  key={c.id}
+                  onClick={() => {
+                    setSelected(c.id);
+                    if (view === "activation" && currentStep && c.id === currentStep.to) {
+                      setPinnedCellId(c.id);
+                    }
+                  }}
+                  style={{ cursor: "pointer" }}
+                  opacity={dim ? 0.2 : 1}
+                  filter="url(#icl-cellShadow)"
+                >
+                  <CellShape c={c} fill={fill} stroke={stroke} selected={isSel || pinnedCellId === c.id} />
+                  {showLabels && (
+                    <text
+                      x={c.x}
+                      y={c.y + 28}
+                      textAnchor="middle"
+                      className="text-[8.5px] fill-foreground font-medium select-none pointer-events-none"
+                    >
+                      {c.short}
+                    </text>
+                  )}
                 </g>
-
-                {/* All step arrows (faint) */}
-                {activeSteps.map((s, i) =>
-                  renderArrow(s.from, s.to, s.color, false, `arr-bg-${i}`)
-                )}
-                {/* Current step arrow (bold) */}
-                {currentStep && renderArrow(currentStep.from, currentStep.to, currentStep.color, true, `arr-cur`)}
-
-                {/* Animated token */}
-                {currentStep && (() => {
-                  const a = resolvePoint(currentStep.from);
-                  const b = resolvePoint(currentStep.to);
-                  const mx = (a.x + b.x) / 2;
-                  const my = (a.y + b.y) / 2 - 30;
+              );
+            })}
+  
+            {/* Activation overlay */}
+            {view === "activation" && (() => {
+              const renderArrow = (from: string, to: string, color: string, isCurrent: boolean, key: string) => {
+                const a = resolvePoint(from);
+                const b = resolvePoint(to);
+                const mx = (a.x + b.x) / 2;
+                const my = (a.y + b.y) / 2 - 30;
+                const d = `M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`;
+                return (
+                  <path
+                    key={key}
+                    id={key}
+                    d={d}
+                    fill="none"
+                    stroke={color}
+                    strokeWidth={isCurrent ? 1.8 : 0.8}
+                    strokeDasharray={isCurrent ? "0" : "3 3"}
+                    opacity={isCurrent ? 0.9 : 0.35}
+                  />
+                );
+              };
+              return (
+                <g>
+                  {/* Antigen / pathogen anchor (off-graph) */}
+                  <g>
+                    <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="14" fill="hsl(45 90% 50%)" opacity="0.25" />
+                    <circle cx={ANTIGEN_ANCHOR.x} cy={ANTIGEN_ANCHOR.y} r="8" fill="hsl(45 90% 50%)" opacity="0.85" stroke="hsl(45 90% 35%)" strokeWidth="1" />
+                    <text x={ANTIGEN_ANCHOR.x} y={ANTIGEN_ANCHOR.y + 26} textAnchor="middle" className="text-[8.5px] fill-foreground font-medium">
+                      {pathway === "il5-eos" ? "Allergen" : "Antigen"}
+                    </text>
+                  </g>
+  
+                  {/* All step arrows (faint) */}
+                  {activeSteps.map((s, i) =>
+                    renderArrow(s.from, s.to, s.color, false, `arr-bg-${i}`)
+                  )}
+                  {/* Current step arrow (bold) */}
+                  {currentStep && renderArrow(currentStep.from, currentStep.to, currentStep.color, true, `arr-cur`)}
+  
+                  {/* Animated token */}
+                  {currentStep && (() => {
+                    const a = resolvePoint(currentStep.from);
+                    const b = resolvePoint(currentStep.to);
+                    const mx = (a.x + b.x) / 2;
+                    const my = (a.y + b.y) / 2 - 30;
+                    return (
+                      <g key={`tok-${stepIdx}-${pathway}-${speed}`}>
+                        <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1">
+                          <animateMotion
+                            dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
+                            repeatCount="1"
+                            fill="freeze"
+                            path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
+                          />
+                        </circle>
+                        <text fontSize="7" textAnchor="middle" dy="2" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
+                          <animateMotion
+                            dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
+                            repeatCount="1"
+                            fill="freeze"
+                            path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
+                          />
+                          {currentStep.token}
+                        </text>
+                      </g>
+                    );
+                  })()}
+                </g>
+              );
+            })()}
+          </svg>
+  
+          {/* Mnemonic / footer */}
+          {view === "lineage" ? (
+            <p className="text-xs text-center text-muted-foreground mt-2 italic">
+              <span className="font-semibold not-italic text-foreground">Never Eat Black Mango Mash — </span>
+              Neutrophil, Eosinophil, Basophil, Monocyte, Mast cell — the myeloid effectors of innate immunity.
+            </p>
+          ) : (
+            <p className="text-xs text-center text-muted-foreground mt-2 italic">
+              <span className="font-semibold not-italic text-foreground">{pathways[pathway].title}</span>
+            </p>
+          )}
+  
+          {/* Detail / step panel */}
+          <div className="mt-4 min-h-[140px]">
+            {view === "activation" ? (
+              (() => {
+                const pinned = pinnedCellId ? cells.find((c) => c.id === pinnedCellId) : null;
+                if (pinned) {
+                  const accent = pinned.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[pinned.arm];
                   return (
-                    <g key={`tok-${stepIdx}-${pathway}-${speed}`}>
-                      <circle r="9" fill={currentStep.color} opacity="0.9" stroke="hsl(var(--background))" strokeWidth="1">
-                        <animateMotion
-                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
-                          repeatCount="1"
-                          fill="freeze"
-                          path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
-                        />
-                      </circle>
-                      <text fontSize="7" textAnchor="middle" dy="2" fill="hsl(var(--background))" fontWeight="700" pointerEvents="none">
-                        <animateMotion
-                          dur={`${((currentStep.duration ?? 1500) / speed) / 1000}s`}
-                          repeatCount="1"
-                          fill="freeze"
-                          path={`M ${a.x} ${a.y} Q ${mx} ${my} ${b.x} ${b.y}`}
-                        />
-                        {currentStep.token}
-                      </text>
-                    </g>
+                    <div
+                      className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
+                      key={`pin-${pinned.id}`}
+                      style={{ borderLeftWidth: 4, borderLeftColor: accent }}
+                    >
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <p className="font-semibold text-foreground text-sm">{pinned.label}</p>
+                        <div className="flex items-center gap-1.5">
+                          <span
+                            className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                            style={{ background: `${accent}26`, color: accent }}
+                          >
+                            {pinned.branch === "stem" ? "Stem" : pinned.branch} · {pinned.arm}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setPinnedCellId(null)}
+                            className="text-[10px] px-1.5 py-0.5 rounded-md border border-border text-muted-foreground hover:bg-muted/50"
+                          >
+                            ← Back to step
+                          </button>
+                        </div>
+                      </div>
+                      <p className="text-[11px] text-muted-foreground italic">
+                        Step {stepIdx + 1} destination · {currentStep.label}
+                      </p>
+                      <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {pinned.role}</p>
+                      <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {pinned.function}</p>
+                      <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {pinned.clinical}</p>
+                    </div>
                   );
-                })()}
-              </g>
-            );
-          })()}
-        </svg>
-
-        {/* Mnemonic / footer */}
-        {view === "lineage" ? (
-          <p className="text-xs text-center text-muted-foreground mt-2 italic">
-            <span className="font-semibold not-italic text-foreground">Never Eat Black Mango Mash — </span>
-            Neutrophil, Eosinophil, Basophil, Monocyte, Mast cell — the myeloid effectors of innate immunity.
-          </p>
-        ) : (
-          <p className="text-xs text-center text-muted-foreground mt-2 italic">
-            <span className="font-semibold not-italic text-foreground">{pathways[pathway].title}</span>
-          </p>
-        )}
-
-        {/* Detail / step panel */}
-        <div className="mt-4 min-h-[140px]">
-          {view === "activation" ? (
-            (() => {
-              const pinned = pinnedCellId ? cells.find((c) => c.id === pinnedCellId) : null;
-              if (pinned) {
-                const accent = pinned.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[pinned.arm];
+                }
                 return (
                   <div
                     className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
-                    key={`pin-${pinned.id}`}
-                    style={{ borderLeftWidth: 4, borderLeftColor: accent }}
+                    key={`step-${pathway}-${stepIdx}`}
+                    style={{ borderLeftWidth: 4, borderLeftColor: currentStep.color }}
                   >
                     <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <p className="font-semibold text-foreground text-sm">{pinned.label}</p>
-                      <div className="flex items-center gap-1.5">
-                        <span
-                          className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                          style={{ background: `${accent}26`, color: accent }}
-                        >
-                          {pinned.branch === "stem" ? "Stem" : pinned.branch} · {pinned.arm}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setPinnedCellId(null)}
-                          className="text-[10px] px-1.5 py-0.5 rounded-md border border-border text-muted-foreground hover:bg-muted/50"
-                        >
-                          ← Back to step
-                        </button>
-                      </div>
+                      <p className="font-semibold text-foreground text-sm">
+                        Step {stepIdx + 1} / {activeSteps.length} — {currentStep.label}
+                      </p>
+                      <span
+                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                        style={{ background: `${currentStep.color}26`, color: currentStep.color }}
+                      >
+                        {currentStep.token}
+                      </span>
                     </div>
-                    <p className="text-[11px] text-muted-foreground italic">
-                      Step {stepIdx + 1} destination · {currentStep.label}
-                    </p>
-                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {pinned.role}</p>
-                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {pinned.function}</p>
-                    <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {pinned.clinical}</p>
+                    <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
+                    {currentStep.refs && currentStep.refs.length > 0 && (
+                      <p className="text-[11px] text-muted-foreground">
+                        <span className="font-medium text-foreground">Sources:</span>{" "}
+                        {currentStep.refs.map((r, i) => (
+                          <span key={r}>
+                            {i > 0 && " · "}
+                            {r}
+                            <InlineRef topicId="haematology-immunity" refLabel={r} />
+                          </span>
+                        ))}
+                      </p>
+                    )}
+                    {currentStep.to !== "ag-source" && (
+                      <p className="text-[11px] text-muted-foreground italic">
+                        Tip: tap the destination cell ({cells.find((c) => c.id === currentStep.to)?.short ?? currentStep.to}) to read its full profile.
+                      </p>
+                    )}
+                    <div className="flex gap-1 mt-1">
+                      {activeSteps.map((_, i) => (
+                        <span
+                          key={i}
+                          className="h-1 flex-1 rounded-full transition-colors"
+                          style={{ background: i === stepIdx ? currentStep.color : "hsl(var(--muted))" }}
+                        />
+                      ))}
+                    </div>
                   </div>
                 );
-              }
-              return (
-                <div
-                  className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5 animate-fade-in"
-                  key={`step-${pathway}-${stepIdx}`}
-                  style={{ borderLeftWidth: 4, borderLeftColor: currentStep.color }}
-                >
-                  <div className="flex items-center justify-between gap-2 flex-wrap">
-                    <p className="font-semibold text-foreground text-sm">
-                      Step {stepIdx + 1} / {activeSteps.length} — {currentStep.label}
-                    </p>
-                    <span
-                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                      style={{ background: `${currentStep.color}26`, color: currentStep.color }}
-                    >
-                      {currentStep.token}
-                    </span>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{pathways[pathway].caption}</p>
-                  {currentStep.refs && currentStep.refs.length > 0 && (
-                    <p className="text-[11px] text-muted-foreground">
-                      <span className="font-medium text-foreground">Sources:</span>{" "}
-                      {currentStep.refs.map((r, i) => (
-                        <span key={r}>
-                          {i > 0 && " · "}
-                          {r}
-                          <InlineRef topicId="haematology-immunity" refLabel={r} />
-                        </span>
-                      ))}
-                    </p>
-                  )}
-                  {currentStep.to !== "ag-source" && (
-                    <p className="text-[11px] text-muted-foreground italic">
-                      Tip: tap the destination cell ({cells.find((c) => c.id === currentStep.to)?.short ?? currentStep.to}) to read its full profile.
-                    </p>
-                  )}
-                  <div className="flex gap-1 mt-1">
-                    {activeSteps.map((_, i) => (
-                      <span
-                        key={i}
-                        className="h-1 flex-1 rounded-full transition-colors"
-                        style={{ background: i === stepIdx ? currentStep.color : "hsl(var(--muted))" }}
-                      />
-                    ))}
-                  </div>
+              })()
+            ) : sel ? (
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm] }}
+              >
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <p className="font-semibold text-foreground text-sm">{sel.label}</p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{
+                      background: sel.arm === "stem" ? "hsl(var(--muted))" : `${armColor[sel.arm]}26`,
+                      color: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm],
+                    }}
+                  >
+                    {sel.branch === "stem" ? "Stem" : sel.branch} · {sel.arm}
+                  </span>
                 </div>
-              );
-            })()
-          ) : sel ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm] }}
-            >
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">{sel.label}</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{
-                    background: sel.arm === "stem" ? "hsl(var(--muted))" : `${armColor[sel.arm]}26`,
-                    color: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm],
-                  }}
-                >
-                  {sel.branch === "stem" ? "Stem" : sel.branch} · {sel.arm}
-                </span>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {sel.role}</p>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {sel.function}</p>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {sel.clinical}</p>
               </div>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {sel.role}</p>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {sel.function}</p>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {sel.clinical}</p>
-            </div>
-          ) : (
-            <p className="text-xs text-muted-foreground text-center italic">Tap a cell above to see role, function and clinical relevance.</p>
-          )}
-        </div>
-
-
-        {/* Detail panel */}
-        <div className="mt-4 min-h-[140px]">
-          {sel ? (
-            <div
-              className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
-              style={{ borderLeftWidth: 4, borderLeftColor: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm] }}
-            >
-              <div className="flex items-center justify-between gap-2 flex-wrap">
-                <p className="font-semibold text-foreground text-sm">{sel.label}</p>
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
-                  style={{
-                    background: sel.arm === "stem" ? "hsl(var(--muted))" : `${armColor[sel.arm]}26`,
-                    color: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm],
-                  }}
-                >
-                  {sel.branch === "stem" ? "Stem" : sel.branch} · {sel.arm}
-                </span>
+            ) : (
+              <p className="text-xs text-muted-foreground text-center italic">Tap a cell above to see role, function and clinical relevance.</p>
+            )}
+          </div>
+  
+  
+          {/* Detail panel */}
+          <div className="mt-4 min-h-[140px]">
+            {sel ? (
+              <div
+                className="p-3 rounded-lg border border-border bg-background/80 space-y-1.5"
+                style={{ borderLeftWidth: 4, borderLeftColor: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm] }}
+              >
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <p className="font-semibold text-foreground text-sm">{sel.label}</p>
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md"
+                    style={{
+                      background: sel.arm === "stem" ? "hsl(var(--muted))" : `${armColor[sel.arm]}26`,
+                      color: sel.arm === "stem" ? "hsl(var(--muted-foreground))" : armColor[sel.arm],
+                    }}
+                  >
+                    {sel.branch === "stem" ? "Stem" : sel.branch} · {sel.arm}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {sel.role}</p>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {sel.function}</p>
+                <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {sel.clinical}</p>
               </div>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Role:</span> {sel.role}</p>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Function:</span> {sel.function}</p>
-              <p className="text-xs text-muted-foreground"><span className="font-medium text-foreground">Clinical:</span> {sel.clinical}</p>
-            </div>
-          ) : (
-            <p className="text-xs text-muted-foreground text-center italic">Tap a cell above to see role, function and clinical relevance.</p>
-          )}
+            ) : (
+              <p className="text-xs text-muted-foreground text-center italic">Tap a cell above to see role, function and clinical relevance.</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

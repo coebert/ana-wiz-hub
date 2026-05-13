@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated comparison of CRRT (CVVHDF) vs Intermittent Haemodialysis (IHD).
@@ -63,79 +64,85 @@ export const RRTCircuitFlowDiagram = () => {
   ];
 
   return (
-    <div className="rounded-xl border border-border bg-card/40 p-4">
-      <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
-        <div>
-          <h3 className="text-base font-semibold text-foreground">
-            CRRT (CVVHDF) vs IHD — Animated Circuit Flow
-          </h3>
-          <p className="text-xs text-muted-foreground">
-            Step-by-step blood and dialysate path through both modalities.
-          </p>
+    <DiagramFigure
+      id="rrt-circuit-flow-diagram"
+      title="RRT circuit flow"
+      description="Auto-generated wrapper for the RRT circuit flow equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-xl border border-border bg-card/40 p-4">
+        <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+          <div>
+            <h3 className="text-base font-semibold text-foreground">
+              CRRT (CVVHDF) vs IHD — Animated Circuit Flow
+            </h3>
+            <p className="text-xs text-muted-foreground">
+              Step-by-step blood and dialysate path through both modalities.
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setPlaying((p) => !p)}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              aria-label={playing ? "Pause animation" : "Play animation"}
+            >
+              {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+              {playing ? "Pause" : "Play"}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setStep(0);
+                setPlaying(true);
+              }}
+              className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
+              aria-label="Restart animation"
+            >
+              <RotateCcw className="h-3 w-3" /> Restart
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => setPlaying((p) => !p)}
-            className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-            aria-label={playing ? "Pause animation" : "Play animation"}
-          >
-            {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
-            {playing ? "Pause" : "Play"}
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setStep(0);
-              setPlaying(true);
-            }}
-            className="inline-flex items-center gap-1 rounded-md border border-border bg-background px-2.5 py-1 text-xs font-medium text-foreground hover:bg-muted/60"
-            aria-label="Restart animation"
-          >
-            <RotateCcw className="h-3 w-3" /> Restart
-          </button>
+  
+        {/* Step pills */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {stepCopy.map((s, i) => (
+            <button
+              key={s.title}
+              type="button"
+              onClick={() => {
+                setStep(i);
+                setPlaying(false);
+              }}
+              data-active={step === i}
+              className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
+            >
+              {s.title.split(" · ")[0]}
+            </button>
+          ))}
+        </div>
+  
+        <div className="grid lg:grid-cols-2 gap-4">
+          <CircuitSvg variant="crrt" step={step} />
+          <CircuitSvg variant="ihd" step={step} />
+        </div>
+  
+        {/* Step descriptions */}
+        <div className="mt-3 grid lg:grid-cols-2 gap-3">
+          <div className="rounded-lg border border-icu/30 bg-icu/5 p-3">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-icu mb-1">
+              CRRT — {stepCopy[step].title}
+            </p>
+            <p className="text-xs text-foreground leading-relaxed">{stepCopy[step].crrt}</p>
+          </div>
+          <div className="rounded-lg border border-pharmacology/30 bg-pharmacology/5 p-3">
+            <p className="text-[11px] font-bold uppercase tracking-wide text-pharmacology mb-1">
+              IHD — {stepCopy[step].title}
+            </p>
+            <p className="text-xs text-foreground leading-relaxed">{stepCopy[step].ihd}</p>
+          </div>
         </div>
       </div>
-
-      {/* Step pills */}
-      <div className="flex flex-wrap gap-1.5 mb-3">
-        {stepCopy.map((s, i) => (
-          <button
-            key={s.title}
-            type="button"
-            onClick={() => {
-              setStep(i);
-              setPlaying(false);
-            }}
-            data-active={step === i}
-            className="rounded-full border border-border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground transition-colors data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:border-primary"
-          >
-            {s.title.split(" · ")[0]}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid lg:grid-cols-2 gap-4">
-        <CircuitSvg variant="crrt" step={step} />
-        <CircuitSvg variant="ihd" step={step} />
-      </div>
-
-      {/* Step descriptions */}
-      <div className="mt-3 grid lg:grid-cols-2 gap-3">
-        <div className="rounded-lg border border-icu/30 bg-icu/5 p-3">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-icu mb-1">
-            CRRT — {stepCopy[step].title}
-          </p>
-          <p className="text-xs text-foreground leading-relaxed">{stepCopy[step].crrt}</p>
-        </div>
-        <div className="rounded-lg border border-pharmacology/30 bg-pharmacology/5 p-3">
-          <p className="text-[11px] font-bold uppercase tracking-wide text-pharmacology mb-1">
-            IHD — {stepCopy[step].title}
-          </p>
-          <p className="text-xs text-foreground leading-relaxed">{stepCopy[step].ihd}</p>
-        </div>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

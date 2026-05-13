@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive lower-limb regional block coverage diagram.
@@ -275,101 +276,107 @@ export const LowerLimbBlocksDiagram = () => {
   const info = BLOCKS[selected];
 
   return (
-        <div className="my-6 space-y-4">
-      <div className="bg-muted/30 rounded-xl border border-border p-4">
-        <DiagramToggleBar
-          toggles={[
-            { label: "Nerve tracks", active: showNerves, onChange: () => setShowNerves((v) => !v) },
-            { label: "Motor-sparing badge", active: showSparingBadge, onChange: () => setShowSparingBadge((v) => !v) },
-          ]}
-        />
-
-        <div className="grid md:grid-cols-[1fr_1.4fr] gap-4 items-start">
-          {/* Anterior + posterior leg pair */}
-          <div className="grid grid-cols-2 gap-2">
-            <LegView view="anterior" selected={selected} showNerves={showNerves} onPick={setSelected} />
-            <LegView view="posterior" selected={selected} showNerves={showNerves} onPick={setSelected} />
+    <DiagramFigure
+      id="lower-limb-blocks-diagram"
+      title="Lower limb blocks"
+      description="Auto-generated wrapper for the Lower limb blocks anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <div className="my-6 space-y-4">
+        <div className="bg-muted/30 rounded-xl border border-border p-4">
+          <DiagramToggleBar
+            toggles={[
+              { label: "Nerve tracks", active: showNerves, onChange: () => setShowNerves((v) => !v) },
+              { label: "Motor-sparing badge", active: showSparingBadge, onChange: () => setShowSparingBadge((v) => !v) },
+            ]}
+          />
+  
+          <div className="grid md:grid-cols-[1fr_1.4fr] gap-4 items-start">
+            {/* Anterior + posterior leg pair */}
+            <div className="grid grid-cols-2 gap-2">
+              <LegView view="anterior" selected={selected} showNerves={showNerves} onPick={setSelected} />
+              <LegView view="posterior" selected={selected} showNerves={showNerves} onPick={setSelected} />
+            </div>
+  
+            {/* Detail panel */}
+            <div
+              className="rounded-lg border border-border bg-background p-4 min-h-[280px] border-l-4"
+              style={{ borderLeftColor: info.color }}
+            >
+              <div className="flex items-baseline justify-between gap-3 flex-wrap">
+                <h4 className="font-serif font-bold text-foreground text-lg">{info.label}</h4>
+                {showSparingBadge && (
+                  <span
+                    className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
+                    style={{
+                      borderColor: info.motorSparing ? "hsl(160, 55%, 45%)" : "hsl(var(--destructive))",
+                      color: info.motorSparing ? "hsl(160, 55%, 45%)" : "hsl(var(--destructive))",
+                    }}
+                  >
+                    {info.motorSparing ? "Motor-sparing" : "Motor block expected"}
+                  </span>
+                )}
+              </div>
+  
+              <div className="mt-3 space-y-2 text-sm">
+                <div>
+                  <span className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Target</span>
+                  <p className="text-foreground">{info.target}</p>
+                </div>
+                <div>
+                  <span className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Needle site</span>
+                  <p className="text-foreground">{info.needleSite}</p>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-2 pt-1">
+                  <div className="p-2 rounded border border-border">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Sensory</p>
+                    <p className="text-foreground text-sm">{info.sensory}</p>
+                  </div>
+                  <div className="p-2 rounded border border-border">
+                    <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Motor</p>
+                    <p className="text-foreground text-sm">{info.motor}</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div className="mt-3 pt-3 border-t border-border">
+                <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-1">Clinical use</p>
+                <p className="text-sm text-foreground">{info.useCase}</p>
+              </div>
+            </div>
           </div>
-
-          {/* Detail panel */}
-          <div
-            className="rounded-lg border border-border bg-background p-4 min-h-[280px] border-l-4"
-            style={{ borderLeftColor: info.color }}
-          >
-            <div className="flex items-baseline justify-between gap-3 flex-wrap">
-              <h4 className="font-serif font-bold text-foreground text-lg">{info.label}</h4>
-              {showSparingBadge && (
-                <span
-                  className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border whitespace-nowrap"
+  
+          {/* Block selector chips */}
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {ORDER.map((k) => {
+              const b = BLOCKS[k];
+              const isSel = selected === k;
+              return (
+                    <button
+                  key={k}
+                  type="button"
+                  onClick={() => setSelected(k)}
+                  aria-pressed={isSel}
+                  className="text-xs px-2.5 py-1 rounded-full border transition-colors"
                   style={{
-                    borderColor: info.motorSparing ? "hsl(160, 55%, 45%)" : "hsl(var(--destructive))",
-                    color: info.motorSparing ? "hsl(160, 55%, 45%)" : "hsl(var(--destructive))",
+                    borderColor: isSel ? b.color : "hsl(var(--border))",
+                    background: isSel ? `${b.color.replace(")", " / 0.12)").replace("hsl", "hsl")}` : "transparent",
+                    color: isSel ? b.color : "hsl(var(--muted-foreground))",
+                    fontWeight: isSel ? 600 : 400,
                   }}
                 >
-                  {info.motorSparing ? "Motor-sparing" : "Motor block expected"}
-                </span>
-              )}
-            </div>
-
-            <div className="mt-3 space-y-2 text-sm">
-              <div>
-                <span className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Target</span>
-                <p className="text-foreground">{info.target}</p>
-              </div>
-              <div>
-                <span className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">Needle site</span>
-                <p className="text-foreground">{info.needleSite}</p>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-2 pt-1">
-                <div className="p-2 rounded border border-border">
-                  <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Sensory</p>
-                  <p className="text-foreground text-sm">{info.sensory}</p>
-                </div>
-                <div className="p-2 rounded border border-border">
-                  <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-0.5">Motor</p>
-                  <p className="text-foreground text-sm">{info.motor}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-3 pt-3 border-t border-border">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold mb-1">Clinical use</p>
-              <p className="text-sm text-foreground">{info.useCase}</p>
-            </div>
+                  {b.shortLabel}
+                  {b.motorSparing && <span className="ml-1 opacity-70">·MS</span>}
+                </button>
+    );
+            })}
           </div>
+  
+          <p className="mt-3 text-[11px] text-muted-foreground">
+            <span className="font-semibold">·MS</span> = motor-sparing. Most foot/ankle surgery needs <em>both</em> a popliteal sciatic and a saphenous block to cover the medial strip the sciatic misses.
+          </p>
         </div>
-
-        {/* Block selector chips */}
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {ORDER.map((k) => {
-            const b = BLOCKS[k];
-            const isSel = selected === k;
-            return (
-                  <button
-                key={k}
-                type="button"
-                onClick={() => setSelected(k)}
-                aria-pressed={isSel}
-                className="text-xs px-2.5 py-1 rounded-full border transition-colors"
-                style={{
-                  borderColor: isSel ? b.color : "hsl(var(--border))",
-                  background: isSel ? `${b.color.replace(")", " / 0.12)").replace("hsl", "hsl")}` : "transparent",
-                  color: isSel ? b.color : "hsl(var(--muted-foreground))",
-                  fontWeight: isSel ? 600 : 400,
-                }}
-              >
-                {b.shortLabel}
-                {b.motorSparing && <span className="ml-1 opacity-70">·MS</span>}
-              </button>
-  );
-          })}
-        </div>
-
-        <p className="mt-3 text-[11px] text-muted-foreground">
-          <span className="font-semibold">·MS</span> = motor-sparing. Most foot/ankle surgery needs <em>both</em> a popliteal sciatic and a saphenous block to cover the medial strip the sciatic misses.
-        </p>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 
