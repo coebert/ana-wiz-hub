@@ -643,7 +643,6 @@ const VivaQuestionLibrary = () => {
     return c;
   }, [rows, examFilter, rowDifficulty]);
 
-  return (
   const faqJsonLd = useMemo(() => {
     if (rows.length === 0) return null;
     const sample = rows.slice(0, 25);
