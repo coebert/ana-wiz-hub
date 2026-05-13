@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { EcgStripFrame } from "./EcgStripFrame";
 
 /**
  * Heart block series — 1°, Mobitz I (Wenckebach), Mobitz II, Complete (3°).
@@ -284,6 +285,7 @@ const RhythmStrip = ({ block, color }: { block: BlockInfo; color: string }) => {
   }
 
   return (
+    <EcgStripFrame label={`${block.label} rhythm strip`}>
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip for ${block.label}`}>
       <defs>
         <pattern id={`rs-grid-${block.shortLabel}`} width="10" height="10" patternUnits="userSpaceOnUse">

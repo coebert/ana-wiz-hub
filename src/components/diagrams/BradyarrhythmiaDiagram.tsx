@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { EcgStripFrame } from "./EcgStripFrame";
 
 /**
  * Bradyarrhythmia series — sinus brady, sinus arrest, junctional escape,
@@ -403,6 +404,7 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
   }
 
   return (
+    <EcgStripFrame label={`${brady.label} rhythm strip`}>
     <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip — ${brady.label}`}>
       <rect x="0" y="0" width={W} height={H} fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="4" />
       {/* Faint grid */}
@@ -418,6 +420,7 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
 
       <text x={6} y={11} fontSize="7" fill={color} fontWeight="bold">{brady.shortLabel}</text>
     </svg>
+    </EcgStripFrame>
   );
 };
 
