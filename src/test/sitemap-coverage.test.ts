@@ -1,21 +1,28 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync, existsSync } from "fs";
+import { readFileSync, existsSync, readdirSync } from "fs";
 import { resolve } from "path";
 import { topicsBySection, sectionMeta, type Section } from "@/data/curriculum";
 
 describe("sitemap.xml curriculum coverage", () => {
   const sitemapPath = resolve(process.cwd(), "public/sitemap.xml");
+  const sitemapsDir = resolve(process.cwd(), "public/sitemaps");
 
   it("exists", () => {
     expect(existsSync(sitemapPath)).toBe(true);
   });
 
-  const sitemap = existsSync(sitemapPath) ? readFileSync(sitemapPath, "utf8") : "";
-  const locs = new Set(
-    Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)).map((m) =>
-      m[1].replace(/^https?:\/\/[^/]+/, ""),
-    ),
-  );
+  // sitemap.xml is now a sitemap index; aggregate <loc>s from every per-group sitemap.
+  const locs = new Set<string>();
+  if (existsSync(sitemapsDir)) {
+    for (const file of readdirSync(sitemapsDir)) {
+      if (!file.endsWith(".xml")) continue;
+      const xml = readFileSync(resolve(sitemapsDir, file), "utf8");
+      for (const m of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
+        locs.add(m[1].replace(/^https?:\/\/[^/]+/, ""));
+      }
+    }
+  }
+
 
   it("includes every section landing page", () => {
     const missing = (Object.keys(sectionMeta) as Section[])
