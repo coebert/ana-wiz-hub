@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import { SectionLayout } from "@/components/SectionLayout";
 import { LearningObjectives } from "@/components/LearningObjectives";
 import { KeyLearningPoints, KeyPoint } from "@/components/KeyLearningPoints";
@@ -157,6 +159,22 @@ export const TopicTemplate = ({
   const showWorkedExamples = blockMatches(sectionExamMapping?.workedExamples, activeExam);
   const showKeyPoints = blockMatches(sectionExamMapping?.keyPoints, activeExam);
 
+  const location = useLocation();
+  const learningResourceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: title,
+    description: subtitle,
+    url: `https://anaesthesiacore.app${location.pathname}`,
+    inLanguage: "en-GB",
+    educationalLevel: "Postgraduate",
+    learningResourceType: "Topic",
+    teaches: title,
+    isPartOf: { "@type": "WebSite", name: "AnaesthesiaCore", url: "https://anaesthesiacore.app/" },
+    author: { "@type": "Person", name: "Dr Rob Coe" },
+    publisher: { "@type": "Organization", name: "AnaesthesiaCore", url: "https://anaesthesiacore.app/" },
+  };
+
   return (
     <SectionLayout
       title={title}
@@ -166,6 +184,9 @@ export const TopicTemplate = ({
       accentColor={accentColor}
       disableAutoTOC={disableAutoTOC}
     >
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
+      </Helmet>
       <div className="space-y-10">
         <TopicExamFilterBar />
         <TopicPodcastPlayer topicId={topicId} topicTitle={topicTitle ?? title} />
