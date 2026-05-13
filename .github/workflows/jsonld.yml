@@ -139,14 +139,15 @@ jobs:
           MISSING_TYPES: ${{ steps.coverage.outputs.missing_types }}
           BAD_BLOCKS: ${{ steps.coverage.outputs.bad_blocks }}
           UNRESOLVED: ${{ steps.coverage.outputs.unresolved }}
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
         with:
           script: |
-            const { TOTAL, PASSING, MISSING_TYPES, BAD_BLOCKS, UNRESOLVED } = process.env;
+            const { TOTAL, PASSING, MISSING_TYPES, BAD_BLOCKS, UNRESOLVED, ARTIFACT_URL } = process.env;
             const total = Number(TOTAL || 0);
             const passing = Number(PASSING || 0);
             const failing = total - passing;
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
-            const artifactUrl = `${runUrl}#artifacts`;
+            const artifactUrl = ARTIFACT_URL || `${runUrl}#artifacts`;
             const marker = '<!-- jsonld-coverage-comment -->';
             const body = [
               marker,
