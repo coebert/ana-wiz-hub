@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Procedure = "rygb" | "sleeve" | "band";
 
@@ -55,80 +56,86 @@ const BariatricProceduresDiagram = () => {
   const proc = procedures[selected];
 
   return (
-    <div className="bg-card border border-border rounded-xl p-4 sm:p-6 space-y-4">
-      <h3 className="text-lg font-serif font-bold text-foreground">Bariatric Procedures Comparison</h3>
-
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-2">
-        {(Object.keys(procedures) as Procedure[]).map((key) => (
-          <button
-            key={key}
-            onClick={() => setSelected(key)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
-              selected === key
-                ? "text-white border-transparent"
-                : "text-muted-foreground border-border hover:border-foreground/30"
-            }`}
-            style={selected === key ? { backgroundColor: procedures[key].color } : {}}
-          >
-            {procedures[key].label}
-          </button>
-        ))}
-      </div>
-
-      {/* Diagram */}
-      <div className="flex flex-col md:flex-row gap-6 items-start">
-        <svg viewBox="0 0 200 280" className="w-48 h-auto mx-auto md:mx-0 shrink-0">
-          {selected === "rygb" && <RYGBImage color={proc.color} />}
-          {selected === "sleeve" && <SleeveImage color={proc.color} />}
-          {selected === "band" && <BandImage color={proc.color} />}
-        </svg>
-
-        <div className="flex-1 space-y-3">
-          <p className="text-sm text-muted-foreground leading-relaxed">{proc.desc}</p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-            {proc.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
-                <span className="mt-1 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: proc.color }} />
-                {f}
-              </li>
-            ))}
-          </ul>
+    <DiagramFigure
+      id="bariatric-procedures-diagram"
+      title="Bariatric procedures"
+      description="Auto-generated wrapper for the Bariatric procedures anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="bg-card border border-border rounded-xl p-4 sm:p-6 space-y-4">
+        <h3 className="text-lg font-serif font-bold text-foreground">Bariatric Procedures Comparison</h3>
+  
+        {/* Tabs */}
+        <div className="flex flex-wrap gap-2">
+          {(Object.keys(procedures) as Procedure[]).map((key) => (
+            <button
+              key={key}
+              onClick={() => setSelected(key)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
+                selected === key
+                  ? "text-white border-transparent"
+                  : "text-muted-foreground border-border hover:border-foreground/30"
+              }`}
+              style={selected === key ? { backgroundColor: procedures[key].color } : {}}
+            >
+              {procedures[key].label}
+            </button>
+          ))}
+        </div>
+  
+        {/* Diagram */}
+        <div className="flex flex-col md:flex-row gap-6 items-start">
+          <svg viewBox="0 0 200 280" className="w-48 h-auto mx-auto md:mx-0 shrink-0">
+            {selected === "rygb" && <RYGBImage color={proc.color} />}
+            {selected === "sleeve" && <SleeveImage color={proc.color} />}
+            {selected === "band" && <BandImage color={proc.color} />}
+          </svg>
+  
+          <div className="flex-1 space-y-3">
+            <p className="text-sm text-muted-foreground leading-relaxed">{proc.desc}</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              {proc.features.map((f, i) => (
+                <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                  <span className="mt-1 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: proc.color }} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+  
+        {/* Comparison table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs text-muted-foreground border-collapse">
+            <thead>
+              <tr className="border-b border-border">
+                <th className="text-left py-2 pr-3 font-medium text-foreground">Feature</th>
+                <th className="py-2 px-2 font-medium text-foreground">RYGB</th>
+                <th className="py-2 px-2 font-medium text-foreground">Sleeve</th>
+                <th className="py-2 px-2 font-medium text-foreground">Band</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["Mechanism", "Restrictive + malabsorptive", "Restrictive + hormonal", "Restrictive only"],
+                ["Excess weight loss", "60–70%", "55–65%", "40–50%"],
+                ["Operative mortality", "0.1–0.5%", "0.1–0.3%", "<0.1%"],
+                ["Reversibility", "Technically possible", "Irreversible", "Fully reversible"],
+                ["Dumping syndrome", "Common", "Rare", "No"],
+                ["Nutritional deficiency", "Significant", "Minimal", "Minimal"],
+                ["Reoperation rate", "5–10%", "3–7%", "15–30%"],
+              ].map(([feature, ...vals], i) => (
+                <tr key={i} className="border-b border-border/50">
+                  <td className="py-1.5 pr-3 font-medium">{feature}</td>
+                  {vals.map((v, j) => (
+                    <td key={j} className="py-1.5 px-2 text-center">{v}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-
-      {/* Comparison table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-xs text-muted-foreground border-collapse">
-          <thead>
-            <tr className="border-b border-border">
-              <th className="text-left py-2 pr-3 font-medium text-foreground">Feature</th>
-              <th className="py-2 px-2 font-medium text-foreground">RYGB</th>
-              <th className="py-2 px-2 font-medium text-foreground">Sleeve</th>
-              <th className="py-2 px-2 font-medium text-foreground">Band</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ["Mechanism", "Restrictive + malabsorptive", "Restrictive + hormonal", "Restrictive only"],
-              ["Excess weight loss", "60–70%", "55–65%", "40–50%"],
-              ["Operative mortality", "0.1–0.5%", "0.1–0.3%", "<0.1%"],
-              ["Reversibility", "Technically possible", "Irreversible", "Fully reversible"],
-              ["Dumping syndrome", "Common", "Rare", "No"],
-              ["Nutritional deficiency", "Significant", "Minimal", "Minimal"],
-              ["Reoperation rate", "5–10%", "3–7%", "15–30%"],
-            ].map(([feature, ...vals], i) => (
-              <tr key={i} className="border-b border-border/50">
-                <td className="py-1.5 pr-3 font-medium">{feature}</td>
-                {vals.map((v, j) => (
-                  <td key={j} className="py-1.5 px-2 text-center">{v}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

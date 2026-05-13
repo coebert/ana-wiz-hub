@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Arachidonic-acid shunt animation
@@ -396,17 +397,23 @@ export const AAShuntAnimation = () => {
           const start = PHASES.slice(0, i).reduce((s, pp) => s + pp.duration, 0);
           const isCurrent = currentPhase.id === p.id;
           return (
-            <button
-              key={p.id}
-              onClick={() => jumpToPhase(p.id)}
-              title={p.label}
-              aria-label={`Jump to ${p.label}`}
-              className={`h-1.5 rounded-full transition-colors cursor-pointer hover:brightness-110 ${
-                isCurrent ? "bg-primary" : frame > start ? "bg-primary/30" : "bg-muted"
-              }`}
-              style={{ flex: p.duration }}
-            />
-          );
+    <DiagramFigure
+      id="aa-shunt-animation"
+      title="Aa shunt"
+      description="Auto-generated wrapper for the Aa shunt animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={p.id}
+                onClick={() => jumpToPhase(p.id)}
+                title={p.label}
+                aria-label={`Jump to ${p.label}`}
+                className={`h-1.5 rounded-full transition-colors cursor-pointer hover:brightness-110 ${
+                  isCurrent ? "bg-primary" : frame > start ? "bg-primary/30" : "bg-muted"
+                }`}
+                style={{ flex: p.duration }}
+              />
+    </DiagramFigure>
+  );
         })}
       </div>
 

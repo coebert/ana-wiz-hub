@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, X, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export interface WalkthroughStep {
   id: string | number;
@@ -202,37 +203,43 @@ export default function GuidedWalkthroughOverlay({
             {step.actions.map((action, i) => {
               const isChecked = checkedSet.has(i);
               return (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => toggleAction(i)}
-                  className={`w-full text-left flex items-start gap-2.5 p-2.5 rounded-lg border transition-all ${
-                    isChecked
-                      ? "border-primary/40 bg-primary/5"
-                      : "border-border bg-background hover:bg-accent/30"
-                  }`}
-                >
-                  <span
-                    className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors mt-0.5 ${
+    <DiagramFigure
+      id="guided-walkthrough-overlay"
+      title="Guided walkthrough overlay"
+      description="Auto-generated wrapper for the Guided walkthrough overlay anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={i}
+                    type="button"
+                    onClick={() => toggleAction(i)}
+                    className={`w-full text-left flex items-start gap-2.5 p-2.5 rounded-lg border transition-all ${
                       isChecked
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-background"
-                    }`}
-                    aria-hidden
-                  >
-                    {isChecked && <Check className="w-3 h-3" strokeWidth={3} />}
-                  </span>
-                  <span
-                    className={`text-xs leading-relaxed ${
-                      isChecked
-                        ? "text-muted-foreground line-through decoration-primary/50"
-                        : "text-foreground"
+                        ? "border-primary/40 bg-primary/5"
+                        : "border-border bg-background hover:bg-accent/30"
                     }`}
                   >
-                    {action}
-                  </span>
-                </button>
-              );
+                    <span
+                      className={`flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center transition-colors mt-0.5 ${
+                        isChecked
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-border bg-background"
+                      }`}
+                      aria-hidden
+                    >
+                      {isChecked && <Check className="w-3 h-3" strokeWidth={3} />}
+                    </span>
+                    <span
+                      className={`text-xs leading-relaxed ${
+                        isChecked
+                          ? "text-muted-foreground line-through decoration-primary/50"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {action}
+                    </span>
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
 

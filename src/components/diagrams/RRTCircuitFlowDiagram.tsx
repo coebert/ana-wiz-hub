@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated comparison of CRRT (CVVHDF) vs Intermittent Haemodialysis (IHD).
@@ -161,194 +162,200 @@ const CircuitSvg = ({ variant, step }: CircuitSvgProps) => {
   const isActive = (idx: number) => step === idx;
 
   return (
-    <div className="rounded-lg border border-border bg-background p-2">
-      <div className="flex items-center justify-between mb-1">
-        <p className="text-xs font-semibold" style={{ color: accent }}>
-          {label}
-        </p>
-        <p className="text-[10px] font-mono text-muted-foreground">{qbLabel}</p>
-      </div>
-      <svg viewBox="0 0 360 240" className="w-full h-auto">
-        {/* Patient silhouette (left) */}
-        <g>
-          <rect
-            x="6"
-            y="70"
-            width="46"
-            height="100"
-            rx="10"
-            fill="hsl(var(--muted))"
-            stroke={isActive(0) || isActive(5) ? accent : "hsl(var(--border))"}
-            strokeWidth={isActive(0) || isActive(5) ? 2.5 : 1}
-          />
-          <text x="29" y="125" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">
-            Patient
-          </text>
-          <text x="29" y="138" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">
-            vascath
-          </text>
-        </g>
-
-        {/* Access (arterial) line — patient → pump */}
-        <FlowPath
-          d="M52 95 L100 95"
-          color="hsl(0 75% 55%)"
-          dur={bloodDur}
-          highlight={isActive(0) || isActive(1)}
-          accent={accent}
-        />
-        {/* Blood pump */}
-        <g>
-          <circle
-            cx="115"
-            cy="95"
-            r="14"
-            fill="hsl(var(--card))"
-            stroke={isActive(1) ? accent : "hsl(var(--border))"}
-            strokeWidth={isActive(1) ? 2.5 : 1.2}
-          />
-          <text x="115" y="98" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="700">
-            Qb
-          </text>
-        </g>
-
-        {/* Anticoagulant injection point */}
-        <g opacity={isActive(2) ? 1 : 0.5}>
-          <line
-            x1="135"
-            y1="60"
-            x2="145"
-            y2="88"
-            stroke={isActive(2) ? accent : "hsl(var(--muted-foreground))"}
-            strokeWidth={isActive(2) ? 2 : 1}
-            strokeDasharray="3 2"
-          />
-          <text x="135" y="55" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
-            {isCrrt ? "Citrate" : "Heparin"}
-          </text>
-        </g>
-
-        {/* Pre-filter line → filter top */}
-        <FlowPath
-          d="M129 95 L165 95 L165 105"
-          color="hsl(0 75% 55%)"
-          dur={bloodDur}
-          highlight={isActive(2) || isActive(3)}
-          accent={accent}
-        />
-
-        {/* Replacement fluid (CRRT only) — pre/post filter */}
-        {isCrrt && (
-          <g opacity={isActive(3) ? 1 : 0.55}>
-            <line
-              x1="155"
-              y1="60"
-              x2="160"
-              y2="100"
-              stroke="hsl(200 85% 55%)"
-              strokeWidth={isActive(3) ? 2 : 1.2}
-              strokeDasharray="3 2"
+    <DiagramFigure
+      id="rrt-circuit-flow-diagram"
+      title="RRT circuit flow"
+      description="Auto-generated wrapper for the RRT circuit flow equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="rounded-lg border border-border bg-background p-2">
+        <div className="flex items-center justify-between mb-1">
+          <p className="text-xs font-semibold" style={{ color: accent }}>
+            {label}
+          </p>
+          <p className="text-[10px] font-mono text-muted-foreground">{qbLabel}</p>
+        </div>
+        <svg viewBox="0 0 360 240" className="w-full h-auto">
+          {/* Patient silhouette (left) */}
+          <g>
+            <rect
+              x="6"
+              y="70"
+              width="46"
+              height="100"
+              rx="10"
+              fill="hsl(var(--muted))"
+              stroke={isActive(0) || isActive(5) ? accent : "hsl(var(--border))"}
+              strokeWidth={isActive(0) || isActive(5) ? 2.5 : 1}
             />
-            <text x="155" y="55" textAnchor="middle" fontSize="7" fill="hsl(200 85% 55%)" fontWeight="600">
-              Replacement
+            <text x="29" y="125" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="600">
+              Patient
+            </text>
+            <text x="29" y="138" textAnchor="middle" fontSize="7" fill="hsl(var(--muted-foreground))">
+              vascath
             </text>
           </g>
-        )}
-
-        {/* Haemofilter body */}
-        <g>
-          <rect
-            x="150"
-            y="105"
-            width="30"
-            height="80"
-            rx="4"
-            fill="hsl(var(--card))"
-            stroke={isActive(3) ? accent : "hsl(var(--border))"}
-            strokeWidth={isActive(3) ? 2.5 : 1.2}
+  
+          {/* Access (arterial) line — patient → pump */}
+          <FlowPath
+            d="M52 95 L100 95"
+            color="hsl(0 75% 55%)"
+            dur={bloodDur}
+            highlight={isActive(0) || isActive(1)}
+            accent={accent}
           />
-          {/* Membrane fibres */}
-          {[0, 1, 2, 3, 4].map((i) => (
-            <line
-              key={i}
-              x1={155 + i * 5}
-              y1={107}
-              x2={155 + i * 5}
-              y2={183}
-              stroke="hsl(var(--muted-foreground))"
-              strokeWidth="0.5"
-              opacity="0.6"
+          {/* Blood pump */}
+          <g>
+            <circle
+              cx="115"
+              cy="95"
+              r="14"
+              fill="hsl(var(--card))"
+              stroke={isActive(1) ? accent : "hsl(var(--border))"}
+              strokeWidth={isActive(1) ? 2.5 : 1.2}
             />
-          ))}
-          <text x="165" y="200" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="600">
-            Filter
-          </text>
-        </g>
-
-        {/* Dialysate IN (countercurrent — bottom) → OUT (top) */}
-        <FlowPath
-          d="M225 175 L195 175 L195 165"
-          color="hsl(200 85% 55%)"
-          dur={dialysateDur}
-          highlight={isActive(3) || isActive(4)}
-          accent={accent}
-          reverse
-        />
-        <text x="245" y="178" fontSize="7" fill="hsl(200 85% 55%)" fontWeight="600">
-          Dialysate in
-        </text>
-        <FlowPath
-          d="M195 125 L195 115 L225 115"
-          color="hsl(40 90% 55%)"
-          dur={dialysateDur}
-          highlight={isActive(4)}
-          accent={accent}
-        />
-        <text x="245" y="118" fontSize="7" fill="hsl(40 90% 55%)" fontWeight="600">
-          Effluent out
-        </text>
-
-        {/* Filter → air trap (bottom return path) */}
-        <FlowPath
-          d="M165 185 L165 210 L240 210"
-          color="hsl(0 70% 45%)"
-          dur={bloodDur}
-          highlight={isActive(4) || isActive(5)}
-          accent={accent}
-        />
-        {/* Air trap */}
-        <g>
-          <rect
-            x="240"
-            y="195"
-            width="22"
-            height="30"
-            rx="3"
-            fill="hsl(var(--card))"
-            stroke={isActive(5) ? accent : "hsl(var(--border))"}
-            strokeWidth={isActive(5) ? 2.5 : 1.2}
+            <text x="115" y="98" textAnchor="middle" fontSize="9" fill="hsl(var(--foreground))" fontWeight="700">
+              Qb
+            </text>
+          </g>
+  
+          {/* Anticoagulant injection point */}
+          <g opacity={isActive(2) ? 1 : 0.5}>
+            <line
+              x1="135"
+              y1="60"
+              x2="145"
+              y2="88"
+              stroke={isActive(2) ? accent : "hsl(var(--muted-foreground))"}
+              strokeWidth={isActive(2) ? 2 : 1}
+              strokeDasharray="3 2"
+            />
+            <text x="135" y="55" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
+              {isCrrt ? "Citrate" : "Heparin"}
+            </text>
+          </g>
+  
+          {/* Pre-filter line → filter top */}
+          <FlowPath
+            d="M129 95 L165 95 L165 105"
+            color="hsl(0 75% 55%)"
+            dur={bloodDur}
+            highlight={isActive(2) || isActive(3)}
+            accent={accent}
           />
-          <text x="251" y="214" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
-            Air
+  
+          {/* Replacement fluid (CRRT only) — pre/post filter */}
+          {isCrrt && (
+            <g opacity={isActive(3) ? 1 : 0.55}>
+              <line
+                x1="155"
+                y1="60"
+                x2="160"
+                y2="100"
+                stroke="hsl(200 85% 55%)"
+                strokeWidth={isActive(3) ? 2 : 1.2}
+                strokeDasharray="3 2"
+              />
+              <text x="155" y="55" textAnchor="middle" fontSize="7" fill="hsl(200 85% 55%)" fontWeight="600">
+                Replacement
+              </text>
+            </g>
+          )}
+  
+          {/* Haemofilter body */}
+          <g>
+            <rect
+              x="150"
+              y="105"
+              width="30"
+              height="80"
+              rx="4"
+              fill="hsl(var(--card))"
+              stroke={isActive(3) ? accent : "hsl(var(--border))"}
+              strokeWidth={isActive(3) ? 2.5 : 1.2}
+            />
+            {/* Membrane fibres */}
+            {[0, 1, 2, 3, 4].map((i) => (
+              <line
+                key={i}
+                x1={155 + i * 5}
+                y1={107}
+                x2={155 + i * 5}
+                y2={183}
+                stroke="hsl(var(--muted-foreground))"
+                strokeWidth="0.5"
+                opacity="0.6"
+              />
+            ))}
+            <text x="165" y="200" textAnchor="middle" fontSize="8" fill="hsl(var(--foreground))" fontWeight="600">
+              Filter
+            </text>
+          </g>
+  
+          {/* Dialysate IN (countercurrent — bottom) → OUT (top) */}
+          <FlowPath
+            d="M225 175 L195 175 L195 165"
+            color="hsl(200 85% 55%)"
+            dur={dialysateDur}
+            highlight={isActive(3) || isActive(4)}
+            accent={accent}
+            reverse
+          />
+          <text x="245" y="178" fontSize="7" fill="hsl(200 85% 55%)" fontWeight="600">
+            Dialysate in
           </text>
-          <text x="251" y="222" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
-            trap
+          <FlowPath
+            d="M195 125 L195 115 L225 115"
+            color="hsl(40 90% 55%)"
+            dur={dialysateDur}
+            highlight={isActive(4)}
+            accent={accent}
+          />
+          <text x="245" y="118" fontSize="7" fill="hsl(40 90% 55%)" fontWeight="600">
+            Effluent out
           </text>
-        </g>
-
-        {/* Return line → patient venous lumen */}
-        <FlowPath
-          d="M262 210 L325 210 L325 145 L52 145"
-          color="hsl(0 70% 45%)"
-          dur={bloodDur}
-          highlight={isActive(5)}
-          accent={accent}
-        />
-        <text x="290" y="138" fontSize="7" fill="hsl(var(--muted-foreground))">
-          venous return
-        </text>
-      </svg>
-    </div>
+  
+          {/* Filter → air trap (bottom return path) */}
+          <FlowPath
+            d="M165 185 L165 210 L240 210"
+            color="hsl(0 70% 45%)"
+            dur={bloodDur}
+            highlight={isActive(4) || isActive(5)}
+            accent={accent}
+          />
+          {/* Air trap */}
+          <g>
+            <rect
+              x="240"
+              y="195"
+              width="22"
+              height="30"
+              rx="3"
+              fill="hsl(var(--card))"
+              stroke={isActive(5) ? accent : "hsl(var(--border))"}
+              strokeWidth={isActive(5) ? 2.5 : 1.2}
+            />
+            <text x="251" y="214" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
+              Air
+            </text>
+            <text x="251" y="222" textAnchor="middle" fontSize="7" fill="hsl(var(--foreground))" fontWeight="600">
+              trap
+            </text>
+          </g>
+  
+          {/* Return line → patient venous lumen */}
+          <FlowPath
+            d="M262 210 L325 210 L325 145 L52 145"
+            color="hsl(0 70% 45%)"
+            dur={bloodDur}
+            highlight={isActive(5)}
+            accent={accent}
+          />
+          <text x="290" y="138" fontSize="7" fill="hsl(var(--muted-foreground))">
+            venous return
+          </text>
+        </svg>
+      </div>
+    </DiagramFigure>
   );
 };
 

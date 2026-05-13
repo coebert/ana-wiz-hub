@@ -2,6 +2,7 @@ import { useState } from "react";
 import { WorkedExampleCallout } from "./WorkedExampleCallout";
 import { DiagramLearningPoints } from "./DiagramLearningPoints";
 import { ZoomableSVG } from "./ZoomableSVG";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Tab = "reflection" | "refraction" | "fibreoptics" | "beer-lambert" | "spectrophotometry";
 
@@ -293,195 +294,201 @@ const OpticsLightDiagram = () => {
   const [activeTab, setActiveTab] = useState<Tab>("reflection");
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setActiveTab(t.key)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
-              activeTab === t.key
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-muted-foreground hover:bg-secondary/80"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+    <DiagramFigure
+      id="optics-light-diagram"
+      title="Optics light"
+      description="Auto-generated wrapper for the Optics light anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setActiveTab(t.key)}
+              className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                activeTab === t.key
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:bg-secondary/80"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+  
+        {activeTab === "reflection" && (
+          <>
+            <ReflectionDiagram />
+            <WorkedExampleCallout
+              title="Reflectance forehead probe"
+              scenario="A forehead reflectance pulse oximeter is used during prone spinal surgery when a finger probe is inaccessible."
+              numbers="Reflectance mode places the LED and photodetector on the same side; only diffusely back-scattered light is sampled, so signal-to-noise depends on tissue perfusion under the sensor."
+              takeaway="Reflectance probes are ideal when transmission isn't possible (forehead, oesophagus) but require firm contact and warm, well-perfused skin to give a reliable trace."
+            />
+            <DiagramLearningPoints
+              anchorId="reflection"
+              anchorLabel="Reflection"
+              points={[
+                "Law of reflection: θᵢ = θᵣ; incident ray, reflected ray, and normal are coplanar.",
+                "Specular reflection (smooth) keeps rays parallel; diffuse reflection (rough) scatters them.",
+                "Reflectance pulse oximetry uses back-scattered light — useful at forehead/oesophagus when transmission is impossible.",
+              ]}
+              sources={[
+                {
+                  label: "BJA Educ 2016",
+                  citation:
+                    "Jubran A. Pulse oximetry. Crit Care. 2015;19:272 — principles of transmission vs reflectance probes.",
+                  url: "https://doi.org/10.1186/s13054-015-0984-8",
+                },
+                {
+                  label: "Davis & Kenny",
+                  citation:
+                    "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Chapter on light and optics.",
+                },
+              ]}
+            />
+          </>
+        )}
+        {activeTab === "refraction" && (
+          <>
+            <RefractionDiagram />
+            <WorkedExampleCallout
+              title="Critical angle in a fibreoptic bronchoscope"
+              scenario="Bronchoscope core has refractive index n₁ = 1.62; cladding n₂ = 1.48. Find the critical angle θc for total internal reflection."
+              numbers="sin θc = n₂ / n₁ = 1.48 / 1.62 = 0.914 → θc = arcsin(0.914) ≈ 66°."
+              takeaway="Light striking the core–cladding interface at angles greater than ~66° (from the normal) propagates losslessly along the fibre — the basis of every flexible scope."
+            />
+            <DiagramLearningPoints
+              anchorId="refraction"
+              anchorLabel="Refraction & TIR"
+              points={[
+                "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal entering a denser medium.",
+                "Refractive index n = c/v (speed of light in vacuum / in the medium).",
+                "Critical angle sin θc = n₂/n₁ (only when n₁ > n₂); beyond θc → total internal reflection.",
+                "TIR underpins fibreoptic light transmission and prism-based laryngoscope optics.",
+              ]}
+              sources={[
+                {
+                  label: "BJA Educ 2015",
+                  citation:
+                    "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862 — optics of fibreoptic and video laryngoscopes.",
+                  url: "https://doi.org/10.4187/respcare.03033",
+                },
+                {
+                  label: "Magee & Tooley",
+                  citation:
+                    "Magee P, Tooley M. The Physics, Clinical Measurement and Equipment of Anaesthetic Practice. 2nd ed. OUP; 2011 — Snell's law and TIR.",
+                },
+              ]}
+            />
+          </>
+        )}
+        {activeTab === "fibreoptics" && (
+          <>
+            <FibreopticsDiagram />
+            <WorkedExampleCallout
+              title="Coherent vs incoherent bundles"
+              scenario="A 30,000-fibre bronchoscope contains both image and light bundles, each fibre ~10 µm in diameter."
+              numbers="Coherent bundle (image): fibres aligned identically at both ends so spatial relationships are preserved. Incoherent bundle (illumination): fibres randomly arranged — only intensity is transmitted."
+              takeaway="A broken image (black dots in the view) means damaged coherent fibres; if illumination dims, the incoherent light bundle has fibre fractures or a faulty light source."
+            />
+            <DiagramLearningPoints
+              anchorId="fibreoptics"
+              anchorLabel="Fibreoptics"
+              points={[
+                "Core (high n) + cladding (low n) → repeated TIR transmits light along bends.",
+                "Coherent bundle = image (fibres aligned); incoherent bundle = illumination only.",
+                "Numerical aperture = sin(acceptance angle) — sets light-gathering capacity.",
+                "Working channel (2.2–3.2 mm) allows suction, O₂ insufflation, topical local anaesthetic.",
+              ]}
+              sources={[
+                {
+                  label: "DAS 2020",
+                  citation:
+                    "Ahmad I, El-Boghdadly K, Bhagrath R et al. Difficult Airway Society guidelines for awake tracheal intubation in adults. Anaesthesia. 2020;75(4):509–528 — fibreoptic scope construction and use.",
+                  url: "https://doi.org/10.1111/anae.14904",
+                },
+                {
+                  label: "BJA Educ 2015",
+                  citation:
+                    "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862.",
+                  url: "https://doi.org/10.4187/respcare.03033",
+                },
+              ]}
+            />
+          </>
+        )}
+        {activeTab === "beer-lambert" && (
+          <>
+            <BeerLambertDiagram />
+            <WorkedExampleCallout
+              title="Pulse oximeter in CO poisoning"
+              scenario="A 30-year-old rescued from a house fire: SpO₂ 99%, but co-oximetry SaO₂ 78%, COHb 22%."
+              numbers="Pulse oximetry uses 660 nm + 940 nm. COHb absorbs almost identically to HbO₂ at 660 nm, so the device counts COHb as oxygenated haemoglobin. Functional saturation HbO₂/(HbO₂+Hb) is reported, not the fractional saturation."
+              takeaway="A normal SpO₂ does NOT exclude carbon-monoxide poisoning. Treat with high-flow 100% O₂ (COHb t½ falls from 320 min → 80 min) regardless of the oximeter reading; consider hyperbaric O₂ if COHb >25% or neurological signs."
+            />
+            <DiagramLearningPoints
+              anchorId="beer-lambert"
+              anchorLabel="Beer-Lambert Law"
+              points={[
+                "A = ε × c × l (absorbance = molar absorptivity × concentration × path length).",
+                "Transmittance T = I/I₀; absorbance A = −log₁₀(T).",
+                "Assumes monochromatic light, low concentrations, no scattering, uniform path length.",
+                "Underpins pulse oximetry, co-oximetry, capnography (IR CO₂) and agent analysers.",
+              ]}
+              sources={[
+                {
+                  label: "BJA Educ 2016",
+                  citation:
+                    "Chan ED, Chan MM, Chan MM. Pulse oximetry: understanding its basic principles facilitates appreciation of its limitations. Respir Med. 2013;107(6):789–799.",
+                  url: "https://doi.org/10.1016/j.rmed.2013.02.004",
+                },
+                {
+                  label: "Davis & Kenny",
+                  citation:
+                    "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Beer-Lambert law and gas analysis.",
+                },
+              ]}
+            />
+          </>
+        )}
+        {activeTab === "spectrophotometry" && (
+          <>
+            <SpectrophotometryDiagram />
+            <WorkedExampleCallout
+              title="Why pulse oximetry needs an isobestic anchor"
+              scenario="Two-wavelength pulse oximetry (660 nm + 940 nm) calculates SpO₂ from the ratio R = (AC₆₆₀/DC₆₆₀) / (AC₉₄₀/DC₉₄₀)."
+              numbers="At the ~800 nm isobestic point HbO₂ and Hb absorb equally, so total Hb can be measured independently of saturation — used by co-oximeters and NIRS for calibration. R ≈ 1 corresponds empirically to SpO₂ ≈ 85%."
+              takeaway="Below SpO₂ 70% the empirical R-curve becomes inaccurate; severe desaturation should always be confirmed with co-oximetry on an arterial sample."
+            />
+            <DiagramLearningPoints
+              anchorId="spectrophotometry"
+              anchorLabel="Spectrophotometry"
+              points={[
+                "Pulse oximetry (2λ, 660 + 940 nm) reports functional SaO₂ = HbO₂/(HbO₂+Hb).",
+                "Co-oximetry (≥4λ) reports fractional SaO₂ — distinguishes COHb and MetHb.",
+                "NIRS (700–1000 nm) gives regional cerebral rSO₂ (mixed ~75% venous / 25% arterial).",
+                "Isobestic point (~800 nm): HbO₂ and Hb absorb equally → total Hb estimation & calibration.",
+              ]}
+              sources={[
+                {
+                  label: "BJA Educ 2016",
+                  citation:
+                    "Moerman A, De Hert S. Recent advances in cerebral oximetry. F1000Res. 2017;6:280 — NIRS principles and clinical use.",
+                  url: "https://doi.org/10.12688/f1000research.10547.1",
+                },
+                {
+                  label: "BJA Educ 2014",
+                  citation:
+                    "Haymond S, Cariappa R, Eby CS, Scott MG. Laboratory assessment of oxygenation in methemoglobinemia. Clin Chem. 2005;51(2):434–444 — co-oximetry, MetHb, COHb.",
+                  url: "https://doi.org/10.1373/clinchem.2004.035154",
+                },
+              ]}
+            />
+          </>
+        )}
       </div>
-
-      {activeTab === "reflection" && (
-        <>
-          <ReflectionDiagram />
-          <WorkedExampleCallout
-            title="Reflectance forehead probe"
-            scenario="A forehead reflectance pulse oximeter is used during prone spinal surgery when a finger probe is inaccessible."
-            numbers="Reflectance mode places the LED and photodetector on the same side; only diffusely back-scattered light is sampled, so signal-to-noise depends on tissue perfusion under the sensor."
-            takeaway="Reflectance probes are ideal when transmission isn't possible (forehead, oesophagus) but require firm contact and warm, well-perfused skin to give a reliable trace."
-          />
-          <DiagramLearningPoints
-            anchorId="reflection"
-            anchorLabel="Reflection"
-            points={[
-              "Law of reflection: θᵢ = θᵣ; incident ray, reflected ray, and normal are coplanar.",
-              "Specular reflection (smooth) keeps rays parallel; diffuse reflection (rough) scatters them.",
-              "Reflectance pulse oximetry uses back-scattered light — useful at forehead/oesophagus when transmission is impossible.",
-            ]}
-            sources={[
-              {
-                label: "BJA Educ 2016",
-                citation:
-                  "Jubran A. Pulse oximetry. Crit Care. 2015;19:272 — principles of transmission vs reflectance probes.",
-                url: "https://doi.org/10.1186/s13054-015-0984-8",
-              },
-              {
-                label: "Davis & Kenny",
-                citation:
-                  "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Chapter on light and optics.",
-              },
-            ]}
-          />
-        </>
-      )}
-      {activeTab === "refraction" && (
-        <>
-          <RefractionDiagram />
-          <WorkedExampleCallout
-            title="Critical angle in a fibreoptic bronchoscope"
-            scenario="Bronchoscope core has refractive index n₁ = 1.62; cladding n₂ = 1.48. Find the critical angle θc for total internal reflection."
-            numbers="sin θc = n₂ / n₁ = 1.48 / 1.62 = 0.914 → θc = arcsin(0.914) ≈ 66°."
-            takeaway="Light striking the core–cladding interface at angles greater than ~66° (from the normal) propagates losslessly along the fibre — the basis of every flexible scope."
-          />
-          <DiagramLearningPoints
-            anchorId="refraction"
-            anchorLabel="Refraction & TIR"
-            points={[
-              "Snell's law: n₁ sin θ₁ = n₂ sin θ₂; light bends toward the normal entering a denser medium.",
-              "Refractive index n = c/v (speed of light in vacuum / in the medium).",
-              "Critical angle sin θc = n₂/n₁ (only when n₁ > n₂); beyond θc → total internal reflection.",
-              "TIR underpins fibreoptic light transmission and prism-based laryngoscope optics.",
-            ]}
-            sources={[
-              {
-                label: "BJA Educ 2015",
-                citation:
-                  "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862 — optics of fibreoptic and video laryngoscopes.",
-                url: "https://doi.org/10.4187/respcare.03033",
-              },
-              {
-                label: "Magee & Tooley",
-                citation:
-                  "Magee P, Tooley M. The Physics, Clinical Measurement and Equipment of Anaesthetic Practice. 2nd ed. OUP; 2011 — Snell's law and TIR.",
-              },
-            ]}
-          />
-        </>
-      )}
-      {activeTab === "fibreoptics" && (
-        <>
-          <FibreopticsDiagram />
-          <WorkedExampleCallout
-            title="Coherent vs incoherent bundles"
-            scenario="A 30,000-fibre bronchoscope contains both image and light bundles, each fibre ~10 µm in diameter."
-            numbers="Coherent bundle (image): fibres aligned identically at both ends so spatial relationships are preserved. Incoherent bundle (illumination): fibres randomly arranged — only intensity is transmitted."
-            takeaway="A broken image (black dots in the view) means damaged coherent fibres; if illumination dims, the incoherent light bundle has fibre fractures or a faulty light source."
-          />
-          <DiagramLearningPoints
-            anchorId="fibreoptics"
-            anchorLabel="Fibreoptics"
-            points={[
-              "Core (high n) + cladding (low n) → repeated TIR transmits light along bends.",
-              "Coherent bundle = image (fibres aligned); incoherent bundle = illumination only.",
-              "Numerical aperture = sin(acceptance angle) — sets light-gathering capacity.",
-              "Working channel (2.2–3.2 mm) allows suction, O₂ insufflation, topical local anaesthetic.",
-            ]}
-            sources={[
-              {
-                label: "DAS 2020",
-                citation:
-                  "Ahmad I, El-Boghdadly K, Bhagrath R et al. Difficult Airway Society guidelines for awake tracheal intubation in adults. Anaesthesia. 2020;75(4):509–528 — fibreoptic scope construction and use.",
-                url: "https://doi.org/10.1111/anae.14904",
-              },
-              {
-                label: "BJA Educ 2015",
-                citation:
-                  "Collins SR. Direct and indirect laryngoscopy: equipment and techniques. Respir Care. 2014;59(6):850–862.",
-                url: "https://doi.org/10.4187/respcare.03033",
-              },
-            ]}
-          />
-        </>
-      )}
-      {activeTab === "beer-lambert" && (
-        <>
-          <BeerLambertDiagram />
-          <WorkedExampleCallout
-            title="Pulse oximeter in CO poisoning"
-            scenario="A 30-year-old rescued from a house fire: SpO₂ 99%, but co-oximetry SaO₂ 78%, COHb 22%."
-            numbers="Pulse oximetry uses 660 nm + 940 nm. COHb absorbs almost identically to HbO₂ at 660 nm, so the device counts COHb as oxygenated haemoglobin. Functional saturation HbO₂/(HbO₂+Hb) is reported, not the fractional saturation."
-            takeaway="A normal SpO₂ does NOT exclude carbon-monoxide poisoning. Treat with high-flow 100% O₂ (COHb t½ falls from 320 min → 80 min) regardless of the oximeter reading; consider hyperbaric O₂ if COHb >25% or neurological signs."
-          />
-          <DiagramLearningPoints
-            anchorId="beer-lambert"
-            anchorLabel="Beer-Lambert Law"
-            points={[
-              "A = ε × c × l (absorbance = molar absorptivity × concentration × path length).",
-              "Transmittance T = I/I₀; absorbance A = −log₁₀(T).",
-              "Assumes monochromatic light, low concentrations, no scattering, uniform path length.",
-              "Underpins pulse oximetry, co-oximetry, capnography (IR CO₂) and agent analysers.",
-            ]}
-            sources={[
-              {
-                label: "BJA Educ 2016",
-                citation:
-                  "Chan ED, Chan MM, Chan MM. Pulse oximetry: understanding its basic principles facilitates appreciation of its limitations. Respir Med. 2013;107(6):789–799.",
-                url: "https://doi.org/10.1016/j.rmed.2013.02.004",
-              },
-              {
-                label: "Davis & Kenny",
-                citation:
-                  "Davis PD, Kenny GNC. Basic Physics and Measurement in Anaesthesia. 5th ed. Butterworth-Heinemann; 2003 — Beer-Lambert law and gas analysis.",
-              },
-            ]}
-          />
-        </>
-      )}
-      {activeTab === "spectrophotometry" && (
-        <>
-          <SpectrophotometryDiagram />
-          <WorkedExampleCallout
-            title="Why pulse oximetry needs an isobestic anchor"
-            scenario="Two-wavelength pulse oximetry (660 nm + 940 nm) calculates SpO₂ from the ratio R = (AC₆₆₀/DC₆₆₀) / (AC₉₄₀/DC₉₄₀)."
-            numbers="At the ~800 nm isobestic point HbO₂ and Hb absorb equally, so total Hb can be measured independently of saturation — used by co-oximeters and NIRS for calibration. R ≈ 1 corresponds empirically to SpO₂ ≈ 85%."
-            takeaway="Below SpO₂ 70% the empirical R-curve becomes inaccurate; severe desaturation should always be confirmed with co-oximetry on an arterial sample."
-          />
-          <DiagramLearningPoints
-            anchorId="spectrophotometry"
-            anchorLabel="Spectrophotometry"
-            points={[
-              "Pulse oximetry (2λ, 660 + 940 nm) reports functional SaO₂ = HbO₂/(HbO₂+Hb).",
-              "Co-oximetry (≥4λ) reports fractional SaO₂ — distinguishes COHb and MetHb.",
-              "NIRS (700–1000 nm) gives regional cerebral rSO₂ (mixed ~75% venous / 25% arterial).",
-              "Isobestic point (~800 nm): HbO₂ and Hb absorb equally → total Hb estimation & calibration.",
-            ]}
-            sources={[
-              {
-                label: "BJA Educ 2016",
-                citation:
-                  "Moerman A, De Hert S. Recent advances in cerebral oximetry. F1000Res. 2017;6:280 — NIRS principles and clinical use.",
-                url: "https://doi.org/10.12688/f1000research.10547.1",
-              },
-              {
-                label: "BJA Educ 2014",
-                citation:
-                  "Haymond S, Cariappa R, Eby CS, Scott MG. Laboratory assessment of oxygenation in methemoglobinemia. Clin Chem. 2005;51(2):434–444 — co-oximetry, MetHb, COHb.",
-                url: "https://doi.org/10.1373/clinchem.2004.035154",
-              },
-            ]}
-          />
-        </>
-      )}
-    </div>
+    </DiagramFigure>
   );
 };
 

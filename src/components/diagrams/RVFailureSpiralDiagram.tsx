@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StepId = "trigger" | "pvr" | "rv-dilate" | "septal" | "lv-fill" | "hypotension" | "ischaemia";
 
@@ -256,62 +257,68 @@ const RVFailureSpiralDiagram = () => {
                 const isSelected = s.id === selected;
                 const nodeR = isSelected ? 18 : 14;
                 return (
-                  <g
-                    key={s.id}
-                    onClick={() => setSelected(s.id)}
-                    className="cursor-pointer"
-                  >
-                    {/* halo for selected */}
-                    {isSelected && (
+    <DiagramFigure
+      id="rv-failure-spiral-diagram"
+      title="Rv failure spiral"
+      description="Auto-generated wrapper for the Rv failure spiral anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <g
+                      key={s.id}
+                      onClick={() => setSelected(s.id)}
+                      className="cursor-pointer"
+                    >
+                      {/* halo for selected */}
+                      {isSelected && (
+                        <circle
+                          cx={x}
+                          cy={y}
+                          r={nodeR + 5}
+                          className="fill-primary"
+                          opacity={0.18}
+                        />
+                      )}
                       <circle
                         cx={x}
                         cy={y}
-                        r={nodeR + 5}
-                        className="fill-primary"
-                        opacity={0.18}
+                        r={nodeR}
+                        className={
+                          isSelected
+                            ? "fill-primary stroke-primary"
+                            : "fill-card stroke-destructive"
+                        }
+                        strokeWidth={isSelected ? 2 : 1.5}
                       />
-                    )}
-                    <circle
-                      cx={x}
-                      cy={y}
-                      r={nodeR}
-                      className={
-                        isSelected
-                          ? "fill-primary stroke-primary"
-                          : "fill-card stroke-destructive"
-                      }
-                      strokeWidth={isSelected ? 2 : 1.5}
-                    />
-                    <text
-                      x={x}
-                      y={y + 1}
-                      textAnchor="middle"
-                      dominantBaseline="middle"
-                      className={
-                        isSelected
-                          ? "fill-primary-foreground font-bold"
-                          : "fill-foreground font-bold"
-                      }
-                      style={{ fontSize: "10px" }}
-                    >
-                      {i + 1}
-                    </text>
-                    {/* short label outside the node */}
-                    <text
-                      x={x + (x >= CENTRE ? nodeR + 4 : -(nodeR + 4))}
-                      y={y + 3}
-                      textAnchor={x >= CENTRE ? "start" : "end"}
-                      className={
-                        isSelected
-                          ? "fill-foreground font-semibold"
-                          : "fill-muted-foreground"
-                      }
-                      style={{ fontSize: "9px" }}
-                    >
-                      {s.shortLabel}
-                    </text>
-                  </g>
-                );
+                      <text
+                        x={x}
+                        y={y + 1}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className={
+                          isSelected
+                            ? "fill-primary-foreground font-bold"
+                            : "fill-foreground font-bold"
+                        }
+                        style={{ fontSize: "10px" }}
+                      >
+                        {i + 1}
+                      </text>
+                      {/* short label outside the node */}
+                      <text
+                        x={x + (x >= CENTRE ? nodeR + 4 : -(nodeR + 4))}
+                        y={y + 3}
+                        textAnchor={x >= CENTRE ? "start" : "end"}
+                        className={
+                          isSelected
+                            ? "fill-foreground font-semibold"
+                            : "fill-muted-foreground"
+                        }
+                        style={{ fontSize: "9px" }}
+                      >
+                        {s.shortLabel}
+                      </text>
+                    </g>
+    </DiagramFigure>
+  );
               })}
             </svg>
           </div>

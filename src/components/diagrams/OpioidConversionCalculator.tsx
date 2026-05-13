@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Opioid Conversion Calculator with OMEDD output and incomplete cross-tolerance reduction.
@@ -119,208 +120,214 @@ const OpioidConversionCalculator = () => {
   };
 
   return (
-    <div className="my-6 p-4 rounded-xl border border-border bg-card">
-      <div className="mb-3">
-        <h3 className="text-lg font-serif font-bold text-foreground">Opioid Conversion Calculator (OMEDD)</h3>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Calculates 24-h Oral Morphine Equivalent Daily Dose and converts to a target opioid with automatic
-          25–50% incomplete cross-tolerance reduction. Cross-check against FPM "Opioids Aware" before prescribing.
-        </p>
-      </div>
-
-      {/* Inputs */}
-      <div className="grid lg:grid-cols-2 gap-3 mb-4">
-        {/* SOURCE */}
-        <div className="p-3 rounded-lg border border-border bg-secondary/30 space-y-2">
-          <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Current opioid</p>
-          <select
-            value={sourceKey}
-            onChange={(e) => setSourceKey(e.target.value)}
-            className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
-          >
-            {SOURCES.map((s) => (
-              <option key={s.key} value={s.key}>{s.label}</option>
-            ))}
-          </select>
-
-          <div className="grid grid-cols-2 gap-2">
+    <DiagramFigure
+      id="opioid-conversion-calculator"
+      title="Opioid conversion"
+      description="Auto-generated wrapper for the Opioid conversion interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-6 p-4 rounded-xl border border-border bg-card">
+        <div className="mb-3">
+          <h3 className="text-lg font-serif font-bold text-foreground">Opioid Conversion Calculator (OMEDD)</h3>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Calculates 24-h Oral Morphine Equivalent Daily Dose and converts to a target opioid with automatic
+            25–50% incomplete cross-tolerance reduction. Cross-check against FPM "Opioids Aware" before prescribing.
+          </p>
+        </div>
+  
+        {/* Inputs */}
+        <div className="grid lg:grid-cols-2 gap-3 mb-4">
+          {/* SOURCE */}
+          <div className="p-3 rounded-lg border border-border bg-secondary/30 space-y-2">
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Current opioid</p>
+            <select
+              value={sourceKey}
+              onChange={(e) => setSourceKey(e.target.value)}
+              className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
+            >
+              {SOURCES.map((s) => (
+                <option key={s.key} value={s.key}>{s.label}</option>
+              ))}
+            </select>
+  
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-[11px] font-semibold text-foreground">
+                  {isSourceTD ? "Patch strength (µg/h)" : `Dose per administration (${source.unit})`}
+                </label>
+                <input
+                  type="number"
+                  min={0}
+                  step={isSourceTD ? 1 : source.unit === "µg" ? 5 : 0.5}
+                  value={doseValue}
+                  onChange={(e) => setDoseValue(Math.max(0, Number(e.target.value) || 0))}
+                  className="w-full mt-0.5 px-2 py-1 rounded border border-border bg-background text-sm font-mono"
+                />
+              </div>
+              <div>
+                <label className="text-[11px] font-semibold text-foreground">
+                  {isSourceTD ? "Patch (continuous)" : "Doses per 24 h"}
+                </label>
+                <input
+                  type="number"
+                  min={1}
+                  max={24}
+                  step={1}
+                  disabled={isSourceTD}
+                  value={isSourceTD ? 1 : dosesPerDay}
+                  onChange={(e) => setDosesPerDay(Math.max(1, Math.min(24, Number(e.target.value) || 1)))}
+                  className="w-full mt-0.5 px-2 py-1 rounded border border-border bg-background text-sm font-mono disabled:opacity-50"
+                />
+              </div>
+            </div>
+            {source.hint && (
+              <p className="text-[10px] text-muted-foreground italic">{source.hint}</p>
+            )}
+            <p className="text-[10px] text-muted-foreground">
+              Route: <span className="font-mono">{ROUTE_LABEL[source.route]}</span> · OMEDD factor:{" "}
+              <span className="font-mono">×{source.toOMEDDperUnit}</span>
+              {isSourceTD && <> per µg/h per 24 h</>}
+            </p>
+          </div>
+  
+          {/* TARGET */}
+          <div className="p-3 rounded-lg border border-border bg-secondary/30 space-y-2">
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Rotate to</p>
+            <select
+              value={targetKey}
+              onChange={(e) => setTargetKey(e.target.value)}
+              className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
+            >
+              {TARGETS.map((t) => (
+                <option key={t.key} value={t.key}>{t.label}</option>
+              ))}
+            </select>
+  
             <div>
-              <label className="text-[11px] font-semibold text-foreground">
-                {isSourceTD ? "Patch strength (µg/h)" : `Dose per administration (${source.unit})`}
+              <label className="text-[11px] font-semibold text-foreground flex items-center justify-between">
+                <span>Cross-tolerance reduction</span>
+                <span className="font-mono text-primary">−{effectiveReduction}%</span>
               </label>
               <input
-                type="number"
+                type="range"
                 min={0}
-                step={isSourceTD ? 1 : source.unit === "µg" ? 5 : 0.5}
-                value={doseValue}
-                onChange={(e) => setDoseValue(Math.max(0, Number(e.target.value) || 0))}
-                className="w-full mt-0.5 px-2 py-1 rounded border border-border bg-background text-sm font-mono"
+                max={50}
+                step={5}
+                value={reductionPct}
+                onChange={(e) => setReductionPct(Number(e.target.value))}
+                disabled={highRisk}
+                className="w-full mt-0.5 accent-primary disabled:opacity-50"
               />
+              <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
+                <span>0% (none)</span>
+                <span>25% (standard)</span>
+                <span>50% (high-risk)</span>
+              </div>
             </div>
-            <div>
-              <label className="text-[11px] font-semibold text-foreground">
-                {isSourceTD ? "Patch (continuous)" : "Doses per 24 h"}
-              </label>
+  
+            <label className="flex items-start gap-2 text-[11px] text-foreground cursor-pointer">
               <input
-                type="number"
-                min={1}
-                max={24}
-                step={1}
-                disabled={isSourceTD}
-                value={isSourceTD ? 1 : dosesPerDay}
-                onChange={(e) => setDosesPerDay(Math.max(1, Math.min(24, Number(e.target.value) || 1)))}
-                className="w-full mt-0.5 px-2 py-1 rounded border border-border bg-background text-sm font-mono disabled:opacity-50"
+                type="checkbox"
+                checked={highRisk}
+                onChange={(e) => setHighRisk(e.target.checked)}
+                className="mt-0.5 accent-primary"
               />
-            </div>
-          </div>
-          {source.hint && (
-            <p className="text-[10px] text-muted-foreground italic">{source.hint}</p>
-          )}
-          <p className="text-[10px] text-muted-foreground">
-            Route: <span className="font-mono">{ROUTE_LABEL[source.route]}</span> · OMEDD factor:{" "}
-            <span className="font-mono">×{source.toOMEDDperUnit}</span>
-            {isSourceTD && <> per µg/h per 24 h</>}
-          </p>
-        </div>
-
-        {/* TARGET */}
-        <div className="p-3 rounded-lg border border-border bg-secondary/30 space-y-2">
-          <p className="text-xs font-semibold text-foreground uppercase tracking-wide">Rotate to</p>
-          <select
-            value={targetKey}
-            onChange={(e) => setTargetKey(e.target.value)}
-            className="w-full px-2 py-1.5 rounded border border-border bg-background text-sm"
-          >
-            {TARGETS.map((t) => (
-              <option key={t.key} value={t.key}>{t.label}</option>
-            ))}
-          </select>
-
-          <div>
-            <label className="text-[11px] font-semibold text-foreground flex items-center justify-between">
-              <span>Cross-tolerance reduction</span>
-              <span className="font-mono text-primary">−{effectiveReduction}%</span>
+              <span>
+                <strong>High-risk patient</strong> — elderly/frail, renal or hepatic impairment, OMEDD &gt;200 mg, or rotation to/from
+                methadone/fentanyl. Forces ≥50% reduction.
+              </span>
             </label>
-            <input
-              type="range"
-              min={0}
-              max={50}
-              step={5}
-              value={reductionPct}
-              onChange={(e) => setReductionPct(Number(e.target.value))}
-              disabled={highRisk}
-              className="w-full mt-0.5 accent-primary disabled:opacity-50"
-            />
-            <div className="flex justify-between text-[10px] text-muted-foreground mt-0.5">
-              <span>0% (none)</span>
-              <span>25% (standard)</span>
-              <span>50% (high-risk)</span>
+          </div>
+        </div>
+  
+        {/* OMEDD output */}
+        <div className="p-3 rounded-lg border border-border bg-background mb-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+            <p className="text-xs font-semibold text-foreground uppercase tracking-wide">24-hour OMEDD</p>
+            <span
+              className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
+              style={{ backgroundColor: `${bandColor}22`, color: bandColor, border: `1px solid ${bandColor}55` }}
+            >
+              {bandLabel} mg/24 h
+            </span>
+          </div>
+          <p className="text-3xl font-bold font-mono text-foreground">
+            {round(omedd, omedd < 10 ? 1 : 0)} <span className="text-sm font-normal text-muted-foreground">mg oral morphine / 24 h</span>
+          </p>
+          <p className="text-[11px] text-muted-foreground mt-1">
+            Calculation:{" "}
+            {isSourceTD
+              ? `${doseValue} µg/h × ${source.toOMEDDperUnit} = ${round(omedd)} mg/24 h`
+              : `${doseValue} ${source.unit} × ${dosesPerDay}/day × ${source.toOMEDDperUnit} = ${round(omedd)} mg/24 h`}
+          </p>
+          {omedd > 120 && (
+            <p className="text-[11px] text-destructive mt-1.5">
+              ⚠ OMEDD &gt;120 mg/day — FPM advises specialist review; benefit unlikely above this threshold in chronic non-cancer pain.
+            </p>
+          )}
+        </div>
+  
+        {/* Rotation output */}
+        <div className="p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
+          <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">
+            Suggested {target.label} dose
+          </p>
+  
+          <div className="grid sm:grid-cols-3 gap-2 text-sm">
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase">Equianalgesic 24 h</p>
+              <p className="font-mono text-base font-semibold text-muted-foreground line-through">
+                {formatTarget(target24hRaw)}
+              </p>
+            </div>
+            <div className="p-2 rounded bg-background border-2 border-primary">
+              <p className="text-[10px] text-primary uppercase font-semibold">After −{effectiveReduction}% reduction</p>
+              <p className="font-mono text-base font-bold text-primary">
+                {formatTarget(target24h)} / 24 h
+              </p>
+            </div>
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase">Per dose ({isTargetTD ? "per h" : `÷${dosesPerDay}`})</p>
+              <p className="font-mono text-base font-semibold text-foreground">
+                {isTargetTD ? `${round(target24h / 24, 1)} µg/h` : formatTarget(targetPerDose)}
+              </p>
             </div>
           </div>
-
-          <label className="flex items-start gap-2 text-[11px] text-foreground cursor-pointer">
-            <input
-              type="checkbox"
-              checked={highRisk}
-              onChange={(e) => setHighRisk(e.target.checked)}
-              className="mt-0.5 accent-primary"
-            />
-            <span>
-              <strong>High-risk patient</strong> — elderly/frail, renal or hepatic impairment, OMEDD &gt;200 mg, or rotation to/from
-              methadone/fentanyl. Forces ≥50% reduction.
-            </span>
-          </label>
-        </div>
-      </div>
-
-      {/* OMEDD output */}
-      <div className="p-3 rounded-lg border border-border bg-background mb-3">
-        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
-          <p className="text-xs font-semibold text-foreground uppercase tracking-wide">24-hour OMEDD</p>
-          <span
-            className="text-[10px] px-2 py-0.5 rounded-full font-semibold"
-            style={{ backgroundColor: `${bandColor}22`, color: bandColor, border: `1px solid ${bandColor}55` }}
-          >
-            {bandLabel} mg/24 h
-          </span>
-        </div>
-        <p className="text-3xl font-bold font-mono text-foreground">
-          {round(omedd, omedd < 10 ? 1 : 0)} <span className="text-sm font-normal text-muted-foreground">mg oral morphine / 24 h</span>
-        </p>
-        <p className="text-[11px] text-muted-foreground mt-1">
-          Calculation:{" "}
-          {isSourceTD
-            ? `${doseValue} µg/h × ${source.toOMEDDperUnit} = ${round(omedd)} mg/24 h`
-            : `${doseValue} ${source.unit} × ${dosesPerDay}/day × ${source.toOMEDDperUnit} = ${round(omedd)} mg/24 h`}
-        </p>
-        {omedd > 120 && (
-          <p className="text-[11px] text-destructive mt-1.5">
-            ⚠ OMEDD &gt;120 mg/day — FPM advises specialist review; benefit unlikely above this threshold in chronic non-cancer pain.
-          </p>
-        )}
-      </div>
-
-      {/* Rotation output */}
-      <div className="p-3 rounded-lg border-2 border-primary/30 bg-primary/5">
-        <p className="text-xs font-semibold text-foreground uppercase tracking-wide mb-2">
-          Suggested {target.label} dose
-        </p>
-
-        <div className="grid sm:grid-cols-3 gap-2 text-sm">
-          <div className="p-2 rounded bg-background border border-border">
-            <p className="text-[10px] text-muted-foreground uppercase">Equianalgesic 24 h</p>
-            <p className="font-mono text-base font-semibold text-muted-foreground line-through">
-              {formatTarget(target24hRaw)}
-            </p>
-          </div>
-          <div className="p-2 rounded bg-background border-2 border-primary">
-            <p className="text-[10px] text-primary uppercase font-semibold">After −{effectiveReduction}% reduction</p>
-            <p className="font-mono text-base font-bold text-primary">
-              {formatTarget(target24h)} / 24 h
-            </p>
-          </div>
-          <div className="p-2 rounded bg-background border border-border">
-            <p className="text-[10px] text-muted-foreground uppercase">Per dose ({isTargetTD ? "per h" : `÷${dosesPerDay}`})</p>
-            <p className="font-mono text-base font-semibold text-foreground">
-              {isTargetTD ? `${round(target24h / 24, 1)} µg/h` : formatTarget(targetPerDose)}
-            </p>
+  
+          <div className="mt-3 grid sm:grid-cols-2 gap-2 text-xs">
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase">Breakthrough rescue (1/6 of new 24 h)</p>
+              <p className="font-mono text-sm font-semibold text-foreground">
+                {formatTarget(rescueDose)} PRN, max 4-hourly
+              </p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">
+                Equivalent to ~{round(rescueOMEDD, 1)} mg oral morphine PRN
+              </p>
+            </div>
+            <div className="p-2 rounded bg-background border border-border">
+              <p className="text-[10px] text-muted-foreground uppercase">Titration plan</p>
+              <p className="text-xs text-foreground">
+                Review at 24–48 h. If &gt;3–4 rescues/day: ↑ background by ~30–50%. Always co-prescribe a stimulant
+                laxative & PRN antiemetic for the first 5–7 days.
+              </p>
+            </div>
           </div>
         </div>
-
-        <div className="mt-3 grid sm:grid-cols-2 gap-2 text-xs">
-          <div className="p-2 rounded bg-background border border-border">
-            <p className="text-[10px] text-muted-foreground uppercase">Breakthrough rescue (1/6 of new 24 h)</p>
-            <p className="font-mono text-sm font-semibold text-foreground">
-              {formatTarget(rescueDose)} PRN, max 4-hourly
-            </p>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
-              Equivalent to ~{round(rescueOMEDD, 1)} mg oral morphine PRN
-            </p>
+  
+        {/* Caveats */}
+        <div className="mt-3 grid sm:grid-cols-2 gap-2 text-[11px]">
+          <div className="p-2.5 rounded bg-destructive/5 border border-destructive/20 text-muted-foreground">
+            <strong className="text-foreground">Methadone:</strong> not included — uses a <em>variable</em> ratio (4:1 if OMEDD &lt;100,
+            up to 12–20:1 if &gt;1000) plus an unpredictable half-life and QTc effects. <strong>Specialist palliative care only</strong>,
+            usually inpatient.
           </div>
-          <div className="p-2 rounded bg-background border border-border">
-            <p className="text-[10px] text-muted-foreground uppercase">Titration plan</p>
-            <p className="text-xs text-foreground">
-              Review at 24–48 h. If &gt;3–4 rescues/day: ↑ background by ~30–50%. Always co-prescribe a stimulant
-              laxative & PRN antiemetic for the first 5–7 days.
-            </p>
+          <div className="p-2.5 rounded bg-destructive/5 border border-destructive/20 text-muted-foreground">
+            <strong className="text-foreground">Fentanyl & buprenorphine patches</strong> reach steady state at ~12–24 h — overlap
+            with the previous opioid (oral morphine for the first 12 h after first patch; remove other patch &amp; allow 12-h washout).
+            Patches are <strong>not for opioid-naive</strong> patients or unstable pain.
           </div>
         </div>
       </div>
-
-      {/* Caveats */}
-      <div className="mt-3 grid sm:grid-cols-2 gap-2 text-[11px]">
-        <div className="p-2.5 rounded bg-destructive/5 border border-destructive/20 text-muted-foreground">
-          <strong className="text-foreground">Methadone:</strong> not included — uses a <em>variable</em> ratio (4:1 if OMEDD &lt;100,
-          up to 12–20:1 if &gt;1000) plus an unpredictable half-life and QTc effects. <strong>Specialist palliative care only</strong>,
-          usually inpatient.
-        </div>
-        <div className="p-2.5 rounded bg-destructive/5 border border-destructive/20 text-muted-foreground">
-          <strong className="text-foreground">Fentanyl & buprenorphine patches</strong> reach steady state at ~12–24 h — overlap
-          with the previous opioid (oral morphine for the first 12 h after first patch; remove other patch &amp; allow 12-h washout).
-          Patches are <strong>not for opioid-naive</strong> patients or unstable pain.
-        </div>
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

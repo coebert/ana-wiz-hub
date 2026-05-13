@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type BlockType = "none" | "ndmr-partial" | "ndmr-complete" | "depol-phase1" | "depol-phase2" | "recovery";
 
@@ -117,20 +118,26 @@ export const TOFPatternDiagram = () => {
           const opacity = growProgress > 0 ? fadeProgress : 0;
 
           return (
-            <g key={`twitch-${i}`} opacity={opacity}>
-              <rect x={barX} y={220 - currentH} width={barW} height={currentH} rx={3}
-                fill={info.color} fillOpacity={0.6} stroke={info.color} strokeWidth="1" />
-              {/* Label */}
-              {growProgress >= 1 && (
-                <g>
-                  <text x={barX + barW / 2} y={215 - currentH} textAnchor="middle" fontSize="10"
-                    fill={info.color} fontWeight="700">T{i + 1}</text>
-                  <text x={barX + barW / 2} y={228 - currentH + barH + 14} textAnchor="middle" fontSize="7"
-                    fill="hsl(var(--muted-foreground))">{h}%</text>
-                </g>
-              )}
-            </g>
-          );
+    <DiagramFigure
+      id="tof-pattern-diagram"
+      title="Tof pattern"
+      description="Auto-generated wrapper for the Tof pattern anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <g key={`twitch-${i}`} opacity={opacity}>
+                <rect x={barX} y={220 - currentH} width={barW} height={currentH} rx={3}
+                  fill={info.color} fillOpacity={0.6} stroke={info.color} strokeWidth="1" />
+                {/* Label */}
+                {growProgress >= 1 && (
+                  <g>
+                    <text x={barX + barW / 2} y={215 - currentH} textAnchor="middle" fontSize="10"
+                      fill={info.color} fontWeight="700">T{i + 1}</text>
+                    <text x={barX + barW / 2} y={228 - currentH + barH + 14} textAnchor="middle" fontSize="7"
+                      fill="hsl(var(--muted-foreground))">{h}%</text>
+                  </g>
+                )}
+              </g>
+    </DiagramFigure>
+  );
         })}
 
         {/* TOF ratio display */}

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * ECMO-CPR (eCPR) decision tree.
@@ -163,22 +164,28 @@ const EcprDecisionTreeDiagram = () => {
                   {node.options.map((opt, oi) => {
                     const selected = ans === oi;
                     return (
-                      <button
-                        key={opt.label}
-                        onClick={() => setAnswers((a) => ({ ...a, [step]: oi }))}
-                        aria-pressed={selected}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all"
-                        style={{
-                          borderColor: selected ? (opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)") : "hsl(var(--border))",
-                          backgroundColor: selected
-                            ? withAlpha(opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)", 0.15)
-                            : "transparent",
-                          color: selected ? (opt.favourable ? "hsl(140, 55%, 35%)" : "hsl(0, 65%, 45%)") : "hsl(var(--foreground))",
-                        }}
-                      >
-                        {opt.label}
-                      </button>
-                    );
+    <DiagramFigure
+      id="ecpr-decision-tree-diagram"
+      title="Ecpr decision tree"
+      description="Auto-generated wrapper for the Ecpr decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                            <button
+                          key={opt.label}
+                          onClick={() => setAnswers((a) => ({ ...a, [step]: oi }))}
+                          aria-pressed={selected}
+                          className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all"
+                          style={{
+                            borderColor: selected ? (opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)") : "hsl(var(--border))",
+                            backgroundColor: selected
+                              ? withAlpha(opt.favourable ? "hsl(140, 55%, 42%)" : "hsl(0, 65%, 50%)", 0.15)
+                              : "transparent",
+                            color: selected ? (opt.favourable ? "hsl(140, 55%, 35%)" : "hsl(0, 65%, 45%)") : "hsl(var(--foreground))",
+                          }}
+                        >
+                          {opt.label}
+                        </button>
+    </DiagramFigure>
+  );
                   })}
                 </div>
                 {showRationale && answered && (

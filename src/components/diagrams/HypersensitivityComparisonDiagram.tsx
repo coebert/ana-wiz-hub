@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TypeKey = "I" | "II" | "III" | "IV";
 
@@ -229,24 +230,30 @@ export const HypersensitivityComparisonDiagram = () => {
             const peak = logScale(t.timingBand.peakHr) * 100;
             const isActive = t.key === selected;
             return (
-              <div
-                key={t.key}
-                className="absolute top-0 bottom-0 transition-opacity"
-                style={{
-                  left: `${left}%`,
-                  width: `${Math.max(2, right - left)}%`,
-                  backgroundColor: withAlpha(t.color, isActive ? 0.4 : 0.12),
-                  borderLeft: `2px solid ${withAlpha(t.color, isActive ? 1 : 0.3)}`,
-                  opacity: isActive ? 1 : 0.6,
-                }}
-                title={`${t.shortName}: ${t.timing}`}
-              >
-                <div
-                  className="absolute top-0 bottom-0 w-0.5"
-                  style={{ left: `${((peak - left) / Math.max(0.5, right - left)) * 100}%`, backgroundColor: t.color }}
-                />
-              </div>
-            );
+    <DiagramFigure
+      id="hypersensitivity-comparison-diagram"
+      title="Hypersensitivity comparison"
+      description="Auto-generated wrapper for the Hypersensitivity comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div
+                  key={t.key}
+                  className="absolute top-0 bottom-0 transition-opacity"
+                  style={{
+                    left: `${left}%`,
+                    width: `${Math.max(2, right - left)}%`,
+                    backgroundColor: withAlpha(t.color, isActive ? 0.4 : 0.12),
+                    borderLeft: `2px solid ${withAlpha(t.color, isActive ? 1 : 0.3)}`,
+                    opacity: isActive ? 1 : 0.6,
+                  }}
+                  title={`${t.shortName}: ${t.timing}`}
+                >
+                  <div
+                    className="absolute top-0 bottom-0 w-0.5"
+                    style={{ left: `${((peak - left) / Math.max(0.5, right - left)) * 100}%`, backgroundColor: t.color }}
+                  />
+                </div>
+    </DiagramFigure>
+  );
           })}
         </div>
         <div className="flex justify-between text-[9px] text-muted-foreground mt-1 font-mono">

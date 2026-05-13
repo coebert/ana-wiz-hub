@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Threshold {
   at: number; // seconds
@@ -176,26 +177,32 @@ export default function ArrestTimeWindowWidget() {
             const left = (t.at / MAX_SECONDS) * 100;
             const reached = seconds >= t.at;
             return (
-              <div
-                key={t.at}
-                className="absolute -translate-x-1/2 flex flex-col items-center"
-                style={{ left: `${left}%` }}
-              >
-                <div
-                  className={`w-2 h-2 rounded-full -mt-3 ring-2 ring-background transition-all ${
-                    reached ? "scale-125" : ""
-                  }`}
-                  style={{ background: reached ? t.color : "hsl(var(--muted-foreground) / 0.4)" }}
-                />
-                <span
-                  className={`text-[10px] mt-1 font-medium ${
-                    reached ? "text-foreground" : "text-muted-foreground"
-                  }`}
+    <DiagramFigure
+      id="arrest-time-window-widget"
+      title="Arrest time window widget"
+      description="Auto-generated wrapper for the Arrest time window widget anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div
+                  key={t.at}
+                  className="absolute -translate-x-1/2 flex flex-col items-center"
+                  style={{ left: `${left}%` }}
                 >
-                  {t.label}
-                </span>
-              </div>
-            );
+                  <div
+                    className={`w-2 h-2 rounded-full -mt-3 ring-2 ring-background transition-all ${
+                      reached ? "scale-125" : ""
+                    }`}
+                    style={{ background: reached ? t.color : "hsl(var(--muted-foreground) / 0.4)" }}
+                  />
+                  <span
+                    className={`text-[10px] mt-1 font-medium ${
+                      reached ? "text-foreground" : "text-muted-foreground"
+                    }`}
+                  >
+                    {t.label}
+                  </span>
+                </div>
+    </DiagramFigure>
+  );
           })}
         </div>
       </div>

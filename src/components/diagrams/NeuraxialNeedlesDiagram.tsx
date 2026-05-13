@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NeedleKey = "quincke" | "whitacre" | "sprotte" | "tuohy" | "huber" | "pencilpoint-general";
 
@@ -397,17 +398,23 @@ const NeuraxialNeedlesDiagram = () => {
           const n = needles[key];
           const isActive = selected === key;
           return (
-            <button
-              key={key}
-              onClick={() => setSelected(key)}
-              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-              }`}
-              style={isActive ? { borderColor: n.color, backgroundColor: withAlpha(n.color, 0.09), color: n.color } : {}}
-            >
-              {n.label}
-            </button>
-          );
+    <DiagramFigure
+      id="neuraxial-needles-diagram"
+      title="Neuraxial needles"
+      description="Auto-generated wrapper for the Neuraxial needles anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={key}
+                onClick={() => setSelected(key)}
+                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                  isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                }`}
+                style={isActive ? { borderColor: n.color, backgroundColor: withAlpha(n.color, 0.09), color: n.color } : {}}
+              >
+                {n.label}
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 

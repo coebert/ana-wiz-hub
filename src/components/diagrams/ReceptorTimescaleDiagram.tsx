@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Receptor types & signal-transduction timescales.
@@ -421,21 +422,27 @@ const ReceptorIcon = ({ id, active, color, x, y }: IconProps) => {
       );
     case "nuclear":
       return (
-        <g transform={`translate(${x}, ${y})`}>
-          {/* Membrane (broken — ligand crosses) */}
-          <line x1={0} y1={20} x2={120} y2={20} stroke="hsl(var(--border))" strokeDasharray="2 2" />
-          {/* Nucleus */}
-          <ellipse cx={62} cy={36} rx={26} ry={10} fill="hsl(45 30% 92%)" stroke={fg} strokeWidth={1} opacity={wash} />
-          {/* Ligand-receptor entering */}
-          {active && (
-            <circle cx={20} cy={10} r={3.5} fill={color}>
-              <animate attributeName="cx" values="20;55" dur="1.4s" repeatCount="indefinite" />
-              <animate attributeName="cy" values="10;36" dur="1.4s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="1;0.3" dur="1.4s" repeatCount="indefinite" />
-            </circle>
-          )}
-          <text x={92} y={38} fontSize="8" fill={fg}>mRNA</text>
-        </g>
-      );
+    <DiagramFigure
+      id="receptor-timescale-diagram"
+      title="Receptor timescale"
+      description="Auto-generated wrapper for the Receptor timescale anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+              <g transform={`translate(${x}, ${y})`}>
+            {/* Membrane (broken — ligand crosses) */}
+            <line x1={0} y1={20} x2={120} y2={20} stroke="hsl(var(--border))" strokeDasharray="2 2" />
+            {/* Nucleus */}
+            <ellipse cx={62} cy={36} rx={26} ry={10} fill="hsl(45 30% 92%)" stroke={fg} strokeWidth={1} opacity={wash} />
+            {/* Ligand-receptor entering */}
+            {active && (
+              <circle cx={20} cy={10} r={3.5} fill={color}>
+                <animate attributeName="cx" values="20;55" dur="1.4s" repeatCount="indefinite" />
+                <animate attributeName="cy" values="10;36" dur="1.4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="1;0.3" dur="1.4s" repeatCount="indefinite" />
+              </circle>
+            )}
+            <text x={92} y={38} fontSize="8" fill={fg}>mRNA</text>
+          </g>
+    </DiagramFigure>
+  );
   }
 };

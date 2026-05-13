@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type DopplerJet =
   | "off"
@@ -565,22 +566,28 @@ const EchoDiagram = () => {
           {selectedMeasurement && (() => {
             const m = measurements.find((x) => x.id === selectedMeasurement)!;
             return (
-              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in text-xs space-y-2">
-                <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">How to measure: </span>
-                  <span className="text-muted-foreground">{m.method}</span>
+    <DiagramFigure
+      id="echo-diagram"
+      title="Echo"
+      description="Auto-generated wrapper for the Echo anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in text-xs space-y-2">
+                  <p className="font-bold text-foreground text-sm">{m.name} — {m.full}</p>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">How to measure: </span>
+                    <span className="text-muted-foreground">{m.method}</span>
+                  </div>
+                  <div className="p-2 rounded bg-background border border-border">
+                    <span className="font-semibold text-foreground">Grading: </span>
+                    <span className="text-muted-foreground">{m.grades}</span>
+                  </div>
+                  <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                    <span className="font-semibold text-foreground">Clinical significance: </span>
+                    <span className="text-muted-foreground">{m.clinical}</span>
+                  </div>
                 </div>
-                <div className="p-2 rounded bg-background border border-border">
-                  <span className="font-semibold text-foreground">Grading: </span>
-                  <span className="text-muted-foreground">{m.grades}</span>
-                </div>
-                <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                  <span className="font-semibold text-foreground">Clinical significance: </span>
-                  <span className="text-muted-foreground">{m.clinical}</span>
-                </div>
-              </div>
-            );
+    </DiagramFigure>
+  );
           })()}
         </TabsContent>
 

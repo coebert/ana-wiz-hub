@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Anterior view of the cardiac conduction system:
@@ -509,20 +510,26 @@ const CardiacConductionDiagram = () => {
             const c = TIER_COLOR[s.tier];
             const active = selected === k;
             return (
-              <button
-                key={k}
-                type="button"
-                onClick={() => setSelected(k)}
-                className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
-                style={{
-                  borderColor: active ? c : "hsl(var(--border))",
-                  background: active ? `${c}1F` : "transparent",
-                  color: active ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
-                }}
-              >
-                {s.label}
-              </button>
-            );
+    <DiagramFigure
+      id="cardiac-conduction-diagram"
+      title="Cardiac conduction"
+      description="Auto-generated wrapper for the Cardiac conduction anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button
+                  key={k}
+                  type="button"
+                  onClick={() => setSelected(k)}
+                  className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                  style={{
+                    borderColor: active ? c : "hsl(var(--border))",
+                    background: active ? `${c}1F` : "transparent",
+                    color: active ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
+                  }}
+                >
+                  {s.label}
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
       </div>

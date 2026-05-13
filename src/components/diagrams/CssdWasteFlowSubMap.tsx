@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pause, Play, Ban } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Node {
   id: string;
@@ -236,20 +237,26 @@ const CssdWasteFlowSubMap = () => {
               const d = p.points.map((pt, i) => `${i === 0 ? "M" : "L"} ${pt.x} ${pt.y}`).join(" ");
               const dot = interp(p.points, t);
               return (
-                <g key={p.id}>
-                  <path
-                    d={d}
-                    fill="none"
-                    stroke={p.color}
-                    strokeWidth="2"
-                    strokeDasharray="4 3"
-                    opacity="0.75"
-                    markerEnd={`url(#sub-arrow-${p.id})`}
-                  />
-                  <circle cx={dot.x} cy={dot.y} r="4.5" fill={p.color} />
-                  <circle cx={dot.x} cy={dot.y} r="8" fill={p.color} opacity="0.22" />
-                </g>
-              );
+    <DiagramFigure
+      id="cssd-waste-flow-sub-map"
+      title="Cssd waste flow sub MAP"
+      description="Auto-generated wrapper for the Cssd waste flow sub MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={p.id}>
+                    <path
+                      d={d}
+                      fill="none"
+                      stroke={p.color}
+                      strokeWidth="2"
+                      strokeDasharray="4 3"
+                      opacity="0.75"
+                      markerEnd={`url(#sub-arrow-${p.id})`}
+                    />
+                    <circle cx={dot.x} cy={dot.y} r="4.5" fill={p.color} />
+                    <circle cx={dot.x} cy={dot.y} r="8" fill={p.color} opacity="0.22" />
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
           {/* No-entry symbol on the boundary back into theatre from dirty side */}

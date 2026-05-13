@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AlertTriangle, Eye, Droplet, Activity, Heart, Pill, FlaskConical, Stethoscope } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison: myasthenic vs cholinergic crisis.
@@ -168,37 +169,43 @@ const MyasthenicVsCholinergicComparison = () => {
           const on = active.has(f.id);
           const Icon = f.icon;
           return (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => toggle(f.id)}
-              aria-pressed={on}
-              className={`w-full grid grid-cols-[110px_1fr_1fr] gap-2 text-left rounded-lg border p-2.5 transition-all ${
-                on
-                  ? "border-clinical bg-clinical/5"
-                  : "border-border bg-card hover:bg-accent/30"
-              }`}
-            >
-              <div className="flex items-center gap-1.5">
-                <Icon className={`h-4 w-4 shrink-0 ${on ? "text-clinical" : "text-muted-foreground"}`} />
-                <span className="text-xs font-semibold text-foreground">{f.label}</span>
-              </div>
-
-              <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
-                <p className="font-medium">{on ? f.myasthenic.finding : "Tap to reveal"}</p>
-                {on && (
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.myasthenic.cue}</p>
-                )}
-              </div>
-
-              <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
-                <p className="font-medium">{on ? f.cholinergic.finding : "Tap to reveal"}</p>
-                {on && (
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.cholinergic.cue}</p>
-                )}
-              </div>
-            </button>
-          );
+    <DiagramFigure
+      id="myasthenic-vs-cholinergic-comparison"
+      title="Myasthenic vs cholinergic"
+      description="Auto-generated wrapper for the Myasthenic vs cholinergic anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={f.id}
+                type="button"
+                onClick={() => toggle(f.id)}
+                aria-pressed={on}
+                className={`w-full grid grid-cols-[110px_1fr_1fr] gap-2 text-left rounded-lg border p-2.5 transition-all ${
+                  on
+                    ? "border-clinical bg-clinical/5"
+                    : "border-border bg-card hover:bg-accent/30"
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <Icon className={`h-4 w-4 shrink-0 ${on ? "text-clinical" : "text-muted-foreground"}`} />
+                  <span className="text-xs font-semibold text-foreground">{f.label}</span>
+                </div>
+  
+                <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
+                  <p className="font-medium">{on ? f.myasthenic.finding : "Tap to reveal"}</p>
+                  {on && (
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.myasthenic.cue}</p>
+                  )}
+                </div>
+  
+                <div className={`text-xs ${on ? "text-foreground" : "text-muted-foreground"}`}>
+                  <p className="font-medium">{on ? f.cholinergic.finding : "Tap to reveal"}</p>
+                  {on && (
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">{f.cholinergic.cue}</p>
+                  )}
+                </div>
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 

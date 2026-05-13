@@ -3,6 +3,7 @@ import { Play, RotateCcw, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { HotspotLayer, HotspotHint, type HotspotDef } from "./HotspotLayer";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Apply a "seek" to every CSS animation under the container so the user can
@@ -879,58 +880,64 @@ const Wrap = ({
   }, []);
 
   return (
-    <div ref={containerRef} className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
-      <div className="flex items-start justify-between gap-2 mb-1">
-        <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
-          Pathophysiology — {title}
-        </p>
-        <Button
-          size="sm"
-          variant="outline"
+    <DiagramFigure
+      id="neuro-disease-pathophys-diagram"
+      title="Neuro disease pathophys"
+      description="Auto-generated wrapper for the Neuro disease pathophys anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div ref={containerRef} className="rounded-lg border border-border bg-card p-3 my-3 not-prose">
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <p className="text-[11px] uppercase tracking-wide text-muted-foreground">
+            Pathophysiology — {title}
+          </p>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={trigger}
+            aria-label={mechanismLabel}
+            className="h-6 px-2 text-[11px] gap-1"
+          >
+            {playing ? <RotateCcw className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+            {playing ? "Replay" : mechanismLabel}
+          </Button>
+        </div>
+        <div
+          ref={sceneRef}
+          className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
+            playing ? "is-playing" : ""
+          }`}
           onClick={trigger}
-          aria-label={mechanismLabel}
-          className="h-6 px-2 text-[11px] gap-1"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              trigger();
+            }
+          }}
         >
-          {playing ? <RotateCcw className="h-3 w-3" /> : <Play className="h-3 w-3" />}
-          {playing ? "Replay" : mechanismLabel}
-        </Button>
+          <svg
+            viewBox="0 0 460 250"
+            className="w-full h-auto min-w-[380px]"
+            role="img"
+            aria-label={`${title} pathophysiology`}
+          >
+            {children}
+          </svg>
+        </div>
+        <TimelineScrubber
+          durationMs={MECHANISM_DURATION_MS}
+          value={scrubMs ?? 0}
+          onChange={handleScrub}
+          onTogglePlay={handleTogglePlay}
+          isPlaying={playing && scrubMs === null}
+        />
+        <HotspotHint>
+          Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
+        </HotspotHint>
+        <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
       </div>
-      <div
-        ref={sceneRef}
-        className={`neuro-anim rounded-md border border-border bg-background p-2 overflow-x-auto cursor-pointer ${
-          playing ? "is-playing" : ""
-        }`}
-        onClick={trigger}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            trigger();
-          }
-        }}
-      >
-        <svg
-          viewBox="0 0 460 250"
-          className="w-full h-auto min-w-[380px]"
-          role="img"
-          aria-label={`${title} pathophysiology`}
-        >
-          {children}
-        </svg>
-      </div>
-      <TimelineScrubber
-        durationMs={MECHANISM_DURATION_MS}
-        value={scrubMs ?? 0}
-        onChange={handleScrub}
-        onTogglePlay={handleTogglePlay}
-        isPlaying={playing && scrubMs === null}
-      />
-      <HotspotHint>
-        Hover or tap the dashed regions for explanations · click the diagram, press “{mechanismLabel}”, or drag the timeline to step through the mechanism.
-      </HotspotHint>
-      <p className="text-xs text-muted-foreground mt-2">{tagline}</p>
-    </div>
+    </DiagramFigure>
   );
 };
 

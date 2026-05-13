@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface RiskFactor {
   id: string;
@@ -109,25 +110,31 @@ export const MehranScoreCalculator = () => {
         {factors.map((f) => {
           if (f.points === "contrast" || f.points === "egfr") return null;
           return (
-            <label
-              key={f.id}
-              className="flex items-start gap-3 p-3 rounded-lg border border-border bg-card hover:bg-muted/40 cursor-pointer transition-colors"
-            >
-              <input
-                type="checkbox"
-                checked={!!checked[f.id]}
-                onChange={() => toggle(f.id)}
-                className="mt-1 h-4 w-4 rounded border-border accent-primary"
-              />
-              <div className="flex-1">
-                <div className="flex items-baseline justify-between gap-2">
-                  <span className="font-medium text-foreground text-sm">{f.label}</span>
-                  <span className="text-xs font-semibold text-primary">+{f.points}</span>
+    <DiagramFigure
+      id="mehran-score-calculator"
+      title="Mehran score"
+      description="Auto-generated wrapper for the Mehran score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <label
+                key={f.id}
+                className="flex items-start gap-3 p-3 rounded-lg border border-border bg-card hover:bg-muted/40 cursor-pointer transition-colors"
+              >
+                <input
+                  type="checkbox"
+                  checked={!!checked[f.id]}
+                  onChange={() => toggle(f.id)}
+                  className="mt-1 h-4 w-4 rounded border-border accent-primary"
+                />
+                <div className="flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="font-medium text-foreground text-sm">{f.label}</span>
+                    <span className="text-xs font-semibold text-primary">+{f.points}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{f.detail}</p>
                 </div>
-                <p className="text-xs text-muted-foreground">{f.detail}</p>
-              </div>
-            </label>
-          );
+              </label>
+    </DiagramFigure>
+  );
         })}
       </div>
 

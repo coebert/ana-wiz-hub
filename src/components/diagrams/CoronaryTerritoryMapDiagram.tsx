@@ -2,6 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { useCoronarySelection, CoronaryTerritory } from "./coronarySelectionContext";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Territory = CoronaryTerritory;
 
@@ -199,26 +200,32 @@ const CoronaryTerritoryMapDiagram = () => {
                 const opacity = highlighted ? 1 : 0.18;
 
                 return (
-                  <g key={lead} filter={highlighted ? "url(#ctm-shadow)" : undefined}>
-                    <rect
-                      x={x - 28} y={y - 12} width="56" height="22" rx="4"
-                      fill={highlighted ? color : "hsl(var(--muted-foreground))"}
-                      fillOpacity={highlighted ? 0.15 : 0.02}
-                      stroke={highlighted ? color : "hsl(var(--border))"}
-                      strokeWidth={highlighted ? 1.6 : 0.5}
-                      opacity={opacity}
-                      strokeDasharray={highlighted ? "none" : "3 2"}
-                    />
-                    <text
-                      x={x} y={y} textAnchor="middle" dominantBaseline="middle"
-                      fontSize="8" fontWeight={highlighted ? "bold" : "normal"}
-                      fill={highlighted ? color : "hsl(var(--foreground))"}
-                      opacity={opacity}
-                    >
-                      {lead}
-                    </text>
-                  </g>
-                );
+    <DiagramFigure
+      id="coronary-territory-map-diagram"
+      title="Coronary territory MAP"
+      description="Auto-generated wrapper for the Coronary territory MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <g key={lead} filter={highlighted ? "url(#ctm-shadow)" : undefined}>
+                      <rect
+                        x={x - 28} y={y - 12} width="56" height="22" rx="4"
+                        fill={highlighted ? color : "hsl(var(--muted-foreground))"}
+                        fillOpacity={highlighted ? 0.15 : 0.02}
+                        stroke={highlighted ? color : "hsl(var(--border))"}
+                        strokeWidth={highlighted ? 1.6 : 0.5}
+                        opacity={opacity}
+                        strokeDasharray={highlighted ? "none" : "3 2"}
+                      />
+                      <text
+                        x={x} y={y} textAnchor="middle" dominantBaseline="middle"
+                        fontSize="8" fontWeight={highlighted ? "bold" : "normal"}
+                        fill={highlighted ? color : "hsl(var(--foreground))"}
+                        opacity={opacity}
+                      >
+                        {lead}
+                      </text>
+                    </g>
+    </DiagramFigure>
+  );
               })}
               {showLabels && (
                 <text x="210" y="172" textAnchor="middle" fontSize="5.5" fill="hsl(var(--muted-foreground))" opacity="0.5">Additional leads (not standard 12-lead)</text>

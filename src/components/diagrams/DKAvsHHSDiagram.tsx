@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side comparison of Diabetic Ketoacidosis (DKA) vs Hyperosmolar
@@ -150,43 +151,49 @@ const DKAvsHHSDiagram = () => {
             const isSel = r.key === selected;
             const isLast = i === ROWS.length - 1;
             return (
-              <button
-                key={r.key}
-                type="button"
-                onClick={() => setSelected(r.key)}
-                aria-pressed={isSel}
-                className={cn(
-                  "contents text-left",
-                )}
-              >
-                <span
+    <DiagramFigure
+      id="dk-avs-hhs-diagram"
+      title="Dk avs HHS"
+      description="Auto-generated wrapper for the Dk avs HHS anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button
+                  key={r.key}
+                  type="button"
+                  onClick={() => setSelected(r.key)}
+                  aria-pressed={isSel}
                   className={cn(
-                    "px-2 py-1.5 border-t border-border text-foreground font-medium transition-colors",
-                    isSel && "bg-primary/10 text-primary",
-                    isLast && "rounded-bl-md",
+                    "contents text-left",
                   )}
                 >
-                  {r.label}
-                </span>
-                <span
-                  className={cn(
-                    "px-2 py-1.5 border-t border-border text-muted-foreground bg-clinical/5 transition-colors",
-                    isSel && "bg-clinical/15 text-foreground",
-                  )}
-                >
-                  {r.dka}
-                </span>
-                <span
-                  className={cn(
-                    "px-2 py-1.5 border-t border-border text-muted-foreground bg-pharmacology/5 transition-colors",
-                    isSel && "bg-pharmacology/15 text-foreground",
-                    isLast && "rounded-br-md",
-                  )}
-                >
-                  {r.hhs}
-                </span>
-              </button>
-            );
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-foreground font-medium transition-colors",
+                      isSel && "bg-primary/10 text-primary",
+                      isLast && "rounded-bl-md",
+                    )}
+                  >
+                    {r.label}
+                  </span>
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-muted-foreground bg-clinical/5 transition-colors",
+                      isSel && "bg-clinical/15 text-foreground",
+                    )}
+                  >
+                    {r.dka}
+                  </span>
+                  <span
+                    className={cn(
+                      "px-2 py-1.5 border-t border-border text-muted-foreground bg-pharmacology/5 transition-colors",
+                      isSel && "bg-pharmacology/15 text-foreground",
+                      isLast && "rounded-br-md",
+                    )}
+                  >
+                    {r.hhs}
+                  </span>
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
 

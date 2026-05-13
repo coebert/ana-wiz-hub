@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Trigger = "normal" | "classIII" | "hypoK" | "congenital" | "combined";
 
@@ -124,158 +125,164 @@ export const LongQTTorsadesDiagram = () => {
   const torsades = useMemo(() => buildTorsadesPath(data.torsades), [data.torsades]);
 
   return (
-    <div className="space-y-4">
-      {/* Trigger selector */}
-      <div className="flex flex-wrap gap-2">
-        {(Object.values(triggers) as TriggerData[]).map((t) => (
-          <button
-            key={t.id}
-            onClick={() => setTrigger(t.id)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
-              trigger === t.id
-                ? "bg-primary/15 border-primary/50 text-primary"
-                : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-        {/* Action potential plot */}
-        <div className="lg:col-span-3 rounded-lg border border-border bg-card p-4 space-y-3">
-          <div className="flex items-center justify-between">
-            <h4 className="text-sm font-semibold text-foreground">Ventricular action potential</h4>
-            <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
-              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-foreground/40" /> Normal</span>
-              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-primary" /> Current</span>
+    <DiagramFigure
+      id="long-qt-torsades-diagram"
+      title="Long qt torsades"
+      description="Auto-generated wrapper for the Long qt torsades anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        {/* Trigger selector */}
+        <div className="flex flex-wrap gap-2">
+          {(Object.values(triggers) as TriggerData[]).map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTrigger(t.id)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
+                trigger === t.id
+                  ? "bg-primary/15 border-primary/50 text-primary"
+                  : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+  
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          {/* Action potential plot */}
+          <div className="lg:col-span-3 rounded-lg border border-border bg-card p-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-sm font-semibold text-foreground">Ventricular action potential</h4>
+              <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
+                <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-foreground/40" /> Normal</span>
+                <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-primary" /> Current</span>
+              </div>
             </div>
-          </div>
-          <svg viewBox={`0 0 ${ap.plotW + 60} ${ap.plotH + 50}`} className="w-full" role="img" aria-label="LQT action potential">
-            <g transform="translate(40, 10)">
-              {/* Grid */}
-              {[-90, -60, -30, 0, 30].map((mv) => (
-                <g key={mv}>
-                  <line x1="0" y1={ap.plotH - ((mv + 90) / 130) * ap.plotH} x2={ap.plotW} y2={ap.plotH - ((mv + 90) / 130) * ap.plotH}
-                    stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
-                  <text x="-4" y={ap.plotH - ((mv + 90) / 130) * ap.plotH + 3} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="end">{mv}</text>
-                </g>
-              ))}
-              {/* Time markers */}
-              {[0, 200, 400, 600].map((ms) => (
-                <g key={ms}>
-                  <line x1={(ms / 700) * ap.plotW} y1={ap.plotH} x2={(ms / 700) * ap.plotW} y2={ap.plotH + 3} stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
-                  <text x={(ms / 700) * ap.plotW} y={ap.plotH + 12} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">{ms}</text>
-                </g>
-              ))}
-              <text x={ap.plotW / 2} y={ap.plotH + 24} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">time (ms)</text>
-              <text x="-32" y={ap.plotH / 2} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle" transform={`rotate(-90, -32, ${ap.plotH / 2})`}>mV</text>
-
-              {/* Normal reference AP */}
-              <path d={normalAP.path} fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.35" strokeDasharray="3 2" />
-
-              {/* Current AP */}
-              <path d={ap.path} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
-
-              {/* QT bracket */}
-              <g>
-                <line x1="0" y1={ap.plotH + 28} x2={ap.repolEnd} y2={ap.plotH + 28} stroke="hsl(var(--primary))" strokeWidth="1" />
-                <line x1="0" y1={ap.plotH + 25} x2="0" y2={ap.plotH + 31} stroke="hsl(var(--primary))" strokeWidth="1" />
-                <line x1={ap.repolEnd} y1={ap.plotH + 25} x2={ap.repolEnd} y2={ap.plotH + 31} stroke="hsl(var(--primary))" strokeWidth="1" />
-                <text x={ap.repolEnd / 2} y={ap.plotH + 40} fontSize="9" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="700">
-                  QTc ≈ {data.qtMs} ms
-                </text>
-              </g>
-
-              {/* EAD label */}
-              {data.ead && (
+            <svg viewBox={`0 0 ${ap.plotW + 60} ${ap.plotH + 50}`} className="w-full" role="img" aria-label="LQT action potential">
+              <g transform="translate(40, 10)">
+                {/* Grid */}
+                {[-90, -60, -30, 0, 30].map((mv) => (
+                  <g key={mv}>
+                    <line x1="0" y1={ap.plotH - ((mv + 90) / 130) * ap.plotH} x2={ap.plotW} y2={ap.plotH - ((mv + 90) / 130) * ap.plotH}
+                      stroke="hsl(var(--border))" strokeWidth="0.5" strokeDasharray="2 3" opacity="0.6" />
+                    <text x="-4" y={ap.plotH - ((mv + 90) / 130) * ap.plotH + 3} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="end">{mv}</text>
+                  </g>
+                ))}
+                {/* Time markers */}
+                {[0, 200, 400, 600].map((ms) => (
+                  <g key={ms}>
+                    <line x1={(ms / 700) * ap.plotW} y1={ap.plotH} x2={(ms / 700) * ap.plotW} y2={ap.plotH + 3} stroke="hsl(var(--muted-foreground))" strokeWidth="0.5" />
+                    <text x={(ms / 700) * ap.plotW} y={ap.plotH + 12} fontSize="7" fill="hsl(var(--muted-foreground))" textAnchor="middle">{ms}</text>
+                  </g>
+                ))}
+                <text x={ap.plotW / 2} y={ap.plotH + 24} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle">time (ms)</text>
+                <text x="-32" y={ap.plotH / 2} fontSize="8" fill="hsl(var(--muted-foreground))" textAnchor="middle" transform={`rotate(-90, -32, ${ap.plotH / 2})`}>mV</text>
+  
+                {/* Normal reference AP */}
+                <path d={normalAP.path} fill="none" stroke="hsl(var(--foreground))" strokeWidth="1" opacity="0.35" strokeDasharray="3 2" />
+  
+                {/* Current AP */}
+                <path d={ap.path} fill="none" stroke="hsl(var(--primary))" strokeWidth="2" />
+  
+                {/* QT bracket */}
                 <g>
-                  <circle cx={(data.qtMs / 700) * ap.plotW * 0.85} cy={ap.plotH - ((10 + 90) / 130) * ap.plotH} r="4" fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1" className="animate-pulse" />
-                  <text x={(data.qtMs / 700) * ap.plotW * 0.85 + 8} y={ap.plotH - ((10 + 90) / 130) * ap.plotH - 4} fontSize="8" fill="hsl(0 70% 55%)" fontWeight="700">EAD</text>
+                  <line x1="0" y1={ap.plotH + 28} x2={ap.repolEnd} y2={ap.plotH + 28} stroke="hsl(var(--primary))" strokeWidth="1" />
+                  <line x1="0" y1={ap.plotH + 25} x2="0" y2={ap.plotH + 31} stroke="hsl(var(--primary))" strokeWidth="1" />
+                  <line x1={ap.repolEnd} y1={ap.plotH + 25} x2={ap.repolEnd} y2={ap.plotH + 31} stroke="hsl(var(--primary))" strokeWidth="1" />
+                  <text x={ap.repolEnd / 2} y={ap.plotH + 40} fontSize="9" fill="hsl(var(--primary))" textAnchor="middle" fontWeight="700">
+                    QTc ≈ {data.qtMs} ms
+                  </text>
                 </g>
-              )}
-
-              {/* Phase labels */}
-              <text x="3" y="14" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">0</text>
-              <text x="20" y="22" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">1</text>
-              <text x={ap.plateauEnd / 2 + 10} y="26" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">2 (plateau)</text>
-              <text x={(ap.plateauEnd + ap.repolEnd) / 2} y="50" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">3 (repol)</text>
-            </g>
-          </svg>
-
-          {/* IKr current bar */}
-          <div className="space-y-1">
-            <div className="flex justify-between text-[10px] text-muted-foreground">
-              <span>IKr (hERG) outward K⁺ current</span>
-              <span>{Math.round((1 - data.ikrBlock) * 100)}% of normal</span>
+  
+                {/* EAD label */}
+                {data.ead && (
+                  <g>
+                    <circle cx={(data.qtMs / 700) * ap.plotW * 0.85} cy={ap.plotH - ((10 + 90) / 130) * ap.plotH} r="4" fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1" className="animate-pulse" />
+                    <text x={(data.qtMs / 700) * ap.plotW * 0.85 + 8} y={ap.plotH - ((10 + 90) / 130) * ap.plotH - 4} fontSize="8" fill="hsl(0 70% 55%)" fontWeight="700">EAD</text>
+                  </g>
+                )}
+  
+                {/* Phase labels */}
+                <text x="3" y="14" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">0</text>
+                <text x="20" y="22" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">1</text>
+                <text x={ap.plateauEnd / 2 + 10} y="26" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">2 (plateau)</text>
+                <text x={(ap.plateauEnd + ap.repolEnd) / 2} y="50" fontSize="7" fill="hsl(var(--muted-foreground))" fontWeight="600">3 (repol)</text>
+              </g>
+            </svg>
+  
+            {/* IKr current bar */}
+            <div className="space-y-1">
+              <div className="flex justify-between text-[10px] text-muted-foreground">
+                <span>IKr (hERG) outward K⁺ current</span>
+                <span>{Math.round((1 - data.ikrBlock) * 100)}% of normal</span>
+              </div>
+              <div className="h-2 bg-secondary/60 rounded-full overflow-hidden">
+                <div className="h-full transition-all duration-500 bg-gradient-to-r from-emerald-500 to-amber-500"
+                  style={{ width: `${(1 - data.ikrBlock) * 100}%` }} />
+              </div>
             </div>
-            <div className="h-2 bg-secondary/60 rounded-full overflow-hidden">
-              <div className="h-full transition-all duration-500 bg-gradient-to-r from-emerald-500 to-amber-500"
-                style={{ width: `${(1 - data.ikrBlock) * 100}%` }} />
+  
+            {/* Torsades ECG strip */}
+            {data.torsades && (
+              <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-3 animate-fade-in">
+                <p className="text-[10px] uppercase tracking-wide text-red-500 font-bold mb-1">⚡ Torsades de pointes</p>
+                <svg viewBox={`0 0 ${torsades.w} ${torsades.h}`} className="w-full">
+                  <path d={torsades.path} fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1.5" />
+                </svg>
+                <p className="text-[10px] text-muted-foreground mt-1">Polymorphic VT with continuously rotating QRS axis ("twisting of points") — usually pause-dependent, may degenerate to VF.</p>
+              </div>
+            )}
+          </div>
+  
+          {/* Mechanism + management */}
+          <div className="lg:col-span-2 space-y-3">
+            <div className="rounded-lg border border-border bg-card p-3">
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">{data.label}</p>
+              <p className="text-xs text-foreground/90 leading-relaxed">{data.description}</p>
+            </div>
+  
+            <div className="rounded-lg border border-border bg-card p-3">
+              <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Mechanism</p>
+              <p className="text-xs text-foreground/90 leading-relaxed">{data.mechanism}</p>
+            </div>
+  
+            {/* Risk indicators */}
+            <div className="grid grid-cols-3 gap-2">
+              <div className={`rounded-lg border p-2 text-center ${data.qtMs > 500 ? "border-red-500/40 bg-red-500/10" : data.qtMs > 460 ? "border-amber-500/40 bg-amber-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
+                <p className="text-[9px] uppercase text-muted-foreground">QTc</p>
+                <p className="text-sm font-bold text-foreground">{data.qtMs}</p>
+              </div>
+              <div className={`rounded-lg border p-2 text-center ${data.ead ? "border-amber-500/40 bg-amber-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
+                <p className="text-[9px] uppercase text-muted-foreground">EAD</p>
+                <p className="text-sm font-bold text-foreground">{data.ead ? "Yes" : "No"}</p>
+              </div>
+              <div className={`rounded-lg border p-2 text-center ${data.torsades ? "border-red-500/40 bg-red-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
+                <p className="text-[9px] uppercase text-muted-foreground">TdP</p>
+                <p className="text-sm font-bold text-foreground">{data.torsades ? "Yes" : "No"}</p>
+              </div>
             </div>
           </div>
-
-          {/* Torsades ECG strip */}
-          {data.torsades && (
-            <div className="rounded-lg border border-red-500/30 bg-red-500/5 p-3 animate-fade-in">
-              <p className="text-[10px] uppercase tracking-wide text-red-500 font-bold mb-1">⚡ Torsades de pointes</p>
-              <svg viewBox={`0 0 ${torsades.w} ${torsades.h}`} className="w-full">
-                <path d={torsades.path} fill="none" stroke="hsl(0 70% 55%)" strokeWidth="1.5" />
-              </svg>
-              <p className="text-[10px] text-muted-foreground mt-1">Polymorphic VT with continuously rotating QRS axis ("twisting of points") — usually pause-dependent, may degenerate to VF.</p>
-            </div>
-          )}
         </div>
-
-        {/* Mechanism + management */}
-        <div className="lg:col-span-2 space-y-3">
-          <div className="rounded-lg border border-border bg-card p-3">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">{data.label}</p>
-            <p className="text-xs text-foreground/90 leading-relaxed">{data.description}</p>
-          </div>
-
-          <div className="rounded-lg border border-border bg-card p-3">
-            <p className="text-[10px] uppercase tracking-wide text-muted-foreground font-semibold mb-1">Mechanism</p>
-            <p className="text-xs text-foreground/90 leading-relaxed">{data.mechanism}</p>
-          </div>
-
-          {/* Risk indicators */}
-          <div className="grid grid-cols-3 gap-2">
-            <div className={`rounded-lg border p-2 text-center ${data.qtMs > 500 ? "border-red-500/40 bg-red-500/10" : data.qtMs > 460 ? "border-amber-500/40 bg-amber-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
-              <p className="text-[9px] uppercase text-muted-foreground">QTc</p>
-              <p className="text-sm font-bold text-foreground">{data.qtMs}</p>
+  
+        {/* Cascade explanation */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          {[
+            { step: "1", title: "Trigger", body: "Class III drug, hypoK/hypoMg, congenital channelopathy, or bradycardia/pause." },
+            { step: "2", title: "Phase 3 prolongation", body: "↓ IKr (± IKs) → repolarisation slows → APD ↑ → QT interval prolongs (>500 ms = high risk)." },
+            { step: "3", title: "EAD generation", body: "L-type Ca²⁺ channels recover from inactivation during the prolonged plateau → secondary depolarisation = early afterdepolarisation." },
+            { step: "4", title: "Torsades de pointes", body: "EAD reaches threshold → triggered activity → polymorphic VT with rotating axis. Treat with IV Mg²⁺, ↑ HR (pacing/isoprenaline), correct K⁺, stop offending drug." },
+          ].map((c) => (
+            <div key={c.step} className="rounded-lg border border-border bg-secondary/20 p-3">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="w-5 h-5 rounded-full bg-primary/15 text-primary text-[10px] font-bold flex items-center justify-center">{c.step}</span>
+                <p className="text-xs font-semibold text-foreground">{c.title}</p>
+              </div>
+              <p className="text-[11px] text-muted-foreground leading-relaxed">{c.body}</p>
             </div>
-            <div className={`rounded-lg border p-2 text-center ${data.ead ? "border-amber-500/40 bg-amber-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
-              <p className="text-[9px] uppercase text-muted-foreground">EAD</p>
-              <p className="text-sm font-bold text-foreground">{data.ead ? "Yes" : "No"}</p>
-            </div>
-            <div className={`rounded-lg border p-2 text-center ${data.torsades ? "border-red-500/40 bg-red-500/10" : "border-emerald-500/30 bg-emerald-500/10"}`}>
-              <p className="text-[9px] uppercase text-muted-foreground">TdP</p>
-              <p className="text-sm font-bold text-foreground">{data.torsades ? "Yes" : "No"}</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-
-      {/* Cascade explanation */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-        {[
-          { step: "1", title: "Trigger", body: "Class III drug, hypoK/hypoMg, congenital channelopathy, or bradycardia/pause." },
-          { step: "2", title: "Phase 3 prolongation", body: "↓ IKr (± IKs) → repolarisation slows → APD ↑ → QT interval prolongs (>500 ms = high risk)." },
-          { step: "3", title: "EAD generation", body: "L-type Ca²⁺ channels recover from inactivation during the prolonged plateau → secondary depolarisation = early afterdepolarisation." },
-          { step: "4", title: "Torsades de pointes", body: "EAD reaches threshold → triggered activity → polymorphic VT with rotating axis. Treat with IV Mg²⁺, ↑ HR (pacing/isoprenaline), correct K⁺, stop offending drug." },
-        ].map((c) => (
-          <div key={c.step} className="rounded-lg border border-border bg-secondary/20 p-3">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-5 h-5 rounded-full bg-primary/15 text-primary text-[10px] font-bold flex items-center justify-center">{c.step}</span>
-              <p className="text-xs font-semibold text-foreground">{c.title}</p>
-            </div>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">{c.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

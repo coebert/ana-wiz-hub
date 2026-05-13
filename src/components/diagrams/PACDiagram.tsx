@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const PACDiagram = () => {
   const [selectedChamber, setSelectedChamber] = useState<string | null>(null);
@@ -180,29 +181,35 @@ const PACDiagram = () => {
           {selectedChamber && (() => {
             const c = chambers.find((x) => x.id === selectedChamber)!;
             return (
-              <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-2">{c.svg}</div>
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
-                  <p className="font-bold text-foreground text-sm">{c.name}</p>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    <div className="p-1.5 rounded bg-background border border-border">
-                      <span className="text-muted-foreground">Depth:</span>
-                      <p className="font-semibold text-foreground">{c.depth}</p>
+    <DiagramFigure
+      id="pac-diagram"
+      title="Pac"
+      description="Auto-generated wrapper for the Pac anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-2">{c.svg}</div>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 text-xs space-y-2">
+                    <p className="font-bold text-foreground text-sm">{c.name}</p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <div className="p-1.5 rounded bg-background border border-border">
+                        <span className="text-muted-foreground">Depth:</span>
+                        <p className="font-semibold text-foreground">{c.depth}</p>
+                      </div>
+                      <div className="p-1.5 rounded bg-background border border-border">
+                        <span className="text-muted-foreground">Pressure:</span>
+                        <p className="font-semibold text-foreground">{c.pressure}</p>
+                      </div>
                     </div>
-                    <div className="p-1.5 rounded bg-background border border-border">
-                      <span className="text-muted-foreground">Pressure:</span>
-                      <p className="font-semibold text-foreground">{c.pressure}</p>
+                    <p className="text-muted-foreground"><strong>Waveform:</strong> {c.waveform}</p>
+                    <p className="text-muted-foreground"><strong>Abnormal:</strong> {c.abnormal}</p>
+                    <div className="p-2 rounded bg-primary/10 border border-primary/20">
+                      <span className="font-semibold text-foreground">Tips: </span>
+                      <span className="text-muted-foreground">{c.tips}</span>
                     </div>
-                  </div>
-                  <p className="text-muted-foreground"><strong>Waveform:</strong> {c.waveform}</p>
-                  <p className="text-muted-foreground"><strong>Abnormal:</strong> {c.abnormal}</p>
-                  <div className="p-2 rounded bg-primary/10 border border-primary/20">
-                    <span className="font-semibold text-foreground">Tips: </span>
-                    <span className="text-muted-foreground">{c.tips}</span>
                   </div>
                 </div>
-              </div>
-            );
+    </DiagramFigure>
+  );
           })()}
 
           {!selectedChamber && (

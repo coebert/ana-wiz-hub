@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const HumidityTab = () => (
   <div className="space-y-4">
@@ -353,20 +354,26 @@ const HumidityGasSamplingDiagram = () => {
   const [activeTab, setActiveTab] = useState("humidity");
 
   return (
-    <div className="space-y-4">
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="grid grid-cols-4 w-full">
-          <TabsTrigger value="humidity" className="text-xs">Humidity</TabsTrigger>
-          <TabsTrigger value="pneumotach" className="text-xs">Pneumotach</TabsTrigger>
-          <TabsTrigger value="mass-spec" className="text-xs">Mass Spec</TabsTrigger>
-          <TabsTrigger value="raman" className="text-xs">Raman</TabsTrigger>
-        </TabsList>
-        <TabsContent value="humidity"><HumidityTab /></TabsContent>
-        <TabsContent value="pneumotach"><PneumotachTab /></TabsContent>
-        <TabsContent value="mass-spec"><MassSpecTab /></TabsContent>
-        <TabsContent value="raman"><RamanTab /></TabsContent>
-      </Tabs>
-    </div>
+    <DiagramFigure
+      id="humidity-gas-sampling-diagram"
+      title="Humidity gas sampling"
+      description="Auto-generated wrapper for the Humidity gas sampling anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="grid grid-cols-4 w-full">
+            <TabsTrigger value="humidity" className="text-xs">Humidity</TabsTrigger>
+            <TabsTrigger value="pneumotach" className="text-xs">Pneumotach</TabsTrigger>
+            <TabsTrigger value="mass-spec" className="text-xs">Mass Spec</TabsTrigger>
+            <TabsTrigger value="raman" className="text-xs">Raman</TabsTrigger>
+          </TabsList>
+          <TabsContent value="humidity"><HumidityTab /></TabsContent>
+          <TabsContent value="pneumotach"><PneumotachTab /></TabsContent>
+          <TabsContent value="mass-spec"><MassSpecTab /></TabsContent>
+          <TabsContent value="raman"><RamanTab /></TabsContent>
+        </Tabs>
+      </div>
+    </DiagramFigure>
   );
 };
 

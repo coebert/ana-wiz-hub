@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const SepsisManagementDiagram = () => {
   const [selectedBundle, setSelectedBundle] = useState<number | null>(null);
@@ -85,12 +86,18 @@ const SepsisManagementDiagram = () => {
                 const y = 18 + i * 38;
                 const width = [340, 280, 220, 170][i];
                 return (
-                  <g key={v.id}>
-                    <rect x="36" y={y} width={width} height="20" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
-                    <text x="44" y={y + 13} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
-                    <text x="44" y={y + 30} fontSize="8" className="fill-muted-foreground">{v.dose}</text>
-                  </g>
-                );
+    <DiagramFigure
+      id="sepsis-management-diagram"
+      title="Sepsis management"
+      description="Auto-generated wrapper for the Sepsis management anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <g key={v.id}>
+                      <rect x="36" y={y} width={width} height="20" rx="4" fill={v.color} opacity="0.15" stroke={v.color} strokeWidth="1" />
+                      <text x="44" y={y + 13} fontSize="9" fill={v.color} fontWeight="700">{v.line}: {v.name}</text>
+                      <text x="44" y={y + 30} fontSize="8" className="fill-muted-foreground">{v.dose}</text>
+                    </g>
+    </DiagramFigure>
+  );
               })}
             </svg>
           </div>

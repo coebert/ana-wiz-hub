@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Postpartum leg weakness / sensory disturbance decision tree.
@@ -303,24 +304,30 @@ const PostpartumLegWeaknessDecisionTree = () => {
                     const isSelected = ans === opt.value;
                     const accent = opt.red ? "hsl(0, 75%, 48%)" : "hsl(140, 55%, 42%)";
                     return (
-                      <button
-                        key={opt.value}
-                        onClick={() => setAnswers((a) => ({ ...a, [step]: opt.value }))}
-                        aria-pressed={isSelected}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all text-left"
-                        style={{
-                          borderColor: isSelected ? accent : "hsl(var(--border))",
-                          backgroundColor: isSelected ? withAlpha(accent, 0.15) : "transparent",
-                          color: isSelected
-                            ? opt.red
-                              ? "hsl(0, 70%, 42%)"
-                              : "hsl(140, 55%, 32%)"
-                            : "hsl(var(--foreground))",
-                        }}
-                      >
-                        {opt.label}
-                      </button>
-                    );
+    <DiagramFigure
+      id="postpartum-leg-weakness-decision-tree"
+      title="Postpartum leg weakness decision tree"
+      description="Auto-generated wrapper for the Postpartum leg weakness decision tree anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                            <button
+                          key={opt.value}
+                          onClick={() => setAnswers((a) => ({ ...a, [step]: opt.value }))}
+                          aria-pressed={isSelected}
+                          className="px-2.5 py-1 rounded-md text-[11px] font-medium border transition-all text-left"
+                          style={{
+                            borderColor: isSelected ? accent : "hsl(var(--border))",
+                            backgroundColor: isSelected ? withAlpha(accent, 0.15) : "transparent",
+                            color: isSelected
+                              ? opt.red
+                                ? "hsl(0, 70%, 42%)"
+                                : "hsl(140, 55%, 32%)"
+                              : "hsl(var(--foreground))",
+                          }}
+                        >
+                          {opt.label}
+                        </button>
+    </DiagramFigure>
+  );
                   })}
                 </div>
               </div>

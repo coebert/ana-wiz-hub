@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side analgesic profile: single-shot peripheral nerve block vs
@@ -294,20 +295,26 @@ export const BlockAnalgesiaProfileDiagram = () => {
           {PHASES.map((p) => {
             const isSel = p.key === selectedKey;
             return (
-              <button
-                key={p.key}
-                onClick={() => setSelectedKey(p.key)}
-                className={`text-xs px-2 py-1 rounded-full border transition-all ${
-                  isSel ? "border-foreground/30 bg-background" : "border-border bg-background/50 hover:bg-background"
-                }`}
-                style={{
-                  color: isSel ? p.color : "hsl(var(--muted-foreground))",
-                  borderColor: isSel ? p.color : undefined,
-                }}
-              >
-                {p.profile === "single" ? "● " : "○ "}{p.label}
-              </button>
-            );
+    <DiagramFigure
+      id="block-analgesia-profile-diagram"
+      title="Block analgesia profile"
+      description="Auto-generated wrapper for the Block analgesia profile anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button
+                  key={p.key}
+                  onClick={() => setSelectedKey(p.key)}
+                  className={`text-xs px-2 py-1 rounded-full border transition-all ${
+                    isSel ? "border-foreground/30 bg-background" : "border-border bg-background/50 hover:bg-background"
+                  }`}
+                  style={{
+                    color: isSel ? p.color : "hsl(var(--muted-foreground))",
+                    borderColor: isSel ? p.color : undefined,
+                  }}
+                >
+                  {p.profile === "single" ? "● " : "○ "}{p.label}
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
 

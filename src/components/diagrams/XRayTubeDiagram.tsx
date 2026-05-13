@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type PartId =
   | "cathode"
@@ -661,40 +662,46 @@ export const XRayTubeDiagram = () => {
                       const px = xAt(peak.kev);
                       const py = yAt(peak.h);
                       return (
-                        <g
-                          key={peak.kev}
-                          onClick={() => setSelected("characteristic")}
-                          className="cursor-pointer"
-                        >
-                          <line
-                            x1={px}
-                            y1={y0}
-                            x2={px}
-                            y2={py}
-                            stroke="hsl(280 75% 65%)"
-                            strokeWidth={charHot ? 2.4 : 1.6}
-                            opacity={visible ? (charHot ? 1 : 0.85) : 0.35}
-                          />
-                          <circle
-                            cx={px}
-                            cy={py}
-                            r={charHot ? 3 : 2.2}
-                            fill="hsl(280 80% 70%)"
-                            stroke="hsl(280 70% 40%)"
-                            strokeWidth="0.5"
-                            opacity={visible ? 1 : 0.45}
-                          />
-                          {showLabels && (
-                            <text
-                              x={px + 5}
-                              y={py - 4}
-                              className="text-[8px] fill-foreground select-none pointer-events-none"
-                            >
-                              {peak.label}
-                            </text>
-                          )}
-                        </g>
-                      );
+    <DiagramFigure
+      id="x-ray-tube-diagram"
+      title="X ray tube"
+      description="Auto-generated wrapper for the X ray tube anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                              <g
+                            key={peak.kev}
+                            onClick={() => setSelected("characteristic")}
+                            className="cursor-pointer"
+                          >
+                            <line
+                              x1={px}
+                              y1={y0}
+                              x2={px}
+                              y2={py}
+                              stroke="hsl(280 75% 65%)"
+                              strokeWidth={charHot ? 2.4 : 1.6}
+                              opacity={visible ? (charHot ? 1 : 0.85) : 0.35}
+                            />
+                            <circle
+                              cx={px}
+                              cy={py}
+                              r={charHot ? 3 : 2.2}
+                              fill="hsl(280 80% 70%)"
+                              stroke="hsl(280 70% 40%)"
+                              strokeWidth="0.5"
+                              opacity={visible ? 1 : 0.45}
+                            />
+                            {showLabels && (
+                              <text
+                                x={px + 5}
+                                y={py - 4}
+                                className="text-[8px] fill-foreground select-none pointer-events-none"
+                              >
+                                {peak.label}
+                              </text>
+                            )}
+                          </g>
+    </DiagramFigure>
+  );
                     })}
 
                     {/* Title */}

@@ -13,6 +13,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive worked Burns ICU case stepper.
@@ -386,26 +387,32 @@ export const BurnsIcuCaseStepper = () => {
               const showState = isPick;
               const t = showState ? verdictTone[c.verdict] : null;
               return (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setPicked((p) => ({ ...p, [step]: i }))}
-                  className={cn(
-                    "w-full rounded-lg border p-3 text-left text-xs transition-all",
-                    showState ? TONE_BG[t!] + " ring-2 ring-primary/30" : "border-border bg-card hover:bg-muted/40",
-                  )}
-                >
-                  <p className={cn("font-medium leading-relaxed", showState ? TONE_TEXT[t!] : "text-foreground")}>
-                    {showState && (c.verdict === "best" ? <CheckCircle2 className="inline h-3.5 w-3.5 mr-1" />
-                      : c.verdict === "ok" ? <AlertTriangle className="inline h-3.5 w-3.5 mr-1" />
-                      : <XCircle className="inline h-3.5 w-3.5 mr-1" />)}
-                    {c.label}
-                  </p>
-                  {showState && (
-                    <p className="mt-1.5 text-[11px] text-muted-foreground leading-relaxed">{c.feedback}</p>
-                  )}
-                </button>
-              );
+    <DiagramFigure
+      id="burns-icu-case-stepper"
+      title="Burns ICU case stepper"
+      description="Auto-generated wrapper for the Burns ICU case stepper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={i}
+                    type="button"
+                    onClick={() => setPicked((p) => ({ ...p, [step]: i }))}
+                    className={cn(
+                      "w-full rounded-lg border p-3 text-left text-xs transition-all",
+                      showState ? TONE_BG[t!] + " ring-2 ring-primary/30" : "border-border bg-card hover:bg-muted/40",
+                    )}
+                  >
+                    <p className={cn("font-medium leading-relaxed", showState ? TONE_TEXT[t!] : "text-foreground")}>
+                      {showState && (c.verdict === "best" ? <CheckCircle2 className="inline h-3.5 w-3.5 mr-1" />
+                        : c.verdict === "ok" ? <AlertTriangle className="inline h-3.5 w-3.5 mr-1" />
+                        : <XCircle className="inline h-3.5 w-3.5 mr-1" />)}
+                      {c.label}
+                    </p>
+                    {showState && (
+                      <p className="mt-1.5 text-[11px] text-muted-foreground leading-relaxed">{c.feedback}</p>
+                    )}
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
 

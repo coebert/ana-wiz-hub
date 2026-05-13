@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type AgentKey = "propofol" | "midazolam" | "dex" | "ketamine";
 
@@ -341,18 +342,24 @@ export const ICUSedationComparisonDiagram = () => {
               {AGENTS.map((a) => {
                 const picked = a.key === scenario.pick;
                 return (
-                  <div
-                    key={a.key}
-                    className={`text-center p-1.5 rounded text-[10px] border ${
-                      picked
-                        ? "border-primary bg-primary/10 text-foreground font-semibold"
-                        : "border-border bg-secondary/20 text-muted-foreground"
-                    }`}
-                  >
-                    {a.name.split(" ")[0]}
-                    <div className="text-[9px] mt-0.5">{picked ? "✓ pick" : "consider"}</div>
-                  </div>
-                );
+    <DiagramFigure
+      id="icu-sedation-comparison-diagram"
+      title="ICU sedation comparison"
+      description="Auto-generated wrapper for the ICU sedation comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <div
+                      key={a.key}
+                      className={`text-center p-1.5 rounded text-[10px] border ${
+                        picked
+                          ? "border-primary bg-primary/10 text-foreground font-semibold"
+                          : "border-border bg-secondary/20 text-muted-foreground"
+                      }`}
+                    >
+                      {a.name.split(" ")[0]}
+                      <div className="text-[9px] mt-0.5">{picked ? "✓ pick" : "consider"}</div>
+                    </div>
+    </DiagramFigure>
+  );
               })}
             </div>
           </div>

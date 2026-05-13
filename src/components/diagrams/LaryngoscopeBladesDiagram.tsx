@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
 import InlineRef from "@/components/InlineRef";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type BladeKey = "macintosh" | "miller" | "mccoy" | "polio" | "wisconsin" | "videolaryngoscope";
 
@@ -554,17 +555,23 @@ export const LaryngoscopeBladesDiagram = () => {
           const b = blades[key];
           const isActive = selected === key;
           return (
-            <button
-              key={key}
-              onClick={() => setSelected(key)}
-              className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
-                isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-              }`}
-              style={isActive ? { borderColor: b.color, backgroundColor: withAlpha(b.color, 0.09), color: b.color } : {}}
-            >
-              {b.label}
-            </button>
-          );
+    <DiagramFigure
+      id="laryngoscope-blades-diagram"
+      title="Laryngoscope blades"
+      description="Auto-generated wrapper for the Laryngoscope blades anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={key}
+                onClick={() => setSelected(key)}
+                className={`px-2.5 py-1 rounded text-xs font-medium border transition-all ${
+                  isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                }`}
+                style={isActive ? { borderColor: b.color, backgroundColor: withAlpha(b.color, 0.09), color: b.color } : {}}
+              >
+                {b.label}
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 

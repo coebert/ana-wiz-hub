@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RotateCcw, Stethoscope, FlaskConical, AlertTriangle } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive symptom-to-diagnosis flowchart for endocrine emergencies.
@@ -304,25 +305,31 @@ const EndocrineSymptomTriage = () => {
                   const pct = maxScore > 0 ? Math.max(0, (score / maxScore) * 100) : 0;
                   const isTop = i === 0 && score > 0;
                   return (
-                    <li key={dx.key}>
-                      <div className="flex items-center justify-between gap-2">
-                        <span className={`text-xs ${isTop ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
-                          {i + 1}. {dx.name}
-                        </span>
-                        <Badge variant={isTop ? "default" : "outline"} className="text-[10px] tabular-nums">
-                          {score > 0 ? `+${score}` : score}
-                        </Badge>
-                      </div>
-                      <div className="h-1.5 mt-1 rounded-full bg-muted overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-500 ${
-                            isTop ? BAR_CLASS[dx.tokenClass] ?? "bg-primary" : "bg-muted-foreground/40"
-                          }`}
-                          style={{ width: `${score > 0 ? pct : 0}%` }}
-                        />
-                      </div>
-                    </li>
-                  );
+    <DiagramFigure
+      id="endocrine-symptom-triage"
+      title="Endocrine symptom triage"
+      description="Auto-generated wrapper for the Endocrine symptom triage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <li key={dx.key}>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`text-xs ${isTop ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                            {i + 1}. {dx.name}
+                          </span>
+                          <Badge variant={isTop ? "default" : "outline"} className="text-[10px] tabular-nums">
+                            {score > 0 ? `+${score}` : score}
+                          </Badge>
+                        </div>
+                        <div className="h-1.5 mt-1 rounded-full bg-muted overflow-hidden">
+                          <div
+                            className={`h-full transition-all duration-500 ${
+                              isTop ? BAR_CLASS[dx.tokenClass] ?? "bg-primary" : "bg-muted-foreground/40"
+                            }`}
+                            style={{ width: `${score > 0 ? pct : 0}%` }}
+                          />
+                        </div>
+                      </li>
+    </DiagramFigure>
+  );
                 })}
               </ul>
             )}

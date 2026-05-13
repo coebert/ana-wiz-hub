@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = "preinduction" | "induction" | "maintenance" | "emergence" | "recovery";
 
@@ -287,14 +288,20 @@ const DSASpectrogramDiagram = () => {
               const py1 = plotY + plotH - y2 * cellH;
               const py2 = plotY + plotH - y1 * cellH;
               return (
-                <g key={label}>
-                  <line x1={plotX + plotW + 4} y1={py1} x2={plotX + plotW + 4} y2={py2}
-                    stroke={color} strokeWidth="3" opacity="0.5" strokeLinecap="round" />
-                  <text x={plotX + plotW + 12} y={(py1 + py2) / 2 + 2} fontSize="7" fill={color} opacity="0.7" fontWeight="600">
-                    {label}
-                  </text>
-                </g>
-              );
+    <DiagramFigure
+      id="dsa-spectrogram-diagram"
+      title="Dsa spectrogram"
+      description="Auto-generated wrapper for the Dsa spectrogram anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={label}>
+                    <line x1={plotX + plotW + 4} y1={py1} x2={plotX + plotW + 4} y2={py2}
+                      stroke={color} strokeWidth="3" opacity="0.5" strokeLinecap="round" />
+                    <text x={plotX + plotW + 12} y={(py1 + py2) / 2 + 2} fontSize="7" fill={color} opacity="0.7" fontWeight="600">
+                      {label}
+                    </text>
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* Colour bar legend */}

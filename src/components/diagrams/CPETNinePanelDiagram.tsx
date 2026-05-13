@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type PanelId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
@@ -219,26 +220,32 @@ const CPETNinePanelDiagram = () => {
         {panelLayout.flat().map((id) => {
           const p = panels[id];
           return (
-            <button
-              key={id}
-              onClick={() => setSelected(selected === id ? null : id)}
-              className={`p-2 rounded-lg border text-left transition-all ${
-                selected === id
-                  ? "border-primary bg-primary/10 ring-1 ring-primary/30"
-                  : "border-border hover:border-muted-foreground/40"
-              }`}
-            >
-              <p className="text-[10px] font-bold text-foreground mb-0.5 leading-tight">Panel {id}</p>
-              <p className="text-[9px] text-muted-foreground leading-tight mb-1 line-clamp-1">{p.title}</p>
-              <div className="bg-muted/30 rounded p-1">
-                <PanelChart id={id} />
-              </div>
-              <div className="flex justify-between mt-1">
-                <span className="text-[7px] text-muted-foreground">{p.xAxis}</span>
-                <span className="text-[7px] text-muted-foreground">{p.yAxis.split('(')[0].trim()}</span>
-              </div>
-            </button>
-          );
+    <DiagramFigure
+      id="cpet-nine-panel-diagram"
+      title="Cpet nine panel"
+      description="Auto-generated wrapper for the Cpet nine panel anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={id}
+                onClick={() => setSelected(selected === id ? null : id)}
+                className={`p-2 rounded-lg border text-left transition-all ${
+                  selected === id
+                    ? "border-primary bg-primary/10 ring-1 ring-primary/30"
+                    : "border-border hover:border-muted-foreground/40"
+                }`}
+              >
+                <p className="text-[10px] font-bold text-foreground mb-0.5 leading-tight">Panel {id}</p>
+                <p className="text-[9px] text-muted-foreground leading-tight mb-1 line-clamp-1">{p.title}</p>
+                <div className="bg-muted/30 rounded p-1">
+                  <PanelChart id={id} />
+                </div>
+                <div className="flex justify-between mt-1">
+                  <span className="text-[7px] text-muted-foreground">{p.xAxis}</span>
+                  <span className="text-[7px] text-muted-foreground">{p.yAxis.split('(')[0].trim()}</span>
+                </div>
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 

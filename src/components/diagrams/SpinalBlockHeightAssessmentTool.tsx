@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Dermatome = {
   level: string;
@@ -130,20 +131,26 @@ const SpinalBlockHeightAssessmentTool = () => {
               const isBlocked = d.rank <= target.rank;
               const isTarget = d.level === targetTopLevel;
               return (
-                <div
-                  key={d.level}
-                  className={`flex items-center gap-2 py-1 px-2 rounded text-[11px] transition ${
-                    isTarget ? "bg-primary/15 border border-primary/40" : isBlocked ? "bg-clinical/10" : ""
-                  }`}
-                >
-                  <span className="font-bold text-foreground w-10 text-right">{d.level}</span>
-                  <span className="text-base leading-none">
-                    {isBlocked ? "🟢" : "⚪"}
-                  </span>
-                  <span className="text-muted-foreground flex-1">{d.landmark}</span>
-                  {isTarget && <span className="text-[9px] font-bold text-primary uppercase">TARGET</span>}
-                </div>
-              );
+    <DiagramFigure
+      id="spinal-block-height-assessment-tool"
+      title="Spinal block height assessment tool"
+      description="Auto-generated wrapper for the Spinal block height assessment tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <div
+                    key={d.level}
+                    className={`flex items-center gap-2 py-1 px-2 rounded text-[11px] transition ${
+                      isTarget ? "bg-primary/15 border border-primary/40" : isBlocked ? "bg-clinical/10" : ""
+                    }`}
+                  >
+                    <span className="font-bold text-foreground w-10 text-right">{d.level}</span>
+                    <span className="text-base leading-none">
+                      {isBlocked ? "🟢" : "⚪"}
+                    </span>
+                    <span className="text-muted-foreground flex-1">{d.landmark}</span>
+                    {isTarget && <span className="text-[9px] font-bold text-primary uppercase">TARGET</span>}
+                  </div>
+    </DiagramFigure>
+  );
             })}
           </div>
           <p className="text-[10px] text-muted-foreground italic mt-2">

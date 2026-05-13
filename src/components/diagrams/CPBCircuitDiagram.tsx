@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ComponentKey = "venous" | "reservoir" | "pump" | "oxygenator" | "filter" | "arterial" | "cardioplegia";
 
@@ -117,23 +118,29 @@ const CPBCircuitDiagram = () => {
           const c = components[key];
           const isActive = selected === key;
           return (
-            <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
-              <rect
-                x={c.x} y={c.y} width={c.w} height={c.h} rx="6"
-                fill={c.color}
-                fillOpacity={isActive ? 0.25 : 0.1}
-                stroke={c.color}
-                strokeWidth={isActive ? 2.5 : 1}
-              />
-              <text
-                x={c.x + c.w / 2} y={c.y + c.h / 2 + 4}
-                textAnchor="middle" fontSize="9"
-                fill={c.color} fontWeight={isActive ? "bold" : "normal"}
-              >
-                {c.shortLabel}
-              </text>
-            </g>
-          );
+    <DiagramFigure
+      id="cpb-circuit-diagram"
+      title="Cpb circuit"
+      description="Auto-generated wrapper for the Cpb circuit equipment schematic. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <g key={key} className="cursor-pointer" onClick={() => setSelected(key)}>
+                <rect
+                  x={c.x} y={c.y} width={c.w} height={c.h} rx="6"
+                  fill={c.color}
+                  fillOpacity={isActive ? 0.25 : 0.1}
+                  stroke={c.color}
+                  strokeWidth={isActive ? 2.5 : 1}
+                />
+                <text
+                  x={c.x + c.w / 2} y={c.y + c.h / 2 + 4}
+                  textAnchor="middle" fontSize="9"
+                  fill={c.color} fontWeight={isActive ? "bold" : "normal"}
+                >
+                  {c.shortLabel}
+                </text>
+              </g>
+    </DiagramFigure>
+  );
         })}
 
         {/* Flow direction arrows */}

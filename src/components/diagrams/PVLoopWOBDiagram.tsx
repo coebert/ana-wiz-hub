@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Pattern = "normal" | "obstructive" | "restrictive";
 
@@ -346,14 +347,20 @@ export const PVLoopWOBDiagram = () => {
             const angle = Math.atan2(y2 - y1, x2 - x1);
             const aLen = 6;
             return (
-              <g>
-                <polygon
-                  points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
-                  fill={info.color}
-                />
-                <text x={x1 - 28} y={y1 + 4} fontSize="8" fill={info.color} fontWeight="600">Exp</text>
-              </g>
-            );
+    <DiagramFigure
+      id="pv-loop-wob-diagram"
+      title="Pv loop wob"
+      description="Auto-generated wrapper for the Pv loop wob anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g>
+                  <polygon
+                    points={`${x1},${y1} ${x1 - aLen * Math.cos(angle - 0.4)},${y1 - aLen * Math.sin(angle - 0.4)} ${x1 - aLen * Math.cos(angle + 0.4)},${y1 - aLen * Math.sin(angle + 0.4)}`}
+                    fill={info.color}
+                  />
+                  <text x={x1 - 28} y={y1 + 4} fontSize="8" fill={info.color} fontWeight="600">Exp</text>
+                </g>
+    </DiagramFigure>
+  );
           })()}
         </svg>
       </div>

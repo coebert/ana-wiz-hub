@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type IndicationKey = "afib" | "mhv" | "vte";
 type ValveRisk = "low" | "intermediate" | "high";
@@ -224,22 +225,28 @@ export const BridgingAnticoagulationPathway = () => {
               const isActive = b === bleed;
               const c = b === "high" ? "hsl(0, 75%, 50%)" : "hsl(150, 55%, 40%)";
               return (
-                <button
-                  key={b}
-                  type="button"
-                  onClick={() => setBleed(b)}
-                  aria-pressed={isActive}
-                  className="px-2 py-2 rounded-lg border-2 text-center transition-all"
-                  style={{
-                    borderColor: isActive ? c : "hsl(var(--border))",
-                    backgroundColor: isActive ? withAlpha(c, 0.1) : "transparent",
-                  }}
-                >
-                  <div className="text-xs font-bold uppercase" style={{ color: isActive ? c : "hsl(var(--foreground))" }}>
-                    {b} bleeding risk
-                  </div>
-                </button>
-              );
+    <DiagramFigure
+      id="bridging-anticoagulation-pathway"
+      title="Bridging anticoagulation pathway"
+      description="Auto-generated wrapper for the Bridging anticoagulation pathway clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={b}
+                    type="button"
+                    onClick={() => setBleed(b)}
+                    aria-pressed={isActive}
+                    className="px-2 py-2 rounded-lg border-2 text-center transition-all"
+                    style={{
+                      borderColor: isActive ? c : "hsl(var(--border))",
+                      backgroundColor: isActive ? withAlpha(c, 0.1) : "transparent",
+                    }}
+                  >
+                    <div className="text-xs font-bold uppercase" style={{ color: isActive ? c : "hsl(var(--foreground))" }}>
+                      {b} bleeding risk
+                    </div>
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
         </div>

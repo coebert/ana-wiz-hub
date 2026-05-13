@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // ESC/ERS 2022 four-strata risk model for PAH at follow-up.
 // Each variable scored 1 (low) / 2 (intermediate-low) / 3 (intermediate-high) / 4 (high).
@@ -155,20 +156,26 @@ const PHRiskStratificationCalculator = () => {
                 {v.options.map((opt) => {
                   const isSelected = scores[v.key] === opt.score;
                   return (
-                    <button
-                      key={opt.label}
-                      onClick={() =>
-                        setScores((prev) => ({ ...prev, [v.key]: isSelected ? null : opt.score }))
-                      }
-                      className={`text-[11px] px-2 py-1 rounded-md border transition-colors ${
-                        isSelected
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
-                      }`}
-                    >
-                      {opt.label}
-                    </button>
-                  );
+    <DiagramFigure
+      id="ph-risk-stratification-calculator"
+      title="Ph risk stratification"
+      description="Auto-generated wrapper for the Ph risk stratification interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <button
+                        key={opt.label}
+                        onClick={() =>
+                          setScores((prev) => ({ ...prev, [v.key]: isSelected ? null : opt.score }))
+                        }
+                        className={`text-[11px] px-2 py-1 rounded-md border transition-colors ${
+                          isSelected
+                            ? "bg-primary text-primary-foreground border-primary"
+                            : "bg-card text-muted-foreground border-border hover:bg-secondary/50"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+    </DiagramFigure>
+  );
                 })}
               </div>
             </div>

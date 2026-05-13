@@ -2,6 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { EcgStripFrame } from "./EcgStripFrame";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Heart block series — 1°, Mobitz I (Wenckebach), Mobitz II, Complete (3°).
@@ -466,62 +467,68 @@ const HeartBlockDiagram = () => {
               const b = BLOCKS[k];
               const active = selected === k;
               return (
-                <button
-                  key={k}
-                  type="button"
-                  onClick={() => setSelected(k)}
-                  className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
-                  style={{
-                    borderColor: active ? b.color : "hsl(var(--border))",
-                    borderWidth: active ? 2 : 1,
-                    boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
-                  }}
-                >
-                  <div className="flex items-center justify-between mb-2 gap-2">
-                    <p className="font-semibold text-sm text-foreground">{b.label}</p>
-                    <span
-                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
-                      style={{ background: withAlpha(b.color, 0.15), color: b.color }}
-                    >
-                      Pacing: {b.pacing}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="w-full max-w-[200px] mx-auto"><TreeMini block={b} color={b.color} /></div>
-                    <div className="min-w-0">
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{b.siteDescription}</p>
-                      )}
-                      <RhythmStrip block={b} color={b.color} />
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
-                      )}
+    <DiagramFigure
+      id="heart-block-diagram"
+      title="Heart block"
+      description="Auto-generated wrapper for the Heart block anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={k}
+                    type="button"
+                    onClick={() => setSelected(k)}
+                    className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                    style={{
+                      borderColor: active ? b.color : "hsl(var(--border))",
+                      borderWidth: active ? 2 : 1,
+                      boxShadow: active ? `0 4px 14px -6px ${withAlpha(b.color, 0.5)}` : undefined,
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2 gap-2">
+                      <p className="font-semibold text-sm text-foreground">{b.label}</p>
+                      <span
+                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
+                        style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                      >
+                        Pacing: {b.pacing}
+                      </span>
                     </div>
-                  </div>
-
-                  {showPacing && (
-                    <div className="mt-3 pt-3 border-t border-border/60 flex flex-col sm:flex-row gap-3 sm:items-center">
-                      <PaceOverlay block={b} />
-                      <div className="min-w-0 flex-1 space-y-1">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[10px] uppercase tracking-wide font-bold text-foreground">Device:</span>
-                          <span
-                            className="text-[10px] font-bold px-1.5 py-0.5 rounded"
-                            style={{ background: withAlpha(b.color, 0.15), color: b.color }}
-                          >
-                            {b.device}
-                          </span>
-                          {b.leads.ra && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(210,70%,50%)]/15 text-[hsl(210,70%,40%)] dark:text-[hsl(210,70%,65%)] font-semibold">RA</span>}
-                          {b.leads.rv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(35,80%,50%)]/15 text-[hsl(35,80%,38%)] dark:text-[hsl(35,80%,60%)] font-semibold">RV</span>}
-                          {b.leads.lv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(0,70%,50%)]/15 text-[hsl(0,70%,45%)] dark:text-[hsl(0,70%,65%)] font-semibold">LV (CS)</span>}
-                        </div>
-                        <p className="text-[11px] text-muted-foreground leading-relaxed">{b.deviceRationale}</p>
+  
+                    <div className="flex flex-col gap-3">
+                      <div className="w-full max-w-[200px] mx-auto"><TreeMini block={b} color={b.color} /></div>
+                      <div className="min-w-0">
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{b.siteDescription}</p>
+                        )}
+                        <RhythmStrip block={b} color={b.color} />
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{b.ecg}</p>
+                        )}
                       </div>
                     </div>
-                  )}
-                </button>
-              );
+  
+                    {showPacing && (
+                      <div className="mt-3 pt-3 border-t border-border/60 flex flex-col sm:flex-row gap-3 sm:items-center">
+                        <PaceOverlay block={b} />
+                        <div className="min-w-0 flex-1 space-y-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-[10px] uppercase tracking-wide font-bold text-foreground">Device:</span>
+                            <span
+                              className="text-[10px] font-bold px-1.5 py-0.5 rounded"
+                              style={{ background: withAlpha(b.color, 0.15), color: b.color }}
+                            >
+                              {b.device}
+                            </span>
+                            {b.leads.ra && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(210,70%,50%)]/15 text-[hsl(210,70%,40%)] dark:text-[hsl(210,70%,65%)] font-semibold">RA</span>}
+                            {b.leads.rv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(35,80%,50%)]/15 text-[hsl(35,80%,38%)] dark:text-[hsl(35,80%,60%)] font-semibold">RV</span>}
+                            {b.leads.lv && <span className="text-[9px] px-1.5 py-0.5 rounded bg-[hsl(0,70%,50%)]/15 text-[hsl(0,70%,45%)] dark:text-[hsl(0,70%,65%)] font-semibold">LV (CS)</span>}
+                          </div>
+                          <p className="text-[11px] text-muted-foreground leading-relaxed">{b.deviceRationale}</p>
+                        </div>
+                      </div>
+                    )}
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
         ) : (

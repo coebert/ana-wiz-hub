@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type ManometerType = "u-tube" | "bourdon";
 
@@ -139,13 +140,19 @@ const ManometerDiagram = () => {
               const xt = 220 + Math.cos(rad) * 88;
               const yt = 150 + Math.sin(rad) * 88;
               return (
-                <g key={i}>
-                  <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
-                  <text x={xt} y={yt + 3} textAnchor="middle" className="fill-foreground" fontSize="9">
-                    {i * 20}
-                  </text>
-                </g>
-              );
+    <DiagramFigure
+      id="manometer-diagram"
+      title="Manometer"
+      description="Auto-generated wrapper for the Manometer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={i}>
+                    <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="hsl(var(--foreground))" strokeWidth="1.5" />
+                    <text x={xt} y={yt + 3} textAnchor="middle" className="fill-foreground" fontSize="9">
+                      {i * 20}
+                    </text>
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* Pointer (currently reading ~120) */}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const CBFAutoregulationDiagram = () => {
   const [selectedMAP, setSelectedMAP] = useState<number | null>(null);
@@ -244,18 +245,24 @@ const CBFAutoregulationDiagram = () => {
           {selectedAgent && (() => {
             const a = agents.find((x) => x.name === selectedAgent)!;
             return (
-              <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in">
-                <p className="font-bold text-foreground text-sm mb-2">{a.name}</p>
-                <div className="grid grid-cols-2 gap-2 text-xs mb-2">
-                  <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">CBF:</span> <span className="font-semibold text-foreground">{a.cbf}</span></div>
-                  <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">CMRO₂:</span> <span className="font-semibold text-foreground">{a.cmro2}</span></div>
-                  <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">Coupling:</span> <span className="font-semibold text-foreground">{a.coupling}</span></div>
-                  <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">Autoreg:</span> <span className="font-semibold text-foreground">{a.autoregulation}</span></div>
-                  <div className="p-2 rounded bg-background border border-border col-span-2"><span className="text-muted-foreground">ICP:</span> <span className="font-semibold text-foreground">{a.icp}</span></div>
+    <DiagramFigure
+      id="cbf-autoregulation-diagram"
+      title="Cbf autoregulation"
+      description="Auto-generated wrapper for the Cbf autoregulation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div className="p-3 rounded-lg border border-primary/30 bg-primary/5 animate-fade-in">
+                  <p className="font-bold text-foreground text-sm mb-2">{a.name}</p>
+                  <div className="grid grid-cols-2 gap-2 text-xs mb-2">
+                    <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">CBF:</span> <span className="font-semibold text-foreground">{a.cbf}</span></div>
+                    <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">CMRO₂:</span> <span className="font-semibold text-foreground">{a.cmro2}</span></div>
+                    <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">Coupling:</span> <span className="font-semibold text-foreground">{a.coupling}</span></div>
+                    <div className="p-2 rounded bg-background border border-border"><span className="text-muted-foreground">Autoreg:</span> <span className="font-semibold text-foreground">{a.autoregulation}</span></div>
+                    <div className="p-2 rounded bg-background border border-border col-span-2"><span className="text-muted-foreground">ICP:</span> <span className="font-semibold text-foreground">{a.icp}</span></div>
+                  </div>
+                  <p className="text-xs text-muted-foreground">{a.clinical}</p>
                 </div>
-                <p className="text-xs text-muted-foreground">{a.clinical}</p>
-              </div>
-            );
+    </DiagramFigure>
+  );
           })()}
 
           {!selectedAgent && (

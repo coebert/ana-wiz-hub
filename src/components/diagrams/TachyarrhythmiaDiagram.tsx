@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { EcgStripFrame } from "./EcgStripFrame";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Tachyarrhythmia series — sinus tach, AF, atrial flutter, AVNRT, AVRT,
@@ -791,44 +792,50 @@ const TachyarrhythmiaDiagram = () => {
               const t = TACHYS[k];
               const active = selected === k;
               return (
-                <button
-                  key={k}
-                  type="button"
-                  onClick={() => setSelected(k)}
-                  className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
-                  style={{
-                    borderColor: active ? t.color : "hsl(var(--border))",
-                    borderWidth: active ? 2 : 1,
-                    boxShadow: active ? `0 4px 14px -6px ${withAlpha(t.color, 0.5)}` : undefined,
-                  }}
-                >
-                  <div className="flex items-center justify-between mb-2 gap-2">
-                    <p className="font-semibold text-sm text-foreground">{t.label}</p>
-                    <span
-                      className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
-                      style={{ background: withAlpha(t.color, 0.15), color: t.color }}
-                    >
-                      {t.qrs} QRS
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col gap-3">
-                    <div className="w-full max-w-[220px] mx-auto"><TreeMini tachy={t} color={t.color} /></div>
-                    <div className="min-w-0">
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
-                          <span className="font-semibold text-foreground">Origin:</span> {t.origin} · <span className="font-semibold text-foreground">Rate:</span> {t.rate}
-                        </p>
-                      )}
-                      <RhythmStrip tachy={t} color={t.color} />
-                      {showLabels && (
-                        <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{t.ecg}</p>
-                      )}
-                      <AdenosineRow info={t.adenosine} compact />
+    <DiagramFigure
+      id="tachyarrhythmia-diagram"
+      title="Tachyarrhythmia"
+      description="Auto-generated wrapper for the Tachyarrhythmia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={k}
+                    type="button"
+                    onClick={() => setSelected(k)}
+                    className="text-left p-3 rounded-lg border bg-background/60 transition-all hover:bg-background"
+                    style={{
+                      borderColor: active ? t.color : "hsl(var(--border))",
+                      borderWidth: active ? 2 : 1,
+                      boxShadow: active ? `0 4px 14px -6px ${withAlpha(t.color, 0.5)}` : undefined,
+                    }}
+                  >
+                    <div className="flex items-center justify-between mb-2 gap-2">
+                      <p className="font-semibold text-sm text-foreground">{t.label}</p>
+                      <span
+                        className="text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded-md whitespace-nowrap"
+                        style={{ background: withAlpha(t.color, 0.15), color: t.color }}
+                      >
+                        {t.qrs} QRS
+                      </span>
                     </div>
-                  </div>
-                </button>
-              );
+  
+                    <div className="flex flex-col gap-3">
+                      <div className="w-full max-w-[220px] mx-auto"><TreeMini tachy={t} color={t.color} /></div>
+                      <div className="min-w-0">
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mb-2 leading-relaxed">
+                            <span className="font-semibold text-foreground">Origin:</span> {t.origin} · <span className="font-semibold text-foreground">Rate:</span> {t.rate}
+                          </p>
+                        )}
+                        <RhythmStrip tachy={t} color={t.color} />
+                        {showLabels && (
+                          <p className="text-xs text-muted-foreground mt-2 italic leading-relaxed">{t.ecg}</p>
+                        )}
+                        <AdenosineRow info={t.adenosine} compact />
+                      </div>
+                    </div>
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
         ) : (

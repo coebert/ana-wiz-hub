@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Parasagittal view of the lumbar epidural space at L3/4, showing the layered
@@ -584,20 +585,26 @@ const EpiduralSpaceDiagram = () => {
             const active = selected === k;
             const c = REGION_COLOR[s.region];
             return (
-              <button
-                key={k}
-                type="button"
-                onClick={() => handlePick(k)}
-                className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
-                style={{
-                  borderColor: active ? c : "hsl(var(--border))",
-                  background: active ? `${c}1F` : "transparent",
-                  color: active ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
-                }}
-              >
-                {s.label}
-              </button>
-            );
+    <DiagramFigure
+      id="epidural-space-diagram"
+      title="Epidural space"
+      description="Auto-generated wrapper for the Epidural space anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button
+                  key={k}
+                  type="button"
+                  onClick={() => handlePick(k)}
+                  className="text-[11px] px-2 py-0.5 rounded-full border transition-colors"
+                  style={{
+                    borderColor: active ? c : "hsl(var(--border))",
+                    background: active ? `${c}1F` : "transparent",
+                    color: active ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))",
+                  }}
+                >
+                  {s.label}
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
       </div>

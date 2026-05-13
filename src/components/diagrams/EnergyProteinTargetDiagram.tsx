@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Phase = "acute-early" | "acute-late" | "recovery";
 
@@ -76,24 +77,30 @@ export const EnergyProteinTargetDiagram = () => {
             {(Object.keys(PHASE_COPY) as Phase[]).map((p) => {
               const active = phase === p;
               return (
-                <button
-                  key={p}
-                  type="button"
-                  onClick={() => setPhase(p)}
-                  className={`text-left rounded-lg border p-3 transition-colors ${
-                    active
-                      ? "border-icu/60 bg-icu/10"
-                      : "border-border bg-background hover:bg-muted/40"
-                  }`}
-                >
-                  <p className={`text-xs font-semibold ${active ? "text-icu" : "text-foreground"}`}>
-                    {PHASE_COPY[p].title}
-                  </p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                    {PHASE_COPY[p].subtitle}
-                  </p>
-                </button>
-              );
+    <DiagramFigure
+      id="energy-protein-target-diagram"
+      title="Energy protein target"
+      description="Auto-generated wrapper for the Energy protein target anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={p}
+                    type="button"
+                    onClick={() => setPhase(p)}
+                    className={`text-left rounded-lg border p-3 transition-colors ${
+                      active
+                        ? "border-icu/60 bg-icu/10"
+                        : "border-border bg-background hover:bg-muted/40"
+                    }`}
+                  >
+                    <p className={`text-xs font-semibold ${active ? "text-icu" : "text-foreground"}`}>
+                      {PHASE_COPY[p].title}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                      {PHASE_COPY[p].subtitle}
+                    </p>
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
         </div>

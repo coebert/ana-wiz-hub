@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const TOTAL_FRAMES = 300;
 
@@ -256,11 +257,17 @@ export const WiggersDiagram = () => {
         {[0, 40, 80, 120].map(v => {
           const y = pressTop + pressH - ((v + 5) / 140) * pressH;
           return (
-            <g key={v}>
-              <line x1={padL} y1={y} x2={padL + plotW} y2={y} stroke="hsl(var(--border))" strokeWidth="0.5" />
-              <text x={padL - 8} y={y + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
-            </g>
-          );
+    <DiagramFigure
+      id="wiggers-diagram"
+      title="Wiggers"
+      description="Auto-generated wrapper for the Wiggers anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <g key={v}>
+                <line x1={padL} y1={y} x2={padL + plotW} y2={y} stroke="hsl(var(--border))" strokeWidth="0.5" />
+                <text x={padL - 8} y={y + 3} textAnchor="end" fontSize="8" fill="hsl(var(--muted-foreground))">{v}</text>
+              </g>
+    </DiagramFigure>
+  );
         })}
         <text x={10} y={pressTop + pressH / 2} textAnchor="middle" fontSize="9" fill="hsl(var(--muted-foreground))" fontWeight="600"
           transform={`rotate(-90, 10, ${pressTop + pressH / 2})`}>mmHg</text>

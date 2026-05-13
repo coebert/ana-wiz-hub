@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Strategy = "aggressive" | "moderate";
 
@@ -102,28 +103,34 @@ export const WaterfallFluidDiagram = () => {
           const widthPct = (animated / max) * 100;
           const isWorse = strategy === "aggressive" && value > o.moderate;
           return (
-            <div key={o.label}>
-              <div className="flex items-center justify-between text-xs mb-1">
-                <span className="text-muted-foreground">{o.label}</span>
-                <span
-                  className={`font-mono font-semibold ${
-                    isWorse ? "text-destructive" : "text-foreground"
-                  }`}
-                >
-                  {value}
-                  {o.label.includes("days") ? "" : "%"}
-                </span>
+    <DiagramFigure
+      id="waterfall-fluid-diagram"
+      title="Waterfall fluid"
+      description="Auto-generated wrapper for the Waterfall fluid anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div key={o.label}>
+                <div className="flex items-center justify-between text-xs mb-1">
+                  <span className="text-muted-foreground">{o.label}</span>
+                  <span
+                    className={`font-mono font-semibold ${
+                      isWorse ? "text-destructive" : "text-foreground"
+                    }`}
+                  >
+                    {value}
+                    {o.label.includes("days") ? "" : "%"}
+                  </span>
+                </div>
+                <div className="h-2 rounded-full bg-muted overflow-hidden">
+                  <div
+                    className={`h-full transition-[width] duration-100 ${
+                      isWorse ? "bg-destructive" : "bg-primary"
+                    }`}
+                    style={{ width: `${widthPct}%` }}
+                  />
+                </div>
               </div>
-              <div className="h-2 rounded-full bg-muted overflow-hidden">
-                <div
-                  className={`h-full transition-[width] duration-100 ${
-                    isWorse ? "bg-destructive" : "bg-primary"
-                  }`}
-                  style={{ width: `${widthPct}%` }}
-                />
-              </div>
-            </div>
-          );
+    </DiagramFigure>
+  );
         })}
       </div>
 

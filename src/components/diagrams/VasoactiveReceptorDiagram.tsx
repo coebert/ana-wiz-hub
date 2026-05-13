@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Agent = "adrenaline" | "noradrenaline" | "phenylephrine" | "dobutamine" | "dopamine" | "isoprenaline" | "ephedrine";
 
@@ -232,23 +233,29 @@ const VasoactiveReceptorDiagram = () => {
                 {agentKeys.map((key) => {
                   const p = agents[key].getProfile(dose);
                   return (
-                    <tr key={key} className={`border-b border-border ${key === selected ? "bg-primary/5" : ""}`}>
-                      <td className="px-3 py-1.5 font-medium text-foreground">{agents[key].label}</td>
-                      {p.map((v, i) => (
-                        <td key={i} className="px-3 py-1.5 text-center">
-                          <span
-                            className="inline-block min-w-[28px] px-1 py-0.5 rounded text-[10px] font-bold"
-                            style={{
-                              backgroundColor: v > 0 ? `${receptorColors[i]}20` : "transparent",
-                              color: v > 0 ? receptorColors[i] : "hsl(var(--muted-foreground))",
-                            }}
-                          >
-                            {Math.round(v)}
-                          </span>
-                        </td>
-                      ))}
-                    </tr>
-                  );
+    <DiagramFigure
+      id="vasoactive-receptor-diagram"
+      title="Vasoactive receptor"
+      description="Auto-generated wrapper for the Vasoactive receptor anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <tr key={key} className={`border-b border-border ${key === selected ? "bg-primary/5" : ""}`}>
+                        <td className="px-3 py-1.5 font-medium text-foreground">{agents[key].label}</td>
+                        {p.map((v, i) => (
+                          <td key={i} className="px-3 py-1.5 text-center">
+                            <span
+                              className="inline-block min-w-[28px] px-1 py-0.5 rounded text-[10px] font-bold"
+                              style={{
+                                backgroundColor: v > 0 ? `${receptorColors[i]}20` : "transparent",
+                                color: v > 0 ? receptorColors[i] : "hsl(var(--muted-foreground))",
+                              }}
+                            >
+                              {Math.round(v)}
+                            </span>
+                          </td>
+                        ))}
+                      </tr>
+    </DiagramFigure>
+  );
                 })}
               </tbody>
             </table>

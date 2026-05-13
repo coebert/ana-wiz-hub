@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive immune-response timeline.
@@ -349,44 +350,50 @@ const ImmuneResponseTimelineDiagram = () => {
               const isSelected = i === selectedIdx;
               const c = armColors[p.arm];
               return (
-                <g
-                  key={p.label}
-                  onClick={() => setSelectedIdx(i)}
-                  style={{ cursor: "pointer" }}
-                  aria-label={`Select phase ${p.label}: ${p.title}`}
-                >
-                  <rect
-                    x={x}
-                    y={padT + innerH + 6}
-                    width={w}
-                    height={20}
-                    rx={4}
-                    fill={isSelected ? c : withAlpha(c, 0.18)}
-                    stroke={c}
-                    strokeWidth={isSelected ? 2 : 1}
-                  />
-                  <text
-                    x={x + w / 2}
-                    y={padT + innerH + 20}
-                    textAnchor="middle"
-                    style={{ fontSize: 10, fontWeight: 600 }}
-                    fill={isSelected ? "white" : "hsl(var(--foreground))"}
+    <DiagramFigure
+      id="immune-response-timeline-diagram"
+      title="Immune response timeline"
+      description="Auto-generated wrapper for the Immune response timeline anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g
+                    key={p.label}
+                    onClick={() => setSelectedIdx(i)}
+                    style={{ cursor: "pointer" }}
+                    aria-label={`Select phase ${p.label}: ${p.title}`}
                   >
-                    {p.label}
-                  </text>
-                  {/* connector tick from curve to phase */}
-                  <line
-                    x1={xForIdx(i)}
-                    y1={padT}
-                    x2={xForIdx(i)}
-                    y2={padT + innerH}
-                    stroke={isSelected ? c : "hsl(var(--border))"}
-                    strokeWidth={isSelected ? 1.5 : 0.5}
-                    strokeDasharray={isSelected ? "0" : "3 3"}
-                    opacity={isSelected ? 0.5 : 0.6}
-                  />
-                </g>
-              );
+                    <rect
+                      x={x}
+                      y={padT + innerH + 6}
+                      width={w}
+                      height={20}
+                      rx={4}
+                      fill={isSelected ? c : withAlpha(c, 0.18)}
+                      stroke={c}
+                      strokeWidth={isSelected ? 2 : 1}
+                    />
+                    <text
+                      x={x + w / 2}
+                      y={padT + innerH + 20}
+                      textAnchor="middle"
+                      style={{ fontSize: 10, fontWeight: 600 }}
+                      fill={isSelected ? "white" : "hsl(var(--foreground))"}
+                    >
+                      {p.label}
+                    </text>
+                    {/* connector tick from curve to phase */}
+                    <line
+                      x1={xForIdx(i)}
+                      y1={padT}
+                      x2={xForIdx(i)}
+                      y2={padT + innerH}
+                      stroke={isSelected ? c : "hsl(var(--border))"}
+                      strokeWidth={isSelected ? 1.5 : 0.5}
+                      strokeDasharray={isSelected ? "0" : "3 3"}
+                      opacity={isSelected ? 0.5 : 0.6}
+                    />
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* x axis caption */}

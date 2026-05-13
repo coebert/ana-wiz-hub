@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /* ────────────────────────── data ────────────────────────── */
 
@@ -353,14 +354,20 @@ const CoagulationCascadeDiagram = () => {
             {(["intrinsic", "extrinsic", "common", "regulatory", "fibrinolysis"] as Pathway[]).map(p => {
               const m = pathwayMeta[p];
               return (
-                <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
-                    <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>
+    <DiagramFigure
+      id="coagulation-cascade-diagram"
+      title="Coagulation cascade"
+      description="Auto-generated wrapper for the Coagulation cascade anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <div key={p} className="p-3 rounded-lg border border-border" style={{ borderColor: withAlpha(m.color, 0.25) }}>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-sm" style={{ color: m.color }}>{m.test}</span>
+                      <Badge variant="outline" className="text-xs" style={{ color: m.color }}>{m.label}</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{m.testDetail}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{m.testDetail}</p>
-                </div>
-              );
+    </DiagramFigure>
+  );
             })}
             <div className="p-3 rounded-lg border border-border bg-muted/20">
               <p className="text-xs font-semibold text-foreground mb-1">Viscoelastic Testing (ROTEM / TEG)</p>

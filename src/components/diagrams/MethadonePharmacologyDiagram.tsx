@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type TabId = "racemic" | "nmda" | "herg" | "conversion";
 
@@ -338,12 +339,18 @@ export const MethadonePharmacologyDiagram = () => {
                       (r.range.startsWith("600") && oMEDD >= 600 && oMEDD < 1000) ||
                       (r.range.startsWith(">") && oMEDD >= 1000);
                     return (
-                      <tr key={r.range} className="border-b border-border" style={isActive ? { backgroundColor: `${active.color}15` } : undefined}>
-                        <td className="py-2 font-medium text-foreground">{r.range}</td>
-                        <td className="py-2">{r.ratio}</td>
-                        <td className="py-2">{r.example}</td>
-                      </tr>
-                    );
+    <DiagramFigure
+      id="methadone-pharmacology-diagram"
+      title="Methadone pharmacology"
+      description="Auto-generated wrapper for the Methadone pharmacology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                            <tr key={r.range} className="border-b border-border" style={isActive ? { backgroundColor: `${active.color}15` } : undefined}>
+                          <td className="py-2 font-medium text-foreground">{r.range}</td>
+                          <td className="py-2">{r.ratio}</td>
+                          <td className="py-2">{r.example}</td>
+                        </tr>
+    </DiagramFigure>
+  );
                   })}
                 </tbody>
               </table>

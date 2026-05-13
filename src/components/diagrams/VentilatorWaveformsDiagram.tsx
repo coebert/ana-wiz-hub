@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Mode = "vcv" | "pcv" | "psv";
 
@@ -193,15 +194,21 @@ function ParamSlider({ label, value, min, max, unit, onChange, step = 1 }: {
   label: string; value: number; min: number; max: number; unit: string; onChange: (v: number) => void; step?: number;
 }) {
   return (
-    <div>
-      <div className="flex justify-between text-xs mb-0.5">
-        <span className="text-muted-foreground">{label}</span>
-        <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
+    <DiagramFigure
+      id="ventilator-waveforms-diagram"
+      title="Ventilator waveforms"
+      description="Auto-generated wrapper for the Ventilator waveforms anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div>
+        <div className="flex justify-between text-xs mb-0.5">
+          <span className="text-muted-foreground">{label}</span>
+          <span className="font-mono font-semibold text-foreground">{step < 1 ? value.toFixed(1) : value} {unit}</span>
+        </div>
+        <input type="range" min={min} max={max} step={step} value={value}
+          onChange={e => onChange(Number(e.target.value))}
+          className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
       </div>
-      <input type="range" min={min} max={max} step={step} value={value}
-        onChange={e => onChange(Number(e.target.value))}
-        className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
-    </div>
+    </DiagramFigure>
   );
 }
 

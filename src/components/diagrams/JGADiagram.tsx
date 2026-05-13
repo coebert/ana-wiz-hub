@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type JGAPartId = "jg-cells" | "macula-densa" | "egm-cells" | "afferent" | "efferent" | "glomerulus" | "tgf-low" | "tgf-high" | "raas";
 
@@ -247,15 +248,21 @@ export const JGADiagram = () => {
                 const isHigh = isMech("tgf-high");
                 const colour = isHigh ? "hsl(0 70% 50%)" : "hsl(150 55% 45%)";
                 return (
-                  <circle key={i} r={isHigh ? 2.6 : 1.6} fill={colour}
-                    opacity={isHigh ? 0.95 : 0.55}>
-                    <animateMotion
-                      dur={isHigh ? "2.2s" : "3.4s"}
-                      begin={`${-delay * (isHigh ? 2.2 : 3.4)}s`}
-                      repeatCount="indefinite"
-                      path="M 470 348 Q 440 318 400 287 Q 360 257 320 237 Q 280 222 220 217" />
-                  </circle>
-                );
+    <DiagramFigure
+      id="jga-diagram"
+      title="Jga"
+      description="Auto-generated wrapper for the Jga anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <circle key={i} r={isHigh ? 2.6 : 1.6} fill={colour}
+                      opacity={isHigh ? 0.95 : 0.55}>
+                      <animateMotion
+                        dur={isHigh ? "2.2s" : "3.4s"}
+                        begin={`${-delay * (isHigh ? 2.2 : 3.4)}s`}
+                        repeatCount="indefinite"
+                        path="M 470 348 Q 440 318 400 287 Q 360 257 320 237 Q 280 222 220 217" />
+                    </circle>
+    </DiagramFigure>
+  );
               })}
               <text
                 x="370" y="270" fontSize="5.5" fontWeight="700"

@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Thyroid storm — pathophysiology + emergency treatment animation.
@@ -120,11 +121,17 @@ const ThyroidStormScene = ({ active }: { active: number }) => {
           const lit = active > i;
           const y = 52 + i * 50;
           return (
-            <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
-              stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
-              strokeWidth={lit ? 2 : 1}
-              markerEnd="url(#ts-arrow)" className="transition-colors duration-500" />
-          );
+    <DiagramFigure
+      id="thyroid-storm-animation"
+      title="Thyroid storm"
+      description="Auto-generated wrapper for the Thyroid storm animated physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <line key={i} x1="122" x2="122" y1={y} y2={y + 12}
+                stroke={lit ? "hsl(var(--foreground))" : "hsl(var(--border))"}
+                strokeWidth={lit ? 2 : 1}
+                markerEnd="url(#ts-arrow)" className="transition-colors duration-500" />
+    </DiagramFigure>
+  );
         })}
 
         {/* BWPS gauge + vitals */}

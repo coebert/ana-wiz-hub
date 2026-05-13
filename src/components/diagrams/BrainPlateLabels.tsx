@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Reusable SVG overlay for anatomical label callouts on the brain plates.
@@ -244,57 +245,63 @@ const BrainPlateLabels = ({ labels, minGap = 4.2 }: BrainPlateLabelsProps) => {
           const pillH = totalH + 0.8;
 
           return (
-            <g key={i} opacity={showAlign ? 0.35 : 1}>
-              <line
-                x1={l.dot.x}
-                y1={l.dot.y}
-                x2={l.label.x}
-                y2={l.y}
-                stroke="hsl(var(--clinical))"
-                strokeWidth="0.5"
-                vectorEffect="non-scaling-stroke"
-                opacity="0.85"
-              />
-              <circle
-                cx={l.dot.x}
-                cy={l.dot.y}
-                r="0.6"
-                fill="hsl(var(--clinical))"
-                stroke="hsl(var(--background))"
-                strokeWidth="0.5"
-                vectorEffect="non-scaling-stroke"
-              />
-              <rect
-                x={pillX}
-                y={pillY}
-                width={pillW}
-                height={pillH}
-                rx="0.8"
-                ry="0.8"
-                fill="hsl(var(--background))"
-                opacity="0.78"
-              />
-              <text
-                x={l.label.x + padX}
-                y={l.y - (lines.length - 1) * (lineHeight / 2)}
-                textAnchor={anchor}
-                dominantBaseline="middle"
-                fontSize="1.7"
-                fontWeight="600"
-                fill="hsl(var(--foreground))"
-                stroke="hsl(var(--background))"
-                strokeWidth="0.5"
-                paintOrder="stroke"
-                style={{ fontFamily: "Inter, system-ui, sans-serif" }}
-              >
-                {lines.map((line, idx) => (
-                  <tspan key={idx} x={l.label.x + padX} dy={idx === 0 ? 0 : lineHeight}>
-                    {line}
-                  </tspan>
-                ))}
-              </text>
-            </g>
-          );
+    <DiagramFigure
+      id="brain-plate-labels"
+      title="Brain plate labels"
+      description="Auto-generated wrapper for the Brain plate labels anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <g key={i} opacity={showAlign ? 0.35 : 1}>
+                <line
+                  x1={l.dot.x}
+                  y1={l.dot.y}
+                  x2={l.label.x}
+                  y2={l.y}
+                  stroke="hsl(var(--clinical))"
+                  strokeWidth="0.5"
+                  vectorEffect="non-scaling-stroke"
+                  opacity="0.85"
+                />
+                <circle
+                  cx={l.dot.x}
+                  cy={l.dot.y}
+                  r="0.6"
+                  fill="hsl(var(--clinical))"
+                  stroke="hsl(var(--background))"
+                  strokeWidth="0.5"
+                  vectorEffect="non-scaling-stroke"
+                />
+                <rect
+                  x={pillX}
+                  y={pillY}
+                  width={pillW}
+                  height={pillH}
+                  rx="0.8"
+                  ry="0.8"
+                  fill="hsl(var(--background))"
+                  opacity="0.78"
+                />
+                <text
+                  x={l.label.x + padX}
+                  y={l.y - (lines.length - 1) * (lineHeight / 2)}
+                  textAnchor={anchor}
+                  dominantBaseline="middle"
+                  fontSize="1.7"
+                  fontWeight="600"
+                  fill="hsl(var(--foreground))"
+                  stroke="hsl(var(--background))"
+                  strokeWidth="0.5"
+                  paintOrder="stroke"
+                  style={{ fontFamily: "Inter, system-ui, sans-serif" }}
+                >
+                  {lines.map((line, idx) => (
+                    <tspan key={idx} x={l.label.x + padX} dy={idx === 0 ? 0 : lineHeight}>
+                      {line}
+                    </tspan>
+                  ))}
+                </text>
+              </g>
+    </DiagramFigure>
+  );
         })}
       </svg>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, Pause, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Regime = "low" | "normal" | "high";
 
@@ -249,16 +250,22 @@ const WrightRespirometerDiagram = () => {
             {Array.from({ length: 12 }).map((_, i) => {
               const a = (i / 12) * Math.PI * 2 - Math.PI / 2;
               return (
-                <line
-                  key={i}
-                  x1={Math.cos(a) * 24}
-                  y1={Math.sin(a) * 24}
-                  x2={Math.cos(a) * 28}
-                  y2={Math.sin(a) * 28}
-                  stroke="hsl(var(--muted-foreground))"
-                  strokeWidth="1"
-                />
-              );
+    <DiagramFigure
+      id="wright-respirometer-diagram"
+      title="Wright respirometer"
+      description="Auto-generated wrapper for the Wright respirometer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <line
+                    key={i}
+                    x1={Math.cos(a) * 24}
+                    y1={Math.sin(a) * 24}
+                    x2={Math.cos(a) * 28}
+                    y2={Math.sin(a) * 28}
+                    stroke="hsl(var(--muted-foreground))"
+                    strokeWidth="1"
+                  />
+    </DiagramFigure>
+  );
             })}
             {/* Needle — angle proportional to volume accrued this cycle */}
             <line

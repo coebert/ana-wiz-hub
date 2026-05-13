@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Factor = "weight" | "headNeck" | "jaw" | "mandible" | "teeth";
 
@@ -70,25 +71,31 @@ const WilsonRiskScoreCalculator = () => {
         {factorOrder.map((f) => {
           const factor = factors[f];
           return (
-            <div key={f} className="p-3 rounded-lg border border-border">
-              <p className="font-semibold text-foreground text-sm mb-2">{factor.label}</p>
-              <div className="flex flex-wrap gap-2">
-                {factor.scores.map((s) => (
-                  <button
-                    key={s.value}
-                    onClick={() => setScores((prev) => ({ ...prev, [f]: s.value }))}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                      scores[f] === s.value
-                        ? "bg-primary text-primary-foreground border-primary"
-                        : "border-border text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    <span className="font-bold">{s.value}</span> — {s.desc}
-                  </button>
-                ))}
+    <DiagramFigure
+      id="wilson-risk-score-calculator"
+      title="Wilson risk score"
+      description="Auto-generated wrapper for the Wilson risk score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div key={f} className="p-3 rounded-lg border border-border">
+                <p className="font-semibold text-foreground text-sm mb-2">{factor.label}</p>
+                <div className="flex flex-wrap gap-2">
+                  {factor.scores.map((s) => (
+                    <button
+                      key={s.value}
+                      onClick={() => setScores((prev) => ({ ...prev, [f]: s.value }))}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                        scores[f] === s.value
+                          ? "bg-primary text-primary-foreground border-primary"
+                          : "border-border text-muted-foreground hover:text-foreground"
+                      }`}
+                    >
+                      <span className="font-bold">{s.value}</span> — {s.desc}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
-          );
+    </DiagramFigure>
+  );
         })}
       </div>
 

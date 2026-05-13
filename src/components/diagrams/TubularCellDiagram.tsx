@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type CellType = "pct" | "tal" | "dct" | "principal" | "intercalated-a";
 
@@ -503,47 +504,53 @@ export const TubularCellDiagram = () => {
   const CellSVG = cellSVGs[activeCell];
 
   return (
-    <div className="space-y-4">
-      {/* Cell type selector */}
-      <div className="flex flex-wrap gap-2">
-        {cellTypes.map(cell => (
-          <button
-            key={cell.id}
-            onClick={() => setActiveCell(cell.id)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-              activeCell === cell.id
-                ? "bg-primary/15 border-primary/40 text-primary"
-                : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
-            }`}
-          >
-            {cell.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Cell diagram */}
-      <div className="bg-card rounded-lg border border-border p-4 animate-fade-in" key={activeCell}>
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-3 h-3 rounded-full" style={{ backgroundColor: cellColors[activeCell] }} />
-          <h4 className="text-sm font-semibold text-foreground">{info.label}</h4>
-          <span className="text-xs text-muted-foreground">— {info.subtitle}</span>
+    <DiagramFigure
+      id="tubular-cell-diagram"
+      title="Tubular cell"
+      description="Auto-generated wrapper for the Tubular cell anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="space-y-4">
+        {/* Cell type selector */}
+        <div className="flex flex-wrap gap-2">
+          {cellTypes.map(cell => (
+            <button
+              key={cell.id}
+              onClick={() => setActiveCell(cell.id)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${
+                activeCell === cell.id
+                  ? "bg-primary/15 border-primary/40 text-primary"
+                  : "bg-secondary/50 border-border text-muted-foreground hover:bg-secondary"
+              }`}
+            >
+              {cell.label}
+            </button>
+          ))}
         </div>
-        <CellSVG />
-      </div>
-
-      {/* Info panel */}
-      <div className="rounded-lg border border-border bg-secondary/30 p-4 space-y-2">
-        <p className="text-sm text-muted-foreground leading-relaxed">{info.description}</p>
-        {info.drugTarget && (
-          <div className="pt-2 border-t border-border">
-            <p className="text-xs text-muted-foreground">
-              <span className="font-semibold text-foreground/80">Drug targets: </span>
-              {info.drugTarget}
-            </p>
+  
+        {/* Cell diagram */}
+        <div className="bg-card rounded-lg border border-border p-4 animate-fade-in" key={activeCell}>
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: cellColors[activeCell] }} />
+            <h4 className="text-sm font-semibold text-foreground">{info.label}</h4>
+            <span className="text-xs text-muted-foreground">— {info.subtitle}</span>
           </div>
-        )}
+          <CellSVG />
+        </div>
+  
+        {/* Info panel */}
+        <div className="rounded-lg border border-border bg-secondary/30 p-4 space-y-2">
+          <p className="text-sm text-muted-foreground leading-relaxed">{info.description}</p>
+          {info.drugTarget && (
+            <div className="pt-2 border-t border-border">
+              <p className="text-xs text-muted-foreground">
+                <span className="font-semibold text-foreground/80">Drug targets: </span>
+                {info.drugTarget}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

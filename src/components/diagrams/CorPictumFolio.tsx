@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useExamFilter } from "@/contexts/ExamFilterContext";
 import { ExamTag } from "@/data/curriculum";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Cor Pictum folio — unified, in-app anatomical plate viewer in the
@@ -1093,85 +1094,91 @@ const CorPictumFolio = ({ atlasTitle, atlasSubtitle, plates, className, enableRe
               const isActive = activeLabelIdx === idx;
               const interactive = !!(label.polygon && label.polygon.length >= 3);
               return (
-                <li
-                  key={`${label.latin}-${idx}`}
-                  id={`${reactId}-label-${idx}`}
-                  className={cn(
-                    "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
-                    (interactive || reviewMode) && "cursor-pointer",
-                    isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
-                    reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
-                  )}
-                  onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
-                  onPointerLeave={() =>
-                    interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))
-                  }
-                  onFocus={() => interactive && setActiveLabelIdx(idx)}
-                  onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
-                  onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
-                  tabIndex={interactive || reviewMode ? 0 : -1}
-                >
-                  {reviewMode ? (
+    <DiagramFigure
+      id="cor-pictum-folio"
+      title="Cor pictum folio"
+      description="Auto-generated wrapper for the Cor pictum folio anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <li
+                    key={`${label.latin}-${idx}`}
+                    id={`${reactId}-label-${idx}`}
+                    className={cn(
+                      "flex gap-3 rounded-md p-1.5 -m-1.5 transition-colors",
+                      (interactive || reviewMode) && "cursor-pointer",
+                      isActive && "bg-[hsl(8_55%_38%)]/8 dark:bg-[hsl(8_60%_60%)]/10",
+                      reviewMode && selectedEditIdx === idx && "ring-2 ring-[hsl(8_70%_50%)]/70",
+                    )}
+                    onPointerEnter={() => interactive && setActiveLabelIdx(idx)}
+                    onPointerLeave={() =>
+                      interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))
+                    }
+                    onFocus={() => interactive && setActiveLabelIdx(idx)}
+                    onBlur={() => interactive && setActiveLabelIdx((prev) => (prev === idx ? null : prev))}
+                    onClick={() => { if (reviewMode) setSelectedEditIdx(idx); }}
+                    tabIndex={interactive || reviewMode ? 0 : -1}
+                  >
+                    {reviewMode ? (
+                      <span
+                        aria-hidden
+                        className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
+                        style={{ background: reviewColor(idx) }}
+                      >
+                        {idx + 1}
+                      </span>
+                    ) : null}
                     <span
                       aria-hidden
-                      className="mt-[0.4rem] flex-none w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center text-white"
-                      style={{ background: reviewColor(idx) }}
+                      className={cn(
+                        "mt-[0.55rem] flex-none flex items-center transition-all",
+                        isActive ? "w-7" : "w-5",
+                      )}
                     >
-                      {idx + 1}
+                      <span
+                        className={cn(
+                          "h-px flex-1 transition-colors",
+                          isActive
+                            ? "bg-foreground/70 dark:bg-foreground/80"
+                            : "bg-foreground/35 dark:bg-foreground/40",
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          "h-1 w-1 rounded-full transition-colors",
+                          isActive
+                            ? "bg-foreground/80 dark:bg-foreground/90"
+                            : "bg-foreground/45 dark:bg-foreground/50",
+                        )}
+                      />
                     </span>
-                  ) : null}
-                  <span
-                    aria-hidden
-                    className={cn(
-                      "mt-[0.55rem] flex-none flex items-center transition-all",
-                      isActive ? "w-7" : "w-5",
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        "h-px flex-1 transition-colors",
-                        isActive
-                          ? "bg-foreground/70 dark:bg-foreground/80"
-                          : "bg-foreground/35 dark:bg-foreground/40",
-                      )}
-                    />
-                    <span
-                      className={cn(
-                        "h-1 w-1 rounded-full transition-colors",
-                        isActive
-                          ? "bg-foreground/80 dark:bg-foreground/90"
-                          : "bg-foreground/45 dark:bg-foreground/50",
-                      )}
-                    />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-serif text-[13px] sm:text-[13.5px] leading-snug tracking-[0.005em] text-foreground">
-                      {label.english}
-                    </p>
-                    <p className="font-serif italic text-[11.5px] text-muted-foreground/90 leading-snug mt-0.5">{label.note}</p>
-                    {label.learningPoint ? (
-                      <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
-                        <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
-                          FRCA
-                        </span>
-                        {label.learningPoint}
+                    <div className="min-w-0 flex-1">
+                      <p className="font-serif text-[13px] sm:text-[13.5px] leading-snug tracking-[0.005em] text-foreground">
+                        {label.english}
                       </p>
-                    ) : null}
-                    {label.examTags && label.examTags.length > 0 ? (
-                      <div className="flex flex-wrap gap-1 mt-1.5">
-                        {label.examTags.map((t) => (
-                          <span
-                            key={t}
-                            className="text-[9px] uppercase tracking-wide rounded-sm border border-border bg-muted/40 px-1.5 py-0.5 text-muted-foreground"
-                          >
-                            {t}
+                      <p className="font-serif italic text-[11.5px] text-muted-foreground/90 leading-snug mt-0.5">{label.note}</p>
+                      {label.learningPoint ? (
+                        <p className="text-xs text-foreground/85 leading-relaxed mt-1 border-l-2 border-[hsl(8_55%_38%)]/60 pl-2">
+                          <span className="font-semibold uppercase tracking-wide text-[10px] text-[hsl(8_55%_38%)] dark:text-[hsl(8_60%_60%)] mr-1">
+                            FRCA
                           </span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                </li>
-              );
+                          {label.learningPoint}
+                        </p>
+                      ) : null}
+                      {label.examTags && label.examTags.length > 0 ? (
+                        <div className="flex flex-wrap gap-1 mt-1.5">
+                          {label.examTags.map((t) => (
+                            <span
+                              key={t}
+                              className="text-[9px] uppercase tracking-wide rounded-sm border border-border bg-muted/40 px-1.5 py-0.5 text-muted-foreground"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+                  </li>
+    </DiagramFigure>
+  );
             })}
             </ul>
           </div>

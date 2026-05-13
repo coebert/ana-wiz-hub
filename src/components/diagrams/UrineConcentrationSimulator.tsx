@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Segments along the nephron, x positions, and baseline osmolality behaviour.
 // We model osmolality (mOsm/kg) as a function of nephron segment and ADH level (0..1).
@@ -257,11 +258,17 @@ export const UrineConcentrationSimulator = () => {
             {segments.map((s) => {
               const osm = s.osm(adh);
               return (
-                <g key={s.id}>
-                  <line x1={xForT(s.x)} y1={padT} x2={xForT(s.x)} y2={padT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
-                  <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
-                </g>
-              );
+    <DiagramFigure
+      id="urine-concentration-simulator"
+      title="Urine concentration"
+      description="Auto-generated wrapper for the Urine concentration anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={s.id}>
+                    <line x1={xForT(s.x)} y1={padT} x2={xForT(s.x)} y2={padT + plotH} stroke="hsl(var(--border))" strokeWidth="0.5" opacity="0.4" />
+                    <circle cx={xForT(s.x)} cy={yForOsm(osm)} r="3.5" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="1" />
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* X axis segment labels */}

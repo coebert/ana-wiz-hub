@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated diagram: gut (stomach, small bowel, colon, spleen) → SMV/splenic
@@ -360,12 +361,18 @@ const PortalFirstPassDiagram = () => {
               );
             }
             return (
-              <g key={id}>
-                <circle cx={x} cy={y} r={5} fill="hsl(280, 75%, 62%)"
-                  stroke="hsl(280, 80%, 28%)" strokeWidth="1" />
-                <circle cx={x - 1.3} cy={y - 1.3} r={1.4} fill="hsl(280, 90%, 90%)" opacity={0.85} />
-              </g>
-            );
+    <DiagramFigure
+      id="portal-first-pass-diagram"
+      title="Portal first pass"
+      description="Auto-generated wrapper for the Portal first pass anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g key={id}>
+                  <circle cx={x} cy={y} r={5} fill="hsl(280, 75%, 62%)"
+                    stroke="hsl(280, 80%, 28%)" strokeWidth="1" />
+                  <circle cx={x - 1.3} cy={y - 1.3} r={1.4} fill="hsl(280, 90%, 90%)" opacity={0.85} />
+                </g>
+    </DiagramFigure>
+  );
           })}
 
           {/* Legend */}

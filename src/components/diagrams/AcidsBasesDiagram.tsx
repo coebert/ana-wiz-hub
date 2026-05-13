@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export const AcidsBasesDiagram = () => {
   const [pka, setPka] = useState(7.4);
@@ -81,14 +82,20 @@ export const AcidsBasesDiagram = () => {
             ].map((m, i) => {
               const x = 30 + (m.ph / 14) * 380;
               return (
-                <g key={i}>
-                  <line x1={x} y1={60} x2={x} y2={m.y - 8} stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
-                  <circle cx={x} cy={45} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
-                  {m.label.split("\n").map((line, j) => (
-                    <text key={j} x={x} y={m.y + j * 10} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{line}</text>
-                  ))}
-                </g>
-              );
+    <DiagramFigure
+      id="acids-bases-diagram"
+      title="Acids bases"
+      description="Auto-generated wrapper for the Acids bases anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={i}>
+                    <line x1={x} y1={60} x2={x} y2={m.y - 8} stroke="hsl(var(--foreground))" strokeWidth="0.75" strokeDasharray="2 2" opacity="0.6" />
+                    <circle cx={x} cy={45} r={3} fill="hsl(var(--foreground))" opacity="0.7" />
+                    {m.label.split("\n").map((line, j) => (
+                      <text key={j} x={x} y={m.y + j * 10} textAnchor="middle" fontSize="7" className="fill-muted-foreground">{line}</text>
+                    ))}
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* Normal range highlight */}

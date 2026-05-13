@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Play, Pause, RotateCcw, BookOpen, ExternalLink } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated Stewart–Hamilton thermodilution diagram.
@@ -496,29 +497,35 @@ export const ThermodilutionDiagram = () => {
             (i === 2 && t >= cfg.tPeak * 0.9 && t < 0.85) ||
             (i === 3 && t >= 0.85);
           return (
-            <div
-              key={s.label}
-              className="rounded-md border p-2 transition-colors"
-              style={{
-                borderColor: stepActive
-                  ? "hsl(var(--icu))"
-                  : "hsl(var(--border))",
-                backgroundColor: stepActive
-                  ? "hsl(var(--icu) / 0.08)"
-                  : "transparent",
-              }}
-            >
-              <p
-                className="font-bold mb-0.5"
+    <DiagramFigure
+      id="thermodilution-diagram"
+      title="Thermodilution"
+      description="Auto-generated wrapper for the Thermodilution anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div
+                key={s.label}
+                className="rounded-md border p-2 transition-colors"
                 style={{
-                  color: stepActive ? "hsl(var(--icu))" : "hsl(var(--foreground))",
+                  borderColor: stepActive
+                    ? "hsl(var(--icu))"
+                    : "hsl(var(--border))",
+                  backgroundColor: stepActive
+                    ? "hsl(var(--icu) / 0.08)"
+                    : "transparent",
                 }}
               >
-                {s.label}
-              </p>
-              <p className="text-muted-foreground leading-snug">{s.body}</p>
-            </div>
-          );
+                <p
+                  className="font-bold mb-0.5"
+                  style={{
+                    color: stepActive ? "hsl(var(--icu))" : "hsl(var(--foreground))",
+                  }}
+                >
+                  {s.label}
+                </p>
+                <p className="text-muted-foreground leading-snug">{s.body}</p>
+              </div>
+    </DiagramFigure>
+  );
         })}
       </div>
 

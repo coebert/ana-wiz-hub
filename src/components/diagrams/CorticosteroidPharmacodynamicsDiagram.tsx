@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface EffectGroup {
   id: string;
@@ -173,28 +174,34 @@ export const CorticosteroidPharmacodynamicsDiagram = () => {
         {groups.map((g) => {
           const isActive = g.id === selected;
           return (
-            <button
-              key={g.id}
-              onClick={() => setSelected(g.id)}
-              className={`text-left rounded-md border px-3 py-2 transition-all ${
-                isActive
-                  ? "border-pharmacology bg-pharmacology/10 shadow-sm"
-                  : "border-border bg-background/60 hover:border-pharmacology/40"
-              }`}
-              style={isActive ? { borderColor: g.color } : undefined}
-            >
-              <div className="flex items-center gap-1.5 mb-1">
-                <span
-                  className="h-2 w-2 rounded-full shrink-0"
-                  style={{ backgroundColor: g.color }}
-                />
-                <span className="text-xs font-semibold text-foreground leading-tight">
-                  {g.system}
-                </span>
-              </div>
-              <div className="text-[11px] text-muted-foreground leading-snug">{g.short}</div>
-            </button>
-          );
+    <DiagramFigure
+      id="corticosteroid-pharmacodynamics-diagram"
+      title="Corticosteroid pharmacodynamics"
+      description="Auto-generated wrapper for the Corticosteroid pharmacodynamics anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={g.id}
+                onClick={() => setSelected(g.id)}
+                className={`text-left rounded-md border px-3 py-2 transition-all ${
+                  isActive
+                    ? "border-pharmacology bg-pharmacology/10 shadow-sm"
+                    : "border-border bg-background/60 hover:border-pharmacology/40"
+                }`}
+                style={isActive ? { borderColor: g.color } : undefined}
+              >
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span
+                    className="h-2 w-2 rounded-full shrink-0"
+                    style={{ backgroundColor: g.color }}
+                  />
+                  <span className="text-xs font-semibold text-foreground leading-tight">
+                    {g.system}
+                  </span>
+                </div>
+                <div className="text-[11px] text-muted-foreground leading-snug">{g.short}</div>
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 

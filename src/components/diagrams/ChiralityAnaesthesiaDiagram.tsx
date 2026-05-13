@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Form = "racemate" | "single" | "achiral-mix";
 type DrugClass =
@@ -345,41 +346,47 @@ export const ChiralityAnaesthesiaDiagram = () => {
             {visible.map((d) => {
               const isActive = d.name === selected;
               return (
-                <button
-                  key={d.name}
-                  onClick={() => setSelected(d.name)}
-                  className={`w-full grid grid-cols-12 items-center px-3 py-2 text-left text-sm transition-colors ${
-                    isActive ? "bg-primary/10" : "hover:bg-muted/40"
-                  }`}
-                >
-                  <div className="col-span-4">
-                    <div className="font-medium text-foreground leading-tight">{d.name}</div>
-                    {d.enantiomer && (
-                      <div className="text-[11px] text-muted-foreground">{d.enantiomer}</div>
-                    )}
-                  </div>
-                  <div className="col-span-3">
-                    <Badge variant="outline" className={`text-[10px] ${classColors[d.drugClass]}`}>
-                      {d.drugClass}
-                    </Badge>
-                  </div>
-                  <div className="col-span-2 text-center text-xs text-muted-foreground">
-                    {d.centres === 0 ? "—" : d.centres}
-                  </div>
-                  <div className="col-span-3">
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium ${formMeta[d.form].chip}`}
-                    >
-                      <span className={`h-1.5 w-1.5 rounded-full ${formMeta[d.form].dot}`} />
-                      {d.form === "racemate"
-                        ? "Racemate"
-                        : d.form === "single"
-                          ? "Single"
-                          : "Achiral"}
-                    </span>
-                  </div>
-                </button>
-              );
+    <DiagramFigure
+      id="chirality-anaesthesia-diagram"
+      title="Chirality anaesthesia"
+      description="Auto-generated wrapper for the Chirality anaesthesia anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <button
+                    key={d.name}
+                    onClick={() => setSelected(d.name)}
+                    className={`w-full grid grid-cols-12 items-center px-3 py-2 text-left text-sm transition-colors ${
+                      isActive ? "bg-primary/10" : "hover:bg-muted/40"
+                    }`}
+                  >
+                    <div className="col-span-4">
+                      <div className="font-medium text-foreground leading-tight">{d.name}</div>
+                      {d.enantiomer && (
+                        <div className="text-[11px] text-muted-foreground">{d.enantiomer}</div>
+                      )}
+                    </div>
+                    <div className="col-span-3">
+                      <Badge variant="outline" className={`text-[10px] ${classColors[d.drugClass]}`}>
+                        {d.drugClass}
+                      </Badge>
+                    </div>
+                    <div className="col-span-2 text-center text-xs text-muted-foreground">
+                      {d.centres === 0 ? "—" : d.centres}
+                    </div>
+                    <div className="col-span-3">
+                      <span
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium ${formMeta[d.form].chip}`}
+                      >
+                        <span className={`h-1.5 w-1.5 rounded-full ${formMeta[d.form].dot}`} />
+                        {d.form === "racemate"
+                          ? "Racemate"
+                          : d.form === "single"
+                            ? "Single"
+                            : "Achiral"}
+                      </span>
+                    </div>
+                  </button>
+    </DiagramFigure>
+  );
             })}
           </div>
         </div>

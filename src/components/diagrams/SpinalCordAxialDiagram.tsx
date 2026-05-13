@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // =================================================================
 // Types & data
@@ -303,27 +304,33 @@ const SpinalCordAxialDiagram = () => {
           const size = Math.round((g.rx * g.ry) / 100);
           const active = cordLevel === lv;
           return (
-            <button
-              key={lv}
-              onClick={() => setCordLevel(lv)}
-              className={`px-2.5 py-1 rounded text-[11px] font-medium border transition-all flex items-center gap-1.5 ${
-                active ? "border-primary/60 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
-              }`}
-            >
-              {/* Tiny inline cord-size icon scales with level */}
-              <span
-                className="inline-block rounded-full"
-                style={{
-                  width: `${Math.max(6, g.rx / 12)}px`,
-                  height: `${Math.max(6, g.ry / 12)}px`,
-                  background: active ? "hsl(var(--primary) / 0.4)" : "hsl(var(--muted-foreground) / 0.4)",
-                }}
-                aria-hidden
-              />
-              {lv.charAt(0).toUpperCase() + lv.slice(1)}
-              <span className="text-[9px] opacity-60">({size})</span>
-            </button>
-          );
+    <DiagramFigure
+      id="spinal-cord-axial-diagram"
+      title="Spinal cord axial"
+      description="Auto-generated wrapper for the Spinal cord axial anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={lv}
+                onClick={() => setCordLevel(lv)}
+                className={`px-2.5 py-1 rounded text-[11px] font-medium border transition-all flex items-center gap-1.5 ${
+                  active ? "border-primary/60 bg-primary/10 text-foreground" : "border-border text-muted-foreground hover:bg-secondary/40"
+                }`}
+              >
+                {/* Tiny inline cord-size icon scales with level */}
+                <span
+                  className="inline-block rounded-full"
+                  style={{
+                    width: `${Math.max(6, g.rx / 12)}px`,
+                    height: `${Math.max(6, g.ry / 12)}px`,
+                    background: active ? "hsl(var(--primary) / 0.4)" : "hsl(var(--muted-foreground) / 0.4)",
+                  }}
+                  aria-hidden
+                />
+                {lv.charAt(0).toUpperCase() + lv.slice(1)}
+                <span className="text-[9px] opacity-60">({size})</span>
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
       <div className="rounded-md bg-muted/40 p-2 mb-3 text-[11px] text-muted-foreground leading-snug">

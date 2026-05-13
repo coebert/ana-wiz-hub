@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive comparison of paediatric physiology vs adult, by age band.
@@ -262,32 +263,38 @@ export const PaediatricPhysiologyDiagram = () => {
                 {ORDER.map((k) => {
                   const h = HOTSPOTS[k];
                   return (
-                    <g key={k} onClick={() => setSelected(k)} style={{ cursor: "pointer" }}>
-                      <circle
-                        cx={h.cx}
-                        cy={h.cy}
-                        r={h.r}
-                        fill={REGION_COLOR[k]}
-                        opacity={isSel(k) ? 0.55 : 0.22}
-                        stroke={REGION_COLOR[k]}
-                        strokeWidth={isSel(k) ? 2.5 : 1.2}
-                      />
-                      {isSel(k) && (
+    <DiagramFigure
+      id="paediatric-physiology-diagram"
+      title="Paediatric physiology"
+      description="Auto-generated wrapper for the Paediatric physiology anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <g key={k} onClick={() => setSelected(k)} style={{ cursor: "pointer" }}>
                         <circle
                           cx={h.cx}
                           cy={h.cy}
-                          r={h.r + 5}
-                          fill="none"
+                          r={h.r}
+                          fill={REGION_COLOR[k]}
+                          opacity={isSel(k) ? 0.55 : 0.22}
                           stroke={REGION_COLOR[k]}
-                          strokeWidth="1"
-                          opacity="0.6"
-                        >
-                          <animate attributeName="r" from={h.r + 3} to={h.r + 10} dur="1.5s" repeatCount="indefinite" />
-                          <animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite" />
-                        </circle>
-                      )}
-                    </g>
-                  );
+                          strokeWidth={isSel(k) ? 2.5 : 1.2}
+                        />
+                        {isSel(k) && (
+                          <circle
+                            cx={h.cx}
+                            cy={h.cy}
+                            r={h.r + 5}
+                            fill="none"
+                            stroke={REGION_COLOR[k]}
+                            strokeWidth="1"
+                            opacity="0.6"
+                          >
+                            <animate attributeName="r" from={h.r + 3} to={h.r + 10} dur="1.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" from="0.6" to="0" dur="1.5s" repeatCount="indefinite" />
+                          </circle>
+                        )}
+                      </g>
+    </DiagramFigure>
+  );
                 })}
               </g>
             )}

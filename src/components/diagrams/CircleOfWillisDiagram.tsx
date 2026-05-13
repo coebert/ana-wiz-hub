@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type VesselKey = "ica-l" | "ica-r" | "aca-l" | "aca-r" | "acomm" | "mca-l" | "mca-r" | "pcomm-l" | "pcomm-r" | "pca-l" | "pca-r" | "basilar" | "vert-l" | "vert-r" | "sca-l" | "sca-r" | "aica-l" | "aica-r" | "pica-l" | "pica-r" | "ophthalmic-l" | "ophthalmic-r";
 
@@ -423,21 +424,27 @@ const CircleOfWillisDiagram = () => {
               const visible = isVisible(key);
               if (!visible && !isActive) return null;
               return (
-                <text
-                  key={key + "-label"}
-                  x={v.labelPos.x}
-                  y={v.labelPos.y}
-                  fontSize="6"
-                  fill={isActive ? v.color : "hsl(var(--muted-foreground))"}
-                  fontWeight={isActive ? "bold" : "normal"}
-                  textAnchor={v.labelAnchor || "middle"}
-                  className="cursor-pointer select-none"
-                  onClick={() => setSelected(key)}
-                  opacity={isActive ? 1 : 0.6}
-                >
-                  {v.abbr}
-                </text>
-              );
+    <DiagramFigure
+      id="circle-of-willis-diagram"
+      title="Circle of willis"
+      description="Auto-generated wrapper for the Circle of willis anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <text
+                    key={key + "-label"}
+                    x={v.labelPos.x}
+                    y={v.labelPos.y}
+                    fontSize="6"
+                    fill={isActive ? v.color : "hsl(var(--muted-foreground))"}
+                    fontWeight={isActive ? "bold" : "normal"}
+                    textAnchor={v.labelAnchor || "middle"}
+                    className="cursor-pointer select-none"
+                    onClick={() => setSelected(key)}
+                    opacity={isActive ? 1 : 0.6}
+                  >
+                    {v.abbr}
+                  </text>
+    </DiagramFigure>
+  );
             })}
 
             {/* Territory shading when vessel selected */}

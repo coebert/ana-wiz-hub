@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type PatternKey = "normal" | "ischaemia" | "mitochondrial" | "neuroglycopenia" | "excitotoxicity";
 
@@ -321,30 +322,36 @@ const CerebralMicrodialysisDiagram = () => {
                 const normalPct = (b.normalHigh / b.max) * 100;
                 const abnormal = isAbnormal(b, val);
                 return (
-                  <div key={b.key}>
-                    <div className="flex justify-between items-baseline mb-0.5">
-                      <span className="text-[11px] font-semibold text-foreground">{b.label}</span>
-                      <span className={`text-[11px] font-mono font-bold ${abnormal ? "text-destructive" : "text-foreground"}`}>
-                        {val.toFixed(b.key === "glucose" || b.key === "lactate" ? 1 : 0)} <span className="text-muted-foreground font-normal">{b.unit}</span>
-                      </span>
+    <DiagramFigure
+      id="cerebral-microdialysis-diagram"
+      title="Cerebral microdialysis"
+      description="Auto-generated wrapper for the Cerebral microdialysis anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <div key={b.key}>
+                      <div className="flex justify-between items-baseline mb-0.5">
+                        <span className="text-[11px] font-semibold text-foreground">{b.label}</span>
+                        <span className={`text-[11px] font-mono font-bold ${abnormal ? "text-destructive" : "text-foreground"}`}>
+                          {val.toFixed(b.key === "glucose" || b.key === "lactate" ? 1 : 0)} <span className="text-muted-foreground font-normal">{b.unit}</span>
+                        </span>
+                      </div>
+                      <div className="relative h-3 bg-muted/40 rounded overflow-hidden">
+                        {/* Normal range band */}
+                        <div
+                          className="absolute top-0 h-full bg-primary/15 border-r border-primary/40"
+                          style={{
+                            left: `${b.normalLow ? (b.normalLow / b.max) * 100 : 0}%`,
+                            width: `${normalPct - (b.normalLow ? (b.normalLow / b.max) * 100 : 0)}%`,
+                          }}
+                        />
+                        {/* Value bar */}
+                        <div
+                          className={`absolute top-0 h-full transition-all duration-500 ${abnormal ? "bg-destructive" : "bg-primary"}`}
+                          style={{ width: `${pct}%`, opacity: 0.85 }}
+                        />
+                      </div>
                     </div>
-                    <div className="relative h-3 bg-muted/40 rounded overflow-hidden">
-                      {/* Normal range band */}
-                      <div
-                        className="absolute top-0 h-full bg-primary/15 border-r border-primary/40"
-                        style={{
-                          left: `${b.normalLow ? (b.normalLow / b.max) * 100 : 0}%`,
-                          width: `${normalPct - (b.normalLow ? (b.normalLow / b.max) * 100 : 0)}%`,
-                        }}
-                      />
-                      {/* Value bar */}
-                      <div
-                        className={`absolute top-0 h-full transition-all duration-500 ${abnormal ? "bg-destructive" : "bg-primary"}`}
-                        style={{ width: `${pct}%`, opacity: 0.85 }}
-                      />
-                    </div>
-                  </div>
-                );
+    </DiagramFigure>
+  );
               })}
             </div>
           </div>

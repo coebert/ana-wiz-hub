@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface VolumeSegment {
   id: string;
@@ -207,20 +208,26 @@ export const LungVolumesDiagram = () => {
           {activeCapacity && (() => {
             const bracket = capBrackets.find((c) => c.id === activeCapacity.id)!;
             return (
-              <rect
-                x={BAR_LEFT}
-                y={bracket.top}
-                width={BAR_WIDTH}
-                height={bracket.bottom - bracket.top}
-                fill={activeCapacity.color}
-                opacity={0.08}
-                stroke={activeCapacity.color}
-                strokeWidth="1.5"
-                strokeDasharray="4,3"
-                rx="2"
-                pointerEvents="none"
-              />
-            );
+    <DiagramFigure
+      id="lung-volumes-diagram"
+      title="Lung volumes"
+      description="Auto-generated wrapper for the Lung volumes anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <rect
+                  x={BAR_LEFT}
+                  y={bracket.top}
+                  width={BAR_WIDTH}
+                  height={bracket.bottom - bracket.top}
+                  fill={activeCapacity.color}
+                  opacity={0.08}
+                  stroke={activeCapacity.color}
+                  strokeWidth="1.5"
+                  strokeDasharray="4,3"
+                  rx="2"
+                  pointerEvents="none"
+                />
+    </DiagramFigure>
+  );
           })()}
         </svg>
       </div>

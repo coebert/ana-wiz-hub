@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Pattern = "normal" | "obstructive" | "restrictive" | "fixed-upper" | "variable-extra";
 
@@ -263,14 +264,20 @@ export const FlowVolumeLoopDiagram = () => {
           {loops.map(({ pattern, info: pInfo }) => {
             const pefrPt = toSvg(0.08 * pInfo.fvc, pInfo.pefr);
             return (
-              <g key={`pefr-${pattern}`}>
-                <line
-                  x1={pefrPt[0]} x2={pefrPt[0]}
-                  y1={pefrPt[1]} y2={pefrPt[1] + 4}
-                  stroke={pInfo.color} strokeWidth="1" opacity={0.5}
-                />
-              </g>
-            );
+    <DiagramFigure
+      id="flow-volume-loop-diagram"
+      title="Flow volume loop"
+      description="Auto-generated wrapper for the Flow volume loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g key={`pefr-${pattern}`}>
+                  <line
+                    x1={pefrPt[0]} x2={pefrPt[0]}
+                    y1={pefrPt[1]} y2={pefrPt[1] + 4}
+                    stroke={pInfo.color} strokeWidth="1" opacity={0.5}
+                  />
+                </g>
+    </DiagramFigure>
+  );
           })}
 
           {/* Loops */}

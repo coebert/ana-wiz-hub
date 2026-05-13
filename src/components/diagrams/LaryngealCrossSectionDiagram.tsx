@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type StructureKey = "epiglottis" | "hyoid" | "thyrohyoid" | "thyroid" | "cricothyroid-membrane" | "cricoid" | "arytenoid" | "vocal-cords" | "vestibular-folds" | "trachea" | "sln-internal" | "sln-external" | "rln" | "cricothyroid-joint" | "piriform-fossa" | "aryepiglottic-fold" | "conus-elasticus" | "quadrangular-membrane" | "pre-epiglottic" | "corniculate" | "cuneiform" | "reinke-space";
 
@@ -548,18 +549,24 @@ const LaryngealCrossSectionDiagram = () => {
                 {[0, 1, 2, 3].map((i) => {
                   const ty = 224 + i * 20;
                   return (
-                    <g key={i} className="cursor-pointer" onClick={click("trachea")}>
-                      <path
-                        d={`M95,${ty} C95,${ty - 4} 105,${ty - 6} 130,${ty - 6} C155,${ty - 6} 165,${ty - 4} 165,${ty} L165,${ty + 10} C165,${ty + 14} 155,${ty + 16} 130,${ty + 16} C105,${ty + 16} 95,${ty + 14} 95,${ty + 10} Z`}
-                        fill={structures.trachea.color}
-                        fillOpacity={isActive("trachea") ? 0.4 : 0.12}
-                        stroke={structures.trachea.color}
-                        strokeWidth={isActive("trachea") ? 1.5 : 0.8}
-                        className="transition-all duration-200"
-                      />
-                      <line x1="105" y1={ty + 5} x2="155" y2={ty + 5} stroke={structures.trachea.color} strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3" />
-                    </g>
-                  );
+    <DiagramFigure
+      id="laryngeal-cross-section-diagram"
+      title="Laryngeal cross section"
+      description="Auto-generated wrapper for the Laryngeal cross section anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <g key={i} className="cursor-pointer" onClick={click("trachea")}>
+                        <path
+                          d={`M95,${ty} C95,${ty - 4} 105,${ty - 6} 130,${ty - 6} C155,${ty - 6} 165,${ty - 4} 165,${ty} L165,${ty + 10} C165,${ty + 14} 155,${ty + 16} 130,${ty + 16} C105,${ty + 16} 95,${ty + 14} 95,${ty + 10} Z`}
+                          fill={structures.trachea.color}
+                          fillOpacity={isActive("trachea") ? 0.4 : 0.12}
+                          stroke={structures.trachea.color}
+                          strokeWidth={isActive("trachea") ? 1.5 : 0.8}
+                          className="transition-all duration-200"
+                        />
+                        <line x1="105" y1={ty + 5} x2="155" y2={ty + 5} stroke={structures.trachea.color} strokeWidth="0.5" strokeDasharray="2 2" opacity="0.3" />
+                      </g>
+    </DiagramFigure>
+  );
                 })}
                 <text x="210" y="250" fontSize="7" fill={isActive("trachea") ? structures.trachea.color : "hsl(var(--muted-foreground))"} fontWeight={isActive("trachea") ? "bold" : "normal"} className="cursor-pointer select-none" onClick={click("trachea")}>Trachea</text>
 

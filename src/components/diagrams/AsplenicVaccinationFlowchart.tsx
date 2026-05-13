@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Timing = "elective" | "emergency" | "established";
 
@@ -133,16 +134,22 @@ export const AsplenicVaccinationFlowchart = () => {
           {VACCINE_GROUPS.map(g => {
             const isActive = activeGroup === g.key;
             return (
-              <button
-                key={g.key}
-                onClick={() => setActiveGroup(g.key)}
-                className={`text-left rounded-lg border p-2 transition ${
-                  isActive ? "border-physiology bg-physiology/10" : "border-border hover:bg-secondary/40"
-                }`}
-              >
-                <div className="text-xs font-semibold text-foreground leading-tight">{g.name}</div>
-              </button>
-            );
+    <DiagramFigure
+      id="asplenic-vaccination-flowchart"
+      title="Asplenic vaccination"
+      description="Auto-generated wrapper for the Asplenic vaccination clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button
+                  key={g.key}
+                  onClick={() => setActiveGroup(g.key)}
+                  className={`text-left rounded-lg border p-2 transition ${
+                    isActive ? "border-physiology bg-physiology/10" : "border-border hover:bg-secondary/40"
+                  }`}
+                >
+                  <div className="text-xs font-semibold text-foreground leading-tight">{g.name}</div>
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
         <div className="rounded-lg border border-border p-3 space-y-2 text-sm">

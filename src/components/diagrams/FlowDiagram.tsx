@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type FlowType = "laminar" | "turbulent";
 
@@ -98,15 +99,21 @@ export const FlowDiagram = () => {
               const y = 55 + Math.random() * 110;
               const angle = (Math.random() - 0.5) * 60;
               return (
-                <g key={i} transform={`translate(${x},${y}) rotate(${angle})`}>
-                  <line x1="-12" y1="0" x2="12" y2="0" stroke="hsl(var(--destructive))" strokeWidth="1.5" opacity="0.7">
-                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${1 + Math.random() * 2}s`} repeatCount="indefinite" />
-                  </line>
-                  <polygon points="12,0 6,-3 6,3" fill="hsl(var(--destructive))" opacity="0.7">
-                    <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${1 + Math.random() * 2}s`} repeatCount="indefinite" />
-                  </polygon>
-                </g>
-              );
+    <DiagramFigure
+      id="flow-diagram"
+      title="Flow"
+      description="Auto-generated wrapper for the Flow anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={i} transform={`translate(${x},${y}) rotate(${angle})`}>
+                    <line x1="-12" y1="0" x2="12" y2="0" stroke="hsl(var(--destructive))" strokeWidth="1.5" opacity="0.7">
+                      <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${1 + Math.random() * 2}s`} repeatCount="indefinite" />
+                    </line>
+                    <polygon points="12,0 6,-3 6,3" fill="hsl(var(--destructive))" opacity="0.7">
+                      <animate attributeName="opacity" values="0.3;0.8;0.3" dur={`${1 + Math.random() * 2}s`} repeatCount="indefinite" />
+                    </polygon>
+                  </g>
+    </DiagramFigure>
+  );
             })}
             <text x="370" y="110" fill="hsl(var(--foreground))" fontSize="11" textAnchor="middle" fontWeight="bold">
               Flat

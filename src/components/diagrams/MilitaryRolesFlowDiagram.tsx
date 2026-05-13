@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated handover / resource flow across NATO Roles 1–4 with CCAST in transit.
@@ -193,34 +194,40 @@ export const MilitaryRolesFlowDiagram = () => {
           {NODES.map((n) => {
             const isActive = active === n.id;
             return (
-              <g key={n.id}>
-                <circle
-                  cx={n.x}
-                  cy={120}
-                  r={isActive ? 22 : 18}
-                  fill={isActive ? n.color : "hsl(var(--card))"}
-                  stroke={n.color}
-                  strokeWidth={isActive ? 2.5 : 1.6}
-                  style={{ transition: "r 250ms" }}
-                />
-                <text x={n.x} y={124} textAnchor="middle" fontSize="11" fontWeight="700"
-                      fill={isActive ? "hsl(var(--background))" : n.color}>
-                  {n.id === 0 ? "PoW" : `R${n.id}`}
-                </text>
-                <text x={n.x} y={156} textAnchor="middle" fontSize="11" fontWeight="600"
-                      fill="hsl(var(--foreground))">{n.label}</text>
-                <text x={n.x} y={172} textAnchor="middle" fontSize="9.5" fill="hsl(var(--muted-foreground))">
-                  {n.sub}
-                </text>
-
-                {/* Handover ISBAR pulse */}
-                {handoverPulse?.node === n.id && (
-                  <circle cx={n.x} cy={120} r={22 + handoverPulse.p * 25}
-                          fill="none" stroke="hsl(var(--primary))" strokeWidth="2"
-                          opacity={1 - handoverPulse.p} />
-                )}
-              </g>
-            );
+    <DiagramFigure
+      id="military-roles-flow-diagram"
+      title="Military roles flow"
+      description="Auto-generated wrapper for the Military roles flow anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g key={n.id}>
+                  <circle
+                    cx={n.x}
+                    cy={120}
+                    r={isActive ? 22 : 18}
+                    fill={isActive ? n.color : "hsl(var(--card))"}
+                    stroke={n.color}
+                    strokeWidth={isActive ? 2.5 : 1.6}
+                    style={{ transition: "r 250ms" }}
+                  />
+                  <text x={n.x} y={124} textAnchor="middle" fontSize="11" fontWeight="700"
+                        fill={isActive ? "hsl(var(--background))" : n.color}>
+                    {n.id === 0 ? "PoW" : `R${n.id}`}
+                  </text>
+                  <text x={n.x} y={156} textAnchor="middle" fontSize="11" fontWeight="600"
+                        fill="hsl(var(--foreground))">{n.label}</text>
+                  <text x={n.x} y={172} textAnchor="middle" fontSize="9.5" fill="hsl(var(--muted-foreground))">
+                    {n.sub}
+                  </text>
+  
+                  {/* Handover ISBAR pulse */}
+                  {handoverPulse?.node === n.id && (
+                    <circle cx={n.x} cy={120} r={22 + handoverPulse.p * 25}
+                            fill="none" stroke="hsl(var(--primary))" strokeWidth="2"
+                            opacity={1 - handoverPulse.p} />
+                  )}
+                </g>
+    </DiagramFigure>
+  );
           })}
 
           {/* Casualty token */}

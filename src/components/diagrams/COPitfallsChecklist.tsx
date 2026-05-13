@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Severity = "critical" | "major" | "minor";
 
@@ -238,40 +239,46 @@ const COPitfallsChecklist = () => {
                 const isChecked = !!checked[key];
                 const sev = severityStyles[p.severity];
                 return (
-                  <li
-                    key={p.id}
-                    className={`rounded-lg border border-border p-3 transition-colors ${isChecked ? "bg-muted/40 opacity-70" : "bg-background"}`}
-                  >
-                    <div className="flex items-start gap-3">
-                      <Checkbox
-                        id={key}
-                        checked={isChecked}
-                        onCheckedChange={() => toggle(p.id)}
-                        className="mt-0.5"
-                      />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2 mb-1">
-                          <label
-                            htmlFor={key}
-                            className={`font-semibold text-sm text-foreground cursor-pointer ${isChecked ? "line-through" : ""}`}
-                          >
-                            <span className={`inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle ${sev.dot}`} />
-                            {p.title}
-                          </label>
-                          <Badge variant="outline" className={`text-[10px] uppercase tracking-wide ${sev.badge}`}>
-                            {sev.label}
-                          </Badge>
+    <DiagramFigure
+      id="co-pitfalls-checklist"
+      title="CO pitfalls checklist"
+      description="Auto-generated wrapper for the CO pitfalls checklist anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <li
+                      key={p.id}
+                      className={`rounded-lg border border-border p-3 transition-colors ${isChecked ? "bg-muted/40 opacity-70" : "bg-background"}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <Checkbox
+                          id={key}
+                          checked={isChecked}
+                          onCheckedChange={() => toggle(p.id)}
+                          className="mt-0.5"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-2 mb-1">
+                            <label
+                              htmlFor={key}
+                              className={`font-semibold text-sm text-foreground cursor-pointer ${isChecked ? "line-through" : ""}`}
+                            >
+                              <span className={`inline-block w-1.5 h-1.5 rounded-full mr-2 align-middle ${sev.dot}`} />
+                              {p.title}
+                            </label>
+                            <Badge variant="outline" className={`text-[10px] uppercase tracking-wide ${sev.badge}`}>
+                              {sev.label}
+                            </Badge>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground">Why:</span> {p.why}
+                          </p>
+                          <p className="text-xs text-muted-foreground leading-relaxed mt-1">
+                            <span className="font-medium text-foreground">Exam pearl:</span> {p.examPearl}
+                          </p>
                         </div>
-                        <p className="text-xs text-muted-foreground leading-relaxed">
-                          <span className="font-medium text-foreground">Why:</span> {p.why}
-                        </p>
-                        <p className="text-xs text-muted-foreground leading-relaxed mt-1">
-                          <span className="font-medium text-foreground">Exam pearl:</span> {p.examPearl}
-                        </p>
                       </div>
-                    </div>
-                  </li>
-                );
+                    </li>
+    </DiagramFigure>
+  );
               })}
               {visible.length === 0 && (
                 <li className="text-xs text-muted-foreground text-center py-6">No pitfalls in this severity for this modality.</li>

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Neuraxial complication risk stratification tool.
@@ -307,20 +308,26 @@ const NeuraxialAnticoagRiskTool = () => {
                 const active = coag === c;
                 const accent = c === "abnormal" ? "hsl(0, 75%, 48%)" : c === "unknown" ? "hsl(38, 92%, 48%)" : "hsl(140, 55%, 42%)";
                 return (
-                  <button
-                    key={c}
-                    onClick={() => setCoag(c)}
-                    aria-pressed={active}
-                    className="px-3 py-1 rounded-md text-xs font-medium border transition-all capitalize"
-                    style={{
-                      borderColor: active ? accent : "hsl(var(--border))",
-                      backgroundColor: active ? withAlpha(accent, 0.15) : "transparent",
-                      color: active ? accent : "hsl(var(--foreground))",
-                    }}
-                  >
-                    {c}
-                  </button>
-                );
+    <DiagramFigure
+      id="neuraxial-anticoag-risk-tool"
+      title="Neuraxial anticoag risk tool"
+      description="Auto-generated wrapper for the Neuraxial anticoag risk tool anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <button
+                      key={c}
+                      onClick={() => setCoag(c)}
+                      aria-pressed={active}
+                      className="px-3 py-1 rounded-md text-xs font-medium border transition-all capitalize"
+                      style={{
+                        borderColor: active ? accent : "hsl(var(--border))",
+                        backgroundColor: active ? withAlpha(accent, 0.15) : "transparent",
+                        color: active ? accent : "hsl(var(--foreground))",
+                      }}
+                    >
+                      {c}
+                    </button>
+    </DiagramFigure>
+  );
               })}
             </div>
           </div>

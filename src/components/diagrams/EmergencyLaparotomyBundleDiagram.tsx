@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * NELA emergency-laparotomy care bundle visualised as a horizontal pathway
@@ -160,39 +161,45 @@ export const EmergencyLaparotomyBundleDiagram = () => {
               ? "hsl(var(--clinical))"
               : "hsl(var(--card))";
             return (
-              <g key={n.key}>
-                <circle
-                  cx={n.x}
-                  cy={110}
-                  r={isActive ? 18 : 13}
-                  fill={fill}
-                  stroke={isActive ? "hsl(var(--icu))" : "hsl(var(--border))"}
-                  strokeWidth={isActive ? 2.5 : 1.5}
-                  style={{ transition: "all 400ms ease" }}
-                />
-                <text
-                  x={n.x}
-                  y={114}
-                  textAnchor="middle"
-                  fontSize="11"
-                  fontWeight={700}
-                  fill={isActive || isDone ? "hsl(var(--background))" : "hsl(var(--muted-foreground))"}
-                >
-                  {i + 1}
-                </text>
-                <text
-                  x={n.x}
-                  y={isActive ? 150 : 145}
-                  textAnchor="middle"
-                  fontSize="10"
-                  fontWeight={isActive ? 700 : 500}
-                  fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
-                  style={{ transition: "all 400ms ease" }}
-                >
-                  {n.short}
-                </text>
-              </g>
-            );
+    <DiagramFigure
+      id="emergency-laparotomy-bundle-diagram"
+      title="Emergency laparotomy bundle"
+      description="Auto-generated wrapper for the Emergency laparotomy bundle anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g key={n.key}>
+                  <circle
+                    cx={n.x}
+                    cy={110}
+                    r={isActive ? 18 : 13}
+                    fill={fill}
+                    stroke={isActive ? "hsl(var(--icu))" : "hsl(var(--border))"}
+                    strokeWidth={isActive ? 2.5 : 1.5}
+                    style={{ transition: "all 400ms ease" }}
+                  />
+                  <text
+                    x={n.x}
+                    y={114}
+                    textAnchor="middle"
+                    fontSize="11"
+                    fontWeight={700}
+                    fill={isActive || isDone ? "hsl(var(--background))" : "hsl(var(--muted-foreground))"}
+                  >
+                    {i + 1}
+                  </text>
+                  <text
+                    x={n.x}
+                    y={isActive ? 150 : 145}
+                    textAnchor="middle"
+                    fontSize="10"
+                    fontWeight={isActive ? 700 : 500}
+                    fill={isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground))"}
+                    style={{ transition: "all 400ms ease" }}
+                  >
+                    {n.short}
+                  </text>
+                </g>
+    </DiagramFigure>
+  );
           })}
 
           {/* Active node detail callout */}

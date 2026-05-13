@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Mode = "age" | "weight";
 
@@ -411,28 +412,34 @@ const PaediatricEquipmentSizer = () => {
           const rows = equipment.filter((e) => e.category === cat);
           if (!rows.length) return null;
           return (
-            <div key={cat}>
-              <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{cat}</p>
-              <div className="grid md:grid-cols-2 gap-1.5">
-                {rows.map((row) => (
-                  <div
-                    key={row.item}
-                    className="p-2.5 rounded-lg border border-border bg-background"
-                    style={{ borderLeftWidth: 3, borderLeftColor: row.color }}
-                  >
-                    <div className="flex items-baseline justify-between gap-2">
-                      <p className="text-sm font-semibold text-foreground">{row.item}</p>
-                      <p className="text-sm font-bold font-mono" style={{ color: row.color }}>
-                        {row.value}
-                      </p>
+    <DiagramFigure
+      id="paediatric-equipment-sizer"
+      title="Paediatric equipment sizer"
+      description="Auto-generated wrapper for the Paediatric equipment sizer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <div key={cat}>
+                <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">{cat}</p>
+                <div className="grid md:grid-cols-2 gap-1.5">
+                  {rows.map((row) => (
+                    <div
+                      key={row.item}
+                      className="p-2.5 rounded-lg border border-border bg-background"
+                      style={{ borderLeftWidth: 3, borderLeftColor: row.color }}
+                    >
+                      <div className="flex items-baseline justify-between gap-2">
+                        <p className="text-sm font-semibold text-foreground">{row.item}</p>
+                        <p className="text-sm font-bold font-mono" style={{ color: row.color }}>
+                          {row.value}
+                        </p>
+                      </div>
+                      <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {row.formula}</p>
+                      <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{row.note}</p>
                     </div>
-                    <p className="text-[10px] text-muted-foreground font-mono mt-0.5">Formula: {row.formula}</p>
-                    <p className="text-xs text-muted-foreground/90 mt-1 leading-snug">{row.note}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          );
+    </DiagramFigure>
+  );
         })}
       </div>
 

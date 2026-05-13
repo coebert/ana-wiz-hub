@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Bone {
   id: string;
@@ -497,67 +498,73 @@ const OrbitBonyAnatomyDiagram = () => {
             const [cx, cy] =
               o.shape.type === "ellipse" ? [o.shape.cx, o.shape.cy] : o.shape.centroid;
             return (
-              <g
-                key={o.id}
-                className="cursor-pointer"
-                onClick={() => {
-                  setSelectedOpening(selectedOpening === o.id ? null : o.id);
-                  setSelectedBone(null);
-                }}
-              >
-                {o.shape.type === "ellipse" ? (
-                  <ellipse
-                    cx={o.shape.cx}
-                    cy={o.shape.cy}
-                    rx={o.shape.rx}
-                    ry={o.shape.ry}
-                    transform={o.shape.rotate ? `rotate(${o.shape.rotate} ${o.shape.cx} ${o.shape.cy})` : undefined}
-                    fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
-                    fillOpacity={isSel ? 0.95 : 0.82}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={1}
-                  />
-                ) : (
-                  <path
-                    d={o.shape.d}
-                    fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
-                    fillOpacity={isSel ? 0.92 : 0.78}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={1}
-                  />
-                )}
-
-                {/* Leader line */}
-                {showLabels && (
-                  <line
-                    x1={cx}
-                    y1={cy}
-                    x2={o.labelX}
-                    y2={o.labelY}
-                    stroke={isSel ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
-                    strokeWidth={isSel ? 0.9 : 0.6}
-                    opacity={isSel ? 0.85 : 0.55}
-                    pointerEvents="none"
-                  />
-                )}
-
-                {/* Label */}
-                {showLabels && (
-                  <text
-                    x={o.labelX}
-                    y={o.labelY - 3}
-                    textAnchor={
-                      o.labelX < 230 ? "end" : o.labelX > 470 ? "start" : "middle"
-                    }
-                    className="text-[8.5px] fill-foreground pointer-events-none select-none"
-                    opacity={isSel ? 1 : 0.85}
-                    fontWeight={isSel ? 600 : 400}
-                  >
-                    {o.label}
-                  </text>
-                )}
-              </g>
-            );
+    <DiagramFigure
+      id="orbit-bony-anatomy-diagram"
+      title="Orbit bony anatomy"
+      description="Auto-generated wrapper for the Orbit bony anatomy anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g
+                  key={o.id}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setSelectedOpening(selectedOpening === o.id ? null : o.id);
+                    setSelectedBone(null);
+                  }}
+                >
+                  {o.shape.type === "ellipse" ? (
+                    <ellipse
+                      cx={o.shape.cx}
+                      cy={o.shape.cy}
+                      rx={o.shape.rx}
+                      ry={o.shape.ry}
+                      transform={o.shape.rotate ? `rotate(${o.shape.rotate} ${o.shape.cx} ${o.shape.cy})` : undefined}
+                      fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+                      fillOpacity={isSel ? 0.95 : 0.82}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={1}
+                    />
+                  ) : (
+                    <path
+                      d={o.shape.d}
+                      fill={isSel ? "hsl(var(--primary))" : "hsl(var(--foreground))"}
+                      fillOpacity={isSel ? 0.92 : 0.78}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={1}
+                    />
+                  )}
+  
+                  {/* Leader line */}
+                  {showLabels && (
+                    <line
+                      x1={cx}
+                      y1={cy}
+                      x2={o.labelX}
+                      y2={o.labelY}
+                      stroke={isSel ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
+                      strokeWidth={isSel ? 0.9 : 0.6}
+                      opacity={isSel ? 0.85 : 0.55}
+                      pointerEvents="none"
+                    />
+                  )}
+  
+                  {/* Label */}
+                  {showLabels && (
+                    <text
+                      x={o.labelX}
+                      y={o.labelY - 3}
+                      textAnchor={
+                        o.labelX < 230 ? "end" : o.labelX > 470 ? "start" : "middle"
+                      }
+                      className="text-[8.5px] fill-foreground pointer-events-none select-none"
+                      opacity={isSel ? 1 : 0.85}
+                      fontWeight={isSel ? 600 : 400}
+                    >
+                      {o.label}
+                    </text>
+                  )}
+                </g>
+    </DiagramFigure>
+  );
           })}
         </svg>
 

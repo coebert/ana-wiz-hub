@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Region = {
   id: string;
@@ -348,11 +349,17 @@ const NerveDermatomeOverlayDiagram = () => {
               const cx = parseFloat(m[1]) + 25;
               const cy = parseFloat(m[2]) + 20;
               return (
-                <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
-                  <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
-                  <animate attributeName="opacity" values="1;0;1" dur="1.6s" repeatCount="indefinite" />
-                </circle>
-              );
+    <DiagramFigure
+      id="nerve-dermatome-overlay-diagram"
+      title="Nerve dermatome overlay"
+      description="Auto-generated wrapper for the Nerve dermatome overlay anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <circle cx={cx} cy={cy} r="8" fill="none" stroke="hsl(var(--primary))" strokeWidth="2">
+                    <animate attributeName="r" values="8;16;8" dur="1.6s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="1;0;1" dur="1.6s" repeatCount="indefinite" />
+                  </circle>
+    </DiagramFigure>
+  );
             })()}
 
             {/* Legend */}

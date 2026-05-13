@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated major-incident triage flow.
@@ -230,16 +231,22 @@ export const MajorIncidentTriageDiagram = () => {
                   const reveal = streamP * lane.n;
                   const visible = i < reveal;
                   return (
-                    <circle
-                      key={i}
-                      cx={lane.x + 14 + (i % 6) * 18}
-                      cy={300 + Math.floor(i / 6) * 18}
-                      r={5}
-                      fill={lane.color}
-                      opacity={visible ? 0.9 : 0.15}
-                      style={{ transition: "opacity 200ms" }}
-                    />
-                  );
+    <DiagramFigure
+      id="major-incident-triage-diagram"
+      title="Major incident triage"
+      description="Auto-generated wrapper for the Major incident triage anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <circle
+                        key={i}
+                        cx={lane.x + 14 + (i % 6) * 18}
+                        cy={300 + Math.floor(i / 6) * 18}
+                        r={5}
+                        fill={lane.color}
+                        opacity={visible ? 0.9 : 0.15}
+                        style={{ transition: "opacity 200ms" }}
+                      />
+    </DiagramFigure>
+  );
                 })}
               </g>
             ))}

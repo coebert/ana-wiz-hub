@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Zone {
   id: string;
@@ -136,18 +137,24 @@ const AirwayInnervationDiagram = () => {
             {zones.map((z) => {
               const isActive = selected === z.id;
               return (
-                <g key={z.id} onClick={() => setSelected(isActive ? null : z.id)} className="cursor-pointer">
-                  <path
-                    d={z.path}
-                    fill={`url(#aw-grad-${z.id})`}
-                    stroke={z.color}
-                    strokeWidth={isActive ? 2.5 : 1.5}
-                    opacity={selected && !isActive ? 0.3 : 1}
-                    filter={isActive ? "url(#aw-glow)" : undefined}
-                    className="transition-all duration-300"
-                  />
-                </g>
-              );
+    <DiagramFigure
+      id="airway-innervation-diagram"
+      title="Airway innervation"
+      description="Auto-generated wrapper for the Airway innervation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g key={z.id} onClick={() => setSelected(isActive ? null : z.id)} className="cursor-pointer">
+                    <path
+                      d={z.path}
+                      fill={`url(#aw-grad-${z.id})`}
+                      stroke={z.color}
+                      strokeWidth={isActive ? 2.5 : 1.5}
+                      opacity={selected && !isActive ? 0.3 : 1}
+                      filter={isActive ? "url(#aw-glow)" : undefined}
+                      className="transition-all duration-300"
+                    />
+                  </g>
+    </DiagramFigure>
+  );
             })}
 
             {/* Zone labels on diagram */}

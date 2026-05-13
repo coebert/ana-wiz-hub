@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Approximate CSHT (minutes) from published Hughes/Shafer pharmacokinetic
 // simulations. Values are interpolated piecewise from infusion-duration
@@ -233,12 +234,18 @@ export const CSHTComparisonDiagram = () => {
           {visible.map((d) => {
             const y = interpolate(d.points, duration);
             return (
-              <g key={`dot-${d.key}`}>
-                <circle cx={xScale(duration)} cy={yScale(y)} r="4.5" fill={d.color} stroke="hsl(var(--background))" strokeWidth="1.5">
-                  <animate attributeName="r" values="3.5;5.5;3.5" dur="1.6s" repeatCount="indefinite" />
-                </circle>
-              </g>
-            );
+    <DiagramFigure
+      id="csht-comparison-diagram"
+      title="CSHT comparison"
+      description="Auto-generated wrapper for the CSHT comparison anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <g key={`dot-${d.key}`}>
+                  <circle cx={xScale(duration)} cy={yScale(y)} r="4.5" fill={d.color} stroke="hsl(var(--background))" strokeWidth="1.5">
+                    <animate attributeName="r" values="3.5;5.5;3.5" dur="1.6s" repeatCount="indefinite" />
+                  </circle>
+                </g>
+    </DiagramFigure>
+  );
           })}
         </svg>
       </div>

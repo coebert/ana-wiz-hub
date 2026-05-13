@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AlertTriangle, CheckCircle2, Info } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export type MapImpact = "avoid" | "caution" | "preferred";
 
@@ -152,30 +153,36 @@ export const PathophysDrugMapper = ({ title, tagline, mechanisms }: PathophysDru
                 const s = impactStyles[link.impact];
                 const Icon = s.Icon;
                 return (
-                  <li
-                    key={`${active.id}-${i}`}
-                    className="bg-card border border-border rounded-md p-3 flex gap-3"
-                  >
-                    <span className={`mt-1 h-2.5 w-2.5 rounded-full shrink-0 ${s.dot}`} aria-hidden />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center flex-wrap gap-2 mb-1">
-                        <span className="text-sm font-semibold text-foreground">{link.drug}</span>
-                        <span
-                          className={`text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border inline-flex items-center gap-1 ${s.chip}`}
-                          title={IMPACT_DEFINITIONS[link.impact]}
-                          aria-label={`${s.label}: ${IMPACT_DEFINITIONS[link.impact]}`}
-                        >
-                          <Icon className="h-3 w-3" aria-hidden />
-                          {s.label}
-                        </span>
+    <DiagramFigure
+      id="pathophys-drug-mapper"
+      title="Pathophys drug mapper"
+      description="Auto-generated wrapper for the Pathophys drug mapper anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                        <li
+                      key={`${active.id}-${i}`}
+                      className="bg-card border border-border rounded-md p-3 flex gap-3"
+                    >
+                      <span className={`mt-1 h-2.5 w-2.5 rounded-full shrink-0 ${s.dot}`} aria-hidden />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center flex-wrap gap-2 mb-1">
+                          <span className="text-sm font-semibold text-foreground">{link.drug}</span>
+                          <span
+                            className={`text-[10px] uppercase tracking-wide px-1.5 py-0.5 rounded border inline-flex items-center gap-1 ${s.chip}`}
+                            title={IMPACT_DEFINITIONS[link.impact]}
+                            aria-label={`${s.label}: ${IMPACT_DEFINITIONS[link.impact]}`}
+                          >
+                            <Icon className="h-3 w-3" aria-hidden />
+                            {s.label}
+                          </span>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          <span className="text-foreground/80">{link.effect}</span>
+                          <span className="block mt-1">→ {link.caution}</span>
+                        </p>
                       </div>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        <span className="text-foreground/80">{link.effect}</span>
-                        <span className="block mt-1">→ {link.caution}</span>
-                      </p>
-                    </div>
-                  </li>
-                );
+                    </li>
+    </DiagramFigure>
+  );
               })}
             </ul>
           </div>

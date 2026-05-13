@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface SiteData {
   label: string;
@@ -101,57 +102,63 @@ const InfectionSiteMapDiagram = () => {
   const active = sites[selected];
 
   return (
-    <div className="my-8">
-      <h3 className="text-xl font-serif font-bold text-foreground mb-4">Organisms by Infection Site</h3>
-      <p className="text-sm text-muted-foreground mb-4">
-        Tap a body site to see the common causative organisms, key clinical pearls, and empiric antibiotic guidance.
-      </p>
-
-      {/* Site selector */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-5">
-        {sites.map((site, i) => (
-          <button
-            key={site.label}
-            onClick={() => setSelected(i)}
-            className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-all text-center ${
-              selected === i
-                ? "border-primary bg-primary/10 shadow-sm"
-                : "border-border hover:border-primary/40 bg-card"
-            }`}
-          >
-            <span className="text-2xl">{site.icon}</span>
-            <span className={`text-xs font-semibold ${selected === i ? "text-primary" : "text-foreground"}`}>
-              {site.label}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      {/* Detail panel */}
-      <div className="rounded-lg border border-border bg-card overflow-hidden">
-        <div
-          className="px-4 py-3 flex items-center gap-2"
-          style={{ backgroundColor: `${active.color}20`, borderBottom: `2px solid ${active.color}` }}
-        >
-          <span className="text-xl">{active.icon}</span>
-          <h4 className="font-bold text-foreground">{active.label} Infections</h4>
-        </div>
-
-        <div className="divide-y divide-border">
-          {active.organisms.map((org) => (
-            <div key={org.name} className="px-4 py-2.5 flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
-              <span className="text-sm font-semibold text-foreground italic whitespace-nowrap">{org.name}</span>
-              <span className="text-xs text-muted-foreground">{org.note}</span>
-            </div>
+    <DiagramFigure
+      id="infection-site-map-diagram"
+      title="Infection site MAP"
+      description="Auto-generated wrapper for the Infection site MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className="my-8">
+        <h3 className="text-xl font-serif font-bold text-foreground mb-4">Organisms by Infection Site</h3>
+        <p className="text-sm text-muted-foreground mb-4">
+          Tap a body site to see the common causative organisms, key clinical pearls, and empiric antibiotic guidance.
+        </p>
+  
+        {/* Site selector */}
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-5">
+          {sites.map((site, i) => (
+            <button
+              key={site.label}
+              onClick={() => setSelected(i)}
+              className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-all text-center ${
+                selected === i
+                  ? "border-primary bg-primary/10 shadow-sm"
+                  : "border-border hover:border-primary/40 bg-card"
+              }`}
+            >
+              <span className="text-2xl">{site.icon}</span>
+              <span className={`text-xs font-semibold ${selected === i ? "text-primary" : "text-foreground"}`}>
+                {site.label}
+              </span>
+            </button>
           ))}
         </div>
-
-        <div className="px-4 py-3 bg-secondary/30 border-t border-border">
-          <p className="text-xs font-semibold text-foreground mb-0.5">Empiric Therapy</p>
-          <p className="text-xs text-muted-foreground">{active.empiric}</p>
+  
+        {/* Detail panel */}
+        <div className="rounded-lg border border-border bg-card overflow-hidden">
+          <div
+            className="px-4 py-3 flex items-center gap-2"
+            style={{ backgroundColor: `${active.color}20`, borderBottom: `2px solid ${active.color}` }}
+          >
+            <span className="text-xl">{active.icon}</span>
+            <h4 className="font-bold text-foreground">{active.label} Infections</h4>
+          </div>
+  
+          <div className="divide-y divide-border">
+            {active.organisms.map((org) => (
+              <div key={org.name} className="px-4 py-2.5 flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-3">
+                <span className="text-sm font-semibold text-foreground italic whitespace-nowrap">{org.name}</span>
+                <span className="text-xs text-muted-foreground">{org.note}</span>
+              </div>
+            ))}
+          </div>
+  
+          <div className="px-4 py-3 bg-secondary/30 border-t border-border">
+            <p className="text-xs font-semibold text-foreground mb-0.5">Empiric Therapy</p>
+            <p className="text-xs text-muted-foreground">{active.empiric}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </DiagramFigure>
   );
 };
 

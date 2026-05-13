@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface DecrementCurve {
   label: string;
@@ -196,19 +197,25 @@ const DecrementTimeDiagram = () => {
               const y50 = yScale(drugs[0].curves[1].fn(dur));
               const y80 = yScale(drugs[0].curves[2].fn(dur));
               return (
-                <g opacity="0.4">
-                  <line x1={xScale(dur) + 8} y1={y50} x2={xScale(dur) + 8} y2={y80}
-                    stroke={drugs[0].color} strokeWidth="0.75" />
-                  <line x1={xScale(dur) + 5} y1={y50} x2={xScale(dur) + 11} y2={y50}
-                    stroke={drugs[0].color} strokeWidth="0.5" />
-                  <line x1={xScale(dur) + 5} y1={y80} x2={xScale(dur) + 11} y2={y80}
-                    stroke={drugs[0].color} strokeWidth="0.5" />
-                  <text x={xScale(dur) + 14} y={(y50 + y80) / 2 + 2} fontSize="5"
-                    fill={drugs[0].color} fontWeight="600">
-                    ↕ {Math.round(drugs[0].curves[2].fn(dur) - drugs[0].curves[1].fn(dur))} min gap
-                  </text>
-                </g>
-              );
+    <DiagramFigure
+      id="decrement-time-diagram"
+      title="Decrement time"
+      description="Auto-generated wrapper for the Decrement time anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <g opacity="0.4">
+                    <line x1={xScale(dur) + 8} y1={y50} x2={xScale(dur) + 8} y2={y80}
+                      stroke={drugs[0].color} strokeWidth="0.75" />
+                    <line x1={xScale(dur) + 5} y1={y50} x2={xScale(dur) + 11} y2={y50}
+                      stroke={drugs[0].color} strokeWidth="0.5" />
+                    <line x1={xScale(dur) + 5} y1={y80} x2={xScale(dur) + 11} y2={y80}
+                      stroke={drugs[0].color} strokeWidth="0.5" />
+                    <text x={xScale(dur) + 14} y={(y50 + y80) / 2 + 2} fontSize="5"
+                      fill={drugs[0].color} fontWeight="600">
+                      ↕ {Math.round(drugs[0].curves[2].fn(dur) - drugs[0].curves[1].fn(dur))} min gap
+                    </text>
+                  </g>
+    </DiagramFigure>
+  );
             })()}
 
             {/* Legend */}

@@ -1,5 +1,6 @@
 import { ReactNode, useCallback, useEffect, useRef, useState, PointerEvent } from "react";
 import { ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface ZoomableSVGProps {
   children: ReactNode;
@@ -134,66 +135,72 @@ export const ZoomableSVG = ({
   const isZoomed = scale !== 1 || tx !== 0 || ty !== 0;
 
   return (
-    <div className={`relative group ${className}`}>
-      <div
-        ref={containerRef}
-        role="application"
-        aria-label={label}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-        className="overflow-hidden rounded-md select-none touch-none"
-        style={{ cursor: scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
-      >
+    <DiagramFigure
+      id="zoomable-svg"
+      title="Zoomable svg"
+      description="Auto-generated wrapper for the Zoomable svg anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <div className={`relative group ${className}`}>
         <div
-          style={{
-            transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
-            transformOrigin: "center center",
-            transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
-            willChange: "transform",
-          }}
+          ref={containerRef}
+          role="application"
+          aria-label={label}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          className="overflow-hidden rounded-md select-none touch-none"
+          style={{ cursor: scale > 1 ? (panStart.current ? "grabbing" : "grab") : "default" }}
         >
-          {children}
+          <div
+            style={{
+              transform: `translate(${tx}px, ${ty}px) scale(${scale})`,
+              transformOrigin: "center center",
+              transition: pointers.current.size > 0 ? "none" : "transform 120ms ease-out",
+              willChange: "transform",
+            }}
+          >
+            {children}
+          </div>
         </div>
+  
+        {/* Controls */}
+        <div className="absolute top-2 right-2 flex flex-col gap-1 opacity-70 hover:opacity-100 focus-within:opacity-100 transition-opacity">
+          <button
+            type="button"
+            onClick={() => zoomAt(1.4)}
+            aria-label="Zoom in"
+            className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+          >
+            <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => zoomAt(1 / 1.4)}
+            aria-label="Zoom out"
+            className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
+          >
+            <ZoomOut className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={reset}
+            aria-label="Reset zoom and pan"
+            disabled={!isZoomed}
+            className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
+          </button>
+        </div>
+  
+        {/* Hint — first time only */}
+        {!isZoomed && (
+          <p className="absolute bottom-1 left-2 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
+            Scroll / pinch to zoom · drag to pan
+          </p>
+        )}
       </div>
-
-      {/* Controls */}
-      <div className="absolute top-2 right-2 flex flex-col gap-1 opacity-70 hover:opacity-100 focus-within:opacity-100 transition-opacity">
-        <button
-          type="button"
-          onClick={() => zoomAt(1.4)}
-          aria-label="Zoom in"
-          className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
-        >
-          <ZoomIn className="h-3.5 w-3.5" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={() => zoomAt(1 / 1.4)}
-          aria-label="Zoom out"
-          className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground"
-        >
-          <ZoomOut className="h-3.5 w-3.5" aria-hidden="true" />
-        </button>
-        <button
-          type="button"
-          onClick={reset}
-          aria-label="Reset zoom and pan"
-          disabled={!isZoomed}
-          className="h-7 w-7 rounded-md bg-background/90 border border-border shadow-sm flex items-center justify-center hover:bg-accent text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
-        >
-          <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-        </button>
-      </div>
-
-      {/* Hint — first time only */}
-      {!isZoomed && (
-        <p className="absolute bottom-1 left-2 text-[10px] text-muted-foreground/70 pointer-events-none select-none">
-          Scroll / pinch to zoom · drag to pan
-        </p>
-      )}
-    </div>
+    </DiagramFigure>
   );
 };
 

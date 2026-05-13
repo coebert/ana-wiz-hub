@@ -2,6 +2,7 @@ import { useState } from "react";
 import { withAlpha } from "@/lib/color-utils";
 import { DiagramToggleBar } from "./DiagramToggleBar";
 import { normaliseLevel, findLocalLevel, type CanonicalLevel } from "@/lib/dermatome-sync";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Dermatome = {
   level: string;
@@ -294,15 +295,21 @@ const InteractiveDermatomeMap = ({ selectedLevel, onLevelChange }: InteractiveDe
               const ex = 70 + (i * 40) / 9;
               const ey = 580 + (i % 3) * 8;
               return (
-                <path
-                  key={i}
-                  d={`M ${sx} 452 Q ${sx} ${(452 + ey) / 2}, ${ex} ${ey}`}
-                  stroke="hsl(var(--anatomy))"
-                  strokeWidth="0.75"
-                  fill="none"
-                  opacity="0.7"
-                />
-              );
+    <DiagramFigure
+      id="interactive-dermatome-map"
+      title="Interactive dermatome MAP"
+      description="Auto-generated wrapper for the Interactive dermatome MAP anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                      <path
+                    key={i}
+                    d={`M ${sx} 452 Q ${sx} ${(452 + ey) / 2}, ${ex} ${ey}`}
+                    stroke="hsl(var(--anatomy))"
+                    strokeWidth="0.75"
+                    fill="none"
+                    opacity="0.7"
+                  />
+    </DiagramFigure>
+  );
             })}
 
             {/* Region bands on right */}

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 export interface HotspotDef {
   id: string;
@@ -136,41 +137,47 @@ export const HotspotLayer = ({
   }
 
   return (
-    <g ref={containerRef} className="hotspot-layer">
-      {hotspots.map((h) => renderShape(h, h.id === activeId))}
-
-      {active && (
-        <g transform={`translate(${tx} ${ty})`} pointerEvents="none">
-          <rect
-            x={0}
-            y={0}
-            width={TIP_W}
-            height={TIP_H}
-            rx={6}
-            fill="hsl(var(--popover))"
-            stroke="hsl(var(--primary))"
-            strokeWidth={1}
-            opacity={0.98}
-            filter="drop-shadow(0 2px 4px rgba(0,0,0,0.18))"
-          />
-          <text x={8} y={14} fontSize={9} fontWeight={700} className="fill-foreground">
-            {active.label}
-          </text>
-          <foreignObject x={8} y={18} width={TIP_W - 16} height={TIP_H - 22}>
-            <div
-              style={{
-                fontSize: "9px",
-                lineHeight: 1.35,
-                color: "hsl(var(--muted-foreground))",
-                fontFamily: "inherit",
-              }}
-            >
-              {active.detail}
-            </div>
-          </foreignObject>
-        </g>
-      )}
-    </g>
+    <DiagramFigure
+      id="hotspot-layer"
+      title="Hotspot layer"
+      description="Auto-generated wrapper for the Hotspot layer anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+          <g ref={containerRef} className="hotspot-layer">
+        {hotspots.map((h) => renderShape(h, h.id === activeId))}
+  
+        {active && (
+          <g transform={`translate(${tx} ${ty})`} pointerEvents="none">
+            <rect
+              x={0}
+              y={0}
+              width={TIP_W}
+              height={TIP_H}
+              rx={6}
+              fill="hsl(var(--popover))"
+              stroke="hsl(var(--primary))"
+              strokeWidth={1}
+              opacity={0.98}
+              filter="drop-shadow(0 2px 4px rgba(0,0,0,0.18))"
+            />
+            <text x={8} y={14} fontSize={9} fontWeight={700} className="fill-foreground">
+              {active.label}
+            </text>
+            <foreignObject x={8} y={18} width={TIP_W - 16} height={TIP_H - 22}>
+              <div
+                style={{
+                  fontSize: "9px",
+                  lineHeight: 1.35,
+                  color: "hsl(var(--muted-foreground))",
+                  fontFamily: "inherit",
+                }}
+              >
+                {active.detail}
+              </div>
+            </foreignObject>
+          </g>
+        )}
+      </g>
+    </DiagramFigure>
   );
 };
 

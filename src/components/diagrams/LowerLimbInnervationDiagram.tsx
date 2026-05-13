@@ -5,6 +5,7 @@
 // uses the same convention.
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type NerveKey =
   | "lumbar-plexus"
@@ -322,17 +323,23 @@ const LowerLimbInnervationDiagram = () => {
             const n = NERVES[k];
             const active = selected === k;
             return (
-              <button key={k} type="button" onClick={() => setSelected(k)}
-                className="text-[11px] px-2 py-1 rounded-full border transition-colors"
-                style={{
-                  borderColor: active ? n.color : "hsl(var(--border))",
-                  backgroundColor: active ? `${n.color}1f` : "transparent",
-                  color: active ? n.color : "hsl(var(--foreground))",
-                  fontWeight: active ? 600 : 400,
-                }}>
-                {n.label}
-              </button>
-            );
+    <DiagramFigure
+      id="lower-limb-innervation-diagram"
+      title="Lower limb innervation"
+      description="Auto-generated wrapper for the Lower limb innervation anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <button key={k} type="button" onClick={() => setSelected(k)}
+                  className="text-[11px] px-2 py-1 rounded-full border transition-colors"
+                  style={{
+                    borderColor: active ? n.color : "hsl(var(--border))",
+                    backgroundColor: active ? `${n.color}1f` : "transparent",
+                    color: active ? n.color : "hsl(var(--foreground))",
+                    fontWeight: active ? 600 : 400,
+                  }}>
+                  {n.label}
+                </button>
+    </DiagramFigure>
+  );
           })}
         </div>
 

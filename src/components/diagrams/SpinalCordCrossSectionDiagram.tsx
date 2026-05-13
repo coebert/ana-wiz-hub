@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type LayerKey = "skin" | "subcut" | "supraspinous" | "interspinous" | "flavum" | "epidural" | "dura" | "arachnoid" | "subarachnoid" | "pia" | "cord" | "pll" | "vertebral-body";
 
@@ -174,169 +175,175 @@ const SpinalCordCrossSectionDiagram = () => {
                     const rY = l.h / 2 - 1;
 
                     return (
-                    <g>
-                      {/* ── White matter: overall cord ellipse ── */}
-                      <ellipse
-                        cx={cx} cy={cy} rx={rX} ry={rY}
-                        fill="hsl(0, 0%, 82%)"
-                        fillOpacity={isActive ? 0.35 : 0.12}
-                        stroke={isActive ? "hsl(0, 0%, 65%)" : "hsl(var(--border))"}
-                        strokeWidth={isActive ? 1.5 : 0.5}
-                        className="transition-all duration-200"
-                      />
-
-                      {/* ── White matter tract regions (filled wedges) ── */}
-                      <g opacity={isActive ? 0.22 : 0.06}>
-                        {/* Dorsal columns (fasciculus gracilis + cuneatus) */}
-                        <path d={`M${cx - 12},${cy - 2} L${cx - 16},${cy - rY + 1} A${rX},${rY} 0 0,1 ${cx + 16},${cy - rY + 1} L${cx + 12},${cy - 2} Z`}
-                          fill="hsl(210, 50%, 60%)" />
-                        {/* Dorsal column midline septum */}
-                        <line x1={cx} y1={cy - 2} x2={cx} y2={cy - rY + 2}
-                          stroke="hsl(0, 0%, 55%)" strokeWidth="0.5" opacity="0.5" />
-
-                        {/* Lateral corticospinal tracts */}
-                        <path d={`M${cx - 18},${cy - 6} C${cx - 35},${cy - 12} ${cx - rX + 8},${cy - 8} ${cx - rX + 5},${cy} C${cx - rX + 8},${cy + 5} ${cx - 30},${cy + 6} ${cx - 20},${cy + 3} Z`}
-                          fill="hsl(0, 45%, 58%)" />
-                        <path d={`M${cx + 18},${cy - 6} C${cx + 35},${cy - 12} ${cx + rX - 8},${cy - 8} ${cx + rX - 5},${cy} C${cx + rX - 8},${cy + 5} ${cx + 30},${cy + 6} ${cx + 20},${cy + 3} Z`}
-                          fill="hsl(0, 45%, 58%)" />
-
-                        {/* Spinothalamic tracts (anterolateral) */}
-                        <path d={`M${cx - 22},${cy + 4} C${cx - 40},${cy + 8} ${cx - rX + 5},${cy + 4} ${cx - rX + 8},${cy + rY - 6} C${cx - 35},${cy + rY - 2} ${cx - 20},${cy + 10} ${cx - 16},${cy + 5} Z`}
-                          fill="hsl(45, 55%, 55%)" />
-                        <path d={`M${cx + 22},${cy + 4} C${cx + 40},${cy + 8} ${cx + rX - 5},${cy + 4} ${cx + rX - 8},${cy + rY - 6} C${cx + 35},${cy + rY - 2} ${cx + 20},${cy + 10} ${cx + 16},${cy + 5} Z`}
-                          fill="hsl(45, 55%, 55%)" />
-
-                        {/* Anterior corticospinal tract */}
-                        <path d={`M${cx - 8},${cy + 3} L${cx - 10},${cy + rY - 3} A${rX},${rY} 0 0,0 ${cx + 10},${cy + rY - 3} L${cx + 8},${cy + 3} Z`}
-                          fill="hsl(140, 40%, 55%)" />
-                      </g>
-
-                      {/* White matter tract labels */}
-                      <g opacity={isActive ? 0.55 : 0.1} fontSize="3.5" fill="hsl(var(--muted-foreground))">
-                        <text x={cx} y={cy - rY + 6} textAnchor="middle" fontWeight="500">Dorsal columns</text>
-                        <text x={cx} y={cy - rY + 10} textAnchor="middle" fontSize="2.8" opacity="0.7">Gracilis | Cuneatus</text>
-                        <text x={cx - rX + 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
-                        <text x={cx - rX + 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
-                        <text x={cx + rX - 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
-                        <text x={cx + rX - 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
-                        <text x={cx - rX + 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
-                        <text x={cx + rX - 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
-                        <text x={cx} y={cy + rY - 4} textAnchor="middle" fontSize="2.8">Ant CST</text>
-                      </g>
-
-                      {/* ── Grey matter butterfly (filled shape) ── */}
-                      <g opacity={isActive ? 0.65 : 0.25}>
-                        {/* COMPLETE BUTTERFLY as single filled path */}
-                        <path d={`
-                          M${cx},${cy - 2}
-                          C${cx - 3},${cy - 3} ${cx - 8},${cy - 6} ${cx - 12},${cy - 10}
-                          C${cx - 14},${cy - 13} ${cx - 15},${cy - 15} ${cx - 14},${cy - 16}
-                          C${cx - 12},${cy - 17} ${cx - 10},${cy - 16} ${cx - 9},${cy - 14}
-                          C${cx - 7},${cy - 10} ${cx - 4},${cy - 6} ${cx - 3},${cy - 4}
-                          L${cx - 3},${cy - 2}
-                          L${cx - 5},${cy - 1}
-                          C${cx - 8},${cy} ${cx - 12},${cy - 2} ${cx - 16},${cy - 3}
-                          C${cx - 18},${cy - 3} ${cx - 18},${cy - 1} ${cx - 16},${cy}
-                          L${cx - 5},${cy + 1}
-                          C${cx - 5},${cy + 2} ${cx - 8},${cy + 3} ${cx - 14},${cy + 5}
-                          C${cx - 20},${cy + 7} ${cx - 26},${cy + 10} ${cx - 28},${cy + 12}
-                          C${cx - 30},${cy + 14} ${cx - 28},${cy + 15} ${cx - 25},${cy + 14}
-                          C${cx - 20},${cy + 12} ${cx - 14},${cy + 8} ${cx - 8},${cy + 5}
-                          C${cx - 5},${cy + 3} ${cx - 3},${cy + 2} ${cx},${cy + 2}
-                          C${cx + 3},${cy + 2} ${cx + 5},${cy + 3} ${cx + 8},${cy + 5}
-                          C${cx + 14},${cy + 8} ${cx + 20},${cy + 12} ${cx + 25},${cy + 14}
-                          C${cx + 28},${cy + 15} ${cx + 30},${cy + 14} ${cx + 28},${cy + 12}
-                          C${cx + 26},${cy + 10} ${cx + 20},${cy + 7} ${cx + 14},${cy + 5}
-                          C${cx + 8},${cy + 3} ${cx + 5},${cy + 2} ${cx + 5},${cy + 1}
-                          L${cx + 16},${cy}
-                          C${cx + 18},${cy - 1} ${cx + 18},${cy - 3} ${cx + 16},${cy - 3}
-                          C${cx + 12},${cy - 2} ${cx + 8},${cy} ${cx + 5},${cy - 1}
-                          L${cx + 3},${cy - 2}
-                          L${cx + 3},${cy - 4}
-                          C${cx + 4},${cy - 6} ${cx + 7},${cy - 10} ${cx + 9},${cy - 14}
-                          C${cx + 10},${cy - 16} ${cx + 12},${cy - 17} ${cx + 14},${cy - 16}
-                          C${cx + 15},${cy - 15} ${cx + 14},${cy - 13} ${cx + 12},${cy - 10}
-                          C${cx + 8},${cy - 6} ${cx + 3},${cy - 3} ${cx},${cy - 2}
-                          Z
-                        `}
-                          fill="hsl(0, 0%, 52%)" fillOpacity="0.7"
-                          stroke="hsl(0, 0%, 40%)" strokeWidth="0.5"
+    <DiagramFigure
+      id="spinal-cord-cross-section-diagram"
+      title="Spinal cord cross section"
+      description="Auto-generated wrapper for the Spinal cord cross section anatomical diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                          <g>
+                        {/* ── White matter: overall cord ellipse ── */}
+                        <ellipse
+                          cx={cx} cy={cy} rx={rX} ry={rY}
+                          fill="hsl(0, 0%, 82%)"
+                          fillOpacity={isActive ? 0.35 : 0.12}
+                          stroke={isActive ? "hsl(0, 0%, 65%)" : "hsl(var(--border))"}
+                          strokeWidth={isActive ? 1.5 : 0.5}
+                          className="transition-all duration-200"
                         />
-
-                        {/* Central canal */}
-                        <circle cx={cx} cy={cy} r="1.8" fill="hsl(200, 50%, 65%)" stroke="hsl(200, 40%, 50%)" strokeWidth="0.5" />
-
-                        {/* Substantia gelatinosa caps (Rexed lamina II) on posterior horns */}
-                        <ellipse cx={cx - 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
-                        <ellipse cx={cx + 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
-
-                        {/* Motor neuron cell bodies in anterior horns */}
-                        {[
-                          [cx - 22, cy + 11], [cx - 25, cy + 13], [cx - 20, cy + 13],
-                          [cx + 22, cy + 11], [cx + 25, cy + 13], [cx + 20, cy + 13],
-                        ].map(([px, py], i) => (
-                          <circle key={i} cx={px} cy={py} r="1.3" fill="hsl(0, 0%, 38%)" opacity="0.5" />
-                        ))}
+  
+                        {/* ── White matter tract regions (filled wedges) ── */}
+                        <g opacity={isActive ? 0.22 : 0.06}>
+                          {/* Dorsal columns (fasciculus gracilis + cuneatus) */}
+                          <path d={`M${cx - 12},${cy - 2} L${cx - 16},${cy - rY + 1} A${rX},${rY} 0 0,1 ${cx + 16},${cy - rY + 1} L${cx + 12},${cy - 2} Z`}
+                            fill="hsl(210, 50%, 60%)" />
+                          {/* Dorsal column midline septum */}
+                          <line x1={cx} y1={cy - 2} x2={cx} y2={cy - rY + 2}
+                            stroke="hsl(0, 0%, 55%)" strokeWidth="0.5" opacity="0.5" />
+  
+                          {/* Lateral corticospinal tracts */}
+                          <path d={`M${cx - 18},${cy - 6} C${cx - 35},${cy - 12} ${cx - rX + 8},${cy - 8} ${cx - rX + 5},${cy} C${cx - rX + 8},${cy + 5} ${cx - 30},${cy + 6} ${cx - 20},${cy + 3} Z`}
+                            fill="hsl(0, 45%, 58%)" />
+                          <path d={`M${cx + 18},${cy - 6} C${cx + 35},${cy - 12} ${cx + rX - 8},${cy - 8} ${cx + rX - 5},${cy} C${cx + rX - 8},${cy + 5} ${cx + 30},${cy + 6} ${cx + 20},${cy + 3} Z`}
+                            fill="hsl(0, 45%, 58%)" />
+  
+                          {/* Spinothalamic tracts (anterolateral) */}
+                          <path d={`M${cx - 22},${cy + 4} C${cx - 40},${cy + 8} ${cx - rX + 5},${cy + 4} ${cx - rX + 8},${cy + rY - 6} C${cx - 35},${cy + rY - 2} ${cx - 20},${cy + 10} ${cx - 16},${cy + 5} Z`}
+                            fill="hsl(45, 55%, 55%)" />
+                          <path d={`M${cx + 22},${cy + 4} C${cx + 40},${cy + 8} ${cx + rX - 5},${cy + 4} ${cx + rX - 8},${cy + rY - 6} C${cx + 35},${cy + rY - 2} ${cx + 20},${cy + 10} ${cx + 16},${cy + 5} Z`}
+                            fill="hsl(45, 55%, 55%)" />
+  
+                          {/* Anterior corticospinal tract */}
+                          <path d={`M${cx - 8},${cy + 3} L${cx - 10},${cy + rY - 3} A${rX},${rY} 0 0,0 ${cx + 10},${cy + rY - 3} L${cx + 8},${cy + 3} Z`}
+                            fill="hsl(140, 40%, 55%)" />
+                        </g>
+  
+                        {/* White matter tract labels */}
+                        <g opacity={isActive ? 0.55 : 0.1} fontSize="3.5" fill="hsl(var(--muted-foreground))">
+                          <text x={cx} y={cy - rY + 6} textAnchor="middle" fontWeight="500">Dorsal columns</text>
+                          <text x={cx} y={cy - rY + 10} textAnchor="middle" fontSize="2.8" opacity="0.7">Gracilis | Cuneatus</text>
+                          <text x={cx - rX + 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
+                          <text x={cx - rX + 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
+                          <text x={cx + rX - 18} y={cy - 2} textAnchor="middle" fontSize="3">Lat</text>
+                          <text x={cx + rX - 18} y={cy + 2} textAnchor="middle" fontSize="3">CST</text>
+                          <text x={cx - rX + 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
+                          <text x={cx + rX - 14} y={cy + rY - 6} textAnchor="middle" fontSize="3">STT</text>
+                          <text x={cx} y={cy + rY - 4} textAnchor="middle" fontSize="2.8">Ant CST</text>
+                        </g>
+  
+                        {/* ── Grey matter butterfly (filled shape) ── */}
+                        <g opacity={isActive ? 0.65 : 0.25}>
+                          {/* COMPLETE BUTTERFLY as single filled path */}
+                          <path d={`
+                            M${cx},${cy - 2}
+                            C${cx - 3},${cy - 3} ${cx - 8},${cy - 6} ${cx - 12},${cy - 10}
+                            C${cx - 14},${cy - 13} ${cx - 15},${cy - 15} ${cx - 14},${cy - 16}
+                            C${cx - 12},${cy - 17} ${cx - 10},${cy - 16} ${cx - 9},${cy - 14}
+                            C${cx - 7},${cy - 10} ${cx - 4},${cy - 6} ${cx - 3},${cy - 4}
+                            L${cx - 3},${cy - 2}
+                            L${cx - 5},${cy - 1}
+                            C${cx - 8},${cy} ${cx - 12},${cy - 2} ${cx - 16},${cy - 3}
+                            C${cx - 18},${cy - 3} ${cx - 18},${cy - 1} ${cx - 16},${cy}
+                            L${cx - 5},${cy + 1}
+                            C${cx - 5},${cy + 2} ${cx - 8},${cy + 3} ${cx - 14},${cy + 5}
+                            C${cx - 20},${cy + 7} ${cx - 26},${cy + 10} ${cx - 28},${cy + 12}
+                            C${cx - 30},${cy + 14} ${cx - 28},${cy + 15} ${cx - 25},${cy + 14}
+                            C${cx - 20},${cy + 12} ${cx - 14},${cy + 8} ${cx - 8},${cy + 5}
+                            C${cx - 5},${cy + 3} ${cx - 3},${cy + 2} ${cx},${cy + 2}
+                            C${cx + 3},${cy + 2} ${cx + 5},${cy + 3} ${cx + 8},${cy + 5}
+                            C${cx + 14},${cy + 8} ${cx + 20},${cy + 12} ${cx + 25},${cy + 14}
+                            C${cx + 28},${cy + 15} ${cx + 30},${cy + 14} ${cx + 28},${cy + 12}
+                            C${cx + 26},${cy + 10} ${cx + 20},${cy + 7} ${cx + 14},${cy + 5}
+                            C${cx + 8},${cy + 3} ${cx + 5},${cy + 2} ${cx + 5},${cy + 1}
+                            L${cx + 16},${cy}
+                            C${cx + 18},${cy - 1} ${cx + 18},${cy - 3} ${cx + 16},${cy - 3}
+                            C${cx + 12},${cy - 2} ${cx + 8},${cy} ${cx + 5},${cy - 1}
+                            L${cx + 3},${cy - 2}
+                            L${cx + 3},${cy - 4}
+                            C${cx + 4},${cy - 6} ${cx + 7},${cy - 10} ${cx + 9},${cy - 14}
+                            C${cx + 10},${cy - 16} ${cx + 12},${cy - 17} ${cx + 14},${cy - 16}
+                            C${cx + 15},${cy - 15} ${cx + 14},${cy - 13} ${cx + 12},${cy - 10}
+                            C${cx + 8},${cy - 6} ${cx + 3},${cy - 3} ${cx},${cy - 2}
+                            Z
+                          `}
+                            fill="hsl(0, 0%, 52%)" fillOpacity="0.7"
+                            stroke="hsl(0, 0%, 40%)" strokeWidth="0.5"
+                          />
+  
+                          {/* Central canal */}
+                          <circle cx={cx} cy={cy} r="1.8" fill="hsl(200, 50%, 65%)" stroke="hsl(200, 40%, 50%)" strokeWidth="0.5" />
+  
+                          {/* Substantia gelatinosa caps (Rexed lamina II) on posterior horns */}
+                          <ellipse cx={cx - 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
+                          <ellipse cx={cx + 13} cy={cy - 15} rx="3.5" ry="2" fill="hsl(45, 50%, 58%)" opacity="0.5" />
+  
+                          {/* Motor neuron cell bodies in anterior horns */}
+                          {[
+                            [cx - 22, cy + 11], [cx - 25, cy + 13], [cx - 20, cy + 13],
+                            [cx + 22, cy + 11], [cx + 25, cy + 13], [cx + 20, cy + 13],
+                          ].map(([px, py], i) => (
+                            <circle key={i} cx={px} cy={py} r="1.3" fill="hsl(0, 0%, 38%)" opacity="0.5" />
+                          ))}
+                        </g>
+  
+                        {/* Grey matter labels */}
+                        <g opacity={isActive ? 0.5 : 0.08} fontSize="3.5" fill="hsl(0, 0%, 42%)">
+                          <text x={cx - 38} y={cy + 16} textAnchor="middle" fontWeight="500">Ant horn</text>
+                          <text x={cx - 38} y={cy + 20} textAnchor="middle" fontSize="2.8">(motor — LMN)</text>
+                          <text x={cx + 38} y={cy - 18} textAnchor="middle" fontWeight="500">Post horn</text>
+                          <text x={cx + 38} y={cy - 14} textAnchor="middle" fontSize="2.8">(sensory)</text>
+                          <text x={cx - 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
+                          <text x={cx + 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
+                          <text x={cx - 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
+                          <text x={cx + 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
+                        </g>
+  
+                        {/* Anterior median fissure */}
+                        <line x1={cx} y1={cy + rY} x2={cx} y2={cy + 5}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="0.75" opacity={isActive ? 0.4 : 0.1} />
+                        {isActive && <text x={cx + 3} y={cy + rY - 1} fontSize="2.8" fill="hsl(0, 0%, 50%)" opacity="0.5">Ant. median fissure</text>}
+  
+                        {/* Posterior median sulcus */}
+                        <line x1={cx} y1={cy - rY} x2={cx} y2={cy - 5}
+                          stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity={isActive ? 0.3 : 0.08} />
+  
+                        {/* ── Blood supply ── */}
+                        <g opacity={isActive ? 0.6 : 0.15}>
+                          {/* Anterior spinal artery — in anterior median fissure */}
+                          <circle cx={cx} cy={cy + rY + 3} r="2.2" fill="hsl(0, 60%, 55%)" stroke="hsl(0, 50%, 42%)" strokeWidth="0.5" />
+                          <text x={cx + 5} y={cy + rY + 5} fontSize="4" fill="hsl(0, 60%, 55%)" fontWeight="bold">ASA</text>
+                          {/* ASA territory shading */}
+                          {isActive && <path d={`M${cx - rX},${cy} A${rX},${rY} 0 0,0 ${cx + rX},${cy} L${cx + rX - 5},${cy + 2} C${cx + 30},${cy + rY - 8} ${cx - 30},${cy + rY - 8} ${cx - rX + 5},${cy + 2} Z`}
+                            fill="hsl(0, 60%, 55%)" fillOpacity="0.04" stroke="hsl(0, 60%, 55%)" strokeWidth="0.5" strokeDasharray="3 2" />}
+                          {/* Posterior spinal arteries */}
+                          <circle cx={cx - 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
+                          <circle cx={cx + 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
+                          <text x={cx - 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)" textAnchor="end">PSA</text>
+                          <text x={cx + 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)">PSA</text>
+                        </g>
+  
+                        {/* ── Ventral and dorsal roots ── */}
+                        <g opacity={isActive ? 0.45 : 0.1}>
+                          {/* Dorsal root + DRG (left side) */}
+                          <path d={`M${cx - 14},${cy - 15} C${cx - 30},${cy - 20} ${cx - 55},${cy - 18} ${cx - 65},${cy - 10}`}
+                            stroke="hsl(45, 55%, 50%)" strokeWidth="1" fill="none" />
+                          <ellipse cx={cx - 67} cy={cy - 8} rx="4.5" ry="2.8" fill="hsl(45, 55%, 50%)" opacity="0.35" stroke="hsl(45, 45%, 42%)" strokeWidth="0.5" />
+                          <text x={cx - 76} y={cy - 6} fontSize="3.5" fill="hsl(45, 55%, 50%)" textAnchor="end">DRG</text>
+                          {/* Dorsal root label */}
+                          {isActive && <text x={cx - 40} y={cy - 20} fontSize="3" fill="hsl(45, 55%, 50%)" opacity="0.6">Dorsal root</text>}
+  
+                          {/* Ventral root (left side) */}
+                          <path d={`M${cx - 28},${cy + 12} C${cx - 42},${cy + 16} ${cx - 58},${cy + 12} ${cx - 65},${cy + 2}`}
+                            stroke="hsl(150, 45%, 48%)" strokeWidth="1" fill="none" />
+                          {isActive && <text x={cx - 50} y={cy + 19} fontSize="3" fill="hsl(150, 45%, 48%)" opacity="0.6">Ventral root</text>}
+  
+                          {/* Mixed spinal nerve */}
+                          <path d={`M${cx - 67},${cy - 5} L${cx - 75},${cy - 2}`}
+                            stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" fill="none" opacity="0.3" />
+                          {isActive && <text x={cx - 80} y={cy} fontSize="3" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.5">Spinal n.</text>}
+                        </g>
                       </g>
-
-                      {/* Grey matter labels */}
-                      <g opacity={isActive ? 0.5 : 0.08} fontSize="3.5" fill="hsl(0, 0%, 42%)">
-                        <text x={cx - 38} y={cy + 16} textAnchor="middle" fontWeight="500">Ant horn</text>
-                        <text x={cx - 38} y={cy + 20} textAnchor="middle" fontSize="2.8">(motor — LMN)</text>
-                        <text x={cx + 38} y={cy - 18} textAnchor="middle" fontWeight="500">Post horn</text>
-                        <text x={cx + 38} y={cy - 14} textAnchor="middle" fontSize="2.8">(sensory)</text>
-                        <text x={cx - 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
-                        <text x={cx + 22} y={cy - 5} textAnchor="middle" fontSize="3">IML</text>
-                        <text x={cx - 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
-                        <text x={cx + 14} y={cy - 17} textAnchor="middle" fontSize="2.5" fill="hsl(45, 50%, 50%)">SG</text>
-                      </g>
-
-                      {/* Anterior median fissure */}
-                      <line x1={cx} y1={cy + rY} x2={cx} y2={cy + 5}
-                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.75" opacity={isActive ? 0.4 : 0.1} />
-                      {isActive && <text x={cx + 3} y={cy + rY - 1} fontSize="2.8" fill="hsl(0, 0%, 50%)" opacity="0.5">Ant. median fissure</text>}
-
-                      {/* Posterior median sulcus */}
-                      <line x1={cx} y1={cy - rY} x2={cx} y2={cy - 5}
-                        stroke="hsl(0, 0%, 50%)" strokeWidth="0.5" opacity={isActive ? 0.3 : 0.08} />
-
-                      {/* ── Blood supply ── */}
-                      <g opacity={isActive ? 0.6 : 0.15}>
-                        {/* Anterior spinal artery — in anterior median fissure */}
-                        <circle cx={cx} cy={cy + rY + 3} r="2.2" fill="hsl(0, 60%, 55%)" stroke="hsl(0, 50%, 42%)" strokeWidth="0.5" />
-                        <text x={cx + 5} y={cy + rY + 5} fontSize="4" fill="hsl(0, 60%, 55%)" fontWeight="bold">ASA</text>
-                        {/* ASA territory shading */}
-                        {isActive && <path d={`M${cx - rX},${cy} A${rX},${rY} 0 0,0 ${cx + rX},${cy} L${cx + rX - 5},${cy + 2} C${cx + 30},${cy + rY - 8} ${cx - 30},${cy + rY - 8} ${cx - rX + 5},${cy + 2} Z`}
-                          fill="hsl(0, 60%, 55%)" fillOpacity="0.04" stroke="hsl(0, 60%, 55%)" strokeWidth="0.5" strokeDasharray="3 2" />}
-                        {/* Posterior spinal arteries */}
-                        <circle cx={cx - 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
-                        <circle cx={cx + 18} cy={cy - rY - 2} r="1.5" fill="hsl(0, 50%, 50%)" />
-                        <text x={cx - 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)" textAnchor="end">PSA</text>
-                        <text x={cx + 28} y={cy - rY - 1} fontSize="3.5" fill="hsl(0, 50%, 50%)">PSA</text>
-                      </g>
-
-                      {/* ── Ventral and dorsal roots ── */}
-                      <g opacity={isActive ? 0.45 : 0.1}>
-                        {/* Dorsal root + DRG (left side) */}
-                        <path d={`M${cx - 14},${cy - 15} C${cx - 30},${cy - 20} ${cx - 55},${cy - 18} ${cx - 65},${cy - 10}`}
-                          stroke="hsl(45, 55%, 50%)" strokeWidth="1" fill="none" />
-                        <ellipse cx={cx - 67} cy={cy - 8} rx="4.5" ry="2.8" fill="hsl(45, 55%, 50%)" opacity="0.35" stroke="hsl(45, 45%, 42%)" strokeWidth="0.5" />
-                        <text x={cx - 76} y={cy - 6} fontSize="3.5" fill="hsl(45, 55%, 50%)" textAnchor="end">DRG</text>
-                        {/* Dorsal root label */}
-                        {isActive && <text x={cx - 40} y={cy - 20} fontSize="3" fill="hsl(45, 55%, 50%)" opacity="0.6">Dorsal root</text>}
-
-                        {/* Ventral root (left side) */}
-                        <path d={`M${cx - 28},${cy + 12} C${cx - 42},${cy + 16} ${cx - 58},${cy + 12} ${cx - 65},${cy + 2}`}
-                          stroke="hsl(150, 45%, 48%)" strokeWidth="1" fill="none" />
-                        {isActive && <text x={cx - 50} y={cy + 19} fontSize="3" fill="hsl(150, 45%, 48%)" opacity="0.6">Ventral root</text>}
-
-                        {/* Mixed spinal nerve */}
-                        <path d={`M${cx - 67},${cy - 5} L${cx - 75},${cy - 2}`}
-                          stroke="hsl(var(--muted-foreground))" strokeWidth="1.5" fill="none" opacity="0.3" />
-                        {isActive && <text x={cx - 80} y={cy} fontSize="3" fill="hsl(var(--muted-foreground))" textAnchor="end" opacity="0.5">Spinal n.</text>}
-                      </g>
-                    </g>
-                    );
+    </DiagramFigure>
+  );
                   })() : (
                     <g>
                       {/* Base rect */}

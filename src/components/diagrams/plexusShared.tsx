@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { withAlpha } from "@/lib/color-utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Shared visual grammar for nerve plexus diagrams (cervical, brachial, lumbosacral).
@@ -142,26 +143,32 @@ export const PlexusChipRow = <K extends string>({
       {items.map((it) => {
         const isActive = it.key === selected;
         return (
-          <button
-            key={it.key}
-            type="button"
-            onClick={() => onSelect(it.key)}
-            className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
-              isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
-            }`}
-            style={
-              isActive
-                ? { borderColor: it.color, backgroundColor: withAlpha(it.color, 0.09) }
-                : undefined
-            }
-          >
-            <span
-              className="w-2 h-2 rounded-full flex-shrink-0"
-              style={{ backgroundColor: it.color, opacity: 0.7 }}
-            />
-            {it.label}
-          </button>
-        );
+    <DiagramFigure
+      id="plexus-shared"
+      title="Plexus shared"
+      description="Auto-generated wrapper for the Plexus shared anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                <button
+              key={it.key}
+              type="button"
+              onClick={() => onSelect(it.key)}
+              className={`flex items-center gap-1.5 px-2 py-1 rounded text-xs transition-colors border ${
+                isActive ? "text-foreground" : "border-border text-muted-foreground hover:bg-muted/50"
+              }`}
+              style={
+                isActive
+                  ? { borderColor: it.color, backgroundColor: withAlpha(it.color, 0.09) }
+                  : undefined
+              }
+            >
+              <span
+                className="w-2 h-2 rounded-full flex-shrink-0"
+                style={{ backgroundColor: it.color, opacity: 0.7 }}
+              />
+              {it.label}
+            </button>
+    </DiagramFigure>
+  );
       })}
     </div>
   );

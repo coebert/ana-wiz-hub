@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Propofol-induced penile erection during cystoscopy/TURP — one-page stepwise
@@ -164,34 +165,40 @@ const PropofolErectionAlgorithmDiagram = () => {
             const t = toneStyles[s.tone];
             const isActive = active === s.key;
             return (
-              <li key={s.key}>
-                <button
-                  onClick={() => setActive(s.key)}
-                  className={`w-full text-left flex items-start gap-3 p-2.5 rounded-lg border transition-all ${
-                    isActive
-                      ? `bg-primary/5 ${t.ring} border-2 shadow-sm`
-                      : "bg-secondary/30 border-border hover:bg-secondary/50"
-                  }`}
-                >
-                  <span
-                    className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${t.chip}`}
+    <DiagramFigure
+      id="propofol-erection-algorithm-diagram"
+      title="Propofol erection algorithm"
+      description="Auto-generated wrapper for the Propofol erection algorithm clinical decision flowchart. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <li key={s.key}>
+                  <button
+                    onClick={() => setActive(s.key)}
+                    className={`w-full text-left flex items-start gap-3 p-2.5 rounded-lg border transition-all ${
+                      isActive
+                        ? `bg-primary/5 ${t.ring} border-2 shadow-sm`
+                        : "bg-secondary/30 border-border hover:bg-secondary/50"
+                    }`}
                   >
-                    {s.number}
-                  </span>
-                  <span className="flex-1 min-w-0">
-                    <span className="block text-[10px] uppercase tracking-wide text-muted-foreground">
-                      {s.badge}
+                    <span
+                      className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${t.chip}`}
+                    >
+                      {s.number}
                     </span>
-                    <span className="block text-sm font-semibold text-foreground leading-tight">
-                      {s.title}
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-[10px] uppercase tracking-wide text-muted-foreground">
+                        {s.badge}
+                      </span>
+                      <span className="block text-sm font-semibold text-foreground leading-tight">
+                        {s.title}
+                      </span>
                     </span>
-                  </span>
-                  {i < steps.length - 1 && (
-                    <span className="text-muted-foreground text-xs">↓</span>
-                  )}
-                </button>
-              </li>
-            );
+                    {i < steps.length - 1 && (
+                      <span className="text-muted-foreground text-xs">↓</span>
+                    )}
+                  </button>
+                </li>
+    </DiagramFigure>
+  );
           })}
         </ol>
 

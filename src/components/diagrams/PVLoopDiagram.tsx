@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface PVPoint { v: number; p: number }
 
@@ -163,12 +164,18 @@ const PVLoopDiagram = () => {
           if (!p1 || !p2) return null;
           const angle = Math.atan2(toY(p2.p) - toY(p1.p), toX(p2.v) - toX(p1.v)) * (180 / Math.PI);
           return (
-            <polygon key={`arr-${i}`}
-              points="-4,-3 4,0 -4,3"
-              fill={PHASES[i].color}
-              opacity={activePhase === null || activePhase === i ? 0.8 : 0.2}
-              transform={`translate(${toX(loop[mid].v)}, ${toY(loop[mid].p)}) rotate(${angle})`} />
-          );
+    <DiagramFigure
+      id="pv-loop-diagram"
+      title="Pv loop"
+      description="Auto-generated wrapper for the Pv loop anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <polygon key={`arr-${i}`}
+                points="-4,-3 4,0 -4,3"
+                fill={PHASES[i].color}
+                opacity={activePhase === null || activePhase === i ? 0.8 : 0.2}
+                transform={`translate(${toX(loop[mid].v)}, ${toY(loop[mid].p)}) rotate(${angle})`} />
+    </DiagramFigure>
+  );
         })}
 
         {/* Corner labels */}

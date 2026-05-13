@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type RhythmKey = "vf-vt" | "asystole-pea";
 
@@ -153,36 +154,42 @@ export default function CardiacArrestPostCardiacSurgeryDiagram() {
           {steps.map((step, i) => {
             const isActive = active.id === step.id;
             return (
-              <li key={step.id}>
-                <button
-                  type="button"
-                  onClick={() => setActiveId(step.id)}
-                  className={`w-full text-left rounded-lg border p-3 transition-all flex gap-3 items-start ${
-                    isActive
-                      ? "border-primary bg-primary/5 ring-1 ring-primary/30"
-                      : "border-border bg-background hover:bg-accent/30"
-                  }`}
-                  style={isActive ? { borderColor: step.color, boxShadow: `0 0 0 1px ${step.color}33` } : undefined}
-                >
-                  <span
-                    className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                    style={{ background: step.color }}
-                    aria-hidden
+    <DiagramFigure
+      id="cardiac-arrest-post-cardiac-surgery-diagram"
+      title="Cardiac arrest post cardiac surgery"
+      description="Auto-generated wrapper for the Cardiac arrest post cardiac surgery anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <li key={step.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveId(step.id)}
+                    className={`w-full text-left rounded-lg border p-3 transition-all flex gap-3 items-start ${
+                      isActive
+                        ? "border-primary bg-primary/5 ring-1 ring-primary/30"
+                        : "border-border bg-background hover:bg-accent/30"
+                    }`}
+                    style={isActive ? { borderColor: step.color, boxShadow: `0 0 0 1px ${step.color}33` } : undefined}
                   >
-                    {i + 1}
-                  </span>
-                  <span className="flex-1 min-w-0">
-                    <span className="block text-sm font-semibold text-foreground">{step.title}</span>
-                    <span className="block text-xs text-muted-foreground mt-0.5">{step.detail}</span>
-                    {step.modified && (
-                      <span className="inline-block mt-1.5 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-500">
-                        Modified vs ALS
-                      </span>
-                    )}
-                  </span>
-                </button>
-              </li>
-            );
+                    <span
+                      className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white"
+                      style={{ background: step.color }}
+                      aria-hidden
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="flex-1 min-w-0">
+                      <span className="block text-sm font-semibold text-foreground">{step.title}</span>
+                      <span className="block text-xs text-muted-foreground mt-0.5">{step.detail}</span>
+                      {step.modified && (
+                        <span className="inline-block mt-1.5 text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-500">
+                          Modified vs ALS
+                        </span>
+                      )}
+                    </span>
+                  </button>
+                </li>
+    </DiagramFigure>
+  );
           })}
         </ol>
 

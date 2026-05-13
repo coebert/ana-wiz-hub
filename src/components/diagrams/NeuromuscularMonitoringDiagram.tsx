@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const NeuromuscularMonitoringDiagram = () => {
   const [selectedPattern, setSelectedPattern] = useState<string | null>(null);
@@ -147,17 +148,23 @@ const NeuromuscularMonitoringDiagram = () => {
           {selectedPattern && (() => {
             const p = stimPatterns.find((x) => x.id === selectedPattern)!;
             return (
-              <div className="animate-fade-in space-y-3">
-                <div className="bg-background rounded-lg border border-border p-3">
-                  {p.svg}
+    <DiagramFigure
+      id="neuromuscular-monitoring-diagram"
+      title="Neuromuscular monitoring"
+      description="Auto-generated wrapper for the Neuromuscular monitoring anatomical/physiological diagram. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                    <div className="animate-fade-in space-y-3">
+                  <div className="bg-background rounded-lg border border-border p-3">
+                    {p.svg}
+                  </div>
+                  <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
+                    <p className="font-bold text-foreground text-sm">{p.name}</p>
+                    <p className="text-xs text-muted-foreground mt-1"><strong>Parameters:</strong> {p.params}</p>
+                    <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
+                  </div>
                 </div>
-                <div className="p-3 rounded-lg border border-primary/30 bg-primary/5">
-                  <p className="font-bold text-foreground text-sm">{p.name}</p>
-                  <p className="text-xs text-muted-foreground mt-1"><strong>Parameters:</strong> {p.params}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{p.description}</p>
-                </div>
-              </div>
-            );
+    </DiagramFigure>
+  );
           })()}
 
           {!selectedPattern && (

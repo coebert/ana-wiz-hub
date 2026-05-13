@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface Criterion {
   key: string;
@@ -48,33 +49,39 @@ export const GlasgowImrieScoreDiagram = () => {
         {criteria.map((c) => {
           const active = selected.has(c.key);
           return (
-            <button
-              key={c.key}
-              type="button"
-              onClick={() => toggle(c.key)}
-              className={`text-left p-3 rounded-lg border transition-colors ${
-                active
-                  ? "border-primary bg-primary/10"
-                  : "border-border bg-background hover:bg-secondary/40"
-              }`}
-            >
-              <div className="flex items-start gap-2">
-                <span
-                  className={`mt-0.5 inline-flex w-5 h-5 items-center justify-center rounded border text-xs font-bold transition-colors ${
-                    active
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "border-border text-muted-foreground"
-                  }`}
-                >
-                  {active ? "✓" : ""}
-                </span>
-                <div>
-                  <p className="text-sm font-medium text-foreground">{c.label}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{c.detail}</p>
+    <DiagramFigure
+      id="glasgow-imrie-score-diagram"
+      title="Glasgow imrie score"
+      description="Auto-generated wrapper for the Glasgow imrie score interactive calculator. Review and replace with a specific, curriculum-aligned summary of what learners should take from the figure."
+    >
+                  <button
+                key={c.key}
+                type="button"
+                onClick={() => toggle(c.key)}
+                className={`text-left p-3 rounded-lg border transition-colors ${
+                  active
+                    ? "border-primary bg-primary/10"
+                    : "border-border bg-background hover:bg-secondary/40"
+                }`}
+              >
+                <div className="flex items-start gap-2">
+                  <span
+                    className={`mt-0.5 inline-flex w-5 h-5 items-center justify-center rounded border text-xs font-bold transition-colors ${
+                      active
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "border-border text-muted-foreground"
+                    }`}
+                  >
+                    {active ? "✓" : ""}
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium text-foreground">{c.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{c.detail}</p>
+                  </div>
                 </div>
-              </div>
-            </button>
-          );
+              </button>
+    </DiagramFigure>
+  );
         })}
       </div>
 
