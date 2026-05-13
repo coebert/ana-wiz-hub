@@ -232,7 +232,7 @@ const PostCardiacArrestProgDiagram = () => {
                 const x1 = 80;
                 const x2 = 80 + (48 / 120) * 500;
                 return (
-                  <g {...svgNodeProps("Phase 1/2: TTM (32–36°C) + rewarming, 0–48 h")}>
+                  <g {...svgNodeProps("Phase 1/6: TTM (32–36°C) + rewarming, 0–48 h")}>
                     <rect x={x1} y={y} width={x2 - x1} height="14" rx="3" fill="hsl(210, 75%, 55%)" opacity="0.15" stroke="hsl(210, 75%, 55%)" strokeWidth="0.5" />
                     <text x={x1 + 4} y={y + 10} className="text-[7px] font-semibold" fill="hsl(210, 75%, 55%)">TTM (32–36°C) + Rewarming</text>
                     <text x={5} y={y + 10} className="text-[8px] font-medium fill-muted-foreground">TTM</text>
@@ -252,7 +252,7 @@ const PostCardiacArrestProgDiagram = () => {
                     key={m.name}
                     onClick={() => setActiveModality(activeModality === i ? null : i)}
                     style={{ cursor: "pointer" }}
-                    {...svgNodeProps(`Modality ${i + 1}/5: ${m.shortName} — valid ${m.startH}–${m.endH} h${m.peakH ? ` (optimal ${m.peakH} h)` : ""}; poor sign: ${m.poorPrognosticSign}`)}
+                    {...svgNodeProps(`Modality ${i + 2}/6: ${m.shortName} — valid ${m.startH}–${m.endH} h${m.peakH ? ` (optimal ${m.peakH} h)` : ""}; poor sign: ${m.poorPrognosticSign}`)}
                   >
                     {/* Label */}
                     <text x={5} y={y + 12} className={`text-[8px] font-medium ${isHighlighted ? "fill-foreground" : "fill-muted-foreground"}`}>
