@@ -623,8 +623,19 @@ if (DIFF) {
   md += "## Diff vs baseline\n\n";
   md += `Baseline: \`${BASELINE_PATH}\`${BASELINE_META?.generatedAt ? ` (generated ${BASELINE_META.generatedAt})` : ""} — ${BASELINE_META?.rowCount ?? 0} rows.\n\n`;
 
+  const fmtRoute = (s: RouteSnapshot): string => {
+    const path = s.routePath ? `\`${s.routePath}\`` : "_(unresolved)_";
+    const comp = s.component ? ` → \`${s.component}\`` : "";
+    const file = s.componentFile ? ` (\`${s.componentFile}\`)` : "";
+    return `${path}${comp}${file}`;
+  };
   const renderEntry = (e: DiffEntry): string => {
     const bits: string[] = [`\`${e.url}\` _(${e.kind})_ — \`${e.before}\` → \`${e.after}\``];
+    if (e.route.changed) {
+      bits.push(`route: ${fmtRoute(e.route.before)} → ${fmtRoute(e.route.after)}`);
+    } else {
+      bits.push(`route: ${fmtRoute(e.route.after)}`);
+    }
     if (e.newMissingTypes.length) bits.push(`new missing @type: ${e.newMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
     if (e.fixedMissingTypes.length) bits.push(`fixed @type: ${e.fixedMissingTypes.map((t) => `\`${t}\``).join(", ")}`);
     if (e.newBadBlocks.length) {
