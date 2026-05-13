@@ -175,6 +175,21 @@ export const TopicTemplate = ({
     publisher: { "@type": "Organization", name: "AnaesthesiaCore", url: "https://anaesthesiacore.app/" },
   };
 
+  // Build a richer meta description so individual topic pages clear the
+  // 50-char SEO floor (subtitles like "FRCA Primary — Physics" alone are
+  // ~30 chars). We pull the first 1–2 learning objectives, fall back to
+  // key points, and prefix with the curriculum tag from `subtitle`.
+  const objectiveBlurb = objectives.slice(0, 2).join(". ").replace(/\.\.$/, ".");
+  const keyPointBlurb = keyPoints
+    .slice(0, 2)
+    .map((p) => (typeof p === "string" ? p : p.text))
+    .join(". ")
+    .replace(/\.\.$/, ".");
+  const blurb = objectiveBlurb || keyPointBlurb;
+  const metaDescription = blurb
+    ? `${title} (${subtitle}). ${blurb}`.replace(/\s+/g, " ").trim()
+    : undefined;
+
   return (
     <SectionLayout
       title={title}
@@ -183,6 +198,7 @@ export const TopicTemplate = ({
       backLabel={backLabel}
       accentColor={accentColor}
       disableAutoTOC={disableAutoTOC}
+      metaDescription={metaDescription}
     >
       <Helmet>
         <script type="application/ld+json">{JSON.stringify(learningResourceJsonLd)}</script>
