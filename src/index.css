@@ -25,7 +25,9 @@
     --secondary-foreground: 210 70% 35%;
 
     --muted: 210 15% 93%;
-    --muted-foreground: 215 16% 38%;
+    /* Bumped from 38% → 30% L so muted text clears 4.5:1 on both --background
+       and --muted, with headroom for opacity-modified uses (/80, /70). */
+    --muted-foreground: 215 18% 30%;
 
     --accent: 170 50% 40%;
     --accent-foreground: 0 0% 100%;
