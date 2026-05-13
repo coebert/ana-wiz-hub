@@ -403,7 +403,7 @@ const RhythmStrip = ({ brady, color }: { brady: BradyInfo; color: string }) => {
   }
 
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" role="img" aria-label={`Rhythm strip — ${brady.label}`}>
+    <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="w-full min-h-[120px] sm:min-h-[140px]" role="img" aria-label={`Rhythm strip — ${brady.label}`}>
       <rect x="0" y="0" width={W} height={H} fill="hsl(var(--background))" stroke="hsl(var(--border))" strokeWidth="0.5" rx="4" />
       {/* Faint grid */}
       {Array.from({ length: 9 }, (_, i) => (
