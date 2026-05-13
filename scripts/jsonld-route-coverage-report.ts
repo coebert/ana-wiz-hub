@@ -93,6 +93,8 @@ Env:
 const OUT_MD = arg("--out", "/mnt/documents/jsonld-route-coverage.md");
 const OUT_HTML = OUT_MD.replace(/\.md$/i, ".html");
 const OUT_JSON = OUT_MD.replace(/\.md$/i, ".json");
+const OUT_DIFF_JSON = OUT_MD.replace(/\.md$/i, ".diff.json");
+const OUT_DIFF_CSV = OUT_MD.replace(/\.md$/i, ".diff.csv");
 
 const KIND_FILTER = new Set<Kind>();
 for (const k of argAll("--kind")) {
