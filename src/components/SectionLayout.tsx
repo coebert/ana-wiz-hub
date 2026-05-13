@@ -91,6 +91,46 @@ export const SectionLayout = ({
     })),
   };
 
+  // Course JSON-LD on section landing pages (e.g. /physics, /intensive-care).
+  // Each section landing maps to a Course whose hasPart lists its topic pages
+  // as LearningResource entries, so Google can model the curriculum hierarchy.
+  const sectionEntry = (Object.entries(sectionMeta) as [Section, { label: string; path: string }][])
+    .find(([, meta]) => meta.path === location.pathname);
+  const courseJsonLd = sectionEntry
+    ? (() => {
+        const [sectionKey, meta] = sectionEntry;
+        const topics = topicsBySection[sectionKey].filter((t) => t.available);
+        return {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          name: `${meta.label} — AnaesthesiaCore`,
+          description: subtitle,
+          url: `${SITE_URL}${meta.path}`,
+          inLanguage: "en-GB",
+          educationalLevel: "Postgraduate",
+          provider: {
+            "@type": "Organization",
+            name: SITE_NAME,
+            sameAs: `${SITE_URL}/`,
+          },
+          hasCourseInstance: {
+            "@type": "CourseInstance",
+            courseMode: "online",
+            inLanguage: "en-GB",
+          },
+          hasPart: topics.map((t) => ({
+            "@type": "LearningResource",
+            name: t.title,
+            description: t.description,
+            url: `${SITE_URL}${meta.path}/${t.id}`,
+            learningResourceType: "Topic",
+            educationalLevel: "Postgraduate",
+            teaches: t.title,
+          })),
+        };
+      })()
+    : null;
+
   useEffect(() => {
     if (disableAutoTOC) return;
     const root = contentRef.current;
