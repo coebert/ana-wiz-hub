@@ -66,4 +66,40 @@ export const FLOWCHART_AUDIT_REGISTRY: FlowchartAuditEntry[] = [
       })),
     ),
   },
+  {
+    id: "post-cardiac-arrest-prog",
+    name: "Post-cardiac arrest prognostication timeline",
+    route: "/intensive-care/post-cardiac-arrest",
+    expectedGroups: 6, // TTM phase + 5 modality bars
+    component: lazy(() => import("@/components/diagrams/PostCardiacArrestProgDiagram")),
+  },
+  {
+    id: "military-roles-flow",
+    name: "Military Roles 1–4 + CCAST flow",
+    route: "/perioperative/military-anaesthesia",
+    expectedGroups: 5, // 5 NATO Role nodes
+    component: lazy(() =>
+      import("@/components/diagrams/MilitaryRolesFlowDiagram").then((m) => ({
+        default: m.MilitaryRolesFlowDiagram,
+      })),
+    ),
+  },
+  {
+    id: "ncepod-classification",
+    name: "NCEPOD classification clock",
+    route: "/perioperative/ncepod-classification",
+    expectedGroups: 4, // 4 urgency tier wedges
+    component: lazy(() =>
+      import("@/components/diagrams/NCEPODClassificationDiagram").then((m) => ({
+        default: m.NCEPODClassificationDiagram,
+      })),
+    ),
+  },
+  {
+    id: "sepsis-management",
+    name: "Sepsis vasopressor escalation",
+    route: "/intensive-care/sepsis",
+    expectedGroups: 4, // 4 escalation tiers
+    component: lazy(() => import("@/components/diagrams/SepsisManagementDiagram")),
+  },
 ];

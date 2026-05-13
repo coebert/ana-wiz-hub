@@ -1,5 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
-import { DiagramFigure } from "./_shared/DiagramFigure";
+import { DiagramFigure, svgNodeProps } from "./_shared/DiagramFigure";
 
 /**
  * NCEPOD urgency classification visualised as a triage clock.
@@ -130,7 +130,7 @@ export const NCEPODClassificationDiagram = () => {
               {TIERS.map((t, i) => {
                 const isActive = i === active;
                 return (
-                  <g key={t.cat}>
+                  <g key={t.cat} {...svgNodeProps(`Tier ${i + 1}/4 — Cat ${t.cat} ${t.label} (${t.window})`)}>
                     <path
                       d={arcPath(cx, cy, r, t.startAngle, t.endAngle)}
                       fill={t.color}
