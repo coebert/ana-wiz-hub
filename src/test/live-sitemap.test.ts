@@ -25,16 +25,60 @@ describeOrSkip("live sitemap & robots.txt", () => {
   let robotsStatus = 0;
   let sitemapStatus = 0;
 
+  /**
+   * Fetch with retry + exponential backoff. CI runners and CDNs occasionally
+   * blip (DNS, TLS handshake, 5xx during deploy). We retry transient failures
+   * — network errors and 5xx/429 responses — but surface 4xx immediately
+   * since those indicate a real configuration problem.
+   */
+  async function fetchWithRetry(
+    url: string,
+    { retries = 4, baseDelayMs = 500 }: { retries?: number; baseDelayMs?: number } = {},
+  ): Promise<Response> {
+    let lastError: unknown;
+    for (let attempt = 0; attempt <= retries; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 10_000);
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timer);
+        if (res.status >= 500 || res.status === 429) {
+          lastError = new Error(`${url} -> HTTP ${res.status}`);
+        } else {
+          return res;
+        }
+      } catch (err) {
+        clearTimeout(timer);
+        lastError = err;
+      }
+      if (attempt < retries) {
+        const delay = baseDelayMs * 2 ** attempt + Math.floor(Math.random() * 250);
+        // eslint-disable-next-line no-console
+        console.warn(
+          `[live-sitemap] ${url} attempt ${attempt + 1}/${retries + 1} failed (${
+            (lastError as Error)?.message ?? lastError
+          }); retrying in ${delay}ms`,
+        );
+        await new Promise((r) => setTimeout(r, delay));
+      }
+    }
+    throw new Error(
+      `Failed to fetch ${url} after ${retries + 1} attempts: ${
+        (lastError as Error)?.message ?? lastError
+      }`,
+    );
+  }
+
   beforeAll(async () => {
     const [r, s] = await Promise.all([
-      fetch(`${SITE_URL}/robots.txt`),
-      fetch(`${SITE_URL}/sitemap.xml`),
+      fetchWithRetry(`${SITE_URL}/robots.txt`),
+      fetchWithRetry(`${SITE_URL}/sitemap.xml`),
     ]);
     robotsStatus = r.status;
     sitemapStatus = s.status;
     robots = await r.text();
     sitemap = await s.text();
-  }, 30_000);
+  }, 90_000);
 
   it("GET /robots.txt returns 200", () => {
     expect(robotsStatus, `robots.txt returned ${robotsStatus}`).toBe(200);
