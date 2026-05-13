@@ -23,6 +23,7 @@ const CoverageBarsResponsiveTest = lazy(() => import("./pages/CoverageBarsRespon
 const DrugsLibrary = lazy(() => import("./pages/DrugsLibrary"));
 const DrugDetail = lazy(() => import("./pages/DrugDetail"));
 const SeoIndexing = lazy(() => import("./pages/SeoIndexing"));
+const A11yAudit = lazy(() => import("./pages/A11yAudit"));
 
 // Lazy load section pages
 const PhysicsSection = lazy(() => import("./pages/PhysicsSection"));
