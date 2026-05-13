@@ -203,18 +203,18 @@ const KNOWN_LOW_CONTRAST = new Set([
 const KNOWN_CVD_COLLISIONS: Record<CVD, Set<string>> = {
   protanopia: new Set([
     "clinical|perioperative",
-    "perioperative|destructive",
+    "destructive|perioperative",
   ]),
   deuteranopia: new Set([
-    "pharmacology|icu",
+    "icu|pharmacology",
     "clinical|perioperative",
     "clinical|destructive",
-    "perioperative|destructive",
+    "destructive|perioperative",
   ]),
   tritanopia: new Set([
-    "physics|pharmacology",
-    "physiology|perioperative",
-    "pharmacology|icu",
+    "pharmacology|physics",
+    "perioperative|physiology",
+    "icu|pharmacology",
     "clinical|destructive",
   ]),
 };
