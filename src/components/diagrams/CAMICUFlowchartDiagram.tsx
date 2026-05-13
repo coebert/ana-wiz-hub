@@ -539,8 +539,14 @@ export const CAMICUFlowchartDiagram = () => {
               </ul>
             </div>
             <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-3">
-              <p className="font-semibold text-foreground mb-1 flex items-center gap-1">
-                <AlertTriangle className="w-3.5 h-3.5" /> Why screen?
+              <p className="font-semibold text-foreground mb-1 flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-destructive/15 text-destructive ring-1 ring-destructive/30 shrink-0"
+                >
+                  <AlertTriangle className="w-3 h-3" strokeWidth={2.25} />
+                </span>
+                Why screen?
               </p>
               <ul className="text-muted-foreground space-y-1 list-disc list-inside">
                 <li>Up to 80% of ventilated patients develop delirium</li>
