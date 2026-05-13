@@ -85,6 +85,8 @@ async function fetchRuns(): Promise<LighthouseRun[]> {
 }
 
 export default function LighthouseHistoryPanel() {
+  const { toast } = useToast();
+  const qc = useQueryClient();
   const { data, isLoading, error } = useQuery({
     queryKey: ["lighthouse-runs"],
     queryFn: fetchRuns,
@@ -92,6 +94,31 @@ export default function LighthouseHistoryPanel() {
   });
 
   const [reportUrls, setReportUrls] = useState<Record<string, string>>({});
+
+  const seedRun = useMutation({
+    mutationFn: async () => {
+      const target =
+        typeof window !== "undefined" && window.location.origin.includes("anaesthesiacore.app")
+          ? "https://anaesthesiacore.app/"
+          : "https://anaesthesiacore.app/";
+      const { data, error } = await supabase.functions.invoke("seed-lighthouse-run", {
+        body: { url: target, strategy: "desktop" },
+      });
+      if (error) throw error;
+      if ((data as { error?: string })?.error) throw new Error((data as { error: string }).error);
+      return data as { ok: true; scores: Record<string, number> };
+    },
+    onSuccess: (res) => {
+      const s = res.scores;
+      toast({
+        title: "Lighthouse run seeded",
+        description: `Perf ${s.performance} · A11y ${s.accessibility} · BP ${s.best_practices} · SEO ${s.seo}`,
+      });
+      qc.invalidateQueries({ queryKey: ["lighthouse-runs"] });
+    },
+    onError: (e: Error) =>
+      toast({ title: "Seed failed", description: e.message, variant: "destructive" }),
+  });
 
   // Sign URLs for the most recent reports.
   useEffect(() => {
@@ -150,6 +177,15 @@ export default function LighthouseHistoryPanel() {
             Scores across published builds · {data?.length ?? 0} run{data?.length === 1 ? "" : "s"} tracked
           </p>
         </div>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={() => seedRun.mutate()}
+          disabled={seedRun.isPending}
+        >
+          <RefreshCw className={`mr-2 h-4 w-4 ${seedRun.isPending ? "animate-spin" : ""}`} />
+          Seed Lighthouse data
+        </Button>
       </CardHeader>
       <CardContent className="space-y-6">
         {error ? (
