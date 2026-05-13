@@ -108,6 +108,8 @@ describe("canonical base URL consistency", () => {
         collect(data);
 
         for (const url of urls) {
+          // schema.org is the vocabulary context, not a project canonical URL
+          if (url.startsWith("https://schema.org")) continue;
           if (!url.startsWith(CANONICAL_BASE)) {
             offenders.push(url);
           }
