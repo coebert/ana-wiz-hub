@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Side-by-side animated ventilator waveform comparison for ARDS:
@@ -362,6 +363,7 @@ function buildWaveform(mode: ModeDef, n: number): { x: number; y: number }[] {
 
 function Legend({ swatch, label, dashed }: { swatch: string; label: string; dashed?: boolean }) {
   return (
+    <DiagramFigure id="ards-vent-modes" title="ARDS ventilator modes compared: VCV, PCV and APRV waveforms" description="Side-by-side animated pressure, flow and volume waveforms comparing volume control, pressure control and airway pressure release ventilation in ARDS.">
     <div className="flex items-center gap-2">
       <svg width={28} height={8}>
         <line
@@ -376,6 +378,7 @@ function Legend({ swatch, label, dashed }: { swatch: string; label: string; dash
       </svg>
       <span className="text-muted-foreground">{label}</span>
     </div>
+    </DiagramFigure>
   );
 }
 

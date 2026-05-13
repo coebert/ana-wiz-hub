@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type PlanKey = "A" | "B" | "C" | "D";
 
@@ -99,6 +100,7 @@ const DASAlgorithmDiagram = () => {
   };
 
   return (
+    <DiagramFigure id="das-algorithm" title="DAS unanticipated difficult intubation algorithm: Plans A–D" description="Difficult Airway Society algorithm walking through Plan A (laryngoscopy), Plan B (supraglottic rescue), Plan C (face-mask) and Plan D (front-of-neck access).">
     <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">DAS Difficult Airway Algorithm (2015)</h3>
       <p className="text-xs text-muted-foreground mb-4">Step through Plans A→D. Tap a plan or use arrows to navigate.</p>
@@ -209,6 +211,7 @@ const DASAlgorithmDiagram = () => {
         </button>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 

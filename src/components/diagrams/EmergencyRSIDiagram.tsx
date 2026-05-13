@@ -1,4 +1,5 @@
 import { AnimatedMechanism, AnimatedMechanismStep } from "./AnimatedMechanism";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Rapid Sequence Induction in the haemodynamically unstable, full-stomach
@@ -104,6 +105,7 @@ const VITALS: VitalsBlock[] = [
 
 export const EmergencyRSIDiagram = () => {
   return (
+    <DiagramFigure id="emergency-rsi" title="Emergency rapid sequence induction: ketamine and rocuronium sequence" description="Step-by-step DAS-aligned rapid sequence induction in the haemodynamically unstable, full-stomach emergency patient.">
     <AnimatedMechanism
       title="Emergency RSI — full stomach, shocked patient"
       subtitle="DAS-aligned conduct with ketamine + rocuronium. Watch the vitals shift as sympathetic drive is removed."
@@ -228,6 +230,7 @@ export const EmergencyRSIDiagram = () => {
         );
       }}
     />
+    </DiagramFigure>
   );
 };
 

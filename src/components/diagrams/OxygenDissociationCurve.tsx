@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 // Hill equation for ODC
 const hillEquation = (pO2: number, p50: number, n: number = 2.7): number => {
@@ -310,6 +311,7 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
 
   // ═══════ INTERACTIVE SHIFT VIEW ═══════
   return (
+    <DiagramFigure id="odc" title="Oxyhaemoglobin dissociation curve with right- and left-shift modifiers" description="Hill-equation oxygen dissociation curve with adjustable P50 — temperature, pH, 2,3-DPG and PaCO2 shift the curve and alter oxygen content.">
     <div className="space-y-4">
       {/* View toggle */}
       <div className="flex items-center justify-center gap-2 flex-wrap">
@@ -547,5 +549,6 @@ export const OxygenDissociationCurve = ({ showShifts = false }: CurveProps) => {
         </button>
       </div>
     </div>
+    </DiagramFigure>
   );
 };

@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const AutoPEEPDiagram = () => {
   const [rr, setRr] = useState(12);
@@ -207,6 +208,7 @@ function SliderRow({ label, value, min, max, unit, onChange }: {
   label: string; value: number; min: number; max: number; unit: string; onChange: (v: number) => void;
 }) {
   return (
+    <DiagramFigure id="auto-peep" title="Auto-PEEP from dynamic hyperinflation: respiratory rate and I:E effects" description="Interactive ventilator model showing how shortened expiratory time at higher rates or longer inspiratory ratios traps gas and generates intrinsic PEEP.">
     <div>
       <div className="flex justify-between text-xs mb-0.5">
         <span className="text-muted-foreground">{label}</span>
@@ -216,6 +218,7 @@ function SliderRow({ label, value, min, max, unit, onChange }: {
         onChange={e => onChange(Number(e.target.value))}
         className="w-full h-1.5 rounded-full appearance-none bg-secondary cursor-pointer accent-primary" />
     </div>
+    </DiagramFigure>
   );
 }
 

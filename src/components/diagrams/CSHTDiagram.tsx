@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 interface DrugCSHT {
   name: string;
@@ -117,6 +118,7 @@ function CSHTDiagram() {
   const xTicks = [0, 60, 120, 180, 240, 300, 360, 420, 480];
 
   return (
+    <DiagramFigure id="csht" title="Context-sensitive half-time of common intravenous anaesthetics" description="Context-sensitive half-time curves for propofol, remifentanil, fentanyl, alfentanil and thiopentone as a function of infusion duration.">
     <div className="border border-border rounded-lg p-4 mb-6">
       <h3 className="text-lg font-serif font-bold text-foreground mb-1">
         Context-Sensitive Half-Time (CSHT)
@@ -337,6 +339,7 @@ function CSHTDiagram() {
         </div>
       </div>
     </div>
+    </DiagramFigure>
   );
 }
 

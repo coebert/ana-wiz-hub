@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive log dose–response curves.
@@ -118,6 +119,7 @@ export const DoseResponseCurveDiagram = () => {
   const controlEC50 = -8;
 
   return (
+    <DiagramFigure id="dose-response" title="Log dose–response curves: potency, efficacy and antagonism" description="Interactive Hill-curve dose–response model demonstrating potency (EC50), efficacy (Emax) and competitive versus non-competitive antagonism.">
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
@@ -422,5 +424,6 @@ export const DoseResponseCurveDiagram = () => {
         </div>
       </div>
     </div>
+    </DiagramFigure>
   );
 };

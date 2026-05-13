@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Animated burn resuscitation + zone-progression diagram.
@@ -108,6 +109,7 @@ export const BurnResuscitationDiagram = () => {
   };
 
   return (
+    <DiagramFigure id="burn-resuscitation" title="Burn fluid resuscitation: Parkland formula timeline" description="Animated Parkland-formula resuscitation showing crystalloid delivery rate, urine output target and reassessment points across the first 24 hours.">
     <figure className="my-6 rounded-xl border border-border bg-card p-4 md:p-5">
       <figcaption className="mb-3 flex flex-wrap items-start justify-between gap-3">
         <div>
@@ -330,6 +332,7 @@ export const BurnResuscitationDiagram = () => {
         )}
       </div>
     </figure>
+    </DiagramFigure>
   );
 };
 

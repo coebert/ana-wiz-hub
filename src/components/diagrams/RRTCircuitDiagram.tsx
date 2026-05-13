@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type RRTMode = "crrt" | "ihd";
 
@@ -93,6 +94,7 @@ export const RRTCircuitDiagram = () => {
   const dialysateChannelX = membraneX + (filterRight - membraneX) / 2; // right half = dialysate
 
   return (
+    <DiagramFigure id="rrt-circuit" title="Renal replacement therapy circuits: CRRT and intermittent haemodialysis" description="Animated extracorporeal RRT circuit comparing CRRT and intermittent haemodialysis — access, blood pump, filter, replacement fluid and effluent.">
     <div className="space-y-4">
       <div className="flex gap-2">
         {(Object.keys(modes) as RRTMode[]).map((key) => (
@@ -304,5 +306,6 @@ export const RRTCircuitDiagram = () => {
         </div>
       </div>
     </div>
+    </DiagramFigure>
   );
 };

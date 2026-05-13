@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 type Location = "supraspinal" | "spinal" | "peripheral" | "overview";
 
@@ -142,6 +143,7 @@ const OpioidReceptorDiagram = () => {
   const [selected, setSelected] = useState<Location>("overview");
 
   return (
+    <DiagramFigure id="opioid-receptor" title="Opioid receptor sites: supraspinal, spinal and peripheral analgesia" description="Anatomical map of mu, delta and kappa opioid receptor distribution at supraspinal, spinal and peripheral sites and the resulting pharmacological effects.">
     <div className="space-y-4">
       {/* Tab buttons */}
       <div className="flex flex-wrap gap-2">
@@ -322,6 +324,7 @@ const OpioidReceptorDiagram = () => {
         </div>
       )}
     </div>
+    </DiagramFigure>
   );
 };
 

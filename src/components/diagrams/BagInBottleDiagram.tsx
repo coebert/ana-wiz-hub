@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const BagInBottleDiagram = () => {
   const [phase, setPhase] = useState<"insp" | "exp">("exp");
@@ -20,6 +21,7 @@ const BagInBottleDiagram = () => {
   const drivingGasActive = isInsp;
 
   return (
+    <DiagramFigure id="bag-in-bottle" title="Bag-in-bottle ventilator: inspiratory and expiratory phases" description="Animated mechanical ventilator showing driving gas compressing the inner bellows during inspiration and passive recoil during expiration.">
     <div className="space-y-4">
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3">
@@ -289,6 +291,7 @@ const BagInBottleDiagram = () => {
         </svg>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 

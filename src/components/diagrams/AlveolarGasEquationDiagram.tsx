@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createLinearScale } from "@/lib/diagram-scale";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 const AlveolarGasEquationDiagram = () => {
   const [fio2, setFio2] = useState(21);
@@ -128,6 +129,7 @@ function SliderRow({ label, value, min, max, unit, step = 1, onChange }: {
   label: React.ReactNode; value: number; min: number; max: number; unit: string; step?: number; onChange: (v: number) => void;
 }) {
   return (
+    <DiagramFigure id="alveolar-gas-equation" title="Alveolar gas equation: PAO2 as a function of FiO2 and PaCO2" description="Sliders for FiO2 and PaCO2 illustrate how the alveolar gas equation predicts alveolar oxygen tension and the A–a gradient.">
     <div>
       <div className="flex justify-between text-xs mb-1">
         <span className="text-muted-foreground">{label}</span>
@@ -139,6 +141,7 @@ function SliderRow({ label, value, min, max, unit, step = 1, onChange }: {
         className="w-full h-2 rounded-full appearance-none bg-secondary cursor-pointer accent-primary"
       />
     </div>
+    </DiagramFigure>
   );
 }
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DiagramToggleBar } from "./DiagramToggleBar";
+import { DiagramFigure } from "./_shared/DiagramFigure";
 
 /**
  * Interactive summary of pregnancy physiology changes by system.
@@ -188,6 +189,7 @@ export const PregnancyPhysiologyDiagram = () => {
   };
 
   return (
+    <DiagramFigure id="pregnancy-physiology" title="Pregnancy physiology by system: cardiovascular, respiratory, renal and haematological changes" description="System-by-system summary of the maternal physiological adaptations of pregnancy with anaesthetic implications.">
     <div className="my-6 space-y-4">
       <div className="bg-muted/30 rounded-xl border border-border p-4">
         <DiagramToggleBar
@@ -350,6 +352,7 @@ export const PregnancyPhysiologyDiagram = () => {
         </p>
       </div>
     </div>
+    </DiagramFigure>
   );
 };
 
