@@ -180,8 +180,8 @@ export const CAMICUFlowchartDiagram = () => {
             <span className="text-muted-foreground mr-1">Theme preview:</span>
             {([
               { id: "auto", label: "Auto", icon: null },
-              { id: "light", label: "Light", icon: <Sun className="h-3 w-3" /> },
-              { id: "dark", label: "Dark", icon: <Moon className="h-3 w-3" /> },
+              { id: "light", label: "Light", icon: <Sun className="h-3 w-3" aria-hidden="true" focusable={false} /> },
+              { id: "dark", label: "Dark", icon: <Moon className="h-3 w-3" aria-hidden="true" focusable={false} /> },
             ] as const).map((opt) => (
               <button
                 key={opt.id}
@@ -663,9 +663,9 @@ const StepRow = ({
     >
       <div className="flex items-start gap-2">
         {yes ? (
-          <CheckCircle2 className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+          <CheckCircle2 className="w-4 h-4 text-destructive shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
         ) : (
-          <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+          <XCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" focusable={false} />
         )}
         <div>
           <p className="font-semibold text-foreground">
